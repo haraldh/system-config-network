@@ -35,7 +35,7 @@ def load_icon(pixmap_file, dialog):
     if dialog: dialog.set_icon(pix, mask)
 
 
-def generic_error_dialog (message, parent_dialog, dialog_type="warning",
+def gui_error_dialog (message, parent_dialog, dialog_type="warning",
 			  widget=None, page=0, broken_widget=None):
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, "Button_Ok")
     if parent_dialog:
@@ -53,7 +53,7 @@ def generic_error_dialog (message, parent_dialog, dialog_type="warning",
     dialog.set_position (gtk.WIN_POS_MOUSE)
     dialog.run ()
 
-def generic_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
+def gui_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
 			  widget=None, page=0, broken_widget=None):
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, _("Yes"), _("No"), _("Cancel"))
     if parent_dialog:
@@ -70,7 +70,7 @@ def generic_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
     dialog.set_position (gtk.WIN_POS_MOUSE)
     return dialog.run ()
 
-def generic_yesno_dialog (message, parent_dialog, dialog_type="question",
+def gui_yesno_dialog (message, parent_dialog, dialog_type="question",
 			  widget=None, page=0, broken_widget=None):
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, _("Yes"), _("No"))
     if parent_dialog:
@@ -86,3 +86,7 @@ def generic_yesno_dialog (message, parent_dialog, dialog_type="question",
             broken_widget.select_region (0, -1)
     dialog.set_position (gtk.WIN_POS_MOUSE)
     return dialog.run ()
+
+set_generic_error_dialog_func(gui_error_dialog)
+set_generic_yesnocancel_dialog_func(gui_yesnocancel_dialog)
+set_generic_yesno_dialog_func(gui_yesno_dialog)

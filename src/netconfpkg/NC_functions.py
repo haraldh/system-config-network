@@ -242,3 +242,46 @@ def getModemList():
             if dev != 'None':
                 ModemList.append(dev)
     return ModemList[:]
+
+generic_error_dialog_func = None
+def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
+			  widget=None, page=0, broken_widget=None):
+	global generic_error_dialog_func
+	if generic_error_dialog_func:
+		return generic_error_dialog_func(message, parent_dialog,
+						 dialog_type, widget,
+						 page, broken_widget)
+	return 0
+
+generic_yesnocancel_dialog_func = None
+def generic_yesnocancel_dialog (message, parent_dialog = None, dialog_type="question",
+			  widget=None, page=0, broken_widget=None):
+	global generic_yesnocancel_dialog_func
+	if generic_yesnocancel_dialog_func:
+		return generic_yesnocancel_dialog_func(message, parent_dialog,
+						       dialog_type, widget,
+						       page, broken_widget)
+	return 0
+
+generic_yesno_dialog_func = None
+def generic_yesno_dialog (message, parent_dialog = None,
+			  dialog_type="question",
+			  widget=None, page=0, broken_widget=None):
+	global generic_yesno_dialog_func
+	if generic_yesno_dialog_func:
+		return generic_yesno_dialog_func(message, parent_dialog,
+						 dialog_type, widget,
+						 page, broken_widget)
+	return 0
+
+def set_generic_error_dialog_func(func):
+	global generic_error_dialog_func
+	generic_error_dialog_func = func
+	
+def set_generic_yesnocancel_dialog_func(func):
+	global generic_yesnocancel_dialog_func
+	generic_yesnocancel_dialog_func = func
+	
+def set_generic_yesno_dialog_func(func):
+	global generic_yesno_dialog_func
+	generic_yesno_dialog_func = func
