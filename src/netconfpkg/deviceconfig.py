@@ -29,7 +29,6 @@ import gettext
 import string
 import re
 
-import HardwareList
 import tcpdialog
 import NC_functions
 
