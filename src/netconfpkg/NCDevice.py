@@ -242,7 +242,7 @@ class Device(DeviceList.Device_base):
                 self.Mtu = conf['MTU']
                 
         if math.fmod(num, 3) != 0:
-             NC_functions.generic_error_dialog((_("Static routes file for %s has not valid format")) % name)
+             NC_functions.generic_error_dialog((_("Static routes file %s is invalid")) % name)
         else:
             for p in xrange(0, num/3):
                 i = self.StaticRoutes.addRoute()
