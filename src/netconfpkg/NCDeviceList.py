@@ -27,7 +27,6 @@ from netconfpkg import DeviceList_base
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from rhpl import ConfSMB
 from rhpl import Conf
-from rhpl.log import log
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -214,19 +213,22 @@ class DeviceList(DeviceList_base):
         papconf.write()
         chapconf.write()
 
+        dirname = netconfpkg.ROOT + SYSCONFDEVICEDIR
         #
         # Remove old config files
         #
         try:
-            dir = os.listdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
+            dir = os.listdir(dirname)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
-                  + netconfpkg.ROOT + SYSCONFDEVICEDIR + ': ' + str(msg)
+                  + dirname + ': ' + str(msg)
 
         for entry in dir:
+            if not testFilename(dirname + entry):
+                continue
+
             if (len(entry) <= 6) or \
-               entry[:6] != 'ifcfg-' or \
-               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
+                   entry[:6] != 'ifcfg-':
                 continue
             
             devid = entry[6:]
@@ -236,23 +238,25 @@ class DeviceList(DeviceList_base):
             else:
                 # check for IPSEC
                 conf = ConfDevice(entry)
-                type = None
+                type = IPSEC
                 if conf.has_key("TYPE"): type = conf("TYPE")
                 if type == IPSEC:
                     continue
 
                 # now remove the file
-                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
-                log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
-                log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid))
+                unlink(dirname + entry)
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                       '/ifcfg-' + devid)
 
         # remove old route files
         for entry in dir:
-            if (len(entry) <= 6) or \
-               entry[:6] != '.route' or \
-               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
+            if not testFilename(dirname + entry):
                 continue
+
+            if (len(entry) <= 6) or \
+                   entry[:6] != '.route':
+                continue
+
             devid = entry[6:]
                 
             for dev in self:
@@ -260,11 +264,9 @@ class DeviceList(DeviceList_base):
                     break
             else:
                 # remove route file, if no routes defined
-                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
-                log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.route')
-                log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.route'))
-
+                unlink(dirname + entry)
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                       devid + '.route')
 
         # bug #78043
         # we should have device specific gateways
@@ -279,14 +281,18 @@ class DeviceList(DeviceList_base):
         
         self.commit()
 
-DVList = None
+__DVList = None
+__DVList_root = netconfpkg.ROOT
 
 def getDeviceList(refresh = None):
-    global DVList
-    if DVList == None or refresh:
-        DVList = DeviceList()
-        DVList.load()
-    return DVList
+    global __DVList
+    global __DVList_root
+    if __DVList == None or refresh or \
+           __DVList_root != netconfpkg.ROOT:
+        __DVList = DeviceList()
+        __DVList.load()
+        __DVList_root = netconfpkg.ROOT
+    return __DVList
 
 def getNextDev(base):
     devlist = getDeviceList()
@@ -302,5 +308,5 @@ def getNextDev(base):
     return base + str(num)
                 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:35:51 $"
-__version__ = "$Revision: 1.60 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.61 $"

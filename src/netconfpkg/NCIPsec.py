@@ -133,7 +133,16 @@ class IPsec(IPsec_base):
             conf["IKE_METHOD"] = "PSK"
         else:
             del conf["IKE_METHOD"]
-
+            try:
+                import zlib
+                # create some simple SPI ids, that hopefully do not reveal the key
+                conf["SPI_AH_IN"]   = str(zlib.crc32(self.AHKey  + "IN",  0) & 0x7FFFFFFF)
+                conf["SPI_AH_OUT"]  = str(zlib.crc32(self.AHKey  + "OUT", 0) & 0x7FFFFFFF)
+                conf["SPI_ESP_IN"]  = str(zlib.crc32(self.ESPKey + "IN",  0) & 0x7FFFFFFF)
+                conf["SPI_ESP_OUT"] = str(zlib.crc32(self.ESPKey + "OUT", 0) & 0x7FFFFFFF)
+            except:
+                pass
+             
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if self.__dict__[selfkey]:

@@ -27,7 +27,7 @@ from rhpl import ConfPAP
 from rhpl import ethtool
 from rhpl import Conf
 from rhpl import ConfSMB
-#from rhpl.log import log
+import rhpl.log
 
 
 import UserList
@@ -107,7 +107,7 @@ LO = 'Loopback'
 DSL = 'xDSL'
 CIPE = 'CIPE'
 WIRELESS = 'Wireless'
-TOKENRING = 'TokenRing'
+TOKENRING = 'Token Ring'
 CTC = 'CTC'
 IUCV = 'IUCV'
 IPSEC = 'IPSEC'
@@ -369,6 +369,14 @@ def ishardlink(file):
     else:
         return None
 
+def issamefile(file1, file2):
+    try:
+        s1 = os.stat(file1)
+        s2 = os.stat(file2)
+    except:
+        return false
+    return os.path.samestat(s1, s2)
+
 def getHardwareType(devname):
     if devname in deviceTypes:
         return devname
@@ -388,14 +396,7 @@ def getDeviceType(devname):
         if re.search(i, devname):
             type = deviceTypeDict[i]
 
-    if type == ETHERNET:
-        try:
-	    # test for wireless
-	    info = ethtool.get_iwconfig(devname)
-	    type = WIRELESS
-        except IOError:
-	    pass
-    elif type == UNKNOWN:
+    if type == UNKNOWN:
         try:
             # if still unknown, try to get a MAC address
             hwaddr = ethtool.get_hwaddr(devname)
@@ -403,6 +404,14 @@ def getDeviceType(devname):
                 type = ETHERNET
         except:
             pass        
+
+    if type == ETHERNET:
+        try:
+	    # test for wireless
+	    info = ethtool.get_iwconfig(devname)
+	    type = WIRELESS
+        except IOError:
+	    pass
         
     return type
 
@@ -743,7 +752,7 @@ def set_generic_run_func(func):
    
 
 def unlink(file):
-	if not os.path.isfile(file):
+	if not (os.path.isfile(file) or os.path.islink(file)):
 		#print "file '%s' is not a file!" % file
 		return
 	try:
@@ -753,6 +762,17 @@ def unlink(file):
                 generic_error_dialog (_("Error removing\n%s:\n%s!") \
 				      % (file, str(errstr)))
 
+def rmdir(file):
+    if not os.path.isdir(file):
+        #print "file '%s' is not a file!" % file
+        return
+    try:
+        os.rmdir(file)
+        log.log(2, "rmdir %s" % file)
+    except OSError, errstr:
+        generic_error_dialog (_("Error removing\n%s:\n%s!") \
+                              % (file, str(errstr)))
+        
 def link(src, dst):
 	if not os.path.isfile(src):
 		return
@@ -811,77 +831,11 @@ def get_filepath(file):
 		return None
 	else: return fn
 
-__updatedNetworkScripts = 0
-
-def updateNetworkScripts():
-    global __updatedNetworkScripts
-    
-    if __updatedNetworkScripts:
-        return
-
-    if not os.access(getRoot(), os.W_OK):
-        return
-        
-    prepareRoot(getRoot())
-
-    firsttime = 0
-    
-    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
-        firsttime = 1
-        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default')
-
-    curr_prof = 'default'
-    if not firsttime:
-        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
-        if nwconf.has_key('CURRENT_PROFILE'):
-            curr_prof = nwconf['CURRENT_PROFILE']
-
-    devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
-
-    for dev in devlist:
-        if dev == 'lo':           
-            continue
-
-        if os.path.islink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+ dev) \
-               or ishardlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+dev):
-            continue
-
-        unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
-        link(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+dev,
-             netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
-
-        log.log(1, _("Linking %s to devices and putting "
-                     "it in profile %s.") % (dev, curr_prof))
-
-        unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev)
-        link(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev,
-             netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev)    
-
-    if not os.path.isfile(netconfpkg.ROOT + HOSTSCONF) or \
-           (not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
-           and not os.path.islink(netconfpkg.ROOT + HOSTSCONF)):
-        log.log(1, _("Copying %s to profile %s." % (netconfpkg.ROOT + \
-                     HOSTSCONF, curr_prof)))
-        unlink(netconfpkg.ROOT + \
-               SYSCONFPROFILEDIR+'/' + curr_prof + '/hosts')
-        link(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + \
-             SYSCONFPROFILEDIR+'/' + curr_prof + '/hosts')
-
-    if not os.path.isfile(netconfpkg.ROOT + RESOLVCONF) or \
-           ( not ishardlink(netconfpkg.ROOT + RESOLVCONF) \
-            and not os.path.islink(netconfpkg.ROOT + RESOLVCONF)):
-        log.log(1, _("Linking %s to profile %s." % (netconfpkg.ROOT + \
-                     RESOLVCONF, curr_prof)))
-        unlink(netconfpkg.ROOT + \
-               SYSCONFPROFILEDIR+'/' + curr_prof + '/resolv.conf')
-        link(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + \
-             SYSCONFPROFILEDIR+'/' + curr_prof + '/resolv.conf')
-
-    __updatedNetworkScripts = 1
-
 class ConfDevices(UserList.UserList):
-    def __init__(self, confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR):
+    def __init__(self, confdir = None):
         UserList.UserList.__init__(self)
+        if confdir == None:
+            confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR
         confdir += '/'
         try:
             dir = os.listdir(confdir)            
@@ -897,7 +851,30 @@ class ConfDevices(UserList.UserList):
                    string.find(entry, '.rpmnew') == -1 and \
                    os.access(confdir + entry, os.R_OK):
                     self.append(entry[6:])
-                    	
+
+def testFilename(filename):
+    if not len(filename):
+        return false
+    
+    if (not os.access(filename, os.R_OK)) or \
+           (not os.path.isfile(filename)) or \
+           (os.path.islink(filename)):
+        return false
+
+    if filename[-1] == "~":
+        return false
+
+    if len(filename) > 7 and filename[:7] == '.rpmnew'):
+        return false
+
+    if len(filename) > 8 and filename[:8] == '.rpmsave'):
+        return false
+
+    if len(filename) > 8 and filename[:8] == '.rpmorig'):
+        return false
+
+    return true
+
 def setRoot(root):
     netconfpkg.ROOT = root
 
@@ -923,6 +900,64 @@ class ConfKeys(Conf.ConfShellVar):
         self.chmod(0600)
 
 
+__updatedNetworkScripts = 0
+
+def updateNetworkScripts(force = false):
+    global __updatedNetworkScripts
+    
+    if __updatedNetworkScripts and (not force):
+        return
+
+    if not os.access(getRoot(), os.W_OK):
+        return
+        
+    prepareRoot(getRoot())
+
+    firsttime = 0
+    
+    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
+        firsttime = 1
+        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default')
+
+    curr_prof = 'default'
+    if not firsttime:
+        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        if nwconf.has_key('CURRENT_PROFILE'):
+            curr_prof = nwconf['CURRENT_PROFILE']
+
+    devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
+
+    for dev in devlist:
+        if dev == 'lo':           
+            continue
+
+        ocfile = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+ dev
+        dfile = netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev
+
+        if issamefile(ocfile, dfile):
+            continue
+        
+        unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
+        link(ocfile, dfile)
+
+        log.log(1, _("Linking %s to devices and putting "
+                     "it in profile %s.") % (dev, curr_prof))
+
+        pfile = netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev
+
+        unlink(pfile)
+        link(dfile, pfile)
+
+        for (file, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
+            hostfile = netconfpkg.ROOT + file
+            conffile = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                       curr_prof + cfile
+            if not os.path.isfile(hostfile) or not issamefile(hostfile, conffile):
+                unlink(conffile)
+                link(hostfile, conffile)
+
+    __updatedNetworkScripts = 1
+
 #
 # log.py - debugging log service
 #
@@ -945,9 +980,13 @@ import syslog
 class LogFile:
     def __init__ (self, level = 0, filename = None):
         if filename == None:
+            import syslog
+            self.syslog = syslog.openlog(PROGNAME, syslog.LOG_PID)
+                                        
             self.handler = self.syslog_handler
             self.logFile = sys.stderr
         else:
+            self.handler = self.file_handler
             self.open(filename)
             
         self.level = level
@@ -975,9 +1014,9 @@ class LogFile:
     def __call__(self, format, *args):
 	self.handler (format % args)
         
-    def syserr_handler (self, string):
+    def file_handler (self, string, level = 0):
         import time
-        log.logFile.write ("%s: %s\n" % (time.ctime(), string))
+        self.logFile.write ("[%d] %s: %s\n" % (level, time.ctime(), string))
 
     def syslog_handler (self, string, level = syslog.LOG_INFO):
         import syslog
@@ -1005,9 +1044,7 @@ class LogFile:
 
 log = LogFile()
 						
-
+rhpl.log = log
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/15 13:57:46 $"
-__version__ = "$Revision: 1.86 $"

@@ -31,11 +31,12 @@ from NC_functions import *
 from netconfpkg import Device_base
 import NCDialup
 import NCCipe
-from rhpl.log import log
 from rhpl.executil import gtkExecWithCaptureStatus
 
 class ConfDevice(Conf.ConfShellVar):
-    def __init__(self, name, dir = netconfpkg.ROOT + SYSCONFDEVICEDIR):
+    def __init__(self, name, dir = None):
+        if dir == None:
+            dir = netconfpkg.ROOT + SYSCONFDEVICEDIR
         new = false
         self.filename = dir + 'ifcfg-' + name
         if not os.access(self.filename, os.R_OK):
@@ -87,27 +88,13 @@ class Device(Device_base):
     boolkeydict = { 'OnBoot' : 'ONBOOT',
                     'AllowUser' : 'USERCTL',
                     'AutoDNS' : 'PEERDNS',
+                    'Slave' : 'SLAVE',
                     'IPv6Init' : 'IPV6INIT',
                     }
         
     def __init__(self, list = None, parent = None):
         Device_base.__init__(self, list, parent)        
         self.oldname = None
-
-#     def __str__(self):
-#         if self.Alias != None:
-#             return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
-#                                           self.Alias)
-#         else:
-#             return "Device %s (%s)" % (self.DeviceId, self.Device)
-
-#     def __repr__(self):
-#         if self.Alias != None:
-#             return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
-#                                       self.Alias)
-#         else:
-#             return "Device %s (%s)" % (self.DeviceId, self.Device)
-
 
     def getDialog(self):
         return None
@@ -130,7 +117,6 @@ class Device(Device_base):
         return devname
 
     def load(self, name):
-        from netconfpkg.NCDeviceList import getDeviceList
         conf = ConfDevice(name)
 
         self.oldname = name
@@ -138,6 +124,7 @@ class Device(Device_base):
         if not conf.has_key("DEVICE"):
             aliaspos = string.find(name, ':')
             if aliaspos != -1:
+                from netconfpkg.NCDeviceList import getDeviceList
                 # ok, we have to inherit all other data from our master
                 for dev in getDeviceList():
                     if dev.Device == name[:aliaspos]:
@@ -163,7 +150,7 @@ class Device(Device_base):
                 self.__dict__[selfkey] = false                            
             
         if not conf.has_key("PEERDNS"):
-            self.AutoDNS = true
+            self.AutoDNS = None
             
         if not self.Gateway:
             try:
@@ -290,9 +277,9 @@ class Device(Device_base):
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey]:
+            if self.__dict__[selfkey] == true:
                 conf[confkey] = 'yes'
-            else:
+            elif self.__dict__[selfkey] == false:
                 conf[confkey] = 'no'
 
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
@@ -351,6 +338,10 @@ class Device(Device_base):
                     rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
+        else:
+            # remove route file, if no routes defined
+            unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + self.DeviceId + '.route')
+            unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
             
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
@@ -430,26 +421,4 @@ class Device(Device_base):
     def getHWDevice(self):
         return self.Device
 
-##     def _createAttr(self, child=None):
-##         if not hasattr(self, "Dialup") or not self.Dialup:
-##             log.log(4, "createAttr(%s)" % child)
-##             # not exactly OO...
-##             from netconfpkg.NCDeviceFactory import getDeviceFactory
-##             df = getDeviceFactory()
-##             devclass = None
-##             if self.Type:
-##                 devclass = df.getDeviceClass(self.Type)
-##             else:
-##                 log.log(4, "createAttr(%s) - Type not set" % child)
-##             if devclass:
-##                 newdev = devclass()
-##                 if hasattr(newdev, "create" + child):
-##                     func = getattr(newdev, "create" + child)
-##                     setattr(self, child, func())
-##             else:
-##                 log.log(4, "createAttr(%s) - no devclass" % child)
-##                 return Device_base._createAttr(self, child)
-##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/15 13:54:25 $"
-__version__ = "$Revision: 1.100 $"

@@ -161,17 +161,8 @@ class PTPInterface(EthernetInterface):
         else:
             self.hwPage = FALSE
             self.device.Device = self.devlist[clist.selection[0]]
-            alias = None
-            for dev in self.devicelist:
-                if not dev.Device == self.device.Device:
-                    continue
-                if dev.Alias:
-                    if not alias:
-                        alias = dev.Alias
-                    elif alias <= dev.Alias:
-                        alias = dev.Alias + 1
-                else: alias = 1
-            self.device.Alias = alias
+            
+            self.device.Alias = self.getNextAlias(self.device)
             # must be at bottom, because prepare is called here
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+2])
         return TRUE

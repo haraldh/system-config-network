@@ -40,7 +40,5 @@ netconfpkg_PYTHON = $(PYTHON_FILES)
 
 execdir = $(sbindir)
 
-clean:
-	rm -f *.pyo *.pyc
-	rm -f *.so
-	rm -f *~
+CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
+

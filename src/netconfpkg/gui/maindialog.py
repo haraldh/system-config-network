@@ -420,11 +420,11 @@ class mainDialog:
     def checkApply(self, ch = -1):
         if ch == -1:
             ch = self.changed()
-        apply_btn = self.xml.get_widget("save")
-        if ch:
-            apply_btn.set_sensitive (TRUE)
-        else:
-            apply_btn.set_sensitive (FALSE)
+#         apply_btn = self.xml.get_widget("save")
+#         if ch:
+#             apply_btn.set_sensitive (TRUE)
+#         else:
+#             apply_btn.set_sensitive (FALSE)
             
             
     def hydrateDevices(self):
@@ -482,9 +482,10 @@ class mainDialog:
                     break
                 
 
-            if dev == devsel:
+            if dev == devsel or devsel == None:
                 log.log(5, "Selecting row %d" % row)
                 clist.select_row(row, 0)
+                devsel = dev
                 
             row = row + 1
         self.appBar.pop()
@@ -606,6 +607,7 @@ class mainDialog:
 
         #print "hydrateProfiles(%s)" % self.active_profile_name
         self.active_profile = prof
+        self.ignore_widget_changes = true
         
         if prof.DNS.Hostname:
             self.xml.get_widget('hostnameEntry').set_text(\
@@ -633,6 +635,8 @@ class mainDialog:
         else:
             self.xml.get_widget('searchDnsEntry').set_text('')
 
+        self.ignore_widget_changes = false
+        
         row = 0
         for host in prof.HostsList:
             #88357
@@ -651,6 +655,7 @@ class mainDialog:
         self.initialized = true
 
         self.no_profileentry_update = true
+        self.ignore_widget_changes = false
         omenu = self.xml.get_widget('profileMenu')
         omenu = omenu.get_submenu()
         clist = omenu.get_children()
@@ -689,6 +694,9 @@ class mainDialog:
         return TRUE
     
     def on_Dialog_delete_event(self, *args):
+        profilelist = getProfileList()
+        profilelist.commit()
+        
         if self.changed():        
             button = generic_yesno_dialog(
                 _("Do you want to save your changes?"),
@@ -782,6 +790,9 @@ class mainDialog:
         self.save()
         
     def on_okButton_clicked (self, *args):
+        profilelist = getProfileList()
+        profilelist.commit()
+
         if self.changed():        
             button = generic_yesnocancel_dialog(
                 _("Do you want to save your changes?"),
@@ -943,6 +954,9 @@ class mainDialog:
         device = dev.getDeviceAlias()
 
         gtk.timeout_remove(self.tag)
+
+        profilelist = getProfileList()
+        profilelist.commit()
         
         if self.changed():
             button = generic_yesno_dialog(
@@ -979,6 +993,23 @@ class mainDialog:
         
         gtk.timeout_remove(self.tag)
 
+        profilelist = getProfileList()
+        profilelist.commit()
+        if self.changed():
+            button = generic_yesno_dialog(
+                _("You have made some changes in your configuration.") + "\n"+\
+                _("To deactivate the network device %s, "
+                  "the changes have to be saved.") % (device) + "\n\n" +\
+                _("Do you want to continue?"),
+                self.dialog)
+                
+            if button == RESPONSE_YES:
+                if self.save() != 0:
+                    return
+            
+            if button == RESPONSE_NO:
+                return
+
         (status, txt) = dev.deactivate(dialog = self.dialog)
         
         self.updateDevicelist()
@@ -1006,21 +1037,7 @@ class mainDialog:
         devicelist = getDeviceList()
         hardwarelist = getHardwareList()
 
-        dosave = false
-
         prof = self.active_profile
-        
-#         if devicelist.modified() or hardwarelist.modified() or \
-#                (prof and prof.modified()):
-#             button = generic_yesnocancel_dialog(
-#                 _("Do you want to save your changes?"),
-#                 self.dialog)
-            
-#             if button == RESPONSE_YES:
-#                 dosave = true
-            
-#             if button == RESPONSE_CANCEL:
-#                 return
 
         if profile == 'default':
             self.xml.get_widget ('profileRenameMenu').set_sensitive (FALSE)
@@ -1030,12 +1047,12 @@ class mainDialog:
             self.xml.get_widget ('profileDeleteMenu').set_sensitive (TRUE)
             
         if not self.no_profileentry_update:
-            profilelist.switchToProfile(profile, dochange = false)
+            #profilelist.switchToProfile(profile, dochange = false)
+            profilelist.switchToProfile(profile, dochange = true)
             self.initialized = true
             self.hydrate()
 
-        if dosave:
-            self.save()
+        self.checkApply()
 
     def on_generic_clist_select_row(self, clist, row, column, event):
         #devicelist = getDeviceList()
@@ -1079,29 +1096,36 @@ class mainDialog:
             if not self.devsel:
                 return
             
-#             curr_prof = self.getActiveProfile()
+            curr_prof = self.getActiveProfile()
             
-#             try:
-#                 status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
-#             except:
-#                 status = INACTIVE
+            try:
+                status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
+            except:
+                status = INACTIVE
             
-#             if NetworkDevice().find(self.devsel.getDeviceAlias()):
-#                 status == ACTIVE
+            if NetworkDevice().find(self.devsel.getDeviceAlias()):
+                status == ACTIVE
                 
-#             if status == ACTIVE and \
-#                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
-#                 #self.activate_button.set_sensitive(FALSE)
-#                 self.activate_button.set_sensitive(TRUE)
-#                 self.deactivate_button.set_sensitive(TRUE)
-#                 self.delete_button.set_sensitive(FALSE)
-#                 self.monitor_button.set_sensitive(TRUE)
-#             else:
-#                 self.activate_button.set_sensitive(TRUE)
-#                 #self.deactivate_button.set_sensitive(FALSE)
-#                 self.deactivate_button.set_sensitive(TRUE)
-#                 self.delete_button.set_sensitive(TRUE)
-#                 self.monitor_button.set_sensitive(FALSE)
+            if status == ACTIVE and \
+                   (self.devsel.DeviceId in curr_prof.ActiveDevices):
+                #self.activate_button.set_sensitive(FALSE)
+                self.activate_button.set_sensitive(TRUE)
+                self.deactivate_button.set_sensitive(TRUE)
+                self.delete_button.set_sensitive(FALSE)
+                #self.monitor_button.set_sensitive(TRUE)
+            else:
+                self.activate_button.set_sensitive(TRUE)
+                #self.deactivate_button.set_sensitive(FALSE)
+                self.deactivate_button.set_sensitive(TRUE)
+                self.delete_button.set_sensitive(TRUE)
+                #self.monitor_button.set_sensitive(FALSE)
+
+            if self.devsel.Slave:
+                self.activate_button.set_sensitive(FALSE)
+                self.deactivate_button.set_sensitive(FALSE)
+                self.delete_button.set_sensitive(TRUE)
+                #self.monitor_button.set_sensitive(FALSE)
+
 
 
     def on_generic_clist_unselect_row(self, clist, row, column, event):
@@ -1245,31 +1269,43 @@ class mainDialog:
                  self.checkApply()
                  
     def on_hostnameEntry_changed(self, entry):
+        if (self.ignore_widget_changes):
+            return;
         self.active_profile.DNS.Hostname = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
         
     def on_domainEntry_changed(self, entry):
+        if (self.ignore_widget_changes):
+            return;
         self.active_profile.DNS.Domainname = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_primaryDnsEntry_changed(self, entry):
+        if (self.ignore_widget_changes):
+            return;
         self.active_profile.DNS.PrimaryDNS = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_secondaryDnsEntry_changed(self, entry):
+        if (self.ignore_widget_changes):
+            return;
         self.active_profile.DNS.SecondaryDNS = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_tertiaryDnsEntry_changed(self, entry):
+        if (self.ignore_widget_changes):
+            return;
         self.active_profile.DNS.TertiaryDNS = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_searchDnsEntry_changed(self, entry):
+        if (self.ignore_widget_changes):
+            return;
         s = entry.get_text()
         self.active_profile.DNS.SearchList = self.active_profile.\
                                              DNS.SearchList[:0]
@@ -1279,6 +1315,8 @@ class mainDialog:
         self.checkApply()
             
     def on_hostsAddButton_clicked(self, *args):
+        if (self.ignore_widget_changes):
+            return;
         profilelist = getProfileList()
 
         curr_prof = self.getActiveProfile()
@@ -1711,6 +1749,9 @@ class mainDialog:
         
         ipsec = clist.get_row_data(clist.selection[0])
         
+        profilelist = getProfileList()
+        profilelist.commit()
+
         if self.changed():
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
@@ -1738,8 +1779,24 @@ class mainDialog:
         if not ipsec:
             return
 
+        profilelist = getProfileList()
+        profilelist.commit()
+
+        if self.changed():
+            button = generic_yesno_dialog(
+                _("You have made some changes in your configuration.") + "\n"+\
+                _("To deactivate the IPsec connection %s, "
+                  "the changes have to be saved.") % (ipsec.IPsecId) \
+                + "\n" + _("Do you want to continue?"),
+                self.dialog)
+                
+            if button == RESPONSE_YES:
+                if self.save() != 0:
+                    return
+            
+            if button == RESPONSE_NO:
+                return
+
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/10 14:39:06 $"
-__version__ = "$Revision: 1.38 $"

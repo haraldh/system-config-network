@@ -43,6 +43,21 @@ class InterfaceCreator:
         self.saveHardware()
         self.saveProfiles()
 
+    def getNextAlias(self, device):
+        devicelist = getDeviceList()
+        alias = None
+        for dev in devicelist:
+            if not dev.Device == device.Device:
+                continue
+            if dev.Alias:
+                if alias == None:
+                    alias = dev.Alias + 1
+                elif alias <= dev.Alias:
+                    alias = dev.Alias + 1
+            elif alias == None:
+                alias = 1
+        return alias
+
     def saveDevices(self):
         if not self.do_save:
             return
@@ -61,5 +76,5 @@ class InterfaceCreator:
         profilelist = getProfileList()
         profilelist.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.8 $"

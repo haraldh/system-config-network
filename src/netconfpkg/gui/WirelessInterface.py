@@ -233,17 +233,7 @@ class WirelessInterface(InterfaceCreator):
         else:
             self.hwPage = FALSE
             self.device.Device = self.devlist[clist.selection[0]]
-            alias = None
-            for dev in self.devicelist:
-                if not dev.Device == self.device.Device:
-                    continue
-                if dev.Alias:
-                    if not alias:
-                        alias = dev.Alias
-                    elif alias <= dev.Alias:
-                        alias = dev.Alias + 1
-                else: alias = 1
-            self.device.Alias = alias
+            self.device.Alias = self.getNextAlias(self.device)
             self.topdruid.set_page(childs[3])
 
         return TRUE
@@ -337,5 +327,5 @@ class WirelessInterface(InterfaceCreator):
 
 NCDevWireless.setDevWirelessWizard(WirelessInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/29 14:42:57 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.29 $"

@@ -87,7 +87,8 @@ def dhcp_hydrate (xml, device):
     else:
         xml.get_widget("ipProtocolOmenu").set_history(DHCP)
 
-    xml.get_widget('dnsSettingCB').set_active(device.AutoDNS == TRUE)
+    # PEERDNS is true, if unset!!
+    xml.get_widget('dnsSettingCB').set_active(device.AutoDNS != FALSE)
 
     if device.BootProto == "static" or device.BootProto == "none":
         xml.get_widget('ipAutomaticRadio').set_active(FALSE)
@@ -116,7 +117,9 @@ def dhcp_dehydrate (xml, device):
     device.IP = xml.get_widget('ipAddressEntry').get_text()
     device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
     device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
-    device.Hostname = xml.get_widget('hostnameEntry').get_text()
+    hname = xml.get_widget('hostnameEntry').get_text()
+    if hname != None and hname != '':
+        device.Hostname = hname
 
 ###
 ### ROUTES
@@ -385,5 +388,5 @@ if __name__ == '__main__':
     gtk.mainloop ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:55:39 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.32 $"

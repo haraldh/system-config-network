@@ -37,14 +37,14 @@ from rhpl.executil import *
 ModInfo = None
 isdnmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/isdn -name \*.o -printf '%f ' 2>/dev/null" ])
+    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
     isdnmodulelist = string.split(msg)
 except:
     pass
 
 wirelessmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/net/wireless -name \*.o -printf '%f ' 2>/dev/null" ])
+    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
     wirelessmodulelist = string.split(msg)
 except:
     pass
@@ -91,22 +91,54 @@ class MyConfModules(ConfModules):
         del self.vars[varname]
         log.ldel(2, self.filename, varname)
         self.seek(place)
+
+
+    def splitopt(self, opt):
+	eq = find(opt, '=')
+	if eq > 0:
+	    return (opt[:eq], opt[eq+1:])
+	else:
+	    return (opt, None)
+
+    def joinoptlist(self, dict):
+	optstring = ''
+	for key in dict.keys():
+            if dict[key] != None:
+                optstring = optstring + key + '=' + dict[key] + ' '
+            else:
+                optstring = optstring + key + ' '
+                
+	return optstring
+
+
         
 _MyConfModules = None
+_MyConfModules_root = netconfpkg.ROOT
+
 def getMyConfModules(refresh = None):
     global _MyConfModules
-    if _MyConfModules == None or refresh:
+    global _MyConfModules_root
+    
+    if _MyConfModules == None or refresh or \
+           _MyConfModules_root != netconfpkg.ROOT :
         _MyConfModules = MyConfModules()
+        _MyConfModules_root = netconfpkg.ROOT
     return _MyConfModules
 
 _MyWvDial = None
+_MyWvDial_root = netconfpkg.ROOT
+
 def getMyWvDial(create_if_missing = None):
     global _MyWvDial
-    if _MyWvDial == None:
+    global _MyWvDial_root
+    
+    if _MyWvDial == None or _MyWvDial_root != netconfpkg.ROOT:
         _MyWvDial = ConfSMB(netconfpkg.ROOT + WVDIALCONF,
                            create_if_missing = create_if_missing)
+        _MyWvDial_root = netconfpkg.ROOT
+
     return _MyWvDial
-        
+
 class ConfHWConf(Conf):    
 
     def __init__(self):
@@ -732,14 +764,20 @@ class HardwareList(HardwareList_base):
         if wvdial:
             wvdial.write()
 
-HWList = None
+
+__HWList = None
+__HWList_root = netconfpkg.ROOT
 
 def getHardwareList(refresh = None):
-    global HWList
-    if HWList == None or refresh:
-        HWList = HardwareList()
-        HWList.load()
-    return HWList
+    global __HWList
+    global __HWList_root
+    
+    if __HWList == None or refresh or \
+           __HWList_root != netconfpkg.ROOT:
+        __HWList = HardwareList()
+        __HWList.load()
+        __HWList_root = netconfpkg.ROOT
+    return __HWList
 
 def getNextDev(base):
     hwlist = getHardwareList()
@@ -784,5 +822,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:12:29 $"
-__version__ = "$Revision: 1.71 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.72 $"

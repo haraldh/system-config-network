@@ -614,6 +614,9 @@ class ModemDialup(Dialup):
         if conf[sectname].has_key('Init'): del conf[sectname]['Init']
         if not conf[sectname].has_key('Init1'):
             conf[sectname]['Init1'] = 'ATZ'
+        #
+        # FIXME
+        #
         if not conf[sectname].has_key('Init2'):
             conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0'
         if self.InitString:
@@ -691,5 +694,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 14:32:59 $"
-__version__ = "$Revision: 1.66 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.67 $"

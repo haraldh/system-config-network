@@ -18,9 +18,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import *
 from netconfpkg.NC_functions import NETCONFDIR
 from netconfpkg import *
-from netconfpkg import *
-from netconfpkg import *
-from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from rhpl.executil import *
 import gtk
@@ -50,7 +47,7 @@ class CipeInterface(InterfaceCreator):
     def init_gui(self):
         if self.xml:
             return
-       
+        
         if request_rpms(["cipe"]):
             return 
  
@@ -332,5 +329,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/29 14:42:57 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.30 $"

@@ -51,6 +51,8 @@ class editIPsecDruid:
              r"^[a-z|A-Z|0-9\_:]+$"),
             "on_ipsecDruidPageStart_next" :
             self.on_ipsecDruidPageStart_next,
+            "on_ipsecDruidNicknamePage_next" :
+            self.on_ipsecDruidNicknamePage_next,
             "on_ipsecDruidConnectionTypePage_prepare" :
             self.on_ipsecDruidConnectionTypePage_prepare,
             "on_ipsecDruidConnectionTypePage_next" :
@@ -61,10 +63,16 @@ class editIPsecDruid:
             self.on_ipsecDruidEncryptionModePage_next,
             "on_ipsecDruidLocalNetworkPage_prepare" :
             self.on_ipsecDruidLocalNetworkPage_prepare,
+            "on_ipsecDruidLocalNetworkPage_next" :
+            self.on_ipsecDruidLocalNetworkPage_next,
             "on_ipsecDruidRemoteNetworkPage_prepare" :
             self.on_ipsecDruidRemoteNetworkPage_prepare,
+            "on_ipsecDruidRemoteNetworkPage_next" :
+            self.on_ipsecDruidRemoteNetworkPage_next,
             "on_ipsecDruidKeysPage_prepare" :
             self.on_ipsecDruidKeysPage_prepare,
+            "on_ipsecDruidKeysPage_next" :
+            self.on_ipsecDruidKeysPage_next,
             "on_ipsecDruidFinishPage_prepare" :
             self.on_ipsecDruidFinishPage_prepare,
             "on_ipsecDruidFinishPage_finish" :
@@ -73,10 +81,11 @@ class editIPsecDruid:
             self.on_generateAHKeyButton_clicked,
             "on_generateESPKeyButton_clicked" :
             self.on_generateESPKeyButton_clicked,
-            "on_ipsecDruid_cancel" : self.on_ipsecDruid_cancel,
+            "on_ipsecDruid_cancel" : self.on_ipsecDruid_cancel,            
             })
         
         self.druid = self.xml.get_widget("Druid")
+        self.druidwidget = self.xml.get_widget("ipsecDruid")
         self.canceled = FALSE
         self.druid.show_all()
         self.entries = {
@@ -116,7 +125,13 @@ class editIPsecDruid:
 
     def on_ipsecDruidPageStart_next(self, druid_page, druid):
         return FALSE
-    
+
+    def on_ipsecDruidNicknamePage_next(self, druid_page, druid):
+        if not self.xml.get_widget("ipsecidEntry").get_text():
+            return TRUE
+        else:
+            return FALSE
+        
     def on_ipsecDruidConnectionTypePage_prepare(self, druid_page, druid):
         if self.ipsec.ConnectionType == "Host2Host":
             self.xml.get_widget("hosttohostEncryptionRadio").set_active(TRUE)
@@ -166,16 +181,48 @@ class editIPsecDruid:
             self.ipsec.EncryptionMode = "auto"
             for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton" ]:
                 self.xml.get_widget(widget).hide()
+
         return FALSE
                         
     def on_ipsecDruidLocalNetworkPage_prepare(self, druid_page, druid):
         return FALSE
     
+    def on_ipsecDruidLocalNetworkPage_next(self, druid_page, druid):
+        for widget in [ "localNetworkEntry", "localSubnetEntry",
+                        "localGatewayEntry" ]:
+            if not self.xml.get_widget(widget).get_text():
+                return TRUE
+
+        return FALSE
+    
     def on_ipsecDruidRemoteNetworkPage_prepare(self, druid_page, druid):
+        return FALSE
+    
+    def on_ipsecDruidRemoteNetworkPage_next(self, druid_page, druid):
+        wlist = [ "remoteIPEntry" ]
+        if self.ipsec.ConnectionType == "Net2Net":
+            wlist.extend([ "remoteNetworkEntry",
+                           "remoteSubnetEntry",
+                           "remoteGatewayEntry"])
+        for widget in wlist:
+            if not self.xml.get_widget(widget).get_text():
+                return TRUE
+
         return FALSE
     
     def on_ipsecDruidKeysPage_prepare(self, druid_page, druid):
         return FALSE
+
+    def on_ipsecDruidKeysPage_next(self, druid_page, druid):
+        wlist = [ "AHKeyEntry" ]
+        if self.ipsec.EncryptionMode == "manual":
+            wlist.append("ESPKeyEntry")
+
+        for widget in wlist:
+            if not self.xml.get_widget(widget).get_text():
+                return TRUE
+
+        return FALSE    
     
     def on_ipsecDruidFinishPage_prepare(self, druid_page, druid):
         for key, val in self.entries.items():
@@ -231,17 +278,21 @@ class editIPsecDruid:
 
     def on_generateAHKeyButton_clicked(self, *args):
         key = GUI_functions.gen_hexkey()
+        if len(key) > 20:
+            key = key[:20]
         widget = self.xml.get_widget("AHKeyEntry")
         if key:
             widget.set_text(key)
         
     def on_generateESPKeyButton_clicked(self, *args):
         key = GUI_functions.gen_hexkey()
+        if len(key) > 24:
+            key = key[:24]
         
         widget = self.xml.get_widget("ESPKeyEntry")
         if key:
             widget.set_text(key)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.5 $"
+
+

@@ -59,6 +59,13 @@ class wirelessConfigDialog(deviceConfigDialog):
         vbox.pack_start (frame)
         sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
 
+        window = self.sharedtcpip_xml.get_widget ('routeWindow')
+        frame = self.sharedtcpip_xml.get_widget ('routeFrame')
+        vbox = self.xml.get_widget ('routeVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device, self.dialog)
+
         window = self.sharedtcpip_xml.get_widget ('hardwareWindow')
         frame = self.sharedtcpip_xml.get_widget ('hardwareFrame')
         vbox = self.xml.get_widget ('hardwareVbox')
@@ -71,6 +78,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.hydrate(self)
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
         
         wl = self.device.Wireless
@@ -100,6 +108,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.dehydrate(self)
 
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
 
         #hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
@@ -135,5 +144,5 @@ class wirelessConfigDialog(deviceConfigDialog):
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.24 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.25 $"

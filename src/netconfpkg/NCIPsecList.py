@@ -55,18 +55,22 @@ class IPsecList(IPsecList_base):
         from NCIPsec import ConfIPsec
         for ipsec in self:
             ipsec.save()
+
+        dirname = netconfpkg.ROOT + SYSCONFDEVICEDIR
         #
         # Remove old config files
         #
         try:
-            dir = os.listdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
+            dir = os.listdir(dirname)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
-                  + netconfpkg.ROOT + SYSCONFDEVICEDIR + ': ' + str(msg)
+                  + dirname + ': ' + str(msg)
         for entry in dir:
+            if not testFilename(dirname + entry):
+                continue
+
             if (len(entry) <= 6) or \
-               entry[:6] != 'ifcfg-' or \
-               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
+                   entry[:6] != 'ifcfg-':
                 continue
             
             ipsecid = entry[6:]
@@ -82,21 +86,24 @@ class IPsecList(IPsecList_base):
                 if type != IPSEC:
                     continue
 
-                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+ipsecid)
+                unlink(dirname + entry)
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                       '/ifcfg-' + ipsecid)
 
         #
         # Remove old key files
         #
         try:
-            dir = os.listdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
+            dir = os.listdir(dirname)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
-                  + netconfpkg.ROOT + SYSCONFDEVICEDIR + ': ' + str(msg)
+                  + dirname + ': ' + str(msg)
         for entry in dir:
-            if (len(entry) <= 6) or \
-               entry[:5] != 'keys-' or \
-               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
+            if not testFilename(dirname + entry):
+                continue
+
+            if (len(entry) <= 5) or \
+               entry[:5] != 'keys-':
                 continue
             
             ipsecid = entry[5:]
@@ -113,7 +120,7 @@ class IPsecList(IPsecList_base):
                 if type:
                     continue
                 
-                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
+                unlink(dirname + entry)
                 unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
 
     def __repr__(self):

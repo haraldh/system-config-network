@@ -23,8 +23,5 @@ EXTRA_DIST = $(PYTHON_FILES)
 netconfpkgdir = $(pkgdatadir)/netconfpkg/plugins
 netconfpkg_PYTHON = $(PYTHON_FILES) 
 
-clean:
-	rm -f *.pyo *.pyc
-	rm -f *.so
-	rm -f *~
+CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
 

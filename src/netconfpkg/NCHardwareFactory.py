@@ -25,8 +25,7 @@ def getHardwareFactory():
 
     return _hwFac
 
-from rhpl.log import log
-#from NC_functions import *
+from NC_functions import log
 from netconfpkg.NCHardware import Hardware
 import NCDevice
 
@@ -63,5 +62,5 @@ class HardwareFactory(dict):
 
 from netconfpkg.plugins import *
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2004/06/29 14:13:51 $"
+__version__ = "$Revision: 1.9 $"
