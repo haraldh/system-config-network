@@ -1,6 +1,7 @@
 import os
 import string
 from HardwareList import *
+from NCisdnhardware import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")

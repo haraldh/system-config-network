@@ -76,10 +76,13 @@ card = {
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "10506692", "", "hisax" ]
     }
 
-
 class ISDNResource:
     def __init__(self, name):
         self.name = name
+
+    def get_name(self):
+        if card.has_key(self.name):
+            return self.name
 
     def get_type(self):
         if card.has_key(self.name):
@@ -138,10 +141,27 @@ class ISDNResource:
             return card[self.name][8]
 
 
+def ISDNHardwareConf(fname = "/etc/sysconfig/isdncardo"):
+    if not os.path.exists(fname):
+        return None
+
+    conf = open(fname, "r")
+    cardname = conf.readline()
+
+    while cardname:
+        cardname = string.strip(cardname)
+        if cardname[:4] == "NAME":
+            break
+    conf.close()
+    cardname = string.split(cardname, "=")[1]
+    cardname = string.split(cardname, "\"")[1]
+    cardname = string.strip(cardname)
+    return ISDNResource(cardname)
+
 if __name__ == "__main__":
     name = "Sedlbauer Speed PCI"
     isdncard = ISDNResource(name);
-    print "Name: ", name
+    print "Name: ", isdncard.get_name()
     print "Type: ", isdncard.get_type()
     print "Irq: ", isdncard.get_irq()
     print "Io: ", isdncard.get_io()
@@ -152,3 +172,15 @@ if __name__ == "__main__":
     print "Firmware: ", isdncard.get_firmware()
     print "Modul: ", isdncard.get_modul()
 
+    conf = ISDNHardwareConf()
+    if conf:
+        print "Name: ", conf.get_name()
+        print "Type: ", conf.get_type()
+        print "Irq: ", conf.get_irq()
+        print "Io: ", conf.get_io()
+        print "Io1: ", conf.get_io1()
+        print "Io2: ", conf.get_io2()
+        print "Mem: ", conf.get_mem()
+        print "Pci id: ", conf.get_pci_id()
+        print "Firmware: ", conf.get_firmware()
+        print "Modul: ", conf.get_modul()

@@ -90,6 +90,7 @@ class isdnHardwareDialog:
         self.dialog.destroy()
         
     def on_okButton_clicked(self, button):
+        
         self.dialog.destroy()
 
     def on_cancelButton_clicked(self, button):
