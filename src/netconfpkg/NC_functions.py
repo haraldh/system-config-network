@@ -135,6 +135,40 @@ def generic_error_dialog (message, parent_dialog, dialog_type="warning",
             broken_widget.select_region (0, -1)
     dialog.run ()
 
+def generic_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
+			  widget=None, page=0, broken_widget=None):
+    import gnome
+    import gnome.ui
+    dialog = gnome.ui.GnomeMessageBox (message, dialog_type, _("Yes"), _("No"), _("Cancel"))
+    dialog.set_parent (parent_dialog)
+    if widget != None:
+        if isinstance (widget, gtk.GtkCList):
+            widget.select_row (page, 0)
+        elif isinstance (widget, gtk.GtkNotebook):
+            widget.set_page (page)
+    if broken_widget != None:
+        broken_widget.grab_focus ()
+        if isinstance (broken_widget, gtk.GtkEntry):
+            broken_widget.select_region (0, -1)
+    return dialog.run ()
+
+def generic_yesno_dialog (message, parent_dialog, dialog_type="question",
+			  widget=None, page=0, broken_widget=None):
+    import gnome
+    import gnome.ui
+    dialog = gnome.ui.GnomeMessageBox (message, dialog_type, _("Yes"), _("No"))
+    dialog.set_parent (parent_dialog)
+    if widget != None:
+        if isinstance (widget, gtk.GtkCList):
+            widget.select_row (page, 0)
+        elif isinstance (widget, gtk.GtkNotebook):
+            widget.set_page (page)
+    if broken_widget != None:
+        broken_widget.grab_focus ()
+        if isinstance (broken_widget, gtk.GtkEntry):
+            broken_widget.select_region (0, -1)
+    return dialog.run ()
+
 def getDeviceType(devname):
     type = 'Unknown'
     if not devname or devname == "":
