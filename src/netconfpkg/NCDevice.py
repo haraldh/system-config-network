@@ -114,7 +114,7 @@ class Device(Device_base):
             else: conf[confkey] = ""
 
         if self.Alias:
-            conf['DEVICE'] = self.Device + ':' + self.Alias
+            conf['DEVICE'] = str(self.Device) + ':' + str(self.Alias)
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
