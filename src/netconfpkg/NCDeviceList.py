@@ -23,6 +23,7 @@ import os.path
 from NC_functions import *
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
+from netconfpkg import ipcalc
 from rhpl import ConfPAP
 from rhpl import ConfSMB
 from rhpl import Conf
@@ -132,8 +133,12 @@ class DeviceList(DeviceList_base):
             #
             for dev in self:                        
                 if fp and dev.StaticRoutes and len(dev.StaticRoutes) > 0:
+                    fp2 = os.open('/etc/sysconfig/network-scripts/route-'+dev.Device, os.O_WRONLY| os.O_CREAT, 0600)
                     for route in dev.StaticRoutes:
                         os.write(fp, dev.Device+" net "+route.Address+" netmask "+route.Netmask+" gw "+route.Gateway+"\n")
+                        ipc = ipcalc.IPCalc(dev.IP, netmask=dev.Netmask)
+                        os.write(fp2, ipc.network()+'/'+ipc.prefix()+" via "+route.Gateway+"\n")
+                    os.close(fp2)
 
         except EnvironmentError, errstr:
             generic_error_dialog (_("Error opening/writing %s: %s!") % ('/etc/sysconfig/static-routes', str(errstr)))
