@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ko\n"
-"POT-Creation-Date: 2002-08-31 22:10-0400\n"
+"POT-Creation-Date: 2002-11-13 16:07+0100\n"
 "PO-Revision-Date: 2002-08-23 09:17+1000\n"
 "Last-Translator: Michelle Kim <mkim@redhat.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -33,7 +33,8 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:61
+#. Just to be safe...
+#: src/netconf.py:64
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -44,73 +45,88 @@ msgstr ""
 "사용법: redhat-config-network-cmd -p --profile <프로파일>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:67
+#: src/netconf.py:70
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Root 권한으로 %s (을)를 재시작 하시기 바랍니다!"
 
-#: src/netconf.py:118
+#: src/netconf.py:121
 msgid "Common"
 msgstr "일반"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
+#: src/netconf.py:325
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+
 #. change the default profile to a more understandable name
-#: src/netconf.py:488 src/netconf.py:501
+#: src/netconf.py:493 src/netconf.py:506
 msgid "Do you want to save your changes?"
 msgstr "변경하신 내용을 저장하시겠습니까?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:571
+#: src/netconf.py:576
 msgid "The Loopback device can not be edited!"
 msgstr "루프백 장치를 편집할 수 없습니다!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:629 src/netconfpkg/gui/GenericInterface.py:133
+#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
 msgid "This device can not be edited with this tool!"
 msgstr "이 장치는 이 설정 프로그램으로 편집할 수 없습니다!"
 
-#: src/netconf.py:651
+#: src/netconf.py:656
 msgid "The Loopback device can not be removed!"
 msgstr "루프백 장치는 삭제하실 수 없습니다!"
 
-#: src/netconf.py:654
+#: src/netconf.py:659
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "정말로 \"%s\" 장치를 삭제하시겠습니까?"
 
-#: src/netconf.py:682
+#: src/netconf.py:687
 msgid "You have made some changes in your configuration."
 msgstr "여러분은 일부 설정을 변경 하셨습니다."
 
-#: src/netconf.py:683
+#: src/netconf.py:688
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
 
-#: src/netconf.py:685
+#: src/netconf.py:690
 msgid "Do you want to continue?"
 msgstr "계속 하시겠습니까?"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:697 src/neat-control.py:129
+#: src/netconf.py:701 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "네트워크 장치 활성화..."
 
-#: src/netconf.py:699 src/neat-control.py:131
+#: src/netconf.py:703 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "네트웍 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
+
+#: src/netconf.py:712
+#, fuzzy, python-format
+msgid ""
+"Cannot activate network device %s\n"
+"%s"
+msgstr "네트워크 장치 %s를 활성화할 수 없습니다"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:739 src/neat-control.py:170
+#: src/netconf.py:735 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "다시 작성해야 합니다!"
 
@@ -127,46 +143,46 @@ msgstr "다시 작성해야 합니다!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:902
+#: src/netconf.py:898
 msgid "The Loopback device can not be disabled!"
 msgstr "루프백 장치를 비활성화할 수 없습니다!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1196 src/netconf.py:1273
+#: src/netconf.py:1192 src/netconf.py:1269
 msgid "The name may only contain letters and digits!"
 msgstr "이름에는 글자와 숫자만 사용가능 합니다!"
 
-#: src/netconf.py:1200 src/netconf.py:1277
+#: src/netconf.py:1196 src/netconf.py:1273
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "프로파일의 이름을\"%s\"으로 하실 수 없습니다!"
 
-#: src/netconf.py:1205 src/netconf.py:1282
+#: src/netconf.py:1201 src/netconf.py:1278
 msgid "The profile name already exists!"
 msgstr "프로파일 이름이 이미 존재합니다!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1254
+#: src/netconf.py:1250
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"기본\" 프로파일을 다른이름으로 바꾸실 수 없습니다!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1303
+#: src/netconf.py:1299
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "\"default\" 프로파일을 삭제할 수 없습니다!"
 
-#: src/netconf.py:1306
+#: src/netconf.py:1302
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "정말로 \"%s\" 프로파일을 삭제하시겠습니까?"
 
 #. clist.clear()
-#: src/netconf.py:1398
+#: src/netconf.py:1394
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -175,7 +191,7 @@ msgstr ""
 "이러한 유형은 편집하실 수 없습니다."
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1440
+#: src/netconf.py:1436
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "정말로 \"%s\" (을)를 삭제하시겠습니까?"
@@ -241,10 +257,10 @@ msgstr ""
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:198
+#: src/netconfpkg/gui/EthernetInterface.py:203
 #: src/netconfpkg/gui/CipeInterface.py:132
-#: src/netconfpkg/gui/WirelessInterface.py:261
-#: src/netconfpkg/gui/TokenRingInterface.py:194
+#: src/netconfpkg/gui/WirelessInterface.py:267
+#: src/netconfpkg/gui/TokenRingInterface.py:200
 msgid "You have selected the following information:"
 msgstr "다음과 같은 정보를 선택하셨습니다:"
 
@@ -305,6 +321,21 @@ msgstr "전화 번호:"
 msgid "Unknown"
 msgstr "알 수 없음"
 
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
 #. self.set_size_request(-1, 1)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -476,7 +507,7 @@ msgstr "낮음"
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Medium"
 msgstr "중간"
 
@@ -528,7 +559,9 @@ msgstr "매우 높음"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/cipeconfig.py:141
+#: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:220
 msgid "None - Server Mode"
 msgstr "없음 - 서버 모드"
 
@@ -537,46 +570,46 @@ msgid " (dynamic)"
 msgstr " (동적)"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:176
 #: src/netconfpkg/gui/CipeInterface.py:196
-#: src/netconfpkg/gui/CipeInterface.py:249
+#: src/netconfpkg/gui/CipeInterface.py:256
 msgid "Server Mode"
 msgstr "서버 모드"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
-#: src/netconfpkg/gui/CipeInterface.py:280
-#: src/netconfpkg/gui/CipeInterface.py:285
+#: src/netconfpkg/gui/cipeconfig.py:208 src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:287
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "(own choice)"
 msgstr "(스스로 선택)"
 
-#: src/netconfpkg/gui/cipeconfig.py:213
-#: src/netconfpkg/gui/CipeInterface.py:291
+#: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "IP Address of Tunnel Device: "
 msgstr "터널 장치의 IP 주소: "
 
-#: src/netconfpkg/gui/cipeconfig.py:214
-#: src/netconfpkg/gui/CipeInterface.py:292
+#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Port: "
 msgstr "로컬 포트: "
 
-#: src/netconfpkg/gui/cipeconfig.py:215
-#: src/netconfpkg/gui/CipeInterface.py:293
+#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Remote Peer Address: "
 msgstr "원격 Peer 주소:"
 
-#: src/netconfpkg/gui/cipeconfig.py:219
-#: src/netconfpkg/gui/CipeInterface.py:297
+#: src/netconfpkg/gui/cipeconfig.py:225
+#: src/netconfpkg/gui/CipeInterface.py:304
 msgid "Remote Virtual Address: "
 msgstr "원격 가상 주소:"
 
-#: src/netconfpkg/gui/cipeconfig.py:220
-#: src/netconfpkg/gui/CipeInterface.py:298
+#: src/netconfpkg/gui/cipeconfig.py:226
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "Local Virtual Address: "
 msgstr "로컬 가상 주소:"
 
-#: src/netconfpkg/gui/cipeconfig.py:221
-#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:227
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Secret Key: "
 msgstr "비밀 키:"
 
@@ -848,39 +881,39 @@ msgstr "새로운 이더넷 연결 생성"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:179
+#: src/netconfpkg/gui/EthernetInterface.py:184
 msgid "Other Ethernet Card"
 msgstr "다른 이더넷 카드"
 
-#: src/netconfpkg/gui/EthernetInterface.py:199
+#: src/netconfpkg/gui/EthernetInterface.py:204
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/WirelessInterface.py:262
-#: src/netconfpkg/gui/TokenRingInterface.py:195
+#: src/netconfpkg/gui/WirelessInterface.py:268
+#: src/netconfpkg/gui/TokenRingInterface.py:201
 msgid "Device:"
 msgstr "장치:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:210
-#: src/netconfpkg/gui/WirelessInterface.py:273
-#: src/netconfpkg/gui/TokenRingInterface.py:206
+#: src/netconfpkg/gui/EthernetInterface.py:215
+#: src/netconfpkg/gui/WirelessInterface.py:279
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "주소:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/WirelessInterface.py:274
-#: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/EthernetInterface.py:216
+#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Subnet Mask:"
 msgstr "서브넷 마스크:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:212
-#: src/netconfpkg/gui/WirelessInterface.py:275
-#: src/netconfpkg/gui/TokenRingInterface.py:208
+#: src/netconfpkg/gui/EthernetInterface.py:217
+#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/TokenRingInterface.py:214
 msgid "Default Gateway Address:"
 msgstr "기본 게이트웨이 주소:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/WirelessInterface.py:277
-#: src/netconfpkg/gui/TokenRingInterface.py:210
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:283
+#: src/netconfpkg/gui/TokenRingInterface.py:216
 msgid "Automatically obtain IP address settings with:"
 msgstr "IP 주소 설정을 자동으로 얻기:"
 
@@ -968,8 +1001,6 @@ msgid "Remote Peer Address:"
 msgstr "원격 Peer 주소:"
 
 #: src/netconfpkg/gui/CipeInterface.py:140
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Auto"
 msgstr "자동"
 
@@ -986,7 +1017,7 @@ msgid "Local Virtual Address:"
 msgstr "로컬 가상 주소:"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:309
+#: src/netconfpkg/gui/CipeInterface.py:316
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
@@ -1018,27 +1049,27 @@ msgid "Create a new wireless connection."
 msgstr "새로운 무선 연결 생성"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/WirelessInterface.py:241
+#: src/netconfpkg/gui/WirelessInterface.py:247
 msgid "Other Wireless Card"
 msgstr "다른 무선 카드"
 
-#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/WirelessInterface.py:286
 msgid "Mode: "
 msgstr "모드:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/WirelessInterface.py:287
 msgid "ESSID (Network ID):"
 msgstr "ESSID (네트워크 ID):"
 
-#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Channel: "
 msgstr "채널:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "Transmit Rate: "
 msgstr "송신률:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:289
+#: src/netconfpkg/gui/WirelessInterface.py:295
 msgid "Key: "
 msgstr "키:"
 
@@ -1066,7 +1097,7 @@ msgid "Create a new Token Ring connection."
 msgstr "새로운 토큰 링 연결 생성"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/TokenRingInterface.py:176
+#: src/netconfpkg/gui/TokenRingInterface.py:182
 msgid "Other Tokenring Card"
 msgstr "다른 토큰 링 카드"
 
@@ -1105,6 +1136,19 @@ msgstr "다른 토큰 링 카드"
 #. not a nameserver, so all items on one line...
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
+#: src/netconfpkg/NCCipe.py:155
+msgid ""
+"Directory /etc/cipe is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+
+#: src/netconfpkg/NCCipe.py:159
+msgid ""
+"Could not create\n"
+"directory /etc/cipe!"
+msgstr ""
+
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -1223,17 +1267,6 @@ msgstr "%s 장치를 로딩하는데 에러가 났습니다!\n"
 #.
 #. write the pap and chap-secrets, if any
 #.
-#.
-#. Static routes
-#.
-#.
-#. traverse all devices in the list
-#.
-#: src/netconfpkg/NCDeviceList.py:149
-#, python-format
-msgid "Error opening/writing %s: %s!"
-msgstr "%s를 열고/쓰는데 에러가 났습니다: %s!"
-
 #.
 #. Remove old config files
 #.
@@ -1657,14 +1690,15 @@ msgid "Software (XON/XOFF)"
 msgstr "소프트웨어 (XON/XOFF)"
 
 #. print dev+" has unknown device type, skipping it."
+#. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:347
+#: src/netconfpkg/NC_functions.py:374
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr "%s를 제거하는데 에러가 났습니다: %s!"
 
-#: src/netconfpkg/NC_functions.py:356 src/netconfpkg/NC_functions.py:365
+#: src/netconfpkg/NC_functions.py:383 src/netconfpkg/NC_functions.py:392
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -1675,7 +1709,7 @@ msgstr ""
 "%s 로\n"
 "연결하는데 에러가 났습니다: %s!"
 
-#: src/netconfpkg/NC_functions.py:374
+#: src/netconfpkg/NC_functions.py:401
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -1771,11 +1805,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:49
+#: src/netconfpkg/Control.py:50
 msgid "Active"
 msgstr "활성화"
 
-#: src/netconfpkg/Control.py:50
+#: src/netconfpkg/Control.py:51
 msgid "Inactive"
 msgstr "비활성화"
 
@@ -1927,6 +1961,7 @@ msgstr "네트워크"
 #: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:1
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 msgid "*"
 msgstr "*"
@@ -1979,7 +2014,7 @@ msgstr "하드웨어"
 msgid "Hosts"
 msgstr "호스트"
 
-#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "IP"
 msgstr "IP"
 
@@ -2049,22 +2084,22 @@ msgstr "추가(_A)"
 
 #: src/maindialog.glade.h:31 src/netconfpkg/gui/ctcconfig.glade.h:10
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "추가...(_A)"
 
-#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Copy"
 msgstr "복사(_C)"
 
 #: src/maindialog.glade.h:33 src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Delete"
 msgstr "삭제(_D)"
 
 #: src/maindialog.glade.h:34 src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Edit..."
 msgstr "편집...(_E)"
 
@@ -2326,7 +2361,7 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "eth0"
 msgstr "eth0"
 
@@ -2334,7 +2369,7 @@ msgstr "eth0"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth1"
 msgstr "eth1"
 
@@ -2342,7 +2377,7 @@ msgstr "eth1"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth2"
 msgstr "eth2"
 
@@ -2350,7 +2385,7 @@ msgstr "eth2"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth3"
 msgstr "eth3"
 
@@ -2358,7 +2393,7 @@ msgstr "eth3"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth4"
 msgstr "eth4"
 
@@ -2590,7 +2625,7 @@ msgstr "_MEM:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth5"
 msgstr "eth5"
 
@@ -2606,7 +2641,7 @@ msgstr "eth7"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Configure Network Settings"
 msgstr "네트워크 셋팅 설정"
 
@@ -2621,13 +2656,13 @@ msgstr "이더넷 카드"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "MTU:"
 msgstr "MTU:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/ctcconfig.glade.h:6
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
@@ -2894,58 +2929,58 @@ msgstr "2M"
 msgid "5.5M"
 msgstr "5.5M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
 msgid "Configure Wireless Connection"
 msgstr "무선 연결 설정"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Create Wireless Device"
 msgstr "무선 장치 생성"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 msgid "Network Name (SSID):"
 msgstr "네트웍명 (SSID):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid "Select Wireless Device"
 msgstr "무선 장치 선택"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Select the Wireless card you want to configure:"
 msgstr "설정하기 원하는 무선 카드를 선택해 주십시오:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "Wireless card"
 msgstr "무선 카드"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 msgid "_Auto"
 msgstr "자동(_A)"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 msgid "_Channel:"
 msgstr "채널(_C):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Key:"
 msgstr "키(_K):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Mode:"
 msgstr "모드(_M):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Specified:"
 msgstr "지정(_S):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Transmit Rate:"
 msgstr "송신률(_T):"
 
@@ -2973,7 +3008,7 @@ msgstr "CIPE 설정"
 #: src/netconfpkg/gui/dslconfig.glade.h:13
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 msgid "General"
 msgstr "일반"
 
@@ -2995,7 +3030,7 @@ msgstr "터널 설정"
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "_Activate device when computer starts"
 msgstr "컴퓨터가 시작하면 장치를 활성화시킴(_A)"
 
@@ -3005,7 +3040,7 @@ msgstr "컴퓨터가 시작하면 장치를 활성화시킴(_A)"
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Nickname: "
 msgstr "별명(_N): "
 
@@ -3014,7 +3049,7 @@ msgid "CTC Configuration"
 msgstr "CTC 설정"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3026,7 +3061,7 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "Hardware Device"
 msgstr "하드웨어 장치"
 
@@ -3040,7 +3075,7 @@ msgstr "프로토콜"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Hardware Device:"
 msgstr "하드웨어 장치(_H):"
 
@@ -3305,7 +3340,7 @@ msgid "Add / Edit IP Address"
 msgstr "IP 주소 추가 / 편집하기"
 
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Address:"
 msgstr "주소(_A):"
 
@@ -3314,7 +3349,7 @@ msgid "_Gateway:"
 msgstr "게이트웨이(_G):"
 
 #: src/netconfpkg/gui/editadress.glade.h:5
-#: src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "_Subnet Mask:"
 msgstr "서브넷 마스크(_S):"
 
@@ -3506,39 +3541,40 @@ msgstr "redhat network control - 등록 정보"
 msgid "%P %%"
 msgstr "%P %%"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "Automatically obtain _DNS information from provider"
 msgstr "제공자로부터 DNS 정보를 자동으로 얻기(_D)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "IP 주소 설정을 자동으로 얻기:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Bind to _MAC Address:"
 msgstr "MAC 주소에 바인드(_M):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "DHCP Settings"
 msgstr "DHCP 설정"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "Default _Gateway Address:"
 msgstr "기본 게이트웨이 주소(_G):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:6
+#: src/netconfpkg/gui/sharedtcpip.glade.h:7
 msgid "Destination Network"
 msgstr "목적 네트워크"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:7
-msgid "Device _Aliases:"
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#, fuzzy
+msgid "Device _Alias Number:"
 msgstr "장치 별칭(_A):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
 msgstr "어려움 수준:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:9
+#: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
@@ -3546,139 +3582,139 @@ msgstr ""
 "개별 접속은 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 있습"
 "니다."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
 msgstr "쉬움"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:11
+#: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Enter your device bound traffic rules here."
 msgstr "장치 관련 트래픽 규정을 이곳에 입력해 주십시오."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:12
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "Gateway"
 msgstr "게이트웨이"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
 msgid "Hardware Device:"
 msgstr "하드웨어 장치:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
 msgstr "수동 IP 주소 설정"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Mask"
 msgstr "마스크"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Maximum In"
 msgstr "최대 In"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Maximum Out"
 msgstr "최대 Out"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Minimum In"
 msgstr "최소 In"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
 msgid "Minimum Out"
 msgstr "최소 Out"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Please select the level of security for this device."
 msgstr "이 장치에 대한 보안 수준을 선택해 주십시오."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Port"
 msgstr "포트"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Prefix (Netmask)"
 msgstr "접두 (넷마스크)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Professional"
 msgstr "전문의"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Security Level"
 msgstr "보안 수준"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Select the services you want to provide through this device"
 msgstr "이 장치를 통해 제공하고자 하시는 서비스를 선택해 주십시오"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Service"
 msgstr "서비스"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Service Description"
 msgstr "서비스 설명서"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Services"
 msgstr "서비스"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "정적 네트워크 라우트"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Statically set IP addresses:"
 msgstr "정적으로 설정된 IP 주소들:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "특정 이터넷 카드에 연결"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "이더넷 장치 별칭 사용"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Hardware Address"
 msgstr "하드웨어 주소(_H)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Hardware:"
 msgstr "하드웨어(_H):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_High Security (Internet)"
 msgstr "상급 보안 (인터넷)(_H)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Hostname (optional):"
 msgstr "호스트명 (선택사항)(_H):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Low Security"
 msgstr "저급 보안(_L)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Probe"
 msgstr "추적(_P)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Probe for Address..."
 msgstr "주소를 추적...(_P)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "_Secure Device (LAN)"
 msgstr "안전 장치 (LAN)(_S)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:49
+#: src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "bootp"
 msgstr "bootp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:50
+#: src/netconfpkg/gui/sharedtcpip.glade.h:51
 msgid "dhcp"
 msgstr "dhcp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:51
+#: src/netconfpkg/gui/sharedtcpip.glade.h:52
 msgid "dialup"
 msgstr "전화걸기"
 
@@ -3720,11 +3756,11 @@ msgstr "주소를 추적(_P)"
 msgid "_Use Hardware Address"
 msgstr "하드웨어 주소 사용(_U)"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 msgid "Wireless Device Configuration"
 msgstr "무선 장치 설정"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "Wireless Settings"
 msgstr "무선 설정"
 
@@ -3739,6 +3775,9 @@ msgstr "인터넷 연결 설정"
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "인터넷 설정 마법사"
+
+#~ msgid "Error opening/writing %s: %s!"
+#~ msgstr "%s를 열고/쓰는데 에러가 났습니다: %s!"
 
 #~ msgid "_ESSID (Network ID):"
 #~ msgstr "ESSID (네트워크 ID)(_E):"

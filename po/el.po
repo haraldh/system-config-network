@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network 1.0\n"
-"POT-Creation-Date: 2002-08-31 22:10-0400\n"
+"POT-Creation-Date: 2002-11-13 16:07+0100\n"
 "PO-Revision-Date: 2002-11-03 19:21+0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.forthnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -39,7 +39,8 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:61
+#. Just to be safe...
+#: src/netconf.py:64
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -47,77 +48,89 @@ msgid ""
 msgstr ""
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:67
+#: src/netconf.py:70
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
 
-#: src/netconf.py:118
+#: src/netconf.py:121
 msgid "Common"
 msgstr "Κοινό"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
+#: src/netconf.py:325
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+
 #. change the default profile to a more understandable name
-#: src/netconf.py:488
-#: src/netconf.py:501
+#: src/netconf.py:493 src/netconf.py:506
 msgid "Do you want to save your changes?"
 msgstr "Θέλετε να αποθηκευθούν οι αλλαγές;"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:571
+#: src/netconf.py:576
 msgid "The Loopback device can not be edited!"
 msgstr ""
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:629
-#: src/netconfpkg/gui/GenericInterface.py:133
+#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
 msgid "This device can not be edited with this tool!"
 msgstr ""
 
-#: src/netconf.py:651
+#: src/netconf.py:656
 msgid "The Loopback device can not be removed!"
 msgstr ""
 
-#: src/netconf.py:654
+#: src/netconf.py:659
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγράψετε την συσκευή \"%s\";"
 
-#: src/netconf.py:682
+#: src/netconf.py:687
 msgid "You have made some changes in your configuration."
 msgstr ""
 
-#: src/netconf.py:683
+#: src/netconf.py:688
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr "Για να  ενεργοποιήσετε την συσκευή δικτύου  %s, πρέπει να αποθηκευτούν οι αλλαγές που έγιναν."
+msgstr ""
+"Για να  ενεργοποιήσετε την συσκευή δικτύου  %s, πρέπει να αποθηκευτούν οι "
+"αλλαγές που έγιναν."
 
-#: src/netconf.py:685
+#: src/netconf.py:690
 msgid "Do you want to continue?"
 msgstr "Θέλετε να συνεχίσετε;"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:697
-#: src/neat-control.py:129
+#: src/netconf.py:701 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Γίνεται ενεργοποίηση συσκευής δικτύου..."
 
-#: src/netconf.py:699
-#: src/neat-control.py:131
+#: src/netconf.py:703 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Ενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε.."
+
+#: src/netconf.py:712
+#, fuzzy, python-format
+msgid ""
+"Cannot activate network device %s\n"
+"%s"
+msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:739
-#: src/neat-control.py:170
+#: src/netconf.py:735 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr ""
 
@@ -134,55 +147,53 @@ msgstr ""
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:902
+#: src/netconf.py:898
 msgid "The Loopback device can not be disabled!"
 msgstr ""
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1196
-#: src/netconf.py:1273
+#: src/netconf.py:1192 src/netconf.py:1269
 msgid "The name may only contain letters and digits!"
 msgstr ""
 
-#: src/netconf.py:1200
-#: src/netconf.py:1277
+#: src/netconf.py:1196 src/netconf.py:1273
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Το όνομα του προφίλ δεν μπορεί να είναι \"%s\"!"
 
-#: src/netconf.py:1205
-#: src/netconf.py:1282
+#: src/netconf.py:1201 src/netconf.py:1278
 msgid "The profile name already exists!"
 msgstr "Το όνομα του προφίλ υπάρχει ήδη!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1254
+#: src/netconf.py:1250
 msgid "The \"default\" profile can't be renamed!"
 msgstr "Το προφίλ \"default\" δεν μπορεί να μετονομαστεί!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1303
+#: src/netconf.py:1299
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Το Προφίλ  \"default\" δεν μπορεί να διαγραφεί!"
 
-#: src/netconf.py:1306
+#: src/netconf.py:1302
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγραφεί το προφίλ \"%s\";"
 
 #. clist.clear()
-#: src/netconf.py:1398
-msgid "Sorry, there is nothing to be edited,\n"
+#: src/netconf.py:1394
+msgid ""
+"Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
 msgstr ""
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1440
+#: src/netconf.py:1436
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγραφεί το \"%s\";"
@@ -212,7 +223,15 @@ msgstr "Σύνδεση xDSL"
 
 #: src/netconfpkg/gui/ADSLInterface.py:87
 #, fuzzy
-msgid "Create an xDSL connection.  This is a connection that uses one of several types of broadband connections collective known as Digital Subscriber Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at the same speed), and several others.  These types of connections are common in the United States, and are gaining acceptance elsewhere.  Speeds vary according to the technology used, but generally range from 144kbps to 1.0Mbps."
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
 msgstr "Δημιουργία μιας σύνδεσης xDSL."
 
 #. widget.set_position(0)
@@ -234,10 +253,10 @@ msgstr "Δημιουργία μιας σύνδεσης xDSL."
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:198
+#: src/netconfpkg/gui/EthernetInterface.py:203
 #: src/netconfpkg/gui/CipeInterface.py:132
-#: src/netconfpkg/gui/WirelessInterface.py:261
-#: src/netconfpkg/gui/TokenRingInterface.py:194
+#: src/netconfpkg/gui/WirelessInterface.py:267
+#: src/netconfpkg/gui/TokenRingInterface.py:200
 msgid "You have selected the following information:"
 msgstr "Έχετε επιλέξει τις παρακάτω πληροφορίες:"
 
@@ -287,12 +306,9 @@ msgstr "Αριθμός Τηλεφώνου:"
 #: src/netconfpkg/gui/ethernethardware.py:138
 #: src/netconfpkg/gui/ethernethardware.py:155
 #: src/netconfpkg/gui/tokenringhardware.py:144
-#: src/netconfpkg/gui/tokenringhardware.py:155
-#: src/netconfpkg/NCDevice.py:232
-#: src/netconfpkg/NCDevice.py:239
-#: src/netconfpkg/NCHardwareList.py:188
-#: src/netconfpkg/NCHardwareList.py:303
-#: src/netconfpkg/NC_functions.py:174
+#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
+#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:188
+#: src/netconfpkg/NCHardwareList.py:303 src/netconfpkg/NC_functions.py:174
 #: src/netconfpkg/NC_functions.py:239
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
@@ -302,6 +318,21 @@ msgstr "Αριθμός Τηλεφώνου:"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
 #. self.set_size_request(-1, 1)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -340,8 +371,25 @@ msgid "ISDN connection"
 msgstr "Σύνδεση ISDN"
 
 #: src/netconfpkg/gui/IsdnInterface.py:81
-msgid "Create a new ISDN connection.  This is a connection that uses an Integrated Services Digital Network line to dial into to your Internet Service Provider.  This type of technology requires a special phone line to be installed by your telephone company. It also requires a device known as a Terminal Adapter(TA) to terminate the ISDN connection from your ISP.  This type of connection is popular in Europe and several other technologically advanced regions.  It is available but uncommon in the USA.  Speeds range from 64kbps to 128kbps."
-msgstr "Δημιουργία μιας νέας σύνδεσης ISDN.   Η  σύνδεση αυτή χρησιμοποιεί μια γραμμή ISDN (Intergated Services Digital Network) για να επικοινωνήσει με τον Παροχέα Υπηρεσιών Διαδικτύου.  Αυτή η τεχνολογία απαιτεί την εγκατάσταση μιας ειδικής τηλεφωνικής γραμμής απο τον τηλεπικοινωνιακό οργανισμό.Επίσης απαιτεί και μια συσκευή που είναι γνωστή ως Τερματικός Προσαρμογέας για τον τερματισμό της σύνδεσης σας με τον παροχέα υπηρεσιών διαδικτύου.   .Αυτή η μορφή σύνδεσης είναι δημοφιλής στην Ευρώπη και σε αρκετές άλλες προηγμένες τεχνολογικά χώρες. Είναι διαθέσιμη αλλά όχι διαδεδομένη και στις ΗΠΑ.  Το φάσμα των ταχυτήτων είναι ανάμεσα στα 64kbps μέχρι τα 128kbps. "
+msgid ""
+"Create a new ISDN connection.  This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider.  This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP.  This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Δημιουργία μιας νέας σύνδεσης ISDN.   Η  σύνδεση αυτή χρησιμοποιεί μια "
+"γραμμή ISDN (Intergated Services Digital Network) για να επικοινωνήσει με "
+"τον Παροχέα Υπηρεσιών Διαδικτύου.  Αυτή η τεχνολογία απαιτεί την εγκατάσταση "
+"μιας ειδικής τηλεφωνικής γραμμής απο τον τηλεπικοινωνιακό οργανισμό.Επίσης "
+"απαιτεί και μια συσκευή που είναι γνωστή ως Τερματικός Προσαρμογέας για τον "
+"τερματισμό της σύνδεσης σας με τον παροχέα υπηρεσιών διαδικτύου.   .Αυτή η "
+"μορφή σύνδεσης είναι δημοφιλής στην Ευρώπη και σε αρκετές άλλες προηγμένες "
+"τεχνολογικά χώρες. Είναι διαθέσιμη αλλά όχι διαδεδομένη και στις ΗΠΑ.  Το "
+"φάσμα των ταχυτήτων είναι ανάμεσα στα 64kbps μέχρι τα 128kbps. "
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -364,8 +412,19 @@ msgid "Modem connection"
 msgstr "Σύνδεση Μόντεμ"
 
 #: src/netconfpkg/gui/ModemInterface.py:74
-msgid "Create a new Modem connection.  This is a connection that uses a serial analog modem to dial into to your Internet Service Provider. These modems use sound over a normal copper telephone line to transmit data.  These types of connections are available just about anywhere in the world where there is a phone system."
-msgstr "Δημιουργία μιας νέας σύνδεσης Μόντεμ.   Η σύνδεση αυτή χρησιμοποιεί ένα σειριακό αναλογικό μόντεμ για να επικοινωνήσει με τον Παροχέα Υπηρεσιών Διαδικτύου. Τα μόντεμ αυτού του τύπου χρησιμοποιούν ήχο για την μετάδοση δεδομένων μέσω μιας απλής τηλεφωνικής γραμμής.  Οι συνδέσεις αυτής της μορφής είναι διαθέσιμες σε όλα τα μέρη του κόσμου που έχουν τηλεφωνικό δίκτυο."
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Δημιουργία μιας νέας σύνδεσης Μόντεμ.   Η σύνδεση αυτή χρησιμοποιεί ένα "
+"σειριακό αναλογικό μόντεμ για να επικοινωνήσει με τον Παροχέα Υπηρεσιών "
+"Διαδικτύου. Τα μόντεμ αυτού του τύπου χρησιμοποιούν ήχο για την μετάδοση "
+"δεδομένων μέσω μιας απλής τηλεφωνικής γραμμής.  Οι συνδέσεις αυτής της "
+"μορφής είναι διαθέσιμες σε όλα τα μέρη του κόσμου που έχουν τηλεφωνικό "
+"δίκτυο."
 
 #: src/netconfpkg/gui/ModemInterface.py:99
 msgid "Modem probing..."
@@ -449,7 +508,7 @@ msgstr "Χαμηλή"
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Medium"
 msgstr "Μεσαία"
 
@@ -501,59 +560,57 @@ msgstr "Πολύ Υψηλή"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/cipeconfig.py:141
 #: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:220
 msgid "None - Server Mode"
 msgstr ""
 
-#: src/netconfpkg/gui/cipeconfig.py:87
-#: src/netconfpkg/gui/CipeInterface.py:162
+#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:162
 msgid " (dynamic)"
 msgstr " (δυναμική)"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:119
-#: src/netconfpkg/gui/cipeconfig.py:170
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:176
 #: src/netconfpkg/gui/CipeInterface.py:196
-#: src/netconfpkg/gui/CipeInterface.py:249
+#: src/netconfpkg/gui/CipeInterface.py:256
 msgid "Server Mode"
 msgstr ""
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:202
-#: src/netconfpkg/gui/cipeconfig.py:207
-#: src/netconfpkg/gui/CipeInterface.py:280
-#: src/netconfpkg/gui/CipeInterface.py:285
+#: src/netconfpkg/gui/cipeconfig.py:208 src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:287
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "(own choice)"
 msgstr ""
 
-#: src/netconfpkg/gui/cipeconfig.py:213
-#: src/netconfpkg/gui/CipeInterface.py:291
+#: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "IP Address of Tunnel Device: "
 msgstr ""
 
-#: src/netconfpkg/gui/cipeconfig.py:214
-#: src/netconfpkg/gui/CipeInterface.py:292
+#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Port: "
 msgstr "Τοπική Θύρα "
 
-#: src/netconfpkg/gui/cipeconfig.py:215
-#: src/netconfpkg/gui/CipeInterface.py:293
+#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Remote Peer Address: "
 msgstr ""
 
-#: src/netconfpkg/gui/cipeconfig.py:219
-#: src/netconfpkg/gui/CipeInterface.py:297
+#: src/netconfpkg/gui/cipeconfig.py:225
+#: src/netconfpkg/gui/CipeInterface.py:304
 msgid "Remote Virtual Address: "
 msgstr "Απομακρυσμένη Εικονική Διεύθυνση: "
 
-#: src/netconfpkg/gui/cipeconfig.py:220
-#: src/netconfpkg/gui/CipeInterface.py:298
+#: src/netconfpkg/gui/cipeconfig.py:226
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "Local Virtual Address: "
 msgstr "Τοπική Εικονική Διεύθυνση:"
 
-#: src/netconfpkg/gui/cipeconfig.py:221
-#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:227
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Secret Key: "
 msgstr "Μυστικό Κλειδί:"
 
@@ -719,7 +776,10 @@ msgid "Save to file"
 msgstr "Αποθήκευση σε αρχείο"
 
 #: src/netconfpkg/gui/exception.py:48
-msgid "An unhandled exception has occured.  This is most likely a bug.  Please save the crash dump and file a detailed bug report against redhat-config-network at https://bugzilla.redhat.com/bugzilla/"
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against redhat-config-network "
+"at https://bugzilla.redhat.com/bugzilla/"
 msgstr ""
 
 #. I did it this way for future expantion
@@ -749,7 +809,8 @@ msgstr "Αποτυχία εγγραφής στο αρχείο %s."
 
 #: src/netconfpkg/gui/exception.py:217
 #, python-format
-msgid "The application's state has been successfully\n"
+msgid ""
+"The application's state has been successfully\n"
 "written to the file '%s'."
 msgstr ""
 
@@ -817,39 +878,39 @@ msgstr "Δημιουργία νέας σύνδεσης Ethernet."
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:179
+#: src/netconfpkg/gui/EthernetInterface.py:184
 msgid "Other Ethernet Card"
 msgstr "Άλλη Κάρτα Ethernet"
 
-#: src/netconfpkg/gui/EthernetInterface.py:199
+#: src/netconfpkg/gui/EthernetInterface.py:204
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/WirelessInterface.py:262
-#: src/netconfpkg/gui/TokenRingInterface.py:195
+#: src/netconfpkg/gui/WirelessInterface.py:268
+#: src/netconfpkg/gui/TokenRingInterface.py:201
 msgid "Device:"
 msgstr "Συσκευή:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:210
-#: src/netconfpkg/gui/WirelessInterface.py:273
-#: src/netconfpkg/gui/TokenRingInterface.py:206
+#: src/netconfpkg/gui/EthernetInterface.py:215
+#: src/netconfpkg/gui/WirelessInterface.py:279
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Διεύθυνση:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/WirelessInterface.py:274
-#: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/EthernetInterface.py:216
+#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Subnet Mask:"
 msgstr "Μάσκα Υποδικτύου"
 
-#: src/netconfpkg/gui/EthernetInterface.py:212
-#: src/netconfpkg/gui/WirelessInterface.py:275
-#: src/netconfpkg/gui/TokenRingInterface.py:208
+#: src/netconfpkg/gui/EthernetInterface.py:217
+#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/TokenRingInterface.py:214
 msgid "Default Gateway Address:"
 msgstr "Εξ ορισμού Διεύθυνση Πύλης:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/WirelessInterface.py:277
-#: src/netconfpkg/gui/TokenRingInterface.py:210
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:283
+#: src/netconfpkg/gui/TokenRingInterface.py:216
 msgid "Automatically obtain IP address settings with:"
 msgstr ""
 
@@ -937,8 +998,6 @@ msgid "Remote Peer Address:"
 msgstr ""
 
 #: src/netconfpkg/gui/CipeInterface.py:140
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Auto"
 msgstr "Αυτόματη"
 
@@ -955,8 +1014,9 @@ msgid "Local Virtual Address:"
 msgstr "Τοπική Εικονική Διεύθυνση:"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:309
-msgid "You must enter a secret key \n"
+#: src/netconfpkg/gui/CipeInterface.py:316
+msgid ""
+"You must enter a secret key \n"
 "or generate one"
 msgstr ""
 
@@ -984,27 +1044,27 @@ msgid "Create a new wireless connection."
 msgstr "Δημιουργία νέας ασύρματης σύνδεσης."
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/WirelessInterface.py:241
+#: src/netconfpkg/gui/WirelessInterface.py:247
 msgid "Other Wireless Card"
 msgstr "Άλλη Ασύρματη Κάρτα"
 
-#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/WirelessInterface.py:286
 msgid "Mode: "
 msgstr "Κατάσταση:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/WirelessInterface.py:287
 msgid "ESSID (Network ID):"
 msgstr "ESSID (ID Δικτύου):"
 
-#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Channel: "
 msgstr "Κανάλι: "
 
-#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "Transmit Rate: "
 msgstr "Ρυθμός Μετάδοσης:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:289
+#: src/netconfpkg/gui/WirelessInterface.py:295
 msgid "Key: "
 msgstr "Κλειδί:"
 
@@ -1032,7 +1092,7 @@ msgid "Create a new Token Ring connection."
 msgstr "Δημιουργία νέας σύνδεσης Token Ring"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/TokenRingInterface.py:176
+#: src/netconfpkg/gui/TokenRingInterface.py:182
 msgid "Other Tokenring Card"
 msgstr "Άλλη Κάρτα Tokenring"
 
@@ -1071,6 +1131,19 @@ msgstr "Άλλη Κάρτα Tokenring"
 #. not a nameserver, so all items on one line...
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
+#: src/netconfpkg/NCCipe.py:155
+msgid ""
+"Directory /etc/cipe is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+
+#: src/netconfpkg/NCCipe.py:159
+msgid ""
+"Could not create\n"
+"directory /etc/cipe!"
+msgstr ""
+
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -1122,8 +1195,7 @@ msgstr ""
 #. self.Alias)
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#: src/netconfpkg/NCDevice.py:130
-#: src/netconfpkg/NCDevice.py:141
+#: src/netconfpkg/NCDevice.py:130 src/netconfpkg/NCDevice.py:141
 #: src/netconfpkg/NCDevice.py:152
 msgid "Device type not specified"
 msgstr "Δεν καθορίστηκε ο τύπος της συσκευής"
@@ -1188,17 +1260,6 @@ msgstr ""
 #. write the pap and chap-secrets, if any
 #.
 #.
-#. Static routes
-#.
-#.
-#. traverse all devices in the list
-#.
-#: src/netconfpkg/NCDeviceList.py:149
-#, python-format
-msgid "Error opening/writing %s: %s!"
-msgstr ""
-
-#.
 #. Remove old config files
 #.
 #. print "DVList.load()"
@@ -1220,18 +1281,15 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCDialup.py:38
-#: src/netconfpkg/gui/dialupconfig.glade.h:63
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:63
 msgid "auto"
 msgstr "αυτόματο"
 
-#: src/netconfpkg/NCDialup.py:39
-#: src/netconfpkg/gui/dialupconfig.glade.h:67
+#: src/netconfpkg/NCDialup.py:39 src/netconfpkg/gui/dialupconfig.glade.h:67
 msgid "manual"
 msgstr "χειροκίνητη"
 
-#: src/netconfpkg/NCDialup.py:42
-#: src/netconfpkg/NC_functions.py:90
+#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:90
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -1523,7 +1581,8 @@ msgstr "Γιουγκοσλαβία"
 #. No Alias devices
 #: src/netconfpkg/NCHardwareList.py:153
 #, python-format
-msgid "%s has an alias to module %s in modules.conf,\n"
+msgid ""
+"%s has an alias to module %s in modules.conf,\n"
 "instead of currently loaded module %s!"
 msgstr ""
 
@@ -1559,7 +1618,8 @@ msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 
 #: src/netconfpkg/NCProfileList.py:135
-msgid "Please select another Hardware Device or \n"
+msgid ""
+"Please select another Hardware Device or \n"
 "activate only one of them."
 msgstr ""
 
@@ -1607,28 +1667,26 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:88
-#: src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:88 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Υλικό (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:89
-#: src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:89 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Λογισμικό (XON/XOFF)"
 
 #. print dev+" has unknown device type, skipping it."
+#. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:347
+#: src/netconfpkg/NC_functions.py:374
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:356
-#: src/netconfpkg/NC_functions.py:365
+#: src/netconfpkg/NC_functions.py:383 src/netconfpkg/NC_functions.py:392
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -1636,7 +1694,7 @@ msgid ""
 "%s: %s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:374
+#: src/netconfpkg/NC_functions.py:401
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -1728,11 +1786,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:49
+#: src/netconfpkg/Control.py:50
 msgid "Active"
 msgstr "Ενεργή"
 
-#: src/netconfpkg/Control.py:50
+#: src/netconfpkg/Control.py:51
 msgid "Inactive"
 msgstr "Ανενεργή"
 
@@ -1778,24 +1836,17 @@ msgstr ""
 msgid "Exit"
 msgstr "Έξοδος"
 
-#: src/netconf-tui.py:42
-#: neat.desktop.in.h:3
-#: src/maindialog.glade.h:17
+#: src/netconf-tui.py:42 neat.desktop.in.h:3 src/maindialog.glade.h:17
 msgid "Network Configuration"
 msgstr "Ρύθμιση Δικτύου"
 
-#: src/netconf-tui.py:155
-#: src/netconf-tui.py:262
-#: src/netconf-tui.py:365
+#: src/netconf-tui.py:155 src/netconf-tui.py:262 src/netconf-tui.py:365
 #: src/maindialog.glade.h:16
 msgid "Name"
 msgstr "Όνομα"
 
-#: src/netconf-tui.py:156
-#: src/netconf-tui.py:263
-#: src/netconf-tui.py:366
-#: src/maindialog.glade.h:9
-#: src/neat-control.glade.h:1
+#: src/netconf-tui.py:156 src/netconf-tui.py:263 src/netconf-tui.py:366
+#: src/maindialog.glade.h:9 src/neat-control.glade.h:1
 msgid "Device"
 msgstr "Συσκευή"
 
@@ -1815,15 +1866,11 @@ msgstr "Μάσκα δικτύου"
 msgid "Default gateway IP"
 msgstr "Εξ ορισμού IP πύλης"
 
-#: src/netconf-tui.py:168
-#: src/netconf-tui.py:274
-#: src/netconf-tui.py:377
+#: src/netconf-tui.py:168 src/netconf-tui.py:274 src/netconf-tui.py:377
 msgid "Ok"
 msgstr "Εντάξει"
 
-#: src/netconf-tui.py:168
-#: src/netconf-tui.py:274
-#: src/netconf-tui.py:377
+#: src/netconf-tui.py:168 src/netconf-tui.py:274 src/netconf-tui.py:377
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -1831,18 +1878,15 @@ msgstr "Ακύρωση"
 msgid "Ethernet Configuration"
 msgstr "Ρύθμιση Ethernet"
 
-#: src/netconf-tui.py:264
-#: src/netconf-tui.py:367
+#: src/netconf-tui.py:264 src/netconf-tui.py:367
 msgid "ISP Phonenumber"
 msgstr ""
 
-#: src/netconf-tui.py:265
-#: src/netconf-tui.py:368
+#: src/netconf-tui.py:265 src/netconf-tui.py:368
 msgid "ISP Login"
 msgstr ""
 
-#: src/netconf-tui.py:266
-#: src/netconf-tui.py:369
+#: src/netconf-tui.py:266 src/netconf-tui.py:369
 msgid "ISP Password"
 msgstr ""
 
@@ -1850,8 +1894,7 @@ msgstr ""
 msgid "Modem Initstring"
 msgstr ""
 
-#: src/netconf-tui.py:275
-#: src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:275 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr "Ρύθμιση Μόντεμ"
 
@@ -1879,7 +1922,9 @@ msgstr "Ρύθμιση ISDN"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/neat-control.py:57
-msgid "This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/"
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
 msgstr ""
 
 #: neat.desktop.in.h:1
@@ -1895,6 +1940,7 @@ msgstr "Δίκτυο"
 #: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:1
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 msgid "*"
 msgstr "*"
@@ -1947,8 +1993,7 @@ msgstr "Υλικό"
 msgid "Hosts"
 msgstr ""
 
-#: src/maindialog.glade.h:15
-#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "IP"
 msgstr "IP"
 
@@ -1956,15 +2001,16 @@ msgstr "IP"
 msgid "New Profile"
 msgstr "Νέο Προφίλ"
 
-#: src/maindialog.glade.h:19
-#: src/neat-control.glade.h:4
+#: src/maindialog.glade.h:19 src/neat-control.glade.h:4
 msgid "Nickname"
 msgstr ""
 
 #: src/maindialog.glade.h:20
-msgid "Please enter the name for the profile.\n"
+msgid ""
+"Please enter the name for the profile.\n"
 "The name may only contain letters and digits."
-msgstr "Παρακαλώ δώστε ένα όνομα για το προφίλ.\n"
+msgstr ""
+"Παρακαλώ δώστε ένα όνομα για το προφίλ.\n"
 "Το όνομα μπορεί να περιέχει μόνο γράμματα και ψηφία."
 
 #: src/maindialog.glade.h:22
@@ -1979,8 +2025,7 @@ msgstr "Διαγρα_φή"
 msgid "Search D_omain:"
 msgstr ""
 
-#: src/maindialog.glade.h:25
-#: src/neat-control.glade.h:5
+#: src/maindialog.glade.h:25 src/neat-control.glade.h:5
 msgid "Status"
 msgstr "Κατάσταση"
 
@@ -1989,43 +2034,45 @@ msgid "Type"
 msgstr "Τύπος"
 
 #: src/maindialog.glade.h:27
-msgid "You may configure network devices associated with physical hardware here.  Multiple logical devices can be associated with a single piece of hardware."
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
 msgstr ""
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
 
 #: src/maindialog.glade.h:29
-msgid "You may specify static computer hostname to IP address mappings here.  If DNS is in use, these settings will take precedence over any information it may provide."
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
 msgstr ""
 
 #: src/maindialog.glade.h:30
 msgid "_Add"
 msgstr "_Προσθήκη"
 
-#: src/maindialog.glade.h:31
-#: src/netconfpkg/gui/ctcconfig.glade.h:10
+#: src/maindialog.glade.h:31 src/netconfpkg/gui/ctcconfig.glade.h:10
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "_Προσθήκη..."
 
-#: src/maindialog.glade.h:32
-#: src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Copy"
 msgstr "_Αντιγραφή"
 
-#: src/maindialog.glade.h:33
-#: src/netconfpkg/gui/ctcconfig.glade.h:11
+#: src/maindialog.glade.h:33 src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Delete"
 msgstr "_Διαγραφή"
 
-#: src/maindialog.glade.h:34
-#: src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/maindialog.glade.h:34 src/netconfpkg/gui/ctcconfig.glade.h:12
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Edit..."
 msgstr "_Επεξεργασία..."
 
@@ -2061,8 +2108,7 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: src/neat-control.glade.h:3
-#: neat-control.desktop.in.h:2
+#: src/neat-control.glade.h:3 neat-control.desktop.in.h:2
 #, fuzzy
 msgid "Network Device Control"
 msgstr "Ρύθμιση Δικτύου"
@@ -2131,7 +2177,8 @@ msgstr ""
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -2142,7 +2189,9 @@ msgstr "Εισάγετε τον κωδικό πρόσβασης για αυτό 
 #: src/netconfpkg/gui/DialupDruid.glade.h:7
 #: src/netconfpkg/gui/dialupconfig.glade.h:23
 #: src/netconfpkg/gui/dslconfig.glade.h:12
-msgid "Enter the password for your account. If you do not know it, please contact your ISP."
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
 msgstr ""
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
@@ -2283,7 +2332,7 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "eth0"
 msgstr "eth0"
 
@@ -2291,7 +2340,7 @@ msgstr "eth0"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth1"
 msgstr "eth1"
 
@@ -2299,7 +2348,7 @@ msgstr "eth1"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth2"
 msgstr "eth2"
 
@@ -2307,7 +2356,7 @@ msgstr "eth2"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth3"
 msgstr "eth3"
 
@@ -2315,7 +2364,7 @@ msgstr "eth3"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth4"
 msgstr "eth4"
 
@@ -2329,7 +2378,10 @@ msgstr ""
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:3
 #: src/netconfpkg/gui/dialupconfig.glade.h:19
-msgid "Enter any numbers you need to dial before the normal phone number. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here."
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
 msgstr ""
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:4
@@ -2541,7 +2593,7 @@ msgstr "_MEM:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth5"
 msgstr "eth5"
 
@@ -2557,7 +2609,7 @@ msgstr "eth7"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Configure Network Settings"
 msgstr "Ρυθμίσεις Δικτύου"
 
@@ -2572,15 +2624,17 @@ msgstr "Κάρτα Ethernet"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "MTU:"
 msgstr "MTU:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/ctcconfig.glade.h:6
-msgid "Please enter the MTU parameter to set the maximum Transfer Unit of this interface. On s390/s390x the MTU has 1492 as default setting"
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
 msgstr ""
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
@@ -2841,58 +2895,58 @@ msgstr "2M"
 msgid "5.5M"
 msgstr "5.5M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
 msgid "Configure Wireless Connection"
 msgstr "Ρύθμιση Ασύρμαρτης Σύνδεσης"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Create Wireless Device"
 msgstr "Δημιουργία Ασύρμαρτης Συσκευής"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 msgid "Network Name (SSID):"
 msgstr "Όνομα Δικτύου (SSID):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid "Select Wireless Device"
 msgstr "Επιλογή Ασύρμαρτης Συσκευής"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Select the Wireless card you want to configure:"
 msgstr "Επιλογή Ασύρματης κάρτας που θέλετε να ρυθμίσετε:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "Wireless card"
 msgstr "Ασύρμαρτη κάρτα"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 msgid "_Auto"
 msgstr "_Αυτόματο"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 msgid "_Channel:"
 msgstr "_Κανάλι:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Key:"
 msgstr "_κλειδί:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Mode:"
 msgstr "_Κατάσταση:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Specified:"
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Transmit Rate:"
 msgstr "_Ρυθμός Μετάδοσης:"
 
@@ -2920,7 +2974,7 @@ msgstr "Ρύθμιση CIPE"
 #: src/netconfpkg/gui/dslconfig.glade.h:13
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 msgid "General"
 msgstr ""
 
@@ -2942,7 +2996,7 @@ msgstr "Ρυθμίσεις Tunnel"
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "_Activate device when computer starts"
 msgstr "_Ενεργοποίηση συσκευής όταν ξεκινάει ο υπολογιστής"
 
@@ -2952,7 +3006,7 @@ msgstr "_Ενεργοποίηση συσκευής όταν ξεκινάει ο 
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 #, fuzzy
 msgid "_Nickname: "
 msgstr "_Παρατσούκλι"
@@ -2962,15 +3016,17 @@ msgid "CTC Configuration"
 msgstr "Ρύθμιση CTC"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
-msgid "Each device needs to be attached to a physical device, which can be selected below."
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
+msgid ""
+"Each device needs to be attached to a physical device, which can be selected "
+"below."
 msgstr ""
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:5
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "Hardware Device"
 msgstr ""
 
@@ -2984,7 +3040,7 @@ msgstr "Πρωτόκολλα"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Hardware Device:"
 msgstr ""
 
@@ -3202,11 +3258,15 @@ msgid "Enable synchronous PPP for the connection"
 msgstr ""
 
 #: src/netconfpkg/gui/dslconfig.glade.h:7
-msgid "Enter the Access Concentrator name, if you have been given one by your ISP. In most cases you can leave this blank."
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
 msgstr ""
 
 #: src/netconfpkg/gui/dslconfig.glade.h:8
-msgid "Enter the Service Name, if your ISP requires it. If you don't know it, please contact your ISP. In most cases you can leave this blank."
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
 msgstr ""
 
 #: src/netconfpkg/gui/dslconfig.glade.h:9
@@ -3238,7 +3298,7 @@ msgid "Add / Edit IP Address"
 msgstr ""
 
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Address:"
 msgstr "_Διεύθυνση"
 
@@ -3247,7 +3307,7 @@ msgid "_Gateway:"
 msgstr "_Πύλη:"
 
 #: src/netconfpkg/gui/editadress.glade.h:5
-#: src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "_Subnet Mask:"
 msgstr "_Μάσκα Υποδικτύου:"
 
@@ -3441,175 +3501,178 @@ msgstr "redhat network control - Ιδιότητες"
 msgid "%P %%"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "Automatically obtain _DNS information from provider"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Bind to _MAC Address:"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "DHCP Settings"
 msgstr "Ρυθμίσεις DHCP"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "Default _Gateway Address:"
 msgstr "Εξ ορισμού _Διεύθυνση Πύλης:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:6
+#: src/netconfpkg/gui/sharedtcpip.glade.h:7
 msgid "Destination Network"
 msgstr "Δίκτυο Προορισμού"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:7
-msgid "Device _Aliases:"
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#, fuzzy
+msgid "Device _Alias Number:"
 msgstr "Ψευδώνυμα _Συσκευής:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
 msgstr "Επίπεδο δυσκολίας:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:9
-msgid "Each connection needs to be associated with a physical device which can be selected below."
-msgstr ""
-
 #: src/netconfpkg/gui/sharedtcpip.glade.h:10
-msgid "Easy"
+msgid ""
+"Each connection needs to be associated with a physical device which can be "
+"selected below."
 msgstr ""
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:11
-msgid "Enter your device bound traffic rules here."
+msgid "Easy"
 msgstr ""
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:12
+msgid "Enter your device bound traffic rules here."
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "Gateway"
 msgstr "Πύλη"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
 msgid "Hardware Device:"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Mask"
 msgstr "Μάσκα"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Maximum In"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Maximum Out"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Minimum In"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
 msgid "Minimum Out"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Please select the level of security for this device."
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Port"
 msgstr "Θύρα"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Prefix (Netmask)"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Professional"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Security Level"
 msgstr "Επίπεδο Ασφάλειας"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Select the services you want to provide through this device"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Service"
 msgstr "Υπηρεσία"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Service Description"
 msgstr "Περιγραφή Υπηρεσίας"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Services"
 msgstr "Υπηρεσίες"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Statically set IP addresses:"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Hardware Address"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Hardware:"
 msgstr "_Υλικό:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_High Security (Internet)"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Hostname (optional):"
 msgstr ""
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Low Security"
 msgstr "_Χαμηλή Ασφάλεια"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Probe"
 msgstr "_Ανίχνευση"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Probe for Address..."
 msgstr "_Ανίχνευση Διεύθυνσης..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "_Secure Device (LAN)"
 msgstr "_Ασφαλής Συσκευή (LAN)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:49
+#: src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "bootp"
 msgstr "bootp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:50
+#: src/netconfpkg/gui/sharedtcpip.glade.h:51
 msgid "dhcp"
 msgstr "dhcp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:51
+#: src/netconfpkg/gui/sharedtcpip.glade.h:52
 msgid "dialup"
 msgstr ""
 
@@ -3618,7 +3681,10 @@ msgid "00:00:00:00:00:00"
 msgstr "00:00:00:00:00:00"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid "Each device needs to be attached to a physical device which can be selected below. Device Alias support allows you to use multiple virtual devices for one physical device."
+msgid ""
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
 msgstr ""
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:4
@@ -3645,11 +3711,11 @@ msgstr ""
 msgid "_Use Hardware Address"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 msgid "Wireless Device Configuration"
 msgstr "Ρύθμιση Ασύρματης Συσκευής"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "Wireless Settings"
 msgstr "Ασύρματες Ρυθμίσεις"
 
@@ -3664,4 +3730,3 @@ msgstr "Ρύθμιση της σύνδεσής σας στο Διαδίκτυο"
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "Οδηγός Σύνδεσης στο Διαδίκτυο"
-

@@ -25,6 +25,7 @@ import shutil
 import signal
 import string
 from rhpl import ethtool
+from rhpl.executil import *
 from NC_functions import *
 
 VERSION = '0.1.0'
@@ -80,7 +81,7 @@ class NetworkDevice:
             
         # check real ppp device
         for i in xrange(0, 10):
-            if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
+            if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):                
                 self.activedevicelist.append('ppp%s' %(i))
                     
         self.activedevicelist.sort()
@@ -103,8 +104,7 @@ class Interface:
         if getDeviceType(device) == ISDN:
             command = '/usr/sbin/isdnup'
 
-        ret = fork_exec(0, command, [command, device])
-        return ret
+        return gtkExecWithCaptureStatus(command, [command, device])
 
     def deactivate(self, device):
         try:

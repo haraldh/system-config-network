@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.0\n"
-"POT-Creation-Date: 2002-08-31 22:10-0400\n"
+"POT-Creation-Date: 2002-11-13 16:07+0100\n"
 "PO-Revision-Date: 2002-10-17 12:36GMT+10:00\n"
 "Last-Translator: Sarah Smith <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <i18n@redhat.com>\n"
@@ -34,7 +34,8 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:61
+#. Just to be safe...
+#: src/netconf.py:64
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -45,72 +46,87 @@ msgstr ""
 "用法：redhat-config-network-cmd -p --profile <profile>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:67
+#: src/netconf.py:70
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "请用根权限重启 %s！"
 
-#: src/netconf.py:118
+#: src/netconf.py:121
 msgid "Common"
 msgstr "公用"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
+#: src/netconf.py:325
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+
 #. change the default profile to a more understandable name
-#: src/netconf.py:488 src/netconf.py:501
+#: src/netconf.py:493 src/netconf.py:506
 msgid "Do you want to save your changes?"
 msgstr "您想保存所做改变吗？"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:571
+#: src/netconf.py:576
 msgid "The Loopback device can not be edited!"
 msgstr "无法编辑环回设备！"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:629 src/netconfpkg/gui/GenericInterface.py:133
+#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
 msgid "This device can not be edited with this tool!"
 msgstr "该设备不能用此工具来编辑！"
 
-#: src/netconf.py:651
+#: src/netconf.py:656
 msgid "The Loopback device can not be removed!"
 msgstr "环回设备不能被删除！"
 
-#: src/netconf.py:654
+#: src/netconf.py:659
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "您确信要删除设备“%s”吗？"
 
-#: src/netconf.py:682
+#: src/netconf.py:687
 msgid "You have made some changes in your configuration."
 msgstr "您在配置中做了些改变。"
 
-#: src/netconf.py:683
+#: src/netconf.py:688
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "要激活网络设备 %s，您必须储存改变。"
 
-#: src/netconf.py:685
+#: src/netconf.py:690
 msgid "Do you want to continue?"
 msgstr "您想继续吗？"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:697 src/neat-control.py:129
+#: src/netconf.py:701 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "网络设备正在被激活..."
 
-#: src/netconf.py:699 src/neat-control.py:131
+#: src/netconf.py:703 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "正在激活网络设备 %s，请稍候..."
+
+#: src/netconf.py:712
+#, fuzzy, python-format
+msgid ""
+"Cannot activate network device %s\n"
+"%s"
+msgstr "无法激活网络设备 %s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:739 src/neat-control.py:170
+#: src/netconf.py:735 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "需要重写！"
 
@@ -127,46 +143,46 @@ msgstr "需要重写！"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:902
+#: src/netconf.py:898
 msgid "The Loopback device can not be disabled!"
 msgstr "无法禁用环回设备！"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1196 src/netconf.py:1273
+#: src/netconf.py:1192 src/netconf.py:1269
 msgid "The name may only contain letters and digits!"
 msgstr "名称只能包含字母和数字！"
 
-#: src/netconf.py:1200 src/netconf.py:1277
+#: src/netconf.py:1196 src/netconf.py:1273
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "该配置文件不能被命名为“%s”！"
 
-#: src/netconf.py:1205 src/netconf.py:1282
+#: src/netconf.py:1201 src/netconf.py:1278
 msgid "The profile name already exists!"
 msgstr "配置文件名已存在！"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1254
+#: src/netconf.py:1250
 msgid "The \"default\" profile can't be renamed!"
 msgstr "“默认”的配置文件不能被更名！"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1303
+#: src/netconf.py:1299
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "“默认”的配置文件不能被删除！"
 
-#: src/netconf.py:1306
+#: src/netconf.py:1302
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "您确信要删除配置文件“%s”吗？"
 
 #. clist.clear()
-#: src/netconf.py:1398
+#: src/netconf.py:1394
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -175,7 +191,7 @@ msgstr ""
 "或这个类型还无法被编辑。"
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1440
+#: src/netconf.py:1436
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "您确信要删除“%s”吗？"
@@ -238,10 +254,10 @@ msgstr ""
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:198
+#: src/netconfpkg/gui/EthernetInterface.py:203
 #: src/netconfpkg/gui/CipeInterface.py:132
-#: src/netconfpkg/gui/WirelessInterface.py:261
-#: src/netconfpkg/gui/TokenRingInterface.py:194
+#: src/netconfpkg/gui/WirelessInterface.py:267
+#: src/netconfpkg/gui/TokenRingInterface.py:200
 msgid "You have selected the following information:"
 msgstr "您已选定了下列信息："
 
@@ -302,6 +318,21 @@ msgstr "电话号码："
 msgid "Unknown"
 msgstr "未知"
 
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
 #. self.set_size_request(-1, 1)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -350,8 +381,8 @@ msgid ""
 "advanced regions.  It is available but uncommon in the USA.  Speeds range "
 "from 64kbps to 128kbps."
 msgstr ""
-"建立新的 ISDN 连接。该连接使用综合业务数字网（ISDN）线路来拨入您的互联网服"
-"务提供商。此类技术要求您安装一种特殊电话线，它还要求您拥有一个叫终端适配器"
+"建立新的 ISDN 连接。该连接使用综合业务数字网（ISDN）线路来拨入您的互联网服务"
+"提供商。此类技术要求您安装一种特殊电话线，它还要求您拥有一个叫终端适配器"
 "（TA）的设备来终结与您的 ISP 间的 ISDN 连接。此类连接在欧洲及其它科技发达的地"
 "区较流行。它在美国也有，但使用并不普遍。速度在 64kbps 到 128kbps 之间。"
 
@@ -469,7 +500,7 @@ msgstr "低"
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Medium"
 msgstr "中"
 
@@ -521,7 +552,9 @@ msgstr "非常高"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/cipeconfig.py:141
+#: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:220
 msgid "None - Server Mode"
 msgstr "无 - 服务器模式"
 
@@ -530,46 +563,46 @@ msgid " (dynamic)"
 msgstr " (动态)"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:176
 #: src/netconfpkg/gui/CipeInterface.py:196
-#: src/netconfpkg/gui/CipeInterface.py:249
+#: src/netconfpkg/gui/CipeInterface.py:256
 msgid "Server Mode"
 msgstr "服务器模式"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
-#: src/netconfpkg/gui/CipeInterface.py:280
-#: src/netconfpkg/gui/CipeInterface.py:285
+#: src/netconfpkg/gui/cipeconfig.py:208 src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:287
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "(own choice)"
 msgstr "(自选 )"
 
-#: src/netconfpkg/gui/cipeconfig.py:213
-#: src/netconfpkg/gui/CipeInterface.py:291
+#: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "IP Address of Tunnel Device: "
 msgstr "隧道设备的 IP 地址："
 
-#: src/netconfpkg/gui/cipeconfig.py:214
-#: src/netconfpkg/gui/CipeInterface.py:292
+#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Port: "
 msgstr "本地端口："
 
-#: src/netconfpkg/gui/cipeconfig.py:215
-#: src/netconfpkg/gui/CipeInterface.py:293
+#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Remote Peer Address: "
 msgstr "远程对端地址："
 
-#: src/netconfpkg/gui/cipeconfig.py:219
-#: src/netconfpkg/gui/CipeInterface.py:297
+#: src/netconfpkg/gui/cipeconfig.py:225
+#: src/netconfpkg/gui/CipeInterface.py:304
 msgid "Remote Virtual Address: "
 msgstr "远程虚拟地址："
 
-#: src/netconfpkg/gui/cipeconfig.py:220
-#: src/netconfpkg/gui/CipeInterface.py:298
+#: src/netconfpkg/gui/cipeconfig.py:226
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "Local Virtual Address: "
 msgstr "本地虚拟地址："
 
-#: src/netconfpkg/gui/cipeconfig.py:221
-#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:227
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Secret Key: "
 msgstr "密钥："
 
@@ -840,39 +873,39 @@ msgstr "建立一个新的以太网连接。"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:179
+#: src/netconfpkg/gui/EthernetInterface.py:184
 msgid "Other Ethernet Card"
 msgstr "其它以太网卡"
 
-#: src/netconfpkg/gui/EthernetInterface.py:199
+#: src/netconfpkg/gui/EthernetInterface.py:204
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/WirelessInterface.py:262
-#: src/netconfpkg/gui/TokenRingInterface.py:195
+#: src/netconfpkg/gui/WirelessInterface.py:268
+#: src/netconfpkg/gui/TokenRingInterface.py:201
 msgid "Device:"
 msgstr "设备："
 
-#: src/netconfpkg/gui/EthernetInterface.py:210
-#: src/netconfpkg/gui/WirelessInterface.py:273
-#: src/netconfpkg/gui/TokenRingInterface.py:206
+#: src/netconfpkg/gui/EthernetInterface.py:215
+#: src/netconfpkg/gui/WirelessInterface.py:279
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "地址："
 
-#: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/WirelessInterface.py:274
-#: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/EthernetInterface.py:216
+#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Subnet Mask:"
 msgstr "子网掩码："
 
-#: src/netconfpkg/gui/EthernetInterface.py:212
-#: src/netconfpkg/gui/WirelessInterface.py:275
-#: src/netconfpkg/gui/TokenRingInterface.py:208
+#: src/netconfpkg/gui/EthernetInterface.py:217
+#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/TokenRingInterface.py:214
 msgid "Default Gateway Address:"
 msgstr "默认网关地址："
 
-#: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/WirelessInterface.py:277
-#: src/netconfpkg/gui/TokenRingInterface.py:210
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:283
+#: src/netconfpkg/gui/TokenRingInterface.py:216
 msgid "Automatically obtain IP address settings with:"
 msgstr "自动获取 IP 地址设置使用："
 
@@ -960,8 +993,6 @@ msgid "Remote Peer Address:"
 msgstr "远程对端地址："
 
 #: src/netconfpkg/gui/CipeInterface.py:140
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Auto"
 msgstr "自动"
 
@@ -978,7 +1009,7 @@ msgid "Local Virtual Address:"
 msgstr "本地虚拟地址："
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:309
+#: src/netconfpkg/gui/CipeInterface.py:316
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
@@ -1010,27 +1041,27 @@ msgid "Create a new wireless connection."
 msgstr "建立一个新的无线连接。"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/WirelessInterface.py:241
+#: src/netconfpkg/gui/WirelessInterface.py:247
 msgid "Other Wireless Card"
 msgstr "其它无线卡"
 
-#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/WirelessInterface.py:286
 msgid "Mode: "
 msgstr "模式："
 
-#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/WirelessInterface.py:287
 msgid "ESSID (Network ID):"
 msgstr "ESSID (网络 ID)："
 
-#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Channel: "
 msgstr "频道："
 
-#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "Transmit Rate: "
 msgstr "传输率："
 
-#: src/netconfpkg/gui/WirelessInterface.py:289
+#: src/netconfpkg/gui/WirelessInterface.py:295
 msgid "Key: "
 msgstr "密钥："
 
@@ -1058,7 +1089,7 @@ msgid "Create a new Token Ring connection."
 msgstr "建立一个新的权标环连接。"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/TokenRingInterface.py:176
+#: src/netconfpkg/gui/TokenRingInterface.py:182
 msgid "Other Tokenring Card"
 msgstr "其它权标环卡"
 
@@ -1097,6 +1128,19 @@ msgstr "其它权标环卡"
 #. not a nameserver, so all items on one line...
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
+#: src/netconfpkg/NCCipe.py:155
+msgid ""
+"Directory /etc/cipe is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+
+#: src/netconfpkg/NCCipe.py:159
+msgid ""
+"Could not create\n"
+"directory /etc/cipe!"
+msgstr ""
+
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -1215,17 +1259,6 @@ msgstr "载入设备 %s 时出错！\n"
 #.
 #. write the pap and chap-secrets, if any
 #.
-#.
-#. Static routes
-#.
-#.
-#. traverse all devices in the list
-#.
-#: src/netconfpkg/NCDeviceList.py:149
-#, python-format
-msgid "Error opening/writing %s: %s!"
-msgstr "打开或写入 %s 时出错：%s！"
-
 #.
 #. Remove old config files
 #.
@@ -1649,14 +1682,15 @@ msgid "Software (XON/XOFF)"
 msgstr "软件 (XON/XOFF)"
 
 #. print dev+" has unknown device type, skipping it."
+#. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:347
+#: src/netconfpkg/NC_functions.py:374
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr "删除 %s 时出错：%s！"
 
-#: src/netconfpkg/NC_functions.py:356 src/netconfpkg/NC_functions.py:365
+#: src/netconfpkg/NC_functions.py:383 src/netconfpkg/NC_functions.py:392
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -1667,7 +1701,7 @@ msgstr ""
 "链接到\n"
 "%s 时出错： %s！"
 
-#: src/netconfpkg/NC_functions.py:374
+#: src/netconfpkg/NC_functions.py:401
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -1763,11 +1797,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:49
+#: src/netconfpkg/Control.py:50
 msgid "Active"
 msgstr "活跃"
 
-#: src/netconfpkg/Control.py:50
+#: src/netconfpkg/Control.py:51
 msgid "Inactive"
 msgstr "不活跃"
 
@@ -1919,6 +1953,7 @@ msgstr "网络"
 #: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:1
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 msgid "*"
 msgstr "*"
@@ -1971,7 +2006,7 @@ msgstr "硬件"
 msgid "Hosts"
 msgstr "主机"
 
-#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "IP"
 msgstr "IP"
 
@@ -2015,10 +2050,12 @@ msgstr "类型"
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
-msgstr "您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
+msgstr ""
+"您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "您可以在此处配置与计算机物理连接的网络硬件。"
 
 #: src/maindialog.glade.h:29
@@ -2027,8 +2064,8 @@ msgid ""
 "DNS is in use, these settings will take precedence over any information it "
 "may provide."
 msgstr ""
-"您可以在此处指定从静态计算机主机到 IP 地址的映射。如果 DNS 被使用，这些"
-"设置将会优先于任何它可能会提供的信息。"
+"您可以在此处指定从静态计算机主机到 IP 地址的映射。如果 DNS 被使用，这些设置将"
+"会优先于任何它可能会提供的信息。"
 
 #: src/maindialog.glade.h:30
 msgid "_Add"
@@ -2036,22 +2073,22 @@ msgstr "添加(_A)"
 
 #: src/maindialog.glade.h:31 src/netconfpkg/gui/ctcconfig.glade.h:10
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "添加(_A)..."
 
-#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Copy"
 msgstr "复制(_C)"
 
 #: src/maindialog.glade.h:33 src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Delete"
 msgstr "删除(_D)"
 
 #: src/maindialog.glade.h:34 src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Edit..."
 msgstr "编辑(_E)..."
 
@@ -2155,7 +2192,8 @@ msgstr "在此处输入您的 ISP 给您的登录名。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "输入本次配置的名称，通常是您的 ISP 的名称。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -2309,7 +2347,7 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "eth0"
 msgstr "eth0"
 
@@ -2317,7 +2355,7 @@ msgstr "eth0"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth1"
 msgstr "eth1"
 
@@ -2325,7 +2363,7 @@ msgstr "eth1"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth2"
 msgstr "eth2"
 
@@ -2333,7 +2371,7 @@ msgstr "eth2"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth3"
 msgstr "eth3"
 
@@ -2341,7 +2379,7 @@ msgstr "eth3"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth4"
 msgstr "eth4"
 
@@ -2572,7 +2610,7 @@ msgstr "_MEM："
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth5"
 msgstr "eth5"
 
@@ -2588,7 +2626,7 @@ msgstr "eth7"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Configure Network Settings"
 msgstr "配置网络设置"
 
@@ -2603,20 +2641,20 @@ msgstr "以太网卡"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "MTU:"
 msgstr "MTU："
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/ctcconfig.glade.h:6
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
 msgstr ""
-"请输入 MTU 参数以便设置这个接口的最大传输单位。在 s390/s390x 中，MTU 的默认"
-"设置是 1492 "
+"请输入 MTU 参数以便设置这个接口的最大传输单位。在 s390/s390x 中，MTU 的默认设"
+"置是 1492 "
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
 msgid "Select Ethernet Device"
@@ -2876,58 +2914,58 @@ msgstr "2M"
 msgid "5.5M"
 msgstr "5.5M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
 msgid "Configure Wireless Connection"
 msgstr "配置无线连接"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Create Wireless Device"
 msgstr "创建无线连接"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 msgid "Network Name (SSID):"
 msgstr "网络名称 (SSID)："
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid "Select Wireless Device"
 msgstr "选择无线连接"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Select the Wireless card you want to configure:"
 msgstr "选择您想配置的无线卡："
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "Wireless card"
 msgstr "无线卡"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 msgid "_Auto"
 msgstr "自动(_A)"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 msgid "_Channel:"
 msgstr "频道(_C)："
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Key:"
 msgstr "密钥(_K)："
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Mode:"
 msgstr "模式(_M)："
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Specified:"
 msgstr "指定的(_S)："
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Transmit Rate:"
 msgstr "传输率(_T)："
 
@@ -2955,7 +2993,7 @@ msgstr "CIPE 配置"
 #: src/netconfpkg/gui/dslconfig.glade.h:13
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 msgid "General"
 msgstr "常规"
 
@@ -2977,7 +3015,7 @@ msgstr "隧道设置"
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "_Activate device when computer starts"
 msgstr "当计算机启动时激活设备(_A)"
 
@@ -2987,7 +3025,7 @@ msgstr "当计算机启动时激活设备(_A)"
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Nickname: "
 msgstr "绰号(_N)："
 
@@ -2996,7 +3034,7 @@ msgid "CTC Configuration"
 msgstr "CTC 配置"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3006,7 +3044,7 @@ msgstr "每个连接都需要与一个物理设备相连，这些设备可从下
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "Hardware Device"
 msgstr "硬件设备"
 
@@ -3020,7 +3058,7 @@ msgstr "协议"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Hardware Device:"
 msgstr "硬件设备(_H)："
 
@@ -3240,7 +3278,9 @@ msgstr "为该连接启用同步 PPP"
 msgid ""
 "Enter the Access Concentrator name, if you have been given one by your ISP. "
 "In most cases you can leave this blank."
-msgstr "如果您的 ISP 提供了的话，请输入访问集中器名称。多数情况下，您可以将此留为空白。"
+msgstr ""
+"如果您的 ISP 提供了的话，请输入访问集中器名称。多数情况下，您可以将此留为空"
+"白。"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:8
 msgid ""
@@ -3279,7 +3319,7 @@ msgid "Add / Edit IP Address"
 msgstr "添加／编辑 IP 地址"
 
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Address:"
 msgstr "地址(_A)："
 
@@ -3288,7 +3328,7 @@ msgid "_Gateway:"
 msgstr "网关(_G)："
 
 #: src/netconfpkg/gui/editadress.glade.h:5
-#: src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "_Subnet Mask:"
 msgstr "子网掩码(_S)："
 
@@ -3480,177 +3520,178 @@ msgstr "redhat 网络控制 - 属性"
 msgid "%P %%"
 msgstr "%P %%"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "Automatically obtain _DNS information from provider"
 msgstr "自动从提供商处获取 _DNS 信息"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "自动获取 IP 地址设置使用："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Bind to _MAC Address:"
 msgstr "关联到 _MAC 地址："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "DHCP Settings"
 msgstr "DHCP 设置"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "Default _Gateway Address:"
 msgstr "默认网关地址(_G)："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:6
+#: src/netconfpkg/gui/sharedtcpip.glade.h:7
 msgid "Destination Network"
 msgstr "目标网络"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:7
-msgid "Device _Aliases:"
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#, fuzzy
+msgid "Device _Alias Number:"
 msgstr "设备别名(_A)："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
 msgstr "难度："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:9
+#: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
 msgstr "每个连接都需要与一个物理设备相连，这些设备可从下面选择。"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
 msgstr "简单"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:11
+#: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Enter your device bound traffic rules here."
 msgstr "在此处输入您的设备交通规则。"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:12
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "Gateway"
 msgstr "网关"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
 msgid "Hardware Device:"
 msgstr "硬件设备："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
 msgstr "手工设置 IP 地址"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Mask"
 msgstr "掩码"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Maximum In"
 msgstr "最多进入"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Maximum Out"
 msgstr "最多输出"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Minimum In"
 msgstr "最少进入"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
 msgid "Minimum Out"
 msgstr "最少输出"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Please select the level of security for this device."
 msgstr "请为这个设备选择安全级别。"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Port"
 msgstr "端口"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Prefix (Netmask)"
 msgstr "前缀（子网掩码）"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Professional"
 msgstr "专业"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Security Level"
 msgstr "安全级别"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Select the services you want to provide through this device"
 msgstr "选择您想通过这个设备提供的服务"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Service"
 msgstr "服务"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Service Description"
 msgstr "服务描述"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Services"
 msgstr "服务"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "静态网络路由"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Statically set IP addresses:"
 msgstr "静态设置的 IP 地址："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "系到指定的以太网卡"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "使用以太网设备别名"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Hardware Address"
 msgstr "硬件地址(_H)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Hardware:"
 msgstr "硬件(_H)："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_High Security (Internet)"
 msgstr "高级安全(互联网)(_H)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Hostname (optional):"
 msgstr "主机名(可选)(_H)："
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Low Security"
 msgstr "低级安全(_L)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Probe"
 msgstr "探测(_P)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Probe for Address..."
 msgstr "探测地址(_P)..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "_Secure Device (LAN)"
 msgstr "安全设备(LAN)(_S)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:49
+#: src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "bootp"
 msgstr "bootp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:50
+#: src/netconfpkg/gui/sharedtcpip.glade.h:51
 msgid "dhcp"
 msgstr "dhcp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:51
+#: src/netconfpkg/gui/sharedtcpip.glade.h:52
 msgid "dialup"
 msgstr "拨号"
 
@@ -3691,11 +3732,11 @@ msgstr "探测地址(_P)"
 msgid "_Use Hardware Address"
 msgstr "使用硬件地址(_U)"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 msgid "Wireless Device Configuration"
 msgstr "无线设备配置"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "Wireless Settings"
 msgstr "无线设置"
 
@@ -3710,6 +3751,9 @@ msgstr "配置互联网连接"
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "互联网配置向导"
+
+#~ msgid "Error opening/writing %s: %s!"
+#~ msgstr "打开或写入 %s 时出错：%s！"
 
 #~ msgid "_ESSID (Network ID):"
 #~ msgstr "_ESSID (网络 ID)："
@@ -3844,4 +3888,3 @@ msgstr "互联网配置向导"
 #~ "向 redhat-config-network 汇报部件错误。多谢！\n"
 #~ "\n"
 #~ "%s"
-

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"POT-Creation-Date: 2002-08-31 22:10-0400\n"
+"POT-Creation-Date: 2002-11-13 16:07+0100\n"
 "PO-Revision-Date: 2002-09-10 00:40+0300\n"
 "Last-Translator: Leon Kanter <leon@blackcatlinux.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -34,7 +34,8 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:61
+#. Just to be safe...
+#: src/netconf.py:64
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -45,72 +46,88 @@ msgstr ""
 "Применение: redhat-config-network-cmd -p --profile <profile>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:67
+#: src/netconf.py:70
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Перезапустите %s с правами пользователя root!"
 
-#: src/netconf.py:118
+#: src/netconf.py:121
 msgid "Common"
 msgstr "Общее"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
+#: src/netconf.py:325
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+
 #. change the default profile to a more understandable name
-#: src/netconf.py:488 src/netconf.py:501
+#: src/netconf.py:493 src/netconf.py:506
 msgid "Do you want to save your changes?"
 msgstr "Сохранить изменения?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:571
+#: src/netconf.py:576
 msgid "The Loopback device can not be edited!"
 msgstr "Изменение настройки устройства loopback невозможно!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:629 src/netconfpkg/gui/GenericInterface.py:133
+#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
 msgid "This device can not be edited with this tool!"
 msgstr "Устройство не может быть настроено при помощи этой программы!"
 
-#: src/netconf.py:651
+#: src/netconf.py:656
 msgid "The Loopback device can not be removed!"
 msgstr "Устройство Loopback не может быть удалено!"
 
-#: src/netconf.py:654
+#: src/netconf.py:659
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Вы действительно хотите удалить устройство \"%s\"?"
 
-#: src/netconf.py:682
+#: src/netconf.py:687
 msgid "You have made some changes in your configuration."
 msgstr "В конфигурацию были внесены изменения."
 
-#: src/netconf.py:683
+#: src/netconf.py:688
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr "Для активирования сетевого устройства %s изменения должны быть сохранены."
+msgstr ""
+"Для активирования сетевого устройства %s изменения должны быть сохранены."
 
-#: src/netconf.py:685
+#: src/netconf.py:690
 msgid "Do you want to continue?"
 msgstr "Продолжить?"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:697 src/neat-control.py:129
+#: src/netconf.py:701 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Активируется сетевое устройство..."
 
-#: src/netconf.py:699 src/neat-control.py:131
+#: src/netconf.py:703 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
+
+#: src/netconf.py:712
+#, fuzzy, python-format
+msgid ""
+"Cannot activate network device %s\n"
+"%s"
+msgstr "Не удается активировать устройство сети %s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:739 src/neat-control.py:170
+#: src/netconf.py:735 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Должно быть переписано!"
 
@@ -127,46 +144,46 @@ msgstr "Должно быть переписано!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:902
+#: src/netconf.py:898
 msgid "The Loopback device can not be disabled!"
 msgstr "Устройство Loopback не может быть запрещено!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1196 src/netconf.py:1273
+#: src/netconf.py:1192 src/netconf.py:1269
 msgid "The name may only contain letters and digits!"
 msgstr "Имя может содержать только буквы и цифры!"
 
-#: src/netconf.py:1200 src/netconf.py:1277
+#: src/netconf.py:1196 src/netconf.py:1273
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Профиль не может быть назван \"%s\"!"
 
-#: src/netconf.py:1205 src/netconf.py:1282
+#: src/netconf.py:1201 src/netconf.py:1278
 msgid "The profile name already exists!"
 msgstr "Имя профиля уже существует!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1254
+#: src/netconf.py:1250
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"основной\" профиль не может быть переименован!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1303
+#: src/netconf.py:1299
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Профиль \"основной\" не может быть удален!"
 
-#: src/netconf.py:1306
+#: src/netconf.py:1302
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Вы действительно хотите удалить профиль \"%s\"?"
 
 #. clist.clear()
-#: src/netconf.py:1398
+#: src/netconf.py:1394
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -175,7 +192,7 @@ msgstr ""
 "или этот тип еще не может быть измнен."
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1440
+#: src/netconf.py:1436
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
@@ -242,10 +259,10 @@ msgstr ""
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:198
+#: src/netconfpkg/gui/EthernetInterface.py:203
 #: src/netconfpkg/gui/CipeInterface.py:132
-#: src/netconfpkg/gui/WirelessInterface.py:261
-#: src/netconfpkg/gui/TokenRingInterface.py:194
+#: src/netconfpkg/gui/WirelessInterface.py:267
+#: src/netconfpkg/gui/TokenRingInterface.py:200
 msgid "You have selected the following information:"
 msgstr "Вы указали следующую информацию:"
 
@@ -306,6 +323,21 @@ msgstr "Номер телефона:"
 msgid "Unknown"
 msgstr "Неизвестный"
 
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
 #. self.set_size_request(-1, 1)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -477,7 +509,7 @@ msgstr "Низкая"
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Medium"
 msgstr "Средняя"
 
@@ -529,7 +561,9 @@ msgstr "Очень высокая"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/cipeconfig.py:141
+#: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:220
 msgid "None - Server Mode"
 msgstr "Нет - режим сервера"
 
@@ -538,46 +572,46 @@ msgid " (dynamic)"
 msgstr " (динамический)"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:176
 #: src/netconfpkg/gui/CipeInterface.py:196
-#: src/netconfpkg/gui/CipeInterface.py:249
+#: src/netconfpkg/gui/CipeInterface.py:256
 msgid "Server Mode"
 msgstr "Режим сервера"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
-#: src/netconfpkg/gui/CipeInterface.py:280
-#: src/netconfpkg/gui/CipeInterface.py:285
+#: src/netconfpkg/gui/cipeconfig.py:208 src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:287
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "(own choice)"
 msgstr "(собственный выбор)"
 
-#: src/netconfpkg/gui/cipeconfig.py:213
-#: src/netconfpkg/gui/CipeInterface.py:291
+#: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "IP Address of Tunnel Device: "
 msgstr "Адрес IP устройства туннеля: "
 
-#: src/netconfpkg/gui/cipeconfig.py:214
-#: src/netconfpkg/gui/CipeInterface.py:292
+#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Port: "
 msgstr "Локальный порт: "
 
-#: src/netconfpkg/gui/cipeconfig.py:215
-#: src/netconfpkg/gui/CipeInterface.py:293
+#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Remote Peer Address: "
 msgstr "Удаленный адрес: "
 
-#: src/netconfpkg/gui/cipeconfig.py:219
-#: src/netconfpkg/gui/CipeInterface.py:297
+#: src/netconfpkg/gui/cipeconfig.py:225
+#: src/netconfpkg/gui/CipeInterface.py:304
 msgid "Remote Virtual Address: "
 msgstr "Удаленный виртуальный адрес: "
 
-#: src/netconfpkg/gui/cipeconfig.py:220
-#: src/netconfpkg/gui/CipeInterface.py:298
+#: src/netconfpkg/gui/cipeconfig.py:226
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "Local Virtual Address: "
 msgstr "Локальный виртуальный адрес: "
 
-#: src/netconfpkg/gui/cipeconfig.py:221
-#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:227
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Secret Key: "
 msgstr "Секретный ключ: "
 
@@ -849,39 +883,39 @@ msgstr "Создать новое соединение Ethernet."
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:179
+#: src/netconfpkg/gui/EthernetInterface.py:184
 msgid "Other Ethernet Card"
 msgstr "Другая карта Ethernet"
 
-#: src/netconfpkg/gui/EthernetInterface.py:199
+#: src/netconfpkg/gui/EthernetInterface.py:204
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/WirelessInterface.py:262
-#: src/netconfpkg/gui/TokenRingInterface.py:195
+#: src/netconfpkg/gui/WirelessInterface.py:268
+#: src/netconfpkg/gui/TokenRingInterface.py:201
 msgid "Device:"
 msgstr "Устройство:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:210
-#: src/netconfpkg/gui/WirelessInterface.py:273
-#: src/netconfpkg/gui/TokenRingInterface.py:206
+#: src/netconfpkg/gui/EthernetInterface.py:215
+#: src/netconfpkg/gui/WirelessInterface.py:279
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Адрес:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/WirelessInterface.py:274
-#: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/EthernetInterface.py:216
+#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Subnet Mask:"
 msgstr "Маска подсети:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:212
-#: src/netconfpkg/gui/WirelessInterface.py:275
-#: src/netconfpkg/gui/TokenRingInterface.py:208
+#: src/netconfpkg/gui/EthernetInterface.py:217
+#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/TokenRingInterface.py:214
 msgid "Default Gateway Address:"
 msgstr "Адрес основного шлюза:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/WirelessInterface.py:277
-#: src/netconfpkg/gui/TokenRingInterface.py:210
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:283
+#: src/netconfpkg/gui/TokenRingInterface.py:216
 msgid "Automatically obtain IP address settings with:"
 msgstr "Автоматически получать адрес IP при помощи:"
 
@@ -969,8 +1003,6 @@ msgid "Remote Peer Address:"
 msgstr "Адрес удаленной машины:"
 
 #: src/netconfpkg/gui/CipeInterface.py:140
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Auto"
 msgstr "Авто"
 
@@ -987,7 +1019,7 @@ msgid "Local Virtual Address:"
 msgstr "Локальный виртуальный адрес:"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:309
+#: src/netconfpkg/gui/CipeInterface.py:316
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
@@ -1019,27 +1051,27 @@ msgid "Create a new wireless connection."
 msgstr "Создать новое беспроводное соединение."
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/WirelessInterface.py:241
+#: src/netconfpkg/gui/WirelessInterface.py:247
 msgid "Other Wireless Card"
 msgstr "Другая беспроводная карта"
 
-#: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/WirelessInterface.py:286
 msgid "Mode: "
 msgstr "Режим: "
 
-#: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/WirelessInterface.py:287
 msgid "ESSID (Network ID):"
 msgstr "ESSID (Network ID):"
 
-#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Channel: "
 msgstr "Канал: "
 
-#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "Transmit Rate: "
 msgstr "Скорость передачи: "
 
-#: src/netconfpkg/gui/WirelessInterface.py:289
+#: src/netconfpkg/gui/WirelessInterface.py:295
 msgid "Key: "
 msgstr "Ключ: "
 
@@ -1067,7 +1099,7 @@ msgid "Create a new Token Ring connection."
 msgstr "Создать новое соединение Token Ring"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/TokenRingInterface.py:176
+#: src/netconfpkg/gui/TokenRingInterface.py:182
 msgid "Other Tokenring Card"
 msgstr "Другая карта Token Ring"
 
@@ -1106,6 +1138,19 @@ msgstr "Другая карта Token Ring"
 #. not a nameserver, so all items on one line...
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
+#: src/netconfpkg/NCCipe.py:155
+msgid ""
+"Directory /etc/cipe is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+
+#: src/netconfpkg/NCCipe.py:159
+msgid ""
+"Could not create\n"
+"directory /etc/cipe!"
+msgstr ""
+
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -1224,17 +1269,6 @@ msgstr "Ошибка загрузки устройства %s!\n"
 #.
 #. write the pap and chap-secrets, if any
 #.
-#.
-#. Static routes
-#.
-#.
-#. traverse all devices in the list
-#.
-#: src/netconfpkg/NCDeviceList.py:149
-#, python-format
-msgid "Error opening/writing %s: %s!"
-msgstr "Ошибка открытия/записи %s: %s!"
-
 #.
 #. Remove old config files
 #.
@@ -1593,7 +1627,8 @@ msgstr ""
 #: src/netconfpkg/NCProfileList.py:134
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
+msgstr ""
+"Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
 
 #: src/netconfpkg/NCProfileList.py:135
 msgid ""
@@ -1658,14 +1693,15 @@ msgid "Software (XON/XOFF)"
 msgstr "Программное (XON/XOFF)"
 
 #. print dev+" has unknown device type, skipping it."
+#. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:347
+#: src/netconfpkg/NC_functions.py:374
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr "Ошибка удаления %s: %s!"
 
-#: src/netconfpkg/NC_functions.py:356 src/netconfpkg/NC_functions.py:365
+#: src/netconfpkg/NC_functions.py:383 src/netconfpkg/NC_functions.py:392
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -1676,7 +1712,7 @@ msgstr ""
 "на\n"
 "%s: %s!"
 
-#: src/netconfpkg/NC_functions.py:374
+#: src/netconfpkg/NC_functions.py:401
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -1772,11 +1808,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:49
+#: src/netconfpkg/Control.py:50
 msgid "Active"
 msgstr "Активно"
 
-#: src/netconfpkg/Control.py:50
+#: src/netconfpkg/Control.py:51
 msgid "Inactive"
 msgstr "Неактивно"
 
@@ -1928,6 +1964,7 @@ msgstr "Сеть"
 #: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:1
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 msgid "*"
 msgstr "*"
@@ -1980,7 +2017,7 @@ msgstr "Оборудование"
 msgid "Hosts"
 msgstr "Hosts"
 
-#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "IP"
 msgstr "IP"
 
@@ -2030,8 +2067,10 @@ msgstr ""
 "логических устройств."
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
-msgstr "Здесь вы можете настроить оборудование, физически подключенное к компьютеру."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"Здесь вы можете настроить оборудование, физически подключенное к компьютеру."
 
 #: src/maindialog.glade.h:29
 msgid ""
@@ -2049,22 +2088,22 @@ msgstr "_Добавить"
 
 #: src/maindialog.glade.h:31 src/netconfpkg/gui/ctcconfig.glade.h:10
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "_Добавить..."
 
-#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Copy"
 msgstr "_Копировать"
 
 #: src/maindialog.glade.h:33 src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Delete"
 msgstr "_Удалить"
 
 #: src/maindialog.glade.h:34 src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Edit..."
 msgstr "_Свойства..."
 
@@ -2168,7 +2207,8 @@ msgstr "Укажите учетное имя, выданное вашим ISP."
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "Укажите имя этого соединения, как правило это просто имя вашего ISP."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -2324,7 +2364,7 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "eth0"
 msgstr "et0"
 
@@ -2332,7 +2372,7 @@ msgstr "et0"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth1"
 msgstr "eth1"
 
@@ -2340,7 +2380,7 @@ msgstr "eth1"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth2"
 msgstr "eth2"
 
@@ -2348,7 +2388,7 @@ msgstr "eth2"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth3"
 msgstr "eth3"
 
@@ -2356,7 +2396,7 @@ msgstr "eth3"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth4"
 msgstr "eth4"
 
@@ -2587,7 +2627,7 @@ msgstr "_MEM:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth5"
 msgstr "eth5"
 
@@ -2603,7 +2643,7 @@ msgstr "eth7"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Configure Network Settings"
 msgstr "Настроить параметры сети"
 
@@ -2618,13 +2658,13 @@ msgstr "Карта Ethernet"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "MTU:"
 msgstr "MTU:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/ctcconfig.glade.h:6
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
@@ -2891,58 +2931,58 @@ msgstr "2M"
 msgid "5.5M"
 msgstr "5.5M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
 msgid "Configure Wireless Connection"
 msgstr "Параметры беспроводного соединения"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Create Wireless Device"
 msgstr "Создать беспроводное устройство"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 msgid "Network Name (SSID):"
 msgstr "Имя сети (SSID):"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid "Select Wireless Device"
 msgstr "Выбор беспроводного устройства"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Select the Wireless card you want to configure:"
 msgstr "Выберите беспроводную плату для этого соединения:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "Wireless card"
 msgstr "Беспроводная карта"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 msgid "_Auto"
 msgstr "_Авто"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 msgid "_Channel:"
 msgstr "_Канал:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Key:"
 msgstr "_Ключ:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Mode:"
 msgstr "_Режим:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Specified:"
 msgstr "_Указано:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Transmit Rate:"
 msgstr "_Скорость передачи:"
 
@@ -2970,7 +3010,7 @@ msgstr "Настройка CIPE"
 #: src/netconfpkg/gui/dslconfig.glade.h:13
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 msgid "General"
 msgstr "Общие"
 
@@ -2992,7 +3032,7 @@ msgstr "Настройки туннеля"
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "_Activate device when computer starts"
 msgstr "_Активировать устройство при запуске компьютера"
 
@@ -3002,7 +3042,7 @@ msgstr "_Активировать устройство при запуске к�
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Nickname: "
 msgstr "Псевдоним: "
 
@@ -3011,7 +3051,7 @@ msgid "CTC Configuration"
 msgstr "Настройка CTC"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3023,7 +3063,7 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "Hardware Device"
 msgstr "Аппаратное устройство"
 
@@ -3037,7 +3077,7 @@ msgstr "Протоколы"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Hardware Device:"
 msgstr "_Аппаратное устройство:"
 
@@ -3303,7 +3343,7 @@ msgid "Add / Edit IP Address"
 msgstr "Добавить / Изменить адрес IP"
 
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Address:"
 msgstr "_Адрес:"
 
@@ -3312,7 +3352,7 @@ msgid "_Gateway:"
 msgstr "_Шлюз:"
 
 #: src/netconfpkg/gui/editadress.glade.h:5
-#: src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "_Subnet Mask:"
 msgstr "_Маска подсети:"
 
@@ -3504,39 +3544,40 @@ msgstr "redhat network control - Свойства"
 msgid "%P %%"
 msgstr "%P %%"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "Automatically obtain _DNS information from provider"
 msgstr "Автоматически получать информацию _DNS от провайдера"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "Автоматически получать адрес _IP при помощи:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Bind to _MAC Address:"
 msgstr "Привязаться к _MAC-адресу:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "DHCP Settings"
 msgstr "Параметры TCP/IP"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "Default _Gateway Address:"
 msgstr "Адрес _шлюза по умолчанию:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:6
+#: src/netconfpkg/gui/sharedtcpip.glade.h:7
 msgid "Destination Network"
 msgstr "Сеть назначения"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:7
-msgid "Device _Aliases:"
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#, fuzzy
+msgid "Device _Alias Number:"
 msgstr "_Псевдоним устройства:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
 msgstr "Уровень сложности:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:9
+#: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
@@ -3544,139 +3585,139 @@ msgstr ""
 "Каждое соединение должно быть привязано к физическому устройству, которое "
 "может быть выбрано ниже."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
 msgstr "Простой"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:11
+#: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Enter your device bound traffic rules here."
 msgstr "Введите свои правила ограничения трафика на устройстве."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:12
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "Gateway"
 msgstr "Шлюз"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
 msgid "Hardware Device:"
 msgstr "Аппаратное устройство:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
 msgstr "Использовать следующий адрес IP:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Mask"
 msgstr "Маска"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Maximum In"
 msgstr "Максимальный вход"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Maximum Out"
 msgstr "Максимальный выход"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Minimum In"
 msgstr "Минимальный вход"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
 msgid "Minimum Out"
 msgstr "Минимальный выход"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Please select the level of security for this device."
 msgstr "Выберите уровень безопасности для этого устройства"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Port"
 msgstr "Порт"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Prefix (Netmask)"
 msgstr "Маска подсети"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Professional"
 msgstr "Профессиональный"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Security Level"
 msgstr "Уровень безопасности"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Select the services you want to provide through this device"
 msgstr "Выберите сервисы, которые вы хотите предоставлять через это устройство"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Service"
 msgstr "Сервис"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Service Description"
 msgstr "Описание устройства"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Services"
 msgstr "Сервисы"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "Статические сетевые маршруты"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Statically set IP addresses:"
 msgstr "Устанавливать статический адрес IP:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "Привязаться к указанной плате ethernet"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "Использовать псевдонимы устройств ethernet"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Hardware Address"
 msgstr "_Аппаратный адрес:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Hardware:"
 msgstr "_Оборудование:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_High Security (Internet)"
 msgstr "Высокий уровень (Интернет)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Hostname (optional):"
 msgstr "Имя машины (необязательно):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Low Security"
 msgstr "Низкая безопасность"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Probe"
 msgstr "_Определить"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Probe for Address..."
 msgstr "_Определить адрес..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "_Secure Device (LAN)"
 msgstr "_Безопасное устройство (LAN)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:49
+#: src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "bootp"
 msgstr "bootp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:50
+#: src/netconfpkg/gui/sharedtcpip.glade.h:51
 msgid "dhcp"
 msgstr "dhcp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:51
+#: src/netconfpkg/gui/sharedtcpip.glade.h:52
 msgid "dialup"
 msgstr "dialup"
 
@@ -3719,11 +3760,11 @@ msgstr "_Определить адрес"
 msgid "_Use Hardware Address"
 msgstr "Использовать аппаратный адрес"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 msgid "Wireless Device Configuration"
 msgstr "Конфигурация беспроводного устройства"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "Wireless Settings"
 msgstr "Настройки беспроводной связи"
 
@@ -3739,6 +3780,9 @@ msgstr "Настраивает ваше подключение к Интерне
 msgid "Internet Configuration Wizard"
 msgstr "Мастер подключения к Интернет"
 
+#~ msgid "Error opening/writing %s: %s!"
+#~ msgstr "Ошибка открытия/записи %s: %s!"
+
 #~ msgid "_ESSID (Network ID):"
 #~ msgstr "_ESSID (Network ID):"
 
@@ -3747,4 +3791,3 @@ msgstr "Мастер подключения к Интернет"
 
 #~ msgid "Managed"
 #~ msgstr "Управляемый"
-
