@@ -386,6 +386,7 @@ class ModemDialupDialog(DialupDialog):
         dialog = ModemproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
         dl.run()
+        dl.destroy()
         DialupDialog.hydrate(self)
         self.hydrate()
         

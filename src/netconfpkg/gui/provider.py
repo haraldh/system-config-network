@@ -88,7 +88,8 @@ class providerDialog:
         self.device.commit()
         
     def on_providerTree_tree_select_row(self, ctree, node, column):
-        if len(node.get_children()) == 0:
+        node = ctree.selection[0]
+        if len(node.children) == 0:
             try:
                 self.country = ctree.get_node_info(node.parent.parent)[0]
                 self.city = ctree.get_node_info(node.parent)[0]

@@ -219,8 +219,5 @@ class cipeConfigDialog(deviceConfigDialog):
         mytxt = mytxt + _("Remote Virtual Address: ") + str(localvirtualaddress) + "\n"
         mytxt = mytxt + _("Local Virtual Address: ") + str(remotevirtualaddress) + "\n"
         mytxt = mytxt + _("Secret Key: ") + str(secretkey) + "\n"
-        widget = self.xml.get_widget("remoteConfigTxt")
-        if widget.get_length():
-            widget.delete_text(0, widget.get_length()-1)
-        widget.insert_defaults(mytxt)
-        widget.set_position(0)
+        widget = self.xml.get_widget("remoteConfigTxt").get_buffer()
+        widget.set_text(mytxt)
