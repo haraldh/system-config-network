@@ -92,6 +92,8 @@ class mainDialog:
         self.dialog.connect('hide', gtk.mainquit)
         load_icon('pixmaps/control.xpm', self.dialog)
         self.xml.get_widget('pixmap').load_file('pixmaps/control.xpm')
+        clist = self.xml.get_widget('interfaceClist')
+        clist.column_titles_passive ()
         self.hydrate()
         
     def on_Dialog_delete_event(self, *args):
