@@ -68,8 +68,6 @@ def dhcp_hydrate (xml, device):
             device_type = 'dhcp'
 
     if device.BootProto == "static" or device.BootProto == "none":
-        xml.get_widget('ipAutomaticRadio').set_active(TRUE)
-        xml.get_widget('ipStaticRadio').set_active(TRUE)
         if device.IP:
             xml.get_widget('ipAddressEntry').set_text(device.IP)
         else:
@@ -82,15 +80,17 @@ def dhcp_hydrate (xml, device):
             xml.get_widget('ipGatewayEntry').set_text(device.Gateway)
         else:
             xml.get_widget('ipGatewayEntry').set_text('')
-    else:
+        xml.get_widget('ipAutomaticRadio').set_active(FALSE)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
-        xml.get_widget('ipAutomaticRadio').set_active(TRUE)
+    else:
         if device_type == 'dialup':
             xml.get_widget("ipProtocolOmenu").set_history(DIALUP)
         elif device_type == 'bootp':
             xml.get_widget("ipProtocolOmenu").set_history(BOOTP)
         else:
             xml.get_widget("ipProtocolOmenu").set_history(DHCP)
+        xml.get_widget('ipStaticRadio').set_active(FALSE)
+        xml.get_widget('ipAutomaticRadio').set_active(TRUE)
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
