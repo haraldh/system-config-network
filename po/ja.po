@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "POT-Creation-Date: 2003-01-20 17:38+0100\n"
-"PO-Revision-Date: 2003-01-14 08:50GMT+10:00\n"
+"PO-Revision-Date: 2003-01-21 09:17GMT+10:00\n"
 "Last-Translator: James Hashida <khashida@redhat.com>\n"
 "Language-Team: Japanese <i18-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -34,13 +34,12 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Copyright
 #: src/neat-control.py:60
-#, fuzzy
 msgid ""
 "This software is distributed under the GPL. ''Please Report bugs to Red "
 "Hat's Bug Tracking System: ''http://bugzilla.redhat.com/"
 msgstr ""
-"このソフトウェアはGPLの元で配布されています。バグに関する報告は Red Hatの "
-"Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
+"このソフトウェアはGPLの元で配布されています。「バグ報告は Red Hatのバグ "
+"追跡システムまで送ってください」: http://bugzilla.redhat.com/"
 
 #. Some command strings
 #. Let this dialog be in the taskbar like a normal window
@@ -62,14 +61,12 @@ msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. Display dialog notification of action
 #: src/neat-control.py:230
-#, fuzzy
 msgid "Activating profile..."
-msgstr "プロファイルを更新しています..."
+msgstr "プロファイルを起動しています..."
 
 #: src/neat-control.py:233
-#, fuzzy
 msgid "Activating the selected profile, please wait..."
-msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい...."
+msgstr "選択したプロファイルを起動中です。お待ち下さい..."
 
 #. Disable the activate button
 #. Get the profile to activate from the menu
@@ -77,9 +74,10 @@ msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい
 #. Check results of the activation
 #: src/neat-control.py:252
 #, python-format
-msgid ""
-"Not all network interfaces in selected profile \"%s\" could be activated."
+msgid "Not all network interfaces in selected profile \"%s\" could be activated."
 msgstr ""
+"選択したプロファイル\"%s\"のネットワークインターフェイスを全て起動することは "
+"出来ません。"
 
 #. Re-read the device list
 #. Update the gui
@@ -89,12 +87,11 @@ msgstr ""
 #. Continue with auto select
 #: src/neat-control.py:279
 msgid "Attempting to auto-detect and activate a valid profile, please wait..."
-msgstr ""
+msgstr "有効なプロファイルを自動検出し起動しようとしています。お待ち下さい..."
 
 #: src/neat-control.py:281
-#, fuzzy
 msgid "Autoselecting profile..."
-msgstr "プロファイルを更新しています..."
+msgstr "プロファイルを自動選択しています..."
 
 #. Check status of the auto select script and respond accordingly
 #. Grab any error output
@@ -282,7 +279,6 @@ msgstr "ネットワーク設定をロードしています..."
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:61
-#, fuzzy
 msgid ""
 "redhat-config-network-cmd - network configuration commandline tool\n"
 "\n"
@@ -290,7 +286,7 @@ msgid ""
 msgstr ""
 "redhat-config-network -cmd- ネットワークの設定コマンドラインツール\n"
 "\n"
-"使用法: redhat-config-network-cmd -p --profile <profile>"
+"使用法: redhat-config-network-cmd -p --profile <profile>-a --activate"
 
 #. print "%s.%s" % (pname, child)
 #. printObj(val, "%s.%s" % (parent, child))
@@ -1324,8 +1320,7 @@ msgstr "設定の中で変更がされました。"
 #: src/netconfpkg/gui/maindialog.py:740
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
+msgstr "ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
 
 #: src/netconfpkg/gui/maindialog.py:742
 msgid "Do you want to continue?"
@@ -1995,8 +1990,7 @@ msgstr "/etc/hostsをデフォルトプロファイルにコピー中です。"
 #: src/netconfpkg/NCProfileList.py:159
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
-"デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
+msgstr "デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
 
 #: src/netconfpkg/NCProfileList.py:161
 msgid ""
@@ -2071,8 +2065,7 @@ msgid "Software (XON/XOFF)"
 msgstr "ソフトウェア(XON/XOFF)"
 
 #: src/netconfpkg/NC_functions.py:136
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr "システムに必要とされる次のパッケージをインストールしますか?"
 
 #. test for wireless
@@ -2285,8 +2278,7 @@ msgstr ""
 #: src/netconfpkg/NCDevice.py:197
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr ""
-"%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
+msgstr "%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
 
 #: src/netconfpkg/NCDevice.py:228
 #, python-format
@@ -3831,3 +3823,4 @@ msgstr "インターネット設定ウィザード"
 #~ "さい。\n"
 #~ " ありがとうございます。 \n"
 #~ "%s "
+
