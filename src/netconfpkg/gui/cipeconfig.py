@@ -185,16 +185,16 @@ class cipeConfigDialog(deviceConfigDialog):
         
 
     def updateRemoteOptions(self, *args):
-
         ethw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(ethw)
-        d = fields[0]
         ip = '0.0.0.0 (auto)'
-        
         devlist = NCDeviceList.getDeviceList()
-        for dev in devlist:
-            if dev.Device == d:
-                ip = dev.IP
+
+        if len(fields):
+            d = fields[0]
+            for dev in devlist:
+                if dev.Device == d:
+                    ip = dev.IP        
 
         addr = self.xml.get_widget("remotePeerAddressEntry").get_text()
         port = self.xml.get_widget("remotePeerPortEntry").get_text()
