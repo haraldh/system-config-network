@@ -25,7 +25,6 @@ PROGNAME='system-config-network'
 
 import sys
 import os
-from rhpl.log import log
 # Just to be safe...
 os.umask(0022)
 
@@ -62,6 +61,7 @@ except RuntimeError, msg:
 
 from version import PRG_VERSION
 from version import PRG_NAME
+from netconfpkg.NC_functions import log
 
 sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
                                                          PROGNAME, PRG_VERSION)
@@ -185,7 +185,6 @@ if __name__ == '__main__':
     import getopt
     class BadUsage: pass
     splash_window = None
-    from rhpl.log import log
     from netconfpkg import NC_functions
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
@@ -235,21 +234,11 @@ if __name__ == '__main__':
         sys.exit(1)    
 
     if not NC_functions.getDebugLevel():
-        import os
-
-        log.handler = NC_functions.LogFile.syslog_handler
-
-        try:
-            if os.path.isfile(logfilename):
-                os.chmod(logfilename, 0600)
-            fd = os.open(logfilename,
-                         os.O_APPEND|os.O_WRONLY|os.O_CREAT,
-                         0600)
-        except:
-            pass
-        else:                  
-            lfile = os.fdopen(fd, "a")        
-            log.open(lfile)
+        log.handler = log.syslog_handler
+        log.open()
+    else:
+        log.handler = log.file_handler
+        log.open(sys.stderr)
 
     if chroot:
         NC_functions.setRoot(chroot)
