@@ -1060,6 +1060,8 @@ class mainDialog:
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
             if not edit:
                 hw = Hardware()
+                hw.Type = deviceType
+                hw.createCard()
             else:
                 clist = self.xml.get_widget('hardwareList')
 
@@ -1080,9 +1082,13 @@ class mainDialog:
                 for hw in hardwarelist:
                     if hw.Name == dev:
                         break;
-                dialog = editmodemDialog(hw.Name)
             else:
-                dialog = addmodemDialog()
+                hw = Hardware()
+                hw.Description = 'Generic Modem'
+                hw.Type = MODEM
+                hw.createModem()
+            
+            dialog = modemDialog(hw)
 
         if deviceType == ISDN:
             if edit:
@@ -1093,9 +1099,11 @@ class mainDialog:
                 for hw in hardwarelist:
                     if hw.Description == Description:
                         break;
-                dialog = editisdnHardwareDialog(hw.Description)
             else:
-                dialog = addisdnHardwareDialog()
+                hw = Hardware()
+                hw.Type = ISDN
+                hw.createCard()
+                dialog = editisdnHardwareDialog(hw)
 
         button = dialog.xml.get_widget('Dialog').run()
         

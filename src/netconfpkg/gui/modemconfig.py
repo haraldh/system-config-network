@@ -32,12 +32,13 @@ from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import modemDeviceList
+from netconfpkg.NC_functions import modemFlowControls
 from netconfpkg.gui.GUI_functions import load_icon
 from gtk import TRUE
 from gtk import FALSE
 
 class modemDialog:
-    def __init__(self):
+    def __init__(self, device):
         glade_file = "modemconfig.glade"
 
         if not os.path.exists(glade_file):
@@ -53,108 +54,92 @@ class modemDialog:
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
 
-        self.edit = FALSE
-        self.Name = None
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
+        self.hw = device
+
         self.setup()
         self.hydrate()
-        #self.button = 0
+
         
     def on_Dialog_delete_event(self, *args):
-        #self.button = 1
         pass
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
-        #self.button = 1
         pass
 
     def setup(self):
-        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modemDeviceList)
+        self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
+        flowcontrols = []
+        for i in modemFlowControls.keys():
+            flowcontrols.append(modemFlowControls[i])
+        self.xml.get_widget("flowControlCombo").set_popdown_strings(flowcontrols)        
 
     def hydrate(self):
         pass
+
+    def hydrate(self):
+        hardwarelist = NCHardwareList.getHardwareList()
+
+        if self.hw.Modem.DeviceName:
+            self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
+        if self.hw.Modem.BaudRate:
+            self.xml.get_widget('baurateEntry').set_text(str(self.hw.Modem.BaudRate))
+        if self.hw.Modem.FlowControl and modemFlowControls.has_key(self.hw.Modem.FlowControl):
+            self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
+        if self.hw.Modem.ModemVolume:
+            self.xml.get_widget('volumeMenu').set_history(int(self.hw.Modem.ModemVolume))
+        if self.hw.Modem.DialCommand:
+            self.xml.get_widget('toneDialingCB').set_active(self.hw.Modem.DialCommand == 'ATDT')
 
     def dehydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
 
         modem_list = []
-        if not self.edit:
+        if not self.hw.Name:
             for i in hardwarelist:
                 if i.Type == "Modem":
                     modem_list.append(i.Name)
             if modem_list:
                 for i in xrange(100):
                     if modem_list.count("Modem"+str(i)) == 0:
-                        self.Name = "Modem" + str(i)
+                        self.hw.Name = "Modem" + str(i)
                         break
             else:
-                self.Name = "Modem0"
+                self.hw.Name = "Modem0"
             
-            id = hardwarelist.addHardware()
-            hw = hardwarelist[id]
-            hw.Type = "Modem"
-            hw.Name = self.Name
-            hw.Description = "Generic Modem"
-            hw.createModem()
-        else:
-            for hw in hardwarelist:
-                if hw.Name == self.Name:
-                    break
-
-        hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
+        self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
         if os.path.dirname(hw.Modem.DeviceName) != '/dev':
-            hw.Modem.DeviceName = '/dev/' + os.path.basename(hw.Modem.DeviceName)
-        hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
-        hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
+            self.hw.Modem.DeviceName = '/dev/' + os.path.basename(hw.Modem.DeviceName)
+        self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
+
+        flow = self.xml.get_widget("flowControlEntry").get_text()
+        for i in modemFlowControls.keys():
+            if modemFlowControls[i] == flow:
+                self.hw.Modem.FlowControl = i
+            
         Item = self.xml.get_widget("volumeMenu")["label"]
         if Item == _("Off"):
-            hw.Modem.ModemVolume = 0
+            self.hw.Modem.ModemVolume = 0
         elif Item == _("Low"):
-            hw.Modem.ModemVolume = 1
+            self.hw.Modem.ModemVolume = 1
         elif Item == _("Medium"):
-            hw.Modem.ModemVolume = 2
+            self.hw.Modem.ModemVolume = 2
         elif Item == _("High"):
-            hw.Modem.ModemVolume = 3
+            self.hw.Modem.ModemVolume = 3
         elif Item == _("Very High"):
-            hw.Modem.ModemVolume = 4
+            self.hw.Modem.ModemVolume = 4
         else:
-            hw.Modem.ModemVolume = 0
+            self.hw.Modem.ModemVolume = 0
             
         if self.xml.get_widget("toneDialingCB")["active"]:
-            hw.Modem.DialCommand = "ATDT"
+            self.hw.Modem.DialCommand = "ATDT"
         else:
-            hw.Modem.DialCommand = "ATDP"
-
-class addmodemDialog(modemDialog):
-    def __init__(self):
-        modemDialog.__init__(self)
-        self.edit = FALSE
-
-class editmodemDialog(modemDialog):
-    def __init__(self, Dev):
-        self.Dev = Dev
-        modemDialog.__init__(self)
-        self.edit = TRUE
-        self.Name = self.Dev
-        
-    def hydrate(self):
-        hardwarelist = NCHardwareList.getHardwareList()
-
-        for hw in hardwarelist:
-            if hw.Name == self.Dev:
-                self.xml.get_widget('modemDeviceEntry').set_text(hw.Modem.DeviceName)
-                self.xml.get_widget('baurateEntry').set_text(str(hw.Modem.BaudRate))
-                if hw.Modem.FlowControl:
-                    self.xml.get_widget('flowControlEntry').set_text(hw.Modem.FlowControl)
-                self.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume))
-
-                self.xml.get_widget('toneDialingCB').set_active(hw.Modem.DialCommand == 'ATDT')
-
+            self.hw.Modem.DialCommand = "ATDP"
 
 # make ctrl-C work
 if __name__ == "__main__":

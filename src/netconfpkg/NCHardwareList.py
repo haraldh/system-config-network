@@ -159,7 +159,7 @@ class HardwareList(HardwareList_base):
             hw = self.data[i]
             hw.Name = "ISDN Card 0"
             hw.Description = isdncard.Description
-            hw.Type = "ISDN"
+            hw.Type = ISDN
             hw.createCard()
             hw.Card.ModuleName = isdncard.ModuleName
             hw.Card.Type = isdncard.Type
@@ -183,19 +183,26 @@ class HardwareList(HardwareList_base):
             hw = self.data[i]
             hw.Name = dev
             hw.Description = 'Generic Modem'
-            hw.Type = 'Modem'
+            hw.Type = MODEM
             hw.createModem()
             if not wvdial[dev].has_key('Modem'): wvdial[dev]['Modem'] = '/dev/modem'
             hw.Modem.DeviceName = wvdial[dev]['Modem']
+            
             if not wvdial[dev].has_key('Baud'): wvdial[dev]['Baud'] = '115200'
             hw.Modem.BaudRate = int(wvdial[dev]['Baud'])
+            
             if not wvdial[dev].has_key('SetVolume'): wvdial[dev]['SetVolume'] = '0'
             hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
+            
             if not wvdial[dev].has_key('Dial Command'): wvdial[dev]['Dial Command'] = 'ATDT'
             hw.Modem.DialCommand = wvdial[dev]['Dial Command']
-            if not hw.Modem.InitString: wvdial[dev]['Init1'] = 'ATZ'
+            
+            if not wvdial[dev].has_key('Init1'): wvdial[dev]['Init1'] = 'ATZ'
             hw.Modem.InitString =  wvdial[dev]['Init1']
-                
+
+            if not wvdial[dev].has_key('FlowControl'): wvdial[dev]['FlowControl'] = CRTSCTS
+            hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
+                            
         self.commit(changed=false)
         
     def save(self):
@@ -222,6 +229,7 @@ class HardwareList(HardwareList_base):
                 wvdial[hw.Name]['Dial Command'] = str(hw.Modem.DialCommand)
                 if not hw.Modem.InitString: hw.Modem.InitString = 'ATZ'
                 wvdial[hw.Name]['Init1'] = str(hw.Modem.InitString)
+                wvdial[hw.Name]['FlowControl'] = str(hw.Modem.FlowControl)
             if hw.Type == "ISDN":
                 isdn.Description = hw.Description
                 isdn.Type = hw.Card.Type

@@ -71,6 +71,13 @@ deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
 		   '^ctc[0-9]+(:[0-9]+)?$' : CTC,
 		   '^iucv[0-9]+(:[0-9]+)?$' : IUCV
 		   }
+CRTSCTS = "CRTSCTS"
+XONXOFF = "XONXOFF"
+NOFLOW = "NOFLOW"
+
+modemFlowControls = { CRTSCTS : _("Hardware (CRTSCTS)"),
+		      XONXOFF : _("Software (XON/XOFF)"),
+		      NOFLOW :  _("None") } 
 
 class TestError(Exception):
 	def __init__(self, args=None):
