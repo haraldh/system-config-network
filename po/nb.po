@@ -85,7 +85,7 @@ msgstr "Skriv inn brukernavn for denne kontoen."
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/glade-strings.c:599 ../src/netconfpkg/ModemInterface.py:131
+#: ../src/glade-strings.c:599 ../src/netconfpkg/ModemInterface.py:133
 msgid "Off"
 msgstr "Av"
 
@@ -181,6 +181,10 @@ msgstr "Velg type maskinvare"
 msgid "Hardware:"
 msgstr "Maskinvare:"
 
+#: ../src/netconfpkg/NC_functions.py:179
+msgid "Cancel"
+msgstr "Avbryt"
+
 #: ../src/glade-strings.c:928
 msgid "_Low Security"
 msgstr "_Lav sikkerhet"
@@ -213,7 +217,7 @@ msgstr "La _PPP gjøre all autentisering"
 msgid "12"
 msgstr "12"
 
-#: ../src/glade-strings.c:457 ../src/netconfpkg/ModemInterface.py:137
+#: ../src/glade-strings.c:457 ../src/netconfpkg/ModemInterface.py:139
 msgid "High"
 msgstr "Høy"
 
@@ -295,14 +299,16 @@ msgid ""
 "example, if you need to reach an outside line, or disable call waiting, put "
 "the necessary numbers here."
 msgstr ""
+"Oppgi numre som brukes for å oppnå en normal telefonline. Her kan\n"
+"oppgis nummer for å ringe ut av en intern sentral."
 
 #: ../src/glade-strings.c:368
 msgid ""
 "Enter the Access Concentrator name, if you have been given one by your ISP. "
 "In most cases you can leave this blank."
 msgstr ""
-"Skriv inn navnet på din \"Access Concentrator\", hvis din ISP har oppgitt en. I de fleste "
-" tilfeller behøver ikke denne settes."
+"Skriv inn navnet på din \"Access Concentrator\", hvis din ISP har oppgitt "
+"en. I de fleste  tilfeller behøver ikke denne settes."
 
 #: ../src/glade-strings.c:309
 msgid "Dialup Configuration"
@@ -380,6 +386,10 @@ msgstr "Vertsnavn"
 msgid "TCP/IP"
 msgstr "TCP/IP"
 
+#: ../src/netconfpkg/NC_functions.py:179 ../src/netconfpkg/NC_functions.py:196
+msgid "No"
+msgstr "Nei"
+
 #: ../src/glade-strings.c:374
 msgid "Enter the area code needed to reach your internet provider."
 msgstr "Skriv inn områdekoden som kreves for å nå din internett-tilbyder."
@@ -418,7 +428,8 @@ msgstr ""
 
 #: ../src/glade-strings.c:407
 msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr "Skriv inn lokalt telefonnummer. Dette er valgfritt hvis du bruker modem."
+msgstr ""
+"Skriv inn lokalt telefonnummer. Dette er valgfritt hvis du bruker modem."
 
 #: ../src/glade-strings.c:244
 msgid "Configuration for your remote partner"
@@ -467,7 +478,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
-"Her konfigureres nettverkshardware som er fysisk satt opp for datamaskinen. \n"
+"Her konfigureres nettverkshardware som er fysisk satt opp for "
+"datamaskinen. \n"
 "\n"
 "\n"
 
@@ -535,7 +547,7 @@ msgstr "Domenenavn:"
 msgid "New Interface"
 msgstr "Nytt grensesnitt"
 
-#: ../src/glade-strings.c:538 ../src/netconfpkg/ModemInterface.py:135
+#: ../src/glade-strings.c:538 ../src/netconfpkg/ModemInterface.py:137
 msgid "Medium"
 msgstr "Middels"
 
@@ -569,6 +581,8 @@ msgid ""
 "below. Device Alias support allows you to use multiple virtual devices for "
 "one physical device."
 msgstr ""
+"Hver enhet må være knyttet til en fysisk enhet som kan velges under.\n"
+"Det kan være flere virtuelle enheter for hver fysisk enhet."
 
 #: ../src/glade-strings.c:866
 msgid "_Device:"
@@ -591,6 +605,8 @@ msgid ""
 "Enter the Service Name, if your ISP requires it. If you don't know it, "
 "please contact your ISP. In most cases you can leave this blank."
 msgstr ""
+"Oppgi tjenestenavnet hvis din ISP trenger dette. I de fleste tilfeller\n"
+"kan denne verdien være blank - trenger du den, kontakt din ISP."
 
 #: ../src/netconf.py:907
 msgid "The \"default\" profile can't be renamed!"
@@ -712,7 +728,7 @@ msgstr "Br_uk synkron PPP"
 msgid "xDSL Configuration"
 msgstr "Konfigurasjon av xDSL"
 
-#: ../src/glade-strings.c:775 ../src/netconfpkg/ModemInterface.py:139
+#: ../src/glade-strings.c:775 ../src/netconfpkg/ModemInterface.py:141
 msgid "Very High"
 msgstr "Meget høy"
 
@@ -849,7 +865,8 @@ msgid "Minimum In"
 msgstr "Minimum inn"
 
 #: ../src/glade-strings.c:387
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "Skriv inn navn på denne konfigurasjonen. Vanligvis navnet på din ISP."
 
 #: ../src/netconf.py:853 ../src/netconf.py:919
@@ -886,7 +903,7 @@ msgid ""
 "are common in the United States, and are gaining acceptance elsewhere.  "
 "Speeds vary according to the technology used, but generally range from "
 "144kbps to 1.0Mbps."
-msgstr ""
+msgstr "Opprett en xDSL-forbindelse. Dette er fellesbetegnelsen på flere ulike bredbåndsforbindelsestyper, \"Digital Subscriber Lines\".  Blant disse er ADSL (asymmetrisk, raskere ned- enn opplasting), IDSL (over en ISDN-linje for større avstander) SDSL (symmetrisk, opp- og nedlasting har samme hastighet). "
 
 #: ../src/glade-strings.c:856
 msgid "_Delete"
@@ -938,8 +955,8 @@ msgid ""
 "DNS is in use, these settings will take precedence over any information it "
 "may provide."
 msgstr ""
-"Du kan spesifisere statiske maskinavn-til-IP-bindinger her. Hvis DNS er i bruk "
-"vil disse innstillingene overstyre informasjon fra DNS."
+"Du kan spesifisere statiske maskinavn-til-IP-bindinger her. Hvis DNS er i "
+"bruk vil disse innstillingene overstyre informasjon fra DNS."
 
 #: ../src/glade-strings.c:83
 msgid "15"
@@ -1073,7 +1090,7 @@ msgstr "Skriv inn tilbydernavn for denne kontoen."
 msgid "_New..."
 msgstr "_Ny..."
 
-#: ../src/glade-strings.c:516 ../src/netconfpkg/ModemInterface.py:133
+#: ../src/glade-strings.c:516 ../src/netconfpkg/ModemInterface.py:135
 msgid "Low"
 msgstr "Lav"
 
@@ -1101,6 +1118,10 @@ msgstr "Maskinvare (CRTSCTS)"
 msgid "tr0"
 msgstr "tr0"
 
+#: ../src/netconfpkg/NC_functions.py:179 ../src/netconfpkg/NC_functions.py:196
+msgid "Yes"
+msgstr "Ja"
+
 #: ../src/netconfpkg/ModemInterface.py:71
 msgid ""
 "Create a new Modem connection.  This is a connection that uses a serial "
@@ -1110,8 +1131,9 @@ msgid ""
 "a phone system."
 msgstr ""
 "Lag en ny modem-forbindelse. Dette er en forbindelse som bruker et analogt "
-"modem for å ringe opp din Internett-tilbyder. Modem bruker lyd over en normal "
-"telefonlinje for å overføre data. Denne typen forbindelser er utbredt i hele verden."
+"modem for å ringe opp din Internett-tilbyder. Modem bruker lyd over en "
+"normal telefonlinje for å overføre data. Denne typen forbindelser er utbredt "
+"i hele verden."
 
 #: ../src/glade-strings.c:747
 msgid "Token Ring Device"
@@ -1129,7 +1151,8 @@ msgstr "Hver enhet må kobles til en fysisk enhet, som kan velges under."
 
 #: ../src/glade-strings.c:398
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "Skriv inn telefonnummer til din ISP (uten prefiks/retningsnummer/landskode)."
+msgstr ""
+"Skriv inn telefonnummer til din ISP (uten prefiks/retningsnummer/landskode)."
 
 #: ../src/glade-strings.c:781
 msgid "Wireless Settings"
@@ -1445,11 +1468,12 @@ msgid ""
 "from 64kbps to 128kbps."
 msgstr ""
 "Sett opp en ISDN-forbindelse. Dette er en forbindelse som bruker en "
-"\"Integrated Services-Digital-Network\"-linje for å-ringe-opp din Internettilbyder. "
-"Denne teknologien krever at en spesiell telefonlinje er installert av din-teletilbyder. "
-"Den krever også et terminaladapter(TA) for å terminere ISDN-forbindelsen fra din "
-"ISP. Denne typen forbindelser er populær i Europa og enkelte andre regioner. ISDN "
-"er tilgjengelig, med lite utbredt i USA."
+"\"Integrated Services-Digital-Network\"-linje for å-ringe-opp din "
+"Internettilbyder. Denne teknologien krever at en spesiell telefonlinje er "
+"installert av din-teletilbyder. Den krever også et terminaladapter(TA) for å "
+"terminere ISDN-forbindelsen fra din ISP. Denne typen forbindelser er populær "
+"i Europa og enkelte andre regioner. ISDN er tilgjengelig, med lite utbredt i "
+"USA."
 
 #: ../src/glade-strings.c:766
 msgid "Unknown"
@@ -1474,4 +1498,3 @@ msgstr "_Alias:"
 #: ../src/netconfpkg/ModemInterface.py:126
 msgid "Generic Modem"
 msgstr "Vanlig modem"
-
