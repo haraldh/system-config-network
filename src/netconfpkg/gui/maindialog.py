@@ -1398,12 +1398,16 @@ class mainDialog:
                 elif type == ISDN and d.Type == ISDN:
                     found = TRUE
                 elif type == ETHERNET:
+                    # DSL
                     if d.Dialup and d.Dialup.EthDevice == dev:
                         found = TRUE
+                    # CIPE
                     elif d.Cipe and d.Cipe.TunnelDevice == dev:
                         found = TRUE
+                    # WIRELESS
                     elif d.Wireless and d.Device == dev:
                         found = TRUE
+                    # ETHERNET
                     elif d.Device == dev:
                         found = TRUE
                 elif type == TOKENRING and d.Device == dev:
