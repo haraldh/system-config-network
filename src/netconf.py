@@ -1342,7 +1342,8 @@ class mainDialog:
 
     def showHardwareDialog(self, deviceType, edit):
         hardwarelist = getHardwareList()
-
+        dialog = None
+        
         if deviceType == ETHERNET or deviceType == TOKENRING  or  \
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
             if not edit:
@@ -1392,6 +1393,13 @@ class mainDialog:
                 hw.createCard()
 
             dialog = isdnHardwareDialog(hw)
+
+        if not dialog:
+            gneric_error_dialog (_("Sorry, there is nothing to be edited,\n"
+                                   "or this type cannot be edited yet."),
+                                  self.dialog)
+            return
+            
             
         dl = dialog.xml.get_widget('Dialog')
         dl.set_transient_for(self.dialog)
