@@ -1,11 +1,12 @@
 #! /usr/bin/python
+# -*- coding: utf-8 -*-
 
 ## netconf - A network configuration tool
 ## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-## Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+## Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -363,5 +364,5 @@ if __name__ == '__main__':
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/01 15:20:33 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2003/12/16 11:19:01 $"
+__version__ = "$Revision: 1.17 $"

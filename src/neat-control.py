@@ -1,4 +1,5 @@
 #! /usr/bin/python
+# -*- coding: utf-8 -*-
 ## redhat-network-control - A easy-to-use interface for configuring/activating
 ## Copyright (C) 2002 Red Hat, Inc.
 ## Copyright (C) 2002 Than Ngo <than@redhat.com>
@@ -340,8 +341,8 @@ class mainDialog:
         if len(profilelist) == 1:
             self.xml.get_widget('profileFrame').hide()
 
-        
         omenu.remove_menu ()
+            
         menu = gtk.Menu ()
         history = 0
         i = 0
@@ -369,8 +370,11 @@ class mainDialog:
         else:
             self.xml.get_widget('interfaceClist').set_sensitive(TRUE)
         menu.show ()
-        omenu.set_menu (menu)
-        omenu.set_history (history)
+        
+        if omenu:
+            omenu.set_menu (menu)
+            omenu.set_history (history)
+            
         menu.get_children()[history].activate ()
         self.no_profileentry_update = false # ??
 
@@ -440,5 +444,5 @@ if __name__ == '__main__':
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/01 15:20:33 $"
-__version__ = "$Revision: 1.43 $"
+__date__ = "$Date: 2003/12/16 11:18:46 $"
+__version__ = "$Revision: 1.44 $"
