@@ -44,7 +44,7 @@ class Dialup(Dialup_base):
                 value = conf['Dialer Defaults'][confkey]
                 
             if value:
-                print selfkey + " = " + value
+                #print selfkey + " = " + value
                 self.__dict__[selfkey] = value
 
         for i in xrange(9) :
@@ -60,7 +60,7 @@ class Dialup(Dialup_base):
                 
             if value:
                 if not self.InitStrings: self.createInitStrings()
-                print confkey + " = " + value
+                #print confkey + " = " + value
                 self.InitStrings[self.InitStrings.addInitString()] = value
         
     def saveModem(self, name, device):
