@@ -1,8 +1,11 @@
+# Translation of system-config-network to Croatian
+# Copyright (C) Croatian team
+# Translators: Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,Robert Sedak <robert.sedak@sk.tel.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network 0\n"
-"POT-Creation-Date: 2003-10-08 17:24+0200\n"
-"PO-Revision-Date: 2003-10-18 12:28+CEST\n"
+"POT-Creation-Date: 2003-12-03 11:07+0100\n"
+"PO-Revision-Date: 2003-12-15 22:30+CET\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +60,7 @@ msgstr "Čarobnjak postavljanja Interneta"
 #.  dirty hack but does the job(tm). It basically finds all .py files in the
 #.  package directory and imports from all found files (except __init__.py that
 #.  is) ;). Nice for plugin mechanism.
-#.  ! /usr/bin/env python
+#.  ! /usr/bin/python
 #.  # redhat-network-control - A easy-to-use interface for configuring/activating
 #.  # Copyright (C) 2002 Red Hat, Inc.
 #.  # Copyright (C) 2002 Than Ngo <than@redhat.com>
@@ -73,17 +76,17 @@ msgstr "Čarobnjak postavljanja Interneta"
 #.  # You should have received a copy of the GNU General Public License
 #.  # along with this program; if not, write to the Free Software
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/neat-control.py:48 src/netconf.py:75
+#: src/neat-control.py:48 src/netconf.py:74
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "GREŠKA: Ne mogu pokrenuti grafičko okruženje."
 
-#: src/neat-control.py:49 src/netconf.py:76
+#: src/neat-control.py:49 src/netconf.py:75
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
 msgstr "Najvjerojatni uzrok neuspjeha je da alat nije pokrenut u grafičkom okruženju."
 
-#: src/neat-control.py:50 src/netconf.py:77
+#: src/neat-control.py:50 src/netconf.py:76
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -93,7 +96,7 @@ msgstr "Ili pokrenite vaše grafičko okruženje ili postavite DISPLAY varijablu
 #.  self.on_autoSelectProfileButton_clicked,
 #.  Let this dialog be in the taskbar like a normal window
 #: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1598
+#: src/netconfpkg/gui/maindialog.py:1609
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
@@ -136,7 +139,7 @@ msgstr "Nisam uspio preklopiti na profil %s"
 #.  Update the gui
 #.  forces a re-read of oldprofile
 #.  TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:963
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:974
 msgid "To be rewritten!"
 msgstr "Biti će prepisan!"
 
@@ -144,7 +147,7 @@ msgstr "Biti će prepisan!"
 #.  self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #.  ???
 #.  change the default profile to a more understandable name
-#: src/neat-control.py:354
+#: src/neat-control.py:355
 msgid " (active)"
 msgstr " (aktivno)"
 
@@ -167,10 +170,7 @@ msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against system-config-network "
 "at https://bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Došlo je do neobrađene greške. Ovo je najvjerojatnije bug. Molim sačuvajte "
-"memorijski dump i pošaljite opširan izvještaj o greški na system-config-network "
-"na https://bugzilla.redhat.com/bugzilla"
+msgstr "Dogodila se iznimka, koju ne mogu obraditi. Ovo je najvjerojatnije greška u programu. Molim, spremite ispis greške u datoteku i prijavite detaljni izvještaj greške programa system-config-network na https://bugzilla.redhat.com/bugzilla."
 
 #. main Screen
 #: src/netconf-tui.py:135
@@ -183,7 +183,7 @@ msgstr "Podešavanje"
 
 #: src/netconf-tui.py:136
 msgid "Exit"
-msgstr "Izlaz"
+msgstr "Izađi"
 
 #. EthernetWindow class
 #: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
@@ -216,7 +216,7 @@ msgstr "Uobičajena IP pristupnika"
 
 #: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
 msgid "Ok"
-msgstr "Ok"
+msgstr "U redu"
 
 #: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
 msgid "Cancel"
@@ -242,7 +242,7 @@ msgstr "ISP Lozinka"
 msgid "Modem Initstring"
 msgstr "Znakovi pokretanja modema"
 
-#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:5
 msgid "Modem Configuration"
 msgstr "Konfiguracija modema"
 
@@ -256,7 +256,7 @@ msgstr "ISDN konfiguracija"
 
 #. __main__
 #. 
-#.  !/usr/bin/python2.2
+#.  !/usr/bin/python
 #.  # netconf - A network configuration tool
 #.  # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -276,19 +276,19 @@ msgstr "ISDN konfiguracija"
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #.  Just to be safe...
 #.  Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:57
+#: src/netconf.py:56
 msgid "Error: %s, %s!"
 msgstr "Greška: %s, %s!"
 
-#: src/netconf.py:59
+#: src/netconf.py:58
 msgid "Starting text version"
 msgstr "Pokrećem tekstualnu verziju"
 
-#: src/netconf.py:114
+#: src/netconf.py:113
 msgid "Loading Network Configuration..."
 msgstr "Učitavam mrežne postavke..."
 
-#: src/netconf.py:127
+#: src/netconf.py:126
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -304,7 +304,7 @@ msgstr ""
 #.  splash_window.destroy()
 #.  del splash_window
 #.  print "Exception %s: %s" % (str(SystemExit), str(code))
-#.  ! /usr/bin/python2.2
+#.  ! /usr/bin/python
 #.  # netconf - A network configuration tool
 #.  # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -341,7 +341,7 @@ msgstr "%s - alat naredbene linije za podešavanje mreže"
 
 #: src/netconf-cmd.py:104
 msgid "Usage: %s"
-msgstr "Korištenje: %s"
+msgstr "Uporaba: %s"
 
 #: src/netconf-cmd.py:106
 msgid "switch / activate profile"
@@ -506,28 +506,31 @@ msgid "Tunnel through device:"
 msgstr "Tunel kroz uređaj:"
 
 #: src/netconfpkg/gui/CipeInterface.py:147
+#: src/netconfpkg/gui/CipeInterface.py:308
 msgid "Local port:"
 msgstr "Lokalni port: "
 
 #: src/netconfpkg/gui/CipeInterface.py:152
 #: src/netconfpkg/gui/CipeInterface.py:154
+#: src/netconfpkg/gui/CipeInterface.py:309
 msgid "Remote peer address:"
 msgstr "Udaljena adresa ravnopravnog računala: "
 
 #: src/netconfpkg/gui/CipeInterface.py:152
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatski"
 
 #: src/netconfpkg/gui/CipeInterface.py:155
 msgid "Remote peer port:"
 msgstr "Port udaljenog ravnopravnog računala:"
 
 #: src/netconfpkg/gui/CipeInterface.py:157
+#: src/netconfpkg/gui/CipeInterface.py:313
 msgid "Remote virtual address:"
 msgstr "Udaljena virtualna adresa:"
 
 #: src/netconfpkg/gui/CipeInterface.py:158
+#: src/netconfpkg/gui/CipeInterface.py:314
 msgid "Local virtual address:"
 msgstr "Lokalna virtualna adresa:"
 
@@ -559,43 +562,17 @@ msgid "(own choice)"
 msgstr "(vlastiti izbor)"
 
 #: src/netconfpkg/gui/CipeInterface.py:307
-#: src/netconfpkg/gui/cipeconfig.py:207
-msgid "IP address of tunnel device: "
-msgstr "IP adresa tuneliranog uređaja:"
-
-#: src/netconfpkg/gui/CipeInterface.py:308
-#: src/netconfpkg/gui/cipeconfig.py:208
-msgid "Local port: "
-msgstr "Lokalni port: "
-
-#: src/netconfpkg/gui/CipeInterface.py:309
-#: src/netconfpkg/gui/cipeconfig.py:209
-msgid "Remote peer address: "
-msgstr "Udaljena adresa ravnopravnog računala: "
-
-#: src/netconfpkg/gui/CipeInterface.py:313
-#: src/netconfpkg/gui/cipeconfig.py:213
-msgid "Remote virtual address: "
-msgstr "Udaljena virtualna adresa:"
-
-#: src/netconfpkg/gui/CipeInterface.py:314
-#: src/netconfpkg/gui/cipeconfig.py:214
-msgid "Local virtual address: "
-msgstr "Lokalna virtualna adresa:"
+msgid "IP address of tunnel device:"
+msgstr "IP adresa za tunelski uređaj:"
 
 #: src/netconfpkg/gui/CipeInterface.py:315
-#: src/netconfpkg/gui/cipeconfig.py:215
-msgid "Secret key: "
-msgstr "Tajni ključ: "
+msgid "Secret key:"
+msgstr "Tajni ključ:"
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:325
-msgid ""
-"You must enter a secret key \n"
-"or generate one"
-msgstr ""
-"Morate unijeti tajni ključ \n"
-"ili stvoriti ga"
+msgid "You must enter a secret key or generate one"
+msgstr "Morate upisati tajni ključ ili ga stvoriti"
 
 #: src/netconfpkg/gui/DialupDruid.py:232
 msgid "Hardware:"
@@ -628,19 +605,19 @@ msgstr "Telefonski broj:"
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
 #: src/netconfpkg/gui/ethernethardware.py:153
 #: src/netconfpkg/gui/ethernethardware.py:170
-#: src/netconfpkg/gui/tokenringhardware.py:127
-#: src/netconfpkg/gui/tokenringhardware.py:138
+#: src/netconfpkg/gui/tokenringhardware.py:126
+#: src/netconfpkg/gui/tokenringhardware.py:137
 #: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
 #: src/netconfpkg/NC_functions.py:343 src/netconfpkg/NCDevice.py:205
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
 #: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:105
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
-#: src/netconfpkg/gui/ethernethardware.glade.h:22
-#: src/netconfpkg/gui/tokenringhardware.glade.h:21
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:8
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:8
+#: src/netconfpkg/gui/ethernethardware.glade.h:9
+#: src/netconfpkg/gui/tokenringhardware.glade.h:8
 msgid "Unknown"
-msgstr "Nepoznato"
+msgstr "Napoznato"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -678,7 +655,7 @@ msgstr "Druga ethernet kartica"
 #: src/netconfpkg/gui/PTPInterface.py:221
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
-msgstr "Adrese:"
+msgstr "Adresa:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:228
 #: src/netconfpkg/gui/WirelessInterface.py:296
@@ -716,7 +693,7 @@ msgstr "Automatski upotrijebi postavke IP adresa s:"
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #.  print __name__, "waitpid:", msg
 #.  print __name__, "waitpid:", msg
-#: src/netconfpkg/gui/GUI_functions.py:547
+#: src/netconfpkg/gui/GUI_functions.py:549
 msgid ""
 "Failed to run:\n"
 "%s"
@@ -724,13 +701,9 @@ msgstr ""
 "Neuspjeh pri pokretanju:\n"
 "%s"
 
-#: src/netconfpkg/gui/GUI_functions.py:550
-msgid ""
-"\n"
-"Succeeded. Please read the output."
-msgstr ""
-"\n"
-"Uspjelo. Molim pročitajte izlazne podatke."
+#: src/netconfpkg/gui/GUI_functions.py:552
+msgid "Succeeded. Please read the output."
+msgstr "Uspjelo je. Molim, pročitajte ispis."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -879,37 +852,37 @@ msgstr "Generički modem"
 
 #: src/netconfpkg/gui/ModemInterface.py:161
 #: src/netconfpkg/gui/modemconfig.py:140
-#: src/netconfpkg/gui/ModemDruid.glade.h:27
-#: src/netconfpkg/gui/modemconfig.glade.h:27
+#: src/netconfpkg/gui/ModemDruid.glade.h:8
+#: src/netconfpkg/gui/modemconfig.glade.h:9
 msgid "Off"
 msgstr "Isključeno"
 
 #: src/netconfpkg/gui/ModemInterface.py:163
 #: src/netconfpkg/gui/modemconfig.py:142
-#: src/netconfpkg/gui/ModemDruid.glade.h:22
-#: src/netconfpkg/gui/modemconfig.glade.h:21
+#: src/netconfpkg/gui/ModemDruid.glade.h:3
+#: src/netconfpkg/gui/modemconfig.glade.h:3
 msgid "Low"
 msgstr "Nisko"
 
 #: src/netconfpkg/gui/ModemInterface.py:165
 #: src/netconfpkg/gui/modemconfig.py:144
-#: src/netconfpkg/gui/ModemDruid.glade.h:23
-#: src/netconfpkg/gui/modemconfig.glade.h:22
+#: src/netconfpkg/gui/ModemDruid.glade.h:4
+#: src/netconfpkg/gui/modemconfig.glade.h:4
 #: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Medium"
-msgstr "Srednji"
+msgstr "Srednje"
 
 #: src/netconfpkg/gui/ModemInterface.py:167
 #: src/netconfpkg/gui/modemconfig.py:146
-#: src/netconfpkg/gui/ModemDruid.glade.h:21
-#: src/netconfpkg/gui/modemconfig.glade.h:20
+#: src/netconfpkg/gui/ModemDruid.glade.h:2
+#: src/netconfpkg/gui/modemconfig.glade.h:2
 msgid "High"
-msgstr "Visoko"
+msgstr "Visok"
 
 #: src/netconfpkg/gui/ModemInterface.py:169
 #: src/netconfpkg/gui/modemconfig.py:148
-#: src/netconfpkg/gui/ModemDruid.glade.h:30
-#: src/netconfpkg/gui/modemconfig.glade.h:29
+#: src/netconfpkg/gui/ModemDruid.glade.h:11
+#: src/netconfpkg/gui/modemconfig.glade.h:11
 msgid "Very High"
 msgstr "Vrlo visoka"
 
@@ -942,24 +915,32 @@ msgid "Other Wireless Card"
 msgstr "Druga bežična kartica"
 
 #: src/netconfpkg/gui/WirelessInterface.py:302
-msgid "Mode: "
-msgstr "Način rada:"
+msgid "Mode:"
+msgstr "Način:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:303
 msgid "ESSID (network ID):"
 msgstr "ESSID (ID mreže):"
 
+#: src/netconfpkg/gui/WirelessInterface.py:305
+msgid "Automatic"
+msgstr "Automatski"
+
 #: src/netconfpkg/gui/WirelessInterface.py:309
-msgid "Channel: "
-msgstr "Kanal:"
+msgid "Channel:"
+msgstr "Kanali"
 
 #: src/netconfpkg/gui/WirelessInterface.py:310
-msgid "Transmit rate: "
-msgstr "Brzina prijenosa: "
+msgid "Transmit rate:"
+msgstr "Brzina prijenosa:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:311
 msgid "Key: "
 msgstr "Ključ:"
+
+#: src/netconfpkg/gui/WirelessInterface.py:317
+msgid "encryption disabled"
+msgstr "isključeno šifriranje"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1007,6 +988,30 @@ msgstr "Stvara novu Token Ring vezu."
 #: src/netconfpkg/gui/TokenRingInterface.py:189
 msgid "Other Tokenring Card"
 msgstr "Druga Tokenring kartica"
+
+#: src/netconfpkg/gui/cipeconfig.py:207
+msgid "IP address of tunnel device: "
+msgstr "IP adresa tuneliranog uređaja:"
+
+#: src/netconfpkg/gui/cipeconfig.py:208
+msgid "Local port: "
+msgstr "Lokalni port: "
+
+#: src/netconfpkg/gui/cipeconfig.py:209
+msgid "Remote peer address: "
+msgstr "Udaljena adresa ravnopravnog računala: "
+
+#: src/netconfpkg/gui/cipeconfig.py:213
+msgid "Remote virtual address: "
+msgstr "Udaljena virtualna adresa:"
+
+#: src/netconfpkg/gui/cipeconfig.py:214
+msgid "Local virtual address: "
+msgstr "Lokalna virtualna adresa:"
+
+#: src/netconfpkg/gui/cipeconfig.py:215
+msgid "Secret key: "
+msgstr "Tajni ključ: "
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1122,48 +1127,45 @@ msgstr "Postavljanje ISDN biranu vezu"
 #. get free ISDN device if encap mode is changed
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.py:386
-#: src/netconfpkg/gui/dialupconfig.glade.h:70
+#: src/netconfpkg/gui/dialupconfig.glade.h:63
 msgid "in"
 msgstr "dolazno"
 
 #: src/netconfpkg/gui/dialupconfig.py:293
-#: src/netconfpkg/gui/dialupconfig.glade.h:73
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "out"
 msgstr "izlazno"
 
 #: src/netconfpkg/gui/dialupconfig.py:337
 #: src/netconfpkg/gui/DialupDruid.glade.h:32
-#: src/netconfpkg/gui/dialupconfig.glade.h:75
+#: src/netconfpkg/gui/dialupconfig.glade.h:67
 msgid "raw IP"
 msgstr "sirovi IP"
 
 #: src/netconfpkg/gui/dialupconfig.py:339
 #: src/netconfpkg/gui/dialupconfig.py:368
 #: src/netconfpkg/gui/DialupDruid.glade.h:33
-#: src/netconfpkg/gui/dialupconfig.glade.h:76
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "sync PPP"
 msgstr "sync PPP"
 
 #: src/netconfpkg/gui/dialupconfig.py:352
 #: src/netconfpkg/gui/dialupconfig.py:420
-#: src/netconfpkg/gui/dialupconfig.glade.h:74
 msgid "pap"
 msgstr "pap"
 
 #: src/netconfpkg/gui/dialupconfig.py:354
 #: src/netconfpkg/gui/dialupconfig.py:422
-#: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "chap"
 msgstr "chap"
 
 #: src/netconfpkg/gui/dialupconfig.py:357
 #: src/netconfpkg/gui/dialupconfig.py:424
-#: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "chap+pap"
 msgstr "chap+pap"
 
 #: src/netconfpkg/gui/dialupconfig.py:359
-#: src/netconfpkg/gui/dialupconfig.glade.h:72
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
 msgid "none"
 msgstr "ništa"
 
@@ -1291,7 +1293,6 @@ msgstr "Postavljanje modema"
 #.  # along with this program; if not, write to the Free Software
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #.  make ctrl-C work
-#.  !/usr/bin/python2.2
 #.  # netconf - A network configuration tool
 #.  # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1321,6 +1322,10 @@ msgstr "Postavljanje modema"
 #.  self.style1.base[gtk.STATE_NORMAL] = colormap.alloc_color(color1)
 #.  self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
 #.  self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
+#.  remove IPsec from Fedora
+#.  remove IPsec from Fedora
+#.  PAGE_IPSEC : notebook.page_num(\
+#.  self.xml.get_widget('ipsecFrame')),
 #.  initialize the button state..
 #.  #         for col in [ PROFILE_COLUMN, STATUS_COLUMN, DEVICE_COLUMN,
 #.  #                      NICKNAME_COLUMN, TYPE_COLUMN ]:
@@ -1328,45 +1333,45 @@ msgstr "Postavljanje modema"
 #.  #             titlesize = clist.get_column_widget(col)
 #.  #             print titlesize.get_children()[0].get_width()
 #.  #             #clist.set_column_width(col, )
-#: src/netconfpkg/gui/maindialog.py:272
+#: src/netconfpkg/gui/maindialog.py:283
 msgid "Loading configuration..."
 msgstr "Učitavam postavke..."
 
-#: src/netconfpkg/gui/maindialog.py:280
+#: src/netconfpkg/gui/maindialog.py:291
 msgid "Loading device configuration..."
 msgstr "Učitavam postavke uređaja..."
 
-#: src/netconfpkg/gui/maindialog.py:285
+#: src/netconfpkg/gui/maindialog.py:296
 msgid "Loading hardware configuration..."
 msgstr "Učitavam postavke sklopovlja..."
 
-#: src/netconfpkg/gui/maindialog.py:290
+#: src/netconfpkg/gui/maindialog.py:301
 msgid "Loading profile configuration..."
 msgstr "Učitavam postavke profila..."
 
-#: src/netconfpkg/gui/maindialog.py:295
+#: src/netconfpkg/gui/maindialog.py:306
 msgid "Loading IPsec configuration..."
 msgstr "Učitavam postavke IPsec-a..."
 
-#: src/netconfpkg/gui/maindialog.py:300
+#: src/netconfpkg/gui/maindialog.py:311
 msgid "Testing configuration set..."
 msgstr "Ispitujem skup postavki..."
 
-#: src/netconfpkg/gui/maindialog.py:331
+#: src/netconfpkg/gui/maindialog.py:342
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "Aktivni profil: %s (izmjenjen)"
 
-#: src/netconfpkg/gui/maindialog.py:335
+#: src/netconfpkg/gui/maindialog.py:346
 #, python-format
 msgid "Active profile: %s"
 msgstr "Aktivni profil: %s"
 
-#: src/netconfpkg/gui/maindialog.py:343
+#: src/netconfpkg/gui/maindialog.py:354
 msgid "Saving configuration..."
 msgstr "Spremam postavke..."
 
-#: src/netconfpkg/gui/maindialog.py:355
+#: src/netconfpkg/gui/maindialog.py:366
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1375,39 +1380,35 @@ msgstr ""
 "Greška kod spremanja postavki\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:358
+#: src/netconfpkg/gui/maindialog.py:369
 msgid ""
-"Changes are saved.\n"
-"You may want to restart\n"
-"the network and network services\n"
+"Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
 msgstr ""
-"Promijene su sačuvane.\n"
-"Možda bi trebali ponovo pokrenuti\n"
-"mrežnu i mrežne servise\n"
-"ili ponovo pokrenuti računalo."
+"Izmjene su spremljene. Možda biste željeli ponovno pokrenuti mrežu i mrežne "
+"servise ili ponovno pokrenuti računalo."
 
-#: src/netconfpkg/gui/maindialog.py:367
+#: src/netconfpkg/gui/maindialog.py:378
 msgid "Saving device configuration..."
 msgstr "Spremam postavke uređaja..."
 
-#: src/netconfpkg/gui/maindialog.py:374
+#: src/netconfpkg/gui/maindialog.py:385
 msgid "Saving hardware configuration..."
 msgstr "Spremam postavke sklopovlja..."
 
-#: src/netconfpkg/gui/maindialog.py:381
+#: src/netconfpkg/gui/maindialog.py:392
 msgid "Saving profile configuration..."
 msgstr "Spremam postavke profila..."
 
-#: src/netconfpkg/gui/maindialog.py:388
+#: src/netconfpkg/gui/maindialog.py:399
 msgid "Saving IPsec configuration..."
 msgstr "Sprema postavke IPsec-a..."
 
-#: src/netconfpkg/gui/maindialog.py:411
+#: src/netconfpkg/gui/maindialog.py:422
 msgid "Updating devices..."
 msgstr "Obnavljam uređaje..."
 
-#: src/netconfpkg/gui/maindialog.py:468
+#: src/netconfpkg/gui/maindialog.py:479
 msgid "Updating hardware..."
 msgstr "Obnavljam sklopovlje..."
 
@@ -1434,7 +1435,7 @@ msgstr "Obnavljam sklopovlje..."
 #.  else:
 #.  device.createIPsecList()
 #.  print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:562
+#: src/netconfpkg/gui/maindialog.py:573
 msgid "Updating profiles..."
 msgstr "Ažuriranje profila..."
 
@@ -1442,41 +1443,42 @@ msgstr "Ažuriranje profila..."
 #.  88357
 #.  change the default profile to a more understandable name
 #.  omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:668 src/netconfpkg/gui/maindialog.py:761
-#: src/netconfpkg/gui/maindialog.py:990
+#: src/netconfpkg/gui/maindialog.py:679 src/netconfpkg/gui/maindialog.py:772
+#: src/netconfpkg/gui/maindialog.py:1001
 msgid "Do you want to save your changes?"
 msgstr "Želite li spremiti vaše izmjene?"
 
-#: src/netconfpkg/gui/maindialog.py:826
+#: src/netconfpkg/gui/maindialog.py:837
 msgid "The Loopback device can not be edited!"
 msgstr "Uređaj povratne veze ne može biti uređivan!"
 
-#: src/netconfpkg/gui/maindialog.py:830
+#: src/netconfpkg/gui/maindialog.py:841
 msgid "Edit device..."
 msgstr "Uredivanje uređaja.."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:868
-msgid "The device type %s cannot be edited!\n"
-msgstr "Ne može biti uređivana vrsta uređaja %s!\n"
+#: src/netconfpkg/gui/maindialog.py:879
+#, python-format
+msgid "The device type %s cannot be edited!"
+msgstr "Ne može se uređivati uređaj vrste %s!"
 
-#: src/netconfpkg/gui/maindialog.py:887
+#: src/netconfpkg/gui/maindialog.py:898
 msgid "The Loopback device can not be removed!"
 msgstr "Uređaj povratne veze ne može biti uklonjen!"
 
-#: src/netconfpkg/gui/maindialog.py:891
+#: src/netconfpkg/gui/maindialog.py:902
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Želite li stvarno obrisati uređaj \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:923 src/netconfpkg/gui/maindialog.py:1678
+#: src/netconfpkg/gui/maindialog.py:934 src/netconfpkg/gui/maindialog.py:1689
 msgid "You have made some changes in your configuration."
 msgstr "Napravili ste neke izmjene u vašim postavkama."
 
-#: src/netconfpkg/gui/maindialog.py:924
+#: src/netconfpkg/gui/maindialog.py:935
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Za pokretanje mrežnog uređaja %s, izmjene moraju biti spremljene."
 
-#: src/netconfpkg/gui/maindialog.py:926 src/netconfpkg/gui/maindialog.py:1681
+#: src/netconfpkg/gui/maindialog.py:937 src/netconfpkg/gui/maindialog.py:1692
 msgid "Do you want to continue?"
 msgstr "Želite li nastaviti?"
 
@@ -1492,67 +1494,63 @@ msgstr "Želite li nastaviti?"
 #.  status = clist.get_text(clist.selection[0], 0)
 #.  if status == ACTIVE:
 #.  return
-#: src/netconfpkg/gui/maindialog.py:1118
+#: src/netconfpkg/gui/maindialog.py:1129
 msgid "The Loopback device can not be disabled!"
 msgstr "Uređaj povratne veze ne može biti usključen!"
 
 #. if len(clist.selection) == 0:
 #.  return
-#: src/netconfpkg/gui/maindialog.py:1344 src/netconfpkg/gui/maindialog.py:1424
+#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
 msgid "The name may only contain letters and digits!"
 msgstr "Ime može sadržavati samo brojke i slova!"
 
-#: src/netconfpkg/gui/maindialog.py:1349 src/netconfpkg/gui/maindialog.py:1429
+#: src/netconfpkg/gui/maindialog.py:1360 src/netconfpkg/gui/maindialog.py:1440
 msgid "The profile can't be named \"%s\"!"
 msgstr "Profil ne može biti nazvan \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
+#: src/netconfpkg/gui/maindialog.py:1366 src/netconfpkg/gui/maindialog.py:1446
 msgid "The profile name already exists!"
 msgstr "Već postoji profil s ovim imenom!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1402
+#: src/netconfpkg/gui/maindialog.py:1413
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\" profil ne može biti preimenovan!"
 
 #. clist = self.xml.get_widget('profileList')
 #.  if len(clist.selection) == 0:
 #.  return
-#: src/netconfpkg/gui/maindialog.py:1457
+#: src/netconfpkg/gui/maindialog.py:1468
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\" profil ne može biti obrisan!"
 
-#: src/netconfpkg/gui/maindialog.py:1463
+#: src/netconfpkg/gui/maindialog.py:1474
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Stvarno želite obrisati profil \"%s\"?"
 
 #. clist.clear()
 #.  type  = clist.get_text(clist.selection[0], 1)
 #.  hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1537
-msgid ""
-"Sorry, there is nothing to be edited,\n"
-"or this type cannot be edited yet."
-msgstr ""
-"Žao mi je, ali ili ne postoji ništa za uređivanje,\n"
-"ili ovaj tip ne može biti uređivan."
+#: src/netconfpkg/gui/maindialog.py:1548
+msgid "Sorry, there is nothing to be edited, or this type cannot be edited yet."
+msgstr "Oprostite, nema ničega za uređivanje ili se ova vrsta još ne može uređivati."
 
-#: src/netconfpkg/gui/maindialog.py:1555
+#: src/netconfpkg/gui/maindialog.py:1566
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Stvarno želite obrisati \"%s\"?"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1568
+#: src/netconfpkg/gui/maindialog.py:1579
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Želite li obrisati sve uređaje koje koristi \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1599
+#: src/netconfpkg/gui/maindialog.py:1610
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
 msgstr "Ovaj program je distribuiran pod GPL licencom. Molimo vas, izvjestite o greškama na Red Hat-ovom sustavu praćenja grešaka: http://bugzilla.redhat.com/bugzilla"
 
-#: src/netconfpkg/gui/maindialog.py:1679
+#: src/netconfpkg/gui/maindialog.py:1690
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "Da biste pokrenuli IPsec veza %s, izmjene moraju biti spremljene."
 
@@ -1572,30 +1570,56 @@ msgstr "Da biste pokrenuli IPsec veza %s, izmjene moraju biti spremljene."
 #.  # along with this program; if not, write to the Free Software
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ethernethardware.py:94
-#: src/netconfpkg/gui/tokenringhardware.py:67
 msgid "Command failed: "
 msgstr "Nije uspjelo izvršavanje naredbe:"
 
 #: src/netconfpkg/gui/ethernethardware.py:95
-#: src/netconfpkg/gui/tokenringhardware.py:68
 msgid "Output:\n"
 msgstr "Izlaz:\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:97
 msgid ""
-"The Ethernet card could not be initialized. \n"
-"Please verify your settings and try again."
+"The Ethernet card could not be initialized. Please verify your settings and "
+"try again."
 msgstr ""
-"Neuspjela inicijalizacija ethernet kartice. \n"
-"Molim potvrdite vaše postavke i pokušajte ponovo."
+"Ne mogu pokrenuti ethernet karticu. Molim, provjerite vaše postavke i "
+"pokušajte ponovno."
 
-#: src/netconfpkg/gui/tokenringhardware.py:70
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#.  # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#.  # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#.  # This program is free software; you can redistribute it and/or modify
+#.  # it under the terms of the GNU General Public License as published by
+#.  # the Free Software Foundation; either version 2 of the License, or
+#.  # (at your option) any later version.
+#.  # This program is distributed in the hope that it will be useful,
+#.  # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#.  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#.  # GNU General Public License for more details.
+#.  # You should have received a copy of the GNU General Public License
+#.  # along with this program; if not, write to the Free Software
+#.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/tokenringhardware.py:67
+#, python-format
 msgid ""
-"The Token Ring card could not be initialized. \n"
-"Please verify your settings and try again."
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
 msgstr ""
-"Neuspjela inicijalizacija Token Ring kartice. \n"
-"Molim provjerite vaše postavke i pokušajte ponovo"
+"Nije uspjelo izvršavanje naredbe: %s\n"
+"\n"
+"Ispis:\n"
+"%s\n"
+
+#: src/netconfpkg/gui/tokenringhardware.py:69
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr ""
+"Ne mogu pokrenuti Token Ring karticu. Molim, provjerite vaše postavke i "
+"pokušajte ponovno."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #.  # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1752,11 +1776,11 @@ msgstr "Point to Point (IP):"
 #.  # You should have received a copy of the GNU General Public License
 #.  # along with this program; if not, write to the Free Software
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:33
-msgid "Active"
-msgstr "Aktivno"
-
 #: src/netconfpkg/Control.py:34
+msgid "Active"
+msgstr "Aktivan"
+
+#: src/netconfpkg/Control.py:35
 msgid "Inactive"
 msgstr "Neaktivan"
 
@@ -1845,19 +1869,19 @@ msgstr ""
 #.  # You should have received a copy of the GNU General Public License
 #.  # along with this program; if not, write to the Free Software
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:67
+#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:62
 msgid "auto"
 msgstr "auto"
 
-#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:71
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:64
 msgid "manual"
 msgstr "ručno"
 
 #: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:117
-#: src/netconfpkg/gui/ModemDruid.glade.h:26
-#: src/netconfpkg/gui/modemconfig.glade.h:26
+#: src/netconfpkg/gui/ModemDruid.glade.h:7
+#: src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
-msgstr "Ništa"
+msgstr "Nijedan"
 
 #: src/netconfpkg/NCDialup.py:42
 msgid "Afghanistan"
@@ -1877,7 +1901,7 @@ msgstr "Američka Samoa"
 
 #: src/netconfpkg/NCDialup.py:46
 msgid "Andorra"
-msgstr "Andorra"
+msgstr "Andora"
 
 #: src/netconfpkg/NCDialup.py:47
 msgid "Argentina"
@@ -1892,202 +1916,258 @@ msgid "Austria"
 msgstr "Austrija"
 
 #: src/netconfpkg/NCDialup.py:50
+msgid "Belarus"
+msgstr "Bjelorusija"
+
+#: src/netconfpkg/NCDialup.py:51
 msgid "Belgium"
 msgstr "Belgija"
 
-#: src/netconfpkg/NCDialup.py:51
+#: src/netconfpkg/NCDialup.py:52
 msgid "Bosnia and Hercegovina"
 msgstr "Bosna i Hercegovina"
 
-#: src/netconfpkg/NCDialup.py:52
+#: src/netconfpkg/NCDialup.py:53
 msgid "Brazil"
 msgstr "Brazil"
 
-#: src/netconfpkg/NCDialup.py:53
+#: src/netconfpkg/NCDialup.py:54
 msgid "British Virgin Islands"
 msgstr "Britansko djevičansko otočje"
 
-#: src/netconfpkg/NCDialup.py:54
+#: src/netconfpkg/NCDialup.py:55
 msgid "Bulgaria"
 msgstr "Bugarska"
 
-#: src/netconfpkg/NCDialup.py:55
+#: src/netconfpkg/NCDialup.py:56
 msgid "Canada"
 msgstr "Kanada"
 
-#: src/netconfpkg/NCDialup.py:56
+#: src/netconfpkg/NCDialup.py:57
 msgid "Central African Republic"
 msgstr "Centralna Afrička republika"
 
-#: src/netconfpkg/NCDialup.py:57
+#: src/netconfpkg/NCDialup.py:58
 msgid "Chile"
 msgstr "Čile"
 
-#: src/netconfpkg/NCDialup.py:58
+#: src/netconfpkg/NCDialup.py:59
 msgid "China"
 msgstr "Kina"
 
-#: src/netconfpkg/NCDialup.py:59
+#: src/netconfpkg/NCDialup.py:60
 msgid "Colombia"
 msgstr "Kolumbija"
 
-#: src/netconfpkg/NCDialup.py:60
+#: src/netconfpkg/NCDialup.py:61
 msgid "Croatia"
 msgstr "Hrvatska"
 
-#: src/netconfpkg/NCDialup.py:61
+#: src/netconfpkg/NCDialup.py:62
 msgid "Cuba"
 msgstr "Kuba"
 
-#: src/netconfpkg/NCDialup.py:62
+#: src/netconfpkg/NCDialup.py:63
+msgid "Cyprus"
+msgstr "Cipar"
+
+#: src/netconfpkg/NCDialup.py:64
 msgid "Czech Republic"
 msgstr "Češka republika"
 
-#: src/netconfpkg/NCDialup.py:63
+#: src/netconfpkg/NCDialup.py:65
 msgid "Denmark"
 msgstr "Danska"
 
-#: src/netconfpkg/NCDialup.py:64
+#: src/netconfpkg/NCDialup.py:66
 msgid "Finland"
 msgstr "Finska"
 
-#: src/netconfpkg/NCDialup.py:65
+#: src/netconfpkg/NCDialup.py:67
 msgid "France"
 msgstr "Francuska"
 
-#: src/netconfpkg/NCDialup.py:66
+#: src/netconfpkg/NCDialup.py:68
 msgid "Germany"
 msgstr "Njemačka"
 
-#: src/netconfpkg/NCDialup.py:67
+#: src/netconfpkg/NCDialup.py:69
 msgid "Greece"
 msgstr "Grčka"
 
-#: src/netconfpkg/NCDialup.py:68
+#: src/netconfpkg/NCDialup.py:70
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
-#: src/netconfpkg/NCDialup.py:69
+#: src/netconfpkg/NCDialup.py:71
 msgid "Hungary"
 msgstr "Mađarska"
 
-#: src/netconfpkg/NCDialup.py:70
+#: src/netconfpkg/NCDialup.py:72
 msgid "Iceland"
 msgstr "Island"
 
-#: src/netconfpkg/NCDialup.py:71
+#: src/netconfpkg/NCDialup.py:73
 msgid "India"
 msgstr "Indija"
 
-#: src/netconfpkg/NCDialup.py:72
+#: src/netconfpkg/NCDialup.py:74
 msgid "Indonesia"
 msgstr "Indonezija"
 
-#: src/netconfpkg/NCDialup.py:73
+#: src/netconfpkg/NCDialup.py:75
 msgid "Ireland"
 msgstr "Irska"
 
-#: src/netconfpkg/NCDialup.py:74
+#: src/netconfpkg/NCDialup.py:76
 msgid "Israel"
 msgstr "Izrael"
 
-#: src/netconfpkg/NCDialup.py:75
+#: src/netconfpkg/NCDialup.py:77
 msgid "Italy"
 msgstr "Italija"
 
-#: src/netconfpkg/NCDialup.py:76
+#: src/netconfpkg/NCDialup.py:78
 msgid "Japan"
 msgstr "Japan"
 
-#: src/netconfpkg/NCDialup.py:77
+#: src/netconfpkg/NCDialup.py:79
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+#: src/netconfpkg/NCDialup.py:80
 msgid "Korea North"
 msgstr "Sjeverna Koreja"
 
-#: src/netconfpkg/NCDialup.py:78
+#: src/netconfpkg/NCDialup.py:81
 msgid "Korea Republic"
 msgstr "Republika Koreja"
 
-#: src/netconfpkg/NCDialup.py:79
-msgid "Malaysia"
-msgstr "Malezija"
+#: src/netconfpkg/NCDialup.py:82
+msgid "Liechtenstein"
+msgstr "Linhenštajn"
 
-#: src/netconfpkg/NCDialup.py:80
+#: src/netconfpkg/NCDialup.py:83
+msgid "Lithuania"
+msgstr "Litva"
+
+#: src/netconfpkg/NCDialup.py:84
 msgid "Luxembourg"
 msgstr "Luksemburg"
 
-#: src/netconfpkg/NCDialup.py:81
+#: src/netconfpkg/NCDialup.py:85
+msgid "Macedonia"
+msgstr "Makedonija"
+
+#: src/netconfpkg/NCDialup.py:86
+msgid "Malaysia"
+msgstr "Malezija"
+
+#: src/netconfpkg/NCDialup.py:87
+msgid "Malta"
+msgstr "Malta"
+
+#: src/netconfpkg/NCDialup.py:88
 msgid "Mexico"
 msgstr "Meksiko"
 
-#: src/netconfpkg/NCDialup.py:82
+#: src/netconfpkg/NCDialup.py:89
+msgid "Moldova"
+msgstr "Moldavija"
+
+#: src/netconfpkg/NCDialup.py:90
+msgid "Monaco"
+msgstr "Monako"
+
+#: src/netconfpkg/NCDialup.py:91
 msgid "Netherlands"
 msgstr "Nizozemska"
 
-#: src/netconfpkg/NCDialup.py:83
+#: src/netconfpkg/NCDialup.py:92
 msgid "New Zealand"
 msgstr "Novi Zeland"
 
-#: src/netconfpkg/NCDialup.py:84
+#: src/netconfpkg/NCDialup.py:93
 msgid "Norway"
 msgstr "Norveška"
 
-#: src/netconfpkg/NCDialup.py:85
+#: src/netconfpkg/NCDialup.py:94
+msgid "Palestine"
+msgstr "Spremi odabir paketa"
+
+#: src/netconfpkg/NCDialup.py:95
 msgid "Philippines"
 msgstr "Filipini"
 
-#: src/netconfpkg/NCDialup.py:86
+#: src/netconfpkg/NCDialup.py:96
+msgid "Poland"
+msgstr "Poljska"
+
+#: src/netconfpkg/NCDialup.py:97
+msgid "Portugal"
+msgstr "Portugal"
+
+#: src/netconfpkg/NCDialup.py:98
 msgid "Romania"
 msgstr "Rumunjska"
 
-#: src/netconfpkg/NCDialup.py:87
+#: src/netconfpkg/NCDialup.py:99
+msgid "Russia"
+msgstr "Rusija"
+
+#: src/netconfpkg/NCDialup.py:100
 msgid "Singapore"
 msgstr "Singapur"
 
-#: src/netconfpkg/NCDialup.py:88
+#: src/netconfpkg/NCDialup.py:101
 msgid "Slovakia"
 msgstr "Slovačka"
 
-#: src/netconfpkg/NCDialup.py:89
+#: src/netconfpkg/NCDialup.py:102
+msgid "Slovenia"
+msgstr "Slovenija"
+
+#: src/netconfpkg/NCDialup.py:103
 msgid "Spain"
 msgstr "Španjolska"
 
-#: src/netconfpkg/NCDialup.py:90
+#: src/netconfpkg/NCDialup.py:104
 msgid "Sweden"
 msgstr "Švedska"
 
-#: src/netconfpkg/NCDialup.py:91
+#: src/netconfpkg/NCDialup.py:105
 msgid "Switzerland"
 msgstr "Švicarska"
 
-#: src/netconfpkg/NCDialup.py:92
+#: src/netconfpkg/NCDialup.py:106
 msgid "Taiwan"
 msgstr "Tajvan"
 
-#: src/netconfpkg/NCDialup.py:93
+#: src/netconfpkg/NCDialup.py:107
 msgid "Thailand"
 msgstr "Tajland"
 
-#: src/netconfpkg/NCDialup.py:94
+#: src/netconfpkg/NCDialup.py:108
 msgid "Turkey"
 msgstr "Turska"
 
-#: src/netconfpkg/NCDialup.py:95
+#: src/netconfpkg/NCDialup.py:109
 msgid "Ukraine"
 msgstr "Ukrajina"
 
-#: src/netconfpkg/NCDialup.py:96
+#: src/netconfpkg/NCDialup.py:110
 msgid "United Kingdom"
 msgstr "Ujedinjeno kraljevstvo"
 
-#: src/netconfpkg/NCDialup.py:97
+#: src/netconfpkg/NCDialup.py:111
 msgid "United States of America"
 msgstr "Sjedinjene američke države"
 
-#: src/netconfpkg/NCDialup.py:98
+#: src/netconfpkg/NCDialup.py:112
 msgid "Vietnam"
 msgstr "Vijetnam"
 
-#: src/netconfpkg/NCDialup.py:99
+#: src/netconfpkg/NCDialup.py:113
 msgid "Yugoslavia"
 msgstr "Jugoslavija (više ne postoji)"
 
@@ -2128,17 +2208,17 @@ msgstr "Jugoslavija (više ne postoji)"
 #.  # You should have received a copy of the GNU General Public License
 #.  # along with this program; if not, write to the Free Software
 #.  # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCProfileList.py:56 src/netconfpkg/NCProfileList.py:64
+#: src/netconfpkg/NCProfileList.py:57 src/netconfpkg/NCProfileList.py:66
 msgid "Copying %s to default profile."
 msgstr "Kopiram %s u uobičajeni profil."
 
 #. 60016
 #.  Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:207
+#: src/netconfpkg/NCProfileList.py:209
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "Uređaj %s koristi isti sklopovni uređaj \"%s\" kao %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:209
+#: src/netconfpkg/NCProfileList.py:211
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -2203,13 +2283,13 @@ msgstr "Uobičajeno"
 
 #. Removed for now, until we have a config dialog for infrared
 #.  '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:115 src/netconfpkg/gui/ModemDruid.glade.h:20
-#: src/netconfpkg/gui/modemconfig.glade.h:19
+#: src/netconfpkg/NC_functions.py:115 src/netconfpkg/gui/ModemDruid.glade.h:1
+#: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "Hardware (CRTSCTS)"
 msgstr "Podrška za strojno ubrzanje šifriranja."
 
-#: src/netconfpkg/NC_functions.py:116 src/netconfpkg/gui/ModemDruid.glade.h:29
-#: src/netconfpkg/gui/modemconfig.glade.h:28
+#: src/netconfpkg/NC_functions.py:116 src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "Programski (XON/XOFF)"
 
@@ -2232,7 +2312,7 @@ msgstr "Morate instalirati sljedeće pakete. Potrebni su za rad sustava!"
 #.  print __name__, "waitpid:", msg
 #.  print __name__, "waitpid:", msg
 #.  print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:692
+#: src/netconfpkg/NC_functions.py:697
 msgid ""
 "Error removing\n"
 "%s:\n"
@@ -2242,7 +2322,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:702
+#: src/netconfpkg/NC_functions.py:707
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -2254,7 +2334,7 @@ msgstr ""
 "u %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:713
+#: src/netconfpkg/NC_functions.py:718
 msgid ""
 "Error copying \n"
 "%s\n"
@@ -2266,7 +2346,7 @@ msgstr ""
 "u %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:723
+#: src/netconfpkg/NC_functions.py:728
 msgid ""
 "Error linking \n"
 "%s\n"
@@ -2278,7 +2358,7 @@ msgstr ""
 "na %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:733
+#: src/netconfpkg/NC_functions.py:738
 msgid ""
 "Error renaming \n"
 "%s\n"
@@ -2290,7 +2370,7 @@ msgstr ""
 "u %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:741
+#: src/netconfpkg/NC_functions.py:746
 msgid ""
 "Error creating directory!\n"
 "%s"
@@ -2511,7 +2591,7 @@ msgstr "Ne mogu zaustaviti mrežni uređaj %s\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start system-config-network with root permissions once!\n"
-msgstr "Molim, jednom pokrenite system-config-network sa pravim root korisnika!\n"
+msgstr "Molim, jednom pokrenite system-config-network s pravima korisnika root!\n"
 
 #: src/netconfpkg/NCDeviceList.py:67
 msgid "Copying %s to devices and putting it into the default profile."
@@ -2584,7 +2664,7 @@ msgstr "IPsec pokretanje..."
 #: src/netconfpkg/NCIPsec.py:169
 #, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "Pokerećem IPsec vezu %s, molim pričekajte..."
+msgstr "Pokrećem IPsec vezu %s, molim pričekajte..."
 
 #: src/netconfpkg/NCIPsec.py:171
 #, python-format
@@ -2605,138 +2685,6 @@ msgstr "Spuštanje IPsec veze %s, molim pričekajte..."
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Ne mogu isključiti IPsec vezu %s!\n"
 
-#. Module Cyclops version 0.9.4.
-#.  Released to the public domain 18-Jul-1999,
-#.  by Tim Peters (tim_one@email.msn.com).
-#.  Provided as-is; use at your own risk; no warranty; no promises; enjoy!
-#.  Some parts of the code, and many ideas, were stolen with gratitude from:
-#.  Lars Marius Garshol's Plumbo.py.
-#.  Guido van Rossum.
-#.  Python's standard library module repr.py.
-#.  0,9,4    18-Jul-1999
-#.  added purge_dead_roots arg to find_cycles
-#.  rearranged module docstring; added IDLE driver sample
-#.  0,9,3    29-Jun-1999
-#.  renamed print_obj to show_obj, and advertised it
-#.  redid adjusted refcount computations to account for root-set
-#.  objects too
-#.  changed get_rootset to return (refcount, cyclic?, obj) triples
-#.  0,9,2    27-Jun-1999
-#.  freed __init_tracer from dependence on name "self"
-#.  rearranged __find_cycles' inner loop for a nice little speed gain
-#.  which was promptly way more than lost by new code to compute &
-#.  display adjusted refcounts
-#.  which was partly regained by rewriting all that
-#.  0,9,1    26-Jun-1999
-#.  added SCC computation/display
-#.  added show_cycles; find_cycles no longer prints anything
-#.  changed all showXXX names to show_XXX
-#.  added install_cycle_filter
-#.  0,9,0    24-Jun-1999
-#.  first version I put under source control
-#.  ########################################################################
-#.  Type-specific reference revealers.
-#. 
-#.  _T_refs(obj) should return a sequence of all objects directly
-#.  reachable from obj.
-#. 
-#.  _T_tag(obj, i) should return a string briefly describing how
-#.  _T_refs(obj][i] was obtained from obj.
-#. 
-#.  Why the separation?  Speed and space:  string tags are never
-#.  computed unless a cycle is found and so something needs to be
-#.  printed.
-#.  the keys are strings, so not interesting to return
-#.  ########################################################################
-#.  A class to make short string representations of objects, for speed
-#.  and brevity.  The std repr.repr sorts dicts by keys, but we refer to
-#.  the keys via numeric subscript in cycle reports, so first a derived
-#.  class that leaves dicts in raw order.  Also, instances, instance
-#.  methods and classes frequently appear in cycle reports, so avoid
-#.  chopping their reprs at all.  We're only trying to prevent massive
-#.  expense for massive lists, tuples & dicts.
-#.  Boost the limit on types we don't know about; else it's too
-#.  easy to get a useless repr string when adding new types via
-#.  CycleFinder.chase_type.
-#.  Perhaps better to expose this class too, but-- sheesh --
-#.  this module is complicated enough!
-#.  override base dictionary formatter; the code is almost the same,
-#.  we just leave the dict order alone
-#.  don't chop instance, class or instance method reprs
-#.  Bugs in x.__repr__() can cause arbitrary
-#.  exceptions -- then make up something
-#.  ########################################################################
-#.  CycleFinder is the workhorse.
-#.  This clever method of trapping __init__ invocations was
-#.  stolen from Lars' plumbo.py.
-#.  not a user-visible object
-#.  Compute true refcounts for objects in cycles.
-#.  From the system refcount, subtract one for each of:
-#.  being an element in the loop temp cycleobjs.values()
-#.  being bound to "x"
-#.  being an argument to getrefcount
-#.  being a value in the cycleobjs dict
-#.  showing up exactly once somewhere in self.sccno2objs
-#.  Need also to subtract refs due to appearances in
-#.  self.cycles.  Complication:  some pairs in self.cycles may
-#.  be shared.
-#.  And need also to subtract refs for membership is self.roots.
-#.  While we're at it, also compute adjusted refcounts for other
-#.  root set objects.
-#.  Subtract one for each of:
-#.  being bound to "x"
-#.  being an argument to getrefcount
-#.  being in self.roots
-#.  We want to capture the first argument -- this works whether
-#.  or not it's named "self", and in case the function is like
-#.  def __init__(*args):
-#.  it's still OK:  we'll pick up the name 'args', and add the
-#.  tuple it's bound to to the root set; the tuple's first
-#.  element is "self", so will be found by the tuple-chaser.
-#.  first argname is first element of locals
-#.  Clear out everything except:
-#.  the root set
-#.  the refs_dispatcher
-#.  the tag_dispatcher
-#.  the cycle filter
-#.  stack exactly mirrors __find_cycles' recursive calls; it's a
-#.  list of (object, index) pairs.
-#.  Map id of active object to its index in self.stack.  Since
-#.  it's a depth-first search, there's a cycle iff we hit an
-#.  object that's already on the stack.
-#.  Set of (addresses of) all interesting objects seen.  Since
-#.  we use a depth-first search, there's never a reason to
-#.  revisit a node.
-#.  List of all cycles found; each element is a stack slice (a
-#.  list of (object, index) pairs).
-#.  Set of objects found in cycles (maps id(obj) -> obj).
-#.  Classifies arcs found in cycles, mapping
-#.  (source_type, selector, destination_type) triples to a count
-#.  of how many times that triple appears in a cycle.
-#.  Support for computing strongly-connected components (SCC).
-#.  We do this by merging cycles into equivalence classes.
-#.  Could be done faster by e.g. Tarjan's algorithm in
-#.  __find_cycles, but would rather keep that lean since cycles
-#.  are expected to be unusual.
-#.  monotonically increasing SCC id
-#.  map id(obj) to obj's sccno
-#.  map sccno back to list of objects
-#.  For objects in cycles and root set, map address to true
-#.  reference count.
-#.  Number of arcs examined.
-#.  Number of cycles ignored (filtered out).
-#.  This can be called an enormous number of times, so speed
-#.  tricks are appropriate.
-#.  Set of ids of objects being, or formerly, chased.
-#.  Maps active object id to index in stack.
-#.  complete the cycle
-#.  a helper for __study_cycle
-#.  Pick (or create) an SCC equivalence class for this cycle.
-#.  Merge the equivalence class for obj1 into classwinner.
-#.  merge obj1's entire equivalence class
-#.  ###############################################################
-#.  Various output routines.  If someone is motivated enough to
-#.  change one of these, they're motivated enough to subclass us!
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/DialupDruid.glade.h:1
@@ -2808,7 +2756,7 @@ msgstr "Ethernet uređaj:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/DialupDruid.glade.h:19
-#: src/netconfpkg/gui/dialupconfig.glade.h:36
+#: src/netconfpkg/gui/dialupconfig.glade.h:32
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 msgid "Pass_word:"
 msgstr "Lozinka:"
@@ -2828,14 +2776,14 @@ msgstr "Označite ethernet uređaj za ovaj račun."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
 #: src/netconfpkg/gui/DialupDruid.glade.h:26
-#: src/netconfpkg/gui/dialupconfig.glade.h:44
+#: src/netconfpkg/gui/dialupconfig.glade.h:40
 #: src/netconfpkg/gui/dslconfig.glade.h:16
 msgid "Use this form to enter your T-Online account data."
 msgstr "Koristite ovaj obrazac za upisivanje vaših podatka računa kod T-Online."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
 #: src/netconfpkg/gui/DialupDruid.glade.h:28
-#: src/netconfpkg/gui/dialupconfig.glade.h:58
+#: src/netconfpkg/gui/dialupconfig.glade.h:53
 #: src/netconfpkg/gui/dslconfig.glade.h:23
 msgid "_Login name:"
 msgstr "_Korisničko ime:"
@@ -2847,7 +2795,7 @@ msgstr "_Ime pružatelja:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/DialupDruid.glade.h:31
-#: src/netconfpkg/gui/dialupconfig.glade.h:65
+#: src/netconfpkg/gui/dialupconfig.glade.h:60
 #: src/netconfpkg/gui/dslconfig.glade.h:30
 msgid "_T-Online Account Setup"
 msgstr "Postavljanje računa kod _T-Online"
@@ -2887,17 +2835,17 @@ msgid "Remote peer p_ort:"
 msgstr "P_ort udaljenog ravnopravnog računala:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:23
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:10
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:10
 #: src/netconfpkg/gui/cipeconfig.glade.h:8
-#: src/netconfpkg/gui/ethernethardware.glade.h:24
-#: src/netconfpkg/gui/tokenringhardware.glade.h:23
+#: src/netconfpkg/gui/ethernethardware.glade.h:11
+#: src/netconfpkg/gui/tokenringhardware.glade.h:10
 msgid "_Device:"
 msgstr "_Uređaj:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
 #: src/netconfpkg/gui/cipeconfig.glade.h:10
-#: src/netconfpkg/gui/editipsec.glade.h:34
+#: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Generate"
 msgstr "_Stvaranje"
 
@@ -2925,67 +2873,6 @@ msgstr "_Tunel kroz uređaj:"
 #: src/netconfpkg/gui/cipeconfig.glade.h:18
 msgid "_auto"
 msgstr "_automatsko"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:16
-#: src/netconfpkg/gui/cipeconfig.glade.h:19
-msgid "cipcb0"
-msgstr "cipcb0"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/cipeconfig.glade.h:20
-msgid "cipcb1"
-msgstr "cipcb1"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/cipeconfig.glade.h:21
-msgid "cipcb2"
-msgstr "cipcb2"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/cipeconfig.glade.h:22
-msgid "cipcb3"
-msgstr "cipcb3"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:20
-#: src/netconfpkg/gui/cipeconfig.glade.h:23
-msgid "cipcb4"
-msgstr "cipcb4"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:21
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:26
-#: src/netconfpkg/gui/cipeconfig.glade.h:24
-#: src/netconfpkg/gui/ethernethardware.glade.h:27
-#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-msgid "eth0"
-msgstr "eth0"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:22
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
-#: src/netconfpkg/gui/cipeconfig.glade.h:25
-#: src/netconfpkg/gui/ethernethardware.glade.h:28
-msgid "eth1"
-msgstr "eth1"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:23
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
-#: src/netconfpkg/gui/cipeconfig.glade.h:26
-#: src/netconfpkg/gui/ethernethardware.glade.h:29
-msgid "eth2"
-msgstr "eth2"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:24
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
-#: src/netconfpkg/gui/cipeconfig.glade.h:27
-#: src/netconfpkg/gui/ethernethardware.glade.h:30
-msgid "eth3"
-msgstr "eth3"
-
-#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:25
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
-#: src/netconfpkg/gui/cipeconfig.glade.h:28
-#: src/netconfpkg/gui/ethernethardware.glade.h:31
-msgid "eth4"
-msgstr "eth4"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:2
 msgid "A_rea code:"
@@ -3053,7 +2940,7 @@ msgid "PPP Settings"
 msgstr "Postavke za PPP"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:21
-#: src/netconfpkg/gui/dialupconfig.glade.h:37
+#: src/netconfpkg/gui/dialupconfig.glade.h:33
 msgid "Phone Number"
 msgstr "Broj telefona"
 
@@ -3062,7 +2949,7 @@ msgid "Prefi_x:"
 msgstr "Prefi_ks:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:23
-#: src/netconfpkg/gui/dialupconfig.glade.h:39
+#: src/netconfpkg/gui/dialupconfig.glade.h:35
 msgid "Provider _name:"
 msgstr "_Ime pružatelja:"
 
@@ -3097,190 +2984,84 @@ msgstr "_Mrežna maska:"
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:2
 #: src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "10"
-msgstr "10"
+msgid "DMA0:"
+msgstr "DMA0:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
 #: src/netconfpkg/gui/ethernethardware.glade.h:3
 #: src/netconfpkg/gui/tokenringhardware.glade.h:2
-msgid "11"
-msgstr "11"
+msgid "DMA1:"
+msgstr "DMA1:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
 #: src/netconfpkg/gui/ethernethardware.glade.h:4
+#: src/netconfpkg/gui/isdnhardware.glade.h:4
 #: src/netconfpkg/gui/tokenringhardware.glade.h:3
-msgid "12"
-msgstr "12"
+msgid "IO_1:"
+msgstr "IO_1:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:4
 #: src/netconfpkg/gui/ethernethardware.glade.h:5
+#: src/netconfpkg/gui/isdnhardware.glade.h:5
 #: src/netconfpkg/gui/tokenringhardware.glade.h:4
-msgid "13"
-msgstr "13"
+msgid "IO_2:"
+msgstr "IO_2:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:5
 #: src/netconfpkg/gui/ethernethardware.glade.h:6
+#: src/netconfpkg/gui/isdnhardware.glade.h:6
 #: src/netconfpkg/gui/tokenringhardware.glade.h:5
-msgid "14"
-msgstr "14"
+msgid "IR_Q:"
+msgstr "IR_Q:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:6
-#: src/netconfpkg/gui/ethernethardware.glade.h:7
-#: src/netconfpkg/gui/tokenringhardware.glade.h:6
-msgid "15"
-msgstr "15"
+#: src/netconfpkg/gui/ethernethardware.glade.h:8
+#: src/netconfpkg/gui/isdnhardware.glade.h:9
+#: src/netconfpkg/gui/tokenringhardware.glade.h:7
+msgid "Resource"
+msgstr "Resurs"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:7
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:7
-#: src/netconfpkg/gui/ethernethardware.glade.h:8
-#: src/netconfpkg/gui/tokenringhardware.glade.h:7
-msgid "3"
-msgstr "3"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:8
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:8
-#: src/netconfpkg/gui/ethernethardware.glade.h:9
-#: src/netconfpkg/gui/tokenringhardware.glade.h:8
-msgid "4"
-msgstr "4"
+msgid "Select Ethernet Adapter"
+msgstr "Označite Ethernet prilagodnik"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:9
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:9
 #: src/netconfpkg/gui/ethernethardware.glade.h:10
 #: src/netconfpkg/gui/tokenringhardware.glade.h:9
-msgid "5"
-msgstr "5"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:10
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:10
-#: src/netconfpkg/gui/ethernethardware.glade.h:11
-#: src/netconfpkg/gui/tokenringhardware.glade.h:10
-msgid "6"
-msgstr "6"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:11
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:11
-#: src/netconfpkg/gui/ethernethardware.glade.h:12
-#: src/netconfpkg/gui/tokenringhardware.glade.h:11
-msgid "7"
-msgstr "7"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:12
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:12
-#: src/netconfpkg/gui/ethernethardware.glade.h:13
-#: src/netconfpkg/gui/tokenringhardware.glade.h:12
-msgid "8"
-msgstr "8"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:13
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:13
-#: src/netconfpkg/gui/ethernethardware.glade.h:14
-#: src/netconfpkg/gui/tokenringhardware.glade.h:13
-msgid "9"
-msgstr "9"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:14
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:14
-#: src/netconfpkg/gui/ethernethardware.glade.h:15
-#: src/netconfpkg/gui/tokenringhardware.glade.h:14
-msgid "DMA0:"
-msgstr "DMA0:"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:15
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:15
-#: src/netconfpkg/gui/ethernethardware.glade.h:16
-#: src/netconfpkg/gui/tokenringhardware.glade.h:15
-msgid "DMA1:"
-msgstr "DMA1:"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:16
-#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:16
-#: src/netconfpkg/gui/ethernethardware.glade.h:17
-#: src/netconfpkg/gui/isdnhardware.glade.h:4
-#: src/netconfpkg/gui/tokenringhardware.glade.h:16
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:17
-#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:17
-#: src/netconfpkg/gui/ethernethardware.glade.h:18
-#: src/netconfpkg/gui/isdnhardware.glade.h:5
-#: src/netconfpkg/gui/tokenringhardware.glade.h:17
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:18
-#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:18
-#: src/netconfpkg/gui/ethernethardware.glade.h:19
-#: src/netconfpkg/gui/isdnhardware.glade.h:6
-#: src/netconfpkg/gui/tokenringhardware.glade.h:18
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:19
-#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:19
-#: src/netconfpkg/gui/ethernethardware.glade.h:21
-#: src/netconfpkg/gui/isdnhardware.glade.h:9
-#: src/netconfpkg/gui/tokenringhardware.glade.h:20
-msgid "Resource"
-msgstr "Resurs"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:20
-msgid "Select Ethernet Adapter"
-msgstr "Označite Ethernet prilagodnik"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:22
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:22
-#: src/netconfpkg/gui/ethernethardware.glade.h:23
-#: src/netconfpkg/gui/tokenringhardware.glade.h:22
 msgid "_Adapter:"
 msgstr "_Adapter:"
 
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:24
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:11
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:24
-#: src/netconfpkg/gui/ethernethardware.glade.h:25
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/ethernethardware.glade.h:12
 #: src/netconfpkg/gui/isdnhardware.glade.h:10
-#: src/netconfpkg/gui/tokenringhardware.glade.h:24
+#: src/netconfpkg/gui/tokenringhardware.glade.h:11
 msgid "_IO:"
 msgstr "_IO:"
 
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:25
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:12
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:25
-#: src/netconfpkg/gui/ethernethardware.glade.h:26
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/ethernethardware.glade.h:13
 #: src/netconfpkg/gui/isdnhardware.glade.h:11
-#: src/netconfpkg/gui/tokenringhardware.glade.h:25
+#: src/netconfpkg/gui/tokenringhardware.glade.h:12
 msgid "_MEM:"
 msgstr "_MEM:"
 
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
-#: src/netconfpkg/gui/ethernethardware.glade.h:32
-msgid "eth5"
-msgstr "eth5"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:32
-#: src/netconfpkg/gui/ethernethardware.glade.h:33
-msgid "eth6"
-msgstr "eth6"
-
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:33
-#: src/netconfpkg/gui/ethernethardware.glade.h:34
-msgid "eth7"
-msgstr "eth7"
-
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:3
 msgid "Configure Network Settings"
 msgstr "Podesite postavke mreže"
@@ -3297,27 +3078,23 @@ msgstr "Ethernet kartica"
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
 msgid "MTU:"
 msgstr "MTU:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"Unesite MTU parametar za postavljanje maksimalne jedinice prijenosa na ovom uređaju "
-"Na s390/s390x  uobičajena postavka za MTU je 1492"
+msgstr "Molim, upišite MTU parametar za postavljanje najveće prijenosne jedinice ovog sučelja.  Uobičajene postavka MTU parametra za s390/s390x je 1492."
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
 msgid "Select Ethernet Device"
 msgstr "Označite ethernet uređaj"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the Ethernet card you want to configure:"
-msgstr "Označite Ethernet karticu koju želite postaviti:"
+msgid "Select the ethernet card you want to configure:"
+msgstr "Označite ethernet karticu, kojoj želite promjeniti postavke:"
 
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/isdnhardware.glade.h:1
@@ -3343,131 +3120,37 @@ msgstr "ISDN prilagodnik:"
 msgid "Select ISDN Adapter"
 msgstr "Označite ISDN prilagodnik"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:1
-msgid "/dev/modem"
-msgstr "/dev/modem"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:2
-#: src/netconfpkg/gui/modemconfig.glade.h:1
-msgid "/dev/ttyI0"
-msgstr "/dev/ttyI0"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:3
-#: src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "/dev/ttyI1"
-msgstr "/dev/ttyI1"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:4
-#: src/netconfpkg/gui/modemconfig.glade.h:3
-msgid "/dev/ttyI2"
-msgstr "/dev/ttyI2"
-
 #: src/netconfpkg/gui/ModemDruid.glade.h:5
-#: src/netconfpkg/gui/modemconfig.glade.h:4
-msgid "/dev/ttyS0"
-msgstr "/dev/ttyS0"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:6
-#: src/netconfpkg/gui/modemconfig.glade.h:5
-msgid "/dev/ttyS1"
-msgstr "/dev/ttyS1"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:7
 #: src/netconfpkg/gui/modemconfig.glade.h:6
-msgid "/dev/ttyS2"
-msgstr "/dev/ttyS2"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:8
-#: src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "/dev/ttyS3"
-msgstr "/dev/ttyS3"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:9
-#: src/netconfpkg/gui/modemconfig.glade.h:8
-msgid "115200"
-msgstr "115200"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:10
-#: src/netconfpkg/gui/modemconfig.glade.h:9
-msgid "1200"
-msgstr "1200"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:11
-#: src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "19200"
-msgstr "19200"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:12
-#: src/netconfpkg/gui/modemconfig.glade.h:11
-msgid "230400"
-msgstr "230400"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:13
-#: src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "2400"
-msgstr "2400"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:14
-#: src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "300"
-msgstr "300"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:15
-#: src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "38400"
-msgstr "38400"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:16
-#: src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "460800"
-msgstr "460800"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:17
-#: src/netconfpkg/gui/modemconfig.glade.h:16
-msgid "4800"
-msgstr "4800"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:18
-#: src/netconfpkg/gui/modemconfig.glade.h:17
-msgid "57600"
-msgstr "57600"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:19
-#: src/netconfpkg/gui/modemconfig.glade.h:18
-msgid "9600"
-msgstr "9600"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:24
-#: src/netconfpkg/gui/modemconfig.glade.h:24
 msgid "Modem Properties"
 msgstr "Svojstva modema"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:25
-#: src/netconfpkg/gui/modemconfig.glade.h:25
+#: src/netconfpkg/gui/ModemDruid.glade.h:6
+#: src/netconfpkg/gui/modemconfig.glade.h:7
 msgid "Modem _volume:"
 msgstr "_Glasnoća modema:"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:28
+#: src/netconfpkg/gui/ModemDruid.glade.h:9
 msgid "Select Modem"
 msgstr "Označite modem"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:31
-#: src/netconfpkg/gui/modemconfig.glade.h:30
+#: src/netconfpkg/gui/ModemDruid.glade.h:12
+#: src/netconfpkg/gui/modemconfig.glade.h:12
 msgid "_Baud rate:"
 msgstr "_Baud rate:"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:32
-#: src/netconfpkg/gui/modemconfig.glade.h:31
+#: src/netconfpkg/gui/ModemDruid.glade.h:13
+#: src/netconfpkg/gui/modemconfig.glade.h:13
 msgid "_Flow control:"
 msgstr "Kontrola _toka:"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:33
-#: src/netconfpkg/gui/modemconfig.glade.h:32
+#: src/netconfpkg/gui/ModemDruid.glade.h:14
+#: src/netconfpkg/gui/modemconfig.glade.h:14
 msgid "_Modem device:"
 msgstr "_Modemski uređaj:"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:34
-#: src/netconfpkg/gui/modemconfig.glade.h:33
+#: src/netconfpkg/gui/ModemDruid.glade.h:15
+#: src/netconfpkg/gui/modemconfig.glade.h:15
 msgid "_Use touch tone dialing"
 msgstr "_Koristi tonsko biranje"
 
@@ -3483,71 +3166,36 @@ msgstr "Vrsta uređaja"
 msgid "Select Device Type"
 msgstr "Označite vrstu uređaja"
 
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:20
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:7
 msgid "Select Token Ring Adapter"
 msgstr "Označi Token Ring prilagodnik"
 
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:26
-#: src/netconfpkg/gui/tokenringconfig.glade.h:17
-#: src/netconfpkg/gui/tokenringhardware.glade.h:26
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:13
 msgid "tr0"
 msgstr "tr0"
 
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:27
-#: src/netconfpkg/gui/tokenringconfig.glade.h:18
-#: src/netconfpkg/gui/tokenringhardware.glade.h:27
-msgid "tr1"
-msgstr "tr1"
-
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:28
-#: src/netconfpkg/gui/tokenringconfig.glade.h:19
-#: src/netconfpkg/gui/tokenringhardware.glade.h:28
-msgid "tr2"
-msgstr "tr2"
-
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:29
-#: src/netconfpkg/gui/tokenringconfig.glade.h:20
-#: src/netconfpkg/gui/tokenringhardware.glade.h:29
-msgid "tr3"
-msgstr "tr3"
-
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:30
-#: src/netconfpkg/gui/tokenringconfig.glade.h:21
-#: src/netconfpkg/gui/tokenringhardware.glade.h:30
-msgid "tr4"
-msgstr "tr4"
-
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:31
-#: src/netconfpkg/gui/tokenringconfig.glade.h:22
-#: src/netconfpkg/gui/tokenringhardware.glade.h:31
-msgid "tr5"
-msgstr "tr5"
-
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:32
-#: src/netconfpkg/gui/tokenringhardware.glade.h:32
-msgid "tr6"
-msgstr "tr6"
-
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:33
-#: src/netconfpkg/gui/tokenringhardware.glade.h:33
-msgid "tr7"
-msgstr "tr7"
-
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Tokenring Device"
-msgstr "Stvori Tokenring uređaj"
+msgid "Create Token Ring Device"
+msgstr "Stvori Token Ring uređaj"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr "Molim, upišite MTU parametar za postavljanje najveće prijenosne jedinice ovog sučelja.  Uobičajene postavka MTU parametra za s390/s390x je 1492."
 
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Tokenring Device"
-msgstr "Označi Tokenring uređaj"
+msgid "Select Token Ring Device"
+msgstr "Označite Token Ring uređaj"
 
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the Tokenring card you want to configure:"
-msgstr "Označi Tokenring karticu koji želite postaviti:"
+msgid "Select the token ring card you want to configure:"
+msgstr "Označite token ring karticu, kojoj želite promjeniti postavke:"
 
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Tokenring card"
-msgstr "Tokenring kartica"
+msgid "Token ring card"
+msgstr "Token ring kartica"
 
 #: src/netconfpkg/gui/tonline.glade.h:1
 msgid "Account Setup"
@@ -3589,7 +3237,7 @@ msgstr "Odaberi pružatelja"
 #: src/netconfpkg/gui/dialupconfig.glade.h:3
 #: src/netconfpkg/gui/dslconfig.glade.h:2
 #: src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: src/netconfpkg/gui/wirelessconfig.glade.h:6
+#: src/netconfpkg/gui/wirelessconfig.glade.h:2
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
 #: src/netconfpkg/gui/ptpconfig.glade.h:2
 msgid "Allow all _users to enable and disable the device"
@@ -3600,40 +3248,41 @@ msgid "CIPE Configuration"
 msgstr "Postavke CIPE-a"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:7
-#: src/netconfpkg/gui/dialupconfig.glade.h:45
+#: src/netconfpkg/gui/dialupconfig.glade.h:41
 #: src/netconfpkg/gui/dslconfig.glade.h:18
 #: src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
 #: src/netconfpkg/gui/ptpconfig.glade.h:5
 msgid "_Activate device when computer starts"
 msgstr "_Pokreni uređaj za vrijeme pokretanja računala"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:9
-#: src/netconfpkg/gui/dialupconfig.glade.h:55
+#: src/netconfpkg/gui/dialupconfig.glade.h:51
 #: src/netconfpkg/gui/dslconfig.glade.h:20
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 #: src/netconfpkg/gui/tokenringconfig.glade.h:9
 #: src/netconfpkg/gui/ptpconfig.glade.h:7
 msgid "_General"
 msgstr "_Općenito"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:12
-#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dialupconfig.glade.h:54
 #: src/netconfpkg/gui/dslconfig.glade.h:25
 #: src/netconfpkg/gui/ethernetconfig.glade.h:8
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
-#: src/netconfpkg/gui/tokenringconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: src/netconfpkg/gui/editipsec.glade.h:34
 #: src/netconfpkg/gui/ptpconfig.glade.h:9
-msgid "_Nickname: "
-msgstr "_Nadimak: "
+msgid "_Nickname:"
+msgstr "_Nadimak:"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:14
-#: src/netconfpkg/gui/dialupconfig.glade.h:64
+#: src/netconfpkg/gui/dialupconfig.glade.h:59
 #: src/netconfpkg/gui/dslconfig.glade.h:28
 #: src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: src/netconfpkg/gui/tokenringconfig.glade.h:15
+#: src/netconfpkg/gui/tokenringconfig.glade.h:14
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Route"
 msgstr "_Ruta"
@@ -3740,113 +3389,91 @@ msgid "Modem p_ort:"
 msgstr "P_ort modema:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:31
-msgid "Modem0"
-msgstr "Modem0"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:32
-msgid "Modem1"
-msgstr "Modem1"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:33
-msgid "Modem2"
-msgstr "Modem2"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:34
-msgid "Modem3"
-msgstr "Modem3"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:35
 msgid "PPP Option List"
 msgstr "Popis opcije PPP-a"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:38
+#: src/netconfpkg/gui/dialupconfig.glade.h:34
 msgid "Prefi_x"
 msgstr "Prefi_ks"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:40
+#: src/netconfpkg/gui/dialupconfig.glade.h:36
 #: src/netconfpkg/gui/dslconfig.glade.h:15
 msgid "Restart if _connection dies"
 msgstr "Ponovo pokreni ako se _veza prekine"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:41
+#: src/netconfpkg/gui/dialupconfig.glade.h:37
 msgid "Select the authentication protocol used by your ISP."
 msgstr "Označi protokol provjere vjerodostojnosti koji koristi vaš ISP."
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:42
+#: src/netconfpkg/gui/dialupconfig.glade.h:38
 msgid "Use _Callback Control Protocol (CBCP)"
 msgstr "Koristi protokol kontrole _povratnog poziva"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:43
+#: src/netconfpkg/gui/dialupconfig.glade.h:39
 msgid "Use _Channel Bundling"
 msgstr "Koristi spajanje _kanala"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:46
+#: src/netconfpkg/gui/dialupconfig.glade.h:42
 #: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "_Add..."
 msgstr "_Dodaj..."
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:47
+#: src/netconfpkg/gui/dialupconfig.glade.h:43
 #: src/netconfpkg/gui/dslconfig.glade.h:19
 msgid "_Advanced"
 msgstr "_Napredno"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:48
+#: src/netconfpkg/gui/dialupconfig.glade.h:44
 msgid "_Allow only above Dial-In Number"
 msgstr "_Omogući samo gornji dolazni telefonski broj"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:49
+#: src/netconfpkg/gui/dialupconfig.glade.h:45
 msgid "_Authentication:"
 msgstr "_Provjera vjerodostojnosti:"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:50
+#: src/netconfpkg/gui/dialupconfig.glade.h:46
 msgid "_Choose Provider..."
 msgstr "_Izaberi pružatelja..."
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:51
+#: src/netconfpkg/gui/dialupconfig.glade.h:47
 msgid "_Compression"
 msgstr "_Kompresija"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:52
-#: src/netconfpkg/gui/maindialog.glade.h:35
+#: src/netconfpkg/gui/dialupconfig.glade.h:48
+#: src/netconfpkg/gui/maindialog.glade.h:34
 msgid "_Delete"
 msgstr "_Obriši"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:53
+#: src/netconfpkg/gui/dialupconfig.glade.h:49
 msgid "_Dial mode:"
 msgstr "Način _zvanja:"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:54
+#: src/netconfpkg/gui/dialupconfig.glade.h:50
 msgid "_Encapsulation mode:"
 msgstr "Način _enkapsulacije"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:56
+#: src/netconfpkg/gui/dialupconfig.glade.h:52
 msgid "_Hangup timeout:"
 msgstr "Vrijeme prekida veze:"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:57
-#: src/netconfpkg/gui/dslconfig.glade.h:22
-#: src/netconfpkg/gui/tokenringconfig.glade.h:12
-msgid "_IPsec"
-msgstr "_IPsec"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:60
+#: src/netconfpkg/gui/dialupconfig.glade.h:55
 msgid "_Options"
 msgstr "_Odrednice"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:61
+#: src/netconfpkg/gui/dialupconfig.glade.h:56
 msgid "_PPP option:"
 msgstr "_PPP opcije:"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:62
+#: src/netconfpkg/gui/dialupconfig.glade.h:57
 msgid "_Phone Number"
 msgstr "_Telefonski broj"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:63
+#: src/netconfpkg/gui/dialupconfig.glade.h:58
 #: src/netconfpkg/gui/dslconfig.glade.h:26
 msgid "_Provider"
 msgstr "_Pružatelj"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:66
+#: src/netconfpkg/gui/dialupconfig.glade.h:61
 msgid "_Use Callback"
 msgstr "_Koristi povratni poziv"
 
@@ -3892,11 +3519,14 @@ msgstr "_AC-ime:"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
 #: src/netconfpkg/gui/ptpconfig.glade.h:8
 msgid "_Hardware Device"
 msgstr "_Sklopovski uređaj"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:22
+msgid "_IPsec"
+msgstr "_IPsec"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 msgid "_Maximum idle time:"
@@ -3936,18 +3566,18 @@ msgstr "Dodaj / uredi unos računala"
 
 #: src/netconfpkg/gui/edithosts.glade.h:4
 msgid "Aliases:"
-msgstr "Nadimci:"
+msgstr "Aliasi:"
 
 #: src/netconfpkg/gui/edithosts.glade.h:5
 msgid "Hostname:"
-msgstr "Ime računala: "
+msgstr "Ime računala:"
 
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 msgid "Ethernet Device"
 msgstr "Ethernet uređaj"
 
-#: src/netconfpkg/gui/ethernethardware.glade.h:20
-#: src/netconfpkg/gui/tokenringhardware.glade.h:19
+#: src/netconfpkg/gui/ethernethardware.glade.h:7
+#: src/netconfpkg/gui/tokenringhardware.glade.h:6
 msgid "Network Adapters Configuration"
 msgstr "Postavljanje mrežnih prilagodnika"
 
@@ -3984,12 +3614,12 @@ msgid "ISDN Adapters Configuration"
 msgstr "Postavljanje ISDN prilagodnika"
 
 #: src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:3
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
 msgid "Waiting to connect to"
 msgstr "Čekam spajanje"
 
 #: src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:4
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
 msgid "Waiting..."
 msgstr "Pričekajte..."
 
@@ -4052,7 +3682,7 @@ msgstr "Trošak po:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
 msgid "Count:"
-msgstr "Broj:"
+msgstr "Brojač:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
 msgid "M_inimum number of seconds charged:"
@@ -4064,7 +3694,7 @@ msgstr "_Sakupljaj trošak preko višestrukih veza"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
 msgid "_Basic"
-msgstr "_Basic"
+msgstr "_Osnovno"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
 msgid "_Cost"
@@ -4100,15 +3730,11 @@ msgstr "_Prekini vezu kad se sesija zatvori"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
 msgid "_Time"
-msgstr "_ Vrijeme"
+msgstr "_Vrijeme"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
 msgid "redhat network control - Properties"
 msgstr "redhat kontrola mreže - svojstva"
-
-#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-msgid "%P %%"
-msgstr "%P %%"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
@@ -4146,7 +3772,7 @@ msgstr "Lagano"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Gateway"
-msgstr "Pristupnik"
+msgstr "Gateway"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "Hardware device:"
@@ -4190,7 +3816,7 @@ msgstr "Označite servise koje želite omogučiti kroz ovaj uređaj"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Service"
-msgstr "Usluga"
+msgstr "Servis"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Service Description"
@@ -4198,7 +3824,7 @@ msgstr "Opis servisa"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Services"
-msgstr "Usluge"
+msgstr "Servisi"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Static Network Routes"
@@ -4214,7 +3840,7 @@ msgstr "Koristi nadimke ethernet uređaja"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "_Delete..."
-msgstr "_Brisanje..."
+msgstr "_Obriši..."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "_Edit..."
@@ -4264,33 +3890,13 @@ msgstr "dhcp"
 msgid "dialup"
 msgstr "birano spajanje"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:2
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "11M"
-msgstr "11M"
-
 #: src/netconfpkg/gui/wirelessconfig.glade.h:3
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "1M"
-msgstr "1M"
-
-#: src/netconfpkg/gui/wirelessconfig.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-msgid "2M"
-msgstr "2M"
-
-#: src/netconfpkg/gui/wirelessconfig.glade.h:5
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-msgid "5.5M"
-msgstr "5.5M"
-
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Network name (SSID):"
 msgstr "Ime mreže (SSID):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:4
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
 msgid ""
 "Used to manipulate encryption or scrambling keys and encryption mode. To set "
 "the current encryption key in hex digits enter the key with 0x prepended as "
@@ -4300,41 +3906,45 @@ msgstr ""
 "Da biste postavili trenutni ključ kriptiranja u heksadecimalnim znamenkama stavite 0x kao "
 "0xXXXXXXXX."
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:5
 msgid "Wireless Device Configuration"
 msgstr "Postavljanje bežičnog uređaja"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid "_Auto"
 msgstr "_Automatsko"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "_Channel:"
 msgstr "_Kanal:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid "_Hardware device"
+msgstr "_Sklopovski uređaj"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "_Key (use 0x for hex):"
 msgstr "_Ključ (koristite 0x za heksadecimalne brojeve):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
 msgid "_Mode:"
 msgstr "_Način rada:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "_Specified:"
 msgstr "_Određeno:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid "_Transmit rate:"
 msgstr "Brzina _prijenosa:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Wireless Settings"
 msgstr "Postavke _bežične mreže"
 
@@ -4366,17 +3976,17 @@ msgstr "Token Ring uređaj"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:8
 msgid "_Alias:"
-msgstr "_Nadimci:"
+msgstr "_Alias:"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
 msgid "_Hardware device:"
 msgstr "_Sklopovski uređaj:"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: src/netconfpkg/gui/tokenringconfig.glade.h:13
 msgid "_Probe for Address"
 msgstr "_Ispitaj za adresu"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: src/netconfpkg/gui/tokenringconfig.glade.h:15
 msgid "_Use Hardware Address"
 msgstr "_Koristi adresu sklopovlja"
 
@@ -4386,7 +3996,7 @@ msgstr "Pokrenite označeni uređaj, pozivajući naredbu ifup <uređaj>."
 
 #: src/netconfpkg/gui/maindialog.glade.h:3
 msgid "Aliases"
-msgstr "Nadimci"
+msgstr "Aliasi"
 
 #: src/netconfpkg/gui/maindialog.glade.h:4
 msgid "Contents"
@@ -4455,30 +4065,28 @@ msgstr "Nadimak"
 
 #: src/netconfpkg/gui/maindialog.glade.h:23
 msgid ""
-"Please enter the name for the profile.\n"
-"The name may only contain letters and digits."
-msgstr ""
-"Molim unesite ime profila.\n"
-"Ime može imati samo slova i brojeve."
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
+msgstr "Molim, upišite ime profila. Ime može sadržavati samo brojke i slova."
 
-#: src/netconfpkg/gui/maindialog.glade.h:25
+#: src/netconfpkg/gui/maindialog.glade.h:24
 msgid "Profile"
 msgstr "Profil"
 
-#: src/netconfpkg/gui/maindialog.glade.h:26
+#: src/netconfpkg/gui/maindialog.glade.h:25
 #: src/netconfpkg/gui/neat-control.glade.h:15
 msgid "Status"
 msgstr "Status"
 
-#: src/netconfpkg/gui/maindialog.glade.h:27
+#: src/netconfpkg/gui/maindialog.glade.h:26
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/netconfpkg/gui/maindialog.glade.h:28
+#: src/netconfpkg/gui/maindialog.glade.h:27
 msgid "You may configure IPsec tunnels and host to host connections here."
 msgstr "Ovdje možete postaviti IPsec tunele i veze računala prema računalu."
 
-#: src/netconfpkg/gui/maindialog.glade.h:29
+#: src/netconfpkg/gui/maindialog.glade.h:28
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
@@ -4486,11 +4094,11 @@ msgstr ""
 "Ovdje možete podešavati mrežne uređaje povezane sa fizičkim hardverom. "
 "Aliasima na jednom fizičkom uređaju moguće je imati mnogo logičkih uređaja."
 
-#: src/netconfpkg/gui/maindialog.glade.h:30
+#: src/netconfpkg/gui/maindialog.glade.h:29
 msgid "You may configure network hardware physically attached to the computer here."
 msgstr "Ovdje možete podešavati mrežni hardver fizički spojen na računalo."
 
-#: src/netconfpkg/gui/maindialog.glade.h:31
+#: src/netconfpkg/gui/maindialog.glade.h:30
 msgid ""
 "You may configure the system's hostname, domain, name servers, and search "
 "domain. Name servers are used to look up other hosts on the network."
@@ -4498,7 +4106,7 @@ msgstr ""
 "Možete podesiti ime računala, domenu, dns servere i domenu pretraživanja."
 "DNS serveri se koriste za traženje drugih računala na mreži."
 
-#: src/netconfpkg/gui/maindialog.glade.h:32
+#: src/netconfpkg/gui/maindialog.glade.h:31
 msgid ""
 "You may specify static computer hostname to IP address mappings here.  If "
 "DNS is in use, these settings will take precedence over any information it "
@@ -4507,66 +4115,66 @@ msgstr ""
 "Ovdje možete navesti statička mapiranja adresa na ime računala. Ako se "
 "koristi DNS, ove postavke će prednost pred podacima koje on daje."
 
-#: src/netconfpkg/gui/maindialog.glade.h:33
+#: src/netconfpkg/gui/maindialog.glade.h:32
 #: src/netconfpkg/gui/neat-control.glade.h:17
 msgid "_Activate"
 msgstr "_Aktiviraj"
 
-#: src/netconfpkg/gui/maindialog.glade.h:34
+#: src/netconfpkg/gui/maindialog.glade.h:33
 #: src/netconfpkg/gui/neat-control.glade.h:19
 msgid "_Deactivate"
 msgstr "_Isključi"
 
-#: src/netconfpkg/gui/maindialog.glade.h:36
+#: src/netconfpkg/gui/maindialog.glade.h:35
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: src/netconfpkg/gui/maindialog.glade.h:37
+#: src/netconfpkg/gui/maindialog.glade.h:36
 msgid "_Hostname:"
 msgstr "_Ime računala:"
 
-#: src/netconfpkg/gui/maindialog.glade.h:38
+#: src/netconfpkg/gui/maindialog.glade.h:37
 #: src/netconfpkg/gui/neat-control.glade.h:21
 msgid "_Monitor"
 msgstr "_Zaslon"
 
-#: src/netconfpkg/gui/maindialog.glade.h:39
+#: src/netconfpkg/gui/maindialog.glade.h:38
 msgid "_New"
-msgstr "_Novo"
+msgstr "_Novi"
 
-#: src/netconfpkg/gui/maindialog.glade.h:40
+#: src/netconfpkg/gui/maindialog.glade.h:39
 msgid "_Primary DNS:"
 msgstr "_Primarni DNS:"
 
-#: src/netconfpkg/gui/maindialog.glade.h:41
+#: src/netconfpkg/gui/maindialog.glade.h:40
 msgid "_Profile"
 msgstr "_Profil"
 
-#: src/netconfpkg/gui/maindialog.glade.h:42
+#: src/netconfpkg/gui/maindialog.glade.h:41
 msgid "_Secondary DNS:"
 msgstr "_Sekundarni DNS:"
 
-#: src/netconfpkg/gui/maindialog.glade.h:43
+#: src/netconfpkg/gui/maindialog.glade.h:42
 msgid "_Tertiary DNS:"
 msgstr "_Tercijalni DNS:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
 msgid "Configure Wireless Connection"
 msgstr "Postavi bežičnu vezu"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
 msgid "Create Wireless Device"
 msgstr "Stvori bežični uređaj"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Select Wireless Device"
 msgstr "Označite bežični uređaj"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-msgid "Select the Wireless card you want to configure:"
-msgstr "Označite Wireless karticu koju želite postaviti:"
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+msgid "Select the wireless card you want to configure:"
+msgstr "Označite bežičnu karticu, kojoj želite promjeniti postavke:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 msgid "Wireless card"
 msgstr "Bežična kartica"
 
@@ -4683,24 +4291,16 @@ msgid "Remote subnet _mask:"
 msgstr "_Maska udaljene podmreže:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:30
-msgid ""
-"You will now be guided through the\n"
-"setup of the IPsec connection."
-msgstr ""
-"Biti ćete vođeni  kroz\n"
-"postavljanje IPsec veze."
+msgid "You will now be guided through the setup of the IPsec connection."
+msgstr "Biti ćete vođeni kroz postavljanje povezivanje IPsec protokolom."
 
-#: src/netconfpkg/gui/editipsec.glade.h:32
+#: src/netconfpkg/gui/editipsec.glade.h:31
 msgid "_Activate connection when computer starts"
 msgstr "_Aktiviraj vezu za vrijeme pokretanja računala"
 
-#: src/netconfpkg/gui/editipsec.glade.h:33
+#: src/netconfpkg/gui/editipsec.glade.h:32
 msgid "_Encryption key:"
 msgstr "_Ključ šifriranja:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:35
-msgid "_Nickname:"
-msgstr "_Nadimak:"
 
 #: src/netconfpkg/gui/neat-control.glade.h:1
 msgid "Ac_tivate"
@@ -4751,8 +4351,8 @@ msgid "The following network interfaces are configured in the active profile."
 msgstr "U pokrenutom profilu postavljeni su sljedeći mrežni uređaji."
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
-msgid "_Info\t"
-msgstr "_Info\t"
+msgid "_Info"
+msgstr "_Informacije"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
 msgid "Card"
