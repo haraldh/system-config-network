@@ -4,7 +4,7 @@ PYTHON_FILES = netconf.py netconf-tui.py neat-control.py
 
 GLADE_FILES = maindialog.glade neat-control.glade
 
-EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c module-info isdnup
+EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb module-info isdnup
 
 sbin_PROGRAMS = userisdnctl
 userisdnctl_SOURCES = userisdnctl.c isdn.h isdnif.h
@@ -20,11 +20,6 @@ all-local:
 	ln -s netconf.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
 	ln -s neat-control.py redhat-control-network
-
-dist-local: glade-strings.c 
-
-glade-strings.c:  $(GLADE_FILES) $(wildcard $(srcdir)/netconfpkg/gui/*.glade)
-	libglade-xgettext -c -o $(srcdir)/glade-strings.c $^
 
 pythondir = $(pkgdatadir)
 ###python_DATA = $(PYTHON_FILES)

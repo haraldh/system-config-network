@@ -21,6 +21,12 @@ icons1_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 icons2_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 icons3_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
+icons1_in_files=$(icons1_DATA:.desktop=.desktop.in)
+icons2_in_files=$(icons2_DATA:.desktop=.desktop.in)
+icons3_in_files=$(icons3_DATA:.desktop=.desktop.in)
+
+@INTLTOOL_DESKTOP_RULE@
+
 sysdir=$(sysconfdir)/X11/applnk/System
 
 .PHONY: rp3 changelog srpm

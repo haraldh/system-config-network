@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netconf 0.3\n"
-"POT-Creation-Date: 2001-08-01 10:45-0400\n"
+"POT-Creation-Date: 2002-06-03 12:08+0200\n"
 "PO-Revision-Date: 2002-04-22 14:24+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -13,7 +13,27 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/netconf.py:57
+#. ! /usr/bin/python2.2
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Workaround for buggy gtk/gnome commandline parsing python bindings.
+#. from netconfpkg import Control
+#: src/netconf.py:57
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -24,55 +44,145 @@ msgstr ""
 "\n"
 "Brug: redhat-config-network-cmd -p --profile <profil>"
 
-#: ../src/netconf.py:63
+#. Argh, another workaround for broken gtk/gnome imports...
+#: src/netconf.py:63
+#, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Genstart %s med root-rettigheder!"
 
-#: ../src/netconf.py:436 ../src/netconf.py:449
+#. import GDK
+#. already in NCDeviceList
+#. devicelist.commit()
+#. already in NCHardwareList
+#. hardwarelist.commit()
+#. already in NCProfileList
+#. profilelist.commit()
+#. print "self.test() != 0"
+#. print "profilelist.save()"
+#. #        profilelist = getProfileList()
+#. print devicelist
+#. #          clist.set_pixmap(row, 0, inact_xpm)
+#. #          for prof in profilelist:
+#. #              if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
+#. #                  clist.set_pixmap(row, 0, act_xpm)
+#. #                  clist.set_row_data(row, 1)
+#. #                  break
+#: src/netconf.py:436 src/netconf.py:449
 msgid "Do you want to save your changes?"
 msgstr "Ønsker du at gemme dine ændringer?"
 
-#: ../src/netconf.py:522
+#. profilelist = getProfileList()
+#. devicelist = getDeviceList()
+#: src/netconf.py:522
 msgid "The Loopback device can not be edited!"
 msgstr "Loopback-enheden kan ikke redigeres!"
 
-#: ../src/netconf.py:580 ../src/netconfpkg/gui/GenericInterface.py:149
+#. Fixed change device names in active list of all profiles
+#: src/netconf.py:580 src/netconfpkg/gui/GenericInterface.py:149
 msgid "This device can not be edited with this tool!"
 msgstr "Denne enhed kan ikke redigeres med dette værktøj!"
 
-#: ../src/netconf.py:606
+#. #        device = devicelist[select]
+#: src/netconf.py:606
 msgid "The Loopback device can not be removed!"
 msgstr "Loopback-enheden kan ikke fjernes!"
 
-#: ../src/netconf.py:609
+#: src/netconf.py:609
+#, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Vil du virkelig slette enheden \"%s\"?"
 
-#: ../src/netconf.py:631
+#: src/netconf.py:631
 msgid "You have made some changes in your configuration."
 msgstr "Du har lavet nogle ændringer i din konfiguration."
 
-#: ../src/netconf.py:632
+#: src/netconf.py:632
+#, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "For at aktivere netværksenheden %s skal ændringerne gemmes."
 
-#: ../src/netconf.py:633
+#: src/netconf.py:633
 msgid "Do you want to continue?"
 msgstr "Ønsker du at fortsætte?"
 
-#: ../src/netconf.py:645 ../src/neat-control.py:117
+#. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
+#. dlg.run_and_close()
+#: src/netconf.py:645 src/neat-control.py:116
 msgid "Network device activating..."
 msgstr "Aktivering af netværksenhed..."
 
-#: ../src/netconf.py:648
+#: src/netconf.py:648
+#, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Aktiverer netværksenhed %s, vent venligst..."
 
-#: ../src/netconf.py:681
+#. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+#. dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+#. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+#. dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+#: src/netconf.py:681 src/neat-control.py:159
 msgid "To be rewritten!"
 msgstr ""
 
-#: ../src/netconf.py:1092
+#. print "profile " + prof.ProfileName + " activated\n"
+#. edit_button.set_sensitive(FALSE)
+#. edit_button.set_sensitive(TRUE)
+#. profilelist = getProfileList()
+#. if clist.get_name() == 'profileList':
+#. for prof in profilelist:
+#. prof.Active = false
+#. profilelist[row].Active = true
+#. self.hydrate()
+#. clist.remove_data ("signal_id")
+#. #        profilelist = getProfileList()
+#. don't allow user to edit device if it's active
+#. if clist.get_name() == 'deviceList':
+#. try:
+#. status = clist.get_pixtext(clist.selection[0], 0)[0]
+#. except ValueError:
+#. status = clist.get_text(clist.selection[0], 0)
+#. if status == ACTIVE:
+#. return
+#. if clist.get_name() == 'deviceList' and event.type == GDK.BUTTON_PRESS:
+#. info = clist.get_selection_info(event.x, event.y)
+#. if info != None and info[1] == 0:
+#. row = info[0]
+#. #                name = clist.get_text(row, 0)
+#. #                type = clist.get_text(row, 1)
+#. #                 if type == 'Loopback':
+#. #                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
+#. #                     return
+#. #                 if clist.get_row_data(row) == 0:
+#. #                     xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
+#. #                     clist.set_row_data(row, 1)
+#. #                     curr_prof = self.get_active_profile()
+#. #                     if curr_prof.ProfileName == 'default':
+#. #                         for prof in profilelist:
+#. #                             profilelist.activateDevice(name, prof.ProfileName, true)
+#. #                     else:
+#. #                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
+#. #                         for prof in profilelist:
+#. #                             if prof.ProfileName == "default":
+#. #                                 continue
+#. #                             if name not in prof.ActiveDevices:
+#. #                                 break
+#. #                         else:
+#. #                             profilelist.activateDevice(name, 'default', true)
+#. #                 else:
+#. #                     xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
+#. #                     clist.set_row_data(row, 0)
+#. #                     curr_prof = self.get_active_profile()
+#. #                     if curr_prof.ProfileName == 'default':
+#. #                         for prof in profilelist:
+#. #                             profilelist.activateDevice(name, prof.ProfileName, false)
+#. #                     else:
+#. #                         profilelist.activateDevice(name, curr_prof.ProfileName, false)
+#. #                         profilelist.activateDevice(name, 'default', false)
+#. #                 clist.set_pixmap(row, 0, xpm)
+#. if len(clist.selection) == 0:
+#. return
+#.
+#: src/netconf.py:1092
 msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
@@ -80,23 +190,25 @@ msgstr ""
 "Angiv navnet på den nye profil.\n"
 "Navnet må kun indeholde bogstaver og cifre."
 
-#: ../src/netconf.py:1102 ../src/netconf.py:1173
+#: src/netconf.py:1102 src/netconf.py:1173
 msgid "The name may only contain letters and digits!"
 msgstr "Navnet kan kun indeholde bogstaver og tal!"
 
-#: ../src/netconf.py:1106 ../src/netconf.py:1177
+#: src/netconf.py:1106 src/netconf.py:1177
 msgid "The profile can't be named \"default\"!"
 msgstr "Profilen kan ikke have navnet \"default\"!"
 
-#: ../src/netconf.py:1111 ../src/netconf.py:1186
+#: src/netconf.py:1111 src/netconf.py:1186
 msgid "The profile name already exists!"
 msgstr "Profilnavnet findes allerede!"
 
-#: ../src/netconf.py:1161
+#. self.xml.get_widget("profileList").clear()
+#. clist.clear()
+#: src/netconf.py:1161
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"Standard\"-profilen kan ikke gis nyt navn!"
 
-#: ../src/netconf.py:1164
+#: src/netconf.py:1164
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
@@ -104,23 +216,48 @@ msgstr ""
 "Venligst indtast det nye navn for profilen.\n"
 "Dette navn kan kun indeholde bogstaver og tal."
 
-#: ../src/netconf.py:1207
+#. clist = self.xml.get_widget('profileList')
+#. if len(clist.selection) == 0:
+#. return
+#: src/netconf.py:1207
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "\"Standard\"-profilen kan ikke slettes!"
 
-#: ../src/netconf.py:1210
+#: src/netconf.py:1210
+#, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Vil du virkelig slette profilen \"%s\"?"
 
-#: ../src/netconf.py:1334
+#. clist.clear()
+#. hardwarelist.rollback()
+#: src/netconf.py:1334
+#, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Vil du virkelig fjerne \"%s\"?"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:73
+#. remove hardware
+#. remove all devices used this hardware
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ADSLInterface.py:73
 msgid "xDSL connection"
 msgstr "xDSL-forbindelse"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:79
+#: src/netconfpkg/gui/ADSLInterface.py:79
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
 "types of broadband connections collective known as Digital Subscriber "
@@ -140,64 +277,135 @@ msgstr ""
 "hastigheder varierer afhængigt af den brugte teknologi, men er generelt i "
 "området 144 kbps til 1.0 Mbps."
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:117
-#: ../src/netconfpkg/gui/DialupDruid.py:108
-#: ../src/netconfpkg/gui/EthernetInterface.py:195
-#: ../src/netconfpkg/gui/CipeInterface.py:132
-#: ../src/netconfpkg/gui/WirelessInterface.py:212
-#: ../src/netconfpkg/gui/TokenRingInterface.py:193
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#: src/netconfpkg/gui/ADSLInterface.py:117
+#: src/netconfpkg/gui/DialupDruid.py:108
+#: src/netconfpkg/gui/EthernetInterface.py:195
+#: src/netconfpkg/gui/CipeInterface.py:132
+#: src/netconfpkg/gui/WirelessInterface.py:212
+#: src/netconfpkg/gui/TokenRingInterface.py:193
 msgid "You have selected the following information:"
 msgstr "Du har valgt følgende information:"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:118
+#: src/netconfpkg/gui/ADSLInterface.py:118
 msgid "Ethernet Device:"
 msgstr "Ethernet-enhed:"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:119
-#: ../src/netconfpkg/gui/DialupDruid.py:110
+#: src/netconfpkg/gui/ADSLInterface.py:119
+#: src/netconfpkg/gui/DialupDruid.py:110
 msgid "Provider Name:"
 msgstr "Navn på udbyder:"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:120
-#: ../src/netconfpkg/gui/DialupDruid.py:111
+#: src/netconfpkg/gui/ADSLInterface.py:120
+#: src/netconfpkg/gui/DialupDruid.py:111
 msgid "Login Name:"
 msgstr "Brugernavn:"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:121
-#: ../src/netconfpkg/gui/DialupDruid.py:113
-#: ../src/netconfpkg/gui/EthernetInterface.py:214
-#: ../src/netconfpkg/gui/CipeInterface.py:147
-#: ../src/netconfpkg/gui/WirelessInterface.py:236
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: src/netconfpkg/gui/ADSLInterface.py:121
+#: src/netconfpkg/gui/DialupDruid.py:113
+#: src/netconfpkg/gui/EthernetInterface.py:214
+#: src/netconfpkg/gui/CipeInterface.py:147
+#: src/netconfpkg/gui/WirelessInterface.py:236
+#: src/netconfpkg/gui/TokenRingInterface.py:211
 msgid "Press \"Finish\" to create this account"
 msgstr "Tryk \"Fuldfør\" for at oprette denne konto"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:109
+#: src/netconfpkg/gui/DialupDruid.py:109
 msgid "Hardware:"
 msgstr "Maskinel:"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:112
+#: src/netconfpkg/gui/DialupDruid.py:112
 msgid "Phone Number:"
 msgstr "Telefonnummer:"
 
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.py:135
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.py:135
-#: ../src/netconfpkg/gui/ethernethardware.py:135
-#: ../src/netconfpkg/gui/ethernethardware.py:147
-#: ../src/netconfpkg/gui/tokenringhardware.py:143
-#: ../src/netconfpkg/gui/tokenringhardware.py:154
-#: ../src/netconfpkg/NCDevice.py:220 ../src/netconfpkg/NCDevice.py:227
-#: ../src/netconfpkg/NCHardwareList.py:144
-#: ../src/netconfpkg/NCHardwareList.py:284
-#: ../src/netconfpkg/NC_functions.py:164 ../src/netconfpkg/NC_functions.py:220
+#. Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. hwlist = NCHardwareList.getHardwareList()
+#. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
+#. if len(hwdesc):
+#. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#: src/netconfpkg/gui/EthernetHardwareDruid.py:135
+#: src/netconfpkg/gui/TokenRingHardwareDruid.py:135
+#: src/netconfpkg/gui/ethernethardware.py:135
+#: src/netconfpkg/gui/ethernethardware.py:147
+#: src/netconfpkg/gui/tokenringhardware.py:143
+#: src/netconfpkg/gui/tokenringhardware.py:154 src/netconfpkg/NCDevice.py:220
+#: src/netconfpkg/NCDevice.py:227 src/netconfpkg/NCHardwareList.py:144
+#: src/netconfpkg/NCHardwareList.py:284 src/netconfpkg/NC_functions.py:164
+#: src/netconfpkg/NC_functions.py:220
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.glade.h:21
+#: src/netconfpkg/gui/tokenringhardware.glade.h:21
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/netconfpkg/gui/IsdnInterface.py:67
+#. pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
+#. self.set_size_request(-1, 1)
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/IsdnInterface.py:67
 msgid "ISDN connection"
 msgstr "ISDN-forbindelse"
 
-#: ../src/netconfpkg/gui/IsdnInterface.py:73
+#: src/netconfpkg/gui/IsdnInterface.py:73
 msgid ""
 "Create a new ISDN connection.  This is a connection that uses an Integrated "
 "Services Digital Network line to dial into to your Internet Service "
@@ -217,11 +425,27 @@ msgstr ""
 "teknologisk avancerede regioner. Den er tilgængelig, men sjælden i USA. "
 "Hastigheder varierer fra 64 kbps til 128 kbps."
 
-#: ../src/netconfpkg/gui/ModemInterface.py:68
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ModemInterface.py:68
 msgid "Modem connection"
 msgstr "Modemforbindelse"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:74
+#: src/netconfpkg/gui/ModemInterface.py:74
 msgid ""
 "Create a new Modem connection.  This is a connection that uses a serial "
 "analog modem to dial into to your Internet Service Provider. These modems "
@@ -235,160 +459,339 @@ msgstr ""
 "af forbindelser er tilgængelige næsten overalt i verden hvor der er et "
 "telefonsystem. "
 
-#: ../src/netconfpkg/gui/ModemInterface.py:99
+#: src/netconfpkg/gui/ModemInterface.py:99
 msgid "Modem probing..."
 msgstr "Søger efter modem..."
 
-#: ../src/netconfpkg/gui/ModemInterface.py:103
+#: src/netconfpkg/gui/ModemInterface.py:103
 msgid "Probing for Modems, please wait..."
 msgstr "Søger efter modemmer, vent venligst..."
 
-#: ../src/netconfpkg/gui/ModemInterface.py:115
+#: src/netconfpkg/gui/ModemInterface.py:115
 msgid "No modem was found on your system."
 msgstr "Intet modem blev fundet på dit system."
 
-#: ../src/netconfpkg/gui/ModemInterface.py:132
+#: src/netconfpkg/gui/ModemInterface.py:132
 msgid "Generic Modem"
 msgstr "Almindeligt modem"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:139
-#: ../src/netconfpkg/gui/modemconfig.py:123
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ModemInterface.py:139
+#: src/netconfpkg/gui/modemconfig.py:123
+#: src/netconfpkg/gui/ModemDruid.glade.h:27
+#: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "Fra"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:141
-#: ../src/netconfpkg/gui/modemconfig.py:125
+#: src/netconfpkg/gui/ModemInterface.py:141
+#: src/netconfpkg/gui/modemconfig.py:125
+#: src/netconfpkg/gui/ModemDruid.glade.h:22
+#: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "Lav"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:143
-#: ../src/netconfpkg/gui/modemconfig.py:127
+#: src/netconfpkg/gui/ModemInterface.py:143
+#: src/netconfpkg/gui/modemconfig.py:127
+#: src/netconfpkg/gui/ModemDruid.glade.h:23
+#: src/netconfpkg/gui/modemconfig.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/tcpipdialog.glade.h:20
 msgid "Medium"
 msgstr "Middel"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:145
-#: ../src/netconfpkg/gui/modemconfig.py:129
+#: src/netconfpkg/gui/ModemInterface.py:145
+#: src/netconfpkg/gui/modemconfig.py:129
+#: src/netconfpkg/gui/ModemDruid.glade.h:21
+#: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "Høj"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:147
-#: ../src/netconfpkg/gui/modemconfig.py:131
+#: src/netconfpkg/gui/ModemInterface.py:147
+#: src/netconfpkg/gui/modemconfig.py:131
+#: src/netconfpkg/gui/ModemDruid.glade.h:30
+#: src/netconfpkg/gui/modemconfig.glade.h:29
 msgid "Very High"
 msgstr "Meget høj"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:79
-#: ../src/netconfpkg/gui/CipeInterface.py:156
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:156
 msgid "None - Server Mode"
 msgstr "Ingen - server-tilstand"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:87
-#: ../src/netconfpkg/gui/CipeInterface.py:163
+#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:163
 msgid " (dynamic)"
 msgstr " (dynamisk)"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:119
-#: ../src/netconfpkg/gui/cipeconfig.py:170
-#: ../src/netconfpkg/gui/CipeInterface.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:250
+#. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
+#: src/netconfpkg/gui/CipeInterface.py:197
+#: src/netconfpkg/gui/CipeInterface.py:250
 msgid "Server Mode"
 msgstr "Server-tilstand"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:202
-#: ../src/netconfpkg/gui/cipeconfig.py:207
-#: ../src/netconfpkg/gui/CipeInterface.py:281
-#: ../src/netconfpkg/gui/CipeInterface.py:286
+#. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
+#: src/netconfpkg/gui/CipeInterface.py:281
+#: src/netconfpkg/gui/CipeInterface.py:286
 msgid "(own choice)"
 msgstr "(eget valg)"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:213
-#: ../src/netconfpkg/gui/CipeInterface.py:292
+#: src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "IP Address of Tunnel Device: "
 msgstr "IP-adresse på tunnel-enhed: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:214
-#: ../src/netconfpkg/gui/CipeInterface.py:293
+#: src/netconfpkg/gui/cipeconfig.py:214
+#: src/netconfpkg/gui/CipeInterface.py:293
 msgid "Local Port: "
 msgstr "Lokal port:"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:215
-#: ../src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/cipeconfig.py:215
+#: src/netconfpkg/gui/CipeInterface.py:294
 msgid "Remote Peer Address: "
 msgstr "Adresse for ekstern ligemand (peer):"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:219
-#: ../src/netconfpkg/gui/CipeInterface.py:298
+#: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "Remote Virtual Address: "
 msgstr "Ekstern virtuel adresse:"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:220
-#: ../src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Virtual Address: "
 msgstr "Lokal virtuel adresse: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:221
-#: ../src/netconfpkg/gui/CipeInterface.py:300
+#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Secret Key: "
 msgstr "Hemmelig nøgle: "
 
-#: ../src/netconfpkg/gui/ctcconfig.py:49
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ctcconfig.py:49
 msgid "CTC Device"
 msgstr "CTC-enhed"
 
-#: ../src/netconfpkg/gui/ctcconfig.py:52
+#: src/netconfpkg/gui/ctcconfig.py:52
 msgid "IUCV Device"
 msgstr "IUCV-enhed"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:228
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/dialupconfig.py:228
+#: src/netconfpkg/gui/dialupconfig.glade.h:12
 msgid "Dialup Configuration"
 msgstr "Konfiguration af ekstern pålogning"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:239
+#: src/netconfpkg/gui/dialupconfig.py:239
 msgid "ISDN Dialup Configuration"
 msgstr "Konfiguration af ISDN-pålogning"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:257
-#: ../src/netconfpkg/gui/dialupconfig.py:335
+#: src/netconfpkg/gui/dialupconfig.py:257
+#: src/netconfpkg/gui/dialupconfig.py:335
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "in"
 msgstr "ind"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:257
+#: src/netconfpkg/gui/dialupconfig.py:257
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "out"
 msgstr "ud"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:296
+#: src/netconfpkg/gui/dialupconfig.py:296
+#: src/netconfpkg/gui/dialupconfig.glade.h:71
 msgid "raw IP"
 msgstr "rå IP"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:298
-#: ../src/netconfpkg/gui/dialupconfig.py:325
+#: src/netconfpkg/gui/dialupconfig.py:298
+#: src/netconfpkg/gui/dialupconfig.py:325
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
 msgid "sync PPP"
 msgstr "synkron PPP"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:310
-#: ../src/netconfpkg/gui/dialupconfig.py:364
+#: src/netconfpkg/gui/dialupconfig.py:310
+#: src/netconfpkg/gui/dialupconfig.py:364
+#: src/netconfpkg/gui/dialupconfig.glade.h:70
 msgid "pap"
 msgstr "pap"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:312
-#: ../src/netconfpkg/gui/dialupconfig.py:366
+#: src/netconfpkg/gui/dialupconfig.py:312
+#: src/netconfpkg/gui/dialupconfig.py:366
+#: src/netconfpkg/gui/dialupconfig.glade.h:64
 msgid "chap"
 msgstr "chap"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:314
-#: ../src/netconfpkg/gui/dialupconfig.py:368
+#: src/netconfpkg/gui/dialupconfig.py:314
+#: src/netconfpkg/gui/dialupconfig.py:368
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
 msgid "chap+pap"
 msgstr "chap+pap"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:316
-#: ../src/netconfpkg/gui/tcpdialog.py:129
+#: src/netconfpkg/gui/dialupconfig.py:316 src/netconfpkg/gui/tcpdialog.py:129
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
+#: src/netconfpkg/gui/tcpipdialog.glade.h:53
 msgid "none"
 msgstr "ingen"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:378
+#: src/netconfpkg/gui/dialupconfig.py:378
 msgid "Modem Dialup Configuration"
 msgstr "Konfiguration af modem-pålogning"
 
-#: ../src/netconfpkg/gui/exception.py:49
+#. make ctrl-C work
+#.
+#. exception.py - general exception formatting and saving
+#.
+#. Matt Wilson <msw@redhat.com>
+#. Erik Troan <ewt@redhat.com>
+#. Harald Hoyer <harald@redhat.com>
+#.
+#. Copyright 2001, 2002 Red Hat, Inc.
+#.
+#. This software may be freely redistributed under the terms of the GNU
+#. library public license.
+#.
+#. You should have received a copy of the GNU Library Public License
+#. along with this program; if not, write to the Free Software
+#. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#.
+#: src/netconfpkg/gui/exception.py:49
 #, fuzzy
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please copy "
@@ -401,23 +804,33 @@ msgstr ""
 "en fil, og indsend så en detaljeret fejlrapport om redhat-config-network på  "
 "http://bugzilla.redhat.com/bugzilla/"
 
-#: ../src/netconfpkg/gui/exception.py:160
+#. I did it this way for future expantion
+#. 0 is debug
+#. 1 is save
+#. 2 is OK
+#. XXX do length limits on obj dumps.
+#. protect from loops
+#. print text
+#: src/netconfpkg/gui/exception.py:160
 msgid "Select a file:"
 msgstr "Vælg en fil:"
 
-#: ../src/netconfpkg/gui/exception.py:188
+#. win.connect ("clicked", self.quit)
+#: src/netconfpkg/gui/exception.py:188
 msgid "Exception Occurred"
 msgstr "Undtagelse skete"
 
-#: ../src/netconfpkg/gui/exception.py:198
+#: src/netconfpkg/gui/exception.py:198
 msgid "Please specify a file to save the dump"
 msgstr "Angiv en fil til gemning af programmets tilstand (dump)"
 
-#: ../src/netconfpkg/gui/exception.py:213
+#: src/netconfpkg/gui/exception.py:213
+#, python-format
 msgid "Failed to write to file %s."
 msgstr "Kunne ikke skrive til fil %s."
 
-#: ../src/netconfpkg/gui/exception.py:217
+#: src/netconfpkg/gui/exception.py:217
+#, python-format
 msgid ""
 "The application's state has been successfully\n"
 "written to the file '%s'."
@@ -425,162 +838,850 @@ msgstr ""
 "Programmets tilstand er er blevet udskrevet til\n"
 "filen '%s' uden problemer."
 
-#: ../src/netconfpkg/gui/tcpdialog.py:108
-#: ../src/netconfpkg/gui/tcpdialog.py:128
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+#. self.dialog.connect("hide", self.on_Dialog_delete_event)
+#. disable TCP/IP and hostname Tabs for CIPE
+#: src/netconfpkg/gui/tcpdialog.py:108 src/netconfpkg/gui/tcpdialog.py:128
+#: src/netconfpkg/gui/sharedtcpip.glade.h:51
+#: src/netconfpkg/gui/tcpipdialog.glade.h:52
 msgid "dialup"
 msgstr "opkaldt"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:105
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Preston Brown <pbrown@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Auto',
+#. 'Managed',
+#. 'Ad-Hoc'
+#. ])
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#. Initialize the clist
+#. Add the interfaces that have no druid yet
+#. remove all other children
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print "EthernetInterface getDeviceList"
+#: src/netconfpkg/gui/EthernetInterface.py:105
 msgid "Ethernet connection"
 msgstr "Ethernet-forbindelse"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:111
+#: src/netconfpkg/gui/EthernetInterface.py:111
 msgid "Create a new ethernet connection."
 msgstr "Opret en ny ethernet-forbindelse."
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:176
+#: src/netconfpkg/gui/EthernetInterface.py:176
 msgid "Other Ethernet Card"
 msgstr "Andet ethernetkort"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:196
-#: ../src/netconfpkg/gui/CipeInterface.py:133
-#: ../src/netconfpkg/gui/WirelessInterface.py:213
-#: ../src/netconfpkg/gui/TokenRingInterface.py:194
+#: src/netconfpkg/gui/EthernetInterface.py:196
+#: src/netconfpkg/gui/CipeInterface.py:133
+#: src/netconfpkg/gui/WirelessInterface.py:213
+#: src/netconfpkg/gui/TokenRingInterface.py:194
 msgid "Device:"
 msgstr "Enhed:"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:207
-#: ../src/netconfpkg/gui/WirelessInterface.py:224
-#: ../src/netconfpkg/gui/TokenRingInterface.py:205
+#: src/netconfpkg/gui/EthernetInterface.py:207
+#: src/netconfpkg/gui/WirelessInterface.py:224
+#: src/netconfpkg/gui/TokenRingInterface.py:205
+#: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Adresse:"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:208
-#: ../src/netconfpkg/gui/WirelessInterface.py:225
-#: ../src/netconfpkg/gui/TokenRingInterface.py:206
+#: src/netconfpkg/gui/EthernetInterface.py:208
+#: src/netconfpkg/gui/WirelessInterface.py:225
+#: src/netconfpkg/gui/TokenRingInterface.py:206
 msgid "Subnet Mask:"
 msgstr "Subnetmaske:"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:209
-#: ../src/netconfpkg/gui/WirelessInterface.py:226
-#: ../src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/EthernetInterface.py:209
+#: src/netconfpkg/gui/WirelessInterface.py:226
+#: src/netconfpkg/gui/TokenRingInterface.py:207
 msgid "Default Gateway Address:"
 msgstr "Standard-gatewayadresse:"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/WirelessInterface.py:228
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
+#: src/netconfpkg/gui/EthernetInterface.py:211
+#: src/netconfpkg/gui/WirelessInterface.py:228
+#: src/netconfpkg/gui/TokenRingInterface.py:209
 msgid "Automatically obtain IP address settings with:"
 msgstr "Hent indstillinger for IP-adresse automatisk med:"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:82
+#. print self.devicelist
+#. !/usr/bin/python
+#. ##
+#. ## DHCP
+#. ##
+#. ##
+#. ## ROUTES
+#. ##
+#. routes[i].commit()
+#. ##
+#. ## Hardware (ethernet)
+#. ##
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
 msgid "%s connection"
 msgstr "%s-forbindelse"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:85
+#: src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
 msgid "Create a new %s connection."
 msgstr "Opret en ny %s-forbindelse."
 
-#: ../src/netconfpkg/gui/GenericInterface.py:95
+#: src/netconfpkg/gui/GenericInterface.py:95
 msgid "This wizard still has to be written."
 msgstr "Denne guide mangler stadig at blive lavet."
 
-#: ../src/netconfpkg/gui/GenericInterface.py:96
+#: src/netconfpkg/gui/GenericInterface.py:96
 msgid "Press Finish to get the standard configuration dialog."
 msgstr "Tryk Fuldfør for at få dialogen for standard konfiguration."
 
-#: ../src/netconfpkg/gui/GenericInterface.py:97
+#: src/netconfpkg/gui/GenericInterface.py:97
 msgid "Then, at first, enter the nickname for the device."
 msgstr "Så indtast først et kaldenavn for enheden."
 
-#: ../src/netconfpkg/gui/CipeInterface.py:85
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/CipeInterface.py:85
 msgid "Cipe connection"
 msgstr "Cipe-forbindelse"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:88
+#: src/netconfpkg/gui/CipeInterface.py:88
 msgid "Create a new Cipe connection."
 msgstr "Opret en ny Cipe-forbindelse."
 
-#: ../src/netconfpkg/gui/CipeInterface.py:134
+#: src/netconfpkg/gui/CipeInterface.py:134
 msgid "Tunnel through Device:"
 msgstr "Tunnelér gennem enhed:"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:135
+#: src/netconfpkg/gui/CipeInterface.py:135
 msgid "Local Port:"
 msgstr "Lokal port:"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:140
-#: ../src/netconfpkg/gui/CipeInterface.py:142
+#: src/netconfpkg/gui/CipeInterface.py:140
+#: src/netconfpkg/gui/CipeInterface.py:142
 msgid "Remote Peer Address:"
 msgstr "Adresse for ekstern ligemand (peer):"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:140
+#: src/netconfpkg/gui/CipeInterface.py:140
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Auto"
 msgstr "Auto"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:143
+#: src/netconfpkg/gui/CipeInterface.py:143
 msgid "Remote Peer Port:"
 msgstr "Port på ekstern vært:"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:145
 msgid "Remote Virtual Address:"
 msgstr "Ekstern virtuel adresse:"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:146
+#: src/netconfpkg/gui/CipeInterface.py:146
 msgid "Local Virtual Address:"
 msgstr "lokal virtuel adresse:"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:310
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:310
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
 msgstr ""
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:103
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/WirelessInterface.py:103
 msgid "Wireless connection"
 msgstr "Trådløs forbindelse"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:109
+#: src/netconfpkg/gui/WirelessInterface.py:109
 msgid "Create a new wireless connection."
 msgstr "Opret en ny trådløs forbindelse."
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:192
+#: src/netconfpkg/gui/WirelessInterface.py:192
 msgid "Other Wireless Card"
 msgstr "Andet  trådløst kort"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:231
+#: src/netconfpkg/gui/WirelessInterface.py:231
 msgid "ESSID (Network ID):"
 msgstr "ESSID (Netværks-ID):"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:232
+#: src/netconfpkg/gui/WirelessInterface.py:232
 msgid "Mode: "
 msgstr "Tilstand:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
+#: src/netconfpkg/gui/WirelessInterface.py:233
 msgid "Channel: "
 msgstr "Kanal:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:234
+#: src/netconfpkg/gui/WirelessInterface.py:234
 msgid "Transmit Rate: "
 msgstr "Overføringshastighed:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:235
+#: src/netconfpkg/gui/WirelessInterface.py:235
 msgid "Key: "
 msgstr "Nøgle:"
 
-#: ../src/netconfpkg/gui/TokenRingInterface.py:105
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/TokenRingInterface.py:105
 msgid "Token Ring connection"
 msgstr "Token Ring-forbindelse"
 
-#: ../src/netconfpkg/gui/TokenRingInterface.py:111
+#: src/netconfpkg/gui/TokenRingInterface.py:111
 msgid "Create a new Token Ring connection."
 msgstr "Opret en ny Token Ring-forbindelse."
 
-#: ../src/netconfpkg/gui/TokenRingInterface.py:175
+#: src/netconfpkg/gui/TokenRingInterface.py:175
 msgid "Other Tokenring Card"
 msgstr "Andet Token Ring-kort"
 
-#: ../src/netconfpkg/NCDevice.py:61
+#. Copyright (C) 1996-2002 Red Hat, Inc.
+#. Use of this software is subject to the terms of the GNU General
+#. Public License
+#. This module manages standard configuration file handling
+#. These classes are available:
+#. Conf:
+#. This is the base class.  This is good for working with just about
+#. any line-oriented configuration file.
+#. Currently does not deal with newline escaping; may never...
+#. ConfShellVar(Conf):
+#. This is a derived class which implements a dictionary for standard
+#. VARIABLE=value
+#. shell variable setting.
+#. Limitations:
+#. o one variable per line
+#. o assumes everything on the line after the '=' is the value
+#. ConfShellVarClone(ConfShellVar):
+#. Takes a ConfShellVar instance and records in another ConfShellVar
+#. "difference file" only those settings which conflict with the
+#. original instance.  The delete operator does delete the variable
+#. text in the cloned instance file, but that will not really delete
+#. the shell variable that occurs, because it does not put an "unset"
+#. command in the file.
+#. ConfESNetwork(ConfShellVar):
+#. This is a derived class specifically intended for /etc/sysconfig/network
+#. It is another dictionary, but magically fixes /etc/HOSTNAME when the
+#. hostname is changed.
+#. ConfEHosts(Conf):
+#. Yet another dictionary, this one for /etc/hosts
+#. Dictionary keys are numeric IP addresses in string form, values are
+#. 2-item lists, the first item of which is the canonical hostname,
+#. and the second of which is a list of nicknames.
+#. ConfEResolv(Conf):
+#. Yet another dictionary, this one for /etc/resolv.conf
+#. This ugly file has two different kinds of entries.  All but one
+#. take the form "key list of arguments", but one entry (nameserver)
+#. instead takes multiple lines of "key argument" pairs.
+#. In this dictionary, all keys have the same name as the keys in
+#. the file, EXCEPT that the multiple nameserver entries are all
+#. stored under 'nameservers'.  Each value (even singleton values)
+#. is a list.
+#. ConfESStaticRoutes(Conf):
+#. Yet another dictionary, this one for /etc/sysconfig/static-routes
+#. This file has a syntax similar to that of /etc/gateways;
+#. the interface name is added and active/passive is deleted:
+#. <interface> net <netaddr> netmask <netmask> gw <gateway>
+#. The key is the interface, the value is a list of
+#. [<netaddr>, <netmask>, <gateway>] lists
+#. ConfChat(Conf):
+#. Not a dictionary!
+#. This reads chat files, and writes a subset of chat files that
+#. has all items enclosed in '' and has one expect/send pair on
+#. each line.
+#. Uses a list of two-element tuples.
+#. ConfChatFile(ConfChat):
+#. This class is a ConfChat which it interprets as a netcfg-written
+#. chat file with a certain amount of structure.  It interprets it
+#. relative to information in an "ifcfg-" file (devconf) and has a
+#. set of abortstrings that can be turned on and off.
+#. It exports the following data items:
+#. abortstrings   list of standard strings on which to abort
+#. abortlist      list of alternative strings on which to abort
+#. defabort       boolean: use the default abort strings or not
+#. dialcmd        string containing dial command (ATDT, for instance)
+#. phonenum       string containing phone number
+#. chatlist       list containing chat script after CONNECT
+#. chatfile       ConfChat instance
+#. ConfChatFileClone(ConfChatFile):
+#. Creates a chatfile, then removes it if it is identical to the chat
+#. file it clones.
+#. ConfDIP:
+#. This reads chat files, and writes a dip file based on that chat script.
+#. Takes three arguments:
+#. o The chatfile
+#. o The name of the dipfile
+#. o The ConfSHellVar instance from which to take variables in the dipfile
+#. ConfModules(Conf)
+#. This reads /etc/modules.conf into a dictionary keyed on device type,
+#. holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
+#. cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
+#. cm['eth0']['post-install'] --> ['/bin/foo','arg1','arg2']
+#. path[*] entries are ignored (but not removed)
+#. New entries are added at the end to make sure that they
+#. come after any path[*] entries.
+#. Comments are delimited by initial '#'
+#. ConfModInfo(Conf)
+#. This READ-ONLY class reads /boot/module-info.
+#. The first line of /boot/module-info is "Version = <version>";
+#. this class reads versions 0 and 1 module-info files.
+#. ConfPw(Conf)
+#. This class implements a dictionary based on a :-separated file.
+#. It takes as arguments the filename and the field number to key on;
+#. The data provided is a list including all fields including the key.
+#. Has its own write method to keep files sane.
+#. ConfPasswd(ConfPw)
+#. This class presents a data-oriented class for making changes
+#. to the /etc/passwd file.
+#. ConfShadow(ConfPw)
+#. This class presents a data-oriented class for making changes
+#. to the /etc/shadow file.
+#. ConfGroup(ConfPw)
+#. This class presents a data-oriented class for making changes
+#. to the /etc/group file.
+#. May be replaced by a pwdb-based module, we hope.
+#. ConfUnix()
+#. This class presents a data-oriented class which uses the ConfPasswd
+#. and ConfShadow classes (if /etc/shadow exists) to hold data.
+#. Designed to be replaced by a pwdb module eventually, we hope.
+#. ConfPAP(Conf):
+#. Yet another dictionary, this one for /etc/ppp/pap-secrets
+#. The key is the remotename, the value is a list of
+#. [<user>, <secret>] lists
+#. ConfCHAP(ConfPAP):
+#. Yet another dictionary, this one for /etc/ppp/chap-secrets
+#. The key is the remotename, the value is a list of
+#. [<local>, <secret>] lists
+#. ConfSecrets:
+#. Has-a ConfPAP and ConfCHAP
+#. Yet another dictionary, which reads from pap-secrets and
+#. chap-secrets, and writes to both when an entry is set.
+#. When conflicts occur while reading, the pap version is
+#. used in preference to the chap version (this is arbitrary).
+#. ConfSysctl:
+#. Guess what?  A dictionary, this time with key/value pairs for sysctl vars.
+#. Duplicate keys get appended to existing values, and broken out again when
+#. the file is written (does that even work?)
+#. This library exports several Errors, including
+#. FileMissing
+#. Conf raises this error if create_if_missing == 0 and the file does not
+#. exist
+#. IndexError
+#. ConfShVar raises this error if unbalanced quotes are found
+#. BadFile
+#. Raised to indicate improperly formatted files
+#. WrongMethod
+#. Raised to indicate that the wrong method is being called.  May indicate
+#. that a dictionary class should be written to through methods rather
+#. than assignment.
+#. VersionMismatch
+#. An unsupported file version was found.
+#. SystemFull
+#. No more UIDs or GIDs are available
+#. Implementation:
+#. A configuration file is a list of lines.
+#. a line is a string.
+#. self.line is a "point" -- 0 is before the first line;
+#. 1 is between the first and second lines, etc.
+#. The "current" line is the line after the point.
+#. returns false if no more lines matching pattern
+#. if while loop terminated, pattern not found.
+#. optional whitespace followed by non-comment character
+#. defines a codeline.  blank lines, lines with only whitespace,
+#. and comment lines do not count.
+#. returns list of fields split by self.separators
+#. print "re.split(%s, %s) = " % (self.lines[self.line], seps) + str(re.split(seps, self.lines[self.line]))
+#. replaces current line with line built from list
+#. appends if off the end of the array
+#. strip newlines
+#. rcs checkout/checkin errors are thrown away, because they
+#. aren't this tool's fault, and there's nothing much it could
+#. do about them.  For example, if the file is already locked
+#. by someone else, too bad!  This code is for keeping a trail,
+#. not for managing contention.  Too many deadlocks that way...
+#. add newlines
+#. initialize dictionary of variable/name pairs
+#. fields 1..n are false separations on "=" character in string,
+#. so we need to join them back together.
+#. found quote; strip from beginning and end
+#. ignore whitespace, etc.
+#. set *every* instance of varname to value to avoid surprises
+#. delete *every* instance...
+#. ConfShellVarClone(ConfShellVar):
+#. Takes a ConfShellVar instance and records in another ConfShellVar
+#. "difference file" only those settings which conflict with the
+#. original instance.  The delete operator does delete the variable
+#. text in the cloned instance file, but that will not really delete
+#. the shell variable that occurs, because it does not put an "unset"
+#. command in the file.
+#. differs from self.ci; save a local copy.
+#. self.ci already has the variable with the same value,
+#. don't duplicate it
+#. inherit delitem because we don't want to pass it through to self.ci
+#. FIXME: should we implement keys()?
+#. explicitly for /etc/sysconfig/network: HOSTNAME is magical value
+#. that writes /etc/HOSTNAME as well
+#. There doesn't appear to be a need to return keys in order
+#. here because we normally always have the same entries in this
+#. file, and order isn't particularly important.
+#. for /etc/hosts
+#. implements a dictionary keyed by IP address, with values
+#. consisting of a list: [ hostname, [list, of, nicknames] ]
+#. initialize dictionary of variable/name pairs
+#. has nicknames
+#. set first (should be only) instance to values in list value
+#. delete *every* instance...
+#. It is rather important to return the keys in order here,
+#. in order to maintain a consistent presentation in apps.
+#. initialize dictionary of variable/name pairs
+#. /etc/resolv.conf
+#. set first (should be only) instance to values in list value
+#. if there is a nameserver line, save the place,
+#. remove all nameserver lines, then put in new ones in order
+#. no nameservers entries so far
+#. not a nameserver, so all items on one line...
+#. no matter what, update our idea of the variable...
+#. delete *every* instance...
+#. Need to make sure __setitem__ is called for each item to
+#. maintain consistancy, in case some did something like
+#. resolv['nameservers'].append('123.123.123.123')
+#. or
+#. resolv['search'].append('another.domain')
+#. no need to return list in order here, I think.
+#. ConfESStaticRoutes(Conf):
+#. Yet another dictionary, this one for /etc/sysconfig/static-routes
+#. This file has a syntax similar to that of /etc/gateways;
+#. the interface name is added and active/passive is deleted:
+#. <interface> net <netaddr> netmask <netmask> gw <gateway>
+#. The key is the interface, the value is a list of
+#. [<netaddr>, <netmask>, <gateway>] lists
+#. since we re-write the file completely on close, we don't
+#. need to alter it piecemeal here.
+#. deletes a route from a device if the route exists,
+#. and if it is the only route for the device, removes
+#. the device from the dictionary
+#. Note: This could normally be optimized considerably,
+#. except that our input may have come from the file,
+#. which others may have hand-edited, and this makes it
+#. possible for us to deal with hand-inserted multiple
+#. identical routes in a reasonably correct way.
+#. need first comparison because list shrinks
+#. adds a route to a device, deleteing it first to avoid dups
+#. forget current version of file
+#. no need to return list in order here, I think.
+#. ConfChat(Conf):
+#. Not a dictionary!
+#. This reads chat files, and writes a subset of chat files that
+#. has all items enclosed in '' and has one expect/send pair on
+#. each line.
+#. Uses a list of two-element tuples.
+#. here i points to a new entry
+#. eat up the ending '
+#. eat whitespace between strings
+#. now form self.list from chatlist
+#. create self.lines for Conf.write...
+#. ConfChatFile(ConfChat):
+#. This class is a ConfChat which it interprets as a netcfg-written
+#. chat file with a certain amount of structure.  It interprets it
+#. relative to information in an "ifcfg-" file (devconf) and has a
+#. set of abortstrings that can be turned on and off.
+#. It exports the following data items:
+#. abortstrings   list of standard strings on which to abort
+#. abortlist      list of alternative strings on which to abort
+#. defabort       boolean: use the default abort strings or not
+#. dialcmd        string containing dial command (ATDT, for instance)
+#. phonenum       string containing phone number
+#. chatlist       list containing chat script after CONNECT
+#. chatfile       ConfChat instance
+#. ignore INITSTRING
+#. elif not self.dialcmd and tempmatch:
+#. First instance of something that looks like a dial
+#. command and a phone number we take as such.
+#. ignore dial command
+#. ConfChatFileClone(ConfChatFile):
+#. Creates a chatfile, then removes it if it is identical to the chat
+#. file it clones.
+#. some element differs, so they are different
+#. the loop completed, so they are the same
+#. lists are different lengths, so they are different
+#. ConfDIP:
+#. This reads chat files, and writes a dip file based on that chat script.
+#. Takes three arguments:
+#. o The chatfile
+#. o The name of the dipfile
+#. o The ConfSHellVar instance from which to take variables in the dipfile
+#. ConfModules(Conf)
+#. This reads /etc/modules.conf into a dictionary keyed on device type,
+#. holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
+#. cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
+#. cm['eth0']['post-install'] --> ['/bin/foo','arg1','arg2']
+#. path[*] entries are ignored (but not removed)
+#. New entries are added at the end to make sure that they
+#. come after any path[*] entries.
+#. Comments are delimited by initial '#'
+#. assume no -k field
+#. remember that it was there...
+#. ...and get it out of the way
+#. set *every* instance (should only be one, but...) to avoid surprises
+#. some idiot apparantly put an unrecognized key in
+#. the dictionary; ignore it...
+#. there's something to write...
+#. delete any instances of this if they exist.
+#. delete *every* instance...
+#. need to make sure everything is set, because program above may
+#. well have done cm['eth0']['post-install'] = ['/bin/foo', '-f', '/tmp/bar']
+#. which is completely reasonable, but won't invoke __setitem__
+#. ConfModInfo(Conf)
+#. This READ-ONLY class reads /boot/module-info.
+#. The first line of /boot/module-info is "Version <version>";
+#. this class reads versions 0 and 1 module-info files.
+#. Version 0 file format
+#. first "field" is null (before separators)
+#. get argument name (first "field" is null again)
+#. point at first character of argument description
+#. deal with escaped quotes (\")
+#. advance to beginning of next string, if any
+#. end of the line
+#. Version 1 file format
+#. Version 1 format uses ' ' and ':' characters as field separators
+#. but only uses ' ' in one place, where we explicitly look for it.
+#. pull out module and linetype from the first field...
+#. error: unknown flag...
+#. ConfPw(Conf)
+#. This class implements a dictionary based on a :-separated file.
+#. It takes as arguments the filename and the field number to key on;
+#. The data provided is a list including all fields including the key.
+#. Has its own write method to keep files sane.
+#. need to be able to return the keys in order to keep
+#. things consistent...
+#. change the mode of the new file to that of the old one
+#. add newlines while writing
+#. ConfPwO
+#. This class presents a data-oriented meta-class for making
+#. changes to ConfPw-managed files.  Applications should not
+#. instantiate this class directly.
+#. items are objects which the higher-level code can't touch
+#. __delitem__ is inherited from ConfPw
+#. Do *not* use setitem for this; adding an entry should be
+#. a much different action than accessing an entry or changing
+#. fields in an entry.
+#. first, we try not to re-use id's that have already been assigned.
+#. ignore nobody on some systems
+#. if that didn't work, we go back and find any free id over 500
+#. ConfPasswd(ConfPwO)
+#. This class presents a data-oriented class for making changes
+#. to the /etc/passwd file.
+#. first, we need a helper class...
+#. make sure that we have enough gecos fields
+#. make sure that we have enough gecos fields
+#. username is not an lvalue...
+#. ConfShadow(ConfPwO)
+#. This class presents a data-oriented class for making changes
+#. to the /etc/shadow file.
+#. first, we need a helper class...
+#. username is not an lvalue...
+#. we need that final '' so that the final : (delimited the
+#. "reserved field" is preserved by ConfPwO.addentry())
+#. ConfGroup(ConfPwO)
+#. This class presents a data-oriented class for making changes
+#. to the /etc/group file.
+#. May be replaced by a pwdb-based module, we hope.
+#. first, we need a helper class...
+#. username is not an lvalue...
+#. ConfUnix()
+#. This class presents a data-oriented class which uses the ConfPasswd
+#. and ConfShadow classes (if /etc/shadow exists) to hold data.
+#. Designed to be replaced by a pwdb module eventually, we hope.
+#. first, we need a helper class...
+#. username is not an lvalue...
+#. fields 1..n are false matches on "=" character in string,
+#. which is messed up, but try to deal with it
+#. snip off leading and trailing spaces, which are legal (it's
+#. how sysctl(1) prints them) but can be confusing, and tend to
+#. screw up Python's dictionaries
+#. set it in the line list
+#. snip off leading and trailing spaces, which are legal (it's
+#. how sysctl(1) prints them) but can be confusing, and tend to
+#. screw up Python's dictionaries
+#. re-read the file, sort of
+#. add newlines
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. returns false if no more lines matching pattern
+#. if while loop terminated, pattern not found.
+#. initialize dictionary of variable/name pairs
+#. print self.getline()
+#. found quote; strip from beginning and end
+#. ignore whitespace, etc.
+#. found quote; strip from beginning and end
+#. ignore whitespace, etc.
+#. delete *every* instance...
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. This module manages SMB configuration file handling
+#. These classes are available:
+#. ConfSMB(Conf):
+#. Implements a dictionary of dictionaries of bools, ints, and strings.
+#. Toplevel key is a string representing a share
+#. Second level keys are literals representing config options.
+#. Booleans are set and stored as 0/1, but read in the file as any legal
+#. value, including (case insensitive) 0/false/no and 1/true/yes
+#. So: turn off browsing home directories with
+#. smb['homes'] = [ 'browseable', 0 ]
+#. ConfSMB(Conf):
+#. Implements a dictionary of dictionaries of bools, ints, and strings.
+#. Toplevel key is a string representing a share
+#. Second level keys are literals representing config options.
+#. Booleans are set and stored as 0/1, but read in the file as any legal
+#. value, including (case insensitive) 0/false/no and 1/true/yes
+#. So: turn off browsing home directories with
+#. smb['homes'][browseable] = 0
+#. print "initvars: " + self.getline()
+#. print "next_entry: " + self.getline()
+#. return true if the current line is of the form [...]
+#. leave the current line at the first line of the stanza
+#. (the first line after the [stanza_name] entry)
+#. leave the current line at the first line of the stanza
+#. (the first line after the [stanza_name] entry)
+#. leave the current line at the entry_name line or before
+#. the [...] line of the next stanza (or the end of the file)
+#. if entry_name does not exist.
+#. print "find_entry_in_current_stanza: " + self.getline()
+#. print "is stanza!"
+#. no need to return list in order here, I think.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print self.getline()
+#. set first (should be only) instance to values in list value
+#. not a nameserver, so all items on one line...
+#. no matter what, update our idea of the variable...
+#. delete *every* instance...
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print status
+#: src/netconfpkg/NCDevice.py:61
+#, python-format
 msgid ""
 "May I change\n"
 "%s\n"
@@ -590,272 +1691,370 @@ msgstr ""
 "%s\n"
 "fra tilstand %o til %o?"
 
-#: ../src/netconfpkg/NCDevice.py:130 ../src/netconfpkg/NCDevice.py:141
-#: ../src/netconfpkg/NCDevice.py:152
+#. def __str__(self):
+#. if self.Alias != None:
+#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#. self.Alias)
+#. else:
+#. return "Device %s (%s)" % (self.DeviceId, self.Device)
+#. def __repr__(self):
+#. if self.Alias != None:
+#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#. self.Alias)
+#. else:
+#. return "Device %s (%s)" % (self.DeviceId, self.Device)
+#: src/netconfpkg/NCDevice.py:130 src/netconfpkg/NCDevice.py:141
+#: src/netconfpkg/NCDevice.py:152
 msgid "Device type not specified"
 msgstr "Enhedstype ikke angivet"
 
-#: ../src/netconfpkg/NCDevice.py:217
+#. ok, we have to inherit all other data from our master
+#: src/netconfpkg/NCDevice.py:217
+#, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, enhed ikke angivet, eller alias ikke et tal!"
 
-#: ../src/netconfpkg/NCDevice.py:259
+#. print "Creating Dialup"
+#. print "Loading Dialup"
+#: src/netconfpkg/NCDevice.py:259
+#, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Fil %s med statiske ruter er ugyldig"
 
-#: ../src/netconfpkg/NCDeviceList.py:69
+#. print "Moving %s to %s" % (self.oldname, self.DeviceId)
+#. delete the key, rather than set it to no (#62127)
+#. Recalculate BROADCAST and NETWORK values if IP and netmask are
+#. present (#51462)
+#. Do not clear the non-filled in values for Wireless Devices
+#. Bugzilla #52252
+#. RESOLV_MODS should be PEERDNS
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from netconfpkg.NCDevice import Device
+#. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
+#. print self.data[i]
+#: src/netconfpkg/NCDeviceList.py:69
+#, python-format
 msgid "Error loading Device %s!\n"
 msgstr "Fejl ved indlæsning af enhed %s!\n"
 
-#: ../src/netconfpkg/NCDeviceList.py:140
+#.
+#. clear all Dialer sections in wvdial.conf
+#. before the new Dialer sections written
+#.
+#.
+#. Clear all pap and chap-secrets generated by netconf
+#.
+#.
+#. traverse all devices in the list
+#.
+#.
+#. really save the device
+#.
+#. if dev.changed:
+#.
+#. write the pap and chap-secrets, if any
+#.
+#.
+#. Static routes
+#.
+#.
+#. traverse all devices in the list
+#.
+#: src/netconfpkg/NCDeviceList.py:140
+#, python-format
 msgid "Error opening/writing %s: %s!"
 msgstr "Fejl ved åbning/skrivning af %s: %s!"
 
-#: ../src/netconfpkg/NCDialup.py:38
+#.
+#. Remove old config files
+#.
+#. print "DVList.load()"
+#. print repr(DVList)
+#. if dev.Dialup.Callback == None:
+#. dl.save()
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCDialup.py:38
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/dialupconfig.glade.h:63
 msgid "auto"
 msgstr "auto"
 
-#: ../src/netconfpkg/NCDialup.py:39
+#: src/netconfpkg/NCDialup.py:39 src/netconfpkg/gui/dialupconfig.glade.h:67
 msgid "manual"
 msgstr "manuel"
 
-#: ../src/netconfpkg/NCDialup.py:42 ../src/netconfpkg/NC_functions.py:80
+#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:80
+#: src/netconfpkg/gui/ModemDruid.glade.h:26
+#: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/netconfpkg/NCDialup.py:43
+#: src/netconfpkg/NCDialup.py:43
 msgid "Afghanistan"
 msgstr "Afghanistan"
 
-#: ../src/netconfpkg/NCDialup.py:44
+#: src/netconfpkg/NCDialup.py:44
 msgid "Albania"
 msgstr "Albanien"
 
-#: ../src/netconfpkg/NCDialup.py:45
+#: src/netconfpkg/NCDialup.py:45
 msgid "Algeria"
 msgstr "Algeriet"
 
-#: ../src/netconfpkg/NCDialup.py:46
+#: src/netconfpkg/NCDialup.py:46
 msgid "American Samoa"
 msgstr "Amerikansk Samoa"
 
-#: ../src/netconfpkg/NCDialup.py:47
+#: src/netconfpkg/NCDialup.py:47
 msgid "Andorra"
 msgstr "Andorra"
 
-#: ../src/netconfpkg/NCDialup.py:48
+#: src/netconfpkg/NCDialup.py:48
 msgid "Argentina"
 msgstr "Argentina"
 
-#: ../src/netconfpkg/NCDialup.py:49
+#: src/netconfpkg/NCDialup.py:49
 msgid "Australia"
 msgstr "Australien"
 
-#: ../src/netconfpkg/NCDialup.py:50
+#: src/netconfpkg/NCDialup.py:50
 msgid "Austria"
 msgstr "Østrig"
 
-#: ../src/netconfpkg/NCDialup.py:51
+#: src/netconfpkg/NCDialup.py:51
 msgid "Belgium"
 msgstr "Belgien"
 
-#: ../src/netconfpkg/NCDialup.py:52
+#: src/netconfpkg/NCDialup.py:52
 msgid "Bosnia and Hercegovina"
 msgstr "Bosnien og Herzegovina"
 
-#: ../src/netconfpkg/NCDialup.py:53
+#: src/netconfpkg/NCDialup.py:53
 msgid "Brazil"
 msgstr "Brasilien"
 
-#: ../src/netconfpkg/NCDialup.py:54
+#: src/netconfpkg/NCDialup.py:54
 msgid "British Virgin Islands"
 msgstr "Britiske Jomfruøer"
 
-#: ../src/netconfpkg/NCDialup.py:55
+#: src/netconfpkg/NCDialup.py:55
 msgid "Bulgaria"
 msgstr "Bulgarien"
 
-#: ../src/netconfpkg/NCDialup.py:56
+#: src/netconfpkg/NCDialup.py:56
 msgid "Canada"
 msgstr "Canada"
 
-#: ../src/netconfpkg/NCDialup.py:57
+#: src/netconfpkg/NCDialup.py:57
 msgid "Central African Republic"
 msgstr "Centralafrikanske Republik"
 
-#: ../src/netconfpkg/NCDialup.py:58
+#: src/netconfpkg/NCDialup.py:58
 msgid "Chile"
 msgstr "Chile"
 
-#: ../src/netconfpkg/NCDialup.py:59
+#: src/netconfpkg/NCDialup.py:59
 msgid "China"
 msgstr "Kina"
 
-#: ../src/netconfpkg/NCDialup.py:60
+#: src/netconfpkg/NCDialup.py:60
 msgid "Colombia"
 msgstr "Colombia"
 
-#: ../src/netconfpkg/NCDialup.py:61
+#: src/netconfpkg/NCDialup.py:61
 msgid "Croatia"
 msgstr "Kroatien"
 
-#: ../src/netconfpkg/NCDialup.py:62
+#: src/netconfpkg/NCDialup.py:62
 msgid "Cuba"
 msgstr "Cuba"
 
-#: ../src/netconfpkg/NCDialup.py:63
+#: src/netconfpkg/NCDialup.py:63
 msgid "Czech Republic"
 msgstr "Tjekkiet"
 
-#: ../src/netconfpkg/NCDialup.py:64
+#: src/netconfpkg/NCDialup.py:64
 msgid "Denmark"
 msgstr "Danmark"
 
-#: ../src/netconfpkg/NCDialup.py:65
+#: src/netconfpkg/NCDialup.py:65
 msgid "Finland"
 msgstr "Finland"
 
-#: ../src/netconfpkg/NCDialup.py:66
+#: src/netconfpkg/NCDialup.py:66
 msgid "France"
 msgstr "Frankrig"
 
-#: ../src/netconfpkg/NCDialup.py:67
+#: src/netconfpkg/NCDialup.py:67
 msgid "Germany"
 msgstr "Tyskland"
 
-#: ../src/netconfpkg/NCDialup.py:68
+#: src/netconfpkg/NCDialup.py:68
 msgid "Greece"
 msgstr "Grækenland"
 
-#: ../src/netconfpkg/NCDialup.py:69
+#: src/netconfpkg/NCDialup.py:69
 msgid "Hong Kong"
 msgstr "Hong Kong"
 
-#: ../src/netconfpkg/NCDialup.py:70
+#: src/netconfpkg/NCDialup.py:70
 msgid "Hungary"
 msgstr "Ungarn"
 
-#: ../src/netconfpkg/NCDialup.py:71
+#: src/netconfpkg/NCDialup.py:71
 msgid "Iceland"
 msgstr "Island"
 
-#: ../src/netconfpkg/NCDialup.py:72
+#: src/netconfpkg/NCDialup.py:72
 msgid "India"
 msgstr "Indien"
 
-#: ../src/netconfpkg/NCDialup.py:73
+#: src/netconfpkg/NCDialup.py:73
 msgid "Indonesia"
 msgstr "Indonesien"
 
-#: ../src/netconfpkg/NCDialup.py:74
+#: src/netconfpkg/NCDialup.py:74
 msgid "Ireland"
 msgstr "Irland"
 
-#: ../src/netconfpkg/NCDialup.py:75
+#: src/netconfpkg/NCDialup.py:75
 msgid "Israel"
 msgstr "Israel"
 
-#: ../src/netconfpkg/NCDialup.py:76
+#: src/netconfpkg/NCDialup.py:76
 msgid "Italy"
 msgstr "Italen"
 
-#: ../src/netconfpkg/NCDialup.py:77
+#: src/netconfpkg/NCDialup.py:77
 msgid "Japan"
 msgstr "Japan"
 
-#: ../src/netconfpkg/NCDialup.py:78
+#: src/netconfpkg/NCDialup.py:78
 msgid "Korea North"
 msgstr "Nordkorea"
 
-#: ../src/netconfpkg/NCDialup.py:79
+#: src/netconfpkg/NCDialup.py:79
 msgid "Korea Republic"
 msgstr "Sydkorea"
 
-#: ../src/netconfpkg/NCDialup.py:80
+#: src/netconfpkg/NCDialup.py:80
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: ../src/netconfpkg/NCDialup.py:81
+#: src/netconfpkg/NCDialup.py:81
 msgid "Luxembourg"
 msgstr "Luxemborg"
 
-#: ../src/netconfpkg/NCDialup.py:82
+#: src/netconfpkg/NCDialup.py:82
 msgid "Mexico"
 msgstr "Mexico"
 
-#: ../src/netconfpkg/NCDialup.py:83
+#: src/netconfpkg/NCDialup.py:83
 msgid "Netherlands"
 msgstr "Holland"
 
-#: ../src/netconfpkg/NCDialup.py:84
+#: src/netconfpkg/NCDialup.py:84
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: ../src/netconfpkg/NCDialup.py:85
+#: src/netconfpkg/NCDialup.py:85
 msgid "Norway"
 msgstr "Norge"
 
-#: ../src/netconfpkg/NCDialup.py:86
+#: src/netconfpkg/NCDialup.py:86
 msgid "Philippines"
 msgstr "Philippinerne"
 
-#: ../src/netconfpkg/NCDialup.py:87
+#: src/netconfpkg/NCDialup.py:87
 msgid "Romania"
 msgstr "Rumænien"
 
-#: ../src/netconfpkg/NCDialup.py:88
+#: src/netconfpkg/NCDialup.py:88
 msgid "Singapore"
 msgstr "Singapore"
 
-#: ../src/netconfpkg/NCDialup.py:89
+#: src/netconfpkg/NCDialup.py:89
 msgid "Slovakia"
 msgstr "Slovakiet"
 
-#: ../src/netconfpkg/NCDialup.py:90
+#: src/netconfpkg/NCDialup.py:90
 msgid "Spain"
 msgstr "Spanien"
 
-#: ../src/netconfpkg/NCDialup.py:91
+#: src/netconfpkg/NCDialup.py:91
 msgid "Sweden"
 msgstr "Sverige"
 
-#: ../src/netconfpkg/NCDialup.py:92
+#: src/netconfpkg/NCDialup.py:92
 msgid "Switzerland"
 msgstr "Svejts"
 
-#: ../src/netconfpkg/NCDialup.py:93
+#: src/netconfpkg/NCDialup.py:93
 msgid "Taiwan"
 msgstr "Taiwan"
 
-#: ../src/netconfpkg/NCDialup.py:94
+#: src/netconfpkg/NCDialup.py:94
 msgid "Thailand"
 msgstr "Thailand"
 
-#: ../src/netconfpkg/NCDialup.py:95
+#: src/netconfpkg/NCDialup.py:95
 msgid "Turkey"
 msgstr "Tyrkiet"
 
-#: ../src/netconfpkg/NCDialup.py:96
+#: src/netconfpkg/NCDialup.py:96
 msgid "Ukraine"
 msgstr "Ukraine"
 
-#: ../src/netconfpkg/NCDialup.py:97
+#: src/netconfpkg/NCDialup.py:97
 msgid "United Kingdom"
 msgstr "Storbritannien"
 
-#: ../src/netconfpkg/NCDialup.py:98
+#: src/netconfpkg/NCDialup.py:98
 msgid "United States of America"
 msgstr "U.S.A."
 
-#: ../src/netconfpkg/NCDialup.py:99
+#: src/netconfpkg/NCDialup.py:99
 msgid "Vietnam"
 msgstr "Vietnam"
 
-#: ../src/netconfpkg/NCDialup.py:100
+#: src/netconfpkg/NCDialup.py:100
 msgid "Yugoslavia"
 msgstr "Jugoslavien"
 
-#: ../src/netconfpkg/NCHardwareList.py:186
+#.
+#. Read in actual system state
+#.
+#. No Alias devices
+#: src/netconfpkg/NCHardwareList.py:186
+#, python-format
 msgid ""
 "%s has an alias to module %s in modules.conf,\n"
 "instead of currently loaded module %s!"
@@ -863,11 +2062,38 @@ msgstr ""
 "%s har et alias til modul %s i modules.conf,\n"
 "i stedet for aktuelt indlæste modul %s!"
 
-#: ../src/netconfpkg/NCProfileList.py:128
+#. Clean up wvdial
+#. if the loop does not get interrupted by break
+#. we did not find the Modem in the hardwarelist
+#. and it gets deleted
+#. Clean up modules
+#. print "Testing " + str(mod)
+#. print "Removing " + str(mod)
+#. print str(modules.vars[mod].keys())
+#. print "Test: " + str(modules[mod])
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. 60016
+#. Keep that test for later versions
+#: src/netconfpkg/NCProfileList.py:128
+#, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "Enhed %s bruger den samme maskinelenhed \"%s\" som %s!\n"
 
-#: ../src/netconfpkg/NCProfileList.py:129
+#: src/netconfpkg/NCProfileList.py:129
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -875,19 +2101,68 @@ msgstr ""
 "Vælg venligst en anden udstyrsenhed\n"
 "eller aktivér kun en af dem."
 
-#: ../src/netconfpkg/NC_functions.py:78
+#. if the hostname changed, set it system wide (#55746)
+#. First remove all files that are linked in the device directory
+#. Check, if it is a device of neat in every profile directory
+#. Remove all profile directories except default
+#. Remove all files in the default profile directory
+#. delete all other entries the user has deleted in the UI
+#. print prof.ActiveDevices
+#. print "Processing %s" % devId
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Do not clear the non-filled in values
+#. Bugzilla #52252
+#. for i in conf.keys():
+#. if not conf[i] or conf[i] == "": del conf[i]
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NC_functions.py:78 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Maskinel (CRTSCTS)"
 
-#: ../src/netconfpkg/NC_functions.py:79
+#: src/netconfpkg/NC_functions.py:79 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Programmel (XON/XOFF)"
 
-#: ../src/netconfpkg/NC_functions.py:322
+#. print dev+" has unknown device type, skipping it."
+#. print "file '%s' is not a file!" % file
+#. print "Removed %s" % file
+#: src/netconfpkg/NC_functions.py:322
+#, python-format
 msgid "Error removing %s: %s!"
 msgstr "Fejl ved fjernelse af %s: %s!"
 
-#: ../src/netconfpkg/NC_functions.py:331 ../src/netconfpkg/NC_functions.py:340
+#: src/netconfpkg/NC_functions.py:331 src/netconfpkg/NC_functions.py:340
+#, python-format
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -897,7 +2172,8 @@ msgstr ""
 "til\n"
 "%s: %s!"
 
-#: ../src/netconfpkg/NC_functions.py:349
+#: src/netconfpkg/NC_functions.py:349
+#, python-format
 msgid ""
 "Error renaming\n"
 "%s\n"
@@ -909,115 +2185,264 @@ msgstr ""
 "til\n"
 "%s: %s!"
 
-#: ../src/netconfpkg/Control.py:50
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
+#. we only support 1 ISDN card in this version
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. print _i
+#. print Device
+#. first some defines
+#. this basic class will be common for all genClass generated classes
+#. and imported from a seperate module
+#. initialize all variables with None
+#. Constructor with object
+#.
+#. @brief returns the parent of this object
+#. @return the parent of this object
+#.
+#.
+#. @brief deletes this object
+#.
+#. create new instance of ourselves
+#. install_funcs = classmethod(install_funcs)
+#.
+#. Non-Anonymous List
+#.
+#. print "%s changed" % child
+#.
+#. Non-List-Child functions
+#.
+#.
+#. List-Child functions
+#.
+#. get_install_funcs = classmethod(get_install_funcs)
+#.
+#. Anonymous List
+#.
+#. print "%s changed" % self._attributes[SELF][NAME]
+#. print "%s changed" % self._attributes[SELF][NAME]
+#. print "%s changed" % self._attributes[SELF][NAME]
+#. print "%s changed" % self._attributes[SELF][NAME]
+#.
+#. List-Child functions
+#.
+#.
+#. Non-List-Child functions
+#.
+#. get_install_funcs = classmethod(get_install_funcs)
+#. !/usr/bin/python
+#.
+#. test1
+#.
+#. read
+#. write
+#. check
+#. cleanup
+#.
+#. test2
+#.
+#. read
+#. modify
+#. write
+#. check
+#. cleanup
+#.
+#. test3
+#.
+#. read
+#. write
+#. check
+#. cleanup
+#.
+#. test4
+#.
+#. read
+#. modify
+#. write
+#. check
+#. cleanup
+#. ! /usr/bin/env python
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/Control.py:50
 msgid "Active"
 msgstr "Aktiv"
 
-#: ../src/netconfpkg/Control.py:51
+#: src/netconfpkg/Control.py:51
 msgid "Inactive"
 msgstr "Inaktiv"
 
-#: ../src/netconfpkg/Control.py:174
+#. remove inactive isdn/ppp device
+#. check real ppp device
+#: src/netconfpkg/Control.py:174
+#, python-format
 msgid "Cannot activate network device %s"
 msgstr "Kan ikke aktivere netværksenhed %s"
 
-#: ../src/netconfpkg/Control.py:176
+#: src/netconfpkg/Control.py:176
+#, python-format
 msgid "Cannot deactivate network device %s"
 msgstr "Kan ikke deaktivere netværksenhed %s"
 
-#: ../src/netconfpkg/Control.py:178
+#: src/netconfpkg/Control.py:178
+#, python-format
 msgid "Cannot show status of network device %s"
 msgstr "Kan ikke vise status for netværksenhed %s"
 
-#: ../src/netconfpkg/Control.py:180
+#: src/netconfpkg/Control.py:180
+#, python-format
 msgid "Cannot monitor status of network device %s"
 msgstr "Kan ikke overvåge status på netværksenhed %s"
 
-#: ../src/netconf-tui.py:35
+#. make ctrl-C work
+#. !/usr/bin/python
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#: src/netconf-tui.py:35
 msgid "What do you want to configure?"
 msgstr "Hvad ønsker du at konfigurere?"
 
-#: ../src/netconf-tui.py:36
+#: src/netconf-tui.py:36
 msgid "Configure"
 msgstr "Konfigurér"
 
-#: ../src/netconf-tui.py:36
+#: src/netconf-tui.py:36
 msgid "Exit"
 msgstr "Afslut"
 
-#: ../src/netconf-tui.py:41
+#: src/netconf-tui.py:41 neat.desktop.in.h:1 src/maindialog.glade.h:16
 msgid "Network Configuration"
 msgstr "Netværkskonfiguration"
 
-#: ../src/netconf-tui.py:152 ../src/netconf-tui.py:259
-#: ../src/netconf-tui.py:362
+#: src/netconf-tui.py:152 src/netconf-tui.py:259 src/netconf-tui.py:362
+#: src/maindialog.glade.h:15
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/netconf-tui.py:153 ../src/netconf-tui.py:260
-#: ../src/netconf-tui.py:363
+#: src/netconf-tui.py:153 src/netconf-tui.py:260 src/netconf-tui.py:363
+#: src/maindialog.glade.h:8 src/neat-control.glade.h:1
 msgid "Device"
 msgstr "Enhed"
 
-#: ../src/netconf-tui.py:154
+#: src/netconf-tui.py:154
 msgid "Use DHCP"
 msgstr "Brug DHCP"
 
-#: ../src/netconf-tui.py:155
+#: src/netconf-tui.py:155
 msgid "Static IP"
 msgstr "Statisk IP"
 
-#: ../src/netconf-tui.py:156
+#: src/netconf-tui.py:156
 msgid "Netmask"
 msgstr "Netmaske"
 
-#: ../src/netconf-tui.py:157
+#: src/netconf-tui.py:157
 msgid "Default gateway IP"
 msgstr "Standard-_gateway-IP:"
 
-#: ../src/netconf-tui.py:165 ../src/netconf-tui.py:271
-#: ../src/netconf-tui.py:374
+#: src/netconf-tui.py:165 src/netconf-tui.py:271 src/netconf-tui.py:374
 msgid "Ok"
 msgstr "O.k."
 
-#: ../src/netconf-tui.py:165 ../src/netconf-tui.py:271
-#: ../src/netconf-tui.py:374
+#: src/netconf-tui.py:165 src/netconf-tui.py:271 src/netconf-tui.py:374
 msgid "Cancel"
 msgstr "Annulér"
 
-#: ../src/netconf-tui.py:167
+#: src/netconf-tui.py:167
 msgid "Ethernet Configuration"
 msgstr "Konfiguration af ethernet"
 
-#: ../src/netconf-tui.py:261 ../src/netconf-tui.py:364
+#: src/netconf-tui.py:261 src/netconf-tui.py:364
 msgid "ISP Phonenumber"
 msgstr "Telefonnummer til ISP"
 
-#: ../src/netconf-tui.py:262 ../src/netconf-tui.py:365
+#: src/netconf-tui.py:262 src/netconf-tui.py:365
 msgid "ISP Login"
 msgstr "Logind for ISP"
 
-#: ../src/netconf-tui.py:263 ../src/netconf-tui.py:366
+#: src/netconf-tui.py:263 src/netconf-tui.py:366
 msgid "ISP Password"
 msgstr "Adgangskode hos ISP"
 
-#: ../src/netconf-tui.py:264
+#: src/netconf-tui.py:264
 msgid "Modem Initstring"
 msgstr "Streng for modem_initiering:"
 
-#: ../src/netconf-tui.py:272
+#: src/netconf-tui.py:272 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr "Modemkonfiguration"
 
-#: ../src/netconf-tui.py:367
+#: src/netconf-tui.py:367
 msgid "MSN"
 msgstr "MSN"
 
-#: ../src/netconf-tui.py:375
+#: src/netconf-tui.py:375
 msgid "ISDN Configuration"
 msgstr "Konfiguration af ISDN"
 
-#: ../src/neat-control.py:51
+#. ! /usr/bin/env python
+#. # redhat-network-control - A easy-to-use interface for configuring/activating
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/neat-control.py:50
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -1025,1242 +2450,1920 @@ msgstr ""
 "Dette programmel distribueres under GPL. Rapportér venligst fejl til Red "
 "Hat's fejlsporings-system: http://bugzilla.redhat.com/"
 
-#: ../src/neat-control.py:120
+#: src/neat-control.py:119
+#, python-format
 msgid "Activating for Network device %s, please wait..."
 msgstr "Aktiverer for netværksenhed %s, vent venligst..."
 
-#~ msgid "$"
-#~ msgstr "kr"
-
-#~ msgid "%P %%"
-#~ msgstr "%P %%"
-
-#~ msgid "/dev/modem"
-#~ msgstr "/dev/modem"
-
-#~ msgid "/dev/ttyI0"
-#~ msgstr "/dev/ttyI0"
-
-#~ msgid "/dev/ttyI1"
-#~ msgstr "/dev/ttyI1"
-
-#~ msgid "/dev/ttyI2"
-#~ msgstr "/dev/ttyI2"
-
-#~ msgid "/dev/ttyS0"
-#~ msgstr "/dev/ttyS0"
-
-#~ msgid "/dev/ttyS1"
-#~ msgstr "/dev/ttyS1"
-
-#~ msgid "/dev/ttyS2"
-#~ msgstr "/dev/ttyS2"
-
-#~ msgid "/dev/ttyS3"
-#~ msgstr "/dev/ttyS3"
-
-#~ msgid "0.00"
-#~ msgstr "0,00"
-
-#~ msgid "00:00:00"
-#~ msgstr "00:00:00"
-
-#~ msgid "00:00:00:00:00:00"
-#~ msgstr "00:00:00:00:00:00"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "1.00"
-#~ msgstr "1,00"
-
-#~ msgid "10"
-#~ msgstr "10"
-
-#~ msgid "11"
-#~ msgstr "11"
-
-#~ msgid "115200"
-#~ msgstr "115200"
-
-#~ msgid "11M"
-#~ msgstr "11M"
-
-#~ msgid "12"
-#~ msgstr "12"
-
-#~ msgid "1200"
-#~ msgstr "1200"
-
-#~ msgid "13"
-#~ msgstr "13"
-
-#~ msgid "14"
-#~ msgstr "14"
-
-#~ msgid "15"
-#~ msgstr "15"
-
-#~ msgid "19200"
-#~ msgstr "19200"
-
-#~ msgid "1M"
-#~ msgstr "1M"
-
-#~ msgid "1_TR6"
-#~ msgstr "1_TR6"
-
-#~ msgid "230400"
-#~ msgstr "230400"
-
-#~ msgid "2400"
-#~ msgstr "2400"
-
-#~ msgid "2M"
-#~ msgstr "2M"
-
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgid "300"
-#~ msgstr "300"
-
-#~ msgid "38400"
-#~ msgstr "38400"
-
-#~ msgid "4"
-#~ msgstr "4"
-
-#~ msgid "460800"
-#~ msgstr "460800"
-
-#~ msgid "4800"
-#~ msgstr "4800"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~ msgid "5.5M"
-#~ msgstr "5.5M"
-
-#~ msgid "57600"
-#~ msgstr "57600"
-
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "9"
-#~ msgstr "9"
-
-#~ msgid "9600"
-#~ msgstr "9600"
-
-#~ msgid "A_rea Code"
-#~ msgstr "_Retningsnummer"
-
-#~ msgid "A_rea Code:"
-#~ msgstr "_Retningsnummer:"
-
-#~ msgid "Ac_tivate"
-#~ msgstr "_Aktivér"
-
-#~ msgid "Accounting"
-#~ msgstr "Kontering"
-
-#~ msgid "Active Profile"
-#~ msgstr "Aktiv profil"
-
-#~ msgid "Ad-Hoc"
-#~ msgstr "Ad-hoc (master)"
-
-#~ msgid "Add / Edit Hosts entry"
-#~ msgstr "Tilføj/redigér værtsindgang"
-
-#~ msgid "Add / Edit IP Address"
-#~ msgstr "Tilføj/redigér IP-adresse"
-
-#~ msgid "Add new Device Type"
-#~ msgstr "Tilføj ny enhedstype"
-
-#~ msgid "Add..."
-#~ msgstr "Tilføj..."
-
-#~ msgid "Advanced"
-#~ msgstr "Avanceret"
-
-#~ msgid "Aliases"
-#~ msgstr "Alias"
-
-#~ msgid "Aliases:"
-#~ msgstr "Alias:"
-
-#~ msgid "Allow all _users to enable and disable the device"
-#~ msgstr "Tillad alle _brugere at aktivere og deaktivere enheden"
-
-#~ msgid "Allow dial on _demand"
-#~ msgstr "Tillad opkald ved _behov"
-
-#~ msgid "Allow the link come up on demand."
-#~ msgstr "Tillad at linjen kommer op efter behov."
-
-#~ msgid "Automatically obtain DNS information from _provider"
-#~ msgstr "Hent DNS-information fra _udbyder automatisk"
-
-#~ msgid "Automatically obtain _DNS information from provider"
-#~ msgstr "Hent DNS-information fra _udbyder automatisk"
-
-#~ msgid "Automatically obtain _IP address settings with:"
-#~ msgstr "Hent indstillinger for IP-adresse automatisk med:"
-
-#~ msgid "Basic"
-#~ msgstr "Basal"
-
-#~ msgid "Bind to _MAC Address:"
-#~ msgstr "Bind til _MAC-addresse:"
-
-#~ msgid "CIPE Configuration"
-#~ msgstr "Konfiguration af CIPE"
-
-#~ msgid "CTC Configuration"
-#~ msgstr "Konfiguration af CTC"
-
-#~ msgid "Callback"
-#~ msgstr "Tilbageringning"
-
-#~ msgid "Callback _Delay:"
-#~ msgstr "_Pause før tilbageringning:"
-
-#~ msgid "Callback _Mode:"
-#~ msgstr "_Version af tilbageringning:"
-
-#~ msgid "Callback setting"
-#~ msgstr "Indstillinger for tilbageringning"
-
-#~ msgid "Choose Hardware Device Type"
-#~ msgstr "Vælg type maskinelenhed"
-
-#~ msgid "Choose Hardware Type"
-#~ msgstr "Vælg type maskinel"
-
-#~ msgid "Choose a Provider"
-#~ msgstr "Vælg en udbyder"
-
-#~ msgid ""
-#~ "Click here, if you want to choose a new provider from the ISP database."
-#~ msgstr ""
-#~ "Klik her hvis du vil vælge en ny udbyder fra databasen med "
-#~ "Internetudbydere."
-
-#~ msgid "Compression"
-#~ msgstr "Komprimering"
-
-#~ msgid "Configuration for your remote partner"
-#~ msgstr "Konfiguration for din fjernpartner"
-
-#~ msgid "Configure DSL connection"
-#~ msgstr "Konfigurér DSL-forbindelse"
-
-#~ msgid "Configure Network Settings"
-#~ msgstr "Konfigurér netværksopsætning"
-
-#~ msgid "Configure Tunnel"
-#~ msgstr "Konfigurér tunnel"
-
-#~ msgid "Configure Wireless Connection"
-#~ msgstr "Konfigurér trådløs forbindelse"
-
-#~ msgid "Confirm _starting connection"
-#~ msgstr "Bekræft opstart af forbindelse"
-
-#~ msgid "Confirm stopping _connection"
-#~ msgstr "Bekræft afbrydelse af forbindelse"
-
-#~ msgid "Connect to"
-#~ msgstr "Opkobl til"
-
-#~ msgid "Copy"
-#~ msgstr "Kopiér"
-
-#~ msgid "Cos_t accumulated from the past connection:"
-#~ msgstr "_Samlede omkostninger fra seneste opkobling:"
-
-#~ msgid "Cost"
-#~ msgstr "Omkostning"
-
-#~ msgid "Cost per:"
-#~ msgstr "Omkostning per:"
-
-#~ msgid "Count:"
-#~ msgstr "Antal:"
-
-#~ msgid "Create Cipe Connection"
-#~ msgstr "Opret Cipe-forbindelse"
-
-#~ msgid "Create DSL connection"
-#~ msgstr "Opret DSL-forbindelse"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "Opret opkaldt forbindelse"
-
-#~ msgid "Create Ethernet Device"
-#~ msgstr "Opret ethernet-enhed"
-
-#~ msgid "Create Tokenring Device"
-#~ msgstr "Opret tokenring-enhed"
-
-#~ msgid "Create Wireless Device"
-#~ msgstr "Opret trådløs enhed"
-
-#~ msgid "D Channel Protocol"
-#~ msgstr "D-kanal protokol"
-
-#~ msgid "DHCP Settings"
-#~ msgstr "Indstillinger for DHCP"
-
-#~ msgid "DMA0:"
-#~ msgstr "DMA0:"
-
-#~ msgid "DMA1:"
-#~ msgstr "DMA1:"
-
-#~ msgid "DNS"
-#~ msgstr "DNS"
-
-#~ msgid "DNS Search Path"
-#~ msgstr "Søgesti for DNS-søgning"
-
-#~ msgid "Deact_ivate"
-#~ msgstr "_Deaktivér"
-
-#~ msgid "Default _Gateway Address:"
-#~ msgstr "Standard-_gatewayadresse:"
-
-#~ msgid "Delete"
-#~ msgstr "Slet"
-
-#~ msgid "Demand _value:"
-#~ msgstr "Domæne_værdi:"
-
-#~ msgid "Demand setting"
-#~ msgstr "Indstillinger for automatisk opringning"
-
-#~ msgid "Description"
-#~ msgstr "Beskrivelse"
-
-#~ msgid "Destination Network"
-#~ msgstr "Målnetværk"
-
-#~ msgid "Device Type"
-#~ msgstr "Enhedstype"
-
-#~ msgid "Device _Aliases:"
-#~ msgstr "Aliaser for enheder:"
-
-#~ msgid "Devices"
-#~ msgstr "Enheder"
-
-#~ msgid "Dial _Mode:"
-#~ msgstr "Opkalds_tilstand:"
-
-#~ msgid "Dial-In _Number:"
-#~ msgstr "Indkommende _nummer:"
-
-#~ msgid "Difficulty level:"
-#~ msgstr "Sværhedsgrad:"
-
-#~ msgid "Disconnect from"
-#~ msgstr "Afbryd forbindelse til"
-
-#~ msgid "Do_main:"
-#~ msgstr "_Domæne:"
-
-#~ msgid "Domain Name"
-#~ msgstr "Domænenavn"
-
-#~ msgid "Domain Name:"
-#~ msgstr "Domænenavn:"
-
-#~ msgid ""
-#~ "Each connection needs to be associated with a physical device which can "
-#~ "be selected below."
-#~ msgstr ""
-#~ "Hver forbindelse skal være tilsluttet til en fysisk enhed som kan vælges "
-#~ "nedenfor."
-
-#~ msgid ""
-#~ "Each device needs to be attached to a physical device which can be "
-#~ "selected below. Device Alias support allows you to use multiple virtual "
-#~ "devices for one physical device."
-#~ msgstr ""
-#~ "Hver enhed skal være tilsluttet til en fysisk enhed som kan vælges "
-#~ "nedenfor. Understøttelse af enhedsalias lader dig vælge flere virtuelle "
-#~ "enheder for en fysisk enhed."
-
-#~ msgid ""
-#~ "Each device needs to be attached to a physical device, which can be "
-#~ "selected below."
-#~ msgstr ""
-#~ "Hver enhed skal være tilsluttet til en fysisk enhed som kan vælges "
-#~ "nedenfor."
-
-#~ msgid "Easy"
-#~ msgstr "Nem"
-
-#~ msgid "Edit Domain Name"
-#~ msgstr "Rediger domænenavn"
-
-#~ msgid "Edit..."
-#~ msgstr "Redigér..."
-
-#~ msgid "Enable VJ Connection-_ID Compression"
-#~ msgstr "Aktivér VJ-kompression af opkoblings-_ID"
-
-#~ msgid "Enable _Address/Control Compression"
-#~ msgstr "Aktiver _adresse/kontrol-kompression"
-
-#~ msgid "Enable _BSD Compression"
-#~ msgstr "Aktivér _BSD-komprimering"
-
-#~ msgid "Enable _CCP Compression Control Protocol"
-#~ msgstr "Aktivér _CCP, Compression Control Protocol"
-
-#~ msgid "Enable _Device Alias support"
-#~ msgstr "Aktivér understøttelse for _enhedsalias"
-
-#~ msgid "Enable _Protocol Field Compression"
-#~ msgstr "Aktivér _Protocol Field Compression"
-
-#~ msgid "Enable _VJ TCP/IP Header Compression"
-#~ msgstr "Aktivér _VJ-komprimering af TCP/IP-hoveder"
-
-#~ msgid "Enable synchronous PPP for the connection"
-#~ msgstr "Aktivér synkron PPP for forbindelsen"
-
-#~ msgid ""
-#~ "Enter any numbers you need to dial before the normal phone number. For "
-#~ "example, if you need to reach an outside line, or disable call waiting, "
-#~ "put the necessary numbers here."
-#~ msgstr ""
-#~ "Angiv de cifre som du behøver indtaste inden det rigtige telefonnummer. "
-#~ "Hvis du eksempelvis skal taste noget for at få en udgående linje eller "
-#~ "deaktivere \"samtale venter\" kan du angive cifrene som behøves her."
-
-#~ msgid ""
-#~ "Enter the Access Concentrator name, if you have been given one by your "
-#~ "ISP. In most cases you can leave this blank."
-#~ msgstr ""
-#~ "Angiv navnet på adgangskoncentratoren (access concentrator) hvis din "
-#~ "Internetudbyder har givet dig en sådan. I de fleste tilfælde kan du lade "
-#~ "det være tomt."
-
-#~ msgid ""
-#~ "Enter the Service Name, if your ISP requires it. If you don't know it, "
-#~ "please contact your ISP. In most cases you can leave this blank."
-#~ msgstr ""
-#~ "Angiv tjenestenavnet hvis din Internetudbyder kræver et sådant. Hvis du "
-#~ "ikke kender det bør du kontakte din Internetudbyder. I de fleste tilfælde "
-#~ "kan du lade det være tomt."
-
-#~ msgid "Enter the area code needed to reach your internet provider."
-#~ msgstr "Indtast områdekoden som kræves for at nå din internet-udbyder."
-
-#~ msgid ""
-#~ "Enter the idle time in seconds after which the link should be dropped."
-#~ msgstr "Indtast inaktiv tid i sekunder hvorefter opkoblingen bør lukkes."
-
-#~ msgid "Enter the login name for this account."
-#~ msgstr "Indtast brugernavn for denne konto."
-
-#~ msgid "Enter the login name, that your ISP gave you here."
-#~ msgstr "Indtast brugernavnet du fik af din ISP her."
-
-#~ msgid ""
-#~ "Enter the name of this configuration, usually just the name of your ISP."
-#~ msgstr ""
-#~ "Angiv navnet på denne konfiguration, normalt bare navnet på din "
-#~ "Internetudbyder."
-
-#~ msgid "Enter the password for this account."
-#~ msgstr "Indtast adgangskode for denne konto."
-
-#~ msgid ""
-#~ "Enter the password for your account. If you do not know it, please "
-#~ "contact your ISP."
-#~ msgstr ""
-#~ "Angiv adgangskoden for din konto. Hvis du ikke kender til det bør du "
-#~ "kontakte din Internetudbyder."
-
-#~ msgid ""
-#~ "Enter the phone number of your ISP (without prefix/area/country code)."
-#~ msgstr ""
-#~ "Angiv din Internetudbyders telefonnummer (uden præfix/retningsnummer/"
-#~ "landekode)."
-
-#~ msgid "Enter the provider name for this account."
-#~ msgstr "Indtast udbydernavn for denne konto."
-
-#~ msgid "Enter your device bound traffic rules here."
-#~ msgstr "Angiv dine enhedsbundne regler for trafik her."
-
-#~ msgid "Enter your local phone number. It's optional, if you use a modem."
-#~ msgstr ""
-#~ "Indtast lokalt telefonnummer. Dette er valgfrit hvis du bruger modem."
-
-#~ msgid "Ethernet"
-#~ msgstr "Ethernet"
-
-#~ msgid "Ethernet Device"
-#~ msgstr "Ethernet-enhed"
-
-#~ msgid "Ethernet _Device:"
-#~ msgstr "Ethernet-_enhed:"
-
-#~ msgid "Ethernet card"
-#~ msgstr "Ethernet kort"
-
-#~ msgid "Eu_ro ISDN (EDSS1)"
-#~ msgstr "Eu_ro ISDN (EDSS1)"
-
-#~ msgid "Gateway"
-#~ msgstr "Gateway"
-
-#~ msgid "General"
-#~ msgstr "Generelt"
-
-#~ msgid "Ha_rdware Address:"
-#~ msgstr "_Maskineladresse:"
-
-#~ msgid "Han_gup Timeout:"
-#~ msgstr "_Pålægningstidsgrænse:"
-
-#~ msgid "Hardware"
-#~ msgstr "Udstyr"
-
-#~ msgid "Hardware Device"
-#~ msgstr "Maskinelenhed"
-
-#~ msgid "Hardware Device:"
-#~ msgstr "Maskinelenhed:"
-
-#~ msgid "Hardware Type:"
-#~ msgstr "Maskinel:"
-
-#~ msgid "Hostname"
-#~ msgstr "Værtsnavn"
-
-#~ msgid "Hostname:"
-#~ msgstr "Værtsnavn:"
-
-#~ msgid "Hosts"
-#~ msgstr "Værter"
-
-#~ msgid "IO_1:"
-#~ msgstr "IO_1:"
-
-#~ msgid "IO_2:"
-#~ msgstr "IO_2:"
-
-#~ msgid "IP"
-#~ msgstr "IP"
-
-#~ msgid "IR_Q:"
-#~ msgstr "IR_Q:"
-
-#~ msgid "ISDN"
-#~ msgstr "ISDN"
-
-#~ msgid "ISDN Adapters Configuration"
-#~ msgstr "Konfiguration af ISDN-kort"
-
-#~ msgid "ISDN _Adapters:"
-#~ msgstr "ISDN-_kort:"
-
-#~ msgid "Info"
-#~ msgstr "Info"
-
-#~ msgid "Internet Provider"
-#~ msgstr "Internetudbyder"
-
-#~ msgid "Let _PPP do all authentication"
-#~ msgstr "Lad _PPP lave al autenticering"
-
-#~ msgid "Lo_cal Virtual Address:"
-#~ msgstr "lo_kal virtuel adresse:"
-
-#~ msgid "MSN/EA_Z:"
-#~ msgstr "MSN/EA_Z:"
-
-#~ msgid "MTU:"
-#~ msgstr "MTU:"
-
-#~ msgid "M_inimum number of seconds charged:"
-#~ msgstr "M_indste antal sekunder at betale:"
-
-#~ msgid "Make this connection the default _route"
-#~ msgstr "Lad denne forbindelse være standard _rute"
-
-#~ msgid "Managed"
-#~ msgstr "Administreret"
-
-#~ msgid "Manual IP Address Settings"
-#~ msgstr "Manuelle indstillinger for IP-adresse"
-
-#~ msgid "Mask"
-#~ msgstr "Maske"
-
-#~ msgid "Maximum In"
-#~ msgstr "Maksimal ind"
-
-#~ msgid "Maximum Out"
-#~ msgstr "Maksimum ud"
-
-#~ msgid "Minimum In"
-#~ msgstr "Minimum ind"
-
-#~ msgid "Minimum Out"
-#~ msgstr "Minimum ud"
-
-#~ msgid "Modem"
-#~ msgstr "Modem"
-
-#~ msgid "Modem P_ort:"
-#~ msgstr "Modemp_ort:"
-
-#~ msgid "Modem Properties"
-#~ msgstr "Egenskaber for modem"
-
-#~ msgid "Modem _Initialization String:"
-#~ msgstr "Streng for modem_initiering:"
-
-#~ msgid "Modem _Volume:"
-#~ msgstr "Modem-_lydstyrke:"
-
-#~ msgid "Modem0"
-#~ msgstr "Modem0"
-
-#~ msgid "Modem1"
-#~ msgstr "Modem1"
-
-#~ msgid "Modem2"
-#~ msgstr "Modem2"
-
-#~ msgid "Modem3"
-#~ msgstr "Modem3"
-
-#~ msgid "Network Adapters Configuration"
-#~ msgstr "Konfiguration af netværkskort"
-
-#~ msgid "Network Name (SSID):"
-#~ msgstr "Netværks-navn (SSID):"
-
-#~ msgid "New Interface"
-#~ msgstr "Ny grænseflade"
-
-#~ msgid "Nickname"
-#~ msgstr "Kaldenavn"
-
-#~ msgid ""
-#~ "Note that DNS information from automatic device configuration will take "
-#~ "precedence over any settings done globally."
-#~ msgstr ""
-#~ "Bemærk at DNS-information fra automatisk enhedskonfiguration vil gælde "
-#~ "fremfor indstillinger som er gjort globalt."
-
-#~ msgid "Online time:"
-#~ msgstr "Opkoblet tid:"
-
-#~ msgid "Options"
-#~ msgstr "Alternativer"
-
-#~ msgid "PPP Option List"
-#~ msgstr "Alternativer for PPP"
-
-#~ msgid "Pass_word:"
-#~ msgstr "_Adgangskode:"
-
-#~ msgid "Phone Number"
-#~ msgstr "Telefonnummer"
-
-#~ msgid ""
-#~ "Please enter the MTU parameter to set the maximum Transfer Unit of this "
-#~ "interface. On s390/s390x the MTU has 1492 as default setting"
-#~ msgstr ""
-#~ "Indtast MTU-parametren for at sætte MTU - Maximum Transfer Unit - dvs. "
-#~ "blokstørrelse på dette grænsesnit. På s390/s390x er MTU forvalgt til 1492"
-
-#~ msgid "Please select the hardware device type, you want to create"
-#~ msgstr "Venligst vælg type for maskinel-enheden du ønsker at oprette:"
-
-#~ msgid "Please select the level of security for this device."
-#~ msgstr "Venligst vælg sikkerhedsniveau for denne enhed."
-
-#~ msgid "Please select the type of hardware device to add:"
-#~ msgstr "Venligst vælg type for maskinel-enheden du ønsker at oprette:"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Prefi_x"
-#~ msgstr "Præfi_ks"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "Præfi_ks:"
-
-#~ msgid "Prefix (Netmask)"
-#~ msgstr "Præfix (netmaske)"
-
-#~ msgid "Professional"
-#~ msgstr "Professionel"
-
-#~ msgid "Protocol Type"
-#~ msgstr "Protokolnavn"
-
-#~ msgid "Protocols"
-#~ msgstr "Protokoller"
-
-#~ msgid "Provider"
-#~ msgstr "Udbyder"
-
-#~ msgid "Provider _Name:"
-#~ msgstr "_Navn på udbyder:"
-
-#~ msgid "Red Hat Control Network"
-#~ msgstr "Red Hat administration af netværk"
-
-#~ msgid "Remo_ve"
-#~ msgstr "_Fjern"
-
-#~ msgid "Remote Peer P_ort:"
-#~ msgstr "P_ort på ekstern peer-ligemand:"
-
-#~ msgid "Remote _Virtual Address:"
-#~ msgstr "Ekstern _virtuel adresse:"
-
-#~ msgid "Resource"
-#~ msgstr "Resurse"
-
-#~ msgid "Restart if _connection dies"
-#~ msgstr "Start igen ny hvis _forbindelsen dør"
-
-#~ msgid "Route"
-#~ msgstr "Rute"
-
-#~ msgid "Routing"
-#~ msgstr "Rutning"
-
-#~ msgid "Search D_omain:"
-#~ msgstr "Søg i _domæne:"
-
-#~ msgid "Security"
-#~ msgstr "Sikkerhed"
-
-#~ msgid "Security Level"
-#~ msgstr "Sikkerhedsniveau"
-
-#~ msgid "Select Device Type"
-#~ msgstr "Vælg enhedstype"
-
-#~ msgid "Select Ethernet Adapter"
-#~ msgstr "Vælg Ethernet-kort"
-
-#~ msgid "Select Ethernet Device"
-#~ msgstr "Vælg ethernet-enhed"
-
-#~ msgid "Select ISDN Adapter"
-#~ msgstr "Vælg ISDN-kort"
-
-#~ msgid "Select Modem"
-#~ msgstr "Vælg modem"
-
-#~ msgid "Select Provider"
-#~ msgstr "Vælg udbyder"
-
-#~ msgid "Select Token Ring Adapter"
-#~ msgstr "Vælg Token Ring-kort"
-
-#~ msgid "Select Tokenring Device"
-#~ msgstr "Vælg ethernet-enhed"
-
-#~ msgid "Select Wireless Device"
-#~ msgstr "Vælg trådløs enhed"
-
-#~ msgid "Select the Ethernet card you want to configure:"
-#~ msgstr "Vælg det ethernet-kort du vil konfigurere:"
-
-#~ msgid "Select the Tokenring card you want to configure:"
-#~ msgstr "Vælg det Tokenring-kort du vil konfigurere:"
-
-#~ msgid "Select the Wireless card you want to configure:"
-#~ msgstr "Vælg det trådløse kort du vil konfigurere:"
-
-#~ msgid "Select the authentication protocol used by your ISP."
-#~ msgstr "Vælg den autenticeringsprotokol som bruges af din Internetudbyder."
-
-#~ msgid "Select the ethernet device connected to the DSL modem."
-#~ msgstr "Vælg ethernet-enhed som er koblet til DSL-modemet."
-
-#~ msgid "Select the ethernet device for this account."
-#~ msgstr "Vælg ethernet-enhed for denne konto."
-
-#~ msgid "Select the services you want to provide through this device"
-#~ msgstr "Vælg de tjenester som du vil tilbyde via denne enhed"
-
-#~ msgid "Service"
-#~ msgstr "Tjeneste"
-
-#~ msgid "Service Description"
-#~ msgstr "Beskrivelse af tjeneste"
-
-#~ msgid "Services"
-#~ msgstr "Tjenester"
-
-#~ msgid "Static Network Routes"
-#~ msgstr "Statiske netværksruter"
-
-#~ msgid "Statically set IP addresses:"
-#~ msgstr "Statisk opsatte _IP-adresser:"
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#~ msgid "TCP/IP"
-#~ msgstr "TCP/IP"
-
-#~ msgid "TCP/IP Settings"
-#~ msgstr "Indstillinger for TCP/IP"
-
-#~ msgid "Tie to specific ethernet card"
-#~ msgstr "Knyt til bestemt ethernet-kort"
-
-#~ msgid "Token Ring"
-#~ msgstr "Token Ring"
-
-#~ msgid "Token Ring Device"
-#~ msgstr "Token Ring-enhed"
-
-#~ msgid "Tokenring card"
-#~ msgstr "Tokenring-kort"
-
-#~ msgid "Traffic"
-#~ msgstr "Trafik"
-
-#~ msgid "Tunnel Settings"
-#~ msgstr "Indstillinger for tunnel"
-
-#~ msgid "Type"
-#~ msgstr "Type"
-
-#~ msgid "Use _Callback Control Protocol (CBCP)"
-#~ msgstr "Brug _Callback Control Protocol (CBCP)"
-
-#~ msgid "Use _Channel Bundling"
-#~ msgstr "Brug sammenkobling af _kanaler"
-
-#~ msgid "Use ethernet device aliases"
-#~ msgstr "Brug aliaser for ethernet-enheder"
-
-#~ msgid "Waiting to connect to"
-#~ msgstr "Venter på at koble op til"
-
-#~ msgid "Waiting..."
-#~ msgstr "Venter..."
-
-#~ msgid "Wireless Device Configuration"
-#~ msgstr "Konfiguration af trådløs enhed"
-
-#~ msgid "Wireless Settings"
-#~ msgstr "Indstillinger for trådløst"
-
-#~ msgid "Wireless card"
-#~ msgstr "Trådløst kort"
-
-#~ msgid ""
-#~ "You can configure IP address settings for an interface automatically if "
-#~ "your network supports it. For manual configuration information, contact "
-#~ "your Network Administrator or Internet Service Provider."
-#~ msgstr ""
-#~ "Du kan automatisk konfigurere IP-adresseindstillinger for en grænseflade "
-#~ "hvis dit netværk understøtter dette. Kontakt din netværksadministrator "
-#~ "eller Internetudbyder for information om manuel konfiguration."
-
-#~ msgid ""
-#~ "You may configure network devices associated with physical hardware "
-#~ "here.  Multiple logical devices can be associated with a single piece of "
-#~ "hardware."
-#~ msgstr ""
-#~ "Du kan her konfigurere netværksenheder tilknyttet fysisk maskinel. Flere "
-#~ "logiske enheder kan tilknyttes et enkelt stykke maskinel."
-
-#~ msgid ""
-#~ "You may configure network hardware physically attached to the computer "
-#~ "here.\n"
-#~ "\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Du kan her konfigurere netværksenheder tilknyttet fysisk maskinel.\n"
-#~ "\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "You may specify static computer hostname to IP address mappings here.  If "
-#~ "DNS is in use, these settings will take precedence over any information "
-#~ "it may provide."
-#~ msgstr ""
-#~ "Du kan hér angive permanente tilknytninger af IP-adresser til værtsnavne. "
-#~ "Hvis DNS er i brug, vil oplysningerne hér blive foretrukket fremfor "
-#~ "information som tilbydes fra DNS."
-
-#~ msgid "_AC-Name:"
-#~ msgstr "_AC-navn:"
-
-#~ msgid "_Accumulate cost over multiple connections"
-#~ msgstr "_Sammentæl omkostninger for flere opkoblinger"
-
-#~ msgid "_Activate"
-#~ msgstr "_Aktivér"
-
-#~ msgid "_Activate device when computer starts"
-#~ msgstr "_Aktiver enheden når datamaskinen starter op"
-
-#~ msgid "_Adapter:"
-#~ msgstr "_Kort:"
-
-#~ msgid "_Add"
-#~ msgstr "_Tilføj:"
-
-#~ msgid "_Add..."
-#~ msgstr "_Tilføj..."
-
-#~ msgid "_Address:"
-#~ msgstr "_Adresse:"
-
-#~ msgid "_Alias:"
-#~ msgstr "_Alias:"
-
-#~ msgid "_Allow only above Dial-In Number"
-#~ msgstr "_Tillad kun ovenstående opkaldsnummer"
-
-#~ msgid "_Authentication:"
-#~ msgstr "_Autenticering:"
-
-#~ msgid "_Auto"
-#~ msgstr "_Auto"
-
-#~ msgid "_Baud Rate:"
-#~ msgstr "_Baudrate:"
-
-#~ msgid "_Channel:"
-#~ msgstr "_Kanal:"
-
-#~ msgid "_Choose Provider..."
-#~ msgstr "_Vælg udbyder..."
-
-#~ msgid "_Configure..."
-#~ msgstr "_Konfigurér..."
-
-#~ msgid "_Copy"
-#~ msgstr "_Kopiér"
-
-#~ msgid "_Cost"
-#~ msgstr "_Omkostning"
-
-#~ msgid "_Deactivate"
-#~ msgstr "_Deaktivér"
-
-#~ msgid "_Debug mode"
-#~ msgstr "_Fejlsøgningstilstand"
-
-#~ msgid "_Delete"
-#~ msgstr "_Slet"
-
-#~ msgid "_Device Type:"
-#~ msgstr "_Enhedstype:"
-
-#~ msgid "_Device:"
-#~ msgstr "_Enhed:"
-
-#~ msgid "_Dial Mode:"
-#~ msgstr "Opkalds_tilstand:"
-
-#~ msgid "_ESSID (Network ID):"
-#~ msgstr "_ESSID (Netværks-ID):"
-
-#~ msgid "_Edit..."
-#~ msgstr "R_edigér..."
-
-#~ msgid "_Encapsulation Mode:"
-#~ msgstr "_Indkapslingstilstand:"
-
-#~ msgid "_Extra cost to start a connection:"
-#~ msgstr "_Ekstra omkostning for at starte en forbindelse:"
-
-#~ msgid "_Flow Control:"
-#~ msgstr "_Flydningskontrol:"
-
-#~ msgid "_Gateway:"
-#~ msgstr "_Gateway:"
-
-#~ msgid "_Generate"
-#~ msgstr "_Generér"
-
-#~ msgid "_Hangup Timeout:"
-#~ msgstr "_Tidsfrist før der lægges på:"
-
-#~ msgid "_Hardware Address"
-#~ msgstr "_Maskineladresse"
-
-#~ msgid "_Hardware Device:"
-#~ msgstr "_Maskinelenhed:"
-
-#~ msgid "_Hardware:"
-#~ msgstr "_Maskinel:"
-
-#~ msgid "_High Security (Internet)"
-#~ msgstr "_Høj sikkerhed (Internet)"
-
-#~ msgid "_Hostname (optional):"
-#~ msgstr "Eventuelt _værtsnavn:"
-
-#~ msgid "_Hostname:"
-#~ msgstr "_Værtsnavn:"
-
-#~ msgid "_Hour"
-#~ msgstr "_Time"
-
-#~ msgid "_IO:"
-#~ msgstr "_IO:"
-
-#~ msgid "_Key:"
-#~ msgstr "_Nøgle:"
-
-#~ msgid "_Local Port:"
-#~ msgstr "_Lokal port:"
-
-#~ msgid "_Login Name:"
-#~ msgstr "_Brugernavn:"
-
-#~ msgid "_Low Security"
-#~ msgstr "_Lav sikkerhed"
-
-#~ msgid "_MEM:"
-#~ msgstr "_RAM:"
-
-#~ msgid "_MTU:"
-#~ msgstr "_MTU:"
-
-#~ msgid "_Minute"
-#~ msgstr "_Minut"
-
-#~ msgid "_Mode:"
-#~ msgstr "_Tilstand:"
-
-#~ msgid "_Modem Device:"
-#~ msgstr "_Modemenhed:"
-
-#~ msgid "_Monitor"
-#~ msgstr "_Overvåg"
-
-#~ msgid "_Monitor..."
-#~ msgstr "_Overvåg..."
-
-#~ msgid "_New..."
-#~ msgstr "_Ny..."
-
-#~ msgid "_Nickname: "
-#~ msgstr "_Kaldenavn: "
-
-#~ msgid "_Number of seconds in basic accounting unit:"
-#~ msgstr "_Antal sekunder i basal konteringsenhed:"
-
-#~ msgid "_PPP Option:"
-#~ msgstr "_PPP-alternativ:"
-
-#~ msgid "_Phone Number"
-#~ msgstr "_Telefonnummer"
-
-#~ msgid "_Phone Number:"
-#~ msgstr "Tele_fonnummer:"
-
-#~ msgid "_Primary DNS:"
-#~ msgstr "_Primær DNS:"
-
-#~ msgid "_Probe"
-#~ msgstr "_Søg"
-
-#~ msgid "_Probe for Address"
-#~ msgstr "_Søg efter adresse"
-
-#~ msgid "_Probe for Address..."
-#~ msgstr "_Søg efter adresse..."
-
-#~ msgid "_Provider Name:"
-#~ msgstr "Navn _på udbyder:"
-
-#~ msgid "_Remote Peer Address:"
-#~ msgstr "Adresse for _ekstern ligemand (peer):"
-
-#~ msgid "_Rename..."
-#~ msgstr "_Omdøb..."
-
-#~ msgid "_Second"
-#~ msgstr "_Sekund"
-
-#~ msgid "_Secondary DNS:"
-#~ msgstr "_Sekundær DNS:"
-
-#~ msgid "_Secret Key:"
-#~ msgstr "_Hemmelig nøgle:"
-
-#~ msgid "_Secure Device (LAN)"
-#~ msgstr "_Sikker enhed (LAN)"
-
-#~ msgid "_Service-Name:"
-#~ msgstr "Navn på tjene_ste:"
-
-#~ msgid "_Specified:"
-#~ msgstr "_Specificeret:"
-
-#~ msgid "_Subnet Mask:"
-#~ msgstr "_Subnetmaske:"
-
-#~ msgid "_Terminate connection when session closes"
-#~ msgstr "_Afslut forbindelse når sessionen lukker"
-
-#~ msgid "_Tertiary DNS:"
-#~ msgstr "_Tertiær DNS:"
-
-#~ msgid "_Time"
-#~ msgstr "_Tid"
-
-#~ msgid "_Transmit Rate:"
-#~ msgstr "_Overføringshastighed:"
-
-#~ msgid "_Tunnel through Device:"
-#~ msgstr "_Tunnelér gennem enhed:"
-
-#~ msgid "_Use Callback"
-#~ msgstr "Br_ug tilbageringning"
-
-#~ msgid "_Use Hardware Address"
-#~ msgstr "Brug _udstyrets adresse"
-
-#~ msgid "_Use synchronous PPP"
-#~ msgstr "_Brug synkron PPP"
-
-#~ msgid "_Use touch tone dialing"
-#~ msgstr "_Brug toneringning"
-
-#~ msgid "_auto"
-#~ msgstr "_auto"
-
-#~ msgid "bootp"
-#~ msgstr "bootp"
-
-#~ msgid "cipcb0"
-#~ msgstr "cipcb0"
-
-#~ msgid "cipcb1"
-#~ msgstr "cipcb1"
-
-#~ msgid "cipcb2"
-#~ msgstr "cipcb2"
-
-#~ msgid "cipcb3"
-#~ msgstr "cipcb3"
-
-#~ msgid "cipcb4"
-#~ msgstr "cipcb4"
-
-#~ msgid "click the right mouse button for properties"
-#~ msgstr "klik på højre museknap for egenskaber"
-
-#~ msgid "click to bring up the interface"
-#~ msgstr "klik for at sætte grænsefladen i drift"
-
-#~ msgid "click to configure the interface"
-#~ msgstr "klik for at konfigurere grænsefladen"
-
-#~ msgid "click to get infos"
-#~ msgstr "klik for at få information"
-
-#~ msgid "click to monitor the interface"
-#~ msgstr "klik for at overvåge grænsefladen"
-
-#~ msgid "click to shutdown the interface"
-#~ msgstr "klik for at lukke grænsefladen ned"
-
-#~ msgid "dhcp"
-#~ msgstr "dhcp"
-
-#~ msgid "eth0"
-#~ msgstr "eth0"
-
-#~ msgid "eth1"
-#~ msgstr "eth1"
-
-#~ msgid "eth2"
-#~ msgstr "eth2"
-
-#~ msgid "eth3"
-#~ msgstr "eth3"
-
-#~ msgid "eth4"
-#~ msgstr "eth4"
-
-#~ msgid "eth5"
-#~ msgstr "eth5"
-
-#~ msgid "eth6"
-#~ msgstr "eth6"
-
-#~ msgid "eth7"
-#~ msgstr "eth7"
-
-#~ msgid "redhat network control - Properties"
-#~ msgstr "Administration af redhat netværk - Egenskaber"
-
-#~ msgid ""
-#~ "redhat-control-network provides an easy-to-use interface for "
-#~ "configuring,\n"
-#~ "activating and monitoring any type of network configuration.\n"
-#~ "\n"
-#~ "The following network interfaces are configured on the system."
-#~ msgstr ""
-#~ "redhat-control-network har et brugervenligt grænsesnit til "
-#~ "konfigurering,\n"
-#~ "aktivering og overvågning af enhver netværkstype.\n"
-#~ "\n"
-#~ "De følgende netværksenheder er konfigureret på systemet."
-
-#~ msgid "tr0"
-#~ msgstr "tr0"
-
-#~ msgid "tr1"
-#~ msgstr "tr1"
-
-#~ msgid "tr2"
-#~ msgstr "tr2"
-
-#~ msgid "tr3"
-#~ msgstr "tr3"
-
-#~ msgid "tr4"
-#~ msgstr "tr4"
-
-#~ msgid "tr5"
-#~ msgstr "tr5"
-
-#~ msgid "tr6"
-#~ msgstr "tr6"
-
-#~ msgid "tr7"
-#~ msgstr "tr7"
+#: neat.desktop.in.h:2
+#, fuzzy
+msgid "Red Hat's Network configuration tool"
+msgstr "Netværkskonfiguration"
+
+#: src/maindialog.glade.h:1
+msgid "Ac_tivate"
+msgstr "_Aktivér"
+
+#: src/maindialog.glade.h:2
+msgid "Active Profile"
+msgstr "Aktiv profil"
+
+#: src/maindialog.glade.h:3
+msgid "Aliases"
+msgstr "Alias"
+
+#: src/maindialog.glade.h:4
+msgid "DNS"
+msgstr "DNS"
+
+#: src/maindialog.glade.h:5
+msgid "DNS Search Path"
+msgstr "Søgesti for DNS-søgning"
+
+#: src/maindialog.glade.h:6
+msgid "Deact_ivate"
+msgstr "_Deaktivér"
+
+#: src/maindialog.glade.h:7
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: src/maindialog.glade.h:9
+msgid "Devices"
+msgstr "Enheder"
+
+#: src/maindialog.glade.h:10
+msgid "Do_main:"
+msgstr "_Domæne:"
+
+#: src/maindialog.glade.h:11
+msgid "Domain Name"
+msgstr "Domænenavn"
+
+#: src/maindialog.glade.h:12
+msgid "Hardware"
+msgstr "Udstyr"
+
+#: src/maindialog.glade.h:13
+msgid "Hosts"
+msgstr "Værter"
+
+#: src/maindialog.glade.h:14 src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/netconfpkg/gui/tcpipdialog.glade.h:15
+msgid "IP"
+msgstr "IP"
+
+#: src/maindialog.glade.h:17 src/neat-control.glade.h:3
+msgid "Nickname"
+msgstr "Kaldenavn"
+
+#: src/maindialog.glade.h:18
+msgid "Remo_ve"
+msgstr "_Fjern"
+
+#: src/maindialog.glade.h:19
+msgid "Search D_omain:"
+msgstr "Søg i _domæne:"
+
+#: src/maindialog.glade.h:20 src/neat-control.glade.h:5
+msgid "Status"
+msgstr "Status"
+
+#: src/maindialog.glade.h:21
+msgid "Type"
+msgstr "Type"
+
+#: src/maindialog.glade.h:22
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"Du kan her konfigurere netværksenheder tilknyttet fysisk maskinel. Flere "
+"logiske enheder kan tilknyttes et enkelt stykke maskinel."
+
+#: src/maindialog.glade.h:23
+#, fuzzy
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"Du kan her konfigurere netværksenheder tilknyttet fysisk maskinel.\n"
+"\n"
+"\n"
+
+#: src/maindialog.glade.h:24
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"Du kan hér angive permanente tilknytninger af IP-adresser til værtsnavne. "
+"Hvis DNS er i brug, vil oplysningerne hér blive foretrukket fremfor "
+"information som tilbydes fra DNS."
+
+#: src/maindialog.glade.h:25
+msgid "_Add"
+msgstr "_Tilføj:"
+
+#: src/maindialog.glade.h:26 src/netconfpkg/gui/ctcconfig.glade.h:10
+#: src/netconfpkg/gui/dialupconfig.glade.h:50
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/tcpipdialog.glade.h:40
+#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_Add..."
+msgstr "_Tilføj..."
+
+#: src/maindialog.glade.h:27 src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/netconfpkg/gui/tcpipdialog.glade.h:42
+msgid "_Copy"
+msgstr "_Kopiér"
+
+#: src/maindialog.glade.h:28 src/netconfpkg/gui/ctcconfig.glade.h:11
+#: src/netconfpkg/gui/dialupconfig.glade.h:54
+#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/tcpipdialog.glade.h:43
+#: src/netconfpkg/gui/tokenringconfig.glade.h:14
+msgid "_Delete"
+msgstr "_Slet"
+
+#: src/maindialog.glade.h:29 src/netconfpkg/gui/ctcconfig.glade.h:12
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/netconfpkg/gui/tcpipdialog.glade.h:44
+#: src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Edit..."
+msgstr "R_edigér..."
+
+#: src/maindialog.glade.h:30 src/netconfpkg/gui/tcpipdialog.glade.h:46
+msgid "_Hostname:"
+msgstr "_Værtsnavn:"
+
+#: src/maindialog.glade.h:31
+msgid "_Monitor"
+msgstr "_Overvåg"
+
+#: src/maindialog.glade.h:32
+msgid "_New..."
+msgstr "_Ny..."
+
+#: src/maindialog.glade.h:33
+msgid "_Primary DNS:"
+msgstr "_Primær DNS:"
+
+#: src/maindialog.glade.h:34
+msgid "_Rename..."
+msgstr "_Omdøb..."
+
+#: src/maindialog.glade.h:35
+msgid "_Secondary DNS:"
+msgstr "_Sekundær DNS:"
+
+#: src/maindialog.glade.h:36
+msgid "_Tertiary DNS:"
+msgstr "_Tertiær DNS:"
+
+#: src/neat-control.glade.h:2
+msgid "Info"
+msgstr "Info"
+
+#: src/neat-control.glade.h:4
+msgid "Red Hat Control Network"
+msgstr "Red Hat administration af netværk"
+
+#: src/neat-control.glade.h:6
+msgid "_Activate"
+msgstr "_Aktivér"
+
+#: src/neat-control.glade.h:7
+#: src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+msgid "_Configure..."
+msgstr "_Konfigurér..."
+
+#: src/neat-control.glade.h:8
+msgid "_Deactivate"
+msgstr "_Deaktivér"
+
+#: src/neat-control.glade.h:9
+msgid "_Monitor..."
+msgstr "_Overvåg..."
+
+#: src/neat-control.glade.h:10
+msgid "click to bring up the interface"
+msgstr "klik for at sætte grænsefladen i drift"
+
+#: src/neat-control.glade.h:11
+msgid "click to configure the interface"
+msgstr "klik for at konfigurere grænsefladen"
+
+#: src/neat-control.glade.h:12
+msgid "click to get infos"
+msgstr "klik for at få information"
+
+#: src/neat-control.glade.h:13
+msgid "click to monitor the interface"
+msgstr "klik for at overvåge grænsefladen"
+
+#: src/neat-control.glade.h:14
+msgid "click to shutdown the interface"
+msgstr "klik for at lukke grænsefladen ned"
+
+#: src/neat-control.glade.h:15
+msgid ""
+"redhat-control-network provides an easy-to-use interface for configuring,\n"
+"activating and monitoring any type of network configuration.\n"
+"\n"
+"The following network interfaces are configured on the system."
+msgstr ""
+"redhat-control-network har et brugervenligt grænsesnit til konfigurering,\n"
+"aktivering og overvågning af enhver netværkstype.\n"
+"\n"
+"De følgende netværksenheder er konfigureret på systemet."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+msgid "Configure DSL connection"
+msgstr "Konfigurér DSL-forbindelse"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
+msgid "Create DSL connection"
+msgstr "Opret DSL-forbindelse"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Enter the login name for this account."
+msgstr "Indtast brugernavn for denne konto."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/DialupDruid.glade.h:5
+#: src/netconfpkg/gui/dialupconfig.glade.h:21
+#: src/netconfpkg/gui/dslconfig.glade.h:11
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Indtast brugernavnet du fik af din ISP her."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/DialupDruid.glade.h:6
+#: src/netconfpkg/gui/dialupconfig.glade.h:22
+#: src/netconfpkg/gui/dslconfig.glade.h:12
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr ""
+"Angiv navnet på denne konfiguration, normalt bare navnet på din "
+"Internetudbyder."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+msgid "Enter the password for this account."
+msgstr "Indtast adgangskode for denne konto."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/DialupDruid.glade.h:7
+#: src/netconfpkg/gui/dialupconfig.glade.h:23
+#: src/netconfpkg/gui/dslconfig.glade.h:13
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"Angiv adgangskoden for din konto. Hvis du ikke kender til det bør du "
+"kontakte din Internetudbyder."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Indtast udbydernavn for denne konto."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _Device:"
+msgstr "Ethernet-_enhed:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/DialupDruid.glade.h:11
+#: src/netconfpkg/gui/dialupconfig.glade.h:39
+#: src/netconfpkg/gui/dslconfig.glade.h:17
+msgid "Pass_word:"
+msgstr "_Adgangskode:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Vælg ethernet-enhed som er koblet til DSL-modemet."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:12
+msgid "Select the ethernet device for this account."
+msgstr "Vælg ethernet-enhed for denne konto."
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/DialupDruid.glade.h:16
+#: src/netconfpkg/gui/dialupconfig.glade.h:58
+#: src/netconfpkg/gui/dslconfig.glade.h:22
+msgid "_Login Name:"
+msgstr "_Brugernavn:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/dslconfig.glade.h:24
+msgid "_Provider Name:"
+msgstr "Navn _på udbyder:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/cipeconfig.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "Konfiguration for din fjernpartner"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
+msgid "Configure Tunnel"
+msgstr "Konfigurér tunnel"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
+msgid "Create Cipe Connection"
+msgstr "Opret Cipe-forbindelse"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/cipeconfig.glade.h:5
+msgid "Lo_cal Virtual Address:"
+msgstr "lo_kal virtuel adresse:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/DialupDruid.glade.h:10
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "New Interface"
+msgstr "Ny grænseflade"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+#: src/netconfpkg/gui/cipeconfig.glade.h:6
+msgid "Remote Peer P_ort:"
+msgstr "P_ort på ekstern peer-ligemand:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/cipeconfig.glade.h:7
+msgid "Remote _Virtual Address:"
+msgstr "Ekstern _virtuel adresse:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:23
+#: src/netconfpkg/gui/cipeconfig.glade.h:11
+#: src/netconfpkg/gui/ethernethardware.glade.h:23
+#: src/netconfpkg/gui/tokenringhardware.glade.h:23
+msgid "_Device:"
+msgstr "_Enhed:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/cipeconfig.glade.h:12
+msgid "_Generate"
+msgstr "_Generér"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/cipeconfig.glade.h:13
+msgid "_Local Port:"
+msgstr "_Lokal port:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+#: src/netconfpkg/gui/cipeconfig.glade.h:15
+msgid "_Remote Peer Address:"
+msgstr "Adresse for _ekstern ligemand (peer):"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/cipeconfig.glade.h:16
+msgid "_Secret Key:"
+msgstr "_Hemmelig nøgle:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/cipeconfig.glade.h:17
+msgid "_Tunnel through Device:"
+msgstr "_Tunnelér gennem enhed:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/cipeconfig.glade.h:18
+msgid "_auto"
+msgstr "_auto"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/cipeconfig.glade.h:19
+msgid "cipcb0"
+msgstr "cipcb0"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/cipeconfig.glade.h:20
+msgid "cipcb1"
+msgstr "cipcb1"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/cipeconfig.glade.h:21
+msgid "cipcb2"
+msgstr "cipcb2"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/cipeconfig.glade.h:22
+msgid "cipcb3"
+msgstr "cipcb3"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/cipeconfig.glade.h:23
+msgid "cipcb4"
+msgstr "cipcb4"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:26
+#: src/netconfpkg/gui/cipeconfig.glade.h:24
+#: src/netconfpkg/gui/ethernethardware.glade.h:26
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+msgid "eth0"
+msgstr "eth0"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:21
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
+#: src/netconfpkg/gui/cipeconfig.glade.h:25
+#: src/netconfpkg/gui/ethernethardware.glade.h:27
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+msgid "eth1"
+msgstr "eth1"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:22
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
+#: src/netconfpkg/gui/cipeconfig.glade.h:26
+#: src/netconfpkg/gui/ethernethardware.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+msgid "eth2"
+msgstr "eth2"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:23
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
+#: src/netconfpkg/gui/cipeconfig.glade.h:27
+#: src/netconfpkg/gui/ethernethardware.glade.h:29
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+msgid "eth3"
+msgstr "eth3"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:24
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
+#: src/netconfpkg/gui/cipeconfig.glade.h:28
+#: src/netconfpkg/gui/ethernethardware.glade.h:30
+#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+msgid "eth4"
+msgstr "eth4"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "A_rea Code:"
+msgstr "_Retningsnummer:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "Create Dialup Connection"
+msgstr "Opret opkaldt forbindelse"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:3
+#: src/netconfpkg/gui/dialupconfig.glade.h:19
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"Angiv de cifre som du behøver indtaste inden det rigtige telefonnummer. Hvis "
+"du eksempelvis skal taste noget for at få en udgående linje eller deaktivere "
+"\"samtale venter\" kan du angive cifrene som behøves her."
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:4
+#: src/netconfpkg/gui/dialupconfig.glade.h:20
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "Indtast områdekoden som kræves for at nå din internet-udbyder."
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:8
+#: src/netconfpkg/gui/dialupconfig.glade.h:24
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr ""
+"Angiv din Internetudbyders telefonnummer (uden præfix/retningsnummer/"
+"landekode)."
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:9
+#: src/netconfpkg/gui/chooseprovider.glade.h:2
+msgid "Internet Provider"
+msgstr "Internetudbyder"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:12
+#: src/netconfpkg/gui/dialupconfig.glade.h:40
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:13
+msgid "Prefi_x:"
+msgstr "Præfi_ks:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:14
+#: src/netconfpkg/gui/dialupconfig.glade.h:43
+msgid "Provider _Name:"
+msgstr "_Navn på udbyder:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:15
+msgid "Select Provider"
+msgstr "Vælg udbyder"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:17
+msgid "_Phone Number:"
+msgstr "Tele_fonnummer:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+#: src/netconfpkg/gui/ethernethardware.glade.h:1
+#: src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "10"
+msgstr "10"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: src/netconfpkg/gui/ethernethardware.glade.h:2
+#: src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "11"
+msgstr "11"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/ethernethardware.glade.h:3
+#: src/netconfpkg/gui/tokenringhardware.glade.h:3
+msgid "12"
+msgstr "12"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/ethernethardware.glade.h:4
+#: src/netconfpkg/gui/tokenringhardware.glade.h:4
+msgid "13"
+msgstr "13"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/ethernethardware.glade.h:5
+#: src/netconfpkg/gui/tokenringhardware.glade.h:5
+msgid "14"
+msgstr "14"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/ethernethardware.glade.h:6
+#: src/netconfpkg/gui/tokenringhardware.glade.h:6
+msgid "15"
+msgstr "15"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:7
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:7
+#: src/netconfpkg/gui/ethernethardware.glade.h:7
+#: src/netconfpkg/gui/tokenringhardware.glade.h:7
+msgid "3"
+msgstr "3"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:8
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:8
+#: src/netconfpkg/gui/ethernethardware.glade.h:8
+#: src/netconfpkg/gui/tokenringhardware.glade.h:8
+msgid "4"
+msgstr "4"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:9
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:9
+#: src/netconfpkg/gui/ethernethardware.glade.h:9
+#: src/netconfpkg/gui/tokenringhardware.glade.h:9
+msgid "5"
+msgstr "5"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:10
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:10
+#: src/netconfpkg/gui/ethernethardware.glade.h:10
+#: src/netconfpkg/gui/tokenringhardware.glade.h:10
+msgid "6"
+msgstr "6"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/ethernethardware.glade.h:11
+#: src/netconfpkg/gui/tokenringhardware.glade.h:11
+msgid "7"
+msgstr "7"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/ethernethardware.glade.h:12
+#: src/netconfpkg/gui/tokenringhardware.glade.h:12
+msgid "8"
+msgstr "8"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:13
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:13
+#: src/netconfpkg/gui/ethernethardware.glade.h:13
+#: src/netconfpkg/gui/tokenringhardware.glade.h:13
+msgid "9"
+msgstr "9"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:14
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:14
+#: src/netconfpkg/gui/ethernethardware.glade.h:14
+#: src/netconfpkg/gui/tokenringhardware.glade.h:14
+msgid "DMA0:"
+msgstr "DMA0:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:15
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:15
+#: src/netconfpkg/gui/ethernethardware.glade.h:15
+#: src/netconfpkg/gui/tokenringhardware.glade.h:15
+msgid "DMA1:"
+msgstr "DMA1:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:16
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:16
+#: src/netconfpkg/gui/ethernethardware.glade.h:16
+#: src/netconfpkg/gui/isdnhardware.glade.h:4
+#: src/netconfpkg/gui/tokenringhardware.glade.h:16
+msgid "IO_1:"
+msgstr "IO_1:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:17
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:17
+#: src/netconfpkg/gui/ethernethardware.glade.h:17
+#: src/netconfpkg/gui/isdnhardware.glade.h:5
+#: src/netconfpkg/gui/tokenringhardware.glade.h:17
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:18
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:18
+#: src/netconfpkg/gui/ethernethardware.glade.h:18
+#: src/netconfpkg/gui/isdnhardware.glade.h:6
+#: src/netconfpkg/gui/tokenringhardware.glade.h:18
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:19
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:19
+#: src/netconfpkg/gui/ethernethardware.glade.h:20
+#: src/netconfpkg/gui/isdnhardware.glade.h:9
+#: src/netconfpkg/gui/tokenringhardware.glade.h:20
+msgid "Resource"
+msgstr "Resurse"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:20
+msgid "Select Ethernet Adapter"
+msgstr "Vælg Ethernet-kort"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:22
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:22
+#: src/netconfpkg/gui/ethernethardware.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:22
+msgid "_Adapter:"
+msgstr "_Kort:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:24
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:24
+#: src/netconfpkg/gui/ethernethardware.glade.h:24
+#: src/netconfpkg/gui/isdnhardware.glade.h:10
+#: src/netconfpkg/gui/tokenringhardware.glade.h:24
+msgid "_IO:"
+msgstr "_IO:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:25
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:25
+#: src/netconfpkg/gui/ethernethardware.glade.h:25
+#: src/netconfpkg/gui/isdnhardware.glade.h:11
+#: src/netconfpkg/gui/tokenringhardware.glade.h:25
+msgid "_MEM:"
+msgstr "_RAM:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
+#: src/netconfpkg/gui/ethernethardware.glade.h:31
+#: src/netconfpkg/gui/wirelessconfig.glade.h:29
+msgid "eth5"
+msgstr "eth5"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:32
+#: src/netconfpkg/gui/ethernethardware.glade.h:32
+msgid "eth6"
+msgstr "eth6"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:33
+#: src/netconfpkg/gui/ethernethardware.glade.h:33
+msgid "eth7"
+msgstr "eth7"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+msgid "Configure Network Settings"
+msgstr "Konfigurér netværksopsætning"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "Opret ethernet-enhed"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Ethernet kort"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+msgid "MTU:"
+msgstr "MTU:"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/ctcconfig.glade.h:6
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Indtast MTU-parametren for at sætte MTU - Maximum Transfer Unit - dvs. "
+"blokstørrelse på dette grænsesnit. På s390/s390x er MTU forvalgt til 1492"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Vælg ethernet-enhed"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the Ethernet card you want to configure:"
+msgstr "Vælg det ethernet-kort du vil konfigurere:"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+msgid "_Hostname (optional):"
+msgstr "Eventuelt _værtsnavn:"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+#: src/netconfpkg/gui/isdnhardware.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+#: src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "D Channel Protocol"
+msgstr "D-kanal protokol"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/isdnhardware.glade.h:3
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro ISDN (EDSS1)"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+#: src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN _Adapters:"
+msgstr "ISDN-_kort:"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Vælg ISDN-kort"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:1
+msgid "/dev/modem"
+msgstr "/dev/modem"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:2
+#: src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "/dev/ttyI0"
+msgstr "/dev/ttyI0"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:3
+#: src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "/dev/ttyI1"
+msgstr "/dev/ttyI1"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:4
+#: src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "/dev/ttyI2"
+msgstr "/dev/ttyI2"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:5
+#: src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "/dev/ttyS0"
+msgstr "/dev/ttyS0"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:6
+#: src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "/dev/ttyS1"
+msgstr "/dev/ttyS1"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:7
+#: src/netconfpkg/gui/modemconfig.glade.h:6
+msgid "/dev/ttyS2"
+msgstr "/dev/ttyS2"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:8
+#: src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "/dev/ttyS3"
+msgstr "/dev/ttyS3"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:9
+#: src/netconfpkg/gui/modemconfig.glade.h:8
+msgid "115200"
+msgstr "115200"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "1200"
+msgstr "1200"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:11
+#: src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "19200"
+msgstr "19200"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:12
+#: src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "230400"
+msgstr "230400"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:13
+#: src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "2400"
+msgstr "2400"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:14
+#: src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "300"
+msgstr "300"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:15
+#: src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "38400"
+msgstr "38400"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:16
+#: src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "460800"
+msgstr "460800"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:17
+#: src/netconfpkg/gui/modemconfig.glade.h:16
+msgid "4800"
+msgstr "4800"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:18
+#: src/netconfpkg/gui/modemconfig.glade.h:17
+msgid "57600"
+msgstr "57600"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:19
+#: src/netconfpkg/gui/modemconfig.glade.h:18
+msgid "9600"
+msgstr "9600"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:24
+#: src/netconfpkg/gui/modemconfig.glade.h:24
+msgid "Modem Properties"
+msgstr "Egenskaber for modem"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:25
+#: src/netconfpkg/gui/modemconfig.glade.h:25
+msgid "Modem _Volume:"
+msgstr "Modem-_lydstyrke:"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:28
+msgid "Select Modem"
+msgstr "Vælg modem"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:31
+#: src/netconfpkg/gui/modemconfig.glade.h:30
+msgid "_Baud Rate:"
+msgstr "_Baudrate:"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:32
+#: src/netconfpkg/gui/modemconfig.glade.h:31
+msgid "_Flow Control:"
+msgstr "_Flydningskontrol:"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:33
+#: src/netconfpkg/gui/modemconfig.glade.h:32
+msgid "_Modem Device:"
+msgstr "_Modemenhed:"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:34
+#: src/netconfpkg/gui/modemconfig.glade.h:33
+msgid "_Use touch tone dialing"
+msgstr "_Brug toneringning"
+
+#: src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Tilføj ny enhedstype"
+
+#: src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Enhedstype"
+
+#: src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Vælg enhedstype"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:20
+msgid "Select Token Ring Adapter"
+msgstr "Vælg Token Ring-kort"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:26
+#: src/netconfpkg/gui/tokenringconfig.glade.h:20
+#: src/netconfpkg/gui/tokenringhardware.glade.h:26
+msgid "tr0"
+msgstr "tr0"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:27
+#: src/netconfpkg/gui/tokenringconfig.glade.h:21
+#: src/netconfpkg/gui/tokenringhardware.glade.h:27
+msgid "tr1"
+msgstr "tr1"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:28
+#: src/netconfpkg/gui/tokenringconfig.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:28
+msgid "tr2"
+msgstr "tr2"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:29
+#: src/netconfpkg/gui/tokenringconfig.glade.h:23
+#: src/netconfpkg/gui/tokenringhardware.glade.h:29
+msgid "tr3"
+msgstr "tr3"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:30
+#: src/netconfpkg/gui/tokenringconfig.glade.h:24
+#: src/netconfpkg/gui/tokenringhardware.glade.h:30
+msgid "tr4"
+msgstr "tr4"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:31
+#: src/netconfpkg/gui/tokenringconfig.glade.h:25
+#: src/netconfpkg/gui/tokenringhardware.glade.h:31
+msgid "tr5"
+msgstr "tr5"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:32
+#: src/netconfpkg/gui/tokenringhardware.glade.h:32
+msgid "tr6"
+msgstr "tr6"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:33
+#: src/netconfpkg/gui/tokenringhardware.glade.h:33
+msgid "tr7"
+msgstr "tr7"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Tokenring Device"
+msgstr "Opret tokenring-enhed"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Tokenring Device"
+msgstr "Vælg ethernet-enhed"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the Tokenring card you want to configure:"
+msgstr "Vælg det Tokenring-kort du vil konfigurere:"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Tokenring card"
+msgstr "Tokenring-kort"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
+msgstr "11M"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+#: src/netconfpkg/gui/wirelessconfig.glade.h:2
+msgid "1M"
+msgstr "1M"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+#: src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
+msgstr "2M"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
+msgstr "5.5M"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Configure Wireless Connection"
+msgstr "Konfigurér trådløs forbindelse"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Create Wireless Device"
+msgstr "Opret trådløs enhed"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+msgid "Select Wireless Device"
+msgstr "Vælg trådløs enhed"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+msgid "Select the Wireless card you want to configure:"
+msgstr "Vælg det trådløse kort du vil konfigurere:"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+msgid "Wireless card"
+msgstr "Trådløst kort"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Channel:"
+msgstr "_Kanal:"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+msgid "_ESSID (Network ID):"
+msgstr "_ESSID (Netværks-ID):"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+msgid "_Key:"
+msgstr "_Nøgle:"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+msgid "_Mode:"
+msgstr "_Tilstand:"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
+msgid "_Transmit Rate:"
+msgstr "_Overføringshastighed:"
+
+#: src/netconfpkg/gui/chooseprovider.glade.h:1
+msgid "Choose a Provider"
+msgstr "Vælg en udbyder"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:1
+#: src/netconfpkg/gui/ctcconfig.glade.h:1
+#: src/netconfpkg/gui/dialupconfig.glade.h:3
+#: src/netconfpkg/gui/dslconfig.glade.h:2
+#: src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: src/netconfpkg/gui/tokenringconfig.glade.h:2
+#: src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Allow all _users to enable and disable the device"
+msgstr "Tillad alle _brugere at aktivere og deaktivere enheden"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:2
+msgid "CIPE Configuration"
+msgstr "Konfiguration af CIPE"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:4
+#: src/netconfpkg/gui/ctcconfig.glade.h:4
+#: src/netconfpkg/gui/dialupconfig.glade.h:26
+#: src/netconfpkg/gui/dslconfig.glade.h:14
+#: src/netconfpkg/gui/ethernetconfig.glade.h:3
+#: src/netconfpkg/gui/tokenringconfig.glade.h:5
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid "General"
+msgstr "Generelt"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:8
+#: src/netconfpkg/gui/dialupconfig.glade.h:45
+#: src/netconfpkg/gui/dslconfig.glade.h:19
+#: src/netconfpkg/gui/ethernetconfig.glade.h:5
+msgid "Route"
+msgstr "Rute"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:9
+msgid "Tunnel Settings"
+msgstr "Indstillinger for tunnel"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:10
+#: src/netconfpkg/gui/ctcconfig.glade.h:9
+#: src/netconfpkg/gui/dialupconfig.glade.h:49
+#: src/netconfpkg/gui/dslconfig.glade.h:21
+#: src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Activate device when computer starts"
+msgstr "_Aktiver enheden når datamaskinen starter op"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:14
+#: src/netconfpkg/gui/ctcconfig.glade.h:15
+#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dslconfig.glade.h:23
+#: src/netconfpkg/gui/ethernetconfig.glade.h:7
+#: src/netconfpkg/gui/tokenringconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid "_Nickname: "
+msgstr "_Kaldenavn: "
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:2
+msgid "CTC Configuration"
+msgstr "Konfiguration af CTC"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:3
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid ""
+"Each device needs to be attached to a physical device, which can be selected "
+"below."
+msgstr ""
+"Hver enhed skal være tilsluttet til en fysisk enhed som kan vælges nedenfor."
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:5
+#: src/netconfpkg/gui/dslconfig.glade.h:15
+#: src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: src/netconfpkg/gui/tokenringconfig.glade.h:7
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid "Hardware Device"
+msgstr "Maskinelenhed"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:7
+#: src/netconfpkg/gui/tokenringconfig.glade.h:8
+msgid "Protocol Type"
+msgstr "Protokolnavn"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:8
+#: src/netconfpkg/gui/tokenringconfig.glade.h:9
+msgid "Protocols"
+msgstr "Protokoller"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:13
+#: src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+msgid "_Hardware Device:"
+msgstr "_Maskinelenhed:"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:14
+msgid "_MTU:"
+msgstr "_MTU:"
+
+#: src/netconfpkg/gui/devicetype.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Vælg type maskinelenhed"
+
+#: src/netconfpkg/gui/devicetype.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "Venligst vælg type for maskinel-enheden du ønsker at oprette:"
+
+#: src/netconfpkg/gui/devicetype.glade.h:3
+msgid "_Device Type:"
+msgstr "_Enhedstype:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:1
+msgid "A_rea Code"
+msgstr "_Retningsnummer"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:2
+#: src/netconfpkg/gui/dslconfig.glade.h:1
+msgid "Advanced"
+msgstr "Avanceret"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:4
+msgid "Callback"
+msgstr "Tilbageringning"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:5
+msgid "Callback _Delay:"
+msgstr "_Pause før tilbageringning:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:6
+msgid "Callback _Mode:"
+msgstr "_Version af tilbageringning:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:7
+msgid "Callback setting"
+msgstr "Indstillinger for tilbageringning"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:8
+msgid "Click here, if you want to choose a new provider from the ISP database."
+msgstr ""
+"Klik her hvis du vil vælge en ny udbyder fra databasen med Internetudbydere."
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:9
+msgid "Compression"
+msgstr "Komprimering"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:10
+msgid "Dial _Mode:"
+msgstr "Opkalds_tilstand:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:11
+msgid "Dial-In _Number:"
+msgstr "Indkommende _nummer:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:13
+msgid "Enable VJ Connection-_ID Compression"
+msgstr "Aktivér VJ-kompression af opkoblings-_ID"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:14
+msgid "Enable _Address/Control Compression"
+msgstr "Aktiver _adresse/kontrol-kompression"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:15
+msgid "Enable _BSD Compression"
+msgstr "Aktivér _BSD-komprimering"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:16
+msgid "Enable _CCP Compression Control Protocol"
+msgstr "Aktivér _CCP, Compression Control Protocol"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:17
+msgid "Enable _Protocol Field Compression"
+msgstr "Aktivér _Protocol Field Compression"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:18
+msgid "Enable _VJ TCP/IP Header Compression"
+msgstr "Aktivér _VJ-komprimering af TCP/IP-hoveder"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:25
+msgid "Enter your local phone number. It's optional, if you use a modem."
+msgstr "Indtast lokalt telefonnummer. Dette er valgfrit hvis du bruger modem."
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:27
+msgid "Han_gup Timeout:"
+msgstr "_Pålægningstidsgrænse:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:28
+msgid "Let _PPP do all authentication"
+msgstr "Lad _PPP lave al autenticering"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:29
+msgid "MSN/EA_Z:"
+msgstr "MSN/EA_Z:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:30
+#: src/netconfpkg/gui/dslconfig.glade.h:16
+msgid "Make this connection the default _route"
+msgstr "Lad denne forbindelse være standard _rute"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:31
+msgid "Modem P_ort:"
+msgstr "Modemp_ort:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:32
+msgid "Modem _Initialization String:"
+msgstr "Streng for modem_initiering:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:33
+msgid "Modem0"
+msgstr "Modem0"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:34
+msgid "Modem1"
+msgstr "Modem1"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:35
+msgid "Modem2"
+msgstr "Modem2"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:36
+msgid "Modem3"
+msgstr "Modem3"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:37
+msgid "Options"
+msgstr "Alternativer"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:38
+msgid "PPP Option List"
+msgstr "Alternativer for PPP"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:41
+msgid "Prefi_x"
+msgstr "Præfi_ks"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:42
+#: src/netconfpkg/gui/dslconfig.glade.h:18
+msgid "Provider"
+msgstr "Udbyder"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:44
+msgid "Restart if _connection dies"
+msgstr "Start igen ny hvis _forbindelsen dør"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:46
+msgid "Select the authentication protocol used by your ISP."
+msgstr "Vælg den autenticeringsprotokol som bruges af din Internetudbyder."
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:47
+msgid "Use _Callback Control Protocol (CBCP)"
+msgstr "Brug _Callback Control Protocol (CBCP)"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:48
+msgid "Use _Channel Bundling"
+msgstr "Brug sammenkobling af _kanaler"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:51
+msgid "_Allow only above Dial-In Number"
+msgstr "_Tillad kun ovenstående opkaldsnummer"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:52
+msgid "_Authentication:"
+msgstr "_Autenticering:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:53
+msgid "_Choose Provider..."
+msgstr "_Vælg udbyder..."
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:55
+msgid "_Dial Mode:"
+msgstr "Opkalds_tilstand:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:56
+msgid "_Encapsulation Mode:"
+msgstr "_Indkapslingstilstand:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:57
+msgid "_Hangup Timeout:"
+msgstr "_Tidsfrist før der lægges på:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:60
+msgid "_PPP Option:"
+msgstr "_PPP-alternativ:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:61
+msgid "_Phone Number"
+msgstr "_Telefonnummer"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:62
+msgid "_Use Callback"
+msgstr "Br_ug tilbageringning"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:3
+msgid "Allow dial on _demand"
+msgstr "Tillad opkald ved _behov"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:4
+msgid "Allow the link come up on demand."
+msgstr "Tillad at linjen kommer op efter behov."
+
+#: src/netconfpkg/gui/dslconfig.glade.h:5
+msgid "Demand _value:"
+msgstr "Domæne_værdi:"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:6
+msgid "Demand setting"
+msgstr "Indstillinger for automatisk opringning"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:7
+msgid "Enable synchronous PPP for the connection"
+msgstr "Aktivér synkron PPP for forbindelsen"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:8
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Angiv navnet på adgangskoncentratoren (access concentrator) hvis din "
+"Internetudbyder har givet dig en sådan. I de fleste tilfælde kan du lade det "
+"være tomt."
+
+#: src/netconfpkg/gui/dslconfig.glade.h:9
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"Angiv tjenestenavnet hvis din Internetudbyder kræver et sådant. Hvis du ikke "
+"kender det bør du kontakte din Internetudbyder. I de fleste tilfælde kan du "
+"lade det være tomt."
+
+#: src/netconfpkg/gui/dslconfig.glade.h:10
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr "Indtast inaktiv tid i sekunder hvorefter opkoblingen bør lukkes."
+
+#: src/netconfpkg/gui/dslconfig.glade.h:20
+msgid "_AC-Name:"
+msgstr "_AC-navn:"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:25
+msgid "_Service-Name:"
+msgstr "Navn på tjene_ste:"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:26
+msgid "_Use synchronous PPP"
+msgstr "_Brug synkron PPP"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:27
+msgid "xDSL Configuration"
+msgstr "Konfiguration af xDSL"
+
+#: src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Tilføj/redigér IP-adresse"
+
+#: src/netconfpkg/gui/editadress.glade.h:2
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/tcpipdialog.glade.h:41
+msgid "_Address:"
+msgstr "_Adresse:"
+
+#: src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Gateway:"
+
+#: src/netconfpkg/gui/editadress.glade.h:4
+#: src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: src/netconfpkg/gui/tcpipdialog.glade.h:49
+msgid "_Subnet Mask:"
+msgstr "_Subnetmaske:"
+
+#: src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain Name:"
+msgstr "Domænenavn:"
+
+#: src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Rediger domænenavn"
+
+#: src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Tilføj/redigér værtsindgang"
+
+#: src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Alias:"
+
+#: src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Værtsnavn:"
+
+#: src/netconfpkg/gui/ethernetconfig.glade.h:2
+msgid "Ethernet Device"
+msgstr "Ethernet-enhed"
+
+#: src/netconfpkg/gui/ethernethardware.glade.h:19
+#: src/netconfpkg/gui/tokenringhardware.glade.h:19
+msgid "Network Adapters Configuration"
+msgstr "Konfiguration af netværkskort"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Vælg type maskinel"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:2
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware Type:"
+msgstr "Maskinel:"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:4
+msgid "ISDN"
+msgstr "ISDN"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:5
+msgid "Modem"
+msgstr "Modem"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type, you want to create"
+msgstr "Venligst vælg type for maskinel-enheden du ønsker at oprette:"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Token Ring"
+
+#: src/netconfpkg/gui/isdnhardware.glade.h:7
+msgid "ISDN Adapters Configuration"
+msgstr "Konfiguration af ISDN-kort"
+
+#: src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:3
+msgid "Waiting to connect to"
+msgstr "Venter på at koble op til"
+
+#: src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:4
+msgid "Waiting..."
+msgstr "Venter..."
+
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
+
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Opkoblet tid:"
+
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "klik på højre museknap for egenskaber"
+
+#: src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Opkobl til"
+
+#: src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Afbryd forbindelse til"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "kr"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "0,00"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+msgid "1"
+msgstr "1"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "1,00"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Basic"
+msgstr "Basal"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm _starting connection"
+msgstr "Bekræft opstart af forbindelse"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Confirm stopping _connection"
+msgstr "Bekræft afbrydelse af forbindelse"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cos_t accumulated from the past connection:"
+msgstr "_Samlede omkostninger fra seneste opkobling:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Cost"
+msgstr "Omkostning"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "Cost per:"
+msgstr "Omkostning per:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "Count:"
+msgstr "Antal:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "M_inimum number of seconds charged:"
+msgstr "M_indste antal sekunder at betale:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Accumulate cost over multiple connections"
+msgstr "_Sammentæl omkostninger for flere opkoblinger"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Cost"
+msgstr "_Omkostning"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Debug mode"
+msgstr "_Fejlsøgningstilstand"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Extra cost to start a connection:"
+msgstr "_Ekstra omkostning for at starte en forbindelse:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Hour"
+msgstr "_Time"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Minute"
+msgstr "_Minut"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_Antal sekunder i basal konteringsenhed:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Second"
+msgstr "_Sekund"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Terminate connection when session closes"
+msgstr "_Afslut forbindelse når sessionen lukker"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "_Time"
+msgstr "_Tid"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:23
+msgid "redhat network control - Properties"
+msgstr "Administration af redhat netværk - Egenskaber"
+
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#, no-c-format
+msgid "%P %%"
+msgstr "%P %%"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:1
+msgid "Automatically obtain _DNS information from provider"
+msgstr "Hent DNS-information fra _udbyder automatisk"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#: src/netconfpkg/gui/tcpipdialog.glade.h:4
+msgid "Automatically obtain _IP address settings with:"
+msgstr "Hent indstillinger for IP-adresse automatisk med:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+msgid "Bind to _MAC Address:"
+msgstr "Bind til _MAC-addresse:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+msgid "DHCP Settings"
+msgstr "Indstillinger for DHCP"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: src/netconfpkg/gui/tcpipdialog.glade.h:6
+msgid "Default _Gateway Address:"
+msgstr "Standard-_gatewayadresse:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
+#: src/netconfpkg/gui/tcpipdialog.glade.h:8
+msgid "Destination Network"
+msgstr "Målnetværk"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:7
+msgid "Device _Aliases:"
+msgstr "Aliaser for enheder:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: src/netconfpkg/gui/tcpipdialog.glade.h:9
+msgid "Difficulty level:"
+msgstr "Sværhedsgrad:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
+msgid ""
+"Each connection needs to be associated with a physical device which can be "
+"selected below."
+msgstr ""
+"Hver forbindelse skal være tilsluttet til en fysisk enhed som kan vælges "
+"nedenfor."
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: src/netconfpkg/gui/tcpipdialog.glade.h:10
+msgid "Easy"
+msgstr "Nem"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:11
+#: src/netconfpkg/gui/tcpipdialog.glade.h:12
+msgid "Enter your device bound traffic rules here."
+msgstr "Angiv dine enhedsbundne regler for trafik her."
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:12
+#: src/netconfpkg/gui/tcpipdialog.glade.h:13
+msgid "Gateway"
+msgstr "Gateway"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+msgid "Hardware Device:"
+msgstr "Maskinelenhed:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/tcpipdialog.glade.h:16
+msgid "Manual IP Address Settings"
+msgstr "Manuelle indstillinger for IP-adresse"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/tcpipdialog.glade.h:17
+msgid "Mask"
+msgstr "Maske"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/tcpipdialog.glade.h:18
+msgid "Maximum In"
+msgstr "Maksimal ind"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/tcpipdialog.glade.h:19
+msgid "Maximum Out"
+msgstr "Maksimum ud"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/tcpipdialog.glade.h:21
+msgid "Minimum In"
+msgstr "Minimum ind"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/tcpipdialog.glade.h:22
+msgid "Minimum Out"
+msgstr "Minimum ud"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/tcpipdialog.glade.h:24
+msgid "Please select the level of security for this device."
+msgstr "Venligst vælg sikkerhedsniveau for denne enhed."
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/tcpipdialog.glade.h:25
+msgid "Port"
+msgstr "Port"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/tcpipdialog.glade.h:26
+msgid "Prefix (Netmask)"
+msgstr "Præfix (netmaske)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/tcpipdialog.glade.h:27
+msgid "Professional"
+msgstr "Professionel"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/tcpipdialog.glade.h:30
+msgid "Security Level"
+msgstr "Sikkerhedsniveau"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/tcpipdialog.glade.h:31
+msgid "Select the services you want to provide through this device"
+msgstr "Vælg de tjenester som du vil tilbyde via denne enhed"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/tcpipdialog.glade.h:32
+msgid "Service"
+msgstr "Tjeneste"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/tcpipdialog.glade.h:33
+msgid "Service Description"
+msgstr "Beskrivelse af tjeneste"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/tcpipdialog.glade.h:34
+msgid "Services"
+msgstr "Tjenester"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/tcpipdialog.glade.h:35
+msgid "Static Network Routes"
+msgstr "Statiske netværksruter"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "Statisk opsatte _IP-adresser:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+msgid "Tie to specific ethernet card"
+msgstr "Knyt til bestemt ethernet-kort"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+msgid "Use ethernet device aliases"
+msgstr "Brug aliaser for ethernet-enheder"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
+msgid "_Hardware Address"
+msgstr "_Maskineladresse"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+msgid "_Hardware:"
+msgstr "_Maskinel:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/tcpipdialog.glade.h:45
+msgid "_High Security (Internet)"
+msgstr "_Høj sikkerhed (Internet)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: src/netconfpkg/gui/tcpipdialog.glade.h:47
+msgid "_Low Security"
+msgstr "_Lav sikkerhed"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Probe"
+msgstr "_Søg"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
+msgid "_Probe for Address..."
+msgstr "_Søg efter adresse..."
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: src/netconfpkg/gui/tcpipdialog.glade.h:48
+msgid "_Secure Device (LAN)"
+msgstr "_Sikker enhed (LAN)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:49
+#: src/netconfpkg/gui/tcpipdialog.glade.h:50
+msgid "bootp"
+msgstr "bootp"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:50
+#: src/netconfpkg/gui/tcpipdialog.glade.h:51
+msgid "dhcp"
+msgstr "dhcp"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:1
+msgid "Accounting"
+msgstr "Kontering"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:2
+msgid "Add..."
+msgstr "Tilføj..."
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:3
+msgid "Automatically obtain DNS information from _provider"
+msgstr "Hent DNS-information fra _udbyder automatisk"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:5
+msgid "Copy"
+msgstr "Kopiér"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:7
+msgid "Delete"
+msgstr "Slet"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:11
+msgid "Edit..."
+msgstr "Redigér..."
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:14
+msgid "Hostname"
+msgstr "Værtsnavn"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:23
+msgid ""
+"Note that DNS information from automatic device configuration will take "
+"precedence over any settings done globally."
+msgstr ""
+"Bemærk at DNS-information fra automatisk enhedskonfiguration vil gælde "
+"fremfor indstillinger som er gjort globalt."
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:28
+msgid "Routing"
+msgstr "Rutning"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:29
+msgid "Security"
+msgstr "Sikkerhed"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:36
+msgid "TCP/IP"
+msgstr "TCP/IP"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:37
+msgid "TCP/IP Settings"
+msgstr "Indstillinger for TCP/IP"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:38
+msgid "Traffic"
+msgstr "Trafik"
+
+#: src/netconfpkg/gui/tcpipdialog.glade.h:39
+msgid ""
+"You can configure IP address settings for an interface automatically if your "
+"network supports it. For manual configuration information, contact your "
+"Network Administrator or Internet Service Provider."
+msgstr ""
+"Du kan automatisk konfigurere IP-adresseindstillinger for en grænseflade "
+"hvis dit netværk understøtter dette. Kontakt din netværksadministrator eller "
+"Internetudbyder for information om manuel konfiguration."
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:3
+msgid ""
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
+msgstr ""
+"Hver enhed skal være tilsluttet til en fysisk enhed som kan vælges nedenfor. "
+"Understøttelse af enhedsalias lader dig vælge flere virtuelle enheder for en "
+"fysisk enhed."
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:4
+msgid "Enable _Device Alias support"
+msgstr "Aktivér understøttelse for _enhedsalias"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Ha_rdware Address:"
+msgstr "_Maskineladresse:"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "Token Ring Device"
+msgstr "Token Ring-enhed"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Alias:"
+msgstr "_Alias:"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "_Probe for Address"
+msgstr "_Søg efter adresse"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:19
+msgid "_Use Hardware Address"
+msgstr "Brug _udstyrets adresse"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:5
+msgid "Ad-Hoc"
+msgstr "Ad-hoc (master)"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Managed"
+msgstr "Administreret"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+msgid "Network Name (SSID):"
+msgstr "Netværks-navn (SSID):"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+msgid "Wireless Device Configuration"
+msgstr "Konfiguration af trådløs enhed"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "Wireless Settings"
+msgstr "Indstillinger for trådløst"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+msgid "_Auto"
+msgstr "_Auto"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+msgid "_Specified:"
+msgstr "_Specificeret:"
 
 #~ msgid "window1"
 #~ msgstr "vindue1"
@@ -2276,9 +4379,6 @@ msgstr "Aktiverer for netværksenhed %s, vent venligst..."
 
 #~ msgid "window6"
 #~ msgstr "vindue6"
-
-#~ msgid "xDSL Configuration"
-#~ msgstr "Konfiguration af xDSL"
 
 #~ msgid "Yes"
 #~ msgstr "Ja"
