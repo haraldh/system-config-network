@@ -171,7 +171,7 @@ class HardwareList(HardwareList_base):
                 continue
 
             # No Alias devices
-            if string.find(device, ':') == -1:
+            if string.find(device, ':') != -1:
                 continue
             
             try:
