@@ -171,6 +171,7 @@ class FileSelection:
         win.show_all ()
         self.window = win
         self.rc = self.window.run ()
+        self.window.destroy()
 
     def quit (self, dialog, button):
         self.rc = button

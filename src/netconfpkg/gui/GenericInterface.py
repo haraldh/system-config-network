@@ -109,41 +109,49 @@ class GenericInterface(InterfaceCreator):
             cfg = ethernetConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-
+            dialog.destroy()
+            
         elif type == TOKENRING:
             cfg = tokenringConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         elif type == ISDN:
             cfg = ISDNDialupDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         elif type == MODEM:
             cfg = ModemDialupDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         elif type == DSL:
             cfg = dslConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         elif type == CIPE:
             cfg = cipeConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         elif type == WIRELESS:
             cfg = wirelessConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         elif type == CTC or type == IUCV:
             cfg = ctcConfigDialog(device)
             dialog =  cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            dialog.destroy()
 
         else:
             generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)

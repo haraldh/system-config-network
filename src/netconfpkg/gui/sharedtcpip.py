@@ -146,8 +146,10 @@ def on_routeEditButton_clicked(button, xml, device):
 
     dialog = editAdressDialog(route)
     dl = dialog.xml.get_widget ("Dialog")
-    if dl.run () != 0:
+    if dl.run() != gtk.RESPONSE_OK:
+        dl.destroy()        
         return
+    dl.destroy()
     route_update(xml, device)
 
     
@@ -215,8 +217,9 @@ def on_routeAddButton_clicked(button, xml, device):
     route = Route()
     dialog = editAdressDialog(route)
     dl = dialog.xml.get_widget ("Dialog")
-    button = dl.run ()
-    if button != 0:
+    button = dl.run()
+    dl.destroy()
+    if button != gtk.RESPONSE_OK:
         return
     i = routes.addRoute()
     routes[i].apply(route)

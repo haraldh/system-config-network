@@ -170,8 +170,14 @@ class tcpConfigDialog:
         route = Route()
         dialog = editAdressDialog(route)
         dl = dialog.xml.get_widget ("Dialog")
-        button = dl.run ()
-        if button != 0:
+        button = dl.run_and_destroy ()
+        dl.destroy()
+        print "******************************************************"        
+        print "******************************************************"        
+        print "******************************************************"        
+        print "******************************************************"        
+        print "******************************************************"        
+        if button != gtk.RESPONSE_OK:
             return
         i = routes.addRoute()
         routes[i].apply(route)

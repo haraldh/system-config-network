@@ -68,7 +68,7 @@ class editAdressDialog:
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        
+    
     def on_cancelButton_clicked(self, button):
         pass
         
