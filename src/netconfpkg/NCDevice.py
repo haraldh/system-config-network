@@ -27,7 +27,7 @@ class Device(Device_base):
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
                     'AllowUser' : 'ALLOWUSER',
-                    'AutoDNS' : 'AUTODNS',
+                    'AutoDNS' : 'RESOLV_MODS',
                     }
         
     def __init__(self, list = None, parent = None):
