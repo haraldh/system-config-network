@@ -16,7 +16,7 @@ all-local:
 	ln -s netconf.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
 
-glade-strings.c:  maindialog.glade  netconfpkg/*.glade
+glade-strings.c:  maindialog.glade  $(wildcard netconfpkg/*.glade)
 	libglade-xgettext -c -o $(srcdir)/glade-strings.c $?
 
 pythondir = $(pkgdatadir)
