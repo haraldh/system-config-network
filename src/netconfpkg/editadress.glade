@@ -15,21 +15,71 @@
 <widget>
   <class>GnomeDialog</class>
   <name>Dialog</name>
-  <visible>False</visible>
   <title>Add / Edit IP Address</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_MOUSE</position>
   <modal>True</modal>
   <allow_shrink>False</allow_shrink>
-  <allow_grow>True</allow_grow>
+  <allow_grow>False</allow_grow>
   <auto_shrink>False</auto_shrink>
+  <auto_close>False</auto_close>
+  <hide_on_close>False</hide_on_close>
 
   <widget>
     <class>GtkVBox</class>
-    <name>vbox22</name>
-    <border_width>5</border_width>
+    <child_name>GnomeDialog:vbox</child_name>
+    <name>dialog-vbox1</name>
     <homogeneous>False</homogeneous>
     <spacing>5</spacing>
+    <child>
+      <padding>4</padding>
+      <expand>True</expand>
+      <fill>True</fill>
+    </child>
+
+    <widget>
+      <class>GtkHButtonBox</class>
+      <child_name>GnomeDialog:action_area</child_name>
+      <name>dialog-action_area1</name>
+      <layout_style>GTK_BUTTONBOX_END</layout_style>
+      <spacing>8</spacing>
+      <child_min_width>85</child_min_width>
+      <child_min_height>27</child_min_height>
+      <child_ipad_x>7</child_ipad_x>
+      <child_ipad_y>0</child_ipad_y>
+      <child>
+	<padding>0</padding>
+	<expand>False</expand>
+	<fill>True</fill>
+	<pack>GTK_PACK_END</pack>
+      </child>
+
+      <widget>
+	<class>GtkButton</class>
+	<name>okButton</name>
+	<can_default>True</can_default>
+	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_okButton_clicked</handler>
+	  <last_modification_time>Fri, 22 Jun 2001 09:53:51 GMT</last_modification_time>
+	</signal>
+	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
+      </widget>
+
+      <widget>
+	<class>GtkButton</class>
+	<name>cancelButton</name>
+	<can_default>True</can_default>
+	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_cancelButton_clicked</handler>
+	  <last_modification_time>Fri, 22 Jun 2001 09:54:04 GMT</last_modification_time>
+	</signal>
+	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
+      </widget>
+    </widget>
 
     <widget>
       <class>GtkTable</class>
@@ -208,60 +258,6 @@
 	  <xfill>True</xfill>
 	  <yfill>False</yfill>
 	</child>
-      </widget>
-    </widget>
-
-    <widget>
-      <class>GtkHSeparator</class>
-      <name>hseparator6</name>
-      <child>
-	<padding>0</padding>
-	<expand>False</expand>
-	<fill>True</fill>
-      </child>
-    </widget>
-
-    <widget>
-      <class>GtkHButtonBox</class>
-      <name>hbuttonbox15</name>
-      <layout_style>GTK_BUTTONBOX_END</layout_style>
-      <spacing>5</spacing>
-      <child_min_width>85</child_min_width>
-      <child_min_height>27</child_min_height>
-      <child_ipad_x>7</child_ipad_x>
-      <child_ipad_y>0</child_ipad_y>
-      <child>
-	<padding>0</padding>
-	<expand>False</expand>
-	<fill>True</fill>
-      </child>
-
-      <widget>
-	<class>GtkButton</class>
-	<name>okButton</name>
-	<can_default>True</can_default>
-	<can_focus>True</can_focus>
-	<signal>
-	  <name>clicked</name>
-	  <handler>on_okButton_clicked</handler>
-	  <last_modification_time>Tue, 05 Jun 2001 13:03:24 GMT</last_modification_time>
-	</signal>
-	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
-	<relief>GTK_RELIEF_NORMAL</relief>
-      </widget>
-
-      <widget>
-	<class>GtkButton</class>
-	<name>cancelButton</name>
-	<can_default>True</can_default>
-	<can_focus>True</can_focus>
-	<signal>
-	  <name>clicked</name>
-	  <handler>on_cancelButton_clicked</handler>
-	  <last_modification_time>Tue, 05 Jun 2001 13:03:28 GMT</last_modification_time>
-	</signal>
-	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
-	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
     </widget>
   </widget>
