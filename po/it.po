@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2003-02-21 14:26-0500\n"
+"POT-Creation-Date: 2003-02-21 16:05-0500\n"
 "PO-Revision-Date: 2003-02-10 11:19+1000\n"
 "Last-Translator: Francesco Valente <fvalen@redhat.com>\n"
 "Language-Team: Italian <i18n-list@redhat.com>\n"
@@ -3907,6 +3907,14 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. if re.search("^s:", self.Key):
+#. self.Key = self.Key[2:]
+#. elif re.search("^[0-9a-fA-F]+$", self.Key):
+#. self.Key = "0x" + self.Key
+#. if not re.search("^0x[0-9a-fA-F]+\s*$", self.Key):
+#. conf["KEY"] = "s:" + self.Key
+#. else:
+#. conf["KEY"] = self.Key[2:]
 #. Do not clear the non-filled in values
 #. Bugzilla #52252
 #. for i in conf.keys():
