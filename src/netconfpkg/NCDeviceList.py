@@ -77,12 +77,6 @@ class DeviceList(DeviceList_base):
     def save(self):
         self.commit(changed=false)
 
-        try:
-            dir = os.listdir(SYSCONFDEVICEDIR)
-        except OSError, msg:
-            raise IOError, 'Cannot save in ' \
-                  + SYSCONFDEVICEDIR + ': ' + str(msg)
-
         #
         # traverse all devices in the list
         #
@@ -149,6 +143,11 @@ class DeviceList(DeviceList_base):
         #
         # Remove old config files
         #
+        try:
+            dir = os.listdir(SYSCONFDEVICEDIR)
+        except OSError, msg:
+            raise IOError, 'Cannot save in ' \
+                  + SYSCONFDEVICEDIR + ': ' + str(msg)
         for entry in dir:
             if (len(entry) <= 6) or \
                entry[:6] != 'ifcfg-' or \
@@ -163,7 +162,8 @@ class DeviceList(DeviceList_base):
                     break
             else:
                 #print "Removing %s" % (SYSCONFDEVICEDIR + entry)
-                NC_functions.unlink(SYSCONFDEVICEDIR + entry)
+                unlink(SYSCONFDEVICEDIR + entry)
+                unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
 
         self.commit()
 
