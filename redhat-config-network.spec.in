@@ -48,6 +48,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+- Fri Aug  3 2001 Than Ngo <than@redhat.com>
+* fix pap/chap Login name for T-online
+* fix InitStrings
+* use gettext function in NC_functions
+* fix loading DEFROUTE/PERSIST/DEMAND/IDLETIMEOUT for Modem dialup
+* don't backtrace if 'SetVolume' and 'Dial Command' are not defined
+
+* Thu Aug 02 2001 Phil Knirsch <phil@redhat.de> 0.6.1-2
+- Fixed buggous removal of ifcfg-lo (#50478)
+- Fixed problems with modem volume in hardware dialog
+- Fixed missing /dev/modem for modem setup (#50673)
+
 * Wed Aug  2 2001 Yukihiro Nakai <ynakai@redhat.com>
 - POTFILES.in list up fix
 - Add Japanese translation
