@@ -1,4 +1,4 @@
-netconfimgdir=$(pkgdatadir)/pixmaps
+netconfimgdir = $(pkgdatadir)/pixmaps
 
 netconfimg_DATA = \
 	active.xpm \
@@ -11,4 +11,8 @@ netconfimg_DATA = \
 	no.xpm \
 	us.xpm 
 
-EXTRA_DIST = $(netconfimg_DATA)
+netconfkontroldir = $(datadir)/kontrol-panel/icons
+
+netconfkontrol_DATA = neat.png
+
+EXTRA_DIST = $(netconfimg_DATA) $(netconfkontrol_DATA)
