@@ -22,16 +22,18 @@
 # dirty hack but does the job(tm). It basically finds all .py files in the
 # package directory and imports from all found files (except __init__.py that
 # is) ;). Nice for plugin mechanism.
-import netconfpkg
+import sys
 
-netconfpkg.Use_Alchemist = None
+__netconfpkg = sys.modules[__name__]
+
+__netconfpkg.Use_Alchemist = None
 
 from rhpl.genClass import GenClass_read_classfile
 
 for _idl_file in [ "DeviceList.idl",
                   "HardwareList.idl",
                   "ProfileList.idl" ]:
-    GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = netconfpkg)
+    GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = __netconfpkg)
     
 del _idl_file
 
@@ -50,3 +52,4 @@ for _i in _files:
 del _i
 del _files
 del _cmd
+del __netconfpkg

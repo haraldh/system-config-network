@@ -18,10 +18,16 @@
 from NC_functions import *
 from netconfpkg import Hardware_base
 
+HW_INACTIVE = _("inactive") # not found in last config and not in actual system
+HW_SYSTEM = _("system")   # found in system
+HW_CONF = _("configured")     # found in config but not in system
+HW_OK = _("ok")       # found in system and in config
+
 class Hardware(Hardware_base):
     def __init__(self, list = None, parent = None):
         Hardware_base.__init__(self, list, parent)        
-
+        self.Status = HW_INACTIVE
+        
     def getDialog(self):
         raise NotImplemented
 

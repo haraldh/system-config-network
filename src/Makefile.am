@@ -67,7 +67,7 @@ uninstall-local:
 
 docs:
 	cd $(srcdir)
-	python @PYDOC@ -w $(PYTHON_FILES)
+	@PYTHON@ @pythondir@/../pydoc.py -w `find . -name \*.py`
 	mv *.html doc
 
 pycheck:

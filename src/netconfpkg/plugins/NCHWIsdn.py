@@ -27,6 +27,7 @@ class HwIsdn(Hardware):
       Hardware.__init__(self, list, parent)
       self.Type = ISDN
       self.createCard()
+      self.Card.ChannelProtocol = "2"
        
    def getDialog(self):
       if _hwIsdnDialog == None: return None

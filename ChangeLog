@@ -1,3 +1,373 @@
+2003-04-29  Harald Hoyer  <harald@redhat.com>
+
+	* ChangeLog 1.82.2.8, redhat-config-network.spec.in 1.171.2.6:
+	release 1.2.4 moved
+
+	* src/netconfpkg/gui/infodialog.glade 1.1: New file.
+
+	* src/netconfpkg/gui/infodialog.glade 1.1.2.1:
+	added gui_run_dialog glade file
+
+	* po/zh_TW.po 1.101.2.7, po/redhat-config-network.pot 1.113.2.8, po/ru.po 1.91.2.7, po/sv.po 1.133.2.7, po/tr.po 1.73.2.7, po/zh_CN.po 1.80.2.7, po/is.po 1.121.2.7, po/it.po 1.137.2.7, po/ja.po 1.148.2.7, po/ko.po 1.140.2.7, po/no.po 1.129.2.7, po/pt.po 1.112.2.7, po/cs.po 1.98.2.8, po/da.po 1.105.2.7, po/de.po 1.153.2.7, po/el.po 1.75.2.7, po/es.po 1.140.2.7, po/fr.po 1.142.2.7, ChangeLog 1.82.2.7, Makefile.am 1.41.2.4, configure.in 1.144.2.3, neat.desktop.in 1.6.4.1, po/POTFILES.in 1.26.2.2, redhat-config-network.spec.in 1.171.2.5:
+	release 1.2.4
+
+2003-04-25  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.10, src/netconfpkg/NCHardware.py 1.3.2.2, src/netconfpkg/NCHardwareList.py 1.66.2.9, src/netconfpkg/NCProfileList.py 1.66.2.9, src/netconf-cmd.py 1.8.2.7:
+	improved import/export
+
+	* src/netconfpkg/plugins/NCDevADSL.py 1.2.2.1, src/netconfpkg/plugins/NCDevCipe.py 1.2.2.1, src/netconfpkg/plugins/NCDevIsdn.py 1.2.2.1, src/netconfpkg/plugins/NCDevModem.py 1.2.2.1:
+	getHWDevice() added
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.10: del list[] -> remove()
+	removal of devices, which uses hw now OO
+
+	* src/netconfpkg/NCisdnhardware.py 1.18.2.3:
+	getRoot() -> netconfpkg.ROOT
+
+	* src/netconfpkg/NC_functions.py 1.71.2.9: getRoot() -> netconfpkg.ROOT
+	ishardlink can cope with nonexisting files now
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.8:
+	getRoot() -> netconfpkg.ROOT
+	updateNetworkScripts() now as function
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.8:
+	MyConfModules corrected with initial filename parameter
+	getDataRoot() -> netconfpkg.ROOT
+	updateFromKudzu and updateFromSystem improved
+	addDeviceType removed
+	Status for ISDN and Modem now HW_CONF
+
+	* src/netconfpkg/NCHardwareFactory.py 1.5.2.1:
+	getHardwareFactory() moved to beginning of module
+	type -> hwtype
+
+	* src/netconfpkg/NCDialup.py 1.59.2.7: getRoot() -> netconfpkg.ROOT
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.9: getRoot() -> netconfpkg.ROOT
+	updateNetworkScripts() now as function
+
+	* src/netconfpkg/NCDeviceFactory.py 1.4.2.2:
+	getDeviceFactory() moved to beginning of module
+	type -> devtype
+
+	* src/netconfpkg/NCDevice.py 1.82.2.9: getRoot() -> netconfpkg.ROOT
+	getHWDevice() added
+
+	* src/netconfpkg/NCCipe.py 1.13.2.3: getRoot() -> netconfpkg.ROOT
+
+	* src/netconf-cmd.py 1.8.2.6: more informations on traceback
+	better Usage()
+	--debug for python debugger on traceback
+	--profilelist has -o as short option
+	catch ParseErrors thrown by genClass
+
+	* src/neat-control.py 1.36.2.7:
+	use updateNetworkScripts() function, instead of method
+
+2003-04-23  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCCipe.py 1.13.2.2, src/netconfpkg/NCDevice.py 1.82.2.8, src/netconfpkg/NCDeviceList.py 1.50.2.8, src/netconfpkg/NCDialup.py 1.59.2.6, src/netconfpkg/NCHardwareList.py 1.66.2.7, src/netconfpkg/NCProfileList.py 1.66.2.7, src/netconfpkg/NC_functions.py 1.71.2.8, src/netconfpkg/NCisdnhardware.py 1.18.2.2, src/netconf-cmd.py 1.8.2.5:
+	added alternative chroot for config files
+
+	* src/netconfpkg/gui/devicetype.py 1.9.2.1: import NCHardwareList
+
+	* src/netconfpkg/gui/GUI_functions.py 1.21.2.3:
+	init of __cancelPressed and __dialogClosed
+
+	* src/netconfpkg/__init__.py 1.12.2.2: netconfpkg -> __netconfpkg
+
+	* src/netconfpkg/NC_functions.py 1.71.2.7:
+	TestError calls Exception constructor
+	import select in generic_run_dialog fallback
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.6, src/netconfpkg/NCHardwareList.py 1.66.2.6, src/netconfpkg/NCDeviceList.py 1.50.2.7:
+	objToStr parameters fixed
+
+	* src/netconfpkg/NCDevice.py 1.82.2.7:
+	added comment to fix static routes
+
+	* src/netconf-tui.py 1.16.2.2: global dumpHash added
+
+	* src/netconf-cmd.py 1.8.2.4: profile switching corrected
+
+	* src/neat-control.py 1.36.2.6: removed unnecessary vars
+	removed monitoring
+	profile switching corrected
+
+	* src/Makefile.am 1.72.2.1: docs target updated..
+
+2003-04-22  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.9:
+	forgot to import NewInterfaceDialog
+	hardware devices now bound to clist entries
+	do not include 127.0.0.1 in hosts list
+	device activation / deactivation now with cancel button and output
+
+	* src/netconfpkg/gui/GUI_functions.py 1.21.2.2: added gui_run_dialog
+
+	* src/netconfpkg/NCisdnhardware.py 1.18.2.1: removed hardcoded paths
+
+	* src/netconfpkg/NC_functions.py 1.71.2.6: removed hardcoded paths
+	added generic_run_dialog
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.5: /etc/hosts -> HOSTSCONF
+	/etc/resolv.conf -> RESOLVCONF
+	import / export of ProfileList
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.5:
+	/etc/modules.conf -> MODULESCONF
+	/etc/sysconfig/hwconf -> HWCONF
+	/etc/wvdial.conf -> WVDIALCONF
+	import / export of HardwareList
+
+	* src/netconfpkg/NCDialup.py 1.59.2.5: /etc/wvdial.conf -> WVDIALCONF
+	/etc/ppp -> PPPDIR
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.6:
+	added import / export of DeviceList
+
+	* src/netconfpkg/NCDeviceFactory.py 1.4.2.1:
+	return generic Device, if no type specific Device was found
+
+	* src/netconfpkg/NCDevice.py 1.82.2.6:
+	device activation/deactivation now generalized
+
+	* src/netconfpkg/NCDevice.py 1.82.2.5:
+	delete old routes, only write vars with value
+
+	* src/netconfpkg/NCCipe.py 1.13.2.1: /etc/cipe -> CIPEDIR
+
+	* src/netconf-cmd.py 1.8.2.3:
+	added exception handling, import/export of configuration
+
+	* src/neat-control.py 1.36.2.5: removed unused code
+
+2003-04-03  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconf-cmd.py 1.8.2.2:
+	print devlist on import only with verbose level >= 1
+
+	* src/netconf-cmd.py 1.8.2.1: add export, import of hwlist and devlist
+
+2003-04-02  Harald Hoyer  <harald@redhat.com>
+
+	* po/zh_TW.po 1.101.2.6, src/netconfpkg/NCWireless.py 1.11.2.7, po/pt.po 1.112.2.6, po/redhat-config-network.pot 1.113.2.7, po/ru.po 1.91.2.6, po/sv.po 1.133.2.6, po/tr.po 1.73.2.6, po/zh_CN.po 1.80.2.6, po/is.po 1.121.2.6, po/it.po 1.137.2.6, po/ja.po 1.148.2.6, po/ko.po 1.140.2.6, po/no.po 1.129.2.6, po/cs.po 1.98.2.7, po/da.po 1.105.2.6, po/de.po 1.153.2.6, po/el.po 1.75.2.6, po/es.po 1.140.2.6, po/fr.po 1.142.2.6, redhat-config-network.spec.in 1.171.2.4, ChangeLog 1.82.2.6:
+	release 1.2.3 moved
+
+	* src/netconfpkg/NCWireless.py 1.11.2.5:
+	corrected wireless KEY handling
+
+	* src/netconfpkg/NCWireless.py 1.11.2.4:
+	allow spaces before the key string
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.4, po/ru.po 1.91.2.4, po/sv.po 1.133.2.4, po/tr.po 1.73.2.4, po/zh_CN.po 1.80.2.4, po/zh_TW.po 1.101.2.4, po/ja.po 1.148.2.4, po/ko.po 1.140.2.4, po/no.po 1.129.2.4, po/pt.po 1.112.2.4, po/redhat-config-network.pot 1.113.2.5, po/de.po 1.153.2.4, po/el.po 1.75.2.4, po/es.po 1.140.2.4, po/fr.po 1.142.2.4, po/is.po 1.121.2.4, po/it.po 1.137.2.4, Makefile.am 1.41.2.3, po/cs.po 1.98.2.5, po/da.po 1.105.2.4, ChangeLog 1.82.2.5:
+	release 1.2.3 moved
+
+	* redhat-config-network.spec.in 1.171.2.3, po/zh_TW.po 1.101.2.3, po/pt.po 1.112.2.3, po/redhat-config-network.pot 1.113.2.4, po/ru.po 1.91.2.3, po/sv.po 1.133.2.3, po/tr.po 1.73.2.3, po/zh_CN.po 1.80.2.3, po/es.po 1.140.2.3, po/fr.po 1.142.2.3, po/is.po 1.121.2.3, po/it.po 1.137.2.3, po/ja.po 1.148.2.3, po/ko.po 1.140.2.3, po/no.po 1.129.2.3, Makefile.am 1.41.2.2, po/cs.po 1.98.2.4, po/da.po 1.105.2.3, po/de.po 1.153.2.3, po/el.po 1.75.2.3, ChangeLog 1.82.2.4:
+	release 1.2.3
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.3:
+	fixed empty self in updateFromModules
+
+	* po/sv.po 1.133.2.2, po/tr.po 1.73.2.2, po/zh_CN.po 1.80.2.2, po/zh_TW.po 1.101.2.2, po/ja.po 1.148.2.2, po/ko.po 1.140.2.2, po/no.po 1.129.2.2, po/pt.po 1.112.2.2, po/redhat-config-network.pot 1.113.2.3, po/ru.po 1.91.2.2, po/de.po 1.153.2.2, po/el.po 1.75.2.2, po/es.po 1.140.2.2, po/fr.po 1.142.2.2, po/is.po 1.121.2.2, po/it.po 1.137.2.2, po/cs.po 1.98.2.3, po/da.po 1.105.2.2, ChangeLog 1.82.2.3:
+	release 1.2.3
+
+	* src/netconfpkg/plugins/NCHWIsdn.py 1.2.2.2: typo
+
+	* src/netconfpkg/gui/exception.py 1.21.2.1, configure.in 1.144.2.2, po/POTFILES.in 1.26.2.1, po/redhat-config-network.pot 1.113.2.2, redhat-config-network.spec.in 1.171.2.2, ChangeLog 1.82.2.2:
+	release 1.2.3
+
+	* src/netconfpkg/NC_functions.py 1.71.2.5:
+	if devname for getDeviceType() is a devicetype return the devicetype
+
+	* src/netconfpkg/plugins/NCHWIsdn.py 1.2.2.1: ini ChannelProtocol
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.8: added Status column to HW
+	added Icons to HW
+	doubleclick to HW column 0 fixed
+
+	* src/netconfpkg/gui/maindialog.glade 1.6.2.1:
+	added Status column to HW
+
+	* src/netconfpkg/NCWireless.py 1.11.2.3:
+	init self.Key with empty string
+
+	* src/netconfpkg/__init__.py 1.12.2.1:
+	get module reference through sys.modules[__name__]
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.2:
+	make kudzu the default HW source
+
+	* src/netconfpkg/NCHardware.py 1.3.2.1: initialize Status
+
+	* src/netconfpkg/HardwareList.idl 1.12.2.1: added Status string
+
+2003-04-01  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.7: removed Interface class
+
+	* src/netconfpkg/NCDevice.py 1.82.2.4:
+	activate(), deactivate() and configure() added to Device class
+
+	* src/netconfpkg/Control.py 1.16.2.1, src/neat-control.py 1.36.2.4:
+	removed Interface class, devErrorDialog
+
+	* src/netconfpkg/gui/GUI_functions.py 1.21.2.1:
+	make longinfo dialog str() casting
+
+2003-03-31  Harald Hoyer  <harald@redhat.com>
+
+	* src/neat-control.py 1.36.2.3: use nicknames for ifup/ifdown
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.4: fixed route files #85011
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.1:
+	fixed Volume Setting #85703
+
+	* src/netconfpkg/gui/neat-control.glade 1.2.2.1: nicer buttons (#85653)
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.6: fixed #84956
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.4:
+	set activate status if selected and active
+
+	* src/netconfpkg/gui/Makefile.am 1.22.2.1: removed exception.py
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.5: removed ipcalc
+
+	* src/netconfpkg/NCDevice.py 1.82.2.3:
+	oldname update moved to end of save()
+
+	* src/neat-control.py 1.36.2.2: fixed #83640
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.3:
+	fixed activate/deactive Device->DeviceId
+
+	* src/netconfpkg/gui/dslconfig.py 1.20.2.1, src/netconfpkg/gui/dslconfig.glade 1.16.2.1:
+	DEMAND, PERSIST, IDLETIMEOUT added to DSL #68169
+
+	* src/netconfpkg/NCDialup.py 1.59.2.4: fixed peer file
+	DEMAND, PERSIST, IDLETIMEOUT added to DSL #68169
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.2: fixed #86476
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.4: fixed #78043
+
+	* src/netconfpkg/NCDialup.py 1.59.2.3: fixed #77763
+
+2003-03-28  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/dialupconfig.py 1.33.2.1: removed self.device.Name
+
+	* src/netconfpkg/gui/deviceconfig.py 1.11.2.1:
+	check for duplicate nicknames -> error dialog -> append "_$no"
+
+	* src/netconfpkg/gui/DialupDruid.py 1.21.2.2: removed self.device.Name
+
+	* src/netconfpkg/NC_functions.py 1.71.2.4: using rhpl.log now
+	added mkdir with logging
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.3, src/netconfpkg/NCDialup.py 1.59.2.2:
+	using rhpl.log now
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.3:
+	os.mkdir -> NC_functions.mkdir because of logging
+	using rhpl.log now
+
+	* src/netconfpkg/NCDevice.py 1.82.2.2: using rhpl.log now
+	recalculate BROADCAST and NETWORK only if they already exist
+
+	* src/netconfpkg/DeviceList.idl 1.35.2.1: removed NAME from Device
+
+	* src/netconf.py 1.188.2.2: using rhpl.log now
+
+	* src/netconfpkg/gui/wirelessconfig.py 1.19.2.1: fixed tcp-settings
+
+2003-03-27  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.1: timeout_* -> gtk.timeout_*
+	profilelist.fixInterfaces() in save() ?? FIXME
+
+	* src/netconfpkg/NC_functions.py 1.71.2.3: more paths in vars
+	logging classes and functions added
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.2: log our actions
+	mv paths to vars in NC_functions
+	fix pap/chap keys
+	move pap/chap writing to NCDialup
+
+	* src/netconfpkg/NCDialup.py 1.59.2.1: log our actions
+	pap/chap keys writing added
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.2: log our actions
+	mv paths to vars in NC_functions
+	fix pap/chap keys
+	move pap/chap writing to NCDialup
+
+	* src/netconfpkg/NCDevice.py 1.82.2.1: log our actions
+
+	* src/netconf.py 1.188.2.1: added --verbose command line option
+
+	* src/neat-control.py 1.36.2.1: timeout_* -> gtk.timeout_*
+
+2003-03-26  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/DialupDruid.py 1.21.2.1:
+	syncppp/ippp vs rawip/isdn corrected..
+
+2003-03-26  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.po 1.89: translated red hat into chinese term
+
+2003-03-20  tszanto  <tszanto@redhat.com>
+
+	* po/hu.po 1.1: CVS_SILENT
+	Tamas Szanto
+
+2003-03-20  Audrey Simons  <asimons@redhat.com>
+
+	* po/fr.po 1.151: Checked
+
+2003-03-12  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po 1.149: typo fix
+
+2003-02-26  tino  <tino@redhat.com>
+
+	* po/nl.po 1.3: Updated Dutch translation
+
+2003-02-26  David Barzilay  <barzilay@redhat.com>
+
+	* po/pt_BR.po 1.3: updatedheaderspt_BR2502
+
+2003-02-25  mitr  <mitr@redhat.com>
+
+	* po/cs.po 1.98.2.2: Use better shortcut keys in Czech translation
+
+2003-02-24  Francesco Valente  <fvalen@redhat.com>
+
+	* po/it.po 1.145: Updated redhat-config-network
+
+2003-02-24  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCWireless.py 1.11.2.2: fixed #84715
+
+	* src/netconf-tui.py 1.16.2.1, src/netconfpkg/NCDeviceList.py 1.50.2.1, src/netconfpkg/NCProfileList.py 1.66.2.1, src/netconfpkg/NCWireless.py 1.11.2.1, src/netconfpkg/NC_functions.py 1.71.2.2, src/netconfpkg/gui/WirelessInterfaceDruid.glade 1.17.2.2, src/netconfpkg/gui/sharedtcpip.py 1.23.2.1, po/it.po 1.137.2.1, po/ja.po 1.148.2.1, po/ko.po 1.140.2.1, po/no.po 1.129.2.1, po/pt.po 1.112.2.1, po/redhat-config-network.pot 1.113.2.1, po/ru.po 1.91.2.1, po/sv.po 1.133.2.1, po/tr.po 1.73.2.1, po/zh_CN.po 1.80.2.1, po/zh_TW.po 1.101.2.1, ChangeLog 1.82.2.1, Makefile.am 1.41.2.1, configure.in 1.144.2.1, intltool-extract.in 1.7.2.1, intltool-merge.in 1.7.2.1, intltool-update.in 1.7.2.1, po/Makefile.in.in 1.14.2.1, po/cs.po 1.98.2.1, po/da.po 1.105.2.1, po/de.po 1.153.2.1, po/el.po 1.75.2.1, po/es.po 1.140.2.1, po/fr.po 1.142.2.1, po/is.po 1.121.2.1, redhat-config-network.spec.in 1.171.2.1:
+	This RH-8-0-1-branch is now for 8.0.1
+
+	* po/ru.po 1.98, po/sv.po 1.141, po/tr.po 1.80, po/zh_CN.po 1.88, po/zh_TW.po 1.109, po/cs.po 1.106, po/da.po 1.112, po/de.po 1.163, po/el.po 1.84, po/es.po 1.148, po/fr.po 1.150, po/is.po 1.138, po/it.po 1.144, po/ja.po 1.156, po/ko.po 1.148, po/no.po 1.136, po/pt.po 1.121, po/redhat-config-network.pot 1.120, configure.in 1.146, intltool-extract.in 1.10, intltool-merge.in 1.10, intltool-update.in 1.10, po/Makefile.in.in 1.17, redhat-config-network.spec.in 1.176, src/netconfpkg/NCWireless.py 1.13, ChangeLog 1.90:
+	opened development cycle in HEAD, RH-8-0-1-branch is now for 8.0.1
+
+	* Makefile.am 1.42: renamed targets with cvs
+
+2003-02-24  keld  <keld@redhat.com>
+
+	* po/da.po 1.111: updates
+	redhat-config-network/po/da.po
+
 2003-02-24  leon  <leon@redhat.com>
 
 	* po/ru.po 1.97: update
@@ -1729,7 +2099,7 @@
 
 	* po/cs.po 1.56: Update Czech translation
 
-2002-09-06  **GONE**  <pbrown@redhat.com>
+2002-09-06  pbrown  <pbrown@redhat.com>
 
 	* src/netconfpkg/NCDeviceList.py 1.45:
 	don't write out /etc/sysconfig/static-routes file anymore.  We have
@@ -1790,14 +2160,14 @@
 
 	* po/pt.po 1.62: ""
 
-2002-09-01  **GONE**  <pbrown@redhat.com>
+2002-09-01  pbrown  <pbrown@redhat.com>
 
 	* po/no.po 1.95, po/pt.po 1.61, po/redhat-config-network.pot 1.81, po/ru.po 1.58, po/sv.po 1.88, po/tr.po 1.44, po/zh_CN.po 1.33, po/zh_TW.po 1.59, ChangeLog 1.46, po/cs.po 1.55, po/da.po 1.68, po/de.po 1.105, po/el.po 1.30, po/es.po 1.97, po/fr.po 1.97, po/is.po 1.82, po/it.po 1.96, po/ja.po 1.104, po/ko.po 1.96:
 	release 1.1.19
 
 	* configure.in 1.126, redhat-config-network.spec.in 1.150: bump ver.
 
-2002-08-31  **GONE**  <pbrown@redhat.com>
+2002-08-31  pbrown  <pbrown@redhat.com>
 
 	* src/netconf.py 1.168: fix typo in function.
 
@@ -1913,7 +2283,7 @@
 
 	* po/ja.po 1.101: update
 
-2002-08-20  **GONE**  <pbrown@redhat.com>
+2002-08-20  pbrown  <pbrown@redhat.com>
 
 	* src/netconf.py 1.165:
 	properly process events in parent process while waiting for execution in child process/window to conclude.
@@ -2572,7 +2942,7 @@
 
 		* sv.po: Updated Swedish translation.
 
-2002-07-03  **GONE**  <pbrown@redhat.com>
+2002-07-03  pbrown  <pbrown@redhat.com>
 
 	* .cvsignore 1.5, config.h.in 1.9, intltool-extract.in 1.4, intltool-merge.in 1.4, intltool-update.in 1.4:
 	revert.  oops.
@@ -2695,7 +3065,7 @@
 
 		* sv.po: Fix a bug that was reported.
 
-2002-06-27  **GONE**  <pbrown@redhat.com>
+2002-06-27  pbrown  <pbrown@redhat.com>
 
 	* src/netconfpkg/gui/wirelessconfig.py 1.11: essid fixups
 
@@ -2726,7 +3096,7 @@
 	* src/netconfpkg/gui/sharedtcpip.py 1.16:
 	- Fixed missing display of static routes.
 
-2002-06-27  **GONE**  <pbrown@redhat.com>
+2002-06-27  pbrown  <pbrown@redhat.com>
 
 	* src/.cvsignore 1.3: ignore more
 
@@ -2744,7 +3114,7 @@
 	* src/netconfpkg/gui/WirelessInterfaceDruid.glade 1.6, src/netconfpkg/gui/tokenringconfig.glade 1.5, src/netconfpkg/gui/tokenringhardware.glade 1.6, src/netconfpkg/gui/wirelessconfig.glade 1.10, src/maindialog.glade 1.36, src/neat-control.glade 1.6, src/neat-control.py 1.24, src/netconf.py 1.141:
 	let the window reappear in the taskbar
 
-2002-06-27  **GONE**  <pbrown@redhat.com>
+2002-06-27  pbrown  <pbrown@redhat.com>
 
 	* src/netconfpkg/gui/wirelessconfig.glade 1.9, src/netconfpkg/gui/wirelessconfig.py 1.9:
 	made it work better
@@ -3224,7 +3594,7 @@
 
 	* configure.in 1.94: change subdirs
 
-2002-04-17  **GONE**  <pbrown@redhat.com>
+2002-04-17  pbrown  <pbrown@redhat.com>
 
 	* src/netconfpkg/DeviceList.idl 1.30, src/netconfpkg/NCWireless.py 1.5:
 	remove frequency (redundant to channel)
@@ -3303,7 +3673,7 @@
 
 	* po/ja.po 1.56: final translation
 
-2002-04-16  **GONE**  <pbrown@redhat.com>
+2002-04-16  pbrown  <pbrown@redhat.com>
 
 	* src/netconfpkg/NCDeviceList.py 1.36:
 	ignore backup network configuration files.
@@ -4420,7 +4790,7 @@
 	* src/pixmaps/Makefile.am 1.6, src/pixmaps/si.xpm 1.1, src/providerdb 1.9:
 	* add some providers in slovinien
 
-2002-01-04  **GONE**  <pbrown@redhat.com>
+2002-01-04  pbrown  <pbrown@redhat.com>
 
 	* src/netconfpkg/gui/.cvsignore 1.1, src/netconfpkg/.cvsignore 1.3:
 	more cvs ignores.
@@ -7778,7 +8148,7 @@
 
 	* src/Address.py 1.6: Better integration of address file handling
 
-2001-05-11  **GONE**  <pbrown@redhat.com>
+2001-05-11  pbrown  <pbrown@redhat.com>
 
 	* src/Makefile 1.1, src/doc/Address.html 1.1, src/doc/Device.html 1.1, src/doc/EthernetDevice.html 1.1, src/doc/ipcalc.html 1.1:
 	documentation
@@ -7791,7 +8161,7 @@
 
 	* src/EthernetDevice.py 1.1: Added.
 
-2001-05-11  **GONE**  <pbrown@redhat.com>
+2001-05-11  pbrown  <pbrown@redhat.com>
 
 	* src/MainWindow.py 1.1, src/inspect.py 1.1, src/mainwindow.glade 1.1, src/pydoc.py 1.1:
 	beginnings on a toplevel window
@@ -7802,7 +8172,7 @@
 
 	* src/Device.py 1.4: Do configuration the New and Improved way
 
-2001-05-09  **GONE**  <pbrown@redhat.com>
+2001-05-09  pbrown  <pbrown@redhat.com>
 
 	* src/Address.py 1.3, src/ipcalc.py 1.2:
 	fix for when config files don't have an address specified.

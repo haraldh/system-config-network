@@ -89,16 +89,16 @@ archive: distcheck changelog
 
 force-tag:
 	cvs ci -m "release $(VERSION) moved"
-	cvs tag -cFR $(CVSTAG) .
+	cvs tag -cR -F $(CVSTAG) .
 
 tag:
 	cvs ci -m "release $(VERSION)"
 	cvs tag -cR $(CVSTAG) .
 
-tag-srpm: tag archive
+tag-srpm: changelog tag archive
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
-force-tag-srpm: tag archive
+force-tag-srpm: force-tag archive
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
 srpm: distcheck changelog
@@ -107,3 +107,6 @@ srpm: distcheck changelog
 newversion:
 	perl -p -i -e 'if (/RELEASE=(.*)/) { $$newrel = $$1 + 1;s/RELEASE=.*/RELEASE=$$newrel/; };' configure.in
 	$(MAKE) srpm
+
+potfile:
+	sh -c '(find . -name "*.desktop.in";find ./src -name "*.py";find ./src/netconfpkg/gui -name "*.glade") > po/POTFILES.in'

@@ -25,6 +25,7 @@ PROGNAME='redhat-config-network'
 
 import sys
 import os
+from rhpl.log import log
 # Just to be safe...
 os.umask(0022)
 
@@ -38,16 +39,13 @@ if not "/usr/share/" + PROGNAME in sys.path:
 cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
 
-import gettext
 
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
+PROGNAME='redhat-config-network'
 
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-except IOError:
-    import __builtin__
-    __builtin__.__dict__['_'] = unicode    
+import locale
+from rhpl.translate import _, N_, textdomain_codeset
+locale.setlocale(locale.LC_ALL, "")
+textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 
 os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 
@@ -59,7 +57,7 @@ try:
 except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
     if os.path.isfile("/usr/sbin/redhat-config-network-tui"):        
-        print _("Starting text version:")
+        print _("Starting text version")
         os.execv("/usr/sbin/redhat-config-network-tui", sys.argv)
     sys.exit(10)
 
@@ -120,8 +118,39 @@ def splash_screen(gfx = None):
 
     return window
 
+def Usage():
+    print _("redhat-config-network - network configuration tool\n\nUsage: redhat-config-network -v --verbose")
+
 if __name__ == '__main__':
+    import getopt
+    class BadUsage: pass
     splash_window = None
+    from netconfpkg import NC_functions
+    NC_functions.verbose = 0
+    
+    try:
+        opts, args = getopt.getopt(cmdline, "vh",
+                                   [
+                                    "verbose",
+                                    "help",
+                                    ])
+        for opt, val in opts:
+            if opt == '-v' or opt == '--verbose':
+                NC_functions.verbose += 1
+                continue
+            
+            if opt == '-h' or opt == '--help':
+                Usage()
+                sys.exit(0)
+
+            raise BadUsage
+
+    except (getopt.error, BadUsage):
+        Usage()
+        sys.exit(1)
+
+    log.set_loglevel(NC_functions.verbose)
+
     try:
         splash_window = splash_screen()
         import gnome

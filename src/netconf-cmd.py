@@ -22,7 +22,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
@@ -34,142 +33,276 @@ if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
-sys.argv = sys.argv[:1]
 
 import getopt
 import signal
 import os
-os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
-import gettext
 import os.path
 import string
 from netconfpkg import *
 from rhpl.genClass import *
+from rhpl.log import log
+from version import PRG_VERSION
+from version import PRG_NAME
 
 PROGNAME='redhat-config-network'
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
 
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-except IOError:
-    import __builtin__
-    __builtin__.__dict__['_'] = unicode    
+import locale
+from rhpl.translate import _, N_, textdomain_codeset
+locale.setlocale(locale.LC_ALL, "")
+textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
+
+
+def handleException((type, value, tb), progname, version, debug=None):
+    import pdb
+    list = traceback.format_exception (type, value, tb)
+    tblast = traceback.extract_tb(tb, limit=None)
+    if len(tblast):
+        tblast = tblast[len(tblast)-1]
+    extxt = traceback.format_exception_only(type, value)
+    text = _("An unhandled exception has occured.  This "
+            "is most likely a bug.\nPlease file a detailed bug "
+            "report against the component %s at \n"
+            "https://bugzilla.redhat.com/bugzilla\n"
+             "using the text below.\n") % \
+            progname
+    text += "Component: %s\n" % progname
+    text += "Version: %s\n" % version
+    text += "Summary: TB "
+    if tblast and len(tblast) > 3:
+        tblast = tblast[:3]
+    for t in tblast:        
+        text += str(t) + ":"
+    text += extxt[0]
+    text += joinfields(list, "")
+    sys.stderr.write(text)
+    if debug:
+        pdb.post_mortem (tb)
+        os.kill(os.getpid(), signal.SIGKILL)
+    sys.exit(10)
 
 
 def Usage():
-    print _("redhat-config-network-cmd - network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile> -a --activate")
-
-def printClass(classname, parent = None):    
-    for child, attr in classname.Attributes.items():
-        if child == SELF: continue
-
-        if parent: pname = "%s.%s" % (parent, classname.Attributes[SELF][NAME])
-        else: pname = classname.Attributes[SELF][NAME]
-        
-        if attr[TYPE] != LIST:
-            #print "%s.%s" % (pname, child)
-            pass
-        else:
-            printClass(getattr(netconfpkg, child),
-                       pname)
-
-def printObj(obj, parent = None):
-    for child, attr in obj._attributes.items():
-        if child == SELF: continue
-
-        val = None
-        
-        if hasattr(obj, child):
-            val = getattr(obj, child)
-            
-        if attr[TYPE] != LIST:
-            if val != None:
-                if attr[TYPE] != BOOL:
-                    print "%s.%s=%s" % (parent, child, str(val))
-                else:
-                    if val: print "%s.%s=true" % (parent, child)
-                    else: print "%s.%s=false" % (parent, child)
-                
-        else:
-            if val != None:
-                #printObj(val, "%s.%s" % (parent, child))
-                pass
-
+    sys.stderr.write( _("%s - network configuration commandline tool") % (sys.argv[0]) + '\n')
+    sys.stderr.write( _("Copyright (c) 2001-2003 Red Hat, Inc.") + '\n')
+    sys.stderr.write( _("This software is distributed under the GPL. "
+            "Please Report bugs to Red Hat's Bug Tracking "
+            "System: http://bugzilla.redhat.com/") + "\n\n")
+    sys.stderr.write( _("Usage: %s") % (sys.argv[0]) + '\n')
+    sys.stderr.write( "\t-p, --profile <profile> [--activate, -a]: %s"\
+          % _("switch / activate profile") + '\n')
+    sys.stderr.write( "\t-h, --hardwarelist : %s"\
+          % _("export / import hardware list") + '\n')
+    sys.stderr.write( "\t-d, --devicelist   : %s"\
+          % _("export / import device list (default)") + '\n')
+    sys.stderr.write( "\t-o, --profilelist  : %s"\
+          % _("export / import profile list") + '\n')
+    sys.stderr.write( "\t-r, --root=<root>  : %s"\
+          % _("set the root directory") + '\n')
+    sys.stderr.write( "\t-e, --export       : %s" % _("export list (default)") + '\n')
+    sys.stderr.write( "\t-i, --import       : %s" % _("import list") + '\n')
+    sys.stderr.write( "\t-c, --clear        : %s" % \
+          _("clear existing list prior of importing") + '\n')
+    sys.stderr.write( "\t-f, --file=<file>  : %s" % \
+          _("import from file") + '\n')
+    sys.stderr.write('\n')
+    
 if __name__ == '__main__':
-    if os.getuid() != 0:
-        print _("Please restart %s with root permissions!") % (sys.argv[0])
-        sys.exit(10)
-        
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
 
     progname = os.path.basename(sys.argv[0])
-
+    
     do_activate = 0
     switch_profile = 0
     profile = None
-
+    test = 0
+    EXPORT = 1
+    IMPORT = 2
+    mode = EXPORT
+    filename = None
+    clear = 0
+    list = 0
+    chroot = None
+    debug = None
+    devlists = []
     try:
-        opts, args = getopt.getopt(cmdline, "ap:hd",
+        opts, args = getopt.getopt(cmdline, "ap:?r:dhvtief:co",
                                    [
                                     "activate",
                                     "profile=",
                                     "help",
-                                    "devicelist"])
+                                    "devicelist",
+                                    "verbose",
+                                    "test",
+                                    "import",
+                                    "export",
+                                    "clear",
+                                    "root=",
+                                    "file=",
+                                    "debug",
+                                    "hardwarelist",
+                                    "profilelist"])
         for opt, val in opts:
             if opt == '-d' or opt == '--devicelist':
-                devlist = getDeviceList()
-                for dev in devlist:
-                    if (not args) or (dev.DeviceId in args):
-                        printObj(dev, dev.DeviceId)
-                        
-                sys.exit(0)
+                devlists.append(getDeviceList())
+                continue
                 
+            if opt == '-h' or opt == '--hardwarelist':
+                devlists.append(getHardwareList())
+                continue
+            
+            if opt == '-o' or opt == '--profilelist':
+                devlists.append(getProfileList())
+                continue
+            
             if opt == '-p' or opt == '--profile':
                 switch_profile = 1
                 profile = val
+                continue
+
+            if opt == '-f' or opt == '--file':
+                filename = val
+                continue
+            
+            if opt == '-r' or opt == '--root':
+                chroot = val
+                continue
+            
+            if opt == '-c' or opt == '--clear':
+                clear = 1
+                continue
+            
+            if opt == '-t' or opt == '--test':
+                test = 1
                 continue
             
             if opt == '-a' or opt == '--activate':
                 do_activate = 1
                 continue
+
+            if opt == '-i' or opt == '--import':
+                mode = IMPORT
+                continue
+
+            if opt == '-e' or opt == '--export':
+                mode = EXPORT
+                continue
                 
-            if opt == '-h' or opt == '--help':
+            if opt == '-?' or opt == '--help':
                 Usage()
                 sys.exit(0)
 
-            raise BadUsage
+            if opt == '-v' or opt == '--verbose':
+                NC_functions.verbose += 1
+                continue
 
+            if opt == '--debug':
+                debug = 1
+                continue
+
+            sys.stderr.write(_("Unknown option %s\n" % opt))
+            raise BadUsage
+      
     except (getopt.error, BadUsage):
         Usage()
         sys.exit(1)
 
+    try:
 
-    profilelist = getProfileList()
-    
-    if switch_profile:
-        print "Switching to profile %s" % profile
-        profilelist.switchToProfile(profile)
-        profilelist.save()
+        log.set_loglevel(NC_functions.verbose)
+        if chroot:
+            prepareRoot(chroot)
 
-    if do_activate:
-        aprof = profilelist.getActiveProfile()
-        for device in getDeviceList():
-            if device.DeviceId in aprof.ActiveDevices:
-                continue
-            (ret, msg) = Interface().deactivate(device.DeviceId)
-            if ret:
-                print msg
-        
-        for device in aprof.ActiveDevices:
-            (ret, msg) = Interface().activate(device)
-            if ret:
-                print msg
+        if os.getuid() == 0 or chroot:
+            NCProfileList.updateNetworkScripts()
+            NCDeviceList.updateNetworkScripts()
+
+            
+        if not len(devlists):
+            devlists = [getDeviceList(), getHardwareList(),
+                        getProfileList()]
+            
+        if clear:
+            for devlist in devlists:
+                del devlist[0:len(devlist)-1]
+
+        if mode == EXPORT:
+            for devlist in devlists:
+                devstr =  str(devlist)
+                if len(devstr):
+                    # remove the last \n
+                    print devstr[:-1]                    
+            sys.exit(0)
+
+        elif mode == IMPORT:
+            devlistsdict = {
+                "HardwareList" : getHardwareList(),
+                "DeviceList" : getDeviceList(),
+                "ProfileList" : getProfileList() }
+            
+            if filename:
+                file = open(filename, "r")
+            else:
+                file = sys.stdin
+         
+            lines = file.readlines()
+      
+            for line in lines:
+                try:
+                    line = line[:-1]
+                    log.log(3, "Parsing '%s'\n" % line)
+                    vals = string.split(line, "=")
+                    if len(vals) <= 1:
+                        continue
+                    key = vals[0]
+                    value = string.join(vals[1:], "=")
+
+                    vals = string.split(key, ".")
+                    if devlistsdict.has_key(vals[0]):
+                        devlistsdict[vals[0]]._parseLine(vals, value)
+                    else:
+                        sys.stderr.write(_("Unknown List %s\n", vals[0]))
+                        raise ParseError
+                        
+                except Exception, e:
+                    pe = ParseError(_("Error parsing line: %s") % line)
+                    pe.args += e.args
+                    raise pe
+
+                
+            for devlist in devlists:
+                log.log(1, devlist)
+                devlist.save()
+            
+            sys.exit(0)
+
+        elif test:
+            sys.exit(0)
+
+        else:
+            profilelist = getProfileList()
+
+            if switch_profile:
+                log.log(1, "Switching to profile %s" % profile)
+                profilelist.switchToProfile(profile)
+                profilelist.save()
+
+            if do_activate:
+                aprof = profilelist.getActiveProfile()
+                for device in getDeviceList():
+                    if device.DeviceId in aprof.ActiveDevices:
+                        (ret, msg) = device.activate()
+                    else:
+                        (ret, msg) = device.deactivate()
+                    if ret:
+                        print msg
+                        
+                sys.exit(0)
 
         sys.exit(0)
-        
-    if switch_profile:
-        sys.exit(0)
-
-    printClass(Device)
+    except SystemExit, code:
+        #print "Exception %s: %s" % (str(SystemExit), str(code))
+        sys.exit(code)
+    except:
+        handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)

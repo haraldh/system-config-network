@@ -25,27 +25,10 @@ import shutil
 import signal
 import string
 from rhpl import ethtool
-from rhpl.executil import *
 from NC_functions import *
 
-VERSION = '0.1.0'
-COPYRIGHT = 'Copyright (C) 2002 Red Hat, Inc.'
-AUTHORS = ['Than Ngo <than@redhat.com>']
-NAME = 'Red Hat Network Control'
-PROGNAME='redhat-config-network'
-NETWORKDIR = '/etc/sysconfig/network-scripts/'
-NETWORKPREFIX = 'ifcfg'
-PROCNETDEV = '/proc/net/dev'
-PROCNETROUTE = '/proc/net/route'
 TRUE = (1==1)
 FALSE = not TRUE
-STATUS = 0
-DEVICE = 1
-NICKNAME = 2
-ACTIVATE = 3
-DEACTIVATE = 4
-CONFIGURE = 5
-MONITOR = 6
 
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
@@ -53,10 +36,6 @@ INACTIVE = _('Inactive')
 if os.getuid() == 0: isdnctrl = '/sbin/isdnctrl'
 else: isdnctrl = '/usr/sbin/userisdnctl'
             
-class ProcNetDevice:
-    def __init__(self):
-        pass
-
 
 class NetworkDevice:
     def __init__(self):
@@ -94,99 +73,3 @@ class NetworkDevice:
             return TRUE
         return FALSE
 
-class Interface:
-    def __init__(self):
-        pass
-
-    def activate(self, device):
-        command = '/sbin/ifup'
-        
-        if getDeviceType(device) == ISDN:
-            command = '/usr/sbin/isdnup'
-
-        return gtkExecWithCaptureStatus(command, [command, device],
-                                        catchfd = (1,2))
-
-    def deactivate(self, device):
-        command = '/sbin/ifdown'
-        
-        return gtkExecWithCaptureStatus(command, [command, device],
-                                        catchfd = (1,2))
-
-    def exist(self, device):
-        return os.access(NETWORKDIR + NETWORKPREFIX + '-' + device)
-        
-    def isdndial(self, device):
-        command = isdnctrl
-        
-        return gtkExecWithCaptureStatus(command, [command, 'dial',
-                                                  device],
-                                        catchfd = (1,2))
-
-    def status(self, device):
-        pass
-
-    def configure(self, device):
-        try:
-            return(os.system('/usr/bin/redhat-config-network&'))
-        except:
-            return -1
-
-    def monitor(self, device):
-        ret = fork_exec(0, '/usr/bin/rp3', ['/usr/bin/rp3', '-i', device])
-        return ret
-    
-    def allow(self, device):
-        pass
-
-
-class Monitor:
-    def __init__(self):
-        pass
-
-    def txrx_update(self):
-        pass
-
-    def onlinetime_update(self):
-        pass
-
-    def cost_update(self):
-        pass
-
-    def speed_update(self):
-        pass
-    
-
-def fork_exec(wait, path, arg):
-    child = os.fork()
-    
-    if not child:
-        os.execvp(path, arg)
-        os._exit(1)
-
-    if not wait: return child
-
-    status = os.wait(child)
-    if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
-        return os.WEXITSTATUS(status)
-
-    return -1
-
-
-def devErrorDialog(device, error_type, dialog):
-    if error_type == ACTIVATE:
-        errorString = _('Cannot activate network device %s') %(device)
-    elif error_type == DEACTIVATE:
-        errorString = _('Cannot deactivate network device %s') %(device)
-    elif error_type == STATUS:
-        errorString = _('Cannot show status of network device %s') %(device)
-    elif error_type == MONITOR:
-        errorString = _('Cannot monitor status of network device %s') %(device)
-
-    generic_error_dialog(errorString, dialog);
-
-# make ctrl-C work
-if __name__ == '__main__':
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    devicelist = ProcNetRoute().load()
-    print devicelist

@@ -104,6 +104,25 @@ class Dialup(Dialup_base):
         Dialup_base.__init__(self, list, parent)        
         self.createCompression()
 
+    def load(self, parentConf):
+        if parentConf.has_key('DEMAND'):
+            if parentConf['DEMAND'] == 'yes':
+                self.DialMode = DM_AUTO
+            else:
+                self.DialMode = DM_MANUAL
+
+    def save(self, parentConf):
+        if self.Login:
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            papconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
+            chapconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
+        if self.DialMode == DM_AUTO:
+            parentConf['DEMAND'] = 'yes'
+        else:
+            parentConf['DEMAND'] = 'no'        
+
+
 
 class DslDialup(Dialup):
     boolkeydict = { 'SyncPPP' : 'SYNCHRONOUS',
@@ -125,6 +144,7 @@ class DslDialup(Dialup):
         Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
+        Dialup.load(self, parentConf)
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -153,7 +173,11 @@ class DslDialup(Dialup):
                     if conf[self.Login].has_key("*"):
                         self.Password = conf[self.Login]["*"]
 
+        if parentConf.has_key('IDLETIMEOUT'):
+            self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
+
     def save(self, parentConf):
+        Dialup.save(self, parentConf)
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -168,6 +192,9 @@ class DslDialup(Dialup):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
+
+        if self.HangupTimeout:
+            parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
         if not conf.has_key('CONNECT_TIMEOUT'):
             conf['CONNECT_TIMEOUT'] = '60'
@@ -244,6 +271,7 @@ class IsdnDialup(Dialup):
         Dialup.__init__(self, list, parent)        
 
     def load(self, parentConf):
+        Dialup.load(self, parentConf)
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -318,6 +346,7 @@ class IsdnDialup(Dialup):
         self.commit(changed=false)
 
     def save(self, parentConf):
+        Dialup.save(self, parentConf)
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -406,6 +435,7 @@ class ModemDialup(Dialup):
         Dialup.__init__(self, list, parent)                
 
     def load(self, parentConf):
+        Dialup.load(self, parentConf)
         parent = self.getParent()
 
         if parent:
@@ -414,7 +444,7 @@ class ModemDialup(Dialup):
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
-        conf = ConfSMB.ConfSMB(filename = '/etc/wvdial.conf')
+        conf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
         
         sectname = 'Dialer ' + name
 
@@ -463,12 +493,6 @@ class ModemDialup(Dialup):
         if parentConf.has_key('DEFROUTE'):
             self.DefRoute = parentConf['DEFROUTE'] == 'yes'
 
-        if parentConf.has_key('DEMAND'):
-            if parentConf['DEMAND'] == 'yes':
-                self.DialMode = DM_AUTO
-            else:
-                self.DialMode = DM_MANUAL
-
         if parentConf.has_key('IDLETIMEOUT'):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
 
@@ -515,6 +539,7 @@ class ModemDialup(Dialup):
 
         
     def save(self, parentConf):
+        Dialup.save(self, parentConf)
         parent = self.getParent()
         if parent and self.Inherits:
             devname = self.Inherits
@@ -524,13 +549,9 @@ class ModemDialup(Dialup):
             devname = '*'
             name = "Default"
 
-        if not parentConf.has_key('WVDIALSECT'):
-            # set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
-            parentConf['WVDIALSECT'] = name
-            sectname = 'Dialer ' + name
-        else:
-            # get section name
-            sectname = 'Dialer ' + parentConf['WVDIALSECT']
+        # set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
+        parentConf['WVDIALSECT'] = name
+        sectname = 'Dialer ' + name
 
         # Correct PAPNAME in ifcfg-ppp[0-9]
         if self.Login:
@@ -539,7 +560,7 @@ class ModemDialup(Dialup):
         #
         # Write the wvdial section
         #
-        conf = ConfSMB.ConfSMB(filename = '/etc/wvdial.conf')
+        conf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
 
         if not conf.has_key(sectname):
             conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
@@ -561,7 +582,6 @@ class ModemDialup(Dialup):
                 if conf[sectname].has_key(confkey):
                     del conf[sectname][confkey] 
         
-
         #
         # Write Modem Init strings
         #
@@ -590,11 +610,6 @@ class ModemDialup(Dialup):
         if self.ProviderName:
             parentConf['PROVIDER'] = self.ProviderName
 
-        if self.DialMode == DM_AUTO:
-            parentConf['DEMAND'] = 'yes'
-        else:
-            parentConf['DEMAND'] = 'no'
-
         if self.HangupTimeout:
             parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
@@ -621,6 +636,24 @@ class ModemDialup(Dialup):
         if self.Compression:
             self.Compression.save(parentConf)            
 
+        # Write /etc/ppp/peers/DeviceId
+        # bug #77763
+        peerdir = netconfpkg.ROOT + PPPDIR + "/peers/"
+        if not os.path.isdir(peerdir):
+            mkdir(peerdir)        
+        if parent.oldname and (parent.oldname != parent.DeviceId):
+            unlink(peerdir + parent.oldname)
+        filename = peerdir + parent.DeviceId
+        try:
+            file = open(filename, "w")            
+            line = 'connect "/usr/bin/wvdial --remotename ' + \
+                   '%s --chat \'%s\'"' % ( parent.DeviceId, name )
+            file.write(line + '\n')
+            log.lch(2, filename, line)
+            file.close()
+        except KeyError:
+            pass
+        
 if __name__ == '__main__':
     dev = Device()
     dev.load('tdslHomeTonline')

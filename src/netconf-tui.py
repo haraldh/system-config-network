@@ -33,6 +33,7 @@ from version import PRG_NAME
 import traceback
 import types
 
+dumpHash = {}
 # XXX do length limits on obj dumps.
 def dumpClass(instance, fd, level=0):
     # protect from loops
@@ -122,13 +123,12 @@ sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
 
 from netconfpkg import *
 
+import __builtin__
 # Strange... why do I have to reinstall _() ??
 try:
     gettext.install(PROGNAME, "/usr/share/locale", 1)
-    import __builtin__
     __builtin__.__dict__['_'] = gettext.gettext
 except IOError:
-    import __builtin__
     __builtin__.__dict__['_'] = unicode    
 
 #

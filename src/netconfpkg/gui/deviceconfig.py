@@ -27,9 +27,9 @@ import os
 import string
 import re
 
-from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg import nop
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg import NCDeviceList
 
 from gtk import TRUE
 from gtk import FALSE
@@ -39,11 +39,11 @@ class deviceConfigDialog:
         self.device = device
 
         if not os.path.exists(glade_file):
-            glade_file = GUI_functions.GLADEPATH + glade_file
+            glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
+            glade_file = NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.dialog = self.xml.get_widget("Dialog")
         xml_signal_autoconnect(self.xml,
             {
@@ -56,7 +56,7 @@ class deviceConfigDialog:
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
-        GUI_functions.load_icon("network.xpm", self.dialog)
+        load_icon("network.xpm", self.dialog)
         #
 
         self.hydrate()
@@ -91,6 +91,26 @@ class deviceConfigDialog:
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
+        devicelist = NCDeviceList.getDeviceList()
+        for dev in devicelist:
+            if dev == self.device:
+                continue
+            if dev.DeviceId == self.device.DeviceId:
+                generic_error_dialog (\
+                _("Nickname %s is already in use!\nPlease choose another one.\n") \
+                                      % (self.device.DeviceId))
+                duplicate = TRUE
+                num = 0
+                while duplicate:
+                    devname = self.device.DeviceId + '_' + str(num)
+                    duplicate = FALSE
+                    for dev in devicelist:
+                        if dev.DeviceId == devname:
+                            duplicate = TRUE
+                            break
+                    num = num + 1
+                self.device.DeviceId = devname
+                break
         
     def on_cancelButton_clicked(self, button):
         pass

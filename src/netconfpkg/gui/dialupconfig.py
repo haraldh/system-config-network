@@ -372,8 +372,6 @@ class ISDNDialupDialog(DialupDialog):
         
         dialup = self.device.Dialup
         
-        self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
-
         encap_mode_old = dialup.EncapMode
         if self.xml.get_widget("encapModeEntry").get_text() == _("sync PPP"):
             dialup.EncapMode = "syncppp"
@@ -389,7 +387,8 @@ class ISDNDialupDialog(DialupDialog):
             "dialinNumberEntry").get_text()
         dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
         
-        if not dialup.Callback: dialup.createCallback()
+        dialup.createCallback()
+        
         if self.xml.get_widget("callbackCB").get_active():
             if self.xml.get_widget('CallbackMode').get_child().get_label() == \
                    _('in'):
@@ -506,7 +505,6 @@ class ModemDialupDialog(DialupDialog):
         if dialup.DialMode == DialModes[DM_AUTO]: dialup.DialMode = DM_AUTO
         else: dialup.DialMode = DM_MANUAL
         dialup.InitString = self.xml.get_widget("modemInitEntry").get_text()
-        self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         dialup.Inherits = self.xml.get_widget("modemPortEntry").get_text()
         if not self.device.Device:
             self.device.Device = getNewDialupDevice(\

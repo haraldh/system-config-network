@@ -22,6 +22,8 @@ import signal
 import string
 import commands
 import sys
+from NC_functions import *
+import netconfpkg
 
 TYPE = 0
 IRQ = 1
@@ -115,7 +117,9 @@ class ConfISDN:
 
         return string.strip(s)
 
-    def load(self, f = "/etc/sysconfig/isdncard"):
+    def load(self, f = None):
+        if not f:
+            f = netconfpkg.ROOT + ISDNCARDCONF            
         if not os.path.exists(f):
             return -1
 
@@ -160,7 +164,9 @@ class ConfISDN:
         conf.close()
         return 1
     
-    def save(self, f = "/etc/sysconfig/isdncard"):
+    def save(self, f = None):
+        if f == None:
+            f = netconfpkg.ROOT + ISDNCARDCONF 
         # we only support 1 ISDN card in this version
         if not self.Description:
             if os.path.exists(f):

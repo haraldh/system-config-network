@@ -23,12 +23,13 @@
 # is) ;). Nice for plugin mechanism.
 
 import os
+
 _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
 
 for _i in _files:
     _cmd = "from " + _i + " import *"
     exec _cmd
-
+    
 del _i
 del _files
 del _cmd

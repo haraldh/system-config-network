@@ -34,51 +34,41 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 from rhpl import Conf
+from rhpl.log import log
+
+
+def updateNetworkScripts():
+    changed = false
+
+    if not os.path.isdir(netconfpkg.ROOT + SYSCONFDEVICEDIR):
+        mkdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
+
+    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
+        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
+
+    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
+        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/')
+
+    if not ishardlink(netconfpkg.ROOT + HOSTSCONF) and not os.path.islink(netconfpkg.ROOT + HOSTSCONF):
+        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + HOSTSCONF))
+        copy(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/hosts')
+        changed = true
+
+    if not ishardlink(netconfpkg.ROOT + RESOLVCONF) and not os.path.islink(netconfpkg.ROOT + RESOLVCONF):
+        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + RESOLVCONF))
+        copy(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/resolv.conf')
+        changed = true
+    return changed
 
 class ProfileList(ProfileList_base):
     def __init__(self, list = None, parent = None):
         ProfileList_base.__init__(self, list, parent)        
 
-    def updateNetworkScripts(self):
-        changed = false
-
-        if os.getuid() != 0:
-            return changed
-        
-        try:
-            if not os.path.isdir(SYSCONFDEVICEDIR):
-                os.mkdir(SYSCONFDEVICEDIR)
-
-            if not os.path.isdir(SYSCONFPROFILEDIR):
-                os.mkdir(SYSCONFPROFILEDIR)
-
-            if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
-                os.mkdir(SYSCONFPROFILEDIR+'/default/')
-        except (IOError, OSError), errstr :
-            if os.getuid() == 0:        
-                generic_error_dialog (_("Error creating directory!\n%s") \
-                                      % (str(errstr)))
-            else:
-                generic_error_dialog (_("Please restart once with root permissions!\n%s") \
-                                      % (str(errstr)))                
-                return changed
-        
-        if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
-            print _("Copying /etc/hosts to default profile.")
-            copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
-            changed = true
-            
-        if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
-            print "Copying /etc/resolv.conf to default profile."
-            copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
-            changed = true
-        return changed
-    
     def load(self):
-        changed = self.updateNetworkScripts()
+        changed = updateNetworkScripts()
         devicelist = NCDeviceList.getDeviceList()
 
-        nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
+        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
         curr_prof = nwconf['CURRENT_PROFILE']
@@ -86,14 +76,14 @@ class ProfileList(ProfileList_base):
         if curr_prof == None or curr_prof == '':
             curr_prof = 'default'
 
-        proflist = os.listdir(SYSCONFPROFILEDIR)        
+        proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)        
         for pr in proflist:
             # 60016
-            if not os.path.isdir(SYSCONFPROFILEDIR + '/' + pr):
+            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr):
                 continue
             
-            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + pr + \
-                                       '/network')
+            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + \
+                                     '/network')
             i = self.addProfile()
             prof = self[i]
             prof.createActiveDevices()
@@ -104,7 +94,7 @@ class ProfileList(ProfileList_base):
                 prof.Active = true
             else:
                 prof.Active = false
-            devlist = os.listdir(SYSCONFPROFILEDIR + '/' + pr)
+            devlist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr)
             for dev in devlist:
                if dev[:6] != 'ifcfg-':
                    continue
@@ -112,7 +102,7 @@ class ProfileList(ProfileList_base):
                    if d.DeviceId == dev[6:]:
                        prof.ActiveDevices.append(dev[6:])
 
-            hoconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/hosts'
+            hoconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + '/hosts'
             hoconf.read()
             hoconf.rewind()
             while hoconf.findnextcodeline():
@@ -128,7 +118,7 @@ class ProfileList(ProfileList_base):
                     hoconf.nextline()
                 except:
                     break
-            dnsconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
+            dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
             dnsconf.read()
             prof.DNS.Hostname     = use_hostname
             prof.DNS.Domainname   = ''
@@ -200,13 +190,13 @@ class ProfileList(ProfileList_base):
                     if dev.DeviceId != devid:
                         continue
                         
-                    if dev.Type == "Modem" or dev.Type == 'xDSL':
+                    if dev.Type == MODEM or dev.Type == DSL:
                         dstr = "ppp"+str(pppnum)
                         if dev.Device != dstr:                            
                             dev.Device = dstr
                             changed = 1
                         pppnum = pppnum + 1
-                    elif  dev.Type == "ISDN":
+                    elif  dev.Type == ISDN:
                         if dev.Dialup.EncapMode == 'syncppp':
                             dstr = "ippp"+str(ipppnum)
                             if dstr != dev.Device:
@@ -232,7 +222,7 @@ class ProfileList(ProfileList_base):
         self.commit(changed=false)
         devicelist = NCDeviceList.getDeviceList()
 
-        nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
+        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         hoconf = Conf.ConfEHosts()
         hoconf.fsf()
         dnsconf = Conf.ConfEResolv()
@@ -244,9 +234,10 @@ class ProfileList(ProfileList_base):
         if nwconf['HOSTNAME'] != prof.DNS.Hostname:
             # if the hostname changed, set it system wide (#55746)
             os.system("hostname %s" % prof.DNS.Hostname)
-                      
+            log.log(2, "hostname %s" % prof.DNS.Hostname)
+            
         nwconf['HOSTNAME'] = prof.DNS.Hostname
-
+              
         if prof.ProfileName != 'default':
             nwconf['CURRENT_PROFILE'] = prof.ProfileName
         else:
@@ -254,24 +245,21 @@ class ProfileList(ProfileList_base):
 
         nwconf.write()
 
-        try:
-            os.mkdir(SYSCONFPROFILEDIR)
-        except:
-            pass
-
+        if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
+            mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
 
         # First remove all files that are linked in the device directory
-        devlist = os.listdir(OLDSYSCONFDEVICEDIR)
+        devlist = os.listdir(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
         for dev in devlist:
             if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
                 continue
-            file = OLDSYSCONFDEVICEDIR+'/'+dev
+            file = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev
             stat = os.stat(file)
             if stat[3] > 1:
                 # Check, if it is a device of neat in every profile directory
-                dirlist = os.listdir(SYSCONFPROFILEDIR)
+                dirlist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
                 for dir in dirlist:
-                    dirname = SYSCONFPROFILEDIR + '/' + dir
+                    dirname = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + dir
                     if not os.path.isdir(dirname):
                         continue
                     filelist = os.listdir(dirname)                    
@@ -283,32 +271,31 @@ class ProfileList(ProfileList_base):
                         
 
         # Remove all profile directories except default
-        proflist = os.listdir(SYSCONFPROFILEDIR)
+        proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
         for prof in proflist:
             if prof == 'default':
                 continue
 
             try:
-                shutil.rmtree(SYSCONFPROFILEDIR+'/'+prof)
+                shutil.rmtree(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/'+prof)
+                log.log(2, "rm -fr %s" % netconfpkg.ROOT + SYSCONFPROFILEDIR+'/'+prof)
             except:
                 pass
 
 
         # Remove all files in the default profile directory
-        filelist = os.listdir(SYSCONFPROFILEDIR+'/default')
+        filelist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default')
         for file in filelist:
-            unlink(SYSCONFPROFILEDIR+'/default/'+file)
+            unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'+file)
                 
         for prof in self:
-            try:
-                os.mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
-            except:
-                pass
+            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName):
+                mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName)
 
-            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + \
-                                       prof.ProfileName + '/network')
+            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                                     prof.ProfileName + '/network')
             nwconf['HOSTNAME'] = prof.DNS.Hostname
-            dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+            dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
                                '/resolv.conf'
 
             dnsconf['domain'] = ''
@@ -334,7 +321,7 @@ class ProfileList(ProfileList_base):
 
             dnsconf['nameservers'] = nameservers
 
-            hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+            hoconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
                               '/hosts'            
 
             saved = []
@@ -354,55 +341,56 @@ class ProfileList(ProfileList_base):
             nwconf.write()
             dnsconf.write()
             hoconf.write()
-            #print prof.ActiveDevices
             for devId in prof.ActiveDevices:
-                #print "Processing %s" % devId
-                for dev in devicelist:
-                    if dev.DeviceId == devId:
-                        if dev.Type == "CIPE":
-                            devName = dev.DeviceId
-                        else:
-                            devName = dev.Device
-                            if dev.Alias != None:
-                                devName = devName + ":" + str(dev.Alias)
-                        break
-
-                unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
                 
-                link(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/' +\
+                link(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+devId,
+                     netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' +\
                      prof.ProfileName+'/ifcfg-'+devId)
 
+                if os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR+devId+".route"):
+                    unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' +\
+                           prof.ProfileName + '/' + devId + ".route")
+                    link(netconfpkg.ROOT + SYSCONFDEVICEDIR + devId + ".route",
+                         netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' +\
+                         prof.ProfileName + '/' + devId + ".route")
+                    
                 if prof.Active == false and prof.ProfileName != 'default':
                     continue
 
-                unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devId)
 
-                link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId,
-                     OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                link(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId,
+                     netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devId)
+
+                if os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR+devId+".route"):
+                    unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + devId + ".route")
+                    link(netconfpkg.ROOT + SYSCONFDEVICEDIR + devId + ".route",
+                         netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + devId + ".route")
 
             if prof.Active == false:
                 continue
 
-            if os.path.isfile('/etc/resolv.conf') and not \
-                   ishardlink('/etc/resolv.conf') and not \
-                   os.path.islink('/etc/resolv.conf'):
-                rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
+            if os.path.isfile(netconfpkg.ROOT + RESOLVCONF) and not \
+                   ishardlink(netconfpkg.ROOT + RESOLVCONF) and not \
+                   os.path.islink(netconfpkg.ROOT + RESOLVCONF):
+                rename(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + RESOLVCONF + '.bak')
             else:
-                unlink('/etc/resolv.conf')
+                unlink(netconfpkg.ROOT + RESOLVCONF)
 
-            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
-                 '/resolv.conf', '/etc/resolv.conf')
-            os.chmod('/etc/resolv.conf', 0644)
+            link(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+                 '/resolv.conf', netconfpkg.ROOT + RESOLVCONF)
+            os.chmod(netconfpkg.ROOT + RESOLVCONF, 0644)
                 
-            if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') \
-                   and not os.path.islink('/etc/hosts'):
-                rename('/etc/hosts', '/etc/hosts.bak')
+            if os.path.isfile(netconfpkg.ROOT + HOSTSCONF) and not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
+                   and not os.path.islink(netconfpkg.ROOT + HOSTSCONF):
+                rename(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + HOSTSCONF + '.bak')
             else:
-                unlink('/etc/hosts')
+                unlink(netconfpkg.ROOT + HOSTSCONF)
 
-            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', \
-                 '/etc/hosts')
-            os.chmod('/etc/hosts', 0644)
+            link(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', \
+                 netconfpkg.ROOT + HOSTSCONF)
+            os.chmod(netconfpkg.ROOT + HOSTSCONF, 0644)
 
     def activateDevice (self, deviceid, profile, state=None):
         devicelist = NCDeviceList.getDeviceList()
@@ -454,6 +442,29 @@ class ProfileList(ProfileList_base):
 
         if len(self):
             return self[0]
+
+    def _objToStr(self, parentStr = None):
+        retstr = ""
+        for profile in self:
+            retstr += profile._objToStr("ProfileList.%s" % (profile.ProfileName))
+
+        return retstr
+
+    def _parseLine(self, vals, value):
+        if len(vals) <= 1:
+            return
+        if vals[0] == "ProfileList":
+            del vals[0]
+        else:
+            return
+        for profile in self:
+            if profile.ProfileName == vals[0]:
+                profile._parseLine(vals[1:], value)
+                return
+        
+        i = self.addProfile()
+        self[i].ProfileName = vals[0]
+        self[i]._parseLine(vals[1:], value)
         
 
 PFList = None

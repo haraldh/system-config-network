@@ -51,17 +51,15 @@ from netconfpkg import Control
 from netconfpkg.gui import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
-from netconfpkg.gui.exception import handleException
+from rhpl.exception import handleException
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
+from rhpl.log import log
 
 device = None
 
-# Some command strings
-autoselect_profile_cmd = "/usr/bin/autostart_profile"
-profile_up_cmd         = "/etc/sysconfig/network-scripts/profile_ctl up"
-profile_down_cmd       = "/etc/sysconfig/network-scripts/profile_ctl down"
-switch_profile_cmd     = "/usr/bin/redhat-config-network-cmd -p "
+STATUS_COLUMN = 0
+DEVICE_COLUMN = 1
+NICKNAME_COLUMN = 2
 
 class mainDialog:
     def __init__(self):
@@ -118,7 +116,7 @@ class mainDialog:
 
         self.xml.get_widget('autoSelectProfileButton').hide()
  
-        self.tag = timeout_add(4000, self.update_dialog)
+        self.tag = gtk.timeout_add(4000, self.update_dialog)
         # Let this dialog be in the taskbar like a normal window
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
@@ -150,16 +148,22 @@ class mainDialog:
     
     def on_activateButton_clicked(self, button):
         device = self.clist_get_device()
-        timeout_remove(self.tag)
+        nickname = self.clist_get_nickname()
+        for dev in getDeviceList():
+            if dev.DeviceId == nickname:
+                break
+        else:
+            return
+        
+        gtk.timeout_remove(self.tag)
         
         if device:
-            intf = Interface()
             # Network Device Control Dialog
             dlg = gtk.Dialog(_('Network device activating...'),
                              self.dialog,
                              gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT)
             label=gtk.Label(_('Activating network device %s, '\
-                              'please wait...') %(device))
+                              'please wait...') %(nickname))
             dlg.vbox.add(label)
             dlg.set_border_width(10)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
@@ -171,37 +175,51 @@ class mainDialog:
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dlg.set_modal(TRUE)
             dlg.show_all()
-            #self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
-            #dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
             idle_func()
-            (ret, msg) = intf.activate(device)
-            #self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-            #dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+            (ret, msg) = dev.activate()
             dlg.destroy()
             
             if NetworkDevice().find(device):
                 self.update_dialog()
             else:
-                devErrorDialog(device, ACTIVATE, self.dialog)
+                errorString = _('Cannot activate network device %s') \
+                              % (device.DeviceId)
+                generic_longinfo_dialog(errorString, msg, self.dialog);
 
-        self.tag = timeout_add(4000, self.update_dialog)
+        self.tag = gtk.timeout_add(4000, self.update_dialog)
             
     def on_deactivateButton_clicked(self, button):
-        device = self.clist_get_device()
-        if device:
-            (ret, msg) = Interface().deactivate(device)
+        device = self.clist_get_nickname()
+        for dev in getDeviceList():
+            if dev.DeviceId == device:
+                break
+        else:
+            return
+        if dev and device:
+            (ret, msg) = dev.deactivate()
             if not ret:
                 self.update_dialog()
             else:
-                devErrorDialog(device, DEACTIVATE, self.dialog)
+                errorString = _('Cannot deactivate network device %s')\
+                              % (device.deviceId)
+                generic_longinfo_dialog(errorString, msg, self.dialog);
 
     def on_configureButton_clicked(self, button):
-        device = self.clist_get_device()
+        device = self.clist_get_nickname()
+        for dev in getDeviceList():
+            if dev.DeviceId == device:
+                break
+        else:
+            return
         if device:
-            ret = Interface().configure(device)
+            (ret, msg) = dev.configure()
             if ret:
-                devErrorDialog(device, CONFIGURE, self.dialog)
-                
+                errorString = _('Cannot configure network device %s')\
+                              % (device)
+                generic_longinfo_dialog(errorString, msg, self.dialog);
+        # update dialog #83640
+        self.update_dialog()
+        
     def activate_new_profile(self, profile):
         profilelist = getProfileList()        
         aprof = self.get_active_profile()
@@ -210,24 +228,28 @@ class mainDialog:
         for device in getDeviceList():
             if device.DeviceId in aprof.ActiveDevices:
                 continue
-            (ret, msg) = Interface().deactivate(device.DeviceId)
+            (ret, msg) = device.deactivate()
             if ret:
-                devErrorDialog(device.DeviceId, DEACTIVATE, self.dialog)
-                print msg
+                errorString = _('Cannot deactivate network device %s')\
+                              % (device.deviceId)
+                generic_longinfo_dialog(errorString, msg, self.dialog);
 
-        print "Switching to profile %s" % profile
+        log.log(3, "Switching to profile %s" % profile)
         profilelist.switchToProfile(profile)
         profilelist.save()
         aprof = profilelist.getActiveProfile()
         aprof = self.get_active_profile()
         
-        print "Active Device List "
-        print aprof.ActiveDevices
-        for device in aprof.ActiveDevices:
-            (ret, msg) = Interface().activate(device)
-            if ret:
-                devErrorDialog(device, ACTIVATE, self.dialog)
-                print msg
+        log.log(3, "Active Device List ")
+        log.log(3, str(aprof.ActiveDevices))
+
+        for device in getDeviceList():
+            if device.DeviceId in aprof.ActiveDevices:
+                (ret, msg) = device.activate()
+                if ret:
+                    errorString = _('Cannot activate network device %s') \
+                                  % (device.DeviceId)
+                    generic_longinfo_dialog(errorString, msg, self.dialog);
         
         self.update_dialog()
 
@@ -327,9 +349,6 @@ class mainDialog:
         # TBD
         generic_error_dialog(_("To be rewritten!"))
         return
-        device = self.clist_get_device()
-        if device:
-            Interface().monitor(device)
 
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     activate_button = None,
@@ -359,25 +378,24 @@ class mainDialog:
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_pixtext(clist.selection[0], STATUS)[0]
+        dev = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
         return dev
 
     def clist_get_device(self):
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_pixtext(clist.selection[0], DEVICE)[0]
+        dev = clist.get_pixtext(clist.selection[0], DEVICE_COLUMN)[0]
         return dev
 
     def clist_get_nickname(self):
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_text(clist.selection[0], NICKNAME)
+        dev = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
         return dev
 
     def hydrate(self):
-        plist = self.xml.get_widget('')
         clist = self.xml.get_widget('interfaceClist')
         clist.clear()
         clist.set_row_height(20)
@@ -404,9 +422,9 @@ class mainDialog:
                 dev.Type, self.dialog)
                 
             clist.append([status, devname, dev.DeviceId])
-            clist.set_pixtext(row, STATUS, status, 5, status_pixmap,
+            clist.set_pixtext(row, STATUS_COLUMN, status, 5, status_pixmap,
                               status_mask)
-            clist.set_pixtext(row, DEVICE, devname, 5, device_pixmap,
+            clist.set_pixtext(row, DEVICE_COLUMN, devname, 5, device_pixmap,
                               device_mask)
             row = row + 1
 
@@ -510,8 +528,8 @@ if __name__ == '__main__':
     # make ctrl-C work
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     if os.getuid() == 0:        
-        pl = NCProfileList.getProfileList()
-        pl.updateNetworkScripts()
+        NCProfileList.updateNetworkScripts()
+        NCDeviceList.updateNetworkScripts()
     window = mainDialog()
     gtk.mainloop()
 

@@ -171,11 +171,11 @@ def gui_longinfo_dialog (message, long_message, parent_dialog,
     dialog = gtk.MessageDialog(parent_dialog,
                                gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
                                message_type, gtk.BUTTONS_OK,
-                               message)
+                               str(message))
     
     vbox=dialog.get_children()[0]
     buffer = gtk.TextBuffer(None)
-    buffer.set_text(long_message)
+    buffer.set_text(str(long_message))
     textbox = gtk.TextView()
     textbox.set_buffer(buffer)
     textbox.set_property("editable", gtk.FALSE)
@@ -330,3 +330,183 @@ def xml_signal_autoconnect (xml, map):
             xml.signal_connect(signal, *func)
         else:                
             xml.signal_connect(signal, func)
+
+__cancelPressed = None
+__dialogClosed = None
+
+def gui_run_dialog(command, argv, searchPath = 0,
+              root = '/', stdin = 0,
+              catchfd = 1, closefd = -1, title = None,
+              label = None, errlabel = None, dialog = None):
+    import gtk
+    import os
+    import select
+    import string
+    global __cancelPressed
+    global __dialogClosed
+    class CancelException: pass
+    
+    __cancelPressed = 0
+    __dialogClosed = 0
+    xml = __getXmlFile()
+    dlg = xml.get_widget ("Dialog")
+    lbl = xml.get_widget ("label")
+    swindow = xml.get_widget ("swindow")
+    xml.get_widget("statusImage").set_from_stock("gtk-dialog-info", 6)
+    xml.signal_autoconnect({ "on_cancelbutton_clicked" :
+                             __on_cancelbutton_clicked,
+                             "on_Dialog_close" :
+                             __on_Dialog_close,
+                             "on_okbutton_clicked" :
+                             __on_okbutton_clicked,
+                             })
+    
+    dlg.connect("delete-event", __on_Dialog_close)
+    dlg.connect("hide", __on_Dialog_close)
+    if title:
+        dlg.set_title(title)
+    okbutton = xml.get_widget ("okbutton")
+    okbutton.set_sensitive (gtk.FALSE)
+    cancelbutton = xml.get_widget ("cancelbutton")
+    cancelbutton.set_sensitive (gtk.TRUE)
+    lbl.set_text(label)
+    lbl.set_line_wrap(gtk.TRUE)
+    textview = xml.get_widget ("textview")
+    textview.set_property("editable", gtk.FALSE)
+    textview.set_wrap_mode(gtk.WRAP_WORD)
+    buffer = gtk.TextBuffer(None)
+    mark = buffer.create_mark("end", buffer.get_start_iter(),
+                              left_gravity=gtk.FALSE)
+    textview.set_buffer(buffer)
+    if dialog:
+        dlg.set_transient_for(dialog)
+        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+    else:
+        dlg.set_position (gtk.WIN_POS_CENTER)
+    dlg.set_modal(gtk.TRUE)
+    dlg.show_all()
+    dlg.show_now()
+
+    if not os.access (root + command, os.X_OK):
+	raise RuntimeError, command + " can not be run"
+
+    (read, write) = os.pipe()
+
+    childpid = os.fork()
+    if (not childpid):
+        if (root and root != '/'): os.chroot (root)
+        if isinstance(catchfd, tuple):
+            for fd in catchfd:
+                os.dup2(write, fd)
+        else:
+            os.dup2(write, catchfd)
+	os.close(write)
+	os.close(read)
+
+	if closefd != -1:
+	    os.close(closefd)
+
+	if stdin:
+	    os.dup2(stdin, 0)
+	    os.close(stdin)
+
+	if (searchPath):
+	    os.execvp(command, argv)
+	else:
+	    os.execv(command, argv)
+
+	sys.exit(1)
+    try:
+        os.close(write)
+
+        rc = ""
+        s = "1"
+        while (s):
+            try:
+                (fdin, fdout, fderr) = select.select([read], [], [], 0.1)
+            except:
+                fdin = []
+                pass
+
+            while gtk.events_pending():
+                gtk.mainiteration()
+
+            if __cancelPressed or __dialogClosed:
+                raise CancelException
+            
+            if len(fdin):
+                s = os.read(read, 100)
+                rc = rc + s
+                iter = buffer.get_end_iter()
+                buffer.insert(iter, str(s), len(s))
+                vadj = swindow.get_vadjustment()
+                if vadj.value + vadj.page_size >= vadj.upper - 5:
+                    textview.scroll_mark_onscreen(mark)
+                
+    except CancelException:
+        os.kill(childpid, 15)
+    except Exception, e:
+        os.kill(childpid, 15)
+        raise e
+        
+    os.close(read)
+    
+    try:
+        (pid, status) = os.waitpid(childpid, 0)
+    except OSError, (errno, msg):
+        print __name__, "waitpid:", msg
+
+    if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
+        status = os.WEXITSTATUS(status)
+    else:
+        status = -1
+
+    if status:
+        xml.get_widget("statusImage").set_from_stock("gtk-dialog-error", 6)
+        if errlabel:
+            lbl.set_text(errlabel)
+        else:
+            lbl.set_text(_("Failed to run:\n%s") % string.join(argv))
+
+    elif len(s):
+        lbl.set_text(label + _("\nSucceeded. Please read the output."))        
+        
+    if (status or len(s)) and not __dialogClosed:
+        okbutton.set_sensitive (gtk.TRUE)
+        cancelbutton.set_sensitive (gtk.FALSE)
+        dlg.run()
+        
+    dlg.hide()
+    return (status, rc)
+
+__xmlfile = None
+
+def __on_okbutton_clicked(*args):
+    pass
+
+def __on_cancelbutton_clicked(*args):
+    global __cancelPressed
+    __cancelPressed = 1
+    
+def __on_Dialog_close(*args):
+    global __dialogClosed
+    __dialogClosed = 1
+    
+def __getXmlFile():
+    global __xmlfile
+    import os
+    if __xmlfile:
+        return __xmlfile
+    
+    glade_file = "infodialog.glade"
+    
+    if not os.path.isfile(glade_file):
+        glade_file = GLADEPATH + glade_file
+    if not os.path.isfile(glade_file):
+        glade_file = NETCONFDIR + glade_file
+            
+    __xmlfile = gtk.glade.XML(glade_file, None, domain=PROGNAME)
+    return __xmlfile
+
+set_generic_run_dialog_func(gui_run_dialog)
+

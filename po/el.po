@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network 1.0\n"
-"POT-Creation-Date: 2003-02-24 14:14+0100\n"
+"POT-Creation-Date: 2003-04-29 15:42+0200\n"
 "PO-Revision-Date: 2003-02-19 01:12+0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.forthnet.gr>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Control and monitor network devices"
 msgstr ""
 
-#: neat-control.desktop.in.h:2 src/netconfpkg/gui/neat-control.glade.h:13
+#: neat-control.desktop.in.h:2 src/netconfpkg/gui/neat-control.glade.h:12
 msgid "Network Device Control"
 msgstr "Έλεγχος Συσκευών Δικτύου"
 
@@ -45,6 +45,14 @@ msgstr "Δίκτυο"
 #: src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Network Configuration"
 msgstr "Ρύθμιση Δικτύου"
+
+#: internet-druid.desktop.in.h:1
+msgid "Configure your connection to the Internet"
+msgstr "Ρύθμιση της σύνδεσής σας στο Διαδίκτυο"
+
+#: internet-druid.desktop.in.h:2
+msgid "Internet Configuration Wizard"
+msgstr "Οδηγός Σύνδεσής στο Διαδίκτυο"
 
 #. -*- python -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -80,13 +88,14 @@ msgstr "Ρύθμιση Δικτύου"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Some command strings
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:137 src/netconfpkg/gui/maindialog.py:1410
+#: src/neat-control.py:135 src/netconf-cmd.py:87
+#: src/netconfpkg/gui/maindialog.py:1391
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Πνευματικά Δικαιώματα (c) 2001,2002 Red Hat, Inc."
 
-#: src/neat-control.py:138 src/netconfpkg/gui/maindialog.py:1411
+#: src/neat-control.py:136 src/netconf-cmd.py:88
+#: src/netconfpkg/gui/maindialog.py:1392
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -96,25 +105,37 @@ msgstr ""
 "Red Hat: http://bugzilla.redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:158 src/netconfpkg/gui/maindialog.py:754
+#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:370
 msgid "Network device activating..."
 msgstr "Γίνεται ενεργοποίηση συσκευής δικτύου..."
 
-#: src/neat-control.py:161 src/netconfpkg/gui/maindialog.py:756
+#: src/neat-control.py:165 src/netconfpkg/NCDevice.py:371
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Ενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε..."
 
-#. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
-#. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
-#. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+#: src/neat-control.py:185 src/neat-control.py:250
+#, python-format
+msgid "Cannot activate network device %s"
+msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s"
+
+#. update dialog #83640
+#: src/neat-control.py:203 src/neat-control.py:233
+#, python-format
+msgid "Cannot deactivate network device %s"
+msgstr "Δεν μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s"
+
+#: src/neat-control.py:217
+#, fuzzy, python-format
+msgid "Cannot configure network device %s"
+msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s"
+
 #. Display dialog notification of action
-#: src/neat-control.py:238
+#: src/neat-control.py:260
 msgid "Activating profile..."
 msgstr "Γίνεται ενεργοποίηση προφίλ..."
 
-#: src/neat-control.py:241
+#: src/neat-control.py:263
 msgid "Activating the selected profile, please wait..."
 msgstr "Γίνεται ενεργοποίηση του επιλεγμένου προφίλ, παρακαλώ περιμένετε..."
 
@@ -122,7 +143,7 @@ msgstr "Γίνεται ενεργοποίηση του επιλεγμένου π
 #. Get the profile to activate from the menu
 #. Activate the selected profile
 #. Check results of the activation
-#: src/neat-control.py:260
+#: src/neat-control.py:282
 #, python-format
 msgid ""
 "Not all network interfaces in selected profile \"%s\" could be activated."
@@ -134,11 +155,11 @@ msgstr ""
 #. import time
 #. Make sure the user really wants to auto select ...
 #. Continue with auto select
-#: src/neat-control.py:287
+#: src/neat-control.py:309
 msgid "Attempting to auto-detect and activate a valid profile, please wait..."
 msgstr ""
 
-#: src/neat-control.py:289
+#: src/neat-control.py:311
 msgid "Autoselecting profile..."
 msgstr "Γίνεται αυτόματη επολογή προφίλ..."
 
@@ -150,7 +171,7 @@ msgstr "Γίνεται αυτόματη επολογή προφίλ..."
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:328 src/netconfpkg/gui/maindialog.py:813
+#: src/neat-control.py:350 src/netconfpkg/gui/maindialog.py:817
 msgid "To be rewritten!"
 msgstr ""
 
@@ -173,7 +194,7 @@ msgstr ""
 #.
 #. handleException function
 #.
-#: src/netconf-tui.py:100 src/netconfpkg/gui/exception.py:49
+#: src/netconf-tui.py:101
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against redhat-config-network "
@@ -207,6 +228,7 @@ msgstr "Όνομα"
 #: src/netconf-tui.py:265 src/netconf-tui.py:374 src/netconf-tui.py:480
 #: src/netconfpkg/gui/maindialog.glade.h:10
 #: src/netconfpkg/gui/neat-control.glade.h:11
+#: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Συσκευή"
 
@@ -292,18 +314,30 @@ msgstr "Ρύθμιση ISDN"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:60
+#: src/netconf.py:58
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "Σφάλμα: %s, %s!"
 
-#: src/netconf.py:62
-msgid "Starting text version:"
+#: src/netconf.py:60
+msgid "Starting text version"
 msgstr ""
 
-#: src/netconf.py:111
+#: src/netconf.py:109
 msgid "Loading Network Configuration..."
 msgstr "Φόρτωση Ρυθμίσεων Δικτύου..."
+
+#: src/netconf.py:122
+#, fuzzy
+msgid ""
+"redhat-config-network - network configuration tool\n"
+"\n"
+"Usage: redhat-config-network -v --verbose"
+msgstr ""
+"redhat-config-network-cmd - εργαλείο ρύθμισης δικτύου από την γραμμή "
+"εντολών\n"
+"\n"
+"Χρήση: redhat-config-network-cmd -p --profile <προφίλ> -a --activate"
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -326,25 +360,2049 @@ msgstr "Φόρτωση Ρυθμίσεων Δικτύου..."
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf-cmd.py:61
-msgid ""
-"redhat-config-network-cmd - network configuration commandline tool\n"
-"\n"
-"Usage: redhat-config-network-cmd -p --profile <profile> -a --activate"
-msgstr ""
-"redhat-config-network-cmd - εργαλείο ρύθμισης δικτύου από την γραμμή "
-"εντολών\n"
-"\n"
-"Χρήση: redhat-config-network-cmd -p --profile <προφίλ> -a --activate"
-
-#. print "%s.%s" % (pname, child)
-#. printObj(val, "%s.%s" % (parent, child))
-#: src/netconf-cmd.py:101
+#: src/netconf-cmd.py:63
 #, python-format
-msgid "Please restart %s with root permissions!"
-msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+
+#: src/netconf-cmd.py:86
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr ""
+
+#: src/netconf-cmd.py:91
+#, python-format
+msgid "Usage: %s"
+msgstr ""
+
+#: src/netconf-cmd.py:93
+#, fuzzy
+msgid "switch / activate profile"
+msgstr "Κάντε κλικ για να ενεργοποιηθή το επιλεγμένο προφίλ"
+
+#: src/netconf-cmd.py:95
+msgid "export / import hardware list"
+msgstr ""
+
+#: src/netconf-cmd.py:97
+msgid "export / import device list (default)"
+msgstr ""
+
+#: src/netconf-cmd.py:99
+msgid "export / import profile list"
+msgstr ""
+
+#: src/netconf-cmd.py:101
+msgid "set the root directory"
+msgstr ""
+
+#: src/netconf-cmd.py:102
+msgid "export list (default)"
+msgstr ""
+
+#: src/netconf-cmd.py:103
+msgid "import list"
+msgstr ""
+
+#: src/netconf-cmd.py:105
+msgid "clear existing list prior of importing"
+msgstr ""
+
+#: src/netconf-cmd.py:107
+msgid "import from file"
+msgstr ""
+
+#: src/netconf-cmd.py:204
+#, python-format
+msgid "Unknown option %s\n"
+msgstr ""
+
+#. remove the last \n
+#: src/netconf-cmd.py:265
+#, fuzzy, python-format
+msgid "Unknown List %s\n"
+msgstr "Άγνωστο"
+
+#: src/netconf-cmd.py:269
+#, python-format
+msgid "Error parsing line: %s"
+msgstr ""
+
+#. print "Exception %s: %s" % (str(SystemExit), str(code))
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ADSLInterface.py:94
+msgid "xDSL connection"
+msgstr "Σύνδεση xDSL"
+
+#: src/netconfpkg/gui/ADSLInterface.py:100
+#, fuzzy
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr "Δημιουργία μιας σύνδεσης xDSL."
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#: src/netconfpkg/gui/ADSLInterface.py:139
+#: src/netconfpkg/gui/CipeInterface.py:144
+#: src/netconfpkg/gui/DialupDruid.py:226
+#: src/netconfpkg/gui/EthernetInterface.py:213
+#: src/netconfpkg/gui/WirelessInterface.py:283
+#: src/netconfpkg/gui/TokenRingInterface.py:207
+msgid "You have selected the following information:"
+msgstr "Έχετε επιλέξει τις παρακάτω πληροφορίες:"
+
+#: src/netconfpkg/gui/ADSLInterface.py:140
+msgid "Ethernet Device:"
+msgstr "Συσκευή Ethernet:"
+
+#: src/netconfpkg/gui/ADSLInterface.py:141
+#: src/netconfpkg/gui/DialupDruid.py:229
+msgid "Provider Name:"
+msgstr "Όνομα Παροχέα:"
+
+#: src/netconfpkg/gui/ADSLInterface.py:142
+#: src/netconfpkg/gui/DialupDruid.py:231
+msgid "Login Name:"
+msgstr "Όνομα Σύνδεσης:"
 
 #. widget.set_position(0)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/CipeInterface.py:96
+msgid "CIPE (VPN) connection"
+msgstr "Σύνδεση CIPE (VPN)"
+
+#: src/netconfpkg/gui/CipeInterface.py:99
+msgid "Create a new virtual private network connection with CIPE."
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/EthernetInterface.py:214
+#: src/netconfpkg/gui/WirelessInterface.py:284
+#: src/netconfpkg/gui/TokenRingInterface.py:208
+msgid "Device:"
+msgstr "Συσκευή:"
+
+#: src/netconfpkg/gui/CipeInterface.py:146
+msgid "Tunnel through Device:"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:147
+msgid "Local Port:"
+msgstr "Τοπική Θύρα:"
+
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/CipeInterface.py:154
+msgid "Remote Peer Address:"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Auto"
+msgstr "Αυτόματη"
+
+#: src/netconfpkg/gui/CipeInterface.py:155
+msgid "Remote Peer Port:"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:157
+msgid "Remote Virtual Address:"
+msgstr "Απομακρυσμένη Εικονική Διεύθυνση:"
+
+#: src/netconfpkg/gui/CipeInterface.py:158
+msgid "Local Virtual Address:"
+msgstr "Τοπική Εικονική Διεύθυνση:"
+
+#. else:
+#. self.on_generateKeyButton_clicked()
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:167
+#: src/netconfpkg/gui/CipeInterface.py:235 src/netconfpkg/gui/cipeconfig.py:80
+#: src/netconfpkg/gui/cipeconfig.py:142
+msgid "None - Server Mode"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:174 src/netconfpkg/gui/cipeconfig.py:88
+msgid " (dynamic)"
+msgstr " (δυναμική)"
+
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:211
+#: src/netconfpkg/gui/CipeInterface.py:265
+#: src/netconfpkg/gui/cipeconfig.py:120 src/netconfpkg/gui/cipeconfig.py:171
+msgid "Server Mode"
+msgstr ""
+
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:300
+#: src/netconfpkg/gui/CipeInterface.py:305
+#: src/netconfpkg/gui/cipeconfig.py:203 src/netconfpkg/gui/cipeconfig.py:208
+msgid "(own choice)"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:311
+#: src/netconfpkg/gui/cipeconfig.py:214
+msgid "IP Address of Tunnel Device: "
+msgstr "Διεύθυνση IP της συσκευής Tunnel: "
+
+#: src/netconfpkg/gui/CipeInterface.py:312
+#: src/netconfpkg/gui/cipeconfig.py:215
+msgid "Local Port: "
+msgstr "Τοπική Θύρα: "
+
+#: src/netconfpkg/gui/CipeInterface.py:313
+#: src/netconfpkg/gui/cipeconfig.py:216
+msgid "Remote Peer Address: "
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterface.py:317
+#: src/netconfpkg/gui/cipeconfig.py:220
+msgid "Remote Virtual Address: "
+msgstr "Απομακρυσμένη Εικονική Διεύθυνση: "
+
+#: src/netconfpkg/gui/CipeInterface.py:318
+#: src/netconfpkg/gui/cipeconfig.py:221
+msgid "Local Virtual Address: "
+msgstr "Τοπική Εικονική Διεύθυνση: "
+
+#: src/netconfpkg/gui/CipeInterface.py:319
+#: src/netconfpkg/gui/cipeconfig.py:222
+msgid "Secret Key: "
+msgstr "Μυστικό Κλειδί: "
+
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:329
+msgid ""
+"You must enter a secret key \n"
+"or generate one"
+msgstr ""
+"Πρέπει να εισάγετε ένα μυστικό κλειδί \n"
+"ή να το δημιουργήσετε"
+
+#: src/netconfpkg/gui/DialupDruid.py:228
+msgid "Hardware:"
+msgstr "Υλικό:"
+
+#: src/netconfpkg/gui/DialupDruid.py:232
+msgid "Phone Number:"
+msgstr "Αριθμός Τηλεφώνου:"
+
+#. Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. hwlist = NCHardwareList.getHardwareList()
+#. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
+#. if len(hwdesc):
+#. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#: src/netconfpkg/gui/EthernetHardwareDruid.py:145
+#: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
+#: src/netconfpkg/gui/ethernethardware.py:151
+#: src/netconfpkg/gui/ethernethardware.py:168
+#: src/netconfpkg/gui/tokenringhardware.py:153
+#: src/netconfpkg/gui/tokenringhardware.py:164
+#: src/netconfpkg/NCHardwareList.py:251 src/netconfpkg/NCHardwareList.py:342
+#: src/netconfpkg/NCHardwareList.py:524 src/netconfpkg/NCHardwareList.py:557
+#: src/netconfpkg/NC_functions.py:263 src/netconfpkg/NCDevice.py:208
+#: src/netconfpkg/NCDevice.py:215 src/netconfpkg/NCDeviceList.py:58
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:21
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print "EthernetInterface getDeviceList"
+#. FIXME
+#: src/netconfpkg/gui/EthernetInterface.py:115
+msgid "Ethernet connection"
+msgstr "Σύνδεση Ethernet"
+
+#: src/netconfpkg/gui/EthernetInterface.py:121
+msgid "Create a new ethernet connection."
+msgstr "Δημιουργία νέας σύνδεσης Ethernet."
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#. must be at bottom, because prepare is called here
+#: src/netconfpkg/gui/EthernetInterface.py:194
+msgid "Other Ethernet Card"
+msgstr "Άλλη Κάρτα Ethernet"
+
+#: src/netconfpkg/gui/EthernetInterface.py:225
+#: src/netconfpkg/gui/WirelessInterface.py:295
+#: src/netconfpkg/gui/TokenRingInterface.py:219
+#: src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Address:"
+msgstr "Διεύθυνση:"
+
+#: src/netconfpkg/gui/EthernetInterface.py:226
+#: src/netconfpkg/gui/WirelessInterface.py:296
+#: src/netconfpkg/gui/TokenRingInterface.py:220
+msgid "Subnet Mask:"
+msgstr "Μάσκα Υποδικτύου:"
+
+#: src/netconfpkg/gui/EthernetInterface.py:227
+#: src/netconfpkg/gui/WirelessInterface.py:297
+#: src/netconfpkg/gui/TokenRingInterface.py:221
+msgid "Default Gateway Address:"
+msgstr "Εξ ορισμού Διεύθυνση Πύλης Δικτύου:"
+
+#: src/netconfpkg/gui/EthernetInterface.py:229
+#: src/netconfpkg/gui/WirelessInterface.py:299
+#: src/netconfpkg/gui/TokenRingInterface.py:223
+msgid "Automatically obtain IP address settings with:"
+msgstr "Αυτόματη απόδοση διεύθυνσης IP με:"
+
+#. print self.devicelist
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/GUI_functions.py:469
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+
+#: src/netconfpkg/gui/GUI_functions.py:472
+msgid ""
+"\n"
+"Succeeded. Please read the output."
+msgstr ""
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/GenericInterface.py:83
+#, python-format
+msgid "%s connection"
+msgstr "%s σύνδεση"
+
+#: src/netconfpkg/gui/GenericInterface.py:86
+#, python-format
+msgid "Create a new %s connection."
+msgstr "Δημιουργία νέας %s σύνδεσης."
+
+#: src/netconfpkg/gui/GenericInterface.py:96
+msgid "This wizard still has to be written."
+msgstr "Αυτός ο μάγος δεν είναι ακόμα έτοιμος."
+
+#: src/netconfpkg/gui/GenericInterface.py:97
+msgid "Press Finish to get the standard configuration dialog."
+msgstr ""
+
+#: src/netconfpkg/gui/GenericInterface.py:98
+msgid "Then, at first, enter the nickname for the device."
+msgstr ""
+
+#. # FIXME
+#: src/netconfpkg/gui/GenericInterface.py:135
+msgid "This device can not be edited with this tool!"
+msgstr "Η συσκευή αυτή δεν μπορεί να επεξεργαστεί με αυτό το εργαλείο!"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/IsdnInterface.py:87
+msgid "ISDN connection"
+msgstr "Σύνδεση ISDN"
+
+#: src/netconfpkg/gui/IsdnInterface.py:93
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Δημιουργία μιας νέας σύνδεσης ISDN. Η σύνδεση αυτή χρησιμοποιεί μια γραμμή "
+"ISDN (Intergated Services Digital Network) για να επικοινωνήσει με τον "
+"Παροχέα Υπηρεσιών Διαδικτύου. Αυτή η τεχνολογία απαιτεί την εγκατάσταση μιας "
+"ειδικής τηλεφωνικής γραμμής από τον τηλεπικοινωνιακό σας φορέα. Επίσης "
+"απαιτεί και μια συσκευή που είναι γνωστή ως Τερματικός Προσαρμογέας για τον "
+"τερματισμό της σύνδεσης σας με τον ΠΥΔ (ISP).  Αυτή η μορφή σύνδεσης είναι "
+"δημοφιλής στην Ευρώπη και σε αρκετές άλλες προηγμένες τεχνολογικά χώρες. "
+"Είναι διαθέσιμη αλλά όχι και διαδεδομένη στις ΗΠΑ.  Το φάσμα των ταχυτήτων "
+"είναι ανάμεσα στα 64kbps έως τα 128kbps. "
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ModemInterface.py:80
+msgid "Modem connection"
+msgstr "Σύνδεση Μόντεμ"
+
+#: src/netconfpkg/gui/ModemInterface.py:86
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Δημιουργία μιας νέας σύνδεσης Μόντεμ.   Η σύνδεση αυτή χρησιμοποιεί ένα "
+"σειριακό αναλογικό μόντεμ για να επικοινωνήσει με τον Παροχέα Υπηρεσιών "
+"Διαδικτύου. Τα μόντεμ αυτού του τύπου χρησιμοποιούν ήχο για την μετάδοση "
+"δεδομένων μέσω μιας απλής τηλεφωνικής γραμμής.  Οι συνδέσεις αυτής της "
+"μορφής είναι διαθέσιμες σε όλα τα μέρη του κόσμου που έχουν τηλεφωνικό "
+"δίκτυο."
+
+#: src/netconfpkg/gui/ModemInterface.py:114
+msgid "Modem probing..."
+msgstr "Γίνεται ανίχνευση modem..."
+
+#: src/netconfpkg/gui/ModemInterface.py:118
+msgid "Probing for Modems, please wait..."
+msgstr "Γίνεται ανίχνευση για Μόντεμ, παρακαλώ περιμένετε..."
+
+#: src/netconfpkg/gui/ModemInterface.py:133
+msgid "No modem was found on your system."
+msgstr "Δεν βρέθηκε μόντεμ στο σύστημα σας."
+
+#. 460800 seems to be to high
+#: src/netconfpkg/gui/ModemInterface.py:154
+#: src/netconfpkg/gui/modemconfig.py:113
+msgid "Generic Modem"
+msgstr "Τυπικό Μόντεμ"
+
+#: src/netconfpkg/gui/ModemInterface.py:161
+#: src/netconfpkg/gui/modemconfig.py:140
+#: src/netconfpkg/gui/ModemDruid.glade.h:27
+#: src/netconfpkg/gui/modemconfig.glade.h:27
+msgid "Off"
+msgstr "Κλειστή"
+
+#: src/netconfpkg/gui/ModemInterface.py:163
+#: src/netconfpkg/gui/modemconfig.py:142
+#: src/netconfpkg/gui/ModemDruid.glade.h:22
+#: src/netconfpkg/gui/modemconfig.glade.h:21
+msgid "Low"
+msgstr "Χαμηλή"
+
+#: src/netconfpkg/gui/ModemInterface.py:165
+#: src/netconfpkg/gui/modemconfig.py:144
+#: src/netconfpkg/gui/ModemDruid.glade.h:23
+#: src/netconfpkg/gui/modemconfig.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+msgid "Medium"
+msgstr "Μεσαία"
+
+#: src/netconfpkg/gui/ModemInterface.py:167
+#: src/netconfpkg/gui/modemconfig.py:146
+#: src/netconfpkg/gui/ModemDruid.glade.h:21
+#: src/netconfpkg/gui/modemconfig.glade.h:20
+msgid "High"
+msgstr "Υψηλή"
+
+#: src/netconfpkg/gui/ModemInterface.py:169
+#: src/netconfpkg/gui/modemconfig.py:148
+#: src/netconfpkg/gui/ModemDruid.glade.h:30
+#: src/netconfpkg/gui/modemconfig.glade.h:29
+msgid "Very High"
+msgstr "Πολύ Υψηλή"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/WirelessInterface.py:120
+msgid "Wireless connection"
+msgstr "Ασύρματη σύνδεση"
+
+#: src/netconfpkg/gui/WirelessInterface.py:126
+msgid "Create a new wireless connection."
+msgstr "Δημιουργία νέας ασύρματης σύνδεσης."
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#: src/netconfpkg/gui/WirelessInterface.py:263
+msgid "Other Wireless Card"
+msgstr "Άλλη Ασύρματη Κάρτα"
+
+#: src/netconfpkg/gui/WirelessInterface.py:302
+msgid "Mode: "
+msgstr "Κατάσταση: "
+
+#: src/netconfpkg/gui/WirelessInterface.py:303
+msgid "ESSID (Network ID):"
+msgstr "ESSID (ID Δικτύου):"
+
+#: src/netconfpkg/gui/WirelessInterface.py:309
+msgid "Channel: "
+msgstr "Κανάλι: "
+
+#: src/netconfpkg/gui/WirelessInterface.py:310
+msgid "Transmit Rate: "
+msgstr "Ρυθμός Μετάδοσης: "
+
+#: src/netconfpkg/gui/WirelessInterface.py:311
+msgid "Key: "
+msgstr "Κλειδί: "
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/TokenRingInterface.py:112
+msgid "Token Ring connection"
+msgstr "Σύνδεση Token Ring"
+
+#: src/netconfpkg/gui/TokenRingInterface.py:118
+msgid "Create a new Token Ring connection."
+msgstr "Δημιουργία νέας σύνδεσης Token Ring."
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#: src/netconfpkg/gui/TokenRingInterface.py:189
+msgid "Other Tokenring Card"
+msgstr "Άλλη Κάρτα Tokenring"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ctcconfig.py:49
+msgid "CTC Device"
+msgstr "Συσκευή CTC"
+
+#: src/netconfpkg/gui/ctcconfig.py:52
+msgid "IUCV Device"
+msgstr "Συσκευή IUCV"
+
+#. widget.set_position(0)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#.
+#: src/netconfpkg/gui/deviceconfig.py:100
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/dialupconfig.py:249
+#: src/netconfpkg/gui/dialupconfig.glade.h:11
+msgid "Dialup Configuration"
+msgstr "Ρύθμιση Dialup"
+
+#: src/netconfpkg/gui/dialupconfig.py:281
+msgid "ISDN Dialup Configuration"
+msgstr "Ρύθμιση Dialup με ISDN"
+
+#. get free ISDN device if encap mode is changed
+#: src/netconfpkg/gui/dialupconfig.py:301
+#: src/netconfpkg/gui/dialupconfig.py:394
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
+#, fuzzy
+msgid "in"
+msgstr "Μέσα"
+
+#: src/netconfpkg/gui/dialupconfig.py:301
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
+#, fuzzy
+msgid "out"
+msgstr "έξω"
+
+#: src/netconfpkg/gui/dialupconfig.py:345
+#: src/netconfpkg/gui/DialupDruid.glade.h:32
+#: src/netconfpkg/gui/dialupconfig.glade.h:74
+msgid "raw IP"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:347
+#: src/netconfpkg/gui/dialupconfig.py:376
+#: src/netconfpkg/gui/DialupDruid.glade.h:33
+#: src/netconfpkg/gui/dialupconfig.glade.h:75
+msgid "sync PPP"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:360
+#: src/netconfpkg/gui/dialupconfig.py:428
+#: src/netconfpkg/gui/dialupconfig.glade.h:73
+msgid "pap"
+msgstr "pap"
+
+#: src/netconfpkg/gui/dialupconfig.py:362
+#: src/netconfpkg/gui/dialupconfig.py:430
+#: src/netconfpkg/gui/dialupconfig.glade.h:67
+msgid "chap"
+msgstr "chap"
+
+#: src/netconfpkg/gui/dialupconfig.py:365
+#: src/netconfpkg/gui/dialupconfig.py:432
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
+msgid "chap+pap"
+msgstr "chap+pap"
+
+#: src/netconfpkg/gui/dialupconfig.py:367
+#: src/netconfpkg/gui/dialupconfig.glade.h:71
+msgid "none"
+msgstr "κανένα"
+
+#: src/netconfpkg/gui/dialupconfig.py:442
+msgid "Modem Dialup Configuration"
+msgstr "Ρύθμιση Dialup με Μόντεμ"
+
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+#. self.dialog.connect("hide", gtk.mainquit)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.host.commit()
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+#. self.dialog.connect("hide", gtk.mainquit)
+#. self.dialog.destroy()
+#. self.main.hydrate()
+#. self.dialog.destroy()
+#. self.dialog.destroy()
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. !/usr/bin/python2.2
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # Copyright (C) 2001 - 2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. clist = self.xml.get_widget("hardwareList")
+#. # First: copy the clist-style
+#. self.style1 = clist.get_style().copy()
+#. self.style2 = clist.get_style().copy()
+#. self.style3 = clist.get_style().copy()
+#. color1 = "lightgreen"
+#. color2 = "light salmon"
+#. color3 = "white"
+#. colormap = clist.get_colormap()
+#. self.style1.base[gtk.STATE_NORMAL] = colormap.alloc_color(color1)
+#. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
+#. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
+#. initialize the button state..
+#: src/netconfpkg/gui/maindialog.py:238
+msgid "Loading Configuration..."
+msgstr "Φόρτωση Ρυθμίσεων..."
+
+#: src/netconfpkg/gui/maindialog.py:245
+msgid "Loading Device Configuration..."
+msgstr "Φόρτωση Ρυθμίσεων Συσκευής..."
+
+#: src/netconfpkg/gui/maindialog.py:250
+msgid "Loading Hardware Configuration..."
+msgstr ""
+
+#: src/netconfpkg/gui/maindialog.py:255
+msgid "Loading Profile Configuration..."
+msgstr "Φόρτωση Ρυθμίσεων Προφίλ..."
+
+#: src/netconfpkg/gui/maindialog.py:260
+#, fuzzy
+msgid "Testing Configuration Set..."
+msgstr "Γίνεται Έλεγχος Συνόλου Ρυθμίσεων..."
+
+#: src/netconfpkg/gui/maindialog.py:288
+#, python-format
+msgid "Active Profile: %s (modified)"
+msgstr "Ενεργό Προφίλ: %s (τροποποιημένο)"
+
+#: src/netconfpkg/gui/maindialog.py:292
+#, python-format
+msgid "Active Profile: %s"
+msgstr "Ενεργό Προφίλ: %s"
+
+#: src/netconfpkg/gui/maindialog.py:300
+msgid "Saving Configuration..."
+msgstr "Αποθήκευση Ρυθμίσεων..."
+
+#: src/netconfpkg/gui/maindialog.py:311
+#, python-format
+msgid ""
+"Error saving Configuration!\n"
+"%s"
+msgstr ""
+"Σφάλμα κατά την αποθήκευση Ρυθμίσεων!\n"
+"%s"
+
+#: src/netconfpkg/gui/maindialog.py:314
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+"Οι αλλαγές αποθηκεύθηκαν.\n"
+"Ίσως θα θέλατε να επανεκκινήσετε\n"
+"το δίκτυο και τις υπηρεσίες δικτύου\n"
+"ή να επανεκκινήσετε τον υπολογιστή."
+
+#: src/netconfpkg/gui/maindialog.py:323
+msgid "Saving Device Configuration..."
+msgstr "Αποθήκευση Ρυθμίσεων Συσκευής..."
+
+#: src/netconfpkg/gui/maindialog.py:330
+msgid "Saving Hardware Configuration..."
+msgstr ""
+
+#: src/netconfpkg/gui/maindialog.py:337
+msgid "Saving Profile Configuration..."
+msgstr "Αποθήκευση Ρυθμίσεων Προφίλ..."
+
+#: src/netconfpkg/gui/maindialog.py:359
+#, fuzzy
+msgid "Updating Devices..."
+msgstr "_Επεξεργασία..."
+
+#: src/netconfpkg/gui/maindialog.py:416
+msgid "Updating Hardware..."
+msgstr ""
+
+#. if hw.Status == HW_OK:
+#. clist.set_row_style(row, self.style1)
+#. elif hw.Status == HW_CONF:
+#. clist.set_row_style(row, self.style3)
+#. else:
+#. clist.set_row_style(row, self.style2)
+#. print "getActiveProfile == %s " % self.active_profile.ProfileName
+#: src/netconfpkg/gui/maindialog.py:447
+#, fuzzy
+msgid "Updating Profiles..."
+msgstr "Ενημέρωση Προφίλ..."
+
+#. print "hydrateProfiles(%s)" % self.active_profile_name
+#. 88357
+#. change the default profile to a more understandable name
+#. omenu.set_history (history)
+#: src/netconfpkg/gui/maindialog.py:550 src/netconfpkg/gui/maindialog.py:621
+#: src/netconfpkg/gui/maindialog.py:844
+msgid "Do you want to save your changes?"
+msgstr "Θέλετε να αποθηκευθούν οι αλλαγές;"
+
+#: src/netconfpkg/gui/maindialog.py:686
+msgid "The Loopback device can not be edited!"
+msgstr "H συσκευή Loopback δεν μπορεί να επεξεργαστεί!"
+
+#: src/netconfpkg/gui/maindialog.py:690
+msgid "Edit Device..."
+msgstr "Επεξεργασία Συσκευής..."
+
+#. Fixed change device names in active list of all profiles
+#: src/netconfpkg/gui/maindialog.py:741
+msgid "The Loopback device can not be removed!"
+msgstr "Η συσκευή Loopback δεν μπορεί να διαγραφεί!"
+
+#: src/netconfpkg/gui/maindialog.py:745
+#, python-format
+msgid "Do you really want to delete device \"%s\"?"
+msgstr "Θέλετε πραγματικά να διαγράψετε την συσκευή \"%s\";"
+
+#: src/netconfpkg/gui/maindialog.py:777
+msgid "You have made some changes in your configuration."
+msgstr "Έχετε κάνει μερικές αλλαγές στις ρυθμίσεις σας."
+
+#: src/netconfpkg/gui/maindialog.py:778
+#, python-format
+msgid "To activate the network device %s, the changes have to be saved."
+msgstr ""
+"Για να  ενεργοποιήσετε την συσκευή δικτύου  %s, πρέπει να αποθηκευθούν οι "
+"αλλαγές που έγιναν."
+
+#: src/netconfpkg/gui/maindialog.py:780
+msgid "Do you want to continue?"
+msgstr "Θέλετε να συνεχίσετε;"
+
+#. devicelist = getDeviceList()
+#. edit_button.set_sensitive(FALSE)
+#. edit_button.set_sensitive(TRUE)
+#. clist.remove_data ("signal_id")
+#. don't allow user to edit device if it's active
+#. if clist.get_name() == 'deviceList':
+#. try:
+#. status = clist.get_pixtext(clist.selection[0], 0)[0]
+#. except ValueError:
+#. status = clist.get_text(clist.selection[0], 0)
+#. if status == ACTIVE:
+#. return
+#: src/netconfpkg/gui/maindialog.py:960
+msgid "The Loopback device can not be disabled!"
+msgstr "Η συσκευή Loopback δεν μπορεί να απενεργοποιηθεί!"
+
+#. if len(clist.selection) == 0:
+#. return
+#.
+#: src/netconfpkg/gui/maindialog.py:1139 src/netconfpkg/gui/maindialog.py:1218
+msgid "The name may only contain letters and digits!"
+msgstr "Το όνομα μπορεί να περιέχει μόνο γράμματα και αριθμούς!"
+
+#: src/netconfpkg/gui/maindialog.py:1144 src/netconfpkg/gui/maindialog.py:1223
+#, python-format
+msgid "The profile can't be named \"%s\"!"
+msgstr "Το όνομα του προφίλ δεν μπορεί να είναι \"%s\"!"
+
+#: src/netconfpkg/gui/maindialog.py:1150 src/netconfpkg/gui/maindialog.py:1229
+msgid "The profile name already exists!"
+msgstr "Το όνομα του προφίλ υπάρχει ήδη!"
+
+#. self.xml.get_widget("profileList").clear()
+#: src/netconfpkg/gui/maindialog.py:1196
+#, python-format
+msgid "The \"%s\" profile can't be renamed!"
+msgstr "Το προφίλ \"%s\" δεν μπορεί να μετονομαστεί!"
+
+#. clist = self.xml.get_widget('profileList')
+#. if len(clist.selection) == 0:
+#. return
+#: src/netconfpkg/gui/maindialog.py:1251
+#, python-format
+msgid "The \"%s\" Profile can not be deleted!"
+msgstr "Το Προφίλ  \"%s\" δεν μπορεί να διαγραφεί!"
+
+#: src/netconfpkg/gui/maindialog.py:1257
+#, python-format
+msgid "Do you really want to delete profile \"%s\"?"
+msgstr "Θέλετε πραγματικά να διαγραφεί το προφίλ \"%s\";"
+
+#. clist.clear()
+#. type  = clist.get_text(clist.selection[0], 1)
+#. hw = hardwarelist[clist.selection[0]]
+#: src/netconfpkg/gui/maindialog.py:1330
+msgid ""
+"Sorry, there is nothing to be edited,\n"
+"or this type cannot be edited yet."
+msgstr ""
+
+#: src/netconfpkg/gui/maindialog.py:1348
+#, python-format
+msgid "Do you really want to delete \"%s\"?"
+msgstr "Θέλετε πραγματικά να διαγραφεί το \"%s\";"
+
+#. remove hardware
+#: src/netconfpkg/gui/maindialog.py:1362
+#, python-format
+msgid "Do you want to delete all devices that used \"%s\"?"
+msgstr ""
+"Θέλετε πραγματικά να διαγράψετε όλες τις συσκευές που χρησιμοποιήθηκαν \"%s"
+"\";"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ethernethardware.py:93
+#: src/netconfpkg/gui/tokenringhardware.py:99
+msgid "Command failed: "
+msgstr "Αποτυχία εντολής: "
+
+#: src/netconfpkg/gui/ethernethardware.py:94
+#: src/netconfpkg/gui/tokenringhardware.py:100
+msgid "Output:\n"
+msgstr ""
+
+#: src/netconfpkg/gui/ethernethardware.py:96
+msgid ""
+"The Ethernet card could not be initialized. \n"
+"Please verify your settings and try again."
+msgstr ""
+"Δεν μπόρεσε να γίνει αρχικοποίηση της κάρτας Ethernet. \n"
+"Παρακαλώ ελέξτε τις ρυθμίσεις σας και προσπαθήστε ξανά."
+
+#: src/netconfpkg/gui/tokenringhardware.py:102
+msgid ""
+"The Token Ring card could not be initialized. \n"
+"Please verify your settings and try again."
+msgstr ""
+"Δεν μπόρεσε να γίνει αρχικοποίηση της κάρτας Token Ring. \n"
+"Παρακαλώ ελέξτε τις ρυθμίσεις σας και προσπαθήστε ξανά."
+
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Preston Brown <pbrown@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. ecombo = self.xml.get_widget("ethernetDeviceComboBox")
+#. hwlist = NCHardwareList.getHardwareList()
+#. (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
+#. if len(hwdesc):
+#. ecombo.set_popdown_strings(hwdesc)
+#. widget = self.xml.get_widget("ethernetDeviceEntry")
+#. if self.device.Device and hwcurr:
+#. widget.set_text(hwcurr)
+#. widget.set_position(0)
+#. hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+#. fields = string.split(hw)
+#. hw = fields[0]
+#. self.device.Device = hw
+#. -*- python -*-
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. ! /usr/bin/env python
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/Control.py:33
+msgid "Active"
+msgstr "Ενεργή"
+
+#: src/netconfpkg/Control.py:34
+msgid "Inactive"
+msgstr "Ανενεργή"
+
+#. remove inactive isdn/ppp device
+#. check real ppp device
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print self.getline()
+#. set first (should be only) instance to values in list value
+#. not a nameserver, so all items on one line...
+#. no matter what, update our idea of the variable...
+#. delete *every* instance...
+#: src/netconfpkg/NCCipe.py:155
+#, fuzzy, python-format
+msgid ""
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+"Ο κατάλογος /etc/cipe δεν υπάρχει!\n"
+"Θα τον δημιουργήσω για σας!\n"
+"Πρέπει να εγκαταστήσετε το πακέτο rpm cipe!\n"
+
+#: src/netconfpkg/NCCipe.py:159
+#, fuzzy, python-format
+msgid ""
+"Could not create\n"
+"directory %s!"
+msgstr ""
+"Δεν μπόρεσε να δημιουργηθεί\n"
+"ο κατάλογος /etc/cipe!"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:66
+msgid "auto"
+msgstr "αυτόματο"
+
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:70
+msgid "manual"
+msgstr "χειροκίνητη"
+
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:113
+#: src/netconfpkg/gui/ModemDruid.glade.h:26
+#: src/netconfpkg/gui/modemconfig.glade.h:26
+msgid "None"
+msgstr "Κανένα"
+
+#: src/netconfpkg/NCDialup.py:42
+msgid "Afghanistan"
+msgstr "Αφγανιστάν"
+
+#: src/netconfpkg/NCDialup.py:43
+msgid "Albania"
+msgstr "Αλβανία"
+
+#: src/netconfpkg/NCDialup.py:44
+msgid "Algeria"
+msgstr "Αλγερία"
+
+#: src/netconfpkg/NCDialup.py:45
+msgid "American Samoa"
+msgstr "Αμερικάνικη Σαμόα"
+
+#: src/netconfpkg/NCDialup.py:46
+msgid "Andorra"
+msgstr "Ανδόρα"
+
+#: src/netconfpkg/NCDialup.py:47
+msgid "Argentina"
+msgstr "Αργεντινή"
+
+#: src/netconfpkg/NCDialup.py:48
+msgid "Australia"
+msgstr "Αυστραλία"
+
+#: src/netconfpkg/NCDialup.py:49
+msgid "Austria"
+msgstr "Αυστρία"
+
+#: src/netconfpkg/NCDialup.py:50
+msgid "Belgium"
+msgstr "Βέλγιο"
+
+#: src/netconfpkg/NCDialup.py:51
+msgid "Bosnia and Hercegovina"
+msgstr "Βοσνία Ερζεγοβίνη"
+
+#: src/netconfpkg/NCDialup.py:52
+msgid "Brazil"
+msgstr "Βραζιλία"
+
+#: src/netconfpkg/NCDialup.py:53
+msgid "British Virgin Islands"
+msgstr "Βρετανικοί Παρθένοι Νήσοι"
+
+#: src/netconfpkg/NCDialup.py:54
+msgid "Bulgaria"
+msgstr "Βουλγαρία"
+
+#: src/netconfpkg/NCDialup.py:55
+msgid "Canada"
+msgstr "Καναδάς"
+
+#: src/netconfpkg/NCDialup.py:56
+msgid "Central African Republic"
+msgstr "Κεντρική Αφρική"
+
+#: src/netconfpkg/NCDialup.py:57
+msgid "Chile"
+msgstr "Χιλή"
+
+#: src/netconfpkg/NCDialup.py:58
+msgid "China"
+msgstr "Κίνα"
+
+#: src/netconfpkg/NCDialup.py:59
+msgid "Colombia"
+msgstr "Κολομβία"
+
+#: src/netconfpkg/NCDialup.py:60
+msgid "Croatia"
+msgstr "Κροατία"
+
+#: src/netconfpkg/NCDialup.py:61
+msgid "Cuba"
+msgstr "Κούβα"
+
+#: src/netconfpkg/NCDialup.py:62
+msgid "Czech Republic"
+msgstr "Δημοκρατία της Τσεχίας"
+
+#: src/netconfpkg/NCDialup.py:63
+msgid "Denmark"
+msgstr "Δανία"
+
+#: src/netconfpkg/NCDialup.py:64
+msgid "Finland"
+msgstr "Φινλανδία"
+
+#: src/netconfpkg/NCDialup.py:65
+msgid "France"
+msgstr "Γαλλία"
+
+#: src/netconfpkg/NCDialup.py:66
+msgid "Germany"
+msgstr "Γερμανία"
+
+#: src/netconfpkg/NCDialup.py:67
+msgid "Greece"
+msgstr "Ελλάδα"
+
+#: src/netconfpkg/NCDialup.py:68
+msgid "Hong Kong"
+msgstr "Χονγκ Κονγκ"
+
+#: src/netconfpkg/NCDialup.py:69
+msgid "Hungary"
+msgstr "Ουγγαρία"
+
+#: src/netconfpkg/NCDialup.py:70
+msgid "Iceland"
+msgstr "Ισλανδία"
+
+#: src/netconfpkg/NCDialup.py:71
+msgid "India"
+msgstr "Ινδία"
+
+#: src/netconfpkg/NCDialup.py:72
+msgid "Indonesia"
+msgstr "Ινδονησία"
+
+#: src/netconfpkg/NCDialup.py:73
+msgid "Ireland"
+msgstr "Ιρλανδία"
+
+#: src/netconfpkg/NCDialup.py:74
+msgid "Israel"
+msgstr "Ισραήλ"
+
+#: src/netconfpkg/NCDialup.py:75
+msgid "Italy"
+msgstr "Ιταλία"
+
+#: src/netconfpkg/NCDialup.py:76
+msgid "Japan"
+msgstr "Ιαπωνία"
+
+#: src/netconfpkg/NCDialup.py:77
+msgid "Korea North"
+msgstr "Βόρεια Κορέα"
+
+#: src/netconfpkg/NCDialup.py:78
+msgid "Korea Republic"
+msgstr "Νότια Κορέα"
+
+#: src/netconfpkg/NCDialup.py:79
+msgid "Malaysia"
+msgstr "Μαλαισία"
+
+#: src/netconfpkg/NCDialup.py:80
+msgid "Luxembourg"
+msgstr "Λουξεμβούργο"
+
+#: src/netconfpkg/NCDialup.py:81
+msgid "Mexico"
+msgstr "Μεξικό"
+
+#: src/netconfpkg/NCDialup.py:82
+msgid "Netherlands"
+msgstr "Ολλανδία"
+
+#: src/netconfpkg/NCDialup.py:83
+msgid "New Zealand"
+msgstr "Νέα Ζηλανδία"
+
+#: src/netconfpkg/NCDialup.py:84
+msgid "Norway"
+msgstr "Νορβηγία"
+
+#: src/netconfpkg/NCDialup.py:85
+msgid "Philippines"
+msgstr "Φιλιππίνες"
+
+#: src/netconfpkg/NCDialup.py:86
+msgid "Romania"
+msgstr "Ρουμανία"
+
+#: src/netconfpkg/NCDialup.py:87
+msgid "Singapore"
+msgstr "Σινγκαπούρη"
+
+#: src/netconfpkg/NCDialup.py:88
+msgid "Slovakia"
+msgstr "Σλοβακία"
+
+#: src/netconfpkg/NCDialup.py:89
+msgid "Spain"
+msgstr "Ισπανία"
+
+#: src/netconfpkg/NCDialup.py:90
+msgid "Sweden"
+msgstr "Σουηδία"
+
+#: src/netconfpkg/NCDialup.py:91
+msgid "Switzerland"
+msgstr "Ελβετία"
+
+#: src/netconfpkg/NCDialup.py:92
+msgid "Taiwan"
+msgstr "Ταϊβάν"
+
+#: src/netconfpkg/NCDialup.py:93
+msgid "Thailand"
+msgstr "Ταϊλάνδη"
+
+#: src/netconfpkg/NCDialup.py:94
+msgid "Turkey"
+msgstr "Τουρκία"
+
+#: src/netconfpkg/NCDialup.py:95
+msgid "Ukraine"
+msgstr "Ουκρανία"
+
+#: src/netconfpkg/NCDialup.py:96
+msgid "United Kingdom"
+msgstr "Ενωμένο Βασίλειο"
+
+#: src/netconfpkg/NCDialup.py:97
+msgid "United States of America"
+msgstr "ΗΠΑ"
+
+#: src/netconfpkg/NCDialup.py:98
+msgid "Vietnam"
+msgstr "Βιετνάμ"
+
+#: src/netconfpkg/NCDialup.py:99
+msgid "Yugoslavia"
+msgstr "Γιουγκοσλαβία"
+
+#.
+#. XXX FIXME... this is not OO
+#.
+#. Clean up wvdial
+#. if the loop does not get interrupted by break
+#. we did not find the Modem in the hardwarelist
+#. and it gets deleted
+#. Clean up modules
+#.
+#. XXX FIXME... this is not OO
+#.
+#. print "Testing " + str(mod)
+#. print "Removing " + str(mod)
+#. print str(modules.vars[mod].keys())
+#. print "Test: " + str(modules[mod])
+#. no card seems to use this
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCProfileList.py:53 src/netconfpkg/NCProfileList.py:58
+#, python-format
+msgid "Copying %s to default profile."
+msgstr ""
+
+#. 60016
+#. Keep that test for later versions
+#: src/netconfpkg/NCProfileList.py:163
+#, python-format
+msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
+msgstr ""
+
+#: src/netconfpkg/NCProfileList.py:165
+msgid ""
+"Please select another Hardware Device or \n"
+"activate only one of them."
+msgstr ""
+"Παρακαλώ επιλέξτε άλλη Συσκευή Υλικού ή \n"
+"ενεργοποιήστε μόνο μία από αυτές."
+
+#. if the hostname changed, set it system wide (#55746)
+#. First remove all files that are linked in the device directory
+#. Check, if it is a device of neat in every profile directory
+#. Remove all profile directories except default
+#. Remove all files in the default profile directory
+#. delete all other entries the user has deleted in the UI
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Do not clear the non-filled in values
+#. Bugzilla #52252
+#. for i in conf.keys():
+#. if not conf[i] or conf[i] == "": del conf[i]
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NC_functions.py:68
+msgid "Common"
+msgstr "Κοινό"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: src/netconfpkg/NC_functions.py:111 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/gui/modemconfig.glade.h:19
+msgid "Hardware (CRTSCTS)"
+msgstr "Υλικό (CRTSCTS)"
+
+#: src/netconfpkg/NC_functions.py:112 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/gui/modemconfig.glade.h:28
+msgid "Software (XON/XOFF)"
+msgstr "Λογισμικό (XON/XOFF)"
+
+#. self.args = args
+#: src/netconfpkg/NC_functions.py:154
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr ""
+
+#. print "toinstall %s" % str(toinstall)
+#. print "plist %s" % str(plist)
+#: src/netconfpkg/NC_functions.py:169
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+
+#. test for wireless
+#. Some failsafe return codes (same as in gtk)
+#. print "file '%s' is not a file!" % file
+#: src/netconfpkg/NC_functions.py:529
+#, python-format
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"Σφάλμα κατά την αφαίρεση\n"
+" %s:\n"
+" %s!"
+
+#: src/netconfpkg/NC_functions.py:539
+#, python-format
+msgid ""
+"Error linking %s\n"
+"to\n"
+"%s:\n"
+"%s!"
+msgstr ""
+
+#: src/netconfpkg/NC_functions.py:550
+#, python-format
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+
+#: src/netconfpkg/NC_functions.py:560
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+
+#: src/netconfpkg/NC_functions.py:570
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+
+#: src/netconfpkg/NC_functions.py:578
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"Σφάλμα κατά την δημιουργία του καταλόγου!\n"
+"%s"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
+#. we only support 1 ISDN card in this version
+#. !/usr/bin/python
+#.
+#. Python wrapper for ipcalc command line IP address manipulation tool
+#. Copyright (c) 2001-2003 Red Hat, Inc. All rights reserved.
+#.
+#. This software may be freely redistributed under the terms of the GNU
+#. public license.
+#.
+#. You should have received a copy of the GNU General Public License
+#. along with this program; if not, write to the Free Software
+#. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#.
+#. Author: Preston Brown <pbrown@redhat.com>
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCHardware.py:21
+#, fuzzy
+msgid "inactive"
+msgstr "Ανενεργή"
+
+#. not found in last config and not in actual system
+#: src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr ""
+
+#. found in system
+#: src/netconfpkg/NCHardware.py:23
+#, fuzzy
+msgid "configured"
+msgstr "Ρύθμιση"
+
+#. found in config but not in system
+#: src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr ""
+
+#. found in system and in config
+#. !/usr/bin/python
+#.
+#. test1
+#.
+#. read
+#. write
+#. check
+#. cleanup
+#.
+#. test2
+#.
+#. read
+#. modify
+#. write
+#. check
+#. cleanup
+#.
+#. test3
+#.
+#. read
+#. write
+#. check
+#. cleanup
+#.
+#. test4
+#.
+#. read
+#. modify
+#. write
+#. check
+#. cleanup
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print status
+#. if ((self.oldmode & 0044) != 0044):
+#. ask = NC_functions.generic_yesno_dialog(#. _("May I change\n%s\nfrom mode %o to %o?") % #. (self.filename, self.oldmode & 03777, 0644))
+#. if ask != RESPONSE_YES:
+#. self.chmod(self.oldmode)
+#. def __str__(self):
+#. if self.Alias != None:
+#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#. self.Alias)
+#. else:
+#. return "Device %s (%s)" % (self.DeviceId, self.Device)
+#. def __repr__(self):
+#. if self.Alias != None:
+#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#. self.Alias)
+#. else:
+#. return "Device %s (%s)" % (self.DeviceId, self.Device)
+#. ok, we have to inherit all other data from our master
+#: src/netconfpkg/NCDevice.py:202
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr ""
+
+#. XXX fixme
+#: src/netconfpkg/NCDevice.py:234
+#, python-format
+msgid "Static routes file %s is invalid"
+msgstr ""
+
+#: src/netconfpkg/NCDevice.py:373
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s!\n"
+
+#: src/netconfpkg/NCDevice.py:390
+msgid "Network device deactivating..."
+msgstr "Γίνεται απενεργοποίηση συσκευής δικτύου..."
+
+#: src/netconfpkg/NCDevice.py:391
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "Απενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε..."
+
+#: src/netconfpkg/NCDevice.py:393
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Δεν μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s!\n"
+
+#: src/netconfpkg/NCDeviceList.py:64
+#, fuzzy
+msgid "Please start redhat-config-network with root permissions once!\n"
+msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
+
+#: src/netconfpkg/NCDeviceList.py:68
+#, python-format
+msgid "Copying %s to devices and putting it into the default profile."
+msgstr ""
+
+#. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
+#. return DeviceList_base._objToStr(self, obj, parentStr)
+#.
+#. clear all Dialer sections in wvdial.conf
+#. before the new Dialer sections written
+#.
+#.
+#. Clear all pap and chap-secrets generated by netconf
+#.
+#.
+#. traverse all devices in the list
+#.
+#.
+#. really save the device
+#.
+#. if dev.changed:
+#.
+#. Remove old config files
+#.
+#. bug #78043
+#. we should have device specific gateways
+#. fixed this way, until we have a way to mark the
+#. default GATEWAY/GATEWAYDEV
+#. no card seems to use this
+#. if dev.Dialup.Callback == None:
+#. dl.save()
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/DialupDruid.glade.h:1
@@ -456,77 +2514,6 @@ msgstr "Όνομα _Παροχέα:"
 #: src/netconfpkg/gui/dslconfig.glade.h:29
 msgid "_T-Online Account Setup"
 msgstr ""
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ADSLInterface.py:94
-msgid "xDSL connection"
-msgstr "Σύνδεση xDSL"
-
-#: src/netconfpkg/gui/ADSLInterface.py:100
-#, fuzzy
-msgid ""
-"Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber "
-"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
-"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
-"uploads at the same speed), and several others.  These types of connections "
-"are common in the United States, and are gaining acceptance elsewhere.  "
-"Speeds vary according to the technology used, but generally range from "
-"144kbps to 1.0Mbps."
-msgstr "Δημιουργία μιας σύνδεσης xDSL."
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. get the widgets we need
-#: src/netconfpkg/gui/ADSLInterface.py:139
-#: src/netconfpkg/gui/CipeInterface.py:144
-#: src/netconfpkg/gui/DialupDruid.py:233
-#: src/netconfpkg/gui/EthernetInterface.py:213
-#: src/netconfpkg/gui/WirelessInterface.py:283
-#: src/netconfpkg/gui/TokenRingInterface.py:207
-msgid "You have selected the following information:"
-msgstr "Έχετε επιλέξει τις παρακάτω πληροφορίες:"
-
-#: src/netconfpkg/gui/ADSLInterface.py:140
-msgid "Ethernet Device:"
-msgstr "Συσκευή Ethernet:"
-
-#: src/netconfpkg/gui/ADSLInterface.py:141
-#: src/netconfpkg/gui/DialupDruid.py:236
-msgid "Provider Name:"
-msgstr "Όνομα Παροχέα:"
-
-#: src/netconfpkg/gui/ADSLInterface.py:142
-#: src/netconfpkg/gui/DialupDruid.py:238
-msgid "Login Name:"
-msgstr "Όνομα Σύνδεσης:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
 #: src/netconfpkg/gui/cipeconfig.glade.h:3
@@ -771,160 +2758,6 @@ msgstr "Αριθμός _Τηλεφώνου:"
 msgid "_Subnet Mask:"
 msgstr "Μάσκα Υ_ποδικτύου:"
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:32
-#: src/netconfpkg/gui/dialupconfig.glade.h:74
-#: src/netconfpkg/gui/dialupconfig.py:345
-msgid "raw IP"
-msgstr ""
-
-#: src/netconfpkg/gui/DialupDruid.glade.h:33
-#: src/netconfpkg/gui/dialupconfig.glade.h:75
-#: src/netconfpkg/gui/dialupconfig.py:347
-#: src/netconfpkg/gui/dialupconfig.py:378
-msgid "sync PPP"
-msgstr ""
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/CipeInterface.py:96
-msgid "CIPE (VPN) connection"
-msgstr "Σύνδεση CIPE (VPN)"
-
-#: src/netconfpkg/gui/CipeInterface.py:99
-msgid "Create a new virtual private network connection with CIPE."
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:145
-#: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/WirelessInterface.py:284
-#: src/netconfpkg/gui/TokenRingInterface.py:208
-msgid "Device:"
-msgstr "Συσκευή:"
-
-#: src/netconfpkg/gui/CipeInterface.py:146
-msgid "Tunnel through Device:"
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:147
-msgid "Local Port:"
-msgstr "Τοπική Θύρα:"
-
-#: src/netconfpkg/gui/CipeInterface.py:152
-#: src/netconfpkg/gui/CipeInterface.py:154
-msgid "Remote Peer Address:"
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:152
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Auto"
-msgstr "Αυτόματη"
-
-#: src/netconfpkg/gui/CipeInterface.py:155
-msgid "Remote Peer Port:"
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:157
-msgid "Remote Virtual Address:"
-msgstr "Απομακρυσμένη Εικονική Διεύθυνση:"
-
-#: src/netconfpkg/gui/CipeInterface.py:158
-msgid "Local Virtual Address:"
-msgstr "Τοπική Εικονική Διεύθυνση:"
-
-#. else:
-#. self.on_generateKeyButton_clicked()
-#. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:167
-#: src/netconfpkg/gui/CipeInterface.py:235 src/netconfpkg/gui/cipeconfig.py:80
-#: src/netconfpkg/gui/cipeconfig.py:142
-msgid "None - Server Mode"
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:174 src/netconfpkg/gui/cipeconfig.py:88
-msgid " (dynamic)"
-msgstr " (δυναμική)"
-
-#. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:211
-#: src/netconfpkg/gui/CipeInterface.py:265
-#: src/netconfpkg/gui/cipeconfig.py:120 src/netconfpkg/gui/cipeconfig.py:171
-msgid "Server Mode"
-msgstr ""
-
-#. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:300
-#: src/netconfpkg/gui/CipeInterface.py:305
-#: src/netconfpkg/gui/cipeconfig.py:203 src/netconfpkg/gui/cipeconfig.py:208
-msgid "(own choice)"
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:311
-#: src/netconfpkg/gui/cipeconfig.py:214
-msgid "IP Address of Tunnel Device: "
-msgstr "Διεύθυνση IP της συσκευής Tunnel: "
-
-#: src/netconfpkg/gui/CipeInterface.py:312
-#: src/netconfpkg/gui/cipeconfig.py:215
-msgid "Local Port: "
-msgstr "Τοπική Θύρα: "
-
-#: src/netconfpkg/gui/CipeInterface.py:313
-#: src/netconfpkg/gui/cipeconfig.py:216
-msgid "Remote Peer Address: "
-msgstr ""
-
-#: src/netconfpkg/gui/CipeInterface.py:317
-#: src/netconfpkg/gui/cipeconfig.py:220
-msgid "Remote Virtual Address: "
-msgstr "Απομακρυσμένη Εικονική Διεύθυνση: "
-
-#: src/netconfpkg/gui/CipeInterface.py:318
-#: src/netconfpkg/gui/cipeconfig.py:221
-msgid "Local Virtual Address: "
-msgstr "Τοπική Εικονική Διεύθυνση: "
-
-#: src/netconfpkg/gui/CipeInterface.py:319
-#: src/netconfpkg/gui/cipeconfig.py:222
-msgid "Secret Key: "
-msgstr "Μυστικό Κλειδί: "
-
-#. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:329
-msgid ""
-"You must enter a secret key \n"
-"or generate one"
-msgstr ""
-"Πρέπει να εισάγετε ένα μυστικό κλειδί \n"
-"ή να το δημιουργήσετε"
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. get the widgets we need
-#. make ctrl-C work
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:2
@@ -1070,42 +2903,6 @@ msgstr ""
 msgid "Select Ethernet Adapter"
 msgstr "Επιλογή Προσαρμογέα Ethernet"
 
-#. Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. hwlist = NCHardwareList.getHardwareList()
-#. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
-#. if len(hwdesc):
-#. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
-#: src/netconfpkg/gui/EthernetHardwareDruid.py:145
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
-#: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
-#: src/netconfpkg/gui/ethernethardware.glade.h:22
-#: src/netconfpkg/gui/ethernethardware.py:151
-#: src/netconfpkg/gui/ethernethardware.py:168
-#: src/netconfpkg/gui/tokenringhardware.glade.h:21
-#: src/netconfpkg/gui/tokenringhardware.py:153
-#: src/netconfpkg/gui/tokenringhardware.py:164
-#: src/netconfpkg/NCHardwareList.py:168 src/netconfpkg/NCHardwareList.py:276
-#: src/netconfpkg/NCHardwareList.py:393 src/netconfpkg/NCHardwareList.py:423
-#: src/netconfpkg/NC_functions.py:238 src/netconfpkg/NCDevice.py:207
-#: src/netconfpkg/NCDevice.py:214 src/netconfpkg/NCDeviceList.py:86
-msgid "Unknown"
-msgstr "Άγνωστο"
-
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:22
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:22
 #: src/netconfpkg/gui/ethernethardware.glade.h:23
@@ -1147,14 +2944,6 @@ msgstr "eth6"
 msgid "eth7"
 msgstr "eth7"
 
-#: src/netconfpkg/gui/DialupDruid.py:235
-msgid "Hardware:"
-msgstr "Υλικό:"
-
-#: src/netconfpkg/gui/DialupDruid.py:239
-msgid "Phone Number:"
-msgstr "Αριθμός Τηλεφώνου:"
-
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
@@ -1162,22 +2951,6 @@ msgstr "Αριθμός Τηλεφώνου:"
 msgid "Configure Network Settings"
 msgstr "Δημιουργία νέας σύνδεσης Token Ring"
 
-#. print self.devicelist
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
 #: src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
 msgid "Create Ethernet Device"
@@ -1210,120 +2983,6 @@ msgstr "Επιλογής Συσκευής Ethernet"
 msgid "Select the Ethernet card you want to configure:"
 msgstr "Επιλέξετε την κάρτα Ethernet που θέλετε να ρυθμίσετε:"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print "EthernetInterface getDeviceList"
-#. FIXME
-#: src/netconfpkg/gui/EthernetInterface.py:115
-msgid "Ethernet connection"
-msgstr "Σύνδεση Ethernet"
-
-#: src/netconfpkg/gui/EthernetInterface.py:121
-msgid "Create a new ethernet connection."
-msgstr "Δημιουργία νέας σύνδεσης Ethernet."
-
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:194
-msgid "Other Ethernet Card"
-msgstr "Άλλη Κάρτα Ethernet"
-
-#: src/netconfpkg/gui/EthernetInterface.py:225
-#: src/netconfpkg/gui/WirelessInterface.py:295
-#: src/netconfpkg/gui/TokenRingInterface.py:219
-#: src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Address:"
-msgstr "Διεύθυνση:"
-
-#: src/netconfpkg/gui/EthernetInterface.py:226
-#: src/netconfpkg/gui/WirelessInterface.py:296
-#: src/netconfpkg/gui/TokenRingInterface.py:220
-msgid "Subnet Mask:"
-msgstr "Μάσκα Υποδικτύου:"
-
-#: src/netconfpkg/gui/EthernetInterface.py:227
-#: src/netconfpkg/gui/WirelessInterface.py:297
-#: src/netconfpkg/gui/TokenRingInterface.py:221
-msgid "Default Gateway Address:"
-msgstr "Εξ ορισμού Διεύθυνση Πύλης Δικτύου:"
-
-#: src/netconfpkg/gui/EthernetInterface.py:229
-#: src/netconfpkg/gui/WirelessInterface.py:299
-#: src/netconfpkg/gui/TokenRingInterface.py:223
-msgid "Automatically obtain IP address settings with:"
-msgstr "Αυτόματη απόδοση διεύθυνσης IP με:"
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GenericInterface.py:83
-#, python-format
-msgid "%s connection"
-msgstr "%s σύνδεση"
-
-#: src/netconfpkg/gui/GenericInterface.py:86
-#, python-format
-msgid "Create a new %s connection."
-msgstr "Δημιουργία νέας %s σύνδεσης."
-
-#: src/netconfpkg/gui/GenericInterface.py:96
-msgid "This wizard still has to be written."
-msgstr "Αυτός ο μάγος δεν είναι ακόμα έτοιμος."
-
-#: src/netconfpkg/gui/GenericInterface.py:97
-msgid "Press Finish to get the standard configuration dialog."
-msgstr ""
-
-#: src/netconfpkg/gui/GenericInterface.py:98
-msgid "Then, at first, enter the nickname for the device."
-msgstr ""
-
-#. # FIXME
-#: src/netconfpkg/gui/GenericInterface.py:135
-msgid "This device can not be edited with this tool!"
-msgstr "Η συσκευή αυτή δεν μπορεί να επεξεργαστεί με αυτό το εργαλείο!"
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. make ctrl-C work
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/isdnhardware.glade.h:1
 msgid "1_TR6"
@@ -1348,67 +3007,10 @@ msgstr "Προσαρμογείς _ISDN:"
 msgid "Select ISDN Adapter"
 msgstr "Επιλογή προσαρμογέα ISDN"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/IsdnInterface.py:87
-msgid "ISDN connection"
-msgstr "Σύνδεση ISDN"
-
-#: src/netconfpkg/gui/IsdnInterface.py:93
-msgid ""
-"Create a new ISDN connection. This is a connection that uses an Integrated "
-"Services Digital Network line to dial into to your Internet Service "
-"Provider. This type of technology requires a special phone line to be "
-"installed by your telephone company. It also requires a device known as a "
-"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
-"type of connection is popular in Europe and several other technologically "
-"advanced regions.  It is available but uncommon in the USA.  Speeds range "
-"from 64kbps to 128kbps."
-msgstr ""
-"Δημιουργία μιας νέας σύνδεσης ISDN. Η σύνδεση αυτή χρησιμοποιεί μια γραμμή "
-"ISDN (Intergated Services Digital Network) για να επικοινωνήσει με τον "
-"Παροχέα Υπηρεσιών Διαδικτύου. Αυτή η τεχνολογία απαιτεί την εγκατάσταση μιας "
-"ειδικής τηλεφωνικής γραμμής από τον τηλεπικοινωνιακό σας φορέα. Επίσης "
-"απαιτεί και μια συσκευή που είναι γνωστή ως Τερματικός Προσαρμογέας για τον "
-"τερματισμό της σύνδεσης σας με τον ΠΥΔ (ISP).  Αυτή η μορφή σύνδεσης είναι "
-"δημοφιλής στην Ευρώπη και σε αρκετές άλλες προηγμένες τεχνολογικά χώρες. "
-"Είναι διαθέσιμη αλλά όχι και διαδεδομένη στις ΗΠΑ.  Το φάσμα των ταχυτήτων "
-"είναι ανάμεσα στα 64kbps έως τα 128kbps. "
-
 #: src/netconfpkg/gui/ModemDruid.glade.h:1
 msgid "/dev/modem"
 msgstr "/dev/modem"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. make ctrl-C work
 #: src/netconfpkg/gui/ModemDruid.glade.h:2
 #: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "/dev/ttyI0"
@@ -1499,35 +3101,6 @@ msgstr "57600"
 msgid "9600"
 msgstr "9600"
 
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/gui/ModemDruid.glade.h:20
-#: src/netconfpkg/gui/modemconfig.glade.h:19 src/netconfpkg/NC_functions.py:93
-msgid "Hardware (CRTSCTS)"
-msgstr "Υλικό (CRTSCTS)"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:21
-#: src/netconfpkg/gui/ModemInterface.py:167
-#: src/netconfpkg/gui/modemconfig.glade.h:20
-#: src/netconfpkg/gui/modemconfig.py:146
-msgid "High"
-msgstr "Υψηλή"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:22
-#: src/netconfpkg/gui/ModemInterface.py:163
-#: src/netconfpkg/gui/modemconfig.glade.h:21
-#: src/netconfpkg/gui/modemconfig.py:142
-msgid "Low"
-msgstr "Χαμηλή"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:23
-#: src/netconfpkg/gui/ModemInterface.py:165
-#: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
-#: src/netconfpkg/gui/modemconfig.py:144
-msgid "Medium"
-msgstr "Μεσαία"
-
 #: src/netconfpkg/gui/ModemDruid.glade.h:24
 #: src/netconfpkg/gui/modemconfig.glade.h:24
 msgid "Modem Properties"
@@ -1538,34 +3111,9 @@ msgstr "Ιδιότητες  Μόντεμ"
 msgid "Modem _Volume:"
 msgstr "_Ένταση Μόντεμ:"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:26
-#: src/netconfpkg/gui/modemconfig.glade.h:26 src/netconfpkg/NCDialup.py:41
-#: src/netconfpkg/NC_functions.py:95
-msgid "None"
-msgstr "Κανένα"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:27
-#: src/netconfpkg/gui/ModemInterface.py:161
-#: src/netconfpkg/gui/modemconfig.glade.h:27
-#: src/netconfpkg/gui/modemconfig.py:140
-msgid "Off"
-msgstr "Κλειστή"
-
 #: src/netconfpkg/gui/ModemDruid.glade.h:28
 msgid "Select Modem"
 msgstr "Επιλογή Μόντεμ"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:29
-#: src/netconfpkg/gui/modemconfig.glade.h:28 src/netconfpkg/NC_functions.py:94
-msgid "Software (XON/XOFF)"
-msgstr "Λογισμικό (XON/XOFF)"
-
-#: src/netconfpkg/gui/ModemDruid.glade.h:30
-#: src/netconfpkg/gui/ModemInterface.py:169
-#: src/netconfpkg/gui/modemconfig.glade.h:29
-#: src/netconfpkg/gui/modemconfig.py:148
-msgid "Very High"
-msgstr "Πολύ Υψηλή"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:31
 #: src/netconfpkg/gui/modemconfig.glade.h:30
@@ -1586,74 +3134,6 @@ msgstr "Συσκευή _Μόντεμ:"
 #: src/netconfpkg/gui/modemconfig.glade.h:33
 msgid "_Use touch tone dialing"
 msgstr ""
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:80
-msgid "Modem connection"
-msgstr "Σύνδεση Μόντεμ"
-
-#: src/netconfpkg/gui/ModemInterface.py:86
-msgid ""
-"Create a new Modem connection.  This is a connection that uses a serial "
-"analog modem to dial into to your Internet Service Provider. These modems "
-"use sound over a normal copper telephone line to transmit data.  These types "
-"of connections are available just about anywhere in the world where there is "
-"a phone system."
-msgstr ""
-"Δημιουργία μιας νέας σύνδεσης Μόντεμ.   Η σύνδεση αυτή χρησιμοποιεί ένα "
-"σειριακό αναλογικό μόντεμ για να επικοινωνήσει με τον Παροχέα Υπηρεσιών "
-"Διαδικτύου. Τα μόντεμ αυτού του τύπου χρησιμοποιούν ήχο για την μετάδοση "
-"δεδομένων μέσω μιας απλής τηλεφωνικής γραμμής.  Οι συνδέσεις αυτής της "
-"μορφής είναι διαθέσιμες σε όλα τα μέρη του κόσμου που έχουν τηλεφωνικό "
-"δίκτυο."
-
-#: src/netconfpkg/gui/ModemInterface.py:114
-msgid "Modem probing..."
-msgstr "Γίνεται ανίχνευση modem..."
-
-#: src/netconfpkg/gui/ModemInterface.py:118
-msgid "Probing for Modems, please wait..."
-msgstr "Γίνεται ανίχνευση για Μόντεμ, παρακαλώ περιμένετε..."
-
-#: src/netconfpkg/gui/ModemInterface.py:133
-msgid "No modem was found on your system."
-msgstr "Δεν βρέθηκε μόντεμ στο σύστημα σας."
-
-#. 460800 seems to be to high
-#: src/netconfpkg/gui/ModemInterface.py:154
-#: src/netconfpkg/gui/modemconfig.py:113
-msgid "Generic Modem"
-msgstr "Τυπικό Μόντεμ"
 
 #: src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
 msgid "Add new Device Type"
@@ -1733,54 +3213,6 @@ msgstr "Επιλογή κάρτας Tokenring που θέλετε να ρυθμ�
 msgid "Tokenring card"
 msgstr "Κάρτα Tokenring"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/WirelessInterface.py:120
-msgid "Wireless connection"
-msgstr "Ασύρματη σύνδεση"
-
-#: src/netconfpkg/gui/WirelessInterface.py:126
-msgid "Create a new wireless connection."
-msgstr "Δημιουργία νέας ασύρματης σύνδεσης."
-
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/WirelessInterface.py:263
-msgid "Other Wireless Card"
-msgstr "Άλλη Ασύρματη Κάρτα"
-
-#: src/netconfpkg/gui/WirelessInterface.py:302
-msgid "Mode: "
-msgstr "Κατάσταση: "
-
-#: src/netconfpkg/gui/WirelessInterface.py:303
-msgid "ESSID (Network ID):"
-msgstr "ESSID (ID Δικτύου):"
-
-#: src/netconfpkg/gui/WirelessInterface.py:309
-msgid "Channel: "
-msgstr "Κανάλι: "
-
-#: src/netconfpkg/gui/WirelessInterface.py:310
-msgid "Transmit Rate: "
-msgstr "Ρυθμός Μετάδοσης: "
-
-#: src/netconfpkg/gui/WirelessInterface.py:311
-msgid "Key: "
-msgstr "Κλειδί: "
-
 #: src/netconfpkg/gui/tonline.glade.h:1
 msgid "Account Setup"
 msgstr "Ρύθμιση Λογαριασμού"
@@ -1812,46 +3244,10 @@ msgstr "_Προσωπικό Συνθηματικό:"
 msgid "_T-Online Account"
 msgstr ""
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Import all subpackages of our netconfpkg directory. This code is a real
-#. dirty hack but does the job(tm). It basically finds all .py files in the
-#. package directory and imports from all found files (except __init__.py that
-#. is) ;). Nice for plugin mechanism.
 #: src/netconfpkg/gui/chooseprovider.glade.h:1
 msgid "Choose a Provider"
 msgstr "Επιλογή ενός Παροχέα"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.host.commit()
-#. make ctrl-C work
 #: src/netconfpkg/gui/cipeconfig.glade.h:1
 #: src/netconfpkg/gui/ctcconfig.glade.h:1
 #: src/netconfpkg/gui/dialupconfig.glade.h:3
@@ -1911,34 +3307,6 @@ msgstr "έξω"
 msgid "_Tunnel Settings"
 msgstr "Ρυθμίσεις _Tunnel"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/TokenRingInterface.py:112
-msgid "Token Ring connection"
-msgstr "Σύνδεση Token Ring"
-
-#: src/netconfpkg/gui/TokenRingInterface.py:118
-msgid "Create a new Token Ring connection."
-msgstr "Δημιουργία νέας σύνδεσης Token Ring."
-
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/TokenRingInterface.py:189
-msgid "Other Tokenring Card"
-msgstr "Άλλη Κάρτα Tokenring"
-
 #: src/netconfpkg/gui/ctcconfig.glade.h:2
 msgid "CTC Configuration"
 msgstr "Ρύθμιση CTC"
@@ -1993,30 +3361,6 @@ msgstr "_MTU:"
 msgid "_Protocols"
 msgstr "_Πρωτόκολλα"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ctcconfig.py:49
-msgid "CTC Device"
-msgstr "Συσκευή CTC"
-
-#: src/netconfpkg/gui/ctcconfig.py:52
-msgid "IUCV Device"
-msgstr "Συσκευή IUCV"
-
-#. widget.set_position(0)
 #: src/netconfpkg/gui/devicetype.glade.h:1
 msgid "Choose Hardware Device Type"
 msgstr "Επιλογή Τύπου Συσκευής Υλικού"
@@ -2061,26 +3405,6 @@ msgstr ""
 #, fuzzy
 msgid "Dial-In _Number:"
 msgstr "Αριθμός Τηλεφώνου:"
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/dialupconfig.glade.h:11
-#: src/netconfpkg/gui/dialupconfig.py:249
-msgid "Dialup Configuration"
-msgstr "Ρύθμιση Dialup"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:12
 msgid "Enable VJ Connection-_ID Compression"
@@ -2232,81 +3556,6 @@ msgstr "Παροχέας:"
 msgid "_Use Callback"
 msgstr "_Χρήση Επανάκλησης"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/dialupconfig.glade.h:66 src/netconfpkg/NCDialup.py:37
-msgid "auto"
-msgstr "αυτόματο"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:67
-#: src/netconfpkg/gui/dialupconfig.py:362
-#: src/netconfpkg/gui/dialupconfig.py:431
-msgid "chap"
-msgstr "chap"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:68
-#: src/netconfpkg/gui/dialupconfig.py:365
-#: src/netconfpkg/gui/dialupconfig.py:433
-msgid "chap+pap"
-msgstr "chap+pap"
-
-#. get free ISDN device if encap mode is changed
-#: src/netconfpkg/gui/dialupconfig.glade.h:69
-#: src/netconfpkg/gui/dialupconfig.py:301
-#: src/netconfpkg/gui/dialupconfig.py:395
-#, fuzzy
-msgid "in"
-msgstr "Μέσα"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:70 src/netconfpkg/NCDialup.py:38
-msgid "manual"
-msgstr "χειροκίνητη"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:71
-#: src/netconfpkg/gui/dialupconfig.py:367
-msgid "none"
-msgstr "κανένα"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:72
-#: src/netconfpkg/gui/dialupconfig.py:301
-#, fuzzy
-msgid "out"
-msgstr "έξω"
-
-#: src/netconfpkg/gui/dialupconfig.glade.h:73
-#: src/netconfpkg/gui/dialupconfig.py:360
-#: src/netconfpkg/gui/dialupconfig.py:429
-msgid "pap"
-msgstr "pap"
-
 #: src/netconfpkg/gui/dslconfig.glade.h:3
 msgid "Allow dial on _demand"
 msgstr ""
@@ -2370,15 +3619,6 @@ msgstr "Προσθήκη / Επεξεργασία Διεύθυνσης IP"
 msgid "_Gateway:"
 msgstr "_Πύλη Δικτύου:"
 
-#: src/netconfpkg/gui/dialupconfig.py:281
-msgid "ISDN Dialup Configuration"
-msgstr "Ρύθμιση Dialup με ISDN"
-
-#: src/netconfpkg/gui/dialupconfig.py:443
-msgid "Modem Dialup Configuration"
-msgstr "Ρύθμιση Dialup με Μόντεμ"
-
-#. make ctrl-C work
 #: src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain Name:"
 msgstr "Όνομα Τομέα:"
@@ -2407,90 +3647,6 @@ msgstr "Συσκευή Ethernet:"
 #: src/netconfpkg/gui/tokenringhardware.glade.h:19
 msgid "Network Adapters Configuration"
 msgstr "Ρύθμιση Προσαρμογέων Δικτύου"
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#.
-#. exception.py - general exception formatting and saving
-#.
-#. Matt Wilson <msw@redhat.com>
-#. Erik Troan <ewt@redhat.com>
-#. Harald Hoyer <harald@redhat.com>
-#.
-#. Copyright 2001-2003 Red Hat, Inc.
-#.
-#. This software may be freely redistributed under the terms of the GNU
-#. library public license.
-#.
-#. You should have received a copy of the GNU Library Public License
-#. along with this program; if not, write to the Free Software
-#. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#.
-#.
-#. ExceptionWindow class
-#.
-#: src/netconfpkg/gui/exception.py:34
-msgid "Exception Occured"
-msgstr ""
-
-#: src/netconfpkg/gui/exception.py:35
-msgid "Debug"
-msgstr "Αποσφαλμάτωση"
-
-#: src/netconfpkg/gui/exception.py:36
-msgid "Save to file"
-msgstr "Αποθήκευση σε αρχείο"
-
-#. I did it this way for future expantion
-#. 0 is debug
-#. 1 is save
-#. 2 is OK
-#. XXX do length limits on obj dumps.
-#. protect from loops
-#. print text
-#.
-#. FileSelection class
-#.
-#: src/netconfpkg/gui/exception.py:164
-msgid "Select a file:"
-msgstr "Επιλογή ενός αρχείου:"
-
-#. win.connect ("clicked", self.quit)
-#.
-#. handleException function
-#.
-#: src/netconfpkg/gui/exception.py:209
-msgid "Exception Occurred"
-msgstr ""
-
-#: src/netconfpkg/gui/exception.py:219
-msgid "Please specify a file to save the dump"
-msgstr ""
-
-#: src/netconfpkg/gui/exception.py:235
-#, python-format
-msgid "Failed to write to file %s."
-msgstr "Αποτυχία εγγραφής στο αρχείο %s."
-
-#: src/netconfpkg/gui/exception.py:239
-#, python-format
-msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
-msgstr ""
 
 #: src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Choose Hardware Type"
@@ -2523,239 +3679,6 @@ msgstr "Token Ring"
 #: src/netconfpkg/gui/isdnhardware.glade.h:7
 msgid "ISDN Adapters Configuration"
 msgstr "Ρύθμιση Προσαρμογέων  ISDN"
-
-#. !/usr/bin/python2.2
-#. # netconf - A network configuration tool
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # Copyright (C) 2001 - 2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. initialize the button state..
-#: src/netconfpkg/gui/maindialog.py:224
-msgid "Loading Configuration..."
-msgstr "Φόρτωση Ρυθμίσεων..."
-
-#: src/netconfpkg/gui/maindialog.py:231
-msgid "Loading Device Configuration..."
-msgstr "Φόρτωση Ρυθμίσεων Συσκευής..."
-
-#: src/netconfpkg/gui/maindialog.py:236
-msgid "Loading Hardware Configuration..."
-msgstr ""
-
-#: src/netconfpkg/gui/maindialog.py:241
-msgid "Loading Profile Configuration..."
-msgstr "Φόρτωση Ρυθμίσεων Προφίλ..."
-
-#: src/netconfpkg/gui/maindialog.py:246
-#, fuzzy
-msgid "Testing Configuration Set..."
-msgstr "Γίνεται Έλεγχος Συνόλου Ρυθμίσεων..."
-
-#: src/netconfpkg/gui/maindialog.py:274
-#, python-format
-msgid "Active Profile: %s (modified)"
-msgstr "Ενεργό Προφίλ: %s (τροποποιημένο)"
-
-#: src/netconfpkg/gui/maindialog.py:278
-#, python-format
-msgid "Active Profile: %s"
-msgstr "Ενεργό Προφίλ: %s"
-
-#: src/netconfpkg/gui/maindialog.py:286
-msgid "Saving Configuration..."
-msgstr "Αποθήκευση Ρυθμίσεων..."
-
-#: src/netconfpkg/gui/maindialog.py:295
-#, python-format
-msgid ""
-"Error saving Configuration!\n"
-"%s"
-msgstr ""
-"Σφάλμα κατά την αποθήκευση Ρυθμίσεων!\n"
-"%s"
-
-#: src/netconfpkg/gui/maindialog.py:300
-msgid ""
-"Changes are saved.\n"
-"You may want to restart\n"
-"the network and network services\n"
-"or restart the computer."
-msgstr ""
-"Οι αλλαγές αποθηκεύθηκαν.\n"
-"Ίσως θα θέλατε να επανεκκινήσετε\n"
-"το δίκτυο και τις υπηρεσίες δικτύου\n"
-"ή να επανεκκινήσετε τον υπολογιστή."
-
-#: src/netconfpkg/gui/maindialog.py:308
-msgid "Saving Device Configuration..."
-msgstr "Αποθήκευση Ρυθμίσεων Συσκευής..."
-
-#: src/netconfpkg/gui/maindialog.py:315
-msgid "Saving Hardware Configuration..."
-msgstr ""
-
-#: src/netconfpkg/gui/maindialog.py:322
-msgid "Saving Profile Configuration..."
-msgstr "Αποθήκευση Ρυθμίσεων Προφίλ..."
-
-#: src/netconfpkg/gui/maindialog.py:344
-#, fuzzy
-msgid "Updating Devices..."
-msgstr "_Επεξεργασία..."
-
-#: src/netconfpkg/gui/maindialog.py:400
-msgid "Updating Hardware..."
-msgstr ""
-
-#. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:415
-#, fuzzy
-msgid "Updating Profiles..."
-msgstr "Ενημέρωση Προφίλ..."
-
-#. print "hydrateProfiles(%s)" % self.active_profile_name
-#. change the default profile to a more understandable name
-#. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:513 src/netconfpkg/gui/maindialog.py:584
-#: src/netconfpkg/gui/maindialog.py:843
-msgid "Do you want to save your changes?"
-msgstr "Θέλετε να αποθηκευθούν οι αλλαγές;"
-
-#: src/netconfpkg/gui/maindialog.py:649
-msgid "The Loopback device can not be edited!"
-msgstr "H συσκευή Loopback δεν μπορεί να επεξεργαστεί!"
-
-#: src/netconfpkg/gui/maindialog.py:653
-msgid "Edit Device..."
-msgstr "Επεξεργασία Συσκευής..."
-
-#. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:704
-msgid "The Loopback device can not be removed!"
-msgstr "Η συσκευή Loopback δεν μπορεί να διαγραφεί!"
-
-#: src/netconfpkg/gui/maindialog.py:708
-#, python-format
-msgid "Do you really want to delete device \"%s\"?"
-msgstr "Θέλετε πραγματικά να διαγράψετε την συσκευή \"%s\";"
-
-#: src/netconfpkg/gui/maindialog.py:740
-msgid "You have made some changes in your configuration."
-msgstr "Έχετε κάνει μερικές αλλαγές στις ρυθμίσεις σας."
-
-#: src/netconfpkg/gui/maindialog.py:741
-#, python-format
-msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"Για να  ενεργοποιήσετε την συσκευή δικτύου  %s, πρέπει να αποθηκευθούν οι "
-"αλλαγές που έγιναν."
-
-#: src/netconfpkg/gui/maindialog.py:743
-msgid "Do you want to continue?"
-msgstr "Θέλετε να συνεχίσετε;"
-
-#: src/netconfpkg/gui/maindialog.py:768
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s!\n"
-
-#: src/netconfpkg/gui/maindialog.py:791
-msgid "Network device deactivating..."
-msgstr "Γίνεται απενεργοποίηση συσκευής δικτύου..."
-
-#: src/netconfpkg/gui/maindialog.py:793
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "Απενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε..."
-
-#: src/netconfpkg/gui/maindialog.py:805
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Δεν μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s!\n"
-
-#. devicelist = getDeviceList()
-#. edit_button.set_sensitive(FALSE)
-#. edit_button.set_sensitive(TRUE)
-#. clist.remove_data ("signal_id")
-#. don't allow user to edit device if it's active
-#. if clist.get_name() == 'deviceList':
-#. try:
-#. status = clist.get_pixtext(clist.selection[0], 0)[0]
-#. except ValueError:
-#. status = clist.get_text(clist.selection[0], 0)
-#. if status == ACTIVE:
-#. return
-#: src/netconfpkg/gui/maindialog.py:956
-msgid "The Loopback device can not be disabled!"
-msgstr "Η συσκευή Loopback δεν μπορεί να απενεργοποιηθεί!"
-
-#. if len(clist.selection) == 0:
-#. return
-#.
-#: src/netconfpkg/gui/maindialog.py:1135 src/netconfpkg/gui/maindialog.py:1214
-msgid "The name may only contain letters and digits!"
-msgstr "Το όνομα μπορεί να περιέχει μόνο γράμματα και αριθμούς!"
-
-#: src/netconfpkg/gui/maindialog.py:1140 src/netconfpkg/gui/maindialog.py:1219
-#, python-format
-msgid "The profile can't be named \"%s\"!"
-msgstr "Το όνομα του προφίλ δεν μπορεί να είναι \"%s\"!"
-
-#: src/netconfpkg/gui/maindialog.py:1146 src/netconfpkg/gui/maindialog.py:1225
-msgid "The profile name already exists!"
-msgstr "Το όνομα του προφίλ υπάρχει ήδη!"
-
-#. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1192
-#, python-format
-msgid "The \"%s\" profile can't be renamed!"
-msgstr "Το προφίλ \"%s\" δεν μπορεί να μετονομαστεί!"
-
-#. clist = self.xml.get_widget('profileList')
-#. if len(clist.selection) == 0:
-#. return
-#: src/netconfpkg/gui/maindialog.py:1247
-#, python-format
-msgid "The \"%s\" Profile can not be deleted!"
-msgstr "Το Προφίλ  \"%s\" δεν μπορεί να διαγραφεί!"
-
-#: src/netconfpkg/gui/maindialog.py:1253
-#, python-format
-msgid "Do you really want to delete profile \"%s\"?"
-msgstr "Θέλετε πραγματικά να διαγραφεί το προφίλ \"%s\";"
-
-#. clist.clear()
-#: src/netconfpkg/gui/maindialog.py:1324
-msgid ""
-"Sorry, there is nothing to be edited,\n"
-"or this type cannot be edited yet."
-msgstr ""
-
-#: src/netconfpkg/gui/maindialog.py:1342
-#, python-format
-msgid "Do you really want to delete \"%s\"?"
-msgstr "Θέλετε πραγματικά να διαγραφεί το \"%s\";"
-
-#. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1356
-#, python-format
-msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr ""
-"Θέλετε πραγματικά να διαγράψετε όλες τις συσκευές που χρησιμοποιήθηκαν \"%s"
-"\";"
 
 #: src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
 #: src/netconfpkg/gui/neat-control-statusdialog.glade.h:3
@@ -2790,7 +3713,7 @@ msgid "Disconnect from"
 msgstr "Αποσύνδεση από το"
 
 #: src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-#: src/netconfpkg/gui/neat-control.glade.h:19
+#: src/netconfpkg/gui/neat-control.glade.h:18
 msgid "_Configure..."
 msgstr "_Ρύθμιση..."
 
@@ -2889,39 +3812,6 @@ msgstr "redhat network control - Ιδιότητες"
 #, fuzzy, no-c-format
 msgid "%P %%"
 msgstr "%P %%"
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ethernethardware.py:93
-#: src/netconfpkg/gui/tokenringhardware.py:99
-msgid "Command failed: "
-msgstr "Αποτυχία εντολής: "
-
-#: src/netconfpkg/gui/ethernethardware.py:94
-#: src/netconfpkg/gui/tokenringhardware.py:100
-msgid "Output:\n"
-msgstr ""
-
-#: src/netconfpkg/gui/ethernethardware.py:96
-msgid ""
-"The Ethernet card could not be initialized. \n"
-"Please verify your settings and try again."
-msgstr ""
-"Δεν μπόρεσε να γίνει αρχικοποίηση της κάρτας Ethernet. \n"
-"Παρακαλώ ελέξτε τις ρυθμίσεις σας και προσπαθήστε ξανά."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
@@ -3226,7 +4116,7 @@ msgid "New Profile"
 msgstr "Νέο Προφίλ"
 
 #: src/netconfpkg/gui/maindialog.glade.h:20
-#: src/netconfpkg/gui/neat-control.glade.h:14
+#: src/netconfpkg/gui/neat-control.glade.h:13
 msgid "Nickname"
 msgstr "Παρατσούκλι"
 
@@ -3243,7 +4133,7 @@ msgid "Profile"
 msgstr "Προφίλ"
 
 #: src/netconfpkg/gui/maindialog.glade.h:24
-#: src/netconfpkg/gui/neat-control.glade.h:16
+#: src/netconfpkg/gui/neat-control.glade.h:15
 msgid "Status"
 msgstr "Κατάσταση"
 
@@ -3279,12 +4169,12 @@ msgid ""
 msgstr ""
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
-#: src/netconfpkg/gui/neat-control.glade.h:18
+#: src/netconfpkg/gui/neat-control.glade.h:17
 msgid "_Activate"
 msgstr "Ε_νεργοποίηση"
 
 #: src/netconfpkg/gui/maindialog.glade.h:31
-#: src/netconfpkg/gui/neat-control.glade.h:20
+#: src/netconfpkg/gui/neat-control.glade.h:19
 msgid "_Deactivate"
 msgstr "Α_ποενεργοποίηση"
 
@@ -3297,6 +4187,7 @@ msgid "_Hostname:"
 msgstr ""
 
 #: src/netconfpkg/gui/maindialog.glade.h:35
+#: src/netconfpkg/gui/neat-control.glade.h:21
 #, fuzzy
 msgid "_Monitor"
 msgstr "_Εποπτεία"
@@ -3349,44 +4240,6 @@ msgstr "Επιλογή της Ασύρματης Κάρτας που θέλετ�
 msgid "Wireless card"
 msgstr "Ασύρματη Κάρτα"
 
-#: src/netconfpkg/gui/tokenringhardware.py:102
-msgid ""
-"The Token Ring card could not be initialized. \n"
-"Please verify your settings and try again."
-msgstr ""
-"Δεν μπόρεσε να γίνει αρχικοποίηση της κάρτας Token Ring. \n"
-"Παρακαλώ ελέξτε τις ρυθμίσεις σας και προσπαθήστε ξανά."
-
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Preston Brown <pbrown@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-#. hwlist = NCHardwareList.getHardwareList()
-#. (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
-#. if len(hwdesc):
-#. ecombo.set_popdown_strings(hwdesc)
-#. widget = self.xml.get_widget("ethernetDeviceEntry")
-#. if self.device.Device and hwcurr:
-#. widget.set_text(hwcurr)
-#. widget.set_position(0)
-#. hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-#. fields = string.split(hw)
-#. hw = fields[0]
-#. self.device.Device = hw
 #: src/netconfpkg/gui/neat-control.glade.h:1
 msgid "Ac_tivate"
 msgstr "Ενε_ργοποίηση"
@@ -3427,739 +4280,43 @@ msgstr ""
 msgid "Click to shutdown the interface"
 msgstr ""
 
-#: src/netconfpkg/gui/neat-control.glade.h:12
-msgid "Info"
-msgstr "Πληροφορία"
-
-#: src/netconfpkg/gui/neat-control.glade.h:15
+#: src/netconfpkg/gui/neat-control.glade.h:14
 msgid "Select a profile"
 msgstr "Επιλογή ενός προφίλ"
 
-#: src/netconfpkg/gui/neat-control.glade.h:17
+#: src/netconfpkg/gui/neat-control.glade.h:16
 msgid "The following network interfaces are configured in the active profile."
 msgstr ""
 
-#: src/netconfpkg/gui/neat-control.glade.h:21
+#: src/netconfpkg/gui/neat-control.glade.h:20
 #, fuzzy
-msgid "_Monitor..."
-msgstr "_Εποπτεία..."
+msgid "_Info\t"
+msgstr "Πληροφορία"
 
-#. -*- python -*-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Import all subpackages of our netconfpkg directory. This code is a real
-#. dirty hack but does the job(tm). It basically finds all .py files in the
-#. package directory and imports from all found files (except __init__.py that
-#. is) ;). Nice for plugin mechanism.
-#. ! /usr/bin/env python
-#. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:50
-msgid "Active"
-msgstr "Ενεργή"
+#~ msgid "Please restart %s with root permissions!"
+#~ msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
 
-#: src/netconfpkg/Control.py:51
-msgid "Inactive"
-msgstr "Ανενεργή"
+#~ msgid "Debug"
+#~ msgstr "Αποσφαλμάτωση"
 
-#. remove inactive isdn/ppp device
-#. check real ppp device
-#: src/netconfpkg/Control.py:178
-#, python-format
-msgid "Cannot activate network device %s"
-msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s"
+#~ msgid "Save to file"
+#~ msgstr "Αποθήκευση σε αρχείο"
 
-#: src/netconfpkg/Control.py:180
-#, python-format
-msgid "Cannot deactivate network device %s"
-msgstr "Δεν μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s"
+#~ msgid "Select a file:"
+#~ msgstr "Επιλογή ενός αρχείου:"
 
-#: src/netconfpkg/Control.py:182
-#, python-format
-msgid "Cannot show status of network device %s"
-msgstr "Δεν μπορεί να εμφανιστεί η κατάσταση της συσκευής δικτύου %s"
+#~ msgid "Failed to write to file %s."
+#~ msgstr "Αποτυχία εγγραφής στο αρχείο %s."
 
-#: src/netconfpkg/Control.py:184
-#, python-format
-msgid "Cannot monitor status of network device %s"
-msgstr ""
-
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print self.getline()
-#. set first (should be only) instance to values in list value
-#. not a nameserver, so all items on one line...
-#. no matter what, update our idea of the variable...
-#. delete *every* instance...
-#: src/netconfpkg/NCCipe.py:155
-msgid ""
-"Directory /etc/cipe is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
-msgstr ""
-"Ο κατάλογος /etc/cipe δεν υπάρχει!\n"
-"Θα τον δημιουργήσω για σας!\n"
-"Πρέπει να εγκαταστήσετε το πακέτο rpm cipe!\n"
-
-#: src/netconfpkg/NCCipe.py:159
-msgid ""
-"Could not create\n"
-"directory /etc/cipe!"
-msgstr ""
-"Δεν μπόρεσε να δημιουργηθεί\n"
-"ο κατάλογος /etc/cipe!"
-
-#: src/netconfpkg/NCDialup.py:42
-msgid "Afghanistan"
-msgstr "Αφγανιστάν"
-
-#: src/netconfpkg/NCDialup.py:43
-msgid "Albania"
-msgstr "Αλβανία"
-
-#: src/netconfpkg/NCDialup.py:44
-msgid "Algeria"
-msgstr "Αλγερία"
-
-#: src/netconfpkg/NCDialup.py:45
-msgid "American Samoa"
-msgstr "Αμερικάνικη Σαμόα"
-
-#: src/netconfpkg/NCDialup.py:46
-msgid "Andorra"
-msgstr "Ανδόρα"
-
-#: src/netconfpkg/NCDialup.py:47
-msgid "Argentina"
-msgstr "Αργεντινή"
-
-#: src/netconfpkg/NCDialup.py:48
-msgid "Australia"
-msgstr "Αυστραλία"
-
-#: src/netconfpkg/NCDialup.py:49
-msgid "Austria"
-msgstr "Αυστρία"
-
-#: src/netconfpkg/NCDialup.py:50
-msgid "Belgium"
-msgstr "Βέλγιο"
-
-#: src/netconfpkg/NCDialup.py:51
-msgid "Bosnia and Hercegovina"
-msgstr "Βοσνία Ερζεγοβίνη"
-
-#: src/netconfpkg/NCDialup.py:52
-msgid "Brazil"
-msgstr "Βραζιλία"
-
-#: src/netconfpkg/NCDialup.py:53
-msgid "British Virgin Islands"
-msgstr "Βρετανικοί Παρθένοι Νήσοι"
-
-#: src/netconfpkg/NCDialup.py:54
-msgid "Bulgaria"
-msgstr "Βουλγαρία"
-
-#: src/netconfpkg/NCDialup.py:55
-msgid "Canada"
-msgstr "Καναδάς"
-
-#: src/netconfpkg/NCDialup.py:56
-msgid "Central African Republic"
-msgstr "Κεντρική Αφρική"
-
-#: src/netconfpkg/NCDialup.py:57
-msgid "Chile"
-msgstr "Χιλή"
-
-#: src/netconfpkg/NCDialup.py:58
-msgid "China"
-msgstr "Κίνα"
-
-#: src/netconfpkg/NCDialup.py:59
-msgid "Colombia"
-msgstr "Κολομβία"
-
-#: src/netconfpkg/NCDialup.py:60
-msgid "Croatia"
-msgstr "Κροατία"
-
-#: src/netconfpkg/NCDialup.py:61
-msgid "Cuba"
-msgstr "Κούβα"
-
-#: src/netconfpkg/NCDialup.py:62
-msgid "Czech Republic"
-msgstr "Δημοκρατία της Τσεχίας"
-
-#: src/netconfpkg/NCDialup.py:63
-msgid "Denmark"
-msgstr "Δανία"
-
-#: src/netconfpkg/NCDialup.py:64
-msgid "Finland"
-msgstr "Φινλανδία"
-
-#: src/netconfpkg/NCDialup.py:65
-msgid "France"
-msgstr "Γαλλία"
-
-#: src/netconfpkg/NCDialup.py:66
-msgid "Germany"
-msgstr "Γερμανία"
-
-#: src/netconfpkg/NCDialup.py:67
-msgid "Greece"
-msgstr "Ελλάδα"
-
-#: src/netconfpkg/NCDialup.py:68
-msgid "Hong Kong"
-msgstr "Χονγκ Κονγκ"
-
-#: src/netconfpkg/NCDialup.py:69
-msgid "Hungary"
-msgstr "Ουγγαρία"
-
-#: src/netconfpkg/NCDialup.py:70
-msgid "Iceland"
-msgstr "Ισλανδία"
-
-#: src/netconfpkg/NCDialup.py:71
-msgid "India"
-msgstr "Ινδία"
-
-#: src/netconfpkg/NCDialup.py:72
-msgid "Indonesia"
-msgstr "Ινδονησία"
-
-#: src/netconfpkg/NCDialup.py:73
-msgid "Ireland"
-msgstr "Ιρλανδία"
-
-#: src/netconfpkg/NCDialup.py:74
-msgid "Israel"
-msgstr "Ισραήλ"
-
-#: src/netconfpkg/NCDialup.py:75
-msgid "Italy"
-msgstr "Ιταλία"
-
-#: src/netconfpkg/NCDialup.py:76
-msgid "Japan"
-msgstr "Ιαπωνία"
-
-#: src/netconfpkg/NCDialup.py:77
-msgid "Korea North"
-msgstr "Βόρεια Κορέα"
-
-#: src/netconfpkg/NCDialup.py:78
-msgid "Korea Republic"
-msgstr "Νότια Κορέα"
-
-#: src/netconfpkg/NCDialup.py:79
-msgid "Malaysia"
-msgstr "Μαλαισία"
-
-#: src/netconfpkg/NCDialup.py:80
-msgid "Luxembourg"
-msgstr "Λουξεμβούργο"
-
-#: src/netconfpkg/NCDialup.py:81
-msgid "Mexico"
-msgstr "Μεξικό"
-
-#: src/netconfpkg/NCDialup.py:82
-msgid "Netherlands"
-msgstr "Ολλανδία"
-
-#: src/netconfpkg/NCDialup.py:83
-msgid "New Zealand"
-msgstr "Νέα Ζηλανδία"
-
-#: src/netconfpkg/NCDialup.py:84
-msgid "Norway"
-msgstr "Νορβηγία"
-
-#: src/netconfpkg/NCDialup.py:85
-msgid "Philippines"
-msgstr "Φιλιππίνες"
-
-#: src/netconfpkg/NCDialup.py:86
-msgid "Romania"
-msgstr "Ρουμανία"
-
-#: src/netconfpkg/NCDialup.py:87
-msgid "Singapore"
-msgstr "Σινγκαπούρη"
-
-#: src/netconfpkg/NCDialup.py:88
-msgid "Slovakia"
-msgstr "Σλοβακία"
-
-#: src/netconfpkg/NCDialup.py:89
-msgid "Spain"
-msgstr "Ισπανία"
-
-#: src/netconfpkg/NCDialup.py:90
-msgid "Sweden"
-msgstr "Σουηδία"
-
-#: src/netconfpkg/NCDialup.py:91
-msgid "Switzerland"
-msgstr "Ελβετία"
-
-#: src/netconfpkg/NCDialup.py:92
-msgid "Taiwan"
-msgstr "Ταϊβάν"
-
-#: src/netconfpkg/NCDialup.py:93
-msgid "Thailand"
-msgstr "Ταϊλάνδη"
-
-#: src/netconfpkg/NCDialup.py:94
-msgid "Turkey"
-msgstr "Τουρκία"
-
-#: src/netconfpkg/NCDialup.py:95
-msgid "Ukraine"
-msgstr "Ουκρανία"
-
-#: src/netconfpkg/NCDialup.py:96
-msgid "United Kingdom"
-msgstr "Ενωμένο Βασίλειο"
-
-#: src/netconfpkg/NCDialup.py:97
-msgid "United States of America"
-msgstr "ΗΠΑ"
-
-#: src/netconfpkg/NCDialup.py:98
-msgid "Vietnam"
-msgstr "Βιετνάμ"
-
-#: src/netconfpkg/NCDialup.py:99
-msgid "Yugoslavia"
-msgstr "Γιουγκοσλαβία"
-
-#. ok, now search for an empty slot
-#. no card seems to use this
-#. generic_info_dialog(_("Found new Hardware\n%s"#. "\nAssigned to: %s" % (hw.Description, hw.Name)))
-#.
-#. Read in actual system state
-#.
-#. No Alias devices
-#: src/netconfpkg/NCHardwareList.py:230
-#, python-format
-msgid ""
-"%s has an alias to module %s in modules.conf,\n"
-"instead of currently loaded module %s!"
-msgstr ""
-
-#. Clean up wvdial
-#. if the loop does not get interrupted by break
-#. we did not find the Modem in the hardwarelist
-#. and it gets deleted
-#. Clean up modules
-#. print "Testing " + str(mod)
-#. print "Removing " + str(mod)
-#. print str(modules.vars[mod].keys())
-#. print "Test: " + str(modules[mod])
-#. no card seems to use this
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCProfileList.py:59 src/netconfpkg/NCDeviceList.py:72
-#, python-format
-msgid ""
-"Error creating directory!\n"
-"%s"
-msgstr ""
-"Σφάλμα κατά την δημιουργία του καταλόγου!\n"
-"%s"
-
-#: src/netconfpkg/NCProfileList.py:62
-#, fuzzy, python-format
-msgid ""
-"Please restart once with root permissions!\n"
-"%s"
-msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
-
-#: src/netconfpkg/NCProfileList.py:67
-msgid "Copying /etc/hosts to default profile."
-msgstr ""
-
-#. 60016
-#. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:173
-#, python-format
-msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
-
-#: src/netconfpkg/NCProfileList.py:175
-msgid ""
-"Please select another Hardware Device or \n"
-"activate only one of them."
-msgstr ""
-"Παρακαλώ επιλέξτε άλλη Συσκευή Υλικού ή \n"
-"ενεργοποιήστε μόνο μία από αυτές."
-
-#. if the hostname changed, set it system wide (#55746)
-#. First remove all files that are linked in the device directory
-#. Check, if it is a device of neat in every profile directory
-#. Remove all profile directories except default
-#. Remove all files in the default profile directory
-#. delete all other entries the user has deleted in the UI
-#. print prof.ActiveDevices
-#. print "Processing %s" % devId
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Do not clear the non-filled in values
-#. Bugzilla #52252
-#. for i in conf.keys():
-#. if not conf[i] or conf[i] == "": del conf[i]
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:50
-msgid "Common"
-msgstr "Κοινό"
-
-#: src/netconfpkg/NC_functions.py:136
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr ""
-
-#. print "toinstall %s" % str(toinstall)
-#. print "plist %s" % str(plist)
-#: src/netconfpkg/NC_functions.py:151
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr ""
-
-#. test for wireless
-#. Some failsafe return codes (same as in gtk)
-#. print "file '%s' is not a file!" % file
-#. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:416
-#, python-format
-msgid ""
-"Error removing\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"Σφάλμα κατά την αφαίρεση\n"
-" %s:\n"
-" %s!"
-
-#: src/netconfpkg/NC_functions.py:425
-#, python-format
-msgid ""
-"Error linking %s\n"
-"to\n"
-"%s:\n"
-"%s!"
-msgstr ""
-
-#: src/netconfpkg/NC_functions.py:435
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-
-#: src/netconfpkg/NC_functions.py:444
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-
-#: src/netconfpkg/NC_functions.py:453
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
-#. we only support 1 ISDN card in this version
-#. !/usr/bin/python
-#.
-#. Python wrapper for ipcalc command line IP address manipulation tool
-#. Copyright (c) 2001-2003 Red Hat, Inc. All rights reserved.
-#.
-#. This software may be freely redistributed under the terms of the GNU
-#. public license.
-#.
-#. You should have received a copy of the GNU General Public License
-#. along with this program; if not, write to the Free Software
-#. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#.
-#. Author: Preston Brown <pbrown@redhat.com>
-#. !/usr/bin/python
-#.
-#. test1
-#.
-#. read
-#. write
-#. check
-#. cleanup
-#.
-#. test2
-#.
-#. read
-#. modify
-#. write
-#. check
-#. cleanup
-#.
-#. test3
-#.
-#. read
-#. write
-#. check
-#. cleanup
-#.
-#. test4
-#.
-#. read
-#. modify
-#. write
-#. check
-#. cleanup
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print status
-#. if ((self.oldmode & 0044) != 0044):
-#. ask = NC_functions.generic_yesno_dialog(#. _("May I change\n%s\nfrom mode %o to %o?") % #. (self.filename, self.oldmode & 03777, 0644))
-#. if ask != RESPONSE_YES:
-#. self.chmod(self.oldmode)
-#. def __str__(self):
-#. if self.Alias != None:
-#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
-#. self.Alias)
-#. else:
-#. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#. def __repr__(self):
-#. if self.Alias != None:
-#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
-#. self.Alias)
-#. else:
-#. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:201
-#, python-format
-msgid "%s, Device not specified or alias not a number!"
-msgstr ""
-
-#: src/netconfpkg/NCDevice.py:232
-#, python-format
-msgid "Static routes file %s is invalid"
-msgstr ""
-
-#. print dev+" has unknown device type, skipping it."
-#: src/netconfpkg/NCDeviceList.py:92
 #, fuzzy
-msgid "Please start redhat-config-network with root permissions once!\n"
-msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
+#~ msgid "_Monitor..."
+#~ msgstr "_Εποπτεία..."
 
-#: src/netconfpkg/NCDeviceList.py:96
-#, python-format
-msgid "Copying %s to devices and putting it into the default profile."
-msgstr ""
+#~ msgid "Cannot show status of network device %s"
+#~ msgstr "Δεν μπορεί να εμφανιστεί η κατάσταση της συσκευής δικτύου %s"
 
-#.
-#. clear all Dialer sections in wvdial.conf
-#. before the new Dialer sections written
-#.
-#.
-#. Clear all pap and chap-secrets generated by netconf
-#.
-#.
-#. traverse all devices in the list
-#.
-#.
-#. really save the device
-#.
-#. if dev.changed:
-#.
-#. write the pap and chap-secrets, if any
-#.
-#.
-#. Remove old config files
-#.
-#. print "DVList.load()"
-#. print repr(DVList)
-#. no card seems to use this
-#. if dev.Dialup.Callback == None:
-#. dl.save()
-#: internet-druid.desktop.in.h:1
-msgid "Configure your connection to the Internet"
-msgstr "Ρύθμιση της σύνδεσής σας στο Διαδίκτυο"
-
-#: internet-druid.desktop.in.h:2
-msgid "Internet Configuration Wizard"
-msgstr "Οδηγός Σύνδεσής στο Διαδίκτυο"
+#, fuzzy
+#~ msgid ""
+#~ "Please restart once with root permissions!\n"
+#~ "%s"
+#~ msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"

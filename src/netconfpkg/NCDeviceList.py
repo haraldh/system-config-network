@@ -23,22 +23,64 @@ import os.path
 from NC_functions import *
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
-from netconfpkg import ipcalc
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from rhpl import ConfPAP
 from rhpl import ConfSMB
 from rhpl import Conf
+from rhpl.log import log
 import UserList
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
+
+def updateNetworkScripts():
+    if os.getuid() == 0:
+        if not os.path.isdir(netconfpkg.ROOT + SYSCONFDEVICEDIR):
+            mkdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
+
+        if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
+            mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
+
+        if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
+            mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/')
+
+    devlist = os.listdir(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
+    changed = false
+    for dev in devlist:
+        if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
+            continue
+
+        if os.path.islink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev):
+            log.log(4, dev+" already a link, skipping it.")
+            continue
+
+        if getDeviceType(dev[6:]) == _('Unknown'):
+            log.log(4, dev+" has unknown device type, skipping it.")
+            continue
+
+
+        if os.getuid() != 0:
+            generic_error_dialog (_("Please start redhat-config-network "
+                                    "with root permissions once!\n"))
+            return
+
+        log.log(1, _("Copying %s to devices and putting "
+                     "it into the default profile.") % dev)
+
+        unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'+dev)
+
+        copy(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev, netconfpkg.ROOT + SYSCONFDEVICEDIR+'/'+dev)
+        link(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/'+dev, netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'+dev)    
+        changed = true
+    return changed
+
 class ConfDevices(UserList.UserList):
     def __init__(self):
         UserList.UserList.__init__(self)
 
-        #for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
-        confdir = SYSCONFDEVICEDIR    
+        #for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
+        confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR    
         try:
             dir = os.listdir(confdir)
         except OSError, msg:
@@ -57,54 +99,8 @@ class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
         DeviceList_base.__init__(self, list, parent)        
 
-    def updateNetworkScripts(self):
-        if os.getuid() == 0:
-            try:
-                if not os.path.isdir(SYSCONFDEVICEDIR):
-                    os.mkdir(SYSCONFDEVICEDIR)
-                    
-                    if not os.path.isdir(SYSCONFPROFILEDIR):
-                        os.mkdir(SYSCONFPROFILEDIR)
-                        
-                    if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
-                        os.mkdir(SYSCONFPROFILEDIR+'/default/')
-            except (IOError, OSError), errstr :
-                generic_error_dialog (_("Error creating directory!\n%s") \
-                                      % (str(errstr)))
-
-
-        devlist = os.listdir(OLDSYSCONFDEVICEDIR)
-        changed = false
-        for dev in devlist:
-            if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
-                continue
-
-            if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
-                #print dev+" already a link, skipping it."
-                continue
-
-            if getDeviceType(dev[6:]) == _('Unknown'):
-                #print dev+" has unknown device type, skipping it."
-                continue
-
-
-            if os.getuid() != 0:
-                generic_error_dialog (_("Please start redhat-config-network "
-                                        "with root permissions once!\n"))
-                return
-
-            print _("Copying %s to devices and putting "
-                    "it into the default profile.") % dev
-
-            unlink(SYSCONFPROFILEDIR+'/default/'+dev)
-
-            copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
-            link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)    
-            changed = true
-        return changed
-    
     def load(self):
-        changed = self.updateNetworkScripts()
+        changed = updateNetworkScripts()
         df = getDeviceFactory()
         devices = ConfDevices()
         msg = ""
@@ -117,20 +113,61 @@ class DeviceList(DeviceList_base):
                 newdev.load(dev)
                 self[i] = newdev
             else:
-                raise "NO DEVICE CLASS FOUND FOR %s" % dev
+                log.log(1, "NO DEVICE CLASS FOUND FOR %s" % dev)
                 
         self.commit(changed)
-        
+
+    def addDeviceType(self, type):
+        df = getDeviceFactory()
+        devclass = df.getDeviceClass(type)
+        i = self.addDevice()
+        if devclass:
+            newdev = devclass()
+            self[i] = newdev
+        return self[i]
+    
     def test(self):
         pass
 
     def __repr__(self):
         return repr(self.__dict__)
+
+    def _objToStr(self, parentStr = None):
+        #return DeviceList_base._objToStr(self, obj, parentStr)
+        retstr = ""
+        for dev in self:
+            retstr += dev._objToStr("DeviceList.%s.%s" % (dev.Type,
+                                                          dev.DeviceId))
+
+        return retstr
+
+
+    def _parseLine(self, vals, value):
+        class BadLineException: pass
+        if len(vals) <= 1:
+            return
+        if vals[0] == "DeviceList":
+            del vals[0]
+        else:
+            return
+        for dev in self:
+            if dev.DeviceId == vals[1]:
+                if dev.Type != vals[0]:
+                    self.pop(dev)
+                    log.log(1, "Deleting device %s" % vals[1] )
+                    break
+                dev._parseLine(vals[2:], value)
+                return
+        
+        dev = self.addDeviceType(vals[0])
+        dev.DeviceId = vals[1]
+        dev._parseLine(vals[2:], value)
     
     def save(self):
+        from types import DictType
         self.commit(changed=false)
 
-        nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
+        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         if len(self) > 0:
             nwconf["NETWORKING"] = "yes"
         nwconf.write()
@@ -139,9 +176,10 @@ class DeviceList(DeviceList_base):
         # clear all Dialer sections in wvdial.conf
         # before the new Dialer sections written
         #
-        wvdialconf = ConfSMB.ConfSMB(filename = '/etc/wvdial.conf')
+        wvdialconf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
         for wvdialkey in wvdialconf.vars.keys():
-            if wvdialkey[:6] == 'Dialer': del wvdialconf[wvdialkey]
+            if wvdialkey[:6] == 'Dialer':
+                del wvdialconf[wvdialkey]
         wvdialconf.write()
             
         #
@@ -150,8 +188,14 @@ class DeviceList(DeviceList_base):
         papconf = getPAPConf()
         chapconf = getCHAPConf()
         for key in papconf.keys():
+            if isinstance(papconf[key], DictType):
+                for server in papconf[key].keys():
+                    papconf.delallitem([key, server])
             del papconf[key]
         for key in chapconf.keys():
+            if isinstance(chapconf[key], DictType):
+                for server in chapconf[key].keys():
+                    chapconf.delallitem([key, server])
             del chapconf[key]
 
         #
@@ -164,14 +208,6 @@ class DeviceList(DeviceList_base):
             #if dev.changed:
             dev.save()
 
-            #
-            # write the pap and chap-secrets, if any
-            #
-            if dev.Dialup and dev.Dialup.Login:
-                papconf[dev.Dialup.Login] = str(dev.Dialup.Password)
-                chapconf[dev.Dialup.Login] = str(dev.Dialup.Password)
-
-
         papconf.write()
         chapconf.write()
 
@@ -179,14 +215,14 @@ class DeviceList(DeviceList_base):
         # Remove old config files
         #
         try:
-            dir = os.listdir(SYSCONFDEVICEDIR)
+            dir = os.listdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
-                  + SYSCONFDEVICEDIR + ': ' + str(msg)
+                  + netconfpkg.ROOT + SYSCONFDEVICEDIR + ': ' + str(msg)
         for entry in dir:
             if (len(entry) <= 6) or \
                entry[:6] != 'ifcfg-' or \
-               (not os.path.isfile(SYSCONFDEVICEDIR + entry)):
+               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
                 continue
             
             devid = entry[6:]
@@ -196,9 +232,22 @@ class DeviceList(DeviceList_base):
                 if dev.DeviceId == devid:
                     break
             else:
-                unlink(SYSCONFDEVICEDIR + entry)
-                unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
+                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
+                log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
+                log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid))
 
+        # bug #78043
+        # we should have device specific gateways
+        # fixed this way, until we have a way to mark the
+        # default GATEWAY/GATEWAYDEV
+        cfg = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        if cfg.has_key('GATEWAY'):
+            del cfg['GATEWAY']
+        if cfg.has_key('GATEWAYDEV'):
+            del cfg['GATEWAYDEV']
+        cfg.write()
+        
         self.commit()
 
 DVList = None
@@ -208,8 +257,6 @@ def getDeviceList():
     if DVList == None:
         DVList = DeviceList()
         DVList.load()
-        #print "DVList.load()"
-    #print repr(DVList)
     return DVList
 
 def getNextDev(base):

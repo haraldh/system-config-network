@@ -54,6 +54,12 @@ class DevModem(Device):
          return true
       return false
 
+   def getHWDevice(self):
+      if self.Dialup:
+         return self.Dialup.Inherits
+      
+      return None
+
 def setDevModemDialog(dialog):
    global _devModemDialog
    _devModemDialog = dialog

@@ -176,7 +176,8 @@ class DialupDruid(InterfaceCreator):
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(TRUE)
         self.on_ipBootProto_toggled(\
                 self.xml.get_widget('ipStaticRadio')),
-        pass
+        dialup = self.device.createDialup()
+        dialup.EncapMode = 'syncppp'
     
     def on_raw_ip_activate(self, *args):
         self.xml.get_widget('ipAutomaticRadio').set_active(FALSE)
@@ -186,8 +187,6 @@ class DialupDruid(InterfaceCreator):
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(FALSE)
         dialup = self.device.createDialup()
         dialup.EncapMode = 'rawip'
-        dialup.Authentication = 'noauth'
-        pass
 
     def on_dhcp_page_back(self, druid_page, druid):
         return TRUE
@@ -197,12 +196,6 @@ class DialupDruid(InterfaceCreator):
 
         self.dhcp_dehydrate(self.xml, self.device)
         
-        if self.connection_type == ISDN and \
-               (self.device.BootProto == "static" or \
-                self.device.BootProto == "none"):
-            dialup.EncapMode = 'rawip'
-            dialup.Authentication = 'noauth'
-
     def on_dhcp_page_prepare(self, druid_page, druid):
         self.dhcp_hydrate(self.xml, self.device)
         dialup = self.device.createDialup()
@@ -241,6 +234,8 @@ class DialupDruid(InterfaceCreator):
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):
+        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
+                                                self.device)
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
         self.devicelist.append(self.device)
@@ -385,8 +380,6 @@ class DialupDruid(InterfaceCreator):
         dialup = self.device.createDialup()
         self.device.AllowUser = TRUE
         self.device.OnBoot = FALSE
-        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
-                                                self.device)
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()
         dialup.Areacode = self.xml.get_widget('areaCodeEntry').get_text()
         dialup.PhoneNumber = self.xml.get_widget('phoneEntry').get_text()
@@ -401,11 +394,10 @@ class DialupDruid(InterfaceCreator):
         dialup.DialMode = NCDialup.DM_MANUAL
             
         if self.connection_type == ISDN:
-            dialup.EncapMode = 'syncppp'
             dialup.HangupTimeout = 600
+            dialup.EncapMode == 'syncppp'
             
-        elif self.connection_type == MODEM:
-            self.device.Name  = DeviceId
+        elif self.connection_type == MODEM:            
             dialup.Inherits = 'Modem0'
             dialup.StupidMode = TRUE
             dialup.InitString = ''

@@ -30,7 +30,7 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
 Obsoletes: netcfg
-Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.83, rpm-python
+Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.99, rpm-python
 
 %description tui
 This is the network configuration tool for Red Hat Linux,
@@ -148,6 +148,10 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Mon Feb 24 2003 Harald Hoyer <harald@redhat.de> 1.3.0-1
 - begin kernel style versioning scheme
+
+* Wed Apr  2 2003 Harald Hoyer <harald@redhat.de> 1.2.3-3
+- Bugfix release for 9
+- fixed #85011, #85703, #85653, #84956, #83640, #68169, #86476, #78043, #77763
 
 * Fri Feb 21 2003 Harald Hoyer <harald@redhat.de> 1.2.0-2
 - bump to 1.2.0

@@ -52,6 +52,11 @@ class DevCipe(Device):
       if getDeviceType(device.Device) == CIPE:
          return true
       return false
+
+   def getHWDevice(self):
+      if self.Cipe:
+         return self.Cipe.TunnelDevice
+      return None
    
 def setDevCipeDialog(dialog):
    global _devCipeDialog

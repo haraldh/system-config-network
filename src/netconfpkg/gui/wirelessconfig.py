@@ -63,6 +63,9 @@ class wirelessConfigDialog(deviceConfigDialog):
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
         vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
 
         window = self.sharedtcpip_xml.get_widget ('hardwareWindow')
         frame = self.sharedtcpip_xml.get_widget ('hardwareFrame')
@@ -70,10 +73,6 @@ class wirelessConfigDialog(deviceConfigDialog):
         window.remove (frame)
         vbox.pack_start (frame)
         sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
-
-        window.remove (frame)
-        vbox.pack_start (frame)
-        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
         
 
     def hydrate(self):

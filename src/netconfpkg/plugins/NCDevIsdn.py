@@ -54,6 +54,10 @@ class DevIsdn(Device):
          return true
       return false
 
+   def getHWDevice(self):
+      # XXX FIXME
+      return "ISDN Card 0"
+   
 def setDevIsdnDialog(dialog):
    global _devIsdnDialog
    _devIsdnDialog = dialog

@@ -33,6 +33,7 @@ from dslconfig import dslConfigDialog
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg import NCHardwareList
 from gtk import TRUE
 from gtk import FALSE
 

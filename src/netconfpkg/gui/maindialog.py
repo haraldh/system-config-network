@@ -20,6 +20,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
 from netconfpkg import *
 from netconfpkg.gui import *
 from netconfpkg.Control import *
@@ -27,10 +28,11 @@ from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import PROGNAME
 from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 import gtk
 import gtk.glade
 import gnome.ui
-
+import gnome
 
 PROFILE_COLUMN = 0
 STATUS_COLUMN = 1
@@ -57,7 +59,6 @@ class mainDialog:
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.no_profileentry_update = None
-
         xml_signal_autoconnect(self.xml,
             {
             "on_deviceActivateButton_clicked" : \
@@ -146,11 +147,25 @@ class mainDialog:
                                                     self.dialog)
         self.devsel = None
 
+
+#         clist = self.xml.get_widget("hardwareList")
+#         # First: copy the clist-style
+#         self.style1 = clist.get_style().copy()
+#         self.style2 = clist.get_style().copy()
+#         self.style3 = clist.get_style().copy()
+#         color1 = "lightgreen"
+#         color2 = "light salmon"
+#         color3 = "white"
+#         colormap = clist.get_colormap()
+#         self.style1.base[gtk.STATE_NORMAL] = colormap.alloc_color(color1)
+#         self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
+#         self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
+
         if not os.access('/usr/bin/rp3', os.X_OK):
             self.xml.get_widget('deviceMonitorButton').hide()
         
         load_icon("network.xpm", self.dialog)
-
+        
         self.load()
         self.hydrate()
         self.xml.get_widget ("deviceList").column_titles_passive ()
@@ -195,7 +210,7 @@ class mainDialog:
             }
         
         self.activedevicelist = NetworkDevice().get()
-        self.tag = timeout_add(4000, self.updateDevicelist)
+        self.tag = gtk.timeout_add(4000, self.updateDevicelist)
                 
         # initialize the button state..
         clist = self.xml.get_widget("deviceList")
@@ -215,7 +230,6 @@ class mainDialog:
         self.dialog.show()
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
-
 
     def nop(self, *args):
         pass
@@ -285,7 +299,9 @@ class mainDialog:
         
         self.appBar.push(_("Saving Configuration..."))
         self.appBar.refresh()
+        profilelist = getProfileList()
         try:
+            profilelist.fixInterfaces()
             self.saveHardware()
             self.saveDevices()
             self.saveProfiles()
@@ -294,14 +310,13 @@ class mainDialog:
 	except (IOError, OSError, EnvironmentError), errstr:
             generic_error_dialog (_("Error saving Configuration!\n%s") \
                                   % (str(errstr)))
-            self.appBar.pop()
-
         else:
             generic_info_dialog (_("Changes are saved.\n"
                                    "You may want to restart\n"
                                    "the network and network services\n"
                                    "or restart the computer."),
                                  self.dialog)
+        self.appBar.pop()
         return 0
 
     def saveDevices(self):
@@ -390,6 +405,7 @@ class mainDialog:
                 
 
             if dev == devsel:
+                log.log(3, "Selecting row %d" % row)
                 clist.select_row(row, 0)
                 
             row = row + 1
@@ -402,8 +418,24 @@ class mainDialog:
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
         clist.set_row_height(17)
+        row = 0
         for hw in hardwarelist:
-            clist.append([str(hw.Description), str(hw.Type), str(hw.Name)])
+            clist.append([str(hw.Description), str(hw.Type), str(hw.Name), str(hw.Status)])
+            device_pixmap, device_mask = \
+                GUI_functions.get_device_icon_mask(hw.Type, self.dialog)
+            clist.set_pixtext(row, DEVICE_COLUMN, hw.Name, 5,
+                              device_pixmap,
+                              device_mask)
+            clist.set_row_data(row, hw)
+
+#             if hw.Status == HW_OK:
+#                 clist.set_row_style(row, self.style1)
+#             elif hw.Status == HW_CONF:
+#                 clist.set_row_style(row, self.style3)
+#             else:
+#                 clist.set_row_style(row, self.style2)
+                
+            row += 1
         self.appBar.pop()
         self.checkApply()
 
@@ -457,8 +489,13 @@ class mainDialog:
         if prof.DNS.SearchList:
             self.xml.get_widget('searchDnsEntry').set_text(\
                 string.join(prof.DNS.SearchList))
-
+        else:
+            self.xml.get_widget('searchDnsEntry').set_text('')
+        
         for host in prof.HostsList:
+            #88357
+            if host.IP == "127.0.0.1":
+                continue
             hclist.append([host.IP, host.Hostname,
                            string.join(host.AliasList, ' ')])
             
@@ -708,8 +745,8 @@ class mainDialog:
         buttons = generic_yesno_dialog((_('Do you really want to '
                                           'delete device "%s"?')) % \
                                        str(device.DeviceId),
-                                       self.dialog,
-                                       widget = clist)
+                                       self.dialog, widget = clist,
+                                       page = clist.selection[0])
 
         if buttons != RESPONSE_YES:
             return
@@ -733,7 +770,7 @@ class mainDialog:
         dev = clist.get_row_data(clist.selection[0])
         device = dev.getDeviceAlias()
 
-        timeout_remove(self.tag)
+        gtk.timeout_remove(self.tag)
         
         if self.changed():
             button = generic_yesno_dialog(
@@ -750,71 +787,35 @@ class mainDialog:
             if button == RESPONSE_NO:
                 return
 
-        intf = Interface()
-        dlg = gtk.Dialog(_('Network device activating...'))
-        dlg.set_border_width(10)
-        dlg.vbox.add(gtk.Label(_('Activating network device %s, '
-                                 'please wait...') %(device)))
-        dlg.vbox.show_now()
-        dlg.set_transient_for(self.dialog)        
-        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        dlg.set_modal(TRUE)
-        dlg.show_all()
-        dlg.show_now()
-        (status, txt) = intf.activate(device)                
-        dlg.destroy()
-        
-        if status != 0:
-            generic_longinfo_dialog(_('Cannot activate '
-                                      'network device %s!\n') % \
-                                    (device), txt, self.dialog)
+        (status, txt) = dev.activate(dialog = self.dialog)
 
         if NetworkDevice().find(device):
             self.updateDevicelist()
 
-        self.tag = timeout_add(4000, self.updateDevicelist)
+        self.tag = gtk.timeout_add(4000, self.updateDevicelist)
             
     def on_deviceDeactivateButton_clicked(self, button):
         clist = self.xml.get_widget("deviceList")
         if len(clist.selection) == 0:
             return
-        
-        device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
+
+        dev = clist.get_row_data(clist.selection[0])
+        device = dev.getDeviceAlias()
         
         if not device:
             return
         
-        timeout_remove(self.tag)
+        gtk.timeout_remove(self.tag)
 
-        intf = Interface()
-
-        dlg = gtk.Dialog(_('Network device deactivating...'))
-        dlg.set_border_width(10)
-        dlg.vbox.add(gtk.Label(_('Deactivating network device %s, '
-                                 'please wait...') %(device)))
-        dlg.vbox.show_now()
-        dlg.set_transient_for(self.dialog)        
-        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        dlg.set_modal(TRUE)
-        dlg.show_all()
-        dlg.show_now()
-        (status, txt) = intf.deactivate(device)                
-        dlg.destroy()
+        (status, txt) = dev.deactivate(dialog = self.dialog)
         
-        if status != 0:
-            generic_longinfo_dialog(_('Cannot deactivate network device '
-                                      '%s!\n') % (device), txt, self.dialog)
-
         self.updateDevicelist()
 
-        self.tag = timeout_add(4000, self.updateDevicelist)
+        self.tag = gtk.timeout_add(4000, self.updateDevicelist)
 
     def on_deviceMonitorButton_clicked(self, button):
         generic_error_dialog(_("To be rewritten!"), self.dialog)
         return
-        device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
-        if device:
-            Interface().monitor(device)
     
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
@@ -890,7 +891,9 @@ class mainDialog:
             
             curr_prof = self.getActiveProfile()
             status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
-
+            if NetworkDevice().find(self.devsel.getDeviceAlias()):
+                status == ACTIVE
+                
             if status == ACTIVE and \
                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
                 activate_button.set_sensitive(FALSE)
@@ -938,12 +941,13 @@ class mainDialog:
                 
         if event.type == gtk.gdk._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
-            if info != None and info[1] > 0:
+            if info != None and (clist.get_name() != 'deviceList' \
+                                 or info[1] != 0):
                 id = clist.connect("button_release_event",
                                    self.on_generic_clist_button_release_event,
                                    func)
                 clist.set_data("signal_id", id)
-                 
+                         
         if clist.get_name() == 'deviceList' and gtk.gdk.BUTTON_PRESS:
              info = clist.get_selection_info(event.x, event.y)
              if info != None and info[1] == 0:
@@ -1295,11 +1299,13 @@ class mainDialog:
 
         if len(clist.selection) == 0:
             return
-
-        type  = clist.get_text(clist.selection[0], 1)
+        
+        #type  = clist.get_text(clist.selection[0], 1)
         hardwarelist = getHardwareList()
-        hw = hardwarelist[clist.selection[0]]
-
+        #hw = hardwarelist[clist.selection[0]]
+        hw = clist.get_row_data(clist.selection[0])
+        type = hw.Type
+        
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
             hw.commit()
             hardwarelist.commit()
@@ -1334,11 +1340,11 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        hw = hardwarelist[clist.selection[0]]
-        description = clist.get_text(clist.selection[0], 0)
-        type = clist.get_text(clist.selection[0], 1)
-        dev = clist.get_text(clist.selection[0], 2)
-
+        hw = clist.get_row_data(clist.selection[0])
+        type = hw.Type
+        description = hw.Description
+        dev = hw.Name
+        
         buttons = generic_yesno_dialog((_('Do you really '
                                           'want to delete "%s"?')) % \
                                        str(description),
@@ -1349,7 +1355,7 @@ class mainDialog:
             return
 
         # remove hardware
-        del hardwarelist[clist.selection[0]]
+        hardwarelist.remove(hw)
         hardwarelist.commit()
         self.hydrateHardware()
 
@@ -1359,43 +1365,18 @@ class mainDialog:
                                        self.dialog, widget = clist)
 
         if buttons == RESPONSE_YES:
-            # remove all devices used this hardware
-            #
-            # FIXME!! This has to be modular, not hardcoded!
-            #
+            # remove all devices that use this hardware
             devicelist = getDeviceList()
             profilelist = getProfileList()
             dlist = []
             for d in devicelist:
-                found = FALSE
-                if type == MODEM:
-                    if d.Dialup and d.Dialup.Inherits and \
-                           dev == d.Dialup.Inherits:
-                        found = TRUE
-                elif type == ISDN and d.Type == ISDN:
-                    found = TRUE
-                elif type == ETHERNET:
-                    # DSL
-                    if d.Dialup and d.Dialup.EthDevice == dev:
-                        found = TRUE
-                    # CIPE
-                    elif d.Cipe and d.Cipe.TunnelDevice == dev:
-                        found = TRUE
-                    # WIRELESS
-                    elif d.Wireless and d.Device == dev:
-                        found = TRUE
-                    # ETHERNET
-                    elif d.Device == dev:
-                        found = TRUE
-                elif type == TOKENRING and d.Device == dev:
-                    found = TRUE
-                if found: dlist.append(d)
+                if dev == d.getHWDevice():
+                    dlist.append(d)
 
             for i in dlist:
                 for prof in profilelist:
                     if i.DeviceId in prof.ActiveDevices:
-                        pos = prof.ActiveDevices.index(i.DeviceId)
-                        del prof.ActiveDevices[pos]
+                        prof.ActiveDevices.remove(i.DeviceId)
                 devicelist.remove(i)
 
             devicelist.commit()

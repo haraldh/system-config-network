@@ -25,18 +25,36 @@ import os.path
 import shutil
 from rhpl import ConfPAP
 from rhpl import ethtool
+from rhpl import Conf
+from rhpl import ConfSMB
+from rhpl.log import log
+
+import string
 
 true = (1==1)
 false = not true
 
+verbose = 0
 
 PROGNAME = "redhat-config-network"
 
 NETCONFDIR='/usr/share/redhat-config-network/'
+
+
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
-SYSCONFNETWORK='/etc/sysconfig/network/'
+SYSCONFNETWORK='/etc/sysconfig/network'
+WVDIALCONF='/etc/wvdial.conf'
+HOSTSCONF='/etc/hosts'
+RESOLVCONF='/etc/resolv.conf'
+CIPEDIR="/etc/cipe"
+PPPDIR="/etc/ppp"
+MODULESCONF='/etc/modules.conf'
+HWCONF='/etc/sysconfig/hwconf'
+ISDNCARDCONF='/etc/sysconfig/isdncard'
+PAPFILE = "/etc/ppp/pap-secrets"
+CHAPFILE = "/etc/ppp/chap-secrets"
 
 import gettext
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
@@ -100,8 +118,8 @@ def nop(*args):
 
 class TestError(Exception):
     def __init__(self, args=None):
-        self.args = args
-
+        Exception.__init__(self, args)
+        #self.args = args
 
 def rpms_notinstalled(namelist):
     import rpm
@@ -159,15 +177,15 @@ def request_rpms(pkgs = []):
 DVpapconf = None
 def getPAPConf():
     global DVpapconf
-    if DVpapconf == None:        
-        DVpapconf = ConfPAP.ConfPAP("/etc/ppp/pap-secrets")
+    if DVpapconf == None or DVpapconf.filename != netconfpkg.ROOT + PAPFILE:
+        DVpapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + PAPFILE)
     return DVpapconf
 
 DVchapconf = None
 def getCHAPConf():
     global DVchapconf
-    if DVchapconf == None:
-        DVchapconf = ConfPAP.ConfPAP("/etc/ppp/chap-secrets")
+    if DVchapconf == None or DVchapconf.filename != netconfpkg.ROOT + CHAPFILE:
+        DVchapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + CHAPFILE)
     return DVchapconf
 
 def create_ethernet_combo(hardwarelist, devname):
@@ -229,12 +247,19 @@ def create_tokenring_combo(hardwarelist, devname):
         return (hwcurr, hwdesc[:])
 
 def ishardlink(file):
-    return os.stat(file)[3] > 1
+    if os.path.isfile(file):
+        return os.stat(file)[3] > 1
+    else:
+        return None
 
 def getHardwareType(devname):
+    if devname in deviceTypes:
+        return devname
     return getDeviceType(devname)
 
 def getDeviceType(devname):
+    if devname in deviceTypes:
+        return devname
     type = _('Unknown')
     if not devname or devname == "":
         return type
@@ -385,6 +410,89 @@ def generic_yesno_dialog (message, parent_dialog = None,
             print message
 	return 0
 
+generic_run_dialog_func = None
+def generic_run_dialog (command, argv, searchPath = 0,
+                        root = '/', stdin = 0,
+                        catchfd = 1, closefd = -1, title = None,
+                        label = None, errlabel = None, dialog = None):
+        import select
+        global generic_run_dialog_func
+	if generic_run_dialog_func:
+		return generic_run_dialog_func(command, argv, searchPath,
+                                               root, stdin, catchfd,
+                                               title = "%s:\n\n%s" % (PROGNAME,
+                                                                      title),
+                                               label = label,
+                                               errlabel = errlabel,
+                                               dialog = dialog)
+        else:
+            if not os.access (root + command, os.X_OK):
+                raise RuntimeError, command + " can not be run"
+
+            print title
+            print label
+
+            (read, write) = os.pipe()
+
+            childpid = os.fork()
+            if (not childpid):
+                if (root and root != '/'): os.chroot (root)
+                if isinstance(catchfd, tuple):
+                    for fd in catchfd:
+                        os.dup2(write, fd)
+                else:
+                    os.dup2(write, catchfd)
+                os.close(write)
+                os.close(read)
+
+                if closefd != -1:
+                    os.close(closefd)
+
+                if stdin:
+                    os.dup2(stdin, 0)
+                    os.close(stdin)
+
+                if (searchPath):
+                    os.execvp(command, argv)
+                else:
+                    os.execv(command, argv)
+
+                sys.exit(1)
+            try:
+                os.close(write)
+
+                rc = ""
+                s = "1"
+                while (s):
+                    try:
+                        (fdin, fdout, fderr) = select.select([read], [], [], 0.1)
+                    except:
+                        fdin = []
+                        pass
+
+                    if len(fdin):
+                        s = os.read(read, 100)
+                        sys.stdout.write(s)
+                        rc = rc + s
+
+            except Exception, e:
+                os.kill(childpid, 15)
+                raise e
+
+            os.close(read)
+
+            try:
+                (pid, status) = os.waitpid(childpid, 0)
+            except OSError, (errno, msg):
+                print __name__, "waitpid:", msg
+
+            if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
+                status = os.WEXITSTATUS(status)
+            else:
+                status = -1
+
+            return (status, rc)
+
 def set_generic_error_dialog_func(func):
 	global generic_error_dialog_func
 	generic_error_dialog_func = func
@@ -405,13 +513,18 @@ def set_generic_yesno_dialog_func(func):
 	global generic_yesno_dialog_func
 	generic_yesno_dialog_func = func
 
+def set_generic_run_dialog_func(func):
+	global generic_run_dialog_func
+	generic_run_dialog_func = func
+   
+
 def unlink(file):
 	if not os.path.isfile(file):
 		#print "file '%s' is not a file!" % file
 		return
 	try:
 		os.unlink(file)
-                #print "Removed %s" % file
+                log.log(2, "rm %s" % file)
 	except OSError, errstr:
                 generic_error_dialog (_("Error removing\n%s:\n%s!") \
 				      % (file, str(errstr)))
@@ -421,6 +534,7 @@ def link(src, dst):
 		return
 	try:
 		os.link(src, dst)
+                log.log(2, "ln %s %s" % (src, dst))
 	except OSError, errstr:
 		generic_error_dialog (_("Error linking %s\nto\n%s:\n%s!") 
 				      % (src, dst, str(errstr)))
@@ -431,6 +545,7 @@ def copy(src, dst):
 	try:
 		shutil.copy(src, dst)
                 shutil.copymode(src, dst)
+                log.log(2, "cp %s %s" % (src, dst))
 	except (IOError, OSError), errstr:
 		generic_error_dialog (_("Error copying \n%s\nto %s:\n%s!") 
 				      % (src, dst, str(errstr)))
@@ -440,6 +555,7 @@ def symlink(src, dst):
 		return
 	try:
 		os.symlink(src, dst)
+                log.log(2, "ln -s %s %s" % (src, dst))
 	except OSError, errstr:
 		generic_error_dialog (_("Error linking \n%s\nto %s:\n%s!") 
 				      % (src, dst, str(errstr)))
@@ -449,10 +565,19 @@ def rename(src, dst):
 		return
         try:
 		os.rename(src, dst)
+                log.log(2, "mv %s %s" % (src, dst))
 	except (IOError, OSError, EnvironmentError), errstr:
 		generic_error_dialog (_("Error renaming \n%s\nto %s:\n%s!") \
 				      % (src, dst, str(errstr)))
-	
+
+def mkdir(path):
+    try:
+        os.mkdir(path)
+        log.log(2, "mkdir %s" % path)
+    except (IOError, OSError), errstr :
+        generic_error_dialog (_("Error creating directory!\n%s") \
+                              % (str(errstr)))
+
 def get_filepath(file):
 	fn = file
 	if not os.path.exists(fn):
@@ -462,5 +587,28 @@ def get_filepath(file):
 	if not os.path.exists(fn):
 		return None
 	else: return fn
+
+import netconfpkg
+netconfpkg.ROOT = "/"
 	
-	
+def setRoot(root):
+    netconfpkg.ROOT = root
+
+def getRoot():
+    return netconfpkg.ROOT
+
+def prepareRoot(root):
+    setRoot(root)
+    
+    for dir in "/etc", "/etc/sysconfig", \
+        "/etc/sysconfig/networking", \
+        OLDSYSCONFDEVICEDIR, \
+        SYSCONFDEVICEDIR, \
+        SYSCONFPROFILEDIR, \
+        CIPEDIR, PPPDIR:
+        if not os.path.isdir(root + dir):
+            log.log(2, "mkdir %s" % root + dir)
+            mkdir(root + dir)
+        else:
+            log.log(2, "%s already exists" % (root + dir))
+            

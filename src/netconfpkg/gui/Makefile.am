@@ -45,7 +45,6 @@ PYTHON_FILES = \
 	deviceconfig.py \
 	devicetype.py \
 	dialupconfig.py \
-	exception.py \
 	DialupDruid.py \
 	dslconfig.py \
 	editadress.py \

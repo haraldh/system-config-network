@@ -40,6 +40,7 @@ class Wireless(Wireless_base):
     
     def __init__(self, list = None, parent = None):
         Wireless_base.__init__(self, list, parent)        
+        self.Key = ''
         
     def load(self, parentConf):
         conf = parentConf
@@ -48,7 +49,7 @@ class Wireless(Wireless_base):
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey]
-
+        
         if re.search("^s:", self.Key):
             self.Key = self.Key[2:]
         elif re.search("^[0-9a-fA-F]+$", self.Key):
@@ -63,10 +64,10 @@ class Wireless(Wireless_base):
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
 
-        if not re.search("^0x[0-9a-fA-F]+\s", self.Key):
-            conf["KEY"] = "s:" + self.Key
-        else:
+        if re.search("^\s*0x[0-9a-fA-F]+\s*$", self.Key):
             conf["KEY"] = self.Key[2:]
+        elif re.search("^\s*[^\s]+\s*$", self.Key):
+            conf["KEY"] = "s:" + self.Key
 
 
         # Do not clear the non-filled in values

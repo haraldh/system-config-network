@@ -52,7 +52,12 @@ class DevADSL(Device):
       if getDeviceType(device.Device) == DSL:
          return true
       return false
-   
+
+   def getHWDevice(self):
+      if self.Dialup:
+         return self.Dialup.EthDevice
+      return None
+      
 def setDevADSLDialog(dialog):
    global _devADSLDialog
    _devADSLDialog = dialog

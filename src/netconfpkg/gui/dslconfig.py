@@ -54,6 +54,7 @@ class dslConfigDialog(deviceConfigDialog):
 
         xml_signal_autoconnect(self.xml, {
             "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
+            "on_dialonDemandCB_clicked" : self.on_dialonDemandCB_clicked,
             })
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
@@ -109,6 +110,12 @@ class dslConfigDialog(deviceConfigDialog):
         if dialup.Persist:
             self.xml.get_widget("persistCB").set_active(dialup.Persist)
 
+        if dialup.DialMode:
+            self.xml.get_widget("dialonDemandCB").set_active(\
+                dialup.DialMode == DM_AUTO)
+            self.xml.get_widget("idleTimeSB").set_text(\
+                str(dialup.HangupTimeout))
+            self.on_dialonDemandCB_clicked()
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
 
         self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute == TRUE)
@@ -129,13 +136,24 @@ class dslConfigDialog(deviceConfigDialog):
         dialup.SyncPPP = self.xml.get_widget("useSyncpppCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
-
+        if self.xml.get_widget("dialonDemandCB").get_active():
+            dialup.DialMode = DM_AUTO
+            dialup.HangupTimeout = int(self.xml.get_widget("idleTimeSB").\
+                                       get_text())
+        else:
+            dialup.DialMode = DM_MANUAL
+            
         if not self.device.Device:
             self.device.Device = "dsl"
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.dsl_hardware_dehydrate (self.sharedtcpip_xml, self.device)
         
+    def on_dialonDemandCB_clicked(self, *args):
+        self.xml.get_widget("idleTimeSB").set_sensitive(\
+            self.xml.get_widget("dialonDemandCB").get_active())
+        pass
+
     def on_tonlineButton_clicked(self, *args):
         self.dehydrate()
         dialup = self.device.Dialup
