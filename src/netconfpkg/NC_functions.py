@@ -40,10 +40,10 @@ SYSCONFNETWORK='/etc/sysconfig/network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
 try:
-	gettext.install(PROGNAME, "/usr/share/locale", 1)
+    gettext.install(PROGNAME, "/usr/share/locale", 1)
 except IOError:
-	import __builtin__
-	__builtin__.__dict__['_'] = unicode    
+    import __builtin__
+    __builtin__.__dict__['_'] = unicode    
 
 ETHERNET = 'Ethernet'
 MODEM = 'Modem'
@@ -91,9 +91,44 @@ modemFlowControls = { CRTSCTS : _("Hardware (CRTSCTS)"),
 		      NOFLOW :  _("None") } 
 
 class TestError(Exception):
-	def __init__(self, args=None):
-		self.args = args
+    def __init__(self, args=None):
+        self.args = args
 
+
+def rpms_notinstalled(namelist):
+    import rpm
+    
+    ts = rpm.TransactionSet("/")
+    ts.setVSFlags(rpm.RPMVSF_NORSA|rpm.RPMVSF_NODSA)
+    ts.setFlags(rpm.RPMTRANS_FLAG_NOMD5)
+
+    if len(namelist) == 0:
+        namelist = [ namelist ]
+
+    toinstall = namelist
+
+    for name in namelist:    
+        mi = ts.dbMatch('name', name)
+        for n in mi:
+            if n[rpm.RPMTAG_NAME] == name:
+                toinstall.remove(name)
+                break
+                
+    del (ts)
+    return toinstall
+
+def assure_rpms(pkgs = []):
+    toinstall = rpms_notinstalled(pkgs)
+
+    r = RESPONSE_NO
+    
+    if len(toinstall):
+        import string
+        plist = string.join(toinstall, '\n')
+	r = generic_longinfo_dialog(_("Shall I install the following packages,"
+                                      "which are needed on your system?"),
+                                    plist, dialog_type="question")
+    return r
 
 DVpapconf = None
 def getPAPConf():
@@ -340,8 +375,9 @@ def generic_longinfo_dialog (message, long_message,
 	return 0
 
 generic_yesnocancel_dialog_func = None
-def generic_yesnocancel_dialog (message, parent_dialog = None, dialog_type="question",
-			  widget=None, page=0, broken_widget=None):
+def generic_yesnocancel_dialog (message, parent_dialog = None,
+                                dialog_type="question",
+                                widget=None, page=0, broken_widget=None):
 	global generic_yesnocancel_dialog_func
 	if generic_yesnocancel_dialog_func:
 		return generic_yesnocancel_dialog_func(message, parent_dialog,
