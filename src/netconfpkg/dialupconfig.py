@@ -145,12 +145,18 @@ class DialupDialog:
         self.device.Dialup.PhoneNumber = self.xml.get_widget("phoneEntry").get_text()
         self.device.Dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
         self.device.Dialup.Regioncode = self.xml.get_widget("countryCodeEntry").get_text()
-        
+
+        self.device.Dialup.PPPOptions = None
+        self.device.Dialup.createPPPOptions()
+        clist = self.xml.get_widget("pppOptionList")
+        for i in xrange (clist.rows):
+            self.device.Dialup.PPPOptions.append(clist.get_text (i, 0))
+            
     def on_Dialog_delete_event(self, *args):
         pass
     
     def on_okButton_clicked(self, button):
-        pass
+        self.dehydrate()
     
     def on_cancelButton_clicked(self, button):
         pass
@@ -253,16 +259,12 @@ class ISDNDialupDialog(DialupDialog):
         self.noteBook.get_nth_page(4).hide()
         self.dialog.set_title(_("ISDN Dialup Configuration"))
         self.hydrate()
-        self.hydrateISDN()
 
     def on_chooseButton_clicked(self, button):
         dialog = ISDNproviderDialog(self.xml_main, self.xml_basic, self.xml)
-
-    def on_okButton_clicked(self, button):
-        self.dehydrate()
-        self.dehydrateISDN()
 		
-    def hydrateISDN(self):
+    def hydrate(self):
+        DialupDialog.hydrate(self)
         if self.device.Dialup.Callback != None:
             self.xml.get_widget("callbackCB").set_active(self.device.Dialup.Callback != None)
             self.xml.get_widget("dialinNumberEntry").set_text(self.device.Dialup.Callback.Number)
@@ -280,7 +282,8 @@ class ISDNDialupDialog(DialupDialog):
         if self.device.Dialup.ChannelBundling:
             self.xml.get_widget("channelBundlingCB").set_active(self.device.Dialup.ChannelBundling == true)
             
-    def dehydrateISDN(self):
+    def dehydrate(self):
+        DialupDialog.dehydrate(self)
         devicelist = getDeviceList()
         
         device_list_raw = []
@@ -331,7 +334,8 @@ class ISDNDialupDialog(DialupDialog):
         else:
             self.device.Dialup.ChannelBundling = false
 
-        print "Device:", self.device.Device
+        self.device.Device="isdn"
+        #print "Device:", self.device.Device
         
 class ModemDialupDialog(DialupDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
@@ -342,17 +346,12 @@ class ModemDialupDialog(DialupDialog):
             self.noteBook.get_nth_page(i).hide()
 
         self.hydrate()
-        self.hydrateModem()
 
     def on_chooseButton_clicked(self, button):
         dialog = ModemproviderDialog(self.xml_main, self.xml_basic, self.xml)
 
-    def on_okButton_clicked(self, button):
-        self.dehydrate()
-        self.dehydrateModem()
-
-    def hydrateModem(self):
-		
+    def hydrate(self):
+        DialupDialog.hydrate(self)
         hardwarelist = getHardwareList()
         devicelist = []
         for hw in hardwarelist:
@@ -367,14 +366,20 @@ class ModemDialupDialog(DialupDialog):
             self.xml.get_widget("hangupTimeoutSB").set_value(self.device.Dialup.HangupTimeout)
         if self.device.Dialup.DialMode:
             self.xml.get_widget("dialModeEntry").set_text(self.device.Dialup.DialMode)
-        if self.device.Dialup.InitStrings:
-            self.xml.get_widget("modemInitEntry").set_text("text")
+        #        if self.device.Dialup.InitStrings:
+        self.xml.get_widget("modemInitEntry").set_sensitive(FALSE)
+
         if self.device.Name:
             self.xml.get_widget("modemPortEntry").set_text(self.device.Name)
 
-    def dehydrateModem(self):
-        pass
 
+    def dehydrate(self):
+        DialupDialog.dehydrate(self)
+
+        self.device.Dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutSB").get_value()
+        self.device.Dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
+        self.device.Dialup.InitStrings = self.xml.get_widget("modemInitEntry").get_text()
+        self.device.Name = self.xml.get_widget("modemPortEntry").get_text()
 
 # make ctrl-C work
 if __name__ == "__main__":
