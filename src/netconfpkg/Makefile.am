@@ -1,6 +1,3 @@
-EXTRA_DIST = DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl \
-             NetworkList.idl Firewall.idl genClass.py
-
 GLADE_FILES = \
 	basicdialog.glade \
 	chooseprovider.glade \
