@@ -96,7 +96,7 @@ dialup
 	<class>GtkTable</class>
 	<name>table9</name>
 	<border_width>5</border_width>
-	<rows>2</rows>
+	<rows>3</rows>
 	<columns>2</columns>
 	<homogeneous>False</homogeneous>
 	<row_spacing>5</row_spacing>
@@ -170,6 +170,34 @@ dialup
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>2</right_attach>
+	    <top_attach>2</top_attach>
+	    <bottom_attach>3</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>True</yfill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>dnsSettingCB</name>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_dnsSettingCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 12:54:18 GMT</last_modification_time>
+	  </signal>
+	  <label>Automatically obtain _DNS information from provider</label>
+	  <active>True</active>
+	  <draw_indicator>True</draw_indicator>
+	  <child>
+	    <left_attach>0</left_attach>
+	    <right_attach>2</right_attach>
 	    <top_attach>1</top_attach>
 	    <bottom_attach>2</bottom_attach>
 	    <xpad>0</xpad>
@@ -179,7 +207,7 @@ dialup
 	    <xshrink>False</xshrink>
 	    <yshrink>False</yshrink>
 	    <xfill>True</xfill>
-	    <yfill>True</yfill>
+	    <yfill>False</yfill>
 	  </child>
 	</widget>
       </widget>

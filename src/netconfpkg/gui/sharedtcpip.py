@@ -69,6 +69,7 @@ def dhcp_hydrate (xml, device):
         else:
             device_type = 'dhcp'
 
+        
     if device.Hostname:
         xml.get_widget('hostnameEntry').set_text(device.Hostname)
     else:
@@ -94,6 +95,8 @@ def dhcp_hydrate (xml, device):
     else:
         xml.get_widget("ipProtocolOmenu").set_history(DHCP)
 
+    xml.get_widget('dnsSettingCB').set_active(device.AutoDNS == TRUE)
+
     if device.BootProto == "static" or device.BootProto == "none":
         xml.get_widget('ipAutomaticRadio').set_active(TRUE)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
@@ -115,6 +118,7 @@ def dhcp_dehydrate (xml, device):
         device.Netmask = ''
         device.Gateway = ''
         device.Hostname = xml.get_widget('hostnameEntry').get_text()
+        device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()        
     else:
         device.BootProto = 'static'
         device.IP = xml.get_widget('ipAddressEntry').get_text()
