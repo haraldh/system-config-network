@@ -9,7 +9,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2, wvdial, rhpl > 0.15 , gnome-python2-canvas
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2, wvdial, rhpl >= 0.39 , gnome-python2-canvas
 BuildRequires: /usr/bin/python2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils
 Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -115,6 +115,11 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Aug 14 2002 Harald Hoyer <harald@redhat.de>
+- #71448
+- #71265
+- #70988
+
 * Tue Aug 13 2002 Harald Hoyer <harald@redhat.de> 1.1.15-1
 - many bugfixes, including  #71062 #69333 #68793 #69133
 

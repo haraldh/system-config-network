@@ -25,6 +25,7 @@ import os.path
 import shutil
 import gettext
 from rhpl import ConfPAP
+from rhpl import ethtool
 
 true = (1==1)
 false = not true
@@ -177,6 +178,15 @@ def getDeviceType(devname):
     for i in deviceTypeDict.keys():
         if re.search(i, devname):
             type = deviceTypeDict[i]
+
+    if type == ETHERNET:
+        try:
+	    # test for wireless
+	    info = ethtool.get_iwconfig(devname)
+	    type = WIRELESS
+        except IOError:
+	    pass
+
     return type
 
 def getNewDialupDevice(devicelist, dev):

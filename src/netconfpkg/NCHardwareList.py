@@ -158,6 +158,7 @@ class HardwareList(HardwareList_base):
                     hw.Name = device
                     hw.Description = mod
                     hw.Type = getDeviceType(device)
+                        
                     hw.createCard()
                     hw.Card.ModuleName = mod
                     for info in modinfo.keys():

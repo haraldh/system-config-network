@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network 1.0\n"
-"POT-Creation-Date: 2002-08-13 15:33+0200\n"
+"POT-Creation-Date: 2002-08-14 17:45+0200\n"
 "PO-Revision-Date: 2002-07-27 22:26--500\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.forthnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -221,9 +221,9 @@ msgstr ""
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:197
+#: src/netconfpkg/gui/EthernetInterface.py:198
 #: src/netconfpkg/gui/CipeInterface.py:132
-#: src/netconfpkg/gui/WirelessInterface.py:233
+#: src/netconfpkg/gui/WirelessInterface.py:261
 #: src/netconfpkg/gui/TokenRingInterface.py:194
 msgid "You have selected the following information:"
 msgstr ""
@@ -275,9 +275,9 @@ msgstr "Αριθμός Τηλεφώνου:"
 #: src/netconfpkg/gui/ethernethardware.py:155
 #: src/netconfpkg/gui/tokenringhardware.py:144
 #: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
-#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:187
-#: src/netconfpkg/NCHardwareList.py:302 src/netconfpkg/NC_functions.py:173
-#: src/netconfpkg/NC_functions.py:229
+#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:188
+#: src/netconfpkg/NCHardwareList.py:303 src/netconfpkg/NC_functions.py:174
+#: src/netconfpkg/NC_functions.py:239
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/ethernethardware.glade.h:22
@@ -810,38 +810,40 @@ msgstr "Σύνδεση Ethernet"
 msgid "Create a new ethernet connection."
 msgstr "Δημιουργία νέας σύνδεσης Ethernet."
 
-#: src/netconfpkg/gui/EthernetInterface.py:178
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#. must be at bottom, because prepare is called here
+#: src/netconfpkg/gui/EthernetInterface.py:179
 msgid "Other Ethernet Card"
 msgstr ""
 
-#: src/netconfpkg/gui/EthernetInterface.py:198
+#: src/netconfpkg/gui/EthernetInterface.py:199
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/WirelessInterface.py:234
+#: src/netconfpkg/gui/WirelessInterface.py:262
 #: src/netconfpkg/gui/TokenRingInterface.py:195
 msgid "Device:"
 msgstr "Συσκευή:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:209
-#: src/netconfpkg/gui/WirelessInterface.py:245
+#: src/netconfpkg/gui/EthernetInterface.py:210
+#: src/netconfpkg/gui/WirelessInterface.py:273
 #: src/netconfpkg/gui/TokenRingInterface.py:206
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Διεύθυνση:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:210
-#: src/netconfpkg/gui/WirelessInterface.py:246
+#: src/netconfpkg/gui/EthernetInterface.py:211
+#: src/netconfpkg/gui/WirelessInterface.py:274
 #: src/netconfpkg/gui/TokenRingInterface.py:207
 msgid "Subnet Mask:"
 msgstr ""
 
-#: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/WirelessInterface.py:247
+#: src/netconfpkg/gui/EthernetInterface.py:212
+#: src/netconfpkg/gui/WirelessInterface.py:275
 #: src/netconfpkg/gui/TokenRingInterface.py:208
 msgid "Default Gateway Address:"
 msgstr ""
 
-#: src/netconfpkg/gui/EthernetInterface.py:213
-#: src/netconfpkg/gui/WirelessInterface.py:249
+#: src/netconfpkg/gui/EthernetInterface.py:214
+#: src/netconfpkg/gui/WirelessInterface.py:277
 #: src/netconfpkg/gui/TokenRingInterface.py:210
 msgid "Automatically obtain IP address settings with:"
 msgstr ""
@@ -978,27 +980,28 @@ msgstr "Ασύμαρτη σύνδεση"
 msgid "Create a new wireless connection."
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterface.py:213
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#: src/netconfpkg/gui/WirelessInterface.py:241
 msgid "Other Wireless Card"
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterface.py:252
+#: src/netconfpkg/gui/WirelessInterface.py:280
 msgid "Mode: "
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterface.py:253
+#: src/netconfpkg/gui/WirelessInterface.py:281
 msgid "ESSID (Network ID):"
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterface.py:259
+#: src/netconfpkg/gui/WirelessInterface.py:287
 msgid "Channel: "
 msgstr "Κανάλι: "
 
-#: src/netconfpkg/gui/WirelessInterface.py:260
+#: src/netconfpkg/gui/WirelessInterface.py:288
 msgid "Transmit Rate: "
 msgstr "Ρυθμός Μετάδοσης:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:261
+#: src/netconfpkg/gui/WirelessInterface.py:289
 msgid "Key: "
 msgstr ""
 
@@ -1025,6 +1028,7 @@ msgstr ""
 msgid "Create a new Token Ring connection."
 msgstr ""
 
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #: src/netconfpkg/gui/TokenRingInterface.py:176
 msgid "Other Tokenring Card"
 msgstr ""
@@ -1221,7 +1225,7 @@ msgstr ""
 msgid "manual"
 msgstr ""
 
-#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:89
+#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:90
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -1599,12 +1603,12 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:87 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:88 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Υλικό (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:88 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:89 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Λογισμικό (XON/XOFF)"
@@ -1612,12 +1616,12 @@ msgstr "Λογισμικό (XON/XOFF)"
 #. print dev+" has unknown device type, skipping it."
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:337
+#: src/netconfpkg/NC_functions.py:347
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:346 src/netconfpkg/NC_functions.py:355
+#: src/netconfpkg/NC_functions.py:356 src/netconfpkg/NC_functions.py:365
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -1625,7 +1629,7 @@ msgid ""
 "%s: %s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:364
+#: src/netconfpkg/NC_functions.py:374
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -2578,13 +2582,6 @@ msgstr "Επιλογή Συσκευής Ethernet"
 msgid "Select the Ethernet card you want to configure:"
 msgstr ""
 
-#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:8
-#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:8
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
-msgid "_Hostname (optional):"
-msgstr ""
-
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/isdnhardware.glade.h:1
 msgid "1_TR6"
@@ -2870,22 +2867,22 @@ msgstr ""
 msgid "_Channel:"
 msgstr "_Κανάλι:"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Key:"
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
 #: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Mode:"
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
 #: src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Specified:"
 msgstr ""
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
 #: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "_Transmit Rate:"
 msgstr "_Ρυθμός Μετάδοσης:"
@@ -3580,6 +3577,10 @@ msgstr "_Υλικό:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_High Security (Internet)"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+msgid "_Hostname (optional):"
 msgstr ""
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:44

@@ -147,7 +147,6 @@ class TokenRingInterface(InterfaceCreator):
             self.topdruid.set_page(childs[2])
         else:
             self.hwPage = FALSE
-            self.topdruid.set_page(childs[3])
             self.device.Device = self.devlist[clist.selection[0]]
             alias = None
             for dev in self.devicelist:
@@ -160,6 +159,7 @@ class TokenRingInterface(InterfaceCreator):
                         alias = dev.Alias + 1
                 else: alias = 1
             self.device.Alias = alias
+            self.topdruid.set_page(childs[3])
         return TRUE
 
     def on_hw_config_page_prepare(self, druid_page, druid):

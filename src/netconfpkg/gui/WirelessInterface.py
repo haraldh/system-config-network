@@ -118,10 +118,7 @@ class WirelessInterface(InterfaceCreator):
     
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
-        if self.hwPage:
-            self.device.Device = self.hwDruid.hw.Name
-            self.device.Alias = None
-        self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+        #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
         pass
     
     def on_hostname_config_page_prepare(self, druid_page, druid):
@@ -151,7 +148,37 @@ class WirelessInterface(InterfaceCreator):
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_wireless_config_page_prepare(self, druid_page, druid):
+        if self.hwPage:
+            self.device.Device = self.hwDruid.hw.Name
+            self.device.Alias = None
+
+        if self.device.Device != None:
+            try:
+                info = ethtool.get_iwconfig(self.device.Device)
+            except IOError:
+                pass
+            else:
+                if info.has_key("Mode"):
+                    self.xml.get_widget("modeEntry").set_text(info["Mode"])
+
+                if info.has_key("ESSID") and info["ESSID"] != "":
+                    self.xml.get_widget("essidSpecButton").set_active(TRUE)
+                    self.xml.get_widget("essidEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("essidEntry").set_text(info["ESSID"])
+                else:
+                    self.xml.get_widget("essidAutoButton").set_active(TRUE)
+                    self.xml.get_widget("essidEntry").set_sensitive(FALSE)
+
+                if info.has_key("Frequency") and info["Frequency"] < 1000:
+                    self.xml.get_widget("channelSpinButton").set_value(int(info["Frequency"]))
+                if info.has_key("BitRate"):
+                    self.xml.get_widget("rateEntry").set_text(info["BitRate"])
+
+                if info.has_key("Key") and info["Key"] != "off":
+                    self.xml.get_widget("keyEntry").set_text(info["Key"])
+        self.on_modeChanged(self.xml.get_widget("modeEntry"))
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
+
         self.xml.get_widget("modeEntry").connect("changed",
                                                  self.on_modeChanged)
 
@@ -182,7 +209,6 @@ class WirelessInterface(InterfaceCreator):
             self.topdruid.set_page(childs[2])
         else:
             self.hwPage = FALSE
-            self.topdruid.set_page(childs[3])
             self.device.Device = self.devlist[clist.selection[0]]
             alias = None
             for dev in self.devicelist:
@@ -195,6 +221,8 @@ class WirelessInterface(InterfaceCreator):
                         alias = dev.Alias + 1
                 else: alias = 1
             self.device.Alias = alias
+            self.topdruid.set_page(childs[3])
+
         return TRUE
 
     def on_hw_config_page_prepare(self, druid_page, druid):
@@ -205,7 +233,7 @@ class WirelessInterface(InterfaceCreator):
         clist.clear()
         self.devlist = []
         for hw in hardwarelist:
-            if hw.Type == ETHERNET:
+            if hw.Type == WIRELESS:
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
