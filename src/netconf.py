@@ -1103,7 +1103,8 @@ class mainDialog:
                 hw = Hardware()
                 hw.Type = ISDN
                 hw.createCard()
-                dialog = editisdnHardwareDialog(hw)
+
+            dialog = isdnHardwareDialog(hw)
 
         button = dialog.xml.get_widget('Dialog').run()
         

@@ -38,7 +38,7 @@ from gtk import TRUE
 from gtk import FALSE
 
 class isdnHardwareDialog:
-    def __init__(self, cardname=None):
+    def __init__(self, hw):
         glade_file = "isdnhardware.glade"
 
         if not os.path.exists(glade_file):
@@ -55,22 +55,19 @@ class isdnHardwareDialog:
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
 
-        self.cardname = cardname
+        self.hw = hw
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
         self.setup()
-        #self.button = 0
 
     def on_Dialog_delete_event(self, *args):
-        #self.button = 1
         pass
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
-        #self.button = 1
         pass
 
     def on_isdnCardEntry_changed(self, entry):
@@ -112,16 +109,9 @@ class isdnHardwareDialog:
         has_card = FALSE
         hardwarelist = NCHardwareList.getHardwareList()
         
-        for hw in hardwarelist:
-            if hw.Type == "ISDN":
-                has_card = TRUE
-                break
-
-        if not has_card:
-            id = hardwarelist.addHardware()
-            hw = hardwarelist[id]
-            hw.Type = "ISDN"
-            hw.createCard()
+        hw = self.hw
+        
+        if not hw.Name:
             conf = NCisdnhardware.ConfISDN()
             new_card = conf.detect()
             if new_card:
@@ -177,79 +167,50 @@ class isdnHardwareDialog:
         hardwarelist = NCHardwareList.getHardwareList()
         isdncard = NCisdnhardware.ConfISDN()
         isdncard.get_resource(self.xml.get_widget('adapterEntry').get_text())
-        has_card = FALSE
-        
-        for hw in hardwarelist:
-            if hw.Type == "ISDN":
-                has_card = TRUE
-                break
-        
-        if not has_card:
-            id = hardwarelist.addHardware()
-            hw = hardwarelist[id]
-            hw.Type = "ISDN"
-            hw.createCard()
 
-        hw.Name = "ISDN Card 0"
-        hw.Description = isdncard.Description
-        hw.Card.ModuleName = isdncard.ModuleName
-        hw.Card.Type = isdncard.Type
-        hw.Card.Firmware = isdncard.Firmware
-        hw.Card.VendorId = isdncard.VendorId
-        hw.Card.DeviceId = isdncard.DeviceId
-        hw.Card.DriverId = isdncard.DriverId
+        self.hw.Name = "ISDN Card 0"
+        self.hw.Description = isdncard.Description
+        self.hw.Card.ModuleName = isdncard.ModuleName
+        self.hw.Card.Type = isdncard.Type
+        self.hw.Card.Firmware = isdncard.Firmware
+        self.hw.Card.VendorId = isdncard.VendorId
+        self.hw.Card.DeviceId = isdncard.DeviceId
+        self.hw.Card.DriverId = isdncard.DriverId
         
         if self.xml.get_widget("euroIsdnButton").get_active():
-            hw.Card.ChannelProtocol = '2'
+            self.hw.Card.ChannelProtocol = '2'
         else:
-            hw.Card.ChannelProtocol = '1'
+            self.hw.Card.ChannelProtocol = '1'
 
         if not self.xml.get_widget('irqSpinButton')["sensitive"]:
-            hw.Card.IRQ = isdncard.IRQ
+            self.hw.Card.IRQ = isdncard.IRQ
         else:
-            hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
+            self.hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
 
         if not self.xml.get_widget('memEntry')["sensitive"]:
-            hw.Card.Mem = isdncard.Mem
+            self.hw.Card.Mem = isdncard.Mem
         else:
-            hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
+            self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
 
         if not self.xml.get_widget('ioEntry')["sensitive"]:
-            hw.Card.IoPort = isdncard.IoPort
+            self.hw.Card.IoPort = isdncard.IoPort
         else:
-            hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
+            self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
 
         if not self.xml.get_widget('io1Entry')["sensitive"]:
-            hw.Card.IoPort1 = isdncard.IoPort1
+            self.hw.Card.IoPort1 = isdncard.IoPort1
         else:
-            hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
+            self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
 
         if not self.xml.get_widget('io2Entry')["sensitive"]:
-            hw.Card.IoPort2 = isdncard.IoPort2
+            self.hw.Card.IoPort2 = isdncard.IoPort2
         else:
-            hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
+            self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
     def setup(self):
         cardlist = NCisdnhardware.card.keys()
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
-
-
-    
-class addisdnHardwareDialog(isdnHardwareDialog):
-    def __init__(self):
-        isdnHardwareDialog.__init__(self)
-        self.cardname = None
-        isdnHardwareDialog.hydrate(self)
-
-
-class editisdnHardwareDialog(isdnHardwareDialog):
-    def __init__(self, cardname):
-        isdnHardwareDialog.__init__(self)
-        self.cardname = cardname
-        isdnHardwareDialog.hydrate(self)
-        
-
 
 # make ctrl-C work
 if __name__ == "__main__":
