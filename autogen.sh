@@ -42,7 +42,7 @@ esac
 autoconf
 #gettextize --copy --force
 autoheader
-aclocal $ACLOCAL_FLAGS
+aclocal -I . $ACLOCAL_FLAGS
 automake --add-missing $am_opt
 autoconf
 cd $THEDIR

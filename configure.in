@@ -2,7 +2,9 @@ AC_INIT(./acinclude.m4)
 AM_INIT_AUTOMAKE(redhat-config-network, 0.6.2)
 
 ALL_LINGUAS="no de es fr it ja"
-AM_GNU_GETTEXT
+
+dnl prevent to copy po/Makefile.in.in
+AM_GLIB_GNU_GETTEXT
 
 AC_OUTPUT([
 Makefile
@@ -13,6 +15,5 @@ src/Makefile
 src/doc/Makefile
 src/pixmaps/Makefile
 src/netconfpkg/Makefile
-intl/Makefile
 po/Makefile.in
 ])
