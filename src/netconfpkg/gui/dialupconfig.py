@@ -334,7 +334,7 @@ class ISDNDialupDialog(DialupDialog):
         
         if not dialup.Callback: dialup.createCallback()
         if self.xml.get_widget("callbackCB").get_active():
-            if self.xml.get_widget('CallbackMode')['label'] == _('in'):
+            if self.xml.get_widget('CallbackMode').get_label() == _('in'):
                 dialup.Callback.Type = 'in'
             else:
                 dialup.Callback.Type = 'out'
