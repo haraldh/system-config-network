@@ -188,6 +188,22 @@ class HardwareList(HardwareList_base):
                 isdn.Firmware = hw.Card.Firmware
                 isdn.Id = "HiSax"
 
+
+        # Clean up wvdial
+        for dev in wvdial.keys():
+            if dev[:5] != 'Modem':
+                continue
+            for hw in self.data:
+                if hw.Type == 'Modem' and hw.Name == dev:
+                    break
+            else:
+                # if the loop does not get interrupted by break
+                # we did not find the Modem in the hardwarelist
+                # and it gets deleted
+                del wvdial[dev]
+                    
+        
+
         modules.write()
         wvdial.write()
         isdn.save()
