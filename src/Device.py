@@ -8,19 +8,13 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 """
-The base Device class
+A generic network device class, containg data and functionality shared
+between different kinds of network devices
 """
 
-import sys
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
-
 import os
-import Conf
-import Address
 
 NETCFGPATH="/etc/syconfig/networking"
-
 
 class Device:
     """
@@ -41,42 +35,49 @@ class Device:
         self._type=None
         self._description=None
 
-    def readOldFile(self,filename):
+
+    def readConfig(self,filename):
         """
-        Read an existing configutation from a oldstyle configuration file
+        Read the configuration data for the device from the given file
         @self The object instance
-        @filename The configuration file
+        @filename The file to read the configuration from
         """
 
-        if not os.path.exists(filename):
-            raise IOError,"File not Found"
-        confFile=Conf.ConfShellVar(filename)
-        self._name=confFile["DEVICE"]
-        self._identifier=confFile["DEVICE"]
-        address=Address.Address()
-        address.readOldFile(filename)
-        self._addressList=Address.AddressList()
-        self._addressList.addAddress(address)
-        ## Fixme
-        self._type="Ethernet" 
+        # implement in subclasses
+        pass
+    
+
+    def writeConfig(self,profile="default",mode=0644):
+        """
+        Write the configuration data for the device to the given file
+        @self The object instance
+        @filename The profile to apply the data to
+        @mode The permissons for the configuration file - default 0644
+        """
+
+        filename="%s/%s/ifcfg-%s" %(NETCFGPATH,profile,self._name)
+        fd = os.open(filename, os.O_WRONLY | os.O_CREAT| os.O_TRUNC, mode)
+        file = os.fdopen(fd, "w")
+        file.write(self.toString())
+        file.close()
+
+
+    def readHardware(self):
+        """
+        Read the active settings (and hardware specific details, like MAC addresses)
+        @self The object instance
+        """
+
+        # implement in subclasses
+        pass
+
+
+    def writeHardware(self):
+        """
+        Apply the current settings to the device
+        @self The object instance
+        """
         
-    def readFile(self,filename):
-        """
-        Populate the file with configuration from a file
-        @self The object instance
-        @filename The file with the configuration data
-        """
-
-        if not os.path.exists(filename):
-            raise IOError,"File not Found"
-        confFile=Conf.ConfShellVar(filename)
-        self._name=confFile["NAME"]
-        self._description=confFile["DESCRIPTION"]
-        self._enabled=confFile["ENABLED"]
-        self._identifier=confFile["IDENTIFIER"]
-        self._type=confFile["TYPE"]
-        self._addressList=Address.AddressList()
-        self._addressList=self._addresslist.readFile(filename)
 
     def name(self):
         """
@@ -94,7 +95,6 @@ class Device:
         """
 
         self._name=name
-        
 
     def description(self):
         """
@@ -203,33 +203,6 @@ class Device:
             res=res+self._addressList.toString()
 
         return res
-
-    def writeToFile(self,filename="",mode=0644):
-        """
-        Write the data of the object to a file
-        @self The object instance
-        @filename the file to write to - if noe given, the objects filename attribute will be used
-        @mode The mode of the file
-        """
-        if os.path.exists(filename):
-            os.unlink(filename)
-
-        fd = os.open(filename, os.O_WRONLY | os.O_CREAT| os.O_TRUNC, mode)
-        file = os.fdopen(fd, "w")
-        file.write(self.toString())
-        file.close()
-        
-
-    def writeProfile(self,profile="default",mode=0644):
-        """
-        Write the data to the given profile
-        @self The object instance
-        @profile The name of the profile to write to
-        @mode The mode of the data file
-        """
-
-        filename="%s/%s/ifcfg-%s" %(NETCFGPATH,profile,self._name)
-        self.writeToFile(filename,mode)
 
     
         
