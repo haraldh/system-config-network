@@ -26,6 +26,7 @@ import signal
 import string
 from rhpl import ethtool
 from NC_functions import *
+import NCDeviceList
 
 TRUE = (1==1)
 FALSE = not TRUE
@@ -33,13 +34,12 @@ FALSE = not TRUE
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
 
-if os.getuid() == 0: isdnctrl = '/sbin/isdnctrl'
-else: isdnctrl = '/usr/sbin/userisdnctl'
-            
+isdnctrl = '/usr/sbin/isdnstatus'
 
 class NetworkDevice:
     def __init__(self):
         self.activedevicelist = []
+        self.devicelist = NCDeviceList.getDeviceList()
         self.load()
 
     def load(self):
@@ -50,8 +50,9 @@ class NetworkDevice:
         # remove inactive isdn/ppp device
         for i in l:
             if getDeviceType(i) == ISDN:
+                nickname = getNickName(self.devicelist, i)
                 if os.access(isdnctrl, os.X_OK):
-                    if os.system(isdnctrl + ' status %s >& /dev/null' %(i)) == 0:
+                    if os.system(isdnctrl + ' %s >& /dev/null' %(nickname)) == 0:
                         continue
                 self.activedevicelist.remove(i)
             elif getDeviceType(i) == MODEM:
@@ -74,5 +75,5 @@ class NetworkDevice:
         return FALSE
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.19 $"
+__date__ = "$Date: 2003/10/23 17:56:45 $"
+__version__ = "$Revision: 1.20 $"

@@ -358,6 +358,11 @@ def getDeviceType(devname):
 
     return type
 
+def getNickName(devicelist, dev):
+    for d in devicelist:
+        if d.Device == dev:
+            return d.DeviceId
+
 def getNewDialupDevice(devicelist, dev):
     dlist = []
     count = 0
@@ -807,5 +812,5 @@ class ConfKeys(Conf.ConfShellVar):
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:14:36 $"
-__version__ = "$Revision: 1.80 $"
+__date__ = "$Date: 2003/10/23 17:56:45 $"
+__version__ = "$Revision: 1.81 $"
