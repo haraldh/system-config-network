@@ -230,6 +230,7 @@ def route_init(xml, device):
             "on_routeEditButton_clicked" : (on_routeEditButton_clicked, xml, device),
             "on_routeDeleteButton_clicked" : (on_routeDeleteButton_clicked, xml, device),
         })
+    route_update(xml, device)
 
 
 def route_hydrate(xml, device):
