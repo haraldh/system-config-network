@@ -31,7 +31,6 @@ import re
 import HardwareList
 import regsub
 
-from dialupconfig import dialupDialog
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
