@@ -281,10 +281,11 @@ class mainDialog:
             else:
                 value = 'file:' + clist.get_text (i, 2)
 
-        basic = basicDialog(self.xml)
+        device = Device()
+
+        basic = basicDialog(device, self.xml)
         dialog = basic.xml.get_widget ("Dialog")
         dialog.run ()
-        print 'FOO'
 
     def on_deviceCopyButton_clicked (self, button):
         pass
@@ -306,26 +307,11 @@ class mainDialog:
             generic_error_dialog ('The Loopback device can not be edited!', self.xml.get_widget ("Dialog"))
             return
 
-        basic = basicDialog(self.xml)
-        basic.xml.get_widget('deviceNameEntry').set_text(name)
-        basic.xml.get_widget('deviceTypeEntry').set_text(type)
-        basic.xml.get_widget('onBootCB').set_active(device.OnBoot)
-        basic.xml.get_widget('userControlCB').set_active(device.AllowUser)
-
-        basic.xml.get_widget('ipSettingCB').set_active(device.BootProto != 'static')
-        if device.BootProto == 'static':
-            basic.xml.get_widget('addressEntry').set_text(device.IP)
-            basic.xml.get_widget('netmaskEntry').set_text(device.Netmask)
-            basic.xml.get_widget('gatewayEntry').set_text(device.Gateway)
-
-        basic.xml.get_widget('hostnameEntry').set_text(device.Hostname)
-        basic.xml.get_widget('dnsSettingCB').set_active(device.AutoDNS)
-
+        basic = basicDialog(device, self.xml)
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
-        dialog.run ()
-        print 'FOO'
-
+        button = dialog.run ()
+        
     def on_deviceDeleteButton_clicked (self, button):
         pass
 
@@ -427,7 +413,7 @@ class mainDialog:
         pass
 
     def on_hardwareAddButton_clicked (self, *args):
-        type = self.xml.get_widget('deviceTypeEntry').get_text()
+        type = self.xml.get_widget('hardwareTypeEntry').get_text()
         self.showHardwareDialog(type, false)
 
     def on_hardwareEditButton_clicked (self, *args):
