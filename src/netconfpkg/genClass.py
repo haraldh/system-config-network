@@ -24,7 +24,8 @@ FLAGS = "FLAGS"
 SELF = "SELF"
 NAME= "NAME"
 CHILDKEYS = "CHILDKEYS"
-        
+StrictType = None
+
 # this basic class will be common for all genClass generated classes
 # and imported from a seperate module
 class GenClass:
@@ -54,6 +55,9 @@ class GenClass:
       raise NotImplemented
 
    def checkType(self, child, value):
+      if not StrictType:
+         return
+
       type = self._attributes[child][TYPE]
 
       if type == BOOL:
