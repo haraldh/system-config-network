@@ -219,6 +219,8 @@ class mainDialog:
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
 
+        self.devsel = None
+
         if not os.access('/usr/bin/rp3', os.X_OK):
             self.xml.get_widget('deviceMonitorButton').hide()
         
@@ -239,11 +241,13 @@ class mainDialog:
         self.activedevicelist = NetworkDevice().get()
         self.tag = timeout_add(4000, self.update_devicelist)
 
+
         if modus == 'druid': self.on_deviceAddButton_clicked(None)
 
         # Let this dialog be in the taskbar like a normal window
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
+
         
     def load(self):
         self.loadDevices()
@@ -338,21 +342,24 @@ class mainDialog:
         activedevicelist = NetworkDevice().get()
 ##        profilelist = getProfileList()
         #print devicelist
+        devsel = self.devsel
+
         clist = self.xml.get_widget("deviceList")
+       
         clist.clear()
+        
         clist.set_row_height(17)
         act_xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
         inact_xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
         status_pixmap = self.off_xpm
         status_mask = self.off_mask
         status = INACTIVE
-        
+
         row = 0
         for dev in devicelist:
             devname = dev.Device
             if dev.Alias and dev.Alias != "":
                 devname = devname + ':' + str(dev.Alias)
-
 
             if devname in activedevicelist:
                 status = ACTIVE
@@ -374,9 +381,12 @@ class mainDialog:
 ##              if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
 ##                  clist.set_pixmap(row, 0, act_xpm)
 ##                  clist.set_row_data(row, 1)
-##                  break         
+##                  break
+            if dev == devsel:
+                clist.select_row(row, 0)
+                
             row = row + 1
-            
+        
     def hydrateHardware(self):
         hardwarelist = getHardwareList()
 
@@ -766,6 +776,8 @@ class mainDialog:
                                     activate_button = None,
                                     deactivate_button = None,
                                     monitor_button = None):
+        devicelist = getDeviceList()
+
         if edit_button: edit_button.set_sensitive(TRUE)
         if rename_button: rename_button.set_sensitive(TRUE)
         if delete_button: delete_button.set_sensitive(TRUE)
@@ -776,6 +788,9 @@ class mainDialog:
         if clist.get_name() == 'deviceList':
             if len(clist.selection) == 0:
                 return
+            
+            self.devsel = devicelist[clist.selection[0]]
+            
             try:
                 status = clist.get_pixtext(clist.selection[0], 0)[0]
             except ValueError:
