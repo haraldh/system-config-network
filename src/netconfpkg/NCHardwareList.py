@@ -137,56 +137,8 @@ class HardwareList(HardwareList_base):
             self[i] = newhw
         return i
 
-    def updateFromSystem(self):
+    def updateFromKudzu(self):
         import kudzu
-
-        modules = ConfModules()
-        modinfo = getModInfo()            
-
-        #
-        # Read in actual system state
-        #
-        for device in ethtool.get_devices():
-            if device[:3] != "eth":
-                continue
-
-            # No Alias devices
-            if string.find(device, ':') != -1:
-                continue
-
-            try:
-                mod = ethtool.get_module(device)
-            except IOError, err:
-                mod = None
-
-            if mod != None and mod != "":
-                for hw in self:
-                    if hw.Name == device:
-                        if hw.Card and hw.Card.ModuleName != mod:
-                            generic_error_dialog (\
-                                _("%s has an alias to module %s in modules.conf,\ninstead of currently loaded module %s!") % (hw.Name, hw.Card.ModuleName, mod))
-                        break
-                else:
-                    i = self.addHardware(getDeviceType(device))
-                    hw = self[i]
-                    hw.Name = device
-                    hw.Description = mod
-                    hw.Type = getDeviceType(device)                        
-                    hw.createCard()
-                    hw.Card.ModuleName = mod
-                    for info in modinfo.keys():
-                        if info == mod:
-                            if modinfo[info].has_key('description'):
-                                hw.Description = modinfo[info]['description']
-
-                    for selfkey in self.keydict.keys():
-                        confkey = self.keydict[selfkey]
-                        if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                            hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
-                    hw.setChanged(true)
-                    generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
-
-
         #
         # Read from kudzu
         #
@@ -244,8 +196,55 @@ class HardwareList(HardwareList_base):
                     if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
                         hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
                 hw.setChanged(true)
-                generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
-                
+                #generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
+
+    def updateFromSystem(self):
+
+        modules = ConfModules()
+        modinfo = getModInfo()            
+
+        #
+        # Read in actual system state
+        #
+        for device in ethtool.get_devices():
+            if device[:3] != "eth":
+                continue
+
+            # No Alias devices
+            if string.find(device, ':') != -1:
+                continue
+
+            try:
+                mod = ethtool.get_module(device)
+            except IOError, err:
+                mod = None
+
+            if mod != None and mod != "":
+                for hw in self:
+                    if hw.Name == device:
+                        if hw.Card and hw.Card.ModuleName != mod:
+                            generic_error_dialog (\
+                                _("%s has an alias to module %s in modules.conf,\ninstead of currently loaded module %s!") % (hw.Name, hw.Card.ModuleName, mod))
+                        break
+                else:
+                    i = self.addHardware(getDeviceType(device))
+                    hw = self[i]
+                    hw.Name = device
+                    hw.Description = mod
+                    hw.Type = getDeviceType(device)                        
+                    hw.createCard()
+                    hw.Card.ModuleName = mod
+                    for info in modinfo.keys():
+                        if info == mod:
+                            if modinfo[info].has_key('description'):
+                                hw.Description = modinfo[info]['description']
+
+                    for selfkey in self.keydict.keys():
+                        confkey = self.keydict[selfkey]
+                        if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                            hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                    hw.setChanged(true)
+                    #generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
 
     def load(self):
         modules = ConfModules()
