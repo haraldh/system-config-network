@@ -107,14 +107,22 @@ class mainDialog:
         dlg.run_and_close()
 
     def on_activateButton_clicked(self, button):
-        l = self.clist_get_device()
-        if l:
-            Interface().activate(l)
+        device = self.clist_get_device()
+        if device:
+            ret = Interface().activate(device)
+            if ret:
+                self.hydrate()
+            else:
+                self.errorDialog(device, ACTIVATE)
         
     def on_deactivateButton_clicked(self, button):
-        l = self.clist_get_device()
-        if l:
-            Interface().deactivate(l)
+        device = self.clist_get_device()
+        if device:
+            ret = Interface().deactivate(device)
+            if ret:
+                self.hydrate()
+            else:
+                self.errorDialog(device, DEACTIVATE)
 
     def on_configureButton_clicked(self, button):
         l = self.clist_get_device()
@@ -185,11 +193,11 @@ class mainDialog:
         lan_xpm, lan_mask = get_icon('pixmaps/ethernet.xpm', self.dialog)
         ppp_xpm, ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
         isdn_xpm, isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
-        status_pixmap = None
-        status_mask = None
-        device_pixmap = None
-        device_mask = None
-        status = None
+        status_pixmap = off_xpm
+        status_mask = off_mask
+        device_pixmap = lan_xpm
+        device_mask = lan_mask
+        status = INACTIVE
         row = 0
         
         for dev in devicelist:
@@ -202,7 +210,7 @@ class mainDialog:
                     status_pixmap = on_xpm
                     status_mask = on_mask
                     break
-
+            
             if dev.Device[:3] == 'ppp':
                 device_pixmap = ppp_xpm
                 device_mask = ppp_mask
@@ -217,6 +225,19 @@ class mainDialog:
             clist.set_pixtext(row, STATUS, status, 5, status_pixmap, status_mask)
             clist.set_pixtext(row, DEVICE, dev.Device, 5, device_pixmap, device_mask)
             row = row + 1
+            
+    def errorDialog(self, device, error_type):
+        if error_type == ACTIVATE:
+            errorString = _('cannot activate network device %s') %(device)
+        elif error_type == DEACTIVATE:
+            errorString = _('cannot deactivate network device %s') %(device)
+        elif error_type == STATUS:
+            errorString = _('cannot show status of network device %s') %(device)
+        elif error_type == MONITOR:
+            errorString = _('cannot monitor status of network device %s') %(device)
+
+        dlg = gnome.ui.GnomeMessageBox(errorString, 'error', _('Close'))
+        dlg.run_and_close()
 
 
 def get_icon(pixmap_file, dialog):

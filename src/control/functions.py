@@ -29,6 +29,9 @@ FALSE = not TRUE
 STATUS = 0
 DEVICE = 1
 NICKNAME = 2
+ACTIVATE = 3
+DEACTIVATE = 4
+MONITOR = 5
 
 import re
 import traceback
@@ -74,28 +77,43 @@ class Interface:
         pass
 
     def activate(self, device):
-        print 'waiting to connect to %s' % (device)
-        return
-        os.system('/sbin/ifup' + device)
+        try:
+            ret = os.system('/sbin/ifup %s >&/dev/null' %(device))
+            if ret == 0:
+                return 1
+            else:
+                return 0
+        except:
+            return 0
 
     def deactivate(self, device):
-        print 'waiting to disconnect from %s' % (device)
-        os.system('/sbin/ifdown' + device)
+        try:
+            os.system('/sbin/ifdown %s >& /dev/null' %(device))
+            return 1
+        except:
+            return 0
 
     def status(self, device):
-        print 'status from %s' % (device)
-        os.system('/usr/bin/redhat-config-network &')
+        pass
 
     def configure(self, device):
-        print 'configure %s' % (device)
+        try:
+            ret = os.system('/usr/bin/redhat-config-network %s &' %(device))
+            if ret == 0:
+                return 1
+            else:
+                return 0
+        except:
+            return 0
 
     def monitor(self, device):
-        print 'monitor %s' % (device)
+        ## todo, Janathon??
+        pass
     
     def allow(self, device):
         pass
 
-    
+
 class Monitor:
     def __init__(self):
         pass
