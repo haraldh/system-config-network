@@ -490,6 +490,9 @@ class mainDialog:
 
         device.commit()
 
+        if not device.changed:
+            return
+
         # Fixed change device names in active list of all profiles
         profilelist = getProfileList()
         for prof in profilelist:
@@ -499,6 +502,7 @@ class mainDialog:
         prof.commit()
 
         self.hydrate()
+        device.changed = false
 
     def editDevice(self, device):
         button = 0
@@ -776,6 +780,7 @@ class mainDialog:
         button = dialog.xml.get_widget("Dialog").run()
         if button != 0:            
             return
+                
         self.hydrate()
 
     def on_dnsUpButton_clicked (self, button):
@@ -878,7 +883,9 @@ class mainDialog:
             host.rollback()
             return
         host.commit()
-        self.hydrate()
+        if host.changed:
+            self.hydrate()
+            host.changed = false
 
     def on_hostsDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -1005,9 +1012,11 @@ class mainDialog:
                 return
 
         profile.ProfileName = text
-        profile.commit()
+        profile.commit()        
         self.initialized = None
-        self.hydrate()
+        if profile.changed:
+            self.hydrate()
+            profile.changed = false
 
     def on_profileDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -1125,8 +1134,10 @@ class mainDialog:
             hardwarelist.commit()
         else:
             hw.commit()
-            
-        self.hydrate()
+
+        if hw.changed:
+            self.hydrate()
+            hw.changed = false
 
     def on_hardwareDeleteButton_clicked (self, *args):
         hardwarelist = getHardwareList()
@@ -1210,6 +1221,7 @@ if __name__ == '__main__':
         gtk.mainloop()
 
     except SystemExit, code:
+        print "Exception %s: %s" % (str(SystemExit), str(code))
         sys.exit(0)
     except:
         handleException(sys.exc_info())
