@@ -94,11 +94,9 @@ class DialupDialog(deviceConfigDialog):
             widget.set_text(string.split(self.device.Dialup.Regioncode, ":")[1])
             state = true
         else:
-            widget.set_text(_("Germany"))
+            widget.set_text(_("None"))
+        self.xml.get_widget("countryCodeCombo").set_sensitive(state)
         self.xml.get_widget("dialingRuleCB").set_active(state)
-        self.xml.get_widget("prefixEntry").set_sensitive(state)
-        self.xml.get_widget("areaCodeEntry").set_sensitive(state)
-        self.xml.get_widget("countryCodeEntry").set_sensitive(state)
 
         if self.device.Dialup.Authentication and len(self.device.Dialup.Authentication) >0:
             self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)

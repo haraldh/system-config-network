@@ -20,6 +20,7 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 country_code = {
+    _("None") : 0,
     _("Afghanistan") : 93,
     _("Albania") : 355,
     _("Algeria") : 213,
@@ -97,13 +98,13 @@ class DslDialup(Dialup):
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
                 'EthDevice' : 'ETH',
-                'SlaveDevice' : 'SLAVEDEVICE',
+                'SlaveDevice' : 'SLAVE_DEVICE',
                 'ServiceName' : 'SERVICENAME',
                 'AcName' : 'ACNAME',
                 }
 
     def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)        
+        Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
         conf = parentConf
@@ -180,7 +181,6 @@ class IsdnDialup(Dialup):
 
     boolkeydict = { 'Secure' : 'SECURE',
                     'ChannelBundling' : 'BUNDLING',
-                    'DefRoute' : 'DELDEFAULTROUTE',
                     }
     
     intkeydict = {'MSN' : 'MSN',
@@ -236,11 +236,11 @@ class IsdnDialup(Dialup):
             else:
                 self.__dict__[selfkey] = false            
 
-        if conf.has_key('DELDEFAULTROUTE'):
-            if conf['DELDEFAULTROUTE'] == 'enabled':
-                self.DefRoute = true
-            else:
-                self.DefRoute = false
+#        if conf.has_key('DELDEFAULTROUTE'):
+#            if conf['DELDEFAULTROUTE'] == 'enabled':
+#                self.DefRoute = true
+#            else:
+#                self.DefRoute = false
 
         
         if conf.has_key('PPPOPTIONS'):
@@ -299,12 +299,9 @@ class IsdnDialup(Dialup):
             else:
                 conf[confkey] = 'off'
 
-        if self.DefRoute:
-            conf['DELDEFAULTROUTE'] = 'enabled'
-        else:
-            conf['DELDEFAULTROUTE'] = 'disabled'
-
-
+        # DEFROUTE alway yes by ISDN
+        conf['DEFROUTE'] = 'yes'
+            
         if self.PPPOptions:
             opt = ""
             for i in xrange(len(self.PPPOptions)):

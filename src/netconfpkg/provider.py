@@ -114,7 +114,6 @@ class providerDialog:
 
     def on_okButton_clicked(self, button):
         self.done = TRUE
-        self.dialog.destroy()
         if self.xml_main and self.xml_dialup:
             self.updateDialog(self.get_provider())
 
