@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "POT-Creation-Date: 2002-12-19 19:49+0100\n"
-"PO-Revision-Date: 2002-12-19 10:35+1000\n"
+"PO-Revision-Date: 2002-12-20 08:59+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Chinese (Traditional) <i18n-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -302,12 +302,12 @@ msgstr "請使用 root 的權限重新啟動 %s！"
 #: src/netconf-cmd.py:128
 #, python-format
 msgid "No Profile with name %s could be found."
-msgstr ""
+msgstr "找不到名稱為 %s 的資料檔。"
 
 #: src/netconf-cmd.py:130
-#, fuzzy, python-format
+#, python-format
 msgid "Switching to Profile %s."
-msgstr "更新資料檔中..."
+msgstr "轉換至資料檔 %s。"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -424,8 +424,7 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -3031,8 +3030,7 @@ msgstr ""
 "聯。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
@@ -3124,8 +3122,7 @@ msgstr "相關的 T-Online 號碼(_N):"
 msgid ""
 "Please enter here your personal account data. Without this data, access to T-"
 "Online is unfortunately not posssible."
-msgstr ""
-"請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
+msgstr "請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
 
 #: src/netconfpkg/gui/tonline.glade.h:4
 msgid "_Adapter Identifier:"
@@ -3217,11 +3214,13 @@ msgid "Saving Configuration..."
 msgstr "儲存組態設定中..."
 
 #: src/netconfpkg/gui/maindialog.py:294
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error saving Configuration!\n"
 "%s"
-msgstr "儲存組態設定中..."
+msgstr ""
+"儲存組態設定時發生錯誤！\n"
+"%s"
 
 #: src/netconfpkg/gui/maindialog.py:299
 msgid ""
@@ -3300,24 +3299,23 @@ msgid "Do you want to continue?"
 msgstr "您想要繼續嗎？"
 
 #: src/netconfpkg/gui/maindialog.py:767
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate network device %s!\n"
-msgstr "無法啟動網路裝置 %s\n"
+msgstr "無法啟動網路裝置 %s！\n"
 
 #: src/netconfpkg/gui/maindialog.py:790
-#, fuzzy
 msgid "Network device deactivating..."
-msgstr "網路裝置啟動中..."
+msgstr "網路裝置停用中..."
 
 #: src/netconfpkg/gui/maindialog.py:792
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating network device %s, please wait..."
-msgstr "網路裝置 %s 啟動中，請稍後..."
+msgstr "網路裝置 %s 停用中，請稍後..."
 
 #: src/netconfpkg/gui/maindialog.py:803
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate network device %s!\n"
-msgstr "無法停用網路裝置 %s"
+msgstr "無法停用網路裝置 %s！\n"
 
 #. devicelist = getDeviceList()
 #. edit_button.set_sensitive(FALSE)
@@ -3610,21 +3608,19 @@ msgstr "靜態路由檔案 %s 有無效的格式"
 #. from netconfpkg.NCDevice import Device
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
 #: src/netconfpkg/NCDeviceList.py:71 src/netconfpkg/NCProfileList.py:53
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error creating directory!\n"
 "%s"
 msgstr ""
-"重新命名\n"
-"%s\n"
-"為\n"
-"%s 發生錯誤: %s！"
+"建立目錄時發生錯誤！\n"
+"%s"
 
 #. print dev+" has unknown device type, skipping it."
 #: src/netconfpkg/NCDeviceList.py:88
 #, python-format
 msgid "Copying %s to devices and putting it into the default profile."
-msgstr ""
+msgstr "複製 %s 到裝置並將它放入預設的資料檔。"
 
 #: src/netconfpkg/NCDialup.py:43
 msgid "Afghanistan"
@@ -3921,7 +3917,7 @@ msgstr ""
 
 #: src/netconfpkg/NCProfileList.py:56
 msgid "Copying /etc/hosts to default profile."
-msgstr ""
+msgstr "複製 /etc/hosts 到預設的資料檔。"
 
 #. 60016
 #. Keep that test for later versions
@@ -3939,8 +3935,7 @@ msgstr ""
 "啟用其中之一。"
 
 #: src/netconfpkg/NC_functions.py:133
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr "想要安裝您系統所需的下列套件嗎？"
 
 #. test for wireless
@@ -3948,39 +3943,44 @@ msgstr "想要安裝您系統所需的下列套件嗎？"
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
 #: src/netconfpkg/NC_functions.py:384
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error removing\n"
 "%s:\n"
 "%s!"
-msgstr "移除 %s 發生錯誤: %s！"
+msgstr ""
+"移除 %s 時\n"
+"發生錯誤:\n"
+"%s！"
 
 #: src/netconfpkg/NC_functions.py:393
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error linking %s\n"
 "to\n"
 "%s:\n"
 "%s!"
 msgstr ""
-"連結 %s\n"
-"至\n"
-"%s 發生錯誤: %s！"
+"連結 %s 至\n"
+"%s 時\n"
+"發生錯誤:\n"
+"%s！"
 
 #: src/netconfpkg/NC_functions.py:403
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error copying \n"
 "%s\n"
 "to %s:\n"
 "%s!"
 msgstr ""
-"連結 %s\n"
-"至\n"
-"%s 發生錯誤: %s！"
+"複製 %s\n"
+"至 %s 時\n"
+"發生錯誤:\n"
+"%s！"
 
 #: src/netconfpkg/NC_functions.py:412
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error linking \n"
 "%s\n"
@@ -3988,21 +3988,22 @@ msgid ""
 "%s!"
 msgstr ""
 "連結 %s\n"
-"至\n"
-"%s 發生錯誤: %s！"
+"至 %s 時\n"
+"發生錯誤:\n"
+"%s！"
 
 #: src/netconfpkg/NC_functions.py:421
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error renaming \n"
 "%s\n"
 "to %s:\n"
 "%s!"
 msgstr ""
-"重新命名\n"
-"%s\n"
-"為\n"
-"%s 發生錯誤: %s！"
+"重新命名 %s\n"
+"為 %s 時\n"
+"發生錯誤:\n"
+"%s！"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -4544,3 +4545,4 @@ msgstr "網際網路組態設定精靈"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
+
