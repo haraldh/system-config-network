@@ -194,6 +194,7 @@ class ProfileList(ProfileList_base):
                             devName = dev.DeviceId
                         else:
                             devName = dev.Device
+                        break
 
                 try:
                     os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
