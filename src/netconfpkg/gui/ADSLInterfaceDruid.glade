@@ -23,10 +23,9 @@
 	<widget class="GnomeDruidPageStandard" id="dsl_config_page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">Configure DSL connection</property>
-	  <property name="title_foreground">#ffffff</property>
-	  
-	  <property name="logo_background">#191970</property>
-	  <property name="logo">/usr/share/redhat-config-network/pixmaps/network.xpm</property>
+	  <property name="title_foreground">#7320081f471b</property>
+	  <property name="logo_background">#57a440c3e888</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_dsl_config_page_back"/>
 	  <signal name="next" handler="on_dsl_config_page_next"/>
 	  <signal name="prepare" handler="on_dsl_config_page_prepare"/>
@@ -445,7 +444,14 @@
 		      <property name="yscale">1</property>
 
 		      <child>
-			<placeholder/>
+			<widget class="GtkButton" id="tonlineButton">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">_T-Online Zugangsdatenformular</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <signal name="clicked" handler="on_tonlineButton_clicked" last_modification_time="Wed, 18 Dec 2002 03:36:59 GMT"/>
+			</widget>
 		      </child>
 		    </widget>
 		    <packing>
@@ -549,8 +555,7 @@
 	  <property name="text" translatable="yes"></property>
 	  <property name="title_color">#ffffffffffff</property>
 	  <property name="text_color">#000000000000</property>
-	  
-	  <property name="logo_background_color">#191970</property>
+	  <property name="logo_background_color">#191919197070</property>
 	  <property name="textbox_color">#ffffffffffff</property>
 	  <signal name="finish" handler="on_finish_page_finish"/>
 	  <signal name="prepare" handler="on_finish_page_prepare"/>

@@ -27,9 +27,8 @@
 	<widget class="GnomeDruidPageStandard" id="dialup_page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">Select Provider</property>
-	  <property name="title_foreground">#ffffff</property>
-	  
-	  <property name="logo_background">#191970</property>
+	  <property name="title_foreground">#7320081f471b</property>
+	  <property name="logo_background">#57a440c3e888</property>
 	  <signal name="next" handler="on_dialup_page_next"/>
 	  <signal name="prepare" handler="on_dialup_page_prepare"/>
 
@@ -50,6 +49,7 @@
 		  <child>
 		    <widget class="GtkHPaned" id="hpaned1">
 		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
 		      <property name="position">150</property>
 
 		      <child>
@@ -64,7 +64,7 @@
 			    <widget class="GtkCTree" id="providerTree">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
-			      <property name="n_columns">1</property>
+			      <property name="columns">1</property>
 			      <property name="column_widths">80</property>
 			      <property name="selection_mode">GTK_SELECTION_BROWSE</property>
 			      <property name="show_titles">True</property>
@@ -311,7 +311,7 @@
 			    <widget class="GtkTable" id="table4">
 			      <property name="border_width">5</property>
 			      <property name="visible">True</property>
-			      <property name="n_rows">4</property>
+			      <property name="n_rows">5</property>
 			      <property name="n_columns">2</property>
 			      <property name="homogeneous">False</property>
 			      <property name="row_spacing">5</property>
@@ -335,8 +335,8 @@
 				<packing>
 				  <property name="left_attach">0</property>
 				  <property name="right_attach">1</property>
-				  <property name="top_attach">1</property>
-				  <property name="bottom_attach">2</property>
+				  <property name="top_attach">2</property>
+				  <property name="bottom_attach">3</property>
 				  <property name="x_options">fill</property>
 				  <property name="y_options"></property>
 				</packing>
@@ -360,8 +360,8 @@
 				<packing>
 				  <property name="left_attach">0</property>
 				  <property name="right_attach">1</property>
-				  <property name="top_attach">2</property>
-				  <property name="bottom_attach">3</property>
+				  <property name="top_attach">3</property>
+				  <property name="bottom_attach">4</property>
 				  <property name="x_options">fill</property>
 				  <property name="y_options"></property>
 				</packing>
@@ -384,8 +384,8 @@
 				<packing>
 				  <property name="left_attach">1</property>
 				  <property name="right_attach">2</property>
-				  <property name="top_attach">1</property>
-				  <property name="bottom_attach">2</property>
+				  <property name="top_attach">2</property>
+				  <property name="bottom_attach">3</property>
 				  <property name="x_options">expand|shrink|fill</property>
 				  <property name="y_options">fill</property>
 				</packing>
@@ -408,8 +408,8 @@
 				<packing>
 				  <property name="left_attach">1</property>
 				  <property name="right_attach">2</property>
-				  <property name="top_attach">2</property>
-				  <property name="bottom_attach">3</property>
+				  <property name="top_attach">3</property>
+				  <property name="bottom_attach">4</property>
 				  <property name="x_options">expand|shrink|fill</property>
 				  <property name="y_options">fill</property>
 				</packing>
@@ -481,8 +481,8 @@
 				<packing>
 				  <property name="left_attach">0</property>
 				  <property name="right_attach">1</property>
-				  <property name="top_attach">3</property>
-				  <property name="bottom_attach">4</property>
+				  <property name="top_attach">4</property>
+				  <property name="bottom_attach">5</property>
 				  <property name="x_options">fill</property>
 				  <property name="y_options"></property>
 				</packing>
@@ -505,8 +505,27 @@
 				<packing>
 				  <property name="left_attach">1</property>
 				  <property name="right_attach">2</property>
-				  <property name="top_attach">3</property>
-				  <property name="bottom_attach">4</property>
+				  <property name="top_attach">4</property>
+				  <property name="bottom_attach">5</property>
+				  <property name="y_options"></property>
+				</packing>
+			      </child>
+
+			      <child>
+				<widget class="GtkButton" id="tonlineButton">
+				  <property name="visible">True</property>
+				  <property name="can_focus">True</property>
+				  <property name="label" translatable="yes">_T-Online Zugangsdatenformular</property>
+				  <property name="use_underline">True</property>
+				  <property name="relief">GTK_RELIEF_NORMAL</property>
+				  <signal name="clicked" handler="on_tonlineButton_clicked" last_modification_time="Wed, 18 Dec 2002 03:36:59 GMT"/>
+				</widget>
+				<packing>
+				  <property name="left_attach">1</property>
+				  <property name="right_attach">2</property>
+				  <property name="top_attach">1</property>
+				  <property name="bottom_attach">2</property>
+				  <property name="x_options">fill</property>
 				  <property name="y_options"></property>
 				</packing>
 			      </child>
@@ -546,9 +565,8 @@
 	<widget class="GnomeDruidPageStandard" id="dhcp_Page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">IP Settings</property>
-	  <property name="title_foreground">#ffffff</property>
-	  
-	  <property name="logo_background">#191970</property>
+	  <property name="title_foreground">#7320081f471b</property>
+	  <property name="logo_background">#57a440c3e888</property>
 	  <signal name="next" handler="on_dhcp_page_next" last_modification_time="Wed, 11 Dec 2002 15:16:45 GMT"/>
 	  <signal name="prepare" handler="on_dhcp_page_prepare" last_modification_time="Wed, 11 Dec 2002 15:16:49 GMT"/>
 
@@ -1034,8 +1052,7 @@
 	  <property name="text" translatable="yes"></property>
 	  <property name="title_color">#ffffffffffff</property>
 	  <property name="text_color">#000000000000</property>
-	  
-	  <property name="logo_background_color">#191970</property>
+	  <property name="logo_background_color">#191919197070</property>
 	  <property name="textbox_color">#ffffffffffff</property>
 	  <signal name="prepare" handler="on_finish_page_prepare"/>
 	  <signal name="finish" handler="on_finish_page_finish"/>

@@ -31,6 +31,7 @@ import sharedtcpip
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.tonline import TonlineDialog
 from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE
@@ -46,11 +47,14 @@ class dslConfigDialog(deviceConfigDialog):
             
         self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=GUI_functions.PROGNAME)
-
+        
         glade_file = "dslconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)
 
+        xml_signal_autoconnect(self.xml, {
+            "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
+            })
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
         vbox = self.xml.get_widget ('generalVbox')
@@ -132,7 +136,23 @@ class dslConfigDialog(deviceConfigDialog):
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.dsl_hardware_dehydrate (self.sharedtcpip_xml, self.device)
         
+    def on_tonlineButton_clicked(self, *args):
+        self.dehydrate()
+        dialup = self.device.Dialup
+        dialog = TonlineDialog(dialup.Login, dialup.Password)
+        dl = dialog.xml.get_widget ("Dialog")
+        
+        dl.set_transient_for(self.dialog)
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        
+        if dl.run() != gtk.RESPONSE_OK:
+            dl.destroy()        
+            return
 
+        dl.destroy()
+        dialup.Login = dialog.login
+        dialup.Password = dialog.password
+        self.hydrate()
 
 NCDevADSL.setDevADSLDialog(dslConfigDialog)
 
