@@ -362,8 +362,8 @@ Ad-Hoc
 	    <class>GtkCList</class>
 	    <name>deviceList</name>
 	    <can_focus>True</can_focus>
-	    <columns>2</columns>
-	    <column_widths>80,80</column_widths>
+	    <columns>3</columns>
+	    <column_widths>80,80,80</column_widths>
 	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
 	    <show_titles>True</show_titles>
 	    <shadow_type>GTK_SHADOW_IN</shadow_type>
@@ -371,8 +371,8 @@ Ad-Hoc
 	    <widget>
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
-	      <name>label182</name>
-	      <label>Type</label>
+	      <name>label187</name>
+	      <label>Active</label>
 	      <justify>GTK_JUSTIFY_CENTER</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -384,8 +384,21 @@ Ad-Hoc
 	    <widget>
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
-	      <name>label183</name>
+	      <name>label188</name>
 	      <label>Name</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	    </widget>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <child_name>CList:title</child_name>
+	      <name>label189</name>
+	      <label>Type</label>
 	      <justify>GTK_JUSTIFY_CENTER</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -409,7 +422,7 @@ Ad-Hoc
 
 	  <widget>
 	    <class>GtkButton</class>
-	    <name>interfaceAddButton</name>
+	    <name>deviceAddButton</name>
 	    <can_focus>True</can_focus>
 	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
@@ -422,7 +435,7 @@ Ad-Hoc
 
 	  <widget>
 	    <class>GtkButton</class>
-	    <name>interfaceCopyButton</name>
+	    <name>deviceCopyButton</name>
 	    <can_focus>True</can_focus>
 	    <label>Copy...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
@@ -435,7 +448,7 @@ Ad-Hoc
 
 	  <widget>
 	    <class>GtkButton</class>
-	    <name>interfaceRenameButton</name>
+	    <name>deviceRenameButton</name>
 	    <can_focus>True</can_focus>
 	    <label>Rename...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
@@ -448,7 +461,7 @@ Ad-Hoc
 
 	  <widget>
 	    <class>GtkButton</class>
-	    <name>interfaceEditButton</name>
+	    <name>deviceEditButton</name>
 	    <can_focus>True</can_focus>
 	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
@@ -465,9 +478,9 @@ Ad-Hoc
 
 	  <widget>
 	    <class>GtkButton</class>
-	    <name>interfaceDeleteButton</name>
+	    <name>deviceDeleteButton</name>
 	    <can_focus>True</can_focus>
-	    <label>Delete</label>
+	    <label>Delete...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
@@ -492,17 +505,184 @@ Ad-Hoc
       </widget>
 
       <widget>
+	<class>GtkTable</class>
+	<name>table27</name>
+	<border_width>5</border_width>
+	<rows>1</rows>
+	<columns>2</columns>
+	<homogeneous>False</homogeneous>
+	<row_spacing>5</row_spacing>
+	<column_spacing>5</column_spacing>
+
+	<widget>
+	  <class>GtkScrolledWindow</class>
+	  <name>scrolledwindow16</name>
+	  <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	  <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+	  <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+	  <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	  <child>
+	    <left_attach>0</left_attach>
+	    <right_attach>1</right_attach>
+	    <top_attach>0</top_attach>
+	    <bottom_attach>1</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>True</xexpand>
+	    <yexpand>True</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>True</yfill>
+	  </child>
+
+	  <widget>
+	    <class>GtkCList</class>
+	    <name>dnsList</name>
+	    <can_focus>True</can_focus>
+	    <columns>1</columns>
+	    <column_widths>80</column_widths>
+	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
+	    <show_titles>True</show_titles>
+	    <shadow_type>GTK_SHADOW_IN</shadow_type>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <child_name>CList:title</child_name>
+	      <name>label186</name>
+	      <label>DNS Server Address</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>7.45058e-09</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	    </widget>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkVBox</class>
+	  <name>vbox53</name>
+	  <homogeneous>False</homogeneous>
+	  <spacing>5</spacing>
+	  <child>
+	    <left_attach>1</left_attach>
+	    <right_attach>2</right_attach>
+	    <top_attach>0</top_attach>
+	    <bottom_attach>1</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>True</yfill>
+	  </child>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>dnsAddButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Add...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>dnsEditButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Edit...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>Placeholder</class>
+	  </widget>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>dnsUpButton</name>
+	    <can_focus>True</can_focus>
+	    <stock_button>GNOME_STOCK_BUTTON_UP</stock_button>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>dnsDownButton</name>
+	    <can_focus>True</can_focus>
+	    <stock_button>GNOME_STOCK_BUTTON_DOWN</stock_button>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>Placeholder</class>
+	  </widget>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>dnsDeleteButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Delete...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+	</widget>
+      </widget>
+
+      <widget>
+	<class>GtkLabel</class>
+	<child_name>Notebook:tab</child_name>
+	<name>label185</name>
+	<label>DNS</label>
+	<justify>GTK_JUSTIFY_CENTER</justify>
+	<wrap>False</wrap>
+	<xalign>0.5</xalign>
+	<yalign>0.5</yalign>
+	<xpad>0</xpad>
+	<ypad>0</ypad>
+      </widget>
+
+      <widget>
 	<class>GtkHBox</class>
-	<name>hbox7</name>
+	<name>hbox15</name>
 	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
 	<spacing>5</spacing>
 
 	<widget>
-	  <class>GtkHBox</class>
-	  <name>hbox15</name>
-	  <homogeneous>False</homogeneous>
-	  <spacing>5</spacing>
+	  <class>GtkScrolledWindow</class>
+	  <name>scrolledwindow12</name>
+	  <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	  <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+	  <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+	  <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
 	  <child>
 	    <padding>0</padding>
 	    <expand>True</expand>
@@ -510,122 +690,108 @@ Ad-Hoc
 	  </child>
 
 	  <widget>
-	    <class>GtkScrolledWindow</class>
-	    <name>scrolledwindow12</name>
-	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	    <child>
-	      <padding>0</padding>
-	      <expand>True</expand>
-	      <fill>True</fill>
-	    </child>
+	    <class>GtkCList</class>
+	    <name>profileList</name>
+	    <can_focus>True</can_focus>
+	    <columns>2</columns>
+	    <column_widths>80,80</column_widths>
+	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
+	    <show_titles>True</show_titles>
+	    <shadow_type>GTK_SHADOW_IN</shadow_type>
 
 	    <widget>
-	      <class>GtkCTree</class>
-	      <name>profileTree</name>
-	      <can_focus>True</can_focus>
-	      <columns>2</columns>
-	      <column_widths>96,80</column_widths>
-	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
-	      <show_titles>True</show_titles>
-	      <shadow_type>GTK_SHADOW_IN</shadow_type>
+	      <class>GtkLabel</class>
+	      <child_name>CList:title</child_name>
+	      <name>label190</name>
+	      <label>State</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CTree:title</child_name>
-		<name>profileLabel</name>
-		<label>Name</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CTree:title</child_name>
-		<name>label82</name>
-		<label>State</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
+	    <widget>
+	      <class>GtkLabel</class>
+	      <child_name>CList:title</child_name>
+	      <name>label191</name>
+	      <label>Name</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
 	    </widget>
 	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkVBox</class>
+	  <name>vbox23</name>
+	  <homogeneous>False</homogeneous>
+	  <spacing>5</spacing>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>True</fill>
+	  </child>
 
 	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox23</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>5</spacing>
+	    <class>GtkButton</class>
+	    <name>profileAddButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Add...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>True</fill>
+	      <fill>False</fill>
 	    </child>
+	  </widget>
 
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>profileAddButton</name>
-	      <can_focus>True</can_focus>
-	      <label>_Add...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
-	    </widget>
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>profileCopyButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Copy...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
 
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>profileAddButton</name>
-	      <can_focus>True</can_focus>
-	      <label>_Copy...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
-	    </widget>
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>profileRenameButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Rename...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
 
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>profileRenameButton</name>
-	      <can_focus>True</can_focus>
-	      <label>_Rename...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
-	    </widget>
+	  <widget>
+	    <class>Placeholder</class>
+	  </widget>
 
-	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>profileDeleteButton</name>
-	      <can_focus>True</can_focus>
-	      <label>_Delete</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
-	    </widget>
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>profileDeleteButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Delete...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
 	  </widget>
 	</widget>
       </widget>
@@ -840,7 +1006,24 @@ Wireless
 CIPE
 CTC
 </items>
-	      <initial_choice>2</initial_choice>
+	      <initial_choice>4</initial_choice>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>Placeholder</class>
+	    </widget>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>advancedButton</name>
+	      <can_focus>True</can_focus>
+	      <label>Advanced...</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
@@ -875,6 +1058,65 @@ CTC
 	</widget>
 
 	<widget>
+	  <class>GtkHSeparator</class>
+	  <name>hseparator13</name>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>True</fill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>onBootCB</name>
+	  <can_focus>True</can_focus>
+	  <label>Activate device when computer _boots</label>
+	  <active>True</active>
+	  <draw_indicator>True</draw_indicator>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>False</fill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>userControlCB</name>
+	  <can_focus>True</can_focus>
+	  <label>Allow all users to enable and disable the devic_e</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>False</fill>
+	  </child>
+	</widget>
+      </widget>
+
+      <widget>
+	<class>GtkLabel</class>
+	<child_name>Notebook:tab</child_name>
+	<name>label49</name>
+	<label>General</label>
+	<justify>GTK_JUSTIFY_CENTER</justify>
+	<wrap>False</wrap>
+	<xalign>0.5</xalign>
+	<yalign>0.5</yalign>
+	<xpad>0</xpad>
+	<ypad>0</ypad>
+      </widget>
+
+      <widget>
+	<class>GtkVBox</class>
+	<name>vbox55</name>
+	<border_width>5</border_width>
+	<homogeneous>False</homogeneous>
+	<spacing>5</spacing>
+
+	<widget>
 	  <class>GtkLabel</class>
 	  <name>label60</name>
 	  <label>You can configure IP address settings for an interface automatically if your network supports it.  For manual configuration information, contact your Network Administrator or Internet Service Provider.</label>
@@ -887,7 +1129,7 @@ CTC
 	  <child>
 	    <padding>0</padding>
 	    <expand>False</expand>
-	    <fill>True</fill>
+	    <fill>False</fill>
 	  </child>
 	</widget>
 
@@ -1131,52 +1373,15 @@ DIALUP
 		<xfill>True</xfill>
 		<yfill>True</yfill>
 	      </child>
-
-	      <widget>
-		<class>GtkButton</class>
-		<name>advancedButton</name>
-		<can_default>True</can_default>
-		<can_focus>True</can_focus>
-		<label>Ad_vanced...</label>
-		<relief>GTK_RELIEF_NORMAL</relief>
-	      </widget>
 	    </widget>
 	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkCheckButton</class>
-	  <name>onBootCB</name>
-	  <can_focus>True</can_focus>
-	  <label>Activate device when computer _boots</label>
-	  <active>True</active>
-	  <draw_indicator>True</draw_indicator>
-	  <child>
-	    <padding>0</padding>
-	    <expand>False</expand>
-	    <fill>False</fill>
-	  </child>
-	</widget>
-
-	<widget>
-	  <class>GtkCheckButton</class>
-	  <name>userControlCB</name>
-	  <can_focus>True</can_focus>
-	  <label>Allow all users to enable and disable the devic_e</label>
-	  <active>False</active>
-	  <draw_indicator>True</draw_indicator>
-	  <child>
-	    <padding>0</padding>
-	    <expand>False</expand>
-	    <fill>False</fill>
-	  </child>
 	</widget>
       </widget>
 
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>label49</name>
+	<name>label192</name>
 	<label>TCP/IP</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1313,7 +1518,7 @@ DIALUP
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label71</name>
-	  <label>Enter DNS server information below.  If you aren't sure what to enter, contact your Network Administrator or ISP.  Note that DNS information from automatic device configuration is will take precedence over any settings entered here.</label>
+	  <label>Note that DNS information from automatic device configuration will take precedence over any settings done globally.</label>
 	  <justify>GTK_JUSTIFY_FILL</justify>
 	  <wrap>True</wrap>
 	  <xalign>7.45058e-09</xalign>
@@ -1340,170 +1545,13 @@ DIALUP
 	    <fill>False</fill>
 	  </child>
 	</widget>
-
-	<widget>
-	  <class>GtkTable</class>
-	  <name>table12</name>
-	  <rows>2</rows>
-	  <columns>2</columns>
-	  <homogeneous>False</homogeneous>
-	  <row_spacing>5</row_spacing>
-	  <column_spacing>5</column_spacing>
-	  <child>
-	    <padding>0</padding>
-	    <expand>True</expand>
-	    <fill>True</fill>
-	  </child>
-
-	  <widget>
-	    <class>GtkScrolledWindow</class>
-	    <name>scrolledwindow8</name>
-	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>True</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
-
-	    <widget>
-	      <class>GtkCList</class>
-	      <name>dnsList</name>
-	      <can_focus>True</can_focus>
-	      <columns>1</columns>
-	      <column_widths>80</column_widths>
-	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
-	      <show_titles>True</show_titles>
-	      <shadow_type>GTK_SHADOW_IN</shadow_type>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label72</name>
-		<label>DNS Server Address</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>7.45058e-09</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkVButtonBox</class>
-	    <name>vbuttonbox3</name>
-	    <layout_style>GTK_BUTTONBOX_DEFAULT_STYLE</layout_style>
-	    <spacing>10</spacing>
-	    <child_min_width>85</child_min_width>
-	    <child_min_height>27</child_min_height>
-	    <child_ipad_x>7</child_ipad_x>
-	    <child_ipad_y>0</child_ipad_y>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>dnsUpButton</name>
-	      <can_default>True</can_default>
-	      <can_focus>True</can_focus>
-	      <stock_button>GNOME_STOCK_BUTTON_UP</stock_button>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>dnsDownButton</name>
-	      <can_default>True</can_default>
-	      <can_focus>True</can_focus>
-	      <stock_button>GNOME_STOCK_BUTTON_DOWN</stock_button>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkHButtonBox</class>
-	    <name>hbuttonbox12</name>
-	    <layout_style>GTK_BUTTONBOX_END</layout_style>
-	    <spacing>5</spacing>
-	    <child_min_width>85</child_min_width>
-	    <child_min_height>27</child_min_height>
-	    <child_ipad_x>0</child_ipad_x>
-	    <child_ipad_y>0</child_ipad_y>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>dnsAddButton</name>
-	      <can_default>True</can_default>
-	      <can_focus>True</can_focus>
-	      <label>Add...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>dnsEditButton</name>
-	      <can_default>True</can_default>
-	      <can_focus>True</can_focus>
-	      <label>Edit...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>dnsDeleteButton</name>
-	      <can_default>True</can_default>
-	      <can_focus>True</can_focus>
-	      <label>Delete</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	    </widget>
-	  </widget>
-	</widget>
       </widget>
 
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>label45</name>
-	<label>Host and DNS</label>
+	<label>Host</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1546,19 +1594,21 @@ DIALUP
 	  </child>
 
 	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox19</name>
+	    <class>GtkHBox</class>
+	    <name>hbox37</name>
 	    <border_width>5</border_width>
 	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
+	    <spacing>5</spacing>
 
 	    <widget>
-	      <class>GtkScrolledWindow</class>
-	      <name>scrolledwindow9</name>
-	      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	      <class>GtkCList</class>
+	      <name>networkRouteList</name>
+	      <can_focus>True</can_focus>
+	      <columns>3</columns>
+	      <column_widths>124,115,80</column_widths>
+	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
+	      <show_titles>True</show_titles>
+	      <shadow_type>GTK_SHADOW_IN</shadow_type>
 	      <child>
 		<padding>0</padding>
 		<expand>True</expand>
@@ -1566,65 +1616,50 @@ DIALUP
 	      </child>
 
 	      <widget>
-		<class>GtkCList</class>
-		<name>networkRouteList</name>
-		<can_focus>True</can_focus>
-		<columns>3</columns>
-		<column_widths>124,115,80</column_widths>
-		<selection_mode>GTK_SELECTION_SINGLE</selection_mode>
-		<show_titles>True</show_titles>
-		<shadow_type>GTK_SHADOW_IN</shadow_type>
+		<class>GtkLabel</class>
+		<child_name>CList:title</child_name>
+		<name>label73</name>
+		<label>Destination Network</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>7.45058e-09</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+	      </widget>
 
-		<widget>
-		  <class>GtkLabel</class>
-		  <child_name>CList:title</child_name>
-		  <name>label73</name>
-		  <label>Destination Network</label>
-		  <justify>GTK_JUSTIFY_CENTER</justify>
-		  <wrap>False</wrap>
-		  <xalign>7.45058e-09</xalign>
-		  <yalign>0.5</yalign>
-		  <xpad>0</xpad>
-		  <ypad>0</ypad>
-		</widget>
+	      <widget>
+		<class>GtkLabel</class>
+		<child_name>CList:title</child_name>
+		<name>label74</name>
+		<label>Prefix (Netmask)</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>7.45058e-09</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+	      </widget>
 
-		<widget>
-		  <class>GtkLabel</class>
-		  <child_name>CList:title</child_name>
-		  <name>label74</name>
-		  <label>Prefix (Netmask)</label>
-		  <justify>GTK_JUSTIFY_CENTER</justify>
-		  <wrap>False</wrap>
-		  <xalign>7.45058e-09</xalign>
-		  <yalign>0.5</yalign>
-		  <xpad>0</xpad>
-		  <ypad>0</ypad>
-		</widget>
-
-		<widget>
-		  <class>GtkLabel</class>
-		  <child_name>CList:title</child_name>
-		  <name>label75</name>
-		  <label>Gateway</label>
-		  <justify>GTK_JUSTIFY_CENTER</justify>
-		  <wrap>False</wrap>
-		  <xalign>7.45058e-09</xalign>
-		  <yalign>0.5</yalign>
-		  <xpad>0</xpad>
-		  <ypad>0</ypad>
-		</widget>
+	      <widget>
+		<class>GtkLabel</class>
+		<child_name>CList:title</child_name>
+		<name>label75</name>
+		<label>Gateway</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>7.45058e-09</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
 	      </widget>
 	    </widget>
 
 	    <widget>
-	      <class>GtkHButtonBox</class>
-	      <name>hbuttonbox13</name>
-	      <layout_style>GTK_BUTTONBOX_END</layout_style>
+	      <class>GtkVBox</class>
+	      <name>vbox54</name>
+	      <homogeneous>False</homogeneous>
 	      <spacing>5</spacing>
-	      <child_min_width>85</child_min_width>
-	      <child_min_height>27</child_min_height>
-	      <child_ipad_x>0</child_ipad_x>
-	      <child_ipad_y>0</child_ipad_y>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
@@ -1634,28 +1669,44 @@ DIALUP
 	      <widget>
 		<class>GtkButton</class>
 		<name>routeAddButton</name>
-		<can_default>True</can_default>
 		<can_focus>True</can_focus>
 		<label>Add...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>False</fill>
+		</child>
 	      </widget>
 
 	      <widget>
 		<class>GtkButton</class>
 		<name>routeEditButton</name>
-		<can_default>True</can_default>
 		<can_focus>True</can_focus>
 		<label>Edit...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>False</fill>
+		</child>
+	      </widget>
+
+	      <widget>
+		<class>Placeholder</class>
 	      </widget>
 
 	      <widget>
 		<class>GtkButton</class>
 		<name>routeDeleteButton</name>
-		<can_default>True</can_default>
 		<can_focus>True</can_focus>
-		<label>Delete</label>
+		<label>Delete...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>False</fill>
+		</child>
 	      </widget>
 	    </widget>
 	  </widget>
