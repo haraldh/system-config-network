@@ -40,7 +40,7 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat ;
 
 docs:
-	python ./pydoc.py -w $(PYTHON_FILES)
+	python /usr/lib/python1.5/pydoc.py -w $(PYTHON_FILES)
 	mv *.html doc
 
 check-local:
