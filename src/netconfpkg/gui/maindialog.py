@@ -575,14 +575,13 @@ class mainDialog:
                        "/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
-        interface = NewInterfaceDialog()
+        interface = NewInterfaceDialog(self.dialog)
         
-        interface.toplevel.set_transient_for(self.dialog)
-
         gtk.mainloop()            
             
         if not interface.canceled:
             self.hydrateDevices()
+            self.hydrateHardware()
 
         return (not interface.canceled)
         
