@@ -242,7 +242,7 @@ class ISDNDialupDialog(DialupDialog):
         else:
             dialmode = _('manual')
         self.xml.get_widget("dialModeISDNEntry").set_text(dialmode)
-        if dialup.EncapMode == _("raw IP"):
+        if dialup.EncapMode == 'rawip':
             self.xml.get_widget("encapModeEntry").set_text(_('raw IP'))
         else:
             self.xml.get_widget("encapModeEntry").set_text(_('sync PPP'))
@@ -255,7 +255,7 @@ class ISDNDialupDialog(DialupDialog):
                 auth = _('pap')
             elif dialup.Authentication == '-pap +chap':
                 auth = _('chap')
-            elif dialup.Authentication == '+pap +chap':
+            elif dialup.Authentication == '+chap +pap' or dialup.Authentication == '+pap +chap':
                 auth = _('chap+pap')
             else:
                 auth = _('none')
@@ -286,8 +286,12 @@ class ISDNDialupDialog(DialupDialog):
 
         dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutISDNSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
-        if dialup.DialMode == _('auto'): dialup.DialMode = 'auto'
-        else: dialup.DialMode = 'manual'
+        if dialup.DialMode == _('auto'):
+            dialup.DialMode = 'auto'
+            dialup.DefRoute = TRUE
+        else:
+            dialup.DialMode = 'manual'
+            dialup.DefRoute = FALSE
         dialup.MSN = self.xml.get_widget("msnEntry").get_text()
         dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
         auth = self.xml.get_widget("authEntry").get_text()

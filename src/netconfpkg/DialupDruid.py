@@ -222,10 +222,14 @@ class DialupDruid(InterfaceCreator):
         dialup.ProviderName = self.xml.get_widget('providerName').get_text()
         dialup.Login = self.xml.get_widget('dialupLoginNameEntry').get_text()
         dialup.Password = self.xml.get_widget('dialupPasswordEntry').get_text()
-        dialup.Authentication = 'none'
-        dialup.DefRoute = TRUE
+        if self.provider['Authentication']:
+            dialup.Authentication = self.provider['Authentication']
+        else:
+            dialup.Authentication = '+pap -chap'
+        dialup.DefRoute = FALSE
         dialup.PeerDNS = TRUE
+        dialup.DialMode = 'manual'
         if self.connection_type == 'ISDN':
             dialup.EncapMode = 'syncppp'
-            dialup.DialMode = 'manual'
+
             
