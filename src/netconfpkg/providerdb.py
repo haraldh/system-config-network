@@ -22,6 +22,7 @@ import sys
 import signal
 import os
 import string
+import re
 
 FALSE = 0
 TRUE = not FALSE
@@ -81,7 +82,7 @@ class provider:
         return self.connection_type
 
     def set_connection_type(self, connection_type):
-        self.connection_type = connectione_type
+        self.connection_type= connection_type
 
     def get_user_name(self):
         return self.user_name
@@ -161,7 +162,7 @@ def get_value(s):
     s = string.split(s, " ", 1)
     return string.strip(s[1])
 
-def get_provider_list():
+def get_provider_list(Type="isdn"):
     db_list = []
     if not os.path.exists(provider_db):
         return db_list
@@ -180,6 +181,7 @@ def get_provider_list():
             return db_list
 
         isp = provider()
+        
         while line[:5] != "[End]":
             line = string.strip(line)
             if line[:9] == "[Country]":
@@ -215,13 +217,18 @@ def get_provider_list():
             elif line[:9] == "[Ipsetup]":
                 isp.set_ip_mode(get_value(line))
             line = db.readline()
-        db_list.append(isp.get_provider_data())
+
+        if re.search(Type, isp.get_connection_type()):
+            isp.set_connection_type(Type)
+            db_list.append(isp.get_provider_data())
         line = db.readline()
+
     db.close()
+
     return db_list
 
 if __name__ == "__main__":
-    a = get_provider_list()
+    a = get_provider_list("modem")
     for db in a:
         print db
 

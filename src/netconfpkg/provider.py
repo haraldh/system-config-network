@@ -29,7 +29,7 @@ import string
 import gettext
 import re
 
-from providerdb import *
+import providerdb
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -42,7 +42,8 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class providerDialog:
-    def __init__(self, xml_main = None, xml_basic = None, xml_dialup = None):
+    def __init__(self, xml_main = None, xml_basic = None,
+                 xml_dialup = None, connection_type="isdn"):
         self.xml_main = xml_main
         self.xml_basic = xml_basic
         self.xml_dialup = xml_dialup
@@ -50,6 +51,7 @@ class providerDialog:
         self.country = ""
         self.city = ""
         self.name = ""
+        self.connection_type = connection_type
         
         glade_file = "chooseprovider.glade"
 
@@ -139,10 +141,13 @@ class providerDialog:
     def on_providerTree_button_press_event(self, clist, event):
         if event.type == GDK._2BUTTON_PRESS:
             self.is_provider_selected = TRUE
-            
+
+    def get_provider_list(self):
+        return providerdb.get_provider_list()
+    
     def get_provider(self):
         if self.done:
-            isp_list = get_provider_list()
+            isp_list = self.get_provider_list()
             for isp in isp_list:
                 if self.country == isp[0] and self.city == isp[1] \
                    and self.name == isp[3]:
@@ -153,7 +158,7 @@ class providerDialog:
         
         pix_isp, mask_isp = self.get_icon("isp.xpm")
         pix_city, mask_city = self.get_icon("city.xpm")
-        isp_list = get_provider_list()
+        isp_list = self.get_provider_list()
         _country = ""
         _city = ""
         for isp in isp_list:
@@ -170,6 +175,23 @@ class providerDialog:
             name = self.dbtree.insert_node(city, None, [isp[3]], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=FALSE)
+
+class ISDNproviderDialog(providerDialog):
+    def __init__(self, xml_main = None, xml_basic = None,
+                 xml_dialup = None):
+        providerDialog.__init__(self, xml_main, xml_basic, xml_dialup)
+
+    def get_provider_list(self):
+        return providerdb.get_provider_list("isdn")
+
+class ModemproviderDialog(providerDialog):
+    def __init__(self, xml_main = None, xml_basic = None,
+                 xml_dialup = None):
+        providerDialog.__init__(self, xml_main, xml_basic, xml_dialup)
+
+    def get_provider_list(self):
+        return providerdb.get_provider_list("modem") 
+
 
 # make ctrl-C work
 if __name__ == "__main__":
