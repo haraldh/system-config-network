@@ -103,7 +103,6 @@ if __name__ == '__main__':
         
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
-    updateNetworkScripts()
 
     progname = os.path.basename(sys.argv[0])
 
@@ -124,6 +123,7 @@ if __name__ == '__main__':
                 
             if opt == '-p' or opt == '--profile':
                 profilelist = getProfileList()
+                profilelist.updateNetworkScripts()
                 if not profilelist.switchToProfile(val):
                     print _("No Profile with name %s could be found." % val)
                 profilelist.save()

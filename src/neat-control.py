@@ -265,7 +265,9 @@ class mainDialog:
 if __name__ == '__main__':
     # make ctrl-C work
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    if os.getuid() == 0: updateNetworkScripts()
+    if os.getuid() == 0:        
+        pl = NCProfileList.getProfileList()
+        pl.updateNetworkScripts()
     window = mainDialog()
     gtk.mainloop()
 
