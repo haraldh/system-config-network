@@ -75,6 +75,26 @@ class ethernetHardwareDialog:
         self.dialog.destroy()
         
     def on_okButton_clicked(self, button):
+        global hardwarelist
+
+        idx = -1
+        pos = 0
+        for hw in hardwarelist:
+            if hw.Name == self.xml.get_widget('ethernetDeviceEntry').get_text():
+                idx = pos
+            pos = pos+1
+
+        if idx == -1:
+            idx = hardwarelist.self.addHardware()
+
+        hw = hardwarelist[idx]
+
+        hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
+        hw.Description = self.xml.get_widget('adapterEntry').get_text()
+        hw.Type = 'Ethernet'
+        hw.createCard()
+        hw.Card.ModuleName = ''
+
         self.dialog.destroy()
 
     def on_cancelButton_clicked(self, button):
