@@ -14,8 +14,8 @@ PYTHON_FILES = \
 	NCHWWireless.py \
 	NCHWTokenring.py
 
-BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
-		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) __init__.py
+BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
+		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) 
 
 
 EXTRA_DIST = $(PYTHON_FILES)
@@ -37,4 +37,4 @@ clean:
 
 %.pyc: %.py
 	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $srcdir
+	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
