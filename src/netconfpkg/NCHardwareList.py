@@ -134,21 +134,26 @@ class HardwareList(HardwareList_base):
         # Read /etc/modules.conf
         #
         for mod in modules.keys():
+            if modules[mod].has_key('alias'):
+                module = modules[mod]['alias']
+            else: module = None
+            
             type = getDeviceType(mod)
-            if type == 'Unknown':
+            if type == _('Unknown'):
                 continue
 
             i = self.addHardware()
             hw = self.data[i]
             hw.Name = mod
-            hw.Description = mod
+            hw.Description = module
             hw.Type = type
             hw.createCard()
-            for info in modinfo.keys():
-                if info == modules[mod]['alias']:
-                    hw.Card.ModuleName = info
-                    if modinfo[info].has_key('description'):
-                        hw.Description = modinfo[info]['description']
+            hw.Card.ModuleName = module
+            if module:
+                for info in modinfo.keys():
+                    if info == module:
+                        if modinfo[info].has_key('description'):
+                            hw.Description = modinfo[info]['description']
 
             for selfkey in self.keydict.keys():
                 confkey = self.keydict[selfkey]
@@ -178,12 +183,12 @@ class HardwareList(HardwareList_base):
                     i = self.addHardware()
                     hw = self.data[i]
                     hw.Name = device
-                    hw.Description = device
+                    hw.Description = mod
                     hw.Type = getDeviceType(device)
                     hw.createCard()
+                    hw.Card.ModuleName = mod
                     for info in modinfo.keys():
                         if info == mod:
-                            hw.Card.ModuleName = info
                             if modinfo[info].has_key('description'):
                                 hw.Description = modinfo[info]['description']
 
@@ -258,7 +263,9 @@ class HardwareList(HardwareList_base):
                 for selfkey in self.keydict.keys():
                     confkey = self.keydict[selfkey]
                     if hw.Card.__dict__[selfkey]:
-                        if selfkey == 'IRQ' and hw.Card.IRQ == 'Unknown':
+                        if selfkey == 'IRQ' \
+                           and (hw.Card.IRQ == _('Unknown') \
+                                or (hw.Card.IRQ == 'Unknown'):
                             continue
                         modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
             if hw.Type == 'Modem':

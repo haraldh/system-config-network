@@ -211,6 +211,9 @@ void some_function_name() {
   /* netconfpkg/gui/DialupDruid.glade:221 */
   _("A_rea Code:");
 
+  /* maindialog.glade:567 */
+  _("Ac_tivate");
+
   /* netconfpkg/gui/tcpipdialog.glade:1703 */
   _("Accounting");
 
@@ -237,7 +240,7 @@ void some_function_name() {
    * netconfpkg/gui/dslconfig.glade:737 */
   _("Advanced");
 
-  /* maindialog.glade:915 */
+  /* maindialog.glade:1051 */
   _("Aliases");
 
   /* netconfpkg/gui/edithosts.glade:211 */
@@ -342,7 +345,8 @@ void some_function_name() {
   /* netconfpkg/gui/DialupDruid.glade:572 */
   _("Create Dialup Connection");
 
-  /* netconfpkg/gui/EthernetInterfaceDruid.glade:316 */
+  /* netconfpkg/gui/EthernetInterfaceDruid.glade:408
+   * netconfpkg/gui/GenericInterfaceDruid.glade:48 */
   _("Create Ethernet Device");
 
   /* netconfpkg/gui/IsdnHardwareDruid.glade:477
@@ -361,11 +365,14 @@ void some_function_name() {
    * netconfpkg/gui/tokenringhardware.glade:614 */
   _("DMA1:");
 
-  /* maindialog.glade:1656 */
+  /* maindialog.glade:1792 */
   _("DNS");
 
-  /* maindialog.glade:1365 */
+  /* maindialog.glade:1501 */
   _("DNS Search Path");
+
+  /* maindialog.glade:596 */
+  _("Deact_ivate");
 
   /* netconfpkg/gui/sharedtcpip.glade:265
    * netconfpkg/gui/tcpipdialog.glade:374 */
@@ -380,14 +387,14 @@ void some_function_name() {
   /* netconfpkg/gui/dslconfig.glade:614 */
   _("Demand setting");
 
-  /* maindialog.glade:629 */
+  /* maindialog.glade:765 */
   _("Description");
 
   /* netconfpkg/gui/sharedtcpip.glade:702
    * netconfpkg/gui/tcpipdialog.glade:627 */
   _("Destination Network");
 
-  /* maindialog.glade:655 */
+  /* maindialog.glade:361 maindialog.glade:791 */
   _("Device");
 
   /* netconfpkg/gui/NewInterfaceDruid.glade:122 */
@@ -396,7 +403,7 @@ void some_function_name() {
   /* netconfpkg/gui/sharedtcpip.glade:1520 */
   _("Device _Aliases:");
 
-  /* maindialog.glade:508 */
+  /* maindialog.glade:644 */
   _("Devices");
 
   /* netconfpkg/gui/dialupconfig.glade:1438 */
@@ -415,10 +422,10 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-popupmenu.glade:82 */
   _("Disconnect from");
 
-  /* maindialog.glade:1092 */
+  /* maindialog.glade:1228 */
   _("Do_main:");
 
-  /* maindialog.glade:1638 */
+  /* maindialog.glade:1774 */
   _("Domain Name");
 
   /* netconfpkg/gui/editdomain.glade:98 */
@@ -564,7 +571,7 @@ void some_function_name() {
   /* netconfpkg/gui/dialupconfig.glade:1801 */
   _("Han_gup Timeout:");
 
-  /* maindialog.glade:771 */
+  /* maindialog.glade:907 */
   _("Hardware");
 
   /* netconfpkg/gui/modemconfig.glade:303
@@ -595,7 +602,7 @@ void some_function_name() {
   /* netconfpkg/gui/edithosts.glade:127 */
   _("Hostname:");
 
-  /* maindialog.glade:1032 */
+  /* maindialog.glade:1168 */
   _("Hosts");
 
   /* netconfpkg/gui/EthernetHardwareDruid.glade:338
@@ -614,7 +621,7 @@ void some_function_name() {
    * netconfpkg/gui/tokenringhardware.glade:395 */
   _("IO_2:");
 
-  /* maindialog.glade:889 netconfpkg/gui/sharedtcpip.glade:923
+  /* maindialog.glade:1025 netconfpkg/gui/sharedtcpip.glade:923
    * netconfpkg/gui/tcpipdialog.glade:1176
    * netconfpkg/gui/tcpipdialog.glade:1480 */
   _("IP");
@@ -653,6 +660,9 @@ void some_function_name() {
 
   /* netconfpkg/gui/dialupconfig.glade:1954 */
   _("MSN/EA_Z:");
+
+  /* netconfpkg/gui/EthernetInterfaceDruid.glade:335 */
+  _("MTU:");
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:366 */
   _("M_inimum number of seconds charged:");
@@ -732,7 +742,7 @@ void some_function_name() {
   /* netconfpkg/gui/dialupconfig.glade:1664 */
   _("Modem3");
 
-  /* maindialog.glade:902 */
+  /* maindialog.glade:1038 */
   _("Name");
 
   /* netconfpkg/gui/ethernethardware.glade:18
@@ -746,7 +756,7 @@ void some_function_name() {
    * netconfpkg/gui/IsdnHardwareDruid.glade:23 */
   _("New Interface");
 
-  /* maindialog.glade:348 */
+  /* maindialog.glade:374 */
   _("Nickname");
 
   /* netconfpkg/gui/modemconfig.glade:303
@@ -779,7 +789,8 @@ void some_function_name() {
    * netconfpkg/gui/DialupDruid.glade:161 */
   _("Phone Number");
 
-  /* netconfpkg/gui/ctcconfig.glade:531 */
+  /* netconfpkg/gui/ctcconfig.glade:531
+   * netconfpkg/gui/EthernetInterfaceDruid.glade:299 */
   _("Please enter the MTU parameter to set the maximum Transfer Unit of this interface. On s390/s390x the MTU has 1492 as default setting");
 
   /* netconfpkg/gui/hardwaretype.glade:97 */
@@ -857,7 +868,7 @@ void some_function_name() {
   /* netconfpkg/gui/tcpipdialog.glade:769 */
   _("Routing");
 
-  /* maindialog.glade:1522 */
+  /* maindialog.glade:1658 */
   _("Search D_omain:");
 
   /* netconfpkg/gui/tcpipdialog.glade:1095 */
@@ -927,6 +938,9 @@ void some_function_name() {
   /* netconfpkg/gui/sharedtcpip.glade:91 */
   _("Statically set IP addresses:");
 
+  /* maindialog.glade:348 */
+  _("Status");
+
   /* netconfpkg/gui/tcpipdialog.glade:434 */
   _("TCP/IP");
 
@@ -948,7 +962,7 @@ void some_function_name() {
   /* netconfpkg/gui/cipeconfig.glade:869 */
   _("Tunnel Settings");
 
-  /* maindialog.glade:361 maindialog.glade:642 */
+  /* maindialog.glade:387 maindialog.glade:778 */
   _("Type");
 
   /* netconfpkg/gui/EthernetHardwareDruid.glade:463
@@ -994,14 +1008,14 @@ void some_function_name() {
   /* maindialog.glade:270 */
   _("You may configure network devices associated with physical hardware here.  Multiple logical devices can be associated with a single piece of hardware.");
 
-  /* maindialog.glade:551 */
+  /* maindialog.glade:687 */
   _(""
     "You may configure network hardware physically attached to the computer here.\n"
     "\n"
     "\n"
     "");
 
-  /* maindialog.glade:811 */
+  /* maindialog.glade:947 */
   _("You may specify static computer hostname to IP address mappings here.  If DNS is in use, these settings will take precedence over any information it may provide.");
 
   /* netconfpkg/gui/dslconfig.glade:534 */
@@ -1024,10 +1038,10 @@ void some_function_name() {
    * netconfpkg/gui/tokenringhardware.glade:113 */
   _("_Adapter:");
 
-  /* maindialog.glade:1576 */
+  /* maindialog.glade:1712 */
   _("_Add");
 
-  /* maindialog.glade:403 maindialog.glade:696 maindialog.glade:957
+  /* maindialog.glade:439 maindialog.glade:832 maindialog.glade:1093
    * netconfpkg/gui/ctcconfig.glade:320
    * netconfpkg/gui/dialupconfig.glade:1044
    * netconfpkg/gui/sharedtcpip.glade:768
@@ -1064,7 +1078,7 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-popupmenu.glade:50 */
   _("_Configure...");
 
-  /* maindialog.glade:461 netconfpkg/gui/sharedtcpip.glade:1100
+  /* maindialog.glade:497 netconfpkg/gui/sharedtcpip.glade:1100
    * netconfpkg/gui/tcpipdialog.glade:1353 */
   _("_Copy");
 
@@ -1074,8 +1088,8 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:273 */
   _("_Debug mode");
 
-  /* maindialog.glade:490 maindialog.glade:754 maindialog.glade:1015
-   * maindialog.glade:1452 netconfpkg/gui/ctcconfig.glade:374
+  /* maindialog.glade:526 maindialog.glade:890 maindialog.glade:1151
+   * maindialog.glade:1588 netconfpkg/gui/ctcconfig.glade:374
    * netconfpkg/gui/dialupconfig.glade:965
    * netconfpkg/gui/sharedtcpip.glade:826
    * netconfpkg/gui/sharedtcpip.glade:1129
@@ -1100,8 +1114,8 @@ void some_function_name() {
   /* netconfpkg/gui/wirelessconfig.glade:388 */
   _("_ESSID (Network ID):");
 
-  /* maindialog.glade:432 maindialog.glade:725 maindialog.glade:986
-   * maindialog.glade:1423 netconfpkg/gui/ctcconfig.glade:349
+  /* maindialog.glade:468 maindialog.glade:861 maindialog.glade:1122
+   * maindialog.glade:1559 netconfpkg/gui/ctcconfig.glade:349
    * netconfpkg/gui/sharedtcpip.glade:797
    * netconfpkg/gui/sharedtcpip.glade:1071
    * netconfpkg/gui/tcpipdialog.glade:722
@@ -1146,7 +1160,7 @@ void some_function_name() {
   /* netconfpkg/gui/EthernetInterfaceDruid.glade:219 */
   _("_Hostname (optional):");
 
-  /* maindialog.glade:1065 netconfpkg/gui/tcpipdialog.glade:467 */
+  /* maindialog.glade:1201 netconfpkg/gui/tcpipdialog.glade:467 */
   _("_Hostname:");
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:533 */
@@ -1197,6 +1211,9 @@ void some_function_name() {
    * netconfpkg/gui/ModemDruid.glade:102 */
   _("_Modem Device:");
 
+  /* maindialog.glade:625 */
+  _("_Monitor");
+
   /* maindialog.glade:172 */
   _("_New...");
 
@@ -1220,7 +1237,7 @@ void some_function_name() {
   /* netconfpkg/gui/DialupDruid.glade:248 */
   _("_Phone Number:");
 
-  /* maindialog.glade:1231 */
+  /* maindialog.glade:1367 */
   _("_Primary DNS:");
 
   /* netconfpkg/gui/sharedtcpip.glade:1473 */
@@ -1245,7 +1262,7 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:563 */
   _("_Second");
 
-  /* maindialog.glade:1204 */
+  /* maindialog.glade:1340 */
   _("_Secondary DNS:");
 
   /* netconfpkg/gui/cipeconfig.glade:609 */
@@ -1266,7 +1283,7 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:181 */
   _("_Terminate connection when session closes");
 
-  /* maindialog.glade:1177 */
+  /* maindialog.glade:1313 */
   _("_Tertiary DNS:");
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:242 */
@@ -1461,6 +1478,7 @@ void some_function_name() {
   /* netconfpkg/gui/ADSLInterfaceDruid.glade:18
    * netconfpkg/gui/EthernetHardwareDruid.glade:18
    * netconfpkg/gui/EthernetInterfaceDruid.glade:18
+   * netconfpkg/gui/GenericInterfaceDruid.glade:18
    * netconfpkg/gui/ModemDruid.glade:18 netconfpkg/gui/sharedtcpip.glade:19
    * netconfpkg/gui/sharedtcpip.glade:1347
    * netconfpkg/gui/TokenRingHardwareDruid.glade:18 */

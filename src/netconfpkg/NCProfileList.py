@@ -172,7 +172,6 @@ class ProfileList(ProfileList_base):
             devicelist.save()
 
     def save(self):
-        print "Saving Profile"
         self.test()
         devicelist = NCDeviceList.getDeviceList()
 
