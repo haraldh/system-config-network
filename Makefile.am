@@ -40,7 +40,7 @@ install-data-local:
 
 # redhat-config-network-cmd needs a special console file
 
-	$(INSTALL_DATA) $(srcdir)/redhat-config-network-cmd.console $(DESTDIR)$(sysconfdir)/redhat-config-network-cmd; \
+	$(INSTALL_DATA) $(srcdir)/redhat-config-network-cmd.console $(DESTDIR)$(sysconfdir)/security/console.apps/redhat-config-network-cmd; \
 	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/redhat-config-network-cmd; \
 	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/redhat-config-network-cmd ; 
 
