@@ -18,7 +18,7 @@ glade-strings.c: *.glade  netconfpkg/*.glade
 	libglade-xgettext -c -o $(srcdir)/glade-strings.c $?
 
 pythondir = $(pkgdatadir)
-python_DATA = $(PYTHON_FILES)
+###python_DATA = $(PYTHON_FILES)
 
 gladedir = $(pkgdatadir)/netconfpkg
 glade_DATA = $(GLADE_FILES)
