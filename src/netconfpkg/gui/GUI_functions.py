@@ -18,6 +18,10 @@ def get_history (omenu):
         index = index + 1
     return index
 
+def idle_func():
+    while gtk.events_pending():
+        gtk.mainiteration()
+
 def get_icon(pixmap_file, dialog):
     fn = pixmap_file
     if not os.path.exists(pixmap_file):
