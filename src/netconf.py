@@ -39,11 +39,13 @@ sys.argv = sys.argv[:1]
 import getopt
 import signal
 import os
+
+os.environ["PYGTK_FATAL_EXCEPTIONS"] = '1'
+
 import os.path
 import string
 import gettext
 import Conf
-
 from netconfpkg import *
 
 def Usage():
@@ -83,13 +85,13 @@ if __name__ == '__main__':
             Usage()
             sys.exit(1)
 
+
 import GDK
 import gtk
 import libglade
 import gnome
 import gnome.ui
 import gnome.help
-
 
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
@@ -400,10 +402,6 @@ class mainDialog:
         gnome.help.goto ("/usr/share/redhat-config-network/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
-        #interface = NewInterface()
-        #gtk.mainloop()
-        #self.hydrate()
-        
         profilelist = getProfileList()
         devicelist = getDeviceList()
 
@@ -1119,7 +1117,6 @@ class mainDialog:
         devicelist.commit()
         self.hydrate()
 
-
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
@@ -1129,5 +1126,11 @@ if __name__ == '__main__':
     elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
         interface = NewInterface()
 
-    gtk.mainloop()
+    try:        
+        gtk.mainloop()
+    except SystemExit, code:
+        sys.exit(0)
+    except:
+        handleException(sys.exc_info())
+
     sys.exit(0)
