@@ -28,6 +28,7 @@ import GdkImlib
 import string
 import gettext
 import string
+import sharedtcpip
 
 from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
@@ -45,6 +46,14 @@ _=gettext.gettext
 
 class wirelessConfigDialog(deviceConfigDialog):
     def __init__(self, device):
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.NETCONFDIR + glade_file
+        self.sharedtcpip_xml = libglade.GladeXML(glade_file, None,
+                                                 domain=GUI_functions.PROGNAME)
+
         glade_file = "wirelessconfig.glade"
         deviceConfigDialog.__init__(self, glade_file, device)
 
@@ -58,8 +67,19 @@ class wirelessConfigDialog(deviceConfigDialog):
             "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
             })
 
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+        
+
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
+
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
                     
         hwlist = NCHardwareList.getHardwareList()
@@ -93,6 +113,9 @@ class wirelessConfigDialog(deviceConfigDialog):
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
+
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
