@@ -217,8 +217,7 @@ class Device(DeviceList.Device_base):
         self.createStaticRoutes()
 
         if math.fmod(num, 3) != 0:
-            print _("Static routes file for ") + name \
-                  + _(" has not vaild format")
+            print (_("Static routes file for %s has not vaild format")) % name
         else:
             for p in xrange(0, num/3):
                 i = self.StaticRoutes.addRoute()

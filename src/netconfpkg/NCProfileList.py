@@ -118,12 +118,8 @@ class ProfileList(ProfileList_base):
                     continue
             
                 if devmap.has_key(device.Device):
-                    msg = _('Device ') + device.DeviceId \
-                          + _(' uses the same Hardware Device "') \
-                          + device.Device + _('" like ') \
-                          + devmap[device.Device].DeviceId \
-                          + _('!') + "\n" \
-                          + _('Please select another Hardware Device or \nactivate only one of them.')
+                    msg = (_('Device %s uses the same Hardware Device "%s" like %s!\n') \
+                          + _('Please select another Hardware Device or \nactivate only one of them.')) % (device.DeviceId, device.Device, devmap[device.Device].DeviceId)
                     raise TestError(msg)
 
                 devmap[device.Device] = device
