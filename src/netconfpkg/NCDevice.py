@@ -1,6 +1,7 @@
 from DeviceList import *
 from NC_functions import *
 from os.path import *
+from commands import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -16,7 +17,7 @@ class Device(Device_base):
                 'OnBoot' : 'ONBOOT',
                 'IP' : 'IPADDR',
                 'Netmask' : 'NETMASK',
-                'DefaultGW' : 'GATEWAY',
+                'Gateway' : 'GATEWAY',
                 'Hostname' : 'HOSTNAME',
                 'Domain' : 'DOMAIN',
                 'BootProto' : 'BOOTPROTO',
@@ -51,7 +52,28 @@ class Device(Device_base):
                     self.__dict__[selfkey] = false            
             else:
                 self.__dict__[selfkey] = false            
-            
+
+        if not self.Gateway:
+            try:
+                cfg = Conf.ConfShellVar(SYSCONFNETWORK)
+                if cfg.has_key('GATEWAY'):
+                    gw = cfg['GATEWAY']
+                    
+                    if gw and self.Netmask:                    
+                        network = getoutput('ipcalc --network ' + self.IP \
+                                            + ' ' + self.Netmask + \
+                                            ' 2>/dev/null')
+                        
+                        out = getoutput('ipcalc --network ' + gw + ' ' \
+                                        + self.Netmask + ' 2>/dev/null')
+                        
+                        if out == network:
+                            self.Gateway = gw
+                            
+            except (OSError, IOError), msg:
+                pass
+                        
+        
     def save(self):
         conf = ConfDevice(self.DeviceId)
 
