@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.0\n"
-"POT-Creation-Date: 2002-07-24 13:16+0200\n"
+"POT-Creation-Date: 2002-07-31 14:24+0200\n"
 "PO-Revision-Date: 2002-07-25 13:10+1000\n"
 "Last-Translator: Sarah Smith <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <i18n@redhat.com>\n"
@@ -707,12 +707,27 @@ msgstr "调制解调器拨号配置"
 #. along with this program; if not, write to the Free Software
 #. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #.
+#: src/netconfpkg/gui/exception.py:33
+#, fuzzy
+msgid "Exception Occured"
+msgstr "出现异常"
+
+#: src/netconfpkg/gui/exception.py:34
+#, fuzzy
+msgid "Debug"
+msgstr "调试模式(_D)"
+
+#: src/netconfpkg/gui/exception.py:35
+#, fuzzy
+msgid "Save to file"
+msgstr "选择文件："
+
 #: src/netconfpkg/gui/exception.py:48
+#, fuzzy
 msgid ""
-"An unhandled exception has occured.  This is most likely a bug.  Please copy "
-"the full text of this exception or save the crash dump to a floppy then file "
-"a detailed bug report against anaconda at http://bugzilla.redhat.com/"
-"bugzilla/"
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against redhat-config-network "
+"at https://bugzilla.redhat.com/bugzilla/"
 msgstr ""
 "出现一个未解决的例外。这极可能是一个程序错误，请将例外的详情复制下来，或者将"
 "其崩溃组合码转储入一个文件，然后向 redhat-config-network (http://bugzilla."
@@ -725,25 +740,25 @@ msgstr ""
 #. XXX do length limits on obj dumps.
 #. protect from loops
 #. print text
-#: src/netconfpkg/gui/exception.py:160
+#: src/netconfpkg/gui/exception.py:159
 msgid "Select a file:"
 msgstr "选择文件："
 
 #. win.connect ("clicked", self.quit)
-#: src/netconfpkg/gui/exception.py:189
+#: src/netconfpkg/gui/exception.py:188
 msgid "Exception Occurred"
 msgstr "出现异常"
 
-#: src/netconfpkg/gui/exception.py:199
+#: src/netconfpkg/gui/exception.py:198
 msgid "Please specify a file to save the dump"
 msgstr "请指定转储文件"
 
-#: src/netconfpkg/gui/exception.py:214
+#: src/netconfpkg/gui/exception.py:213
 #, python-format
 msgid "Failed to write to file %s."
 msgstr "写入 %s 文件失败。"
 
-#: src/netconfpkg/gui/exception.py:218
+#: src/netconfpkg/gui/exception.py:217
 #, python-format
 msgid ""
 "The application's state has been successfully\n"
@@ -1508,12 +1523,12 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:131
+#: src/netconfpkg/NCProfileList.py:134
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "设备 %s 使用相同的设备“%s”如同 %s！\n"
 
-#: src/netconfpkg/NCProfileList.py:132
+#: src/netconfpkg/NCProfileList.py:135
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1940,10 +1955,12 @@ msgstr "类型"
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
-msgstr "你可在此处配置与物理硬件相连的网络设备。 单个硬件上可有多重虚拟设备与之相连。"
+msgstr ""
+"你可在此处配置与物理硬件相连的网络设备。 单个硬件上可有多重虚拟设备与之相连。"
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "你可以在此处配置与计算机物理连接的网络硬件。"
 
 #: src/maindialog.glade.h:29
@@ -2080,7 +2097,8 @@ msgstr "在此处输入你的 ISP 给你的登录名。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "输入本次配置的名称，通常是你的 ISP 的名称。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -3774,4 +3792,3 @@ msgstr "互联网配置向导"
 #~ "向 redhat-config-network 汇报部件错误。多谢！\n"
 #~ "\n"
 #~ "%s"
-
