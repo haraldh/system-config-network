@@ -1,4 +1,5 @@
-%define rp3 1
+# -*- RPM-SPEC -*-
+%define rp3 0
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
@@ -7,8 +8,8 @@ URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
-Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libglade, pygtk, python, pygnome-libglade, pygnome
-BuildRequires: alchemist, alchemist-devel, python, libglade-devel, openjade docbook-style-dsssl
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2
+BuildRequires: alchemist, alchemist-devel, python, python-devel, libglade2-devel, openjade, docbook-style-dsssl
 Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
@@ -87,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
 %{_datadir}/pixmaps/*
-%{_libdir}/python1.5/site-packages/ethtoolmodule.so
+%{_libdir}/python2.2/site-packages/ethtoolmodule.so
 %config(noreplace) /etc/X11/sysconfig/*.desktop
 %config(noreplace) /etc/X11/applnk/*/*.desktop
 %config(noreplace) /etc/pam.d/*
@@ -108,6 +109,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed May 29 2002 Harald Hoyer <harald@redhat.de>
+- ported to python2, gtk2, gnome2
+
 * Wed Apr 17 2002 Trond Eivind Glomsrød <teg@redhat.com> 
 - Turn off wireless. It doesn't work with all modes, all cards
  and you can't edit IP settings after the initial attempt

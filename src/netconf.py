@@ -680,6 +680,8 @@ class mainDialog:
                 devErrorDialog(device, DEACTIVATE, self.dialog)
 
     def on_deviceMonitorButton_clicked(self, button):
+        generic_error_dialog(_("To be rewritten!"))
+        return
         device = self.clist_get_device()
         if device:
             Interface().monitor(device)

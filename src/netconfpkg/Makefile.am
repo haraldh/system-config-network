@@ -34,7 +34,7 @@ BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg
-netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES)
+netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES) $(IDL_FILES)
 
 
 INCLUDES = -I/usr/include/python2.2

@@ -1,3 +1,50 @@
+2002-05-29  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/tokenringhardware.glade, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.glade, src/netconfpkg/gui/wirelessconfig.py, src/netconfpkg/tests/Makefile.am, src/netconfpkg/tests/test-Conf.py, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/ethernethardware.glade, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/hardwaretype.glade, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.glade, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/modemconfig.glade, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/neat-control-debugdialog.glade, src/netconfpkg/gui/neat-control-monitordialog.glade, src/netconfpkg/gui/neat-control-popupmenu.glade, src/netconfpkg/gui/neat-control-propertiesdialog.glade, src/netconfpkg/gui/neat-control-statusdialog.glade, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/sharedtcpip.glade, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/ctcconfig.py, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.glade, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.glade, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.glade, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.glade, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/TokenRingInterfaceDruid.glade, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterfaceDruid.glade, src/netconfpkg/gui/WirelessInterface.py, src/netconfpkg/gui/CipeInterfaceDruid.glade, src/netconfpkg/gui/DialupDruid.glade, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetHardwareDruid.glade, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterfaceDruid.glade, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GenericInterfaceDruid.glade, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/IsdnHardwareDruid.glade, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/ModemDruid.glade, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterfaceDruid.glade, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/TokenRingHardwareDruid.glade, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/Conf.py, src/netconfpkg/ConfSMB.py, src/netconfpkg/genClass.py, src/netconfpkg/gui/ADSLInterfaceDruid.glade, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/CipeInterface.py, src/netconfpkg/__init__.py, src/netconfpkg/Makefile.am, src/netconfpkg/NCCallback.py, src/netconfpkg/NCCipe.py, src/netconfpkg/NCCompression.py, src/netconfpkg/NCDeviceList.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NCDialup.py, src/netconfpkg/NC_functions.py, src/netconfpkg/NCHardwareList.py, src/netconfpkg/NCisdnhardware.py, src/netconfpkg/NCProfileList.py, src/netconfpkg/NCWireless.py, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po, src/maindialog.glade, src/Makefile.am, src/neat-control.glade, src/neat-control.py, src/netconf.py, ChangeLog, configure.in, Makefile.am, po/cs.po, po/da.po, po/de.po, po/es.po, po/Makefile.in.in, po/POTFILES.in, pycheckrc, redhat-config-network.spec.in:
+	merged in changes from gtk2 branch
+
+	* src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/wirelessconfig.py, src/netconf.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterface.py, src/netconfpkg/genClass.py, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/CipeInterface.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/NC_functions.py:
+	more gtk2 migration
+
+	* Makefile.am, pycheckrc:
+	*** empty log message ***
+
+	* pycheckrc: New file.
+
+2002-05-28  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/exception.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterface.py, src/netconf.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/tests/test-Conf.py, src/Makefile.am, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/NCisdnhardware.py:
+	more gtk2 migration
+
+	* src/netconfpkg/NCDevice.py:
+	removed 'import FNCTL'
+
+	* src/netconfpkg/ConfSMB.py, src/netconfpkg/Conf.py:
+	pychecked and corrected to pass all tests (make check)
+
+	* src/netconfpkg/genClass.py:
+	removed debugging print messages.
+
+	* src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/neat-control.py, src/netconfpkg/genClass.py, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/NC_functions.py, src/netconf.py, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/NewInterfaceDruid.glade, src/netconfpkg/gui/sharedtcpip.glade, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/TokenRingInterfaceDruid.glade, src/netconfpkg/gui/WirelessInterfaceDruid.glade, src/maindialog.glade, src/neat-control.glade, src/netconfpkg/gui/DialupDruid.glade, src/netconfpkg/gui/EthernetInterfaceDruid.glade:
+	more gtk2 migration
+
+2002-05-27  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.py, src/maindialog.glade, src/neat-control.py, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/CipeInterface.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterface.py, src/netconf.py:
+	*** empty log message ***
+
+2002-05-26  menthos  <menthos@redhat.com>
+
+	* po/sv.po:
+	2002-02-26  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2002-05-24  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/tests/Makefile.am, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/neat-control-debugdialog.glade, src/netconfpkg/gui/neat-control-monitordialog.glade, src/netconfpkg/gui/neat-control-popupmenu.glade, src/netconfpkg/gui/neat-control-propertiesdialog.glade, src/netconfpkg/gui/neat-control-statusdialog.glade, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/sharedtcpip.glade, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/tokenringhardware.glade, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.glade, src/netconfpkg/gui/wirelessconfig.py, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.glade, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.glade, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.glade, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/ethernethardware.glade, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/hardwaretype.glade, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.glade, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/modemconfig.glade, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/ctcconfig.py, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.glade, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/ModemDruid.glade, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterfaceDruid.glade, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/TokenRingHardwareDruid.glade, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/TokenRingInterfaceDruid.glade, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterfaceDruid.glade, src/netconfpkg/gui/WirelessInterface.py, src/netconfpkg/genClass.py, src/netconfpkg/gui/ADSLInterfaceDruid.glade, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/CipeInterfaceDruid.glade, src/netconfpkg/gui/CipeInterface.py, src/netconfpkg/gui/DialupDruid.glade, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetHardwareDruid.glade, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterfaceDruid.glade, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GenericInterfaceDruid.glade, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/IsdnHardwareDruid.glade, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/__init__.py, src/netconfpkg/NCWireless.py, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po, src/maindialog.glade, src/Makefile.am, src/neat-control.glade, src/neat-control.py, src/netconfpkg/Makefile.am, src/netconfpkg/NCCallback.py, src/netconfpkg/NCCipe.py, src/netconfpkg/NCCompression.py, src/netconfpkg/NCDeviceList.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NCDialup.py, src/netconfpkg/NCHardwareList.py, src/netconfpkg/NCProfileList.py, src/netconf.py, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, ChangeLog, configure.in, Makefile.am, po/cs.po, po/Makefile.in.in, po/POTFILES.in, redhat-config-network.spec.in, src/ipcalc.py, src/netconfpkg/ipcalc.py:
+	*** empty log message ***
+
 2002-05-20  frolix68  <frolix68@redhat.com>
 
 	* po/el.po: initial try
@@ -260,7 +307,7 @@
 	* doc/chapter-network-config-isdn.html, doc/figs/networkconfig/neat-cipe.png, doc/figs/networkconfig/neat-cipe-settings.png, doc/figs/networkconfig/neat-dns.png, doc/figs/networkconfig/neat-ethernet.png, doc/figs/networkconfig/neat-ethernet-settings.png, doc/figs/networkconfig/neat-hardware.png, doc/figs/networkconfig/neat-hosts.png, doc/figs/networkconfig/neat-isdn.png, doc/figs/networkconfig/neat-isdn-settings.png, doc/figs/networkconfig/neat-modem.png, doc/figs/networkconfig/neat-modem-settings.png, doc/figs/networkconfig/neat-tokenring.png, doc/figs/networkconfig/neat-tokenring-settings.png, doc/figs/networkconfig/neat-wireless.png, doc/figs/networkconfig/neat-wireless-settings.png, doc/figs/networkconfig/neat-xdsl.png, doc/figs/networkconfig/neat-xdsl-settings.png, doc/figs/rhlogo.png, doc/index.html, doc/intro.html, doc/legalnotice.html, doc/network-config-cipe.html, doc/network-config-dns.html, doc/network-config-ethernet.html, doc/network-config-hosts.html, doc/network-config-modem.html, doc/network-config-tokenring.html, doc/network-config-wireless.html, doc/network-config-xdsl.html, doc/stylesheet-images/note.png, doc/stylesheet-images/tip.png, doc/stylesheet-images/warning.png:
 	docs for redhat-config-network
 
-	* doc/index.html, doc/images/druid10.png, doc/images/druid11.png, doc/images/druid1.png, doc/images/druid2.png, doc/images/druid3.png, doc/images/druid4.png, doc/images/druid5.png, doc/images/druid6.png, doc/images/druid7.png, doc/images/druid9.png, doc/images/Makefile.am, doc/images/neat1.png:
+	* doc/index.html:
 	removing old docs
 
 2002-04-16  Trond Eivind Glomsrod  <teg@redhat.com>
@@ -1194,13 +1241,6 @@
 	* src/netconfpkg/gui/EthernetInterfaceDruid.glade:
 	changed hostname label
 
-2002-03-13  Than Ngo  <than@redhat.com>
-
-	* src/control/debugdialog.glade, src/control/functions.py, src/control/maindialog.glade, src/control/monitordialog.glade, src/control/neat-control.py, src/control/popupmenu.glade, src/control/propertiesdialog.glade, src/control/statusdialog.glade:
-	move into standard directory
-
-2002-03-13  Harald Hoyer  <harald@redhat.com>
-
 	* src/netconf.py:
 	added exception handling (nonwirking)
 
@@ -1221,7 +1261,7 @@
 
 2002-03-13  Than Ngo  <than@redhat.com>
 
-	* src/control/functions.py, src/control/neat-control.py, src/netconfpkg/Control.py, src/pixmaps/blue_empty_led.xpm, src/pixmaps/blue_led.xpm, src/pixmaps/control.xpm, src/pixmaps/ethernet.xpm, src/pixmaps/isdn.xpm, src/pixmaps/loopback.xpm, src/pixmaps/off.xpm, src/pixmaps/on.xpm, src/pixmaps/plip.xpm, src/pixmaps/ppp.xpm, src/pixmaps/red_empty_led.xpm, src/pixmaps/red_led.xpm, src/neat-control.glade, src/neat-control.py:
+	* src/netconfpkg/Control.py, src/pixmaps/blue_empty_led.xpm, src/pixmaps/blue_led.xpm, src/pixmaps/control.xpm, src/pixmaps/ethernet.xpm, src/pixmaps/isdn.xpm, src/pixmaps/loopback.xpm, src/pixmaps/off.xpm, src/pixmaps/on.xpm, src/pixmaps/plip.xpm, src/pixmaps/ppp.xpm, src/pixmaps/red_empty_led.xpm, src/pixmaps/red_led.xpm, src/neat-control.glade, src/neat-control.py:
 	* move neat-control into standard directory
 
 2002-03-13  Harald Hoyer  <harald@redhat.com>
@@ -1258,14 +1298,6 @@
 		* redhat-config-network.spec.in: Add rp3 support.
 		* src/netconfpkg/gui/isdnhardware.py: isdn work
 		* src/maindialog.glade: reverse devices and hw
-
-2002-03-12  Than Ngo  <than@redhat.com>
-
-	* src/control/functions.py, src/control/neat-control.py:
-	* implement activate/deactivate/configure
-
-	* src/control/functions.py, src/control/maindialog.glade:
-	* cosmetic
 
 2002-03-12  Harald Hoyer  <harald@redhat.com>
 
@@ -1397,16 +1429,11 @@
 
 2002-02-28  Jonathan Blandford  <jrb@redhat.com>
 
-	* ChangeLog, src/control/maindialog.glade, src/control/neat-control.py:
+	* ChangeLog:
 	Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 		* src/control/neat-control.py (mainDialog.__init__): clean up GUI
 		a bit.
-
-2002-02-27  Than Ngo  <than@redhat.com>
-
-	* src/control/functions.py, src/control/maindialog.glade, src/control/neat-control.py:
-	* disable info button
 
 2002-02-27  Harald Hoyer  <harald@redhat.com>
 
@@ -1545,37 +1572,10 @@
 	* src/Makefile.am, src/netconfpkg/gui/Makefile.am, src/netconfpkg/Makefile.am:
 	Python 2.2 (should really be version independent...)
 
-2002-01-28  Than Ngo  <than@redhat.com>
-
-	* src/control/maindialog.glade, src/control/propertiesdialog.glade:
-	* fixed some typos
-
-	* src/control/neat-control.py:
-	* don't break if clist is empty
-
 2002-01-27  Than Ngo  <than@redhat.com>
 
 	* src/netconfpkg/NCDeviceList.py:
 	* check permission of network config file before open it
-
-	* src/control/debugdialog.glade, src/control/display.glade, src/control/functions.py, src/control/maindialog.glade, src/control/monitordialog.glade, src/control/neat-control.py, src/control/propertiesdialog.glade, src/control/properties.glade, src/control/statusdialog.glade:
-	* implements function to read all active network devices
-	* fix and improve hydrate function so that icons are showed in clist, it looks cool
-	* rename some glade files
-	* add some icons
-
-	* src/control/neat-control.py, src/control/functions.py, src/control/maindialog.glade:
-	* implement hydrate is done
-
-2002-01-26  Than Ngo  <than@redhat.com>
-
-	* src/control/neat-control.py, src/control/properties.glade, src/control/functions.py, src/control/maindialog.glade:
-	* some python codes
-
-2002-01-25  Than Ngo  <than@redhat.com>
-
-	* src/control/display.glade, src/control/maindialog.glade, src/control/popupmenu.glade:
-	* some GUI changes
 
 2002-01-20  leon  <leon@redhat.com>
 
@@ -1589,11 +1589,6 @@
 2002-01-16  kmaraas  <kmaraas@redhat.com>
 
 	* po/no.po: Update
-
-2002-01-15  Than Ngo  <than@redhat.com>
-
-	* src/control/maindialog.glade, src/control/properties.glade:
-	* add GUI for redhat network control
 
 2002-01-11  Harald Hoyer  <harald@redhat.com>
 
@@ -1914,7 +1909,7 @@
 	* src/netconfpkg/gui/ctcconfig.py, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringhardware.py:
 	more gui sep fixes
 
-	* src/netconfpkg/gui/ADSLInterfaceDruid.glade, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/ctcconfig.py, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.glade, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/DialupDruid.glade, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.glade, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.glade, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.glade, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/EthernetHardwareDruid.glade, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/ethernethardware.glade, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/hardwaretype.glade, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/__init__.py, src/netconfpkg/gui/InterfaceCreator.py, src/netconfpkg/gui/IsdnHardwareDruid.glade, src/netconfpkg/gui/isdnhardware.glade, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/modemconfig.glade, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/ModemDruid.glade, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterfaceDruid.glade, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/providerdb.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/TokenRingHardwareDruid.glade, src/netconfpkg/gui/tokenringhardware.glade, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.glade, src/netconfpkg/gui/wirelessconfig.py, src/netconfpkg/chooseprovider.glade, src/netconfpkg/cipeconfig.glade, src/netconfpkg/cipeconfig.py, src/netconfpkg/ctcconfig.glade, src/netconfpkg/ctcconfig.py, src/netconfpkg/deviceconfig.py, src/netconfpkg/devicetype.glade, src/netconfpkg/devicetype.py, src/netconfpkg/dialupconfig.glade, src/netconfpkg/dialupconfig.py, src/netconfpkg/dslconfig.glade, src/netconfpkg/dslconfig.py, src/netconfpkg/editadress.glade, src/netconfpkg/editadress.py, src/netconfpkg/editdomain.glade, src/netconfpkg/editdomain.py, src/netconfpkg/edithosts.glade, src/netconfpkg/edithosts.py, src/netconfpkg/ethernetconfig.glade, src/netconfpkg/ethernetconfig.py, src/netconfpkg/ethernethardware.glade, src/netconfpkg/ethernethardware.py, src/netconfpkg/exception.py, src/netconfpkg/hardwaretype.glade, src/netconfpkg/hardwaretype.py, src/netconfpkg/isdnhardware.glade, src/netconfpkg/isdnhardware.py, src/netconfpkg/modemconfig.glade, src/netconfpkg/modemconfig.py, src/netconfpkg/providerdb.py, src/netconfpkg/provider.py, src/netconfpkg/tcpdialog.py, src/netconfpkg/tcpipdialog.glade, src/netconfpkg/tokenringconfig.glade, src/netconfpkg/tokenringconfig.py, src/netconfpkg/TokenRingHardwareDruid.py, src/netconfpkg/tokenringhardware.glade, src/netconfpkg/tokenringhardware.py, src/netconfpkg/wirelessconfig.glade, src/netconfpkg/wirelessconfig.py, src/glade-strings.c, src/Makefile.am, src/netconfpkg/ADSLInterfaceDruid.glade, src/netconfpkg/ADSLInterface.py, src/netconfpkg/DialupDruid.glade, src/netconfpkg/DialupDruid.py, src/netconfpkg/EthernetHardwareDruid.glade, src/netconfpkg/EthernetHardwareDruid.py, src/netconfpkg/InterfaceCreator.py, src/netconfpkg/IsdnHardwareDruid.glade, src/netconfpkg/IsdnInterface.py, src/netconfpkg/Makefile.am, src/netconfpkg/ModemDruid.glade, src/netconfpkg/ModemInterface.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NC_functions.py, src/netconfpkg/NCProfileList.py, src/netconfpkg/NewInterfaceDruid.glade, src/netconfpkg/NewInterface.py, src/netconfpkg/TokenRingHardwareDruid.glade, src/netconf.py, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, doc/images/neat1.png, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/POTFILES.in, configure.in, redhat-config-network.spec.in:
+	* src/netconfpkg/gui/ADSLInterfaceDruid.glade, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/ctcconfig.py, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.glade, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/DialupDruid.glade, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.glade, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.glade, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.glade, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/EthernetHardwareDruid.glade, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/ethernethardware.glade, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/hardwaretype.glade, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/__init__.py, src/netconfpkg/gui/InterfaceCreator.py, src/netconfpkg/gui/IsdnHardwareDruid.glade, src/netconfpkg/gui/isdnhardware.glade, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/modemconfig.glade, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/ModemDruid.glade, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterfaceDruid.glade, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/providerdb.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/TokenRingHardwareDruid.glade, src/netconfpkg/gui/tokenringhardware.glade, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.glade, src/netconfpkg/gui/wirelessconfig.py, src/netconfpkg/chooseprovider.glade, src/netconfpkg/cipeconfig.glade, src/netconfpkg/cipeconfig.py, src/netconfpkg/ctcconfig.glade, src/netconfpkg/ctcconfig.py, src/netconfpkg/deviceconfig.py, src/netconfpkg/devicetype.glade, src/netconfpkg/devicetype.py, src/netconfpkg/dialupconfig.glade, src/netconfpkg/dialupconfig.py, src/netconfpkg/dslconfig.glade, src/netconfpkg/dslconfig.py, src/netconfpkg/editadress.glade, src/netconfpkg/editadress.py, src/netconfpkg/editdomain.glade, src/netconfpkg/editdomain.py, src/netconfpkg/edithosts.glade, src/netconfpkg/edithosts.py, src/netconfpkg/ethernetconfig.glade, src/netconfpkg/ethernetconfig.py, src/netconfpkg/ethernethardware.glade, src/netconfpkg/ethernethardware.py, src/netconfpkg/exception.py, src/netconfpkg/hardwaretype.glade, src/netconfpkg/hardwaretype.py, src/netconfpkg/isdnhardware.glade, src/netconfpkg/isdnhardware.py, src/netconfpkg/modemconfig.glade, src/netconfpkg/modemconfig.py, src/netconfpkg/providerdb.py, src/netconfpkg/provider.py, src/netconfpkg/tcpdialog.py, src/netconfpkg/tcpipdialog.glade, src/netconfpkg/tokenringconfig.glade, src/netconfpkg/tokenringconfig.py, src/netconfpkg/TokenRingHardwareDruid.py, src/netconfpkg/tokenringhardware.glade, src/netconfpkg/tokenringhardware.py, src/netconfpkg/wirelessconfig.glade, src/netconfpkg/wirelessconfig.py, src/glade-strings.c, src/Makefile.am, src/netconfpkg/ADSLInterfaceDruid.glade, src/netconfpkg/ADSLInterface.py, src/netconfpkg/DialupDruid.glade, src/netconfpkg/DialupDruid.py, src/netconfpkg/EthernetHardwareDruid.glade, src/netconfpkg/EthernetHardwareDruid.py, src/netconfpkg/InterfaceCreator.py, src/netconfpkg/IsdnHardwareDruid.glade, src/netconfpkg/IsdnInterface.py, src/netconfpkg/Makefile.am, src/netconfpkg/ModemDruid.glade, src/netconfpkg/ModemInterface.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NC_functions.py, src/netconfpkg/NCProfileList.py, src/netconfpkg/NewInterfaceDruid.glade, src/netconfpkg/NewInterface.py, src/netconfpkg/TokenRingHardwareDruid.glade, src/netconf.py, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/POTFILES.in, configure.in, redhat-config-network.spec.in:
 	joined gui-sep
 
 	* po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/POTFILES.in, redhat-config-network.spec.in:
@@ -1930,12 +1925,7 @@
 
 2001-10-24  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringhardware.py, src/netconf.py, po/ru.po, po/sv.po, po/no.po, po/redhat-config-network.pot, po/ja.po, po/ko.po, po/it.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, doc/images/neat1.png, po/cs.po:
-	more fixes for gui seperation
-
-	* doc/images/neat1.png: New file.
-
-	* configure.in, redhat-config-network.spec.in:
+	* src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringhardware.py, src/netconf.py, po/ru.po, po/sv.po, po/no.po, po/redhat-config-network.pot, po/ja.po, po/ko.po, po/it.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/cs.po, configure.in, redhat-config-network.spec.in:
 	more fixes for gui seperation
 
 	* src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/Makefile.am:
@@ -1986,7 +1976,7 @@
 
 2001-10-22  Harald Hoyer  <harald@redhat.com>
 
-	* po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, src/glade-strings.c, doc/images/druid10.png, doc/images/druid1.png, doc/images/druid2.png, doc/images/druid3.png, doc/images/druid4.png, doc/images/druid5.png, doc/images/druid6.png, doc/images/druid7.png, doc/images/Makefile.am, doc/Makefile.am, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, configure.in:
+	* po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, src/glade-strings.c, doc/Makefile.am, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, configure.in:
 	added help pictures
 
 	* configure.in, redhat-config-network.spec.in:
@@ -3030,7 +3020,7 @@
 
 2001-08-08  Phil Knirsch  <pknirsch@redhat.com>
 
-	* src/netconfpkg/ModemDruid.glade, src/netconfpkg/ModemInterface.py, doc/images/druid10.png, doc/images/druid11.png, doc/images/druid1.png, doc/images/druid2.png, doc/images/druid3.png, doc/images/druid4.png, doc/images/druid5.png, doc/images/druid6.png, doc/images/druid7.png, doc/images/druid9.png, doc/index.html, redhat-config-network.spec.in:
+	* src/netconfpkg/ModemDruid.glade, src/netconfpkg/ModemInterface.py, doc/index.html, redhat-config-network.spec.in:
 	- Added a lot of documentation with images
 	- Final changes to the modem druid GUI and code to look exactly like the
 	  one from the add hardware for modems in neat itself.
