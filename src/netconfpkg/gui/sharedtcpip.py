@@ -124,7 +124,8 @@ def dhcp_dehydrate (xml, device):
         device.IP = xml.get_widget('ipAddressEntry').get_text()
         device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
         device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
-
+        device.Hostname = ''
+        device.AutoDNS = FALSE
 
 ###
 ### ROUTES
