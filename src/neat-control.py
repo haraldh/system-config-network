@@ -97,7 +97,11 @@ class mainDialog:
         self.xml.get_widget('pixmap').load_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
+        self.devicelist = getDeviceList()
+        self.activedevicelist = NetworkDevice().get()
         self.hydrate()
+        
+        self.tag = timeout_add(4000, self.update_dialog)
         
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
@@ -126,9 +130,17 @@ class mainDialog:
             dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
             idle_func()
             os.waitpid(child, 0)
+            
+            # isdnctrl dial device must be started for connecting by ISDN
+            if len(device) > 4:
+                if device[:4] == 'isdn' or device[:4] == 'ippp':
+                    os.system('/sbin/userisdnctl dial %s>&/dev/null' %(device))
+                    time.sleep(3)
+
             self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.destroy()
+            
             if NetworkDevice().find(device):
                 self.hydrate()
             else:
@@ -207,8 +219,6 @@ class mainDialog:
         return dev
 
     def hydrate(self):
-        devicelist = getDeviceList()
-        activedevicelist = NetworkDevice().get()
         clist = self.xml.get_widget('interfaceClist')
         clist.clear()
         clist.set_row_height(20)
@@ -219,8 +229,8 @@ class mainDialog:
         status = INACTIVE
         row = 0
         
-        for dev in devicelist:
-            for i in activedevicelist:
+        for dev in self.devicelist:
+            for i in self.activedevicelist:
                 status = INACTIVE
                 status_pixmap = self.off_xpm
                 status_mask = self.off_mask
@@ -259,6 +269,15 @@ class mainDialog:
         dlg.set_position(gtk.WIN_POS_MOUSE)
         dlg.run_and_close()
 
+    def update_dialog(self):
+        activedevicelistold = self.activedevicelist
+        self.activedevicelist = NetworkDevice().get()
+        
+        if activedevicelistold != self.activedevicelist:
+            self.hydrate()
+            return TRUE
+            
+        return TRUE
 
 def idle_func():
     while gtk.events_pending():
@@ -267,7 +286,7 @@ def idle_func():
 
 # make ctrl-C work
 if __name__ == '__main__':
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
     window = mainDialog()
     gtk.mainloop()
 

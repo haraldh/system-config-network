@@ -57,10 +57,23 @@ class NetworkDevice:
         self.load()
 
     def load(self):
-        self.activedevicelist = ethtool.get_active_devices()
-        if self.activedevicelist.count('lo'):
-            self.activedevicelist.remove('lo')
-            
+        l = ethtool.get_active_devices()
+        if l.count('lo'):
+            l.remove('lo')
+
+        self.activedevicelist = l
+        
+        # check isdn device for connection
+        for i in l:
+            if len(i) > 4:
+                if i[:4] == 'isdn' or i[:4] == 'ippp':
+                    if os.access('/sbin/userisdnctl', os.X_OK):
+                        if os.system('/sbin/userisdnctl status %s>&/dev/null' %(i)) == 0:
+                            continue
+                    self.activedevicelist.remove(i)
+
+        self.activedevicelist.sort()
+        
     def get(self):
         return self.activedevicelist
 
