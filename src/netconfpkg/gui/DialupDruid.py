@@ -19,8 +19,6 @@
 
 
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
 from netconfpkg.NC_functions import *
 import gtk.glade
@@ -29,11 +27,6 @@ import os
 import providerdb
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg import *
-from netconfpkg import *
-from netconfpkg import *
-from netconfpkg import *
-from netconfpkg import *
 from netconfpkg import *
 from InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.tonline import TonlineDialog
@@ -53,7 +46,7 @@ class DialupDruid(InterfaceCreator):
         self.name = ""
         self.provider = None
         self.device.BootProto = 'dialup'
-        self.device.AutoDNS = TRUE
+        self.device.AutoDNS = True
 
         self.devicelist = NCDeviceList.getDeviceList()
         self.profilelist = NCProfileList.getProfileList()
@@ -114,9 +107,9 @@ class DialupDruid(InterfaceCreator):
     def on_dialup_page_next(self, druid_page, druid):
         if self.check():
             self.dehydrate()
-            return FALSE
+            return False
         else:
-            return TRUE
+            return True
 
     def on_ipBootProto_toggled(self, widget):
         if widget.name == "ipAutomaticRadio":
@@ -141,17 +134,17 @@ class DialupDruid(InterfaceCreator):
         else:
             xml.get_widget('ipGatewayEntry').set_text('')
 
-        xml.get_widget('dnsSettingCB').set_active(device.AutoDNS == TRUE)
+        xml.get_widget('dnsSettingCB').set_active(device.AutoDNS == True)
 
         if device.BootProto == "static" or device.BootProto == "none":
-            xml.get_widget('ipAutomaticRadio').set_active(FALSE)
-            xml.get_widget('ipStaticRadio').set_active(TRUE)
+            xml.get_widget('ipAutomaticRadio').set_active(False)
+            xml.get_widget('ipStaticRadio').set_active(True)
             self.on_ipBootProto_toggled(\
                 xml.get_widget('ipAutomaticRadio')),
         else:
             device.BootProto = 'dialup'
-            xml.get_widget('ipAutomaticRadio').set_active(TRUE)
-            xml.get_widget('ipStaticRadio').set_active(FALSE)
+            xml.get_widget('ipAutomaticRadio').set_active(True)
+            xml.get_widget('ipStaticRadio').set_active(False)
             self.on_ipBootProto_toggled(\
                 xml.get_widget('ipStaticRadio')),
 
@@ -171,9 +164,9 @@ class DialupDruid(InterfaceCreator):
             device.Hostname = ''
 
     def on_sync_ppp_activate(self, *args):
-        self.xml.get_widget('ipAutomaticRadio').set_active(TRUE)
-        self.xml.get_widget('ipStaticRadio').set_active(FALSE)
-        self.xml.get_widget('ipAutomaticRadio').set_sensitive(TRUE)
+        self.xml.get_widget('ipAutomaticRadio').set_active(True)
+        self.xml.get_widget('ipStaticRadio').set_active(False)
+        self.xml.get_widget('ipAutomaticRadio').set_sensitive(True)
         self.on_ipBootProto_toggled(\
                 self.xml.get_widget('ipStaticRadio')),
         dialup = self.device.createDialup()
@@ -182,18 +175,18 @@ class DialupDruid(InterfaceCreator):
                                                 self.device)
     
     def on_raw_ip_activate(self, *args):
-        self.xml.get_widget('ipAutomaticRadio').set_active(FALSE)
-        self.xml.get_widget('ipStaticRadio').set_active(TRUE)
+        self.xml.get_widget('ipAutomaticRadio').set_active(False)
+        self.xml.get_widget('ipStaticRadio').set_active(True)
         self.on_ipBootProto_toggled(\
                 self.xml.get_widget('ipAutomaticRadio')),        
-        self.xml.get_widget('ipAutomaticRadio').set_sensitive(FALSE)
+        self.xml.get_widget('ipAutomaticRadio').set_sensitive(False)
         dialup = self.device.createDialup()
         dialup.EncapMode = 'rawip'
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
                                                 self.device)
         
     def on_dhcp_page_back(self, druid_page, druid):
-        return TRUE
+        return True
     
     def on_dhcp_page_next(self, druid_page, druid):
         dialup = self.device.createDialup()
@@ -209,7 +202,7 @@ class DialupDruid(InterfaceCreator):
             else:
                 self.on_sync_ppp_activate()
         else:
-            self.xml.get_widget('encapModeMenu').set_sensitive(FALSE)
+            self.xml.get_widget('encapModeMenu').set_sensitive(False)
         pass
 
     def on_finish_page_back(self,druid_page, druid):
@@ -245,7 +238,7 @@ class DialupDruid(InterfaceCreator):
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
@@ -259,10 +252,10 @@ class DialupDruid(InterfaceCreator):
     def setup(self):
         if not self.provider:
             self.xml.get_widget('druid').set_buttons_sensitive(\
-                FALSE, FALSE, FALSE, FALSE) 
+                False, False, False, False) 
         else:
             self.xml.get_widget('druid').set_buttons_sensitive(\
-                FALSE, TRUE, TRUE, FALSE)
+                False, True, True, False)
             self.xml.get_widget('areaCodeEntry').set_text(\
                 self.provider['Areacode'])
             self.xml.get_widget('phoneEntry').set_text(\
@@ -335,19 +328,19 @@ class DialupDruid(InterfaceCreator):
                 country = self.dbtree.insert_node(None, None,
                                                   [isp['Country']], 5,
                                                   pix, mask, pix, mask,
-                                                  is_leaf=FALSE)
+                                                  is_leaf=False)
                 _country = isp['Country']
                 _city = ''
             if _city != isp['City']:
                 city = self.dbtree.insert_node(country, None, [isp['City']], 5,
                                                pix_city, mask_city,
                                                pix_city, mask_city,
-                                               is_leaf=FALSE)
+                                               is_leaf=False)
                 _city = isp['City']
             name = self.dbtree.insert_node(city, None,
                                            [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
-                                           pix_isp, mask_isp, is_leaf=FALSE)
+                                           pix_isp, mask_isp, is_leaf=False)
             
         self.dbtree.select_row(0,0)
     
@@ -389,8 +382,8 @@ class DialupDruid(InterfaceCreator):
         self.device.DeviceId = DeviceId
         self.device.Type = self.connection_type
         dialup = self.device.createDialup()
-        self.device.AllowUser = TRUE
-        self.device.OnBoot = FALSE
+        self.device.AllowUser = True
+        self.device.OnBoot = False
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()
         dialup.Areacode = self.xml.get_widget('areaCodeEntry').get_text()
         dialup.PhoneNumber = self.xml.get_widget('phoneEntry').get_text()
@@ -401,7 +394,7 @@ class DialupDruid(InterfaceCreator):
             dialup.Authentication = self.provider['Authentication']
         else:
             dialup.Authentication = '+pap -chap'
-        dialup.DefRoute = TRUE
+        dialup.DefRoute = True
         dialup.DialMode = NCDialup.DM_MANUAL
             
         if self.connection_type == ISDN:
@@ -410,8 +403,8 @@ class DialupDruid(InterfaceCreator):
             
         elif self.connection_type == MODEM:            
             dialup.Inherits = 'Modem0'
-            dialup.StupidMode = TRUE
+            dialup.StupidMode = True
             dialup.InitString = ''
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.33 $"

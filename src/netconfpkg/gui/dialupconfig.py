@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -39,8 +38,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
 from provider import *
-from gtk import TRUE
-from gtk import FALSE
 
 
 class DialupDialog(deviceConfigDialog):
@@ -48,7 +45,7 @@ class DialupDialog(deviceConfigDialog):
         glade_file = "dialupconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)
-        self.edit = FALSE
+        self.edit = False
 
         xml_signal_autoconnect(self.xml, 
             {
@@ -219,16 +216,16 @@ class DialupDialog(deviceConfigDialog):
 
     def on_pppOptionAddButton_clicked (self, button):
         entry = self.xml.get_widget("pppOptionEntry")
-        self.xml.get_widget("pppOptionList").set_sensitive(TRUE)
+        self.xml.get_widget("pppOptionList").set_sensitive(True)
         self.xml.get_widget("pppOptionList").append([entry.get_text()])
         entry.set_text("")
         entry.grab_focus()
     
     def on_pppOptionList_select_row(self, clist, r, c, event):
-        self.xml.get_widget ("pppOptionDeleteButton").set_sensitive (TRUE)
+        self.xml.get_widget ("pppOptionDeleteButton").set_sensitive (True)
     
     def on_ipppOptionList_unselect_row (self, clist, r, c, event):
-        self.xml.get_widget("pppOptionDeleteButton").set_sensitive(FALSE)
+        self.xml.get_widget("pppOptionDeleteButton").set_sensitive(False)
 
     def on_pppOptionDeleteButton_clicked(self, button):
         clist = self.xml.get_widget("pppOptionList")
@@ -400,10 +397,10 @@ class ISDNDialupDialog(DialupDialog):
         dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
         if dialup.DialMode == DialModes[DM_AUTO]:
             dialup.DialMode = DM_AUTO
-            dialup.DefRoute = TRUE
+            dialup.DefRoute = True
         else:
             dialup.DialMode = DM_MANUAL
-            dialup.DefRoute = FALSE
+            dialup.DefRoute = False
 
         dialup.MSN = self.xml.get_widget("msnEntry").get_text()
 
@@ -518,5 +515,5 @@ if __name__ == "__main__":
     window.run()
     gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.40 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.41 $"

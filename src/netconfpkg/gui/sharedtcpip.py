@@ -2,7 +2,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -20,8 +19,6 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from editadress import editAdressDialog
 from netconfpkg import *
 import sys, traceback
-from gtk import TRUE
-from gtk import FALSE
 
 ###
 ### DHCP
@@ -88,23 +85,23 @@ def dhcp_hydrate (xml, device):
         xml.get_widget("ipProtocolOmenu").set_history(DHCP)
 
     # PEERDNS is true, if unset!!
-    xml.get_widget('dnsSettingCB').set_active(device.AutoDNS != FALSE)
+    xml.get_widget('dnsSettingCB').set_active(device.AutoDNS != False)
 
     if device.Alias != None:
         device.BootProto = "none"
-        xml.get_widget('ipAutomaticRadio').set_active(FALSE)
-        xml.get_widget('ipStaticRadio').set_active(TRUE)
+        xml.get_widget('ipAutomaticRadio').set_active(False)
+        xml.get_widget('ipStaticRadio').set_active(True)
         on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
-        xml.get_widget('ipAutomaticRadio').set_sensitive(FALSE)
+        xml.get_widget('ipAutomaticRadio').set_sensitive(False)
     
 
     if device.BootProto == "static" or device.BootProto == "none":
-        xml.get_widget('ipAutomaticRadio').set_active(FALSE)
-        xml.get_widget('ipStaticRadio').set_active(TRUE)
+        xml.get_widget('ipAutomaticRadio').set_active(False)
+        xml.get_widget('ipStaticRadio').set_active(True)
         on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
     else:
-        xml.get_widget('ipAutomaticRadio').set_active(TRUE)
-        xml.get_widget('ipStaticRadio').set_active(FALSE)
+        xml.get_widget('ipAutomaticRadio').set_active(True)
+        xml.get_widget('ipStaticRadio').set_active(False)
         on_ipBootProto_toggled(xml.get_widget('ipStaticRadio'), xml)
 
 
@@ -328,25 +325,25 @@ def hardware_hydrate(xml, device):
     omenu.show_all()
 
     if device.Alias != None:
-        xml.get_widget("hardwareAliasesToggle").set_active(FALSE)
-        xml.get_widget("hardwareAliasesToggle").set_active(TRUE)
+        xml.get_widget("hardwareAliasesToggle").set_active(False)
+        xml.get_widget("hardwareAliasesToggle").set_active(True)
         xml.get_widget("hardwareAliasesSpin").set_value(device.Alias)
     else:
-        xml.get_widget("hardwareAliasesToggle").set_active(TRUE)
-        xml.get_widget("hardwareAliasesToggle").set_active(FALSE)
+        xml.get_widget("hardwareAliasesToggle").set_active(True)
+        xml.get_widget("hardwareAliasesToggle").set_active(False)
 
     if device.HardwareAddress != None:
-        xml.get_widget("hardwareMACToggle").set_active(FALSE)
-        xml.get_widget("hardwareMACToggle").set_active(TRUE)
+        xml.get_widget("hardwareMACToggle").set_active(False)
+        xml.get_widget("hardwareMACToggle").set_active(True)
         xml.get_widget("hardwareMACEntry").set_text(device.HardwareAddress)
-        xml.get_widget("hardwareMACEntry").set_sensitive(TRUE)
-        xml.get_widget("hardwareProbeButton").set_sensitive(TRUE)
+        xml.get_widget("hardwareMACEntry").set_sensitive(True)
+        xml.get_widget("hardwareProbeButton").set_sensitive(True)
     else:
-        xml.get_widget("hardwareMACToggle").set_active(TRUE)
-        xml.get_widget("hardwareMACToggle").set_active(FALSE)
+        xml.get_widget("hardwareMACToggle").set_active(True)
+        xml.get_widget("hardwareMACToggle").set_active(False)
         xml.get_widget("hardwareMACEntry").set_text('')
-        xml.get_widget("hardwareMACEntry").set_sensitive(FALSE)
-        xml.get_widget("hardwareProbeButton").set_sensitive(FALSE)
+        xml.get_widget("hardwareMACEntry").set_sensitive(False)
+        xml.get_widget("hardwareProbeButton").set_sensitive(False)
 
 def hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hardwareDeviceOmenu")
@@ -396,5 +393,5 @@ if __name__ == '__main__':
     gtk.main() ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 16:43:29 $"
-__version__ = "$Revision: 1.34 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.35 $"

@@ -22,8 +22,6 @@ from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui import *
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -66,9 +64,9 @@ class GenericInterface(InterfaceCreator):
         self.devicelist = NCDeviceList.getDeviceList()
         self.device = NCDevice.Device()
         self.device.Type = type
-        self.device.OnBoot = FALSE
-        self.device.AllowUser = FALSE
-        self.device.IPv6Init = FALSE
+        self.device.OnBoot = False
+        self.device.AllowUser = False
+        self.device.IPv6Init = False
 
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
@@ -153,7 +151,7 @@ class GenericInterface(InterfaceCreator):
             self.devicelist.append(self.device)
             self.device.commit()
             for prof in self.profilelist:
-                if prof.Active == FALSE:
+                if prof.Active == False:
                     continue
                 prof.ActiveDevices.append(self.device.DeviceId)
                 break
@@ -163,5 +161,5 @@ class GenericInterface(InterfaceCreator):
         
         gtk.main_quit()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.21 $"

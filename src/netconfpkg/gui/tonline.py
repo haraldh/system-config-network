@@ -17,7 +17,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -26,10 +25,6 @@ import string
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
-from gtk import TRUE
-from gtk import FALSE
-
 
 class TonlineDialog:
     def __init__(self, login, pw):
@@ -77,9 +72,9 @@ class TonlineDialog:
            len(self.xml.get_widget('ZNEntry').get_text()) < 1 or \
            len(self.xml.get_widget('mbnEntry').get_text()) < 1 or \
            len(self.xml.get_widget('pwEntry').get_text()) < 1 :
-            self.xml.get_widget('okButton').set_sensitive(FALSE)
+            self.xml.get_widget('okButton').set_sensitive(False)
         else:
-            self.xml.get_widget('okButton').set_sensitive(TRUE)
+            self.xml.get_widget('okButton').set_sensitive(True)
     
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
@@ -91,7 +86,7 @@ class TonlineDialog:
 
     def on_generic_entry_changed(self, entry, minlen):
         if len(entry.get_text()) < minlen:
-            self.xml.get_widget('okButton').set_sensitive(FALSE)
+            self.xml.get_widget('okButton').set_sensitive(False)
         self.check()
             
     def hydrate(self):

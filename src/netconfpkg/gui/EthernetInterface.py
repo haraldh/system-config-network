@@ -21,8 +21,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -87,13 +85,13 @@ class EthernetInterface(InterfaceCreator):
             self.device = NCDevEthernet.DevEthernet()
             
         self.device.Type = self.connection_type
-        self.device.OnBoot = TRUE
-        self.device.AllowUser = FALSE
-        self.device.IPv6Init = FALSE
+        self.device.OnBoot = True
+        self.device.AllowUser = False
+        self.device.IPv6Init = False
         self.profilelist = NCProfileList.getProfileList()
 
         self.hw_sel = 0
-        self.hwPage = FALSE
+        self.hwPage = False
 
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
@@ -133,7 +131,7 @@ class EthernetInterface(InterfaceCreator):
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
         else:
             self.topdruid.set_page(childs[1])            
-        return TRUE
+        return True
     
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
@@ -160,22 +158,22 @@ class EthernetInterface(InterfaceCreator):
 
         if not len(clist.selection):
             self.topdruid.set_page(childs[1])
-            return TRUE
+            return True
 
         self.hw_sel = clist.selection[0]
         
         if (self.hw_sel + 1) == clist.rows:
-            self.hwPage = TRUE
+            self.hwPage = True
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
         else:
-            self.hwPage = FALSE
+            self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
             
             self.device.Alias = self.getNextAlias(self.device)
             # must be at bottom, because prepare is called here
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+2])
 
-        return TRUE
+        return True
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = getHardwareList()
@@ -239,7 +237,7 @@ class EthernetInterface(InterfaceCreator):
         self.device.commit()
         
         for prof in self.profilelist:
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
@@ -252,5 +250,5 @@ class EthernetInterface(InterfaceCreator):
 
 NCDevEthernet.setDevEthernetWizard(EthernetInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.39 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.40 $"

@@ -21,8 +21,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os

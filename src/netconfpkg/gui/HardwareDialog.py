@@ -24,9 +24,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
 from netconfpkg import *
 
-from gtk import TRUE
-from gtk import FALSE
-
 class HardwareDialog:
     def __init__(self, hw, glade_file, signals = None,
                  dialogname = "Dialog"):

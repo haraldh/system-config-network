@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -32,14 +31,12 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
-from gtk import TRUE
-from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
 
 class providerDialog:
     def __init__(self, device, connection_type="isdn"):
         self.device = device
-        self.done = FALSE
+        self.done = False
         self.country = ""
         self.city = ""
         self.name = ""
@@ -70,7 +67,7 @@ class providerDialog:
             "on_providerTree_tree_unselect_row" : self.on_providerTree_tree_unselect_row
             })
 
-        self.okButton.set_sensitive(FALSE)
+        self.okButton.set_sensitive(False)
         self.setup_provider_db()
         load_icon("network.xpm", self.dialog)
         
@@ -79,10 +76,10 @@ class providerDialog:
         pass
     
     def on_cancelButton_clicked(self, button):
-        self.done = FALSE
+        self.done = False
 
     def on_okButton_clicked(self, *args):
-        self.done = TRUE
+        self.done = True
         self.provider = self.get_provider()
         self.dehydrate()
         self.dialog.destroy()
@@ -95,12 +92,12 @@ class providerDialog:
                 self.country = ctree.get_node_info(node.parent.parent)[0]
                 self.city = ctree.get_node_info(node.parent)[0]
                 self.name = ctree.get_node_info(node)[0]
-                self.okButton.set_sensitive(TRUE)
+                self.okButton.set_sensitive(True)
             except(TypeError,AttributeError):
                 pass
 
     def on_providerTree_tree_unselect_row(self, ctree, list, column):
-        self.okButton.set_sensitive(FALSE)
+        self.okButton.set_sensitive(False)
 
     def on_providerTree_button_press_event(self, clist, event, func):
         return
@@ -150,18 +147,18 @@ class providerDialog:
                                                        self.dialog)
                     
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
-                                                  pix, mask, pix, mask, is_leaf=FALSE)
+                                                  pix, mask, pix, mask, is_leaf=False)
                 _country = isp['Country']
                 _city = ''
             if _city != isp['City']:
                 city = self.dbtree.insert_node(country, None, [isp['City']], 5,
                                                pix_city, mask_city,
-                                               pix_city, mask_city, is_leaf=FALSE)
+                                               pix_city, mask_city, is_leaf=False)
                 _city = isp['City']
                 
             name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
-                                           pix_isp, mask_isp, is_leaf=FALSE)
+                                           pix_isp, mask_isp, is_leaf=False)
 
         self.dbtree.select_row(0,0)
 
@@ -176,7 +173,7 @@ class providerDialog:
         self.device.Dialup.Password = self.provider['Password']
         self.device.Dialup.Areacode = self.provider['Areacode']
         self.device.Dialup.PhoneNumber = self.provider['PhoneNumber']
-        self.device.AllowUser = TRUE
+        self.device.AllowUser = True
         self.device.BootProto = 'dialup'
         self.device.Domain = self.provider['Domain']
         if len(self.provider['DNS']) >0:
@@ -186,9 +183,9 @@ class providerDialog:
                 if dns[1]: self.device.Dialup.SecondaryDNS = dns[1]
             except(IndexError):
                 pass
-            self.device.AutoDNS = FALSE
+            self.device.AutoDNS = False
         else:
-            self.device.AutoDNS = TRUE
+            self.device.AutoDNS = True
 
 
 class ISDNproviderDialog(providerDialog):
@@ -227,5 +224,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.19 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.20 $"

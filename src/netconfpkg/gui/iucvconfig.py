@@ -29,9 +29,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.plugins import *
 from ptpconfig import ptpConfigDialog
 
-from gtk import TRUE
-from gtk import FALSE
-
 class iucvConfigDialog(ptpConfigDialog):
     def __init__(self, device):
         ptpConfigDialog.__init__(self, device)

@@ -25,8 +25,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -131,34 +129,34 @@ class IsdnInterface:
         card.get_resource(cardname)
  
         if card.IRQ:
-            self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
+            self.xml.get_widget("irqSpinButton").set_sensitive(True)
             self.xml.get_widget("irqSpinButton").set_value(int(card.IRQ))
         else:
-            self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
+            self.xml.get_widget("irqSpinButton").set_sensitive(False)
  
         if card.Mem:
-            self.xml.get_widget("memEntry").set_sensitive(TRUE)
+            self.xml.get_widget("memEntry").set_sensitive(True)
             self.xml.get_widget("memEntry").set_text(card.Mem)
         else:
-            self.xml.get_widget("memEntry").set_sensitive(FALSE)
+            self.xml.get_widget("memEntry").set_sensitive(False)
  
         if card.IoPort:
-            self.xml.get_widget("ioEntry").set_sensitive(TRUE)
+            self.xml.get_widget("ioEntry").set_sensitive(True)
             self.xml.get_widget("ioEntry").set_text(card.IoPort)
         else:
-            self.xml.get_widget("ioEntry").set_sensitive(FALSE)
+            self.xml.get_widget("ioEntry").set_sensitive(False)
  
         if card.IoPort1:
-            self.xml.get_widget("io1Entry").set_sensitive(TRUE)
+            self.xml.get_widget("io1Entry").set_sensitive(True)
             self.xml.get_widget("io1Entry").set_text(card.IoPort1)
         else:
-            self.xml.get_widget("io1Entry").set_sensitive(FALSE)
+            self.xml.get_widget("io1Entry").set_sensitive(False)
  
         if card.IoPort2:
-            self.xml.get_widget("io2Entry").set_sensitive(TRUE)
+            self.xml.get_widget("io2Entry").set_sensitive(True)
             self.xml.get_widget("io2Entry").set_text(card.IoPort2)
         else:
-            self.xml.get_widget("io2Entry").set_sensitive(FALSE)
+            self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def setup(self):
         cardlist = NCisdnhardware.card.keys()
@@ -166,7 +164,7 @@ class IsdnInterface:
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
     def hydrate(self):
-        has_card = FALSE
+        has_card = False
         id = self.hardwarelist.addHardware(ISDN)
         self.hw = self.hardwarelist[id]
         self.hw.Type = 'ISDN'
@@ -176,7 +174,7 @@ class IsdnInterface:
         new_card = conf.detect()
         cardname = ''
         if new_card:
-            has_card = TRUE
+            has_card = True
             cardname = new_card.keys()[0]
             conf.get_resource(cardname)
             self.hw.Card.ChannelProtocol = '2'
@@ -188,41 +186,41 @@ class IsdnInterface:
             
         if has_card:
                 if self.hw.Card.ChannelProtocol == '2':
-                    self.xml.get_widget("euroIsdnButton").set_active(TRUE)
+                    self.xml.get_widget("euroIsdnButton").set_active(True)
                 else:
-                    self.xml.get_widget("1tr6Button").set_active(TRUE)
+                    self.xml.get_widget("1tr6Button").set_active(True)
 
                 self.xml.get_widget("isdnCardEntry").set_text(cardname)
                 
                 if self.hw.Card.IRQ:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
+                    self.xml.get_widget("irqSpinButton").set_sensitive(True)
                     self.xml.get_widget("irqSpinButton").set_value(string.atoi(self.hw.Card.IRQ))
                 else:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
+                    self.xml.get_widget("irqSpinButton").set_sensitive(False)
 
                 if self.hw.Card.Mem:
-                    self.xml.get_widget("memEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("memEntry").set_sensitive(True)
                     self.xml.get_widget("memEntry").set_text(self.hw.Card.Mem)
                 else:
-                    self.xml.get_widget("memEntry").set_sensitive(FALSE)
+                    self.xml.get_widget("memEntry").set_sensitive(False)
 
                 if self.hw.Card.IoPort:
-                    self.xml.get_widget("ioEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("ioEntry").set_sensitive(True)
                     self.xml.get_widget("ioEntry").set_text(self.hw.Card.IoPort)
                 else:
-                    self.xml.get_widget("ioEntry").set_sensitive(FALSE)
+                    self.xml.get_widget("ioEntry").set_sensitive(False)
 
                 if self.hw.Card.IoPort1:
-                    self.xml.get_widget("io1Entry").set_sensitive(TRUE)
+                    self.xml.get_widget("io1Entry").set_sensitive(True)
                     self.xml.get_widget("io1Entry").set_text(self.hw.Card.IoPort1)
                 else:
-                    self.xml.get_widget("io1Entry").set_sensitive(FALSE)
+                    self.xml.get_widget("io1Entry").set_sensitive(False)
 
                 if self.hw.Card.IoPort2:
-                    self.xml.get_widget("io2Entry").set_sensitive(TRUE)
+                    self.xml.get_widget("io2Entry").set_sensitive(True)
                     self.xml.get_widget("io2Entry").set_text(self.hw.Card.IoPort2)
                 else:
-                    self.xml.get_widget("io2Entry").set_sensitive(FALSE)
+                    self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def dehydrate(self):
         isdncard = NCisdnhardware.ConfISDN()
@@ -265,5 +263,5 @@ class IsdnInterface:
 
 NCDevIsdn.setDevIsdnWizard(IsdnInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.22 $"

@@ -24,8 +24,6 @@ import string
 import re
 from netconfpkg.gui import GUI_functions
 
-FALSE = 0
-TRUE = not FALSE
 
 ## FIXME
 provider_db = "providerdb"
@@ -252,5 +250,5 @@ if __name__ == "__main__":
         print db
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.10 $"

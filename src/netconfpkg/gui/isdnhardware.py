@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -31,9 +30,6 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
-from gtk import TRUE
-from gtk import FALSE
 
 class isdnHardwareDialog:
     def __init__(self, hw):
@@ -75,44 +71,44 @@ class isdnHardwareDialog:
         card.get_resource(cardname)
         
         if card.IRQ:
-            self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
+            self.xml.get_widget("irqSpinButton").set_sensitive(True)
             self.xml.get_widget("irqSpinButton").set_value(int(card.IRQ))
         else:
-            self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
+            self.xml.get_widget("irqSpinButton").set_sensitive(False)
 
         if card.Mem:
-            self.xml.get_widget("memEntry").set_sensitive(TRUE)
+            self.xml.get_widget("memEntry").set_sensitive(True)
             self.xml.get_widget("memEntry").set_text(card.Mem)
         else:
-            self.xml.get_widget("memEntry").set_sensitive(FALSE)
+            self.xml.get_widget("memEntry").set_sensitive(False)
 
         if card.IoPort:
-            self.xml.get_widget("ioEntry").set_sensitive(TRUE)
+            self.xml.get_widget("ioEntry").set_sensitive(True)
             self.xml.get_widget("ioEntry").set_text(card.IoPort)
         else:
-            self.xml.get_widget("ioEntry").set_sensitive(FALSE)
+            self.xml.get_widget("ioEntry").set_sensitive(False)
 
         if card.IoPort1:
-            self.xml.get_widget("io1Entry").set_sensitive(TRUE)
+            self.xml.get_widget("io1Entry").set_sensitive(True)
             self.xml.get_widget("io1Entry").set_text(card.IoPort1)
         else:
-            self.xml.get_widget("io1Entry").set_sensitive(FALSE)
+            self.xml.get_widget("io1Entry").set_sensitive(False)
 
         if card.IoPort2:
-            self.xml.get_widget("io2Entry").set_sensitive(TRUE)
+            self.xml.get_widget("io2Entry").set_sensitive(True)
             self.xml.get_widget("io2Entry").set_text(card.IoPort2)
         else:
-            self.xml.get_widget("io2Entry").set_sensitive(FALSE)
+            self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def hydrate(self):
-        has_card = FALSE        
+        has_card = False        
         hw = self.hw
         
         if not hw.Name:
             conf = NCisdnhardware.ConfISDN()
             new_card = conf.detect()
             if new_card:
-                has_card = TRUE
+                has_card = True
                 self.cardname = new_card.keys()[0]
                 conf.get_resource(self.cardname)
                 hw.Card.ChannelProtocol = conf.ChannelProtocol
@@ -122,46 +118,46 @@ class isdnHardwareDialog:
                 hw.Card.IoPort1 = conf.IoPort1
                 hw.Card.IoPort2 = conf.IoPort2
         else:
-            has_card = TRUE
+            has_card = True
             
         if has_card:    
                 if hw.Card.ChannelProtocol == '2':
-                    self.xml.get_widget("euroIsdnButton").set_active(TRUE)
+                    self.xml.get_widget("euroIsdnButton").set_active(True)
                 else:
-                    self.xml.get_widget("1tr6Button").set_active(TRUE)
+                    self.xml.get_widget("1tr6Button").set_active(True)
 
                 if self.hw.Description:
                     self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
                 
                 if hw.Card.IRQ:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
+                    self.xml.get_widget("irqSpinButton").set_sensitive(True)
                     self.xml.get_widget("irqSpinButton").set_value(int(hw.Card.IRQ))
                 else:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
+                    self.xml.get_widget("irqSpinButton").set_sensitive(False)
 
                 if hw.Card.Mem:
-                    self.xml.get_widget("memEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("memEntry").set_sensitive(True)
                     self.xml.get_widget("memEntry").set_text(hw.Card.Mem)
                 else:
-                    self.xml.get_widget("memEntry").set_sensitive(FALSE)
+                    self.xml.get_widget("memEntry").set_sensitive(False)
 
                 if hw.Card.IoPort:
-                    self.xml.get_widget("ioEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("ioEntry").set_sensitive(True)
                     self.xml.get_widget("ioEntry").set_text(hw.Card.IoPort)
                 else:
-                    self.xml.get_widget("ioEntry").set_sensitive(FALSE)
+                    self.xml.get_widget("ioEntry").set_sensitive(False)
 
                 if hw.Card.IoPort1:
-                    self.xml.get_widget("io1Entry").set_sensitive(TRUE)
+                    self.xml.get_widget("io1Entry").set_sensitive(True)
                     self.xml.get_widget("io1Entry").set_text(hw.Card.IoPort1)
                 else:
-                    self.xml.get_widget("io1Entry").set_sensitive(FALSE)
+                    self.xml.get_widget("io1Entry").set_sensitive(False)
 
                 if hw.Card.IoPort2:
-                    self.xml.get_widget("io2Entry").set_sensitive(TRUE)
+                    self.xml.get_widget("io2Entry").set_sensitive(True)
                     self.xml.get_widget("io2Entry").set_text(hw.Card.IoPort2)
                 else:
-                    self.xml.get_widget("io2Entry").set_sensitive(FALSE)
+                    self.xml.get_widget("io2Entry").set_sensitive(False)
                     
     def dehydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -220,5 +216,5 @@ if __name__ == "__main__":
     window = isdnHardwareDialog()
     gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.22 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.23 $"

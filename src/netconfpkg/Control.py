@@ -28,9 +28,6 @@ from rhpl import ethtool
 from NC_functions import *
 import NCDeviceList
 
-TRUE = (1==1)
-FALSE = not TRUE
-
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
 
@@ -89,7 +86,7 @@ class NetworkDevice:
 
     def find(self, device):
         if device in self.activedevicelist:
-            return TRUE
-        return FALSE
+            return True
+        return False
 
 __author__ = "Than Ngo <than@redhat.com>, Harald Hoyer <harald@redhat.com>"

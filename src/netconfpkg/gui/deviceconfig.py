@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -32,9 +31,6 @@ from netconfpkg.gui import sharedtcpip
 from netconfpkg import nop
 from netconfpkg import NCDeviceList
 from netconfpkg import NCIPsecList
-
-from gtk import TRUE
-from gtk import FALSE
 
 class deviceConfigDialog:
     def __init__(self, glade_file, device):
@@ -129,22 +125,22 @@ class deviceConfigDialog:
             generic_error_dialog (\
             _("Nickname %s is already in use!\nPlease choose another one.\n") \
                                   % (self.device.DeviceId))
-            duplicate = TRUE
+            duplicate = True
             num = 0
             while duplicate:
                 devname = self.device.DeviceId + '_' + str(num)
-                duplicate = FALSE
+                duplicate = False
                 for dev in devicelist:
                     if dev.DeviceId == devname:
-                        duplicate = TRUE
+                        duplicate = True
                         break
                 for ipsec in ipseclist:
                     if ipsec.IPsecId == devname:
-                        duplicate = TRUE
+                        duplicate = True
                         break
                 num = num + 1
             self.device.DeviceId = devname
-        return TRUE
+        return True
     
     def on_cancelButton_clicked(self, button):
         pass
@@ -155,9 +151,9 @@ class deviceConfigDialog:
         if self.device.DeviceId:
             widget.set_text(self.device.DeviceId)
                 
-            self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == TRUE)
-            self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == TRUE)
-            self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == TRUE)
+            self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == True)
+            self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
+            self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
 
 
     def dehydrate(self):
@@ -166,5 +162,5 @@ class deviceConfigDialog:
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
         self.device.IPv6Init = self.xml.get_widget('ipv6InitCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.22 $"

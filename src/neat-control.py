@@ -119,7 +119,7 @@ class mainDialog:
         self.activedevicelist = NetworkDevice().get()
         self.hydrate()
         self.oldprofile = None
-        self.xml.get_widget('profileActivateButton').set_sensitive(FALSE)
+        self.xml.get_widget('profileActivateButton').set_sensitive(False)
         self.hydrateProfiles()
 
         self.xml.get_widget('autoSelectProfileButton').hide()
@@ -198,7 +198,7 @@ class mainDialog:
         (ret, msg) = dev.configure()
 
         if not self.dialog:
-            return FALSE
+            return False
 
         if ret:
             errorString = _('Cannot configure network device %s')\
@@ -210,8 +210,8 @@ class mainDialog:
         self.devicelist = self.getProfDeviceList(refresh=true)
         self.activedevicelist = NetworkDevice().get()
         # Update the gui
-        self.hydrateProfiles(refresh = TRUE)
-        self.hydrate(refresh = TRUE)
+        self.hydrateProfiles(refresh = True)
+        self.hydrate(refresh = True)
         self.oldprofile = None # forces a re-read of oldprofile
         self.update_dialog()
         
@@ -254,19 +254,19 @@ class mainDialog:
         except ValueError:
             status = clist.get_text(clist.selection[0], 0)
             
-        self.xml.get_widget('activateButton').set_sensitive(TRUE)
-        self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
+        self.xml.get_widget('activateButton').set_sensitive(True)
+        self.xml.get_widget('deactivateButton').set_sensitive(True)
 
         if status == ACTIVE:
-            #self.xml.get_widget('activateButton').set_sensitive(FALSE)
-            #self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
-            #self.xml.get_widget('configureButton').set_sensitive(FALSE)
-            self.xml.get_widget('monitorButton').set_sensitive(TRUE)
+            #self.xml.get_widget('activateButton').set_sensitive(False)
+            #self.xml.get_widget('deactivateButton').set_sensitive(True)
+            #self.xml.get_widget('configureButton').set_sensitive(False)
+            self.xml.get_widget('monitorButton').set_sensitive(True)
         else:
-            #self.xml.get_widget('activateButton').set_sensitive(TRUE)
-            #self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
-            #self.xml.get_widget('configureButton').set_sensitive(TRUE)
-            self.xml.get_widget('monitorButton').set_sensitive(FALSE)
+            #self.xml.get_widget('activateButton').set_sensitive(True)
+            #self.xml.get_widget('deactivateButton').set_sensitive(False)
+            #self.xml.get_widget('configureButton').set_sensitive(True)
+            self.xml.get_widget('monitorButton').set_sensitive(False)
         
     def clist_get_status(self):
         clist = self.xml.get_widget('interfaceClist')
@@ -358,9 +358,9 @@ class mainDialog:
                     self.oldprofile = prof.ProfileName  
             i = i+1
         if self.get_active_profile().ProfileName != self.oldprofile:
-            self.xml.get_widget('interfaceClist').set_sensitive(FALSE)
+            self.xml.get_widget('interfaceClist').set_sensitive(False)
         else:
-            self.xml.get_widget('interfaceClist').set_sensitive(TRUE)
+            self.xml.get_widget('interfaceClist').set_sensitive(True)
         menu.show ()
         
         if omenu:
@@ -403,28 +403,28 @@ class mainDialog:
             self.set_profile_active(profile)            
             if self.oldprofile != self.get_active_profile().ProfileName:
                 self.xml.get_widget('profileActivateButton' \
-                                    ).set_sensitive(TRUE)
-                self.xml.get_widget('interfaceClist').set_sensitive(FALSE)
-                self.xml.get_widget('activateButton').set_sensitive(FALSE)
-                self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
+                                    ).set_sensitive(True)
+                self.xml.get_widget('interfaceClist').set_sensitive(False)
+                self.xml.get_widget('activateButton').set_sensitive(False)
+                self.xml.get_widget('deactivateButton').set_sensitive(False)
             else:
                 self.xml.get_widget('profileActivateButton' \
-                                    ).set_sensitive(FALSE)
-                self.xml.get_widget('interfaceClist').set_sensitive(TRUE)
-                self.xml.get_widget('activateButton').set_sensitive(TRUE)
-                self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
+                                    ).set_sensitive(False)
+                self.xml.get_widget('interfaceClist').set_sensitive(True)
+                self.xml.get_widget('activateButton').set_sensitive(True)
+                self.xml.get_widget('deactivateButton').set_sensitive(True)
     
     def update_dialog(self):
         if not self.dialog:
-            return FALSE
+            return False
         activedevicelistold = self.activedevicelist
         self.activedevicelist = NetworkDevice().get()
         
         if activedevicelistold != self.activedevicelist:
             self.hydrate()
-            return TRUE
+            return True
             
-        return TRUE
+        return True
 
 
 if __name__ == '__main__':

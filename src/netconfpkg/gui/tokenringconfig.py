@@ -16,9 +16,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import gtk
-
 import gtk
 import gtk.glade
 import signal
@@ -32,10 +29,6 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
-
-from gtk import TRUE
-from gtk import FALSE
-
 
 class tokenringConfigDialog(deviceConfigDialog):
     def __init__(self, device):
@@ -80,18 +73,18 @@ class tokenringConfigDialog(deviceConfigDialog):
         #widget.set_position(0)
         
         if self.device.Alias != None:
-            self.xml.get_widget("aliasSupportCB").set_active(TRUE)
+            self.xml.get_widget("aliasSupportCB").set_active(True)
             self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
         else:
-            self.xml.get_widget("aliasSupportCB").set_active(FALSE)
+            self.xml.get_widget("aliasSupportCB").set_active(False)
 
 #         if self.device.HardwareAddress != None:
-#             self.xml.get_widget("hwAddressCB").set_active(TRUE)
+#             self.xml.get_widget("hwAddressCB").set_active(True)
 #             self.xml.get_widget("hwAddressEntry").set_text(self.device.HardwareAddress)
 #         else:
-#             self.xml.get_widget("hwAddressCB").set_active(FALSE)
-#             self.xml.get_widget("hwAddressEntry").set_sensitive(FALSE)
-#             self.xml.get_widget("hwProbeButton").set_sensitive(FALSE)
+#             self.xml.get_widget("hwAddressCB").set_active(False)
+#             self.xml.get_widget("hwAddressEntry").set_sensitive(False)
+#             self.xml.get_widget("hwProbeButton").set_sensitive(False)
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
@@ -129,5 +122,5 @@ class tokenringConfigDialog(deviceConfigDialog):
 
 NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.17 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.18 $"

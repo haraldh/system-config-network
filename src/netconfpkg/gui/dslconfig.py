@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -33,8 +32,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
 from deviceconfig import deviceConfigDialog
-from gtk import TRUE
-from gtk import FALSE
 
 
 class dslConfigDialog(deviceConfigDialog):
@@ -107,9 +104,9 @@ class dslConfigDialog(deviceConfigDialog):
             self.xml.get_widget("idleTimeSB").set_text(\
                 str(dialup.HangupTimeout))
             self.on_dialonDemandCB_clicked()
-        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
+        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == True)
 
-        self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute == TRUE)
+        self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute == True)
         
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
@@ -172,5 +169,5 @@ if __name__ == "__main__":
     gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.28 $"

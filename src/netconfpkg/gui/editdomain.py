@@ -18,8 +18,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-
-import gtk
 import gtk.glade
 import signal
 import os
@@ -31,8 +29,6 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from gtk import TRUE
-from gtk import FALSE
 
 class editDomainDialog:
     def __init__(self, Name):
@@ -86,7 +82,7 @@ class editDomainDialog:
         profilelist = NCProfileList.getProfileList()
 
         for prof in profilelist:
-            if prof.Active == TRUE:
+            if prof.Active == True:
                 index = prof.DNS.SearchList.index(self.Name)
                 n = self.xml.get_widget("domainNameEntry").get_text()
                 
@@ -104,5 +100,5 @@ class editDomainDialog:
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.14 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.15 $"

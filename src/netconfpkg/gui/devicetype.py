@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -34,8 +33,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import NCHardwareList
-from gtk import TRUE
-from gtk import FALSE
 
 
 class deviceTypeDialog:
@@ -63,27 +60,27 @@ class deviceTypeDialog:
 
         hardwarelist = NCHardwareList.getHardwareList()
         machine = os.uname()[4]
-        ethernetFound = FALSE
-        modemFound = FALSE
-        isdnFound = FALSE
-        tokenringFound = FALSE
-        adslFound = FALSE
-        cipeFound = FALSE
-        wirelessFound = FALSE
+        ethernetFound = False
+        modemFound = False
+        isdnFound = False
+        tokenringFound = False
+        adslFound = False
+        cipeFound = False
+        wirelessFound = False
         for hw in hardwarelist:
-            if hw.Type == MODEM: modemFound = TRUE
-            elif hw.Type == ISDN: isdnFound = TRUE
+            if hw.Type == MODEM: modemFound = True
+            elif hw.Type == ISDN: isdnFound = True
             elif hw.Type == ETHERNET:
-                ethernetFound = TRUE
-                adslFound = TRUE
-                cipeFound = TRUE
-                wirelessFound = TRUE
-            elif hw.Type == TOKENRING: tokenringFound = TRUE
+                ethernetFound = True
+                adslFound = True
+                cipeFound = True
+                wirelessFound = True
+            elif hw.Type == TOKENRING: tokenringFound = True
         if machine == 's390' or machine == 's390x':
-            modemFound = FALSE
-            isdnFound = FALSE
-            adslFound = FALSE
-            wirelessFound = FALSE
+            modemFound = False
+            isdnFound = False
+            adslFound = False
+            wirelessFound = False
         else:
             devicetypes.remove(CTC)
             devicetypes.remove(IUCV)
@@ -131,5 +128,5 @@ if __name__ == "__main__":
     gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.15 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.16 $"

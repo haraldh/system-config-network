@@ -29,9 +29,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.plugins import *
 from deviceconfig import deviceConfigDialog
 
-from gtk import TRUE
-from gtk import FALSE
-
 class ptpConfigDialog(deviceConfigDialog):
     def __init__(self, device):
         glade_file = "ptpconfig.glade"

@@ -18,8 +18,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-
-import gtk
 import gtk.glade
 import signal
 import os
@@ -32,8 +30,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from gtk import TRUE
-from gtk import FALSE
 
 
 class hardwareTypeDialog:
@@ -92,5 +88,5 @@ if __name__ == "__main__":
     gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.15 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.16 $"

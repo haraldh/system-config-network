@@ -22,8 +22,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg import *
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -116,16 +114,16 @@ class ModemInterface:
                                 gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT)
             dialog.set_border_width(10)
             label = gtk.Label(_('Probing for Modems, please wait...'))
-            dialog.vbox.pack_start(label, gtk.FALSE)
+            dialog.vbox.pack_start(label, False)
             dialog.set_transient_for(self.toplevel)
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-            dialog.set_modal(TRUE)
+            dialog.set_modal(True)
             label.show_now()
             dialog.show_all()
             dialog.show_now()
             gtk.gdk.flush()
             while gtk.events_pending():
-                gtk.main_iteration(gtk.FALSE)
+                gtk.main_iteration(False)
             dlist = GUI_functions.getModemList()
             ModemInterface.modemList = dlist
             dialog.destroy()
@@ -212,5 +210,5 @@ class ModemInterface:
         
 NCDevModem.setDevModemWizard(ModemInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.36 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.37 $"

@@ -21,8 +21,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -41,15 +39,15 @@ class TokenRingInterface(InterfaceCreator):
         self.devicelist = NCDeviceList.getDeviceList()
         self.device = NCDevTokenRing.DevTokenRing()
         self.device.Type = connection_type
-        self.device.OnBoot = TRUE
-        self.device.AllowUser = FALSE
-        self.device.IPv6Init = FALSE
+        self.device.OnBoot = True
+        self.device.AllowUser = False
+        self.device.IPv6Init = False
 
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
         self.connection_type = connection_type
         self.hw_sel = 0
-        self.hwPage = FALSE
+        self.hwPage = False
         self.druids = []
         
     def init_gui(self):
@@ -128,7 +126,7 @@ class TokenRingInterface(InterfaceCreator):
             self.topdruid.set_page(childs[2])
         else:
             self.topdruid.set_page(childs[1])            
-        return TRUE
+        return True
     
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
@@ -152,20 +150,20 @@ class TokenRingInterface(InterfaceCreator):
 
         if not len(clist.selection):
             self.topdruid.set_page(childs[1])
-            return TRUE
+            return True
 
         self.hw_sel = clist.selection[0]
 
         if (self.hw_sel + 1) == clist.rows:
-            self.hwPage = TRUE
+            self.hwPage = True
             self.topdruid.set_page(childs[2])
         else:
-            self.hwPage = FALSE
+            self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
             
             self.device.Alias = self.getNextAlias(self.device)
             self.topdruid.set_page(childs[3])
-        return TRUE
+        return True
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -223,7 +221,7 @@ class TokenRingInterface(InterfaceCreator):
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
@@ -236,5 +234,5 @@ class TokenRingInterface(InterfaceCreator):
 
 NCDevTokenRing.setDevTokenRingWizard(TokenRingInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.27 $"

@@ -19,12 +19,10 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
 
-import string
 import string
 import commands
 import sharedtcpip
@@ -34,8 +32,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 
-from gtk import TRUE
-from gtk import FALSE
 
 class cipeConfigDialog(deviceConfigDialog):
     def __init__(self, device):
@@ -110,9 +106,9 @@ class cipeConfigDialog(deviceConfigDialog):
            or not self.device.Cipe.RemotePeerAddress:
             self.xml.get_widget("remotePeerAddressEntry").set_text(_("Server Mode"))
             self.xml.get_widget("remotePeerPortEntry").set_text("")
-            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)
-            self.xml.get_widget("remotePeerPortEntry").set_sensitive(FALSE)
-            self.xml.get_widget("remotePeerAddressCB").set_active(TRUE)            
+            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(False)
+            self.xml.get_widget("remotePeerPortEntry").set_sensitive(False)
+            self.xml.get_widget("remotePeerAddressCB").set_active(True)            
 
             
         if self.device.Cipe.RemoteVirtualAddress:
@@ -160,13 +156,13 @@ class cipeConfigDialog(deviceConfigDialog):
                 
     def on_remotePeerAddressCB_toggled(self, *args):
         if self.xml.get_widget("remotePeerAddressCB").get_active():
-            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)
-            self.xml.get_widget("remotePeerPortEntry").set_sensitive(FALSE)
+            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(False)
+            self.xml.get_widget("remotePeerPortEntry").set_sensitive(False)
             self.xml.get_widget("remotePeerAddressEntry").set_text(_("Server Mode"))
             self.xml.get_widget("remotePeerPortEntry").set_text("")
         else:
-            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(TRUE)
-            self.xml.get_widget("remotePeerPortEntry").set_sensitive(TRUE)
+            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(True)
+            self.xml.get_widget("remotePeerPortEntry").set_sensitive(True)
             self.xml.get_widget("remotePeerAddressEntry").set_text("0.0.0.0")
 
         self.updateRemoteOptions()
@@ -218,5 +214,5 @@ class cipeConfigDialog(deviceConfigDialog):
 
 NCDevCipe.setDevCipeDialog(cipeConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.31 $"

@@ -184,11 +184,11 @@ class TestError(Exception):
         Exception.__init__(self, args)
         #self.args = args
 
-def gen_hexkey():
+def gen_hexkey(len = 16):
     import struct
     key = ""
     f = file("/dev/random", "rb")
-    chars = struct.unpack("16B", f.read(16))
+    chars = struct.unpack("%dB" % len, f.read(len))
     for i in chars:        
         key = key + "%02x" % i
     f.close()

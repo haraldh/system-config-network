@@ -20,8 +20,6 @@
 import sys
 
 import gtk
-
-import gtk
 import gtk.glade
 import signal
 import os
@@ -36,8 +34,6 @@ from netconfpkg import NCHWEthernet
 from netconfpkg import NCHWWireless
 from netconfpkg import NCHardwareList
 
-from gtk import TRUE
-from gtk import FALSE
 
 class ethernetHardwareDialog:
     def __init__(self, hw):
@@ -109,8 +105,8 @@ class ethernetHardwareDialog:
             self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
             if self.hw.Description:
                 self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
-            self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
-            self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
+            self.xml.get_widget('adapterEntry').set_sensitive(False)
+            self.xml.get_widget('adapterComboBox').set_sensitive(False)
             if self.hw.Card.IRQ:
                 self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
             if self.hw.Card.Mem:
@@ -177,5 +173,5 @@ class ethernetHardwareDialog:
 NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.33 $"

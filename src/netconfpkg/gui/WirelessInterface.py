@@ -21,8 +21,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -41,15 +39,15 @@ class WirelessInterface(InterfaceCreator):
         self.devicelist = NCDeviceList.getDeviceList()
         self.device = NCDevWireless.DevWireless()
         self.device.Type = connection_type
-        self.device.OnBoot = FALSE
-        self.device.AllowUser = FALSE
-        self.device.IPv6Init = FALSE
+        self.device.OnBoot = False
+        self.device.AllowUser = False
+        self.device.IPv6Init = False
 
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
         self.connection_type = connection_type
         self.hw_sel = 0
-        self.hwPage = FALSE
+        self.hwPage = False
         self.druids = []
 
     def init_gui(self):
@@ -148,7 +146,7 @@ class WirelessInterface(InterfaceCreator):
             self.topdruid.set_page(childs[2])
         else:
             self.topdruid.set_page(childs[1])            
-        return TRUE
+        return True
 
     def on_wireless_config_page_next(self, druid_page, druid):
         self.device.createWireless()
@@ -179,12 +177,12 @@ class WirelessInterface(InterfaceCreator):
                     self.xml.get_widget("modeEntry").set_text(info["Mode"])
 
                 if info.has_key("ESSID") and info["ESSID"] != "":
-                    self.xml.get_widget("essidSpecButton").set_active(TRUE)
-                    self.xml.get_widget("essidEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("essidSpecButton").set_active(True)
+                    self.xml.get_widget("essidEntry").set_sensitive(True)
                     self.xml.get_widget("essidEntry").set_text(info["ESSID"])
                 else:
-                    self.xml.get_widget("essidAutoButton").set_active(TRUE)
-                    self.xml.get_widget("essidEntry").set_sensitive(FALSE)
+                    self.xml.get_widget("essidAutoButton").set_active(True)
+                    self.xml.get_widget("essidEntry").set_sensitive(False)
 
                 if info.has_key("Frequency") and info["Frequency"] < 1000:
                     self.xml.get_widget("channelSpinButton").set_value(int(info["Frequency"]))
@@ -201,13 +199,13 @@ class WirelessInterface(InterfaceCreator):
 
     def on_modeChanged(self, entry):
         if string.lower(entry.get_text()) == "managed":
-            self.xml.get_widget("channelSpinButton").set_sensitive(FALSE)
-            self.xml.get_widget("rateCombo").set_sensitive(FALSE)
-            self.xml.get_widget("rateEntry").set_sensitive(FALSE)
+            self.xml.get_widget("channelSpinButton").set_sensitive(False)
+            self.xml.get_widget("rateCombo").set_sensitive(False)
+            self.xml.get_widget("rateEntry").set_sensitive(False)
         else:
-            self.xml.get_widget("channelSpinButton").set_sensitive(TRUE)
-            self.xml.get_widget("rateCombo").set_sensitive(TRUE)
-            self.xml.get_widget("rateEntry").set_sensitive(TRUE)
+            self.xml.get_widget("channelSpinButton").set_sensitive(True)
+            self.xml.get_widget("rateCombo").set_sensitive(True)
+            self.xml.get_widget("rateEntry").set_sensitive(True)
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
     def on_essidAutoButton_toggled(self, check):
@@ -223,20 +221,20 @@ class WirelessInterface(InterfaceCreator):
 
         if not len(clist.selection):
             self.topdruid.set_page(childs[1])
-            return TRUE
+            return True
         
         self.hw_sel = clist.selection[0]
         
         if (self.hw_sel + 1) == clist.rows:
-            self.hwPage = TRUE
+            self.hwPage = True
             self.topdruid.set_page(childs[2])
         else:
-            self.hwPage = FALSE
+            self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
             self.device.Alias = self.getNextAlias(self.device)
             self.topdruid.set_page(childs[3])
 
-        return TRUE
+        return True
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -315,7 +313,7 @@ class WirelessInterface(InterfaceCreator):
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
@@ -327,5 +325,5 @@ class WirelessInterface(InterfaceCreator):
 
 NCDevWireless.setDevWirelessWizard(WirelessInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.33 $"

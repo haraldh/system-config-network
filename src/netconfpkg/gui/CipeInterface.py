@@ -21,17 +21,12 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from rhpl.executil import *
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
 import gtk.glade
 from InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
-from gtk import TRUE
-from gtk import FALSE
 
 class CipeInterface(InterfaceCreator):
     def __init__ (self, toplevel=None, connection_type=CIPE,
@@ -81,9 +76,9 @@ class CipeInterface(InterfaceCreator):
 
         self.devicelist = NCDeviceList.getDeviceList()
         self.profilelist = NCProfileList.getProfileList()
-        self.device.OnBoot = FALSE
-        self.device.AllowUser = FALSE
-        self.device.IPv6Init = FALSE
+        self.device.OnBoot = False
+        self.device.AllowUser = False
+        self.device.IPv6Init = False
         
         druid = self.xml.get_widget ('druid')
         for I in druid.get_children():
@@ -111,9 +106,9 @@ class CipeInterface(InterfaceCreator):
     def on_tunnel_setting_page_next(self, druid_page, druid):
         if self.check():
             self.dehydrate()
-            return FALSE
+            return False
         else:
-            return TRUE
+            return True
     
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -121,7 +116,7 @@ class CipeInterface(InterfaceCreator):
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
@@ -208,9 +203,9 @@ class CipeInterface(InterfaceCreator):
            or not cipe.RemotePeerAddress:
             self.xml.get_widget("remotePeerAddressEntry").set_text(_("Server Mode"))
             self.xml.get_widget("remotePeerPortEntry").set_text("")
-            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)
-            self.xml.get_widget("remotePeerPortEntry").set_sensitive(FALSE)
-            self.xml.get_widget("remotePeerAddressCB").set_active(TRUE)
+            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(False)
+            self.xml.get_widget("remotePeerPortEntry").set_sensitive(False)
+            self.xml.get_widget("remotePeerAddressCB").set_active(True)
 
 
         if cipe.RemoteVirtualAddress:
@@ -258,13 +253,13 @@ class CipeInterface(InterfaceCreator):
 
     def on_remotePeerAddressCB_toggled(self, *args):
         if self.xml.get_widget("remotePeerAddressCB").get_active():
-            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)
-            self.xml.get_widget("remotePeerPortEntry").set_sensitive(FALSE)
+            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(False)
+            self.xml.get_widget("remotePeerPortEntry").set_sensitive(False)
             self.xml.get_widget("remotePeerAddressEntry").set_text(_("Server Mode"))
             self.xml.get_widget("remotePeerPortEntry").set_text("")
         else:
-            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(TRUE)
-            self.xml.get_widget("remotePeerPortEntry").set_sensitive(TRUE)
+            self.xml.get_widget("remotePeerAddressEntry").set_sensitive(True)
+            self.xml.get_widget("remotePeerPortEntry").set_sensitive(True)
             self.xml.get_widget("remotePeerAddressEntry").set_text("0.0.0.0")
 
         self.updateRemoteOptions()
@@ -324,10 +319,10 @@ class CipeInterface(InterfaceCreator):
                                              "or generate one"),
                                            self.toplevel,
                                            broken_widget = keywidget)
-            return FALSE
-        return TRUE
+            return False
+        return True
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.33 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.34 $"

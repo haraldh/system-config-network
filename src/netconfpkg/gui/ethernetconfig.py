@@ -19,7 +19,6 @@
 
 import gtk
 
-import gtk
 import gtk.glade
 import signal
 import os
@@ -34,10 +33,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 from rhpl import ethtool
-
-from gtk import TRUE
-from gtk import FALSE
-
 
 class ethernetConfigDialog(deviceConfigDialog):
     def __init__(self, device):
@@ -107,5 +102,5 @@ class ethernetConfigDialog(deviceConfigDialog):
             
 NCDevEthernet.setDevEthernetDialog(ethernetConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.24 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.25 $"

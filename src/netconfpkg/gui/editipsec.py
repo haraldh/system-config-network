@@ -28,8 +28,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from rhpl.executil import *
 from netconfpkg.NCProfileList import getProfileList
-from gtk import TRUE
-from gtk import FALSE
 
 class editIPsecDruid:
     def __init__(self, ipsec=None):
@@ -86,7 +84,7 @@ class editIPsecDruid:
         
         self.druid = self.xml.get_widget("Druid")
         self.druidwidget = self.xml.get_widget("ipsecDruid")
-        self.canceled = FALSE
+        self.canceled = False
         self.druid.show_all()
         self.entries = {
             "localNetworkEntry" : "LocalNetwork",
@@ -113,7 +111,7 @@ class editIPsecDruid:
                 widget.set_text(self.ipsec.IKEKey or "")
 
 
-        self.xml.get_widget('onBootCB').set_active(self.ipsec.OnBoot == TRUE)
+        self.xml.get_widget('onBootCB').set_active(self.ipsec.OnBoot == True)
 
 
     def on_generic_entry_insert_text(self, entry, partial_text, length,
@@ -124,21 +122,21 @@ class editIPsecDruid:
         entry.emit_stop_by_name('insert_text')
 
     def on_ipsecDruidPageStart_next(self, druid_page, druid):
-        return FALSE
+        return False
 
     def on_ipsecDruidNicknamePage_next(self, druid_page, druid):
         if not self.xml.get_widget("ipsecidEntry").get_text():
-            return TRUE
+            return True
         else:
-            return FALSE
+            return False
         
     def on_ipsecDruidConnectionTypePage_prepare(self, druid_page, druid):
         if self.ipsec.ConnectionType == "Host2Host":
-            self.xml.get_widget("hosttohostEncryptionRadio").set_active(TRUE)
+            self.xml.get_widget("hosttohostEncryptionRadio").set_active(True)
         else:
-            self.xml.get_widget("nettonetEncryptionRadio").set_active(TRUE)
+            self.xml.get_widget("nettonetEncryptionRadio").set_active(True)
             
-        return FALSE
+        return False
 
     def on_ipsecDruidConnectionTypePage_next(self, druid_page, druid):
         if self.xml.get_widget("hosttohostEncryptionRadio").get_active():
@@ -163,14 +161,14 @@ class editIPsecDruid:
                             "remoteGatewayLabel",
                             ]:
                 self.xml.get_widget(widget).show()
-        return FALSE
+        return False
             
     def on_ipsecDruidEncryptionModePage_prepare(self, druid_page, druid):
         if self.ipsec.EncryptionMode == "manual":
-            self.xml.get_widget("manualEncryptionRadio").set_active(TRUE)
+            self.xml.get_widget("manualEncryptionRadio").set_active(True)
         else:
-            self.xml.get_widget("automaticEncryptionRadio").set_active(TRUE)
-        return FALSE
+            self.xml.get_widget("automaticEncryptionRadio").set_active(True)
+        return False
 
     def on_ipsecDruidEncryptionModePage_next(self, druid_page, druid):
         if self.xml.get_widget("manualEncryptionRadio").get_active():
@@ -182,21 +180,21 @@ class editIPsecDruid:
             for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton" ]:
                 self.xml.get_widget(widget).hide()
 
-        return FALSE
+        return False
                         
     def on_ipsecDruidLocalNetworkPage_prepare(self, druid_page, druid):
-        return FALSE
+        return False
     
     def on_ipsecDruidLocalNetworkPage_next(self, druid_page, druid):
         for widget in [ "localNetworkEntry", "localSubnetEntry",
                         "localGatewayEntry" ]:
             if not self.xml.get_widget(widget).get_text():
-                return TRUE
+                return True
 
-        return FALSE
+        return False
     
     def on_ipsecDruidRemoteNetworkPage_prepare(self, druid_page, druid):
-        return FALSE
+        return False
     
     def on_ipsecDruidRemoteNetworkPage_next(self, druid_page, druid):
         wlist = [ "remoteIPEntry" ]
@@ -206,12 +204,12 @@ class editIPsecDruid:
                            "remoteGatewayEntry"])
         for widget in wlist:
             if not self.xml.get_widget(widget).get_text():
-                return TRUE
+                return True
 
-        return FALSE
+        return False
     
     def on_ipsecDruidKeysPage_prepare(self, druid_page, druid):
-        return FALSE
+        return False
 
     def on_ipsecDruidKeysPage_next(self, druid_page, druid):
         wlist = [ "AHKeyEntry" ]
@@ -220,9 +218,9 @@ class editIPsecDruid:
 
         for widget in wlist:
             if not self.xml.get_widget(widget).get_text():
-                return TRUE
+                return True
 
-        return FALSE    
+        return False    
     
     def on_ipsecDruidFinishPage_prepare(self, druid_page, druid):
         for key, val in self.entries.items():
@@ -248,7 +246,7 @@ class editIPsecDruid:
         s = _("You have selected the following information:") + "\n\n"
         s += str(self.ipsec)
         druid_page.set_text(s)
-        return FALSE
+        return False
     
     def on_ipsecDruidFinishPage_finish(self, druid_page, druid):
         profilelist = getProfileList()
@@ -257,7 +255,7 @@ class editIPsecDruid:
                 prof.ActiveIPsecs.remove(self.ipsec.oldname)
                 prof.ActiveIPsecs.append(self.ipsec.IPsecId)
                 
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             if not self.ipsec.oldname:
                 prof.ActiveIPsecs.append(self.ipsec.IPsecId)
@@ -268,27 +266,22 @@ class editIPsecDruid:
         self.druid.hide()
         self.druid.destroy()
         gtk.main_quit()
-        return FALSE
+        return False
     
     def on_ipsecDruid_cancel(self, *args):
-        self.canceled = TRUE
+        self.canceled = True
         self.druid.destroy()
         gtk.main_quit()
-        return FALSE
+        return False
 
     def on_generateAHKeyButton_clicked(self, *args):
-        key = GUI_functions.gen_hexkey()
-        if len(key) > 20:
-            key = key[:20]
+        key = GUI_functions.gen_hexkey(20)
         widget = self.xml.get_widget("AHKeyEntry")
         if key:
             widget.set_text(key)
         
     def on_generateESPKeyButton_clicked(self, *args):
-        key = GUI_functions.gen_hexkey()
-        if len(key) > 24:
-            key = key[:24]
-        
+        key = GUI_functions.gen_hexkey(24)
         widget = self.xml.get_widget("ESPKeyEntry")
         if key:
             widget.set_text(key)

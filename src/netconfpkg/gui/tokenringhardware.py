@@ -28,8 +28,6 @@ from rhpl import Conf
 from netconfpkg.gui import GUI_functions
 from netconfpkg import *
 from netconfpkg.gui.HardwareDialog import HardwareDialog
-from gtk import TRUE
-from gtk import FALSE
 
 class tokenringHardwareDialog(HardwareDialog):
     def __init__(self, hw):
@@ -84,8 +82,8 @@ class tokenringHardwareDialog(HardwareDialog):
         if self.hw.Name:
             self.xml.get_widget('tokenringDeviceEntry').set_text(self.hw.Name)
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
-            self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
-            self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
+            self.xml.get_widget('adapterEntry').set_sensitive(False)
+            self.xml.get_widget('adapterComboBox').set_sensitive(False)
             if self.hw.Card.IRQ:
                 self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
             if self.hw.Card.Mem:

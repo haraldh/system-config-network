@@ -20,8 +20,6 @@
 import signal
 import os
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 # do not remove this (needed to access methods of self.druid
 import gnome.ui
@@ -101,7 +99,7 @@ class NewInterfaceDialog:
 
             self.interface_clist.set_row_data (row, iface)
 
-        self.canceled = FALSE
+        self.canceled = False
 
         self.interface_clist.select_row (0, 0)
 
@@ -110,7 +108,7 @@ class NewInterfaceDialog:
         
     def on_start_page_prepare (self, druid_page, druid):
         self.interface_clist.grab_focus ()
-        self.druid.set_buttons_sensitive (FALSE, TRUE, TRUE, TRUE)
+        self.druid.set_buttons_sensitive (False, True, True, True)
         
     def on_start_page_next (self, druid, druid_page):
         interface = self.interface_clist.get_row_data (\
@@ -125,9 +123,9 @@ class NewInterfaceDialog:
             for i in druid_pages:
                 self.druid.append_page(i)
                 i.show()
-            return FALSE
+            return False
         else:
-            return TRUE
+            return True
 
     def on_cancel_interface(self, *args):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -135,7 +133,7 @@ class NewInterfaceDialog:
         devicelist = NCDeviceList.getDeviceList()
         devicelist.rollback()
         self.toplevel.destroy()
-        self.canceled = TRUE
+        self.canceled = True
         gtk.main_quit()
 
     def on_interface_clist_select_row (self, clist, row, column, event):
@@ -154,5 +152,5 @@ if __name__ == "__main__":
     gtk.main() ()
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.35 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.36 $"

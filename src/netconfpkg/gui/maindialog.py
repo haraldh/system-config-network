@@ -38,8 +38,8 @@ DEVICE_COLUMN = 2
 NICKNAME_COLUMN = 3
 TYPE_COLUMN = 4
 
-TRUE=gtk.TRUE
-FALSE=gtk.FALSE
+True=True
+False=False
 
 PAGE_DEVICES = 0
 PAGE_HARDWARE = 1
@@ -423,9 +423,9 @@ class mainDialog:
             ch = self.changed()
 #         apply_btn = self.xml.get_widget("save")
 #         if ch:
-#             apply_btn.set_sensitive (TRUE)
+#             apply_btn.set_sensitive (True)
 #         else:
-#             apply_btn.set_sensitive (FALSE)
+#             apply_btn.set_sensitive (False)
             
             
     def hydrateDevices(self):
@@ -696,9 +696,9 @@ class mainDialog:
 
         if activedevicelistold != self.activedevicelist:
             self.hydrateDevices()
-            return TRUE
+            return True
 
-        return TRUE
+        return True
     
     def on_Dialog_delete_event(self, *args):
         profilelist = getProfileList()
@@ -841,15 +841,15 @@ class mainDialog:
         device = df.getDeviceClass(srcdev.Type, srcdev.SubType)()
         device.apply(srcdev)
 
-        duplicate = TRUE
+        duplicate = True
         num = 0
         devicelist = getDeviceList()
         while duplicate:
             devname = device.DeviceId + 'Copy' + str(num)
-            duplicate = FALSE
+            duplicate = False
             for dev in devicelist:
                 if dev.DeviceId == devname:
-                    duplicate = TRUE
+                    duplicate = True
                     break
             num = num + 1
         device.DeviceId = devname
@@ -1047,11 +1047,11 @@ class mainDialog:
         prof = self.active_profile
 
         if profile == 'default':
-            self.xml.get_widget ('profileRenameMenu').set_sensitive (FALSE)
-            self.xml.get_widget ('profileDeleteMenu').set_sensitive (FALSE)
+            self.xml.get_widget ('profileRenameMenu').set_sensitive (False)
+            self.xml.get_widget ('profileDeleteMenu').set_sensitive (False)
         else:
-            self.xml.get_widget ('profileRenameMenu').set_sensitive (TRUE)
-            self.xml.get_widget ('profileDeleteMenu').set_sensitive (TRUE)
+            self.xml.get_widget ('profileRenameMenu').set_sensitive (True)
+            self.xml.get_widget ('profileDeleteMenu').set_sensitive (True)
             
         if not self.no_profileentry_update:
             #profilelist.switchToProfile(profile, dochange = false)
@@ -1064,12 +1064,12 @@ class mainDialog:
     def on_generic_clist_select_row(self, clist, row, column, event):
         #devicelist = getDeviceList()
         
-        self.edit_button.set_sensitive(TRUE)
-        self.delete_button.set_sensitive(TRUE)
+        self.edit_button.set_sensitive(True)
+        self.delete_button.set_sensitive(True)
 
         if self.active_page == self.page_num[PAGE_DEVICES]:
-            self.copy_button.set_sensitive(TRUE)
-            #self.rename_button.set_sensitive(TRUE)
+            self.copy_button.set_sensitive(True)
+            #self.rename_button.set_sensitive(True)
 
         if clist.get_name() == 'hardwareList':
             if len(clist.selection) == 0:
@@ -1085,16 +1085,16 @@ class mainDialog:
             if not self.ipsel:
                 return
 
-            self.activate_button.set_sensitive(TRUE)
-            self.deactivate_button.set_sensitive(TRUE)
-            self.delete_button.set_sensitive(TRUE)
+            self.activate_button.set_sensitive(True)
+            self.deactivate_button.set_sensitive(True)
+            self.delete_button.set_sensitive(True)
 
 
 
         if clist.get_name() == 'deviceList':
-            self.activate_button.set_sensitive(TRUE)
-            self.deactivate_button.set_sensitive(TRUE)
-            self.delete_button.set_sensitive(TRUE)
+            self.activate_button.set_sensitive(True)
+            self.deactivate_button.set_sensitive(True)
+            self.delete_button.set_sensitive(True)
             
             if len(clist.selection) == 0:
                 return
@@ -1115,33 +1115,33 @@ class mainDialog:
                 
             if status == ACTIVE and \
                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
-                #self.activate_button.set_sensitive(FALSE)
-                self.activate_button.set_sensitive(TRUE)
-                self.deactivate_button.set_sensitive(TRUE)
-                self.delete_button.set_sensitive(FALSE)
-                #self.monitor_button.set_sensitive(TRUE)
+                #self.activate_button.set_sensitive(False)
+                self.activate_button.set_sensitive(True)
+                self.deactivate_button.set_sensitive(True)
+                self.delete_button.set_sensitive(False)
+                #self.monitor_button.set_sensitive(True)
             else:
-                self.activate_button.set_sensitive(TRUE)
-                #self.deactivate_button.set_sensitive(FALSE)
-                self.deactivate_button.set_sensitive(TRUE)
-                self.delete_button.set_sensitive(TRUE)
-                #self.monitor_button.set_sensitive(FALSE)
+                self.activate_button.set_sensitive(True)
+                #self.deactivate_button.set_sensitive(False)
+                self.deactivate_button.set_sensitive(True)
+                self.delete_button.set_sensitive(True)
+                #self.monitor_button.set_sensitive(False)
 
             if self.devsel.Slave:
-                self.activate_button.set_sensitive(FALSE)
-                self.deactivate_button.set_sensitive(FALSE)
-                self.delete_button.set_sensitive(TRUE)
-                #self.monitor_button.set_sensitive(FALSE)
+                self.activate_button.set_sensitive(False)
+                self.deactivate_button.set_sensitive(False)
+                self.delete_button.set_sensitive(True)
+                #self.monitor_button.set_sensitive(False)
 
 
 
     def on_generic_clist_unselect_row(self, clist, row, column, event):
-        if self.edit_button: self.edit_button.set_sensitive(FALSE)
-        #if self.rename_button: self.rename_button.set_sensitive(FALSE)
-        if self.delete_button: self.delete_button.set_sensitive(FALSE)
-        if self.copy_button: self.copy_button.set_sensitive(FALSE)
-        if self.up_button: self.delete_button.set_sensitive(FALSE)
-        if self.down_button: self.copy_button.set_sensitive(FALSE)
+        if self.edit_button: self.edit_button.set_sensitive(False)
+        #if self.rename_button: self.rename_button.set_sensitive(False)
+        if self.delete_button: self.delete_button.set_sensitive(False)
+        if self.copy_button: self.copy_button.set_sensitive(False)
+        if self.up_button: self.delete_button.set_sensitive(False)
+        if self.down_button: self.copy_button.set_sensitive(False)
 
     def on_generic_clist_button_release_event(self, clist, event, func):
         id = clist.get_data ("signal_id")
@@ -1458,14 +1458,14 @@ class mainDialog:
         profile = Profile()
         profile.apply(self.getActiveProfile())
         profile.Active = false
-        duplicate = TRUE
+        duplicate = True
         num = 0
         while duplicate:
             profnam = profile.ProfileName + 'Copy' + str(num)
-            duplicate = FALSE
+            duplicate = False
             for prof in profilelist:
                 if prof.ProfileName == profnam:
-                    duplicate = TRUE
+                    duplicate = True
                     break
             num = num + 1
         profile.ProfileName = profnam

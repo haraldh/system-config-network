@@ -22,8 +22,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import *
 from netconfpkg import *
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -115,9 +113,9 @@ class ADSLInterface(InterfaceCreator):
     def on_dsl_config_page_next(self, druid_page, druid):
         if self.check():
             self.dehydrate()
-            return FALSE
+            return False
         else:
-            return TRUE
+            return True
 
     def on_dsl_config_page_prepare(self, druid_page, druid):
         self.hydrate()
@@ -144,7 +142,7 @@ class ADSLInterface(InterfaceCreator):
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:
-            if prof.Active == FALSE:
+            if prof.Active == False:
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
@@ -214,9 +212,9 @@ class ADSLInterface(InterfaceCreator):
         
         self.device.Type = 'xDSL'
         self.device.BootProto = 'dialup'
-        self.device.AllowUser = TRUE
-        self.device.IPv6Init = FALSE
-        self.device.AutoDNS = TRUE
+        self.device.AllowUser = True
+        self.device.IPv6Init = False
+        self.device.AutoDNS = True
         dialup = self.device.createDialup()
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
@@ -225,12 +223,12 @@ class ADSLInterface(InterfaceCreator):
         dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         dialup.Password = self.xml.get_widget("passwordEntry").get_text()
-        dialup.SyncPPP = FALSE
+        dialup.SyncPPP = False
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
-        dialup.DefRoute = TRUE
-        self.device.AutoDNS = TRUE
+        dialup.DefRoute = True
+        self.device.AutoDNS = True
 
 NCDevADSL.setDevADSLWizard(ADSLInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.30 $"

@@ -19,8 +19,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-
-import gtk
 import gtk.glade
 import signal
 import os
@@ -33,10 +31,6 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
-from gtk import TRUE
-from gtk import FALSE
-
 
 class wirelessConfigDialog(deviceConfigDialog):
     def __init__(self, device):
@@ -86,12 +80,12 @@ class wirelessConfigDialog(deviceConfigDialog):
             if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
             
             if wl.EssId == "":
-                self.xml.get_widget("essidAutoButton").set_active(TRUE)
-                self.xml.get_widget("essidEntry").set_sensitive(FALSE)
+                self.xml.get_widget("essidAutoButton").set_active(True)
+                self.xml.get_widget("essidEntry").set_sensitive(False)
             else:
-                self.xml.get_widget("essidSpecButton").set_active(TRUE)
-                self.xml.get_widget("essidAutoButton").set_active(FALSE)
-                self.xml.get_widget("essidEntry").set_sensitive(TRUE)
+                self.xml.get_widget("essidSpecButton").set_active(True)
+                self.xml.get_widget("essidAutoButton").set_active(False)
+                self.xml.get_widget("essidEntry").set_sensitive(True)
             if wl.EssId:
                 self.xml.get_widget("essidEntry").set_text(wl.EssId)
 
@@ -133,16 +127,16 @@ class wirelessConfigDialog(deviceConfigDialog):
 
     def on_modeChanged(self, entry):
         if string.lower(entry.get_text()) == "managed":
-            self.xml.get_widget("channelSpinButton").set_sensitive(FALSE)
-            self.xml.get_widget("rateCombo").set_sensitive(FALSE)
-            self.xml.get_widget("rateEntry").set_sensitive(FALSE)
+            self.xml.get_widget("channelSpinButton").set_sensitive(False)
+            self.xml.get_widget("rateCombo").set_sensitive(False)
+            self.xml.get_widget("rateEntry").set_sensitive(False)
         else:
-            self.xml.get_widget("channelSpinButton").set_sensitive(TRUE)
-            self.xml.get_widget("rateCombo").set_sensitive(TRUE)
-            self.xml.get_widget("rateEntry").set_sensitive(TRUE)
+            self.xml.get_widget("channelSpinButton").set_sensitive(True)
+            self.xml.get_widget("rateCombo").set_sensitive(True)
+            self.xml.get_widget("rateEntry").set_sensitive(True)
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2005/03/30 13:59:01 $"
+__version__ = "$Revision: 1.28 $"

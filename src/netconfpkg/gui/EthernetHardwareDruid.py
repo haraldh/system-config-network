@@ -20,8 +20,6 @@
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg import *
 import gtk
-from gtk import TRUE
-from gtk import FALSE
 import gtk.glade
 import string
 import os
@@ -53,7 +51,7 @@ class ethernetHardware:
         self.toplevel = toplevel
         self.hardwarelist = NCHardwareList.getHardwareList()
         self.hw = None
-        self.has_ethernet = TRUE
+        self.has_ethernet = True
         self.druids = []
  
         druid = self.xml.get_widget('druid')
@@ -74,7 +72,7 @@ class ethernetHardware:
         for self.hw in self.hardwarelist:
             if self.hw.Type == ETHERNET: return
 
-        self.has_ethernet = FALSE
+        self.has_ethernet = False
         return self.druids[0:]
 
     def on_hardware_page_prepare(self, druid_page, druid):
@@ -93,8 +91,8 @@ class ethernetHardware:
         if self.hw and self.hw.Name:
             self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
-            self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
-            self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
+            self.xml.get_widget('adapterEntry').set_sensitive(False)
+            self.xml.get_widget('adapterComboBox').set_sensitive(False)
             if self.hw.Card.IRQ:
                 self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
             if self.hw.Card.Mem:
@@ -159,5 +157,5 @@ class ethernetHardware:
                 (self.hw.Description == i):
                 self.hw.Card.ModuleName = i         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.29 $"

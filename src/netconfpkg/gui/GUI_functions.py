@@ -20,9 +20,6 @@ import os
 import gtk
 import gtk.glade
 
-from gtk import TRUE
-from gtk import FALSE
-
 from netconfpkg.NC_functions import *
 from netconfpkg import NC_functions
 
@@ -184,15 +181,15 @@ def gui_longinfo_dialog (message, long_message, parent_dialog,
     buffer.set_text(str(long_message))
     textbox = gtk.TextView()
     textbox.set_buffer(buffer)
-    textbox.set_property("editable", gtk.FALSE)
-    textbox.set_property("cursor_visible", gtk.FALSE)
+    textbox.set_property("editable", False)
+    textbox.set_property("cursor_visible", False)
     sw = gtk.ScrolledWindow ()
     sw.add (textbox)
     sw.set_policy (gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-    hbox = gtk.HBox (gtk.FALSE)
+    hbox = gtk.HBox (False)
     hbox.set_border_width(5)
-    hbox.pack_start (sw, gtk.TRUE)
-    vbox.pack_start (hbox, gtk.TRUE)
+    hbox.pack_start (sw, True)
+    vbox.pack_start (hbox, True)
 
     if widget != None:
         if isinstance (widget, gtk.CList):
@@ -452,24 +449,24 @@ def gui_run_dialog(command, argv, searchPath = 0,
     if title:
         dlg.set_title(title)
     okbutton = xml.get_widget ("okbutton")
-    okbutton.set_sensitive (gtk.FALSE)
+    okbutton.set_sensitive (False)
     cancelbutton = xml.get_widget ("cancelbutton")
-    cancelbutton.set_sensitive (gtk.TRUE)
+    cancelbutton.set_sensitive (True)
     lbl.set_text(label)
-    lbl.set_line_wrap(gtk.TRUE)
+    lbl.set_line_wrap(True)
     textview = xml.get_widget ("textview")
-    textview.set_property("editable", gtk.FALSE)
+    textview.set_property("editable", False)
     textview.set_wrap_mode(gtk.WRAP_WORD)
     buffer = gtk.TextBuffer(None)
     mark = buffer.create_mark("end", buffer.get_start_iter(),
-                              left_gravity=gtk.FALSE)
+                              left_gravity=False)
     textview.set_buffer(buffer)
     if dialog:
         dlg.set_transient_for(dialog)
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
     else:
         dlg.set_position (gtk.WIN_POS_CENTER)
-    dlg.set_modal(gtk.TRUE)
+    dlg.set_modal(True)
     dlg.show_all()
     dlg.show_now()
 
@@ -572,8 +569,8 @@ def gui_run_dialog(command, argv, searchPath = 0,
         lbl.set_text(label + '\n' + _("Succeeded. Please read the output."))        
         
     if (status or len(s)) and not __dialogClosed:
-        okbutton.set_sensitive (gtk.TRUE)
-        cancelbutton.set_sensitive (gtk.FALSE)
+        okbutton.set_sensitive (True)
+        cancelbutton.set_sensitive (False)
         dlg.run()
         
     dlg.hide()
@@ -619,5 +616,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.34 $"
+__date__ = "$Date: 2005/03/30 13:59:00 $"
+__version__ = "$Revision: 1.35 $"
