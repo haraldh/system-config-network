@@ -43,8 +43,22 @@ class DeviceList(DeviceList_base):
 
         try: 
             for entry in dir:
+                if (len(entry) <= 6) or \
+                   entry[:6] != 'ifcfg-' or \
+                   (not isfile(SYSCONFDEVICEDIR + entry)):
+                    #print "skipping " + entry
+                    continue
+                
+                devid = entry[6:]
+
                 try:
-                    if(isfile(SYSCONFDEVICEDIR + entry)):
+                    found = false
+                    #print "searching for " + devid
+                    for i in xrange(len(self)):
+                        if self[i].DeviceId == devid:
+                            found = true
+                            break
+                    if not found:
                         unlink(SYSCONFDEVICEDIR + entry)
                 except OSError, msg:
                     raise IOError, 'Error removing old device. ' + str(msg)
@@ -62,5 +76,4 @@ if __name__ == '__main__':
         print "IP: " + str(dl[i].IP)
         print "OnBoot: " + str(dl[i].OnBoot)
         print "---------"
-
     dl.save()
