@@ -49,14 +49,25 @@ class Wireless(Wireless_base):
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey]
 
+        if re.search("^s:", self.Key):
+            self.Key = self.Key[2:]
+        elif re.search("^[0-9a-fA-F]+$", self.Key):
+            self.Key = "0x" + self.Key
+
     def save(self, parentConf):
         conf = parentConf
-
+            
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
+
+        if not re.search("^0x[0-9a-fA-F]+\s*$", self.Key):
+            conf["KEY"] = "s:" + self.Key
+        else:
+            conf["KEY"] = self.Key[2:]
+
 
         # Do not clear the non-filled in values
         # Bugzilla #52252
