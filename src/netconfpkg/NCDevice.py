@@ -60,7 +60,8 @@ class ConfDevice(Conf.ConfShellVar):
     def write(self):
         self.chmod(0644)
         if ((self.oldmode & 0044) != 0044):
-            if not NC_functions.generic_yesno_dialog(_("May I change\n%s\nfrom mode %o to %o?") % (self.filename, self.oldmode & 03777, 0644)):
+            ask = NC_functions.generic_yesno_dialog(_("May I change\n%s\nfrom mode %o to %o?") % (self.filename, self.oldmode & 03777, 0644))
+            if ask == 0:
                 self.chmod(self.oldmode)
         Conf.ConfShellVar.write(self)
             
