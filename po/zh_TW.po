@@ -1,3 +1,4 @@
+# Translation of zh_TW.po to Traditional Chinese
 # Translation of redhat-config-network to Traditional Chinese
 # Copyright (C) 2002, Red Hat Inc.
 # Ben Wu <hpwu@redhat.com>, 2002,2003.
@@ -6,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "POT-Creation-Date: 2003-09-12 15:41+0200\n"
-"PO-Revision-Date: 2003-07-09 09:28+1000\n"
+"PO-Revision-Date: 2003-09-16 09:25+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Traditional Chinese <i18n-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -189,11 +190,11 @@ msgstr ""
 #.
 #: src/netconf-tui.py:135
 msgid "Run anyway"
-msgstr ""
+msgstr "照樣執行"
 
 #: src/netconf-tui.py:136
 msgid "IMPORTANT"
-msgstr ""
+msgstr "重要"
 
 #: src/netconf-tui.py:137
 #, python-format
@@ -204,10 +205,13 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
+"這個工具不受支援！ 請使用圖形化工具，因為它才能提供完整的功能性。\n"
+"假如這部機器沒有安裝 X 伺服程式，請從另一部擁有 X 的機器透過 ssh 來登入，並使 "
+"用 X11 forwarding，假如您真的想要使用這個工具，請按下 <%s>。"
 
 #: src/netconf-tui.py:147
 msgid "Quit"
-msgstr ""
+msgstr "離開"
 
 #: src/netconf-tui.py:152
 msgid "What do you want to configure?"
@@ -395,9 +399,8 @@ msgid "export / import hardware list"
 msgstr "匯出/匯入硬體清單"
 
 #: src/netconf-cmd.py:110
-#, fuzzy
 msgid "export / import IPsec list"
-msgstr "匯出/匯入資料檔清單"
+msgstr "匯出/匯入 IPSec 清單"
 
 #: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
@@ -1453,9 +1456,9 @@ msgstr "編輯裝置..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:859
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "無法編輯 Loopback 裝置！"
+msgstr "無法編輯 %s 裝置類型！\n"
 
 #: src/netconfpkg/gui/maindialog.py:878
 msgid "The Loopback device can not be removed!"
@@ -2120,13 +2123,11 @@ msgstr "軟體 (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:174
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr "想要安裝您系統所需的下列套件嗎？"
 
 #: src/netconfpkg/NC_functions.py:187
-msgid ""
-"You have to install the following packages, which are needed on your system!"
+msgid "You have to install the following packages, which are needed on your system!"
 msgstr "您必須安裝系統所需的下列套件！"
 
 #. test for wireless
@@ -2450,34 +2451,32 @@ msgstr "無法停用網路裝置 %s！\n"
 #. save ipsec settings
 #.
 #: src/netconfpkg/NCIPsec.py:168
-#, fuzzy
 msgid "IPsec activating..."
-msgstr "網路裝置啟動中..."
+msgstr "IPSec 啟動中..."
 
 #: src/netconfpkg/NCIPsec.py:169
-#, fuzzy, python-format
+#, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "網路裝置 %s 啟動中，請稍後..."
+msgstr "IPSec 連線 %s 啟動中，請稍後..."
 
 #: src/netconfpkg/NCIPsec.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate IPsec connection %s!\n"
-msgstr "無法啟動網路裝置 %s！\n"
+msgstr "無法啟動 IPSec 連線 %s！\n"
 
 #: src/netconfpkg/NCIPsec.py:188
-#, fuzzy
 msgid "IPsec deactivating..."
-msgstr "網路裝置停用中..."
+msgstr "IPSec 停用中..."
 
 #: src/netconfpkg/NCIPsec.py:189
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "網路裝置 %s 停用中，請稍後..."
+msgstr "IPSec 連線 %s 停用中，請稍後..."
 
 #: src/netconfpkg/NCIPsec.py:191
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "無法停用網路裝置 %s！\n"
+msgstr "無法停用 IPSec 連線 %s！\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
@@ -2571,8 +2570,7 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -3347,8 +3345,7 @@ msgstr "相關的 T-Online 號碼(_N):"
 msgid ""
 "Please enter here your personal account data. Without this data, access to T-"
 "Online is unfortunately not posssible."
-msgstr ""
-"請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
+msgstr "請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
 
 #: src/netconfpkg/gui/tonline.glade.h:4
 msgid "_Adapter Identifier:"
@@ -3875,9 +3872,8 @@ msgstr ""
 "IPsec 連線的設定。"
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
-#, fuzzy
 msgid "_Activate connection when computer starts"
-msgstr "電腦啟動時啟用裝置(_A)"
+msgstr "電腦開機時啟用連線(_A)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption Key:"
@@ -4407,8 +4403,7 @@ msgstr ""
 "聯。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:31
@@ -4922,3 +4917,4 @@ msgstr "資訊(_I)\t"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
+
