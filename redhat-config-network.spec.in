@@ -109,6 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Fri Jun 07 2002 Than Ngo <than@redhat.com> 1.1.1-1
+- set PPPOE_TIMEOUT=80 as default, it should be about 4 times
+  the LCP_INTERVAL (bug #64903)
+
 * Wed May 29 2002 Harald Hoyer <harald@redhat.de>
 - ported to python2, gtk2, gnome2
 
