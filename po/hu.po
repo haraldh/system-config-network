@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2003-07-01 15:05+0200\n"
+"POT-Creation-Date: 2003-07-01 15:23+0200\n"
 "PO-Revision-Date: 2003-03-20 11:11+0100\n"
 "Last-Translator: Tamas Szanto <tszanto@mol.hu>\n"
 "Language-Team: Hungarian\n"
@@ -474,6 +474,7 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetInterface.py:213
 #: src/netconfpkg/gui/WirelessInterface.py:283
 #: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/editipsec.py:147
 msgid "You have selected the following information:"
 msgstr ""
 
@@ -1172,62 +1173,6 @@ msgstr "nincs"
 msgid "Modem Dialup Configuration"
 msgstr ""
 
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-#. self.dialog.connect("hide", gtk.mainquit)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.host.commit()
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-#. self.dialog.connect("hide", gtk.mainquit)
-#. self.dialog.destroy()
-#. self.main.hydrate()
-#. self.dialog.destroy()
-#. self.dialog.destroy()
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -2357,6 +2302,7 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:1
 #: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/edithosts.glade.h:1
+#: src/netconfpkg/gui/editipsec.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
 #: src/netconfpkg/gui/sharedtcpip.glade.h:1
@@ -2508,6 +2454,7 @@ msgstr ""
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
 #: src/netconfpkg/gui/cipeconfig.glade.h:10
+#: src/netconfpkg/gui/editipsec.glade.h:32
 msgid "_Generate"
 msgstr ""
 
@@ -3571,6 +3518,135 @@ msgstr "Alias-ok:"
 #: src/netconfpkg/gui/edithosts.glade.h:5
 msgid "Hostname:"
 msgstr "Gépnév:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:2
+#, fuzzy
+msgid "A_uthentication Key:"
+msgstr "_Felhasználóazonosítás:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:7
+#, fuzzy
+msgid "IPsec - Connection Type"
+msgstr "%s-kapcsolat"
+
+#: src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:10
+#, fuzzy
+msgid "IPsec - Local Network"
+msgstr "Hálózat"
+
+#: src/netconfpkg/gui/editipsec.glade.h:11
+#, fuzzy
+msgid "IPsec - Remote Network"
+msgstr "Hálózat"
+
+#: src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Summary"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec Settings"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:14
+#, fuzzy
+msgid "Local Network _Address:"
+msgstr "Hálózat"
+
+#: src/netconfpkg/gui/editipsec.glade.h:15
+#, fuzzy
+msgid "Local Network _Gateway:"
+msgstr "Hálózat"
+
+#: src/netconfpkg/gui/editipsec.glade.h:16
+#, fuzzy
+msgid "Local Subnet _Mask:"
+msgstr "Alhálózati maszk:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Manual encryption with a fixed key"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Network to Network encryption (VPN)"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Please enter your local network settings:"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter your remote network settings:"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:21
+#, fuzzy
+msgid "Please select the type of connection:"
+msgstr "Válassza ki a felvenni kívánt hardvereszköz típusát:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:22
+#, fuzzy
+msgid "Please select the type of encryption:"
+msgstr "Válassza ki a felvenni kívánt hardvereszköz típusát:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:23
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner need to have the same."
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:25
+#, fuzzy
+msgid "Remote Network _Address:"
+msgstr "Távoli peer-cím:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:26
+#, fuzzy
+msgid "Remote Network _Gateway:"
+msgstr "Hálózat"
+
+#: src/netconfpkg/gui/editipsec.glade.h:27
+#, fuzzy
+msgid "Remote Subnet _Mask:"
+msgstr "Alhálózati maszk:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:28
+#, fuzzy
+msgid "Remote _IP Address:"
+msgstr "Távoli peer-cím:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:29
+msgid ""
+"You will now be guided through the\n"
+"setup of the IPsec connetion."
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:31
+msgid "_Encryption Key:"
+msgstr ""
 
 #: src/netconfpkg/gui/ethernetconfig.glade.h:2
 msgid "Ethernet Device"
