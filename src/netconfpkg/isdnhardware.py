@@ -29,6 +29,7 @@ import string
 import gettext
 import re
 
+from NCisdnhardware import *
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -64,6 +65,7 @@ class isdnHardwareDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
+        self.updateDialog()
         self.dialog.show()
 
     def load_icon(self, pixmap_file, widget = None):
@@ -94,14 +96,45 @@ class isdnHardwareDialog:
         self.dialog.destroy()
 
     def on_isdnCardEntry_changed(self, entry):
-        pass
+        cardname = entry.get_text()
+        card = ISDNResource(cardname)
+        if (card.get_irq()):
+            self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
+            self.xml.get_widget("irqSpinButton").set_value(string.atoi(card.get_irq()))
+        else:
+            self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
 
+        if (card.get_mem()):
+            self.xml.get_widget("memEntry").set_sensitive(TRUE)
+            self.xml.get_widget("memEntry").set_text(card.get_mem())
+        else:
+            self.xml.get_widget("memEntry").set_sensitive(FALSE)
+
+        if (card.get_io()):
+            self.xml.get_widget("ioEntry").set_sensitive(TRUE)
+            self.xml.get_widget("ioEntry").set_text(card.get_io())
+        else:
+            self.xml.get_widget("ioEntry").set_sensitive(FALSE)
+
+        if (card.get_io1()):
+            self.xml.get_widget("io1Entry").set_sensitive(TRUE)
+            self.xml.get_widget("io1Entry").set_text(card.get_io1())
+        else:
+            self.xml.get_widget("io1Entry").set_sensitive(FALSE)
+
+        if (card.get_io2()):
+            self.xml.get_widget("io2Entry").set_sensitive(TRUE)
+            self.xml.get_widget("io2Entry").set_text(card.get_io2())
+        else:
+            self.xml.get_widget("io2Entry").set_sensitive(FALSE)
+            
     def updateDialog(self):
-        pass
+        cardlist = card.keys()
+        cardlist.sort()
+        self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = isdnHardwareDialog()
     gtk.mainloop()
-

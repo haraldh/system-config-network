@@ -100,9 +100,6 @@ class ethernetHardwareDialog:
     def on_cancelButton_clicked(self, button):
         self.dialog.destroy()
 
-    def updateDialog(self):
-        pass
-
     def on_adapterEntry_changed(self, entry):
         pass
 

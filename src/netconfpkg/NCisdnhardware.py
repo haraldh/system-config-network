@@ -75,8 +75,8 @@ card = {
     "USR Sportster intern" : [ "16", "9", "0xd80", "", "", "", "", "", "hisax" ],
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "10506692", "", "hisax" ]
     }
-    
-    
+
+
 class ISDNResource:
     def __init__(self, name):
         self.name = name
