@@ -47,7 +47,7 @@ class ConfSMBSubDict(UserDict):
             raise Exception, "Unvalid stanza " + self.stanza        
             
         if self.conf.find_entry_in_current_stanza(varname):
-            self.deleteline()
+            self.conf.deleteline()
         else:
             raise Exception, "Unvalid entry " + varname + " in stanza " + self.stanza
         
