@@ -52,8 +52,10 @@ PYTHON_FILES = \
 	NCHardwareList.py \
 	NCisdnhardware.py \
 	NCProfileList.py \
+	NCWireless.py \
 	providerdb.py \
 	provider.py \
+	wirelessconfig.py \
 	tcpdialog.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
