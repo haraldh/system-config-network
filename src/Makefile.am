@@ -4,6 +4,8 @@ PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py version.
 
 EXTRA_DIST = $(PYTHON_FILES) providerdb module-info
 
+CLEANFILES := version.pyc $(notdir $(wildcard netconf_cmd.py*)) $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
+
 execdir = $(sbindir)
 
 
@@ -13,8 +15,10 @@ all-local: version.py
 	rm -f system-config-network-tui
 	rm -f system-config-network-druid
 	rm -f  system-control-network
+	rm -f netconf_cmd.py
 	ln -s $(srcdir)/netconf.py system-config-network-gui
 	ln -s $(srcdir)/netconf-cmd.py system-config-network-cmd
+	ln -s $(srcdir)/netconf-cmd.py netconf_cmd.py
 	ln -s $(srcdir)/netconf.py system-config-network-druid
 	ln -s $(srcdir)/netconf-tui.py system-config-network-tui
 	ln -s $(srcdir)/neat-control.py system-control-network
@@ -73,5 +77,3 @@ docs:
 pycheck:
 	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
 
-clean:
-	rm -f *.pyo *.pyc *~ *\#
