@@ -698,11 +698,19 @@ class mainDialog:
         dlg.set_border_width(10)
         dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
         dlg.vbox.show()
-        dlg.set_position (gtk.WIN_POS_MOUSE)
+        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
         dlg.show_all()
-        idle_func()
-        os.waitpid(child, 0)
+        import time
+        while (1):
+            while gtk.events_pending():
+                gtk.mainiteration()
+            pid, waitstat = os.waitpid(child, os.WNOHANG)
+            if (pid != 0):
+                break
+            else:
+                time.sleep(0.1)
+                
         dlg.destroy()
 
         if NetworkDevice().find(device):
