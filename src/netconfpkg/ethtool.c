@@ -59,6 +59,8 @@ get_active_devices (PyObject * self, PyObject * args)
     ifr++;
   }
 
+  close(skfd);
+
   return list;
 }
 
@@ -106,6 +108,7 @@ get_devices (PyObject * self, PyObject * args)
     ifr++;
   }
 
+  close(skfd);
   return list;
 }
 
