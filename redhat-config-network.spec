@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
 Version: 0.2.2
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -35,6 +35,9 @@ rm -rf $RPM_BUILD_ROOT
 /usr/sbin/*
 
 %changelog
+* Thu Jul 10 2001 Phil Knirsch <phil@redhat.de> 0.2.2-2
+- Added some missing files.
+
 * Tue Jul 10 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - 0.2.2
 
@@ -49,6 +52,3 @@ rm -rf $RPM_BUILD_ROOT
 * Fri Jul 06 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - Require a recent version of initscripts
 - Initial build. Don't obsolete older tools just yet...
-
-
-

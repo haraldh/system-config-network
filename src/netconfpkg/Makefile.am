@@ -41,12 +41,14 @@ PYTHON_FILES = \
 	modemconfig.py \
 	providerdb.py \
 	provider.py \
-   NCDeviceList.py \
-   NCDevice.py \
-   NCDialup.py \
-   NCCallback.py \
-	NCHardwareList.py \
+	NCCallback.py \
+	NCCompression.py \
+	NCDeviceList.py \
+	NCDevice.py \
+	NCDialup.py \
 	NC_functions.py \
+	NCHardwareList.py \
+	NCProfileList.py \
 	NCisdnhardware.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)

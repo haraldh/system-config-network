@@ -27,6 +27,7 @@ class DslDialup(Dialup):
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
                 'EthDevice' : 'ETH',
+                'SlaveDevice' : 'SLAVEDEVICE',
                 'ServiceName' : 'SERVICENAME',
                 'AcName' : 'ACNAME',
                 }

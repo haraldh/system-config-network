@@ -92,14 +92,14 @@ class editAdressDialog:
             self.dialog.set_icon(pix, mask)
             
     def on_Dialog_delete_event(self, *args):
-        pass
+        self.route.rollback()
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
         self.route.commit()
         
     def on_cancelButton_clicked(self, button):
-        pass
+        self.route.rollback()
         
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):

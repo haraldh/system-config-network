@@ -199,7 +199,6 @@ class basicDialog:
             cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-            self.device.Type = 'ISDN'
             self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "Modem":
             self.device.Type = 'Modem'
@@ -251,16 +250,8 @@ class basicDialog:
         self.xml.get_widget("networkRouteFrame").set_sensitive(check["active"] != TRUE)
 
     def on_routeAddButton_clicked(self, button):
-        devicelist = getDeviceList()
-
-        curr_dev = devicelist[self.xml_main.get_widget('deviceList').selection[0]]
-        if not curr_dev.StaticRoutes:
-            curr_dev.createStaticRoutes()
-        routes = curr_dev.StaticRoutes
-
+        routes = self.device.StaticRoutes
         route = Route()
-
-        clist  = self.xml.get_widget("List")
         dialog = editAdressDialog(route, self.xml)
         dl = dialog.xml.get_widget ("Dialog")
         button = dl.run ()
@@ -271,10 +262,34 @@ class basicDialog:
         self.hydrate()
 
     def on_routeEditButton_clicked(self, button):
-        editAdressDialog(self.xml_main, self.xml, list)
+        routes = self.device.StaticRoutes
+        clist  = self.xml.get_widget("networkRouteList")
+
+        if len(clist.selection) == 0:
+            return
+
+        route = routes[clist.selection[0]]
+
+        dialog = editAdressDialog(route, self.xml)
+        dl = dialog.xml.get_widget ("Dialog")
+        dl.run ()
+        self.hydrate()
 
     def on_routeDeleteButton_clicked(self, button):
-        pass
+        devicelist = getDeviceList()
+
+        curr_dev = devicelist[self.xml_main.get_widget('deviceList').selection[0]]      
+        if not curr_dev.StaticRoutes:
+            curr_dev.createStaticRoutes()
+        routes = curr_dev.StaticRoutes
+    
+        clist  = self.xml.get_widget("networkRouteList")
+      
+        if len(clist.selection) == 0:
+            return
+
+        del routes[clist.selection[0]]
+        self.hydrate()
 
 # make ctrl-C work
 if __name__ == "__main__":

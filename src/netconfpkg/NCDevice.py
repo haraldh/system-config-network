@@ -155,15 +155,24 @@ class Device(Device_base):
             dialup.load(conf)
 
         num = len(rconf.keys())
+        self.createStaticRoutes()
+
         if math.fmod(num, 3) != 0:
             print "Static routes file for "+name+" has not vaild format"
-
+        else:
+            for p in xrange(0, num/3):
+                i = self.StaticRoutes.addRoute()
+                route = self.StaticRoutes[i]
+                route.Address = rconf['ADDRESS'+str(p)]
+                route.Netmask = rconf['NETMASK'+str(p)]
+                route.Gateway = rconf['GATEWAY'+str(p)]
         self.commit()
                 
     def save(self):
         self.commit()
 
         conf = ConfDevice(self.DeviceId)
+        rconf = ConfRoute(self.DeviceId)
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
@@ -183,5 +192,13 @@ class Device(Device_base):
                     
         if self.Dialup:
             self.Dialup.save(conf)
-            
+ 
+        p = 0
+        for route in self.StaticRoutes:
+            rconf['ADDRESS'+str(p)] = route.Address
+            rconf['NETMASK'+str(p)] = route.Netmask
+            rconf['GATEWAY'+str(p)] = route.Gateway
+            p = p + 1
+
         conf.write()
+        rconf.write()

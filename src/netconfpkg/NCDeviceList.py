@@ -69,13 +69,20 @@ class DeviceList(DeviceList_base):
         finally:
             pppnum = 0
             ipppnum = 0
+            isdnnum = 0
             for dev in self:
-                if dev.Type == "Modem":
+                if dev.Type == "Modem" or dev.Type == 'xDSL':
                     dev.Device = "ppp"+str(pppnum)
                     pppnum = pppnum + 1
                 if dev.Type == "ISDN":
-                    dev.Device = "ippp"+str(ipppnum)
-                    ipppnum = ipppnum + 1
+                    if dev.Dialup.EncapMode == 'syncppp':
+                        dev.Device = "ippp"+str(ipppnum)
+                        if dev.Dialup.ChannelBundling == TRUE:
+                            ipppnum = ipppnum + 1
+                        ipppnum = ipppnum + 1
+                    else:
+                        dev.Device = "isdn"+str(isdnnum)
+                        isdnnum = isdnnum + 1
                 dev.save()
 
         self.commit()
