@@ -43,6 +43,7 @@ class TokenRingInterface(InterfaceCreator):
         self.device.Type = connection_type
         self.device.OnBoot = TRUE
         self.device.AllowUser = FALSE
+        self.device.IPv6Init = FALSE
 
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
@@ -244,5 +245,5 @@ class TokenRingInterface(InterfaceCreator):
 
 NCDevTokenRing.setDevTokenRingWizard(TokenRingInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.22 $"

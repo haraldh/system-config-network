@@ -89,6 +89,7 @@ class EthernetInterface(InterfaceCreator):
         self.device.Type = self.connection_type
         self.device.OnBoot = TRUE
         self.device.AllowUser = FALSE
+        self.device.IPv6Init = FALSE
         self.profilelist = NCProfileList.getProfileList()
 
         self.hw_sel = 0
@@ -255,5 +256,5 @@ class EthernetInterface(InterfaceCreator):
 
 NCDevEthernet.setDevEthernetWizard(EthernetInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.34 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.35 $"

@@ -43,6 +43,7 @@ class WirelessInterface(InterfaceCreator):
         self.device.Type = connection_type
         self.device.OnBoot = FALSE
         self.device.AllowUser = FALSE
+        self.device.IPv6Init = FALSE
 
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
@@ -336,5 +337,5 @@ class WirelessInterface(InterfaceCreator):
 
 NCDevWireless.setDevWirelessWizard(WirelessInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:33:50 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.28 $"

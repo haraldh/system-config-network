@@ -86,6 +86,7 @@ class CipeInterface(InterfaceCreator):
         self.profilelist = NCProfileList.getProfileList()
         self.device.OnBoot = FALSE
         self.device.AllowUser = FALSE
+        self.device.IPv6Init = FALSE
         
         druid = self.xml.get_widget ('druid')
         for I in druid.get_children():
@@ -331,5 +332,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:20:31 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.29 $"

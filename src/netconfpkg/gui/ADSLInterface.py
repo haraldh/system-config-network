@@ -215,6 +215,7 @@ class ADSLInterface(InterfaceCreator):
         self.device.Type = 'xDSL'
         self.device.BootProto = 'dialup'
         self.device.AllowUser = TRUE
+        self.device.IPv6Init = FALSE
         self.device.AutoDNS = TRUE
         dialup = self.device.createDialup()
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
@@ -231,5 +232,5 @@ class ADSLInterface(InterfaceCreator):
 
 NCDevADSL.setDevADSLWizard(ADSLInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.26 $"

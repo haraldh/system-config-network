@@ -83,6 +83,7 @@ class PTPInterface(EthernetInterface):
         self.device.Type = self.connection_type
         self.device.OnBoot = TRUE
         self.device.AllowUser = FALSE
+        self.device.IPv6Init = FALSE
         self.profilelist = NCProfileList.getProfileList()
 
         self.hw_sel = 0

@@ -87,6 +87,7 @@ class Device(Device_base):
     boolkeydict = { 'OnBoot' : 'ONBOOT',
                     'AllowUser' : 'USERCTL',
                     'AutoDNS' : 'PEERDNS',
+                    'IPv6Init' : 'IPV6INIT',
                     }
         
     def __init__(self, list = None, parent = None):
@@ -444,5 +445,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.96 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.97 $"

@@ -68,6 +68,7 @@ class GenericInterface(InterfaceCreator):
         self.device.Type = type
         self.device.OnBoot = FALSE
         self.device.AllowUser = FALSE
+        self.device.IPv6Init = FALSE
 
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
@@ -162,5 +163,5 @@ class GenericInterface(InterfaceCreator):
         
         gtk.mainquit()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.17 $"

@@ -46,6 +46,7 @@ class DevEthernet(Device):
    HardwareAddress - HWADDR=<MAC Address>
    OnBoot          - ONBOOT=yes|no
    AllowUser       - USERCTL=yes|no
+   IPv6Init        - IPV6INIT=yes|no
    AutoDNS         - PEERDNS=yes|no - modify /etc/resolv.conf if peer uses
                      msdns extension (PPP only) or DNS{1,2} are set, or if
                      using pump or dhcpcd. default to "yes"."""
@@ -85,5 +86,5 @@ _df.register(DevEthernet, ETHERNET)
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2004/01/29 14:42:58 $"
+__version__ = "$Revision: 1.7 $"

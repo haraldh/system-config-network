@@ -157,12 +157,14 @@ class deviceConfigDialog:
                 
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == TRUE)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == TRUE)
+            self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == TRUE)
 
 
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
+        self.device.IPv6Init = self.xml.get_widget('ipv6InitCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/14 09:31:58 $"
-__version__ = "$Revision: 1.18 $"
+__date__ = "$Date: 2004/01/29 14:42:57 $"
+__version__ = "$Revision: 1.19 $"
