@@ -143,8 +143,8 @@ class mainDialog:
     def loadDevices(self):
         devices = filter(lambda x: x[:6] == 'ifcfg-', os.listdir("/etc/sysconfig/networking/devices/"))
         clist = self.xml.get_widget("deviceList")
-	act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "active.xpm")
-	inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "inactive.xpm")
+	act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
+	inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
 
         nwconf = Conf.ConfShellVar("/etc/sysconfig/network")
 
