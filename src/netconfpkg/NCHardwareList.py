@@ -167,6 +167,8 @@ class HardwareList(HardwareList_base):
                 for selfkey in self.keydict.keys():
                     confkey = self.keydict[selfkey]
                     if hw.Card.__dict__[selfkey]:
+                        if selfkey == 'IRQ' and hw.Card.IRQ == 'Unknown':
+                            continue
                         modules[hw.Name]['options'][confkey] = str(hw.Card.__dict__[selfkey])
             if hw.Type == 'Modem':
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName

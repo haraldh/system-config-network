@@ -64,6 +64,7 @@ class Device(DeviceList.Device_base):
                 'Domain' : 'DOMAIN',
                 'BootProto' : 'BOOTPROTO',
                 'Type' : 'TYPE',
+                'HardwareAddress' : 'HWADDR',
                 }
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
@@ -93,7 +94,10 @@ class Device(DeviceList.Device_base):
         self.setHostname(other.getHostname())
         self.setDomain(other.getDomain())
         self.setAutoDNS(other.getAutoDNS())
+        self.setHardwareAddress(other.getHardwareAddress())
         self.createStaticRoutes().apply(other.getStaticRoutes())
+        self.createCipe().apply(other.getCipe())
+        self.createWireless().apply(other.getWireless())
         if self.createDialup():
             self.Dialup.apply(other.getDialup())
 
