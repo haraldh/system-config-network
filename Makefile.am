@@ -7,7 +7,7 @@ EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
 	neat-control.desktop.in pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
 	ChangeLog system-config-network-cmd.console \
-	system-config-network.sh 
+	system-config-network.sh TODO
 
 iconsdir=$(pkgdatadir)
 
