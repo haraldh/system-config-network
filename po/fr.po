@@ -13,6 +13,11 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: ../src/netconf-tui.py:160
+#, fuzzy
+msgid "Default gateway IP"
+msgstr "Adresse de la _passerelle par défaut :"
+
 #: ../src/glade-strings.c:467
 msgid "Gateway"
 msgstr "Passerelle"
@@ -53,6 +58,11 @@ msgstr "_Adaptateur :"
 msgid "_Hangup Timeout:"
 msgstr "_Suspendre la temporisation :"
 
+#: ../src/netconf-tui.py:378
+#, fuzzy
+msgid "ISDN Configuration"
+msgstr "Configuration xDSL"
+
 #: ../src/glade-strings.c:808
 msgid "Software (XON/XOFF)"
 msgstr "Logiciel (XON/XOFF)"
@@ -64,6 +74,11 @@ msgstr "Entrer le mot de passe pour ce compte."
 #: ../src/glade-strings.c:461
 msgid "Eu_ro ISDN (EDSS1)"
 msgstr "Eu_ro RNIS (EDSS1)"
+
+#: ../src/netconf-tui.py:157
+#, fuzzy
+msgid "Use DHCP"
+msgstr "DHCP"
 
 #: ../src/glade-strings.c:1119
 msgid "_auto"
@@ -81,7 +96,8 @@ msgstr "Volume du _modem"
 msgid "Enter the login name for this account."
 msgstr "Entrez le nom de connexion pour ce compte."
 
-#: ../src/glade-strings.c:636
+#: ../src/glade-strings.c:636 ../src/netconf-tui.py:155
+#: ../src/netconf-tui.py:262 ../src/netconf-tui.py:365
 msgid "Name"
 msgstr "Nom"
 
@@ -97,7 +113,7 @@ msgstr "9600"
 msgid "Hardware Device"
 msgstr "Périphérique matériel"
 
-#: ../src/netconf.py:480
+#: ../src/netconf.py:481
 msgid "The Loopback device can not be edited!"
 msgstr "Le périphérique de retour de boucle ne peut pas être modifié !"
 
@@ -149,12 +165,12 @@ msgstr "Périphérique _matériel :"
 msgid "Enable _Protocol Field Compression"
 msgstr "Activer la compression de champ de _protocole"
 
-#: ../src/netconfpkg/gui/exception.py:161
+#: ../src/netconfpkg/gui/exception.py:160
 #, fuzzy
 msgid "Select a file:"
 msgstr "Sélectionner fournisseur Internet"
 
-#: ../src/netconf.py:994
+#: ../src/netconf.py:1034
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Le profil par \"défaut\" ne peut pas être supprimé !"
 
@@ -172,6 +188,10 @@ msgstr ""
 msgid "chap"
 msgstr "chap"
 
+#: ../src/netconf-tui.py:370
+msgid "MSN"
+msgstr ""
+
 #: ../src/netconfpkg/gui/ModemInterface.py:68
 msgid "Modem connection"
 msgstr "Connexion du modem"
@@ -188,11 +208,12 @@ msgstr "N'_authorise qu'après la numérotation"
 msgid "Choose Hardware Type"
 msgstr "Choisir le type de matériel"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:106
+#: ../src/netconfpkg/gui/DialupDruid.py:107
 msgid "Hardware:"
 msgstr "Matériel :"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:58
+#: ../src/netconf-tui.py:168 ../src/netconf-tui.py:274
+#: ../src/netconf-tui.py:377 ../src/netconfpkg/gui/GUI_functions.py:67
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -297,7 +318,8 @@ msgstr "Surnom"
 msgid "Choose a Provider"
 msgstr "Choisir un fournisseur"
 
-#: ../src/glade-strings.c:323
+#: ../src/glade-strings.c:323 ../src/netconf-tui.py:156
+#: ../src/netconf-tui.py:263 ../src/netconf-tui.py:366
 msgid "Device"
 msgstr "Périphérique"
 
@@ -327,7 +349,7 @@ msgstr ""
 msgid "Dialup Configuration"
 msgstr "Configuration de la numérotation"
 
-#: ../src/netconfpkg/gui/exception.py:198
+#: ../src/netconfpkg/gui/exception.py:197
 msgid "Please specify a file to save the dump"
 msgstr ""
 
@@ -339,7 +361,7 @@ msgstr "Fré_quence :"
 msgid "Modem Properties"
 msgstr "Propriétés du modem"
 
-#: ../src/netconf.py:894 ../src/netconf.py:962
+#: ../src/netconf.py:929 ../src/netconf.py:1000
 msgid "The name may only contain letters and digits!"
 msgstr "Le nom ne peut contenir que des lettres et des chiffres !"
 
@@ -387,7 +409,7 @@ msgstr "Activer la compression d'en-tête _VJ TCP/IP"
 msgid "Dial _Mode:"
 msgstr "_Mode de numérotation :"
 
-#: ../src/netconf.py:903 ../src/netconf.py:975
+#: ../src/netconf.py:938 ../src/netconf.py:1013
 msgid "The profile name already exists!"
 msgstr "Le nom de profil existe déjà !"
 
@@ -403,8 +425,8 @@ msgstr "Nom d'hôte"
 msgid "TCP/IP"
 msgstr "TCP/IP"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:58
-#: ../src/netconfpkg/gui/GUI_functions.py:75
+#: ../src/netconfpkg/gui/GUI_functions.py:67
+#: ../src/netconfpkg/gui/GUI_functions.py:84
 msgid "No"
 msgstr "Non"
 
@@ -413,7 +435,7 @@ msgid "Enter the area code needed to reach your internet provider."
 msgstr ""
 "Entrez le code de zone pour atteindre votre fournisseur d'accès à Internet."
 
-#: ../src/netconf.py:957
+#: ../src/netconf.py:992
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
@@ -459,7 +481,7 @@ msgstr "Configuration de votre partenaire distant"
 msgid "_PPP Option:"
 msgstr "Option _PPP :"
 
-#: ../src/netconf.py:997
+#: ../src/netconf.py:1037
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Voulez-vous réellement effacer le profil \"%s\"?"
 
@@ -525,7 +547,7 @@ msgid "_Nickname: "
 msgstr "_Surnom :"
 
 #: ../src/netconfpkg/gui/ADSLInterface.py:115
-#: ../src/netconfpkg/gui/DialupDruid.py:107
+#: ../src/netconfpkg/gui/DialupDruid.py:108
 msgid "Provider Name:"
 msgstr "Nom du fournisseur"
 
@@ -545,6 +567,11 @@ msgstr "460800"
 msgid "dhcp"
 msgstr "dhcp"
 
+#: ../src/netconf-tui.py:266 ../src/netconf-tui.py:369
+#, fuzzy
+msgid "ISP Password"
+msgstr "Mot de _passe"
+
 #: ../src/glade-strings.c:171
 msgid "7"
 msgstr "7"
@@ -554,13 +581,14 @@ msgid "Enable VJ Connection-_ID Compression"
 msgstr "Activer la connexion VJ-compression _ID"
 
 #: ../src/netconfpkg/gui/ADSLInterface.py:117
-#: ../src/netconfpkg/gui/DialupDruid.py:110
+#: ../src/netconfpkg/gui/DialupDruid.py:111
 msgid "Press \"Finish\" to create this account"
 msgstr "Appuyer sur \"Fin\" pour créer ce compte"
 
-#: ../src/glade-strings.c:132
-msgid "38400"
-msgstr "38400"
+#: ../src/netconf-tui.py:38
+#, fuzzy
+msgid "What do you want to configure?"
+msgstr "Voulez-vous sauvegarder vos modifications ?"
 
 #: ../src/glade-strings.c:350
 msgid "Domain Name:"
@@ -570,7 +598,7 @@ msgstr "Nom de domaine :"
 msgid "New Interface"
 msgstr "Nuova interfaccia"
 
-#: ../src/netconfpkg/gui/exception.py:211
+#: ../src/netconfpkg/gui/exception.py:210
 msgid "Failed to write to file %s."
 msgstr ""
 
@@ -578,7 +606,7 @@ msgstr ""
 msgid "Medium"
 msgstr "Moyen"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:109
+#: ../src/netconfpkg/gui/DialupDruid.py:110
 msgid "Phone Number:"
 msgstr "Numéro de téléphone :"
 
@@ -619,7 +647,7 @@ msgid "_Device:"
 msgstr "_Périphérique :"
 
 #: ../src/netconfpkg/gui/ADSLInterface.py:113
-#: ../src/netconfpkg/gui/DialupDruid.py:105
+#: ../src/netconfpkg/gui/DialupDruid.py:106
 msgid "You have selected the following information:"
 msgstr "Vous avez sélectionné les informations suivantes :"
 
@@ -640,7 +668,7 @@ msgstr ""
 "demande. Si vous ne le connaissez pas, veuillez contacter votre fournisseur "
 "d'accès à Internet. Dans la plupart des cas, vous pouvez ne pas l'insérer."
 
-#: ../src/netconf.py:954
+#: ../src/netconf.py:989
 msgid "The \"default\" profile can't be renamed!"
 msgstr "Le profil par \"défaut\" ne peut pas être renommé !"
 
@@ -672,15 +700,25 @@ msgstr "Services"
 msgid "Lo_cal Virtual Address:"
 msgstr "Adresse virtuelle lo_cale :"
 
+#: ../src/netconf-tui.py:170
+#, fuzzy
+msgid "Ethernet Configuration"
+msgstr "Configuration de CIPE"
+
 #: ../src/glade-strings.c:1089
 msgid "_Service-Name:"
 msgstr "_Nom de service :"
+
+#: ../src/netconf-tui.py:264 ../src/netconf-tui.py:367
+#, fuzzy
+msgid "ISP Phonenumber"
+msgstr "Numéro de téléphone"
 
 #: ../src/glade-strings.c:1096
 msgid "_Tertiary DNS:"
 msgstr "DNS _ternaire :"
 
-#: ../src/netconf.py:1092
+#: ../src/netconf.py:1157
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Voulez-vous réellement effacer \"%s\"?"
 
@@ -719,6 +757,11 @@ msgstr "2M"
 #: ../src/netconfpkg/gui/IsdnInterface.py:70
 msgid "ISDN connection"
 msgstr "Connexion RNIS"
+
+#: ../src/netconf-tui.py:168 ../src/netconf-tui.py:274
+#: ../src/netconf-tui.py:377
+msgid "Ok"
+msgstr ""
 
 #: ../src/glade-strings.c:877
 msgid "_AC-Name:"
@@ -768,7 +811,7 @@ msgstr "Configuration xDSL"
 msgid "Very High"
 msgstr "Très haut"
 
-#: ../src/netconfpkg/gui/exception.py:188
+#: ../src/netconfpkg/gui/exception.py:187
 msgid "Exception Occurred"
 msgstr ""
 
@@ -830,7 +873,7 @@ msgstr "Sélectionner type de périphérique"
 msgid "Modem"
 msgstr "Modem"
 
-#: ../src/netconf.py:573
+#: ../src/netconf.py:579
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Voulez-vous réellement effacer le périphérique \"%s\"?"
 
@@ -841,6 +884,10 @@ msgstr "Choisir le type de périphérique matériel"
 #: ../src/glade-strings.c:479
 msgid "Ha_rdware Address:"
 msgstr "Adresse ma_tériel :"
+
+#: ../src/netconf-tui.py:265 ../src/netconf-tui.py:368
+msgid "ISP Login"
+msgstr ""
 
 #: ../src/glade-strings.c:1280
 msgid "window1"
@@ -902,6 +949,10 @@ msgstr "pap"
 msgid "Select the ethernet device connected to the DSL modem."
 msgstr "Sélectionner le périphérique ethernet connecté au modem DSL."
 
+#: ../src/netconf-tui.py:158
+msgid "Static IP"
+msgstr ""
+
 #: ../src/glade-strings.c:1036
 msgid "_Mode:"
 msgstr "_Mode :"
@@ -927,16 +978,16 @@ msgstr ""
 msgid "CTC Configuration"
 msgstr "Configuration de CIPE"
 
-#: ../src/netconf.py:898 ../src/netconf.py:966
+#: ../src/netconf.py:933 ../src/netconf.py:1004
 msgid "The profile can't be named \"default\"!"
 msgstr "Le profil ne peut pas être appelé \"défaut\"!"
 
 #: ../src/netconfpkg/gui/ADSLInterface.py:116
-#: ../src/netconfpkg/gui/DialupDruid.py:108
+#: ../src/netconfpkg/gui/DialupDruid.py:109
 msgid "Login Name:"
 msgstr "Nom de connexion :"
 
-#: ../src/netconf.py:570
+#: ../src/netconf.py:576
 msgid "The Loopback device can not be removed!"
 msgstr "Le périphérique de retour de boucle ne peut pas être supprimé !"
 
@@ -1117,7 +1168,7 @@ msgstr "Modem0"
 msgid "_Login Name:"
 msgstr "_Nom de connexion :"
 
-#: ../src/netconfpkg/gui/exception.py:41
+#: ../src/netconfpkg/gui/exception.py:40
 msgid ""
 "Please visit http://bugzilla.redhat.com/bugzilla/ !\n"
 "File a bug against component redhat-config-network. Thank you!\n"
@@ -1175,6 +1226,10 @@ msgstr "_Nouveau..."
 msgid "Low"
 msgstr "Bas"
 
+#: ../src/netconf-tui.py:39
+msgid "Exit"
+msgstr ""
+
 #: ../src/glade-strings.c:307
 msgid "DNS Search Path"
 msgstr "Chemin de recherche DNS"
@@ -1199,10 +1254,15 @@ msgstr "Matériel (CRTSCTS)"
 msgid "tr0"
 msgstr "tr0"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:58
-#: ../src/netconfpkg/gui/GUI_functions.py:75
+#: ../src/netconfpkg/gui/GUI_functions.py:67
+#: ../src/netconfpkg/gui/GUI_functions.py:84
 msgid "Yes"
 msgstr "Oui"
+
+#: ../src/netconf-tui.py:267
+#, fuzzy
+msgid "Modem Initstring"
+msgstr "Chaîne d'_initialiastion du modem :"
 
 #: ../src/netconfpkg/gui/ModemInterface.py:71
 msgid ""
@@ -1264,7 +1324,7 @@ msgstr "Liste des options PPP"
 msgid "230400"
 msgstr "230400"
 
-#: ../src/glade-strings.c:643
+#: ../src/glade-strings.c:643 ../src/netconf-tui.py:44
 msgid "Network Configuration"
 msgstr "Configuration de réseau"
 
@@ -1272,7 +1332,7 @@ msgstr "Configuration de réseau"
 msgid "_Secret Key:"
 msgstr "Clé _secrète :"
 
-#: ../src/netconf.py:385 ../src/netconf.py:398
+#: ../src/netconf.py:384 ../src/netconf.py:397
 msgid "Do you want to save your changes?"
 msgstr "Voulez-vous sauvegarder vos modifications ?"
 
@@ -1300,6 +1360,10 @@ msgstr "Adresse de la _passerelle par défaut :"
 msgid "Advanced"
 msgstr "Avancé"
 
+#: ../src/glade-strings.c:132
+msgid "38400"
+msgstr "38400"
+
 #: ../src/glade-strings.c:555
 msgid "Internet Provider"
 msgstr "Fournisseur Internet"
@@ -1324,7 +1388,7 @@ msgstr "Editer le nom de domaine"
 msgid "dialup"
 msgstr "numérotation"
 
-#: ../src/netconfpkg/gui/exception.py:215
+#: ../src/netconfpkg/gui/exception.py:214
 msgid ""
 "The application's state has been successfully\n"
 "written to the file '%s'."
@@ -1415,7 +1479,7 @@ msgstr "Editer..."
 msgid "_Generate"
 msgstr "_Générer"
 
-#: ../src/netconf.py:887
+#: ../src/netconf.py:920
 msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
@@ -1523,7 +1587,12 @@ msgstr "IP brut"
 msgid "Traffic"
 msgstr "trafic"
 
-#: ../src/glade-strings.c:606
+#: ../src/netconf-tui.py:159
+#, fuzzy
+msgid "Netmask"
+msgstr "Préfixe (Netmask)"
+
+#: ../src/glade-strings.c:606 ../src/netconf-tui.py:275
 msgid "Modem Configuration"
 msgstr "Configuration du modem"
 
@@ -1535,7 +1604,7 @@ msgstr "Supprim_er"
 msgid "Ethernet Device:"
 msgstr "Périphérique Ethernet :"
 
-#: ../src/netconfpkg/gui/exception.py:51
+#: ../src/netconfpkg/gui/exception.py:50
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please copy "
 "the full text of this exception or save the crash dump to a file then file a "
@@ -1555,6 +1624,11 @@ msgstr "Type de matériel :"
 msgid "Select Ethernet Adapter"
 msgstr "Sélectionner l'adaptateur Ethernet"
 
+#: ../src/netconf-tui.py:39
+#, fuzzy
+msgid "Configure"
+msgstr "Configuration de CIPE"
+
 #: ../src/glade-strings.c:47
 msgid "00:00:00:00:00:00"
 msgstr "00:00:00:00:00:00"
@@ -1563,7 +1637,7 @@ msgstr "00:00:00:00:00:00"
 msgid "ISDN"
 msgstr "RNIS"
 
-#: ../src/netconf.py:549
+#: ../src/netconf.py:555
 msgid "This device can not be edited with this tool!"
 msgstr "Ce dispositif ne peut pas être modifié à l'aide de cet outil !"
 
@@ -1663,9 +1737,6 @@ msgstr "Modem générique"
 
 #~ msgid "Delete..."
 #~ msgstr "Effacer..."
-
-#~ msgid "DHCP"
-#~ msgstr "DHCP"
 
 #~ msgid "Tertiary DNS:"
 #~ msgstr "DNS ternaire :"
