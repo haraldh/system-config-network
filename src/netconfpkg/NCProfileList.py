@@ -10,7 +10,7 @@ class ProfileList(ProfileList_base):
         ProfileList_base.__init__(self, list, parent)        
 
     def load(self):
-        nwconf = Conf.ConfShellVar("/etc/sysconfig/network")
+        nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
         try:
@@ -20,6 +20,7 @@ class ProfileList(ProfileList_base):
 
         proflist = os.listdir(SYSCONFPROFILEDIR)
         for pr in proflist:
+            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + pr + '/network')
 	    i = self.addProfile()
             prof = self.data[i]
             prof.createActiveDevices()
@@ -46,9 +47,12 @@ class ProfileList(ProfileList_base):
                 prof.HostsList.append(host)
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
             dnsconf.read()
-            prof.DNS.PrimaryDNS = ''
+            prof.DNS.Hostname     = nwconf['HOSTNAME']
+            if len(dnsconf['domain']) > 0:
+                prof.DNS.Domainname   = dnsconf['domain'][0]
+            prof.DNS.PrimaryDNS   = ''
             prof.DNS.SecondaryDNS = ''
-            prof.DNS.TernaryDNS = ''
+            prof.DNS.TernaryDNS   = ''
             if dnsconf.has_key('nameservers'):
                 prof.DNS.PrimaryDNS = dnsconf['nameservers'][0]
                 if len(dnsconf['nameservers']) > 1:
