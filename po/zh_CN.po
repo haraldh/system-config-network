@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-01 17:43+0100\n"
+"POT-Creation-Date: 2003-12-03 11:07+0100\n"
 "PO-Revision-Date: 2003-12-02 08:56+1000\n"
 "Last-Translator: Sarah Wang <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <i18n@redhat.com>\n"
@@ -85,17 +85,17 @@ msgstr "互联网配置向导"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/neat-control.py:48 src/netconf.py:75
+#: src/neat-control.py:48 src/netconf.py:74
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "错误：无法初始化图形化环境。"
 
-#: src/neat-control.py:49 src/netconf.py:76
+#: src/neat-control.py:49 src/netconf.py:75
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
 msgstr "最可能的失败原因是该攻击没有使用图形化环境运行。"
 
-#: src/neat-control.py:50 src/netconf.py:77
+#: src/neat-control.py:50 src/netconf.py:76
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -299,20 +299,20 @@ msgstr "ISDN 配置"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:57
+#: src/netconf.py:56
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "错误：%s，%s！"
 
-#: src/netconf.py:59
+#: src/netconf.py:58
 msgid "Starting text version"
 msgstr "启动文本版本"
 
-#: src/netconf.py:114
+#: src/netconf.py:113
 msgid "Loading Network Configuration..."
 msgstr "正在载入网络配置..."
 
-#: src/netconf.py:127
+#: src/netconf.py:126
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -597,7 +597,8 @@ msgstr "密钥："
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:325
-msgid "You must enter a secret keyor generate one"
+#, fuzzy
+msgid "You must enter a secret key or generate one"
 msgstr "您必须输入一个密钥或生成一个"
 
 #: src/netconfpkg/gui/DialupDruid.py:232
@@ -1406,9 +1407,10 @@ msgstr ""
 "%s"
 
 #: src/netconfpkg/gui/maindialog.py:369
+#, fuzzy
 msgid ""
-"Changes are saved.You may want to restartthe network and network servicesor "
-"restart the computer."
+"Changes are saved. You may want to restart the network and network services "
+"or restart the computer."
 msgstr "改变已被保存。您可能想重新启动网络和网络服务，或者重启计算机。"
 
 #: src/netconfpkg/gui/maindialog.py:378
@@ -1562,7 +1564,9 @@ msgstr "您确信要删除配置文件“%s”吗？"
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
 #: src/netconfpkg/gui/maindialog.py:1548
-msgid "Sorry, there is nothing to be edited,or this type cannot be edited yet."
+#, fuzzy
+msgid ""
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr "抱歉，没有可编辑的材料，或这个类型还无法被编辑。"
 
 #: src/netconfpkg/gui/maindialog.py:1566
@@ -1613,8 +1617,9 @@ msgid "Output:\n"
 msgstr "输出：\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:97
+#, fuzzy
 msgid ""
-"The Ethernet card could not be initialized.Please verify your settings and "
+"The Ethernet card could not be initialized. Please verify your settings and "
 "try again."
 msgstr "无法初始化以太网卡。请校验您的设置后重试。"
 
@@ -1647,9 +1652,10 @@ msgstr ""
 "%s\n"
 
 #: src/netconfpkg/gui/tokenringhardware.py:69
+#, fuzzy
 msgid ""
-"The Token Ring card could not be initialized.Please verify your settings and "
-"try again."
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
 msgstr "无法初始化您的权标环卡。请校验您的设置后重试。"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -2335,11 +2341,13 @@ msgstr "软件 (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
-msgid "Shall the following packages, which are needed on your system, be installed?"
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr "是否要安装下列在您的系统上需要的软件包？"
 
 #: src/netconfpkg/NC_functions.py:208
-msgid "You have to install the following packages, which are needed on your system!"
+msgid ""
+"You have to install the following packages, which are needed on your system!"
 msgstr "您必须安装下列软件包，它们是您的系统必需的！"
 
 #. test for wireless
@@ -2773,7 +2781,8 @@ msgstr "在此处输入您的 ISP 给您的登录名。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "输入本次配置的名称，通常是您的 ISP 的名称。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -4132,10 +4141,12 @@ msgstr "您可以在此处配置 IPsec 隧道和主机到主机的连接。"
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
-msgstr "您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
+msgstr ""
+"您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "您可以在此处配置与计算机物理连接的网络硬件。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
@@ -4993,4 +5004,3 @@ msgstr "点对点(I_P)："
 #~ "向 system-config-network 汇报部件错误。多谢！\n"
 #~ "\n"
 #~ "%s"
-
