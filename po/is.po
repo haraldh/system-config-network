@@ -156,9 +156,8 @@ msgstr "Verður endurrituð!"
 #. ???
 #. change the default profile to a more understandable name
 #: src/neat-control.py:354
-#, fuzzy
 msgid " (active)"
-msgstr "Óvirkt"
+msgstr "(virkt)"
 
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
@@ -301,24 +300,22 @@ msgid "Error: %s, %s!"
 msgstr "Villa: %s, %s!"
 
 #: src/netconf.py:59
-#, fuzzy
 msgid "Starting text version"
-msgstr "Ræsi í textaham:"
+msgstr "Ræsi í textaham"
 
 #: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "Les stillingar nets..."
 
 #: src/netconf.py:127
-#, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
 "\n"
 "Usage: redhat-config-network -v --verbose"
 msgstr ""
-"redhat-config-network-cmd - Netstillingatól fyrir skipanalínuna\n"
+"redhat-config-network - netstillingatól\n"
 "\n"
-"Notkun: redhat-config-network-cmd -p --profile <sniðmát> -a --activate"
+"Notkun: redhat-config-network -v --verbose"
 
 #. splash_window = splash_screen()
 #. make ctrl-C work
@@ -346,7 +343,7 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:64
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
 "Please file a detailed bug report against the component %s at \n"
@@ -355,71 +352,70 @@ msgid ""
 msgstr ""
 "Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
 "Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
-"villutilkynningu á redhat-config-network á https://bugzilla.redhat.com/"
-"bugzilla/"
+"villutilkynningu á %s á https://bugzilla.redhat.com/"
+"bugzilla/\n"
 
 #: src/netconf-cmd.py:99
 #, python-format
 msgid "%s - network configuration commandline tool"
-msgstr ""
+msgstr "%s - netstillingatól fyrir skipanalínuna"
 
 #: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
-msgstr ""
+msgstr "Notkun: %s"
 
 #: src/netconf-cmd.py:106
-#, fuzzy
 msgid "switch / activate profile"
-msgstr "Smelltu til að virkja valið sniðmát"
+msgstr "skipta um eða vvirkja sniðmát"
 
 #: src/netconf-cmd.py:108
 msgid "export / import hardware list"
-msgstr ""
+msgstr "flytja inn/út vélbúnaðarlistann"
 
 #: src/netconf-cmd.py:110
 msgid "export / import device list (default)"
-msgstr ""
+msgstr "flytja inn/út tækjalistann (sjálfgefið)"
 
 #: src/netconf-cmd.py:112
 msgid "export / import profile list"
-msgstr ""
+msgstr "flytja inn/út lista sniðmáta"
 
 #: src/netconf-cmd.py:114
 msgid "set the root directory"
-msgstr ""
+msgstr "setja rótarmöppuna"
 
 #: src/netconf-cmd.py:115
 msgid "export list (default)"
-msgstr ""
+msgstr "flytja út (sjálfgefið)"
 
 #: src/netconf-cmd.py:116
 msgid "import list"
-msgstr ""
+msgstr "flytja inn lista"
 
 #: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
-msgstr ""
+msgstr "hreinsa núverandi lista áður en flutt er inn"
 
 #: src/netconf-cmd.py:120
 msgid "import from file"
-msgstr ""
+msgstr "flytja inn úr skrá"
 
 #: src/netconf-cmd.py:220
 #, python-format
 msgid "Unknown option %s\n"
-msgstr ""
+msgstr "Óþekktur rofi %s\n"
 
 #. remove the last \n
 #: src/netconf-cmd.py:281
-#, fuzzy, python-format
+#, python-format
 msgid "Unknown List %s\n"
-msgstr "Óþekkt"
+msgstr "Óþekktur listi %s\n"
 
 #: src/netconf-cmd.py:285
 #, python-format
 msgid "Error parsing line: %s"
-msgstr ""
+msgstr "Villa við að þátta línu: %s"
 
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -1610,24 +1606,24 @@ msgstr "Óvirkt"
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Directory %s is missing!\n"
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
-"Möppuna /etc/cipe vantar!\n"
+"Möppuna %s vantar!\n"
 "Hún verður búin til núna.\n"
 "Þú ættir að setja inn cipe rpm pakkann!\n"
 
 #: src/netconfpkg/NCCipe.py:159
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Could not create\n"
 "directory %s!"
 msgstr ""
 "Gat ekki búið til\n"
-"möppuna /etc/cipe!"
+"möppuna %s!"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1937,9 +1933,9 @@ msgstr "Júgoslavía"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCProfileList.py:53 src/netconfpkg/NCProfileList.py:58
-#, fuzzy, python-format
+#, python-format
 msgid "Copying %s to default profile."
-msgstr "Afrita /etc/hosts í sjálfgefna sniðmátið."
+msgstr "Afrita %s í sjálfgefna sniðmátið."
 
 #. 60016
 #. Keep that test for later versions
@@ -2154,25 +2150,23 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCHardware.py:21
-#, fuzzy
 msgid "inactive"
-msgstr "Óvirkt"
+msgstr "óvirkt"
 
 #. not found in last config and not in actual system
 #: src/netconfpkg/NCHardware.py:22
 msgid "system"
-msgstr ""
+msgstr "kerfi"
 
 #. found in system
 #: src/netconfpkg/NCHardware.py:23
-#, fuzzy
 msgid "configured"
-msgstr "Stillingar"
+msgstr "stillt"
 
 #. found in config but not in system
 #: src/netconfpkg/NCHardware.py:24
 msgid "ok"
-msgstr ""
+msgstr "í lagi"
 
 #. found in system and in config
 #. !/usr/bin/python
@@ -2321,12 +2315,11 @@ msgstr "Afrita %s í tækjalistann og bæti því í sjálfgefna sniðmátið."
 #. log.log(4, str(prof.ActiveDevices))
 #: src/netconfpkg/NCDeviceList.py:167
 msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr ""
+msgstr "Breytti eftirfarandi gælunöfnum vegna 'initscripts':\n"
 
 #: src/netconfpkg/NCDeviceList.py:170
-#, fuzzy
 msgid "Nicknames changed"
-msgstr "_Gælunafn: "
+msgstr "Gælunafni breytt"
 
 #. return DeviceList_base._objToStr(self, obj, parentStr)
 #.
@@ -3485,7 +3478,7 @@ msgstr "Á_skellitöf:"
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
 msgid "_IPsec"
-msgstr ""
+msgstr "_IPsec"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:60
 msgid "_Options"
@@ -3594,106 +3587,96 @@ msgid "Hostname:"
 msgstr "Vélarheiti:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:2
-#, fuzzy
 msgid "A_uthentication Key:"
-msgstr "_Auðkenning:"
+msgstr "_Auðkenningarlykill:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
 msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr ""
+msgstr "Sjálfvirk dulritum með IKA (racoon)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:4
-#, fuzzy
 msgid "Ge_nerate"
 msgstr "_Búa til"
 
 #: src/netconfpkg/gui/editipsec.glade.h:5
 msgid "Host to Host encryption"
-msgstr ""
+msgstr "Vél í vél dulritun"
 
 #: src/netconfpkg/gui/editipsec.glade.h:6
 msgid "IPsec"
-msgstr ""
+msgstr "IPsec"
 
 #: src/netconfpkg/gui/editipsec.glade.h:7
-#, fuzzy
 msgid "IPsec - Connection Type"
-msgstr "%s tenging"
+msgstr "IPsec - Gerð tengingar"
 
 #: src/netconfpkg/gui/editipsec.glade.h:8
-#, fuzzy
 msgid "IPsec - Encryption Mode"
-msgstr "'Encapsulation' hamur:"
+msgstr "IPsec - Dulritunarhamur:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:9
 msgid "IPsec - Keys"
-msgstr ""
+msgstr "IPsec - Lyklar"
 
 #: src/netconfpkg/gui/editipsec.glade.h:10
-#, fuzzy
 msgid "IPsec - Local Network"
-msgstr "Net"
+msgstr "IPsec - Staðbundið net"
 
 #: src/netconfpkg/gui/editipsec.glade.h:11
-#, fuzzy
 msgid "IPsec - Remote Network"
-msgstr "Net"
+msgstr "IPsec - Fjartengt net"
 
 #: src/netconfpkg/gui/editipsec.glade.h:12
 msgid "IPsec - Summary"
-msgstr ""
+msgstr "IPsec - Upplýsingar"
 
 #: src/netconfpkg/gui/editipsec.glade.h:13
-#, fuzzy
 msgid "IPsec Settings"
-msgstr "Stillingar IP"
+msgstr "Stillingar IPsec"
 
 #: src/netconfpkg/gui/editipsec.glade.h:14
-#, fuzzy
 msgid "Local Network _Address:"
-msgstr "Net"
+msgstr "Staðbundið net:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:15
-#, fuzzy
 msgid "Local Network _Gateway:"
-msgstr "Net"
+msgstr "Staðbundin gátt:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:16
-#, fuzzy
 msgid "Local Subnet _Mask:"
-msgstr "Netmöskvi:"
+msgstr "Staðbundinn netmöskvi:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:17
 msgid "Manual encryption with a fixed key"
-msgstr ""
+msgstr "Handvirk dulritun með föstum lykli"
 
 #: src/netconfpkg/gui/editipsec.glade.h:18
 msgid "Network to Network encryption (VPN)"
-msgstr ""
+msgstr "Net í net dulritað (VPN)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:19
 msgid "Please enter your local network settings:"
-msgstr ""
+msgstr "Vinsamlegast gefðu upp stillingar staðbundna netsins:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter your remote network settings:"
-msgstr ""
+msgstr "Vinsamlegast gefðu upp stillingar fjartengda netsins:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:21
-#, fuzzy
 msgid "Please select the type of connection:"
-msgstr "Vinsamlegast veldu vélbúnaðargerð til að bæta við:"
+msgstr "Vinsamlegast veldu gerð tengingar:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:22
-#, fuzzy
 msgid "Please select the type of encryption:"
-msgstr "Vinsamlegast veldu vélbúnaðargerð til að bæta við:"
+msgstr "Vinsamlegast veldu dulritunaraðferð:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:23
 msgid ""
 "Please specify your keys or generate them. \n"
 "The keys are symmetric, so your remote partner need to have the same."
 msgstr ""
+"Vinsamlegast gefðu upp lyklana eða búðu þá til. \n"
+"Lyklanir eru eins (symmetric) svo hinn endinn þarf að hafa þann sama."
 
 #: src/netconfpkg/gui/editipsec.glade.h:25
 msgid "Remote Network _Address:"
