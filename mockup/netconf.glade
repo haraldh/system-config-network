@@ -575,8 +575,8 @@ Ad-Hoc
 	    <ypad>0</ypad>
 	    <xexpand>False</xexpand>
 	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
+	    <xshrink>True</xshrink>
+	    <yshrink>True</yshrink>
 	    <xfill>True</xfill>
 	    <yfill>True</yfill>
 	  </child>
@@ -608,33 +608,41 @@ Ad-Hoc
 	  </widget>
 
 	  <widget>
-	    <class>Placeholder</class>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>dnsUpButton</name>
-	    <can_focus>True</can_focus>
-	    <stock_button>GNOME_STOCK_BUTTON_UP</stock_button>
-	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <class>GtkVBox</class>
+	    <name>vbox58</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>5</spacing>
 	    <child>
-	      <padding>0</padding>
+	      <padding>10</padding>
 	      <expand>False</expand>
-	      <fill>False</fill>
+	      <fill>True</fill>
 	    </child>
-	  </widget>
 
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>dnsDownButton</name>
-	    <can_focus>True</can_focus>
-	    <stock_button>GNOME_STOCK_BUTTON_DOWN</stock_button>
-	    <relief>GTK_RELIEF_NORMAL</relief>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
-	    </child>
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>dnsUpButton</name>
+	      <can_focus>True</can_focus>
+	      <stock_button>GNOME_STOCK_BUTTON_UP</stock_button>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>dnsDownButton</name>
+	      <can_focus>True</can_focus>
+	      <stock_button>GNOME_STOCK_BUTTON_DOWN</stock_button>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
 	  </widget>
 
 	  <widget>
@@ -2527,229 +2535,226 @@ none
       </widget>
 
       <widget>
-	<class>GtkHPaned</class>
-	<name>hpaned1</name>
+	<class>GtkVBox</class>
+	<name>vbox56</name>
 	<border_width>5</border_width>
-	<handle_size>10</handle_size>
-	<gutter_size>6</gutter_size>
-	<position>0</position>
+	<homogeneous>False</homogeneous>
+	<spacing>55</spacing>
 
 	<widget>
-	  <class>GtkScrolledWindow</class>
-	  <name>scrolledwindow14</name>
-	  <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	  <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	  <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	  <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	  <class>GtkHPaned</class>
+	  <name>hpaned1</name>
+	  <handle_size>10</handle_size>
+	  <gutter_size>6</gutter_size>
+	  <position>0</position>
 	  <child>
-	    <shrink>True</shrink>
-	    <resize>False</resize>
+	    <padding>0</padding>
+	    <expand>True</expand>
+	    <fill>True</fill>
 	  </child>
 
 	  <widget>
-	    <class>GtkViewport</class>
-	    <name>viewport1</name>
-	    <shadow_type>GTK_SHADOW_IN</shadow_type>
+	    <class>GtkScrolledWindow</class>
+	    <name>scrolledwindow17</name>
+	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	    <child>
+	      <shrink>True</shrink>
+	      <resize>False</resize>
+	    </child>
 
 	    <widget>
-	      <class>GtkScrolledWindow</class>
-	      <name>scrolledwindow15</name>
-	      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	      <class>GtkCTree</class>
+	      <name>providerTree</name>
+	      <can_focus>True</can_focus>
+	      <columns>1</columns>
+	      <column_widths>80</column_widths>
+	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
+	      <show_titles>True</show_titles>
+	      <shadow_type>GTK_SHADOW_IN</shadow_type>
 
 	      <widget>
-		<class>GtkCTree</class>
-		<name>providerTree</name>
-		<can_focus>True</can_focus>
-		<columns>1</columns>
-		<column_widths>80</column_widths>
-		<selection_mode>GTK_SELECTION_SINGLE</selection_mode>
-		<show_titles>True</show_titles>
-		<shadow_type>GTK_SHADOW_IN</shadow_type>
-
-		<widget>
-		  <class>GtkLabel</class>
-		  <child_name>CTree:title</child_name>
-		  <name>label181</name>
-		  <label>Provider</label>
-		  <justify>GTK_JUSTIFY_CENTER</justify>
-		  <wrap>False</wrap>
-		  <xalign>0</xalign>
-		  <yalign>0.5</yalign>
-		  <xpad>0</xpad>
-		  <ypad>0</ypad>
-		</widget>
+		<class>GtkLabel</class>
+		<child_name>CTree:title</child_name>
+		<name>label197</name>
+		<label>Provider</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
 	      </widget>
 	    </widget>
 	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkTable</class>
-	  <name>table15</name>
-	  <rows>3</rows>
-	  <columns>2</columns>
-	  <homogeneous>False</homogeneous>
-	  <row_spacing>5</row_spacing>
-	  <column_spacing>5</column_spacing>
-	  <child>
-	    <shrink>True</shrink>
-	    <resize>True</resize>
-	  </child>
 
 	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label96</name>
-	    <label>Pro_vider Name:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>dialupProviderNameEntry</default_focus_target>
+	    <class>GtkTable</class>
+	    <name>table15</name>
+	    <rows>3</rows>
+	    <columns>2</columns>
+	    <homogeneous>False</homogeneous>
+	    <row_spacing>5</row_spacing>
+	    <column_spacing>5</column_spacing>
 	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
+	      <shrink>True</shrink>
+	      <resize>True</resize>
 	    </child>
-	  </widget>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label97</name>
-	    <label>_Login Name:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>dialupLoginNameEntry</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label96</name>
+	      <label>Pro_vider Name:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+	      <default_focus_target>dialupProviderNameEntry</default_focus_target>
+	      <child>
+		<left_attach>0</left_attach>
+		<right_attach>1</right_attach>
+		<top_attach>0</top_attach>
+		<bottom_attach>1</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>False</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>False</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label98</name>
-	    <label>Pass_word:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>dialupPasswordEntry</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>2</top_attach>
-	      <bottom_attach>3</bottom_attach>
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label97</name>
+	      <label>_Login Name:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+	      <default_focus_target>dialupLoginNameEntry</default_focus_target>
+	      <child>
+		<left_attach>0</left_attach>
+		<right_attach>1</right_attach>
+		<top_attach>1</top_attach>
+		<bottom_attach>2</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>False</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>False</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
 
-	  <widget>
-	    <class>GtkEntry</class>
-	    <name>dialupProviderNameEntry</name>
-	    <can_focus>True</can_focus>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text></text>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label98</name>
+	      <label>Pass_word:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>True</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+	      <default_focus_target>dialupPasswordEntry</default_focus_target>
+	      <child>
+		<left_attach>0</left_attach>
+		<right_attach>1</right_attach>
+		<top_attach>2</top_attach>
+		<bottom_attach>3</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>False</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>False</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
 
-	  <widget>
-	    <class>GtkEntry</class>
-	    <name>dialupLoginNameEntry</name>
-	    <can_focus>True</can_focus>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text></text>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>True</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+	    <widget>
+	      <class>GtkEntry</class>
+	      <name>dialupProviderNameEntry</name>
+	      <can_focus>True</can_focus>
+	      <editable>True</editable>
+	      <text_visible>True</text_visible>
+	      <text_max_length>0</text_max_length>
+	      <text></text>
+	      <child>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>0</top_attach>
+		<bottom_attach>1</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>True</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>True</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
 
-	  <widget>
-	    <class>GtkEntry</class>
-	    <name>dialupPasswordEntry</name>
-	    <can_focus>True</can_focus>
-	    <editable>True</editable>
-	    <text_visible>False</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text></text>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>2</top_attach>
-	      <bottom_attach>3</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>True</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
+	    <widget>
+	      <class>GtkEntry</class>
+	      <name>dialupLoginNameEntry</name>
+	      <can_focus>True</can_focus>
+	      <editable>True</editable>
+	      <text_visible>True</text_visible>
+	      <text_max_length>0</text_max_length>
+	      <text></text>
+	      <child>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>1</top_attach>
+		<bottom_attach>2</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>True</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>True</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkEntry</class>
+	      <name>dialupPasswordEntry</name>
+	      <can_focus>True</can_focus>
+	      <editable>True</editable>
+	      <text_visible>False</text_visible>
+	      <text_max_length>0</text_max_length>
+	      <text></text>
+	      <child>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>2</top_attach>
+		<bottom_attach>3</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>True</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>True</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
 	  </widget>
 	</widget>
       </widget>
@@ -2981,7 +2986,7 @@ none
 
 	<widget>
 	  <class>GtkVBox</class>
-	  <name>vbox39</name>
+	  <name>vbox57</name>
 	  <homogeneous>False</homogeneous>
 	  <spacing>0</spacing>
 	  <child>
@@ -3000,40 +3005,25 @@ none
 	  </child>
 
 	  <widget>
-	    <class>GtkVButtonBox</class>
-	    <name>vbuttonbox4</name>
-	    <layout_style>GTK_BUTTONBOX_DEFAULT_STYLE</layout_style>
-	    <spacing>10</spacing>
-	    <child_min_width>85</child_min_width>
-	    <child_min_height>27</child_min_height>
-	    <child_ipad_x>7</child_ipad_x>
-	    <child_ipad_y>0</child_ipad_y>
+	    <class>GtkButton</class>
+	    <name>pppOptionDeleteButton</name>
+	    <can_focus>True</can_focus>
+	    <label>Delete...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>False</fill>
 	    </child>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>pppOptionDeleteButton</name>
-	      <can_default>True</can_default>
-	      <can_focus>True</can_focus>
-	      <label>Delete</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	    </widget>
 	  </widget>
 	</widget>
 
 	<widget>
-	  <class>GtkHButtonBox</class>
-	  <name>hbuttonbox23</name>
-	  <layout_style>GTK_BUTTONBOX_DEFAULT_STYLE</layout_style>
-	  <spacing>30</spacing>
-	  <child_min_width>85</child_min_width>
-	  <child_min_height>27</child_min_height>
-	  <child_ipad_x>7</child_ipad_x>
-	  <child_ipad_y>0</child_ipad_y>
+	  <class>GtkButton</class>
+	  <name>pppOptionAddButton</name>
+	  <can_focus>True</can_focus>
+	  <label>Add...</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
 	  <child>
 	    <left_attach>2</left_attach>
 	    <right_attach>3</right_attach>
@@ -3046,17 +3036,8 @@ none
 	    <xshrink>False</xshrink>
 	    <yshrink>False</yshrink>
 	    <xfill>True</xfill>
-	    <yfill>True</yfill>
+	    <yfill>False</yfill>
 	  </child>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>pppOptionAddButton</name>
-	    <can_default>True</can_default>
-	    <can_focus>True</can_focus>
-	    <label>Add...</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
-	  </widget>
 	</widget>
       </widget>
 
