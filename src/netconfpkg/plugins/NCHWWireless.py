@@ -42,11 +42,11 @@ class HwWireless(Hardware):
          return true
       return false
 
-def setHwEthernetDialog(dialog):
+def setHwWirelessDialog(dialog):
    global _hwEthernetDialog
    _hwEthernetDialog = dialog
 
-def setHwEthernetWizard(wizard):
+def setHwWirelessWizard(wizard):
    global _hwEthernetWizard
    _hwEthernetWizard = wizard
 
