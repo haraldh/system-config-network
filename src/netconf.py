@@ -188,9 +188,11 @@ class mainDialog:
             type = getDeviceType(dev.Device)
             clist.append(['', dev.DeviceId, type])
             clist.set_pixmap(row, 0, inact_xpm)
+            clist.set_row_data(row, 0)
             for prof in profilelist:
                 if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
                     clist.set_pixmap(row, 0, act_xpm)
+                    clist.set_row_data(row, 1)
             row = row + 1
 
     def setupHardware(self):
@@ -373,7 +375,18 @@ class mainDialog:
                                           self.on_generic_clist_button_release_event,
                                           func)
                 clist.set_data("signal_id", id)
-
+        if clist.get_name() == 'deviceList' and event.type == GDK.BUTTON_PRESS:
+            info = clist.get_selection_info(event.x, event.y)
+            if info != None and info[1] == 0:
+                row = info[0]
+                if clist.get_row_data(row) == 0:
+                    xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
+                    clist.set_row_data(row, 1)
+                else:
+                    xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
+                    clist.set_row_data(row, 0)
+                clist.set_pixmap(row, 0, xpm)
+                
     def on_searchDnsEntry_changed(self, entry):
         pass
 
