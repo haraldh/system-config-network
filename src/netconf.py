@@ -440,7 +440,21 @@ class mainDialog:
             generic_error_dialog (_('The Loopback device can not be edited!'), self.dialog)
             return
 
+        devId = device.DeviceId
         button = self.editDevice(device)
+
+        if button != 0:
+            return
+
+        device.commit()
+
+        # Fixed change device names in active list of all profiles
+        profilelist = getProfileList()
+        for prof in profilelist:
+            if devId in prof.ActiveDevices:
+                pos = prof.ActiveDevices.index(name)
+                prof.ActiveDevices[pos] = device.DeviceId
+        prof.commit()
 
         self.hydrate()
 

@@ -173,7 +173,7 @@ class ProfileList(ProfileList_base):
     def save(self):
         self.test()
         devicelist = NCDeviceList.getDeviceList()
-        
+
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
@@ -288,7 +288,7 @@ class ProfileList(ProfileList_base):
                 try:
                     os.link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
                 except:
-                    print 'Darn, linking device '+devName+','+devId+' failed...'
+                    print 'Darn, linking device '+str(devName)+','+str(devId)+' failed...'
 
             if prof.Active == false:
                 continue
