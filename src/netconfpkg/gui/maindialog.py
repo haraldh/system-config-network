@@ -733,7 +733,7 @@ class mainDialog:
 
         timeout_remove(self.tag)
         
-        if dev.changed:
+        if self.changed():
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
                 _("To activate the network device %s, "
@@ -757,6 +757,7 @@ class mainDialog:
         dlg.set_transient_for(self.dialog)        
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
+        dlg.show_all()
         dlg.show_now()
         (status, txt) = intf.activate(device)                
         dlg.destroy()
@@ -793,6 +794,7 @@ class mainDialog:
         dlg.set_transient_for(self.dialog)        
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
+        dlg.show_all()
         dlg.show_now()
         (status, txt) = intf.deactivate(device)                
         dlg.destroy()
@@ -1283,6 +1285,8 @@ class mainDialog:
             self.hydrateHardware()
         else:
             hardwarelist.remove(hw)
+        self.hydrateHardware()
+
 
     def on_hardwareEditButton_clicked (self, *args):
         clist = self.xml.get_widget('hardwareList')
@@ -1299,6 +1303,7 @@ class mainDialog:
             hardwarelist.commit()
         else:
             hw.rollback()
+        self.hydrateHardware()
 
     def showHardwareDialog(self, hw = None):
         dl = None
@@ -1349,8 +1354,7 @@ class mainDialog:
         buttons = generic_yesno_dialog((_('Do you want to delete '
                                           'all devices that used "%s"?')) % \
                                        str(description),
-                                       self.dialog, widget = clist,
-                                       page = clist.selection[0])
+                                       self.dialog, widget = clist)
 
         if buttons == RESPONSE_YES:
             # remove all devices used this hardware
