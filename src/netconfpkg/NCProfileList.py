@@ -259,12 +259,21 @@ class ProfileList(ProfileList_base):
 
             dnsconf['nameservers'] = nameservers
 
-            hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts'
-            for i in hoconf.keys():
-                del hoconf[i]
+            hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts'            
 
+            saved = []
+            
             for host in prof.HostsList:
                 hoconf[host.IP] = [host.Hostname, host.AliasList]
+                saved.append(host.IP)
+                
+            for i in hoconf.keys():
+                if not i in saved:
+                    # delete all other entries the user has deleted in the UI
+                    del hoconf[i]
+
+            del saved
+
 
             nwconf.write()
             dnsconf.write()
