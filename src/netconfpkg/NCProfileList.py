@@ -40,6 +40,9 @@ class ProfileList(ProfileList_base):
         ProfileList_base.__init__(self, list, parent)        
 
     def updateNetworkScripts(self):
+	if os.getuid() != 0:
+	    return
+
         try:
             if not os.path.isdir(SYSCONFDEVICEDIR):
                 os.mkdir(SYSCONFDEVICEDIR)
