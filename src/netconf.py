@@ -251,8 +251,10 @@ class mainDialog:
         self.tag = timeout_add(4000, self.update_devicelist)
 
 
-        if modus == 'druid': self.on_deviceAddButton_clicked(None)
-
+        if modus == 'druid':
+            if not self.on_deviceAddButton_clicked(None):
+                sys.exit(1)                
+                
         # initialize the button state..
         clist = self.xml.get_widget("deviceList")
         self.on_generic_clist_select_row(\
@@ -522,7 +524,10 @@ class mainDialog:
 
         gtk.mainloop()            
             
-        self.hydrate()
+        if not interface.canceled:
+            self.hydrate()
+
+        return (not interface.canceled)
         
     def on_deviceCopyButton_clicked (self, button):
         devicelist = getDeviceList()
@@ -1491,8 +1496,8 @@ if __name__ == '__main__':
         gtk.main()
 
     except SystemExit, code:
-        print "Exception %s: %s" % (str(SystemExit), str(code))
-        sys.exit(0)
+        #print "Exception %s: %s" % (str(SystemExit), str(code))
+        sys.exit(code)
     except:
         handleException(sys.exc_info())
 
