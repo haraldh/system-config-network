@@ -132,7 +132,8 @@ class isdnHardwareDialog:
                 else:
                     self.xml.get_widget("1tr6Button").set_active(TRUE)
 
-                self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
+                if self.hw.Description:
+                    self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
                 
                 if hw.Card.IRQ:
                     self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
