@@ -102,7 +102,7 @@ class ModemInterface:
             dialog.set_border_width(10)
             label = gtk.Label(_('Probing for Modems, please wait...'))
             dialog.vbox.pack_start(label, gtk.FALSE)
-            dialog.set_transient_for(druid)
+            dialog.set_transient_for(self.toplevel)
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dialog.set_modal(TRUE)
             dialog.show_all()
@@ -113,7 +113,8 @@ class ModemInterface:
             ModemInterface.modemList = dlist
             dialog.destroy()
             if dlist == []:
-                generic_error_dialog(_('No modem was found on your system.'))
+                generic_error_dialog(_('No modem was found on your system.'),
+                                     self.toplevel)
                 dlist = modemDeviceList
             ModemInterface.modemList = dlist
         else:
