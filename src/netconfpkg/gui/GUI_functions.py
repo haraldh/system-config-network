@@ -1,3 +1,21 @@
+## Copyright (C) 2001, 2002 Red Hat, Inc.
+## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 import os
 import gtk
 import gtk.glade
@@ -95,11 +113,74 @@ def gui_error_dialog (message, parent_dialog,
         if isinstance (broken_widget, gtk.Entry):
             broken_widget.select_region (0, -1)
 
-    dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-    if parent_dialog: dialog.set_transient_for(parent_dialog)
+    if parent_dialog:
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_transient_for(parent_dialog)
+    else:
+        dialog.set_position (gtk.WIN_POS_MOUSE)
+
     ret = dialog.run ()
     dialog.destroy()
     return ret
+
+def gui_info_dialog (message, parent_dialog,
+                      message_type=gtk.MESSAGE_INFO,
+                      widget=None, page=0, broken_widget=None):
+    
+    dialog = gtk.MessageDialog(parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
+                               message)
+    
+    if widget != None:
+        if isinstance (widget, gtk.CList):
+            widget.select_row (page, 0)
+        elif isinstance (widget, gtk.Notebook):
+            widget.set_current_page (page)
+    if broken_widget != None:
+        broken_widget.grab_focus ()
+        if isinstance (broken_widget, gtk.Entry):
+            broken_widget.select_region (0, -1)
+
+    if parent_dialog:
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_transient_for(parent_dialog)
+    else:
+        dialog.set_position (gtk.WIN_POS_MOUSE)
+
+    ret = dialog.run ()
+    dialog.destroy()
+    return ret
+
+def gui_error_dialog (message, parent_dialog,
+                      message_type=gtk.MESSAGE_ERROR,
+                      widget=None, page=0, broken_widget=None):
+    
+    dialog = gtk.MessageDialog(parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
+                               message)
+    
+    if widget != None:
+        if isinstance (widget, gtk.CList):
+            widget.select_row (page, 0)
+        elif isinstance (widget, gtk.Notebook):
+            widget.set_current_page (page)
+    if broken_widget != None:
+        broken_widget.grab_focus ()
+        if isinstance (broken_widget, gtk.Entry):
+            broken_widget.select_region (0, -1)
+        
+    if parent_dialog:
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_transient_for(parent_dialog)
+    else:
+        dialog.set_position (gtk.WIN_POS_MOUSE)
+        
+    ret = dialog.run ()
+    dialog.destroy()
+    return ret
+
 
 def gui_yesnocancel_dialog (message, parent_dialog,
                             message_type=gtk.MESSAGE_QUESTION,
@@ -122,11 +203,22 @@ def gui_yesnocancel_dialog (message, parent_dialog,
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.Entry):
             broken_widget.select_region (0, -1)
-    dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-    if parent_dialog: dialog.set_transient_for(parent_dialog)
+
+    if parent_dialog:
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_transient_for(parent_dialog)
+    else:
+        dialog.set_position (gtk.WIN_POS_MOUSE)
+
     ret = dialog.run ()
     dialog.destroy()
-    return ret
+
+    if ret == gtk.RESPONSE_YES:
+        return RESPONSE_YES
+    elif ret == gtk.RESPONSE_NO:
+        return RESPONSE_NO
+
+    return RESPONSE_CANCEL
 
 def gui_yesno_dialog (message, parent_dialog,
                       message_type=gtk.MESSAGE_QUESTION,
@@ -146,12 +238,22 @@ def gui_yesno_dialog (message, parent_dialog,
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.Entry):
             broken_widget.select_region (0, -1)
-    dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-    if parent_dialog: dialog.set_transient_for(parent_dialog)
+
+    if parent_dialog:
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_transient_for(parent_dialog)
+    else:
+        dialog.set_position (gtk.WIN_POS_MOUSE)
+
     ret = dialog.run ()
     dialog.destroy()
-    return ret
 
+    if ret == gtk.RESPONSE_YES:
+        return RESPONSE_YES
+
+    return RESPONSE_NO
+
+set_generic_info_dialog_func(gui_info_dialog)
 set_generic_error_dialog_func(gui_error_dialog)
 set_generic_yesnocancel_dialog_func(gui_yesnocancel_dialog)
 set_generic_yesno_dialog_func(gui_yesno_dialog)
