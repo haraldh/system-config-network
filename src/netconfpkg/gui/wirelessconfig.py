@@ -89,7 +89,7 @@ class wirelessConfigDialog(deviceConfigDialog):
             if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
             
             if wl.EssId:
-                if string.lower(wl.EssId) == "any":
+                if string.lower(wl.EssId) == ""
                     self.xml.get_widget("essidAutoButton").set_active(TRUE)
                     self.xml.get_widget("essidEntry").set_sensitive(FALSE)
                 else:
@@ -119,7 +119,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         wl = self.device.Wireless
         if wl:
             if self.xml.get_widget("essidAutoButton").get_active():
-                wl.EssId = "any"
+                wl.EssId = ""
             else:
                 wl.EssId = self.xml.get_widget("essidEntry").get_text()
             wl.Mode =  self.xml.get_widget("modeEntry").get_text()

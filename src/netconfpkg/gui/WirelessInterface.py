@@ -138,8 +138,6 @@ class WirelessInterface(InterfaceCreator):
         self.device.createWireless()
         wl = self.device.Wireless
         wl.EssId = self.xml.get_widget("essidEntry").get_text()
-        if not wl.EssId:
-            wl.EssId = "Any"
         wl.Mode =  self.xml.get_widget("modeEntry").get_text()
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
         wl.Rate = self.xml.get_widget("rateEntry").get_text()
@@ -230,7 +228,11 @@ class WirelessInterface(InterfaceCreator):
                 + self.device.BootProto + "\n" + "   "
 
         s = s + "   " + _("Mode: ") + str(wl.Mode) + "\n"
-        s = s + _("ESSID (Network ID):") + " " + str(wl.EssId) + "\n"
+        s = s + _("ESSID (Network ID):") + " "
+        if not wl.EssId:
+            s = s + "Automatic\n"
+        else:
+            s = s + str(wl.EssId) + "\n"
         if wl.Mode != "Managed":
             s = s + "   "\
             + _("Channel: ") + str(wl.Channel) + "\n"
