@@ -350,25 +350,23 @@ class mainDialog:
         button = 0
         type = device.Type
         device.createDialup()
+
         if type == "Ethernet":
             cfg = ethernetConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            
         elif type == "ISDN":
-            if device.Dialup:
-                device.Dialup.createCompression()                
             cfg = ISDNDialupDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            
         elif type == "Modem":
-            if device.Dialup:
-                device.Dialup.createCompression()
             cfg = ModemDialupDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            
         elif type == "xDSL":
-            if device.Dialup:
-                device.Dialup.createCompression()
             cfg = dslConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
@@ -376,9 +374,14 @@ class mainDialog:
         elif type == "CIPE":
             button = 1
             print "CIPE configuration"
+            
         elif type == "Wireless":
             button = 1
             print "wireless configuration"
+
+        else:
+            generic_error_dialog ('This device can not be edited with this tool!', self.xml.get_widget ("Dialog"))
+
 
         return button
             
