@@ -18,8 +18,7 @@ class Device(Device_base):
                 'IP' : 'IPADDR',
                 'Netmask' : 'NETMASK',
                 'Gateway' : 'GATEWAY',
-                'Hostname' : 'HOSTNAME',
-                'Domain' : 'DOMAIN',
+                'Hostname' : 'DEVHOSTNAME',
                 'BootProto' : 'BOOTPROTO',
                 }
 
