@@ -23,7 +23,7 @@ pythondir = $(pkgdatadir)
 gladedir = $(pkgdatadir)/netconfpkg
 glade_DATA = $(GLADE_FILES)
 
-providerdir = $(pkgdatadir)/netconfpkg
+providerdir = $(pkgdatadir)
 provider_DATA = providerdb
 
 install-exec-local:
