@@ -30,6 +30,7 @@ import gettext
 import string
 
 import HardwareList
+import NC_functions
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
@@ -57,22 +58,11 @@ class ethernetConfigDialog(deviceConfigDialog):
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-        hwdesc = []
-        hwcurr = None
-        hardwarelist = HardwareList.getHardwareList()
-        for hw in hardwarelist:
-            if hw.Type == "Ethernet":
-                desc = str(hw.Name) + ' (' + hw.Description + ')'
-                hwdesc.append(desc)
-                if self.device.Device and hw.Name == self.device.Device:
-                    hwcurr = desc
-                    
+        hwlist = HardwareList.getHardwareList()
+        (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, self.device.Device)
+                                        
         if len(hwdesc):
-            hwdesc.sort()
             ecombo.set_popdown_strings(hwdesc)
-
-        if not hwcurr and len(hwdesc):
-            hwcurr = hwdesc[0]
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if self.device.Device:
