@@ -1,25 +1,24 @@
 GLADE_FILES = \
+	ADSLInterfaceDruid.glade \
 	chooseprovider.glade \
 	cipeconfig.glade \
 	devicetype.glade \
 	dialupconfig.glade \
+	DialupDruid.glade \
 	dslconfig.glade \
 	editadress.glade \
 	editdomain.glade \
 	edithosts.glade \
 	ethernetconfig.glade \
+	EthernetHardwareDruid.glade \
 	ethernethardware.glade \
+	IsdnHardwareDruid.glade \
 	isdnhardware.glade \
 	modemconfig.glade \
-	wirelessconfig.glade \
-	tcpipdialog.glade \
-	devicetype.glade \
-	ADSLInterfaceDruid.glade \
-	DialupDruid.glade \
-	EthernetHardwareDruid.glade \
-	IsdnHardwareDruid.glade \
 	ModemDruid.glade \
-	NewInterfaceDruid.glade
+	NewInterfaceDruid.glade \
+	tcpipdialog.glade \
+	wirelessconfig.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py	Firewall.py 
@@ -33,21 +32,27 @@ IDL_FILES = \
 	ProviderList.idl
 
 PYTHON_FILES = \
-	ConfSMB.py \
+	ADSLInterface.py \
 	cipeconfig.py \
+	ConfSMB.py \
 	deviceconfig.py \
 	devicetype.py \
 	dialupconfig.py \
+	DialupDruid.py \
 	dslconfig.py \
 	editadress.py \
 	editdomain.py \
 	edithosts.py \
 	ethernetconfig.py \
+	EthernetHardwareDruid.py \
 	ethernethardware.py \
 	genClass.py \
 	__init__.py \
+	InterfaceCreator.py \
 	isdnhardware.py \
+	IsdnInterface.py \
 	modemconfig.py \
+	ModemInterface.py \
 	NCCallback.py \
 	NCCipe.py \
 	NCCompression.py \
@@ -59,15 +64,11 @@ PYTHON_FILES = \
 	NCisdnhardware.py \
 	NCProfileList.py \
 	NCWireless.py \
+	NewInterface.py \
 	providerdb.py \
 	provider.py \
-	wirelessconfig.py \
 	tcpdialog.py \
-	DialupDruid.py \
-	EthernetHardwareDruid.py \
-	InterfaceCreator.py \
-	NewInterface.py \
-	ModemInterface.py
+	wirelessconfig.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
