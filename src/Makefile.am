@@ -35,9 +35,9 @@ install-exec-local:
 	p=$(prefix) ; \
 	softdir=$${softdir/#$$p} ; \
 	softdir=$${softdir/#\/} ; \
-	ln  -fs ../$${softdir}netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
-	ln  -fs ../$${softdir}netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
-	ln  -fs ../$${softdir}netconf.py $(DESTDIR)$(sbindir)/neat ;
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat ;
 
 docs:
 	python ./pydoc.py -w $(PYTHON_FILES)
