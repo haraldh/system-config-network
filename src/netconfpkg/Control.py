@@ -52,25 +52,35 @@ class NetworkDevice:
         
         # remove inactive isdn/ppp device
         for i in l:
+            nickname = getNickName(self.devicelist, i)
             if getDeviceType(i) == ISDN:
-                nickname = getNickName(self.devicelist, i)
                 if os.access(isdnctrl, os.X_OK):
-                    if os.system(isdnctrl + ' %s >& /dev/null' %(nickname)) == 0:
-                        continue
-                self.activedevicelist.remove(i)
+                    for nick in nickname:
+                        if os.system(isdnctrl +
+                                     ' %s >& /dev/null' %(nickname)) == 0:
+                            break
+                        else:
+                            self.activedevicelist.remove(i)
+                            
             elif getDeviceType(i) == MODEM:
-                if not os.access('/var/run/ppp-%s.pid' %(i), os.F_OK):
+                if (os.access('/var/run/ppp-%s.pid' %(i), os.F_OK)):
+                    continue
+                for nick in nickname:
+                    if (os.access('/var/run/ppp-%s.pid' %(nick), os.F_OK)):
+                        self.activedevicelist.append(nick)
+                        break                    
+                else:
                     self.activedevicelist.remove(i)
             
-        # check real ppp device
-        for i in xrange(0, 10):
-            if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
-                self.activedevicelist.append('ppp%s' %(i))
+#         # check real ppp device
+#         for i in xrange(0, 10):
+#             if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
+#                 self.activedevicelist.append('ppp%s' %(i))
 
-        for pid in glob.glob('/var/run/ppp-*.pid'):
-            pid = pid[13:]
-            pid = pid[:-4]
-            self.activedevicelist.append(pid)
+#         for pid in glob.glob('/var/run/ppp-*.pid'):
+#             pid = pid[13:]
+#             pid = pid[:-4]
+#             self.activedevicelist.append(pid)
                     
         self.activedevicelist.sort()
         
