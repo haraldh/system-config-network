@@ -27,7 +27,7 @@ import re
 FALSE = 0
 TRUE = not FALSE
 
-netconf_dir = "/usr/share/netconf"
+netconf_dir = "/usr/share/redhat-config-network"
 provider_db = "providerdb"
 
 class provider:

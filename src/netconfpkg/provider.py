@@ -58,7 +58,7 @@ class providerDialog:
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = "/usr/share/netconf/" + glade_file
+            glade_file = "/usr/share/redhat-config-network/" + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
@@ -90,7 +90,7 @@ class providerDialog:
         if not os.path.exists(pixmap_file):
             pixmap_file = "../pixmaps/" + pixmap_file
         if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/netconf/" + pixmap_file
+            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
         if not os.path.exists(pixmap_file):
             return None, None
 
