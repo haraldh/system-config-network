@@ -7,8 +7,21 @@
 ## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
-from rhpl.translate import *
 from snack import *
+
+PROGNAME='redhat-config-network'
+
+import gettext
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+try:
+    gettext.install(PROGNAME, "/usr/share/locale", 1)
+    import __builtin__
+    __builtin__.__dict__['_'] = gettext.gettext
+except IOError:
+    import __builtin__
+    __builtin__.__dict__['_'] = unicode    
+
 import sys
 import string
 
@@ -21,11 +34,111 @@ if not "/usr/share/redhat-config-network" in sys.path:
 if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
+
+
+from version import PRG_VERSION
+from version import PRG_NAME
+import traceback
+import types
+
+
+# XXX do length limits on obj dumps.
+def dumpClass(instance, fd, level=0):
+    # protect from loops
+    if not dumpHash.has_key(instance):
+        dumpHash[instance] = None
+    else:
+        fd.write("Already dumped\n")
+        return
+    if (instance.__class__.__dict__.has_key("__str__") or
+        instance.__class__.__dict__.has_key("__repr__")):
+        fd.write("%s\n" % (instance,))
+        return
+    fd.write("%s instance, containing members:\n" %
+             (instance.__class__.__name__))
+    pad = ' ' * ((level) * 2)
+    for key, value in instance.__dict__.items():
+        if type(value) == types.ListType:
+            fd.write("%s%s: [" % (pad, key))
+            first = 1
+            for item in value:
+                if not first:
+                    fd.write(", ")
+                else:
+                    first = 0
+                if type(item) == types.InstanceType:
+                    dumpClass(item, fd, level + 1)
+                else:
+                    fd.write("%s" % (item,))
+            fd.write("]\n")
+        elif type(value) == types.DictType:
+            fd.write("%s%s: {" % (pad, key))
+            first = 1
+            for k, v in value.items():
+                if not first:
+                    fd.write(", ")
+                else:
+                    first = 0
+                if type(k) == types.StringType:
+                    fd.write("'%s': " % (k,))
+                else:
+                    fd.write("%s: " % (k,))
+                if type(v) == types.InstanceType:
+                    dumpClass(v, fd, level + 1)
+                else:
+                    fd.write("%s" % (v,))
+            fd.write("}\n")
+        elif type(value) == types.InstanceType:
+            fd.write("%s%s: " % (pad, key))
+            dumpClass(value, fd, level + 1)
+        else:
+            fd.write("%s%s: %s\n" % (pad, key, value))
+
+#
+# handleException function
+#
+def handleException((type, value, tb), progname, version):
+    list = traceback.format_exception (type, value, tb)
+    tblast = traceback.extract_tb(tb, limit=None)
+    if len(tblast):
+        tblast = tblast[len(tblast)-1]
+    extxt = traceback.format_exception_only(type, value)
+    text = "Component: %s\n" % progname
+    text = text + "Version: %s\n" % version
+    text = text + "Summary: TB "
+    text = _("An unhandled exception has occured.  This "
+             "is most likely a bug.  Please save the crash "
+             "dump and file a detailed bug "
+             "report against redhat-config-network at "
+             "https://bugzilla.redhat.com/bugzilla") + "\n" + text
+    
+    if tblast and len(tblast) > 3:
+        tblast = tblast[:3]
+    for t in tblast:        
+        text = text + str(t) + ":"
+    text = text + extxt[0]
+    text = text + joinfields(list, "")
+
+    print text
+    import pdb
+    pdb.post_mortem (tb)
+    os.kill(os.getpid(), signal.SIGKILL)
+        
+    sys.exit(10)
+
+sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
+                                                         PRG_NAME, PRG_VERSION)
+
 from netconfpkg import *
 
-
-PROGNAME='redhat-config-network'
-
+# Strange... why do I have to reinstall _() ??
+try:
+    gettext.install(PROGNAME, "/usr/share/locale", 1)
+    import __builtin__
+    __builtin__.__dict__['_'] = gettext.gettext
+except IOError:
+    import __builtin__
+    __builtin__.__dict__['_'] = unicode    
 
 #
 # main Screen
@@ -400,6 +513,8 @@ class ISDNWindow:
                 self.devicelist.save()
                 screen.popWindow()
                 break
+
+
                 
 #
 # __main__
@@ -409,5 +524,11 @@ if __name__=="__main__":
     try:
         mainScreen(screen)
         screen.finish()
-    finally:
+    except SystemExit, code:
         screen.finish()
+        sys.exit(code)
+    except:
+        screen.finish()
+        handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
+
+    screen.finish()
