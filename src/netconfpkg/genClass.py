@@ -457,6 +457,13 @@ def printClass(list, basename, baseclass):
 				self.data[i].setList(self.__list.addChild(%childtype, "%childname"))
 				self.data[i].commit()
 """							  
+				commitlist = commitlist \
+								 + '\t\tfor child in self.data_bak:\n' \
+								 + '\t\t\tchild.commit()\n'
+
+				backuplist = backuplist \
+								 + '\t\tfor child in self.data:\n' \
+								 + '\t\t\tchild.rollback()\n'
 				#########################
 			
 
@@ -516,6 +523,12 @@ def printClass(list, basename, baseclass):
 				
 				applylist = applylist \
 							  + '\t\tself.create%childname().apply(other.get%childname())\n'
+				commitlist = commitlist +\
+								 '\t\tif self.%childname: self.%childname.commit()\n'
+
+				backuplist = backuplist +\
+								 '\t\tif self.%childname: self.%childname.rollback()\n'
+								 
 				
 				
 				#########################
