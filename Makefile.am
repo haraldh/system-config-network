@@ -9,16 +9,13 @@ EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
 	po/po2tbl.sed.in
 
 icons1dir=$(datadir)/kontrol-panel
-icons2dir=$(sysconfdir)/X11/sysconfig
-icons3dir=$(sysconfdir)/X11/applnk/System
+icons2dir=$(pkgdatadir)
 
 icons1_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 icons2_DATA=neat.desktop internet-druid.desktop neat-control.desktop
-icons3_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
 icons1_in_files=$(icons1_DATA:.desktop=.desktop.in)
 icons2_in_files=$(icons2_DATA:.desktop=.desktop.in)
-icons3_in_files=$(icons3_DATA:.desktop=.desktop.in)
 
 @INTLTOOL_DESKTOP_RULE@
 

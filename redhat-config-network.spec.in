@@ -61,6 +61,15 @@ popd
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
+mkdir $RPM_BUILD_ROOT%{_datadir}/applications
+
+for i in neat.desktop internet-druid.desktop neat-control.desktop; do \
+  desktop-file-install --vendor redhat --delete-original       \
+    --dir $RPM_BUILD_ROOT%{_datadir}/applications             \
+    --add-category X-Red-Hat-Base                             \
+    $RPM_BUILD_ROOT%{_datadir}/redhat-config-network/$i; \
+done;
+
 %if %{rp3}
 pushd .
 cd rp3-1.1.10/rp3
@@ -89,8 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
 %{_datadir}/pixmaps/*
-%config(noreplace) /etc/X11/sysconfig/*.desktop
-%config(noreplace) /etc/X11/applnk/*/*.desktop
+%{_datadir}/applications/*
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
 %{_sbindir}/internet-druid
