@@ -30,6 +30,7 @@ class DevWireless(Device):
       
    def load(self, name):
       conf = ConfDevice(name)
+      Device.load(self, name)
       self.Wireless.load(conf)
       
    def createWireless(self):

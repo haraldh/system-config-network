@@ -30,6 +30,7 @@ class DevCipe(Device):
       
    def load(self, name):
       conf = ConfDevice(name)
+      Device.load(self, name)
       self.Cipe.load(conf)
       
    def createCipe(self):

@@ -32,6 +32,7 @@ class DevModem(Device):
 
    def load(self, name):
       conf = ConfDevice(name)
+      Device.load(self, name)
       self.Dialup.load(conf)
       
    def createDialup(self):
