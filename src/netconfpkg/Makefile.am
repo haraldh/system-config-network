@@ -27,7 +27,6 @@ IDL_FILES = \
 	ProviderList.idl
 
 PYTHON_FILES = \
-	basicdialog.py \
 	ConfSMB.py \
 	deviceconfig.py \
 	devicetype.py \

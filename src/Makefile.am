@@ -20,12 +20,15 @@ python_DATA = $(PYTHON_FILES)
 gladedir = $(pkgdatadir)/netconfpkg
 glade_DATA = $(GLADE_FILES)
 
+providerdir = $(pkgdatadir)/netconfpkg
+provider_DATA = providerdb
+
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
-	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network
-	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd
-	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/neat
+	ln  -s $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network
+	ln  -s $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd
+	ln  -s $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/neat
 
 docs:
 	python ./pydoc.py -w $(PYTHON_FILES)
