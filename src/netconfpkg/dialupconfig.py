@@ -216,6 +216,9 @@ class ISDNDialupDialog(DialupDialog):
         
         self.dialog.show()
 
+    def on_chooseButton_clicked(self, button):
+        dialog = ISDNproviderDialog(self.xml_main, self.xml_basic, self.xml)
+		
     def hydrate(self):
         # Fill in Dialog
         pass
@@ -234,6 +237,9 @@ class ModemDialupDialog(DialupDialog):
             
         self.dialog.show()
 
+    def on_chooseButton_clicked(self, button):
+        dialog = ModemproviderDialog(self.xml_main, self.xml_basic, self.xml)
+		
     def hydrate(self):
         # Fill in Dialog
         pass
