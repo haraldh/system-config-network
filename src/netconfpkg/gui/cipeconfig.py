@@ -66,13 +66,13 @@ class cipeConfigDialog(deviceConfigDialog):
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
 
         curr = None
-        desc = [];
+        desc = [_('None - Server Mode')];
         
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
             d = str(dev.Device)
             if not dev.IP or dev.IP == "":
-                d = d + ' (dynamic)'
+                d = d + _(' (dynamic)')
             else:
                 d = d + ' (' + str(dev.IP) + ')'
             desc.append(d)
@@ -104,6 +104,8 @@ class cipeConfigDialog(deviceConfigDialog):
         if self.device.Cipe.RemotePeerAddress == "0.0.0.0" \
            or self.device.Cipe.RemotePeerAddress == "" \
            or not self.device.Cipe.RemotePeerAddress:
+            self.xml.get_widget("remotePeerAddressEntry").set_text(_("Server Mode"))
+            self.xml.get_widget("remotePeerPortEntry").set_text("")
             self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)
             self.xml.get_widget("remotePeerPortEntry").set_sensitive(FALSE)
             self.xml.get_widget("remotePeerAddressCB").set_active(TRUE)            
@@ -147,9 +149,12 @@ class cipeConfigDialog(deviceConfigDialog):
         if self.xml.get_widget("remotePeerAddressCB").get_active():
             self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)
             self.xml.get_widget("remotePeerPortEntry").set_sensitive(FALSE)
+            self.xml.get_widget("remotePeerAddressEntry").set_text(_("Server Mode"))
+            self.xml.get_widget("remotePeerPortEntry").set_text("")
         else:
             self.xml.get_widget("remotePeerAddressEntry").set_sensitive(TRUE)
             self.xml.get_widget("remotePeerPortEntry").set_sensitive(TRUE)
+            self.xml.get_widget("remotePeerAddressEntry").set_text("0.0.0.0")
 
         self.updateRemoteOptions()
 
@@ -166,7 +171,7 @@ class cipeConfigDialog(deviceConfigDialog):
         ethw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(ethw)
         d = fields[0]
-        ip = ''
+        ip = '0.0.0.0 (auto)'
         
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
@@ -189,7 +194,10 @@ class cipeConfigDialog(deviceConfigDialog):
         mytxt = ""
         mytxt = mytxt + _("IP Address of Tunnel Device: ") + str(addr) + "\n"
         mytxt = mytxt + _("Local Port: ") + port + "\n"
-        mytxt = mytxt + _("Remote Peer Address: ") + str(ip) + ":" + str(localport) + "\n"
+        mytxt = mytxt + _("Remote Peer Address: ") + str(ip)
+        if localport and localport != "":
+            mytxt = mytxt + ":" + str(localport)
+        mytxt = mytxt + "\n"
         mytxt = mytxt + _("Remote Virtual Address: ") + str(localvirtualaddress) + "\n"
         mytxt = mytxt + _("Local Virtual Address: ") + str(remotevirtualaddress) + "\n"
         mytxt = mytxt + _("Secret Key: ") + str(secretkey) + "\n"
