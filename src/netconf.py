@@ -270,6 +270,7 @@ class mainDialog:
                 if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
                     clist.set_pixmap(row, 0, act_xpm)
                     clist.set_row_data(row, 1)
+                    break
             row = row + 1
 
     def hydrateHardware(self):
@@ -293,17 +294,18 @@ class mainDialog:
         hclist = self.xml.get_widget("hostsList")
         hclist.clear()
         for prof in profilelist:
-            if prof.Active == true:
-                if prof.DNS.Hostname: self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
-                if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
-                if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
-                if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
-                if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
-                for domain in prof.DNS.SearchList:
-                    dclist.append([domain])
+            if prof.Active != true:
+                continue
+            self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
+            self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
+            self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
+            self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
+            self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
+            for domain in prof.DNS.SearchList:
+                dclist.append([domain])
 
-                for host in prof.HostsList:
-                    hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
+            for host in prof.HostsList:
+                hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
 
         row = 0
         actrow = 0
@@ -417,7 +419,7 @@ class mainDialog:
         type = clist.get_text(clist.selection[0], 2)
 
         if type == 'Loopback':
-            generic_error_dialog ('The Loopback device can not be edited!', self.dislog)
+            generic_error_dialog (_('The Loopback device can not be edited!'), self.dislog)
             return
 
         button = self.editDevice(device)
@@ -476,10 +478,11 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        device = devicelist[clist.selection[0]]
+        select = clist.selection[0]
+        device = devicelist[select]
 
-        name = clist.get_text(clist.selection[0], 1)
-        type = clist.get_text(clist.selection[0], 2)
+        name = clist.get_text(select, 1)
+        type = clist.get_text(select, 2)
 
         if type == 'Loopback':
             generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
@@ -555,7 +558,7 @@ class mainDialog:
                 name = clist.get_text(row, 1)
                 type = clist.get_text(row, 2)
                 if type == 'Loopback':
-                    generic_error_dialog ('The Loopback device can not be disabled!', self.dialog)
+                    generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
                     return
 
                 if clist.get_row_data(row) == 0:
@@ -615,7 +618,10 @@ class mainDialog:
                 prof.DNS.TertiaryDNS = entry.get_text()
 
     def on_searchDnsEntry_changed(self, entry):
-        pass
+        if len (string.strip (entry.get_text ())) == 0:
+            self.xml.get_widget ("dnsAddButton").set_sensitive (FALSE)
+        else:
+            self.xml.get_widget ("dnsAddButton").set_sensitive (TRUE)
 
     def on_dnsAddButton_clicked(self, *args):
         profilelist = getProfileList()
@@ -630,12 +636,13 @@ class mainDialog:
                 prof.DNS.SearchList.append(searchDnsEntry)
                 prof.DNS.SearchList.commit()
                 self.hydrate()
+        self.xml.get_widget("searchDnsEntry").grab_focus ()
 
     def on_dnsEditButton_clicked (self, *args):
         clist = self.xml.get_widget("dnsList")
-        name = clist.get_text(clist.selection[0], 0)
         if len(clist.selection) == 0:
             return
+        name = clist.get_text(clist.selection[0], 0)
 
         dialog = editDomainDialog(name)
         dialog.main = self
@@ -856,7 +863,7 @@ class mainDialog:
         name = profilelist[clist.selection[0]].ProfileName
 
         if name == 'default':
-            generic_error_dialog ('The default Profile can not be deleted!', self.dialog)
+            generic_error_dialog (_('The default Profile can not be deleted!'), self.dialog)
             return
 
         buttons = generic_yesno_dialog(_('Do you really want to delete profile "') + str(name) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
