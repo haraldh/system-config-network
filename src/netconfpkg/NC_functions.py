@@ -1,6 +1,10 @@
 import re
 import gnome
 import gnome.ui
+import traceback
+import sys
+import os
+import os.path
 
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
@@ -42,3 +46,50 @@ def getDeviceType(devname):
         if re.search(i, devname):
             type = deviceTypeDict[i]
     return type
+
+def updateNetworkScripts():
+    devlist = os.listdir(OLDSYSCONFDEVICEDIR)
+
+    if not os.path.isdir(SYSCONFDEVICEDIR):
+        os.mkdir(SYSCONFDEVICEDIR)
+
+    if not os.path.isdir(SYSCONFPROFILEDIR):
+        os.mkdir(SYSCONFPROFILEDIR)
+
+    if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
+        os.mkdir(SYSCONFPROFILEDIR+'/default/')
+
+    for dev in devlist:
+        if dev[:6] != 'ifcfg-':
+            continue
+
+        if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev):
+            #print dev+" already a symlink, skipping it."
+            continue
+
+        if getDeviceType(dev[6:]) == 'Unknown':
+            #print dev+" has unknown device type, skipping it."
+            continue
+
+        print "Moving "+dev+" to devices and putting it into the default profile."
+
+        try:
+            os.unlink(SYSCONFDEVICEDIR+'/'+dev)
+        except:
+            pass
+
+        try:
+            os.unlink(SYSCONFPROFILEDIR+'/default/'+dev)
+        except:
+            pass
+
+        try:
+            os.rename(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
+            os.symlink(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)
+            os.symlink(SYSCONFPROFILEDIR+'/default/'+dev, OLDSYSCONFDEVICEDIR+'/'+dev)
+        except:
+            print "An error occured during the conversion of device "+dev+", skipping."
+            (type, value, tb) = sys.exc_info()
+            list = traceback.format_exception (type, value, tb)
+            print list
+            continue
