@@ -74,7 +74,7 @@ PYTHON_FILES = \
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg
-netconfpkg_DATA := $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
+netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
 
 execdir = $(sbindir)
 
