@@ -40,8 +40,7 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 
 Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-               ADSLInterface, TokenRingInterface, CipeInterface,
-               WirelessInterface ]
+               ADSLInterface, TokenRingInterface, CipeInterface ]
 
 
 class NewInterfaceDialog:
