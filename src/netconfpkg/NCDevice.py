@@ -95,9 +95,12 @@ class Device(DeviceList.Device_base):
         self.setDomain(other.getDomain())
         self.setAutoDNS(other.getAutoDNS())
         self.setHardwareAddress(other.getHardwareAddress())
-        self.createStaticRoutes().apply(other.getStaticRoutes())
-        self.createCipe().apply(other.getCipe())
-        self.createWireless().apply(other.getWireless())
+        if self.createStaticRoutes():
+            self.StaticRoutes.apply(other.getStaticRoutes())
+        if self.createCipe():
+            self.Cipe.apply(other.getCipe())
+        if self.createWireless():
+            self.Wireless.apply(other.getWireless())
         if self.createDialup():
             self.Dialup.apply(other.getDialup())
 
