@@ -27,6 +27,7 @@ import gettext
 import string
 import ethtool
 from netconfpkg import ethtool
+from NC_functions import *
 
 VERSION = '0.1.0'
 COPYRIGHT = 'Copyright (C) 2002 Red Hat, Inc.'
