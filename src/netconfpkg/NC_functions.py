@@ -51,7 +51,8 @@ deviceTypes = [ 'Ethernet',
                 'Loopback',
                 'xDSL',
                 'CIPE',
-                'Wireless'
+                'Wireless',
+		'Token Ring'
                 ]
 
 modemDeviceList = [ '/dev/modem', '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
@@ -61,6 +62,7 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ppp[0-9]+(:[0-9]+)?$':'Modem',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
                '^cipcb[0-9]+(:[0-9]+)?$':'CIPE',
+	       '^tr[0-9]+(:[0-9]+)?$':'Token Ring',
                '^lo$':'Loopback'}
 
 class TestError(Exception):
@@ -101,6 +103,35 @@ def create_ethernet_combo(hardwarelist, devname):
         
         for hw in hardwarelist:
             if hw.Type == "Ethernet":
+                desc = str(hw.Name) + ' (' + hw.Description + ')'
+                try:
+                    i = hwdesc.index(hw.Name)
+                    hwdesc[i] = desc
+                except:
+                    hwdesc.append(desc)
+                    
+                if devname and hw.Name == devname:
+                    hwcurr = desc
+                    
+        if not hwcurr:
+            if devname:
+                hwcurr = devname
+            elif len(hwdesc):
+                hwcurr = hwdesc[0]
+
+        hwdesc.sort()
+        
+        return (hwcurr, hwdesc[:])
+
+def create_tokenring_combo(hardwarelist, devname):
+        hwdesc = [ 'tr0', 'tr1', 'tr2',
+                   'tr3', 'tr4', 'tr5',
+                   'tr6', 'tr7', 'tr8'
+                   ]
+        hwcurr = None
+        
+        for hw in hardwarelist:
+            if hw.Type == "Token Ring":
                 desc = str(hw.Name) + ' (' + hw.Description + ')'
                 try:
                     i = hwdesc.index(hw.Name)

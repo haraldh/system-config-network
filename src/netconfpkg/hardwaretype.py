@@ -64,7 +64,7 @@ class hardwareTypeDialog:
         load_icon("network.xpm", self.dialog)
 
         hardwarelist = NCHardwareList.getHardwareList()
-        devicetypes = ['Ethernet', 'Modem', 'ISDN']
+        devicetypes = ['Ethernet', 'Modem', 'ISDN', 'Token Ring']
         for hw in hardwarelist:
             if hw.Type == 'ISDN':
                 devicetypes = ["Ethernet", "Modem"]

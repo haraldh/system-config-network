@@ -17,80 +17,101 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import NC_functions
-from NC_functions import _
-import NCHardwareList
-#import gnome.ui
+import sys
+sys.path.append("/usr/lib/rhs/python/")
+
+
 import gtk
+import GDK
+import GTK
+import libglade
+import signal
+import os
+import GdkImlib
+import string
+import gettext
+import re
+import Conf
+import commands
+import NC_functions
+
 from gtk import TRUE
 from gtk import FALSE
-import libglade
-import string
-import os
-import Conf
-from ethernethardware import ethernetHardwareDialog
 
-class ethernetHardware:
-    def __init__ (self, toplevel=None):
 
-        glade_file = "EthernetRingHardwareDruid.glade"
- 
+##
+## I18N
+##
+gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(NC_functions.PROGNAME)
+_=gettext.gettext
+
+class tokenringHardwareDialog:
+    def __init__(self, hw, xml_main = None):
+        self.hw = hw
+        self.xml_main = xml_main
+
+        glade_file = "tokenringhardware.glade"
+
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
             glade_file = NC_functions.NETCONFDIR + glade_file
- 
-        self.xml = libglade.GladeXML(glade_file, 'druid')
+
+        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
+
         self.xml.signal_autoconnect(
             {
-            "on_adapterEntry_changed" : self.on_adapterEntry_changed,
-            "on_hardware_page_prepare" : self.on_hardware_page_prepare,
-            "on_hardware_page_next" : self.on_hardware_page_next,
-            "on_hardware_page_back" : self.on_hardware_page_back
+            "on_okButton_clicked" : self.on_okButton_clicked,
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_adapterEntry_changed" : self.on_adapterEntry_changed
             })
 
-        self.toplevel = toplevel
-        self.hardwarelist = NCHardwareList.getHardwareList()
-        self.hw = None
-        self.has_ethernet = TRUE
-        self.druids = []
- 
-        druid = self.xml.get_widget('druid')
-        for I in druid.children():
-            druid.remove(I)
-            self.druids.append(I)
-            
+        self.dialog = self.xml.get_widget("Dialog")
+        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        self.dialog.connect("hide", gtk.mainquit)
+        NC_functions.load_icon("network.xpm", self.dialog)
+        self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
-        
-    def get_project_name(self):
-        pass
+        self.button = 0
 
-    def get_project_description(self):
-        pass
-    
-    def get_druids(self):
-        for self.hw in self.hardwarelist:
-            if self.hw.Type == 'Ethernet': return
+    def on_Dialog_delete_event(self, *args):
+        self.button = 1
 
-        self.has_ethernet = FALSE
-        return self.druids[0:]
-
-    def on_hardware_page_prepare(self, druid_page, druid):
-        pass
-    
-    def on_hardware_page_next(self, druid_page, druid):
+    def on_okButton_clicked(self, button):
         self.dehydrate()
+        cmd = '/sbin/modprobe '+self.hw.Card.ModuleName
+        if self.hw.Card.IRQ:
+            cmd = cmd + ' irq='+self.hw.Card.IRQ
+        if self.hw.Card.IoPort:
+            cmd = cmd + ' io='+self.hw.Card.IoPort
+        if self.hw.Card.IoPort1:
+            cmd = cmd + ' io1='+self.hw.Card.IoPort1
+        if self.hw.Card.IoPort2:
+            cmd = cmd + ' io2='+self.hw.Card.IoPort2
+        if self.hw.Card.Mem:
+            cmd = cmd + ' mem='+self.hw.Card.Mem
+        if self.hw.Card.DMA0:
+            cmd = cmd + ' dma='+self.hw.Card.DMA0
+        if self.hw.Card.DMA1:
+            cmd = cmd + ' dma1='+self.hw.Card.DMA1
+        (status, output) = commands.getstatusoutput(cmd)
+        if status != 0:
+            NC_functions.generic_error_dialog('The Token Ring card could not be initialized. Please verify your settings and try again.', self.dialog)
+            self.button = 1
+            return
+        self.hw.commit()
 
-    def on_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
+    def on_cancelButton_clicked(self, button):
+        self.button = 1
 
     def on_adapterEntry_changed(self, entry):
         pass
-    
+
     def hydrate(self):
-        if self.hw and self.hw.Name:
-            self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
+        if self.hw.Name:
+            self.xml.get_widget('tokenringDeviceEntry').set_text(self.hw.Name)
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
             self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
             self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
@@ -113,19 +134,16 @@ class ethernetHardware:
         list = []
         modInfo = Conf.ConfModInfo()
         for i in modInfo.keys():
-            if modInfo[i]['type'] == "eth":
+            if modInfo[i]['type'] == "tr":
                 list.append(modInfo[i]['description'])
         list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
 
     def dehydrate(self):
-        if not self.has_ethernet:
-            id = self.hardwarelist.addHardware()
-            self.hw = self.hardwarelist[id]
-        self.hw.Type = 'Ethernet'
-        self.hw.createCard()
-        self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
+        self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
+        self.hw.Type = 'Token Ring'
+        self.hw.createCard()
         self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
@@ -139,3 +157,8 @@ class ethernetHardware:
             if modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i
 
+# make ctrl-C work
+if __name__ == "__main__":
+    signal.signal (signal.SIGINT, signal.SIG_DFL)
+    window = tokenringHardwareDialog()
+    gtk.mainloop()

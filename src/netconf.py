@@ -465,8 +465,13 @@ class mainDialog:
         device.createCipe()
         device.createWireless()
 
-        if type == "Ethernet":
-            cfg = ethernetConfigDialog(device, self.xml)
+        if type == "ethernet":
+            cfg = ethernetconfigdialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("dialog")
+            button = dialog.run ()
+
+        elif type == "Token Ring":
+            cfg = tokenringConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
@@ -982,7 +987,10 @@ class mainDialog:
                     return
 
                 hw = hardwarelist[clist.selection[0]]
-            dialog = ethernetHardwareDialog(hw, self.xml)
+	    if deviceType == 'Token Ring':
+            	dialog = tokenringHardwareDialog(hw, self.xml)
+	    else:
+            	dialog = ethernetHardwareDialog(hw, self.xml)
 
         if deviceType == 'Modem':
             if edit:
