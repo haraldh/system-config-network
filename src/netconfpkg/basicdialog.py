@@ -82,7 +82,9 @@ class basicDialog:
         notebook = self.xml.get_widget("basicNotebook")
 
         self.xml.get_widget('deviceTypeComboBox').set_popdown_strings(deviceTypes)
-        self.fill_dialog()
+        self.setupDialog()
+
+        self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
         for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
             widget = self.xml.get_widget (wname)
@@ -94,7 +96,8 @@ class basicDialog:
         self.dialog.set_close(TRUE)
         #self.dialog.close_hides(TRUE)
         #self.dialog.show()
-    def fill_dialog(self):
+
+    def setupDialog(self):
         if self.device.DeviceId:
             self.xml.get_widget('deviceNameEntry').set_text(self.device.DeviceId)
             if self.device.Type and self.device.Type != "" \
@@ -105,7 +108,7 @@ class basicDialog:
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser)
             
-            self.xml.get_widget('ipSettingCB').set_active(self.device.BootProto != 'static')
+            self.xml.get_widget('ipSettingCB').set_active(self.device.BootProto != 'static' and self.device.BootProto != 'none')
             self.xml.get_widget('addressEntry').set_text(self.device.IP)
             self.xml.get_widget('netmaskEntry').set_text(self.device.Netmask)
             self.xml.get_widget('gatewayEntry').set_text(self.device.Gateway)
@@ -114,7 +117,7 @@ class basicDialog:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
             self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
 
-    def read_dialog(self):
+    def digestDialog(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
@@ -150,21 +153,18 @@ class basicDialog:
             self.dialog.set_icon(pix, mask)
         
     def on_Dialog_delete_event(self, *args):
-        pass
+        self.device.rollback()
     
     def on_okButton_clicked(self, button):
-        self.read_dialog()
+        self.digestDialog()
         self.device.commit()
-        pass
     
     def on_cancelButton_clicked(self, button):
         self.device.rollback()
-        pass
     
     def on_applyButton_clicked(self, button):
-        self.read_dialog()
+        self.digestDialog()
         self.device.commit()
-        pass
 
     def on_configureButton_clicked(self, button):
         deviceType = self.xml.get_widget("deviceTypeEntry").get_text()
@@ -201,6 +201,7 @@ class basicDialog:
         self.device.DeviceId = deviceName
         self.xml.get_widget("deviceTypeComboBox").set_sensitive(len(deviceName) > 0)
         self.xml.get_widget("configureButton").set_sensitive(len(deviceName) > 0)
+        self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0)
 
     def on_ipSettingCB_toggled(self, check):
         self.xml.get_widget("dynamicConfigComboBox").set_sensitive(check["active"])
