@@ -33,5 +33,9 @@ install-data-local:
 	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/neat
 	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/internet-druid
 
+dist: configure Makefile config.h
+
 srpm: distcheck
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
+
+
