@@ -80,18 +80,22 @@ class tcpConfigDialog:
 
         self.hydrate()
 
-        flist = [ "trafficFrame", "securityFrame", "accountingFrame" ]
-        if self.device.Type == CIPE:
-            flist.insert(0, 'hostnameFrame')
-            flist.insert(0, 'tcpipFrame')
-
-        for wname in flist:
-            widget = self.xml.get_widget (wname)
+        for wname in [ 'trafficFrame', 'securityFrame', 'accountingFrame' ]:
+            widget = self.xml.get_widget(wname)
             if widget != None:
                 page = notebook.page_num(widget)
                 if page != None:
                     notebook.remove_page(page)
-                    
+
+        # disable TCP/IP and hostname Tabs for CIPE
+        isCipe = (self.device.Type != CIPE)
+        self.xml.get_widget('hostnameFrame').set_sensitive(isCipe)
+        self.xml.get_widget('tcpipFrame').set_sensitive(isCipe)
+        self.xml.get_widget('hostnameLabel').set_sensitive(isCipe)
+        self.xml.get_widget('tcpipLabel').set_sensitive(isCipe)
+        self.xml.get_widget('tcpipLabel').set_sensitive(isCipe)
+        notebook.set_page(notebook.page_num(self.xml.get_widget('routingFrame')))
+        
         self.dialog.set_close(TRUE)
 
     def hydrate(self):
