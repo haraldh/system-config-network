@@ -334,10 +334,11 @@ class ISDNDialupDialog(DialupDialog):
         
         if not dialup.Callback: dialup.createCallback()
         if self.xml.get_widget("callbackCB").get_active():
-            if self.xml.get_widget('CallbackMode').get_label() == _('in'):
+            if self.xml.get_widget('CallbackMode').get_child().get_label() == _('in'):
                 dialup.Callback.Type = 'in'
             else:
                 dialup.Callback.Type = 'out'
+            raise tttt
             dialup.Callback.Delay = self.xml.get_widget("callbackDelaySB").get_value_as_int()
             dialup.Callback.Hup = false
             dialup.Callback.Compression = self.xml.get_widget("cbcpCB").get_active()
