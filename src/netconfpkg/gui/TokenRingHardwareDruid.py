@@ -125,7 +125,7 @@ class tokenringHardware:
 
     def dehydrate(self):
         if not self.has_tokenring:
-            id = self.hardwarelist.addHardware()
+            id = self.hardwarelist.addHardware(TOKENRING)
             self.hw = self.hardwarelist[id]
         self.hw.Type = TOKENRING
         self.hw.createCard()

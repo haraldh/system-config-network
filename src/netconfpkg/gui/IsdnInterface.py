@@ -89,7 +89,7 @@ class IsdnInterface:
                  "128kbps.")
 
     def get_druids(self):
-        Type = 'ISDN'
+        Type = ISDN
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
                                          do_save = self.do_save)
         for hw in self.hardwarelist:
@@ -149,7 +149,7 @@ class IsdnInterface:
 
     def hydrate(self):
         has_card = FALSE
-        id = self.hardwarelist.addHardware()
+        id = self.hardwarelist.addHardware(ISDN)
         self.hw = self.hardwarelist[id]
         self.hw.Type = 'ISDN'
         self.hw.createCard()

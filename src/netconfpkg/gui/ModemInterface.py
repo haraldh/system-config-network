@@ -85,7 +85,7 @@ class ModemInterface:
         for self.hw in self.hardwarelist:
             if self.hw.Type == Type: return dialup.get_druids()
  
-        id = self.hardwarelist.addHardware()
+        id = self.hardwarelist.addHardware(Type)
         self.hw = self.hardwarelist[id]
         self.hw.Type = Type
         self.hw.Name = Type + '0'

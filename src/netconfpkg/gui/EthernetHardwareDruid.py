@@ -129,7 +129,7 @@ class ethernetHardware:
 
     def dehydrate(self):
         if not self.has_ethernet:
-            id = self.hardwarelist.addHardware()
+            id = self.hardwarelist.addHardware(ETHERNET)
             self.hw = self.hardwarelist[id]
         self.hw.Type = 'Ethernet'
         self.hw.createCard()
