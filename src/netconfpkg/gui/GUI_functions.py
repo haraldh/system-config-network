@@ -542,7 +542,7 @@ def gui_run_dialog(command, argv, searchPath = 0,
     if status:
         img = xml.get_widget("statusImage")
         if img:
-            .set_from_stock("gtk-dialog-error", 6)
+            img.set_from_stock("gtk-dialog-error", 6)
         if errlabel:
             lbl.set_text(errlabel)
         else:
@@ -592,5 +592,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/28 10:18:15 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2003/10/28 10:18:52 $"
+__version__ = "$Revision: 1.29 $"
