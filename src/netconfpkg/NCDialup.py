@@ -1,6 +1,8 @@
 import sys
 import ConfSMB
 
+import string
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
@@ -43,6 +45,7 @@ class IsdnDialup(Dialup):
                 'Ihup' : 'IHUP',
                 'SlaveDevice' : 'SLAVE_DEVICE',
                 'Layer2' : 'L2_PROT',
+                'Layer3' : 'L3_PROT',
                 }
     
     def __init__(self, list = None, parent = None):
@@ -98,42 +101,10 @@ class IsdnDialup(Dialup):
         compression = self.createCompression()
         compression.load(conf)
         
-        if conf['VJ'] == 'on' or conf['VJ'] == 'yes':
-            compression.VJTcpIp = true
-        else:
-            compression.VJTcpIp = false
-        if conf['VJCCOMP'] == 'on' or conf['VJCCOMP'] == 'yes':
-            compression.VJID = true
-        else:
-            compression.VJID = false
-        if conf['AC'] == 'on' or conf['AC'] == 'yes':
-            compression.AdressControl = true
-        else:
-            compression.AdressControl = false
-        if conf['PC'] == 'on' or conf['PC'] == 'yes':
-            compression.ProtoField = true
-        else:
-            compression.ProtoField = false
-        if conf['BSDCOMP'] == 'on' or conf['BSDCOMP'] == 'yes':
-            compression.BSD = true
-        else:
-            compression.BSD = false
-        if conf['CCP'] == 'on' or conf['CCP'] == 'yes':
-            compression.CCP = true
-        else:
-            compression.CCP = false
-
         if conf.has_key('CALLBACK'):
             if conf['CALLBACK'] == 'on':
                 callback = self.createCallback()
                 callback.load(conf)
-                callback.Number = conf['PHONE_IN']
-                callback.Delay = string.atoi(conf['CBDELAY'])
-                callback.Hup = conf['CBHUP']
-                if conf['CBCP'] == 'on' or conf['CBCP'] == 'yes':
-                    callback.CBCP = true
-                else:
-                    callback.CBCP = false
             else:
                 self.delCallback()
 
