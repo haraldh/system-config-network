@@ -52,7 +52,9 @@ def get_pixbuf(pixmap_file):
                 if not os.path.exists(pixmap_file):
                     pixmap_file = NETCONFDIR + "pixmaps/" + fn
                     if not os.path.exists(pixmap_file):
-                        return None, None
+                        pixmap_file = "/usr/share/pixmaps/" + fn
+                        if not os.path.exists(pixmap_file):
+                            return None, None
 
     pixbuf = gtk.gdk.pixbuf_new_from_file(pixmap_file)
 
