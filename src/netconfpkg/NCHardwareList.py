@@ -32,6 +32,28 @@ if not "/usr/lib/rhs/python" in sys.path:
 from Conf import *
 from ConfSMB import *
 
+class MyConfModules(ConfModules):
+    def __init__(self, filename = '/etc/modules.conf'):
+        ConfModules.__init__(self, filename)
+        
+    def __delitem__(self, varname):
+        # delete *every* instance...
+        place=self.tell()
+        for key in self.vars[varname].keys():
+            self.rewind()
+
+            # workaround for brokem regexp implementation
+            restr = '^[\\t ]*' + key + '[\\t ]+' + varname
+            while self.findnextline(restr):
+                self.deleteline()
+
+            restr = '^[\\t ]*' + key + '[\\t ]+\\-k[\\t ]+' + varname
+            while self.findnextline(restr):
+                self.deleteline()
+            
+        del self.vars[varname]
+        self.seek(place)
+        
 class ConfHWConf(Conf):
     def __init__(self):
         Conf.__init__(self, '/etc/sysconfig/hwconf')
@@ -155,7 +177,7 @@ class HardwareList(HardwareList_base):
         self.commit()
 
     def save(self):
-        modules = ConfModules()
+        modules = MyConfModules()
         wvdial  = ConfSMB('/etc/wvdial.conf')
         isdn    = NCisdnhardware.ConfISDN()
 
@@ -202,8 +224,21 @@ class HardwareList(HardwareList_base):
                 # and it gets deleted
                 del wvdial[dev]
                     
-        
-
+        # Clean up modules
+        for mod in modules.keys():
+            type = getDeviceType(mod)
+            if type != 'Ethernet':
+                continue
+            print "Testing " + str(mod)
+            for hw in self.data:
+                if hw.Type == 'Ethernet' and hw.Name == mod:
+                    break
+            else:
+                print "Removing " + str(mod)
+                print str(modules.vars[mod].keys())
+                del modules[mod]
+                print "Test: " + str(modules[mod])
+                
         modules.write()
         wvdial.write()
         isdn.save()
