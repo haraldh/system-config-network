@@ -1,4 +1,4 @@
-docdir     = $(datadir)/redhat-config-network/help
+docdir     = $(datadir)/redhat-config-network/help/figs
 doc_DATA   =  neat-cipe.png \
 	neat-cipe-settings.png \
 	neat-control.png \
