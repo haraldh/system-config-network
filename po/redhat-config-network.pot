@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: Mon Aug 20 23:50:47 2001\n"
+"PO-Revision-Date: Wed Aug 22 12:33:55 2001\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "sync PPP"
 msgstr ""
 
-#: ../src/netconfpkg/ADSLInterface.py:106 ../src/netconfpkg/DialupDruid.py:105
+#: ../src/netconfpkg/ADSLInterface.py:113 ../src/netconfpkg/DialupDruid.py:105
 msgid "You have selected the following information:"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:125
+#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:130
 msgid "Off"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Domain Name:"
 msgstr ""
 
-#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:133
+#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:138
 msgid "Very High"
 msgstr ""
 
@@ -297,10 +297,6 @@ msgstr ""
 msgid "The profile can't be named \"default\"!"
 msgstr ""
 
-#: ../src/netconfpkg/ModemInterface.py:70
-msgid "Create a new Modem connection.  The dialup interface is used primarily for connecting to an ISP over a modem."
-msgstr ""
-
 #: ../src/glade-strings.c:972
 msgid "eth0"
 msgstr ""
@@ -309,7 +305,7 @@ msgstr ""
 msgid "_Secret Key:"
 msgstr ""
 
-#: ../src/netconfpkg/ADSLInterface.py:109 ../src/netconfpkg/DialupDruid.py:108
+#: ../src/netconfpkg/ADSLInterface.py:116 ../src/netconfpkg/DialupDruid.py:108
 msgid "Login Name:"
 msgstr ""
 
@@ -347,6 +343,10 @@ msgstr ""
 
 #: ../src/glade-strings.c:581
 msgid "Port"
+msgstr ""
+
+#: ../src/netconfpkg/ADSLInterface.py:75
+msgid "Create an xDSL connection.  This is a connection that uses one of several types of broadband connections collective known as Digital Subscriber Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at the same speed), and several others.  These types of connections are common in the United States, and are gaining acceptance elsewhere.  Speeds vary according to the technology used, but generally range from 144kbps to 1.0Mbps."
 msgstr ""
 
 #: ../src/glade-strings.c:435
@@ -405,7 +405,7 @@ msgstr ""
 msgid "12"
 msgstr ""
 
-#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:131
+#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:136
 msgid "High"
 msgstr ""
 
@@ -653,7 +653,7 @@ msgstr ""
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr ""
 
-#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:127
+#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:132
 msgid "Low"
 msgstr ""
 
@@ -693,6 +693,10 @@ msgstr ""
 msgid "TCP/IP"
 msgstr ""
 
+#: ../src/netconfpkg/ModemInterface.py:70
+msgid "Create a new Modem connection.  This is a connection that uses a serial analog modem to dial into to your Internet Service Provider. These modems use sound over a normal copper telephone line to transmit data.  These types of connections are available just about anywhere in the world where there is a phone system.  Speeds range from 14.4kbps to 50kbps"
+msgstr ""
+
 #: ../src/glade-strings.c:225
 msgid "Create DSL connection"
 msgstr ""
@@ -711,7 +715,7 @@ msgstr ""
 msgid "_Provider Name:"
 msgstr ""
 
-#: ../src/netconfpkg/ModemInterface.py:120
+#: ../src/netconfpkg/ModemInterface.py:125
 msgid "Generic Modem"
 msgstr ""
 
@@ -865,7 +869,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: ../src/netconfpkg/ADSLInterface.py:108 ../src/netconfpkg/DialupDruid.py:107
+#: ../src/netconfpkg/ADSLInterface.py:115 ../src/netconfpkg/DialupDruid.py:107
 msgid "Provider Name:"
 msgstr ""
 
@@ -909,7 +913,7 @@ msgstr ""
 msgid "_AC-Name:"
 msgstr ""
 
-#: ../src/netconfpkg/ADSLInterface.py:110 ../src/netconfpkg/DialupDruid.py:110
+#: ../src/netconfpkg/ADSLInterface.py:117 ../src/netconfpkg/DialupDruid.py:110
 msgid "Press \"Finish\" to create this account"
 msgstr ""
 
@@ -937,7 +941,7 @@ msgstr ""
 msgid "_IO:"
 msgstr ""
 
-#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:129
+#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:134
 msgid "Medium"
 msgstr ""
 
@@ -1101,10 +1105,6 @@ msgstr ""
 msgid "Do you really want to delete \"%s\"?"
 msgstr ""
 
-#: ../src/netconfpkg/IsdnInterface.py:71
-msgid "Create a new ISDN connection.  The ISDN interface is used primarily for connecting to an ISP over a ISDN."
-msgstr ""
-
 #: ../src/glade-strings.c:868
 msgid "_Phone Number"
 msgstr ""
@@ -1233,11 +1233,11 @@ msgstr ""
 msgid "PPP Option List"
 msgstr ""
 
-#: ../src/netconfpkg/ADSLInterface.py:107
+#: ../src/netconfpkg/ADSLInterface.py:114
 msgid "Ethernet Device:"
 msgstr ""
 
-#: ../src/netconfpkg/IsdnInterface.py:68
+#: ../src/netconfpkg/IsdnInterface.py:70
 msgid "ISDN connection"
 msgstr ""
 
@@ -1301,8 +1301,8 @@ msgstr ""
 msgid "Modem P_ort:"
 msgstr ""
 
-#: ../src/netconfpkg/ADSLInterface.py:75
-msgid "Create a new xDSL connection.  The xDSL connection is used primarily for connecting to an ISP over a ethernet."
+#: ../src/netconfpkg/IsdnInterface.py:73
+msgid "Create a new ISDN connection.  This is a connection that uses an Integrated Services Digital Network line to dial into to your Internet Service Provider.  This type of technology requires a special phone line to be installed by your telephone company. It also requires a device known as a Terminal Adapter(TA) to terminate the ISDN connection from your ISP.  This type of connection is popular in Europe and several other technologically advanced regions.  It is available but uncommon in the USA.  Speeds range from 64kbps to 128kbps."
 msgstr ""
 
 #: ../src/glade-strings.c:348

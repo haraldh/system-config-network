@@ -121,7 +121,7 @@ msgstr "Vennligst velg sikkerhetsnivå for denne enheten."
 msgid "sync PPP"
 msgstr "synkron PPP"
 
-#: ../src/netconfpkg/ADSLInterface.py:106 ../src/netconfpkg/DialupDruid.py:105
+#: ../src/netconfpkg/ADSLInterface.py:113 ../src/netconfpkg/DialupDruid.py:105
 msgid "You have selected the following information:"
 msgstr "Du har valgt følgende informasjon:"
 
@@ -145,7 +145,7 @@ msgstr "_Flytkontroll:"
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:125
+#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:130
 msgid "Off"
 msgstr "Av"
 
@@ -157,7 +157,7 @@ msgstr "9600"
 msgid "Domain Name:"
 msgstr "Domenenavn:"
 
-#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:133
+#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:138
 msgid "Very High"
 msgstr "Meget høy"
 
@@ -217,7 +217,9 @@ msgstr "Slå på _BSD-komprimering"
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
 "your ISP."
-msgstr "Skriv inn passord for din konto. Hvis du ikke vet dette vennligst kontakt din ISP."
+msgstr ""
+"Skriv inn passord for din konto. Hvis du ikke vet dette vennligst kontakt "
+"din ISP."
 
 #: ../src/glade-strings.c:283
 msgid "Do_main:"
@@ -300,14 +302,6 @@ msgstr "Till_at kun dette nummeret for innringing"
 msgid "The profile can't be named \"default\"!"
 msgstr "Profilen kan ikke ha navnet \"standard\"!"
 
-#: ../src/netconfpkg/ModemInterface.py:70
-msgid ""
-"Create a new Modem connection.  The dialup interface is used primarily for "
-"connecting to an ISP over a modem."
-msgstr ""
-"Oppretter en ny modem-forbindelse. Modem-forbindelsen brukes primært for å "
-"koble til en ISP via modem."
-
 #: ../src/glade-strings.c:972
 msgid "eth0"
 msgstr "eth0"
@@ -316,7 +310,7 @@ msgstr "eth0"
 msgid "_Secret Key:"
 msgstr "_Hemmelig nøkkel:"
 
-#: ../src/netconfpkg/ADSLInterface.py:109 ../src/netconfpkg/DialupDruid.py:108
+#: ../src/netconfpkg/ADSLInterface.py:116 ../src/netconfpkg/DialupDruid.py:108
 msgid "Login Name:"
 msgstr "Brukernavn:"
 
@@ -356,6 +350,18 @@ msgstr "Ad_resse for ekstern vert:"
 msgid "Port"
 msgstr "Port"
 
+#: ../src/netconfpkg/ADSLInterface.py:75
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber Lines. "
+" This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads "
+"at the same speed), and several others.  These types of connections are "
+"common in the United States, and are gaining acceptance elsewhere.  Speeds "
+"vary according to the technology used, but generally range from 144kbps to "
+"1.0Mbps."
+msgstr ""
+
 #: ../src/glade-strings.c:435
 msgid "IO_1:"
 msgstr "IO_1:"
@@ -392,7 +398,9 @@ msgstr "Konfigurer DSL-forbindelse"
 msgid ""
 "Note that DNS information from automatic device configuration will take "
 "precedence over any settings done globally."
-msgstr "Merk at DNS-informasjon fra automatisk konfigurasjon av enhet vil komme før andre globale innstillinger."
+msgstr ""
+"Merk at DNS-informasjon fra automatisk konfigurasjon av enhet vil komme før "
+"andre globale innstillinger."
 
 #: ../src/glade-strings.c:748
 msgid "_Address:"
@@ -414,7 +422,7 @@ msgstr "La _PPP gjøre all autentisering"
 msgid "12"
 msgstr "12"
 
-#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:131
+#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:136
 msgid "High"
 msgstr "Høy"
 
@@ -665,7 +673,7 @@ msgstr "Tilbyder"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "Slå på _VJ TCP/IP Header Compression"
 
-#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:127
+#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:132
 msgid "Low"
 msgstr "Lav"
 
@@ -705,6 +713,15 @@ msgstr "Vennligst velg type maskinvareenhet som skal legges til:"
 msgid "TCP/IP"
 msgstr "TCP/IP"
 
+#: ../src/netconfpkg/ModemInterface.py:70
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system.  Speeds range from 14.4kbps to 50kbps"
+msgstr ""
+
 #: ../src/glade-strings.c:225
 msgid "Create DSL connection"
 msgstr "Opprett DSL-forbindelse"
@@ -725,7 +742,7 @@ msgstr ""
 msgid "_Provider Name:"
 msgstr "Navn _på tilbyder:"
 
-#: ../src/netconfpkg/ModemInterface.py:120
+#: ../src/netconfpkg/ModemInterface.py:125
 msgid "Generic Modem"
 msgstr "Vanlig modem"
 
@@ -762,7 +779,8 @@ msgstr "Konfigurasjon for din eksterne partner"
 
 #: ../src/glade-strings.c:364
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "Skriv inn telefonnummer til din ISP (uten prefiks/retningsnummer/landskode)."
+msgstr ""
+"Skriv inn telefonnummer til din ISP (uten prefiks/retningsnummer/landskode)."
 
 #: ../src/glade-strings.c:865
 msgid "_PPP Option:"
@@ -884,7 +902,7 @@ msgstr "Maskinvaretype:"
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/netconfpkg/ADSLInterface.py:108 ../src/netconfpkg/DialupDruid.py:107
+#: ../src/netconfpkg/ADSLInterface.py:115 ../src/netconfpkg/DialupDruid.py:107
 msgid "Provider Name:"
 msgstr "Navn på tilbyder:"
 
@@ -928,7 +946,7 @@ msgstr "Prefi_ks:"
 msgid "_AC-Name:"
 msgstr "_AC-navn:"
 
-#: ../src/netconfpkg/ADSLInterface.py:110 ../src/netconfpkg/DialupDruid.py:110
+#: ../src/netconfpkg/ADSLInterface.py:117 ../src/netconfpkg/DialupDruid.py:110
 msgid "Press \"Finish\" to create this account"
 msgstr "Trykk \"Fullfør\" for å opprette denne kontoen"
 
@@ -956,7 +974,7 @@ msgstr "Ekstern _virtuell adresse:"
 msgid "_IO:"
 msgstr "_IO:"
 
-#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:129
+#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:134
 msgid "Medium"
 msgstr "Middels"
 
@@ -1128,14 +1146,6 @@ msgstr "460800"
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Vil du virkelig slette \"%s\"?"
 
-#: ../src/netconfpkg/IsdnInterface.py:71
-msgid ""
-"Create a new ISDN connection.  The ISDN interface is used primarily for "
-"connecting to an ISP over a ISDN."
-msgstr ""
-"Oppretter en ny ISDN-forbindelse. ISDN-grensesnittet brukes primært for å "
-"koble seg til en ISP over ISDN."
-
 #: ../src/glade-strings.c:868
 msgid "_Phone Number"
 msgstr "_Telefonnummer"
@@ -1266,11 +1276,11 @@ msgstr "Modemkonfigurasjon"
 msgid "PPP Option List"
 msgstr "Alternativer for PPP"
 
-#: ../src/netconfpkg/ADSLInterface.py:107
+#: ../src/netconfpkg/ADSLInterface.py:114
 msgid "Ethernet Device:"
 msgstr "Ethernet-enhet:"
 
-#: ../src/netconfpkg/IsdnInterface.py:68
+#: ../src/netconfpkg/IsdnInterface.py:70
 msgid "ISDN connection"
 msgstr "ISDN-forbindelse"
 
@@ -1334,13 +1344,17 @@ msgstr "Enhetstype"
 msgid "Modem P_ort:"
 msgstr "Modemp_ort:"
 
-#: ../src/netconfpkg/ADSLInterface.py:75
+#: ../src/netconfpkg/IsdnInterface.py:73
 msgid ""
-"Create a new xDSL connection.  The xDSL connection is used primarily for "
-"connecting to an ISP over a ethernet."
+"Create a new ISDN connection.  This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider.  This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP.  This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
 msgstr ""
-"Oppretter en ny xDSL-forbindelse. En xDSL-forbindelse brukes primært for å "
-"koble seg til en ISP via ethernet."
 
 #: ../src/glade-strings.c:348
 msgid "Enter the login name, that your ISP gave you here."
@@ -1377,6 +1391,28 @@ msgstr "Ukjent"
 #: ../src/glade-strings.c:766
 msgid "_Choose Provider..."
 msgstr "_Velg tilbyder..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Create a new ISDN connection.  This is a connection that uses anIntegrated "
+#~ "Services Digital Network line to dial into to your Internet"
+#~ msgstr ""
+#~ "Oppretter en ny xDSL-forbindelse. En xDSL-forbindelse brukes primært for å "
+#~ "koble seg til en ISP via ethernet."
+
+#~ msgid ""
+#~ "Create a new Modem connection.  The dialup interface is used primarily for "
+#~ "connecting to an ISP over a modem."
+#~ msgstr ""
+#~ "Oppretter en ny modem-forbindelse. Modem-forbindelsen brukes primært for å "
+#~ "koble til en ISP via modem."
+
+#~ msgid ""
+#~ "Create a new ISDN connection.  The ISDN interface is used primarily for "
+#~ "connecting to an ISP over a ISDN."
+#~ msgstr ""
+#~ "Oppretter en ny ISDN-forbindelse. ISDN-grensesnittet brukes primært for å "
+#~ "koble seg til en ISP over ISDN."
 
 #~ msgid "Please select the device type, you want to create"
 #~ msgstr "Vennligst velg enhetstype du ønsker å opprette"

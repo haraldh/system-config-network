@@ -121,7 +121,7 @@ msgstr "이 장치의 보안 수준을 선택해 주십시요."
 msgid "sync PPP"
 msgstr "동기식 PPP"
 
-#: ../src/netconfpkg/ADSLInterface.py:106 ../src/netconfpkg/DialupDruid.py:105
+#: ../src/netconfpkg/ADSLInterface.py:113 ../src/netconfpkg/DialupDruid.py:105
 msgid "You have selected the following information:"
 msgstr "다음과 같은 정보를 선택하셨습니다:"
 
@@ -145,7 +145,7 @@ msgstr "흐름 제어 (_F):"
 msgid "Name"
 msgstr "이름"
 
-#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:125
+#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:130
 msgid "Off"
 msgstr "끔"
 
@@ -157,7 +157,7 @@ msgstr "9600"
 msgid "Domain Name:"
 msgstr "도메인 이름:"
 
-#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:133
+#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:138
 msgid "Very High"
 msgstr "매우 높음"
 
@@ -304,14 +304,6 @@ msgstr "위의 접속 번호만 허가함 (_A)"
 msgid "The profile can't be named \"default\"!"
 msgstr "\"default\"를 프로파일 이름으로 할수 없습니다!"
 
-#: ../src/netconfpkg/ModemInterface.py:70
-msgid ""
-"Create a new Modem connection.  The dialup interface is used primarily for "
-"connecting to an ISP over a modem."
-msgstr ""
-"새로운 모뎀 연결을 생성합니다.  전화걸기 인터페이스는 우선적으로 모뎀을 통해 "
-"인터넷 서비스 회사에 접속하는데 사용됩니다."
-
 #: ../src/glade-strings.c:972
 msgid "eth0"
 msgstr "eth0"
@@ -320,7 +312,7 @@ msgstr "eth0"
 msgid "_Secret Key:"
 msgstr "비밀 키 (_S):"
 
-#: ../src/netconfpkg/ADSLInterface.py:109 ../src/netconfpkg/DialupDruid.py:108
+#: ../src/netconfpkg/ADSLInterface.py:116 ../src/netconfpkg/DialupDruid.py:108
 msgid "Login Name:"
 msgstr "로그인 이름:"
 
@@ -359,6 +351,18 @@ msgstr "원격 Peer 주소 (_R):"
 #: ../src/glade-strings.c:581
 msgid "Port"
 msgstr "포트"
+
+#: ../src/netconfpkg/ADSLInterface.py:75
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber Lines. "
+" This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads "
+"at the same speed), and several others.  These types of connections are "
+"common in the United States, and are gaining acceptance elsewhere.  Speeds "
+"vary according to the technology used, but generally range from 144kbps to "
+"1.0Mbps."
+msgstr ""
 
 #: ../src/glade-strings.c:435
 msgid "IO_1:"
@@ -420,7 +424,7 @@ msgstr "PPP가 모든 인증을 하도록 함"
 msgid "12"
 msgstr "12"
 
-#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:131
+#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:136
 msgid "High"
 msgstr "높음"
 
@@ -674,7 +678,7 @@ msgstr "인터넷 회사"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "VJ TCP/IP 헤더 압축 활성화 (_V)"
 
-#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:127
+#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:132
 msgid "Low"
 msgstr "낮음"
 
@@ -714,6 +718,15 @@ msgstr "추가할 하드웨어 장치의 유형을 선택해 주십시요:"
 msgid "TCP/IP"
 msgstr "TCP/IP"
 
+#: ../src/netconfpkg/ModemInterface.py:70
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system.  Speeds range from 14.4kbps to 50kbps"
+msgstr ""
+
 #: ../src/glade-strings.c:225
 msgid "Create DSL connection"
 msgstr "DSL 연결 생성"
@@ -734,7 +747,7 @@ msgstr ""
 msgid "_Provider Name:"
 msgstr "회사 이름 (_P):"
 
-#: ../src/netconfpkg/ModemInterface.py:120
+#: ../src/netconfpkg/ModemInterface.py:125
 msgid "Generic Modem"
 msgstr "일반 모뎀"
 
@@ -756,7 +769,8 @@ msgstr "CHAP+PAP"
 
 #: ../src/glade-strings.c:373
 msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr "지역 전화 번호를 입력해 주십시요. 모뎀을 사용하실 경우에는 선택사항 입니다."
+msgstr ""
+"지역 전화 번호를 입력해 주십시요. 모뎀을 사용하실 경우에는 선택사항 입니다."
 
 #: ../src/glade-strings.c:295
 msgid ""
@@ -815,7 +829,8 @@ msgstr "삭제"
 #: ../src/glade-strings.c:210
 msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr ""
-"ISP 데이타베이스에서 새로운 인터넷 서비스 회사를 선택하시려면, 이곳을 클릭하십시요."
+"ISP 데이타베이스에서 새로운 인터넷 서비스 회사를 선택하시려면, 이곳을 "
+"클릭하십시요."
 
 #: ../src/glade-strings.c:907
 msgid "_Transmit Rate:"
@@ -893,7 +908,7 @@ msgstr "하드웨어 유형:"
 msgid "None"
 msgstr "없음"
 
-#: ../src/netconfpkg/ADSLInterface.py:108 ../src/netconfpkg/DialupDruid.py:107
+#: ../src/netconfpkg/ADSLInterface.py:115 ../src/netconfpkg/DialupDruid.py:107
 msgid "Provider Name:"
 msgstr "인터넷 회사명:"
 
@@ -937,7 +952,7 @@ msgstr "지역번호 (_X):"
 msgid "_AC-Name:"
 msgstr "AC-이름 (_A):"
 
-#: ../src/netconfpkg/ADSLInterface.py:110 ../src/netconfpkg/DialupDruid.py:110
+#: ../src/netconfpkg/ADSLInterface.py:117 ../src/netconfpkg/DialupDruid.py:110
 msgid "Press \"Finish\" to create this account"
 msgstr "이 계정을 생성하시려면, \"완료\"를 누르십시요"
 
@@ -965,7 +980,7 @@ msgstr "원격 가상 주소 (_V):"
 msgid "_IO:"
 msgstr "입/출력 (_I):"
 
-#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:129
+#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:134
 msgid "Medium"
 msgstr "중간"
 
@@ -1144,14 +1159,6 @@ msgstr "460800"
 msgid "Do you really want to delete \"%s\"?"
 msgstr "정말로 \"%s\" (을)를 삭제하시겠습니까?"
 
-#: ../src/netconfpkg/IsdnInterface.py:71
-msgid ""
-"Create a new ISDN connection.  The ISDN interface is used primarily for "
-"connecting to an ISP over a ISDN."
-msgstr ""
-"새로운 ISDN 연결을 생성합니다.  ISDN 인터페이스는 우선적으로 ISDN을 통해 "
-"인터넷 서비스 회사와 연결하는데 사용됩니다."
-
 #: ../src/glade-strings.c:868
 msgid "_Phone Number"
 msgstr "전화 번호 (_P)"
@@ -1282,11 +1289,11 @@ msgstr "모뎀 설정"
 msgid "PPP Option List"
 msgstr "PPP 옵션 목록"
 
-#: ../src/netconfpkg/ADSLInterface.py:107
+#: ../src/netconfpkg/ADSLInterface.py:114
 msgid "Ethernet Device:"
 msgstr "이더넷 장치:"
 
-#: ../src/netconfpkg/IsdnInterface.py:68
+#: ../src/netconfpkg/IsdnInterface.py:70
 msgid "ISDN connection"
 msgstr "ISDN 연결"
 
@@ -1350,13 +1357,17 @@ msgstr "장치 유형"
 msgid "Modem P_ort:"
 msgstr "모뎀 포트 (_O):"
 
-#: ../src/netconfpkg/ADSLInterface.py:75
+#: ../src/netconfpkg/IsdnInterface.py:73
 msgid ""
-"Create a new xDSL connection.  The xDSL connection is used primarily for "
-"connecting to an ISP over a ethernet."
+"Create a new ISDN connection.  This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider.  This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP.  This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
 msgstr ""
-"새로운 xDSL 연결을 생성합니다.  xDSL 연결은 우선적으로 이더넷을 통해 인터넷 "
-"회사와 연결하는데 사용됩니다."
 
 #: ../src/glade-strings.c:348
 msgid "Enter the login name, that your ISP gave you here."
@@ -1393,3 +1404,25 @@ msgstr "알 수 없음"
 #: ../src/glade-strings.c:766
 msgid "_Choose Provider..."
 msgstr "인터넷 회사 선택 (_C)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Create a new ISDN connection.  This is a connection that uses anIntegrated "
+#~ "Services Digital Network line to dial into to your Internet"
+#~ msgstr ""
+#~ "새로운 xDSL 연결을 생성합니다.  xDSL 연결은 우선적으로 이더넷을 통해 인터넷 "
+#~ "회사와 연결하는데 사용됩니다."
+
+#~ msgid ""
+#~ "Create a new Modem connection.  The dialup interface is used primarily for "
+#~ "connecting to an ISP over a modem."
+#~ msgstr ""
+#~ "새로운 모뎀 연결을 생성합니다.  전화걸기 인터페이스는 우선적으로 모뎀을 통해 "
+#~ "인터넷 서비스 회사에 접속하는데 사용됩니다."
+
+#~ msgid ""
+#~ "Create a new ISDN connection.  The ISDN interface is used primarily for "
+#~ "connecting to an ISP over a ISDN."
+#~ msgstr ""
+#~ "새로운 ISDN 연결을 생성합니다.  ISDN 인터페이스는 우선적으로 ISDN을 통해 "
+#~ "인터넷 서비스 회사와 연결하는데 사용됩니다."

@@ -123,7 +123,7 @@ msgstr "Veuillez sélectionner le degré de sécurité de ce périphérique"
 msgid "sync PPP"
 msgstr "PPP synchronisé"
 
-#: ../src/netconfpkg/ADSLInterface.py:106 ../src/netconfpkg/DialupDruid.py:105
+#: ../src/netconfpkg/ADSLInterface.py:113 ../src/netconfpkg/DialupDruid.py:105
 msgid "You have selected the following information:"
 msgstr "Vous avez sélectionné les informations suivantes :"
 
@@ -147,7 +147,7 @@ msgstr "_Contrôle de flux :"
 msgid "Name"
 msgstr "Nom"
 
-#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:125
+#: ../src/glade-strings.c:555 ../src/netconfpkg/ModemInterface.py:130
 msgid "Off"
 msgstr "Off"
 
@@ -159,7 +159,7 @@ msgstr "9600"
 msgid "Domain Name:"
 msgstr "Nom de domaine :"
 
-#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:133
+#: ../src/glade-strings.c:714 ../src/netconfpkg/ModemInterface.py:138
 msgid "Very High"
 msgstr "Très haut"
 
@@ -308,15 +308,6 @@ msgstr "N'_authorise qu'après la numérotation"
 msgid "The profile can't be named \"default\"!"
 msgstr "Le profil ne peut pas être appelé \"défaut\"!"
 
-#: ../src/netconfpkg/ModemInterface.py:70
-msgid ""
-"Create a new Modem connection.  The dialup interface is used primarily for "
-"connecting to an ISP over a modem."
-msgstr ""
-"Créer une nouvelle connexion par modem. L'interface d'accès au réseau est "
-"utilisée principalement pour se connecter au fournisseur d'accès àInternet "
-"au moyen d'un modem."
-
 #: ../src/glade-strings.c:972
 msgid "eth0"
 msgstr "eth0"
@@ -325,7 +316,7 @@ msgstr "eth0"
 msgid "_Secret Key:"
 msgstr "Clé _secrète :"
 
-#: ../src/netconfpkg/ADSLInterface.py:109 ../src/netconfpkg/DialupDruid.py:108
+#: ../src/netconfpkg/ADSLInterface.py:116 ../src/netconfpkg/DialupDruid.py:108
 msgid "Login Name:"
 msgstr "Nom de connexion :"
 
@@ -364,6 +355,18 @@ msgstr "Adresse paire _distante :"
 #: ../src/glade-strings.c:581
 msgid "Port"
 msgstr "Port"
+
+#: ../src/netconfpkg/ADSLInterface.py:75
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber Lines. "
+" This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads "
+"at the same speed), and several others.  These types of connections are "
+"common in the United States, and are gaining acceptance elsewhere.  Speeds "
+"vary according to the technology used, but generally range from 144kbps to "
+"1.0Mbps."
+msgstr ""
 
 #: ../src/glade-strings.c:435
 msgid "IO_1:"
@@ -425,7 +428,7 @@ msgstr "Laissez _PPP effectuer toute l'authentification"
 msgid "12"
 msgstr "12"
 
-#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:131
+#: ../src/glade-strings.c:420 ../src/netconfpkg/ModemInterface.py:136
 msgid "High"
 msgstr "Haut"
 
@@ -681,7 +684,7 @@ msgstr "Fournisseur"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "Activer la compression d'en-tête _VJ TCP/IP"
 
-#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:127
+#: ../src/glade-strings.c:473 ../src/netconfpkg/ModemInterface.py:132
 msgid "Low"
 msgstr "Bas"
 
@@ -724,6 +727,15 @@ msgstr ""
 msgid "TCP/IP"
 msgstr "TCP/IP"
 
+#: ../src/netconfpkg/ModemInterface.py:70
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system.  Speeds range from 14.4kbps to 50kbps"
+msgstr ""
+
 #: ../src/glade-strings.c:225
 msgid "Create DSL connection"
 msgstr "Créer une connexion DSL"
@@ -744,7 +756,7 @@ msgstr ""
 msgid "_Provider Name:"
 msgstr "_Nom de fournisseur :"
 
-#: ../src/netconfpkg/ModemInterface.py:120
+#: ../src/netconfpkg/ModemInterface.py:125
 msgid "Generic Modem"
 msgstr "Modem générique"
 
@@ -911,7 +923,7 @@ msgstr "Type de matériel :"
 msgid "None"
 msgstr "Aucun"
 
-#: ../src/netconfpkg/ADSLInterface.py:108 ../src/netconfpkg/DialupDruid.py:107
+#: ../src/netconfpkg/ADSLInterface.py:115 ../src/netconfpkg/DialupDruid.py:107
 msgid "Provider Name:"
 msgstr "Nom du fournisseur"
 
@@ -955,7 +967,7 @@ msgstr "Préfix_e :"
 msgid "_AC-Name:"
 msgstr "_Nom AC :"
 
-#: ../src/netconfpkg/ADSLInterface.py:110 ../src/netconfpkg/DialupDruid.py:110
+#: ../src/netconfpkg/ADSLInterface.py:117 ../src/netconfpkg/DialupDruid.py:110
 msgid "Press \"Finish\" to create this account"
 msgstr "Appuyer sur \"Fin\" pour créer ce compte"
 
@@ -983,7 +995,7 @@ msgstr "Adresse _virtuelle distante :"
 msgid "_IO:"
 msgstr "_IO :"
 
-#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:129
+#: ../src/glade-strings.c:495 ../src/netconfpkg/ModemInterface.py:134
 msgid "Medium"
 msgstr "Moyen"
 
@@ -1169,15 +1181,6 @@ msgstr "460800"
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Voulez-vous réellement effacer \"%s\"?"
 
-#: ../src/netconfpkg/IsdnInterface.py:71
-msgid ""
-"Create a new ISDN connection.  The ISDN interface is used primarily for "
-"connecting to an ISP over a ISDN."
-msgstr ""
-"Créer une nouvelle connexion ISDN. L'interface ISDN est utilisée "
-"principalement pour se connecter au fournisseur d'accès à Internet au moyen "
-"d'une ligne ISDN."
-
 #: ../src/glade-strings.c:868
 msgid "_Phone Number"
 msgstr "Numéro de _téléphone"
@@ -1311,11 +1314,11 @@ msgstr "Configuration du modem"
 msgid "PPP Option List"
 msgstr "Liste des options PPP"
 
-#: ../src/netconfpkg/ADSLInterface.py:107
+#: ../src/netconfpkg/ADSLInterface.py:114
 msgid "Ethernet Device:"
 msgstr "Périphérique Ethernet :"
 
-#: ../src/netconfpkg/IsdnInterface.py:68
+#: ../src/netconfpkg/IsdnInterface.py:70
 msgid "ISDN connection"
 msgstr "Connexion ISDN"
 
@@ -1379,14 +1382,17 @@ msgstr "Type de périphérique"
 msgid "Modem P_ort:"
 msgstr "P_ort du modem :"
 
-#: ../src/netconfpkg/ADSLInterface.py:75
+#: ../src/netconfpkg/IsdnInterface.py:73
 msgid ""
-"Create a new xDSL connection.  The xDSL connection is used primarily for "
-"connecting to an ISP over a ethernet."
+"Create a new ISDN connection.  This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider.  This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP.  This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
 msgstr ""
-"Créer une nouvelle connexion xDSL. La connexion xDSL est utilisée "
-"principalement pour se connecter au fournisseur d'accès à Internt au moyen "
-"d'une carte ethernet."
 
 #: ../src/glade-strings.c:348
 msgid "Enter the login name, that your ISP gave you here."
@@ -1425,6 +1431,31 @@ msgstr "Inconnu"
 #: ../src/glade-strings.c:766
 msgid "_Choose Provider..."
 msgstr "_Choisir le fournisseur..."
+
+#, fuzzy
+#~ msgid ""
+#~ "Create a new ISDN connection.  This is a connection that uses anIntegrated "
+#~ "Services Digital Network line to dial into to your Internet"
+#~ msgstr ""
+#~ "Créer une nouvelle connexion xDSL. La connexion xDSL est utilisée "
+#~ "principalement pour se connecter au fournisseur d'accès à Internt au moyen "
+#~ "d'une carte ethernet."
+
+#~ msgid ""
+#~ "Create a new Modem connection.  The dialup interface is used primarily for "
+#~ "connecting to an ISP over a modem."
+#~ msgstr ""
+#~ "Créer une nouvelle connexion par modem. L'interface d'accès au réseau est "
+#~ "utilisée principalement pour se connecter au fournisseur d'accès àInternet "
+#~ "au moyen d'un modem."
+
+#~ msgid ""
+#~ "Create a new ISDN connection.  The ISDN interface is used primarily for "
+#~ "connecting to an ISP over a ISDN."
+#~ msgstr ""
+#~ "Créer une nouvelle connexion ISDN. L'interface ISDN est utilisée "
+#~ "principalement pour se connecter au fournisseur d'accès à Internet au moyen "
+#~ "d'une ligne ISDN."
 
 #~ msgid "Enable , if you want to use it."
 #~ msgstr "Activer ,  si vous voulez l'utiliser."
