@@ -19,7 +19,7 @@
 
 import NC_functions
 from NC_functions import _
-import HardwareList
+import NCHardwareList
 import NCisdnhardware
 import NCDeviceList
 import NCDevice
@@ -97,7 +97,7 @@ class ADSLInterface(InterfaceCreator):
         self.devicelist.rollback()
         
     def on_finish_page_prepare(self, druid_page, druid):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Type == self.connection_type:
                 break
@@ -112,7 +112,7 @@ class ADSLInterface(InterfaceCreator):
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
         i = self.devicelist.addDevice()
         self.devicelist[i].apply(self.device)
@@ -139,7 +139,7 @@ class ADSLInterface(InterfaceCreator):
  
         hwdesc = []
         hwcurr = None
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Type == "Ethernet":
                 desc = str(hw.Name) + ' (' + hw.Description + ')'

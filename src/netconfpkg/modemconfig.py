@@ -16,7 +16,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+import types
 import gtk
 import GDK
 import GTK
@@ -28,7 +28,7 @@ import string
 import gettext
 import re
 
-import HardwareList
+import NCHardwareList
 import NC_functions
 from NC_functions import _
 from NC_functions import modemDeviceList
@@ -82,7 +82,7 @@ class modemDialog:
         pass
 
     def dehydrate(self):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
 
         modem_list = []
         if not self.edit:
@@ -142,7 +142,7 @@ class editmodemDialog(modemDialog):
         self.Name = self.Dev
         
     def hydrate(self):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
 
         for hw in hardwarelist:
             if hw.Name == self.Dev:
@@ -150,7 +150,7 @@ class editmodemDialog(modemDialog):
                 self.xml.get_widget('baurateEntry').set_text(str(hw.Modem.BaudRate))
                 if hw.Modem.FlowControl:
                     self.xml.get_widget('flowControlEntry').set_text(hw.Modem.FlowControl)
-                    
+                print "Modem Volume: " + str(hw.Modem.ModemVolume) + str(type(hw.Modem.ModemVolume))
                 self.xml.get_widget('volumeCB').set_active(hw.Modem.ModemVolume != 0)
                 self.xml.get_widget('volumeMenu').set_sensitive(hw.Modem.ModemVolume != 0)
 

@@ -29,7 +29,7 @@ import string
 import os
 import providerdb
 import NC_functions
-import HardwareList
+import NCHardwareList
 import NCisdnhardware
 import NCDeviceList
 import NCDevice
@@ -96,7 +96,7 @@ class DialupDruid(InterfaceCreator):
                                 self.on_providerTree_tree_select_row)
 
     def on_finish_page_prepare(self, druid_page, druid):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Type == self.connection_type:
                 break
@@ -112,7 +112,7 @@ class DialupDruid(InterfaceCreator):
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
         i = self.devicelist.addDevice()
         self.devicelist[i].apply(self.device)

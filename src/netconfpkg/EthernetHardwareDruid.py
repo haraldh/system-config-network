@@ -19,7 +19,7 @@
 
 import NC_functions
 from NC_functions import _
-import HardwareList
+import NCHardwareList
 #import gnome.ui
 import gtk
 from gtk import TRUE
@@ -50,7 +50,7 @@ class ethernetHardware:
             })
 
         self.toplevel = toplevel
-        self.hardwarelist = HardwareList.getHardwareList()
+        self.hardwarelist = NCHardwareList.getHardwareList()
         self.hw = None
         self.has_ethernet = TRUE
         self.druids = []
