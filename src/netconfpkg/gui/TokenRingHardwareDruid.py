@@ -33,7 +33,7 @@ from tokenringhardware import tokenringHardwareDialog
 class tokenringHardware:
     def __init__ (self, toplevel=None):
 
-        glade_file = "TokenringHardwareDruid.glade"
+        glade_file = "TokenRingHardwareDruid.glade"
  
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
