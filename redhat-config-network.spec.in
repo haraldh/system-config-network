@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -40,7 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kontrol-panel/*.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
 %{_datadir}/pixmaps/neat.png
-%config(noreplace) /etc/X11/serverconfig/*.desktop
+%config(noreplace) /etc/X11/sysconfig/*.desktop
 %config(noreplace) /etc/X11/applnk/System/*.desktop
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
@@ -48,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Wed Aug  8 2001 Alexander Larsson <alexl@redhat.com> 0.7-2
+- Install desktop files in sysconfig instead of serverconf.
+
 * Wed Aug  8 2001 Phil Knirsch <phil@redhat.de> 0.7-1
 - Added a lot of documentation
 - Final changes to the Modem druid dialog and code to look just like the
