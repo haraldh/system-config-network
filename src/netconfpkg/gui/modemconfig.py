@@ -45,7 +45,8 @@ class modemDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None,
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -72,11 +73,13 @@ class modemDialog:
         pass
 
     def setup(self):
-        self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
+        self.xml.get_widget(\
+            "modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
         flowcontrols = []
         for i in modemFlowControls.keys():
             flowcontrols.append(modemFlowControls[i])
-        self.xml.get_widget("flowControlCombo").set_popdown_strings(flowcontrols)        
+        self.xml.get_widget(\
+            "flowControlCombo").set_popdown_strings(flowcontrols)        
 
     def hydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -84,19 +87,30 @@ class modemDialog:
         if self.hw.Modem.DeviceName != None:
             if not self.hw.Modem.DeviceName in modemDeviceList:
                 modemDeviceList.insert(0, self.hw.Modem.DeviceName)
-                self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
-            self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
+                self.xml.get_widget(\
+                    "modemDeviceEntryCombo").set_popdown_strings(\
+                    modemDeviceList)
+            self.xml.get_widget(\
+                'modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
         if self.hw.Modem.BaudRate != None:
-            self.xml.get_widget('baudrateEntry').set_text(str(self.hw.Modem.BaudRate))
-        if self.hw.Modem.FlowControl != None and modemFlowControls.has_key(self.hw.Modem.FlowControl):
-            self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
+            self.xml.get_widget(\
+                'baudrateEntry').set_text(str(self.hw.Modem.BaudRate))
+        if self.hw.Modem.FlowControl != None and \
+               modemFlowControls.has_key(self.hw.Modem.FlowControl):
+            self.xml.get_widget(\
+                'flowControlEntry').set_text(\
+                modemFlowControls[self.hw.Modem.FlowControl])
         if self.hw.Modem.ModemVolume != None:
-            self.xml.get_widget('volumeMenu').set_history(int(self.hw.Modem.ModemVolume))
+            self.xml.get_widget('volumeMenu').set_history(\
+                int(self.hw.Modem.ModemVolume))
         if self.hw.Modem.DialCommand != None:
-            self.xml.get_widget('toneDialingCB').set_active(self.hw.Modem.DialCommand == 'ATDT')
+            self.xml.get_widget('toneDialingCB').set_active(\
+                self.hw.Modem.DialCommand == 'ATDT')
 
     def dehydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
+
+        self.hw.Description = _('Generic Modem')
 
         modem_list = []
         if not self.hw.Name:
@@ -111,8 +125,10 @@ class modemDialog:
             else:
                 self.hw.Name = "Modem0"
             
-        self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
-        self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baudrateEntry").get_text())
+        self.hw.Modem.DeviceName = self.xml.get_widget(\
+            "modemDeviceEntry").get_text()
+        self.hw.Modem.BaudRate = string.atoi(\
+            self.xml.get_widget("baudrateEntry").get_text())
 
         flow = self.xml.get_widget("flowControlEntry").get_text()
         for i in modemFlowControls.keys():
@@ -139,7 +155,8 @@ class modemDialog:
         else:
             self.hw.Modem.DialCommand = "ATDP"
 
-        if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
+        if len(self.hw.Modem.DeviceName)>5 and \
+               self.hw.Modem.DeviceName[:5] != '/dev/':
             self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
 
 

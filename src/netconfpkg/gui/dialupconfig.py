@@ -37,6 +37,7 @@ from netconfpkg.NCHardwareList import *
 from netconfpkg.NCDialup import *
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.tonline import TonlineDialog
 from provider import *
 from gtk import TRUE
 from gtk import FALSE
@@ -69,7 +70,8 @@ class DialupDialog(deviceConfigDialog):
             "on_ipppOptionList_unselect_row" : \
             self.on_ipppOptionList_unselect_row,
             "on_pppOptionDeleteButton_clicked" : \
-            self.on_pppOptionDeleteButton_clicked
+            self.on_pppOptionDeleteButton_clicked,
+            "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
             })
 
         self.noteBook = self.xml.get_widget("dialupNotebook")
@@ -246,6 +248,27 @@ class DialupDialog(deviceConfigDialog):
         
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
+
+    def on_tonlineButton_clicked(self, *args):
+        self.dehydrate()
+        dialup = self.device.Dialup
+        dialog = TonlineDialog(dialup.Login, dialup.Password)
+        dl = dialog.xml.get_widget ("Dialog")
+        
+        dl.set_transient_for(self.dialog)
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        
+        if dl.run() != gtk.RESPONSE_OK:
+            dl.destroy()        
+            return
+
+        dl.destroy()
+        dialup.Login = dialog.login
+        dialup.Password = dialog.password
+        self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
+        self.xml.get_widget("passwordEntry").set_text(dialup.Password)
+        if not self.xml.get_widget("providerName").get_text():
+            self.xml.get_widget("providerName").set_text("T-Online")
 
  
 class ISDNDialupDialog(DialupDialog):

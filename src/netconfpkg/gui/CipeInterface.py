@@ -22,7 +22,7 @@ from netconfpkg import *
 from netconfpkg import *
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
-import commands
+from rhpl.executil import *
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -272,7 +272,11 @@ class CipeInterface(InterfaceCreator):
         self.updateRemoteOptions()
 
     def on_generateKeyButton_clicked(self, *args):
-        key = commands.getoutput('(ps aux|md5sum; ps alx|md5sum) | tr -cd 0-9 2>/dev/null')
+        command = '/bin/sh'
+        (status , key ) = gtkExecWithCaptureStatus(command = command,
+                                                   argv = [command, '-c',
+                                                           '(ps aux|md5sum; ps alx|md5sum) | tr -cd 0-9 2>/dev/null'])
+        
         widget = self.xml.get_widget("secretKeyEntry")
         if key:
             widget.set_text(key)

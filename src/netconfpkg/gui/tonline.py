@@ -75,7 +75,16 @@ class TonlineDialog:
     
     def on_cancelButton_clicked(self, button):
         pass
-        
+
+    def check(self):
+        if len(self.xml.get_widget('AKEntry').get_text()) < 12 or \
+           len(self.xml.get_widget('ZNEntry').get_text()) < 12 or \
+           len(self.xml.get_widget('mbnEntry').get_text()) < 4 or \
+           len(self.xml.get_widget('pwEntry').get_text()) < 8:
+            self.xml.get_widget('okButton').set_sensitive(FALSE)
+        else:
+            self.xml.get_widget('okButton').set_sensitive(TRUE)
+    
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -88,14 +97,15 @@ class TonlineDialog:
     def on_generic_entry_changed(self, entry, minlen):
         if len(entry.get_text()) < minlen:
             self.xml.get_widget('okButton').set_sensitive(FALSE)
-        else:
-            self.xml.get_widget('okButton').set_sensitive(TRUE)
+
+        self.check()
             
     def hydrate(self):
         self.xml.get_widget('AKEntry').set_text(self.login[0:12])
         self.xml.get_widget('ZNEntry').set_text(self.login[12:24])
         self.xml.get_widget('mbnEntry').set_text(self.login[25:29])
         self.xml.get_widget('pwEntry').set_text(self.password)
+        self.check()
         pass
 
     def dehydrate(self):

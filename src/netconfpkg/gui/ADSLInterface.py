@@ -34,6 +34,7 @@ import os
 from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.tonline import TonlineDialog
 
 class ADSLInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
@@ -68,6 +69,8 @@ class ADSLInterface(InterfaceCreator):
               "on_finish_page_prepare" : self.on_finish_page_prepare,
               "on_finish_page_back" : self.on_finish_page_back,
               "on_providerNameEntry_insert_text" : (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
+              "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
+              
               }
             )
 
@@ -186,6 +189,26 @@ class ADSLInterface(InterfaceCreator):
             widget.set_text(hwcurr)
         #widget.set_position(0)
  
+    def on_tonlineButton_clicked(self, *args):
+        self.dehydrate()
+        dialup = self.device.Dialup
+        dialog = TonlineDialog(dialup.Login, dialup.Password)
+        dl = dialog.xml.get_widget ("Dialog")
+        
+        dl.set_transient_for(self.toplevel)
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        
+        if dl.run() != gtk.RESPONSE_OK:
+            dl.destroy()        
+            return
+
+        dl.destroy()
+        dialup.Login = dialog.login
+        dialup.Password = dialog.password
+        self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
+        self.xml.get_widget("passwordEntry").set_text(dialup.Password)
+        self.xml.get_widget("providerNameEntry").set_text("T-Online")
+
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('providerNameEntry').get_text()
         self.device.Type = 'xDSL'

@@ -36,6 +36,7 @@ from netconfpkg import *
 from netconfpkg import *
 from netconfpkg import *
 from InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.tonline import TonlineDialog
 
 class DialupDruid(InterfaceCreator):
     def __init__ (self, toplevel=None, connection_type=ISDN,
@@ -84,6 +85,7 @@ class DialupDruid(InterfaceCreator):
               "on_raw_ip_activate" : self.on_raw_ip_activate,              
               "on_providerNameEntry_insert_text" : \
               (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
+              "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
               }
             )
 
@@ -115,7 +117,6 @@ class DialupDruid(InterfaceCreator):
             return FALSE
         else:
             return TRUE
-
 
     def on_ipBootProto_toggled(self, widget):
         if widget.name == "ipAutomaticRadio":
@@ -168,7 +169,6 @@ class DialupDruid(InterfaceCreator):
             device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
             device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
             device.Hostname = ''
-
 
     def on_sync_ppp_activate(self, *args):
         self.xml.get_widget('ipAutomaticRadio').set_active(TRUE)
@@ -346,6 +346,27 @@ class DialupDruid(InterfaceCreator):
             
         self.dbtree.select_row(0,0)
     
+    def on_tonlineButton_clicked(self, *args):
+        self.dehydrate()
+        dialup = self.device.Dialup
+        dialog = TonlineDialog(dialup.Login, dialup.Password)
+        dl = dialog.xml.get_widget ("Dialog")
+        
+        dl.set_transient_for(self.toplevel)
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        
+        if dl.run() != gtk.RESPONSE_OK:
+            dl.destroy()        
+            return
+
+        dl.destroy()
+        dialup.Login = dialog.login
+        dialup.Password = dialog.password
+        self.xml.get_widget("dialupLoginNameEntry").set_text(dialup.Login)
+        self.xml.get_widget("dialupPasswordEntry").set_text(dialup.Password)
+        if not self.xml.get_widget("providerName").get_text():
+            self.xml.get_widget("providerName").set_text("T-Online")
+
     def dehydrate(self):
         DeviceId = self.xml.get_widget('providerName').get_text()
         n = DeviceId
