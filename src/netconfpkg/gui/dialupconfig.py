@@ -241,6 +241,7 @@ class ISDNDialupDialog(DialupDialog):
     def on_chooseButton_clicked(self, button):
         dialog = ISDNproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
+        dl.set_transient_for(self.dialog)
         dl.run()
         dl.destroy()        
         DialupDialog.hydrate(self)
@@ -385,6 +386,7 @@ class ModemDialupDialog(DialupDialog):
     def on_chooseButton_clicked(self, button):
         dialog = ModemproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
+        dl.set_transient_for(self.dialog)
         dl.run()
         dl.destroy()
         DialupDialog.hydrate(self)

@@ -18,9 +18,6 @@ all-local:
 	ln -s netconf.py redhat-config-network-druid
 	ln -s neat-control.py redhat-control-network
 
-pythondir = $(pkgdatadir)
-###python_DATA = $(PYTHON_FILES)
-
 gladedir = $(pkgdatadir)/netconfpkg/gui
 glade_DATA = $(GLADE_FILES)
 
@@ -35,7 +32,6 @@ install-exec-local:
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/neat-control.py $(DESTDIR)$(pkgdatadir)/
-	install -m 0755 $(srcdir)/isdnup $(DESTDIR)$(sbindir)/
 	softdir=$(pkgdatadir); \
 	p=$(DESTDIR) ; \
 	softdir=$${softdir/#$$p} ; \

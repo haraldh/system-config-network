@@ -98,22 +98,23 @@ class ModemInterface:
         if not ModemInterface.modemList:
             dialog = gtk.Dialog(_('Modem probing...'),
                                 None,
-                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
+                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT|)
             dialog.set_border_width(10)
             label = gtk.Label(_('Probing for Modems, please wait...'))
             dialog.vbox.pack_start(label, gtk.FALSE)
             dialog.set_position (gtk.WIN_POS_MOUSE)
             dialog.set_modal(TRUE)
             dialog.show_all()
+            gtk.gdk.flush()
             while gtk.events_pending():
-                gtk.mainiteration(FALSE)
-            time.sleep(1)
+                gtk.main_iteration(gtk.FALSE)
             dlist = GUI_functions.getModemList()
             ModemInterface.modemList = dlist
             dialog.destroy()
             if dlist == []:
                 generic_error_dialog(_('No modem was found on your system.'))
                 dlist = modemDeviceList
+            ModemInterface.modemList = dlist
         else:
             dlist = ModemInterface.modemList
 
@@ -153,3 +154,16 @@ class ModemInterface:
             self.hw.Modem.DialCommand = "ATDT"
         else:
             self.hw.Modem.DialCommand = "ATDP"
+
+    def hydrate(self):
+        hardwarelist = NCHardwareList.getHardwareList()
+
+        if self.hw.Modem.DeviceName != None:
+            if not self.hw.Modem.DeviceName in modemDeviceList:
+                modemDeviceList.insert(0, self.hw.Modem.DeviceName)
+                self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
+            self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
+        if self.hw.Modem.BaudRate != None:
+            self.xml.get_widget('baurateEntry').set_text(str(self.hw.Modem.BaudRate))
+        if self.hw.Modem.FlowControl != None and modemFlowControls.has_key(self.hw.Modem.FlowControl):
+            self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])

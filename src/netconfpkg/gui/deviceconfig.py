@@ -27,7 +27,6 @@ import os
 import string
 import re
 
-import tcpdialog
 from netconfpkg.gui import GUI_functions
 
 

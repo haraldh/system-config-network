@@ -58,7 +58,10 @@ IUCV = 'IUCV'
 deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV ]
 
 modemDeviceList = [ '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
-		    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3' ]
+		    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3',
+		    '/dev/input/ttyACM0', '/dev/input/ttyACM1',
+		    '/dev/input/ttyACM2', '/dev/input/ttyACM3',
+		    '/dev/ttyM0', '/dev/ttyM1' ]
 
 ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
 
@@ -263,7 +266,7 @@ def getModemList():
 	    return ModemList[:]
     
     import kudzu
-    res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
+    res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_USB|kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
     ModemList = []
     if res != []:
         for v in res:

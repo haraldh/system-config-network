@@ -96,6 +96,7 @@ def gui_error_dialog (message, parent_dialog,
             broken_widget.select_region (0, -1)
 
     dialog.set_position (gtk.WIN_POS_MOUSE)
+    if parent_dialog: dialog.set_transient_for(parent_dialog)
     ret = dialog.run ()
     dialog.destroy()
     return ret
@@ -122,6 +123,7 @@ def gui_yesnocancel_dialog (message, parent_dialog,
         if isinstance (broken_widget, gtk.Entry):
             broken_widget.select_region (0, -1)
     dialog.set_position (gtk.WIN_POS_MOUSE)
+    if parent_dialog: dialog.set_transient_for(parent_dialog)
     ret = dialog.run ()
     dialog.destroy()
     return ret
@@ -145,6 +147,7 @@ def gui_yesno_dialog (message, parent_dialog,
         if isinstance (broken_widget, gtk.Entry):
             broken_widget.select_region (0, -1)
     dialog.set_position (gtk.WIN_POS_MOUSE)
+    if parent_dialog: dialog.set_transient_for(parent_dialog)
     ret = dialog.run ()
     dialog.destroy()
     return ret

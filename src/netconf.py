@@ -492,6 +492,8 @@ class mainDialog:
         #devicelist = getDeviceList()
         
         interface = NewInterfaceDialog()
+        
+        interface.toplevel.set_transient_for(self.dialog)
 
         gtk.mainloop()            
             
@@ -601,7 +603,7 @@ class mainDialog:
             return button
             
         dialog = cfg.xml.get_widget ("Dialog")
-
+        dialog.set_transient_for(self.dialog)
         button = dialog.run()
         dialog.destroy()
 
@@ -969,8 +971,10 @@ class mainDialog:
         name = clist.get_text(clist.selection[0], 0)
 
         dialog = editDomainDialog(name)
-        dialog.main = self        
-        button = dialog.xml.get_widget("Dialog").run()
+        dialog.main = self
+        dlg = dialog.xml.get_widget("Dialog")
+        dlg.set_transient_for(self.dialog)
+        button = dlg.run()
         dialog.xml.get_widget("Dialog").destroy()
 
         if button != gtk.RESPONSE_OK and button != 0:            
@@ -1050,6 +1054,7 @@ class mainDialog:
         clist  = self.xml.get_widget("hostsList")
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
+        dl.set_transient_for(self.dialog)
         button = dl.run ()
         dl.destroy()
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1074,6 +1079,7 @@ class mainDialog:
 
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
+        dl.set_transient_for(self.dialog)
         button = dl.run ()
         dl.destroy()
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1118,6 +1124,7 @@ class mainDialog:
     def on_profileAddButton_clicked (self, *args):
         import gnome.ui
         dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the name for the new profile.\nThe name may only contain letters and digits."), "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
+        dialog.set_transient_for(self.dialog)
         dialog.run()        
         dialog.destroy()
 
@@ -1189,6 +1196,7 @@ class mainDialog:
             return
         import gnome.ui
         dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the new name for the profile.\nThe name may only contain letters and digits."), profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
+        dialog.set_transient_for(self.dialog)
         dialog.run()
         dialog.destroy()
 
@@ -1253,6 +1261,7 @@ class mainDialog:
         dialog = type.xml.get_widget ("Dialog")
 
         button = dialog.run ()
+        dialog.set_transient_for(self.dialog)
         dialog.destroy()
 
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1324,6 +1333,7 @@ class mainDialog:
             dialog = isdnHardwareDialog(hw)
             
         dl = dialog.xml.get_widget('Dialog')
+        dl.set_transient_for(self.dialog)
         button = dl.run()
         dl.destroy()
         
