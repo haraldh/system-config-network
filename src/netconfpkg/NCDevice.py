@@ -152,6 +152,11 @@ class Device(Device_base):
             raise TypeError, _("Device type not specified")
 
 
+    def testDeviceId(self, value):
+        if re.search(r"^[a-z|A-Z|0-9\-_:]+$"):
+            return true
+        return false
+
     def load(self, name):
         from netconfpkg.NCDeviceList import getDeviceList
         conf = ConfDevice(name)

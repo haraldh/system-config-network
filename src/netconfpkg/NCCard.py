@@ -24,7 +24,7 @@ from NC_functions import *
 class Card(Card_base):
     def __init__(self, list = None, parent = None):
         Card_base.__init__(self, list, parent)
-
+    
     def setDMA0(self, value):
         if value == "" or value == None:
             self.__dict__["DMA0"] = None

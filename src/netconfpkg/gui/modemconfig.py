@@ -138,8 +138,8 @@ class modemDialog:
         else:
             self.hw.Modem.DialCommand = "ATDP"
 
-        if os.path.dirname(self.hw.Modem.DeviceName) != '/dev':
-            self.hw.Modem.DeviceName = '/dev/' + os.path.basename(self.hw.Modem.DeviceName)
+        if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
+            self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
 
 # make ctrl-C work
 if __name__ == "__main__":

@@ -129,8 +129,7 @@ class HardwareList(HardwareList_base):
     def load(self):
         modules = ConfModules()
         modinfo = getModInfo()
-        hwconf = ConfHWConf()
-        wvdial = ConfSMB('/etc/wvdial.conf')
+        hwconf = ConfHWConf()          
 
         #
         # Read /etc/modules.conf
@@ -224,40 +223,50 @@ class HardwareList(HardwareList_base):
             hw.Card.VendorId = isdncard.VendorId
             hw.Card.DeviceId = isdncard.DeviceId
             
-        wvdial = ConfSMB('/etc/wvdial.conf')
-        for dev in wvdial.keys():
-            if dev[:5] != 'Modem':
-                continue
+        try:
+            wvdial = ConfSMB('/etc/wvdial.conf')
+        except Conf.FileMissing:
+            pass
+        else:
+            for dev in wvdial.keys():
+                if dev[:5] != 'Modem':
+                    continue
 
-            i = self.addHardware()
-            hw = self.data[i]
-            hw.Name = dev
-            hw.Description = 'Generic Modem'
-            hw.Type = MODEM
-            hw.createModem()
-            if not wvdial[dev].has_key('Modem'): wvdial[dev]['Modem'] = '/dev/modem'
-            hw.Modem.DeviceName = wvdial[dev]['Modem']
-            
-            if not wvdial[dev].has_key('Baud'): wvdial[dev]['Baud'] = '115200'
-            hw.Modem.BaudRate = int(wvdial[dev]['Baud'])
-            
-            if not wvdial[dev].has_key('SetVolume'): wvdial[dev]['SetVolume'] = '0'
-            hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
-            
-            if not wvdial[dev].has_key('Dial Command'): wvdial[dev]['Dial Command'] = 'ATDT'
-            hw.Modem.DialCommand = wvdial[dev]['Dial Command']
-            
-            if not wvdial[dev].has_key('Init1'): wvdial[dev]['Init1'] = 'ATZ'
-            hw.Modem.InitString =  wvdial[dev]['Init1']
+                i = self.addHardware()
+                hw = self.data[i]
+                hw.Name = dev
+                hw.Description = 'Generic Modem'
+                hw.Type = MODEM
+                hw.createModem()
+                if not wvdial[dev].has_key('Modem'):
+                    wvdial[dev]['Modem'] = '/dev/modem'
+                hw.Modem.DeviceName = wvdial[dev]['Modem']
 
-            if not wvdial[dev].has_key('FlowControl'): wvdial[dev]['FlowControl'] = CRTSCTS
-            hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
-                            
+                if not wvdial[dev].has_key('Baud'):
+                    wvdial[dev]['Baud'] = '38400'
+                hw.Modem.BaudRate = int(wvdial[dev]['Baud'])
+
+                if not wvdial[dev].has_key('SetVolume'):
+                    wvdial[dev]['SetVolume'] = '0'
+                hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
+
+                if not wvdial[dev].has_key('Dial Command'):
+                    wvdial[dev]['Dial Command'] = 'ATDT'
+                hw.Modem.DialCommand = wvdial[dev]['Dial Command']
+
+                if not wvdial[dev].has_key('Init1'):
+                    wvdial[dev]['Init1'] = 'ATZ'
+                hw.Modem.InitString =  wvdial[dev]['Init1']
+
+                if not wvdial[dev].has_key('FlowControl'):
+                    wvdial[dev]['FlowControl'] = CRTSCTS
+                hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
+
         self.commit(changed=false)
-        
+
     def save(self):
         modules = MyConfModules()
-        wvdial  = ConfSMB('/etc/wvdial.conf')
+        wvdial  = None 
         isdn    = NCisdnhardware.ConfISDN()
         
 
@@ -292,6 +301,8 @@ class HardwareList(HardwareList_base):
 
 
             if hw.Type == MODEM and hw.Modem:
+                if not wvdial:
+                    wvdial = ConfSMB('/etc/wvdial.conf', create_if_missing = true)
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
                 wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
@@ -315,18 +326,19 @@ class HardwareList(HardwareList_base):
                 isdn.VendorId = hw.Card.VendorId
                 isdn.DeviceId = hw.Card.DeviceId
 
-        # Clean up wvdial
-        for dev in wvdial.keys():
-            if dev[:5] != 'Modem':
-                continue
-            for hw in self.data:
-                if hw.Type == MODEM and hw.Name == dev:
-                    break
-            else:
-                # if the loop does not get interrupted by break
-                # we did not find the Modem in the hardwarelist
-                # and it gets deleted
-                del wvdial[dev]
+        if wvdial:
+            # Clean up wvdial
+            for dev in wvdial.keys():
+                if dev[:5] != 'Modem':
+                    continue
+                for hw in self.data:
+                    if hw.Type == MODEM and hw.Name == dev:
+                        break
+                else:
+                    # if the loop does not get interrupted by break
+                    # we did not find the Modem in the hardwarelist
+                    # and it gets deleted
+                    del wvdial[dev]
                     
         # Clean up modules
         for mod in modules.keys():
@@ -344,7 +356,8 @@ class HardwareList(HardwareList_base):
                 #print "Test: " + str(modules[mod])
                 
         modules.write()
-        wvdial.write()
+        if wvdial:
+            wvdial.write()
         isdn.save()
 
 HWList = None

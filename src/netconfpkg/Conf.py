@@ -212,7 +212,7 @@ class Conf:
 	return self.findnextline(rx)
     def getline(self):
         if self.line >= len(self.lines):
-            return ''
+            return ''        
         return self.lines[self.line]
     def getfields(self):
         # returns list of fields split by self.separators
@@ -261,6 +261,8 @@ class Conf:
             # strip newlines
             for index in range(len(self.lines)):
                 self.lines[index] = self.lines[index][:-1]
+                if len(self.lines[index]) and self.lines[index][-1] == '\r':
+                    self.lines[index] = self.lines[index][:-1]
             self.file.close()
 	else:
 	    self.lines = []
@@ -328,7 +330,7 @@ class ConfShellVar(Conf):
         self.rewind()
         missing=1
         while self.findnextline('^[\t ]*' + varname + '='):
-            if re.search('[ \t${}*@!~<>?;%^()#&]', value) > -1:
+            if re.search('[ \t${}*@!~<>?;%^()#&]', value):
         	self.sedline('=.*', "='" + value + "'")
 	    else:
         	self.sedline('=.*', '=' + value)

@@ -54,7 +54,8 @@ class DialupDruid(InterfaceCreator):
               "on_dialup_page_next" : self.on_dialup_page_next,
               "on_finish_page_finish" : self.on_finish_page_finish,
               "on_finish_page_prepare" : self.on_finish_page_prepare,
-              "on_finish_page_back" : self.on_finish_page_back
+              "on_finish_page_back" : self.on_finish_page_back,
+              "on_providerNameEntry_insert_text" : (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
               }
             )
 
@@ -80,6 +81,13 @@ class DialupDruid(InterfaceCreator):
 
         self.setup_provider_db()
         
+    def on_generic_entry_insert_text(self, entry, partial_text, length,
+                                     pos, str):
+        text = partial_text[0:length]
+        if re.match(str, text):
+            return
+        entry.emit_stop_by_name('insert_text')
+
     def get_druids (self):
         return self.druids[0:]
 

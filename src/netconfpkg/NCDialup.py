@@ -203,6 +203,9 @@ class DslDialup(Dialup):
         if conf.has_key('PASS'):
             del conf['PASS']
         
+        if not conf.has_key('PEERDNS'):
+            conf['PEERDNS'] = "no"
+            
         conf.write()
 
 
@@ -383,6 +386,9 @@ class IsdnDialup(Dialup):
         for i in conf.keys():
             if not conf[i]: del conf[i]
         
+        if not conf.has_key('PEERDNS'):
+            conf['PEERDNS'] = "no"
+            
         conf.write()
         
     
@@ -602,11 +608,14 @@ class ModemDialup(Dialup):
                         parentConf['LINESPEED'] = str(hw.Modem.BaudRate)
                         break
 
+        if not parentConf.has_key('PEERDNS'):
+            parentConf['PEERDNS'] = "no"
+
         conf[sectname]['Inherits'] = devname
 
         for i in conf.keys():
             if not conf[i]: del conf[i]
-
+            
         conf.write()
 
         if self.Compression:

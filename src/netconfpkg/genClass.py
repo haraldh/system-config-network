@@ -71,11 +71,11 @@ class GenClass:
             raise ValueError
          
       elif type == STRING:
-         if not isinstance(value, StringType):
+         if not isinstance(value, StringType) and not isinstance(value, unicode):
             raise ValueError
          
       elif type == BASE64:
-         if not isinstance(value, StringType):
+         if not isinstance(value, StringType) and not isinstance(value, unicode):
             raise ValueError
          
       elif type == INT:
