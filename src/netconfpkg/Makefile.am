@@ -1,4 +1,6 @@
-SUBDIRS=netconfpkg
+EXTRA_DIST := DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl NetworkList.idl Firewall.idl genClass.py
+
+BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py NetworkList.py Firewall.py
 
 #pkgdata_DATA :=
 
@@ -16,11 +18,9 @@ execdir = $(sbindir)
 #	install -m 0644 $(srcdir)/bindconf-konfig.desktop $(datadir)/kontrol-panel/bindconf.desktop
 #	install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
 
-docs:
-	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
-	mv *.html doc
-
 clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
 
+%.py: %.idl genClass.py
+	python genClass.py -c $(srcdir)/$*.idl $@ NC
