@@ -1,3 +1,4 @@
+docdir     = $(datadir)/redhat-config-network/help
 doc_DATA   =  neat-cipe.png \
         neat-cipe-settings.png \
         neat-dns.png \
