@@ -13,6 +13,8 @@ typedef __uint8_t u8;	/* ditto */
 
 #include <Python.h>
 
+#define _PATH_PROCNET_DEV "/proc/net/dev"
+
 static PyObject *
 get_active_devices (PyObject * self, PyObject * args)
 {
@@ -67,50 +69,35 @@ get_active_devices (PyObject * self, PyObject * args)
 static PyObject *
 get_devices (PyObject * self, PyObject * args)
 {
-  PyObject * list;
-  int numreqs = 30;
-  struct ifconf ifc;
-  struct ifreq *ifr;
-  int n, err = -1;
-  int skfd;
+  PyObject *list;
+  FILE *fd;
+  char buffer[256];
+
+  list = PyList_New(0);
   
-  /* SIOCGIFCONF currently seems to only work properly on AF_INET sockets
-     (as of 2.1.128) */ 
-  /* Open control socket. */
-  skfd = socket(AF_INET, SOCK_DGRAM, 0);
-  if(skfd < 0) {
+  fd = fopen(_PATH_PROCNET_DEV, "r");
+  if (fd == NULL) {
     PyErr_SetString(PyExc_OSError, strerror(errno));
     return NULL;
   }
-  
-  ifc.ifc_buf = NULL;
-  for (;;) {
-    ifc.ifc_len = sizeof(struct ifreq) * numreqs;
-    ifc.ifc_buf = realloc(ifc.ifc_buf, ifc.ifc_len);
-    
-    if (ioctl(skfd, SIOCGIFCONF, &ifc) < 0) {
-      PyErr_SetString(PyExc_OSError, strerror(errno));
-      free(ifc.ifc_buf);
-      return NULL;
-    }
-    if (ifc.ifc_len == sizeof(struct ifreq) * numreqs) {
-      /* assume it overflowed and try again */
-      numreqs += 10;
-      continue;
-    }
-    break;
-  }
-  
-  list = PyList_New(0);
-  ifr = ifc.ifc_req;
-  for (n = 0; n < ifc.ifc_len; n += sizeof(struct ifreq)) {
-    PyList_Append(list, PyString_FromString(ifr->ifr_name));
-    ifr++;
-  }
+  /* skip over first two lines */
+  fgets(buffer, 256, fd); fgets(buffer, 256, fd);
+  while (!feof(fd)) {
+    char *name = buffer;
+    char *end = buffer;
 
-  close(skfd);
-  return list;
+    if (fgets(buffer, 256, fd) == NULL)
+      break;
+    /* find colon */
+    while (end && *end != ':') end++;
+    *end = 0; /* terminate where colon was */
+    while (*name == ' ') name++; /* skip over leading whitespace if any */
+    PyList_Append(list, PyString_FromString(name));
+  }
+  fclose(fd);
+  return(list);
 }
+
 
 static PyObject *
 get_hwaddress (PyObject * self, PyObject * args)
@@ -192,13 +179,42 @@ get_module (PyObject * self, PyObject * args)
   
   /* Get current settings. */
   err = ioctl(fd, SIOCETHTOOL, &ifr);
-  if(err < 0) {
-    char buf[2048];
+
+  if(err < 0) {  /* failed? */
     int eno = errno;
-    sprintf(buf, "[Errno %d] %s", eno, strerror(errno));
-    PyErr_SetString(PyExc_IOError, buf);
+    FILE *file;
+    int found = 0;
+    char driver[100], dev[100];
+
     close(fd);
-    return NULL;
+
+    /* before bailing, maybe it is a PCMCIA/PC Card? */
+    file = fopen("/var/lib/pcmcia/stab", "r");
+    if (file == NULL) {
+      sprintf(buf, "[Errno %d] %s", eno, strerror(errno));
+      PyErr_SetString(PyExc_IOError, buf);
+      return NULL;
+    }
+    while (!feof(file)) {
+      if (fgets(buf, 2048, file) == NULL)
+	break;
+      if (strncmp(buf, "Socket", 6) != 0) {
+	if (sscanf(buf, "%*d\t%*s\t%100s\t%*d\t%100s\n", driver, dev) > 0) {
+	  if (strcmp(devname, dev) == 0) {
+	    found = 1;
+	    break;
+	  }
+	}
+      }
+    }
+    fclose(file);
+    if (!found) {
+      sprintf(buf, "[Errno %d] %s", eno, strerror(errno));
+      PyErr_SetString(PyExc_IOError, buf);
+      return NULL;
+    }
+    else
+      return PyString_FromString (driver);
   }
 
   close(fd);
