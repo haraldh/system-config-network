@@ -2,8 +2,8 @@
 <GTK-Interface>
 
 <project>
-  <name>devicewidgets</name>
-  <program_name>devicewidgets</program_name>
+  <name>netconf</name>
+  <program_name>netconf</program_name>
   <directory></directory>
   <source_directory>src</source_directory>
   <pixmaps_directory></pixmaps_directory>
@@ -14,14 +14,9 @@
 
 <widget>
   <class>GtkWindow</class>
-  <name>basicDialog</name>
+  <name>Dialog</name>
   <border_width>5</border_width>
   <visible>False</visible>
-  <signal>
-    <name>delete_event</name>
-    <handler>delete_event</handler>
-    <last_modification_time>Fri, 25 May 2001 23:11:32 GMT</last_modification_time>
-  </signal>
   <title>Add / Edit Device</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_MOUSE</position>
@@ -198,13 +193,13 @@ CTC
 
 	    <widget>
 	      <class>GtkButton</class>
-	      <name>deviceConfigureButton</name>
+	      <name>configureButton</name>
 	      <sensitive>False</sensitive>
 	      <can_focus>True</can_focus>
 	      <signal>
 		<name>clicked</name>
-		<handler>on_advancedButton_clicked</handler>
-		<last_modification_time>Thu, 24 May 2001 12:52:29 GMT</last_modification_time>
+		<handler>on_configureButton_clicked</handler>
+		<last_modification_time>Sat, 02 Jun 2001 09:21:15 GMT</last_modification_time>
 	      </signal>
 	      <label>_Configure...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
@@ -221,9 +216,14 @@ CTC
 	    <name>deviceNameEntry</name>
 	    <can_focus>True</can_focus>
 	    <signal>
+	      <name>insert_text</name>
+	      <handler>on_deviceNameEntry_insert_text</handler>
+	      <last_modification_time>Sat, 02 Jun 2001 09:27:46 GMT</last_modification_time>
+	    </signal>
+	    <signal>
 	      <name>changed</name>
 	      <handler>on_deviceNameEntry_changed</handler>
-	      <last_modification_time>Thu, 24 May 2001 12:51:25 GMT</last_modification_time>
+	      <last_modification_time>Sat, 02 Jun 2001 09:53:27 GMT</last_modification_time>
 	    </signal>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -1286,7 +1286,7 @@ Professional
 
 		    <widget>
 		      <class>GtkCList</class>
-		      <name>clist3</name>
+		      <name>serviceList</name>
 		      <can_focus>True</can_focus>
 		      <columns>1</columns>
 		      <column_widths>80</column_widths>

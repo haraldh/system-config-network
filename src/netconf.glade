@@ -324,7 +324,7 @@ Wireless
 	    <widget>
 	      <class>GtkEntry</class>
 	      <child_name>GtkCombo:entry</child_name>
-	      <name>hardwareDevicetypeEntry</name>
+	      <name>deviceTypeEntry</name>
 	      <can_focus>True</can_focus>
 	      <signal>
 		<name>changed</name>
@@ -506,7 +506,6 @@ Wireless
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
-	    <focus_target>hardwareDevicetypeEntry</focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>2</right_attach>
@@ -623,7 +622,7 @@ Wireless
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
-	    <default_focus_target>entry8</default_focus_target>
+	    <default_focus_target>ternaryDnsEntry</default_focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>1</right_attach>
@@ -690,7 +689,7 @@ Wireless
 
 	  <widget>
 	    <class>GtkEntry</class>
-	    <name>entry8</name>
+	    <name>ternaryDnsEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -1205,7 +1204,7 @@ Wireless
 
       <widget>
 	<class>GtkButton</class>
-	<name>mainOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -1219,7 +1218,7 @@ Wireless
 
       <widget>
 	<class>GtkButton</class>
-	<name>mainCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -1233,7 +1232,7 @@ Wireless
 
       <widget>
 	<class>GtkButton</class>
-	<name>mainHelpButton</name>
+	<name>HelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -1425,7 +1424,7 @@ CTC
 		  <handler>on_deviceTypeEntry_changed</handler>
 		  <last_modification_time>Sat, 26 May 2001 12:57:54 GMT</last_modification_time>
 		</signal>
-		<editable>True</editable>
+		<editable>False</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
 		<text>Ethernet</text>
@@ -1434,13 +1433,13 @@ CTC
 
 	    <widget>
 	      <class>GtkButton</class>
-	      <name>deviceConfigureButton</name>
+	      <name>configureButton</name>
 	      <sensitive>False</sensitive>
 	      <can_focus>True</can_focus>
 	      <signal>
 		<name>clicked</name>
-		<handler>on_advancedButton_clicked</handler>
-		<last_modification_time>Thu, 24 May 2001 12:52:29 GMT</last_modification_time>
+		<handler>on_configureButton_clicked</handler>
+		<last_modification_time>Fri, 01 Jun 2001 18:10:53 GMT</last_modification_time>
 	      </signal>
 	      <label>_Configure...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
@@ -3215,7 +3214,7 @@ Professional
 
       <widget>
 	<class>GtkButton</class>
-	<name>editOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -3229,7 +3228,7 @@ Professional
 
       <widget>
 	<class>GtkButton</class>
-	<name>editCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -4923,7 +4922,7 @@ manual
 
       <widget>
 	<class>GtkButton</class>
-	<name>dialupOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -4937,7 +4936,7 @@ manual
 
       <widget>
 	<class>GtkButton</class>
-	<name>dialupCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -4951,7 +4950,7 @@ manual
 
       <widget>
 	<class>GtkButton</class>
-	<name>dialupHelpButton</name>
+	<name>HelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -5108,7 +5107,7 @@ eth5
 	      <child_name>GtkCombo:entry</child_name>
 	      <name>ethernetDeviceEntry</name>
 	      <can_focus>True</can_focus>
-	      <editable>True</editable>
+	      <editable>False</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
 	      <text>eth0</text>
@@ -5199,7 +5198,7 @@ eth5
 
       <widget>
 	<class>GtkButton</class>
-	<name>ethernetOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -5213,7 +5212,7 @@ eth5
 
       <widget>
 	<class>GtkButton</class>
-	<name>ethernetCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -5227,7 +5226,7 @@ eth5
 
       <widget>
 	<class>GtkButton</class>
-	<name>ethernetHelpButton</name>
+	<name>HelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -5348,7 +5347,7 @@ eth5
 
       <widget>
 	<class>GtkButton</class>
-	<name>providerOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -5362,7 +5361,7 @@ eth5
 
       <widget>
 	<class>GtkButton</class>
-	<name>providerCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -5753,7 +5752,7 @@ None
 
       <widget>
 	<class>GtkButton</class>
-	<name>modemOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
@@ -5762,7 +5761,7 @@ None
 
       <widget>
 	<class>GtkButton</class>
-	<name>modemCanncelButton</name>
+	<name>CanncelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
@@ -6315,7 +6314,7 @@ W6692 based PCI cards
 
       <widget>
 	<class>GtkButton</class>
-	<name>isdnAdapterOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -6329,7 +6328,7 @@ W6692 based PCI cards
 
       <widget>
 	<class>GtkButton</class>
-	<name>isdnAdapterCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -6551,7 +6550,7 @@ eth4
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>dslEthernetDeviceComboBox</name>
+	    <name>ethernetDeviceEntry</name>
 	    <tooltip>Select the ethernet device connected to the DSL modem</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
@@ -6790,7 +6789,7 @@ none
 	      <name>entry4</name>
 	      <tooltip>Select the authentication protocol used by your ISP</tooltip>
 	      <can_focus>True</can_focus>
-	      <editable>True</editable>
+	      <editable>False</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
 	      <text>pap</text>
@@ -7221,7 +7220,7 @@ Ad-Hoc
 	  <child_name>GtkCombo:entry</child_name>
 	  <name>modeEntry</name>
 	  <can_focus>True</can_focus>
-	  <editable>True</editable>
+	  <editable>False</editable>
 	  <text_visible>True</text_visible>
 	  <text_max_length>0</text_max_length>
 	  <text>Managed</text>
@@ -7262,7 +7261,7 @@ Ad-Hoc
 	  <child_name>GtkCombo:entry</child_name>
 	  <name>rateEntry</name>
 	  <can_focus>True</can_focus>
-	  <editable>True</editable>
+	  <editable>False</editable>
 	  <text_visible>True</text_visible>
 	  <text_max_length>0</text_max_length>
 	  <text>Auto</text>
@@ -7297,7 +7296,7 @@ Ad-Hoc
 
       <widget>
 	<class>GtkButton</class>
-	<name>wirelessOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -7311,7 +7310,7 @@ Ad-Hoc
 
       <widget>
 	<class>GtkButton</class>
-	<name>wirelessCanncelButton</name>
+	<name>CanncelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -7376,7 +7375,7 @@ Ad-Hoc
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
-	<default_focus_target>networkAdapterEntry</default_focus_target>
+	<default_focus_target>adapterEntry</default_focus_target>
 	<child>
 	  <left_attach>0</left_attach>
 	  <right_attach>1</right_attach>
@@ -7420,7 +7419,7 @@ Ad-Hoc
 	<widget>
 	  <class>GtkEntry</class>
 	  <child_name>GtkCombo:entry</child_name>
-	  <name>networkAdapterEntry</name>
+	  <name>adapterEntry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -7507,7 +7506,7 @@ eth7
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>networkDeviceEntry</name>
+	    <name>ethernetDeviceEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
 	    <text_visible>True</text_visible>
@@ -7551,7 +7550,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIrqSpinButton</default_focus_target>
+	  <default_focus_target>irqSpinButton</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -7578,7 +7577,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkMemEntry</default_focus_target>
+	  <default_focus_target>memEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -7605,7 +7604,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIoEntry</default_focus_target>
+	  <default_focus_target>ioEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -7632,7 +7631,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIo1Entry</default_focus_target>
+	  <default_focus_target>io1Entry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -7659,7 +7658,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIo2Entry</default_focus_target>
+	  <default_focus_target>io2Entry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -7678,7 +7677,7 @@ eth7
 
 	<widget>
 	  <class>GtkSpinButton</class>
-	  <name>networkIrqSpinButton</name>
+	  <name>irqSpinButton</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -7715,7 +7714,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkMemEntry</name>
+	  <name>memEntry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -7744,7 +7743,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkIoEntry</name>
+	  <name>ioEntry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -7773,7 +7772,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkIo1Entry</name>
+	  <name>io1Entry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -7802,7 +7801,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkIo2Entry</name>
+	  <name>io2Entry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -7858,7 +7857,7 @@ eth7
 
       <widget>
 	<class>GtkButton</class>
-	<name>networkOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -7872,7 +7871,7 @@ eth7
 
       <widget>
 	<class>GtkButton</class>
-	<name>networkCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -8071,7 +8070,7 @@ eth4
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>tunnelDeviceEntry</name>
+	    <name>ethernetDeviceEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
 	    <text_visible>True</text_visible>
@@ -8400,7 +8399,7 @@ cipcb4
 
       <widget>
 	<class>GtkButton</class>
-	<name>cipeOkButton</name>
+	<name>OkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -8414,7 +8413,7 @@ cipcb4
 
       <widget>
 	<class>GtkButton</class>
-	<name>cipeCancelButton</name>
+	<name>CancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>

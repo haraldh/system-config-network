@@ -1,0 +1,188 @@
+#! /usr/bin/python
+
+## netconf - A network configuration tool
+## Copyright (C) 2001 Red Hat, Inc.
+## Copyright (C) 2001 Than Ngo <than@redhat.com>
+ 
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+ 
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+ 
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+import gtk
+import GDK
+import GTK
+import libglade
+import signal
+import os
+import GdkImlib
+import string
+import gettext
+import re
+
+from provider import providerDialog
+from gtk import TRUE
+from gtk import FALSE
+from gtk import CTREE_LINES_DOTTED
+
+##
+## I18N
+##
+gettext.bindtextdomain("netconf", "/usr/share/locale")
+gettext.textdomain("netconf")
+_=gettext.gettext
+
+class dialupDialog:
+    def __init__(self, xml_main = None, xml_basic = None, type = "ISDN"):
+        self.xml_main = xml_main
+        self.xml_basic = xml_basic
+        self.xml = libglade.GladeXML("dialupconfig.glade", None, domain="netconf")
+
+        self.xml.signal_autoconnect(
+            {
+            "on_chooseButton_clicked" : self.on_chooseButton_clicked,
+            "on_okButton_clicked" : self.on_okButton_clicked,
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_helpButton_clicked" : self.on_helpButton_clicked,
+            "on_dialingRuleCB_toggled" : self.on_dialingRuleCB_toggled,
+            "on_callbackCB_toggled" : self.on_callbackCB_toggled,
+            "on_pppOptionEntry_changed" : self.on_pppOptionEntry_changed,
+            "on_pppOptionAddButton_clicked" : self.on_pppOptionAddButton_clicked,
+            "on_pppOptionList_select_row" : self.on_pppOptionList_select_row,
+            "on_ipppOptionList_unselect_row" : self.on_ipppOptionList_unselect_row,
+            "on_pppOptionDeleteButton_clicked" : self.on_pppOptionDeleteButton_clicked
+            })
+
+        self.dialog = self.xml.get_widget("Dialog")
+        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        self.dialog.connect("hide", gtk.mainquit)
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
+        self.dialog.set_icon(pix, mask)
+
+        if type == "Modem":
+            noteBook = self.xml.get_widget("dialupNotebook")
+            for i in [1,3]:
+                noteBook.get_nth_page(i).hide()
+                self.dialog.set_title("Modem Dialup Configuration")
+        elif type == "ISDN":
+            self.dialog.set_title("ISDN Dialup Configuration")
+        
+        self.dialog.show()
+        
+    def on_Dialog_delete_event(self, *args):
+        self.dialog.destroy()
+        gtk.mainquit()
+        
+    def on_okButton_clicked(self, button):
+        self.dialog.destroy()
+        gtk.mainquit()
+
+    def on_cancelButton_clicked(self, button):
+        self.dialog.destroy()
+        gtk.mainquit()
+
+    def on_helpButton_clicked(self, button):
+        pass
+
+    def on_msnEntry_changed (self, *args):
+        pass
+
+    def on_dialingRuleCB_toggled(self, check):
+        prefixEntry = self.xml.get_widget("prefixEntry")
+        prefixEntry.set_sensitive(check["active"])
+        self.xml.get_widget("areaCodeEntry").set_sensitive(check["active"])
+        self.xml.get_widget("countryCodeCombo").set_sensitive(check["active"])
+        if check["active"]:
+            prefixEntry.grab_focus()
+        else:
+            self.xml.get_widget("phoneEntry").grab_focus()
+
+    def on_callbackCB_toggled(self, check):
+        self.xml.get_widget("callbackFrame").set_sensitive(check["active"])
+        self.xml.get_widget("dialinNumberEntry").grab_focus()
+    
+    def on_prefixEntry_changed (self, *args):
+        pass
+
+    def on_areaCodeEntry_changed (self, *args):
+        pass
+
+    def on_phoneEntry_changed (self, *args):
+        pass
+
+    def on_countryCodeEntry_changed (self, *args):
+        pass
+
+    def on_authMenu_enter (self, *args):
+        pass
+
+    def on_dialupProviderNameEntry_changed (self, *args):
+        pass
+
+    def on_dialupLoginNameEntry_activate (self, *args):
+        pass
+
+    def on_dialupPasswordEntry_changed (self, *args):
+        pass
+
+    def on_HeaderCompressionCB_toggled (self, *args):
+        pass
+
+    def on_connectionCompressionCB_toggled (self, *args):
+        pass
+
+    def on_acCompressionCB_toggled (self, *args):
+        pass
+
+    def on_pcCompressionCB_toggled (self, *args):
+        pass
+
+    def on_bsdCompressionCB_toggled (self, *args):
+        pass
+
+    def on_cppCompressionCB_toggled (self, *args):
+        pass
+
+    def on_pppOptionEntry_changed (self, entry):
+        option = string.strip(entry.get_text())
+        self.xml.get_widget("pppOptionAddButton").set_sensitive(len(option) > 0)
+
+    def on_pppOptionAddButton_clicked (self, button):
+        entry = self.xml.get_widget("pppOptionEntry")
+        self.xml.get_widget("ipppOptionList").set_sensitive(TRUE)
+        self.xml.get_widget("ipppOptionList").append([entry.get_text()])
+        entry.set_text("")
+        entry.grab_focus()
+    
+    def on_pppOptionList_select_row(self, clist, r, c, event):
+        self.xml.get_widget ("pppOptionDeleteButton").set_sensitive (TRUE)
+    
+    def on_ipppOptionList_unselect_row (self, clist, r, c, event):
+        self.xml.get_widget("pppOptionDeleteButton").set_sensitive(FALSE)
+
+    def on_pppOptionDeleteButton_clicked(self, button):
+        clist = self.xml.get_widget("ipppOptionList")
+        if clist.selection:
+            clist.remove(clist.selection[0])
+
+    def on_chooseButton_clicked(self, button):
+        dialog = providerDialog(self.xml_main, self.xml_basic, self.xml)
+
+    def set_title(self, title):
+        self.dialog.set_title(title)
+
+# make ctrl-C work
+if __name__ == "__main__":
+    signal.signal (signal.SIGINT, signal.SIG_DFL)
+    window = dialupDialog()
+    gtk.mainloop()
+

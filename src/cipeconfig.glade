@@ -2,11 +2,11 @@
 <GTK-Interface>
 
 <project>
-  <name>devicewidgets</name>
-  <program_name>devicewidgets</program_name>
+  <name>netconf</name>
+  <program_name>netconf</program_name>
   <directory></directory>
   <source_directory>src</source_directory>
-  <pixmaps_directory></pixmaps_directory>
+  <pixmaps_directory>pixmaps</pixmaps_directory>
   <language>C</language>
   <gnome_support>True</gnome_support>
   <gettext_support>True</gettext_support>
@@ -14,7 +14,7 @@
 
 <widget>
   <class>GtkWindow</class>
-  <name>cipeDeviceConfigDialog</name>
+  <name>Dialog</name>
   <visible>False</visible>
   <signal>
     <name>delete_event</name>
@@ -196,7 +196,7 @@ eth4
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>tunnelDeviceEntry</name>
+	    <name>ethernetDeviceEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
 	    <text_visible>True</text_visible>
@@ -525,7 +525,7 @@ cipcb4
 
       <widget>
 	<class>GtkButton</class>
-	<name>cipeOkButton</name>
+	<name>okButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -539,7 +539,7 @@ cipcb4
 
       <widget>
 	<class>GtkButton</class>
-	<name>cipeCancelButton</name>
+	<name>cancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>

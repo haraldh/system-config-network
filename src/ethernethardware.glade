@@ -2,8 +2,8 @@
 <GTK-Interface>
 
 <project>
-  <name>devicewidgets</name>
-  <program_name>devicewidgets</program_name>
+  <name>netconf</name>
+  <program_name>netconf</program_name>
   <directory></directory>
   <source_directory>src</source_directory>
   <pixmaps_directory></pixmaps_directory>
@@ -14,7 +14,7 @@
 
 <widget>
   <class>GtkWindow</class>
-  <name>ethernetHardwareDialog</name>
+  <name>Dialog</name>
   <visible>False</visible>
   <signal>
     <name>delete_event</name>
@@ -62,7 +62,7 @@
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
-	<default_focus_target>networkAdapterEntry</default_focus_target>
+	<default_focus_target>adapterEntry</default_focus_target>
 	<child>
 	  <left_attach>0</left_attach>
 	  <right_attach>1</right_attach>
@@ -106,7 +106,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <child_name>GtkCombo:entry</child_name>
-	  <name>networkAdapterEntry</name>
+	  <name>adapterEntry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -193,7 +193,7 @@ eth7
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>networkDeviceEntry</name>
+	    <name>ethernetDeviceEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
 	    <text_visible>True</text_visible>
@@ -237,7 +237,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIrqSpinButton</default_focus_target>
+	  <default_focus_target>irqSpinButton</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -264,7 +264,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkMemEntry</default_focus_target>
+	  <default_focus_target>memEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -291,7 +291,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIoEntry</default_focus_target>
+	  <default_focus_target>ioEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -318,7 +318,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIo1Entry</default_focus_target>
+	  <default_focus_target>io1Entry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -345,7 +345,7 @@ eth7
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>networkIo2Entry</default_focus_target>
+	  <default_focus_target>io2Entry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -364,7 +364,7 @@ eth7
 
 	<widget>
 	  <class>GtkSpinButton</class>
-	  <name>networkIrqSpinButton</name>
+	  <name>irqSpinButton</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -401,7 +401,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkMemEntry</name>
+	  <name>memEntry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -430,7 +430,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkIoEntry</name>
+	  <name>ioEntry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -459,7 +459,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkIo1Entry</name>
+	  <name>io1Entry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -488,7 +488,7 @@ eth7
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>networkIo2Entry</name>
+	  <name>io2Entry</name>
 	  <can_focus>True</can_focus>
 	  <signal>
 	    <name>changed</name>
@@ -544,7 +544,7 @@ eth7
 
       <widget>
 	<class>GtkButton</class>
-	<name>networkOkButton</name>
+	<name>okButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>
@@ -558,7 +558,7 @@ eth7
 
       <widget>
 	<class>GtkButton</class>
-	<name>networkCancelButton</name>
+	<name>cancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<signal>

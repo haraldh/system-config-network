@@ -2,8 +2,8 @@
 <GTK-Interface>
 
 <project>
-  <name>devicewidgets</name>
-  <program_name>devicewidgets</program_name>
+  <name>netconf</name>
+  <program_name>netconf</program_name>
   <directory></directory>
   <source_directory>src</source_directory>
   <pixmaps_directory></pixmaps_directory>
@@ -14,7 +14,8 @@
 
 <widget>
   <class>GtkWindow</class>
-  <name>modemConfigDialog</name>
+  <name>Dialog</name>
+  <visible>False</visible>
   <title>Modem Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_MOUSE</position>
@@ -396,18 +397,28 @@ None
 
       <widget>
 	<class>GtkButton</class>
-	<name>modemOkButton</name>
+	<name>okButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_okButton_clicked</handler>
+	  <last_modification_time>Mon, 04 Jun 2001 21:09:43 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
 
       <widget>
 	<class>GtkButton</class>
-	<name>modemCanncelButton</name>
+	<name>cancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_cancelButton_clicked</handler>
+	  <last_modification_time>Mon, 04 Jun 2001 21:09:47 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>

@@ -18,11 +18,6 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-
-netconf_dir = "/usr/share/netconf"
-sys.path.append (netconf_dir)
-
 import gtk
 import GDK
 import GTK
@@ -31,7 +26,12 @@ import signal
 import os
 import GdkImlib
 import string
+import gettext
+import re
 
+from Resolver import ResolverFile
+from basicdialog import basicDialog
+from isdnhardware import isdnHardwareDialog
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -39,533 +39,229 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-import gettext
-gettext.bindtextdomain ("netconf", "/usr/share/locale")
-gettext.textdomain ("netconf")
+gettext.bindtextdomain("netconf", "/usr/share/locale")
+gettext.textdomain("netconf")
 _=gettext.gettext
 
-netconfDir = "/usr/share/netconf"
-gladePath = "netconf.glade"
+class mainDialog:
+    def __init__(self):
+        self.xml = libglade.GladeXML("maindialog.glade", None, domain="netconf")
 
-if not os.path.exists(gladePath):
-    gladePath = netconfDir + "/netconf.glade"
+        self.xml.signal_autoconnect(
+            {
+            "on_deviceAddButton_clicked" : self.on_deviceAddButton_clicked,
+            "on_deviceCopyButton_clicked" : self.on_deviceCopyButton_clicked,
+            "on_deviceRenameButton_clicked" : self.on_deviceRenameButton_clicked,
+            "on_deviceEditButton_clicked" : self.on_deviceEditButton_clicked,
+            "on_deviceDeleteButton_clicked" : self.on_deviceDeleteButton_clicked,
+            "on_deviceList_select_row" : (self.on_generic_clist_select_row,
+                                          self.xml.get_widget("deviceEditButton"),
+                                          self.xml.get_widget("deviceDeleteButton"),
+                                          self.xml.get_widget("deviceCopyButton"),
+                                          self.xml.get_widget("deviceRenameButton")),
+            "on_deviceList_unselect_row" : (self.on_generic_clist_unselect_row,
+                                            self.xml.get_widget("deviceEditButton"),
+                                            self.xml.get_widget("deviceDeleteButton"),
+                                            self.xml.get_widget("deviceCopyButton"),
+                                            self.xml.get_widget("deviceRenameButton")),
+            "on_deviceList_button_press_event" : (self.on_generic_clist_button_press_event,
+                                                  self.on_deviceEditButton_clicked),
+            "on_okButton_clicked" : self.on_okButton_clicked,
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_helpButton_clicked" : self.on_helpButton_clicked,
+            "on_hardwareAddButton_clicked" : self.on_hardwareAddButton_clicked,
+            "on_hardwareEditButton_clicked" : self.on_hardwareEditButton_clicked,
+            "on_hardwareDeleteButton_clicked" : self.on_hardwareDeleteButton_clicked,
+            "on_hardwareList_select_row" : (self.on_generic_clist_select_row,
+                                            self.xml.get_widget("hardwareEditButton"),
+                                            self.xml.get_widget("hardwareDeleteButton")),
+            "on_hardwareList_unselect_row" : (self.on_generic_clist_unselect_row,
+                                              self.xml.get_widget("hardwareEditButton"),
+                                              self.xml.get_widget("hardwareDeleteButton")),
+            "on_hardwareList_button_press_event" : (self.on_generic_clist_button_press_event,
+                                                    self.on_hardwareEditButton_clicked),
+            "on_primaryDnsEntry_changed" : (self.on_generic_entry_insert_text, r'^[^/ ]+$'),
+            "on_secondaryDnsEntry_changed" : (self.on_generic_entry_insert_text,  r'^[^/ ]+$'),
+            "on_ternaryDnsEntry_changed" : (self.on_generic_entry_insert_text,  r'^[^/ ]+$'),
+            "on_searchDnsEntry_changed" : self.on_searchDnsEntry_changed,
+            "on_dnsAddButton_clicked" : self.on_dnsAddButton_clicked,
+            "on_dnsEditButton_clicked" : self.on_dnsEditButton_clicked,
+            "on_dnsUpButton_clicked" : self.on_dnsUpButton_clicked,
+            "on_dnsDownButton_clicked" : self.on_dnsDownButton_clicked,
+            "on_dnsDeleteButton_clicked" : self.on_dnsDeleteButton_clicked,
+            "on_dnsList_select_row" : (self.on_generic_clist_select_row,
+                                       self.xml.get_widget("dnsEditButton"),
+                                       self.xml.get_widget("dnsDeleteButton"),
+                                       None, None,
+                                       self.xml.get_widget("dnsUpButton"),
+                                       self.xml.get_widget("dnsDownButton")),
+            "on_dnsList_unselect_row" : (self.on_generic_clist_unselect_row,
+                                         self.xml.get_widget("dnsEditButton"),
+                                         self.xml.get_widget("dnsDeleteButton"),
+                                         None, None,
+                                         self.xml.get_widget("dnsUpButton"),
+                                         self.xml.get_widget("dnsDownButton")),
+            "on_dnsList_button_press_event" : (self.on_generic_clist_button_press_event,
+                                               self.on_dnsEditButton_clicked),
+            "on_profileList_unselect_row" : (self.on_generic_clist_unselect_row,
+                                             self.xml.get_widget("profileEditButton"),
+                                             self.xml.get_widget("profileDeleteButton"),
+                                             self.xml.get_widget("profileCopyButton")),
+            "on_profileList_select_row" : (self.on_generic_clist_select_row,
+                                           self.xml.get_widget("profileEditButton"),
+                                           self.xml.get_widget("profileDeleteButton"),
+                                           self.xml.get_widget("profileCopyButton")),
+            "on_profileList_button_press_event" : (self.on_generic_clist_button_press_event,
+                                                   self.on_profileDeleteButton_clicked),
+            "on_profileAddButton_clicked" : self.on_profileAddButton_clicked,
+            "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
+            "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked
+            })
 
-xml = libglade.GladeXML (gladePath, domain="netconf")
+        self.dialog = self.xml.get_widget("Dialog")
+        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        self.dialog.connect("hide", gtk.mainquit)
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
+        self.dialog.set_icon(pix, mask)
 
-def delete_event (win, event = None):
-    win.hide ()
-    # don't destroy window, just leave it hidden
-    return TRUE
-
-def on_exit_activate (*args):
-    gtk.mainquit()
+        res_file = ResolverFile()
+        try:
+            res_file.readProfile()
+            dns = res_file.DNServers()
+            search_domain = res_file.searchDomains()
+            n = ["primaryDnsEntry", "secondaryDnsEntry", "ternaryDnsEntry"]
+            for i in range(len(dns)):
+                self.xml.get_widget(n[i]).set_text(dns[i])
+            for i in range(len(search_domain)):
+                self.xml.get_widget("dnsList").append([search_domain[i]])
+        except:
+            pass
     
-def on_mainDialog_delete_event (*args):
-    on_exit_activate (args)
-    return TRUE
+    def on_Dialog_delete_event(self, *args):
+        gtk.mainquit()
 
-def on_mainOkButton_clicked (*args):
-    gtk.mainquit ()
+    def on_okButton_clicked (self, button):
+        gtk.mainquit()
 
-def on_mainCancelButton_clicked (*args):
-    gtk.mainquit ()
+    def on_cancelButton_clicked(self, button):
+        gtk.mainquit()
 
-def on_mainHelpButton_clicked (*args):
-    pass
-
-def on_deviceAddButton_clicked (clicked):
-    xml.get_widget ("deviceNameEntry").grab_focus ()
-    dialog = xml.get_widget ("basicDialog")
-    dialog.set_title (_("Add an new Device"))
-    dialog.show ()
-
-def on_deviceCopyButton_clicked (button):
-    pass
-
-def on_deviceRenameButton_clicked (button):
-    pass
-
-def on_deviceEditButton_clicked (*args):
-    dialog = xml.get_widget ("basicDialog")
-    dialog.set_title ("Edit Device")
-    dialog.show ()
-
-def on_deviceDeleteButton_clicked (button):
-    pass
-
-def on_deviceList_select_row (*args):
-    pass
-
-def on_deviceList_click_column (*args):
-    pass
-
-def on_dnsList_select_row (*args):
-    pass
-
-def on_dnsAddButton_clicked (*args):
-    pass
-
-def on_dnsEditButton_clicked (*args):
-    pass
-
-def on_dnsUpButton_clicked (*args):
-    pass
-
-def on_dnsDownButton_clicked (*args):
-    pass
-
-def on_dnsDeleteButton_clicked (*args):
-    pass
-
-def on_profileList_click_column (*args):
-    pass
-
-def on_profileList_select_row (*args):
-    pass
-
-def on_profileAddButton_clicked (*args):
-    pass
-
-def on_profileCopyButton_clicked (*args):
-    pass
-
-def on_profileRenameButton_clicked (*args):
-    pass
-
-def on_profileDeleteButton_clicked (*args):
-    pass
-
-def on_okButton_clicked ():
-    pass
-
-def on_cancelButton_clicked (button):
-    xml.get_widget ("basicDialog").hide ()
-
-def on_helpButton_clicked (*args):
-    pass
-
-def on_deviceNameEntry_changed (entry):
-    deviceName = string.strip (entry.get_text ())
-    xml.get_widget ("deviceTypeComboBox").set_sensitive (len(deviceName) > 0)
-    xml.get_widget ("deviceConfigureButton").set_sensitive (len(deviceName) > 0)
-
-def on_deviceTypeEntry_changed (entry):
-    pass
-
-def on_advancedButton_clicked (button):
-    noteBook = xml.get_widget ("dialupNotebook")
-    dialog = xml.get_widget ("DialupConfigDialog")
-    deviceType = xml.get_widget ("deviceTypeEntry").get_text ()
-
-    ## need to show all widgets in dialup notebook
-    noteBook.show_all()
-    
-    ## show the 1 page as default
-    noteBook.set_page(0);
-    
-    if deviceType == "Arcnet":
+    def on_helpButton_clicked(self, button):
         pass
-    elif deviceType == "Ethernet":
-        xml.get_widget ("ethernetConfigDialog").show ()
-    elif deviceType == "Modem":
-        ## hide some widgets which are not used here
-        for i in [1,3]:
-            noteBook.get_nth_page (i).hide ()
-        dialog.set_title ("Modem Dialup Configuration")
+
+    def on_deviceAddButton_clicked (self, clicked):
+        dialog = basicDialog(self.xml)
+        gtk.mainloop()
+
+    def on_deviceCopyButton_clicked (self, button):
+        pass
+
+    def on_deviceRenameButton_clicked (self, button):
+        pass
+
+    def on_deviceEditButton_clicked (self, *args):
+        dialog = xml_basic.get_widget ("Dialog")
+        dialog.set_title ("Edit Device")
         dialog.show ()
-    elif deviceType == "ISDN":
-        dialog.set_title ("ISDN Dialup Configuration")
-        xml.get_widget ("DialupConfigDialog").show ()
-    elif deviceType == "xDSL":
-        dialog = xml.get_widget ("dslConfigDialog")
-        dialog.set_title ("xDSL Configuration")
-        dialog.show ()
-    elif deviceType == "Wireless":
-        xml.get_widget ("wirelessDeviceConfigDialog").show ()
-    elif deviceType == "Token Ring":
+
+    def on_deviceDeleteButton_clicked (self, button):
         pass
-    elif deviceType == "Pocket (ATP)":
+
+    def on_generic_entry_insert_text(self, entry, partial_text, length, pos, str):
+        text = partial_text[0:length]
+        if re.match(str, text):
+            return
+        entry.emit_stop_by_name('insert_text')
+
+    def on_generic_clist_select_row(self, clist, row, column, event,
+                                    edit_button = None, delete_button = None,
+                                    copy_button = None, rename_button = None,
+                                    up_button = None, down_button = None):
+        if edit_button: edit_button.set_sensitive(TRUE)
+        if rename_button: rename_button.set_sensitive(TRUE)
+        if delete_button: delete_button.set_sensitive(TRUE)
+        if copy_button: copy_button.set_sensitive(TRUE)
+        if up_button: delete_button.set_sensitive(TRUE)
+        if down_button: copy_button.set_sensitive(TRUE)
+        
+    def on_generic_clist_unselect_row(self, clist, row, column, event,
+                                      edit_button = None, delete_button = None,
+                                      copy_button = None, rename_button = None,
+                                      up_button = None, down_button = None):
+        if edit_button: edit_button.set_sensitive(FALSE)
+        if rename_button: rename_button.set_sensitive(FALSE)
+        if delete_button: delete_button.set_sensitive(FALSE)
+        if copy_button: copy_button.set_sensitive(FALSE)
+        if up_button: delete_button.set_sensitive(FALSE)
+        if down_button: copy_button.set_sensitive(FALSE)
+
+    def on_generic_clist_button_release_event(self, clist, event, func):
+        id = clist.get_data ("signal_id")
+        clist.disconnect (id)
+        clist.remove_data ("signal_id")
+        apply (func)
+
+    def on_generic_clist_button_press_event(self, clist, event, func):
+        if event.type == GDK._2BUTTON_PRESS:
+            info = clist.get_selection_info(event.x, event.y)
+            if info != None:
+                id = clist.signal_connect("button_release_event",
+                                          on_generic_clist_button_release_event,
+                                          func)
+                clist.set_data("signal_id", id)
+
+    def on_searchDnsEntry_changed(self, entry):
         pass
-    elif deviceType == "SLIP":
+
+    def on_dnsAddButton_clicked(self, *args):
         pass
-    elif deviceType == "PLIP":
+
+    def on_dnsEditButton_clicked (self, *args):
         pass
-    elif deviceType == "CIPE":
-        xml.get_widget ("cipeDeviceConfigDialog").show ()
-    elif deviceType == "CTC":
+
+    def on_dnsUpButton_clicked (self, *args):
         pass
-    
-def on_onBootCB_toggled (check):
-    pass
 
-def on_userControlCB_toggled (check):
-    pass
+    def on_dnsDownButton_clicked (self, *args):
+        pass
 
-def on_ipSettingCB_toggled (check):
-    xml.get_widget ("dynamicConfigComboBox").set_sensitive (check["active"])
-    xml.get_widget ("ipSettingFrame").set_sensitive (check["active"] != TRUE)
-    if check["active"]:
-        xml.get_widget ("dynamicConfigEntry").grab_focus ()
-    else:
-        xml.get_widget ("addressEntry").grab_focus ()
+    def on_dnsDeleteButton_clicked (self, *args):
+        pass
 
-def on_dynamicConfigMenu_clicked (menu):
-    pass
+    def on_profileList_click_column (self, *args):
+        pass
 
-def on_addressEntry_changed (entry):
-    pass
+    def on_profileList_select_row (self, *args):
+        pass
 
-def on_netmaskEntry_changed (entry):
-    pass
+    def on_profileAddButton_clicked (self, *args):
+        pass
 
-def on_gatewayEntry_changed (entry):
-    pass
+    def on_profileCopyButton_clicked (self, *args):
+        pass
 
-def on_hostnameEntry_changed (entry):
-    pass
+    def on_profileDeleteButton_clicked (self, *args):
+        pass
 
-def on_domainEntry_changed (entry):
-    pass
+    def on_hardwareAddButton_clicked (self, button):
+        deviceType = self.xml.get_widget("deviceTypeEntry").get_text()
+        if deviceType == "Ethernet" or deviceType == "Token Ring" or  \
+           deviceType == "Pocket (ATP)" or deviceType == "Arcnet":
+            dialog = ethernetHardwareDialog(self.xml)
+        if deviceType == "Modem":
+            dialog = modemDialog(self.xml)
+        if deviceType == "ISDN":
+            dialog = isdnHardwareDialog(self.xml)
 
-def on_dnsSettingCB_toggled (check):
-    pass
+    def on_hardwareEditButton_clicked (self, button):
+        on_hardwareAddButton_clicked (button)
 
-def on_defaultRouteCB_toggled (check):
-    xml.get_widget ("networkRouteFrame").set_sensitive (check["active"] != TRUE)
-
-def on_networkRouteList_click_column (*args):
-    pass
-
-def on_networkRouteList_select_row (*args):
-    pass
-
-def on_routeAddButton_clicked (click):
-    xml.get_widget ("editAddressDialog").show ()
-
-def on_routeEditButton_clicked (*args):
-    pass
-
-def on_routeDeleteButton_clicked (*args):
-    pass
-
-def on_dialupOkButton_enter (*args):
-    pass
-
-def on_dialupCancelButton_clicked (click):
-    xml.get_widget ("DialupConfigDialog").hide()
-
-def on_dialupHelpButton_clicked (click):
-    pass
-
-def on_configureButton_clicked (click):
-    xml.get_widget ("isdnConfigDialog").show ()
-
-def on_msnEntry_changed (*args):
-    pass
-
-def on_dialingRuleCB_toggled (check):
-    prefixEntry = xml.get_widget ("prefixEntry")
-    prefixEntry.set_sensitive (check["active"])
-    xml.get_widget ("areaCodeEntry").set_sensitive (check["active"])
-    xml.get_widget ("countryCodeCombo").set_sensitive (check["active"])
-    ## set right focus
-    if check["active"]:
-        prefixEntry.grab_focus ()
-    else:
-        xml.get_widget ("phoneEntry").grab_focus ()
-
-def on_prefixEntry_changed (*args):
-    pass
-
-def on_areaCodeEntry_changed (*args):
-    pass
-
-def on_phoneEntry_changed (*args):
-    pass
-
-def on_countryCodeEntry_changed (*args):
-    pass
-
-def on_authMenu_enter (*args):
-    pass
-
-def on_providerTree_tree_select_row (*args):
-    pass
-
-def on_providerTree_click_column (*args):
-    pass
-
-def on_providerTree_select_row (*args):
-    pass
-
-def on_dialupProviderNameEntry_changed (*args):
-    pass
-
-def on_dialupLoginNameEntry_activate (*args):
-    pass
-
-def on_dialupPasswordEntry_changed (*args):
-    pass
-
-def on_HeaderCompressionCB_toggled (*args):
-    pass
-
-def on_connectionCompressionCB_toggled (*args):
-    pass
-
-def on_acCompressionCB_toggled (*args):
-    pass
-
-def on_pcCompressionCB_toggled (*args):
-    pass
-
-def on_bsdCompressionCB_toggled (*args):
-    pass
-
-def on_cppCompressionCB_toggled (*args):
-    pass
-
-def on_pppOptionEntry_changed (entry):
-    option = string.strip (entry.get_text ())
-    xml.get_widget ("pppOptionAddButton").set_sensitive (len (option) > 0)
-
-def on_pppOptionAddButton_clicked (button):
-    entry = xml.get_widget ("pppOptionEntry")
-    xml.get_widget ("ipppOptionList").set_sensitive (TRUE)
-    xml.get_widget ("ipppOptionList").append ([entry.get_text ()])
-    entry.set_text("")
-    entry.grab_focus()
-    
-def on_pppOptionList_select_row (clist, r, c, event):
-    xml.get_widget ("pppOptionDeleteButton").set_sensitive (TRUE)
-    
-def on_ipppOptionList_unselect_row (clist, r, c, event):
-    xml.get_widget ("pppOptionDeleteButton").set_sensitive (FALSE)
-
-def on_pppOptionDeleteButton_clicked (button):
-    clist = xml.get_widget ("ipppOptionList")
-    if clist.selection:
-        clist.remove(clist.selection[0])
-
-def on_isdnOkButton_clicked (*args):
-    pass
-
-def on_isdnCancelButton_clicked (clicked):
-    xml.get_widget ("isdnConfigDialog").hide ()
-
-def on_isdnHelpButton_clicked (*args):
-    pass
-
-def on_isdnDeviceMenu_clicked (*args):
-    pass
-
-def on_encapModeMenu_clicked (*args):
-    pass
-
-def on_hangupTimeoutSpinButton_changed (*args):
-    pass
-
-def on_callbackCB_toggled (check):
-    xml.get_widget ("callbackFrame").set_sensitive (check["active"])
-    xml.get_widget ("dialinNumberEntry").grab_focus()
-
-def on_chooseProvider_clicked (button):
-    xml.get_widget ("chooseProviderDialog").show ()
-
-def on_providerCancelButton_clicked (button):
-    xml.get_widget ("chooseProviderDialog").hide ()
-
-def on_providerOkButton_clicked (button):
-    xml.get_widget ("chooseProviderDialog").hide ()
-
-def on_chooseProviderDialog_delete_event (win, event = None):
-    win.hide ()
-    return TRUE
-
-def on_hardwareAddButton_clicked (button):
-    deviceType = xml.get_widget ("hardwareDevicetypeEntry").get_text ()
-    if deviceType == "Ethernet":
-        xml.get_widget ("ethernetHardwareDialog"). show ()
-    if deviceType == "Token Ring":
-        xml.get_widget ("ethernetHardwareDialog"). show ()
-    if deviceType == "Pocket (ATP)":
-        xml.get_widget ("ethernetHardwareDialog"). show ()
-    if deviceType == "Arcnet":
-        xml.get_widget ("ethernetHardwareDialog"). show ()
-    if deviceType == "Modem":
-        xml.get_widget ("modemConfigDialog").show ()
-    if deviceType == "ISDN":
-        xml.get_widget ("isdnHardwareDialog").show ()
-
-def on_hardwareEditButton_clicked (button):
-    on_hardwareAddButton_clicked (button)
-
-def on_hardwareDeleteButton_clicked (button):
-    pass
-
-def on_aliasSupportCB_toggled (check):
-    xml.get_widget ("aliasSpinBox").set_sensitive (check["active"])
-
-def set_icon (widget, pixmapFile):
-    if os.path.exists (pixmapFile):
-        pix, mask = gtk.create_pixmap_from_xpm (gtk.GtkWindow (), None, pixmapFile)
-        widget.set (pix, mask)
-
-def setup_provider_db ():
-    dbtree = xml.get_widget ("providerTree")
-    dbtree.set_line_style(CTREE_LINES_DOTTED)
-    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "pixmaps/de.xpm")
-    node1 = dbtree.insert_node(None, None, ["Germany"], 5, pix, mask, pix, mask, is_leaf=FALSE)
-    node2 = dbtree.insert_node(node1, None, ["T Online"])
-    node3 = dbtree.insert_node(node1, None, ["Freenet"])
-    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "pixmaps/us.xpm")
-    node4 = dbtree.insert_node(None, None, ["America"], 5, pix, mask, pix, mask, is_leaf=FALSE)
-    node5 = dbtree.insert_node(node4, None, ["ATT"])
-    node6 = dbtree.insert_node(node4, None, ["Bell"])
-    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "pixmaps/no.xpm")
-    node7 = dbtree.insert_node(None, None, ["Norway"], 5, pix, mask, pix, mask, is_leaf=FALSE)
-    node8 = dbtree.insert_node(node7, None, ["Nextra"])
-    
-def setup ():
-    networkPixmap = xml.get_widget ("networkPixmap")
-    basicNotebook = xml.get_widget ("basicNotebook")
-    set_icon (networkPixmap, "pixmaps/network.xpm")
-    for i in [4,5,6]:
-        basicNotebook.get_nth_page (i).hide ()
-
-    setup_provider_db()
-
-def on_ethernetHardwareDialog_delete_event (win, event = None):
-    win.hide ()
-    return TRUE
-
-def on_networkOkButton_clicked (button):
-    xml.get_widget ("ethernetHardwareDialog").hide ()
-
-def on_networkCancelButton_clicked (button):
-    xml.get_widget ("ethernetHardwareDialog").hide ()
-
-def on_cipeDeviceConfigDialog_delete_event (win, event = None):
-    win.hide ()
-    return TRUE
-
-def on_cipeOkButton_clicked (button):
-    xml.get_widget ("cipeDeviceConfigDialog").hide ()
-
-def on_cipeCancelButton_clicked(win, event = None):
-    xml.get_widget ("cipeDeviceConfigDialog").hide ()
-
-def main ():
-    xml.signal_autoconnect (
-        {
-        "delete_event" : delete_event,
-        ## netconf
-        "on_mainDialog_delete_event" : on_mainDialog_delete_event,
-        "on_mainOkButton_clicked" : on_mainOkButton_clicked,
-        "on_mainCancelButton_clicked" : on_mainCancelButton_clicked,
-        "on_mainHelpButton_clicked" : on_mainHelpButton_clicked,
-        "on_deviceAddButton_clicked" : on_deviceAddButton_clicked,
-        "on_deviceCopyButton_clicked" : on_deviceCopyButton_clicked,
-        "on_deviceRenameButton_clicked" : on_deviceRenameButton_clicked,
-        "on_deviceEditButton_clicked" : on_deviceEditButton_clicked,
-        "on_deviceDeleteButton_clicked" : on_deviceDeleteButton_clicked,
-        "on_deviceList_select_row" : on_deviceList_select_row,
-        "on_deviceList_click_column" : on_deviceList_click_column,
-        "on_dnsList_select_row" : on_dnsList_select_row,
-        "on_dnsAddButton_clicked" : on_dnsAddButton_clicked,
-        "on_dnsEditButton_clicked" : on_dnsEditButton_clicked,
-        "on_dnsUpButton_clicked" : on_dnsUpButton_clicked,
-        "on_dnsDownButton_clicked" : on_dnsDownButton_clicked,
-        "on_dnsDeleteButton_clicked" : on_dnsDeleteButton_clicked,
-        "on_profileList_click_column": on_profileList_click_column,
-        "on_profileList_select_row" : on_profileList_select_row,
-        "on_profileAddButton_clicked" : on_profileAddButton_clicked,
-        "on_profileCopyButton_clicked" : on_profileCopyButton_clicked,
-        "on_profileRenameButton_clicked" : on_profileRenameButton_clicked,
-        "on_profileDeleteButton_clicked" : on_profileDeleteButton_clicked,
-        ## Add / Edit Device
-        "on_okButton_clicked" : on_okButton_clicked,
-        "on_cancelButton_clicked" : on_cancelButton_clicked,
-        "on_helpButton_clicked" : on_helpButton_clicked,
-        "on_deviceNameEntry_changed" : on_deviceNameEntry_changed,
-        "on_deviceTypeEntry_changed" : on_deviceTypeEntry_changed,
-        "on_advancedButton_clicked" : on_advancedButton_clicked,
-        "on_onBootCB_toggled" : on_onBootCB_toggled,
-        "on_userControlCB_toggled" : on_userControlCB_toggled,
-        "on_ipSettingCB_toggled" : on_ipSettingCB_toggled,
-        "on_dynamicConfigMenu_clicked" : on_dynamicConfigMenu_clicked,
-        "on_addressEntry_changed" : on_addressEntry_changed,
-        "on_netmaskEntry_changed" : on_netmaskEntry_changed,
-        "on_gatewayEntry_changed" : on_gatewayEntry_changed,
-        "on_hostnameEntry_changed" : on_hostnameEntry_changed,
-        "on_domainEntry_changed" : on_domainEntry_changed,
-        "on_dnsSettingCB_toggled" : on_dnsSettingCB_toggled,
-        "on_defaultRouteCB_toggled" : on_defaultRouteCB_toggled,
-        "on_networkRouteList_click_column" : on_networkRouteList_click_column,
-        "on_networkRouteList_select_row" : on_networkRouteList_select_row,
-        "on_routeAddButton_clicked" : on_routeAddButton_clicked,
-        "on_routeEditButton_clicked" : on_routeEditButton_clicked,
-        "on_routeDeleteButton_clicked" : on_routeDeleteButton_clicked,
-        ## Dialup Configuration
-        "on_dialupOkButton_enter" : on_dialupOkButton_enter,
-        "on_dialupCancelButton_clicked" : on_dialupCancelButton_clicked,
-        "on_dialupHelpButton_clicked" : on_dialupHelpButton_clicked,
-        "on_configureButton_clicked" : on_configureButton_clicked,
-        "on_msnEntry_changed" : on_msnEntry_changed,
-        "on_dialingRuleCB_toggled" : on_dialingRuleCB_toggled,
-        "on_prefixEntry_changed" : on_prefixEntry_changed,
-        "on_areaCodeEntry_changed" : on_areaCodeEntry_changed,
-        "on_phoneEntry_changed" : on_phoneEntry_changed,
-        "on_countryCodeEntry_changed" : on_countryCodeEntry_changed,
-        "on_providerTree_tree_select_row" : on_providerTree_tree_select_row,
-        "on_providerTree_click_column" : on_providerTree_click_column,
-        "on_providerTree_select_row" : on_providerTree_select_row,
-        "on_dialupProviderNameEntry_changed" : on_dialupProviderNameEntry_changed,
-        "on_dialupLoginNameEntry_activate" : on_dialupLoginNameEntry_activate,
-        "on_dialupPasswordEntry_changed" : on_dialupPasswordEntry_changed,
-        "on_HeaderCompressionCB_toggled" : on_HeaderCompressionCB_toggled,
-        "on_connectionCompressionCB_toggled" : on_connectionCompressionCB_toggled,
-        "on_acCompressionCB_toggled" : on_acCompressionCB_toggled,
-        "on_pcCompressionCB_toggled" : on_pcCompressionCB_toggled,
-        "on_bsdCompressionCB_toggled" : on_bsdCompressionCB_toggled,
-        "on_cppCompressionCB_toggled" : on_cppCompressionCB_toggled,
-        "on_pppOptionEntry_changed" : on_pppOptionEntry_changed,
-        "on_pppOptionAddButton_clicked" : on_pppOptionAddButton_clicked,
-        "on_pppOptionList_select_row" : on_pppOptionList_select_row,
-        "on_ipppOptionList_unselect_row" : on_ipppOptionList_unselect_row,
-        "on_pppOptionDeleteButton_clicked" : on_pppOptionDeleteButton_clicked,
-        "on_isdnOkButton_clicked" : on_isdnOkButton_clicked,
-        "on_isdnCancelButton_clicked" : on_isdnCancelButton_clicked,
-        "on_isdnHelpButton_clicked" : on_isdnHelpButton_clicked,
-        "on_isdnDeviceMenu_clicked" : on_isdnDeviceMenu_clicked,
-        "on_encapModeMenu_clicked" : on_encapModeMenu_clicked,
-        "on_hangupTimeoutSpinButton_changed" : on_hangupTimeoutSpinButton_changed,
-        "on_callbackCB_toggled" : on_callbackCB_toggled,
-        "on_providerCancelButton_clicked" : on_providerCancelButton_clicked,
-        "on_providerOkButton_clicked" : on_providerOkButton_clicked,
-        "on_chooseProviderDialog_delete_event" : on_chooseProviderDialog_delete_event,
-        "on_chooseProvider_clicked" : on_chooseProvider_clicked,
-        # hardware
-        "on_hardwareAddButton_clicked" : on_hardwareAddButton_clicked,
-        "on_hardwareEditButton_clicked" : on_hardwareEditButton_clicked,
-        "on_hardwareDeleteButton_clicked" : on_hardwareDeleteButton_clicked,
-        ## ethernetConfigDialog
-        "on_aliasSupportCB_toggled" : on_aliasSupportCB_toggled,
-        "on_networkOkButton_clicked" : on_networkOkButton_clicked,
-        "on_networkCancelButton_clicked" : on_networkCancelButton_clicked,
-        "on_ethernetHardwareDialog_delete_event" : on_ethernetHardwareDialog_delete_event,
-        ## cipeDeviceConfigDialog
-        "on_cipeDeviceConfigDialog_delete_event" : on_cipeDeviceConfigDialog_delete_event,
-        "on_cipeOkButton_clicked" : on_cipeOkButton_clicked,
-        "on_cipeCancelButton_clicked" :on_cipeCancelButton_clicked
-        })
-
-    setup ()
-    xml.get_widget ("mainDialog").show_all ()
-    gtk.mainloop ()
+    def on_hardwareDeleteButton_clicked (self, button):
+        pass
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    main ()
-    
+    window = mainDialog()
+    gtk.mainloop()
+
