@@ -79,8 +79,6 @@ VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))
 
 archive: distcheck changelog
-	cvs ci -m "release $(VERSION)"
-	cvs tag -cFR $(CVSTAG) .
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`; cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
 	@cd /tmp/${PKGNAME};./autogen.sh
@@ -89,7 +87,21 @@ archive: distcheck changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION)
 	@echo "The archive is in ${PKGNAME}-$(VERSION).tar.gz"
 
-srpm: archive
+force-tag:
+	cvs ci -m "release $(VERSION) moved"
+	cvs tag -cFR $(CVSTAG) .
+
+tag:
+	cvs ci -m "release $(VERSION)"
+	cvs tag -cR $(CVSTAG) .
+
+tag-srpm: tag archive
+	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
+
+force-tag-srpm: tag archive
+	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
+
+srpm: distcheck changelog
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
 newversion:
