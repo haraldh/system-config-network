@@ -341,13 +341,15 @@ class ProfileList(ProfileList_base):
                 unlink('/etc/resolv.conf')
 
             link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
-            
+            os.chmod('/etc/resolv.conf', 0644)
+                
             if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
                 rename('/etc/hosts', '/etc/hosts.bak')
             else:
                 unlink('/etc/hosts')
 
             link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
+            os.chmod('/etc/hosts', 0644)
 
     def activateDevice (self, deviceid, profile, state=None):
         devicelist = NCDeviceList.getDeviceList()
