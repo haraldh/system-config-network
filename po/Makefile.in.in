@@ -78,18 +78,11 @@ INSTOBJEXT = @INSTOBJEXT@
 	$(MSGMERGE) $< $(srcdir)/$(GETTEXT_PACKAGE).pot -o $*pox
 
 .po.mo:
-	#$(MSGFMT) -o $@ $<
-	tt=conv$$$$; \
-	msgconv -t utf-8 -o $<.$$tt $<;\
-	$(MSGFMT) -o $@ $<.$$tt; \
-	rm -f $<.$$tt
+	$(MSGFMT) -o $@ $<
 
 .po.gmo:
-#	file=$(srcdir)/`echo $* | sed 's,.*/,,'`.gmo \
-#	  && rm -f $$file && $(GMSGFMT) -o $$file $<
-	tt=conv$$$$; \
 	file=$(srcdir)/`echo $* | sed 's,.*/,,'`.gmo \
-	  && rm -f $$file && (msgconv -t utf-8 -o $<.$$tt $<;$(GMSGFMT) -o $$file $<.$$tt; rm -f $<.$$tt)
+	  && rm -f $$file && $(GMSGFMT) -o $$file $<
 
 .po.cat:
 	sed -f ../intl/po2msg.sed < $< > $*.msg \
@@ -98,8 +91,8 @@ INSTOBJEXT = @INSTOBJEXT@
 
 all: all-@USE_NLS@
 
-all-yes: $(CATALOGS) Makefile
-all-no: Makefile
+all-yes: $(CATALOGS)
+all-no:
 
 $(srcdir)/$(GETTEXT_PACKAGE).pot: $(POTFILES)
 	$(GENPOT)
@@ -192,8 +185,6 @@ clean: mostlyclean
 
 distclean: clean
 	rm -f Makefile Makefile.in POTFILES *.mo *.msg *.cat *.cat.m
-	rm -f po2tbl.sed
-	rm -f .intltool-merge-cache
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
@@ -201,7 +192,7 @@ maintainer-clean: distclean
 	rm -f $(GMOFILES)
 
 distdir = ../$(GETTEXT_PACKAGE)-$(VERSION)/$(subdir)
-dist distdir: $(DISTFILES)
+dist distdir: update-po $(DISTFILES)
 	dists="$(DISTFILES)"; \
 	for file in $$dists; do \
 	  ln $(srcdir)/$$file $(distdir) 2> /dev/null \
@@ -252,7 +243,6 @@ POTFILES: POTFILES.in
 		| sed -e '$$s/\\$$//') > $@-t \
 	    && chmod a-w $@-t \
 	    && mv $@-t $@ )
-	$(MAKE) update-po
 
 Makefile: Makefile.in.in ../config.status POTFILES
 	cd .. \

@@ -1,7 +1,135 @@
-2003-10-22	Than  Ngo 	<than@redhat.com>
-	netconfpkg/plugins/NCHWIsdn.py: fix a bug in saving of ISDN config files
+2003-10-27  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCDialup.py 1.65:
+	added more international dialup codes #107501 (thx to Roman Maurer)
+
+	* src/netconfpkg/gui/WirelessInterfaceDruid.glade 1.20:
+	removed radio <group> from first button #107387
+
+	* src/netconfpkg/gui/neat-control.glade 1.5: removed Tab from Label
+
+	* src/netconf.py 1.197:
+	fallback on no logfile, if opening the logfile fails
+
+	* src/netconf.py 1.196:
+	check for uid(0) before trying to open the logfile
+
+	* src/netconfpkg/NCProfileList.py 1.77:
+	test if /etc/{hosts,resolv.conf} exists
+
+	* src/netconfpkg/gui/maindialog.py 1.32: corrected PAGE_IPSEC number
+
+	* src/netconfpkg/gui/dialupconfig.glade 1.20: removed ipsec tab #106751
+
+	* redhat-config-network.spec.in 1.192: -tui Requires newt #104213
+
+2003-10-26  romanm  <romanm@redhat.com>
+
+	* po/sl.po 1.2:
+	synced with new POT; I thought this is supposed to be done automatically??
+
+2003-10-24  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/maindialog.py 1.31: removed IPsec Tab #107388
+
+	* src/netconfpkg/Control.py 1.22, src/neat-control.py 1.42:
+	fixed #107816, by recognizing /var/run/ppp-ppp<NICKNAME>.pid
+
+2003-10-23  Than Ngo  <than@redhat.com>
+
+	* redhat-config-network.spec.in 1.191: fixed typo
+
+	* configure.in 1.158, redhat-config-network.spec.in 1.190, src/netconfpkg/Control.py 1.20, src/netconfpkg/NCDevice.py 1.94, src/netconfpkg/NC_functions.py 1.81:
+	- fix a bug in ISDN activate
+
+2003-10-22  Than Ngo  <than@redhat.com>
+
+	* po/tr.po 1.101, po/zh_CN.po 1.111, po/zh_TW.po 1.134, src/netconfpkg/NCDevice.py 1.93, po/Makefile.in.in 1.18, po/cs.po 1.134, po/da.po 1.129, po/de.po 1.187, po/el.po 1.110, po/es.po 1.172, po/fr.po 1.177, po/hu.po 1.11, po/is.po 1.164, po/it.po 1.163, po/ja.po 1.175, po/ko.po 1.172, po/nl.po 1.23, po/no.po 1.156, po/pt.po 1.151, po/pt_BR.po 1.13, po/redhat-config-network.pot 1.139, po/ru.po 1.119, po/sv.po 1.163, intltool-extract.in 1.11, intltool-merge.in 1.11, intltool-update.in 1.11, redhat-config-network.spec.in 1.189:
+	add support nickname for ISDN
+
+2003-10-22  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/plugins/NCHWIsdn.py 1.2.2.3.2.3:
+	fixed an import bug in saving of ISDN config files
+
+	* po/POTFILES.in 1.31: removed Cyclops.py
+
+2003-10-22  Than Ngo  <than@redhat.com>
+
+	* ChangeLog 1.106, configure.in 1.157, redhat-config-network.spec.in 1.188:
+	bump release number to 1.3.7-2
+
+	* src/netconfpkg/plugins/NCHWIsdn.py 1.7:
+	fix a bug in saving of ISDN config files
+
+2003-10-20  maxik  <maxik@redhat.com>
+
+	* po/uk.po 1.1: *** empty log message ***
+
+2003-10-20  lkanter  <lkanter@redhat.com>
+
+	* po/ru.po 1.118: update
+
+2003-10-19  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.155: Update
+
+2003-10-18  pclouds  <pclouds@redhat.com>
+
+	* po/vi.po 1.6: update vi.po
+
+2003-10-18  mitr  <mitr@redhat.com>
+
+	* po/cs.po 1.133: Update Czech translation
+
+2003-10-18  delacko  <delacko@redhat.com>
+
+	* po/hr.po 1.5: croatian translations update
+
+2003-10-17  andmuell  <andmuell@redhat.com>
+
+	* po/de.po 1.186: Adapted translation for IPsec connections
+
+2003-10-16  menthos  <menthos@redhat.com>
+
+	* po/sv.po 1.162: 2003-10-16  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2003-10-15  tino  <tino@redhat.com>
+
+	* po/nl.po 1.22: Updated Dutch translation
+
+2003-10-14  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.154: Update
+
+2003-10-12  pve-nl  <pve-nl@redhat.com>
+
+	* po/nl.po 1.21: some fixes for redhat-config-network nl.po
+
+2003-10-11  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.109: Updated el.po
+
+2003-10-10  ra  <ra@redhat.com>
+
+	* po/is.po 1.163: *** empty log message ***
+
+2003-10-09  mitr  <mitr@redhat.com>
+
+	* po/cs.po 1.132: Update Czech translation
+
+2003-10-09  morais  <morais@redhat.com>
+
+	* po/pt.po 1.150: updates
 
 2003-10-08  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/Makefile.am 1.60, src/netconfpkg/gui/Makefile.am 1.27, src/netconfpkg/plugins/Makefile.am 1.7:
+	release 1.3.7-1 moved
+
+	* ChangeLog 1.105: release 1.3.7-1
 
 	* po/vi.po 1.5, po/zh_CN.po 1.110, po/zh_TW.po 1.133, po/it.po 1.162, po/ja.po 1.174, po/ko.po 1.171, po/nl.po 1.20, po/no.po 1.153, po/pt.po 1.149, po/pt_BR.po 1.12, po/redhat-config-network.pot 1.138, po/ru.po 1.117, po/sv.po 1.161, po/tr.po 1.100, ChangeLog 1.104, configure.in 1.156, po/POTFILES.in 1.30, po/bn.po 1.3, po/cs.po 1.131, po/da.po 1.128, po/de.po 1.185, po/el.po 1.108, po/es.po 1.171, po/fr.po 1.176, po/hu.po 1.10, po/is.po 1.162, redhat-config-network.spec.in 1.187, src/netconfpkg/gui/CTCInterface.py 1.2, src/netconfpkg/gui/CipeInterface.py 1.26, src/netconfpkg/gui/EthernetHardwareDruid.py 1.26, src/netconfpkg/gui/EthernetInterface.py 1.34, src/netconfpkg/gui/GUI_functions.py 1.27, src/netconfpkg/gui/HardwareDialog.py 1.2, src/netconfpkg/gui/IUCVInterface.py 1.2, src/netconfpkg/gui/Makefile.am 1.26, src/netconfpkg/gui/NewInterfaceDialog.py 1.32, src/netconfpkg/gui/PTPInterface.py 1.2, src/netconfpkg/gui/PTPInterfaceDruid.glade 1.2, src/netconfpkg/gui/cipeconfig.py 1.28, src/netconfpkg/gui/ctcconfig.glade 1.13, src/netconfpkg/gui/ctcconfig.py 1.12, src/netconfpkg/gui/editadress.glade 1.13, src/netconfpkg/gui/editipsec.glade 1.6, src/netconfpkg/gui/editipsec.py 1.5, src/netconfpkg/gui/ethernetconfig.glade 1.14, src/netconfpkg/gui/iucvconfig.py 1.2, src/netconfpkg/gui/maindialog.py 1.30, src/netconfpkg/gui/ptpconfig.glade 1.2, src/netconfpkg/gui/ptpconfig.py 1.2, src/netconfpkg/gui/tokenringhardware.py 1.20, src/netconfpkg/plugins/Makefile.am 1.6, src/netconfpkg/plugins/NCDevCTC.py 1.2, src/netconfpkg/plugins/NCDevIUCV.py 1.2, src/netconfpkg/plugins/NCHWCTC.py 1.2, src/netconfpkg/plugins/NCHWEthernet.py 1.5, src/netconfpkg/plugins/NCHWIUCV.py 1.2, src/netconfpkg/plugins/NCHWIsdn.py 1.6, src/netconfpkg/plugins/NCHWModem.py 1.5, src/netconfpkg/plugins/NCHWTokenring.py 1.5:
 	merged in changed from Taroon

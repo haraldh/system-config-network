@@ -147,6 +147,12 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Oct 27 2003 Harald Hoyer <harald@redhat.de> 1.3.9
+- fixed 107501, 107387, 106751, 104213
+- fallback to no logfile, if opening the logfile fails
+- test, if /etc/{hosts,resolv.conf} exists
+- removed ipsec tab
+
 * Thu Oct 23 2003 Than Ngo <than@redhat.com> 1.3.8
 - fix a bug in ISDN activate
 
