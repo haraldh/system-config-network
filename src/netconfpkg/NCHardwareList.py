@@ -37,14 +37,14 @@ from rhpl.executil import *
 ModInfo = None
 isdnmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/kernel/drivers/isdn -name \*.o -printf '%f '" ])
+    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/isdn -name \*.o -printf '%f ' 2>/dev/null" ])
     isdnmodulelist = string.split(msg)
 except:
     pass
 
 wirelessmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/kernel/drivers/net/wireless -name \*.o -printf '%f '" ])
+    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/net/wireless -name \*.o -printf '%f ' 2>/dev/null" ])
     wirelessmodulelist = string.split(msg)
 except:
     pass
@@ -52,11 +52,15 @@ except:
 def getModInfo():
     global ModInfo
     if ModInfo == None:
-        try:
-            ModInfo = ConfModInfo(filename = '/boot/module-info')
-        except (VersionMismatch, FileMissing):
-            # ok, take fallback
-            ModInfo = ConfModInfo(filename = NETCONFDIR + '/module-info')
+        for path in [ '/boot/module-info',
+                      NETCONFDIR + '/module-info',
+                      './module-info' ]:
+            try:
+                ModInfo = ConfModInfo(filename = path)
+            except (VersionMismatch, FileMissing):
+                continue
+            break
+    
     return ModInfo
 
 class MyConfModules(ConfModules):
@@ -95,8 +99,16 @@ def getMyConfModules(refresh = None):
         _MyConfModules = MyConfModules()
     return _MyConfModules
 
+_MyWvDial = None
+def getMyWvDial(create_if_missing = None):
+    global _MyWvDial
+    if _MyWvDial == None:
+        _MyWvDial = ConfSMB(netconfpkg.ROOT + WVDIALCONF,
+                           create_if_missing = create_if_missing)
+    return _MyWvDial
         
-class ConfHWConf(Conf):
+class ConfHWConf(Conf):    
+
     def __init__(self):
         Conf.__init__(self, netconfpkg.ROOT + HWCONF)
 
@@ -144,6 +156,16 @@ class ConfHWConf(Conf):
         return self.vars.keys()
 
 class HardwareList(HardwareList_base):
+    s390devs = { "ctc" : "ctc",
+                 "escon" : "ctc",
+                 "lcs" : "lcs" ,
+                 "osad" : "",
+                 "iucv" : "iucv",
+                 "eth" : "qeth",
+                 "hsi" : "qeth",
+                 "tr" : "qeth",
+                 }
+
     def __init__(self, list = None, parent = None):
         HardwareList_base.__init__(self, list, parent)        
         self.keydict = { 'IoPort' : 'io',
@@ -162,6 +184,135 @@ class HardwareList(HardwareList_base):
             newhw = hwc()
             self[i] = newhw
         return i
+
+    def updateFromChandev(self):
+        machine = os.uname()[4]
+        if machine != 's390' and machine != 's390x' and not getDebugLevel():
+            return
+
+        procfilename = "/proc/chandev"
+        try:
+            conf = file(procfilename, "r")
+        except:
+            return
+        
+        detect_state = None
+
+        for line in conf:
+            line.strip()
+
+            if not detect_state:
+                if line.find("Initialised Devices") >= 0:
+                    detect_state = 1
+                else:
+                    continue
+            else:
+                if line == "":
+                    detect_state = None
+                    continue
+
+                if len(line) <= 2:
+                    continue
+
+                if line[:2] != "0x":
+                    continue
+
+                toks = line.split()
+
+                if len(toks) < 11:
+                    continue
+
+                device = None
+                dev = toks[9]
+                for d in HardwareList.s390devs.keys():
+                    if len(dev) <= len(d):
+                        continue
+                    if dev[:len(d)] != d:
+                        continue
+                    device = dev
+                    break
+                for i in xrange(len(toks)):
+                    if toks[i] == "n/a":
+                        toks[i] = 0
+
+                if device:
+                    for hw in self:
+                        if hw.Name == device:
+                            #hw.Status = HW_OK
+                            break
+                    else:
+                        type = getDeviceType(device)
+                        i = self.addHardware(type)
+                        hw = self[i]
+                        hw.createCard()
+                        hw.Name = device
+                        hw.Type = type
+                        hw.Card.IoPort = toks[3]
+                        hw.Card.IoPort1 = toks[4]
+                        hw.Card.IoPort2 = toks[5]
+                        if HardwareList.s390devs.has_key(device):
+                            hw.Card.ModuleName = HardwareList.s390devs[device]
+                        hw.Status = HW_SYSTEM
+                        
+
+    def readChandev(self):
+        machine = os.uname()[4]
+        if machine != 's390' and machine != 's390x' and not getDebugLevel():
+            return
+        
+        conffilename = netconfpkg.ROOT + "/etc/chandev.conf"
+        try:
+            conf = file(conffilename, "r")
+        except:
+            return
+
+        for line in conf:
+            
+            line.strip()
+            try:
+                if len(line) and line[-1] == '\n':
+                    line = line[:-1]
+                if len(line) and line[-1] == '\r':
+                    line = line[:-1]
+            except: pass
+
+            toks = line.split(",")
+            device = None
+            if len(toks):
+                # Check for Device line
+                dev = toks[0]
+                for d in HardwareList.s390devs.keys():
+                    if len(dev) <= len(d):
+                        continue
+                    if dev[:len(d)] != d:
+                        continue
+                    device = dev
+                    break
+
+                # Check for add_parms
+                #if toks[0] == "add_parms":
+                #print "extra parms %s" % string.join(toks[1:])
+
+                if not device:
+                    continue
+
+            type = getDeviceType(device)
+            i = self.addHardware(type)
+            hw = self[i]
+            hw.createCard()
+            hw.Name = device
+            hw.Type = type
+            if not hw.Description: hw.Description = type
+            hw.Description += " " + string.join(toks[1:], ",")
+            if len(toks) >= 2:
+                hw.Card.IoPort = toks[1]
+                if len(toks) >= 3:
+                    hw.Card.IoPort1 = toks[2]
+                    if len(toks) >= 4:
+                        hw.Card.IoPort2 = toks[3]
+            if HardwareList.s390devs.has_key(device):
+                hw.Card.ModuleName = HardwareList.s390devs[device]
+            hw.Status = HW_CONF
 
     def updateFromKudzu(self):
         import kudzu
@@ -219,7 +370,7 @@ class HardwareList(HardwareList_base):
                 if module != kudzu_device.driver:
                     log.log(3, "Error... kudzu != actual system state")
 
-                log.log(3, "Found %s in ethlist" % dev)
+                log.log(5, "Found %s in ethlist" % dev)
                 ethlist.remove(dev)
 
                 break
@@ -235,7 +386,7 @@ class HardwareList(HardwareList_base):
                         continue
                     break
                 else:
-                    log.log(3, "Found nothing for %s" % str(kudzu_device))
+                    log.log(5, "Found nothing for %s" % str(kudzu_device))
                     dev = kudzu_device.device
                     # ok, now search for an empty slot
                     for num in xrange(0,20):
@@ -248,7 +399,7 @@ class HardwareList(HardwareList_base):
                         break
                     break
 
-            log.log(3, "Found dev %s - %s" % (dev, module))
+            log.log(5, "Found dev %s - %s" % (dev, module))
             # if it is already in our HW list do not delete it.
             for h in hdellist:
                 if h.Name == dev and h.Card.ModuleName == module:
@@ -299,6 +450,8 @@ class HardwareList(HardwareList_base):
             if h.Status == HW_SYSTEM:
                 hdellist.append(h)
                 
+        self.updateFromChandev()
+
         #
         # Read in actual system state
         #
@@ -341,10 +494,12 @@ class HardwareList(HardwareList_base):
                     hw.Type = getDeviceType(device)                        
                     hw.createCard()
                     hw.Card.ModuleName = mod
-                    for info in modinfo.keys():
-                        if info == mod:
-                            if modinfo[info].has_key('description'):
-                                hw.Description = modinfo[info]['description']
+                    if modinfo:
+                        for info in modinfo.keys():
+                            if info == mod:
+                                if modinfo[info].has_key('description'):
+                                    hw.Description = \
+                                                   modinfo[info]['description']
 
                     for selfkey in self.keydict.keys():
                         confkey = self.keydict[selfkey]
@@ -395,7 +550,7 @@ class HardwareList(HardwareList_base):
             hw.createCard()
             hw.Card.ModuleName = module
             hw.Status = HW_CONF
-            if module:
+            if module and modinfo:
                 for info in modinfo.keys():
                     if info == module:
                         if modinfo[info].has_key('description'):
@@ -448,9 +603,10 @@ class HardwareList(HardwareList_base):
 	# first clear the list
         self.__delslice__(0, len(self))
         
+        self.readChandev()
         self.updateFromSystem()        
         self.updateFromModules()
-
+        
         for hw in self:
             if hw.Name == "ISDN Card 0":
                 break
@@ -528,112 +684,16 @@ class HardwareList(HardwareList_base):
 
     def save(self):
         modules = getMyConfModules(refresh = true)
-        if not os.access(netconfpkg.ROOT + WVDIALCONF, os.R_OK):
-            wvdial  = None
-        else:
-            wvdial = ConfSMB(netconfpkg.ROOT + WVDIALCONF)
-
-        isdn = NCisdnhardware.ConfISDN()
-        
 
         for hw in self:
-            #
-            # XXX FIXME... this is not OO
-            #
-            if hw.Type == ETHERNET:
-                dic = modules[hw.Name]
-                dic['alias'] = hw.Card.ModuleName
-                modules[hw.Name] = dic
-                log.lch(2, modules.filename, "%s alias %s" % (hw.Name, hw.Card.ModuleName))
-                # No, no, no... only delete known options!!!
-                #WRONG: modules[hw.Card.ModuleName] = {}
-                #WRONG: modules[hw.Card.ModuleName]['options'] = {}
-                #
-                # Better do it this way!
-                if modules[hw.Card.ModuleName].has_key('options'):
-                    for (key, confkey) in self.keydict.items():
-                        if modules[hw.Card.ModuleName]\
-                               ['options'].has_key(confkey):
-                            del modules[hw.Card.ModuleName]['options'][confkey]
+            hw.save()
 
-                for (selfkey, confkey) in self.keydict.items():
-                    if hw.Card.__dict__[selfkey]:
-                        if selfkey == 'IRQ' \
-                           and (hw.Card.IRQ == _('Unknown') \
-                                or (hw.Card.IRQ == 'Unknown')):
-                            continue
-                        dic = modules[hw.Card.ModuleName]
-                        if not dic.has_key('options'):
-                            dic['options'] = {}
-                        dic['options'][confkey] = \
-                                                str(hw.Card.__dict__[selfkey])
-                        modules[hw.Card.ModuleName] = dic
-
-
-            #
-            # XXX FIXME... this is not OO
-            #
-            if hw.Type == TOKENRING:
-                dic = modules[hw.Name]
-                dic['alias'] = hw.Card.ModuleName
-                modules[hw.Name] = dic
-
-                # No, no, no... only delete known options!!!
-                #WRONG: modules[hw.Card.ModuleName] = {}
-                #WRONG: modules[hw.Card.ModuleName]['options'] = {}
-                #
-                # Better do it this way!
-                if modules[hw.Card.ModuleName].has_key('options'):
-                    for (key, confkey) in self.keydict.items():
-                        if modules[hw.Card.ModuleName]\
-                               ['options'].has_key(confkey):
-                            del modules[hw.Card.ModuleName]['options'][confkey]
-
-                for (selfkey, confkey) in self.keydict.items():
-                    if hw.Card.__dict__[selfkey]:
-                        if selfkey == 'IRQ' \
-                           and (hw.Card.IRQ == _('Unknown') \
-                                or (hw.Card.IRQ == 'Unknown')):
-                            continue
-                        dic = modules[hw.Card.ModuleName]
-                        if not dic.has_key('options'):
-                            dic['options'] = {}
-                        dic['options'][confkey] = \
-                                                str(hw.Card.__dict__[selfkey])
-                        modules[hw.Card.ModuleName] = dic
-
-
-            #
-            # XXX FIXME... this is not OO
-            #
-            if hw.Type == MODEM and hw.Modem:
-                if not wvdial:
-                    wvdial = ConfSMB(netconfpkg.ROOT + WVDIALCONF,
-                                     create_if_missing = true)
-                wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
-                wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
-                wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
-                wvdial[hw.Name]['Dial Command'] = str(hw.Modem.DialCommand)
-                if not hw.Modem.InitString: hw.Modem.InitString = 'ATZ'
-                wvdial[hw.Name]['Init1'] = str(hw.Modem.InitString)
-                wvdial[hw.Name]['Init3'] = 'ATM' + str(hw.Modem.ModemVolume)
-                wvdial[hw.Name]['FlowControl'] = str(hw.Modem.FlowControl)
-
-            if hw.Type == ISDN:
-                isdn.Description = hw.Description
-                isdn.Type = hw.Card.Type
-                isdn.ModuleName = hw.Card.ModuleName
-                isdn.IRQ = hw.Card.IRQ
-                isdn.IoPort = hw.Card.IoPort
-                isdn.IoPort1 = hw.Card.IoPort1
-                isdn.IoPort2 = hw.Card.IoPort2
-                isdn.Mem = hw.Card.Mem
-                isdn.ChannelProtocol = hw.Card.ChannelProtocol
-                isdn.Firmware = hw.Card.Firmware
-                isdn.DriverId = hw.Card.DriverId
-                isdn.VendorId = hw.Card.VendorId
-                isdn.DeviceId = hw.Card.DeviceId
-
+        try:
+            wvdial = getMyWvDial(create_if_missing = false)
+        except:
+            wvdial = None
+            pass
+        
         if wvdial:
             # Clean up wvdial
             for dev in wvdial.keys():
@@ -671,7 +731,6 @@ class HardwareList(HardwareList_base):
         modules.write()
         if wvdial:
             wvdial.write()
-        isdn.save()
 
 HWList = None
 
@@ -725,5 +784,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.70 $"
+__date__ = "$Date: 2003/10/08 15:12:29 $"
+__version__ = "$Revision: 1.71 $"
