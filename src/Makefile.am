@@ -4,7 +4,7 @@ PYTHON_FILES = netconf.py
 
 GLADE_FILES = maindialog.glade 
 
-EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb
+EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c
 
 execdir = $(sbindir)
 
