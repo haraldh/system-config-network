@@ -285,3 +285,25 @@ def set_generic_yesnocancel_dialog_func(func):
 def set_generic_yesno_dialog_func(func):
 	global generic_yesno_dialog_func
 	generic_yesno_dialog_func = func
+
+def unlink(file):
+	try:
+		os.unlink(file)
+	except OSError, errstr:
+                generic_error_dialog (_("Error removing %s: %s!") \
+				      % (file, str(errstr)))
+
+def link(src, dst):
+	try:
+		os.link(src, dst)
+	except OSError, errstr:
+		generic_error_dialog (_("Error linking %s\nto\n%s: %s!") 
+				      % (src, dst, str(errstr)))
+	
+def rename(src, dst):
+	try:
+		os.rename(src, dst)
+	except EnvironmentError, errstr:
+		generic_error_dialog (_("Error renaming\n%s\nto\n%s: %s!") \
+				      % (src, dst, str(errstr)))
+	
