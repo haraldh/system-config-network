@@ -76,19 +76,19 @@ import gtk
 
 def get_pixpath(pixmap_file):
     fn = pixmap_file
-    if not os.path.exists(pixmap_file):
-        pixmap_file = "pixmaps/" + fn
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + fn
-            if not os.path.exists(pixmap_file):
-                pixmap_file = NETCONFDIR + fn
-                if not os.path.exists(pixmap_file):
-                    pixmap_file = NETCONFDIR + "pixmaps/" + fn
-                    if not os.path.exists(pixmap_file):
-                        pixmap_file = "/usr/share/pixmaps/" + fn
-                        if not os.path.exists(pixmap_file):
-                            return None
-
+    search_path = [ "",
+                    "pixmaps/",
+                    "../pixmaps/",
+                    NETCONFDIR,
+                    NETCONFDIR + "pixmaps/",
+                    "/usr/share/pixmaps/" ]
+    for sp in search_path:
+        pixmap_file = sp + fn
+        if os.path.exists(pixmap_file):
+            break
+    else:
+        return None
+    
     return pixmap_file
 
 def splash_screen(gfx = None):
@@ -107,6 +107,7 @@ def splash_screen(gfx = None):
         window = gtk.Window()
         window.set_title(PRG_NAME)
         window.set_position (gtk.WIN_POS_CENTER)
+        window.set_border_width(5)
         lbl = gtk.Label(_('Loading Network Configuration...'))
         window.add(lbl)
         lbl.show_now()
