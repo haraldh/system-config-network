@@ -6,7 +6,7 @@ GLADE_FILES = maindialog.glade neat-control.glade
 
 EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c module-info
 
-bin_PROGRAMS = userisdnctl
+sbin_PROGRAMS = userisdnctl
 userisdnctl_SOURCES = userisdnctl.c isdn.h isdnif.h
 
 execdir = $(sbindir)
@@ -41,7 +41,6 @@ install-exec-local:
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/neat-control.py $(DESTDIR)$(pkgdatadir)/
-	install -m 0755 userisdnctl $(DESTDIR)$(sbindir)
 	softdir=$(pkgdatadir); \
 	p=$(DESTDIR) ; \
 	softdir=$${softdir/#$$p} ; \
