@@ -43,6 +43,7 @@ PYTHON_FILES = \
 	isdnhardware.py \
 	modemconfig.py \
 	NCCallback.py \
+	NCCipe.py \
 	NCCompression.py \
 	NCDeviceList.py \
 	NCDevice.py \
