@@ -184,12 +184,12 @@ class mainDialog:
         if status == ACTIVE:
             self.xml.get_widget('activateButton').set_sensitive(FALSE)
             self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
-            self.xml.get_widget('configureButton').set_sensitive(FALSE)
+            #self.xml.get_widget('configureButton').set_sensitive(FALSE)
             self.xml.get_widget('monitorButton').set_sensitive(TRUE)
         else:
             self.xml.get_widget('activateButton').set_sensitive(TRUE)
             self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
-            self.xml.get_widget('configureButton').set_sensitive(TRUE)
+            #self.xml.get_widget('configureButton').set_sensitive(TRUE)
             self.xml.get_widget('monitorButton').set_sensitive(FALSE)
         
     def clist_get_status(self):
