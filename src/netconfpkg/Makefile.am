@@ -46,7 +46,8 @@ PYTHON_FILES = \
    NCDialup.py \
    NCCallback.py \
 	NCHardwareList.py \
-	NC_functions.py
+	NC_functions.py \
+	NCisdnhardware.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
