@@ -229,15 +229,15 @@ class HardwareList(HardwareList_base):
             type = getDeviceType(mod)
             if type != 'Ethernet':
                 continue
-            print "Testing " + str(mod)
+            #print "Testing " + str(mod)
             for hw in self.data:
                 if hw.Type == 'Ethernet' and hw.Name == mod:
                     break
             else:
-                print "Removing " + str(mod)
-                print str(modules.vars[mod].keys())
+                #print "Removing " + str(mod)
+                #print str(modules.vars[mod].keys())
                 del modules[mod]
-                print "Test: " + str(modules[mod])
+                #print "Test: " + str(modules[mod])
                 
         modules.write()
         wvdial.write()
