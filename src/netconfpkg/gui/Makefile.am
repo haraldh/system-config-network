@@ -10,6 +10,7 @@ GLADE_FILES = \
 	editadress.glade \
 	editdomain.glade \
 	edithosts.glade \
+	editipsec.glade \
 	ethernetconfig.glade \
 	EthernetHardwareDruid.glade \
 	ethernethardware.glade \
@@ -51,6 +52,7 @@ PYTHON_FILES = \
 	editadress.py \
 	editdomain.py \
 	edithosts.py \
+	editipsec.py \
 	ethernetconfig.py \
 	EthernetHardwareDruid.py \
 	ethernethardware.py \
