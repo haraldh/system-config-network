@@ -122,7 +122,7 @@ class ethernetHardwareDialog:
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
                 if modInfo[i].has_key('description') and \
-                   modInfo[i].has_key('description'):
+                       len(modInfo[i][description]):
                     list.append(modInfo[i]['description'])
                 else:
                     list.append(i)
