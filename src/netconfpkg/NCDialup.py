@@ -18,23 +18,25 @@ class IsdnDialup(Dialup):
                      'DefRoute' : 'DELDEFAULTROUTE',
                      }
     
+    intkeydict = {'MSN' : 'MSN',
+                 'DialMax' : 'DIALMAX',
+                 'HangupTimeout' : 'HUPTIMEOUT',
+               }
+
     keydict = { 'ProviderName' : 'PROVIDER',
                  'Login' : 'USER',
                  'Password' : 'PASSWORD',
                  'EncapMode' : 'ENCAP',
                  'DialMode' : 'DIALMODE',                 
-                 'MSN' : 'MSN',
                  'Prefix' : 'PREFIX',
                  'Areacode' : 'AREACODE',
                  'Regioncode' : 'REGIONCODE',
                  'PhoneOut' : 'PHONE_OUT',
-                 'HangupTimeout' : 'HUPTIMEOUT',
                  'PrimaryDNS' : 'DNS1',
                  'SecondaryDNS' : 'DNS2',
                  'Layer2' : 'LAYER',
                  'ChargeHup' : 'CHARGEHUP',
                  'ChargeInt' : 'CHARGEINT',
-                 'DialMax' : 'DIALMAX',
                  'Authentication' : 'AUTH',
                  'Ihup' : 'IHUP',
                  'SlaveDevice' : 'SLAVE_DEVICE',
@@ -50,6 +52,12 @@ class IsdnDialup(Dialup):
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey]
+                #print "self." + selfkey + " = " + conf[confkey]
+
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
+            if conf.has_key(confkey) and len(conf[confkey]):
+                self.__dict__[selfkey] = int(conf[confkey])
                 #print "self." + selfkey + " = " + conf[confkey]
 
         for selfkey in self.boolkeydict.keys():
