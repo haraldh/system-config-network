@@ -42,7 +42,7 @@ clean:
 	rm -f *~
 
 install-data-local: install-netconfpkgDATA
-	$(top_srcdir)/py-compile -$(DESTDIR)$(netconfpkgdir)/*.py
+	$(top_srcdir)/py-compile $(DESTDIR)$(netconfpkgdir)/*.py
 
 uninstall-local:
 	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?
