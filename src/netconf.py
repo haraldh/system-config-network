@@ -189,7 +189,6 @@ class mainDialog:
 
     def hydrateDevices(self):
         devicelist = getDeviceList()
-        hardwarelist = getHardwareList()
         profilelist = getProfileList()
 
         clist = self.xml.get_widget("deviceList")

@@ -56,6 +56,9 @@ docs:
 	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
 	mv *.html doc
 
+check-local:
+	pychecker *.py
+
 clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}

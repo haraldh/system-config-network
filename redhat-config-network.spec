@@ -21,6 +21,7 @@ firewalls and masquerading, and can use profiles.
 %configure
 
 %build
+make check
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -34,7 +35,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/redhat-config-network
 %{_datadir}/kontrol-panel/neat.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
-%{_datadir}/desktop-folders/sysconfig/neat.desktop
+%config(noreplace) /etc/X11/serverconfig/neat.desktop
 %config(noreplace) /etc/X11/applnk/System/neat.desktop
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
