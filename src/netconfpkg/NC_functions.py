@@ -28,14 +28,13 @@ from rhpl import ethtool
 from rhpl import Conf
 from rhpl import ConfSMB
 from rhpl.log import log
+
 import UserList
 
 import string
 
 true = (1==1)
 false = not true
-
-verbose = 0
 
 PROGNAME = "redhat-config-network"
 
@@ -77,10 +76,13 @@ TOKENRING = 'Token Ring'
 CTC = 'CTC'
 IUCV = 'IUCV'
 IPSEC = 'IPSEC'
+QETH = 'QETH'
+HSI = 'HSI'
 
-deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV ]
+deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV, QETH, HSI ]
 
-modemDeviceList = [ '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
+modemDeviceList = [ '/dev/modem',
+                    '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
 		    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3',
 		    '/dev/input/ttyACM0', '/dev/input/ttyACM1',
 		    '/dev/input/ttyACM2', '/dev/input/ttyACM3',
@@ -98,8 +100,9 @@ deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
 		   '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
 		   '^lo$' : LO,
 		   '^ctc[0-9]*(:[0-9]+)?$' : CTC,
+		   '^hsi[0-9]*(:[0-9]+)?$' : HSI,
 		   '^iucv[0-9]*(:[0-9]+)?$' : IUCV,
-		   '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,
+		   '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,                   
 		   }
 # Removed for now, until we have a config dialog for infrared
 #		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
@@ -117,34 +120,71 @@ modemFlowControls = { CRTSCTS : _("Hardware (CRTSCTS)"),
 def nop(*args):
     pass
 
+_verbose = 0
+
+def setVerboseLevel(l):
+    global _verbose
+    #print "Set verbose %d" % l
+    _verbose = l
+
+def getVerboseLevel():
+    global _verbose
+    #print "verbose == %d" % _verbose
+    return _verbose
+
+_debug = 0
+
+def setDebugLevel(l):
+    global _debug
+    #print "Set debug %d" % l
+    _debug = l
+
+def getDebugLevel():
+    global _debug
+    #print "debug == %d" % _debug
+    return _debug
+
 class TestError(Exception):
     def __init__(self, args=None):
         Exception.__init__(self, args)
         #self.args = args
 
+def gen_hexkey():
+    import struct
+    key = ""
+    f = file("/dev/random", "rb")
+    chars = struct.unpack("16B", f.read(16))
+    for i in chars:        
+        key = key + "%02x" % i
+    f.close()
+    return key
+
 def rpms_notinstalled(namelist):
-    import rpm
+    try:
+        import rpm
+
+        ts = rpm.TransactionSet("/")
+        ts.setVSFlags(rpm.RPMVSF_NORSA|rpm.RPMVSF_NODSA)
+        ts.setFlags(rpm.RPMTRANS_FLAG_NOMD5)
+
+        if len(namelist) == 0:
+            namelist = [ namelist ]
+
+        toinstall = namelist[:]
+
+        for name in namelist:
+            mi = ts.dbMatch('name', name)
+            for n in mi:
+                #print n[rpm.RPMTAG_NAME]
+                if n[rpm.RPMTAG_NAME] == name:
+                    toinstall.remove(name)
+                    break
+
+        del (ts)
+        return toinstall
+    except:
+        return []
     
-    ts = rpm.TransactionSet("/")
-    ts.setVSFlags(rpm.RPMVSF_NORSA|rpm.RPMVSF_NODSA)
-    ts.setFlags(rpm.RPMTRANS_FLAG_NOMD5)
-
-    if len(namelist) == 0:
-        namelist = [ namelist ]
-
-    toinstall = namelist[:]
-   
-    for name in namelist:
-        mi = ts.dbMatch('name', name)
-        for n in mi:
-            #print n[rpm.RPMTAG_NAME]
-            if n[rpm.RPMTAG_NAME] == name:
-                toinstall.remove(name)
-                break
-                
-    del (ts)
-    return toinstall
-
 def assure_rpms(pkgs = []):
     toinstall = rpms_notinstalled(pkgs)
 
@@ -256,14 +296,17 @@ def create_combo(hardwarelist, devname, type, default_devices):
 
     return (hwcurr, hwdesc[:])
 
-def create_generic_combo(hardwarelist, devname, type = ETHERNET):
+def create_generic_combo(hardwarelist, devname, type = ETHERNET, new = None):
     devbase = re.sub('[0-9]*(:[0-9]+)?$', '', devname)
     hwdesc = []
     for i in xrange(0, 9):
         hwdesc.append(devbase + str(i))
 
-    return create_combo(hardwarelist, devname, type,
-                        default_devices = hwdesc)
+    if not new:
+        return create_combo(hardwarelist, devname, type,
+                            default_devices = hwdesc)
+    else:
+        return (None, hwdesc)
     
 
 def create_ethernet_combo(hardwarelist, devname, type = ETHERNET):
@@ -355,8 +398,8 @@ def getModemList():
     ModemList = []
     if res != []:
         for v in res:
-	    dev = str(v[0])
-	    if dev != 'None':
+	    dev = str(v.device)
+	    if dev and dev != 'None':
 	        ModemList.append('/dev/' + dev)
     return ModemList[:]
 
@@ -522,7 +565,8 @@ def generic_run_dialog (command, argv, searchPath = 0,
             try:
                 (pid, status) = os.waitpid(childpid, 0)
             except OSError, (errno, msg):
-                print __name__, "waitpid:", msg
+                #print __name__, "waitpid:", msg
+                pass
 
             if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
                 status = os.WEXITSTATUS(status)
@@ -598,7 +642,8 @@ def generic_run (command, argv, searchPath = 0,
             try:
                 (pid, status) = os.waitpid(childpid, 0)
             except OSError, (errno, msg):
-                print __name__, "waitpid:", msg
+                #print __name__, "waitpid:", msg
+                pass
 
             if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
                 status = os.WEXITSTATUS(status)
@@ -762,5 +807,5 @@ class ConfKeys(Conf.ConfShellVar):
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/01 11:24:39 $"
-__version__ = "$Revision: 1.79 $"
+__date__ = "$Date: 2003/10/08 15:14:36 $"
+__version__ = "$Revision: 1.80 $"
