@@ -28,7 +28,7 @@ import string
 import gettext
 import string
 
-from netconfpkg.gui.NC_functions import *
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
 from deviceconfig import deviceConfigDialog
 

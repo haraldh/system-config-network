@@ -31,8 +31,8 @@ from IsdnInterface import IsdnInterface
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
 from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.NC_functions import *
-from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.gui.GUI_functions import *
+from netconfpkg.gui.GUI_functions import load_icon
 
 Interfaces = [ IsdnInterface, ModemInterface, ADSLInterface ]
 

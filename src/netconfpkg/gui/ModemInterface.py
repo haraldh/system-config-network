@@ -40,7 +40,7 @@ class ModemInterface:
         glade_file = 'ModemDruid.glade'
 
         if not os.path.isfile(glade_file):
-            glade_file = 'netconfpkg/' + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
  
@@ -96,6 +96,7 @@ class ModemInterface:
         vbox = gtk.GtkVBox(1)
         vbox.add(gtk.GtkLabel('Probing for Modems, please wait...'))
         dialog.add(vbox)
+        dialog.set_position (gtk.WIN_POS_MOUSE)
         dialog.show_all()
         while gtk.events_pending():
             gtk.mainiteration(FALSE)

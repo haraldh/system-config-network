@@ -31,7 +31,7 @@ import re
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
 from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NC_functions import _
 
 from gtk import TRUE

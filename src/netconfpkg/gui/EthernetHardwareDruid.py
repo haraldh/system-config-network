@@ -1,4 +1,4 @@
-## Copyright (C) 2001 Red Hat, Inc.
+# Copyright (C) 2001 Red Hat, Inc.
 ## Copyright (C) 2001 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001 Philipp Knirsch <pknirsch@redhat.com>
@@ -17,7 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
 from netconfpkg import NCHardwareList
 #import gnome.ui
@@ -36,9 +36,9 @@ class ethernetHardware:
         glade_file = "EthernetHardwareDruid.glade"
  
         if not os.path.exists(glade_file):
-            glade_file = GUI_functions.GLADEPATH + glade_file
+            glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
+            glade_file = NETCONFDIR + glade_file
  
         self.xml = libglade.GladeXML(glade_file, 'druid')
         self.xml.signal_autoconnect(
@@ -111,7 +111,7 @@ class ethernetHardware:
 
     def setup(self):
         hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist, self.device.Device)
+        (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
         
         if len(hwdesc):
             self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)

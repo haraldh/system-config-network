@@ -29,8 +29,8 @@ import gettext
 import re
 
 from netconfpkg import NCHardwareList
-from netconfpkg.gui.NC_functions import *
-from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.gui.GUI_functions import *
+from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NC_functions import _
 from gtk import TRUE
 from gtk import FALSE

@@ -32,7 +32,7 @@ from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import modemDeviceList
-from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.gui.GUI_functions import load_icon
 from gtk import TRUE
 from gtk import FALSE
 

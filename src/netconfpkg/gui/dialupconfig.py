@@ -32,7 +32,7 @@ from deviceconfig import deviceConfigDialog
 from netconfpkg.NCDeviceList import *
 from netconfpkg.NCCallback import *
 from netconfpkg.NCHardwareList import *
-from netconfpkg.gui.NC_functions import *
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
 from provider import *
 from gtk import TRUE

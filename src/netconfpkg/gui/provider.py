@@ -30,7 +30,7 @@ import re
 
 import providerdb
 from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.gui.GUI_functions import load_icon
 
 from gtk import TRUE
 from gtk import FALSE

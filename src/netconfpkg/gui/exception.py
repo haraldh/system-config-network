@@ -23,7 +23,7 @@ import rpm
 from string import joinfields
 from cPickle import Pickler
 from netconfpkg.NC_functions import _
-from netconfpkg.gui.NC_functions import generic_error_dialog, get_icon
+from netconfpkg.gui.GUI_functions import generic_error_dialog, get_icon
 dumpHash = {}
 
 import gnome
