@@ -50,7 +50,7 @@ PYTHON_FILES = \
 	NC_functions.py \
 	NCHardwareList.py \
 	NCProfileList.py \
-	NCisdnhardware.py \
+	NCisdnhardware.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
