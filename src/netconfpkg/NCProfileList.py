@@ -61,7 +61,7 @@ class ProfileList(ProfileList_base):
             else:
                 generic_error_dialog (_("Please restart once with root permissions!\n%s") \
                                       % (str(errstr)))                
-                return
+                return changed
         
         if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
             print _("Copying /etc/hosts to default profile.")
