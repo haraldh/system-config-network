@@ -71,7 +71,7 @@ class Device:
         self._enabled=confFile["ENABLED"]
         self._identifier=confFile["IDENTIFIER"]
         self._type=confFile["TYPE"]
-        self._addressList=Address.addressList()
+        self._addressList=Address.AddressList()
         self._addressList=self._addresslist.readFile(filename)
 
     def getName(self):
