@@ -246,6 +246,17 @@ class ISDNDialupDialog(DialupDialog):
 
         dialup = self.device.Dialup
 
+        omenu = self.xml.get_widget("CallbackMode")
+        omenu.remove_menu()
+        menu = gtk.GtkMenu()
+        history = 0
+        for txt in [_('in'), _('out')]:
+            item = gtk.GtkMenuItem (txt)
+            item.show()
+            menu.append (item)
+        omenu.set_menu (menu)
+        omenu.show_all()
+
         if dialup.PhoneInNumber:
             self.xml.get_widget("dialinNumberEntry").set_text(dialup.PhoneInNumber)
 
@@ -259,6 +270,8 @@ class ISDNDialupDialog(DialupDialog):
                 self.xml.get_widget('CallbackMode').set_history(0)
             else:
                 self.xml.get_widget('CallbackMode').set_history(1)
+            self.xml.get_widget('CallbackMode').show_all()
+            
             self.xml.get_widget("callbackDelaySB").set_value(dialup.Callback.Delay)
             self.xml.get_widget("cbcpCB").set_active(dialup.Callback.Compression)
 
