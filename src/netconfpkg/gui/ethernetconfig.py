@@ -86,6 +86,7 @@ class ethernetConfigDialog(deviceConfigDialog):
         window.remove (frame)
         vbox.pack_start (frame)
         sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
+        self.hydrate ()
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)

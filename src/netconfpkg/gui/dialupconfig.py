@@ -27,6 +27,7 @@ import GdkImlib
 import string
 import gettext
 import re
+import sharedtcpip
 
 from deviceconfig import deviceConfigDialog
 from netconfpkg.NCDeviceList import *
@@ -42,6 +43,13 @@ from gtk import FALSE
 
 class DialupDialog(deviceConfigDialog):
     def __init__(self, device):
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.NETCONFDIR + glade_file
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
+
         glade_file = "dialupconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)
@@ -61,7 +69,22 @@ class DialupDialog(deviceConfigDialog):
 
         self.noteBook = self.xml.get_widget("dialupNotebook")
         self.xml.get_widget ("pppOptionList").column_titles_passive ()
-        
+
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+
+        window = self.sharedtcpip_xml.get_widget ('routeWindow')
+        frame = self.sharedtcpip_xml.get_widget ('routeFrame')
+        vbox = self.xml.get_widget ('routeVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
+        self.hydrate ()
+
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         hardwarelist = getHardwareList()
