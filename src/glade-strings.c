@@ -811,7 +811,7 @@ void some_function_name() {
   _("Taiwan (886)");
 
   /* maindialog.glade:733 */
-  _("Ternary DNS:");
+  _("Tertiary DNS:");
 
   /* netconfpkg/dialupconfig.glade:535 */
   _("Thailand (66)");

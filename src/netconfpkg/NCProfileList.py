@@ -82,7 +82,7 @@ class ProfileList(ProfileList_base):
             prof.DNS.Domainname   = ''
             prof.DNS.PrimaryDNS   = ''
             prof.DNS.SecondaryDNS = ''
-            prof.DNS.TernaryDNS   = ''
+            prof.DNS.TertiaryDNS   = ''
             prof.DNS.Hostname     = nwconf['HOSTNAME']
             if len(dnsconf['domain']) > 0:
                 prof.DNS.Domainname   = dnsconf['domain'][0]
@@ -91,7 +91,7 @@ class ProfileList(ProfileList_base):
                 if len(dnsconf['nameservers']) > 1:
                     prof.DNS.SecondaryDNS = dnsconf['nameservers'][1]
                 if len(dnsconf['nameservers']) > 2:
-                    prof.DNS.TernaryDNS = dnsconf['nameservers'][2]
+                    prof.DNS.TertiaryDNS = dnsconf['nameservers'][2]
             sl = prof.DNS.createSearchList()
             if dnsconf.has_key('search'):
                 for ns in dnsconf['search']:
@@ -155,8 +155,8 @@ class ProfileList(ProfileList_base):
                 nameservers.append(prof.DNS.PrimaryDNS)
             if prof.DNS.SecondaryDNS != '':
                 nameservers.append(prof.DNS.SecondaryDNS)
-            if prof.DNS.TernaryDNS != '':
-                nameservers.append(prof.DNS.TernaryDNS)
+            if prof.DNS.TertiaryDNS != '':
+                nameservers.append(prof.DNS.TertiaryDNS)
 
             dnsconf['nameservers'] = nameservers
 

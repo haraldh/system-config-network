@@ -280,7 +280,7 @@ class mainDialog:
                 if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
                 if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
                 if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
-                if prof.DNS.TernaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TernaryDNS)
+                if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
                 for domain in prof.DNS.SearchList:
                     dclist.append([domain])
 
@@ -596,7 +596,7 @@ class mainDialog:
 
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.TernaryDNS = entry.get_text()
+                prof.DNS.TertiaryDNS = entry.get_text()
 
     def on_searchDnsEntry_changed(self, entry):
         pass
