@@ -78,7 +78,7 @@ PYTHON_FILES = \
 	tcpdialog.py \
 	tokenringconfig.py \
 	TokenRingHardwareDruid.py \
-	tokenringqhardware.py \
+	tokenringhardware.py \
 	wirelessconfig.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
