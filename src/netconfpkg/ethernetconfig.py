@@ -60,7 +60,7 @@ class ethernetConfigDialog(deviceConfigDialog):
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-        hwlist = HardwareList.getHardwareList()
+        hwlist = NCHardwareList.getHardwareList()
         (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, self.device.Device)
                                         
         if len(hwdesc):
