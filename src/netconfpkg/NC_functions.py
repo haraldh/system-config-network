@@ -1,9 +1,14 @@
+import re
 import gnome
 import gnome.ui
 
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
+
+deviceTypes = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
+               '^ppp[0-9]+(:[0-9]+)?$':'Modem',
+               '^lo$':'Loopback'}
 
 def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, "Button_Ok")
@@ -19,3 +24,9 @@ def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=
             broken_widget.select_region (0, -1)
     dialog.run ()
 
+def getDeviceType(devname):
+    type = 'Unknown'
+    for i in deviceTypes.keys():
+        if re.search(i, devname):
+            type = deviceTypes[i]
+    return type
