@@ -18,17 +18,17 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 import types
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
 
-from netconfpkg import NCHardwareList
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import modemDeviceList
@@ -46,7 +46,7 @@ class modemDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -56,7 +56,7 @@ class modemDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-        self.dialog.set_close(TRUE)
+        
         self.hw = hw
 
         self.setup()
@@ -121,7 +121,7 @@ class modemDialog:
                 self.hw.Modem.FlowControl = i
                 break
             
-        Item = self.xml.get_widget("volumeMenu")["label"]
+        Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):
             self.hw.Modem.ModemVolume = 0
         elif Item == _("Low"):
@@ -135,7 +135,7 @@ class modemDialog:
         else:
             self.hw.Modem.ModemVolume = 0
             
-        if self.xml.get_widget("toneDialingCB")["active"]:
+        if self.xml.get_widget("toneDialingCB").get_active():
             self.hw.Modem.DialCommand = "ATDT"
         else:
             self.hw.Modem.DialCommand = "ATDP"

@@ -1,105 +1,103 @@
-<?xml version="1.0"?>
-<GTK-Interface>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >
 
-<project>
-  <name>Project1</name>
-  <program_name>project1</program_name>
-  <directory></directory>
-  <source_directory>src</source_directory>
-  <pixmaps_directory>pixmaps</pixmaps_directory>
-  <language>C</language>
-  <gnome_support>True</gnome_support>
-  <gettext_support>True</gettext_support>
-</project>
+<glade-interface>
+  <widget class="GtkMenu" id="propertiesMenu">
+    <property name="border_width">5</property>
+    <property name="visible">yes</property>
 
-<widget>
-  <class>GtkMenu</class>
-  <name>propertiesMenu</name>
-  <border_width>5</border_width>
+    <child>
+      <widget class="GtkImageMenuItem" id="infoItem">
+        <property name="visible">yes</property>
+        <property name="label">gnome-stock-about</property>
+        <property name="use_stock">yes</property>
+        <property name="use_underline">yes</property>
 
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>infoItem</name>
-    <signal>
-      <name>activate</name>
-      <handler>on_infoItem_activate</handler>
-      <last_modification_time>Thu, 24 Jan 2002 21:35:35 GMT</last_modification_time>
-    </signal>
-    <stock_item>GNOMEUIINFO_MENU_ABOUT_ITEM</stock_item>
+        <signal name="activate" handler="on_infoItem_activate" />
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkImageMenuItem" id="propertiesItem">
+        <property name="visible">yes</property>
+        <property name="label">gtk-properties</property>
+        <property name="use_stock">yes</property>
+        <property name="use_underline">yes</property>
+
+        <signal name="activate" handler="on_propertiesItem_activate" />
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkImageMenuItem" id="configureItem">
+        <property name="label" translatable="yes">_Configure...</property>
+        <property name="visible">yes</property>
+        <property name="use_underline">yes</property>
+
+        <signal name="activate" handler="on_configureItem_activate" />
+
+        <child internal-child="image">
+          <widget class="GtkImage" id="convertwidget1">
+            <property name="stock">gtk-pref</property>
+            <property name="visible">yes</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkMenuItem" id="trennlinie2">
+        <property name="visible">yes</property>
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkImageMenuItem" id="connectItem">
+        <property name="label" translatable="yes">Connect to</property>
+        <property name="visible">yes</property>
+
+        <signal name="activate" handler="on_connectItem_activate" />
+
+        <child internal-child="image">
+          <widget class="GtkImage" id="convertwidget2">
+            <property name="stock">gtk-go-up</property>
+            <property name="visible">yes</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkImageMenuItem" id="disconnectItem">
+        <property name="label" translatable="yes">Disconnect from</property>
+        <property name="visible">yes</property>
+
+        <signal name="activate" handler="on_disconnectItem_activate" />
+
+        <child internal-child="image">
+          <widget class="GtkImage" id="convertwidget3">
+            <property name="stock">gtk-go-down</property>
+            <property name="visible">yes</property>
+          </widget>
+        </child>
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkMenuItem" id="trennlinie3">
+        <property name="visible">yes</property>
+      </widget>
+    </child>
+
+    <child>
+      <widget class="GtkImageMenuItem" id="closeItem">
+        <property name="visible">yes</property>
+        <property name="label">gtk-close</property>
+        <property name="use_stock">yes</property>
+        <property name="use_underline">yes</property>
+
+        <signal name="activate" handler="on_closeItem_activate" />
+      </widget>
+    </child>
   </widget>
-
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>propertiesItem</name>
-    <signal>
-      <name>activate</name>
-      <handler>on_propertiesItem_activate</handler>
-      <last_modification_time>Thu, 24 Jan 2002 21:35:47 GMT</last_modification_time>
-    </signal>
-    <stock_item>GNOMEUIINFO_MENU_PROPERTIES_ITEM</stock_item>
-  </widget>
-
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>configureItem</name>
-    <signal>
-      <name>activate</name>
-      <handler>on_configureItem_activate</handler>
-      <last_modification_time>Thu, 24 Jan 2002 21:42:56 GMT</last_modification_time>
-    </signal>
-    <label>_Configure...</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_PREF</stock_icon>
-  </widget>
-
-  <widget>
-    <class>GtkMenuItem</class>
-    <name>trennlinie2</name>
-    <right_justify>False</right_justify>
-  </widget>
-
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>connectItem</name>
-    <signal>
-      <name>activate</name>
-      <handler>on_connectItem_activate</handler>
-      <last_modification_time>Thu, 24 Jan 2002 21:40:22 GMT</last_modification_time>
-    </signal>
-    <label>Connect to</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_UP</stock_icon>
-  </widget>
-
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>disconnectItem</name>
-    <signal>
-      <name>activate</name>
-      <handler>on_disconnectItem_activate</handler>
-      <last_modification_time>Thu, 24 Jan 2002 21:46:12 GMT</last_modification_time>
-    </signal>
-    <label>Disconnect from</label>
-    <right_justify>False</right_justify>
-    <stock_icon>GNOME_STOCK_MENU_DOWN</stock_icon>
-  </widget>
-
-  <widget>
-    <class>GtkMenuItem</class>
-    <name>trennlinie3</name>
-    <right_justify>False</right_justify>
-  </widget>
-
-  <widget>
-    <class>GtkPixmapMenuItem</class>
-    <name>closeItem</name>
-    <signal>
-      <name>activate</name>
-      <handler>on_closeItem_activate</handler>
-      <last_modification_time>Thu, 24 Jan 2002 21:34:44 GMT</last_modification_time>
-    </signal>
-    <stock_item>GNOMEUIINFO_MENU_CLOSE_ITEM</stock_item>
-  </widget>
-</widget>
-
-</GTK-Interface>
+</glade-interface>

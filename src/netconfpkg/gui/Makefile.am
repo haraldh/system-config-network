@@ -78,7 +78,8 @@ PYTHON_FILES = \
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
 
-BUILT_SOURCES = $(patsubst %.py,%.pyc, $(PYTHON_FILES)) 
+BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
+		     $(patsubst %.py,%.pyc,$(PYTHON_FILES)))
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg/gui
 netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
@@ -91,4 +92,4 @@ clean:
 
 %.pyc: %.py
 	@echo "Compiling because of " $*
-	python @PY_COMPILEALL@ -l -d . $(srcdir)
+	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)

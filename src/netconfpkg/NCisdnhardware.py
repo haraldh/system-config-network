@@ -222,7 +222,7 @@ class ConfISDN:
             while line:
                 idl.append(string.split(line)[1])
                 line = f.readline()
-            f.close
+            f.close()
             found = 1
 
         if found == 0: return

@@ -17,9 +17,9 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from DeviceList import *
 from NC_functions import *
- 
+from netconfpkg import Callback_base
+
 class Callback(Callback_base):
     boolkeydict = { 'Compression' : 'CBCP',
                     'Hup' : 'CBHUP' }

@@ -23,7 +23,7 @@ import string
 import ethtool
 import NCisdnhardware
 
-from HardwareList import *
+from netconfpkg import HardwareList_base
 from NC_functions import *
 from netconfpkg.NC_functions import _
 

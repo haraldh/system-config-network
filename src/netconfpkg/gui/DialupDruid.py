@@ -17,29 +17,29 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#import gnome.ui
-import GDK
+
 import gtk
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
 from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import *
-import libglade
+import gtk.glade
 import string
 import os
 import providerdb
 from netconfpkg.gui import GUI_functions
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
-from netconfpkg import NCDeviceList
-from netconfpkg import NCDevice
-from netconfpkg import NCProfileList
-from netconfpkg import NCDialup
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
 from InterfaceCreator import InterfaceCreator
 
 class DialupDruid(InterfaceCreator):
-    def __init__ (self, toplevel=None, connection_type='ISDN', do_save = 1, druid = None):
+    def __init__ (self, toplevel=None, connection_type='ISDN',
+                  do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         glade_file = 'DialupDruid.glade'
 
@@ -48,7 +48,8 @@ class DialupDruid(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid',
+                                 domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             { "on_dialup_page_prepare" : self.on_dialup_page_prepare,
               "on_dialup_page_next" : self.on_dialup_page_next,
@@ -65,7 +66,7 @@ class DialupDruid(InterfaceCreator):
         self.druids = []
         
         self.druid = self.xml.get_widget ('druid')
-        for I in self.druid.children ():
+        for I in self.druid.get_children():
             self.druid.remove (I)
             self.druids.append (I)
 
@@ -134,9 +135,9 @@ class DialupDruid(InterfaceCreator):
 
     def setup(self):
         if not self.provider:
-            self.xml.get_widget('druid').set_buttons_sensitive(FALSE, FALSE, FALSE) 
+            self.xml.get_widget('druid').set_buttons_sensitive(FALSE, FALSE, FALSE, FALSE) 
         else:
-            self.xml.get_widget('druid').set_buttons_sensitive(FALSE, TRUE, TRUE)
+            self.xml.get_widget('druid').set_buttons_sensitive(FALSE, TRUE, TRUE, FALSE)
             self.xml.get_widget('areaCodeEntry').set_text(self.provider['Areacode'])
             self.xml.get_widget('phoneEntry').set_text(self.provider['PhoneNumber'])
             self.xml.get_widget('providerName').set_text(self.provider['ProviderName'])
@@ -151,6 +152,7 @@ class DialupDruid(InterfaceCreator):
            and len(string.strip(self.xml.get_widget('dialupPasswordEntry').get_text())) > 0)
         
     def on_providerTree_tree_select_row(self, ctree, node, column):
+        node = ctree.selection[0]
         if len(node.children) == 0:
             try:
                 self.country = ctree.get_node_info(node.parent.parent)[0]
@@ -200,7 +202,7 @@ class DialupDruid(InterfaceCreator):
             name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=FALSE)
- 
+            
         self.dbtree.select_row(0,0)
     
     def dehydrate(self):

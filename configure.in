@@ -1,9 +1,12 @@
 AC_INIT(./acinclude.m4)
-AM_INIT_AUTOMAKE(redhat-config-network, 1.0.0)
+AM_INIT_AUTOMAKE(redhat-config-network, 1.1.0)
+
+PYTHON=python2.2
+AC_SUBST(PYTHON)
 
 ALL_LINGUAS="cs da de es fr is it ja ko no pt ru sv tr zh_CN.GB2312 zh_TW.Big5 zh_TW"
 
-paths=`python <<EOF
+paths=`python2.2 <<EOF
 import sys;
 for p in sys.path:
    if len(p): print p
@@ -11,7 +14,7 @@ EOF`
 
 AC_MSG_CHECKING([for your python path])
 AC_SUBST(PY_PYTHONPATH)
-PY_PYTHONPATH=`python <<EOF
+PY_PYTHONPATH=`python2.2 <<EOF
 import sys;
 path=""
 for p in sys.path:

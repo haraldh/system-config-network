@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
@@ -48,7 +48,7 @@ class DialupDialog(deviceConfigDialog):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=PROGNAME)
 
         glade_file = "dialupconfig.glade"
@@ -160,7 +160,7 @@ class DialupDialog(deviceConfigDialog):
         pass
 
     def on_callbackCB_toggled(self, check):
-        self.xml.get_widget("callbackFrame").set_sensitive(check["active"])
+        self.xml.get_widget("callbackFrame").set_sensitive(check.get_active())
         self.xml.get_widget("dialinNumberEntry").grab_focus()
     
     def on_prefixEntry_changed (self, *args):
@@ -254,10 +254,10 @@ class ISDNDialupDialog(DialupDialog):
 
         omenu = self.xml.get_widget("CallbackMode")
         omenu.remove_menu()
-        menu = gtk.GtkMenu()
+        menu = gtk.Menu()
         history = 0
         for txt in [_('in'), _('out')]:
-            item = gtk.GtkMenuItem (txt)
+            item = gtk.MenuItem (txt)
             item.show()
             menu.append (item)
         omenu.set_menu (menu)

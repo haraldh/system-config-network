@@ -22,17 +22,16 @@
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
-#import gnome.ui
+from netconfpkg import *
+from netconfpkg import *
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 import providerdb
-import libglade
+import gtk.glade
 import DialupDruid
 
 class IsdnInterface:
@@ -44,7 +43,7 @@ class IsdnInterface:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        self.xml = libglade.GladeXML(glade_file, 'druid', GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', GUI_functions.PROGNAME)
         
         self.xml.signal_autoconnect(
             {
@@ -60,7 +59,7 @@ class IsdnInterface:
         self.druids = []
 
         druid = self.xml.get_widget ('druid')
-        for I in druid.children():
+        for I in druid.get_children():
             druid.remove(I)
             self.druids.append(I)
             
@@ -215,27 +214,27 @@ class IsdnInterface:
         else:
             self.hw.Card.ChannelProtocol = "1"
  
-        if not self.xml.get_widget('irqSpinButton')["sensitive"]:
+        if not self.xml.get_widget('irqSpinButton').get_property("sensitive"):
             self.hw.Card.IRQ = isdncard.IRQ
         else:
             self.hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
  
-        if not self.xml.get_widget('memEntry')["sensitive"]:
+        if not self.xml.get_widget('memEntry').get_property("sensitive"):
             self.hw.Card.Mem = isdncard.Mem
         else:
             self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
  
-        if not self.xml.get_widget('ioEntry')["sensitive"]:
+        if not self.xml.get_widget('ioEntry').get_property("sensitive"):
             self.hw.Card.IoPort = isdncard.IoPort
         else:
             self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
  
-        if not self.xml.get_widget('io1Entry')["sensitive"]:
+        if not self.xml.get_widget('io1Entry').get_property("sensitive"):
             self.hw.Card.IoPort1 = isdncard.IoPort1
         else:
             self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
  
-        if not self.xml.get_widget('io2Entry')["sensitive"]:
+        if not self.xml.get_widget('io2Entry').get_property("sensitive"):
             self.hw.Card.IoPort2 = isdncard.IoPort2
         else:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()

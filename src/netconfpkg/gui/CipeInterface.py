@@ -18,19 +18,19 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import *
 from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import NETCONFDIR
-from netconfpkg import NCHardwareList
-from netconfpkg import NCProfileList
-from netconfpkg import NCDeviceList
-from netconfpkg import NCDevice
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 import commands
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
-import libglade
+import gtk.glade
 from InterfaceCreator import InterfaceCreator
 
 from gtk import TRUE
@@ -47,7 +47,7 @@ class CipeInterface(InterfaceCreator):
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        self.xml = libglade.GladeXML(glade_file, 'druid', GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', GUI_functions.PROGNAME)
         
         self.xml.signal_autoconnect(
             {
@@ -78,7 +78,7 @@ class CipeInterface(InterfaceCreator):
         self.device.AllowUser = FALSE
         
         druid = self.xml.get_widget ('druid')
-        for I in druid.children():
+        for I in druid.get_children():
             druid.remove(I)
             self.druids.append(I)
 

@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import string

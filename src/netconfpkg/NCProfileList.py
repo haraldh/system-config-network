@@ -25,8 +25,9 @@ import shutil
 import NCDeviceList
 import NCHardwareList
 
-from NC_functions import _, unlink, link, rename
-from ProfileList import *
+from NC_functions import *
+from netconfpkg import ProfileList_base
+from netconfpkg import Host
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")

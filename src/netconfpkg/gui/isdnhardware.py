@@ -18,18 +18,18 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
 
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
+from netconfpkg import *
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NC_functions import _
@@ -46,7 +46,7 @@ class isdnHardwareDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -58,7 +58,7 @@ class isdnHardwareDialog:
         self.hw = hw
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-        self.dialog.set_close(TRUE)
+        
         self.setup()
         self.hydrate()
         
@@ -184,27 +184,27 @@ class isdnHardwareDialog:
         else:
             self.hw.Card.ChannelProtocol = '1'
 
-        if not self.xml.get_widget('irqSpinButton')["sensitive"]:
+        if not self.xml.get_widget('irqSpinButton').get_property("sensitive"):
             self.hw.Card.IRQ = isdncard.IRQ
         else:
             self.hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
 
-        if not self.xml.get_widget('memEntry')["sensitive"]:
+        if not self.xml.get_widget('memEntry').get_property("sensitive"):
             self.hw.Card.Mem = isdncard.Mem
         else:
             self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
 
-        if not self.xml.get_widget('ioEntry')["sensitive"]:
+        if not self.xml.get_widget('ioEntry').get_property("sensitive"):
             self.hw.Card.IoPort = isdncard.IoPort
         else:
             self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
 
-        if not self.xml.get_widget('io1Entry')["sensitive"]:
+        if not self.xml.get_widget('io1Entry').get_property("sensitive"):
             self.hw.Card.IoPort1 = isdncard.IoPort1
         else:
             self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
 
-        if not self.xml.get_widget('io2Entry')["sensitive"]:
+        if not self.xml.get_widget('io2Entry').get_property("sensitive"):
             self.hw.Card.IoPort2 = isdncard.IoPort2
         else:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()

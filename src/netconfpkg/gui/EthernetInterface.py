@@ -19,18 +19,12 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
-from netconfpkg import NCDeviceList
-from netconfpkg import NCDevice
-from netconfpkg import NCProfileList
-import ethtool
+from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
-#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 from EthernetHardwareDruid import ethernetHardware
@@ -48,7 +42,7 @@ class EthernetInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=PROGNAME)
 
         glade_file = 'EthernetInterfaceDruid.glade'
@@ -58,7 +52,7 @@ class EthernetInterface(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
         self.xml.signal_autoconnect(
             { "on_hostname_config_page_back" : self.on_hostname_config_page_back,
               "on_hostname_config_page_next" : self.on_hostname_config_page_next,
@@ -72,8 +66,8 @@ class EthernetInterface(InterfaceCreator):
               }
             )
 
-
-        self.devicelist = NCDeviceList.getDeviceList()
+        #print "EthernetInterface getDeviceList"
+        self.devicelist = getDeviceList()
         self.device = NCDevice.Device()
         self.device.Type = ETHERNET
         self.device.OnBoot = TRUE
@@ -94,7 +88,7 @@ class EthernetInterface(InterfaceCreator):
 
         self.druids = []
         self.druid = self.xml.get_widget('druid')
-        for i in self.druid.children():
+        for i in self.druid.get_children():
             self.druid.remove(i)
             self.druids.append(i)
 
@@ -104,9 +98,9 @@ class EthernetInterface(InterfaceCreator):
                       + self.druids[1:]
 
         if self.device.Type == CTC or self.device.Type == IUCV:
-            self.xml.get_widget('mtuAlignment').set_flags(GTK.Visible)
-            self.xml.get_widget('mtuLabel').set_flags(GTK.Visible)
-            self.xml.get_widget('mtuEntry').set_flags(GTK.Visible)
+            self.xml.get_widget('mtuAlignment').set_flags(gtk.Visible)
+            self.xml.get_widget('mtuLabel').set_flags(gtk.Visible)
+            self.xml.get_widget('mtuEntry').set_flags(gtk.Visible)
 
     def get_project_name(self):
         return _('Ethernet connection')
@@ -121,7 +115,7 @@ class EthernetInterface(InterfaceCreator):
         return self.druids
     
     def on_hostname_config_page_back(self, druid_page, druid):
-        childs = self.topdruid.children()
+        childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[2])
         else:
@@ -146,7 +140,7 @@ class EthernetInterface(InterfaceCreator):
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
         self.hw_sel = clist.selection[0]
-        childs = self.topdruid.children()
+        childs = self.topdruid.get_children()
         
         if (self.hw_sel + 1) == clist.rows:
             self.hwPage = TRUE
@@ -169,7 +163,7 @@ class EthernetInterface(InterfaceCreator):
         return TRUE
 
     def on_hw_config_page_prepare(self, druid_page, druid):
-        hardwarelist = NCHardwareList.getHardwareList()
+        hardwarelist = getHardwareList()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
@@ -202,7 +196,7 @@ class EthernetInterface(InterfaceCreator):
         s = _("You have selected the following information:") + "\n\n" + "   "\
             + _("Device:") + " " + str(self.device.DeviceId) + " "
 
-        hardwarelist = NCHardwareList.getHardwareList()
+        hardwarelist = getHardwareList()
         for hw in hardwarelist:
             if hw.Name == self.device.Device:
                 s = s + "(" + hw.Description + ")"
@@ -223,11 +217,13 @@ class EthernetInterface(InterfaceCreator):
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):
-        hardwarelist = NCHardwareList.getHardwareList()
+        hardwarelist = getHardwareList()
         hardwarelist.commit()
+        #print self.devicelist
         i = self.devicelist.addDevice()
         self.devicelist[i].apply(self.device)
         self.devicelist[i].commit()
+        
         for prof in self.profilelist:
             if prof.Active == FALSE:
                 continue

@@ -43,10 +43,7 @@ import time
 import string
 import GDK
 import gtk
-import libglade
-import gnome
-import gnome.ui
-import gnome.help
+import gtk.glade
 from netconfpkg import *
 from netconfpkg import Control
 from netconfpkg.gui import *
@@ -66,7 +63,7 @@ class mainDialog:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -90,7 +87,7 @@ class mainDialog:
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
         
         load_icon('neat-control.xpm', self.dialog)
-        self.xml.get_widget('pixmap').load_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
+        self.xml.get_widget('pixmap').set_from_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
         
@@ -107,9 +104,11 @@ class mainDialog:
         gtk.mainquit()
 
     def on_infoButton_clicked(self, button):
-        dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
-        dlg.run_and_close()
-
+        print "TBD"
+        #dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
+        #dlg.run_and_close()
+        pass
+    
     def on_activateButton_clicked(self, button):
         device = self.clist_get_device()
         timeout_remove(self.tag)

@@ -19,11 +19,11 @@
 
 import signal
 import os
-#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
+import gnome.ui
 
 from ModemInterface import ModemInterface
 from ADSLInterface import ADSLInterface
@@ -31,8 +31,8 @@ from IsdnInterface import IsdnInterface
 from EthernetInterface import EthernetInterface
 from TokenRingInterface import TokenRingInterface
 from CipeInterface import CipeInterface
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
+from netconfpkg import *
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
@@ -51,7 +51,7 @@ class NewInterface:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        xml = libglade.GladeXML (glade_file, 'toplevel',
+        xml = gtk.glade.XML (glade_file, 'toplevel',
                                  domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
@@ -94,14 +94,14 @@ class NewInterface:
         
     def on_start_page_prepare (self, druid_page, druid):
         self.interface_clist.grab_focus ()
-        self.druid.set_buttons_sensitive (FALSE, TRUE, TRUE)
+        self.druid.set_buttons_sensitive (FALSE, TRUE, TRUE, TRUE)
         
     def on_start_page_next (self, druid, druid_page):
         interface = self.interface_clist.get_row_data (\
             self.interface_clist.selection[0])
 
         # remove all other children
-        for i in self.druid.children()[1:]:
+        for i in self.druid.get_children()[1:]:
             self.druid.remove(i)
 
         druid_pages = interface.get_druids()

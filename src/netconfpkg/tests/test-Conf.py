@@ -80,9 +80,9 @@ del conf
 # check
 str = """
 # testConfig file
-a='e'
+a=e
 # comment
-c='f'
+c=f
 # comment2
 g=h
 """
@@ -121,7 +121,7 @@ del conf
 # check
 if expectConf(filename, str):
     writeConf(filename + '.orig', str)
-    print "Test1 failed!!!!"
+    print "Test3 failed!!!!"
     os.system("diff -u " + filename + " " + filename + ".orig")
     sys.exit(10)
 # cleanup
@@ -177,7 +177,7 @@ alias eth0 3c59x
 """
 if expectConf(filename, str):
     writeConf(filename + '.orig', str)
-    print "Test2 failed!!!!"
+    print "Test4 failed!!!!"
     os.system("diff -u " + filename + " " + filename + ".orig")
     sys.exit(10)
 # cleanup

@@ -22,12 +22,11 @@ sys.path.append("/usr/lib/rhs/python/")
 
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
 import string
 import gettext
 import re
@@ -35,7 +34,7 @@ from netconfpkg import Conf
 import commands
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
-from netconfpkg import NCHardwareList
+from netconfpkg import *
 
 from gtk import TRUE
 from gtk import FALSE
@@ -59,7 +58,7 @@ class ethernetHardwareDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -71,7 +70,7 @@ class ethernetHardwareDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         load_icon("network.xpm", self.dialog)
-        self.dialog.set_close(TRUE)
+        
         self.setup()
         self.hydrate()
 

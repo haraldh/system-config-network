@@ -1,181 +1,169 @@
-<?xml version="1.0"?>
-<GTK-Interface>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >
 
-<project>
-  <name>New_interface_druid</name>
-  <program_name>new_interface_druid</program_name>
-  <directory></directory>
-  <source_directory>src</source_directory>
-  <pixmaps_directory>pixmaps</pixmaps_directory>
-  <language>C</language>
-  <gnome_support>True</gnome_support>
-  <gettext_support>True</gettext_support>
-</project>
+<glade-interface>
+  <requires lib="gnome" />
 
-<widget>
-  <class>GtkWindow</class>
-  <name>toplevel</name>
-  <signal>
-    <name>delete_event</name>
-    <handler>on_toplevel_delete_event</handler>
-    <last_modification_time>Thu, 03 May 2001 21:07:13 GMT</last_modification_time>
-  </signal>
-  <title>Add new Device Type</title>
-  <visible>false</visible>
-  <type>GTK_WINDOW_DIALOG</type>
-  <position>GTK_WIN_POS_MOUSE</position>
-  <modal>True</modal>
-  <default_width>500</default_width>
-  <default_height>400</default_height>
-  <allow_shrink>False</allow_shrink>
-  <allow_grow>True</allow_grow>
-  <auto_shrink>False</auto_shrink>
+  <widget class="GtkWindow" id="toplevel">
+    <property name="title" translatable="yes">Add new Device Type</property>
+    <property name="visible">false</property>
+    <property name="type">GTK_WINDOW_DIALOG</property>
+    <property name="modal">yes</property>
+    <property name="default_width">500</property>
+    <property name="default_height">400</property>
+    <property name="allow_shrink">no</property>
+    <property name="allow_grow">yes</property>
+    <property name="window-position">GTK_WIN_POS_MOUSE</property>
 
-  <widget>
-    <class>GnomeDruid</class>
-    <name>druid</name>
-    <signal>
-      <name>cancel</name>
-      <handler>on_druid_cancel</handler>
-      <last_modification_time>Thu, 03 May 2001 20:17:41 GMT</last_modification_time>
-    </signal>
+    <signal name="delete_event" handler="on_toplevel_delete_event" />
 
-    <widget>
-      <class>GnomeDruidPageStandard</class>
-      <name>start_page</name>
-      <signal>
-	<name>prepare</name>
-	<handler>on_start_page_prepare</handler>
-	<last_modification_time>Thu, 03 May 2001 21:14:50 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>next</name>
-	<handler>on_start_page_next</handler>
-	<last_modification_time>Thu, 03 May 2001 21:15:01 GMT</last_modification_time>
-      </signal>
-      <title>Select Device Type</title>
-      <title_color>255,255,255</title_color>
-      <background_color>25,25,112</background_color>
-      <logo_background_color>24,24,112</logo_background_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
+    <child>
+      <widget class="GnomeDruid" id="druid">
+        <property name="visible">yes</property>
 
-      <widget>
-	<class>GtkVBox</class>
-	<child_name>GnomeDruidPageStandard:vbox</child_name>
-	<name>druid-vbox1</name>
-	<homogeneous>False</homogeneous>
-	<spacing>0</spacing>
-	<child>
-	  <padding>0</padding>
-	  <expand>True</expand>
-	  <fill>True</fill>
-	</child>
+        <signal name="cancel" handler="on_druid_cancel" />
 
-	<widget>
-	  <class>GtkHBox</class>
-	  <name>hbox1</name>
-	  <border_width>8</border_width>
-	  <homogeneous>False</homogeneous>
-	  <spacing>8</spacing>
-	  <child>
-	    <padding>0</padding>
-	    <expand>True</expand>
-	    <fill>True</fill>
-	  </child>
+        <child>
+          <widget class="GnomeDruidPageStandard" id="start_page">
+            <property name="title" translatable="yes">Select Device Type</property>
+            <property name="logo">/usr/share/redhat-config-network/pixmaps/network.xpm</property>
+            <property name="visible">yes</property>
+            <property name="title_foreground">#ffffff</property>
+            <property name="background">#191970</property>
+            <property name="logo_background">#181870</property>
 
-	  <widget>
-	    <class>GtkScrolledWindow</class>
-	    <name>scrolledwindow1</name>
-	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>True</fill>
-	    </child>
+            <signal name="prepare" handler="on_start_page_prepare" />
+            <signal name="next" handler="on_start_page_next" />
 
-	    <widget>
-	      <class>GtkCList</class>
-	      <name>interface_clist</name>
-	      <width>175</width>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>select_row</name>
-		<handler>on_interface_clist_select_row</handler>
-		<last_modification_time>Thu, 03 May 2001 21:31:53 GMT</last_modification_time>
-	      </signal>
-	      <signal>
-		<name>unselect_row</name>
-		<handler>on_interface_clist_unselect_row</handler>
-		<last_modification_time>Thu, 03 May 2001 21:31:41 GMT</last_modification_time>
-	      </signal>
-	      <columns>1</columns>
-	      <column_widths>80</column_widths>
-	      <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
-	      <show_titles>True</show_titles>
-	      <shadow_type>GTK_SHADOW_IN</shadow_type>
+            <child internal-child="vbox">
+              <widget class="GtkVBox" id="druid-vbox1">
+                <property name="homogeneous">no</property>
+                <property name="spacing">0</property>
+                <property name="visible">yes</property>
 
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label1</name>
-		<label>Device Type</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-	  </widget>
+                <child>
+                  <widget class="GtkHBox" id="hbox1">
+                    <property name="border_width">8</property>
+                    <property name="homogeneous">no</property>
+                    <property name="spacing">8</property>
+                    <property name="visible">yes</property>
 
-	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox1</name>
-	    <homogeneous>True</homogeneous>
-	    <spacing>4</spacing>
-	    <child>
-	      <padding>0</padding>
-	      <expand>True</expand>
-	      <fill>True</fill>
-	    </child>
+                    <child>
+                      <widget class="GtkScrolledWindow" id="scrolledwindow1">
+                        <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                        <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                        <property name="shadow_type">GTK_SHADOW_IN</property>
+                        <property name="visible">yes</property>
 
-	    <widget>
-	      <class>GtkHBox</class>
-	      <name>hbox2</name>
-	      <homogeneous>False</homogeneous>
-	      <spacing>0</spacing>
-	      <child>
-		<padding>0</padding>
-		<expand>True</expand>
-		<fill>True</fill>
-	      </child>
+                        <child>
+                          <widget class="GtkCList" id="interface_clist">
+                            <property name="can_focus">yes</property>
+                            <property name="column_widths">80</property>
+                            <property name="selection_mode">GTK_SELECTION_BROWSE</property>
+                            <property name="show_titles">yes</property>
+                            <property name="n_columns">1</property>
+                            <property name="width-request">175</property>
+                            <property name="visible">yes</property>
 
-	      <widget>
-		<class>GtkLabel</class>
-		<name>description_label</name>
-		<label></label>
-		<justify>GTK_JUSTIFY_LEFT</justify>
-		<wrap>True</wrap>
-		<xalign>0.5</xalign>
-		<yalign>0</yalign>
-		<xpad>8</xpad>
-		<ypad>8</ypad>
-		<child>
-		  <padding>0</padding>
-		  <expand>False</expand>
-		  <fill>False</fill>
-		</child>
-	      </widget>
-	    </widget>
-	  </widget>
-	</widget>
+                            <signal name="select_row" handler="on_interface_clist_select_row" />
+                            <signal name="unselect_row" handler="on_interface_clist_unselect_row" />
+
+                            <child>
+                              <widget class="GtkLabel" id="label1">
+                                <property name="label" translatable="yes">Device Type</property>
+                                <property name="justify">GTK_JUSTIFY_CENTER</property>
+                                <property name="wrap">no</property>
+                                <property name="xalign">0</property>
+                                <property name="yalign">0.5</property>
+                                <property name="xpad">0</property>
+                                <property name="ypad">0</property>
+                                <property name="visible">yes</property>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+
+                        <child internal-child="hscrollbar">
+                          <widget class="GtkHScrollbar" id="convertwidget1">
+                            <property name="update_policy">GTK_UPDATE_CONTINUOUS</property>
+                            <property name="visible">yes</property>
+                          </widget>
+                        </child>
+
+                        <child internal-child="vscrollbar">
+                          <widget class="GtkVScrollbar" id="convertwidget2">
+                            <property name="update_policy">GTK_UPDATE_CONTINUOUS</property>
+                            <property name="visible">yes</property>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="padding">0</property>
+                        <property name="expand">no</property>
+                        <property name="fill">yes</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <widget class="GtkVBox" id="vbox1">
+                        <property name="homogeneous">yes</property>
+                        <property name="spacing">4</property>
+                        <property name="visible">yes</property>
+
+                        <child>
+                          <widget class="GtkHBox" id="hbox2">
+                            <property name="homogeneous">no</property>
+                            <property name="spacing">0</property>
+                            <property name="visible">yes</property>
+
+                            <child>
+                              <widget class="GtkLabel" id="description_label">
+                                <property name="label" translatable="yes"></property>
+                                <property name="justify">GTK_JUSTIFY_LEFT</property>
+                                <property name="wrap">yes</property>
+                                <property name="xalign">0.5</property>
+                                <property name="yalign">0</property>
+                                <property name="xpad">8</property>
+                                <property name="ypad">8</property>
+                                <property name="visible">yes</property>
+                              </widget>
+                              <packing>
+                                <property name="padding">0</property>
+                                <property name="expand">no</property>
+                                <property name="fill">no</property>
+                              </packing>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="padding">0</property>
+                            <property name="expand">yes</property>
+                            <property name="fill">yes</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="padding">0</property>
+                        <property name="expand">yes</property>
+                        <property name="fill">yes</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">yes</property>
+                    <property name="fill">yes</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="padding">0</property>
+                <property name="expand">yes</property>
+                <property name="fill">yes</property>
+              </packing>
+            </child>
+          </widget>
+        </child>
       </widget>
-    </widget>
+    </child>
   </widget>
-</widget>
-
-</GTK-Interface>
+</glade-interface>

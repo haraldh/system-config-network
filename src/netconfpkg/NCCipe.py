@@ -19,7 +19,7 @@
 
 import sys
 import NC_functions
-
+from netconfpkg import Cipe_base
 import string
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -28,7 +28,6 @@ if not "/usr/lib/rhs/python" in sys.path:
 import Conf
 import gettext
 
-import DeviceList
 from NC_functions import *
 
 ##
@@ -100,7 +99,7 @@ class ConfCipeOptions(Conf.Conf):
         return self.vars.has_key(key)
 
         
-class Cipe(DeviceList.Cipe_base):
+class Cipe(Cipe_base):
     intkeydict = {'LocalPort' : 'MYPORT',
                   }
     
@@ -109,7 +108,7 @@ class Cipe(DeviceList.Cipe_base):
                 }
     
     def __init__(self, list = None, parent = None):
-        DeviceList.Cipe_base.__init__(self, list, parent)        
+        Cipe_base.__init__(self, list, parent)        
         
     def load(self, parentConf):
         conf = parentConf

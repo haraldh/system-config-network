@@ -18,17 +18,17 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
 
-from netconfpkg import NCHardwareList
+from netconfpkg import *
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NC_functions import _
@@ -45,7 +45,7 @@ class hardwareTypeDialog:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -68,7 +68,7 @@ class hardwareTypeDialog:
         self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
         self.hydrate()
 
-        self.dialog.set_close(TRUE)
+        
 
     def hydrate(self):
         pass

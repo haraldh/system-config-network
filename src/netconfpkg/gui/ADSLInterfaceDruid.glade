@@ -1,570 +1,514 @@
-<?xml version="1.0"?>
-<GTK-Interface>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >
 
-<project>
-  <name>netconf</name>
-  <program_name>netconf</program_name>
-  <directory></directory>
-  <source_directory>src</source_directory>
-  <pixmaps_directory></pixmaps_directory>
-  <language>C</language>
-  <gnome_support>True</gnome_support>
-  <gettext_support>True</gettext_support>
-</project>
+<glade-interface>
+  <requires lib="gnome" />
 
-<widget>
-  <class>GtkWindow</class>
-  <name>window1</name>
-  <title>window1</title>
-  <type>GTK_WINDOW_TOPLEVEL</type>
-  <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
-  <allow_shrink>False</allow_shrink>
-  <allow_grow>True</allow_grow>
-  <auto_shrink>False</auto_shrink>
+  <widget class="GtkWindow" id="window1">
+    <property name="title" translatable="yes">window1</property>
+    <property name="type">GTK_WINDOW_TOPLEVEL</property>
+    <property name="modal">no</property>
+    <property name="allow_shrink">no</property>
+    <property name="allow_grow">yes</property>
+    <property name="window-position">GTK_WIN_POS_NONE</property>
+    <property name="visible">yes</property>
 
-  <widget>
-    <class>GnomeDruid</class>
-    <name>druid</name>
+    <child>
+      <widget class="GnomeDruid" id="druid">
+        <property name="visible">yes</property>
 
-    <widget>
-      <class>GnomeDruidPageStandard</class>
-      <name>dsl_config_page</name>
-      <signal>
-	<name>back</name>
-	<handler>on_dsl_config_page_back</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:09:08 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>cancel</name>
-	<handler>on_dsl_config_page_cancel</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:09:41 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>next</name>
-	<handler>on_dsl_config_page_next</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:10:03 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>prepare</name>
-	<handler>on_dsl_config_page_prepare</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:10:07 GMT</last_modification_time>
-      </signal>
-      <title>Configure DSL connection</title>
-      <title_color>255,255,255</title_color>
-      <background_color>25,25,112</background_color>
-      <logo_background_color>24,24,112</logo_background_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
+        <child>
+          <widget class="GnomeDruidPageStandard" id="dsl_config_page">
+            <property name="title" translatable="yes">Configure DSL connection</property>
+            <property name="logo">/usr/share/redhat-config-network/pixmaps/network.xpm</property>
+            <property name="visible">yes</property>
+            <property name="title_foreground">#ffffff</property>
+            <property name="background">#191970</property>
+            <property name="logo_background">#181870</property>
 
-      <widget>
-	<class>GtkVBox</class>
-	<child_name>GnomeDruidPageStandard:vbox</child_name>
-	<name>druid-vbox1</name>
-	<border_width>8</border_width>
-	<homogeneous>False</homogeneous>
-	<spacing>5</spacing>
-	<child>
-	  <padding>0</padding>
-	  <expand>True</expand>
-	  <fill>True</fill>
-	</child>
+            <signal name="back" handler="on_dsl_config_page_back" />
+            <signal name="cancel" handler="on_dsl_config_page_cancel" />
+            <signal name="next" handler="on_dsl_config_page_next" />
+            <signal name="prepare" handler="on_dsl_config_page_prepare" />
 
-	<widget>
-	  <class>GtkTable</class>
-	  <name>table37</name>
-	  <rows>11</rows>
-	  <columns>2</columns>
-	  <homogeneous>False</homogeneous>
-	  <row_spacing>5</row_spacing>
-	  <column_spacing>5</column_spacing>
-	  <child>
-	    <padding>0</padding>
-	    <expand>True</expand>
-	    <fill>True</fill>
-	  </child>
+            <child internal-child="vbox">
+              <widget class="GtkVBox" id="druid-vbox1">
+                <property name="border_width">8</property>
+                <property name="homogeneous">no</property>
+                <property name="spacing">5</property>
+                <property name="visible">yes</property>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label232</name>
-	    <label>Enter the provider name for this account.</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>3</top_attach>
-	      <bottom_attach>4</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                <child>
+                  <widget class="GtkTable" id="table37">
+                    <property name="homogeneous">no</property>
+                    <property name="row_spacing">5</property>
+                    <property name="column_spacing">5</property>
+                    <property name="n-rows">11</property>
+                    <property name="n-columns">2</property>
+                    <property name="visible">yes</property>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label227</name>
-	    <label>_Provider Name:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>4</top_attach>
-	      <bottom_attach>5</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label232">
+                        <property name="label" translatable="yes">Enter the provider name for this account.</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">no</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">3</property>
+                        <property name="bottom_attach">4</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">expand|fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label224</name>
-	    <label>_Login Name:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>7</top_attach>
-	      <bottom_attach>8</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label227">
+                        <property name="label" translatable="yes">_Provider Name:</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">no</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                        <property name="use_underline">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">1</property>
+                        <property name="top_attach">4</property>
+                        <property name="bottom_attach">5</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label225</name>
-	    <label>Pass_word:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>10</top_attach>
-	      <bottom_attach>11</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label224">
+                        <property name="label" translatable="yes">_Login Name:</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">no</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                        <property name="use_underline">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">1</property>
+                        <property name="top_attach">7</property>
+                        <property name="bottom_attach">8</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label171</name>
-	    <label>Ethernet _Device:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label225">
+                        <property name="label" translatable="yes">Pass_word:</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">no</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                        <property name="use_underline">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">1</property>
+                        <property name="top_attach">10</property>
+                        <property name="bottom_attach">11</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label233</name>
-	    <label>Select the ethernet device for this account.</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>True</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label171">
+                        <property name="label" translatable="yes">Ethernet _Device:</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">no</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                        <property name="use_underline">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">1</property>
+                        <property name="top_attach">1</property>
+                        <property name="bottom_attach">2</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label234</name>
-	    <label>Enter the login name for this account.</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>True</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>6</top_attach>
-	      <bottom_attach>7</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label233">
+                        <property name="label" translatable="yes">Select the ethernet device for this account.</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">yes</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">0</property>
+                        <property name="bottom_attach">1</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label235</name>
-	    <label>Enter the password for this account.</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>True</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>9</top_attach>
-	      <bottom_attach>10</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkLabel" id="label234">
+                        <property name="label" translatable="yes">Enter the login name for this account.</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">yes</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">6</property>
+                        <property name="bottom_attach">7</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkHBox</class>
-	    <name>hbox56</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>10</top_attach>
-	      <bottom_attach>11</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
+                    <child>
+                      <widget class="GtkLabel" id="label235">
+                        <property name="label" translatable="yes">Enter the password for this account.</property>
+                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="wrap">yes</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xpad">0</property>
+                        <property name="ypad">0</property>
+                        <property name="visible">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">9</property>
+                        <property name="bottom_attach">10</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
 
-	    <widget>
-	      <class>GtkEntry</class>
-	      <name>passwordEntry</name>
-	      <tooltip>Enter the password for your account. If you do not know it, please contact your ISP.</tooltip>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>changed</name>
-		<handler>on_dialupPasswordEntry_changed</handler>
-		<last_modification_time>Thu, 24 May 2001 13:02:05 GMT</last_modification_time>
-	      </signal>
-	      <editable>True</editable>
-	      <text_visible>False</text_visible>
-	      <text_max_length>0</text_max_length>
-	      <text></text>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
-	    </widget>
-	  </widget>
+                    <child>
+                      <widget class="GtkHBox" id="hbox56">
+                        <property name="homogeneous">no</property>
+                        <property name="spacing">0</property>
+                        <property name="visible">yes</property>
 
-	  <widget>
-	    <class>GtkHBox</class>
-	    <name>hbox55</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>7</top_attach>
-	      <bottom_attach>8</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
+                        <child>
+                          <widget class="GtkEntry" id="passwordEntry">
+                            <property name="tooltip" translatable="yes">Enter the password for your account. If you do not know it, please contact your ISP.</property>
+                            <property name="can_focus">yes</property>
+                            <property name="editable">yes</property>
+                            <property name="text" translatable="yes"></property>
+                            <property name="max-length">0</property>
+                            <property name="visibility">no</property>
+                            <property name="visible">yes</property>
 
-	    <widget>
-	      <class>GtkEntry</class>
-	      <name>loginNameEntry</name>
-	      <tooltip>Enter the login name, that your ISP gave you here.</tooltip>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>changed</name>
-		<handler>on_dialupLoginNameEntry_activate</handler>
-		<last_modification_time>Thu, 24 May 2001 13:01:59 GMT</last_modification_time>
-	      </signal>
-	      <editable>True</editable>
-	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
-	      <text></text>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
-	    </widget>
-	  </widget>
+                            <signal name="changed" handler="on_dialupPasswordEntry_changed" />
+                          </widget>
+                          <packing>
+                            <property name="padding">0</property>
+                            <property name="expand">no</property>
+                            <property name="fill">yes</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">10</property>
+                        <property name="bottom_attach">11</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">expand|fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkHBox</class>
-	    <name>hbox54</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>4</top_attach>
-	      <bottom_attach>5</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
+                    <child>
+                      <widget class="GtkHBox" id="hbox55">
+                        <property name="homogeneous">no</property>
+                        <property name="spacing">0</property>
+                        <property name="visible">yes</property>
 
-	    <widget>
-	      <class>GtkEntry</class>
-	      <name>providerNameEntry</name>
-	      <tooltip>Enter the name of this configuration, usually just the name of your ISP.</tooltip>
-	      <can_focus>True</can_focus>
-	      <editable>True</editable>
-	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
-	      <text></text>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
-	    </widget>
-	  </widget>
+                        <child>
+                          <widget class="GtkEntry" id="loginNameEntry">
+                            <property name="tooltip" translatable="yes">Enter the login name, that your ISP gave you here.</property>
+                            <property name="can_focus">yes</property>
+                            <property name="editable">yes</property>
+                            <property name="text" translatable="yes"></property>
+                            <property name="max-length">0</property>
+                            <property name="visibility">yes</property>
+                            <property name="visible">yes</property>
 
-	  <widget>
-	    <class>GtkHBox</class>
-	    <name>hbox53</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
+                            <signal name="changed" handler="on_dialupLoginNameEntry_activate" />
+                          </widget>
+                          <packing>
+                            <property name="padding">0</property>
+                            <property name="expand">no</property>
+                            <property name="fill">yes</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">7</property>
+                        <property name="bottom_attach">8</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">expand|fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
 
-	    <widget>
-	      <class>GtkCombo</class>
-	      <name>ethernetDeviceComboBox</name>
-	      <value_in_list>False</value_in_list>
-	      <ok_if_empty>True</ok_if_empty>
-	      <case_sensitive>False</case_sensitive>
-	      <use_arrows>True</use_arrows>
-	      <use_arrows_always>False</use_arrows_always>
-	      <items></items>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
+                    <child>
+                      <widget class="GtkHBox" id="hbox54">
+                        <property name="homogeneous">no</property>
+                        <property name="spacing">0</property>
+                        <property name="visible">yes</property>
 
-	      <widget>
-		<class>GtkEntry</class>
-		<child_name>GtkCombo:entry</child_name>
-		<name>ethernetDeviceEntry</name>
-		<tooltip>Select the ethernet device connected to the DSL modem.</tooltip>
-		<can_focus>True</can_focus>
-		<editable>False</editable>
-		<text_visible>True</text_visible>
-		<text_max_length>0</text_max_length>
-		<text></text>
-	      </widget>
-	    </widget>
-	  </widget>
+                        <child>
+                          <widget class="GtkEntry" id="providerNameEntry">
+                            <property name="tooltip" translatable="yes">Enter the name of this configuration, usually just the name of your ISP.</property>
+                            <property name="can_focus">yes</property>
+                            <property name="editable">yes</property>
+                            <property name="text" translatable="yes"></property>
+                            <property name="max-length">0</property>
+                            <property name="visibility">yes</property>
+                            <property name="visible">yes</property>
+                          </widget>
+                          <packing>
+                            <property name="padding">0</property>
+                            <property name="expand">no</property>
+                            <property name="fill">yes</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">4</property>
+                        <property name="bottom_attach">5</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">expand|fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
 
-	  <widget>
-	    <class>GtkHSeparator</class>
-	    <name>hseparator2</name>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>2</top_attach>
-	      <bottom_attach>3</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>8</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
-	  </widget>
+                    <child>
+                      <widget class="GtkHBox" id="hbox53">
+                        <property name="homogeneous">no</property>
+                        <property name="spacing">0</property>
+                        <property name="visible">yes</property>
 
-	  <widget>
-	    <class>GtkAlignment</class>
-	    <name>alignment2</name>
-	    <xalign>0.5</xalign>
-	    <yalign>0.5</yalign>
-	    <xscale>1</xscale>
-	    <yscale>1</yscale>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>5</top_attach>
-	      <bottom_attach>6</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>3</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
+                        <child>
+                          <widget class="GtkCombo" id="ethernetDeviceComboBox">
+                            <property name="value_in_list">no</property>
+                            <property name="case_sensitive">no</property>
+                            <property name="enable_arrow_keys">yes</property>
+                            <property name="enable_arrows_always">no</property>
+                            <property name="allow_empty">yes</property>
+                            <property name="visible">yes</property>
 
-	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
-	  </widget>
+                            <child internal-child="entry">
+                              <widget class="GtkEntry" id="ethernetDeviceEntry">
+                                <property name="tooltip" translatable="yes">Select the ethernet device connected to the DSL modem.</property>
+                                <property name="can_focus">yes</property>
+                                <property name="editable">no</property>
+                                <property name="text" translatable="yes"></property>
+                                <property name="max-length">0</property>
+                                <property name="visibility">yes</property>
+                                <property name="visible">yes</property>
+                              </widget>
+                            </child>
 
-	  <widget>
-	    <class>GtkAlignment</class>
-	    <name>alignment3</name>
-	    <xalign>0.5</xalign>
-	    <yalign>0.5</yalign>
-	    <xscale>1</xscale>
-	    <yscale>1</yscale>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>8</top_attach>
-	      <bottom_attach>9</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>3</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
+                            <child internal-child="list">
+                              <widget class="GtkList" id="convertwidget1">
+                                <property name="visible">yes</property>
 
-	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
-	  </widget>
-	</widget>
+                                <child>
+                                  <widget class="GtkListItem" id="convertwidget2">
+                                    <property name="visible">yes</property>
+
+                                    <child>
+                                      <widget class="GtkLabel" id="convertwidget3">
+                                        <property name="label" translatable="yes"></property>
+                                        <property name="xalign">0.0</property>
+                                        <property name="visible">yes</property>
+                                      </widget>
+                                    </child>
+                                  </widget>
+                                </child>
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="padding">0</property>
+                            <property name="expand">no</property>
+                            <property name="fill">yes</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">1</property>
+                        <property name="bottom_attach">2</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">0</property>
+                        <property name="x_options">expand|fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <widget class="GtkHSeparator" id="hseparator2">
+                        <property name="visible">yes</property>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">2</property>
+                        <property name="bottom_attach">3</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">8</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <widget class="GtkAlignment" id="alignment2">
+                        <property name="xalign">0.5</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xscale">1</property>
+                        <property name="yscale">1</property>
+                        <property name="visible">yes</property>
+
+                        <child>
+                          <placeholder />
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">5</property>
+                        <property name="bottom_attach">6</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">3</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <widget class="GtkAlignment" id="alignment3">
+                        <property name="xalign">0.5</property>
+                        <property name="yalign">0.5</property>
+                        <property name="xscale">1</property>
+                        <property name="yscale">1</property>
+                        <property name="visible">yes</property>
+
+                        <child>
+                          <placeholder />
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="right_attach">2</property>
+                        <property name="top_attach">8</property>
+                        <property name="bottom_attach">9</property>
+                        <property name="x_padding">0</property>
+                        <property name="y_padding">3</property>
+                        <property name="x_options">fill</property>
+                        <property name="y_options">fill</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="padding">0</property>
+                    <property name="expand">yes</property>
+                    <property name="fill">yes</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="padding">0</property>
+                <property name="expand">yes</property>
+                <property name="fill">yes</property>
+              </packing>
+            </child>
+          </widget>
+        </child>
+
+        <child>
+          <widget class="GnomeDruidPageEdge" id="finish_page">
+            <property name="title" translatable="yes">Create DSL connection</property>
+            <property name="text" translatable="yes"></property>
+            <property name="logo_image">/usr/share/redhat-config-network/pixmaps/network.xpm</property>
+            <property name="position">GNOME_EDGE_FINISH</property>
+            <property name="visible">yes</property>
+            <property name="title_color">#ffffff</property>
+            <property name="text_color">#000000</property>
+            <property name="background_color">#191970</property>
+            <property name="logo_background_color">#181870</property>
+            <property name="textbox_color">#ffffff</property>
+
+            <signal name="finish" handler="on_finish_page_finish" />
+            <signal name="prepare" handler="on_finish_page_prepare" />
+            <signal name="back" handler="on_finish_page_back" />
+          </widget>
+        </child>
       </widget>
-    </widget>
-
-    <widget>
-      <class>GnomeDruidPageFinish</class>
-      <name>finish_page</name>
-      <signal>
-	<name>finish</name>
-	<handler>on_finish_page_finish</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:08:19 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>prepare</name>
-	<handler>on_finish_page_prepare</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:08:38 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>back</name>
-	<handler>on_finish_page_back</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:08:45 GMT</last_modification_time>
-      </signal>
-      <title>Create DSL connection</title>
-      <text></text>
-      <background_color>25,25,112</background_color>
-      <logo_background_color>24,24,112</logo_background_color>
-      <textbox_color>255,255,255</textbox_color>
-      <text_color>0,0,0</text_color>
-      <title_color>255,255,255</title_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
-    </widget>
+    </child>
   </widget>
-</widget>
-
-</GTK-Interface>
+</glade-interface>

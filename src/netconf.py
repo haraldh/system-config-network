@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python2.2
 
 ## netconf - A network configuration tool
 ## Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -40,13 +40,13 @@ import getopt
 import signal
 import os
 
-os.environ["PYGTK_FATAL_EXCEPTIONS"] = '1'
+os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 
 import os.path
 import string
 import gettext
 from netconfpkg import *
-from netconfpkg import Control
+#from netconfpkg import Control
 
 ##
 ## I18N
@@ -98,12 +98,9 @@ if __name__ == '__main__':
 from netconfpkg.gui import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.exception import handleException
-import GDK
+#import GDK
 import gtk
-import libglade
-import gnome
-import gnome.ui
-import gnome.help
+import gtk.glade
 
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
@@ -119,10 +116,9 @@ class mainDialog:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.no_profileentry_update = None
-        
         self.xml.signal_autoconnect(
             {
             "on_deviceAddButton_clicked" : self.on_deviceAddButton_clicked,
@@ -205,9 +201,9 @@ class mainDialog:
             })
 
 
-        self.xml.get_widget ("hardware_pixmap").load_file("/usr/share/redhat-config-network/pixmaps/connection-ethernet.png")
-        self.xml.get_widget ("hosts_pixmap").load_file("/usr/share/redhat-config-network/pixmaps/nameresolution_alias.png")
-        self.xml.get_widget ("devices_pixmap").load_file("/usr/share/redhat-config-network/pixmaps/network.png")
+        self.xml.get_widget ("hardware_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/connection-ethernet.png")
+        self.xml.get_widget ("hosts_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/nameresolution_alias.png")
+        self.xml.get_widget ("devices_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/network.png")
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
@@ -230,7 +226,7 @@ class mainDialog:
             notebook = self.xml.get_widget('mainNotebook')
             widget = self.xml.get_widget('deviceFrame')
             page = notebook.page_num(widget)
-            notebook.set_page(page)
+            notebook.set_current_page(page)
 
         self.activedevicelist = NetworkDevice().get()
         self.tag = timeout_add(4000, self.update_devicelist)
@@ -277,7 +273,8 @@ class mainDialog:
         devicelist = getDeviceList()
         hardwarelist = getHardwareList()
         
-        if profilelist.changed or devicelist.changed or hardwarelist.changed:
+        if profilelist.modified() or \
+               devicelist.modified() or hardwarelist.modified():
             return true
 
         return false
@@ -295,18 +292,18 @@ class mainDialog:
     def saveDevices(self):
         devicelist = getDeviceList()
         devicelist.save()
-        devicelist.changed = false
+        devicelist.setChanged(false)
         
     def saveHardware(self):
         hardwarelist = getHardwareList()
         hardwarelist.save()
-        hardwarelist.changed = false
+        hardwarelist.setChanged(false)
         
     def saveProfiles(self):
         profilelist = getProfileList()
         #print "profilelist.save()"
         profilelist.save()
-        profilelist.changed = false
+        profilelist.setChanged(false)
         
     def hydrate(self):
         self.hydrateProfiles()
@@ -317,7 +314,7 @@ class mainDialog:
         devicelist = getDeviceList()
         activedevicelist = NetworkDevice().get()
 ##        profilelist = getProfileList()
-
+        #print devicelist
         clist = self.xml.get_widget("deviceList")
         clist.clear()
         clist.set_row_height(17)
@@ -416,13 +413,13 @@ class mainDialog:
         self.no_profileentry_update = true
         omenu = self.xml.get_widget('profileOption')
         omenu.remove_menu ()
-        menu = gtk.GtkMenu ()
+        menu = gtk.Menu ()
         history = 0
         i = 0
         for prof in profilelist:
-            menu_item = gtk.GtkMenuItem (prof.ProfileName)
+            menu_item = gtk.MenuItem (prof.ProfileName)
             menu_item.show ()
-            menu_item.signal_connect ("activate",
+            menu_item.connect ("activate",
                                       self.on_profileMenuItem_activated,
                                       prof.ProfileName)
             menu.append (menu_item)
@@ -432,7 +429,7 @@ class mainDialog:
         menu.show ()
         omenu.set_menu (menu)
         omenu.set_history (history)
-        menu.children()[history].activate ()
+        menu.get_children()[history].activate ()
         self.no_profileentry_update = false
 
     def on_Dialog_delete_event(self, *args):
@@ -440,7 +437,7 @@ class mainDialog:
             button = generic_yesno_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
-            if button == 0:
+            if button == gtk.RESPONSE_YES:
                 self.save()
             
         gtk.mainquit()
@@ -454,21 +451,21 @@ class mainDialog:
                 _("Do you want to save your changes?"),
                 self.dialog)
             
-            if button == 0:
+            if button == gtk.RESPONSE_YES:
                 if self.save() != 0:
                     return
             
-            if button == 2:
+            if button == gtk.RESPONSE_CANCEL:
                 return
             
         gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
-        gnome.help.goto ("file:/usr/share/redhat-config-network/help/index.html")
+        gnome.url_show("file:///usr/share/redhat-config-network/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
-        profilelist = getProfileList()
-        devicelist = getDeviceList()
+        #profilelist = getProfileList()
+        #devicelist = getDeviceList()
         
         interface = NewInterfaceDialog()
 
@@ -530,7 +527,7 @@ class mainDialog:
         devId = device.DeviceId
         button = self.editDevice(device)
 
-        if button != 0:
+        if button != gtk.RESPONSE_OK and button != 0:
             device.rollback()
             return
 
@@ -559,47 +556,36 @@ class mainDialog:
 
         if type == ETHERNET:
             cfg = ethernetConfigDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == TOKENRING:
             cfg = tokenringConfigDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == ISDN:
             cfg = ISDNDialupDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == MODEM:
             cfg = ModemDialupDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == DSL:
             cfg = dslConfigDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == CIPE:
             cfg = cipeConfigDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == WIRELESS:
             cfg = wirelessConfigDialog(device)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         elif type == CTC or type == IUCV:
             cfg = ctcConfigDialog(device)
-            dialog =  cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
 
         else:
             generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)
+            return button
+            
+        dialog = cfg.xml.get_widget ("Dialog")
 
+        button = dialog.run()
+        dialog.destroy()
 
         return button
 
@@ -624,7 +610,7 @@ class mainDialog:
 
         buttons = generic_yesno_dialog((_('Do you really want to delete device "%s"?')) % str(name), self.dialog, widget = clist, page = clist.selection[0])
 
-        if buttons != 0:
+        if buttons != gtk.RESPONSE_YES:
             return
 
         for prof in profilelist:
@@ -649,16 +635,16 @@ class mainDialog:
                     _("Do you want to continue?") ,
                     self.dialog)
                 
-                if button == 0:
+                if button == gtk.RESPONSE_YES:
                     if self.save() != 0:
                         return
             
-                if button == 1:
+                if button == gtk.RESPONSE_NO:
                     return
 
             intf = Interface()
             child = intf.activate(device)
-            dlg = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Network device activating...'))
+            dlg = gtk.Dialog(_('Network device activating...'))
             dlg.set_border_width(10)
             vbox = gtk.GtkVBox(1)
             vbox.add(gtk.GtkLabel(_('Activating network device %s, please wait...') %(device)))
@@ -667,12 +653,12 @@ class mainDialog:
             dlg.set_position (gtk.WIN_POS_MOUSE)
             dlg.set_modal(TRUE)
             dlg.show_all()
-            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
-            dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+#            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+#            dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
             idle_func()
             os.waitpid(child, 0)
-            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-            dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+#            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+#            dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.destroy()
 
             if NetworkDevice().find(device):
@@ -809,7 +795,7 @@ class mainDialog:
     def on_generic_clist_button_release_event(self, clist, event, func):
         id = clist.get_data ("signal_id")
         clist.disconnect (id)
-        clist.remove_data ("signal_id")
+        #clist.remove_data ("signal_id")
         apply (func)
 
     def get_active_profile(self):
@@ -834,17 +820,20 @@ class mainDialog:
         #    if status == ACTIVE:
         #        return
                 
-        if event.type == GDK._2BUTTON_PRESS:
+        if event.type == gtk.gdk._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
-                id = clist.signal_connect("button_release_event",
-                                          self.on_generic_clist_button_release_event,
-                                          func)
+                id = clist.connect("button_release_event",
+                                   self.on_generic_clist_button_release_event,
+                                   func)
                 clist.set_data("signal_id", id)
-        if clist.get_name() == 'deviceList' and event.type == GDK.BUTTON_PRESS:
-            info = clist.get_selection_info(event.x, event.y)
-            if info != None and info[1] == 0:
-                row = info[0]
+                 
+#         if clist.get_name() == 'deviceList' and event.type == GDK.BUTTON_PRESS:
+#             info = clist.get_selection_info(event.x, event.y)
+#             if info != None and info[1] == 0:
+#                 row = info[0]
+
+
 ##                name = clist.get_text(row, 0)
 ##                type = clist.get_text(row, 1)
 ##                 if type == 'Loopback':
@@ -952,9 +941,11 @@ class mainDialog:
         name = clist.get_text(clist.selection[0], 0)
 
         dialog = editDomainDialog(name)
-        dialog.main = self
+        dialog.main = self        
         button = dialog.xml.get_widget("Dialog").run()
-        if button != 0:            
+        dialog.xml.get_widget("Dialog").destroy()
+
+        if button != gtk.RESPONSE_OK and button != 0:            
             return
                 
         self.hydrate()
@@ -1032,7 +1023,8 @@ class mainDialog:
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
         button = dl.run ()
-        if button != 0:
+        dl.destroy()
+        if button != gtk.RESPONSE_OK and button != 0:
             return
         
         i = hostslist.addHost()
@@ -1055,7 +1047,8 @@ class mainDialog:
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
         button = dl.run ()
-        if button != 0:
+        dl.destroy()
+        if button != gtk.RESPONSE_OK and button != 0:
             host.rollback()
             return
         host.commit()
@@ -1079,6 +1072,7 @@ class mainDialog:
             return
 
         todel = list(clist.selection)
+        todel.sort()
         todel.reverse()
 
         for i in todel:
@@ -1094,10 +1088,10 @@ class mainDialog:
         pass
 
     def on_profileAddButton_clicked (self, *args):
-        import gnome
         import gnome.ui
-        dialog = gnome.ui.GnomeRequestDialog (FALSE, _("Please enter the name for the new profile.\nThe name may only contain letters and digits."), "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
+        dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the name for the new profile.\nThe name may only contain letters and digits."), "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
         dialog.run()        
+        dialog.destroy()
 
     def on_profileAddEntry_changed(self, text):
         profilelist = getProfileList()
@@ -1159,7 +1153,6 @@ class mainDialog:
         self.hydrate()
 
     def on_profileRenameButton_clicked (self, *args):
-        import gnome
         import gnome.ui
         profilelist = getProfileList()
         
@@ -1168,8 +1161,9 @@ class mainDialog:
             generic_error_dialog (_('The "default" profile can\'t be renamed!'), self.dialog)
             return
             
-        dialog = gnome.ui.GnomeRequestDialog (FALSE, _("Please enter the new name for the profile.\nThe name may only contain letters and digits."), profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
+        dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the new name for the profile.\nThe name may only contain letters and digits."), profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
         dialog.run()
+        dialog.destroy()
 
     def on_profileRenameEntry_changed(self, text):
         if not text:
@@ -1215,7 +1209,7 @@ class mainDialog:
 
         buttons = generic_yesno_dialog((_('Do you really want to delete profile "%s"?')) % str(name), self.dialog)
 
-        if buttons != 0:
+        if buttons != gtk.RESPONSE_YES:
             return
 
         del profilelist[profilelist.index(self.get_active_profile())]
@@ -1232,7 +1226,9 @@ class mainDialog:
         dialog = type.xml.get_widget ("Dialog")
 
         button = dialog.run ()
-        if button != 0:
+        dialog.destroy()
+
+        if button != gtk.RESPONSE_OK and button != 0:
             return
 
         type = type.type
@@ -1299,10 +1295,12 @@ class mainDialog:
                 hw.createCard()
 
             dialog = isdnHardwareDialog(hw)
-
-        button = dialog.xml.get_widget('Dialog').run()
+            
+        dl = dialog.xml.get_widget('Dialog')
+        button = dl.run()
+        dl.destroy()
         
-        if button != 0:
+        if button != gtk.RESPONSE_OK and button != 0:
             if edit:
                 hw.rollback()
             #hardwarelist.rollback()
@@ -1336,7 +1334,7 @@ class mainDialog:
         buttons = generic_yesno_dialog((_('Do you really want to delete "%s"?')) % str(description),
                                        self.dialog, widget = clist, page = clist.selection[0])
 
-        if buttons != 0:
+        if buttons != gtk.RESPONSE_YES:
             return
 
         # remove hardware
@@ -1392,6 +1390,10 @@ if __name__ == '__main__':
     except (getopt.error, BadUsage):
         Usage()
         sys.exit(1)
+
+    sys.excepthook = lambda type, value, tb: handleException((type, value, tb))
+
+
     
     try:
         if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
@@ -1399,7 +1401,7 @@ if __name__ == '__main__':
         elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
             window = mainDialog('druid')
             
-        gtk.mainloop()
+        gtk.main()
 
     except SystemExit, code:
         print "Exception %s: %s" % (str(SystemExit), str(code))

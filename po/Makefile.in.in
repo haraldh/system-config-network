@@ -88,11 +88,13 @@ all-no:
 # have been downloaded.
 
 findpy:
-	(cd $(top_srcdir)/;find src -name *.py -print ) > $(srcdir)/POTFILES.in
-	(cd $(top_srcdir)/;find src -name glade-strings.c -print ) >> $(srcdir)/POTFILES.in
+	if test -w $(srcdir); then \
+		find $(top_srcdir)/src -name *.py -print > $(srcdir)/POTFILES.in; \
+		find $(top_srcdir)/src -name glade-strings.c -print  >> $(srcdir)/POTFILES.in; \
+	fi
 
 POTFILES-RHL: $(POTFILES) $(srcdir)/POTFILES.in
-	rm -rf POTFILES
+	rm -rf POTFILES-RHL
 	for file in `cat $(srcdir)/POTFILES.in`; do \
 	  if expr $$file : .*.glade$$ > /dev/null; then \
 	    gladestr=`echo $$file | sed 's/.glade$$/.gladestr/'`; \
@@ -100,7 +102,7 @@ POTFILES-RHL: $(POTFILES) $(srcdir)/POTFILES.in
 	      $(top_srcdir)/$$file; \
 	    echo $(top_srcdir)/$$gladestr  >> POTFILES-RHL; \
 	  else \
-  	    echo $(top_srcdir)/$$file  >> POTFILES-RHL; \
+	    echo $(top_srcdir)/$$file  >> POTFILES-RHL; \
 	  fi; \
 	done
 
@@ -167,7 +169,7 @@ mostlyclean:
 clean: mostlyclean
 
 distclean: clean
-	rm -f Makefile Makefile.in POTFILES-RHL *.mo
+	rm -f Makefile Makefile.in POTFILES-RHL *.mo po2tbl.sed  POTFILES  redhat-config-network.pot
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
@@ -175,10 +177,12 @@ maintainer-clean: distclean
 	rm -f $(GMOFILES)
 
 distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
 dist distdir:
-	$(MAKE) findpy
+#	$(MAKE) findpy
 	$(MAKE) update-po
 	@$(MAKE) dist2
+
 # This is a separate target because 'update-po' must be executed before.
 dist2: $(DISTFILES)
 	dists="$(DISTFILES)"; \

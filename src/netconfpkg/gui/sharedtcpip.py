@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
@@ -18,7 +18,7 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 
 from editadress import editAdressDialog
-from netconfpkg.NCDeviceList import *
+from netconfpkg import *
 import sys, traceback
 from gtk import TRUE
 from gtk import FALSE
@@ -40,14 +40,16 @@ BOOTP=1
 DIALUP=2
 
 def on_ipAutomaticRadio_toggled(widget, xml):
-    xml.get_widget('ipProtocolOmenu').set_sensitive(widget.active)
-    xml.get_widget('dhcpSettingFrame').set_sensitive(widget.active)
-    xml.get_widget('ipSettingFrame').set_sensitive(not widget.active)
+    active = widget.get_active()
+    xml.get_widget('ipProtocolOmenu').set_sensitive(active)
+    xml.get_widget('dhcpSettingFrame').set_sensitive(active)
+    xml.get_widget('ipSettingFrame').set_sensitive(not active)
 
 def on_ipStaticRadio_toggled(widget, xml):
-    xml.get_widget('ipProtocolOmenu').set_sensitive(not widget.active)
-    xml.get_widget('dhcpSettingFrame').set_sensitive(not widget.active)
-    xml.get_widget('ipSettingFrame').set_sensitive(widget.active)
+    active = widget.get_active()
+    xml.get_widget('ipProtocolOmenu').set_sensitive(not active)
+    xml.get_widget('dhcpSettingFrame').set_sensitive(not active)
+    xml.get_widget('ipSettingFrame').set_sensitive(active)
 
 def dhcp_init (xml, device):
     xml.signal_autoconnect(
@@ -120,12 +122,13 @@ def dhcp_dehydrate (xml, device):
         device.Hostname = xml.get_widget('hostnameEntry').get_text()
         device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
     else:
-        device.BootProto = 'static'
+        device.BootProto = 'none'
         device.IP = xml.get_widget('ipAddressEntry').get_text()
         device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
         device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
-        device.Hostname = ''
-        device.AutoDNS = FALSE
+        hname = xml.get_widget('hostnameEntry').get_text()
+        if hname != None and hname != '':
+            device.Hostname = hname
 
 ###
 ### ROUTES
@@ -249,15 +252,15 @@ def route_dehydrate(xml, device):
 
 
 def on_hardwareAliasesToggle_toggled(widget, xml, device):
-    xml.get_widget("hardwareAliasesSpin").set_sensitive (widget.active)
+    xml.get_widget("hardwareAliasesSpin").set_sensitive (widget.get_active())
 
 def on_hardwareMACToggle_toggled(widget, xml, device):
-    xml.get_widget("hardwareMACEntry").set_sensitive (widget.active)
-    xml.get_widget("hardwareProbeButton").set_sensitive (widget.active)
+    xml.get_widget("hardwareMACEntry").set_sensitive (widget.get_active())
+    xml.get_widget("hardwareProbeButton").set_sensitive (widget.get_active())
 
 def on_hardwareProbeButton_clicked(widget, xml, device):
     omenu = xml.get_widget("hardwareDeviceOmenu")
-    hw = omenu.children()[0].get()
+    hw = omenu.get_children()[0].get()
     device = string.split(hw)[0]
     try: hwaddr = ethtool.get_hwaddr(device) 
     except IOError, err:
@@ -283,14 +286,14 @@ def hardware_init(xml, device):
     xml.get_widget("hardwareTable").show()
 
 def hardware_hydrate(xml, device):
-    hwlist = NCHardwareList.getHardwareList()
+    hwlist = getHardwareList()
     (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Device)
     omenu = xml.get_widget("hardwareDeviceOmenu")
     omenu.remove_menu()
-    menu = gtk.GtkMenu()
+    menu = gtk.Menu()
     history = 0
     for i in range (0, len (hwdesc)):
-        item = gtk.GtkMenuItem (hwdesc[i])
+        item = gtk.MenuItem (hwdesc[i])
         item.show()
         menu.append (item)
         if hwdesc[i] == hwcurr:
@@ -323,7 +326,7 @@ def hardware_hydrate(xml, device):
 
 def hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hardwareDeviceOmenu")
-    hw = omenu.children()[0].get()
+    hw = omenu.get_child().get_label()
     device.Device = string.split(hw)[0]
     if xml.get_widget("hardwareAliasesToggle").get_active():
         device.Alias = xml.get_widget("hardwareAliasesSpin").get_value_as_int()
@@ -335,19 +338,18 @@ def hardware_dehydrate(xml, device):
         device.HardwareAddress = None
 
 
-
 def dsl_hardware_init(xml, device):
     pass
 
 def dsl_hardware_hydrate(xml, device):
-    hwlist = NCHardwareList.getHardwareList()
+    hwlist = getHardwareList()
     (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Dialup.EthDevice)
     omenu = xml.get_widget("hardwareDeviceOmenu")
     omenu.remove_menu()
-    menu = gtk.GtkMenu()
+    menu = gtk.Menu()
     history = 0
     for i in range (0, len (hwdesc)):
-        item = gtk.GtkMenuItem (hwdesc[i])
+        item = gtk.MenuItem (hwdesc[i])
         item.show()
         menu.append (item)
         if hwdesc[i] == hwcurr:
@@ -360,11 +362,11 @@ def dsl_hardware_hydrate(xml, device):
 
 def dsl_hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hardwareDeviceOmenu")
-    hw = omenu.children()[0].get()
+    hw = omenu.get_child().get_label()
     device.Dialup.EthDevice = string.split(hw)[0]
 
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    xml = libglade.GladeXML('sharedtcpip.glade', None, domain=GUI_functions.PROGNAME)
+    xml = gtk.glade.XML('sharedtcpip.glade', None, domain=GUI_functions.PROGNAME)
     dhcp_init (xml, None)
     gtk.mainloop ()

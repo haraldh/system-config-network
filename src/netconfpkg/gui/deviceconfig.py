@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import string
@@ -51,7 +51,7 @@ class deviceConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
         self.dialog = self.xml.get_widget("Dialog")
         self.xml.signal_autoconnect(
             {
@@ -65,7 +65,7 @@ class deviceConfigDialog:
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
         GUI_functions.load_icon("network.xpm", self.dialog)
-        self.dialog.set_close(TRUE)
+        #
 
         self.hydrate()
 
@@ -78,7 +78,7 @@ class deviceConfigDialog:
         entry.emit_stop_by_name('insert_text')
 
     def on_generic_clist_button_press_event(self, clist, event, func):
-        if event.type == GDK._2BUTTON_PRESS:
+        if event.type == gtk.gdk._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
                 id = clist.signal_connect("button_release_event",

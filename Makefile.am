@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign 1.4
 
 SUBDIRS = doc src po
 
-EXTRA_DIST= redhat-config-network.spec neat.desktop neat.console neat.pam internet-druid.console internet-druid.desktop neat-control.desktop 
+EXTRA_DIST= redhat-config-network.spec neat.desktop neat.console neat.pam internet-druid.console internet-druid.desktop neat-control.desktop pycheckrc
 
 #neatconsoledir=$(sysconfdir)/security/console.apps/neat
 #neatconsole_DATA=neat.console 
@@ -40,6 +40,19 @@ install-data-local:
 		$(INSTALL_DATA) $(srcdir)/internet-druid.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
+	done
+
+uninstall-local:
+	for i in neat redhat-config-network redhat-config-network-cmd; do \
+		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
+		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
+		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
+	done
+
+	for i in internet-druid redhat-config-network-druid; do \
+		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
+		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
+		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
 changelog:

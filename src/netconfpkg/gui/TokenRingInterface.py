@@ -19,17 +19,12 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
-from netconfpkg import NCDeviceList
-from netconfpkg import NCDevice
-from netconfpkg import NCProfileList
-import ethtool
+from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 from TokenRingHardwareDruid import tokenringHardware
@@ -47,7 +42,7 @@ class TokenRingInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=PROGNAME)
 
         glade_file = 'TokenRingInterfaceDruid.glade'
@@ -57,7 +52,7 @@ class TokenRingInterface(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
         self.xml.signal_autoconnect(
             { "on_hostname_config_page_back" : self.on_hostname_config_page_back,
               "on_hostname_config_page_next" : self.on_hostname_config_page_next,
@@ -93,7 +88,7 @@ class TokenRingInterface(InterfaceCreator):
 
         self.druids = []
         self.druid = self.xml.get_widget('druid')
-        for i in self.druid.children():
+        for i in self.druid.get_children():
             self.druid.remove(i)
             self.druids.append(i)
 
@@ -103,9 +98,9 @@ class TokenRingInterface(InterfaceCreator):
                       + self.druids[1:]
 
         if self.device.Type == CTC or self.device.Type == IUCV:
-            self.xml.get_widget('mtuAlignment').set_flags(GTK.Visible)
-            self.xml.get_widget('mtuLabel').set_flags(GTK.Visible)
-            self.xml.get_widget('mtuEntry').set_flags(GTK.Visible)
+            self.xml.get_widget('mtuAlignment').set_flags(gtk.Visible)
+            self.xml.get_widget('mtuLabel').set_flags(gtk.Visible)
+            self.xml.get_widget('mtuEntry').set_flags(gtk.Visible)
 
     def get_project_name(self):
         return _('Token Ring connection')
@@ -120,7 +115,7 @@ class TokenRingInterface(InterfaceCreator):
         return self.druids
     
     def on_hostname_config_page_back(self, druid_page, druid):
-        childs = self.topdruid.children()
+        childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[2])
         else:
@@ -145,7 +140,7 @@ class TokenRingInterface(InterfaceCreator):
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
         self.hw_sel = clist.selection[0]
-        childs = self.topdruid.children()
+        childs = self.topdruid.get_children()
         
         if (self.hw_sel + 1) == clist.rows:
             self.hwPage = TRUE

@@ -17,7 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from DeviceList import *
+from netconfpkg import Compression_base
 from NC_functions import *
 
 class Compression(Compression_base):

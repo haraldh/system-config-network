@@ -28,7 +28,7 @@ if not "/usr/lib/rhs/python" in sys.path:
 import Conf
 import gettext
 
-import DeviceList
+from netconfpkg import Wireless_base
 from NC_functions import *
 
 ##
@@ -38,7 +38,7 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class Wireless(DeviceList.Wireless_base):
+class Wireless(Wireless_base):
     keydict = { 'Mode' : 'MODE',
                 'EssId' : 'ESSID',
                 'Channel' : 'CHANNEL',
@@ -47,7 +47,7 @@ class Wireless(DeviceList.Wireless_base):
                 }
     
     def __init__(self, list = None, parent = None):
-        DeviceList.Wireless_base.__init__(self, list, parent)        
+        Wireless_base.__init__(self, list, parent)        
         
     def load(self, parentConf):
         conf = parentConf

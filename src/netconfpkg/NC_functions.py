@@ -25,8 +25,6 @@ import os.path
 import shutil
 import gettext
 import ConfPAP
-#import gnome
-#import gnome.ui
 
 true = (1==1)
 false = not true
@@ -350,4 +348,15 @@ def rename(src, dst):
 	except EnvironmentError, errstr:
 		generic_error_dialog (_("Error renaming\n%s\nto\n%s: %s!") \
 				      % (src, dst, str(errstr)))
+	
+def get_filepath(file):
+	fn = file
+	if not os.path.exists(fn):
+		fn = NETCONFDIR + file
+	else: return fn
+	
+	if not os.path.exists(fn):
+		return None
+	else: return fn
+	
 	

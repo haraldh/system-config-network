@@ -32,7 +32,6 @@ import sys
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 from string import *
-from regex import *
 from Conf import *
 import re
 import os
@@ -235,7 +234,7 @@ class ConfSMB(Conf):
             else:
                 self.vars[stanza] = ConfSMBSubDict(self, stanza)
                     
-        for i in keys(value):
+        for i in value.keys():
             self.vars[stanza][i] = value[i]
             
     def __delitem__(self, stanza):

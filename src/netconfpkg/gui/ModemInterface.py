@@ -20,17 +20,17 @@
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
+from netconfpkg import *
+from netconfpkg import *
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 import time
 import providerdb
-import libglade
+import gtk.glade
 import DialupDruid
 
 
@@ -45,7 +45,7 @@ class ModemInterface:
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
  
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_Modem_prepare" : self.on_Modem_prepare,
@@ -59,7 +59,7 @@ class ModemInterface:
         self.druids = []
         
         druid = self.xml.get_widget('druid')
-        for I in druid.children():
+        for I in druid.get_children():
             druid.remove(I)
             self.druids.append(I)
 
@@ -97,11 +97,12 @@ class ModemInterface:
 
     def on_Modem_prepare(self, druid_page, druid):
         if not ModemInterface.modemList:
-            dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Modem probing...'))
+            dialog = gtk.Dialog(_('Modem probing...'),
+                                None,
+                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
             dialog.set_border_width(10)
-            vbox = gtk.GtkVBox(1)
-            vbox.add(gtk.GtkLabel(_('Probing for Modems, please wait...')))
-            dialog.add(vbox)
+            label = gtk.Label(_('Probing for Modems, please wait...'))
+            dialog.vbox.pack_start(label, gtk.FALSE)
             dialog.set_position (gtk.WIN_POS_MOUSE)
             dialog.set_modal(TRUE)
             dialog.show_all()
@@ -135,7 +136,7 @@ class ModemInterface:
             self.hw.Modem.DeviceName = '/dev/' + os.path.basename(self.hw.Modem.DeviceName)
         self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
         self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
-        Item = self.xml.get_widget("volumeMenu")["label"]
+        Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):
             self.hw.Modem.ModemVolume = 0
         elif Item == _("Low"):
@@ -149,7 +150,7 @@ class ModemInterface:
         else:
             self.hw.Modem.ModemVolume = 0
  
-        if self.xml.get_widget("toneDialingCB")["active"]:
+        if self.xml.get_widget("toneDialingCB").get_active():
             self.hw.Modem.DialCommand = "ATDT"
         else:
             self.hw.Modem.DialCommand = "ATDP"

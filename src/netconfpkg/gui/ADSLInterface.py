@@ -21,16 +21,15 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import *
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
-from netconfpkg import NCDeviceList
-from netconfpkg import NCDevice
-from netconfpkg import NCProfileList
-#import gnome.ui
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
+from netconfpkg import *
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 from EthernetHardwareDruid import ethernetHardware
@@ -48,7 +47,7 @@ class ADSLInterface(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             { "on_dsl_config_page_back" : self.on_dsl_config_page_back,
               "on_dsl_config_page_next" : self.on_dsl_config_page_next,
@@ -67,7 +66,7 @@ class ADSLInterface(InterfaceCreator):
         self.druids = []
         
         self.druid = self.xml.get_widget('druid')
-        for i in self.druid.children():
+        for i in self.druid.get_children():
             self.druid.remove(i)
             self.druids.append(i)
 

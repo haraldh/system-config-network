@@ -18,18 +18,18 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import string
 import commands
 
-from netconfpkg import NCHardwareList
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
 
@@ -99,11 +99,11 @@ class tokenringConfigDialog(deviceConfigDialog):
             self.device.HardwareAddress = None
 
     def on_aliasSupportCB_toggled(self, check):
-        self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
+        self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
 
     def on_hwAddressCB_toggled(self, check):
-        self.xml.get_widget("hwAddressEntry").set_sensitive(check["active"])
-        self.xml.get_widget("hwProbeButton").set_sensitive(check["active"])
+        self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
+        self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
 
     def on_hwProbeButton_clicked(self, button):
         hwaddr = commands.getoutput("LC_ALL= LANG= /sbin/ip -o link show "+self.device.Device+" | sed 's/.*link\/ether \([[:alnum:]:]*\).*/\\1/'")

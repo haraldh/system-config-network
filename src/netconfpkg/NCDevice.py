@@ -26,13 +26,12 @@ import NC_functions
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-import FCNTL
 import Conf
 import ConfSMB
 import NCHardwareList
 from NC_functions import *
 from NC_functions import _
-import DeviceList
+from netconfpkg import Device_base
 import NCDialup
 import NCCipe
 
@@ -70,7 +69,7 @@ class ConfRoute(Conf.ConfShellVar):
         Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name + '.route')
         self.chmod(0600)
 
-class Device(DeviceList.Device_base):
+class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
                 'Name' : 'NAME',
                 'OnBoot' : 'ONBOOT',
@@ -90,8 +89,24 @@ class Device(DeviceList.Device_base):
                     }
         
     def __init__(self, list = None, parent = None):
-        DeviceList.Device_base.__init__(self, list, parent)        
+        Device_base.__init__(self, list, parent)        
         self.oldname = None
+
+#     def __str__(self):
+#         if self.Alias != None:
+#             return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#                                           self.Alias)
+#         else:
+#             return "Device %s (%s)" % (self.DeviceId, self.Device)
+
+#     def __repr__(self):
+#         if self.Alias != None:
+#             return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#                                       self.Alias)
+#         else:
+#             return "Device %s (%s)" % (self.DeviceId, self.Device)
+
+            
 
     def createDialup(self):
         if self.Type:
@@ -118,7 +133,7 @@ class Device(DeviceList.Device_base):
     def createCipe(self):
         if self.Type:
             if self.Type == CIPE:
-                DeviceList.Device_base.createCipe(self)
+                Device_base.createCipe(self)
             else: self.Cipe = None
                 
             return self.Cipe
@@ -129,7 +144,7 @@ class Device(DeviceList.Device_base):
     def createWireless(self):
         if self.Type:
             if self.Type == WIRELESS:
-                DeviceList.Device_base.createWireless(self)
+                Device_base.createWireless(self)
             else: self.Wireless = None
                 
             return self.Wireless

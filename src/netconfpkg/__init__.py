@@ -21,10 +21,20 @@
 # dirty hack but does the job(tm). It basically finds all .py files in the
 # package directory and imports from all found files (except __init__.py that
 # is) ;). Nice for plugin mechanism.
+import netconfpkg
+
+from genClass import GenClass_read_classfile
+for idl_file in [ "DeviceList.idl",
+                  "HardwareList.idl",
+                  "ProfileList.idl"]:
+    GenClass_read_classfile(__path__[0] + "/" + idl_file, mod = netconfpkg)
+
 
 import os
 files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
 
-for i in files:
-    cmd = "from " + i + " import *"
+for _i in files:
+    cmd = "from " + _i + " import *"
     exec cmd
+    #print _i
+    #print Device

@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
@@ -48,7 +48,7 @@ class deviceTypeDialog:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -97,9 +97,9 @@ class deviceTypeDialog:
         
         omenu = self.xml.get_widget('deviceTypeOption')
         omenu.remove_menu ()
-        menu = gtk.GtkMenu ()
+        menu = gtk.Menu ()
         for device_name in devicetypes:
-            menu_item = gtk.GtkMenuItem (device_name)
+            menu_item = gtk.MenuItem (device_name)
             menu_item.set_data ("device", device_name)
             menu_item.show ()
             menu.append (menu_item)
@@ -107,7 +107,7 @@ class deviceTypeDialog:
         omenu.set_menu (menu)
         omenu.grab_focus ()
         self.hydrate()
-        self.dialog.set_close(TRUE)
+        
 
     def hydrate(self):
         pass
@@ -119,7 +119,6 @@ class deviceTypeDialog:
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        #self.device.commit()
     
     def on_cancelButton_clicked(self, button):
         self.device.rollback()

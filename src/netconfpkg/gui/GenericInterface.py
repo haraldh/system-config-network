@@ -19,19 +19,13 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
-from netconfpkg import NCHardwareList
-from netconfpkg import NCisdnhardware
-from netconfpkg import NCDeviceList
-from netconfpkg import NCDevice
-from netconfpkg import NCProfileList
-import ethtool
+from netconfpkg import *
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui import *
-#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 from EthernetHardwareDruid import ethernetHardware
@@ -50,7 +44,7 @@ class GenericInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=PROGNAME)
 
         glade_file = 'GenericInterfaceDruid.glade'
@@ -60,7 +54,7 @@ class GenericInterface(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
         self.xml.signal_autoconnect(
             { "on_finish_page_finish" : self.on_finish_page_finish,
               "on_finish_page_prepare" : self.on_finish_page_prepare,
@@ -80,7 +74,7 @@ class GenericInterface(InterfaceCreator):
 
         self.druids = []
         self.druid = self.xml.get_widget('druid')
-        for i in self.druid.children():
+        for i in self.druid.get_children():
             self.druid.remove(i)
 
             self.druids.append(i)
@@ -163,7 +157,7 @@ class GenericInterface(InterfaceCreator):
 
         button = self.editDevice(self.device)
 
-        if button == 0:        
+        if button == gtk.RESPONSE_YES:        
             i = self.devicelist.addDevice()
             self.devicelist[i].apply(self.device)
             self.devicelist[i].commit()
@@ -173,7 +167,7 @@ class GenericInterface(InterfaceCreator):
                 prof.ActiveDevices.append(self.device.DeviceId)
                 break
 
-        self.profilelist.commit()
-        self.devicelist.commit()
+            self.profilelist.commit()
+            self.devicelist.commit()
         
         gtk.mainquit()

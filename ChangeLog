@@ -1,4 +1,84 @@
+2002-05-20  frolix68  <frolix68@redhat.com>
+
+	* po/el.po: initial try
+
+2002-05-17  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/genClass.py:
+	improved genClass
+
+2002-05-16  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconfpkg/gui/NewInterface.py:
+	Reenable Wireless
+
+	* src/netconf-tui.py:
+	Fix occasional traceback.
+
+2002-05-16  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/genClass.py:
+	check for == None and != None, because of damn UserList
+
+	* src/netconfpkg/gui/edithosts.py:
+	commit() AliasList
+
+2002-05-15  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconf-tui.py:
+	Fix traceback (check for existance of string before lowercasing) #64512
+
+2002-05-15  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/genClass.py:
+	*** empty log message ***
+
+2002-05-14  morais  <morais@redhat.com>
+
+	* po/pt.po: post-7.3 bugfixes
+
+2002-05-13  morais  <morais@redhat.com>
+
+	* po/pt.po:
+	*** empty log message ***
+
+2002-05-13  James Hashida  <khashida@redhat.com>
+
+	* po/ja.po: Updated translation.
+
+	* po/ja.po: new update
+
+2002-05-13  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po: Translation updated.
+
+2002-05-08  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.Big5.po, po/zh_TW.po:
+	Updated 1 message translation.
+
+2002-05-08  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.GB2312.po: updated.
+
+2002-05-08  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/editadress.glade, src/netconfpkg/gui/editdomain.glade, src/netconfpkg/gui/edithosts.glade, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernethardware.glade, src/netconfpkg/gui/hardwaretype.glade, src/netconfpkg/gui/isdnhardware.glade, src/netconfpkg/gui/modemconfig.glade, src/netconfpkg/gui/neat-control-debugdialog.glade, src/netconfpkg/gui/neat-control-monitordialog.glade, src/netconfpkg/gui/neat-control-propertiesdialog.glade, src/netconfpkg/gui/neat-control-statusdialog.glade, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/tokenringhardware.glade, src/netconfpkg/gui/wirelessconfig.glade, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po, src/glade-strings.c, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/CipeInterface.py, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.glade, src/netconfpkg/gui/NewInterfaceDruid.glade, ChangeLog, doc/network-config-wireless.html, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/POTFILES.in:
+	merged 1.0 branch
+
 2002-05-07  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/cipeconfig.py:
+	more cipe checks
+
+	* src/netconfpkg/gui/NewInterfaceDruid.glade:
+	make dialog invisible at beginning
+
+	* src/netconfpkg/gui/CipeInterface.py:
+	added check for secret key
+
+	* src/netconfpkg/gui/modemconfig.glade, src/netconfpkg/gui/neat-control-debugdialog.glade, src/netconfpkg/gui/neat-control-monitordialog.glade, src/netconfpkg/gui/neat-control-propertiesdialog.glade, src/netconfpkg/gui/neat-control-statusdialog.glade, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/tcpipdialog.glade, src/netconfpkg/gui/tokenringconfig.glade, src/netconfpkg/gui/tokenringhardware.glade, src/netconfpkg/gui/wirelessconfig.glade, src/netconfpkg/gui/chooseprovider.glade, src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/ctcconfig.glade, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.glade, src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/editadress.glade, src/netconfpkg/gui/editdomain.glade, src/netconfpkg/gui/edithosts.glade, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernethardware.glade, src/netconfpkg/gui/hardwaretype.glade, src/netconfpkg/gui/isdnhardware.glade:
+	make dialogs invisible at glade loading time. better for adding widgets.
 
 	* doc/figs/networkconfig/neat-wireless.png, doc/figs/networkconfig/neat-wireless-settings.png, network-config-wireless.html:
 	readded wireless doc

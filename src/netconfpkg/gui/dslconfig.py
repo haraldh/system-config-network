@@ -18,18 +18,18 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import string
 import sharedtcpip
 
-from netconfpkg import NCHardwareList
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from deviceconfig import deviceConfigDialog
@@ -44,7 +44,7 @@ class dslConfigDialog(deviceConfigDialog):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=GUI_functions.PROGNAME)
 
         glade_file = "dslconfig.glade"

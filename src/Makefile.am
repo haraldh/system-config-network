@@ -59,13 +59,25 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 
+uninstall-local:
+	rm -fr $(DESTDIR)$(pkgdatadir)
+	rm -f  $(DESTDIR)$(sbindir)/isdnup
+	rm -f  $(DESTDIR)$(bindir)/neat-control 
+	rm -f  $(DESTDIR)$(bindir)/redhat-control-network
+	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network
+	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-cmd
+	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-druid
+	rm -f  $(DESTDIR)$(sbindir)/neat
+	rm -f  $(DESTDIR)$(sbindir)/neat-tui
+	rm -f  $(DESTDIR)$(sbindir)/neat-druid
+
 docs:
 	cd $(srcdir)
 	python @PYDOC@ -w $(PYTHON_FILES)
 	mv *.html doc
 
 pycheck:
-	pychecker $(PYTHON_FILES)
+	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
 
 clean:
 	rm -f *.pyo *.pyc

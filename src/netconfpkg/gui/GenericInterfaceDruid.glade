@@ -1,60 +1,41 @@
-<?xml version="1.0"?>
-<GTK-Interface>
+<?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >
 
-<project>
-  <name>netconf</name>
-  <program_name>netconf</program_name>
-  <directory></directory>
-  <source_directory>src</source_directory>
-  <pixmaps_directory></pixmaps_directory>
-  <language>C</language>
-  <gnome_support>True</gnome_support>
-  <gettext_support>True</gettext_support>
-</project>
+<glade-interface>
+  <requires lib="gnome" />
 
-<widget>
-  <class>GtkWindow</class>
-  <name>window1</name>
-  <title>window1</title>
-  <type>GTK_WINDOW_TOPLEVEL</type>
-  <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
-  <allow_shrink>False</allow_shrink>
-  <allow_grow>True</allow_grow>
-  <auto_shrink>False</auto_shrink>
+  <widget class="GtkWindow" id="window1">
+    <property name="title" translatable="yes">window1</property>
+    <property name="type">GTK_WINDOW_TOPLEVEL</property>
+    <property name="modal">no</property>
+    <property name="allow_shrink">no</property>
+    <property name="allow_grow">yes</property>
+    <property name="window-position">GTK_WIN_POS_NONE</property>
+    <property name="visible">yes</property>
 
-  <widget>
-    <class>GnomeDruid</class>
-    <name>druid</name>
+    <child>
+      <widget class="GnomeDruid" id="druid">
+        <property name="visible">yes</property>
 
-    <widget>
-      <class>GnomeDruidPageFinish</class>
-      <name>finish_page</name>
-      <signal>
-	<name>finish</name>
-	<handler>on_finish_page_finish</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:08:19 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>prepare</name>
-	<handler>on_finish_page_prepare</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:08:38 GMT</last_modification_time>
-      </signal>
-      <signal>
-	<name>back</name>
-	<handler>on_finish_page_back</handler>
-	<last_modification_time>Sat, 21 Jul 2001 14:08:45 GMT</last_modification_time>
-      </signal>
-      <title>Create Ethernet Device</title>
-      <text></text>
-      <background_color>25,25,112</background_color>
-      <logo_background_color>24,24,112</logo_background_color>
-      <textbox_color>255,255,255</textbox_color>
-      <text_color>0,0,0</text_color>
-      <title_color>255,255,255</title_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
-    </widget>
+        <child>
+          <widget class="GnomeDruidPageEdge" id="finish_page">
+            <property name="title" translatable="yes">Create Ethernet Device</property>
+            <property name="text" translatable="yes"></property>
+            <property name="logo_image">/usr/share/redhat-config-network/pixmaps/network.xpm</property>
+            <property name="position">GNOME_EDGE_FINISH</property>
+            <property name="visible">yes</property>
+            <property name="title_color">#ffffff</property>
+            <property name="text_color">#000000</property>
+            <property name="background_color">#191970</property>
+            <property name="logo_background_color">#181870</property>
+            <property name="textbox_color">#ffffff</property>
+
+            <signal name="finish" handler="on_finish_page_finish" />
+            <signal name="prepare" handler="on_finish_page_prepare" />
+            <signal name="back" handler="on_finish_page_back" />
+          </widget>
+        </child>
+      </widget>
+    </child>
   </widget>
-</widget>
-
-</GTK-Interface>
+</glade-interface>

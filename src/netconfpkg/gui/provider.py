@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
@@ -60,7 +60,7 @@ class providerDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.dbtree = self.xml.get_widget("providerTree")
@@ -80,7 +80,7 @@ class providerDialog:
         self.okButton.set_sensitive(FALSE)
         self.setup_provider_db()
         load_icon("network.xpm", self.dialog)
-        self.dialog.set_close(TRUE)
+        
 
     def on_Dialog_delete_event(self, *args):
         pass
@@ -96,7 +96,7 @@ class providerDialog:
         self.device.commit()
         
     def on_providerTree_tree_select_row(self, ctree, node, column):
-        if len(node.children) == 0:
+        if len(node.get_children()) == 0:
             try:
                 self.country = ctree.get_node_info(node.parent.parent)[0]
                 self.city = ctree.get_node_info(node.parent)[0]
@@ -109,8 +109,8 @@ class providerDialog:
         self.okButton.set_sensitive(FALSE)
 
     def on_providerTree_button_press_event(self, clist, event, func):
-        if event.type == GDK._2BUTTON_PRESS:
-            if self.okButton["sensitive"]:
+        if event.type == gtk.gdk._2BUTTON_PRESS:
+            if self.okButton.get_property("sensitive"):
                 info = clist.get_selection_info(event.x, event.y)
                 if info != None:
                     id = clist.signal_connect("button_release_event",
@@ -119,7 +119,7 @@ class providerDialog:
                     clist.set_data("signal_id", id)
 
     def on_providerTree_button_release_event(self, clist, event, func):
-        if self.okButton["sensitive"]:
+        if self.okButton.get_property("sensitive"):
             id = clist.get_data ("signal_id")
             clist.disconnect (id)
             clist.remove_data ("signal_id")

@@ -151,10 +151,8 @@ VersionMismatch = 'Conf.VersionMismatch'
 SystemFull      = 'conf.SystemFull'
 
 from string import *
-import regex
+from UserDict import UserDict
 import re
-import string
-import regsub
 import os
 
 # Implementation:
@@ -224,7 +222,8 @@ class Conf:
 	    seps = '['+self.separators+']+'
 	else:
 	    seps = '['+self.separators+']'
-        return regsub.split(self.lines[self.line], seps)
+        #print "re.split(%s, %s) = " % (self.lines[self.line], seps) + str(re.split(seps, self.lines[self.line]))
+        return re.split(seps, self.lines[self.line])
     def setfields(self, list):
 	# replaces current line with line built from list
 	# appends if off the end of the array
@@ -237,8 +236,8 @@ class Conf:
         self.insertline(joinfields(linelist, self.separator))
     def sedline(self, pat, repl):
         if self.line < len(self.lines):
-            self.lines[self.line] = regsub.gsub(pat, repl, \
-                                                self.lines[self.line])
+            self.lines[self.line] = re.sub(pat, repl, \
+                                           self.lines[self.line])
     def changefield(self, fieldno, fieldtext):
         fields = self.getfields()
         fields[fieldno:fieldno+1] = [fieldtext]
@@ -454,7 +453,7 @@ class ConfEHosts(Conf):
         # set first (should be only) instance to values in list value
         place=self.tell()
         self.rewind()
-        if self.findnextline('^' + regsub.gsub('\.', '\\\\.', varname) +
+        if self.findnextline('^' + re.sub('\.', '\\\\.', varname) +
                              '[' + self.separators + ']+'):
             self.deleteline()
 	    self.insertlinelist([ varname, value[0],
@@ -469,7 +468,7 @@ class ConfEHosts(Conf):
         # delete *every* instance...
         self.rewind()
         while self.findnextline('^[' + self.separators + ']*' +
-                                regsub.gsub('\.', '\\\\.', varname) +
+                                re.sub('\.', '\\\\.', varname) +
 				'[' + self.separators + ']'):
             self.deleteline()
         del self.vars[varname]
@@ -717,8 +716,8 @@ class ConfChat(Conf):
 	# create self.lines for Conf.write...
 	self.lines = []
 	for (p,q) in self.list:
-	    p = regsub.gsub("'", "\\'", p)
-	    q = regsub.gsub("'", "\\'", q)
+	    p = re.sub("'", "\\'", p)
+	    q = re.sub("'", "\\'", q)
 	    self.lines.append("'"+p+"' '"+q+"'")
 	Conf.write(self)
 
@@ -859,6 +858,57 @@ class ConfDIP:
         self.file.close()
 
 
+class odict(UserDict):
+    def __init__(self, dict = None):
+        self._keys = []
+        UserDict.__init__(self, dict)
+
+    def __delitem__(self, key):
+        UserDict.__delitem__(self, key)
+        self._keys.remove(key)
+
+    def __setitem__(self, key, item):
+        UserDict.__setitem__(self, key, item)
+        if key not in self._keys: self._keys.append(key)
+
+    def clear(self):
+        UserDict.clear(self)
+        self._keys = []
+
+    def copy(self):
+        dict = UserDict.copy(self)
+        dict._keys = self._keys[:]
+        return dict
+
+    def items(self):
+        return zip(self._keys, self.values())
+
+    def keys(self):
+        return self._keys
+
+    def popitem(self):
+        try:
+            key = self._keys[-1]
+        except IndexError:
+            raise KeyError('dictionary is empty')
+
+        val = self[key]
+        del self[key]
+
+        return (key, val)
+
+    def setdefault(self, key, failobj = None):
+        UserDict.setdefault(self, key, failobj)
+        if key not in self._keys: self._keys.append(key)
+
+    def update(self, dict):
+        UserDict.update(self, dict)
+        for key in dict.keys():
+            if key not in self._keys: self._keys.append(key)
+
+    def values(self):
+        return map(self.get, self._keys)
+
 # ConfModules(Conf)
 #  This reads /etc/modules.conf into a dictionary keyed on device type,
 #  holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
@@ -875,7 +925,7 @@ class ConfModules(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
-        self.vars = {}
+        self.vars = odict()
 	keys = ('alias', 'options', 'post-install', 'pre-remove')
         self.rewind()
         while self.findnextcodeline():
@@ -890,7 +940,7 @@ class ConfModules(Conf):
 		    var[1:2] = []
 	    if len(var) > 2 and var[0] in keys:
 		if not self.vars.has_key(var[1]):
-		    self.vars[var[1]] = {'alias':'', 'options':{}, 'post-install':[], 'pre-remove':[], 'keep':0}
+		    self.vars[var[1]] = odict({'alias':'', 'options':odict(), 'post-install':[], 'pre-remove':[], 'keep':0})
 		if not cmp(var[0], 'alias'):
 		    self.vars[var[1]]['alias'] = var[2]
 		elif not cmp(var[0], 'options'):
@@ -906,14 +956,14 @@ class ConfModules(Conf):
             self.nextline()
         self.rewind()
     def splitoptlist(self, optlist):
-	dict = {}
+	dict = odict()
 	for opt in optlist:
 	    optup = self.splitopt(opt)
 	    if optup:
 		dict[optup[0]] = optup[1]
 	return dict
     def splitopt(self, opt):
-	eq = string.find(opt, '=')
+	eq = find(opt, '=')
 	if eq > 0:
 	    return (opt[:eq], opt[eq+1:])
 	else:
@@ -927,7 +977,8 @@ class ConfModules(Conf):
         if self.vars.has_key(varname):
             return self.vars[varname]
         else:
-            return {}
+            return odict()
+        
     def __setitem__(self, varname, value):
         # set *every* instance (should only be one, but...) to avoid surprises
         place=self.tell()
@@ -1027,9 +1078,9 @@ class ConfModInfo(Conf):
 			self.vars[curdev]['typealias'] = fields[2]
 		    lookingfor = description
 		elif lookingfor == description:
-		    self.vars[curdev]['description'] = regsub.gsub(
-			'^"', '', regsub.gsub(
-			    '^['+self.separators+']', '', regsub.gsub(
+		    self.vars[curdev]['description'] = re.sub(
+			'^"', '', re.sub(
+			    '^['+self.separators+']', '', re.sub(
 				'"['+self.separators+']*$', '', line)))
 		    lookingfor = arguments
 		elif lookingfor == arguments:
@@ -1038,17 +1089,17 @@ class ConfModInfo(Conf):
 		    # get argument name (first "field" is null again)
 		    thislist = []
 		    # point at first character of argument description
-		    p = string.find(line, '"')
+		    p = find(line, '"')
 		    while p != -1 and p < len(line):
-			q = string.find(line[p+1:], '"')
+			q = find(line[p+1:], '"')
 			# deal with escaped quotes (\")
 			while q != -1 and not cmp(line[p+q-1], '\\'):
-			    q = string.find(line[p+q+1:], '"')
+			    q = find(line[p+q+1:], '"')
 			if q == -1:
 			    break
 			thislist.append(line[p+1:p+q+1])
 			# advance to beginning of next string, if any
-			r = string.find(line[p+q+2:], '"')
+			r = find(line[p+q+2:], '"')
 			if r >= 0:
 			    p = p+q+2+r
 			else:
@@ -1065,7 +1116,7 @@ class ConfModInfo(Conf):
         	line = self.getline()
 		fields = self.getfields()
 		# pull out module and linetype from the first field...
-        	(module, linetype) = regsub.split(fields[0],'[ \t]+')
+        	(module, linetype) = re.split('[ \t]+', fields[0])
 		if not cmp(linetype, 'type'):
 		    pass
 		elif not cmp(linetype, 'alias'):
@@ -1221,14 +1272,14 @@ class _passwd_reflector:
 	self.pw = pw
 	self.user = user
     def setgecos(self, oldgecos, fieldnum, value):
-	gecosfields = string.split(oldgecos, ',')
+	gecosfields = split(oldgecos, ',')
 	# make sure that we have enough gecos fields
 	for i in range(5-len(gecosfields)):
 	    gecosfields.append('')
 	gecosfields[fieldnum] = value
-	return string.join(gecosfields[0:5], ',')
+	return join(gecosfields[0:5], ',')
     def getgecos(self, oldgecos, fieldnum):
-	gecosfields = string.split(oldgecos, ',')
+	gecosfields = split(oldgecos, ',')
 	# make sure that we have enough gecos fields
 	for i in range(5-len(gecosfields)):
 	    gecosfields.append('')
@@ -1308,7 +1359,7 @@ class ConfPasswd(ConfPwO):
 	ConfPwO.addentry(self, username, [username, password, uid, gid, gecos, homedir, shell])
     def addfullentry(self, username, password, uid, gid, fullname, office,
 	officephone, homephone, homedir, shell):
-	self.addentry(username, password, uid, gid, string.join([fullname,
+	self.addentry(username, password, uid, gid, join([fullname,
 	    office, officephone, homephone, ''], ','), homedir, shell)
     def getfreeuid(self):
 	try:
@@ -1607,91 +1658,6 @@ class _unix_reflector:
 	else:
 	    raise AttributeError, name
 
-# ConfPAP(Conf):
-#  Yet another dictionary, this one for /etc/ppp/pap-secrets
-#  The key is the remotename, the value is a list of
-#  [<user>, <secret>] lists
-class ConfPAP(Conf):
-    def __init__(self):
-	if not os.path.isfile('/etc/ppp/pap-secrets'):
-            file = open('/etc/ppp/pap-secrets', 'w', -1)
-	    os.chmod('/etc/ppp/pap-secrets', 0600)
-            file.write('# PAP secrets file\n' +
-		'# remotenames ppp<n> are reserved for netcfg\n' +
-		'#\n' +
-		'# Format:\n' +
-		'#name\tremote\tsecret\n')
-            file.close()
-	Conf.__init__(self, '/etc/ppp/pap-secrets', '#', '\t ', '\t')
-    def read(self):
-        Conf.read(self)
-        self.initvars()
-    def initvars(self):
-        self.vars = {}
-        self.rewind()
-        while self.findnextcodeline():
-            var = self.getfields()
-	    if len(var) == 3:
-		if not self.vars.has_key(var[1]):
-		    self.vars[var[1]] = [[var[0], var[2]]]
-		else:
-		    self.vars[var[1]].append([var[0], var[2]])
-            self.nextline()
-        self.rewind()
-    def __getitem__(self, varname):
-        if self.vars.has_key(varname):
-            return self.vars[varname]
-        else:
-            return [[]]
-    def __setitem__(self, varname, value):
-	if len(value):
-            self.vars[varname] = value
-	self.rewind()
-	for pair in value:
-	    if not self.findlinewithfield(2, varname):
-		self.fsf()
-	    self.setfields([pair[0], varname, pair[1]])
-	    self.nextline()
-	while self.findlinewithfield(2, varname):
-	    self.deleteline()
-    def __delitem__(self, varname):
-        del self.vars[varname]
-	self.rewind()
-	while self.findlinewithfield(2, varname):
-	    self.deleteline()
-    def keys(self):
-	# no need to return list in order here, I think.
-	return self.vars.keys()
-    def has_key(self, key):
-	return self.vars.has_key(key)
-
-# ConfCHAP(ConfPAP):
-#  Yet another dictionary, this one for /etc/ppp/chap-secrets
-#  The key is the remotename, the value is a list of
-#  [<local>, <secret>] lists
-class ConfCHAP(ConfPAP):
-    def __init__(self):
-	if not os.path.isfile('/etc/ppp/chap-secrets'):
-            file = open('/etc/ppp/chap-secrets', 'w', -1)
-	    os.chmod('/etc/ppp/chap-secrets', 0600)
-            file.write('# CHAP secrets file\n' +
-		'# remotenames ppp<n> are reserved for netcfg\n' +
-		'#\n' +
-		'# Format:\n' +
-		'#local\tremote\tsecret\n')
-            file.close()
-	Conf.__init__(self, '/etc/ppp/chap-secrets', '#', '\t ', '\t')
-
-# ConfSecrets:
-#  Has-a ConfPAP and ConfCHAP
-#  Yet another dictionary, which reads from pap-secrets and
-#  chap-secrets, and writes to both when an entry is set.
-#  When conflicts occur while reading, the pap version is
-#  used in preference to the chap version (this is arbitrary).
-class ConfSecrets:
-	# FIXME
-	pass
-
 class ConfSysctl(Conf):
     def __init__(self, filename):
         Conf.__init__(self, filename, commenttype='#',
@@ -1712,8 +1678,8 @@ class ConfSysctl(Conf):
 	    # snip off leading and trailing spaces, which are legal (it's
             # how sysctl(1) prints them) but can be confusing, and tend to
 	    # screw up Python's dictionaries
-	    var[0] = string.strip(var[0])
-	    var[1] = string.strip(var[1])
+	    var[0] = strip(var[0])
+	    var[1] = strip(var[1])
             if self.vars.has_key(var[0]):
                 self.deleteline()
                 self.vars[var[0]] = var[1]
@@ -1730,17 +1696,17 @@ class ConfSysctl(Conf):
 	    # snip off leading and trailing spaces, which are legal (it's
             # how sysctl(1) prints them) but can be confusing, and tend to
 	    # screw up Python's dictionaries
-	    if(string.strip(var[0]) == varname):
-	        while(string.strip(var[0]) == varname):
+	    if(strip(var[0]) == varname):
+	        while(strip(var[0]) == varname):
                     self.deleteline()
                     var = self.getfields()
-                for part in string.split(value, '\n'):
+                for part in split(value, '\n'):
                     self.insertline(varname + ' = ' + part)
                     self.line = self.line + 1
                 foundit = 1
             self.line = self.line + 1
         if(foundit == 0):
-            for part in string.split(value, '\n'):
+            for part in split(value, '\n'):
                 self.lines.append(varname + ' = ' + part)
         self.rewind()
         # re-read the file, sort of

@@ -28,7 +28,7 @@ if not "/usr/lib/rhs/python" in sys.path:
 import Conf
 import gettext
 
-import DeviceList
+from netconfpkg import Dialup_base
 import NCCompression
 import NCHardwareList
 from NC_functions import *
@@ -102,9 +102,9 @@ country_code = {
     _("Yugoslavia") : 381
     }
 
-class Dialup(DeviceList.Dialup_base):
+class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
-        DeviceList.Dialup_base.__init__(self, list, parent)        
+        Dialup_base.__init__(self, list, parent)        
         self.createCompression()
 
 

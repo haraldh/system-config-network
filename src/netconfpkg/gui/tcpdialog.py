@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import re
@@ -53,7 +53,7 @@ class tcpConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None,
+        self.xml = gtk.glade.XML(glade_file, None,
                                      domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
@@ -97,7 +97,7 @@ class tcpConfigDialog:
         self.xml.get_widget('tcpipLabel').set_sensitive(not isCipe)
         if isCipe: notebook.set_page(notebook.page_num(self.xml.get_widget('routingFrame')))
         
-        self.dialog.set_close(TRUE)
+        
 
     def hydrate(self):
         if self.device.DeviceId:
@@ -164,15 +164,15 @@ class tcpConfigDialog:
         #self.device.commit()
     
     def on_ipSettingCB_toggled(self, check):
-        self.xml.get_widget("dynamicConfigComboBox").set_sensitive(check["active"])
-        self.xml.get_widget("ipSettingFrame").set_sensitive(check["active"] != TRUE)
-        if check["active"]:
+        self.xml.get_widget("dynamicConfigComboBox").set_sensitive(check.get_active())
+        self.xml.get_widget("ipSettingFrame").set_sensitive(check.get_active() != TRUE)
+        if check.get_active():
             self.xml.get_widget ("dynamicConfigEntry").grab_focus()
         else:
             self.xml.get_widget ("addressEntry").grab_focus()
 
     def on_defaultRouteCB_toggled(self, check):
-        self.xml.get_widget("networkRouteFrame").set_sensitive(check["active"] != TRUE)
+        self.xml.get_widget("networkRouteFrame").set_sensitive(check.get_active() != TRUE)
 
     def on_routeAddButton_clicked(self, button):
         if self.device.StaticRoutes == None: self.device.createStaticRoutes()

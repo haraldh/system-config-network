@@ -19,12 +19,11 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
-from netconfpkg import NCHardwareList
-#import gnome.ui
+from netconfpkg import *
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import libglade
+import gtk.glade
 import string
 import os
 from netconfpkg import Conf
@@ -40,7 +39,7 @@ class ethernetHardware:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
  
-        self.xml = libglade.GladeXML(glade_file, 'druid',
+        self.xml = gtk.glade.XML(glade_file, 'druid',
                                      domain=PROGNAME)
         self.xml.signal_autoconnect(
             {
@@ -57,7 +56,7 @@ class ethernetHardware:
         self.druids = []
  
         druid = self.xml.get_widget('druid')
-        for I in druid.children():
+        for I in druid.get_children():
             druid.remove(I)
             self.druids.append(I)
             

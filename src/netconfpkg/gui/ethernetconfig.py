@@ -18,12 +18,12 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-import GDK
-import GTK
-import libglade
+
+import gtk
+import gtk.glade
 import signal
 import os
-import GdkImlib
+
 import string
 import gettext
 import string
@@ -31,8 +31,7 @@ import commands
 import sharedtcpip
 import traceback
 import sys
-import ethtool
-from netconfpkg import NCHardwareList
+from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
 
@@ -54,7 +53,7 @@ class ethernetConfigDialog(deviceConfigDialog):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML(glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
                                                  domain=GUI_functions.PROGNAME)
         glade_file = "ethernetconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
@@ -101,11 +100,11 @@ class ethernetConfigDialog(deviceConfigDialog):
         sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
 
     def on_aliasSupportCB_toggled(self, check):
-        self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
+        self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
 
     def on_hwAddressCB_toggled(self, check):
-        self.xml.get_widget("hwAddressEntry").set_sensitive(check["active"])
-        self.xml.get_widget("hwProbeButton").set_sensitive(check["active"])
+        self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
+        self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
 
     def on_hwProbeButton_clicked(self, button):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()

@@ -22,9 +22,11 @@ import os.path
 
 from NC_functions import *
 from NC_functions import _
-from DeviceList import *
+#from netconfpkg.NCDevice import Device
+from netconfpkg import DeviceList_base
 import ConfPAP
 import ConfSMB
+import UserList
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -60,6 +62,7 @@ class DeviceList(DeviceList_base):
         msg = ""
         for dev in devices:
             i = self.addDevice()
+            #print self.data[i]
             self.data[i].load(dev)
             try:
                 pass
@@ -74,6 +77,9 @@ class DeviceList(DeviceList_base):
         
     def test(self):
         pass
+
+    def __repr__(self):
+        return repr(self.__dict__)
     
     def save(self):
         self.commit(changed=false)
@@ -170,6 +176,8 @@ def getDeviceList():
     if DVList == None:
         DVList = DeviceList()
         DVList.load()
+        #print "DVList.load()"
+    #print repr(DVList)
     return DVList
                 
 if __name__ == '__main__':
