@@ -71,6 +71,7 @@ class ProfileList(ProfileList_base):
             if dnsconf.has_key('search'):
                 for ns in dnsconf['search']:
                     sl.append(ns)
+        self.commit()
 
     def save(self):
         devicelist = NCDeviceList.getDeviceList()
@@ -88,6 +89,16 @@ class ProfileList(ProfileList_base):
             os.mkdir(SYSCONFPROFILEDIR)
         except:
             pass
+
+        devlist = os.listdir(OLDSYSCONFDEVICEDIR)
+        for dev in devlist:
+            if dev[:6] != 'ifcfg-':
+                continue
+            if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev):
+                try:
+                    os.unlink(OLDSYSCONFDEVICEDIR+'/'+dev)
+                except:
+                    pass
 
         for prof in self.data:
             try:
@@ -119,9 +130,6 @@ class ProfileList(ProfileList_base):
             dnsconf.write()
             hoconf.write()
 
-            if prof.Active == false and prof.ProfileName != 'default':
-                continue
-
             for devId in prof.ActiveDevices:
                 for dev in devicelist:
                     if dev.DeviceId == devId:
@@ -139,6 +147,13 @@ class ProfileList(ProfileList_base):
 
                 try:
                     os.symlink(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                except:
+                    pass
+
+                if prof.Active == false and prof.ProfileName != 'default':
+                    continue
+
+                try:
                     os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
                 except:
                     print 'Darn, symlinking device '+devName+','+devId+' failed...'
