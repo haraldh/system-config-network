@@ -7,7 +7,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, usermode , alchemist, kudzu
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libglade, pygtk, python, pygnome-libglade
 BuildRequires: alchemist, alchemist-devel, python, libglade-devel
 Obsoletes: isdn-config internet-config netcfg
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -46,6 +46,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Wed Oct 17 2001 Harald Hoyer <harald@redhat.com> 0.9.4-1
+- fixed /etc/hosts
+- fixed pap/chap
+- fixed 'save changes?'
+
 * Tue Oct 16 2001 Than Ngo <than@redhat.com> 0.9.3-1
 - fix internet-druid fails (bug #54192)
 - fix dial on demand problem from some ISDN Provider in German
