@@ -34,10 +34,10 @@ EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES)
 execdir = $(sbindir)
 
 all-local:
-	rm -f netconf
-	rm -f netconf-cmd
-	ln -s netconf.py netconf
-	ln -s netconf.py netconf-cmd
+	rm -f redhat-config-network
+	rm -f redhat-config-network-cmd
+	ln -s netconf.py redhat-config-network
+	ln -s netconf.py redhat-config-network-cmd
 
 pythondir = $(pkgdatadir)
 python_DATA = $(PYTHON_FILES)

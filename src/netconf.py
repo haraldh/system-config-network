@@ -767,7 +767,7 @@ if __name__ == '__main__':
 
     updateNetworkScripts()
 
-    if sys.argv[0][-11:] != 'redhat-config-network-cmd':
+    if sys.argv[0][-4:] != '-cmd':
         window = mainDialog()
         gtk.mainloop()
         sys.exit(0)
