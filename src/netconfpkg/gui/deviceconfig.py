@@ -31,6 +31,7 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import sharedtcpip
 from netconfpkg import nop
 from netconfpkg import NCDeviceList
+from netconfpkg import NCIPsecList
 
 from gtk import TRUE
 from gtk import FALSE
@@ -163,5 +164,5 @@ class deviceConfigDialog:
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 09:07:20 $"
-__version__ = "$Revision: 1.17 $"
+__date__ = "$Date: 2003/08/14 09:31:58 $"
+__version__ = "$Revision: 1.18 $"
