@@ -40,10 +40,8 @@ FALSE=gtk.FALSE
 
 PAGE_DEVICES = 0
 PAGE_HARDWARE = 1
-PAGE_HOSTS = 2
-PAGE_DNS = 3
-
-showprofile = 0
+PAGE_DNS = 2
+PAGE_HOSTS = 3
 
 DEFAULT_PROFILE_NAME=_("Common")
     
@@ -128,6 +126,8 @@ class mainDialog:
             NETCONFDIR + "/pixmaps/connection-ethernet.png")
         self.xml.get_widget ("hosts_pixmap").set_from_file( \
             NETCONFDIR + "/pixmaps/nameresolution_alias.png")
+        self.xml.get_widget ("dns_pixmap").set_from_file( \
+            NETCONFDIR + "/pixmaps/nameresolution_alias.png")
         self.xml.get_widget ("devices_pixmap").set_from_file( \
             NETCONFDIR + "/pixmaps/network.png")
         
@@ -136,10 +136,7 @@ class mainDialog:
         self.dialog.connect("hide", gtk.mainquit)
 
         
-        if showprofile:
-            self.xml.get_widget ("profileMenu").show()
-	else:
-            self.xml.get_widget ("profileMenu").hide()
+        self.xml.get_widget ("profileMenu").show()
             
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
@@ -236,7 +233,7 @@ class mainDialog:
         self.appBar.pop()
 
     def loadDevices(self):
-        self.appBar.push(_("Loading Devices Configuration..."))
+        self.appBar.push(_("Loading Device Configuration..."))
         devicelist = getDeviceList()
         self.appBar.pop()
         
@@ -317,13 +314,12 @@ class mainDialog:
         self.hydrateProfiles()
         self.hydrateDevices()
         self.hydrateHardware()
-        self.checkApply()
 
-    def checkApply(self, changed = -1):
-        if changed == -1:
-            changed = self.changed()
+    def checkApply(self, ch = -1):
+        if ch == -1:
+            ch = self.changed()
         apply_btn = self.xml.get_widget("save")
-        if changed:
+        if ch:
             apply_btn.set_sensitive (TRUE)
         else:
             apply_btn.set_sensitive (FALSE)
@@ -383,6 +379,7 @@ class mainDialog:
                 
             row = row + 1
         self.appBar.pop()
+        self.checkApply()
         
     def hydrateHardware(self):
         self.appBar.push(_("Updating Hardware..."))
@@ -393,6 +390,7 @@ class mainDialog:
         for hw in hardwarelist:
             clist.append([str(hw.Description), str(hw.Type), str(hw.Name)])
         self.appBar.pop()
+        self.checkApply()
 
     def hydrateProfiles(self):
         self.appBar.push(_("Updating Profiles..."))
@@ -436,6 +434,7 @@ class mainDialog:
             
         if self.initialized:
             self.appBar.pop()
+            self.checkApply()
             return
 
         self.initialized = true
@@ -470,6 +469,7 @@ class mainDialog:
         omenu.get_children()[history+5].set_active(true)
         self.no_profileentry_update = false
         self.appBar.pop()
+        self.checkApply()
 
     def on_Dialog_delete_event(self, *args):
         if self.changed():        
@@ -740,8 +740,8 @@ class mainDialog:
         dlg.destroy()
         
         if status != 0:
-            generic_error_dialog(_('Cannot activate network device %s\n%s') %\
-                                 (device, txt))
+            generic_longinfo_dialog(_('Cannot activate network device %s\n') %\
+                                    (device), txt, self.dialog)
 
         if NetworkDevice().find(device):
             self.update_devicelist()
@@ -764,7 +764,7 @@ class mainDialog:
                 devErrorDialog(device, DEACTIVATE, self.dialog)
 
     def on_deviceMonitorButton_clicked(self, button):
-        generic_error_dialog(_("To be rewritten!"))
+        generic_error_dialog(_("To be rewritten!"), self.dialog)
         return
         device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
         if device:
@@ -1315,8 +1315,6 @@ class mainDialog:
         hw = hardwarelist[i]
         
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
-            hardwarelist.append(hw)
-            hardwarelist[i].apply(hw)
             hw.commit()
             hardwarelist.commit()
             self.hydrateHardware()
@@ -1348,7 +1346,6 @@ class mainDialog:
             dl.set_transient_for(self.dialog)
             button = dl.run()
             dl.destroy()                    
-            hw.commit()
             
             return button
     
