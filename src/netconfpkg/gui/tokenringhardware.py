@@ -64,8 +64,7 @@ class tokenringHardwareDialog(HardwareDialog):
         (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
                                                     catchfd = (1, 2))
         if status != 0:
-            output = _('Command failed:') + _(' ') + string.join(cmd) + '\n\n' + \
-                     _('Output:') + "\n" + output
+            output = _('Command failed: %s\n\nOutput:\n%s\n') % (string.join(cmd), output)
             GUI_functions.generic_longinfo_dialog(\
                 _('The Token Ring card could not be initialized.'
                   'Please verify your settings and try again.'),
