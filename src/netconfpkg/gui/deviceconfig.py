@@ -28,7 +28,8 @@ import string
 import re
 
 from netconfpkg.gui import GUI_functions
-
+from netconfpkg import nop
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from gtk import TRUE
 from gtk import FALSE
@@ -44,7 +45,7 @@ class deviceConfigDialog:
 
         self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
         self.dialog = self.xml.get_widget("Dialog")
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,

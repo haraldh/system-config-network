@@ -312,8 +312,9 @@ def addFrame(dialog):
     dialog.add(frame)
 
 def growToParent(widget, rect, growTo=None):
-    return
+    print "growToParent"
     if not widget.parent:
+        print "not parent!!!"
         return
     ignore = widget.__dict__.get("ignoreEvents")
     if not ignore:
@@ -328,6 +329,7 @@ def growToParent(widget, rect, growTo=None):
 
 def widgetExpander(widget, growTo=None):
     widget.connect("size-allocate", growToParent, growTo)
+    widget.connect("size-request", growToParent, growTo)
 
 class WrappingLabel(gtk.Label):
     def __init__(self, label=""):
@@ -336,3 +338,10 @@ class WrappingLabel(gtk.Label):
         self.ignoreEvents = 0
 #        self.set_size_request(-1, 1)
         widgetExpander(self)
+
+def xml_signal_autoconnect (xml, map):
+    for (signal, func) in map.items():
+        if isinstance(func, tuple):
+            xml.signal_connect(signal, *func)
+        else:                
+            xml.signal_connect(signal, func)

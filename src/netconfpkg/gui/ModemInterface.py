@@ -31,6 +31,7 @@ import time
 import providerdb
 import gtk.glade
 import DialupDruid
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 
 class ModemInterface:
@@ -45,7 +46,7 @@ class ModemInterface:
             glade_file = GUI_functions.NETCONFDIR + glade_file
  
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_Modem_prepare" : self.on_Modem_prepare,
             "on_Modem_back" : self.on_Modem_back,

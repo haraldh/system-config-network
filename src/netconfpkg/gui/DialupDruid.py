@@ -28,6 +28,7 @@ import string
 import os
 import providerdb
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
 from netconfpkg import *
 from netconfpkg import *
@@ -41,6 +42,26 @@ class DialupDruid(InterfaceCreator):
                   do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
 
+        self.connection_type = connection_type
+        df = NCDeviceFactory.getDeviceFactory()        
+        self.device = df.getDeviceClass(connection_type)()
+        self.toplevel = toplevel
+        self.druids = []
+        self.country = ""
+        self.city = ""
+        self.name = ""
+        self.provider = None
+        self.device.BootProto = 'dialup'
+        self.device.AutoDNS = TRUE
+
+        self.devicelist = NCDeviceList.getDeviceList()
+        self.profilelist = NCProfileList.getProfileList()
+        self.xml = None
+        
+    def init_gui(self):
+        if self.xml:
+            return
+        
         glade_file = 'DialupDruid.glade'
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
@@ -49,7 +70,7 @@ class DialupDruid(InterfaceCreator):
 
         self.xml = gtk.glade.XML(glade_file, 'druid',
                                  domain=GUI_functions.PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             { "on_dialup_page_prepare" : self.on_dialup_page_prepare,
               "on_dialup_page_next" : self.on_dialup_page_next,
               "on_dhcp_page_prepare" : self.on_dhcp_page_prepare,
@@ -66,26 +87,11 @@ class DialupDruid(InterfaceCreator):
               }
             )
 
-        self.devicelist = NCDeviceList.getDeviceList()
-        df = NCDeviceFactory.getDeviceFactory()        
-        self.device = df.getDeviceClass(connection_type)()
-        self.device.BootProto = 'dialup'
-        self.device.AutoDNS = TRUE
-
-        self.profilelist = NCProfileList.getProfileList()
-        self.toplevel = toplevel
-        self.druids = []
-        
         self.druid = self.xml.get_widget ('druid')
         for I in self.druid.get_children():
             self.druid.remove (I)
             self.druids.append (I)
 
-        self.country = ""
-        self.city = ""
-        self.name = ""
-        self.connection_type = connection_type
-        self.provider = None
 
         # get the widgets we need
         self.dbtree = self.xml.get_widget("providerTree")
@@ -100,6 +106,7 @@ class DialupDruid(InterfaceCreator):
         entry.emit_stop_by_name('insert_text')
 
     def get_druids (self):
+        self.init_gui()
         return self.druids[0:]
 
     def on_dialup_page_next(self, druid_page, druid):

@@ -25,6 +25,7 @@ from netconfpkg.gui import *
 from netconfpkg.Control import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import PROGNAME
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 import gtk
 import gtk.glade
 import gnome.ui
@@ -57,7 +58,7 @@ class mainDialog:
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.no_profileentry_update = None
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_deviceActivateButton_clicked" : \
             self.on_deviceActivateButton_clicked,
@@ -119,7 +120,6 @@ class mainDialog:
             "on_upButton_clicked" : self.on_upButton_clicked,
             "on_downButton_clicked" : self.on_downButton_clicked,
         })
-
         self.appBar = self.xml.get_widget ("appbar")
 
         self.xml.get_widget ("hardware_pixmap").set_from_file( \
@@ -132,9 +132,9 @@ class mainDialog:
             NETCONFDIR + "/pixmaps/network.png")
 
         self.dialog = self.xml.get_widget("Dialog")
+        self.dialog.set_position (gtk.WIN_POS_CENTER)
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-
         
         self.xml.get_widget ("profileMenu").show()
             
@@ -566,11 +566,12 @@ class mainDialog:
     def on_helpButton_clicked(self, button):
         import gnome
         gnome.url_show("file:" + NETCONFDIR + \
-                       "/help/index.html")
+                       "/help/index.html")        
 
     def on_deviceAddButton_clicked (self, clicked):
-        interface = NewInterfaceDialog(self.dialog)
-        
+        if not self.interface:
+            self.interface = NewInterfaceDialog(self.dialog)
+        interface.
         gtk.mainloop()            
             
         if not interface.canceled:

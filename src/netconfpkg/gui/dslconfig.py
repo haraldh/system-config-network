@@ -30,6 +30,7 @@ import sharedtcpip
 
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE
@@ -42,6 +43,7 @@ class dslConfigDialog(deviceConfigDialog):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
+            
         self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=GUI_functions.PROGNAME)
 

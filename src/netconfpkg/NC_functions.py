@@ -90,6 +90,10 @@ modemFlowControls = { CRTSCTS : _("Hardware (CRTSCTS)"),
 		      XONXOFF : _("Software (XON/XOFF)"),
 		      NOFLOW :  _("None") } 
 
+
+def nop(*args):
+    pass
+
 class TestError(Exception):
     def __init__(self, args=None):
         self.args = args

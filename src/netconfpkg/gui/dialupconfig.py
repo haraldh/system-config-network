@@ -36,6 +36,7 @@ from netconfpkg.NCCallback import *
 from netconfpkg.NCHardwareList import *
 from netconfpkg.NCDialup import *
 from netconfpkg.gui.GUI_functions import *
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from provider import *
 from gtk import TRUE
 from gtk import FALSE
@@ -56,7 +57,7 @@ class DialupDialog(deviceConfigDialog):
                                     device)
         self.edit = FALSE
 
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml, 
             {
             "on_chooseButton_clicked" : self.on_chooseButton_clicked,
             "on_helpButton_clicked" : self.on_helpButton_clicked,

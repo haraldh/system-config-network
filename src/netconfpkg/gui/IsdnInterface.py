@@ -21,6 +21,7 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
 import gtk
 from gtk import TRUE
@@ -34,8 +35,18 @@ import DialupDruid
 
 class IsdnInterface:
     def __init__ (self, toplevel=None, do_save = 1, druid = None):
-        glade_file = 'IsdnHardwareDruid.glade'
+        self.toplevel = toplevel
+        self.hardwarelist = NCHardwareList.getHardwareList()
+        self.hw = None
+        self.druids = []
+        self.xml = None
         self.do_save = do_save
+
+    def init_gui(self):
+        if self.xml:
+            return
+        
+        glade_file = 'IsdnHardwareDruid.glade'
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
@@ -43,7 +54,7 @@ class IsdnInterface:
             
         self.xml = gtk.glade.XML(glade_file, 'druid', GUI_functions.PROGNAME)
         
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_isdnCardEntry_changed" : self.on_isdnCardEntry_changed,
             "on_isdn_hardware_page_prepare" : self.on_isdn_hardware_page_prepare,
@@ -52,10 +63,6 @@ class IsdnInterface:
             'on_druid_cancel' : self.on_cancel_interface,
             })
         
-        self.toplevel = toplevel
-        self.hardwarelist = NCHardwareList.getHardwareList()
-        self.hw = None
-        self.druids = []
 
         druid = self.xml.get_widget ('druid')
         for I in druid.get_children():
@@ -78,17 +85,21 @@ class IsdnInterface:
         return ISDN
 
     def get_project_description(self):
-        return _("Create a new ISDN connection.  This is a connection that uses an "
-                 "Integrated Services Digital Network line to dial into to your Internet "
-                 "Service Provider.  This type of technology requires a special phone "
-                 "line to be installed by your telephone company. It also requires a "
-                 "device known as a Terminal Adapter(TA) to terminate the ISDN "
-                 "connection from your ISP.  This type of connection is popular in "
-                 "Europe and several other technologically advanced regions.  It is "
-                 "available but uncommon in the USA.  Speeds range from 64kbps to "
+        return _("Create a new ISDN connection. This is a connection "
+                 "that uses an Integrated Services Digital Network line "
+                 "to dial into to your Internet Service Provider. "
+                 "This type of technology requires a special phone line "
+                 "to be installed by your telephone company. "
+                 "It also requires a device known as a Terminal Adapter(TA) "
+                 "to terminate the ISDN connection from your ISP. "
+                 "This type of connection is popular in Europe and several "
+                 "other technologically advanced regions.  It is available "
+                 "but uncommon in the USA.  Speeds range from 64kbps to "
                  "128kbps.")
 
     def get_druids(self):
+        self.init_gui()
+        
         Type = ISDN
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
                                          do_save = self.do_save)

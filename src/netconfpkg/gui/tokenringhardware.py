@@ -34,6 +34,7 @@ from rhpl import Conf
 import commands
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
 
 from gtk import TRUE
@@ -55,7 +56,7 @@ class tokenringHardwareDialog:
         self.xml = gtk.glade.XML(glade_file, None,
                                      domain=GUI_functions.PROGNAME)
 
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,

@@ -26,6 +26,7 @@ import gtk.glade
 import string
 import os
 from tokenringhardware import tokenringHardwareDialog
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class tokenringHardware:
     def __init__ (self, toplevel=None):
@@ -39,7 +40,7 @@ class tokenringHardware:
  
         self.xml = gtk.glade.XML(glade_file, 'druid',
                                      domain=PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_adapterEntry_changed" : self.on_adapterEntry_changed,
             "on_hardware_page_prepare" : self.on_hardware_page_prepare,

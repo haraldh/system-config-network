@@ -32,6 +32,7 @@ import sharedtcpip
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from gtk import TRUE
 from gtk import FALSE
@@ -51,7 +52,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.__init__(self, glade_file, device)
 
 
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
             })

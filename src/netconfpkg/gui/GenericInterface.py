@@ -30,6 +30,7 @@ import os
 from EthernetHardwareDruid import ethernetHardware
 from TokenRingHardwareDruid import tokenringHardware
 from InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class GenericInterface(InterfaceCreator):
     def __init__(self, toplevel=None, type=ETHERNET, do_save = 1,
@@ -54,7 +55,7 @@ class GenericInterface(InterfaceCreator):
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             { "on_finish_page_finish" : self.on_finish_page_finish,
               "on_finish_page_prepare" : self.on_finish_page_prepare,
               "on_finish_page_back" : self.on_finish_page_back

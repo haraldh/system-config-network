@@ -30,6 +30,7 @@ import re
 import providerdb
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from gtk import TRUE
 from gtk import FALSE
@@ -59,7 +60,7 @@ class providerDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.okButton = self.xml.get_widget("okButton")
         
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,

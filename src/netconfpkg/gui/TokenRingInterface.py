@@ -29,6 +29,7 @@ import os
 from TokenRingHardwareDruid import tokenringHardware
 from InterfaceCreator import InterfaceCreator
 from rhpl import ethtool
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class TokenRingInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=TOKENRING, do_save = 1,
@@ -36,7 +37,24 @@ class TokenRingInterface(InterfaceCreator):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
         self.topdruid = druid
+        self.xml = None
+        self.devicelist = NCDeviceList.getDeviceList()
+        self.device = NCDevTokenRing.DevTokenRing()
+        self.device.Type = connection_type
+        self.device.OnBoot = TRUE
+        self.device.AllowUser = FALSE
 
+        self.profilelist = NCProfileList.getProfileList()
+        self.toplevel = toplevel
+        self.connection_type = connection_type
+        self.hw_sel = 0
+        self.hwPage = FALSE
+        self.druids = []
+        
+    def init_gui(self):
+        if self.xml:
+            return
+        
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -53,7 +71,7 @@ class TokenRingInterface(InterfaceCreator):
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             { "on_hostname_config_page_back" : self.on_hostname_config_page_back,
               "on_hostname_config_page_next" : self.on_hostname_config_page_next,
               "on_hostname_config_page_prepare" : self.on_hostname_config_page_prepare,
@@ -67,17 +85,6 @@ class TokenRingInterface(InterfaceCreator):
             )
 
 
-        self.devicelist = NCDeviceList.getDeviceList()
-        self.device = NCDevTokenRing.DevTokenRing()
-        self.device.Type = connection_type
-        self.device.OnBoot = TRUE
-        self.device.AllowUser = FALSE
-
-        self.profilelist = NCProfileList.getProfileList()
-        self.toplevel = toplevel
-        self.connection_type = connection_type
-        self.hw_sel = 0
-        self.hwPage = FALSE
 
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
@@ -86,7 +93,6 @@ class TokenRingInterface(InterfaceCreator):
         vbox.pack_start (frame)
         sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
 
-        self.druids = []
         self.druid = self.xml.get_widget('druid')
         for i in self.druid.get_children():
             self.druid.remove(i)
@@ -112,6 +118,7 @@ class TokenRingInterface(InterfaceCreator):
         return _("Create a new Token Ring connection.")
 
     def get_druids(self):
+        self.init_gui()
         return self.druids
     
     def on_hostname_config_page_back(self, druid_page, druid):

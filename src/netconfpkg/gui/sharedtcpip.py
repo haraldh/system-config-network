@@ -15,6 +15,7 @@ from rhpl import ethtool
 
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from editadress import editAdressDialog
 from netconfpkg import *
@@ -41,12 +42,10 @@ def on_ipBootProto_toggled(widget, xml):
     xml.get_widget('ipSettingFrame').set_sensitive(not active)
 
 def dhcp_init (xml, device):
-    xml.signal_autoconnect(
-        {
+    xml_signal_autoconnect(xml, {\
         "on_ipAutomaticRadio_toggled" : (on_ipBootProto_toggled, xml),
         "on_ipStaticRadio_toggled" : (on_ipBootProto_toggled, xml),
         })
-    on_ipBootProto_toggled(xml.get_widget("ipAutomaticRadio"), xml)
 
 def dhcp_hydrate (xml, device):
     if not device.DeviceId:
@@ -243,14 +242,13 @@ def on_routeAddButton_clicked(button, xml, device, parent_dialog):
     route_update(xml, device)
 
 def route_init(xml, device, dialog = None):
-    xml.signal_autoconnect(
-        {
-            "on_routeAddButton_clicked" : (on_routeAddButton_clicked,
-                                           xml, device, dialog),
-            "on_routeEditButton_clicked" : (on_routeEditButton_clicked,
-                                            xml, device, dialog),
-            "on_routeDeleteButton_clicked" : (on_routeDeleteButton_clicked,
-                                              xml, device),
+    xml_signal_autoconnect(xml, { \
+        "on_routeAddButton_clicked" : (on_routeAddButton_clicked,
+                                       xml, device, dialog),
+        "on_routeEditButton_clicked" : (on_routeEditButton_clicked,
+                                        xml, device, dialog),
+        "on_routeDeleteButton_clicked" : (on_routeDeleteButton_clicked,
+                                          xml, device),
         })
     route_update(xml, device)
 
@@ -290,12 +288,15 @@ def on_hardwareConfigureButton_clicked(widget, xml, device):
 
     
 def hardware_init(xml, device):
-    xml.signal_autoconnect(
-        {
-        "on_hardwareAliasesToggle_toggled" : (on_hardwareAliasesToggle_toggled, xml, device),
-        "on_hardwareMACToggle_toggled" : (on_hardwareMACToggle_toggled, xml, device),
-        "on_hardwareProbeButton_clicked" : (on_hardwareProbeButton_clicked, xml, device),
-        "on_hardwareConfigureButton_clicked" : (on_hardwareConfigureButton_clicked, xml, device)
+    xml_signal_autoconnect(xml, {\
+        "on_hardwareAliasesToggle_toggled" : \
+        (on_hardwareAliasesToggle_toggled, xml, device),
+        "on_hardwareMACToggle_toggled" : \
+        (on_hardwareMACToggle_toggled, xml, device),
+        "on_hardwareProbeButton_clicked" : \
+        (on_hardwareProbeButton_clicked, xml, device),
+        "on_hardwareConfigureButton_clicked" : \
+        (on_hardwareConfigureButton_clicked, xml, device)
         })
     xml.get_widget("hardwareSeparator").show()
     xml.get_widget("hardwareTable").show()

@@ -32,6 +32,7 @@ from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from gtk import TRUE
 from gtk import FALSE
 
@@ -47,7 +48,7 @@ class deviceTypeDialog:
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,

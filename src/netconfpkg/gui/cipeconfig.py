@@ -32,6 +32,7 @@ import sharedtcpip
 from netconfpkg import *
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
@@ -51,7 +52,7 @@ class cipeConfigDialog(deviceConfigDialog):
         
         deviceConfigDialog.__init__(self, glade_file,
                                     device)    
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml, 
             {
             "on_remotePeerAddressCB_toggled" : self.on_remotePeerAddressCB_toggled,
             "on_generateKeyButton_clicked" : self.on_generateKeyButton_clicked,

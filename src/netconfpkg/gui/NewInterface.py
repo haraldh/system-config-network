@@ -38,6 +38,7 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
                ADSLInterface, TokenRingInterface, CipeInterface,
@@ -70,7 +71,7 @@ class NewInterface:
         else:
             self.toplevel.set_position (gtk.WIN_POS_CENTER)            
 
-        xml.signal_autoconnect (
+        xml_signal_autoconnect (xml,
             { 'on_toplevel_delete_event' : self.on_cancel_interface,
               'on_druid_cancel' : self.on_cancel_interface,
               'on_start_page_prepare' : self.on_start_page_prepare,
@@ -133,8 +134,8 @@ class NewInterface:
         interface = self.interface_clist.get_row_data (row)
         if interface == None:
             return
-        self.description_label.set_text (interface.get_project_description ())
-
+        buf = self.description_label.get_buffer()
+        buf.set_text(interface.get_project_description ())
 
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)

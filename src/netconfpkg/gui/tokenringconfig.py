@@ -30,6 +30,7 @@ import commands
 import sharedtcpip
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
@@ -48,7 +49,7 @@ class tokenringConfigDialog(deviceConfigDialog):
 
         glade_file = "tokenringconfig.glade"
         deviceConfigDialog.__init__(self, glade_file, device)    
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
 #            "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled,

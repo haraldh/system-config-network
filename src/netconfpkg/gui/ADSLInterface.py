@@ -33,12 +33,25 @@ import string
 import os
 from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class ADSLInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
         self.topdruid = druid
+        self.devicelist = NCDeviceList.getDeviceList()
+        self.device = NCDevADSL.DevADSL()
+        self.profilelist = NCProfileList.getProfileList()
+        self.toplevel = toplevel
+        self.connection_type = connection_type
+        self.druids = []
+        self.xml = None
+        
+    def init_gui(self):
+        if self.xml:
+            return
+        
         glade_file = 'ADSLInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):
@@ -47,7 +60,7 @@ class ADSLInterface(InterfaceCreator):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             { "on_dsl_config_page_back" : self.on_dsl_config_page_back,
               "on_dsl_config_page_next" : self.on_dsl_config_page_next,
               "on_dsl_config_page_prepare" : self.on_dsl_config_page_prepare,
@@ -58,12 +71,6 @@ class ADSLInterface(InterfaceCreator):
               }
             )
 
-        self.devicelist = NCDeviceList.getDeviceList()
-        self.device = NCDevADSL.DevADSL()
-        self.profilelist = NCProfileList.getProfileList()
-        self.toplevel = toplevel
-        self.connection_type = connection_type
-        self.druids = []
         
         self.druid = self.xml.get_widget('druid')
         for i in self.druid.get_children():
@@ -94,6 +101,7 @@ class ADSLInterface(InterfaceCreator):
                  "technology used, but generally range from 144kbps to 1.0Mbps.")
                        
     def get_druids(self):
+        self.init_gui()
         hwDruid = ethernetHardware(self.toplevel)
         druid = hwDruid.get_druids()
         if druid: return druid + self.druids[0:]

@@ -30,6 +30,7 @@ import re
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from gtk import TRUE
 from gtk import FALSE
 
@@ -46,7 +47,7 @@ class editDomainDialog:
 
         self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_domainNameEntry_insert_text" : (self.on_domainNameEntry_insert_text, ""),
             "on_okButton_clicked" : self.on_okButton_clicked,

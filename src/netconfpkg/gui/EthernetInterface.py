@@ -29,6 +29,7 @@ import os
 from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
 from rhpl import ethtool
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class EthernetInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=ETHERNET, do_save = 1,
@@ -36,7 +37,13 @@ class EthernetInterface(InterfaceCreator):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
         self.topdruid = druid
+        self.connection_type = connection_type
+        self.xml = None
 
+    def init_gui(self):
+        if self.xml:
+            return
+        
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -53,10 +60,13 @@ class EthernetInterface(InterfaceCreator):
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
-        self.xml.signal_autoconnect(
-            { "on_hostname_config_page_back" : self.on_hostname_config_page_back,
-              "on_hostname_config_page_next" : self.on_hostname_config_page_next,
-              "on_hostname_config_page_prepare" : self.on_hostname_config_page_prepare,
+        xml_signal_autoconnect(self.xml,
+            { "on_hostname_config_page_back" : \
+              self.on_hostname_config_page_back,
+              "on_hostname_config_page_next" : \
+              self.on_hostname_config_page_next,
+              "on_hostname_config_page_prepare" : \
+              self.on_hostname_config_page_prepare,
               "on_hw_config_page_back" : self.on_hw_config_page_back,
               "on_hw_config_page_next" : self.on_hw_config_page_next,
               "on_hw_config_page_prepare" : self.on_hw_config_page_prepare,
@@ -74,8 +84,6 @@ class EthernetInterface(InterfaceCreator):
         self.device.AllowUser = FALSE
 
         self.profilelist = NCProfileList.getProfileList()
-        self.toplevel = toplevel
-        self.connection_type = connection_type
         self.hw_sel = 0
         self.hwPage = FALSE
 
@@ -112,6 +120,7 @@ class EthernetInterface(InterfaceCreator):
         return _("Create a new ethernet connection.")
 
     def get_druids(self):
+        self.init_gui()
         return self.druids
     
     def on_hostname_config_page_back(self, druid_page, druid):

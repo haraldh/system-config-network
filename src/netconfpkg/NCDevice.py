@@ -316,7 +316,10 @@ class Device(Device_base):
                 rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
-
+        else:
+            # remove route file, if no routes defined
+            unlink(SYSCONFDEVICEDIR + self.DeviceId + '.route')
+            
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
         if not self.Wireless:

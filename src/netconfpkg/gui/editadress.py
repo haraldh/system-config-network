@@ -27,6 +27,7 @@ import os
 import string
 import re
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from gtk import TRUE
 from gtk import FALSE
@@ -44,7 +45,7 @@ class editAdressDialog:
 
         self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_addressEntry_insert_text" : (self.on_generic_entry_insert_text,
                                              r"^[a-f:0-9\.]"),

@@ -31,26 +31,27 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class NewInterfaceDialog:
     def __init__(self, parent_dialog = None):
         self.creator = None
         glade_file = 'NewInterfaceDruid.glade'
-
+        
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        xml = gtk.glade.XML (glade_file, 'toplevel',
-                             domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML (glade_file, 'toplevel',
+                                  domain=GUI_functions.PROGNAME)        
 
         # get the widgets we need
-        self.toplevel = xml.get_widget ('toplevel')
-        self.druid = xml.get_widget ('druid')
-        self.start_page = xml.get_widget('start_page')
-        self.interface_clist = xml.get_widget ('interface_clist')
-        self.description_label = xml.get_widget ('description_label')
+        self.toplevel = self.xml.get_widget ('toplevel')
+        self.druid = self.xml.get_widget ('druid')
+        self.start_page = self.xml.get_widget('start_page')
+        self.interface_clist = self.xml.get_widget ('interface_clist')
+        self.description_label = self.xml.get_widget ('description_label')
 
         if parent_dialog:
             self.toplevel.set_transient_for(parent_dialog)        
@@ -58,7 +59,7 @@ class NewInterfaceDialog:
         else:
             self.toplevel.set_position (gtk.WIN_POS_CENTER)            
 
-        xml.signal_autoconnect (
+        xml_signal_autoconnect (self.xml,
             { 'on_toplevel_delete_event' : self.on_cancel_interface,
               'on_druid_cancel' : self.on_cancel_interface,
               'on_start_page_prepare' : self.on_start_page_prepare,
@@ -81,14 +82,18 @@ class NewInterfaceDialog:
             interfaces.append(df.getDeviceClass(type)().getWizard())
             
         for iface_creator in interfaces:
-            iface = iface_creator (self.toplevel, do_save = None, druid = self.druid)
+            iface = iface_creator (self.toplevel, do_save = None,
+                                   druid = self.druid)
             iftype = iface.get_type()
             
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
             device_pixmap, device_mask = \
-                           GUI_functions.get_device_icon_mask(iftype, self.toplevel)
+                           GUI_functions.get_device_icon_mask(iftype,
+                                                              self.toplevel)
                 
-            self.interface_clist.set_pixtext (row, 0, iface.get_project_name (), 5, device_pixmap, device_mask)
+            self.interface_clist.set_pixtext (row, 0,
+                                              iface.get_project_name (), 5,
+                                              device_pixmap, device_mask)
             self.interface_clist.set_row_data (row, iface)
 
 
@@ -101,16 +106,19 @@ class NewInterfaceDialog:
 
         for type in devs:
             device_pixmap, device_mask = \
-                           GUI_functions.get_device_icon_mask(type, self.toplevel)
+                           GUI_functions.get_device_icon_mask(type,
+                                                              self.toplevel)
             iface = GenericInterface (self.toplevel, type = type,
                                       do_save = None, druid = self.druid)
             ftype = iface.get_type()
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
-            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(iftype, self.toplevel)
+            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(\
+                iftype, self.toplevel)
             
-            self.interface_clist.set_pixtext (row, 0, iface.get_project_name (), 5, device_pixmap, device_mask)
+            self.interface_clist.set_pixtext (row, 0,
+                                              iface.get_project_name (),
+                                              5, device_pixmap, device_mask)
             self.interface_clist.set_row_data (row, iface)
-
 
 
         self.canceled = FALSE
@@ -154,7 +162,10 @@ class NewInterfaceDialog:
         interface = self.interface_clist.get_row_data (row)
         if interface == None:
             return
-        self.description_label.set_text (interface.get_project_description ())
+        #self.description_label.set_text (interface.get_project_description ())
+
+        buf = self.description_label.get_buffer()
+        buf.set_text(interface.get_project_description ())
 
 
 if __name__ == "__main__":

@@ -27,6 +27,7 @@ import string
 import os
 from rhpl import Conf
 from ethernethardware import ethernetHardwareDialog
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class ethernetHardware:
     def __init__ (self, toplevel=None):
@@ -40,7 +41,7 @@ class ethernetHardware:
  
         self.xml = gtk.glade.XML(glade_file, 'druid',
                                      domain=PROGNAME)
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_adapterEntry_changed" : self.on_adapterEntry_changed,
             "on_hardware_page_prepare" : self.on_hardware_page_prepare,

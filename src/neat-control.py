@@ -53,6 +53,7 @@ from netconfpkg import Control
 from netconfpkg.gui import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.exception import handleException
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/")
 
@@ -69,7 +70,7 @@ class mainDialog:
 
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
 
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             'on_closeButton_clicked' : self.on_closeButton_clicked,
             'on_infoButton_clicked' : self.on_infoButton_clicked,

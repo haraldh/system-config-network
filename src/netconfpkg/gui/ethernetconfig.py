@@ -31,6 +31,7 @@ import traceback
 import sys
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 from rhpl import ethtool
 
@@ -51,12 +52,13 @@ class ethernetConfigDialog(deviceConfigDialog):
         glade_file = "ethernetconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)    
-        self.xml.signal_autoconnect(
-            {
+
+        xml_signal_autoconnect(self.xml, { \
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
             "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled,
             "on_hwProbeButton_clicked" : self.on_hwProbeButton_clicked,
             })
+                
 
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')

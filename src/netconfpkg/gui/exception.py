@@ -50,10 +50,12 @@ class ExceptionWindow:
         hbox.set_border_width(5)
         
         info = WrappingLabel(_("An unhandled exception has occured.  This "
-                               "is most likely a bug.  Please save the crash "
-                               "dump and file a detailed bug "
-                               "report against redhat-config-network at "
-                               "https://bugzilla.redhat.com/bugzilla/"))
+                          "is most likely a bug.  Please save the crash "
+                          "dump and file a detailed bug "
+                          "report against redhat-config-network at "
+                          '<A HREF="https://bugzilla.redhat.com/bugzilla/">https://bugzilla.redhat.com/bugzilla</a>'
+                          ))
+        info.set_use_markup(TRUE)
         info.set_size_request (400, -1)
 
         hbox.pack_start (sw, gtk.TRUE)
@@ -189,12 +191,15 @@ class FileSelection:
 def handleException((type, value, tb)):
     list = traceback.format_exception (type, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
-    tblast = tblast[len(tblast)-1]
+    if len(tblast):
+        tblast = tblast[len(tblast)-1]
     extxt = traceback.format_exception_only(type, value)
     text = "Component: %s\n" % PROGNAME
-    text = text + "Version: %s\n" % PRG_VERSION
-    text = text + "Summary: TB %s:%s:%s: %s\n" % (tblast[0], tblast[1],
-                                                  tblast[2], extxt[0])
+    text = text + "Version: %s\n" % PRG_VERSION  
+    text = text + "Summary: TB "
+    for t in tblast:
+        text = text + str(t) + ":"
+    text = text + extxt[0]
     text = text + joinfields(list, "")
 
     while 1:

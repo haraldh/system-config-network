@@ -31,16 +31,28 @@ import string
 import os
 import gtk.glade
 from InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from gtk import TRUE
 from gtk import FALSE
 
 class CipeInterface(InterfaceCreator):
-    def __init__ (self, toplevel=None, connection_type=CIPE, do_save = 1, druid = None):
+    def __init__ (self, toplevel=None, connection_type=CIPE,
+                  do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
+        self.do_save = do_save
+        self.toplevel = toplevel
+        self.druids = []
+        self.device = NCDevCipe.DevCipe()
+        self.device.Type = connection_type
+        self.xml = None
+        
+    def init_gui(self):
+        if self.xml:
+            return
+        
         glade_file = 'CipeInterfaceDruid.glade'
 
-        self.do_save = do_save
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
@@ -48,7 +60,7 @@ class CipeInterface(InterfaceCreator):
             
         self.xml = gtk.glade.XML(glade_file, 'druid', GUI_functions.PROGNAME)
         
-        self.xml.signal_autoconnect(
+        xml_signal_autoconnect(self.xml,
             {
             "on_tunnel_setting_page_next" : self.on_tunnel_setting_page_next,
             "on_tunnel_setting_page_prepare" : self.on_tunnel_setting_page_prepare,
@@ -66,13 +78,9 @@ class CipeInterface(InterfaceCreator):
             "on_localVirtualAddressEntry_changed" : self.updateRemoteOptions,
             })
         
-        self.toplevel = toplevel
-        self.druids = []
 
         self.devicelist = NCDeviceList.getDeviceList()
-        self.device = NCDevCipe.DevCipe()
         self.profilelist = NCProfileList.getProfileList()
-        self.device.Type = connection_type
         self.device.OnBoot = FALSE
         self.device.AllowUser = FALSE
         
@@ -91,6 +99,8 @@ class CipeInterface(InterfaceCreator):
         return CIPE
 
     def get_druids(self):
+        self.init_gui()
+        
         return self.druids
             
     def on_tunnel_setting_page_prepare(self, druid_page, druid):
@@ -312,7 +322,10 @@ class CipeInterface(InterfaceCreator):
         keywidget = self.xml.get_widget("secretKeyEntry")
         txt = keywidget.get_text()
         if not txt or txt == "":
-            GUI_functions.gui_error_dialog(_("You must enter a secret key \nor generate one"), self.xml.get_widget ('Dialog'), broken_widget = keywidget)
+            GUI_functions.gui_error_dialog(_("You must enter a secret key \n"
+                                             "or generate one"),
+                                           self.toplevel,
+                                           broken_widget = keywidget)
             return FALSE
         return TRUE
             
