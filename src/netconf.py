@@ -202,6 +202,8 @@ class mainDialog:
             "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
             "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
             "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked,
+            "on_ProfileNameEntry_insert_text" : (self.on_generic_entry_insert_text,
+                                                r"^[a-z|A-Z|0-9]+$"),
         })
 
 
@@ -1136,18 +1138,31 @@ class mainDialog:
     def on_profileList_select_row (self, *args):
         pass
 
-    def on_profileAddButton_clicked (self, *args):
-        import gnome.ui
-        dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the name for the new profile.\nThe name may only contain letters and digits."), "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
-        dialog.set_transient_for(self.dialog)
-        dialog.run()        
-        dialog.destroy()
+    def on_generic_entry_insert_text(self, entry, partial_text, length,
+                                     pos, str):
+        text = partial_text[0:length]
+        if re.match(str, text):
+            return
+        entry.emit_stop_by_name('insert_text')
 
-    def on_profileAddEntry_changed(self, text):
+    def on_profileAddButton_clicked (self, *args):
+        dialog = self.xml.get_widget("ProfileNameDialog")
+        dialog.set_transient_for(self.dialog)
+        self.xml.get_widget("ProfileName").set_text('')
+        dialog.show()
+        button = dialog.run()        
+        dialog.hide()
+
+        if button != gtk.RESPONSE_OK and button != 0:
+            return
+
         profilelist = getProfileList()
+
+        text = self.xml.get_widget("ProfileName").get_text()
 
         if not text:
             return
+        
         if not re.match("^[a-z|A-Z|0-9]+$", text):
             generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
             return 1
@@ -1209,13 +1224,19 @@ class mainDialog:
         if profile.ProfileName == 'default':
             generic_error_dialog (_('The "default" profile can\'t be renamed!'), self.dialog)
             return
-        import gnome.ui
-        dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the new name for the profile.\nThe name may only contain letters and digits."), profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
-        dialog.set_transient_for(self.dialog)
-        dialog.run()
-        dialog.destroy()
 
-    def on_profileRenameEntry_changed(self, text):
+        dialog = self.xml.get_widget("ProfileNameDialog")
+        dialog.set_transient_for(self.dialog)
+        self.xml.get_widget("ProfileName").set_text(profile.ProfileName)
+        dialog.show()
+        button = dialog.run()        
+        dialog.hide()
+
+        if button != gtk.RESPONSE_OK and button != 0:
+            return
+
+        text = self.xml.get_widget("ProfileName").get_text()
+
         if not text:
             return
         
@@ -1226,10 +1247,6 @@ class mainDialog:
         if text == 'default':
             generic_error_dialog (_('The profile can\'t be named "default"!'), self.dialog)
             return
-
-        profilelist = getProfileList()
-
-        profile = self.get_active_profile()
 
         for prof in profilelist:
             if prof.ProfileName == text and prof != profile:
