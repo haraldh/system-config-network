@@ -52,5 +52,6 @@ ProfileList.py: $(srcdir)/ProfileList.idl $(srcdir)/genClass.py $(srcdir)/NCProf
 %.py: %.idl $(srcdir)/genClass.py
 	python $(srcdir)/genClass.py -f -c $(srcdir)/$*.idl $@ NC
 
-%.pyc: $(GENCLASS_FILES) $(PYTHON_FILES)
+%.pyc: %.py
+	@echo "Compiling because of " $*
 	python /usr/lib/python1.5/compileall.pyc -l -d . $(srcdir)

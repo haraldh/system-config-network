@@ -71,5 +71,6 @@ clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
 
-%.pyc: $(PYTHON_FILES)
+%.pyc: %.py
+	@echo "Compiling because of " $*
 	python /usr/lib/python1.5/compileall.pyc -l -d . $(srcdir)
