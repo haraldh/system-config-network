@@ -47,7 +47,8 @@ class Device(Device_base):
                     self.Dialup = NCDialup.IsdnDialup(None, self)
                 return self.Dialup
             else:
-                return None                    
+                self.Dialup = NCDialup.ModemDialup(None, self)
+                return self.Dialup
         else:
             raise TypeError, "Device type not specified"
         
