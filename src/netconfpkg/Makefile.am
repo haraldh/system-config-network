@@ -22,7 +22,8 @@ GLADE_FILES = \
 	tokenringconfig.glade \
 	TokenRingHardwareDruid.glade \
 	tokenringhardware.glade \
-	wirelessconfig.glade
+	wirelessconfig.glade \
+	ctcconfig.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py	Firewall.py 
@@ -79,7 +80,8 @@ PYTHON_FILES = \
 	tokenringconfig.py \
 	TokenRingHardwareDruid.py \
 	tokenringhardware.py \
-	wirelessconfig.py
+	wirelessconfig.py \
+	ctcconfig.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
