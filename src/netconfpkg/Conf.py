@@ -330,7 +330,7 @@ class ConfShellVar(Conf):
         self.rewind()
         missing=1
         while self.findnextline('[\t ]*' + varname + '='):
-            if search('[ \t${}*@!~<>?;%^()#&]', value) > -1:
+            if re.search('[ \t${}*@!~<>?;%^()#&]', value) > -1:
         	self.sedline('=.*', "='" + value + "'")
 	    else:
         	self.sedline('=.*', '=' + value)
