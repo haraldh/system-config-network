@@ -32,48 +32,6 @@ from rhpl.log import log
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-
-def updateNetworkScripts():
-    if os.getuid() == 0:
-        if not os.path.isdir(netconfpkg.ROOT + SYSCONFDEVICEDIR):
-            mkdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
-
-        if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
-            mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
-
-        if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
-            mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/')
-
-    devlist = os.listdir(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
-    changed = false
-    for dev in devlist:
-        if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo' or string.find(dev, '.rpmsave') != -1 or string.find(dev, '.rpmnew') != -1:
-            continue
-
-        if os.path.islink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev):
-            log.log(4, dev+" already a link, skipping it.")
-            continue
-
-        if getDeviceType(dev[6:]) == _('Unknown'):
-            log.log(4, dev+" has unknown device type, skipping it.")
-            continue
-
-
-        if os.getuid() != 0:
-            generic_error_dialog (_("Please start system-config-network "
-                                    "with root permissions once!\n"))
-            return
-
-        log.log(1, _("Copying %s to devices and putting "
-                     "it into the default profile.") % dev)
-
-        unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'+dev)
-
-        copy(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev, netconfpkg.ROOT + SYSCONFDEVICEDIR+'/'+dev)
-        link(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/'+dev, netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'+dev)    
-        changed = true
-    return changed
-
 class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
         DeviceList_base.__init__(self, list, parent)        
@@ -86,10 +44,18 @@ class DeviceList(DeviceList_base):
         self.__delslice__(0, len(self))
 
         df = getDeviceFactory()
-        devices = ConfDevices()
+        devdir = netconfpkg.ROOT + SYSCONFDEVICEDIR
+        if os.path.isdir(devdir):
+            devices = ConfDevices()
+        else:
+            devdir = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR
+            devices = ConfDevices(devdir)
+            
         msg = ""
         for dev in devices:
-            conf = ConfDevice(dev)
+            if dev == 'lo':
+                continue
+            conf = ConfDevice(dev, devdir)
             type = None
             device = None
             # take a peek in the config file
@@ -336,5 +302,5 @@ def getNextDev(base):
     return base + str(num)
                 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.59 $"
+__date__ = "$Date: 2004/03/04 13:35:51 $"
+__version__ = "$Revision: 1.60 $"

@@ -38,38 +38,6 @@ if not "/usr/lib/rhs/python" in sys.path:
 from rhpl import Conf
 from rhpl.log import log
 
-
-def updateNetworkScripts():
-    changed = false
-
-    if not os.path.isdir(netconfpkg.ROOT + SYSCONFDEVICEDIR):
-        mkdir(netconfpkg.ROOT + SYSCONFDEVICEDIR)
-
-    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
-        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
-
-    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
-        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/')
-
-    if not os.path.isfile(netconfpkg.ROOT + HOSTSCONF) or \
-           (not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
-           and not os.path.islink(netconfpkg.ROOT + HOSTSCONF)):
-        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + \
-                     HOSTSCONF))
-        copy(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + \
-             SYSCONFPROFILEDIR+'/default/hosts')
-        changed = true
-
-    if not os.path.isfile(netconfpkg.ROOT + RESOLVCONF) or \
-           ( not ishardlink(netconfpkg.ROOT + RESOLVCONF) \
-            and not os.path.islink(netconfpkg.ROOT + RESOLVCONF)):
-        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + \
-                     RESOLVCONF))
-        copy(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + \
-             SYSCONFPROFILEDIR+'/default/resolv.conf')
-        changed = true
-    return changed
-
 from types import ListType
 
 class MyFileList(ListType):
@@ -97,95 +65,119 @@ class ProfileList(ProfileList_base):
     def load(self):
         changed = updateNetworkScripts()
         self.__delslice__(0, len(self))
+
+        self.curr_prof = 'default'
+        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        if nwconf.has_key('CURRENT_PROFILE'):
+            self.curr_prof = nwconf['CURRENT_PROFILE']
+            
+        if nwconf.has_key('HOSTNAME'):
+            self.use_hostname = nwconf['HOSTNAME']
+        else:
+            self.use_hostname = 'localhost'
+            
+        if self.curr_prof == None or self.curr_prof == '':
+            self.curr_prof = 'default'
+
+        proflist = []
+        if os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
+            proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)        
+            for pr in proflist:
+                # 60016
+                profdir = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr
+                if not os.path.isdir(profdir):
+                    continue
+                self.loadprof(pr, profdir)
+        else:
+            self.loadprof('default', None)
+
+        self.commit(changed)
+
+    def loadprof(self, pr, profdir):        
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
 
-        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
-        dnsconf = Conf.ConfEResolv()
-        curr_prof = nwconf['CURRENT_PROFILE']
-        use_hostname = nwconf['HOSTNAME']
-        if curr_prof == None or curr_prof == '':
-            curr_prof = 'default'
+        i = self.addProfile()
+        prof = self[i]
+        prof.createActiveDevices()
+        prof.createActiveIPsecs()
+        prof.createDNS()
+        prof.createHostsList()
+        prof.ProfileName = pr
+        if pr == self.curr_prof:
+            prof.Active = true
+        else:
+            prof.Active = false
 
-        proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)        
-        for pr in proflist:
-            # 60016
-            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
-                                 '/' + pr):
-                continue
+        if profdir:
+            devlist = ConfDevices(profdir)
+        else:
+            devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
             
-            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
-                                       '/' + pr + '/network')
-            i = self.addProfile()
-            prof = self[i]
-            prof.createActiveDevices()
-            prof.createActiveIPsecs()
-            prof.createDNS()
-            prof.createHostsList()
-            prof.ProfileName = pr
-            if pr == curr_prof:
-                prof.Active = true
-            else:
-                prof.Active = false
-            devlist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
-                                 '/' + pr)
-            for dev in devlist:
-               if dev[:6] != 'ifcfg-':
-                   continue
-               for d in devicelist:
-                   if d.DeviceId == dev[6:]:
-                       prof.ActiveDevices.append(dev[6:])
-                       break
-                   
-            for ipsec in devlist:
-               if ipsec[:6] != 'ifcfg-':
-                   continue
-               for d in ipseclist:
-                   if d.IPsecId == ipsec[6:]:
-                       prof.ActiveIPsecs.append(ipsec[6:])
-                       break
-                   
-            hoconf = Conf.ConfFHosts( filename = netconfpkg.ROOT + \
-                                      SYSCONFPROFILEDIR + '/' + pr + '/hosts')
-            hoconf.read()
-            hoconf.rewind()
-            while hoconf.findnextcodeline():
-                try:
-                    harray = hoconf.getfields()
-                    host = Host()
-                    host.createAliasList()
-                    host.Hostname = harray[1]
-                    host.IP = harray[0]
-                    for al in harray[2:]:
-                        host.AliasList.append(al);
-                    prof.HostsList.append(host)
-                    hoconf.nextline()
-                except:
+        for dev in devlist:
+            for d in devicelist:
+                if d.DeviceId == dev:
+                    prof.ActiveDevices.append(dev)
                     break
-                
-            dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
-                               pr + '/resolv.conf'
-            dnsconf.read()
-            prof.DNS.Hostname     = use_hostname
-            prof.DNS.Domainname   = ''
-            prof.DNS.PrimaryDNS   = ''
-            prof.DNS.SecondaryDNS = ''
-            prof.DNS.TertiaryDNS  = ''
-            if nwconf['HOSTNAME'] != '':
-                prof.DNS.Hostname     = nwconf['HOSTNAME']
-            if len(dnsconf['domain']) > 0:
-                prof.DNS.Domainname   = dnsconf['domain'][0]
-            if dnsconf.has_key('nameservers'):
-                prof.DNS.PrimaryDNS = dnsconf['nameservers'][0]
-                if len(dnsconf['nameservers']) > 1:
-                    prof.DNS.SecondaryDNS = dnsconf['nameservers'][1]
-                if len(dnsconf['nameservers']) > 2:
-                    prof.DNS.TertiaryDNS = dnsconf['nameservers'][2]
-            sl = prof.DNS.createSearchList()
-            if dnsconf.has_key('search'):
-                for ns in dnsconf['search']:
-                    sl.append(ns)
-        self.commit(changed)
+
+        for ipsec in devlist:
+            for d in ipseclist:
+                if d.IPsecId == ipsec:
+                    prof.ActiveIPsecs.append(ipsec)
+                    break
+
+        if profdir:
+            hoconf = Conf.ConfFHosts( filename = profdir + '/hosts')
+        else:
+            hoconf = Conf.ConfFHosts( filename = HOSTSCONF )
+            
+        hoconf.read()
+        hoconf.rewind()
+        while hoconf.findnextcodeline():
+            try:
+                harray = hoconf.getfields()
+                host = Host()
+                host.createAliasList()
+                host.Hostname = harray[1]
+                host.IP = harray[0]
+                for al in harray[2:]:
+                    host.AliasList.append(al);
+                prof.HostsList.append(host)
+                hoconf.nextline()
+            except:
+                break
+            
+        dnsconf = Conf.ConfEResolv()
+        if profdir:
+            dnsconf.filename = profdir + '/resolv.conf'
+        else:
+            dnsconf.filename = netconfpkg.ROOT + RESOLVCONF
+        dnsconf.read()
+        prof.DNS.Hostname     = self.use_hostname
+        prof.DNS.Domainname   = ''
+        prof.DNS.PrimaryDNS   = ''
+        prof.DNS.SecondaryDNS = ''
+        prof.DNS.TertiaryDNS  = ''
+
+        if profdir:
+            nwconf = Conf.ConfShellVar(profdir + '/network')
+        else:
+            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+            
+        if nwconf['HOSTNAME'] != '':
+            prof.DNS.Hostname     = nwconf['HOSTNAME']
+        if len(dnsconf['domain']) > 0:
+            prof.DNS.Domainname   = dnsconf['domain'][0]
+        if dnsconf.has_key('nameservers'):
+            prof.DNS.PrimaryDNS = dnsconf['nameservers'][0]
+            if len(dnsconf['nameservers']) > 1:
+                prof.DNS.SecondaryDNS = dnsconf['nameservers'][1]
+            if len(dnsconf['nameservers']) > 2:
+                prof.DNS.TertiaryDNS = dnsconf['nameservers'][2]
+        sl = prof.DNS.createSearchList()
+        if dnsconf.has_key('search'):
+            for ns in dnsconf['search']:
+                sl.append(ns)
 
     def test(self):
         return
@@ -605,18 +597,4 @@ def getProfileList(refresh=None):
         PFList.load()
     return PFList
 
-
-if __name__ == '__main__':
-    pl = ProfileList()
-    pl.load()
-    for i in xrange(len(pl)):
-        print "Device: " + str(pl[i].DeviceId)
-        print "DevName: " + str(pl[i].DeviceName)
-        print "IP: " + str(pl[i].IP)
-        print "OnBoot: " + str(pl[i].OnBoot)
-        print "---------"
-
-    pl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.78 $"
