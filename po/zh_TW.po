@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "POT-Creation-Date: 2002-11-13 16:07+0100\n"
-"PO-Revision-Date: 2002-08-23 09:18+1000\n"
+"PO-Revision-Date: 2002-11-14 11:35+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Chinese (Traditional) <i18n-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.1\n"
-"X-Generator: KBabel 1.0beta1\n"
+"X-Generator: KBabel 1.0beta2\n"
 
 #. ! /usr/bin/python2.2
 #. # netconf - A network configuration tool
@@ -64,6 +64,10 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
+"已儲存變更。\n"
+"您現在可以重新啟動\n"
+"網路與網路服務\n"
+"或重新開機。"
 
 #. change the default profile to a more understandable name
 #: src/netconf.py:493 src/netconf.py:506
@@ -116,11 +120,13 @@ msgid "Activating network device %s, please wait..."
 msgstr "網路裝置 %s 啟動中，請稍後..."
 
 #: src/netconf.py:712
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Cannot activate network device %s\n"
 "%s"
-msgstr "無法啟動網路裝置 %s"
+msgstr ""
+"無法啟動網路裝置 %s\n"
+"%s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
@@ -1133,12 +1139,17 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"找不到 /etc/cipe 目錄！\n"
+"將為您建立該目錄！\n"
+"您應該要安裝 cipe rpm 套件！\n"
 
 #: src/netconfpkg/NCCipe.py:159
 msgid ""
 "Could not create\n"
 "directory /etc/cipe!"
 msgstr ""
+"無法建立\n"
+"/etc/cipe 目錄！"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -2054,8 +2065,7 @@ msgstr ""
 "聯。"
 
 #: src/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/maindialog.glade.h:29
@@ -2192,8 +2202,7 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -3545,9 +3554,8 @@ msgid "Destination Network"
 msgstr "目標網路"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-#, fuzzy
 msgid "Device _Alias Number:"
-msgstr "裝置別名(_A):"
+msgstr "裝置別名號碼(_A):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
@@ -3894,3 +3902,4 @@ msgstr "網際網路組態設定精靈"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
+
