@@ -338,7 +338,6 @@ class ISDNDialupDialog(DialupDialog):
                 dialup.Callback.Type = 'in'
             else:
                 dialup.Callback.Type = 'out'
-            raise tttt
             dialup.Callback.Delay = self.xml.get_widget("callbackDelaySB").get_value_as_int()
             dialup.Callback.Hup = false
             dialup.Callback.Compression = self.xml.get_widget("cbcpCB").get_active()
