@@ -50,7 +50,7 @@ class MyConfModules(ConfModules):
             restr = '^[\\t ]*' + key + '[\\t ]+\\-k[\\t ]+' + varname
             while self.findnextline(restr):
                 self.deleteline()
-            
+
         del self.vars[varname]
         self.seek(place)
         
@@ -138,8 +138,8 @@ class HardwareList(HardwareList_base):
 
             for selfkey in self.keydict.keys():
                 confkey = self.keydict[selfkey]
-                if modules[mod]['options'].has_key(confkey):
-                    hw.Card.__dict__[selfkey] = modules[mod]['options'][confkey]
+                if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                    hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
 
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
@@ -190,13 +190,14 @@ class HardwareList(HardwareList_base):
             if hw.Type == 'Ethernet':
                 modules[hw.Name] = {}
                 modules[hw.Name]['alias'] = hw.Card.ModuleName
-                modules[hw.Name]['options'] = {}
+                modules[hw.Card.ModuleName] = {}
+                modules[hw.Card.ModuleName]['options'] = {}
                 for selfkey in self.keydict.keys():
                     confkey = self.keydict[selfkey]
                     if hw.Card.__dict__[selfkey]:
                         if selfkey == 'IRQ' and hw.Card.IRQ == 'Unknown':
                             continue
-                        modules[hw.Name]['options'][confkey] = str(hw.Card.__dict__[selfkey])
+                        modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
             if hw.Type == 'Modem':
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
