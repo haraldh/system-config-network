@@ -143,5 +143,4 @@ class ethernetHardware:
         self.hw.Card.ModuleName = 'Unknown'
         for i in modInfo.keys():
             if modInfo[i]['description'] == self.hw.Description:
-                self.hw.Card.ModuleName = i
-
+                self.hw.Card.ModuleName = i            

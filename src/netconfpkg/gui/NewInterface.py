@@ -49,7 +49,8 @@ class NewInterface:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        xml = libglade.GladeXML (glade_file, 'toplevel', domain=GUI_functions.PROGNAME)
+        xml = libglade.GladeXML (glade_file, 'toplevel',
+                                 domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.toplevel = xml.get_widget ('toplevel')
@@ -63,7 +64,8 @@ class NewInterface:
               'on_druid_cancel' : self.on_cancel_interface,
               'on_start_page_prepare' : self.on_start_page_prepare,
               'on_start_page_next' : self.on_start_page_next,
-              'on_interface_clist_select_row' : self.on_interface_clist_select_row,
+              'on_interface_clist_select_row' : \
+              self.on_interface_clist_select_row,
               })
 
         load_icon("network.xpm", self.toplevel)
@@ -86,7 +88,8 @@ class NewInterface:
         self.druid.set_buttons_sensitive (FALSE, TRUE, TRUE)
         
     def on_start_page_next (self, druid, druid_page):
-        interface = self.interface_clist.get_row_data (self.interface_clist.selection[0])
+        interface = self.interface_clist.get_row_data (\
+            self.interface_clist.selection[0])
 
         # remove all other children
         for i in self.druid.children()[1:]:

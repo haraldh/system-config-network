@@ -23,9 +23,9 @@ from netconfpkg.NCProfileList import *
 from netconfpkg.NCHardwareList import *
 
 class InterfaceCreator:
-    def __init__ (self):
-        raise NotImplementedError
-
+    def __init__ (self, do_save = 1):
+        self.do_save = do_save
+        
     def get_project_name (self):
         raise NotImplementedError
 
@@ -44,13 +44,19 @@ class InterfaceCreator:
         self.saveProfiles()
 
     def saveDevices(self):
+        if not self.do_save:
+            return
         devicelist = getDeviceList()
         devicelist.save()
 
     def saveHardware(self):
+        if not self.do_save:
+            return
         hardwarelist = getHardwareList()
         hardwarelist.save()
 
     def saveProfiles(self):
+        if not self.do_save:
+            return
         profilelist = getProfileList()
         profilelist.save()

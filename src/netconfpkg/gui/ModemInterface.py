@@ -36,7 +36,8 @@ import DialupDruid
 
 class ModemInterface:
     modemList = None
-    def __init__ (self, toplevel=None):
+    def __init__ (self, toplevel=None, do_save = 1):
+        self.do_save = do_save
         glade_file = 'ModemDruid.glade'
 
         if not os.path.isfile(glade_file):
@@ -77,7 +78,8 @@ class ModemInterface:
 
     def get_druids(self):
         Type = 'Modem'
-        dialup = DialupDruid.DialupDruid(self.toplevel, Type)
+        dialup = DialupDruid.DialupDruid(self.toplevel, Type,
+                                         do_save = self.do_save)
         for self.hw in self.hardwarelist:
             if self.hw.Type == Type: return dialup.get_druids()
  
