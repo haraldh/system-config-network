@@ -72,6 +72,7 @@ if __name__ == '__main__':
         import gnome
         import gtk.glade
         import netconfpkg.gui.GUI_functions
+        from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
         from netconfpkg.gui.maindialog import mainDialog
 
         netconfpkg.gui.GUI_functions.PROGNAME = PROGNAME
@@ -86,12 +87,15 @@ if __name__ == '__main__':
         gnome.program_init(PROGNAME, netconfpkg.PRG_VERSION)
         gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
         
-        if progname == 'redhat-config-network' or progname == 'neat' or \
-               progname == 'netconf.py':
-            window = mainDialog()
-        elif progname == 'redhat-config-network-druid' or \
-                 progname == 'internet-druid':
-            window = mainDialog('druid')
+
+        if progname == 'redhat-config-network-druid' or \
+               progname == 'internet-druid':
+            interface = NewInterfaceDialog()
+            gtk.mainloop()
+            if interface.canceled:
+                sys.exit(1)                
+
+        window = mainDialog()
         gtk.main()
 
     except SystemExit, code:

@@ -46,7 +46,7 @@ PAGE_HOSTS = 3
 DEFAULT_PROFILE_NAME=_("Common")
     
 class mainDialog:
-    def __init__(self, modus=None):
+    def __init__(self):
         glade_file = "maindialog.glade"
 
         if not os.path.isfile(glade_file):
@@ -130,7 +130,7 @@ class mainDialog:
             NETCONFDIR + "/pixmaps/nameresolution_alias.png")
         self.xml.get_widget ("devices_pixmap").set_from_file( \
             NETCONFDIR + "/pixmaps/network.png")
-        
+
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
@@ -196,10 +196,6 @@ class mainDialog:
         
         self.activedevicelist = NetworkDevice().get()
         self.tag = timeout_add(4000, self.update_devicelist)
-
-        if modus == 'druid':
-            if not self.on_deviceAddButton_clicked(None):
-                sys.exit(1)                
                 
         # initialize the button state..
         clist = self.xml.get_widget("deviceList")
