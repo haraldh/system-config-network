@@ -62,3 +62,6 @@ class Wireless(Wireless_base):
         # Bugzilla #52252
         #for i in conf.keys():
         #    if not conf[i] or conf[i] == "": del conf[i]
+
+        conf.oldmode = 0600
+        conf.chmod(0600)
