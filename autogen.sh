@@ -43,6 +43,7 @@ autoconf
 #gettextize --copy --force
 autoheader
 aclocal -I . $ACLOCAL_FLAGS
+aclocal
 automake --add-missing $am_opt
 autoconf
 cd $THEDIR
