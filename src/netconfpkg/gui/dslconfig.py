@@ -101,6 +101,9 @@ class dslConfigDialog(deviceConfigDialog):
         widget.set_position(0)
 
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
+
+        self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute == TRUE)
+        
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
@@ -114,6 +117,7 @@ class dslConfigDialog(deviceConfigDialog):
         dialup.ServiceName = self.xml.get_widget("serviceNameEntry").get_text()
         dialup.AcName = self.xml.get_widget("acNameEntry").get_text()
         dialup.SyncPPP = self.xml.get_widget("useSyncpppCB").get_active()
+        dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
         if not self.device.Device:
             self.device.Device = "dsl"
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
