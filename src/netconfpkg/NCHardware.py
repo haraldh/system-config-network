@@ -36,8 +36,13 @@ class Hardware(Hardware_base):
 
     def isType(self, device):
         return None
-    
+
+    def save(self):
+        return None
+
+    def postSave(self):
+        return None
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/01 11:24:39 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2003/10/08 15:10:38 $"
+__version__ = "$Revision: 1.9 $"
