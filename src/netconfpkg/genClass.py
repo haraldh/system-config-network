@@ -5,7 +5,7 @@
 ## tab-width: 3
 ## End:
 #
-__version__ = "1.9"
+__version__ = "1.10"
 #
 
 ## Copyright (C) 2000,2001 Red Hat, Inc.
