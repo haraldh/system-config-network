@@ -349,6 +349,8 @@ class IsdnDialup(Dialup):
             self.Callback.save(conf)
         else:
             conf['CALLBACK'] == 'off'
+
+        if conf['CALLBACK'] == 'off':
             if conf.has_key('PHONE_IN'): del conf['PHONE_IN']
             if conf.has_key('CBHUP'): del conf['CBHUP']
             if conf.has_key('CBDELAY'): del conf['CBDELAY']

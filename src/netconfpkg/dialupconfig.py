@@ -207,7 +207,7 @@ class ISDNDialupDialog(DialupDialog):
         DialupDialog.__init__(self, device, xml_main)
 
         page = self.noteBook.page_num(self.xml.get_widget ("modemTab"))
-        self.noteBook.get_nth_page(page).hide()        
+        self.noteBook.get_nth_page(page).hide()
         
         self.dialog.set_title(_("ISDN Dialup Configuration"))
 
@@ -270,7 +270,7 @@ class ISDNDialupDialog(DialupDialog):
             dialup.Callback.Type = "out"
             dialup.Callback.Number = self.xml.get_widget("dialinNumberEntry").get_text()
             dialup.Callback.Delay = self.xml.get_widget("callbackDelaySB").get_value_as_int()
-            dialup.Callback.Hup = 3
+            dialup.Callback.Hup = false
             dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
             dialup.Callback.Compression = self.xml.get_widget("cbcpCB").get_active()
         else:

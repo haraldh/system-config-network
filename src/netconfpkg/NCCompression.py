@@ -29,11 +29,6 @@ class Compression(Compression_base):
                     'CCP' : 'CCP',
                     }
     
-    keydict = { 'Hup' : 'CBHUP',
-                'Delay' : 'CBDELAY',
-                'Number' : 'PHONE_IN',
-                }
-
     def __init__(self, list = None, parent = None):
         Compression_base.__init__(self, list, parent)        
 

@@ -21,15 +21,13 @@ from DeviceList import *
 from NC_functions import *
 
 class Callback(Callback_base):
-    boolkeydict = { 'Compression' : 'CBCP', }
+    boolkeydict = { 'Compression' : 'CBCP',
+                    'Hup' : 'CBHUP' }
     
     keydict = { 'Number' : 'PHONE_IN',
-                'Type' : 'CALLBACK',
-                }
+                'Type' : 'CALLBACK' }
 
-    intkeydict = { 'Hup' : 'CBHUP',
-                   'Delay' : 'CBDELAY',
-                   }
+    intkeydict = { 'Delay' : 'CBDELAY' }
 
     def __init__(self, list = None, parent = None):
         Callback_base.__init__(self, list, parent)        
@@ -79,5 +77,5 @@ class Callback(Callback_base):
             else:
                 conf[confkey] = 'off'
 
-        if conf.has_key('CALLBACK') and conf['CALLBACK'] == "off":
-            if conf.has_key('CBCP'): del conf['CBCP']
+
+            
