@@ -179,8 +179,6 @@ ListCNLOps = """
 
 	def commit%childname(self, changed=true):
 		if self.__%childname_bak != self.%childname:
-			if changed:
-				print "%childname changed"
 			self.setChanged(changed)			
 		self.__%childname_bak = self.%childname
 """
@@ -202,8 +200,6 @@ ListCLOps = """
 		if hasattr(self.%childname, "commit"):
 			self.%childname.commit(changed)
 		if self.__%childname_bak != self.%childname:
-			if changed:
-				print "%childname changed"
 			self.setChanged(changed)
 		self.__%childname_bak = self.%childname
 """
