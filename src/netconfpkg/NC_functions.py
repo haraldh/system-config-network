@@ -125,8 +125,9 @@ def assure_rpms(pkgs = []):
     if len(toinstall):
         import string
         plist = string.join(toinstall, '\n')
-	r = generic_longinfo_dialog(_("Shall I install the following packages,"
-                                      "which are needed on your system?"),
+	r = generic_longinfo_dialog(_("Shall the following packages, "
+                                      "which are needed on your system, "
+                                      "be installed?"),
                                     plist, dialog_type="question")
     return r
 
