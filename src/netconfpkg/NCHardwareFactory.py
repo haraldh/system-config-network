@@ -17,6 +17,7 @@
 
 from NC_functions import *
 from netconfpkg.NCHardware import Hardware
+import NCDevice
 
 class HardwareFactory(dict):
     def register(self, theclass, type, subtype = None):
@@ -36,6 +37,9 @@ class HardwareFactory(dict):
                 self[type][subtype] = theclass
 
     def getHardwareClass(self, type, subtype = None):
+        if not self.has_key(type):
+            print "Error: %s not in HardwareFactory!" %s 
+            return NCHardware.Hardware
         if subtype and self[type].has_key(subtype):
             return self[type][subtype]
         else:
