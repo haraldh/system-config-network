@@ -78,7 +78,7 @@ class DeviceList(DeviceList_base):
                 if dev.Type == "ISDN":
                     if dev.Dialup.EncapMode == 'syncppp':
                         dev.Device = "ippp"+str(ipppnum)
-                        if dev.Dialup.ChannelBundling == TRUE:
+                        if dev.Dialup.ChannelBundling == true:
                             ipppnum = ipppnum + 1
                         ipppnum = ipppnum + 1
                     else:
