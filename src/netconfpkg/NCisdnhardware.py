@@ -18,16 +18,12 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import signal
 import os
+import signal
 import string
-import re
  
-FALSE = 0
-TRUE = not FALSE
-
 card = {
+    # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, pci_id, firmware, module ]
     "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "hisax" ],
     "ASUS COM ISDNLink ISA PnP" : [ "12", "5", "0x200", "", "", "", "", "", "hisax" ],
     "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "","","hisax" ],
@@ -48,7 +44,7 @@ card = {
     "ELSA Quickstep 1000" : [ "7", "5", "0x300", "", "", "", "", "", "hisax" ],
     "ELSA Quickstep 1000 PCI" : [ "18", "", "", "", "", "", "10481000", "", "hisax" ],
     "ELSA Quickstep 3000 PCI" : [ "18", "", "", "", "", "", "10483000", "", "hisax" ],
-    "ELSA PCMCIA MicroLink cards" : [ "0", "", "", "", "", "", "", "", "elsa_cs" ],
+    "ELSA PCMCIA MicroLink cards" : [ "", "", "", "", "", "", "", "", "elsa_cs" ],
     "Gazel cards ISA" : [ "34", "5", "0x300", "", "", "", "", "", "hisax" ],
     "Gazel cards PCI" : [ "34", "", "", "", "", "", "10b51030", "", "hisax" ],
     "HFC-2BS0 based cards ISA" : [ "13", "9", "0xd80", "", "", "", "", "", "hisax" ],
@@ -62,7 +58,7 @@ card = {
     "Sedlbauer Speed Card" : [ "15", "9", "0xd80", "", "", "", "", "", "hisax" ],
     "Sedlbauer Speed Fax+" : [ "28", "9", "0xd80", "", "", "", "", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
     "Sedlbauer Speed fax+ PCI" : [ "28", "", "", "", "", "", "e1590002", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
-    "Sedlbauer Speed Star PCMCIA Card" : [ "0", "", "", "", "", "", "", "", "sedlbauer_cs" ],
+    "Sedlbauer Speed Star PCMCIA Card" : [ "", "", "", "", "", "", "", "", "sedlbauer_cs" ],
     "Siemens I-Surf 1.0" : [ "29", "9", "0xd80", "", "", "0xd000", "", "", "hisax" ],
     "Telekom A4T" : [ "32", "", "", "", "", "", "", "", "hisax" ],
     "Teles 8.0" : [ "2", "9", "", "", "", "0xd800", "", "", "hisax" ],
@@ -76,111 +72,145 @@ card = {
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "10506692", "", "hisax" ]
     }
 
-class ISDNResource:
-    def __init__(self, name):
-        self.name = name
 
-    def get_name(self):
-        if card.has_key(self.name):
-            return self.name
+class ConfISDN:
+    def __init__(self):
+        self.Id = "HiSax"
+        self.Description = ""
+        self.ChannelProtocol = "2"
+        self.Type = ""
+        self.IRQ = ""
+        self.IoPort = ""
+        self.IoPort1 = ""
+        self.IoPort2 = ""
+        self.Mem = ""
+        self.Pci_id = ""
+        self.Firmware = ""
+        self.ModuleName = "hisax"
 
-    def get_type(self):
-        if card.has_key(self.name):
-            return card[self.name][0]
+    def get_value(self, s):
+        if string.find(s, "=") < 0:
+            return ""
+        s = string.split(s, "=", 1)[1]
+        s = string.replace(s, "\"", "")
 
-    def get_irq(self):
-        if card.has_key(self.name):
-            return card[self.name][1]
+        return string.strip(s)
 
-    def set_irq(self, irq):
-        if card.has_key(self.name):
-            self.irq = irq
+    def load(self, f = "/etc/sysconfig/isdncard"):
+        if not os.path.exists(f):
+            return -1
 
-    def get_io(self):
-        if card.has_key(self.name):
-            return card[self.name][2]
+        conf = open(f, "r")
+        line = conf.readline()
 
-    def set_io(self, io):
-        if card.has_key(self.name):
-            self.io = io
+        while line:
+            line = string.strip(line)
+            if len(line) == 0 or line[0] == "#":
+                pass
+            elif line[:5]  == "NAME=":
+                self.Description = self.get_value(line)
+            elif line[:7] == "MODULE=":
+                self.ModuleName = self.get_value(line)
+            elif line[:9] == "FIRMWARE=":
+                self.Firmware = self.get_value(line)
+            elif line[:10] == "RESOURCES=":
+                rlist = string.split(self.get_value(line), " ")
+                for i in rlist:
+                    if string.find(i, "type=") == 0:
+                        self.Type = self.get_value(i)
+                    elif string.find(i, "protocol=") == 0:
+                        self.ChannelProtocol = self.get_value(i)
+                    elif string.find(i, "irq=") == 0:
+                        self.IRQ = self.get_value(i)
+                    elif string.find(i, "id=") == 0:
+                        self.Id = self.get_value(i)
+                    elif string.find(i, "io=") == 0 or string.find(i, "io0=") == 0:
+                        self.IoPort = self.get_value(i)
+                    elif string.find(i, "io1=") == 0:
+                        self.IoPort1 = self.get_value(i)
+                    elif string.find(i, "io2=") == 0:
+                        self.IoPort2 = self.get_value(i)
+                    elif string.find(i, "mem=") == 0:
+                        self.Mem = self.get_value(i)
+            line = conf.readline()
+            
+        conf.close()
+        return 1
+    
+    def save(self, f = "/etc/sysconfig/isdncard"):
+        # we only support 1 ISDN card in this version
+        if not self.Description:
+            if  os.path.exists(f):
+                os.unlink(f)
+            return
 
-    def get_io1(self):
-        if card.has_key(self.name):
-            return card[self.name][3]
+        try:
+            conf = open( f, "w")
+            conf.write("NAME=\"" + self.Description + "\"\n")
+            conf.write("MODULE=\"" + self.ModuleName + "\"\n")
+            if self.Firmware:
+                conf.write("FIRMWARE=\"" + self.Firmware + "\"\n")
 
-    def set_io1(self, io1):
-        if card.has_key(self.name):
-            self.io1 = io1
+            rs = "RESOURCES=\""
+            if self.Type:
+                rs = rs + "type=" + str(self.Type) + " protocol=" + str(self.ChannelProtocol)
+                if self.IRQ:
+                    rs = rs + " irq=" + str(self.IRQ)
+                if self.Id:
+                    rs = rs + " id=" + str(self.Id)
+                if self.IoPort:
+                    if self.Type == "4" or self.Type == "19" or self.Type == "24":
+                        rs = rs + " io0=" + str(self.IoPort)
+                    else:
+                        rs = rs + " io=" + str(self.IoPort)
+                if self.IoPort1:
+                    rs = rs + " io1=" + str(self.IoPort1)
+                if self.IoPort2:
+                    rs = rs + " io2=" + str(self.IoPort2)
+                if self.Mem:
+                    rs = rs + " mem=" + str(self.Mem)
+            else:
+                rs = rs + "NONE"
 
-    def get_io2(self):
-        if card.has_key(self.name):
-            return card[self.name][4]
+            rs = rs + "\"\n"
+            conf.write(rs)
+            conf.close()
+            
+        except(IOError): pass
 
-    def set_io2(self, io2):
-        if card.has_key(self.name):
-            self.io2 = io2
-
-    def get_mem(self):
-        if card.has_key(self.name):
-            return card[self.name][5]
-
-    def set_mem(self, mem):
-        if card.has_key(self.name):
-            self.mem = mem
-
-    def get_pci_id(self):
-        if card.has_key(self.name):
-            return card[self.name][6]
-
-    def get_firmware(self):
-        if card.has_key(self.name):
-            return card[self.name][7]
-
-    def get_modul(self):
-        if card.has_key(self.name):
-            return card[self.name][8]
-
-
-def ISDNHardwareConf(fname = "/etc/sysconfig/isdncardo"):
-    if not os.path.exists(fname):
-        return None
-
-    conf = open(fname, "r")
-    cardname = conf.readline()
-
-    while cardname:
-        cardname = string.strip(cardname)
-        if cardname[:4] == "NAME":
-            break
-    conf.close()
-    cardname = string.split(cardname, "=")[1]
-    cardname = string.split(cardname, "\"")[1]
-    cardname = string.strip(cardname)
-    return ISDNResource(cardname)
-
+    def get_resource(self, name):
+        if card.has_key(name):
+            self.Description = name
+            self.Type = card[name][0]
+            self.IRQ = card[name][1]
+            self.IoPort = card[name][2]
+            self.IoPort1 = card[name][3]
+            self.IoPort2 = card[name][4]
+            self.Mem = card[name][5]
+            self.Pci_id = card[name][6]
+            self.Firmware = card[name][7]
+            self.ModuleName = card[name][8]
+        
+        
 if __name__ == "__main__":
-    name = "Sedlbauer Speed PCI"
-    isdncard = ISDNResource(name);
-    print "Name: ", isdncard.get_name()
-    print "Type: ", isdncard.get_type()
-    print "Irq: ", isdncard.get_irq()
-    print "Io: ", isdncard.get_io()
-    print "Io1: ", isdncard.get_io1()
-    print "Io2: ", isdncard.get_io2()
-    print "Mem: ", isdncard.get_mem()
-    print "Pci id: ", isdncard.get_pci_id()
-    print "Firmware: ", isdncard.get_firmware()
-    print "Modul: ", isdncard.get_modul()
+    conf = ConfISDN()
+    if conf.load() < 0:
+        conf.Description = "Sedlbauer Speed fax+ PCI"
+        conf.Type = "28"
+        conf.ModuleName = "hisax"
+        conf.Firmware = "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN"
 
-    conf = ISDNHardwareConf()
-    if conf:
-        print "Name: ", conf.get_name()
-        print "Type: ", conf.get_type()
-        print "Irq: ", conf.get_irq()
-        print "Io: ", conf.get_io()
-        print "Io1: ", conf.get_io1()
-        print "Io2: ", conf.get_io2()
-        print "Mem: ", conf.get_mem()
-        print "Pci id: ", conf.get_pci_id()
-        print "Firmware: ", conf.get_firmware()
-        print "Modul: ", conf.get_modul()
+    print "Channel Protocol: ", conf.ChannelProtocol
+    print "Name: ", conf.Description
+    print "Type: ", conf.Type
+    print "Irq: ", conf.IRQ
+    print "Io: ", conf.IoPort
+    print "Io1: ", conf.IoPort1
+    print "Io2: ", conf.IoPort2
+    print "Mem: ", conf.Mem
+    print "Pci id: ", conf.Pci_id
+    print "Firmware: ", conf.Firmware
+    print "Modul: ", conf.ModuleName
+    print "ID: ", conf.Id
+
+    conf.save()

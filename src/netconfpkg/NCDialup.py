@@ -14,33 +14,33 @@ class Dialup(Dialup_base):
 class IsdnDialup(Dialup):                        
 
     boolkeydict = { 'Secure' : 'SECURE',
-                     'ChannelBundling' : 'BUNDLING',
-                     'DefRoute' : 'DELDEFAULTROUTE',
-                     }
+                    'ChannelBundling' : 'BUNDLING',
+                    'DefRoute' : 'DELDEFAULTROUTE',
+                    }
     
     intkeydict = {'MSN' : 'MSN',
-                 'DialMax' : 'DIALMAX',
-                 'HangupTimeout' : 'HUPTIMEOUT',
-               }
-
+                  'DialMax' : 'DIALMAX',
+                  'HangupTimeout' : 'HUPTIMEOUT',
+                  }
+    
     keydict = { 'ProviderName' : 'PROVIDER',
-                 'Login' : 'USER',
-                 'Password' : 'PASSWORD',
-                 'EncapMode' : 'ENCAP',
-                 'DialMode' : 'DIALMODE',                 
-                 'Prefix' : 'PREFIX',
-                 'Areacode' : 'AREACODE',
-                 'Regioncode' : 'REGIONCODE',
-                 'PhoneOut' : 'PHONE_OUT',
-                 'PrimaryDNS' : 'DNS1',
-                 'SecondaryDNS' : 'DNS2',
-                 'Layer2' : 'LAYER',
-                 'ChargeHup' : 'CHARGEHUP',
-                 'ChargeInt' : 'CHARGEINT',
-                 'Authentication' : 'AUTH',
-                 'Ihup' : 'IHUP',
-                 'SlaveDevice' : 'SLAVE_DEVICE',
-               }
+                'Login' : 'USER',
+                'Password' : 'PASSWORD',
+                'EncapMode' : 'ENCAP',
+                'DialMode' : 'DIALMODE',                 
+                'Prefix' : 'PREFIX',
+                'Areacode' : 'AREACODE',
+                'Regioncode' : 'REGIONCODE',
+                'PhoneOut' : 'PHONE_OUT',
+                'PrimaryDNS' : 'DNS1',
+                'SecondaryDNS' : 'DNS2',
+                'Layer2' : 'LAYER',
+                'ChargeHup' : 'CHARGEHUP',
+                'ChargeInt' : 'CHARGEINT',
+                'Authentication' : 'AUTH',
+                'Ihup' : 'IHUP',
+                'SlaveDevice' : 'SLAVE_DEVICE',
+                }
     
     def __init__(self, list = None, parent = None):
         Dialup.__init__(self, list, parent)        

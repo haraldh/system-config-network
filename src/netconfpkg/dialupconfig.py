@@ -253,5 +253,6 @@ class ModemDialupDialog(DialupDialog):
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = DialupDialog()
+    window.run()
     gtk.mainloop()
 

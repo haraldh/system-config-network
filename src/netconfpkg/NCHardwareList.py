@@ -1,3 +1,4 @@
+#! /usr/bin/python
 import os
 import string
 from HardwareList import *
@@ -82,10 +83,29 @@ class HardwareList(HardwareList_base):
                     hw.Card.ModuleName = info
                     hw.Description = modinfo[info]['description']
 
-#                        for h in hwconf.keys():
-#                            if hwconf[h]['driver'] == info:
-#                                pass
+                    # for h in hwconf.keys():
+                    #     if hwconf[h]['driver'] == info:
+                    #         pass
 
+        
+        isdncard = ConfISDN()
+        if isdncard.load() > 0:
+            i = self.addHardware()
+            hw = self.data[i]
+            hw.Name = "ISDN Card 0"
+            hw.Description = isdncard.Description
+            hw.Type = "ISDN"
+            hw.createCard()
+            hw.Card.ModuleName = isdncard.ModuleName
+            hw.Card.Type = isdncard.Type
+            hw.Card.IoPort = isdncard.IoPort
+            hw.Card.IoPort1 = isdncard.IoPort1
+            hw.Card.IoPort2 = isdncard.IoPort2
+            hw.Card.Mem = isdncard.Mem
+            hw.Card.IRQ = isdncard.IRQ
+            hw.Card.ChannelProtocol = isdncard.ChannelProtocol
+            hw.Card.Firmware = isdncard.Firmware
+            
         wvdial = ConfSMB('/etc/wvdial.conf')
         for dev in wvdial.keys():
             if dev[:5] != 'Modem':
@@ -105,6 +125,8 @@ class HardwareList(HardwareList_base):
     def save(self):
         modules = ConfModules()
         wvdial  = ConfSMB('/etc/wvdial.conf')
+        isdn    = ConfISDN()
+        
         for hw in self.data:
             if hw.Type == 'Ethernet':
                 modules[hw.Name]['alias'] = hw.Card.ModuleName
@@ -113,8 +135,22 @@ class HardwareList(HardwareList_base):
                 wvdial[hw.Name]['Baud'] = hw.Modem.BaudRate
                 wvdial[hw.Name]['SetVolume'] = hw.Modem.ModemVolume
                 wvdial[hw.Name]['Dial Command'] = hw.Modem.DialCommand
+            if hw.Type == "ISDN":
+                isdn.Description = hw.Description
+                isdn.Type = hw.Card.Type
+                isdn.ModulName = hw.Card.ModuleName
+                isdn.IRQ = hw.Card.IRQ
+                isdn.IoPort = hw.Card.IoPort
+                isdn.IoPort1 = hw.Card.IoPort1
+                isdn.IoPort2 = hw.Card.IoPort2
+                isdn.Mem = hw.Card.Mem
+                isdn.ChannelProtocol = hw.Card.ChannelProtocol
+                isdn.Firmware = hw.Card.Firmware
+                isdn.Id = "HiSax"
+
         modules.write()
         wvdial.write()
+        isdn.save()
 
 HWList = None
 
@@ -130,10 +166,27 @@ if __name__ == '__main__':
     hl = HardwareList()
     hl.load()
     for i in xrange(len(hl)):
-        print "Device: " + str(hl[i].DeviceId)
-        print "DevName: " + str(hl[i].DeviceName)
-        print "IP: " + str(hl[i].IP)
-        print "OnBoot: " + str(hl[i].OnBoot)
-        print "---------"
+        print "Name: ", hl[i].Name
+        print "Description: ", hl[i].Description
+        print "Type: ", hl[i].Type
+        if hl[i].Type == "Ethernet" or hl[i].Type == "ISDN":
+            print "ModuleName: ", hl[i].Card.ModuleName
+            print "IoPort: ", hl[i].Card.IoPort
+            print "IoPort1: ", hl[i].Card.IoPort1
+            print "IoPort2: ", hl[i].Card.IoPort2
+            print "Mem: ", hl[i].Card.Mem
+            print "IRQ: ", hl[i].Card.IRQ
+            print "DMA0: ", hl[i].Card.DMA0
+            print "DMA1: ", hl[i].Card.DMA1
+            print "ChannelProtocol: ", hl[i].Card.ChannelProtocol
+            
+        if hl[i].Type == "Modem":
+            print "DeviceName: ", hl[i].Modem.DeviceName
+            print "BaudRate: ", hl[i].Modem.BaudRate
+            print "FlowControl: ", hl[i].Modem.FlowControl
+            print "ModemVolume: ", hl[i].Modem.ModemVolume
+            print "DialCommand: ", hl[i].Modem.DialCommand
+
+        print "-----------------------------------------"
 
     hl.save()

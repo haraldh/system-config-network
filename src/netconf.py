@@ -29,7 +29,7 @@ import gettext
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not "/usr/share/netconf/" in sys.path:
+if not "/usr/share/netconf" in sys.path:
     sys.path.append("/usr/share/netconf")
 
 import Conf
@@ -214,7 +214,12 @@ class mainDialog:
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
+        hardwareTypeList = ["Ethernet", "Modem", "ISDN"]
+        self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
         for hw in hardwarelist:
+            if hw.Type == "ISDN":
+                hardwareTypeList = ["Ethernet", "Modem"]
+                self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
             clist.append([hw.Description, hw.Type, hw.Name])
 
     def hydrateProfiles(self):
@@ -627,13 +632,36 @@ class mainDialog:
             dialog.xml.get_widget('Dialog').run()
 
         if deviceType == 'ISDN':
-            dialog = isdnHardwareDialog(self.xml)
-            if not edit:
-                return
-            dialog.xml.get_widget('Dialog').run()
-
+            if edit:
+                clist = self.xml.get_widget('hardwareList')
+                Description = clist.get_text(clist.selection[0], 0)
+                type  = clist.get_text(clist.selection[0], 1)
+                dev   = clist.get_text(clist.selection[0], 2)
+                for hw in hardwarelist:
+                    if hw.Description == Description:
+                        break;
+                dialog = editisdnHardwareDialog(hw.Description)
+            else:
+                dialog = addisdnHardwareDialog()
+                
+            dialog.main = self
+            dialog.xml.get_widget("Dialog").run()
+            
     def on_hardwareDeleteButton_clicked (self, *args):
-        pass
+        global hardwarelist
+        clist = self.xml.get_widget("hardwareList")
+
+        if len(clist.selection) == 0:
+            return
+
+        hw = hardwarelist[clist.selection[0]]
+        description = clist.get_text(clist.selection[0], 0)
+        type = clist.get_text(clist.selection[0], 1)
+        dev = clist.get_text(clist.selection[0], 2)
+
+        del hardwarelist[clist.selection[0]]
+        self.hydrate()
+
 
 # make ctrl-C work
 if __name__ == '__main__':

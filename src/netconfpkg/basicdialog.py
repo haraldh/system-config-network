@@ -107,15 +107,25 @@ class basicDialog:
                 
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser)
-            
-            self.xml.get_widget('ipSettingCB').set_active(self.device.BootProto != 'static' and self.device.BootProto != 'none')
-            self.xml.get_widget('addressEntry').set_text(self.device.IP)
-            self.xml.get_widget('netmaskEntry').set_text(self.device.Netmask)
-            self.xml.get_widget('gatewayEntry').set_text(self.device.Gateway)
+
+            if self.device.BootProto == "static":
+                self.xml.get_widget('ipSettingCB').set_active(FALSE)
+                if self.device.IP:
+                    self.xml.get_widget('addressEntry').set_text(self.device.IP)
+                if self.device.Netmask:
+                    self.xml.get_widget('netmaskEntry').set_text(self.device.Netmask)
+                if self.device.Gateway:
+                    self.xml.get_widget('gatewayEntry').set_text(self.device.Gateway)
+            else:
+                self.xml.get_widget('ipSettingCB').set_active(TRUE)
+                if self.device.Type == "ISDN" or self.device.Type == "Modem" or \
+                   self.device.Type == "xDSL":
+                    self.xml.get_widget("dynamicConfigEntry").set_text("DIALUP")
 
             if self.device.Hostname:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
-            self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
+            if self.device.AutoDNS:
+                self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
 
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
