@@ -199,7 +199,6 @@ class HardwareList(HardwareList_base):
                 #generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
 
     def updateFromSystem(self):
-
         modules = ConfModules()
         modinfo = getModInfo()            
 
@@ -245,6 +244,51 @@ class HardwareList(HardwareList_base):
                             hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
                     hw.setChanged(true)
                     #generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
+
+        #
+        # Read from kudzu
+        #
+        devlist = []
+        devlist.extend(kudzu.probe(kudzu.CLASS_NETWORK, kudzu.BUS_UNSPEC,
+                                   kudzu.PROBE_SAFE))
+        devlist.extend(kudzu.probe(kudzu.CLASS_MODEM,
+                                   kudzu.BUS_UNSPEC, kudzu.PROBE_SAFE))
+        for kudzu_device in devlist:
+            
+            if (kudzu_device.driver == "ignore"):
+                continue
+            
+            mod = kudzu_device.driver
+            for hw in self:
+                if hw.Card and hw.Card.ModuleName == mod:
+                    break
+            else:
+                i = self.addHardware(getDeviceType(kudzu_device.device))
+                hw = self[i]
+                if string.find (kudzu_device.desc, "|") != -1:
+                    mfg, desc = string.split (kudzu_device.desc, "|")
+                else:
+                    mfg = _("Unknown")
+                    desc = kudzu_device.desc
+
+                hw.Name = kudzu_device.device
+                hw.Description = desc
+                if kudzu_device.device != None:
+                    hw.Type = getDeviceType(kudzu_device.device)
+                        
+                hw.createCard()
+                hw.Card.ModuleName = mod
+
+                for info in modinfo.keys():
+                    if info == mod:
+                        if modinfo[info].has_key('description'):
+                            hw.Description = modinfo[info]['description']
+                            
+                for selfkey in self.keydict.keys():
+                    confkey = self.keydict[selfkey]
+                    if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                        hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                
 
     def load(self):
         modules = ConfModules()
