@@ -74,9 +74,7 @@ class dialupDialog:
         self.noteBook = self.xml.get_widget("dialupNotebook")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
-        self.dialog.set_icon(pix, mask)
-
+        self.load_icon("network.xpm")
 
         if type == "Modem":
             self.dialog.set_title("Modem Dialup Configuration")
@@ -87,7 +85,25 @@ class dialupDialog:
             self.dialog.set_title("ISDN Dialup Configuration")
         
         self.dialog.show()
-        
+
+    def load_icon(self, pixmap_file, widget = None):
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "../pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "/usr/share/netconf/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            return
+
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
+        gtk.GtkPixmap(pix, mask)
+
+        if widget:
+            widget.set(pix, mask)
+        else:
+            self.dialog.set_icon(pix, mask)
+
     def on_Dialog_delete_event(self, *args):
         self.dialog.destroy()
         gtk.mainquit()

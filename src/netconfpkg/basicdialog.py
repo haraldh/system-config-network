@@ -56,7 +56,6 @@ class basicDialog:
             glade_file = "/usr/share/netconf/" + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
-
         self.xml.signal_autoconnect(
             {
             "on_configureButton_clicked" : self.on_configureButton_clicked,
@@ -76,20 +75,28 @@ class basicDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
-                                               "pixmaps/network.xpm")
+        self.load_icon("network.xpm")
+        self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
+        self.dialog.show()
+
+    def load_icon(self, pixmap_file, widget = None):
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "../pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "/usr/share/netconf/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            return
+
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
         gtk.GtkPixmap(pix, mask)
-        self.dialog.set_icon(pix, mask)
-        self.set_icon(self.xml.get_widget("networkPixmap"),
-                      "pixmaps/network.xpm")
-        self.dialog.show_all()
 
-    def set_icon(self, widget, pixmapFile):
-        if os.path.exists (pixmapFile):
-            pix, mask = gtk.create_pixmap_from_xpm (gtk.GtkWindow (), None,
-                                                    pixmapFile)
-            widget.set (pix, mask)
-
+        if widget:
+            widget.set(pix, mask)
+        else:
+            self.dialog.set_icon(pix, mask)
+        
     def on_Dialog_delete_event(self, *args):
         self.dialog.destroy()
         gtk.mainquit()

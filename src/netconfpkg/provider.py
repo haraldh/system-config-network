@@ -79,7 +79,33 @@ class providerDialog:
         
         self.okButton.set_sensitive(FALSE)
         self.setup_provider_db()
+        self.load_icon("network.xpm")
         self.dialog.show()
+
+    def get_icon(self, pixmap_file):
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "../pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "/usr/share/netconf/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            return None, None
+
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
+        return pix, mask
+    
+    def load_icon(self, pixmap_file, widget = None):
+        pix, mask = self.get_icon(pixmap_file)
+        if not pix:
+            return
+
+        gtk.GtkPixmap(pix, mask)
+
+        if widget:
+            widget.set(pix, mask)
+        else:
+            self.dialog.set_icon(pix, mask)
 
     def on_cancelButton_clicked(self, button):
         self.done = FALSE
@@ -124,17 +150,15 @@ class providerDialog:
 
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
-        pix_isp, mask_isp = gtk.create_pixmap_from_xpm(self.dbtree, None,
-                                                       "pixmaps/isp.xpm")
-        pix_city, mask_city = gtk.create_pixmap_from_xpm (self.dbtree, None,
-                                                          "pixmaps/city.xpm")
+        
+        pix_isp, mask_isp = self.get_icon("isp.xpm")
+        pix_city, mask_city = self.get_icon("city.xpm")
         isp_list = get_provider_list()
         _country = ""
         _city = ""
         for isp in isp_list:
             if _country != isp[0]:
-                pix, mask = gtk.create_pixmap_from_xpm (self.dbtree, None,
-                                                        "pixmaps/"+isp[2]+".xpm")
+                pix, mask = self.get_icon(isp[2]+".xpm")
                 country = self.dbtree.insert_node(None, None, [isp[0]], 5,
                                                   pix, mask, pix, mask, is_leaf=FALSE)
                 _country = isp[0]

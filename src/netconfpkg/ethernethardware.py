@@ -18,6 +18,9 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+import sys
+sys.path.append("/usr/lib/rhs/python/")
+
 import gtk
 import GDK
 import GTK
@@ -28,6 +31,7 @@ import GdkImlib
 import string
 import gettext
 import re
+import Conf
 
 from gtk import TRUE
 from gtk import FALSE
@@ -56,16 +60,15 @@ class ethernetHardwareDialog:
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_adapterEntry_changed" : self.on_adapterEntry_changed
             })
 
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
-                                               "pixmaps/network.xpm")
-        gtk.GtkPixmap(pix, mask) 
-        self.dialog.set_icon(pix, mask)
+        self.load_icon("network.xpm")
+        self.updateDialog()
         self.dialog.show()
         
     def on_Dialog_delete_event(self, *args):
@@ -77,11 +80,40 @@ class ethernetHardwareDialog:
     def on_cancelButton_clicked(self, button):
         self.dialog.destroy()
 
-    def on_isdnCardEntry_changed(self, entry):
-        pass
-
     def updateDialog(self):
         pass
+
+    def on_adapterEntry_changed(self, entry):
+        pass
+
+    def load_icon(self, pixmap_file, widget = None):
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "../pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "/usr/share/netconf/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            return
+
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
+        gtk.GtkPixmap(pix, mask)
+
+        if widget:
+            widget.set(pix, mask)
+        else:
+            self.dialog.set_icon(pix, mask)
+            
+    def updateDialog(self):
+        list = []
+        modInfo = Conf.ConfModInfo()
+        for i in modInfo.keys():
+            if modInfo[i]['type'] == "eth":
+                list.append(modInfo[i]['description'])
+        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+
+
+
 
 # make ctrl-C work
 if __name__ == "__main__":

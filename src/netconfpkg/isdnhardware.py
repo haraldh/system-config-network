@@ -63,13 +63,27 @@ class isdnHardwareDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
-                                               "pixmaps/network.xpm")
-        
-        gtk.GtkPixmap(pix, mask)
-        self.dialog.set_icon(pix, mask)
+        self.load_icon("network.xpm")
         self.dialog.show()
-        
+
+    def load_icon(self, pixmap_file, widget = None):
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "../pixmaps/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "/usr/share/netconf/" + pixmap_file
+        if not os.path.exists(pixmap_file):
+            return
+
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
+        gtk.GtkPixmap(pix, mask)
+
+        if widget:
+            widget.set(pix, mask)
+        else:
+            self.dialog.set_icon(pix, mask)
+
     def on_Dialog_delete_event(self, *args):
         self.dialog.destroy()
         
@@ -88,6 +102,6 @@ class isdnHardwareDialog:
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = isdnhardwareDialog()
+    window = isdnHardwareDialog()
     gtk.mainloop()
 
