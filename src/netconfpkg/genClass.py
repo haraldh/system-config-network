@@ -8,8 +8,8 @@
 __version__ = "2.0"
 #
 
-## Copyright (C) 2000,2001 Red Hat, Inc.
-## Copyright (C) 2000,2001 Harald Hoyer <harald.hoyer@redhat.de>
+## Copyright (C) 2000-2002 Red Hat, Inc.
+## Copyright (C) 2000-2002 Harald Hoyer <harald.hoyer@redhat.de>
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -577,7 +577,7 @@ def printClass(list, basename, baseclass):
 		except (IOError, OSError), msg:
 			pass
 		else:
-			file.write("""## Copyright (C) 2000,2001 Red Hat, Inc.
+			file.write("""## Copyright (C) 2000-2002 Red Hat, Inc.
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -708,7 +708,7 @@ if __name__ == '__main__':
 		   + ImplPrefix + "_functions.py instead" \
 		   + """
 
-## Copyright (C) 2000,2001 Red Hat, Inc.
+## Copyright (C) 2000-2002 Red Hat, Inc.
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -803,7 +803,7 @@ if __name__ == '__main__':
 		except (IOError, OSError), msg:
 			pass
 		else:		
-			file.write("""## Copyright (C) 2000,2001 Red Hat, Inc.
+			file.write("""## Copyright (C) 2000-2002 Red Hat, Inc.
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by

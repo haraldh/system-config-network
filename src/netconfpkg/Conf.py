@@ -1,4 +1,4 @@
-# Copyright (C) 1996-2000 Red Hat, Inc.
+# Copyright (C) 1996-2002 Red Hat, Inc.
 # Use of this software is subject to the terms of the GNU General
 # Public License
 
