@@ -146,7 +146,7 @@ class mainDialog:
             if NetworkDevice().find(device):
                 self.update_dialog()
             else:
-                errorDialog(device, ACTIVATE)
+                devErrorDialog(device, ACTIVATE)
 
         
     def on_deactivateButton_clicked(self, button):
@@ -156,7 +156,7 @@ class mainDialog:
             if not ret:
                 self.update_dialog()
             else:
-                errorDialog(device, DEACTIVATE)
+                devErrorDialog(device, DEACTIVATE)
 
     def on_configureButton_clicked(self, button):
         device = self.clist_get_device()
@@ -165,7 +165,7 @@ class mainDialog:
             if not ret:
                 self.hydrate()
             else:
-                errorDialog(device, CONFIGURE)
+                devErrorDialog(device, CONFIGURE)
 
     def on_monitorButton_clicked(self, button):
         device = self.clist_get_device()
