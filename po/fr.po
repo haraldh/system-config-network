@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "POT-Creation-Date: 2002-11-13 16:07+0100\n"
-"PO-Revision-Date: 2002-11-05 09:29+1000\n"
+"PO-Revision-Date: 2002-11-14 10:48+1000\n"
 "Last-Translator: Jean-Paul AUBRY <jpaubry@redhat.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,8 +40,7 @@ msgid ""
 "\n"
 "Usage: redhat-config-network-cmd -p --profile <profile>"
 msgstr ""
-"redhat-config-network-cmd - outil de ligne de commande de la configuration "
-"du réseau Python\n"
+"redhat-config-network-cmd - outil de ligne de commande de la configuration du réseau Python\n"
 "\n"
 "Utilisation : redhat-config-network-cmd -p --profil <profile>"
 
@@ -64,11 +63,15 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
+"Les modifications sont sauvegardées.\n"
+"Vous voulez peut-être redémarrer\n"
+"le réseau et les services réseau\n"
+"ou redémarrer l'ordinateur."
 
 #. change the default profile to a more understandable name
 #: src/netconf.py:493 src/netconf.py:506
 msgid "Do you want to save your changes?"
-msgstr "Voulez-vous sauvegarder vos modifications ?"
+msgstr "Voulez-vous sauvegarder vos modifications?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
@@ -97,9 +100,7 @@ msgstr "Vous avez modifié votre configuration."
 #: src/netconf.py:688
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"Pour activer le périphérique réseau %s, vous devez sauvegarder les "
-"modifications."
+msgstr "Pour activer le périphérique réseau %s, vous devez sauvegarder les modifications."
 
 #: src/netconf.py:690
 msgid "Do you want to continue?"
@@ -118,11 +119,13 @@ msgid "Activating network device %s, please wait..."
 msgstr "Activation du périphérique réseau en cours %s, veuillez patienter..."
 
 #: src/netconf.py:712
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Cannot activate network device %s\n"
 "%s"
-msgstr "Impossible d'activer le dispositif réseau %s"
+msgstr ""
+"Impossible d'activer le dispositif réseau %s\n"
+"%s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
@@ -1151,12 +1154,17 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"Il manque le répertoire /etc/cipe !\n"
+"Le créera pour vous!\n"
+"Vous devriez installer le paquetage cipe rpm !\n"
 
 #: src/netconfpkg/NCCipe.py:159
 msgid ""
 "Could not create\n"
 "directory /etc/cipe!"
 msgstr ""
+"Impossible de créer\n"
+"répertoire /etc/cipe!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1634,8 +1642,7 @@ msgstr ""
 #: src/netconfpkg/NCProfileList.py:134
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
-"Le périphérique %s utilise le même périphérique matériel \"%s\" que %s !\n"
+msgstr "Le périphérique %s utilise le même périphérique matériel \"%s\" que %s !\n"
 
 #: src/netconfpkg/NCProfileList.py:135
 msgid ""
@@ -2074,8 +2081,7 @@ msgstr ""
 "élément matériel."
 
 #: src/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr ""
 "Ici vous pouvez configurer du matériel réseau connecté physiquement à votre "
 "ordinateur."
@@ -2209,15 +2215,13 @@ msgstr "Entrer le nom de connexion pour ce compte."
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:10
 msgid "Enter the login name, that your ISP gave you here."
-msgstr ""
-"Entrer ici le nom de connexion fourni par le fournisseur d'accès à Internet."
+msgstr "Entrer ici le nom de connexion fourni par le fournisseur d'accès à Internet."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
 "Entrer le nom de cette configuration, généralement le nom de votre "
 "fournisseur d'accès à Internet."
@@ -2440,8 +2444,7 @@ msgstr ""
 #: src/netconfpkg/gui/DialupDruid.glade.h:8
 #: src/netconfpkg/gui/dialupconfig.glade.h:24
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr ""
-"Entrer le numéro de téléphone de votre ISP (sans préfixes ni codes de zone)."
+msgstr "Entrer le numéro de téléphone de votre ISP (sans préfixes ni codes de zone)."
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:9
 #: src/netconfpkg/gui/chooseprovider.glade.h:2
@@ -3013,8 +3016,7 @@ msgstr "Choisir un fournisseur d'accès à Internet"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
 #: src/netconfpkg/gui/wirelessconfig.glade.h:6
 msgid "Allow all _users to enable and disable the device"
-msgstr ""
-"Permettre à tous les _utilisateurs d'activer et de désactiver le périphérique"
+msgstr "Permettre à tous les _utilisateurs d'activer et de désactiver le périphérique"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:2
 msgid "CIPE Configuration"
@@ -3589,9 +3591,8 @@ msgid "Destination Network"
 msgstr "Réseau de destination"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-#, fuzzy
 msgid "Device _Alias Number:"
-msgstr "_Alias périphérique :"
+msgstr "Numéro_Alias périphérique :"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
@@ -3906,3 +3907,4 @@ msgstr "Assistant à la configuration Internet"
 
 #~ msgid "Activating for Network device %s, please wait..."
 #~ msgstr "Activation en cours du périphérique réseau %s, patienter"
+
