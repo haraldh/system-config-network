@@ -30,7 +30,7 @@ import re
 
 import NCHardwareList
 from NC_functions import *
-
+from NC_functions import _
 from gtk import TRUE
 from gtk import FALSE
 

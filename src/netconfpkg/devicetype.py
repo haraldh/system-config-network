@@ -33,7 +33,7 @@ from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from editadress import editAdressDialog
 from NC_functions import *
-
+from NC_functions import _
 from gtk import TRUE
 from gtk import FALSE
 
