@@ -153,7 +153,7 @@ class ProfileList(ProfileList_base):
             nameservers = []
             if prof.DNS.PrimaryDNS != '':
                 nameservers.append(prof.DNS.PrimaryDNS)
-            if prof.DNS.SecondaryDNS!= '':
+            if prof.DNS.SecondaryDNS != '':
                 nameservers.append(prof.DNS.SecondaryDNS)
             if prof.DNS.TernaryDNS != '':
                 nameservers.append(prof.DNS.TernaryDNS)
