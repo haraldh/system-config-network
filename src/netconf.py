@@ -645,10 +645,9 @@ class mainDialog:
         profilelist = getProfileList()
 
         clist = self.xml.get_widget("dnsList")
-        name = clist.get_text(clist.selection[0], 0)
-
         if len(clist.selection) == 0 or clist.selection == 0:
             return
+        name = clist.get_text(clist.selection[0], 0)
 
         for prof in profilelist:
             if prof.Active == true:
@@ -667,10 +666,9 @@ class mainDialog:
         profilelist = getProfileList()
 
         clist = self.xml.get_widget("dnsList")
-        name = clist.get_text(clist.selection[0], 0)
-
         if len(clist.selection) == 0 or clist.selection == 0:
             return
+        name = clist.get_text(clist.selection[0], 0)
 
         for prof in profilelist:
             if prof.Active == true:
