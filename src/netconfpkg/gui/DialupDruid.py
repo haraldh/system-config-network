@@ -37,11 +37,11 @@ from netconfpkg import *
 from InterfaceCreator import InterfaceCreator
 
 class DialupDruid(InterfaceCreator):
-    def __init__ (self, toplevel=None, connection_type='ISDN',
+    def __init__ (self, toplevel=None, connection_type=ISDN,
                   do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
-        glade_file = 'DialupDruid.glade'
 
+        glade_file = 'DialupDruid.glade'
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
@@ -52,16 +52,26 @@ class DialupDruid(InterfaceCreator):
         self.xml.signal_autoconnect(
             { "on_dialup_page_prepare" : self.on_dialup_page_prepare,
               "on_dialup_page_next" : self.on_dialup_page_next,
+              "on_dhcp_page_prepare" : self.on_dhcp_page_prepare,
+              "on_dhcp_page_next" : self.on_dhcp_page_next,
               "on_finish_page_finish" : self.on_finish_page_finish,
               "on_finish_page_prepare" : self.on_finish_page_prepare,
               "on_finish_page_back" : self.on_finish_page_back,
-              "on_providerNameEntry_insert_text" : (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
+              "on_ipAutomaticRadio_toggled" : self.on_ipBootProto_toggled,
+              "on_ipStaticRadio_toggled" : self.on_ipBootProto_toggled,
+              "on_sync_ppp_activate" : self.on_sync_ppp_activate,
+              "on_raw_ip_activate" : self.on_raw_ip_activate,              
+              "on_providerNameEntry_insert_text" : \
+              (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
               }
             )
 
         self.devicelist = NCDeviceList.getDeviceList()
         df = NCDeviceFactory.getDeviceFactory()        
         self.device = df.getDeviceClass(connection_type)()
+        self.device.BootProto = 'dialup'
+        self.device.AutoDNS = TRUE
+
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
         self.druids = []
@@ -99,6 +109,105 @@ class DialupDruid(InterfaceCreator):
         else:
             return TRUE
 
+
+    def on_ipBootProto_toggled(self, widget):
+        if widget.name == "ipAutomaticRadio":
+            active = widget.get_active()
+        else:
+            active = not widget.get_active()
+        
+        self.xml.get_widget('dhcpSettingFrame').set_sensitive(active)
+        self.xml.get_widget('ipSettingFrame').set_sensitive(not active)
+
+    def dhcp_hydrate (self, xml, device):
+        if device.IP:
+            xml.get_widget('ipAddressEntry').set_text(device.IP)
+        else:
+            xml.get_widget('ipAddressEntry').set_text('')
+        if device.Netmask:
+            xml.get_widget('ipNetmaskEntry').set_text(device.Netmask)
+        else:
+            xml.get_widget('ipNetmaskEntry').set_text('')
+        if device.Gateway:
+            xml.get_widget('ipGatewayEntry').set_text(device.Gateway)
+        else:
+            xml.get_widget('ipGatewayEntry').set_text('')
+
+        xml.get_widget('dnsSettingCB').set_active(device.AutoDNS == TRUE)
+
+        if device.BootProto == "static" or device.BootProto == "none":
+            xml.get_widget('ipAutomaticRadio').set_active(FALSE)
+            xml.get_widget('ipStaticRadio').set_active(TRUE)
+            self.on_ipBootProto_toggled(\
+                xml.get_widget('ipAutomaticRadio')),
+        else:
+            device.BootProto = 'dialup'
+            xml.get_widget('ipAutomaticRadio').set_active(TRUE)
+            xml.get_widget('ipStaticRadio').set_active(FALSE)
+            self.on_ipBootProto_toggled(\
+                xml.get_widget('ipStaticRadio')),
+
+    def dhcp_dehydrate (self, xml, device):
+        if xml.get_widget('ipAutomaticRadio').get_active():
+            device.BootProto = 'dialup'
+            device.IP = ''
+            device.Netmask = ''
+            device.Gateway = ''
+            device.Hostname = ''
+            device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
+        else:
+            device.BootProto = 'none'
+            device.IP = xml.get_widget('ipAddressEntry').get_text()
+            device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
+            device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
+            device.Hostname = ''
+
+
+    def on_sync_ppp_activate(self, *args):
+        self.xml.get_widget('ipAutomaticRadio').set_active(TRUE)
+        self.xml.get_widget('ipStaticRadio').set_active(FALSE)
+        self.xml.get_widget('ipAutomaticRadio').set_sensitive(TRUE)
+        self.on_ipBootProto_toggled(\
+                self.xml.get_widget('ipStaticRadio')),
+        pass
+    
+    def on_raw_ip_activate(self, *args):
+        self.xml.get_widget('ipAutomaticRadio').set_active(FALSE)
+        self.xml.get_widget('ipStaticRadio').set_active(TRUE)
+        self.on_ipBootProto_toggled(\
+                self.xml.get_widget('ipAutomaticRadio')),        
+        self.xml.get_widget('ipAutomaticRadio').set_sensitive(FALSE)
+        dialup = self.device.createDialup()
+        dialup.EncapMode = 'rawip'
+        dialup.Authentication = 'noauth'
+        pass
+
+    def on_dhcp_page_back(self, druid_page, druid):
+        return TRUE
+    
+    def on_dhcp_page_next(self, druid_page, druid):
+        dialup = self.device.createDialup()
+
+        self.dhcp_dehydrate(self.xml, self.device)
+        
+        if self.connection_type == ISDN and \
+               (self.device.BootProto == "static" or \
+                self.device.BootProto == "none"):
+            dialup.EncapMode = 'rawip'
+            dialup.Authentication = 'noauth'
+
+    def on_dhcp_page_prepare(self, druid_page, druid):
+        self.dhcp_hydrate(self.xml, self.device)
+        dialup = self.device.createDialup()
+        if self.connection_type == ISDN:
+            if dialup.EncapMode == 'rawip':
+                self.on_raw_ip_activate()
+            else:
+                self.on_sync_ppp_activate()
+        else:
+            self.xml.get_widget('encapModeMenu').set_sensitive(FALSE)
+        pass
+
     def on_finish_page_back(self,druid_page, druid):
         self.devicelist.rollback()
         
@@ -114,9 +223,11 @@ class DialupDruid(InterfaceCreator):
                 break
         dialup = self.device.Dialup
         
-        s = _("You have selected the following information:") + "\n\n" + "    " + \
+        s = _("You have selected the following information:") + \
+            "\n\n" + "    " + \
             _("Hardware:") + "  " + hw.Description + "\n" + "    " + \
-            _("Provider Name:") + "  " + dialup.ProviderName + "\n" +  "    " + \
+            _("Provider Name:") + "  " + dialup.ProviderName + \
+            "\n" +  "    " + \
             _("Login Name:") + "  " + dialup.Login + "\n" +  "    " + \
             _("Phone Number:") + "  " + dialup.PhoneNumber
         
@@ -141,21 +252,33 @@ class DialupDruid(InterfaceCreator):
 
     def setup(self):
         if not self.provider:
-            self.xml.get_widget('druid').set_buttons_sensitive(FALSE, FALSE, FALSE, FALSE) 
+            self.xml.get_widget('druid').set_buttons_sensitive(\
+                FALSE, FALSE, FALSE, FALSE) 
         else:
-            self.xml.get_widget('druid').set_buttons_sensitive(FALSE, TRUE, TRUE, FALSE)
-            self.xml.get_widget('areaCodeEntry').set_text(self.provider['Areacode'])
-            self.xml.get_widget('phoneEntry').set_text(self.provider['PhoneNumber'])
-            self.xml.get_widget('providerName').set_text(self.provider['ProviderName'])
-            self.xml.get_widget('dialupLoginNameEntry').set_text(self.provider['Login'])
-            self.xml.get_widget('dialupPasswordEntry').set_text(self.provider['Password'])
+            self.xml.get_widget('druid').set_buttons_sensitive(\
+                FALSE, TRUE, TRUE, FALSE)
+            self.xml.get_widget('areaCodeEntry').set_text(\
+                self.provider['Areacode'])
+            self.xml.get_widget('phoneEntry').set_text(\
+                self.provider['PhoneNumber'])
+            self.xml.get_widget('providerName').set_text(\
+                self.provider['ProviderName'])
+            self.xml.get_widget('dialupLoginNameEntry').set_text(\
+                self.provider['Login'])
+            self.xml.get_widget('dialupPasswordEntry').set_text(\
+                self.provider['Password'])
 
     def check(self):
-        return (len(string.strip(self.xml.get_widget('phoneEntry').get_text())) > 0 \
-           and len(string.strip(self.xml.get_widget('phoneEntry').get_text())) > 0 \
-           and len(string.strip(self.xml.get_widget('providerName').get_text())) > 0 \
-           and len(string.strip(self.xml.get_widget('dialupLoginNameEntry').get_text())) > 0 \
-           and len(string.strip(self.xml.get_widget('dialupPasswordEntry').get_text())) > 0)
+        return (len(string.strip(self.xml.get_widget(\
+            'phoneEntry').get_text())) > 0 \
+           and len(string.strip(self.xml.get_widget(\
+            'phoneEntry').get_text())) > 0 \
+           and len(string.strip(self.xml.get_widget(\
+            'providerName').get_text())) > 0 \
+           and len(string.strip(self.xml.get_widget(\
+            'dialupLoginNameEntry').get_text())) > 0 \
+           and len(string.strip(self.xml.get_widget(\
+            'dialupPasswordEntry').get_text())) > 0)
         
     def on_providerTree_tree_select_row(self, ctree, node, column):
         node = ctree.selection[0]
@@ -195,17 +318,22 @@ class DialupDruid(InterfaceCreator):
         
         for isp in isp_list:
             if _country != isp['Country']:
-                pix, mask = GUI_functions.get_icon(isp['Flag'] + '.xpm', widget)
-                country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
-                                                  pix, mask, pix, mask, is_leaf=FALSE)
+                pix, mask = GUI_functions.get_icon(isp['Flag'] + '.xpm',
+                                                   widget)
+                country = self.dbtree.insert_node(None, None,
+                                                  [isp['Country']], 5,
+                                                  pix, mask, pix, mask,
+                                                  is_leaf=FALSE)
                 _country = isp['Country']
                 _city = ''
             if _city != isp['City']:
                 city = self.dbtree.insert_node(country, None, [isp['City']], 5,
                                                pix_city, mask_city,
-                                               pix_city, mask_city, is_leaf=FALSE)
+                                               pix_city, mask_city,
+                                               is_leaf=FALSE)
                 _city = isp['City']
-            name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
+            name = self.dbtree.insert_node(city, None,
+                                           [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=FALSE)
             
@@ -227,21 +355,10 @@ class DialupDruid(InterfaceCreator):
         self.device.DeviceId = DeviceId
         self.device.Type = self.connection_type
         dialup = self.device.createDialup()
-        self.device.BootProto = 'dialup'
         self.device.AllowUser = TRUE
-
-        if self.connection_type == ISDN:
-            dialup.EncapMode = 'syncppp'
-            dialup.HangupTimeout = 600
-            
-        if self.connection_type == MODEM:
-            self.device.Name  = DeviceId
-            dialup.Inherits = 'Modem0'
-            dialup.StupidMode = TRUE
-            dialup.InitString = ''
-
-        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
-        self.device.AutoDNS = TRUE
+        self.device.OnBoot = FALSE
+        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
+                                                self.device)
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()
         dialup.Areacode = self.xml.get_widget('areaCodeEntry').get_text()
         dialup.PhoneNumber = self.xml.get_widget('phoneEntry').get_text()
@@ -253,7 +370,14 @@ class DialupDruid(InterfaceCreator):
         else:
             dialup.Authentication = '+pap -chap'
         dialup.DefRoute = TRUE
-        self.device.AutoDNS = TRUE
         dialup.DialMode = NCDialup.DM_MANUAL
-
             
+        if self.connection_type == ISDN:
+            dialup.EncapMode = 'syncppp'
+            dialup.HangupTimeout = 600
+            
+        elif self.connection_type == MODEM:
+            self.device.Name  = DeviceId
+            dialup.Inherits = 'Modem0'
+            dialup.StupidMode = TRUE
+            dialup.InitString = ''
