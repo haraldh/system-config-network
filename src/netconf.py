@@ -52,13 +52,13 @@ class mainDialog:
     def __init__(self):
         glade_file = "maindialog.glade"
 
-        if not os.path.exists(glade_file):
+        if not isfile(glade_file):
             glade_file = "netconfpkg/" + glade_file
-        if not os.path.exists(glade_file):
+        if not isfile(glade_file):
             glade_file = "/usr/share/netconf/" + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
-        
+        self.initialized = None
 
         self.xml.signal_autoconnect(
             {
@@ -141,8 +141,6 @@ class mainDialog:
     def load(self):
         self.loadDevices()
         self.loadHardware()
-        self.loadDNS()
-        self.loadHosts()
         self.loadProfiles()
 
     def loadDevices(self):
@@ -155,22 +153,18 @@ class mainDialog:
         hardwarelist = HardwareList()
         hardwarelist.load()
 
-    def loadDNS(self):
-        res_file = ResolverFile()
-        try:
-            res_file.readProfile()
-            dns = res_file.DNServers()
-            search_domain = res_file.searchDomains()
-            n = ["primaryDnsEntry", "secondaryDnsEntry", "ternaryDnsEntry"]
-            for i in range(len(dns)):
-                self.xml.get_widget(n[i]).set_text(dns[i])
-            for i in range(len(search_domain)):
-                self.xml.get_widget("dnsList").append([search_domain[i]])
-        except:
-            pass
-
-    def loadHosts(self):
-        pass
+#        res_file = ResolverFile()
+#        try:
+#            res_file.readProfile()
+#            dns = res_file.DNServers()
+#            search_domain = res_file.searchDomains()
+#            n = ["primaryDnsEntry", "secondaryDnsEntry", "ternaryDnsEntry"]
+#            for i in range(len(dns)):
+#                self.xml.get_widget(n[i]).set_text(dns[i])
+#            for i in range(len(search_domain)):
+#                self.xml.get_widget("dnsList").append([search_domain[i]])
+#        except:
+#            pass
 
     def loadProfiles(self):
         global profilelist
@@ -178,35 +172,57 @@ class mainDialog:
         profilelist.load()
 
     def setup(self):
-        global devicelist, profilelist
+        global devicelist, hardwarelist, profilelist
 
         clist = self.xml.get_widget("deviceList")
+        clist.clear()
         act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
         inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
 
         row = 0
-        for i in xrange(len(devicelist)):
+        for dev in devicelist:
             type = 'Unknown'
             for j in self.deviceTypes.keys():
-                if re.search(j, devicelist[i].Device):
+                if re.search(j, dev.Device):
                     type = self.deviceTypes[j]
 
-            clist.append(['', devicelist[i].DeviceId[6:], type])
-            for k in xrange(len(profilelist)):
-                if (profilelist[k].Active == true or profilelist[k].ProfileName == 'default') and not os.path.exists(SYSCONFPROFILEDIR+profilelist[k].ProfileName+'/'+devicelist[i].DeviceId):
-                    clist.set_pixmap(row, 0, inact_xpm)
-                else:
+            clist.append(['', dev.DeviceId[6:], type])
+            clist.set_pixmap(row, 0, inact_xpm)
+            for prof in profilelist:
+                if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
                     clist.set_pixmap(row, 0, act_xpm)
             row = row + 1
 
+        row = 0
+        clist = self.xml.get_widget("profileList")
+        for prof in profilelist:
+            if prof.Active == true:
+                clist2 = self.xml.get_widget("hostsList")
+                clist2.clear()
+                for host in prof.HostsList:
+                    al = ''
+                    for alias in host.AliasList:
+                        al = al + " " + alias
+                    clist2.append([host.IP, host.Hostname, al])
+            row = row + 1
+
+        if self.initialized:
+            return
+
+        self.initialized = true
+        for prof in profilelist:
+            clist.append([prof.ProfileName])
+            if prof.Active == true:
+                clist.select_row(row, 0)
+
     def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
+        if not isfile(pixmap_file):
             pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
+        if not isfile(pixmap_file):
             pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
+        if not isfile(pixmap_file):
             pixmap_file = "/usr/share/netconf/" + pixmap_file
-        if not os.path.exists(pixmap_file):
+        if not isfile(pixmap_file):
             return
  
         pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
@@ -244,7 +260,6 @@ class mainDialog:
         basic = basicDialog(self.xml)
         dialog = basic.xml.get_widget ("Dialog")
         dialog.show ()
-#        gtk.mainloop()
 
     def on_deviceCopyButton_clicked (self, button):
         pass
@@ -283,7 +298,12 @@ class mainDialog:
         if copy_button: copy_button.set_sensitive(TRUE)
         if up_button: delete_button.set_sensitive(TRUE)
         if down_button: copy_button.set_sensitive(TRUE)
-        
+        if clist.get_name() == 'profileList':
+            for prof in profilelist:
+                prof.Active = false
+            profilelist[row].Active = true
+            self.setup()
+
     def on_generic_clist_unselect_row(self, clist, row, column, event,
                                       edit_button = None, delete_button = None,
                                       copy_button = None, rename_button = None,
@@ -364,4 +384,3 @@ if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = mainDialog()
     gtk.mainloop()
-

@@ -10,16 +10,38 @@ class ProfileList(ProfileList_base):
         ProfileList_base.__init__(self, list, parent)        
 
     def load(self):
-	i = self.addProfile()
-        self.data[i].ProfileName = 'default'
-	i = self.addProfile()
-        self.data[i].ProfileName = 'work'
+        nwconf = Conf.ConfShellVar("/etc/sysconfig/network")
+        hoconf = Conf.ConfEHosts()
+        try:
+            curr_prof = nwconf['CURRENT_PROFILE']
+        except:
+            curr_prof = 'default'
 
-        modules = Conf.ConfModules()
-        modinfo = Conf.ConfModInfo()
-        for i in modinfo.keys():
-	    if modinfo[i]['type'] == "eth":
-                pass
+        proflist = os.listdir(SYSCONFPROFILEDIR)
+        for pr in proflist:
+	    i = self.addProfile()
+            prof = self.data[i]
+            prof.createActiveDevices()
+            prof.createDNS()
+            prof.createHostsList()
+            prof.ProfileName = pr
+            if pr == curr_prof:
+                prof.Active = true
+            else:
+                prof.Active = false
+            devlist = os.listdir(SYSCONFPROFILEDIR + '/' + pr)
+            for dev in devlist:
+               prof.ActiveDevices.append(dev)
+            hoconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/hosts'
+            hoconf.read()
+            for ip in hoconf.keys():
+                host = Host()
+                host.createAliasList()
+                host.IP = ip
+                host.Hostname = hoconf[ip][0]
+                for al in hoconf[ip][1]:
+                    host.AliasList.append(al);
+                prof.HostsList.append(host)
 
     def save(self):
         pass
