@@ -40,7 +40,7 @@ xlc )
 esac
 
 autoconf
-gettextize --copy --force
+#gettextize --copy --force
 autoheader
 aclocal $ACLOCAL_FLAGS
 automake --add-missing $am_opt
