@@ -16,11 +16,27 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+import re
+import traceback
+import sys
+import os
+import os.path
+import shutil
+import signal
+import gettext
+import string
+import ethtool
+import gtk
+import gnome
+import gnome.ui
+import gnome.help
+from netconfpkg import ethtool
+
 VERSION = '0.1.0'
 COPYRIGHT = 'Copyright (C) 2002 Red Hat, Inc.'
 AUTORS = ['Than Ngo <than@redhat.com>']
 NAME = 'Red Hat Network Control'
-
+PROGNAME='redhat-config-network'
 NETWORKDIR = '/etc/sysconfig/network-scripts/'
 NETWORKPREFIX = 'ifcfg'
 PROCNETDEV = '/proc/net/dev'
@@ -35,16 +51,12 @@ DEACTIVATE = 4
 CONFIGURE = 5
 MONITOR = 6
 
-import re
-import traceback
-import sys
-import os
-import os.path
-import shutil
-import signal
-import string
-import ethtool
-from netconfpkg import ethtool
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+_ = gettext.gettext
+
+ACTIVE = _('Active')
+INACTIVE = _('Inactive')
 
 class ProcNetDevice:
     def __init__(self):
@@ -58,17 +70,20 @@ class NetworkDevice:
 
     def load(self):
         l = ethtool.get_active_devices()
-        if l.count('lo'):
-            l.remove('lo')
 
         self.activedevicelist = l
         
+        if os.getuid() == 0:
+            command = '/sbin/isdnctrl'
+        else:
+            command = '/usr/sbin/userisdnctl'
+                        
         # check isdn device for connection
         for i in l:
             if len(i) > 4:
                 if i[:4] == 'isdn' or i[:4] == 'ippp':
-                    if os.access('/usr/sbin/userisdnctl', os.X_OK):
-                        if os.system('/usr/sbin/userisdnctl status %s>&/dev/null' %(i)) == 0:
+                    if os.access(command, os.X_OK):
+                        if os.system(command + ' status %s>&/dev/null' %(i)) == 0:
                             continue
                     self.activedevicelist.remove(i)
 
@@ -96,6 +111,12 @@ class Interface:
             return(os.system('/sbin/ifdown %s >& /dev/null' %(device)))
         except:
             return -1
+
+    def isdndial(self, device):
+        if os.getuid() != 0:
+            os.system('/usr/sbin/userisdnctl dial %s>&/dev/null' %(device))
+        else:
+            os.system('/sbin/isdnctrl dial %s>&/dev/null' %(device))
 
     def status(self, device):
         pass
@@ -146,7 +167,25 @@ def fork_exec(wait, path, arg):
 
     return -1
 
-    
+def idle_func():
+    while gtk.events_pending():
+        gtk.mainiteration()
+
+def errorDialog(device, error_type):
+    if error_type == ACTIVATE:
+        errorString = _('Cannot activate network device %s') %(device)
+    elif error_type == DEACTIVATE:
+        errorString = _('Cannot deactivate network device %s') %(device)
+    elif error_type == STATUS:
+        errorString = _('Cannot show status of network device %s') %(device)
+    elif error_type == MONITOR:
+        errorString = _('Cannot monitor status of network device %s') %(device)
+
+    dlg = gnome.ui.GnomeMessageBox(errorString, 'error', _('Close'))
+    dlg.set_position(gtk.WIN_POS_MOUSE)
+    dlg.run_and_close()
+
+
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)

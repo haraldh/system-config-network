@@ -55,8 +55,6 @@ from netconfpkg.gui.exception import handleException
 
 TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/")
 
-ACTIVE = _('Active')
-INACTIVE = _('Inactive')
 device = None
 
 class mainDialog:
@@ -116,7 +114,8 @@ class mainDialog:
     def on_activateButton_clicked(self, button):
         device = self.clist_get_device()
         if device:
-            child = Interface().activate(device)
+            intf = Interface()
+            child = intf.activate(device)
             dlg = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Network device activating...'))
             dlg.set_border_width(10)
             vbox = gtk.GtkVBox(1)
@@ -134,7 +133,7 @@ class mainDialog:
             # isdnctrl dial device must be started for connecting by ISDN
             if len(device) > 4:
                 if device[:4] == 'isdn' or device[:4] == 'ippp':
-                    os.system('/usr/sbin/userisdnctl dial %s>&/dev/null' %(device))
+                    intf.isdndial(device)
                     time.sleep(3)
 
             self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
@@ -142,9 +141,9 @@ class mainDialog:
             dlg.destroy()
             
             if NetworkDevice().find(device):
-                self.hydrate()
+                self.update_dialog()
             else:
-                self.errorDialog(device, ACTIVATE)
+                errorDialog(device, ACTIVATE)
 
         
     def on_deactivateButton_clicked(self, button):
@@ -152,9 +151,9 @@ class mainDialog:
         if device:
             ret = Interface().deactivate(device)
             if not ret:
-                self.hydrate()
+                self.update_dialog()
             else:
-                self.errorDialog(device, DEACTIVATE)
+                errorDialog(device, DEACTIVATE)
 
     def on_configureButton_clicked(self, button):
         device = self.clist_get_device()
@@ -163,7 +162,7 @@ class mainDialog:
             if not ret:
                 self.hydrate()
             else:
-                self.errorDialog(device, CONFIGURE)
+                errorDialog(device, CONFIGURE)
 
     def on_monitorButton_clicked(self, button):
         device = self.clist_get_device()
@@ -192,11 +191,6 @@ class mainDialog:
             self.xml.get_widget('configureButton').set_sensitive(TRUE)
             self.xml.get_widget('monitorButton').set_sensitive(FALSE)
         
-        if activate_button: pass
-        if deactivate_button: pass
-        if configure_button: pass
-        if monitor_button: pass
-
     def clist_get_status(self):
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
@@ -255,20 +249,6 @@ class mainDialog:
             clist.set_pixtext(row, DEVICE, dev.Device, 5, device_pixmap, device_mask)
             row = row + 1
             
-    def errorDialog(self, device, error_type):
-        if error_type == ACTIVATE:
-            errorString = _('Cannot activate network device %s') %(device)
-        elif error_type == DEACTIVATE:
-            errorString = _('Cannot deactivate network device %s') %(device)
-        elif error_type == STATUS:
-            errorString = _('Cannot show status of network device %s') %(device)
-        elif error_type == MONITOR:
-            errorString = _('Cannot monitor status of network device %s') %(device)
-
-        dlg = gnome.ui.GnomeMessageBox(errorString, 'error', _('Close'))
-        dlg.set_position(gtk.WIN_POS_MOUSE)
-        dlg.run_and_close()
-
     def update_dialog(self):
         activedevicelistold = self.activedevicelist
         self.activedevicelist = NetworkDevice().get()
@@ -278,10 +258,6 @@ class mainDialog:
             return TRUE
             
         return TRUE
-
-def idle_func():
-    while gtk.events_pending():
-        gtk.mainiteration()
 
 
 # make ctrl-C work

@@ -46,6 +46,8 @@ import os.path
 import string
 import gettext
 from netconfpkg import *
+from netconfpkg import Control
+
 ##
 ## I18N
 ##
@@ -127,10 +129,17 @@ class mainDialog:
             "on_deviceCopyButton_clicked" : self.on_deviceCopyButton_clicked,
             "on_deviceEditButton_clicked" : self.on_deviceEditButton_clicked,
             "on_deviceDeleteButton_clicked" : self.on_deviceDeleteButton_clicked,
+            "on_deviceActivateButton_clicked" : self.on_deviceActivateButton_clicked,
+            "on_deviceDeactivateButton_clicked" : self.on_deviceDeactivateButton_clicked,
+            "on_deviceMonitorButton_clicked" : self.on_deviceMonitorButton_clicked,
             "on_deviceList_select_row" : (self.on_generic_clist_select_row,
                                           self.xml.get_widget("deviceEditButton"),
                                           self.xml.get_widget("deviceDeleteButton"),
-                                          self.xml.get_widget("deviceCopyButton")),
+                                          self.xml.get_widget("deviceCopyButton"),
+                                          None, None,None,
+                                          self.xml.get_widget("deviceActivateButton"),
+                                          self.xml.get_widget("deviceDeactivateButton"),
+                                          self.xml.get_widget("deviceMonitorButton")),
             "on_deviceList_unselect_row" : (self.on_generic_clist_unselect_row,
                                             self.xml.get_widget("deviceEditButton"),
                                             self.xml.get_widget("deviceDeleteButton"),
@@ -205,6 +214,12 @@ class mainDialog:
 
         if showprofile:
             self.xml.get_widget ("profileFrame").show()
+
+        self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
+        self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
+        self.lan_xpm, self.lan_mask = get_icon('pixmaps/ethernet.xpm', self.dialog)
+        self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
+        self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
         
         load_icon("network.xpm", self.dialog)
         self.load()
@@ -219,7 +234,10 @@ class mainDialog:
             widget = self.xml.get_widget('deviceFrame')
             page = notebook.page_num(widget)
             notebook.set_page(page)
-            
+
+        self.activedevicelist = NetworkDevice().get()
+        self.tag = timeout_add(4000, self.update_devicelist)
+        
     def load(self):
         self.loadDevices()
         self.loadHardware()
@@ -298,32 +316,59 @@ class mainDialog:
 
     def hydrateDevices(self):
         devicelist = getDeviceList()
+        activedevicelist = NetworkDevice().get()
 ##        profilelist = getProfileList()
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
+        clist.set_row_height(17)
         act_xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
         inact_xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
-
+        status_pixmap = self.off_xpm
+        status_mask = self.off_mask
+        device_pixmap = self.lan_xpm
+        device_mask = self.lan_mask
+        status = INACTIVE
+        
         row = 0
         for dev in devicelist:
-            type = dev.Type
-            clist.append([dev.DeviceId, type])
-##             clist.set_pixmap(row, 0, inact_xpm)
-            clist.set_row_data(row, 0)
-##             for prof in profilelist:
-##                 if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
-##                     clist.set_pixmap(row, 0, act_xpm)
-##                     clist.set_row_data(row, 1)
-##                     break
-            row = row + 1
+            for i in activedevicelist:
+                status = INACTIVE
+                status_pixmap = self.off_xpm
+                status_mask = self.off_mask
+                if i == dev.Device:
+                    status = ACTIVE
+                    status_pixmap = self.on_xpm
+                    status_mask = self.on_mask
+                    break
 
+            if dev.Device[:3] == 'ppp':
+                device_pixmap = self.ppp_xpm
+                device_mask = self.ppp_mask
+            elif dev.Device[:3] == 'eth' or dev.Device[:5] == 'cipcb' or dev.Device[:2] == 'tr':
+                device_pixmap = self.lan_xpm
+                device_mask = self.lan_mask
+            elif dev.Device[:4] == 'ippp' or dev.Device[:4] == 'isdn':
+                device_pixmap = self.isdn_xpm
+                device_mask = self.isdn_mask
+
+            clist.append([status, dev.Device, dev.DeviceId, dev.Type])
+##          clist.set_pixmap(row, 0, inact_xpm)
+            clist.set_pixtext(row, STATUS, status, 5, status_pixmap, status_mask)
+            clist.set_pixtext(row, DEVICE, dev.Device, 5, device_pixmap, device_mask)
+##          for prof in profilelist:
+##              if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
+##                  clist.set_pixmap(row, 0, act_xpm)
+##                  clist.set_row_data(row, 1)
+##                  break         
+            row = row + 1
 
     def hydrateHardware(self):
         hardwarelist = getHardwareList()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
+        clist.set_row_height(17)
         for hw in hardwarelist:
             clist.append([hw.Description, hw.Type, hw.Name])
 
@@ -332,8 +377,10 @@ class mainDialog:
 
         dclist = self.xml.get_widget("dnsList")
         dclist.clear()
+        dclist.set_row_height(17)
         hclist = self.xml.get_widget("hostsList")
         hclist.clear()
+        hclist.set_row_height(17)
         for prof in profilelist:
             if prof.Active != true:
                 continue
@@ -479,8 +526,8 @@ class mainDialog:
 
         device = devicelist[clist.selection[0]]
 
-        name = clist.get_text(clist.selection[0], 0)
-        type = clist.get_text(clist.selection[0], 1)
+        name = clist.get_text(clist.selection[0], 2)
+        type = clist.get_text(clist.selection[0], 3)
 
         if type == LO:
             generic_error_dialog (_('The Loopback device can not be edited!'), self.dialog)
@@ -574,8 +621,8 @@ class mainDialog:
         select = clist.selection[0]
 ##        device = devicelist[select]
 
-        name = clist.get_text(select, 0)
-        type = clist.get_text(select, 1)
+        name = clist.get_text(select, 2)
+        type = clist.get_text(select, 3)
 
         if type == 'Loopback':
             generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
@@ -595,6 +642,86 @@ class mainDialog:
         devicelist.commit()
         self.hydrate()
 
+    def on_deviceActivateButton_clicked(self, button):
+        device = self.clist_get_device()
+        if device:
+            intf = Interface()
+            child = intf.activate(device)
+            dlg = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Network device activating...'))
+            dlg.set_border_width(10)
+            vbox = gtk.GtkVBox(1)
+            vbox.add(gtk.GtkLabel(_('Activating for Network device %s, please wait...') %(device)))
+            vbox.show()
+            dlg.add(vbox)
+            dlg.set_position (gtk.WIN_POS_MOUSE)
+            dlg.set_modal(TRUE)
+            dlg.show_all()
+            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+            dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+            idle_func()
+            os.waitpid(child, 0)
+
+            # isdnctrl dial device must be started for connecting by ISDN
+            if len(device) > 4:
+                if device[:4] == 'isdn' or device[:4] == 'ippp':
+                    intf.isdndial(device)
+                    time.sleep(3)
+
+            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+            dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+            dlg.destroy()
+
+            if NetworkDevice().find(device):
+                self.update_devicelist()
+            else:
+                errorDialog(device, ACTIVATE)
+    
+    def on_deviceDeactivateButton_clicked(self, button):
+        device = self.clist_get_device()
+        if device:
+            intf = Interface()
+            ret = intf.deactivate(device)
+            if not ret:
+                self.update_devicelist()
+            else:
+                errorDialog(device, DEACTIVATE)
+
+    def on_deviceMonitorButton_clicked(self, button):
+        device = self.clist_get_device()
+        if device:
+            Interface().monitor(device)
+    
+    def clist_get_status(self):
+        clist = self.xml.get_widget('deviceList')
+        if len(clist.selection) == 0:
+            return
+        dev = clist.get_pixtext(clist.selection[0], STATUS)[0]
+        return dev
+
+    def clist_get_device(self):
+        clist = self.xml.get_widget('deviceList')
+        if len(clist.selection) == 0:
+            return
+        dev = clist.get_pixtext(clist.selection[0], DEVICE)[0]
+        return dev
+
+    def clist_get_nickname(self):
+        clist = self.xml.get_widget('deviceList')
+        if len(clist.selection) == 0:
+            return
+        dev = clist.get_text(clist.selection[0], NICKNAME)
+        return dev
+
+    def update_devicelist(self):
+        activedevicelistold = self.activedevicelist
+        self.activedevicelist = NetworkDevice().get()
+
+        if activedevicelistold != self.activedevicelist:
+            self.hydrateDevices()
+            return TRUE
+
+        return TRUE
+    
     def on_generic_entry_insert_text(self, entry, partial_text, length, pos, str):
         text = partial_text[0:length]
         if re.match(str, text):
@@ -622,14 +749,39 @@ class mainDialog:
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     edit_button = None, delete_button = None,
                                     copy_button = None, rename_button = None,
-                                    up_button = None, down_button = None):
-        #profilelist = getProfileList()
+                                    up_button = None, down_button = None,
+                                    activate_button = None,
+                                    deactivate_button = None,
+                                    monitor_button = None):
         if edit_button: edit_button.set_sensitive(TRUE)
         if rename_button: rename_button.set_sensitive(TRUE)
         if delete_button: delete_button.set_sensitive(TRUE)
         if copy_button: copy_button.set_sensitive(TRUE)
         if up_button: delete_button.set_sensitive(TRUE)
         if down_button: copy_button.set_sensitive(TRUE)
+
+        #if clist.get_name() == 'deviceList':
+        #    if len(clist.selection) == 0:
+        #        return
+        #    try:
+        #        status = clist.get_pixtext(clist.selection[0], 0)[0]
+        #    except ValueError:
+        #        status = clist.get_text(clist.selection[0], 0)
+
+        #    if status == ACTIVE:
+        #        activate_button.set_sensitive(FALSE)
+        #        deactivate_button.set_sensitive(TRUE)
+        #        edit_button.set_sensitive(FALSE)
+        #        delete_button.set_sensitive(FALSE)
+        #        monitor_button.set_sensitive(TRUE)
+        #    else:
+        #        activate_button.set_sensitive(TRUE)
+        #        deactivate_button.set_sensitive(FALSE)
+        #        edit_button.set_sensitive(TRUE)
+        #        delete_button.set_sensitive(TRUE)
+        #        monitor_button.set_sensitive(FALSE)
+
+        #profilelist = getProfileList()
         #if clist.get_name() == 'profileList':
         #    for prof in profilelist:
         #        prof.Active = false
@@ -665,6 +817,16 @@ class mainDialog:
     def on_generic_clist_button_press_event(self, clist, event, func):
 ##        profilelist = getProfileList()
 
+        # don't allow user to edit device if it's active
+        #if clist.get_name() == 'deviceList':
+        #    try:
+        #        status = clist.get_pixtext(clist.selection[0], 0)[0]
+        #    except ValueError:
+        #        status = clist.get_text(clist.selection[0], 0)
+
+        #    if status == ACTIVE:
+        #        return
+                
         if event.type == GDK._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
