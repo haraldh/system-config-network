@@ -10,7 +10,7 @@ License: GPL
 Group: Applications/System 
 BuildArch: noarch
 Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2, wvdial, rhpl > 0.15 
-BuildRequires: /usr/bin/python2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc
+BuildRequires: /usr/bin/python2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils
 Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
@@ -117,6 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Mon Jul  8 2002 Harald Hoyer <harald@redhat.de>
 - lots of bugfixes, new .desktop stuff
+- added desktop-file-utils BuildRequires
 
 * Tue Jul  2 2002 Harald Hoyer <harald@redhat.de> 1.1.7-1
 - cleanup, usability
