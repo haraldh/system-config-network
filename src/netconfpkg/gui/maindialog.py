@@ -212,8 +212,10 @@ class mainDialog:
 
         self.dialog.show()
         
+        self.dialog.show()
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
+
 
     def nop(self, *args):
         pass

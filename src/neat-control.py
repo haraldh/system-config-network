@@ -39,12 +39,9 @@ except IOError:
     import __builtin__
     __builtin__.__dict__['_'] = unicode    
 
-import getopt
 import signal
 import os
 import os.path
-import posix
-import time
 import string
 import gtk
 import gtk.glade
