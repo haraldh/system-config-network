@@ -5,11 +5,11 @@
     <null/>
     </id>
   <datatree>
-<Netconf>
+<Netconf TYPE="LIST">
 
   <DeviceList TYPE="LIST" ANONYMOUS="TRUE">
     <Device TYPE="LIST">
-      <Name TYPE="STRING"/>
+      <DeviceId TYPE="STRING"/>
 
       <DeviceName TYPE="STRING"/>
       <OnBoot TYPE="BOOL"/>
@@ -54,6 +54,7 @@
           <Delay TYPE="INTEGER"/>
           <Restrict TYPE="BOOL"/>
           <CBCP TYPE="BOOL"/>
+          </Callback>
 
         <Compression TYPE="LIST">
           <VJTcpIp TYPE="BOOL"/>
@@ -72,7 +73,7 @@
     <Profile TYPE="LIST">
       <ProfileName TYPE="STRING"/>
       <ActiveDevices TYPE="LIST" ANONYMOUS="TRUE">
-        <DeviceName TYPE="STRING"/>
+        <DeviceId TYPE="STRING"/>
       </ActiveDevices>
       <DNS TYPE="LIST">
         <Domain TYPE="STRING"/>
@@ -123,45 +124,94 @@
   <Traffic>
     </Traffic>
 
-  <Firewall>
-    <FilterList>
-      <Filter>
-        <Protocol/>
-        <Source/>
-        <Destination/>
-        <Jump/>
-        <InInterface/>
-        <OutInterface/>
-        <Fragment/>
-        <Match>
-          <Tcp>
-            <SourcePort/>
-            <DestPort/>
-            <TcpFlags/>
-            <Syn/>
-            <TcpOption/>
-            </Tcp>
-          <Udp>
-            <SourcePort/>
-            <DestPort/>
-            </Udp>
-          <Icmp>
-            <IcmpType/>
-            </Icmp>
-          <Mac>
-            <MacSource/>
-            </Mac>
-          <Limit>
-            <Rate/>
-            <Burst/>
-            </Limit>          
-          </Match>
-        </Filter>
-      </FilterList>
-    <NAT>
-      </NAT>
-    <Mangle>
-      </Mangle>
+  <NetworkList TYPE="LIST" ANONYMOUS="TRUE">
+    <Network TYPE="LIST">
+      <NetMask TYPE="STRING"/>
+      <NetBits TYPE="INTEGER"/>
+      <NetName TYPE="STRING"/>
+      </Network>
+    </NetworkList>
+
+  <Firewall TYPE="LIST">
+
+    <ChainList TYPE="LIST" ANONYMOUS="TRUE">
+      <Chain TYPE="LIST">
+        <Name TYPE="STRING"/>
+        <Table TYPE="STRING"/>
+        <Policy TYPE="STRING"/>
+        </Chain>
+      </ChainList>
+
+    <RuleList TYPE="LIST" ANONYMOUS="TRUE">
+      <Rule TYPE="LIST">
+        <RuleName  TYPE="STRING"/>
+        <Protocol TYPE="STRING"/>
+        <Source TYPE="STRING"/>
+        <Destination TYPE="STRING"/>
+        <Jump TYPE="STRING"/>
+        <Chain TYPE="STRING"/>
+        <InInterface TYPE="STRING"/>
+        <OutInterface TYPE="STRING"/>
+        <Fragment TYPE="STRING"/>
+        <MatchList TYPE="LIST" ANONYMOUS="TRUE">
+          <Match TYPE="LIST">
+            <Tcp TYPE="LIST">
+              <SourcePorts TYPE="STRING"/>
+              <DestPorts TYPE="STRING"/>
+              <TcpFlags TYPE="STRING"/>
+              <Syn TYPE="STRING"/>
+              <TcpOption TYPE="STRING"/>
+              </Tcp>
+            <Udp TYPE="LIST">
+              <SourcePorts TYPE="STRING"/>
+              <DestPorts TYPE="STRING"/>
+              </Udp>
+            <Icmp TYPE="LIST">
+              <IcmpType TYPE="STRING"/>
+              </Icmp>
+            <Mac TYPE="LIST">
+              <MacSource TYPE="STRING"/>
+              </Mac>
+            <Limit TYPE="LIST">
+              <Rate TYPE="STRING"/>
+              <Burst TYPE="STRING"/>
+              </Limit>
+            <MultiPort TYPE="LIST">
+              <SourcePorts TYPE="STRING"/>
+              <DestPorts TYPE="STRING"/>
+              <Ports TYPE="STRING"/>
+              </MultiPort>
+            <MatchMark/>
+            <Owner TYPE="LIST">
+              <Uid TYPE="INTEGER"/>
+              <Gid TYPE="INTEGER"/>
+              <Pid TYPE="INTEGER"/>
+              <Sid TYPE="INTEGER"/>
+              </Owner>
+            <State TYPE="STRING"/>
+            <Unclean TYPE="STRING"/>
+            <MatchTos TYPE="STRING"/>
+            </Match>
+          </MatchList>
+          <Target TYPE="LIST">
+            <TargetName TYPE="STRING"/>
+            <Log TYPE="LIST">
+              <Level TYPE="STRING"/>
+              <Prefix TYPE="STRING"/>
+              <TcpSequence TYPE="BOOL"/>
+              <TcpOptions TYPE="BOOL"/>
+              <IpOptions TYPE="BOOL"/>
+              </Log>
+            <SetMark TYPE="STRING"/>
+            <RejectType TYPE="STRING"/>
+            <SetTos TYPE="STRING"/>
+            <SNATtoSource TYPE="STRING"/>
+            <DNATtoDest TYPE="STRING"/>
+            <MASQtoPort TYPE="STRING"/>
+            <REDIRtoPort TYPE="STRING"/>
+            </Target>
+        </Rule>
+      </RuleList>
     </Firewall>
 
   </Netconf>
