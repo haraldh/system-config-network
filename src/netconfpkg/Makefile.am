@@ -25,7 +25,9 @@ PYTHON_FILES = \
 	Control.py
 
 BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
-		     $(patsubst %.py,%.pyc,$(PYTHON_FILES)))
+		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) __init__.py
+
+__init__.py: __init__.py.in
 
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 
