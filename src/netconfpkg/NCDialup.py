@@ -15,6 +15,96 @@ class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)        
 
+class DSLDialup(Dialup):
+    boolkeydict = { 'PeerDNS' : 'PEERDNS',
+                    'DefRoute' : 'DEFROUTE',
+                    }
+    
+    keydict = { 'ProviderName' : 'PROVIDER',
+                'Login' : 'USER',
+                'Password' : 'PASS',
+                'PrimaryDNS' : 'DNS1',
+                'SecondaryDNS' : 'DNS2',
+                'SlaveDevice' : 'ETH',
+                }
+
+    def __init__(self, list = None, parent = None):
+        Dialup.__init__(self, list, parent)        
+
+    def load(self, parentConf):
+        conf = parentConf
+
+        for selfkey in self.keydict.keys():
+            confkey = self.keydict[selfkey]
+            if conf.has_key(confkey):
+                self.__dict__[selfkey] = conf[confkey]
+                #print "self." + selfkey + " = " + conf[confkey]
+
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
+            if conf.has_key(confkey) and len(conf[confkey]):
+                self.__dict__[selfkey] = int(conf[confkey])
+                #print "self." + selfkey + " = " + conf[confkey]
+
+        for selfkey in self.boolkeydict.keys():
+            confkey = self.boolkeydict[selfkey]
+            if conf.has_key(confkey):
+                if conf[confkey] == 'on':
+                    self.__dict__[selfkey] = true
+                else:
+                    self.__dict__[selfkey] = false            
+            else:
+                self.__dict__[selfkey] = false            
+
+    def save(self, parentConf):
+        conf = parentConf
+
+        for selfkey in self.keydict.keys():
+            confkey = self.keydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: conf[confkey] = ""
+
+        for selfkey in self.boolkeydict.keys():
+            confkey = self.boolkeydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = 'on'
+            else:
+                conf[confkey] = 'off'
+
+        if not conf.has_key('SYNCHRONOUS'):
+            conf['SYNCHRONOUS'] = 'no'
+
+        if not conf.has_key('CONNECT_TIMEOUT'):
+            conf['CONNECT_TIMEOUT'] = '60'
+
+        if not conf.has_key('CONNECT_POLL'):
+            conf['CONNECT_POLL'] = '6'
+
+        if not conf.has_key('CLAMPMSS'):
+            conf['CLAMPMSS'] = '1412'
+
+        if not conf.has_key('LCP_INTERVAL'):
+            conf['LCP_INTERVAL'] = '20'
+
+        if not conf.has_key('LCP_FAILURE'):
+            conf['LCP_FAILURE'] = '3'
+
+        if not conf.has_key('PPPOE_TIMEOUT'):
+            conf['PPPOE_TIMEOUT'] = '20'
+
+        if not conf.has_key('PING'):
+            conf['PING'] = '.'
+
+        if not conf.has_key('FIREWALL'):
+            conf['FIREWALL'] = 'NONE'
+
+        if not conf.has_key('PIDFILE'):
+            conf['PIDFILE'] = '/var/run/pppoe-adsl.pid'
+
+        conf.write()
+
+
 class IsdnDialup(Dialup):                        
 
     boolkeydict = { 'Secure' : 'SECURE',
@@ -123,6 +213,12 @@ class IsdnDialup(Dialup):
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: conf[confkey] = ""
+
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
             if self.__dict__[selfkey]:
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
