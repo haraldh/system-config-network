@@ -56,8 +56,6 @@ _=gettext.gettext
 def Usage():
     print _("redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
 
-
-
 # Argh, another workaround for broken gtk/gnome imports...
 if __name__ == '__main__':
 
@@ -108,6 +106,7 @@ import gnome.help
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
 
+showprofile = 0
 
 class mainDialog:
     def __init__(self):
@@ -203,13 +202,17 @@ class mainDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
+
+        if showprofile:
+            self.xml.get_widget ("profileFrame").show()
+        
         load_icon("network.xpm", self.dialog)
         self.load()
         self.hydrate()
         self.xml.get_widget ("deviceList").column_titles_passive ()
         self.xml.get_widget ("hardwareList").column_titles_passive ()
         self.xml.get_widget ("dnsList").column_titles_passive ()
-        self.xml.get_widget ("hostsList").column_titles_passive ()
+        self.xml.get_widget ("hostsList").column_titles_passive ()    
         
         if getDeviceList():
             notebook = self.xml.get_widget('mainNotebook')
@@ -1135,6 +1138,17 @@ if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     progname = os.path.basename(sys.argv[0])
 
+    try:
+        opts, args = getopt.getopt(cmdline, "p", ["profile"])
+        for opt, val in opts:
+            if opt == '-p' or opt == '--profile':
+                showprofile = 1
+            else: raise BadUsage
+
+    except (getopt.error, BadUsage):
+        Usage()
+        sys.exit(1)
+    
     try:
         if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
             window = mainDialog()
