@@ -215,6 +215,8 @@ class DialupDruid(InterfaceCreator):
             self.device.Device = 'modem'
             self.device.Name  = DeviceId
             dialup.Inherits = 'Modem0'
+            dialup.StupidMode = TRUE
+            dialup.InitString = ''
         self.device.AutoDNS = TRUE
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()
         dialup.Areacode = self.xml.get_widget('areaCodeEntry').get_text()
@@ -222,7 +224,7 @@ class DialupDruid(InterfaceCreator):
         dialup.ProviderName = self.xml.get_widget('providerName').get_text()
         dialup.Login = self.xml.get_widget('dialupLoginNameEntry').get_text()
         dialup.Password = self.xml.get_widget('dialupPasswordEntry').get_text()
-        if self.provider['Authentication']:
+        if self.provider and self.provider['Authentication']:
             dialup.Authentication = self.provider['Authentication']
         else:
             dialup.Authentication = '+pap -chap'
