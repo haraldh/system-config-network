@@ -88,14 +88,12 @@ class DeviceList(DeviceList_base):
                 if (len(entry) <= 6) or \
                    entry[:6] != 'ifcfg-' or \
                    (not os.path.isfile(SYSCONFDEVICEDIR + entry)):
-                    #print "skipping " + entry
                     continue
                 
                 devid = entry[6:]
 
                 try:
                     found = false
-                    #print "searching for " + devid
                     for dev in self:
                         if dev.DeviceId == devid:
                             found = true
@@ -126,16 +124,22 @@ class DeviceList(DeviceList_base):
             for key in chapconf.keys():
                 del chapconf[key]
 
-            
+            #
+            # traverse all devices in the list
+            #
             for dev in self:                        
                 #
-                # Now write the pap and chap-secrets
+                # write the pap and chap-secrets, if any
                 #
                 if dev.Dialup and dev.Dialup.Login:
                     papconf[dev.Dialup.Login] = str(dev.Dialup.Password)
                     chapconf[dev.Dialup.Login] = str(dev.Dialup.Password)
 
-                dev.save()
+                #
+                # really save the device
+                #
+                if dev.changed:
+                    dev.save()
                     
                 if fp and dev.StaticRoutes and len(dev.StaticRoutes) > 0:
                     for route in dev.StaticRoutes:
