@@ -229,7 +229,7 @@ class DialupDruid(InterfaceCreator):
             dialup.Authentication = self.provider['Authentication']
         else:
             dialup.Authentication = '+pap -chap'
-        dialup.DefRoute = FALSE
+        dialup.DefRoute = TRUE
         dialup.PeerDNS = TRUE
         dialup.DialMode = NCDialup.DM_MANUAL
         if self.connection_type == 'ISDN':
