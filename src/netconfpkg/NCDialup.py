@@ -7,7 +7,7 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
         
         
-class ModemDialup(Dialup_base):
+class Dialup(Dialup_base):
     wvdict = { 'Login' : 'Username',
                'Password' : 'Password',
                'Prefix' : 'Dial Prefix',
@@ -18,15 +18,19 @@ class ModemDialup(Dialup_base):
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)        
 
-    def load(self, name):
-        #devdir = SYSCONFDEVICEDIR + name + '.d/'
-        #if not isdir(devdir):
-        #    return
+    def loadIsdn(self, name):
+        devdir = SYSCONFDEVICEDIR + name + '.d/'
+        if not isdir(devdir):
+            return
+
+    def saveIsdn(self, name, device):
+        devdir = SYSCONFDEVICEDIR + name + '.d/'
+        if not isdir(devdir):
+            os.mkdir(devdir)
         
+
+    def loadModem(self, name):
         conf = ConfSMB(filename = '/etc/wvdial.conf')
-        #          for sect in conf.keys():
-        #              for key in conf[sect].keys():
-        #                  print "conf[" + sect + "][" + key + "] = " + conf[sect][key]
         
         sectname = 'Dialer ' + name
 
@@ -59,15 +63,39 @@ class ModemDialup(Dialup_base):
                 print confkey + " = " + value
                 self.InitStrings[self.InitStrings.addInitString()] = value
         
-    def save(self):
+    def saveModem(self, name, device):
         #devdir = SYSCONFDEVICEDIR + name + '.d/'
         #if not isdir(devdir):
         #    os.mkdir(devdir)
         #
-        #conf = ConfSMB(filename = '/etc/wvdial.conf')
-        pass
+        
+        conf = ConfSMB(filename = '/etc/wvdial.conf')
+        sectname = 'Dialer ' + name
+        
+        for selfkey in self.wvdict.keys():
+            confkey = self.wvdict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[sectname][confkey] = str(self.__dict__[selfkey])
+            else:
+                if conf[sectname].has_key(confkey):
+                    del conf[sectname][confkey] 
+            
+        for i in xrange(min([len(self.InitStrings), 9])):
+            confkey = 'Init'
+            if i: confkey = confkey + str(i)                
+            
+            if self.InitStrings[i]:
+                conf[sectname][confkey] = str(self.InitStrings[i])
+            else:
+                if conf[sectname].has_key(confkey):
+                    del conf[sectname][confkey]
+
+        conf[sectname]['Inherits'] = device
+                    
+        conf.write()
 
 if __name__ == '__main__':
-    dl = ModemDialup()
-    dl.load('phone2')
-    dl.save()
+    dl = Dialup()
+    dl.loadModem('phone2')
+    dl.Password = "mypassword"
+    dl.saveModem('phone2', 'ppp0')
