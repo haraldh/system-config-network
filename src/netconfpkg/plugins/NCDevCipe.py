@@ -66,8 +66,10 @@ def setDevCipeWizard(wizard):
    global _devCipeWizard
    _devCipeWizard = wizard
 
-df = getDeviceFactory()
-df.register(DevCipe, CIPE)
+if NC_functions.DOCIPE:
+   df = getDeviceFactory()
+   df.register(DevCipe, CIPE)
+   
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.5 $"
+__date__ = "$Date: 2004/06/15 13:58:22 $"
+__version__ = "$Revision: 1.6 $"
