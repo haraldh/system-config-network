@@ -18,8 +18,7 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-
-NAME = 'Red Hat Network Control'
+import gettext
 
 if not '/usr/lib/rhs/python' in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -29,10 +28,11 @@ if not "/usr/share/redhat-config-network" in sys.path:
 
 if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
-    
-# Workaround for buggy gtk/gnome commandline parsing python bindings.
-cmdline = sys.argv[1:]
-sys.argv = sys.argv[:1]
+
+PROGNAME='redhat-control-network'
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+_=gettext.gettext
 
 import getopt
 import signal
@@ -40,7 +40,6 @@ import os
 import os.path
 import time
 import string
-import gettext
 import GDK
 import gtk
 import libglade
@@ -48,14 +47,6 @@ import gnome
 import gnome.ui
 import gnome.help
 from netconfpkg import *
-from functions import *
-
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, '/usr/share/locale')
-gettext.textdomain(PROGNAME)
-_ = gettext.gettext
 
 TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/")
 
@@ -64,7 +55,7 @@ INACTIVE = _('Inactive')
 
 class mainDialog:
     def __init__(self):
-        glade_file = 'maindialog.glade'
+        glade_file = 'neat-control.glade'
 
         if not os.path.isfile(glade_file):
             glade_file = GLADEPATH + glade_file

@@ -19,6 +19,7 @@
 VERSION = '0.1.0'
 COPYRIGHT = 'Copyright (C) 2002 Red Hat, Inc.'
 AUTORS = ['Than Ngo <than@redhat.com>']
+NAME = 'Red Hat Network Control'
 
 NETWORKDIR = '/etc/sysconfig/network-scripts/'
 NETWORKPREFIX = 'ifcfg'
