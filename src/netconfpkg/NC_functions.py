@@ -316,8 +316,8 @@ def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
 			  widget=None, page=0, broken_widget=None):
 	global generic_error_dialog_func
 	if generic_error_dialog_func:
-		return generic_error_dialog_func("%s:\n%s" % (PROGNAME,
-                                                              message),
+		return generic_error_dialog_func("%s:\n\n%s" % (PROGNAME,
+                                                                message),
                                                  parent_dialog,
 						 dialog_type, widget,
 						 page, broken_widget)
@@ -330,8 +330,8 @@ def generic_info_dialog (message, parent_dialog = None, dialog_type="info",
 			  widget=None, page=0, broken_widget=None):
 	global generic_info_dialog_func
 	if generic_info_dialog_func:
-		return generic_info_dialog_func("%s:\n%s" % (PROGNAME,
-                                                              message),
+		return generic_info_dialog_func("%s:\n\n%s" % (PROGNAME,
+                                                               message),
                                                 parent_dialog,
                                                 dialog_type, widget,
                                                 page, broken_widget)
@@ -345,8 +345,8 @@ def generic_longinfo_dialog (message, long_message,
 			     widget=None, page=0, broken_widget=None):
 	global generic_longinfo_dialog_func
 	if generic_longinfo_dialog_func:
-		return generic_longinfo_dialog_func("%s:\n%s" % (PROGNAME,
-                                                              message),
+		return generic_longinfo_dialog_func("%s:\n\n%s" % (PROGNAME,
+                                                                   message),
                                                     long_message,
 						    parent_dialog,
 						    dialog_type, widget,
@@ -361,8 +361,8 @@ def generic_yesnocancel_dialog (message, parent_dialog = None,
                                 widget=None, page=0, broken_widget=None):
 	global generic_yesnocancel_dialog_func
 	if generic_yesnocancel_dialog_func:
-		return generic_yesnocancel_dialog_func("%s:\n%s" % (PROGNAME,
-                                                              message),
+		return generic_yesnocancel_dialog_func("%s:\n\n%s" % (PROGNAME,
+                                                                      message),
                                                        parent_dialog,
 						       dialog_type, widget,
 						       page, broken_widget)
@@ -376,8 +376,8 @@ def generic_yesno_dialog (message, parent_dialog = None,
 			  widget=None, page=0, broken_widget=None):
 	global generic_yesno_dialog_func
 	if generic_yesno_dialog_func:
-		return generic_yesno_dialog_func("%s:\n%s" % (PROGNAME,
-                                                              message),
+		return generic_yesno_dialog_func("%s:\n\n%s" % (PROGNAME,
+                                                                message),
                                                  parent_dialog,
 						 dialog_type, widget,
 						 page, broken_widget)
