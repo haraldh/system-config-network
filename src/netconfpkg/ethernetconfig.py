@@ -79,7 +79,7 @@ class ethernetConfigDialog:
         if len(hwdesc):
             ecombo.set_popdown_strings(hwdesc)
 
-        if self.device.Alias:
+        if self.device.Alias != None:
             self.xml.get_widget("aliasSupportCB").set_active(TRUE)
             self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
         else:
