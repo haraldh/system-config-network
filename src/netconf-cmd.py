@@ -58,7 +58,7 @@ except IOError:
 
 
 def Usage():
-    print _("redhat-config-network-cmd - network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
+    print _("redhat-config-network-cmd - network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile> -a --activate")
 
 def printClass(classname, parent = None):    
     for child, attr in classname.Attributes.items():
@@ -106,10 +106,15 @@ if __name__ == '__main__':
 
     progname = os.path.basename(sys.argv[0])
 
+    do_activate = 0
+    switch_profile = 0
+    profile = None
+
     try:
-        opts, args = getopt.getopt(cmdline, "p:thd",
-                                   ["profile=",
-                                    "test",
+        opts, args = getopt.getopt(cmdline, "ap:hd",
+                                   [
+                                    "activate",
+                                    "profile=",
                                     "help",
                                     "devicelist"])
         for opt, val in opts:
@@ -122,14 +127,14 @@ if __name__ == '__main__':
                 sys.exit(0)
                 
             if opt == '-p' or opt == '--profile':
-                profilelist = getProfileList()
-                profilelist.updateNetworkScripts()
-                if not profilelist.switchToProfile(val):
-                    print _("No Profile with name %s could be found." % val)
-                profilelist.save()
-                print _("Switching to Profile %s.") % val
-                sys.exit(0)
-
+                switch_profile = 1
+                profile = val
+                continue
+            
+            if opt == '-a' or opt == '--activate':
+                do_activate = 1
+                continue
+                
             if opt == '-h' or opt == '--help':
                 Usage()
                 sys.exit(0)
@@ -139,5 +144,32 @@ if __name__ == '__main__':
     except (getopt.error, BadUsage):
         Usage()
         sys.exit(1)
+
+
+    profilelist = getProfileList()
+    
+    if switch_profile:
+        print "Switching to profile %s" % profile
+        profilelist.switchToProfile(profile)
+        profilelist.save()
+
+    if do_activate:
+        aprof = profilelist.getActiveProfile()
+        for device in getDeviceList():
+            if device.DeviceId in aprof.ActiveDevices:
+                continue
+            (ret, msg) = Interface().deactivate(device.DeviceId)
+            if ret:
+                print msg
+        
+        for device in aprof.ActiveDevices:
+            (ret, msg) = Interface().activate(device)
+            if ret:
+                print msg
+
+        sys.exit(0)
+        
+    if switch_profile:
+        sys.exit(0)
 
     printClass(Device)
