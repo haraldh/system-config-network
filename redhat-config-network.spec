@@ -1,6 +1,6 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.5.3
+Version: 0.5.4
 Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
@@ -9,7 +9,7 @@ Group: Applications/System
 BuildArch: noarch
 Requires: initscripts >= 5.99, usermode , alchemist
 BuildRequires: alchemist, alchemist-devel
-Obsoletes: isdn-config internet-config
+Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -47,6 +47,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Thu Jul 19 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- Obsolete netcfg and rp3
+- More fixes...
+
 * Tue Jul 17 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - CIPE and wireless added
 
