@@ -218,7 +218,7 @@ class mainDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
 
-
+        
         if showprofile:
             self.xml.get_widget ("profileFrame").show()
 
@@ -226,7 +226,6 @@ class mainDialog:
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
         self.act_xpm, self.act_mask = get_icon ("pixmaps/active.xpm", self.dialog)
         self.inact_xpm, self.inact_mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
-
         self.devsel = None
 
         if not os.access('/usr/bin/rp3', os.X_OK):
@@ -630,7 +629,7 @@ class mainDialog:
             generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
             return
 
-        buttons = generic_yesno_dialog((_('Do you really want to delete device "%s"?')) % str(name), self.dialog, widget = clist, page = clist.selection[0])
+        buttons = generic_yesno_dialog((_('Do you really want to delete device "%s"?')) % str(device.DeviceId), self.dialog, widget = clist, page = clist.selection[0])
 
         if buttons != gtk.RESPONSE_YES:
             return
@@ -641,7 +640,7 @@ class mainDialog:
                 del prof.ActiveDevices[pos]
         profilelist.commit()
         
-        del devicelist[clist.selection[0]]
+        del devicelist[devicelist.index(device)]
         devicelist.commit()
         self.hydrate()
 
@@ -790,7 +789,7 @@ class mainDialog:
             if len(clist.selection) == 0:
                 return
             
-            self.devsel = devicelist[clist.selection[0]]
+            self.devsel = clist.get_row_data(clist.selection[0])
             
             status = self.clist_get_status()
 
