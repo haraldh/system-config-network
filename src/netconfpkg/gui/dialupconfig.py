@@ -232,12 +232,12 @@ class ISDNDialupDialog(DialupDialog):
             self.xml.get_widget("allowDialinNumberCB").set_active(dialup.Secure)
             
         if dialup.Callback and dialup.Callback.Type != 'off':
+            self.xml.get_widget("callbackCB").set_active(true)
+            self.xml.get_widget("callbackFrame").set_sensitive(true)
             if dialup.Callback.Type == 'in':
                 self.xml.get_widget('CallbackMode').set_history(0)
             else:
                 self.xml.get_widget('CallbackMode').set_history(1)
-            self.xml.get_widget("callbackCB").set_active(true)
-            self.xml.get_widget("callbackFrame").set_sensitive(true)
             self.xml.get_widget("callbackDelaySB").set_value(dialup.Callback.Delay)
             self.xml.get_widget("cbcpCB").set_active(dialup.Callback.Compression)
 
