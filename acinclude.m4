@@ -58,8 +58,6 @@ AC_DEFUN(AC_CHECK_RPM,
 					if test "$msubminor" = "$subminor"; then
 						if test "$mrelease" -le "$release"; then
 							failed="false"
-						else
-							failed="true"
 						fi
 					elif test "$msubminor" -le "$subminor"; then
 						failed="false"
