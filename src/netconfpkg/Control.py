@@ -80,18 +80,26 @@ class NetworkDevice:
             if len(i) > 4:
                 if i[:4] == 'isdn' or i[:4] == 'ippp':
                     if os.access(command, os.X_OK):
-                        if os.system(command + ' status %s>&/dev/null' %(i)) == 0:
+                        if os.system(command + ' status %s > &/dev/null' %(i)) == 0:
                             continue
                     self.activedevicelist.remove(i)
-
+            elif len(i) > 3 and i[:3] == 'ppp':
+                if not os.access('/var/run/ppp-%s.pid' %(i), os.F_OK):
+                    self.activedevicelist.remove(i)
+            
+        # check real ppp device
+        for i in xrange(0,10):
+            if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
+                self.activedevicelist.append('ppp%s' %(i))
+                    
         self.activedevicelist.sort()
         
     def get(self):
         return self.activedevicelist
 
-    def find(self, o):
+    def find(self, device):
         for i in self.activedevicelist:
-            if i == o:
+            if i == device:
                 return TRUE
         return FALSE
 
