@@ -66,7 +66,7 @@ class cipeConfigDialog(deviceConfigDialog):
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
         hwlist = NCHardwareList.getHardwareList()
         (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist,
-                                                 self.device.Cipe.TunnelDevice)
+                                                              self.device.Cipe.TunnelDevice)
                     
         if len(hwdesc):
             ecombo.set_popdown_strings(hwdesc)

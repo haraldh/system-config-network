@@ -80,13 +80,18 @@ class tcpConfigDialog:
 
         self.hydrate()
 
-        for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
-            widget = self.xml.get_widget (wname)
-            if widget:
-                page = notebook.page_num(widget)
-                if page:                
-                    notebook.remove_page(page)
+        flist = [ "trafficFrame", "securityFrame", "accountingFrame" ]
+        if self.device.Type == CIPE:
+            flist.insert(0, 'hostnameFrame')
+            flist.insert(0, 'tcpipFrame')
 
+        for wname in flist:
+            widget = self.xml.get_widget (wname)
+            if widget != None:
+                page = notebook.page_num(widget)
+                if page != None:
+                    notebook.remove_page(page)
+                    
         self.dialog.set_close(TRUE)
 
     def hydrate(self):
