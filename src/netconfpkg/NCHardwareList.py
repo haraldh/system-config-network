@@ -274,13 +274,11 @@ class HardwareList(HardwareList_base):
                 #
                 # Better do it this way!
                 if modules[hw.Card.ModuleName].has_key('options'):
-                    for key in self.keydict.keys():
-                        if modules[hw.Card.ModuleName]['options'].has_key(key):
-                            del modules[hw.Card.ModuleName]['options'][key]
-                            print "del modules[hw.Card.ModuleName]['options'][%s]" % key
+                    for (key, confkey) in self.keydict.items():
+                        if modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                            del modules[hw.Card.ModuleName]['options'][confkey]
 
-                for selfkey in self.keydict.keys():
-                    confkey = self.keydict[selfkey]
+                for (selfkey, confkey) in self.keydict.items():
                     if hw.Card.__dict__[selfkey]:
                         if selfkey == 'IRQ' \
                            and (hw.Card.IRQ == _('Unknown') \
