@@ -1,5 +1,6 @@
 from DeviceList import *
 from NC_functions import *
+from os.path import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -7,8 +8,11 @@ import Conf
 
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name)  
-
+        if isfile(SYSCONFDEVICEDIR + name):
+            Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name)
+        elif isfile(OLDSYSCONFDEVICEDIR + 'ifcfg-' + name):
+            Conf.ConfShellVar.__init__(self, OLDSYSCONFDEVICEDIR + 'ifcfg-' + name)
+            
 class Device(Device_base):
     keydict = { 'DeviceId' : 'NAME',
                 'DeviceName' : 'DEVICE',
