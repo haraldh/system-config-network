@@ -26,15 +26,11 @@ import signal
 import gettext
 import string
 import ethtool
-import gtk
-import gnome
-import gnome.ui
-import gnome.help
 from netconfpkg import ethtool
 
 VERSION = '0.1.0'
 COPYRIGHT = 'Copyright (C) 2002 Red Hat, Inc.'
-AUTORS = ['Than Ngo <than@redhat.com>']
+AUTHORS = ['Than Ngo <than@redhat.com>']
 NAME = 'Red Hat Network Control'
 PROGNAME='redhat-config-network'
 NETWORKDIR = '/etc/sysconfig/network-scripts/'
@@ -167,11 +163,8 @@ def fork_exec(wait, path, arg):
 
     return -1
 
-def idle_func():
-    while gtk.events_pending():
-        gtk.mainiteration()
 
-def errorDialog(device, error_type):
+def devErrorDialog(device, error_type, dialog):
     if error_type == ACTIVATE:
         errorString = _('Cannot activate network device %s') %(device)
     elif error_type == DEACTIVATE:
@@ -181,10 +174,7 @@ def errorDialog(device, error_type):
     elif error_type == MONITOR:
         errorString = _('Cannot monitor status of network device %s') %(device)
 
-    dlg = gnome.ui.GnomeMessageBox(errorString, 'error', _('Close'))
-    dlg.set_position(gtk.WIN_POS_MOUSE)
-    dlg.run_and_close()
-
+    generic_error_dialog(errorString, dialog);
 
 # make ctrl-C work
 if __name__ == '__main__':
