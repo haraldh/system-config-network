@@ -34,7 +34,7 @@ moduleinfodir = $(pkgdatadir)
 moduleinfo_DATA = module-info
 
 install-exec-local:
-	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
+	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir) $(DESTDIR)$(bindir)
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/neat-control.py $(DESTDIR)$(pkgdatadir)/
