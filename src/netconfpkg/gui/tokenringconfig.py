@@ -67,7 +67,7 @@ class tokenringConfigDialog(deviceConfigDialog):
         vbox = self.xml.get_widget ('routeVbox')
         window.remove (frame)
         vbox.pack_start (frame)
-        sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device, self.dialog)
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)

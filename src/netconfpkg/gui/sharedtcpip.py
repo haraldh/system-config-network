@@ -136,7 +136,7 @@ def route_update(xml, device):
     else:
         device.createStaticRoutes()
 
-def on_routeEditButton_clicked(button, xml, device):
+def on_routeEditButton_clicked(button, xml, device, parent_dialog):
     routes = device.StaticRoutes
     clist  = xml.get_widget("networkRouteList")
 
@@ -147,6 +147,13 @@ def on_routeEditButton_clicked(button, xml, device):
 
     dialog = editAdressDialog(route)
     dl = dialog.xml.get_widget ("Dialog")
+
+    if parent_dialog:
+        dl.set_transient_for(parent_dialog)
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+    else:
+        dl.set_position (gtk.WIN_POS_CENTER)
+        
     if dl.run() != gtk.RESPONSE_OK:
         dl.destroy()        
         return
@@ -212,12 +219,20 @@ def on_routeDownButton_clicked(button, xml, device):
 
     clist.select_row(select_row+1, 0)
 
-def on_routeAddButton_clicked(button, xml, device):
-    if device.StaticRoutes == None: device.createStaticRoutes()
+def on_routeAddButton_clicked(button, xml, device, parent_dialog):
+    if device.StaticRoutes == None:
+        device.createStaticRoutes()
     routes = device.StaticRoutes
     route = Route()
     dialog = editAdressDialog(route)
     dl = dialog.xml.get_widget ("Dialog")    
+
+    if parent_dialog:
+        dl.set_transient_for(parent_dialog)
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+    else:
+        dl.set_position (gtk.WIN_POS_CENTER)
+        
     button = dl.run()
     dl.destroy()
     if button != gtk.RESPONSE_OK:
@@ -227,12 +242,15 @@ def on_routeAddButton_clicked(button, xml, device):
     #routes[i].commit()
     route_update(xml, device)
 
-def route_init(xml, device):
+def route_init(xml, device, dialog = None):
     xml.signal_autoconnect(
         {
-            "on_routeAddButton_clicked" : (on_routeAddButton_clicked, xml, device),
-            "on_routeEditButton_clicked" : (on_routeEditButton_clicked, xml, device),
-            "on_routeDeleteButton_clicked" : (on_routeDeleteButton_clicked, xml, device),
+            "on_routeAddButton_clicked" : (on_routeAddButton_clicked,
+                                           xml, device, dialog),
+            "on_routeEditButton_clicked" : (on_routeEditButton_clicked,
+                                            xml, device, dialog),
+            "on_routeDeleteButton_clicked" : (on_routeDeleteButton_clicked,
+                                              xml, device),
         })
     route_update(xml, device)
 
