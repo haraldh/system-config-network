@@ -7,18 +7,30 @@
   <datatree>
 <Netconf>
 
-  <DeviceList>
-    <Device>
+  <DeviceList TYPE="LIST" ANONYMOUS="TRUE">
+    <Device TYPE="LIST">
       <DeviceName TYPE="STRING"/>
-      <Hostname TYPE="STRING"/>
+      <OnBoot TYPE="BOOL"/>
+      <AllowUser TYPE="BOOL"/>
+
+      <AutoIp TYPE="STRING"/>
+
       <IP TYPE="STRING"/>
       <Netmask TYPE="STRING"/>
+      <DefaultGW TYPE="STRING"/>
 
-      <StaticRoutes>
-        <Route TYPE="STRING"/>
+      <Hostname TYPE="STRING"/>
+      <Domain TYPE="STRING"/>
+      <AutoDNS TYPE="BOOL"/>
+ 
+      <StaticRoutes TYPE="LIST" ANONYMOUS="TRUE">
+        <Route TYPE="LIST">
+          <Adress TYPE="STRING"/>
+          <Netmask TYPE="STRING"/>
+          </Route>
         </StaticRoutes>
 
-      <Dialup>
+      <Dialup  TYPE="LIST">
         <ProviderName TYPE="STRING"/>
         <MSN TYPE="INTEGER"/>
         <Login TYPE="STRING"/>
@@ -41,7 +53,7 @@
           <Restrict TYPE="BOOL"/>
           <CBCP TYPE="BOOL"/>
 
-        <Compression>
+        <Compression TYPE="LIST">
           <VJTcpIp TYPE="BOOL"/>
           <VJID TYPE="BOOL"/>
           <AdressControl TYPE="BOOL"/>
