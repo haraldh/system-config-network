@@ -123,9 +123,13 @@ def Usage():
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
+    from netconfpkg import NC_functions
 
     progname = os.path.basename(sys.argv[0])
+    NC_functions.setVerboseLevel(2)
+    NC_functions.setDebugLevel(0)
     
+    logfilename = "/var/log/redhat-config-network"
     do_activate = 0
     switch_profile = 0
     profile = None
@@ -210,10 +214,11 @@ if __name__ == '__main__':
                 sys.exit(0)
 
             if opt == '-v' or opt == '--verbose':
-                NC_functions.verbose += 1
+                NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
                 continue
 
-            if opt == '--debug':
+            if opt == '-d' or opt == '--debug':
+                NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
                 debug = 1
                 continue
 
@@ -226,7 +231,25 @@ if __name__ == '__main__':
 
     try:
 
-        log.set_loglevel(NC_functions.verbose)
+        if not NC_functions.getDebugLevel():
+            import os
+
+            def log_default_handler (string):
+                import time
+                log.logFile.write ("%s: %s\n" % (time.ctime(), string))
+
+            log.handler = log_default_handler
+
+            if os.path.isfile(logfilename):
+                os.chmod(logfilename, 0600)
+
+            fd = os.open(logfilename,
+                            os.O_APPEND|os.O_WRONLY|os.O_CREAT,
+                            0600)
+
+            lfile = os.fdopen(fd, "a")        
+            log.open(lfile)
+            
         if chroot:
             prepareRoot(chroot)
 
@@ -340,5 +363,5 @@ if __name__ == '__main__':
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.13 $"
+__date__ = "$Date: 2003/10/08 15:07:49 $"
+__version__ = "$Revision: 1.14 $"
