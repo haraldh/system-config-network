@@ -32,10 +32,11 @@ for _idl_file in [ "DeviceList.idl",
                   "HardwareList.idl",
                   "ProfileList.idl" ]:
     GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = netconfpkg)
-
+    
 del _idl_file
 
 import os
+
 _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
                                       v != "__init__.py" and \
                                       v != 'genClass.py' and \

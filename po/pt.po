@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2003-01-14 19:12+0100\n"
+"POT-Creation-Date: 2003-01-20 16:05+0100\n"
 "PO-Revision-Date: 2002-12-29 04:24+0000\n"
 "Last-Translator: Pedro Morais <morais@kde.org\n"
 "Language-Team: pt <morais@kde.org>\n"
@@ -29,23 +29,25 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Copyright
-#: src/neat-control.py:59 src/netconfpkg/gui/maindialog.py:1407
+#: src/neat-control.py:60
+#, fuzzy
 msgid ""
-"This software is distributed under the GPL. Please Report bugs to Red Hat's "
-"Bug Tracking System: http://bugzilla.redhat.com/"
+"This software is distributed under the GPL. ''Please Report bugs to Red "
+"Hat's Bug Tracking System: ''http://bugzilla.redhat.com/"
 msgstr ""
 "Este programa é distribuído segundo a GPL. Por favor comunique qualquer erro "
 "para o Sistema de Registo de Erros da Red Hat: http://bugzilla.redhat.com/"
 
+#. Some command strings
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
 #. Network Device Control Dialog
-#: src/neat-control.py:132 src/netconfpkg/gui/maindialog.py:754
+#: src/neat-control.py:151 src/netconfpkg/gui/maindialog.py:753
 msgid "Network device activating..."
 msgstr "A activar o dispositivo de rede..."
 
-#: src/neat-control.py:134 src/netconfpkg/gui/maindialog.py:756
+#: src/neat-control.py:154 src/netconfpkg/gui/maindialog.py:755
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "A activar o dispositivo de rede %s, espere um pouco..."
@@ -54,13 +56,60 @@ msgstr "A activar o dispositivo de rede %s, espere um pouco..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+#. Display dialog notification of action
+#: src/neat-control.py:230
+#, fuzzy
+msgid "Activating profile..."
+msgstr "A Actualizar os Perfis..."
+
+#: src/neat-control.py:233
+#, fuzzy
+msgid "Activating the selected profile, please wait..."
+msgstr "A activar o dispositivo de rede %s, espere um pouco..."
+
+#. Disable the activate button
+#. Get the profile to activate from the menu
+#. Activate the selected profile
+#. Check results of the activation
+#: src/neat-control.py:252
+#, python-format
+msgid ""
+"Not all network interfaces in selected profile \"%s\" could be activated."
+msgstr ""
+
+#. Re-read the device list
+#. Update the gui
+#. forces a re-read of oldprofile
+#. import time
+#. Make sure the user really wants to auto select ...
+#. Continue with auto select
+#: src/neat-control.py:279
+msgid "Attempting to auto-detect and activate a valid profile, please wait..."
+msgstr ""
+
+#: src/neat-control.py:281
+#, fuzzy
+msgid "Autoselecting profile..."
+msgstr "A Actualizar os Perfis..."
+
+#. Check status of the auto select script and respond accordingly
+#. Grab any error output
+#. errstr='Error: No available profile found. Network unavailable.'
+#. Grab the profile name from the output of the script
+#. Re-read the device list
+#. Update the gui
+#. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:175 src/netconfpkg/gui/maindialog.py:811
+#: src/neat-control.py:320 src/netconfpkg/gui/maindialog.py:810
 msgid "To be rewritten!"
 msgstr "A ser reescrito!"
 
 #. self.xml.get_widget('configureButton').set_sensitive(FALSE)
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
+#. ???
+#. change the default profile to a more understandable name
+#. ??
+#. print "profile " + prof.ProfileName + " activated\n"
 #. make ctrl-C work
 #. !/usr/bin/python
 #. # netconf-tui - a tui network configuration tool
@@ -69,89 +118,106 @@ msgstr "A ser reescrito!"
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. XXX do length limits on obj dumps.
+#. protect from loops
+#.
+#. handleException function
+#.
+#: src/netconf-tui.py:109 src/netconfpkg/gui/exception.py:49
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against redhat-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Ocorreu uma excepção não tratada.  Muito provavelmente isto é devido a uma "
+"erro no programa.  Por favor grave os dados da excepção e adicione um "
+"relatório de erro a redhat-config-network em https://bugzilla.redhat.com/"
+"bugzilla/"
+
+#. Strange... why do I have to reinstall _() ??
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:38
+#: src/netconf-tui.py:151
 msgid "What do you want to configure?"
 msgstr "O que deseja configurar?"
 
-#: src/netconf-tui.py:39
+#: src/netconf-tui.py:152
 msgid "Configure"
 msgstr "Configurar"
 
-#: src/netconf-tui.py:39
+#: src/netconf-tui.py:152
 msgid "Exit"
 msgstr "Sair"
 
-#: src/netconf-tui.py:44
+#: src/netconf-tui.py:157 neat.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "Configuração da Rede"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:160 src/netconf-tui.py:269 src/netconf-tui.py:375
+#: src/netconf-tui.py:273 src/netconf-tui.py:382 src/netconf-tui.py:488
 msgid "Name"
 msgstr "Nome"
 
-#: src/netconf-tui.py:161 src/netconf-tui.py:270 src/netconf-tui.py:376
+#: src/netconf-tui.py:274 src/netconf-tui.py:383 src/netconf-tui.py:489
 msgid "Device"
 msgstr "Dispositivo"
 
-#: src/netconf-tui.py:162
+#: src/netconf-tui.py:275
 msgid "Use DHCP"
 msgstr "Usar o DHCP"
 
-#: src/netconf-tui.py:163
+#: src/netconf-tui.py:276
 msgid "Static IP"
 msgstr "IP Estático"
 
-#: src/netconf-tui.py:164
+#: src/netconf-tui.py:277
 msgid "Netmask"
 msgstr "Máscara"
 
-#: src/netconf-tui.py:165
+#: src/netconf-tui.py:278
 msgid "Default gateway IP"
 msgstr "IP da 'gateway' por omissão"
 
-#: src/netconf-tui.py:173 src/netconf-tui.py:281 src/netconf-tui.py:387
+#: src/netconf-tui.py:286 src/netconf-tui.py:394 src/netconf-tui.py:500
 msgid "Ok"
 msgstr "Ok"
 
-#: src/netconf-tui.py:173 src/netconf-tui.py:281 src/netconf-tui.py:387
+#: src/netconf-tui.py:286 src/netconf-tui.py:394 src/netconf-tui.py:500
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/netconf-tui.py:175
+#: src/netconf-tui.py:288
 msgid "Ethernet Configuration"
 msgstr "Configuração da Ethernet"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:377
+#: src/netconf-tui.py:384 src/netconf-tui.py:490
 msgid "ISP Phonenumber"
 msgstr "Nº de Telefone do ISP"
 
-#: src/netconf-tui.py:272 src/netconf-tui.py:378
+#: src/netconf-tui.py:385 src/netconf-tui.py:491
 msgid "ISP Login"
 msgstr "Utilizador do ISP"
 
-#: src/netconf-tui.py:273 src/netconf-tui.py:379
+#: src/netconf-tui.py:386 src/netconf-tui.py:492
 msgid "ISP Password"
 msgstr "Senha do ISP"
 
-#: src/netconf-tui.py:274
+#: src/netconf-tui.py:387
 msgid "Modem Initstring"
 msgstr "Sequência de Inicialização do Modem"
 
-#: src/netconf-tui.py:282
+#: src/netconf-tui.py:395
 msgid "Modem Configuration"
 msgstr "Configuração do Modem"
 
-#: src/netconf-tui.py:380
+#: src/netconf-tui.py:493
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:388
+#: src/netconf-tui.py:501
 msgid "ISDN Configuration"
 msgstr "Configuração da RDIS"
 
@@ -187,7 +253,7 @@ msgstr "Erro: %s, %s!"
 msgid "Starting text version:"
 msgstr "A iniciar a versão de texto:"
 
-#: src/netconf.py:113
+#: src/netconf.py:110
 msgid "Loading Network Configuration..."
 msgstr "A Carregar a Configuração de Rede..."
 
@@ -213,10 +279,11 @@ msgstr "A Carregar a Configuração de Rede..."
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:61
+#, fuzzy
 msgid ""
 "redhat-config-network-cmd - network configuration commandline tool\n"
 "\n"
-"Usage: redhat-config-network-cmd -p --profile <profile>"
+"Usage: redhat-config-network-cmd -p --profile <profile> -a --activate"
 msgstr ""
 "redhat-config-network-cmd - ferramenta textual de configuração de redes\n"
 "\n"
@@ -228,16 +295,6 @@ msgstr ""
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Por favor reinicie o %s com permissões de root!"
-
-#: src/netconf-cmd.py:128
-#, python-format
-msgid "No Profile with name %s could be found."
-msgstr "Não foi possível encontrar um perfil com o nome %s."
-
-#: src/netconf-cmd.py:130
-#, python-format
-msgid "Switching to Profile %s."
-msgstr "A Mudar para o Perfil %s."
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -298,8 +355,8 @@ msgstr ""
 #: src/netconfpkg/gui/CipeInterface.py:141
 #: src/netconfpkg/gui/DialupDruid.py:233
 #: src/netconfpkg/gui/EthernetInterface.py:213
-#: src/netconfpkg/gui/TokenRingInterface.py:207
 #: src/netconfpkg/gui/WirelessInterface.py:280
+#: src/netconfpkg/gui/TokenRingInterface.py:207
 msgid "You have selected the following information:"
 msgstr "Seleccionou a seguinte informação:"
 
@@ -341,8 +398,8 @@ msgstr "Criar uma nova ligação de rede privada virtual com o CIPE."
 
 #: src/netconfpkg/gui/CipeInterface.py:142
 #: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/TokenRingInterface.py:208
 #: src/netconfpkg/gui/WirelessInterface.py:281
+#: src/netconfpkg/gui/TokenRingInterface.py:208
 msgid "Device:"
 msgstr "Dispositivo:"
 
@@ -475,7 +532,7 @@ msgstr "Número de Telefone:"
 #: src/netconfpkg/gui/tokenringhardware.py:151
 #: src/netconfpkg/gui/tokenringhardware.py:162
 #: src/netconfpkg/NCHardwareList.py:199 src/netconfpkg/NCHardwareList.py:313
-#: src/netconfpkg/NCHardwareList.py:341 src/netconfpkg/NC_functions.py:218
+#: src/netconfpkg/NCHardwareList.py:341 src/netconfpkg/NC_functions.py:221
 #: src/netconfpkg/NCDevice.py:203 src/netconfpkg/NCDevice.py:210
 #: src/netconfpkg/NCDeviceList.py:84
 msgid "Unknown"
@@ -513,26 +570,26 @@ msgid "Other Ethernet Card"
 msgstr "Outra Placa Ethernet"
 
 #: src/netconfpkg/gui/EthernetInterface.py:225
-#: src/netconfpkg/gui/TokenRingInterface.py:219
 #: src/netconfpkg/gui/WirelessInterface.py:292
+#: src/netconfpkg/gui/TokenRingInterface.py:219
 msgid "Address:"
 msgstr "Endereço:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:226
-#: src/netconfpkg/gui/TokenRingInterface.py:220
 #: src/netconfpkg/gui/WirelessInterface.py:293
+#: src/netconfpkg/gui/TokenRingInterface.py:220
 msgid "Subnet Mask:"
 msgstr "Máscara da Sub-rede:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:227
-#: src/netconfpkg/gui/TokenRingInterface.py:221
 #: src/netconfpkg/gui/WirelessInterface.py:294
+#: src/netconfpkg/gui/TokenRingInterface.py:221
 msgid "Default Gateway Address:"
 msgstr "Endereço da 'Gateway' por Omissão:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:229
-#: src/netconfpkg/gui/TokenRingInterface.py:223
 #: src/netconfpkg/gui/WirelessInterface.py:296
+#: src/netconfpkg/gui/TokenRingInterface.py:223
 msgid "Automatically obtain IP address settings with:"
 msgstr "Obter automaticamente a configuração IP com:"
 
@@ -598,21 +655,6 @@ msgstr "Este dispositivo não pode ser editado com esta ferramenta!"
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 #. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
@@ -650,6 +692,21 @@ msgstr ""
 "avançadas. Está também disponível nos EUA mas é pouco comum. A velocidade "
 "vai desde do 64kbps até aos 128kbps."
 
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -692,68 +749,40 @@ msgstr "A procurar modems..."
 msgid "Probing for Modems, please wait..."
 msgstr "A procurar Modems, por favor espere..."
 
-#: src/netconfpkg/gui/ModemInterface.py:117
+#: src/netconfpkg/gui/ModemInterface.py:118
 msgid "No modem was found on your system."
 msgstr "Nenhum modem encontrado no seu computador."
 
 #. 460800 seems to be to high
-#: src/netconfpkg/gui/ModemInterface.py:138
+#: src/netconfpkg/gui/ModemInterface.py:139
 #: src/netconfpkg/gui/modemconfig.py:113
 msgid "Generic Modem"
 msgstr "Modem Genérico"
 
-#: src/netconfpkg/gui/ModemInterface.py:145
+#: src/netconfpkg/gui/ModemInterface.py:146
 #: src/netconfpkg/gui/modemconfig.py:140
 msgid "Off"
 msgstr "Desligado"
 
-#: src/netconfpkg/gui/ModemInterface.py:147
+#: src/netconfpkg/gui/ModemInterface.py:148
 #: src/netconfpkg/gui/modemconfig.py:142
 msgid "Low"
 msgstr "Baixo"
 
-#: src/netconfpkg/gui/ModemInterface.py:149
+#: src/netconfpkg/gui/ModemInterface.py:150
 #: src/netconfpkg/gui/modemconfig.py:144
 msgid "Medium"
 msgstr "Médio"
 
-#: src/netconfpkg/gui/ModemInterface.py:151
+#: src/netconfpkg/gui/ModemInterface.py:152
 #: src/netconfpkg/gui/modemconfig.py:146
 msgid "High"
 msgstr "Alto"
 
-#: src/netconfpkg/gui/ModemInterface.py:153
+#: src/netconfpkg/gui/ModemInterface.py:154
 #: src/netconfpkg/gui/modemconfig.py:148
 msgid "Very High"
 msgstr "Muito Alto"
-
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/TokenRingInterface.py:112
-msgid "Token Ring connection"
-msgstr "Ligação 'Token Ring'"
-
-#: src/netconfpkg/gui/TokenRingInterface.py:118
-msgid "Create a new Token Ring connection."
-msgstr "Criar uma nova ligação 'Token Ring'."
-
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#: src/netconfpkg/gui/TokenRingInterface.py:189
-msgid "Other Tokenring Card"
-msgstr "Outra Placa 'Token Ring'"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -818,6 +847,53 @@ msgstr "Chave: "
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/TokenRingInterface.py:112
+msgid "Token Ring connection"
+msgstr "Ligação 'Token Ring'"
+
+#: src/netconfpkg/gui/TokenRingInterface.py:118
+msgid "Create a new Token Ring connection."
+msgstr "Criar uma nova ligação 'Token Ring'."
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#: src/netconfpkg/gui/TokenRingInterface.py:189
+msgid "Other Tokenring Card"
+msgstr "Outra Placa 'Token Ring'"
+
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ctcconfig.py:49
 msgid "CTC Device"
 msgstr "Dispositivo CTC"
@@ -858,6 +934,27 @@ msgstr "Dispositivo IUCV"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
 #. make ctrl-C work
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -940,12 +1037,8 @@ msgstr "Configuração do Acesso 'Dialup' por Modem"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. make ctrl-C work
+#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+#. self.dialog.connect("hide", gtk.mainquit)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -961,8 +1054,8 @@ msgstr "Configuração do Acesso 'Dialup' por Modem"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-#. self.dialog.connect("hide", gtk.mainquit)
+#. self.host.commit()
+#. make ctrl-C work
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -999,56 +1092,6 @@ msgstr "Configuração do Acesso 'Dialup' por Modem"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.host.commit()
-#. make ctrl-C work
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ethernethardware.py:92
-#: src/netconfpkg/gui/tokenringhardware.py:99
-msgid "Command failed: "
-msgstr "O comando falhou: "
-
-#: src/netconfpkg/gui/ethernethardware.py:93
-#: src/netconfpkg/gui/tokenringhardware.py:100
-msgid "Output:\n"
-msgstr "Resultado:\n"
-
-#: src/netconfpkg/gui/ethernethardware.py:95
-msgid ""
-"The Ethernet card could not be initialized. \n"
-"Please verify your settings and try again."
-msgstr ""
-"Não foi possível inicializar a placa Ethernet. \n"
-"Por favor verifique a sua configuração e tente novamente."
-
 #.
 #. exception.py - general exception formatting and saving
 #.
@@ -1079,17 +1122,6 @@ msgstr "Depurar"
 #: src/netconfpkg/gui/exception.py:36
 msgid "Save to file"
 msgstr "Gravar para ficheiro"
-
-#: src/netconfpkg/gui/exception.py:49
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.  Please save "
-"the crash dump and file a detailed bug report against redhat-config-network "
-"at https://bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Ocorreu uma excepção não tratada.  Muito provavelmente isto é devido a uma "
-"erro no programa.  Por favor grave os dados da excepção e adicione um "
-"relatório de erro a redhat-config-network em https://bugzilla.redhat.com/"
-"bugzilla/"
 
 #. I did it this way for future expantion
 #. 0 is debug
@@ -1131,6 +1163,320 @@ msgstr ""
 "O estado da aplicação foi escrito para\n"
 "o ficheiro '%s'."
 
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. !/usr/bin/python2.2
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. initialize the button state..
+#: src/netconfpkg/gui/maindialog.py:222
+msgid "Loading Configuration..."
+msgstr "A Carregar a Configuração..."
+
+#: src/netconfpkg/gui/maindialog.py:229
+msgid "Loading Device Configuration..."
+msgstr "A Carregar a Configuração de Dispositivos..."
+
+#: src/netconfpkg/gui/maindialog.py:234
+msgid "Loading Hardware Configuration..."
+msgstr "A Carregar a Configuração de Hardware..."
+
+#: src/netconfpkg/gui/maindialog.py:239
+msgid "Loading Profile Configuration..."
+msgstr "A Carregar a Configuração de Perfis..."
+
+#: src/netconfpkg/gui/maindialog.py:244
+msgid "Testing Configuration Set..."
+msgstr "A Testar o Conjunto de Configurações..."
+
+#: src/netconfpkg/gui/maindialog.py:272
+#, python-format
+msgid "Active Profile: %s (modified)"
+msgstr "Perfil Activo: %s (modificado)"
+
+#: src/netconfpkg/gui/maindialog.py:276
+#, python-format
+msgid "Active Profile: %s"
+msgstr "Perfil Activo: %s"
+
+#: src/netconfpkg/gui/maindialog.py:284
+msgid "Saving Configuration..."
+msgstr "A Gravar a Configuração.."
+
+#: src/netconfpkg/gui/maindialog.py:293
+#, python-format
+msgid ""
+"Error saving Configuration!\n"
+"%s"
+msgstr ""
+"Erro ao Gravar a Configuração!\n"
+"%s"
+
+#: src/netconfpkg/gui/maindialog.py:298
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+"A alterações foram gravadas.\n"
+"Pode queres reiniciar a rede\n"
+"e os serviços de rede ou\n"
+"reniciar o computador."
+
+#: src/netconfpkg/gui/maindialog.py:306
+msgid "Saving Device Configuration..."
+msgstr "A Gravar a Configuração de Dispositivos..."
+
+#: src/netconfpkg/gui/maindialog.py:313
+msgid "Saving Hardware Configuration..."
+msgstr "A Gravar a Configuração de Hardware..."
+
+#: src/netconfpkg/gui/maindialog.py:320
+msgid "Saving Profile Configuration..."
+msgstr "A Gravar a Configuração do Perfil..."
+
+#: src/netconfpkg/gui/maindialog.py:342
+msgid "Updating Devices..."
+msgstr "A Actualizar os Dispositivos..."
+
+#: src/netconfpkg/gui/maindialog.py:398
+msgid "Updating Hardware..."
+msgstr "A Actualizar o Hardware..."
+
+#. print "getActiveProfile == %s " % self.active_profile.ProfileName
+#: src/netconfpkg/gui/maindialog.py:413
+msgid "Updating Profiles..."
+msgstr "A Actualizar os Perfis..."
+
+#. print "hydrateProfiles(%s)" % self.active_profile_name
+#. change the default profile to a more understandable name
+#. omenu.set_history (history)
+#: src/netconfpkg/gui/maindialog.py:511 src/netconfpkg/gui/maindialog.py:582
+#: src/netconfpkg/gui/maindialog.py:840
+msgid "Do you want to save your changes?"
+msgstr "Quer gravar as suas alterações?"
+
+#: src/netconfpkg/gui/maindialog.py:647
+msgid "The Loopback device can not be edited!"
+msgstr "O dispositivo de Loopback não pode ser editado!"
+
+#: src/netconfpkg/gui/maindialog.py:651
+msgid "Edit Device..."
+msgstr "Editar o Dispositivo..."
+
+#. Fixed change device names in active list of all profiles
+#: src/netconfpkg/gui/maindialog.py:702
+msgid "The Loopback device can not be removed!"
+msgstr "O dispositivo Loopback não pode ser removido!"
+
+#: src/netconfpkg/gui/maindialog.py:706
+#, python-format
+msgid "Do you really want to delete device \"%s\"?"
+msgstr "Quer mesmo apagar o dispositivo \"%s\"?"
+
+#: src/netconfpkg/gui/maindialog.py:739
+msgid "You have made some changes in your configuration."
+msgstr "Efectou algumas modificações na sua configuração."
+
+#: src/netconfpkg/gui/maindialog.py:740
+#, python-format
+msgid "To activate the network device %s, the changes have to be saved."
+msgstr ""
+"Para activar o dispositivo de rede %s, tem de gravar as suas alterações."
+
+#: src/netconfpkg/gui/maindialog.py:742
+msgid "Do you want to continue?"
+msgstr "Deseja continuar?"
+
+#: src/netconfpkg/gui/maindialog.py:766
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Não foi possível activar o dispositivo de rede %s!\n"
+
+#: src/netconfpkg/gui/maindialog.py:789
+msgid "Network device deactivating..."
+msgstr "A desactivar o dispositivo de rede..."
+
+#: src/netconfpkg/gui/maindialog.py:791
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "A desactivar o dispositivo de rede %s, espere um pouco..."
+
+#: src/netconfpkg/gui/maindialog.py:802
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Não foi possível desactivar o dispositivo de rede %s!\n"
+
+#. devicelist = getDeviceList()
+#. edit_button.set_sensitive(FALSE)
+#. edit_button.set_sensitive(TRUE)
+#. clist.remove_data ("signal_id")
+#. don't allow user to edit device if it's active
+#. if clist.get_name() == 'deviceList':
+#. try:
+#. status = clist.get_pixtext(clist.selection[0], 0)[0]
+#. except ValueError:
+#. status = clist.get_text(clist.selection[0], 0)
+#. if status == ACTIVE:
+#. return
+#: src/netconfpkg/gui/maindialog.py:953
+msgid "The Loopback device can not be disabled!"
+msgstr "O dispositivo de Loopback não pode ser desactivado!"
+
+#. if len(clist.selection) == 0:
+#. return
+#.
+#: src/netconfpkg/gui/maindialog.py:1132 src/netconfpkg/gui/maindialog.py:1211
+msgid "The name may only contain letters and digits!"
+msgstr "O nome só pode conter letras e dígitos"
+
+#: src/netconfpkg/gui/maindialog.py:1137 src/netconfpkg/gui/maindialog.py:1216
+#, python-format
+msgid "The profile can't be named \"%s\"!"
+msgstr "O nome do perfil não pode ser \"%s\"!"
+
+#: src/netconfpkg/gui/maindialog.py:1143 src/netconfpkg/gui/maindialog.py:1222
+msgid "The profile name already exists!"
+msgstr "Já existe um perfil com esse nome!"
+
+#. self.xml.get_widget("profileList").clear()
+#: src/netconfpkg/gui/maindialog.py:1189
+#, python-format
+msgid "The \"%s\" profile can't be renamed!"
+msgstr "Não é possível alterar o nome do perfil \"%s\"!"
+
+#. clist = self.xml.get_widget('profileList')
+#. if len(clist.selection) == 0:
+#. return
+#: src/netconfpkg/gui/maindialog.py:1244
+#, python-format
+msgid "The \"%s\" Profile can not be deleted!"
+msgstr "O Perfil \"%s\" não pode ser apagado!"
+
+#: src/netconfpkg/gui/maindialog.py:1250
+#, python-format
+msgid "Do you really want to delete profile \"%s\"?"
+msgstr "Quer mesmo apagar o perfil \"%s\"?"
+
+#. clist.clear()
+#: src/netconfpkg/gui/maindialog.py:1318
+msgid ""
+"Sorry, there is nothing to be edited,\n"
+"or this type cannot be edited yet."
+msgstr ""
+"Infelizmente, não há nada a editar,\n"
+"ou este tipo ainda não pode ser editado."
+
+#: src/netconfpkg/gui/maindialog.py:1336
+#, python-format
+msgid "Do you really want to delete \"%s\"?"
+msgstr "Quer mesmo apagar \"%s\"?"
+
+#. remove hardware
+#: src/netconfpkg/gui/maindialog.py:1350
+#, python-format
+msgid "Do you want to delete all devices that used \"%s\"?"
+msgstr "Quer apagar todos os dispositivos que utilizavam \"%s\"?"
+
+#. remove all devices used this hardware
+#.
+#. FIXME!! This has to be modular, not hardcoded!
+#.
+#. DSL
+#. CIPE
+#. WIRELESS
+#. ETHERNET
+#: src/netconfpkg/gui/maindialog.py:1405
+msgid "Copyright (c) 2001,2002 Red Hat, Inc."
+msgstr "Copyright (c) 2001,2002 Red Hat, Inc."
+
+#: src/netconfpkg/gui/maindialog.py:1406
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Este programa é distribuído segundo a GPL. Por favor comunique qualquer erro "
+"para o Sistema de Registo de Erros da Red Hat: http://bugzilla.redhat.com/"
+
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ethernethardware.py:92
+#: src/netconfpkg/gui/tokenringhardware.py:99
+msgid "Command failed: "
+msgstr "O comando falhou: "
+
+#: src/netconfpkg/gui/ethernethardware.py:93
+#: src/netconfpkg/gui/tokenringhardware.py:100
+msgid "Output:\n"
+msgstr "Resultado:\n"
+
+#: src/netconfpkg/gui/ethernethardware.py:95
+msgid ""
+"The Ethernet card could not be initialized. \n"
+"Please verify your settings and try again."
+msgstr ""
+"Não foi possível inicializar a placa Ethernet. \n"
+"Por favor verifique a sua configuração e tente novamente."
+
 #: src/netconfpkg/gui/tokenringhardware.py:102
 msgid ""
 "The Token Ring card could not be initialized. \n"
@@ -1157,267 +1503,6 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. widget.set_position(0)
-#. !/usr/bin/python2.2
-#. # netconf - A network configuration tool
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/maindialog.py:47
-msgid "Common"
-msgstr "Comuns"
-
-#. initialize the button state..
-#: src/netconfpkg/gui/maindialog.py:223
-msgid "Loading Configuration..."
-msgstr "A Carregar a Configuração..."
-
-#: src/netconfpkg/gui/maindialog.py:230
-msgid "Loading Device Configuration..."
-msgstr "A Carregar a Configuração de Dispositivos..."
-
-#: src/netconfpkg/gui/maindialog.py:235
-msgid "Loading Hardware Configuration..."
-msgstr "A Carregar a Configuração de Hardware..."
-
-#: src/netconfpkg/gui/maindialog.py:240
-msgid "Loading Profile Configuration..."
-msgstr "A Carregar a Configuração de Perfis..."
-
-#: src/netconfpkg/gui/maindialog.py:245
-msgid "Testing Configuration Set..."
-msgstr "A Testar o Conjunto de Configurações..."
-
-#: src/netconfpkg/gui/maindialog.py:273
-#, python-format
-msgid "Active Profile: %s (modified)"
-msgstr "Perfil Activo: %s (modificado)"
-
-#: src/netconfpkg/gui/maindialog.py:277
-#, python-format
-msgid "Active Profile: %s"
-msgstr "Perfil Activo: %s"
-
-#: src/netconfpkg/gui/maindialog.py:285
-msgid "Saving Configuration..."
-msgstr "A Gravar a Configuração.."
-
-#: src/netconfpkg/gui/maindialog.py:294
-#, python-format
-msgid ""
-"Error saving Configuration!\n"
-"%s"
-msgstr ""
-"Erro ao Gravar a Configuração!\n"
-"%s"
-
-#: src/netconfpkg/gui/maindialog.py:299
-msgid ""
-"Changes are saved.\n"
-"You may want to restart\n"
-"the network and network services\n"
-"or restart the computer."
-msgstr ""
-"A alterações foram gravadas.\n"
-"Pode queres reiniciar a rede\n"
-"e os serviços de rede ou\n"
-"reniciar o computador."
-
-#: src/netconfpkg/gui/maindialog.py:307
-msgid "Saving Device Configuration..."
-msgstr "A Gravar a Configuração de Dispositivos..."
-
-#: src/netconfpkg/gui/maindialog.py:314
-msgid "Saving Hardware Configuration..."
-msgstr "A Gravar a Configuração de Hardware..."
-
-#: src/netconfpkg/gui/maindialog.py:321
-msgid "Saving Profile Configuration..."
-msgstr "A Gravar a Configuração do Perfil..."
-
-#: src/netconfpkg/gui/maindialog.py:343
-msgid "Updating Devices..."
-msgstr "A Actualizar os Dispositivos..."
-
-#: src/netconfpkg/gui/maindialog.py:399
-msgid "Updating Hardware..."
-msgstr "A Actualizar o Hardware..."
-
-#. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:414
-msgid "Updating Profiles..."
-msgstr "A Actualizar os Perfis..."
-
-#. print "hydrateProfiles(%s)" % self.active_profile_name
-#. change the default profile to a more understandable name
-#. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:512 src/netconfpkg/gui/maindialog.py:583
-#: src/netconfpkg/gui/maindialog.py:841
-msgid "Do you want to save your changes?"
-msgstr "Quer gravar as suas alterações?"
-
-#: src/netconfpkg/gui/maindialog.py:648
-msgid "The Loopback device can not be edited!"
-msgstr "O dispositivo de Loopback não pode ser editado!"
-
-#: src/netconfpkg/gui/maindialog.py:652
-msgid "Edit Device..."
-msgstr "Editar o Dispositivo..."
-
-#. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:703
-msgid "The Loopback device can not be removed!"
-msgstr "O dispositivo Loopback não pode ser removido!"
-
-#: src/netconfpkg/gui/maindialog.py:707
-#, python-format
-msgid "Do you really want to delete device \"%s\"?"
-msgstr "Quer mesmo apagar o dispositivo \"%s\"?"
-
-#: src/netconfpkg/gui/maindialog.py:740
-msgid "You have made some changes in your configuration."
-msgstr "Efectou algumas modificações na sua configuração."
-
-#: src/netconfpkg/gui/maindialog.py:741
-#, python-format
-msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"Para activar o dispositivo de rede %s, tem de gravar as suas alterações."
-
-#: src/netconfpkg/gui/maindialog.py:743
-msgid "Do you want to continue?"
-msgstr "Deseja continuar?"
-
-#: src/netconfpkg/gui/maindialog.py:767
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Não foi possível activar o dispositivo de rede %s!\n"
-
-#: src/netconfpkg/gui/maindialog.py:790
-msgid "Network device deactivating..."
-msgstr "A desactivar o dispositivo de rede..."
-
-#: src/netconfpkg/gui/maindialog.py:792
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "A desactivar o dispositivo de rede %s, espere um pouco..."
-
-#: src/netconfpkg/gui/maindialog.py:803
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Não foi possível desactivar o dispositivo de rede %s!\n"
-
-#. devicelist = getDeviceList()
-#. edit_button.set_sensitive(FALSE)
-#. edit_button.set_sensitive(TRUE)
-#. clist.remove_data ("signal_id")
-#. don't allow user to edit device if it's active
-#. if clist.get_name() == 'deviceList':
-#. try:
-#. status = clist.get_pixtext(clist.selection[0], 0)[0]
-#. except ValueError:
-#. status = clist.get_text(clist.selection[0], 0)
-#. if status == ACTIVE:
-#. return
-#: src/netconfpkg/gui/maindialog.py:954
-msgid "The Loopback device can not be disabled!"
-msgstr "O dispositivo de Loopback não pode ser desactivado!"
-
-#. if len(clist.selection) == 0:
-#. return
-#.
-#: src/netconfpkg/gui/maindialog.py:1133 src/netconfpkg/gui/maindialog.py:1212
-msgid "The name may only contain letters and digits!"
-msgstr "O nome só pode conter letras e dígitos"
-
-#: src/netconfpkg/gui/maindialog.py:1138 src/netconfpkg/gui/maindialog.py:1217
-#, python-format
-msgid "The profile can't be named \"%s\"!"
-msgstr "O nome do perfil não pode ser \"%s\"!"
-
-#: src/netconfpkg/gui/maindialog.py:1144 src/netconfpkg/gui/maindialog.py:1223
-msgid "The profile name already exists!"
-msgstr "Já existe um perfil com esse nome!"
-
-#. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1190
-#, python-format
-msgid "The \"%s\" profile can't be renamed!"
-msgstr "Não é possível alterar o nome do perfil \"%s\"!"
-
-#. clist = self.xml.get_widget('profileList')
-#. if len(clist.selection) == 0:
-#. return
-#: src/netconfpkg/gui/maindialog.py:1245
-#, python-format
-msgid "The \"%s\" Profile can not be deleted!"
-msgstr "O Perfil \"%s\" não pode ser apagado!"
-
-#: src/netconfpkg/gui/maindialog.py:1251
-#, python-format
-msgid "Do you really want to delete profile \"%s\"?"
-msgstr "Quer mesmo apagar o perfil \"%s\"?"
-
-#. clist.clear()
-#: src/netconfpkg/gui/maindialog.py:1319
-msgid ""
-"Sorry, there is nothing to be edited,\n"
-"or this type cannot be edited yet."
-msgstr ""
-"Infelizmente, não há nada a editar,\n"
-"ou este tipo ainda não pode ser editado."
-
-#: src/netconfpkg/gui/maindialog.py:1337
-#, python-format
-msgid "Do you really want to delete \"%s\"?"
-msgstr "Quer mesmo apagar \"%s\"?"
-
-#. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1351
-#, python-format
-msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr "Quer apagar todos os dispositivos que utilizavam \"%s\"?"
-
-#. remove all devices used this hardware
-#.
-#. FIXME!! This has to be modular, not hardcoded!
-#.
-#. DSL
-#. CIPE
-#. WIRELESS
-#. ETHERNET
-#: src/netconfpkg/gui/maindialog.py:1406
-msgid "Copyright (c) 2001,2002 Red Hat, Inc."
-msgstr "Copyright (c) 2001,2002 Red Hat, Inc."
-
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.xml.get_widget ("addressPixmap").set_from_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
-#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-#. self.dialog.connect("hide", gtk.mainquit)
 #. -*- python -*-
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1574,7 +1659,7 @@ msgstr "auto"
 msgid "manual"
 msgstr "manual"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:92
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:95
 msgid "None"
 msgstr "Nenhum"
 
@@ -1966,17 +2051,29 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. import gettext
+#. gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+#. gettext.textdomain(PROGNAME)
+#. try:
+#. gettext.install(PROGNAME, "/usr/share/locale", 1)
+#. except IOError:
+#. import __builtin__
+#. __builtin__.__dict__['_'] = unicode
+#: src/netconfpkg/NC_functions.py:50
+msgid "Common"
+msgstr "Comuns"
+
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:90
+#: src/netconfpkg/NC_functions.py:93
 msgid "Hardware (CRTSCTS)"
 msgstr "Hardware (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:91
+#: src/netconfpkg/NC_functions.py:94
 msgid "Software (XON/XOFF)"
 msgstr "Software (XON/XOFF)"
 
-#: src/netconfpkg/NC_functions.py:133
+#: src/netconfpkg/NC_functions.py:136
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
@@ -1986,7 +2083,7 @@ msgstr ""
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:386
+#: src/netconfpkg/NC_functions.py:389
 #, python-format
 msgid ""
 "Error removing\n"
@@ -1997,7 +2094,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:395
+#: src/netconfpkg/NC_functions.py:398
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2010,7 +2107,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:405
+#: src/netconfpkg/NC_functions.py:408
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2023,7 +2120,7 @@ msgstr ""
 "para %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:414
+#: src/netconfpkg/NC_functions.py:417
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2037,7 +2134,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:423
+#: src/netconfpkg/NC_functions.py:426
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2206,17 +2303,77 @@ msgstr "O ficheiro de rotas estáticas %s é inválido"
 msgid "Copying %s to devices and putting it into the default profile."
 msgstr "A copiar %s para os dispositivo e a coloca-lo no perfil por omissão."
 
-#~ msgid "Control and monitor network devices"
-#~ msgstr "Controla e monitoriza dispositivos de rede"
+#.
+#. clear all Dialer sections in wvdial.conf
+#. before the new Dialer sections written
+#.
+#.
+#. Clear all pap and chap-secrets generated by netconf
+#.
+#.
+#. traverse all devices in the list
+#.
+#.
+#. really save the device
+#.
+#. if dev.changed:
+#.
+#. write the pap and chap-secrets, if any
+#.
+#.
+#. Remove old config files
+#.
+#. print "DVList.load()"
+#. print repr(DVList)
+#. if dev.Dialup.Callback == None:
+#. dl.save()
+#. -*- python -*-
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#: neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "Controla e monitoriza dispositivos de rede"
 
-#~ msgid "Network Device Control"
-#~ msgstr "Controlo dos Dispositivos de Rede"
+#: neat-control.desktop.in.h:2
+msgid "Network Device Control"
+msgstr "Controlo dos Dispositivos de Rede"
 
-#~ msgid "Configure network devices and connections"
-#~ msgstr "Configurar dispositivo e ligações de rede"
+#: neat.desktop.in.h:1
+msgid "Configure network devices and connections"
+msgstr "Configurar dispositivo e ligações de rede"
 
-#~ msgid "Network"
-#~ msgstr "Rede"
+#: neat.desktop.in.h:2
+msgid "Network"
+msgstr "Rede"
+
+#: internet-druid.desktop.in.h:1
+msgid "Configure your connection to the Internet"
+msgstr "Configure a sua ligação à Internet"
+
+#: internet-druid.desktop.in.h:2
+msgid "Internet Configuration Wizard"
+msgstr "Assistente de Configuração de Internet"
+
+#~ msgid "No Profile with name %s could be found."
+#~ msgstr "Não foi possível encontrar um perfil com o nome %s."
+
+#~ msgid "Switching to Profile %s."
+#~ msgstr "A Mudar para o Perfil %s."
 
 #~ msgid "Info"
 #~ msgstr "Informação"
@@ -3432,9 +3589,3 @@ msgstr "A copiar %s para os dispositivo e a coloca-lo no perfil por omissão."
 
 #~ msgid "_T-Online Account"
 #~ msgstr "Conta do _T-Online"
-
-#~ msgid "Configure your connection to the Internet"
-#~ msgstr "Configure a sua ligação à Internet"
-
-#~ msgid "Internet Configuration Wizard"
-#~ msgstr "Assistente de Configuração de Internet"

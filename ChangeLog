@@ -1,4 +1,80 @@
+2003-01-20  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/plugins/Makefile.am 1.4: s/$srcdir/$(srcdir)
+
+	* src/netconfpkg/gui/maindialog.py 1.17: s/show_all/show_now
+	profile.Active = false for copied profiles
+
+	* src/netconfpkg/gui/ModemInterface.py 1.27: s/show_all/show_now
+
+	* src/netconfpkg/gui/Makefile.am 1.20: neat-control.glade added
+	s/$srcdir/$(srcdir)
+
+	* src/netconfpkg/NC_functions.py 1.66: commented out gettext
+	DEFAULT_PROFILE_NAME added
+
+	* src/netconfpkg/NCProfileList.py 1.65: getActiveProfile() added
+	getProfileList(refresh=None), refresh added
+
+	* src/netconfpkg/Makefile.am 1.56: s/$srcdir/$(srcdir)
+
+	* src/netconf.py 1.185: s/realize/show_now
+
+	* src/netconf-tui.py 1.14: added traceback debugger
+	corrected i18n
+
+	* src/netconf-cmd.py 1.7: added profile activation
+
+	* src/neat-control.py 1.29: added profile switching
+
+	* src/Makefile.am 1.70: removed doc dir
+	build .pyc files
+	redhat-config-network -> redhat-config-network-gui
+
+	* po/POTFILES.in 1.24: correct filelist
+
+	* doc/stylesheet-images/Makefile.am 1.3, doc/figs/Makefile.am 1.9, doc/Makefile.am 1.12:
+	changed to wildcard
+
+	* redhat-config-network.spec.in 1.161: added gui subpackage
+
+	* neat.console 1.4: renamed neat -> redhat-config-network
+
+	* configure.in 1.137: removed src/doc
+
+	* Makefile.am 1.41: added redhat-config-network.sh
+
+2003-01-19  keld  <keld@redhat.com>
+
+	* po/da.po 1.90: Some updates
+	comps-po/da.po rhn-applet/da.po up2date/da.po
+	anaconda/anaconda-po/da.po anaconda-help/help/da.po
+	firstboot/po/da.po initscripts/po/da.po
+	redhat-config-kickstart/po/da.po
+	redhat-config-network/po/da.po redhat-config-samba/po/da.po
+	redhat-config-users/po/da.po redhat-config-xfree/po/da.po
+	specspo/dist/da.po
+
+2003-01-18  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.116: Update translation
+
+2003-01-17  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.59: update el.po (greek)
+
+2003-01-17  ra  <ra@redhat.com>
+
+	* po/is.po 1.108: *** empty log message ***
+
+2003-01-15  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.115: Update
+
 2003-01-14  Harald Hoyer  <harald@redhat.com>
+
+	* po/de.po 1.136, po/el.po 1.58, po/es.po 1.125, po/fr.po 1.126, po/is.po 1.107, po/it.po 1.123, po/ja.po 1.132, po/ko.po 1.123, po/no.po 1.114, po/pt.po 1.94, po/redhat-config-network.pot 1.100, po/ru.po 1.77, po/sv.po 1.117, po/tr.po 1.62, po/zh_CN.po 1.63, po/zh_TW.po 1.85, ChangeLog 1.67, po/cs.po 1.83, po/da.po 1.89:
+	release 1.1.90
 
 	* src/netconfpkg/NCHardwareList.py 1.61, src/netconfpkg/plugins/Makefile.am 1.3:
 	1.1.90
@@ -1640,7 +1716,7 @@
 
 	* ChangeLog 1.29: add entry about updated docs
 
-	* doc/figs/neat-cipe-settings.png 1.1, doc/figs/neat-cipe.png 1.1, doc/figs/neat-control.png 1.1, doc/figs/neat-dns.png 1.1, doc/figs/neat-ethernet-settings.png 1.1, doc/figs/neat-ethernet.png 1.1, doc/figs/neat-hardware.png 1.1, doc/figs/neat-hosts.png 1.1, doc/figs/neat-isdn-settings.png 1.1, doc/figs/neat-isdn.png 1.1, doc/figs/neat-modem-settings.png 1.1, doc/figs/neat-modem.png 1.1, doc/figs/neat-tokenring-settings.png 1.1, doc/figs/neat-tokenring.png 1.1, doc/figs/neat-wireless-settings.png 1.1, doc/figs/neat-wireless.png 1.1, doc/figs/neat-xdsl-settings.png 1.1, doc/figs/neat-xdsl.png 1.1, doc/figs/networkconfig/Makefile.am 1.3, doc/figs/networkconfig/neat-cipe-settings.png 1.2, doc/figs/networkconfig/neat-cipe.png 1.2, doc/figs/networkconfig/neat-dns.png 1.2, doc/figs/networkconfig/neat-ethernet-settings.png 1.2, doc/figs/networkconfig/neat-ethernet.png 1.2, doc/figs/networkconfig/neat-hardware.png 1.2, doc/figs/networkconfig/neat-hosts.png 1.2, doc/figs/networkconfig/neat-isdn-settings.png 1.2, doc/figs/networkconfig/neat-isdn.png 1.2, doc/figs/networkconfig/neat-modem-settings.png 1.2, doc/figs/networkconfig/neat-modem.png 1.2, doc/figs/networkconfig/neat-tokenring-settings.png 1.2, doc/figs/networkconfig/neat-tokenring.png 1.2, doc/figs/networkconfig/neat-wireless-settings.png 1.4, doc/figs/networkconfig/neat-wireless.png 1.4, doc/figs/networkconfig/neat-xdsl-settings.png 1.2, doc/figs/networkconfig/neat-xdsl.png 1.2, doc/index.html 1.10, doc/intro.html 1.3, doc/legalnotice.html 1.3, doc/network-config-cipe.html 1.3, doc/network-config-dns.html 1.3, doc/network-config-ethernet.html 1.2, doc/network-config-hosts.html 1.4, doc/network-config-modem.html 1.2, doc/network-config-tokenring.html 1.2, doc/network-config-wireless.html 1.4, doc/network-config-xdsl.html 1.2:
+	* doc/figs/neat-cipe-settings.png 1.1, doc/figs/neat-cipe.png 1.1, doc/figs/neat-control.png 1.1, doc/figs/neat-dns.png 1.1, doc/figs/neat-ethernet-settings.png 1.1, doc/figs/neat-ethernet.png 1.1, doc/figs/neat-hardware.png 1.1, doc/figs/neat-hosts.png 1.1, doc/figs/neat-isdn-settings.png 1.1, doc/figs/neat-isdn.png 1.1, doc/figs/neat-modem-settings.png 1.1, doc/figs/neat-modem.png 1.1, doc/figs/neat-tokenring-settings.png 1.1, doc/figs/neat-tokenring.png 1.1, doc/figs/neat-wireless-settings.png 1.1, doc/figs/neat-wireless.png 1.1, doc/figs/neat-xdsl-settings.png 1.1, doc/figs/neat-xdsl.png 1.1, doc/index.html 1.10, doc/intro.html 1.3, doc/legalnotice.html 1.3, doc/network-config-cipe.html 1.3, doc/network-config-dns.html 1.3, doc/network-config-ethernet.html 1.2, doc/network-config-hosts.html 1.4, doc/network-config-modem.html 1.2, doc/network-config-tokenring.html 1.2, doc/network-config-wireless.html 1.4, doc/network-config-xdsl.html 1.2:
 	updated docs for version 1.1.8-1
 
 2002-07-23  menthos  <menthos@redhat.com>
@@ -2448,12 +2524,11 @@
 	* src/netconfpkg/gui/modemconfig.glade 1.4.4.1, src/netconfpkg/gui/neat-control-debugdialog.glade 1.1.4.1, src/netconfpkg/gui/neat-control-monitordialog.glade 1.1.4.1, src/netconfpkg/gui/neat-control-propertiesdialog.glade 1.2.4.1, src/netconfpkg/gui/neat-control-statusdialog.glade 1.1.4.1, src/netconfpkg/gui/sharedtcpip.py 1.11.4.1, src/netconfpkg/gui/tcpipdialog.glade 1.2.4.1, src/netconfpkg/gui/tokenringconfig.glade 1.2.4.1, src/netconfpkg/gui/tokenringhardware.glade 1.3.2.1, src/netconfpkg/gui/wirelessconfig.glade 1.5.4.2, src/netconfpkg/gui/chooseprovider.glade 1.2.4.1, src/netconfpkg/gui/cipeconfig.glade 1.4.4.1, src/netconfpkg/gui/ctcconfig.glade 1.2.4.1, src/netconfpkg/gui/deviceconfig.py 1.5.4.1, src/netconfpkg/gui/devicetype.glade 1.2.4.1, src/netconfpkg/gui/dialupconfig.glade 1.6.4.1, src/netconfpkg/gui/dslconfig.glade 1.6.4.1, src/netconfpkg/gui/editadress.glade 1.2.4.1, src/netconfpkg/gui/editdomain.glade 1.2.4.1, src/netconfpkg/gui/edithosts.glade 1.2.4.1, src/netconfpkg/gui/ethernetconfig.glade 1.4.4.1, src/netconfpkg/gui/ethernethardware.glade 1.2.4.1, src/netconfpkg/gui/hardwaretype.glade 1.2.4.1, src/netconfpkg/gui/isdnhardware.glade 1.2.4.1:
 	make dialogs invisible at glade loading time. better for adding widgets.
 
-	* doc/figs/networkconfig/neat-wireless-settings.png 1.3, doc/figs/networkconfig/neat-wireless.png 1.3, network-config-wireless.html 1.1:
-	readded wireless doc
+	* network-config-wireless.html 1.1: readded wireless doc
 
 2002-05-06  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/__init__.py 1.5.2.3, src/netconfpkg/genClass.py 1.20.2.3, doc/Makefile.am 1.9.4.1, doc/figs/networkconfig/Makefile.am 1.2.6.1, src/netconf.py 1.133.2.2, src/netconfpkg/NCCallback.py 1.6.2.2, src/netconfpkg/NCCompression.py 1.4.2.2, src/netconfpkg/NCDevice.py 1.65.2.2, src/netconfpkg/NCDeviceList.py 1.36.2.2, src/netconfpkg/NCHardwareList.py 1.43.2.1, src/netconfpkg/NCProfileList.py 1.54.2.1, src/netconfpkg/gui/EthernetInterface.py 1.17.2.2, src/netconfpkg/gui/GenericInterface.py 1.6.2.2, src/netconfpkg/gui/TokenRingInterface.py 1.7.2.2, src/netconfpkg/gui/WirelessInterface.py 1.8.2.2, src/netconfpkg/gui/ethernetconfig.py 1.11.2.2, src/netconfpkg/gui/sharedtcpip.py 1.11.2.1, src/netconfpkg/gui/cipeconfig.py 1.10.2.1, src/netconfpkg/gui/dslconfig.py 1.11.2.1, src/netconfpkg/gui/editdomain.py 1.5.2.1, src/netconfpkg/gui/ethernethardware.py 1.8.2.1, src/netconfpkg/gui/hardwaretype.py 1.5.2.1, src/netconfpkg/gui/isdnhardware.py 1.11.2.1, src/netconfpkg/gui/modemconfig.py 1.9.2.1, src/netconfpkg/gui/tokenringconfig.py 1.4.2.1, src/netconfpkg/gui/tokenringhardware.py 1.8.2.1, src/netconfpkg/gui/wirelessconfig.py 1.6.2.1, src/netconfpkg/NCCipe.py 1.7.2.1, src/netconfpkg/NCDialup.py 1.51.2.1, src/netconfpkg/NCWireless.py 1.5.2.1, src/netconfpkg/gui/ADSLInterface.py 1.9.2.1, src/netconfpkg/gui/CipeInterface.py 1.6.2.1, src/netconfpkg/gui/DialupDruid.py 1.11.2.1, src/netconfpkg/gui/EthernetHardwareDruid.py 1.11.2.1, src/netconfpkg/gui/IsdnInterface.py 1.6.2.1, src/netconfpkg/gui/ModemInterface.py 1.11.2.1, src/netconfpkg/gui/NewInterface.py 1.9.2.1, src/netconfpkg/gui/NewInterfaceDialog.py 1.15.2.1, src/netconfpkg/gui/TokenRingHardwareDruid.py 1.4.2.1, src/netconfpkg/Makefile.am 1.45.2.1:
+	* src/netconfpkg/__init__.py 1.5.2.3, src/netconfpkg/genClass.py 1.20.2.3, doc/Makefile.am 1.9.4.1, src/netconf.py 1.133.2.2, src/netconfpkg/NCCallback.py 1.6.2.2, src/netconfpkg/NCCompression.py 1.4.2.2, src/netconfpkg/NCDevice.py 1.65.2.2, src/netconfpkg/NCDeviceList.py 1.36.2.2, src/netconfpkg/NCHardwareList.py 1.43.2.1, src/netconfpkg/NCProfileList.py 1.54.2.1, src/netconfpkg/gui/EthernetInterface.py 1.17.2.2, src/netconfpkg/gui/GenericInterface.py 1.6.2.2, src/netconfpkg/gui/TokenRingInterface.py 1.7.2.2, src/netconfpkg/gui/WirelessInterface.py 1.8.2.2, src/netconfpkg/gui/ethernetconfig.py 1.11.2.2, src/netconfpkg/gui/sharedtcpip.py 1.11.2.1, src/netconfpkg/gui/cipeconfig.py 1.10.2.1, src/netconfpkg/gui/dslconfig.py 1.11.2.1, src/netconfpkg/gui/editdomain.py 1.5.2.1, src/netconfpkg/gui/ethernethardware.py 1.8.2.1, src/netconfpkg/gui/hardwaretype.py 1.5.2.1, src/netconfpkg/gui/isdnhardware.py 1.11.2.1, src/netconfpkg/gui/modemconfig.py 1.9.2.1, src/netconfpkg/gui/tokenringconfig.py 1.4.2.1, src/netconfpkg/gui/tokenringhardware.py 1.8.2.1, src/netconfpkg/gui/wirelessconfig.py 1.6.2.1, src/netconfpkg/NCCipe.py 1.7.2.1, src/netconfpkg/NCDialup.py 1.51.2.1, src/netconfpkg/NCWireless.py 1.5.2.1, src/netconfpkg/gui/ADSLInterface.py 1.9.2.1, src/netconfpkg/gui/CipeInterface.py 1.6.2.1, src/netconfpkg/gui/DialupDruid.py 1.11.2.1, src/netconfpkg/gui/EthernetHardwareDruid.py 1.11.2.1, src/netconfpkg/gui/IsdnInterface.py 1.6.2.1, src/netconfpkg/gui/ModemInterface.py 1.11.2.1, src/netconfpkg/gui/NewInterface.py 1.9.2.1, src/netconfpkg/gui/NewInterfaceDialog.py 1.15.2.1, src/netconfpkg/gui/TokenRingHardwareDruid.py 1.4.2.1, src/netconfpkg/Makefile.am 1.45.2.1:
 	*** empty log message ***
 
 2002-05-05  menthos  <menthos@redhat.com>
@@ -2530,8 +2605,7 @@
 	* ChangeLog 1.10.2.1, po/redhat-config-network.pot 1.50.2.1, src/glade-strings.c 1.28.2.1:
 	*** empty log message ***
 
-	* doc/Makefile.am 1.9.2.1, doc/figs/networkconfig/Makefile.am 1.2.4.1:
-	removed wireless docs
+	* doc/Makefile.am 1.9.2.1: removed wireless docs
 
 2002-04-17  keld  <keld@redhat.com>
 
@@ -2546,7 +2620,7 @@
 
 2002-04-17  Tammy Fox  <tfox@redhat.com>
 
-	* doc/figs/networkconfig/neat-wireless-settings.png 1.2, doc/figs/networkconfig/neat-wireless.png 1.2, doc/index.html 1.9, doc/intro.html 1.2, doc/legalnotice.html 1.2, doc/network-config-cipe.html 1.2, doc/network-config-dns.html 1.2, doc/network-config-hosts.html 1.2, doc/network-config-wireless.html 1.2:
+	* doc/index.html 1.9, doc/intro.html 1.2, doc/legalnotice.html 1.2, doc/network-config-cipe.html 1.2, doc/network-config-dns.html 1.2, doc/network-config-hosts.html 1.2, doc/network-config-wireless.html 1.2:
 	remove wireless
 
 2002-04-17  Harald Hoyer  <harald@redhat.com>
@@ -2554,7 +2628,7 @@
 	* src/netconfpkg/Control.py 1.11, src/netconfpkg/gui/EthernetInterface.py 1.17, src/netconfpkg/gui/GenericInterface.py 1.6, src/netconfpkg/gui/TokenRingInterface.py 1.7, src/netconfpkg/gui/WirelessInterface.py 1.8, src/netconfpkg/gui/ethernetconfig.py 1.11, src/netconfpkg/gui/sharedtcpip.py 1.11:
 	ethtool location fix
 
-	* po/pt.po 1.19, po/redhat-config-network.pot 1.50, po/ru.po 1.25, po/sv.po 1.46, po/tr.po 1.13, po/zh_CN.GB2312.po 1.19, po/zh_TW.Big5.po 1.17, po/zh_TW.po 1.15, src/glade-strings.c 1.28, src/netconfpkg/Makefile.am 1.45, src/netconfpkg/gui/ModemInterface.py 1.11, ChangeLog 1.10, Makefile.am 1.22, configure.in 1.95, doc/Makefile.am 1.9, doc/figs/Makefile.am 1.2, doc/figs/networkconfig/Makefile.am 1.2, doc/stylesheet-images/Makefile.am 1.2, po/cs.po 1.22, po/da.po 1.33, po/de.po 1.64, po/es.po 1.57, po/fr.po 1.58, po/is.po 1.43, po/it.po 1.57, po/ja.po 1.59, po/ko.po 1.56, po/no.po 1.60, redhat-config-network.spec.in 1.118:
+	* po/pt.po 1.19, po/redhat-config-network.pot 1.50, po/ru.po 1.25, po/sv.po 1.46, po/tr.po 1.13, po/zh_CN.GB2312.po 1.19, po/zh_TW.Big5.po 1.17, po/zh_TW.po 1.15, src/glade-strings.c 1.28, src/netconfpkg/Makefile.am 1.45, src/netconfpkg/gui/ModemInterface.py 1.11, ChangeLog 1.10, Makefile.am 1.22, configure.in 1.95, doc/Makefile.am 1.9, doc/figs/Makefile.am 1.2, doc/stylesheet-images/Makefile.am 1.2, po/cs.po 1.22, po/da.po 1.33, po/de.po 1.64, po/es.po 1.57, po/fr.po 1.58, po/is.po 1.43, po/it.po 1.57, po/ja.po 1.59, po/ko.po 1.56, po/no.po 1.60, redhat-config-network.spec.in 1.118:
 	V1.0.0 with new ethtool location and sanitized configure.in, Makefile.am's
 
 2002-04-17  teg  <teg@redhat.com>
@@ -2580,8 +2654,7 @@
 
 	* configure.in 1.93: Add doc makefiles
 
-	* doc/figs/networkconfig/Makefile.am 1.1, doc/figs/Makefile.am 1.1, doc/stylesheet-images/Makefile.am 1.1:
-	Add
+	* doc/figs/Makefile.am 1.1, doc/stylesheet-images/Makefile.am 1.1: Add
 
 	* doc/Makefile.am 1.7: Add the two subdirs
 
@@ -2609,7 +2682,7 @@
 
 2002-04-16  Tammy Fox  <tfox@redhat.com>
 
-	* doc/chapter-network-config-isdn.html 1.1, doc/figs/networkconfig/neat-cipe-settings.png 1.1, doc/figs/networkconfig/neat-cipe.png 1.1, doc/figs/networkconfig/neat-dns.png 1.1, doc/figs/networkconfig/neat-ethernet-settings.png 1.1, doc/figs/networkconfig/neat-ethernet.png 1.1, doc/figs/networkconfig/neat-hardware.png 1.1, doc/figs/networkconfig/neat-hosts.png 1.1, doc/figs/networkconfig/neat-isdn-settings.png 1.1, doc/figs/networkconfig/neat-isdn.png 1.1, doc/figs/networkconfig/neat-modem-settings.png 1.1, doc/figs/networkconfig/neat-modem.png 1.1, doc/figs/networkconfig/neat-tokenring-settings.png 1.1, doc/figs/networkconfig/neat-tokenring.png 1.1, doc/figs/networkconfig/neat-wireless-settings.png 1.1, doc/figs/networkconfig/neat-wireless.png 1.1, doc/figs/networkconfig/neat-xdsl-settings.png 1.1, doc/figs/networkconfig/neat-xdsl.png 1.1, doc/figs/rhlogo.png 1.1, doc/index.html 1.8, doc/intro.html 1.1, doc/legalnotice.html 1.1, doc/network-config-cipe.html 1.1, doc/network-config-dns.html 1.1, doc/network-config-ethernet.html 1.1, doc/network-config-hosts.html 1.1, doc/network-config-modem.html 1.1, doc/network-config-tokenring.html 1.1, doc/network-config-wireless.html 1.1, doc/network-config-xdsl.html 1.1, doc/stylesheet-images/note.png 1.1, doc/stylesheet-images/tip.png 1.1, doc/stylesheet-images/warning.png 1.1:
+	* doc/chapter-network-config-isdn.html 1.1, doc/figs/rhlogo.png 1.1, doc/index.html 1.8, doc/intro.html 1.1, doc/legalnotice.html 1.1, doc/network-config-cipe.html 1.1, doc/network-config-dns.html 1.1, doc/network-config-ethernet.html 1.1, doc/network-config-hosts.html 1.1, doc/network-config-modem.html 1.1, doc/network-config-tokenring.html 1.1, doc/network-config-wireless.html 1.1, doc/network-config-xdsl.html 1.1, doc/stylesheet-images/note.png 1.1, doc/stylesheet-images/tip.png 1.1, doc/stylesheet-images/warning.png 1.1:
 	docs for redhat-config-network
 
 	* doc/index.html 1.7: removing old docs
