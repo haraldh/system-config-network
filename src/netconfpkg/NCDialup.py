@@ -575,6 +575,7 @@ class ModemDialup(Dialup):
                 if hw.Name == parent.Name:
                     if hw.Modem:
                         parentConf['MODEMPORT'] = str(hw.Modem.DeviceName)
+                        parentConf['LINESPEED'] = str(hw.Modem.BaudRate)
                         break
 
 
