@@ -68,7 +68,7 @@ class EthernetInterface(InterfaceCreator):
 
         #print "EthernetInterface getDeviceList"
         self.devicelist = getDeviceList()
-        self.device = NCDevice.Device()
+        self.device = NCDevEthernet.DevEthernet()
         self.device.Type = ETHERNET
         self.device.OnBoot = TRUE
         self.device.AllowUser = FALSE
@@ -226,9 +226,8 @@ class EthernetInterface(InterfaceCreator):
         hardwarelist = getHardwareList()
         hardwarelist.commit()
         #print self.devicelist
-        i = self.devicelist.addDevice()
-        self.devicelist[i].apply(self.device)
-        self.devicelist[i].commit()
+        self.devicelist.append(self.device)
+        self.device.commit()
         
         for prof in self.profilelist:
             if prof.Active == FALSE:

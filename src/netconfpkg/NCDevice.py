@@ -115,51 +115,6 @@ class Device(Device_base):
     def isType(self, device):
         raise "isType not Implemented"
 
-    def createDialup(self):
-        if self.Type:
-            if self.Type == MODEM:
-                if (self.Dialup == None) \
-                   or not isinstance(self.Dialup, NCDialup.ModemDialup):
-                    self.Dialup = NCDialup.ModemDialup(None, self)
-            elif self.Type == ISDN:
-                if (self.Dialup == None) \
-                   or not isinstance(self.Dialup, NCDialup.IsdnDialup):
-                    self.Dialup = NCDialup.IsdnDialup(None, self)
-            elif self.Type == DSL:
-                if (self.Dialup == None) \
-                   or not isinstance(self.Dialup, NCDialup.DslDialup):
-                    self.Dialup = NCDialup.DslDialup(None, self)
-            else:
-                self.Dialup = None
-                
-            return self.Dialup
-
-        else:
-            raise TypeError, _("Device type not specified")
-
-    def createCipe(self):
-        if self.Type:
-            if self.Type == CIPE:
-                Device_base.createCipe(self)
-            else: self.Cipe = None
-                
-            return self.Cipe
-
-        else:
-            raise TypeError, _("Device type not specified")
-
-    def createWireless(self):
-        if self.Type:
-            if self.Type == WIRELESS:
-                Device_base.createWireless(self)
-            else: self.Wireless = None
-                
-            return self.Wireless
-
-        else:
-            raise TypeError, _("Device type not specified")
-
-
     def testDeviceId(self, value):
         if re.search(r"^[a-z|A-Z|0-9\-_:]+$"):
             return true
@@ -248,25 +203,11 @@ class Device(Device_base):
            and self.Device:            
             self.Type = NC_functions.getDeviceType(self.Device)
 
-        #print "Creating Dialup"
-        dialup = self.createDialup()
-        if dialup:
-            #print "Loading Dialup"
-            dialup.load(conf)
-
         if conf.has_key("RESOLV_MODS"):
             if conf["RESOLV_MODS"] != "no":
                 self.AutoDNS = true
             else:
                 self.AutoDNS = false
-
-        cipe = self.createCipe()
-        if cipe:
-            cipe.load(conf)
-
-        wireless = self.createWireless()
-        if wireless:
-            wireless.load(conf)
 
         num = len(rconf.keys())
         self.createStaticRoutes()

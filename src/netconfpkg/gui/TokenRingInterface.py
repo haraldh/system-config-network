@@ -68,7 +68,7 @@ class TokenRingInterface(InterfaceCreator):
 
 
         self.devicelist = NCDeviceList.getDeviceList()
-        self.device = NCDevice.Device()
+        self.device = NCDevTokenRing.DevTokenRing()
         self.device.Type = connection_type
         self.device.OnBoot = TRUE
         self.device.AllowUser = FALSE
@@ -221,9 +221,8 @@ class TokenRingInterface(InterfaceCreator):
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
-        i = self.devicelist.addDevice()
-        self.devicelist[i].apply(self.device)
-        self.devicelist[i].commit()
+        self.devicelist.append(self.device)
+        self.device.commit()
         for prof in self.profilelist:
             if prof.Active == FALSE:
                 continue

@@ -24,28 +24,38 @@ _devCipeWizard = None
 
 class DevCipe(Device):    
    def __init__(self, list = None, parent = None):
-       Device.__init__(self, list, parent)
-
+      Device.__init__(self, list, parent)
+      self.Type = CIPE
+      self.createCipe()
+      
+   def load(self, name):
+      conf = ConfDevice(name)
+      self.Cipe.load(conf)
+      
+   def createCipe(self):
+      Device.createCipe(self)
+      return self.Cipe
+   
    def getDialog(self):
-       return _devCipeDialog(self).xml.get_widget("Dialog")
+      return _devCipeDialog(self).xml.get_widget("Dialog")
     
    def getWizard(self):
-       return _devCipeWizard
+      return _devCipeWizard
 
    def isType(self, device):
-       if device.Type == CIPE:
-           return true
-       if getDeviceType(device.Device) == CIPE:
-           return true
-       return false
-
+      if device.Type == CIPE:
+         return true
+      if getDeviceType(device.Device) == CIPE:
+         return true
+      return false
+   
 def setDevCipeDialog(dialog):
-    global _devCipeDialog
-    _devCipeDialog = dialog
+   global _devCipeDialog
+   _devCipeDialog = dialog
 
 def setDevCipeWizard(wizard):
-    global _devCipeWizard
-    _devCipeWizard = wizard
+   global _devCipeWizard
+   _devCipeWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevCipe, CIPE)

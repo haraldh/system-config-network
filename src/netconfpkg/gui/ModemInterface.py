@@ -79,7 +79,7 @@ class ModemInterface:
 
 
     def get_druids(self):
-        Type = 'Modem'
+        Type = MODEM
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
                                          do_save = self.do_save)
         for self.hw in self.hardwarelist:

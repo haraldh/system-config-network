@@ -15,37 +15,51 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDevice import Device
+from netconfpkg.NCDevice import *
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import *
+
+from netconfpkg import NCDialup
 
 _devADSLDialog = None
 _devADSLWizard = None
 
 class DevADSL(Device):    
    def __init__(self, list = None, parent = None):
-       Device.__init__(self, list, parent)
+      Device.__init__(self, list, parent)
+      self.Type = DSL
+      self.Dialup = NCDialup.DslDialup(None, self)
 
+   def load(self, name):
+      conf = ConfDevice(name)
+      self.Dialup.load(conf)
+      
+   def createDialup(self):
+      if (self.Dialup == None) \
+             or not isinstance(self.Dialup, NCDialup.DslDialup):
+         self.Dialup = NCDialup.DslDialup(None, self)
+      return self.Dialup
+      
    def getDialog(self):
-       return _devADSLDialog(self).xml.get_widget("Dialog")
-    
+      return _devADSLDialog(self).xml.get_widget("Dialog")
+   
    def getWizard(self):
-       return _devADSLWizard
-
+      return _devADSLWizard
+   
    def isType(self, device):
-       if device.Type == DSL:
-           return true
-       if getDeviceType(device.Device) == DSL:
-           return true
-       return false
-
+      if device.Type == DSL:
+         return true
+      if getDeviceType(device.Device) == DSL:
+         return true
+      return false
+   
 def setDevADSLDialog(dialog):
-    global _devADSLDialog
-    _devADSLDialog = dialog
+   global _devADSLDialog
+   _devADSLDialog = dialog
 
 def setDevADSLWizard(wizard):
-    global _devADSLWizard
-    _devADSLWizard = wizard
+   global _devADSLWizard
+   _devADSLWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevADSL, DSL)

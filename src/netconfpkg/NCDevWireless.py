@@ -24,28 +24,38 @@ _devWirelessWizard = None
 
 class DevWireless(Device):    
    def __init__(self, list = None, parent = None):
-       Device.__init__(self, list, parent)
-
+      Device.__init__(self, list, parent)
+      self.Type = WIRELESS
+      self.createWireless()
+      
+   def load(self, name):
+      conf = ConfDevice(name)
+      self.Wireless.load(conf)
+      
+   def createWireless(self):
+      Device.createWireless(self)
+      return self.Wireless
+   
    def getDialog(self):
-       return _devWirelessDialog(self).xml.get_widget("Dialog")
+      return _devWirelessDialog(self).xml.get_widget("Dialog")
     
    def getWizard(self):
-       return _devWirelessWizard
+      return _devWirelessWizard
 
    def isType(self, device):
-       if device.Type == WIRELESS:
-           return true
-       if getDeviceType(device.Device) == WIRELESS:
-           return true
-       return false
+      if device.Type == WIRELESS:
+         return true
+      if getDeviceType(device.Device) == WIRELESS:
+         return true
+      return false
 
 def setDevWirelessDialog(dialog):
-    global _devWirelessDialog
-    _devWirelessDialog = dialog
+   global _devWirelessDialog
+   _devWirelessDialog = dialog
 
 def setDevWirelessWizard(wizard):
-    global _devWirelessWizard
-    _devWirelessWizard = wizard
+   global _devWirelessWizard
+   _devWirelessWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevWireless, WIRELESS)

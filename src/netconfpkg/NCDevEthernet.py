@@ -25,7 +25,8 @@ _devEthernetWizard = None
 class DevEthernet(Device):    
    def __init__(self, list = None, parent = None):
        Device.__init__(self, list, parent)
-
+       self.Type = ETHERNET
+       
    def getDialog(self):
        return _devEthernetDialog(self).xml.get_widget("Dialog")
     

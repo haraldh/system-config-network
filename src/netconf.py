@@ -502,8 +502,10 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        device = Device()
-        device.apply(clist.get_row_data(clist.selection[0]))
+        srcdev = clist.get_row_data(clist.selection[0])
+        df = NCDeviceFactory.getDeviceFactory()        
+        device = df.getDeviceClass(srcdev.Type, srcdev.SubType)()
+        device.apply(srcdev)
 
         duplicate = TRUE
         num = 0
@@ -517,9 +519,8 @@ class mainDialog:
             num = num + 1
         device.DeviceId = devname
 
-        i = devicelist.addDevice()
-        devicelist[i].apply(device)
-        devicelist[i].commit()
+        devicelist.append(device)
+        device.commit()
         self.hydrate()
 
     def on_deviceEditButton_clicked (self, *args):

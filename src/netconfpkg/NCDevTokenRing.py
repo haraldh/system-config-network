@@ -25,6 +25,7 @@ _devTokenRingWizard = None
 class DevTokenRing(Device):    
    def __init__(self, list = None, parent = None):
        Device.__init__(self, list, parent)
+       self.Type = TOKENRING
 
    def getDialog(self):
        return _devTokenRingDialog(self).xml.get_widget("Dialog")

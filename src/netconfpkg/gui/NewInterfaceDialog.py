@@ -32,16 +32,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 
-#if os.access("/usr/sbin/ciped-cb", os.F_OK):
-#    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-#                   ADSLInterface, TokenRingInterface, CipeInterface,
-#                   WirelessInterface ]
-#else:
-#    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-#                   ADSLInterface, TokenRingInterface, WirelessInterface ]
-
-
-
 class NewInterfaceDialog:
     def __init__(self):
         self.creator = None

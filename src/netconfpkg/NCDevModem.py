@@ -19,33 +19,47 @@ from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import *
 
+from netconfpkg import NCDialup
+
 _devModemDialog = None
 _devModemWizard = None
 
 class DevModem(Device):    
    def __init__(self, list = None, parent = None):
-       Device.__init__(self, list, parent)
+      Device.__init__(self, list, parent)
+      self.Type = MODEM
+      self.Dialup = NCDialup.ModemDialup(None, self)
 
+   def load(self, name):
+      conf = ConfDevice(name)
+      self.Dialup.load(conf)
+      
+   def createDialup(self):
+      if (self.Dialup == None) \
+             or not isinstance(self.Dialup, NCDialup.ModemDialup):
+         self.Dialup = NCDialup.ModemDialup(None, self)
+      return self.Dialup
+   
    def getDialog(self):
-       return _devModemDialog(self).xml.get_widget("Dialog")
+      return _devModemDialog(self).xml.get_widget("Dialog")
     
    def getWizard(self):
-       return _devModemWizard
-
+      return _devModemWizard
+   
    def isType(self, device):
-       if device.Type == MODEM:
-           return true
-       if getDeviceType(device.Device) == MODEM:
-           return true
-       return false
+      if device.Type == MODEM:
+         return true
+      if getDeviceType(device.Device) == MODEM:
+         return true
+      return false
 
 def setDevModemDialog(dialog):
-    global _devModemDialog
-    _devModemDialog = dialog
+   global _devModemDialog
+   _devModemDialog = dialog
 
 def setDevModemWizard(wizard):
-    global _devModemWizard
-    _devModemWizard = wizard
+   global _devModemWizard
+   _devModemWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevModem, MODEM)

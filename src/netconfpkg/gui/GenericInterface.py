@@ -147,9 +147,8 @@ class GenericInterface(InterfaceCreator):
         button = self.editDevice(self.device)
 
         if button == gtk.RESPONSE_YES:        
-            i = self.devicelist.addDevice()
-            self.devicelist[i].apply(self.device)
-            self.devicelist[i].commit()
+            self.devicelist.append(self.device)
+            self.device.commit()
             for prof in self.profilelist:
                 if prof.Active == FALSE:
                     continue
