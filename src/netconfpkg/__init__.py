@@ -23,7 +23,7 @@
 # is) ;). Nice for plugin mechanism.
 
 import os
-files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py", os.listdir(__path__[0])))
+files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v[0] != '.', os.listdir(__path__[0])))
 
 for i in files:
     cmd = "from " + i + " import *"
