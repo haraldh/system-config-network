@@ -110,7 +110,7 @@ class mainDialog:
 
         load_icon('neat-control.xpm', self.dialog)
         pix = self.xml.get_widget('pixmap')
-	pix.set_from_pixbuf(get_pixbuf('neat-control-logo.png'))
+        pix.set_from_pixbuf(get_pixbuf('neat-control-logo.png'))
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
         
@@ -466,5 +466,3 @@ if __name__ == '__main__':
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/15 13:52:42 $"
-__version__ = "$Revision: 1.47 $"
