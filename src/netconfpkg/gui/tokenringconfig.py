@@ -27,6 +27,7 @@ import os
 import string
 import commands
 
+import sharedtcpip
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
@@ -37,17 +38,42 @@ from gtk import FALSE
 
 class tokenringConfigDialog(deviceConfigDialog):
     def __init__(self, device):
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.NETCONFDIR + glade_file
+        self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
+                                                 domain=GUI_functions.PROGNAME)
+
         glade_file = "tokenringconfig.glade"
         deviceConfigDialog.__init__(self, glade_file, device)    
         self.xml.signal_autoconnect(
             {
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
-            "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled,
-            "on_hwProbeButton_clicked" : self.on_hwProbeButton_clicked,
+#            "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled,
+#            "on_hwProbeButton_clicked" : self.on_hwProbeButton_clicked,
             })
+
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+
+        window = self.sharedtcpip_xml.get_widget ('routeWindow')
+        frame = self.sharedtcpip_xml.get_widget ('routeFrame')
+        vbox = self.xml.get_widget ('routeVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
+
         ecombo = self.xml.get_widget("tokenringDeviceComboBox")
         hwlist = NCHardwareList.getHardwareList()
         (hwcurr, hwdesc) = GUI_functions.create_tokenring_combo(hwlist, self.device.Device)
@@ -66,16 +92,19 @@ class tokenringConfigDialog(deviceConfigDialog):
         else:
             self.xml.get_widget("aliasSupportCB").set_active(FALSE)
 
-        if self.device.HardwareAddress != None:
-            self.xml.get_widget("hwAddressCB").set_active(TRUE)
-            self.xml.get_widget("hwAddressEntry").set_text(self.device.HardwareAddress)
-        else:
-            self.xml.get_widget("hwAddressCB").set_active(FALSE)
-            self.xml.get_widget("hwAddressEntry").set_sensitive(FALSE)
-            self.xml.get_widget("hwProbeButton").set_sensitive(FALSE)
+#         if self.device.HardwareAddress != None:
+#             self.xml.get_widget("hwAddressCB").set_active(TRUE)
+#             self.xml.get_widget("hwAddressEntry").set_text(self.device.HardwareAddress)
+#         else:
+#             self.xml.get_widget("hwAddressCB").set_active(FALSE)
+#             self.xml.get_widget("hwAddressEntry").set_sensitive(FALSE)
+#             self.xml.get_widget("hwProbeButton").set_sensitive(FALSE)
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
+
         hw = self.xml.get_widget("tokenringDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
@@ -84,21 +113,22 @@ class tokenringConfigDialog(deviceConfigDialog):
             self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
         else:
             self.device.Alias = None
-        if self.xml.get_widget("hwAddressCB").get_active():
-            self.device.HardwareAddress = self.xml.get_widget("hwAddressEntry").get_text()
-        else:
-            self.device.HardwareAddress = None
+            
+#         if self.xml.get_widget("hwAddressCB").get_active():
+#             self.device.HardwareAddress = self.xml.get_widget("hwAddressEntry").get_text()
+#         else:
+#             self.device.HardwareAddress = None
 
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
 
-    def on_hwAddressCB_toggled(self, check):
-        self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
-        self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
+#     def on_hwAddressCB_toggled(self, check):
+#         self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
+#         self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
 
-    def on_hwProbeButton_clicked(self, button):
-        hwaddr = commands.getoutput("LC_ALL= LANG= /sbin/ip -o link show "+self.device.Device+" | sed 's/.*link\/ether \([[:alnum:]:]*\).*/\\1/'")
-        if hwaddr[:6] == 'Device':
-            return
-        self.device.HardwareAddress = hwaddr
-        self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
+#     def on_hwProbeButton_clicked(self, button):
+#         hwaddr = commands.getoutput("LC_ALL= LANG= /sbin/ip -o link show "+self.device.Device+" | sed 's/.*link\/ether \([[:alnum:]:]*\).*/\\1/'")
+#         if hwaddr[:6] == 'Device':
+#             return
+#         self.device.HardwareAddress = hwaddr
+#         self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
