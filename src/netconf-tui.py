@@ -10,6 +10,7 @@
 from snack import *;
 import sys
 import gettext
+import string
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -106,7 +107,7 @@ class EthernetWindow:
                 self.name.set(eth.Name)
             if eth.Device:
                 self.hwdev.set(eth.Device)
-            if eth.BootProto:
+            if (string.lower(eth.BootProto)=="dhcp") or (string.lower(eth.BootProto)=="bootp"):
                 self.dynip.setValue("*")
             if eth.IP:
                 self.statip.set(eth.IP)
@@ -136,7 +137,7 @@ class EthernetWindow:
         self.eth.Name=self.name.value()
         self.eth.Device=self.hwdev.value()
         if self.dynip.value():
-            self.eth.BootProto="DHCP"
+            self.eth.BootProto="dhcp"
             self.eth.IP=None
             self.eth.Netmask=None
             self.eth.Gateway=None
