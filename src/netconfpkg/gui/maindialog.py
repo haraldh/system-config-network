@@ -851,10 +851,16 @@ class mainDialog:
     def editDevice(self, device):
         button = 0
         dialog = device.getDialog()
-        dialog.set_transient_for(self.dialog)
-        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        button = dialog.run()
-        dialog.destroy()
+        if dialog:
+            dialog.set_transient_for(self.dialog)
+            dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+            button = dialog.run()
+            dialog.destroy()
+        else:
+            generic_error_dialog (_('The device type %s cannot be edited!\n') \
+                                  % device.Type,
+                                  self.dialog)
+            
 
         return button
 
@@ -1687,5 +1693,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2003/08/01 11:24:39 $"
+__version__ = "$Revision: 1.28 $"

@@ -29,15 +29,15 @@ class Hardware(Hardware_base):
         self.Status = HW_INACTIVE
         
     def getDialog(self):
-        raise NotImplemented
+        return None
 
     def getWizard(self):
-        raise NotImplemented
+        return None
 
     def isType(self, device):
-        raise NotImplemented
+        return None
     
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2003/08/01 11:24:39 $"
+__version__ = "$Revision: 1.8 $"

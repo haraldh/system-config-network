@@ -753,7 +753,14 @@ def prepareRoot(root):
             mkdir(root + dir)
         else:
             log.log(2, "%s already exists" % (root + dir))
+
+
+class ConfKeys(Conf.ConfShellVar):
+    def __init__(self, name):
+        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'keys-' + name)
+        self.chmod(0600)
+
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.78 $"
+__date__ = "$Date: 2003/08/01 11:24:39 $"
+__version__ = "$Revision: 1.79 $"

@@ -50,13 +50,30 @@ class Wireless(Wireless_base):
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey]
         
+        conf = NC_functions.ConfKeys(self.getParent().DeviceId)
+        if conf.has_key("KEY"):
+            self.Key = conf["KEY"]
+        del conf
+
+
         if re.search("^s:", self.Key):
             self.Key = self.Key[2:]
         elif re.search("^[0-9a-fA-F]+$", self.Key):
             self.Key = "0x" + self.Key
 
+
     def save(self, parentConf):
         conf = parentConf
+
+        keyconf = NC_functions.ConfKeys(self.getParent().DeviceId)
+        keyconf.fsf()
+        if re.search("^\s*0x[0-9a-fA-F]+\s*$", self.Key):
+            keyconf["KEY"] = self.Key[2:]
+        elif re.search("^\s*[^\s]+\s*$", self.Key):
+            keyconf["KEY"] = "s:" + self.Key
+        else:
+            keyconf["KEY"] = self.Key
+        keyconf.write()
             
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
@@ -64,19 +81,17 @@ class Wireless(Wireless_base):
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
 
-        if re.search("^\s*0x[0-9a-fA-F]+\s*$", self.Key):
-            conf["KEY"] = self.Key[2:]
-        elif re.search("^\s*[^\s]+\s*$", self.Key):
-            conf["KEY"] = "s:" + self.Key
-
+        if conf.has_key("KEY"):
+            del conf["KEY"]
 
         # Do not clear the non-filled in values
         # Bugzilla #52252
         #for i in conf.keys():
         #    if not conf[i] or conf[i] == "": del conf[i]
 
-        conf.oldmode = 0600
-        conf.chmod(0600)
+        # the key is now stored in a seperate file
+        # conf.oldmode = 0600
+        # conf.chmod(0600)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2003/08/01 11:24:39 $"
+__version__ = "$Revision: 1.17 $"

@@ -109,13 +109,13 @@ class Device(Device_base):
 
 
     def getDialog(self):
-        raise NotImplemented
+        return None
 
     def getWizard(self):
-        raise NotImplemented
+        return None
 
     def isType(self, device):
-        raise NotImplemented
+        return None
 
     def testDeviceId(self, value, child = None):
         if re.search(r"^[a-z|A-Z|0-9\_:]+$", value):
@@ -446,5 +446,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.90 $"
+__date__ = "$Date: 2003/08/01 11:24:39 $"
+__version__ = "$Revision: 1.91 $"
