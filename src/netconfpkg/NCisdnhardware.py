@@ -56,7 +56,7 @@ card = {
     "Eicon.Diehl Diva 20PRO_U PCI" : [ "11", "", "", "", "", "", "1133", "e003", "HiSax", "", "hisax" ],
     "Eicon.Diehl Diva 20_U PCI" : [ "11", "", "", "", "", "", "1133", "e004", "HiSax", "", "hisax" ],
     "ELSA PCC/PCF" : [ "6", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "ELSA Quickstep 1000" : [ "7", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
+    "ELSA Quickstep 1000" : [ "7", "5", "0x300", "", "", "", "ELS0133", "ELS0133", "HiSax", "", "hisax" ],
     "ELSA Quickstep 1000 PCI" : [ "18", "", "", "", "", "", "1048", "1000", "HiSax", "", "hisax" ],
     "ELSA Quickstep 3000 PCI" : [ "18", "", "", "", "", "", "1048", "3000", "HiSax", "", "hisax" ],
     "ELSA PCMCIA MicroLink cards" : [ "", "", "", "", "", "", "", "", "", "", "elsa_cs" ],
