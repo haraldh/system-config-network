@@ -41,10 +41,12 @@ DIALUP=2
 
 def on_ipAutomaticRadio_toggled(widget, xml):
     xml.get_widget('ipProtocolOmenu').set_sensitive(widget.active)
+    xml.get_widget('dhcpSettingFrame').set_sensitive(widget.active)
     xml.get_widget('ipSettingFrame').set_sensitive(not widget.active)
 
 def on_ipStaticRadio_toggled(widget, xml):
     xml.get_widget('ipProtocolOmenu').set_sensitive(not widget.active)
+    xml.get_widget('dhcpSettingFrame').set_sensitive(not widget.active)
     xml.get_widget('ipSettingFrame').set_sensitive(widget.active)
 
 def dhcp_init (xml, device):
@@ -67,28 +69,35 @@ def dhcp_hydrate (xml, device):
         else:
             device_type = 'dhcp'
 
+    if device.Hostname:
+        xml.get_widget('hostnameEntry').set_text(device.Hostname)
+    else:
+        xml.get_widget('hostnameEntry').set_text('')
+
+    if device.IP:
+        xml.get_widget('ipAddressEntry').set_text(device.IP)
+    else:
+        xml.get_widget('ipAddressEntry').set_text('')
+    if device.Netmask:
+        xml.get_widget('ipNetmaskEntry').set_text(device.Netmask)
+    else:
+        xml.get_widget('ipNetmaskEntry').set_text('')
+    if device.Gateway:
+        xml.get_widget('ipGatewayEntry').set_text(device.Gateway)
+    else:
+        xml.get_widget('ipGatewayEntry').set_text('')
+
+    if device_type == 'dialup':
+        xml.get_widget("ipProtocolOmenu").set_history(DIALUP)
+    elif device_type == 'bootp':
+        xml.get_widget("ipProtocolOmenu").set_history(BOOTP)
+    else:
+        xml.get_widget("ipProtocolOmenu").set_history(DHCP)
+
     if device.BootProto == "static" or device.BootProto == "none":
-        if device.IP:
-            xml.get_widget('ipAddressEntry').set_text(device.IP)
-        else:
-            xml.get_widget('ipAddressEntry').set_text('')
-        if device.Netmask:
-            xml.get_widget('ipNetmaskEntry').set_text(device.Netmask)
-        else:
-            xml.get_widget('ipNetmaskEntry').set_text('')
-        if device.Gateway:
-            xml.get_widget('ipGatewayEntry').set_text(device.Gateway)
-        else:
-            xml.get_widget('ipGatewayEntry').set_text('')
         xml.get_widget('ipAutomaticRadio').set_active(TRUE)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
     else:
-        if device_type == 'dialup':
-            xml.get_widget("ipProtocolOmenu").set_history(DIALUP)
-        elif device_type == 'bootp':
-            xml.get_widget("ipProtocolOmenu").set_history(BOOTP)
-        else:
-            xml.get_widget("ipProtocolOmenu").set_history(DHCP)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
         xml.get_widget('ipAutomaticRadio').set_active(TRUE)
 
@@ -105,6 +114,7 @@ def dhcp_dehydrate (xml, device):
         device.IP = ''
         device.Netmask = ''
         device.Gateway = ''
+        device.Hostname = xml.get_widget('hostnameEntry').get_text()
     else:
         device.BootProto = 'static'
         device.IP = xml.get_widget('ipAddressEntry').get_text()
