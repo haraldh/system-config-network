@@ -119,7 +119,7 @@ class Device(Device_base):
         raise NotImplemented
 
     def testDeviceId(self, value, child = None):
-        if re.compile(r"^[a-z|A-Z|0-9\-_:]+$").search(value):
+        if re.search(r"^[a-z|A-Z|0-9\-_:]+$", value):
             return true
         return false
 
@@ -170,19 +170,23 @@ class Device(Device_base):
                 if cfg.has_key('GATEWAY'):
                     gw = cfg['GATEWAY']
                     
-                    if gw and self.Netmask:                    
-                        network = commands.getoutput('ipcalc --network ' + \
-                                                     str(self.IP) + \
-                                                     ' ' + str(self.Netmask) +\
+                    if gw and self.Netmask:
+                        try:
+                            network = commands.getoutput('ipcalc --network '+\
+                                                         str(self.IP) + \
+                                                         ' ' + \
+                                                         str(self.Netmask) +\
+                                                         ' 2>/dev/null')
+                            
+                            out = commands.getoutput('ipcalc --network ' + \
+                                                     str(gw) + ' ' \
+                                                     + str(self.Netmask) + \
                                                      ' 2>/dev/null')
+                            if out == network:
+                                self.Gateway = str(gw)
+                        except:
+                            pass
                         
-                        out = commands.getoutput('ipcalc --network ' + \
-                                                 str(gw) + ' ' \
-                                                 + str(self.Netmask) + \
-                                                 ' 2>/dev/null')
-                        
-                        if out == network:
-                            self.Gateway = str(gw)
                             
             except EnvironmentError, msg:
                 NC_functions.generic_error_dialog(str(msg))
@@ -228,7 +232,7 @@ class Device(Device_base):
              NC_functions.generic_error_dialog((_("Static routes file %s "
                                                   "is invalid")) % name)
         else:
-            for p in xrange(0, num/3):
+            for p in xrange(0, int(num/3)):
                 i = self.StaticRoutes.addRoute()
                 route = self.StaticRoutes[i]
                 route.Address = rconf['ADDRESS'+str(p)]
@@ -279,18 +283,25 @@ class Device(Device_base):
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
         if self.IP and self.Netmask:
-            broadcast = commands.getoutput('ipcalc --broadcast ' + \
-                                           str(self.IP) + \
-                                           ' ' + str(self.Netmask) + \
-                                            ' 2>/dev/null')
-            if broadcast:
-                conf['BROADCAST'] = broadcast[10:]
+            try:
+                broadcast = commands.getoutput('ipcalc --broadcast ' + \
+                                               str(self.IP) + \
+                                               ' ' + str(self.Netmask) + \
+                                               ' 2>/dev/null')
+                if broadcast:
+                    conf['BROADCAST'] = broadcast[10:]
+            except:
+                pass
 
-            network = commands.getoutput('ipcalc --network ' + str(self.IP) + \
-                                         ' ' + str(self.Netmask) + \
-                                         ' 2>/dev/null')
-            if network:
-                conf['NETWORK'] = network[8:]
+            try:
+                network = commands.getoutput('ipcalc --network ' + \
+                                             str(self.IP) + \
+                                             ' ' + str(self.Netmask) + \
+                                             ' 2>/dev/null')
+                if network:
+                    conf['NETWORK'] = network[8:]
+            except:
+                pass                
 
         if self.Type == CTC or self.Type == IUCV:
             if not self.Mtu: self.Mtu = 1492
