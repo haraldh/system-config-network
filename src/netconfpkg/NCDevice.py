@@ -219,8 +219,11 @@ class Device(Device_base):
                 self.AutoDNS = false
 
         if self.Type == CTC or self.Type == IUCV:
-            if conf['MTU']:
-                self.Mtu = conf['MTU']
+            if conf.has_key("MTU") and conf['MTU']:
+                try:
+                    self.Mtu = int(conf['MTU'])
+                except:
+                    pass
 
         # move old <id>.route files to route-<id>
         file = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
@@ -317,10 +320,9 @@ class Device(Device_base):
             del conf['NETWORK']
             del conf['BROADCAST']
 
-        if self.Type == CTC or self.Type == IUCV:
-            if not self.Mtu: self.Mtu = 1492
-            conf['MTU'] = self.Mtu
-            if conf['GATEWAY']:
+        if self.Type == CTC or self.Type == IUCV:                
+            conf['MTU'] = str(self.Mtu)
+            if conf.has_key("GATEWAY") and conf['GATEWAY']:
                 conf['REMIP'] = conf['GATEWAY']
 
         if self.Dialup:
@@ -446,5 +448,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/01 11:24:39 $"
-__version__ = "$Revision: 1.91 $"
+__date__ = "$Date: 2003/10/08 15:09:38 $"
+__version__ = "$Revision: 1.92 $"
