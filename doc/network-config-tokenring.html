@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
 TITLE="Establishing an xDSL Connection"
 HREF="network-config-xdsl.html"><LINK
 REL="NEXT"
 TITLE="Establishing a CIPE Connection"
-HREF="network-config-cipe.html"></HEAD
+HREF="network-config-cipe.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -70,7 +70,9 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-CONFIG-TOKENRING">Chapter 6. Establishing a Token Ring Connection</H1
+NAME="NETWORK-CONFIG-TOKENRING"
+></A
+>Chapter 6. Establishing a Token Ring Connection</H1
 ><P
 >	A token ring network is a network in which all the computers are
 	connected in a circular pattern. A <I
@@ -119,7 +121,7 @@ CLASS="CITETITLE"
 	<A
 HREF="http://www.linuxtr.net/"
 TARGET="_top"
->http://www.linuxtr.net</A
+>http://www.linuxtr.net/</A
 >.</P
 ></TD
 ></TR
@@ -143,8 +145,9 @@ CLASS="GUILABEL"
 ><P
 >Click the <B
 CLASS="GUIBUTTON"
->Add</B
-> button.</P
+>New</B
+> button on the
+	  toolbar.</P
 ></LI
 ><LI
 ><P
@@ -155,7 +158,7 @@ CLASS="GUILABEL"
 	    <B
 CLASS="GUILABEL"
 >Device Type</B
-> list, and click
+> list and click
 	    <B
 CLASS="GUIBUTTON"
 >Forward</B
@@ -193,14 +196,14 @@ HREF="network-config-tokenring.html#NEAT-TOKENRING-SETTINGS-FIG"
 	    <B
 CLASS="GUILABEL"
 >tr0</B
->, if this is the second token ring card,
+>; if this is the second token ring card,
 	    select <B
 CLASS="GUILABEL"
 >tr1</B
->, and so on. The
+> (and so on). The
 	    <B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
+>Network Administration Tool</B
 > also allows
 	    the user to configure the resources for the adapter. Click
 	    <B
@@ -211,7 +214,9 @@ CLASS="GUIBUTTON"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-TOKENRING-SETTINGS-FIG"><DIV
+NAME="NEAT-TOKENRING-SETTINGS-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -246,7 +251,7 @@ CLASS="GUIBUTTON"
 > on the <B
 CLASS="GUILABEL"
 >Create
-	  Ethernet Device</B
+	  Tokenring Device</B
 > page.
 	  </P
 ></LI
@@ -261,7 +266,9 @@ HREF="network-config-tokenring.html#NEAT-TOKENRING-FIG"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-TOKENRING-FIG"><DIV
+NAME="NEAT-TOKENRING-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -273,14 +280,18 @@ SRC="./figs/neat-tokenring.png"></P
 ></P
 ></DIV
 ><P
->	Be sure to click <B
-CLASS="GUIBUTTON"
->Apply</B
+>	Be sure to select <B
+CLASS="GUIMENU"
+>File</B
+> =&#62;
+	<B
+CLASS="GUIMENUITEM"
+>Save</B
 > to save the changes.
       </P
 ><P
->	After adding the device, you can edit its configuration by
-	selecting the device from the device list and clicking
+>	After adding the device, you can edit its configuration by selecting the
+	device from the device list and clicking
 	<B
 CLASS="GUIBUTTON"
 >Edit</B
@@ -288,16 +299,18 @@ CLASS="GUIBUTTON"
 	device is started at boot time.
       </P
 ><P
->	When the device is added, it is not activated, as seen by its
-	<B
+>	When the device is added, it is not activated immediately, as seen by
+	its <B
 CLASS="GUILABEL"
 >Inactive</B
-> status. To activate the device, select it
-	from the device list, and click the <B
+> status. To activate the device, select
+	it from the device list, and click the <B
 CLASS="GUIBUTTON"
 >Activate</B
 >
-	button.
+	button. If the system is configured to activate the device when the
+	computer starts (the default), this step does not have to be performed
+	again.
       </P
 ></DIV
 ><DIV

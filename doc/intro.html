@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="NEXT"
 TITLE="Establishing an Ethernet Connection"
-HREF="network-config-ethernet.html"></HEAD
+HREF="network-config-ethernet.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -70,7 +70,9 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="INTRO">Chapter 1. Introduction</H1
+NAME="INTRO"
+></A
+>Chapter 1. Introduction</H1
 ><P
 >      To communicate with other computers, computers need a network
       connection. This is accomplished by having the operating system recognize
@@ -80,7 +82,7 @@ NAME="INTRO">Chapter 1. Introduction</H1
 ><P
 >      The <B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
+>Network Administration Tool</B
 > can be
       used to configure the following types of network interfaces:
     </P
@@ -119,21 +121,20 @@ CLASS="APPLICATION"
 ><P
 >      To use the <B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
->, you must be running
-      the X Window System and have root privileges.  To start the application,
-      go to the <B
+>Network Administration Tool</B
+>, you must have root
+      privileges.  To start the application, go to the <B
 CLASS="GUIMENU"
->Main Menu Button</B
-> (on the Panel) =&#62;
+>Main Menu
+      Button</B
+> (on the Panel) =&#62; <B
+CLASS="GUIMENU"
+>System Settings</B
+> =&#62;
       <B
-CLASS="GUIMENU"
->System Tools </B
-> =&#62; <B
 CLASS="GUIMENUITEM"
 >Network</B
->, 
-      or type the command
+>, or type the command
       <TT
 CLASS="COMMAND"
 >redhat-config-network</TT
@@ -145,14 +146,39 @@ CLASS="APPLICATION"
 CLASS="APPLICATION"
 >GNOME
       terminal</B
->).
+>). If you type the command, the graphical version is
+      displayed if X is running, otherwise, the text-based version is
+      displayed. To force the text-based version to run, use the
+      <TT
+CLASS="COMMAND"
+>redhat-config-network-tui</TT
+> command.
     </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="FIG-NETWORK-CONFIG-MAIN"
+></A
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="./figs/neat.png"></P
+></DIV
+><P
+><B
+>Figure 1-1. <B
+CLASS="APPLICATION"
+>Network Administration Tool</B
+></B
+></P
+></DIV
 ><P
 >      If you prefer modifying the configuration files directly, refer to the
       <I
 CLASS="CITETITLE"
->Official Red Hat Linux Reference Guide</I
-> for information on their location and
+>Red Hat Linux Reference Guide</I
+> for information on their locations and
       contents. 
     </P
 ><DIV
@@ -202,12 +228,14 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NETWORK-CONFIG-OVERVIEW">Overview</H1
+NAME="NETWORK-CONFIG-OVERVIEW"
+></A
+>Overview</H1
 ><P
 >	To configure a network connection with the
 	<B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
+>Network Administration Tool</B
 >, perform the following steps:
       </P
 ><P
@@ -225,15 +253,15 @@ TYPE="1"
 ></LI
 ><LI
 ><P
->Configure any hosts that can not be looked up through DNS.</P
+>Configure the hostname and DNS settings.</P
 ></LI
 ><LI
 ><P
->Configure the hostname and DNS settings.</P
+>Configure any hosts that cannot be looked up through DNS.</P
 ></LI
 ></OL
 ><P
->	This chapter will discuss each of these steps for each type of network
+>	This chapter discusses each of these steps for each type of network
 	connection.
       </P
 ></DIV
@@ -282,7 +310,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Network Configuration</TD
+>Network Administration Tool</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

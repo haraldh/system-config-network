@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
 TITLE="Establishing an Ethernet Connection"
 HREF="network-config-ethernet.html"><LINK
 REL="NEXT"
 TITLE="Establishing a Modem Connection"
-HREF="network-config-modem.html"></HEAD
+HREF="network-config-modem.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -70,7 +70,9 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-CONFIG-ISDN">Chapter 3. Establishing an ISDN Connection</H1
+NAME="NETWORK-CONFIG-ISDN"
+></A
+>Chapter 3. Establishing an ISDN Connection</H1
 ><P
 >	An ISDN connection is an Internet connection established with a ISDN
 	modem card through a special phone line installed by the phone
@@ -94,8 +96,9 @@ CLASS="GUILABEL"
 ><P
 >Click the <B
 CLASS="GUIBUTTON"
->Add</B
-> button.</P
+>New</B
+> button on the
+	  toolbar.</P
 ></LI
 ><LI
 ><P
@@ -123,7 +126,9 @@ CLASS="GUIBUTTON"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-ISDN-SETTINGS-FIG"><DIV
+NAME="NEAT-ISDN-SETTINGS-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -137,14 +142,30 @@ SRC="./figs/neat-isdn-settings.png"></P
 ></LI
 ><LI
 ><P
->If your ISP is in the pre-configured list, select it. Otherwise,
-	  enter the required information about your ISP account. If you do not
-	    know the values, contact your ISP. Click
+>If your Internet Service Provider (ISP) is in the pre-configured
+	  list, select it. Otherwise, enter the required information about your
+	  ISP account. If you do not know the values, contact your ISP. Click
 	  <B
 CLASS="GUIBUTTON"
 >Forward</B
 >.
 	  </P
+></LI
+><LI
+><P
+>In the <B
+CLASS="GUILABEL"
+>IP Settings</B
+> window, select the
+	  <B
+CLASS="GUILABEL"
+>Encapsulation Mode</B
+> and whether to obtain an IP
+	    address via DHCP or whether to set one statically. Click
+	  <B
+CLASS="GUIBUTTON"
+>Forward</B
+> when finished.</P
 ></LI
 ><LI
 ><P
@@ -159,38 +180,28 @@ CLASS="GUIBUTTON"
 ></LI
 ></OL
 ><P
->	After configuring the ISDN device, it appears in the device list as an
-	<TT
-CLASS="COMPUTEROUTPUT"
->ippp</TT
-> device as
-	shown in <A
+>	After configuring the ISDN device, it appears in the device list as a
+	device with type <B
+CLASS="GUILABEL"
+>ISDN</B
+> as shown in
+	<A
 HREF="network-config-isdn.html#NEAT-ISDN-FIG"
 >Figure 3-2</A
 >.
       </P
-><DIV
-CLASS="FIGURE"
-><A
-NAME="NEAT-ISDN-FIG"><DIV
-CLASS="MEDIAOBJECT"
 ><P
-><IMG
-SRC="./figs/neat-isdn.png"></P
-></DIV
-><P
-><B
->Figure 3-2. ISDN Device</B
-></P
-></DIV
-><P
->	Be sure to click <B
-CLASS="GUIBUTTON"
->Apply</B
+>	Be sure to select <B
+CLASS="GUIMENU"
+>File</B
+> =&#62;
+	<B
+CLASS="GUIMENUITEM"
+>Save</B
 > to save the changes.
       </P
 ><P
->	After adding the modem device, you can edit its configuration by
+>	After adding the ISDN device, you can edit its configuration by
 	selecting the device from the device list and clicking
 	<B
 CLASS="GUIBUTTON"
@@ -201,17 +212,35 @@ CLASS="GUIBUTTON"
 	login name, password, and more can be changed.
       </P
 ><P
->	When the device is added, it is not activated, as seen by its
-	<B
+>	When the device is added, it is not activated immediately, as seen by
+	its <B
 CLASS="GUILABEL"
 >Inactive</B
-> status. To activate the device, select it
-	from the device list, and click the <B
+> status. To activate the device, select
+	it from the device list, and click the <B
 CLASS="GUIBUTTON"
 >Activate</B
 >
-	button.
+	button. If the system is configured to activate the device when the
+	computer starts (the default), this step does not have to be performed
+	again.
       </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="NEAT-ISDN-FIG"
+></A
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="./figs/neat-isdn.png"></P
+></DIV
+><P
+><B
+>Figure 3-2. ISDN Device</B
+></P
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"

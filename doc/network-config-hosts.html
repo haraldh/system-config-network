@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
-TITLE="Establishing a Wireless Connection"
-HREF="network-config-wireless.html"><LINK
-REL="NEXT"
 TITLE="Managing DNS Settings"
-HREF="network-config-dns.html"></HEAD
+HREF="network-config-dns.html"><LINK
+REL="NEXT"
+TITLE="Activating Devices"
+HREF="network-config-activate.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -43,7 +43,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="network-config-wireless.html"
+HREF="network-config-dns.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -57,7 +57,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="network-config-dns.html"
+HREF="network-config-activate.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -70,7 +70,9 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-CONFIG-HOSTS">Chapter 9. Managing Hosts</H1
+NAME="NETWORK-CONFIG-HOSTS"
+></A
+>Chapter 10. Managing Hosts</H1
 ><P
 >	The <B
 CLASS="GUILABEL"
@@ -105,22 +107,42 @@ CLASS="FILENAME"
 >	To add an entry to the <TT
 CLASS="FILENAME"
 >/etc/hosts</TT
-> file, click
+> file, go to the
 	<B
-CLASS="GUIBUTTON"
->Add</B
-> in the <B
 CLASS="GUILABEL"
 >Hosts</B
-> tab, provide
-	the requested information, and click <B
+> tab, click the <B
+CLASS="GUIBUTTON"
+>New</B
+>
+	button on the toolbar, provide the requested information, and click
+	<B
 CLASS="GUILABEL"
 >OK</B
->. Click
+>. Select <B
+CLASS="GUIMENU"
+>File</B
+> =&#62;
 	<B
-CLASS="GUIBUTTON"
->Apply</B
-> to write the entry to the file.
+CLASS="GUIMENUITEM"
+>Save</B
+> or press <SPAN
+CLASS="KEYCAP"
+><KEYCAP
+>[Ctrl]</KEYCAP
+></SPAN
+>-<SPAN
+CLASS="KEYCAP"
+><KEYCAP
+>[S]</KEYCAP
+></SPAN
+> to save the changes
+	to the <TT
+CLASS="FILENAME"
+>/etc/hosts</TT
+> file. The network or network
+	services do not need to be restarted since the current version of the
+	file is referred to each time an address is resolved.
       </P
 ><DIV
 CLASS="WARNING"
@@ -157,7 +179,9 @@ VALIGN="TOP"
 CLASS="COMPUTEROUTPUT"
 >localhost</TT
 >
-	  entry.
+	  entry. Even if the system does not have a network connection or have a
+	  network connection running constantly, some programs need to connect
+	  to the system via the localhost loopback interface.
 	</P
 ></TD
 ></TR
@@ -166,7 +190,9 @@ CLASS="COMPUTEROUTPUT"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-HOSTS-FIG"><DIV
+NAME="NEAT-HOSTS-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -174,7 +200,7 @@ SRC="./figs/neat-hosts.png"></P
 ></DIV
 ><P
 ><B
->Figure 9-1. Hosts Configuration</B
+>Figure 10-1. Hosts Configuration</B
 ></P
 ></DIV
 ><DIV
@@ -220,14 +246,14 @@ CLASS="COMPUTEROUTPUT"
 CLASS="FILENAME"
 >/etc/hosts</TT
 > takes precedence over
-	  the name servers. Changing the line to <TT
+	the name servers. Changing the line to <TT
 CLASS="FILENAME"
 >order bind,
 	hosts</TT
-> configures your system to resolve hostnames and IP
-	addresses using the name servers first. If the IP address can not be
-	resolved through the name servers, your system looks for the IP address
-	in the <TT
+> configures the system to resolve hostnames and IP
+	addresses using the name servers first. If the IP address cannot be
+	resolved through the name servers, the system then looks for the IP
+	address in the <TT
 CLASS="FILENAME"
 >/etc/hosts</TT
 > file.
@@ -253,7 +279,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="network-config-wireless.html"
+HREF="network-config-dns.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -271,7 +297,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="network-config-dns.html"
+HREF="network-config-activate.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -281,7 +307,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Establishing a Wireless Connection</TD
+>Managing DNS Settings</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -291,7 +317,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Managing DNS Settings</TD
+>Activating Devices</TD
 ></TR
 ></TABLE
 ></DIV

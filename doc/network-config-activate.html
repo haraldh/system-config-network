@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
-TITLE="Managing DNS Settings"
-HREF="network-config-dns.html"><LINK
+TITLE="Managing Hosts"
+HREF="network-config-hosts.html"><LINK
 REL="NEXT"
 TITLE="Working with Profiles"
-HREF="network-profiles.html"></HEAD
+HREF="network-profiles.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -43,7 +43,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="network-config-dns.html"
+HREF="network-config-hosts.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -70,28 +70,30 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-CONFIG-ACTIVATE">Chapter 11. Activating Devices</H1
+NAME="NETWORK-CONFIG-ACTIVATE"
+></A
+>Chapter 11. Activating Devices</H1
 ><P
->	Network devices can be configured to activate at boot time or not to
-	start at boot time. For example, a network device for a modem connection
-	is usually not configured to start at boot time; whereas, an Ethernet
-	connection is usually configured to activate at boot time. If your
-	network device is configured not to start at boot time, you can use
-	<B
+>	Network devices can be configured to be active or inactive at boot time.
+	For example, a network device for a modem connection is usually not
+	configured to start at boot time; whereas, an Ethernet connection is
+	usually configured to activate at boot time. If your network device is
+	configured not to start at boot time, you can use the <B
 CLASS="APPLICATION"
->Red Hat Control Network</B
-> to activate it after
-	boot time. To start it, select <B
+>Red Hat
+	Control Network</B
+> program to activate it after boot time. To
+	start it, select <B
 CLASS="GUIMENU"
 >Main Menu Button</B
-> (on
-	the Panel) =&#62; <B
+> (on the Panel) =&#62;
+	<B
 CLASS="GUIMENU"
->System Tools </B
+>System Tools</B
 > =&#62; <B
 CLASS="GUIMENUITEM"
->Network
-	Device Control</B
+>Network Device
+	Control</B
 > or type the command
 	<TT
 CLASS="COMMAND"
@@ -101,7 +103,9 @@ CLASS="COMMAND"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-CONTROL-FIG"><DIV
+NAME="NEAT-CONTROL-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -123,6 +127,13 @@ CLASS="GUIBUTTON"
 >Deactivate</B
 >.
       </P
+><P
+>	If more than one network profile is configured, they are listed in the
+	interface and can be activated. Refer to <A
+HREF="network-profiles.html"
+>Chapter 12</A
+> for details.
+      </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -140,7 +151,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="network-config-dns.html"
+HREF="network-config-hosts.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -168,7 +179,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Managing DNS Settings</TD
+>Managing Hosts</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
 TITLE="Activating Devices"
 HREF="network-config-activate.html"><LINK
 REL="NEXT"
 TITLE="Device Aliases"
-HREF="network-aliases.html"></HEAD
+HREF="network-aliases.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -70,18 +70,20 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-PROFILES">Chapter 12. Working with Profiles</H1
+NAME="NETWORK-PROFILES"
+></A
+>Chapter 12. Working with Profiles</H1
 ><P
 >	Multiple logical network devices can be created for each physical
 	hardware device. For example, if you have one Ethernet card in your
 	system (eth0), you can create logical network devices with different
-	nicknames and different configuration options, all associated with
-	eth0. 
+	nicknames and different configuration options, all to be specifically
+	associated with eth0.
       </P
 ><P
 >	Logical network devices are different from device aliases. Logical
 	network devices associated with the same physical device must exist in
-	different profiles and can not be activated simultaneously. Device
+	different profiles and cannot be activated simultaneously. Device
 	aliases are also associated with the same physical hardware device, but
 	device aliases associated with the same physical hardware can be
 	activated at the same time. Refer to <A
@@ -100,7 +102,7 @@ CLASS="FIRSTTERM"
 	configuring the profiles, you can use the
 	<B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
+>Network Administration Tool</B
 > to switch back and forth
 	between them.
       </P
@@ -109,33 +111,43 @@ CLASS="APPLICATION"
 CLASS="GUILABEL"
 >Common</B
 >. To
-	create a new profile, click the <B
-CLASS="GUIBUTTON"
->New</B
-> button in the
+	create a new profile, select <B
+CLASS="GUIMENU"
+>Profile</B
+> =&#62;
 	<B
-CLASS="GUILABEL"
->Active Profile</B
-> frame. Enter a unique name for the
-	profile.
+CLASS="GUIMENUITEM"
+>New</B
+> from the pull-down menu, and enter a
+	unique name for the profile.
       </P
 ><P
->	After creating a new profile, if all the devices are not listed for all
-	the profiles, add them by click the <B
-CLASS="GUIBUTTON"
->Add</B
->
-	button. If a device already exists for the physical device, use the
+>	You are now modifying the new profile as indicated by the status bar at
+	the bottom of the main window.
+      </P
+><P
+>	Click on an existing device already in the list, and click the
 	<B
 CLASS="GUIBUTTON"
 >Copy</B
-> button to copy the existing device. If you
-	use the <B
+> button to copy the existing device to a
+	logical network device. If you use the <B
 CLASS="GUIBUTTON"
->Add</B
-> button, a network alias will be
-	created, which is not correct. The device name should not end with a
-	colon followed by a number.
+>New</B
+>
+	button, a network alias will be created, which is incorrect. To change
+	the properties of the logical device, select it from the list and click
+	<B
+CLASS="GUIBUTTON"
+>Edit</B
+>. For example, the nickname can be changed to
+	a more descriptive name, such as <TT
+CLASS="USERINPUT"
+><B
+>eth0_office</B
+></TT
+>, so
+	that it can be recognized more easily.
       </P
 ><P
 >	In the list of devices, there is a column of checkboxes labeled
@@ -144,7 +156,28 @@ CLASS="GUILABEL"
 >Profile</B
 >. For each profile, you can check or uncheck
 	devices. Only the checked devices are included for the currently
-	selected profile.
+	selected profile. For example, if you create a logical device named
+	<TT
+CLASS="USERINPUT"
+><B
+>eth0_office</B
+></TT
+> in a profile called
+	<TT
+CLASS="USERINPUT"
+><B
+>Office</B
+></TT
+> and want to activate the logical device if
+	the profile is selected, uncheck the
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+> device and check the
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0_office</TT
+> device.
       </P
 ><P
 >	For example, <A
@@ -159,12 +192,14 @@ CLASS="GUILABEL"
 CLASS="GUILABEL"
 >eth0_office</B
 >. It is configured to activate the first
-	Ethernet card using DHCP. 
+	Ethernet card using DHCP.
       </P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-OFFICE-PROFILE-FIG"><DIV
+NAME="NEAT-OFFICE-PROFILE-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -187,12 +222,17 @@ HREF="network-profiles.html#NEAT-HOME-PROFILE-FIG"
 CLASS="GUILABEL"
 >eth0_home</B
 > logical device, which is associated with
-	eth0 and is configured to use a static IP address.
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+>.
       </P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-HOME-PROFILE-FIG"><DIV
+NAME="NEAT-HOME-PROFILE-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -204,44 +244,75 @@ SRC="./figs/neat-home-profile.png"></P
 ></P
 ></DIV
 ><P
->	You can also configure eth0 to activate in the
-	<B
+>	You can also configure <TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+> to activate
+	in the <B
 CLASS="GUILABEL"
 >Office</B
-> profile only and only activate a ppp (modem)
-	device in the <B
+> profile only and to activate a ppp
+	(modem) device in the <B
 CLASS="GUILABEL"
 >Home</B
-> profile. Another example is to
-	have the <B
+> profile only. Another
+	example is to have the <B
 CLASS="GUILABEL"
 >Common</B
-> profile activate eth0 and an
-	<B
+> profile activate
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+> and an <B
 CLASS="GUILABEL"
 >Away</B
-> profile activate a ppp device for use while
-	traveling.
+>
+	profile activate a ppp device for use while traveling.
       </P
 ><P
->	A profile can not be activated at boot time. Only the devices in the
-	<B
+>	A profile cannot be activated at boot time. Only the devices set to
+	activate at boot time in the <B
 CLASS="GUILABEL"
 >Common</B
-> profile, which are set to activate at boot
-	time are activated at boot time. After the system as booted, execute the
-	following command to enable a profile (replace
-	<TT
+> profile (the
+	default profile) are activated at boot time. After the system as booted,
+	go to <B
+CLASS="GUIMENU"
+>Main Menu</B
+> (on the Panel) =&#62; <B
+CLASS="GUIMENU"
+>System
+	Tools</B
+> =&#62; <B
+CLASS="GUIMENUITEM"
+>Network Device Control</B
+> (or
+	type the command <TT
+CLASS="COMMAND"
+>redhat-control-network</TT
+>) to select a
+	profile and activate it. The activate profile section only appears in
+	the <B
+CLASS="APPLICATION"
+>Network Device Control</B
+> interface if more
+	than the default <B
+CLASS="GUILABEL"
+>Common</B
+> interface exists.
+      </P
+><P
+>      Alternatively, execute the following command to enable a profile (replace
+<TT
 CLASS="REPLACEABLE"
 ><I
 >&#60;profilename&#62;</I
 ></TT
-> with the name of the
-	profile):
+> with the name of the profile):
       </P
 ><TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
+CLASS="SCREEN"
+BGCOLOR="#DCDCDC"
 WIDTH="100%"
 ><TR
 ><TD
@@ -254,7 +325,7 @@ CLASS="REPLACEABLE"
 ><I
 >&#60;profilename&#62;</I
 ></TT
-></TT
+> --activate</TT
 ></PRE
 ></TD
 ></TR

@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
 TITLE="Establishing a CIPE Connection"
 HREF="network-config-cipe.html"><LINK
 REL="NEXT"
-TITLE="Managing Hosts"
-HREF="network-config-hosts.html"></HEAD
+TITLE="Managing DNS Settings"
+HREF="network-config-dns.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -57,7 +57,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="network-config-hosts.html"
+HREF="network-config-dns.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -70,12 +70,14 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-CONFIG-WIRELESS">Chapter 8. Establishing a Wireless Connection</H1
+NAME="NETWORK-CONFIG-WIRELESS"
+></A
+>Chapter 8. Establishing a Wireless Connection</H1
 ><P
 >	Wireless Ethernet devices are becoming increasingly popular. The
-	configuration is similar to the Ethernet configuration except
-	that it allows you to configure ESSID, mode, frequency, channel,
-	transmit rate, and key for your wireless device.
+	configuration is similar to the Ethernet configuration except that it
+	allows you to configure settings such as the SSID and key for the
+	wireless device.
       </P
 ><P
 >	To add a wireless Ethernet connection, follow these steps:
@@ -95,8 +97,9 @@ CLASS="GUILABEL"
 ><P
 >Click the <B
 CLASS="GUIBUTTON"
->Add</B
-> button.</P
+>New</B
+> button on the
+	  toolbar.</P
 ></LI
 ><LI
 ><P
@@ -107,7 +110,7 @@ CLASS="GUILABEL"
 	    <B
 CLASS="GUILABEL"
 >Device Type</B
-> list, and click
+> list and click
 	    <B
 CLASS="GUIBUTTON"
 >Forward</B
@@ -122,7 +125,7 @@ CLASS="GUILABEL"
 	    card</B
 > list. Otherwise, select <B
 CLASS="GUILABEL"
->Other Ethernet
+>Other Wireless
 	    Card</B
 > to add the hardware device.</P
 ><DIV
@@ -156,10 +159,10 @@ VALIGN="CENTER"
 ALIGN="LEFT"
 VALIGN="TOP"
 ><P
->	      The installation program usually detects supported wireless Ethernet
-	      devices and prompts you to configure them. If you configured them during
-	      the installation program, they will already appear in the hardware list
-	      on the <B
+>	      The installation program usually detects supported wireless
+	      Ethernet devices and prompts you to configure them. If you
+	      configured them during the installation, they are displayed in the
+	      hardware list on the <B
 CLASS="GUILABEL"
 >Hardware</B
 > tab.
@@ -173,7 +176,7 @@ CLASS="GUILABEL"
 ><P
 >If you selected <B
 CLASS="GUILABEL"
->Other Ethernet Card</B
+>Other Wireless Card</B
 >, the
 	    <B
 CLASS="GUILABEL"
@@ -184,14 +187,14 @@ CLASS="GUILABEL"
 	    <B
 CLASS="GUILABEL"
 >eth0</B
->, if this is the second Ethernet card for
+>; if this is the second Ethernet card for
 	    the system, select <B
 CLASS="GUILABEL"
 >eth1</B
->, and so on. The
+> (and so on). The
 	    <B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
+>Network Administration Tool</B
 > also allows
 	    the user to configure the resources for the wireless network
 	    interface card. Click <B
@@ -209,14 +212,15 @@ CLASS="GUILABEL"
 	    as shown in <A
 HREF="network-config-wireless.html#NEAT-WIRELESS-SETTINGS-FIG"
 >Figure 8-1</A
->,
-	    configure the ESSID, mode, frequency, channel, transmit rate, and key
-	    for your wireless device.
+>, configure
+	    the settings for the wireless device.
 	  </P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-WIRELESS-SETTINGS-FIG"><DIV
+NAME="NEAT-WIRELESS-SETTINGS-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -266,7 +270,9 @@ HREF="network-config-wireless.html#NEAT-WIRELESS-FIG"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-WIRELESS-FIG"><DIV
+NAME="NEAT-WIRELESS-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -278,9 +284,13 @@ SRC="./figs/neat-wireless.png"></P
 ></P
 ></DIV
 ><P
->	Be sure to click <B
-CLASS="GUIBUTTON"
->Apply</B
+>	Be sure to select <B
+CLASS="GUIMENU"
+>File</B
+> =&#62;
+	<B
+CLASS="GUIMENUITEM"
+>Save</B
 > to save the changes.
       </P
 ><P
@@ -293,16 +303,18 @@ CLASS="GUIBUTTON"
 	to activate at boot time.
       </P
 ><P
->	When the device is added, it is not activated, as seen by its
-	<B
+>	When the device is added, it is not activated immediately, as seen by
+	its <B
 CLASS="GUILABEL"
 >Inactive</B
-> status. To activate the device, select if
-	from the device list, and click the <B
+> status. To activate the device, select
+	it from the device list, and click the <B
 CLASS="GUIBUTTON"
 >Activate</B
 >
-	button.
+	button. If the system is configured to activate the device when the
+	computer starts (the default), this step does not have to be performed
+	again.
       </P
 ></DIV
 ><DIV
@@ -339,7 +351,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="network-config-hosts.html"
+HREF="network-config-dns.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -359,7 +371,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Managing Hosts</TD
+>Managing DNS Settings</TD
 ></TR
 ></TABLE
 ></DIV

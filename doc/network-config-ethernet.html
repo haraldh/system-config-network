@@ -8,14 +8,14 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
 TITLE="Introduction"
 HREF="intro.html"><LINK
 REL="NEXT"
 TITLE="Establishing an ISDN Connection"
-HREF="network-config-isdn.html"></HEAD
+HREF="network-config-isdn.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -35,7 +35,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -70,12 +70,15 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-CONFIG-ETHERNET">Chapter 2. Establishing an Ethernet Connection</H1
+NAME="NETWORK-CONFIG-ETHERNET"
+></A
+>Chapter 2. Establishing an Ethernet Connection</H1
 ><P
 >	To establish an Ethernet connection, you need a network interface card
 	(NIC), a network cable (usually a CAT5 cable), and a network to connect
-	to. There are different speeds to networks; make sure your NIC is
-	compatible with the network to which you want to connect.
+	to. Different networks are configured to use different network speeds;
+	make sure your NIC is compatible with the network to which you want to
+	connect.
       </P
 ><P
 >	To add an Ethernet connection, follow these steps:
@@ -95,8 +98,9 @@ CLASS="GUILABEL"
 ><P
 >Click the <B
 CLASS="GUIBUTTON"
->Add</B
-> button.</P
+>New</B
+> button on the
+	  toolbar.</P
 ></LI
 ><LI
 ><P
@@ -156,10 +160,10 @@ VALIGN="CENTER"
 ALIGN="LEFT"
 VALIGN="TOP"
 ><P
->	      The installation program usually detects supported Ethernet
-	      devices and prompts you to configure them. If you configured any
-	      Ethernet devices during the installation, they will already appear
-	      in the hardware list on the <B
+>	      The installation program detects supported Ethernet devices and
+	      prompts you to configure them. If you configured any Ethernet
+	      devices during the installation, they are displayed in the
+	      hardware list on the <B
 CLASS="GUILABEL"
 >Hardware</B
 > tab.
@@ -184,14 +188,14 @@ CLASS="GUILABEL"
 	    <B
 CLASS="GUILABEL"
 >eth0</B
-> as the device name, if this is the second
+> as the device name; if this is the second
 	    Ethernet card, select <B
 CLASS="GUILABEL"
 >eth1</B
->, and so on. The
+> (and so on). The
 	    <B
 CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
+>Network Administration Tool</B
 > also allows
 	    you to configure the resources for the NIC. Click
 	    <B
@@ -202,36 +206,21 @@ CLASS="GUIBUTTON"
 ></LI
 ><LI
 ><P
->On the <B
+>In the <B
 CLASS="GUILABEL"
 >Configure Network Settings</B
-> page as
+> window as
 	    shown in <A
 HREF="network-config-ethernet.html#NEAT-ETHERNET-SETTINGS-FIG"
 >Figure 2-1</A
 >, choose between
-	    DHCP and a static IP address. 
-	    If the device receives a different IP address each time
-	    the network is started, do not specify a hostname. Click
-	    <B
+	    DHCP and a static IP address. If the device receives a different IP
+	    address each time the network is started, do not specify a
+	    hostname. Click <B
 CLASS="GUIBUTTON"
 >Forward</B
 > to continue.
 	  </P
-><DIV
-CLASS="FIGURE"
-><A
-NAME="NEAT-ETHERNET-SETTINGS-FIG"><DIV
-CLASS="MEDIAOBJECT"
-><P
-><IMG
-SRC="./figs/neat-ethernet-settings.png"></P
-></DIV
-><P
-><B
->Figure 2-1. Ethernet Settings</B
-></P
-></DIV
 ></LI
 ><LI
 ><P
@@ -246,6 +235,22 @@ CLASS="GUILABEL"
 	  </P
 ></LI
 ></OL
+><DIV
+CLASS="FIGURE"
+><A
+NAME="NEAT-ETHERNET-SETTINGS-FIG"
+></A
+><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="./figs/neat-ethernet-settings.png"></P
+></DIV
+><P
+><B
+>Figure 2-1. Ethernet Settings</B
+></P
+></DIV
 ><P
 >	After configuring the Ethernet device, it appears in the device list as
 	shown in <A
@@ -256,7 +261,9 @@ HREF="network-config-ethernet.html#NEAT-ETHERNET-FIG"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="NEAT-ETHERNET-FIG"><DIV
+NAME="NEAT-ETHERNET-FIG"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -268,9 +275,13 @@ SRC="./figs/neat-ethernet.png"></P
 ></P
 ></DIV
 ><P
->	Be sure to click <B
-CLASS="GUIBUTTON"
->Apply</B
+>	Be sure to select <B
+CLASS="GUIMENU"
+>File</B
+> =&#62;
+	<B
+CLASS="GUIMENUITEM"
+>Save</B
 > to save the changes.
       </P
 ><P
@@ -280,20 +291,40 @@ CLASS="GUIBUTTON"
 CLASS="GUIBUTTON"
 >Edit</B
 >. For example, when the device is added, it
-	is configured to start at boot time by default. You can edit its
-	configuration to modify this setting.
+	is configured to start at boot time by default. To change this setting,
+	select to edit the device, modify the <B
+CLASS="GUILABEL"
+>Active device when
+	computer starts</B
+> value, and save the changes.
       </P
 ><P
->	When the device is added, it is not activated, as seen by its
-	<B
+>	When the device is added, it is not activated immediately, as seen by
+	its <B
 CLASS="GUILABEL"
 >Inactive</B
-> status. To activate the device, select it
-	from the device list, and click the <B
+> status. To activate the device, select
+	it from the device list, and click the <B
 CLASS="GUIBUTTON"
 >Activate</B
 >
-	button.
+	button. If the system is configured to activate the device when the
+	computer starts (the default), this step does not have to be performed
+	again.
+      </P
+><P
+>	If you associate more than one device with an Ethernet card, the
+	subsequent devices are <I
+CLASS="FIRSTTERM"
+>device aliases</I
+>.  A device
+	alias allows you to setup multiple virtual devices for one physical
+	device, thus giving the one physical device more than one IP
+	address. For example, you can configure an eth1 device and an eth1:1
+	device. For details, refer to <A
+HREF="network-aliases.html"
+>Chapter 13</A
+>.
       </P
 ></DIV
 ><DIV

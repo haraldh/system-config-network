@@ -8,11 +8,11 @@ NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
-TITLE="Network Configuration"
+TITLE="Network Administration Tool"
 HREF="index.html"><LINK
 REL="PREVIOUS"
 TITLE="Working with Profiles"
-HREF="network-profiles.html"></HEAD
+HREF="network-profiles.html"></HEAD><link rel="stylesheet" type="text/css" href="rhdocs-man.css"
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -32,7 +32,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->Network Configuration</TH
+>Network Administration Tool</TH
 ></TR
 ><TR
 ><TD
@@ -63,7 +63,9 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NETWORK-ALIASES">Chapter 13. Device Aliases</H1
+NAME="NETWORK-ALIASES"
+></A
+>Chapter 13. Device Aliases</H1
 ><P
 >	<I
 CLASS="FIRSTTERM"
@@ -72,22 +74,33 @@ CLASS="FIRSTTERM"
 	with the same physical hardware, but they can be activated at the same
 	time to have different IP addresses. They are commonly represented as
 	the device name followed by a colon and a number (for example,
-	eth0:1). They are useful if you want to have more than one IP address
-	for a system, but the system only has one network card.
+	eth0:1). They are useful if you want to have multiple IP address for a
+	system, but the system only has one network card.
       </P
 ><P
->	If you have configured a device such as eth0, click the
-	<B
+>	After configuring the Ethernet device, such as
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+>, to use a static IP address (DHCP
+	does not work with aliases), go to the <B
+CLASS="GUILABEL"
+>Devices</B
+> tab
+	and click <B
 CLASS="GUIBUTTON"
->Add</B
-> button in
-	<B
-CLASS="APPLICATION"
->Red Hat Network Administration Tool</B
-> to create an alias for the
-	device. Select the network device and configure the network
-	settings. The alias will appear in the device list with a device name
-	followed by a colon and the alias number.
+>New</B
+>. Select the Ethernet card to
+	configure with an alias, set the static IP address for the alias, and
+	click <B
+CLASS="GUIBUTTON"
+>Apply</B
+> to create it. Since a device already
+	exists for the Ethernet card, the one just created is the alias such as
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0:1</TT
+>.
       </P
 ><DIV
 CLASS="WARNING"
@@ -133,13 +146,39 @@ VALIGN="TOP"
 HREF="network-aliases.html#FIG-NETWORK-ALIASES"
 >Figure 13-1</A
 > shows an example of one alias for
-	the eth0 device. Notice the eth0:1 device &#8212; the first alias for
-	eth0.
+	the <TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+> device. Notice the
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0:1</TT
+> device &#8212; the first alias
+	for <TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+>. The second alias for
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0</TT
+> would have the device name
+	<TT
+CLASS="COMPUTEROUTPUT"
+>eth0:2</TT
+>, and so on. To modify the
+	settings for the device alias such as whether to activate it at boot
+	time and the alias number, select it from the list and click the
+	<B
+CLASS="GUIBUTTON"
+>Edit</B
+> button.
       </P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="FIG-NETWORK-ALIASES"><DIV
+NAME="FIG-NETWORK-ALIASES"
+></A
+><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
@@ -155,16 +194,20 @@ SRC="./figs/neat-aliases.png"></P
 CLASS="GUIBUTTON"
 >Activate</B
 > button to
-	activate the alias. To verify that the alias has been activated, use the
+	activate the alias. If you have configured multiple profiles, select
+	which profiles in which to include it.
+      </P
+><P
+>	To verify that the alias has been activated, use the
 	command <TT
 CLASS="COMMAND"
 >/sbin/ifconfig</TT
->. The output should say the
+>. The output should show the
 	device and the device alias with different IP address:
       </P
 ><TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
+CLASS="SCREEN"
+BGCOLOR="#DCDCDC"
 WIDTH="100%"
 ><TR
 ><TD
