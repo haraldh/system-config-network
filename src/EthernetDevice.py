@@ -90,7 +90,7 @@ class EthernetDevice(Device.Device):
 
         return self._macaddress
 
-    def setBootProto(self,boot):
+    def setBootProto(self,bootproto):
         """
         Set the boot protocol for the EthernetDevice object
         @self The object instance
@@ -117,7 +117,7 @@ class EthernetDevice(Device.Device):
         addresses.readFile(filename)
         self.setAddressList(addresses)
         confFile=Conf.ConfShellVar(filename)
-
+        
 
     def toString(self):
         """
@@ -233,5 +233,4 @@ def test():
     print device.toString()
 
 if __name__ == "__main__":
-    import sys
     sys.exit(test())
