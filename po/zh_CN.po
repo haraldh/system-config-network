@@ -1,19 +1,20 @@
+# translation of zh_CN.po to Simplified Chinese
 # Simplified Chinese Version of netcfg file.
 # Copyright (C) 2002, Red Hat Inc.
-# Sarah Smith <sarahs@redhat.com>, 2002.
+# Sarah Smith <sarahs@redhat.com>, 2002,2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: netcfg 1.0\n"
+"Project-Id-Version: zh_CN\n"
 "POT-Creation-Date: 2003-05-22 11:52+0200\n"
-"PO-Revision-Date: 2003-03-26 13:39GMT+10:00\n"
+"PO-Revision-Date: 2003-06-10 16:56+1000\n"
 "Last-Translator: Sarah Smith <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <i18n@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.1\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.0\n"
 
 #: neat-control.desktop.in.h:1
 msgid "Control and monitor network devices"
@@ -105,28 +106,27 @@ msgid "Activating network device %s, please wait..."
 msgstr "正在激活网络设备 %s，请稍候..."
 
 #: src/neat-control.py:207
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot configure network device %s"
-msgstr "无法激活网络设备 %s"
+msgstr "无法配置网络设备 %s"
 
 #. update dialog #83640
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
 #: src/neat-control.py:227
-#, fuzzy
 msgid "Switching Profiles"
-msgstr "转换到配置文件 %s。"
+msgstr "转换配置文件"
 
 #: src/neat-control.py:228
-#, fuzzy, python-format
+#, python-format
 msgid "Switching to profile %s"
-msgstr "转换到配置文件 %s。"
+msgstr "转换到配置文件 %s"
 
 #: src/neat-control.py:229
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to switch to profile %s"
-msgstr "写入 %s 文件失败。"
+msgstr "转换到配置文件 %s 失败"
 
 #. Re-read the device list
 #. Update the gui
@@ -141,9 +141,8 @@ msgstr "需要重写！"
 #. ???
 #. change the default profile to a more understandable name
 #: src/neat-control.py:346
-#, fuzzy
 msgid " (active)"
-msgstr "不活跃"
+msgstr "（活跃）"
 
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
@@ -285,24 +284,22 @@ msgid "Error: %s, %s!"
 msgstr "错误：%s，%s！"
 
 #: src/netconf.py:59
-#, fuzzy
 msgid "Starting text version"
-msgstr "启动文本版本："
+msgstr "启动文本版本"
 
 #: src/netconf.py:108
 msgid "Loading Network Configuration..."
 msgstr "正在载入网络配置..."
 
 #: src/netconf.py:121
-#, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
 "\n"
 "Usage: redhat-config-network -v --verbose"
 msgstr ""
-"redhat-config-network - 图形化网络配置工具\n"
+"redhat-config-network - 网络配置工具\n"
 "\n"
-"用法：redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
+"用法： redhat-config-network -v --verbose"
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -326,79 +323,78 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:64
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
 "Please file a detailed bug report against the component %s at \n"
 "https://bugzilla.redhat.com/bugzilla\n"
 "using the text below.\n"
 msgstr ""
-"出现一个未解决的例外。这极可能是一个程序错误，请将其崩溃组合码转储入一个文"
-"件，然后提交一份详细的关于 redhat-config-network (http://bugzilla.redhat.com/"
-"bugzilla/) 的错误报告。"
+"出现一个未解决的例外。这极可能是一个程序错误。\n"
+"请使用以下文本在 http://bugzilla.redhat.com/bugzilla/ \n"
+"提交一份详细的关于组件 %s 的错误报告。\n"
 
 #: src/netconf-cmd.py:99
-#, fuzzy, python-format
+#, python-format
 msgid "%s - network configuration commandline tool"
-msgstr "网络配置"
+msgstr "%s - 网络配置的命令行工具"
 
 #: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
-msgstr ""
+msgstr "用法：%s"
 
 #: src/netconf-cmd.py:106
-#, fuzzy
 msgid "switch / activate profile"
-msgstr "点击来激活选中的配置文件"
+msgstr "转换/激活配置文件"
 
 #: src/netconf-cmd.py:108
 msgid "export / import hardware list"
-msgstr ""
+msgstr "导入/导出硬件列表"
 
 #: src/netconf-cmd.py:110
 msgid "export / import device list (default)"
-msgstr ""
+msgstr "导出/导入设备文件（默认）"
 
 #: src/netconf-cmd.py:112
 msgid "export / import profile list"
-msgstr ""
+msgstr "导出/导入配置文件列表"
 
 #: src/netconf-cmd.py:114
 msgid "set the root directory"
-msgstr ""
+msgstr "设置根目录"
 
 #: src/netconf-cmd.py:115
 msgid "export list (default)"
-msgstr ""
+msgstr "导出列表（默认）"
 
 #: src/netconf-cmd.py:116
 msgid "import list"
-msgstr ""
+msgstr "导入列表"
 
 #: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
-msgstr ""
+msgstr "导入前清除现存列表"
 
 #: src/netconf-cmd.py:120
 msgid "import from file"
-msgstr ""
+msgstr "从文件中导入"
 
 #: src/netconf-cmd.py:220
 #, python-format
 msgid "Unknown option %s\n"
-msgstr ""
+msgstr "未知选项 %s\n"
 
 #. remove the last \n
 #: src/netconf-cmd.py:280
-#, fuzzy, python-format
+#, python-format
 msgid "Unknown List %s\n"
-msgstr "未知"
+msgstr "未知列表 %s\n"
 
 #: src/netconf-cmd.py:284
-#, fuzzy, python-format
+#, python-format
 msgid "Error parsing line: %s"
-msgstr "载入设备 %s 时出错！\n"
+msgstr "解析行时出错：%s"
 
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -722,12 +718,16 @@ msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
+"运行失败：\n"
+"%s"
 
 #: src/netconfpkg/gui/GUI_functions.py:546
 msgid ""
 "\n"
 "Succeeded. Please read the output."
 msgstr ""
+"\n"
+"成功。请阅读输出。"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1049,6 +1049,8 @@ msgid ""
 "Nickname %s is already in use!\n"
 "Please choose another one.\n"
 msgstr ""
+"别名 %s 已经被使用！\n"
+"请另选一个。\n"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1647,24 +1649,24 @@ msgstr "不活跃"
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Directory %s is missing!\n"
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
-"缺少目录 /etc/cipe！\n"
+"缺少目录 %s！\n"
 "将会为您创建！\n"
 "您应该安装 cipe rpm 软件包！\n"
 
 #: src/netconfpkg/NCCipe.py:159
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Could not create\n"
 "directory %s!"
 msgstr ""
 "无法创建目录\n"
-"/etc/cipe！"
+"%s！"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1974,9 +1976,9 @@ msgstr "南斯拉夫"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCProfileList.py:53 src/netconfpkg/NCProfileList.py:58
-#, fuzzy, python-format
+#, python-format
 msgid "Copying %s to default profile."
-msgstr "把 /etc/hosts 复制到默认的配置文件中。"
+msgstr "把 %s 复制到默认的配置文件中。"
 
 #. 60016
 #. Keep that test for later versions
@@ -2053,15 +2055,13 @@ msgstr "软件 (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:152
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr "是否要安装下列在您的系统上需要的软件包？"
 
 #. print "toinstall %s" % str(toinstall)
 #. print "plist %s" % str(plist)
 #: src/netconfpkg/NC_functions.py:167
-msgid ""
-"You have to install the following packages, which are needed on your system!"
+msgid "You have to install the following packages, which are needed on your system!"
 msgstr "您必须安装下列软件包，它们是您的系统必需的！"
 
 #. test for wireless
@@ -2182,25 +2182,23 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCHardware.py:21
-#, fuzzy
 msgid "inactive"
 msgstr "不活跃"
 
 #. not found in last config and not in actual system
 #: src/netconfpkg/NCHardware.py:22
 msgid "system"
-msgstr ""
+msgstr "系统"
 
 #. found in system
 #: src/netconfpkg/NCHardware.py:23
-#, fuzzy
 msgid "configured"
-msgstr "配置"
+msgstr "已配置"
 
 #. found in config but not in system
 #: src/netconfpkg/NCHardware.py:24
 msgid "ok"
-msgstr ""
+msgstr "确定"
 
 #. found in system and in config
 #. !/usr/bin/python
@@ -2403,8 +2401,7 @@ msgstr "在此处输入您的 ISP 给您的登录名。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "输入本次配置的名称，通常是您的 ISP 的名称。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -4087,12 +4084,10 @@ msgstr "类型"
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
-msgstr ""
-"您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
+msgstr "您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr "您可以在此处配置与计算机物理连接的网络硬件。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
@@ -4232,9 +4227,8 @@ msgid "The following network interfaces are configured in the active profile."
 msgstr "下列网络界面在活跃的配置文件中被配置。"
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
-#, fuzzy
 msgid "_Info\t"
-msgstr "信息"
+msgstr "信息(_I)\t"
 
 #~ msgid "Cannot activate network device %s"
 #~ msgstr "无法激活网络设备 %s"
@@ -4603,3 +4597,4 @@ msgstr "信息"
 #~ "向 redhat-config-network 汇报部件错误。多谢！\n"
 #~ "\n"
 #~ "%s"
+
