@@ -189,7 +189,16 @@ class EthernetInterface(InterfaceCreator):
             self.device.HardwareAddress = hwaddr
 
         s = _("You have selected the following information:") + "\n\n"\
-            + _("Device: ") + str(self.device.DeviceId) + "\n"
+            + _("Device: ") + str(self.device.DeviceId) + " "
+
+        hardwarelist = NCHardwareList.getHardwareList()
+        for hw in hardwarelist:
+            if hw.Name == self.device.Device:
+                s = s + "(" + hw.Description + ")"
+                break
+
+        s = s + "\n"
+        
         if self.device.BootProto == "static":
             s = s + _("Address:") + " " + self.device.IP + "\n"\
             + _("Subnet Mask:") + " " + self.device.Netmask + "\n"\
