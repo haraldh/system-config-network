@@ -42,13 +42,10 @@ get_hwaddress (PyObject * self, PyObject * args)
   /* Get current settings. */
   err = ioctl(fd, SIOCGIFHWADDR, &ifr);
   if(err < 0) {
-    switch(err) {
-    case -EINVAL:
-    case -EOPNOTSUPP:
-      PyErr_SetString(PyExc_ValueError, strerror(errno));
-    default:
-      PyErr_SetString(PyExc_OSError, strerror(errno));
-    }
+    char buf[2048];
+    int eno = errno;
+    sprintf(buf, "[Errno %d] %s", eno, strerror(errno));
+    PyErr_SetString(PyExc_IOError, buf);
     close(fd);
     return NULL;
   }
@@ -98,13 +95,10 @@ get_module (PyObject * self, PyObject * args)
   /* Get current settings. */
   err = ioctl(fd, SIOCETHTOOL, &ifr);
   if(err < 0) {
-    switch(err) {
-    case -EINVAL:
-    case -EOPNOTSUPP:
-      PyErr_SetString(PyExc_ValueError, strerror(errno));
-    default:
-      PyErr_SetString(PyExc_OSError, strerror(errno));
-    }
+    char buf[2048];
+    int eno = errno;
+    sprintf(buf, "[Errno %d] %s", eno, strerror(errno));
+    PyErr_SetString(PyExc_IOError, buf);
     close(fd);
     return NULL;
   }
