@@ -117,7 +117,7 @@ def gui_error_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_MOUSE)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
 
     ret = dialog.run ()
     dialog.destroy()
@@ -146,7 +146,7 @@ def gui_info_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_MOUSE)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
 
     ret = dialog.run ()
     dialog.destroy()
@@ -175,7 +175,7 @@ def gui_error_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_MOUSE)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         
     ret = dialog.run ()
     dialog.destroy()
@@ -208,7 +208,7 @@ def gui_yesnocancel_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_MOUSE)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
 
     ret = dialog.run ()
     dialog.destroy()
@@ -243,7 +243,7 @@ def gui_yesno_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_MOUSE)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
 
     ret = dialog.run ()
     dialog.destroy()
