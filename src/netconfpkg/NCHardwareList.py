@@ -266,7 +266,11 @@ class HardwareList(HardwareList_base):
 
     def save(self):
         modules = MyConfModules()
-        wvdial  = None 
+        if not os.access('/etc/wvdial.conf', os.R_OK):
+            wvdial  = None
+        else:
+            wvdial = ConfSMB('/etc/wvdial.conf')
+
         isdn    = NCisdnhardware.ConfISDN()
         
 
