@@ -28,6 +28,7 @@ import libglade
 from ModemInterface import ModemInterface
 from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
+from GenericInterface import GenericInterface
 from EthernetInterface import EthernetInterface
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
@@ -75,6 +76,13 @@ class NewInterfaceDialog:
 
         for iface_creator in Interfaces:
             iface = iface_creator (self.toplevel, do_save = None, druid = self.druid)
+            row = self.interface_clist.append ( [ iface.get_project_name () ] )
+            self.interface_clist.set_row_data (row, iface)
+
+        # Add the interfaces that have no druid yet
+        for type in [ CIPE, WIRELESS, TOKENRING, CTC, IUCV ]:
+            iface = GenericInterface (self.toplevel, type = type,
+                                      do_save = None, druid = self.druid)
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
             self.interface_clist.set_row_data (row, iface)
 

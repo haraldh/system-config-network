@@ -13,6 +13,7 @@ GLADE_FILES = \
 	EthernetHardwareDruid.glade \
 	ethernethardware.glade \
 	EthernetInterfaceDruid.glade \
+	GenericInterfaceDruid.glade \
 	hardwaretype.glade \
 	IsdnHardwareDruid.glade \
 	isdnhardware.glade \
@@ -43,6 +44,7 @@ PYTHON_FILES = \
 	EthernetHardwareDruid.py \
 	ethernethardware.py \
 	EthernetInterface.py \
+	GenericInterface.py \
 	hardwaretype.py \
 	__init__.py \
 	InterfaceCreator.py \

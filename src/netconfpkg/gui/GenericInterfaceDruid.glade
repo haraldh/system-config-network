@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>netconf</name>
+  <program_name>netconf</program_name>
+  <directory></directory>
+  <source_directory>src</source_directory>
+  <pixmaps_directory></pixmaps_directory>
+  <language>C</language>
+  <gnome_support>True</gnome_support>
+  <gettext_support>True</gettext_support>
+</project>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>window1</name>
+  <title>window1</title>
+  <type>GTK_WINDOW_TOPLEVEL</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>True</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GnomeDruid</class>
+    <name>druid</name>
+
+    <widget>
+      <class>GnomeDruidPageFinish</class>
+      <name>finish_page</name>
+      <signal>
+	<name>finish</name>
+	<handler>on_finish_page_finish</handler>
+	<last_modification_time>Sat, 21 Jul 2001 14:08:19 GMT</last_modification_time>
+      </signal>
+      <signal>
+	<name>prepare</name>
+	<handler>on_finish_page_prepare</handler>
+	<last_modification_time>Sat, 21 Jul 2001 14:08:38 GMT</last_modification_time>
+      </signal>
+      <signal>
+	<name>back</name>
+	<handler>on_finish_page_back</handler>
+	<last_modification_time>Sat, 21 Jul 2001 14:08:45 GMT</last_modification_time>
+      </signal>
+      <title>Create Ethernet Device</title>
+      <text></text>
+      <background_color>25,25,112</background_color>
+      <logo_background_color>24,24,112</logo_background_color>
+      <textbox_color>255,255,255</textbox_color>
+      <text_color>0,0,0</text_color>
+      <title_color>255,255,255</title_color>
+      <logo_image>shadowman-round-48.png</logo_image>
+    </widget>
+  </widget>
+</widget>
+
+</GTK-Interface>
