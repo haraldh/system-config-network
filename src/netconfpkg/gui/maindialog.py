@@ -25,6 +25,7 @@ from netconfpkg.gui import *
 from netconfpkg.Control import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import PROGNAME
+from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 import gtk
 import gtk.glade
@@ -43,8 +44,6 @@ PAGE_DEVICES = 0
 PAGE_HARDWARE = 1
 PAGE_DNS = 2
 PAGE_HOSTS = 3
-
-DEFAULT_PROFILE_NAME=_("Common")
     
 class mainDialog:
     def __init__(self):
@@ -755,11 +754,11 @@ class mainDialog:
         dlg.set_border_width(10)
         dlg.vbox.add(gtk.Label(_('Activating network device %s, '
                                  'please wait...') %(device)))
-        dlg.vbox.show()
+        dlg.vbox.show_now()
         dlg.set_transient_for(self.dialog)        
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
-        dlg.show_all()
+        dlg.show_now()
         (status, txt) = intf.activate(device)                
         dlg.destroy()
         
@@ -791,11 +790,11 @@ class mainDialog:
         dlg.set_border_width(10)
         dlg.vbox.add(gtk.Label(_('Deactivating network device %s, '
                                  'please wait...') %(device)))
-        dlg.vbox.show()
+        dlg.vbox.show_now()
         dlg.set_transient_for(self.dialog)        
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
-        dlg.show_all()
+        dlg.show_now()
         (status, txt) = intf.deactivate(device)                
         dlg.destroy()
         
@@ -1163,7 +1162,7 @@ class mainDialog:
 
         profile = Profile()
         profile.apply(self.getActiveProfile())
-
+        profile.Active = false
         duplicate = TRUE
         num = 0
         while duplicate:
