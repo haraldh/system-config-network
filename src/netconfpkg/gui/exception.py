@@ -30,9 +30,9 @@ from gtk import *
 
 class ExceptionWindow:
     def __init__ (self, text):
-        win = gtk.Dialog("Exception Occured", None, gtk.DIALOG_MODAL)
-        win.add_button("Debug", 0)
-        win.add_button("Save to floppy", 1)
+        win = gtk.Dialog(_("Exception Occured"), None, gtk.DIALOG_MODAL)
+        win.add_button(_("Debug"), 0)
+        win.add_button(_("Save to file"), 1)
         win.add_button(gtk.STOCK_QUIT, 2)
         buffer = gtk.TextBuffer(None)
         buffer.set_text(text)
