@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: et\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-15 11:29+0100\n"
+"POT-Creation-Date: 2004-06-29 12:04+0200\n"
 "PO-Revision-Date: 2004-03-15 18:34+0200\n"
 "Last-Translator: Allan Sims <allsi@eau.ee>\n"
 "Language-Team: Estonian <Eesti>\n"
@@ -52,11 +52,11 @@ msgstr "Seadista interneti ühendus"
 msgid "Internet Configuration Wizard"
 msgstr "Interneti seadistamise võlur"
 
-#: src/neat-control.py:46 src/netconf.py:72
+#: src/neat-control.py:50 src/netconf.py:72
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "VIGA: Ei suuda lähtestada graafilist keskkonda. "
 
-#: src/neat-control.py:47 src/netconf.py:73
+#: src/neat-control.py:51 src/netconf.py:73
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
@@ -64,7 +64,7 @@ msgstr ""
 "Sellise ebaõnnestumise põhjuseks on tavaliselt graafilise keskkonna mitte "
 "töötamine."
 
-#: src/neat-control.py:48 src/netconf.py:74
+#: src/neat-control.py:52 src/netconf.py:74
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -72,12 +72,12 @@ msgstr ""
 "Palun kas käivita oma graafiline kasutajaliides või seadista oma "
 "KUVAmuutujad.\n"
 
-#: src/neat-control.py:138 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1636
+#: src/neat-control.py:144 src/netconf-cmd.py:100
+#: src/netconfpkg/gui/maindialog.py:1674
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:139 src/netconf-cmd.py:102
+#: src/neat-control.py:145 src/netconf-cmd.py:101
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -85,31 +85,31 @@ msgstr ""
 "See tarkvara on antud välja GPL alusel. Palun teata vigadest Red Hat-i "
 "Vigade teatamise süsteemi kaudu: http://bugzilla.redhat.com/"
 
-#: src/neat-control.py:193
+#: src/neat-control.py:203
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "Ei saa seadistada võrguseadet %s"
 
-#: src/neat-control.py:213
+#: src/neat-control.py:223
 msgid "Switching Profiles"
 msgstr "Profiilide vahetamine"
 
-#: src/neat-control.py:214
+#: src/neat-control.py:224
 #, python-format
 msgid "Switching to profile %s"
 msgstr "Vaheta profiilile %s "
 
-#: src/neat-control.py:215
+#: src/neat-control.py:225
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "Ebaõnnestus profiilile %s vahetamine"
 
 #. TBD
-#: src/neat-control.py:230
+#: src/neat-control.py:240
 msgid "To be rewritten!"
 msgstr "Uuesti kirjutada!"
 
-#: src/neat-control.py:337
+#: src/neat-control.py:347
 msgid " (active)"
 msgstr " (aktiivne)"
 
@@ -212,11 +212,11 @@ msgstr "Viga: %s, %s!"
 msgid "Starting text version"
 msgstr "Käivitatakse teksti versioon"
 
-#: src/netconf.py:111
+#: src/netconf.py:116
 msgid "Loading Network Configuration..."
 msgstr "Võrgu seadete laadimine..."
 
-#: src/netconf.py:124
+#: src/netconf.py:129
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -226,11 +226,11 @@ msgstr ""
 "\n"
 "kasutus: system-config-network -v --verbose"
 
-#: src/netconf.py:253
+#: src/netconf.py:260
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Palun käivita system-config-network juurkasutaja õigustega!\n"
 
-#: src/netconf-cmd.py:65
+#: src/netconf-cmd.py:64
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -242,63 +242,68 @@ msgstr ""
 "raport vea teatamise süsteemiga  aadressile https://%sbugzilla.redhat.com/"
 "bugzilla kasutades järgnevat teksti.\n"
 
-#: src/netconf-cmd.py:100
+#: src/netconf-cmd.py:99
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr "%s - võrgu seadistamise käsurea vahend"
 
-#: src/netconf-cmd.py:105
+#: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
 msgstr "Kasutus: %s"
 
-#: src/netconf-cmd.py:107
+#: src/netconf-cmd.py:106
 msgid "switch / activate profile"
 msgstr "Vaheta / aktiveeri profiil"
 
-#: src/netconf-cmd.py:109
+#: src/netconf-cmd.py:108
 msgid "export / import hardware list"
 msgstr "ekspordi /impordi riistvara loend"
 
-#: src/netconf-cmd.py:111
+#: src/netconf-cmd.py:110
+#, fuzzy
+msgid "export / import IPsec list"
+msgstr "ekspordi / impordi profiili loend"
+
+#: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
 msgstr "ekspordi / impordi seadmete loend (vaike)"
 
-#: src/netconf-cmd.py:113
+#: src/netconf-cmd.py:114
 msgid "export / import profile list"
 msgstr "ekspordi / impordi profiili loend"
 
-#: src/netconf-cmd.py:115
+#: src/netconf-cmd.py:116
 msgid "set the root directory"
 msgstr "seadista juur kataloog"
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:118
 msgid "export list (default)"
 msgstr "ekspordi loend (vaike)"
 
-#: src/netconf-cmd.py:117
+#: src/netconf-cmd.py:119
 msgid "import list"
 msgstr "impordi loend"
 
-#: src/netconf-cmd.py:119
+#: src/netconf-cmd.py:121
 msgid "clear existing list prior of importing"
 msgstr "puhasta eelnevalt imporditud loend"
 
-#: src/netconf-cmd.py:121
+#: src/netconf-cmd.py:123
 msgid "import from file"
 msgstr "impordi failist"
 
-#: src/netconf-cmd.py:227
+#: src/netconf-cmd.py:236
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "Tundmatu valik %s \n"
 
-#: src/netconf-cmd.py:306
+#: src/netconf-cmd.py:300
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "Tundmatu loend %s\n"
 
-#: src/netconf-cmd.py:310
+#: src/netconf-cmd.py:304
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "Viga analüüsides rida: %s"
@@ -324,12 +329,12 @@ msgstr ""
 "vahemikul 144kbitist kuni 1 Mbitini sekundis."
 
 #: src/netconfpkg/gui/ADSLInterface.py:135
-#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:142
 #: src/netconfpkg/gui/DialupDruid.py:230
-#: src/netconfpkg/gui/EthernetInterface.py:216
-#: src/netconfpkg/gui/WirelessInterface.py:284
-#: src/netconfpkg/gui/TokenRingInterface.py:208
-#: src/netconfpkg/gui/editipsec.py:201 src/netconfpkg/gui/PTPInterface.py:211
+#: src/netconfpkg/gui/EthernetInterface.py:207
+#: src/netconfpkg/gui/WirelessInterface.py:274
+#: src/netconfpkg/gui/TokenRingInterface.py:199
+#: src/netconfpkg/gui/editipsec.py:248 src/netconfpkg/gui/PTPInterface.py:202
 msgid "You have selected the following information:"
 msgstr "Sa oled valinud järgmise informatsiooni:"
 
@@ -347,86 +352,86 @@ msgstr "Varustaja nimi:"
 msgid "Login name:"
 msgstr "Logimise nimi:"
 
-#: src/netconfpkg/gui/CipeInterface.py:97
+#: src/netconfpkg/gui/CipeInterface.py:94
 msgid "CIPE (VPN) connection"
 msgstr "CIPE (VPN) ühendus"
 
-#: src/netconfpkg/gui/CipeInterface.py:100
+#: src/netconfpkg/gui/CipeInterface.py:97
 msgid "Create a new virtual private network connection with CIPE."
 msgstr "Loo uus virtuaalne privaat võrguühendus CIPE-ga."
 
-#: src/netconfpkg/gui/CipeInterface.py:146
-#: src/netconfpkg/gui/EthernetInterface.py:217
-#: src/netconfpkg/gui/WirelessInterface.py:285
-#: src/netconfpkg/gui/TokenRingInterface.py:209
-#: src/netconfpkg/gui/PTPInterface.py:212
+#: src/netconfpkg/gui/CipeInterface.py:143
+#: src/netconfpkg/gui/EthernetInterface.py:208
+#: src/netconfpkg/gui/WirelessInterface.py:275
+#: src/netconfpkg/gui/TokenRingInterface.py:200
+#: src/netconfpkg/gui/PTPInterface.py:203
 msgid "Device:"
 msgstr "Seade:"
 
-#: src/netconfpkg/gui/CipeInterface.py:147
+#: src/netconfpkg/gui/CipeInterface.py:144
 msgid "Tunnel through device:"
 msgstr "Tunnel läb seadme:"
 
-#: src/netconfpkg/gui/CipeInterface.py:148
-#: src/netconfpkg/gui/CipeInterface.py:309
+#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Local port:"
 msgstr "Kohalik port:"
 
-#: src/netconfpkg/gui/CipeInterface.py:153
-#: src/netconfpkg/gui/CipeInterface.py:155
-#: src/netconfpkg/gui/CipeInterface.py:310
+#: src/netconfpkg/gui/CipeInterface.py:150
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/CipeInterface.py:307
 msgid "Remote peer address:"
 msgstr "Kaugpartneri aadress:"
 
-#: src/netconfpkg/gui/CipeInterface.py:153
+#: src/netconfpkg/gui/CipeInterface.py:150
 msgid "Auto"
 msgstr "Auto"
 
-#: src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/CipeInterface.py:153
 msgid "Remote peer port:"
 msgstr "Kaugpartneri port:"
 
-#: src/netconfpkg/gui/CipeInterface.py:158
-#: src/netconfpkg/gui/CipeInterface.py:314
+#: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:311
 msgid "Remote virtual address:"
 msgstr "Kaug virtuaalne aadress:"
 
-#: src/netconfpkg/gui/CipeInterface.py:159
-#: src/netconfpkg/gui/CipeInterface.py:315
+#: src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/CipeInterface.py:312
 msgid "Local virtual address:"
 msgstr "Kohalik virtuaalne aadress:"
 
-#: src/netconfpkg/gui/CipeInterface.py:168
-#: src/netconfpkg/gui/CipeInterface.py:236 src/netconfpkg/gui/cipeconfig.py:71
+#: src/netconfpkg/gui/CipeInterface.py:165
+#: src/netconfpkg/gui/CipeInterface.py:233 src/netconfpkg/gui/cipeconfig.py:71
 #: src/netconfpkg/gui/cipeconfig.py:133
 msgid "None - Server Mode"
 msgstr "Ei üksiki - serveri režiim "
 
-#: src/netconfpkg/gui/CipeInterface.py:175 src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/CipeInterface.py:172 src/netconfpkg/gui/cipeconfig.py:79
 msgid " (dynamic)"
 msgstr " (dünaamiline)"
 
-#: src/netconfpkg/gui/CipeInterface.py:212
-#: src/netconfpkg/gui/CipeInterface.py:266
+#: src/netconfpkg/gui/CipeInterface.py:209
+#: src/netconfpkg/gui/CipeInterface.py:263
 #: src/netconfpkg/gui/cipeconfig.py:111 src/netconfpkg/gui/cipeconfig.py:165
 msgid "Server Mode"
 msgstr "Serveri režiim"
 
-#: src/netconfpkg/gui/CipeInterface.py:297
-#: src/netconfpkg/gui/CipeInterface.py:302
+#: src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/CipeInterface.py:299
 #: src/netconfpkg/gui/cipeconfig.py:196 src/netconfpkg/gui/cipeconfig.py:201
 msgid "(own choice)"
 msgstr "(oma valik)"
 
-#: src/netconfpkg/gui/CipeInterface.py:308
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "IP address of tunnel device:"
 msgstr "Tunneli seadme IP aadress:"
 
-#: src/netconfpkg/gui/CipeInterface.py:316
+#: src/netconfpkg/gui/CipeInterface.py:313
 msgid "Secret key:"
 msgstr "Sala võti:"
 
-#: src/netconfpkg/gui/CipeInterface.py:326
+#: src/netconfpkg/gui/CipeInterface.py:323
 msgid "You must enter a secret key or generate one"
 msgstr "Sa pead sisestama sala võtme või genereerima selle"
 
@@ -445,8 +450,8 @@ msgstr "Telefoni number:"
 #: src/netconfpkg/gui/ethernethardware.py:171
 #: src/netconfpkg/gui/tokenringhardware.py:126
 #: src/netconfpkg/gui/tokenringhardware.py:137
-#: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
-#: src/netconfpkg/NC_functions.py:370 src/netconfpkg/NCDevice.py:208
+#: src/netconfpkg/NCHardwareList.py:446 src/netconfpkg/NCHardwareList.py:566
+#: src/netconfpkg/NC_functions.py:389 src/netconfpkg/NCDevice.py:196
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
 #: src/netconfpkg/NCDeviceList.py:71
@@ -465,33 +470,33 @@ msgstr "Ethernet ühendus"
 msgid "Create a new ethernet connection."
 msgstr "Loo uus ethernet ühendus."
 
-#: src/netconfpkg/gui/EthernetInterface.py:197
+#: src/netconfpkg/gui/EthernetInterface.py:188
 msgid "Other Ethernet Card"
 msgstr "Muu Etherneti kaart"
 
-#: src/netconfpkg/gui/EthernetInterface.py:228
-#: src/netconfpkg/gui/WirelessInterface.py:296
-#: src/netconfpkg/gui/TokenRingInterface.py:220
-#: src/netconfpkg/gui/PTPInterface.py:222
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:286
+#: src/netconfpkg/gui/TokenRingInterface.py:211
+#: src/netconfpkg/gui/PTPInterface.py:213
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
 msgstr "Aadress:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:229
-#: src/netconfpkg/gui/WirelessInterface.py:297
-#: src/netconfpkg/gui/TokenRingInterface.py:221
+#: src/netconfpkg/gui/EthernetInterface.py:220
+#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 msgid "Subnet mask:"
 msgstr "Võrgumask:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:230
-#: src/netconfpkg/gui/WirelessInterface.py:298
-#: src/netconfpkg/gui/TokenRingInterface.py:222
+#: src/netconfpkg/gui/EthernetInterface.py:221
+#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Default gateway address:"
 msgstr "Vaikelüüsi aadress:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:232
-#: src/netconfpkg/gui/WirelessInterface.py:300
-#: src/netconfpkg/gui/TokenRingInterface.py:224
+#: src/netconfpkg/gui/EthernetInterface.py:223
+#: src/netconfpkg/gui/WirelessInterface.py:290
+#: src/netconfpkg/gui/TokenRingInterface.py:215
 msgid "Automatically obtain IP address settings with:"
 msgstr "Automaatselt seadista IP aadress:"
 
@@ -633,35 +638,35 @@ msgstr "Traadita ühendus"
 msgid "Create a new wireless connection."
 msgstr "Loo uus traadita ühendus."
 
-#: src/netconfpkg/gui/WirelessInterface.py:264
+#: src/netconfpkg/gui/WirelessInterface.py:254
 msgid "Other Wireless Card"
 msgstr "Muu traadita ühenduse kaart"
 
-#: src/netconfpkg/gui/WirelessInterface.py:303
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Mode:"
 msgstr "Režiim:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:304
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "ESSID (network ID):"
 msgstr "ESSID (võrgu ID):"
 
-#: src/netconfpkg/gui/WirelessInterface.py:306
+#: src/netconfpkg/gui/WirelessInterface.py:296
 msgid "Automatic"
 msgstr "Automaatne"
 
-#: src/netconfpkg/gui/WirelessInterface.py:310
+#: src/netconfpkg/gui/WirelessInterface.py:300
 msgid "Channel:"
 msgstr "Kanal:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:311
+#: src/netconfpkg/gui/WirelessInterface.py:301
 msgid "Transmit rate:"
 msgstr "Edastamise määr:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:312
+#: src/netconfpkg/gui/WirelessInterface.py:302
 msgid "Key: "
 msgstr "Võti:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:318
+#: src/netconfpkg/gui/WirelessInterface.py:308
 msgid "encryption disabled"
 msgstr "krüpteerimine keelatud"
 
@@ -673,7 +678,7 @@ msgstr "Lubaring ühendus"
 msgid "Create a new Token Ring connection."
 msgstr "Loo uus Lubaring ühendus"
 
-#: src/netconfpkg/gui/TokenRingInterface.py:190
+#: src/netconfpkg/gui/TokenRingInterface.py:181
 msgid "Other Tokenring Card"
 msgstr "Muu lubaring kaard"
 
@@ -846,102 +851,110 @@ msgstr "IPsec seadete salvestamine..."
 msgid "Updating devices..."
 msgstr "Seadme uuendamine..."
 
-#: src/netconfpkg/gui/maindialog.py:494
+#: src/netconfpkg/gui/maindialog.py:495
 msgid "Updating hardware..."
 msgstr "Riistvara uuendamine..."
 
-#: src/netconfpkg/gui/maindialog.py:588
+#: src/netconfpkg/gui/maindialog.py:589
 msgid "Updating profiles..."
 msgstr "Profiilide uuendamine..."
 
-#: src/netconfpkg/gui/maindialog.py:694 src/netconfpkg/gui/maindialog.py:787
+#: src/netconfpkg/gui/maindialog.py:702 src/netconfpkg/gui/maindialog.py:798
 msgid "Do you want to save your changes?"
 msgstr "Soovid sa muutusi salvestada?"
 
-#: src/netconfpkg/gui/maindialog.py:852
+#: src/netconfpkg/gui/maindialog.py:863
 msgid "The Loopback device can not be edited!"
 msgstr "Tagastusliidest ei saa redigeerida!"
 
-#: src/netconfpkg/gui/maindialog.py:856
+#: src/netconfpkg/gui/maindialog.py:867
 msgid "Edit device..."
 msgstr "Redigeeri seadet..."
 
-#: src/netconfpkg/gui/maindialog.py:894
+#: src/netconfpkg/gui/maindialog.py:905
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "Seadme tüüpi %s ei saa redigeerida!"
 
-#: src/netconfpkg/gui/maindialog.py:913
+#: src/netconfpkg/gui/maindialog.py:924
 msgid "The Loopback device can not be removed!"
 msgstr "Tagastusliidest ei saa eemaldada!"
 
-#: src/netconfpkg/gui/maindialog.py:917
+#: src/netconfpkg/gui/maindialog.py:928
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Kas sa tahad kustutada seadet \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:949 src/netconfpkg/gui/maindialog.py:1716
+#: src/netconfpkg/gui/maindialog.py:963 src/netconfpkg/gui/maindialog.py:1000
+#: src/netconfpkg/gui/maindialog.py:1757 src/netconfpkg/gui/maindialog.py:1787
 msgid "You have made some changes in your configuration."
 msgstr "Sa oled seadetes teinud mõned muudatused."
 
-#: src/netconfpkg/gui/maindialog.py:950
+#: src/netconfpkg/gui/maindialog.py:964
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Võrgu seadme %s aktiveerimiseks tuleb eelnevalt salvestada muudatused."
 
-#: src/netconfpkg/gui/maindialog.py:952 src/netconfpkg/gui/maindialog.py:1719
+#: src/netconfpkg/gui/maindialog.py:966 src/netconfpkg/gui/maindialog.py:1003
+#: src/netconfpkg/gui/maindialog.py:1760 src/netconfpkg/gui/maindialog.py:1790
 msgid "Do you want to continue?"
 msgstr "Soovid sa jätkata?"
 
-#: src/netconfpkg/gui/maindialog.py:1156
+#: src/netconfpkg/gui/maindialog.py:1001
+#, fuzzy, python-format
+msgid "To deactivate the network device %s, the changes have to be saved."
+msgstr "Võrgu seadme %s aktiveerimiseks tuleb eelnevalt salvestada muudatused."
+
+#: src/netconfpkg/gui/maindialog.py:1180
 msgid "The Loopback device can not be disabled!"
 msgstr "Tagastusliidest ei saa keelata!"
 
-#: src/netconfpkg/gui/maindialog.py:1382 src/netconfpkg/gui/maindialog.py:1462
+#: src/netconfpkg/gui/maindialog.py:1420 src/netconfpkg/gui/maindialog.py:1500
 msgid "The name may only contain letters and digits!"
 msgstr "Nimi võib sisaldada ainult tähti ja numbreid!"
 
-#: src/netconfpkg/gui/maindialog.py:1387 src/netconfpkg/gui/maindialog.py:1467
+#: src/netconfpkg/gui/maindialog.py:1425 src/netconfpkg/gui/maindialog.py:1505
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Profiilile ei saa anda nime \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1393 src/netconfpkg/gui/maindialog.py:1473
+#: src/netconfpkg/gui/maindialog.py:1431 src/netconfpkg/gui/maindialog.py:1511
 msgid "The profile name already exists!"
 msgstr "Profiili nimi on juba olemas!"
 
-#: src/netconfpkg/gui/maindialog.py:1440
+#: src/netconfpkg/gui/maindialog.py:1478
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Profiili \"%s\" ei saa ümber nimetada!"
 
-#: src/netconfpkg/gui/maindialog.py:1495
+#: src/netconfpkg/gui/maindialog.py:1533
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Profiili \"%s\" ei saa kustutada!"
 
-#: src/netconfpkg/gui/maindialog.py:1501
+#: src/netconfpkg/gui/maindialog.py:1539
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Kas sa tõesti soovid kustutada profiili \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1575
-msgid "Sorry, there is nothing to be edited, or this type cannot be edited yet."
+#: src/netconfpkg/gui/maindialog.py:1613
+msgid ""
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 "Vabandust, kuid seal ei ole midagi regideerida või seda tüüpi ei saa veel "
 "redigeerida."
 
-#: src/netconfpkg/gui/maindialog.py:1593
+#: src/netconfpkg/gui/maindialog.py:1631
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Soovid sa tõesti kustutada \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1606
+#: src/netconfpkg/gui/maindialog.py:1644
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Soovid sa kustutada kõik seadmed, mis kasutavad \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1637
+#: src/netconfpkg/gui/maindialog.py:1675
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -949,10 +962,17 @@ msgstr ""
 "See tarkvara on antud välja GPL alusel. Palun teada vigadest Red Hat-i "
 "vigade teatamise süsteemi kaudu: http://bugzilla.redhat.com/"
 
-#: src/netconfpkg/gui/maindialog.py:1717
+#: src/netconfpkg/gui/maindialog.py:1758
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
-msgstr "IPsec ühenduse %s aktiveerimiseks tuleb eelnevalt muudatuse salvestada."
+msgstr ""
+"IPsec ühenduse %s aktiveerimiseks tuleb eelnevalt muudatuse salvestada."
+
+#: src/netconfpkg/gui/maindialog.py:1788
+#, fuzzy, python-format
+msgid "To deactivate the IPsec connection %s, the changes have to be saved."
+msgstr ""
+"IPsec ühenduse %s aktiveerimiseks tuleb eelnevalt muudatuse salvestada."
 
 #: src/netconfpkg/gui/ethernethardware.py:94
 msgid "Command failed: "
@@ -1011,7 +1031,7 @@ msgstr "IUCV ühendus"
 msgid "Create a new IUCV connection."
 msgstr "Loo uus IUCV ühendus."
 
-#: src/netconfpkg/gui/PTPInterface.py:223
+#: src/netconfpkg/gui/PTPInterface.py:214
 msgid "Point to Point (IP):"
 msgstr "Punkt-punkt (IP):"
 
@@ -1051,7 +1071,7 @@ msgstr "auto"
 msgid "manual"
 msgstr "käsitsi"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:142
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:152
 #: src/netconfpkg/gui/ModemDruid.glade.h:7
 #: src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -1345,12 +1365,12 @@ msgstr "Vietnam"
 msgid "Yugoslavia"
 msgstr "Jugoslaavia"
 
-#: src/netconfpkg/NCProfileList.py:203
+#: src/netconfpkg/NCProfileList.py:204
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "Seade %s kasutab sama Riistvara seadet \"%s\" nagu %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:205
+#: src/netconfpkg/NCProfileList.py:206
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1358,29 +1378,32 @@ msgstr ""
 "Palun vali mõni teine riistvara seade või\n"
 "aktiveeri ainult üks nendest."
 
-#: src/netconfpkg/NC_functions.py:91
+#: src/netconfpkg/NC_functions.py:101
 msgid "Common"
 msgstr "Tavaline"
 
-#: src/netconfpkg/NC_functions.py:140 src/netconfpkg/gui/ModemDruid.glade.h:1
+#: src/netconfpkg/NC_functions.py:150 src/netconfpkg/gui/ModemDruid.glade.h:1
 #: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "Hardware (CRTSCTS)"
 msgstr "Riistvara (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:141 src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/NC_functions.py:151 src/netconfpkg/gui/ModemDruid.glade.h:10
 #: src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "Tarkvara (XON/XOFF)"
 
-#: src/netconfpkg/NC_functions.py:220
-msgid "Shall the following packages, which are needed on your system, be installed?"
+#: src/netconfpkg/NC_functions.py:230
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr "Kas järgmisi pakette, mida on süsteemil vaja, võib installeerida?"
 
-#: src/netconfpkg/NC_functions.py:233
-msgid "You have to install the following packages, which are needed on your system!"
-msgstr "Sa pead installeerima järgnevad paketid, millised on süsteemile vajalikud!"
+#: src/netconfpkg/NC_functions.py:243
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+"Sa pead installeerima järgnevad paketid, millised on süsteemile vajalikud!"
 
-#: src/netconfpkg/NC_functions.py:732
+#: src/netconfpkg/NC_functions.py:762 src/netconfpkg/NC_functions.py:773
 #, python-format
 msgid ""
 "Error removing\n"
@@ -1391,7 +1414,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:752
+#: src/netconfpkg/NC_functions.py:793
 #, python-format
 msgid ""
 "Error copying \n"
@@ -1404,7 +1427,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:762
+#: src/netconfpkg/NC_functions.py:803
 #, python-format
 msgid ""
 "Error linking \n"
@@ -1417,7 +1440,7 @@ msgstr ""
 "%s-le:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:772
+#: src/netconfpkg/NC_functions.py:813
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -1430,7 +1453,7 @@ msgstr ""
 "ümber %s-ks:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:780
+#: src/netconfpkg/NC_functions.py:821
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -1439,20 +1462,10 @@ msgstr ""
 "Viga kataloogi loomisel!\n"
 "%s"
 
-#: src/netconfpkg/NC_functions.py:832
+#: src/netconfpkg/NC_functions.py:920
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s kopeerimine seadmele ja selle panemine %s profiilile."
-
-#: src/netconfpkg/NC_functions.py:842
-#, python-format
-msgid "Copying %s to profile %s."
-msgstr "%s kopeerimine %s profiilile."
-
-#: src/netconfpkg/NC_functions.py:852
-#, python-format
-msgid "Linking %s to profile %s."
-msgstr "%s sidumine profiilile %s "
 
 #: src/netconfpkg/NCHardware.py:21
 msgid "inactive"
@@ -1473,40 +1486,40 @@ msgstr "seadistatud"
 msgid "ok"
 msgstr "olgu"
 
-#: src/netconfpkg/NCDevice.py:202
+#: src/netconfpkg/NCDevice.py:190
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, seade on määramata või alias ei ole number!"
 
-#: src/netconfpkg/NCDevice.py:245
+#: src/netconfpkg/NCDevice.py:233
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Staatiline marsruudi fail %s on vigane"
 
-#: src/netconfpkg/NCDevice.py:379 src/netconfpkg/plugins/NCDevIsdn.py:73
+#: src/netconfpkg/NCDevice.py:371 src/netconfpkg/plugins/NCDevIsdn.py:73
 msgid "Network device activating..."
 msgstr "Võrguseadme aktiveerimine..."
 
-#: src/netconfpkg/NCDevice.py:380 src/netconfpkg/plugins/NCDevIsdn.py:74
+#: src/netconfpkg/NCDevice.py:372 src/netconfpkg/plugins/NCDevIsdn.py:74
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Võrguseadme %s aktiveerimine, palun oota..."
 
-#: src/netconfpkg/NCDevice.py:382 src/netconfpkg/plugins/NCDevIsdn.py:76
+#: src/netconfpkg/NCDevice.py:374 src/netconfpkg/plugins/NCDevIsdn.py:76
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Ei saa aktiveerida võrguseadet %s!\n"
 
-#: src/netconfpkg/NCDevice.py:399 src/netconfpkg/plugins/NCDevIsdn.py:97
+#: src/netconfpkg/NCDevice.py:391 src/netconfpkg/plugins/NCDevIsdn.py:97
 msgid "Network device deactivating..."
 msgstr "Võrguseadme deaktiveerimine..."
 
-#: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
+#: src/netconfpkg/NCDevice.py:392 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Võrguseadme %s deaktiveerimine, palun oota..."
 
-#: src/netconfpkg/NCDevice.py:402 src/netconfpkg/plugins/NCDevIsdn.py:100
+#: src/netconfpkg/NCDevice.py:394 src/netconfpkg/plugins/NCDevIsdn.py:100
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Ei saa deaktiveerida võrguseadet %s!\n"
@@ -1519,30 +1532,30 @@ msgstr "Järgnev hüüdnimi on muudetud lähtestusskripti tõttu:\n"
 msgid "Nicknames changed"
 msgstr "Hüüdnimi muudetud"
 
-#: src/netconfpkg/NCIPsec.py:168
+#: src/netconfpkg/NCIPsec.py:177
 msgid "IPsec activating..."
 msgstr "IPsec aktiveerimine..."
 
-#: src/netconfpkg/NCIPsec.py:169
+#: src/netconfpkg/NCIPsec.py:178
 #, python-format
 msgid "Activating IPsec connection %s, please wait..."
 msgstr "IPsec ühenduse %s aktiveerimine, palun oota..."
 
-#: src/netconfpkg/NCIPsec.py:171
+#: src/netconfpkg/NCIPsec.py:180
 #, python-format
 msgid "Cannot activate IPsec connection %s!\n"
 msgstr "Ei saa IPsec ühendust %s aktiveerida!\n"
 
-#: src/netconfpkg/NCIPsec.py:188
+#: src/netconfpkg/NCIPsec.py:197
 msgid "IPsec deactivating..."
 msgstr "IPsec deaktiveerimine..."
 
-#: src/netconfpkg/NCIPsec.py:189
+#: src/netconfpkg/NCIPsec.py:198
 #, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
 msgstr "IPsec ühenduse %s deaktiveerimine, palun oota..."
 
-#: src/netconfpkg/NCIPsec.py:191
+#: src/netconfpkg/NCIPsec.py:200
 #, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Ei saa IPsec ühendust %s deaktiveerida!\n"
@@ -1590,8 +1603,10 @@ msgstr "Sisesta logimise nimi, mis sinu teenusepakkuja andis sulle."
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:12
-msgid "Enter the name of this configuration, usually just the name of your ISP."
-msgstr "Sisesta seadistuse nimi. Tavaliselt nimi, mis sinu teenusepakkuja andis."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr ""
+"Sisesta seadistuse nimi. Tavaliselt nimi, mis sinu teenusepakkuja andis."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
 msgid "Enter the password for this account."
@@ -1774,7 +1789,8 @@ msgstr ""
 #: src/netconfpkg/gui/DialupDruid.glade.h:9
 #: src/netconfpkg/gui/dialupconfig.glade.h:20
 msgid "Enter the area code needed to reach your internet provider."
-msgstr "Sisesta piirkonna kood, mis on vajalikud jõudmaks sinu teenusepakkujani."
+msgstr ""
+"Sisesta piirkonna kood, mis on vajalikud jõudmaks sinu teenusepakkujani."
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:13
 #: src/netconfpkg/gui/dialupconfig.glade.h:24
@@ -2155,6 +2171,7 @@ msgstr "Hüüd_nimi:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:60
 #: src/netconfpkg/gui/dslconfig.glade.h:29
 #: src/netconfpkg/gui/ethernetconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: src/netconfpkg/gui/tokenringconfig.glade.h:15
 #: src/netconfpkg/gui/ptpconfig.glade.h:12
 msgid "_Route"
@@ -2817,17 +2834,17 @@ msgstr "_Võti (kasuta 0x hex jaoks):"
 msgid "_Mode:"
 msgstr "_Viis:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "_Specified:"
 msgstr "_Täpsustatud:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid "_Transmit rate:"
 msgstr "Edas_tamise määr:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Wireless Settings"
 msgstr "_Traadita seaded"
 
@@ -2950,7 +2967,8 @@ msgstr "Hüüdnimi"
 msgid ""
 "Please enter the name for the profile. The name may only contain letters and "
 "digits."
-msgstr "Palun sisesta profiili nimi. Nimi võib sisaldada ainult tähti ja numbreid."
+msgstr ""
+"Palun sisesta profiili nimi. Nimi võib sisaldada ainult tähti ja numbreid."
 
 #: src/netconfpkg/gui/maindialog.glade.h:24
 msgid "Profile"
@@ -2978,7 +2996,8 @@ msgstr ""
 "Mitmed loogilised seadmed saab seostada ühe riistvara osana."
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
 "Sa võid siin seadistada võrgu riistvara, mis on füüsiliselt ühedatud "
 "arvutiga."
@@ -3269,6 +3288,12 @@ msgstr "Vali kaart, mida soovid seadistada:"
 msgid "_Point to Point (IP):"
 msgstr "Punkt-punkt (IP):"
 
+#~ msgid "Copying %s to profile %s."
+#~ msgstr "%s kopeerimine %s profiilile."
+
+#~ msgid "Linking %s to profile %s."
+#~ msgstr "%s sidumine profiilile %s "
+
 #~ msgid ""
 #~ "Error linking %s\n"
 #~ "to\n"
@@ -3279,4 +3304,3 @@ msgstr "Punkt-punkt (IP):"
 #~ "\n"
 #~ "%s-le:\n"
 #~ "%s!"
-

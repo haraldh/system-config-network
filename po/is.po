@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-15 11:29+0100\n"
+"POT-Creation-Date: 2004-06-29 12:04+0200\n"
 "PO-Revision-Date: 2004-02-09 15:39+0000\n"
 "Last-Translator: Richard Allen <ra@ra.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -44,11 +44,11 @@ msgstr "Stilla internet tenginguna þína"
 msgid "Internet Configuration Wizard"
 msgstr "Netstillingaálfur"
 
-#: src/neat-control.py:46 src/netconf.py:72
+#: src/neat-control.py:50 src/netconf.py:72
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "VILLA: Gat ekki ræst myndræna umhverfið. "
 
-#: src/neat-control.py:47 src/netconf.py:73
+#: src/neat-control.py:51 src/netconf.py:73
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
@@ -56,19 +56,19 @@ msgstr ""
 "Líklegasta orsök þessarar villu er sú að myndræna umhverfið var ekki "
 "keyrandi. "
 
-#: src/neat-control.py:48 src/netconf.py:74
+#: src/neat-control.py:52 src/netconf.py:74
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
 msgstr ""
 "Vinsamlegast gangsettu gluggakerfið eða stilltu DISPLAY umhverfisbreytuna.\n"
 
-#: src/neat-control.py:138 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1636
+#: src/neat-control.py:144 src/netconf-cmd.py:100
+#: src/netconfpkg/gui/maindialog.py:1674
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Höfundarréttur (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:139 src/netconf-cmd.py:102
+#: src/neat-control.py:145 src/netconf-cmd.py:101
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -76,31 +76,31 @@ msgstr ""
 "Þessum hugbúnaði er dreift samkvæmt skilmálum GPL leyfinsins. Vinsamlegast "
 "tilkynnið villur á villuvef Red Hat: http://bugzilla.redhat.com/"
 
-#: src/neat-control.py:193
+#: src/neat-control.py:203
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "Get ekki stillt netkortið %s"
 
-#: src/neat-control.py:213
+#: src/neat-control.py:223
 msgid "Switching Profiles"
 msgstr "Skipti um sniðmát"
 
-#: src/neat-control.py:214
+#: src/neat-control.py:224
 #, python-format
 msgid "Switching to profile %s"
 msgstr "Skipti í sniðmát %s"
 
-#: src/neat-control.py:215
+#: src/neat-control.py:225
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "Gat ekki skipt í sníðmátið %s."
 
 #. TBD
-#: src/neat-control.py:230
+#: src/neat-control.py:240
 msgid "To be rewritten!"
 msgstr "Verður endurrituð!"
 
-#: src/neat-control.py:337
+#: src/neat-control.py:347
 msgid " (active)"
 msgstr "(virkt)"
 
@@ -204,11 +204,11 @@ msgstr "Villa: %s, %s!"
 msgid "Starting text version"
 msgstr "Ræsi í textaham"
 
-#: src/netconf.py:111
+#: src/netconf.py:116
 msgid "Loading Network Configuration..."
 msgstr "Les stillingar nets..."
 
-#: src/netconf.py:124
+#: src/netconf.py:129
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -218,11 +218,11 @@ msgstr ""
 "\n"
 "Notkun: system-config-network -v --verbose"
 
-#: src/netconf.py:253
+#: src/netconf.py:260
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Vinsamlegast keyrið system-config-network með rótarheimildum!\n"
 
-#: src/netconf-cmd.py:65
+#: src/netconf-cmd.py:64
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -234,63 +234,68 @@ msgstr ""
 "Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
 "villutilkynningu á %s á https://bugzilla.redhat.com/bugzilla/\n"
 
-#: src/netconf-cmd.py:100
+#: src/netconf-cmd.py:99
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr "%s - netstillingatól fyrir skipanalínuna"
 
-#: src/netconf-cmd.py:105
+#: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
 msgstr "Notkun: %s"
 
-#: src/netconf-cmd.py:107
+#: src/netconf-cmd.py:106
 msgid "switch / activate profile"
 msgstr "skipta um eða vvirkja sniðmát"
 
-#: src/netconf-cmd.py:109
+#: src/netconf-cmd.py:108
 msgid "export / import hardware list"
 msgstr "flytja inn/út vélbúnaðarlistann"
 
-#: src/netconf-cmd.py:111
+#: src/netconf-cmd.py:110
+#, fuzzy
+msgid "export / import IPsec list"
+msgstr "flytja inn/út lista sniðmáta"
+
+#: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
 msgstr "flytja inn/út tækjalistann (sjálfgefið)"
 
-#: src/netconf-cmd.py:113
+#: src/netconf-cmd.py:114
 msgid "export / import profile list"
 msgstr "flytja inn/út lista sniðmáta"
 
-#: src/netconf-cmd.py:115
+#: src/netconf-cmd.py:116
 msgid "set the root directory"
 msgstr "setja rótarmöppuna"
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:118
 msgid "export list (default)"
 msgstr "flytja út (sjálfgefið)"
 
-#: src/netconf-cmd.py:117
+#: src/netconf-cmd.py:119
 msgid "import list"
 msgstr "flytja inn lista"
 
-#: src/netconf-cmd.py:119
+#: src/netconf-cmd.py:121
 msgid "clear existing list prior of importing"
 msgstr "hreinsa núverandi lista áður en flutt er inn"
 
-#: src/netconf-cmd.py:121
+#: src/netconf-cmd.py:123
 msgid "import from file"
 msgstr "flytja inn úr skrá"
 
-#: src/netconf-cmd.py:227
+#: src/netconf-cmd.py:236
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "Óþekktur rofi %s\n"
 
-#: src/netconf-cmd.py:306
+#: src/netconf-cmd.py:300
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "Óþekktur listi %s\n"
 
-#: src/netconf-cmd.py:310
+#: src/netconf-cmd.py:304
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "Villa við að þátta línu: %s"
@@ -317,12 +322,12 @@ msgstr ""
 "sækja eða senda) og margar aðrar."
 
 #: src/netconfpkg/gui/ADSLInterface.py:135
-#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:142
 #: src/netconfpkg/gui/DialupDruid.py:230
-#: src/netconfpkg/gui/EthernetInterface.py:216
-#: src/netconfpkg/gui/WirelessInterface.py:284
-#: src/netconfpkg/gui/TokenRingInterface.py:208
-#: src/netconfpkg/gui/editipsec.py:201 src/netconfpkg/gui/PTPInterface.py:211
+#: src/netconfpkg/gui/EthernetInterface.py:207
+#: src/netconfpkg/gui/WirelessInterface.py:274
+#: src/netconfpkg/gui/TokenRingInterface.py:199
+#: src/netconfpkg/gui/editipsec.py:248 src/netconfpkg/gui/PTPInterface.py:202
 msgid "You have selected the following information:"
 msgstr "Þú hefur valið eftirfarandi upplýsingar:"
 
@@ -340,86 +345,86 @@ msgstr "Heiti þjónustuveitu:"
 msgid "Login name:"
 msgstr "Notandaheiti:"
 
-#: src/netconfpkg/gui/CipeInterface.py:97
+#: src/netconfpkg/gui/CipeInterface.py:94
 msgid "CIPE (VPN) connection"
 msgstr "CIPE (VPN) tenging"
 
-#: src/netconfpkg/gui/CipeInterface.py:100
+#: src/netconfpkg/gui/CipeInterface.py:97
 msgid "Create a new virtual private network connection with CIPE."
 msgstr "Búa til nýja sýndartengingu (vpn) með CIPE.."
 
-#: src/netconfpkg/gui/CipeInterface.py:146
-#: src/netconfpkg/gui/EthernetInterface.py:217
-#: src/netconfpkg/gui/WirelessInterface.py:285
-#: src/netconfpkg/gui/TokenRingInterface.py:209
-#: src/netconfpkg/gui/PTPInterface.py:212
+#: src/netconfpkg/gui/CipeInterface.py:143
+#: src/netconfpkg/gui/EthernetInterface.py:208
+#: src/netconfpkg/gui/WirelessInterface.py:275
+#: src/netconfpkg/gui/TokenRingInterface.py:200
+#: src/netconfpkg/gui/PTPInterface.py:203
 msgid "Device:"
 msgstr "Tæki:"
 
-#: src/netconfpkg/gui/CipeInterface.py:147
+#: src/netconfpkg/gui/CipeInterface.py:144
 msgid "Tunnel through device:"
 msgstr "IP Gangnatæki:"
 
-#: src/netconfpkg/gui/CipeInterface.py:148
-#: src/netconfpkg/gui/CipeInterface.py:309
+#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Local port:"
 msgstr "Staðbundin gátt:"
 
-#: src/netconfpkg/gui/CipeInterface.py:153
-#: src/netconfpkg/gui/CipeInterface.py:155
-#: src/netconfpkg/gui/CipeInterface.py:310
+#: src/netconfpkg/gui/CipeInterface.py:150
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/CipeInterface.py:307
 msgid "Remote peer address:"
 msgstr "Vistfang fjartengdrar vélar:"
 
-#: src/netconfpkg/gui/CipeInterface.py:153
+#: src/netconfpkg/gui/CipeInterface.py:150
 msgid "Auto"
 msgstr "Sjálfvirkt"
 
-#: src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/CipeInterface.py:153
 msgid "Remote peer port:"
 msgstr "Fjartengd gátt:"
 
-#: src/netconfpkg/gui/CipeInterface.py:158
-#: src/netconfpkg/gui/CipeInterface.py:314
+#: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:311
 msgid "Remote virtual address:"
 msgstr "Fjartengt sýndarvistfang:"
 
-#: src/netconfpkg/gui/CipeInterface.py:159
-#: src/netconfpkg/gui/CipeInterface.py:315
+#: src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/CipeInterface.py:312
 msgid "Local virtual address:"
 msgstr "Sýndarvistfang:"
 
-#: src/netconfpkg/gui/CipeInterface.py:168
-#: src/netconfpkg/gui/CipeInterface.py:236 src/netconfpkg/gui/cipeconfig.py:71
+#: src/netconfpkg/gui/CipeInterface.py:165
+#: src/netconfpkg/gui/CipeInterface.py:233 src/netconfpkg/gui/cipeconfig.py:71
 #: src/netconfpkg/gui/cipeconfig.py:133
 msgid "None - Server Mode"
 msgstr "Engin - Þjónahamur"
 
-#: src/netconfpkg/gui/CipeInterface.py:175 src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/CipeInterface.py:172 src/netconfpkg/gui/cipeconfig.py:79
 msgid " (dynamic)"
 msgstr " (dínamískt)"
 
-#: src/netconfpkg/gui/CipeInterface.py:212
-#: src/netconfpkg/gui/CipeInterface.py:266
+#: src/netconfpkg/gui/CipeInterface.py:209
+#: src/netconfpkg/gui/CipeInterface.py:263
 #: src/netconfpkg/gui/cipeconfig.py:111 src/netconfpkg/gui/cipeconfig.py:165
 msgid "Server Mode"
 msgstr "Þjónahamur"
 
-#: src/netconfpkg/gui/CipeInterface.py:297
-#: src/netconfpkg/gui/CipeInterface.py:302
+#: src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/CipeInterface.py:299
 #: src/netconfpkg/gui/cipeconfig.py:196 src/netconfpkg/gui/cipeconfig.py:201
 msgid "(own choice)"
 msgstr "(eigið val)"
 
-#: src/netconfpkg/gui/CipeInterface.py:308
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "IP address of tunnel device:"
 msgstr "IP vistfang gangnatækis:"
 
-#: src/netconfpkg/gui/CipeInterface.py:316
+#: src/netconfpkg/gui/CipeInterface.py:313
 msgid "Secret key:"
 msgstr "Leynilykill:"
 
-#: src/netconfpkg/gui/CipeInterface.py:326
+#: src/netconfpkg/gui/CipeInterface.py:323
 msgid "You must enter a secret key or generate one"
 msgstr "Þú verður að slá inn leynilykil eða búa einn til."
 
@@ -438,8 +443,8 @@ msgstr "Símanúmer:"
 #: src/netconfpkg/gui/ethernethardware.py:171
 #: src/netconfpkg/gui/tokenringhardware.py:126
 #: src/netconfpkg/gui/tokenringhardware.py:137
-#: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
-#: src/netconfpkg/NC_functions.py:370 src/netconfpkg/NCDevice.py:208
+#: src/netconfpkg/NCHardwareList.py:446 src/netconfpkg/NCHardwareList.py:566
+#: src/netconfpkg/NC_functions.py:389 src/netconfpkg/NCDevice.py:196
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
 #: src/netconfpkg/NCDeviceList.py:71
@@ -458,33 +463,33 @@ msgstr "Staðarnetstenging"
 msgid "Create a new ethernet connection."
 msgstr "Búa til nýja staðarnetstengingu."
 
-#: src/netconfpkg/gui/EthernetInterface.py:197
+#: src/netconfpkg/gui/EthernetInterface.py:188
 msgid "Other Ethernet Card"
 msgstr "Annað netkort"
 
-#: src/netconfpkg/gui/EthernetInterface.py:228
-#: src/netconfpkg/gui/WirelessInterface.py:296
-#: src/netconfpkg/gui/TokenRingInterface.py:220
-#: src/netconfpkg/gui/PTPInterface.py:222
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:286
+#: src/netconfpkg/gui/TokenRingInterface.py:211
+#: src/netconfpkg/gui/PTPInterface.py:213
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
 msgstr "Vistfang:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:229
-#: src/netconfpkg/gui/WirelessInterface.py:297
-#: src/netconfpkg/gui/TokenRingInterface.py:221
+#: src/netconfpkg/gui/EthernetInterface.py:220
+#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 msgid "Subnet mask:"
 msgstr "Netmöskvi:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:230
-#: src/netconfpkg/gui/WirelessInterface.py:298
-#: src/netconfpkg/gui/TokenRingInterface.py:222
+#: src/netconfpkg/gui/EthernetInterface.py:221
+#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Default gateway address:"
 msgstr "Vistfang sjálfgefinnar gáttar:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:232
-#: src/netconfpkg/gui/WirelessInterface.py:300
-#: src/netconfpkg/gui/TokenRingInterface.py:224
+#: src/netconfpkg/gui/EthernetInterface.py:223
+#: src/netconfpkg/gui/WirelessInterface.py:290
+#: src/netconfpkg/gui/TokenRingInterface.py:215
 msgid "Automatically obtain IP address settings with:"
 msgstr "Sæja IP stillingar sjálfvirkt með:"
 
@@ -627,35 +632,35 @@ msgstr "Þráðlausar tengingar"
 msgid "Create a new wireless connection."
 msgstr "Búa til nýja þráðlausa tengingu."
 
-#: src/netconfpkg/gui/WirelessInterface.py:264
+#: src/netconfpkg/gui/WirelessInterface.py:254
 msgid "Other Wireless Card"
 msgstr "Önnur þráðlaus netkort"
 
-#: src/netconfpkg/gui/WirelessInterface.py:303
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Mode:"
 msgstr "Hamur:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:304
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "ESSID (network ID):"
 msgstr "ESSID (Netnúmer):"
 
-#: src/netconfpkg/gui/WirelessInterface.py:306
+#: src/netconfpkg/gui/WirelessInterface.py:296
 msgid "Automatic"
 msgstr "Sjálfvirkt"
 
-#: src/netconfpkg/gui/WirelessInterface.py:310
+#: src/netconfpkg/gui/WirelessInterface.py:300
 msgid "Channel:"
 msgstr "Rás:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:311
+#: src/netconfpkg/gui/WirelessInterface.py:301
 msgid "Transmit rate:"
 msgstr "Sendingarhraði:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:312
+#: src/netconfpkg/gui/WirelessInterface.py:302
 msgid "Key: "
 msgstr "Lykill: "
 
-#: src/netconfpkg/gui/WirelessInterface.py:318
+#: src/netconfpkg/gui/WirelessInterface.py:308
 msgid "encryption disabled"
 msgstr "dulritun óvirk"
 
@@ -667,7 +672,7 @@ msgstr "Tókanetstenging"
 msgid "Create a new Token Ring connection."
 msgstr "Búa til nýja tókanetstengingu"
 
-#: src/netconfpkg/gui/TokenRingInterface.py:190
+#: src/netconfpkg/gui/TokenRingInterface.py:181
 msgid "Other Tokenring Card"
 msgstr "Önnur tókanetkort"
 
@@ -840,103 +845,110 @@ msgstr "Vista IPsec stillingar..."
 msgid "Updating devices..."
 msgstr "Uppfæri tæki..."
 
-#: src/netconfpkg/gui/maindialog.py:494
+#: src/netconfpkg/gui/maindialog.py:495
 msgid "Updating hardware..."
 msgstr "Uppfæri vélbúnað..."
 
-#: src/netconfpkg/gui/maindialog.py:588
+#: src/netconfpkg/gui/maindialog.py:589
 msgid "Updating profiles..."
 msgstr "Uppfæri sniðmát..."
 
-#: src/netconfpkg/gui/maindialog.py:694 src/netconfpkg/gui/maindialog.py:787
+#: src/netconfpkg/gui/maindialog.py:702 src/netconfpkg/gui/maindialog.py:798
 msgid "Do you want to save your changes?"
 msgstr "Viltu vista breytingunum?"
 
-#: src/netconfpkg/gui/maindialog.py:852
+#: src/netconfpkg/gui/maindialog.py:863
 msgid "The Loopback device can not be edited!"
 msgstr "Það er ekki hægt að breyta 'Loopback' tækinu!"
 
-#: src/netconfpkg/gui/maindialog.py:856
+#: src/netconfpkg/gui/maindialog.py:867
 msgid "Edit device..."
 msgstr "Breyta tæki..."
 
-#: src/netconfpkg/gui/maindialog.py:894
+#: src/netconfpkg/gui/maindialog.py:905
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "Það er ekki hægt að breyta tækjum af gerðinni %s!"
 
-#: src/netconfpkg/gui/maindialog.py:913
+#: src/netconfpkg/gui/maindialog.py:924
 msgid "The Loopback device can not be removed!"
 msgstr "Það er ekki hægt að eyða 'Loopback' tækinu!"
 
-#: src/netconfpkg/gui/maindialog.py:917
+#: src/netconfpkg/gui/maindialog.py:928
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Viltu virkilega eyða tækinu \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:949 src/netconfpkg/gui/maindialog.py:1716
+#: src/netconfpkg/gui/maindialog.py:963 src/netconfpkg/gui/maindialog.py:1000
+#: src/netconfpkg/gui/maindialog.py:1757 src/netconfpkg/gui/maindialog.py:1787
 msgid "You have made some changes in your configuration."
 msgstr "Þú hefur framkvæmt breytingar á stillingunum."
 
-#: src/netconfpkg/gui/maindialog.py:950
+#: src/netconfpkg/gui/maindialog.py:964
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Til að virkja netkortið %s þarf að vista breytingunum."
 
-#: src/netconfpkg/gui/maindialog.py:952 src/netconfpkg/gui/maindialog.py:1719
+#: src/netconfpkg/gui/maindialog.py:966 src/netconfpkg/gui/maindialog.py:1003
+#: src/netconfpkg/gui/maindialog.py:1760 src/netconfpkg/gui/maindialog.py:1790
 msgid "Do you want to continue?"
 msgstr "Viltu halda áfram?"
 
-#: src/netconfpkg/gui/maindialog.py:1156
+#: src/netconfpkg/gui/maindialog.py:1001
+#, fuzzy, python-format
+msgid "To deactivate the network device %s, the changes have to be saved."
+msgstr "Til að virkja netkortið %s þarf að vista breytingunum."
+
+#: src/netconfpkg/gui/maindialog.py:1180
 msgid "The Loopback device can not be disabled!"
 msgstr "Það er ekki hægt að slökkva á 'Loopback' tækinu!"
 
-#: src/netconfpkg/gui/maindialog.py:1382 src/netconfpkg/gui/maindialog.py:1462
+#: src/netconfpkg/gui/maindialog.py:1420 src/netconfpkg/gui/maindialog.py:1500
 msgid "The name may only contain letters and digits!"
 msgstr "Heitið má einungis innihalda bókstafi og tölur!"
 
-#: src/netconfpkg/gui/maindialog.py:1387 src/netconfpkg/gui/maindialog.py:1467
+#: src/netconfpkg/gui/maindialog.py:1425 src/netconfpkg/gui/maindialog.py:1505
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Sniðmátið má ekki heita \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1393 src/netconfpkg/gui/maindialog.py:1473
+#: src/netconfpkg/gui/maindialog.py:1431 src/netconfpkg/gui/maindialog.py:1511
 msgid "The profile name already exists!"
 msgstr "Heiti sniðmátsins er þegar til!"
 
-#: src/netconfpkg/gui/maindialog.py:1440
+#: src/netconfpkg/gui/maindialog.py:1478
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Það er ekki hægt að endurnefna sniðmátið \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1495
+#: src/netconfpkg/gui/maindialog.py:1533
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Það er ekki hægt að eyða sniðmátinu \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1501
+#: src/netconfpkg/gui/maindialog.py:1539
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Viltu virkilega eyða sniðmátinu \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1575
+#: src/netconfpkg/gui/maindialog.py:1613
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 "Því miður er ekkert sem hægt er að breyta eða það er ekki hægt að breyta "
 "þessari gerð."
 
-#: src/netconfpkg/gui/maindialog.py:1593
+#: src/netconfpkg/gui/maindialog.py:1631
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Viltu virkilega eyða \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1606
+#: src/netconfpkg/gui/maindialog.py:1644
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Viltu virkilega eyða öllum tækjum sem notuðu \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:1637
+#: src/netconfpkg/gui/maindialog.py:1675
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -944,9 +956,14 @@ msgstr ""
 "Þessum hugbúnaði er dreift samkvæmt skilmálum GPL leyfinsins. Vinsamlegast "
 "tilkynnið villur á villuvef Red Hat: http://bugzilla.redhat.com/"
 
-#: src/netconfpkg/gui/maindialog.py:1717
+#: src/netconfpkg/gui/maindialog.py:1758
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
+msgstr "Til að virkja IPsec tenginguna %s þarf að vista breytingunum."
+
+#: src/netconfpkg/gui/maindialog.py:1788
+#, fuzzy, python-format
+msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "Til að virkja IPsec tenginguna %s þarf að vista breytingunum."
 
 #: src/netconfpkg/gui/ethernethardware.py:94
@@ -1006,7 +1023,7 @@ msgstr "IUCV tenging"
 msgid "Create a new IUCV connection."
 msgstr "Búa til nýja IUCV tengingu."
 
-#: src/netconfpkg/gui/PTPInterface.py:223
+#: src/netconfpkg/gui/PTPInterface.py:214
 msgid "Point to Point (IP):"
 msgstr "Stað í stað (IP):"
 
@@ -1046,7 +1063,7 @@ msgstr "sjálfvirkt"
 msgid "manual"
 msgstr "handvirkt"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:142
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:152
 #: src/netconfpkg/gui/ModemDruid.glade.h:7
 #: src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -1340,12 +1357,12 @@ msgstr "Víetnam"
 msgid "Yugoslavia"
 msgstr "Júgoslavía"
 
-#: src/netconfpkg/NCProfileList.py:203
+#: src/netconfpkg/NCProfileList.py:204
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "Tækið %s notar sama vélbúnað \"%s\" og %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:205
+#: src/netconfpkg/NCProfileList.py:206
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1353,35 +1370,35 @@ msgstr ""
 "Vinsamlegast virkjaðu aðra tækjagerð eða \n"
 "gangsettu einungis eitt af þeim."
 
-#: src/netconfpkg/NC_functions.py:91
+#: src/netconfpkg/NC_functions.py:101
 msgid "Common"
 msgstr "Almennt"
 
-#: src/netconfpkg/NC_functions.py:140 src/netconfpkg/gui/ModemDruid.glade.h:1
+#: src/netconfpkg/NC_functions.py:150 src/netconfpkg/gui/ModemDruid.glade.h:1
 #: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "Hardware (CRTSCTS)"
 msgstr "Vélbúnaðar (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:141 src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/NC_functions.py:151 src/netconfpkg/gui/ModemDruid.glade.h:10
 #: src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "Hugbúnaður (XON/XOFF)"
 
-#: src/netconfpkg/NC_functions.py:220
+#: src/netconfpkg/NC_functions.py:230
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "viltu að eftirfarandi pakkar sem nauðsynlegir eru fyrir þessa vél verði "
 "settir inn?"
 
-#: src/netconfpkg/NC_functions.py:233
+#: src/netconfpkg/NC_functions.py:243
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
 "Þú þarft að setja inn eftirfarandi pakka sem nauðsynlegir eru fyrir þessa "
 "vél!"
 
-#: src/netconfpkg/NC_functions.py:732
+#: src/netconfpkg/NC_functions.py:762 src/netconfpkg/NC_functions.py:773
 #, python-format
 msgid ""
 "Error removing\n"
@@ -1392,7 +1409,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:752
+#: src/netconfpkg/NC_functions.py:793
 #, python-format
 msgid ""
 "Error copying \n"
@@ -1405,7 +1422,7 @@ msgstr ""
 "í %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:762
+#: src/netconfpkg/NC_functions.py:803
 #, python-format
 msgid ""
 "Error linking \n"
@@ -1418,7 +1435,7 @@ msgstr ""
 "í %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:772
+#: src/netconfpkg/NC_functions.py:813
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -1431,7 +1448,7 @@ msgstr ""
 "í %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:780
+#: src/netconfpkg/NC_functions.py:821
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -1440,20 +1457,10 @@ msgstr ""
 "Villa við að búa til möppu!\n"
 "%s"
 
-#: src/netconfpkg/NC_functions.py:832
+#: src/netconfpkg/NC_functions.py:920
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "Tengi %s í tækjalistann og bæti því í sniðmát %s."
-
-#: src/netconfpkg/NC_functions.py:842
-#, python-format
-msgid "Copying %s to profile %s."
-msgstr "Afrita %s í sniðmát %s."
-
-#: src/netconfpkg/NC_functions.py:852
-#, python-format
-msgid "Linking %s to profile %s."
-msgstr "Tengi %s í sniðmát %s"
 
 #: src/netconfpkg/NCHardware.py:21
 msgid "inactive"
@@ -1474,40 +1481,40 @@ msgstr "stillt"
 msgid "ok"
 msgstr "í lagi"
 
-#: src/netconfpkg/NCDevice.py:202
+#: src/netconfpkg/NCDevice.py:190
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, tækið var ekki gefið upp eða samheitið er ekki tala!"
 
-#: src/netconfpkg/NCDevice.py:245
+#: src/netconfpkg/NCDevice.py:233
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Skráin %s sem inniheldur fastar netrútur er ógild"
 
-#: src/netconfpkg/NCDevice.py:379 src/netconfpkg/plugins/NCDevIsdn.py:73
+#: src/netconfpkg/NCDevice.py:371 src/netconfpkg/plugins/NCDevIsdn.py:73
 msgid "Network device activating..."
 msgstr "Netkort að fara í gang..."
 
-#: src/netconfpkg/NCDevice.py:380 src/netconfpkg/plugins/NCDevIsdn.py:74
+#: src/netconfpkg/NCDevice.py:372 src/netconfpkg/plugins/NCDevIsdn.py:74
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Ræsi netkortið %s. Vinsamlegast bíðið..."
 
-#: src/netconfpkg/NCDevice.py:382 src/netconfpkg/plugins/NCDevIsdn.py:76
+#: src/netconfpkg/NCDevice.py:374 src/netconfpkg/plugins/NCDevIsdn.py:76
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Get ekki gangsett netkortið %s!\n"
 
-#: src/netconfpkg/NCDevice.py:399 src/netconfpkg/plugins/NCDevIsdn.py:97
+#: src/netconfpkg/NCDevice.py:391 src/netconfpkg/plugins/NCDevIsdn.py:97
 msgid "Network device deactivating..."
 msgstr "Netkort að fara niður..."
 
-#: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
+#: src/netconfpkg/NCDevice.py:392 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Slekk á netkortinu %s. Vinsamlegast bíðið..."
 
-#: src/netconfpkg/NCDevice.py:402 src/netconfpkg/plugins/NCDevIsdn.py:100
+#: src/netconfpkg/NCDevice.py:394 src/netconfpkg/plugins/NCDevIsdn.py:100
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Get ekki slökkt á netkortinu %s!\n"
@@ -1520,30 +1527,30 @@ msgstr "Breytti eftirfarandi gælunöfnum vegna 'initscripts':\n"
 msgid "Nicknames changed"
 msgstr "Gælunafni breytt"
 
-#: src/netconfpkg/NCIPsec.py:168
+#: src/netconfpkg/NCIPsec.py:177
 msgid "IPsec activating..."
 msgstr "IPsec að fara í gang..."
 
-#: src/netconfpkg/NCIPsec.py:169
+#: src/netconfpkg/NCIPsec.py:178
 #, python-format
 msgid "Activating IPsec connection %s, please wait..."
 msgstr "Ræsi IPsec tenginguna %s. Vinsamlegast bíðið..."
 
-#: src/netconfpkg/NCIPsec.py:171
+#: src/netconfpkg/NCIPsec.py:180
 #, python-format
 msgid "Cannot activate IPsec connection %s!\n"
 msgstr "Get ekki gangsett IPsec tenginguna %s!\n"
 
-#: src/netconfpkg/NCIPsec.py:188
+#: src/netconfpkg/NCIPsec.py:197
 msgid "IPsec deactivating..."
 msgstr "IPsec að fara niður..."
 
-#: src/netconfpkg/NCIPsec.py:189
+#: src/netconfpkg/NCIPsec.py:198
 #, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
 msgstr "Slekk á IPsec tengingunni %s. Vinsamlegast bíðið..."
 
-#: src/netconfpkg/NCIPsec.py:191
+#: src/netconfpkg/NCIPsec.py:200
 #, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Get ekki slökkt á IPsec tengingunni %s!\n"
@@ -2156,6 +2163,7 @@ msgstr "_Gælunafn:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:60
 #: src/netconfpkg/gui/dslconfig.glade.h:29
 #: src/netconfpkg/gui/ethernetconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: src/netconfpkg/gui/tokenringconfig.glade.h:15
 #: src/netconfpkg/gui/ptpconfig.glade.h:12
 msgid "_Route"
@@ -2819,17 +2827,17 @@ msgstr "_Lykill (notaðu 0x fyrir hex):"
 msgid "_Mode:"
 msgstr "_Hamur:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "_Specified:"
 msgstr "_Tiltekinn:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid "_Transmit rate:"
 msgstr "S_endingarhraði:"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Wireless Settings"
 msgstr "_Stillingar þráðlausra tenginga"
 
@@ -3271,3 +3279,9 @@ msgstr "Veldu netkortið sem þú vilt stilla:"
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Point to Point (IP):"
 msgstr "_Stað í stað (IP):"
+
+#~ msgid "Copying %s to profile %s."
+#~ msgstr "Afrita %s í sniðmát %s."
+
+#~ msgid "Linking %s to profile %s."
+#~ msgstr "Tengi %s í sniðmát %s"

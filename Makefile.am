@@ -15,7 +15,7 @@ icons_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
 icons_in_files=$(icons_DATA:.desktop=.desktop.in)
 
-CLEANFILES=$(icons_DATA)
+CLEANFILES=$(icons_DATA) $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
 DISTCLEANFILES=intltool-extract intltool-merge intltool-update
 MAINTAINERCLEANFILES=ChangeLog
 
@@ -79,8 +79,7 @@ distclean-local:
 
 PKGNAME=$(subst system-config,redhat-config,$(PACKAGE))
 VERSION=@VERSION@
-RELEASE=@RPM_RELEASE@
-CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RELEASE))
+CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
 archive: changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
@@ -91,11 +90,11 @@ archive: changelog
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
 
 force-tag:
-	cvs ci -m "release $(VERSION)-$(RELEASE) moved"
+	cvs ci -m "release $(VERSION)-$(RPM_RELEASE) moved"
 	cvs tag -cR -F $(CVSTAG) .
 
 tag:
-	cvs ci -m "release $(VERSION)-$(RELEASE)"
+	cvs ci -m "release $(VERSION)-$(RPM_RELEASE)"
 	cvs tag -cR $(CVSTAG) .
 
 tag-srpm: changelog tag archive

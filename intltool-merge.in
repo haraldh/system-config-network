@@ -34,7 +34,7 @@
 ## Release information
 my $PROGRAM = "intltool-merge";
 my $PACKAGE = "intltool";
-my $VERSION = "0.29";
+my $VERSION = "0.30";
 
 ## Loaded modules
 use strict; 
@@ -762,10 +762,17 @@ sub parseTree
             foreach my $e (reverse(keys %{ $sub })) {
                 my $key    = $e;
                 my $string = $sub->{$e};
+                my $quote = '"';
 
-                $string =~ s/\s+/ /g;
-                $string =~ s/^ //;
-                $string =~ s/ $//;
+                $string =~ s/^[\s]+//;
+                $string =~ s/[\s]+$//;
+
+                if ($string =~ /^'.*'$/)
+                {
+                   $quote = "'";
+                }
+                $string =~ s/^['"]//g;
+                $string =~ s/['"]$//g;
 
                 if ($key =~ /^_/) {
                     $key =~ s|^_||g;
@@ -783,7 +790,7 @@ sub parseTree
                     }
                 }
 
-                print $fh " $key=\"$string\"";
+                print $fh " $key=$quote$string$quote";
             }
 
         } else {
@@ -842,9 +849,8 @@ sub parseTree
                 #
                 my $string = $sub;
 
-                $string =~ s/\s+/ /g;
-                $string =~ s/^ //;
-                $string =~ s/ $//;
+                $string =~ s/^[\s]+//;
+                $string =~ s/[\s]+$//;
 
                 push(@translation_strings, $string);
 
@@ -901,14 +907,28 @@ sub intltool_tree_start
 
     # Remove leading tag.
     #
-    $source =~ s|^[ \t]*<[ \t]*(\S+)||s;
+    $source =~ s|^\s*<\s*(\S+)||s;
 
     # Grab attribute key/value pairs and push onto @origlist array.
     #
-    while ($source =~ s|^[ \t]*([\w:]+)[ \t]*[=][ \t]*["]([^"]*)["]||s)
+    while ($source)
     {
-       push @origlist, $1;
-       push @origlist, $2;
+       if ($source =~ /^\s*([\w:-]+)\s*[=]\s*["]/)
+       {
+           $source =~ s|^\s*([\w:-]+)\s*[=]\s*["]([^"]*)["]||s;
+           push @origlist, $1;
+           push @origlist, '"' . $2 . '"';
+       }
+       elsif ($source =~ /^\s*([\w:-]+)\s*[=]\s*[']/)
+       {
+           $source =~ s|^\s*([\w:-]+)\s*[=]\s*[']([^']*)[']||s;
+           push @origlist, $1;
+           push @origlist, "'" . $2 . "'";
+       }
+       else
+       {
+           last;
+       }
     }
 
     my $ol = [ { @origlist } ];

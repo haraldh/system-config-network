@@ -1,3 +1,389 @@
+2004-06-29  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/DeviceList.idl 1.40, src/netconfpkg/Makefile.am 1.61, src/netconfpkg/NCDevice.py 1.101, src/netconfpkg/NCDeviceList.py 1.61, src/netconfpkg/NCDialup.py 1.67, src/netconfpkg/NCHardwareFactory.py 1.9, src/netconfpkg/NCHardwareList.py 1.72, src/netconfpkg/NCIPsec.py 1.3, src/netconfpkg/NCIPsecList.py 1.3, src/netconfpkg/NCProfileList.py 1.82, src/netconfpkg/NC_functions.py 1.87, src/netconfpkg/gui/CipeInterface.py 1.30, src/netconfpkg/gui/EthernetInterface.py 1.36, src/netconfpkg/gui/InterfaceCreator.py 1.8, src/netconfpkg/gui/Makefile.am 1.28, src/netconfpkg/gui/PTPInterface.py 1.4, src/netconfpkg/gui/TokenRingInterface.py 1.23, src/netconfpkg/gui/TokenRingInterfaceDruid.glade 1.13, src/netconfpkg/gui/WirelessInterface.py 1.29, src/netconfpkg/gui/editipsec.glade 1.10, src/netconfpkg/gui/editipsec.py 1.6, src/netconfpkg/gui/maindialog.py 1.39, src/netconfpkg/gui/sharedtcpip.py 1.32, src/netconfpkg/gui/wirelessconfig.glade 1.26, src/netconfpkg/gui/wirelessconfig.py 1.25, src/netconfpkg/plugins/Makefile.am 1.8:
+	added Slave flag
+
+	* src/netconf.py 1.206: log to syslog per default
+
+	* src/netconf-cmd.py 1.19: added ipseclist
+
+	* src/neat-control.py 1.48: *** empty log message ***
+
+	* src/Makefile.am 1.76:
+	netconf_cmd symlink for testsuite, more cleanfiles
+
+	* ChangeLog 1.82.2.15.2.21: release 1.2.62-1
+
+	* configure.in 1.144.2.6.2.18, redhat-config-network.spec.in 1.171.2.12.2.22:
+	- uncomment removal of old files NCIPSecList.py NCDeviceList.py
+	- fixed hostname alias setting
+
+	* src/netconfpkg/tests/test-rcn.py 1.1.2.9, src/netconfpkg/NCDeviceList.py 1.50.2.12.2.13, src/netconfpkg/NCIPsecList.py 1.1.2.5, src/netconfpkg/NCProfileList.py 1.66.2.13.2.14, src/netconfpkg/gui/__init__.py 1.5.2.1.2.3:
+	chroot later
+
+	* src/netconfpkg/tests/Makefile.am 1.5, src/netconfpkg/tests/basic.tar 1.2, src/netconfpkg/tests/coverage.py 1.2, src/netconfpkg/tests/test-Conf.py 1.11, src/netconfpkg/tests/test-rcn.py 1.2:
+	extended testsuite
+
+2004-06-27  Harald Hoyer  <harald@redhat.com>
+
+	* redhat-config-network.spec.in 1.171.2.12.2.21: buildrequires rhpl
+
+2004-06-25  Harald Hoyer  <harald@redhat.com>
+
+	* Makefile.am 1.41.2.4.2.5, ChangeLog 1.82.2.15.2.20, src/netconfpkg/tests/test-rcn.py 1.1.2.8, po/redhat-config-network.pot 1.113.2.15.2.16:
+	setup testsuite root in builddir
+
+	* intltool-extract.in 1.7.2.1.2.4, intltool-merge.in 1.7.2.1.2.4, intltool-update.in 1.7.2.1.2.4:
+	release 1.2.61-1 moved
+
+	* src/netconfpkg/tests/test-rcn.py 1.1.2.6:
+	setup testsuite root in builddir
+
+	* network-config-wireless.html 1.1.8.1: *** empty log message ***
+
+	* network-config-wireless.html 1.2: removed unused file
+
+	* po/zh_CN.po 1.80.2.14.2.15, po/zh_TW.po 1.101.2.14.2.15, po/redhat-config-network.pot 1.113.2.15.2.15, po/ru.po 1.91.2.14.2.15, po/sv.po 1.133.2.14.2.15, po/tr.po 1.73.2.14.2.15, po/no.po 1.129.2.14.2.15, po/pt.po 1.112.2.14.2.15, po/pt_BR.po 1.2.4.5, po/nl.po 1.2.4.5, po/ko.po 1.140.2.14.2.15, po/is.po 1.121.2.14.2.15, po/it.po 1.137.2.14.2.15, po/ja.po 1.148.2.14.2.15, po/es.po 1.140.2.14.2.15, po/fr.po 1.142.2.14.2.15, po/da.po 1.105.2.14.2.15, po/de.po 1.153.2.14.2.15, po/el.po 1.75.2.14.2.15, po/cs.po 1.98.2.15.2.15, redhat-config-network.spec.in 1.171.2.12.2.20, ChangeLog 1.82.2.15.2.19:
+	release 1.2.61-1
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.13.2.13:
+	fixed hostname changes
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.13.2.12, src/netconfpkg/gui/maindialog.py 1.23.2.14.2.12:
+	supress error messages of mislinked ifcfg-lo.rpmsave
+
+	* redhat-config-network.spec.in 1.171.2.12.2.19: updates changelog
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.13.2.11, src/netconfpkg/tests/test-rcn.py 1.1.2.5:
+	Changed Testsuite for different environments
+
+2004-06-25  Sarah Smith  <sarahs@redhat.com>
+
+	* po/mk.po 1.1: initial po files
+
+2004-06-23  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NC_functions.py 1.71.2.14.2.16: fixed c&p error
+
+	* src/netconfpkg/gui/wirelessconfig.glade 1.21.2.1.2.1, src/netconfpkg/gui/wirelessconfig.py 1.19.2.2.2.4:
+	added forgotten route page
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.14.2.11: init devsel if None
+
+	* src/netconfpkg/NC_functions.py 1.71.2.14.2.15: - added issamefile()
+	- simplified updateNetworkScripts()
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.13.2.10:
+	check for correct link, before file removal and later linking
+
+	* src/netconfpkg/NCIPsecList.py 1.1.2.4, src/netconfpkg/NCDeviceList.py 1.50.2.12.2.12:
+	remove old files in NCProfileList
+
+	* src/netconfpkg/NCDevice.py 1.82.2.15.2.14:
+	fixed configure() for debug purposes
+
+	* src/neat-control.py 1.36.2.11.2.4:
+	fixed bug #109603, where the control window was closed after the configure button was pressed. also added command line options
+
+	* redhat-config-network.spec.in 1.171.2.12.2.18:
+	use kernel release scheme
+
+2004-06-22  Harald Hoyer  <harald@redhat.com>
+
+	* po/zh_CN.GB2312.po 1.19.4.4, po/zh_TW.Big5.po 1.17.4.4, po/zh_TW.po 1.15.4.4, src/netconf.py 1.133.4.5, po/sv.po 1.46.4.5, po/tr.po 1.13.4.4, po/redhat-config-network.pot 1.50.2.1.2.5, po/ru.po 1.25.4.4, po/no.po 1.60.4.4, po/pt.po 1.19.4.4, po/ja.po 1.59.4.4, po/ko.po 1.56.4.4, po/is.po 1.43.4.4, po/it.po 1.57.4.4, po/es.po 1.57.4.4, po/fr.po 1.58.4.4, po/da.po 1.34.4.4, po/de.po 1.64.4.4, autogen.sh 1.6.8.3, po/POTFILES.in 1.10.4.5, po/cs.po 1.22.4.5, redhat-config-network.spec.in 1.118.4.11, ChangeLog 1.10.2.1.2.6:
+	fixed #122889
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.12.2.11, src/netconfpkg/NCHardwareList.py 1.66.2.14.2.8, src/netconfpkg/NCProfileList.py 1.66.2.13.2.9, src/netconfpkg/NC_functions.py 1.71.2.14.2.14, src/netconfpkg/tests/test-Conf.py 1.7.4.1.2.3, src/netconfpkg/tests/test-rcn.py 1.1.2.4:
+	fixed chroot behaviour
+
+	* configure.in 1.95.4.5, redhat-config-network.spec.in 1.118.4.10, src/netconfpkg/Control.py 1.11.4.3, src/netconfpkg/NC_functions.py 1.45.4.4:
+	version 1.0.6
+
+	* redhat-config-network.spec.in 1.171.2.12.2.17: added make check
+
+	* configure.in 1.144.2.6.2.17: version 1.2.61 and more languages
+
+	* Makefile.am 1.41.2.4.2.4: fixed distcheck
+
+	* src/netconf.py 1.188.2.5.2.9: fixed python encoding
+
+	* src/Makefile.am 1.72.2.2.2.2, src/netconfpkg/tests/Makefile.am 1.4.4.2, src/netconfpkg/tests/test-rcn.py 1.1.2.3:
+	fixed distcheck
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.14.2.10:
+	fixed #126424 #119169
+
+	* src/netconfpkg/gui/editipsec.glade 1.1.2.7, src/netconfpkg/gui/editipsec.py 1.1.2.9:
+	fixed #120648
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.13.2.8:
+	fixed #122732 and #119169
+
+	* src/netconfpkg/NCIPsec.py 1.1.2.6: fixed #120728
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.14.2.7:
+	fixed #122475 and #122965
+
+	* src/netconfpkg/NCDevice.py 1.82.2.15.2.13:
+	added SLAVE and fixed #121402
+
+	* src/netconfpkg/DeviceList.idl 1.35.2.1.2.3: added SLAVE
+
+2004-06-18  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/tests/coverage.py 1.1.2.3, src/netconfpkg/tests/test-rcn.py 1.1.2.2:
+	python's abspath() sucks... implemented realpath(3)
+
+	* src/netconfpkg/NCDevice.py 1.82.2.15.2.12, src/netconfpkg/NCDeviceList.py 1.50.2.12.2.10, src/netconfpkg/NCProfileList.py 1.66.2.13.2.7, src/netconfpkg/NC_functions.py 1.71.2.14.2.13, src/netconfpkg/gui/sharedtcpip.py 1.23.2.3.2.5:
+	netconfpkg/NCProfileList.py
+
+	* src/Makefile.am 1.72.2.2.2.1, src/netconf-cmd.py 1.8.2.11.2.4:
+	changes for the testsuite
+
+	* src/netconfpkg/tests/basic.tar 1.1, src/netconfpkg/tests/test-rcn.py 1.1:
+	New file.
+
+	* src/netconfpkg/tests/Makefile.am 1.4.4.1, src/netconfpkg/tests/basic.tar 1.1.2.1, src/netconfpkg/tests/coverage.py 1.1.2.1, src/netconfpkg/tests/test-Conf.py 1.7.4.1.2.2, src/netconfpkg/tests/test-rcn.py 1.1.2.1:
+	created more teststuite
+
+2004-06-15  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/tests/coverage.py 1.1, src/netconfpkg/tests/test-Conf.py 1.10:
+	use UnitTest and coverage for the start of a testsuite
+
+	* src/netconfpkg/plugins/NCDevCipe.py 1.6:
+	do CIPE only for kernel < 2.5
+
+	* src/netconfpkg/NC_functions.py 1.86:
+	- #122223 fixed parsing of kernel string
+	- do cipe only for kernel < 2.5
+	- fallback to type ethernet, if MAC address is found and type unknown
+	- log to syslog
+
+	* src/netconfpkg/NCDevice.py 1.100:
+	fixed configure() for debug purposes
+
+	* src/netconf.py 1.205: log to syslog
+
+	* src/neat-control.py 1.47:
+	fixed bug #109603, where the control window was closed after the configure button was pressed. also added command line options
+
+	* src/module-info 1.4: changed CDCether -> usbnet #122167
+
+	* system-config-network.spec.in 1.11:
+	removed reference to Red Hat Linux in description
+
+	* configure.in 1.169: added sk and sq to ALL_LINGUAS
+
+2004-06-04  Harald Hoyer  <harald@redhat.com>
+
+	* TODO 1.3: created tracker bugs
+
+2004-06-02  Sarah Smith  <sarahs@redhat.com>
+
+	* po/mr.po 1.1, po/ur.po 1.1, po/ku.po 1.1: add new locales
+
+2004-05-31  Sarah Smith  <sarahs@redhat.com>
+
+	* po/si.po 1.1: adding new locale
+
+2004-05-06  Harald Hoyer  <harald@redhat.com>
+
+	* Makefile.am 1.56, TODO 1.2: *** empty log message ***
+
+2004-05-02  rahal  <rahal@redhat.com>
+
+	* po/ar.po 1.1: Arabeyes.org's Arabic translation of the past week
+	Adding new po files
+
+2004-04-23  byte  <byte@redhat.com>
+
+	* po/ms.po 1.6:
+	s/Rad/Red and s/bebase/bebas - spelling corrections and a spacing
+
+2004-04-22  jamil  <jamil@redhat.com>
+
+	* po/bn.po 1.7: Updated on April 22, 2004
+
+2004-04-21  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/DialupDruid.py 1.29, src/netconfpkg/gui/provider.py 1.16, src/netconfpkg/gui/providerdb.py 1.7:
+	- draw unknown-flag.xpm for countries where no flag exists (117834)
+
+2004-04-19  jamil  <jamil@redhat.com>
+
+	* po/bn.po 1.6: Updated on April 19, 2004
+
+2004-04-15  Harald Hoyer  <harald@redhat.com>
+
+	* src/module-info 1.3: updated module-info for Apple PowerPC
+
+2004-04-11  andrmart  <andrmart@redhat.com>
+
+	* po/ru.po 1.132: Translations for FC2 done.
+
+2004-04-07  Bernd Groh  <bgroh@redhat.com>
+
+	* po/de.po 1.202: all translations done
+
+2004-04-06  Alan Cox  <alan@redhat.com>
+
+	* po/cy.po 1.5: Finish system-config-network, thanks to Bryn Salisbury
+
+2004-04-06  maxik  <maxik@redhat.com>
+
+	* po/uk.po 1.6: 2004-04-06  Maxim Dziumanenko <mvd@mylinux.com.ua>
+
+		* Update Ukrainian translation
+
+2004-04-05  aman  <aman@redhat.com>
+
+	* po/pa.po 1.4: pa.po translated 0504 amanlinux@netcape.net
+
+2004-04-05  Alan Cox  <alan@redhat.com>
+
+	* po/cy.po 1.4: One string left to fix up
+
+2004-04-05  stephane  <stephane@redhat.com>
+
+	* po/fr.po 1.199: - login name translation -> identifiant de connexion
+	- ISP -> FAI
+	- substantive in title
+	- space
+
+2004-04-04  aman  <aman@redhat.com>
+
+	* po/pa.po 1.3: pa.po translated 0404 amanlinux@netcape.net
+
+2004-04-04  rokpapez  <rokpapez@redhat.com>
+
+	* po/sl.po 1.5: Slovenian translations
+
+2004-04-01  Sarah Smith  <sarahs@redhat.com>
+
+	* po/sq.po 1.1: initial po file
+
+2004-03-31  stephane  <stephane@redhat.com>
+
+	* po/fr.po 1.198: - Enter translation
+	- minors mistakes
+
+2004-03-28  joseppc  <joseppc@redhat.com>
+
+	* po/ca.po 1.3: Cleared fuzzy strings and reviewed.
+
+2004-03-28  marcel  <marcel@redhat.com>
+
+	* po/sk.po 1.2: Updated Slovak translation.
+
+2004-03-26  marcel  <marcel@redhat.com>
+
+	* po/sk.po 1.1: Started Slovak translation.
+
+2004-03-25  rhkeld  <rhkeld@redhat.com>
+
+	* po/da.po 1.143: Updates
+	anaconda/anaconda-po/da.po apacheconf/po/da.po
+	redhat-config-cluster/po/da.po redhat-config-network/po/da.po
+	redhat-config-samba/po/da.po redhat-config-services/po/da.po
+	specspo/dist/da.po system-logviewer/po/da.po
+	system-switch-mail/po/da.po
+
+2004-03-25  tszanto  <tszanto@redhat.com>
+
+	* po/hu.po 1.25: Tamas Szanto
+
+2004-03-24  tszanto  <tszanto@redhat.com>
+
+	* po/hu.po 1.24: Tamas Szanto
+
+2004-03-23  David Barzilay  <barzilay@redhat.com>
+
+	* po/pt_BR.po 1.28: last updates
+
+2004-03-22  Francesco Valente  <fvalen@redhat.com>
+
+	* po/it.po 1.180: Updated
+
+2004-03-20  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.126: Updated Greek translation
+
+2004-03-19  andmuell  <andmuell@redhat.com>
+
+	* po/de.po 1.201: Updated fuzzy entries.
+
+2004-03-19  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po 1.188: updated translation
+
+2004-03-19  uk  <uk@redhat.com>
+
+	* po/es.po 1.187: Hernan Fernandez
+	18 de marzo 2004
+
+2004-03-18  elf  <elf@redhat.com>
+
+	* po/ja.po 1.188: o Sync with en.
+
+2004-03-18  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.po 1.151: Updated translation
+
+2004-03-18  Sarah Smith  <sarahs@redhat.com>
+
+	* po/sv.po 1.179: merged with pot file
+
+2004-03-17  menthos  <menthos@redhat.com>
+
+	* po/sv.po 1.178: 2004-03-17  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2004-03-17  arclynx  <arclynx@redhat.com>
+
+	* po/ms.po 1.5: Updated Malay translation
+
+2004-03-16  ra  <ra@redhat.com>
+
+	* po/is.po 1.180: *** empty log message ***
+
+2004-03-16  pve-nl  <pve-nl@redhat.com>
+
+	* po/nl.po 1.39: minor fixes for redhat-config-network nl.po
+
+2004-03-16  morais  <morais@redhat.com>
+
+	* po/pt.po 1.170: update
+
+2004-03-16  hutuworm  <hutuworm@redhat.com>
+
+	* po/zh_CN.po 1.128: update by hutuworm @ 20040316
+
+2004-03-15  byagan  <byagan@redhat.com>
+
+	* po/tr.po 1.113: Baþlýklarý düzenlendi.
+	Son deðiþiklikler çevirildi.
+	Çeviri kalite kontrolü yapýlmadý!
+
+2004-03-15  almacha  <almacha@redhat.com>
+
+	* po/fr.po 1.197: retranslated 8 fuzzy entries
+
+2004-03-15  lanurmi  <lanurmi@redhat.com>
+
+	* po/fi.po 1.8: Updated Finnish translation.
+
+2004-03-15  xyzallan  <xyzallan@redhat.com>
+
+	* po/et.po 1.11: Estonian
+
+2004-03-15  Harald Hoyer  <harald@redhat.com>
+
+	* ChangeLog 1.126: release 1.3.16-1 moved
+
+	* Makefile.am 1.55: fixed archive target
+
 2004-03-15  mitr  <mitr@redhat.com>
 
 	* po/cs.po 1.150: Update Czech translation
@@ -3978,7 +4364,7 @@
 
 	* src/netconfpkg/iwlib.c 1.1, src/netconfpkg/iwlib.h 1.1: New file.
 
-	* src/netconfpkg/iwlib.c 1.1.2.1, src/netconfpkg/iwlib.h 1.1.2.1, po/POTFILES.in 1.10.4.1, src/netconfpkg/Control.py 1.11.4.2, src/netconfpkg/NCCipe.py 1.7.4.2, src/netconfpkg/NCDialup.py 1.51.4.2, src/netconfpkg/NCWireless.py 1.5.4.2, src/netconfpkg/gui/cipeconfig.py 1.10.4.3, src/netconfpkg/gui/ctcconfig.py 1.5.4.2, src/netconfpkg/gui/deviceconfig.py 1.5.4.3, src/netconfpkg/gui/devicetype.py 1.5.4.2, src/netconfpkg/gui/dialupconfig.py 1.17.4.2, src/netconfpkg/gui/dslconfig.py 1.11.4.2, src/netconfpkg/gui/editadress.py 1.5.4.2, src/netconfpkg/gui/editdomain.py 1.5.4.2, src/netconfpkg/gui/edithosts.py 1.6.4.3, src/netconfpkg/gui/ethernetconfig.py 1.11.4.2, src/netconfpkg/gui/ethernethardware.py 1.8.4.2, src/netconfpkg/gui/hardwaretype.py 1.5.4.2, src/netconfpkg/gui/isdnhardware.py 1.11.4.2, src/netconfpkg/gui/modemconfig.py 1.9.4.2, src/netconfpkg/gui/provider.py 1.7.4.2, src/netconfpkg/gui/sharedtcpip.py 1.11.4.3, src/netconfpkg/gui/tcpdialog.py 1.6.4.2, src/netconfpkg/gui/tokenringconfig.py 1.4.4.2, src/netconfpkg/gui/tokenringhardware.py 1.8.4.2, src/netconfpkg/gui/wirelessconfig.py 1.6.4.2, src/control/neat-control.py 1.4.6.1, src/glade-strings.c 1.28.2.1.2.1, src/neat-control.py 1.16.4.2, src/netconf-tui.py 1.6.4.2, src/netconf.py 1.133.4.1, src/netconfpkg/Conf.py 1.14.4.1, src/netconfpkg/ConfSMB.py 1.11.4.1, src/netconfpkg/DeviceList.idl 1.30.4.1, src/netconfpkg/Makefile.am 1.45.4.1, src/netconfpkg/NCCallback.py 1.6.4.1, src/netconfpkg/NCCompression.py 1.4.4.1, src/netconfpkg/NCDevice.py 1.65.4.1, src/netconfpkg/NCDeviceList.py 1.36.4.1, src/netconfpkg/NCHardwareList.py 1.43.4.1, src/netconfpkg/NCProfileList.py 1.54.4.1, src/netconfpkg/NC_functions.py 1.45.4.2, src/netconfpkg/NCisdnhardware.py 1.15.4.1, src/netconfpkg/__init__.py 1.5.4.1, src/netconfpkg/ethtool.c 1.6.4.1, src/netconfpkg/genClass.py 1.20.4.2, src/netconfpkg/gui/ADSLInterface.py 1.9.4.1, src/netconfpkg/gui/CipeInterface.py 1.6.4.2, src/netconfpkg/gui/DialupDruid.py 1.11.4.1, src/netconfpkg/gui/EthernetHardwareDruid.py 1.11.4.1, src/netconfpkg/gui/EthernetInterface.py 1.17.4.1, src/netconfpkg/gui/GUI_functions.py 1.6.4.1, src/netconfpkg/gui/GenericInterface.py 1.6.4.1, src/netconfpkg/gui/IsdnInterface.py 1.6.4.1, src/netconfpkg/gui/ModemInterface.py 1.11.4.1, src/netconfpkg/gui/NewInterface.py 1.9.4.3, src/netconfpkg/gui/NewInterfaceDialog.py 1.15.4.1, src/netconfpkg/gui/TokenRingHardwareDruid.py 1.4.4.1, src/netconfpkg/gui/TokenRingInterface.py 1.7.4.1, src/netconfpkg/gui/WirelessInterface.py 1.8.4.1, src/netconfpkg/gui/exception.py 1.6.4.1:
+	* src/netconfpkg/iwlib.c 1.1.2.1, src/netconfpkg/iwlib.h 1.1.2.1, po/POTFILES.in 1.10.4.1, src/netconfpkg/Control.py 1.11.4.2, src/netconfpkg/NCCipe.py 1.7.4.2, src/netconfpkg/NCDialup.py 1.51.4.2, src/netconfpkg/NCWireless.py 1.5.4.2, src/netconfpkg/gui/cipeconfig.py 1.10.4.3, src/netconfpkg/gui/ctcconfig.py 1.5.4.2, src/netconfpkg/gui/deviceconfig.py 1.5.4.3, src/netconfpkg/gui/devicetype.py 1.5.4.2, src/netconfpkg/gui/dialupconfig.py 1.17.4.2, src/netconfpkg/gui/dslconfig.py 1.11.4.2, src/netconfpkg/gui/editadress.py 1.5.4.2, src/netconfpkg/gui/editdomain.py 1.5.4.2, src/netconfpkg/gui/edithosts.py 1.6.4.3, src/netconfpkg/gui/ethernetconfig.py 1.11.4.2, src/netconfpkg/gui/ethernethardware.py 1.8.4.2, src/netconfpkg/gui/hardwaretype.py 1.5.4.2, src/netconfpkg/gui/isdnhardware.py 1.11.4.2, src/netconfpkg/gui/modemconfig.py 1.9.4.2, src/netconfpkg/gui/provider.py 1.7.4.2, src/netconfpkg/gui/sharedtcpip.py 1.11.4.3, src/netconfpkg/gui/tcpdialog.py 1.6.4.2, src/netconfpkg/gui/tokenringconfig.py 1.4.4.2, src/netconfpkg/gui/tokenringhardware.py 1.8.4.2, src/netconfpkg/gui/wirelessconfig.py 1.6.4.2, src/glade-strings.c 1.28.2.1.2.1, src/neat-control.py 1.16.4.2, src/netconf-tui.py 1.6.4.2, src/netconf.py 1.133.4.1, src/netconfpkg/Conf.py 1.14.4.1, src/netconfpkg/ConfSMB.py 1.11.4.1, src/netconfpkg/DeviceList.idl 1.30.4.1, src/netconfpkg/Makefile.am 1.45.4.1, src/netconfpkg/NCCallback.py 1.6.4.1, src/netconfpkg/NCCompression.py 1.4.4.1, src/netconfpkg/NCDevice.py 1.65.4.1, src/netconfpkg/NCDeviceList.py 1.36.4.1, src/netconfpkg/NCHardwareList.py 1.43.4.1, src/netconfpkg/NCProfileList.py 1.54.4.1, src/netconfpkg/NC_functions.py 1.45.4.2, src/netconfpkg/NCisdnhardware.py 1.15.4.1, src/netconfpkg/__init__.py 1.5.4.1, src/netconfpkg/ethtool.c 1.6.4.1, src/netconfpkg/genClass.py 1.20.4.2, src/netconfpkg/gui/ADSLInterface.py 1.9.4.1, src/netconfpkg/gui/CipeInterface.py 1.6.4.2, src/netconfpkg/gui/DialupDruid.py 1.11.4.1, src/netconfpkg/gui/EthernetHardwareDruid.py 1.11.4.1, src/netconfpkg/gui/EthernetInterface.py 1.17.4.1, src/netconfpkg/gui/GUI_functions.py 1.6.4.1, src/netconfpkg/gui/GenericInterface.py 1.6.4.1, src/netconfpkg/gui/IsdnInterface.py 1.6.4.1, src/netconfpkg/gui/ModemInterface.py 1.11.4.1, src/netconfpkg/gui/NewInterface.py 1.9.4.3, src/netconfpkg/gui/NewInterfaceDialog.py 1.15.4.1, src/netconfpkg/gui/TokenRingHardwareDruid.py 1.4.4.1, src/netconfpkg/gui/TokenRingInterface.py 1.7.4.1, src/netconfpkg/gui/WirelessInterface.py 1.8.4.1, src/netconfpkg/gui/exception.py 1.6.4.1:
 	backport of 8.0
 
 2002-10-21  Harald Hoyer  <harald@redhat.com>
@@ -4617,7 +5003,7 @@
 
 	* ChangeLog 1.29: add entry about updated docs
 
-	* doc/figs/neat-cipe-settings.png 1.1, doc/figs/neat-cipe.png 1.1, doc/figs/neat-control.png 1.1, doc/figs/neat-dns.png 1.1, doc/figs/neat-ethernet-settings.png 1.1, doc/figs/neat-ethernet.png 1.1, doc/figs/neat-hardware.png 1.1, doc/figs/neat-hosts.png 1.1, doc/figs/neat-isdn-settings.png 1.1, doc/figs/neat-isdn.png 1.1, doc/figs/neat-modem-settings.png 1.1, doc/figs/neat-modem.png 1.1, doc/figs/neat-tokenring-settings.png 1.1, doc/figs/neat-tokenring.png 1.1, doc/figs/neat-wireless-settings.png 1.1, doc/figs/neat-wireless.png 1.1, doc/figs/neat-xdsl-settings.png 1.1, doc/figs/neat-xdsl.png 1.1, doc/figs/networkconfig/Makefile.am 1.3, doc/figs/networkconfig/neat-cipe-settings.png 1.2, doc/figs/networkconfig/neat-cipe.png 1.2, doc/figs/networkconfig/neat-dns.png 1.2, doc/figs/networkconfig/neat-ethernet-settings.png 1.2, doc/figs/networkconfig/neat-ethernet.png 1.2, doc/figs/networkconfig/neat-hardware.png 1.2, doc/figs/networkconfig/neat-hosts.png 1.2, doc/figs/networkconfig/neat-isdn-settings.png 1.2, doc/figs/networkconfig/neat-isdn.png 1.2, doc/figs/networkconfig/neat-modem-settings.png 1.2, doc/figs/networkconfig/neat-modem.png 1.2, doc/figs/networkconfig/neat-tokenring-settings.png 1.2, doc/figs/networkconfig/neat-tokenring.png 1.2, doc/figs/networkconfig/neat-wireless-settings.png 1.4, doc/figs/networkconfig/neat-wireless.png 1.4, doc/figs/networkconfig/neat-xdsl-settings.png 1.2, doc/figs/networkconfig/neat-xdsl.png 1.2, doc/index.html 1.10, doc/intro.html 1.3, doc/legalnotice.html 1.3, doc/network-config-cipe.html 1.3, doc/network-config-dns.html 1.3, doc/network-config-ethernet.html 1.2, doc/network-config-hosts.html 1.4, doc/network-config-modem.html 1.2, doc/network-config-tokenring.html 1.2, doc/network-config-wireless.html 1.4, doc/network-config-xdsl.html 1.2:
+	* doc/figs/neat-cipe-settings.png 1.1, doc/figs/neat-cipe.png 1.1, doc/figs/neat-control.png 1.1, doc/figs/neat-dns.png 1.1, doc/figs/neat-ethernet-settings.png 1.1, doc/figs/neat-ethernet.png 1.1, doc/figs/neat-hardware.png 1.1, doc/figs/neat-hosts.png 1.1, doc/figs/neat-isdn-settings.png 1.1, doc/figs/neat-isdn.png 1.1, doc/figs/neat-modem-settings.png 1.1, doc/figs/neat-modem.png 1.1, doc/figs/neat-tokenring-settings.png 1.1, doc/figs/neat-tokenring.png 1.1, doc/figs/neat-wireless-settings.png 1.1, doc/figs/neat-wireless.png 1.1, doc/figs/neat-xdsl-settings.png 1.1, doc/figs/neat-xdsl.png 1.1, doc/index.html 1.10, doc/intro.html 1.3, doc/legalnotice.html 1.3, doc/network-config-cipe.html 1.3, doc/network-config-dns.html 1.3, doc/network-config-ethernet.html 1.2, doc/network-config-hosts.html 1.4, doc/network-config-modem.html 1.2, doc/network-config-tokenring.html 1.2, doc/network-config-wireless.html 1.4, doc/network-config-xdsl.html 1.2:
 	updated docs for version 1.1.8-1
 
 2002-07-23  menthos  <menthos@redhat.com>
@@ -5425,12 +5811,11 @@
 	* src/netconfpkg/gui/modemconfig.glade 1.4.4.1, src/netconfpkg/gui/neat-control-debugdialog.glade 1.1.4.1, src/netconfpkg/gui/neat-control-monitordialog.glade 1.1.4.1, src/netconfpkg/gui/neat-control-propertiesdialog.glade 1.2.4.1, src/netconfpkg/gui/neat-control-statusdialog.glade 1.1.4.1, src/netconfpkg/gui/sharedtcpip.py 1.11.4.1, src/netconfpkg/gui/tcpipdialog.glade 1.2.4.1, src/netconfpkg/gui/tokenringconfig.glade 1.2.4.1, src/netconfpkg/gui/tokenringhardware.glade 1.3.2.1, src/netconfpkg/gui/wirelessconfig.glade 1.5.4.2, src/netconfpkg/gui/chooseprovider.glade 1.2.4.1, src/netconfpkg/gui/cipeconfig.glade 1.4.4.1, src/netconfpkg/gui/ctcconfig.glade 1.2.4.1, src/netconfpkg/gui/deviceconfig.py 1.5.4.1, src/netconfpkg/gui/devicetype.glade 1.2.4.1, src/netconfpkg/gui/dialupconfig.glade 1.6.4.1, src/netconfpkg/gui/dslconfig.glade 1.6.4.1, src/netconfpkg/gui/editadress.glade 1.2.4.1, src/netconfpkg/gui/editdomain.glade 1.2.4.1, src/netconfpkg/gui/edithosts.glade 1.2.4.1, src/netconfpkg/gui/ethernetconfig.glade 1.4.4.1, src/netconfpkg/gui/ethernethardware.glade 1.2.4.1, src/netconfpkg/gui/hardwaretype.glade 1.2.4.1, src/netconfpkg/gui/isdnhardware.glade 1.2.4.1:
 	make dialogs invisible at glade loading time. better for adding widgets.
 
-	* doc/figs/networkconfig/neat-wireless-settings.png 1.3, doc/figs/networkconfig/neat-wireless.png 1.3, network-config-wireless.html 1.1:
-	readded wireless doc
+	* network-config-wireless.html 1.1: readded wireless doc
 
 2002-05-06  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/__init__.py 1.5.2.3, src/netconfpkg/genClass.py 1.20.2.3, doc/Makefile.am 1.9.4.1, doc/figs/networkconfig/Makefile.am 1.2.6.1, src/netconf.py 1.133.2.2, src/netconfpkg/NCCallback.py 1.6.2.2, src/netconfpkg/NCCompression.py 1.4.2.2, src/netconfpkg/NCDevice.py 1.65.2.2, src/netconfpkg/NCDeviceList.py 1.36.2.2, src/netconfpkg/NCHardwareList.py 1.43.2.1, src/netconfpkg/NCProfileList.py 1.54.2.1, src/netconfpkg/gui/EthernetInterface.py 1.17.2.2, src/netconfpkg/gui/GenericInterface.py 1.6.2.2, src/netconfpkg/gui/TokenRingInterface.py 1.7.2.2, src/netconfpkg/gui/WirelessInterface.py 1.8.2.2, src/netconfpkg/gui/ethernetconfig.py 1.11.2.2, src/netconfpkg/gui/sharedtcpip.py 1.11.2.1, src/netconfpkg/gui/cipeconfig.py 1.10.2.1, src/netconfpkg/gui/dslconfig.py 1.11.2.1, src/netconfpkg/gui/editdomain.py 1.5.2.1, src/netconfpkg/gui/ethernethardware.py 1.8.2.1, src/netconfpkg/gui/hardwaretype.py 1.5.2.1, src/netconfpkg/gui/isdnhardware.py 1.11.2.1, src/netconfpkg/gui/modemconfig.py 1.9.2.1, src/netconfpkg/gui/tokenringconfig.py 1.4.2.1, src/netconfpkg/gui/tokenringhardware.py 1.8.2.1, src/netconfpkg/gui/wirelessconfig.py 1.6.2.1, src/netconfpkg/NCCipe.py 1.7.2.1, src/netconfpkg/NCDialup.py 1.51.2.1, src/netconfpkg/NCWireless.py 1.5.2.1, src/netconfpkg/gui/ADSLInterface.py 1.9.2.1, src/netconfpkg/gui/CipeInterface.py 1.6.2.1, src/netconfpkg/gui/DialupDruid.py 1.11.2.1, src/netconfpkg/gui/EthernetHardwareDruid.py 1.11.2.1, src/netconfpkg/gui/IsdnInterface.py 1.6.2.1, src/netconfpkg/gui/ModemInterface.py 1.11.2.1, src/netconfpkg/gui/NewInterface.py 1.9.2.1, src/netconfpkg/gui/NewInterfaceDialog.py 1.15.2.1, src/netconfpkg/gui/TokenRingHardwareDruid.py 1.4.2.1, src/netconfpkg/Makefile.am 1.45.2.1:
+	* src/netconfpkg/__init__.py 1.5.2.3, src/netconfpkg/genClass.py 1.20.2.3, doc/Makefile.am 1.9.4.1, src/netconf.py 1.133.2.2, src/netconfpkg/NCCallback.py 1.6.2.2, src/netconfpkg/NCCompression.py 1.4.2.2, src/netconfpkg/NCDevice.py 1.65.2.2, src/netconfpkg/NCDeviceList.py 1.36.2.2, src/netconfpkg/NCHardwareList.py 1.43.2.1, src/netconfpkg/NCProfileList.py 1.54.2.1, src/netconfpkg/gui/EthernetInterface.py 1.17.2.2, src/netconfpkg/gui/GenericInterface.py 1.6.2.2, src/netconfpkg/gui/TokenRingInterface.py 1.7.2.2, src/netconfpkg/gui/WirelessInterface.py 1.8.2.2, src/netconfpkg/gui/ethernetconfig.py 1.11.2.2, src/netconfpkg/gui/sharedtcpip.py 1.11.2.1, src/netconfpkg/gui/cipeconfig.py 1.10.2.1, src/netconfpkg/gui/dslconfig.py 1.11.2.1, src/netconfpkg/gui/editdomain.py 1.5.2.1, src/netconfpkg/gui/ethernethardware.py 1.8.2.1, src/netconfpkg/gui/hardwaretype.py 1.5.2.1, src/netconfpkg/gui/isdnhardware.py 1.11.2.1, src/netconfpkg/gui/modemconfig.py 1.9.2.1, src/netconfpkg/gui/tokenringconfig.py 1.4.2.1, src/netconfpkg/gui/tokenringhardware.py 1.8.2.1, src/netconfpkg/gui/wirelessconfig.py 1.6.2.1, src/netconfpkg/NCCipe.py 1.7.2.1, src/netconfpkg/NCDialup.py 1.51.2.1, src/netconfpkg/NCWireless.py 1.5.2.1, src/netconfpkg/gui/ADSLInterface.py 1.9.2.1, src/netconfpkg/gui/CipeInterface.py 1.6.2.1, src/netconfpkg/gui/DialupDruid.py 1.11.2.1, src/netconfpkg/gui/EthernetHardwareDruid.py 1.11.2.1, src/netconfpkg/gui/IsdnInterface.py 1.6.2.1, src/netconfpkg/gui/ModemInterface.py 1.11.2.1, src/netconfpkg/gui/NewInterface.py 1.9.2.1, src/netconfpkg/gui/NewInterfaceDialog.py 1.15.2.1, src/netconfpkg/gui/TokenRingHardwareDruid.py 1.4.2.1, src/netconfpkg/Makefile.am 1.45.2.1:
 	*** empty log message ***
 
 2002-05-05  menthos  <menthos@redhat.com>
@@ -5507,8 +5892,7 @@
 	* ChangeLog 1.10.2.1, po/redhat-config-network.pot 1.50.2.1, src/glade-strings.c 1.28.2.1:
 	*** empty log message ***
 
-	* doc/Makefile.am 1.9.2.1, doc/figs/networkconfig/Makefile.am 1.2.4.1:
-	removed wireless docs
+	* doc/Makefile.am 1.9.2.1: removed wireless docs
 
 2002-04-17  keld  <keld@redhat.com>
 
@@ -5523,7 +5907,7 @@
 
 2002-04-17  Tammy Fox  <tfox@redhat.com>
 
-	* doc/figs/networkconfig/neat-wireless-settings.png 1.2, doc/figs/networkconfig/neat-wireless.png 1.2, doc/index.html 1.9, doc/intro.html 1.2, doc/legalnotice.html 1.2, doc/network-config-cipe.html 1.2, doc/network-config-dns.html 1.2, doc/network-config-hosts.html 1.2, doc/network-config-wireless.html 1.2:
+	* doc/index.html 1.9, doc/intro.html 1.2, doc/legalnotice.html 1.2, doc/network-config-cipe.html 1.2, doc/network-config-dns.html 1.2, doc/network-config-hosts.html 1.2, doc/network-config-wireless.html 1.2:
 	remove wireless
 
 2002-04-17  Harald Hoyer  <harald@redhat.com>
@@ -5531,7 +5915,7 @@
 	* src/netconfpkg/Control.py 1.11, src/netconfpkg/gui/EthernetInterface.py 1.17, src/netconfpkg/gui/GenericInterface.py 1.6, src/netconfpkg/gui/TokenRingInterface.py 1.7, src/netconfpkg/gui/WirelessInterface.py 1.8, src/netconfpkg/gui/ethernetconfig.py 1.11, src/netconfpkg/gui/sharedtcpip.py 1.11:
 	ethtool location fix
 
-	* po/pt.po 1.19, po/redhat-config-network.pot 1.50, po/ru.po 1.25, po/sv.po 1.46, po/tr.po 1.13, po/zh_CN.GB2312.po 1.19, po/zh_TW.Big5.po 1.17, po/zh_TW.po 1.15, src/glade-strings.c 1.28, src/netconfpkg/Makefile.am 1.45, src/netconfpkg/gui/ModemInterface.py 1.11, ChangeLog 1.10, Makefile.am 1.22, configure.in 1.95, doc/Makefile.am 1.9, doc/figs/Makefile.am 1.2, doc/figs/networkconfig/Makefile.am 1.2, doc/stylesheet-images/Makefile.am 1.2, po/cs.po 1.22, po/da.po 1.33, po/de.po 1.64, po/es.po 1.57, po/fr.po 1.58, po/is.po 1.43, po/it.po 1.57, po/ja.po 1.59, po/ko.po 1.56, po/no.po 1.60, redhat-config-network.spec.in 1.118:
+	* po/pt.po 1.19, po/redhat-config-network.pot 1.50, po/ru.po 1.25, po/sv.po 1.46, po/tr.po 1.13, po/zh_CN.GB2312.po 1.19, po/zh_TW.Big5.po 1.17, po/zh_TW.po 1.15, src/glade-strings.c 1.28, src/netconfpkg/Makefile.am 1.45, src/netconfpkg/gui/ModemInterface.py 1.11, ChangeLog 1.10, Makefile.am 1.22, configure.in 1.95, doc/Makefile.am 1.9, doc/figs/Makefile.am 1.2, doc/stylesheet-images/Makefile.am 1.2, po/cs.po 1.22, po/da.po 1.33, po/de.po 1.64, po/es.po 1.57, po/fr.po 1.58, po/is.po 1.43, po/it.po 1.57, po/ja.po 1.59, po/ko.po 1.56, po/no.po 1.60, redhat-config-network.spec.in 1.118:
 	V1.0.0 with new ethtool location and sanitized configure.in, Makefile.am's
 
 2002-04-17  teg  <teg@redhat.com>
@@ -5557,8 +5941,7 @@
 
 	* configure.in 1.93: Add doc makefiles
 
-	* doc/figs/networkconfig/Makefile.am 1.1, doc/figs/Makefile.am 1.1, doc/stylesheet-images/Makefile.am 1.1:
-	Add
+	* doc/figs/Makefile.am 1.1, doc/stylesheet-images/Makefile.am 1.1: Add
 
 	* doc/Makefile.am 1.7: Add the two subdirs
 
@@ -5586,11 +5969,10 @@
 
 2002-04-16  Tammy Fox  <tfox@redhat.com>
 
-	* doc/chapter-network-config-isdn.html 1.1, doc/figs/networkconfig/neat-cipe-settings.png 1.1, doc/figs/networkconfig/neat-cipe.png 1.1, doc/figs/networkconfig/neat-dns.png 1.1, doc/figs/networkconfig/neat-ethernet-settings.png 1.1, doc/figs/networkconfig/neat-ethernet.png 1.1, doc/figs/networkconfig/neat-hardware.png 1.1, doc/figs/networkconfig/neat-hosts.png 1.1, doc/figs/networkconfig/neat-isdn-settings.png 1.1, doc/figs/networkconfig/neat-isdn.png 1.1, doc/figs/networkconfig/neat-modem-settings.png 1.1, doc/figs/networkconfig/neat-modem.png 1.1, doc/figs/networkconfig/neat-tokenring-settings.png 1.1, doc/figs/networkconfig/neat-tokenring.png 1.1, doc/figs/networkconfig/neat-wireless-settings.png 1.1, doc/figs/networkconfig/neat-wireless.png 1.1, doc/figs/networkconfig/neat-xdsl-settings.png 1.1, doc/figs/networkconfig/neat-xdsl.png 1.1, doc/figs/rhlogo.png 1.1, doc/index.html 1.8, doc/intro.html 1.1, doc/legalnotice.html 1.1, doc/network-config-cipe.html 1.1, doc/network-config-dns.html 1.1, doc/network-config-ethernet.html 1.1, doc/network-config-hosts.html 1.1, doc/network-config-modem.html 1.1, doc/network-config-tokenring.html 1.1, doc/network-config-wireless.html 1.1, doc/network-config-xdsl.html 1.1, doc/stylesheet-images/note.png 1.1, doc/stylesheet-images/tip.png 1.1, doc/stylesheet-images/warning.png 1.1:
+	* doc/chapter-network-config-isdn.html 1.1, doc/figs/rhlogo.png 1.1, doc/index.html 1.8, doc/intro.html 1.1, doc/legalnotice.html 1.1, doc/network-config-cipe.html 1.1, doc/network-config-dns.html 1.1, doc/network-config-ethernet.html 1.1, doc/network-config-hosts.html 1.1, doc/network-config-modem.html 1.1, doc/network-config-tokenring.html 1.1, doc/network-config-wireless.html 1.1, doc/network-config-xdsl.html 1.1, doc/stylesheet-images/note.png 1.1, doc/stylesheet-images/tip.png 1.1, doc/stylesheet-images/warning.png 1.1:
 	docs for redhat-config-network
 
-	* doc/index.html 1.7, doc/images/Makefile.am 1.2, doc/images/druid1.png 1.3, doc/images/druid10.png 1.3, doc/images/druid11.png 1.2, doc/images/druid2.png 1.3, doc/images/druid3.png 1.3, doc/images/druid4.png 1.3, doc/images/druid5.png 1.3, doc/images/druid6.png 1.3, doc/images/druid7.png 1.3, doc/images/druid9.png 1.2, doc/images/neat1.png 1.3:
-	removing old docs
+	* doc/index.html 1.7: removing old docs
 
 2002-04-16  teg  <teg@redhat.com>
 
@@ -6420,13 +6802,6 @@
 	* src/netconfpkg/gui/EthernetInterfaceDruid.glade 1.3:
 	changed hostname label
 
-2002-03-13  Than Ngo  <than@redhat.com>
-
-	* src/control/debugdialog.glade 1.2, src/control/functions.py 1.8, src/control/maindialog.glade 1.10, src/control/monitordialog.glade 1.2, src/control/neat-control.py 1.9, src/control/popupmenu.glade 1.2, src/control/propertiesdialog.glade 1.3, src/control/statusdialog.glade 1.2:
-	move into standard directory
-
-2002-03-13  Harald Hoyer  <harald@redhat.com>
-
 	* src/netconf.py 1.115: added exception handling (nonwirking)
 
 	* src/netconfpkg/gui/EthernetInterfaceDruid.glade 1.2: added VBOX
@@ -6436,13 +6811,6 @@
 	* src/netconfpkg/gui/ADSLInterface.py 1.5, src/netconfpkg/gui/DialupDruid.py 1.7, src/netconfpkg/gui/IsdnInterface.py 1.4, src/netconfpkg/gui/ModemInterface.py 1.7:
 	added druid to __init__
 
-2002-03-13  Than Ngo  <than@redhat.com>
-
-	* src/control/pixmaps/blue_empty_led.xpm 1.2, src/control/pixmaps/blue_led.xpm 1.2, src/control/pixmaps/control.xpm 1.2, src/control/pixmaps/ethernet.xpm 1.2, src/control/pixmaps/isdn.xpm 1.2, src/control/pixmaps/loopback.xpm 1.2, src/control/pixmaps/off.xpm 1.3, src/control/pixmaps/on.xpm 1.3, src/control/pixmaps/plip.xpm 1.2, src/control/pixmaps/ppp.xpm 1.2, src/control/pixmaps/red_empty_led.xpm 1.2, src/control/pixmaps/red_led.xpm 1.2:
-	* move icons in standard directory
-
-2002-03-13  Harald Hoyer  <harald@redhat.com>
-
 	* src/netconfpkg/gui/NewInterfaceDruid.glade 1.4:
 	*** empty log message ***
 
@@ -6450,7 +6818,7 @@
 
 2002-03-13  Than Ngo  <than@redhat.com>
 
-	* src/control/functions.py 1.7, src/control/neat-control.py 1.8, src/netconfpkg/Control.py 1.1, src/pixmaps/blue_empty_led.xpm 1.1, src/pixmaps/blue_led.xpm 1.1, src/pixmaps/control.xpm 1.1, src/pixmaps/ethernet.xpm 1.1, src/pixmaps/isdn.xpm 1.1, src/pixmaps/loopback.xpm 1.1, src/pixmaps/off.xpm 1.1, src/pixmaps/on.xpm 1.1, src/pixmaps/plip.xpm 1.1, src/pixmaps/ppp.xpm 1.1, src/pixmaps/red_empty_led.xpm 1.1, src/pixmaps/red_led.xpm 1.1, src/neat-control.glade 1.1, src/neat-control.py 1.1:
+	* src/netconfpkg/Control.py 1.1, src/pixmaps/blue_empty_led.xpm 1.1, src/pixmaps/blue_led.xpm 1.1, src/pixmaps/control.xpm 1.1, src/pixmaps/ethernet.xpm 1.1, src/pixmaps/isdn.xpm 1.1, src/pixmaps/loopback.xpm 1.1, src/pixmaps/off.xpm 1.1, src/pixmaps/on.xpm 1.1, src/pixmaps/plip.xpm 1.1, src/pixmaps/ppp.xpm 1.1, src/pixmaps/red_empty_led.xpm 1.1, src/pixmaps/red_led.xpm 1.1, src/neat-control.glade 1.1, src/neat-control.py 1.1:
 	* move neat-control into standard directory
 
 2002-03-13  Harald Hoyer  <harald@redhat.com>
@@ -6484,14 +6852,6 @@
 		* redhat-config-network.spec.in: Add rp3 support.
 		* src/netconfpkg/gui/isdnhardware.py: isdn work
 		* src/maindialog.glade: reverse devices and hw
-
-2002-03-12  Than Ngo  <than@redhat.com>
-
-	* src/control/functions.py 1.6, src/control/neat-control.py 1.7:
-	* implement activate/deactivate/configure
-
-	* src/control/functions.py 1.5, src/control/maindialog.glade 1.9:
-	* cosmetic
 
 2002-03-12  Harald Hoyer  <harald@redhat.com>
 
@@ -6605,16 +6965,11 @@
 
 2002-02-28  Jonathan Blandford  <jrb@redhat.com>
 
-	* ChangeLog 1.4, src/control/maindialog.glade 1.8, src/control/neat-control.py 1.6:
+	* ChangeLog 1.4:
 	Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 		* src/control/neat-control.py (mainDialog.__init__): clean up GUI
 		a bit.
-
-2002-02-27  Than Ngo  <than@redhat.com>
-
-	* src/control/functions.py 1.4, src/control/maindialog.glade 1.7, src/control/neat-control.py 1.5:
-	* disable info button
 
 2002-02-27  Harald Hoyer  <harald@redhat.com>
 
@@ -6733,39 +7088,10 @@
 	* src/Makefile.am 1.45, src/netconfpkg/Makefile.am 1.39, src/netconfpkg/gui/Makefile.am 1.4:
 	Python 2.2 (should really be version independent...)
 
-2002-01-28  Than Ngo  <than@redhat.com>
-
-	* src/control/maindialog.glade 1.6, src/control/propertiesdialog.glade 1.2:
-	* fixed some typos
-
-	* src/control/neat-control.py 1.4: * don't break if clist is empty
-
 2002-01-27  Than Ngo  <than@redhat.com>
 
 	* src/netconfpkg/NCDeviceList.py 1.28:
 	* check permission of network config file before open it
-
-	* src/control/pixmaps/ethernet.xpm 1.1, src/control/pixmaps/isdn.xpm 1.1, src/control/pixmaps/loopback.xpm 1.1, src/control/pixmaps/off.xpm 1.2, src/control/pixmaps/on.xpm 1.2, src/control/pixmaps/plip.xpm 1.1, src/control/pixmaps/ppp.xpm 1.1, src/control/debugdialog.glade 1.1, src/control/display.glade 1.2, src/control/functions.py 1.3, src/control/maindialog.glade 1.5, src/control/monitordialog.glade 1.1, src/control/neat-control.py 1.3, src/control/properties.glade 1.3, src/control/propertiesdialog.glade 1.1, src/control/statusdialog.glade 1.1:
-	* implements function to read all active network devices
-	* fix and improve hydrate function so that icons are showed in clist, it looks cool
-	* rename some glade files
-	* add some icons
-
-	* src/control/neat-control.py 1.2, src/control/functions.py 1.2, src/control/maindialog.glade 1.4:
-	* implement hydrate is done
-
-2002-01-26  Than Ngo  <than@redhat.com>
-
-	* src/control/pixmaps/blue_empty_led.xpm 1.1, src/control/pixmaps/blue_empty_led_xpm.xpm 1.2, src/control/pixmaps/blue_led.xpm 1.1, src/control/pixmaps/blue_led_xpm.xpm 1.2, src/control/pixmaps/off.xpm 1.1, src/control/pixmaps/on.xpm 1.1, src/control/pixmaps/red_empty_led.xpm 1.1, src/control/pixmaps/red_empty_led_xpm.xpm 1.2, src/control/pixmaps/red_led.xpm 1.1, src/control/pixmaps/red_led_xpm.xpm 1.2:
-	* add some icons
-
-	* src/control/neat-control.py 1.1, src/control/pixmaps/control.xpm 1.1, src/control/pixmaps/kppp.png 1.2, src/control/properties.glade 1.2, src/control/functions.py 1.1, src/control/maindialog.glade 1.3:
-	* some python codes
-
-2002-01-25  Than Ngo  <than@redhat.com>
-
-	* src/control/display.glade 1.1, src/control/maindialog.glade 1.2, src/control/pixmaps/blue_empty_led_xpm.xpm 1.1, src/control/pixmaps/blue_led_xpm.xpm 1.1, src/control/pixmaps/kppp.png 1.1, src/control/pixmaps/red_empty_led_xpm.xpm 1.1, src/control/pixmaps/red_led_xpm.xpm 1.1, src/control/popupmenu.glade 1.1:
-	* some GUI changes
 
 2002-01-20  leon  <leon@redhat.com>
 
@@ -6778,11 +7104,6 @@
 2002-01-16  kmaraas  <kmaraas@redhat.com>
 
 	* po/no.po 1.40: Update
-
-2002-01-15  Than Ngo  <than@redhat.com>
-
-	* src/control/maindialog.glade 1.1, src/control/properties.glade 1.1:
-	* add GUI for redhat network control
 
 2002-01-11  Harald Hoyer  <harald@redhat.com>
 
@@ -7064,7 +7385,7 @@
 	* src/netconfpkg/gui/EthernetHardwareDruid.py 1.3, src/netconfpkg/gui/ModemInterface.py 1.3, src/netconfpkg/gui/NewInterface.py 1.3, src/netconfpkg/gui/ctcconfig.py 1.3, src/netconfpkg/gui/devicetype.py 1.3, src/netconfpkg/gui/dialupconfig.py 1.3, src/netconfpkg/gui/editdomain.py 1.3, src/netconfpkg/gui/edithosts.py 1.3, src/netconfpkg/gui/ethernethardware.py 1.3, src/netconfpkg/gui/exception.py 1.3, src/netconfpkg/gui/hardwaretype.py 1.3, src/netconfpkg/gui/isdnhardware.py 1.3, src/netconfpkg/gui/modemconfig.py 1.3, src/netconfpkg/gui/provider.py 1.3, src/netconfpkg/gui/tcpdialog.py 1.3, src/netconfpkg/gui/tokenringhardware.py 1.3:
 	more gui sep fixes
 
-	* src/netconfpkg/gui/ADSLInterface.py 1.2, src/netconfpkg/gui/ADSLInterfaceDruid.glade 1.2, src/netconfpkg/gui/DialupDruid.glade 1.2, src/netconfpkg/gui/DialupDruid.py 1.2, src/netconfpkg/gui/EthernetHardwareDruid.glade 1.2, src/netconfpkg/gui/EthernetHardwareDruid.py 1.2, src/netconfpkg/gui/GUI_functions.py 1.2, src/netconfpkg/gui/InterfaceCreator.py 1.2, src/netconfpkg/gui/IsdnHardwareDruid.glade 1.2, src/netconfpkg/gui/IsdnInterface.py 1.2, src/netconfpkg/gui/Makefile.am 1.2, src/netconfpkg/gui/ModemDruid.glade 1.2, src/netconfpkg/gui/ModemInterface.py 1.2, src/netconfpkg/gui/NewInterface.py 1.2, src/netconfpkg/gui/NewInterfaceDruid.glade 1.2, src/netconfpkg/gui/TokenRingHardwareDruid.glade 1.2, src/netconfpkg/gui/__init__.py 1.2, src/netconfpkg/gui/chooseprovider.glade 1.2, src/netconfpkg/gui/cipeconfig.glade 1.2, src/netconfpkg/gui/cipeconfig.py 1.2, src/netconfpkg/gui/ctcconfig.glade 1.2, src/netconfpkg/gui/ctcconfig.py 1.2, src/netconfpkg/gui/deviceconfig.py 1.2, src/netconfpkg/gui/devicetype.glade 1.2, src/netconfpkg/gui/devicetype.py 1.2, src/netconfpkg/gui/dialupconfig.glade 1.2, src/netconfpkg/gui/dialupconfig.py 1.2, src/netconfpkg/gui/dslconfig.glade 1.2, src/netconfpkg/gui/dslconfig.py 1.2, src/netconfpkg/gui/editadress.glade 1.2, src/netconfpkg/gui/editadress.py 1.2, src/netconfpkg/gui/editdomain.glade 1.2, src/netconfpkg/gui/editdomain.py 1.2, src/netconfpkg/gui/edithosts.glade 1.2, src/netconfpkg/gui/edithosts.py 1.2, src/netconfpkg/gui/ethernetconfig.glade 1.2, src/netconfpkg/gui/ethernetconfig.py 1.2, src/netconfpkg/gui/ethernethardware.glade 1.2, src/netconfpkg/gui/ethernethardware.py 1.2, src/netconfpkg/gui/exception.py 1.2, src/netconfpkg/gui/hardwaretype.glade 1.2, src/netconfpkg/gui/hardwaretype.py 1.2, src/netconfpkg/gui/isdnhardware.glade 1.2, src/netconfpkg/gui/isdnhardware.py 1.2, src/netconfpkg/gui/modemconfig.glade 1.2, src/netconfpkg/gui/modemconfig.py 1.2, src/netconfpkg/gui/provider.py 1.2, src/netconfpkg/gui/providerdb.py 1.2, src/netconfpkg/gui/tcpdialog.py 1.2, src/netconfpkg/gui/tcpipdialog.glade 1.2, src/netconfpkg/gui/tokenringconfig.glade 1.2, src/netconfpkg/gui/tokenringconfig.py 1.2, src/netconfpkg/gui/tokenringhardware.glade 1.2, src/netconfpkg/gui/tokenringhardware.py 1.2, src/netconfpkg/gui/wirelessconfig.glade 1.2, src/netconfpkg/gui/wirelessconfig.py 1.2, src/netconfpkg/TokenRingHardwareDruid.py 1.2, src/netconfpkg/chooseprovider.glade 1.5, src/netconfpkg/cipeconfig.glade 1.11, src/netconfpkg/cipeconfig.py 1.11, src/netconfpkg/ctcconfig.glade 1.2, src/netconfpkg/ctcconfig.py 1.2, src/netconfpkg/deviceconfig.py 1.17, src/netconfpkg/devicetype.glade 1.5, src/netconfpkg/devicetype.py 1.9, src/netconfpkg/dialupconfig.glade 1.23, src/netconfpkg/dialupconfig.py 1.42, src/netconfpkg/dslconfig.glade 1.21, src/netconfpkg/dslconfig.py 1.19, src/netconfpkg/editadress.glade 1.6, src/netconfpkg/editadress.py 1.13, src/netconfpkg/editdomain.glade 1.2, src/netconfpkg/editdomain.py 1.10, src/netconfpkg/edithosts.glade 1.3, src/netconfpkg/edithosts.py 1.8, src/netconfpkg/ethernetconfig.glade 1.16, src/netconfpkg/ethernetconfig.py 1.22, src/netconfpkg/ethernethardware.glade 1.7, src/netconfpkg/ethernethardware.py 1.14, src/netconfpkg/exception.py 1.2, src/netconfpkg/hardwaretype.glade 1.3, src/netconfpkg/hardwaretype.py 1.6, src/netconfpkg/isdnhardware.glade 1.5, src/netconfpkg/isdnhardware.py 1.17, src/netconfpkg/modemconfig.glade 1.9, src/netconfpkg/modemconfig.py 1.16, src/netconfpkg/provider.py 1.14, src/netconfpkg/providerdb.py 1.9, src/netconfpkg/tcpdialog.py 1.16, src/netconfpkg/tcpipdialog.glade 1.10, src/netconfpkg/tokenringconfig.glade 1.4, src/netconfpkg/tokenringconfig.py 1.4, src/netconfpkg/tokenringhardware.glade 1.2, src/netconfpkg/tokenringhardware.py 1.2, src/netconfpkg/wirelessconfig.glade 1.15, src/netconfpkg/wirelessconfig.py 1.12, src/Makefile.am 1.43, src/glade-strings.c 1.18, src/netconf.py 1.103, src/netconfpkg/ADSLInterface.py 1.10, src/netconfpkg/ADSLInterfaceDruid.glade 1.6, src/netconfpkg/DialupDruid.glade 1.6, src/netconfpkg/DialupDruid.py 1.13, src/netconfpkg/EthernetHardwareDruid.glade 1.5, src/netconfpkg/EthernetHardwareDruid.py 1.7, src/netconfpkg/InterfaceCreator.py 1.3, src/netconfpkg/IsdnHardwareDruid.glade 1.4, src/netconfpkg/IsdnInterface.py 1.12, src/netconfpkg/Makefile.am 1.37, src/netconfpkg/ModemDruid.glade 1.9, src/netconfpkg/ModemInterface.py 1.17, src/netconfpkg/NCDevice.py 1.50, src/netconfpkg/NCProfileList.py 1.42, src/netconfpkg/NC_functions.py 1.36, src/netconfpkg/NewInterface.py 1.8, src/netconfpkg/NewInterfaceDruid.glade 1.4, src/netconfpkg/TokenRingHardwareDruid.glade 1.2, po/is.po 1.23, po/it.po 1.30, po/ja.po 1.35, po/ko.po 1.25, po/no.po 1.33, po/redhat-config-network.pot 1.29, po/ru.po 1.5, po/sv.po 1.20, doc/images/neat1.png 1.2, po/POTFILES.in 1.4, po/cs.po 1.4, po/da.po 1.13, po/de.po 1.34, po/es.po 1.30, po/fr.po 1.31, configure.in 1.62, redhat-config-network.spec.in 1.65:
+	* src/netconfpkg/gui/ADSLInterface.py 1.2, src/netconfpkg/gui/ADSLInterfaceDruid.glade 1.2, src/netconfpkg/gui/DialupDruid.glade 1.2, src/netconfpkg/gui/DialupDruid.py 1.2, src/netconfpkg/gui/EthernetHardwareDruid.glade 1.2, src/netconfpkg/gui/EthernetHardwareDruid.py 1.2, src/netconfpkg/gui/GUI_functions.py 1.2, src/netconfpkg/gui/InterfaceCreator.py 1.2, src/netconfpkg/gui/IsdnHardwareDruid.glade 1.2, src/netconfpkg/gui/IsdnInterface.py 1.2, src/netconfpkg/gui/Makefile.am 1.2, src/netconfpkg/gui/ModemDruid.glade 1.2, src/netconfpkg/gui/ModemInterface.py 1.2, src/netconfpkg/gui/NewInterface.py 1.2, src/netconfpkg/gui/NewInterfaceDruid.glade 1.2, src/netconfpkg/gui/TokenRingHardwareDruid.glade 1.2, src/netconfpkg/gui/__init__.py 1.2, src/netconfpkg/gui/chooseprovider.glade 1.2, src/netconfpkg/gui/cipeconfig.glade 1.2, src/netconfpkg/gui/cipeconfig.py 1.2, src/netconfpkg/gui/ctcconfig.glade 1.2, src/netconfpkg/gui/ctcconfig.py 1.2, src/netconfpkg/gui/deviceconfig.py 1.2, src/netconfpkg/gui/devicetype.glade 1.2, src/netconfpkg/gui/devicetype.py 1.2, src/netconfpkg/gui/dialupconfig.glade 1.2, src/netconfpkg/gui/dialupconfig.py 1.2, src/netconfpkg/gui/dslconfig.glade 1.2, src/netconfpkg/gui/dslconfig.py 1.2, src/netconfpkg/gui/editadress.glade 1.2, src/netconfpkg/gui/editadress.py 1.2, src/netconfpkg/gui/editdomain.glade 1.2, src/netconfpkg/gui/editdomain.py 1.2, src/netconfpkg/gui/edithosts.glade 1.2, src/netconfpkg/gui/edithosts.py 1.2, src/netconfpkg/gui/ethernetconfig.glade 1.2, src/netconfpkg/gui/ethernetconfig.py 1.2, src/netconfpkg/gui/ethernethardware.glade 1.2, src/netconfpkg/gui/ethernethardware.py 1.2, src/netconfpkg/gui/exception.py 1.2, src/netconfpkg/gui/hardwaretype.glade 1.2, src/netconfpkg/gui/hardwaretype.py 1.2, src/netconfpkg/gui/isdnhardware.glade 1.2, src/netconfpkg/gui/isdnhardware.py 1.2, src/netconfpkg/gui/modemconfig.glade 1.2, src/netconfpkg/gui/modemconfig.py 1.2, src/netconfpkg/gui/provider.py 1.2, src/netconfpkg/gui/providerdb.py 1.2, src/netconfpkg/gui/tcpdialog.py 1.2, src/netconfpkg/gui/tcpipdialog.glade 1.2, src/netconfpkg/gui/tokenringconfig.glade 1.2, src/netconfpkg/gui/tokenringconfig.py 1.2, src/netconfpkg/gui/tokenringhardware.glade 1.2, src/netconfpkg/gui/tokenringhardware.py 1.2, src/netconfpkg/gui/wirelessconfig.glade 1.2, src/netconfpkg/gui/wirelessconfig.py 1.2, src/netconfpkg/TokenRingHardwareDruid.py 1.2, src/netconfpkg/chooseprovider.glade 1.5, src/netconfpkg/cipeconfig.glade 1.11, src/netconfpkg/cipeconfig.py 1.11, src/netconfpkg/ctcconfig.glade 1.2, src/netconfpkg/ctcconfig.py 1.2, src/netconfpkg/deviceconfig.py 1.17, src/netconfpkg/devicetype.glade 1.5, src/netconfpkg/devicetype.py 1.9, src/netconfpkg/dialupconfig.glade 1.23, src/netconfpkg/dialupconfig.py 1.42, src/netconfpkg/dslconfig.glade 1.21, src/netconfpkg/dslconfig.py 1.19, src/netconfpkg/editadress.glade 1.6, src/netconfpkg/editadress.py 1.13, src/netconfpkg/editdomain.glade 1.2, src/netconfpkg/editdomain.py 1.10, src/netconfpkg/edithosts.glade 1.3, src/netconfpkg/edithosts.py 1.8, src/netconfpkg/ethernetconfig.glade 1.16, src/netconfpkg/ethernetconfig.py 1.22, src/netconfpkg/ethernethardware.glade 1.7, src/netconfpkg/ethernethardware.py 1.14, src/netconfpkg/exception.py 1.2, src/netconfpkg/hardwaretype.glade 1.3, src/netconfpkg/hardwaretype.py 1.6, src/netconfpkg/isdnhardware.glade 1.5, src/netconfpkg/isdnhardware.py 1.17, src/netconfpkg/modemconfig.glade 1.9, src/netconfpkg/modemconfig.py 1.16, src/netconfpkg/provider.py 1.14, src/netconfpkg/providerdb.py 1.9, src/netconfpkg/tcpdialog.py 1.16, src/netconfpkg/tcpipdialog.glade 1.10, src/netconfpkg/tokenringconfig.glade 1.4, src/netconfpkg/tokenringconfig.py 1.4, src/netconfpkg/tokenringhardware.glade 1.2, src/netconfpkg/tokenringhardware.py 1.2, src/netconfpkg/wirelessconfig.glade 1.15, src/netconfpkg/wirelessconfig.py 1.12, src/Makefile.am 1.43, src/glade-strings.c 1.18, src/netconf.py 1.103, src/netconfpkg/ADSLInterface.py 1.10, src/netconfpkg/ADSLInterfaceDruid.glade 1.6, src/netconfpkg/DialupDruid.glade 1.6, src/netconfpkg/DialupDruid.py 1.13, src/netconfpkg/EthernetHardwareDruid.glade 1.5, src/netconfpkg/EthernetHardwareDruid.py 1.7, src/netconfpkg/InterfaceCreator.py 1.3, src/netconfpkg/IsdnHardwareDruid.glade 1.4, src/netconfpkg/IsdnInterface.py 1.12, src/netconfpkg/Makefile.am 1.37, src/netconfpkg/ModemDruid.glade 1.9, src/netconfpkg/ModemInterface.py 1.17, src/netconfpkg/NCDevice.py 1.50, src/netconfpkg/NCProfileList.py 1.42, src/netconfpkg/NC_functions.py 1.36, src/netconfpkg/NewInterface.py 1.8, src/netconfpkg/NewInterfaceDruid.glade 1.4, src/netconfpkg/TokenRingHardwareDruid.glade 1.2, po/is.po 1.23, po/it.po 1.30, po/ja.po 1.35, po/ko.po 1.25, po/no.po 1.33, po/redhat-config-network.pot 1.29, po/ru.po 1.5, po/sv.po 1.20, po/POTFILES.in 1.4, po/cs.po 1.4, po/da.po 1.13, po/de.po 1.34, po/es.po 1.30, po/fr.po 1.31, configure.in 1.62, redhat-config-network.spec.in 1.65:
 	joined gui-sep
 
 	* po/no.po 1.32.2.3, po/redhat-config-network.pot 1.28.2.3, po/ru.po 1.4.2.3, po/sv.po 1.19.2.3, po/is.po 1.22.2.3, po/it.po 1.29.2.3, po/ja.po 1.34.2.3, po/ko.po 1.23.2.3, po/POTFILES.in 1.3.2.2, po/cs.po 1.3.2.3, po/da.po 1.12.2.3, po/de.po 1.33.2.3, po/es.po 1.29.2.3, po/fr.po 1.30.2.3, redhat-config-network.spec.in 1.63.2.2:
@@ -7079,12 +7400,7 @@
 
 2001-10-24  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/gui/Makefile.am 1.1.2.2, src/netconfpkg/gui/NewInterface.py 1.1.2.2, src/netconfpkg/gui/deviceconfig.py 1.1.2.3, src/netconfpkg/gui/devicetype.py 1.1.2.2, src/netconfpkg/gui/editdomain.py 1.1.2.3, src/netconfpkg/gui/edithosts.py 1.1.2.3, src/netconfpkg/gui/ethernethardware.py 1.1.2.3, src/netconfpkg/gui/hardwaretype.py 1.1.2.2, src/netconfpkg/gui/isdnhardware.py 1.1.2.3, src/netconfpkg/gui/modemconfig.py 1.1.2.3, src/netconfpkg/gui/provider.py 1.1.2.3, src/netconfpkg/gui/tcpdialog.py 1.1.2.3, src/netconfpkg/gui/tokenringhardware.py 1.1.2.3, src/netconf.py 1.102.2.2, po/ru.po 1.4.2.2, po/sv.po 1.19.2.2, po/no.po 1.32.2.2, po/redhat-config-network.pot 1.28.2.2, po/ja.po 1.34.2.2, po/ko.po 1.23.2.2, po/it.po 1.29.2.2, po/da.po 1.12.2.2, po/de.po 1.33.2.2, po/es.po 1.29.2.2, po/fr.po 1.30.2.2, po/is.po 1.22.2.2:
-	more fixes for gui seperation
-
-	* doc/images/neat1.png 1.1: New file.
-
-	* doc/images/neat1.png 1.1.2.1, po/cs.po 1.3.2.2, configure.in 1.61.2.2, redhat-config-network.spec.in 1.63.2.1:
+	* src/netconfpkg/gui/Makefile.am 1.1.2.2, src/netconfpkg/gui/NewInterface.py 1.1.2.2, src/netconfpkg/gui/deviceconfig.py 1.1.2.3, src/netconfpkg/gui/devicetype.py 1.1.2.2, src/netconfpkg/gui/editdomain.py 1.1.2.3, src/netconfpkg/gui/edithosts.py 1.1.2.3, src/netconfpkg/gui/ethernethardware.py 1.1.2.3, src/netconfpkg/gui/hardwaretype.py 1.1.2.2, src/netconfpkg/gui/isdnhardware.py 1.1.2.3, src/netconfpkg/gui/modemconfig.py 1.1.2.3, src/netconfpkg/gui/provider.py 1.1.2.3, src/netconfpkg/gui/tcpdialog.py 1.1.2.3, src/netconfpkg/gui/tokenringhardware.py 1.1.2.3, src/netconf.py 1.102.2.2, po/ru.po 1.4.2.2, po/sv.po 1.19.2.2, po/no.po 1.32.2.2, po/redhat-config-network.pot 1.28.2.2, po/ja.po 1.34.2.2, po/ko.po 1.23.2.2, po/it.po 1.29.2.2, po/da.po 1.12.2.2, po/de.po 1.33.2.2, po/es.po 1.29.2.2, po/fr.po 1.30.2.2, po/is.po 1.22.2.2, po/cs.po 1.3.2.2, configure.in 1.61.2.2, redhat-config-network.spec.in 1.63.2.1:
 	more fixes for gui seperation
 
 	* src/netconfpkg/gui/deviceconfig.py 1.1.2.2, src/netconfpkg/gui/editdomain.py 1.1.2.2, src/netconfpkg/gui/edithosts.py 1.1.2.2, src/netconfpkg/gui/ethernetconfig.py 1.1.2.2, src/netconfpkg/gui/ethernethardware.py 1.1.2.2, src/netconfpkg/gui/exception.py 1.1.2.2, src/netconfpkg/gui/isdnhardware.py 1.1.2.2, src/netconfpkg/gui/modemconfig.py 1.1.2.2, src/netconfpkg/gui/provider.py 1.1.2.2, src/netconfpkg/gui/tcpdialog.py 1.1.2.2, src/netconfpkg/gui/tokenringhardware.py 1.1.2.2, src/netconfpkg/Makefile.am 1.36.2.2:
@@ -7133,7 +7449,7 @@
 
 2001-10-22  Harald Hoyer  <harald@redhat.com>
 
-	* po/is.po 1.22, po/it.po 1.29, po/ja.po 1.34, po/ko.po 1.23, po/no.po 1.32, po/redhat-config-network.pot 1.28, po/ru.po 1.4, po/sv.po 1.19, src/glade-strings.c 1.17, doc/Makefile.am 1.4, doc/images/Makefile.am 1.1, doc/images/druid1.png 1.2, doc/images/druid10.png 1.2, doc/images/druid2.png 1.2, doc/images/druid3.png 1.2, doc/images/druid4.png 1.2, doc/images/druid5.png 1.2, doc/images/druid6.png 1.2, doc/images/druid7.png 1.2, po/cs.po 1.3, po/da.po 1.12, po/de.po 1.33, po/es.po 1.29, po/fr.po 1.30, configure.in 1.61:
+	* po/is.po 1.22, po/it.po 1.29, po/ja.po 1.34, po/ko.po 1.23, po/no.po 1.32, po/redhat-config-network.pot 1.28, po/ru.po 1.4, po/sv.po 1.19, src/glade-strings.c 1.17, doc/Makefile.am 1.4, po/cs.po 1.3, po/da.po 1.12, po/de.po 1.33, po/es.po 1.29, po/fr.po 1.30, configure.in 1.61:
 	added help pictures
 
 	* configure.in 1.60, redhat-config-network.spec.in 1.63: bumped version
@@ -8060,7 +8376,7 @@
 
 2001-08-08  Phil Knirsch  <pknirsch@redhat.com>
 
-	* src/netconfpkg/ModemDruid.glade 1.7, src/netconfpkg/ModemInterface.py 1.10, doc/images/druid1.png 1.1, doc/images/druid10.png 1.1, doc/images/druid11.png 1.1, doc/images/druid2.png 1.1, doc/images/druid3.png 1.1, doc/images/druid4.png 1.1, doc/images/druid5.png 1.1, doc/images/druid6.png 1.1, doc/images/druid7.png 1.1, doc/images/druid9.png 1.1, doc/index.html 1.2, redhat-config-network.spec.in 1.16:
+	* src/netconfpkg/ModemDruid.glade 1.7, src/netconfpkg/ModemInterface.py 1.10, doc/index.html 1.2, redhat-config-network.spec.in 1.16:
 	- Added a lot of documentation with images
 	- Final changes to the modem druid GUI and code to look exactly like the
 	  one from the add hardware for modems in neat itself.
@@ -8845,10 +9161,6 @@
 
 	* src/netconfpkg/NCDevice.py 1.30, src/netconfpkg/NCDeviceList.py 1.18, src/netconfpkg/NCDialup.py 1.24, src/netconfpkg/deviceconfig.py 1.4, src/netconfpkg/dialupconfig.glade 1.10, src/netconfpkg/dialupconfig.py 1.18, src/netconfpkg/dslconfig.py 1.11, src/netconfpkg/tcpdialog.py 1.4:
 	* many fixes
-
-2001-07-13  teg  <teg@redhat.com>
-
-	* mockup/.cvsignore 1.3: Removing mockup
 
 2001-07-13  Than Ngo  <than@redhat.com>
 
@@ -10020,8 +10332,6 @@
 	- Removed the Rename button from the Device tab
 	- Added the Hosts cofiguration tab (mightily neglected up to now!)
 
-	* docs/overview 1.2: - Moved to doc/ directory
-
 2001-06-04  Than Ngo  <than@redhat.com>
 
 	* src/netconf.glade 1.4: * obsolete netconf.glade.
@@ -10052,11 +10362,11 @@
 	  use annother glade files in src. netconf should be deleted after netconf.py
 	  is fixed for using glade files
 
-	* mockup/network.xpm 1.2, mockup/new_interface_druid.glade 1.2, mockup/no.xpm 1.2, mockup/us.xpm 1.2, mockup/wirelessconfig.glade 1.2, src/basicdialog.glade 1.1, src/chooseprovider.glade 1.1, src/cipeconfig.glade 1.1, src/dialup.glade 1.1, src/dialupconfig.glade 1.1, src/dslconfig.glade 1.1, src/editadress.glade 1.1, src/ethernetconfig.glade 1.1, src/ethernethardware.glade 1.1, src/firewall-druids.glade 1.1, src/isdnhardware.glade 1.1, src/maindialog.glade 1.1, src/modemconfig.glade 1.1, src/netconf.glade 1.1, src/new_interface_druid.glade 1.1, src/pixmaps/de.xpm 1.1, src/pixmaps/keys.xpm 1.1, src/pixmaps/network.xpm 1.1, src/pixmaps/no.xpm 1.1, src/pixmaps/us.xpm 1.1, src/wirelessconfig.glade 1.1, mockup/basicdialog.glade 1.2, mockup/chooseprovider.glade 1.2, mockup/cipeconfig.glade 1.2, mockup/de.xpm 1.2, mockup/dialup.glade 1.2, mockup/dialupconfig.glade 1.2, mockup/dslconfig.glade 1.2, mockup/editadress.glade 1.2, mockup/ethernetconfig.glade 1.2, mockup/ethernethardware.glade 1.2, mockup/firewall-druids.glade 1.2, mockup/isdnhardware.glade 1.2, mockup/keys.xpm 1.2, mockup/maindialog.glade 1.3, mockup/modemconfig.glade 1.3, mockup/netconf.glade 1.19:
+	* src/basicdialog.glade 1.1, src/chooseprovider.glade 1.1, src/cipeconfig.glade 1.1, src/dialup.glade 1.1, src/dialupconfig.glade 1.1, src/dslconfig.glade 1.1, src/editadress.glade 1.1, src/ethernetconfig.glade 1.1, src/ethernethardware.glade 1.1, src/firewall-druids.glade 1.1, src/isdnhardware.glade 1.1, src/maindialog.glade 1.1, src/modemconfig.glade 1.1, src/netconf.glade 1.1, src/new_interface_druid.glade 1.1, src/pixmaps/de.xpm 1.1, src/pixmaps/keys.xpm 1.1, src/pixmaps/network.xpm 1.1, src/pixmaps/no.xpm 1.1, src/pixmaps/us.xpm 1.1, src/wirelessconfig.glade 1.1:
 	* move glade file into src
 	* move pixmaps in src/pixmaps
 
-	* mockup/ADSLInterface.py 1.2, mockup/ATMInterface.py 1.2, mockup/CableInterface.py 1.2, mockup/CheckList.py 1.2, mockup/DialupInterface.py 1.2, mockup/EthernetInterface.py 1.2, mockup/FirewallDruid.py 1.2, mockup/InterfaceCreator.py 1.2, mockup/MainWindow.py 1.2, mockup/NewInterface.py 1.2, mockup/WirelessInterface.py 1.2, mockup/adsl-config.glade 1.3, mockup/devicewidgets.glade 1.5, mockup/isdn-hardware.glade 1.5, mockup/isdn-provider.glade 1.5, mockup/maindialog.glade 1.2, mockup/modemconfig.glade 1.2, mockup/netconf.py 1.7, src/ADSLInterface.py 1.1, src/ATMInterface.py 1.1, src/CableInterface.py 1.1, src/CheckList.py 1.1, src/DialupInterface.py 1.1, src/EthernetInterface.py 1.1, src/FirewallDruid.py 1.1, src/InterfaceCreator.py 1.1, src/NewInterface.py 1.1, src/WirelessInterface.py 1.1, src/netconf.py 1.1:
+	* src/ADSLInterface.py 1.1, src/ATMInterface.py 1.1, src/CableInterface.py 1.1, src/CheckList.py 1.1, src/DialupInterface.py 1.1, src/EthernetInterface.py 1.1, src/FirewallDruid.py 1.1, src/InterfaceCreator.py 1.1, src/NewInterface.py 1.1, src/WirelessInterface.py 1.1, src/netconf.py 1.1:
 	* move python code into src
 	* remove some unneeded glade files
 
@@ -10079,21 +10389,7 @@
 
 2001-05-31  Harald Hoyer  <harald@redhat.com>
 
-	* src/genClass.py 1.2, src/netconfpkg/genClass.py 1.2, mockup/netconf.glade 1.18:
-	*** empty log message ***
-
-2001-05-31  Phil Knirsch  <pknirsch@redhat.com>
-
-	* mockup/netconf.glade 1.16: - Test of read only netconf.glade file
-
-2001-05-31  Than Ngo  <than@redhat.com>
-
-	* mockup/basicdialog.glade 1.1, mockup/chooseprovider.glade 1.1, mockup/cipeconfig.glade 1.1, mockup/dialupconfig.glade 1.1, mockup/dslconfig.glade 1.1, mockup/editadress.glade 1.1, mockup/ethernetconfig.glade 1.1, mockup/ethernethardware.glade 1.1, mockup/isdnhardware.glade 1.1, mockup/maindialog.glade 1.1, mockup/modemconfig.glade 1.1, mockup/netconf.glade 1.15, mockup/wirelessconfig.glade 1.1:
-	* split netconf.glade
-
-2001-05-31  Harald Hoyer  <harald@redhat.com>
-
-	* src/HardwareList.idl 1.5, src/netconfpkg/HardwareList.idl 1.5:
+	* src/genClass.py 1.2, src/netconfpkg/genClass.py 1.2, src/HardwareList.idl 1.5, src/netconfpkg/HardwareList.idl 1.5:
 	*** empty log message ***
 
 	* src/HardwareList.idl 1.4, src/netconfpkg/HardwareList.idl 1.4:
@@ -10136,45 +10432,10 @@
 
 	* src/Address.py 1.8: Don't reimport sys
 
-2001-05-30  Harald Hoyer  <harald@redhat.com>
-
-	* mockup/netconf.glade 1.14: cipe
-
-2001-05-30  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.13, mockup/netconf.py 1.6:
-	* some cosmetic in GUI
-	* add some test functions in netconf.py
-
-2001-05-30  Harald Hoyer  <harald@redhat.com>
-
-	* mockup/netconf.glade 1.12: firewall and cipe
-
-2001-05-30  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.11: * some changes in security dialog
-
-2001-05-30  Harald Hoyer  <harald@redhat.com>
-
-	* mockup/netconf.glade 1.10: Firewall + Shaping
-
-2001-05-30  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.9, mockup/netconf.py 1.5: * complete GUI
-	* some test funtion in netconf.py
-
 2001-05-29  teg  <teg@redhat.com>
 
 	* doc/configurationfiles.txt 1.1:
 	Added the beginnings of configuration file documentation
-
-	* mockup/netconf.py 1.4:
-	Comment two lines which makes the program abort.
-
-2001-05-28  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.8, mockup/netconf.py 1.3:
-	* major changes in GUI layout
 
 2001-05-28  Harald Hoyer  <harald@redhat.com>
 
@@ -10195,12 +10456,6 @@
 
 2001-05-28  Than Ngo  <than@redhat.com>
 
-	* mockup/netconf.glade 1.7, mockup/netconf.py 1.2:
-	* some changes in GUI
-
-	* mockup/de.xpm 1.1, mockup/keys.xpm 1.1, mockup/network.xpm 1.1, mockup/no.xpm 1.1, mockup/us.xpm 1.1:
-	* add some pixmaps
-
 	* src/netconf.idl 1.2, src/netconfpkg/netconf.idl 1.2: add more datas
 
 2001-05-28  Harald Hoyer  <harald@redhat.com>
@@ -10208,46 +10463,9 @@
 	* src/netconf.idl 1.1, src/netconfpkg/netconf.idl 1.1:
 	*** empty log message ***
 
-2001-05-26  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.6, mockup/netconf.py 1.1: * added netconf.py
-	* fixed GUI
-
-2001-05-23  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.5: some cosmetic fixes
-
 2001-05-23  teg  <teg@redhat.com>
 
 	* src/Resolver.py 1.1: New file
-
-2001-05-23  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.4:
-	* some changes in basic setup dialog and mainWindow
-
-	* mockup/netconf.glade 1.3: * add provider database
-
-	* mockup/netconf.glade 1.2: rename Widget
-
-2001-05-22  Than Ngo  <than@redhat.com>
-
-	* mockup/netconf.glade 1.1: * 1. version of netconf.glade
-
-2001-05-22  Phil Knirsch  <pknirsch@redhat.com>
-
-	* docs/overview 1.1: - Overview file for the whole project.
-
-2001-05-21  teg  <teg@redhat.com>
-
-	* mockup/devicewidgets.glade 1.4: Fix typo.
-
-2001-05-21  pbrown  <pbrown@redhat.com>
-
-	* mockup/.cvsignore 1.2: *** empty log message ***
-
-	* mockup/adsl-config.glade 1.2, mockup/isdn-hardware.glade 1.4, mockup/isdn-provider.glade 1.4:
-	more layout adjustments.
 
 2001-05-21  teg  <teg@redhat.com>
 
@@ -10256,37 +10474,12 @@
 
 	* src/Address.py 1.7: Bugfixes
 
-2001-05-21  pbrown  <pbrown@redhat.com>
-
-	* mockup/devicewidgets.glade 1.3: fix some minor layout issues
-
-2001-05-21  Phil Knirsch  <pknirsch@redhat.com>
-
-	* mockup/devicewidgets.glade 1.2:
-	- Updated device mockup to reflect the more finalized GUI.
-
-2001-05-17  Than Ngo  <than@redhat.com>
-
-	* mockup/adsl-config.glade 1.1, mockup/isdn-hardware.glade 1.3, mockup/isdn-provider.glade 1.3:
-	* add adsl GUI
-
 2001-05-16  teg  <teg@redhat.com>
 
 	* src/EthernetDevice.py 1.3:
 	Make sure it finds Conf, read config files.
 
 	* src/Address.py 1.6: Better integration of address file handling
-
-2001-05-16  Than Ngo  <than@redhat.com>
-
-	* mockup/isdn-provider.glade 1.2: * some fixes in GUI
-
-2001-05-15  Than Ngo  <than@redhat.com>
-
-	* mockup/isdn-hardware.glade 1.2: * butoon cannel instead close
-
-	* mockup/isdn-hardware.glade 1.1, mockup/isdn-provider.glade 1.1:
-	* creates ISDN GUI
 
 2001-05-11  pbrown  <pbrown@redhat.com>
 
@@ -10302,10 +10495,6 @@
 	* src/EthernetDevice.py 1.1: Added.
 
 2001-05-11  pbrown  <pbrown@redhat.com>
-
-	* mockup/mainwindow.glade 1.2: moved to ../src
-
-	* mockup/devicewidgets.glade 1.1: lots of skeletons for some widgets.
 
 	* src/MainWindow.py 1.1, src/inspect.py 1.1, src/mainwindow.glade 1.1, src/pydoc.py 1.1:
 	beginnings on a toplevel window
@@ -10327,16 +10516,6 @@
 2001-05-09  teg  <teg@redhat.com>
 
 	* src/Device.py 1.2: Lack of capitalization
-
-2001-05-07  pbrown  <pbrown@redhat.com>
-
-	* mockup/.cvsignore 1.1, mockup/MainWindow.py 1.1, mockup/mainwindow.glade 1.1:
-	skeleton for main window.
-
-2001-05-04  Jonathan Blandford  <jrb@redhat.com>
-
-	* mockup/WirelessInterface.py 1.1, mockup/dialup.glade 1.1, mockup/firewall-druids.glade 1.1, mockup/new_interface_druid.glade 1.1, mockup/ADSLInterface.py 1.1, mockup/ATMInterface.py 1.1, mockup/CableInterface.py 1.1, mockup/CheckList.py 1.1, mockup/DialupInterface.py 1.1, mockup/EthernetInterface.py 1.1, mockup/FirewallDruid.py 1.1, mockup/InterfaceCreator.py 1.1, mockup/NewInterface.py 1.1:
-	added mockup
 
 2001-05-04  teg  <teg@redhat.com>
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-15 11:29+0100\n"
+"POT-Creation-Date: 2004-06-29 12:04+0200\n"
 "PO-Revision-Date: 2004-03-18 19:37+0900\n"
 "Last-Translator: Tadashi Jokagi <fedora@elf.no-ip.org>\n"
 "Language-Team: Japanese <i18n-list@redhat.com>\n"
@@ -49,11 +49,11 @@ msgstr "インターネットへの接続を設定"
 msgid "Internet Configuration Wizard"
 msgstr "インターネット設定ウィザード"
 
-#: src/neat-control.py:46 src/netconf.py:72
+#: src/neat-control.py:50 src/netconf.py:72
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "エラー: グラフィカル環境を初期化できません。"
 
-#: src/neat-control.py:47 src/netconf.py:73
+#: src/neat-control.py:51 src/netconf.py:73
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
@@ -61,7 +61,7 @@ msgstr ""
 "恐らく、グラフィカル環境を使用してそのツールが実行されなかったことが障害の要"
 "因でしょう。"
 
-#: src/neat-control.py:48 src/netconf.py:74
+#: src/neat-control.py:52 src/netconf.py:74
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -69,12 +69,12 @@ msgstr ""
 "グラフィカルユーザーインターフェースを起動するか、 または表示変数を設定してく"
 "ださい。\n"
 
-#: src/neat-control.py:138 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1636
+#: src/neat-control.py:144 src/netconf-cmd.py:100
+#: src/netconfpkg/gui/maindialog.py:1674
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:139 src/netconf-cmd.py:102
+#: src/neat-control.py:145 src/netconf-cmd.py:101
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -82,31 +82,31 @@ msgstr ""
 "このソフトウェアはGPLの元で配布されています。バグに関する報告は Red Hatの "
 "Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
 
-#: src/neat-control.py:193
+#: src/neat-control.py:203
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "ネットワークデバイス%sを設定できません。"
 
-#: src/neat-control.py:213
+#: src/neat-control.py:223
 msgid "Switching Profiles"
 msgstr "プロファイルに切替中です"
 
-#: src/neat-control.py:214
+#: src/neat-control.py:224
 #, python-format
 msgid "Switching to profile %s"
 msgstr "プロファイル%sに切替中です"
 
-#: src/neat-control.py:215
+#: src/neat-control.py:225
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "プロファイル%sに切り替え失敗"
 
 #. TBD
-#: src/neat-control.py:230
+#: src/neat-control.py:240
 msgid "To be rewritten!"
 msgstr "再書き込みとなります!"
 
-#: src/neat-control.py:337
+#: src/neat-control.py:347
 msgid " (active)"
 msgstr " (動作中)"
 
@@ -209,11 +209,11 @@ msgstr "エラー：%s, %s!"
 msgid "Starting text version"
 msgstr "テキストバージョンを開始"
 
-#: src/netconf.py:111
+#: src/netconf.py:116
 msgid "Loading Network Configuration..."
 msgstr "ネットワーク設定をロードしています..."
 
-#: src/netconf.py:124
+#: src/netconf.py:129
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -223,11 +223,11 @@ msgstr ""
 "\n"
 "使用法: system-config-network -v --verbose"
 
-#: src/netconf.py:253
+#: src/netconf.py:260
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "ルート権限で system-config-network を開始してください。\n"
 
-#: src/netconf-cmd.py:65
+#: src/netconf-cmd.py:64
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -239,63 +239,68 @@ msgstr ""
 "以下のテキストを使用して、https://bugzilla.redhat.com/bugzillaの\n"
 "コンポーネント%sに詳細なバグレポートをファイルしてください。\n"
 
-#: src/netconf-cmd.py:100
+#: src/netconf-cmd.py:99
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr "%s - ネットワーク設定のコマンドラインツール"
 
-#: src/netconf-cmd.py:105
+#: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
 msgstr "使用法: %s"
 
-#: src/netconf-cmd.py:107
+#: src/netconf-cmd.py:106
 msgid "switch / activate profile"
 msgstr "切り替え / プロファイルを有効にする"
 
-#: src/netconf-cmd.py:109
+#: src/netconf-cmd.py:108
 msgid "export / import hardware list"
 msgstr "ハードウェア一覧のエキスポート / インポート "
 
-#: src/netconf-cmd.py:111
+#: src/netconf-cmd.py:110
+#, fuzzy
+msgid "export / import IPsec list"
+msgstr "プロファイル一覧のエキスポート / インポート"
+
+#: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
 msgstr "デバイス一覧(デフォルト)のエキスポート / インポート"
 
-#: src/netconf-cmd.py:113
+#: src/netconf-cmd.py:114
 msgid "export / import profile list"
 msgstr "プロファイル一覧のエキスポート / インポート"
 
-#: src/netconf-cmd.py:115
+#: src/netconf-cmd.py:116
 msgid "set the root directory"
 msgstr "root ディレクトリの設定"
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:118
 msgid "export list (default)"
 msgstr "エキスポート一覧(デフォルト)"
 
-#: src/netconf-cmd.py:117
+#: src/netconf-cmd.py:119
 msgid "import list"
 msgstr "インポート一覧"
 
-#: src/netconf-cmd.py:119
+#: src/netconf-cmd.py:121
 msgid "clear existing list prior of importing"
 msgstr "インポートする前に既存の一覧を消去"
 
-#: src/netconf-cmd.py:121
+#: src/netconf-cmd.py:123
 msgid "import from file"
 msgstr "ファイルからインポート"
 
-#: src/netconf-cmd.py:227
+#: src/netconf-cmd.py:236
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "不明なオプション %s\n"
 
-#: src/netconf-cmd.py:306
+#: src/netconf-cmd.py:300
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "不明な一覧 %s\n"
 
-#: src/netconf-cmd.py:310
+#: src/netconf-cmd.py:304
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "行の構文解析にエラー: %s"
@@ -323,12 +328,12 @@ msgstr ""
 "すが、一般に144kbpsから1.0Mbpsです"
 
 #: src/netconfpkg/gui/ADSLInterface.py:135
-#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:142
 #: src/netconfpkg/gui/DialupDruid.py:230
-#: src/netconfpkg/gui/EthernetInterface.py:216
-#: src/netconfpkg/gui/WirelessInterface.py:284
-#: src/netconfpkg/gui/TokenRingInterface.py:208
-#: src/netconfpkg/gui/editipsec.py:201 src/netconfpkg/gui/PTPInterface.py:211
+#: src/netconfpkg/gui/EthernetInterface.py:207
+#: src/netconfpkg/gui/WirelessInterface.py:274
+#: src/netconfpkg/gui/TokenRingInterface.py:199
+#: src/netconfpkg/gui/editipsec.py:248 src/netconfpkg/gui/PTPInterface.py:202
 msgid "You have selected the following information:"
 msgstr "次の情報が選択されました:"
 
@@ -346,86 +351,86 @@ msgstr "プロバイダー名:"
 msgid "Login name:"
 msgstr "ログイン名:"
 
-#: src/netconfpkg/gui/CipeInterface.py:97
+#: src/netconfpkg/gui/CipeInterface.py:94
 msgid "CIPE (VPN) connection"
 msgstr "CIPE (VPN)接続"
 
-#: src/netconfpkg/gui/CipeInterface.py:100
+#: src/netconfpkg/gui/CipeInterface.py:97
 msgid "Create a new virtual private network connection with CIPE."
 msgstr "CIPEを使用して新しい仮想プライベートネットワーク接続を作成"
 
-#: src/netconfpkg/gui/CipeInterface.py:146
-#: src/netconfpkg/gui/EthernetInterface.py:217
-#: src/netconfpkg/gui/WirelessInterface.py:285
-#: src/netconfpkg/gui/TokenRingInterface.py:209
-#: src/netconfpkg/gui/PTPInterface.py:212
+#: src/netconfpkg/gui/CipeInterface.py:143
+#: src/netconfpkg/gui/EthernetInterface.py:208
+#: src/netconfpkg/gui/WirelessInterface.py:275
+#: src/netconfpkg/gui/TokenRingInterface.py:200
+#: src/netconfpkg/gui/PTPInterface.py:203
 msgid "Device:"
 msgstr "デバイス:"
 
-#: src/netconfpkg/gui/CipeInterface.py:147
+#: src/netconfpkg/gui/CipeInterface.py:144
 msgid "Tunnel through device:"
 msgstr "トンネル通過デバイス:"
 
-#: src/netconfpkg/gui/CipeInterface.py:148
-#: src/netconfpkg/gui/CipeInterface.py:309
+#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/CipeInterface.py:306
 msgid "Local port:"
 msgstr "ローカルポート:"
 
-#: src/netconfpkg/gui/CipeInterface.py:153
-#: src/netconfpkg/gui/CipeInterface.py:155
-#: src/netconfpkg/gui/CipeInterface.py:310
+#: src/netconfpkg/gui/CipeInterface.py:150
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/CipeInterface.py:307
 msgid "Remote peer address:"
 msgstr "リモートピアアドレス:"
 
-#: src/netconfpkg/gui/CipeInterface.py:153
+#: src/netconfpkg/gui/CipeInterface.py:150
 msgid "Auto"
 msgstr "自動"
 
-#: src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/CipeInterface.py:153
 msgid "Remote peer port:"
 msgstr "リモートピアポート:"
 
-#: src/netconfpkg/gui/CipeInterface.py:158
-#: src/netconfpkg/gui/CipeInterface.py:314
+#: src/netconfpkg/gui/CipeInterface.py:155
+#: src/netconfpkg/gui/CipeInterface.py:311
 msgid "Remote virtual address:"
 msgstr "リモート仮想アドレス:"
 
-#: src/netconfpkg/gui/CipeInterface.py:159
-#: src/netconfpkg/gui/CipeInterface.py:315
+#: src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/CipeInterface.py:312
 msgid "Local virtual address:"
 msgstr "ローカル仮想アドレス:"
 
-#: src/netconfpkg/gui/CipeInterface.py:168
-#: src/netconfpkg/gui/CipeInterface.py:236 src/netconfpkg/gui/cipeconfig.py:71
+#: src/netconfpkg/gui/CipeInterface.py:165
+#: src/netconfpkg/gui/CipeInterface.py:233 src/netconfpkg/gui/cipeconfig.py:71
 #: src/netconfpkg/gui/cipeconfig.py:133
 msgid "None - Server Mode"
 msgstr "サーバモード    なし"
 
-#: src/netconfpkg/gui/CipeInterface.py:175 src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/CipeInterface.py:172 src/netconfpkg/gui/cipeconfig.py:79
 msgid " (dynamic)"
 msgstr "(動的)"
 
-#: src/netconfpkg/gui/CipeInterface.py:212
-#: src/netconfpkg/gui/CipeInterface.py:266
+#: src/netconfpkg/gui/CipeInterface.py:209
+#: src/netconfpkg/gui/CipeInterface.py:263
 #: src/netconfpkg/gui/cipeconfig.py:111 src/netconfpkg/gui/cipeconfig.py:165
 msgid "Server Mode"
 msgstr "サーバモード"
 
-#: src/netconfpkg/gui/CipeInterface.py:297
-#: src/netconfpkg/gui/CipeInterface.py:302
+#: src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/CipeInterface.py:299
 #: src/netconfpkg/gui/cipeconfig.py:196 src/netconfpkg/gui/cipeconfig.py:201
 msgid "(own choice)"
 msgstr "(自己の選択)"
 
-#: src/netconfpkg/gui/CipeInterface.py:308
+#: src/netconfpkg/gui/CipeInterface.py:305
 msgid "IP address of tunnel device:"
 msgstr "トンネルデバイスの IP アドレス:"
 
-#: src/netconfpkg/gui/CipeInterface.py:316
+#: src/netconfpkg/gui/CipeInterface.py:313
 msgid "Secret key:"
 msgstr "シークレットキー:"
 
-#: src/netconfpkg/gui/CipeInterface.py:326
+#: src/netconfpkg/gui/CipeInterface.py:323
 msgid "You must enter a secret key or generate one"
 msgstr "シークレットキーを入力するか、作成する必要があります。"
 
@@ -444,8 +449,8 @@ msgstr "電話番号:"
 #: src/netconfpkg/gui/ethernethardware.py:171
 #: src/netconfpkg/gui/tokenringhardware.py:126
 #: src/netconfpkg/gui/tokenringhardware.py:137
-#: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
-#: src/netconfpkg/NC_functions.py:370 src/netconfpkg/NCDevice.py:208
+#: src/netconfpkg/NCHardwareList.py:446 src/netconfpkg/NCHardwareList.py:566
+#: src/netconfpkg/NC_functions.py:389 src/netconfpkg/NCDevice.py:196
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
 #: src/netconfpkg/NCDeviceList.py:71
@@ -464,33 +469,33 @@ msgstr "イーサネット 接続"
 msgid "Create a new ethernet connection."
 msgstr "新しいイーサネット接続を作成"
 
-#: src/netconfpkg/gui/EthernetInterface.py:197
+#: src/netconfpkg/gui/EthernetInterface.py:188
 msgid "Other Ethernet Card"
 msgstr "他の イーサネット カード"
 
-#: src/netconfpkg/gui/EthernetInterface.py:228
-#: src/netconfpkg/gui/WirelessInterface.py:296
-#: src/netconfpkg/gui/TokenRingInterface.py:220
-#: src/netconfpkg/gui/PTPInterface.py:222
+#: src/netconfpkg/gui/EthernetInterface.py:219
+#: src/netconfpkg/gui/WirelessInterface.py:286
+#: src/netconfpkg/gui/TokenRingInterface.py:211
+#: src/netconfpkg/gui/PTPInterface.py:213
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
 msgstr "アドレス:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:229
-#: src/netconfpkg/gui/WirelessInterface.py:297
-#: src/netconfpkg/gui/TokenRingInterface.py:221
+#: src/netconfpkg/gui/EthernetInterface.py:220
+#: src/netconfpkg/gui/WirelessInterface.py:287
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 msgid "Subnet mask:"
 msgstr "サブネットマスク:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:230
-#: src/netconfpkg/gui/WirelessInterface.py:298
-#: src/netconfpkg/gui/TokenRingInterface.py:222
+#: src/netconfpkg/gui/EthernetInterface.py:221
+#: src/netconfpkg/gui/WirelessInterface.py:288
+#: src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Default gateway address:"
 msgstr "デフォルトゲートウェイアドレス:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:232
-#: src/netconfpkg/gui/WirelessInterface.py:300
-#: src/netconfpkg/gui/TokenRingInterface.py:224
+#: src/netconfpkg/gui/EthernetInterface.py:223
+#: src/netconfpkg/gui/WirelessInterface.py:290
+#: src/netconfpkg/gui/TokenRingInterface.py:215
 msgid "Automatically obtain IP address settings with:"
 msgstr "自動的にIPアドレス設定を取得:"
 
@@ -633,35 +638,35 @@ msgstr "ワイヤレス接続"
 msgid "Create a new wireless connection."
 msgstr "新しいワイヤレス接続作成"
 
-#: src/netconfpkg/gui/WirelessInterface.py:264
+#: src/netconfpkg/gui/WirelessInterface.py:254
 msgid "Other Wireless Card"
 msgstr "他の ワイヤレス カード"
 
-#: src/netconfpkg/gui/WirelessInterface.py:303
+#: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Mode:"
 msgstr "モード:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:304
+#: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "ESSID (network ID):"
 msgstr "ESSID (ネットワークID):"
 
-#: src/netconfpkg/gui/WirelessInterface.py:306
+#: src/netconfpkg/gui/WirelessInterface.py:296
 msgid "Automatic"
 msgstr "自動の"
 
-#: src/netconfpkg/gui/WirelessInterface.py:310
+#: src/netconfpkg/gui/WirelessInterface.py:300
 msgid "Channel:"
 msgstr "チャンネル:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:311
+#: src/netconfpkg/gui/WirelessInterface.py:301
 msgid "Transmit rate:"
 msgstr "転送レート:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:312
+#: src/netconfpkg/gui/WirelessInterface.py:302
 msgid "Key: "
 msgstr "キー:"
 
-#: src/netconfpkg/gui/WirelessInterface.py:318
+#: src/netconfpkg/gui/WirelessInterface.py:308
 msgid "encryption disabled"
 msgstr "暗号無効"
 
@@ -673,7 +678,7 @@ msgstr "トークンリング 接続"
 msgid "Create a new Token Ring connection."
 msgstr "新しいトークンリング接続を作成"
 
-#: src/netconfpkg/gui/TokenRingInterface.py:190
+#: src/netconfpkg/gui/TokenRingInterface.py:181
 msgid "Other Tokenring Card"
 msgstr "他の トークンリング カード"
 
@@ -846,100 +851,110 @@ msgstr "IPsecの設定を保存しています..."
 msgid "Updating devices..."
 msgstr "デバイスを更新しています..."
 
-#: src/netconfpkg/gui/maindialog.py:494
+#: src/netconfpkg/gui/maindialog.py:495
 msgid "Updating hardware..."
 msgstr "ハードウェアを更新しています..."
 
-#: src/netconfpkg/gui/maindialog.py:588
+#: src/netconfpkg/gui/maindialog.py:589
 msgid "Updating profiles..."
 msgstr "プロファイルを更新しています..."
 
-#: src/netconfpkg/gui/maindialog.py:694 src/netconfpkg/gui/maindialog.py:787
+#: src/netconfpkg/gui/maindialog.py:702 src/netconfpkg/gui/maindialog.py:798
 msgid "Do you want to save your changes?"
 msgstr "変更を保存しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:852
+#: src/netconfpkg/gui/maindialog.py:863
 msgid "The Loopback device can not be edited!"
 msgstr "ループバックデバイスは編集できません!"
 
-#: src/netconfpkg/gui/maindialog.py:856
+#: src/netconfpkg/gui/maindialog.py:867
 msgid "Edit device..."
 msgstr "デバイスの編集..."
 
-#: src/netconfpkg/gui/maindialog.py:894
+#: src/netconfpkg/gui/maindialog.py:905
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "デバイスタイプ%s は編集できません"
 
-#: src/netconfpkg/gui/maindialog.py:913
+#: src/netconfpkg/gui/maindialog.py:924
 msgid "The Loopback device can not be removed!"
 msgstr "ループバックデバイスは消去できません!"
 
-#: src/netconfpkg/gui/maindialog.py:917
+#: src/netconfpkg/gui/maindialog.py:928
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "デバイス\"%s\"を本当に消去しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:949 src/netconfpkg/gui/maindialog.py:1716
+#: src/netconfpkg/gui/maindialog.py:963 src/netconfpkg/gui/maindialog.py:1000
+#: src/netconfpkg/gui/maindialog.py:1757 src/netconfpkg/gui/maindialog.py:1787
 msgid "You have made some changes in your configuration."
 msgstr "設定の中で変更がされました。"
 
-#: src/netconfpkg/gui/maindialog.py:950
+#: src/netconfpkg/gui/maindialog.py:964
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr "ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
+msgstr ""
+"ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
 
-#: src/netconfpkg/gui/maindialog.py:952 src/netconfpkg/gui/maindialog.py:1719
+#: src/netconfpkg/gui/maindialog.py:966 src/netconfpkg/gui/maindialog.py:1003
+#: src/netconfpkg/gui/maindialog.py:1760 src/netconfpkg/gui/maindialog.py:1790
 msgid "Do you want to continue?"
 msgstr "続けますか?"
 
-#: src/netconfpkg/gui/maindialog.py:1156
+#: src/netconfpkg/gui/maindialog.py:1001
+#, fuzzy, python-format
+msgid "To deactivate the network device %s, the changes have to be saved."
+msgstr ""
+"ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
+
+#: src/netconfpkg/gui/maindialog.py:1180
 msgid "The Loopback device can not be disabled!"
 msgstr "ループバックデバイスは無効にできません!"
 
-#: src/netconfpkg/gui/maindialog.py:1382 src/netconfpkg/gui/maindialog.py:1462
+#: src/netconfpkg/gui/maindialog.py:1420 src/netconfpkg/gui/maindialog.py:1500
 msgid "The name may only contain letters and digits!"
 msgstr "名前には文字と数字だけを含めることができます!"
 
-#: src/netconfpkg/gui/maindialog.py:1387 src/netconfpkg/gui/maindialog.py:1467
+#: src/netconfpkg/gui/maindialog.py:1425 src/netconfpkg/gui/maindialog.py:1505
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "プロファイルに\"%s\"という名前をつけることはできません!"
 
-#: src/netconfpkg/gui/maindialog.py:1393 src/netconfpkg/gui/maindialog.py:1473
+#: src/netconfpkg/gui/maindialog.py:1431 src/netconfpkg/gui/maindialog.py:1511
 msgid "The profile name already exists!"
 msgstr "そのプロファイル名は既に存在しています!"
 
-#: src/netconfpkg/gui/maindialog.py:1440
+#: src/netconfpkg/gui/maindialog.py:1478
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\"プロファイルの名前変更はできません!"
 
-#: src/netconfpkg/gui/maindialog.py:1495
+#: src/netconfpkg/gui/maindialog.py:1533
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\"プロファイルは削除できません!"
 
-#: src/netconfpkg/gui/maindialog.py:1501
+#: src/netconfpkg/gui/maindialog.py:1539
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "プロファイル\"%s\"を本当に削除しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:1575
-msgid "Sorry, there is nothing to be edited, or this type cannot be edited yet."
+#: src/netconfpkg/gui/maindialog.py:1613
+msgid ""
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr "すみません。編集する物がないか、又はこのタイプはまだ編集できません。"
 
-#: src/netconfpkg/gui/maindialog.py:1593
+#: src/netconfpkg/gui/maindialog.py:1631
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "本当に\"%s\"を消去しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:1606
+#: src/netconfpkg/gui/maindialog.py:1644
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "\"%s\"を使用するデバイスをすべて削除しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:1637
+#: src/netconfpkg/gui/maindialog.py:1675
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -947,9 +962,14 @@ msgstr ""
 "このソフトウェアはGPLの元で配布されています。バグに関する報告は Red Hatの "
 "Bug Tracking System: http://bugzilla.redhat.com/ まで送ってください。"
 
-#: src/netconfpkg/gui/maindialog.py:1717
+#: src/netconfpkg/gui/maindialog.py:1758
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
+msgstr "IPsec 接続 %sを起動するためには、変更を保存しなければなりません。"
+
+#: src/netconfpkg/gui/maindialog.py:1788
+#, fuzzy, python-format
+msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "IPsec 接続 %sを起動するためには、変更を保存しなければなりません。"
 
 #: src/netconfpkg/gui/ethernethardware.py:94
@@ -964,7 +984,8 @@ msgstr "出力:\n"
 msgid ""
 "The Ethernet card could not be initialized. Please verify your settings and "
 "try again."
-msgstr "イーサネットカードを初期化出来ませんでした。設定を確認して再試行して 下さい。"
+msgstr ""
+"イーサネットカードを初期化出来ませんでした。設定を確認して再試行して 下さい。"
 
 #: src/netconfpkg/gui/tokenringhardware.py:67
 #, python-format
@@ -983,7 +1004,8 @@ msgstr ""
 msgid ""
 "The Token Ring card could not be initialized. Please verify your settings "
 "and try again."
-msgstr "トークンリングカードが初期化出来ません。設定を確認して再試行して下さい。"
+msgstr ""
+"トークンリングカードが初期化出来ません。設定を確認して再試行して下さい。"
 
 #: src/netconfpkg/gui/CTCInterface.py:48
 msgid "CTC connection"
@@ -1005,7 +1027,7 @@ msgstr "IUCV 接続"
 msgid "Create a new IUCV connection."
 msgstr "新しい IUCV 接続を作成。"
 
-#: src/netconfpkg/gui/PTPInterface.py:223
+#: src/netconfpkg/gui/PTPInterface.py:214
 msgid "Point to Point (IP):"
 msgstr "ポイントツーポイント(IP):"
 
@@ -1045,7 +1067,7 @@ msgstr "自動"
 msgid "manual"
 msgstr "マニュアル"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:142
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:152
 #: src/netconfpkg/gui/ModemDruid.glade.h:7
 #: src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -1339,12 +1361,13 @@ msgstr "ベトナム"
 msgid "Yugoslavia"
 msgstr "ユーゴスラビア"
 
-#: src/netconfpkg/NCProfileList.py:203
+#: src/netconfpkg/NCProfileList.py:204
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
+msgstr ""
+"デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
 
-#: src/netconfpkg/NCProfileList.py:205
+#: src/netconfpkg/NCProfileList.py:206
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1352,29 +1375,32 @@ msgstr ""
 "別のハードウェア デバイスタイプを選択して下さい。 \n"
 "またはどれか一つだけ起動してください。"
 
-#: src/netconfpkg/NC_functions.py:91
+#: src/netconfpkg/NC_functions.py:101
 msgid "Common"
 msgstr "共通"
 
-#: src/netconfpkg/NC_functions.py:140 src/netconfpkg/gui/ModemDruid.glade.h:1
+#: src/netconfpkg/NC_functions.py:150 src/netconfpkg/gui/ModemDruid.glade.h:1
 #: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "Hardware (CRTSCTS)"
 msgstr "ハードウェア(CRTSCTS):"
 
-#: src/netconfpkg/NC_functions.py:141 src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/NC_functions.py:151 src/netconfpkg/gui/ModemDruid.glade.h:10
 #: src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "ソフトウェア(XON/XOFF)"
 
-#: src/netconfpkg/NC_functions.py:220
-msgid "Shall the following packages, which are needed on your system, be installed?"
+#: src/netconfpkg/NC_functions.py:230
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr "システムに必要とされる次のパッケージをインストールしますか?"
 
-#: src/netconfpkg/NC_functions.py:233
-msgid "You have to install the following packages, which are needed on your system!"
-msgstr "システムに要求されている次のパッケージをインストールする必要があります!"
+#: src/netconfpkg/NC_functions.py:243
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+"システムに要求されている次のパッケージをインストールする必要があります!"
 
-#: src/netconfpkg/NC_functions.py:732
+#: src/netconfpkg/NC_functions.py:762 src/netconfpkg/NC_functions.py:773
 #, python-format
 msgid ""
 "Error removing\n"
@@ -1385,7 +1411,7 @@ msgstr ""
 " エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:752
+#: src/netconfpkg/NC_functions.py:793
 #, python-format
 msgid ""
 "Error copying \n"
@@ -1398,7 +1424,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:762
+#: src/netconfpkg/NC_functions.py:803
 #, python-format
 msgid ""
 "Error linking \n"
@@ -1411,7 +1437,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:772
+#: src/netconfpkg/NC_functions.py:813
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -1424,7 +1450,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:780
+#: src/netconfpkg/NC_functions.py:821
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -1433,20 +1459,10 @@ msgstr ""
 "ディレクトリ作成中のエラーです\n"
 "%s"
 
-#: src/netconfpkg/NC_functions.py:832
+#: src/netconfpkg/NC_functions.py:920
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s をデバイスにリンクしてプロファイル %s に挿入中です。"
-
-#: src/netconfpkg/NC_functions.py:842
-#, python-format
-msgid "Copying %s to profile %s."
-msgstr "%s をプロファイル %s にコピー中です。"
-
-#: src/netconfpkg/NC_functions.py:852
-#, python-format
-msgid "Linking %s to profile %s."
-msgstr "%s をプロファイル %s にリンク中です。"
 
 #: src/netconfpkg/NCHardware.py:21
 msgid "inactive"
@@ -1467,40 +1483,41 @@ msgstr "設定"
 msgid "ok"
 msgstr "ok"
 
-#: src/netconfpkg/NCDevice.py:202
+#: src/netconfpkg/NCDevice.py:190
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
+msgstr ""
+"%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
 
-#: src/netconfpkg/NCDevice.py:245
+#: src/netconfpkg/NCDevice.py:233
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "静的ルートファイル %s は無効です"
 
-#: src/netconfpkg/NCDevice.py:379 src/netconfpkg/plugins/NCDevIsdn.py:73
+#: src/netconfpkg/NCDevice.py:371 src/netconfpkg/plugins/NCDevIsdn.py:73
 msgid "Network device activating..."
 msgstr "ne"
 
-#: src/netconfpkg/NCDevice.py:380 src/netconfpkg/plugins/NCDevIsdn.py:74
+#: src/netconfpkg/NCDevice.py:372 src/netconfpkg/plugins/NCDevIsdn.py:74
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい...."
 
-#: src/netconfpkg/NCDevice.py:382 src/netconfpkg/plugins/NCDevIsdn.py:76
+#: src/netconfpkg/NCDevice.py:374 src/netconfpkg/plugins/NCDevIsdn.py:76
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "ネットワークデバイス%sを起動できません\n"
 
-#: src/netconfpkg/NCDevice.py:399 src/netconfpkg/plugins/NCDevIsdn.py:97
+#: src/netconfpkg/NCDevice.py:391 src/netconfpkg/plugins/NCDevIsdn.py:97
 msgid "Network device deactivating..."
 msgstr "ネットワークデバイスを停止中です..."
 
-#: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
+#: src/netconfpkg/NCDevice.py:392 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "ネットワークデバイス%sを停止中です。お待ち下さい..."
 
-#: src/netconfpkg/NCDevice.py:402 src/netconfpkg/plugins/NCDevIsdn.py:100
+#: src/netconfpkg/NCDevice.py:394 src/netconfpkg/plugins/NCDevIsdn.py:100
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "ネットワークデバイス%sを停止出来ません\n"
@@ -1513,30 +1530,30 @@ msgstr "initscript のために次のニックネームが変更されました:
 msgid "Nicknames changed"
 msgstr "変更されたニックネーム"
 
-#: src/netconfpkg/NCIPsec.py:168
+#: src/netconfpkg/NCIPsec.py:177
 msgid "IPsec activating..."
 msgstr "IPsec 起動中..."
 
-#: src/netconfpkg/NCIPsec.py:169
+#: src/netconfpkg/NCIPsec.py:178
 #, python-format
 msgid "Activating IPsec connection %s, please wait..."
 msgstr "IPsec 接続 %sを起動中です。お待ち下さい..."
 
-#: src/netconfpkg/NCIPsec.py:171
+#: src/netconfpkg/NCIPsec.py:180
 #, python-format
 msgid "Cannot activate IPsec connection %s!\n"
 msgstr "IPsec 接続 %sを起動できません\n"
 
-#: src/netconfpkg/NCIPsec.py:188
+#: src/netconfpkg/NCIPsec.py:197
 msgid "IPsec deactivating..."
 msgstr "IPsec を停止中です..."
 
-#: src/netconfpkg/NCIPsec.py:189
+#: src/netconfpkg/NCIPsec.py:198
 #, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
 msgstr "IPsec 接続 %sを停止中です。お待ち下さい..."
 
-#: src/netconfpkg/NCIPsec.py:191
+#: src/netconfpkg/NCIPsec.py:200
 #, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "IPsec 接続 %sを停止出来ません\n"
@@ -1584,7 +1601,8 @@ msgstr "ISPから取得したログイン名をここに入力して下さい。
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:12
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "この設定の名前を入れて下さい。普通は単にISPの名前です。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -2149,6 +2167,7 @@ msgstr "ニックネーム(_N):"
 #: src/netconfpkg/gui/dialupconfig.glade.h:60
 #: src/netconfpkg/gui/dslconfig.glade.h:29
 #: src/netconfpkg/gui/ethernetconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: src/netconfpkg/gui/tokenringconfig.glade.h:15
 #: src/netconfpkg/gui/ptpconfig.glade.h:12
 msgid "_Route"
@@ -2192,7 +2211,8 @@ msgstr "コールバック設定"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
-msgstr "ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
+msgstr ""
+"ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Dial _mode:"
@@ -2228,7 +2248,8 @@ msgstr "VJ TCP/IPヘッダ圧縮を有効にする(_V)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
 msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr "自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
+msgstr ""
+"自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:26
 msgid "Han_gup timeout:"
@@ -2639,7 +2660,8 @@ msgstr "難易度レベル:"
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
-msgstr "それぞれの接続は下記から選べる物理的デバイスと連携している必要があります。"
+msgstr ""
+"それぞれの接続は下記から選べる物理的デバイスと連携している必要があります。"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Easy"
@@ -2808,17 +2830,17 @@ msgstr "鍵(_K)(16進法には0xを使用):"
 msgid "_Mode:"
 msgstr "モード(_M):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "_Specified:"
 msgstr "指定されたもの(_S):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid "_Transmit rate:"
 msgstr "発信レート(_T):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Wireless Settings"
 msgstr "ワイヤレス設定(_W)"
 
@@ -2971,7 +2993,8 @@ msgstr ""
 "す。。。。 多重論理デバイスは単独のハードウェアと関連付ができます。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
 "ここでコンピュータと物理的に接続しているネットワークハードウェアを設定できま"
 "す。"
@@ -3230,7 +3253,8 @@ msgstr "ファイル1つ選択"
 
 #: src/netconfpkg/gui/neat-control.glade.h:16
 msgid "The following network interfaces are configured in the active profile."
-msgstr "次のネットワークインターフェイスは使用中のプロファイル内で設定されています。"
+msgstr ""
+"次のネットワークインターフェイスは使用中のプロファイル内で設定されています。"
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
 msgid "_Info"
@@ -3261,6 +3285,12 @@ msgstr "設定したいカードを選択:"
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Point to Point (IP):"
 msgstr "ポイントツーポイント(IP)(_P):"
+
+#~ msgid "Copying %s to profile %s."
+#~ msgstr "%s をプロファイル %s にコピー中です。"
+
+#~ msgid "Linking %s to profile %s."
+#~ msgstr "%s をプロファイル %s にリンク中です。"
 
 #~ msgid ""
 #~ "Error linking %s\n"
@@ -3826,4 +3856,3 @@ msgstr "ポイントツーポイント(IP)(_P):"
 #~ "さい。\n"
 #~ " ありがとうございます。 \n"
 #~ "%s "
-
