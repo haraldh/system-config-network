@@ -56,7 +56,7 @@ class editAdressDialog:
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
 
-        self.xml.get_widget ("addressPixmap").load_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
+        self.xml.get_widget ("addressPixmap").set_from_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
         self.dialog = self.xml.get_widget("Dialog")
         #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         #self.dialog.connect("hide", gtk.mainquit)
