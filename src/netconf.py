@@ -46,6 +46,7 @@ _=gettext.gettext
 
 class mainDialog:
     deviceTypes = {'eth[0-9]+(:[0-9]+)?':'Ethernet',
+                   'ppp[0-9]+(:[0-9]+)?':'Modem',
                    'lo':'Loopback'}
 
     def __init__(self):
@@ -134,36 +135,25 @@ class mainDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
-	self.load()
+        self.load()
+        self.setup()
 
     def load(self):
         self.loadDevices()
+        self.loadHardware()
         self.loadDNS()
+        self.loadHosts()
+        self.loadProfiles()
 
     def loadDevices(self):
-        devices = filter(lambda x: x[:6] == 'ifcfg-', os.listdir("/etc/sysconfig/networking/devices/"))
-        clist = self.xml.get_widget("deviceList")
-	act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
-	inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
+        global devicelist
+        devicelist = DeviceList()
+        devicelist.load()
 
-        nwconf = Conf.ConfShellVar("/etc/sysconfig/network")
-
-        row = 0
-        for i in devices:
-            devconf = Conf.ConfShellVar("/etc/sysconfig/networking/devices/" + i)
-            dev = devconf['DEVICE']
-            type = 'Unknown'
-            for j in self.deviceTypes.keys():
-                if re.search(j, dev):
-                    type = self.deviceTypes[j]
-
-            clist.append(['', i[6:], type])
-
-            if not nwconf['CURRENT_PROFILE'] or not os.path.exists("/etc/sysconfig/networking/profiles/"+ nwconf['CURRENT_PROFILE'] + "/" + i):
-                clist.set_pixmap(row, 0, inact_xpm)
-            else:
-                clist.set_pixmap(row, 0, act_xpm)
-            row = row + 1
+    def loadHardware(self):
+        global hardwarelist
+        hardwarelist = HardwareList()
+        hardwarelist.load()
 
     def loadDNS(self):
         res_file = ResolverFile()
@@ -178,6 +168,36 @@ class mainDialog:
                 self.xml.get_widget("dnsList").append([search_domain[i]])
         except:
             pass
+
+    def loadHosts(self):
+        pass
+
+    def loadProfiles(self):
+        global profilelist
+        profilelist = ProfileList()
+        profilelist.load()
+
+    def setup(self):
+        global devicelist, profilelist
+
+        clist = self.xml.get_widget("deviceList")
+        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
+        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
+
+        row = 0
+        for i in xrange(len(devicelist)):
+            type = 'Unknown'
+            for j in self.deviceTypes.keys():
+                if re.search(j, devicelist[i].Device):
+                    type = self.deviceTypes[j]
+
+            clist.append(['', devicelist[i].DeviceId[6:], type])
+            for k in xrange(len(profilelist)):
+                if (profilelist[k].Active == true or profilelist[k].ProfileName == 'default') and not os.path.exists(SYSCONFPROFILEDIR+profilelist[k].ProfileName+'/'+devicelist[i].DeviceId):
+                    clist.set_pixmap(row, 0, inact_xpm)
+                else:
+                    clist.set_pixmap(row, 0, act_xpm)
+            row = row + 1
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -233,6 +253,12 @@ class mainDialog:
         pass
 
     def on_deviceEditButton_clicked (self, *args):
+        clist = self.xml.get_widget("deviceList")
+        type = clist.get_text (clist.selection[0], 1)
+        if type == 'Loopback':
+            generic_error_dialog ('The Loopback device can not be edited!', self.xml.get_widget ("Dialog"))
+            return
+
         basic = basicDialog(self.xml)
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
