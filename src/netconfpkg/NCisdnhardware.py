@@ -235,6 +235,7 @@ class ConfISDN:
                     return {i : card[i]}
 
     def get_resource(self, name):
+        global card
         if card.has_key(name):
             self.Description = name
             self.Type = card[name][TYPE]
