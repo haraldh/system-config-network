@@ -129,7 +129,8 @@ class tokenringHardwareDialog:
         list = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
-            if modInfo[i]['type'] == "tr":
+            if modInfo[i]['type'] == "tr" and \
+                   modInfo[i].has_key('description'):
                 list.append(modInfo[i]['description'])
         list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
@@ -153,7 +154,8 @@ class tokenringHardwareDialog:
         if not self.hw.Card.ModuleName or self.hw.Card.ModuleName == "":
             self.hw.Card.ModuleName = _('Unknown')
         for i in modInfo.keys():
-            if modInfo[i]['description'] == self.hw.Description:
+            if modInfo[i].has_key('description') and \
+                   modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i
 
 # make ctrl-C work

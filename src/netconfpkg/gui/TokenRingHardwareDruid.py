@@ -111,7 +111,8 @@ class tokenringHardware:
         list = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
-            if modInfo[i]['type'] == "tr":
+            if modInfo[i]['type'] == "tr"  and \
+                   modInfo[i].has_key('description'):
                 list.append(modInfo[i]['description'])
         list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)

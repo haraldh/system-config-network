@@ -121,7 +121,8 @@ class ethernetHardwareDialog:
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
-                if modInfo[i].has_key('description'):
+                if modInfo[i].has_key('description') and \
+                   modInfo[i].has_key('description'):
                     list.append(modInfo[i]['description'])
                 else:
                     list.append(i)
@@ -153,7 +154,8 @@ class ethernetHardwareDialog:
         if not self.hw.Card.ModuleName or self.hw.Card.ModuleName == "":
             self.hw.Card.ModuleName = _('Unknown')
         for i in modInfo.keys():
-            if modInfo[i]['description'] == self.hw.Description:
+            if modInfo[i].has_key('description') and \
+                   modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i
 
 # make ctrl-C work
