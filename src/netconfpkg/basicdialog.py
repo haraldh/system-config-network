@@ -125,6 +125,9 @@ class basicDialog:
             
         if self.xml.get_widget('ipSettingCB').get_active(): 
             self.device.BootProto = self.xml.get_widget('dynamicConfigEntry').get_text()            
+            self.device.IP = ''
+            self.device.Netmask = ''
+            self.device.Gateway = ''
         else:
             self.device.BootProto = 'static'
             self.device.IP = self.xml.get_widget('addressEntry').get_text()
