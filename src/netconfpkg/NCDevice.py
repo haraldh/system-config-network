@@ -270,7 +270,11 @@ class Device(DeviceList.Device_base):
                 p = p + 1
             rconf.write()
 
-        for i in conf.keys():
-            if not conf[i] or conf[i] == "": del conf[i]
+
+        # Do not clear the non-filled in values for Wireless Devices
+        # Bugzilla #52252
+        if not self.Wireless:
+            for i in conf.keys():
+                if not conf[i] or conf[i] == "": del conf[i]
 
         conf.write()

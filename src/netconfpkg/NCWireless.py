@@ -67,5 +67,7 @@ class Wireless(DeviceList.Wireless_base):
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
 
-        for i in conf.keys():
-            if not conf[i] or conf[i] == "": del conf[i]
+        # Do not clear the non-filled in values
+        # Bugzilla #52252
+        #for i in conf.keys():
+        #    if not conf[i] or conf[i] == "": del conf[i]
