@@ -47,12 +47,14 @@ class ProfileList(ProfileList_base):
                 prof.HostsList.append(host)
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
             dnsconf.read()
-            prof.DNS.Hostname     = nwconf['HOSTNAME']
-            if len(dnsconf['domain']) > 0:
-                prof.DNS.Domainname   = dnsconf['domain'][0]
+            prof.DNS.Hostname     = ''
+            prof.DNS.Domainname   = ''
             prof.DNS.PrimaryDNS   = ''
             prof.DNS.SecondaryDNS = ''
             prof.DNS.TernaryDNS   = ''
+            prof.DNS.Hostname     = nwconf['HOSTNAME']
+            if len(dnsconf['domain']) > 0:
+                prof.DNS.Domainname   = dnsconf['domain'][0]
             if dnsconf.has_key('nameservers'):
                 prof.DNS.PrimaryDNS = dnsconf['nameservers'][0]
                 if len(dnsconf['nameservers']) > 1:
