@@ -80,13 +80,11 @@ class ProfileList(ProfileList_base):
         try:
             os.system('/bin/rm -rf '+SYSCONFPROFILEDIR)
         except:
-            print "FOO"
             pass
 
         try:
             os.mkdir(SYSCONFPROFILEDIR)
         except:
-            print "BAR"
             pass
 
         for prof in self.data:
@@ -109,7 +107,7 @@ class ProfileList(ProfileList_base):
             nwconf.write()
             dnsconf.write()
 
-            if prof.Active == false:
+            if prof.Active == false and prof.ProfileName != 'default':
                 continue
 
             for devId in prof.ActiveDevices:
