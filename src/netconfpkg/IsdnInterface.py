@@ -225,5 +225,3 @@ class IsdnInterface:
             self.hw.Card.IoPort2 = isdncard.IoPort2
         else:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-
-        

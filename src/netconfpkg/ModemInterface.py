@@ -19,9 +19,9 @@
 
 import NC_functions
 from NC_functions import _
-from NC_functions import modemDeviceList
 import NCHardwareList
 import NCisdnhardware
+import kudzu
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -99,7 +99,15 @@ class ModemInterface:
         scale.grab_focus()
 
     def setup(self):
-        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modemDeviceList)
+        res = kudzu.probe(kudzu.CLASS_MODEM,kudzu.BUS_SERIAL|kudzu.BUS_PCI,kudzu.PROBE_ALL)
+        if res == []:
+            list = ['/dev/modem']
+        else:
+            list = []
+            for v in res:
+                list.append(v[0])
+
+        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(list)
     
     def dehydrate(self):
         self.hw.Description = _('Generic Modem')
