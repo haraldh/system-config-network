@@ -39,7 +39,7 @@ class HardwareFactory(dict):
     def getHardwareClass(self, type, subtype = None):
         if not self.has_key(type):
             print "Error: %s not in HardwareFactory!" % type
-            return NCHardware.Hardware
+            return Hardware
         if subtype and self[type].has_key(subtype):
             return self[type][subtype]
         else:
