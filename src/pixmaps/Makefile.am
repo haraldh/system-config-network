@@ -14,6 +14,7 @@ netconfimg_DATA = \
 	uk.xpm \
 	cs.xpm \
 	irda-16.xpm \
+	dsl.xpm \
 	nameresolution_alias.png \
 	connection-ethernet.png \
 	neat-control-logo.png \
