@@ -29,7 +29,8 @@ import string
 import gettext
 import re
 
-from HardwareList import *
+import HardwareList
+
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -68,6 +69,7 @@ class modemDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
+        self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
 
@@ -90,15 +92,13 @@ class modemDialog:
             self.dialog.set_icon(pix, mask)
 
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
+        pass
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.main.hydrate()
-        self.dialog.destroy()
 
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
+        pass
 
     def on_volumeCB_toggled(self, check):
         scale = self.xml.get_widget("volumeMenu")
@@ -112,8 +112,8 @@ class modemDialog:
         pass
 
     def dehydrate(self):
-        global hardwarelist
-        hardwarelist = getHardwareList()
+        hardwarelist = HardwareList.getHardwareList()
+
         modem_list = []
         if not self.edit:
             for i in hardwarelist:
@@ -159,7 +159,6 @@ class modemDialog:
         else:
             hw.Modem.DialCommand = "ATDP"
 
-
 class addmodemDialog(modemDialog):
     def __init__(self):
         modemDialog.__init__(self)
@@ -173,8 +172,7 @@ class editmodemDialog(modemDialog):
         self.Name = self.Dev
         
     def hydrate(self):
-        global hardwarelist
-        hardwarelist = getHardwareList()
+        hardwarelist = HardwareList.getHardwareList()
 
         for hw in hardwarelist:
             if hw.Name == self.Dev:

@@ -1,13 +1,13 @@
-from DeviceList import *
-from NC_functions import *
-from ConfSMB import *
-
-import string
+import sys
+import ConfSMB
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
+
+from DeviceList import *
+from NC_functions import *
         
 class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
@@ -201,7 +201,7 @@ class ModemDialup(Dialup):
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
-        conf = ConfSMB(filename = '/etc/wvdial.conf')
+        conf = ConfSMB.ConfSMB(filename = '/etc/wvdial.conf')
         
         sectname = 'Dialer ' + name
 
@@ -293,7 +293,7 @@ class ModemDialup(Dialup):
         #
         # Write the wvdial section
         #
-        conf = ConfSMB(filename = '/etc/wvdial.conf')
+        conf = ConfSMB.ConfSMB(filename = '/etc/wvdial.conf')
         
         for selfkey in self.wvdict.keys():
             confkey = self.wvdict[selfkey]

@@ -1,6 +1,7 @@
-#! /usr/bin/python
+import sys
 import os
 import string
+
 from HardwareList import *
 from NCisdnhardware import *
 
@@ -121,6 +122,7 @@ class HardwareList(HardwareList_base):
             hw.Modem.BaudRate = wvdial[dev]['Baud']
             hw.Modem.ModemVolume = wvdial[dev]['SetVolume']
             hw.Modem.DialCommand = wvdial[dev]['Dial Command']
+        self.commit()
 
     def save(self):
         modules = ConfModules()
@@ -156,7 +158,7 @@ HWList = None
 
 def getHardwareList():
     global HWList
-    if not HWList:
+    if HWList == None:
         HWList = HardwareList()
         HWList.load()
     return HWList

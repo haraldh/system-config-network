@@ -29,7 +29,8 @@ import string
 import gettext
 import re
 
-from netconfpkg import *
+import ProfileList
+
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -105,9 +106,7 @@ class editDomainDialog:
         pass
 
     def dehydrate(self):
-        global profilelist
-
-        profilelist = getProfileList()
+        profilelist = ProfileList.getProfileList()
         
         for prof in profilelist:
             if prof.Active == true:

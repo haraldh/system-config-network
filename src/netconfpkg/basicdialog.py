@@ -34,6 +34,7 @@ from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from editadress import editAdressDialog
 from NC_functions import *
+
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -94,8 +95,6 @@ class basicDialog:
                     notebook.remove_page(page)
 
         self.dialog.set_close(TRUE)
-        #self.dialog.close_hides(TRUE)
-        #self.dialog.show()
 
     def hydrate(self):
         if self.device.DeviceId:
@@ -108,7 +107,7 @@ class basicDialog:
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser)
 
-            if self.device.BootProto == "static":
+            if self.device.BootProto == "static" or self.device.BootProto == "none":
                 self.xml.get_widget('ipSettingCB').set_active(FALSE)
                 if self.device.IP:
                     self.xml.get_widget('addressEntry').set_text(self.device.IP)

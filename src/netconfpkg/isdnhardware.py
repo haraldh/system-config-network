@@ -29,8 +29,8 @@ import string
 import gettext
 import re
 
-from HardwareList import *
-from NCisdnhardware import *
+import HardwareList
+import NCisdnhardware
 
 from gtk import TRUE
 from gtk import FALSE
@@ -66,6 +66,7 @@ class isdnHardwareDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
+        self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
 
@@ -88,15 +89,13 @@ class isdnHardwareDialog:
             self.dialog.set_icon(pix, mask)
 
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
-        
+        pass
+
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.main.hydrate()
-        self.dialog.destroy()
 
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
+        pass
 
     def on_isdnCardEntry_changed(self, entry):
         cardname = entry.get_text()
@@ -137,9 +136,8 @@ class isdnHardwareDialog:
         pass
 
     def dehydrate(self):
-        global hardwarelist
-        hardwarelist = getHardwareList()
-        isdncard = ConfISDN()
+        hardwarelist = HardwareList.getHardwareList()
+        isdncard = NCisdnhardware.ConfISDN()
         isdncard.get_resource(self.xml.get_widget('adapterEntry').get_text())
 
         if not self.edit:
@@ -186,7 +184,7 @@ class isdnHardwareDialog:
             hw.Card.IoPort2 = isdncard.IoPort2
         else:
             hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-    
+
     def setup(self):
         cardlist = card.keys()
         cardlist.sort()
@@ -206,8 +204,8 @@ class editisdnHardwareDialog(isdnHardwareDialog):
         self.edit = TRUE
 
     def hydrate(self):
-        global hardwarelist
-        hardwarelist = getHardwareList()
+        hardwarelist = HardwareList.getHardwareList()
+
         for hw in hardwarelist:
             if hw.Type == "ISDN":
                 if hw.Card.ChannelProtocol == "2":

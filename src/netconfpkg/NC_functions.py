@@ -21,6 +21,10 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
                '^lo$':'Loopback'}
 
+import DeviceList
+import HardwareList
+import ProfileList
+
 def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
     import gnome
     import gnome.ui
@@ -96,31 +100,23 @@ def updateNetworkScripts():
             continue
 
 def activateDevice (deviceid, profile, state=None):
-    from DeviceList import *
-    from ProfileList import *
-
-    devicelist = getDeviceList()
-    profilelist = getProfileList()
+    devicelist = DeviceList.getDeviceList()
+    profilelist = ProfileList.getProfileList()
 
     for prof in profilelist:
-        if prof.Profilename != profile:
+        if prof.ProfileName != profile:
             continue
         if state:
             if deviceid not in prof.ActiveDevices:
                 prof.ActiveDevices.append(deviceid)
         else:
             if deviceid in prof.ActiveDevices:
-                del prof.ActiveDevices[prof.ActiveDevices.index(name)]
+                del prof.ActiveDevices[prof.ActiveDevices.index(deviceid)]
 
 def switchToProfile(val):
-    from DeviceList import *
-    from HardwareList import *
-    from ProfileList import *
-
-    global devicelist, hardwarelist, profilelist
-    devicelist = getDeviceList()
-    hardwarelist = getHardwareList()
-    profilelist = getProfileList()
+    devicelist = DeviceList.getDeviceList()
+    hardwarelist = HardwareList.getHardwareList()
+    profilelist = ProfileList.getProfileList()
 
     found = false
     for prof in profilelist:

@@ -28,8 +28,9 @@ import GdkImlib
 import string
 import gettext
 import re
-import HardwareList
 import regsub
+
+import HardwareList
 
 from gtk import TRUE
 from gtk import FALSE
@@ -76,6 +77,7 @@ class ethernetConfigDialog:
             if hw.Type == "Ethernet":
                 hwdesc.append(str(hw.Name) + ' (' + hw.Description + ')')
         if len(hwdesc):
+            hwdesc.sort()
             ecombo.set_popdown_strings(hwdesc)
 
         if self.device.Alias != None:

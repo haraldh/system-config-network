@@ -1,8 +1,12 @@
+import sys
+import os
+import os.path
+
 import HardwareList
 import DeviceList
+
 from ProfileList import *
-from os import *
-from os.path import *
+from NC_functions import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -89,7 +93,7 @@ class ProfileList(ProfileList_base):
 
         for prof in self.data:
             try:
-                mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
+                os.mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
             except:
                 pass
 
@@ -136,7 +140,7 @@ PFList = None
 
 def getProfileList():
     global PFList
-    if not PFList:
+    if PFList == None:
         PFList = ProfileList()
         PFList.load()
     return PFList

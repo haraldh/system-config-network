@@ -22,6 +22,7 @@ import sys
 import getopt
 import signal
 import os
+import os.path
 import GdkImlib
 import string
 import gettext
@@ -153,15 +154,12 @@ class mainDialog:
         self.loadProfiles()
 
     def loadDevices(self):
-        global devicelist
         devicelist = getDeviceList()
 
     def loadHardware(self):
-        global hardwarelist
         hardwarelist = getHardwareList()
 
     def loadProfiles(self):
-        global profilelist
         profilelist = getProfileList()
 
     def save(self):
@@ -170,15 +168,15 @@ class mainDialog:
         self.saveProfiles()
 
     def saveDevices(self):
-        global devicelist
+        devicelist = getDeviceList()
         devicelist.save()
 
     def saveHardware(self):
-        global hardwarelist
+        hardwarelist = getHardwareList()
         hardwarelist.save()
 
     def saveProfiles(self):
-        global profilelist
+        profilelist = getProfileList()
         profilelist.save()
 
     def hydrate(self):
@@ -187,7 +185,9 @@ class mainDialog:
         self.hydrateProfiles()
 
     def hydrateDevices(self):
-        global devicelist, profilelist, hardwarelist
+        devicelist = getDeviceList()
+        hardwarelist = getHardwareList()
+        profilelist = getProfileList()
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
@@ -210,7 +210,7 @@ class mainDialog:
             row = row + 1
 
     def hydrateHardware(self):
-        global hardwarelist
+        hardwarelist = getHardwareList()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
@@ -223,7 +223,8 @@ class mainDialog:
             clist.append([hw.Description, hw.Type, hw.Name])
 
     def hydrateProfiles(self):
-        global profilelist
+        profilelist = getProfileList()
+
         dclist = self.xml.get_widget("dnsList")
         dclist.clear()
         hclist = self.xml.get_widget("hostsList")
@@ -285,6 +286,9 @@ class mainDialog:
         pass
 
     def on_deviceAddButton_clicked (self, clicked):
+        profilelist = getProfileList()
+        devicelist = getDeviceList()
+
         clist = self.xml.get_widget("deviceList")
 
         for i in xrange (clist.rows):
@@ -313,7 +317,7 @@ class mainDialog:
             self.hydrate()
 
     def on_deviceCopyButton_clicked (self, button):
-        global profilelist, devicelist
+        devicelist = getDeviceList()
 
         clist = self.xml.get_widget("deviceList")
 
@@ -329,7 +333,7 @@ class mainDialog:
         self.hydrate()
 
     def on_deviceEditButton_clicked (self, *args):
-        global devicelist
+        devicelist = getDeviceList()
 
         clist = self.xml.get_widget("deviceList")
 
@@ -352,7 +356,9 @@ class mainDialog:
         self.hydrate()
 
     def on_deviceDeleteButton_clicked (self, button):
-        global devicelist, profilelist
+        devicelist = getDeviceList()
+        profilelist = getProfileList()
+
         clist = self.xml.get_widget("deviceList")
 
         if len(clist.selection) == 0:
@@ -385,6 +391,7 @@ class mainDialog:
                                     edit_button = None, delete_button = None,
                                     copy_button = None, rename_button = None,
                                     up_button = None, down_button = None):
+        profilelist = getProfileList()
         if edit_button: edit_button.set_sensitive(TRUE)
         if rename_button: rename_button.set_sensitive(TRUE)
         if delete_button: delete_button.set_sensitive(TRUE)
@@ -415,6 +422,8 @@ class mainDialog:
         apply (func)
 
     def on_generic_clist_button_press_event(self, clist, event, func):
+        profilelist = getProfileList()
+
         if event.type == GDK._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
@@ -450,29 +459,40 @@ class mainDialog:
                             activateDevice(name, prof.ProfileName, false)
                     else:
                         activateDevice(name, curr_prof.ProfileName, false)
+#                        activateDevice(name, 'default', false)
                 clist.set_pixmap(row, 0, xpm)
 
     def on_hostnameEntry_changed(self, entry):
+        profilelist = getProfileList()
+
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.Hostname = entry.get_text()
 
     def on_domainEntry_changed(self, entry):
+        profilelist = getProfileList()
+
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.Domainname = entry.get_text()
 
     def on_primaryDnsEntry_changed(self, entry):
+        profilelist = getProfileList()
+
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.PrimaryDNS = entry.get_text()
 
     def on_secondaryDnsEntry_changed(self, entry):
+        profilelist = getProfileList()
+
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.SecondaryDNS = entry.get_text()
 
     def on_ternaryDnsEntry_changed(self, entry):
+        profilelist = getProfileList()
+
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.TernaryDNS = entry.get_text()
@@ -481,6 +501,8 @@ class mainDialog:
         pass
 
     def on_dnsAddButton_clicked(self, *args):
+        profilelist = getProfileList()
+
         searchDnsEntry = self.xml.get_widget("searchDnsEntry").get_text()
         self.xml.get_widget("searchDnsEntry").set_text("")
         if len(string.strip(searchDnsEntry)) == 0:
@@ -503,6 +525,8 @@ class mainDialog:
         dialog.xml.get_widget("Dialog").run()
         
     def on_dnsUpButton_clicked (self, button):
+        profilelist = getProfileList()
+
         clist = self.xml.get_widget("dnsList")
         name = clist.get_text(clist.selection[0], 0)
 
@@ -523,6 +547,8 @@ class mainDialog:
                 clist.select_row(index-1, 0)
 
     def on_dnsDownButton_clicked (self, *args):
+        profilelist = getProfileList()
+
         clist = self.xml.get_widget("dnsList")
         name = clist.get_text(clist.selection[0], 0)
 
@@ -543,6 +569,8 @@ class mainDialog:
                 clist.select_row(index+1, 0)
 
     def on_dnsDeleteButton_clicked (self, *args):
+        profilelist = getProfileList()
+
         clist = self.xml.get_widget("dnsList")
         if len(clist.selection) == 0:
             return
@@ -553,7 +581,7 @@ class mainDialog:
                 self.hydrate()
 
     def on_hostsAddButton_clicked(self, *args):
-        global profilelist
+        profilelist = getProfileList()
 
         curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
         if not curr_prof.HostsList:
@@ -571,7 +599,7 @@ class mainDialog:
         self.hydrate()
 
     def on_hostsEditButton_clicked (self, *args):
-        global profilelist
+        profilelist = getProfileList()
 
         curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
         hostslist = curr_prof.HostsList
@@ -588,6 +616,8 @@ class mainDialog:
         self.hydrate()
 
     def on_hostsDeleteButton_clicked (self, *args):
+        profilelist = getProfileList()
+
         clist = self.xml.get_widget('profileList')
 
         if len(clist.selection) == 0:
@@ -616,6 +646,8 @@ class mainDialog:
         dialog.run()
 
     def on_profileEntry_changed(self, text):
+        profilelist = getProfileList()
+
         if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
             return
 
@@ -642,6 +674,8 @@ class mainDialog:
         pass
 
     def on_profileDeleteButton_clicked (self, *args):
+        profilelist = getProfileList()
+
         clist = self.xml.get_widget('profileList')
 
         if len(clist.selection) == 0:
@@ -663,34 +697,23 @@ class mainDialog:
         self.showHardwareDialog(type, true)
 
     def showHardwareDialog(self, deviceType, edit):
+        hardwarelist = getHardwareList()
+
         if deviceType == 'Ethernet' or deviceType == 'Token Ring' or  \
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
-            dialog = ethernetHardwareDialog(self.xml, edit)
-            dialog.main = self
             if not edit:
-                return
-            clist = self.xml.get_widget('hardwareList')
-            type  = clist.get_text(clist.selection[0], 1)
-            dev   = clist.get_text(clist.selection[0], 2)
-            for hw in hardwarelist:
-                if hw.Name == dev:
-                    break;
-
-            dialog.xml.get_widget('adapterEntry').set_text(hw.Description)
-            dialog.xml.get_widget('adapterEntry').set_sensitive(false)
-            dialog.xml.get_widget('adapterComboBox').set_sensitive(false)
-
-            dialog.xml.get_widget('ethernetDeviceEntry').set_text(hw.Name)
-            if hw.Card.IRQ:
-                dialog.xml.get_widget('irqEntry').set_text(hw.Card.IRQ)
+                i = hardwarelist.addHardware()
+                hw = hardwarelist[i]
             else:
-                dialog.xml.get_widget('irqEntry').set_sensitive(false)
-                dialog.xml.get_widget('irqComboBox').set_sensitive(false)
+                clist = self.xml.get_widget('hardwareList')
 
-            dialog.xml.get_widget('Dialog').run()
+                if len(clist.selection) == 0:
+                    return
+
+                hw = hardwarelist[clist.selection[0]]
+            dialog = ethernetHardwareDialog(hw, self.xml)
 
         if deviceType == 'Modem':
-            global hardwarelist
             if edit:
                 clist = self.xml.get_widget('hardwareList')
                 type  = clist.get_text(clist.selection[0], 1)
@@ -702,11 +725,7 @@ class mainDialog:
             else:
                 dialog = addmodemDialog()
 
-            dialog.main = self
-            dialog.xml.get_widget("Dialog").run()
-            
         if deviceType == 'ISDN':
-            global hardwarelist
             if edit:
                 clist = self.xml.get_widget('hardwareList')
                 Description = clist.get_text(clist.selection[0], 0)
@@ -719,11 +738,16 @@ class mainDialog:
             else:
                 dialog = addisdnHardwareDialog()
                 
-            dialog.main = self
-            dialog.xml.get_widget("Dialog").run()
+        button = dialog.xml.get_widget('Dialog').run()
+        if button == 0:
+            hardwarelist.commit()
+        else:
+            hardwarelist.rollback()
+        self.hydrate()
             
     def on_hardwareDeleteButton_clicked (self, *args):
-        global hardwarelist
+        hardwarelist = getHardwareList()
+
         clist = self.xml.get_widget("hardwareList")
 
         if len(clist.selection) == 0:
@@ -735,6 +759,7 @@ class mainDialog:
         dev = clist.get_text(clist.selection[0], 2)
 
         del hardwarelist[clist.selection[0]]
+        hardwarelist.commit()
         self.hydrate()
 
 

@@ -1,12 +1,13 @@
-#! /usr/bin/python
+import os
+import os.path
 
+from NC_functions import *
 from DeviceList import *
-from os import *
-from os.path import *
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
+
 import Conf
-from NC_functions import *
 
 class ConfDevices(UserList.UserList):
     def __init__(self):
@@ -15,14 +16,14 @@ class ConfDevices(UserList.UserList):
         #for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
         confdir = SYSCONFDEVICEDIR    
         try:
-            dir = listdir(confdir)
+            dir = os.listdir(confdir)
         except OSError, msg:
             pass
         else:
             for entry in dir:
                 if (len(entry) > 6) and \
                    entry[:6] == 'ifcfg-' and \
-                   isfile(confdir + entry):
+                   os.path.isfile(confdir + entry):
                     self.append(entry[6:])
         return
 
@@ -39,7 +40,7 @@ class DeviceList(DeviceList_base):
 
     def save(self):
         try:
-            dir = listdir(SYSCONFDEVICEDIR)
+            dir = os.listdir(SYSCONFDEVICEDIR)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
                   + SYSCONFDEVICEDIR + ': ' + str(msg)
@@ -48,7 +49,7 @@ class DeviceList(DeviceList_base):
             for entry in dir:
                 if (len(entry) <= 6) or \
                    entry[:6] != 'ifcfg-' or \
-                   (not isfile(SYSCONFDEVICEDIR + entry)):
+                   (not os.path.isfile(SYSCONFDEVICEDIR + entry)):
                     #print "skipping " + entry
                     continue
                 

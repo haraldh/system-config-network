@@ -1,13 +1,16 @@
-from DeviceList import *
-from NC_functions import *
-from os.path import *
-from commands import *
-import HardwareList
+import sys
 import string
+import commands
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
+
 import Conf
+
+import HardwareList
+
+from NC_functions import *
+from DeviceList import *
 
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
@@ -71,7 +74,6 @@ class Device(Device_base):
                 return self.Dialup
             else:
                 self.Dialup = None
-#                self.Dialup = NCDialup.ModemDialup(None, self)
                 return self.Dialup
         else:
             raise TypeError, "Device type not specified"
@@ -104,11 +106,11 @@ class Device(Device_base):
                     gw = cfg['GATEWAY']
                     
                     if gw and self.Netmask:                    
-                        network = getoutput('ipcalc --network ' + self.IP \
+                        network = commands.getoutput('ipcalc --network ' + self.IP \
                                             + ' ' + self.Netmask + \
                                             ' 2>/dev/null')
                         
-                        out = getoutput('ipcalc --network ' + gw + ' ' \
+                        out = commands.getoutput('ipcalc --network ' + gw + ' ' \
                                         + self.Netmask + ' 2>/dev/null')
                         
                         if out == network:

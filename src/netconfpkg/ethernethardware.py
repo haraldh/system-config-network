@@ -21,7 +21,6 @@
 import sys
 sys.path.append("/usr/lib/rhs/python/")
 
-from HardwareList import *
 
 import gtk
 import GDK
@@ -39,7 +38,6 @@ from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
 
-
 ##
 ## I18N
 ##
@@ -48,7 +46,8 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class ethernetHardwareDialog:
-    def __init__(self, xml_main = None, edit = None):
+    def __init__(self, hw, xml_main = None):
+        self.hw = hw
         self.xml_main = xml_main
 
         glade_file = "ethernethardware.glade"
@@ -71,19 +70,19 @@ class ethernetHardwareDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
+        self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
 
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
-        
+        pass
+
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.main.hydrate()
-        self.dialog.destroy()
+        self.hw.commit()
 
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
+        pass
 
     def on_adapterEntry_changed(self, entry):
         pass
@@ -107,49 +106,52 @@ class ethernetHardwareDialog:
             self.dialog.set_icon(pix, mask)
 
     def hydrate(self):
-        pass
-        
+        if self.hw.Name:
+            self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
+            self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
+            self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
+            self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
+            if self.hw.Card.IRQ:
+                self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
+            if self.hw.Card.Mem:
+                self.xml.get_widget('memEntry').set_text(self.hw.Card.Mem)
+            if self.hw.Card.IoPort:
+                self.xml.get_widget('ioEntry').set_text(self.hw.Card.IoPort)
+            if self.hw.Card.IoPort1:
+                self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
+            if self.hw.Card.IoPort2:
+                self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
+            if self.hw.Card.DMA0:
+                self.xml.get_widget('dma0Entry').set_text(self.hw.Card.DMA0)
+            if self.hw.Card.DMA1:
+                self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
+
     def setup(self):
         list = []
         modInfo = Conf.ConfModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
                 list.append(modInfo[i]['description'])
+        list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
 
     def dehydrate(self):
-        hardwarelist = getHardwareList()
-
-        idx = -1
-        pos = 0
-        for hw in hardwarelist:
-            if hw.Name == self.xml.get_widget('ethernetDeviceEntry').get_text():
-                idx = pos
-            pos = pos+1
-
-        if idx == -1:
-            idx = hardwarelist.addHardware()
-
-        hw = hardwarelist[idx]
-
-        hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
-        hw.Description = self.xml.get_widget('adapterEntry').get_text()
-        hw.Type = 'Ethernet'
-        hw.createCard()
-        hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
-        hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
-        hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
-        hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
-        hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-        hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
-        hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
+        self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
+        self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
+        self.hw.Type = 'Ethernet'
+        self.hw.createCard()
+        self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
+        self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
+        self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
+        self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
+        self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
+        self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
+        self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
         modInfo = Conf.ConfModInfo()
-        hw.Card.ModuleName = 'Unknown'
+        self.hw.Card.ModuleName = 'Unknown'
         for i in modInfo.keys():
-            if modInfo[i]['description'] == hw.Description:
-                hw.Card.ModuleName = i
-
-
+            if modInfo[i]['description'] == self.hw.Description:
+                self.hw.Card.ModuleName = i
 
 # make ctrl-C work
 if __name__ == "__main__":
