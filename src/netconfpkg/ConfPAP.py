@@ -15,6 +15,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 import sys
+from types import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -41,7 +42,7 @@ class ConfPAP(Conf.Conf):
         self.rewind()
 
         if not self.findnextline(self.beginline):
-            #print "insertline"
+            #self.rewind()
             self.insertline(self.beginline)
 
         self.beginlineplace = self.tell()
@@ -57,10 +58,13 @@ class ConfPAP(Conf.Conf):
             self.nextline()
             
         if missing:
+            self.seek(self.beginlineplace)
+            self.nextline()
             self.insertline(self.endline)
             self.endlineplace = self.tell()
 
-        self.seek(self.beginlineplace)
+        #self.seek(self.beginlineplace)
+        self.rewind()
 
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
@@ -68,26 +72,44 @@ class ConfPAP(Conf.Conf):
             # initialize dictionary of variable/name pairs
             # print self.getline()
             var = self.getfields()
-
-            #if len(var[0]) and var[0][0] in '\'"':
-            #    # found quote; strip from beginning and end
-            #    quote = var[0][0]
-            #    var[0] = var[0][1:]
-            #    p = -1
-            #    try:
-            #        while cmp(var[0][p], quote):
-            #            # ignore whitespace, etc.
-            #            p = p - 1
-            #    except:
-            #        raise IndexError, 'end quote not found in '+self.filename+':'+var[0]
-            #    var[0] = var[0][:p]
                 
-            if var and (len(var) == 3):
-                self.vars[var[0]] = var[2]
+            if var and (len(var) >= 3):
+                if not self.vars.has_key(var[0]):
+                    self.vars[var[0]] = {}
+            self.vars[var[0]][var[1]] = var[2]
             
             self.nextline()
             
         self.rewind()
+
+    def getfields(self):
+        var = Conf.Conf.getfields(self)
+        if len(var[0]) and var[0][0] in '\'"':
+            # found quote; strip from beginning and end
+            quote = var[0][0]
+            var[0] = var[0][1:]
+            p = -1
+            try:
+                while cmp(var[0][p], quote):
+                    # ignore whitespace, etc.
+                    p = p - 1
+            except:
+                raise IndexError, 'end quote not found in '+self.filename+':'+var[0]
+            var[0] = var[0][:p]
+
+        if len(var[2]) and var[2][0] in '\'"':
+            # found quote; strip from beginning and end
+            quote = var[2][0]
+            var[2] = var[2][1:]
+            p = -1
+            try:
+                while cmp(var[2][p], quote):
+                    # ignore whitespace, etc.
+                    p = p - 1
+            except:
+                raise IndexError, 'end quote not found in '+self.filename+':'+var[0]
+            var[2] = var[2][:p]
+        return var
 
     def insertline(self, line=''):
         place = self.tell()
@@ -119,16 +141,15 @@ class ConfPAP(Conf.Conf):
         place=self.tell()
         self.seek(self.beginlineplace)
         missing=1
-        login = '\"' + varname + '\"'
-        value = '\"' + value[1] + '\"'
-        server = '*'
-        #if len(varname) == 2:
-        #    login = '\"' + varname[0] + '\"'
-        #    server = '*'
-        #else:
-        #    login = '\"' + varname + '\"'
-        #    value = '\"' + value[1] + '\"'
-        #    server = '*'
+
+        if isinstance(varname, ListType):
+            login = '\"' + varname[0] + '\"'
+            server = '\"' + varname[1] + '\"'
+        else:
+            login = '\"' + varname + '\"'
+            server = '*'
+
+         value = '\"' + value + '\"'
             
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
@@ -136,29 +157,32 @@ class ConfPAP(Conf.Conf):
 
             var = self.getfields()
             
-            if var and (len(var) == 3):                
+            if var and (len(var) >= 3):                
                 if login == var[0] and server == var[1]:
                         self.setfields([ login, server, value ] )
                         missing=0
             self.nextline()
             
         if missing:
+            self.delallitem(varname)
             self.seek(self.endlineplace)
             self.insertlinelist([ login, server, value ] )
                 
-        self.vars[login] = value
-
+        if not self.vars.has_key(login):
+            self.vars[login] = {}
+        self.vars[login][server] = value
+            
+        self.seek(place)
+        
     def __delitem__(self, varname):
-        # delete *every* instance...
+        place=self.tell()
         self.seek(self.beginlineplace)
-        login = varname
-        server = None
-        #if len(varname) == 2:
-        #    login = varname[0]
-        #    server = varname[1]
-        #else:
-        #    login = varname
-        #    server = None        
+        if isinstance(varname, ListType):
+            login = varname[0]
+            server = varname[1]
+        else:
+            login = varname
+            server = "*"        
 
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
@@ -166,14 +190,46 @@ class ConfPAP(Conf.Conf):
 
             var = self.getfields()
             
-            if var and (len(var) == 3):                
-                if login == var[0] and (not server or server == var[1]):
+            if var and (len(var) >= 3):                
+                if login == var[0] and server == var[1]:
                     self.deleteline()
             self.nextline()
                     
-        if self.vars.has_key(varname):
-            del self.vars[varname]
+        if self.vars.has_key(login):
+            if self.vars[login].has_key(login):
+                del self.vars[login][server]
+            if not len(self.vars[login]):
+                del self.vars[login]
+        self.seek(place)
+
+    def delallitem(self, varname):
+        place=self.tell()
+        self.rewind()
+        # delete *every* instance...
+        if isinstance(varname, ListType):
+            login = varname[0]
+            server = varname[1]
+        else:
+            login = varname
+            server = "*"
+
+        while self.findnextcodeline():
+            var = self.getfields()
             
+            if var and (len(var) >= 3):                
+                if login == var[0] and server == var[1]:
+                    self.deleteline()
+
+            self.nextline()
+                    
+        if self.vars.has_key(login):
+            if self.vars[login].has_key(login):
+                del self.vars[login][server]
+            if not len(self.vars[login]):
+                del self.vars[login]
+
+        self.seek(place)
+
     def has_key(self, key):
         if self.vars.has_key(key): return 1
         return 0
@@ -190,6 +246,8 @@ if __name__ == '__main__':
     pap['test1'] = 'pappasswd1'
     pap['test2'] = 'pappasswd2'
     pap['test3'] = 'pappasswd3'
+    pap[['test3', 'testserver']] = 'pappasswd3'
+
 
     print pap.lines
 

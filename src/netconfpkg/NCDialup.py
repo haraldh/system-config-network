@@ -110,7 +110,6 @@ class DslDialup(Dialup):
     
     keydict = { 'ProviderName' : 'PROVIDER',
                 'Login' : 'USER',
-                'Password' : 'PASS',
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
                 'EthDevice' : 'ETH',
@@ -140,6 +139,17 @@ class DslDialup(Dialup):
                     self.__dict__[selfkey] = false            
             else:
                 self.__dict__[selfkey] = false            
+
+        if conf.has_key("PASS"):
+            self.Password = conf["PASS"]            
+        elif self.Login:
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            for conf in [chapconf, papconf]:
+                if conf.has_key(self.Login):
+                    if conf[self.Login].has_key("*"):
+                        self.Password = conf[self.Login]["*"]
+
 
     def save(self, parentConf):
         conf = parentConf
@@ -189,6 +199,9 @@ class DslDialup(Dialup):
 
         if conf.has_key('RESOLV_MODS'):
             del conf['RESOLV_MODS']
+
+        if conf.has_key('PASS'):
+            del conf['PASS']
         
         conf.write()
 
@@ -259,6 +272,15 @@ class IsdnDialup(Dialup):
 #            else:
 #                self.DefRoute = false
 
+        if conf.has_key("PASSWORD"):
+            self.Password = conf["PASSWORD"]
+        elif self.Login:
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            for conf in [chapconf, papconf]:
+                if conf.has_key(self.Login):
+                    if conf[self.Login].has_key("*"):
+                        self.Password = conf[self.Login]["*"]
         
         if conf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
@@ -340,6 +362,8 @@ class IsdnDialup(Dialup):
             del conf['REMOTE_IP']
         if conf.has_key('BOOT'):
             del conf['BOOT']
+        if conf.has_key('PASSWORD'):
+            del conf['PASSWORD']
 
         if self.Compression:
             self.Compression.save(conf)
@@ -473,6 +497,18 @@ class ModemDialup(Dialup):
                         #print "Found " + sect
                         self.Inherits = sect
                         break
+
+        #
+        # if there is no password yet, try to get it from pap/chap
+        #
+        if self.Login and not self.Password:
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            for conf in [chapconf, papconf]:
+                if conf.has_key(self.Login):
+                    if conf[self.Login].has_key("*"):
+                        self.Password = conf[self.Login]["*"]
+
         
     def save(self, parentConf):
         parent = self.getParent()

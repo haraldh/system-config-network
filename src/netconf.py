@@ -266,15 +266,18 @@ class mainDialog:
     def saveDevices(self):
         devicelist = getDeviceList()
         devicelist.save()
-
+        devicelist.changed = false
+        
     def saveHardware(self):
         hardwarelist = getHardwareList()
         hardwarelist.save()
-
+        hardwarelist.changed = false
+        
     def saveProfiles(self):
         profilelist = getProfileList()
         profilelist.save()
-
+        profilelist.changed = false
+        
     def hydrate(self):
         self.hydrateProfiles()
         self.hydrateDevices()

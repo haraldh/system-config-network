@@ -28,6 +28,7 @@ import gtk
 import GdkImlib
 import GDK
 import GTK
+import ConfPAP
 #import gnome
 #import gnome.ui
 
@@ -78,6 +79,21 @@ deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
 class TestError(Exception):
 	def __init__(self, args=None):
 		self.args = args
+
+
+DVpapconf = None
+def getPAPConf():
+    global DVpapconf
+    if DVpapconf == None:        
+        DVpapconf = ConfPAP.ConfPAP("/etc/ppp/pap-secrets")
+    return DVpapconf
+
+DVchapconf = None
+def getCHAPConf():
+    global DVchapconf
+    if DVchapconf == None:
+        DVchapconf = ConfPAP.ConfPAP("/etc/ppp/chap-secrets")
+    return DVchapconf
 
 def get_icon(pixmap_file, dialog):
     fn = pixmap_file
