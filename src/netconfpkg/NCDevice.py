@@ -365,12 +365,8 @@ class Device(Device_base):
         self.oldname = self.DeviceId
         
     def activate(self, dialog = None):        
-        if self.Type == ISDN:
-            command = '/usr/sbin/isdndial'
-            param = [command, self.DeviceId]
-        else:
-            command = '/sbin/ifup'
-            param = [command, self.DeviceId, "up"]
+        command = '/sbin/ifup'
+        param = [command, self.DeviceId, "up"]
 
         try:
             (ret, msg) =  generic_run_dialog(\
@@ -448,5 +444,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/01 15:20:33 $"
-__version__ = "$Revision: 1.95 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.96 $"

@@ -145,6 +145,7 @@ if __name__ == '__main__':
     chroot = None
     debug = None
     devlists = []
+    
     try:
         opts, args = getopt.getopt(cmdline, "ap:?r:dhvtief:co",
                                    [
@@ -364,5 +365,5 @@ if __name__ == '__main__':
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:19:01 $"
-__version__ = "$Revision: 1.17 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.18 $"

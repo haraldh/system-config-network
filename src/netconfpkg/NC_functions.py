@@ -63,6 +63,9 @@ ISDNCARDCONF='/etc/sysconfig/isdncard'
 PAPFILE = "/etc/ppp/pap-secrets"
 CHAPFILE = "/etc/ppp/chap-secrets"
 
+import netconfpkg
+netconfpkg.ROOT = "/"
+
 DEFAULT_PROFILE_NAME=_("Common")
 
 ETHERNET = 'Ethernet'
@@ -778,10 +781,6 @@ class ConfDevices(UserList.UserList):
                    os.access(confdir + entry, os.R_OK):
                     self.append(entry[6:])
         return
-
-
-import netconfpkg
-netconfpkg.ROOT = "/"
 	
 def setRoot(root):
     netconfpkg.ROOT = root
@@ -812,5 +811,5 @@ class ConfKeys(Conf.ConfShellVar):
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/01 15:20:33 $"
-__version__ = "$Revision: 1.82 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.83 $"

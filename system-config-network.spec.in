@@ -93,6 +93,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-druid
 
 %changelog
+* Wed Dec 17 2003 Harald Hoyer <harald@redhat.de> 1.3.13
+- fixed T-Online dialog #110911
+- default flow control to CTSRTS #110347
+- only clear login/pw on provider select, if provider has its own number
+- fixed cancel of dialup process #103421
+- default to "/" for chrooted configuration
+- default to "default" profile if none active
+- fixed "activate button not active" #110193
+- scn-tui requires newt #104213
+- fixed #107816, by recognizing /var/run/ppp-ppp<NICKNAME>.pid
+- fixed a bug in ISDN activate #100677
+
 * Tue Dec 16 2003 Harald Hoyer <harald@redhat.de> 1.3.12
 - renamed redhat-config-network -> system-config-network
 - added pciutils requirement

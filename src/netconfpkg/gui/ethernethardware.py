@@ -108,7 +108,8 @@ class ethernetHardwareDialog:
     def hydrate(self):
         if self.hw.Name:
             self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
-            self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
+            if self.hw.Description:
+                self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
             self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
             self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
             if self.hw.Card.IRQ:
@@ -177,5 +178,5 @@ class ethernetHardwareDialog:
 NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:21:25 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.30 $"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-03 11:07+0100\n"
+"POT-Creation-Date: 2003-12-16 12:25+0100\n"
 "PO-Revision-Date: 2003-06-26 15:42+1000\n"
 "Last-Translator: Noriko Mizumoto <noriko@redhat.com>\n"
 "Language-Team: Japanese <kdeveloper@kde.gr.jp>\n"
@@ -35,7 +35,7 @@ msgstr "ネットワークデバイスと接続を設定"
 msgid "Network"
 msgstr "ネットワーク"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:141
+#: neat.desktop.in.h:3 src/netconf-tui.py:142
 #: src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Network Configuration"
 msgstr "ネットワーク設定"
@@ -67,6 +67,7 @@ msgstr "インターネット設定ウィザード"
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # redhat-network-control - A easy-to-use interface for configuring/activating
 #. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
@@ -82,11 +83,11 @@ msgstr "インターネット設定ウィザード"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/neat-control.py:48 src/netconf.py:74
+#: src/neat-control.py:49 src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "エラー: グラフィカル環境を初期化できません。"
 
-#: src/neat-control.py:49 src/netconf.py:75
+#: src/neat-control.py:50 src/netconf.py:76
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
@@ -94,7 +95,7 @@ msgstr ""
 "恐らく、グラフィカル環境を使用してそのツールが実行されなかったことが障害の要"
 "因でしょう。"
 
-#: src/neat-control.py:50 src/netconf.py:76
+#: src/neat-control.py:51 src/netconf.py:77
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -104,12 +105,12 @@ msgstr ""
 
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1609
+#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1610
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/neat-control.py:142 src/netconf-cmd.py:102
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -118,16 +119,16 @@ msgstr ""
 "Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
+#: src/neat-control.py:168 src/netconfpkg/NCDevice.py:380
 msgid "Network device activating..."
 msgstr "ne"
 
-#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:381
+#: src/neat-control.py:171 src/netconfpkg/NCDevice.py:381
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい...."
 
-#: src/neat-control.py:215
+#: src/neat-control.py:216
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "ネットワークデバイス%sを設定できません。"
@@ -136,16 +137,16 @@ msgstr "ネットワークデバイス%sを設定できません。"
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#: src/neat-control.py:235
+#: src/neat-control.py:236
 msgid "Switching Profiles"
 msgstr "プロファイルに切替中です"
 
-#: src/neat-control.py:236
+#: src/neat-control.py:237
 #, python-format
 msgid "Switching to profile %s"
 msgstr "プロファイル%sに切替中です"
 
-#: src/neat-control.py:237
+#: src/neat-control.py:238
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "プロファイル%sに切り替え失敗"
@@ -154,7 +155,7 @@ msgstr "プロファイル%sに切り替え失敗"
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:974
+#: src/neat-control.py:253 src/netconfpkg/gui/maindialog.py:975
 msgid "To be rewritten!"
 msgstr "再書き込みとなります!"
 
@@ -162,7 +163,7 @@ msgstr "再書き込みとなります!"
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
-#: src/neat-control.py:355
+#: src/neat-control.py:356
 msgid " (active)"
 msgstr " (動作中)"
 
@@ -170,9 +171,10 @@ msgstr " (動作中)"
 #. print "profile " + prof.ProfileName + " activated\n"
 #. make ctrl-C work
 #. !/usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf-tui - a tui network configuration tool
 #. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -181,7 +183,7 @@ msgstr " (動作中)"
 #.
 #. handleException function
 #.
-#: src/netconf-tui.py:101
+#: src/netconf-tui.py:102
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against system-config-network "
@@ -194,86 +196,86 @@ msgstr ""
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:135
+#: src/netconf-tui.py:136
 msgid "What do you want to configure?"
 msgstr "何を設定しますか?"
 
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:137
 msgid "Configure"
 msgstr "設定"
 
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:137
 msgid "Exit"
 msgstr "出口"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
+#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
 msgstr "名前"
 
-#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
+#: src/netconf-tui.py:260 src/netconf-tui.py:369 src/netconf-tui.py:475
 #: src/netconfpkg/gui/maindialog.glade.h:11
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "デバイス"
 
-#: src/netconf-tui.py:260
+#: src/netconf-tui.py:261
 msgid "Use DHCP"
 msgstr "DHCPの使用"
 
-#: src/netconf-tui.py:261
+#: src/netconf-tui.py:262
 msgid "Static IP"
 msgstr "静的IP"
 
-#: src/netconf-tui.py:262
+#: src/netconf-tui.py:263
 msgid "Netmask"
 msgstr "ネットマスク"
 
-#: src/netconf-tui.py:263
+#: src/netconf-tui.py:264
 msgid "Default gateway IP"
 msgstr "デフォルトゲートウェイ IP"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
+#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
 msgid "Ok"
 msgstr "Ok"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
+#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
 msgid "Cancel"
 msgstr "取り消し"
 
-#: src/netconf-tui.py:273
+#: src/netconf-tui.py:274
 msgid "Ethernet Configuration"
 msgstr "イーサネット設定"
 
-#: src/netconf-tui.py:369 src/netconf-tui.py:475
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Phonenumber"
 msgstr "ISP電話番号"
 
-#: src/netconf-tui.py:370 src/netconf-tui.py:476
+#: src/netconf-tui.py:371 src/netconf-tui.py:477
 msgid "ISP Login"
 msgstr "ISPログイン"
 
-#: src/netconf-tui.py:371 src/netconf-tui.py:477
+#: src/netconf-tui.py:372 src/netconf-tui.py:478
 msgid "ISP Password"
 msgstr "ISPパスワード"
 
-#: src/netconf-tui.py:372
+#: src/netconf-tui.py:373
 msgid "Modem Initstring"
 msgstr "モデムのInitstring"
 
-#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:5
+#: src/netconf-tui.py:381 src/netconfpkg/gui/modemconfig.glade.h:5
 msgid "Modem Configuration"
 msgstr "モデム設定"
 
-#: src/netconf-tui.py:478
+#: src/netconf-tui.py:479
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:486
+#: src/netconf-tui.py:487
 msgid "ISDN Configuration"
 msgstr "ISDN設定"
 
@@ -281,12 +283,13 @@ msgstr "ISDN設定"
 #. __main__
 #.
 #. !/usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf - A network configuration tool
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -300,20 +303,20 @@ msgstr "ISDN設定"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:56
+#: src/netconf.py:57
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "エラー：%s, %s!"
 
-#: src/netconf.py:58
+#: src/netconf.py:59
 msgid "Starting text version"
 msgstr "テキストバージョンを開始"
 
-#: src/netconf.py:113
+#: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "ネットワーク設定をロードしています..."
 
-#: src/netconf.py:126
+#: src/netconf.py:127
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -330,12 +333,13 @@ msgstr ""
 #. del splash_window
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. ! /usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf - A network configuration tool
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -348,7 +352,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf-cmd.py:64
+#: src/netconf-cmd.py:65
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -360,64 +364,64 @@ msgstr ""
 "以下のテキストを使用して、https://bugzilla.redhat.com/bugzillaの\n"
 "コンポーネント%sに詳細なバグレポートをファイルしてください。\n"
 
-#: src/netconf-cmd.py:99
+#: src/netconf-cmd.py:100
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr "%s - ネットワーク設定のコマンドラインツール"
 
-#: src/netconf-cmd.py:104
+#: src/netconf-cmd.py:105
 #, python-format
 msgid "Usage: %s"
 msgstr "使用法: %s"
 
-#: src/netconf-cmd.py:106
+#: src/netconf-cmd.py:107
 msgid "switch / activate profile"
 msgstr "切り替え / プロファイルを有効にする"
 
-#: src/netconf-cmd.py:108
+#: src/netconf-cmd.py:109
 msgid "export / import hardware list"
 msgstr "ハードウェア一覧のエキスポート / インポート "
 
-#: src/netconf-cmd.py:110
+#: src/netconf-cmd.py:111
 msgid "export / import device list (default)"
 msgstr "デバイス一覧(デフォルト)のエキスポート / インポート"
 
-#: src/netconf-cmd.py:112
+#: src/netconf-cmd.py:113
 msgid "export / import profile list"
 msgstr "プロファイル一覧のエキスポート / インポート"
 
-#: src/netconf-cmd.py:114
+#: src/netconf-cmd.py:115
 msgid "set the root directory"
 msgstr "root ディレクトリの設定"
 
-#: src/netconf-cmd.py:115
+#: src/netconf-cmd.py:116
 msgid "export list (default)"
 msgstr "エキスポート一覧(デフォルト)"
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:117
 msgid "import list"
 msgstr "インポート一覧"
 
-#: src/netconf-cmd.py:118
+#: src/netconf-cmd.py:119
 msgid "clear existing list prior of importing"
 msgstr "インポートする前に既存の一覧を消去"
 
-#: src/netconf-cmd.py:120
+#: src/netconf-cmd.py:121
 msgid "import from file"
 msgstr "ファイルからインポート"
 
-#: src/netconf-cmd.py:225
+#: src/netconf-cmd.py:226
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "不明なオプション %s\n"
 
 #. remove the last \n
-#: src/netconf-cmd.py:304
+#: src/netconf-cmd.py:305
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "不明な一覧 %s\n"
 
-#: src/netconf-cmd.py:308
+#: src/netconf-cmd.py:309
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "行の構文解析にエラー: %s"
@@ -797,11 +801,12 @@ msgstr "そして、最初にこのデバイス用のニックネームを入力
 msgid "This device can not be edited with this tool!"
 msgstr "このデバイスはこのツールでは編集できません!"
 
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -813,11 +818,11 @@ msgstr "このデバイスはこのツールでは編集できません!"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/IsdnInterface.py:87
+#: src/netconfpkg/gui/IsdnInterface.py:88
 msgid "ISDN connection"
 msgstr "ISDN接続"
 
-#: src/netconfpkg/gui/IsdnInterface.py:93
+#: src/netconfpkg/gui/IsdnInterface.py:94
 msgid ""
 "Create a new ISDN connection. This is a connection that uses an Integrated "
 "Services Digital Network line to dial into to your Internet Service "
@@ -851,11 +856,12 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -867,11 +873,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:80
+#: src/netconfpkg/gui/ModemInterface.py:81
 msgid "Modem connection"
 msgstr "モデム接続"
 
-#: src/netconfpkg/gui/ModemInterface.py:86
+#: src/netconfpkg/gui/ModemInterface.py:87
 msgid ""
 "Create a new Modem connection.  This is a connection that uses a serial "
 "analog modem to dial into to your Internet Service Provider. These modems "
@@ -883,39 +889,39 @@ msgstr ""
 "続方式です。モデムは普通の銅製の電話線上を伝わる音でデータを転送します。この"
 "種の接続方式は電話のあるところなら世界中どこでも利用できます"
 
-#: src/netconfpkg/gui/ModemInterface.py:114
+#: src/netconfpkg/gui/ModemInterface.py:115
 msgid "Modem probing..."
 msgstr "モデム検出中"
 
-#: src/netconfpkg/gui/ModemInterface.py:118
+#: src/netconfpkg/gui/ModemInterface.py:119
 msgid "Probing for Modems, please wait..."
 msgstr "モデムを検出中です。お待ち下さい"
 
-#: src/netconfpkg/gui/ModemInterface.py:133
+#: src/netconfpkg/gui/ModemInterface.py:134
 msgid "No modem was found on your system."
 msgstr "システムにモデムが検出されませんでした。"
 
 #. 460800 seems to be to high
-#: src/netconfpkg/gui/ModemInterface.py:154
+#: src/netconfpkg/gui/ModemInterface.py:155
 #: src/netconfpkg/gui/modemconfig.py:113
 msgid "Generic Modem"
 msgstr "一般的なモデム設定"
 
-#: src/netconfpkg/gui/ModemInterface.py:161
+#: src/netconfpkg/gui/ModemInterface.py:162
 #: src/netconfpkg/gui/modemconfig.py:140
 #: src/netconfpkg/gui/ModemDruid.glade.h:8
 #: src/netconfpkg/gui/modemconfig.glade.h:9
 msgid "Off"
 msgstr "オフ"
 
-#: src/netconfpkg/gui/ModemInterface.py:163
+#: src/netconfpkg/gui/ModemInterface.py:164
 #: src/netconfpkg/gui/modemconfig.py:142
 #: src/netconfpkg/gui/ModemDruid.glade.h:3
 #: src/netconfpkg/gui/modemconfig.glade.h:3
 msgid "Low"
 msgstr "低"
 
-#: src/netconfpkg/gui/ModemInterface.py:165
+#: src/netconfpkg/gui/ModemInterface.py:166
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:4
 #: src/netconfpkg/gui/modemconfig.glade.h:4
@@ -923,14 +929,14 @@ msgstr "低"
 msgid "Medium"
 msgstr "中間"
 
-#: src/netconfpkg/gui/ModemInterface.py:167
+#: src/netconfpkg/gui/ModemInterface.py:168
 #: src/netconfpkg/gui/modemconfig.py:146
 #: src/netconfpkg/gui/ModemDruid.glade.h:2
 #: src/netconfpkg/gui/modemconfig.glade.h:2
 msgid "High"
 msgstr "高"
 
-#: src/netconfpkg/gui/ModemInterface.py:169
+#: src/netconfpkg/gui/ModemInterface.py:170
 #: src/netconfpkg/gui/modemconfig.py:148
 #: src/netconfpkg/gui/ModemDruid.glade.h:11
 #: src/netconfpkg/gui/modemconfig.glade.h:11
@@ -1358,6 +1364,7 @@ msgstr "モデム ダイアルアップ設定"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. make ctrl-C work
 #. # netconf - A network configuration tool
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -1396,52 +1403,52 @@ msgstr "モデム ダイアルアップ設定"
 #. #             titlesize = clist.get_column_widget(col)
 #. #             print titlesize.get_children()[0].get_width()
 #. #             #clist.set_column_width(col, )
-#: src/netconfpkg/gui/maindialog.py:283
+#: src/netconfpkg/gui/maindialog.py:284
 #, fuzzy
 msgid "Loading configuration..."
 msgstr "設定をロードしています..."
 
-#: src/netconfpkg/gui/maindialog.py:291
+#: src/netconfpkg/gui/maindialog.py:292
 #, fuzzy
 msgid "Loading device configuration..."
 msgstr "デバイス設定をロードしています..."
 
-#: src/netconfpkg/gui/maindialog.py:296
+#: src/netconfpkg/gui/maindialog.py:297
 #, fuzzy
 msgid "Loading hardware configuration..."
 msgstr "ハードウェア設定をロードしています..."
 
-#: src/netconfpkg/gui/maindialog.py:301
+#: src/netconfpkg/gui/maindialog.py:302
 #, fuzzy
 msgid "Loading profile configuration..."
 msgstr "プロファイル設定をロードしています..."
 
-#: src/netconfpkg/gui/maindialog.py:306
+#: src/netconfpkg/gui/maindialog.py:307
 #, fuzzy
 msgid "Loading IPsec configuration..."
 msgstr "設定をロードしています..."
 
-#: src/netconfpkg/gui/maindialog.py:311
+#: src/netconfpkg/gui/maindialog.py:312
 #, fuzzy
 msgid "Testing configuration set..."
 msgstr "設定のセットをテストしています..."
 
-#: src/netconfpkg/gui/maindialog.py:342
+#: src/netconfpkg/gui/maindialog.py:343
 #, fuzzy, python-format
 msgid "Active profile: %s (modified)"
 msgstr "使用中のプロファイル: %s(変更済み)"
 
-#: src/netconfpkg/gui/maindialog.py:346
+#: src/netconfpkg/gui/maindialog.py:347
 #, fuzzy, python-format
 msgid "Active profile: %s"
 msgstr "使用中のプロファイル: %s"
 
-#: src/netconfpkg/gui/maindialog.py:354
+#: src/netconfpkg/gui/maindialog.py:355
 #, fuzzy
 msgid "Saving configuration..."
 msgstr "設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:366
+#: src/netconfpkg/gui/maindialog.py:367
 #, fuzzy, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1450,7 +1457,7 @@ msgstr ""
 "設定を保存中にエラー発生です\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:369
+#: src/netconfpkg/gui/maindialog.py:370
 #, fuzzy
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
@@ -1461,32 +1468,32 @@ msgstr ""
 "サービスの再起動かコンピュータの\n"
 " 再起動ができます。"
 
-#: src/netconfpkg/gui/maindialog.py:378
+#: src/netconfpkg/gui/maindialog.py:379
 #, fuzzy
 msgid "Saving device configuration..."
 msgstr "デバイス設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:385
+#: src/netconfpkg/gui/maindialog.py:386
 #, fuzzy
 msgid "Saving hardware configuration..."
 msgstr "ハードウェアの設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:392
+#: src/netconfpkg/gui/maindialog.py:393
 #, fuzzy
 msgid "Saving profile configuration..."
 msgstr "プロファイルの設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:399
+#: src/netconfpkg/gui/maindialog.py:400
 #, fuzzy
 msgid "Saving IPsec configuration..."
 msgstr "設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:422
+#: src/netconfpkg/gui/maindialog.py:423
 #, fuzzy
 msgid "Updating devices..."
 msgstr "デバイスを更新しています..."
 
-#: src/netconfpkg/gui/maindialog.py:479
+#: src/netconfpkg/gui/maindialog.py:480
 #, fuzzy
 msgid "Updating hardware..."
 msgstr "ハードウェアを更新しています..."
@@ -1514,7 +1521,7 @@ msgstr "ハードウェアを更新しています..."
 #. else:
 #. device.createIPsecList()
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:573
+#: src/netconfpkg/gui/maindialog.py:574
 #, fuzzy
 msgid "Updating profiles..."
 msgstr "プロファイルを更新しています..."
@@ -1523,46 +1530,46 @@ msgstr "プロファイルを更新しています..."
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:679 src/netconfpkg/gui/maindialog.py:772
-#: src/netconfpkg/gui/maindialog.py:1001
+#: src/netconfpkg/gui/maindialog.py:680 src/netconfpkg/gui/maindialog.py:773
+#: src/netconfpkg/gui/maindialog.py:1002
 msgid "Do you want to save your changes?"
 msgstr "変更を保存しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:837
+#: src/netconfpkg/gui/maindialog.py:838
 msgid "The Loopback device can not be edited!"
 msgstr "ループバックデバイスは編集できません!"
 
-#: src/netconfpkg/gui/maindialog.py:841
+#: src/netconfpkg/gui/maindialog.py:842
 #, fuzzy
 msgid "Edit device..."
 msgstr "デバイスの編集..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:879
+#: src/netconfpkg/gui/maindialog.py:880
 #, fuzzy, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "ループバックデバイスは編集できません!"
 
-#: src/netconfpkg/gui/maindialog.py:898
+#: src/netconfpkg/gui/maindialog.py:899
 msgid "The Loopback device can not be removed!"
 msgstr "ループバックデバイスは消去できません!"
 
-#: src/netconfpkg/gui/maindialog.py:902
+#: src/netconfpkg/gui/maindialog.py:903
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "デバイス\"%s\"を本当に消去しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:934 src/netconfpkg/gui/maindialog.py:1689
+#: src/netconfpkg/gui/maindialog.py:935 src/netconfpkg/gui/maindialog.py:1690
 msgid "You have made some changes in your configuration."
 msgstr "設定の中で変更がされました。"
 
-#: src/netconfpkg/gui/maindialog.py:935
+#: src/netconfpkg/gui/maindialog.py:936
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
 
-#: src/netconfpkg/gui/maindialog.py:937 src/netconfpkg/gui/maindialog.py:1692
+#: src/netconfpkg/gui/maindialog.py:938 src/netconfpkg/gui/maindialog.py:1693
 msgid "Do you want to continue?"
 msgstr "続けますか?"
 
@@ -1578,28 +1585,28 @@ msgstr "続けますか?"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1129
+#: src/netconfpkg/gui/maindialog.py:1130
 msgid "The Loopback device can not be disabled!"
 msgstr "ループバックデバイスは無効にできません!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
+#: src/netconfpkg/gui/maindialog.py:1356 src/netconfpkg/gui/maindialog.py:1436
 msgid "The name may only contain letters and digits!"
 msgstr "名前には文字と数字だけを含めることができます!"
 
-#: src/netconfpkg/gui/maindialog.py:1360 src/netconfpkg/gui/maindialog.py:1440
+#: src/netconfpkg/gui/maindialog.py:1361 src/netconfpkg/gui/maindialog.py:1441
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "プロファイルに\"%s\"という名前をつけることはできません!"
 
-#: src/netconfpkg/gui/maindialog.py:1366 src/netconfpkg/gui/maindialog.py:1446
+#: src/netconfpkg/gui/maindialog.py:1367 src/netconfpkg/gui/maindialog.py:1447
 msgid "The profile name already exists!"
 msgstr "そのプロファイル名は既に存在しています!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1413
+#: src/netconfpkg/gui/maindialog.py:1414
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\"プロファイルの名前変更はできません!"
@@ -1607,12 +1614,12 @@ msgstr "\"%s\"プロファイルの名前変更はできません!"
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1468
+#: src/netconfpkg/gui/maindialog.py:1469
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\"プロファイルは削除できません!"
 
-#: src/netconfpkg/gui/maindialog.py:1474
+#: src/netconfpkg/gui/maindialog.py:1475
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "プロファイル\"%s\"を本当に削除しますか?"
@@ -1620,7 +1627,7 @@ msgstr "プロファイル\"%s\"を本当に削除しますか?"
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1548
+#: src/netconfpkg/gui/maindialog.py:1549
 #, fuzzy
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
@@ -1628,18 +1635,18 @@ msgstr ""
 "スミマセン。編集する物がないか、\n"
 "又はこのタイプはまだ編集できません。"
 
-#: src/netconfpkg/gui/maindialog.py:1566
+#: src/netconfpkg/gui/maindialog.py:1567
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "本当に\"%s\"を消去しますか?"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1579
+#: src/netconfpkg/gui/maindialog.py:1580
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "\"%s\"を使用するデバイスをすべて削除しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:1610
+#: src/netconfpkg/gui/maindialog.py:1611
 #, fuzzy
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
@@ -1648,7 +1655,7 @@ msgstr ""
 "このソフトウェアはGPLの元で配布されています。バグに関する報告は Red Hatの "
 "Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
 
-#: src/netconfpkg/gui/maindialog.py:1690
+#: src/netconfpkg/gui/maindialog.py:1691
 #, fuzzy, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr ""

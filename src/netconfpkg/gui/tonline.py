@@ -53,9 +53,10 @@ class TonlineDialog:
                                              r"^[0-9]"),
             "on_mbnEntry_insert_text" : \
             (self.on_generic_entry_insert_text, r"^[0-9]"),
-            "on_AKEntry_changed" : (self.on_generic_entry_changed, 12),
-            "on_ZNEntry_changed" : (self.on_generic_entry_changed, 12),
-            "on_mbnEntry_changed" : (self.on_generic_entry_changed, 4),
+            "on_AKEntry_changed" : (self.on_generic_entry_changed, 1),
+            "on_ZNEntry_changed" : (self.on_generic_entry_changed, 1),
+            "on_mbnEntry_changed" : (self.on_generic_entry_changed, 1),
+            "on_pwEntry_changed" : (self.on_generic_entry_changed, 1),
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
@@ -74,10 +75,11 @@ class TonlineDialog:
         pass
 
     def check(self):
-        if len(self.xml.get_widget('AKEntry').get_text()) < 12 or \
-           len(self.xml.get_widget('ZNEntry').get_text()) < 12 or \
-           len(self.xml.get_widget('mbnEntry').get_text()) < 4 or \
-           len(self.xml.get_widget('pwEntry').get_text()) < 8:
+        pass
+        if len(self.xml.get_widget('AKEntry').get_text()) < 1 or \
+           len(self.xml.get_widget('ZNEntry').get_text()) < 1 or \
+           len(self.xml.get_widget('mbnEntry').get_text()) < 1 or \
+           len(self.xml.get_widget('pwEntry').get_text()) < 1 :
             self.xml.get_widget('okButton').set_sensitive(FALSE)
         else:
             self.xml.get_widget('okButton').set_sensitive(TRUE)
@@ -90,17 +92,31 @@ class TonlineDialog:
             return
         entry.emit_stop_by_name('insert_text')
 
-
     def on_generic_entry_changed(self, entry, minlen):
         if len(entry.get_text()) < minlen:
             self.xml.get_widget('okButton').set_sensitive(FALSE)
-
         self.check()
             
     def hydrate(self):
-        self.xml.get_widget('AKEntry').set_text(self.login[0:12])
-        self.xml.get_widget('ZNEntry').set_text(self.login[12:24])
-        self.xml.get_widget('mbnEntry').set_text(self.login[25:29])
+        ak = ""
+        zn = ""
+        mbn = ""
+        if self.login:
+            s = self.login.split("@")[0]
+            s2 = s.split("#")
+            if len(s2) > 1:
+                mbn = s2[1]
+
+            s = s2[0]
+            if s > 12:
+                ak = s[:12]
+                zn = s[12:]
+            else:
+                ak = s
+        
+        self.xml.get_widget('AKEntry').set_text(ak)
+        self.xml.get_widget('ZNEntry').set_text(zn)
+        self.xml.get_widget('mbnEntry').set_text(mbn)
         self.xml.get_widget('pwEntry').set_text(self.password)
         self.check()
         pass
@@ -115,5 +131,3 @@ class TonlineDialog:
         
         pass
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/28 10:31:49 $"
-__version__ = "$Revision: 1.6 $"

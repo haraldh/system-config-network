@@ -267,7 +267,10 @@ class ProfileList(ProfileList_base):
     def save(self):
         # Just to be safe...
         os.umask(0022)
+
+	# commit the changes
         self.commit(changed=false)
+
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
@@ -276,6 +279,11 @@ class ProfileList(ProfileList_base):
         for prof in self:
             if prof.Active == true:
                 break
+        else:
+            for prof in self:
+                if prof.ProfileName == 'default':
+                    break
+		
         
         if nwconf['HOSTNAME'] != prof.DNS.Hostname:
             # if the hostname changed, set it system wide (#55746)
@@ -460,7 +468,7 @@ class ProfileList(ProfileList_base):
 
         # Remove all unused files that are linked in the device directory
         devlist = os.listdir(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
-        for dev in devlist:            
+        for dev in devlist:
             if string.split(dev, '-')[0] not in [ 'ifcfg', 'route',
                                                   'keys' ] \
                                                   or dev == 'ifcfg-lo':
@@ -610,5 +618,5 @@ if __name__ == '__main__':
 
     pl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/27 13:24:36 $"
-__version__ = "$Revision: 1.77 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.78 $"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_TW\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-03 11:07+0100\n"
+"POT-Creation-Date: 2003-12-16 12:25+0100\n"
 "PO-Revision-Date: 2003-12-04 08:50+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Traditional Chinese <i18n-list@redhat.com>\n"
@@ -33,7 +33,7 @@ msgstr "設定網路裝置與連線"
 msgid "Network"
 msgstr "網路"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:141
+#: neat.desktop.in.h:3 src/netconf-tui.py:142
 #: src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Network Configuration"
 msgstr "網路組態設定"
@@ -65,6 +65,7 @@ msgstr "網際網路組態設定精靈"
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # redhat-network-control - A easy-to-use interface for configuring/activating
 #. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
@@ -80,17 +81,17 @@ msgstr "網際網路組態設定精靈"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/neat-control.py:48 src/netconf.py:74
+#: src/neat-control.py:49 src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "錯誤：無法初始化圖形環境。 "
 
-#: src/neat-control.py:49 src/netconf.py:75
+#: src/neat-control.py:50 src/netconf.py:76
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
 msgstr "會發生錯誤的原因大多是沒有使用圖形環境執行該工具。"
 
-#: src/neat-control.py:50 src/netconf.py:76
+#: src/neat-control.py:51 src/netconf.py:77
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -98,12 +99,12 @@ msgstr "請啟動圖形使用者介面或者設定您的 DISPLAY 變數。\n"
 
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1609
+#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1610
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "著作權 (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/neat-control.py:142 src/netconf-cmd.py:102
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -112,16 +113,16 @@ msgstr ""
 "統： http://bugzilla.redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
+#: src/neat-control.py:168 src/netconfpkg/NCDevice.py:380
 msgid "Network device activating..."
 msgstr "網路裝置啟動中..."
 
-#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:381
+#: src/neat-control.py:171 src/netconfpkg/NCDevice.py:381
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "網路裝置 %s 啟動中，請稍後..."
 
-#: src/neat-control.py:215
+#: src/neat-control.py:216
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "無法設定網路裝置 %s"
@@ -130,16 +131,16 @@ msgstr "無法設定網路裝置 %s"
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#: src/neat-control.py:235
+#: src/neat-control.py:236
 msgid "Switching Profiles"
 msgstr "轉換資料檔"
 
-#: src/neat-control.py:236
+#: src/neat-control.py:237
 #, python-format
 msgid "Switching to profile %s"
 msgstr "轉換至資料檔 %s。"
 
-#: src/neat-control.py:237
+#: src/neat-control.py:238
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "轉換至 %s 資料檔失敗"
@@ -148,7 +149,7 @@ msgstr "轉換至 %s 資料檔失敗"
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:974
+#: src/neat-control.py:253 src/netconfpkg/gui/maindialog.py:975
 msgid "To be rewritten!"
 msgstr "即將重新寫入！"
 
@@ -156,7 +157,7 @@ msgstr "即將重新寫入！"
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
-#: src/neat-control.py:355
+#: src/neat-control.py:356
 msgid " (active)"
 msgstr " （已啟用）"
 
@@ -164,9 +165,10 @@ msgstr " （已啟用）"
 #. print "profile " + prof.ProfileName + " activated\n"
 #. make ctrl-C work
 #. !/usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf-tui - a tui network configuration tool
 #. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -175,7 +177,7 @@ msgstr " （已啟用）"
 #.
 #. handleException function
 #.
-#: src/netconf-tui.py:101
+#: src/netconf-tui.py:102
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against system-config-network "
@@ -188,86 +190,86 @@ msgstr ""
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:135
+#: src/netconf-tui.py:136
 msgid "What do you want to configure?"
 msgstr "您想要設定甚麼？"
 
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:137
 msgid "Configure"
 msgstr "設定"
 
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:137
 msgid "Exit"
 msgstr "離開"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
+#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
 msgstr "名稱"
 
-#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
+#: src/netconf-tui.py:260 src/netconf-tui.py:369 src/netconf-tui.py:475
 #: src/netconfpkg/gui/maindialog.glade.h:11
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "裝置"
 
-#: src/netconf-tui.py:260
+#: src/netconf-tui.py:261
 msgid "Use DHCP"
 msgstr "使用 DHCP"
 
-#: src/netconf-tui.py:261
+#: src/netconf-tui.py:262
 msgid "Static IP"
 msgstr "靜態 IP"
 
-#: src/netconf-tui.py:262
+#: src/netconf-tui.py:263
 msgid "Netmask"
 msgstr "網路遮罩"
 
-#: src/netconf-tui.py:263
+#: src/netconf-tui.py:264
 msgid "Default gateway IP"
 msgstr "預設閘道器 IP"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
+#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
 msgid "Ok"
 msgstr "確定"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
+#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
 msgid "Cancel"
 msgstr "取消"
 
-#: src/netconf-tui.py:273
+#: src/netconf-tui.py:274
 msgid "Ethernet Configuration"
 msgstr "乙太網路組態設定"
 
-#: src/netconf-tui.py:369 src/netconf-tui.py:475
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Phonenumber"
 msgstr "ISP 電話號碼"
 
-#: src/netconf-tui.py:370 src/netconf-tui.py:476
+#: src/netconf-tui.py:371 src/netconf-tui.py:477
 msgid "ISP Login"
 msgstr "ISP 登入"
 
-#: src/netconf-tui.py:371 src/netconf-tui.py:477
+#: src/netconf-tui.py:372 src/netconf-tui.py:478
 msgid "ISP Password"
 msgstr "ISP 密碼"
 
-#: src/netconf-tui.py:372
+#: src/netconf-tui.py:373
 msgid "Modem Initstring"
 msgstr "數據機初始化字串"
 
-#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:5
+#: src/netconf-tui.py:381 src/netconfpkg/gui/modemconfig.glade.h:5
 msgid "Modem Configuration"
 msgstr "數據機組態設定"
 
-#: src/netconf-tui.py:478
+#: src/netconf-tui.py:479
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:486
+#: src/netconf-tui.py:487
 msgid "ISDN Configuration"
 msgstr "ISDN 組態設定"
 
@@ -275,12 +277,13 @@ msgstr "ISDN 組態設定"
 #. __main__
 #.
 #. !/usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf - A network configuration tool
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -294,20 +297,20 @@ msgstr "ISDN 組態設定"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:56
+#: src/netconf.py:57
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "錯誤: %s, %s！"
 
-#: src/netconf.py:58
+#: src/netconf.py:59
 msgid "Starting text version"
 msgstr "進入文字模式"
 
-#: src/netconf.py:113
+#: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "網路組態設定載入中..."
 
-#: src/netconf.py:126
+#: src/netconf.py:127
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -324,12 +327,13 @@ msgstr ""
 #. del splash_window
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. ! /usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf - A network configuration tool
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -342,7 +346,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf-cmd.py:64
+#: src/netconf-cmd.py:65
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -355,64 +359,64 @@ msgstr ""
 "詳細的程式錯誤報告，並回報給\n"
 "https://bugzilla.redhat.com/bugzilla/。\n"
 
-#: src/netconf-cmd.py:99
+#: src/netconf-cmd.py:100
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr "%s - 網路組態設定命令列工具"
 
-#: src/netconf-cmd.py:104
+#: src/netconf-cmd.py:105
 #, python-format
 msgid "Usage: %s"
 msgstr "用法: %s"
 
-#: src/netconf-cmd.py:106
+#: src/netconf-cmd.py:107
 msgid "switch / activate profile"
 msgstr "轉換 / 啟用資料檔"
 
-#: src/netconf-cmd.py:108
+#: src/netconf-cmd.py:109
 msgid "export / import hardware list"
 msgstr "匯出/匯入硬體清單"
 
-#: src/netconf-cmd.py:110
+#: src/netconf-cmd.py:111
 msgid "export / import device list (default)"
 msgstr "匯出/匯入裝置清單（預設）"
 
-#: src/netconf-cmd.py:112
+#: src/netconf-cmd.py:113
 msgid "export / import profile list"
 msgstr "匯出/匯入資料檔清單"
 
-#: src/netconf-cmd.py:114
+#: src/netconf-cmd.py:115
 msgid "set the root directory"
 msgstr "設定根目錄"
 
-#: src/netconf-cmd.py:115
+#: src/netconf-cmd.py:116
 msgid "export list (default)"
 msgstr "匯出清單（預設）"
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:117
 msgid "import list"
 msgstr "匯入清單"
 
-#: src/netconf-cmd.py:118
+#: src/netconf-cmd.py:119
 msgid "clear existing list prior of importing"
 msgstr "匯入前清除既有的清單"
 
-#: src/netconf-cmd.py:120
+#: src/netconf-cmd.py:121
 msgid "import from file"
 msgstr "從檔案匯入"
 
-#: src/netconf-cmd.py:225
+#: src/netconf-cmd.py:226
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "未知的參數 %s\n"
 
 #. remove the last \n
-#: src/netconf-cmd.py:304
+#: src/netconf-cmd.py:305
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "未知的清單 %s\n"
 
-#: src/netconf-cmd.py:308
+#: src/netconf-cmd.py:309
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "解析此行時發生錯誤: %s"
@@ -771,11 +775,12 @@ msgstr "然後，首先輸入這個裝置的匿名。"
 msgid "This device can not be edited with this tool!"
 msgstr "無法使用這個工具程式編輯該裝置！"
 
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -787,11 +792,11 @@ msgstr "無法使用這個工具程式編輯該裝置！"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/IsdnInterface.py:87
+#: src/netconfpkg/gui/IsdnInterface.py:88
 msgid "ISDN connection"
 msgstr "ISDN 連線"
 
-#: src/netconfpkg/gui/IsdnInterface.py:93
+#: src/netconfpkg/gui/IsdnInterface.py:94
 msgid ""
 "Create a new ISDN connection. This is a connection that uses an Integrated "
 "Services Digital Network line to dial into to your Internet Service "
@@ -823,11 +828,12 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -839,11 +845,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:80
+#: src/netconfpkg/gui/ModemInterface.py:81
 msgid "Modem connection"
 msgstr "數據機連線"
 
-#: src/netconfpkg/gui/ModemInterface.py:86
+#: src/netconfpkg/gui/ModemInterface.py:87
 msgid ""
 "Create a new Modem connection.  This is a connection that uses a serial "
 "analog modem to dial into to your Internet Service Provider. These modems "
@@ -855,39 +861,39 @@ msgstr ""
 "者。 這些數據機使用聲音透過一般銅製的電話線來傳輸資料。 這種連線類型在全世界"
 "擁有電話系統的各個地方都可找到。"
 
-#: src/netconfpkg/gui/ModemInterface.py:114
+#: src/netconfpkg/gui/ModemInterface.py:115
 msgid "Modem probing..."
 msgstr "偵測數據機..."
 
-#: src/netconfpkg/gui/ModemInterface.py:118
+#: src/netconfpkg/gui/ModemInterface.py:119
 msgid "Probing for Modems, please wait..."
 msgstr "偵測數據機中，請稍後..."
 
-#: src/netconfpkg/gui/ModemInterface.py:133
+#: src/netconfpkg/gui/ModemInterface.py:134
 msgid "No modem was found on your system."
 msgstr "在您的系統上找不到數據機。"
 
 #. 460800 seems to be to high
-#: src/netconfpkg/gui/ModemInterface.py:154
+#: src/netconfpkg/gui/ModemInterface.py:155
 #: src/netconfpkg/gui/modemconfig.py:113
 msgid "Generic Modem"
 msgstr "Generic 數據機"
 
-#: src/netconfpkg/gui/ModemInterface.py:161
+#: src/netconfpkg/gui/ModemInterface.py:162
 #: src/netconfpkg/gui/modemconfig.py:140
 #: src/netconfpkg/gui/ModemDruid.glade.h:8
 #: src/netconfpkg/gui/modemconfig.glade.h:9
 msgid "Off"
 msgstr "關掉"
 
-#: src/netconfpkg/gui/ModemInterface.py:163
+#: src/netconfpkg/gui/ModemInterface.py:164
 #: src/netconfpkg/gui/modemconfig.py:142
 #: src/netconfpkg/gui/ModemDruid.glade.h:3
 #: src/netconfpkg/gui/modemconfig.glade.h:3
 msgid "Low"
 msgstr "低"
 
-#: src/netconfpkg/gui/ModemInterface.py:165
+#: src/netconfpkg/gui/ModemInterface.py:166
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:4
 #: src/netconfpkg/gui/modemconfig.glade.h:4
@@ -895,14 +901,14 @@ msgstr "低"
 msgid "Medium"
 msgstr "中"
 
-#: src/netconfpkg/gui/ModemInterface.py:167
+#: src/netconfpkg/gui/ModemInterface.py:168
 #: src/netconfpkg/gui/modemconfig.py:146
 #: src/netconfpkg/gui/ModemDruid.glade.h:2
 #: src/netconfpkg/gui/modemconfig.glade.h:2
 msgid "High"
 msgstr "高"
 
-#: src/netconfpkg/gui/ModemInterface.py:169
+#: src/netconfpkg/gui/ModemInterface.py:170
 #: src/netconfpkg/gui/modemconfig.py:148
 #: src/netconfpkg/gui/ModemDruid.glade.h:11
 #: src/netconfpkg/gui/modemconfig.glade.h:11
@@ -1318,6 +1324,7 @@ msgstr "數據機撥號網路設定"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. make ctrl-C work
 #. # netconf - A network configuration tool
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -1356,45 +1363,45 @@ msgstr "數據機撥號網路設定"
 #. #             titlesize = clist.get_column_widget(col)
 #. #             print titlesize.get_children()[0].get_width()
 #. #             #clist.set_column_width(col, )
-#: src/netconfpkg/gui/maindialog.py:283
+#: src/netconfpkg/gui/maindialog.py:284
 msgid "Loading configuration..."
 msgstr "組態設定載入中..."
 
-#: src/netconfpkg/gui/maindialog.py:291
+#: src/netconfpkg/gui/maindialog.py:292
 msgid "Loading device configuration..."
 msgstr "裝置組態設定載入中..."
 
-#: src/netconfpkg/gui/maindialog.py:296
+#: src/netconfpkg/gui/maindialog.py:297
 msgid "Loading hardware configuration..."
 msgstr "硬體組態設定載入中..."
 
-#: src/netconfpkg/gui/maindialog.py:301
+#: src/netconfpkg/gui/maindialog.py:302
 msgid "Loading profile configuration..."
 msgstr "資料檔組態設定載入中..."
 
-#: src/netconfpkg/gui/maindialog.py:306
+#: src/netconfpkg/gui/maindialog.py:307
 msgid "Loading IPsec configuration..."
 msgstr "IPsec 組態設定載入中..."
 
-#: src/netconfpkg/gui/maindialog.py:311
+#: src/netconfpkg/gui/maindialog.py:312
 msgid "Testing configuration set..."
 msgstr "組態設定組測試中..."
 
-#: src/netconfpkg/gui/maindialog.py:342
+#: src/netconfpkg/gui/maindialog.py:343
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "現行的資料檔: %s（已修改）"
 
-#: src/netconfpkg/gui/maindialog.py:346
+#: src/netconfpkg/gui/maindialog.py:347
 #, python-format
 msgid "Active profile: %s"
 msgstr "現行的資料檔: %s"
 
-#: src/netconfpkg/gui/maindialog.py:354
+#: src/netconfpkg/gui/maindialog.py:355
 msgid "Saving configuration..."
 msgstr "儲存組態設定中..."
 
-#: src/netconfpkg/gui/maindialog.py:366
+#: src/netconfpkg/gui/maindialog.py:367
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1403,33 +1410,33 @@ msgstr ""
 "儲存組態設定時發生錯誤！\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:369
+#: src/netconfpkg/gui/maindialog.py:370
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
 msgstr "已儲存變更，您現在可以重新啟動網路與網路服務或重新開機。"
 
-#: src/netconfpkg/gui/maindialog.py:378
+#: src/netconfpkg/gui/maindialog.py:379
 msgid "Saving device configuration..."
 msgstr "儲存裝置組態設定中..."
 
-#: src/netconfpkg/gui/maindialog.py:385
+#: src/netconfpkg/gui/maindialog.py:386
 msgid "Saving hardware configuration..."
 msgstr "儲存硬體組態設定中..."
 
-#: src/netconfpkg/gui/maindialog.py:392
+#: src/netconfpkg/gui/maindialog.py:393
 msgid "Saving profile configuration..."
 msgstr "儲存資料檔組態設定中..."
 
-#: src/netconfpkg/gui/maindialog.py:399
+#: src/netconfpkg/gui/maindialog.py:400
 msgid "Saving IPsec configuration..."
 msgstr "儲存 IPsec 組態設定中..."
 
-#: src/netconfpkg/gui/maindialog.py:422
+#: src/netconfpkg/gui/maindialog.py:423
 msgid "Updating devices..."
 msgstr "裝置資訊更新中..."
 
-#: src/netconfpkg/gui/maindialog.py:479
+#: src/netconfpkg/gui/maindialog.py:480
 msgid "Updating hardware..."
 msgstr "硬體資訊更新中..."
 
@@ -1456,7 +1463,7 @@ msgstr "硬體資訊更新中..."
 #. else:
 #. device.createIPsecList()
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:573
+#: src/netconfpkg/gui/maindialog.py:574
 msgid "Updating profiles..."
 msgstr "資料檔更新中..."
 
@@ -1464,44 +1471,44 @@ msgstr "資料檔更新中..."
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:679 src/netconfpkg/gui/maindialog.py:772
-#: src/netconfpkg/gui/maindialog.py:1001
+#: src/netconfpkg/gui/maindialog.py:680 src/netconfpkg/gui/maindialog.py:773
+#: src/netconfpkg/gui/maindialog.py:1002
 msgid "Do you want to save your changes?"
 msgstr "您想要儲存變更嗎？"
 
-#: src/netconfpkg/gui/maindialog.py:837
+#: src/netconfpkg/gui/maindialog.py:838
 msgid "The Loopback device can not be edited!"
 msgstr "無法編輯 Loopback 裝置！"
 
-#: src/netconfpkg/gui/maindialog.py:841
+#: src/netconfpkg/gui/maindialog.py:842
 msgid "Edit device..."
 msgstr "編輯裝置..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:879
+#: src/netconfpkg/gui/maindialog.py:880
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "無法編輯 %s 裝置類型！"
 
-#: src/netconfpkg/gui/maindialog.py:898
+#: src/netconfpkg/gui/maindialog.py:899
 msgid "The Loopback device can not be removed!"
 msgstr "無法移除 Loopback 裝置！"
 
-#: src/netconfpkg/gui/maindialog.py:902
+#: src/netconfpkg/gui/maindialog.py:903
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "您真的要刪除 \"%s\" 裝置嗎?"
 
-#: src/netconfpkg/gui/maindialog.py:934 src/netconfpkg/gui/maindialog.py:1689
+#: src/netconfpkg/gui/maindialog.py:935 src/netconfpkg/gui/maindialog.py:1690
 msgid "You have made some changes in your configuration."
 msgstr "您已經更改了一些設定。"
 
-#: src/netconfpkg/gui/maindialog.py:935
+#: src/netconfpkg/gui/maindialog.py:936
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "為了要啟用網路裝置 %s，必須先儲存更改。"
 
-#: src/netconfpkg/gui/maindialog.py:937 src/netconfpkg/gui/maindialog.py:1692
+#: src/netconfpkg/gui/maindialog.py:938 src/netconfpkg/gui/maindialog.py:1693
 msgid "Do you want to continue?"
 msgstr "您想要繼續嗎？"
 
@@ -1517,28 +1524,28 @@ msgstr "您想要繼續嗎？"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1129
+#: src/netconfpkg/gui/maindialog.py:1130
 msgid "The Loopback device can not be disabled!"
 msgstr "無法停用 Loopback 裝置！"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
+#: src/netconfpkg/gui/maindialog.py:1356 src/netconfpkg/gui/maindialog.py:1436
 msgid "The name may only contain letters and digits!"
 msgstr "名稱只可包含字母與數字！"
 
-#: src/netconfpkg/gui/maindialog.py:1360 src/netconfpkg/gui/maindialog.py:1440
+#: src/netconfpkg/gui/maindialog.py:1361 src/netconfpkg/gui/maindialog.py:1441
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "資料檔無法被命名為 \"%s\"！"
 
-#: src/netconfpkg/gui/maindialog.py:1366 src/netconfpkg/gui/maindialog.py:1446
+#: src/netconfpkg/gui/maindialog.py:1367 src/netconfpkg/gui/maindialog.py:1447
 msgid "The profile name already exists!"
 msgstr "此資料檔案名稱已經存在！"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1413
+#: src/netconfpkg/gui/maindialog.py:1414
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "無法重新命名 \"%s\" 資料檔！"
@@ -1546,12 +1553,12 @@ msgstr "無法重新命名 \"%s\" 資料檔！"
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1468
+#: src/netconfpkg/gui/maindialog.py:1469
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "無法刪除 \"%s\" 的資料檔！"
 
-#: src/netconfpkg/gui/maindialog.py:1474
+#: src/netconfpkg/gui/maindialog.py:1475
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "您真的想要刪除 \"%s\" 資料檔嗎？"
@@ -1559,22 +1566,23 @@ msgstr "您真的想要刪除 \"%s\" 資料檔嗎？"
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1548
-msgid "Sorry, there is nothing to be edited, or this type cannot be edited yet."
+#: src/netconfpkg/gui/maindialog.py:1549
+msgid ""
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr "很抱歉，沒有可以編輯的資料，或這個類型還不能被編輯。"
 
-#: src/netconfpkg/gui/maindialog.py:1566
+#: src/netconfpkg/gui/maindialog.py:1567
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "您真的要刪除 \"%s\" 嗎?"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1579
+#: src/netconfpkg/gui/maindialog.py:1580
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "您真的要刪除使用 \"%s\" 的所有裝置嗎?"
 
-#: src/netconfpkg/gui/maindialog.py:1610
+#: src/netconfpkg/gui/maindialog.py:1611
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -1582,7 +1590,7 @@ msgstr ""
 "這個軟體是遵照 GPL 條款散佈，請回報任何的程式錯誤到 Red Hat 的程式錯誤追蹤系"
 "統： http://bugzilla.redhat.com/"
 
-#: src/netconfpkg/gui/maindialog.py:1690
+#: src/netconfpkg/gui/maindialog.py:1691
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "為了要啟用 IPsec 連線 %s，必須先儲存變更。"
@@ -2333,11 +2341,13 @@ msgstr "軟體 (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
-msgid "Shall the following packages, which are needed on your system, be installed?"
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr "想要安裝您系統所需的下列套件嗎？"
 
 #: src/netconfpkg/NC_functions.py:208
-msgid "You have to install the following packages, which are needed on your system!"
+msgid ""
+"You have to install the following packages, which are needed on your system!"
 msgstr "您必須安裝系統所需的下列套件！"
 
 #. test for wireless
@@ -2772,7 +2782,8 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -3254,7 +3265,8 @@ msgstr "相關的 T-Online 號碼(_N):"
 msgid ""
 "Please enter here your personal account data. Without this data, access to T-"
 "Online is unfortunately not posssible."
-msgstr "請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
+msgstr ""
+"請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
 
 #: src/netconfpkg/gui/tonline.glade.h:4
 msgid "_Adapter identifier:"
@@ -4136,7 +4148,8 @@ msgstr ""
 "聯。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
@@ -4985,4 +4998,3 @@ msgstr "點對點(I_P):"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
-

@@ -268,10 +268,12 @@ class DialupDruid(InterfaceCreator):
             self.xml.get_widget('phoneEntry').set_text(\
                 self.provider['PhoneNumber'])
             self.xml.get_widget('providerName').set_text(\
-                self.provider['ProviderName'])
-            self.xml.get_widget('dialupLoginNameEntry').set_text(\
+                self.provider['ProviderName'])            
+            if self.provider['Login']:
+                self.xml.get_widget('dialupLoginNameEntry').set_text(\
                 self.provider['Login'])
-            self.xml.get_widget('dialupPasswordEntry').set_text(\
+            if self.provider['Password']:
+                self.xml.get_widget('dialupPasswordEntry').set_text(\
                 self.provider['Password'])
 
     def check(self):
@@ -407,5 +409,5 @@ class DialupDruid(InterfaceCreator):
             dialup.StupidMode = TRUE
             dialup.InitString = ''
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/31 12:58:41 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.28 $"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-03 11:07+0100\n"
+"POT-Creation-Date: 2003-12-16 12:25+0100\n"
 "PO-Revision-Date: 2003-11-17 21:36-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
@@ -42,7 +42,7 @@ msgstr "Δημιουργία νέας σύνδεσης Token Ring"
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:141
+#: neat.desktop.in.h:3 src/netconf-tui.py:142
 #: src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Network Configuration"
 msgstr "Ρύθμιση Δικτύου"
@@ -74,6 +74,7 @@ msgstr "Οδηγός Σύνδεσής στο Διαδίκτυο"
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # redhat-network-control - A easy-to-use interface for configuring/activating
 #. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
@@ -89,17 +90,17 @@ msgstr "Οδηγός Σύνδεσής στο Διαδίκτυο"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/neat-control.py:48 src/netconf.py:74
+#: src/neat-control.py:49 src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr ""
 
-#: src/neat-control.py:49 src/netconf.py:75
+#: src/neat-control.py:50 src/netconf.py:76
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
 msgstr ""
 
-#: src/neat-control.py:50 src/netconf.py:76
+#: src/neat-control.py:51 src/netconf.py:77
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -107,12 +108,12 @@ msgstr ""
 
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1609
+#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1610
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Πνευματικά Δικαιώματα (c) 2001,2002 Red Hat, Inc."
 
-#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/neat-control.py:142 src/netconf-cmd.py:102
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -122,16 +123,16 @@ msgstr ""
 "Red Hat: http://bugzilla.redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
+#: src/neat-control.py:168 src/netconfpkg/NCDevice.py:380
 msgid "Network device activating..."
 msgstr "Γίνεται ενεργοποίηση συσκευής δικτύου..."
 
-#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:381
+#: src/neat-control.py:171 src/netconfpkg/NCDevice.py:381
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Ενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε..."
 
-#: src/neat-control.py:215
+#: src/neat-control.py:216
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "Δε μπορεί να ρυθμιστεί η συσκευή δικτύου %s"
@@ -140,17 +141,17 @@ msgstr "Δε μπορεί να ρυθμιστεί η συσκευή δικτύο
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#: src/neat-control.py:235
+#: src/neat-control.py:236
 #, fuzzy
 msgid "Switching Profiles"
 msgstr "Ενημέρωση Προφίλ..."
 
-#: src/neat-control.py:236
+#: src/neat-control.py:237
 #, fuzzy, python-format
 msgid "Switching to profile %s"
 msgstr "Κάντε κλικ για να ενεργοποιηθή το επιλεγμένο προφίλ"
 
-#: src/neat-control.py:237
+#: src/neat-control.py:238
 #, fuzzy, python-format
 msgid "Failed to switch to profile %s"
 msgstr "Αποτυχία εγγραφής στο αρχείο %s."
@@ -159,7 +160,7 @@ msgstr "Αποτυχία εγγραφής στο αρχείο %s."
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:974
+#: src/neat-control.py:253 src/netconfpkg/gui/maindialog.py:975
 msgid "To be rewritten!"
 msgstr ""
 
@@ -167,7 +168,7 @@ msgstr ""
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
-#: src/neat-control.py:355
+#: src/neat-control.py:356
 msgid " (active)"
 msgstr " (ενεργή)"
 
@@ -175,9 +176,10 @@ msgstr " (ενεργή)"
 #. print "profile " + prof.ProfileName + " activated\n"
 #. make ctrl-C work
 #. !/usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf-tui - a tui network configuration tool
 #. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -186,7 +188,7 @@ msgstr " (ενεργή)"
 #.
 #. handleException function
 #.
-#: src/netconf-tui.py:101
+#: src/netconf-tui.py:102
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against system-config-network "
@@ -196,89 +198,89 @@ msgstr ""
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:135
+#: src/netconf-tui.py:136
 msgid "What do you want to configure?"
 msgstr "Τι θα θέλατε να ρυθμίσετε;"
 
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:137
 msgid "Configure"
 msgstr "Ρύθμιση"
 
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:137
 msgid "Exit"
 msgstr "Έξοδος"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
+#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
 msgstr "Όνομα"
 
-#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
+#: src/netconf-tui.py:260 src/netconf-tui.py:369 src/netconf-tui.py:475
 #: src/netconfpkg/gui/maindialog.glade.h:11
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Συσκευή"
 
-#: src/netconf-tui.py:260
+#: src/netconf-tui.py:261
 msgid "Use DHCP"
 msgstr "Χρήση DHCP"
 
-#: src/netconf-tui.py:261
+#: src/netconf-tui.py:262
 msgid "Static IP"
 msgstr "Στατικό IP"
 
-#: src/netconf-tui.py:262
+#: src/netconf-tui.py:263
 msgid "Netmask"
 msgstr "Μάσκα δικτύου"
 
-#: src/netconf-tui.py:263
+#: src/netconf-tui.py:264
 msgid "Default gateway IP"
 msgstr "Εξ ορισμού IP πύλης δικτύου"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
+#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
 msgid "Ok"
 msgstr "Εντάξει"
 
-#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
+#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: src/netconf-tui.py:273
+#: src/netconf-tui.py:274
 msgid "Ethernet Configuration"
 msgstr "Ρύθμιση Ethernet"
 
-#: src/netconf-tui.py:369 src/netconf-tui.py:475
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 #, fuzzy
 msgid "ISP Phonenumber"
 msgstr "Αριθμός Τηλεφώνου ISP"
 
-#: src/netconf-tui.py:370 src/netconf-tui.py:476
+#: src/netconf-tui.py:371 src/netconf-tui.py:477
 #, fuzzy
 msgid "ISP Login"
 msgstr "Σύνδεση ISP"
 
-#: src/netconf-tui.py:371 src/netconf-tui.py:477
+#: src/netconf-tui.py:372 src/netconf-tui.py:478
 #, fuzzy
 msgid "ISP Password"
 msgstr "Συνθηματικό ISP"
 
-#: src/netconf-tui.py:372
+#: src/netconf-tui.py:373
 msgid "Modem Initstring"
 msgstr "Συμβολοσειρά Αρχικοποίησης Μόντεμ"
 
-#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:5
+#: src/netconf-tui.py:381 src/netconfpkg/gui/modemconfig.glade.h:5
 msgid "Modem Configuration"
 msgstr "Ρύθμιση Μόντεμ"
 
-#: src/netconf-tui.py:478
+#: src/netconf-tui.py:479
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:486
+#: src/netconf-tui.py:487
 msgid "ISDN Configuration"
 msgstr "Ρύθμιση ISDN"
 
@@ -286,12 +288,13 @@ msgstr "Ρύθμιση ISDN"
 #. __main__
 #.
 #. !/usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf - A network configuration tool
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -305,20 +308,20 @@ msgstr "Ρύθμιση ISDN"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:56
+#: src/netconf.py:57
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "Σφάλμα: %s, %s!"
 
-#: src/netconf.py:58
+#: src/netconf.py:59
 msgid "Starting text version"
 msgstr ""
 
-#: src/netconf.py:113
+#: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "Φόρτωση Ρυθμίσεων Δικτύου..."
 
-#: src/netconf.py:126
+#: src/netconf.py:127
 #, fuzzy
 msgid ""
 "system-config-network - network configuration tool\n"
@@ -337,12 +340,13 @@ msgstr ""
 #. del splash_window
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. ! /usr/bin/python
+#. -*- coding: utf-8 -*-
 #. # netconf - A network configuration tool
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -355,7 +359,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf-cmd.py:64
+#: src/netconf-cmd.py:65
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -364,65 +368,65 @@ msgid ""
 "using the text below.\n"
 msgstr ""
 
-#: src/netconf-cmd.py:99
+#: src/netconf-cmd.py:100
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr ""
 
-#: src/netconf-cmd.py:104
+#: src/netconf-cmd.py:105
 #, python-format
 msgid "Usage: %s"
 msgstr "Χρήση: %s"
 
-#: src/netconf-cmd.py:106
+#: src/netconf-cmd.py:107
 #, fuzzy
 msgid "switch / activate profile"
 msgstr "Κάντε κλικ για να ενεργοποιηθή το επιλεγμένο προφίλ"
 
-#: src/netconf-cmd.py:108
+#: src/netconf-cmd.py:109
 msgid "export / import hardware list"
 msgstr ""
 
-#: src/netconf-cmd.py:110
+#: src/netconf-cmd.py:111
 msgid "export / import device list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:112
+#: src/netconf-cmd.py:113
 msgid "export / import profile list"
 msgstr ""
 
-#: src/netconf-cmd.py:114
+#: src/netconf-cmd.py:115
 msgid "set the root directory"
 msgstr ""
 
-#: src/netconf-cmd.py:115
+#: src/netconf-cmd.py:116
 msgid "export list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:117
 msgid "import list"
 msgstr ""
 
-#: src/netconf-cmd.py:118
+#: src/netconf-cmd.py:119
 msgid "clear existing list prior of importing"
 msgstr ""
 
-#: src/netconf-cmd.py:120
+#: src/netconf-cmd.py:121
 msgid "import from file"
 msgstr ""
 
-#: src/netconf-cmd.py:225
+#: src/netconf-cmd.py:226
 #, python-format
 msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:304
+#: src/netconf-cmd.py:305
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "Άγνωστη Λίστα %s\n"
 
-#: src/netconf-cmd.py:308
+#: src/netconf-cmd.py:309
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "Σφάλμα κατά την ανάλυση γραμμής: %s"
@@ -782,11 +786,12 @@ msgstr ""
 msgid "This device can not be edited with this tool!"
 msgstr "Η συσκευή αυτή δε μπορεί να επεξεργαστεί με αυτό το εργαλείο!"
 
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -798,11 +803,11 @@ msgstr "Η συσκευή αυτή δε μπορεί να επεξεργαστε
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/IsdnInterface.py:87
+#: src/netconfpkg/gui/IsdnInterface.py:88
 msgid "ISDN connection"
 msgstr "Σύνδεση ISDN"
 
-#: src/netconfpkg/gui/IsdnInterface.py:93
+#: src/netconfpkg/gui/IsdnInterface.py:94
 msgid ""
 "Create a new ISDN connection. This is a connection that uses an Integrated "
 "Services Digital Network line to dial into to your Internet Service "
@@ -838,11 +843,12 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -854,11 +860,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:80
+#: src/netconfpkg/gui/ModemInterface.py:81
 msgid "Modem connection"
 msgstr "Σύνδεση Μόντεμ"
 
-#: src/netconfpkg/gui/ModemInterface.py:86
+#: src/netconfpkg/gui/ModemInterface.py:87
 msgid ""
 "Create a new Modem connection.  This is a connection that uses a serial "
 "analog modem to dial into to your Internet Service Provider. These modems "
@@ -872,39 +878,39 @@ msgstr ""
 "απλής τηλεφωνικής γραμμής.  Οι συνδέσεις αυτής της μορφής είναι διαθέσιμες "
 "σε όλα τα μέρη του κόσμου που έχουν τηλεφωνικό δίκτυο."
 
-#: src/netconfpkg/gui/ModemInterface.py:114
+#: src/netconfpkg/gui/ModemInterface.py:115
 msgid "Modem probing..."
 msgstr "Γίνεται ανίχνευση modem..."
 
-#: src/netconfpkg/gui/ModemInterface.py:118
+#: src/netconfpkg/gui/ModemInterface.py:119
 msgid "Probing for Modems, please wait..."
 msgstr "Γίνεται ανίχνευση για Μόντεμ, παρακαλώ περιμένετε..."
 
-#: src/netconfpkg/gui/ModemInterface.py:133
+#: src/netconfpkg/gui/ModemInterface.py:134
 msgid "No modem was found on your system."
 msgstr "Δεν βρέθηκε μόντεμ στο σύστημα σας."
 
 #. 460800 seems to be to high
-#: src/netconfpkg/gui/ModemInterface.py:154
+#: src/netconfpkg/gui/ModemInterface.py:155
 #: src/netconfpkg/gui/modemconfig.py:113
 msgid "Generic Modem"
 msgstr "Τυπικό Μόντεμ"
 
-#: src/netconfpkg/gui/ModemInterface.py:161
+#: src/netconfpkg/gui/ModemInterface.py:162
 #: src/netconfpkg/gui/modemconfig.py:140
 #: src/netconfpkg/gui/ModemDruid.glade.h:8
 #: src/netconfpkg/gui/modemconfig.glade.h:9
 msgid "Off"
 msgstr "Κλειστή"
 
-#: src/netconfpkg/gui/ModemInterface.py:163
+#: src/netconfpkg/gui/ModemInterface.py:164
 #: src/netconfpkg/gui/modemconfig.py:142
 #: src/netconfpkg/gui/ModemDruid.glade.h:3
 #: src/netconfpkg/gui/modemconfig.glade.h:3
 msgid "Low"
 msgstr "Χαμηλή"
 
-#: src/netconfpkg/gui/ModemInterface.py:165
+#: src/netconfpkg/gui/ModemInterface.py:166
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:4
 #: src/netconfpkg/gui/modemconfig.glade.h:4
@@ -912,14 +918,14 @@ msgstr "Χαμηλή"
 msgid "Medium"
 msgstr "Μεσαία"
 
-#: src/netconfpkg/gui/ModemInterface.py:167
+#: src/netconfpkg/gui/ModemInterface.py:168
 #: src/netconfpkg/gui/modemconfig.py:146
 #: src/netconfpkg/gui/ModemDruid.glade.h:2
 #: src/netconfpkg/gui/modemconfig.glade.h:2
 msgid "High"
 msgstr "Υψηλή"
 
-#: src/netconfpkg/gui/ModemInterface.py:169
+#: src/netconfpkg/gui/ModemInterface.py:170
 #: src/netconfpkg/gui/modemconfig.py:148
 #: src/netconfpkg/gui/ModemDruid.glade.h:11
 #: src/netconfpkg/gui/modemconfig.glade.h:11
@@ -1341,6 +1347,7 @@ msgstr "Ρύθμιση Dialup με Μόντεμ"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. make ctrl-C work
 #. # netconf - A network configuration tool
+#. -*- coding: utf-8 -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -1379,46 +1386,46 @@ msgstr "Ρύθμιση Dialup με Μόντεμ"
 #. #             titlesize = clist.get_column_widget(col)
 #. #             print titlesize.get_children()[0].get_width()
 #. #             #clist.set_column_width(col, )
-#: src/netconfpkg/gui/maindialog.py:283
+#: src/netconfpkg/gui/maindialog.py:284
 msgid "Loading configuration..."
 msgstr "Φόρτωση ρυθμίσεων..."
 
-#: src/netconfpkg/gui/maindialog.py:291
+#: src/netconfpkg/gui/maindialog.py:292
 msgid "Loading device configuration..."
 msgstr "Φόρτωση ρυθμίσεων συσκευής..."
 
-#: src/netconfpkg/gui/maindialog.py:296
+#: src/netconfpkg/gui/maindialog.py:297
 msgid "Loading hardware configuration..."
 msgstr "Φόρτωση ρυθμίσεων υλικού..."
 
-#: src/netconfpkg/gui/maindialog.py:301
+#: src/netconfpkg/gui/maindialog.py:302
 msgid "Loading profile configuration..."
 msgstr "Φόρτωση ρυθμίσεων προφίλ..."
 
-#: src/netconfpkg/gui/maindialog.py:306
+#: src/netconfpkg/gui/maindialog.py:307
 msgid "Loading IPsec configuration..."
 msgstr "Φόρτωση ρυθμίσεων IPsec..."
 
-#: src/netconfpkg/gui/maindialog.py:311
+#: src/netconfpkg/gui/maindialog.py:312
 #, fuzzy
 msgid "Testing configuration set..."
 msgstr "Γίνεται Έλεγχος Συνόλου Ρυθμίσεων..."
 
-#: src/netconfpkg/gui/maindialog.py:342
+#: src/netconfpkg/gui/maindialog.py:343
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "Ενεργό προφίλ: %s (τροποποιημένο)"
 
-#: src/netconfpkg/gui/maindialog.py:346
+#: src/netconfpkg/gui/maindialog.py:347
 #, python-format
 msgid "Active profile: %s"
 msgstr "Ενεργό προφίλ: %s"
 
-#: src/netconfpkg/gui/maindialog.py:354
+#: src/netconfpkg/gui/maindialog.py:355
 msgid "Saving configuration..."
 msgstr "Αποθήκευση ρυθμίσεων..."
 
-#: src/netconfpkg/gui/maindialog.py:366
+#: src/netconfpkg/gui/maindialog.py:367
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1427,7 +1434,7 @@ msgstr ""
 "Σφάλμα κατά την αποθήκευση ρυθμίσεων!\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:369
+#: src/netconfpkg/gui/maindialog.py:370
 #, fuzzy
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
@@ -1438,27 +1445,27 @@ msgstr ""
 "το δίκτυο και τις υπηρεσίες δικτύου\n"
 "ή να επανεκκινήσετε τον υπολογιστή."
 
-#: src/netconfpkg/gui/maindialog.py:378
+#: src/netconfpkg/gui/maindialog.py:379
 msgid "Saving device configuration..."
 msgstr "Αποθήκευση ρυθμίσεων συσκευής..."
 
-#: src/netconfpkg/gui/maindialog.py:385
+#: src/netconfpkg/gui/maindialog.py:386
 msgid "Saving hardware configuration..."
 msgstr "Αποθήκευση ρυθμίσεων υλικού"
 
-#: src/netconfpkg/gui/maindialog.py:392
+#: src/netconfpkg/gui/maindialog.py:393
 msgid "Saving profile configuration..."
 msgstr "Αποθήκευση ρυθμίσεων προφίλ..."
 
-#: src/netconfpkg/gui/maindialog.py:399
+#: src/netconfpkg/gui/maindialog.py:400
 msgid "Saving IPsec configuration..."
 msgstr "Αποθήκευση ρυθμίσεων IPsec..."
 
-#: src/netconfpkg/gui/maindialog.py:422
+#: src/netconfpkg/gui/maindialog.py:423
 msgid "Updating devices..."
 msgstr "Ενημέρωση συσκευών..."
 
-#: src/netconfpkg/gui/maindialog.py:479
+#: src/netconfpkg/gui/maindialog.py:480
 msgid "Updating hardware..."
 msgstr "Ενημέρωση υλικού..."
 
@@ -1485,7 +1492,7 @@ msgstr "Ενημέρωση υλικού..."
 #. else:
 #. device.createIPsecList()
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:573
+#: src/netconfpkg/gui/maindialog.py:574
 msgid "Updating profiles..."
 msgstr "Ενημέρωση προφίλ..."
 
@@ -1493,46 +1500,46 @@ msgstr "Ενημέρωση προφίλ..."
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:679 src/netconfpkg/gui/maindialog.py:772
-#: src/netconfpkg/gui/maindialog.py:1001
+#: src/netconfpkg/gui/maindialog.py:680 src/netconfpkg/gui/maindialog.py:773
+#: src/netconfpkg/gui/maindialog.py:1002
 msgid "Do you want to save your changes?"
 msgstr "Θέλετε να αποθηκευθούν οι αλλαγές;"
 
-#: src/netconfpkg/gui/maindialog.py:837
+#: src/netconfpkg/gui/maindialog.py:838
 msgid "The Loopback device can not be edited!"
 msgstr "H συσκευή Loopback δε μπορεί να επεξεργαστεί!"
 
-#: src/netconfpkg/gui/maindialog.py:841
+#: src/netconfpkg/gui/maindialog.py:842
 msgid "Edit device..."
 msgstr "Επεξεργασία συσκευής..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:879
+#: src/netconfpkg/gui/maindialog.py:880
 #, fuzzy, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "H συσκευή %s δε μπορεί να επεξεργαστεί!\n"
 
-#: src/netconfpkg/gui/maindialog.py:898
+#: src/netconfpkg/gui/maindialog.py:899
 msgid "The Loopback device can not be removed!"
 msgstr "Η συσκευή Loopback δε μπορεί να διαγραφεί!"
 
-#: src/netconfpkg/gui/maindialog.py:902
+#: src/netconfpkg/gui/maindialog.py:903
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγράψετε τη συσκευή \"%s\";"
 
-#: src/netconfpkg/gui/maindialog.py:934 src/netconfpkg/gui/maindialog.py:1689
+#: src/netconfpkg/gui/maindialog.py:935 src/netconfpkg/gui/maindialog.py:1690
 msgid "You have made some changes in your configuration."
 msgstr "Έχετε κάνει μερικές αλλαγές στις ρυθμίσεις σας."
 
-#: src/netconfpkg/gui/maindialog.py:935
+#: src/netconfpkg/gui/maindialog.py:936
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Για να  ενεργοποιήσετε τη συσκευή δικτύου  %s, πρέπει να αποθηκευθούν οι "
 "αλλαγές που έγιναν."
 
-#: src/netconfpkg/gui/maindialog.py:937 src/netconfpkg/gui/maindialog.py:1692
+#: src/netconfpkg/gui/maindialog.py:938 src/netconfpkg/gui/maindialog.py:1693
 msgid "Do you want to continue?"
 msgstr "Θέλετε να συνεχίσετε;"
 
@@ -1548,28 +1555,28 @@ msgstr "Θέλετε να συνεχίσετε;"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1129
+#: src/netconfpkg/gui/maindialog.py:1130
 msgid "The Loopback device can not be disabled!"
 msgstr "Η συσκευή Loopback δε μπορεί να απενεργοποιηθεί!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
+#: src/netconfpkg/gui/maindialog.py:1356 src/netconfpkg/gui/maindialog.py:1436
 msgid "The name may only contain letters and digits!"
 msgstr "Το όνομα μπορεί να περιέχει μόνο γράμματα και αριθμούς!"
 
-#: src/netconfpkg/gui/maindialog.py:1360 src/netconfpkg/gui/maindialog.py:1440
+#: src/netconfpkg/gui/maindialog.py:1361 src/netconfpkg/gui/maindialog.py:1441
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Το όνομα του προφίλ δε μπορεί να είναι \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1366 src/netconfpkg/gui/maindialog.py:1446
+#: src/netconfpkg/gui/maindialog.py:1367 src/netconfpkg/gui/maindialog.py:1447
 msgid "The profile name already exists!"
 msgstr "Το όνομα του προφίλ υπάρχει ήδη!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1413
+#: src/netconfpkg/gui/maindialog.py:1414
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Το προφίλ \"%s\" δε μπορεί να μετονομαστεί!"
@@ -1577,12 +1584,12 @@ msgstr "Το προφίλ \"%s\" δε μπορεί να μετονομαστεί
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1468
+#: src/netconfpkg/gui/maindialog.py:1469
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Το Προφίλ  \"%s\" δε μπορεί να διαγραφεί!"
 
-#: src/netconfpkg/gui/maindialog.py:1474
+#: src/netconfpkg/gui/maindialog.py:1475
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγραφεί το προφίλ \"%s\";"
@@ -1590,25 +1597,25 @@ msgstr "Θέλετε πραγματικά να διαγραφεί το προφ�
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1548
+#: src/netconfpkg/gui/maindialog.py:1549
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1566
+#: src/netconfpkg/gui/maindialog.py:1567
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγραφεί το \"%s\";"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1579
+#: src/netconfpkg/gui/maindialog.py:1580
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr ""
 "Θέλετε πραγματικά να διαγράψετε όλες τις συσκευές που χρησιμοποιήθηκαν \"%s"
 "\";"
 
-#: src/netconfpkg/gui/maindialog.py:1610
+#: src/netconfpkg/gui/maindialog.py:1611
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -1617,7 +1624,7 @@ msgstr ""
 "Παρακαλούμε αναφέρετε τυχόν σφάλματα στο σύστημα καταγραφής σφαλμάτων της "
 "Red Hat: http://bugzilla.redhat.com/"
 
-#: src/netconfpkg/gui/maindialog.py:1690
+#: src/netconfpkg/gui/maindialog.py:1691
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr ""

@@ -1,6 +1,6 @@
-#! /usr/bin/env python
-## Copyright (C) 2002 Red Hat, Inc.
-## Copyright (C) 2002 Than Ngo <than@redhat.com>
+## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2003 Than Ngo <than@redhat.com>
+## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -82,6 +82,4 @@ class NetworkDevice:
             return TRUE
         return FALSE
 
-__author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/24 15:30:04 $"
-__version__ = "$Revision: 1.22 $"
+__author__ = "Than Ngo <than@redhat.com>, Harald Hoyer <harald@redhat.com>"

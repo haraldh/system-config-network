@@ -57,6 +57,52 @@ class DevIsdn(Device):
    def getHWDevice(self):
       # XXX FIXME
       return "ISDN Card 0"
+
+   def activate(self, dialog = None):        
+      command = '/bin/sh'
+      param = [ command,
+                "/sbin/ifup %s; /usr/sbin/userisdnctl dial %s" % \
+                ( self.DeviceId, self.getDeviceAlias() ) ]
+
+      try:
+         (ret, msg) =  generic_run_dialog(\
+             command,
+             param,
+             catchfd = (1,2),
+             title = _('Network device activating...'),
+             label = _('Activating network device %s, '
+                       'please wait...') % (self.DeviceId),
+             errlabel = _('Cannot activate '
+                          'network device %s!\n') % (self.DeviceId),
+             dialog = dialog)
+
+      except RuntimeError, msg:
+         ret = -1        
+
+      return ret, msg
+
+   def deactivate(self, dialog = None):        
+      command = '/bin/sh'
+      param = [ command,
+                "/usr/sbin/userisdnctl hangup %s;/sbin/ifdown %s;" % \
+                ( self.getDeviceAlias(), self.DeviceId ) ]
+
+      try:
+         (ret, msg) =  generic_run_dialog(\
+             command,
+             param,
+             catchfd = (1,2),
+             title = _('Network device deactivating...'),
+             label = _('Deactivating network device %s, '
+                       'please wait...') % (self.DeviceId),
+             errlabel = _('Cannot deactivate '
+                          'network device %s!\n') % (self.DeviceId),
+             dialog = dialog)
+
+      except RuntimeError, msg:
+         ret = -1        
+
+      return ret, msg
    
 def setDevIsdnDialog(dialog):
    global _devIsdnDialog
@@ -69,5 +115,5 @@ def setDevIsdnWizard(wizard):
 df = getDeviceFactory()
 df.register(DevIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.5 $"
+__date__ = "$Date: 2003/12/17 13:40:59 $"
+__version__ = "$Revision: 1.6 $"

@@ -21,7 +21,6 @@
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg import *
-from netconfpkg import *
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -140,7 +139,10 @@ class ModemInterface:
 
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
         # 460800 seems to be to high
-        self.xml.get_widget("baudrateEntry").set_text("57600")
+        self.xml.get_widget("baudrateEntry").set_text("115200")
+        self.xml.get_widget(\
+                'flowControlEntry').set_text(\
+                modemFlowControls[CRTSCTS])
  
     def on_Modem_next(self, druid_page, druid):
         self.dehydrate()
@@ -149,6 +151,11 @@ class ModemInterface:
         self.hardwarelist.rollback()
         
     def setup(self):
+        flowcontrols = []
+        for i in modemFlowControls.keys():
+            flowcontrols.append(modemFlowControls[i])
+        self.xml.get_widget(\
+            "flowControlCombo").set_popdown_strings(flowcontrols)        
         pass
 
     def dehydrate(self):
@@ -157,7 +164,12 @@ class ModemInterface:
         if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
             self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
         self.hw.Modem.BaudRate = int(self.xml.get_widget("baudrateEntry").get_text())
-        self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
+        flow = self.xml.get_widget("flowControlEntry").get_text()
+        for i in modemFlowControls.keys():
+            if modemFlowControls[i] == flow:
+                self.hw.Modem.FlowControl = i
+                break        
+
         Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):
             self.hw.Modem.ModemVolume = 0
@@ -187,10 +199,18 @@ class ModemInterface:
             self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
         if self.hw.Modem.BaudRate != None:
             self.xml.get_widget('baudrateEntry').set_text(str(self.hw.Modem.BaudRate))
-        if self.hw.Modem.FlowControl != None and modemFlowControls.has_key(self.hw.Modem.FlowControl):
-            self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
-
+        if self.hw.Modem.FlowControl != None and \
+               modemFlowControls.has_key(self.hw.Modem.FlowControl):
+            self.xml.get_widget(\
+                'flowControlEntry').set_text(\
+                modemFlowControls[self.hw.Modem.FlowControl])
+        else:
+            self.xml.get_widget(\
+                'flowControlEntry').set_text(\
+                modemFlowControls[CRTSCTS])
+            
+        
 NCDevModem.setDevModemWizard(ModemInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:21:05 $"
-__version__ = "$Revision: 1.33 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.34 $"

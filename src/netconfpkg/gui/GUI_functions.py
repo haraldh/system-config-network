@@ -389,7 +389,9 @@ def gui_run(command, argv, searchPath = 0,
                 rc = rc + s
 
     except Exception, e:
-        os.kill(childpid, 15)
+        try:
+            os.kill(childpid, 15)
+        except: pass
         raise e
         
     os.close(read)
@@ -428,7 +430,9 @@ def gui_run_dialog(command, argv, searchPath = 0,
     dlg = xml.get_widget ("Dialog")
     lbl = xml.get_widget ("label")
     swindow = xml.get_widget ("swindow")
-    xml.get_widget("statusImage").set_from_stock("gtk-dialog-info", 6)
+    img = xml.get_widget("statusImage")
+    if img:
+        img.set_from_stock("gtk-dialog-info", 6)
     xml.signal_autoconnect({ "on_cancelbutton_clicked" :
                              __on_cancelbutton_clicked,
                              "on_Dialog_close" :
@@ -521,9 +525,13 @@ def gui_run_dialog(command, argv, searchPath = 0,
                     textview.scroll_mark_onscreen(mark)
                 
     except CancelException:
-        os.kill(childpid, 15)
+        try:
+            os.kill(childpid, 15)
+        except: pass
     except Exception, e:
-        os.kill(childpid, 15)
+        try:
+            os.kill(childpid, 15)
+        except: pass
         raise e
         
     os.close(read)
@@ -592,5 +600,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:33:50 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2003/12/17 13:40:58 $"
+__version__ = "$Revision: 1.31 $"
