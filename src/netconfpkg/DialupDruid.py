@@ -45,7 +45,7 @@ class DialupDruid(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = NC_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid')
+        self.xml = libglade.GladeXML(glade_file, 'druid', domain=NC_functions.PROGNAME)
         self.xml.signal_autoconnect(
             { "on_dialup_page_prepare" : self.on_dialup_page_prepare,
               "on_dialup_page_next" : self.on_dialup_page_next,

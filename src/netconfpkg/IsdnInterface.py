@@ -42,7 +42,7 @@ class IsdnInterface:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        self.xml = libglade.GladeXML(glade_file, 'druid')
+        self.xml = libglade.GladeXML(glade_file, 'druid', NC_functions.PROGNAME)
         
         self.xml.signal_autoconnect(
             {

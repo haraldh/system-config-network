@@ -45,7 +45,7 @@ class NewInterface:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        xml = libglade.GladeXML (glade_file, 'toplevel')
+        xml = libglade.GladeXML (glade_file, 'toplevel', domain=NC_functions.PROGNAME)
 
         # get the widgets we need
         self.toplevel = xml.get_widget ('toplevel')
