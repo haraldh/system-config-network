@@ -92,5 +92,5 @@ srpm: archive
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
 newversion:
-	perl -p -i -e 'if (/RELEASE=(.*)/) { $newrel = $1 + 1;s/RELEASE=.*/RELEASE=$newrel/; };' configure.in
+	perl -p -i -e 'if (/RELEASE=(.*)/) { $$newrel = $$1 + 1;s/RELEASE=.*/RELEASE=$$newrel/; };' configure.in
 	$(MAKE) srpm

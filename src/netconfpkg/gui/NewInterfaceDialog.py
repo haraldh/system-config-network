@@ -113,6 +113,8 @@ class NewInterfaceDialog:
 
 
 
+        self.canceled = FALSE
+
         self.interface_clist.select_row (0, 0)
 
         self.toplevel.show_all ()
@@ -145,6 +147,7 @@ class NewInterfaceDialog:
         devicelist = NCDeviceList.getDeviceList()
         devicelist.rollback()
         self.toplevel.destroy()
+        self.canceled = TRUE
         gtk.mainquit()
 
     def on_interface_clist_select_row (self, clist, row, column, event):
