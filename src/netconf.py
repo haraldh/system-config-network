@@ -148,26 +148,35 @@ class mainDialog:
         hardwarelist = HardwareList()
         hardwarelist.load()
 
-#        res_file = ResolverFile()
-#        try:
-#            res_file.readProfile()
-#            dns = res_file.DNServers()
-#            search_domain = res_file.searchDomains()
-#            n = ["primaryDnsEntry", "secondaryDnsEntry", "ternaryDnsEntry"]
-#            for i in range(len(dns)):
-#                self.xml.get_widget(n[i]).set_text(dns[i])
-#            for i in range(len(search_domain)):
-#                self.xml.get_widget("dnsList").append([search_domain[i]])
-#        except:
-#            pass
-
     def loadProfiles(self):
         global profilelist
         profilelist = ProfileList()
         profilelist.load()
 
+    def save(self):
+        self.saveDevices()
+        self.saveHardware()
+        self.saveProfiles()
+
+    def saveDevices(self):
+        global devicelist
+        devicelist.save()
+
+    def saveHardware(self):
+        global hardwarelist
+        hardwarelist.save()
+
+    def saveProfiles(self):
+        global profilelist
+        profilelist.save()
+
     def setup(self):
-        global devicelist, hardwarelist, profilelist
+        self.setupDevices()
+        self.setupHardware()
+        self.setupProfiles()
+
+    def setupDevices(self):
+        global devicelist, profilelist
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
@@ -184,6 +193,9 @@ class mainDialog:
                     clist.set_pixmap(row, 0, act_xpm)
             row = row + 1
 
+    def setupHardware(self):
+        global hardwarelist
+
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
         for hw in hardwarelist:
@@ -193,6 +205,8 @@ class mainDialog:
                 devname = hw.Card.DeviceName
             clist.append([hw.Description, hw.Type, devname])
 
+    def setupProfiles(self):
+        global profilelist
         dclist = self.xml.get_widget("dnsList")
         dclist.clear()
         hclist = self.xml.get_widget("hostsList")
@@ -210,7 +224,6 @@ class mainDialog:
                     for alias in host.AliasList:
                         al = al + " " + alias
                     hclist.append([host.IP, host.Hostname, al])
-            row = row + 1
 
         if self.initialized:
             return
@@ -246,6 +259,7 @@ class mainDialog:
         gtk.mainquit()
 
     def on_okButton_clicked (self, button):
+        self.save()
         gtk.mainquit()
 
     def on_cancelButton_clicked(self, button):
@@ -277,13 +291,32 @@ class mainDialog:
         pass
 
     def on_deviceEditButton_clicked (self, *args):
+        global devicelist
+
         clist = self.xml.get_widget("deviceList")
-        type = clist.get_text (clist.selection[0], 1)
+
+        device = devicelist[clist.selection[0]]
+
+        name = clist.get_text(clist.selection[0], 1)
+        type = clist.get_text(clist.selection[0], 2)
+
         if type == 'Loopback':
             generic_error_dialog ('The Loopback device can not be edited!', self.xml.get_widget ("Dialog"))
             return
 
         basic = basicDialog(self.xml)
+        basic.xml.get_widget('deviceNameEntry').set_text(name)
+        basic.xml.get_widget('deviceNameEntry').set_editable(false)
+        basic.xml.get_widget('deviceTypeEntry').set_text(type)
+        basic.xml.get_widget('onBootCB').set_active(device.OnBoot)
+        basic.xml.get_widget('userControlCB').set_active(device.AllowUser)
+
+        basic.xml.get_widget('ipSettingCB').set_active(device.BootProto != 'static')
+        if device.BootProto == 'static':
+            basic.xml.get_widget('addressEntry').set_text(device.IP)
+            basic.xml.get_widget('netmaskEntry').set_text(device.Netmask)
+            basic.xml.get_widget('gatewayEntry').set_text(device.Gateway)
+
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
         dialog.show ()
