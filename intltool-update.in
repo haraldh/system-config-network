@@ -29,7 +29,7 @@
 
 ## Release information
 my $PROGRAM = "intltool-update";
-my $VERSION = "0.21";
+my $VERSION = "0.22";
 my $PACKAGE = "intltool";
 
 ## Loaded modules
@@ -245,7 +245,7 @@ sub find_leftout_files
         }, "..";
 
 
-    open POTFILES, "POTFILES.in" || die "$PROGRAM:  there's no POTFILES.in!\n";
+    open POTFILES, "POTFILES.in" or die "$PROGRAM:  there's no POTFILES.in!\n";
 
     @buf_potfiles = grep /^[^#]/, <POTFILES>;
 			    
@@ -335,7 +335,7 @@ sub find_leftout_files
     foreach my $file (@buf_i18n_xml) {
         open FILE, "<$file";
         while (<FILE>) {
-            if (/\s_(.*)=\"/){
+            if (/\s_(.*)=\"/ || /translatable=\"yes\"/){
                 push @buf_allfiles, unpack("x3 A*", $file) . "\n";
                 last;
             }
@@ -467,17 +467,6 @@ sub generate_po_template
 			"--keyword\=U\_",
 	   		"--files-from\=\.\/POTFILES\.in");
 
-    if (!-e "$MODULE.po") {
-        print "WARNING: It seems that none of the files in POTFILES.in ".
-              "contain marked strings\n";
-        exit (1);
-    }
-
-    system ("rm", "-f", "$MODULE.pot");
-    move ("$MODULE.po", "$MODULE.pot") || die "$PROGRAM: couldn't move $MODULE.po to $MODULE.pot.\n";
-
-    print "Wrote $MODULE.pot\n" if $VERBOSE;
-
     move ("POTFILES.in.old", "POTFILES.in");
 
     print "Removing generated header (.h) files..." if $VERBOSE;
@@ -492,6 +481,17 @@ sub generate_po_template
 
     close FILE;
     print "done\n" if $VERBOSE;
+
+    if (!-e "$MODULE.po") {
+        print "WARNING: It seems that none of the files in POTFILES.in ".
+              "contain marked strings\n";
+        exit (1);
+    }
+
+    system ("rm", "-f", "$MODULE.pot");
+    move ("$MODULE.po", "$MODULE.pot") or die "$PROGRAM: couldn't move $MODULE.po to $MODULE.pot.\n";
+
+    print "Wrote $MODULE.pot\n" if $VERBOSE;
 }
 
 sub update_po_file
