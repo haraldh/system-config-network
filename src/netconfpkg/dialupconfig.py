@@ -66,7 +66,10 @@ class DialupDialog(deviceConfigDialog):
         hardwarelist = getHardwareList()
 
         dialup = self.device.Dialup
-        
+        if dialup.PeerDNS == None:
+            self.device.AutoDNS = TRUE
+            dialup.PeerDNS = TRUE
+            
         if dialup.ProviderName != None:
             self.xml.get_widget("providerName").set_text(dialup.ProviderName)
         if dialup.Login != None:
@@ -222,7 +225,7 @@ class ISDNDialupDialog(DialupDialog):
         DialupDialog.hydrate(self)
 
         dialup = self.device.Dialup
-        
+
         if dialup.Callback and dialup.Callback.Type != 'off':
             self.xml.get_widget("callbackCB").set_active(true)
             self.xml.get_widget("callbackFrame").set_sensitive(true)
@@ -237,7 +240,9 @@ class ISDNDialupDialog(DialupDialog):
                 dialmode = _('auto')
             else:
                 dialmode = _('manual')
-            self.xml.get_widget("dialModeISDNEntry").set_text(dialmode)
+        else:
+            dialmode = _('manual')
+        self.xml.get_widget("dialModeISDNEntry").set_text(dialmode)
         if dialup.EncapMode == _("raw IP"):
             self.xml.get_widget("encapModeEntry").set_text(_('raw IP'))
         else:
@@ -330,7 +335,13 @@ class ModemDialupDialog(DialupDialog):
         if dialup.HangupTimeout:
             self.xml.get_widget("hangupTimeoutSB").set_value(dialup.HangupTimeout)
         if dialup.DialMode:
-            self.xml.get_widget("dialModeEntry").set_text(dialup.DialMode)
+            if dialup.DialMode == 'auto':
+                dialmode = _('auto')
+            else:
+                dialmode = _('manual')
+        else:
+            dialmode = _('manual')
+        self.xml.get_widget("dialModeEntry").set_text(dialmode)
 
         if dialup.InitString:
            widget = self.xml.get_widget("modemInitEntry").set_text(dialup.InitString)
@@ -348,6 +359,8 @@ class ModemDialupDialog(DialupDialog):
         dialup = self.device.Dialup
         dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
+        if dialup.DialMode == _('auto'): dialup.DialMode = 'auto'
+        else: dialup.DialMode = 'manual'
         dialup.InitString = self.xml.get_widget("modemInitEntry").get_text()
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         dialup.Inherits = self.xml.get_widget("modemPortEntry").get_text()
