@@ -5,6 +5,7 @@
 ## Copyright (C) 2001 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001 Philipp Knirsch <pknirsch@redhat.com>
+## Copyright (C) 2001 Trond Eivind Glomsrød <teg@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
