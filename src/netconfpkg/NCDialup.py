@@ -182,6 +182,7 @@ class ModemDialup(Dialup):
         #
         # Read Modem Init strings
         #
+        if not self.InitStrings: self.createInitStrings()
         for i in xrange(9) :
             confkey = 'Init'
             if i: confkey = confkey + str(i)                
@@ -194,7 +195,6 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
                 
             if value:
-                if not self.InitStrings: self.createInitStrings()
                 #print confkey + " = " + value
                 self.InitStrings[self.InitStrings.addInitString()] = value
                 
@@ -263,7 +263,7 @@ class ModemDialup(Dialup):
             else:
                 if conf[sectname].has_key(confkey):
                     del conf[sectname][confkey] 
-            
+
         for i in xrange(min([len(self.InitStrings), 9])):
             confkey = 'Init'
             if i: confkey = confkey + str(i)                
