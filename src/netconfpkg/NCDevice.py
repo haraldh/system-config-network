@@ -41,7 +41,7 @@ class Device(Device_base):
                    or not isinstance(self.Dialup, NCDialup.ModemDialup):
                     self.Dialup = NCDialup.ModemDialup(None, self)
                 return self.Dialup
-            elif self.Type == "Isdn":
+            elif self.Type == "ISDN":
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.IsdnDialup):
                     self.Dialup = NCDialup.IsdnDialup(None, self)
