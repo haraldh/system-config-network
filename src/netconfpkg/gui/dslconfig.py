@@ -64,35 +64,16 @@ class dslConfigDialog(deviceConfigDialog):
         vbox.pack_start (frame)
         sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
 
+        window = self.sharedtcpip_xml.get_widget ('hardwareWindow')
+        frame = self.sharedtcpip_xml.get_widget ('hardwareFrame')
+        vbox = self.xml.get_widget ('hardwareVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
+
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         dialup = self.device.Dialup
-        ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-
-        hwdesc = []
-        hwcurr = None
-        hardwarelist = NCHardwareList.getHardwareList()
-        for hw in hardwarelist:
-            if hw.Type == "Ethernet":
-                desc = str(hw.Name) + ' (' + hw.Description + ')'
-                hwdesc.append(desc)
-                if dialup and dialup.EthDevice and \
-                   hw.Name == dialup.EthDevice:
-                    hwcurr = desc
-                    
-        if len(hwdesc):
-            hwdesc.sort()
-            ecombo.set_popdown_strings(hwdesc)
-
-        if not hwcurr and len(hwdesc):
-            hwcurr = hwdesc[0]
-
-        widget = self.xml.get_widget("ethernetDeviceEntry")
-        if dialup.EthDevice and hwcurr:
-            widget.set_text(hwcurr)
-            
-        widget.set_position(0)
-
         widget = self.xml.get_widget("providerNameEntry")
         if dialup.ProviderName:
             widget.set_text(dialup.ProviderName)
@@ -121,15 +102,11 @@ class dslConfigDialog(deviceConfigDialog):
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
         dialup = self.device.Dialup
-        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
-        hw = fields[0]
-        self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
-        dialup.EthDevice = hw
         dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         dialup.Password = self.xml.get_widget("passwordEntry").get_text()
@@ -140,6 +117,7 @@ class dslConfigDialog(deviceConfigDialog):
             self.device.Device = "dsl"
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
         
 
 # make ctrl-C work

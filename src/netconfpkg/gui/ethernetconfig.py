@@ -89,32 +89,6 @@ class ethernetConfigDialog(deviceConfigDialog):
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
-        ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-        hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist, self.device.Device)
-                                        
-        if len(hwdesc):
-            ecombo.set_popdown_strings(hwdesc)
-
-        widget = self.xml.get_widget("ethernetDeviceEntry")
-        if self.device.Device:
-            widget.set_text(hwcurr)
-        widget.set_position(0)
-        
-        if self.device.Alias != None:
-            self.xml.get_widget("aliasSupportCB").set_active(TRUE)
-            self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
-            self.xml.get_widget("aliasSpinBox").set_sensitive(TRUE)
-        else:
-            self.xml.get_widget("aliasSupportCB").set_active(FALSE)
-
-        if self.device.HardwareAddress != None:
-            self.xml.get_widget("hwAddressCB").set_active(TRUE)
-            self.xml.get_widget("hwAddressEntry").set_text(self.device.HardwareAddress)
-        else:
-            self.xml.get_widget("hwAddressCB").set_active(FALSE)
-            self.xml.get_widget("hwAddressEntry").set_sensitive(FALSE)
-            self.xml.get_widget("hwProbeButton").set_sensitive(FALSE)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
