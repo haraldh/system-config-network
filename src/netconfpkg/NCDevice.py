@@ -1,6 +1,7 @@
 import sys
 import string
 import commands
+import NC_functions
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -72,6 +73,11 @@ class Device(Device_base):
                    or not isinstance(self.Dialup, NCDialup.IsdnDialup):
                     self.Dialup = NCDialup.IsdnDialup(None, self)
                 return self.Dialup
+            elif self.Type == "xDSL":
+                if (self.Dialup == None) \
+                   or not isinstance(self.Dialup, NCDialup.DslDialup):
+                    self.Dialup = NCDialup.DslDialup(None, self)
+                return self.Dialup
             else:
                 self.Dialup = None
                 return self.Dialup
@@ -132,7 +138,7 @@ class Device(Device_base):
                     
         if (not self.Type or self.Type == "" or self.Type == "Unknown" ) \
            and self.Device:            
-            self.Type = getDeviceType(self.Device)
+            self.Type = NC_functions.getDeviceType(self.Device)
 
         #print "Creating Dialup"
         dialup = self.createDialup()
