@@ -75,15 +75,16 @@ class Interface:
 
     def activate(self, device):
         print 'waiting to connect to %s' % (device)
+        return
+        os.system('/sbin/ifup' + device)
 
     def deactivate(self, device):
-        pid = os.fork()
-        if not pid:
-            pass
         print 'waiting to disconnect from %s' % (device)
+        os.system('/sbin/ifdown' + device)
 
     def status(self, device):
         print 'status from %s' % (device)
+        os.system('/usr/bin/redhat-config-network &')
 
     def configure(self, device):
         print 'configure %s' % (device)
@@ -124,6 +125,7 @@ def fork_exec(wait, path, arg):
     status = os.wait(child)
     if os.WIFEXITED(status) and (WEXITSTATUS(status) == 0):
         return WEXITSTATUS(status)
+
     return -1
 
     
