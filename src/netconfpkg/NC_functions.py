@@ -38,14 +38,14 @@ SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
 SYSCONFNETWORK='/etc/sysconfig/network/'
 
-#import gettext
-#gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-#gettext.textdomain(PROGNAME)
-#try:
-#    gettext.install(PROGNAME, "/usr/share/locale", 1)
-#except IOError:
-#    import __builtin__
-#    __builtin__.__dict__['_'] = unicode    
+import gettext
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+try:
+    gettext.install(PROGNAME, "/usr/share/locale", 1)
+except IOError:
+    import __builtin__
+    __builtin__.__dict__['_'] = unicode    
 
 DEFAULT_PROFILE_NAME=_("Common")
 
