@@ -157,7 +157,6 @@ class DeviceList(DeviceList_base):
                 if dev.DeviceId == devid:
                     break
             else:
-                print "Removing %s" % (SYSCONFDEVICEDIR + entry)
                 unlink(SYSCONFDEVICEDIR + entry)
                 unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
 
