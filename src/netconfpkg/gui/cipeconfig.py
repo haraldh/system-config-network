@@ -138,12 +138,12 @@ class cipeConfigDialog(deviceConfigDialog):
         deviceConfigDialog.dehydrate(self)
 
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        if hw == _('None - Server Mode'):
+        fields = string.split(hw)
+        hw = fields[0]
+        if self.device.Cipe.TunnelDevice == "None":
             self.device.Cipe.TunnelDevice = None
             self.device.Cipe.TunnelIP = "0.0.0.0"
         else:
-            fields = string.split(hw)
-            hw = fields[0]
             self.device.Cipe.TunnelDevice = hw
             self.device.Cipe.TunnelIP = "0.0.0.0"
             devlist = NCDeviceList.getDeviceList()
