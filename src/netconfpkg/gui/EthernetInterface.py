@@ -89,8 +89,8 @@ class EthernetInterface(InterfaceCreator):
         pass
     
     def on_hostname_config_page_prepare(self, druid_page, druid):
-        self.hydrate()
-        
+        pass
+    
     def on_hw_config_page_back(self, druid_page, druid):
         pass
     
