@@ -47,10 +47,13 @@ conf.write()
 del conf
 # check
 if expectConf(filename, str):
-    print "Test1 failed"
+    writeConf(filename + '.orig', str)
+    print "Test1 failed!!!!"
+    os.system("diff -u " + filename + " " + filename + ".orig")
     sys.exit(10)
 # cleanup
 os.unlink(filename)
+
 
 #
 # test2
@@ -77,14 +80,16 @@ del conf
 # check
 str = """
 # testConfig file
-a=e
+a='e'
 # comment
-c=f
+c='f'
 # comment2
 g=h
 """
 if expectConf(filename, str):
-    print "Test2 failed"
+    writeConf(filename + '.orig', str)
+    print "Test2 failed!!!!"
+    os.system("diff -u " + filename + " " + filename + ".orig")
     sys.exit(10)
 # cleanup
 os.unlink(filename)
