@@ -1,4 +1,4 @@
-#! /usr/bin/python2.2
+#!/usr/bin/python2.2
 
 ## netconf - A network configuration tool
 ## Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -54,7 +54,6 @@ os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 import os.path
 import string
 import signal
-import getopt
 
 try:
     from netconfpkg.gui.exception import handleException
@@ -92,6 +91,11 @@ try:
     TRUE=gtk.TRUE
     FALSE=gtk.FALSE
     
+    PAGE_DEVICES = 0
+    PAGE_HARDWARE = 1
+    PAGE_HOSTS = 2
+    PAGE_DNS = 3
+
     showprofile = 0
 
     DEFAULT_PROFILE_NAME=_("Common")
@@ -116,11 +120,6 @@ class mainDialog:
         self.no_profileentry_update = None
         self.xml.signal_autoconnect(
             {
-            "on_deviceAddButton_clicked" : self.on_deviceAddButton_clicked,
-            "on_deviceCopyButton_clicked" : self.on_deviceCopyButton_clicked,
-            "on_deviceEditButton_clicked" : self.on_deviceEditButton_clicked,
-            "on_deviceDeleteButton_clicked" : \
-            self.on_deviceDeleteButton_clicked,
             "on_deviceActivateButton_clicked" : \
             self.on_deviceActivateButton_clicked,
             "on_deviceDeactivateButton_clicked" : \
@@ -129,37 +128,32 @@ class mainDialog:
             self.on_deviceMonitorButton_clicked,
             "on_deviceList_select_row" : ( \
             self.on_generic_clist_select_row,
-            self.xml.get_widget("deviceEditButton"),
-            self.xml.get_widget("deviceDeleteButton"),
-            self.xml.get_widget("deviceCopyButton"),
+            self.xml.get_widget("editButton"),
+            self.xml.get_widget("deleteButton"),
+            self.xml.get_widget("copyButton"),
             None, None,None,
             self.xml.get_widget("deviceActivateButton"),
             self.xml.get_widget("deviceDeactivateButton"),
             self.xml.get_widget("deviceMonitorButton")),
             "on_deviceList_unselect_row" : ( \
             self.on_generic_clist_unselect_row,
-            self.xml.get_widget("deviceEditButton"),
-            self.xml.get_widget("deviceDeleteButton"),
-            self.xml.get_widget("deviceCopyButton")),
+            self.xml.get_widget("editButton"),
+            self.xml.get_widget("deleteButton"),
+            self.xml.get_widget("copyButton")),
             "on_deviceList_button_press_event" : ( \
             self.on_generic_clist_button_press_event,
             self.on_deviceEditButton_clicked),
             "on_save_activate" : self.on_applyButton_clicked,
             "on_quit_activate" : self.on_okButton_clicked,
             "on_contents_activate" : self.on_helpButton_clicked,
-            "on_hardwareAddButton_clicked" : self.on_hardwareAddButton_clicked,
-            "on_hardwareEditButton_clicked" : \
-            self.on_hardwareEditButton_clicked,
-            "on_hardwareDeleteButton_clicked" : \
-            self.on_hardwareDeleteButton_clicked,
             "on_hardwareList_select_row" : ( \
             self.on_generic_clist_select_row,
-            self.xml.get_widget("hardwareEditButton"),
-            self.xml.get_widget("hardwareDeleteButton")),
+            self.xml.get_widget("editButton"),
+            self.xml.get_widget("deleteButton")),
             "on_hardwareList_unselect_row" : ( \
             self.on_generic_clist_unselect_row,
-            self.xml.get_widget("hardwareEditButton"),
-            self.xml.get_widget("hardwareDeleteButton")),
+            self.xml.get_widget("editButton"),
+            self.xml.get_widget("deleteButton")),
             "on_hardwareList_button_press_event" : ( \
             self.on_generic_clist_button_press_event,
             self.on_hardwareEditButton_clicked),
@@ -169,9 +163,6 @@ class mainDialog:
             "on_secondaryDnsEntry_changed" : self.on_secondaryDnsEntry_changed,
             "on_tertiaryDnsEntry_changed" : self.on_tertiaryDnsEntry_changed,
             "on_searchDnsEntry_changed" : self.on_searchDnsEntry_changed,
-            "on_hostsAddButton_clicked" : self.on_hostsAddButton_clicked,
-            "on_hostsEditButton_clicked" : self.on_hostsEditButton_clicked,
-            "on_hostsDeleteButton_clicked" : self.on_hostsDeleteButton_clicked,
             "on_profileAddMenu_activate" : self.on_profileAddMenu_activate,
             "on_profileCopyMenu_activate" : self.on_profileCopyMenu_activate,
             "on_profileRenameMenu_activate": \
@@ -181,6 +172,13 @@ class mainDialog:
             "on_ProfileNameEntry_insert_text" : ( \
             self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9]+$"),
             "on_about_activate" : self.on_about_activate,
+            "on_mainNotebook_switch_page" : self.on_mainNotebook_switch_page,
+            "on_addButton_clicked" : self.on_addButton_clicked,
+            "on_editButton_clicked" : self.on_editButton_clicked,
+            "on_deleteButton_clicked" : self.on_deleteButton_clicked,
+            "on_copyButton_clicked" : self.on_copyButton_clicked,
+            "on_upButton_clicked" : self.on_upButton_clicked,
+            "on_downButton_clicked" : self.on_downButton_clicked,
         })
 
         self.appBar = self.xml.get_widget ("appbar")
@@ -201,8 +199,7 @@ class mainDialog:
             self.xml.get_widget ("profileMenu").show()
 	else:
             self.xml.get_widget ("profileMenu").hide()
-	
-
+            
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
         self.act_xpm, self.act_mask = get_icon ("pixmaps/active.xpm",
@@ -215,18 +212,50 @@ class mainDialog:
             self.xml.get_widget('deviceMonitorButton').hide()
         
         load_icon("network.xpm", self.dialog)
+
         self.load()
         self.hydrate()
         self.xml.get_widget ("deviceList").column_titles_passive ()
         self.xml.get_widget ("hardwareList").column_titles_passive ()
         self.xml.get_widget ("hostsList").column_titles_passive ()    
         
-        if getDeviceList():
-            notebook = self.xml.get_widget('mainNotebook')
-            widget = self.xml.get_widget('deviceFrame')
-            page = notebook.page_num(widget)
-            notebook.set_current_page(page)
+        notebook = self.xml.get_widget('mainNotebook')
+        widget = self.xml.get_widget('deviceFrame')
+        page = notebook.page_num(widget)
+        notebook.set_current_page(page)
 
+        self.page_num = {
+            PAGE_DEVICES : notebook.page_num(\
+            self.xml.get_widget('deviceFrame')),
+            PAGE_HARDWARE : notebook.page_num(\
+            self.xml.get_widget('hardwareFrame')),
+            PAGE_HOSTS : notebook.page_num(\
+            self.xml.get_widget('hostFrame')),
+            PAGE_DNS : notebook.page_num(\
+            self.xml.get_widget('dnsFrame')),
+            }
+
+        self.addButtonFunc = {
+            PAGE_DEVICES : self.on_deviceAddButton_clicked,
+            PAGE_HARDWARE : self.on_hardwareAddButton_clicked,
+            PAGE_HOSTS : self.on_hostsAddButton_clicked,
+            }
+        self.editButtonFunc = {
+            PAGE_DEVICES : self.on_deviceEditButton_clicked,
+            PAGE_HARDWARE : self.on_hardwareEditButton_clicked,
+            PAGE_HOSTS : self.on_hostsEditButton_clicked,
+            }
+        self.copyButtonFunc = {
+            PAGE_DEVICES : self.on_deviceCopyButton_clicked,
+            PAGE_HARDWARE : self.nop,
+            PAGE_HOSTS : self.nop,
+            }
+        self.deleteButtonFunc = {
+            PAGE_DEVICES : self.on_deviceDeleteButton_clicked,
+            PAGE_HARDWARE : self.on_hardwareDeleteButton_clicked,
+            PAGE_HOSTS : self.on_hostsDeleteButton_clicked,
+            }
+        
         self.activedevicelist = NetworkDevice().get()
         self.tag = timeout_add(4000, self.update_devicelist)
 
@@ -238,18 +267,26 @@ class mainDialog:
         clist = self.xml.get_widget("deviceList")
         self.on_generic_clist_select_row(\
             clist, 0, 0, 0,
-            edit_button = self.xml.get_widget("deviceEditButton"),
-            delete_button = self.xml.get_widget("deviceDeleteButton"),
-            copy_button = self.xml.get_widget("deviceCopyButton"),
+            edit_button = self.xml.get_widget("editButton"),
+            delete_button = self.xml.get_widget("deleteButton"),
+            copy_button = self.xml.get_widget("copyButton"),
             activate_button = self.xml.get_widget("deviceActivateButton"),
             deactivate_button = self.xml.get_widget("deviceDeactivateButton"),
             monitor_button = self.xml.get_widget("deviceMonitorButton"))
         
         # Let this dialog be in the taskbar like a normal window
         #self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
-        self.dialog.show()
 
+        gtk.Tooltips().enable()
         
+        self.dialog.show()
+        self.on_mainNotebook_switch_page(None, None,
+                                         self.page_num[PAGE_DEVICES])
+
+
+    def nop(self, *args):
+        pass
+
     def load(self):
         self.appBar.push(_("Loading Configuration..."))
         self.loadDevices()
@@ -352,6 +389,7 @@ class mainDialog:
             
             
     def hydrateDevices(self):
+        self.appBar.push(_("Updating Devices..."))
         devicelist = getDeviceList()
         activedevicelist = NetworkDevice().get()
         profilelist = getProfileList()
@@ -403,17 +441,20 @@ class mainDialog:
                 clist.select_row(row, 0)
                 
             row = row + 1
+        self.appBar.pop()
         
     def hydrateHardware(self):
+        self.appBar.push(_("Updating Hardware..."))
         hardwarelist = getHardwareList()
-
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
         clist.set_row_height(17)
         for hw in hardwarelist:
             clist.append([str(hw.Description), str(hw.Type), str(hw.Name)])
+        self.appBar.pop()
 
     def hydrateProfiles(self):
+        self.appBar.push(_("Updating Profiles..."))
         profilelist = getProfileList()
 
         hclist = self.xml.get_widget("hostsList")
@@ -444,7 +485,8 @@ class mainDialog:
             else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
             if prof.DNS.SearchList:
                 self.xml.get_widget('searchDnsEntry').set_text(\
-                    string.join(prof.DNS.SearchList))                    
+                    string.join(prof.DNS.SearchList))
+                
             for host in prof.HostsList:
                 hclist.append([host.IP, host.Hostname,
                                string.join(host.AliasList, ' ')])
@@ -452,6 +494,7 @@ class mainDialog:
 
             
         if self.initialized:
+            self.appBar.pop()
             return
 
         self.initialized = true
@@ -485,6 +528,7 @@ class mainDialog:
 	#omenu.set_history (history)
         omenu.get_children()[history+5].set_active(true)
         self.no_profileentry_update = false
+        self.appBar.pop()
 
     def on_Dialog_delete_event(self, *args):
         if self.changed():        
@@ -495,35 +539,95 @@ class mainDialog:
                 self.save()
             
         gtk.mainquit()
+        return
+    
+    def on_mainNotebook_switch_page(self, page = None, a = None,
+                                    page_num = 0, *args):
+        self.active_page = page_num
 
+        # Check if we aren't called in a dialog destroy event
+        if self.xml.get_widget ("addButton") == None:
+            return
+        
+        self.xml.get_widget ("addButton").set_sensitive(false)
+        self.xml.get_widget ("editButton").set_sensitive(false)
+        self.xml.get_widget ("copyButton").set_sensitive(false)
+        self.xml.get_widget ("deleteButton").set_sensitive(false)
+        self.xml.get_widget ("commonDockitem").hide()
+        self.xml.get_widget ("deviceDockitem").hide()
+        self.xml.get_widget ("posDockitem").hide()
+        
+        if page_num == self.page_num[PAGE_DEVICES]:                        
+            self.xml.get_widget ("addButton").set_sensitive(true)
+            self.xml.get_widget ("editButton").set_sensitive(true)
+            self.xml.get_widget ("copyButton").set_sensitive(true)
+            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("commonDockitem").show()
+            self.xml.get_widget ("deviceDockitem").show()
+                                
+        elif page_num == self.page_num[PAGE_HARDWARE]:
+            self.xml.get_widget ("addButton").set_sensitive(true)
+            self.xml.get_widget ("editButton").set_sensitive(true)
+            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("commonDockitem").show()
+                
+        elif page_num == self.page_num[PAGE_HOSTS]:
+            self.xml.get_widget ("addButton").set_sensitive(true)
+            self.xml.get_widget ("editButton").set_sensitive(true)
+            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("commonDockitem").show()
+
+        elif page_num == self.page_num[PAGE_DNS]:
+            self.xml.get_widget ("commonDockitem").show()
+
+    def on_addButton_clicked (self, button):
+        self.addButtonFunc[self.active_page](button)
+        
+    def on_editButton_clicked (self, button):
+        self.editButtonFunc[self.active_page](button)
+
+    def on_copyButton_clicked (self, button):
+        self.copyButtonFunc[self.active_page](button)
+
+    def on_deleteButton_clicked (self, button):
+        self.deleteButtonFunc[self.active_page](button)
+        
+    def on_upButton_clicked (self, button):
+        pass
+        
+    def on_downButton_clicked (self, button):
+        pass
+        
     def on_applyButton_clicked (self, button):
         if self.save() == 0:
-            generic_error_dialog (_("Changes are saved.\n"
+            generic_info_dialog (_("Changes are saved.\n"
                                     "You may want to restart\n"
                                     "the network and network services\n"
                                     "or restart the computer."),
                                   self.dialog)
 
-    def on_okButton_clicked (self, *args):        
+    def on_okButton_clicked (self, *args):
         if self.changed():        
             button = generic_yesnocancel_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
             
+            if button == RESPONSE_CANCEL:
+                return
+
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-            
-            if button == RESPONSE_CANCEL:
-                return
-            
-        generic_error_dialog (_("Changes are saved.\n"
-                                "You may want to restart\n"
-                                "the network and network services\n"
-                                "or restart the computer."),
-                              self.dialog)
+                else:
+                    generic_info_dialog (_("Changes are saved.\n"
+                                           "You may want to restart\n"
+                                           "the network and network services\n"
+                                           "or restart the computer."),
+                                         self.dialog)
+                                
         gtk.mainquit()
-
+        return
+    
     def on_helpButton_clicked(self, button):
         import gnome
         gnome.url_show("ghelp://" + NETCONFDIR + \
@@ -537,7 +641,7 @@ class mainDialog:
         gtk.mainloop()            
             
         if not interface.canceled:
-            self.hydrate()
+            self.hydrateDevices()
 
         return (not interface.canceled)
         
@@ -568,11 +672,9 @@ class mainDialog:
 
         devicelist.append(device)
         device.commit()
-        self.hydrate()
+        self.hydrateDevices()
 
     def on_deviceEditButton_clicked (self, *args):
-        devicelist = getDeviceList()
-
         clist = self.xml.get_widget("deviceList")
 
         if len(clist.selection) == 0:
@@ -608,7 +710,7 @@ class mainDialog:
                 prof.ActiveDevices[pos] = device.DeviceId
                 prof.commit()
 
-        self.hydrate()
+        self.hydrateDevices()
         device.changed = false
         self.appBar.pop()
 
@@ -655,7 +757,7 @@ class mainDialog:
         
         del devicelist[devicelist.index(device)]
         devicelist.commit()
-        self.hydrate()
+        self.hydrateDevices()
 
     def on_deviceActivateButton_clicked(self, button):
         clist = self.xml.get_widget("deviceList")
@@ -689,6 +791,7 @@ class mainDialog:
         dlg.vbox.add(gtk.Label(_('Activating network device %s, '
                                  'please wait...') %(device)))
         dlg.vbox.show()
+        dlg.set_transient_for(self.dialog)        
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
         dlg.show_all()
@@ -785,7 +888,8 @@ class mainDialog:
         else:
             prof = None
         
-        if devicelist.modified() or hardwarelist.modified() or (prof and prof.modified()):
+        if devicelist.modified() or hardwarelist.modified() or \
+               (prof and prof.modified()):
             button = generic_yesnocancel_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
@@ -802,11 +906,11 @@ class mainDialog:
         else:
             self.xml.get_widget ('profileRenameMenu').set_sensitive (TRUE)
             self.xml.get_widget ('profileDeleteMenu').set_sensitive (TRUE)
+            
         if not self.no_profileentry_update:
             for prof in profilelist:
                 if prof.ProfileName == profile:
                     prof.Active = true
-                    #print "profile " + prof.ProfileName + " activated\n"
                 else: prof.Active = false
                 prof.commit()
             self.hydrate()
@@ -1010,7 +1114,7 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 s = entry.get_text()
-                prof.DNS.SearchList = []
+                prof.DNS.SearchList = prof.DNS.SearchList[:0]
                 for sp in string.split(s):
                     prof.DNS.SearchList.append(sp)
                 prof.DNS.commit()
@@ -1038,7 +1142,7 @@ class mainDialog:
         i = hostslist.addHost()
         hostslist[i].apply(host)
         hostslist[i].commit()
-        self.hydrate()
+        self.hydrateProfiles()
 
     def on_hostsEditButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -1063,7 +1167,7 @@ class mainDialog:
             return
         host.commit()
         if host.changed:
-            self.hydrate()
+            self.hydrateProfiles()
             host.changed = false
 
     def on_hostsDeleteButton_clicked (self, *args):
@@ -1089,7 +1193,7 @@ class mainDialog:
             del prof.HostsList[i]
             
         prof.HostsList.commit()
-        self.hydrate()
+        self.hydrateProfiles()
 
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
@@ -1146,7 +1250,7 @@ class mainDialog:
         
         #self.xml.get_widget("profileList").clear()
         self.initialized = false
-        self.hydrate()
+        self.hydrateProfiles()
         return 0
 
     def on_profileCopyMenu_activate (self, *args):
@@ -1171,7 +1275,7 @@ class mainDialog:
         profilelist[i].apply(profile)
         profilelist[i].commit()
         self.initialized = None
-        self.hydrate()
+        self.hydrateProfiles()
 
     def on_profileRenameMenu_activate (self, *args):
         profilelist = getProfileList()
@@ -1218,7 +1322,7 @@ class mainDialog:
         profile.commit()        
         self.initialized = None
         if profile.changed:
-            self.hydrate()
+            self.hydrateProfiles()
             profile.changed = false
 
     def on_profileDeleteMenu_activate (self, *args):
@@ -1274,7 +1378,7 @@ class mainDialog:
             hardwarelist[i].apply(hw)
             hw.commit()
             hardwarelist.commit()
-            self.hydrate()
+            self.hydrateHardware()
         else:
             hardwarelist.remove(hw)
 
@@ -1338,40 +1442,53 @@ class mainDialog:
         # remove hardware
         del hardwarelist[clist.selection[0]]
         hardwarelist.commit()
+        self.hydrateHardware()
 
-        # remove all devices used this hardware
-        devicelist = getDeviceList()
-        profilelist = getProfileList()
-        dlist = []
-        for d in devicelist:
-            found = FALSE
-            if type == MODEM:
-                if d.Dialup and d.Dialup.Inherits and dev == d.Dialup.Inherits:
+        buttons = generic_yesno_dialog((_('Do you want to delete '
+                                          'all devices that used "%s"?')) % \
+                                       str(description),
+                                       self.dialog, widget = clist,
+                                       page = clist.selection[0])
+
+        if buttons == RESPONSE_YES:
+            # remove all devices used this hardware
+            #
+            # FIXME!! This has to be modular, not hardcoded!
+            #
+            devicelist = getDeviceList()
+            profilelist = getProfileList()
+            dlist = []
+            for d in devicelist:
+                found = FALSE
+                if type == MODEM:
+                    if d.Dialup and d.Dialup.Inherits and \
+                           dev == d.Dialup.Inherits:
+                        found = TRUE
+                elif type == ISDN and d.Type == ISDN:
                     found = TRUE
-            elif type == ISDN and d.Type == ISDN:
-                found = TRUE
-            elif type == ETHERNET:
-                if d.Dialup and d.Dialup.EthDevice == dev:
+                elif type == ETHERNET:
+                    if d.Dialup and d.Dialup.EthDevice == dev:
+                        found = TRUE
+                    elif d.Cipe and d.Cipe.TunnelDevice == dev:
+                        found = TRUE
+                    elif d.Wireless and d.Device == dev:
+                        found = TRUE
+                    elif d.Device == dev:
+                        found = TRUE
+                elif type == TOKENRING and d.Device == dev:
                     found = TRUE
-                elif d.Cipe and d.Cipe.TunnelDevice == dev:
-                    found = TRUE
-                elif d.Wireless and d.Device == dev:
-                    found = TRUE
-                elif d.Device == dev:
-                    found = TRUE
-            elif type == TOKENRING and d.Device == dev:
-                found = TRUE
-            if found: dlist.append(d)
-            
-        for i in dlist:
-            for prof in profilelist:
-                if i.DeviceId in prof.ActiveDevices:
-                    pos = prof.ActiveDevices.index(i.DeviceId)
-                    del prof.ActiveDevices[pos]
-            devicelist.remove(i)
-            
-        devicelist.commit()
-        self.hydrate()
+                if found: dlist.append(d)
+
+            for i in dlist:
+                for prof in profilelist:
+                    if i.DeviceId in prof.ActiveDevices:
+                        pos = prof.ActiveDevices.index(i.DeviceId)
+                        del prof.ActiveDevices[pos]
+                devicelist.remove(i)
+
+            devicelist.commit()
+            self.hydrateDevices()
+
 
     def on_about_activate(self, *args):
         dlg = gnome.ui.About(PROGNAME,
@@ -1385,45 +1502,50 @@ class mainDialog:
                               "Philipp Knirsch <pknirsch@redhat.com>",
                               unicode("Trond Eivind Glomsrød <teg@redhat.com>",
                                       "iso8859-1")])
+        
+        dlg.set_transient_for(self.dialog)
+        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.show()
 
 
-def Usage():
-    print _("redhat-config-network - "
-            "graphical network configuration tool\n\n"
-            "Usage: redhat-config-network [-pnh] [--profile] "
-            "[--noprofile] [--help]")
-    print _("  -p, --profile\t\tShow profiles.")
-    print _("  -n, --noprofile\tDo not show profiles.")
-    print _("  -h, --help\t\tShows this help.")
+# def Usage():
+#     print _("redhat-config-network - "
+#             "graphical network configuration tool\n\n"
+#             "Usage: redhat-config-network [-pnh] [--profile] "
+#             "[--noprofile] [--help]")
+#     print _("  -p, --profile\t\tShow profiles.")
+#     print _("  -n, --noprofile\tDo not show profiles.")
+#     print _("  -h, --help\t\tShows this help.")
 
-# make ctrl-C work
+
 if __name__ == '__main__':
-    class BadUsage: pass
 
+    # make ctrl-C work
     signal.signal (signal.SIGINT, signal.SIG_DFL)
 
     progname = os.path.basename(sys.argv[0])
 
     showprofile = 1
 
-    try:
-        opts, args = getopt.getopt(cmdline, "pnh", ["profile",
-                                                    "noprofile",
-                                                    "help"])
-        for opt, val in opts:
-            if opt == '-p' or opt == '--profile':
-                showprofile = 1
-            elif opt == '-n' or opt == '--noprofile':
-                showprofile = 0
-            elif opt == '-h' or opt == '--help':
-                Usage()
-                sys.exit(0)
-            else: raise BadUsage
+#    import getopt
+#    class BadUsage: pass
+#     try:
+#         opts, args = getopt.getopt(cmdline, "pnh", ["profile",
+#                                                     "noprofile",
+#                                                     "help"])
+#         for opt, val in opts:
+#             if opt == '-p' or opt == '--profile':
+#                 showprofile = 1
+#             elif opt == '-n' or opt == '--noprofile':
+#                 showprofile = 0
+#             elif opt == '-h' or opt == '--help':
+#                 Usage()
+#                 sys.exit(0)
+#             else: raise BadUsage
 
-    except (getopt.error, BadUsage):
-        Usage()
-        sys.exit(1)
+#     except (getopt.error, BadUsage):
+#         Usage()
+#         sys.exit(1)
    
     try:
         if progname == 'redhat-config-network' or progname == 'neat' or \
