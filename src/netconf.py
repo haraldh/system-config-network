@@ -111,7 +111,7 @@ FALSE=gtk.FALSE
 showprofile = 0
 
 class mainDialog:
-    def __init__(self):
+    def __init__(self, modus=None):
         glade_file = "maindialog.glade"
 
         if not os.path.isfile(glade_file):
@@ -122,7 +122,7 @@ class mainDialog:
         self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.no_profileentry_update = None
-
+        
         self.xml.signal_autoconnect(
             {
             "on_deviceAddButton_clicked" : self.on_deviceAddButton_clicked,
@@ -234,7 +234,9 @@ class mainDialog:
 
         self.activedevicelist = NetworkDevice().get()
         self.tag = timeout_add(4000, self.update_devicelist)
-        
+
+        if modus == 'druid': self.on_deviceAddButton_clicked(None)
+            
     def load(self):
         self.loadDevices()
         self.loadHardware()
@@ -354,7 +356,7 @@ class mainDialog:
 ##                  clist.set_row_data(row, 1)
 ##                  break         
             row = row + 1
-
+            
     def hydrateHardware(self):
         hardwarelist = getHardwareList()
 
@@ -1395,7 +1397,7 @@ if __name__ == '__main__':
         if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
             window = mainDialog()
         elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
-            interface = NewInterface()
+            window = mainDialog('druid')
             
         gtk.mainloop()
 
