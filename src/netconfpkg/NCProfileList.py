@@ -51,16 +51,18 @@ def updateNetworkScripts():
     if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
         mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/')
 
-    if not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
-           and not os.path.islink(netconfpkg.ROOT + HOSTSCONF):
+    if not os.path.isfile(netconfpkg.ROOT + HOSTSCONF) or \
+           (not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
+           and not os.path.islink(netconfpkg.ROOT + HOSTSCONF)):
         log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + \
                      HOSTSCONF))
         copy(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + \
              SYSCONFPROFILEDIR+'/default/hosts')
         changed = true
 
-    if not ishardlink(netconfpkg.ROOT + RESOLVCONF) \
-           and not os.path.islink(netconfpkg.ROOT + RESOLVCONF):
+    if not os.path.isfile(netconfpkg.ROOT + RESOLVCONF) or \
+           ( not ishardlink(netconfpkg.ROOT + RESOLVCONF) \
+            and not os.path.islink(netconfpkg.ROOT + RESOLVCONF)):
         log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + \
                      RESOLVCONF))
         copy(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + \
@@ -608,5 +610,5 @@ if __name__ == '__main__':
 
     pl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.76 $"
+__date__ = "$Date: 2003/10/27 13:24:36 $"
+__version__ = "$Revision: 1.77 $"
