@@ -19,7 +19,6 @@ import os, sys
 import signal
 import traceback
 import types
-import rpm
 from string import joinfields
 from cPickle import Pickler
 from netconfpkg.NC_functions import _
