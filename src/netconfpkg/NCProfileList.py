@@ -150,12 +150,15 @@ class ProfileList(ProfileList_base):
             dnsconf['domain'] = [prof.DNS.Domainname]
             dnsconf['nameservers'] = []
             dnsconf['search'] = prof.DNS.SearchList
+            nameservers = []
             if prof.DNS.PrimaryDNS != '':
-                dnsconf['nameservers'].append(prof.DNS.PrimaryDNS)
+                nameservers.append(prof.DNS.PrimaryDNS)
             if prof.DNS.SecondaryDNS!= '':
-                dnsconf['nameservers'].append(prof.DNS.SecondaryDNS)
+                nameservers.append(prof.DNS.SecondaryDNS)
             if prof.DNS.TernaryDNS != '':
-                dnsconf['nameservers'].append(prof.DNS.TernaryDNS)
+                nameservers.append(prof.DNS.TernaryDNS)
+
+            dnsconf['nameservers'] = nameservers
 
             hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts'
             for i in hoconf.keys():
