@@ -21,30 +21,25 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+PROGNAME='redhat-config-network'
+
 import sys
+import os
+# Just to be safe...
+os.umask(0022)
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not "/usr/share/redhat-config-network" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network")
-
-if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network/netconfpkg")
+if not "/usr/share/" + PROGNAME in sys.path:
+    sys.path.append("/usr/share/" + PROGNAME)
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
 
-import getopt
-import signal
-import os
 import gettext
 
-# Just to be safe...
-os.umask(0022)
-
-PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
 
@@ -58,27 +53,54 @@ os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 
 import os.path
 import string
-from netconfpkg import *
+import signal
+import getopt
 
-from netconfpkg.gui import *
-from netconfpkg.Control import *
-from netconfpkg.gui.GUI_functions import GLADEPATH
-from netconfpkg.gui.exception import handleException
-import gtk
-import gtk.glade
-gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
+try:
+    from netconfpkg.gui.exception import handleException
+except RuntimeError, msg:
+    print _("Error: %s, %s!") % (PROGNAME, msg)
+    if os.path.isfile("/usr/sbin/redhat-config-network-tui"):        
+        print _("Starting text version:")
+        os.execv("./redhat-config-network-tui", sys.argv)
+    if os.path.isfile("./redhat-config-network-tui"):        
+        print _("Starting text version:")
+        os.execv("./redhat-config-network-tui", sys.argv)    
+    sys.exit(10)
 
-PROFILE_COLUMN = 0
-STATUS_COLUMN = 1
-DEVICE_COLUMN = 2
-NICKNAME_COLUMN = 3
 
-TRUE=gtk.TRUE
-FALSE=gtk.FALSE
+sys.excepthook = lambda type, value, tb: handleException((type, value, tb))
 
-showprofile = 0
+try:        
+    from netconfpkg import *
+    from netconfpkg.gui import *
+    from netconfpkg.Control import *
+    from netconfpkg.gui.GUI_functions import GLADEPATH
+    import gtk
+    import gtk.glade
+    import gnome
+    import gnome.ui
 
-DEFAULT_PROFILE_NAME=_("Common")
+    gnome.program_init(PROGNAME, netconfpkg.PRG_VERSION)
+    gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
+
+    PROFILE_COLUMN = 0
+    STATUS_COLUMN = 1
+    DEVICE_COLUMN = 2
+    NICKNAME_COLUMN = 3
+
+    TRUE=gtk.TRUE
+    FALSE=gtk.FALSE
+    
+    showprofile = 0
+
+    DEFAULT_PROFILE_NAME=_("Common")
+
+except SystemExit, code:
+    sys.exit(code)
+except:
+    handleException(sys.exc_info())
+    
 
 class mainDialog:
     def __init__(self, modus=None):
@@ -97,100 +119,96 @@ class mainDialog:
             "on_deviceAddButton_clicked" : self.on_deviceAddButton_clicked,
             "on_deviceCopyButton_clicked" : self.on_deviceCopyButton_clicked,
             "on_deviceEditButton_clicked" : self.on_deviceEditButton_clicked,
-            "on_deviceDeleteButton_clicked" : self.on_deviceDeleteButton_clicked,
-            "on_deviceActivateButton_clicked" : self.on_deviceActivateButton_clicked,
-            "on_deviceDeactivateButton_clicked" : self.on_deviceDeactivateButton_clicked,
-            "on_deviceMonitorButton_clicked" : self.on_deviceMonitorButton_clicked,
-            "on_deviceList_select_row" : (self.on_generic_clist_select_row,
-                                          self.xml.get_widget("deviceEditButton"),
-                                          self.xml.get_widget("deviceDeleteButton"),
-                                          self.xml.get_widget("deviceCopyButton"),
-                                          None, None,None,
-                                          self.xml.get_widget("deviceActivateButton"),
-                                          self.xml.get_widget("deviceDeactivateButton"),
-                                          self.xml.get_widget("deviceMonitorButton")),
-            "on_deviceList_unselect_row" : (self.on_generic_clist_unselect_row,
-                                            self.xml.get_widget("deviceEditButton"),
-                                            self.xml.get_widget("deviceDeleteButton"),
-                                            self.xml.get_widget("deviceCopyButton")),
-            "on_deviceList_button_press_event" : (self.on_generic_clist_button_press_event,
-                                                  self.on_deviceEditButton_clicked),
-            "on_applyButton_clicked" : self.on_applyButton_clicked,
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_helpButton_clicked" : self.on_helpButton_clicked,
+            "on_deviceDeleteButton_clicked" : \
+            self.on_deviceDeleteButton_clicked,
+            "on_deviceActivateButton_clicked" : \
+            self.on_deviceActivateButton_clicked,
+            "on_deviceDeactivateButton_clicked" : \
+            self.on_deviceDeactivateButton_clicked,
+            "on_deviceMonitorButton_clicked" : \
+            self.on_deviceMonitorButton_clicked,
+            "on_deviceList_select_row" : ( \
+            self.on_generic_clist_select_row,
+            self.xml.get_widget("deviceEditButton"),
+            self.xml.get_widget("deviceDeleteButton"),
+            self.xml.get_widget("deviceCopyButton"),
+            None, None,None,
+            self.xml.get_widget("deviceActivateButton"),
+            self.xml.get_widget("deviceDeactivateButton"),
+            self.xml.get_widget("deviceMonitorButton")),
+            "on_deviceList_unselect_row" : ( \
+            self.on_generic_clist_unselect_row,
+            self.xml.get_widget("deviceEditButton"),
+            self.xml.get_widget("deviceDeleteButton"),
+            self.xml.get_widget("deviceCopyButton")),
+            "on_deviceList_button_press_event" : ( \
+            self.on_generic_clist_button_press_event,
+            self.on_deviceEditButton_clicked),
+            "on_save_activate" : self.on_applyButton_clicked,
+            "on_quit_activate" : self.on_okButton_clicked,
+            "on_contents_activate" : self.on_helpButton_clicked,
             "on_hardwareAddButton_clicked" : self.on_hardwareAddButton_clicked,
-            "on_hardwareEditButton_clicked" : self.on_hardwareEditButton_clicked,
-            "on_hardwareDeleteButton_clicked" : self.on_hardwareDeleteButton_clicked,
-            "on_hardwareList_select_row" : (self.on_generic_clist_select_row,
-                                            self.xml.get_widget("hardwareEditButton"),
-                                            self.xml.get_widget("hardwareDeleteButton")),
-            "on_hardwareList_unselect_row" : (self.on_generic_clist_unselect_row,
-                                              self.xml.get_widget("hardwareEditButton"),
-                                              self.xml.get_widget("hardwareDeleteButton")),
-            "on_hardwareList_button_press_event" : (self.on_generic_clist_button_press_event,
-                                                    self.on_hardwareEditButton_clicked),
+            "on_hardwareEditButton_clicked" : \
+            self.on_hardwareEditButton_clicked,
+            "on_hardwareDeleteButton_clicked" : \
+            self.on_hardwareDeleteButton_clicked,
+            "on_hardwareList_select_row" : ( \
+            self.on_generic_clist_select_row,
+            self.xml.get_widget("hardwareEditButton"),
+            self.xml.get_widget("hardwareDeleteButton")),
+            "on_hardwareList_unselect_row" : ( \
+            self.on_generic_clist_unselect_row,
+            self.xml.get_widget("hardwareEditButton"),
+            self.xml.get_widget("hardwareDeleteButton")),
+            "on_hardwareList_button_press_event" : ( \
+            self.on_generic_clist_button_press_event,
+            self.on_hardwareEditButton_clicked),
             "on_hostnameEntry_changed" : self.on_hostnameEntry_changed,
             "on_domainEntry_changed" : self.on_domainEntry_changed,
             "on_primaryDnsEntry_changed" : self.on_primaryDnsEntry_changed,
             "on_secondaryDnsEntry_changed" : self.on_secondaryDnsEntry_changed,
             "on_tertiaryDnsEntry_changed" : self.on_tertiaryDnsEntry_changed,
             "on_searchDnsEntry_changed" : self.on_searchDnsEntry_changed,
-            "on_dnsAddButton_clicked" : self.on_dnsAddButton_clicked,
-            "on_dnsEditButton_clicked" : self.on_dnsEditButton_clicked,
-            "on_dnsUpButton_clicked" : self.on_dnsUpButton_clicked,
-            "on_dnsDownButton_clicked" : self.on_dnsDownButton_clicked,
-            "on_dnsDeleteButton_clicked" : self.on_dnsDeleteButton_clicked,
-            "on_dnsList_select_row" : (self.on_generic_clist_select_row,
-                                       self.xml.get_widget("dnsEditButton"),
-                                       self.xml.get_widget("dnsDeleteButton"),
-                                       None, None,
-                                       self.xml.get_widget("dnsUpButton"),
-                                       self.xml.get_widget("dnsDownButton")),
-            "on_dnsList_unselect_row" : (self.on_generic_clist_unselect_row,
-                                         self.xml.get_widget("dnsEditButton"),
-                                         self.xml.get_widget("dnsDeleteButton"),
-                                         None, None,
-                                         self.xml.get_widget("dnsUpButton"),
-                                         self.xml.get_widget("dnsDownButton")),
-            "on_dnsList_button_press_event" : (self.on_generic_clist_button_press_event,
-                                               self.on_dnsEditButton_clicked),
             "on_hostsAddButton_clicked" : self.on_hostsAddButton_clicked,
             "on_hostsEditButton_clicked" : self.on_hostsEditButton_clicked,
             "on_hostsDeleteButton_clicked" : self.on_hostsDeleteButton_clicked,
-            "on_profileList_unselect_row" : (self.on_generic_clist_unselect_row,
-                                             self.xml.get_widget("profileEditButton"),
-                                             self.xml.get_widget("profileDeleteButton"),
-                                             self.xml.get_widget("profileCopyButton")),
-            "on_profileList_select_row" : (self.on_generic_clist_select_row,
-                                           self.xml.get_widget("profileEditButton"),
-                                           self.xml.get_widget("profileDeleteButton"),
-                                           self.xml.get_widget("profileCopyButton")),
-            "on_profileList_button_press_event" : (self.on_generic_clist_button_press_event,
-                                                   self.on_profileRenameButton_clicked),
-            "on_profileAddButton_clicked" : self.on_profileAddButton_clicked,
-            "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
-            "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
-            "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked,
-            "on_ProfileNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9]+$"),
+            "on_profileAddMenu_activate" : self.on_profileAddMenu_activate,
+            "on_profileCopyMenu_activate" : self.on_profileCopyMenu_activate,
+            "on_profileRenameMenu_activate": \
+            self.on_profileRenameMenu_activate,
+            "on_profileDeleteMenu_activate" : \
+            self.on_profileDeleteMenu_activate,
+            "on_ProfileNameEntry_insert_text" : ( \
+            self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9]+$"),
+            "on_about_activate" : self.on_about_activate,
         })
 
+        self.appBar = self.xml.get_widget ("appbar")
 
-        self.xml.get_widget ("hardware_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/connection-ethernet.png")
-        self.xml.get_widget ("hosts_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/nameresolution_alias.png")
-        self.xml.get_widget ("devices_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/network.png")
+        self.xml.get_widget ("hardware_pixmap").set_from_file( \
+            NETCONFDIR + "/pixmaps/connection-ethernet.png")
+        self.xml.get_widget ("hosts_pixmap").set_from_file( \
+            NETCONFDIR + "/pixmaps/nameresolution_alias.png")
+        self.xml.get_widget ("devices_pixmap").set_from_file( \
+            NETCONFDIR + "/pixmaps/network.png")
+        
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
 
         
         if showprofile:
-            self.xml.get_widget ("profileFrame").show()
+            self.xml.get_widget ("profileMenu").show()
+	else:
+            self.xml.get_widget ("profileMenu").hide()
+	
 
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
-        self.act_xpm, self.act_mask = get_icon ("pixmaps/active.xpm", self.dialog)
-        self.inact_xpm, self.inact_mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
+        self.act_xpm, self.act_mask = get_icon ("pixmaps/active.xpm",
+                                                self.dialog)
+        self.inact_xpm, self.inact_mask = get_icon ("pixmaps/inactive.xpm",
+                                                    self.dialog)
         self.devsel = None
 
         if not os.access('/usr/bin/rp3', os.X_OK):
@@ -201,7 +219,6 @@ class mainDialog:
         self.hydrate()
         self.xml.get_widget ("deviceList").column_titles_passive ()
         self.xml.get_widget ("hardwareList").column_titles_passive ()
-        self.xml.get_widget ("dnsList").column_titles_passive ()
         self.xml.get_widget ("hostsList").column_titles_passive ()    
         
         if getDeviceList():
@@ -212,7 +229,6 @@ class mainDialog:
 
         self.activedevicelist = NetworkDevice().get()
         self.tag = timeout_add(4000, self.update_devicelist)
-
 
         if modus == 'druid':
             if not self.on_deviceAddButton_clicked(None):
@@ -230,25 +246,34 @@ class mainDialog:
             monitor_button = self.xml.get_widget("deviceMonitorButton"))
         
         # Let this dialog be in the taskbar like a normal window
-        self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
+        #self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
 
         
     def load(self):
+        self.appBar.push(_("Loading Configuration..."))
         self.loadDevices()
         self.loadHardware()
         self.loadProfiles()
+        self.appBar.pop()
 
     def loadDevices(self):
+        self.appBar.push(_("Loading Devices Configuration..."))
         devicelist = getDeviceList()
-
+        self.appBar.pop()
+        
     def loadHardware(self):
+        self.appBar.push(_("Loading Hardware Configuration..."))
         hardwarelist = getHardwareList()
+        self.appBar.pop()
 
     def loadProfiles(self):
+        self.appBar.push(_("Loading Profile Configuration..."))
         profilelist = getProfileList()
+        self.appBar.pop()
 
     def test(self):
+        self.appBar.push(_("Testing Configuration Set..."))
         profilelist = getProfileList()
         devicelist = getDeviceList()
         hardwarelist = getHardwareList()
@@ -259,8 +284,10 @@ class mainDialog:
             profilelist.test()
         except TestError, msg:
             generic_error_dialog (str(msg), self.dialog)
+            self.appBar.pop()
             return 1                            
-        
+
+        self.appBar.pop()        
         return 0
 
     def changed(self):
@@ -278,28 +305,35 @@ class mainDialog:
         if self.test() != 0:
             return 1
         
+        self.appBar.push(_("Saving Configuration..."))
+        self.appBar.refresh()
         self.saveHardware()
         self.saveDevices()
         self.saveProfiles()
-        self.checkApply()
-        generic_error_dialog (_("Changes are saved.\nYou may want to restart\nthe network and network services\nor restart the computer."),
-                              self.dialog)
+        self.appBar.pop()
+        self.checkApply()        
         return 0
 
     def saveDevices(self):
+        self.appBar.push(_("Saving Device Configuration..."))
         devicelist = getDeviceList()
         devicelist.save()
         devicelist.setChanged(false)
+        self.appBar.pop()
         
     def saveHardware(self):
+        self.appBar.push(_("Saving Hardware Configuration..."))
         hardwarelist = getHardwareList()
         hardwarelist.save()
         hardwarelist.setChanged(false)
+        self.appBar.pop()
         
     def saveProfiles(self):
+        self.appBar.push(_("Saving Profile Configuration..."))
         profilelist = getProfileList()
         profilelist.save()
         profilelist.setChanged(false)
+        self.appBar.pop()
         
     def hydrate(self):
         self.hydrateProfiles()
@@ -310,7 +344,7 @@ class mainDialog:
     def checkApply(self, changed = -1):
         if changed == -1:
             changed = self.changed()
-        apply_btn = self.xml.get_widget("applyButton")
+        apply_btn = self.xml.get_widget("save")
         if changed:
             apply_btn.set_sensitive (TRUE)
         else:
@@ -349,14 +383,19 @@ class mainDialog:
                 GUI_functions.get_device_icon_mask(dev.Type, self.dialog)
 
             clist.append(['', status, devname, dev.DeviceId, dev.Type])
-            clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm, self.inact_mask)
-            clist.set_pixtext(row, STATUS_COLUMN, status, 5, status_pixmap, status_mask)
-            clist.set_pixtext(row, DEVICE_COLUMN, devname, 5, device_pixmap, device_mask)
+            clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm,
+                             self.inact_mask)
+            clist.set_pixtext(row, STATUS_COLUMN, status, 5, status_pixmap,
+                              status_mask)
+            clist.set_pixtext(row, DEVICE_COLUMN, devname, 5, device_pixmap,
+                              device_mask)
             clist.set_row_data(row, dev)
             
             for prof in profilelist:
-                if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
-                    clist.set_pixmap(row, PROFILE_COLUMN, self.act_xpm, self.act_mask)
+                if (prof.Active == true or prof.ProfileName == 'default') and \
+                       dev.DeviceId in prof.ActiveDevices:
+                    clist.set_pixmap(row, PROFILE_COLUMN,
+                                     self.act_xpm, self.act_mask)
                     break
                 
 
@@ -377,9 +416,6 @@ class mainDialog:
     def hydrateProfiles(self):
         profilelist = getProfileList()
 
-        dclist = self.xml.get_widget("dnsList")
-        dclist.clear()
-        dclist.set_row_height(17)
         hclist = self.xml.get_widget("hostsList")
         hclist.clear()
         hclist.set_row_height(17)
@@ -406,9 +442,9 @@ class mainDialog:
                 self.xml.get_widget('tertiaryDnsEntry').set_text(\
                     prof.DNS.TertiaryDNS)
             else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
-            for domain in prof.DNS.SearchList:
-                dclist.append([domain])
-
+            if prof.DNS.SearchList:
+                self.xml.get_widget('searchDnsEntry').set_text(\
+                    string.join(prof.DNS.SearchList))                    
             for host in prof.HostsList:
                 hclist.append([host.IP, host.Hostname,
                                string.join(host.AliasList, ' ')])
@@ -420,31 +456,34 @@ class mainDialog:
 
         self.initialized = true
 
-        self.xml.get_widget ("searchDnsEntry").set_text ("")
         self.no_profileentry_update = true
-        omenu = self.xml.get_widget('profileOption')
-        omenu.remove_menu ()
-        menu = gtk.Menu ()
+        omenu = self.xml.get_widget('profileMenu')
+        omenu = omenu.get_submenu()
+        clist = omenu.get_children()
+        for child in clist[5:]:
+            omenu.remove(child)
+            
         history = 0
         i = 0
+        group = None
         for prof in profilelist:
             name = prof.ProfileName
             # change the default profile to a more understandable name
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
-            menu_item = gtk.MenuItem (name)
+            menu_item = gtk.RadioMenuItem ( group, label = name )
+            if not group:
+                group = menu_item
             menu_item.show ()
             menu_item.connect ("activate",
                                self.on_profileMenuItem_activated,
                                prof.ProfileName)
-            menu.append (menu_item)
+            omenu.append (menu_item)
             if prof.ProfileName == self.get_active_profile().ProfileName:
                 history = i
             i = i+1
-        menu.show ()
-        omenu.set_menu (menu)
-        omenu.set_history (history)
-        menu.get_children()[history].activate ()
+	#omenu.set_history (history)
+        omenu.get_children()[history+5].set_active(true)
         self.no_profileentry_update = false
 
     def on_Dialog_delete_event(self, *args):
@@ -458,7 +497,12 @@ class mainDialog:
         gtk.mainquit()
 
     def on_applyButton_clicked (self, button):
-        self.save()
+        if self.save() == 0:
+            generic_error_dialog (_("Changes are saved.\n"
+                                    "You may want to restart\n"
+                                    "the network and network services\n"
+                                    "or restart the computer."),
+                                  self.dialog)
 
     def on_okButton_clicked (self, *args):        
         if self.changed():        
@@ -473,16 +517,19 @@ class mainDialog:
             if button == RESPONSE_CANCEL:
                 return
             
+        generic_error_dialog (_("Changes are saved.\n"
+                                "You may want to restart\n"
+                                "the network and network services\n"
+                                "or restart the computer."),
+                              self.dialog)
         gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
         import gnome
-        gnome.url_show("ghelp:///usr/share/redhat-config-network/help/index.html")
+        gnome.url_show("ghelp://" + NETCONFDIR + \
+                       "/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
-        #profilelist = getProfileList()
-        #devicelist = getDeviceList()
-        
         interface = NewInterfaceDialog()
         
         interface.toplevel.set_transient_for(self.dialog)
@@ -534,19 +581,23 @@ class mainDialog:
         device = clist.get_row_data(clist.selection[0])
 
         if device.Type == LO:
-            generic_error_dialog (_('The Loopback device can not be edited!'), self.dialog)
+            generic_error_dialog (_('The Loopback device can not be edited!'),
+                                  self.dialog)
             return
 
+        self.appBar.push(_("Edit Device..."))
         devId = device.DeviceId
         button = self.editDevice(device)
 
         if button != gtk.RESPONSE_OK and button != 0:
             device.rollback()
+            self.appBar.pop()
             return
 
         device.commit()
 
         if not device.modified():
+            self.appBar.pop()
             return
 
         # Fixed change device names in active list of all profiles
@@ -559,6 +610,7 @@ class mainDialog:
 
         self.hydrate()
         device.changed = false
+        self.appBar.pop()
 
     def editDevice(self, device):
         button = 0
@@ -581,10 +633,16 @@ class mainDialog:
         device = clist.get_row_data(clist.selection[0])
 
         if device.Type == 'Loopback':
-            generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
+            generic_error_dialog (_('The Loopback device can not be removed!'),
+                                  self.dialog)
             return
 
-        buttons = generic_yesno_dialog((_('Do you really want to delete device "%s"?')) % str(device.DeviceId), self.dialog, widget = clist, page = clist.selection[0])
+        buttons = generic_yesno_dialog((_('Do you really want to '
+                                          'delete device "%s"?')) % \
+                                       str(device.DeviceId),
+                                       self.dialog,
+                                       widget = clist,
+                                       page = clist.selection[0])
 
         if buttons != RESPONSE_YES:
             return
@@ -612,10 +670,10 @@ class mainDialog:
         
         if dev.changed:
             button = generic_yesno_dialog(
-                _("You have made some changes in your configuration.") + "\n" +\
-                _("To activate the network device %s, the changes have to be saved.") % (device) +\
-                "\n\n" +\
-                _("Do you want to continue?") ,
+                _("You have made some changes in your configuration.") + "\n"+\
+                _("To activate the network device %s, "
+                  "the changes have to be saved.") % (device) + "\n\n" +\
+                _("Do you want to continue?"),
                 self.dialog)
                 
             if button == RESPONSE_YES:
@@ -628,16 +686,18 @@ class mainDialog:
         intf = Interface()
         dlg = gtk.Dialog(_('Network device activating...'))
         dlg.set_border_width(10)
-        dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
+        dlg.vbox.add(gtk.Label(_('Activating network device %s, '
+                                 'please wait...') %(device)))
         dlg.vbox.show()
-        dlg.set_position (gtk.WIN_POS_CENTER
+        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
         dlg.show_all()
         (status, txt) = intf.activate(device)                
         dlg.destroy()
         
         if status != 0:
-            generic_error_dialog(_('Cannot activate network device %s\n%s') % (device, txt))
+            generic_error_dialog(_('Cannot activate network device %s\n%s') %\
+                                 (device, txt))
 
         if NetworkDevice().find(device):
             self.update_devicelist()
@@ -703,21 +763,46 @@ class mainDialog:
 
         return TRUE
     
-    def on_generic_entry_insert_text(self, entry, partial_text, length, pos, str):
+    def on_generic_entry_insert_text(self, entry, partial_text, length,
+                                     pos, str):
         text = partial_text[0:length]
         if re.match(str, text):
             return
         entry.emit_stop_by_name('insert_text')
 
     def on_profileMenuItem_activated(self, menu_item, profile):
-        if profile == 'default':
-            self.xml.get_widget ('profileRenameButton').set_sensitive (FALSE)
-            self.xml.get_widget ('profileDeleteButton').set_sensitive (FALSE)
+        if not menu_item.active:
+            return
+        
+        profilelist = getProfileList()
+        devicelist = getDeviceList()
+        hardwarelist = getHardwareList()
+
+        dosave = false
+
+        for prof in profilelist:
+            if prof.Active: break
         else:
-            self.xml.get_widget ('profileRenameButton').set_sensitive (TRUE)
-            self.xml.get_widget ('profileDeleteButton').set_sensitive (TRUE)
+            prof = None
+        
+        if devicelist.modified() or hardwarelist.modified() or (prof and prof.modified()):
+            button = generic_yesnocancel_dialog(
+                _("Do you want to save your changes?"),
+                self.dialog)
+            
+            if button == RESPONSE_YES:
+                dosave = true
+            
+            if button == RESPONSE_CANCEL:
+                return
+
+        if profile == 'default':
+            self.xml.get_widget ('profileRenameMenu').set_sensitive (FALSE)
+            self.xml.get_widget ('profileDeleteMenu').set_sensitive (FALSE)
+        else:
+            self.xml.get_widget ('profileRenameMenu').set_sensitive (TRUE)
+            self.xml.get_widget ('profileDeleteMenu').set_sensitive (TRUE)
         if not self.no_profileentry_update:
-            profilelist = getProfileList ()
             for prof in profilelist:
                 if prof.ProfileName == profile:
                     prof.Active = true
@@ -725,7 +810,9 @@ class mainDialog:
                 else: prof.Active = false
                 prof.commit()
             self.hydrate()
-        
+            
+        if dosave:
+            self.save()
 
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     edit_button = None, delete_button = None,
@@ -823,7 +910,9 @@ class mainDialog:
                  name = device.DeviceId
                  type = device.Type
                  if type == LO:
-                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
+                     generic_error_dialog (_('The Loopback device '
+                                             'can not be disabled!'),
+                                           self.dialog)
                      return
 
                  curr_prof = self.get_active_profile()
@@ -833,9 +922,12 @@ class mainDialog:
                      curr_prof = self.get_active_profile()
                      if curr_prof.ProfileName == 'default':
                          for prof in profilelist:
-                             profilelist.activateDevice(name, prof.ProfileName, true)
+                             profilelist.activateDevice(name,
+                                                        prof.ProfileName, true)
                      else:
-                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
+                         profilelist.activateDevice(name,
+                                                    curr_prof.ProfileName,
+                                                    true)
                          for prof in profilelist:
                              if prof.ProfileName == "default":
                                  continue
@@ -848,9 +940,12 @@ class mainDialog:
                      xpm, mask = self.inact_xpm, self.inact_mask
                      if curr_prof.ProfileName == 'default':
                          for prof in profilelist:
-                             profilelist.activateDevice(name, prof.ProfileName, false)
+                             profilelist.activateDevice(name, prof.ProfileName,
+                                                        false)
                      else:
-                         profilelist.activateDevice(name, curr_prof.ProfileName, false)
+                         profilelist.activateDevice(name,
+                                                    curr_prof.ProfileName,
+                                                    false)
                          profilelist.activateDevice(name, 'default', false)
 
                  for prof in profilelist:
@@ -910,109 +1005,18 @@ class mainDialog:
         self.checkApply()
             
     def on_searchDnsEntry_changed(self, entry):
-        if len (string.strip (entry.get_text ())) == 0:
-            self.xml.get_widget ("dnsAddButton").set_sensitive (FALSE)
-        else:
-            self.xml.get_widget ("dnsAddButton").set_sensitive (TRUE)
-
-    def on_dnsAddButton_clicked(self, *args):
         profilelist = getProfileList()
-
-        searchDnsEntry = self.xml.get_widget("searchDnsEntry").get_text()
-        self.xml.get_widget("searchDnsEntry").set_text("")
-        if len(string.strip(searchDnsEntry)) == 0:
-            return
 
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.SearchList.append(searchDnsEntry)
-                prof.DNS.SearchList.commit()
+                s = entry.get_text()
+                prof.DNS.SearchList = []
+                for sp in string.split(s):
+                    prof.DNS.SearchList.append(sp)
+                prof.DNS.commit()
                 break
+        self.checkApply()
             
-        self.hydrate()
-        self.xml.get_widget("searchDnsEntry").grab_focus ()
-
-    def on_dnsEditButton_clicked (self, *args):
-        clist = self.xml.get_widget("dnsList")
-
-        if len(clist.selection) == 0:
-            return
-
-        name = clist.get_text(clist.selection[0], 0)
-
-        dialog = editDomainDialog(name)
-        dialog.main = self
-        dlg = dialog.xml.get_widget("Dialog")
-        dlg.set_transient_for(self.dialog)
-        button = dlg.run()
-        dialog.xml.get_widget("Dialog").destroy()
-
-        if button != gtk.RESPONSE_OK and button != 0:            
-            return
-                
-        self.hydrate()
-
-    def on_dnsUpButton_clicked (self, button):
-        profilelist = getProfileList()
-
-        clist = self.xml.get_widget("dnsList")
-        if len(clist.selection) == 0 or clist.selection == 0:
-            return
-        name = clist.get_text(clist.selection[0], 0)
-
-        for prof in profilelist:
-            if prof.Active == true:
-                index = prof.DNS.SearchList.index(name)
-                if index == 0:
-                    return
-
-                n = prof.DNS.SearchList[index-1]
-                prof.DNS.SearchList[index-1] = name
-                prof.DNS.SearchList[index] = n
-                prof.DNS.SearchList.commit()
-                clist.select_row(index-1, 0)
-                break
-
-        self.hydrate()
-
-    def on_dnsDownButton_clicked (self, *args):
-        profilelist = getProfileList()
-
-        clist = self.xml.get_widget("dnsList")
-        if len(clist.selection) == 0 or clist.selection == 0:
-            return
-        name = clist.get_text(clist.selection[0], 0)
-
-        for prof in profilelist:
-            if prof.Active == true:
-                index = prof.DNS.SearchList.index(name)
-                if len(prof.DNS.SearchList) == index + 1:
-                    return
-
-                n = prof.DNS.SearchList[index+1]
-                prof.DNS.SearchList[index+1] = name
-                prof.DNS.SearchList[index] = n
-                prof.DNS.SearchList.commit()
-                clist.select_row(index+1, 0)
-                break
-            
-        self.hydrate()
-
-    def on_dnsDeleteButton_clicked (self, *args):
-        profilelist = getProfileList()
-
-        clist = self.xml.get_widget("dnsList")
-        if len(clist.selection) == 0:
-            return
-
-        for prof in profilelist:
-            if prof.Active == true:
-                del prof.DNS.SearchList[clist.selection[0]]
-                prof.DNS.SearchList.commit()
-                break
-            
-        self.hydrate()
-
     def on_hostsAddButton_clicked(self, *args):
         profilelist = getProfileList()
 
@@ -1024,7 +1028,8 @@ class mainDialog:
         clist  = self.xml.get_widget("hostsList")
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
-        dl.set_transient_for(self.dialog)
+        dl.set_transient_for(self.dialog)        
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         button = dl.run ()
         dl.destroy()
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1049,7 +1054,8 @@ class mainDialog:
 
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
-        dl.set_transient_for(self.dialog)
+        dl.set_transient_for(self.dialog)        
+        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         button = dl.run ()
         dl.destroy()
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1085,12 +1091,6 @@ class mainDialog:
         prof.HostsList.commit()
         self.hydrate()
 
-    def on_profileList_click_column (self, *args):
-        pass
-
-    def on_profileList_select_row (self, *args):
-        pass
-
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -1098,10 +1098,11 @@ class mainDialog:
             return
         entry.emit_stop_by_name('insert_text')
 
-    def on_profileAddButton_clicked (self, *args):
+    def on_profileAddMenu_activate (self, *args):
         dialog = self.xml.get_widget("ProfileNameDialog")
         dialog.set_transient_for(self.dialog)
         self.xml.get_widget("ProfileName").set_text('')
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.show()
         button = dialog.run()        
         dialog.hide()
@@ -1117,16 +1118,19 @@ class mainDialog:
             return
         
         if not re.match("^[a-z|A-Z|0-9]+$", text):
-            generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
+            generic_error_dialog (_('The name may only contain '
+                                    'letters and digits!'), self.dialog)
             return 1
 
         if text == 'default' or text == DEFAULT_PROFILE_NAME:
-            generic_error_dialog (_('The profile can\'t be named "%s"!') % text, self.dialog)
+            generic_error_dialog (_('The profile can\'t be named "%s"!') \
+                                  % text, self.dialog)
             return 1
 
         for prof in profilelist:
             if prof.ProfileName == text:
-                generic_error_dialog (_('The profile name already exists!'), self.dialog)
+                generic_error_dialog (_('The profile name already exists!'),
+                                      self.dialog)
                 return 1
 
         i = profilelist.addProfile()
@@ -1145,7 +1149,7 @@ class mainDialog:
         self.hydrate()
         return 0
 
-    def on_profileCopyButton_clicked (self, *args):
+    def on_profileCopyMenu_activate (self, *args):
         profilelist = getProfileList()
 
         profile = Profile()
@@ -1167,15 +1171,16 @@ class mainDialog:
         profilelist[i].apply(profile)
         profilelist[i].commit()
         self.initialized = None
-        #clist.clear()        
         self.hydrate()
 
-    def on_profileRenameButton_clicked (self, *args):
+    def on_profileRenameMenu_activate (self, *args):
         profilelist = getProfileList()
         
         profile = self.get_active_profile()
         if profile.ProfileName == 'default':
-            generic_error_dialog (_('The "default" profile can\'t be renamed!'), self.dialog)
+            generic_error_dialog (_('The "%s" profile can\'t be renamed!') \
+                                  % DEFAULT_PROFILE_NAME,
+                                  self.dialog)
             return
 
         dialog = self.xml.get_widget("ProfileNameDialog")
@@ -1194,16 +1199,19 @@ class mainDialog:
             return
         
         if not re.match("^[a-z|A-Z|0-9]+$", text):
-            generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
+            generic_error_dialog (_('The name may only contain '
+                                    'letters and digits!'), self.dialog)
             return
 
         if text == 'default' or text == DEFAULT_PROFILE_NAME:
-            generic_error_dialog (_('The profile can\'t be named "%s"!') % text, self.dialog)
+            generic_error_dialog (_('The profile can\'t be named "%s"!') % \
+                                  text, self.dialog)
             return
 
         for prof in profilelist:
             if prof.ProfileName == text and prof != profile:
-                generic_error_dialog (_('The profile name already exists!'), self.dialog)
+                generic_error_dialog (_('The profile name already exists!'),
+                                      self.dialog)
                 return
 
         profile.ProfileName = text
@@ -1213,7 +1221,7 @@ class mainDialog:
             self.hydrate()
             profile.changed = false
 
-    def on_profileDeleteButton_clicked (self, *args):
+    def on_profileDeleteMenu_activate (self, *args):
         profilelist = getProfileList()
 
         #clist = self.xml.get_widget('profileList')
@@ -1224,10 +1232,15 @@ class mainDialog:
         name = self.get_active_profile().ProfileName
 
         if name == 'default':
-            generic_error_dialog(_('The "default" Profile can not be deleted!'), self.dialog)
+            generic_error_dialog(_('The "%s" Profile '
+                                   'can not be deleted!') \
+                                 % DEFAULT_PROFILE_NAME,
+                                 self.dialog)
             return
 
-        buttons = generic_yesno_dialog((_('Do you really want to delete profile "%s"?')) % str(name), self.dialog)
+        buttons = generic_yesno_dialog((_('Do you really want to '
+                                          'delete profile "%s"?')) % str(name),
+                                       self.dialog)
 
         if buttons != RESPONSE_YES:
             return
@@ -1240,20 +1253,30 @@ class mainDialog:
         self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
-        device = Device()
-
         type = hardwareTypeDialog()
         dialog = type.xml.get_widget ("Dialog")
-
-        button = dialog.run ()
         dialog.set_transient_for(self.dialog)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        button = dialog.run ()
         dialog.destroy()
 
         if button != gtk.RESPONSE_OK and button != 0:
             return
 
+        hardwarelist = getHardwareList()
+
         type = type.type
-        self.showHardwareDialog(type, false)
+        i = hardwarelist.addHardware(type)
+        hw = hardwarelist[i]
+        
+        if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
+            hardwarelist.append(hw)
+            hardwarelist[i].apply(hw)
+            hw.commit()
+            hardwarelist.commit()
+            self.hydrate()
+        else:
+            hardwarelist.remove(hw)
 
     def on_hardwareEditButton_clicked (self, *args):
         clist = self.xml.get_widget('hardwareList')
@@ -1262,91 +1285,33 @@ class mainDialog:
             return
 
         type  = clist.get_text(clist.selection[0], 1)
-        self.showHardwareDialog(type, true)
-
-    def showHardwareDialog(self, deviceType, edit):
         hardwarelist = getHardwareList()
-        dialog = None
-        
-        if deviceType == ETHERNET or deviceType == TOKENRING  or  \
-           deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
-            if not edit:
-                hw = Hardware()
-                hw.Type = deviceType
-                hw.createCard()
-            else:
-                clist = self.xml.get_widget('hardwareList')
+        hw = hardwarelist[clist.selection[0]]
 
-                if len(clist.selection) == 0:
-                    return
-
-                hw = hardwarelist[clist.selection[0]]
-	    if deviceType == TOKENRING:
-            	dialog = tokenringHardwareDialog(hw)
-	    else:
-            	dialog = ethernetHardwareDialog(hw)
-
-        if deviceType == MODEM:
-            if edit:
-                clist = self.xml.get_widget('hardwareList')
-                type  = clist.get_text(clist.selection[0], 1)
-                dev   = clist.get_text(clist.selection[0], 2)
-                for hw in hardwarelist:
-                    if hw.Name == dev:
-                        break;
-            else:
-                hw = Hardware()
-                hw.Description = 'Generic Modem'
-                hw.Type = MODEM
-                hw.createModem()
-            
-            dialog = modemDialog(hw)
-
-        if deviceType == ISDN:
-            if edit:
-                clist = self.xml.get_widget('hardwareList')
-                Description = clist.get_text(clist.selection[0], 0)
-                type  = clist.get_text(clist.selection[0], 1)
-                dev   = clist.get_text(clist.selection[0], 2)
-                for hw in hardwarelist:
-                    if hw.Description == Description:
-                        break;
-            else:
-                hw = Hardware()
-                hw.Type = ISDN
-                hw.createCard()
-
-            dialog = isdnHardwareDialog(hw)
-
-        if not dialog:
-            generic_error_dialog (_("Sorry, there is nothing to be edited,\n"
-                                   "or this type cannot be edited yet."),
-                                  self.dialog)
-            return
-            
-            
-        dl = dialog.xml.get_widget('Dialog')
-        dl.set_transient_for(self.dialog)
-        button = dl.run()
-        dl.destroy()
-        
-        if button != gtk.RESPONSE_OK and button != 0:
-            if edit:
-                hw.rollback()
-            #hardwarelist.rollback()
-            return
-        
-        if not edit:
-            i = hardwarelist.addHardware()
-            hardwarelist[i].apply(hw)
-            hardwarelist[i].commit()
+        if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
+            hw.commit()
             hardwarelist.commit()
         else:
-            hw.commit()
+            hw.rollback()
 
-        if hardwarelist.changed:
-            self.hydrate()
-            hw.changed = false
+    def showHardwareDialog(self, hw = None):
+        dl = None
+        if hw:
+            dl = hw.getDialog()
+
+        if dl:
+            dl.set_transient_for(self.dialog)
+            button = dl.run()
+            dl.destroy()                    
+            hw.commit()
+            
+            return button
+    
+        else:
+            generic_error_dialog (_("Sorry, there is nothing to be edited,\n"
+                                    "or this type cannot be edited yet."),
+                                  self.dialog)
+            return RESPONSE_CANCEL                    
 
     def on_hardwareDeleteButton_clicked (self, *args):
         hardwarelist = getHardwareList()
@@ -1361,8 +1326,11 @@ class mainDialog:
         type = clist.get_text(clist.selection[0], 1)
         dev = clist.get_text(clist.selection[0], 2)
 
-        buttons = generic_yesno_dialog((_('Do you really want to delete "%s"?')) % str(description),
-                                       self.dialog, widget = clist, page = clist.selection[0])
+        buttons = generic_yesno_dialog((_('Do you really '
+                                          'want to delete "%s"?')) % \
+                                       str(description),
+                                       self.dialog, widget = clist,
+                                       page = clist.selection[0])
 
         if buttons != RESPONSE_YES:
             return
@@ -1405,8 +1373,26 @@ class mainDialog:
         devicelist.commit()
         self.hydrate()
 
+    def on_about_activate(self, *args):
+        dlg = gnome.ui.About(PROGNAME,
+                             netconfpkg.PRG_VERSION,
+                             _("Copyright (c) 2001,2002 Red Hat, Inc."),
+                             _("This software is distributed under the GPL. "
+                               "Please Report bugs to Red Hat's Bug Tracking "
+                               "System: http://bugzilla.redhat.com/"),
+                             ["Harald Hoyer <harald@redhat.com>",
+                              "Than Ngo <than@redhat.com>",
+                              "Philipp Knirsch <pknirsch@redhat.com>",
+                              unicode("Trond Eivind Glomsrød <teg@redhat.com>",
+                                      "iso8859-1")])
+        dlg.show()
+
+
 def Usage():
-    print _("redhat-config-network - graphical network configuration tool\n\nUsage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]")
+    print _("redhat-config-network - "
+            "graphical network configuration tool\n\n"
+            "Usage: redhat-config-network [-pnh] [--profile] "
+            "[--noprofile] [--help]")
     print _("  -p, --profile\t\tShow profiles.")
     print _("  -n, --noprofile\tDo not show profiles.")
     print _("  -h, --help\t\tShows this help.")
@@ -1414,7 +1400,9 @@ def Usage():
 # make ctrl-C work
 if __name__ == '__main__':
     class BadUsage: pass
+
     signal.signal (signal.SIGINT, signal.SIG_DFL)
+
     progname = os.path.basename(sys.argv[0])
 
     showprofile = 1
@@ -1426,9 +1414,9 @@ if __name__ == '__main__':
         for opt, val in opts:
             if opt == '-p' or opt == '--profile':
                 showprofile = 1
-            if opt == '-n' or opt == '--noprofile':
+            elif opt == '-n' or opt == '--noprofile':
                 showprofile = 0
-            if opt == '-h' or opt == '--help':
+            elif opt == '-h' or opt == '--help':
                 Usage()
                 sys.exit(0)
             else: raise BadUsage
@@ -1436,15 +1424,14 @@ if __name__ == '__main__':
     except (getopt.error, BadUsage):
         Usage()
         sys.exit(1)
-
-    sys.excepthook = lambda type, value, tb: handleException((type, value, tb))
-    
+   
     try:
-        if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
+        if progname == 'redhat-config-network' or progname == 'neat' or \
+               progname == 'netconf.py':
             window = mainDialog()
-        elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
+        elif progname == 'redhat-config-network-druid' or \
+                 progname == 'internet-druid':
             window = mainDialog('druid')
-            
         gtk.main()
 
     except SystemExit, code:
