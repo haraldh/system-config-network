@@ -63,6 +63,14 @@ class wirelessConfigDialog(deviceConfigDialog):
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
         vbox = self.xml.get_widget ('generalVbox')
+
+        window = self.sharedtcpip_xml.get_widget ('hardwareWindow')
+        frame = self.sharedtcpip_xml.get_widget ('hardwareFrame')
+        vbox = self.xml.get_widget ('hardwareVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
+
         window.remove (frame)
         vbox.pack_start (frame)
         sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
@@ -72,17 +80,19 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.hydrate(self)
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
-        ecombo = self.xml.get_widget("ethernetDeviceComboBox")
+        sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
+
+        #ecombo = self.xml.get_widget("ethernetDeviceComboBox")
                     
-        hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
+        #hwlist = NCHardwareList.getHardwareList()
+        #(hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
 
-        if len(hwdesc):
-            ecombo.set_popdown_strings(hwdesc)
+        #if len(hwdesc):
+        #    ecombo.set_popdown_strings(hwdesc)
 
-        widget = self.xml.get_widget("ethernetDeviceEntry")
-        if self.device.Device and hwcurr:
-            widget.set_text(hwcurr)
+        #widget = self.xml.get_widget("ethernetDeviceEntry")
+        #if self.device.Device and hwcurr:
+        #    widget.set_text(hwcurr)
         #widget.set_position(0)
         
         wl = self.device.Wireless
@@ -111,11 +121,12 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.dehydrate(self)
 
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
 
-        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
-        hw = fields[0]
-        self.device.Device = hw
+        #hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+        #fields = string.split(hw)
+        #hw = fields[0]
+        #self.device.Device = hw
 
         wl = self.device.Wireless
         if wl:
