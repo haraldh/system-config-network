@@ -238,9 +238,9 @@ if __name__ == '__main__':
         try:
             if os.path.isfile(logfilename):
                 os.chmod(logfilename, 0600)
-                fd = os.open(logfilename,
-                             os.O_APPEND|os.O_WRONLY|os.O_CREAT,
-                             0600)
+            fd = os.open(logfilename,
+                         os.O_APPEND|os.O_WRONLY|os.O_CREAT,
+                         0600)
         except:
             pass
         else:                  
@@ -270,5 +270,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/27 13:30:18 $"
-__version__ = "$Revision: 1.197 $"
+__date__ = "$Date: 2003/10/28 09:54:14 $"
+__version__ = "$Revision: 1.198 $"
