@@ -77,27 +77,27 @@ class dslConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("providerNameEntry")
         if dialup.ProviderName:
             widget.set_text(dialup.ProviderName)
-        widget.set_position(0)
+        #widget.set_position(0)
 
         widget = self.xml.get_widget("loginNameEntry")
         if dialup.Login:
             widget.set_text(dialup.Login)
-        widget.set_position(0)
+        #widget.set_position(0)
 
         widget =  self.xml.get_widget("passwordEntry")
         if dialup.Password:
             widget.set_text(dialup.Password)
-        widget.set_position(0)
+        #widget.set_position(0)
 
         widget = self.xml.get_widget("serviceNameEntry")
         if dialup.ServiceName:
             widget.set_text(dialup.ServiceName)
-        widget.set_position(0)
+        #widget.set_position(0)
 
         widget = self.xml.get_widget("acNameEntry")
         if dialup.AcName:
             widget.set_text(dialup.AcName)
-        widget.set_position(0)
+        #widget.set_position(0)
 
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
 

@@ -97,7 +97,7 @@ class cipeConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if self.device.Cipe.TunnelDevice and curr:
             widget.set_text(curr)
-        widget.set_position(0)
+        #widget.set_position(0)
                 
         if self.device.Device:
             self.xml.get_widget("cipeDeviceEntry").set_text(self.device.Device)
@@ -129,7 +129,7 @@ class cipeConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("secretKeyEntry")
         if self.device.Cipe.SecretKey:
             widget.set_text(self.device.Cipe.SecretKey)
-        widget.set_position(0)
+        #widget.set_position(0)
 
         self.updateRemoteOptions()
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
@@ -181,7 +181,7 @@ class cipeConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("secretKeyEntry")
         if key:
             widget.set_text(key)            
-        widget.set_position(0)
+        #widget.set_position(0)
         
 
     def updateRemoteOptions(self, *args):

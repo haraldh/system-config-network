@@ -82,7 +82,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if self.device.Device and hwcurr:
             widget.set_text(hwcurr)
-        widget.set_position(0)
+        #widget.set_position(0)
         
         wl = self.device.Wireless
         if wl:

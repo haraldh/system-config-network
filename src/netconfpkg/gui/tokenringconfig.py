@@ -58,7 +58,7 @@ class tokenringConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("tokenringDeviceEntry")
         if self.device.Device:
             widget.set_text(hwcurr)
-        widget.set_position(0)
+        #widget.set_position(0)
         
         if self.device.Alias != None:
             self.xml.get_widget("aliasSupportCB").set_active(TRUE)

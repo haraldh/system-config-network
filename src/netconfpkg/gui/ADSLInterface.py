@@ -179,7 +179,7 @@ class ADSLInterface(InterfaceCreator):
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if dialup and dialup.EthDevice:
             widget.set_text(hwcurr)
-        widget.set_position(0)
+        #widget.set_position(0)
  
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('providerNameEntry').get_text()

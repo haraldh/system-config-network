@@ -57,7 +57,7 @@ class ctcConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget('deviceEntry')
         if self.device.Device:
             widget.set_text(self.device.Device)
-            widget.set_position(0)
+            #widget.set_position(0)
         
         if not self.device.Mtu:
             self.device.Mtu = 1492
