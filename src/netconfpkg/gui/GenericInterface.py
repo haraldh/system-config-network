@@ -35,6 +35,7 @@ import libglade
 import string
 import os
 from EthernetHardwareDruid import ethernetHardware
+from TokenringHardwareDruid import tokenringHardware
 from InterfaceCreator import InterfaceCreator
 
 class GenericInterface(InterfaceCreator):
