@@ -19,14 +19,18 @@
 
 import sys
 
-MAINDIR = '/usr/share/redhat-network-control'
 PROGNAME = 'redhat-network-control'
+MAINDIR = '/usr/share/' + PROGNAME
+NEATDIR = '/usr/share/redhat-config-network'
 
-if not "/usr/lib/rhs/python" in sys.path:
+if not '/usr/lib/rhs/python' in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 if not MAINDIR in sys.path:
     sys.path.append(MAINDIR)
+
+if not NEATDIR in sys.path:
+    sys.path.append(NEATDIR)
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
@@ -38,8 +42,14 @@ import os
 import os.path
 import string
 import gettext
+import GDK
+import gtk
+import libglade
+import gnome
+import gnome.ui
+import gnome.help
 from functions import *
-
+from netconfpkg import *
 
 ##
 ## I18N
@@ -48,23 +58,10 @@ gettext.bindtextdomain(PROGNAME, '/usr/share/locale')
 gettext.textdomain(PROGNAME)
 _ = gettext.gettext
 
-# Argh, another workaround for broken gtk/gnome imports...
-if __name__ == '__main__':
-    if os.getuid() != 0:
-        print _('Please restart %s with root permissions!') % (sys.argv[0])
-        sys.exit(10)
-        
+TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/")
 
-import GDK
-import gtk
-import libglade
-import gnome
-import gnome.ui
-import gnome.help
-
-TRUE = gtk.TRUE
-FALSE = gtk.FALSE
-
+ACTIVE = _('Active')
+INACTIVE = _('Inactive')
 
 class mainDialog:
     def __init__(self):
@@ -80,14 +77,14 @@ class mainDialog:
         self.xml.signal_autoconnect(
             {
             'on_closeButton_clicked' : self.on_closeButton_clicked,
+            'on_infoButton_clicked' : self.on_infoButton_clicked,
             'on_activateButton_clicked' : self.on_activateButton_clicked,
             'on_deactivateButton_clicked' : self.on_deactivateButton_clicked,
-            'on_editButtonbutton_clicked' : self.on_editButtonbutton_clicked,
+            'on_configureButton_clicked' : self.on_configureButton_clicked,
             'on_monitorButton_clicked' : self.on_monitorButton_clicked,
             'on_interfaceClist_select_row' : (self.on_generic_clist_select_row,
                                               self.xml.get_widget('activateButton'),
                                               self.xml.get_widget('deactivateButton'),
-                                              None, None,
                                               self.xml.get_widget('editButtonbutton'),
                                               self.xml.get_widget('monitorButton')),
             })
@@ -97,58 +94,77 @@ class mainDialog:
         self.dialog.connect('hide', gtk.mainquit)
         load_icon('pixmaps/control.xpm', self.dialog)
         self.xml.get_widget('pixmap').load_file('pixmaps/control.xpm')
-
+        self.hydrate()
+        
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
 
     def on_closeButton_clicked(self, button):
         gtk.mainquit()
 
+    def on_infoButton_clicked(self, button):
+        dlg = gnome.ui.GnomeAbout(PROGNAME, VERSION, COPYRIGHT, AUTORS, TEXT)
+        dlg.run_and_close()
+        
     def on_activateButton_clicked(self, button):
-        pass
+        print 'activate button clicked'
 
     def on_deactivateButton_clicked(self, button):
-        pass
+        print 'deactivate button clicked'
 
-    def on_editButtonbutton_clicked(self, button):
-        pass
+    def on_configureButton_clicked(self, button):
+        print 'configure button clicked'
 
     def on_monitorButton_clicked(self, button):
-        pass
+        print 'monitor button clicked'
 
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     activate_button = None, deactivate_button = None,
-                                    edit_button = None, monitor_button = None):
+                                    configure_button = None, monitor_button = None):
+        if clist.get_text(clist.selection[0], 0) == ACTIVE:
+            self.xml.get_widget('activateButton').set_sensitive(FALSE)
+            self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
+            self.xml.get_widget('configureButton').set_sensitive(FALSE)
+            self.xml.get_widget('monitorButton').set_sensitive(TRUE)
+        else:
+            self.xml.get_widget('activateButton').set_sensitive(TRUE)
+            self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
+            self.xml.get_widget('configureButton').set_sensitive(TRUE)
+            self.xml.get_widget('monitorButton').set_sensitive(FALSE)
+
         if activate_button: pass
         if deactivate_button: pass
-        if edit_button: pass
+        if configure_button: pass
         if monitor_button: pass
+
+    def hydrate(self):
+        devicelist = getDeviceList()
+        activedevicelist = ProcNetDevice().load()
+        clist = self.xml.get_widget('interfaceClist')
+        clist.clear()
+        on_xpm, mask = get_icon ('pixmaps/on.xpm', self.dialog)
+        off_xpm, mask = get_icon ('pixmaps/off.xpm', self.dialog)
         
-    def on_aboutB_clicked(self, button):
-        about = aboutDialog()
+        for dev in devicelist:
+            for i in activedevicelist:
+                status = INACTIVE
+                if i == dev.Device:
+                    status = ACTIVE
+                    break
+            clist.append([status, dev.Device, dev.DeviceId])
 
-
-class aboutDialog:
-    def __init__(self):
-        dlg = gnome.ui.GnomeAbout('redhat-network-control',
-                                  VERSION,
-                                  'Copyright (c) 2002 Red Hat, Inc.',
-                                  ['Than Ngo <than@redhat.com>'],
-                                  _('This software is distributed under the GPL. Please Report bugs to Red Hat\'s Bug Tracking System: http://bugzilla.redhat.com/'))
-
-        dlg.run_and_close()
 
 
 def get_icon(pixmap_file, dialog):
     fn = pixmap_file
     if not os.path.exists(pixmap_file):
-        pixmap_file = "pixmaps/" + fn
+        pixmap_file = 'pixmaps/' + fn
     if not os.path.exists(pixmap_file):
-        pixmap_file = "../pixmaps/" + fn
+        pixmap_file = '../pixmaps/' + fn
     if not os.path.exists(pixmap_file):
         pixmap_file = NETCONFDIR + fn
     if not os.path.exists(pixmap_file):
-         pixmap_file = NETCONFDIR + "pixmaps/" + fn
+         pixmap_file = NETCONFDIR + 'pixmaps/' + fn
     if not os.path.exists(pixmap_file):
         return None, None
 

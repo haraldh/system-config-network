@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 ## Copyright (C) 2002 Red Hat, Inc.
 ## Copyright (C) 2002 Than Ngo <than@redhat.com>
 
@@ -15,10 +16,16 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-PROGNAME = 'switchmail'
-SWITCHMAILDIR = '/usr/share/switchmail/'
 VERSION = '0.1.0'
 GLADEPATH = ''
+COPYRIGHT = 'Copyright (c) 2002 Red Hat, Inc.'
+AUTORS = ['Than Ngo <than@redhat.com>']
+
+NETWORKDIR = '/etc/sysconfig/network-scripts/'
+NETWORKPREFIX = 'ifcfg'
+PROCNETDEV = '/proc/net/dev'
+TRUE = (1==1)
+FALSE = not TRUE
 
 import re
 import traceback
@@ -26,16 +33,38 @@ import sys
 import os
 import os.path
 import shutil
+import signal
+import string
 
-true = (1==1)
-false = not true
 
-SENDMAIL =  0 
-POSTFIX = 1
-EXIM =  2
+class ProcNetDevice:
+    def __init__(self):
+        self.activedevicelist = []
 
-def switch(i):
-    print i, 'mta is switched'
+    def load(self):
+        try:
+            device = open(PROCNETDEV, 'r')
+            device.readline()
+            device.readline()
+            line = device.readline()
+            while line:
+                s = string.split(line, ':', 1)
+                if s[0]:
+                    dev = string.strip(s[0])
+                    if dev != 'lo':
+                        self.activedevicelist.append(dev)
 
-def detect():
-    return ('Sendmail', 'Postfix', 'Exim')
+                line = device.readline()
+            device.close()
+        except IOError:
+            pass
+
+        return self.activedevicelist
+
+
+
+# make ctrl-C work
+if __name__ == '__main__':
+    signal.signal (signal.SIGINT, signal.SIG_DFL)
+    devicelist = ProcNetDevice().load()
+    print devicelist
