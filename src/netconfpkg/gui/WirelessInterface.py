@@ -209,7 +209,7 @@ class WirelessInterface(InterfaceCreator):
         else:
             self.device.HardwareAddress = hwaddr
 
-        s = _("You have selected the following information:") + "\n\n" + "   "\
+        s = _("You have selected the following information:") + "\n\n"\
             + _("Device:") + " " + str(self.device.DeviceId) + " "
 
         hardwarelist = NCHardwareList.getHardwareList()
@@ -218,28 +218,28 @@ class WirelessInterface(InterfaceCreator):
                 s = s + "(" + hw.Description + ")"
                 break
 
-        s = s + "\n" + "   "
+        s = s + "\n"
 
         if self.device.BootProto == "static":
-            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Subnet Mask:") + " " + self.device.Netmask + "\n" + "   "\
-            + _("Default Gateway Address:") + " " + self.device.Gateway + "\n" + "   "
+            s = s + _("Address:") + " " + self.device.IP + "\n"\
+            + _("Subnet Mask:") + " " + self.device.Netmask + "\n"\
+            + _("Default Gateway Address:") + " " + self.device.Gateway + "\n"
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n" + "   "
+                + self.device.BootProto + "\n" 
 
-        s = s + "   " + _("Mode: ") + str(wl.Mode) + "\n"
+        s = s + _("Mode: ") + str(wl.Mode) + "\n"
         s = s + _("ESSID (Network ID):") + " "
         if not wl.EssId:
             s = s + "Automatic\n"
         else:
             s = s + str(wl.EssId) + "\n"
         if wl.Mode != "Managed":
-            s = s + "   "\
-            + _("Channel: ") + str(wl.Channel) + "\n"
-        s = s + "   "\
-            + _("Transmit Rate: ") + str(wl.Rate) + "\n" + "   "\
+            s = s + _("Channel: ") + str(wl.Channel) + "\n"
+        s = s + _("Transmit Rate: ") + str(wl.Rate) + "\n"\
             + _("Key: ")
+
+        
         if wl.Key:
             s = s + str(wl.Key) + "\n"
         else:
