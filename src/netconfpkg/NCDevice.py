@@ -232,6 +232,9 @@ class Device(DeviceList.Device_base):
 
         conf = ConfDevice(self.DeviceId)
 
+        if not self.Wireless and self.device.self.device.BootProto == None:
+            self.device.BootProto = 'dhcp'
+
         if self.BootProto:
             self.BootProto = string.lower(self.BootProto)
 

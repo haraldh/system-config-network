@@ -130,5 +130,3 @@ class deviceConfigDialog:
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
-        if self.device.BootProto == None:
-            self.device.BootProto = 'dhcp'
