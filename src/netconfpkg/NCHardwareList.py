@@ -171,12 +171,12 @@ class HardwareList(HardwareList_base):
             # No Alias devices
             if string.find(device, ':') != -1:
                 continue
-            
+
             try:
                 mod = ethtool.get_module(device)
-            except:
-                mod = ""
-                
+            except IOError, err:
+                mod = None
+
             if mod != None and mod != "":
                 for hw in self.data:
                     if hw.Name == device:
