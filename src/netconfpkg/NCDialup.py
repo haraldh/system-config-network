@@ -82,6 +82,14 @@ class IsdnDialup(Dialup):
             else:
                 self.DefRoute = false
 
+        
+        if conf.has_key('PPPOPTIONS'):
+            self.createPPPOptions()
+            
+            options = conf['PPPOPTIONS']
+            for o in string.split(options):
+                self.PPPOptions[self.PPPOptions.addPPPOption()] = o
+
         parent = self.getParent()
 
         if parent:
@@ -130,6 +138,14 @@ class IsdnDialup(Dialup):
             conf['DELDEFAULTROUTE'] = 'enabled'
         else:
             conf['DELDEFAULTROUTE'] = 'disabled'
+
+
+        if self.PPPOptions:
+            opt = ""
+            for i in xrange(len(self.PPPOptions)):
+                if opt != "": opt = opt + ' '
+                opt = opt + self.PPPOptions[i]
+            conf['PPPOPTIONS'] = opt
 
         parent = self.getParent()
 
@@ -317,7 +333,9 @@ class ModemDialup(Dialup):
 
 if __name__ == '__main__':
     dev = Device()
-    dev.load('ppp1')
-    dev.Dialup.Password = "*********"
-    dev.commit()
+    dev.load('ippp0')
+    if dev.Dialup.PPPOptions:
+        for i in xrange(len(dev.Dialup.PPPOptions)):
+            print str(i) + ": " + dev.Dialup.PPPOptions[i]
+
     dev.save()
