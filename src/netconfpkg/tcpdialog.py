@@ -88,13 +88,13 @@ class tcpConfigDialog:
                     notebook.remove_page(page)
 
         # disable TCP/IP and hostname Tabs for CIPE
-        isCipe = (self.device.Type != CIPE)
-        self.xml.get_widget('hostnameFrame').set_sensitive(isCipe)
-        self.xml.get_widget('tcpipFrame').set_sensitive(isCipe)
-        self.xml.get_widget('hostnameLabel').set_sensitive(isCipe)
-        self.xml.get_widget('tcpipLabel').set_sensitive(isCipe)
-        self.xml.get_widget('tcpipLabel').set_sensitive(isCipe)
-        notebook.set_page(notebook.page_num(self.xml.get_widget('routingFrame')))
+        isCipe = (self.device.Type == CIPE)
+        self.xml.get_widget('hostnameFrame').set_sensitive(not isCipe)
+        self.xml.get_widget('tcpipFrame').set_sensitive(not isCipe)
+        self.xml.get_widget('hostnameLabel').set_sensitive(not isCipe)
+        self.xml.get_widget('tcpipLabel').set_sensitive(not isCipe)
+        self.xml.get_widget('tcpipLabel').set_sensitive(not isCipe)
+        if isCipe: notebook.set_page(notebook.page_num(self.xml.get_widget('routingFrame')))
         
         self.dialog.set_close(TRUE)
 
