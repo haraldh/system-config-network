@@ -40,7 +40,7 @@ install-data-local:
 	done
 
 changelog:
-	rcs2log | sed -e 's|/cvs/rhl/netcfg/||g' \
+	rcs2log | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
 		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
 
 dist: configure Makefile config.h changelog
