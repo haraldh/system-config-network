@@ -41,9 +41,8 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class editAdressDialog:
-    def __init__(self, xml_main = None, xml_basic = None, list = None):
+    def __init__(self, xml_main = None, list = None):
         self.xml_main = xml_main
-        self.xml_basic = xml_basic
         self.list = list
 
         glade_file = "editadress.glade"
