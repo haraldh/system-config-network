@@ -484,19 +484,71 @@ class mainDialog:
         pass
 
     def on_dnsAddButton_clicked(self, *args):
-        pass
+        searchDnsEntry = self.xml.get_widget("searchDnsEntry").get_text()
+        self.xml.get_widget("searchDnsEntry").set_text("")
+        if len(string.strip(searchDnsEntry)) == 0:
+            return
+        
+        for prof in profilelist:
+            if prof.Active == true:
+                prof.DNS.SearchList.append(searchDnsEntry)
+                self.hydrate()
 
     def on_dnsEditButton_clicked (self, *args):
-        pass
+        clist = self.xml.get_widget("dnsList")
+        name = clist.get_text(clist.selection[0], 0)
+        if len(clist.selection) == 0:
+            return
+        
+        dialog = editDomainDialog(name)
+        dialog.main = self
+        dialog.xml.get_widget("Dialog").run()
+        
+    def on_dnsUpButton_clicked (self, button):
+        clist = self.xml.get_widget("dnsList")
+        name = clist.get_text(clist.selection[0], 0)
 
-    def on_dnsUpButton_clicked (self, *args):
-        pass
+        if len(clist.selection) == 0 or clist.selection == 0:
+            return
 
+        for prof in profilelist:
+            if prof.Active == true:
+                index = prof.DNS.SearchList.index(name)
+                if index == 0:
+                    return
+                
+                n = prof.DNS.SearchList[index-1]
+                prof.DNS.SearchList[index-1] = name
+                prof.DNS.SearchList[index] = n
+                self.hydrate()
+            
     def on_dnsDownButton_clicked (self, *args):
-        pass
+        clist = self.xml.get_widget("dnsList")
+        name = clist.get_text(clist.selection[0], 0)
+
+        if len(clist.selection) == 0 or clist.selection == 0:
+            return
+
+        for prof in profilelist:
+            if prof.Active == true:
+                index = prof.DNS.SearchList.index(name)
+                if len(prof.DNS.SearchList) == index + 1:
+                    return
+                
+                n = prof.DNS.SearchList[index+1]
+                prof.DNS.SearchList[index+1] = name
+                prof.DNS.SearchList[index] = n
+                self.hydrate()
 
     def on_dnsDeleteButton_clicked (self, *args):
-        pass
+        clist = self.xml.get_widget("dnsList")
+        if len(clist.selection) == 0:
+            return
+        
+        for prof in profilelist:
+            if prof.Active == true:
+                del prof.DNS.SearchList[clist.selection[0]]
+                self.hydrate()
 
     def on_hostsAddButton_clicked(self, *args):
         print "on_hostsAddButton_clicked"
