@@ -399,7 +399,7 @@ class mainDialog:
         gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
-        gnome.help.goto ("/usr/share/redhat-config-network/help/index.html")
+        gnome.help.goto ("file:/usr/share/redhat-config-network/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
         profilelist = getProfileList()
