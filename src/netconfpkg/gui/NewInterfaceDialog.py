@@ -33,7 +33,7 @@ from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 
 class NewInterfaceDialog:
-    def __init__(self):
+    def __init__(self, parent_dialog = None):
         self.creator = None
         glade_file = 'NewInterfaceDruid.glade'
 
@@ -51,6 +51,12 @@ class NewInterfaceDialog:
         self.start_page = xml.get_widget('start_page')
         self.interface_clist = xml.get_widget ('interface_clist')
         self.description_label = xml.get_widget ('description_label')
+
+        if parent_dialog:
+            self.toplevel.set_transient_for(parent_dialog)        
+            self.toplevel.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        else:
+            self.toplevel.set_position (gtk.WIN_POS_CENTER)            
 
         xml.signal_autoconnect (
             { 'on_toplevel_delete_event' : self.on_cancel_interface,
