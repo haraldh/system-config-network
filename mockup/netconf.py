@@ -191,7 +191,7 @@ def on_advancedButton_clicked (button):
     elif deviceType == "PLIP":
         pass
     elif deviceType == "CIPE":
-        pass
+        xml.get_widget ("cipeDeviceConfigDialog").show ()
     elif deviceType == "CTC":
         pass
     
@@ -445,6 +445,16 @@ def on_networkOkButton_clicked (button):
 def on_networkCancelButton_clicked (button):
     xml.get_widget ("ethernetHardwareDialog").hide ()
 
+def on_cipeDeviceConfigDialog_delete_event (win, event = None):
+    win.hide ()
+    return TRUE
+
+def on_cipeOkButton_clicked (button):
+    xml.get_widget ("cipeDeviceConfigDialog").hide ()
+
+def on_cipeCancelButton_clicked(win, event = None):
+    xml.get_widget ("cipeDeviceConfigDialog").hide ()
+
 def main ():
     xml.signal_autoconnect (
         {
@@ -535,7 +545,7 @@ def main ():
         "on_providerOkButton_clicked" : on_providerOkButton_clicked,
         "on_chooseProviderDialog_delete_event" : on_chooseProviderDialog_delete_event,
         "on_chooseProvider_clicked" : on_chooseProvider_clicked,
-        # Hardware Configuration
+        # hardware
         "on_hardwareAddButton_clicked" : on_hardwareAddButton_clicked,
         "on_hardwareEditButton_clicked" : on_hardwareEditButton_clicked,
         "on_hardwareDeleteButton_clicked" : on_hardwareDeleteButton_clicked,
@@ -543,8 +553,11 @@ def main ():
         "on_aliasSupportCB_toggled" : on_aliasSupportCB_toggled,
         "on_networkOkButton_clicked" : on_networkOkButton_clicked,
         "on_networkCancelButton_clicked" : on_networkCancelButton_clicked,
-        "on_ethernetHardwareDialog_delete_event" : on_ethernetHardwareDialog_delete_event
-
+        "on_ethernetHardwareDialog_delete_event" : on_ethernetHardwareDialog_delete_event,
+        ## cipeDeviceConfigDialog
+        "on_cipeDeviceConfigDialog_delete_event" : on_cipeDeviceConfigDialog_delete_event,
+        "on_cipeOkButton_clicked" : on_cipeOkButton_clicked,
+        "on_cipeCancelButton_clicked" :on_cipeCancelButton_clicked
         })
 
     setup ()

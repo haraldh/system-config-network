@@ -2048,8 +2048,13 @@ Professional
 	    <widget>
 	      <class>GtkEntry</class>
 	      <child_name>GtkCombo:entry</child_name>
-	      <name>combo-entry1</name>
+	      <name>difficultyLevelEntry</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_difficultyLevelEntry_changed</handler>
+		<last_modification_time>Wed, 30 May 2001 11:21:34 GMT</last_modification_time>
+	      </signal>
 	      <editable>False</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
@@ -2060,7 +2065,7 @@ Professional
 
 	<widget>
 	  <class>GtkNotebook</class>
-	  <name>notebook6</name>
+	  <name>securityNoteBook</name>
 	  <show_tabs>False</show_tabs>
 	  <show_border>False</show_border>
 	  <tab_pos>GTK_POS_TOP</tab_pos>
@@ -2083,7 +2088,7 @@ Professional
 	    <widget>
 	      <class>GtkLabel</class>
 	      <name>label256</name>
-	      <label>Select the level of security for this device.</label>
+	      <label>Please select the level of security for this device.</label>
 	      <justify>GTK_JUSTIFY_LEFT</justify>
 	      <wrap>True</wrap>
 	      <xalign>0</xalign>
@@ -2123,12 +2128,13 @@ Professional
 		<widget>
 		  <class>GtkVBox</class>
 		  <name>vbox86</name>
+		  <border_width>5</border_width>
 		  <homogeneous>False</homogeneous>
-		  <spacing>4</spacing>
+		  <spacing>5</spacing>
 
 		  <widget>
 		    <class>GtkRadioButton</class>
-		    <name>radiobutton4</name>
+		    <name>highSecurityCB</name>
 		    <can_focus>True</can_focus>
 		    <label>_High Security (Internet)</label>
 		    <active>False</active>
@@ -2143,7 +2149,7 @@ Professional
 
 		  <widget>
 		    <class>GtkRadioButton</class>
-		    <name>radiobutton5</name>
+		    <name>lowSecurityCB</name>
 		    <can_focus>True</can_focus>
 		    <label>_Low Security</label>
 		    <active>False</active>
@@ -2158,13 +2164,8 @@ Professional
 
 		  <widget>
 		    <class>GtkRadioButton</class>
-		    <name>radiobutton6</name>
+		    <name>securityDeviceCB</name>
 		    <can_focus>True</can_focus>
-		    <signal>
-		      <name>toggled</name>
-		      <handler>on_disable_firewall_radiobutton_toggled</handler>
-		      <last_modification_time>Fri, 04 May 2001 16:12:28 GMT</last_modification_time>
-		    </signal>
 		    <label>_Secure Device (LAN)</label>
 		    <active>False</active>
 		    <draw_indicator>True</draw_indicator>
@@ -2193,32 +2194,33 @@ Professional
 		<widget>
 		  <class>GtkVBox</class>
 		  <name>vbox85</name>
-		  <border_width>8</border_width>
+		  <border_width>5</border_width>
 		  <homogeneous>False</homogeneous>
-		  <spacing>8</spacing>
+		  <spacing>5</spacing>
 
 		  <widget>
 		    <class>GtkLabel</class>
 		    <name>label254</name>
+		    <width>235</width>
 		    <label>Select the services you want to provide through this device</label>
 		    <justify>GTK_JUSTIFY_LEFT</justify>
 		    <wrap>True</wrap>
-		    <xalign>0.5</xalign>
+		    <xalign>0</xalign>
 		    <yalign>0.5</yalign>
 		    <xpad>0</xpad>
 		    <ypad>0</ypad>
 		    <child>
 		      <padding>0</padding>
 		      <expand>False</expand>
-		      <fill>False</fill>
+		      <fill>True</fill>
 		    </child>
 		  </widget>
 
 		  <widget>
 		    <class>GtkScrolledWindow</class>
 		    <name>scrolledwindow21</name>
-		    <hscrollbar_policy>GTK_POLICY_ALWAYS</hscrollbar_policy>
-		    <vscrollbar_policy>GTK_POLICY_ALWAYS</vscrollbar_policy>
+		    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+		    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
 		    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
 		    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
 		    <child>
@@ -2244,7 +2246,7 @@ Professional
 			<label>Service</label>
 			<justify>GTK_JUSTIFY_CENTER</justify>
 			<wrap>False</wrap>
-			<xalign>0.5</xalign>
+			<xalign>0</xalign>
 			<yalign>0.5</yalign>
 			<xpad>0</xpad>
 			<ypad>0</ypad>
@@ -2385,10 +2387,20 @@ Professional
 
 	    <widget>
 	      <class>GtkCList</class>
-	      <name>clist2</name>
+	      <name>trafficRuleList</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>select_row</name>
+		<handler>on_trafficRuleList_select_row</handler>
+		<last_modification_time>Wed, 30 May 2001 11:27:11 GMT</last_modification_time>
+	      </signal>
+	      <signal>
+		<name>unselect_row</name>
+		<handler>on_trafficRuleList_unselect_row</handler>
+		<last_modification_time>Wed, 30 May 2001 11:27:18 GMT</last_modification_time>
+	      </signal>
 	      <columns>7</columns>
-	      <column_widths>63,55,39,80,80,80,80</column_widths>
+	      <column_widths>73,55,39,80,80,80,80</column_widths>
 	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
 	      <show_titles>True</show_titles>
 	      <shadow_type>GTK_SHADOW_IN</shadow_type>
@@ -2400,7 +2412,7 @@ Professional
 		<label>IP</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2413,7 +2425,7 @@ Professional
 		<label>Mask</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2426,7 +2438,7 @@ Professional
 		<label>Port</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2439,7 +2451,7 @@ Professional
 		<label>Minimum In</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2452,7 +2464,7 @@ Professional
 		<label>Maximum In</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2465,7 +2477,7 @@ Professional
 		<label>Minimum Out</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2478,7 +2490,7 @@ Professional
 		<label>Maximum Out</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
-		<xalign>0.5</xalign>
+		<xalign>0</xalign>
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
@@ -2499,8 +2511,13 @@ Professional
 
 	    <widget>
 	      <class>GtkButton</class>
-	      <name>button6</name>
+	      <name>trafficAddButton</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficAddButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:24:35 GMT</last_modification_time>
+	      </signal>
 	      <label>Add...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
@@ -2512,8 +2529,13 @@ Professional
 
 	    <widget>
 	      <class>GtkButton</class>
-	      <name>button7</name>
+	      <name>trafficCopyButton</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficCopyButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:24:54 GMT</last_modification_time>
+	      </signal>
 	      <label>Copy...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
@@ -2525,8 +2547,13 @@ Professional
 
 	    <widget>
 	      <class>GtkButton</class>
-	      <name>button8</name>
+	      <name>trafficEditButton</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficEditButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:25:11 GMT</last_modification_time>
+	      </signal>
 	      <label>Edit...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
@@ -2549,8 +2576,13 @@ Professional
 
 	      <widget>
 		<class>GtkButton</class>
-		<name>button9</name>
+		<name>trafficDeleteButton</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>clicked</name>
+		  <handler>on_trafficDeleteButton_clicked</handler>
+		  <last_modification_time>Wed, 30 May 2001 11:25:39 GMT</last_modification_time>
+		</signal>
 		<label>Delete</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
@@ -7414,6 +7446,11 @@ Ad-Hoc
   <class>GtkWindow</class>
   <name>cipeDeviceConfigDialog</name>
   <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>on_cipeDeviceConfigDialog_delete_event</handler>
+    <last_modification_time>Wed, 30 May 2001 11:28:10 GMT</last_modification_time>
+  </signal>
   <title>CIPE Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_MOUSE</position>
@@ -7497,8 +7534,7 @@ Ad-Hoc
 
       <widget>
 	<class>GtkEntry</class>
-	<name>entry6</name>
-	<tooltip>Enter the Service-Name if your ISP requires.  If you don't know it please contact your ISP. In most cases you can leave it blank.</tooltip>
+	<name>localPortEntry</name>
 	<can_focus>True</can_focus>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
@@ -7526,7 +7562,7 @@ Ad-Hoc
 	<label>Tunnel through Device:</label>
 	<justify>GTK_JUSTIFY_LEFT</justify>
 	<wrap>False</wrap>
-	<xalign>0.5</xalign>
+	<xalign>0</xalign>
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
@@ -7590,8 +7626,7 @@ eth4
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>entry7</name>
-	    <tooltip>Select the ethernet device connected to the DSL modem</tooltip>
+	    <name>tunnelDeviceEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
 	    <text_visible>True</text_visible>
@@ -7645,8 +7680,7 @@ cipcb4
 	  <widget>
 	    <class>GtkEntry</class>
 	    <child_name>GtkCombo:entry</child_name>
-	    <name>entry8</name>
-	    <tooltip>Select the ethernet device connected to the DSL modem</tooltip>
+	    <name>cipeDeviceEntry</name>
 	    <can_focus>True</can_focus>
 	    <editable>False</editable>
 	    <text_visible>True</text_visible>
@@ -7684,8 +7718,7 @@ cipcb4
 
       <widget>
 	<class>GtkEntry</class>
-	<name>entry9</name>
-	<tooltip>Enter the AC-Name if your ISP requires.  If you don't know it please contact your ISP. In most cases you can leave it blank.</tooltip>
+	<name>remoteVirtualAddressEntry</name>
 	<can_focus>True</can_focus>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
@@ -7735,8 +7768,7 @@ cipcb4
 
       <widget>
 	<class>GtkEntry</class>
-	<name>entry10</name>
-	<tooltip>Enter the AC-Name if your ISP requires.  If you don't know it please contact your ISP. In most cases you can leave it blank.</tooltip>
+	<name>localVirtualAdressEntry</name>
 	<can_focus>True</can_focus>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
@@ -7762,7 +7794,7 @@ cipcb4
 	<class>GtkHBox</class>
 	<name>hbox57</name>
 	<homogeneous>False</homogeneous>
-	<spacing>0</spacing>
+	<spacing>5</spacing>
 	<child>
 	  <left_attach>1</left_attach>
 	  <right_attach>2</right_attach>
@@ -7780,8 +7812,7 @@ cipcb4
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>entry11</name>
-	  <tooltip>Enter the AC-Name if your ISP requires.  If you don't know it please contact your ISP. In most cases you can leave it blank.</tooltip>
+	  <name>secretKeyEntry</name>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -7796,15 +7827,19 @@ cipcb4
 
 	<widget>
 	  <class>GtkButton</class>
-	  <name>button10</name>
-	  <border_width>5</border_width>
+	  <name>generateKeyButton</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_generateKeyButton_clicked</handler>
+	    <last_modification_time>Wed, 30 May 2001 11:29:18 GMT</last_modification_time>
+	  </signal>
 	  <label>Generate</label>
 	  <relief>GTK_RELIEF_NORMAL</relief>
 	  <child>
 	    <padding>0</padding>
 	    <expand>False</expand>
-	    <fill>False</fill>
+	    <fill>True</fill>
 	  </child>
 	</widget>
       </widget>
@@ -7865,7 +7900,7 @@ cipcb4
 	<class>GtkHBox</class>
 	<name>hbox58</name>
 	<homogeneous>False</homogeneous>
-	<spacing>0</spacing>
+	<spacing>5</spacing>
 	<child>
 	  <left_attach>1</left_attach>
 	  <right_attach>2</right_attach>
@@ -7883,8 +7918,7 @@ cipcb4
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>entry12</name>
-	  <tooltip>Enter the AC-Name if your ISP requires.  If you don't know it please contact your ISP. In most cases you can leave it blank.</tooltip>
+	  <name>remotePeerAdressEntry</name>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -7899,7 +7933,7 @@ cipcb4
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton1</name>
+	  <name>remotePeerAdressCB</name>
 	  <can_focus>True</can_focus>
 	  <label>auto</label>
 	  <active>False</active>
@@ -7928,8 +7962,9 @@ cipcb4
       <widget>
 	<class>GtkScrolledWindow</class>
 	<name>scrolledwindow22</name>
-	<hscrollbar_policy>GTK_POLICY_NEVER</hscrollbar_policy>
-	<vscrollbar_policy>GTK_POLICY_ALWAYS</vscrollbar_policy>
+	<border_width>5</border_width>
+	<hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	<vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
 	<hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
 	<vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
 
@@ -7970,18 +8005,28 @@ cipcb4
 
       <widget>
 	<class>GtkButton</class>
-	<name>button11</name>
+	<name>cipeOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_cipeOkButton_clicked</handler>
+	  <last_modification_time>Wed, 30 May 2001 11:28:26 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
 
       <widget>
 	<class>GtkButton</class>
-	<name>button12</name>
+	<name>cipeCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_cipeCancelButton_clicked</handler>
+	  <last_modification_time>Wed, 30 May 2001 11:28:41 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
