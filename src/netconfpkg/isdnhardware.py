@@ -28,7 +28,7 @@ import string
 import gettext
 import re
 
-import HardwareList
+import NCHardwareList
 import NCisdnhardware
 import NC_functions
 from NC_functions import _
@@ -106,7 +106,7 @@ class isdnHardwareDialog:
 
     def hydrate(self):
         has_card = FALSE
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         
         for hw in hardwarelist:
             if hw.Type == "ISDN":
@@ -170,7 +170,7 @@ class isdnHardwareDialog:
                     self.xml.get_widget("io2Entry").set_sensitive(FALSE)
                     
     def dehydrate(self):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         isdncard = NCisdnhardware.ConfISDN()
         isdncard.get_resource(self.xml.get_widget('adapterEntry').get_text())
         has_card = FALSE
