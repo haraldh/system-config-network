@@ -125,6 +125,8 @@ class ModemInterface:
     def dehydrate(self):
         self.hw.Description = _('Generic Modem')
         self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
+        if os.path.dirname(self.hw.Modem.DeviceName) != '/dev':
+            self.hw.Modem.DeviceName = '/dev/' + os.path.basename(self.hw.Modem.DeviceName)
         self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
         self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
         Item = self.xml.get_widget("volumeMenu")["label"]

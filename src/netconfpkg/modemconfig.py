@@ -104,6 +104,8 @@ class modemDialog:
                     break
 
         hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
+        if os.path.dirname(hw.Modem.DeviceName) != '/dev':
+            hw.Modem.DeviceName = '/dev/' + os.path.basename(hw.Modem.DeviceName)
         hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
         hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
         Item = self.xml.get_widget("volumeMenu")["label"]
