@@ -34,6 +34,12 @@ import NCHardwareList
 from NC_functions import *
 from NC_functions import _
 
+DM_AUTO='auto'
+DM_MANUAL='manual'
+
+DialModes = { DM_AUTO : _('auto'),
+              DM_MANUAL : _('manual') }
+
 country_code = {
     _("None") : 0,
     _("Afghanistan") : 93,
@@ -461,9 +467,9 @@ class ModemDialup(Dialup):
 
         if parentConf.has_key('DEMAND'):
             if parentConf['DEMAND'] == 'yes':
-                self.DialMode = 'auto'
+                self.DialMode = DM_AUTO
             else:
-                self.DialMode = 'manuell'
+                self.DialMode = DM_MANUAL
 
         if parentConf.has_key('IDLETIMEOUT'):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
@@ -582,7 +588,7 @@ class ModemDialup(Dialup):
         if self.ProviderName:
             parentConf['PROVIDER'] = self.ProviderName
 
-        if self.DialMode == 'auto':
+        if self.DialMode == DM_AUTO:
             parentConf['DEMAND'] = 'yes'
         else:
             parentConf['DEMAND'] = 'no'

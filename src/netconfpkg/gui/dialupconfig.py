@@ -32,6 +32,7 @@ from deviceconfig import deviceConfigDialog
 from netconfpkg.NCDeviceList import *
 from netconfpkg.NCCallback import *
 from netconfpkg.NCHardwareList import *
+from netconfpkg.NCDialup import *
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.NC_functions import _
 from provider import *
@@ -245,12 +246,12 @@ class ISDNDialupDialog(DialupDialog):
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(dialup.HangupTimeout)
             
         if dialup.DialMode:
-            if dialup.DialMode == 'auto':
-                dialmode = _('auto')
+            if dialup.DialMode == DM_AUTO:
+                dialmode = DialModes[DM_AUTO]
             else:
-                dialmode = _('manual')
+                dialmode = DialModes[DM_MANUAL]
         else:
-            dialmode = _('manual')
+            dialmode = DialModes[DM_MANUAL]
             
         self.xml.get_widget("dialModeISDNEntry").set_text(dialmode)
         
@@ -308,11 +309,11 @@ class ISDNDialupDialog(DialupDialog):
 
         dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutISDNSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
-        if dialup.DialMode == _('auto'):
-            dialup.DialMode = 'auto'
+        if dialup.DialMode == DialModes[DM_AUTO]:
+            dialup.DialMode = DM_AUTO
             dialup.DefRoute = TRUE
         else:
-            dialup.DialMode = 'manual'
+            dialup.DialMode = DM_MANUAL
             dialup.DefRoute = FALSE
 
         dialup.MSN = self.xml.get_widget("msnEntry").get_text()
@@ -363,12 +364,12 @@ class ModemDialupDialog(DialupDialog):
         if dialup.HangupTimeout:
             self.xml.get_widget("hangupTimeoutSB").set_value(dialup.HangupTimeout)
         if dialup.DialMode:
-            if dialup.DialMode == 'auto':
-                dialmode = _('auto')
+            if dialup.DialMode == DM_AUTO:
+                dialmode = DialModes[DM_AUTO]
             else:
-                dialmode = _('manual')
+                dialmode = DialModes[DM_MANUAL]
         else:
-            dialmode = _('manual')
+            dialmode = DialModes[DM_MANUAL]
         self.xml.get_widget("dialModeEntry").set_text(dialmode)
 
         if dialup.InitString:
@@ -390,8 +391,8 @@ class ModemDialupDialog(DialupDialog):
         dialup = self.device.Dialup
         dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
-        if dialup.DialMode == _('auto'): dialup.DialMode = 'auto'
-        else: dialup.DialMode = 'manual'
+        if dialup.DialMode == DialModes[DM_AUTO]: dialup.DialMode = DM_AUTO
+        else: dialup.DialMode = DM_MANUAL
         dialup.InitString = self.xml.get_widget("modemInitEntry").get_text()
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         dialup.Inherits = self.xml.get_widget("modemPortEntry").get_text()
