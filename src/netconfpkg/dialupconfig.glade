@@ -79,19 +79,6 @@
 	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
       </widget>
-
-      <widget>
-	<class>GtkButton</class>
-	<name>helpButton</name>
-	<can_default>True</can_default>
-	<can_focus>True</can_focus>
-	<signal>
-	  <name>clicked</name>
-	  <handler>on_helpButton_clicked</handler>
-	  <last_modification_time>Fri, 22 Jun 2001 09:44:14 GMT</last_modification_time>
-	</signal>
-	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
-      </widget>
     </widget>
 
     <widget>
@@ -419,7 +406,7 @@
 	  <child>
 	    <padding>0</padding>
 	    <expand>False</expand>
-	    <fill>True</fill>
+	    <fill>False</fill>
 	  </child>
 
 	  <widget>
@@ -428,169 +415,6 @@
 	    <border_width>5</border_width>
 	    <homogeneous>False</homogeneous>
 	    <spacing>5</spacing>
-
-	    <widget>
-	      <class>GtkTable</class>
-	      <name>table29</name>
-	      <rows>2</rows>
-	      <columns>1</columns>
-	      <homogeneous>False</homogeneous>
-	      <row_spacing>2</row_spacing>
-	      <column_spacing>5</column_spacing>
-	      <child>
-		<padding>5</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-		<pack>GTK_PACK_END</pack>
-	      </child>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<name>label107</name>
-		<label>Countr_y/Region Code:</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-		<focus_target>countryCodeEntry</focus_target>
-		<child>
-		  <left_attach>0</left_attach>
-		  <right_attach>1</right_attach>
-		  <top_attach>0</top_attach>
-		  <bottom_attach>1</bottom_attach>
-		  <xpad>0</xpad>
-		  <ypad>0</ypad>
-		  <xexpand>False</xexpand>
-		  <yexpand>False</yexpand>
-		  <xshrink>False</xshrink>
-		  <yshrink>False</yshrink>
-		  <xfill>True</xfill>
-		  <yfill>False</yfill>
-		</child>
-	      </widget>
-
-	      <widget>
-		<class>GtkCombo</class>
-		<name>countryCodeCombo</name>
-		<value_in_list>False</value_in_list>
-		<ok_if_empty>True</ok_if_empty>
-		<case_sensitive>False</case_sensitive>
-		<use_arrows>True</use_arrows>
-		<use_arrows_always>False</use_arrows_always>
-		<items>Afghanistan (93)
-Albania (355)
-Algeria (213)
-American  Samoa (684)
-Andorra (376)
-Argentina (54)
-Australia (61)
-Austria (43)
-Belgium (32)
-Bosnia and Herzegonia (387)
-Brazil (55)
-Britisch Virgin Islands (1)
-Bulgaria (359)
-Canada (1)
-Central African Republic (236)
-Chile (56)
-China (86)
-Colombia (47)
-Croatia (385)
-Cuba (53)
-Czech Republic (420)
-Denmark (45)
-Finnland (358)
-France (33)
-Germany (49)
-Greece (30)
-Hong Kong (852)
-Hungary (36)
-Iceland(354)
-India (91)
-Indonesia (62)
-Ireland (353)
-Israel (972)
-Italy (39)
-Japan (81)
-Korea North (850)
-Korea Republic (82)
-Malaysia (60)
-Luxemburg (352)
-Mexico (52)
-Netherlands (31)
-New Zealand (64)
-Norway (47)
-Philippines (63)
-Romania (30)
-Singapore (65)
-Slovakia(421)
-Spain (34)
-Sweden (46)
-Switzerland (41)
-Taiwan (886)
-Thailand (66)
-Turkey (90)
-Ukraine (380)
-United Kingdom (44)
-United States of Amerika (1)
-Vietnam (84)
-Yugoslavia (381)
-</items>
-		<child>
-		  <left_attach>0</left_attach>
-		  <right_attach>1</right_attach>
-		  <top_attach>1</top_attach>
-		  <bottom_attach>2</bottom_attach>
-		  <xpad>0</xpad>
-		  <ypad>0</ypad>
-		  <xexpand>True</xexpand>
-		  <yexpand>False</yexpand>
-		  <xshrink>False</xshrink>
-		  <yshrink>False</yshrink>
-		  <xfill>True</xfill>
-		  <yfill>False</yfill>
-		</child>
-
-		<widget>
-		  <class>GtkEntry</class>
-		  <child_name>GtkCombo:entry</child_name>
-		  <name>countryCodeEntry</name>
-		  <tooltip>Select the country/region code needed to reach your internet provider</tooltip>
-		  <can_focus>True</can_focus>
-		  <signal>
-		    <name>changed</name>
-		    <handler>on_countryCodeEntry_changed</handler>
-		    <last_modification_time>Thu, 24 May 2001 12:59:49 GMT</last_modification_time>
-		  </signal>
-		  <editable>False</editable>
-		  <text_visible>True</text_visible>
-		  <text_max_length>0</text_max_length>
-		  <text>Germany (49)</text>
-		</widget>
-	      </widget>
-	    </widget>
-
-	    <widget>
-	      <class>GtkCheckButton</class>
-	      <name>dialingRuleCB</name>
-	      <tooltip>Please enable this, if you want your computer to automatically dial correctly from different locations.</tooltip>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>toggled</name>
-		<handler>on_dialingRuleCB_toggled</handler>
-		<last_modification_time>Thu, 24 May 2001 12:59:18 GMT</last_modification_time>
-	      </signal>
-	      <label>_Use Dialing rule</label>
-	      <active>True</active>
-	      <draw_indicator>True</draw_indicator>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
-	    </widget>
 
 	    <widget>
 	      <class>GtkTable</class>
@@ -720,7 +544,7 @@ Yugoslavia (381)
 	      <widget>
 		<class>GtkEntry</class>
 		<name>prefixEntry</name>
-		<width>80</width>
+		<width>50</width>
 		<tooltip>Enter any numbers you need to dial before the others. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here.</tooltip>
 		<can_focus>True</can_focus>
 		<signal>
@@ -914,13 +738,14 @@ Yugoslavia (381)
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label223</name>
-	    <label>Provider Name:</label>
+	    <label>Provider _Name:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>providerName</default_focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>1</right_attach>

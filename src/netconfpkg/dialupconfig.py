@@ -57,7 +57,6 @@ class DialupDialog(deviceConfigDialog):
             {
             "on_chooseButton_clicked" : self.on_chooseButton_clicked,
             "on_helpButton_clicked" : self.on_helpButton_clicked,
-            "on_dialingRuleCB_toggled" : self.on_dialingRuleCB_toggled,
             "on_callbackCB_toggled" : self.on_callbackCB_toggled,
             "on_pppOptionEntry_changed" : self.on_pppOptionEntry_changed,
             "on_pppOptionAddButton_clicked" : self.on_pppOptionAddButton_clicked,
@@ -71,34 +70,20 @@ class DialupDialog(deviceConfigDialog):
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         hardwarelist = getHardwareList()
-        if self.device.Dialup.ProviderName:
+        
+        if self.device.Dialup.ProviderName != None:
             self.xml.get_widget("providerName").set_text(self.device.Dialup.ProviderName)
-        if self.device.Dialup.Login:
+        if self.device.Dialup.Login != None:
             self.xml.get_widget("loginNameEntry").set_text(self.device.Dialup.Login)
-        if self.device.Dialup.Password:
+        if self.device.Dialup.Password != None:
             self.xml.get_widget("passwordEntry").set_text(self.device.Dialup.Password)
 
-        state = false
-        if self.device.Dialup.Areacode:
+        if self.device.Dialup.Areacode != None:
             self.xml.get_widget("areaCodeEntry").set_text(self.device.Dialup.Areacode)
-            state = true
-        if self.device.Dialup.PhoneNumber:
+        if self.device.Dialup.PhoneNumber != None:
             self.xml.get_widget("phoneEntry").set_text(self.device.Dialup.PhoneNumber)
-        if self.device.Dialup.Prefix:
+        if self.device.Dialup.Prefix != None:
             self.xml.get_widget("prefixEntry").set_text(self.device.Dialup.Prefix)
-            state = true
-        country_code_list = NCDialup.country_code.keys()
-        country_code_list.sort()
-        widget =  self.xml.get_widget("countryCodeEntry")
-        self.xml.get_widget("countryCodeCombo").set_popdown_strings(country_code_list)
-        if self.device.Dialup.Regioncode and len(self.device.Dialup.Regioncode) >0:
-            widget.set_text(string.split(self.device.Dialup.Regioncode, ":")[0])
-            state = true
-        else:
-            widget.set_text(_("None"))
-        widget = self.xml.get_widget("dialingRuleCB")
-        widget.set_active(state)
-        self.on_dialingRuleCB_toggled(widget)
 
         if self.device.Dialup.Authentication and len(self.device.Dialup.Authentication) >0:
             self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)
@@ -123,11 +108,8 @@ class DialupDialog(deviceConfigDialog):
         self.device.Dialup.ProviderName = self.xml.get_widget("providerName").get_text()
         self.device.Dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         self.device.Dialup.Password = self.xml.get_widget("passwordEntry").get_text()
-        if self.xml.get_widget("dialingRuleCB").get_active():
-            self.device.Dialup.Areacode = self.xml.get_widget("areaCodeEntry").get_text()
-            self.device.Dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
-            country = self.xml.get_widget("countryCodeEntry").get_text()
-            self.device.Dialup.Regioncode = country + ":" + str(NCDialup.country_code[country])
+        self.device.Dialup.Areacode = self.xml.get_widget("areaCodeEntry").get_text()
+        self.device.Dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
         self.device.Dialup.PhoneNumber = self.xml.get_widget("phoneEntry").get_text()
 
         if not self.device.Dialup.Compression:
@@ -152,16 +134,6 @@ class DialupDialog(deviceConfigDialog):
     def on_msnEntry_changed (self, *args):
         pass
 
-    def on_dialingRuleCB_toggled(self, check):
-        prefixEntry = self.xml.get_widget("prefixEntry")
-        prefixEntry.set_sensitive(check["active"])
-        self.xml.get_widget("areaCodeEntry").set_sensitive(check["active"])
-        self.xml.get_widget("countryCodeCombo").set_sensitive(check["active"])
-        if check["active"]:
-            prefixEntry.grab_focus()
-        else:
-            self.xml.get_widget("phoneEntry").grab_focus()
-
     def on_callbackCB_toggled(self, check):
         self.xml.get_widget("callbackFrame").set_sensitive(check["active"])
         self.xml.get_widget("dialinNumberEntry").grab_focus()
@@ -173,9 +145,6 @@ class DialupDialog(deviceConfigDialog):
         pass
 
     def on_phoneEntry_changed (self, *args):
-        pass
-
-    def on_countryCodeEntry_changed (self, *args):
         pass
 
     def on_authMenu_enter (self, *args):

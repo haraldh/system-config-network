@@ -36,13 +36,12 @@ from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(NC_functions.PROGNAME)
 _=gettext.gettext
 
 class cipeConfigDialog(deviceConfigDialog):

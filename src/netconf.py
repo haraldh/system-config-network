@@ -45,8 +45,8 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-gettext.bindtextdomain("redhat-config-network", "/usr/share/locale")
-gettext.textdomain("redhat-config-network")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 class mainDialog:
@@ -62,9 +62,9 @@ class mainDialog:
         if not os.path.isfile(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
+            glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain="redhat-config-network")
+        self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
         self.initialized = None
 
         self.xml.signal_autoconnect(
@@ -144,7 +144,7 @@ class mainDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        self.load_icon("network.xpm")
+        load_icon("network.xpm", self.dialog)
         self.load()
         self.hydrate()
 
@@ -230,11 +230,11 @@ class mainDialog:
         hclist.clear()
         for prof in profilelist:
             if prof.Active == true:
-                self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
-                self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
-                self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
-                self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
-                self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
+                if prof.DNS.Hostname: self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
+                if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
+                if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
+                if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
+                if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
                 for domain in prof.DNS.SearchList:
                     dclist.append([domain])
 

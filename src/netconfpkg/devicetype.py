@@ -42,8 +42,8 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 class deviceTypeDialog:
@@ -55,9 +55,9 @@ class deviceTypeDialog:
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
+            glade_file = NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -65,8 +65,7 @@ class deviceTypeDialog:
             })
 
         self.dialog = self.xml.get_widget("Dialog")
-        self.load_icon("network.xpm")
-        self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
+        load_icon("network.xpm", self.dialog)
 
         devicetypes=deviceTypes[:]
         devicetypes.remove('Loopback')
@@ -81,24 +80,6 @@ class deviceTypeDialog:
     
     def dehydrate(self):
         self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
-        
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
         
     def on_okButton_clicked(self, button):
         self.dehydrate()

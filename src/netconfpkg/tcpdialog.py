@@ -28,10 +28,10 @@ import GdkImlib
 import string
 import gettext
 import re
+import NC_functions
 
 from editadress import editAdressDialog
 from NCDeviceList import *
-from NC_functions import *
 
 from gtk import TRUE
 from gtk import FALSE
@@ -39,8 +39,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
+gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(NC_functions.PROGNAME)
 _=gettext.gettext
 
 class tcpConfigDialog:
@@ -52,9 +52,9 @@ class tcpConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NETCONFDIR + glade_file
+            glade_file = NC_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -72,8 +72,7 @@ class tcpConfigDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        self.load_icon("network.xpm")
-        self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
+        NC_functions.load_icon("network.xpm", self.dialog)
 
         notebook = self.xml.get_widget("basicNotebook")
 
@@ -131,24 +130,6 @@ class tcpConfigDialog:
         self.device.Hostname = self.xml.get_widget('hostnameEntry').get_text()
         self.device.AutoDNS = self.xml.get_widget('dnsSettingCB').get_active()
 
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
-        
     def on_Dialog_delete_event(self, *args):
         self.device.rollback()
     

@@ -32,7 +32,7 @@ import re
 
 import HardwareList
 import tcpdialog
-from NC_functions import *
+import NC_functions
 
 from gtk import TRUE
 from gtk import FALSE
@@ -40,8 +40,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
+gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(NC_functions.PROGNAME)
 _=gettext.gettext
 
 class deviceConfigDialog:
@@ -53,9 +53,9 @@ class deviceConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NETCONFDIR + glade_file
+            glade_file = NC_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -73,28 +73,11 @@ class deviceConfigDialog:
         self.xml.get_widget("protocolList").append(['TCP/IP'])
 
         self.dialog = self.xml.get_widget("Dialog")
-        self.load_icon("network.xpm")        
+        NC_functions.load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
 
         self.hydrate()
 
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
 
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):

@@ -63,7 +63,7 @@ class providerDialog:
         if not os.path.exists(glade_file):
             glade_file = NC_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
 
         # get the widgets we need
         self.dbtree = self.xml.get_widget("providerTree")
@@ -75,7 +75,8 @@ class providerDialog:
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_providerTree_tree_select_row" : self.on_providerTree_tree_select_row,
-            "on_providerTree_button_press_event" : self.on_providerTree_button_press_event,
+            "on_providerTree_button_press_event" : (self.on_providerTree_button_press_event,
+                                                    self.on_okButton_clicked),
             "on_providerTree_tree_unselect_row" : self.on_providerTree_tree_unselect_row
             })
 
@@ -90,25 +91,42 @@ class providerDialog:
     def on_cancelButton_clicked(self, button):
         self.done = FALSE
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, *args):
         self.done = TRUE
         self.provider = self.get_provider()
         self.dehydrate()
-
+        self.dialog.destroy()
+        
     def on_providerTree_tree_select_row(self, ctree, node, column):
         if len(node.children) == 0:
-            self.country = ctree.get_node_info(node.parent.parent)[0]
-            self.city = ctree.get_node_info(node.parent)[0]
-            self.name = ctree.get_node_info(node)[0]
-            self.okButton.set_sensitive(TRUE)
+            try:
+                self.country = ctree.get_node_info(node.parent.parent)[0]
+                self.city = ctree.get_node_info(node.parent)[0]
+                self.name = ctree.get_node_info(node)[0]
+                self.okButton.set_sensitive(TRUE)
+            except(TypeError,AttributeError):
+                pass
 
     def on_providerTree_tree_unselect_row(self, ctree, list, column):
         self.okButton.set_sensitive(FALSE)
 
-    def on_providerTree_button_press_event(self, clist, event):
+    def on_providerTree_button_press_event(self, clist, event, func):
         if event.type == GDK._2BUTTON_PRESS:
-            self.is_provider_selected = TRUE
+            if self.okButton["sensitive"]:
+                info = clist.get_selection_info(event.x, event.y)
+                if info != None:
+                    id = clist.signal_connect("button_release_event",
+                                              self.on_providerTree_button_release_event,
+                                              func)
+                    clist.set_data("signal_id", id)
 
+    def on_providerTree_button_release_event(self, clist, event, func):
+        if self.okButton["sensitive"]:
+            id = clist.get_data ("signal_id")
+            clist.disconnect (id)
+            clist.remove_data ("signal_id")
+            apply(func)
+        
     def get_provider_list(self):
         return providerdb.get_provider_list()
     
@@ -143,12 +161,13 @@ class providerDialog:
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=FALSE)
 
+        self.dbtree.select_row(0,0)
+
     def hydrate(self):
         pass
 
     def dehydrate(self):
         if not self.provider: return
-        
         self.device.Dialup.ProviderName = self.provider['ProviderName']
         self.device.Dialup.Login = self.provider['Login']
         self.device.Dialup.Password = self.provider['Password']
@@ -178,13 +197,8 @@ class ISDNproviderDialog(providerDialog):
     def get_provider_list(self):
         return providerdb.get_provider_list("isdn")
 
-    def on_okButton_clicked(self, button):
-        self.done = TRUE
-        self.provider = self.get_provider()
-        providerDialog.dehydrate(self)
-        self.dehydrate()
-
     def dehydrate(self):
+        providerDialog.dehydrate(self)
         self.device.Type = 'ISDN'
         self.device.Dialup.Authentication = string.lower(self.provider['Authentication'])
 
@@ -196,13 +210,8 @@ class ModemproviderDialog(providerDialog):
     def get_provider_list(self):
         return providerdb.get_provider_list("modem") 
 
-    def on_okButton_clicked(self, button):
-        self.done = TRUE
-        self.provider = self.get_provider()
-        providerDialog.dehydrate(self)
-        self.dehydrate()
-
     def dehydrate(self):
+        providerDialog.dehydrate(self)
         self.device.Type = 'Modem'
         
 
