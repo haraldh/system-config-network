@@ -24,6 +24,8 @@ from rhpl import ethtool
 import NCisdnhardware
 
 from netconfpkg import HardwareList_base
+from netconfpkg.NCHardware import Hardware
+from netconfpkg.NCHardwareFactory import getHardwareFactory
 from NC_functions import *
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -126,6 +128,15 @@ class HardwareList(HardwareList_base):
         }
 
 
+    def addHardware(self, type = None):
+        i = HardwareList_base.addHardware(self)
+        hwf = getHardwareFactory()
+        hwc = hwf.getHardwareClass(type)
+        if hwc:
+            newhw = hwc()
+            self.data[i] = newhw
+        return i
+
     def updateFromSystem(self):
         modules = ConfModules()
         modinfo = getModInfo()
@@ -153,7 +164,7 @@ class HardwareList(HardwareList_base):
                                 _("%s has an alias to module %s in modules.conf,\ninstead of currently loaded module %s!") % (hw.Name, hw.Card.ModuleName, mod))
                         break
                 else:
-                    i = self.addHardware()
+                    i = self.addHardware(getDeviceType(device))
                     hw = self.data[i]
                     hw.Name = device
                     hw.Description = mod
@@ -188,7 +199,7 @@ class HardwareList(HardwareList_base):
             if type == _('Unknown'):
                 continue
 
-            i = self.addHardware()
+            i = self.addHardware(type)
             hw = self.data[i]
             hw.Name = mod
             hw.Description = module
@@ -210,7 +221,7 @@ class HardwareList(HardwareList_base):
 
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
-            i = self.addHardware()
+            i = self.addHardware(ISDN)
             hw = self.data[i]
             hw.Name = "ISDN Card 0"
             hw.Description = isdncard.Description
@@ -238,7 +249,7 @@ class HardwareList(HardwareList_base):
                 if dev[:5] != 'Modem':
                     continue
 
-                i = self.addHardware()
+                i = self.addHardware(MODEM)
                 hw = self.data[i]
                 hw.Name = dev
                 hw.Description = 'Generic Modem'
