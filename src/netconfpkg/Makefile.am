@@ -27,6 +27,9 @@ DeviceList.py: DeviceList.idl genClass.py NCDeviceList.py NCDevice.py NCDialup.p
 HardwareList.py: NCHardwareList.py 
 
 
+install-exec-local:
+	mkdir -p $(DESTDIR)$(pkgdatadir)/netconfpkg
+	install -m 644 *.py *.glade $(DESTDIR)$(pkgdatadir)/netconfpkg
 
 %.py: %.idl genClass.py
 	python genClass.py -f -c $(srcdir)/$*.idl $@ NC

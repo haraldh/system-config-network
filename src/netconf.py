@@ -29,6 +29,9 @@ import gettext
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
+if not "/usr/share/netconf/" in sys.path:
+    sys.path.append("/usr/share/netconf")
+
 import Conf
 
 from netconfpkg import *
