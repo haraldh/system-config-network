@@ -52,7 +52,7 @@ Format not yet here, but it's NOT going to be the same as earlier,
 which just listed the commands to the route command... ipv4 and 6
 should be in the same file.
 
-*4* ifcfg-<devicename>
+*4* ifcfg-<identifier>
 
 This will vary slightly for different kinds of devices... they are in
 name=value format. Here are the ones common for all devices:
@@ -68,3 +68,7 @@ kernel initialization issues.
 
 BOOTPROTO - if set to DHCP, the system will get its configuration from
 a DHCP server.
+
+A list of adresses, which contains DEVICE, ADDRESS, PREFIX, SCOPE and BROADCAST -
+since this is a list, add the number of the device in the name - e.g, DEVICE0, SCOPE2 
+etc.
