@@ -133,11 +133,12 @@ class Cipe(DeviceList.Cipe_base):
             if not conf[i] or conf[i] == "": del conf[i]
 
         
-        conf = ConfCipeOptions(parent.DeviceId)
         parent = self.getParent()
-        if parent and self.SecretKey:
-            conf['key'] = self.SecretKey
-        if not conf.has_key("maxerr"): conf["maxerr"] = -1
-        if not conf.has_key("cttl"): conf["cttl"] = 64
+        if parent:
+            conf = ConfCipeOptions(parent.DeviceId)
+            if conf:
+                if self.SecretKey: conf['key'] = self.SecretKey
+                if not conf.has_key("maxerr"): conf["maxerr"] = -1
+                if not conf.has_key("cttl"): conf["cttl"] = 64
         
-        conf.write()
+                conf.write()
