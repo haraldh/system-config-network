@@ -29,8 +29,8 @@ class IsdnDialup(Dialup):
                  'Regioncode' : 'REGIONCODE',
                  'PhoneOut' : 'PHONE_OUT',
                  'HangupTimeout' : 'HUPTIMEOUT',
-                 'DNS1' : 'DNS1',
-                 'DNS2' : 'DNS2',
+                 'PrimaryDNS' : 'DNS1',
+                 'SecondaryDNS' : 'DNS2',
                  'Layer2' : 'LAYER',
                  'ChargeHup' : 'CHARGEHUP',
                  'ChargeInt' : 'CHARGEINT',
@@ -50,6 +50,7 @@ class IsdnDialup(Dialup):
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey]
+                #print "self." + selfkey + " = " + conf[confkey]
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
@@ -81,11 +82,11 @@ class IsdnDialup(Dialup):
                     parent.OnBoot = false
 
         compression = self.createCompression()
-        compression.load()
+        compression.load(conf)
         if conf.has_key('CALLBACK'):
             if conf['CALLBACK'] == 'on':
                 callback = self.createCallback()
-                callback.load()
+                callback.load(conf)
             else:
                 self.delCallback()
 
@@ -122,11 +123,11 @@ class IsdnDialup(Dialup):
             del conf['BOOT']
 
         if self.Compression:
-            self.Compression.save()
+            self.Compression.save(conf)
             
         if self.Callback:
             conf['CALLBACK'] == 'on'
-            self.Callback.save()
+            self.Callback.save(conf)
         else:
             conf['CALLBACK'] == 'off'
 
