@@ -19,7 +19,7 @@ execdir = $(sbindir)
 #	install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
 
 docs:
-	python ./pydoc.py -w $(basename $(notdir $(wildcard *.py)))
+	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
 	mv *.html doc
 
 clean:

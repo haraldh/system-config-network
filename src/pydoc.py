@@ -27,7 +27,7 @@ to a file named "<name>.html".
 
 __author__ = "Ka-Ping Yee <ping@lfw.org>"
 __date__ = "26 February 2001"
-__version__ = "$Revision: 1.1 $"
+__version__ = "$Revision: 1.2 $"
 __credits__ = """Guido van Rossum, for an excellent programming language.
 Tommy Burnette, the original creator of manpy.
 Paul Prescod, for all his work on onlinehelp.
@@ -1811,7 +1811,7 @@ def cli():
     sys.path.insert(0, '.')
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'gk:p:w')
+        opts, args = getopt.getopt(sys.argv[1:], 'wgk:p:')
         writing = 0
 
         for opt, val in opts:
