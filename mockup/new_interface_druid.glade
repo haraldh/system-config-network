@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>New_interface_druid</name>
+  <program_name>new_interface_druid</program_name>
+  <directory></directory>
+  <source_directory>src</source_directory>
+  <pixmaps_directory>pixmaps</pixmaps_directory>
+  <language>C</language>
+  <gnome_support>True</gnome_support>
+  <gettext_support>True</gettext_support>
+</project>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>toplevel</name>
+  <signal>
+    <name>delete_event</name>
+    <handler>on_toplevel_delete_event</handler>
+    <last_modification_time>Thu, 03 May 2001 21:07:13 GMT</last_modification_time>
+  </signal>
+  <title>New Interface</title>
+  <type>GTK_WINDOW_TOPLEVEL</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <default_width>500</default_width>
+  <default_height>400</default_height>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>True</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GnomeDruid</class>
+    <name>druid</name>
+    <signal>
+      <name>cancel</name>
+      <handler>on_druid_cancel</handler>
+      <last_modification_time>Thu, 03 May 2001 20:17:41 GMT</last_modification_time>
+    </signal>
+
+    <widget>
+      <class>GnomeDruidPageStandard</class>
+      <name>start_page</name>
+      <signal>
+	<name>prepare</name>
+	<handler>on_start_page_prepare</handler>
+	<last_modification_time>Thu, 03 May 2001 21:14:50 GMT</last_modification_time>
+      </signal>
+      <signal>
+	<name>next</name>
+	<handler>on_start_page_next</handler>
+	<last_modification_time>Thu, 03 May 2001 21:15:01 GMT</last_modification_time>
+      </signal>
+      <title>Select Interface Type</title>
+      <title_color>255,255,255</title_color>
+      <background_color>25,25,112</background_color>
+      <logo_background_color>255,255,255</logo_background_color>
+
+      <widget>
+	<class>GtkVBox</class>
+	<child_name>GnomeDruidPageStandard:vbox</child_name>
+	<name>druid-vbox1</name>
+	<homogeneous>False</homogeneous>
+	<spacing>0</spacing>
+	<child>
+	  <padding>0</padding>
+	  <expand>True</expand>
+	  <fill>True</fill>
+	</child>
+
+	<widget>
+	  <class>GtkHBox</class>
+	  <name>hbox1</name>
+	  <border_width>8</border_width>
+	  <homogeneous>False</homogeneous>
+	  <spacing>8</spacing>
+	  <child>
+	    <padding>0</padding>
+	    <expand>True</expand>
+	    <fill>True</fill>
+	  </child>
+
+	  <widget>
+	    <class>GtkScrolledWindow</class>
+	    <name>scrolledwindow1</name>
+	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>True</fill>
+	    </child>
+
+	    <widget>
+	      <class>GtkCList</class>
+	      <name>interface_clist</name>
+	      <width>175</width>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>select_row</name>
+		<handler>on_interface_clist_select_row</handler>
+		<last_modification_time>Thu, 03 May 2001 21:31:53 GMT</last_modification_time>
+	      </signal>
+	      <signal>
+		<name>unselect_row</name>
+		<handler>on_interface_clist_unselect_row</handler>
+		<last_modification_time>Thu, 03 May 2001 21:31:41 GMT</last_modification_time>
+	      </signal>
+	      <columns>1</columns>
+	      <column_widths>80</column_widths>
+	      <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
+	      <show_titles>True</show_titles>
+	      <shadow_type>GTK_SHADOW_IN</shadow_type>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<child_name>CList:title</child_name>
+		<name>label1</name>
+		<label>Interface Type</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0.5</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+	      </widget>
+	    </widget>
+	  </widget>
+
+	  <widget>
+	    <class>GtkVBox</class>
+	    <name>vbox1</name>
+	    <homogeneous>True</homogeneous>
+	    <spacing>4</spacing>
+	    <child>
+	      <padding>0</padding>
+	      <expand>True</expand>
+	      <fill>True</fill>
+	    </child>
+
+	    <widget>
+	      <class>GtkAlignment</class>
+	      <name>image_alignment</name>
+	      <xalign>0.5</xalign>
+	      <yalign>0.5</yalign>
+	      <xscale>1</xscale>
+	      <yscale>1</yscale>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
+	      </child>
+
+	      <widget>
+		<class>Placeholder</class>
+	      </widget>
+	    </widget>
+
+	    <widget>
+	      <class>GtkHBox</class>
+	      <name>hbox2</name>
+	      <homogeneous>False</homogeneous>
+	      <spacing>0</spacing>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
+	      </child>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>description_label</name>
+		<label></label>
+		<justify>GTK_JUSTIFY_LEFT</justify>
+		<wrap>True</wrap>
+		<xalign>0.5</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>False</fill>
+		</child>
+	      </widget>
+	    </widget>
+	  </widget>
+	</widget>
+      </widget>
+    </widget>
+  </widget>
+</widget>
+
+</GTK-Interface>
