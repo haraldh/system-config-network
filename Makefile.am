@@ -89,7 +89,7 @@ archive: changelog
 	@dir=$$PWD; mv ${PACKAGE}-$(VERSION).tar.gz  $$dir/ ;cd /tmp
 	@rm -rf /tmp/${PKGNAME}
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
-	@mv ${PACKAGE}-$(VERSION).tar.gz $(top_builddir)
+	@mv /tmp/${PACKAGE}-$(VERSION).tar.gz $(top_builddir)
 
 force-tag:
 	cvs ci -m "release $(VERSION)-$(RELEASE) moved"
