@@ -608,30 +608,23 @@ class mainDialog:
             dialog.xml.get_widget('Dialog').run()
 
         if deviceType == 'Modem':
-            dialog = modemDialog(self.xml)
-            if not edit:
-                return
             global hardwarelist
-            clist = self.xml.get_widget('hardwareList')
-            type  = clist.get_text(clist.selection[0], 1)
-            dev   = clist.get_text(clist.selection[0], 2)
-            for hw in hardwarelist:
-                if hw.Name == dev:
-                    break;
+            if edit:
+                clist = self.xml.get_widget('hardwareList')
+                type  = clist.get_text(clist.selection[0], 1)
+                dev   = clist.get_text(clist.selection[0], 2)
+                for hw in hardwarelist:
+                    if hw.Name == dev:
+                        break;
+                dialog = editmodemDialog(hw.Name)
+            else:
+                dialog = addmodemDialog()
 
-            dialog.xml.get_widget('modemDeviceEntry').set_text(hw.Modem.DeviceName)
-            dialog.xml.get_widget('baurateEntry').set_text(hw.Modem.BaudRate)
-            if hw.Modem.FlowControl:
-                dialog.xml.get_widget('flowControlEntry').set_text(hw.Modem.FlowControl)
-            dialog.xml.get_widget('volumeCB').set_active(hw.Modem.ModemVolume != '0')
-            dialog.xml.get_widget('volumeMenu').set_sensitive(hw.Modem.ModemVolume != '0')
-            if hw.Modem.ModemVolume > 0:
-                dialog.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume)-1)
-
-            dialog.xml.get_widget('toneDialingCB').set_active(hw.Modem.DialCommand == 'ATDT')
-            dialog.xml.get_widget('Dialog').run()
-
+            dialog.main = self
+            dialog.xml.get_widget("Dialog").run()
+            
         if deviceType == 'ISDN':
+            global hardwarelist
             if edit:
                 clist = self.xml.get_widget('hardwareList')
                 Description = clist.get_text(clist.selection[0], 0)

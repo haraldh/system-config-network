@@ -29,6 +29,7 @@ import string
 import gettext
 import re
 
+from HardwareList import *
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -40,10 +41,11 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class modemDialog:
-    def __init__(self, xml_main = None):
-        self.xml_main = xml_main
+modem_device_list = [ "/dev/ttyS0", "/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3",
+                      "/dev/ttyI0", "/dev/ttyI1", "/dev/ttyI2", "/dev/ttyI3" ]
 
+class modemDialog:
+    def __init__(self):
         glade_file = "modemconfig.glade"
 
         if not os.path.exists(glade_file):
@@ -60,11 +62,14 @@ class modemDialog:
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
 
+        self.edit = FALSE
+        self.Name = None
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
-        self.dialog.show()
+        self.setup()
+        self.hydrate()
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -88,6 +93,8 @@ class modemDialog:
         self.dialog.destroy()
         
     def on_okButton_clicked(self, button):
+        self.dehydrate()
+        self.main.hydrate()
         self.dialog.destroy()
 
     def on_cancelButton_clicked(self, button):
@@ -98,12 +105,97 @@ class modemDialog:
         scale.set_sensitive(check["active"])
         scale.grab_focus()
 
-    def updateDialog(self):
+    def setup(self):
+        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modem_device_list)
+
+    def hydrate(self):
         pass
+
+    def dehydrate(self):
+        global hardwarelist
+        hardwarelist = getHardwareList()
+        modem_list = []
+        if not self.edit:
+            for i in hardwarelist:
+                if i.Type == "Modem":
+                    modem_list.append(i.Name)
+            if modem_list:
+                for i in xrange(100):
+                    if modem_list.count("Modem"+str(i)) == 0:
+                        self.Name = "Modem" + str(i)
+                        break
+            else:
+                self.Name = "Modem0"
+            
+            id = hardwarelist.addHardware()
+            hw = hardwarelist[id]
+            hw.Type = "Modem"
+            hw.Name = self.Name
+            hw.Description = "Generic Modem"
+            hw.createModem()
+        else:
+            for hw in hardwarelist:
+                if hw.Name == self.Name:
+                    break
+
+        hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
+        hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
+        hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
+        if self.xml.get_widget("volumeCB")["active"]:
+            Item = self.xml.get_widget("volumeMenu")["label"]
+            if Item == _("Low"):
+                hw.Modem.ModemVolume = 1
+            elif Item == _("Medium"):
+                hw.Modem.ModemVolume = 2
+            elif Item == _("High"):
+                hw.Modem.ModemVolume = 3
+            elif Item == _("Very High"):
+                hw.Modem.ModemVolume = 4
+        else:
+            hw.Modem.ModemVolume = 0
+            
+        if self.xml.get_widget("toneDialingCB")["active"]:
+            hw.Modem.DialCommand = "ATDT"
+        else:
+            hw.Modem.DialCommand = "ATDP"
+
+
+class addmodemDialog(modemDialog):
+    def __init__(self):
+        modemDialog.__init__(self)
+        self.edit = FALSE
+
+class editmodemDialog(modemDialog):
+    def __init__(self, Dev):
+        self.Dev = Dev
+        modemDialog.__init__(self)
+        self.edit = TRUE
+        self.Name = self.Dev
+        
+    def hydrate(self):
+        global hardwarelist
+        hardwarelist = getHardwareList()
+
+        for hw in hardwarelist:
+            if hw.Name == self.Dev:
+                self.xml.get_widget('modemDeviceEntry').set_text(hw.Modem.DeviceName)
+                self.xml.get_widget('baurateEntry').set_text(str(hw.Modem.BaudRate))
+                if hw.Modem.FlowControl:
+                    self.xml.get_widget('flowControlEntry').set_text(hw.Modem.FlowControl)
+                    
+                self.xml.get_widget('volumeCB').set_active(hw.Modem.ModemVolume != 0)
+                self.xml.get_widget('volumeMenu').set_sensitive(hw.Modem.ModemVolume != 0)
+
+                if hw.Modem.ModemVolume > 0:
+                    self.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume)-1)
+
+                self.xml.get_widget('toneDialingCB').set_active(hw.Modem.DialCommand == 'ATDT')
+
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = modemDialog()
+    dialog = modemDialog()
+    dialog.run()
     gtk.mainloop()
 

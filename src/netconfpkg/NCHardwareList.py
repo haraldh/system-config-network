@@ -132,9 +132,9 @@ class HardwareList(HardwareList_base):
                 modules[hw.Name]['alias'] = hw.Card.ModuleName
             if hw.Type == 'Modem':
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
-                wvdial[hw.Name]['Baud'] = hw.Modem.BaudRate
-                wvdial[hw.Name]['SetVolume'] = hw.Modem.ModemVolume
-                wvdial[hw.Name]['Dial Command'] = hw.Modem.DialCommand
+                wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
+                wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
+                wvdial[hw.Name]['Dial Command'] = str(hw.Modem.DialCommand)
             if hw.Type == "ISDN":
                 isdn.Description = hw.Description
                 isdn.Type = hw.Card.Type
