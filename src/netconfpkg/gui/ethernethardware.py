@@ -141,7 +141,11 @@ class ethernetHardwareDialog:
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
         self.hw.Type = 'Ethernet'
         self.hw.createCard()
-        self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
+        if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
+           self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
+            self.hw.Card.IRQ = ""
+        else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
+        
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
@@ -149,7 +153,8 @@ class ethernetHardwareDialog:
         self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
         self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
         modInfo = NCHardwareList.getModInfo()
-        self.hw.Card.ModuleName = 'Unknown'
+        if not self.hw.Card.ModuleName or self.hw.Card.ModuleName == "":
+            self.hw.Card.ModuleName = _('Unknown')
         for i in modInfo.keys():
             if modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i

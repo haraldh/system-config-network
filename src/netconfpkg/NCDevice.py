@@ -203,14 +203,14 @@ class Device(DeviceList.Device_base):
             NC_functions.generic_error_dialog(_("%s, Device not specified or alias not a number!") % self.DeviceId)
             #raise TypeError, _("Device not specified or alias not a number!")
 
-        if not self.Type or self.Type == "" or self.Type == "Unknown":
+        if not self.Type or self.Type == "" or self.Type == _("Unknown"):
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Device:
                     self.Type = hw.Type
                     break
                     
-        if (not self.Type or self.Type == "" or self.Type == "Unknown" ) \
+        if (not self.Type or self.Type == "" or self.Type == _("Unknown") ) \
            and self.Device:            
             self.Type = NC_functions.getDeviceType(self.Device)
 

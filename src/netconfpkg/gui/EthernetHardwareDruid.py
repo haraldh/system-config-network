@@ -132,7 +132,10 @@ class ethernetHardware:
         self.hw.createCard()
         self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
-        self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
+        if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
+           self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
+            self.hw.Card.IRQ = ""
+        else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()

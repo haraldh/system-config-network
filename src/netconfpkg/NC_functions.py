@@ -161,7 +161,7 @@ def ishardlink(file):
 
 
 def getDeviceType(devname):
-    type = 'Unknown'
+    type = _('Unknown')
     if not devname or devname == "":
         return type
     
@@ -189,7 +189,7 @@ def updateNetworkScripts():
             #print dev+" already a link, skipping it."
             continue
 
-        if getDeviceType(dev[6:]) == 'Unknown':
+        if getDeviceType(dev[6:]) == _('Unknown'):
             #print dev+" has unknown device type, skipping it."
             continue
 
