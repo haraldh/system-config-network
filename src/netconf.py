@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
         showprofile = 1
 
-        gnome.program_init(PROGNAME, netconfpkg.PRG_VERSION)
+        gnome.program_init(PROGNAME, PRG_VERSION)
         gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
         
 
@@ -151,6 +151,9 @@ if __name__ == '__main__':
         #print "Exception %s: %s" % (str(SystemExit), str(code))
         sys.exit(code)
     except:
+        if splash_window:
+            splash_window.destroy()
+            del splash_window
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
     sys.exit(0)
