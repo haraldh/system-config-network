@@ -254,12 +254,16 @@ def updateNetworkScripts():
        except:
            print "An error occured during moving the /etc/hosts file."
 
-    if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
-       print "Copying /etc/resolv.conf to default profile."
-       try:
-           shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
-       except:
-           print "An error occured during moving the /etc/resolv.conf file."
+
+    try:   
+        if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
+        print "Copying /etc/resolv.conf to default profile."
+        try:
+            shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
+         except:
+	    print "An error occured during moving the /etc/resolv.conf file."
+    except:
+        print "An error occured during copying the /etc/resolv.conf file."
 
 ModemList = None
 def getModemList():
