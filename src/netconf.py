@@ -688,10 +688,10 @@ class mainDialog:
     def on_profileAddButton_clicked (self, *args):
         import gnome
         import gnome.ui
-        dialog = gnome.ui.GnomeRequestDialog (FALSE, "Please enter the name for the new profile.\nThe name may only contain letters and digits.", "NewProfile", 50, self.on_profileEntry_changed, self.dialog)
+        dialog = gnome.ui.GnomeRequestDialog (FALSE, "Please enter the name for the new profile.\nThe name may only contain letters and digits.", "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
         dialog.run()
 
-    def on_profileEntry_changed(self, text):
+    def on_profileAddEntry_changed(self, text):
         profilelist = getProfileList()
 
         if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
@@ -742,10 +742,39 @@ class mainDialog:
         self.initialized = None
         clist.clear()
         self.hydrate()
-        pass
 
     def on_profileRenameButton_clicked (self, *args):
-        pass
+        profilelist = getProfileList()
+
+        clist = self.xml.get_widget("profileList")
+
+        if len(clist.selection) == 0:
+            return
+
+        profile = profilelist[clist.selection[0]]
+
+        import gnome
+        import gnome.ui
+        dialog = gnome.ui.GnomeRequestDialog (FALSE, "Please enter the new name for the profile.\nThe name may only contain letters and digits.", profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
+        dialog.run()
+
+    def on_profileRenameEntry_changed(self, text):
+        if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
+            return
+
+        profilelist = getProfileList()
+
+        clist = self.xml.get_widget("profileList")
+
+        if len(clist.selection) == 0:
+            return
+
+        profile = profilelist[clist.selection[0]]
+        profile.ProfileName = text
+        profile.commit()
+        self.initialized = None
+        clist.clear()
+        self.hydrate()
 
     def on_profileDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
