@@ -406,7 +406,7 @@ def printClass(list, basename, baseclass):
 			unlinklist = unlinklist + '\t\tself.data_bak = []\n'
 
 			backuplist = backuplist \
-						  + "\t\tself.data = self.data_bak\n"
+				     + "\t\tself.data = self.data_bak[:]\n"
 							
 			commitlist = commitlist \
 				     + '\t\tif self.data_bak and not self.data: self.setChanged(changed)\n' \
@@ -415,11 +415,11 @@ def printClass(list, basename, baseclass):
 				     + '\t\telse:\n\t\t\tfor i in xrange(0, len(self.data_bak)):\n\t\t\t\tif self.data_bak[i] != self.data[i]: self.setChanged(changed)\n'
 
 			commitlist = commitlist \
-							 + '\t\tself.data_bak = self.data\n'
+				     + '\t\tself.data_bak = self.data[:]\n'
 
 			testlist = testlist \
-					  + '\t\tfor pos in xrange(len(self.data)):\n' \
-					  + '\t\t\tself.data[pos].test()\n'
+				   + '\t\tfor pos in xrange(len(self.data)):\n' \
+				   + '\t\t\tself.data[pos].test()\n'
 			
 			
 			if ctype != Data.ADM_TYPE_LIST:				
@@ -430,13 +430,13 @@ def printClass(list, basename, baseclass):
 				methods = methods + AnonListCNLOps
 				
 				applylist= applylist \
-							  + '\t\tfor pos in xrange(self.getNum%childname()): ' \
-							  + 'self.del%childname(0)\n' \
-							  + '\t\tfor pos in xrange(other.getNum%childname' \
-							  + '() ):\n' \
-							  + '\t\t\tself.add%childname()\n' \
-							  + '\t\t\tself.set%childname(pos, other.get' \
-							  + '%childname(pos))\n'
+					   + '\t\tfor pos in xrange(self.getNum%childname()): ' \
+					   + 'self.del%childname(0)\n' \
+					   + '\t\tfor pos in xrange(other.getNum%childname' \
+					   + '() ):\n' \
+					   + '\t\t\tself.add%childname()\n' \
+					   + '\t\t\tself.set%childname(pos, other.get' \
+					   + '%childname(pos))\n'
 
 				
 				#########################				
@@ -447,23 +447,23 @@ def printClass(list, basename, baseclass):
 
 				methods = methods + AnonListCLOps
 
-				applylist= applylist+ \
-						'\t\tfor pos in xrange(self.getNum' + \
-						'%childname() ):\n' + \
-						'\t\t\tself.del%childname(0)\n' + \
-						'\t\tfor pos in xrange(other.getNum' \
-						+ '%childname() ):\n' + \
-						'\t\t\tself.add%childname()\n' + \
-						'\t\t\tself.get%childname(pos).apply(other.get' + \
-						'%childname(pos))\n'
+				applylist= applylist \
+					   + '\t\tfor pos in xrange(self.getNum' \
+					   + '%childname() ):\n' \
+					   + '\t\t\tself.del%childname(0)\n' \
+					   + '\t\tfor pos in xrange(other.getNum' \
+					   + '%childname() ):\n' \
+					   + '\t\t\tself.add%childname()\n' \
+					   + '\t\t\tself.get%childname(pos).apply(other.get' \
+					   + '%childname(pos))\n'
 
 				commitlist = commitlist \
-								 + '\t\tfor child in self.data:\n' \
-								 + '\t\t\tchild.commit(changed)\n'
+					     + '\t\tfor child in self.data:\n' \
+					     + '\t\t\tchild.commit(changed)\n'
 
 				backuplist = backuplist \
-								 + '\t\tfor child in self.data:\n' \
-								 + '\t\t\tchild.rollback()\n'
+					     + '\t\tfor child in self.data:\n' \
+					     + '\t\t\tchild.rollback()\n'
 				#########################
 			
 
@@ -474,14 +474,16 @@ def printClass(list, basename, baseclass):
 			#
 			methods = methods + ListOps
 						
-			unlinklist = unlinklist + '\t\tself.%childname = None\n'
-			unlinklist = unlinklist + '\t\tself.__%childname_bak = None\n'
+			unlinklist = unlinklist \
+				     + '\t\tself.%childname = None\n'
+			unlinklist = unlinklist \
+				     + '\t\tself.__%childname_bak = None\n'
 
-			backuplist = backuplist + \
-				     '\t\tself.%childname = self.__%childname_bak\n'
+			backuplist = backuplist \
+				     + '\t\tself.%childname = self.__%childname_bak\n'
 			
-			commitlist = commitlist + \
-				     '\t\tself.commit%childname(changed)\n'
+			commitlist = commitlist \
+				     + '\t\tself.commit%childname(changed)\n'
 
 			if ctype != Data.ADM_TYPE_LIST:
 				#
@@ -489,14 +491,14 @@ def printClass(list, basename, baseclass):
 				#
 				methods = methods + ListCNLOps
 
-				testlist = testlist + \
-						'\t\tself.test%childname(self.%childname)\n'
+				testlist = testlist \
+					   + '\t\tself.test%childname(self.%childname)\n'
 				
-				applylist= applylist+ \
-						'\t\tself.set%childname(other.get%childname())\n'
+				applylist= applylist \
+					   + '\t\tself.set%childname(other.get%childname())\n'
 
 				initlist = initlist \
-							  + '\t\t\t\tself.__%childname_bak = child.getValue()\n'
+					   + '\t\t\t\tself.__%childname_bak = child.getValue()\n'
 				
 				#########################				
 			else:
@@ -506,20 +508,20 @@ def printClass(list, basename, baseclass):
 				methods = methods + ListCLOps
 
 				
-				testlist = testlist + \
-						'\t\tif self.%childname: self.%childname.test()\n'
+				testlist = testlist \
+					   + '\t\tif self.%childname: self.%childname.test()\n'
 				
 				applylist = applylist \
-							  + '\t\tself.create%childname().apply(other.get%childname())\n'
+					    + '\t\tself.create%childname().apply(other.get%childname())\n'
 
-				backuplist = backuplist +\
-								 '\t\tif self.%childname: self.%childname.rollback()\n'
+				backuplist = backuplist \
+					     + '\t\tif self.%childname: self.%childname.rollback()\n'
 				
 				
 				#########################
 				
 			initlist = initlist \
-						  + '\t\t\texcept (KeyError): pass\n' 
+				   + '\t\t\texcept (KeyError): pass\n' 
 
 
 		testlist = string.replace(testlist, '%childname', clname)
