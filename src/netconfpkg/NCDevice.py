@@ -250,7 +250,22 @@ class Device(DeviceList.Device_base):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
-                    
+
+        # Recalculate BROADCAST and NETWORK values if IP and netmask are
+        # present (#51462)
+        if self.IP and self.Netmask:
+            broadcast = commands.getoutput('ipcalc --broadcast ' + str(self.IP) \
+                                            + ' ' + str(self.Netmask) + \
+                                            ' 2>/dev/null')
+            if broadcast:
+                conf['BROADCAST'] = broadcast[10:]
+
+            network = commands.getoutput('ipcalc --network ' + str(self.IP) \
+                                            + ' ' + str(self.Netmask) + \
+                                            ' 2>/dev/null')
+            if network:
+                conf['NETWORK'] = network[8:]
+
         if self.Dialup:
             self.Dialup.save(conf)
 
@@ -269,7 +284,6 @@ class Device(DeviceList.Device_base):
                 rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
-
 
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
