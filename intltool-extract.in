@@ -32,7 +32,7 @@
 ## Release information
 my $PROGRAM      = "intltool-extract";
 my $PACKAGE      = "intltool";
-my $VERSION      = "0.17";
+my $VERSION      = "0.21";
 
 ## Loaded modules
 use strict; 
@@ -182,6 +182,18 @@ sub convert($) {
     &type_xml if $gettext_type eq "xml";
     &type_glade if $gettext_type eq "glade";
     &type_scheme if $gettext_type eq "scheme";
+    &type_schemas  if $gettext_type eq "schemas";
+}
+
+sub entity_decode_minimal
+{
+    local ($_) = @_;
+
+    s/&apos;/'/g; # '
+    s/&quot;/"/g; # "
+    s/&amp;/&/g;
+
+    return $_;
 }
 
 sub entity_decode
@@ -191,6 +203,8 @@ sub entity_decode
     s/&apos;/'/g; # '
     s/&quot;/"/g; # "
     s/&amp;/&/g;
+    s/&lt;/</g;
+    s/&gt;/>/g;
 
     return $_;
 }
@@ -228,7 +242,7 @@ sub type_xml {
     ### For generic translatable XML files ###
         
     while ($input =~ /\s_$w+=\"([^"]+)\"/sg) { # "
-        $messages{entity_decode($1)} = [];
+        $messages{entity_decode_minimal($1)} = [];
     }
 
     while ($input =~ /<_($w+)>(.+?)<\/_\1>/sg) {
@@ -236,7 +250,19 @@ sub type_xml {
         s/\s+/ /g;
 	s/^ //;
 	s/ $//;
-        $messages{entity_decode($_)} = [];
+        $messages{entity_decode_minimal($_)} = [];
+    }
+}
+
+sub type_schemas {
+    ### For schemas XML files ###
+        
+    while ($input =~ /<(short|long)>(.+?)<\/\1>/sg) {
+        $_ = $2;
+        s/\s+/ /g;
+	s/^ //;
+	s/ $//;
+        $messages{entity_decode_minimal($_)} = [];
     }
 }
 

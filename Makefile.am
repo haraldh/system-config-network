@@ -62,6 +62,19 @@ changelog:
 
 dist: configure Makefile config.h changelog
 
-srpm: dist
+PKGNAME=${PACKAGE}
+VERSION=$(shell awk '/Version:/ { print $$2 }' ${PKGNAME}.spec)
+CVSTAG=r$(subst .,-,$(VERSION))
+archive:
+	cvs tag -cFR $(CVSTAG) .
+	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
+	@CVSROOT=`cat CVS/Root`; cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
+	@(cd /tmp/${PKGNAME};./autogen.sh)
+	@mv /tmp/${PKGNAME} /tmp/${PKGNAME}-$(VERSION)
+	@dir=$$PWD; cd /tmp; tar cvzf $$dir/${PKGNAME}-$(VERSION).tar.gz ${PKGNAME}-$(VERSION)
+	@rm -rf /tmp/${PKGNAME}-$(VERSION)
+	@echo "The archive is in ${PKGNAME}-$(VERSION).tar.gz"
+
+srpm: archive
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"POT-Creation-Date: 2002-06-26 18:52+0200\n"
+"POT-Creation-Date: 2002-07-02 13:35+0200\n"
 "PO-Revision-Date: 2002-06-20 10:35GMT\n"
 "Last-Translator: Nuria Soriano <nuria@redhat.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -47,19 +47,20 @@ msgstr ""
 
 #. Argh, another workaround for broken gtk/gnome imports...
 #: src/netconf.py:68
+#, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Reinicie %s con permisos de root."
 
 # ../src/netconf.py:346 ../src/netconf.py:357
 # ../src/netconf.py:350 ../src/netconf.py:361
 #. import GDK
+#. Let this dialog be in the taskbar like a normal window
 #. already in NCDeviceList
 #. devicelist.commit()
 #. already in NCHardwareList
 #. hardwarelist.commit()
 #. already in NCProfileList
 #. profilelist.commit()
-#. print "self.test() != 0"
 #. print "profilelist.save()"
 #. #        profilelist = getProfileList()
 #. print devicelist
@@ -69,7 +70,7 @@ msgstr "Reinicie %s con permisos de root."
 #. #                  clist.set_pixmap(row, 0, act_xpm)
 #. #                  clist.set_row_data(row, 1)
 #. #                  break
-#: src/netconf.py:445 src/netconf.py:458
+#: src/netconf.py:461 src/netconf.py:474
 msgid "Do you want to save your changes?"
 msgstr "¿Desea guardar los cambios?"
 
@@ -77,51 +78,55 @@ msgstr "¿Desea guardar los cambios?"
 # ../src/netconf.py:444
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:525
+#: src/netconf.py:542
 msgid "The Loopback device can not be edited!"
 msgstr "¡No se puede editar el dispositivo loopback!"
 
 # ../src/netconf.py:485
 # ../src/netconf.py:508
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:583 src/netconfpkg/gui/GenericInterface.py:149
+#: src/netconf.py:600 src/netconfpkg/gui/GenericInterface.py:157
 msgid "This device can not be edited with this tool!"
 msgstr "¡Este dispositivo no se puede modificar con esta herramienta!"
 
 # ../src/netconf.py:506
 # ../src/netconf.py:529
 #. #        device = devicelist[select]
-#: src/netconf.py:609
+#: src/netconf.py:626
 msgid "The Loopback device can not be removed!"
 msgstr "No se puede quitar el dispositivo de ciclo de retorno."
 
 # ../src/netconf.py:509
 # ../src/netconf.py:532
-#: src/netconf.py:612
+#: src/netconf.py:629
+#, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "¿Desea realmente eliminar el dispositivo \"%s\"?"
 
-#: src/netconf.py:634
+#: src/netconf.py:651
 msgid "You have made some changes in your configuration."
 msgstr "Ha realizado algunos cambios en su configuración."
 
-#: src/netconf.py:635
+#: src/netconf.py:652
+#, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Para activar el dispositivo de red %s,deberá guardar los cambios."
 
 # ../src/netconf.py:346 ../src/netconf.py:357
 # ../src/netconf.py:350 ../src/netconf.py:361
-#: src/netconf.py:636
+#: src/netconf.py:653
 msgid "Do you want to continue?"
 msgstr "¿Desea continuar?"
 
+#. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/neat-control.py:126 src/netconf.py:648
+#: src/netconf.py:665 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Activación del dispositivo de red..."
 
-#: src/neat-control.py:128 src/netconf.py:650
+#: src/netconf.py:667 src/neat-control.py:131
+#, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Activación del dispositivo de red %s, espere..."
 
@@ -129,7 +134,7 @@ msgstr "Activación del dispositivo de red %s, espere..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-#: src/neat-control.py:167 src/netconf.py:682
+#: src/netconf.py:699 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Debe reescribirse"
 
@@ -193,7 +198,7 @@ msgstr "Debe reescribirse"
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1093
+#: src/netconf.py:1120
 msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
@@ -203,19 +208,19 @@ msgstr ""
 
 # ../src/netconf.py:826 ../src/netconf.py:892
 # ../src/netconf.py:849 ../src/netconf.py:915
-#: src/netconf.py:1103 src/netconf.py:1174
+#: src/netconf.py:1130 src/netconf.py:1200
 msgid "The name may only contain letters and digits!"
 msgstr "¡El nombre sólo puede contener letras y números!"
 
 # ../src/netconf.py:830 ../src/netconf.py:896
 # ../src/netconf.py:853 ../src/netconf.py:919
-#: src/netconf.py:1107 src/netconf.py:1178
+#: src/netconf.py:1134 src/netconf.py:1204
 msgid "The profile can't be named \"default\"!"
 msgstr "¡El perfil no se puede llamar \"default\"!"
 
 # ../src/netconf.py:835 ../src/netconf.py:905
 # ../src/netconf.py:858 ../src/netconf.py:928
-#: src/netconf.py:1112 src/netconf.py:1187
+#: src/netconf.py:1139 src/netconf.py:1213
 msgid "The profile name already exists!"
 msgstr "¡El nombre del perfil ya existe!"
 
@@ -223,13 +228,13 @@ msgstr "¡El nombre del perfil ya existe!"
 # ../src/netconf.py:907
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1162
+#: src/netconf.py:1188
 msgid "The \"default\" profile can't be renamed!"
 msgstr "¡El perfil \"default\" no puede ser renombrado!"
 
 # ../src/netconf.py:887
 # ../src/netconf.py:910
-#: src/netconf.py:1165
+#: src/netconf.py:1191
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
@@ -242,13 +247,14 @@ msgstr ""
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1208
+#: src/netconf.py:1234
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "¡El perfil \"predeterminado\" no se puede borrar!"
 
 # ../src/netconf.py:927
 # ../src/netconf.py:950
-#: src/netconf.py:1211
+#: src/netconf.py:1237
+#, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "¿Desea realmente eliminar el perfil \"%s\"?"
 
@@ -256,7 +262,8 @@ msgstr "¿Desea realmente eliminar el perfil \"%s\"?"
 # ../src/netconf.py:1044
 #. clist.clear()
 #. hardwarelist.rollback()
-#: src/netconf.py:1335
+#: src/netconf.py:1361
+#, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "¿Desea eliminar \"%s\"?"
 
@@ -288,13 +295,13 @@ msgstr "Configuración xDSL"
 #: src/netconfpkg/gui/ADSLInterface.py:87
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber Lines. "
-" This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL "
-"(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at "
-"the same speed), and several others.  These types of connections are common "
-"in the United States, and are gaining acceptance elsewhere.  Speeds vary "
-"according to the technology used, but generally range from 144kbps to "
-"1.0Mbps."
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
 msgstr ""
 "Crear una conexión xDSL. Ésta es una conexión que utiliza uno de los varios "
 "tipos de conexiones de banda ancha collectivas conocidas como Digital "
@@ -307,6 +314,7 @@ msgstr ""
 
 # ../src/netconfpkg/ADSLInterface.py:106 ../src/netconfpkg/DialupDruid.py:105
 # ../src/netconfpkg/ADSLInterface.py:113 ../src/netconfpkg/DialupDruid.py:105
+#. widget.set_position(0)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -324,11 +332,11 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
-#: src/netconfpkg/gui/CipeInterface.py:132
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:195
-#: src/netconfpkg/gui/TokenRingInterface.py:193
+#: src/netconfpkg/gui/EthernetInterface.py:196
+#: src/netconfpkg/gui/CipeInterface.py:132
 #: src/netconfpkg/gui/WirelessInterface.py:212
+#: src/netconfpkg/gui/TokenRingInterface.py:194
 msgid "You have selected the following information:"
 msgstr "Ha seleccionado la siguiente información:"
 
@@ -356,11 +364,11 @@ msgstr "Nombre de _login:"
 # ../src/netconfpkg/ADSLInterface.py:110 ../src/netconfpkg/DialupDruid.py:110
 # ../src/netconfpkg/ADSLInterface.py:117 ../src/netconfpkg/DialupDruid.py:110
 #: src/netconfpkg/gui/ADSLInterface.py:129
-#: src/netconfpkg/gui/CipeInterface.py:147
 #: src/netconfpkg/gui/DialupDruid.py:121
-#: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/TokenRingInterface.py:211
-#: src/netconfpkg/gui/WirelessInterface.py:236
+#: src/netconfpkg/gui/EthernetInterface.py:215
+#: src/netconfpkg/gui/CipeInterface.py:147
+#: src/netconfpkg/gui/WirelessInterface.py:247
+#: src/netconfpkg/gui/TokenRingInterface.py:212
 msgid "Press \"Finish\" to create this account"
 msgstr "Pulse \"Finalizar\" para crear esta cuenta"
 
@@ -398,19 +406,19 @@ msgstr "Número telefónico:"
 #. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
 #. if len(hwdesc):
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
-#: src/netconfpkg/NCDevice.py:225 src/netconfpkg/NCDevice.py:232
-#: src/netconfpkg/NCHardwareList.py:143 src/netconfpkg/NCHardwareList.py:293
-#: src/netconfpkg/NC_functions.py:168 src/netconfpkg/NC_functions.py:224
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:135
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
-#: src/netconfpkg/gui/TokenRingHardwareDruid.py:135
-#: src/netconfpkg/gui/ethernethardware.glade.h:21
-#: src/netconfpkg/gui/ethernethardware.py:135
-#: src/netconfpkg/gui/ethernethardware.py:152
-#: src/netconfpkg/gui/tokenringhardware.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.py:134
+#: src/netconfpkg/gui/ethernethardware.py:134
+#: src/netconfpkg/gui/ethernethardware.py:151
 #: src/netconfpkg/gui/tokenringhardware.py:143
-#: src/netconfpkg/gui/tokenringhardware.py:154
+#: src/netconfpkg/gui/tokenringhardware.py:154 src/netconfpkg/NCDevice.py:225
+#: src/netconfpkg/NCDevice.py:232 src/netconfpkg/NCHardwareList.py:143
+#: src/netconfpkg/NCHardwareList.py:297 src/netconfpkg/NC_functions.py:168
+#: src/netconfpkg/NC_functions.py:224
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:21
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -578,29 +586,29 @@ msgstr "Módem genérico"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemDruid.glade.h:27
 #: src/netconfpkg/gui/ModemInterface.py:139
-#: src/netconfpkg/gui/modemconfig.glade.h:27
 #: src/netconfpkg/gui/modemconfig.py:123
+#: src/netconfpkg/gui/ModemDruid.glade.h:27
+#: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "Apagado"
 
 # src/glade-strings.c:554
 # ../src/glade-strings.c:439 ../src/netconfpkg/ModemInterface.py:127
 # ../src/glade-strings.c:516 ../src/netconfpkg/ModemInterface.py:135
-#: src/netconfpkg/gui/ModemDruid.glade.h:22
 #: src/netconfpkg/gui/ModemInterface.py:141
-#: src/netconfpkg/gui/modemconfig.glade.h:21
 #: src/netconfpkg/gui/modemconfig.py:125
+#: src/netconfpkg/gui/ModemDruid.glade.h:22
+#: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "Bajo"
 
 # ../src/glade-strings.c:461 ../src/netconfpkg/ModemInterface.py:129
 # ../src/glade-strings.c:538 ../src/netconfpkg/ModemInterface.py:137
-#: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/ModemInterface.py:143
-#: src/netconfpkg/gui/modemconfig.glade.h:22
 #: src/netconfpkg/gui/modemconfig.py:127
+#: src/netconfpkg/gui/ModemDruid.glade.h:23
+#: src/netconfpkg/gui/modemconfig.glade.h:22
 #: src/netconfpkg/gui/sharedtcpip.glade.h:19
 #: src/netconfpkg/gui/tcpipdialog.glade.h:20
 msgid "Medium"
@@ -609,19 +617,19 @@ msgstr "Medio"
 # src/glade-strings.c:478
 # ../src/glade-strings.c:390 ../src/netconfpkg/ModemInterface.py:131
 # ../src/glade-strings.c:457 ../src/netconfpkg/ModemInterface.py:139
-#: src/netconfpkg/gui/ModemDruid.glade.h:21
 #: src/netconfpkg/gui/ModemInterface.py:145
-#: src/netconfpkg/gui/modemconfig.glade.h:20
 #: src/netconfpkg/gui/modemconfig.py:129
+#: src/netconfpkg/gui/ModemDruid.glade.h:21
+#: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "Alto"
 
 # ../src/glade-strings.c:662 ../src/netconfpkg/ModemInterface.py:133
 # ../src/glade-strings.c:775 ../src/netconfpkg/ModemInterface.py:141
-#: src/netconfpkg/gui/ModemDruid.glade.h:30
 #: src/netconfpkg/gui/ModemInterface.py:147
-#: src/netconfpkg/gui/modemconfig.glade.h:29
 #: src/netconfpkg/gui/modemconfig.py:131
+#: src/netconfpkg/gui/ModemDruid.glade.h:30
+#: src/netconfpkg/gui/modemconfig.glade.h:29
 msgid "Very High"
 msgstr "Muy alto"
 
@@ -659,68 +667,68 @@ msgstr "Muy alto"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/CipeInterface.py:156 src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:156
 msgid "None - Server Mode"
 msgstr "Ninguno - Modo servidor"
 
-#: src/netconfpkg/gui/CipeInterface.py:163 src/netconfpkg/gui/cipeconfig.py:87
+#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:163
 msgid " (dynamic)"
 msgstr " (dinámico)"
 
 # ../src/glade-strings.c:605
 # ../src/glade-strings.c:702
 #. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
 #: src/netconfpkg/gui/CipeInterface.py:197
 #: src/netconfpkg/gui/CipeInterface.py:250
-#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
 msgid "Server Mode"
 msgstr "Modo servidor"
 
 #. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
 #: src/netconfpkg/gui/CipeInterface.py:281
 #: src/netconfpkg/gui/CipeInterface.py:286
-#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
 msgid "(own choice)"
 msgstr "(elección propia)"
 
-#: src/netconfpkg/gui/CipeInterface.py:292
 #: src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "IP Address of Tunnel Device: "
 msgstr "Dirección IP del dispositivo Tunnel"
 
 # src/glade-strings.c:551
 # ../src/glade-strings.c:774
 # ../src/glade-strings.c:920
-#: src/netconfpkg/gui/CipeInterface.py:293
 #: src/netconfpkg/gui/cipeconfig.py:214
+#: src/netconfpkg/gui/CipeInterface.py:293
 msgid "Local Port: "
 msgstr "Puerto local:"
 
 # ../src/glade-strings.c:817
 # ../src/glade-strings.c:973
-#: src/netconfpkg/gui/CipeInterface.py:294
 #: src/netconfpkg/gui/cipeconfig.py:215
+#: src/netconfpkg/gui/CipeInterface.py:294
 msgid "Remote Peer Address: "
 msgstr "Dirección de peer remoto:"
 
 # ../src/glade-strings.c:575
 # ../src/glade-strings.c:667
-#: src/netconfpkg/gui/CipeInterface.py:298
 #: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "Remote Virtual Address: "
 msgstr "Dirección virtual remota:"
 
 # ../src/glade-strings.c:436
 # ../src/glade-strings.c:513
-#: src/netconfpkg/gui/CipeInterface.py:299
 #: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Virtual Address: "
 msgstr "Dirección virtual local:"
 
 # ../src/glade-strings.c:820
 # ../src/glade-strings.c:982
-#: src/netconfpkg/gui/CipeInterface.py:300
 #: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Secret Key: "
 msgstr "Clave secreta:"
 
@@ -754,6 +762,7 @@ msgstr "Dispositivo IUCV"
 # src/glade-strings.c:354
 # ../src/glade-strings.c:256
 # ../src/glade-strings.c:309
+#. widget.set_position(0)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -801,8 +810,8 @@ msgstr "Dispositivo IUCV"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/dialupconfig.glade.h:12
 #: src/netconfpkg/gui/dialupconfig.py:228
+#: src/netconfpkg/gui/dialupconfig.glade.h:12
 msgid "Dialup Configuration"
 msgstr "Configuración de marcado:"
 
@@ -813,62 +822,62 @@ msgstr "Configuración de marcado:"
 msgid "ISDN Dialup Configuration"
 msgstr "Configuración de marcado ISDN"
 
+#: src/netconfpkg/gui/dialupconfig.py:258
+#: src/netconfpkg/gui/dialupconfig.py:336
 #: src/netconfpkg/gui/dialupconfig.glade.h:66
-#: src/netconfpkg/gui/dialupconfig.py:257
-#: src/netconfpkg/gui/dialupconfig.py:335
 msgid "in"
 msgstr "dentro"
 
 # ../src/glade-strings.c:587
 # ../src/glade-strings.c:681
+#: src/netconfpkg/gui/dialupconfig.py:258
 #: src/netconfpkg/gui/dialupconfig.glade.h:69
-#: src/netconfpkg/gui/dialupconfig.py:257
 msgid "out"
 msgstr "fuera"
 
 # ../src/glade-strings.c:948
 # ../src/glade-strings.c:1114
+#: src/netconfpkg/gui/dialupconfig.py:297
 #: src/netconfpkg/gui/dialupconfig.glade.h:71
-#: src/netconfpkg/gui/dialupconfig.py:296
 msgid "raw IP"
 msgstr "raw IP"
 
 # ../src/glade-strings.c:951
 # ../src/glade-strings.c:1117
+#: src/netconfpkg/gui/dialupconfig.py:299
+#: src/netconfpkg/gui/dialupconfig.py:326
 #: src/netconfpkg/gui/dialupconfig.glade.h:72
-#: src/netconfpkg/gui/dialupconfig.py:298
-#: src/netconfpkg/gui/dialupconfig.py:325
 msgid "sync PPP"
 msgstr "Ppp sinc"
 
 # ../src/glade-strings.c:945
 # ../src/glade-strings.c:1111
+#: src/netconfpkg/gui/dialupconfig.py:311
+#: src/netconfpkg/gui/dialupconfig.py:365
 #: src/netconfpkg/gui/dialupconfig.glade.h:70
-#: src/netconfpkg/gui/dialupconfig.py:310
-#: src/netconfpkg/gui/dialupconfig.py:364
 msgid "pap"
 msgstr "pap"
 
 # ../src/glade-strings.c:862
 # ../src/glade-strings.c:1028
+#: src/netconfpkg/gui/dialupconfig.py:313
+#: src/netconfpkg/gui/dialupconfig.py:367
 #: src/netconfpkg/gui/dialupconfig.glade.h:64
-#: src/netconfpkg/gui/dialupconfig.py:312
-#: src/netconfpkg/gui/dialupconfig.py:366
 msgid "chap"
 msgstr "chap"
 
 # ../src/glade-strings.c:865
 # ../src/glade-strings.c:1031
+#: src/netconfpkg/gui/dialupconfig.py:315
+#: src/netconfpkg/gui/dialupconfig.py:369
 #: src/netconfpkg/gui/dialupconfig.glade.h:65
-#: src/netconfpkg/gui/dialupconfig.py:314
-#: src/netconfpkg/gui/dialupconfig.py:368
 msgid "chap+pap"
 msgstr "chap+pap"
 
 # ../src/glade-strings.c:942
 # ../src/glade-strings.c:1108
+#: src/netconfpkg/gui/dialupconfig.py:317 src/netconfpkg/gui/tcpdialog.py:127
 #: src/netconfpkg/gui/dialupconfig.glade.h:68
-#: src/netconfpkg/gui/dialupconfig.py:316 src/netconfpkg/gui/tcpdialog.py:129
 #: src/netconfpkg/gui/tcpipdialog.glade.h:53
 msgid "none"
 msgstr "ninguno"
@@ -876,7 +885,7 @@ msgstr "ninguno"
 # src/glade-strings.c:354
 # ../src/glade-strings.c:256
 # ../src/glade-strings.c:309
-#: src/netconfpkg/gui/dialupconfig.py:378
+#: src/netconfpkg/gui/dialupconfig.py:379
 msgid "Modem Dialup Configuration"
 msgstr "Configuración de marcado del módem"
 
@@ -897,17 +906,17 @@ msgstr "Configuración de marcado del módem"
 #. along with this program; if not, write to the Free Software
 #. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #.
-#: src/netconfpkg/gui/exception.py:49
+#: src/netconfpkg/gui/exception.py:48
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please copy "
 "the full text of this exception or save the crash dump to a floppy then file "
-"a detailed bug report against anaconda at "
-"http://bugzilla.redhat.com/bugzilla/"
+"a detailed bug report against anaconda at http://bugzilla.redhat.com/"
+"bugzilla/"
 msgstr ""
 "Se ha producido una excepción o más bien un error. Copie el texto completo "
 "de esta excepción o salve el volcado de caída en un fichero y, a "
-"continuación archive un informe detallado de errores para "
-"redhat-config-network en http://bugzilla.redhat.com/bugzilla/"
+"continuación archive un informe detallado de errores para redhat-config-"
+"network en http://bugzilla.redhat.com/bugzilla/"
 
 # src/glade-strings.c:530
 # ../src/glade-strings.c:608
@@ -924,19 +933,21 @@ msgid "Select a file:"
 msgstr "Seleccionar un fichero:"
 
 #. win.connect ("clicked", self.quit)
-#: src/netconfpkg/gui/exception.py:188
+#: src/netconfpkg/gui/exception.py:189
 msgid "Exception Occurred"
 msgstr "Se ha producido una excepción"
 
-#: src/netconfpkg/gui/exception.py:198
+#: src/netconfpkg/gui/exception.py:199
 msgid "Please specify a file to save the dump"
 msgstr "Especifique un fichero para salvar el vaciado"
 
-#: src/netconfpkg/gui/exception.py:213
+#: src/netconfpkg/gui/exception.py:214
+#, python-format
 msgid "Failed to write to file %s."
 msgstr "No se ha podido escribir el fichero %s."
 
-#: src/netconfpkg/gui/exception.py:217
+#: src/netconfpkg/gui/exception.py:218
+#, python-format
 msgid ""
 "The application's state has been successfully\n"
 "written to the file '%s'."
@@ -995,8 +1006,8 @@ msgstr "El estado de la aplicación se ha escrito con éxito en el fichero '%s'."
 #. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
 #. self.dialog.connect("hide", self.on_Dialog_delete_event)
 #. disable TCP/IP and hostname Tabs for CIPE
+#: src/netconfpkg/gui/tcpdialog.py:106 src/netconfpkg/gui/tcpdialog.py:126
 #: src/netconfpkg/gui/sharedtcpip.glade.h:51
-#: src/netconfpkg/gui/tcpdialog.py:108 src/netconfpkg/gui/tcpdialog.py:128
 #: src/netconfpkg/gui/tcpipdialog.glade.h:52
 msgid "dialup"
 msgstr "marcado"
@@ -1021,10 +1032,7 @@ msgstr "marcado"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Auto',
-#. 'Managed',
-#. 'Ad-Hoc'
-#. ])
+#. widget.set_position(0)
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -1040,6 +1048,7 @@ msgstr "marcado"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. do not remove this (needed to access methods of self.druid
 #. get the widgets we need
 #. Initialize the clist
 #. Add the interfaces that have no druid yet
@@ -1060,65 +1069,65 @@ msgstr "marcado"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print "EthernetInterface getDeviceList"
-#: src/netconfpkg/gui/EthernetInterface.py:105
+#: src/netconfpkg/gui/EthernetInterface.py:106
 msgid "Ethernet connection"
 msgstr "Conexión Ethernet"
 
 # ../src/glade-strings.c:219
 # ../src/glade-strings.c:253
-#: src/netconfpkg/gui/EthernetInterface.py:111
+#: src/netconfpkg/gui/EthernetInterface.py:112
 msgid "Create a new ethernet connection."
 msgstr "Crear una nueva conexión ethernet."
 
 # src/glade-strings.c:426
 # ../src/glade-strings.c:349
 # ../src/glade-strings.c:410
-#: src/netconfpkg/gui/EthernetInterface.py:176
+#: src/netconfpkg/gui/EthernetInterface.py:177
 msgid "Other Ethernet Card"
 msgstr "Otras tarjetas Ethernet"
 
 # ../src/glade-strings.c:726
 # ../src/glade-strings.c:866
+#: src/netconfpkg/gui/EthernetInterface.py:197
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/EthernetInterface.py:196
-#: src/netconfpkg/gui/TokenRingInterface.py:194
 #: src/netconfpkg/gui/WirelessInterface.py:213
+#: src/netconfpkg/gui/TokenRingInterface.py:195
 msgid "Device:"
 msgstr "Dispositivo:"
 
 # src/glade-strings.c:154
 # ../src/glade-strings.c:162
 # ../src/glade-strings.c:192
-#: src/netconfpkg/gui/EthernetInterface.py:207
-#: src/netconfpkg/gui/TokenRingInterface.py:205
+#: src/netconfpkg/gui/EthernetInterface.py:208
 #: src/netconfpkg/gui/WirelessInterface.py:224
+#: src/netconfpkg/gui/TokenRingInterface.py:206
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Dirección:"
 
 # ../src/glade-strings.c:829
 # ../src/glade-strings.c:991
-#: src/netconfpkg/gui/EthernetInterface.py:208
-#: src/netconfpkg/gui/TokenRingInterface.py:206
+#: src/netconfpkg/gui/EthernetInterface.py:209
 #: src/netconfpkg/gui/WirelessInterface.py:225
+#: src/netconfpkg/gui/TokenRingInterface.py:207
 msgid "Subnet Mask:"
 msgstr "Máscara de subred:"
 
 # src/glade-strings.c:317
 # ../src/glade-strings.c:237
 # ../src/glade-strings.c:281
-#: src/netconfpkg/gui/EthernetInterface.py:209
-#: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/EthernetInterface.py:210
 #: src/netconfpkg/gui/WirelessInterface.py:226
+#: src/netconfpkg/gui/TokenRingInterface.py:208
 msgid "Default Gateway Address:"
 msgstr "Dirección de la puerta de enlace por defecto:"
 
 # src/glade-strings.c:211
 # ../src/glade-strings.c:180
 # ../src/glade-strings.c:214
-#: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/TokenRingInterface.py:209
+#: src/netconfpkg/gui/EthernetInterface.py:212
 #: src/netconfpkg/gui/WirelessInterface.py:228
+#: src/netconfpkg/gui/TokenRingInterface.py:210
 msgid "Automatically obtain IP address settings with:"
 msgstr "Obtener las configuraciones de direcciones IP automáticamente con:"
 
@@ -1152,12 +1161,14 @@ msgstr "Obtener las configuraciones de direcciones IP automáticamente con:"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
 msgid "%s connection"
 msgstr "Conexión %s "
 
 # ../src/glade-strings.c:219
 # ../src/glade-strings.c:253
 #: src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
 msgid "Create a new %s connection."
 msgstr "Crear una nueva conexión %s"
 
@@ -1173,8 +1184,8 @@ msgstr "Pulse Finalizar para obtener un diálogo de configuración estándar."
 msgid "Then, at first, enter the nickname for the device."
 msgstr "A continuación, introduzca el sobrenombre para el dispositivo."
 
-# ../src/netconfpkg/ModemInterface.py:67
-# ../src/netconfpkg/ModemInterface.py:68
+# ../src/netconfpkg/IsdnInterface.py:68
+# ../src/netconfpkg/IsdnInterface.py:70
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
@@ -1189,14 +1200,16 @@ msgstr "A continuación, introduzca el sobrenombre para el dispositivo."
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/CipeInterface.py:85
-msgid "Cipe connection"
-msgstr "Conexión cipe"
+#, fuzzy
+msgid "CIPE (VPN) connection"
+msgstr "Conexión RDSI"
 
 # ../src/glade-strings.c:219
 # ../src/glade-strings.c:253
 #: src/netconfpkg/gui/CipeInterface.py:88
-msgid "Create a new Cipe connection."
-msgstr "Crear una nueva conexión cipe."
+#, fuzzy
+msgid "Create a new virtual private network connection with CIPE."
+msgstr "Crear una nueva conexión ethernet."
 
 # ../src/glade-strings.c:835
 # ../src/glade-strings.c:1000
@@ -1222,7 +1235,7 @@ msgstr "Dirección de peer remoto:"
 # ../src/glade-strings.c:1022
 #: src/netconfpkg/gui/CipeInterface.py:140
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 msgid "Auto"
 msgstr "Auto"
 
@@ -1270,14 +1283,14 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/WirelessInterface.py:103
+#: src/netconfpkg/gui/WirelessInterface.py:104
 msgid "Wireless connection"
 msgstr "Conexión inalámbrica"
 
 # src/glade-strings.c:354
 # ../src/glade-strings.c:222
 # ../src/glade-strings.c:256
-#: src/netconfpkg/gui/WirelessInterface.py:109
+#: src/netconfpkg/gui/WirelessInterface.py:110
 msgid "Create a new wireless connection."
 msgstr "Crear una nueva conexión inalámbrica."
 
@@ -1288,35 +1301,35 @@ msgstr "Crear una nueva conexión inalámbrica."
 msgid "Other Wireless Card"
 msgstr "Otra tarjeta inalámbrica "
 
+# ../src/glade-strings.c:791
+# ../src/glade-strings.c:939
+#: src/netconfpkg/gui/WirelessInterface.py:231
+msgid "Mode: "
+msgstr "Modo:"
+
 # src/glade-strings.c:369
 # ../src/glade-strings.c:732
 # ../src/glade-strings.c:872
-#: src/netconfpkg/gui/WirelessInterface.py:231
+#: src/netconfpkg/gui/WirelessInterface.py:232
 msgid "ESSID (Network ID):"
 msgstr "ESSID (ID de la red):"
-
-# ../src/glade-strings.c:791
-# ../src/glade-strings.c:939
-#: src/netconfpkg/gui/WirelessInterface.py:232
-msgid "Mode: "
-msgstr "Modo:"
 
 # src/glade-strings.c:256
 # ../src/glade-strings.c:707
 # ../src/glade-strings.c:842
-#: src/netconfpkg/gui/WirelessInterface.py:233
+#: src/netconfpkg/gui/WirelessInterface.py:239
 msgid "Channel: "
 msgstr "Canal:"
 
 # ../src/glade-strings.c:832
 # ../src/glade-strings.c:997
-#: src/netconfpkg/gui/WirelessInterface.py:234
+#: src/netconfpkg/gui/WirelessInterface.py:241
 msgid "Transmit Rate: "
 msgstr "Ratio de transmisión:"
 
 # ../src/glade-strings.c:771
 # ../src/glade-strings.c:917
-#: src/netconfpkg/gui/WirelessInterface.py:235
+#: src/netconfpkg/gui/WirelessInterface.py:242
 msgid "Key: "
 msgstr "Clave:"
 
@@ -1337,458 +1350,20 @@ msgstr "Clave:"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/TokenRingInterface.py:105
+#: src/netconfpkg/gui/TokenRingInterface.py:106
 msgid "Token Ring connection"
 msgstr "Conexión del Token Ring"
 
 # ../src/glade-strings.c:219
 # ../src/glade-strings.c:253
-#: src/netconfpkg/gui/TokenRingInterface.py:111
+#: src/netconfpkg/gui/TokenRingInterface.py:112
 msgid "Create a new Token Ring connection."
 msgstr "Crear una nueva conexión Token Ring."
 
-#: src/netconfpkg/gui/TokenRingInterface.py:175
+#: src/netconfpkg/gui/TokenRingInterface.py:176
 msgid "Other Tokenring Card"
 msgstr "Otra tarjeta Tokenring"
 
-#. Copyright (C) 1996-2002 Red Hat, Inc.
-#. Use of this software is subject to the terms of the GNU General
-#. Public License
-#. This module manages standard configuration file handling
-#. These classes are available:
-#. Conf:
-#. This is the base class.  This is good for working with just about
-#. any line-oriented configuration file.
-#. Currently does not deal with newline escaping; may never...
-#. ConfShellVar(Conf):
-#. This is a derived class which implements a dictionary for standard
-#. VARIABLE=value
-#. shell variable setting.
-#. Limitations:
-#. o one variable per line
-#. o assumes everything on the line after the '=' is the value
-#. ConfShellVarClone(ConfShellVar):
-#. Takes a ConfShellVar instance and records in another ConfShellVar
-#. "difference file" only those settings which conflict with the
-#. original instance.  The delete operator does delete the variable
-#. text in the cloned instance file, but that will not really delete
-#. the shell variable that occurs, because it does not put an "unset"
-#. command in the file.
-#. ConfESNetwork(ConfShellVar):
-#. This is a derived class specifically intended for /etc/sysconfig/network
-#. It is another dictionary, but magically fixes /etc/HOSTNAME when the
-#. hostname is changed.
-#. ConfEHosts(Conf):
-#. Yet another dictionary, this one for /etc/hosts
-#. Dictionary keys are numeric IP addresses in string form, values are
-#. 2-item lists, the first item of which is the canonical hostname,
-#. and the second of which is a list of nicknames.
-#. ConfEResolv(Conf):
-#. Yet another dictionary, this one for /etc/resolv.conf
-#. This ugly file has two different kinds of entries.  All but one
-#. take the form "key list of arguments", but one entry (nameserver)
-#. instead takes multiple lines of "key argument" pairs.
-#. In this dictionary, all keys have the same name as the keys in
-#. the file, EXCEPT that the multiple nameserver entries are all
-#. stored under 'nameservers'.  Each value (even singleton values)
-#. is a list.
-#. ConfESStaticRoutes(Conf):
-#. Yet another dictionary, this one for /etc/sysconfig/static-routes
-#. This file has a syntax similar to that of /etc/gateways;
-#. the interface name is added and active/passive is deleted:
-#. <interface> net <netaddr> netmask <netmask> gw <gateway>
-#. The key is the interface, the value is a list of
-#. [<netaddr>, <netmask>, <gateway>] lists
-#. ConfChat(Conf):
-#. Not a dictionary!
-#. This reads chat files, and writes a subset of chat files that
-#. has all items enclosed in '' and has one expect/send pair on
-#. each line.
-#. Uses a list of two-element tuples.
-#. ConfChatFile(ConfChat):
-#. This class is a ConfChat which it interprets as a netcfg-written
-#. chat file with a certain amount of structure.  It interprets it
-#. relative to information in an "ifcfg-" file (devconf) and has a
-#. set of abortstrings that can be turned on and off.
-#. It exports the following data items:
-#. abortstrings   list of standard strings on which to abort
-#. abortlist      list of alternative strings on which to abort
-#. defabort       boolean: use the default abort strings or not
-#. dialcmd        string containing dial command (ATDT, for instance)
-#. phonenum       string containing phone number
-#. chatlist       list containing chat script after CONNECT
-#. chatfile       ConfChat instance
-#. ConfChatFileClone(ConfChatFile):
-#. Creates a chatfile, then removes it if it is identical to the chat
-#. file it clones.
-#. ConfDIP:
-#. This reads chat files, and writes a dip file based on that chat script.
-#. Takes three arguments:
-#. o The chatfile
-#. o The name of the dipfile
-#. o The ConfSHellVar instance from which to take variables in the dipfile
-#. ConfModules(Conf)
-#. This reads /etc/modules.conf into a dictionary keyed on device type,
-#. holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
-#. cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
-#. cm['eth0']['post-install'] --> ['/bin/foo','arg1','arg2']
-#. path[*] entries are ignored (but not removed)
-#. New entries are added at the end to make sure that they
-#. come after any path[*] entries.
-#. Comments are delimited by initial '#'
-#. ConfModInfo(Conf)
-#. This READ-ONLY class reads /boot/module-info.
-#. The first line of /boot/module-info is "Version = <version>";
-#. this class reads versions 0 and 1 module-info files.
-#. ConfPw(Conf)
-#. This class implements a dictionary based on a :-separated file.
-#. It takes as arguments the filename and the field number to key on;
-#. The data provided is a list including all fields including the key.
-#. Has its own write method to keep files sane.
-#. ConfPasswd(ConfPw)
-#. This class presents a data-oriented class for making changes
-#. to the /etc/passwd file.
-#. ConfShadow(ConfPw)
-#. This class presents a data-oriented class for making changes
-#. to the /etc/shadow file.
-#. ConfGroup(ConfPw)
-#. This class presents a data-oriented class for making changes
-#. to the /etc/group file.
-#. May be replaced by a pwdb-based module, we hope.
-#. ConfUnix()
-#. This class presents a data-oriented class which uses the ConfPasswd
-#. and ConfShadow classes (if /etc/shadow exists) to hold data.
-#. Designed to be replaced by a pwdb module eventually, we hope.
-#. ConfPAP(Conf):
-#. Yet another dictionary, this one for /etc/ppp/pap-secrets
-#. The key is the remotename, the value is a list of
-#. [<user>, <secret>] lists
-#. ConfCHAP(ConfPAP):
-#. Yet another dictionary, this one for /etc/ppp/chap-secrets
-#. The key is the remotename, the value is a list of
-#. [<local>, <secret>] lists
-#. ConfSecrets:
-#. Has-a ConfPAP and ConfCHAP
-#. Yet another dictionary, which reads from pap-secrets and
-#. chap-secrets, and writes to both when an entry is set.
-#. When conflicts occur while reading, the pap version is
-#. used in preference to the chap version (this is arbitrary).
-#. ConfSysctl:
-#. Guess what?  A dictionary, this time with key/value pairs for sysctl vars.
-#. Duplicate keys get appended to existing values, and broken out again when
-#. the file is written (does that even work?)
-#. This library exports several Errors, including
-#. FileMissing
-#. Conf raises this error if create_if_missing == 0 and the file does not
-#. exist
-#. IndexError
-#. ConfShVar raises this error if unbalanced quotes are found
-#. BadFile
-#. Raised to indicate improperly formatted files
-#. WrongMethod
-#. Raised to indicate that the wrong method is being called.  May indicate
-#. that a dictionary class should be written to through methods rather
-#. than assignment.
-#. VersionMismatch
-#. An unsupported file version was found.
-#. SystemFull
-#. No more UIDs or GIDs are available
-#. Implementation:
-#. A configuration file is a list of lines.
-#. a line is a string.
-#. self.line is a "point" -- 0 is before the first line;
-#. 1 is between the first and second lines, etc.
-#. The "current" line is the line after the point.
-#. returns false if no more lines matching pattern
-#. if while loop terminated, pattern not found.
-#. optional whitespace followed by non-comment character
-#. defines a codeline.  blank lines, lines with only whitespace,
-#. and comment lines do not count.
-#. returns list of fields split by self.separators
-#. print "re.split(%s, %s) = " % (self.lines[self.line], seps) + str(re.split(seps, self.lines[self.line]))
-#. replaces current line with line built from list
-#. appends if off the end of the array
-#. strip newlines
-#. rcs checkout/checkin errors are thrown away, because they
-#. aren't this tool's fault, and there's nothing much it could
-#. do about them.  For example, if the file is already locked
-#. by someone else, too bad!  This code is for keeping a trail,
-#. not for managing contention.  Too many deadlocks that way...
-#. add newlines
-#. initialize dictionary of variable/name pairs
-#. fields 1..n are false separations on "=" character in string,
-#. so we need to join them back together.
-#. found quote; strip from beginning and end
-#. ignore whitespace, etc.
-#. set *every* instance of varname to value to avoid surprises
-#. delete *every* instance...
-#. ConfShellVarClone(ConfShellVar):
-#. Takes a ConfShellVar instance and records in another ConfShellVar
-#. "difference file" only those settings which conflict with the
-#. original instance.  The delete operator does delete the variable
-#. text in the cloned instance file, but that will not really delete
-#. the shell variable that occurs, because it does not put an "unset"
-#. command in the file.
-#. differs from self.ci; save a local copy.
-#. self.ci already has the variable with the same value,
-#. don't duplicate it
-#. inherit delitem because we don't want to pass it through to self.ci
-#. FIXME: should we implement keys()?
-#. explicitly for /etc/sysconfig/network: HOSTNAME is magical value
-#. that writes /etc/HOSTNAME as well
-#. There doesn't appear to be a need to return keys in order
-#. here because we normally always have the same entries in this
-#. file, and order isn't particularly important.
-#. for /etc/hosts
-#. implements a dictionary keyed by IP address, with values
-#. consisting of a list: [ hostname, [list, of, nicknames] ]
-#. initialize dictionary of variable/name pairs
-#. has nicknames
-#. set first (should be only) instance to values in list value
-#. delete *every* instance...
-#. It is rather important to return the keys in order here,
-#. in order to maintain a consistent presentation in apps.
-#. initialize dictionary of variable/name pairs
-#. /etc/resolv.conf
-#. set first (should be only) instance to values in list value
-#. if there is a nameserver line, save the place,
-#. remove all nameserver lines, then put in new ones in order
-#. no nameservers entries so far
-#. not a nameserver, so all items on one line...
-#. no matter what, update our idea of the variable...
-#. delete *every* instance...
-#. Need to make sure __setitem__ is called for each item to
-#. maintain consistancy, in case some did something like
-#. resolv['nameservers'].append('123.123.123.123')
-#. or
-#. resolv['search'].append('another.domain')
-#. no need to return list in order here, I think.
-#. ConfESStaticRoutes(Conf):
-#. Yet another dictionary, this one for /etc/sysconfig/static-routes
-#. This file has a syntax similar to that of /etc/gateways;
-#. the interface name is added and active/passive is deleted:
-#. <interface> net <netaddr> netmask <netmask> gw <gateway>
-#. The key is the interface, the value is a list of
-#. [<netaddr>, <netmask>, <gateway>] lists
-#. since we re-write the file completely on close, we don't
-#. need to alter it piecemeal here.
-#. deletes a route from a device if the route exists,
-#. and if it is the only route for the device, removes
-#. the device from the dictionary
-#. Note: This could normally be optimized considerably,
-#. except that our input may have come from the file,
-#. which others may have hand-edited, and this makes it
-#. possible for us to deal with hand-inserted multiple
-#. identical routes in a reasonably correct way.
-#. need first comparison because list shrinks
-#. adds a route to a device, deleteing it first to avoid dups
-#. forget current version of file
-#. no need to return list in order here, I think.
-#. ConfChat(Conf):
-#. Not a dictionary!
-#. This reads chat files, and writes a subset of chat files that
-#. has all items enclosed in '' and has one expect/send pair on
-#. each line.
-#. Uses a list of two-element tuples.
-#. here i points to a new entry
-#. eat up the ending '
-#. eat whitespace between strings
-#. now form self.list from chatlist
-#. create self.lines for Conf.write...
-#. ConfChatFile(ConfChat):
-#. This class is a ConfChat which it interprets as a netcfg-written
-#. chat file with a certain amount of structure.  It interprets it
-#. relative to information in an "ifcfg-" file (devconf) and has a
-#. set of abortstrings that can be turned on and off.
-#. It exports the following data items:
-#. abortstrings   list of standard strings on which to abort
-#. abortlist      list of alternative strings on which to abort
-#. defabort       boolean: use the default abort strings or not
-#. dialcmd        string containing dial command (ATDT, for instance)
-#. phonenum       string containing phone number
-#. chatlist       list containing chat script after CONNECT
-#. chatfile       ConfChat instance
-#. ignore INITSTRING
-#. elif not self.dialcmd and tempmatch:
-#. First instance of something that looks like a dial
-#. command and a phone number we take as such.
-#. ignore dial command
-#. ConfChatFileClone(ConfChatFile):
-#. Creates a chatfile, then removes it if it is identical to the chat
-#. file it clones.
-#. some element differs, so they are different
-#. the loop completed, so they are the same
-#. lists are different lengths, so they are different
-#. ConfDIP:
-#. This reads chat files, and writes a dip file based on that chat script.
-#. Takes three arguments:
-#. o The chatfile
-#. o The name of the dipfile
-#. o The ConfSHellVar instance from which to take variables in the dipfile
-#. print "[%s] = %s" % (str(key), str(item))
-#. ConfModules(Conf)
-#. This reads /etc/modules.conf into a dictionary keyed on device type,
-#. holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
-#. cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
-#. cm['eth0']['post-install'] --> ['/bin/foo','arg1','arg2']
-#. path[*] entries are ignored (but not removed)
-#. New entries are added at the end to make sure that they
-#. come after any path[*] entries.
-#. Comments are delimited by initial '#'
-#. assume no -k field
-#. remember that it was there...
-#. ...and get it out of the way
-#. set *every* instance (should only be one, but...) to avoid surprises
-#. some idiot apparantly put an unrecognized key in
-#. the dictionary; ignore it...
-#. there's something to write...
-#. delete any instances of this if they exist.
-#. delete *every* instance...
-#. need to make sure everything is set, because program above may
-#. well have done cm['eth0']['post-install'] = ['/bin/foo', '-f', '/tmp/bar']
-#. which is completely reasonable, but won't invoke __setitem__
-#. ConfModInfo(Conf)
-#. This READ-ONLY class reads /boot/module-info.
-#. The first line of /boot/module-info is "Version <version>";
-#. this class reads versions 0 and 1 module-info files.
-#. Version 0 file format
-#. first "field" is null (before separators)
-#. get argument name (first "field" is null again)
-#. point at first character of argument description
-#. deal with escaped quotes (\")
-#. advance to beginning of next string, if any
-#. end of the line
-#. Version 1 file format
-#. Version 1 format uses ' ' and ':' characters as field separators
-#. but only uses ' ' in one place, where we explicitly look for it.
-#. pull out module and linetype from the first field...
-#. error: unknown flag...
-#. ConfPw(Conf)
-#. This class implements a dictionary based on a :-separated file.
-#. It takes as arguments the filename and the field number to key on;
-#. The data provided is a list including all fields including the key.
-#. Has its own write method to keep files sane.
-#. need to be able to return the keys in order to keep
-#. things consistent...
-#. change the mode of the new file to that of the old one
-#. add newlines while writing
-#. ConfPwO
-#. This class presents a data-oriented meta-class for making
-#. changes to ConfPw-managed files.  Applications should not
-#. instantiate this class directly.
-#. items are objects which the higher-level code can't touch
-#. __delitem__ is inherited from ConfPw
-#. Do *not* use setitem for this; adding an entry should be
-#. a much different action than accessing an entry or changing
-#. fields in an entry.
-#. first, we try not to re-use id's that have already been assigned.
-#. ignore nobody on some systems
-#. if that didn't work, we go back and find any free id over 500
-#. ConfPasswd(ConfPwO)
-#. This class presents a data-oriented class for making changes
-#. to the /etc/passwd file.
-#. first, we need a helper class...
-#. make sure that we have enough gecos fields
-#. make sure that we have enough gecos fields
-#. username is not an lvalue...
-#. ConfShadow(ConfPwO)
-#. This class presents a data-oriented class for making changes
-#. to the /etc/shadow file.
-#. first, we need a helper class...
-#. username is not an lvalue...
-#. we need that final '' so that the final : (delimited the
-#. "reserved field" is preserved by ConfPwO.addentry())
-#. ConfGroup(ConfPwO)
-#. This class presents a data-oriented class for making changes
-#. to the /etc/group file.
-#. May be replaced by a pwdb-based module, we hope.
-#. first, we need a helper class...
-#. username is not an lvalue...
-#. ConfUnix()
-#. This class presents a data-oriented class which uses the ConfPasswd
-#. and ConfShadow classes (if /etc/shadow exists) to hold data.
-#. Designed to be replaced by a pwdb module eventually, we hope.
-#. first, we need a helper class...
-#. username is not an lvalue...
-#. fields 1..n are false matches on "=" character in string,
-#. which is messed up, but try to deal with it
-#. snip off leading and trailing spaces, which are legal (it's
-#. how sysctl(1) prints them) but can be confusing, and tend to
-#. screw up Python's dictionaries
-#. set it in the line list
-#. snip off leading and trailing spaces, which are legal (it's
-#. how sysctl(1) prints them) but can be confusing, and tend to
-#. screw up Python's dictionaries
-#. re-read the file, sort of
-#. add newlines
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. returns false if no more lines matching pattern
-#. if while loop terminated, pattern not found.
-#. initialize dictionary of variable/name pairs
-#. print self.getline()
-#. found quote; strip from beginning and end
-#. ignore whitespace, etc.
-#. found quote; strip from beginning and end
-#. ignore whitespace, etc.
-#. delete *every* instance...
-#. # Copyright (C) 2001, 2002 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. This module manages SMB configuration file handling
-#. These classes are available:
-#. ConfSMB(Conf):
-#. Implements a dictionary of dictionaries of bools, ints, and strings.
-#. Toplevel key is a string representing a share
-#. Second level keys are literals representing config options.
-#. Booleans are set and stored as 0/1, but read in the file as any legal
-#. value, including (case insensitive) 0/false/no and 1/true/yes
-#. So: turn off browsing home directories with
-#. smb['homes'] = [ 'browseable', 0 ]
-#. ConfSMB(Conf):
-#. Implements a dictionary of dictionaries of bools, ints, and strings.
-#. Toplevel key is a string representing a share
-#. Second level keys are literals representing config options.
-#. Booleans are set and stored as 0/1, but read in the file as any legal
-#. value, including (case insensitive) 0/false/no and 1/true/yes
-#. So: turn off browsing home directories with
-#. smb['homes'][browseable] = 0
-#. print "initvars: " + self.getline()
-#. print "next_entry: " + self.getline()
-#. return true if the current line is of the form [...]
-#. leave the current line at the first line of the stanza
-#. (the first line after the [stanza_name] entry)
-#. leave the current line at the first line of the stanza
-#. (the first line after the [stanza_name] entry)
-#. leave the current line at the entry_name line or before
-#. the [...] line of the next stanza (or the end of the file)
-#. if entry_name does not exist.
-#. print "find_entry_in_current_stanza: " + self.getline()
-#. print "is stanza!"
-#. no need to return list in order here, I think.
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -1856,6 +1431,7 @@ msgstr "Otra tarjeta Tokenring"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print status
 #: src/netconfpkg/NCDevice.py:61
+#, python-format
 msgid ""
 "May I change\n"
 "%s\n"
@@ -1884,12 +1460,14 @@ msgstr "Tipo de dispositivo sin especificar"
 
 #. ok, we have to inherit all other data from our master
 #: src/netconfpkg/NCDevice.py:222
+#, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, el dispositivo no está especificado o el alias no es un número"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
 #: src/netconfpkg/NCDevice.py:264
+#, python-format
 msgid "Static routes file %s is invalid"
 msgstr "El fichero de rutas estático para %s no es válido"
 
@@ -1918,7 +1496,8 @@ msgstr "El fichero de rutas estático para %s no es válido"
 #. from netconfpkg.NCDevice import Device
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
 #. print self.data[i]
-#: src/netconfpkg/NCDeviceList.py:69
+#: src/netconfpkg/NCDeviceList.py:68
+#, python-format
 msgid "Error loading Device %s!\n"
 msgstr "Se ha producido un error al cargar el dispositivo %s\n"
 
@@ -1945,7 +1524,8 @@ msgstr "Se ha producido un error al cargar el dispositivo %s\n"
 #.
 #. traverse all devices in the list
 #.
-#: src/netconfpkg/NCDeviceList.py:140
+#: src/netconfpkg/NCDeviceList.py:139
+#, python-format
 msgid "Error opening/writing %s: %s!"
 msgstr "Error al abrir/escribir %s: %s"
 
@@ -2239,6 +1819,7 @@ msgstr "Yugoslavia"
 #.
 #. No Alias devices
 #: src/netconfpkg/NCHardwareList.py:185
+#, python-format
 msgid ""
 "%s has an alias to module %s in modules.conf,\n"
 "instead of currently loaded module %s!"
@@ -2273,6 +1854,7 @@ msgstr ""
 #. 60016
 #. Keep that test for later versions
 #: src/netconfpkg/NCProfileList.py:131
+#, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "El dispositivo %s usa el mismo dispositivo hardware \"%s\" como %s!\n"
 
@@ -2347,10 +1929,12 @@ msgstr "Software (XON/XOFF)"
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
 #: src/netconfpkg/NC_functions.py:326
+#, python-format
 msgid "Error removing %s: %s!"
 msgstr "Error al eliminar %s: %s"
 
 #: src/netconfpkg/NC_functions.py:335 src/netconfpkg/NC_functions.py:344
+#, python-format
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -2361,6 +1945,7 @@ msgstr ""
 "%s: %s!"
 
 #: src/netconfpkg/NC_functions.py:353
+#, python-format
 msgid ""
 "Error renaming\n"
 "%s\n"
@@ -2409,47 +1994,6 @@ msgstr ""
 #. is) ;). Nice for plugin mechanism.
 #. print _i
 #. print Device
-#. first some defines
-#. this basic class will be common for all genClass generated classes
-#. and imported from a seperate module
-#. initialize all variables with None
-#. Constructor with object
-#.
-#. @brief returns the parent of this object
-#. @return the parent of this object
-#.
-#.
-#. @brief deletes this object
-#.
-#. create new instance of ourselves
-#. install_funcs = classmethod(install_funcs)
-#.
-#. Non-Anonymous List
-#.
-#. print "----------- rollback %s -------" % self._attributes[SELF][NAME]
-#. print "%s changed" % child
-#.
-#. Non-List-Child functions
-#.
-#.
-#. List-Child functions
-#.
-#. get_install_funcs = classmethod(get_install_funcs)
-#.
-#. Anonymous List
-#.
-#. print "%s changed" % self._attributes[SELF][NAME]
-#. print "%s changed" % self._attributes[SELF][NAME]
-#. print "%s changed" % self._attributes[SELF][NAME]
-#. print "%s changed" % self._attributes[SELF][NAME]
-#. print "------------ rollback %s -------" % self._attributes[SELF][NAME]
-#.
-#. List-Child functions
-#.
-#.
-#. Non-List-Child functions
-#.
-#. get_install_funcs = classmethod(get_install_funcs)
 #. !/usr/bin/python
 #.
 #. test1
@@ -2495,29 +2039,33 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/Control.py:50
+#: src/netconfpkg/Control.py:49
 msgid "Active"
 msgstr "Activar "
 
-#: src/netconfpkg/Control.py:51
+#: src/netconfpkg/Control.py:50
 msgid "Inactive"
 msgstr "Desactivar"
 
 #. remove inactive isdn/ppp device
 #. check real ppp device
-#: src/netconfpkg/Control.py:174
+#: src/netconfpkg/Control.py:173
+#, python-format
 msgid "Cannot activate network device %s"
 msgstr "No puede activar el dispositivo de red %s"
 
-#: src/netconfpkg/Control.py:176
+#: src/netconfpkg/Control.py:175
+#, python-format
 msgid "Cannot deactivate network device %s"
 msgstr "No puede desactivar el dispositivo de red %s"
 
-#: src/netconfpkg/Control.py:178
+#: src/netconfpkg/Control.py:177
+#, python-format
 msgid "Cannot show status of network device %s"
 msgstr "No puede mostrar el estado del dispositivo de red %s"
 
-#: src/netconfpkg/Control.py:180
+#: src/netconfpkg/Control.py:179
+#, python-format
 msgid "Cannot monitor status of network device %s"
 msgstr "No puede monitorizar el estado del dispositivo de red %s"
 
@@ -2547,20 +2095,20 @@ msgid "Exit"
 msgstr "Salir"
 
 # ../src/glade-strings.c:584
-#: neat.desktop.in.h:1 src/maindialog.glade.h:16 src/netconf-tui.py:41
+#: src/netconf-tui.py:41 neat.desktop.in.h:1 src/maindialog.glade.h:16
 msgid "Network Configuration"
 msgstr "Configuración de red"
 
 # ../src/glade-strings.c:577
-#: src/maindialog.glade.h:15 src/netconf-tui.py:152 src/netconf-tui.py:259
-#: src/netconf-tui.py:362
+#: src/netconf-tui.py:152 src/netconf-tui.py:259 src/netconf-tui.py:362
+#: src/maindialog.glade.h:15
 msgid "Name"
 msgstr "Nombre"
 
 # src/glade-strings.c:339
 # ../src/glade-strings.c:294
-#: src/maindialog.glade.h:8 src/neat-control.glade.h:1 src/netconf-tui.py:153
-#: src/netconf-tui.py:260 src/netconf-tui.py:363
+#: src/netconf-tui.py:153 src/netconf-tui.py:260 src/netconf-tui.py:363
+#: src/maindialog.glade.h:8 src/neat-control.glade.h:1
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -3041,7 +2589,7 @@ msgstr "Dirección _virtual remota:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:23
 #: src/netconfpkg/gui/cipeconfig.glade.h:11
-#: src/netconfpkg/gui/ethernethardware.glade.h:23
+#: src/netconfpkg/gui/ethernethardware.glade.h:24
 #: src/netconfpkg/gui/tokenringhardware.glade.h:23
 msgid "_Device:"
 msgstr "_Dispositivo:"
@@ -3115,41 +2663,41 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:20
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:26
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
-#: src/netconfpkg/gui/ethernethardware.glade.h:26
+#: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth0"
 msgstr "eth0"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:21
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
-#: src/netconfpkg/gui/ethernethardware.glade.h:27
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: src/netconfpkg/gui/ethernethardware.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth1"
 msgstr "eth1"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:22
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
-#: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+#: src/netconfpkg/gui/ethernethardware.glade.h:29
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth2"
 msgstr "eth2"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:23
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
-#: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+#: src/netconfpkg/gui/ethernethardware.glade.h:30
+#: src/netconfpkg/gui/wirelessconfig.glade.h:28
 msgid "eth3"
 msgstr "eth3"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:24
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
-#: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: src/netconfpkg/gui/ethernethardware.glade.h:31
+#: src/netconfpkg/gui/wirelessconfig.glade.h:29
 msgid "eth4"
 msgstr "eth4"
 
@@ -3229,105 +2777,105 @@ msgstr "_Número telefónico:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-#: src/netconfpkg/gui/ethernethardware.glade.h:1
+#: src/netconfpkg/gui/ethernethardware.glade.h:2
 #: src/netconfpkg/gui/tokenringhardware.glade.h:1
 msgid "10"
 msgstr "10"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: src/netconfpkg/gui/ethernethardware.glade.h:2
+#: src/netconfpkg/gui/ethernethardware.glade.h:3
 #: src/netconfpkg/gui/tokenringhardware.glade.h:2
 msgid "11"
 msgstr "11"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
-#: src/netconfpkg/gui/ethernethardware.glade.h:3
+#: src/netconfpkg/gui/ethernethardware.glade.h:4
 #: src/netconfpkg/gui/tokenringhardware.glade.h:3
 msgid "12"
 msgstr "12"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:4
-#: src/netconfpkg/gui/ethernethardware.glade.h:4
+#: src/netconfpkg/gui/ethernethardware.glade.h:5
 #: src/netconfpkg/gui/tokenringhardware.glade.h:4
 msgid "13"
 msgstr "13"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:5
-#: src/netconfpkg/gui/ethernethardware.glade.h:5
+#: src/netconfpkg/gui/ethernethardware.glade.h:6
 #: src/netconfpkg/gui/tokenringhardware.glade.h:5
 msgid "14"
 msgstr "14"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:6
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:6
-#: src/netconfpkg/gui/ethernethardware.glade.h:6
+#: src/netconfpkg/gui/ethernethardware.glade.h:7
 #: src/netconfpkg/gui/tokenringhardware.glade.h:6
 msgid "15"
 msgstr "15"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:7
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:7
-#: src/netconfpkg/gui/ethernethardware.glade.h:7
+#: src/netconfpkg/gui/ethernethardware.glade.h:8
 #: src/netconfpkg/gui/tokenringhardware.glade.h:7
 msgid "3"
 msgstr "3"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:8
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:8
-#: src/netconfpkg/gui/ethernethardware.glade.h:8
+#: src/netconfpkg/gui/ethernethardware.glade.h:9
 #: src/netconfpkg/gui/tokenringhardware.glade.h:8
 msgid "4"
 msgstr "4"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:9
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:9
-#: src/netconfpkg/gui/ethernethardware.glade.h:9
+#: src/netconfpkg/gui/ethernethardware.glade.h:10
 #: src/netconfpkg/gui/tokenringhardware.glade.h:9
 msgid "5"
 msgstr "5"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:10
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:10
-#: src/netconfpkg/gui/ethernethardware.glade.h:10
+#: src/netconfpkg/gui/ethernethardware.glade.h:11
 #: src/netconfpkg/gui/tokenringhardware.glade.h:10
 msgid "6"
 msgstr "6"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:11
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:11
-#: src/netconfpkg/gui/ethernethardware.glade.h:11
+#: src/netconfpkg/gui/ethernethardware.glade.h:12
 #: src/netconfpkg/gui/tokenringhardware.glade.h:11
 msgid "7"
 msgstr "7"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:12
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:12
-#: src/netconfpkg/gui/ethernethardware.glade.h:12
+#: src/netconfpkg/gui/ethernethardware.glade.h:13
 #: src/netconfpkg/gui/tokenringhardware.glade.h:12
 msgid "8"
 msgstr "8"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:13
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:13
-#: src/netconfpkg/gui/ethernethardware.glade.h:13
+#: src/netconfpkg/gui/ethernethardware.glade.h:14
 #: src/netconfpkg/gui/tokenringhardware.glade.h:13
 msgid "9"
 msgstr "9"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:14
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:14
-#: src/netconfpkg/gui/ethernethardware.glade.h:14
+#: src/netconfpkg/gui/ethernethardware.glade.h:15
 #: src/netconfpkg/gui/tokenringhardware.glade.h:14
 msgid "DMA0:"
 msgstr "DMA0:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:15
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:15
-#: src/netconfpkg/gui/ethernethardware.glade.h:15
+#: src/netconfpkg/gui/ethernethardware.glade.h:16
 #: src/netconfpkg/gui/tokenringhardware.glade.h:15
 msgid "DMA1:"
 msgstr "DMA1:"
@@ -3335,7 +2883,7 @@ msgstr "DMA1:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:16
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:16
-#: src/netconfpkg/gui/ethernethardware.glade.h:16
+#: src/netconfpkg/gui/ethernethardware.glade.h:17
 #: src/netconfpkg/gui/isdnhardware.glade.h:4
 #: src/netconfpkg/gui/tokenringhardware.glade.h:16
 msgid "IO_1:"
@@ -3344,7 +2892,7 @@ msgstr "IO_1:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:17
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:17
-#: src/netconfpkg/gui/ethernethardware.glade.h:17
+#: src/netconfpkg/gui/ethernethardware.glade.h:18
 #: src/netconfpkg/gui/isdnhardware.glade.h:5
 #: src/netconfpkg/gui/tokenringhardware.glade.h:17
 msgid "IO_2:"
@@ -3353,7 +2901,7 @@ msgstr "IO_2:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:18
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:18
-#: src/netconfpkg/gui/ethernethardware.glade.h:18
+#: src/netconfpkg/gui/ethernethardware.glade.h:19
 #: src/netconfpkg/gui/isdnhardware.glade.h:6
 #: src/netconfpkg/gui/tokenringhardware.glade.h:18
 msgid "IR_Q:"
@@ -3362,7 +2910,7 @@ msgstr "IR_Q:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:19
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:19
-#: src/netconfpkg/gui/ethernethardware.glade.h:20
+#: src/netconfpkg/gui/ethernethardware.glade.h:21
 #: src/netconfpkg/gui/isdnhardware.glade.h:9
 #: src/netconfpkg/gui/tokenringhardware.glade.h:20
 msgid "Resource"
@@ -3377,7 +2925,7 @@ msgstr "Seleccionar el adaptador de Ethernet"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:22
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:22
-#: src/netconfpkg/gui/ethernethardware.glade.h:22
+#: src/netconfpkg/gui/ethernethardware.glade.h:23
 #: src/netconfpkg/gui/tokenringhardware.glade.h:22
 msgid "_Adapter:"
 msgstr "_Adaptador:"
@@ -3385,7 +2933,7 @@ msgstr "_Adaptador:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:24
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:24
-#: src/netconfpkg/gui/ethernethardware.glade.h:24
+#: src/netconfpkg/gui/ethernethardware.glade.h:25
 #: src/netconfpkg/gui/isdnhardware.glade.h:10
 #: src/netconfpkg/gui/tokenringhardware.glade.h:24
 msgid "_IO:"
@@ -3394,25 +2942,25 @@ msgstr "_IO:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:25
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:25
-#: src/netconfpkg/gui/ethernethardware.glade.h:25
+#: src/netconfpkg/gui/ethernethardware.glade.h:26
 #: src/netconfpkg/gui/isdnhardware.glade.h:11
 #: src/netconfpkg/gui/tokenringhardware.glade.h:25
 msgid "_MEM:"
 msgstr "_MEM:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
-#: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:29
+#: src/netconfpkg/gui/ethernethardware.glade.h:32
+#: src/netconfpkg/gui/wirelessconfig.glade.h:30
 msgid "eth5"
 msgstr "eth5"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:32
-#: src/netconfpkg/gui/ethernethardware.glade.h:32
+#: src/netconfpkg/gui/ethernethardware.glade.h:33
 msgid "eth6"
 msgstr "eth6"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:33
-#: src/netconfpkg/gui/ethernethardware.glade.h:33
+#: src/netconfpkg/gui/ethernethardware.glade.h:34
 msgid "eth7"
 msgstr "eth7"
 
@@ -3718,22 +3266,22 @@ msgid "Tokenring card"
 msgstr "Tarjeta Tokenring"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/wirelessconfig.glade.h:1
+#: src/netconfpkg/gui/wirelessconfig.glade.h:2
 msgid "11M"
 msgstr "11M"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-#: src/netconfpkg/gui/wirelessconfig.glade.h:2
+#: src/netconfpkg/gui/wirelessconfig.glade.h:3
 msgid "1M"
 msgstr "1M"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:3
+#: src/netconfpkg/gui/wirelessconfig.glade.h:4
 msgid "2M"
 msgstr "2M"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:4
+#: src/netconfpkg/gui/wirelessconfig.glade.h:5
 msgid "5.5M"
 msgstr "5.5M"
 
@@ -3773,7 +3321,7 @@ msgstr "Conexión inalámbrica"
 # ../src/glade-strings.c:707
 # ../src/glade-strings.c:842
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Channel:"
 msgstr "_Canal:"
 
@@ -3787,21 +3335,21 @@ msgstr "_ESSID (ID de la red):"
 # ../src/glade-strings.c:771
 # ../src/glade-strings.c:917
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Key:"
 msgstr "_Clave:"
 
 # ../src/glade-strings.c:791
 # ../src/glade-strings.c:939
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Mode:"
 msgstr "_Modo:"
 
 # ../src/glade-strings.c:832
 # ../src/glade-strings.c:997
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "_Transmit Rate:"
 msgstr "Ratio de _transmisión:"
 
@@ -3815,7 +3363,7 @@ msgstr "Escoger un proveedor"
 #: src/netconfpkg/gui/dslconfig.glade.h:2
 #: src/netconfpkg/gui/ethernetconfig.glade.h:1
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
-#: src/netconfpkg/gui/wirelessconfig.glade.h:6
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Allow all _users to enable and disable the device"
 msgstr ""
 "Permitir que todos los _usuarios habiliten y deshabiliten el dispositivo"
@@ -3833,7 +3381,7 @@ msgstr "Configuración de CIPE"
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 msgid "General"
 msgstr "General"
 
@@ -3856,7 +3404,7 @@ msgstr "Configuraciones de Túnel"
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Activate device when computer starts"
 msgstr "_Activar el dispositivo cuando se inicia el ordenador"
 
@@ -3866,7 +3414,7 @@ msgstr "_Activar el dispositivo cuando se inicia el ordenador"
 #: src/netconfpkg/gui/dslconfig.glade.h:23
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: src/netconfpkg/gui/tokenringconfig.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "_Nickname: "
 msgstr "_Sobrenombre:"
 
@@ -3878,7 +3426,7 @@ msgid "CTC Configuration"
 msgstr "Configuración CTC"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3893,7 +3441,7 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:15
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 msgid "Hardware Device"
 msgstr "Dispositivo Hardware"
 
@@ -3912,7 +3460,7 @@ msgstr "Protocolos"
 # ../src/netconfpkg/DialupDruid.py:106
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:16
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Hardware Device:"
 msgstr "Dispositivo de _Hardware:"
 
@@ -4201,25 +3749,32 @@ msgid "xDSL Configuration"
 msgstr "Configuración xDSL "
 
 #: src/netconfpkg/gui/editadress.glade.h:1
+#: src/netconfpkg/gui/ethernethardware.glade.h:1
+#: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "*"
+msgstr ""
+
+#: src/netconfpkg/gui/editadress.glade.h:2
 msgid "Add / Edit IP Address"
 msgstr "Añadir / Modificar la dirección IP"
 
 # src/glade-strings.c:154
 # ../src/glade-strings.c:162
 # ../src/glade-strings.c:192
-#: src/netconfpkg/gui/editadress.glade.h:2
+#: src/netconfpkg/gui/editadress.glade.h:3
 #: src/netconfpkg/gui/sharedtcpip.glade.h:36
 #: src/netconfpkg/gui/tcpipdialog.glade.h:41
 msgid "_Address:"
 msgstr "_Dirección:"
 
-#: src/netconfpkg/gui/editadress.glade.h:3
+#: src/netconfpkg/gui/editadress.glade.h:4
 msgid "_Gateway:"
 msgstr "_Puerta de enlace:"
 
 # ../src/glade-strings.c:829
 # ../src/glade-strings.c:991
-#: src/netconfpkg/gui/editadress.glade.h:4
+#: src/netconfpkg/gui/editadress.glade.h:5
 #: src/netconfpkg/gui/sharedtcpip.glade.h:48
 #: src/netconfpkg/gui/tcpipdialog.glade.h:49
 msgid "_Subnet Mask:"
@@ -4257,48 +3812,49 @@ msgid "Ethernet Device"
 msgstr "Dispositivo Ethernet:"
 
 # ../src/glade-strings.c:584
-#: src/netconfpkg/gui/ethernethardware.glade.h:19
+#: src/netconfpkg/gui/ethernethardware.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:19
 msgid "Network Adapters Configuration"
 msgstr "Configuración de adaptadores de red"
 
-#: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Choose Hardware Type"
 msgstr "Escoger el tipo de hardware"
 
 # src/glade-strings.c:432
 # ../src/netconfpkg/ADSLInterface.py:107
 # ../src/netconfpkg/ADSLInterface.py:114
-#: src/netconfpkg/gui/hardwaretype.glade.h:2
+#: src/netconfpkg/gui/hardwaretype.glade.h:3
 msgid "Ethernet"
 msgstr "Ethernet:"
 
 # src/glade-strings.c:466
 # ../src/netconfpkg/DialupDruid.py:106
 # ../src/netconfpkg/DialupDruid.py:106
-#: src/netconfpkg/gui/hardwaretype.glade.h:3
+#: src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "Hardware Type:"
 msgstr "Dispositivo Hardware:"
 
-#: src/netconfpkg/gui/hardwaretype.glade.h:4
+#: src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "ISDN"
 msgstr "ISDN"
 
 # ../src/glade-strings.c:791
 # ../src/glade-strings.c:939
-#: src/netconfpkg/gui/hardwaretype.glade.h:5
+#: src/netconfpkg/gui/hardwaretype.glade.h:6
 msgid "Modem"
 msgstr "Módem"
 
 # ../src/glade-strings.c:532
 # ../src/glade-strings.c:616
-#: src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type, you want to create"
+#: src/netconfpkg/gui/hardwaretype.glade.h:7
+#, fuzzy
+msgid "Please select the hardware device type you want to create"
 msgstr "Seleccione el tipo de dispositivo de hardware que desee crear"
 
 # ../src/netconfpkg/ModemInterface.py:67
 # ../src/netconfpkg/ModemInterface.py:68
-#: src/netconfpkg/gui/hardwaretype.glade.h:7
+#: src/netconfpkg/gui/hardwaretype.glade.h:8
 msgid "Token Ring"
 msgstr "Token Ring"
 
@@ -4792,40 +4348,40 @@ msgstr "_Prueba para la Dirección"
 msgid "_Use Hardware Address"
 msgstr "_Usar la dirección del Hardware"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:5
+#: src/netconfpkg/gui/wirelessconfig.glade.h:6
 msgid "Ad-Hoc"
 msgstr "Ad-Hoc"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "Managed"
 msgstr "Gestionado"
 
 # src/glade-strings.c:369
 # ../src/glade-strings.c:732
 # ../src/glade-strings.c:872
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "Network Name (SSID):"
 msgstr "Nombre de la red (SSID):"
 
 # ../src/glade-strings.c:668
 # ../src/glade-strings.c:781
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 msgid "Wireless Device Configuration"
 msgstr "Configuración del dispositivo inalámbrico"
 
 # ../src/glade-strings.c:668
 # ../src/glade-strings.c:781
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 msgid "Wireless Settings"
 msgstr "Configuraciones inalámbricas"
 
 # ../src/glade-strings.c:856
 # ../src/glade-strings.c:1022
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Auto"
 msgstr "_Auto"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "_Specified:"
 msgstr "_Específico:"
 
@@ -4844,6 +4400,16 @@ msgstr "Control del dispositivo de red"
 #: internet-druid.desktop.in.h:1
 msgid "Internet Configuration Wizard"
 msgstr "Wizard de configuración de internet"
+
+# ../src/netconfpkg/ModemInterface.py:67
+# ../src/netconfpkg/ModemInterface.py:68
+#~ msgid "Cipe connection"
+#~ msgstr "Conexión cipe"
+
+# ../src/glade-strings.c:219
+# ../src/glade-strings.c:253
+#~ msgid "Create a new Cipe connection."
+#~ msgstr "Crear una nueva conexión cipe."
 
 #~ msgid "Activating for Network device %s, please wait..."
 #~ msgstr "Activación del dispositivo de red %s, espere..."
