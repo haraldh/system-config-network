@@ -215,12 +215,12 @@ class IsdnDialup(Dialup):
                     'Persist' : 'PERSIST',
                     }
     
-    intkeydict = {'MSN' : 'MSN',
-                  'DialMax' : 'DIALMAX',
+    intkeydict = {'DialMax' : 'DIALMAX',
                   'HangupTimeout' : 'HUPTIMEOUT',
                   }
     
-    keydict = { 'ProviderName' : 'PROVIDER',
+    keydict = { 'MSN' : 'MSN',
+                'ProviderName' : 'PROVIDER',
                 'Login' : 'USER',
                 'Password' : 'PASSWORD',
                 'EncapMode' : 'ENCAP',
