@@ -41,7 +41,8 @@ import signal
 import os
 import gettext
 
-os.umask(0644)
+# Just to be safe...
+os.umask(0022)
 
 PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
