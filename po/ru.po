@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"PO-Revision-Date: 2002-04-10 18:55EET\n"
+"PO-Revision-Date: 2002-04-18 15:21EET\n"
 "Last-Translator: Leon Kanter <leon@blackcatlinux.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
@@ -50,23 +50,21 @@ msgstr "Вы действительно хотите удалить устройство \"%s\"?"
 
 #: ../src/netconf.py:647
 msgid "You have made some changes in your configuration."
-msgstr ""
+msgstr "В конфигурацию были внесены изменения."
 
 #: ../src/netconf.py:648
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
+msgstr "Для активирования сетевого устройства %s изменения должны быть сохранены."
 
 #: ../src/netconf.py:649
-#, fuzzy
 msgid "Do you want to continue?"
-msgstr "Сохранить изменения?"
+msgstr "Продолжить?"
 
-#: ../src/netconf.py:661 ../src/neat-control.py:119
+#: ../src/neat-control.py:119 ../src/netconf.py:661
 msgid "Network device activating..."
 msgstr "Активируется сетевое устройство..."
 
 #: ../src/netconf.py:664
-#, fuzzy
 msgid "Activating network device %s, please wait..."
 msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
 
@@ -131,11 +129,11 @@ msgid ""
 msgstr ""
 
 #: ../src/netconfpkg/gui/ADSLInterface.py:119
+#: ../src/netconfpkg/gui/CipeInterface.py:133
 #: ../src/netconfpkg/gui/DialupDruid.py:108
 #: ../src/netconfpkg/gui/EthernetInterface.py:202
-#: ../src/netconfpkg/gui/CipeInterface.py:133
-#: ../src/netconfpkg/gui/WirelessInterface.py:218
 #: ../src/netconfpkg/gui/TokenRingInterface.py:199
+#: ../src/netconfpkg/gui/WirelessInterface.py:218
 msgid "You have selected the following information:"
 msgstr "Вы указали следующую информацию:"
 
@@ -154,11 +152,11 @@ msgid "Login Name:"
 msgstr "Учетное имя:"
 
 #: ../src/netconfpkg/gui/ADSLInterface.py:123
+#: ../src/netconfpkg/gui/CipeInterface.py:148
 #: ../src/netconfpkg/gui/DialupDruid.py:113
 #: ../src/netconfpkg/gui/EthernetInterface.py:221
-#: ../src/netconfpkg/gui/CipeInterface.py:148
-#: ../src/netconfpkg/gui/WirelessInterface.py:242
 #: ../src/netconfpkg/gui/TokenRingInterface.py:217
+#: ../src/netconfpkg/gui/WirelessInterface.py:242
 msgid "Press \"Finish\" to create this account"
 msgstr "Нажмите \"Завершить\" для создания этой учетной записи"
 
@@ -170,17 +168,16 @@ msgstr "Оборудование:"
 msgid "Phone Number:"
 msgstr "Номер телефона:"
 
+#: ../src/glade-strings.c:1046 ../src/netconfpkg/NCDevice.py:206
+#: ../src/netconfpkg/NCDevice.py:213 ../src/netconfpkg/NCHardwareList.py:145
+#: ../src/netconfpkg/NCHardwareList.py:285
+#: ../src/netconfpkg/NC_functions.py:164 ../src/netconfpkg/NC_functions.py:220
 #: ../src/netconfpkg/gui/EthernetHardwareDruid.py:137
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.py:137
 #: ../src/netconfpkg/gui/ethernethardware.py:145
 #: ../src/netconfpkg/gui/ethernethardware.py:157
 #: ../src/netconfpkg/gui/tokenringhardware.py:150
 #: ../src/netconfpkg/gui/tokenringhardware.py:161
-#: ../src/netconfpkg/NCDevice.py:206 ../src/netconfpkg/NCDevice.py:213
-#: ../src/netconfpkg/NCHardwareList.py:145
-#: ../src/netconfpkg/NCHardwareList.py:285
-#: ../src/netconfpkg/NC_functions.py:164 ../src/netconfpkg/NC_functions.py:220
-#: ../src/glade-strings.c:1046
 msgid "Unknown"
 msgstr "Неизвестный"
 
@@ -194,8 +191,8 @@ msgstr "Да"
 msgid "No"
 msgstr "Нет"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:88 ../src/netconf-tui.py:169
-#: ../src/netconf-tui.py:275 ../src/netconf-tui.py:378
+#: ../src/netconf-tui.py:169 ../src/netconf-tui.py:275
+#: ../src/netconf-tui.py:378 ../src/netconfpkg/gui/GUI_functions.py:88
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -249,88 +246,88 @@ msgstr "Поиск модемов, подождите пожалуйста..."
 
 #: ../src/netconfpkg/gui/ModemInterface.py:115
 msgid "No modem was found on your system."
-msgstr ""
+msgstr "Модемы в вашей системе не обнаружены."
 
 #: ../src/netconfpkg/gui/ModemInterface.py:132
 msgid "Generic Modem"
 msgstr "Стандартный модем"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:139
-#: ../src/netconfpkg/gui/modemconfig.py:125 ../src/glade-strings.c:818
+#: ../src/glade-strings.c:818 ../src/netconfpkg/gui/ModemInterface.py:139
+#: ../src/netconfpkg/gui/modemconfig.py:125
 msgid "Off"
 msgstr "Звук выключен"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:141
-#: ../src/netconfpkg/gui/modemconfig.py:127 ../src/glade-strings.c:697
+#: ../src/glade-strings.c:697 ../src/netconfpkg/gui/ModemInterface.py:141
+#: ../src/netconfpkg/gui/modemconfig.py:127
 msgid "Low"
 msgstr "Низкая"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:143
-#: ../src/netconfpkg/gui/modemconfig.py:129 ../src/glade-strings.c:743
+#: ../src/glade-strings.c:743 ../src/netconfpkg/gui/ModemInterface.py:143
+#: ../src/netconfpkg/gui/modemconfig.py:129
 msgid "Medium"
 msgstr "Средняя"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:145
-#: ../src/netconfpkg/gui/modemconfig.py:131 ../src/glade-strings.c:631
+#: ../src/glade-strings.c:631 ../src/netconfpkg/gui/ModemInterface.py:145
+#: ../src/netconfpkg/gui/modemconfig.py:131
 msgid "High"
 msgstr "Высокая"
 
-#: ../src/netconfpkg/gui/ModemInterface.py:147
-#: ../src/netconfpkg/gui/modemconfig.py:133 ../src/glade-strings.c:1059
+#: ../src/glade-strings.c:1059 ../src/netconfpkg/gui/ModemInterface.py:147
+#: ../src/netconfpkg/gui/modemconfig.py:133
 msgid "Very High"
 msgstr "Очень высокая"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:87
 #: ../src/netconfpkg/gui/CipeInterface.py:157
+#: ../src/netconfpkg/gui/cipeconfig.py:87
 msgid "None - Server Mode"
-msgstr ""
+msgstr "Нет - режим сервера"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:93
 #: ../src/netconfpkg/gui/CipeInterface.py:162
+#: ../src/netconfpkg/gui/cipeconfig.py:93
 msgid " (dynamic)"
 msgstr " (динамический)"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:125
-#: ../src/netconfpkg/gui/cipeconfig.py:173
 #: ../src/netconfpkg/gui/CipeInterface.py:194
 #: ../src/netconfpkg/gui/CipeInterface.py:238
+#: ../src/netconfpkg/gui/cipeconfig.py:125
+#: ../src/netconfpkg/gui/cipeconfig.py:173
 msgid "Server Mode"
 msgstr "Режим сервера"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:205
-#: ../src/netconfpkg/gui/cipeconfig.py:210
 #: ../src/netconfpkg/gui/CipeInterface.py:269
 #: ../src/netconfpkg/gui/CipeInterface.py:274
+#: ../src/netconfpkg/gui/cipeconfig.py:205
+#: ../src/netconfpkg/gui/cipeconfig.py:210
 msgid "(own choice)"
 msgstr "(собственный выбор)"
 
-#: ../src/netconfpkg/gui/cipeconfig.py:216
 #: ../src/netconfpkg/gui/CipeInterface.py:280
+#: ../src/netconfpkg/gui/cipeconfig.py:216
 msgid "IP Address of Tunnel Device: "
 msgstr "Адрес IP устройства туннеля: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:217
 #: ../src/netconfpkg/gui/CipeInterface.py:281
+#: ../src/netconfpkg/gui/cipeconfig.py:217
 msgid "Local Port: "
 msgstr "Локальный порт: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:218
 #: ../src/netconfpkg/gui/CipeInterface.py:282
+#: ../src/netconfpkg/gui/cipeconfig.py:218
 msgid "Remote Peer Address: "
 msgstr "Удаленный адрес: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:222
 #: ../src/netconfpkg/gui/CipeInterface.py:286
+#: ../src/netconfpkg/gui/cipeconfig.py:222
 msgid "Remote Virtual Address: "
 msgstr "Удаленный виртуальный адрес: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:223
 #: ../src/netconfpkg/gui/CipeInterface.py:287
+#: ../src/netconfpkg/gui/cipeconfig.py:223
 msgid "Local Virtual Address: "
 msgstr "Локальный виртуальный адрес: "
 
-#: ../src/netconfpkg/gui/cipeconfig.py:224
 #: ../src/netconfpkg/gui/CipeInterface.py:288
+#: ../src/netconfpkg/gui/cipeconfig.py:224
 msgid "Secret Key: "
 msgstr "Секретный ключ: "
 
@@ -342,7 +339,7 @@ msgstr "Устройство CTC"
 msgid "IUCV Device"
 msgstr "Устройство IUCV"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:230 ../src/glade-strings.c:453
+#: ../src/glade-strings.c:453 ../src/netconfpkg/gui/dialupconfig.py:230
 msgid "Dialup Configuration"
 msgstr "Настройка удаленного доступа"
 
@@ -350,41 +347,41 @@ msgstr "Настройка удаленного доступа"
 msgid "ISDN Dialup Configuration"
 msgstr "Настройка удаленного доступа ISDN"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:259
-#: ../src/netconfpkg/gui/dialupconfig.py:337 ../src/glade-strings.c:1535
+#: ../src/glade-strings.c:1535 ../src/netconfpkg/gui/dialupconfig.py:259
+#: ../src/netconfpkg/gui/dialupconfig.py:337
 msgid "in"
-msgstr ""
+msgstr "вход"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:259 ../src/glade-strings.c:1548
+#: ../src/glade-strings.c:1548 ../src/netconfpkg/gui/dialupconfig.py:259
 msgid "out"
-msgstr ""
+msgstr "выход"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:298 ../src/glade-strings.c:1555
+#: ../src/glade-strings.c:1555 ../src/netconfpkg/gui/dialupconfig.py:298
 msgid "raw IP"
 msgstr "raw IP"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:300
-#: ../src/netconfpkg/gui/dialupconfig.py:327 ../src/glade-strings.c:1569
+#: ../src/glade-strings.c:1569 ../src/netconfpkg/gui/dialupconfig.py:300
+#: ../src/netconfpkg/gui/dialupconfig.py:327
 msgid "sync PPP"
 msgstr "sync PPP"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:312
-#: ../src/netconfpkg/gui/dialupconfig.py:366 ../src/glade-strings.c:1552
+#: ../src/glade-strings.c:1552 ../src/netconfpkg/gui/dialupconfig.py:312
+#: ../src/netconfpkg/gui/dialupconfig.py:366
 msgid "pap"
 msgstr "pap"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:314
-#: ../src/netconfpkg/gui/dialupconfig.py:368 ../src/glade-strings.c:1426
+#: ../src/glade-strings.c:1426 ../src/netconfpkg/gui/dialupconfig.py:314
+#: ../src/netconfpkg/gui/dialupconfig.py:368
 msgid "chap"
 msgstr "chap"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:316
-#: ../src/netconfpkg/gui/dialupconfig.py:370 ../src/glade-strings.c:1429
+#: ../src/glade-strings.c:1429 ../src/netconfpkg/gui/dialupconfig.py:316
+#: ../src/netconfpkg/gui/dialupconfig.py:370
 msgid "chap+pap"
 msgstr "chap+pap"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:318
-#: ../src/netconfpkg/gui/tcpdialog.py:137 ../src/glade-strings.c:1545
+#: ../src/glade-strings.c:1545 ../src/netconfpkg/gui/dialupconfig.py:318
+#: ../src/netconfpkg/gui/tcpdialog.py:137
 msgid "none"
 msgstr "нет"
 
@@ -441,8 +438,8 @@ msgstr ""
 "Состояние приложения было успешно\n"
 "сохранено в файле '%s'."
 
-#: ../src/netconfpkg/gui/tcpdialog.py:116
-#: ../src/netconfpkg/gui/tcpdialog.py:136 ../src/glade-strings.c:1478
+#: ../src/glade-strings.c:1478 ../src/netconfpkg/gui/tcpdialog.py:116
+#: ../src/netconfpkg/gui/tcpdialog.py:136
 msgid "dialup"
 msgstr "dialup"
 
@@ -458,34 +455,34 @@ msgstr "Создать новое соединение Ethernet."
 msgid "Other Ethernet Card"
 msgstr "Другая карта Ethernet"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:203
 #: ../src/netconfpkg/gui/CipeInterface.py:134
-#: ../src/netconfpkg/gui/WirelessInterface.py:219
+#: ../src/netconfpkg/gui/EthernetInterface.py:203
 #: ../src/netconfpkg/gui/TokenRingInterface.py:200
+#: ../src/netconfpkg/gui/WirelessInterface.py:219
 msgid "Device:"
 msgstr "Устройство:"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:214
+#: ../src/glade-strings.c:241 ../src/netconfpkg/gui/EthernetInterface.py:214
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211
 #: ../src/netconfpkg/gui/WirelessInterface.py:230
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211 ../src/glade-strings.c:241
 msgid "Address:"
 msgstr "Адрес:"
 
 #: ../src/netconfpkg/gui/EthernetInterface.py:215
-#: ../src/netconfpkg/gui/WirelessInterface.py:231
 #: ../src/netconfpkg/gui/TokenRingInterface.py:212
+#: ../src/netconfpkg/gui/WirelessInterface.py:231
 msgid "Subnet Mask:"
 msgstr "Маска подсети:"
 
 #: ../src/netconfpkg/gui/EthernetInterface.py:216
-#: ../src/netconfpkg/gui/WirelessInterface.py:232
 #: ../src/netconfpkg/gui/TokenRingInterface.py:213
+#: ../src/netconfpkg/gui/WirelessInterface.py:232
 msgid "Default Gateway Address:"
 msgstr "Адрес основного шлюза:"
 
 #: ../src/netconfpkg/gui/EthernetInterface.py:218
-#: ../src/netconfpkg/gui/WirelessInterface.py:234
 #: ../src/netconfpkg/gui/TokenRingInterface.py:215
+#: ../src/netconfpkg/gui/WirelessInterface.py:234
 msgid "Automatically obtain IP address settings with:"
 msgstr "Автоматически получать адрес IP при помощи:"
 
@@ -507,7 +504,7 @@ msgstr "Нажмите \"Готово\", чтобы получить стандартный диалог настройки."
 
 #: ../src/netconfpkg/gui/GenericInterface.py:104
 msgid "Then, at first, enter the nickname for the device."
-msgstr ""
+msgstr "После этого в первую очередь введите пседоним устройства."
 
 #: ../src/netconfpkg/gui/CipeInterface.py:86
 msgid "Cipe connection"
@@ -527,25 +524,22 @@ msgstr "Локальный порт:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:141
 #: ../src/netconfpkg/gui/CipeInterface.py:143
-#, fuzzy
 msgid "Remote Peer Address:"
-msgstr "Удаленный виртуальный адрес:"
+msgstr "Адрес удаленной машины:"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:141 ../src/glade-strings.c:274
+#: ../src/glade-strings.c:274 ../src/netconfpkg/gui/CipeInterface.py:141
 msgid "Auto"
 msgstr "Авто"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:144
 msgid "Remote Peer Port:"
-msgstr ""
+msgstr "Порт удаленной машины:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:146
-#, fuzzy
 msgid "Remote Virtual Address:"
 msgstr "Удаленный виртуальный адрес:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:147
-#, fuzzy
 msgid "Local Virtual Address:"
 msgstr "Локальный виртуальный адрес:"
 
@@ -558,9 +552,8 @@ msgid "Create a new wireless connection."
 msgstr "Создать новое беспроводное соединение."
 
 #: ../src/netconfpkg/gui/WirelessInterface.py:198
-#, fuzzy
 msgid "Other Wireless Card"
-msgstr "Другая карта Ethernet"
+msgstr "Другая беспроводная карта"
 
 #: ../src/netconfpkg/gui/WirelessInterface.py:237
 msgid "ESSID (Network ID):"
@@ -600,6 +593,9 @@ msgid ""
 "%s\n"
 "from mode %o to %o?"
 msgstr ""
+"Изменить режим\n"
+"%s\n"
+"с %o на %o?"
 
 #: ../src/netconfpkg/NCDevice.py:116 ../src/netconfpkg/NCDevice.py:127
 #: ../src/netconfpkg/NCDevice.py:138
@@ -622,16 +618,16 @@ msgstr "Ошибка загрузки устройства %s!\n"
 msgid "Error opening/writing %s: %s!"
 msgstr "Ошибка открытия/записи %s: %s!"
 
-#: ../src/netconfpkg/NCDialup.py:40 ../src/glade-strings.c:1419
+#: ../src/glade-strings.c:1419 ../src/netconfpkg/NCDialup.py:40
 msgid "auto"
 msgstr "авто"
 
-#: ../src/netconfpkg/NCDialup.py:41 ../src/glade-strings.c:1541
+#: ../src/glade-strings.c:1541 ../src/netconfpkg/NCDialup.py:41
 msgid "manual"
 msgstr "вручную"
 
-#: ../src/netconfpkg/NCDialup.py:44 ../src/netconfpkg/NC_functions.py:80
-#: ../src/glade-strings.c:811
+#: ../src/glade-strings.c:811 ../src/netconfpkg/NCDialup.py:44
+#: ../src/netconfpkg/NC_functions.py:80
 msgid "None"
 msgstr "Нет"
 
@@ -875,26 +871,27 @@ msgstr ""
 
 #: ../src/netconfpkg/NCProfileList.py:127
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
+msgstr "Устройство %s использует то же аппаратное устройтсво \"%s\", что и %s!\n"
 
 #: ../src/netconfpkg/NCProfileList.py:128
-#, fuzzy
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
-msgstr "Выберите тип оборудования для устройства, которое будет создано"
+msgstr ""
+"Выберите другое аппаратное устройство\n"
+"или активируйте только одно из них."
 
-#: ../src/netconfpkg/NC_functions.py:78 ../src/glade-strings.c:615
+#: ../src/glade-strings.c:615 ../src/netconfpkg/NC_functions.py:78
 msgid "Hardware (CRTSCTS)"
 msgstr "Аппаратное (CRTSCTS)"
 
-#: ../src/netconfpkg/NC_functions.py:79 ../src/glade-strings.c:999
+#: ../src/glade-strings.c:999 ../src/netconfpkg/NC_functions.py:79
 msgid "Software (XON/XOFF)"
 msgstr "Программное (XON/XOFF)"
 
 #: ../src/netconfpkg/NC_functions.py:322
 msgid "Error removing %s: %s!"
-msgstr ""
+msgstr "Ошибка удаления %s: %s!"
 
 #: ../src/netconfpkg/NC_functions.py:331 ../src/netconfpkg/NC_functions.py:340
 msgid ""
@@ -902,6 +899,9 @@ msgid ""
 "to\n"
 "%s: %s!"
 msgstr ""
+"Ошибка создания ссылки %s\n"
+"на\n"
+"%s: %s!"
 
 #: ../src/netconfpkg/NC_functions.py:349
 msgid ""
@@ -910,120 +910,113 @@ msgid ""
 "to\n"
 "%s: %s!"
 msgstr ""
+"Ошибка переименования\n"
+"%s\n"
+"в\n"
+"%s: %s!"
 
 #: ../src/netconfpkg/Control.py:55
-#, fuzzy
 msgid "Active"
-msgstr "Активный профиль"
+msgstr "Активно"
 
 #: ../src/netconfpkg/Control.py:56
-#, fuzzy
 msgid "Inactive"
-msgstr "Активный профиль"
+msgstr "Неактивно"
 
 #: ../src/netconfpkg/Control.py:179
 msgid "Cannot activate network device %s"
-msgstr ""
+msgstr "Не удается активировать устройство сети %s"
 
 #: ../src/netconfpkg/Control.py:181
 msgid "Cannot deactivate network device %s"
-msgstr ""
+msgstr "Не удается деактивировать устройство сети %s"
 
 #: ../src/netconfpkg/Control.py:183
 msgid "Cannot show status of network device %s"
-msgstr ""
+msgstr "Не удается показать состояние устройства сети %s"
 
 #: ../src/netconfpkg/Control.py:185
 msgid "Cannot monitor status of network device %s"
 msgstr ""
 
 #: ../src/netconf-tui.py:39
-#, fuzzy
 msgid "What do you want to configure?"
-msgstr "Сохранить изменения?"
+msgstr "Что вы хотите настроить?"
 
 #: ../src/netconf-tui.py:40
-#, fuzzy
 msgid "Configure"
-msgstr "Настройка CTC"
+msgstr "Настроить"
 
 #: ../src/netconf-tui.py:40
 msgid "Exit"
-msgstr ""
+msgstr "Выход"
 
-#: ../src/netconf-tui.py:45 ../src/glade-strings.c:796
+#: ../src/glade-strings.c:796 ../src/netconf-tui.py:45
 msgid "Network Configuration"
 msgstr "Настройка сети"
 
-#: ../src/netconf-tui.py:156 ../src/netconf-tui.py:263
-#: ../src/netconf-tui.py:366 ../src/glade-strings.c:789
+#: ../src/glade-strings.c:789 ../src/netconf-tui.py:156
+#: ../src/netconf-tui.py:263 ../src/netconf-tui.py:366
 msgid "Name"
 msgstr "Имя"
 
-#: ../src/netconf-tui.py:157 ../src/netconf-tui.py:264
-#: ../src/netconf-tui.py:367 ../src/glade-strings.c:435
+#: ../src/glade-strings.c:435 ../src/netconf-tui.py:157
+#: ../src/netconf-tui.py:264 ../src/netconf-tui.py:367
 msgid "Device"
 msgstr "Устройство"
 
 #: ../src/netconf-tui.py:158
 msgid "Use DHCP"
-msgstr ""
+msgstr "Использовать DHCP"
 
 #: ../src/netconf-tui.py:159
 msgid "Static IP"
-msgstr ""
+msgstr "Статический IP"
 
 #: ../src/netconf-tui.py:160
-#, fuzzy
 msgid "Netmask"
 msgstr "Маска подсети"
 
 #: ../src/netconf-tui.py:161
-#, fuzzy
 msgid "Default gateway IP"
-msgstr "Основной шлюз:"
+msgstr "IP шлюза по умолчанию"
 
 #: ../src/netconf-tui.py:169 ../src/netconf-tui.py:275
 #: ../src/netconf-tui.py:378
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../src/netconf-tui.py:171
-#, fuzzy
 msgid "Ethernet Configuration"
-msgstr "Настройка CIPE"
+msgstr "Настройка Ethernet"
 
 #: ../src/netconf-tui.py:265 ../src/netconf-tui.py:368
-#, fuzzy
 msgid "ISP Phonenumber"
-msgstr "Номер телефона"
+msgstr "Номер телефона ISP"
 
 #: ../src/netconf-tui.py:266 ../src/netconf-tui.py:369
 msgid "ISP Login"
-msgstr ""
+msgstr "Учетное имя ISP"
 
 #: ../src/netconf-tui.py:267 ../src/netconf-tui.py:370
-#, fuzzy
 msgid "ISP Password"
-msgstr "Пароль:"
+msgstr "Пароль ISP"
 
 #: ../src/netconf-tui.py:268
-#, fuzzy
 msgid "Modem Initstring"
-msgstr "Строка инициализации модема:"
+msgstr "Строка инициализации модема"
 
-#: ../src/netconf-tui.py:276 ../src/glade-strings.c:759
+#: ../src/glade-strings.c:759 ../src/netconf-tui.py:276
 msgid "Modem Configuration"
 msgstr "Свойства модема"
 
 #: ../src/netconf-tui.py:371
 msgid "MSN"
-msgstr ""
+msgstr "MSN"
 
 #: ../src/netconf-tui.py:379
-#, fuzzy
 msgid "ISDN Configuration"
-msgstr "Настройка xDSL"
+msgstr "Настройка ISDN"
 
 #: ../src/neat-control.py:56
 msgid ""
@@ -1037,11 +1030,11 @@ msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
 
 #: ../src/glade-strings.c:10
 msgid "$"
-msgstr ""
+msgstr "$"
 
 #: ../src/glade-strings.c:13
 msgid "%P %%"
-msgstr ""
+msgstr "%P %%"
 
 #: ../src/glade-strings.c:18
 msgid "/dev/modem"
@@ -1076,28 +1069,24 @@ msgid "/dev/ttyS3"
 msgstr "/dev/ttyS3"
 
 #: ../src/glade-strings.c:51
-#, fuzzy
 msgid "0.00"
-msgstr "230400"
+msgstr "0.00"
 
 #: ../src/glade-strings.c:54
-#, fuzzy
 msgid "00:00:00"
-msgstr "00:00:00:00:00:00"
+msgstr "00:00:00"
 
 #: ../src/glade-strings.c:57
 msgid "00:00:00:00:00:00"
 msgstr "00:00:00:00:00:00"
 
 #: ../src/glade-strings.c:61
-#, fuzzy
 msgid "1"
-msgstr "1M"
+msgstr "1"
 
 #: ../src/glade-strings.c:64
-#, fuzzy
 msgid "1.00"
-msgstr "1200"
+msgstr "1.00"
 
 #: ../src/glade-strings.c:70
 msgid "10"
@@ -1224,9 +1213,8 @@ msgid "A_rea Code:"
 msgstr "Код города:"
 
 #: ../src/glade-strings.c:217
-#, fuzzy
 msgid "Ac_tivate"
-msgstr "Активный профиль"
+msgstr "Ак_тивировать"
 
 #: ../src/glade-strings.c:220
 msgid "Accounting"
@@ -1274,7 +1262,7 @@ msgstr "Разрешить всем пользователям активировать и деактивировать устройство"
 
 #: ../src/glade-strings.c:263
 msgid "Allow dial on _demand"
-msgstr ""
+msgstr "Разрешить дозвон при _необходимости"
 
 #: ../src/glade-strings.c:266
 msgid "Allow the link come up on demand."
@@ -1285,14 +1273,12 @@ msgid "Automatically obtain DNS information from _provider"
 msgstr "Автоматически получать информацию DNS от провайдера"
 
 #: ../src/glade-strings.c:280
-#, fuzzy
 msgid "Automatically obtain _DNS information from provider"
-msgstr "Автоматически получать информацию DNS от провайдера"
+msgstr "Автоматически получать информацию _DNS от провайдера"
 
 #: ../src/glade-strings.c:284
-#, fuzzy
 msgid "Automatically obtain _IP address settings with:"
-msgstr "Автоматически получать адрес IP при помощи:"
+msgstr "Автоматически получать адрес _IP при помощи:"
 
 #: ../src/glade-strings.c:287
 msgid "Basic"
@@ -1356,14 +1342,12 @@ msgid "Configure DSL connection"
 msgstr "Свойства соединения DSL"
 
 #: ../src/glade-strings.c:335
-#, fuzzy
 msgid "Configure Network Settings"
-msgstr "Настройки беспроводной связи"
+msgstr "Настроить параметры сети"
 
 #: ../src/glade-strings.c:338
-#, fuzzy
 msgid "Configure Tunnel"
-msgstr "Настройка CTC"
+msgstr "Настроить туннель"
 
 #: ../src/glade-strings.c:341
 #, fuzzy
@@ -1371,19 +1355,16 @@ msgid "Configure Wireless Connection"
 msgstr "Свойства соединения DSL"
 
 #: ../src/glade-strings.c:344
-#, fuzzy
 msgid "Confirm _starting connection"
-msgstr "Свойства соединения DSL"
+msgstr "Подтвердите начало подключения"
 
 #: ../src/glade-strings.c:347
-#, fuzzy
 msgid "Confirm stopping _connection"
-msgstr "Свойства соединения DSL"
+msgstr "Подтвердите разрыв соединения"
 
 #: ../src/glade-strings.c:350
-#, fuzzy
 msgid "Connect to"
-msgstr "Модемное соединение"
+msgstr "Подключиться к"
 
 #: ../src/glade-strings.c:353
 msgid "Copy"
@@ -1394,14 +1375,12 @@ msgid "Cos_t accumulated from the past connection:"
 msgstr ""
 
 #: ../src/glade-strings.c:359
-#, fuzzy
 msgid "Cost"
-msgstr "Hosts"
+msgstr "Стоимость"
 
 #: ../src/glade-strings.c:362
-#, fuzzy
 msgid "Cost per:"
-msgstr "Hosts"
+msgstr ""
 
 #: ../src/glade-strings.c:365
 #, fuzzy
@@ -1409,42 +1388,36 @@ msgid "Count:"
 msgstr "Маршрутизация"
 
 #: ../src/glade-strings.c:368
-#, fuzzy
 msgid "Create Cipe Connection"
-msgstr "Создание соединения"
+msgstr "Создать соединение CIPE"
 
 #: ../src/glade-strings.c:371
-#, fuzzy
 msgid "Create DSL connection"
-msgstr "Свойства соединения DSL"
+msgstr "Создать соединение DSL"
 
 #: ../src/glade-strings.c:374
 msgid "Create Dialup Connection"
-msgstr "Создание соединения"
+msgstr "Создать модемное соединение"
 
 #: ../src/glade-strings.c:378
-#, fuzzy
 msgid "Create Ethernet Device"
-msgstr "Устройство Ethernet"
+msgstr "Создать устройство Ethernet"
 
 #: ../src/glade-strings.c:381
-#, fuzzy
 msgid "Create Tokenring Device"
-msgstr "Устройство Ethernet"
+msgstr "Создать устройство Tokenring"
 
 #: ../src/glade-strings.c:384
-#, fuzzy
 msgid "Create Wireless Device"
-msgstr "Устройство Ethernet"
+msgstr "Создать беспроводное устройство"
 
 #: ../src/glade-strings.c:388
 msgid "D Channel Protocol"
 msgstr "Протокол D Channel"
 
 #: ../src/glade-strings.c:391
-#, fuzzy
 msgid "DHCP Settings"
-msgstr "Свойства TCP/IP"
+msgstr "Параметры TCP/IP"
 
 #: ../src/glade-strings.c:397
 msgid "DMA0:"
@@ -1463,14 +1436,12 @@ msgid "DNS Search Path"
 msgstr "Путь поиска в DNS"
 
 #: ../src/glade-strings.c:412
-#, fuzzy
 msgid "Deact_ivate"
-msgstr "Активный профиль"
+msgstr "Деактивировать"
 
 #: ../src/glade-strings.c:416
-#, fuzzy
 msgid "Default _Gateway Address:"
-msgstr "Основной шлюз:"
+msgstr "Адрес _шлюза по умолчанию:"
 
 #: ../src/glade-strings.c:419
 msgid "Delete"
@@ -1499,9 +1470,8 @@ msgid "Device Type"
 msgstr "Тип соединения"
 
 #: ../src/glade-strings.c:441
-#, fuzzy
 msgid "Device _Aliases:"
-msgstr "Псевдонимы:"
+msgstr "_Псевдоним устройства:"
 
 #: ../src/glade-strings.c:444
 msgid "Devices"
@@ -1521,9 +1491,8 @@ msgid "Difficulty level:"
 msgstr "Уровень сложности:"
 
 #: ../src/glade-strings.c:460
-#, fuzzy
 msgid "Disconnect from"
-msgstr "Соединение ISDN"
+msgstr "Отключиться от"
 
 #: ../src/glade-strings.c:463
 msgid "Do_main:"
@@ -1542,6 +1511,8 @@ msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
 msgstr ""
+"Каждое соединение должно быть привязано к физическому устройству, которое может "
+"быть выбрано ниже."
 
 #: ../src/glade-strings.c:475
 msgid ""
@@ -1555,15 +1526,10 @@ msgstr ""
 "устройству."
 
 #: ../src/glade-strings.c:479
-#, fuzzy
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
 msgstr ""
-"Каждое логическое устройство должно быть привязано к физическому устройству, "
-"которое может быть выбрано из списка ниже. Поддержка псевдонимов устройств "
-"позволяет привязать несколько виртуальных устройств к одному логическому "
-"устройству."
 
 #: ../src/glade-strings.c:485
 msgid "Easy"
@@ -1623,6 +1589,8 @@ msgid ""
 "Enter the Access Concentrator name, if you have been given one by your ISP. "
 "In most cases you can leave this blank."
 msgstr ""
+"Введите имя концентратора доступа, если оно было выдано вашим ISP. "
+"В большинстве случаев его можно оставить пустым."
 
 #: ../src/glade-strings.c:525
 #, fuzzy
@@ -1652,8 +1620,7 @@ msgid "Enter the login name, that your ISP gave you here."
 msgstr "Укажите учетное имя, выданное вашим ISP."
 
 #: ../src/glade-strings.c:547
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "Укажите имя этого соединения, как правило это просто имя вашего ISP."
 
 #: ../src/glade-strings.c:550
@@ -2719,3 +2686,4 @@ msgstr "Настройка xDSL"
 
 #~ msgid "Protocol"
 #~ msgstr "Протокол"
+
