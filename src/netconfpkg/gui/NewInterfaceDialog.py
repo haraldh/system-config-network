@@ -80,11 +80,19 @@ class NewInterfaceDialog:
             self.interface_clist.set_row_data (row, iface)
 
         # Add the interfaces that have no druid yet
-        for type in [ CIPE, WIRELESS, TOKENRING, CTC, IUCV ]:
+        devs = [ CIPE, WIRELESS, TOKENRING ]
+        machine = os.uname()[4]
+        if machine == 's390' or machine == 's390x':
+            devs.append(CTC)
+            devs.append(IUCV)
+        
+        for type in devs:
             iface = GenericInterface (self.toplevel, type = type,
                                       do_save = None, druid = self.druid)
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
             self.interface_clist.set_row_data (row, iface)
+
+
 
         self.interface_clist.select_row (0, 0)
 
