@@ -111,11 +111,9 @@ class ethernetConfigDialog(deviceConfigDialog):
         fields = string.split(hw)
         device = fields[0]
         try: hwaddr = ethtool.get_hwaddr(device) 
-        except IOError, str:
-            self.error_str = str
-            GUI_functions.generic_error_dialog(self.error_str, self.dialog)
-            pass
+        except IOError, err:
+            GUI_functions.generic_error_dialog(str(err), self.dialog)
         else:
             self.device.HardwareAddress = hwaddr
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
-
+            
