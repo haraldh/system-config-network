@@ -27,7 +27,9 @@ import os
 import GdkImlib
 import string
 import gettext
-import re
+import string
+
+import HardwareList
 
 from gtk import TRUE
 from gtk import FALSE
@@ -62,10 +64,71 @@ class dslConfigDialog:
             })
 
         self.dialog = self.xml.get_widget("Dialog")
-        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
+        #self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
 
+        self.hydrate()
+
+        self.dialog.set_close(TRUE)
+
+
+    def hydrate(self):
+        dialup = self.device.Dialup
+        ecombo = self.xml.get_widget("ethernetDeviceComboBox")
+
+        hwdesc = []
+        hwcurr = None
+        hardwarelist = HardwareList.getHardwareList()
+        for hw in hardwarelist:
+            if hw.Type == "Ethernet":
+                desc = str(hw.Name) + ' (' + hw.Description + ')'
+                hwdesc.append(desc)
+                if dialup.EthDevice and \
+                   hw.Name == dialup.EthDevice:
+                    hwcurr = desc
+                    
+        if len(hwdesc):
+            hwdesc.sort()
+            ecombo.set_popdown_strings(hwdesc)
+
+        if not hwcurr and len(hwdesc):
+            hwcurr = hwdesc[0]
+
+        if dialup.EthDevice:
+            self.xml.get_widget("ethernetDeviceEntry").set_text(hwcurr)
+
+        if dialup.ProviderName:
+            self.xml.get_widget("providerNameEntry").set_text(dialup.ProviderName)
+
+        if dialup.Login:
+            self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
+
+        if dialup.Password:
+            self.xml.get_widget("passwordEntry").set_text(dialup.Password)
+            
+        if dialup.ServiceName:
+            self.xml.get_widget("serviceNameEntry").set_text(dialup.ServiceName)
+
+        if dialup.AcName:
+            self.xml.get_widget("acNameEntry").set_text(dialup.AcName)
+
+        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP)
+
+    def dehydrate(self):
+        dialup = self.device.Dialup
+        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+        fields = string.split(hw)
+        hw = fields[0]
+        dialup.EthDevice = hw
+        dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()
+        dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
+        dialup.Password = self.xml.get_widget("passwordEntry").get_text()
+        dialup.ServiceName = self.xml.get_widget("serviceNameEntry").get_text()
+        dialup.AcName = self.xml.get_widget("acNameEntry").get_text()
+        if self.xml.get_widget("useSyncpppCB").get_active():
+            dialup.SyncPPP = TRUE
+        else: dialup.SyncPPP = FALSE
+        
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
             pixmap_file = "pixmaps/" + pixmap_file
@@ -84,15 +147,12 @@ class dslConfigDialog:
         else:
             self.dialog.set_icon(pix, mask)
 
-    def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
-
     def on_okButton_clicked(self, button):
-        self.dialog.destroy()
-
+        self.dehydrate()
+        
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
-
+        pass
+    
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
