@@ -278,6 +278,8 @@ def hardware_init(xml, device):
         "on_hardwareProbeButton_clicked" : (on_hardwareProbeButton_clicked, xml, device),
         "on_hardwareConfigureButton_clicked" : (on_hardwareConfigureButton_clicked, xml, device)
         })
+    xml.get_widget("hardwareSeparator").show()
+    xml.get_widget("hardwareTable").show()
 
 def hardware_hydrate(xml, device):
     hwlist = NCHardwareList.getHardwareList()
@@ -330,6 +332,35 @@ def hardware_dehydrate(xml, device):
         device.HardwareAddress = xml.get_widget("hardwareMACEntry").get_text()
     else:
         device.HardwareAddress = None
+
+
+
+def dsl_hardware_init(xml, device):
+    pass
+
+def dsl_hardware_hydrate(xml, device):
+    hwlist = NCHardwareList.getHardwareList()
+    (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Dialup.EthDevice)
+    omenu = xml.get_widget("hardwareDeviceOmenu")
+    omenu.remove_menu()
+    menu = gtk.GtkMenu()
+    history = 0
+    for i in range (0, len (hwdesc)):
+        item = gtk.GtkMenuItem (hwdesc[i])
+        item.show()
+        menu.append (item)
+        if hwdesc[i] == hwcurr:
+            history = i
+    omenu.set_menu (menu)
+    omenu.show_all()
+    omenu.set_history (history)
+    omenu.show_all()
+
+
+def dsl_hardware_dehydrate(xml, device):
+    omenu = xml.get_widget("hardwareDeviceOmenu")
+    hw = omenu.children()[0].get()
+    device.Dialup.EthDevice = string.split(hw)[0]
 
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)

@@ -69,7 +69,7 @@ class dslConfigDialog(deviceConfigDialog):
         vbox = self.xml.get_widget ('hardwareVbox')
         window.remove (frame)
         vbox.pack_start (frame)
-        sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
+        sharedtcpip.dsl_hardware_init (self.sharedtcpip_xml, self.device)
         self.hydrate ()
 
     def hydrate(self):
@@ -106,7 +106,7 @@ class dslConfigDialog(deviceConfigDialog):
         
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
-        sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.dsl_hardware_hydrate (self.sharedtcpip_xml, self.device)
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
@@ -122,7 +122,7 @@ class dslConfigDialog(deviceConfigDialog):
             self.device.Device = "dsl"
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
-        sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.dsl_hardware_dehydrate (self.sharedtcpip_xml, self.device)
         
 
 # make ctrl-C work
