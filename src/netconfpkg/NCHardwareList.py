@@ -138,8 +138,11 @@ class HardwareList(HardwareList_base):
         return i
 
     def updateFromSystem(self):
+        import kudzu
+
         modules = ConfModules()
-        modinfo = getModInfo()
+        modinfo = getModInfo()            
+
         #
         # Read in actual system state
         #
@@ -168,8 +171,7 @@ class HardwareList(HardwareList_base):
                     hw = self[i]
                     hw.Name = device
                     hw.Description = mod
-                    hw.Type = getDeviceType(device)
-                        
+                    hw.Type = getDeviceType(device)                        
                     hw.createCard()
                     hw.Card.ModuleName = mod
                     for info in modinfo.keys():
@@ -181,6 +183,69 @@ class HardwareList(HardwareList_base):
                         confkey = self.keydict[selfkey]
                         if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
                             hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                    hw.setChanged(true)
+                    generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
+
+
+        #
+        # Read from kudzu
+        #
+        devlist = []
+        devlist.extend(kudzu.probe(kudzu.CLASS_NETWORK, kudzu.BUS_UNSPEC,
+                                   kudzu.PROBE_SAFE))
+        #devlist.extend(kudzu.probe(kudzu.CLASS_UNSPEC,
+        #kudzu.BUS_UNSPEC, kudzu.PROBE_SAFE))
+        for kudzu_device in devlist:
+
+            if not kudzu_device.device:
+                continue
+            
+            if (kudzu_device.driver == "ignore"):
+                continue
+            
+            mod = kudzu_device.driver
+            for hw in self:
+                if hw.Card and hw.Card.ModuleName == mod:
+                    break
+            else:
+                i = self.addHardware(getDeviceType(kudzu_device.device))
+                hw = self[i]
+                if string.find (kudzu_device.desc, "|") != -1:
+                    mfg, desc = string.split (kudzu_device.desc, "|")
+                else:
+                    mfg = _("Unknown")
+                    desc = kudzu_device.desc
+
+                hw.Name = kudzu_device.device
+                # ok, now search for an empty slot
+                for num in xrange(0,20):
+                    for h in self:
+                        if h.Name == hw.Name + str(num):
+                            break
+                    else:
+                        # no card seems to use this 
+                        hw.Name = hw.Name + str(num)
+                        break
+                
+                hw.Description = desc
+                if kudzu_device.device != None:
+                    hw.Type = getDeviceType(kudzu_device.device)
+                        
+                hw.createCard()
+                hw.Card.ModuleName = mod
+
+                for info in modinfo.keys():
+                    if info == mod:
+                        if modinfo[info].has_key('description'):
+                            hw.Description = modinfo[info]['description']
+                            
+                for selfkey in self.keydict.keys():
+                    confkey = self.keydict[selfkey]
+                    if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                        hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                hw.setChanged(true)
+                generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
+                
 
     def load(self):
         modules = ConfModules()
@@ -217,7 +282,6 @@ class HardwareList(HardwareList_base):
                 if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
                     hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
                     
-        self.updateFromSystem()
 
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
@@ -280,6 +344,7 @@ class HardwareList(HardwareList_base):
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
         self.commit(changed=false)
+        self.updateFromSystem()
 
     def save(self):
         modules = MyConfModules()
@@ -391,11 +456,13 @@ class HardwareList(HardwareList_base):
         # Clean up modules
         for mod in modules.keys():
             type = getDeviceType(mod)
-            if type != 'Ethernet':
+            if type != ETHERNET and type != TOKENRING:
                 continue
             #print "Testing " + str(mod)
             for hw in self:
-                if hw.Type == ETHERNET and hw.Name == mod:
+                if (hw.Type == ETHERNET or \
+                    hw.Type == TOKENRING) and \
+                    hw.Name == mod:
                     break
             else:
                 #print "Removing " + str(mod)
