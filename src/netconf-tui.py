@@ -107,7 +107,7 @@ class EthernetWindow:
                 self.name.set(eth.Name)
             if eth.Device:
                 self.hwdev.set(eth.Device)
-            if (string.lower(eth.BootProto)=="dhcp") or (string.lower(eth.BootProto)=="bootp"):
+            if (eth.BootProto and (string.lower(eth.BootProto)=="dhcp") or (string.lower(eth.BootProto)=="bootp")):
                 self.dynip.setValue("*")
             if eth.IP:
                 self.statip.set(eth.IP)
