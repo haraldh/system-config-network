@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2003-02-21 14:21+0100\n"
+"POT-Creation-Date: 2003-02-21 16:28+0100\n"
 "PO-Revision-Date: 2003-02-04 21:22+0000\n"
 "Last-Translator: Pedro Morais <morais@kde.org\n"
 "Language-Team: pt <morais@kde.org>\n"
@@ -1096,7 +1096,7 @@ msgstr "Seleccione Adaptador Ethernet"
 #: src/netconfpkg/NCHardwareList.py:168 src/netconfpkg/NCHardwareList.py:276
 #: src/netconfpkg/NCHardwareList.py:393 src/netconfpkg/NCHardwareList.py:423
 #: src/netconfpkg/NC_functions.py:238 src/netconfpkg/NCDevice.py:207
-#: src/netconfpkg/NCDevice.py:214 src/netconfpkg/NCDeviceList.py:84
+#: src/netconfpkg/NCDevice.py:214 src/netconfpkg/NCDeviceList.py:86
 msgid "Unknown"
 msgstr "Desconhecido"
 
@@ -3836,7 +3836,7 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCProfileList.py:56 src/netconfpkg/NCDeviceList.py:71
+#: src/netconfpkg/NCProfileList.py:59 src/netconfpkg/NCDeviceList.py:72
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3845,19 +3845,26 @@ msgstr ""
 "Erro ao criar directoria!\n"
 "%s"
 
-#: src/netconfpkg/NCProfileList.py:59
+#: src/netconfpkg/NCProfileList.py:62
+#, fuzzy, python-format
+msgid ""
+"Please restart once with root permissions!\n"
+"%s"
+msgstr "Por favor reinicie o %s com permissões de root!"
+
+#: src/netconfpkg/NCProfileList.py:67
 msgid "Copying /etc/hosts to default profile."
 msgstr "A copiar /etc/hosta para o perfil por omissão."
 
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:162
+#: src/netconfpkg/NCProfileList.py:173
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 "O dispositivo %s usa o mesmo dispositivo de 'hardware' \"%s\" que o %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:164
+#: src/netconfpkg/NCProfileList.py:175
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -4136,7 +4143,12 @@ msgid "Static routes file %s is invalid"
 msgstr "O ficheiro de rotas estáticas %s é inválido"
 
 #. print dev+" has unknown device type, skipping it."
-#: src/netconfpkg/NCDeviceList.py:88
+#: src/netconfpkg/NCDeviceList.py:92
+#, fuzzy
+msgid "Please start redhat-config-network with root permissions once!\n"
+msgstr "Por favor reinicie o %s com permissões de root!"
+
+#: src/netconfpkg/NCDeviceList.py:96
 #, python-format
 msgid "Copying %s to devices and putting it into the default profile."
 msgstr "A copiar %s para os dispositivo e a coloca-lo no perfil por omissão."

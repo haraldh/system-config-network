@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.0\n"
-"POT-Creation-Date: 2003-02-21 14:21+0100\n"
+"POT-Creation-Date: 2003-02-21 16:28+0100\n"
 "PO-Revision-Date: 2003-02-07 20:44+0100\n"
 "Last-Translator: Milan Kerslager <kerslage@linux.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1100,7 +1100,7 @@ msgstr "Zvolte Ethernet adaptér"
 #: src/netconfpkg/NCHardwareList.py:168 src/netconfpkg/NCHardwareList.py:276
 #: src/netconfpkg/NCHardwareList.py:393 src/netconfpkg/NCHardwareList.py:423
 #: src/netconfpkg/NC_functions.py:238 src/netconfpkg/NCDevice.py:207
-#: src/netconfpkg/NCDevice.py:214 src/netconfpkg/NCDeviceList.py:84
+#: src/netconfpkg/NCDevice.py:214 src/netconfpkg/NCDeviceList.py:86
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -3827,7 +3827,7 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCProfileList.py:56 src/netconfpkg/NCDeviceList.py:71
+#: src/netconfpkg/NCProfileList.py:59 src/netconfpkg/NCDeviceList.py:72
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3836,18 +3836,25 @@ msgstr ""
 "Chyba při vytváření adresáře!\n"
 "%s"
 
-#: src/netconfpkg/NCProfileList.py:59
+#: src/netconfpkg/NCProfileList.py:62
+#, fuzzy, python-format
+msgid ""
+"Please restart once with root permissions!\n"
+"%s"
+msgstr "Spusťte prosím %s znovu s oprávněními roota!"
+
+#: src/netconfpkg/NCProfileList.py:67
 msgid "Copying /etc/hosts to default profile."
 msgstr "Kopíruji /etc/hosts do implicitního profilu."
 
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:162
+#: src/netconfpkg/NCProfileList.py:173
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "Zařízení %s používá stejný hardware \"%s\" jako %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:164
+#: src/netconfpkg/NCProfileList.py:175
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -4125,7 +4132,12 @@ msgid "Static routes file %s is invalid"
 msgstr "Soubor %s se statickým směrováním je chybný"
 
 #. print dev+" has unknown device type, skipping it."
-#: src/netconfpkg/NCDeviceList.py:88
+#: src/netconfpkg/NCDeviceList.py:92
+#, fuzzy
+msgid "Please start redhat-config-network with root permissions once!\n"
+msgstr "Spusťte prosím %s znovu s oprávněními roota!"
+
+#: src/netconfpkg/NCDeviceList.py:96
 #, python-format
 msgid "Copying %s to devices and putting it into the default profile."
 msgstr "Kopíruji %s do devices a ukládám jej do implicitního profilu."
