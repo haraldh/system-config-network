@@ -58,11 +58,11 @@ class editHostsDialog:
         self.xml.signal_autoconnect(
             {
             "on_addressEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                             r"^[a-f|0-9\.]"),
+                                             r"^[a-f:0-9\.]"),
             "on_hostnameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                             r"^[\w|0-9\.]"),
+                                             r"^[A-Za-z\-0-9\.]"),
             "on_aliasesEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                             r"^[\w| |0-9\.]"),
+                                             r"^[A-Za-z\- 0-9\.]"),
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
