@@ -191,8 +191,8 @@ class mainDialog:
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
-        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
-        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
+        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/netconf/pixmaps/active.xpm")
+        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/netconf/pixmaps/inactive.xpm")
 
         row = 0
         for dev in devicelist:
