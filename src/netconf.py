@@ -96,12 +96,17 @@ def splash_screen(gfx = None):
         window = gtk.Window(gtk.WINDOW_POPUP)
         window.set_title(PRG_NAME)
         window.set_position (gtk.WIN_POS_CENTER)
+        window.show_all()
+        window.show_now()    
+        while gtk.events_pending():
+            gtk.main_iteration()
         pixmap_wid = gtk.Image()
         pixfile = get_pixpath("system-config-network-splash.png")
         if not pixfile:
             return None
         pixmap_wid.set_from_file(pixfile)
         window.add(pixmap_wid)
+        pixmap_wid.show_all()
         pixmap_wid.show_now()
     else:
         window = gtk.Window(gtk.WINDOW_POPUP)
@@ -113,7 +118,7 @@ def splash_screen(gfx = None):
         lbl.show_now()
 
     window.show_all()
-    window.show_now()
+    window.show_now()    
     
     while gtk.events_pending():
         gtk.main_iteration()
@@ -123,13 +128,14 @@ def splash_screen(gfx = None):
 def Usage():
     print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose")
 
-def main():
+def main(splash = None):
     from netconfpkg import NC_functions
     log.set_loglevel(NC_functions.getVerboseLevel())
     splash_window = None
 
     try:
-        #splash_window = splash_screen()
+        if splash:
+            splash_window = splash_screen(True)
         import gnome
         import gtk.glade
         import netconfpkg.gui.GUI_functions
@@ -160,9 +166,9 @@ def main():
         window = mainDialog()
 
         
-#         if splash_window:
-#             splash_window.destroy()
-#             del splash_window
+        if splash_window:
+            splash_window.destroy()
+            del splash_window
 
         gtk.main()
 
@@ -184,8 +190,8 @@ if __name__ == '__main__':
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     hotshot = 0
+    splash = 0
     chroot = None
-    logfilename = "/var/log/system-config-network"
     
     try:
         opts, args = getopt.getopt(cmdline, "vh?r:d",
@@ -194,6 +200,7 @@ if __name__ == '__main__':
                                     "debug", 
                                     "help",
                                     "hotshot",
+                                    "splash",
                                     "root="
                                     ])
         for opt, val in opts:
@@ -208,7 +215,11 @@ if __name__ == '__main__':
             if opt == '--hotshot':
                 hotshot += 1
                 continue
-            
+
+            if opt == '--splash':
+                splash += 1
+                continue
+
             if opt == '-h' or opt == "?" or opt == '--help':
                 Usage()
                 sys.exit(0)
@@ -223,14 +234,10 @@ if __name__ == '__main__':
         Usage()
         sys.exit(1)    
 
-    if not NC_functions.getDebugLevel() and logfilename:
+    if not NC_functions.getDebugLevel():
         import os
-        
-        def log_default_handler (string):
-            import time
-            log.logFile.write ("%s: %s\n" % (time.ctime(), string))
 
-        log.handler = log_default_handler
+        log.handler = NC_functions.LogFile.syslog_handler
 
         try:
             if os.path.isfile(logfilename):
@@ -274,7 +281,7 @@ if __name__ == '__main__':
         s.strip_dirs().sort_stats('cumulative').print_stats(20)
         os.unlink(filename)               
     else:
-        main()
+        main(splash)
         
     sys.exit(0)
 
