@@ -73,4 +73,4 @@ clean:
 
 %.pyc: %.py
 	@echo "Compiling because of " $*
-	python /usr/lib/python1.5/compileall.pyc -l -d . $(srcdir)
+	python /usr/lib/python2.2/compileall.pyc -l -d . $(srcdir)
