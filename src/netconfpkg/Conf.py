@@ -256,7 +256,7 @@ class Conf:
 	    file_exists = 1
 	if not self.create_if_missing and not file_exists:
 	    raise FileMissing, self.filename + ' does not exist.'
-	if file_exists:
+	if file_exists and os.access(self.filename, os.R_OK):
             self.file = open(self.filename, 'r', -1)
             self.lines = self.file.readlines()
             # strip newlines
