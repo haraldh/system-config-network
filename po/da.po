@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: netconf 0.3\n"
 "POT-Creation-Date: 2003-01-29 17:06+0100\n"
-"PO-Revision-Date: 2003-01-17 19:24+0100\n"
+"PO-Revision-Date: 2003-01-29 19:24+0100\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -133,14 +133,12 @@ msgstr "Aktiverer netværksenhed %s, vent venligst..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. Display dialog notification of action
 #: src/neat-control.py:239
-#, fuzzy
 msgid "Activating profile..."
-msgstr "Opdaterer profiler..."
+msgstr "Aktiverer profil..."
 
 #: src/neat-control.py:242
-#, fuzzy
 msgid "Activating the selected profile, please wait..."
-msgstr "Aktiverer netværksenhed %s, vent venligst..."
+msgstr "Aktiverer den valgte profil, vent venligst..."
 
 #. Disable the activate button
 #. Get the profile to activate from the menu
@@ -151,6 +149,7 @@ msgstr "Aktiverer netværksenhed %s, vent venligst..."
 msgid ""
 "Not all network interfaces in selected profile \"%s\" could be activated."
 msgstr ""
+"Ikke alle grænseflader i den valgte profil '%s' kunne aktiveres."
 
 #. Re-read the device list
 #. Update the gui
@@ -160,12 +159,11 @@ msgstr ""
 #. Continue with auto select
 #: src/neat-control.py:288
 msgid "Attempting to auto-detect and activate a valid profile, please wait..."
-msgstr ""
+msgstr "Prøver at automatisk finde og aktivere en gyldig profil, vent venligst..."
 
 #: src/neat-control.py:290
-#, fuzzy
 msgid "Autoselecting profile..."
-msgstr "Opdaterer profiler..."
+msgstr "Vælger profil automatisk..."
 
 #. Check status of the auto select script and respond accordingly
 #. Grab any error output
@@ -352,16 +350,14 @@ msgstr "Indlæser konfiguration af netværk..."
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:61
-#, fuzzy
 msgid ""
 "redhat-config-network-cmd - network configuration commandline tool\n"
 "\n"
 "Usage: redhat-config-network-cmd -p --profile <profile> -a --activate"
 msgstr ""
-"redhat-config-network-cmd - kommandolinjeværktøj for konfiguration af "
-"netværk\n"
+"redhat-config-network-cmd - kommandolinjeværktøj for konfiguration af netværk\n"
 "\n"
-"Brug: redhat-config-network-cmd -p --profile <profil>"
+"Brug: redhat-config-network-cmd -p --profile <profile> -a --activate"
 
 #. print "%s.%s" % (pname, child)
 #. printObj(val, "%s.%s" % (parent, child))
@@ -3401,66 +3397,56 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. widget.set_position(0)
 #: src/netconfpkg/gui/neat-control.glade.h:1
-#, fuzzy
 msgid "Ac_tivate"
 msgstr "_Aktivér"
 
 #: src/netconfpkg/gui/neat-control.glade.h:2
-#, fuzzy
 msgid "Active Profile"
-msgstr "Aktiv profil: %s"
+msgstr "Aktiv profil"
 
 #: src/netconfpkg/gui/neat-control.glade.h:3
 msgid "Auto _Select"
-msgstr ""
+msgstr "_Vølg automatisk"
 
 #: src/netconfpkg/gui/neat-control.glade.h:4
-#, fuzzy
 msgid "Click to activate the selected profile"
-msgstr "Aktiverer netværksenhed %s, vent venligst..."
+msgstr "Klik for at aktivere den valgte profil"
 
 #: src/netconfpkg/gui/neat-control.glade.h:5
-#, fuzzy
 msgid "Click to bring up the interface"
-msgstr "klik for at sætte grænsefladen i drift"
+msgstr "Klik for at sætte grænsefladen i drift"
 
 #: src/netconfpkg/gui/neat-control.glade.h:6
-#, fuzzy
 msgid "Click to configure the interface"
-msgstr "klik for at konfigurere grænsefladen"
+msgstr "Klik for at konfigurere grænsefladen"
 
 #: src/netconfpkg/gui/neat-control.glade.h:7
-#, fuzzy
 msgid "Click to get infos"
-msgstr "klik for at få information"
+msgstr "Klik for at få information"
 
 #: src/netconfpkg/gui/neat-control.glade.h:8
 msgid "Click to have the system automatically select and activate a profile"
-msgstr ""
+msgstr "Klik for at få systemet til automatisk at vælge og aktivere en profil"
 
 #: src/netconfpkg/gui/neat-control.glade.h:9
-#, fuzzy
 msgid "Click to monitor the interface"
-msgstr "klik for at overvåge grænsefladen"
+msgstr "Klik for at overvåge grænsefladen"
 
 #: src/netconfpkg/gui/neat-control.glade.h:10
-#, fuzzy
 msgid "Click to shutdown the interface"
-msgstr "klik for at lukke grænsefladen ned"
+msgstr "Klik for at lukke grænsefladen ned"
 
 #: src/netconfpkg/gui/neat-control.glade.h:12
 msgid "Info"
 msgstr "Info"
 
 #: src/netconfpkg/gui/neat-control.glade.h:15
-#, fuzzy
 msgid "Select a profile"
-msgstr "Vælg en fil:"
+msgstr "Vælg en fil"
 
 #: src/netconfpkg/gui/neat-control.glade.h:17
-#, fuzzy
 msgid "The following network interfaces are configured in the active profile."
-msgstr "De følgende netværksenheder er konfigurerede på systemet."
+msgstr "De følgende netværksenheder er konfigurerede i den aktive profil."
 
 #: src/netconfpkg/gui/neat-control.glade.h:21
 msgid "_Monitor..."
@@ -4227,41 +4213,9 @@ msgstr "Kopierer %s til enheder og placerer det i standardprofilen."
 #. if dev.Dialup.Callback == None:
 #. dl.save()
 #: internet-druid.desktop.in.h:1
-#, fuzzy
 msgid "Configure your connection to the Internet"
-msgstr "Konfigurér DSL-forbindelse"
+msgstr "Konfigurér din forbindelse til internettet"
 
 #: internet-druid.desktop.in.h:2
-#, fuzzy
 msgid "Internet Configuration Wizard"
-msgstr "Konfiguration af ethernet"
-
-#, fuzzy
-#~ msgid ""
-#~ "This software is distributed under the GPL. ''Please Report bugs to Red "
-#~ "Hat's Bug Tracking System: ''http://bugzilla.redhat.com/"
-#~ msgstr ""
-#~ "Dette programmel distribueres under GPL. Rapportér venligst fejl til Red "
-#~ "Hat's fejlsporings-system: http://bugzilla.redhat.com/"
-
-#~ msgid "No Profile with name %s could be found."
-#~ msgstr "Ingen profil med navnet %s kunne findes."
-
-#~ msgid "Switching to Profile %s."
-#~ msgstr "Skifter til aktiv profil %s."
-
-#~ msgid "Copying %s to default profile."
-#~ msgstr "Kopierer %s til standardprofilen."
-
-#~ msgid ""
-#~ "Error linking\n"
-#~ "%s\n"
-#~ "to\n"
-#~ "%s:\n"
-#~ "%s!"
-#~ msgstr ""
-#~ "Fejl ved lænkning af\n"
-#~ "%s\n"
-#~ "to\n"
-#~ "%s:\n"
-#~ "%s!"
+msgstr "hjælpeprogram til konfiguration af internet"
