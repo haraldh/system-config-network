@@ -207,7 +207,7 @@ class DialupDruid(InterfaceCreator):
         self.device.DeviceId = DeviceId
         self.device.Type = self.connection_type
         dialup = self.device.createDialup()
-        self.device.BootProto = 'DIALUP'
+        self.device.BootProto = 'dialup'
         self.device.AllowUser = TRUE
         if self.connection_type == 'ISDN':
             self.device.Device = 'ippp'

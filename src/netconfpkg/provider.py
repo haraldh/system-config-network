@@ -174,7 +174,7 @@ class providerDialog:
         self.device.Dialup.Areacode = self.provider['Areacode']
         self.device.Dialup.PhoneNumber = self.provider['PhoneNumber']
         self.device.AllowUser = TRUE
-        self.device.BootProto = 'DIALUP'
+        self.device.BootProto = 'dialup'
         self.device.Domain = self.provider['Domain']
         if len(self.provider['DNS']) >0:
             dns = string.split(self.provider['DNS'])

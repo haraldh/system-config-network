@@ -103,7 +103,7 @@ class tcpConfigDialog:
                 self.xml.get_widget('ipSettingCB').set_active(TRUE)
                 if self.device.Type == "ISDN" or self.device.Type == "Modem" or \
                    self.device.Type == "xDSL":
-                    self.xml.get_widget("dynamicConfigEntry").set_text("DIALUP")
+                    self.xml.get_widget("dynamicConfigEntry").set_text(_("dialup"))
 
             if self.device.Hostname:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
@@ -122,7 +122,9 @@ class tcpConfigDialog:
                 
     def dehydrate(self):            
         if self.xml.get_widget('ipSettingCB').get_active(): 
-            self.device.BootProto = self.xml.get_widget('dynamicConfigEntry').get_text()            
+            self.device.BootProto = self.xml.get_widget('dynamicConfigEntry').get_text()
+            if self.device.BootProto == _('dialup'): self.device.BootProto = 'dialup'
+            if self.device.BootProto == _('none'): self.device.BootProto = 'none'
             self.device.IP = ''
             self.device.Netmask = ''
             self.device.Gateway = ''

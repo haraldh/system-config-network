@@ -170,7 +170,7 @@ class ADSLInterface(InterfaceCreator):
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('providerNameEntry').get_text()
         self.device.Type = 'xDSL'
-        self.device.BootProto = 'DIALUP'
+        self.device.BootProto = 'dialup'
         self.device.AllowUser = TRUE
         self.device.AutoDNS = TRUE
         dialup = self.device.createDialup()
