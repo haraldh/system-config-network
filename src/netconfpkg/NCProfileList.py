@@ -102,10 +102,13 @@ class ProfileList(ProfileList_base):
         self.commit()
 
     def test(self):
+        self.fixInterfaces()
         devmap = {}
         devicelist = NCDeviceList.getDeviceList()
         
         for prof in self:
+            if not prof.Active:
+                continue
             for devId in prof.ActiveDevices:
                 for dev in devicelist:
                     if dev.DeviceId == devId:
@@ -124,12 +127,57 @@ class ProfileList(ProfileList_base):
                     raise TestError(msg)
 
                 devmap[device.Device] = device
-
+            break
         
+    def fixInterfaces(self):
+        pppnum = 0
+        ipppnum = 0
+        isdnnum = 0
+        devicelist = NCDeviceList.getDeviceList()
+        changed = 0
+        for prof in self:
+            if not prof.Active:
+                continue
+            for devid in prof.ActiveDevices:
+                for dev in devicelist:
+                    if dev.DeviceId != devid:
+                        continue
+                        
+                    if dev.Type == "Modem" or dev.Type == 'xDSL':
+                        dstr = "ppp"+str(pppnum)
+                        if dev.Device != dstr:                            
+                            dev.Device = dstr
+                            changed = 1
+                        pppnum = pppnum + 1
+                    elif  dev.Type == "ISDN":
+                        if dev.Dialup.EncapMode == 'syncppp':
+                            dstr = "ippp"+str(ipppnum)
+                            if dstr != dev.Device:
+                                dev.Device = dstr
+                                changed = 1
+                            if dev.Dialup.ChannelBundling == true:
+                                ipppnum = ipppnum + 1
+                                dstr = "ippp"+str(ipppnum)
+                                if dstr != dev.Dialup.SlaveDevice:
+                                    dev.Dialup.SlaveDevice = dstr
+                                    changed = 1
+                            ipppnum = ipppnum + 1
+                        else:
+                            dstr = "isdn"+str(isdnnum)
+                            if dstr != dev.Device:
+                                dev.Device = dstr
+                                changed = 1
+                            isdnnum = isdnnum + 1
+                    break
+            break
+        
+        if changed:
+            devicelist.save()
 
     def save(self):
+        self.test()
         devicelist = NCDeviceList.getDeviceList()
-
+        
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
