@@ -5,7 +5,7 @@
 ## tab-width: 3
 ## End:
 #
-__version__ = "1.10"
+__version__ = "1.12"
 #
 
 ## Copyright (C) 2000,2001 Red Hat, Inc.
@@ -34,7 +34,7 @@ true = (1==1)
 false = not true
 
 ClassesDone = {}
-ImportClasses = []
+ImportClasses = {}
 BaseFile = None
 ImplFile = None
 OptLower = false
@@ -80,7 +80,7 @@ class %classname%base%baseclass:
 		%BaseInit
 		self.__parent = parent
 		self.dead = 0
-		self.__doUnlink()
+		self.doClear()
 
 		# Constructor with object
 		if list and (not parent) and isinstance(list, %classname%base):
@@ -99,7 +99,7 @@ class %classname%base%baseclass:
 	def getParent(self):
 		return self.__parent
 
-	def __doUnlink(self):
+	def doClear(self):
 		%UnlinkList
 		pass
 	
@@ -123,7 +123,7 @@ class %classname%base%baseclass:
 		if self.__list:
 			ret = self.__list.unlink()
 			del self.__list
-		self.__doUnlink()
+		self.doClear()
 		if parent:
 			parent.remove%classname(self)
 			
@@ -172,12 +172,23 @@ ListOps = """
 ListCNLOps = """	
 	def set%childname(self, value):
 		self.%childname = value
+
+	def commitChild(self, name, type):
+		if self.__dict__[name]:
+			if self.__dict__['__' + name + '_bak'] != None:
+				self.__list.getChildByName(name).setValue(self.__dict__[name])
+			else:
+				self.__list.addChild(type, name).setValue(self.__dict__[name])
+		else:
+			if self.__dict__['__' + name + '_bak'] != None:
+				self.__list.getChildByName(name).unlink()
+		
 """
 
 ListCLOps = """	
 	def create%childname(self):
 		if self.%childname == None:
-			self.%childname = %childname(None, self)
+			self.%childname = %childclassname(None, self)
 		return self.%childname
 
 	def remove%childname(self, child):
@@ -185,6 +196,14 @@ ListCLOps = """
 			child = self.%childname
 			self.%childname = None
 			child.unlink()
+
+	def commitChild(self, name, type):
+		if self.__dict__['__' + name + '_bak'] != None:
+			self.__dict__['__' + name + '_bak'].unlink()
+		if self.__dict__[name] != None:
+			self.__dict__[name].setList(self.__list.addChild(type, name))
+			self.__dict__[name].commit()
+		
 """
 
 AnonListOps = """
@@ -207,7 +226,7 @@ AnonListOps = """
 """
 AnonListCLOps = """
 	def add%childname(self):
-		self.data.append(%childname(None, self))
+		self.data.append(%childclassname(None, self))
 		return len(self.data)-1
 
 	def remove%childname(self, child):
@@ -323,13 +342,15 @@ def printClass(list, basename, baseclass):
 
 	if dobase:
 		base = "_base"
-		ImportClasses.append(basename)
+		ImportClasses[basename] = true
 			
 	initDone = {}
+	
 	for i in xrange(num):
 		child = list.getChildByIndex(i)
 		cname = child.getName()
-
+		
+		
 		if OptLower: clname = string.OptLower(cname)
 		else: clname = cname
 
@@ -339,6 +360,11 @@ def printClass(list, basename, baseclass):
 			done = false
 			
 		if done:	continue
+
+		if ImportClasses.has_key(cname):
+			cclassname = ImplPrefix + cname + '.' + cname
+		else:
+			cclassname = cname
 
 		ctype = child.getType()
 		cstype = Type2Str[ctype]
@@ -422,7 +448,7 @@ def printClass(list, basename, baseclass):
 
 				initlist = initlist \
 							  + "\t\t\tfor i in xrange(self.__list.getNumChildren()):\n"\
-							  + '\t\t\t\tself.data_bak.append(%childname(self.__list.getChildByIndex(i), self))\n'
+							  + '\t\t\t\tself.data_bak.append(%childclassname(self.__list.getChildByIndex(i), self))\n'
 				
 				commitalist = commitalist + """
 			for i in xrange(len(self.data_bak)):
@@ -455,6 +481,9 @@ def printClass(list, basename, baseclass):
 			commitlist = commitlist \
 							 + '\t\tself.__%childname_bak = self.%childname\n'
 
+			commitalist = commitalist + \
+							  '\t\t\tcommitChild("%childname", %childtype)\n'
+
 			if ctype != Data.ADM_TYPE_LIST:
 				#
 				# Child != List
@@ -468,16 +497,6 @@ def printClass(list, basename, baseclass):
 				applylist= applylist+ \
 						'\t\tself.set%childname(other.get%childname())\n'
 
-				commitalist = commitalist + """
-			if self.%childname:
-				if self.__%childname_bak != None:
-					self.__list.getChildByName("%childname").setValue(self.%childname)
-				else:
-					self.__list.addChild(%childtype, "%childname").setValue(self.%childname)
-			else:
-				if self.__%childname_bak != None: self.__list.getChildByName("%childname").unlink()
-"""				
-
 				initlist = initlist \
 							  + '\t\t\t\tself.__%childname_bak = child.getValue()\n'
 				
@@ -490,7 +509,7 @@ def printClass(list, basename, baseclass):
 				methods = methods + ListCLOps
 
 				initlist = initlist \
-							  + '\t\t\t\tself.__%childname_bak = %childname(child, self)\n'
+							  + '\t\t\t\tself.__%childname_bak = %childclassname(child, self)\n'
 				
 				testlist = testlist + \
 						'\t\tself.%childname.test()\n'
@@ -498,13 +517,6 @@ def printClass(list, basename, baseclass):
 				applylist = applylist \
 							  + '\t\tself.create%childname().apply(other.get%childname())\n'
 				
-
-				commitalist = commitalist + """
-			if self.__%childname_bak != None: self.__%childname_bak.unlink()			
-			if self.%childname != None:
-				self.%childname.setList(self.__list.addChild(%childtype, "%childname"))
-				self.%childname.commit()
-"""
 				
 				#########################
 				
@@ -514,15 +526,26 @@ def printClass(list, basename, baseclass):
 
 		testlist = string.replace(testlist, '%childname', clname)
 		initlist = string.replace(initlist, '%childname', clname)
-		initlist = string.replace(initlist, '%childtype', cstype)
 		unlinklist = string.replace(unlinklist, '%childname', clname)
 		backuplist = string.replace(backuplist, '%childname', clname)
 		commitlist = string.replace(commitlist, '%childname', clname)
-		commitlist = string.replace(commitlist, '%childtype', cstype)
 		commitalist = string.replace(commitalist, '%childname', clname)
-		commitalist = string.replace(commitalist, '%childtype', cstype)
 		applylist= string.replace(applylist, '%childname', clname)
 		methods = string.replace(methods, '%childname', clname)
+
+
+		testlist = string.replace(testlist, '%childclassname', cclassname)
+		initlist = string.replace(initlist, '%childclassname', cclassname)
+		unlinklist = string.replace(unlinklist, '%childclassname', cclassname)
+		backuplist = string.replace(backuplist, '%childclassname', cclassname)
+		commitlist = string.replace(commitlist, '%childclassname', cclassname)
+		commitalist = string.replace(commitalist, '%childclassname', cclassname)
+		applylist= string.replace(applylist, '%childclassname', cclassname)
+		methods = string.replace(methods, '%childclassname', cclassname)
+
+		commitlist = string.replace(commitlist, '%childtype', cstype)
+		initlist = string.replace(initlist, '%childtype', cstype)
+		commitalist = string.replace(commitalist, '%childtype', cstype)
 		methods = string.replace(methods, '%childtype', cstype)
 		
 	methods = ClassHeader + methods		
@@ -540,7 +563,11 @@ def printClass(list, basename, baseclass):
 	methods = string.replace(methods, '%base', base)
 	methods = string.replace(methods, '%classname', basename)
 
+
 	printb(methods)
+
+	if dobase:
+		printb('import ' + ImplPrefix + basename)
 
 	if not (OptNoBase or OptCondBase):
 		try:
@@ -714,8 +741,8 @@ false = not true
 
 	printClass(dr, drname, ImplPrefix)
 
-	for i in xrange(len(ImportClasses)):
-		printb('from ' + ImplPrefix + ImportClasses[i] + ' import *')
+	for key in ImportClasses.keys():
+		printb('from ' + ImplPrefix + key + ' import *')
 
 	printb("""
 if __name__ == '__main__':
