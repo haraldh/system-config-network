@@ -3,7 +3,8 @@ AUTOMAKE_OPTIONS = foreign 1.4
 SUBDIRS=doc src intl po
 
 EXTRA_DIST= redhat-config-network.spec doc/configurationfiles.txt doc/detailed_spec \
-	doc/overview neat.desktop neat.console neat.pam
+	doc/overview neat.desktop neat.console neat.pam internet-druid.console  \
+	internet-druid.desktop 
 
 sysdir=$(sysconfdir)/X11/applnk/System
 
@@ -24,6 +25,6 @@ install-data-local:
 	$(INSTALL_DATA) internet-druid.desktop $(datadir)/kontrol-panel
 	$(INSTALL_DATA) internet-druid.desktop $(sysconfdir)/X11/serverconfig
 	$(INSTALL_DATA) internet-druid.desktop $(sysconfdir)/X11/applnk/System
-	
+
 srpm: distcheck
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
