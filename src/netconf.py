@@ -188,10 +188,7 @@ if __name__ == '__main__':
     NC_functions.setDebugLevel(0)
     hotshot = 0
     chroot = None
-    if os.getuid() == 0:
-        logfilename = "/var/log/redhat-config-network"
-    else:
-        logfilename = None
+    logfilename = "/var/log/redhat-config-network"
     
     try:
         opts, args = getopt.getopt(cmdline, "vhrd",
@@ -237,16 +234,18 @@ if __name__ == '__main__':
             log.logFile.write ("%s: %s\n" % (time.ctime(), string))
 
         log.handler = log_default_handler
-        
-	if os.path.isfile(logfilename):
-            os.chmod(logfilename, 0600)
-            
-        fd = os.open(logfilename,
-                        os.O_APPEND|os.O_WRONLY|os.O_CREAT,
-                        0600)
-        
-        lfile = os.fdopen(fd, "a")        
-        log.open(lfile)
+
+        try:
+            if os.path.isfile(logfilename):
+                os.chmod(logfilename, 0600)
+                fd = os.open(logfilename,
+                             os.O_APPEND|os.O_WRONLY|os.O_CREAT,
+                             0600)
+        except:
+            pass
+        else:                  
+            lfile = os.fdopen(fd, "a")        
+            log.open(lfile)
 
     if chroot:
         prepareRoot(chroot)
@@ -271,5 +270,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/27 13:28:33 $"
-__version__ = "$Revision: 1.196 $"
+__date__ = "$Date: 2003/10/27 13:30:18 $"
+__version__ = "$Revision: 1.197 $"
