@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
-"POT-Creation-Date: 2003-05-22 11:52+0200\n"
+"POT-Creation-Date: 2003-06-25 11:44+0200\n"
 "PO-Revision-Date: 2003-02-24 15:01+0200\n"
 "Last-Translator: Leonid Kanter <leon@geon.donetsk.ua>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -79,15 +79,31 @@ msgstr "Мастер подключения к Интернет"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/neat-control.py:48 src/netconf.py:75
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr ""
+
+#: src/neat-control.py:49 src/netconf.py:76
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+
+#: src/neat-control.py:50 src/netconf.py:77
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:132 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1393
+#: src/neat-control.py:140 src/netconf-cmd.py:100
+#: src/netconfpkg/gui/maindialog.py:1411
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001,2003 Red Hat, Inc."
 
-#: src/neat-control.py:133 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1394
+#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1412
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -96,16 +112,16 @@ msgstr ""
 "обработки ошибок Red Hat по адресу: http://bugzilla.redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:159 src/netconfpkg/NCDevice.py:373
+#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:371
 msgid "Network device activating..."
 msgstr "Активируется сетевое устройство..."
 
-#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:374
+#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:372
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
 
-#: src/neat-control.py:207
+#: src/neat-control.py:215
 #, fuzzy, python-format
 msgid "Cannot configure network device %s"
 msgstr "Не удается активировать устройство сети %s"
@@ -114,17 +130,17 @@ msgstr "Не удается активировать устройство сет
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#: src/neat-control.py:227
+#: src/neat-control.py:235
 #, fuzzy
 msgid "Switching Profiles"
 msgstr "Активный профиль"
 
-#: src/neat-control.py:228
+#: src/neat-control.py:236
 #, fuzzy, python-format
 msgid "Switching to profile %s"
 msgstr "Активный профиль"
 
-#: src/neat-control.py:229
+#: src/neat-control.py:237
 #, fuzzy, python-format
 msgid "Failed to switch to profile %s"
 msgstr "Ошибка записи в файл %s"
@@ -133,7 +149,7 @@ msgstr "Ошибка записи в файл %s"
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:244 src/netconfpkg/gui/maindialog.py:819
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:830
 msgid "To be rewritten!"
 msgstr "Должно быть переписано!"
 
@@ -141,7 +157,7 @@ msgstr "Должно быть переписано!"
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
-#: src/neat-control.py:346
+#: src/neat-control.py:354
 #, fuzzy
 msgid " (active)"
 msgstr "Неактивно"
@@ -291,11 +307,11 @@ msgstr "Ошибка: %s, %s!"
 msgid "Starting text version"
 msgstr "Запускается текстовая версия:"
 
-#: src/netconf.py:108
+#: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "Загружается конфигурация сети..."
 
-#: src/netconf.py:121
+#: src/netconf.py:127
 #, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
@@ -306,7 +322,11 @@ msgstr ""
 "\n"
 "Применение: redhat-config-network-cmd -p --profile <profile>"
 
+#. splash_window = splash_screen()
 #. make ctrl-C work
+#. if splash_window:
+#. splash_window.destroy()
+#. del splash_window
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. ! /usr/bin/python2.2
 #. # netconf - A network configuration tool
@@ -393,12 +413,12 @@ msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:280
+#: src/netconf-cmd.py:281
 #, fuzzy, python-format
 msgid "Unknown List %s\n"
 msgstr "Неизвестный"
 
-#: src/netconf-cmd.py:284
+#: src/netconf-cmd.py:285
 #, fuzzy, python-format
 msgid "Error parsing line: %s"
 msgstr "Ошибка загрузки устройства %s!\n"
@@ -419,11 +439,11 @@ msgstr "Ошибка загрузки устройства %s!\n"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ADSLInterface.py:94
+#: src/netconfpkg/gui/ADSLInterface.py:91
 msgid "xDSL connection"
 msgstr "Cоединение xDSL"
 
-#: src/netconfpkg/gui/ADSLInterface.py:100
+#: src/netconfpkg/gui/ADSLInterface.py:97
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
 "types of broadband connections collective known as Digital Subscriber "
@@ -458,7 +478,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. get the widgets we need
-#: src/netconfpkg/gui/ADSLInterface.py:139
+#: src/netconfpkg/gui/ADSLInterface.py:136
 #: src/netconfpkg/gui/CipeInterface.py:144
 #: src/netconfpkg/gui/DialupDruid.py:226
 #: src/netconfpkg/gui/EthernetInterface.py:213
@@ -467,16 +487,16 @@ msgstr ""
 msgid "You have selected the following information:"
 msgstr "Вы указали следующую информацию:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:140
+#: src/netconfpkg/gui/ADSLInterface.py:137
 msgid "Ethernet Device:"
 msgstr "Устройство Ethernet:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:141
+#: src/netconfpkg/gui/ADSLInterface.py:138
 #: src/netconfpkg/gui/DialupDruid.py:229
 msgid "Provider Name:"
 msgstr "Имя провайдера:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:142
+#: src/netconfpkg/gui/ADSLInterface.py:139
 #: src/netconfpkg/gui/DialupDruid.py:231
 msgid "Login Name:"
 msgstr "Учетное имя:"
@@ -641,8 +661,8 @@ msgstr "Номер телефона:"
 #: src/netconfpkg/gui/tokenringhardware.py:164
 #: src/netconfpkg/NCHardwareList.py:263 src/netconfpkg/NCHardwareList.py:379
 #: src/netconfpkg/NCHardwareList.py:562 src/netconfpkg/NCHardwareList.py:595
-#: src/netconfpkg/NC_functions.py:261 src/netconfpkg/NCDevice.py:207
-#: src/netconfpkg/NCDevice.py:215 src/netconfpkg/NCDeviceList.py:58
+#: src/netconfpkg/NC_functions.py:256 src/netconfpkg/NCDevice.py:207
+#: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:122
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/ethernethardware.glade.h:22
@@ -722,14 +742,14 @@ msgstr "Автоматически получать адрес IP при пом�
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GUI_functions.py:543
+#: src/netconfpkg/gui/GUI_functions.py:545
 #, python-format
 msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
 
-#: src/netconfpkg/gui/GUI_functions.py:546
+#: src/netconfpkg/gui/GUI_functions.py:548
 msgid ""
 "\n"
 "Succeeded. Please read the output."
@@ -1294,6 +1314,8 @@ msgstr "Настройка удаленного доступа через мод
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from netconfpkg import
+#. from netconfpkg.gui import *
 #. clist = self.xml.get_widget("hardwareList")
 #. # First: copy the clist-style
 #. self.style1 = clist.get_style().copy()
@@ -1307,41 +1329,41 @@ msgstr "Настройка удаленного доступа через мод
 #. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
 #. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
 #. initialize the button state..
-#: src/netconfpkg/gui/maindialog.py:237
+#: src/netconfpkg/gui/maindialog.py:242
 msgid "Loading Configuration..."
 msgstr "Загружается конфигурация..."
 
-#: src/netconfpkg/gui/maindialog.py:244
+#: src/netconfpkg/gui/maindialog.py:249
 msgid "Loading Device Configuration..."
 msgstr "Загружается конфигурация устройства..."
 
-#: src/netconfpkg/gui/maindialog.py:249
+#: src/netconfpkg/gui/maindialog.py:254
 msgid "Loading Hardware Configuration..."
 msgstr "Загружается конфигурация оборудования..."
 
-#: src/netconfpkg/gui/maindialog.py:254
+#: src/netconfpkg/gui/maindialog.py:259
 msgid "Loading Profile Configuration..."
 msgstr "Загружается конфигурация профиля..."
 
-#: src/netconfpkg/gui/maindialog.py:259
+#: src/netconfpkg/gui/maindialog.py:264
 msgid "Testing Configuration Set..."
 msgstr "Тестируется конфигурация..."
 
-#: src/netconfpkg/gui/maindialog.py:287
+#: src/netconfpkg/gui/maindialog.py:292
 #, python-format
 msgid "Active Profile: %s (modified)"
 msgstr "Активный профиль: %s (изменен)"
 
-#: src/netconfpkg/gui/maindialog.py:291
+#: src/netconfpkg/gui/maindialog.py:296
 #, python-format
 msgid "Active Profile: %s"
 msgstr "Активный профиль: %s"
 
-#: src/netconfpkg/gui/maindialog.py:299
+#: src/netconfpkg/gui/maindialog.py:304
 msgid "Saving Configuration..."
 msgstr "Сохранение конфигурации..."
 
-#: src/netconfpkg/gui/maindialog.py:310
+#: src/netconfpkg/gui/maindialog.py:315
 #, python-format
 msgid ""
 "Error saving Configuration!\n"
@@ -1350,7 +1372,7 @@ msgstr ""
 "Ошибка сохранения конфигурации!\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:313
+#: src/netconfpkg/gui/maindialog.py:318
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -1361,23 +1383,23 @@ msgstr ""
 "Вы можете либо перезапустить сеть и сетевые службы, либо\n"
 "перезагрузить компьютер."
 
-#: src/netconfpkg/gui/maindialog.py:322
+#: src/netconfpkg/gui/maindialog.py:327
 msgid "Saving Device Configuration..."
 msgstr "Сохранение конфигурации устройства..."
 
-#: src/netconfpkg/gui/maindialog.py:329
+#: src/netconfpkg/gui/maindialog.py:334
 msgid "Saving Hardware Configuration..."
 msgstr "Сохранение конфигурации оборудования..."
 
-#: src/netconfpkg/gui/maindialog.py:336
+#: src/netconfpkg/gui/maindialog.py:341
 msgid "Saving Profile Configuration..."
 msgstr "Сохранение конфигурации профиля..."
 
-#: src/netconfpkg/gui/maindialog.py:358
+#: src/netconfpkg/gui/maindialog.py:363
 msgid "Updating Devices..."
 msgstr "Обновление устройств..."
 
-#: src/netconfpkg/gui/maindialog.py:415
+#: src/netconfpkg/gui/maindialog.py:420
 msgid "Updating Hardware..."
 msgstr "Обновление оборудования..."
 
@@ -1388,7 +1410,7 @@ msgstr "Обновление оборудования..."
 #. else:
 #. clist.set_row_style(row, self.style2)
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:446
+#: src/netconfpkg/gui/maindialog.py:457
 msgid "Updating Profiles..."
 msgstr "Обновление профилей..."
 
@@ -1396,40 +1418,40 @@ msgstr "Обновление профилей..."
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:552 src/netconfpkg/gui/maindialog.py:623
-#: src/netconfpkg/gui/maindialog.py:846
+#: src/netconfpkg/gui/maindialog.py:563 src/netconfpkg/gui/maindialog.py:634
+#: src/netconfpkg/gui/maindialog.py:857
 msgid "Do you want to save your changes?"
 msgstr "Сохранить изменения?"
 
-#: src/netconfpkg/gui/maindialog.py:688
+#: src/netconfpkg/gui/maindialog.py:699
 msgid "The Loopback device can not be edited!"
 msgstr "Изменение настройки устройства loopback невозможно!"
 
-#: src/netconfpkg/gui/maindialog.py:692
+#: src/netconfpkg/gui/maindialog.py:703
 msgid "Edit Device..."
 msgstr "Изменить устройство..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:743
+#: src/netconfpkg/gui/maindialog.py:754
 msgid "The Loopback device can not be removed!"
 msgstr "Устройство Loopback не может быть удалено!"
 
-#: src/netconfpkg/gui/maindialog.py:747
+#: src/netconfpkg/gui/maindialog.py:758
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Вы действительно хотите удалить устройство \"%s\"?"
 
-#: src/netconfpkg/gui/maindialog.py:779
+#: src/netconfpkg/gui/maindialog.py:790
 msgid "You have made some changes in your configuration."
 msgstr "В конфигурацию были внесены изменения."
 
-#: src/netconfpkg/gui/maindialog.py:780
+#: src/netconfpkg/gui/maindialog.py:791
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Для активирования сетевого устройства %s изменения должны быть сохранены."
 
-#: src/netconfpkg/gui/maindialog.py:782
+#: src/netconfpkg/gui/maindialog.py:793
 msgid "Do you want to continue?"
 msgstr "Продолжить?"
 
@@ -1445,28 +1467,28 @@ msgstr "Продолжить?"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:962
+#: src/netconfpkg/gui/maindialog.py:980
 msgid "The Loopback device can not be disabled!"
 msgstr "Устройство Loopback не может быть запрещено!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1141 src/netconfpkg/gui/maindialog.py:1220
+#: src/netconfpkg/gui/maindialog.py:1159 src/netconfpkg/gui/maindialog.py:1238
 msgid "The name may only contain letters and digits!"
 msgstr "Имя может содержать только буквы и цифры!"
 
-#: src/netconfpkg/gui/maindialog.py:1146 src/netconfpkg/gui/maindialog.py:1225
+#: src/netconfpkg/gui/maindialog.py:1164 src/netconfpkg/gui/maindialog.py:1243
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Профиль не может быть назван \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1152 src/netconfpkg/gui/maindialog.py:1231
+#: src/netconfpkg/gui/maindialog.py:1170 src/netconfpkg/gui/maindialog.py:1249
 msgid "The profile name already exists!"
 msgstr "Имя профиля уже существует!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1198
+#: src/netconfpkg/gui/maindialog.py:1216
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Профиль \"%s\" не может быть переименован!"
@@ -1474,12 +1496,12 @@ msgstr "Профиль \"%s\" не может быть переименован!
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1253
+#: src/netconfpkg/gui/maindialog.py:1271
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Профиль \"%s\" не может быть удален!"
 
-#: src/netconfpkg/gui/maindialog.py:1259
+#: src/netconfpkg/gui/maindialog.py:1277
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Вы действительно хотите удалить профиль \"%s\"?"
@@ -1487,7 +1509,7 @@ msgstr "Вы действительно хотите удалить профил
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1332
+#: src/netconfpkg/gui/maindialog.py:1350
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -1495,13 +1517,13 @@ msgstr ""
 "Извините, здесь нет изменяемых параметров,\n"
 "или этот тип еще не может быть изменен."
 
-#: src/netconfpkg/gui/maindialog.py:1350
+#: src/netconfpkg/gui/maindialog.py:1368
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1364
+#: src/netconfpkg/gui/maindialog.py:1381
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr ""
@@ -1565,15 +1587,6 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-#. hwlist = NCHardwareList.getHardwareList()
-#. (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
-#. if len(hwdesc):
-#. ecombo.set_popdown_strings(hwdesc)
-#. widget = self.xml.get_widget("ethernetDeviceEntry")
-#. if self.device.Device and hwcurr:
-#. widget.set_text(hwcurr)
-#. widget.set_position(0)
 #. hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
 #. fields = string.split(hw)
 #. hw = fields[0]
@@ -1715,7 +1728,7 @@ msgstr "авто"
 msgid "manual"
 msgstr "вручную"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:111
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:112
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -1991,13 +2004,13 @@ msgstr "/etc/hosts копируется в основной профиль."
 
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:165
+#: src/netconfpkg/NCProfileList.py:183
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 "Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:167
+#: src/netconfpkg/NCProfileList.py:185
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -2007,11 +2020,15 @@ msgstr ""
 
 #. Just to be safe...
 #. if the hostname changed, set it system wide (#55746)
+#. delete all other entries the user has deleted in the UI
+#. Active Profile or default profile
+#. Special actions for the active profile
 #. First remove all files that are linked in the device directory
+#. Do not remove used files
 #. Check, if it is a device of neat in every profile directory
 #. Remove all profile directories except default
-#. Remove all files in the default profile directory
-#. delete all other entries the user has deleted in the UI
+#. Remove all files in the profile directory
+#. Do not remove used files
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -2052,28 +2069,26 @@ msgstr "Общее"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:109 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:110 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Аппаратное (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:110 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:111 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Программное (XON/XOFF)"
 
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
-#: src/netconfpkg/NC_functions.py:152
+#: src/netconfpkg/NC_functions.py:153
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "Должны ли следующие пакеты, которые требуются для вашей системы, быть "
 "установлены?"
 
-#. print "toinstall %s" % str(toinstall)
-#. print "plist %s" % str(plist)
-#: src/netconfpkg/NC_functions.py:167
+#: src/netconfpkg/NC_functions.py:166
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
@@ -2082,7 +2097,7 @@ msgstr ""
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:608
+#: src/netconfpkg/NC_functions.py:603
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2093,7 +2108,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:618
+#: src/netconfpkg/NC_functions.py:613
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2106,7 +2121,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:629
+#: src/netconfpkg/NC_functions.py:624
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2119,7 +2134,7 @@ msgstr ""
 "в %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:639
+#: src/netconfpkg/NC_functions.py:634
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2131,7 +2146,7 @@ msgstr ""
 "на %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:649
+#: src/netconfpkg/NC_functions.py:644
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2144,7 +2159,7 @@ msgstr ""
 "в %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:657
+#: src/netconfpkg/NC_functions.py:652
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2320,41 +2335,55 @@ msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, устройство не указано или алиас не является числом!"
 
 #. XXX fixme
-#: src/netconfpkg/NCDevice.py:234
+#: src/netconfpkg/NCDevice.py:232
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Файл статических маршрутов %s неверный"
 
-#: src/netconfpkg/NCDevice.py:376
+#: src/netconfpkg/NCDevice.py:374
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Не удается активировать устройство %s!\n"
 
-#: src/netconfpkg/NCDevice.py:393
+#: src/netconfpkg/NCDevice.py:391
 msgid "Network device deactivating..."
 msgstr "Деактивируется сетевое устройство..."
 
-#: src/netconfpkg/NCDevice.py:394
+#: src/netconfpkg/NCDevice.py:392
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Деактивируется сетевое устройство %s, подождите пожалуйста..."
 
-#: src/netconfpkg/NCDevice.py:396
+#: src/netconfpkg/NCDevice.py:394
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Не удается деактивировать устройство сети %s!\n"
 
-#: src/netconfpkg/NCDeviceList.py:64
+#: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
 msgstr ""
 "Первый раз redhat-config-network необходимо запускать с правами root!\n"
 
-#: src/netconfpkg/NCDeviceList.py:68
+#: src/netconfpkg/NCDeviceList.py:67
 #, python-format
 msgid "Copying %s to devices and putting it into the default profile."
 msgstr "%s копируется в устройства и помещается в основной профиль."
 
-#. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
+#. the initscripts do not like '-'
+#. log.log(4, "%s != %s" % (newDeviceId, dev.DeviceId))
+#. Fixed change device names in active list of all profiles
+#. log.log(4, str(prof.ActiveDevices))
+#. log.log(4, "changed %s" % (prof.ActiveDevices[pos]))
+#. log.log(4, str(prof.ActiveDevices))
+#: src/netconfpkg/NCDeviceList.py:167
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr ""
+
+#: src/netconfpkg/NCDeviceList.py:170
+#, fuzzy
+msgid "Nicknames changed"
+msgstr "Псевдоним: "
+
 #. return DeviceList_base._objToStr(self, obj, parentStr)
 #.
 #. clear all Dialer sections in wvdial.conf

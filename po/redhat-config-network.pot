@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-06-18 13:09+0200\n"
+"POT-Creation-Date: 2003-06-25 11:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -309,7 +309,11 @@ msgid ""
 "Usage: redhat-config-network -v --verbose"
 msgstr ""
 
+#. splash_window = splash_screen()
 #. make ctrl-C work
+#. if splash_window:
+#. splash_window.destroy()
+#. del splash_window
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. ! /usr/bin/python2.2
 #. # netconf - A network configuration tool
@@ -391,12 +395,12 @@ msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:280
+#: src/netconf-cmd.py:281
 #, python-format
 msgid "Unknown List %s\n"
 msgstr ""
 
-#: src/netconf-cmd.py:284
+#: src/netconf-cmd.py:285
 #, python-format
 msgid "Error parsing line: %s"
 msgstr ""
@@ -417,11 +421,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ADSLInterface.py:94
+#: src/netconfpkg/gui/ADSLInterface.py:91
 msgid "xDSL connection"
 msgstr ""
 
-#: src/netconfpkg/gui/ADSLInterface.py:100
+#: src/netconfpkg/gui/ADSLInterface.py:97
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
 "types of broadband connections collective known as Digital Subscriber "
@@ -449,7 +453,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. get the widgets we need
-#: src/netconfpkg/gui/ADSLInterface.py:139
+#: src/netconfpkg/gui/ADSLInterface.py:136
 #: src/netconfpkg/gui/CipeInterface.py:144
 #: src/netconfpkg/gui/DialupDruid.py:226
 #: src/netconfpkg/gui/EthernetInterface.py:213
@@ -458,16 +462,16 @@ msgstr ""
 msgid "You have selected the following information:"
 msgstr ""
 
-#: src/netconfpkg/gui/ADSLInterface.py:140
+#: src/netconfpkg/gui/ADSLInterface.py:137
 msgid "Ethernet Device:"
 msgstr ""
 
-#: src/netconfpkg/gui/ADSLInterface.py:141
+#: src/netconfpkg/gui/ADSLInterface.py:138
 #: src/netconfpkg/gui/DialupDruid.py:229
 msgid "Provider Name:"
 msgstr ""
 
-#: src/netconfpkg/gui/ADSLInterface.py:142
+#: src/netconfpkg/gui/ADSLInterface.py:139
 #: src/netconfpkg/gui/DialupDruid.py:231
 msgid "Login Name:"
 msgstr ""
@@ -963,14 +967,6 @@ msgstr ""
 #. dirty hack but does the job(tm). It basically finds all .py files in the
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
-#. import os
-#. _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
-#. for _i in _files:
-#. _cmd = "from " + _i + " import *"
-#. exec _cmd
-#. del _i
-#. del _files
-#. del _cmd
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1564,18 +1560,6 @@ msgstr ""
 #. dirty hack but does the job(tm). It basically finds all .py files in the
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
-#. import os
-#. _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
-#. v != "__init__.py" and \
-#. v != 'genClass.py' and \
-#. v[0] != '.', \
-#. os.listdir(__path__[0])))
-#. for _i in _files:
-#. _cmd = "from " + _i + " import *"
-#. exec _cmd
-#. del _i
-#. del _files
-#. del _cmd
 #. ! /usr/bin/env python
 #. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>

@@ -129,9 +129,10 @@ def Usage():
 def main():
     from netconfpkg import NC_functions
     log.set_loglevel(NC_functions.verbose)
+    splash_window = None
 
     try:
-        splash_window = splash_screen()
+        #splash_window = splash_screen()
         import gnome
         import gtk.glade
         import netconfpkg.gui.GUI_functions
@@ -162,9 +163,9 @@ def main():
         window = mainDialog()
 
         
-        if splash_window:
-            splash_window.destroy()
-            del splash_window
+#         if splash_window:
+#             splash_window.destroy()
+#             del splash_window
 
         gtk.main()
 
@@ -232,5 +233,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.192 $"
+__date__ = "$Date: 2003/06/25 09:42:22 $"
+__version__ = "$Revision: 1.193 $"

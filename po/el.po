@@ -16,7 +16,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2003-05-22 11:52+0200\n"
+"POT-Creation-Date: 2003-06-25 11:44+0200\n"
 "PO-Revision-Date: 2003-06-14 16:34+0300\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.forthnet.gr>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
@@ -89,15 +89,31 @@ msgstr "Οδηγός Σύνδεσής στο Διαδίκτυο"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/neat-control.py:48 src/netconf.py:75
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr ""
+
+#: src/neat-control.py:49 src/netconf.py:76
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+
+#: src/neat-control.py:50 src/netconf.py:77
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:132 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1393
+#: src/neat-control.py:140 src/netconf-cmd.py:100
+#: src/netconfpkg/gui/maindialog.py:1411
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Πνευματικά Δικαιώματα (c) 2001,2002 Red Hat, Inc."
 
-#: src/neat-control.py:133 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1394
+#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1412
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -107,16 +123,16 @@ msgstr ""
 "Red Hat: http://bugzilla.redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:159 src/netconfpkg/NCDevice.py:373
+#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:371
 msgid "Network device activating..."
 msgstr "Γίνεται ενεργοποίηση συσκευής δικτύου..."
 
-#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:374
+#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:372
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Ενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε..."
 
-#: src/neat-control.py:207
+#: src/neat-control.py:215
 #, fuzzy, python-format
 msgid "Cannot configure network device %s"
 msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s"
@@ -125,17 +141,17 @@ msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δ
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#: src/neat-control.py:227
+#: src/neat-control.py:235
 #, fuzzy
 msgid "Switching Profiles"
 msgstr "Ενημέρωση Προφίλ..."
 
-#: src/neat-control.py:228
+#: src/neat-control.py:236
 #, fuzzy, python-format
 msgid "Switching to profile %s"
 msgstr "Κάντε κλικ για να ενεργοποιηθή το επιλεγμένο προφίλ"
 
-#: src/neat-control.py:229
+#: src/neat-control.py:237
 #, fuzzy, python-format
 msgid "Failed to switch to profile %s"
 msgstr "Αποτυχία εγγραφής στο αρχείο %s."
@@ -144,7 +160,7 @@ msgstr "Αποτυχία εγγραφής στο αρχείο %s."
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:244 src/netconfpkg/gui/maindialog.py:819
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:830
 msgid "To be rewritten!"
 msgstr ""
 
@@ -152,7 +168,7 @@ msgstr ""
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
-#: src/neat-control.py:346
+#: src/neat-control.py:354
 #, fuzzy
 msgid " (active)"
 msgstr "Ανενεργή"
@@ -300,11 +316,11 @@ msgstr "Σφάλμα: %s, %s!"
 msgid "Starting text version"
 msgstr ""
 
-#: src/netconf.py:108
+#: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "Φόρτωση Ρυθμίσεων Δικτύου..."
 
-#: src/netconf.py:121
+#: src/netconf.py:127
 #, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
@@ -316,7 +332,11 @@ msgstr ""
 "\n"
 "Χρήση: redhat-config-network-cmd -p --profile <προφίλ> -a --activate"
 
+#. splash_window = splash_screen()
 #. make ctrl-C work
+#. if splash_window:
+#. splash_window.destroy()
+#. del splash_window
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. ! /usr/bin/python2.2
 #. # netconf - A network configuration tool
@@ -399,12 +419,12 @@ msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:280
+#: src/netconf-cmd.py:281
 #, fuzzy, python-format
 msgid "Unknown List %s\n"
 msgstr "Άγνωστο"
 
-#: src/netconf-cmd.py:284
+#: src/netconf-cmd.py:285
 #, python-format
 msgid "Error parsing line: %s"
 msgstr ""
@@ -425,11 +445,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ADSLInterface.py:94
+#: src/netconfpkg/gui/ADSLInterface.py:91
 msgid "xDSL connection"
 msgstr "Σύνδεση xDSL"
 
-#: src/netconfpkg/gui/ADSLInterface.py:100
+#: src/netconfpkg/gui/ADSLInterface.py:97
 #, fuzzy
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
@@ -458,7 +478,7 @@ msgstr "Δημιουργία μιας σύνδεσης xDSL."
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. get the widgets we need
-#: src/netconfpkg/gui/ADSLInterface.py:139
+#: src/netconfpkg/gui/ADSLInterface.py:136
 #: src/netconfpkg/gui/CipeInterface.py:144
 #: src/netconfpkg/gui/DialupDruid.py:226
 #: src/netconfpkg/gui/EthernetInterface.py:213
@@ -467,16 +487,16 @@ msgstr "Δημιουργία μιας σύνδεσης xDSL."
 msgid "You have selected the following information:"
 msgstr "Έχετε επιλέξει τις παρακάτω πληροφορίες:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:140
+#: src/netconfpkg/gui/ADSLInterface.py:137
 msgid "Ethernet Device:"
 msgstr "Συσκευή Ethernet:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:141
+#: src/netconfpkg/gui/ADSLInterface.py:138
 #: src/netconfpkg/gui/DialupDruid.py:229
 msgid "Provider Name:"
 msgstr "Όνομα Παροχέα:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:142
+#: src/netconfpkg/gui/ADSLInterface.py:139
 #: src/netconfpkg/gui/DialupDruid.py:231
 msgid "Login Name:"
 msgstr "Όνομα Σύνδεσης:"
@@ -641,8 +661,8 @@ msgstr "Αριθμός Τηλεφώνου:"
 #: src/netconfpkg/gui/tokenringhardware.py:164
 #: src/netconfpkg/NCHardwareList.py:263 src/netconfpkg/NCHardwareList.py:379
 #: src/netconfpkg/NCHardwareList.py:562 src/netconfpkg/NCHardwareList.py:595
-#: src/netconfpkg/NC_functions.py:261 src/netconfpkg/NCDevice.py:207
-#: src/netconfpkg/NCDevice.py:215 src/netconfpkg/NCDeviceList.py:58
+#: src/netconfpkg/NC_functions.py:256 src/netconfpkg/NCDevice.py:207
+#: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:122
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/ethernethardware.glade.h:22
@@ -722,14 +742,14 @@ msgstr "Αυτόματη απόδοση διεύθυνσης IP με:"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GUI_functions.py:543
+#: src/netconfpkg/gui/GUI_functions.py:545
 #, python-format
 msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
 
-#: src/netconfpkg/gui/GUI_functions.py:546
+#: src/netconfpkg/gui/GUI_functions.py:548
 msgid ""
 "\n"
 "Succeeded. Please read the output."
@@ -1300,6 +1320,8 @@ msgstr "Ρύθμιση Dialup με Μόντεμ"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from netconfpkg import
+#. from netconfpkg.gui import *
 #. clist = self.xml.get_widget("hardwareList")
 #. # First: copy the clist-style
 #. self.style1 = clist.get_style().copy()
@@ -1313,42 +1335,42 @@ msgstr "Ρύθμιση Dialup με Μόντεμ"
 #. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
 #. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
 #. initialize the button state..
-#: src/netconfpkg/gui/maindialog.py:237
+#: src/netconfpkg/gui/maindialog.py:242
 msgid "Loading Configuration..."
 msgstr "Φόρτωση Ρυθμίσεων..."
 
-#: src/netconfpkg/gui/maindialog.py:244
+#: src/netconfpkg/gui/maindialog.py:249
 msgid "Loading Device Configuration..."
 msgstr "Φόρτωση Ρυθμίσεων Συσκευής..."
 
-#: src/netconfpkg/gui/maindialog.py:249
+#: src/netconfpkg/gui/maindialog.py:254
 msgid "Loading Hardware Configuration..."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:254
+#: src/netconfpkg/gui/maindialog.py:259
 msgid "Loading Profile Configuration..."
 msgstr "Φόρτωση Ρυθμίσεων Προφίλ..."
 
-#: src/netconfpkg/gui/maindialog.py:259
+#: src/netconfpkg/gui/maindialog.py:264
 #, fuzzy
 msgid "Testing Configuration Set..."
 msgstr "Γίνεται Έλεγχος Συνόλου Ρυθμίσεων..."
 
-#: src/netconfpkg/gui/maindialog.py:287
+#: src/netconfpkg/gui/maindialog.py:292
 #, python-format
 msgid "Active Profile: %s (modified)"
 msgstr "Ενεργό Προφίλ: %s (τροποποιημένο)"
 
-#: src/netconfpkg/gui/maindialog.py:291
+#: src/netconfpkg/gui/maindialog.py:296
 #, python-format
 msgid "Active Profile: %s"
 msgstr "Ενεργό Προφίλ: %s"
 
-#: src/netconfpkg/gui/maindialog.py:299
+#: src/netconfpkg/gui/maindialog.py:304
 msgid "Saving Configuration..."
 msgstr "Αποθήκευση Ρυθμίσεων..."
 
-#: src/netconfpkg/gui/maindialog.py:310
+#: src/netconfpkg/gui/maindialog.py:315
 #, python-format
 msgid ""
 "Error saving Configuration!\n"
@@ -1357,7 +1379,7 @@ msgstr ""
 "Σφάλμα κατά την αποθήκευση Ρυθμίσεων!\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:313
+#: src/netconfpkg/gui/maindialog.py:318
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -1369,24 +1391,24 @@ msgstr ""
 "το δίκτυο και τις υπηρεσίες δικτύου\n"
 "ή να επανεκκινήσετε τον υπολογιστή."
 
-#: src/netconfpkg/gui/maindialog.py:322
+#: src/netconfpkg/gui/maindialog.py:327
 msgid "Saving Device Configuration..."
 msgstr "Αποθήκευση Ρυθμίσεων Συσκευής..."
 
-#: src/netconfpkg/gui/maindialog.py:329
+#: src/netconfpkg/gui/maindialog.py:334
 msgid "Saving Hardware Configuration..."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:336
+#: src/netconfpkg/gui/maindialog.py:341
 msgid "Saving Profile Configuration..."
 msgstr "Αποθήκευση Ρυθμίσεων Προφίλ..."
 
-#: src/netconfpkg/gui/maindialog.py:358
+#: src/netconfpkg/gui/maindialog.py:363
 #, fuzzy
 msgid "Updating Devices..."
 msgstr "_Επεξεργασία..."
 
-#: src/netconfpkg/gui/maindialog.py:415
+#: src/netconfpkg/gui/maindialog.py:420
 msgid "Updating Hardware..."
 msgstr ""
 
@@ -1397,7 +1419,7 @@ msgstr ""
 #. else:
 #. clist.set_row_style(row, self.style2)
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:446
+#: src/netconfpkg/gui/maindialog.py:457
 #, fuzzy
 msgid "Updating Profiles..."
 msgstr "Ενημέρωση Προφίλ..."
@@ -1406,41 +1428,41 @@ msgstr "Ενημέρωση Προφίλ..."
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:552 src/netconfpkg/gui/maindialog.py:623
-#: src/netconfpkg/gui/maindialog.py:846
+#: src/netconfpkg/gui/maindialog.py:563 src/netconfpkg/gui/maindialog.py:634
+#: src/netconfpkg/gui/maindialog.py:857
 msgid "Do you want to save your changes?"
 msgstr "Θέλετε να αποθηκευθούν οι αλλαγές;"
 
-#: src/netconfpkg/gui/maindialog.py:688
+#: src/netconfpkg/gui/maindialog.py:699
 msgid "The Loopback device can not be edited!"
 msgstr "H συσκευή Loopback δεν μπορεί να επεξεργαστεί!"
 
-#: src/netconfpkg/gui/maindialog.py:692
+#: src/netconfpkg/gui/maindialog.py:703
 msgid "Edit Device..."
 msgstr "Επεξεργασία Συσκευής..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:743
+#: src/netconfpkg/gui/maindialog.py:754
 msgid "The Loopback device can not be removed!"
 msgstr "Η συσκευή Loopback δεν μπορεί να διαγραφεί!"
 
-#: src/netconfpkg/gui/maindialog.py:747
+#: src/netconfpkg/gui/maindialog.py:758
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγράψετε την συσκευή \"%s\";"
 
-#: src/netconfpkg/gui/maindialog.py:779
+#: src/netconfpkg/gui/maindialog.py:790
 msgid "You have made some changes in your configuration."
 msgstr "Έχετε κάνει μερικές αλλαγές στις ρυθμίσεις σας."
 
-#: src/netconfpkg/gui/maindialog.py:780
+#: src/netconfpkg/gui/maindialog.py:791
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Για να  ενεργοποιήσετε την συσκευή δικτύου  %s, πρέπει να αποθηκευθούν οι "
 "αλλαγές που έγιναν."
 
-#: src/netconfpkg/gui/maindialog.py:782
+#: src/netconfpkg/gui/maindialog.py:793
 msgid "Do you want to continue?"
 msgstr "Θέλετε να συνεχίσετε;"
 
@@ -1456,28 +1478,28 @@ msgstr "Θέλετε να συνεχίσετε;"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:962
+#: src/netconfpkg/gui/maindialog.py:980
 msgid "The Loopback device can not be disabled!"
 msgstr "Η συσκευή Loopback δεν μπορεί να απενεργοποιηθεί!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1141 src/netconfpkg/gui/maindialog.py:1220
+#: src/netconfpkg/gui/maindialog.py:1159 src/netconfpkg/gui/maindialog.py:1238
 msgid "The name may only contain letters and digits!"
 msgstr "Το όνομα μπορεί να περιέχει μόνο γράμματα και αριθμούς!"
 
-#: src/netconfpkg/gui/maindialog.py:1146 src/netconfpkg/gui/maindialog.py:1225
+#: src/netconfpkg/gui/maindialog.py:1164 src/netconfpkg/gui/maindialog.py:1243
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Το όνομα του προφίλ δεν μπορεί να είναι \"%s\"!"
 
-#: src/netconfpkg/gui/maindialog.py:1152 src/netconfpkg/gui/maindialog.py:1231
+#: src/netconfpkg/gui/maindialog.py:1170 src/netconfpkg/gui/maindialog.py:1249
 msgid "The profile name already exists!"
 msgstr "Το όνομα του προφίλ υπάρχει ήδη!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1198
+#: src/netconfpkg/gui/maindialog.py:1216
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Το προφίλ \"%s\" δεν μπορεί να μετονομαστεί!"
@@ -1485,12 +1507,12 @@ msgstr "Το προφίλ \"%s\" δεν μπορεί να μετονομαστε
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1253
+#: src/netconfpkg/gui/maindialog.py:1271
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Το Προφίλ  \"%s\" δεν μπορεί να διαγραφεί!"
 
-#: src/netconfpkg/gui/maindialog.py:1259
+#: src/netconfpkg/gui/maindialog.py:1277
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγραφεί το προφίλ \"%s\";"
@@ -1498,19 +1520,19 @@ msgstr "Θέλετε πραγματικά να διαγραφεί το προφ�
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1332
+#: src/netconfpkg/gui/maindialog.py:1350
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1350
+#: src/netconfpkg/gui/maindialog.py:1368
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγραφεί το \"%s\";"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1364
+#: src/netconfpkg/gui/maindialog.py:1381
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr ""
@@ -1575,15 +1597,6 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-#. hwlist = NCHardwareList.getHardwareList()
-#. (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
-#. if len(hwdesc):
-#. ecombo.set_popdown_strings(hwdesc)
-#. widget = self.xml.get_widget("ethernetDeviceEntry")
-#. if self.device.Device and hwcurr:
-#. widget.set_text(hwcurr)
-#. widget.set_position(0)
 #. hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
 #. fields = string.split(hw)
 #. hw = fields[0]
@@ -1725,7 +1738,7 @@ msgstr "αυτόματο"
 msgid "manual"
 msgstr "χειροκίνητη"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:111
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:112
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -2001,12 +2014,12 @@ msgstr ""
 
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:165
+#: src/netconfpkg/NCProfileList.py:183
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 
-#: src/netconfpkg/NCProfileList.py:167
+#: src/netconfpkg/NCProfileList.py:185
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -2016,11 +2029,15 @@ msgstr ""
 
 #. Just to be safe...
 #. if the hostname changed, set it system wide (#55746)
+#. delete all other entries the user has deleted in the UI
+#. Active Profile or default profile
+#. Special actions for the active profile
 #. First remove all files that are linked in the device directory
+#. Do not remove used files
 #. Check, if it is a device of neat in every profile directory
 #. Remove all profile directories except default
-#. Remove all files in the default profile directory
-#. delete all other entries the user has deleted in the UI
+#. Remove all files in the profile directory
+#. Do not remove used files
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -2061,32 +2078,32 @@ msgstr "Κοινό"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:109 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:110 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Υλικό (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:110 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:111 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Λογισμικό (XON/XOFF)"
 
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
-#: src/netconfpkg/NC_functions.py:152
-msgid "Shall the following packages, which are needed on your system, be installed?"
+#: src/netconfpkg/NC_functions.py:153
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 
-#. print "toinstall %s" % str(toinstall)
-#. print "plist %s" % str(plist)
-#: src/netconfpkg/NC_functions.py:167
-msgid "You have to install the following packages, which are needed on your system!"
+#: src/netconfpkg/NC_functions.py:166
+msgid ""
+"You have to install the following packages, which are needed on your system!"
 msgstr ""
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:608
+#: src/netconfpkg/NC_functions.py:603
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2097,7 +2114,7 @@ msgstr ""
 " %s:\n"
 " %s!"
 
-#: src/netconfpkg/NC_functions.py:618
+#: src/netconfpkg/NC_functions.py:613
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2106,7 +2123,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:629
+#: src/netconfpkg/NC_functions.py:624
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2115,7 +2132,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:639
+#: src/netconfpkg/NC_functions.py:634
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2124,7 +2141,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:649
+#: src/netconfpkg/NC_functions.py:644
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2133,7 +2150,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:657
+#: src/netconfpkg/NC_functions.py:652
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2309,41 +2326,55 @@ msgid "%s, Device not specified or alias not a number!"
 msgstr ""
 
 #. XXX fixme
-#: src/netconfpkg/NCDevice.py:234
+#: src/netconfpkg/NCDevice.py:232
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr ""
 
-#: src/netconfpkg/NCDevice.py:376
+#: src/netconfpkg/NCDevice.py:374
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s!\n"
 
-#: src/netconfpkg/NCDevice.py:393
+#: src/netconfpkg/NCDevice.py:391
 msgid "Network device deactivating..."
 msgstr "Γίνεται απενεργοποίηση συσκευής δικτύου..."
 
-#: src/netconfpkg/NCDevice.py:394
+#: src/netconfpkg/NCDevice.py:392
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Απενεργοποίηση συσκευής δικτύου %s, παρακαλώ περιμένετε..."
 
-#: src/netconfpkg/NCDevice.py:396
+#: src/netconfpkg/NCDevice.py:394
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Δεν μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s!\n"
 
-#: src/netconfpkg/NCDeviceList.py:64
+#: src/netconfpkg/NCDeviceList.py:63
 #, fuzzy
 msgid "Please start redhat-config-network with root permissions once!\n"
 msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
 
-#: src/netconfpkg/NCDeviceList.py:68
+#: src/netconfpkg/NCDeviceList.py:67
 #, python-format
 msgid "Copying %s to devices and putting it into the default profile."
 msgstr ""
 
-#. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
+#. the initscripts do not like '-'
+#. log.log(4, "%s != %s" % (newDeviceId, dev.DeviceId))
+#. Fixed change device names in active list of all profiles
+#. log.log(4, str(prof.ActiveDevices))
+#. log.log(4, "changed %s" % (prof.ActiveDevices[pos]))
+#. log.log(4, str(prof.ActiveDevices))
+#: src/netconfpkg/NCDeviceList.py:167
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr ""
+
+#: src/netconfpkg/NCDeviceList.py:170
+#, fuzzy
+msgid "Nicknames changed"
+msgstr "_Παρατσούκλι:"
+
 #. return DeviceList_base._objToStr(self, obj, parentStr)
 #.
 #. clear all Dialer sections in wvdial.conf
@@ -2408,7 +2439,8 @@ msgstr "Εισάγετε εδώ το όνομα σύνδεσης, που σας 
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
 "Εισάγετε το όνομα αυτής της ρύθμισης, συνήθως απλά εισάγουμε το όνομα του "
 "παροχέα."
@@ -3447,7 +3479,8 @@ msgstr "Επανέναρξη αν  η _σύνδεση διακοπεί"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:41
 msgid "Select the authentication protocol used by your ISP."
-msgstr "Επιλέξτε το πρωτόκολλο αυθεντικοποίησης που χρησιμοποιεί ο παροχέας σας."
+msgstr ""
+"Επιλέξτε το πρωτόκολλο αυθεντικοποίησης που χρησιμοποιεί ο παροχέας σας."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:42
 msgid "Use _Callback Control Protocol (CBCP)"
@@ -4105,7 +4138,8 @@ msgstr ""
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
 #, fuzzy
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
 "Μπορείτε να ρυθμίσετε δικτυακό υλικό που έιναι φυσικά συνδεδεμένο με τον "
 "υπολογιστή"
@@ -4287,4 +4321,3 @@ msgstr "Πληροφορία"
 #~ "Please restart once with root permissions!\n"
 #~ "%s"
 #~ msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
-

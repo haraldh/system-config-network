@@ -31,7 +31,7 @@ class DevEthernet(Device):
    ethernetclass = df.getDeviceClass(ETHERNET)
    ethernetdevice = ethernetclass()
 
-   It has the following attributes, show here with the corresponding
+   It has the following attributes, shown here with the corresponding
    initscripts variables:
    
    Device          - DEVICE=<name of physical device (except
@@ -85,5 +85,5 @@ _df.register(DevEthernet, ETHERNET)
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/21 09:07:14 $"
-__version__ = "$Revision: 1.4 $"
+__date__ = "$Date: 2003/06/25 09:42:22 $"
+__version__ = "$Revision: 1.5 $"

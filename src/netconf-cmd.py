@@ -233,6 +233,7 @@ if __name__ == '__main__':
         if os.getuid() == 0 or chroot:
             NCProfileList.updateNetworkScripts()
             NCDeviceList.updateNetworkScripts()
+
             
         if not len(devlists):
             devlists = [getDeviceList(), getHardwareList(),
@@ -339,5 +340,5 @@ if __name__ == '__main__':
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2003/06/25 09:42:21 $"
+__version__ = "$Revision: 1.12 $"

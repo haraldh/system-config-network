@@ -18,6 +18,8 @@
             
 _devFac = None
 
+from rhpl.log import log
+
 def getDeviceFactory():
     global _devFac
     
@@ -63,5 +65,5 @@ class DeviceFactory(dict):
 
 from netconfpkg.plugins import *
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2003/06/25 09:42:22 $"
+__version__ = "$Revision: 1.7 $"
