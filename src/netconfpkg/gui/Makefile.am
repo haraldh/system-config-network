@@ -32,6 +32,7 @@ GLADE_FILES = \
 	TokenRingHardwareDruid.glade \
 	TokenRingInterfaceDruid.glade \
 	tokenringhardware.glade \
+	tonline.glade \
 	wirelessconfig.glade \
 	WirelessInterfaceDruid.glade \
 	ctcconfig.glade
@@ -71,6 +72,7 @@ PYTHON_FILES = \
 	TokenRingHardwareDruid.py \
 	TokenRingInterface.py \
 	tokenringhardware.py \
+	tonline.py \
 	wirelessconfig.py \
 	WirelessInterface.py \
 	ctcconfig.py
