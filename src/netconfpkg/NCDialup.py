@@ -83,7 +83,8 @@ country_code = {
 class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)        
-
+        self.createCompression()
+        
 class DslDialup(Dialup):
     boolkeydict = { 'PeerDNS' : 'RESOLV_MODS',
                     'DefRoute' : 'DEFROUTE',
@@ -265,8 +266,7 @@ class IsdnDialup(Dialup):
         if not self.PPPOptions:
             self.createPPPOptions()
         
-        compression = self.createCompression()
-        compression.load(conf)
+        self.Compression.load(conf)
         
         if conf.has_key('CALLBACK'):
             if conf['CALLBACK'] == 'on':
