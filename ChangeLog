@@ -1,5 +1,35 @@
 2004-06-29  Harald Hoyer  <harald@redhat.com>
 
+	* system-config-network.spec.in 1.12: release 1.3.17-1 moved
+
+	* src/netconfpkg/NC_functions.py 1.88: - better "make clean"
+	- removed references to Red Hat Linux
+	- added testsuite for data layer
+	- added some module-info entries
+	- added command line parsing to network-control
+	- added IPsec to network-cmd
+	- switched logging to syslog
+	- do not touch bonding slaves
+	- better alias handling
+	- better handling of chroot
+	- read *.ko modules also
+	- handle modules parameter without "="
+	- create correct SPI_ identifier for manual IPsec keying
+	- better hostname handling
+	- better profile handling
+	- fix kernel version parsing
+	- unknown-flag.xpm for unknown country flags
+	- fixed TokenRing glade file (bad hash at beginning of file)
+	- fix the length of IPSec shared keys
+	- prevent modified status after profile switching
+	- save dialog, for ipsec deactivation
+	- PEERDNS defaults to yes
+	- routing for wireless config dialog
+	- only display CIPE for kernel < 2.6
+
+	* po/zh_TW.po 1.152, po/ta.po 1.3, po/tr.po 1.114, po/uk.po 1.7, po/vi.po 1.9, po/zh_CN.po 1.129, po/pa.po 1.5, po/pt.po 1.171, po/pt_BR.po 1.29, po/ru.po 1.133, po/sk.po 1.3, po/sl.po 1.6, po/sq.po 1.2, po/sv.po 1.180, po/system-config-network.pot 1.11, po/ja.po 1.189, po/ko.po 1.189, po/mk.po 1.2, po/ms.po 1.7, po/nl.po 1.40, po/no.po 1.171, po/et.po 1.12, po/fa.po 1.3, po/fi.po 1.9, po/fr.po 1.200, po/hi.po 1.7, po/hr.po 1.9, po/hu.po 1.26, po/is.po 1.181, po/it.po 1.181, Makefile.am 1.57, configure.in 1.170, intltool-extract.in 1.13, intltool-merge.in 1.13, intltool-update.in 1.13, mkinstalldirs 1.3, po/bg.po 1.3, po/bn.po 1.8, po/ca.po 1.4, po/cs.po 1.151, po/cy.po 1.6, po/da.po 1.144, po/de.po 1.203, po/el.po 1.127, po/es.po 1.188, ChangeLog 1.127:
+	release 1.3.17-1
+
 	* src/netconfpkg/DeviceList.idl 1.40, src/netconfpkg/Makefile.am 1.61, src/netconfpkg/NCDevice.py 1.101, src/netconfpkg/NCDeviceList.py 1.61, src/netconfpkg/NCDialup.py 1.67, src/netconfpkg/NCHardwareFactory.py 1.9, src/netconfpkg/NCHardwareList.py 1.72, src/netconfpkg/NCIPsec.py 1.3, src/netconfpkg/NCIPsecList.py 1.3, src/netconfpkg/NCProfileList.py 1.82, src/netconfpkg/NC_functions.py 1.87, src/netconfpkg/gui/CipeInterface.py 1.30, src/netconfpkg/gui/EthernetInterface.py 1.36, src/netconfpkg/gui/InterfaceCreator.py 1.8, src/netconfpkg/gui/Makefile.am 1.28, src/netconfpkg/gui/PTPInterface.py 1.4, src/netconfpkg/gui/TokenRingInterface.py 1.23, src/netconfpkg/gui/TokenRingInterfaceDruid.glade 1.13, src/netconfpkg/gui/WirelessInterface.py 1.29, src/netconfpkg/gui/editipsec.glade 1.10, src/netconfpkg/gui/editipsec.py 1.6, src/netconfpkg/gui/maindialog.py 1.39, src/netconfpkg/gui/sharedtcpip.py 1.32, src/netconfpkg/gui/wirelessconfig.glade 1.26, src/netconfpkg/gui/wirelessconfig.py 1.25, src/netconfpkg/plugins/Makefile.am 1.8:
 	added Slave flag
 

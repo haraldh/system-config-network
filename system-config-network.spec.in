@@ -93,6 +93,32 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-druid
 
 %changelog
+* Tue Jun 29 2004 Harald Hoyer <harald@redhat.com> - 1.3.17
+- better "make clean"
+- removed references to Red Hat Linux
+- added testsuite for data layer
+- added some module-info entries
+- added command line parsing to network-control
+- added IPsec to network-cmd
+- switched logging to syslog
+- do not touch bonding slaves
+- better alias handling
+- better handling of chroot 
+- read *.ko modules also
+- handle modules parameter without "="
+- create correct SPI_ identifier for manual IPsec keying
+- better hostname handling
+- better profile handling
+- fix kernel version parsing
+- unknown-flag.xpm for unknown country flags
+- fixed TokenRing glade file (bad hash at beginning of file)
+- fix the length of IPSec shared keys
+- prevent modified status after profile switching
+- save dialog, for ipsec deactivation
+- PEERDNS defaults to yes
+- routing for wireless config dialog
+- only display CIPE for kernel < 2.6
+
 * Thu Apr  1 2004 Harald Hoyer <harald@redhat.com> - 1.3.17
 - translation updates (119610)
 
