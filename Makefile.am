@@ -86,10 +86,9 @@ archive: changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
 	@cd /tmp/${PKGNAME};./autogen.sh;make distcheck
-	@dir=$$PWD; mv ${PACKAGE}-$(VERSION).tar.gz  $$dir/ ;cd /tmp
+	@mv /tmp/${PKGNAME}/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)./
 	@rm -rf /tmp/${PKGNAME}
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
-	@mv /tmp/${PACKAGE}-$(VERSION).tar.gz $(top_builddir)
 
 force-tag:
 	cvs ci -m "release $(VERSION)-$(RELEASE) moved"
