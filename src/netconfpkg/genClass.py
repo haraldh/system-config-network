@@ -179,6 +179,38 @@ ListOps = """
 		self.%childname = None
 """
 
+SListCNLOps = """	
+	def commitCNLChild(self, name, type, changed=true):
+		if self.__list:
+			if self.__dict__[name]:
+				if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != None:
+					self.__list.getChildByName(name).setValue(self.__dict__[name])
+				else:
+					self.__list.addChild(type, name).setValue(self.__dict__[name])
+			else:
+				if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != None:
+					self.__list.getChildByName(name).unlink()
+		if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != self.__dict__[name]:
+			self.setChanged(changed)			
+			self.__dict__['__' + name + '_bak'] = self.__dict__[name]
+		
+"""
+
+
+SListCLOps = """	
+	def commitCLChild(self, name, type, changed=true):
+		if self.__list:
+			if self.__dict__.has_key('__' + name + '_bak') and self.__dict__['__' + name + '_bak'] != None:
+				self.__dict__['__' + name + '_bak'].unlink()
+			if self.__dict__[name] != None:
+				self.__dict__[name].setList(self.__list.addChild(type, name))
+		if hasattr(self.__dict__[name], "commit"):
+			self.__dict__[name].commit(changed)
+		if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != self.__dict__[name]:
+			self.setChanged(changed)
+			self.__dict__['__' + name + '_bak'] = self.__dict__[name]		
+"""
+
 ListCNLOps = """	
 	def set%childname(self, value):
 		self.%childname = value
@@ -198,6 +230,7 @@ ListCNLOps = """
 			self.__dict__['__' + name + '_bak'] = self.__dict__[name]
 		
 """
+
 
 ListCLOps = """	
 	def create%childname(self):
@@ -353,6 +386,8 @@ def printClass(list, basename, baseclass):
 	testlist = TestList
 	backuplist = BackupList
 	baseinit = ""
+	scnl = false
+	scl = false
 	
 	dobase = not (OptNoBase or OptCondBase)
 
@@ -522,15 +557,14 @@ def printClass(list, basename, baseclass):
 			backuplist = backuplist + \
 				     '\t\tself.%childname = self.__%childname_bak\n'
 			
-			commitlist = commitlist + \
-				     '\t\tself.commitChild("%childname", %childtype, changed)\n'
-
 			if ctype != Data.ADM_TYPE_LIST:
 				#
 				# Child != List
 				#
-
 				methods = methods + ListCNLOps
+				if not scnl:
+					methods = methods + SListCNLOps
+					scnl = true
 
 				testlist = testlist + \
 						'\t\tself.test%childname(self.%childname)\n'
@@ -540,6 +574,8 @@ def printClass(list, basename, baseclass):
 
 				initlist = initlist \
 							  + '\t\t\t\tself.__%childname_bak = child.getValue()\n'
+				commitlist = commitlist + \
+					     '\t\tself.commitCNLChild("%childname", %childtype, changed)\n'
 
 				
 				#########################				
@@ -547,8 +583,10 @@ def printClass(list, basename, baseclass):
 				#
 				# Child == List
 				#
-
 				methods = methods + ListCLOps
+				if not scl:
+					methods = methods + SListCLOps
+					scl = true
 
 				initlist = initlist \
 							  + '\t\t\t\tself.__%childname_bak = %childclassname(child, self)\n'
@@ -560,7 +598,10 @@ def printClass(list, basename, baseclass):
 							  + '\t\tself.create%childname().apply(other.get%childname())\n'
 
 				backuplist = backuplist +\
-								 '\t\tif self.%childname: self.%childname.rollback()\n'
+								 '\t\tif self.__%childname_bak: self.__%childname_bak.rollback()\n'
+
+				commitlist = commitlist + \
+					     '\t\tself.commitCLChild("%childname", %childtype, changed)\n'
 				
 				
 				#########################
