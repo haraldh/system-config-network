@@ -27,8 +27,7 @@ import os
 import GdkImlib
 import string
 import gettext
-import re
-import regsub
+import string
 
 import HardwareList
 
@@ -65,21 +64,32 @@ class ethernetConfigDialog:
             })
 
         self.dialog = self.xml.get_widget("Dialog")
-        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
+        #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        #self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
 
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
 
         hwdesc = []
+        hwcurr = None
         hardwarelist = HardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Type == "Ethernet":
-                hwdesc.append(str(hw.Name) + ' (' + hw.Description + ')')
+                desc = str(hw.Name) + ' (' + hw.Description + ')'
+                hwdesc.append(desc)
+                if self.device.Device and hw.Name == self.device.Device:
+                    hwcurr = desc
+                    
         if len(hwdesc):
             hwdesc.sort()
             ecombo.set_popdown_strings(hwdesc)
 
+        if not hwcurr and len(hwdesc):
+            hwcurr = hwdesc[0]
+
+        if self.device.Device:
+            self.xml.get_widget("ethernetDeviceEntry").set_text(hwcurr)
+        
         if self.device.Alias != None:
             self.xml.get_widget("aliasSupportCB").set_active(TRUE)
             self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
@@ -111,7 +121,7 @@ class ethernetConfigDialog:
     
     def on_okButton_clicked(self, button):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = regsub.split(hw, " ")
+        fields = string.split(hw)
         hw = fields[0]
         self.device.Device = hw
         if self.xml.get_widget("aliasSupportCB").get_active():
