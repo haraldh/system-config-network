@@ -86,7 +86,7 @@ archive: changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
 	@cd /tmp/${PKGNAME};./autogen.sh;make distcheck
-	@dir=$$PWD; cd /tmp; mv ${PACKAGE}-$(VERSION).tar.gz  $$dir/
+	@dir=$$PWD; mv ${PACKAGE}-$(VERSION).tar.gz  $$dir/ ;cd /tmp
 	@rm -rf /tmp/${PKGNAME}
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
 
