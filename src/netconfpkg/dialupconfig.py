@@ -29,7 +29,7 @@ import string
 import gettext
 import re
 
-from provider import providerDialog
+from provider import *
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
