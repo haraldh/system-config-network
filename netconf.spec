@@ -1,6 +1,6 @@
 Summary: The network configuration tool for Red Hat Linux
 Name: netconf
-Version: 0.1
+Version: 0.2
 Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz

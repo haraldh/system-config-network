@@ -1,6 +1,45 @@
-EXTRA_DIST = DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl NetworkList.idl Firewall.idl genClass.py NCDeviceList.py
+GLADE_FILES = \
+	basicdialog.glade \
+	chooseprovider.glade \
+	cipeconfig.glade \
+	dialupconfig.glade \
+	dslconfig.glade \
+	editadress.glade \
+	editdomain.glade \
+	edithosts.glade \
+	ethernetconfig.glade \
+	ethernethardware.glade \
+	isdnhardware.glade \
+	modemconfig.glade \
+	wirelessconfig.glade
 
-BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py NetworkList.py Firewall.py
+IDL_FILES = \
+	DeviceList.idl \
+	Firewall.idl \
+	HardwareList.idl \
+	NetworkList.idl \
+	ProfileList.idl \
+	ProviderList.idl
+
+PYTHON_FILES = \
+	genClass.py \
+	basicdialog.py \
+	CheckList.py \
+	ConfSMB.py \
+	dialupconfig.py \
+	dslconfig.py \
+	editadress.py \
+	editdomain.py \
+	edithosts.py \
+	ethernetconfig.py \
+	ethernethardware.py \
+	__init__.py \
+	isdnhardware.py \
+	modemconfig.py \
+	providerdb.py \
+	provider.py
+
+EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
 #pkgdata_DATA :=
 

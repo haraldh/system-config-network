@@ -58,9 +58,9 @@ class mainDialog:
 
         glade_file = "maindialog.glade"
 
-        if not isfile(glade_file):
+        if not os.path.isfile(glade_file):
             glade_file = "netconfpkg/" + glade_file
-        if not isfile(glade_file):
+        if not os.path.isfile(glade_file):
             glade_file = "/usr/share/netconf/" + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
@@ -254,13 +254,13 @@ class mainDialog:
             row = row + 1
 
     def load_icon(self, pixmap_file, widget = None):
-        if not isfile(pixmap_file):
+        if not os.path.isfile(pixmap_file):
             pixmap_file = "pixmaps/" + pixmap_file
-        if not isfile(pixmap_file):
+        if not os.path.isfile(pixmap_file):
             pixmap_file = "../pixmaps/" + pixmap_file
-        if not isfile(pixmap_file):
+        if not os.path.isfile(pixmap_file):
             pixmap_file = "/usr/share/netconf/" + pixmap_file
-        if not isfile(pixmap_file):
+        if not os.path.isfile(pixmap_file):
             return
  
         pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
