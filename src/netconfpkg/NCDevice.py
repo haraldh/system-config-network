@@ -34,6 +34,29 @@ class Device(Device_base):
     def __init__(self, list = None, parent = None):
         Device_base.__init__(self, list, parent)        
 
+    def apply(self, other):
+        if not other:
+            self.unlink()
+            return
+        # ApplyList
+        self.setDeviceId(other.getDeviceId())
+        self.setName(other.getName())
+        self.setDevice(other.getDevice())
+        self.setAlias(other.getAlias())
+        self.setType(other.getType())
+        self.setOnBoot(other.getOnBoot())
+        self.setAllowUser(other.getAllowUser())
+        self.setBootProto(other.getBootProto())
+        self.setIP(other.getIP())
+        self.setNetmask(other.getNetmask())
+        self.setGateway(other.getGateway())
+        self.setHostname(other.getHostname())
+        self.setDomain(other.getDomain())
+        self.setAutoDNS(other.getAutoDNS())
+        self.createStaticRoutes().apply(other.getStaticRoutes())
+        if self.createDialup():
+            self.Dialup.apply(other.getDialup())
+
     def createDialup(self):
         if self.Type:
             if self.Type == "Modem":
@@ -47,11 +70,12 @@ class Device(Device_base):
                     self.Dialup = NCDialup.IsdnDialup(None, self)
                 return self.Dialup
             else:
-                self.Dialup = NCDialup.ModemDialup(None, self)
+                self.Dialup = None
+#                self.Dialup = NCDialup.ModemDialup(None, self)
                 return self.Dialup
         else:
             raise TypeError, "Device type not specified"
-        
+
     def load(self, name):
         
         conf = ConfDevice(name)
