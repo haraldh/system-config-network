@@ -67,7 +67,7 @@ class modemDialog:
         pass
         
     def on_okButton_clicked(self, button):
-        self.dehydrate()
+        self.dehydrate()        
 
     def on_cancelButton_clicked(self, button):
         pass
@@ -80,20 +80,17 @@ class modemDialog:
         self.xml.get_widget("flowControlCombo").set_popdown_strings(flowcontrols)        
 
     def hydrate(self):
-        pass
-
-    def hydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
 
-        if self.hw.Modem.DeviceName:
+        if self.hw.Modem.DeviceName != None:
             self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
-        if self.hw.Modem.BaudRate:
+        if self.hw.Modem.BaudRate != None:
             self.xml.get_widget('baurateEntry').set_text(str(self.hw.Modem.BaudRate))
-        if self.hw.Modem.FlowControl and modemFlowControls.has_key(self.hw.Modem.FlowControl):
+        if self.hw.Modem.FlowControl != None and modemFlowControls.has_key(self.hw.Modem.FlowControl):
             self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
-        if self.hw.Modem.ModemVolume:
+        if self.hw.Modem.ModemVolume != None:
             self.xml.get_widget('volumeMenu').set_history(int(self.hw.Modem.ModemVolume))
-        if self.hw.Modem.DialCommand:
+        if self.hw.Modem.DialCommand != None:
             self.xml.get_widget('toneDialingCB').set_active(self.hw.Modem.DialCommand == 'ATDT')
 
     def dehydrate(self):
@@ -113,14 +110,13 @@ class modemDialog:
                 self.hw.Name = "Modem0"
             
         self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
-        if os.path.dirname(hw.Modem.DeviceName) != '/dev':
-            self.hw.Modem.DeviceName = '/dev/' + os.path.basename(hw.Modem.DeviceName)
         self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
 
         flow = self.xml.get_widget("flowControlEntry").get_text()
         for i in modemFlowControls.keys():
             if modemFlowControls[i] == flow:
                 self.hw.Modem.FlowControl = i
+                break
             
         Item = self.xml.get_widget("volumeMenu")["label"]
         if Item == _("Off"):
@@ -140,6 +136,9 @@ class modemDialog:
             self.hw.Modem.DialCommand = "ATDT"
         else:
             self.hw.Modem.DialCommand = "ATDP"
+
+        if os.path.dirname(self.hw.Modem.DeviceName) != '/dev':
+            self.hw.Modem.DeviceName = '/dev/' + os.path.basename(self.hw.Modem.DeviceName)
 
 # make ctrl-C work
 if __name__ == "__main__":
