@@ -55,7 +55,7 @@ IUCV = 'IUCV'
 
 deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV ]
 
-modemDeviceList = [ '/dev/modem', '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
+modemDeviceList = [ '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
 		    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3' ]
 
 ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
@@ -260,14 +260,12 @@ def getModemList():
     
     import kudzu
     res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
-    if res == []:
-        ModemList = ['/dev/modem']
-    else:
-        ModemList = []
-	for v in res:
+    ModemList = []
+    if res != []:
+        for v in res:
 	    dev = str(v[0])
-            if dev != 'None':
-                ModemList.append(dev)
+	    if dev != 'None':
+	        ModemList.append('/dev/' + dev)
     return ModemList[:]
 
 generic_error_dialog_func = None
@@ -333,6 +331,15 @@ def link(src, dst):
 		generic_error_dialog (_("Error linking %s\nto\n%s: %s!") 
 				      % (src, dst, str(errstr)))
 	
+def symlink(src, dst):
+	if not os.path.isfile(src):
+		return
+	try:
+		os.symlink(src, dst)
+	except OSError, errstr:
+		generic_error_dialog (_("Error linking %s\nto\n%s: %s!") 
+				      % (src, dst, str(errstr)))
+
 def rename(src, dst):
 	if not os.path.isfile(src) and not os.path.isdir(src):
 		return

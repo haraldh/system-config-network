@@ -83,6 +83,9 @@ class modemDialog:
         hardwarelist = NCHardwareList.getHardwareList()
 
         if self.hw.Modem.DeviceName != None:
+            if not self.hw.Modem.DeviceName in modemDeviceList:
+                modemDeviceList.insert(0, self.hw.Modem.DeviceName)
+                self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
             self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
         if self.hw.Modem.BaudRate != None:
             self.xml.get_widget('baurateEntry').set_text(str(self.hw.Modem.BaudRate))

@@ -111,10 +111,13 @@ class ModemInterface:
             dlist = GUI_functions.getModemList()
             ModemInterface.modemList = dlist
             dialog.destroy()
+            if dlist == []:
+                generic_error_dialog(_('No modem was found on system.'))
+                dlist = modemDeviceList
         else:
             dlist = ModemInterface.modemList
+
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
-        pass
  
     def on_Modem_next(self, druid_page, druid):
         self.dehydrate()

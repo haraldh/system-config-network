@@ -296,6 +296,7 @@ class HardwareList(HardwareList_base):
                 if not hw.Modem.InitString: hw.Modem.InitString = 'ATZ'
                 wvdial[hw.Name]['Init1'] = str(hw.Modem.InitString)
                 wvdial[hw.Name]['FlowControl'] = str(hw.Modem.FlowControl)
+
             if hw.Type == ISDN:
                 isdn.Description = hw.Description
                 isdn.Type = hw.Card.Type

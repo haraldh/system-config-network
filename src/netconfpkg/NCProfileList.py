@@ -107,7 +107,6 @@ class ProfileList(ProfileList_base):
         self.commit(changed=false)
 
     def test(self):
-        self.fixInterfaces()
         return
         # Keep that test for later versions
         devmap = {}
