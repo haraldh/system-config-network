@@ -65,6 +65,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/neat-control
 %{_bindir}/internet-druid
 %{_bindir}/system-control-network
+%{_sbindir}/system-config-network-druid
+%{_bindir}/system-config-network-druid
+%{_sbindir}/neat
+%{_bindir}/neat
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -81,18 +85,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/*
 %config(noreplace) %{_sysconfdir}/pam.d/*
 %config(noreplace) %{_sysconfdir}/security/console.apps/*
-%{_sbindir}/neat
 %{_sbindir}/neat-tui
 %{_sbindir}/system-config-network
 %{_sbindir}/system-config-network-tui
 %{_sbindir}/system-config-network-cmd
-%{_sbindir}/system-config-network-druid
-%{_bindir}/neat
 %{_bindir}/system-config-network
 %{_bindir}/system-config-network-cmd
-%{_bindir}/system-config-network-druid
 
 %changelog
+* Wed Mar 30 2005 Harald Hoyer <harald@redhat.com> - 1.3.24
+- gtk.FALSE and gtk.TRUE cleanups
+
+* Mon Mar 21 2005 Harald Hoyer <harald@redhat.com> - 1.3.23-2
+- moved gui parts out of the tui package
+
 * Fri Mar 04 2005 Harald Hoyer <harald@redhat.com> - 1.3.23
 - update to new gnome/gtk/glade
 
