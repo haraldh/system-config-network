@@ -55,6 +55,7 @@ from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.exception import handleException
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
+# Copyright
 TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/")
 
 device = None
@@ -127,6 +128,7 @@ class mainDialog:
         if device:
             intf = Interface()
             child = intf.activate(device)
+            # Network Device Control Dialog
             dlg = gtk.Dialog(_('Network device activating...'))
             dlg.set_border_width(10)
             dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
@@ -169,6 +171,7 @@ class mainDialog:
                 devErrorDialog(device, CONFIGURE, self.dialog)
 
     def on_monitorButton_clicked(self, button):
+        # TBD
         generic_error_dialog(_("To be rewritten!"))
         return
         device = self.clist_get_device()
@@ -259,8 +262,8 @@ class mainDialog:
         return TRUE
 
 
-# make ctrl-C work
 if __name__ == '__main__':
+    # make ctrl-C work
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     if os.getuid() == 0: updateNetworkScripts()
     window = mainDialog()

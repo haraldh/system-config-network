@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-## netconf - A network configuration tool
+## netconf-tui - a tui network configuration tool
 ## Copyright (C) 2002 Red Hat, Inc.
 ## Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -27,12 +27,14 @@ from netconfpkg import *
 PROGNAME='redhat-config-network'
 
 
+#
+# main Screen
+#
 def mainScreen(screen):
     """
     Displays the main screen
     @screen The snack screen instance
     """
-
     t=TextboxReflowed(25,_("What do you want to configure?"))
     bb=ButtonBar(screen,((_("Configure"),"configure"),(_("Exit"),"exit")))
     li=Listbox(5,width=25,returnExit=1)
@@ -60,6 +62,9 @@ def mainScreen(screen):
                 iw.runIt()
     screen.popWindow()
 
+#
+# EthernetWindow class
+#
 class EthernetWindow:
     def __init__(self,screen,devicelist,eth=None):
         """
@@ -184,7 +189,9 @@ class EthernetWindow:
                 break
 
 
-
+#
+# ModemWindow class
+#
 class ModemWindow:
     def __init__(self,screen,devicelist,modem=None):
         """
@@ -288,6 +295,9 @@ class ModemWindow:
                 screen.popWindow()
                 break
 
+#
+# ISDNWindow class
+#
 class ISDNWindow:
     def __init__(self,screen,devicelist,isdn=None):
         """
@@ -391,7 +401,9 @@ class ISDNWindow:
                 screen.popWindow()
                 break
                 
-    
+#
+# __main__
+#
 if __name__=="__main__":
     screen=SnackScreen()
     try:

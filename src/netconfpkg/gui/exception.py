@@ -31,6 +31,9 @@ from netconfpkg import PROGNAME
 
 from gtk import *
 
+#
+# ExceptionWindow class
+#
 class ExceptionWindow:
     def __init__ (self, text):
         win = gtk.Dialog(_("Exception Occured"), None, gtk.DIALOG_MODAL)
@@ -52,7 +55,7 @@ class ExceptionWindow:
                           "is most likely a bug.  Please save the crash "
                           "dump and file a detailed bug "
                           "report against redhat-config-network at "
-                          "https://bugzilla.redhat.com/bugzilla)")
+                          "https://bugzilla.redhat.com/bugzilla")
         info = gtk.Label(txt)
         info.set_line_wrap(TRUE)
         hbox.pack_start (sw, gtk.TRUE)
@@ -157,6 +160,9 @@ def exceptionWindow(title, text):
     
     return win.getrc ()
 
+#
+# FileSelection class
+#
 class FileSelection:
     def __init__(self, text):
         import gnome.ui
@@ -184,7 +190,10 @@ class FileSelection:
     
     def get_filename(self):
         return self.entry.get_full_path(FALSE)
-        
+
+#
+# handleException function
+#
 def handleException((type, value, tb)):
     list = traceback.format_exception (type, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
