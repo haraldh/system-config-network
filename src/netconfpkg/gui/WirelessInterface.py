@@ -293,21 +293,21 @@ class WirelessInterface(InterfaceCreator):
 
         if self.device.BootProto == "static":
             s = s + _("Address:") + " " + self.device.IP + "\n"\
-            + _("Subnet Mask:") + " " + self.device.Netmask + "\n"\
-            + _("Default Gateway Address:") + " " + self.device.Gateway + "\n"
+            + _("Subnet mask:") + " " + self.device.Netmask + "\n"\
+            + _("Default gateway address:") + " " + self.device.Gateway + "\n"
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n" 
 
         s = s + _("Mode: ") + str(wl.Mode) + "\n"
-        s = s + _("ESSID (Network ID):") + " "
+        s = s + _("ESSID (network ID):") + " "
         if not wl.EssId:
             s = s + "Automatic\n"
         else:
             s = s + str(wl.EssId) + "\n"
         if wl.Mode != "Managed":
             s = s + _("Channel: ") + str(wl.Channel) + "\n"
-        s = s + _("Transmit Rate: ") + str(wl.Rate) + "\n"\
+        s = s + _("Transmit rate: ") + str(wl.Rate) + "\n"\
             + _("Key: ")
 
         
@@ -336,5 +336,5 @@ class WirelessInterface(InterfaceCreator):
 
 NCDevWireless.setDevWirelessWizard(WirelessInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2003/07/30 12:37:20 $"
+__version__ = "$Revision: 1.26 $"

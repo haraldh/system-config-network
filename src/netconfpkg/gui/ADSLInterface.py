@@ -133,9 +133,9 @@ class ADSLInterface(InterfaceCreator):
 
         dialup = self.device.Dialup
         s = _("You have selected the following information:") + "\n\n" + "    " + \
-            _("Ethernet Device:") + "  " + dialup.EthDevice + "\n" + "    " + \
-            _("Provider Name:") + "  " + dialup.ProviderName + "\n" +  "    " + \
-            _("Login Name:") + "  " + dialup.Login         
+            _("Ethernet device:") + "  " + dialup.EthDevice + "\n" + "    " + \
+            _("Provider name:") + "  " + dialup.ProviderName + "\n" +  "    " + \
+            _("Login name:") + "  " + dialup.Login         
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):
@@ -231,5 +231,5 @@ class ADSLInterface(InterfaceCreator):
 
 NCDevADSL.setDevADSLWizard(ADSLInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.24 $"
+__date__ = "$Date: 2003/07/30 12:37:20 $"
+__version__ = "$Revision: 1.25 $"

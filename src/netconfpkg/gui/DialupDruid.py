@@ -226,10 +226,10 @@ class DialupDruid(InterfaceCreator):
         s = _("You have selected the following information:") + \
             "\n\n" + "    " + \
             _("Hardware:") + "  " + hw.Description + "\n" + "    " + \
-            _("Provider Name:") + "  " + dialup.ProviderName + \
+            _("Provider name:") + "  " + dialup.ProviderName + \
             "\n" +  "    " + \
-            _("Login Name:") + "  " + dialup.Login + "\n" +  "    " + \
-            _("Phone Number:") + "  " + dialup.PhoneNumber
+            _("Login name:") + "  " + dialup.Login + "\n" +  "    " + \
+            _("Phone number:") + "  " + dialup.PhoneNumber
         
         druid_page.set_text(s)
         
@@ -403,5 +403,5 @@ class DialupDruid(InterfaceCreator):
             dialup.StupidMode = TRUE
             dialup.InitString = ''
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2003/07/30 12:37:20 $"
+__version__ = "$Revision: 1.26 $"

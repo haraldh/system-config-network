@@ -203,19 +203,19 @@ class cipeConfigDialog(deviceConfigDialog):
         
         secretkey = self.xml.get_widget("secretKeyEntry").get_text()
         mytxt = ""
-        mytxt = mytxt + _("IP Address of Tunnel Device: ") + str(addr) + "\n"
-        mytxt = mytxt + _("Local Port: ") + port + "\n"
-        mytxt = mytxt + _("Remote Peer Address: ") + str(ip)
+        mytxt = mytxt + _("IP address of tunnel device: ") + str(addr) + "\n"
+        mytxt = mytxt + _("Local port: ") + port + "\n"
+        mytxt = mytxt + _("Remote peer address: ") + str(ip)
         if localport and localport != "":
             mytxt = mytxt + ":" + str(localport)
         mytxt = mytxt + "\n"
-        mytxt = mytxt + _("Remote Virtual Address: ") + str(localvirtualaddress) + "\n"
-        mytxt = mytxt + _("Local Virtual Address: ") + str(remotevirtualaddress) + "\n"
-        mytxt = mytxt + _("Secret Key: ") + str(secretkey) + "\n"
+        mytxt = mytxt + _("Remote virtual address: ") + str(localvirtualaddress) + "\n"
+        mytxt = mytxt + _("Local virtual address: ") + str(remotevirtualaddress) + "\n"
+        mytxt = mytxt + _("Secret key: ") + str(secretkey) + "\n"
         widget = self.xml.get_widget("remoteConfigTxt").get_buffer()
         widget.set_text(mytxt)
 
 NCDevCipe.setDevCipeDialog(cipeConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2003/07/30 12:37:20 $"
+__version__ = "$Revision: 1.27 $"

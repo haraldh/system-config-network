@@ -143,19 +143,19 @@ class CipeInterface(InterfaceCreator):
         
         s = _("You have selected the following information:") + "\n\n" + "    "\
             + _("Device:") + " " + str(self.device.Device) + "\n" + "    "\
-            + _("Tunnel through Device:") + " " + str(cipe.TunnelDevice) + "\n" + "    "\
-            + _("Local Port:") + " " + str(cipe.LocalPort) + "\n" + "    "
+            + _("Tunnel through device:") + " " + str(cipe.TunnelDevice) + "\n" + "    "\
+            + _("Local port:") + " " + str(cipe.LocalPort) + "\n" + "    "
         
         if not cipe.RemotePeerAddress \
                or cipe.RemotePeerAddress == "0.0.0.0" \
                or cipe.RemotePeerAddress == "" :
-            s = s + _("Remote Peer Address:") + " " + _("Auto") + "\n" + "    "
+            s = s + _("Remote peer address:") + " " + _("Auto") + "\n" + "    "
         else:
-            s = s + _("Remote Peer Address:") + " " + cipe.RemotePeerAddress + "\n" + "    "\
-                + _("Remote Peer Port:") + " " + str(cipe.LocalPort) + "\n" + "    "
+            s = s + _("Remote peer address:") + " " + cipe.RemotePeerAddress + "\n" + "    "\
+                + _("Remote peer port:") + " " + str(cipe.LocalPort) + "\n" + "    "
     
-        s = s + _("Remote Virtual Address:") + " " + str(cipe.RemoteVirtualAddress) + "\n" + "    "
-        s = s + _("Local Virtual Address:") + " " + str(self.device.IP)
+        s = s + _("Remote virtual address:") + " " + str(cipe.RemoteVirtualAddress) + "\n" + "    "
+        s = s + _("Local virtual address:") + " " + str(self.device.IP)
         
         druid_page.set_text(s)
         
@@ -308,15 +308,15 @@ class CipeInterface(InterfaceCreator):
 
         secretkey = self.xml.get_widget("secretKeyEntry").get_text()
         mytxt = ""
-        mytxt = mytxt + _("IP Address of Tunnel Device: ") + str(addr) + "\n"
-        mytxt = mytxt + _("Local Port: ") + port + "\n"
-        mytxt = mytxt + _("Remote Peer Address: ") + str(ip)
+        mytxt = mytxt + _("IP address of tunnel device: ") + str(addr) + "\n"
+        mytxt = mytxt + _("Local port: ") + port + "\n"
+        mytxt = mytxt + _("Remote peer address: ") + str(ip)
         if localport and localport != "":
             mytxt = mytxt + ":" + str(localport)
         mytxt = mytxt + "\n"
-        mytxt = mytxt + _("Remote Virtual Address: ") + str(localvirtualaddress) + "\n"
-        mytxt = mytxt + _("Local Virtual Address: ") + str(remotevirtualaddress) + "\n"
-        mytxt = mytxt + _("Secret Key: ") + str(secretkey) + "\n"
+        mytxt = mytxt + _("Remote virtual address: ") + str(localvirtualaddress) + "\n"
+        mytxt = mytxt + _("Local virtual address: ") + str(remotevirtualaddress) + "\n"
+        mytxt = mytxt + _("Secret key: ") + str(secretkey) + "\n"
         
         widget = self.xml.get_widget("remoteConfigTxt").get_buffer()
         widget.set_text(mytxt)
@@ -335,5 +335,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.24 $"
+__date__ = "$Date: 2003/07/30 12:37:20 $"
+__version__ = "$Revision: 1.25 $"

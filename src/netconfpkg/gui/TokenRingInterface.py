@@ -217,8 +217,8 @@ class TokenRingInterface(InterfaceCreator):
         
         if self.device.BootProto == "static":
             s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Subnet Mask:") + " " + self.device.Netmask + "\n" + "   "\
-            + _("Default Gateway Address:") + " " + self.device.Gateway + "\n"
+            + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
+            + _("Default gateway address:") + " " + self.device.Gateway + "\n"
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n"
@@ -244,5 +244,5 @@ class TokenRingInterface(InterfaceCreator):
 
 NCDevTokenRing.setDevTokenRingWizard(TokenRingInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2003/07/30 12:37:20 $"
+__version__ = "$Revision: 1.21 $"
