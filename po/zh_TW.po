@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2002-12-19 19:49+0100\n"
+"POT-Creation-Date: 2003-01-13 16:02+0100\n"
 "PO-Revision-Date: 2002-12-20 08:59+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Chinese (Traditional) <i18n-list@redhat.com>\n"
@@ -110,7 +110,7 @@ msgstr "點選以關閉這個介面裝置"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Copyright
-#: src/neat-control.py:59 src/netconfpkg/gui/maindialog.py:1405
+#: src/neat-control.py:59 src/netconfpkg/gui/maindialog.py:1407
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -252,14 +252,19 @@ msgstr "ISDN 組態設定"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:61
+#: src/netconf.py:60
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "錯誤: %s, %s！"
 
-#: src/netconf.py:63
+#: src/netconf.py:62
 msgid "Starting text version:"
 msgstr "進入文字模式:"
+
+#: src/netconf.py:113
+#, fuzzy
+msgid "Loading Network Configuration..."
+msgstr "組態設定載入中..."
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -364,7 +369,7 @@ msgstr ""
 #: src/netconfpkg/gui/ADSLInterface.py:136
 #: src/netconfpkg/gui/CipeInterface.py:141
 #: src/netconfpkg/gui/DialupDruid.py:233
-#: src/netconfpkg/gui/EthernetInterface.py:212
+#: src/netconfpkg/gui/EthernetInterface.py:213
 #: src/netconfpkg/gui/TokenRingInterface.py:207
 #: src/netconfpkg/gui/WirelessInterface.py:280
 msgid "You have selected the following information:"
@@ -424,7 +429,8 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -516,7 +522,7 @@ msgid "Create a new virtual private network connection with CIPE."
 msgstr "建立使用 CIPE 的一個新的虛擬私人網路連線。"
 
 #: src/netconfpkg/gui/CipeInterface.py:142
-#: src/netconfpkg/gui/EthernetInterface.py:213
+#: src/netconfpkg/gui/EthernetInterface.py:214
 #: src/netconfpkg/gui/TokenRingInterface.py:208
 #: src/netconfpkg/gui/WirelessInterface.py:281
 msgid "Device:"
@@ -567,50 +573,50 @@ msgstr " （動態的）"
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:205
-#: src/netconfpkg/gui/CipeInterface.py:265
-#: src/netconfpkg/gui/cipeconfig.py:120 src/netconfpkg/gui/cipeconfig.py:177
+#: src/netconfpkg/gui/CipeInterface.py:259
+#: src/netconfpkg/gui/cipeconfig.py:120 src/netconfpkg/gui/cipeconfig.py:171
 msgid "Server Mode"
 msgstr "伺服器模式"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:300
-#: src/netconfpkg/gui/CipeInterface.py:305
-#: src/netconfpkg/gui/cipeconfig.py:209 src/netconfpkg/gui/cipeconfig.py:214
+#: src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:203 src/netconfpkg/gui/cipeconfig.py:208
 msgid "(own choice)"
 msgstr "（自己的選擇）"
 
-#: src/netconfpkg/gui/CipeInterface.py:311
-#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:305
+#: src/netconfpkg/gui/cipeconfig.py:214
 msgid "IP Address of Tunnel Device: "
 msgstr "穿隧裝置的 IP 位址: "
 
-#: src/netconfpkg/gui/CipeInterface.py:312
-#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:306
+#: src/netconfpkg/gui/cipeconfig.py:215
 msgid "Local Port: "
 msgstr "本機連接埠: "
 
-#: src/netconfpkg/gui/CipeInterface.py:313
-#: src/netconfpkg/gui/cipeconfig.py:222
+#: src/netconfpkg/gui/CipeInterface.py:307
+#: src/netconfpkg/gui/cipeconfig.py:216
 msgid "Remote Peer Address: "
 msgstr "遠端 Peer 的位址: "
 
-#: src/netconfpkg/gui/CipeInterface.py:317
-#: src/netconfpkg/gui/cipeconfig.py:226
+#: src/netconfpkg/gui/CipeInterface.py:311
+#: src/netconfpkg/gui/cipeconfig.py:220
 msgid "Remote Virtual Address: "
 msgstr "遠端虛擬位址: "
 
-#: src/netconfpkg/gui/CipeInterface.py:318
-#: src/netconfpkg/gui/cipeconfig.py:227
+#: src/netconfpkg/gui/CipeInterface.py:312
+#: src/netconfpkg/gui/cipeconfig.py:221
 msgid "Local Virtual Address: "
 msgstr "本機虛擬位址: "
 
-#: src/netconfpkg/gui/CipeInterface.py:319
-#: src/netconfpkg/gui/cipeconfig.py:228
+#: src/netconfpkg/gui/CipeInterface.py:313
+#: src/netconfpkg/gui/cipeconfig.py:222
 msgid "Secret Key: "
 msgstr "私鑰: "
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:329
+#: src/netconfpkg/gui/CipeInterface.py:323
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
@@ -1095,7 +1101,7 @@ msgstr "選取乙太網路介面卡"
 #: src/netconfpkg/gui/tokenringhardware.py:162 src/netconfpkg/NCDevice.py:203
 #: src/netconfpkg/NCDevice.py:210 src/netconfpkg/NCDeviceList.py:84
 #: src/netconfpkg/NCHardwareList.py:199 src/netconfpkg/NCHardwareList.py:313
-#: src/netconfpkg/NC_functions.py:216
+#: src/netconfpkg/NC_functions.py:218
 msgid "Unknown"
 msgstr "未知的"
 
@@ -1156,40 +1162,41 @@ msgstr "eth7"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print "EthernetInterface getDeviceList"
-#: src/netconfpkg/gui/EthernetInterface.py:114
+#. FIXME
+#: src/netconfpkg/gui/EthernetInterface.py:115
 msgid "Ethernet connection"
 msgstr "乙太網路連線"
 
-#: src/netconfpkg/gui/EthernetInterface.py:120
+#: src/netconfpkg/gui/EthernetInterface.py:121
 msgid "Create a new ethernet connection."
 msgstr "建立新的乙太網路連線。"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:193
+#: src/netconfpkg/gui/EthernetInterface.py:194
 msgid "Other Ethernet Card"
 msgstr "其他乙太網路介面卡"
 
-#: src/netconfpkg/gui/EthernetInterface.py:224
+#: src/netconfpkg/gui/EthernetInterface.py:225
 #: src/netconfpkg/gui/TokenRingInterface.py:219
 #: src/netconfpkg/gui/WirelessInterface.py:292
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
 msgstr "位址:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:225
+#: src/netconfpkg/gui/EthernetInterface.py:226
 #: src/netconfpkg/gui/TokenRingInterface.py:220
 #: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Subnet Mask:"
 msgstr "子網路遮罩:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:226
+#: src/netconfpkg/gui/EthernetInterface.py:227
 #: src/netconfpkg/gui/TokenRingInterface.py:221
 #: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "Default Gateway Address:"
 msgstr "預設閘道器位址:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:228
+#: src/netconfpkg/gui/EthernetInterface.py:229
 #: src/netconfpkg/gui/TokenRingInterface.py:223
 #: src/netconfpkg/gui/WirelessInterface.py:296
 msgid "Automatically obtain IP address settings with:"
@@ -1288,7 +1295,8 @@ msgstr "按下完成以取得標準的設定對話窗。"
 msgid "Then, at first, enter the nickname for the device."
 msgstr "然後，首先輸入這個裝置的匿名。"
 
-#: src/netconfpkg/gui/GenericInterface.py:134
+#. # FIXME
+#: src/netconfpkg/gui/GenericInterface.py:135
 msgid "This device can not be edited with this tool!"
 msgstr "無法使用這個工具程式編輯該裝置！"
 
@@ -3030,7 +3038,8 @@ msgstr ""
 "聯。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
@@ -3122,7 +3131,8 @@ msgstr "相關的 T-Online 號碼(_N):"
 msgid ""
 "Please enter here your personal account data. Without this data, access to T-"
 "Online is unfortunately not posssible."
-msgstr "請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
+msgstr ""
+"請在此輸入您的個人帳號資料。 如缺少這些資料，將使得您無法使用 T-Online。"
 
 #: src/netconfpkg/gui/tonline.glade.h:4
 msgid "_Adapter Identifier:"
@@ -3396,7 +3406,7 @@ msgstr "您真的要刪除使用 \"%s\" 的所有裝置嗎?"
 #. CIPE
 #. WIRELESS
 #. ETHERNET
-#: src/netconfpkg/gui/maindialog.py:1404
+#: src/netconfpkg/gui/maindialog.py:1406
 msgid "Copyright (c) 2001,2002 Red Hat, Inc."
 msgstr "版權所有 (c) 2001,2002 Red Hat, Inc."
 
@@ -3935,14 +3945,15 @@ msgstr ""
 "啟用其中之一。"
 
 #: src/netconfpkg/NC_functions.py:133
-msgid "Shall the following packages, which are needed on your system, be installed?"
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr "想要安裝您系統所需的下列套件嗎？"
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:384
+#: src/netconfpkg/NC_functions.py:386
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3953,7 +3964,7 @@ msgstr ""
 "發生錯誤:\n"
 "%s！"
 
-#: src/netconfpkg/NC_functions.py:393
+#: src/netconfpkg/NC_functions.py:395
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -3966,7 +3977,7 @@ msgstr ""
 "發生錯誤:\n"
 "%s！"
 
-#: src/netconfpkg/NC_functions.py:403
+#: src/netconfpkg/NC_functions.py:405
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3979,7 +3990,7 @@ msgstr ""
 "發生錯誤:\n"
 "%s！"
 
-#: src/netconfpkg/NC_functions.py:412
+#: src/netconfpkg/NC_functions.py:414
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3992,7 +4003,7 @@ msgstr ""
 "發生錯誤:\n"
 "%s！"
 
-#: src/netconfpkg/NC_functions.py:421
+#: src/netconfpkg/NC_functions.py:423
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -4545,4 +4556,3 @@ msgstr "網際網路組態設定精靈"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
-

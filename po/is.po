@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.1\n"
-"POT-Creation-Date: 2002-12-19 19:49+0100\n"
+"POT-Creation-Date: 2003-01-13 16:02+0100\n"
 "PO-Revision-Date: Thu Aug 31 12:49:26 2001\n"
 "Last-Translator: Richard Allen <ra@ra.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -109,7 +109,7 @@ msgstr "smelltu hér til að slökkva á netkortinu"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Copyright
-#: src/neat-control.py:59 src/netconfpkg/gui/maindialog.py:1405
+#: src/neat-control.py:59 src/netconfpkg/gui/maindialog.py:1407
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -251,14 +251,19 @@ msgstr "Stillingar ISDN"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:61
+#: src/netconf.py:60
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "Villa: %s, %s!"
 
-#: src/netconf.py:63
+#: src/netconf.py:62
 msgid "Starting text version:"
 msgstr "Ræsi í textaham:"
+
+#: src/netconf.py:113
+#, fuzzy
+msgid "Loading Network Configuration..."
+msgstr "Les stillingar..."
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -363,7 +368,7 @@ msgstr ""
 #: src/netconfpkg/gui/ADSLInterface.py:136
 #: src/netconfpkg/gui/CipeInterface.py:141
 #: src/netconfpkg/gui/DialupDruid.py:233
-#: src/netconfpkg/gui/EthernetInterface.py:212
+#: src/netconfpkg/gui/EthernetInterface.py:213
 #: src/netconfpkg/gui/TokenRingInterface.py:207
 #: src/netconfpkg/gui/WirelessInterface.py:280
 msgid "You have selected the following information:"
@@ -518,7 +523,7 @@ msgid "Create a new virtual private network connection with CIPE."
 msgstr "Búa til nýja sýndartengingu (vpn) með CIPE.."
 
 #: src/netconfpkg/gui/CipeInterface.py:142
-#: src/netconfpkg/gui/EthernetInterface.py:213
+#: src/netconfpkg/gui/EthernetInterface.py:214
 #: src/netconfpkg/gui/TokenRingInterface.py:208
 #: src/netconfpkg/gui/WirelessInterface.py:281
 msgid "Device:"
@@ -569,50 +574,50 @@ msgstr " (dínamískt)"
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:205
-#: src/netconfpkg/gui/CipeInterface.py:265
-#: src/netconfpkg/gui/cipeconfig.py:120 src/netconfpkg/gui/cipeconfig.py:177
+#: src/netconfpkg/gui/CipeInterface.py:259
+#: src/netconfpkg/gui/cipeconfig.py:120 src/netconfpkg/gui/cipeconfig.py:171
 msgid "Server Mode"
 msgstr "Þjónahamur"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:300
-#: src/netconfpkg/gui/CipeInterface.py:305
-#: src/netconfpkg/gui/cipeconfig.py:209 src/netconfpkg/gui/cipeconfig.py:214
+#: src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/cipeconfig.py:203 src/netconfpkg/gui/cipeconfig.py:208
 msgid "(own choice)"
 msgstr "(egið val)"
 
-#: src/netconfpkg/gui/CipeInterface.py:311
-#: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:305
+#: src/netconfpkg/gui/cipeconfig.py:214
 msgid "IP Address of Tunnel Device: "
 msgstr "IP vistfang gangnatækis: "
 
-#: src/netconfpkg/gui/CipeInterface.py:312
-#: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:306
+#: src/netconfpkg/gui/cipeconfig.py:215
 msgid "Local Port: "
 msgstr "Staðbundin gátt: "
 
-#: src/netconfpkg/gui/CipeInterface.py:313
-#: src/netconfpkg/gui/cipeconfig.py:222
+#: src/netconfpkg/gui/CipeInterface.py:307
+#: src/netconfpkg/gui/cipeconfig.py:216
 msgid "Remote Peer Address: "
 msgstr "Vistfang fjartengdrar vélar: "
 
-#: src/netconfpkg/gui/CipeInterface.py:317
-#: src/netconfpkg/gui/cipeconfig.py:226
+#: src/netconfpkg/gui/CipeInterface.py:311
+#: src/netconfpkg/gui/cipeconfig.py:220
 msgid "Remote Virtual Address: "
 msgstr "Fjartengt sýndarvistfang: "
 
-#: src/netconfpkg/gui/CipeInterface.py:318
-#: src/netconfpkg/gui/cipeconfig.py:227
+#: src/netconfpkg/gui/CipeInterface.py:312
+#: src/netconfpkg/gui/cipeconfig.py:221
 msgid "Local Virtual Address: "
 msgstr "Sýndarvistfang: "
 
-#: src/netconfpkg/gui/CipeInterface.py:319
-#: src/netconfpkg/gui/cipeconfig.py:228
+#: src/netconfpkg/gui/CipeInterface.py:313
+#: src/netconfpkg/gui/cipeconfig.py:222
 msgid "Secret Key: "
 msgstr "Leynilykill: "
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:329
+#: src/netconfpkg/gui/CipeInterface.py:323
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
@@ -1099,7 +1104,7 @@ msgstr "Veldu netkort"
 #: src/netconfpkg/gui/tokenringhardware.py:162 src/netconfpkg/NCDevice.py:203
 #: src/netconfpkg/NCDevice.py:210 src/netconfpkg/NCDeviceList.py:84
 #: src/netconfpkg/NCHardwareList.py:199 src/netconfpkg/NCHardwareList.py:313
-#: src/netconfpkg/NC_functions.py:216
+#: src/netconfpkg/NC_functions.py:218
 msgid "Unknown"
 msgstr "Óþekkt"
 
@@ -1160,40 +1165,41 @@ msgstr "eth7"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print "EthernetInterface getDeviceList"
-#: src/netconfpkg/gui/EthernetInterface.py:114
+#. FIXME
+#: src/netconfpkg/gui/EthernetInterface.py:115
 msgid "Ethernet connection"
 msgstr "Staðarnetstenging"
 
-#: src/netconfpkg/gui/EthernetInterface.py:120
+#: src/netconfpkg/gui/EthernetInterface.py:121
 msgid "Create a new ethernet connection."
 msgstr "Búa til nýja staðarnetstengingu."
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:193
+#: src/netconfpkg/gui/EthernetInterface.py:194
 msgid "Other Ethernet Card"
 msgstr "Annað netkort"
 
-#: src/netconfpkg/gui/EthernetInterface.py:224
+#: src/netconfpkg/gui/EthernetInterface.py:225
 #: src/netconfpkg/gui/TokenRingInterface.py:219
 #: src/netconfpkg/gui/WirelessInterface.py:292
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
 msgstr "Vistfang:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:225
+#: src/netconfpkg/gui/EthernetInterface.py:226
 #: src/netconfpkg/gui/TokenRingInterface.py:220
 #: src/netconfpkg/gui/WirelessInterface.py:293
 msgid "Subnet Mask:"
 msgstr "Netmöskvi:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:226
+#: src/netconfpkg/gui/EthernetInterface.py:227
 #: src/netconfpkg/gui/TokenRingInterface.py:221
 #: src/netconfpkg/gui/WirelessInterface.py:294
 msgid "Default Gateway Address:"
 msgstr "Vistfang sjálfgefinnar gáttar:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:228
+#: src/netconfpkg/gui/EthernetInterface.py:229
 #: src/netconfpkg/gui/TokenRingInterface.py:223
 #: src/netconfpkg/gui/WirelessInterface.py:296
 msgid "Automatically obtain IP address settings with:"
@@ -1292,7 +1298,8 @@ msgstr "Veldu ljúka til að fara í staðlaðann uppsetningarglugga."
 msgid "Then, at first, enter the nickname for the device."
 msgstr "Sláðu þá inn gælunafn fyrir tækið."
 
-#: src/netconfpkg/gui/GenericInterface.py:134
+#. # FIXME
+#: src/netconfpkg/gui/GenericInterface.py:135
 msgid "This device can not be edited with this tool!"
 msgstr "Það er ekki hægt að breyta þessu tæki með þessu tóli!"
 
@@ -3415,7 +3422,7 @@ msgstr "Viltu virkilega eyða öllum tækjum sem notuðu \"%s\"?"
 #. CIPE
 #. WIRELESS
 #. ETHERNET
-#: src/netconfpkg/gui/maindialog.py:1404
+#: src/netconfpkg/gui/maindialog.py:1406
 msgid "Copyright (c) 2001,2002 Red Hat, Inc."
 msgstr "Höfundarréttur (c) 2001,2002 Red Hat, Inc."
 
@@ -3964,7 +3971,7 @@ msgstr ""
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:384
+#: src/netconfpkg/NC_functions.py:386
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3975,7 +3982,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:393
+#: src/netconfpkg/NC_functions.py:395
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -3988,7 +3995,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:403
+#: src/netconfpkg/NC_functions.py:405
 #, python-format
 msgid ""
 "Error copying \n"
@@ -4001,7 +4008,7 @@ msgstr ""
 "í %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:412
+#: src/netconfpkg/NC_functions.py:414
 #, python-format
 msgid ""
 "Error linking \n"
@@ -4014,7 +4021,7 @@ msgstr ""
 "í %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:421
+#: src/netconfpkg/NC_functions.py:423
 #, python-format
 msgid ""
 "Error renaming \n"
