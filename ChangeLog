@@ -1,3 +1,37 @@
+2003-10-08  Harald Hoyer  <harald@redhat.com>
+
+	* po/vi.po 1.5, po/zh_CN.po 1.110, po/zh_TW.po 1.133, po/it.po 1.162, po/ja.po 1.174, po/ko.po 1.171, po/nl.po 1.20, po/no.po 1.153, po/pt.po 1.149, po/pt_BR.po 1.12, po/redhat-config-network.pot 1.138, po/ru.po 1.117, po/sv.po 1.161, po/tr.po 1.100, ChangeLog 1.104, configure.in 1.156, po/POTFILES.in 1.30, po/bn.po 1.3, po/cs.po 1.131, po/da.po 1.128, po/de.po 1.185, po/el.po 1.108, po/es.po 1.171, po/fr.po 1.176, po/hu.po 1.10, po/is.po 1.162, redhat-config-network.spec.in 1.187, src/netconfpkg/gui/CTCInterface.py 1.2, src/netconfpkg/gui/CipeInterface.py 1.26, src/netconfpkg/gui/EthernetHardwareDruid.py 1.26, src/netconfpkg/gui/EthernetInterface.py 1.34, src/netconfpkg/gui/GUI_functions.py 1.27, src/netconfpkg/gui/HardwareDialog.py 1.2, src/netconfpkg/gui/IUCVInterface.py 1.2, src/netconfpkg/gui/Makefile.am 1.26, src/netconfpkg/gui/NewInterfaceDialog.py 1.32, src/netconfpkg/gui/PTPInterface.py 1.2, src/netconfpkg/gui/PTPInterfaceDruid.glade 1.2, src/netconfpkg/gui/cipeconfig.py 1.28, src/netconfpkg/gui/ctcconfig.glade 1.13, src/netconfpkg/gui/ctcconfig.py 1.12, src/netconfpkg/gui/editadress.glade 1.13, src/netconfpkg/gui/editipsec.glade 1.6, src/netconfpkg/gui/editipsec.py 1.5, src/netconfpkg/gui/ethernetconfig.glade 1.14, src/netconfpkg/gui/iucvconfig.py 1.2, src/netconfpkg/gui/maindialog.py 1.30, src/netconfpkg/gui/ptpconfig.glade 1.2, src/netconfpkg/gui/ptpconfig.py 1.2, src/netconfpkg/gui/tokenringhardware.py 1.20, src/netconfpkg/plugins/Makefile.am 1.6, src/netconfpkg/plugins/NCDevCTC.py 1.2, src/netconfpkg/plugins/NCDevIUCV.py 1.2, src/netconfpkg/plugins/NCHWCTC.py 1.2, src/netconfpkg/plugins/NCHWEthernet.py 1.5, src/netconfpkg/plugins/NCHWIUCV.py 1.2, src/netconfpkg/plugins/NCHWIsdn.py 1.6, src/netconfpkg/plugins/NCHWModem.py 1.5, src/netconfpkg/plugins/NCHWTokenring.py 1.5:
+	merged in changed from Taroon
+
+	* src/netconfpkg/NC_functions.py 1.80: added QETH, HCI
+	debug and verbose level are set/get now via functions
+	added gen_hexkey() for better random keys
+	rpm handling now in big try: except
+	more generic hw combo generation
+
+	* src/netconfpkg/NCHardwareList.py 1.71:
+	do not output stderr for module find commands
+	failsafe if module-info not present
+	added global wvdial handling
+	added chandev, s390 handling
+	modularized HW saving()
+
+	* src/netconfpkg/NCHardware.py 1.9:
+	introduce save() and postSave() methods
+
+	* src/netconfpkg/NCDialup.py 1.64: make /etc/wvdial.conf 0600
+
+	* src/netconfpkg/NCDeviceFactory.py 1.9: log actions
+
+	* src/netconfpkg/NCDevice.py 1.92: MTU corrections for s390
+
+	* src/netconf.py 1.195: verbose/debug level are now functions
+	log actions to /var/log/redhat-config-network
+
+	* src/netconf-tui.py 1.22: for ethernet use the device factory also
+
+	* src/netconf-cmd.py 1.14: verbose/debug level are now functions
+
 2003-10-07  lkanter  <lkanter@redhat.com>
 
 	* po/ru.po 1.116: update
