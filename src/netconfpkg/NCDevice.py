@@ -40,7 +40,7 @@ class ConfDevice(Conf.ConfShellVar):
         self.filename = SYSCONFDEVICEDIR + 'ifcfg-' + name
         if not os.access(self.filename, os.R_OK):
             new = true
-            self.oldmode = -1
+            self.oldmode = 0644
         else:
             status = os.stat(self.filename)
             self.oldmode = status[0]
@@ -57,13 +57,13 @@ class ConfDevice(Conf.ConfShellVar):
             self.rewind()
 
     def write(self):
-        self.chmod(0644)
-        if ((self.oldmode & 0044) != 0044):
-            ask = NC_functions.generic_yesno_dialog(\
-                _("May I change\n%s\nfrom mode %o to %o?") % \
-                (self.filename, self.oldmode & 03777, 0644))
-            if ask != RESPONSE_YES:
-                self.chmod(self.oldmode)
+        self.chmod(self.oldmode)
+        #if ((self.oldmode & 0044) != 0044):
+        #    ask = NC_functions.generic_yesno_dialog(\
+        #        _("May I change\n%s\nfrom mode %o to %o?") % \
+        #        (self.filename, self.oldmode & 03777, 0644))
+        #    if ask != RESPONSE_YES:
+        #        self.chmod(self.oldmode)
         Conf.ConfShellVar.write(self)
             
 class ConfRoute(Conf.ConfShellVar):
