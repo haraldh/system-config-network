@@ -506,7 +506,7 @@ class mainDialog:
             generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
             return
 
-        buttons = generic_yesno_dialog(_('Do you really want to delete device "') + str(name) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
+        buttons = generic_yesno_dialog((_('Do you really want to delete device "%s"?')) % str(name), self.dialog, widget = clist, page = clist.selection[0])
 
         if buttons != 0:
             return
@@ -924,7 +924,7 @@ class mainDialog:
             generic_error_dialog(_('The "default" Profile can not be deleted!'), self.dialog)
             return
 
-        buttons = generic_yesno_dialog(_('Do you really want to delete profile "') + str(name) + _('"?'), self.dialog)
+        buttons = generic_yesno_dialog((_('Do you really want to delete profile "%s"?')) % str(name), self.dialog)
 
         if buttons != 0:
             return
@@ -1015,7 +1015,8 @@ class mainDialog:
         type = clist.get_text(clist.selection[0], 1)
         dev = clist.get_text(clist.selection[0], 2)
 
-        buttons = generic_yesno_dialog(_('Do you really want to delete "') + str(description) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
+        buttons = generic_yesno_dialog((_('Do you really want to delete "%s"?')) % str(description),
+                                       self.dialog, widget = clist, page = clist.selection[0])
 
         if buttons != 0:
             return
