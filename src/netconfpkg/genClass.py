@@ -237,7 +237,7 @@ AnonListCLOps = """
 AnonListCNLOps = """
 	def add%childname(self):
 		self.data.append(None)
-		return len(self.data)
+		return len(self.data)-1
 
 	# @brief set the value of %childname
 	# @param pos the position in the list of the %childname object
