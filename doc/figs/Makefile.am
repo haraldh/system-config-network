@@ -1,4 +1,3 @@
-SUBDIRS =  networkconfig
 doc_DATA   =  neat-cipe.png \
         neat-cipe-settings.png \
         neat-dns.png \
