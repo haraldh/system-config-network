@@ -128,7 +128,7 @@ def Usage():
 
 def main():
     from netconfpkg import NC_functions
-    log.set_loglevel(NC_functions.verbose)
+    log.set_loglevel(NC_functions.getVerboseLevel())
     splash_window = None
 
     try:
@@ -182,22 +182,30 @@ if __name__ == '__main__':
     import getopt
     class BadUsage: pass
     splash_window = None
+    from rhpl.log import log
     from netconfpkg import NC_functions
-    NC_functions.verbose = 0
+    NC_functions.setVerboseLevel(2)
+    NC_functions.setDebugLevel(0)
     hotshot = 0
     chroot = None
+    logfilename = "/var/log/redhat-config-network"
     
     try:
-        opts, args = getopt.getopt(cmdline, "vhr",
+        opts, args = getopt.getopt(cmdline, "vhrd",
                                    [
                                     "verbose",
+                                    "debug", 
                                     "help",
                                     "hotshot",
                                     "root"
                                     ])
         for opt, val in opts:
             if opt == '-v' or opt == '--verbose':
-                NC_functions.verbose += 1
+                NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
+                continue
+
+            if opt == '-d' or opt == '--debug':
+                NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
                 continue
 
             if opt == '--hotshot':
@@ -216,7 +224,26 @@ if __name__ == '__main__':
 
     except (getopt.error, BadUsage):
         Usage()
-        sys.exit(1)
+        sys.exit(1)    
+
+    if not NC_functions.getDebugLevel():
+        import os
+        
+        def log_default_handler (string):
+            import time
+            log.logFile.write ("%s: %s\n" % (time.ctime(), string))
+
+        log.handler = log_default_handler
+        
+	if os.path.isfile(logfilename):
+            os.chmod(logfilename, 0600)
+            
+        fd = os.open(logfilename,
+                        os.O_APPEND|os.O_WRONLY|os.O_CREAT,
+                        0600)
+        
+        lfile = os.fdopen(fd, "a")        
+        log.open(lfile)
 
     if chroot:
         prepareRoot(chroot)
@@ -241,5 +268,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.194 $"
+__date__ = "$Date: 2003/10/08 15:09:03 $"
+__version__ = "$Revision: 1.195 $"
