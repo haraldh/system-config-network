@@ -130,7 +130,8 @@ class cipeConfigDialog(deviceConfigDialog):
     def on_protocolEditButton_clicked(self, *args):
         self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()
         deviceConfigDialog.on_protocolEditButton_clicked(self, args)
-        self.xml.get_widget("localVirtualAddressEntry").set_text(self.device.IP)
+        if self.device.IP:
+            self.xml.get_widget("localVirtualAddressEntry").set_text(self.device.IP)
         
     def on_remotePeerAddressCB_toggled(self, *args):
         if self.xml.get_widget("remotePeerAddressCB").get_active():
