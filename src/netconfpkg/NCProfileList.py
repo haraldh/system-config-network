@@ -17,6 +17,8 @@ class ProfileList(ProfileList_base):
         ProfileList_base.__init__(self, list, parent)        
 
     def load(self):
+        devicelist = NCDeviceList.getDeviceList()
+
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
@@ -39,8 +41,12 @@ class ProfileList(ProfileList_base):
                 prof.Active = false
             devlist = os.listdir(SYSCONFPROFILEDIR + '/' + pr)
             for dev in devlist:
-               if dev[:6] == 'ifcfg-':
-                   prof.ActiveDevices.append(dev[6:])
+               if dev[:6] != 'ifcfg-':
+                   continue
+               for d in devicelist:
+                   if d.DeviceId == dev[6:]:
+                       prof.ActiveDevices.append(dev[6:])
+
             hoconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/hosts'
             hoconf.read()
             for ip in hoconf.keys():
@@ -219,7 +225,7 @@ class ProfileList(ProfileList_base):
         for prof in profilelist:
             if prof.ProfileName == val:
                 prof.Active = true
-        else:
+            else:
                 prof.Active = false
 
         print "Switching to Profile "+val
