@@ -46,19 +46,23 @@ msgstr "Internetbeállító varázsló"
 
 #: src/neat-control.py:46 src/netconf.py:72
 msgid "ERROR: Unable to initialize graphical environment. "
-msgstr ""
+msgstr "Hiba: nem sikerült inicializálni a grafikus környezetet. "
 
 #: src/neat-control.py:47 src/netconf.py:73
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
 msgstr ""
+"A hibát valószínűleg az okozta, hogy nem grafikus környezetből történt az "
+"indítás. "
 
 #: src/neat-control.py:48 src/netconf.py:74
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
 msgstr ""
+"Indítsa el a grafikus környezetet vagy állítsa be megfelelően a DISPLAY "
+"környezeti változót.\n"
 
 #: src/neat-control.py:138 src/netconf-cmd.py:101
 #: src/netconfpkg/gui/maindialog.py:1636
@@ -217,7 +221,7 @@ msgstr ""
 
 #: src/netconf.py:253
 msgid "Please start system-config-network with root permissions!\n"
-msgstr ""
+msgstr "Rendszergazdai jogosultsággal indítsa el a system-config-network programot.\n"
 
 #: src/netconf-cmd.py:65
 #, python-format
@@ -308,6 +312,14 @@ msgid ""
 "Speeds vary according to the technology used, but generally range from "
 "144kbps to 1.0Mbps."
 msgstr ""
+"xDSL-kapcsolat létrehozása. Ez a kapcsolat valamilyen szélessávú hálózatot használ "
+"(DSL, teljes nevén: Digital Subscriber "
+"Lines). A lista tartalmazza az ADSL-t (aszimmetrikus, a letöltés gyorsabb, mint a feltöltés), "
+"IDSL (ISDN-vonalon keresztül), SDSL (szimmetrikus, a letöltés és a feltöltés "
+"egyformán gyors) stb. Ezek a hálózatok egyre elterjedtebbek az "
+"egész világon. "
+"Sebességük változó, általában a "
+"144 kbps - 1 Mbps tartományba esik."
 
 #: src/netconfpkg/gui/ADSLInterface.py:135
 #: src/netconfpkg/gui/CipeInterface.py:145
@@ -317,7 +329,7 @@ msgstr ""
 #: src/netconfpkg/gui/TokenRingInterface.py:208
 #: src/netconfpkg/gui/editipsec.py:201 src/netconfpkg/gui/PTPInterface.py:211
 msgid "You have selected the following information:"
-msgstr ""
+msgstr "A következő adatokat adta meg:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:136
 msgid "Ethernet device:"
@@ -487,10 +499,12 @@ msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
+"Nem sikerült elindítani:\n"
+"%s"
 
 #: src/netconfpkg/gui/GUI_functions.py:572
 msgid "Succeeded. Please read the output."
-msgstr ""
+msgstr "A művelet sikerült, olvassa el a kimenetet."
 
 #: src/netconfpkg/gui/GenericInterface.py:84
 #, python-format
@@ -533,6 +547,14 @@ msgid ""
 "advanced regions.  It is available but uncommon in the USA.  Speeds range "
 "from 64kbps to 128kbps."
 msgstr ""
+"Új ISDN-kapcsolat létrehozása. Ez a kapcsolat ISDN- (Integrated "
+"Services Digital Network) összeköttetést feltételez "
+"az internetszolgáltatóval. A technológia speciális telefonkapcsolat "
+"kialakítását igényli. A megfelelő végpont kialakításához "
+"szükség van egy TA (Terminal Adapter) nevű eszközre. Ez a kapcsolat "
+"a világ sok részén elterjedt, különösen Európában. "
+"Az Egyesült Államokban is elérhető, de nem annyira elterjedt. Sebessége a "
+"64 kbps - 128 kbps tartományba esik."
 
 #: src/netconfpkg/gui/ModemInterface.py:80
 msgid "Modem connection"
@@ -546,6 +568,10 @@ msgid ""
 "of connections are available just about anywhere in the world where there is "
 "a phone system."
 msgstr ""
+"Új modemes kapcsolat létrehozása. Ez a kapcsolat analóg modemmel ellátott telefonvonalat "
+"igényel. A modem tehát normál telefonvonalon keresztüli "
+"adatátvitelt használ. Ez a fajta kapcsolat a világon mindenhol elérhető, "
+"ahol ki van építve a telefonhálózat."
 
 #: src/netconfpkg/gui/ModemInterface.py:114
 msgid "Modem probing..."
@@ -642,7 +668,7 @@ msgstr "a titkosítás kikapcsolva"
 
 #: src/netconfpkg/gui/TokenRingInterface.py:113
 msgid "Token Ring connection"
-msgstr ""
+msgstr "Token Ring-kapcsolat"
 
 #: src/netconfpkg/gui/TokenRingInterface.py:119
 msgid "Create a new Token Ring connection."
@@ -686,6 +712,8 @@ msgid ""
 "Nickname %s is already in use!\n"
 "Please choose another one.\n"
 msgstr ""
+"A(z) %s név már foglalt,\n"
+"válasszon egy másikat.\n"
 
 #: src/netconfpkg/gui/dialupconfig.py:241
 #: src/netconfpkg/gui/dialupconfig.glade.h:11
@@ -694,7 +722,7 @@ msgstr "A telefonos kapcsolatok beállítása"
 
 #: src/netconfpkg/gui/dialupconfig.py:273
 msgid "ISDN Dialup Configuration"
-msgstr ""
+msgstr "ISDN tárcsázási beállítások"
 
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.py:386
@@ -711,14 +739,14 @@ msgstr "ki"
 #: src/netconfpkg/gui/DialupDruid.glade.h:31
 #: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "raw IP"
-msgstr ""
+msgstr "nyers IP"
 
 #: src/netconfpkg/gui/dialupconfig.py:339
 #: src/netconfpkg/gui/dialupconfig.py:368
 #: src/netconfpkg/gui/DialupDruid.glade.h:32
 #: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "sync PPP"
-msgstr ""
+msgstr "szinkron PPP"
 
 #: src/netconfpkg/gui/dialupconfig.py:352
 #: src/netconfpkg/gui/dialupconfig.py:420
@@ -742,7 +770,7 @@ msgstr "nincs"
 
 #: src/netconfpkg/gui/dialupconfig.py:434
 msgid "Modem Dialup Configuration"
-msgstr ""
+msgstr "A modem tárcsázási beállításai"
 
 #: src/netconfpkg/gui/maindialog.py:292
 msgid "Loading configuration..."
@@ -860,7 +888,7 @@ msgstr "Módosításokat hajtott végre a beállításokban."
 #: src/netconfpkg/gui/maindialog.py:950
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
+msgstr "A(z) %s hálózati eszköz aktiválásához előbb el kell menteni a módosításokat."
 
 #: src/netconfpkg/gui/maindialog.py:952 src/netconfpkg/gui/maindialog.py:1719
 msgid "Do you want to continue?"
@@ -868,50 +896,51 @@ msgstr "Biztosan folytatni szeretné?"
 
 #: src/netconfpkg/gui/maindialog.py:1156
 msgid "The Loopback device can not be disabled!"
-msgstr ""
+msgstr "A loopback eszközt nem lehet letiltani."
 
 #: src/netconfpkg/gui/maindialog.py:1382 src/netconfpkg/gui/maindialog.py:1462
 msgid "The name may only contain letters and digits!"
-msgstr ""
+msgstr "A név csak angol betűket és számjegyeket tartalmazhat."
 
 #: src/netconfpkg/gui/maindialog.py:1387 src/netconfpkg/gui/maindialog.py:1467
 #, python-format
 msgid "The profile can't be named \"%s\"!"
-msgstr ""
+msgstr "A profilt nem sikerült átnevezni erre: \"%s\"."
 
 #: src/netconfpkg/gui/maindialog.py:1393 src/netconfpkg/gui/maindialog.py:1473
 msgid "The profile name already exists!"
-msgstr ""
+msgstr "Ez a profilnév már létezik."
 
 #: src/netconfpkg/gui/maindialog.py:1440
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
-msgstr ""
+msgstr "A(z) \"%s\" profilt nem sikerült átnevezni."
 
 #: src/netconfpkg/gui/maindialog.py:1495
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
-msgstr ""
+msgstr "A(z) \"%s\" profilt nem sikerült törölni."
 
 #: src/netconfpkg/gui/maindialog.py:1501
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
-msgstr ""
+msgstr "Biztosan törölni szeretné a(z) \"%s\" profilt?"
 
 #: src/netconfpkg/gui/maindialog.py:1575
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
+"Nincs mit módosítani vagy ez a típus nem módosítható."
 
 #: src/netconfpkg/gui/maindialog.py:1593
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
-msgstr ""
+msgstr "Biztosan törölni szeretné ezt: \"%s\"?"
 
 #: src/netconfpkg/gui/maindialog.py:1606
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr ""
+msgstr "Törölni szeretné az összes eszközt, mely ezt használja: \"%s\"?"
 
 #: src/netconfpkg/gui/maindialog.py:1637
 msgid ""
@@ -940,6 +969,8 @@ msgid ""
 "The Ethernet card could not be initialized. Please verify your settings and "
 "try again."
 msgstr ""
+"Az Ethernet-kártyát nem sikerült inicializálni. Ellenőrizze a beállításokat és próbálkozzon "
+"újra."
 
 #: src/netconfpkg/gui/tokenringhardware.py:67
 #, python-format
@@ -959,6 +990,8 @@ msgid ""
 "The Token Ring card could not be initialized. Please verify your settings "
 "and try again."
 msgstr ""
+"A Token Ring-kártyát nem sikerült inicializálni. Ellenőrizze a beállításokat és "
+"próbálkozzon újra."
 
 #: src/netconfpkg/gui/CTCInterface.py:48
 msgid "CTC connection"
@@ -999,6 +1032,9 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"A(z) %s könyvtár hiányzik.\n"
+"Létrehozom...\n"
+"Telepíteni kell a Cipe RPM-csomagot.\n"
 
 #: src/netconfpkg/NCCipe.py:159
 #, python-format
@@ -1314,17 +1350,19 @@ msgstr "Jugoszlávia"
 #: src/netconfpkg/NCProfileList.py:203
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
+msgstr "A(z) %s eszköz ugyanazt a hardvereszközt (\"%s\") használja, mint %s.\n"
 
 #: src/netconfpkg/NCProfileList.py:205
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
 msgstr ""
+"Válasszon másik hardvereszközt\n"
+"vagy csak az egyiket aktiválja."
 
 #: src/netconfpkg/NC_functions.py:91
 msgid "Common"
-msgstr ""
+msgstr "Közös"
 
 #: src/netconfpkg/NC_functions.py:140 src/netconfpkg/gui/ModemDruid.glade.h:1
 #: src/netconfpkg/gui/modemconfig.glade.h:1
@@ -1340,11 +1378,13 @@ msgstr "Szoftveres (XON/XOFF)"
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
+"A következő csomagok telepíthetők a rendszerbe?"
 
 #: src/netconfpkg/NC_functions.py:233
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
+"A következő csomagokat telepíteni kell a rendszerbe."
 
 #: src/netconfpkg/NC_functions.py:732
 #, python-format
@@ -1353,6 +1393,9 @@ msgid ""
 "%s:\n"
 "%s!"
 msgstr ""
+"Nem sikerült törölni ezt:\n"
+"%s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:752
 #, python-format
@@ -1362,6 +1405,10 @@ msgid ""
 "to %s:\n"
 "%s!"
 msgstr ""
+"Nem sikerült átmásolni ezt:\n"
+"%s\n"
+"ide: %s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:762
 #, python-format
@@ -1371,6 +1418,10 @@ msgid ""
 "to %s:\n"
 "%s!"
 msgstr ""
+"Nem sikerült létrehozni ezt a linket:\n"
+"%s\n"
+"erre: %s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:772
 #, python-format
@@ -1380,6 +1431,10 @@ msgid ""
 "to %s:\n"
 "%s!"
 msgstr ""
+"Nem sikerült átnevezni ezt:\n"
+"%s\n"
+"erre: %s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:780
 #, python-format
@@ -1387,11 +1442,13 @@ msgid ""
 "Error creating directory!\n"
 "%s"
 msgstr ""
+"Könyvtárlétrehozási hiba.\n"
+"%s"
 
 #: src/netconfpkg/NC_functions.py:832
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
-msgstr ""
+msgstr "%s kapcsolása az eszközökhöz, majd a(z) %s profilba helyezése."
 
 #: src/netconfpkg/NC_functions.py:842
 #, python-format
@@ -1425,12 +1482,12 @@ msgstr "OK"
 #: src/netconfpkg/NCDevice.py:202
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr ""
+msgstr "%s, nincs megadva eszköz vagy az alias nem szám."
 
 #: src/netconfpkg/NCDevice.py:245
 #, python-format
 msgid "Static routes file %s is invalid"
-msgstr ""
+msgstr "A statikus útválasztás fájlja, %s, érvénytelen."
 
 #: src/netconfpkg/NCDevice.py:379 src/netconfpkg/plugins/NCDevIsdn.py:73
 msgid "Network device activating..."
@@ -1444,29 +1501,29 @@ msgstr "A(z) %s hálózati eszköz aktiválása folyik, egy kis türelmet kérek
 #: src/netconfpkg/NCDevice.py:382 src/netconfpkg/plugins/NCDevIsdn.py:76
 #, python-format
 msgid "Cannot activate network device %s!\n"
-msgstr ""
+msgstr "Nem sikerült aktiválni a(z) %s hálózati eszközt.\n"
 
 #: src/netconfpkg/NCDevice.py:399 src/netconfpkg/plugins/NCDevIsdn.py:97
 msgid "Network device deactivating..."
-msgstr ""
+msgstr "A hálózati eszköz deaktiválása..."
 
 #: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Deactivating network device %s, please wait..."
-msgstr ""
+msgstr "A(z) %s hálózati eszköz deaktiválása folyik, egy kis türelmet kérek..."
 
 #: src/netconfpkg/NCDevice.py:402 src/netconfpkg/plugins/NCDevIsdn.py:100
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
-msgstr ""
+msgstr "Nem sikerült deaktiválni a(z) %s hálózati eszközt.\n"
 
 #: src/netconfpkg/NCDeviceList.py:116
 msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr ""
+msgstr "Az initscripts miatt megváltoztak a következő rövid nevek:\n"
 
 #: src/netconfpkg/NCDeviceList.py:119
 msgid "Nicknames changed"
-msgstr ""
+msgstr "Rövid nevek megváltoztak"
 
 #: src/netconfpkg/NCIPsec.py:168
 msgid "IPsec activating..."
@@ -1494,7 +1551,7 @@ msgstr "A(z) %s IPsec-kapcsolat deaktiválása folyik, egy kis türelmet kérek.
 #: src/netconfpkg/NCIPsec.py:191
 #, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr ""
+msgstr "Nem sikerült deaktiválni a(z) %s IPsec-kapcsolatot.\n"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
@@ -1615,7 +1672,7 @@ msgstr "_T-Online-azonosító beállítása"
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
 #: src/netconfpkg/gui/cipeconfig.glade.h:3
 msgid "Configuration for your remote partner"
-msgstr ""
+msgstr "A távoli partner beállítása"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
 msgid "Configure Tunnel"
@@ -1693,15 +1750,15 @@ msgstr "_Területkód:"
 #: src/netconfpkg/gui/DialupDruid.glade.h:3
 #: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _DNS information from provider"
-msgstr ""
+msgstr "A _DNS-adatok automatikus lekérdezése a szolgáltatótól"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:4
 msgid "Automatically obtain _IP address settings"
-msgstr ""
+msgstr "Az _IP-cím automatikus lekérdezése"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:5
 msgid "Create Dialup Connection"
-msgstr ""
+msgstr "Tárcsázós kapcsolat létrehozása"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 msgid "Default _gateway address:"
@@ -1718,16 +1775,19 @@ msgid ""
 "example, if you need to reach an outside line, or disable call waiting, put "
 "the necessary numbers here."
 msgstr ""
+"Adja meg az alap telefonszám előtti előtagot. Ha például külső vonal eléréséhez "
+"vagy a várakozás kikapcsolásához hívószám szükséges, azt ide kell "
+"beírni."
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:9
 #: src/netconfpkg/gui/dialupconfig.glade.h:20
 msgid "Enter the area code needed to reach your internet provider."
-msgstr ""
+msgstr "Adja meg a szolgáltató telefonszámának területkódját."
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:13
 #: src/netconfpkg/gui/dialupconfig.glade.h:24
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr ""
+msgstr "Adja meg az internetszolgáltató telefonszámát (előtagok és területkód nélkül)"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:14
 msgid "IP Settings"
@@ -1741,7 +1801,7 @@ msgstr "Internetszolgáltató"
 #: src/netconfpkg/gui/DialupDruid.glade.h:16
 #: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Manual IP Address Settings"
-msgstr ""
+msgstr "Kézi IP-cím-beállítás"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:18
 msgid "PPP Settings"
@@ -1894,6 +1954,8 @@ msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
 msgstr ""
+"Adja meg az MTU paramétert (a csatoló maximális átviteli egységét). "
+"S390/S390x gépeken az MTU alapértelmezése 1492."
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
 msgid "Select Ethernet Device"
@@ -1975,7 +2037,7 @@ msgstr "Válassza ki az eszköz típusát"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:7
 msgid "Select Token Ring Adapter"
-msgstr ""
+msgstr "Token Ring-adapter kiválasztása"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:13
 msgid "tr0"
@@ -1991,6 +2053,8 @@ msgid ""
 "Please enter the MTU parameter to set the Maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
 msgstr ""
+"Adja meg az eszköz MTU (Maximum Transfer Unit) paraméterét. "
+"S390/S390x gépeken az MTU alapértelmezett értéke 1492."
 
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
 msgid "Select Token Ring Device"
@@ -2017,6 +2081,8 @@ msgid ""
 "Please enter here your personal account data. Without this data, access to T-"
 "Online is unfortunately not posssible."
 msgstr ""
+"Kérjük adja meg itt a személyes adatait. Ezek nélkül nem lehet a T-"
+"Online-hoz csatlakozni."
 
 #: src/netconfpkg/gui/tonline.glade.h:4
 msgid "_Adapter identifier:"
@@ -2024,7 +2090,7 @@ msgstr "_Kártyaazonosító:"
 
 #: src/netconfpkg/gui/tonline.glade.h:5
 msgid "_Concurrent user number/suffix:"
-msgstr ""
+msgstr "Párh_uzamos felhasználószám/utótag:"
 
 #: src/netconfpkg/gui/tonline.glade.h:6
 msgid "_Personal password:"
@@ -2046,7 +2112,7 @@ msgstr "Válasszon ki egy szolgáltatót"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
 #: src/netconfpkg/gui/ptpconfig.glade.h:2
 msgid "Allow all _users to enable and disable the device"
-msgstr ""
+msgstr "Az _eszközt bármelyik felhasználó ki-be kapcsolhassa"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:2
 msgid "CIPE Configuration"
@@ -2091,7 +2157,7 @@ msgstr "Ált_alános"
 #: src/netconfpkg/gui/editipsec.glade.h:35
 #: src/netconfpkg/gui/ptpconfig.glade.h:10
 msgid "_Nickname:"
-msgstr "_Becenév:"
+msgstr "_Rövid név:"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:15
 #: src/netconfpkg/gui/dialupconfig.glade.h:60
@@ -2100,7 +2166,7 @@ msgstr "_Becenév:"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:15
 #: src/netconfpkg/gui/ptpconfig.glade.h:12
 msgid "_Route"
-msgstr "_Route"
+msgstr "_Útválasztás"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:17
 msgid "_Tunnel Settings"
@@ -2140,7 +2206,7 @@ msgstr "Visszahívási beállítás"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
-msgstr ""
+msgstr "Kattintson ide, ha új szolgáltatót szeretne kiválasztani az adatbázisból."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Dial _mode:"
@@ -2164,15 +2230,15 @@ msgstr "A BSD-tömörítés _engedélyezése"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:16
 msgid "Enable _CCP Compression Control Protocol"
-msgstr ""
+msgstr "A _CCP (Compression Control Protocol) engedélyezése"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:17
 msgid "Enable _Protocol Field Compression"
-msgstr ""
+msgstr "A _PFC (Protocol Field Compression) engedélyezése"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:18
 msgid "Enable _VJ TCP/IP Header Compression"
-msgstr ""
+msgstr "A _VJ TCP/IP-fejléctömörítés engedélyezése"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
 msgid "Enter your local phone number. It's optional, if you use a modem."
@@ -2193,7 +2259,7 @@ msgstr "MSN/EA_Z:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:29
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 msgid "Make this connection the default _route"
-msgstr ""
+msgstr "Ez a k_apcsolat legyen az alapértelmezés szerint választott út"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:30
 msgid "Modem _initialization string:"
@@ -2214,24 +2280,24 @@ msgstr "Prefi_x"
 #: src/netconfpkg/gui/dialupconfig.glade.h:37
 #: src/netconfpkg/gui/dslconfig.glade.h:16
 msgid "Restart if _connection dies"
-msgstr ""
+msgstr "Újraindítás, ha a kapcsolat megsz_akad"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:38
 msgid "Select the authentication protocol used by your ISP."
-msgstr ""
+msgstr "Válassza ki az internetszolgáltató által használt felhasználóazonosítási módot."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:39
 msgid "Use _Callback Control Protocol (CBCP)"
-msgstr ""
+msgstr "_Visszahívási protokoll (CBCP) használata"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:40
 msgid "Use _Channel Bundling"
-msgstr ""
+msgstr "_Csatornakapcsolás használata"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:43
 #: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "_Add..."
-msgstr ""
+msgstr "_Hozzáadás..."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:44
 #: src/netconfpkg/gui/dslconfig.glade.h:20
@@ -2257,7 +2323,7 @@ msgstr "_Tömörítés"
 #: src/netconfpkg/gui/dialupconfig.glade.h:49
 #: src/netconfpkg/gui/maindialog.glade.h:34
 msgid "_Delete"
-msgstr ""
+msgstr "Tör_lés"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
 msgid "_Dial mode:"
@@ -2298,11 +2364,11 @@ msgstr "A_utomatikus tárcsázás engedélyezése"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:4
 msgid "Allow the link come up on demand."
-msgstr ""
+msgstr "A kapcsolat létrehozása igény esetén."
 
 #: src/netconfpkg/gui/dslconfig.glade.h:5
 msgid "Demand setting"
-msgstr ""
+msgstr "Igény szerinti kapcsolat"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:7
 msgid "Enable synchronous PPP for the connection"
@@ -2313,16 +2379,20 @@ msgid ""
 "Enter the Access Concentrator name, if you have been given one by your ISP. "
 "In most cases you can leave this blank."
 msgstr ""
+"Adja meg az Access Concentrator nevét, ha kapott ilyet az internszolgáltatótól. "
+"Ez a mező általában üresen hagyható."
 
 #: src/netconfpkg/gui/dslconfig.glade.h:9
 msgid ""
 "Enter the Service Name, if your ISP requires it. If you don't know it, "
 "please contact your ISP. In most cases you can leave this blank."
 msgstr ""
+"Adja meg a szolgáltatásnevet, ha kapott ilyet az internetszolgáltatótól. Ha nem tudja, kérdezze meg tőlük. "
+"Ez a mező általában üresen hagyható."
 
 #: src/netconfpkg/gui/dslconfig.glade.h:10
 msgid "Enter the idle time in seconds after which the link should be dropped."
-msgstr ""
+msgstr "Adja meg, hány másodperc inaktivitás után szakadjon meg a kapcsolat."
 
 #: src/netconfpkg/gui/dslconfig.glade.h:18
 msgid "_AC-name:"
@@ -2357,7 +2427,7 @@ msgstr "xDSL-beállítás"
 
 #: src/netconfpkg/gui/editadress.glade.h:2
 msgid "Add / Edit IP Address"
-msgstr ""
+msgstr "IP-cím hozzáadása/módosítása"
 
 #: src/netconfpkg/gui/editadress.glade.h:4
 msgid "_Gateway:"
@@ -2427,7 +2497,7 @@ msgstr "Az ISDN-csatolók beállítása"
 #: src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
 #: src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
 msgid "Waiting to connect to"
-msgstr ""
+msgstr "Várakozás a kapcsolatra"
 
 #: src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
 #: src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
@@ -2440,15 +2510,15 @@ msgstr "00:00:00"
 
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
 msgid "Online time:"
-msgstr ""
+msgstr "Online idő:"
 
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
 msgid "click the right mouse button for properties"
-msgstr ""
+msgstr "a tulajdonságokat a jobb gombbal kattintva lehet előhívni"
 
 #: src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
 msgid "Connect to"
-msgstr ""
+msgstr "Csatlakozás ide"
 
 #: src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
 msgid "Disconnect from"
@@ -2477,75 +2547,75 @@ msgstr "1.00"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
 msgid "Confirm _starting connection"
-msgstr ""
+msgstr "A kapcsolat indításának me_gerősítése"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
 msgid "Confirm stopping _connection"
-msgstr ""
+msgstr "A kapcsolat bontásának mege_rősítése"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
 msgid "Cos_t accumulated from the past connection:"
-msgstr ""
+msgstr "Az utolsó kapcsolat óta felhalmozódott költség:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
 msgid "Cost per:"
-msgstr ""
+msgstr "A költség időegysége:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
 msgid "Count:"
-msgstr ""
+msgstr "Számláló:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
 msgid "M_inimum number of seconds charged:"
-msgstr ""
+msgstr "A szám_lázási minimális időtartam:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
 msgid "_Accumulate cost over multiple connections"
-msgstr ""
+msgstr "Költség_számítás több kapcsolaton keresztül"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
 msgid "_Basic"
-msgstr ""
+msgstr "_Alap"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
 msgid "_Cost"
-msgstr ""
+msgstr "_Költség"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
 msgid "_Debug mode"
-msgstr ""
+msgstr "Nyomkö_vetési mód"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
 msgid "_Extra cost to start a connection:"
-msgstr ""
+msgstr "A kapcsolat létr_ehozásának plusszköltsége:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
 msgid "_Hour"
-msgstr ""
+msgstr "_Óra"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
 msgid "_Minute"
-msgstr ""
+msgstr "_Perc"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
 msgid "_Number of seconds in basic accounting unit:"
-msgstr ""
+msgstr "A máso_dpercek száma egy számlázási egységben:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
 msgid "_Second"
-msgstr ""
+msgstr "_Másodperc"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
 msgid "_Terminate connection when session closes"
-msgstr ""
+msgstr "A kapcsolat bontása a munkafolyamat be_zárásakor"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
 msgid "_Time"
-msgstr ""
+msgstr "_Idő"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
 msgid "redhat network control - Properties"
-msgstr ""
+msgstr "Hálózati beállítások - Tulajdonságok"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "A_ddress:"
@@ -2553,11 +2623,11 @@ msgstr "_Cím:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Automatically obtain _IP address settings with:"
-msgstr ""
+msgstr "Az _IP-cím automatikus lekérdezése ezzel:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "Bind to _MAC address:"
-msgstr ""
+msgstr "Kapcsolt MA_C-cím:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "DHCP Settings"
@@ -2584,6 +2654,8 @@ msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
 msgstr ""
+"Mindegyik kapcsolatot fizikai eszközhöz kell rendelni (alább "
+"kiválasztható)."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Easy"
@@ -2611,7 +2683,7 @@ msgstr "Helyi hálózat"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Please select the level of security for this device."
-msgstr ""
+msgstr "Válassza ki az eszköz biztonsági szintjét."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Prefix (Netmask)"
@@ -2635,7 +2707,7 @@ msgstr "Biztonsági szint"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
-msgstr ""
+msgstr "Válassza ki, mely szolgáltatások legyenek használhatók ezen az eszközön keresztül"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
@@ -2655,7 +2727,7 @@ msgstr "Állandó hálózati útválasztások"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Tie to specific ethernet card"
-msgstr ""
+msgstr "Kapcsolás egy megadott Ethernet-kártyához"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Use ethernet device aliases"
@@ -2671,7 +2743,7 @@ msgstr "S_zerkesztés..."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Hardware Address"
-msgstr ""
+msgstr "_Hardveres cím"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Hardware:"
@@ -2721,10 +2793,13 @@ msgid ""
 "the current encryption key in hex digits enter the key with 0x prepended as "
 "0xXXXXXXXX."
 msgstr ""
+"Általában titkosítási funkciókhoz szükséges. Ha be szeretné írni a hexadecimális formában adott "
+"titkosítási kulcsot, az érték elé 0x előtagot tegyen "
+"(0xXXXXXXXX)."
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:6
 msgid "Wireless Device Configuration"
-msgstr ""
+msgstr "Vezeték nélküli eszköz beállítása"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:8
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
@@ -2753,7 +2828,7 @@ msgstr "_Mód:"
 #: src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "_Specified:"
-msgstr ""
+msgstr "_Megadott:"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
@@ -2762,7 +2837,7 @@ msgstr "Átv_iteli sebesség:"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Wireless Settings"
-msgstr ""
+msgstr "_Vezeték nélküli beállítások"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:1
 msgid "00:00:00:00:00:00"
@@ -2774,10 +2849,13 @@ msgid ""
 "below. Device Alias support allows you to use multiple virtual devices for "
 "one physical device."
 msgstr ""
+"Mindegyik eszközt fizikai eszközhöz kell kapcsolni. Ezt a fizikai eszközt kell "
+"kiválasztani alább. Az eszközalias-ok lehetővé teszik, hogy több virtuális név tartozzon egy "
+"fizikai eszközhöz."
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
 msgid "Enable _Device Alias support"
-msgstr ""
+msgstr "Az eszközalias-támogatás bek_apcsolása"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:6
 msgid "Ha_rdware address:"
@@ -2805,7 +2883,7 @@ msgstr "A hard_veres cím használata"
 
 #: src/netconfpkg/gui/maindialog.glade.h:2
 msgid "Activate the selected device, calling ifup <device>."
-msgstr ""
+msgstr "A kiválasztott eszköz aktiválása, az ifup <eszköz> paranccsal."
 
 #: src/netconfpkg/gui/maindialog.glade.h:3
 msgid "Aliases"
@@ -2861,7 +2939,7 @@ msgstr "IP_sec"
 
 #: src/netconfpkg/gui/maindialog.glade.h:17
 msgid "List of devices which are currently configurable on your system."
-msgstr ""
+msgstr "A beállítható eszközök listája látható itt."
 
 #: src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Monitor the selected device."
@@ -2874,13 +2952,15 @@ msgstr "Új profil"
 #: src/netconfpkg/gui/maindialog.glade.h:22
 #: src/netconfpkg/gui/neat-control.glade.h:13
 msgid "Nickname"
-msgstr ""
+msgstr "Rövid név"
 
 #: src/netconfpkg/gui/maindialog.glade.h:23
 msgid ""
 "Please enter the name for the profile. The name may only contain letters and "
 "digits."
 msgstr ""
+"Adja meg a profil nevét. A név csak angol betűket és számjegyeket "
+"tartalmazhat."
 
 #: src/netconfpkg/gui/maindialog.glade.h:24
 msgid "Profile"
@@ -2897,24 +2977,29 @@ msgstr "Típus"
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
 msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr ""
+msgstr "Itt lehet beállítani az IPsec-alagutakat és a gépek közötti kapcsolatokat."
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
 msgstr ""
+"Itt lehet beállítani a fizikai eszközökhöz rendelt eszközöket. "
+"Egy hardvereszközhöz több logikai eszköz tartozhat."
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
 msgid ""
 "You may configure network hardware physically attached to the computer here."
 msgstr ""
+"Itt lehet beállítani a hálózati hardvereszközöket."
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
 msgid ""
 "You may configure the system's hostname, domain, name servers, and search "
 "domain. Name servers are used to look up other hosts on the network."
 msgstr ""
+"Itt lehet megadni a gépnevet, a tartománynevet, a névkiszolgálókat, a keresési "
+"tartományt. A névkiszolgálók segítségével más gépek címét lehet lekérdezni a név alapján."
 
 #: src/netconfpkg/gui/maindialog.glade.h:31
 msgid ""
@@ -2922,6 +3007,9 @@ msgid ""
 "DNS is in use, these settings will take precedence over any information it "
 "may provide."
 msgstr ""
+"Itt lehet statikus név-IP-cím-összerendeléseket megadni. Ha DNS-t használ, "
+"akkor az itt megadott összerendelések elsőbbséget fognak élvezni a DNS-beli összerendelésekkel "
+"szemben."
 
 #: src/netconfpkg/gui/maindialog.glade.h:32
 #: src/netconfpkg/gui/neat-control.glade.h:17
@@ -2968,7 +3056,7 @@ msgstr "_Harmadlagos DNS:"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
 msgid "Configure Wireless Connection"
-msgstr ""
+msgstr "Vezeték nélküli kapcsolat beállítása"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
 msgid "Create Wireless Device"
@@ -2992,7 +3080,7 @@ msgstr "_Felhasználóazonosítási kulcs:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
 msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr ""
+msgstr "Automatikus titkosítási módválasztás IKA-val (racoon)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:4
 msgid "Ge_nerate"
@@ -3000,7 +3088,7 @@ msgstr "_Generálás"
 
 #: src/netconfpkg/gui/editipsec.glade.h:5
 msgid "Host to Host encryption"
-msgstr ""
+msgstr "Gépek közötti titkosítás"
 
 #: src/netconfpkg/gui/editipsec.glade.h:6
 msgid "IPsec"
@@ -3052,11 +3140,11 @@ msgstr "Alhálózati m_aszk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:18
 msgid "Manual encryption with a fixed key"
-msgstr ""
+msgstr "Kézi titkosítás rögzített kulccsal"
 
 #: src/netconfpkg/gui/editipsec.glade.h:19
 msgid "Network to Network encryption (VPN)"
-msgstr ""
+msgstr "Hálózatok közötti titkosítás (VPN)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter a nickname for the connection:"
@@ -3064,11 +3152,11 @@ msgstr "Adjon egy rövid nevet a kapcsolatnak:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:21
 msgid "Please enter your local network settings:"
-msgstr ""
+msgstr "Adja meg a helyi hálózat beállításait:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:22
 msgid "Please enter your remote network settings:"
-msgstr ""
+msgstr "Adja meg a távoli hálózat beállításait:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:23
 msgid "Please select the type of connection:"
@@ -3083,6 +3171,8 @@ msgid ""
 "Please specify your keys or generate them. \n"
 "The keys are symmetric, so your remote partner need to have the same."
 msgstr ""
+"Adja meg a kulcsokat vagy hozza létre őket. \n"
+"A kulcsok szimmetrikusak, tehát a távoli partnernél ugyanezek szükségek."
 
 #: src/netconfpkg/gui/editipsec.glade.h:27
 msgid "Remote _IP address:"
@@ -3102,11 +3192,11 @@ msgstr "Távoli alhálózati mas_zk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:31
 msgid "You will now be guided through the setup of the IPsec connection."
-msgstr ""
+msgstr "Most végigvezetjük Önt az IPsec-kapcsolat beállítási lépésein."
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
 msgid "_Activate connection when computer starts"
-msgstr ""
+msgstr "A _kapcsolat létrehozása rendszerindításkor"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption key:"
