@@ -50,7 +50,7 @@ class deviceConfigDialog:
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9\-_:]+$"),
+                                                r"^[a-z|A-Z|0-9\_:]+$"),
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             })
 
@@ -130,5 +130,5 @@ class deviceConfigDialog:
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.13 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.14 $"

@@ -4,6 +4,8 @@ MAJOR=1
 MINOR=3
 RELEASE=0
 
+RPM_RELEASE=1
+
 AM_INIT_AUTOMAKE(redhat-config-network, $MAJOR.$MINOR.$RELEASE)
 
 ALL_LINGUAS="cs da de el es fr is it ja ko no pt ru sv tr zh_CN zh_TW"
@@ -16,6 +18,8 @@ AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
 AC_PROG_LN_S
+
+AC_SUBST(RPM_RELEASE)
 
 AC_OUTPUT([
 Makefile

@@ -69,7 +69,13 @@ sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
 
 NETCONFDIR='/usr/share/redhat-config-network/'
 
-import gtk
+try:
+    import gtk
+except RuntimeError:
+    sys.stderr.write(_("ERROR: Unable to initialize graphical environment. ") + \
+                     _("Most likely cause of failure is that the tool was not run using a graphical environment. ") + \
+                     _("Please either start your graphical user interface or set your DISPLAY variable.\n"))
+    sys.exit(0)
 
 def get_pixpath(pixmap_file):
     fn = pixmap_file
@@ -226,5 +232,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.191 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.192 $"

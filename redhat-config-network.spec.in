@@ -3,14 +3,14 @@
 Summary: The GUI of the NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: @RPM_RELEASE@
 URL: http://people.redhat.com/harald/redhat-config-network
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
 Obsoletes: isdn-config internet-config rp3 redhat-config-gui
-BuildRequires: python >= 2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
+BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
 Requires: %{name}-tui = %{version}-%{release}
 Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -30,7 +30,7 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
 Obsoletes: netcfg
-Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.101, rpm-python
+Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python
 
 %description tui
 This is the network configuration tool for Red Hat Linux,
@@ -88,7 +88,7 @@ cd ../po
 %makeinstall
 popd
 # use neat-control
-rm -f $RPM_BUILD_ROOT/etc/X11/applnk/Internet/rp3.desktop
+rm -f $RPM_BUILD_ROOT/%{_sysconfdir}/X11/applnk/Internet/rp3.desktop
 %endif
 
 %find_lang %name
@@ -118,6 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network/help
 %{_datadir}/redhat-config-network/*.py*
+%dir %{_datadir}/redhat-config-network
 %dir %{_datadir}/redhat-config-network/netconfpkg
 %{_datadir}/redhat-config-network/netconfpkg/plugins
 %{_datadir}/redhat-config-network/netconfpkg/*.py*
@@ -126,8 +127,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/redhat-config-network/providerdb
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
-%config(noreplace) /etc/pam.d/*
-%config(noreplace) /etc/security/console.apps/*
+%config(noreplace) %{_sysconfdir}/pam.d/*
+%config(noreplace) %{_sysconfdir}/security/console.apps/*
 %{_sbindir}/neat
 %{_sbindir}/neat-tui
 %{_sbindir}/redhat-config-network
@@ -146,6 +147,34 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Jun 18 2003 Harald Hoyer <harald@redhat.de> 1.2.12-2
+- fixed #97562
+
+* Thu Jun 17 2003 Harald Hoyer <harald@redhat.de> 1.2.12-1
+- wlan0 handling
+- splash screen bug fixed
+- improvements in HW list handling
+- isdncard handling #91607
+
+* Thu Jun 12 2003 Harald Hoyer <harald@redhat.de> 1.2.11
+- fixed #97027
+- fixed subs of -
+
+* Wed Jun 11 2003 Harald Hoyer <harald@redhat.de> 1.2.10
+- fixed #97027 #96994
+- fixed fedora bugzilla issues #326
+- update of some translations
+
+* Wed Jun  4 2003 Harald Hoyer <harald@redhat.de> 1.2.8
+- lazy file unlinking
+- fixed #91620 #91583
+- ConfEHosts -> ConfFHosts
+
+* Mon May 19 2003 Harald Hoyer <harald@redhat.de> 1.2.7
+- make PAP/CHAP work again
+- route files chmod(0644)
+- added local variables to traceback
+
 * Thu May 01 2003 Harald Hoyer <harald@redhat.de> 1.2.6
 - use unsernetctl instead of ifdown/ifup
 

@@ -80,19 +80,6 @@ class wirelessConfigDialog(deviceConfigDialog):
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
-
-        #ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-                    
-        #hwlist = NCHardwareList.getHardwareList()
-        #(hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
-
-        #if len(hwdesc):
-        #    ecombo.set_popdown_strings(hwdesc)
-
-        #widget = self.xml.get_widget("ethernetDeviceEntry")
-        #if self.device.Device and hwcurr:
-        #    widget.set_text(hwcurr)
-        #widget.set_position(0)
         
         wl = self.device.Wireless
         if wl:
@@ -156,5 +143,5 @@ class wirelessConfigDialog(deviceConfigDialog):
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.22 $"

@@ -97,6 +97,7 @@ deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
 		   '^lo$' : LO,
 		   '^ctc[0-9]*(:[0-9]+)?$' : CTC,
 		   '^iucv[0-9]*(:[0-9]+)?$' : IUCV,
+		   '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,
 		   }
 # Removed for now, until we have a config dialog for infrared
 #		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
@@ -162,8 +163,6 @@ def request_rpms(pkgs = []):
     if len(toinstall):
         import string
         plist = string.join(toinstall, '\n')
-        #print "toinstall %s" % str(toinstall)
-        #print "plist %s" % str(plist)
 	r = generic_longinfo_dialog(_("You have to install the following packages, "
                                       "which are needed on your system!"),
                                     plist, dialog_type="info")
@@ -186,63 +185,59 @@ def getCHAPConf():
         DVchapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + CHAPFILE)
     return DVchapconf
 
-def create_ethernet_combo(hardwarelist, devname, type = ETHERNET):
-        hwdesc = [ 'eth0', 'eth1', 'eth2',
-                   'eth3', 'eth4', 'eth5',
-                   'eth6', 'eth7', 'eth8'
-                   ]
-        hwcurr = None
-        
-        for hw in hardwarelist:
-            if hw.Type == type:
-                desc = str(hw.Name) + ' (' + hw.Description + ')'
-                try:
-                    i = hwdesc.index(hw.Name)
-                    hwdesc[i] = desc
-                except:
-                    hwdesc.append(desc)
-                    
-                if devname and hw.Name == devname:
-                    hwcurr = desc
-                    
-        if not hwcurr:
-            if devname:
-                hwcurr = devname
-            elif len(hwdesc):
-                hwcurr = hwdesc[0]
 
-        hwdesc.sort()
-        
-        return (hwcurr, hwdesc[:])
+def create_combo(hardwarelist, devname, type, default_devices):
+    hwdesc = default_devices
+    hwcurr = None
+
+    for hw in hardwarelist:
+        if hw.Type == type:
+            desc = str(hw.Name) + ' (' + hw.Description + ')'
+            try:
+                i = hwdesc.index(hw.Name)
+                hwdesc[i] = desc
+            except:
+                hwdesc.append(desc)
+
+            if devname and hw.Name == devname:
+                hwcurr = desc
+
+    if not hwcurr:
+        if devname:
+            hwcurr = devname
+        elif len(hwdesc):
+            hwcurr = hwdesc[0]
+
+    hwdesc.sort()
+
+    return (hwcurr, hwdesc[:])
+
+def create_generic_combo(hardwarelist, devname, type = ETHERNET):
+    devbase = re.sub('[0-9]*(:[0-9]+)?$', '', devname)
+    hwdesc = []
+    for i in xrange(0, 9):
+        hwdesc.append(devbase + str(i))
+
+    return create_combo(hardwarelist, devname, type,
+                        default_devices = hwdesc)
+    
+
+def create_ethernet_combo(hardwarelist, devname, type = ETHERNET):
+    hwdesc = [ 'eth0', 'eth1', 'eth2',
+               'eth3', 'eth4', 'eth5',
+               'eth6', 'eth7', 'eth8'
+               ]
+
+    return create_combo(hardwarelist, devname, type,
+                        default_devices = hwdesc)
 
 def create_tokenring_combo(hardwarelist, devname):
-        hwdesc = [ 'tr0', 'tr1', 'tr2',
-                   'tr3', 'tr4', 'tr5',
-                   'tr6', 'tr7', 'tr8'
-                   ]
-        hwcurr = None
-        
-        for hw in hardwarelist:
-            if hw.Type == TOKENRING:
-                desc = str(hw.Name) + ' (' + hw.Description + ')'
-                try:
-                    i = hwdesc.index(hw.Name)
-                    hwdesc[i] = desc
-                except:
-                    hwdesc.append(desc)
-                    
-                if devname and hw.Name == devname:
-                    hwcurr = desc
-                    
-        if not hwcurr:
-            if devname:
-                hwcurr = devname
-            elif len(hwdesc):
-                hwcurr = hwdesc[0]
-
-        hwdesc.sort()
-        
-        return (hwcurr, hwdesc[:])
+    hwdesc = [ 'tr0', 'tr1', 'tr2',
+               'tr3', 'tr4', 'tr5',
+               'tr6', 'tr7', 'tr8'
+               ]
+    return create_combo(hardwarelist, devname, type = TOKENRING,
+                        default_devices = hwdesc)
 
 def ishardlink(file):
     if os.path.isfile(file):
@@ -692,5 +687,5 @@ def prepareRoot(root):
             log.log(2, "%s already exists" % (root + dir))
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.76 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.77 $"

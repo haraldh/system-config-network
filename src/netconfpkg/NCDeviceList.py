@@ -24,7 +24,6 @@ from NC_functions import *
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from rhpl import ConfPAP
 from rhpl import ConfSMB
 from rhpl import Conf
 from rhpl.log import log
@@ -101,6 +100,7 @@ class DeviceList(DeviceList_base):
 
 
     def load(self):
+        from NCDevice import ConfDevice
         changed = updateNetworkScripts()
 
         self.__delslice__(0, len(self))
@@ -109,17 +109,66 @@ class DeviceList(DeviceList_base):
         devices = ConfDevices()
         msg = ""
         for dev in devices:
-            i = self.addDevice()
-            self[i].load(dev)            
-            devclass = df.getDeviceClass(self[i].Type)
+            conf = ConfDevice(dev)
+            type = None
+            device = None
+            # take a peek in the config file
+            if conf.has_key("TYPE"):
+                type = conf["TYPE"]
+            if conf.has_key("DEVICE"):
+                device = conf["DEVICE"]
+            del conf
+
+            if not type or type == "" or type == _("Unknown"):
+                import NCHardwareList
+                hwlist = NCHardwareList.getHardwareList()
+                for hw in hwlist:
+                    if hw.Name == device:
+                        type = hw.Type
+                        break
+                else:
+                    type = getDeviceType(device)
+                    
+            devclass = df.getDeviceClass(type)
             if devclass:
                 newdev = devclass()
                 newdev.load(dev)
-                self[i] = newdev
+                self.append(newdev)
             else:
                 log.log(1, "NO DEVICE CLASS FOUND FOR %s" % dev)
+                i = self.addDevice()
+                self[i].load(dev)
                 
         self.commit(changed)
+
+        chdev = {}
+        # the initscripts do not like '-'
+        for dev in self:
+            newDeviceId = re.sub('-', '_', dev.DeviceId)
+            if newDeviceId != dev.DeviceId:
+                chdev[dev.DeviceId] = newDeviceId
+                #log.log(4, "%s != %s" % (newDeviceId, dev.DeviceId))
+                # Fixed change device names in active list of all profiles
+                profilelist = netconfpkg.NCProfileList.getProfileList()
+
+                for prof in profilelist:
+                    #log.log(4, str(prof.ActiveDevices))
+                    if dev.DeviceId in prof.ActiveDevices:
+                        pos = prof.ActiveDevices.index(dev.DeviceId)
+                        prof.ActiveDevices[pos] = newDeviceId
+                        #log.log(4, "changed %s" % (prof.ActiveDevices[pos]))
+                        #log.log(4, str(prof.ActiveDevices))
+                        prof.commit()
+                        
+                dev.DeviceId = newDeviceId
+                dev.commit()
+
+        if len(chdev.keys()):
+            s =_("Changed the following Nicknames due to the initscripts:\n")
+            for n, d in chdev.items():
+                s += "%s -> %s\n" % (n, d)
+            generic_longinfo_dialog(_("Nicknames changed"), s)
+
 
     def addDeviceType(self, type):
         df = getDeviceFactory()
@@ -377,5 +426,5 @@ if __name__ == '__main__':
         print "---------------------------------------"
     #dl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.54 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.55 $"

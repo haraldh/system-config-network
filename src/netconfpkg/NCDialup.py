@@ -195,6 +195,7 @@ class DslDialup(Dialup):
 
     def save(self, parentConf):
         Dialup.save(self, parentConf)
+        
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -209,6 +210,14 @@ class DslDialup(Dialup):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
+
+
+        # The ACNAME is used for the server name
+        if self.Login and self.AcName:
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            papconf[[self.Login, self.AcName]] = str(self.Password)
+            chapconf[[self.Login, self.AcName]] = str(self.Password)
 
         if self.HangupTimeout:
             parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
@@ -663,5 +672,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.61 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.62 $"

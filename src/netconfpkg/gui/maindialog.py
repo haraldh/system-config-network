@@ -21,18 +21,20 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import *
-from netconfpkg.gui import *
+#from netconfpkg import 
+#from netconfpkg.gui import *
 from netconfpkg.Control import *
-from netconfpkg.gui.GUI_functions import GLADEPATH
-from netconfpkg.gui.GUI_functions import PROGNAME
-from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.GUI_functions import *
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NCProfileList import getProfileList
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
+from netconfpkg.gui.edithosts import editHostsDialog
 import gtk
 import gtk.glade
 import gnome.ui
 import gnome
+import os
 
 PROFILE_COLUMN = 0
 STATUS_COLUMN = 1
@@ -146,7 +148,7 @@ class mainDialog:
         self.inact_xpm, self.inact_mask = get_icon ("pixmaps/inactive.xpm",
                                                     self.dialog)
         self.devsel = None
-
+        self.hwsel = None
 
 #         clist = self.xml.get_widget("hardwareList")
 #         # First: copy the clist-style
@@ -166,8 +168,6 @@ class mainDialog:
         
         load_icon("network.xpm", self.dialog)
         
-        self.load()
-        self.hydrate()
         self.xml.get_widget ("deviceList").column_titles_passive ()
         self.xml.get_widget ("hardwareList").column_titles_passive ()
         self.xml.get_widget ("hostsList").column_titles_passive ()    
@@ -188,6 +188,8 @@ class mainDialog:
             self.xml.get_widget('dnsFrame')),
             }
 
+        self.active_page = self.page_num[PAGE_DEVICES]
+        
         self.addButtonFunc = {
             PAGE_DEVICES : self.on_deviceAddButton_clicked,
             PAGE_HARDWARE : self.on_hardwareAddButton_clicked,
@@ -209,6 +211,9 @@ class mainDialog:
             PAGE_HOSTS : self.on_hostsDeleteButton_clicked,
             }
         
+        self.load()
+        self.hydrate()
+
         self.activedevicelist = NetworkDevice().get()
         self.tag = gtk.timeout_add(4000, self.updateDevicelist)
                 
@@ -384,7 +389,7 @@ class mainDialog:
                 status_mask = self.off_mask
                 
             device_pixmap, device_mask = \
-                GUI_functions.get_device_icon_mask(dev.Type, self.dialog)
+                get_device_icon_mask(dev.Type, self.dialog)
 
             clist.append(['', status, devname, dev.DeviceId, dev.Type])
             clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm,
@@ -418,14 +423,20 @@ class mainDialog:
         clist.clear()
         clist.set_row_height(17)
         row = 0
+        hwsel = self.hwsel
+
         for hw in hardwarelist:
             clist.append([str(hw.Description), str(hw.Type), str(hw.Name), str(hw.Status)])
             device_pixmap, device_mask = \
-                GUI_functions.get_device_icon_mask(hw.Type, self.dialog)
+                get_device_icon_mask(hw.Type, self.dialog)
             clist.set_pixtext(row, DEVICE_COLUMN, hw.Name, 5,
                               device_pixmap,
                               device_mask)
             clist.set_row_data(row, hw)
+
+            if hw == hwsel:
+                log.log(3, "Selecting row %d" % row)
+                clist.select_row(row, 0)
 
 #             if hw.Status == HW_OK:
 #                 clist.set_row_style(row, self.style1)
@@ -875,13 +886,20 @@ class mainDialog:
                                     deactivate_button = None,
                                     monitor_button = None):
         #devicelist = getDeviceList()
-
         if edit_button: edit_button.set_sensitive(TRUE)
-        if rename_button: rename_button.set_sensitive(TRUE)
         if delete_button: delete_button.set_sensitive(TRUE)
-        if copy_button: copy_button.set_sensitive(TRUE)
-        if up_button: up_button.set_sensitive(TRUE)
-        if down_button: down_button.set_sensitive(TRUE)
+        if self.active_page == self.page_num[PAGE_DEVICES]:
+            if copy_button: copy_button.set_sensitive(TRUE)
+            if up_button: up_button.set_sensitive(TRUE)
+            if down_button: down_button.set_sensitive(TRUE)
+            if rename_button: rename_button.set_sensitive(TRUE)
+
+        if clist.get_name() == 'hardwareList':
+            if len(clist.selection) == 0:
+                return
+            self.hwsel = clist.get_row_data(clist.selection[0])
+            if not self.hwsel:
+                return
 
         if clist.get_name() == 'deviceList':
             if len(clist.selection) == 0:
@@ -1359,7 +1377,6 @@ class mainDialog:
         # remove hardware
         hardwarelist.remove(hw)
         hardwarelist.commit()
-        self.hydrateHardware()
 
         buttons = generic_yesno_dialog((_('Do you want to delete '
                                           'all devices that used "%s"?')) % \
@@ -1384,6 +1401,7 @@ class mainDialog:
             devicelist.commit()
             self.hydrateDevices()
 
+        self.hydrateHardware()
 
     def on_about_activate(self, *args):
         from version import PRG_VERSION
@@ -1406,5 +1424,5 @@ class mainDialog:
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.26 $"

@@ -94,6 +94,12 @@ if os.path.exists('/lib/modules/'+kernelver+'/kernel/drivers/isdn/hisax/hisax_fc
     card['AVM PCI (Fritz!PCI v2)'] = [ "0", "", "", "", "", "", "1244", "0e00", "", "", "hisax_fcpcipnp" ]
 	
 class ConfISDN:
+    keydict = { 'Description' : 'NAME',
+                'ModuleName' : 'MODULE',
+                'VendorId' : 'VENDOR_ID',
+                'Firmware' : 'FIRMWARE',
+                'Resources' : 'RESOURCES'
+                }
     def __init__(self):
         self.Description = ""
         self.ChannelProtocol = "2"
@@ -108,7 +114,8 @@ class ConfISDN:
         self.DriverId = ""
         self.Firmware = ""
         self.ModuleName = ""
-
+        self.Resources = ""
+        
     def get_value(self, s):
         if string.find(s, "=") < 0:
             return ""
@@ -118,50 +125,43 @@ class ConfISDN:
         return string.strip(s)
 
     def load(self, f = None):
+
         if not f:
             f = netconfpkg.ROOT + ISDNCARDCONF            
         if not os.path.exists(f):
             return -1
 
-        conf = open(f, "r")
-        line = conf.readline()
+        conf = Conf.ConfShellVar(filename = f)
+        for selfkey in self.keydict.keys():
+            confkey = self.keydict[selfkey]
+            if conf.has_key(confkey):
+                self.__dict__[selfkey] = conf[confkey]
 
-        while line:
-            line = string.strip(line)
-            if len(line) == 0 or line[0] == "#":
-                pass
-            elif line[:5]  == "NAME=":
-                self.Description = self.get_value(line)
-            elif line[:7] == "MODULE=":
-                self.ModuleName = self.get_value(line)
-            elif line[:10] == "VENDOR_ID=":
-                self.VendorId = self.get_value(line)
-            elif  line[:10] == "DEVICE_ID=":
-                self.DeviceId = self.get_value(line)
-            elif line[:9] == "FIRMWARE=":
-                self.Firmware = self.get_value(line)
-            elif line[:10] == "RESOURCES=":
-                rlist = string.split(self.get_value(line), " ")
-                for i in rlist:
-                    if string.find(i, "type=") == 0:
-                        self.Type = self.get_value(i)
-                    elif string.find(i, "protocol=") == 0:
-                        self.ChannelProtocol = self.get_value(i)
-                    elif string.find(i, "irq=") == 0:
-                        self.IRQ = self.get_value(i)
-                    elif string.find(i, "id=") == 0:
-                        self.DriverId = self.get_value(i)
-                    elif string.find(i, "io=") == 0 or string.find(i, "io0=") == 0:
-                        self.IoPort = self.get_value(i)
-                    elif string.find(i, "io1=") == 0:
-                        self.IoPort1 = self.get_value(i)
-                    elif string.find(i, "io2=") == 0:
-                        self.IoPort2 = self.get_value(i)
-                    elif string.find(i, "mem=") == 0:
-                        self.Mem = self.get_value(i)
-            line = conf.readline()
-            
-        conf.close()
+        log.log(5, "RESOURCES=%s" % self.Resources)
+
+        rlist = string.split(self.Resources, " ")
+        for i in rlist:
+            log.log(5, "%s" % i)
+            if string.find(i, "type=") == 0:
+                self.Type = self.get_value(i)
+            elif string.find(i, "protocol=") == 0:
+                self.ChannelProtocol = self.get_value(i)
+            elif string.find(i, "irq=") == 0:
+                self.IRQ = self.get_value(i)
+            elif string.find(i, "id=") == 0:
+                self.DriverId = self.get_value(i)
+            elif string.find(i, "io=") == 0 or string.find(i, "io0=") == 0:
+                self.IoPort = self.get_value(i)
+            elif string.find(i, "io1=") == 0:
+                self.IoPort1 = self.get_value(i)
+            elif string.find(i, "io2=") == 0:
+                self.IoPort2 = self.get_value(i)
+            elif string.find(i, "mem=") == 0:
+                self.Mem = self.get_value(i)
+
+        if len(rlist) and not self.Type:
+            self.Type = '0'
+
         return 1
     
     def save(self, f = None):
@@ -173,46 +173,43 @@ class ConfISDN:
                 os.unlink(f)
             return
 
-        try:
-            conf = open( f, "w")
-            conf.write("NAME=\"" + self.Description + "\"\n")
-            conf.write("MODULE=\"" + self.ModuleName + "\"\n")
-            if self.VendorId and self.DeviceId:
-                conf.write("VENDOR_ID=\"" + self.VendorId + "\"\n")
-                conf.write("DEVICE_ID=\"" + self.DeviceId + "\"\n")
-            if self.Firmware:
-                conf.write("FIRMWARE=\"" + self.Firmware + "\"\n")
-
-            rs = "RESOURCES=\""
-            if self.Type:
-                rs = rs + "protocol=" + str(self.ChannelProtocol)
-                if self.Type == '0':
-                    pass
-                else:
-                    rs = rs + " type=" + str(self.Type)
-                    if self.IRQ:
-                        rs = rs + " irq=" + str(self.IRQ)
-                    if self.DriverId:
-                        rs = rs + " id=" + str(self.DriverId)
-                    if self.IoPort:
-                        if self.Type == "4" or self.Type == "19" or self.Type == "24":
-                            rs = rs + " io0=" + str(self.IoPort)
-                        else:
-                            rs = rs + " io=" + str(self.IoPort)
-                    if self.IoPort1:
-                        rs = rs + " io1=" + str(self.IoPort1)
-                    if self.IoPort2:
-                        rs = rs + " io2=" + str(self.IoPort2)
-                    if self.Mem:
-                        rs = rs + " mem=" + str(self.Mem)
+        conf = Conf.ConfShellVar(filename = f)
+        
+        rs = ""
+        if self.Type:
+            rs = rs + "protocol=" + str(self.ChannelProtocol)
+            if self.Type == '0':
+                pass
             else:
-                rs = rs + "NONE"
+                rs = rs + " type=" + str(self.Type)
+                if self.IRQ:
+                    rs = rs + " irq=" + str(self.IRQ)
+                if self.DriverId:
+                    rs = rs + " id=" + str(self.DriverId)
+                if self.IoPort:
+                    if self.Type == "4" or self.Type == "19" or self.Type == "24":
+                        rs = rs + " io0=" + str(self.IoPort)
+                    else:
+                        rs = rs + " io=" + str(self.IoPort)
+                if self.IoPort1:
+                    rs = rs + " io1=" + str(self.IoPort1)
+                if self.IoPort2:
+                    rs = rs + " io2=" + str(self.IoPort2)
+                if self.Mem:
+                    rs = rs + " mem=" + str(self.Mem)
+        else:
+            rs = rs + "NONE"
 
-            rs = rs + "\"\n"
-            conf.write(rs)
-            conf.close()
-            
-        except(IOError): pass
+        self.Resources = rs
+
+        for selfkey in self.keydict.keys():
+            confkey = self.keydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: conf[confkey] = ""
+
+
+        conf.write()
 
     def detect(self):
         fpci = '/sbin/lspci'
@@ -283,5 +280,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.21 $"

@@ -214,6 +214,8 @@ class ADSLInterface(InterfaceCreator):
 
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('providerNameEntry').get_text()
+        self.device.DeviceId = re.sub('-', '_', self.device.DeviceId)
+        
         self.device.Type = 'xDSL'
         self.device.BootProto = 'dialup'
         self.device.AllowUser = TRUE
@@ -233,5 +235,5 @@ class ADSLInterface(InterfaceCreator):
 
 NCDevADSL.setDevADSLWizard(ADSLInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.22 $"

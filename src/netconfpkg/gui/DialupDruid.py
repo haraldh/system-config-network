@@ -364,6 +364,7 @@ class DialupDruid(InterfaceCreator):
 
     def dehydrate(self):
         DeviceId = self.xml.get_widget('providerName').get_text()
+        DeviceId = re.sub('-', '_', DeviceId)
         n = DeviceId
         num = 0
         while 1:
@@ -402,5 +403,5 @@ class DialupDruid(InterfaceCreator):
             dialup.StupidMode = TRUE
             dialup.InitString = ''
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.23 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.24 $"

@@ -119,7 +119,7 @@ class Device(Device_base):
         raise NotImplemented
 
     def testDeviceId(self, value, child = None):
-        if re.search(r"^[a-z|A-Z|0-9\-_:]+$", value):
+        if re.search(r"^[a-z|A-Z|0-9\_:]+$", value):
             return true
         return false
 
@@ -211,10 +211,8 @@ class Device(Device_base):
                 if hw.Name == self.Device:
                     self.Type = hw.Type
                     break
-                    
-        if (not self.Type or self.Type == "" or self.Type == _("Unknown") ) \
-           and self.Device:            
-            self.Type = NC_functions.getDeviceType(self.Device)
+            else:
+                self.Type = NC_functions.getDeviceType(self.Device)
 
         if conf.has_key("RESOLV_MODS"):
             if conf["RESOLV_MODS"] != "no":
@@ -441,5 +439,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.85 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.86 $"

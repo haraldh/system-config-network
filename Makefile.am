@@ -76,7 +76,8 @@ clean:
 
 PKGNAME=${PACKAGE}
 VERSION=@VERSION@
-CVSTAG=r$(subst .,-,$(VERSION))
+RELEASE=@RPM_RELEASE@
+CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RELEASE))
 
 archive: distcheck changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
@@ -88,11 +89,11 @@ archive: distcheck changelog
 	@echo "The archive is in ${PKGNAME}-$(VERSION).tar.gz"
 
 force-tag:
-	cvs ci -m "release $(VERSION) moved"
+	cvs ci -m "release $(VERSION)-$(RELEASE) moved"
 	cvs tag -cR -F $(CVSTAG) .
 
 tag:
-	cvs ci -m "release $(VERSION)"
+	cvs ci -m "release $(VERSION)-$(RELEASE)"
 	cvs tag -cR $(CVSTAG) .
 
 tag-srpm: changelog tag archive

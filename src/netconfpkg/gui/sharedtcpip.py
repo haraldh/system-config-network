@@ -301,7 +301,7 @@ def hardware_init(xml, device):
 
 def hardware_hydrate(xml, device):
     hwlist = getHardwareList()
-    (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Device, type = device.Type)
+    (hwcurr, hwdesc) = NC_functions.create_generic_combo(hwlist, device.Device, type = device.Type)
     omenu = xml.get_widget("hardwareDeviceOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()
@@ -384,6 +384,7 @@ if __name__ == '__main__':
     xml = gtk.glade.XML('sharedtcpip.glade', None, domain=GUI_functions.PROGNAME)
     dhcp_init (xml, None)
     gtk.mainloop ()
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.28 $"

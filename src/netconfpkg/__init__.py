@@ -40,24 +40,31 @@ for _idl_file in [ "DeviceList.idl",
     GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = __netconfpkg)
     
 del _idl_file
-
-import os
-
-_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
-                                      v != "__init__.py" and \
-                                      v != 'genClass.py' and \
-                                      v[0] != '.', \
-                                      os.listdir(__path__[0])))
-
-for _i in _files:
-    _cmd = "from " + _i + " import *"
-    exec _cmd
-
-del _i
-del _files
-del _cmd
 del __netconfpkg
 
+from NCDeviceList import DeviceList
+from NCHardwareList import HardwareList
+from NCProfileList import ProfileList
+import gui
+import plugins
+from plugins import *
+
+# import os
+
+# _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
+#                                       v != "__init__.py" and \
+#                                       v != 'genClass.py' and \
+#                                       v[0] != '.', \
+#                                       os.listdir(__path__[0])))
+
+# for _i in _files:
+#     _cmd = "from " + _i + " import *"
+#     exec _cmd
+
+# del _i
+# del _files
+# del _cmd
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.14 $"
+__date__ = "$Date: 2003/06/18 11:06:57 $"
+__version__ = "$Revision: 1.15 $"
