@@ -29,6 +29,8 @@ if not "/usr/lib/rhs/python" in sys.path:
 if not "/usr/share/redhat-config-network" in sys.path:
     sys.path.append("/usr/share/redhat-config-network")
 
+if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
+    sys.path.append("/usr/share/redhat-config-network")
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
@@ -45,9 +47,7 @@ import Conf
 from netconfpkg import *
 
 def Usage():
-    print ( """redhat-config-network-cmd - Python network configuration commandline tool
-
-Usage: redhat-config-network-cmd -p --profile <profile>""")
+    print ( "redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
 
 
 # Argh, another workaround for broken gtk/gnome imports...
