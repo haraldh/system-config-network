@@ -265,7 +265,7 @@ class HardwareList(HardwareList_base):
                     if hw.Card.__dict__[selfkey]:
                         if selfkey == 'IRQ' \
                            and (hw.Card.IRQ == _('Unknown') \
-                                or (hw.Card.IRQ == 'Unknown'):
+                                or (hw.Card.IRQ == 'Unknown')):
                             continue
                         modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
             if hw.Type == 'Modem':

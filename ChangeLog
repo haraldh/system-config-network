@@ -1,16 +1,729 @@
-Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
+2002-03-27  Harald Hoyer  <harald@redhat.com>
 
-	* src/control/neat-control.py (mainDialog.__init__): clean up GUI
-	a bit.
+	* src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NC_functions.py:
+	fixed 'Unknown' vs. _('Unknown')
+
+	* src/netconfpkg/gui/EthernetInterfaceDruid.glade, src/netconfpkg/gui/EthernetInterface.py:
+	added support for IUCV and CTC
+
+	* src/netconfpkg/gui/GenericInterfaceDruid.glade, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/NewInterfaceDialog.py:
+	added the missing interfaces in a generic druid
+
+2002-03-27  Federico Musto  <federico@redhat.com>
+
+	* po/de.po, po/it.po, po/es.po, po/fr.po:
+	"/mnt/traduzioni/RH8.0/translate/redhat-config-network"
+
+2002-03-27  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.GB2312.po:
+	modified headers and added more translation.
+
+2002-03-27  James Hashida  <khashida@redhat.com>
+
+	* po/ja.po:
+	updated ja.po translations
+
+2002-03-26  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.GB2312.po:
+	updated against the lastest pot file.
+
+2002-03-26  Than Ngo  <than@redhat.com>
+
+	* configure.in, redhat-config-network.spec.in:
+	0.9.19
+
+	* src/maindialog.glade, src/neat-control.py, src/netconfpkg/Control.py, src/netconf.py:
+	* add activate/deactive/monitor
+
+2002-03-26  Federico Musto  <federico@redhat.com>
+
+	* po/de.po, po/es.po, po/fr.po, po/it.po:
+	"/mnt/traduzioni/RH8.0/translate/redhat-config-network"
+
+2002-03-26  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po:
+	Updated version of translation
+
+2002-03-26  James Hashida  <khashida@redhat.com>
+
+	* po/ja.po: translation update
+
+2002-03-26  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.Big5.po:
+	Updated translation.
+
+2002-03-25  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* po/ko.po, po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, src/glade-strings.c, src/netconfpkg/gui/neat-control-propertiesdialog.glade, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po:
+	Fix typo
+
+	* po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/ru.po, po/sv.po:
+	update-po
+
+	* po/redhat-config-network.pot:
+	Get rid of typo.
+
+	* src/glade-strings.c:
+	Update strings.
+
+	* src/netconfpkg/gui/sharedtcpip.glade:
+	Typo in text
+
+2002-03-25  Federico Musto  <federico@redhat.com>
+
+	* po/de.po, po/es.po, po/fr.po, po/it.po:
+	"/mnt/traduzioni/RH8.0/translate/redhat-config-network"
+
+2002-03-25  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.Big5.po:
+	Updated translation.
+
+2002-03-25  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.GB2312.po:
+	updated against the lastest master copies
+
+2002-03-23  menthos  <menthos@redhat.com>
+
+	* po/sv.po:
+	2002-03-23  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2002-03-22  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py:
+	allow setting Default route in DSL
+
+2002-03-22  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.Big5.po:
+	updated translation
+
+2002-03-21  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po: translation updated.
+
+	* po/ko.po:
+	More translation added.
+
+2002-03-18  Than Ngo  <than@redhat.com>
+
+	* src/Makefile.am:
+	* install userisdnctrl to /usr/sbin
+
+	* redhat-config-network.spec.in:
+	* update
+
+	* redhat-config-network.spec.in:
+	* install userisdnctl to /usr/sbin
+
+2002-03-16  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/Control.py:
+	* exec /usr/sbin/userisdnctl instead /sbin/userisdnctl
+
+	* redhat-config-network.spec.in, src/Makefile.am, src/neat-control.py:
+	* add userisdnctl for ISDN
+
+	* src/neat-control.py, src/netconfpkg/Control.py:
+	* add watch function for network device
+
+	* src/isdn.h, src/isdnif.h, src/Makefile.am, src/userisdnctl.c:
+	* add userisdnctl for ISDN dial/hangup/status
+
+	* configure.in, redhat-config-network.spec.in:
+	* new release
+
+2002-03-15  teg2  <teg2@redhat.com>
+
+	* po/no.po: 1 2 3
+
+2002-03-15  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* po/no.po, po/sv.po:
+	1 2 3
+
+	* po/no.po: Add translation...
+
+	* configure.in, redhat-config-network.spec.in:
+	Bump
+
+2002-03-14  Jonathan Blandford  <jrb@redhat.com>
+
+	* src/netconfpkg/gui/dialupconfig.glade, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/sharedtcpip.py:
+	more UI work
+
+2002-03-14  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconf-tui.py:
+	Don't handle protocol "static" (bogues value, but still...) as dynamic
+
+2002-03-14  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCDevice.py:
+	BootProto: "static" -> "none"
+
+	* Makefile.am, redhat-config-network.spec.in:
+	rp3 added
+
+	* src/glade-strings.c, src/ipcalc.py, src/netconfpkg/ConfPAP.py, src/netconfpkg/Conf.py, src/netconfpkg/ConfSMB.py, src/netconfpkg/genClass.py, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/ctcconfig.py, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/devicetype.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/exception.py, src/netconfpkg/gui/hardwaretype.py, src/netconfpkg/gui/__init__.py, src/netconfpkg/gui/InterfaceCreator.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/providerdb.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.py, src/netconfpkg/__init__.py, src/netconfpkg/NCCallback.py, src/netconfpkg/NCCipe.py, src/netconfpkg/NCCompression.py, src/netconfpkg/NCDeviceList.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NCDialup.py, src/netconfpkg/NC_functions.py, src/netconfpkg/NCHardwareList.py, src/netconfpkg/NCisdnhardware.py, src/netconfpkg/NCProfileList.py, src/netconfpkg/NCWireless.py, src/netconf.py, src/netconf-tui.py:
+	updated Copyright years
+
+	* src/netconfpkg/gui/EthernetInterface.py:
+	fixed Next<->Back from NewInterface<->EthernetInterface
+
+	* redhat-config-network-0.9.13-neat.patch:
+	rp3 patch
+
+2002-03-14  Than Ngo  <than@redhat.com>
+
+	* configure.in, redhat-config-network.spec.in:
+	* bump version number
+
+	* src/netconfpkg/gui/isdnhardware.py:
+	* remove sharedtcpip stuff, we don't need it for hardware configuring
+
+	* neat-control.desktop:
+	* fix desktop file
+
+	* src/neat-control.py:
+	* fixed some cosmetic bugs
+
+	* src/pixmaps/control.xpm, src/pixmaps/Makefile.am, src/pixmaps/neat-control-logo.png, src/pixmaps/neat-control.png, src/pixmaps/neat-control.xpm:
+	* install cs.xpm flag for Czech
+	* add/delete some icons
+
+	* src/netconfpkg/gui/DialupDruid.py:
+	* fixed reading provider database
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* redhat-config-network.spec.in, src/pixmaps/Makefile.am:
+	add missing pixmaps
+
+	* Makefile.am: * fix typo
+
+	* configure.in, Makefile.am, neat-control.desktop, redhat-config-network.spec.in, src/neat-control.py, src/netconfpkg/Control.py, src/pixmaps/Makefile.am, src/pixmaps/neat-control.png:
+	* first version if neat-control
+	* add desktop file for neat-control
+	* exec rp3 for monitoring
+
+	* redhat-config-network.spec.in:
+	* clean up
+
+	* src/netconfpkg/Conf.py:
+	* check file permission before open, some files are only read for root
+
+	* src/Makefile.am:
+	* symlink neat-control
+
+	* src/neat-control.py: * cleanup
+
+	* src/neat-control.py:
+	* use load_icon and get_icon in NC_function
+
+2002-03-13  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* redhat-config-network.spec.in:
+	neat_control, not neat-control. Otherwise, rpm macro expansion gets very confused
+
+	* redhat-config-network.spec.in:
+	Add necesarry whitespace
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/Makefile.am:
+	* add missing Control.py
+
+2002-03-13  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* redhat-config-network.spec.in:
+	Add dependency on gnome-core for the panel applet
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/EthernetInterface.py:
+	more info on finish page
+
+	* src/netconfpkg/gui/EthernetInterface.py:
+	provide info on the finish page
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* configure.in, redhat-config-network.spec.in:
+	* add neat-contrlm in specfile (default is disable)
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/ethernethardware.py, src/netconf.py:
+	hydrate() on hardware adding
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* src/Makefile.am, src/netconfpkg/gui/neat-control-debugdialog.glade, src/netconfpkg/gui/neat-control-monitordialog.glade, src/netconfpkg/gui/neat-control-popupmenu.glade, src/netconfpkg/gui/neat-control-propertiesdialog.glade, src/netconfpkg/gui/neat-control-statusdialog.glade, src/pixmaps/Makefile.am:
+	* move neat-control into standard directory
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/EthernetInterface.py:
+	added hostname
+
+	* src/netconfpkg/gui/EthernetInterfaceDruid.glade:
+	changed hostname label
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* src/control/debugdialog.glade, src/control/functions.py, src/control/maindialog.glade, src/control/monitordialog.glade, src/control/neat-control.py, src/control/popupmenu.glade, src/control/propertiesdialog.glade, src/control/statusdialog.glade:
+	move into standard directory
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconf.py:
+	added exception handling (nonwirking)
+
+	* src/netconfpkg/gui/EthernetInterfaceDruid.glade:
+	added VBOX
+
+	* src/netconfpkg/gui/sharedtcpip.py:
+	set Radio toggle
+
+	* src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/ModemInterface.py:
+	added druid to __init__
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* src/control/pixmaps/blue_empty_led.xpm, src/control/pixmaps/blue_led.xpm, src/control/pixmaps/control.xpm, src/control/pixmaps/ethernet.xpm, src/control/pixmaps/isdn.xpm, src/control/pixmaps/loopback.xpm, src/control/pixmaps/off.xpm, src/control/pixmaps/on.xpm, src/control/pixmaps/plip.xpm, src/control/pixmaps/ppp.xpm, src/control/pixmaps/red_empty_led.xpm, src/control/pixmaps/red_led.xpm:
+	* move icons in standard directory
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/NewInterfaceDruid.glade:
+	*** empty log message ***
+
+	* src/netconfpkg/NCHardwareList.py:
+	browse through all devices
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* src/control/functions.py, src/control/neat-control.py, src/netconfpkg/Control.py, src/pixmaps/blue_empty_led.xpm, src/pixmaps/blue_led.xpm, src/pixmaps/control.xpm, src/pixmaps/ethernet.xpm, src/pixmaps/isdn.xpm, src/pixmaps/loopback.xpm, src/pixmaps/off.xpm, src/pixmaps/on.xpm, src/pixmaps/plip.xpm, src/pixmaps/ppp.xpm, src/pixmaps/red_empty_led.xpm, src/pixmaps/red_led.xpm, src/neat-control.glade, src/neat-control.py:
+	* move neat-control into standard directory
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/NewInterfaceDialog.py:
+	NewInterfaceDialog.py added
+
+	* src/netconfpkg/gui/EthernetInterface.py:
+	first dehydrate()
+
+2002-03-13  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/Conf.py: * revert
+
+	* src/netconfpkg/ethtool.c:
+	add close()
+
+	* src/netconfpkg/Conf.py:
+	* ignore if pap/chap-secrets is root readonly
+
+2002-03-13  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/ethtool.c:
+	removed printf
+
+	* src/netconfpkg/ethtool.c:
+	added get_devices() get_active_devices()
+
+2002-03-12  Jonathan Blandford  <jrb@redhat.com>
+
+	* redhat-config-network.spec.in, src/maindialog.glade, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/sharedtcpip.glade:
+	Tue Mar 12 18:07:08 2002  Jonathan Blandford  <jrb@redhat.com>
+
+		* redhat-config-network.spec.in: Add rp3 support.
+		* src/netconfpkg/gui/isdnhardware.py: isdn work
+		* src/maindialog.glade: reverse devices and hw
+
+2002-03-12  Than Ngo  <than@redhat.com>
+
+	* src/control/functions.py, src/control/neat-control.py:
+	* implement activate/deactivate/configure
+
+	* src/control/functions.py, src/control/maindialog.glade:
+	* cosmetic
+
+2002-03-12  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/InterfaceCreator.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NewInterface.py:
+	hooks for NewInterfaceDialog
+
+	* src/netconfpkg/NC_functions.py:
+	some cleanups
+
+	* src/netconfpkg/NCProfileList.py:
+	only unlink hosts and resolv.conf if necessary
+
+	* src/netconfpkg/NCDeviceList.py:
+	unlink() old ifcfg in OLDSYSCONFDIR
+
+	* src/netconfpkg/NCDevice.py:
+	self.chmod() question
+
+	* src/netconf.py:
+	hooked in the druid to device add
+
+2002-03-11  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* redhat-config-network.spec.in:
+	Make noarch
+
+	* src/netconfpkg/gui/Makefile.am:
+	Add sharedtcpip.*
+
+	* configure.in, redhat-config-network.spec.in:
+	New release
+
+	* po/sv.po, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/ru.po:
+	Update
+
+2002-03-10  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/gui/isdnhardware.py:
+	* if ISDN card is not unknown, set the 1 card as default
+
+2002-03-08  Than Ngo  <than@redhat.com>
+
+	* src/providerdb:
+	* add providers for UK, Czech
+
+	* src/netconfpkg/gui/provider.py:
+	* reset _city before reading new country
+
+	* src/pixmaps/cs.xpm:
+	* add Czech flag
+
+2002-03-07  Jonathan Blandford  <jrb@redhat.com>
+
+	* src/netconfpkg/gui/cipeconfig.glade, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/wirelessconfig.glade:
+	more UI work
+
+2002-03-07  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/EthernetInterface.py:
+	removed hydrate
+
+	* src/netconfpkg/NCHardwareList.py:
+	only modify ethtool found HW, if new
+
+	* src/netconfpkg/gui/EthernetInterfaceDruid.glade, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/NewInterface.py:
+	added EthernetInterface.py EthernetInterfaceDruid.glade
+
+	* src/netconfpkg/gui/sharedtcpip.py:
+	fixed ethtool import
+
+2002-03-06  Jonathan Blandford  <jrb@redhat.com>
+
+	* src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/dslconfig.glade, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/ethernetconfig.glade, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/sharedtcpip.glade, src/netconfpkg/gui/sharedtcpip.py:
+	redo the tcpip settings...
+
+2002-03-04  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/ethernetconfig.py:
+	correct exception handling
+
+	* src/netconfpkg/NC_functions.py:
+	added unlink(), link(), rename() with generic error dialogs
+
+	* src/netconfpkg/NCProfileList.py:
+	- more error dialogs
+	- generic exception handling now in NC_functions
+
+	* src/netconfpkg/NCHardwareList.py:
+	better error message
+
+	* src/netconfpkg/NCDeviceList.py:
+	- more error dialogs
+	- restructuring of save()
+
+	* src/netconfpkg/NCDevice.py:
+	- better handling of renaming the DeviceId
+	- chmod to 0644
+	- more error dialogs
+
+	* Makefile.am:
+	filter out new cvs path
+
+2002-03-02  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* po/POTFILES.in: Add the TUI
+
+2002-03-01  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/ethernetconfig.py:
+	using ethtool instead of /sbin/ip for mac address
+
+	* src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/NC_functions.py:
+	more _generic_ dialogs (tui/gui)
+
+	* src/netconfpkg/NCHardwareList.py:
+	added ethtool hw detection
+
+2002-03-01  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/Makefile.am:
+	Include the tui in the list :)
+
+2002-02-28  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* configure.in, redhat-config-network.spec.in:
+	Bump
+
+	* src/Makefile.am: Add neat-tui
+
+2002-02-28  Jonathan Blandford  <jrb@redhat.com>
+
+	* ChangeLog, src/control/maindialog.glade, src/control/neat-control.py:
+	Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
+
+		* src/control/neat-control.py (mainDialog.__init__): clean up GUI
+		a bit.
+
+2002-02-27  Than Ngo  <than@redhat.com>
+
+	* src/control/functions.py, src/control/maindialog.glade, src/control/neat-control.py:
+	* disable info button
+
+2002-02-27  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconf.py:
+	rollback device edit on cancel
+
+	* src/netconfpkg/NCDeviceList.py:
+	only save changed devices...
+
+	* src/netconfpkg/ethtool.c:
+	better error handling
+
+2002-02-26  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconf-tui.py:
+	Don't pop the first window before showing something else, the bindings are probably broken.
+
+	* src/netconf-tui.py:
+	Add to main tree
+
+2002-02-26  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/ethtool.c:
+	added get_hwaddr
+
+	* src/netconfpkg/Makefile.am, configure.in:
+	added ethtool module/libtool
+
+	* src/netconfpkg/ethtool.c:
+	simple ethtool replacement module
+
+2002-02-26  morais  <morais@redhat.com>
+
+	* po/pt.po:
+	revision by jncp@netcabo.pt
+
+2002-02-25  morais  <morais@redhat.com>
+
+	* po/pt.po: add credit messages
+
+2002-02-20  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/genClass.py:
+	check return value of create%childname()
+
+	* src/netconfpkg/tests/test-Conf.py:
+	more tests for ConfModules
+
+	* src/netconfpkg/Makefile.am, src/netconfpkg/PasswordCrypt.py, src/netconfpkg/Conf.py:
+	fixed #59886
+
+	* src/netconfpkg/Conf.py:
+	fixed 58465
+
+	* src/netconf.py: fixed 58903
+
+	* redhat-config-network.spec.in:
+	removed rpm-python dependency
+
+	* src/netconfpkg/gui/exception.py:
+	removed 'import rpm'
+
+	* src/netconfpkg/DeviceList.idl, src/netconfpkg/NCDevice.py, src/netconfpkg/NCDialup.py, src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/provider.py:
+	Dialup.PeerDNS removed, use Device.AutoDNS instead. (#58110)
+
+2002-02-19  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconf.py:
+	more finegrained needsave checks
+
+	* src/netconfpkg/Conf.py:
+	added re. for search
+
+	* src/netconfpkg/tests/test-Conf.py:
+	corrected test2, output diff if test fails
+
+2002-02-13  morais  <morais@redhat.com>
+
+	* po/pt.po:
+	*** empty log message ***
+
+2002-02-11  ra  <ra@redhat.com>
+
+	* po/is.po: fixes
+
+2002-02-05  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconfpkg/Conf.py:
+	More regex(deprecated) to re fixes.
+
+2002-02-04  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/tests/test-Conf.py:
+	sys.exit(0) added
+
+	* src/netconfpkg/Makefile.am, src/netconfpkg/tests/Makefile.am, src/netconfpkg/tests/test-Conf.py, configure.in:
+	new tests for the data layer
+
+2002-02-01  menthos  <menthos@redhat.com>
+
+	* po/sv.po:
+	2002-02-01  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2002-01-31  Than Ngo  <than@redhat.com>
+
+	* src/pixmaps/Makefile.am, src/pixmaps/uk.xpm:
+	* add uk flag
+
+2002-01-30  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconfpkg/PasswordCrypt.py:
+	Switch from rand to random module
+
+	* src/netconfpkg/Conf.py:
+	regex -> re
+
+2002-01-30  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/Makefile.am, src/netconfpkg/Makefile.am, src/Makefile.am, configure.in:
+	python paths now version independant
+
+	* redhat-config-network.spec.in:
+	corrected year of changelog entry
+
+2002-01-29  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* configure.in: 0.9.11
+
+	* redhat-config-network.spec.in, src/netconfpkg/NCDeviceList.py:
+	Syntax fix
+
+2002-01-28  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/Makefile.am, src/netconfpkg/gui/Makefile.am, src/netconfpkg/Makefile.am:
+	Python 2.2 (should really be version independent...)
+
+2002-01-28  Than Ngo  <than@redhat.com>
+
+	* src/control/maindialog.glade, src/control/propertiesdialog.glade:
+	* fixed some typos
+
+	* src/control/neat-control.py:
+	* don't break if clist is empty
+
+2002-01-27  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/NCDeviceList.py:
+	* check permission of network config file before open it
+
+	* src/control/pixmaps/ethernet.xpm, src/control/pixmaps/isdn.xpm, src/control/pixmaps/loopback.xpm, src/control/pixmaps/off.xpm, src/control/pixmaps/on.xpm, src/control/pixmaps/plip.xpm, src/control/pixmaps/ppp.xpm, src/control/debugdialog.glade, src/control/display.glade, src/control/functions.py, src/control/maindialog.glade, src/control/monitordialog.glade, src/control/neat-control.py, src/control/propertiesdialog.glade, src/control/properties.glade, src/control/statusdialog.glade:
+	* implements function to read all active network devices
+	* fix and improve hydrate function so that icons are showed in clist, it looks cool
+	* rename some glade files
+	* add some icons
+
+	* src/control/neat-control.py, src/control/functions.py, src/control/maindialog.glade:
+	* implement hydrate is done
+
+2002-01-26  Than Ngo  <than@redhat.com>
+
+	* src/control/pixmaps/blue_empty_led.xpm, src/control/pixmaps/blue_empty_led_xpm.xpm, src/control/pixmaps/blue_led.xpm, src/control/pixmaps/blue_led_xpm.xpm, src/control/pixmaps/off.xpm, src/control/pixmaps/on.xpm, src/control/pixmaps/red_empty_led.xpm, src/control/pixmaps/red_empty_led_xpm.xpm, src/control/pixmaps/red_led.xpm, src/control/pixmaps/red_led_xpm.xpm:
+	* add some icons
+
+	* src/control/neat-control.py, src/control/pixmaps/control.xpm, src/control/pixmaps/kppp.png, src/control/properties.glade, src/control/functions.py, src/control/maindialog.glade:
+	* some python codes
+
+2002-01-25  Than Ngo  <than@redhat.com>
+
+	* src/control/display.glade, src/control/maindialog.glade, src/control/pixmaps/blue_empty_led_xpm.xpm, src/control/pixmaps/blue_led_xpm.xpm, src/control/pixmaps/kppp.png, src/control/pixmaps/red_empty_led_xpm.xpm, src/control/pixmaps/red_led_xpm.xpm, src/control/popupmenu.glade:
+	* some GUI changes
+
+2002-01-20  leon  <leon@redhat.com>
+
+	* po/ru.po: Update ru.po
+
+2002-01-18  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* redhat-config-network.spec.in:
+	Require rpm-python (#58513)
+
+2002-01-16  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po: Update
+
+2002-01-15  Than Ngo  <than@redhat.com>
+
+	* src/control/maindialog.glade, src/control/properties.glade:
+	* add GUI for redhat network control
+
+2002-01-11  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/Makefile.am:
+	added missing .py files
+
+2002-01-09  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/Entries.py, src/netconfpkg/gui/GUI_functions.py, src/netconf.py:
+	*** empty log message ***
+
+2002-01-07  Than Ngo  <than@redhat.com>
+
+	* configure.in, redhat-config-network.spec.in:
+	* update
+
+	* src/netconfpkg/gui/DialupDruid.py:
+	* set DEFROUTE=yes as default
+
+	* src/pixmaps/Makefile.am, src/pixmaps/si.xpm, src/providerdb:
+	* add some providers in slovinien
 
 2002-01-04  Preston Brown  <pbrown@redhat.com>
+
+	* src/netconfpkg/gui/.cvsignore, src/netconfpkg/.cvsignore:
+	more cvs ignores.
+
+	* ChangeLog, Makefile.am:
+	new rule for makefile to update changelog.
 
 	* src/doc/.cvsignore, src/pixmaps/.cvsignore, .cvsignore, doc/.cvsignore, po/.cvsignore:
 	ignore generated files in CVS.
 
 2001-12-06  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-12-04  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -36,7 +749,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-11-26  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-11-26  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -48,7 +762,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/NCDialup.py:
 	* fixed callback bug
 
-	* src/netconfpkg/gui/modemconfig.py: * cleanup
+	* src/netconfpkg/gui/modemconfig.py:
+	* cleanup
 
 2001-11-26  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -59,13 +774,17 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-11-26  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/gui/modemconfig.py: fixed dehydrate()
+	* src/netconfpkg/gui/modemconfig.py:
+	fixed dehydrate()
 
-	* src/netconfpkg/genClass.py: cosmetic indention
+	* src/netconfpkg/genClass.py:
+	cosmetic indention
 
-	* src/netconfpkg/gui/isdnhardware.py: ISDN hydrate
+	* src/netconfpkg/gui/isdnhardware.py:
+	ISDN hydrate
 
-	* src/netconfpkg/genClass.py: removed debug print
+	* src/netconfpkg/genClass.py:
+	removed debug print
 
 	* src/netconfpkg/gui/isdnhardware.py, src/netconf.py:
 	ISDN fixed
@@ -75,11 +794,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-11-26  Than Ngo  <than@redhat.com>
 
-	* src/netconfpkg/gui/dialupconfig.glade: * update
+	* src/netconfpkg/gui/dialupconfig.glade:
+	* update
 
 2001-11-26  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/genClass.py: commit/rollback fixed
+	* src/netconfpkg/genClass.py:
+	commit/rollback fixed
 
 2001-11-24  Harald Hoyer  <harald@redhat.com>
 
@@ -91,7 +812,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/gui/dslconfig.glade:
 	* support demand for DSL
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 2001-11-23  Than Ngo  <than@redhat.com>
 
@@ -114,7 +836,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	- do commit()/rollback() after the last dialog ends with OK (in netconf.py)
 	- no more self.button's
 
-	* src/netconfpkg/genClass.py: missing self. added
+	* src/netconfpkg/genClass.py:
+	missing self. added
 
 	* src/netconf.py:
 	- made notebook.set_page('deviceFrame') work
@@ -123,7 +846,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	- changed all dialogs to button=dialog.run()
 	- better commit()/rollback()
 
-	* src/maindialog.glade: moved deviceFrame name
+	* src/maindialog.glade:
+	moved deviceFrame name
 
 2001-11-22  Harald Hoyer  <harald@redhat.com>
 
@@ -157,7 +881,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* po/POTFILES.in: Add exception.py
 
-	* redhat-config-network.spec.in: (0.5, not 1)
+	* redhat-config-network.spec.in:
+	(0.5, not 1)
 
 	* redhat-config-network.spec.in, configure.in:
 	0.9.8
@@ -176,9 +901,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/module-info, src/Makefile.am:
 	fallback module-info
 
-	* module-info: oopes wrong position
+	* module-info:
+	oopes wrong position
 
-	* module-info: fallback module-info
+	* module-info:
+	fallback module-info
 
 	* src/netconfpkg/NCProfileList.py:
 	really remove files in SYSCONFDEVICEDIR+'/default/'
@@ -188,7 +915,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-11-19  Harald Hoyer  <harald@redhat.com>
 
-	* src/maindialog.glade: named profile frame
+	* src/maindialog.glade:
+	named profile frame
 
 	* src/netconf.py:
 	add -p option for gui mode to show profiles
@@ -198,19 +926,22 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-11-02  tayninh1  <tayninh1@redhat.com>
 
-	* src/netconfpkg/NCisdnhardware.py: * fix resources
+	* src/netconfpkg/NCisdnhardware.py:
+	* fix resources
 
 	* src/providerdb, redhat-config-network.spec.in:
 	* update provider DB
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/HardwareList.idl, src/netconfpkg/NCHardwareList.py, src/netconfpkg/NCisdnhardware.py:
 	* fixed 'AVM PnP'/'Sedlbauer Speed Fax+ PnP'/'ASUS Com ISDNLink ISA PnP'
 
 2001-10-31  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/genClass.py: more changed tests
+	* src/netconfpkg/genClass.py:
+	more changed tests
 
 2001-10-30  tayninh1  <tayninh1@redhat.com>
 
@@ -225,15 +956,18 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCisdnhardware.py:
 	* allow setting AVM PCI (Fritz!PCI v2) if kernel supports it
 
-	* src/netconfpkg/NCHardwareList.py: * fixed typos
+	* src/netconfpkg/NCHardwareList.py:
+	* fixed typos
 
 2001-10-27  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-10-26  Harald Hoyer  <harald@redhat.com>
 
-	* src/maindialog.glade: CENTER maindialog
+	* src/maindialog.glade:
+	CENTER maindialog
 
 	* src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/edithosts.py:
 	corrected input filter for adresses and hostnames
@@ -265,7 +999,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-10-25  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-10-25  Harald Hoyer  <harald@redhat.com>
 
@@ -278,7 +1013,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* po/no.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/POTFILES.in, redhat-config-network.spec.in:
 	last fixes :)
 
-	* src/netconfpkg/gui/GUI_functions.py: New file.
+	* src/netconfpkg/gui/GUI_functions.py:
+	New file.
 
 	* src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/deviceconfig.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/editadress.py, src/netconfpkg/gui/editdomain.py, src/netconfpkg/gui/edithosts.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/ethernethardware.py, src/netconfpkg/gui/GUI_functions.py, src/netconfpkg/gui/isdnhardware.py, src/netconfpkg/gui/IsdnInterface.py, src/netconfpkg/gui/Makefile.am, src/netconfpkg/gui/modemconfig.py, src/netconfpkg/gui/ModemInterface.py, src/netconfpkg/gui/NC_functions.py, src/netconfpkg/gui/NewInterface.py, src/netconfpkg/gui/providerdb.py, src/netconfpkg/gui/provider.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/tokenringconfig.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/tokenringhardware.py, src/netconfpkg/gui/wirelessconfig.py, src/netconfpkg/Makefile.am, src/netconfpkg/NCProfileList.py, src/netconf.py:
 	resolve NC_functions name conflict
@@ -333,7 +1069,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-10-23  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-10-22  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -359,7 +1096,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-10-19  Harald Hoyer  <harald@redhat.com>
 
-	* redhat-config-network.spec.in: changelog
+	* redhat-config-network.spec.in:
+	changelog
 
 2001-10-18  Harald Hoyer  <harald@redhat.com>
 
@@ -368,9 +1106,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/netconf.py: fixed help URL
 
-	* src/netconfpkg/NC_functions.py: nicer error dialogs
+	* src/netconfpkg/NC_functions.py:
+	nicer error dialogs
 
-	* src/netconf.py: added traceback handling
+	* src/netconf.py:
+	added traceback handling
 
 	* src/netconfpkg/exception.py:
 	added traceback handling.
@@ -394,7 +1134,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-10-16  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* src/netconfpkg/ConfPAP.py:
 	* don't trace back if length of Login name is 2
@@ -402,9 +1143,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* configure.in, redhat-config-network.spec.in:
 	* release 0.9.3
 
-	* src/netconfpkg/DialupDruid.py: * fix #bug 54192
+	* src/netconfpkg/DialupDruid.py:
+	* fix #bug 54192
 
-	* src/providerdb: * update some providers
+	* src/providerdb:
+	* update some providers
 
 2001-10-16  Harald Hoyer  <harald@redhat.com>
 
@@ -454,7 +1197,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-09-12  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* src/netconfpkg/Makefile.am:
 	* add ctcconfig.glade ctcconfig.py
@@ -473,7 +1217,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-09-07  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-09-06  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -487,15 +1232,18 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-09-05  Federico Musto  <federico@redhat.com>
 
-	* po/fr.po: *** empty log message ***
+	* po/fr.po:
+	*** empty log message ***
 
 2001-09-03  leon  <leon@redhat.com>
 
-	* po/ru.po: initial Russian translation
+	* po/ru.po:
+	initial Russian translation
 
 2001-09-03  Than Ngo  <than@redhat.com>
 
-	* po/de.po: * fix wrong Translation again.
+	* po/de.po:
+	* fix wrong Translation again.
 
 	* configure.in, redhat-config-network.spec.in:
 	* release 0.8.3-1
@@ -511,14 +1259,16 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-09-01  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* src/netconfpkg/cipeconfig.py, src/netconfpkg/dialupconfig.py, src/netconfpkg/dslconfig.py, src/netconfpkg/ethernetconfig.py, src/netconfpkg/provider.py, src/netconfpkg/tokenringconfig.py, src/netconfpkg/wirelessconfig.py:
 	* fix traceback bug if self.device.Dialup is None
 
 2001-08-31  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* src/netconf.py:
 	* if hardware is deleted, we have to delete all devices used this hardware
@@ -540,11 +1290,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* po/cs.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ko.po, po/no.po, po/redhat-config-network.pot:
 	refresh-po
 
-	* redhat-config-network.spec.in: 0.8.1-1
+	* redhat-config-network.spec.in:
+	0.8.1-1
 
 	* configure.in: Add Czech.
 
-	* redhat-config-network.spec.in: Fix typos
+	* redhat-config-network.spec.in:
+	Fix typos
 
 2001-08-31  Than Ngo  <than@redhat.com>
 
@@ -563,7 +1315,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-31  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* configure.in, redhat-config-network.spec.in:
 	* fix some bugs
@@ -576,7 +1329,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-31  ra  <ra@redhat.com>
 
-	* po/is.po: Stop changing things already!! :-)
+	* po/is.po:
+	Stop changing things already!! :-)
 
 2001-08-31  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -585,7 +1339,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-31  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-08-31  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -620,7 +1375,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-29  keld  <keld@redhat.com>
 
-	* po/da.po: Comments from Kenneth and Jacob
+	* po/da.po:
+	Comments from Kenneth and Jacob
 	da.po
 
 	* po/da.po: Danish updates
@@ -628,18 +1384,21 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-28  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* po/redhat-config-network.pot: Add charset.
+	* po/redhat-config-network.pot:
+	Add charset.
 
 	* configure.in, redhat-config-network.spec.in:
 	0.7.10
 
 2001-08-28  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCDevice.py: typo again ... sigh
+	* src/netconfpkg/NCDevice.py:
+	typo again ... sigh
 
 2001-08-28  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcfg/ja.po: follow updates.
+	* po/ja.po:
+	netcfg/ja.po: follow updates.
 
 2001-08-28  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -655,7 +1414,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/sv.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/da.po, po/de.po:
 	Add previously untranslated entries, merge.
 
-	* po/POTFILES.in: Add NC_functions.py
+	* po/POTFILES.in:
+	Add NC_functions.py
 
 2001-08-27  Than Ngo  <than@redhat.com>
 
@@ -684,7 +1444,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* doc/index.html: * fix typo
 
-	* src/providerdb: * some fixes in provider database.
+	* src/providerdb:
+	* some fixes in provider database.
 
 	* configure.in, redhat-config-network.spec.in, src/netconfpkg/DeviceList.idl, src/netconfpkg/dialupconfig.py, src/netconfpkg/NCCallback.py, src/netconfpkg/NCCompression.py, src/netconfpkg/NCDialup.py:
 	* Mon Aug 27 2001 Than Ngo <than@redhat.com> 0.7.7-1
@@ -705,7 +1466,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-27  David Joo  <djoo@redhat.com>
 
-	* po/ko.po: ko.po has been updated...
+	* po/ko.po:
+	ko.po has been updated...
 
 2001-08-26  keld  <keld@redhat.com>
 
@@ -714,15 +1476,18 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-26  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcfg/ja.po: follow updates.
+	* po/ja.po:
+	netcfg/ja.po: follow updates.
 
 2001-08-25  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: specspo/ja.po: follow updates.
+	* po/ja.po:
+	specspo/ja.po: follow updates.
 
 2001-08-25  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-08-24  menthos  <menthos@redhat.com>
 
@@ -738,7 +1503,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-24  Bill Nottingham  <notting@redhat.com>
 
-	* src/netconfpkg/EthernetHardwareDruid.py: typo, again
+	* src/netconfpkg/EthernetHardwareDruid.py:
+	typo, again
 
 2001-08-24  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -754,7 +1520,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/netconfpkg/Makefile.am: typo
 
-	* src/netconfpkg/Makefile.am: include the files...
+	* src/netconfpkg/Makefile.am:
+	include the files...
 
 	* po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/sv.po, redhat-config-network.spec.in, src/glade-strings.c:
 	add %changelog
@@ -788,7 +1555,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-23  Yukihiro Nakai  <ynakai@redhat.com>
 
-	* internet-druid.desktop: Translation fix.
+	* internet-druid.desktop:
+	Translation fix.
 
 2001-08-23  ra  <ra@redhat.com>
 
@@ -809,7 +1577,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-23  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcfg/ja.po: follow updates.
+	* po/ja.po:
+	netcfg/ja.po: follow updates.
 
 2001-08-23  menthos  <menthos@redhat.com>
 
@@ -823,11 +1592,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/sv.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po:
 	Add space i ADSL description (#52345)
 
-	* src/netconfpkg/ADSLInterface.py: Add space (#52345)
+	* src/netconfpkg/ADSLInterface.py:
+	Add space (#52345)
 
 2001-08-22  Yukihiro Nakai  <ynakai@redhat.com>
 
-	* internet-druid.desktop: Small fix
+	* internet-druid.desktop:
+	Small fix
 
 2001-08-22  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -839,11 +1610,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-21  ra  <ra@redhat.com>
 
-	* po/is.po: fuzzies in netcfg/is.po
+	* po/is.po:
+	fuzzies in netcfg/is.po
 
 2001-08-21  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-08-21  Satoru Sato  <ssato@redhat.com>
 
@@ -893,7 +1666,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-17  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* redhat-config-network.spec.in: ASDL -> ADSL
+	* redhat-config-network.spec.in:
+	ASDL -> ADSL
 
 	* src/netconfpkg/dslconfig.glade:
 	Improve sync-PPP tooltip, don't use quotes as glade is broken (# 51644)
@@ -905,7 +1679,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-17  ra  <ra@redhat.com>
 
-	* po/is.po: still working on netcfg/is.po
+	* po/is.po:
+	still working on netcfg/is.po
 
 	* po/is.po: More work netcfg
 
@@ -920,11 +1695,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-17  ra  <ra@redhat.com>
 
-	* po/is.po: More work on netcfg/is.po
+	* po/is.po:
+	More work on netcfg/is.po
 
 2001-08-17  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcfg/ja.po: follow updates.
+	* po/ja.po:
+	netcfg/ja.po: follow updates.
 
 2001-08-17  ra  <ra@redhat.com>
 
@@ -932,7 +1709,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-17  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: specspo/ja.po: follow updates.
+	* po/ja.po:
+	specspo/ja.po: follow updates.
 
 2001-08-16  menthos  <menthos@redhat.com>
 
@@ -943,22 +1721,26 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-16  ra  <ra@redhat.com>
 
-	* po/is.po: some work on netcfg/is.po
+	* po/is.po:
+	some work on netcfg/is.po
 
 2001-08-16  Harald Hoyer  <harald@redhat.com>
 
-	* src/glade-strings.c: more translation strings
+	* src/glade-strings.c:
+	more translation strings
 
 	* redhat-config-network.spec.in:
 	BuildRequires: libglade-devel
 
 2001-08-16  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-08-16  ra  <ra@redhat.com>
 
-	* po/is.po: new netcfg for Icelandic
+	* po/is.po:
+	new netcfg for Icelandic
 
 2001-08-16  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -971,14 +1753,17 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-16  Harald Hoyer  <harald@redhat.com>
 
-	* po/de.po: Es gibt kein Pruefschleifengeraet
+	* po/de.po:
+	Es gibt kein Pruefschleifengeraet
 
 	* po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/sv.po, po/de.po, po/es.po, po/fr.po:
 	more strings and better english grammar with '.' and ','
 
-	* src/glade-strings.c: better grammar and english
+	* src/glade-strings.c:
+	better grammar and english
 
-	* src/netconf.py: better i18n strings for po
+	* src/netconf.py:
+	better i18n strings for po
 
 	* src/netconfpkg/ADSLInterfaceDruid.glade, src/netconfpkg/dialupconfig.glade, src/netconfpkg/DialupDruid.glade, src/netconfpkg/dslconfig.glade, src/netconfpkg/tcpipdialog.glade, src/netconfpkg/wirelessconfig.glade:
 	better grammar and english
@@ -992,7 +1777,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/wirelessconfig.py:
 	fill in modeCombo with non-translated strings
 
-	* src/netconfpkg/wirelessconfig.glade: modeCombo named
+	* src/netconfpkg/wirelessconfig.glade:
+	modeCombo named
 
 2001-08-16  Than Ngo  <than@redhat.com>
 
@@ -1042,7 +1828,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* po/no.po, po/redhat-config-network.pot, po/de.po, po/es.po, po/fr.po, po/it.po, po/ja.po, po/ko.po:
 	Update po-file, do update-po
 
-	* configure.in: Add ko and sv to the language list
+	* configure.in:
+	Add ko and sv to the language list
 
 	* po/es.po, po/fr.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/redhat-config-network.pot, po/sv.po, src/glade-strings.c, src/netconfpkg/ADSLInterfaceDruid.glade, src/netconfpkg/dialupconfig.glade, src/netconfpkg/DialupDruid.glade, src/netconfpkg/dslconfig.glade, po/de.po:
 	usualy -> usually (#51722)
@@ -1081,7 +1868,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/maindialog.glade, src/netconf.py:
 	Disable traces of profiles...
 
-	* src/netconf.py: Make profile widgets invisible.
+	* src/netconf.py:
+	Make profile widgets invisible.
 
 2001-08-14  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -1102,7 +1890,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-14  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-08-14  Than Ngo  <than@redhat.com>
 
@@ -1138,7 +1927,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-11  redhat4u  <redhat4u@redhat.com>
 
-	* po/ko.po: *** empty log message ***
+	* po/ko.po:
+	*** empty log message ***
 
 2001-08-10  Yukihiro Nakai  <ynakai@redhat.com>
 
@@ -1151,7 +1941,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-10  Than Ngo  <than@redhat.com>
 
-	* src/providerdb: * change pap format
+	* src/providerdb:
+	* change pap format
 
 	* src/netconfpkg/ConfPAP.py:
 	* use * instead device name otherwise it breaks by isdn connection
@@ -1165,22 +1956,26 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* configure.in, redhat-config-network.spec.in:
 	* updape
 
-	* src/netconf.py: * fix dns down/up callback
+	* src/netconf.py:
+	* fix dns down/up callback
 
 	* src/providerdb: * some bug fixes
 
 	* src/netconfpkg/isdnhardware.py, src/netconfpkg/modemconfig.py:
 	* add missing button attribute
 
-	* src/netconfpkg/dialupconfig.py: * fixes pap/chap
+	* src/netconfpkg/dialupconfig.py:
+	* fixes pap/chap
 
 2001-08-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconf.py: - more gettext strings
+	* src/netconf.py:
+	- more gettext strings
 	- more profile name checks
 	- profile rename
 
-	* src/maindialog.glade: added Profile Rename
+	* src/maindialog.glade:
+	added Profile Rename
 
 	* src/netconf.py:
 	for profile add, copy the 'default' profile
@@ -1191,18 +1986,21 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-10  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* redhat-config-network.spec.in: doh
+	* redhat-config-network.spec.in:
+	doh
 
 	* configure.in, redhat-config-network.spec.in:
 	0.7.1-1
 
 2001-08-09  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcft/ja.po: follow updates.
+	* po/ja.po:
+	netcft/ja.po: follow updates.
 
 2001-08-09  Harald Hoyer  <harald@redhat.com>
 
-	* src/maindialog.glade: put profiles on top
+	* src/maindialog.glade:
+	put profiles on top
 
 2001-08-09  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -1212,9 +2010,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-09  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconf.py: fixed 'default' handling
+	* src/netconf.py:
+	fixed 'default' handling
 
-	* src/netconf.py: fixed deleteProfile
+	* src/netconf.py:
+	fixed deleteProfile
 
 	* src/maindialog.glade, src/netconf.py:
 	new profile handling
@@ -1245,7 +2045,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	configure.in: nothign
 	po/Makefile.in.in: $(srcdir) added for $ make dist
 
-	* acinclude.m4: included glib-gettext.m4
+	* acinclude.m4:
+	included glib-gettext.m4
 
 2001-08-09  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -1255,9 +2056,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-09  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconf.py: removed fixInterface() call
+	* src/netconf.py:
+	removed fixInterface() call
 
-	* src/netconfpkg/genClass.py: fixed test() functions
+	* src/netconfpkg/genClass.py:
+	fixed test() functions
 
 	* src/netconfpkg/NC_functions.py:
 	added class TestError(Exception)
@@ -1301,11 +2104,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-09  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcfg/ja.po: follow updates.
+	* po/ja.po:
+	netcfg/ja.po: follow updates.
 
 2001-08-08  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* doc/index.html: - fix my email address
+	* doc/index.html:
+	- fix my email address
 	- s/RedHat/Red Hat/g
 
 	* configure.in, redhat-config-network.spec.in:
@@ -1336,7 +2141,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/maindialog.glade, src/netconfpkg/cipeconfig.glade, src/netconfpkg/dialupconfig.glade, src/netconfpkg/dslconfig.glade, src/netconfpkg/ethernetconfig.glade, src/netconfpkg/wirelessconfig.glade:
 	Device Name -> Nickname
 
-	* src/netconfpkg/NCDevice.py: string.lower BootProto
+	* src/netconfpkg/NCDevice.py:
+	string.lower BootProto
 
 2001-08-08  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -1390,7 +2196,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-07  Satoru Sato  <ssato@redhat.com>
 
-	* po/ja.po: netcfg/ja.po: complete trans.
+	* po/ja.po:
+	netcfg/ja.po: complete trans.
 
 2001-08-07  kmaraas  <kmaraas@redhat.com>
 
@@ -1407,20 +2214,24 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* redhat-config-network.spec.in, configure.in:
 	0.6.6
 
-	* src/netconf.py: Disable visible profile code.
+	* src/netconf.py:
+	Disable visible profile code.
 
 2001-08-06  Trond Eivind Glomsrod  <teg@redhat.com>
 
 	* src/netconfpkg/Makefile.am:
 	Add PasswordCrypt from pythonlib
 
-	* src/netconfpkg/PasswordCrypt.py: pythonlib is dead...
+	* src/netconfpkg/PasswordCrypt.py:
+	pythonlib is dead...
 
 	* src/netconf.py: Doh
 
-	* src/netconf.py: Make it find Conf
+	* src/netconf.py:
+	Make it find Conf
 
-	* src/Makefile.am: Fix wildcard usage.
+	* src/Makefile.am:
+	Fix wildcard usage.
 
 	* configure.in, redhat-config-network.spec.in:
 	0.6.5-1
@@ -1434,9 +2245,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-06  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/netconfpkg/Makefile.am: Add Conf.py
+	* src/netconfpkg/Makefile.am:
+	Add Conf.py
 
-	* src/netconfpkg/Conf.py: pythonlib seems dead...
+	* src/netconfpkg/Conf.py:
+	pythonlib seems dead...
 
 2001-08-06  Than Ngo  <than@redhat.com>
 
@@ -1449,7 +2262,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-05  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * update
+	* redhat-config-network.spec.in:
+	* update
 
 	* src/netconfpkg/ConfSMB.py, src/netconfpkg/NCDeviceList.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NCDialup.py:
 	* clean up wvdial.conf by saving (bug #50740)
@@ -1461,7 +2275,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-03  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec.in: * fix changelog
+	* redhat-config-network.spec.in:
+	* fix changelog
 
 	* config.h.in: * config.h.in
 
@@ -1483,11 +2298,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-08-02  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/maindialog.glade: Various cleanups from jrb
+	* src/maindialog.glade:
+	Various cleanups from jrb
 
 2001-08-02  tayninh1  <tayninh1@redhat.com>
 
-	* src/netconfpkg/NCDialup.py: * fix LINESPEED bug
+	* src/netconfpkg/NCDialup.py:
+	* fix LINESPEED bug
 
 2001-08-02  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -1513,13 +2330,15 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* configure.in: Update to 0.6.3
 
-	* redhat-config-network.spec.in: POTFILES.in update.
+	* redhat-config-network.spec.in:
+	POTFILES.in update.
 	Add Japanese translation.
 
 	* po/es.po, po/fr.po, po/it.po, po/no.po, po/de.po:
 	Update.
 
-	* po/redhat-config-network.pot: Update .pot files.
+	* po/redhat-config-network.pot:
+	Update .pot files.
 
 	* autogen.sh: Do aclocal twice.
 
@@ -1528,9 +2347,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* autogen.sh, configure.in, glib-gettext.m4:
 	Stop to copy po/Makefile.in.in
 
-	* autogen.sh: Stop to override po/Makefile.in.in
+	* autogen.sh:
+	Stop to override po/Makefile.in.in
 
-	* po/redhat-config-network.pot: Update.
+	* po/redhat-config-network.pot:
+	Update.
 
 	* src/netconfpkg/ADSLInterface.py:
 	Add domain name for gettext
@@ -1538,7 +2359,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NewInterface.py:
 	Add NC_functions import
 
-	* src/netconfpkg/ModemInterface.py: Update.
+	* src/netconfpkg/ModemInterface.py:
+	Update.
 
 	* src/netconfpkg/DialupDruid.py, src/netconfpkg/IsdnInterface.py, src/netconfpkg/NewInterface.py:
 	Add domain for gettext.
@@ -1550,29 +2372,37 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* po/POTFILES.in: Update.
 
-	* po/ja.po: Update Japanese translation.
+	* po/ja.po:
+	Update Japanese translation.
 
-	* po/redhat-config-network.pot: Update.
+	* po/redhat-config-network.pot:
+	Update.
 
-	* po/ja.po: Update Japanese translation.
+	* po/ja.po:
+	Update Japanese translation.
 
 	* po/.cvsignore: Add .cvsignore
 
 	* src/glade-strings.c: Update .
 
-	* po/ja.po: Update COPYRIGHT notice.
+	* po/ja.po:
+	Update COPYRIGHT notice.
 
 	* po/ja.po: Small update.
 
 2001-08-01  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/netconfpkg/Makefile.am: := -> =
+	* src/netconfpkg/Makefile.am:
+	:= -> =
 
-	* src/Makefile.am: Less wildcards...
+	* src/Makefile.am:
+	Less wildcards...
 
-	* src/Makefile.am: Make sure glade-text.c is included
+	* src/Makefile.am:
+	Make sure glade-text.c is included
 
-	* redhat-config-network.spec.in: 0.6.2
+	* redhat-config-network.spec.in:
+	0.6.2
 
 	* po/ChangeLog: Added...
 
@@ -1581,7 +2411,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* po/de.po, po/es.po, po/fr.po, po/it.po, po/ja.po, po/no.po, po/redhat-config-network.pot:
 	update
 
-	* configure.in: Add support for Japanese
+	* configure.in:
+	Add support for Japanese
 
 	* redhat-config-network.spec.in, configure.in:
 	0.6.2
@@ -1595,20 +2426,26 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-31  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/netconf.py: Don't hang when running -cmd
+	* src/netconf.py:
+	Don't hang when running -cmd
 
 2001-07-30  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCCipe.py: fixed #50327
+	* src/netconfpkg/NCCipe.py:
+	fixed #50327
 
-	* src/netconfpkg/NCDialup.py: added MODEMPORT to Modem
+	* src/netconfpkg/NCDialup.py:
+	added MODEMPORT to Modem
 	PAP/CHAP is now handled by NCDeviceList.py
 
-	* src/netconfpkg/NCDeviceList.py: handle PAP/CHAP
+	* src/netconfpkg/NCDeviceList.py:
+	handle PAP/CHAP
 
-	* src/netconfpkg/Makefile.am: ConfPAP.py added
+	* src/netconfpkg/Makefile.am:
+	ConfPAP.py added
 
-	* src/netconfpkg/ConfPAP.py: initial version
+	* src/netconfpkg/ConfPAP.py:
+	initial version
 
 	* src/netconfpkg/ethernetconfig.glade:
 	fixed typo in HWAdress Probe Button
@@ -1679,7 +2516,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* configure.in:
 	create redhat-config-network.spec from redhat-config-network.spec.in
 
-	* redhat-config-network.spec.in: initial version
+	* redhat-config-network.spec.in:
+	initial version
 
 2001-07-24  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -1688,29 +2526,36 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-24  Harald Hoyer  <harald@redhat.com>
 
-	* Makefile.am: fixed kontrol-panel icons1dir
+	* Makefile.am:
+	fixed kontrol-panel icons1dir
 
 	* neat.console: sorry
 
-	* Makefile.am: some make distcheck cleanups
+	* Makefile.am:
+	some make distcheck cleanups
 
 2001-07-24  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/netconfpkg/Makefile.am: Add missing files...
+	* src/netconfpkg/Makefile.am:
+	Add missing files...
 
 2001-07-24  Harald Hoyer  <harald@redhat.com>
 
 	* autogen.sh: added autoheader
 
-	* configure.in: added config.h to AC_OUTPUT
+	* configure.in:
+	added config.h to AC_OUTPUT
 
 	* config.h.in: initial version
 
-	* src/Makefile.am: check-local -> pycheck
+	* src/Makefile.am:
+	check-local -> pycheck
 
-	* Makefile.am: some cleanups ! GRRRR
+	* Makefile.am:
+	some cleanups ! GRRRR
 
-	* configure.in: added config.h to AC_OUTPUT
+	* configure.in:
+	added config.h to AC_OUTPUT
 
 2001-07-24  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -1731,7 +2576,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-24  Phil Knirsch  <pknirsch@redhat.com>
 
-	* src/Makefile.am: - Fixed missing rm for druid.
+	* src/Makefile.am:
+	- Fixed missing rm for druid.
 
 2001-07-24  Harald Hoyer  <harald@redhat.com>
 
@@ -1743,9 +2589,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-24  tayninh1  <tayninh1@redhat.com>
 
-	* src/Makefile.am: * internet-druid
+	* src/Makefile.am:
+	* internet-druid
 
-	* redhat-config-network.spec: * add internet-druid
+	* redhat-config-network.spec:
+	* add internet-druid
 
 	* src/netconfpkg/ADSLInterface.py, src/netconfpkg/IsdnInterface.py, src/netconfpkg/ModemInterface.py, po/redhat-config-network.pot, src/netconf.py, internet-druid.console, internet-druid.desktop, Makefile.am:
 	* fix description - ADSLInterface.py, IsdnInterface.py, ModemInterface.py
@@ -1801,12 +2649,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NewInterface.py:
 	* remove unused Cablemodem Interface
 
-	* src/netconf.py: * add support wizard
+	* src/netconf.py:
+	* add support wizard
 
 	* src/netconfpkg/CipeInterface.py:
 	* add Cipe interface schablone
 
-	* src/netconfpkg/CipeInterface.py: New file.
+	* src/netconfpkg/CipeInterface.py:
+	New file.
 
 	* src/netconfpkg/ADSLInterface.py, src/netconfpkg/DialupDruid.py, src/netconfpkg/EthernetHardwareDruid.py, src/netconfpkg/EthernetInterface.py, src/netconfpkg/IsdnInterface.py, src/netconfpkg/modemconfig.py, src/netconfpkg/ModemInterface.py, src/netconfpkg/NC_functions.py, src/netconfpkg/NewInterface.py, src/netconfpkg/providerdb.py, src/netconfpkg/WirelessInterface.py:
 	* Implement wizard for adding device ISDN/xDSL/Modem
@@ -1833,15 +2683,20 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-19  tayninh1  <tayninh1@redhat.com>
 
-	* src/netconfpkg/deviceconfig.py: * fix commit again
+	* src/netconfpkg/deviceconfig.py:
+	* fix commit again
 
-	* src/netconfpkg/tcpdialog.py: * fix static routes
+	* src/netconfpkg/tcpdialog.py:
+	* fix static routes
 
-	* src/netconfpkg/dialupconfig.py: * clean codes
+	* src/netconfpkg/dialupconfig.py:
+	* clean codes
 
-	* src/netconfpkg/dialupconfig.glade: * fix widget name
+	* src/netconfpkg/dialupconfig.glade:
+	* fix widget name
 
-	* src/netconfpkg/deviceconfig.py: * add commit
+	* src/netconfpkg/deviceconfig.py:
+	* add commit
 
 2001-07-19  Harald Hoyer  <harald@redhat.com>
 
@@ -1920,7 +2775,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-17  Phil Knirsch  <pknirsch@redhat.com>
 
-	* src/netconf.py: - Added profile renaming.
+	* src/netconf.py:
+	- Added profile renaming.
 
 2001-07-17  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -1929,11 +2785,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-17  Harald Hoyer  <harald@redhat.com>
 
-	* src/Makefile.am: corrected providerdir
+	* src/Makefile.am:
+	corrected providerdir
 
 2001-07-17  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* po/redhat-config-network.pot: Updated...
+	* po/redhat-config-network.pot:
+	Updated...
 
 	* po/de.po, po/es.po, po/fr.po, po/it.po, po/no.po:
 	Added test strings.
@@ -1972,7 +2830,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/wirelessconfig.glade, src/netconfpkg/wirelessconfig.py:
 	removed alias from wireless hardware
 
-	* src/netconfpkg/Makefile.am: added Wireless files
+	* src/netconfpkg/Makefile.am:
+	added Wireless files
 
 	* src/netconfpkg/wirelessconfig.glade:
 	added key and more combo parameters
@@ -1997,9 +2856,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/wirelessconfig.glade:
 	new protocol style added
 
-	* src/netconfpkg/NCDevice.py: added createWireless
+	* src/netconfpkg/NCDevice.py:
+	added createWireless
 
-	* src/netconfpkg/NCCipe.py: minor 'None' checks
+	* src/netconfpkg/NCCipe.py:
+	minor 'None' checks
 
 	* src/netconfpkg/DeviceList.idl, src/netconf.py:
 	added Wireless
@@ -2024,23 +2885,28 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/Makefile.am:
 	Don't mark netconf.py as a data file, it gets installed twice (second time with 644 permissions)
 
-	* src/Makefile.am: Fix directory names
+	* src/Makefile.am:
+	Fix directory names
 
 	* redhat-config-network.spec:
 	Move %find_lang to correct location in spec file
 
-	* redhat-config-network.spec: Disable make check
+	* redhat-config-network.spec:
+	Disable make check
 
 	* configure.in, redhat-config-network.spec:
 	Add more i18n
 
-	* po/no.po: Add some Norwegian strings
+	* po/no.po:
+	Add some Norwegian strings
 
 2001-07-16  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/Makefile.am: added NCCipe.py
+	* src/netconfpkg/Makefile.am:
+	added NCCipe.py
 
-	* src/netconfpkg/NCCipe.py: initial version
+	* src/netconfpkg/NCCipe.py:
+	initial version
 
 2001-07-16  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -2052,9 +2918,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-16  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NC_functions.py: true and false added
+	* src/netconfpkg/NC_functions.py:
+	true and false added
 
-	* src/netconfpkg/NCDialup.py: better import
+	* src/netconfpkg/NCDialup.py:
+	better import
 
 	* src/netconfpkg/NCDevice.py, src/netconfpkg/DeviceList.idl, src/netconf.py:
 	added CIPE
@@ -2070,16 +2938,19 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	renaming
 	new remote peer port entry
 
-	* src/netconfpkg/cipeconfig.py: initial version
+	* src/netconfpkg/cipeconfig.py:
+	initial version
 
 2001-07-16  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/glade-strings.c: First build.
+	* src/glade-strings.c:
+	First build.
 
 	* src/Makefile.am:
 	Create glade-strings.c with the strings from glade files
 
-	* src/netconf.py: Mark a string as translateable...
+	* src/netconf.py:
+	Mark a string as translateable...
 
 2001-07-16  Than Ngo  <than@redhat.com>
 
@@ -2095,7 +2966,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-16  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/cipeconfig.py: initial version
+	* src/netconfpkg/cipeconfig.py:
+	initial version
 
 	* src/netconfpkg/NC_functions.py:
 	correct cipe device name
@@ -2103,7 +2975,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/devicetype.py:
 	init device types from global list without Loopback
 
-	* src/netconfpkg/Makefile.am: added cipeconfig.py
+	* src/netconfpkg/Makefile.am:
+	added cipeconfig.py
 
 	* src/netconfpkg/NC_functions.py:
 	added CIPE and Wireless deviceTypeDict and deviceTypes entries
@@ -2124,7 +2997,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/dialupconfig.glade:
 	renamed some compression CBs
 
-	* src/netconfpkg/DeviceList.idl: added StupidMode
+	* src/netconfpkg/DeviceList.idl:
+	added StupidMode
 
 	* src/netconfpkg/dialupconfig.py:
 	added StupidMode to Modem
@@ -2136,6 +3010,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/netconfpkg/deviceconfig.py, src/netconfpkg/dialupconfig.glade, src/netconfpkg/dialupconfig.py, src/netconfpkg/dslconfig.py, src/netconfpkg/NCDeviceList.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NCDialup.py, src/netconfpkg/tcpdialog.py:
 	* many fixes
+
+2001-07-13  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* mockup/.cvsignore:
+	Removing mockup
 
 2001-07-13  Than Ngo  <than@redhat.com>
 
@@ -2150,9 +3029,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-12  Harald Hoyer  <harald@redhat.com>
 
-	* src/Makefile.am: make correct symbolic links ;-)
+	* src/Makefile.am:
+	make correct symbolic links ;-)
 
-	* src/Makefile.am: added providerdb to EXTRA_DIST
+	* src/Makefile.am:
+	added providerdb to EXTRA_DIST
 
 	* src/Address.py, src/ADSLInterface.py, src/ATMInterface.py, src/CableInterface.py, src/ConfiguredDevice.py, src/Device.py, src/dialup.glade, src/DialupInterface.py, src/EthernetDevice.py, src/EthernetInterface.py, src/FirewallDruid.py, src/firewall-druids.glade, src/InterfaceCreator.py, src/mainwindow.glade, src/MainWindow.py, src/Makefile.am, src/netconfpkg/Makefile.am, src/netiface.py, src/new_interface_druid.glade, src/NewInterface.py, src/Resolver.py, src/WirelessInterface.py, src/netconfpkg/basicdialog.glade, src/netconfpkg/basicdialog.py, src/netconfpkg/CheckList.py:
 	clean up unused files
@@ -2180,7 +3061,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/ethernetconfig.py:
 	set position of deviceEntry to 0 in any way
 
-	* src/netconfpkg/ethernetconfig.glade: dunno
+	* src/netconfpkg/ethernetconfig.glade:
+	dunno
 
 	* src/netconfpkg/dslconfig.py:
 	changed to use deviceConfigDialog
@@ -2202,12 +3084,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-12  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/Makefile.am: added more files
+	* src/netconfpkg/Makefile.am:
+	added more files
 
 	* src/netconfpkg/ethernetconfig.glade, src/netconfpkg/dialupconfig.glade:
 	protcolList -> protocolList
 
-	* src/netconfpkg/deviceconfig.py: added tcpipdialog
+	* src/netconfpkg/deviceconfig.py:
+	added tcpipdialog
 	added deviceName checks from basicdialog
 
 	* src/netconf.py:
@@ -2216,7 +3100,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/tcpdialog.py:
 	copied from basicdialog and stripped down to tcp/ip options only
 
-	* src/netconfpkg/tcpdialog.py: New file.
+	* src/netconfpkg/tcpdialog.py:
+	New file.
 
 2001-07-12  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -2226,44 +3111,54 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-12  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/ethernetconfig.py: corrected import
+	* src/netconfpkg/ethernetconfig.py:
+	corrected import
 
 	* src/netconfpkg/ethernetconfig.glade:
 	named the device specific widgets
 
-	* src/netconfpkg/dialupconfig.py: corrected import
+	* src/netconfpkg/dialupconfig.py:
+	corrected import
 	added call to base class hydration/dehydration
 	better tab hiding for isdn and modem
 
 	* src/netconfpkg/dialupconfig.glade:
 	named the isdn and modem tabs
 
-	* src/netconfpkg/deviceconfig.py: added dehydration
+	* src/netconfpkg/deviceconfig.py:
+	added dehydration
 	better bool <-> checkbox hydration
 
 2001-07-12  Than Ngo  <than@redhat.com>
 
-	* src/netconf.py: implement new protocol
+	* src/netconf.py:
+	implement new protocol
 
 2001-07-12  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/deviceconfig.py: initial version
+	* src/netconfpkg/deviceconfig.py:
+	initial version
 
-	* src/netconfpkg/deviceconfig.py: New file.
+	* src/netconfpkg/deviceconfig.py:
+	New file.
 
 	* src/netconfpkg/ethernetconfig.py, src/netconfpkg/dialupconfig.py:
 	changed to use deviceConfigDialog
 
-	* src/netconfpkg/tcpipdialog.glade: initial version
+	* src/netconfpkg/tcpipdialog.glade:
+	initial version
 
-	* src/netconfpkg/tcpipdialog.glade: New file.
+	* src/netconfpkg/tcpipdialog.glade:
+	New file.
 
 	* src/netconfpkg/dialupconfig.glade, src/netconfpkg/ethernetconfig.glade:
 	New Protocol Style
 
-	* src/netconfpkg/NCDeviceList.py: unlink -> os.unlink
+	* src/netconfpkg/NCDeviceList.py:
+	unlink -> os.unlink
 
-	* src/netconfpkg/devicetype.py: initial version
+	* src/netconfpkg/devicetype.py:
+	initial version
 
 2001-07-11  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -2273,12 +3168,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* redhat-config-network.spec:
 	Don't mark the KDE desktop file as a config file
 
-	* redhat-config-network.spec: Fix typos
+	* redhat-config-network.spec:
+	Fix typos
 
 	* Makefile.am, redhat-config-network.spec, src/pixmaps/Makefile.am:
 	Fixes to the build process
 
-	* src/netconfpkg/Makefile.am: Remove extra backslash
+	* src/netconfpkg/Makefile.am:
+	Remove extra backslash
 
 	* src/netconfpkg/Makefile.am:
 	Can't find any devicetype.py file here, removing it from the makefile for now
@@ -2289,16 +3186,19 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* Makefile.am:
 	Add neat.desktop to the directory for system configuration tools
 
-	* neat.desktop: Add Norwegian translation
+	* neat.desktop:
+	Add Norwegian translation
 
 2001-07-11  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/Makefile.am: more dependencies
+	* src/netconfpkg/Makefile.am:
+	more dependencies
 
 	* src/netconfpkg/genClass.py:
 	commit and rollback for childlists
 
-	* src/netconfpkg/NCDeviceList.py: changed TRUE -> true
+	* src/netconfpkg/NCDeviceList.py:
+	changed TRUE -> true
 
 	* src/netconfpkg/ethernetconfig.py:
 	cosmetic changes to device combo box
@@ -2318,13 +3218,16 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/basicdialog.glade:
 	removed deviceType combo box
 
-	* src/netconfpkg/devicetype.glade: initial dialog
+	* src/netconfpkg/devicetype.glade:
+	initial dialog
 
-	* src/netconf.py: added deviceType dialog
+	* src/netconf.py:
+	added deviceType dialog
 
 2001-07-11  Than Ngo  <than@redhat.com>
 
-	* redhat-config-network.spec: * requires alchemist
+	* redhat-config-network.spec:
+	* requires alchemist
 
 	* configure.in, Makefile.am, neat.console, neat.desktop, neat.pam, redhat-config-network.spec, src/pixmaps/neat.png:
 	- obsolete isdn-config internet-config
@@ -2368,7 +3271,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/basicdialog.py: added DSL
+	* src/netconfpkg/basicdialog.py:
+	added DSL
 
 2001-07-10  Than Ngo  <than@redhat.com>
 
@@ -2377,16 +3281,19 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Phil Knirsch  <pknirsch@redhat.com>
 
-	* src/netconfpkg/NCDevice.py: - Forgot to import math
+	* src/netconfpkg/NCDevice.py:
+	- Forgot to import math
 
 	* src/netconfpkg/basicdialog.py, src/netconfpkg/dialupconfig.py, src/netconfpkg/NCDevice.py:
 	- More work on static routes for devices.
 
 2001-07-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/Makefile.am: added NCisdnhardware.py
+	* src/netconfpkg/Makefile.am:
+	added NCisdnhardware.py
 
-	* src/netconfpkg/ethernetconfig.py: cleaned up a bit
+	* src/netconfpkg/ethernetconfig.py:
+	cleaned up a bit
 	set correct device
 
 	* src/netconfpkg/dslconfig.py:
@@ -2400,7 +3307,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/netconf.py: More renaming changes
+	* src/netconf.py:
+	More renaming changes
 
 	* configure.in, redhat-config-network.spec:
 	0.2.2
@@ -2419,7 +3327,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCDevice.py: chmod ifcfg to 0600
+	* src/netconfpkg/NCDevice.py:
+	chmod ifcfg to 0600
 
 2001-07-10  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -2428,11 +3337,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCDialup.py: fixed DSL options
+	* src/netconfpkg/NCDialup.py:
+	fixed DSL options
 
-	* src/netconfpkg/NCDevice.py: added DSL Dialup type
+	* src/netconfpkg/NCDevice.py:
+	added DSL Dialup type
 
-	* src/netconfpkg/DeviceList.idl: added DSL Options
+	* src/netconfpkg/DeviceList.idl:
+	added DSL Options
 
 2001-07-10  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -2441,7 +3353,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCDialup.py: added DSLDialup
+	* src/netconfpkg/NCDialup.py:
+	added DSLDialup
 
 	* src/netconfpkg/NCDialup.py:
 	added PPPOPTIONS to ModemDialup
@@ -2469,7 +3382,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/Makefile.am:
 	removed EXTRA_DIST from than
 
-	* src/netconfpkg/NCDialup.py: added PPPOPTIONS
+	* src/netconfpkg/NCDialup.py:
+	added PPPOPTIONS
 
 2001-07-10  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -2478,13 +3392,16 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-10  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/Makefile.am: added NCCallback
+	* src/netconfpkg/Makefile.am:
+	added NCCallback
 
-	* src/netconfpkg/NCCallback.py: initial version
+	* src/netconfpkg/NCCallback.py:
+	initial version
 
 2001-07-10  Than Ngo  <than@redhat.com>
 
-	* src/netconfpkg/Makefile.am: * fix
+	* src/netconfpkg/Makefile.am:
+	* fix
 
 2001-07-10  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -2576,9 +3493,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-07-06  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* netconf.spec: Require a recent version of initscripts
+	* netconf.spec:
+	Require a recent version of initscripts
 
-	* netconf.spec: Make the package noarch
+	* netconf.spec:
+	Make the package noarch
 
 	* src/netconf.py:
 	Don't look for pixmaps in a relative location.
@@ -2586,7 +3505,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/pixmaps/Makefile.am:
 	Pixmaps in separate directory
 
-	* src/Makefile.am: Fix location of glade files
+	* src/Makefile.am:
+	Fix location of glade files
 
 	* src/Makefile.am:
 	Install these glade files as well as the rest
@@ -2645,7 +3565,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* remove duplicate updateDialog in ethernethardware.py
 	* hardware selection works
 
-	* src/netconfpkg/NCisdnhardware.py: * add ISDNResource
+	* src/netconfpkg/NCisdnhardware.py:
+	* add ISDNResource
 
 2001-07-04  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -2670,7 +3591,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/maindialog.glade:
 	- Profiles don't have a Edit button but a Rename button.
 
-	* src/netconfpkg/ethernetconfig.py: - Tiny code cleanup
+	* src/netconfpkg/ethernetconfig.py:
+	- Tiny code cleanup
 
 	* src/netconfpkg/__init__.py:
 	- Excluded the genClass.py to be imported during netconfpkg importing.
@@ -2682,7 +3604,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	- Implemented the profile switching function. Takes a profile name as argument
 	  and switches to that.
 
-	* src/netconfpkg/NCHardwareList.py: - Tiny code cleanup
+	* src/netconfpkg/NCHardwareList.py:
+	- Tiny code cleanup
 
 	* src/netconf.py:
 	- Switch from setup/digest nameing to apacheconf conform hydrate/dehydrate for
@@ -2778,7 +3701,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* netconf.spec: Add the files...
 
-	* src/Makefile.am: More destdir fixes
+	* src/Makefile.am:
+	More destdir fixes
 
 	* netconf.spec: Add a specfile...
 
@@ -2826,16 +3750,19 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCDevice.py, src/netconfpkg/NC_functions.py:
 	- renamed Isdn to ISDN
 
-	* src/netconfpkg/NC_functions.py: ok, readded
+	* src/netconfpkg/NC_functions.py:
+	ok, readded
 	import gnome
 	import gnome.ui
 
-	* src/netconfpkg/NC_functions.py: removed:
+	* src/netconfpkg/NC_functions.py:
+	removed:
 		import gnome
 		import gnome.ui
 	cause it got loaded way too much
 
-	* src/netconfpkg/NCDialup.py: DNS1 -> PrimaryDNS
+	* src/netconfpkg/NCDialup.py:
+	DNS1 -> PrimaryDNS
 	DNS2 -> SecondaryDNS
 	pass parentConf to child load()/save()
 
@@ -2846,7 +3773,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-22  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCDevice.py: - removed debugging print
+	* src/netconfpkg/NCDevice.py:
+	- removed debugging print
 
 	* src/netconfpkg/NCDevice.py:
 	- retest unknown device type
@@ -2857,11 +3785,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCDevice.py:
 	- changes for ISDN in createDialup()
 
-	* src/netconfpkg/DeviceList.idl: changes for ISDN
+	* src/netconfpkg/DeviceList.idl:
+	changes for ISDN
 
-	* src/netconfpkg/NCDialup.py: - class IsdnDialup added
+	* src/netconfpkg/NCDialup.py:
+	- class IsdnDialup added
 
-	* src/netconfpkg/NCCompression.py: initial version
+	* src/netconfpkg/NCCompression.py:
+	initial version
 
 2001-06-22  Than Ngo  <than@redhat.com>
 
@@ -2870,18 +3801,22 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-22  Harald Hoyer  <harald@redhat.com>
 
-	* configure.in: check for alchemist 0.16
+	* configure.in:
+	check for alchemist 0.16
 
-	* acinclude.m4: check for emtpy release
+	* acinclude.m4:
+	check for emtpy release
 
-	* acinclude.m4: minor simplification
+	* acinclude.m4:
+	minor simplification
 
 	* acinclude.m4, configure.in:
 	added alchemist rpm check
 
 2001-06-21  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/basicdialog.py: - read and fill dialog
+	* src/netconfpkg/basicdialog.py:
+	- read and fill dialog
 
 	* src/netconfpkg/DeviceList.idl:
 	Alias with default value 0
@@ -2911,7 +3846,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	- commit() in load() and save()
 	- check for Alias != None instead of if Alias:
 
-	* src/netconfpkg/DeviceList.idl: - Alias is now INTEGER
+	* src/netconfpkg/DeviceList.idl:
+	- Alias is now INTEGER
 
 	* src/netconf.py:
 	- moved basicdialog stuff to basicdialog
@@ -2921,11 +3857,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/ethernetconfig.py:
 	read and write data to and from the dialog now
 
-	* src/netconfpkg/NCDevice.py: force str(self.Alias)
+	* src/netconfpkg/NCDevice.py:
+	force str(self.Alias)
 
-	* src/netconfpkg/NCDevice.py: - added Alias and Type
+	* src/netconfpkg/NCDevice.py:
+	- added Alias and Type
 
-	* src/netconfpkg/DeviceList.idl: - added Alias
+	* src/netconfpkg/DeviceList.idl:
+	- added Alias
 
 2001-06-21  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -2965,7 +3904,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCHardwareList.py:
 	- added getHardwareList()
 
-	* src/netconfpkg/ConfSMB.py: create_if_missing = 1
+	* src/netconfpkg/ConfSMB.py:
+	create_if_missing = 1
 
 2001-06-20  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3008,7 +3948,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	- correct pap and chap secrets
 	- correct WVDIALSECT handling
 
-	* src/netconfpkg/NCDialup.py: - added class IsdnDialup
+	* src/netconfpkg/NCDialup.py:
+	- added class IsdnDialup
 	- name instead of modemsect
 	- more comments
 	- typo in save
@@ -3034,7 +3975,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCDevice.py:
 	moved all Dialup specific stuff to NCDialup.py
 
-	* src/netconfpkg/DeviceList.idl: nicer formatting
+	* src/netconfpkg/DeviceList.idl:
+	nicer formatting
 
 2001-06-20  Than Ngo  <than@redhat.com>
 
@@ -3066,7 +4008,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	removed typos in ConfSMBSubDict
 	type in __getitem__
 
-	* src/netconfpkg/NCDialup.py: removed debug output
+	* src/netconfpkg/NCDialup.py:
+	removed debug output
 
 2001-06-19  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3079,9 +4022,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-19  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/ConfSMB.py: fixed varname typo
+	* src/netconfpkg/ConfSMB.py:
+	fixed varname typo
 
-	* src/netconfpkg/DeviceList.idl: fixed InitStrings typo
+	* src/netconfpkg/DeviceList.idl:
+	fixed InitStrings typo
 
 	* src/netconfpkg/Makefile.am:
 	more genClass/idl dependencies
@@ -3092,11 +4037,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCDialup.py:
 	split into save/load{DeviceType}
 
-	* src/netconfpkg/NCDialup.py: initial version
+	* src/netconfpkg/NCDialup.py:
+	initial version
 
-	* src/netconfpkg/DeviceList.idl: added InitStrings
+	* src/netconfpkg/DeviceList.idl:
+	added InitStrings
 
-	* src/netconfpkg/ConfSMB.py: first working version
+	* src/netconfpkg/ConfSMB.py:
+	first working version
 
 2001-06-19  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3111,7 +4059,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-19  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/ConfSMB.py: initial version
+	* src/netconfpkg/ConfSMB.py:
+	initial version
 
 2001-06-19  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3132,7 +4081,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/DeviceList.idl:
 	changed Device.DefaultGW to Device.Gateway
 
-	* src/netconfpkg/NC_functions.py: added SYSCONFNETWORK
+	* src/netconfpkg/NC_functions.py:
+	added SYSCONFNETWORK
 
 	* src/netconfpkg/NCDevice.py:
 	fill in gateway from /etc/sysconfig/network, if empty and if in subnetmask
@@ -3232,12 +4182,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	no DeviceName
 	DeviceId if filename
 
-	* src/netconfpkg/genClass.py: moved true and false
+	* src/netconfpkg/genClass.py:
+	moved true and false
 
 	* src/netconfpkg/NCDevice.py:
 	do not set variable, if not defined in config file
 
-	* src/netconfpkg/genClass.py: - added commitChild
+	* src/netconfpkg/genClass.py:
+	- added commitChild
 	- better import
 
 2001-06-11  Than Ngo  <than@redhat.com>
@@ -3247,7 +4199,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-11  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/NCDevice.py: AUTODNS -> RESOLV_MODS
+	* src/netconfpkg/NCDevice.py:
+	AUTODNS -> RESOLV_MODS
 
 	* src/netconfpkg/NCDeviceList.py:
 	fallback to old config directory
@@ -3255,7 +4208,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconfpkg/NCDevice.py:
 	Fallback to old config directory
 
-	* src/netconfpkg/NC_functions.py: some constants
+	* src/netconfpkg/NC_functions.py:
+	some constants
 
 2001-06-08  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3265,12 +4219,14 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-08  Harald Hoyer  <harald@redhat.com>
 
-	* src/netconfpkg/genClass.py: switched to UserList
+	* src/netconfpkg/genClass.py:
+	switched to UserList
 
 	* src/netconfpkg/DeviceList.idl, src/netconfpkg/genClass.py, src/netconfpkg/Makefile.am, src/netconfpkg/NCDeviceList.py:
 	*** empty log message ***
 
-	* src/netconfpkg/NCDevice.py: initial version
+	* src/netconfpkg/NCDevice.py:
+	initial version
 
 2001-06-08  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3334,7 +4290,8 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-06-06  Than Ngo  <than@redhat.com>
 
-	* src/ethernethardware.py: * add ethernethardware.py
+	* src/ethernethardware.py:
+	* add ethernethardware.py
 
 2001-06-06  Phil Knirsch  <pknirsch@redhat.com>
 
@@ -3370,9 +4327,13 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	- Removed the Rename button from the Device tab
 	- Added the Hosts cofiguration tab (mightily neglected up to now!)
 
+	* docs/overview:
+	- Moved to doc/ directory
+
 2001-06-04  Than Ngo  <than@redhat.com>
 
-	* src/netconf.glade: * obsolete netconf.glade.
+	* src/netconf.glade:
+	* obsolete netconf.glade.
 
 	* src/basicdialog.glade, src/basicdialog.py, src/dslconfig.glade, src/dslconfig.py, src/ethernetconfig.glade, src/ethernetconfig.py, src/netconf.py:
 	* add dslconfig ethernetconfig
@@ -3400,11 +4361,11 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	  use annother glade files in src. netconf should be deleted after netconf.py
 	  is fixed for using glade files
 
-	* src/basicdialog.glade, src/chooseprovider.glade, src/cipeconfig.glade, src/dialupconfig.glade, src/dialup.glade, src/dslconfig.glade, src/editadress.glade, src/ethernetconfig.glade, src/ethernethardware.glade, src/firewall-druids.glade, src/isdnhardware.glade, src/maindialog.glade, src/modemconfig.glade, src/netconf.glade, src/new_interface_druid.glade, src/pixmaps/de.xpm, src/pixmaps/keys.xpm, src/pixmaps/network.xpm, src/pixmaps/no.xpm, src/pixmaps/us.xpm, src/wirelessconfig.glade:
+	* mockup/network.xpm, mockup/new_interface_druid.glade, mockup/no.xpm, mockup/us.xpm, mockup/wirelessconfig.glade, src/basicdialog.glade, src/chooseprovider.glade, src/cipeconfig.glade, src/dialupconfig.glade, src/dialup.glade, src/dslconfig.glade, src/editadress.glade, src/ethernetconfig.glade, src/ethernethardware.glade, src/firewall-druids.glade, src/isdnhardware.glade, src/maindialog.glade, src/modemconfig.glade, src/netconf.glade, src/new_interface_druid.glade, src/pixmaps/de.xpm, src/pixmaps/keys.xpm, src/pixmaps/network.xpm, src/pixmaps/no.xpm, src/pixmaps/us.xpm, src/wirelessconfig.glade, mockup/basicdialog.glade, mockup/chooseprovider.glade, mockup/cipeconfig.glade, mockup/de.xpm, mockup/dialupconfig.glade, mockup/dialup.glade, mockup/dslconfig.glade, mockup/editadress.glade, mockup/ethernetconfig.glade, mockup/ethernethardware.glade, mockup/firewall-druids.glade, mockup/isdnhardware.glade, mockup/keys.xpm, mockup/maindialog.glade, mockup/modemconfig.glade, mockup/netconf.glade:
 	* move glade file into src
 	* move pixmaps in src/pixmaps
 
-	* src/ADSLInterface.py, src/ATMInterface.py, src/CableInterface.py, src/CheckList.py, src/DialupInterface.py, src/EthernetInterface.py, src/FirewallDruid.py, src/InterfaceCreator.py, src/netconf.py, src/NewInterface.py, src/WirelessInterface.py:
+	* mockup/adsl-config.glade, mockup/ADSLInterface.py, mockup/ATMInterface.py, mockup/CableInterface.py, mockup/CheckList.py, mockup/devicewidgets.glade, mockup/DialupInterface.py, mockup/EthernetInterface.py, mockup/FirewallDruid.py, mockup/InterfaceCreator.py, mockup/isdn-hardware.glade, mockup/isdn-provider.glade, mockup/maindialog.glade, mockup/MainWindow.py, mockup/modemconfig.glade, mockup/netconf.py, mockup/NewInterface.py, mockup/WirelessInterface.py, src/ADSLInterface.py, src/ATMInterface.py, src/CableInterface.py, src/CheckList.py, src/DialupInterface.py, src/EthernetInterface.py, src/FirewallDruid.py, src/InterfaceCreator.py, src/netconf.py, src/NewInterface.py, src/WirelessInterface.py:
 	* move python code into src
 	* remove some unneeded glade files
 
@@ -3426,11 +4387,27 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* doc/configurationfiles.txt:
 	Add information on addresses
 
-	* src/EthernetDevice.py: Minor fixes.
+	* src/EthernetDevice.py:
+	Minor fixes.
 
 2001-05-31  Harald Hoyer  <harald@redhat.com>
 
-	* src/genClass.py, src/netconfpkg/genClass.py, src/HardwareList.idl, src/netconfpkg/HardwareList.idl:
+	* src/genClass.py, src/netconfpkg/genClass.py, mockup/netconf.glade:
+	*** empty log message ***
+
+2001-05-31  Phil Knirsch  <pknirsch@redhat.com>
+
+	* mockup/netconf.glade:
+	- Test of read only netconf.glade file
+
+2001-05-31  Than Ngo  <than@redhat.com>
+
+	* mockup/basicdialog.glade, mockup/chooseprovider.glade, mockup/cipeconfig.glade, mockup/dialupconfig.glade, mockup/dslconfig.glade, mockup/editadress.glade, mockup/ethernetconfig.glade, mockup/ethernethardware.glade, mockup/isdnhardware.glade, mockup/maindialog.glade, mockup/modemconfig.glade, mockup/netconf.glade, mockup/wirelessconfig.glade:
+	* split netconf.glade
+
+2001-05-31  Harald Hoyer  <harald@redhat.com>
+
+	* src/HardwareList.idl, src/netconfpkg/HardwareList.idl:
 	*** empty log message ***
 
 	* src/HardwareList.idl, src/netconfpkg/HardwareList.idl:
@@ -3471,12 +4448,52 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/netiface.py: Fix typo
 
-	* src/Address.py: Don't reimport sys
+	* src/Address.py:
+	Don't reimport sys
+
+2001-05-30  Harald Hoyer  <harald@redhat.com>
+
+	* mockup/netconf.glade: cipe
+
+2001-05-30  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade, mockup/netconf.py:
+	* some cosmetic in GUI
+	* add some test functions in netconf.py
+
+2001-05-30  Harald Hoyer  <harald@redhat.com>
+
+	* mockup/netconf.glade:
+	firewall and cipe
+
+2001-05-30  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade:
+	* some changes in security dialog
+
+2001-05-30  Harald Hoyer  <harald@redhat.com>
+
+	* mockup/netconf.glade:
+	Firewall + Shaping
+
+2001-05-30  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade, mockup/netconf.py:
+	* complete GUI
+	* some test funtion in netconf.py
 
 2001-05-29  Trond Eivind Glomsrod  <teg@redhat.com>
 
 	* doc/configurationfiles.txt:
 	Added the beginnings of configuration file documentation
+
+	* mockup/netconf.py:
+	Comment two lines which makes the program abort.
+
+2001-05-28  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade, mockup/netconf.py:
+	* major changes in GUI layout
 
 2001-05-28  Harald Hoyer  <harald@redhat.com>
 
@@ -3500,6 +4517,12 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-05-28  Than Ngo  <than@redhat.com>
 
+	* mockup/netconf.glade, mockup/netconf.py:
+	* some changes in GUI
+
+	* mockup/de.xpm, mockup/keys.xpm, mockup/network.xpm, mockup/no.xpm, mockup/us.xpm:
+	* add some pixmaps
+
 	* src/netconf.idl, src/netconfpkg/netconf.idl:
 	add more datas
 
@@ -3508,9 +4531,54 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 	* src/netconf.idl, src/netconfpkg/netconf.idl:
 	*** empty log message ***
 
+2001-05-26  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade, mockup/netconf.py:
+	* added netconf.py
+	* fixed GUI
+
+2001-05-23  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade:
+	some cosmetic fixes
+
 2001-05-23  Trond Eivind Glomsrod  <teg@redhat.com>
 
 	* src/Resolver.py: New file
+
+2001-05-23  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade:
+	* some changes in basic setup dialog and mainWindow
+
+	* mockup/netconf.glade:
+	* add provider database
+
+	* mockup/netconf.glade:
+	rename Widget
+
+2001-05-22  Than Ngo  <than@redhat.com>
+
+	* mockup/netconf.glade:
+	* 1. version of netconf.glade
+
+2001-05-22  Phil Knirsch  <pknirsch@redhat.com>
+
+	* docs/overview:
+	- Overview file for the whole project.
+
+2001-05-21  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* mockup/devicewidgets.glade:
+	Fix typo.
+
+2001-05-21  Preston Brown  <pbrown@redhat.com>
+
+	* mockup/.cvsignore:
+	*** empty log message ***
+
+	* mockup/adsl-config.glade, mockup/isdn-hardware.glade, mockup/isdn-provider.glade:
+	more layout adjustments.
 
 2001-05-21  Trond Eivind Glomsrod  <teg@redhat.com>
 
@@ -3519,6 +4587,21 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/Address.py: Bugfixes
 
+2001-05-21  Preston Brown  <pbrown@redhat.com>
+
+	* mockup/devicewidgets.glade:
+	fix some minor layout issues
+
+2001-05-21  Phil Knirsch  <pknirsch@redhat.com>
+
+	* mockup/devicewidgets.glade:
+	- Updated device mockup to reflect the more finalized GUI.
+
+2001-05-17  Than Ngo  <than@redhat.com>
+
+	* mockup/adsl-config.glade, mockup/isdn-hardware.glade, mockup/isdn-provider.glade:
+	* add adsl GUI
+
 2001-05-16  Trond Eivind Glomsrod  <teg@redhat.com>
 
 	* src/EthernetDevice.py:
@@ -3526,6 +4609,19 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/Address.py:
 	Better integration of address file handling
+
+2001-05-16  Than Ngo  <than@redhat.com>
+
+	* mockup/isdn-provider.glade:
+	* some fixes in GUI
+
+2001-05-15  Than Ngo  <than@redhat.com>
+
+	* mockup/isdn-hardware.glade:
+	* butoon cannel instead close
+
+	* mockup/isdn-hardware.glade, mockup/isdn-provider.glade:
+	* creates ISDN GUI
 
 2001-05-11  Preston Brown  <pbrown@redhat.com>
 
@@ -3536,18 +4632,26 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 	* src/EthernetDevice.py: Fixes.
 
-	* src/Address.py: Add scope(),setScope()
+	* src/Address.py:
+	Add scope(),setScope()
 
 	* src/EthernetDevice.py: Added.
 
 2001-05-11  Preston Brown  <pbrown@redhat.com>
+
+	* mockup/mainwindow.glade:
+	moved to ../src
+
+	* mockup/devicewidgets.glade:
+	lots of skeletons for some widgets.
 
 	* src/inspect.py, src/mainwindow.glade, src/MainWindow.py, src/pydoc.py:
 	beginnings on a toplevel window
 
 2001-05-09  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/Address.py: Add pythonlib to PYTHONPATH
+	* src/Address.py:
+	Add pythonlib to PYTHONPATH
 
 	* src/Device.py:
 	Do configuration the New and Improved way
@@ -3562,7 +4666,18 @@ Thu Feb 28 17:24:55 2002  Jonathan Blandford  <jrb@redhat.com>
 
 2001-05-09  Trond Eivind Glomsrod  <teg@redhat.com>
 
-	* src/Device.py: Lack of capitalization
+	* src/Device.py:
+	Lack of capitalization
+
+2001-05-07  Preston Brown  <pbrown@redhat.com>
+
+	* mockup/.cvsignore, mockup/mainwindow.glade, mockup/MainWindow.py:
+	skeleton for main window.
+
+2001-05-04  Jonathan Blandford  <jrb@redhat.com>
+
+	* mockup/dialup.glade, mockup/firewall-druids.glade, mockup/new_interface_druid.glade, mockup/WirelessInterface.py, mockup/ADSLInterface.py, mockup/ATMInterface.py, mockup/CableInterface.py, mockup/CheckList.py, mockup/DialupInterface.py, mockup/EthernetInterface.py, mockup/FirewallDruid.py, mockup/InterfaceCreator.py, mockup/NewInterface.py:
+	added mockup
 
 2001-05-04  Trond Eivind Glomsrod  <teg@redhat.com>
 
