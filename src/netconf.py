@@ -201,11 +201,7 @@ class mainDialog:
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
         for hw in hardwarelist:
-            if hw.Type == 'Modem':
-                devname = hw.Modem.DeviceName
-            else:
-                devname = hw.Card.DeviceName
-            clist.append([hw.Description, hw.Type, devname])
+            clist.append([hw.Description, hw.Type, hw.Name])
 
     def setupProfiles(self):
         global profilelist
@@ -310,7 +306,6 @@ class mainDialog:
 
         basic = basicDialog(self.xml)
         basic.xml.get_widget('deviceNameEntry').set_text(name)
-        basic.xml.get_widget('deviceNameEntry').set_editable(false)
         basic.xml.get_widget('deviceTypeEntry').set_text(type)
         basic.xml.get_widget('onBootCB').set_active(device.OnBoot)
         basic.xml.get_widget('userControlCB').set_active(device.AllowUser)
@@ -428,24 +423,73 @@ class mainDialog:
     def on_profileDeleteButton_clicked (self, *args):
         pass
 
-    def on_hardwareAddButton_clicked (self, button):
-        deviceType = self.xml.get_widget("deviceTypeEntry").get_text()
-        if deviceType == "Ethernet" or deviceType == "Token Ring" or  \
-           deviceType == "Pocket (ATP)" or deviceType == "Arcnet":
+    def on_hardwareAddButton_clicked (self, *args):
+        type = self.xml.get_widget('deviceTypeEntry').get_text()
+        self.showHardwareDialog(type, false)
+
+    def on_hardwareEditButton_clicked (self, *args):
+        clist = self.xml.get_widget('hardwareList')
+        type  = clist.get_text(clist.selection[0], 1)
+        self.showHardwareDialog(type, true)
+
+    def showHardwareDialog(self, deviceType, edit):
+        if deviceType == 'Ethernet' or deviceType == 'Token Ring' or  \
+           deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
             dialog = ethernetHardwareDialog(self.xml)
-        if deviceType == "Modem":
+            if not edit:
+                return
+            global hardwarelist
+            clist = self.xml.get_widget('hardwareList')
+            type  = clist.get_text(clist.selection[0], 1)
+            dev   = clist.get_text(clist.selection[0], 2)
+            for hw in hardwarelist:
+                if hw.Name == dev:
+                    break;
+
+            dialog.xml.get_widget('adapterEntry').set_text(hw.Description)
+            dialog.xml.get_widget('adapterEntry').set_sensitive(false)
+            dialog.xml.get_widget('adapterComboBox').set_sensitive(false)
+
+            dialog.xml.get_widget('ethernetDeviceEntry').set_text(hw.Name)
+            if hw.Card.IRQ:
+                dialog.xml.get_widget('irqEntry').set_text(hw.Name)
+            else:
+                dialog.xml.get_widget('irqEntry').set_sensitive(false)
+                dialog.xml.get_widget('irqComboBox').set_sensitive(false)
+
+        if deviceType == 'Modem':
             dialog = modemDialog(self.xml)
-        if deviceType == "ISDN":
+            if not edit:
+                return
+            global hardwarelist
+            clist = self.xml.get_widget('hardwareList')
+            type  = clist.get_text(clist.selection[0], 1)
+            dev   = clist.get_text(clist.selection[0], 2)
+            for hw in hardwarelist:
+                if hw.Name == dev:
+                    break;
+
+            dialog.xml.get_widget('modemDeviceEntry').set_text(hw.Modem.DeviceName)
+            dialog.xml.get_widget('baurateEntry').set_text(hw.Modem.BaudRate)
+            if hw.Modem.FlowControl:
+                dialog.xml.get_widget('flowControlEntry').set_text(hw.Modem.FlowControl)
+            dialog.xml.get_widget('volumeCB').set_active(hw.Modem.ModemVolume != '0')
+            dialog.xml.get_widget('volumeMenu').set_sensitive(hw.Modem.ModemVolume != '0')
+            if hw.Modem.ModemVolume > 0:
+                dialog.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume)-1)
+
+            dialog.xml.get_widget('toneDialingCB').set_active(hw.Modem.DialCommand == 'ATDT')
+
+        if deviceType == 'ISDN':
             dialog = isdnHardwareDialog(self.xml)
+            if not edit:
+                return
 
-    def on_hardwareEditButton_clicked (self, button):
-        on_hardwareAddButton_clicked (button)
-
-    def on_hardwareDeleteButton_clicked (self, button):
+    def on_hardwareDeleteButton_clicked (self, *args):
         pass
 
 # make ctrl-C work
-if __name__ == "__main__":
+if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = mainDialog()
     gtk.mainloop()
