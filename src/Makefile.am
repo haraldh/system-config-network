@@ -11,12 +11,15 @@ execdir = $(sbindir)
 all-local: 
 	rm -f redhat-config-network
 	rm -f redhat-config-network-cmd
+	rm -f redhat-config-network-tui
 	rm -f redhat-config-network-druid
 	rm -f  redhat-control-network
 	ln -s netconf.py redhat-config-network
 	ln -s netconf-cmd.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
+	ln -s netconf-tui.py redhat-config-network-tui
 	ln -s neat-control.py redhat-control-network
+	chmod 0755 $(PYTHON_FILES)
 
 gladedir = $(pkgdatadir)/netconfpkg/gui
 glade_DATA = $(GLADE_FILES)
@@ -45,6 +48,7 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf-cmd.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-druid; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
+	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/redhat-config-network-tui; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 
@@ -53,6 +57,7 @@ uninstall-local:
 	rm -f  $(DESTDIR)$(bindir)/neat-control 
 	rm -f  $(DESTDIR)$(bindir)/redhat-control-network
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network
+	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-tui
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-cmd
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-druid
 	rm -f  $(DESTDIR)$(sbindir)/neat
