@@ -108,7 +108,10 @@ class ethernetConfigDialog(deviceConfigDialog):
         self.xml.get_widget("hwProbeButton").set_sensitive(check["active"])
 
     def on_hwProbeButton_clicked(self, button):
-        hwaddr = commands.getoutput("LC_ALL= LANG= /sbin/ip -o link show "+self.device.Device+" | sed 's/.*link\/ether \([[:alnum:]:]*\).*/\\1/'")
+        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+        fields = string.split(hw)
+        device = fields[0]
+        hwaddr = commands.getoutput("LC_ALL= LANG= /sbin/ip -o link show "+device+" | sed 's/.*link\/ether \([[:alnum:]:]*\).*/\\1/'")
         if hwaddr[:6] == 'Device':
             return
         self.device.HardwareAddress = hwaddr
