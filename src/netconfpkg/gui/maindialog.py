@@ -1,5 +1,3 @@
-#!/usr/bin/python2.2
-
 ## netconf - A network configuration tool
 ## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1716,5 +1714,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:33:51 $"
-__version__ = "$Revision: 1.33 $"
+__date__ = "$Date: 2003/11/25 08:35:56 $"
+__version__ = "$Revision: 1.34 $"
