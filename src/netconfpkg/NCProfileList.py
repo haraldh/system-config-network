@@ -118,7 +118,7 @@ class ProfileList(ProfileList_base):
                 else:
                     continue
             
-                if devmap.has_key(device.Device):
+                if devmap.has_key(device.Device) and device.Alias == devmap[device.Device].Alias:
                     msg = (_('Device %s uses the same Hardware Device "%s" like %s!\n') \
                           + _('Please select another Hardware Device or \nactivate only one of them.')) % (device.DeviceId, device.Device, devmap[device.Device].DeviceId)
                     raise TestError(msg)
