@@ -1,8 +1,10 @@
 import os
 import string
 from HardwareList import *
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
+
 from Conf import *
 from ConfSMB import *
 
