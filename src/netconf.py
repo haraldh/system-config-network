@@ -691,6 +691,7 @@ class mainDialog:
         self.tag = timeout_add(4000, self.update_devicelist)
             
     def on_deviceDeactivateButton_clicked(self, button):
+        clist = self.xml.get_widget("deviceList")
         if len(clist.selection) == 0:
             return
         
