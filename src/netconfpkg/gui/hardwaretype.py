@@ -30,6 +30,7 @@ import re
 from netconfpkg import *
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.NCHardwareFactory import getHardwareFactory
 from gtk import TRUE
 from gtk import FALSE
 
@@ -55,18 +56,20 @@ class hardwareTypeDialog:
 
         machine = os.uname()[4]
         hardwarelist = NCHardwareList.getHardwareList()
-        devicetypes = [ ETHERNET, MODEM, ISDN, TOKENRING ]
-        for hw in hardwarelist:
-            if hw.Type == ISDN:
-                devicetypes = [ ETHERNET, MODEM, TOKENRING ]
-
         if machine == 's390' or machine == 's390x':
             devicetypes = [ ETHERNET, TOKENRING ]
-
-        self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
-        self.hydrate()
+        else:
+            df = getHardwareFactory()        
+            devicetypes = df.keys()
+            
+        for hw in hardwarelist:
+            if hw.Type == ISDN:
+                devicetypes.remove(ISDN)
+                break
 
         
+        self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
+        self.hydrate()
 
     def hydrate(self):
         pass
