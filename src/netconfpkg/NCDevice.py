@@ -288,9 +288,12 @@ class Device(DeviceList.Device_base):
             if self.__dict__[selfkey]:
                 conf[confkey] = 'yes'
             else:
-                # delete the key, rather than set it to no (#62127)
-                # no more conf[confkey] = 'no'
-                del conf[confkey]
+                if confkey == "PEERDNS":
+                    # delete the key, rather than set it to no (#62127)
+                    del conf[confkey]
+                else:
+                    conf[confkey] = 'no'
+
 
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
