@@ -169,21 +169,21 @@ class mainDialog:
                                                self.on_dnsEditButton_clicked),
             "on_hostsAddButton_clicked" : self.on_hostsAddButton_clicked,
             "on_hostsEditButton_clicked" : self.on_hostsEditButton_clicked,
-            "on_hostsDeleteButton_clicked" : self.on_hostsDeleteButton_clicked
-##             "on_profileList_unselect_row" : (self.on_generic_clist_unselect_row,
-##                                              self.xml.get_widget("profileEditButton"),
-##                                              self.xml.get_widget("profileDeleteButton"),
-##                                              self.xml.get_widget("profileCopyButton")),
-##             "on_profileList_select_row" : (self.on_generic_clist_select_row,
-##                                            self.xml.get_widget("profileEditButton"),
-##                                            self.xml.get_widget("profileDeleteButton"),
-##                                            self.xml.get_widget("profileCopyButton")),
-##             "on_profileList_button_press_event" : (self.on_generic_clist_button_press_event,
-##                                                    self.on_profileRenameButton_clicked),
-##             "on_profileAddButton_clicked" : self.on_profileAddButton_clicked,
-##             "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
-##             "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
-##             "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked
+            "on_hostsDeleteButton_clicked" : self.on_hostsDeleteButton_clicked,
+            "on_profileList_unselect_row" : (self.on_generic_clist_unselect_row,
+                                             self.xml.get_widget("profileEditButton"),
+                                             self.xml.get_widget("profileDeleteButton"),
+                                             self.xml.get_widget("profileCopyButton")),
+            "on_profileList_select_row" : (self.on_generic_clist_select_row,
+                                           self.xml.get_widget("profileEditButton"),
+                                           self.xml.get_widget("profileDeleteButton"),
+                                           self.xml.get_widget("profileCopyButton")),
+            "on_profileList_button_press_event" : (self.on_generic_clist_button_press_event,
+                                                   self.on_profileRenameButton_clicked),
+            "on_profileAddButton_clicked" : self.on_profileAddButton_clicked,
+            "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
+            "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
+            "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked
             })
 
         self.dialog = self.xml.get_widget("Dialog")
@@ -230,7 +230,7 @@ class mainDialog:
     def hydrate(self):
         self.hydrateDevices()
         self.hydrateHardware()
-##        self.hydrateProfiles()
+        self.hydrateProfiles()
 
     def hydrateDevices(self):
         devicelist = getDeviceList()
@@ -266,42 +266,42 @@ class mainDialog:
                 self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
             clist.append([hw.Description, hw.Type, hw.Name])
 
-##     def hydrateProfiles(self):
-##         profilelist = getProfileList()
+    def hydrateProfiles(self):
+        profilelist = getProfileList()
 
-##         dclist = self.xml.get_widget("dnsList")
-##         dclist.clear()
-##         hclist = self.xml.get_widget("hostsList")
-##         hclist.clear()
-##         for prof in profilelist:
-##             if prof.Active == true:
-##                 if prof.DNS.Hostname: self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
-##                 if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
-##                 if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
-##                 if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
-##                 if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
-##                 for domain in prof.DNS.SearchList:
-##                     dclist.append([domain])
+        dclist = self.xml.get_widget("dnsList")
+        dclist.clear()
+        hclist = self.xml.get_widget("hostsList")
+        hclist.clear()
+        for prof in profilelist:
+            if prof.Active == true:
+                if prof.DNS.Hostname: self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
+                if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
+                if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
+                if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
+                if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
+                for domain in prof.DNS.SearchList:
+                    dclist.append([domain])
 
-##                 for host in prof.HostsList:
-##                     hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
+                for host in prof.HostsList:
+                    hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
 
-##         row = 0
-##         actrow = 0
-##         for prof in profilelist:
-##             if prof.Active == true:
-##                actrow = row
-##                break
-##             row = row + 1
+        row = 0
+        actrow = 0
+        for prof in profilelist:
+            if prof.Active == true:
+               actrow = row
+               break
+            row = row + 1
 
-##         if self.initialized:
-##             return
+        if self.initialized:
+            return
 
-##         clist = self.xml.get_widget("profileList")
-##         self.initialized = true
-##         for prof in profilelist:
-##             clist.append([prof.ProfileName])
-##         clist.select_row(actrow, 0)
+        clist = self.xml.get_widget("profileList")
+        self.initialized = true
+        for prof in profilelist:
+            clist.append([prof.ProfileName])
+        clist.select_row(actrow, 0)
 
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()

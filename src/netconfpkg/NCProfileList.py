@@ -125,13 +125,22 @@ class ProfileList(ProfileList_base):
         except:
             pass
 
+        # Remove all profile directories except default
         proflist = os.listdir(SYSCONFPROFILEDIR)
         for prof in proflist:
             if prof == 'default':
                 continue
 
             try:
-                shutil.rmtree(SYSCONFPROFILEDIR)
+                shutil.rmtree(SYSCONFPROFILEDIR+'/'+prof)
+            except:
+                pass
+
+        # Remove all files in the default profile directory
+        filelist = os.listdir(SYSCONFPROFILEDIR+'/default')
+        for file in filelist:
+            try:
+                os.unlink(OLDSYSCONFDEVICEDIR+'/default/'+file)
             except:
                 pass
 
