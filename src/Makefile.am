@@ -23,8 +23,8 @@ all-local:
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 netconf.py $(DESTDIR)$(pkgdatadir)/
-	ln -sf $(pkgdatadir)/src/netconf.py $(DESTDIR)$(sbindir)/netconf
-	ln -sf $(pkgdatadir)/src/netconf.py $(DESTDIR)$(sbindir)/netconf-cmd
+	ln -sf $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf
+	ln -sf $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf-cmd
 
 docs:
 	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
