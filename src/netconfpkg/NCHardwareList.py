@@ -210,7 +210,7 @@ class HardwareList(HardwareList_base):
             if hw.Type == "ISDN":
                 isdn.Description = hw.Description
                 isdn.Type = hw.Card.Type
-                isdn.ModulName = hw.Card.ModuleName
+                isdn.ModuleName = hw.Card.ModuleName
                 isdn.IRQ = hw.Card.IRQ
                 isdn.IoPort = hw.Card.IoPort
                 isdn.IoPort1 = hw.Card.IoPort1
