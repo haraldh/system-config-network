@@ -71,7 +71,7 @@ card = {
     "Sedlbauer PC 104" : [ "15", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
     "Sedlbauer Speed PCI" : [ "15", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
     "Sedlbauer Speed Card" : [ "15", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Sedlbauer Speed Fax+" : [ "28", "9", "0xd80", "", "", "", "SAG0002", "SAG0002", "HiSax", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
+    "Sedlbauer Speed Fax+" : [ "28", "3", "0x200", "", "", "", "SAG0002", "SAG0002", "HiSax", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
     "Sedlbauer Speed fax+ PCI" : [ "28", "", "", "", "", "", "e159", "0002", "HiSax", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
     "Sedlbauer Speed Star PCMCIA Card" : [ "", "", "", "", "", "", "", "", "", "", "sedlbauer_cs" ],
     "Siemens I-Surf 1.0" : [ "29", "9", "0xd80", "", "", "0xd000", "", "", "HiSax", "", "hisax" ],
