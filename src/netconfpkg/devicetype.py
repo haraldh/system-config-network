@@ -36,14 +36,7 @@ from NC_functions import *
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
 
 class deviceTypeDialog:
     def __init__(self, device, xml = None):
@@ -69,6 +62,23 @@ class deviceTypeDialog:
         devicetypes=deviceTypes[:]
         devicetypes.remove('Loopback')
 
+        hardwarelist = NCHardwareList.getHardwareList()
+        ethernetFound = FALSE
+        modemFound = FALSE
+        isdnFound = FALSE
+        tokenringFound = FALSE
+        for hw in hardwarelist:
+            if hw.Type == 'Modem': modemFound = TRUE
+            elif hw.Type == 'ISDN': isdnFound = TRUE
+            elif hw.Type == 'Ethernet': ethernetFound = TRUE
+            elif hw.Type == 'Token Ring': tokenringFound = TRUE
+        if not modemFound: devicetypes.remove('Modem')
+        if not isdnFound: devicetypes.remove('ISDN')
+        if not ethernetFound:
+            for t in ['Ethernet', 'xDSL', 'CIPE']:
+                devicetypes.remove(t)
+        if not tokenringFound: devicetypes.remove('Token Ring')
+        
         omenu = self.xml.get_widget('deviceTypeOption')
         omenu.remove_menu ()
         menu = gtk.GtkMenu ()

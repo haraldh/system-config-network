@@ -29,19 +29,11 @@ import gettext
 import re
 
 import NCHardwareList
-
 from NC_functions import *
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
 
 class hardwareTypeDialog:
     def __init__(self, xml = None):
@@ -67,7 +59,7 @@ class hardwareTypeDialog:
         devicetypes = ['Ethernet', 'Modem', 'ISDN', 'Token Ring']
         for hw in hardwarelist:
             if hw.Type == 'ISDN':
-                devicetypes = ["Ethernet", "Modem"]
+                devicetypes = ['Ethernet', 'Modem', 'Token Ring']
 
         self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
         self.hydrate()
