@@ -25,6 +25,7 @@ import NCisdnhardware
 
 from HardwareList import *
 from NC_functions import *
+from netconfpkg.NC_functions import _
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -168,7 +169,8 @@ class HardwareList(HardwareList_base):
                 for hw in self.data:
                     if hw.Name == device:
                         if hw.Card and hw.Card.ModuleName != mod:
-                            generic_error_dialog ("%s has set module %s instead of currently loaded %s in modules.conf" % (hw.Name, hw.Card.ModuleName, mod))
+                            generic_error_dialog (\
+                                _("%s has an alias to module %s in modules.conf,\ninstead of currently loaded module %s!") % (hw.Name, hw.Card.ModuleName, mod))
                         break
                 else:
                     i = self.addHardware()
