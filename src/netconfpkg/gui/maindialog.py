@@ -649,6 +649,7 @@ class mainDialog:
         button = 0
         dialog = device.getDialog()
         dialog.set_transient_for(self.dialog)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         button = dialog.run()
         dialog.destroy()
 
@@ -1136,8 +1137,8 @@ class mainDialog:
     def on_profileAddMenu_activate (self, *args):
         dialog = self.xml.get_widget("ProfileNameDialog")
         dialog.set_transient_for(self.dialog)
-        self.xml.get_widget("ProfileName").set_text('')
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        self.xml.get_widget("ProfileName").set_text('')
         dialog.show()
         button = dialog.run()        
         dialog.hide()
@@ -1220,6 +1221,7 @@ class mainDialog:
 
         dialog = self.xml.get_widget("ProfileNameDialog")
         dialog.set_transient_for(self.dialog)
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         self.xml.get_widget("ProfileName").set_text(profile.ProfileName)
         dialog.show()
         button = dialog.run()        
@@ -1334,6 +1336,7 @@ class mainDialog:
 
         if dl:
             dl.set_transient_for(self.dialog)
+            dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             button = dl.run()
             dl.destroy()                    
             
