@@ -46,11 +46,10 @@ class ExceptionWindow:
         hbox = gtk.HBox (gtk.FALSE)
 
         info = WrappingLabel(_("An unhandled exception has occured.  This "
-                               "is most likely a bug.  Please copy the "
-                               "full text of this exception or save the crash "
-                               "dump to a floppy then file a detailed bug "
-                               "report against anaconda at "
-                               "http://bugzilla.redhat.com/bugzilla/"))
+                               "is most likely a bug.  Please save the crash "
+                               "dump and file a detailed bug "
+                               "report against redhat-config-network at "
+                               "https://bugzilla.redhat.com/bugzilla/"))
         info.set_size_request (400, -1)
 
         hbox.pack_start (sw, gtk.TRUE)
