@@ -252,13 +252,12 @@ class mainDialog:
         dlg = gnome.ui.GnomeMessageBox(errorString, 'error', _('Close'))
         dlg.run_and_close()
 
-    def handler(self):
-        sys.exit(12)
-        
+
 def idle_func():
     while gtk.events_pending():
         gtk.mainiteration()
                     
+
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
