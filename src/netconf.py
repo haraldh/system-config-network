@@ -146,8 +146,7 @@ class mainDialog:
 
     def loadDevices(self):
         global devicelist
-        devicelist = DeviceList()
-        devicelist.load()
+        devicelist = getDeviceList()
 
     def loadHardware(self):
         global hardwarelist
@@ -155,8 +154,7 @@ class mainDialog:
 
     def loadProfiles(self):
         global profilelist
-        profilelist = ProfileList()
-        profilelist.load()
+        profilelist = getProfileList()
 
     def save(self):
         self.saveDevices()
@@ -292,10 +290,21 @@ class mainDialog:
 
         basic = basicDialog(device, self.xml)
         dialog = basic.xml.get_widget ("Dialog")
-        dialog.run ()
+        button = dialog.run ()
+        if (button == 0):
+            i = devicelist.addDevice()
+            devicelist[i].apply(device)
+            for prof in profilelist:
+                if prof.Active == false:
+                    continue
+                prof.ActiveDevices.append(device.DeviceId)
+            self.setup()
 
     def on_deviceCopyButton_clicked (self, button):
-        pass
+        device = Device(devicelist[clist.selection[0]])
+        device.DeviceId = device.DeviceId + '.Copy'
+        i = devicelist.addDevice()
+        devicelist[i].apply(device)
 
     def on_deviceRenameButton_clicked (self, button):
         pass
@@ -304,6 +313,9 @@ class mainDialog:
         global devicelist
 
         clist = self.xml.get_widget("deviceList")
+
+        if len(clist.selection) == 0:
+            return
 
         device = devicelist[clist.selection[0]]
 
@@ -318,6 +330,7 @@ class mainDialog:
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
         button = dialog.run ()
+        self.setup()
         
     def on_deviceDeleteButton_clicked (self, button):
         pass
@@ -389,27 +402,27 @@ class mainDialog:
     def on_hostnameEntry_changed(self, entry):
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.Hostname = entry
+                prof.DNS.Hostname = entry.get_text()
 
     def on_domainEntry_changed(self, entry):
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.Domainname = entry
+                prof.DNS.Domainname = entry.get_text()
 
     def on_primaryDnsEntry_changed(self, entry):
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.PrimaryDNS = entry
+                prof.DNS.PrimaryDNS = entry.get_text()
 
     def on_secondaryDnsEntry_changed(self, entry):
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.SecondaryDNS = entry
+                prof.DNS.SecondaryDNS = entry.get_text()
 
     def on_ternaryDnsEntry_changed(self, entry):
         for prof in profilelist:
             if prof.Active == true:
-                prof.DNS.TernaryDNS = entry
+                prof.DNS.TernaryDNS = entry.get_text()
 
     def on_searchDnsEntry_changed(self, entry):
         pass
@@ -514,6 +527,9 @@ class mainDialog:
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
+
+    updateNetworkScripts()
+
     if sys.argv[0][-11:] != 'netconf-cmd':
         window = mainDialog()
         gtk.mainloop()
