@@ -3,6 +3,7 @@ import traceback
 import sys
 import os
 import os.path
+import shutil
 
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
@@ -71,12 +72,7 @@ def updateNetworkScripts():
             #print dev+" has unknown device type, skipping it."
             continue
 
-        print "Moving "+dev+" to devices and putting it into the default profile."
-
-        try:
-            os.unlink(SYSCONFDEVICEDIR+'/'+dev)
-        except:
-            pass
+        print "Copying "+dev+" to devices and putting it into the default profile."
 
         try:
             os.unlink(SYSCONFPROFILEDIR+'/default/'+dev)
@@ -84,9 +80,9 @@ def updateNetworkScripts():
             pass
 
         try:
-            os.rename(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
+            shutil.copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
             os.symlink(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)
-            os.symlink(SYSCONFPROFILEDIR+'/default/'+dev, OLDSYSCONFDEVICEDIR+'/'+dev)
+#            os.symlink(SYSCONFPROFILEDIR+'/default/'+dev, OLDSYSCONFDEVICEDIR+'/'+dev)
         except:
             print "An error occured during the conversion of device "+dev+", skipping."
             (type, value, tb) = sys.exc_info()
@@ -95,15 +91,15 @@ def updateNetworkScripts():
             continue
 
     if not os.path.islink('/etc/hosts'):
-       print "Moving /etc/hosts to default profile."
+       print "Copying /etc/hosts to default profile."
        try:
-           os.rename('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
+           shutil.copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
        except:
            print "An error occured during moving the /etc/hosts file."
 
     if not os.path.islink('/etc/resolv.conf'):
-       print "Moving /etc/resolv.conf to default profile."
+       print "Copying /etc/resolv.conf to default profile."
        try:
-           os.rename('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
+           shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
        except:
            print "An error occured during moving the /etc/resolv.conf file."

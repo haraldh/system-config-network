@@ -119,8 +119,8 @@ class ProfileList(ProfileList_base):
             dnsconf.write()
             hoconf.write()
 
-            if os.path.isfile('/etc/resolv.conf'):
-                os.rename('/etc/hosts', '/etc/resolv.conf.bak')
+            if os.path.isfile('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
+                os.rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
 
             try:
                 os.unlink('/etc/resolv.conf')
@@ -132,7 +132,7 @@ class ProfileList(ProfileList_base):
             except:
                 pass
 
-            if os.path.isfile('/etc/hosts'):
+            if os.path.isfile('/etc/hosts') and not os.path.islink('/etc/hosts'):
                 os.rename('/etc/hosts', '/etc/hosts.bak')
 
             try:
