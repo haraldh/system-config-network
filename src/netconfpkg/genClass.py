@@ -512,7 +512,8 @@ def printClass(list, basename, baseclass):
 					   + '\t\tif self.%childname: self.%childname.test()\n'
 				
 				applylist = applylist \
-					    + '\t\tself.create%childname().apply(other.get%childname())\n'
+					    + '\t\tchild = self.create%childname()\n' \
+					    + '\t\tif child: child.apply(other.get%childname())\n'
 
 				backuplist = backuplist \
 					     + '\t\tif self.%childname: self.%childname.rollback()\n'
