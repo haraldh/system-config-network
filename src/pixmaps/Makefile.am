@@ -13,6 +13,7 @@ netconfimg_DATA = \
 	us.xpm \
 	uk.xpm \
 	cs.xpm \
+	at.xpm \
 	irda-16.xpm \
 	dsl.xpm \
 	nameresolution_alias.png \
