@@ -31,6 +31,7 @@ import string
 import commands
 import NCDeviceList
 import HardwareList
+import NC_functions
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
@@ -66,22 +67,12 @@ class cipeConfigDialog(deviceConfigDialog):
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-        hwdesc = []
-        hwcurr = None
-        hardwarelist = HardwareList.getHardwareList()
-        for hw in hardwarelist:
-            if hw.Type == "Ethernet":
-                desc = str(hw.Name) + ' (' + hw.Description + ')'
-                hwdesc.append(desc)
-                if self.device.Cipe.TunnelDevice and hw.Name == self.device.Cipe.TunnelDevice:
-                    hwcurr = desc
+        hwlist = HardwareList.getHardwareList()
+        (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist,
+                                                 self.device.Cipe.TunnelDevice)
                     
         if len(hwdesc):
-            hwdesc.sort()
             ecombo.set_popdown_strings(hwdesc)
-
-        if not hwcurr and len(hwdesc):
-            hwcurr = hwdesc[0]
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if self.device.Cipe.TunnelDevice:
@@ -175,19 +166,23 @@ class cipeConfigDialog(deviceConfigDialog):
         addr = self.xml.get_widget("remotePeerAddressEntry").get_text()
         port = self.xml.get_widget("remotePeerPortEntry").get_text()
         if not port or port == "":
-            port = "(own choice)"
+            port = _("(own choice)")
 
         localport = self.xml.get_widget("localPortEntry").get_text()
         remotevirtualaddress = self.xml.get_widget("remoteVirtualAddressEntry").get_text()
+        if addr == "0.0.0.0" or addr == "":
+            addr = _("(own choice)")
+            
         localvirtualaddress = self.xml.get_widget("localVirtualAddressEntry").get_text()
+        
         secretkey = self.xml.get_widget("secretKeyEntry").get_text()
-                
-        mytxt = "Local Port: " + port + "\n"
-        mytxt = mytxt + "Remote Peer Address: " + str(ip) + ":" + str(localport) + "\n"
-        mytxt = mytxt + "Remote Virtual Address: " + str(localvirtualaddress) + "\n"
-        mytxt = mytxt + "Local Virtual Address: " + str(remotevirtualaddress) + "\n"
-        mytxt = mytxt + "Local IP Address: " + str(addr) + "\n"
-        mytxt = mytxt + "Secret Key: " + str(secretkey) + "\n"
+        mytxt = ""
+        mytxt = mytxt + _("IP Address of Tunnel Device: ") + str(addr) + "\n"
+        mytxt = mytxt + _("Local Port: ") + port + "\n"
+        mytxt = mytxt + _("Remote Peer Address: ") + str(ip) + ":" + str(localport) + "\n"
+        mytxt = mytxt + _("Remote Virtual Address: ") + str(localvirtualaddress) + "\n"
+        mytxt = mytxt + _("Local Virtual Address: ") + str(remotevirtualaddress) + "\n"
+        mytxt = mytxt + _("Secret Key: ") + str(secretkey) + "\n"
         widget = self.xml.get_widget("remoteConfigTxt")
         if widget.get_length():
             widget.delete_text(0, widget.get_length()-1)
