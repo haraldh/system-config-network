@@ -113,7 +113,10 @@ class ethernetHardware:
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
-                list.append(modInfo[i]['description'])
+                if modInfo[i].has_key('description'):
+                    list.append(modInfo[i]['description'])
+                else:
+                    list.append(i)
         list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
 
