@@ -235,7 +235,10 @@ class ProfileList(ProfileList_base):
             nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/network')
             nwconf['HOSTNAME'] = prof.DNS.Hostname
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf'
-            dnsconf['domain'] = [prof.DNS.Domainname]
+            if prof.DNS.Domainname != '':
+                dnsconf['domain'] = [prof.DNS.Domainname]
+            else:
+                del dnsconf['domain']
             dnsconf['nameservers'] = []
             dnsconf['search'] = prof.DNS.SearchList
             nameservers = []

@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -46,6 +46,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Mon Aug 27 2001 Phil Knirsch <phil@redhat.de> 0.8.0-2
+- Fixed emtpy domain entry in /etc/resolv.conf (#52924)
+
 * Tue Aug 28 2001 Than Ngo <than@redhat.com> 0.8.0-1
 - fix some typo bugs
 
