@@ -368,9 +368,9 @@ class mainDialog:
             generic_error_dialog (_("Error saving configuration!\n%s") \
                                   % (str(errstr)))
         else:
-            generic_info_dialog (_("Changes are saved.\n"
-                                   "You may want to restart\n"
-                                   "the network and network services\n"
+            generic_info_dialog (_("Changes are saved."
+                                   "You may want to restart"
+                                   "the network and network services"
                                    "or restart the computer."),
                                  self.dialog)
         self.appBar.pop()
@@ -878,7 +878,7 @@ class mainDialog:
             button = dialog.run()
             dialog.destroy()
         else:
-            generic_error_dialog (_('The device type %s cannot be edited!\n') \
+            generic_error_dialog (_('The device type %s cannot be edited!') \
                                   % device.Type,
                                   self.dialog)
             
@@ -935,7 +935,7 @@ class mainDialog:
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
                 _("To activate the network device %s, "
-                  "the changes have to be saved.") % (device) + "\n\n" +\
+                  "the changes have to be saved.") % (device) + "\n" +\
                 _("Do you want to continue?"),
                 self.dialog)
                 
@@ -1547,7 +1547,7 @@ class mainDialog:
             return button
     
         else:
-            generic_error_dialog (_("Sorry, there is nothing to be edited,\n"
+            generic_error_dialog (_("Sorry, there is nothing to be edited,"
                                     "or this type cannot be edited yet."),
                                   self.dialog)
             return RESPONSE_CANCEL                    
@@ -1691,7 +1691,7 @@ class mainDialog:
                 _("You have made some changes in your configuration.") + "\n"+\
                 _("To activate the IPsec connection %s, "
                   "the changes have to be saved.") % (ipsec.IPsecId) \
-                + "\n\n" + _("Do you want to continue?"),
+                + "\n" + _("Do you want to continue?"),
                 self.dialog)
                 
             if button == RESPONSE_YES:
@@ -1716,5 +1716,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/27 13:24:04 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2003/11/25 08:33:51 $"
+__version__ = "$Revision: 1.33 $"

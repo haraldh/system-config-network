@@ -304,15 +304,15 @@ class CipeInterface(InterfaceCreator):
 
         secretkey = self.xml.get_widget("secretKeyEntry").get_text()
         mytxt = ""
-        mytxt = mytxt + _("IP address of tunnel device: ") + str(addr) + "\n"
-        mytxt = mytxt + _("Local port: ") + port + "\n"
-        mytxt = mytxt + _("Remote peer address: ") + str(ip)
+        mytxt = mytxt + _("IP address of tunnel device:") + ' ' + str(addr) + "\n"
+        mytxt = mytxt + _("Local port:") + ' ' + port + "\n"
+        mytxt = mytxt + _("Remote peer address:") + ' ' + str(ip)
         if localport and localport != "":
             mytxt = mytxt + ":" + str(localport)
         mytxt = mytxt + "\n"
-        mytxt = mytxt + _("Remote virtual address: ") + str(localvirtualaddress) + "\n"
-        mytxt = mytxt + _("Local virtual address: ") + str(remotevirtualaddress) + "\n"
-        mytxt = mytxt + _("Secret key: ") + str(secretkey) + "\n"
+        mytxt = mytxt + _("Remote virtual address:") + ' ' + str(localvirtualaddress) + "\n"
+        mytxt = mytxt + _("Local virtual address:") + ' ' + str(remotevirtualaddress) + "\n"
+        mytxt = mytxt + _("Secret key:") + ' ' + str(secretkey) + "\n"
         
         widget = self.xml.get_widget("remoteConfigTxt").get_buffer()
         widget.set_text(mytxt)
@@ -322,7 +322,7 @@ class CipeInterface(InterfaceCreator):
         keywidget = self.xml.get_widget("secretKeyEntry")
         txt = keywidget.get_text()
         if not txt or txt == "":
-            GUI_functions.gui_error_dialog(_("You must enter a secret key \n"
+            GUI_functions.gui_error_dialog(_("You must enter a secret key"
                                              "or generate one"),
                                            self.toplevel,
                                            broken_widget = keywidget)
@@ -331,5 +331,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2003/11/25 08:33:50 $"
+__version__ = "$Revision: 1.27 $"

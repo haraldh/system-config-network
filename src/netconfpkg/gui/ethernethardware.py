@@ -94,7 +94,7 @@ class ethernetHardwareDialog:
             output = _('Command failed: ') + string.join(cmd) + '\n\n' + \
                      _('Output:\n') + output
             GUI_functions.generic_longinfo_dialog(\
-                _('The Ethernet card could not be initialized. \n'
+                _('The Ethernet card could not be initialized.'
                   'Please verify your settings and try again.'),
                 output, self.dialog)
         pass
@@ -177,5 +177,5 @@ class ethernetHardwareDialog:
 NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2003/11/25 08:33:51 $"
+__version__ = "$Revision: 1.28 $"

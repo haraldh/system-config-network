@@ -549,7 +549,7 @@ def gui_run_dialog(command, argv, searchPath = 0,
             lbl.set_text(_("Failed to run:\n%s") % string.join(argv))
 
     elif len(s):
-        lbl.set_text(label + _("\nSucceeded. Please read the output."))        
+        lbl.set_text(label + '\n' + _("Succeeded. Please read the output."))        
         
     if (status or len(s)) and not __dialogClosed:
         okbutton.set_sensitive (gtk.TRUE)
@@ -592,5 +592,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/28 10:18:52 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2003/11/25 08:33:50 $"
+__version__ = "$Revision: 1.30 $"

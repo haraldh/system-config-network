@@ -299,22 +299,22 @@ class WirelessInterface(InterfaceCreator):
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n" 
 
-        s = s + _("Mode: ") + str(wl.Mode) + "\n"
+        s = s + _("Mode:") + " " + str(wl.Mode) + "\n"
         s = s + _("ESSID (network ID):") + " "
         if not wl.EssId:
-            s = s + "Automatic\n"
+            s = s + _("Automatic") + "\n"
         else:
             s = s + str(wl.EssId) + "\n"
         if wl.Mode != "Managed":
-            s = s + _("Channel: ") + str(wl.Channel) + "\n"
-        s = s + _("Transmit rate: ") + str(wl.Rate) + "\n"\
+            s = s + _("Channel:") + " " + str(wl.Channel) + "\n"
+        s = s + _("Transmit rate:") + " " + str(wl.Rate) + "\n" \
             + _("Key: ")
 
         
         if wl.Key:
             s = s + str(wl.Key) + "\n"
         else:
-            s = s + "encryption disabled\n"
+            s = s + _("encryption disabled") + "\n"
 
         druid_page.set_text(s)
         
@@ -336,5 +336,5 @@ class WirelessInterface(InterfaceCreator):
 
 NCDevWireless.setDevWirelessWizard(WirelessInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2003/11/25 08:33:50 $"
+__version__ = "$Revision: 1.27 $"
