@@ -119,7 +119,7 @@ class Device(Device_base):
         raise NotImplemented
 
     def testDeviceId(self, value, child = None):
-        if re.search(r"^[a-z|A-Z|0-9\-_:]+$", value):
+        if re.compile(r"^[a-z|A-Z|0-9\-_:]+$").search(value):
             return true
         return false
 
@@ -228,7 +228,7 @@ class Device(Device_base):
              NC_functions.generic_error_dialog((_("Static routes file %s "
                                                   "is invalid")) % name)
         else:
-            for p in xrange(0, int(num/3)):
+            for p in xrange(0, num/3):
                 i = self.StaticRoutes.addRoute()
                 route = self.StaticRoutes[i]
                 route.Address = rconf['ADDRESS'+str(p)]
