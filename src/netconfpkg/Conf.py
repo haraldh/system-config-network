@@ -910,7 +910,7 @@ class ConfModules(Conf):
 		dict[optup[0]] = optup[1]
 	return dict
     def splitopt(self, opt):
-	eq = string.find('=', opt)
+	eq = string.find(opt, '=')
 	if eq > 0:
 	    return (opt[:eq], opt[eq+1:])
 	else:
@@ -1035,17 +1035,17 @@ class ConfModInfo(Conf):
 		    # get argument name (first "field" is null again)
 		    thislist = []
 		    # point at first character of argument description
-		    p = string.find('"', line)
+		    p = string.find(line, '"')
 		    while p != -1 and p < len(line):
-			q = string.find('"', line[p+1:])
+			q = string.find(line[p+1:], '"')
 			# deal with escaped quotes (\")
 			while q != -1 and not cmp(line[p+q-1], '\\'):
-			    q = string.find('"', line[p+q+1:])
+			    q = string.find(line[p+q+1:], '"')
 			if q == -1:
 			    break
 			thislist.append(line[p+1:p+q+1])
 			# advance to beginning of next string, if any
-			r = string.find('"', line[p+q+2:])
+			r = string.find(line[p+q+2:], '"')
 			if r >= 0:
 			    p = p+q+2+r
 			else:
