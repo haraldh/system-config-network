@@ -108,19 +108,16 @@ def dhcp_dehydrate (xml, device):
             device.BootProto = 'dialup'
         else:
             device.BootProto = 'none'
-        device.IP = ''
-        device.Netmask = ''
-        device.Gateway = ''
-        device.Hostname = xml.get_widget('hostnameEntry').get_text()
-        device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
     else:
         device.BootProto = 'none'
-        device.IP = xml.get_widget('ipAddressEntry').get_text()
-        device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
-        device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
-        hname = xml.get_widget('hostnameEntry').get_text()
-        if hname != None and hname != '':
-            device.Hostname = hname
+
+    device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
+    device.IP = xml.get_widget('ipAddressEntry').get_text()
+    device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
+    device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
+    hname = xml.get_widget('hostnameEntry').get_text()
+    if hname != None and hname != '':
+        device.Hostname = hname
 
 ###
 ### ROUTES
