@@ -880,7 +880,7 @@ void some_function_name() {
   _("Provider _Name:");
 
   /* neat-control.glade:19 */
-  _("Red Hat Network Control");
+  _("Red Hat Control Network");
 
   /* maindialog.glade:204 */
   _("Remo_ve");
@@ -1436,20 +1436,20 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-monitordialog.glade:119 */
   _("click the right mouse button for properties");
 
+  /* neat-control.glade:225 */
+  _("click to bring up the interface");
+
   /* neat-control.glade:275 */
   _("click to configure the interface");
-
-  /* neat-control.glade:225 */
-  _("click to connect to the interface");
-
-  /* neat-control.glade:250 */
-  _("click to disconnect from the interface");
 
   /* neat-control.glade:55 */
   _("click to get infos");
 
   /* neat-control.glade:300 */
   _("click to monitor the interface");
+
+  /* neat-control.glade:250 */
+  _("click to shutdown the interface");
 
   /* netconfpkg/gui/sharedtcpip.glade:72
    * netconfpkg/gui/tcpipdialog.glade:191
@@ -1542,7 +1542,7 @@ void some_function_name() {
 
   /* neat-control.glade:112 */
   _(""
-    "redhat-network-control provides an easy-to-use interface for configuring,\n"
+    "redhat-control-network provides an easy-to-use interface for configuring,\n"
     "activating and monitoring any type of network configuration.\n"
     "\n"
     "The following network interfaces are configured on the system.");
