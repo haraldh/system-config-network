@@ -38,7 +38,8 @@ install-exec-local:
 	softdir=$${softdir/#\/} ; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
-	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat ;
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 
 docs:
 	python /usr/lib/python1.5/pydoc.py -w $(PYTHON_FILES)
