@@ -54,7 +54,7 @@ deviceTypes = [ 'Ethernet',
                 'Wireless'
                 ]
 
-modemDeviceList = [ '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
+modemDeviceList = [ '/dev/modem', '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
                      '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3' ]
 
 deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
