@@ -78,22 +78,9 @@ class basicDialog:
         self.load_icon("network.xpm")
         self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
 
-        if device.DeviceId:
-            self.xml.get_widget('deviceNameEntry').set_text(device.DeviceId)
-            self.xml.get_widget('deviceTypeEntry').set_text(str(device.Type))
-            self.xml.get_widget('onBootCB').set_active(device.OnBoot)
-            self.xml.get_widget('userControlCB').set_active(device.AllowUser)
-            
-            self.xml.get_widget('ipSettingCB').set_active(device.BootProto != 'static')
-            if device.BootProto == 'static':
-                self.xml.get_widget('addressEntry').set_text(device.IP)
-                self.xml.get_widget('netmaskEntry').set_text(device.Netmask)
-                self.xml.get_widget('gatewayEntry').set_text(device.Gateway)
-
-            self.xml.get_widget('hostnameEntry').set_text(device.Hostname)
-            self.xml.get_widget('dnsSettingCB').set_active(device.AutoDNS)
-
         notebook = self.xml.get_widget("basicNotebook")
+
+        self.fill_dialog()
 
         for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
             widget = self.xml.get_widget (wname)
@@ -105,6 +92,38 @@ class basicDialog:
         self.dialog.set_close(TRUE)
         #self.dialog.close_hides(TRUE)
         #self.dialog.show()
+
+    def fill_dialog(self):
+        if self.device.DeviceId:
+            self.xml.get_widget('deviceNameEntry').set_text(self.device.DeviceId)
+            self.xml.get_widget('deviceTypeEntry').set_text(str(self.device.Type))
+            self.xml.get_widget('onBootCB').set_active(self.device.OnBoot)
+            self.xml.get_widget('userControlCB').set_active(self.device.AllowUser)
+            
+            self.xml.get_widget('ipSettingCB').set_active(self.device.BootProto != 'static')
+            self.xml.get_widget('addressEntry').set_text(self.device.IP)
+            self.xml.get_widget('netmaskEntry').set_text(self.device.Netmask)
+            self.xml.get_widget('gatewayEntry').set_text(self.device.Gateway)
+
+            self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
+            self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
+
+    def read_dialog(self):
+        self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
+        self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
+        self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
+        self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
+            
+        if self.xml.get_widget('ipSettingCB').get_active(): 
+            self.device.BootProto = self.xml.get_widget('dynamicConfigEntry').get_text()            
+        else:
+            self.device.BootProto = 'static'
+            self.device.IP = self.xml.get_widget('addressEntry').get_text()
+            self.device.Netmask = self.xml.get_widget('netmaskEntry').get_text()
+            self.device.Gateway = self.xml.get_widget('gatewayEntry').get_text()
+
+        self.device.Hostname = self.xml.get_widget('hostnameEntry').get_text()
+        self.device.AutoDNS = self.xml.get_widget('dnsSettingCB').get_active()
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -128,6 +147,7 @@ class basicDialog:
         pass
     
     def on_okButton_clicked(self, button):
+        self.read_dialog()
         self.device.commit()
         pass
     
@@ -136,6 +156,7 @@ class basicDialog:
         pass
     
     def on_applyButton_clicked(self, button):
+        self.read_dialog()
         self.device.commit()
         pass
 
@@ -169,6 +190,7 @@ class basicDialog:
     
     def on_deviceNameEntry_changed(self, entry):
         deviceName = string.strip(entry.get_text())
+        self.device.DeviceId = deviceName
         self.xml.get_widget("deviceTypeComboBox").set_sensitive(len(deviceName) > 0)
         self.xml.get_widget("configureButton").set_sensitive(len(deviceName) > 0)
 
