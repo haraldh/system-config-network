@@ -414,22 +414,22 @@ def set_icon (widget, pixmapFile):
 def setup_provider_db ():
     dbtree = xml.get_widget ("providerTree")
     dbtree.set_line_style(CTREE_LINES_DOTTED)
-    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "de.xpm")
+    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "pixmaps/de.xpm")
     node1 = dbtree.insert_node(None, None, ["Germany"], 5, pix, mask, pix, mask, is_leaf=FALSE)
     node2 = dbtree.insert_node(node1, None, ["T Online"])
     node3 = dbtree.insert_node(node1, None, ["Freenet"])
-    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "us.xpm")
+    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "pixmaps/us.xpm")
     node4 = dbtree.insert_node(None, None, ["America"], 5, pix, mask, pix, mask, is_leaf=FALSE)
     node5 = dbtree.insert_node(node4, None, ["ATT"])
     node6 = dbtree.insert_node(node4, None, ["Bell"])
-    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "no.xpm")
+    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "pixmaps/no.xpm")
     node7 = dbtree.insert_node(None, None, ["Norway"], 5, pix, mask, pix, mask, is_leaf=FALSE)
     node8 = dbtree.insert_node(node7, None, ["Nextra"])
     
 def setup ():
     networkPixmap = xml.get_widget ("networkPixmap")
     basicNotebook = xml.get_widget ("basicNotebook")
-    set_icon (networkPixmap, "network.xpm")
+    set_icon (networkPixmap, "pixmaps/network.xpm")
     for i in [4,5,6]:
         basicNotebook.get_nth_page (i).hide ()
 
