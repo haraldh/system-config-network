@@ -47,6 +47,7 @@ country_code = {
     _("Argentina") : 54,
     _("Australia") : 61,
     _("Austria") : 43,
+    _("Belarus") : 375,
     _("Belgium") : 32,
     _("Bosnia and Hercegovina") : 387,
     _("Brazil") : 55,
@@ -59,6 +60,7 @@ country_code = {
     _("Colombia") : 47,
     _("Croatia") : 385,
     _("Cuba") : 53,
+    _("Cyprus") : 357,
     _("Czech Republic") : 420,
     _("Denmark") : 45,
     _("Finland") : 358,
@@ -74,18 +76,30 @@ country_code = {
     _("Israel") : 972,
     _("Italy") : 39,
     _("Japan") : 81,
+    _("Kazakhstan") : 7,
     _("Korea North") : 850,
     _("Korea Republic") : 82,
-    _("Malaysia") : 60,
+    _("Liechtenstein") : 423,
+    _("Lithuania") : 370,
     _("Luxembourg") : 352,
+    _("Macedonia") : 389,
+    _("Malaysia") : 60,
+    _("Malta") : 356,
     _("Mexico") : 52,
+    _("Moldova") : 373,
+    _("Monaco") : 377,
     _("Netherlands") : 31,
     _("New Zealand") : 64,
     _("Norway") : 47,
+    _("Palestine") : 970,
     _("Philippines") : 63,
+    _("Poland") : 48,
+    _("Portugal") : 351,
     _("Romania") : 30,
+    _("Russia") : 7,
     _("Singapore") : 65,
     _("Slovakia") : 421,
+    _("Slovenia") : 386,
     _("Spain") : 34,
     _("Sweden") : 46,
     _("Switzerland") : 41,
@@ -672,5 +686,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:10:13 $"
-__version__ = "$Revision: 1.64 $"
+__date__ = "$Date: 2003/10/27 13:53:15 $"
+__version__ = "$Revision: 1.65 $"
