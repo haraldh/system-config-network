@@ -62,8 +62,8 @@ class DevIsdn(Device):
       command = '/bin/sh'
       param = [ command,
                 "-c",
-                "/sbin/ifup %s; /usr/sbin/userisdnctl dial %s" % \
-                ( self.DeviceId, self.getDeviceAlias() ) ]
+                "/sbin/ifup %s; /usr/sbin/userisdnctl %s dial" % \
+                ( self.DeviceId, self.DeviceId ) ]
 
       try:
          (ret, msg) =  generic_run_dialog(\
@@ -86,8 +86,8 @@ class DevIsdn(Device):
       command = '/bin/sh'
       param = [ command,
                 "-c",
-                "/usr/sbin/userisdnctl hangup %s;/sbin/ifdown %s;" % \
-                ( self.getDeviceAlias(), self.DeviceId ) ]
+                "/usr/sbin/userisdnctl %s hangup ;/sbin/ifdown %s;" % \
+                ( self.DeviceId, self.DeviceId ) ]
 
       try:
          (ret, msg) =  generic_run_dialog(\
@@ -117,5 +117,5 @@ def setDevIsdnWizard(wizard):
 df = getDeviceFactory()
 df.register(DevIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:40:34 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2004/03/10 14:45:14 $"
+__version__ = "$Revision: 1.8 $"
