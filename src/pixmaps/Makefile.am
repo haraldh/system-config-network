@@ -11,6 +11,7 @@ netconfimg_DATA = \
 	no.xpm \
 	si.xpm \
 	us.xpm \
+	uk.xpm \
 	nameresolution_alias.png \
 	connection-ethernet.png \
 	network.png
