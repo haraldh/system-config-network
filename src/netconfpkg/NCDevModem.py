@@ -16,6 +16,7 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 from netconfpkg.NCDevice import Device
+from netconfpkg.NCDevice import ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import *
 
