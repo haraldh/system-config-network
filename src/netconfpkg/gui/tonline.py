@@ -51,13 +51,10 @@ class TonlineDialog:
                                              r"^[0-9]"),
             "on_ZNEntry_insert_text" : (self.on_generic_entry_insert_text,
                                              r"^[0-9]"),
-            "on_pwEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                             r"^[0-9]"),
             "on_mbnEntry_insert_text" : \
             (self.on_generic_entry_insert_text, r"^[0-9]"),
             "on_AKEntry_changed" : (self.on_generic_entry_changed, 12),
             "on_ZNEntry_changed" : (self.on_generic_entry_changed, 12),
-            "on_pwEntry_changed" : (self.on_generic_entry_changed, 8),
             "on_mbnEntry_changed" : (self.on_generic_entry_changed, 4),
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
@@ -118,5 +115,5 @@ class TonlineDialog:
         
         pass
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.5 $"
+__date__ = "$Date: 2003/10/28 10:31:49 $"
+__version__ = "$Revision: 1.6 $"
