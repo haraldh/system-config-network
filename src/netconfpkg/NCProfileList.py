@@ -338,7 +338,7 @@ class ProfileList(ProfileList_base):
                 unlink('/etc/resolv.conf')
 
             link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
-
+            
             if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
                 rename('/etc/hosts', '/etc/hosts.bak')
             else:

@@ -1458,8 +1458,6 @@ if __name__ == '__main__':
         sys.exit(1)
 
     sys.excepthook = lambda type, value, tb: handleException((type, value, tb))
-
-
     
     try:
         if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':

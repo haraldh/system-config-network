@@ -251,6 +251,7 @@ def updateNetworkScripts():
        print "Copying /etc/hosts to default profile."
        try:
            shutil.copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
+           shutil.copymode('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
        except:
            print "An error occured during moving the /etc/hosts file."
 
@@ -260,6 +261,7 @@ def updateNetworkScripts():
             print "Copying /etc/resolv.conf to default profile."
             try:
                 shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
+                shutil.copymode('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
             except:
                 print "An error occured during moving the /etc/resolv.conf file."
     except:
