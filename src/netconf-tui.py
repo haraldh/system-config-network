@@ -11,16 +11,10 @@ from snack import *
 
 PROGNAME='redhat-config-network'
 
-import gettext
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-    import __builtin__
-    __builtin__.__dict__['_'] = gettext.gettext
-except IOError:
-    import __builtin__
-    __builtin__.__dict__['_'] = unicode    
+import locale
+from rhpl.translate import _, N_, textdomain_codeset
+locale.setlocale(locale.LC_ALL, "")
+textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 
 import sys
 import string
@@ -34,13 +28,10 @@ if not "/usr/share/redhat-config-network" in sys.path:
 if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
-
-
 from version import PRG_VERSION
 from version import PRG_NAME
 import traceback
 import types
-
 
 # XXX do length limits on obj dumps.
 def dumpClass(instance, fd, level=0):
