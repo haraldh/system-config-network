@@ -106,8 +106,10 @@ class tcpConfigDialog:
 
             if self.device.Hostname:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
-            if self.device.AutoDNS:
+
+            if self.device.AutoDNS != None:
                 self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
+
             clist = self.xml.get_widget('networkRouteList')
             clist.clear()
             self.device.createStaticRoutes()

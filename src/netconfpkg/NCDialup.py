@@ -7,16 +7,85 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
+import gettext
 
 from DeviceList import *
 from NC_functions import *
-        
+
+##
+## I18N
+##
+gettext.bindtextdomain("netconf", "/usr/share/locale")
+gettext.textdomain("netconf")
+_=gettext.gettext
+
+country_code = {
+    _("Afghanistan") : 93,
+    _("Albania") : 355,
+    _("Algeria") : 213,
+    _("American Samoa") : 684,
+    _("Andorra") : 376,
+    _("Argentina") : 54,
+    _("Australia") : 61,
+    _("Austria") : 43,
+    _("Belgium") : 32,
+    _("Bosnia and Herzegonia") : 387,
+    _("Brazil") : 55,
+    _("Britisch Virgin Islands") : 1, 
+    _("Bulgaria") : 359,
+    _("Canada") : 1,
+    _("Central African Republic") : 236,
+    _("Chile") : 56,
+    _("China") : 86,
+    _("Colombia") : 47,
+    _("Croatia") : 385,
+    _("Cuba") : 53,
+    _("Czech Republic") : 420,
+    _("Denmark") : 45,
+    _("Finnland") : 358,
+    _("France") : 33,
+    _("Germany") : 49,
+    _("Greece") : 30,
+    _("Hong Kong") : 852,
+    _("Hungary") : 36,
+    _("Iceland") : 354,
+    _("India") : 91,
+    _("Indonesia") : 62,
+    _("Ireland") : 353,
+    _("Israel") : 972,
+    _("Italy") : 39,
+    _("Japan") : 81,
+    _("Korea North") : 850,
+    _("Korea Republic") : 82,
+    _("Malaysia") : 60,
+    _("Luxemburg") : 352,
+    _("Mexico") : 52,
+    _("Netherlands") : 31,
+    _("New Zealand") : 64,
+    _("Norway") : 47,
+    _("Philippines") : 63,
+    _("Romania") : 30,
+    _("Singapore") : 65,
+    _("Slovakia") : 421,
+    _("Spain") : 34,
+    _("Sweden") : 46,
+    _("Switzerland") : 41,
+    _("Taiwan") : 886,
+    _("Thailand") : 66,
+    _("Turkey") : 90,
+    _("Ukraine") : 380,
+    _("United Kingdom") : 44,
+    _("United States of Amerika") : 1,
+    _("Vietnam") : 84,
+    _("Yugoslavia") : 381
+    }
+
 class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)        
 
 class DslDialup(Dialup):
-    boolkeydict = { 'PeerDNS' : 'PEERDNS',
+    boolkeydict = { 'PeerDNS' : 'RESOLV_MODS',
                     'DefRoute' : 'DEFROUTE',
                     'SyncPPP' : 'SYNCHRONOUS',
                     }
@@ -97,6 +166,12 @@ class DslDialup(Dialup):
         if not conf.has_key('PIDFILE'):
             conf['PIDFILE'] = '/var/run/pppoe-adsl.pid'
 
+        for i in conf.keys():
+            if not conf[i]: del conf[i]
+
+        if conf.has_key('RESOLV_MODS'):
+            del conf['RESOLV_MODS']
+        
         conf.write()
 
 
@@ -123,7 +198,6 @@ class IsdnDialup(Dialup):
                 'PhoneNumber' : 'PHONE_OUT',
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
-                'Layer2' : 'LAYER',
                 'ChargeHup' : 'CHARGEHUP',
                 'ChargeInt' : 'CHARGEINT',
                 'Authentication' : 'AUTH',
@@ -237,6 +311,8 @@ class IsdnDialup(Dialup):
                 if opt != "": opt = opt + ' '
                 opt = opt + self.PPPOptions[i]
             conf['PPPOPTIONS'] = opt
+        else:
+            del conf['PPPOPTIONS']
 
         parent = self.getParent()
 
@@ -256,6 +332,9 @@ class IsdnDialup(Dialup):
         else:
             conf['CALLBACK'] == 'off'
 
+        for i in conf.keys():
+            if not conf[i]: del conf[i]
+        
         conf.write()
         
     
@@ -358,7 +437,9 @@ class ModemDialup(Dialup):
         parent = self.getParent()
 
         if parent:                                
-            devname = parent.Device
+            #devname = parent.Device
+            #name = parent.DeviceId
+            devname = parent.Name
             name = parent.DeviceId
         else:
             devname = '*'
@@ -389,15 +470,16 @@ class ModemDialup(Dialup):
                 if conf[sectname].has_key(confkey):
                     del conf[sectname][confkey] 
 
-        for i in xrange(min([len(self.InitStrings), 9])):
-            confkey = 'Init'
-            if i: confkey = confkey + str(i)                
+        if self.InitStrings:
+            for i in xrange(min([len(self.InitStrings), 9])):
+                confkey = 'Init'
+                if i: confkey = confkey + str(i)                
             
-            if self.InitStrings[i]:
-                conf[sectname][confkey] = str(self.InitStrings[i])
-            else:
-                if conf[sectname].has_key(confkey):
-                    del conf[sectname][confkey]
+                if self.InitStrings[i]:
+                    conf[sectname][confkey] = str(self.InitStrings[i])
+                else:
+                    if conf[sectname].has_key(confkey):
+                        del conf[sectname][confkey]
 
 
         if self.PPPOptions:
@@ -410,7 +492,10 @@ class ModemDialup(Dialup):
 
 
         conf[sectname]['Inherits'] = devname
-                    
+
+        for i in conf.keys():
+            if not conf[i]: del conf[i]
+
         conf.write()
 
         #

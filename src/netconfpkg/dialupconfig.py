@@ -76,18 +76,29 @@ class DialupDialog(deviceConfigDialog):
             self.xml.get_widget("loginNameEntry").set_text(self.device.Dialup.Login)
         if self.device.Dialup.Password:
             self.xml.get_widget("passwordEntry").set_text(self.device.Dialup.Password)
+
+        state = false
         if self.device.Dialup.Areacode:
             self.xml.get_widget("areaCodeEntry").set_text(self.device.Dialup.Areacode)
+            state = true
         if self.device.Dialup.PhoneNumber:
             self.xml.get_widget("phoneEntry").set_text(self.device.Dialup.PhoneNumber)
         if self.device.Dialup.Prefix:
             self.xml.get_widget("prefixEntry").set_text(self.device.Dialup.Prefix)
-        if self.device.Dialup.Areacode and self.device.Dialup.Prefix and self.device.Dialup.Regioncode:
-            self.xml.get_widget("dialingRuleCB").set_active(len(self.device.Dialup.Areacode) >0 or
-                                                            len(self.device.Dialup.Prefix) >0 or
-                                                            len(self.device.Dialup.Regioncode) >0)
+            state = true
+        country_code_list = NCDialup.country_code.keys()
+        country_code_list.sort()
+        widget =  self.xml.get_widget("countryCodeEntry")
+        self.xml.get_widget("countryCodeCombo").set_popdown_strings(country_code_list)
         if self.device.Dialup.Regioncode and len(self.device.Dialup.Regioncode) >0:
-            self.xml.get_widget("countryCodeEntry").set_text(self.device.Dialup.Regioncode)
+            widget.set_text(string.split(self.device.Dialup.Regioncode, ":")[1])
+            state = true
+        else:
+            widget.set_text(_("Germany"))
+        self.xml.get_widget("dialingRuleCB").set_active(state)
+        self.xml.get_widget("prefixEntry").set_sensitive(state)
+        self.xml.get_widget("areaCodeEntry").set_sensitive(state)
+        self.xml.get_widget("countryCodeEntry").set_sensitive(state)
 
         if self.device.Dialup.Authentication and len(self.device.Dialup.Authentication) >0:
             self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)
@@ -101,9 +112,11 @@ class DialupDialog(deviceConfigDialog):
                 self.xml.get_widget("acCompressionCB").set_active(self.device.Dialup.Compression.AdressControl == true)
 
         if self.device.Dialup.PPPOptions:
-            self.xml.get_widget("pppOptionList").set_sensitive(len(self.device.Dialup.PPPOptions)>0)
+            widget = self.xml.get_widget("pppOptionList")
+            widget.clear()
+            widget.set_sensitive(len(self.device.Dialup.PPPOptions)>0)
             for plist in self.device.Dialup.PPPOptions:
-                self.xml.get_widget("pppOptionList").append([plist])
+                widget.append([plist])
 
         
     def dehydrate(self):
@@ -111,10 +124,12 @@ class DialupDialog(deviceConfigDialog):
         self.device.Dialup.ProviderName = self.xml.get_widget("providerName").get_text()
         self.device.Dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         self.device.Dialup.Password = self.xml.get_widget("passwordEntry").get_text()
-        self.device.Dialup.Areacode = self.xml.get_widget("areaCodeEntry").get_text()
+        if self.xml.get_widget("dialingRuleCB").get_active():
+            self.device.Dialup.Areacode = self.xml.get_widget("areaCodeEntry").get_text()
+            self.device.Dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
+            country = self.xml.get_widget("countryCodeEntry").get_text()
+            self.device.Dialup.Regioncode = country + ":" + str(country_code[country])
         self.device.Dialup.PhoneNumber = self.xml.get_widget("phoneEntry").get_text()
-        self.device.Dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
-        self.device.Dialup.Regioncode = self.xml.get_widget("countryCodeEntry").get_text()
 
         self.device.Dialup.PPPOptions = None
         self.device.Dialup.createPPPOptions()
@@ -237,42 +252,26 @@ class ISDNDialupDialog(DialupDialog):
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(self.device.Dialup.HangupTimeout)
         if self.device.Dialup.DialMode:
             self.xml.get_widget("dialModeISDNEntry").set_text(self.device.Dialup.DialMode)
-        if self.device.Dialup.EncapMode:
-            self.xml.get_widget("encapModeEntry").set_text(self.device.Dialup.EncapMode)
+        if self.device.Dialup.EncapMode == "raw IP":
+            self.xml.get_widget("encapModeEntry").set_text('raw IP')
+        else:
+            self.xml.get_widget("encapModeEntry").set_text('sync PPP')
         if self.device.Dialup.MSN:
             self.xml.get_widget("msnEntry").set_text(str(self.device.Dialup.MSN))
         if self.device.Dialup.ChannelBundling:
             self.xml.get_widget("channelBundlingCB").set_active(self.device.Dialup.ChannelBundling == true)
-            
+        if self.device.Dialup.Authentication:
+            self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)
+
     def dehydrate(self):
         DialupDialog.dehydrate(self)
-        devicelist = getDeviceList()
-        
-        device_list_raw = []
-        device_list_sync = []
-
         if self.xml.get_widget("encapModeEntry").get_text() == "sync PPP":
             self.device.Dialup.EncapMode = "syncppp"
+            self.device.Device = "ippp"
         else:
             self.device.Dialup.EncapMode = "rawip"
+            self.device.Device = "isdn"
         
-        if not self.device.Device:
-            for i in devicelist:
-                if i.Type == 'ISDN':
-                    if i.Dialup.EncapMode == 'syncppp':
-                        device_list_sync.append(i.Device)
-                    else:
-                        device_list_raw.append(i.Device)
-            for i in xrange(100):
-                if self.device.Dialup.EncapMode == 'syncppp':
-                    if device_list_sync.count("ippp"+str(i)) == 0:
-                        self.device.Device = "ippp" + str(i)
-                        break
-                else:
-                    if device_list_raw.count("isdn"+str(i)) == 0:
-                        self.device.Device = "isdn" + str(i)
-                        break
-
         if self.xml.get_widget("callbackCB").get_active():
             self.device.Dialup.createCallback()
             self.device.Dialup.Callback.Number = self.xml.get_widget("dialinNumberEntry").get_text()
@@ -289,15 +288,12 @@ class ISDNDialupDialog(DialupDialog):
         
         self.device.Dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutISDNSB").get_value_as_int()
         self.device.Dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
-        self.device.Dialup.EncapMode = self.xml.get_widget("encapModeEntry").get_text()
         self.device.Dialup.MSN = self.xml.get_widget("msnEntry").get_text()
         if self.xml.get_widget("channelBundlingCB").get_active():
             self.device.Dialup.ChannelBundling = true
         else:
             self.device.Dialup.ChannelBundling = false
-
-        if not self.device.Device:
-            self.device.Device="isdn"
+        self.device.Dialup.Authentication = self.xml.get_widget("authEntry").get_text()
 
 
         
@@ -330,9 +326,18 @@ class ModemDialupDialog(DialupDialog):
             self.xml.get_widget("hangupTimeoutSB").set_value(self.device.Dialup.HangupTimeout)
         if self.device.Dialup.DialMode:
             self.xml.get_widget("dialModeEntry").set_text(self.device.Dialup.DialMode)
-        #        if self.device.Dialup.InitStrings:
-        # self.xml.get_widget("modemInitEntry").set_sensitive(FALSE)
 
+        if self.device.Dialup.InitStrings:
+           s = ""
+           widget = self.xml.get_widget("modemInitEntry")
+           for plist in self.device.Dialup.InitStrings:
+               s = s + plist
+           widget.set_text(s)
+
+        if self.device.Dialup.Persist:
+            self.xml.get_widget("persistCB").set_active(self.device.Dialup.Persist)
+        if self.device.Dialup.DefRoute:
+            self.xml.get_widget("defrouteCB").set_active(self.device.Dialup.DefRoute)
         if self.device.Name:
             self.xml.get_widget("modemPortEntry").set_text(self.device.Name)
 
@@ -347,6 +352,15 @@ class ModemDialupDialog(DialupDialog):
 
         if not self.device.Device:
             self.device.Device = "modem"
+
+        self.device.Dialup.Persist = self.xml.get_widget("persistCB").get_active()
+        self.device.Dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
+
+        self.device.Dialup.InitStrings = None
+        self.device.Dialup.createInitStrings()
+        for i in string.split(self.xml.get_widget("modemInitEntry").get_text()):
+            self.device.Dialup.InitStrings.append(i)
+
 
 # make ctrl-C work
 if __name__ == "__main__":

@@ -39,7 +39,7 @@ class Device(Device_base):
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
                     'AllowUser' : 'USERCTL',
-                    'AutoDNS' : 'RESOLV_MODS',
+                    'AutoDNS' : 'PEERDNS',
                     }
         
     def __init__(self, list = None, parent = None):

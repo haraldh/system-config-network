@@ -80,6 +80,7 @@ class DeviceList(DeviceList_base):
                         dev.Device = "ippp"+str(ipppnum)
                         if dev.Dialup.ChannelBundling == true:
                             ipppnum = ipppnum + 1
+                            dev.Dialup.SlaveDevice = "ippp"+str(ipppnum)
                         ipppnum = ipppnum + 1
                     else:
                         dev.Device = "isdn"+str(isdnnum)

@@ -64,6 +64,8 @@ class deviceConfigDialog:
                                                 r"^[a-z|A-Z|0-9]+$"),
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_protocolEditButton_clicked" : self.on_protocolEditButton_clicked,
+            "on_protocolList_button_press_event" : (self.on_generic_clist_button_press_event,
+                                                    self.on_protocolEditButton_clicked)
             })
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
@@ -100,11 +102,26 @@ class deviceConfigDialog:
             return
         entry.emit_stop_by_name('insert_text')
 
-    def on_protocolEditButton_clicked(self, button):
+    def on_protocolEditButton_clicked(self, *args):
         cfg = tcpdialog.tcpConfigDialog(self.device, self.xml)
         dialog = cfg.xml.get_widget ("Dialog")
         button = dialog.run ()
-    
+
+    def on_generic_clist_button_press_event(self, clist, event, func):
+        if event.type == GDK._2BUTTON_PRESS:
+            info = clist.get_selection_info(event.x, event.y)
+            if info != None:
+                id = clist.signal_connect("button_release_event",
+                                          self.on_generic_clist_button_release_event,
+                                          func)
+                clist.set_data("signal_id", id)
+
+    def on_generic_clist_button_release_event(self, clist, event, func):
+        id = clist.get_data ("signal_id")
+        clist.disconnect (id)
+        clist.remove_data ("signal_id")
+        apply (func)
+        
     def on_deviceNameEntry_changed(self, entry):
         deviceName = string.strip(entry.get_text())
         self.device.DeviceId = deviceName
