@@ -98,15 +98,15 @@ class Device(DeviceList.Device_base):
 
     def createDialup(self):
         if self.Type:
-            if self.Type == "Modem":
+            if self.Type == MODEM:
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.ModemDialup):
                     self.Dialup = NCDialup.ModemDialup(None, self)
-            elif self.Type == "ISDN":
+            elif self.Type == ISDN:
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.IsdnDialup):
                     self.Dialup = NCDialup.IsdnDialup(None, self)
-            elif self.Type == "xDSL":
+            elif self.Type == DSL:
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.DslDialup):
                     self.Dialup = NCDialup.DslDialup(None, self)
@@ -120,7 +120,7 @@ class Device(DeviceList.Device_base):
 
     def createCipe(self):
         if self.Type:
-            if self.Type == "CIPE":
+            if self.Type == CIPE:
                 DeviceList.Device_base.createCipe(self)
             else: self.Cipe = None
                 
@@ -131,7 +131,7 @@ class Device(DeviceList.Device_base):
 
     def createWireless(self):
         if self.Type:
-            if self.Type == "Wireless":
+            if self.Type == WIRELESS:
                 DeviceList.Device_base.createWireless(self)
             else: self.Wireless = None
                 
@@ -216,6 +216,10 @@ class Device(DeviceList.Device_base):
         num = len(rconf.keys())
         self.createStaticRoutes()
 
+        if self.Type == CTC or self.Type == IUCV:
+            if conf['MTU']:
+                self.Mtu = conf['MTU']
+                
         if math.fmod(num, 3) != 0:
             print (_("Static routes file for %s has not vaild format")) % name
         else:
@@ -268,6 +272,12 @@ class Device(DeviceList.Device_base):
                                             ' 2>/dev/null')
             if network:
                 conf['NETWORK'] = network[8:]
+
+        if self.Type == CTC or self.Type == IUCV:
+            if not self.Mtu: self.Mtu = 1492
+            conf['MTU'] = self.Mtu
+            if conf['GATEWAY']:
+                conf['REMIP'] = conf['GATEWAY']
 
         if self.Dialup:
             self.Dialup.save(conf)

@@ -29,11 +29,11 @@ import gettext
 import re
 
 from dialupconfig import *
+from dialupconfig import _
 from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from editadress import editAdressDialog
 from NC_functions import *
-from NC_functions import _
 from gtk import TRUE
 from gtk import FALSE
 
@@ -60,24 +60,41 @@ class deviceTypeDialog:
         load_icon("network.xpm", self.dialog)
 
         devicetypes=deviceTypes[:]
-        devicetypes.remove('Loopback')
+        devicetypes.remove(LO)
 
         hardwarelist = NCHardwareList.getHardwareList()
+        machine = os.uname()[4]
         ethernetFound = FALSE
         modemFound = FALSE
         isdnFound = FALSE
         tokenringFound = FALSE
+        adslFound = FALSE
+        cipeFound = FALSE
+        wirelessFound = FALSE
         for hw in hardwarelist:
-            if hw.Type == 'Modem': modemFound = TRUE
-            elif hw.Type == 'ISDN': isdnFound = TRUE
-            elif hw.Type == 'Ethernet': ethernetFound = TRUE
-            elif hw.Type == 'Token Ring': tokenringFound = TRUE
-        if not modemFound: devicetypes.remove('Modem')
-        if not isdnFound: devicetypes.remove('ISDN')
-        if not ethernetFound:
-            for t in ['Ethernet', 'xDSL', 'CIPE']:
-                devicetypes.remove(t)
-        if not tokenringFound: devicetypes.remove('Token Ring')
+            if hw.Type == MODEM: modemFound = TRUE
+            elif hw.Type == ISDN: isdnFound = TRUE
+            elif hw.Type == ETHERNET:
+                ethernetFound = TRUE
+                adslFound = TRUE
+                cipeFound = TRUE
+                wirelessFound = TRUE
+            elif hw.Type == TOKENRING: tokenringFound = TRUE
+        if machine == 's390' or machine == 's390x':
+            modemFound = FALSE
+            isdnFound = FALSE
+            adslFound = FALSE
+            wirelessFound = FALSE
+        else:
+            devicetypes.remove(CTC)
+            devicetypes.remove(IUCV)
+        if not modemFound: devicetypes.remove(MODEM)
+        if not isdnFound: devicetypes.remove(ISDN)
+        if not ethernetFound: devicetypes.remove(ETHERNET)
+        if not adslFound: devicetypes.remove(DSL)
+        if not cipeFound: devicetypes.remove(CIPE)
+        if not tokenringFound: devicetypes.remove(TOKENRING)
+        if not wirelessFound: devicetypes.remove(WIRELESS)
         
         omenu = self.xml.get_widget('deviceTypeOption')
         omenu.remove_menu ()

@@ -469,39 +469,44 @@ class mainDialog:
         device.createCipe()
         device.createWireless()
 
-        if type == "Ethernet":
+        if type == ETHERNET:
             cfg = ethernetConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
-        elif type == "Token Ring":
+        elif type == TOKENRING:
             cfg = tokenringConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
-        elif type == "ISDN":
+        elif type == ISDN:
             cfg = ISDNDialupDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
-        elif type == "Modem":
+        elif type == MODEM:
             cfg = ModemDialupDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
-        elif type == "xDSL":
+        elif type == DSL:
             cfg = dslConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
-        elif type == "CIPE":
+        elif type == CIPE:
             cfg = cipeConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
-        elif type == "Wireless":
+        elif type == WIRELESS:
             cfg = wirelessConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+
+        elif type == CTC or type == IUCV:
+            cfg = ctcConfigDialog(device, self.xml)
+            dialog =  cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         else:

@@ -55,11 +55,15 @@ class hardwareTypeDialog:
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
 
+        machine = os.uname()[4]
         hardwarelist = NCHardwareList.getHardwareList()
-        devicetypes = ['Ethernet', 'Modem', 'ISDN', 'Token Ring']
+        devicetypes = [ ETHERNET, MODEM, ISDN, TOKENRING ]
         for hw in hardwarelist:
-            if hw.Type == 'ISDN':
-                devicetypes = ['Ethernet', 'Modem', 'Token Ring']
+            if hw.Type == ISDN:
+                devicetypes = [ ETHERNET, MODEM, TOKENRING ]
+
+        if machine == 's390' or machine == 's390x':
+            devicetypes = [ ETHERNET, TOKENRING ]
 
         self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
         self.hydrate()

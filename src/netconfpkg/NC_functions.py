@@ -45,25 +45,35 @@ gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
 _ = gettext.gettext
 
-deviceTypes = [ 'Ethernet',
-                'Modem',
-                'ISDN',
-                'Loopback',
-                'xDSL',
-                'CIPE',
-                'Wireless',
-		'Token Ring'
-                ]
+ETHERNET = 'Ethernet'
+MODEM = 'Modem'
+ISDN = 'ISDN'
+LO = 'Loopback'
+DSL = 'xDSL'
+CIPE = 'CIPE'
+WIRELESS = 'Wireless'
+TOKENRING = 'Token Ring'
+CTC = 'CTC'
+IUCV = 'IUCV'
+
+deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV ]
 
 modemDeviceList = [ '/dev/modem', '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
-                     '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3' ]
+		    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3' ]
 
-deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
-               '^ppp[0-9]+(:[0-9]+)?$':'Modem',
-               '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
-               '^cipcb[0-9]+(:[0-9]+)?$':'CIPE',
-	       '^tr[0-9]+(:[0-9]+)?$':'Token Ring',
-               '^lo$':'Loopback'}
+ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
+
+iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
+
+deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
+		   '^ppp[0-9]+(:[0-9]+)?$' : MODEM,
+		   '^ippp[0-9]+(:[0-9]+)?$' : ISDN,
+		   '^cipcb[0-9]+(:[0-9]+)?$' : CIPE,
+		   '^tr[0-9]+(:[0-9]+)?$' :TOKENRING,
+		   '^lo$' : LO,
+		   '^ctc[0-9]+(:[0-9]+)?$' : CTC,
+		   '^iucv[0-9]+(:[0-9]+)?$' : IUCV
+		   }
 
 class TestError(Exception):
 	def __init__(self, args=None):
@@ -102,7 +112,7 @@ def create_ethernet_combo(hardwarelist, devname):
         hwcurr = None
         
         for hw in hardwarelist:
-            if hw.Type == "Ethernet":
+            if hw.Type == ETHERNET:
                 desc = str(hw.Name) + ' (' + hw.Description + ')'
                 try:
                     i = hwdesc.index(hw.Name)
@@ -131,7 +141,7 @@ def create_tokenring_combo(hardwarelist, devname):
         hwcurr = None
         
         for hw in hardwarelist:
-            if hw.Type == "Token Ring":
+            if hw.Type == TOKENRING:
                 desc = str(hw.Name) + ' (' + hw.Description + ')'
                 try:
                     i = hwdesc.index(hw.Name)
