@@ -47,15 +47,14 @@ class Address:
         if not os.path.exists(filename):
            raise IOError,"File not Found"
         confFile=Conf.ConfShellVar(filename)
-        confFile.read()
         self._address=confFile["IPADDR"]
         self._broadcast=confFile["BROADCAST"]
-
         netmask=confFile["NETMASK"]
-
-        if self._address:
+        self._device=confFile["DEVICE"]
+        if self._address and netmask:
             calc=ipcalc.IPCalc(self._address,netmask)
             self._prefix=calc.prefix()
+        
     
     def readFile(self,filename,number=""):
         """
@@ -245,12 +244,13 @@ class AddressList:
         @self The object instance
         """
 
+        res=""
         if(len(self._list)>1):
-            res=""
             for i in range(0,len(self._list)):
                 res=res+self._list[i].toString(i)
         else:
-            res=self._list[0].toString() 
+            if(len(self._list)>0):
+                res=self._list[0].toString() 
         return res
 
     def readFile(self,filename):
@@ -263,7 +263,7 @@ class AddressList:
         # Handle the case where you only have one non-numbered entry
            
         address=Address(filename)
-        if address.address():
+        if address.address() or address.device():
             self.addAddress(address)
             return
 
