@@ -321,8 +321,13 @@ class mainDialog:
         self.hydrateProfiles()
         self.hydrateDevices()
         self.hydrateHardware()
+        self.checkApply()
+
+    def checkApply(self, changed = -1):
+        if changed == -1:
+            changed = self.changed()
         apply_btn = self.xml.get_widget("applyButton")
-        if self.changed():
+        if changed:
             apply_btn.set_sensitive (TRUE)
         else:
             apply_btn.set_sensitive (FALSE)
@@ -887,15 +892,19 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.Hostname = entry.get_text()
+                prof.DNS.commit()
                 break
-            
+        self.checkApply()
+        
     def on_domainEntry_changed(self, entry):
         profilelist = getProfileList()
 
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.Domainname = entry.get_text()
+                prof.DNS.commit()
                 break
+        self.checkApply()
             
     def on_primaryDnsEntry_changed(self, entry):
         profilelist = getProfileList()
@@ -903,7 +912,9 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.PrimaryDNS = entry.get_text()
+                prof.DNS.commit()
                 break
+        self.checkApply()
             
     def on_secondaryDnsEntry_changed(self, entry):
         profilelist = getProfileList()
@@ -911,7 +922,9 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.SecondaryDNS = entry.get_text()
+                prof.DNS.commit()
                 break
+        self.checkApply()
             
     def on_tertiaryDnsEntry_changed(self, entry):
         profilelist = getProfileList()
@@ -919,7 +932,9 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.TertiaryDNS = entry.get_text()
+                prof.DNS.commit()
                 break
+        self.checkApply()
             
     def on_searchDnsEntry_changed(self, entry):
         if len (string.strip (entry.get_text ())) == 0:
