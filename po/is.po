@@ -192,11 +192,11 @@ msgstr ""
 #.
 #: src/netconf-tui.py:135
 msgid "Run anyway"
-msgstr ""
+msgstr "Keyra samt"
 
 #: src/netconf-tui.py:136
 msgid "IMPORTANT"
-msgstr ""
+msgstr "MIKILVÆGT"
 
 #: src/netconf-tui.py:137
 #, python-format
@@ -207,10 +207,15 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
+"Þetta tól er ekki stutt! Vinsamlegast notaðu myndrænu útgáfuna því hún "
+"hefur fulla virkni.\n"
+"Ef það er enginn X þjónn uppsettur á þessari vél getur þú tengst henni frá "
+"annari með ssh og notað X11 áframsendingu. Ef þú vilt virkilega nota þetta "
+"tól skaltu slá á <%s>."
 
 #: src/netconf-tui.py:147
 msgid "Quit"
-msgstr ""
+msgstr "Hætta"
 
 #: src/netconf-tui.py:152
 msgid "What do you want to configure?"
@@ -397,9 +402,8 @@ msgid "export / import hardware list"
 msgstr "flytja inn/út vélbúnaðarlistann"
 
 #: src/netconf-cmd.py:110
-#, fuzzy
 msgid "export / import IPsec list"
-msgstr "flytja inn/út lista sniðmáta"
+msgstr "flytja inn/út IPsec lista"
 
 #: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
@@ -1512,9 +1516,9 @@ msgstr "Breyta tæki..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:859
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "Það er ekki hægt að breyta 'Loopback' tækinu!"
+msgstr "Það er ekki hægt að breyta %s tækjagerðinni!\n"
 
 #: src/netconfpkg/gui/maindialog.py:878
 msgid "The Loopback device can not be removed!"
@@ -1710,14 +1714,12 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from CTCHardwareDruid import CTCHardware
 #: src/netconfpkg/gui/CTCInterface.py:48
-#, fuzzy
 msgid "CTC connection"
-msgstr "%s tenging"
+msgstr "CTC tenging"
 
 #: src/netconfpkg/gui/CTCInterface.py:54
-#, fuzzy
 msgid "Create a new CTC connection."
-msgstr "Búa til nýja %s tengingu."
+msgstr "Búa til nýja CTC tengingu."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1757,18 +1759,16 @@ msgstr "IUCV tæki"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from IUCVHardwareDruid import IUCVHardware
 #: src/netconfpkg/gui/IUCVInterface.py:48
-#, fuzzy
 msgid "IUCV connection"
-msgstr "ISDN tenging"
+msgstr "IUCV tenging"
 
 #: src/netconfpkg/gui/IUCVInterface.py:54
-#, fuzzy
 msgid "Create a new IUCV connection."
-msgstr "Búa til nýja %s tengingu."
+msgstr "Búa til nýja IUCV tengingu."
 
 #: src/netconfpkg/gui/PTPInterface.py:222
 msgid "Point to Point (IP):"
-msgstr ""
+msgstr "Stap í Stað (IP):"
 
 #. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 #. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
@@ -2664,34 +2664,32 @@ msgstr "Gælunafni breytt"
 #. save ipsec settings
 #.
 #: src/netconfpkg/NCIPsec.py:168
-#, fuzzy
 msgid "IPsec activating..."
-msgstr "Netkort að fara í gang..."
+msgstr "IPsec að fara í gang..."
 
 #: src/netconfpkg/NCIPsec.py:169
-#, fuzzy, python-format
+#, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "Ræsi netkortið %s. Vinsamlegast bíðið..."
+msgstr "Ræsi IPsec tenginguna %s. Vinsamlegast bíðið..."
 
 #: src/netconfpkg/NCIPsec.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate IPsec connection %s!\n"
-msgstr "Get ekki gangsett netkortið %s!\n"
+msgstr "Get ekki gangsett IPsec tenginguna %s!\n"
 
 #: src/netconfpkg/NCIPsec.py:188
-#, fuzzy
 msgid "IPsec deactivating..."
-msgstr "Netkort að fara niður..."
+msgstr "IPsec að fara niður..."
 
 #: src/netconfpkg/NCIPsec.py:189
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "Slekk á netkortinu %s. Vinsamlegast bíðið..."
+msgstr "Slekk á IPsec tengingunni %s. Vinsamlegast bíðið..."
 
 #: src/netconfpkg/NCIPsec.py:191
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "Get ekki slökkt á netkortinu %s!\n"
+msgstr "Get ekki slökkt á IPsec tengingunni %s!\n"
 
 #. Module Cyclops version 0.9.4.
 #. Released to the public domain 18-Jul-1999,
@@ -4646,31 +4644,27 @@ msgstr "Þráðlaus netkort"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:2
 msgid "Checksum IP packets"
-msgstr ""
+msgstr "Gátsumma IP pakka"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:3
-#, fuzzy
 msgid "Data Channel:"
-msgstr "Rás: "
+msgstr "Gagnarás:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:4
 msgid "Memory Usage:"
-msgstr ""
+msgstr "Minnisnotkun:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:6
-#, fuzzy
 msgid "Port:"
-msgstr "Staðbundin gátt:"
+msgstr "Gátt:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:8
-#, fuzzy
 msgid "Write Channel:"
-msgstr "Rás: "
+msgstr "Skrifrarrás:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:9
-#, fuzzy
 msgid "_Read Channel:"
-msgstr "_Rás:"
+msgstr "_Lesrás:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:2
 msgid "A_uthentication Key:"
