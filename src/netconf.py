@@ -94,6 +94,8 @@ def get_pixpath(pixmap_file):
 def splash_screen(gfx = None):
     if gfx:
         window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_title(PRG_NAME)
+        window.realize()
         window.set_position (gtk.WIN_POS_CENTER)
         pixmap_wid = gtk.Image()
         pixfile = get_pixpath("redhat-config-network-splash.png")
@@ -104,12 +106,16 @@ def splash_screen(gfx = None):
         pixmap_wid.realize()
     else:
         window = gtk.Window()
+        window.set_title(PRG_NAME)
+        window.realize()
         window.set_position (gtk.WIN_POS_CENTER)
         
         lbl = gtk.Label(_('Loading Network Configuration...'))
         window.add(lbl)
-        
+        lbl.realize()
+
     window.show_all()
+    
     while gtk.events_pending():
         gtk.main_iteration()
 
