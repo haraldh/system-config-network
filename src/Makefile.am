@@ -54,7 +54,8 @@ install-exec-local:
 
 uninstall-local:
 	rm -fr $(DESTDIR)$(pkgdatadir)
-	rm -f  $(DESTDIR)$(bindir)/neat-control 
+	rm -f  $(DESTDIR)$(bindir)/neat-control
+	rm -f  $(DESTDIR)$(bindir)/redhat-control-network
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-gui
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-tui
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-cmd
