@@ -190,7 +190,10 @@ class ProfileList(ProfileList_base):
             for devId in prof.ActiveDevices:
                 for dev in devicelist:
                     if dev.DeviceId == devId:
-                        devName = dev.Device
+                        if dev.Type == "CIPE":
+                            devName = dev.DeviceId
+                        else:
+                            devName = dev.Device
 
                 try:
                     os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
