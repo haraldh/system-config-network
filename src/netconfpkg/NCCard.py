@@ -26,7 +26,7 @@ class Card(Card_base):
         Card_base.__init__(self, list, parent)
 
     def setDMA0(self, value):
-        Card_base.setDMA0(int(value))
+        Card_base.setDMA0(self, int(value))
 
     def setDMA1(self, value):
-        Card_base.setDMA1(int(value))
+        Card_base.setDMA1(self, int(value))

@@ -58,7 +58,7 @@ class GenClass:
 
       if type == BOOL:
          if value != None and value != true and value != false:
-            raise TypeError
+            raise ValueError
 
       elif value == None:
          return
@@ -66,25 +66,25 @@ class GenClass:
       elif type == LIST:
          if (ANONYMOUS in self._attributes[child][FLAGS]) \
             and not isinstance(value, GenAClassList):
-            raise TypeError
+            raise ValueError
          elif not isinstance(value, GenClassList):
-            raise TypeError
+            raise ValueError
          
       elif type == STRING:
          if not isinstance(value, StringType):
-            raise TypeError
+            raise ValueError
          
       elif type == BASE64:
          if not isinstance(value, StringType):
-            raise TypeError
+            raise ValueError
          
       elif type == INT:
          if not isinstance(value, IntType):
-            raise TypeError
+            raise ValueError
 
       elif type == FLOAT:
          if not isinstance(value, FloatType):
-            raise TypeError
+            raise ValueError
       
    
    #
@@ -194,6 +194,7 @@ class GenClassList(GenClass):
             getattr(self, "commit" + i)(changed)
 	
    def rollback(self):
+      #print "----------- rollback %s -------" % self._attributes[SELF][NAME]
       for i in self._attributes[SELF][CHILDKEYS]:
          getattr(self, "rollback" + i)()
 
@@ -419,13 +420,10 @@ class GenClassAList(GenClass, UserList):
                self.data.append(child.getValue())
 
    def rollback(self):
-      for i in self._attributes[SELF][CHILDKEYS]:
-         val = self._attributes[i]
-         if val[TYPE] == LIST:
-            for child in self.data_bak:
-               child.rollback()
-         else:
-            self.data = self.data_bak[:]
+      #print "------------ rollback %s -------" % self._attributes[SELF][NAME]
+      for child in self.data_bak:
+         child.rollback()
+      self.data = self.data_bak[:]
       
    def apply(self, other):
       if other == None:

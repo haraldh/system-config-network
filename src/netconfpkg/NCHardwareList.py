@@ -284,6 +284,8 @@ class HardwareList(HardwareList_base):
                            and (hw.Card.IRQ == _('Unknown') \
                                 or (hw.Card.IRQ == 'Unknown')):
                             continue
+                        if not modules[hw.Card.ModuleName].has_key('options'):
+                            modules[hw.Card.ModuleName]['options'] = {}
                         modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
 
 

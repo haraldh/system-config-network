@@ -99,6 +99,7 @@ from netconfpkg.gui.exception import handleException
 #import GDK
 import gtk
 import gtk.glade
+gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
@@ -359,7 +360,7 @@ class mainDialog:
         clist.clear()
         clist.set_row_height(17)
         for hw in hardwarelist:
-            clist.append([hw.Description, hw.Type, hw.Name])
+            clist.append([str(hw.Description), str(hw.Type), str(hw.Name)])
 
     def hydrateProfiles(self):
         profilelist = getProfileList()
@@ -467,13 +468,7 @@ class mainDialog:
         
         interface = NewInterfaceDialog()
 
-        try:
-            gtk.mainloop()            
-        except SystemExit, code:
-            print "Exception %s: %s" % (str(SystemExit), str(code))
-            sys.exit(0)
-        except:
-            handleException(sys.exc_info())
+        gtk.mainloop()            
             
         self.hydrate()
         

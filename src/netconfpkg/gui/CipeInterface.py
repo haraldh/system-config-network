@@ -172,7 +172,7 @@ class CipeInterface(InterfaceCreator):
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if cipe.TunnelDevice and curr:
-           widget.set_text(unicode(curr))
+           widget.set_text(curr)
         #widget.set_position(0)
 
         if self.device.Device:

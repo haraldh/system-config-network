@@ -1,9 +1,13 @@
 import os
 import gtk
+import gtk.glade
+
 from gtk import TRUE
 from gtk import FALSE
 
 from netconfpkg.NC_functions import *
+
+gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
 GLADEPATH='netconfpkg/gui/'
 

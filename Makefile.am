@@ -2,16 +2,10 @@ AUTOMAKE_OPTIONS = foreign 1.4
 
 SUBDIRS = doc src po
 
-EXTRA_DIST= redhat-config-network.spec neat.desktop neat.console neat.pam internet-druid.console internet-druid.desktop neat-control.desktop pycheckrc
-
-#neatconsoledir=$(sysconfdir)/security/console.apps/neat
-#neatconsole_DATA=neat.console 
-
-#interconsoledir=$(sysconfdir)/security/console.apps/neat
-#tconsole_DATA=neat.console 
-
-#pamdir=$(sysconfdir)/pam.d/neat
-#pam_DATA=neat.pam 
+EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
+	internet-druid.console internet-druid.desktop.in \
+	neat-control.desktop.in pycheckrc \
+	intltool-extract.in intltool-merge.in intltool-update.in
 
 icons1dir=$(datadir)/kontrol-panel
 icons2dir=$(sysconfdir)/X11/sysconfig

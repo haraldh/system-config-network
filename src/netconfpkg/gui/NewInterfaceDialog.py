@@ -54,7 +54,7 @@ class NewInterfaceDialog:
             glade_file = NETCONFDIR + glade_file
             
         xml = gtk.glade.XML (glade_file, 'toplevel',
-                                 domain=GUI_functions.PROGNAME)
+                             domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.toplevel = xml.get_widget ('toplevel')
@@ -140,7 +140,8 @@ class NewInterfaceDialog:
     def on_cancel_interface(self, *args):
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.rollback()
-        
+        devicelist = NCDeviceList.getDeviceList()
+        devicelist.rollback()
         self.toplevel.destroy()
         gtk.mainquit()
 

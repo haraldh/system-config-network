@@ -48,7 +48,8 @@ class IsdnInterface:
             "on_isdnCardEntry_changed" : self.on_isdnCardEntry_changed,
             "on_isdn_hardware_page_prepare" : self.on_isdn_hardware_page_prepare,
             "on_isdn_hardware_page_next" : self.on_isdn_hardware_page_next,
-            "on_isdn_hardware_page_back" : self.on_isdn_hardware_page_back
+            "on_isdn_hardware_page_back" : self.on_isdn_hardware_page_back,
+            'on_druid_cancel' : self.on_cancel_interface,
             })
         
         self.toplevel = toplevel
@@ -63,6 +64,13 @@ class IsdnInterface:
             
         self.setup()
         
+    def on_cancel_interface(self, *args):
+        self.hardwarelist.rollback()
+        devicelist = NCDeviceList.getDeviceList()
+        devicelist.rollback()
+        self.toplevel.destroy()
+        gtk.mainquit()
+
     def get_project_name(self):
         return _('ISDN connection')
 
