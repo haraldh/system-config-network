@@ -105,6 +105,7 @@ from netconfpkg.gui.exception import handleException
 import gtk
 import gtk.glade
 gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
+import gnome
 
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
@@ -292,14 +293,14 @@ class mainDialog:
         return false
 
     def save(self):
-        if self.test() == 0:
-            self.saveHardware()
-            self.saveDevices()
-            self.saveProfiles()
-            return 0
-        else:
-            #print "self.test() != 0"
+        if self.test() != 0:
             return 1
+        
+        self.saveHardware()
+        self.saveDevices()
+        self.saveProfiles()
+        self.checkApply()
+        return 0
 
     def saveDevices(self):
         devicelist = getDeviceList()
