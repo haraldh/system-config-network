@@ -182,7 +182,11 @@ class ProfileList(ProfileList_base):
         for prof in self.data:
             if prof.Active == true:
                 break
-
+        
+        if nwconf['HOSTNAME'] != prof.DNS.Hostname:
+            # if the hostname changed, set it system wide (#55746)
+            os.system("hostname %s" % prof.DNS.Hostname)
+                      
         nwconf['HOSTNAME'] = prof.DNS.Hostname
 
         if prof.ProfileName != 'default':
