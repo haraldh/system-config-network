@@ -28,6 +28,8 @@ import GdkImlib
 import string
 import gettext
 import re
+import HardwareList
+import regsub
 
 from dialupconfig import dialupDialog
 from gtk import TRUE
@@ -42,10 +44,10 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class ethernetConfigDialog:
-    def __init__(self, xml_main = None, xml_basic = None):
+    def __init__(self, device, xml_main = None, xml_basic = None):
+        self.device = device
         self.xml_main = xml_main
         self.xml_basic = xml_basic
-
         glade_file = "ethernetconfig.glade"
 
         if not os.path.exists(glade_file):
@@ -66,7 +68,24 @@ class ethernetConfigDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
-        self.dialog.show()
+
+        ecombo = self.xml.get_widget("ethernetDeviceComboBox")
+
+        hwdesc = []
+        hardwarelist = HardwareList.getHardwareList()
+        for hw in hardwarelist:
+            if hw.Type == "Ethernet":
+                hwdesc.append(str(hw.Name) + ' (' + hw.Description + ')')
+        if len(hwdesc):
+            ecombo.set_popdown_strings(hwdesc)
+
+        if self.device.Alias:
+            self.xml.get_widget("aliasSupportCB").set_active(TRUE)
+            self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
+        else:
+            self.xml.get_widget("aliasSupportCB").set_active(FALSE)
+        
+        self.dialog.set_close(TRUE)
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -87,17 +106,21 @@ class ethernetConfigDialog:
             self.dialog.set_icon(pix, mask)
             
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
-        gtk.mainquit()
-
+        pass
+    
     def on_okButton_clicked(self, button):
-        self.dialog.destroy()
-        gtk.mainquit()
-
+        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+        fields = regsub.split(hw, " ")
+        hw = fields[0]
+        self.device.Device = hw
+        if self.xml.get_widget("aliasSupportCB").get_active():
+            self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
+        else: self.device.Alias = None
+        #print "Device = " + str(self.device.Device) + ':' + str(self.device.Alias)
+    
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
-        gtk.mainquit()
-
+        pass
+    
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
 
