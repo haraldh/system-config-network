@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Working with Profiles</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+"><LINK
+REL="HOME"
+TITLE="Network Configuration"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Activating Devices"
+HREF="network-config-activate.html"><LINK
+REL="NEXT"
+TITLE="Device Aliases"
+HREF="network-aliases.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Network Configuration</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="network-config-activate.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="network-aliases.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="NETWORK-PROFILES">Chapter 12. Working with Profiles</H1
+><P
+>	Multiple logical network devices can be created for each physical
+	hardware device. For example, if you have one Ethernet card in your
+	system (eth0), you can create logical network devices with different
+	nicknames and different configuration options, all associated with
+	eth0. 
+      </P
+><P
+>	Logical network devices are different from device aliases. Logical
+	network devices associated with the same physical device must exist in
+	different profiles and can not be activated simultaneously. Device
+	aliases are also associated with the same physical hardware device, but
+	device aliases associated with the same physical hardware can be
+	activated at the same time. Refer to <A
+HREF="network-aliases.html"
+>Chapter 13</A
+>
+	for details about creating device aliases.
+      </P
+><P
+>	<I
+CLASS="FIRSTTERM"
+>Profiles</I
+> can be used to create multiple
+	configuration sets for different networks. A configuration set can
+	include logical devices as well as hosts and DNS settings. After
+	configuring the profiles, you can use the
+	<B
+CLASS="APPLICATION"
+>Red Hat Network Administration Tool</B
+> to switch back and forth
+	between them.
+      </P
+><P
+>	By default, there is one profile called <B
+CLASS="GUILABEL"
+>Common</B
+>. To
+	create a new profile, click the <B
+CLASS="GUIBUTTON"
+>New</B
+> button in the
+	<B
+CLASS="GUILABEL"
+>Active Profile</B
+> frame. Enter a unique name for the
+	profile.
+      </P
+><P
+>	After creating a new profile, if all the devices are not listed for all
+	the profiles, add them by click the <B
+CLASS="GUIBUTTON"
+>Add</B
+>
+	button. If a device already exists for the physical device, use the
+	<B
+CLASS="GUIBUTTON"
+>Copy</B
+> button to copy the existing device. If you
+	use the <B
+CLASS="GUIBUTTON"
+>Add</B
+> button, a network alias will be
+	created, which is not correct. The device name should not end with a
+	colon followed by a number.
+      </P
+><P
+>	In the list of devices, there is a column of checkboxes labeled
+	<B
+CLASS="GUILABEL"
+>Profile</B
+>. For each profile, you can check or uncheck
+	devices. Only the checked devices are included for the currently
+	selected profile.
+      </P
+><P
+>	For example, <A
+HREF="network-profiles.html#NEAT-OFFICE-PROFILE-FIG"
+>Figure 12-1</A
+> shows a profile
+	called <B
+CLASS="GUILABEL"
+>Office</B
+> with the logical device
+	<B
+CLASS="GUILABEL"
+>eth0_office</B
+>. It is configured to activate the first
+	Ethernet card using DHCP. 
+      </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="NEAT-OFFICE-PROFILE-FIG"><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="./figs/neat-office-profile.png"></P
+></DIV
+><P
+><B
+>Figure 12-1. Office Profile</B
+></P
+></DIV
+><P
+>	Notice that the <B
+CLASS="GUILABEL"
+>Home</B
+> profile as shown in <A
+HREF="network-profiles.html#NEAT-HOME-PROFILE-FIG"
+>Figure 12-2</A
+> activates the
+	<B
+CLASS="GUILABEL"
+>eth0_home</B
+> logical device, which is associated with
+	eth0 and is configured to use a static IP address.
+      </P
+><DIV
+CLASS="FIGURE"
+><A
+NAME="NEAT-HOME-PROFILE-FIG"><DIV
+CLASS="MEDIAOBJECT"
+><P
+><IMG
+SRC="./figs/neat-home-profile.png"></P
+></DIV
+><P
+><B
+>Figure 12-2. Home Profile</B
+></P
+></DIV
+><P
+>	You can also configure eth0 to activate in the
+	<B
+CLASS="GUILABEL"
+>Office</B
+> profile only and only activate a ppp (modem)
+	device in the <B
+CLASS="GUILABEL"
+>Home</B
+> profile. Another example is to
+	have the <B
+CLASS="GUILABEL"
+>Common</B
+> profile activate eth0 and an
+	<B
+CLASS="GUILABEL"
+>Away</B
+> profile activate a ppp device for use while
+	traveling.
+      </P
+><P
+>	A profile can not be activated at boot time. Only the devices in the
+	<B
+CLASS="GUILABEL"
+>Common</B
+> profile, which are set to activate at boot
+	time are activated at boot time. After the system as booted, execute the
+	following command to enable a profile (replace
+	<TT
+CLASS="REPLACEABLE"
+><I
+>&#60;profilename&#62;</I
+></TT
+> with the name of the
+	profile):
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="COMMAND"
+>redhat-config-network-cmd --profile <TT
+CLASS="REPLACEABLE"
+><I
+>&#60;profilename&#62;</I
+></TT
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="network-config-activate.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="network-aliases.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Activating Devices</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Device Aliases</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
