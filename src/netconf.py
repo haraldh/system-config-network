@@ -29,11 +29,10 @@ from rhpl.log import log
 # Just to be safe...
 os.umask(0022)
 
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
+NETCONFDIR="/usr/share/" + PROGNAME + '/'
 
-if not "/usr/share/" + PROGNAME in sys.path:
-    sys.path.append("/usr/share/" + PROGNAME)
+if not NETCONFDIR in sys.path:
+    sys.path.append(NETCONFDIR)
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
@@ -66,8 +65,6 @@ from version import PRG_NAME
 
 sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
                                                          PROGNAME, PRG_VERSION)
-
-NETCONFDIR='/usr/share/system-config-network/'
 
 try:
     import gtk
@@ -191,13 +188,13 @@ if __name__ == '__main__':
     logfilename = "/var/log/system-config-network"
     
     try:
-        opts, args = getopt.getopt(cmdline, "vhrd",
+        opts, args = getopt.getopt(cmdline, "vh?r:d",
                                    [
                                     "verbose",
                                     "debug", 
                                     "help",
                                     "hotshot",
-                                    "root"
+                                    "root="
                                     ])
         for opt, val in opts:
             if opt == '-v' or opt == '--verbose':
@@ -212,7 +209,7 @@ if __name__ == '__main__':
                 hotshot += 1
                 continue
             
-            if opt == '-h' or opt == '--help':
+            if opt == '-h' or opt == "?" or opt == '--help':
                 Usage()
                 sys.exit(0)
 
@@ -248,7 +245,18 @@ if __name__ == '__main__':
             log.open(lfile)
 
     if chroot:
-        prepareRoot(chroot)
+        NC_functions.setRoot(chroot)
+        
+    if not os.access(NC_functions.getRoot(), os.W_OK):
+        if os.getuid() != 0:
+            from netconfpkg.gui import GUI_functions
+            GUI_functions.generic_error_dialog (_("Please start system-config-network "
+                                                 "with root permissions!\n"))
+            sys.exit(10)
+
+    if chroot:
+        NC_functions.prepareRoot(chroot)
+
         
     if hotshot:
         import tempfile
