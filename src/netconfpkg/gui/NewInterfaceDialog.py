@@ -1,4 +1,4 @@
-## Copyright (C) 2001, 2002 Red Hat, Inc.
+e## Copyright (C) 2001, 2002 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -84,7 +84,8 @@ class NewInterfaceDialog:
             iftype = iface.get_type()
             
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
-            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(iftype, self.toplevel)
+            device_pixmap, device_mask = \
+                           GUI_functions.get_device_icon_mask(iftype, self.toplevel)
                 
             self.interface_clist.set_pixtext (row, 0, iface.get_project_name (), 5, device_pixmap, device_mask)
             self.interface_clist.set_row_data (row, iface)
@@ -98,6 +99,8 @@ class NewInterfaceDialog:
             devs.append(IUCV)
 
         for type in devs:
+            device_pixmap, device_mask = \
+                           GUI_functions.get_device_icon_mask(type, self.toplevel)
             iface = GenericInterface (self.toplevel, type = type,
                                       do_save = None, druid = self.druid)
             ftype = iface.get_type()
