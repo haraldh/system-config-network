@@ -15,7 +15,6 @@ netconfimg_DATA = \
 	nameresolution_alias.png \
 	connection-ethernet.png \
 	network.png \
-	neat-control.png \
 	blue_empty_led.xpm control.xpm isdn.xpm off.xpm plip.xpm red_empty_led.xpm \
 	blue_led.xpm ethernet.xpm loopback.xpm on.xpm ppp.xpm red_led.xpm
 
