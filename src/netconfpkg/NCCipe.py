@@ -46,7 +46,10 @@ class ConfCipeOptions(Conf.Conf):
         while self.findnextcodeline():
             #print self.getline()
             var = self.getfields()
-            self.vars[var[0]] = var[1]
+            if len(var) > 1:
+                self.vars[var[0]] = var[1]
+            elif len(var) == 1:
+                self.vars[var[0]] = ""
             self.nextline()
         self.rewind()
         
