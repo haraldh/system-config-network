@@ -143,6 +143,9 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+options parport_pc io=0x378 irq=7
+options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0
+options 3c59x debug=2
 """
 # read
 writeConf(filename, str)
@@ -167,6 +170,9 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+options parport_pc io=0x378 irq=7 
+options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0 
+options 3c59x debug=2 
 alias eth0 3c59x
 """
 if expectConf(filename, str):
