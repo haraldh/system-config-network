@@ -63,6 +63,10 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^cipcb[0-9]+(:[0-9]+)?$':'CIPE',
                '^lo$':'Loopback'}
 
+class TestError(Exception):
+	def __init__(self, args=None):
+		self.args = args
+
 def get_icon(pixmap_file, dialog):
     fn = pixmap_file
     if not os.path.exists(pixmap_file):
@@ -122,6 +126,8 @@ def ishardlink(file):
 
 def generic_error_dialog (message, parent_dialog, dialog_type="warning",
 			  widget=None, page=0, broken_widget=None):
+    import gnome
+    import gnome.ui
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, "Button_Ok")
     dialog.set_parent (parent_dialog)
     if widget != None:
