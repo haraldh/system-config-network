@@ -537,6 +537,10 @@ class ModemDialup(Dialup):
         # Write the wvdial section
         #
         conf = ConfSMB.ConfSMB(filename = '/etc/wvdial.conf')
+
+        if not conf.has_key(sectname):
+            conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
+        
         for selfkey in self.wvdict.keys():
             confkey = self.wvdict[selfkey]
             if self.__dict__[selfkey]:
