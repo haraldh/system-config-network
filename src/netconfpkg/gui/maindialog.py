@@ -188,7 +188,7 @@ class mainDialog:
         # remove IPsec from Fedora
 #            PAGE_IPSEC : notebook.page_num(\
 #            self.xml.get_widget('ipsecFrame')),
-            PAGE_IPSEC : 0,
+            PAGE_IPSEC : -1,
             PAGE_HOSTS : notebook.page_num(\
             self.xml.get_widget('hostFrame')),
             PAGE_DNS : notebook.page_num(\
@@ -1716,5 +1716,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/24 15:34:15 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2003/10/27 13:24:04 $"
+__version__ = "$Revision: 1.32 $"
