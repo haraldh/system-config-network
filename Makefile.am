@@ -2,12 +2,12 @@ AUTOMAKE_OPTIONS = foreign 1.4
 
 SUBDIRS = doc src po
 
-EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
+EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
 	internet-druid.console internet-druid.desktop.in \
 	neat-control.desktop.in pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
-	ChangeLog redhat-config-network-cmd.console \
-	redhat-config-network.sh
+	ChangeLog system-config-network-cmd.console \
+	system-config-network.sh
 
 iconsdir=$(pkgdatadir)
 
@@ -30,43 +30,43 @@ install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d
 	$(mkinstalldirs) $(DESTDIR)$(prefix)/bin/
 
-	for i in neat redhat-config-network ; do \
+	for i in neat system-config-network ; do \
 		$(INSTALL_DATA) $(srcdir)/neat.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
-	install -m 0755 $(srcdir)/redhat-config-network.sh $(DESTDIR)$(sbindir)/redhat-config-network
+	install -m 0755 $(srcdir)/system-config-network.sh $(DESTDIR)$(sbindir)/system-config-network
 
-# redhat-config-network-cmd needs a special console file
+# system-config-network-cmd needs a special console file
 
-	$(INSTALL_DATA) $(srcdir)/redhat-config-network-cmd.console $(DESTDIR)$(sysconfdir)/security/console.apps/redhat-config-network-cmd; \
-	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/redhat-config-network-cmd; \
-	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/redhat-config-network-cmd ; 
+	$(INSTALL_DATA) $(srcdir)/system-config-network-cmd.console $(DESTDIR)$(sysconfdir)/security/console.apps/system-config-network-cmd; \
+	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/system-config-network-cmd; \
+	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/system-config-network-cmd ; 
 
 
-	for i in internet-druid redhat-config-network-druid; do \
+	for i in internet-druid system-config-network-druid; do \
 		$(INSTALL_DATA) $(srcdir)/internet-druid.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
 uninstall-local:
-	rm -f  $(DESTDIR)$(sbindir)/redhat-control-network
-	for i in neat redhat-config-network redhat-config-network-cmd; do \
+	rm -f  $(DESTDIR)$(sbindir)/system-control-network
+	for i in neat system-config-network system-config-network-cmd; do \
 		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
-	for i in internet-druid redhat-config-network-druid; do \
+	for i in internet-druid system-config-network-druid; do \
 		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
 changelog:
-	rcs2log -v | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
+	rcs2log -v | sed -e 's|/usr/local/CVS/system-config-network/||g' \
 		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
 
 clean-local:

@@ -1,26 +1,18 @@
 # -*- RPM-SPEC -*-
-%define rp3 0
 Summary: The GUI of the NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
 Release: @RPM_RELEASE@
-URL: http://people.redhat.com/harald/redhat-config-network
+URL: http://people.redhat.com/harald/system-config-network
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Obsoletes: isdn-config internet-config rp3 redhat-config-gui
+Obsoletes: isdn-config internet-config rp3 redhat-config-gui redhat-config-network
 BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
 Requires: %{name}-tui = %{version}-%{release}
 Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-%if %{rp3}
-Source1: rp3-1.1.10.tar.gz
-Patch0: redhat-config-network-0.9.13-neat.patch
-Patch1: redhat-config-network-0.9.21-rp3.patch
-Patch2: redhat-config-network-0.9.23-rp3-font.patch
-Patch3: redhat-config-network-0.9.24-rp3-isdn.patch
-%endif
 
 %description
 This is the GUI of the network configuration tool for Red Hat Linux,
@@ -29,7 +21,7 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 %package tui
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
-Obsoletes: netcfg
+Obsoletes: netcfg, redhat-config-network-tui
 Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python, newt
 
 %description tui
@@ -37,33 +29,11 @@ This is the network configuration tool for Red Hat Linux,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %prep
-%if %{rp3}
-%setup -q -a 1
-%patch0 -p1 -b .neat
-%patch1 -p0 -b .rp3
-%patch2 -p1 -b .font
-%patch3 -p1 -b .isdn
-%else
 %setup
-%endif
 
 %configure
-
-%if %{rp3}
-pushd .
-cd rp3-1.1.10
-%configure
-popd
-%endif
 
 %build
-
-%if %{rp3}
-pushd .
-cd rp3-1.1.10
-make
-popd
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -75,30 +45,10 @@ for i in neat.desktop internet-druid.desktop neat-control.desktop; do \
   desktop-file-install --vendor redhat --delete-original       \
     --dir $RPM_BUILD_ROOT%{_datadir}/applications             \
     --add-category X-Red-Hat-Base                             \
-    $RPM_BUILD_ROOT%{_datadir}/redhat-config-network/$i; \
+    $RPM_BUILD_ROOT%{_datadir}/system-config-network/$i; \
 done;
 
-%if %{rp3}
-pushd .
-cd rp3-1.1.10/rp3
-%makeinstall
-cd ../docs
-%makeinstall
-cd ../po
-%makeinstall
-popd
-# use neat-control
-rm -f $RPM_BUILD_ROOT/%{_sysconfdir}/X11/applnk/Internet/rp3.desktop
-%endif
-
 %find_lang %name
-
-%if %{rp3}
-%find_lang rp3
-cat rp3.lang >>%{name}.lang
-%endif
-
-rm -rf $RPM_BUILD_ROOT%{_datadir}/kontrol-panel
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -106,45 +56,39 @@ rm -rf $RPM_BUILD_ROOT
 
 %files 
 %defattr(-,root,root)
-%{_datadir}/redhat-config-network/pixmaps
-%{_datadir}/redhat-config-network/netconfpkg/gui
-%{_sbindir}/redhat-config-network-gui
+%{_datadir}/system-config-network/pixmaps
+%{_datadir}/system-config-network/netconfpkg/gui
+%{_sbindir}/system-config-network-gui
 %{_sbindir}/internet-druid
 %{_bindir}/neat-control
 %{_bindir}/internet-druid
-%{_bindir}/redhat-control-network
+%{_bindir}/system-control-network
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
-%{_datadir}/redhat-config-network/help
-%{_datadir}/redhat-config-network/*.py*
-%dir %{_datadir}/redhat-config-network
-%dir %{_datadir}/redhat-config-network/netconfpkg
-%{_datadir}/redhat-config-network/netconfpkg/plugins
-%{_datadir}/redhat-config-network/netconfpkg/*.py*
-%{_datadir}/redhat-config-network/netconfpkg/*.idl
-%{_datadir}/redhat-config-network/module-info
-%{_datadir}/redhat-config-network/providerdb
+%{_datadir}/system-config-network/help
+%{_datadir}/system-config-network/*.py*
+%dir %{_datadir}/system-config-network
+%dir %{_datadir}/system-config-network/netconfpkg
+%{_datadir}/system-config-network/netconfpkg/plugins
+%{_datadir}/system-config-network/netconfpkg/*.py*
+%{_datadir}/system-config-network/netconfpkg/*.idl
+%{_datadir}/system-config-network/module-info
+%{_datadir}/system-config-network/providerdb
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
 %config(noreplace) %{_sysconfdir}/pam.d/*
 %config(noreplace) %{_sysconfdir}/security/console.apps/*
 %{_sbindir}/neat
 %{_sbindir}/neat-tui
-%{_sbindir}/redhat-config-network
-%{_sbindir}/redhat-config-network-tui
-%{_sbindir}/redhat-config-network-cmd
-%{_sbindir}/redhat-config-network-druid
+%{_sbindir}/system-config-network
+%{_sbindir}/system-config-network-tui
+%{_sbindir}/system-config-network-cmd
+%{_sbindir}/system-config-network-druid
 %{_bindir}/neat
-%{_bindir}/redhat-config-network
-%{_bindir}/redhat-config-network-cmd
-%{_bindir}/redhat-config-network-druid
-
-%if %{rp3}
-%{_datadir}/gnome/help/*/*/*
-%{_datadir}/applets/*/*
-%config %{_sysconfdir}/CORBA/servers/*
-%endif
+%{_bindir}/system-config-network
+%{_bindir}/system-config-network-cmd
+%{_bindir}/system-config-network-druid
 
 %changelog
 * Tue Oct 28 2003 Harald Hoyer <harald@redhat.de> 1.3.10
@@ -662,7 +606,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Mon Jul  9 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - 0.2
-- New name - redhat-config-network. 
+- New name - system-config-network. 
   Shortcut: neat (NEtwork Administration Tool)
 
 * Fri Jul 06 2001 Trond Eivind Glomsrød <teg@redhat.com>

@@ -1,3 +1,145 @@
+2003-12-01  Harald Hoyer  <harald@redhat.com>
+
+	* intltool-extract.in 1.7.2.1.2.2, intltool-merge.in 1.7.2.1.2.2, intltool-update.in 1.7.2.1.2.2, po/tr.po 1.73.2.14.2.13, po/zh_CN.po 1.80.2.14.2.13, po/zh_TW.po 1.101.2.14.2.13, po/redhat-config-network.pot 1.113.2.15.2.13, po/ru.po 1.91.2.14.2.13, po/sv.po 1.133.2.14.2.13, po/ko.po 1.140.2.14.2.13, po/no.po 1.129.2.14.2.13, po/pt.po 1.112.2.14.2.13, po/it.po 1.137.2.14.2.13, po/ja.po 1.148.2.14.2.13, po/fr.po 1.142.2.14.2.13, po/is.po 1.121.2.14.2.13, po/el.po 1.75.2.14.2.13, po/es.po 1.140.2.14.2.13, po/POTFILES.in 1.26.2.2.2.5, po/cs.po 1.98.2.15.2.13, po/da.po 1.105.2.14.2.13, po/de.po 1.153.2.14.2.13:
+	release 1.2.59-1 moved
+
+	* redhat-config-network.spec.in 1.171.2.12.2.15: updated changelog
+
+2003-11-28  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/plugins/NCDevIsdn.py 1.2.2.2.2.3:
+	workaround for broken isdn initscripts
+
+	* redhat-config-network.logrotate 1.1: New file.
+
+	* redhat-config-network.logrotate 1.1.2.1: added
+
+	* ChangeLog 1.82.2.15.2.18, configure.in 1.144.2.6.2.15, intltool-extract.in 1.7.2.1.2.1, intltool-merge.in 1.7.2.1.2.1, intltool-update.in 1.7.2.1.2.1, po/Makefile.in.in 1.14.2.1.2.1:
+	release 1.2.59-1
+
+	* src/netconfpkg/gui/tonline.py 1.3.2.1.2.4:
+	Anschlusskennung has fixed with 12
+	Zugangsnummer is the rest
+
+	* src/netconfpkg/gui/tonline.glade 1.4.4.1, src/netconfpkg/gui/tonline.py 1.3.2.1.2.3:
+	relax length check on t-online login/pw
+
+	* src/netconfpkg/gui/ModemDruid.glade 1.11.4.1, src/netconfpkg/gui/ModemInterface.py 1.30.2.1.2.2:
+	default flow control to CTSRTS
+
+	* src/netconfpkg/gui/DialupDruid.py 1.21.2.3.2.5:
+	only clear login/pw on provider select, if provider has its own
+
+	* src/netconfpkg/gui/DialupDruid.glade 1.14.4.2: restored title colors
+
+	* src/netconfpkg/gui/DialupDruid.glade 1.14.4.1:
+	removed second password entry
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.12.2.9:
+	removed __main__ (cleanup)
+
+	* src/netconfpkg/NCDevice.py 1.82.2.15.2.11, src/netconfpkg/plugins/NCDevIsdn.py 1.2.2.2.2.2:
+	special ISDN isdndial activation moved
+
+	* src/providerdb 1.13.4.3: update of Providers
+
+2003-11-27  Harald Hoyer  <harald@redhat.com>
+
+	* src/providerdb 1.13.4.2: iso8859-1 -> utf-8
+
+2003-11-26  pve-nl  <pve-nl@redhat.com>
+
+	* po/nl.po 1.26: fixes for CVS version of redhat-config-network nl.po
+
+2003-11-26  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/GUI_functions.py 1.21.2.5.2.5:
+	try: except:pass the os.kill() of the child procs
+
+	* src/netconfpkg/NC_functions.py 1.71.2.14.2.11:
+	default to / for chroot()
+
+	* src/netconfpkg/NCProfileList.py 1.66.2.13.2.6:
+	default to default profile if none active
+
+	* src/netconf.py 1.188.2.5.2.7, src/netconf-cmd.py 1.8.2.11.2.2:
+	fix logging
+
+	* src/neat-control.py 1.36.2.11.2.3, src/netconfpkg/Control.py 1.16.2.2.2.2:
+	display ppp devices as active, which have different names
+
+	* src/netconf-tui.py 1.16.2.4.2.4: removed __author__
+
+	* src/netconfpkg/NCDeviceList.py 1.50.2.12.2.8: preserve ipsec files
+
+	* src/netconfpkg/gui/tokenringhardware.py 1.22:
+	better i18n string format
+
+	* src/netconfpkg/gui/tonline.py 1.3.2.1.2.2:
+	allow all chars in passwort entry
+
+2003-11-26  Jean Paul Aubrey  <jpaubry@redhat.com>
+
+	* po/fr.po 1.180: updated
+
+2003-11-25  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconf.py 1.133.4.4: fixed #110193
+
+	* src/netconfpkg/gui/maindialog.py 1.34: removed python2.2 exec line
+
+	* src/netconf-cmd.py 1.15, src/netconf.py 1.199: python2.2 -> python
+
+	* src/netconfpkg/gui/dslconfig.glade 1.20, src/netconfpkg/gui/editadress.glade 1.14, src/netconfpkg/gui/editdomain.glade 1.11, src/netconfpkg/gui/edithosts.glade 1.9, src/netconfpkg/gui/editipsec.glade 1.8, src/netconfpkg/gui/ethernetconfig.glade 1.15, src/netconfpkg/gui/ethernethardware.glade 1.11, src/netconfpkg/gui/ethernethardware.py 1.28, src/netconfpkg/gui/hardwaretype.glade 1.11, src/netconfpkg/gui/infodialog.glade 1.3, src/netconfpkg/gui/isdnhardware.glade 1.11, src/netconfpkg/gui/maindialog.glade 1.11, src/netconfpkg/gui/maindialog.py 1.33, src/netconfpkg/gui/modemconfig.glade 1.14, src/netconfpkg/gui/neat-control-debugdialog.glade 1.7, src/netconfpkg/gui/neat-control-monitordialog.glade 1.7, src/netconfpkg/gui/neat-control-statusdialog.glade 1.9, src/netconfpkg/gui/ptpconfig.glade 1.3, src/netconfpkg/gui/sharedtcpip.glade 1.20, src/netconfpkg/gui/tokenringconfig.glade 1.15, src/netconfpkg/gui/tokenringhardware.glade 1.12, src/netconfpkg/gui/tokenringhardware.py 1.21, src/netconfpkg/gui/wirelessconfig.glade 1.24, src/netconfpkg/gui/ADSLInterfaceDruid.glade 1.19, src/netconfpkg/gui/CipeInterface.py 1.27, src/netconfpkg/gui/CipeInterfaceDruid.glade 1.7, src/netconfpkg/gui/DialupDruid.glade 1.16, src/netconfpkg/gui/EthernetHardwareDruid.glade 1.11, src/netconfpkg/gui/EthernetInterfaceDruid.glade 1.14, src/netconfpkg/gui/GUI_functions.py 1.30, src/netconfpkg/gui/GenericInterfaceDruid.glade 1.7, src/netconfpkg/gui/IsdnHardwareDruid.glade 1.12, src/netconfpkg/gui/ModemDruid.glade 1.13, src/netconfpkg/gui/NewInterfaceDruid.glade 1.15, src/netconfpkg/gui/PTPInterfaceDruid.glade 1.3, src/netconfpkg/gui/TokenRingHardwareDruid.glade 1.11, src/netconfpkg/gui/TokenRingInterfaceDruid.glade 1.11, src/netconfpkg/gui/WirelessInterface.py 1.27, src/netconfpkg/gui/WirelessInterfaceDruid.glade 1.21, src/netconfpkg/gui/cipeconfig.glade 1.14, src/netconfpkg/gui/dialupconfig.glade 1.21:
+	i18n changes
+
+2003-11-21  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.po 1.114: updated the changes
+
+2003-11-21  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.po 1.138: Updated
+
+2003-11-19  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.po 1.137: updated
+
+2003-11-17  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.113: Updated Greek translation
+
+2003-11-13  Jatin Nansi  <jnansi@redhat.com>
+
+	* po/hi.po 1.3: Commit by jnansi@redhat.com
+
+2003-11-09  maxik  <maxik@redhat.com>
+
+	* po/uk.po 1.2: 2003-11-09	Maxim Dziumanenko <mvd@mylinux.com.ua>
+
+		* Update ukrainian translations.
+
+2003-11-07  Jatin Nansi  <jnansi@redhat.com>
+
+	* po/hi.po 1.2: Commit by jnansi@redhat.com
+
+2003-10-31  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.159: Update
+
+2003-10-29  Jatin Nansi  <jnansi@redhat.com>
+
+	* po/hi.po 1.1: Commit by jnansi@redhat.com
+
+2003-10-28  ra  <ra@redhat.com>
+
+	* po/is.po 1.167: *** empty log message ***
+
+2003-10-28  Harald Hoyer  <harald@redhat.com>
+
+	* ChangeLog 1.109, configure.in 1.160, redhat-config-network.spec.in 1.194:
+	1.3.10
+
 2003-10-28  menthos  <menthos@redhat.com>
 
 	* po/sv.po 1.166: 2003-10-28  Christian Rose  <menthos@menthos.com>

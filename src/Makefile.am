@@ -8,18 +8,18 @@ execdir = $(sbindir)
 
 
 all-local: version.py 
-	rm -f redhat-config-network-gui
-	rm -f redhat-config-network-cmd
-	rm -f redhat-config-network-tui
-	rm -f redhat-config-network-druid
-	rm -f  redhat-control-network
-	ln -s $(srcdir)/netconf.py redhat-config-network-gui
-	ln -s $(srcdir)/netconf-cmd.py redhat-config-network-cmd
-	ln -s $(srcdir)/netconf.py redhat-config-network-druid
-	ln -s $(srcdir)/netconf-tui.py redhat-config-network-tui
-	ln -s $(srcdir)/neat-control.py redhat-control-network
-	chmod 0755 redhat-config-network-gui redhat-config-network-cmd 
-	chmod 0755 redhat-config-network-druid redhat-config-network-tui redhat-control-network
+	rm -f system-config-network-gui
+	rm -f system-config-network-cmd
+	rm -f system-config-network-tui
+	rm -f system-config-network-druid
+	rm -f  system-control-network
+	ln -s $(srcdir)/netconf.py system-config-network-gui
+	ln -s $(srcdir)/netconf-cmd.py system-config-network-cmd
+	ln -s $(srcdir)/netconf.py system-config-network-druid
+	ln -s $(srcdir)/netconf-tui.py system-config-network-tui
+	ln -s $(srcdir)/neat-control.py system-control-network
+	chmod 0755 system-config-network-gui system-config-network-cmd 
+	chmod 0755 system-config-network-druid system-config-network-tui system-control-network
 
 
 providerdir = $(pkgdatadir)
@@ -42,12 +42,12 @@ install-exec-local:
 	softdir=$${softdir/#$$p} ; \
 	softdir=$${softdir/#\/} ; \
 	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/neat-control; \
-	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/redhat-control-network; \
-	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-gui; \
-	ln  -fs ../$${softdir}/netconf-cmd.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
-	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-druid; \
+	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/system-control-network; \
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/system-config-network-gui; \
+	ln  -fs ../$${softdir}/netconf-cmd.py $(DESTDIR)$(sbindir)/system-config-network-cmd; \
+	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/system-config-network-druid; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
-	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/redhat-config-network-tui; \
+	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/system-config-network-tui; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 	$(top_srcdir)/py-compile - $(DESTDIR)$(pkgdatadir)/*.py
@@ -55,11 +55,11 @@ install-exec-local:
 uninstall-local:
 	rm -fr $(DESTDIR)$(pkgdatadir)
 	rm -f  $(DESTDIR)$(bindir)/neat-control
-	rm -f  $(DESTDIR)$(bindir)/redhat-control-network
-	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-gui
-	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-tui
-	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-cmd
-	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network-druid
+	rm -f  $(DESTDIR)$(bindir)/system-control-network
+	rm -f  $(DESTDIR)$(sbindir)/system-config-network-gui
+	rm -f  $(DESTDIR)$(sbindir)/system-config-network-tui
+	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
+	rm -f  $(DESTDIR)$(sbindir)/system-config-network-druid
 	rm -f  $(DESTDIR)$(sbindir)/neat
 	rm -f  $(DESTDIR)$(sbindir)/neat-tui
 	rm -f  $(DESTDIR)$(sbindir)/neat-druid

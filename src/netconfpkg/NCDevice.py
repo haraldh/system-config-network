@@ -410,7 +410,7 @@ class Device(Device_base):
         return ret, msg
 
     def configure(self):
-        command = '/usr/bin/redhat-config-network'
+        command = '/usr/bin/system-config-network'
 
         try:
             (ret, msg) =  generic_run(command,
@@ -448,5 +448,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/23 17:56:45 $"
-__version__ = "$Revision: 1.94 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.95 $"

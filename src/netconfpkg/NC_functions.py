@@ -36,7 +36,7 @@ import string
 true = (1==1)
 false = not true
 
-PROGNAME = "redhat-config-network"
+PROGNAME = "system-config-network"
 
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
@@ -45,7 +45,7 @@ textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
 __builtin__.__dict__['_'] = _
 
-NETCONFDIR='/usr/share/redhat-config-network/'
+NETCONFDIR='/usr/share/system-config-network/'
 
 
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
@@ -812,5 +812,5 @@ class ConfKeys(Conf.ConfShellVar):
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/23 17:56:45 $"
-__version__ = "$Revision: 1.81 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.82 $"

@@ -6,14 +6,14 @@ RELEASE=10
 
 RPM_RELEASE=1
 
-AM_INIT_AUTOMAKE(redhat-config-network, $MAJOR.$MINOR.$RELEASE)
+AM_INIT_AUTOMAKE(system-config-network, $MAJOR.$MINOR.$RELEASE)
 
 ALL_LINGUAS="cs da de el es fr is it ja ko no pt ru sv tr zh_CN zh_TW hu nl pt_BR"
 
 AM_PATH_PYTHON
 
 dnl prevent to copy po/Makefile.in.in
-GETTEXT_PACKAGE=redhat-config-network
+GETTEXT_PACKAGE=system-config-network
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
@@ -34,6 +34,6 @@ src/netconfpkg/tests/Makefile
 src/netconfpkg/plugins/Makefile
 src/netconfpkg/gui/Makefile
 src/version.py
-redhat-config-network.spec
+system-config-network.spec
 po/Makefile.in
 ])

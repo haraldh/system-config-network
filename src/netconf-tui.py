@@ -9,7 +9,7 @@
 
 from snack import *
 
-PROGNAME='redhat-config-network'
+PROGNAME='system-config-network'
 
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
@@ -22,11 +22,11 @@ import string
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not "/usr/share/redhat-config-network" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network")
+if not "/usr/share/system-config-network" in sys.path:
+    sys.path.append("/usr/share/system-config-network")
 
-if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network/netconfpkg")
+if not "/usr/share/system-config-network/netconfpkg/" in sys.path:
+    sys.path.append("/usr/share/system-config-network/netconfpkg")
 
 from version import PRG_VERSION
 from version import PRG_NAME
@@ -101,7 +101,7 @@ def handleException((type, value, tb), progname, version):
     text = _("An unhandled exception has occured.  This "
              "is most likely a bug.  Please save the crash "
              "dump and file a detailed bug "
-             "report against redhat-config-network at "
+             "report against system-config-network at "
              "https://bugzilla.redhat.com/bugzilla") + "\n" + text
     
     if tblast and len(tblast) > 3:
@@ -518,5 +518,5 @@ if __name__=="__main__":
 
     screen.finish()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:08:21 $"
-__version__ = "$Revision: 1.22 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.23 $"

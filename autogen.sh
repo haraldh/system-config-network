@@ -12,7 +12,7 @@ DIE=0
 glib-gettextize --copy --force
 intltoolize --copy -f --automake
 
-autoreconf -i -m
+autoreconf -i -m -f
 cd $THEDIR
 
 $srcdir/configure --enable-maintainer-mode "$@"

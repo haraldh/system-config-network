@@ -25,11 +25,11 @@ import sys
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not "/usr/share/redhat-config-network" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network")
+if not "/usr/share/system-config-network" in sys.path:
+    sys.path.append("/usr/share/system-config-network")
 
-if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network/netconfpkg")
+if not "/usr/share/system-config-network/netconfpkg/" in sys.path:
+    sys.path.append("/usr/share/system-config-network/netconfpkg")
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
@@ -45,7 +45,7 @@ from rhpl.log import log
 from version import PRG_VERSION
 from version import PRG_NAME
 
-PROGNAME='redhat-config-network'
+PROGNAME='system-config-network'
 
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
@@ -129,7 +129,7 @@ if __name__ == '__main__':
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     
-    logfilename = "/var/log/redhat-config-network"
+    logfilename = "/var/log/system-config-network"
     do_activate = 0
     switch_profile = 0
     profile = None
@@ -363,5 +363,5 @@ if __name__ == '__main__':
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:34:19 $"
-__version__ = "$Revision: 1.15 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.16 $"

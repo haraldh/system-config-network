@@ -60,7 +60,7 @@ def updateNetworkScripts():
 
 
         if os.getuid() != 0:
-            generic_error_dialog (_("Please start redhat-config-network "
+            generic_error_dialog (_("Please start system-config-network "
                                     "with root permissions once!\n"))
             return
 
@@ -436,5 +436,5 @@ if __name__ == '__main__':
         print "---------------------------------------"
     #dl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.57 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.58 $"

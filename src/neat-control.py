@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/python
 ## redhat-network-control - A easy-to-use interface for configuring/activating
 ## Copyright (C) 2002 Red Hat, Inc.
 ## Copyright (C) 2002 Than Ngo <than@redhat.com>
@@ -23,13 +23,13 @@ import sys
 if not '/usr/lib/rhs/python' in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not "/usr/share/redhat-config-network" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network")
+if not "/usr/share/system-config-network" in sys.path:
+    sys.path.append("/usr/share/system-config-network")
 
-if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network/netconfpkg")
+if not "/usr/share/system-config-network/netconfpkg/" in sys.path:
+    sys.path.append("/usr/share/system-config-network/netconfpkg")
 
-PROGNAME='redhat-config-network'
+PROGNAME='system-config-network'
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
@@ -108,7 +108,7 @@ class mainDialog:
 
         load_icon('neat-control.xpm', self.dialog)
         self.xml.get_widget('pixmap').set_from_file(\
-            '/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
+            '/usr/share/system-config-network/pixmaps/neat-control-logo.png')
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
         
@@ -230,8 +230,8 @@ class mainDialog:
         profile = self.get_active_profile().ProfileName
 
         generic_run_dialog(
-            command = "/usr/bin/redhat-config-network-cmd",
-            argv = [ "redhat-config-network-cmd", "-a", "-p", profile ],
+            command = "/usr/bin/system-config-network-cmd",
+            argv = [ "system-config-network-cmd", "-a", "-p", profile ],
             title = _("Switching Profiles"),
             label = _("Switching to profile %s") % profile,
             errlabel = _("Failed to switch to profile %s") % profile,
@@ -440,5 +440,5 @@ if __name__ == '__main__':
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/24 14:49:45 $"
-__version__ = "$Revision: 1.42 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.43 $"

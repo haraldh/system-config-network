@@ -21,7 +21,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-PROGNAME='redhat-config-network'
+PROGNAME='system-config-network'
 
 import sys
 import os
@@ -55,9 +55,9 @@ try:
     from rhpl.exception import handleException
 except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
-    if os.path.isfile("/usr/sbin/redhat-config-network-tui"):        
+    if os.path.isfile("/usr/sbin/system-config-network-tui"):        
         print _("Starting text version")
-        os.execv("/usr/sbin/redhat-config-network-tui", sys.argv)
+        os.execv("/usr/sbin/system-config-network-tui", sys.argv)
     sys.exit(10)
 
 
@@ -67,7 +67,7 @@ from version import PRG_NAME
 sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
                                                          PROGNAME, PRG_VERSION)
 
-NETCONFDIR='/usr/share/redhat-config-network/'
+NETCONFDIR='/usr/share/system-config-network/'
 
 try:
     import gtk
@@ -100,7 +100,7 @@ def splash_screen(gfx = None):
         window.set_title(PRG_NAME)
         window.set_position (gtk.WIN_POS_CENTER)
         pixmap_wid = gtk.Image()
-        pixfile = get_pixpath("redhat-config-network-splash.png")
+        pixfile = get_pixpath("system-config-network-splash.png")
         if not pixfile:
             return None
         pixmap_wid.set_from_file(pixfile)
@@ -124,7 +124,7 @@ def splash_screen(gfx = None):
     return window
 
 def Usage():
-    print _("redhat-config-network - network configuration tool\n\nUsage: redhat-config-network -v --verbose")
+    print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose")
 
 def main():
     from netconfpkg import NC_functions
@@ -153,7 +153,7 @@ def main():
         gnome.program_init(PROGNAME, PRG_VERSION)
         gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")        
 
-        if progname == 'redhat-config-network-druid' or \
+        if progname == 'system-config-network-druid' or \
                progname == 'internet-druid':
             interface = NewInterfaceDialog()
             gtk.mainloop()
@@ -188,7 +188,7 @@ if __name__ == '__main__':
     NC_functions.setDebugLevel(0)
     hotshot = 0
     chroot = None
-    logfilename = "/var/log/redhat-config-network"
+    logfilename = "/var/log/system-config-network"
     
     try:
         opts, args = getopt.getopt(cmdline, "vhrd",
@@ -270,5 +270,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:34:19 $"
-__version__ = "$Revision: 1.199 $"
+__date__ = "$Date: 2003/12/01 15:20:33 $"
+__version__ = "$Revision: 1.200 $"
