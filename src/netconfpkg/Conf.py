@@ -933,7 +933,7 @@ class ConfModules(Conf):
 	for key in value.keys():
             self.rewind()
             missing=1
-	    findexp = '[\t ]*' + key + '[\t ]+' + varname + '[\t ]+'
+	    findexp = '^[\t ]*' + key + '[\t ]+' + varname + '[\t ]+'
 	    if not cmp(key, 'alias'):
 		endofline = value[key]
 		replace = key + ' ' + varname + ' ' + endofline
@@ -941,7 +941,7 @@ class ConfModules(Conf):
 		endofline = self.joinoptlist(value[key])
 		replace = key + ' ' + varname + ' ' + endofline
 		if self.vars[varname].has_key('keep') and self.vars[varname]['keep']:
-		    findexp = '[\t ]*' + key + '[\t ]+-k[\t ]+' + varname + '[\t ]+'
+		    findexp = '^[\t ]*' + key + '[\t ]+-k[\t ]+' + varname + '[\t ]+'
 		    replace = key + ' -k ' + varname + ' ' + endofline
 	    elif not cmp(key, 'post-install'):
 		endofline = joinfields(value[key], ' ')
@@ -972,7 +972,7 @@ class ConfModules(Conf):
         place=self.tell()
 	for key in self.vars[varname].keys():
             self.rewind()
-            while self.findnextline('[\t ]*' + key + '([\t ]-k)?[\t ]+' + varname):
+            while self.findnextline('^[\t ]*' + key + '([\t ]-k)?[\t ]+' + varname):
         	self.deleteline()
         del self.vars[varname]
 	self.seek(place)
