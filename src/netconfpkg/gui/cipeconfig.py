@@ -64,16 +64,23 @@ class cipeConfigDialog(deviceConfigDialog):
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-        hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,
-                                                              self.device.Cipe.TunnelDevice)
-                    
-        if len(hwdesc):
-            ecombo.set_popdown_strings(hwdesc)
+
+        curr = None
+        desc = [];
+        
+        devlist = NCDeviceList.getDeviceList()
+        for dev in devlist:
+            d = str(dev.Device) + ' (' + dev.IP + ')'
+            desc.append(d)
+            if self.device.Cipe.TunnelDevice == dev.Device:
+                curr = d
+                            
+        if len(desc):
+            ecombo.set_popdown_strings(desc)
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
-        if self.device.Cipe.TunnelDevice and hwcurr:
-            widget.set_text(hwcurr)
+        if self.device.Cipe.TunnelDevice and curr:
+            widget.set_text(curr)
         widget.set_position(0)
                 
         if self.device.Device:
@@ -152,14 +159,14 @@ class cipeConfigDialog(deviceConfigDialog):
 
     def updateRemoteOptions(self, *args):
 
-        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
-        hw = fields[0]
+        ethw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+        fields = string.split(ethw)
+        d = fields[0]
         ip = ''
         
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
-            if dev.Device == hw:
+            if dev.Device == d:
                 ip = dev.IP
 
         addr = self.xml.get_widget("remotePeerAddressEntry").get_text()
