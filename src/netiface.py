@@ -14,7 +14,7 @@
 
 __author__ = "Preston Brown <pbrown@redhat.com>"
 __date__ = "02 May 2001"
-__version__ = "$Revision: 1.1 $"
+__version__ = "$Revision: 1.2 $"
 
 import os
 import re
@@ -405,7 +405,7 @@ class Address:
         from the associated device on the system.  Returns 1 if it
         succeeds; 0 on failure."""
         cmd = "/sbin/ip addr del %s/%s dev %s" % (
-            self.address, delf.prefix, self.device)
+            self.address, self.prefix, self.device)
 
         if os.system(cmd):
             return 0
