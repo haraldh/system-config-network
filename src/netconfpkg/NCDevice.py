@@ -47,7 +47,10 @@ class Device(Device_base):
             if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = true
-                else: self.__dict__[selfkey] = false            
+                else:
+                    self.__dict__[selfkey] = false            
+            else:
+                self.__dict__[selfkey] = false            
             
     def save(self):
         conf = ConfDevice(self.DeviceId)
