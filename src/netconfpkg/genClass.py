@@ -398,7 +398,7 @@ def printClass(list, basename, baseclass):
 
 			testlist = testlist \
 					  + '\t\tfor pos in xrange(len(self.data)):\n' \
-					  + '\t\t\tself.test%childname(self.data[pos])\n'
+					  + '\t\t\tself.data[pos].test()\n'
 			
 			
 			if ctype != Data.ADM_TYPE_LIST:				
@@ -519,7 +519,7 @@ def printClass(list, basename, baseclass):
 							  + '\t\t\t\tself.__%childname_bak = %childclassname(child, self)\n'
 				
 				testlist = testlist + \
-						'\t\tself.%childname.test()\n'
+						'\t\tif self.%childname: self.%childname.test()\n'
 				
 				applylist = applylist \
 							  + '\t\tself.create%childname().apply(other.get%childname())\n'
