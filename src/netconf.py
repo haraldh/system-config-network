@@ -30,7 +30,6 @@ import gettext
 import Conf
 
 from netconfpkg import *
-from Resolver import ResolverFile
 
 from gtk import TRUE
 from gtk import FALSE
