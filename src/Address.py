@@ -11,6 +11,9 @@
 Classes for managing an address and list of these
 """
 
+import sys
+if not "/usr/lib/rhs/python" in sys.path:
+    sys.path.append("/usr/lib/rhs/python")
 import os
 import Conf
 import ipcalc
