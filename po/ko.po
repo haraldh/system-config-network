@@ -1,18 +1,18 @@
 # translation of ko.po to Korean
 # Copyright (C) 2002 Red Hat, Inc.
-# Michelle Kim <mkim@redhat.com>, 2002
+# Michelle J Kim <mkim@redhat.com>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ko\n"
 "POT-Creation-Date: 2003-05-22 11:52+0200\n"
-"PO-Revision-Date: 2003-03-12 10:36+1000\n"
-"Last-Translator: Michelle Kim <mkim@redhat.com>\n"
-"Language-Team: Korean <ko@li.org>\n"
+"PO-Revision-Date: 2003-06-06 11:46+1000\n"
+"Last-Translator: Michelle J Kim <mkim@redhat.com>\n"
+"Language-Team:  <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.0\n"
 
 #: neat-control.desktop.in.h:1
 msgid "Control and monitor network devices"
@@ -104,28 +104,27 @@ msgid "Activating network device %s, please wait..."
 msgstr "네트웍 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
 
 #: src/neat-control.py:207
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot configure network device %s"
-msgstr "네트워크 장치 %s를 활성화할 수 없습니다"
+msgstr "네트워크 장치 %s를 설정할 수 없습니다"
 
 #. update dialog #83640
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
 #: src/neat-control.py:227
-#, fuzzy
 msgid "Switching Profiles"
-msgstr "%s 프로파일을 업데이트 중..."
+msgstr "프로파일을 교체"
 
 #: src/neat-control.py:228
-#, fuzzy, python-format
+#, python-format
 msgid "Switching to profile %s"
-msgstr "%s 프로파일을 업데이트 중..."
+msgstr "%s 프로파일로 교체"
 
 #: src/neat-control.py:229
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to switch to profile %s"
-msgstr "%s 파일에 기록하는데 실패했습니다."
+msgstr "%s 프로파일로 교체하는데 실패했습니다"
 
 #. Re-read the device list
 #. Update the gui
@@ -140,9 +139,8 @@ msgstr "다시 작성해야 합니다!"
 #. ???
 #. change the default profile to a more understandable name
 #: src/neat-control.py:346
-#, fuzzy
 msgid " (active)"
-msgstr "비활성화"
+msgstr " (활성)"
 
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
@@ -285,24 +283,22 @@ msgid "Error: %s, %s!"
 msgstr "오류: %s, %s!"
 
 #: src/netconf.py:59
-#, fuzzy
 msgid "Starting text version"
-msgstr "텍스트 버전을 시작:"
+msgstr "텍스트 버전을 시작"
 
 #: src/netconf.py:108
 msgid "Loading Network Configuration..."
 msgstr "네트워크 설정을 읽어오는 중..."
 
 #: src/netconf.py:121
-#, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
 "\n"
 "Usage: redhat-config-network -v --verbose"
 msgstr ""
-"redhat-config-network - 그래픽 네트워크 설정 도구\n"
+"redhat-config-network - 네트워크 설정 도구\n"
 "\n"
-"사용법: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
+"사용법: redhat-config-network -v --verbose"
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -326,80 +322,80 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:64
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
 "Please file a detailed bug report against the component %s at \n"
 "https://bugzilla.redhat.com/bugzilla\n"
 "using the text below.\n"
 msgstr ""
-"처리할 수 없는 예외적인 상황이 발생했습니다.  이와같은 상황은 버그로 예상됩니"
-"다.  이 오류의 내용을 전부 복사하시거나 파일로 저장하신 후에 redhat-config-"
-"network에 대한 버그의 내용을 http://bugzilla.redhat.com/bugzilla/ 로 자세히 "
-"보고해 주시기 바랍니다."
+"처리할 수 없는 예외적인 상황이 발생했습니다.  "
+"이와같은 상황은 버그로 예상됩니다.\n"
+"이 오류의 내용을 다음에 나온 텍스트를 사용하여\n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"에서 %s에 대한 버그 내용을 보고해 주시기 바랍니다.\n"
 
 #: src/netconf-cmd.py:99
-#, fuzzy, python-format
+#, python-format
 msgid "%s - network configuration commandline tool"
-msgstr "네트워크 설정"
+msgstr "%s - 네트워크 설정 명령행 도구"
 
 #: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
-msgstr ""
+msgstr "사용법: %s"
 
 #: src/netconf-cmd.py:106
-#, fuzzy
 msgid "switch / activate profile"
-msgstr "선택된 프로파일을 활성화하시려면 클릭하십시오."
+msgstr "프로파일 교체 / 활성화"
 
 #: src/netconf-cmd.py:108
 msgid "export / import hardware list"
-msgstr ""
+msgstr "하드웨어 목록 내보내기/ 가져오기"
 
 #: src/netconf-cmd.py:110
 msgid "export / import device list (default)"
-msgstr ""
+msgstr "장치 목록 내보내기 (디폴트) / 가져오기"
 
 #: src/netconf-cmd.py:112
 msgid "export / import profile list"
-msgstr ""
+msgstr "프로파일 목록 내보내기 / 가져오기"
 
 #: src/netconf-cmd.py:114
 msgid "set the root directory"
-msgstr ""
+msgstr "루트 디렉토리 설정"
 
 #: src/netconf-cmd.py:115
 msgid "export list (default)"
-msgstr ""
+msgstr "내보내기 목록 (디폴트)"
 
 #: src/netconf-cmd.py:116
 msgid "import list"
-msgstr ""
+msgstr "가져오기 목록"
 
 #: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
-msgstr ""
+msgstr "가져오기 작업을 진행하기 이전에 기존 목록을 지우기"
 
 #: src/netconf-cmd.py:120
 msgid "import from file"
-msgstr ""
+msgstr "파일에서 가져오기"
 
 #: src/netconf-cmd.py:220
 #, python-format
 msgid "Unknown option %s\n"
-msgstr ""
+msgstr "알 수 없는 옵션 %s\n"
 
 #. remove the last \n
 #: src/netconf-cmd.py:280
-#, fuzzy, python-format
+#, python-format
 msgid "Unknown List %s\n"
-msgstr "알 수 없음"
+msgstr "알 수 없는 목록 %s\n"
 
 #: src/netconf-cmd.py:284
-#, fuzzy, python-format
+#, python-format
 msgid "Error parsing line: %s"
-msgstr "%s 장치를 로딩하는데 에러가 났습니다!\n"
+msgstr "다음 라인을 해석하는데 오류가 발생했습니다: %s"
 
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -726,12 +722,16 @@ msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
+"실행 실패:\n"
+"%s"
 
 #: src/netconfpkg/gui/GUI_functions.py:546
 msgid ""
 "\n"
 "Succeeded. Please read the output."
 msgstr ""
+"\n"
+"성공. 출력 결과를 읽어보십시오."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1057,6 +1057,8 @@ msgid ""
 "Nickname %s is already in use!\n"
 "Please choose another one.\n"
 msgstr ""
+"별명 %s은 이미 사용되고 있습니다!\n"
+"다른 별명을 선택해 주십시오.\n"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1425,8 +1427,7 @@ msgstr "여러분은 일부 설정을 변경 하셨습니다."
 #: src/netconfpkg/gui/maindialog.py:780
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
+msgstr "네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
 
 #: src/netconfpkg/gui/maindialog.py:782
 msgid "Do you want to continue?"
@@ -1656,23 +1657,23 @@ msgstr "비활성화"
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Directory %s is missing!\n"
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
-"/etc/cipe 디렉토리가 없습니다!\n"
+"%s 디렉토리가 없습니다!\n"
 "디렉토리를 생성하겠습니다!\n"
 "cipe rpm 패키지를 설치해 주십시오!\n"
 
 #: src/netconfpkg/NCCipe.py:159
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Could not create\n"
 "directory %s!"
 msgstr ""
-"/etc/cipe 디렉토리를\n"
+"%s 디렉토리를\n"
 "생성하지 못했습니다!"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -1983,9 +1984,9 @@ msgstr "유고슬라비아"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCProfileList.py:53 src/netconfpkg/NCProfileList.py:58
-#, fuzzy, python-format
+#, python-format
 msgid "Copying %s to default profile."
-msgstr "/etc/hosts를 기본 프로파일에 복사합니다."
+msgstr "%s을 기본 프로파일에 복사합니다."
 
 #. 60016
 #. Keep that test for later versions
@@ -2062,15 +2063,13 @@ msgstr "소프트웨어 (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:152
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr "여러분의 시스템에 필요한 다음과 같은 패키지를 설치할까요?"
 
 #. print "toinstall %s" % str(toinstall)
 #. print "plist %s" % str(plist)
 #: src/netconfpkg/NC_functions.py:167
-msgid ""
-"You have to install the following packages, which are needed on your system!"
+msgid "You have to install the following packages, which are needed on your system!"
 msgstr "여러분의 시스템에 필요한 다음과 같은 패키지들을 설치하셔야 합니다!"
 
 #. test for wireless
@@ -2192,25 +2191,23 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCHardware.py:21
-#, fuzzy
 msgid "inactive"
-msgstr "비활성화"
+msgstr "비활성"
 
 #. not found in last config and not in actual system
 #: src/netconfpkg/NCHardware.py:22
 msgid "system"
-msgstr ""
+msgstr "시스템"
 
 #. found in system
 #: src/netconfpkg/NCHardware.py:23
-#, fuzzy
 msgid "configured"
-msgstr "설정"
+msgstr "설정 마침"
 
 #. found in config but not in system
 #: src/netconfpkg/NCHardware.py:24
 msgid "ok"
-msgstr ""
+msgstr "확인"
 
 #. found in system and in config
 #. !/usr/bin/python
@@ -2413,10 +2410,8 @@ msgstr "ISP가 제공한 로그인 이름을 여기에 입력해 주십시오."
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr ""
-"이 설정명을 입력해 주십시오, 보통은 여러분 ISP의 이름을 입력하시면 됩니다."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgstr "이 설정명을 입력해 주십시오, 보통은 여러분 ISP의 이름을 입력하시면 됩니다."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
 msgid "Enter the password for this account."
@@ -2466,8 +2461,7 @@ msgstr "이 계정에 대한 이더넷 장치를 선택해 주십시오."
 #: src/netconfpkg/gui/dialupconfig.glade.h:44
 #: src/netconfpkg/gui/dslconfig.glade.h:16
 msgid "Use this form to enter your T-Online account data."
-msgstr ""
-"이 양식을 사용하여 여러분의 T-Online 계정 데이터를 입력하시기 바랍니다."
+msgstr "이 양식을 사용하여 여러분의 T-Online 계정 데이터를 입력하시기 바랍니다."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
 #: src/netconfpkg/gui/DialupDruid.glade.h:28
@@ -4119,10 +4113,8 @@ msgstr ""
 "적 장치들이 한개의 하드웨어와 연결될 수도 있습니다."
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr ""
-"여기서 컴퓨터에 물리적으로 연결된 네트워크 하드웨어를 설정하실 수 있습니다."
+msgid "You may configure network hardware physically attached to the computer here."
+msgstr "여기서 컴퓨터에 물리적으로 연결된 네트워크 하드웨어를 설정하실 수 있습니다."
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
 msgid ""
@@ -4264,9 +4256,8 @@ msgid "The following network interfaces are configured in the active profile."
 msgstr "다음과 같은 네트워크 인터페이스가 활성화된 프로파일에 설정되었습니다."
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
-#, fuzzy
 msgid "_Info\t"
-msgstr "정보"
+msgstr "정보(_I)\t"
 
 #~ msgid "Cannot activate network device %s"
 #~ msgstr "네트워크 장치 %s를 활성화할 수 없습니다"
@@ -4610,3 +4601,4 @@ msgstr "정보"
 
 #~ msgid "Activating for Network device %s, please wait..."
 #~ msgstr "네트워크 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
+
