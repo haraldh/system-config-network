@@ -26,9 +26,15 @@ provider_DATA = providerdb
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
-	ln  -s $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network
-	ln  -s $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd
-	ln  -s $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/neat
+	softdir=$(pkgdatadir); \
+	p=$(DESTDIR) ; \
+	softdir=$${softdir/#$$p} ; \
+	p=$(prefix) ; \
+	softdir=$${softdir/#$$p} ; \
+	softdir=$${softdir/#\/} ; \
+	ln  -fs ../$${softdir}netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
+	ln  -fs ../$${softdir}netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
+	ln  -fs ../$${softdir}netconf.py $(DESTDIR)$(sbindir)/neat ;
 
 docs:
 	python ./pydoc.py -w $(PYTHON_FILES)
