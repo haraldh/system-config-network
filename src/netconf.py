@@ -1159,14 +1159,13 @@ class mainDialog:
         self.hydrate()
 
     def on_profileRenameButton_clicked (self, *args):
-        import gnome.ui
         profilelist = getProfileList()
         
         profile = self.get_active_profile()
         if profile.ProfileName == 'default':
             generic_error_dialog (_('The "default" profile can\'t be renamed!'), self.dialog)
             return
-            
+        import gnome.ui
         dialog = gnome.ui.RequestDialog (FALSE, _("Please enter the new name for the profile.\nThe name may only contain letters and digits."), profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
         dialog.run()
         dialog.destroy()

@@ -20,7 +20,6 @@ import signal
 import traceback
 import types
 import gtk
-import gnome.ui
 from string import joinfields
 from cPickle import Pickler
 from netconfpkg.gui.GUI_functions import generic_error_dialog, get_icon, \
@@ -157,6 +156,7 @@ def exceptionWindow(title, text):
 
 class FileSelection:
     def __init__(self, text):
+        import gnome.ui
         win = gtk.Dialog (_("Select a file:"))
         #win.connect ("clicked", self.quit)
         win.add_button (gtk.STOCK_OK, gtk.RESPONSE_OK)

@@ -23,7 +23,6 @@ import gtk
 from gtk import TRUE
 from gtk import FALSE
 import gtk.glade
-import gnome.ui
 
 from ModemInterface import ModemInterface
 from ADSLInterface import ADSLInterface
