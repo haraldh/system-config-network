@@ -88,14 +88,17 @@ def printObj(obj, parent = None):
             
         if attr[TYPE] != genClass.LIST:
             if val != None:
-                print "%s.%s=%s" % (parent, child, str(val))
+                if attr[TYPE] != genClass.BOOL:
+                    print "%s.%s=%s" % (parent, child, str(val))
+                else:
+                    if val: print "%s.%s=false" % (parent, child)
+                    else: print "%s.%s=true" % (parent, child)
+                
         else:
             if val != None:
                 printObj(val, "%s.%s" % (parent, child))
 
-# Argh, another workaround for broken gtk/gnome imports...
 if __name__ == '__main__':
-
 #    if os.getuid() != 0:
 #        print _("Please restart %s with root permissions!") % (sys.argv[0])
 #        sys.exit(10)
@@ -114,14 +117,9 @@ if __name__ == '__main__':
                                     "list"])
         for opt, val in opts:
             if opt == '-l' or opt == '--list':
-                if args:
-                    for devname in args:
-                        dev = Device()
-                        dev.load(devname)
-                        printObj(dev, devname)
-                else:
-                    devlist = getDeviceList()
-                    for dev in devlist:
+                devlist = getDeviceList()
+                for dev in devlist:
+                    if (not args) or (dev.DeviceId in args):
                         printObj(dev, dev.DeviceId)
                         
                 sys.exit(0)
@@ -133,10 +131,6 @@ if __name__ == '__main__':
 
             if opt == '-h' or opt == '--help':
                 Usage()
-                sys.exit(0)
-
-            if opt == '-t' or opt == '--test':
-                print "Just a test for getopt"
                 sys.exit(0)
 
             raise BadUsage
