@@ -105,20 +105,31 @@ class mainDialog:
         dlg.run_and_close()
 
     def on_activateButton_clicked(self, button):
-        Interface().activate(self.clist_get_device())
+        l = self.clist_get_device()
+        if l:
+            Interface().activate(l)
         
     def on_deactivateButton_clicked(self, button):
-        Interface().deactivate(self.clist_get_device())
+        l = self.clist_get_device()
+        if l:
+            Interface().deactivate(l)
 
     def on_configureButton_clicked(self, button):
-        Interface().configure(self.clist_get_device())
+        l = self.clist_get_device()
+        if l:
+            Interface().configure(l)
 
     def on_monitorButton_clicked(self, button):
-        Interface().monitor(self.clist_get_device())
+        l = self.clist_get_device()
+        if l:
+            Interface().monitor(l)
 
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     activate_button = None, deactivate_button = None,
                                     configure_button = None, monitor_button = None):
+        if len(clist.selection) == 0:
+            return
+        
         try:
             status = clist.get_pixtext(clist.selection[0], 0)[0]
         except ValueError:
@@ -142,16 +153,22 @@ class mainDialog:
 
     def clist_get_status(self):
         clist = self.xml.get_widget('interfaceClist')
+        if len(clist.selection) == 0:
+            return
         dev = clist.get_pixtext(clist.selection[0], STATUS)[0]
         return dev
 
     def clist_get_device(self):
         clist = self.xml.get_widget('interfaceClist')
+        if len(clist.selection) == 0:
+            return
         dev = clist.get_pixtext(clist.selection[0], DEVICE)[0]
         return dev
 
     def clist_get_nickname(self):
         clist = self.xml.get_widget('interfaceClist')
+        if len(clist.selection) == 0:
+            return
         dev = clist.get_text(clist.selection[0], NICKNAME)
         return dev
     
