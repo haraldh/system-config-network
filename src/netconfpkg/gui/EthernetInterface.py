@@ -164,6 +164,7 @@ class EthernetInterface(InterfaceCreator):
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = getHardwareList()
+        hardwarelist.updateFromSystem()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()

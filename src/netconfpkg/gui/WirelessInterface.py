@@ -65,7 +65,8 @@ class WirelessInterface(InterfaceCreator):
               "on_hw_config_page_prepare" : self.on_hw_config_page_prepare,
               "on_finish_page_finish" : self.on_finish_page_finish,
               "on_finish_page_prepare" : self.on_finish_page_prepare,
-              "on_finish_page_back" : self.on_finish_page_back
+              "on_finish_page_back" : self.on_finish_page_back,
+              "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
               }
             )
 
@@ -138,16 +139,35 @@ class WirelessInterface(InterfaceCreator):
     def on_wireless_config_page_next(self, druid_page, druid):
         self.device.createWireless()
         wl = self.device.Wireless
-        wl.EssId = self.xml.get_widget("essidEntry").get_text()
-        wl.Mode =  self.xml.get_widget("modeEntry").get_text()
+
+        if self.xml.get_widget("essidAutoButton").get_active():
+            wl.EssId = ""
+        else:
+            wl.EssId = self.xml.get_widget("essidEntry").get_text()
+        wl.Mode =  self.xml.get_widget("modeEntry").get_text()            
+            
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
         wl.Rate = self.xml.get_widget("rateEntry").get_text()
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_wireless_config_page_prepare(self, druid_page, druid):
-        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Managed',
-                                                                'Ad-Hoc',
-                                                                ])
+        self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
+        self.xml.get_widget("modeEntry").connect("changed",
+                                                 self.on_modeChanged)
+
+    def on_modeChanged(self, entry):
+        if string.lower(entry.get_text()) == "managed":
+            self.xml.get_widget("channelSpinButton").set_sensitive(FALSE)
+            self.xml.get_widget("rateCombo").set_sensitive(FALSE)
+            self.xml.get_widget("rateEntry").set_sensitive(FALSE)
+        else:
+            self.xml.get_widget("channelSpinButton").set_sensitive(TRUE)
+            self.xml.get_widget("rateCombo").set_sensitive(TRUE)
+            self.xml.get_widget("rateEntry").set_sensitive(TRUE)
+        self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
+
+    def on_essidAutoButton_toggled(self, check):
+        self.xml.get_widget("essidEntry").set_sensitive(not check.get_active())
 
     def on_hw_config_page_back(self, druid_page, druid):
         pass
@@ -179,6 +199,7 @@ class WirelessInterface(InterfaceCreator):
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
+        hardwarelist.updateFromSystem()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()

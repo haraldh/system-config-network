@@ -121,7 +121,8 @@ class wirelessConfigDialog(deviceConfigDialog):
                 wl.EssId = ""
             else:
                 wl.EssId = self.xml.get_widget("essidEntry").get_text()
-            wl.Mode =  self.xml.get_widget("modeEntry").get_text()
+            wl.Mode =  self.xml.get_widget("modeEntry").get_text()            
+            
             wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
             wl.Rate = self.xml.get_widget("rateEntry").get_text()
             wl.Key = self.xml.get_widget("keyEntry").get_text()

@@ -126,41 +126,9 @@ class HardwareList(HardwareList_base):
         }
 
 
-    def load(self):
+    def updateFromSystem(self):
         modules = ConfModules()
         modinfo = getModInfo()
-        hwconf = ConfHWConf()          
-
-        #
-        # Read /etc/modules.conf
-        #
-        for mod in modules.keys():
-            if modules[mod].has_key('alias'):
-                module = modules[mod]['alias']
-            else: module = None
-            
-            type = getDeviceType(mod)
-            if type == _('Unknown'):
-                continue
-
-            i = self.addHardware()
-            hw = self.data[i]
-            hw.Name = mod
-            hw.Description = module
-            hw.Type = type
-            hw.createCard()
-            hw.Card.ModuleName = module
-            if module:
-                for info in modinfo.keys():
-                    if info == module:
-                        if modinfo[info].has_key('description'):
-                            hw.Description = modinfo[info]['description']
-
-            for selfkey in self.keydict.keys():
-                confkey = self.keydict[selfkey]
-                if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                    hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
-
         #
         # Read in actual system state
         #
@@ -201,6 +169,43 @@ class HardwareList(HardwareList_base):
                         confkey = self.keydict[selfkey]
                         if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
                             hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+
+    def load(self):
+        modules = ConfModules()
+        modinfo = getModInfo()
+        hwconf = ConfHWConf()          
+
+        #
+        # Read /etc/modules.conf
+        #
+        for mod in modules.keys():
+            if modules[mod].has_key('alias'):
+                module = modules[mod]['alias']
+            else: module = None
+            
+            type = getDeviceType(mod)
+            if type == _('Unknown'):
+                continue
+
+            i = self.addHardware()
+            hw = self.data[i]
+            hw.Name = mod
+            hw.Description = module
+            hw.Type = type
+            hw.createCard()
+            hw.Card.ModuleName = module
+            if module:
+                for info in modinfo.keys():
+                    if info == module:
+                        if modinfo[info].has_key('description'):
+                            hw.Description = modinfo[info]['description']
+
+            for selfkey in self.keydict.keys():
+                confkey = self.keydict[selfkey]
+                if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                    hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                    
+        self.updateFromSystem()
 
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
