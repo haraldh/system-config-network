@@ -55,6 +55,9 @@ _ = gettext.gettext
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
 
+if os.getuid() == 0: isdnctrl = '/sbin/isdnctrl'
+else: isdnctrl = '/usr/sbin/userisdnctl'
+            
 class ProcNetDevice:
     def __init__(self):
         pass
@@ -70,25 +73,19 @@ class NetworkDevice:
 
         self.activedevicelist = l
         
-        if os.getuid() == 0:
-            command = '/sbin/isdnctrl'
-        else:
-            command = '/usr/sbin/userisdnctl'
-                        
-        # check isdn device for connection
+        # remove inactive isdn/ppp device
         for i in l:
-            if len(i) > 4:
-                if i[:4] == 'isdn' or i[:4] == 'ippp':
-                    if os.access(command, os.X_OK):
-                        if os.system(command + ' status %s > &/dev/null' %(i)) == 0:
-                            continue
-                    self.activedevicelist.remove(i)
-            elif len(i) > 3 and i[:3] == 'ppp':
+            if getDeviceType(i) == ISDN:
+                if os.access(isdnctrl, os.X_OK):
+                    if os.system(isdnctrl + ' status %s >& /dev/null' %(i)) == 0:
+                        continue
+                self.activedevicelist.remove(i)
+            elif getDeviceType(i) == MODEM:
                 if not os.access('/var/run/ppp-%s.pid' %(i), os.F_OK):
                     self.activedevicelist.remove(i)
             
         # check real ppp device
-        for i in xrange(0,10):
+        for i in xrange(0, 10):
             if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
                 self.activedevicelist.append('ppp%s' %(i))
                     
@@ -98,9 +95,8 @@ class NetworkDevice:
         return self.activedevicelist
 
     def find(self, device):
-        for i in self.activedevicelist:
-            if i == device:
-                return TRUE
+        if device in self.activedevicelist:
+            return TRUE
         return FALSE
 
 class Interface:
@@ -108,7 +104,12 @@ class Interface:
         pass
 
     def activate(self, device):
-        ret = fork_exec(0, '/sbin/ifup', ['/sbin/ifup', device])
+        command = '/sbin/ifup'
+        
+        if getDeviceType(device) == ISDN:
+            command = '/usr/sbin/isdnup'
+
+        ret = fork_exec(0, command, [command, device])
         return ret
 
     def deactivate(self, device):
@@ -121,10 +122,7 @@ class Interface:
         return os.access(NETWORKDIR + NETWORKPREFIX + '-' + device)
         
     def isdndial(self, device):
-        if os.getuid() != 0:
-            os.system('/usr/sbin/userisdnctl dial %s>&/dev/null' %(device))
-        else:
-            os.system('/sbin/isdnctrl dial %s>&/dev/null' %(device))
+        os.system(isdnctrl + ' dial %s >& /dev/null' %(device))
 
     def status(self, device):
         pass

@@ -669,13 +669,6 @@ class mainDialog:
             dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
             idle_func()
             os.waitpid(child, 0)
-
-            # isdnctrl dial device must be started for connecting by ISDN
-            if len(device) > 4:
-                if device[:4] == 'isdn' or device[:4] == 'ippp':
-                    intf.isdndial(device)
-                    time.sleep(5)
-
             self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.destroy()

@@ -18,7 +18,7 @@ DEVICE=${1}
 
 if [ -x /sbin/ifup ] ; then
     /sbin/ifup ${DEVICE} || exit 1
-    sleep 3
+    sleep 2
 else
     echo $"/sbin/ifup does not exist"
     exit 1
@@ -26,16 +26,16 @@ fi
 
 if [ ${UID} != 0 ]; then
     if [ -x /usr/sbin/userisdnctl ]; then
-        /usr/sbin/userisdnctl dial ${DEVICE}
-        sleep 2
+        /usr/sbin/userisdnctl dial ${DEVICE} >& /dev/null
+        sleep 4
     else
         echo $"Users cannot control this device." >&2
         exit 1
     fi
 else
     if [ -x /sbin/isdnctrl ]; then
-        /sbin/isdnctrl dial ${DEVICE}
-        sleep 2
+        /sbin/isdnctrl dial ${DEVICE} >& /dev/null
+        sleep 4
     else
         echo $"/sbin/isdnctrl does not exist." >&2
         exit 1
