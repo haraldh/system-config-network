@@ -30,7 +30,7 @@ import gettext
 import string
 
 import HardwareList
-
+from NC_functions import *
 from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE
@@ -38,8 +38,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 class dslConfigDialog(deviceConfigDialog):

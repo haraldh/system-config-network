@@ -39,8 +39,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 class tcpConfigDialog:
@@ -52,7 +52,7 @@ class tcpConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
+            glade_file = NETCONFDIR + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
         self.xml.signal_autoconnect(

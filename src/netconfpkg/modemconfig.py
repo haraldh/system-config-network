@@ -30,7 +30,7 @@ import gettext
 import re
 
 import HardwareList
-
+from NC_functions import *
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -38,8 +38,8 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 modem_device_list = [ "/dev/ttyS0", "/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3",
@@ -52,7 +52,7 @@ class modemDialog:
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
+            glade_file = NETCONFDIR + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 

@@ -33,6 +33,7 @@ from deviceconfig import deviceConfigDialog
 from NCDeviceList import *
 from NCCallback import *
 from NCHardwareList import *
+from NC_functions import *
 
 from provider import *
 from gtk import TRUE
@@ -41,8 +42,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 class DialupDialog(deviceConfigDialog):

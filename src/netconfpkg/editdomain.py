@@ -33,7 +33,6 @@ import ProfileList
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
