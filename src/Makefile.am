@@ -46,8 +46,9 @@ all-local:
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 netconf.py $(DESTDIR)$(pkgdatadir)/
-	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf
-	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf-cmd
+	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network
+	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd
+	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/neat
 	install -m 644 $(PYTHON_FILES) $(DESTDIR)$(pkgdatadir)/
 	install -m 644 $(GLADE_FILES)  $(DESTDIR)$(pkgdatadir)/netconfpkg/
 
