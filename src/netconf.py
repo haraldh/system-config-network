@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+#! /usr/bin/python2.2
 
 ## netconf - A network configuration tool
 ## Copyright (C) 2001, 2002 Red Hat, Inc.
