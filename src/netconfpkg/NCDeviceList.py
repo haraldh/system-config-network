@@ -70,6 +70,7 @@ class DeviceList(DeviceList_base):
             pppnum = 0
             ipppnum = 0
             isdnnum = 0
+            fp = os.open('/etc/sysconfig/static-routes', os.O_WRONLY| os.O_CREAT, 0600)
             for dev in self:
                 if dev.Type == "Modem" or dev.Type == 'xDSL':
                     dev.Device = "ppp"+str(pppnum)
@@ -84,6 +85,11 @@ class DeviceList(DeviceList_base):
                         dev.Device = "isdn"+str(isdnnum)
                         isdnnum = isdnnum + 1
                 dev.save()
+                if fp and dev.StaticRoutes and len(dev.StaticRoutes) > 0:
+                    for route in dev.StaticRoutes:
+                        os.write(fp, dev.Device+" net "+route.Address+" netmask "+route.Netmask+" gw "+route.Gateway+"\n")
+            if fp:
+               os.close(fp)
 
         self.commit()
 

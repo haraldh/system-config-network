@@ -172,7 +172,6 @@ class Device(Device_base):
         self.commit()
 
         conf = ConfDevice(self.DeviceId)
-        rconf = ConfRoute(self.DeviceId)
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
@@ -193,12 +192,14 @@ class Device(Device_base):
         if self.Dialup:
             self.Dialup.save(conf)
  
-        p = 0
-        for route in self.StaticRoutes:
-            rconf['ADDRESS'+str(p)] = route.Address
-            rconf['NETMASK'+str(p)] = route.Netmask
-            rconf['GATEWAY'+str(p)] = route.Gateway
-            p = p + 1
+        if self.StaticRoutes and len(self.StaticRoutes) > 0:
+            rconf = ConfRoute(self.DeviceId)
+            p = 0
+            for route in self.StaticRoutes:
+                rconf['ADDRESS'+str(p)] = route.Address
+                rconf['NETMASK'+str(p)] = route.Netmask
+                rconf['GATEWAY'+str(p)] = route.Gateway
+                p = p + 1
+            rconf.write()
 
         conf.write()
-        rconf.write()
