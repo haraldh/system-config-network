@@ -6,7 +6,6 @@ URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
-BuildArch: noarch
 Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libglade, pygtk, python, pygnome-libglade, pygnome
 BuildRequires: alchemist, alchemist-devel, python, libglade-devel
 Obsoletes: isdn-config internet-config netcfg
@@ -48,6 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Mon Mar 11 2002 Trond Eivind Glomsrød <teg@redhat.com> 0.9.13-1
 - New build
+- No longer noarch
 
 * Thu Feb 28 2002 Trond Eivind Glomsrød <teg@redhat.com> 0.9.12-1
 - Various fixes, additions
