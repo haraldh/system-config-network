@@ -213,6 +213,8 @@ class mainDialog:
         hclist.clear()
         for prof in profilelist:
             if prof.Active == true:
+                self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
+                self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
                 self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
                 self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
                 self.xml.get_widget('ternaryDnsEntry').set_text(prof.DNS.TernaryDNS)
