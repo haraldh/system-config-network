@@ -100,6 +100,9 @@ class %classname%base%baseclass:
 	def getParent(self):
 		return self.__parent
 
+	def setParent(self, parent):
+		self.__parent = parent
+
 	def doClear(self):
 		%UnlinkList
 		pass
@@ -239,6 +242,19 @@ AnonListCLOps = """
 	def remove%childname(self, child):
 		try: remove(child)
 		except ValueError: pass
+
+	def __setitem__(self, i, item):
+		UserList.UserList.__setitem__(self, i, item)
+		item.setParent(self)
+
+	def append(self, item):
+		UserList.UserList.append(self, item)
+		item.setParent(self)
+		
+	def insert(self, i, item):
+		UserList.UserList.insert(self, i, item)
+		item.setParent(self)
+		
 """
 
 AnonListCNLOps = """
@@ -401,7 +417,11 @@ def printClass(list, basename, baseclass):
 						  + "\t\tself.data = self.data_bak[:]\n"
 							
 			commitlist = commitlist \
-							 + '\t\tif self.data_bak != self.data: self.setChanged(changed)\n'
+				     + '\t\tif self.data_bak and not self.data: self.setChanged(changed)\n' \
+				     + '\t\telif not self.data_bak and self.data: self.setChanged(changed)\n' \
+				     + '\t\telif len(self.data_bak) != len(self.data): self.setChanged(changed)\n' \
+				     + '\t\telse:\n\t\t\tfor i in xrange(0, len(self.data_bak)):\n\t\t\t\tif self.data_bak[i] != self.data[i]: self.setChanged(changed)\n'
+
 			commitlist = commitlist \
 							 + '\t\tself.data_bak = self.data[:]\n'
 
@@ -494,11 +514,6 @@ def printClass(list, basename, baseclass):
 			backuplist = backuplist \
 							 + '\t\tself.%childname = self.__%childname_bak\n'
 			
-			commitlist = commitlist \
-							 + '\t\tif self.__%childname_bak != self.%childname: self.setChanged(changed)\n'
-			commitlist = commitlist \
-							 + '\t\tself.__%childname_bak = self.%childname\n'
-
 			commitalist = commitalist + \
 							  '\t\t\tcommitChild("%childname", %childtype, changed)\n'
 
@@ -517,6 +532,11 @@ def printClass(list, basename, baseclass):
 
 				initlist = initlist \
 							  + '\t\t\t\tself.__%childname_bak = child.getValue()\n'
+
+				commitlist = commitlist \
+							 + '\t\tif self.__%childname_bak != self.%childname: self.setChanged(changed)\n'
+				commitlist = commitlist \
+							 + '\t\tself.__%childname_bak = self.%childname\n'
 				
 				#########################				
 			else:
@@ -534,12 +554,14 @@ def printClass(list, basename, baseclass):
 				
 				applylist = applylist \
 							  + '\t\tself.create%childname().apply(other.get%childname())\n'
-				commitlist = commitlist +\
-								 '\t\tif self.%childname: self.%childname.commit(changed)\n'
 
 				backuplist = backuplist +\
 								 '\t\tif self.%childname: self.%childname.rollback()\n'
 								 
+				commitlist = commitlist +\
+								 '\t\tif self.%childname != self.__%childname_bak: self.%childname.commit(changed)\n'
+				commitlist = commitlist \
+							 + '\t\tself.__%childname_bak = self.%childname\n'
 				
 				
 				#########################
