@@ -78,5 +78,6 @@ if __name__ == '__main__':
         print "Name: " + str(dev.Name)
         print "IP: " + str(dev.IP)
         print "OnBoot: " + str(dev.OnBoot)
+        print "Type: " + str(dev.Type)
         print "---------"
     dl.save()
