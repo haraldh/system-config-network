@@ -99,7 +99,7 @@ class isdnHardwareDialog:
 
     def on_isdnCardEntry_changed(self, entry):
         cardname = entry.get_text()
-        card = ConfISDN()
+        card = NCisdnhardware.ConfISDN()
         card.get_resource(cardname)
         
         if card.IRQ:
@@ -186,7 +186,7 @@ class isdnHardwareDialog:
             hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
     def setup(self):
-        cardlist = card.keys()
+        cardlist = NCisdnhardware.card.keys()
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
