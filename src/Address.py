@@ -50,8 +50,9 @@ class Address:
 
         netmask=confFile["NETMASK"]
 
-        calc=ipcalc.IPCalc(self._address,netmask)
-        self._prefix=calc.prefix()
+        if self._address:
+            calc=ipcalc.IPCalc(self._address,netmask)
+            self._prefix=calc.prefix()
     
     def readFile(self,filename,number=""):
         """

@@ -23,7 +23,7 @@ class IPCalc:
     def __init__(self, address, prefix=None, netmask=None):
         """Initialize an IPCalc object.  Address must be provided, and
         in order for most of the other calculations to be possible,
-        one of prefix or netmask must also be provided."""        
+        one of prefix or netmask must also be provided."""
         self._address = address
         self._prefix = prefix
         self._netmask = netmask
