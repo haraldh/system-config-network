@@ -77,7 +77,7 @@ class Device(DeviceList.Device_base):
                 'IP' : 'IPADDR',
                 'Netmask' : 'NETMASK',
                 'Gateway' : 'GATEWAY',
-                'Hostname' : 'DEVHOSTNAME',
+                'Hostname' : 'DHCP_HOSTNAME',
                 'Domain' : 'DOMAIN',
                 'BootProto' : 'BOOTPROTO',
                 'Type' : 'TYPE',
