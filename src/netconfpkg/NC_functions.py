@@ -27,7 +27,8 @@ from rhpl import ConfPAP
 from rhpl import ethtool
 from rhpl import Conf
 from rhpl import ConfSMB
-from rhpl.log import log
+#from rhpl.log import log
+
 
 import UserList
 
@@ -51,16 +52,23 @@ def kernel_version():
     if not _kernel_version:
         (sysname, nodename, release, version, machine) = os.uname()
         if release.find("-") != -1:
-            (ver, rel) = release.split("-")
+            (ver, rel) = release.split("-", 1)
         else:
             ver = release
-        _kernel_version = string.split(ver, ".")        
+        _kernel_version = string.split(ver, ".", 4)        
     return _kernel_version
 
 def cmp_kernel_version(v1, v2):
-    for i in (1, 2, 3):        
+    for i in (1, 2, 3):
         if v1[i] != v2[i]:
-            return int(v1[i]) - int(v2[i])
+            try:
+                return int(v1[i]) - int(v2[i])
+            except:
+                if (v1[i] > v2[i]):
+                    return 1
+                else:
+                    return -1
+    return 0
     
 
 NETCONFDIR = '/usr/share/system-config-network/'
@@ -77,8 +85,10 @@ PPPDIR = "/etc/ppp"
 
 if cmp_kernel_version([2,5,0], kernel_version()) < 0:
     MODULESCONF='/etc/modprobe.conf'
+    DOCIPE=0
 else:
     MODULESCONF='/etc/modules.conf'
+    DOCIPE=1
     
 HWCONF='/etc/sysconfig/hwconf'
 ISDNCARDCONF='/etc/sysconfig/isdncard'
@@ -364,10 +374,13 @@ def getHardwareType(devname):
         return devname
     return getDeviceType(devname)
 
-def getDeviceType(devname):
+def getDeviceType(devname):    
     if devname in deviceTypes:
         return devname
-    type = _('Unknown')
+
+    UNKNOWN = _('Unknown')
+    
+    type = UNKNOWN
     if not devname or devname == "":
         return type
     
@@ -382,7 +395,15 @@ def getDeviceType(devname):
 	    type = WIRELESS
         except IOError:
 	    pass
-
+    elif type == UNKNOWN:
+        try:
+            # if still unknown, try to get a MAC address
+            hwaddr = ethtool.get_hwaddr(devname)
+            if hwaddr:
+                type = ETHERNET
+        except:
+            pass        
+        
     return type
 
 def getNickName(devicelist, dev):
@@ -901,7 +922,92 @@ class ConfKeys(Conf.ConfShellVar):
         Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'keys-' + name)
         self.chmod(0600)
 
+
+#
+# log.py - debugging log service
+#
+# Alexander Larsson <alexl@redhat.com>
+# Matt Wilson <msw@redhat.com>
+#
+# Copyright 2002 Red Hat, Inc.
+#
+# This software may be freely redistributed under the terms of the GNU
+# library public license.
+#
+# You should have received a copy of the GNU Library Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+
+import sys
+import syslog
+
+class LogFile:
+    def __init__ (self, level = 0, filename = None):
+        if filename == None:
+            self.handler = self.syslog_handler
+            self.logFile = sys.stderr
+        else:
+            self.open(filename)
+            
+        self.level = level
+
+    def close (self):
+        try:
+            self.logFile.close ()
+        except:
+            pass        
+
+    def open (self, file = None):
+	if type(file) == type("hello"):
+            try:
+                self.logFile = open(file, "w")
+            except:
+                self.logFile = sys.stderr
+	elif file:
+	    self.logFile = file
+	else:
+            self.logFile = sys.stderr
+        
+    def getFile (self):
+        return self.logFile.fileno ()
+
+    def __call__(self, format, *args):
+	self.handler (format % args)
+        
+    def syserr_handler (self, string):
+        import time
+        log.logFile.write ("%s: %s\n" % (time.ctime(), string))
+
+    def syslog_handler (self, string, level = syslog.LOG_INFO):
+        import syslog
+	syslog.syslog(level, string)
+
+    def set_loglevel(self, level):
+        self.level = level
+
+    def log(self, level, message):
+        if self.level >= level:
+            self.handler(message, level = level)
+
+    def ladd(self, level, file, message):
+        if self.level >= level:
+            self.handler("++ %s \t%s" % (file, message))
+
+    def ldel(self, level, file, message):
+        if self.level >= level:
+            self.handler("-- %s \t%s" % (file, message))
+
+    def lch(self, level, file, message):
+        if self.level >= level:
+            self.handler("-+ %s \t%s" % (file, message))
+
+
+log = LogFile()
+						
+
+
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:37:29 $"
-__version__ = "$Revision: 1.85 $"
+__date__ = "$Date: 2004/06/15 13:57:46 $"
+__version__ = "$Revision: 1.86 $"
