@@ -45,7 +45,7 @@ class ADSLInterface(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = NC_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid')
+        self.xml = libglade.GladeXML(glade_file, 'druid', domain=NC_functions.PROGNAME)
         self.xml.signal_autoconnect(
             { "on_dsl_config_page_back" : self.on_dsl_config_page_back,
               "on_dsl_config_page_next" : self.on_dsl_config_page_next,
