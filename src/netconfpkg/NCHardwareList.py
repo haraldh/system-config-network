@@ -296,7 +296,6 @@ class HardwareList(HardwareList_base):
                 dic = modules[hw.Name]
                 dic['alias'] = hw.Card.ModuleName
                 modules[hw.Name] = dic
-                
 
                 # No, no, no... only delete known options!!!
                 #WRONG: modules[hw.Card.ModuleName] = {}

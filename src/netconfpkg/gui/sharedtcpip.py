@@ -217,7 +217,7 @@ def on_routeAddButton_clicked(button, xml, device):
     routes = device.StaticRoutes
     route = Route()
     dialog = editAdressDialog(route)
-    dl = dialog.xml.get_widget ("Dialog")
+    dl = dialog.xml.get_widget ("Dialog")    
     button = dl.run()
     dl.destroy()
     if button != gtk.RESPONSE_OK:

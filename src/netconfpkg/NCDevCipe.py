@@ -32,7 +32,10 @@ class DevCipe(Device):
       conf = ConfDevice(name)
       Device.load(self, name)
       self.Cipe.load(conf)
-      
+
+   def checkSystem(self):
+      pass
+   
    def createCipe(self):
       Device.createCipe(self)
       return self.Cipe
