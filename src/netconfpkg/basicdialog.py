@@ -47,7 +47,15 @@ _=gettext.gettext
 class basicDialog:
     def __init__(self, xml = None):
         self.xml_main = xml
-        self.xml = libglade.GladeXML("basicdialog.glade", None, domain="netconf")
+
+        glade_file = "basicdialog.glade"
+
+        if not os.path.exists(glade_file):
+            glade_file = "netconfpkg/" + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = "/usr/share/netconf/" + glade_file
+
+        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
         self.xml.signal_autoconnect(
             {

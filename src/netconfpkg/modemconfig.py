@@ -23,6 +23,7 @@ import GDK
 import GTK
 import libglade
 import signal
+import os
 import GdkImlib
 import string
 import gettext
@@ -42,7 +43,15 @@ _=gettext.gettext
 class modemDialog:
     def __init__(self, xml_main = None):
         self.xml_main = xml_main
-        self.xml = libglade.GladeXML("modemconfig.glade", None, domain="netconf")
+
+        glade_file = "modemconfig.glade"
+
+        if not os.path.exists(glade_file):
+            glade_file = "netconfpkg/" + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = "/usr/share/netconf/" + glade_file
+
+        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
         self.xml.signal_autoconnect(
             {

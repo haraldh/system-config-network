@@ -23,6 +23,7 @@ import GDK
 import GTK
 import libglade
 import signal
+import os
 import GdkImlib
 import string
 import gettext
@@ -50,14 +51,21 @@ class providerDialog:
         self.city = ""
         self.name = ""
         
-        xml = libglade.GladeXML("chooseprovider.glade", None, domain="netconf")
+        glade_file = "chooseprovider.glade"
+
+        if not os.path.exists(glade_file):
+            glade_file = "netconfpkg/" + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = "/usr/share/netconf/" + glade_file
+
+        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
         # get the widgets we need
-        self.dbtree = xml.get_widget("providerTree")
-        self.dialog = xml.get_widget("Dialog")
-        self.okButton = xml.get_widget("okButton")
+        self.dbtree = self.xml.get_widget("providerTree")
+        self.dialog = self.xml.get_widget("Dialog")
+        self.okButton = self.xml.get_widget("okButton")
         
-        xml.signal_autoconnect(
+        self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,

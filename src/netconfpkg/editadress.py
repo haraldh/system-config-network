@@ -23,6 +23,7 @@ import GDK
 import GTK
 import libglade
 import signal
+import os
 import GdkImlib
 import string
 import gettext
@@ -44,7 +45,15 @@ class editAdressDialog:
         self.xml_main = xml_main
         self.xml_basic = xml_basic
         self.list = list
-        self.xml = libglade.GladeXML("editadress.glade", None, domain="netconf")
+
+        glade_file = "editadress.glade"
+
+        if not os.path.exists(glade_file):
+            glade_file = "netconfpkg/" + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = "/usr/share/netconf/" + glade_file
+
+        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
         self.xml.signal_autoconnect(
             {

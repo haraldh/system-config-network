@@ -44,7 +44,15 @@ class dslConfigDialog:
     def __init__(self, xml_main = None, xml_basic = None):
         self.xml_main = xml_main
         self.xml_basic = xml_basic
-        self.xml = libglade.GladeXML("dslconfig.glade", None, domain="netconf")
+
+        glade_file = "dslconfig.glade"
+
+        if not os.path.exists(glade_file):
+            glade_file = "netconfpkg/" + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = "/usr/share/netconf/" + glade_file
+
+        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
         self.xml.signal_autoconnect(
             {
