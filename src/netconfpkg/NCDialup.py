@@ -186,7 +186,7 @@ class DslDialup(Dialup):
             conf['LCP_FAILURE'] = '3'
 
         if not conf.has_key('PPPOE_TIMEOUT'):
-            conf['PPPOE_TIMEOUT'] = '20'
+            conf['PPPOE_TIMEOUT'] = '80'
 
         if not conf.has_key('PING'):
             conf['PING'] = '.'
