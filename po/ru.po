@@ -1,19 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
+# translation of ru.po to Russian
 # Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Leonid Kanter <leon@geon.donetsk.ua>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: netcfg\n"
+"Project-Id-Version: ru\n"
 "POT-Creation-Date: 2003-01-20 17:38+0100\n"
-"PO-Revision-Date: 2002-09-10 00:40+0300\n"
-"Last-Translator: Leon Kanter <leon@blackcatlinux.com>\n"
+"PO-Revision-Date: 2003-01-24 13:56+0200\n"
+"Last-Translator: Leonid Kanter <leon@geon.donetsk.ua>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.1\n"
-"X-Generator: KBabel 0.9.6\n"
+"X-Generator: KBabel 1.0\n"
 
 #. ! /usr/bin/env python
 #. # redhat-network-control - A easy-to-use interface for configuring/activating
@@ -32,7 +32,6 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Copyright
 #: src/neat-control.py:60
-#, fuzzy
 msgid ""
 "This software is distributed under the GPL. ''Please Report bugs to Red "
 "Hat's Bug Tracking System: ''http://bugzilla.redhat.com/"
@@ -60,14 +59,12 @@ msgstr "Активируется сетевое устройство %s, под�
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. Display dialog notification of action
 #: src/neat-control.py:230
-#, fuzzy
 msgid "Activating profile..."
-msgstr "Активный профиль"
+msgstr "Активируется профиль..."
 
 #: src/neat-control.py:233
-#, fuzzy
 msgid "Activating the selected profile, please wait..."
-msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
+msgstr "Активируется выбранный профиль, подождите пожалуйста..."
 
 #. Disable the activate button
 #. Get the profile to activate from the menu
@@ -75,9 +72,8 @@ msgstr "Активируется сетевое устройство %s, под�
 #. Check results of the activation
 #: src/neat-control.py:252
 #, python-format
-msgid ""
-"Not all network interfaces in selected profile \"%s\" could be activated."
-msgstr ""
+msgid "Not all network interfaces in selected profile \"%s\" could be activated."
+msgstr "Не все интерфейсы в выбранном профиле \"%s\" могут быть активированы."
 
 #. Re-read the device list
 #. Update the gui
@@ -88,10 +84,12 @@ msgstr ""
 #: src/neat-control.py:279
 msgid "Attempting to auto-detect and activate a valid profile, please wait..."
 msgstr ""
+"Попытка автоматически выбрать и активировать требуемый профиль, подождите "
+"пожалуйста..."
 
 #: src/neat-control.py:281
 msgid "Autoselecting profile..."
-msgstr ""
+msgstr "Автоматический выбор профиля..."
 
 #. Check status of the auto select script and respond accordingly
 #. Grab any error output
@@ -125,7 +123,6 @@ msgstr "Должно быть переписано!"
 #. handleException function
 #.
 #: src/netconf-tui.py:109 src/netconfpkg/gui/exception.py:49
-#, fuzzy
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against redhat-config-network "
@@ -134,7 +131,7 @@ msgstr ""
 "Произошло необработанное исключение.  Скорее всего это ошибка. Пожалуйста "
 "скопируйте полный текст исключения или сохраните отладочную информацию в "
 "файл и заполните подробный отчет об ошибке в компоненте redhat-config-"
-"network на https://bugzilla.redhat.com/bugzilla/"
+"network на https://bugzilla.redhat.com/bugzilla"
 
 #. Strange... why do I have to reinstall _() ??
 #.
@@ -247,18 +244,17 @@ msgstr "Настройка ISDN"
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf.py:60
-#, fuzzy, python-format
+#, python-format
 msgid "Error: %s, %s!"
-msgstr "Ошибка удаления %s: %s!"
+msgstr "Ошибка: %s, %s!"
 
 #: src/netconf.py:62
 msgid "Starting text version:"
-msgstr ""
+msgstr "Запускается текстовая версия:"
 
 #: src/netconf.py:110
-#, fuzzy
 msgid "Loading Network Configuration..."
-msgstr "Свойства модема"
+msgstr "Загружается конфигурация сети..."
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -282,15 +278,14 @@ msgstr "Свойства модема"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:61
-#, fuzzy
 msgid ""
 "redhat-config-network-cmd - network configuration commandline tool\n"
 "\n"
 "Usage: redhat-config-network-cmd -p --profile <profile> -a --activate"
 msgstr ""
-"redhat-config-network-cmd - Python network configuration commandline tool\n"
+"redhat-config-network-cmd - утилита настройки сети для командной строки\n"
 "\n"
-"Применение: redhat-config-network-cmd -p --profile <profile>"
+"Применение: redhat-config-network-cmd -p --profile <профиль> -a activate"
 
 #. print "%s.%s" % (pname, child)
 #. printObj(val, "%s.%s" % (parent, child))
@@ -329,14 +324,13 @@ msgid ""
 "Speeds vary according to the technology used, but generally range from "
 "144kbps to 1.0Mbps."
 msgstr ""
-"Создать подключение xDSL. Это общее имя нескольких типов высокоскоростного "
+"Создание подключение xDSL. Это общее имя нескольких типов высокоскоростного "
 "соединения. Варианты: ADSL (несимметричное, быстрая загрузка и медленная "
 "отгрузка), IDSL (по линии ISDN), DSL (симметричное - одинаковая скорость "
-"загрузки и отгрузки) и некоторых других мне о других ничего не известно - "
-"ЕК). Эти типы подключения широко распостранены в США и их использование "
-"расширяется и за их пределами. Скорость зависит от используемого "
-"оборудования и расстояния до АТС. Диапазон от 144кбит/сек до больше чем "
-"1мегабит/сек"
+"загрузки и отгрузки). Эти типы подключения широко распостранены в США "
+"и их использование расширяется и за их пределами. Скорость зависит от "
+"используемого оборудования и расстояния до АТС. Диапазон от 144кбит/сек "
+"до больше чем 1мегабит/сек"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -675,7 +669,6 @@ msgid "ISDN connection"
 msgstr "Соединение ISDN"
 
 #: src/netconfpkg/gui/IsdnInterface.py:88
-#, fuzzy
 msgid ""
 "Create a new ISDN connection. This is a connection that uses an Integrated "
 "Services Digital Network line to dial into to your Internet Service "
@@ -686,12 +679,12 @@ msgid ""
 "advanced regions.  It is available but uncommon in the USA.  Speeds range "
 "from 64kbps to 128kbps."
 msgstr ""
-"Создать новое соединение ISDN. Это соединение использует линию Integrated "
+"Создание новое соединение ISDN. Это соединение использует линию Integrated "
 "Services Digital Network для подключения к вашему ISP. Для него необходима "
 "специальная телефонная линия и оборудование, которое называется "
 "\"терминальный адаптер\" (TA). Этот тип соединения популярен в Европе и "
-"некоторых других развитых регионах, реже встречается в США. Скорость от 64 "
-"до 128 кбит/с."
+"некоторых других развитых регионах. В США доступен, но встречается реже. "
+"Скорость от 64 до 128 кбит/с."
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1216,51 +1209,47 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. initialize the button state..
 #: src/netconfpkg/gui/maindialog.py:222
-#, fuzzy
 msgid "Loading Configuration..."
-msgstr "Свойства модема"
+msgstr "Загружается конфигурация..."
 
 #: src/netconfpkg/gui/maindialog.py:229
-#, fuzzy
 msgid "Loading Device Configuration..."
-msgstr "Конфигурация беспроводного устройства"
+msgstr "Загружается конфигурация устройства..."
 
 #: src/netconfpkg/gui/maindialog.py:234
-#, fuzzy
 msgid "Loading Hardware Configuration..."
-msgstr "Свойства модема"
+msgstr "Загружается конфигурация оборудования..."
 
 #: src/netconfpkg/gui/maindialog.py:239
-#, fuzzy
 msgid "Loading Profile Configuration..."
-msgstr "Свойства модема"
+msgstr "Загружается конфигурация профиля..."
 
 #: src/netconfpkg/gui/maindialog.py:244
-#, fuzzy
 msgid "Testing Configuration Set..."
-msgstr "Настройка CTC"
+msgstr "Тестируется конфигурация..."
 
 #: src/netconfpkg/gui/maindialog.py:272
-#, fuzzy, python-format
+#, python-format
 msgid "Active Profile: %s (modified)"
-msgstr "Активный профиль"
+msgstr "Активный профиль: %s (изменен)"
 
 #: src/netconfpkg/gui/maindialog.py:276
-#, fuzzy, python-format
+#, python-format
 msgid "Active Profile: %s"
-msgstr "Активный профиль"
+msgstr "Активный профиль: %s"
 
 #: src/netconfpkg/gui/maindialog.py:284
-#, fuzzy
 msgid "Saving Configuration..."
-msgstr "Настройка ISDN"
+msgstr "Сохранение конфигурации..."
 
 #: src/netconfpkg/gui/maindialog.py:293
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error saving Configuration!\n"
 "%s"
-msgstr "Настройка ISDN"
+msgstr ""
+"Ошибка сохранения конфигурации!\n"
+"%s"
 
 #: src/netconfpkg/gui/maindialog.py:298
 msgid ""
@@ -1269,36 +1258,35 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
+"Изменения сохранены.\n"
+"Вы можете либо перезапустить "
+"сеть и сетевые службы, либо\n"
+"перезагрузить компьютер."
 
 #: src/netconfpkg/gui/maindialog.py:306
-#, fuzzy
 msgid "Saving Device Configuration..."
-msgstr "Конфигурация беспроводного устройства"
+msgstr "Сохранение конфигурации устройства..."
 
 #: src/netconfpkg/gui/maindialog.py:313
-#, fuzzy
 msgid "Saving Hardware Configuration..."
-msgstr "Свойства адаптера ISDN"
+msgstr "Сохранение конфигурации оборудования..."
 
 #: src/netconfpkg/gui/maindialog.py:320
-#, fuzzy
 msgid "Saving Profile Configuration..."
-msgstr "Настройка удаленного доступа ISDN"
+msgstr "Сохранение конфигурации профиля..."
 
 #: src/netconfpkg/gui/maindialog.py:342
-#, fuzzy
 msgid "Updating Devices..."
-msgstr "_Свойства..."
+msgstr "Обновление устройств..."
 
 #: src/netconfpkg/gui/maindialog.py:398
-#, fuzzy
 msgid "Updating Hardware..."
-msgstr "Свойства адаптера ISDN"
+msgstr "Обновление оборудования..."
 
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
 #: src/netconfpkg/gui/maindialog.py:413
 msgid "Updating Profiles..."
-msgstr ""
+msgstr "Обновление профилей..."
 
 #. print "hydrateProfiles(%s)" % self.active_profile_name
 #. change the default profile to a more understandable name
@@ -1313,9 +1301,8 @@ msgid "The Loopback device can not be edited!"
 msgstr "Изменение настройки устройства loopback невозможно!"
 
 #: src/netconfpkg/gui/maindialog.py:651
-#, fuzzy
 msgid "Edit Device..."
-msgstr "_Свойства..."
+msgstr "Изменить устройство..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:702
@@ -1334,32 +1321,30 @@ msgstr "В конфигурацию были внесены изменения."
 #: src/netconfpkg/gui/maindialog.py:740
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"Для активирования сетевого устройства %s изменения должны быть сохранены."
+msgstr "Для активирования сетевого устройства %s изменения должны быть сохранены."
 
 #: src/netconfpkg/gui/maindialog.py:742
 msgid "Do you want to continue?"
 msgstr "Продолжить?"
 
 #: src/netconfpkg/gui/maindialog.py:766
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate network device %s!\n"
-msgstr "Не удается активировать устройство сети %s"
+msgstr "Не удается активировать устройство %s!\n"
 
 #: src/netconfpkg/gui/maindialog.py:789
-#, fuzzy
 msgid "Network device deactivating..."
-msgstr "Активируется сетевое устройство..."
+msgstr "Деактивируется сетевое устройство..."
 
 #: src/netconfpkg/gui/maindialog.py:791
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating network device %s, please wait..."
-msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
+msgstr "Деактивируется сетевое устройство %s, подождите пожалуйста..."
 
 #: src/netconfpkg/gui/maindialog.py:802
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate network device %s!\n"
-msgstr "Не удается деактивировать устройство сети %s"
+msgstr "Не удается деактивировать устройство сети %s!\n"
 
 #. devicelist = getDeviceList()
 #. edit_button.set_sensitive(FALSE)
@@ -1395,17 +1380,17 @@ msgstr "Имя профиля уже существует!"
 
 #. self.xml.get_widget("profileList").clear()
 #: src/netconfpkg/gui/maindialog.py:1189
-#, fuzzy, python-format
+#, python-format
 msgid "The \"%s\" profile can't be renamed!"
-msgstr "\"основной\" профиль не может быть переименован!"
+msgstr "Профиль \"%s\" не может быть переименован!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
 #: src/netconfpkg/gui/maindialog.py:1244
-#, fuzzy, python-format
+#, python-format
 msgid "The \"%s\" Profile can not be deleted!"
-msgstr "Профиль \"основной\" не может быть удален!"
+msgstr "Профиль \"%s\" не может быть удален!"
 
 #: src/netconfpkg/gui/maindialog.py:1250
 #, python-format
@@ -1419,7 +1404,7 @@ msgid ""
 "or this type cannot be edited yet."
 msgstr ""
 "Извините, здесь нет изменяемых параметров,\n"
-"или этот тип еще не может быть измнен."
+"или этот тип еще не может быть изменен."
 
 #: src/netconfpkg/gui/maindialog.py:1336
 #, python-format
@@ -1428,9 +1413,9 @@ msgstr "Вы действительно хотите удалить \"%s\"?"
 
 #. remove hardware
 #: src/netconfpkg/gui/maindialog.py:1350
-#, fuzzy, python-format
+#, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr "Вы действительно хотите удалить устройство \"%s\"?"
+msgstr "Вы действительно хотите удалить все устройства, которые использует \"%s\"?"
 
 #. remove all devices used this hardware
 #.
@@ -1442,7 +1427,7 @@ msgstr "Вы действительно хотите удалить устрой
 #. ETHERNET
 #: src/netconfpkg/gui/maindialog.py:1405
 msgid "Copyright (c) 2001,2002 Red Hat, Inc."
-msgstr ""
+msgstr "Copyright (c) 2001,2002 Red Hat, Inc."
 
 #: src/netconfpkg/gui/maindialog.py:1406
 msgid ""
@@ -1470,24 +1455,28 @@ msgstr ""
 #: src/netconfpkg/gui/ethernethardware.py:92
 #: src/netconfpkg/gui/tokenringhardware.py:99
 msgid "Command failed: "
-msgstr ""
+msgstr "Ошибка выполнения команды: "
 
 #: src/netconfpkg/gui/ethernethardware.py:93
 #: src/netconfpkg/gui/tokenringhardware.py:100
 msgid "Output:\n"
-msgstr ""
+msgstr "Вывод:\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:95
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
 msgstr ""
+"Карта Ethernet не может быть инициализирована.\n"
+"Проверьте введенные параметры и попробуйте еще раз."
 
 #: src/netconfpkg/gui/tokenringhardware.py:102
 msgid ""
 "The Token Ring card could not be initialized. \n"
 "Please verify your settings and try again."
 msgstr ""
+"Плата Token Ring не может быть инициализирована. \n"
+"Проверьте введенные параметры и попробуйте еще раз."
 
 #. make ctrl-C work
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -1613,12 +1602,17 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"Каталог /etc/cipe отсутствует!\n"
+"Сейчас он будет создан.\n"
+"Вы должны установить rpm-пакет /etc/cipe!\n"
 
 #: src/netconfpkg/NCCipe.py:159
 msgid ""
 "Could not create\n"
 "directory /etc/cipe!"
 msgstr ""
+"Не удается создать\n"
+"каталог /etc/cipe!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1980,27 +1974,24 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCProfileList.py:53 src/netconfpkg/NCDeviceList.py:71
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error creating directory!\n"
 "%s"
 msgstr ""
-"Ошибка переименования\n"
-"%s\n"
-"в\n"
-"%s: %s!"
+"Ошибка создания каталога!\n"
+"%s"
 
 #: src/netconfpkg/NCProfileList.py:56
 msgid "Copying /etc/hosts to default profile."
-msgstr ""
+msgstr "/etc/hosts копируется в основной профиль."
 
 #. 60016
 #. Keep that test for later versions
 #: src/netconfpkg/NCProfileList.py:159
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
-"Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
+msgstr "Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
 
 #: src/netconfpkg/NCProfileList.py:161
 msgid ""
@@ -2075,24 +2066,26 @@ msgid "Software (XON/XOFF)"
 msgstr "Программное (XON/XOFF)"
 
 #: src/netconfpkg/NC_functions.py:136
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr ""
+msgid "Shall the following packages, which are needed on your system, be installed?"
+msgstr "Должны ли следующие пакеты, которые требуются для вашей системы, быть установлены?"
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
 #: src/netconfpkg/NC_functions.py:389
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error removing\n"
 "%s:\n"
 "%s!"
-msgstr "Ошибка удаления %s: %s!"
+msgstr ""
+"Ошибка удаления\n"
+"%s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:398
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -2101,34 +2094,37 @@ msgid ""
 msgstr ""
 "Ошибка создания ссылки %s\n"
 "на\n"
-"%s: %s!"
+"%s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:408
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error copying \n"
 "%s\n"
 "to %s:\n"
 "%s!"
 msgstr ""
-"Ошибка создания ссылки %s\n"
-"на\n"
-"%s: %s!"
+"Ошибка копирования\n"
+"%s\n"
+"в %s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:417
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error linking \n"
 "%s\n"
 "to %s:\n"
 "%s!"
 msgstr ""
-"Ошибка создания ссылки %s\n"
-"на\n"
-"%s: %s!"
+"Ошибка создания ссылки "
+"%s\n"
+"на %s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:426
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error renaming \n"
 "%s\n"
@@ -2137,8 +2133,8 @@ msgid ""
 msgstr ""
 "Ошибка переименования\n"
 "%s\n"
-"в\n"
-"%s: %s!"
+"в %s:\n"
+"%s!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -2294,7 +2290,7 @@ msgstr "Файл статических маршрутов %s неверный"
 #: src/netconfpkg/NCDeviceList.py:88
 #, python-format
 msgid "Copying %s to devices and putting it into the default profile."
-msgstr ""
+msgstr "%s копируется в устройства и помещается в основной профиль."
 
 #.
 #. clear all Dialer sections in wvdial.conf
@@ -3684,3 +3680,4 @@ msgstr "Мастер подключения к Интернет"
 
 #~ msgid "_ESSID (Network ID):"
 #~ msgstr "_ESSID (Network ID):"
+
