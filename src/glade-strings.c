@@ -179,7 +179,7 @@ void some_function_name() {
   _("Enter the login name that your ISP gave you here");
 
   /* netconfpkg/dialupconfig.glade:781 netconfpkg/dslconfig.glade:579 */
-  _("Enter the name of this configuration, usualy just the name of your ISP");
+  _("Enter the name of this configuration, usually just the name of your ISP");
 
   /* netconfpkg/dialupconfig.glade:724 netconfpkg/dslconfig.glade:522 */
   _("Enter the password for your account. If you do not know it,  please contact your ISP");
