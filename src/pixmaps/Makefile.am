@@ -1,4 +1,4 @@
-netconfimgdir=$(pkgdatadir)
+netconfimgdir=$(pkgdatadir)/pixmaps
 
 netconfimg_DATA = \
 	active.xpm \
