@@ -51,7 +51,6 @@ PYTHON_FILES = \
 	NCHardwareList.py \
 	NCProfileList.py \
 	NCisdnhardware.py \
-	devicetype.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
