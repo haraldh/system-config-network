@@ -120,7 +120,7 @@ class ModemInterface:
 
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
         # 460800 seems to be to high
-        self.xml.get_widget("baurateEntry").set_text("57600")
+        self.xml.get_widget("baudrateEntry").set_text("57600")
  
     def on_Modem_next(self, druid_page, druid):
         self.dehydrate()
@@ -136,7 +136,7 @@ class ModemInterface:
         self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
         if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
             self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
-        self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
+        self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baudrateEntry").get_text())
         self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
         Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):
@@ -166,6 +166,6 @@ class ModemInterface:
                 self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
             self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
         if self.hw.Modem.BaudRate != None:
-            self.xml.get_widget('baurateEntry').set_text(str(self.hw.Modem.BaudRate))
+            self.xml.get_widget('baudrateEntry').set_text(str(self.hw.Modem.BaudRate))
         if self.hw.Modem.FlowControl != None and modemFlowControls.has_key(self.hw.Modem.FlowControl):
             self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
