@@ -155,12 +155,15 @@ class mainDialog:
 
     def loadDevices(self):
         devicelist = getDeviceList()
+        devicelist.commit()
 
     def loadHardware(self):
         hardwarelist = getHardwareList()
+        hardwarelist.commit()
 
     def loadProfiles(self):
         profilelist = getProfileList()
+        profilelist.commit()
 
     def save(self):
         self.saveDevices()

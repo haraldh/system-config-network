@@ -92,14 +92,14 @@ class editHostsDialog:
             self.dialog.set_icon(pix, mask)
             
     def on_Dialog_delete_event(self, *args):
-        self.host.rollback()
+        pass
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
         self.host.commit()
 
     def on_cancelButton_clicked(self, button):
-        self.host.rollback()
+        pass
 
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
