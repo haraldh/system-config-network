@@ -771,9 +771,11 @@ class mainDialog:
 
     def on_dnsEditButton_clicked (self, *args):
         clist = self.xml.get_widget("dnsList")
-        name = clist.get_text(clist.selection[0], 0)
+
         if len(clist.selection) == 0:
             return
+
+        name = clist.get_text(clist.selection[0], 0)
 
         dialog = editDomainDialog(name)
         dialog.main = self
