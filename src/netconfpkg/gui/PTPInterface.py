@@ -232,7 +232,7 @@ class PTPInterface(EthernetInterface):
         self.devicelist.commit()
 
         self.toplevel.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
 

@@ -153,7 +153,7 @@ class ADSLInterface(InterfaceCreator):
         
         self.save()
         self.toplevel.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
 
     def check(self):
         return (len(string.strip(self.xml.get_widget("providerNameEntry").get_text())) >0 \
@@ -232,5 +232,5 @@ class ADSLInterface(InterfaceCreator):
 
 NCDevADSL.setDevADSLWizard(ADSLInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/29 14:42:57 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.27 $"

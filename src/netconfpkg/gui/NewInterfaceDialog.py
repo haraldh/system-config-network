@@ -136,7 +136,7 @@ class NewInterfaceDialog:
         devicelist.rollback()
         self.toplevel.destroy()
         self.canceled = TRUE
-        gtk.mainquit()
+        gtk.main_quit()
 
     def on_interface_clist_select_row (self, clist, row, column, event):
         interface = self.interface_clist.get_row_data (row)
@@ -151,8 +151,8 @@ class NewInterfaceDialog:
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     interface = NewInterface ()
-    gtk.mainloop ()
+    gtk.main() ()
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.33 $"

@@ -222,10 +222,10 @@ if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = providerDialog()
     window.run()
-    gtk.mainloop()
+    gtk.main()
     print window.get_provider()
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/04/21 13:10:40 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.17 $"

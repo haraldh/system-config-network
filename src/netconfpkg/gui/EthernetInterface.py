@@ -243,9 +243,9 @@ class EthernetInterface(InterfaceCreator):
         self.devicelist.commit()
 
         self.toplevel.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
 
 NCDevEthernet.setDevEthernetWizard(EthernetInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/29 14:13:51 $"
-__version__ = "$Revision: 1.36 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.37 $"

@@ -60,7 +60,7 @@ class editAdressDialog:
         self.xml.get_widget ("addressPixmap").set_from_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
         self.dialog = self.xml.get_widget("Dialog")
         #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        #self.dialog.connect("hide", gtk.mainquit)
+        #self.dialog.connect("hide", gtk.main_quit)
         
         self.hydrate()
 
@@ -94,5 +94,5 @@ class editAdressDialog:
         self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.13 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.14 $"

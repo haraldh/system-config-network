@@ -30,6 +30,7 @@ import gtk
 import gtk.glade
 import gnome.ui
 import gnome
+import gobject
 
 PROFILE_COLUMN = 0
 STATUS_COLUMN = 1
@@ -134,7 +135,7 @@ class mainDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.set_position (gtk.WIN_POS_CENTER)
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
+        self.dialog.connect("hide", gtk.main_quit)
         
         self.xml.get_widget ("profileMenu").show()
             
@@ -262,7 +263,7 @@ class mainDialog:
         self.hydrate()
 
         self.activedevicelist = NetworkDevice().get()
-        self.tag = gtk.timeout_add(4000, self.updateDevicelist)
+        self.tag = gobject.timeout_add(4000, self.updateDevicelist)
                 
         # initialize the button state..
         clist = self.xml.get_widget("deviceList")
@@ -684,6 +685,8 @@ class mainDialog:
         self.checkApply()
 
     def updateDevicelist(self):
+	import commands
+	#print commands.getoutput("ps -flp %d" % os.getpid())
         activedevicelistold = self.activedevicelist
         self.activedevicelist = NetworkDevice().get()
 
@@ -704,7 +707,7 @@ class mainDialog:
             if button == RESPONSE_YES:
                 self.save()
             
-        gtk.mainquit()
+        gtk.main_quit()
         return
     
     def on_mainNotebook_switch_page(self, page = None, a = None,
@@ -805,7 +808,7 @@ class mainDialog:
                 if self.save() != 0:
                     return
                                 
-        gtk.mainquit()
+        gtk.main_quit()
         return
     
     def on_helpButton_clicked(self, button):
@@ -815,7 +818,7 @@ class mainDialog:
 
     def on_deviceAddButton_clicked (self, clicked):
         interface = NewInterfaceDialog(self.dialog)
-        gtk.mainloop()            
+        gtk.main()            
             
         if not interface.canceled:
             self.hydrateDevices()
@@ -978,7 +981,7 @@ class mainDialog:
         if NetworkDevice().find(device):
             self.updateDevicelist()
 
-        self.tag = gtk.timeout_add(4000, self.updateDevicelist)
+        self.tag = gobject.timeout_add(4000, self.updateDevicelist)
             
     def on_deviceDeactivateButton_clicked(self, button):
         clist = self.xml.get_widget("deviceList")
@@ -1014,7 +1017,7 @@ class mainDialog:
         
         self.updateDevicelist()
 
-        self.tag = gtk.timeout_add(4000, self.updateDevicelist)
+        self.tag = gobject.timeout_add(4000, self.updateDevicelist)
 
 #    def on_deviceMonitorButton_clicked(self, button):
 #        generic_error_dialog(_("To be rewritten!"), self.dialog)
@@ -1724,7 +1727,7 @@ class mainDialog:
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
 
-        gtk.mainloop()            
+        gtk.main()            
         dl.destroy()
 
         return dialog.canceled

@@ -254,7 +254,7 @@ class DialupDruid(InterfaceCreator):
                 
         self.save()
         self.toplevel.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
 
     def setup(self):
         if not self.provider:
@@ -413,5 +413,5 @@ class DialupDruid(InterfaceCreator):
             dialup.StupidMode = TRUE
             dialup.InitString = ''
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/04/21 13:10:40 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.30 $"

@@ -323,9 +323,9 @@ class WirelessInterface(InterfaceCreator):
         self.devicelist.commit()
         
         self.toplevel.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
 
 NCDevWireless.setDevWirelessWizard(WirelessInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/29 14:13:51 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.30 $"

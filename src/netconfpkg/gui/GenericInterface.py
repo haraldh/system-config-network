@@ -161,7 +161,7 @@ class GenericInterface(InterfaceCreator):
             self.profilelist.commit()
             self.devicelist.commit()
         
-        gtk.mainquit()
+        gtk.main_quit()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/29 14:42:57 $"
-__version__ = "$Revision: 1.17 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.18 $"

@@ -218,7 +218,7 @@ NCHWIsdn.setHwIsdnDialog(isdnHardwareDialog)
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = isdnHardwareDialog()
-    gtk.mainloop()
+    gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.19 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.20 $"

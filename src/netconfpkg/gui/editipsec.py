@@ -267,13 +267,13 @@ class editIPsecDruid:
 
         self.druid.hide()
         self.druid.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
         return FALSE
     
     def on_ipsecDruid_cancel(self, *args):
         self.canceled = TRUE
         self.druid.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
         return FALSE
 
     def on_generateAHKeyButton_clicked(self, *args):

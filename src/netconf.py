@@ -159,7 +159,7 @@ def main(splash = None):
         if progname == 'system-config-network-druid' or \
                progname == 'internet-druid':
             interface = NewInterfaceDialog()
-            gtk.mainloop()
+            gtk.main()
             if interface.canceled:
                 sys.exit(1)                
 

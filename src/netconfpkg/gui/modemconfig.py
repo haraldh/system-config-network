@@ -167,8 +167,8 @@ if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     dialog = modemDialog()
     dialog.run()
-    gtk.mainloop()
+    gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.21 $"

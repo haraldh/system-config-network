@@ -82,7 +82,7 @@ class IsdnInterface:
         devicelist = NCDeviceList.getDeviceList()
         devicelist.rollback()
         self.toplevel.destroy()
-        gtk.mainquit()
+        gtk.main_quit()
 
     def get_project_name(self):
         return _('ISDN connection')
@@ -265,5 +265,5 @@ class IsdnInterface:
 
 NCDevIsdn.setDevIsdnWizard(IsdnInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:20:52 $"
-__version__ = "$Revision: 1.18 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.19 $"

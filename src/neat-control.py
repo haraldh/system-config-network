@@ -53,6 +53,7 @@ except RuntimeError:
     sys.exit(0)
 
 import gtk.glade
+import gobject
 from netconfpkg import *
 from netconfpkg import Control
 from netconfpkg.gui import *
@@ -101,7 +102,7 @@ class mainDialog:
 
         self.dialog = self.xml.get_widget('mainWindow')
         self.dialog.connect('delete-event', self.on_Dialog_delete_event)
-        self.dialog.connect('hide', gtk.mainquit)
+        self.dialog.connect('hide', gtk.main_quit)
         self.on_xpm, self.on_mask = get_icon('on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('off.xpm', self.dialog)
 
@@ -123,18 +124,18 @@ class mainDialog:
 
         self.xml.get_widget('autoSelectProfileButton').hide()
  
-        self.tag = gtk.timeout_add(4000, self.update_dialog)
+        self.tag = gobject.timeout_add(4000, self.update_dialog)
         # Let this dialog be in the taskbar like a normal window
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
         
     def on_Dialog_delete_event(self, *args):
         self.dialog = None
-        gtk.mainquit()
+        gtk.main_quit()
 
     def on_closeButton_clicked(self, button):
         self.dialog = None
-        gtk.mainquit()
+        gtk.main_quit()
         
     def on_infoButton_clicked(self, button):
         from version import PRG_VERSION
@@ -170,7 +171,7 @@ class mainDialog:
             (ret, msg) = dev.activate()
             self.update_dialog()
 
-        self.tag = gtk.timeout_add(4000, self.update_dialog)
+        self.tag = gobject.timeout_add(4000, self.update_dialog)
             
     def on_deactivateButton_clicked(self, button):
         device = self.clist_get_nickname()
@@ -462,7 +463,7 @@ if __name__ == '__main__':
         sys.exit(1)    
 
     window = mainDialog()
-    gtk.mainloop()
+    gtk.main()
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"

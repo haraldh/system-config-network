@@ -385,8 +385,8 @@ if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     xml = gtk.glade.XML('sharedtcpip.glade', None, domain=GUI_functions.PROGNAME)
     dhcp_init (xml, None)
-    gtk.mainloop ()
+    gtk.main() ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/29 14:13:51 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2005/03/03 15:54:04 $"
+__version__ = "$Revision: 1.33 $"
