@@ -332,8 +332,8 @@ class ModemDialupDialog(DialupDialog):
             self.xml.get_widget("persistCB").set_active(dialup.Persist)
         if dialup.DefRoute:
             self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute)
-        if self.device.Name:
-            self.xml.get_widget("modemPortEntry").set_text(self.device.Name)
+        if dialup.Inherits:
+            self.xml.get_widget("modemPortEntry").set_text(dialup.Inherits)
 
         self.xml.get_widget("stupidModeCB").set_active(self.device.Dialup.StupidMode == true)
 
@@ -343,7 +343,8 @@ class ModemDialupDialog(DialupDialog):
         dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
         dialup.InitString = self.xml.get_widget("modemInitEntry").get_text()
-        self.device.Name = self.xml.get_widget("modemPortEntry").get_text()
+        self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
+        dialup.Inherits = self.xml.get_widget("modemPortEntry").get_text()
         if not self.device.Device: self.device.Device = "modem"
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()

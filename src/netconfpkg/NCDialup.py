@@ -398,7 +398,6 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
                 
             if value:
-                #print selfkey + " = " + value
                 self.__dict__[selfkey] = value
 
 
@@ -452,41 +451,32 @@ class ModemDialup(Dialup):
         #
         # Workaround for backporting rp3-config stuff
         #
-        if conf.has_key(sectname) and conf[sectname].has_key('Inherits'):
-            if conf[sectname]['Inherits'] != 'Dialer Defaults' and \
-               (len(conf[sectname]['Inherits']) > 5) and \
-               conf[sectname]['Inherits'][:5] == 'Modem':
-                if parent:
-                    parent.Device = conf[sectname]['Inherits']
-            elif conf[sectname]['Inherits'] == 'Dialer Defaults':
-                #print "Has Defaults!"
-                if conf.has_key('Dialer Defaults') and \
-                   conf['Dialer Defaults'].has_key('Modem') and \
-                   conf['Dialer Defaults'].has_key('Baud'):
-                    modemdev = conf['Dialer Defaults']['Modem']
-                    modembaud = conf['Dialer Defaults']['Baud']
-                    #print "Modem = " + modemdev
-                    #print "Baud = " + modembaud
-                    for sect in conf.keys():
-                        if (len(sect) <= 5) or (sect[:5] != 'Modem'):
-                            #print "Skipping " + sect
-                            continue
-                        if conf[sect].has_key('Modem') and \
-                           conf[sect].has_key('Baud') and \
-                           conf[sect]['Modem'] == modemdev and \
-                           conf[sect]['Baud'] == modembaud:
-                            #print "Found " + sect
-                            if parent:                                
-                                parent.Device = sect
-                            break
+        if parentConf.has_key('MODEMNAME'):
+            self.Inherits = parentConf['MODEMNAME']
+        elif conf[sectname].has_key('Inherits') and \
+             conf[sectname]['Inherits'] == 'Dialer Defaults':
+            if conf.has_key('Dialer Defaults') and \
+               conf['Dialer Defaults'].has_key('Modem') and \
+               conf['Dialer Defaults'].has_key('Baud'):
+                modemdev = conf['Dialer Defaults']['Modem']
+                modembaud = conf['Dialer Defaults']['Baud']
+                for sect in conf.keys():
+                    if (len(sect) <= 5) or (sect[:5] != 'Modem'):
+                        #print "Skipping " + sect
+                        continue
+                    if conf[sect].has_key('Modem') and \
+                       conf[sect].has_key('Baud') and \
+                       conf[sect]['Modem'] == modemdev and \
+                       conf[sect]['Baud'] == modembaud:
+                        #print "Found " + sect
+                        self.Inherits = sect
+                        break
         
     def save(self, parentConf):
         parent = self.getParent()
-
-        if parent:                                
-            #devname = parent.Device
-            #name = parent.DeviceId
-            devname = parent.Name
+        if parent and self.Inherits:
+            devname = self.Inherits
+            parentConf['MODEMNAME'] = devname
             name = parent.DeviceId
         else:
             devname = '*'
@@ -562,15 +552,14 @@ class ModemDialup(Dialup):
         if self.HangupTimeout:
             parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
-        if parent.Name:
+        if self.Inherits:
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
-                if hw.Name == parent.Name:
+                if hw.Name == self.Inherits:
                     if hw.Modem:
                         parentConf['MODEMPORT'] = str(hw.Modem.DeviceName)
                         parentConf['LINESPEED'] = str(hw.Modem.BaudRate)
                         break
-
 
         conf[sectname]['Inherits'] = devname
 
