@@ -848,7 +848,7 @@ class mainDialog:
                 
         if event.type == gtk.gdk._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
-            if info != None:
+            if info != None and info[1] > 0:
                 id = clist.connect("button_release_event",
                                    self.on_generic_clist_button_release_event,
                                    func)
@@ -892,9 +892,13 @@ class mainDialog:
                      else:
                          profilelist.activateDevice(name, curr_prof.ProfileName, false)
                          profilelist.activateDevice(name, 'default', false)
-                         
-                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
 
+                 for prof in profilelist:
+                     prof.commit()
+                 
+                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
+                 self.checkApply()
+                 
     def on_hostnameEntry_changed(self, entry):
         profilelist = getProfileList()
 
