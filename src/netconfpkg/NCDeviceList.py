@@ -1,4 +1,3 @@
-import DeviceList
 from DeviceList import *
 
 class DeviceList(DeviceList_base):
