@@ -422,7 +422,7 @@ void some_function_name() {
    * netconfpkg/gui/tcpipdialog.glade:627 */
   _("Destination Network");
 
-  /* maindialog.glade:361 maindialog.glade:791 */
+  /* maindialog.glade:361 maindialog.glade:791 neat-control.glade:183 */
   _("Device");
 
   /* netconfpkg/gui/NewInterfaceDruid.glade:122 */
@@ -674,6 +674,9 @@ void some_function_name() {
    * netconfpkg/gui/isdnhardware.glade:111 */
   _("ISDN _Adapters:");
 
+  /* neat-control.glade:63 */
+  _("Info");
+
   /* netconfpkg/gui/chooseprovider.glade:133
    * netconfpkg/gui/DialupDruid.glade:137 */
   _("Internet Provider");
@@ -790,7 +793,7 @@ void some_function_name() {
    * netconfpkg/gui/IsdnHardwareDruid.glade:23 */
   _("New Interface");
 
-  /* maindialog.glade:374 */
+  /* maindialog.glade:374 neat-control.glade:196 */
   _("Nickname");
 
   /* netconfpkg/gui/modemconfig.glade:303
@@ -875,6 +878,9 @@ void some_function_name() {
   /* netconfpkg/gui/dialupconfig.glade:615
    * netconfpkg/gui/DialupDruid.glade:499 */
   _("Provider _Name:");
+
+  /* neat-control.glade:19 */
+  _("Red Hat Network Control");
 
   /* maindialog.glade:204 */
   _("Remo_ve");
@@ -985,7 +991,7 @@ void some_function_name() {
   /* netconfpkg/gui/sharedtcpip.glade:225 */
   _("Statically set IP addresses:");
 
-  /* maindialog.glade:348 */
+  /* maindialog.glade:348 neat-control.glade:170 */
   _("Status");
 
   /* netconfpkg/gui/tcpipdialog.glade:434 */
@@ -1074,6 +1080,9 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:421 */
   _("_Accumulate cost over multiple connections");
 
+  /* neat-control.glade:237 */
+  _("_Activate");
+
   /* netconfpkg/gui/cipeconfig.glade:203 netconfpkg/gui/ctcconfig.glade:205
    * netconfpkg/gui/dialupconfig.glade:193
    * netconfpkg/gui/dslconfig.glade:195
@@ -1126,7 +1135,7 @@ void some_function_name() {
   /* netconfpkg/gui/dialupconfig.glade:694 */
   _("_Choose Provider...");
 
-  /* netconfpkg/gui/neat-control-popupmenu.glade:50 */
+  /* neat-control.glade:287 netconfpkg/gui/neat-control-popupmenu.glade:50 */
   _("_Configure...");
 
   /* maindialog.glade:497 netconfpkg/gui/sharedtcpip.glade:1234
@@ -1135,6 +1144,9 @@ void some_function_name() {
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:257 */
   _("_Cost");
+
+  /* neat-control.glade:262 */
+  _("_Deactivate");
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:273 */
   _("_Debug mode");
@@ -1273,6 +1285,9 @@ void some_function_name() {
 
   /* maindialog.glade:625 */
   _("_Monitor");
+
+  /* neat-control.glade:312 */
+  _("_Monitor...");
 
   /* maindialog.glade:172 */
   _("_New...");
@@ -1421,6 +1436,21 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-monitordialog.glade:119 */
   _("click the right mouse button for properties");
 
+  /* neat-control.glade:275 */
+  _("click to configure the interface");
+
+  /* neat-control.glade:225 */
+  _("click to connect to the interface");
+
+  /* neat-control.glade:250 */
+  _("click to disconnect from the interface");
+
+  /* neat-control.glade:55 */
+  _("click to get infos");
+
+  /* neat-control.glade:300 */
+  _("click to monitor the interface");
+
   /* netconfpkg/gui/sharedtcpip.glade:72
    * netconfpkg/gui/tcpipdialog.glade:191
    * netconfpkg/gui/tcpipdialog.glade:206 */
@@ -1509,6 +1539,13 @@ void some_function_name() {
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:18 */
   _("redhat network control - Properties");
+
+  /* neat-control.glade:112 */
+  _(""
+    "redhat-network-control provides an easy-to-use interface for configuring,\n"
+    "activating and monitoring any type of network configuration.\n"
+    "\n"
+    "The following network interfaces are configured on the system.");
 
   /* netconfpkg/gui/dialupconfig.glade:2046
    * netconfpkg/gui/dialupconfig.glade:2070 */

@@ -1,4 +1,282 @@
+2002-04-15  Harald Hoyer  <harald@redhat.com>
+
+	* src/Makefile.am, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/cs.po, po/da.po, po/de.po, po/es.po:
+	*** empty log message ***
+
+	* src/netconfpkg/Conf.py:
+	fixed a severe delitem bug
+
+2002-04-15  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/gui/NewInterface.py:
+	* add fix to show icons in ClistTree
+
+2002-04-14  jncp  <jncp@redhat.com>
+
+	* po/pt.po: ""
+
+2002-04-14  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/NCisdnhardware.py:
+	* fix a bug ii loading VENDOR_ID, DEVICE_ID if they exist
+
+	* src/netconfpkg/Control.py:
+	 fix a bung in getting of real ppp devices (DSL/MODEM)
+
+	* src/neat-control.py, src/netconf.py:
+	* remove timeout by activating device
+
+	* src/Makefile.am:
+	* add missing neat-control.glade
+
+2002-04-13  jncp  <jncp@redhat.com>
+
+	* po/pt.po: ""
+
+2002-04-13  Than Ngo  <than@redhat.com>
+
+	* redhat-config-network.spec.in:
+	* release 0.9.25
+
+	* configure.in, redhat-config-network-0.9.24-rp3-isdn.patch, src/isdnup, src/Makefile.am:
+	* add fixes for ISDN interface
+
+	* src/providerdb:
+	*  update call by call providers for Germany
+
+2002-04-12  menthos  <menthos@redhat.com>
+
+	* po/sv.po:
+	2002-04-12  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2002-04-12  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/gui/dialupconfig.py:
+	fixed  NameError: NCDeviceList
+
+	* src/netconfpkg/gui/dialupconfig.py:
+	* set SlaveDevice = None if channel bundling is disable
+
+	* src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/NC_functions.py, src/netconfpkg/NCProfileList.py:
+	* use getNewDialupDevice to get new free device for dialup
+
+2002-04-11  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* redhat-config-network.spec.in:
+	Update
+
+	* configure.in: Bump
+
+	* neat-control.desktop:
+	Add comment
+
+	* internet-druid.desktop:
+	Remove 'Red Hat' from the strings
+
+2002-04-11  nilgun  <nilgun@redhat.com>
+
+	* po/tr.po: update
+
+2002-04-11  Than Ngo  <than@redhat.com>
+
+	* src/netconf.py:
+	* add some better texts
+
+	* src/netconfpkg/Control.py, src/netconf.py:
+	* ask user for saving of setting, if something is changed befor activate device
+
+2002-04-11  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/NewInterfaceDialog.py:
+	removed debug prints
+
+	* src/netconfpkg/gui/ADSLInterface.py, src/netconfpkg/gui/CipeInterface.py, src/netconfpkg/gui/DialupDruid.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/NewInterfaceDialog.py, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterface.py, src/netconfpkg/NCDevice.py, src/netconfpkg/NCProfileList.py, src/netconf.py:
+	commit()/rollback() for druid fixed
+
+	* src/netconf.py:
+	commit profilelist if device deleted
+
+	* src/netconfpkg/gui/NewInterfaceDialog.py:
+	removed typo at beginning
+
+	* src/netconfpkg/gui/NewInterfaceDialog.py:
+	added get_device_icon_mask()
+
+	* src/netconfpkg/NCProfileList.py:
+	proper removal of network-scripts/ifcfg-*
+
+	* src/netconfpkg/NCHardwareList.py:
+	do not add alias devices to the HardwareList
+
+2002-04-11  Than Ngo  <than@redhat.com>
+
+	* src/netconfpkg/gui/NewInterfaceDialog.py:
+	* clean up
+
+	* src/neat-control.py, src/netconf.py:
+	devname -> dev.Type
+
+2002-04-11  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/GUI_functions.py, src/netconf.py:
+	added get_device_icon_mask()
+
+	* src/netconfpkg/gui/sharedtcpip.py:
+	initialized Hostname and AutoDNS in static case
+
+2002-04-11  Than Ngo  <than@redhat.com>
+
+	* src/netconf.py:
+	* only allow to deactivate active device
+	* only allow to activate deactive device
+
+	* src/netconfpkg/Control.py:
+	* add missing import NC_function
+
+2002-04-11  Harald Hoyer  <harald@redhat.com>
+
+	* neat-control.desktop:
+	changed name to 'Network Device Control'
+
+	* src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterface.py:
+	correct hostname
+
+	* src/netconfpkg/gui/EthernetHardwareDruid.py:
+	GUI_functions removed
+
+	* src/netconfpkg/gui/dialupconfig.py:
+	added sharedtcpip.hydrate()/dehydrate()
+
+2002-04-10  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconfpkg/gui/EthernetHardwareDruid.py:
+	Fix traceback on load
+
+2002-04-10  Federico Musto  <federico@redhat.com>
+
+	* po/de.po, po/es.po, po/fr.po, po/it.po:
+	"/mnt/traduzioni/RH8.0/translate/redhat-config-network"
+
+2002-04-10  leon  <leon@redhat.com>
+
+	* po/ru.po: update
+
+2002-04-10  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCDevice.py:
+	fix for ONBOOT=no
+
+2002-04-10  James Hashida  <khashida@redhat.com>
+
+	* po/ja.po: translation update
+
+2002-04-10  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.Big5.po, po/zh_TW.po:
+	Updated translation.
+
+2002-04-10  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po:
+	More translation added.
+
+2002-04-10  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.GB2312.po: updated.
+
+	* po/zh_CN.GB2312.po:
+	updated against the lastest master file.
+
+2002-04-09  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po:
+	update-po, rephrase a sentence which sounded strange in English
+
+	* src/netconfpkg/NCDevice.py:
+	Better phrasing on a sentence
+
+	* po/cs.po, po/da.po, po/de.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po:
+	Fix typos, update-po
+
+2002-04-09  menthos  <menthos@redhat.com>
+
+	* po/sv.po:
+	2002-04-10  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2002-04-09  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* src/netconfpkg/NCDialup.py:
+	Fix names of countries
+
+	* src/netconfpkg/NCDevice.py: Typo
+
+2002-04-09  Harald Hoyer  <harald@redhat.com>
+
+	* po/sv.po, po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po, po/cs.po, po/da.po, po/de.po, po/is.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, redhat-config-network-0.9.21-rp3.patch, po/POTFILES.in:
+	*** empty log message ***
+
+2002-04-09  Trond Eivind Glomsrod  <teg@redhat.com>
+
+	* redhat-config-network.spec.in:
+	Bump
+
+2002-04-09  Federico Musto  <federico@redhat.com>
+
+	* po/es.po, po/fr.po, po/de.po, po/it.po:
+	"/mnt/traduzioni/RH8.0/translate/redhat-config-network"
+
+2002-04-09  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/tokenringhardware.py, src/glade-strings.c, src/netconfpkg/gui/cipeconfig.py, src/netconfpkg/gui/dialupconfig.py, src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/ethernetconfig.py, src/netconfpkg/gui/EthernetHardwareDruid.py, src/netconfpkg/gui/EthernetInterface.py, src/netconfpkg/gui/GenericInterface.py, src/netconfpkg/gui/sharedtcpip.py, src/netconfpkg/gui/tcpdialog.py, src/netconfpkg/gui/TokenRingHardwareDruid.py, src/netconfpkg/gui/TokenRingInterface.py, src/netconfpkg/gui/WirelessInterface.py:
+	let sharedtcpip.glade be translated
+
+	* src/netconfpkg/gui/dslconfig.py, src/netconfpkg/gui/sharedtcpip.glade, src/netconfpkg/gui/sharedtcpip.py:
+	corrected DSL HW Page
+
+	* redhat-config-network.spec.in:
+	added openjade docbook-style-dsssl BuildRequires
+
+	* redhat-config-network-0.9.13-neat.patch:
+	removed absolute dssl path
+
+	* po/tr.po, po/zh_CN.GB2312.po, po/zh_TW.Big5.po, po/zh_TW.po, po/es.po, po/fr.po, po/is.po, po/it.po, po/ja.po, po/ko.po, po/no.po, po/pt.po, po/redhat-config-network.pot, po/ru.po, po/sv.po, po/cs.po, po/da.po, po/de.po, po/Makefile.in.in, po/POTFILES.in:
+	more po
+
+	* po/pygettext.py:
+	sort the msgid's by occurance to get the context
+
+2002-04-09  James Hashida  <khashida@redhat.com>
+
+	* po/ja.po: translation update
+
+2002-04-09  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.po, po/zh_TW.Big5.po:
+	Minor updated translation.
+
+2002-04-09  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po:
+	More translation added.
+
+2002-04-08  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.GB2312.po:
+	updated against the mast copy.
+
+2002-04-08  keld  <keld@redhat.com>
+
+	* po/da.po: Updates
+	redhat-config-network/da.po redhat-switch-printer/da.po
+
 2002-04-08  Harald Hoyer  <harald@redhat.com>
+
+	* ChangeLog, po/redhat-config-network.pot, redhat-config-network.spec.in:
+	added more patches for rp3
 
 	* redhat-config-network-0.9.23-rp3-font.patch:
 	correct netmon font problem

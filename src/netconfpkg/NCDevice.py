@@ -340,7 +340,8 @@ class Device(DeviceList.Device_base):
         # Bugzilla #52252
         if not self.Wireless:
             for i in conf.keys():
-                if not conf[i] or conf[i] == "": del conf[i]
+                if not conf[i] or conf[i] == "":
+                    del conf[i]
 
         # RESOLV_MODS should be PEERDNS
         if conf.has_key('RESOLV_MODS'):

@@ -118,7 +118,7 @@ def dhcp_dehydrate (xml, device):
         device.Netmask = ''
         device.Gateway = ''
         device.Hostname = xml.get_widget('hostnameEntry').get_text()
-        device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()        
+        device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
     else:
         device.BootProto = 'static'
         device.IP = xml.get_widget('ipAddressEntry').get_text()
