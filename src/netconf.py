@@ -566,7 +566,7 @@ class mainDialog:
         profilelist = getProfileList()
         for prof in profilelist:
             if devId in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(device.Name)
+                pos = prof.ActiveDevices.index(device.DeviceId)
                 prof.ActiveDevices[pos] = device.DeviceId
                 prof.commit()
 
@@ -636,8 +636,8 @@ class mainDialog:
             return
 
         for prof in profilelist:
-            if device.Name in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(device.Name)
+            if device.DeviceId in prof.ActiveDevices:
+                pos = prof.ActiveDevices.index(device.DeviceId)
                 del prof.ActiveDevices[pos]
         profilelist.commit()
         
