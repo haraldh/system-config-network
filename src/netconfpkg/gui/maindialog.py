@@ -120,14 +120,17 @@ class mainDialog:
 
         self.appBar = self.xml.get_widget ("appbar")
 
-        self.xml.get_widget ("hardware_pixmap").set_from_file( \
-            NETCONFDIR + "/pixmaps/connection-ethernet.png")
-        self.xml.get_widget ("hosts_pixmap").set_from_file( \
-            NETCONFDIR + "/pixmaps/nameresolution_alias.png")
-        self.xml.get_widget ("dns_pixmap").set_from_file( \
-            NETCONFDIR + "/pixmaps/nameresolution_alias.png")
-        self.xml.get_widget ("devices_pixmap").set_from_file( \
-            NETCONFDIR + "/pixmaps/network.png")
+        widget = self.xml.get_widget ("hardware_pixmap")
+        widget.set_from_pixbuf(get_pixbuf("connection-ethernet.png"))
+        widget = self.xml.get_widget ("hosts_pixmap")
+        widget.set_from_pixbuf(get_pixbuf("nameresolution_alias.png"))
+        widget = self.xml.get_widget ("dns_pixmap")
+        widget.set_from_pixbuf(get_pixbuf("nameresolution_alias.png"))
+        widget = self.xml.get_widget ("devices_pixmap")
+        widget.set_from_pixbuf(get_pixbuf("network.png"))
+        widget = self.xml.get_widget ("ipsec_pixmap")
+        widget.set_from_pixbuf(get_pixbuf("secure.png"))
+
 
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.set_position (gtk.WIN_POS_CENTER)
@@ -136,11 +139,11 @@ class mainDialog:
         
         self.xml.get_widget ("profileMenu").show()
             
-        self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
-        self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
-        self.act_xpm, self.act_mask = get_icon ("pixmaps/active.xpm",
+        self.on_xpm, self.on_mask = get_icon('on.xpm', self.dialog)
+        self.off_xpm, self.off_mask = get_icon('off.xpm', self.dialog)
+        self.act_xpm, self.act_mask = get_icon ("active.xpm",
                                                 self.dialog)
-        self.inact_xpm, self.inact_mask = get_icon ("pixmaps/inactive.xpm",
+        self.inact_xpm, self.inact_mask = get_icon ("inactive.xpm",
                                                     self.dialog)
         self.devsel = None
         self.hwsel = None
@@ -173,20 +176,23 @@ class mainDialog:
         widget = self.xml.get_widget('deviceFrame')
         page = notebook.page_num(widget)
         notebook.set_current_page(page)
-
-        # remove IPsec from Fedora
-        widget = self.xml.get_widget('ipsecFrame')
-        page = notebook.page_num(widget)
-        notebook.remove_page(page)
+       
+        if rpms_notinstalled(["ipsec-tools"]) == []:
+            do_ipsec = 1
+        else:
+            do_ipsec = None
+                        
+        if not do_ipsec:
+            # remove IPsec
+            widget = self.xml.get_widget('ipsecFrame')
+            page = notebook.page_num(widget)
+            notebook.remove_page(page)
 
         self.page_num = {
             PAGE_DEVICES : notebook.page_num(\
             self.xml.get_widget('deviceFrame')),
             PAGE_HARDWARE : notebook.page_num(\
             self.xml.get_widget('hardwareFrame')),
-        # remove IPsec from Fedora
-#            PAGE_IPSEC : notebook.page_num(\
-#            self.xml.get_widget('ipsecFrame')),
             PAGE_IPSEC : -1,
             PAGE_HOSTS : notebook.page_num(\
             self.xml.get_widget('hostFrame')),
@@ -194,7 +200,10 @@ class mainDialog:
             self.xml.get_widget('dnsFrame')),
             }
 
-
+        if do_ipsec:
+            self.page_num[PAGE_IPSEC] = notebook.page_num(\
+                self.xml.get_widget('ipsecFrame'))
+            
         self.active_page = self.page_num[PAGE_DEVICES]
         
         self.addButtonFunc = {
@@ -452,19 +461,25 @@ class mainDialog:
                 get_device_icon_mask(dev.Type, self.dialog)
 
             clist.append(['', status, devname, dev.DeviceId, dev.Type])
-            clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm,
-                             self.inact_mask)
-            clist.set_pixtext(row, STATUS_COLUMN, status, 5, status_pixmap,
-                              status_mask)
-            clist.set_pixtext(row, DEVICE_COLUMN, devname, 5, device_pixmap,
-                              device_mask)
+            if self.inact_xpm:
+                clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm,
+                                 self.inact_mask)
+            if status_pixmap:
+                clist.set_pixtext(row, STATUS_COLUMN, status, 5,
+                                  status_pixmap, status_mask)
+            
+            if device_pixmap:
+                clist.set_pixtext(row, DEVICE_COLUMN, devname, 5,
+                                  device_pixmap, device_mask)
+                
             clist.set_row_data(row, dev)
             
             for prof in profilelist:
                 if (prof.Active == true or prof.ProfileName == 'default') and \
                        dev.DeviceId in prof.ActiveDevices:
-                    clist.set_pixmap(row, PROFILE_COLUMN,
-                                     self.act_xpm, self.act_mask)
+                    if self.act_xpm:
+                        clist.set_pixmap(row, PROFILE_COLUMN,
+                                         self.act_xpm, self.act_mask)
                     break
                 
 
@@ -489,9 +504,9 @@ class mainDialog:
             clist.append([str(hw.Description), str(hw.Type), str(hw.Name), str(hw.Status)])
             device_pixmap, device_mask = \
                 get_device_icon_mask(hw.Type, self.dialog)
-            clist.set_pixtext(row, DEVICE_COLUMN, hw.Name, 5,
-                              device_pixmap,
-                              device_mask)
+            if device_pixmap:
+                clist.set_pixtext(row, DEVICE_COLUMN, hw.Name, 5,
+                                  device_pixmap, device_mask)
             clist.set_row_data(row, hw)
 
             if hw == hwsel:
@@ -1052,30 +1067,42 @@ class mainDialog:
             self.delete_button.set_sensitive(TRUE)
 
 
-        if clist.get_name() == 'deviceList':
-            if len(clist.selection) == 0:
-                return
 
-            self.devsel = clist.get_row_data(clist.selection[0])
-            if not self.devsel:
-                return
+        if clist.get_name() == 'deviceList':
+            self.activate_button.set_sensitive(TRUE)
+            self.deactivate_button.set_sensitive(TRUE)
+            self.delete_button.set_sensitive(TRUE)
             
-            curr_prof = self.getActiveProfile()
-            status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
-            if NetworkDevice().find(self.devsel.getDeviceAlias()):
-                status == ACTIVE
+#             if len(clist.selection) == 0:
+#                 return
+
+#             self.devsel = clist.get_row_data(clist.selection[0])
+#             if not self.devsel:
+#                 return
+            
+#             curr_prof = self.getActiveProfile()
+            
+#             try:
+#                 status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
+#             except:
+#                 status = INACTIVE
+            
+#             if NetworkDevice().find(self.devsel.getDeviceAlias()):
+#                 status == ACTIVE
                 
-            if status == ACTIVE and \
-                   (self.devsel.DeviceId in curr_prof.ActiveDevices):
-                self.activate_button.set_sensitive(FALSE)
-                self.deactivate_button.set_sensitive(TRUE)
-                self.delete_button.set_sensitive(FALSE)
-                self.monitor_button.set_sensitive(TRUE)
-            else:
-                self.activate_button.set_sensitive(TRUE)
-                self.deactivate_button.set_sensitive(FALSE)
-                self.delete_button.set_sensitive(TRUE)
-                self.monitor_button.set_sensitive(FALSE)
+#             if status == ACTIVE and \
+#                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
+#                 #self.activate_button.set_sensitive(FALSE)
+#                 self.activate_button.set_sensitive(TRUE)
+#                 self.deactivate_button.set_sensitive(TRUE)
+#                 self.delete_button.set_sensitive(FALSE)
+#                 self.monitor_button.set_sensitive(TRUE)
+#             else:
+#                 self.activate_button.set_sensitive(TRUE)
+#                 #self.deactivate_button.set_sensitive(FALSE)
+#                 self.deactivate_button.set_sensitive(TRUE)
+#                 self.delete_button.set_sensitive(TRUE)
+#                 self.monitor_button.set_sensitive(FALSE)
 
 
     def on_generic_clist_unselect_row(self, clist, row, column, event):
@@ -1106,7 +1133,7 @@ class mainDialog:
         #        return
                 
         if event.type == gtk.gdk._2BUTTON_PRESS:
-            info = clist.get_selection_info(event.x, event.y)
+            info = clist.get_selection_info(int(event.x), int(event.y))
             if info != None and not (clist.get_name() in \
                                      [ "deviceList", "ipsecList" ] \
                                      and len(info) >= 2 and info[1] == 0):
@@ -1119,7 +1146,7 @@ class mainDialog:
                 clist.set_data("signal_id", id)
                          
         if clist.get_name() == 'deviceList' and gtk.gdk.BUTTON_PRESS:
-             info = clist.get_selection_info(event.x, event.y)
+             info = clist.get_selection_info(int(event.x), int(event.y))
              if info != None and info[1] == 0:
                  row = info[0]
 
@@ -1172,7 +1199,7 @@ class mainDialog:
                  self.checkApply()
 
         if clist.get_name() == 'ipsecList' and gtk.gdk.BUTTON_PRESS:
-             info = clist.get_selection_info(event.x, event.y)
+             info = clist.get_selection_info(int(event.x), int(event.y))
              if info != None and info[1] == 0:
                  row = info[0]
 
@@ -1715,5 +1742,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:21:51 $"
-__version__ = "$Revision: 1.35 $"
+__date__ = "$Date: 2004/03/04 13:26:25 $"
+__version__ = "$Revision: 1.36 $"
