@@ -128,6 +128,7 @@ class mainDialog:
                                             self.xml.get_widget("deviceCopyButton")),
             "on_deviceList_button_press_event" : (self.on_generic_clist_button_press_event,
                                                   self.on_deviceEditButton_clicked),
+            "on_applyButton_clicked" : self.on_applyButton_clicked,
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_helpButton_clicked" : self.on_helpButton_clicked,
@@ -258,12 +259,12 @@ class mainDialog:
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
-        hardwareTypeList = ["Ethernet", "Modem", "ISDN"]
-        self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
+##        hardwareTypeList = ["Ethernet", "Modem", "ISDN"]
+##        self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
         for hw in hardwarelist:
-            if hw.Type == "ISDN":
-                hardwareTypeList = ["Ethernet", "Modem"]
-                self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
+##            if hw.Type == "ISDN":
+##                hardwareTypeList = ["Ethernet", "Modem"]
+##                self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
             clist.append([hw.Description, hw.Type, hw.Name])
 
     def hydrateProfiles(self):
@@ -305,6 +306,9 @@ class mainDialog:
 
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
+
+    def on_applyButton_clicked (self, button):
+        self.save()
 
     def on_okButton_clicked (self, button):
         self.save()
@@ -829,7 +833,16 @@ class mainDialog:
         self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
-        type = self.xml.get_widget('hardwareTypeEntry').get_text()
+        device = Device()
+
+        type = hardwareTypeDialog(self.xml)
+        dialog = type.xml.get_widget ("Dialog")
+
+        button = dialog.run ()
+        if button != 0:
+            return
+
+        type = type.type
         self.showHardwareDialog(type, false)
 
     def on_hardwareEditButton_clicked (self, *args):
