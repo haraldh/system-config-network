@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>New_interface_druid</name>
+  <program_name>new_interface_druid</program_name>
+  <directory></directory>
+  <source_directory>src</source_directory>
+  <pixmaps_directory>pixmaps</pixmaps_directory>
+  <language>C</language>
+  <gnome_support>True</gnome_support>
+  <gettext_support>True</gettext_support>
+</project>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>toplevel</name>
+  <signal>
+    <name>delete_event</name>
+    <handler>on_toplevel_delete_event</handler>
+    <last_modification_time>Thu, 03 May 2001 21:07:13 GMT</last_modification_time>
+  </signal>
+  <title>New Interface</title>
+  <type>GTK_WINDOW_TOPLEVEL</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <default_width>500</default_width>
+  <default_height>400</default_height>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>True</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GnomeDruid</class>
+    <name>druid</name>
+    <signal>
+      <name>cancel</name>
+      <handler>on_druid_cancel</handler>
+      <last_modification_time>Thu, 03 May 2001 20:17:41 GMT</last_modification_time>
+    </signal>
+
+    <widget>
+      <class>GnomeDruidPageStandard</class>
+      <name>dialup_page</name>
+      <signal>
+	<name>next</name>
+	<handler>on_dialup_page_next</handler>
+	<last_modification_time>Fri, 20 Jul 2001 12:04:54 GMT</last_modification_time>
+      </signal>
+      <signal>
+	<name>prepare</name>
+	<handler>on_dialup_page_prepare</handler>
+	<last_modification_time>Fri, 20 Jul 2001 12:05:02 GMT</last_modification_time>
+      </signal>
+      <title>Select Provider</title>
+      <title_color>255,255,255</title_color>
+      <background_color>25,25,112</background_color>
+      <logo_background_color>24,24,112</logo_background_color>
+
+      <widget>
+	<class>GtkVBox</class>
+	<child_name>GnomeDruidPageStandard:vbox</child_name>
+	<name>druid-vbox3</name>
+	<homogeneous>False</homogeneous>
+	<spacing>0</spacing>
+	<child>
+	  <padding>0</padding>
+	  <expand>True</expand>
+	  <fill>True</fill>
+	</child>
+
+	<widget>
+	  <class>GtkHBox</class>
+	  <name>hbox5</name>
+	  <border_width>8</border_width>
+	  <homogeneous>False</homogeneous>
+	  <spacing>5</spacing>
+	  <child>
+	    <padding>0</padding>
+	    <expand>True</expand>
+	    <fill>True</fill>
+	  </child>
+
+	  <widget>
+	    <class>GtkHPaned</class>
+	    <name>hpaned1</name>
+	    <handle_size>10</handle_size>
+	    <gutter_size>8</gutter_size>
+	    <child>
+	      <padding>0</padding>
+	      <expand>True</expand>
+	      <fill>True</fill>
+	    </child>
+
+	    <widget>
+	      <class>GtkScrolledWindow</class>
+	      <name>scrolledwindow2</name>
+	      <width>175</width>
+	      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+	      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	      <child>
+		<shrink>False</shrink>
+		<resize>True</resize>
+	      </child>
+
+	      <widget>
+		<class>GtkCTree</class>
+		<name>providerTree</name>
+		<can_focus>True</can_focus>
+		<signal>
+		  <name>button_press_event</name>
+		  <handler>on_providerTree_button_press_event</handler>
+		  <last_modification_time>Sat, 02 Jun 2001 20:49:12 GMT</last_modification_time>
+		</signal>
+		<signal>
+		  <name>tree_select_row</name>
+		  <handler>on_providerTree_tree_select_row</handler>
+		  <last_modification_time>Sun, 03 Jun 2001 20:19:39 GMT</last_modification_time>
+		</signal>
+		<signal>
+		  <name>tree_unselect_row</name>
+		  <handler>on_providerTree_tree_unselect_row</handler>
+		  <last_modification_time>Sun, 03 Jun 2001 20:19:48 GMT</last_modification_time>
+		</signal>
+		<columns>1</columns>
+		<column_widths>80</column_widths>
+		<selection_mode>GTK_SELECTION_BROWSE</selection_mode>
+		<show_titles>True</show_titles>
+		<shadow_type>GTK_SHADOW_IN</shadow_type>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <child_name>CTree:title</child_name>
+		  <name>label8</name>
+		  <label>Internet Provider</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		</widget>
+	      </widget>
+	    </widget>
+
+	    <widget>
+	      <class>GtkVBox</class>
+	      <name>vbox5</name>
+	      <homogeneous>False</homogeneous>
+	      <spacing>5</spacing>
+	      <child>
+		<shrink>False</shrink>
+		<resize>True</resize>
+	      </child>
+
+	      <widget>
+		<class>GtkFrame</class>
+		<name>frame3</name>
+		<label>Phone Number</label>
+		<label_xalign>0</label_xalign>
+		<shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>True</fill>
+		</child>
+
+		<widget>
+		  <class>GtkVBox</class>
+		  <name>vbox6</name>
+		  <border_width>5</border_width>
+		  <homogeneous>False</homogeneous>
+		  <spacing>5</spacing>
+
+		  <widget>
+		    <class>GtkTable</class>
+		    <name>table3</name>
+		    <rows>2</rows>
+		    <columns>3</columns>
+		    <homogeneous>False</homogeneous>
+		    <row_spacing>2</row_spacing>
+		    <column_spacing>5</column_spacing>
+		    <child>
+		      <padding>0</padding>
+		      <expand>True</expand>
+		      <fill>True</fill>
+		    </child>
+
+		    <widget>
+		      <class>GtkLabel</class>
+		      <name>label16</name>
+		      <label>Prefi_x:</label>
+		      <justify>GTK_JUSTIFY_CENTER</justify>
+		      <wrap>False</wrap>
+		      <xalign>0</xalign>
+		      <yalign>0.5</yalign>
+		      <xpad>0</xpad>
+		      <ypad>0</ypad>
+		      <focus_target>prefixEntry</focus_target>
+		      <child>
+			<left_attach>0</left_attach>
+			<right_attach>1</right_attach>
+			<top_attach>0</top_attach>
+			<bottom_attach>1</bottom_attach>
+			<xpad>0</xpad>
+			<ypad>0</ypad>
+			<xexpand>False</xexpand>
+			<yexpand>False</yexpand>
+			<xshrink>False</xshrink>
+			<yshrink>False</yshrink>
+			<xfill>True</xfill>
+			<yfill>False</yfill>
+		      </child>
+		    </widget>
+
+		    <widget>
+		      <class>GtkLabel</class>
+		      <name>label17</name>
+		      <label>A_rea Code:</label>
+		      <justify>GTK_JUSTIFY_CENTER</justify>
+		      <wrap>False</wrap>
+		      <xalign>0</xalign>
+		      <yalign>0.5</yalign>
+		      <xpad>0</xpad>
+		      <ypad>0</ypad>
+		      <focus_target>areaCodeEntry</focus_target>
+		      <child>
+			<left_attach>1</left_attach>
+			<right_attach>2</right_attach>
+			<top_attach>0</top_attach>
+			<bottom_attach>1</bottom_attach>
+			<xpad>0</xpad>
+			<ypad>0</ypad>
+			<xexpand>False</xexpand>
+			<yexpand>False</yexpand>
+			<xshrink>False</xshrink>
+			<yshrink>False</yshrink>
+			<xfill>True</xfill>
+			<yfill>False</yfill>
+		      </child>
+		    </widget>
+
+		    <widget>
+		      <class>GtkLabel</class>
+		      <name>label18</name>
+		      <label>_Phone Number:</label>
+		      <justify>GTK_JUSTIFY_CENTER</justify>
+		      <wrap>False</wrap>
+		      <xalign>0</xalign>
+		      <yalign>0.5</yalign>
+		      <xpad>0</xpad>
+		      <ypad>0</ypad>
+		      <focus_target>phoneEntry</focus_target>
+		      <child>
+			<left_attach>2</left_attach>
+			<right_attach>3</right_attach>
+			<top_attach>0</top_attach>
+			<bottom_attach>1</bottom_attach>
+			<xpad>0</xpad>
+			<ypad>0</ypad>
+			<xexpand>False</xexpand>
+			<yexpand>False</yexpand>
+			<xshrink>False</xshrink>
+			<yshrink>False</yshrink>
+			<xfill>True</xfill>
+			<yfill>False</yfill>
+		      </child>
+		    </widget>
+
+		    <widget>
+		      <class>GtkEntry</class>
+		      <name>phoneEntry</name>
+		      <tooltip>Enter the phone number of your ISP (without prefix/area/country code)</tooltip>
+		      <can_focus>True</can_focus>
+		      <signal>
+			<name>changed</name>
+			<handler>on_phoneEntry_changed</handler>
+			<last_modification_time>Thu, 24 May 2001 12:59:32 GMT</last_modification_time>
+		      </signal>
+		      <editable>True</editable>
+		      <text_visible>True</text_visible>
+		      <text_max_length>0</text_max_length>
+		      <text></text>
+		      <child>
+			<left_attach>2</left_attach>
+			<right_attach>3</right_attach>
+			<top_attach>1</top_attach>
+			<bottom_attach>2</bottom_attach>
+			<xpad>0</xpad>
+			<ypad>0</ypad>
+			<xexpand>True</xexpand>
+			<yexpand>False</yexpand>
+			<xshrink>False</xshrink>
+			<yshrink>False</yshrink>
+			<xfill>True</xfill>
+			<yfill>False</yfill>
+		      </child>
+		    </widget>
+
+		    <widget>
+		      <class>GtkEntry</class>
+		      <name>prefixEntry</name>
+		      <width>40</width>
+		      <tooltip>Enter any numbers you need to dial before the others. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here.</tooltip>
+		      <can_focus>True</can_focus>
+		      <signal>
+			<name>changed</name>
+			<handler>on_prefixEntry_changed</handler>
+			<last_modification_time>Thu, 24 May 2001 12:59:22 GMT</last_modification_time>
+		      </signal>
+		      <editable>True</editable>
+		      <text_visible>True</text_visible>
+		      <text_max_length>0</text_max_length>
+		      <text></text>
+		      <child>
+			<left_attach>0</left_attach>
+			<right_attach>1</right_attach>
+			<top_attach>1</top_attach>
+			<bottom_attach>2</bottom_attach>
+			<xpad>0</xpad>
+			<ypad>0</ypad>
+			<xexpand>False</xexpand>
+			<yexpand>False</yexpand>
+			<xshrink>False</xshrink>
+			<yshrink>False</yshrink>
+			<xfill>True</xfill>
+			<yfill>False</yfill>
+		      </child>
+		    </widget>
+
+		    <widget>
+		      <class>GtkEntry</class>
+		      <name>areaCodeEntry</name>
+		      <width>65</width>
+		      <tooltip>Enter the area code needed to reach your internet provider</tooltip>
+		      <can_focus>True</can_focus>
+		      <signal>
+			<name>changed</name>
+			<handler>on_areaCodeEntry_changed</handler>
+			<last_modification_time>Thu, 24 May 2001 12:59:28 GMT</last_modification_time>
+		      </signal>
+		      <editable>True</editable>
+		      <text_visible>True</text_visible>
+		      <text_max_length>0</text_max_length>
+		      <text></text>
+		      <child>
+			<left_attach>1</left_attach>
+			<right_attach>2</right_attach>
+			<top_attach>1</top_attach>
+			<bottom_attach>2</bottom_attach>
+			<xpad>0</xpad>
+			<ypad>0</ypad>
+			<xexpand>False</xexpand>
+			<yexpand>False</yexpand>
+			<xshrink>False</xshrink>
+			<yshrink>False</yshrink>
+			<xfill>True</xfill>
+			<yfill>False</yfill>
+		      </child>
+		    </widget>
+		  </widget>
+		</widget>
+	      </widget>
+
+	      <widget>
+		<class>GtkTable</class>
+		<name>table4</name>
+		<border_width>5</border_width>
+		<rows>3</rows>
+		<columns>2</columns>
+		<homogeneous>False</homogeneous>
+		<row_spacing>5</row_spacing>
+		<column_spacing>5</column_spacing>
+		<child>
+		  <padding>0</padding>
+		  <expand>True</expand>
+		  <fill>True</fill>
+		</child>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label19</name>
+		  <label>_Login Name:</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		  <default_focus_target>dialupLoginNameEntry</default_focus_target>
+		  <child>
+		    <left_attach>0</left_attach>
+		    <right_attach>1</right_attach>
+		    <top_attach>1</top_attach>
+		    <bottom_attach>2</bottom_attach>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		    <xexpand>False</xexpand>
+		    <yexpand>False</yexpand>
+		    <xshrink>False</xshrink>
+		    <yshrink>False</yshrink>
+		    <xfill>True</xfill>
+		    <yfill>False</yfill>
+		  </child>
+		</widget>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label20</name>
+		  <label>Pass_word:</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		  <default_focus_target>dialupPasswordEntry</default_focus_target>
+		  <child>
+		    <left_attach>0</left_attach>
+		    <right_attach>1</right_attach>
+		    <top_attach>2</top_attach>
+		    <bottom_attach>3</bottom_attach>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		    <xexpand>False</xexpand>
+		    <yexpand>False</yexpand>
+		    <xshrink>False</xshrink>
+		    <yshrink>False</yshrink>
+		    <xfill>True</xfill>
+		    <yfill>False</yfill>
+		  </child>
+		</widget>
+
+		<widget>
+		  <class>GtkEntry</class>
+		  <name>dialupLoginNameEntry</name>
+		  <tooltip>Enter the login name that your ISP gave you here</tooltip>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>changed</name>
+		    <handler>on_dialupLoginNameEntry_activate</handler>
+		    <last_modification_time>Thu, 24 May 2001 13:01:59 GMT</last_modification_time>
+		  </signal>
+		  <editable>True</editable>
+		  <text_visible>True</text_visible>
+		  <text_max_length>0</text_max_length>
+		  <text></text>
+		  <child>
+		    <left_attach>1</left_attach>
+		    <right_attach>2</right_attach>
+		    <top_attach>1</top_attach>
+		    <bottom_attach>2</bottom_attach>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		    <xexpand>True</xexpand>
+		    <yexpand>False</yexpand>
+		    <xshrink>True</xshrink>
+		    <yshrink>False</yshrink>
+		    <xfill>True</xfill>
+		    <yfill>True</yfill>
+		  </child>
+		</widget>
+
+		<widget>
+		  <class>GtkEntry</class>
+		  <name>dialupPasswordEntry</name>
+		  <tooltip>Enter the password for your account. If you do not know it,  please contact your ISP</tooltip>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>changed</name>
+		    <handler>on_dialupPasswordEntry_changed</handler>
+		    <last_modification_time>Thu, 24 May 2001 13:02:05 GMT</last_modification_time>
+		  </signal>
+		  <editable>True</editable>
+		  <text_visible>False</text_visible>
+		  <text_max_length>0</text_max_length>
+		  <text></text>
+		  <child>
+		    <left_attach>1</left_attach>
+		    <right_attach>2</right_attach>
+		    <top_attach>2</top_attach>
+		    <bottom_attach>3</bottom_attach>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		    <xexpand>True</xexpand>
+		    <yexpand>False</yexpand>
+		    <xshrink>True</xshrink>
+		    <yshrink>False</yshrink>
+		    <xfill>True</xfill>
+		    <yfill>True</yfill>
+		  </child>
+		</widget>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label21</name>
+		  <label>Provider _Name:</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		  <default_focus_target>providerName</default_focus_target>
+		  <child>
+		    <left_attach>0</left_attach>
+		    <right_attach>1</right_attach>
+		    <top_attach>0</top_attach>
+		    <bottom_attach>1</bottom_attach>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		    <xexpand>False</xexpand>
+		    <yexpand>False</yexpand>
+		    <xshrink>False</xshrink>
+		    <yshrink>False</yshrink>
+		    <xfill>True</xfill>
+		    <yfill>False</yfill>
+		  </child>
+		</widget>
+
+		<widget>
+		  <class>GtkEntry</class>
+		  <name>providerName</name>
+		  <tooltip>Enter the name of this configuration, usualy just the name of your ISP</tooltip>
+		  <can_focus>True</can_focus>
+		  <editable>True</editable>
+		  <text_visible>True</text_visible>
+		  <text_max_length>0</text_max_length>
+		  <text></text>
+		  <child>
+		    <left_attach>1</left_attach>
+		    <right_attach>2</right_attach>
+		    <top_attach>0</top_attach>
+		    <bottom_attach>1</bottom_attach>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		    <xexpand>True</xexpand>
+		    <yexpand>False</yexpand>
+		    <xshrink>False</xshrink>
+		    <yshrink>False</yshrink>
+		    <xfill>True</xfill>
+		    <yfill>False</yfill>
+		  </child>
+		</widget>
+	      </widget>
+	    </widget>
+	  </widget>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GnomeDruidPageFinish</class>
+      <name>finish_page</name>
+      <signal>
+	<name>prepare</name>
+	<handler>on_finish_page_prepare</handler>
+	<last_modification_time>Fri, 20 Jul 2001 14:53:23 GMT</last_modification_time>
+      </signal>
+      <signal>
+	<name>finish</name>
+	<handler>on_finish_page_finish</handler>
+	<last_modification_time>Fri, 20 Jul 2001 14:53:28 GMT</last_modification_time>
+      </signal>
+      <signal>
+	<name>back</name>
+	<handler>on_finish_page_back</handler>
+	<last_modification_time>Fri, 20 Jul 2001 18:39:30 GMT</last_modification_time>
+      </signal>
+      <title>Create Dialup Connection</title>
+      <text></text>
+      <background_color>25,25,112</background_color>
+      <logo_background_color>24,24,112</logo_background_color>
+      <textbox_color>255,255,255</textbox_color>
+      <text_color>0,0,0</text_color>
+      <title_color>255,255,255</title_color>
+    </widget>
+  </widget>
+</widget>
+
+</GTK-Interface>
