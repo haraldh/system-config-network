@@ -3,7 +3,7 @@
 Handle /etc/resolv.conf for various profiles
 """
 
-NETCFGDIR="/etc/sysconfig/networking/"
+NETCFGDIR="/etc/sysconfig/networking/profiles/"
 
 import string
 
