@@ -20,6 +20,7 @@
 import sys
 import os
 import os.path
+import shutil
 
 import NCDeviceList
 import NCHardwareList
@@ -120,20 +121,25 @@ class ProfileList(ProfileList_base):
         nwconf.write()
 
         try:
-            os.system('/bin/rm -rf '+SYSCONFPROFILEDIR)
-        except:
-            pass
-
-        try:
             os.mkdir(SYSCONFPROFILEDIR)
         except:
             pass
+
+        proflist = os.listdir(SYSCONFPROFILEDIR)
+        for prof in proflist:
+            if prof == 'default':
+                continue
+
+            try:
+                shutil.rmtree(SYSCONFPROFILEDIR)
+            except:
+                pass
 
         devlist = os.listdir(OLDSYSCONFDEVICEDIR)
         for dev in devlist:
             if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
                 continue
-            if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev):
+            if ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
                 try:
                     os.unlink(OLDSYSCONFDEVICEDIR+'/'+dev)
                 except:
@@ -183,7 +189,7 @@ class ProfileList(ProfileList_base):
                     pass
 
                 try:
-                    os.symlink(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                    os.link(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
                 except:
                     pass
 
@@ -196,14 +202,14 @@ class ProfileList(ProfileList_base):
                     pass
 
                 try:
-                    os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                    os.link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
                 except:
-                    print 'Darn, symlinking device '+devName+','+devId+' failed...'
+                    print 'Darn, linking device '+devName+','+devId+' failed...'
 
             if prof.Active == false:
                 continue
 
-            if os.path.isfile('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
+            if os.path.isfile('/etc/resolv.conf') and not ishardlink('/etc/resolv.conf'):
                 os.rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
 
             try:
@@ -212,11 +218,11 @@ class ProfileList(ProfileList_base):
                 pass
 
             try:
-                os.symlink(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
+                os.link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
             except:
                 pass
 
-            if os.path.isfile('/etc/hosts') and not os.path.islink('/etc/hosts'):
+            if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts'):
                 os.rename('/etc/hosts', '/etc/hosts.bak')
 
             try:
@@ -225,7 +231,7 @@ class ProfileList(ProfileList_base):
                 pass
 
             try:
-                os.symlink(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
+                os.link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
             except:
                 pass
 
