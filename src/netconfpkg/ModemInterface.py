@@ -93,15 +93,17 @@ class ModemInterface:
         self.hardwarelist.rollback()
         
     def setup(self):
-        res = kudzu.probe(kudzu.CLASS_MODEM,kudzu.BUS_SERIAL|kudzu.BUS_PCI,kudzu.PROBE_ALL)
+        res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
         if res == []:
-            list = ['/dev/modem']
+            dlist = ['/dev/modem']
         else:
-            list = []
+            dlist = []
             for v in res:
-                list.append(v[0])
+                dev = str(v[0])
+                if dev != 'None':
+                    dlist.append(dev)
 
-        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(list)
+        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
     
     def dehydrate(self):
         self.hw.Description = _('Generic Modem')
