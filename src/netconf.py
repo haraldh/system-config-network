@@ -18,6 +18,8 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+import sys
+import getopt
 import gtk
 import GDK
 import GTK
@@ -27,7 +29,6 @@ import os
 import GdkImlib
 import string
 import gettext
-import sys
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -137,7 +138,7 @@ class mainDialog:
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
         self.load()
-        self.setup()
+        self.hydrate()
 
     def load(self):
         self.loadDevices()
@@ -173,12 +174,12 @@ class mainDialog:
         global profilelist
         profilelist.save()
 
-    def setup(self):
-        self.setupDevices()
-        self.setupHardware()
-        self.setupProfiles()
+    def hydrate(self):
+        self.hydrateDevices()
+        self.hydrateHardware()
+        self.hydrateProfiles()
 
-    def setupDevices(self):
+    def hydrateDevices(self):
         global devicelist, profilelist
 
         clist = self.xml.get_widget("deviceList")
@@ -201,7 +202,7 @@ class mainDialog:
                     clist.set_row_data(row, 1)
             row = row + 1
 
-    def setupHardware(self):
+    def hydrateHardware(self):
         global hardwarelist
 
         clist = self.xml.get_widget("hardwareList")
@@ -209,7 +210,7 @@ class mainDialog:
         for hw in hardwarelist:
             clist.append([hw.Description, hw.Type, hw.Name])
 
-    def setupProfiles(self):
+    def hydrateProfiles(self):
         global profilelist
         dclist = self.xml.get_widget("dnsList")
         dclist.clear()
@@ -299,7 +300,7 @@ class mainDialog:
                 if prof.Active == false:
                     continue
                 prof.ActiveDevices.append(device.DeviceId)
-            self.setup()
+            self.hydrate()
 
     def on_deviceCopyButton_clicked (self, button):
         global profilelist, devicelist
@@ -315,7 +316,7 @@ class mainDialog:
         i = devicelist.addDevice()
         devicelist[i].apply(device)
         devicelist[i].commit()
-        self.setup()
+        self.hydrate()
 
     def on_deviceRenameButton_clicked (self, button):
         pass
@@ -341,7 +342,7 @@ class mainDialog:
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
         button = dialog.run ()
-        self.setup()
+        self.hydrate()
         
     def on_deviceDeleteButton_clicked (self, button):
         global devicelist, profilelist
@@ -367,7 +368,7 @@ class mainDialog:
                 pass
 
         del devicelist[clist.selection[0]]
-        self.setup()
+        self.hydrate()
 
     def on_generic_entry_insert_text(self, entry, partial_text, length, pos, str):
         text = partial_text[0:length]
@@ -389,7 +390,7 @@ class mainDialog:
             for prof in profilelist:
                 prof.Active = false
             profilelist[row].Active = true
-            self.setup()
+            self.hydrate()
 
     def on_generic_clist_unselect_row(self, clist, row, column, event,
                                       edit_button = None, delete_button = None,
@@ -574,11 +575,33 @@ class mainDialog:
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
+    class BadUsage: pass
+
 
     updateNetworkScripts()
 
     if sys.argv[0][-11:] != 'netconf-cmd':
         window = mainDialog()
         gtk.mainloop()
-        sys.exit(0);
-    print 'Running netconf in commandline mode'
+        sys.exit(0)
+
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "p:t", ["profile=", "test"])
+        for opt, val in opts:
+            if opt == '-p' or opt == '--profile':
+                switchToProfile(val)
+                continue
+
+            if opt == '-t' or opt == '--test':
+                print "Just a test for getopt"
+                continue
+
+            raise BadUsage
+
+        for arg in args:
+            print args
+
+    except (getopt.error, BadUsage):
+        print """netconf-cmd - Python network configuration commandline tool
+
+Usage: netconf-cmd [-p --profile <profile>]"""
