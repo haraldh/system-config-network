@@ -1,4 +1,4 @@
-#! /usr/bin/python2.2
+#! /usr/bin/python
 
 ## netconf - A network configuration tool
 ## Copyright (C) 2001-2003 Red Hat, Inc.
@@ -363,5 +363,5 @@ if __name__ == '__main__':
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:07:49 $"
-__version__ = "$Revision: 1.14 $"
+__date__ = "$Date: 2003/11/25 08:34:19 $"
+__version__ = "$Revision: 1.15 $"
