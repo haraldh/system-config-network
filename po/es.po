@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"POT-Creation-Date: 2002-08-06 11:32-0400\n"
+"POT-Creation-Date: 2002-08-13 13:47+0200\n"
 "PO-Revision-Date: 2002-07-22 16:08GMT\n"
 "Last-Translator: Nuria Soriano <nuria@redhat.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -46,6 +46,7 @@ msgstr ""
 
 #. Argh, another workaround for broken gtk/gnome imports...
 #: src/netconf.py:67
+#, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Reinicie %s con permisos de root."
 
@@ -86,6 +87,7 @@ msgstr "No se puede quitar el dispositivo de ciclo de retorno."
 # ../src/netconf.py:509
 # ../src/netconf.py:532
 #: src/netconf.py:649
+#, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "¿Desea realmente eliminar el dispositivo \"%s\"?"
 
@@ -94,6 +96,7 @@ msgid "You have made some changes in your configuration."
 msgstr "Ha realizado algunos cambios en su configuración."
 
 #: src/netconf.py:678
+#, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Para activar el dispositivo de red %s,deberá guardar los cambios."
 
@@ -106,11 +109,12 @@ msgstr "¿Desea continuar?"
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/neat-control.py:129 src/netconf.py:692
+#: src/netconf.py:692 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Activación del dispositivo de red..."
 
-#: src/neat-control.py:131 src/netconf.py:694
+#: src/netconf.py:694 src/neat-control.py:131
+#, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Activación del dispositivo de red %s, espere..."
 
@@ -118,7 +122,7 @@ msgstr "Activación del dispositivo de red %s, espere..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/neat-control.py:170 src/netconf.py:726
+#: src/netconf.py:726 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Debe reescribirse"
 
@@ -153,7 +157,7 @@ msgstr "¡El nombre sólo puede contener letras y números!"
 # ../src/netconf.py:830 ../src/netconf.py:896
 # ../src/netconf.py:853 ../src/netconf.py:919
 #: src/netconf.py:1187 src/netconf.py:1264
-#, fuzzy
+#, fuzzy, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "¡El perfil no se puede llamar \"default\"!"
 
@@ -183,6 +187,7 @@ msgstr "¡El perfil \"predeterminado\" no se puede borrar!"
 # ../src/netconf.py:927
 # ../src/netconf.py:950
 #: src/netconf.py:1293
+#, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "¿Desea realmente eliminar el perfil \"%s\"?"
 
@@ -191,6 +196,7 @@ msgstr "¿Desea realmente eliminar el perfil \"%s\"?"
 #. clist.clear()
 #. hardwarelist.rollback()
 #: src/netconf.py:1419
+#, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "¿Desea eliminar \"%s\"?"
 
@@ -222,16 +228,16 @@ msgstr "Configuración xDSL"
 #: src/netconfpkg/gui/ADSLInterface.py:87
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber Lines. "
-" This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL "
-"(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at "
-"the same speed), and several others.  These types of connections are common "
-"in the United States, and are gaining acceptance elsewhere.  Speeds vary "
-"according to the technology used, but generally range from 144kbps to "
-"1.0Mbps."
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
 msgstr ""
-"Crear una conexión xDSL. Ésta es una conexión que utiliza uno de los "
-"varios tipos de conexiones de banda ancha collectivas conocidas como Digital "
+"Crear una conexión xDSL. Ésta es una conexión que utiliza uno de los varios "
+"tipos de conexiones de banda ancha collectivas conocidas como Digital "
 "Subscriber Lines. Esta lista incluye ADSL (Asymmetric, descarga más rápido "
 "que las telecarga), IDSL (en una linea RDSI a distancia), SDSL (Symmetric, "
 "carga y descarga a la misma velocidad) y otras muchas. Estos tipos de "
@@ -259,11 +265,11 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:125
-#: src/netconfpkg/gui/CipeInterface.py:132
 #: src/netconfpkg/gui/DialupDruid.py:116
-#: src/netconfpkg/gui/EthernetInterface.py:196
+#: src/netconfpkg/gui/EthernetInterface.py:197
+#: src/netconfpkg/gui/CipeInterface.py:132
+#: src/netconfpkg/gui/WirelessInterface.py:233
 #: src/netconfpkg/gui/TokenRingInterface.py:194
-#: src/netconfpkg/gui/WirelessInterface.py:212
 msgid "You have selected the following information:"
 msgstr "Ha seleccionado la siguiente información:"
 
@@ -322,19 +328,19 @@ msgstr "Número telefónico:"
 #. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
 #. if len(hwdesc):
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
-#: src/netconfpkg/NCDevice.py:232 src/netconfpkg/NCDevice.py:239
-#: src/netconfpkg/NCHardwareList.py:143 src/netconfpkg/NCHardwareList.py:297
-#: src/netconfpkg/NC_functions.py:173 src/netconfpkg/NC_functions.py:229
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:139
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:135
-#: src/netconfpkg/gui/ethernethardware.glade.h:22
 #: src/netconfpkg/gui/ethernethardware.py:138
 #: src/netconfpkg/gui/ethernethardware.py:155
-#: src/netconfpkg/gui/tokenringhardware.glade.h:21
 #: src/netconfpkg/gui/tokenringhardware.py:144
-#: src/netconfpkg/gui/tokenringhardware.py:155
+#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
+#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:187
+#: src/netconfpkg/NCHardwareList.py:302 src/netconfpkg/NC_functions.py:173
+#: src/netconfpkg/NC_functions.py:229
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:21
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -389,14 +395,14 @@ msgid ""
 "advanced regions.  It is available but uncommon in the USA.  Speeds range "
 "from 64kbps to 128kbps."
 msgstr ""
-"Crear una conexión RDSI nueva. Ésta es una conexión que utiliza una "
-"línea de red digital de servicios integrados para conectarse con el "
-"proveedor de internet Este tipo de tecnología requiere la instalación de "
-"una línea de teléfono especial. También requiere un dispositivo conocido "
-"como un TA (adaptador de terminal) para terminar la conexión RDSI desde su "
-"proveedor de Internet. Este tipo de conexiones son habituales en Europa y en "
-"otros países con una tecnología avanzada. Es factible pero inusual en "
-"Estados Unidos. La velocidad va desde 64kbps a 128kbps."
+"Crear una conexión RDSI nueva. Ésta es una conexión que utiliza una línea de "
+"red digital de servicios integrados para conectarse con el proveedor de "
+"internet Este tipo de tecnología requiere la instalación de una línea de "
+"teléfono especial. También requiere un dispositivo conocido como un TA "
+"(adaptador de terminal) para terminar la conexión RDSI desde su proveedor de "
+"Internet. Este tipo de conexiones son habituales en Europa y en otros países "
+"con una tecnología avanzada. Es factible pero inusual en Estados Unidos. La "
+"velocidad va desde 64kbps a 128kbps."
 
 # ../src/netconfpkg/ModemInterface.py:67
 # ../src/netconfpkg/ModemInterface.py:68
@@ -429,9 +435,9 @@ msgid ""
 "of connections are available just about anywhere in the world where there is "
 "a phone system."
 msgstr ""
-"Creación de una conexión por módem nueva. Ésta es una conexión que "
-"utiliza un módem análogo serial para conectarse su proveedor de Internet. "
-"Estos modems utilizan sonidos para la transmisión de datos en una línea de "
+"Creación de una conexión por módem nueva. Ésta es una conexión que utiliza "
+"un módem análogo serial para conectarse su proveedor de Internet. Estos "
+"modems utilizan sonidos para la transmisión de datos en una línea de "
 "teléfono de cobre normal. Estos tipos de conexiones están disponibles en "
 "cualquier parte del mundo en la que exista el sistema telefónico."
 
@@ -502,29 +508,29 @@ msgstr "Módem genérico"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemDruid.glade.h:27
 #: src/netconfpkg/gui/ModemInterface.py:140
-#: src/netconfpkg/gui/modemconfig.glade.h:27
 #: src/netconfpkg/gui/modemconfig.py:123
+#: src/netconfpkg/gui/ModemDruid.glade.h:27
+#: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "Apagado"
 
 # src/glade-strings.c:554
 # ../src/glade-strings.c:439 ../src/netconfpkg/ModemInterface.py:127
 # ../src/glade-strings.c:516 ../src/netconfpkg/ModemInterface.py:135
-#: src/netconfpkg/gui/ModemDruid.glade.h:22
 #: src/netconfpkg/gui/ModemInterface.py:142
-#: src/netconfpkg/gui/modemconfig.glade.h:21
 #: src/netconfpkg/gui/modemconfig.py:125
+#: src/netconfpkg/gui/ModemDruid.glade.h:22
+#: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "Bajo"
 
 # ../src/glade-strings.c:461 ../src/netconfpkg/ModemInterface.py:129
 # ../src/glade-strings.c:538 ../src/netconfpkg/ModemInterface.py:137
-#: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/ModemInterface.py:144
-#: src/netconfpkg/gui/modemconfig.glade.h:22
 #: src/netconfpkg/gui/modemconfig.py:127
+#: src/netconfpkg/gui/ModemDruid.glade.h:23
+#: src/netconfpkg/gui/modemconfig.glade.h:22
 #: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Medium"
 msgstr "Medio"
@@ -532,19 +538,19 @@ msgstr "Medio"
 # src/glade-strings.c:478
 # ../src/glade-strings.c:390 ../src/netconfpkg/ModemInterface.py:131
 # ../src/glade-strings.c:457 ../src/netconfpkg/ModemInterface.py:139
-#: src/netconfpkg/gui/ModemDruid.glade.h:21
 #: src/netconfpkg/gui/ModemInterface.py:146
-#: src/netconfpkg/gui/modemconfig.glade.h:20
 #: src/netconfpkg/gui/modemconfig.py:129
+#: src/netconfpkg/gui/ModemDruid.glade.h:21
+#: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "Alto"
 
 # ../src/glade-strings.c:662 ../src/netconfpkg/ModemInterface.py:133
 # ../src/glade-strings.c:775 ../src/netconfpkg/ModemInterface.py:141
-#: src/netconfpkg/gui/ModemDruid.glade.h:30
 #: src/netconfpkg/gui/ModemInterface.py:148
-#: src/netconfpkg/gui/modemconfig.glade.h:29
 #: src/netconfpkg/gui/modemconfig.py:131
+#: src/netconfpkg/gui/ModemDruid.glade.h:30
+#: src/netconfpkg/gui/modemconfig.glade.h:29
 msgid "Very High"
 msgstr "Muy alto"
 
@@ -582,68 +588,68 @@ msgstr "Muy alto"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/CipeInterface.py:155 src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:155
 msgid "None - Server Mode"
 msgstr "Ninguno - Modo servidor"
 
-#: src/netconfpkg/gui/CipeInterface.py:162 src/netconfpkg/gui/cipeconfig.py:87
+#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:162
 msgid " (dynamic)"
 msgstr " (dinámico)"
 
 # ../src/glade-strings.c:605
 # ../src/glade-strings.c:702
 #. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
 #: src/netconfpkg/gui/CipeInterface.py:196
 #: src/netconfpkg/gui/CipeInterface.py:249
-#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
 msgid "Server Mode"
 msgstr "Modo servidor"
 
 #. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
 #: src/netconfpkg/gui/CipeInterface.py:280
 #: src/netconfpkg/gui/CipeInterface.py:285
-#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
 msgid "(own choice)"
 msgstr "(elección propia)"
 
-#: src/netconfpkg/gui/CipeInterface.py:291
 #: src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:291
 msgid "IP Address of Tunnel Device: "
 msgstr "Dirección IP del dispositivo Tunnel"
 
 # src/glade-strings.c:551
 # ../src/glade-strings.c:774
 # ../src/glade-strings.c:920
-#: src/netconfpkg/gui/CipeInterface.py:292
 #: src/netconfpkg/gui/cipeconfig.py:214
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "Local Port: "
 msgstr "Puerto local:"
 
 # ../src/glade-strings.c:817
 # ../src/glade-strings.c:973
-#: src/netconfpkg/gui/CipeInterface.py:293
 #: src/netconfpkg/gui/cipeconfig.py:215
+#: src/netconfpkg/gui/CipeInterface.py:293
 msgid "Remote Peer Address: "
 msgstr "Dirección de peer remoto:"
 
 # ../src/glade-strings.c:575
 # ../src/glade-strings.c:667
-#: src/netconfpkg/gui/CipeInterface.py:297
 #: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:297
 msgid "Remote Virtual Address: "
 msgstr "Dirección virtual remota:"
 
 # ../src/glade-strings.c:436
 # ../src/glade-strings.c:513
-#: src/netconfpkg/gui/CipeInterface.py:298
 #: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "Local Virtual Address: "
 msgstr "Dirección virtual local:"
 
 # ../src/glade-strings.c:820
 # ../src/glade-strings.c:982
-#: src/netconfpkg/gui/CipeInterface.py:299
 #: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Secret Key: "
 msgstr "Clave secreta:"
 
@@ -725,8 +731,8 @@ msgstr "Dispositivo IUCV"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/dialupconfig.glade.h:12
 #: src/netconfpkg/gui/dialupconfig.py:228
+#: src/netconfpkg/gui/dialupconfig.glade.h:12
 msgid "Dialup Configuration"
 msgstr "Configuración de marcado:"
 
@@ -738,62 +744,62 @@ msgid "ISDN Dialup Configuration"
 msgstr "Configuración de marcado ISDN"
 
 #. get free ISDN device if encap mode is changed
-#: src/netconfpkg/gui/dialupconfig.glade.h:66
 #: src/netconfpkg/gui/dialupconfig.py:259
 #: src/netconfpkg/gui/dialupconfig.py:343
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "in"
 msgstr "dentro"
 
 # ../src/glade-strings.c:587
 # ../src/glade-strings.c:681
-#: src/netconfpkg/gui/dialupconfig.glade.h:69
 #: src/netconfpkg/gui/dialupconfig.py:259
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "out"
 msgstr "fuera"
 
 # ../src/glade-strings.c:948
 # ../src/glade-strings.c:1114
-#: src/netconfpkg/gui/dialupconfig.glade.h:71
 #: src/netconfpkg/gui/dialupconfig.py:298
+#: src/netconfpkg/gui/dialupconfig.glade.h:71
 msgid "raw IP"
 msgstr "raw IP"
 
 # ../src/glade-strings.c:951
 # ../src/glade-strings.c:1117
-#: src/netconfpkg/gui/dialupconfig.glade.h:72
 #: src/netconfpkg/gui/dialupconfig.py:300
 #: src/netconfpkg/gui/dialupconfig.py:329
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
 msgid "sync PPP"
 msgstr "Ppp sinc"
 
 # ../src/glade-strings.c:945
 # ../src/glade-strings.c:1111
-#: src/netconfpkg/gui/dialupconfig.glade.h:70
 #: src/netconfpkg/gui/dialupconfig.py:312
 #: src/netconfpkg/gui/dialupconfig.py:372
+#: src/netconfpkg/gui/dialupconfig.glade.h:70
 msgid "pap"
 msgstr "pap"
 
 # ../src/glade-strings.c:862
 # ../src/glade-strings.c:1028
-#: src/netconfpkg/gui/dialupconfig.glade.h:64
 #: src/netconfpkg/gui/dialupconfig.py:314
 #: src/netconfpkg/gui/dialupconfig.py:374
+#: src/netconfpkg/gui/dialupconfig.glade.h:64
 msgid "chap"
 msgstr "chap"
 
 # ../src/glade-strings.c:865
 # ../src/glade-strings.c:1031
-#: src/netconfpkg/gui/dialupconfig.glade.h:65
 #: src/netconfpkg/gui/dialupconfig.py:316
 #: src/netconfpkg/gui/dialupconfig.py:376
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
 msgid "chap+pap"
 msgstr "chap+pap"
 
 # ../src/glade-strings.c:942
 # ../src/glade-strings.c:1108
-#: src/netconfpkg/gui/dialupconfig.glade.h:68
 #: src/netconfpkg/gui/dialupconfig.py:318
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "none"
 msgstr "ninguno"
 
@@ -848,8 +854,8 @@ msgid ""
 msgstr ""
 "Se ha producido una excepción o más bien un error. Copie el texto completo "
 "de esta excepción o salve el volcado de caída en un fichero y, a "
-"continuación archive un informe detallado de errores para "
-"redhat-config-network en http://bugzilla.redhat.com/bugzilla/"
+"continuación archive un informe detallado de errores para redhat-config-"
+"network en http://bugzilla.redhat.com/bugzilla/"
 
 # src/glade-strings.c:530
 # ../src/glade-strings.c:608
@@ -875,15 +881,16 @@ msgid "Please specify a file to save the dump"
 msgstr "Especifique un fichero para salvar el vaciado"
 
 #: src/netconfpkg/gui/exception.py:213
+#, python-format
 msgid "Failed to write to file %s."
 msgstr "No se ha podido escribir el fichero %s."
 
 #: src/netconfpkg/gui/exception.py:217
+#, python-format
 msgid ""
 "The application's state has been successfully\n"
 "written to the file '%s'."
-msgstr ""
-"El estado de la aplicación se ha escrito con éxito en el fichero '%s'."
+msgstr "El estado de la aplicación se ha escrito con éxito en el fichero '%s'."
 
 # src/glade-strings.c:235
 # ../src/glade-strings.c:183
@@ -955,52 +962,52 @@ msgstr "Crear una nueva conexión ethernet."
 # src/glade-strings.c:426
 # ../src/glade-strings.c:349
 # ../src/glade-strings.c:410
-#: src/netconfpkg/gui/EthernetInterface.py:177
+#: src/netconfpkg/gui/EthernetInterface.py:178
 msgid "Other Ethernet Card"
 msgstr "Otras tarjetas Ethernet"
 
 # ../src/glade-strings.c:726
 # ../src/glade-strings.c:866
+#: src/netconfpkg/gui/EthernetInterface.py:198
 #: src/netconfpkg/gui/CipeInterface.py:133
-#: src/netconfpkg/gui/EthernetInterface.py:197
+#: src/netconfpkg/gui/WirelessInterface.py:234
 #: src/netconfpkg/gui/TokenRingInterface.py:195
-#: src/netconfpkg/gui/WirelessInterface.py:213
 msgid "Device:"
 msgstr "Dispositivo:"
 
 # src/glade-strings.c:154
 # ../src/glade-strings.c:162
 # ../src/glade-strings.c:192
-#: src/netconfpkg/gui/EthernetInterface.py:208
+#: src/netconfpkg/gui/EthernetInterface.py:209
+#: src/netconfpkg/gui/WirelessInterface.py:245
 #: src/netconfpkg/gui/TokenRingInterface.py:206
-#: src/netconfpkg/gui/WirelessInterface.py:224
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Dirección:"
 
 # ../src/glade-strings.c:829
 # ../src/glade-strings.c:991
-#: src/netconfpkg/gui/EthernetInterface.py:209
+#: src/netconfpkg/gui/EthernetInterface.py:210
+#: src/netconfpkg/gui/WirelessInterface.py:246
 #: src/netconfpkg/gui/TokenRingInterface.py:207
-#: src/netconfpkg/gui/WirelessInterface.py:225
 msgid "Subnet Mask:"
 msgstr "Máscara de subred:"
 
 # src/glade-strings.c:317
 # ../src/glade-strings.c:237
 # ../src/glade-strings.c:281
-#: src/netconfpkg/gui/EthernetInterface.py:210
+#: src/netconfpkg/gui/EthernetInterface.py:211
+#: src/netconfpkg/gui/WirelessInterface.py:247
 #: src/netconfpkg/gui/TokenRingInterface.py:208
-#: src/netconfpkg/gui/WirelessInterface.py:226
 msgid "Default Gateway Address:"
 msgstr "Dirección de la puerta de enlace por defecto:"
 
 # src/glade-strings.c:211
 # ../src/glade-strings.c:180
 # ../src/glade-strings.c:214
-#: src/netconfpkg/gui/EthernetInterface.py:212
+#: src/netconfpkg/gui/EthernetInterface.py:213
+#: src/netconfpkg/gui/WirelessInterface.py:249
 #: src/netconfpkg/gui/TokenRingInterface.py:210
-#: src/netconfpkg/gui/WirelessInterface.py:228
 msgid "Automatically obtain IP address settings with:"
 msgstr "Obtener las configuraciones de direcciones IP automáticamente con:"
 
@@ -1034,12 +1041,14 @@ msgstr "Obtener las configuraciones de direcciones IP automáticamente con:"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
 msgid "%s connection"
 msgstr "Conexión %s "
 
 # ../src/glade-strings.c:219
 # ../src/glade-strings.c:253
 #: src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
 msgid "Create a new %s connection."
 msgstr "Crear una nueva conexión %s"
 
@@ -1103,8 +1112,8 @@ msgstr "Dirección de peer remoto:"
 # ../src/glade-strings.c:856
 # ../src/glade-strings.c:1022
 #: src/netconfpkg/gui/CipeInterface.py:140
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Auto"
 msgstr "Auto"
 
@@ -1152,53 +1161,53 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/WirelessInterface.py:104
+#: src/netconfpkg/gui/WirelessInterface.py:105
 msgid "Wireless connection"
 msgstr "Conexión inalámbrica"
 
 # src/glade-strings.c:354
 # ../src/glade-strings.c:222
 # ../src/glade-strings.c:256
-#: src/netconfpkg/gui/WirelessInterface.py:110
+#: src/netconfpkg/gui/WirelessInterface.py:111
 msgid "Create a new wireless connection."
 msgstr "Crear una nueva conexión inalámbrica."
 
 # src/glade-strings.c:426
 # ../src/glade-strings.c:349
 # ../src/glade-strings.c:410
-#: src/netconfpkg/gui/WirelessInterface.py:192
+#: src/netconfpkg/gui/WirelessInterface.py:213
 msgid "Other Wireless Card"
 msgstr "Otra tarjeta inalámbrica "
 
 # ../src/glade-strings.c:791
 # ../src/glade-strings.c:939
-#: src/netconfpkg/gui/WirelessInterface.py:231
+#: src/netconfpkg/gui/WirelessInterface.py:252
 msgid "Mode: "
 msgstr "Modo:"
 
 # src/glade-strings.c:369
 # ../src/glade-strings.c:732
 # ../src/glade-strings.c:872
-#: src/netconfpkg/gui/WirelessInterface.py:232
+#: src/netconfpkg/gui/WirelessInterface.py:253
 msgid "ESSID (Network ID):"
 msgstr "ESSID (ID de la red):"
 
 # src/glade-strings.c:256
 # ../src/glade-strings.c:707
 # ../src/glade-strings.c:842
-#: src/netconfpkg/gui/WirelessInterface.py:238
+#: src/netconfpkg/gui/WirelessInterface.py:259
 msgid "Channel: "
 msgstr "Canal:"
 
 # ../src/glade-strings.c:832
 # ../src/glade-strings.c:997
-#: src/netconfpkg/gui/WirelessInterface.py:239
+#: src/netconfpkg/gui/WirelessInterface.py:260
 msgid "Transmit Rate: "
 msgstr "Ratio de transmisión:"
 
 # ../src/glade-strings.c:771
 # ../src/glade-strings.c:917
-#: src/netconfpkg/gui/WirelessInterface.py:240
+#: src/netconfpkg/gui/WirelessInterface.py:261
 msgid "Key: "
 msgstr "Clave:"
 
@@ -1300,6 +1309,7 @@ msgstr "Otra tarjeta Tokenring"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print status
 #: src/netconfpkg/NCDevice.py:61
+#, python-format
 msgid ""
 "May I change\n"
 "%s\n"
@@ -1328,12 +1338,14 @@ msgstr "Tipo de dispositivo sin especificar"
 
 #. ok, we have to inherit all other data from our master
 #: src/netconfpkg/NCDevice.py:229
+#, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, el dispositivo no está especificado o el alias no es un número"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
 #: src/netconfpkg/NCDevice.py:271
+#, python-format
 msgid "Static routes file %s is invalid"
 msgstr "El fichero de rutas estático para %s no es válido"
 
@@ -1363,6 +1375,7 @@ msgstr "El fichero de rutas estático para %s no es válido"
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
 #. print self.data[i]
 #: src/netconfpkg/NCDeviceList.py:69
+#, python-format
 msgid "Error loading Device %s!\n"
 msgstr "Se ha producido un error al cargar el dispositivo %s\n"
 
@@ -1390,6 +1403,7 @@ msgstr "Se ha producido un error al cargar el dispositivo %s\n"
 #. traverse all devices in the list
 #.
 #: src/netconfpkg/NCDeviceList.py:149
+#, python-format
 msgid "Error opening/writing %s: %s!"
 msgstr "Error al abrir/escribir %s: %s"
 
@@ -1417,9 +1431,7 @@ msgstr "Error al abrir/escribir %s: %s"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCDialup.py:38
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
-#: src/netconfpkg/gui/dialupconfig.glade.h:63
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:63
 msgid "auto"
 msgstr "auto"
 
@@ -1678,11 +1690,60 @@ msgstr "Vietnam"
 msgid "Yugoslavia"
 msgstr "Yugoslavia"
 
+#. print "self." + selfkey + " = " + conf[confkey]
+#. print "self." + selfkey + " = " + conf[confkey]
+#. print "self." + selfkey + " = " + conf[confkey]
+#.
+#. Read Modem Init strings
+#.
+#.
+#. Workaround for backporting rp3-config stuff
+#.
+#. print "Skipping " + sect
+#. print "Found " + sect
+#.
+#. if there is no password yet, try to get it from pap/chap
+#.
+#. set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
+#. get section name
+#. Correct PAPNAME in ifcfg-ppp[0-9]
+#.
+#. Write the wvdial section
+#.
+#.
+#. Write Modem Init strings
+#.
+#. else: del conf[sectname]['Init3']
+#. # Copyright (C) 2001, 2002 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. ok, take fallback
+#. delete *every* instance...
+#. workaround for broken regexp implementation
+#. print "1) Deleting %s" % self.line
+#. print "2) Deleting %s" % self.line
+#. print "del self.vars[%s]" % varname
+#. skip over bad/malformed lines
+#. Some of the first words are used as dict keys server side
+#. so this just helps make that easier
 #.
 #. Read in actual system state
 #.
 #. No Alias devices
-#: src/netconfpkg/NCHardwareList.py:185
+#: src/netconfpkg/NCHardwareList.py:153
+#, python-format
 msgid ""
 "%s has an alias to module %s in modules.conf,\n"
 "instead of currently loaded module %s!"
@@ -1717,6 +1778,7 @@ msgstr ""
 #. 60016
 #. Keep that test for later versions
 #: src/netconfpkg/NCProfileList.py:134
+#, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "El dispositivo %s usa el mismo dispositivo hardware \"%s\" como %s!\n"
 
@@ -1793,10 +1855,12 @@ msgstr "Software (XON/XOFF)"
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
 #: src/netconfpkg/NC_functions.py:337
+#, python-format
 msgid "Error removing %s: %s!"
 msgstr "Error al eliminar %s: %s"
 
 #: src/netconfpkg/NC_functions.py:346 src/netconfpkg/NC_functions.py:355
+#, python-format
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -1807,6 +1871,7 @@ msgstr ""
 "%s: %s!"
 
 #: src/netconfpkg/NC_functions.py:364
+#, python-format
 msgid ""
 "Error renaming\n"
 "%s\n"
@@ -1911,18 +1976,22 @@ msgstr "Desactivar"
 #. remove inactive isdn/ppp device
 #. check real ppp device
 #: src/netconfpkg/Control.py:173
+#, python-format
 msgid "Cannot activate network device %s"
 msgstr "No puede activar el dispositivo de red %s"
 
 #: src/netconfpkg/Control.py:175
+#, python-format
 msgid "Cannot deactivate network device %s"
 msgstr "No puede desactivar el dispositivo de red %s"
 
 #: src/netconfpkg/Control.py:177
+#, python-format
 msgid "Cannot show status of network device %s"
 msgstr "No puede mostrar el estado del dispositivo de red %s"
 
 #: src/netconfpkg/Control.py:179
+#, python-format
 msgid "Cannot monitor status of network device %s"
 msgstr "No puede monitorizar el estado del dispositivo de red %s"
 
@@ -1952,20 +2021,20 @@ msgid "Exit"
 msgstr "Salir"
 
 # ../src/glade-strings.c:584
-#: neat.desktop.in.h:3 src/maindialog.glade.h:17 src/netconf-tui.py:42
+#: src/netconf-tui.py:42 neat.desktop.in.h:3 src/maindialog.glade.h:17
 msgid "Network Configuration"
 msgstr "Configuración de red"
 
 # ../src/glade-strings.c:577
-#: src/maindialog.glade.h:16 src/netconf-tui.py:155 src/netconf-tui.py:262
-#: src/netconf-tui.py:365
+#: src/netconf-tui.py:155 src/netconf-tui.py:262 src/netconf-tui.py:365
+#: src/maindialog.glade.h:16
 msgid "Name"
 msgstr "Nombre"
 
 # src/glade-strings.c:339
 # ../src/glade-strings.c:294
-#: src/maindialog.glade.h:9 src/neat-control.glade.h:1 src/netconf-tui.py:156
-#: src/netconf-tui.py:263 src/netconf-tui.py:366
+#: src/netconf-tui.py:156 src/netconf-tui.py:263 src/netconf-tui.py:366
+#: src/maindialog.glade.h:9 src/neat-control.glade.h:1
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -2082,7 +2151,9 @@ msgstr "Configuración de la conexión inalámbrica"
 msgid "Network"
 msgstr ""
 
-#: src/maindialog.glade.h:1 src/netconfpkg/gui/editadress.glade.h:1
+#: src/maindialog.glade.h:1
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
@@ -2193,8 +2264,8 @@ msgid ""
 "Multiple logical devices can be associated with a single piece of hardware."
 msgstr ""
 "Seguramente querrá configurar dispositivos de red asociados con hardware "
-"físico. Los dispositivos lógicos múltiples pueden ser asociados a una "
-"pieza de hardware."
+"físico. Los dispositivos lógicos múltiples pueden ser asociados a una pieza "
+"de hardware."
 
 #: src/maindialog.glade.h:28
 msgid ""
@@ -2270,7 +2341,7 @@ msgid "Info"
 msgstr "Info"
 
 # ../src/glade-strings.c:584
-#: neat-control.desktop.in.h:2 src/neat-control.glade.h:3
+#: src/neat-control.glade.h:3 neat-control.desktop.in.h:2
 msgid "Network Device Control"
 msgstr "Control del dispositivo de red"
 
@@ -2537,7 +2608,7 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth0"
 msgstr "eth0"
 
@@ -2545,7 +2616,7 @@ msgstr "eth0"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
+#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth1"
 msgstr "eth1"
 
@@ -2553,7 +2624,7 @@ msgstr "eth1"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
+#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth2"
 msgstr "eth2"
 
@@ -2561,7 +2632,7 @@ msgstr "eth2"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth3"
 msgstr "eth3"
 
@@ -2569,7 +2640,7 @@ msgstr "eth3"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:29
+#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth4"
 msgstr "eth4"
 
@@ -2822,7 +2893,7 @@ msgstr "_MEM:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:30
+#: src/netconfpkg/gui/wirelessconfig.glade.h:28
 msgid "eth5"
 msgstr "eth5"
 
@@ -2838,7 +2909,7 @@ msgstr "eth7"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
 msgid "Configure Network Settings"
 msgstr "Configuración de las configuraciones de red"
 
@@ -2859,13 +2930,13 @@ msgstr "Tarjeta Ethernet"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
 msgid "MTU:"
 msgstr "MTU:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 #: src/netconfpkg/gui/ctcconfig.glade.h:6
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
@@ -2890,7 +2961,7 @@ msgstr "Seleccionar la tarjeta Ethernet que desee configurar:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:8
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Hostname (optional):"
 msgstr "Nombre del _Host (opcional):"
@@ -3137,91 +3208,104 @@ msgstr "Seleccione la tarjeta Tokenring que desee configurar:"
 msgid "Tokenring card"
 msgstr "Tarjeta Tokenring"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
 #: src/netconfpkg/gui/wirelessconfig.glade.h:2
 msgid "11M"
 msgstr "11M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
 #: src/netconfpkg/gui/wirelessconfig.glade.h:3
 msgid "1M"
 msgstr "1M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/wirelessconfig.glade.h:4
 msgid "2M"
 msgstr "2M"
 
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/wirelessconfig.glade.h:5
 msgid "5.5M"
 msgstr "5.5M"
 
 # ../src/glade-strings.c:668
 # ../src/glade-strings.c:781
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Configure Wireless Connection"
 msgstr "Configuración de la conexión inalámbrica"
 
 # src/glade-strings.c:354
 # ../src/glade-strings.c:222
 # ../src/glade-strings.c:256
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "Create Wireless Device"
 msgstr "Crear un dispositivo inalámbrico"
+
+# src/glade-strings.c:369
+# ../src/glade-strings.c:732
+# ../src/glade-strings.c:872
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Network Name (SSID):"
+msgstr "Nombre de la red (SSID):"
 
 # src/glade-strings.c:354
 # ../src/glade-strings.c:222
 # ../src/glade-strings.c:256
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Select Wireless Device"
 msgstr "Seleccionar un dispositivo inalámbrico"
 
 # ../src/netconf.py:346 ../src/netconf.py:357
 # ../src/netconf.py:350 ../src/netconf.py:361
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "Select the Wireless card you want to configure:"
 msgstr "Seleccionar la tarjeta inalámbrica que desee configurar:"
 
 # ../src/glade-strings.c:668
 # ../src/glade-strings.c:781
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
 msgid "Wireless card"
 msgstr "Conexión inalámbrica"
+
+# ../src/glade-strings.c:856
+# ../src/glade-strings.c:1022
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Auto"
+msgstr "_Auto"
 
 # src/glade-strings.c:256
 # ../src/glade-strings.c:707
 # ../src/glade-strings.c:842
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Channel:"
 msgstr "_Canal:"
 
-# src/glade-strings.c:369
-# ../src/glade-strings.c:732
-# ../src/glade-strings.c:872
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-msgid "_ESSID (Network ID):"
-msgstr "_ESSID (ID de la red):"
-
 # ../src/glade-strings.c:771
 # ../src/glade-strings.c:917
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 msgid "_Key:"
 msgstr "_Clave:"
 
 # ../src/glade-strings.c:791
 # ../src/glade-strings.c:939
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Mode:"
 msgstr "_Modo:"
 
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
+#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid "_Specified:"
+msgstr "_Específico:"
+
 # ../src/glade-strings.c:832
 # ../src/glade-strings.c:997
-#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
+#: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "_Transmit Rate:"
 msgstr "Ratio de _transmisión:"
 
@@ -3235,7 +3319,7 @@ msgstr "Escoger un proveedor"
 #: src/netconfpkg/gui/dslconfig.glade.h:2
 #: src/netconfpkg/gui/ethernetconfig.glade.h:1
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: src/netconfpkg/gui/wirelessconfig.glade.h:6
 msgid "Allow all _users to enable and disable the device"
 msgstr ""
 "Permitir que todos los _usuarios habiliten y deshabiliten el dispositivo"
@@ -3253,7 +3337,7 @@ msgstr "Configuración de CIPE"
 #: src/netconfpkg/gui/dslconfig.glade.h:13
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "General"
 msgstr "General"
 
@@ -3277,7 +3361,7 @@ msgstr "Configuraciones de Túnel"
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 msgid "_Activate device when computer starts"
 msgstr "_Activar el dispositivo cuando se inicia el ordenador"
 
@@ -3287,7 +3371,7 @@ msgstr "_Activar el dispositivo cuando se inicia el ordenador"
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Nickname: "
 msgstr "_Sobrenombre:"
 
@@ -3299,7 +3383,7 @@ msgid "CTC Configuration"
 msgstr "Configuración CTC"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3314,7 +3398,7 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:14
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 msgid "Hardware Device"
 msgstr "Dispositivo Hardware"
 
@@ -3331,7 +3415,7 @@ msgstr "Protocolos"
 # ../src/netconfpkg/DialupDruid.py:106
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Hardware Device:"
 msgstr "Dispositivo de _Hardware:"
 
@@ -3381,8 +3465,7 @@ msgstr "Configuración de la rellamada"
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr ""
-"Pulse aquí si desea escoger un nuevo proveedor desde la base de datos de "
-"ISP."
+"Pulse aquí si desea escoger un nuevo proveedor desde la base de datos de ISP."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Compression"
@@ -3592,8 +3675,8 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:9
 msgid "Enter the idle time in seconds after which the link should be dropped."
 msgstr ""
-"Introduzca el tiempo inactivo en segundos después de lo que el link "
-"debería desaparecer."
+"Introduzca el tiempo inactivo en segundos después de lo que el link debería "
+"desaparecer."
 
 # ../src/glade-strings.c:577
 #: src/netconfpkg/gui/dslconfig.glade.h:20
@@ -3913,8 +3996,8 @@ msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
 msgstr ""
-"Toda conexión necesita ser asociada a un dispositivo físico de los que "
-"puede seleccionar a continuación."
+"Toda conexión necesita ser asociada a un dispositivo físico de los que puede "
+"seleccionar a continuación."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid "Easy"
@@ -3984,8 +4067,7 @@ msgstr "Nivel de seguridad"
 #: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Select the services you want to provide through this device"
 msgstr ""
-"Seleccione los servicios que desea proporcionar a través de este "
-"dispositivo "
+"Seleccione los servicios que desea proporcionar a través de este dispositivo "
 
 # src/glade-strings.c:339
 # ../src/glade-strings.c:294
@@ -4118,42 +4200,17 @@ msgstr "_Prueba para la Dirección"
 msgid "_Use Hardware Address"
 msgstr "_Usar la dirección del Hardware"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:6
-msgid "Ad-Hoc"
-msgstr "Ad-Hoc"
-
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
-msgid "Managed"
-msgstr "Gestionado"
-
-# src/glade-strings.c:369
-# ../src/glade-strings.c:732
-# ../src/glade-strings.c:872
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
-msgid "Network Name (SSID):"
-msgstr "Nombre de la red (SSID):"
-
 # ../src/glade-strings.c:668
 # ../src/glade-strings.c:781
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "Wireless Device Configuration"
 msgstr "Configuración del dispositivo inalámbrico"
 
 # ../src/glade-strings.c:668
 # ../src/glade-strings.c:781
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "Wireless Settings"
 msgstr "Configuraciones inalámbricas"
-
-# ../src/glade-strings.c:856
-# ../src/glade-strings.c:1022
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
-msgid "_Auto"
-msgstr "_Auto"
-
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
-msgid "_Specified:"
-msgstr "_Específico:"
 
 #: neat-control.desktop.in.h:1
 msgid "Control and monitor network devices"
@@ -4173,6 +4230,18 @@ msgstr "Configuración de la conexión DSL"
 msgid "Internet Configuration Wizard"
 msgstr "Wizard de configuración de internet"
 
+# src/glade-strings.c:369
+# ../src/glade-strings.c:732
+# ../src/glade-strings.c:872
+#~ msgid "_ESSID (Network ID):"
+#~ msgstr "_ESSID (ID de la red):"
+
+#~ msgid "Ad-Hoc"
+#~ msgstr "Ad-Hoc"
+
+#~ msgid "Managed"
+#~ msgstr "Gestionado"
+
 # ../src/glade-strings.c:584
 #~ msgid "Red Hat's Network Configuration Tool"
 #~ msgstr "Herramienta de configuración de red de Red Hat"
@@ -4181,7 +4250,8 @@ msgstr "Wizard de configuración de internet"
 #~ msgstr "Red de control de Red Hat"
 
 #~ msgid ""
-#~ "redhat-control-network provides an easy-to-use interface for configuring,\n"
+#~ "redhat-control-network provides an easy-to-use interface for "
+#~ "configuring,\n"
 #~ "activating and monitoring any type of network configuration.\n"
 #~ "\n"
 #~ "The following network interfaces are configured on the system."
