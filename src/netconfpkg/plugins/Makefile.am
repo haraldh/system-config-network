@@ -21,15 +21,10 @@ PYTHON_FILES = \
 EXTRA_DIST = $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg/plugins
-netconfpkg_DATA = $(PYTHON_FILES) 
+netconfpkg_PYTHON = $(PYTHON_FILES) 
 
 clean:
 	rm -f *.pyo *.pyc
 	rm -f *.so
 	rm -f *~
 
-install-data-local: install-netconfpkgDATA
-	$(top_srcdir)/py-compile $(DESTDIR)$(netconfpkgdir)/*.py
-
-uninstall-local:
-	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?

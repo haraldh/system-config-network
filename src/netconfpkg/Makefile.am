@@ -35,7 +35,8 @@ PYTHON_FILES = \
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg
-netconfpkg_DATA = $(PYTHON_FILES) $(IDL_FILES)
+netconfpkg_DATA = $(IDL_FILES)
+netconfpkg_PYTHON = $(PYTHON_FILES)
 
 execdir = $(sbindir)
 
@@ -43,9 +44,3 @@ clean:
 	rm -f *.pyo *.pyc
 	rm -f *.so
 	rm -f *~
-
-install-data-local: install-netconfpkgDATA
-	$(top_srcdir)/py-compile $(DESTDIR)$(netconfpkgdir)/*.py
-
-uninstall-local:
-	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?

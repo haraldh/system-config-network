@@ -90,15 +90,11 @@ PYTHON_FILES = \
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg/gui
-netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES)
+netconfpkg_DATA = $(GLADE_FILES)
+netconfpkg_PYTHON = $(PYTHON_FILES)
 
 execdir = $(sbindir)
 
 clean:
 	rm -f *.pyo *.pyc *~ *\#
 
-install-data-local: install-netconfpkgDATA
-	$(top_srcdir)/py-compile $(DESTDIR)$(netconfpkgdir)/*.py
-
-uninstall-local:
-	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?
