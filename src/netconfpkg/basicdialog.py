@@ -82,7 +82,7 @@ class basicDialog:
 
         notebook = self.xml.get_widget("basicNotebook")
 
-        self.xml.get_widget('deviceTypeComboBox').set_popdown_strings(deviceTypes)
+        self.xml.get_widget('deviceTypeComboBox').set_popdown_strings(['Ethernet', 'Modem', 'ISDN', 'xDSL'])
         self.hydrate()
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
@@ -130,7 +130,7 @@ class basicDialog:
             self.device.createStaticRoutes()
             for route in self.device.StaticRoutes:
                 clist.append([route.Address, route.Netmask, route.Gateway])
-                
+
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
