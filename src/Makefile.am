@@ -15,6 +15,7 @@ all-local:
 	rm -f redhat-config-network
 	rm -f redhat-config-network-cmd
 	rm -f redhat-config-network-druid
+	rm -f  redhat-control-network
 	ln -s netconf.py redhat-config-network
 	ln -s netconf.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
