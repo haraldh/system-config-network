@@ -28,6 +28,7 @@ GLADE_FILES = \
 	TokenRingInterfaceDruid.glade \
 	tokenringhardware.glade \
 	wirelessconfig.glade \
+	WirelessInterfaceDruid.glade \
 	ctcconfig.glade
 
 PYTHON_FILES = \
@@ -67,6 +68,7 @@ PYTHON_FILES = \
 	TokenRingInterface.py \
 	tokenringhardware.py \
 	wirelessconfig.py \
+	WirelessInterface.py \
 	ctcconfig.py
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
