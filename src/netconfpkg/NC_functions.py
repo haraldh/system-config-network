@@ -75,8 +75,10 @@ deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
 		   '^lo$' : LO,
 		   '^ctc[0-9]+(:[0-9]+)?$' : CTC,
 		   '^iucv[0-9]+(:[0-9]+)?$' : IUCV,
-		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
 		   }
+# Removed for now, until we have a config dialog for infrared
+#		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+
 
 CRTSCTS = "CRTSCTS"
 XONXOFF = "XONXOFF"
