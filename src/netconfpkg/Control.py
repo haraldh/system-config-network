@@ -104,19 +104,24 @@ class Interface:
         if getDeviceType(device) == ISDN:
             command = '/usr/sbin/isdnup'
 
-        return gtkExecWithCaptureStatus(command, [command, device])
+        return gtkExecWithCaptureStatus(command, [command, device],
+                                        catchfd = (1,2))
 
     def deactivate(self, device):
-        try:
-            return(os.system('/sbin/ifdown %s >& /dev/null' %(device)))
-        except:
-            return -1
+        command = '/sbin/ifdown'
+        
+        return gtkExecWithCaptureStatus(command, [command, device],
+                                        catchfd = (1,2))
 
     def exist(self, device):
         return os.access(NETWORKDIR + NETWORKPREFIX + '-' + device)
         
     def isdndial(self, device):
-        os.system(isdnctrl + ' dial %s >& /dev/null' %(device))
+        command = isdnctrl
+        
+        return gtkExecWithCaptureStatus(command, [command, 'dial',
+                                                  device],
+                                        catchfd = (1,2))
 
     def status(self, device):
         pass

@@ -24,12 +24,25 @@ from gtk import TRUE
 from gtk import FALSE
 
 from netconfpkg.NC_functions import *
+from netconfpkg import NC_functions
 
 gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
 GLADEPATH='netconfpkg/gui/'
 
 DEVPIXMAPS = {}
+
+NC_functions.RESPONSE_NONE = gtk.RESPONSE_NONE
+NC_functions.RESPONSE_REJECT = gtk.RESPONSE_REJECT
+NC_functions.RESPONSE_ACCEPT = gtk.RESPONSE_ACCEPT
+NC_functions.RESPONSE_DELETE_EVENT = gtk.RESPONSE_DELETE_EVENT
+NC_functions.RESPONSE_OK = gtk.RESPONSE_OK
+NC_functions.RESPONSE_CANCEL = gtk.RESPONSE_CANCEL
+NC_functions.RESPONSE_CLOSE = gtk.RESPONSE_CLOSE
+NC_functions.RESPONSE_YES = gtk.RESPONSE_YES
+NC_functions.RESPONSE_NO = gtk.RESPONSE_NO
+NC_functions.RESPONSE_APPLY = gtk.RESPONSE_APPLY
+NC_functions.RESPONSE_HELP = gtk.RESPONSE_HELP
 
 def get_device_icon_mask(devtype, dialog):
     if not DEVPIXMAPS.has_key(ETHERNET):

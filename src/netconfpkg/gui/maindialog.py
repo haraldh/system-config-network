@@ -287,17 +287,23 @@ class mainDialog:
         
         self.appBar.push(_("Saving Configuration..."))
         self.appBar.refresh()
-        self.saveHardware()
-        self.saveDevices()
-        self.saveProfiles()
-        self.appBar.pop()
-        self.checkApply()        
+        try:
+            self.saveHardware()
+            self.saveDevices()
+            self.saveProfiles()
+            self.appBar.pop()
+            self.checkApply()     
+	except (IOError, OSError, EnvironmentError), errstr:
+            generic_error_dialog (_("Error saving Configuration!\n%s") \
+                                  % (str(errstr)))
+            self.appBar.pop()
 
-        generic_info_dialog (_("Changes are saved.\n"
-                               "You may want to restart\n"
-                               "the network and network services\n"
-                               "or restart the computer."),
-                             self.dialog)
+        else:
+            generic_info_dialog (_("Changes are saved.\n"
+                                   "You may want to restart\n"
+                                   "the network and network services\n"
+                                   "or restart the computer."),
+                                 self.dialog)
         return 0
 
     def saveDevices(self):
@@ -404,6 +410,7 @@ class mainDialog:
         self.checkApply()
 
     def getActiveProfile(self):
+        #print "getActiveProfile == %s " % self.active_profile.ProfileName
         return self.active_profile
 
     def hydrateProfiles(self):
@@ -422,9 +429,11 @@ class mainDialog:
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
             self.active_profile_name = name
+            break
         else:
             prof = profilelist[0]
 
+        #print "hydrateProfiles(%s)" % self.active_profile_name
         self.active_profile = prof
         
         if prof.DNS.Hostname:
@@ -469,8 +478,6 @@ class mainDialog:
         for child in clist[5:]:
             omenu.remove(child)
             
-        history = 0
-        i = 0
         group = None
         for prof in profilelist:
             name = prof.ProfileName
@@ -481,15 +488,13 @@ class mainDialog:
             if not group:
                 group = menu_item
             menu_item.show ()
+            if prof.Active:
+                menu_item.set_active(true)
             menu_item.connect ("activate",
                                self.on_profileMenuItem_activated,
                                prof.ProfileName)
             omenu.append (menu_item)
-            if prof.ProfileName == self.getActiveProfile().ProfileName:
-                history = i
-            i = i+1
 	#omenu.set_history (history)
-        omenu.get_children()[history+5].set_active(true)
         self.no_profileentry_update = false
         self.appBar.pop()
         self.checkApply()
@@ -762,7 +767,8 @@ class mainDialog:
         dlg.destroy()
         
         if status != 0:
-            generic_longinfo_dialog(_('Cannot activate network device %s\n') %\
+            generic_longinfo_dialog(_('Cannot activate '
+                                      'network device %s!\n') % \
                                     (device), txt, self.dialog)
 
         if NetworkDevice().find(device):
@@ -777,13 +783,32 @@ class mainDialog:
         
         device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
         
-        if device:
-            intf = Interface()
-            ret = intf.deactivate(device)
-            if not ret:
-                self.updateDevicelist()
-            else:
-                devErrorDialog(device, DEACTIVATE, self.dialog)
+        if not device:
+            return
+        
+        timeout_remove(self.tag)
+
+        intf = Interface()
+
+        dlg = gtk.Dialog(_('Network device deactivating...'))
+        dlg.set_border_width(10)
+        dlg.vbox.add(gtk.Label(_('Deactivating network device %s, '
+                                 'please wait...') %(device)))
+        dlg.vbox.show()
+        dlg.set_transient_for(self.dialog)        
+        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dlg.set_modal(TRUE)
+        dlg.show_all()
+        (status, txt) = intf.deactivate(device)                
+        dlg.destroy()
+        
+        if status != 0:
+            generic_longinfo_dialog(_('Cannot deactivate network device '
+                                      '%s!\n') % (device), txt, self.dialog)
+
+        self.updateDevicelist()
+
+        self.tag = timeout_add(4000, self.updateDevicelist)
 
     def on_deviceMonitorButton_clicked(self, button):
         generic_error_dialog(_("To be rewritten!"), self.dialog)
@@ -800,8 +825,10 @@ class mainDialog:
         entry.emit_stop_by_name('insert_text')
 
     def on_profileMenuItem_activated(self, menu_item, profile):
-        if not menu_item or menu_item.active:
+        if not menu_item or not menu_item.active:
             return
+
+        #print "on_profileMenuItem_activated(%s)" % profile
         
         profilelist = getProfileList()
         devicelist = getDeviceList()
@@ -809,10 +836,7 @@ class mainDialog:
 
         dosave = false
 
-        for prof in profilelist:
-            if prof.Active: break
-        else:
-            prof = None
+        prof = self.active_profile
         
         if devicelist.modified() or hardwarelist.modified() or \
                (prof and prof.modified()):
@@ -834,11 +858,8 @@ class mainDialog:
             self.xml.get_widget ('profileDeleteMenu').set_sensitive (TRUE)
             
         if not self.no_profileentry_update:
-            for prof in profilelist:
-                if prof.ProfileName == profile:
-                    prof.Active = true
-                else: prof.Active = false
-                prof.commit()
+            profilelist.switchToProfile(profile, dochange = false)
+            self.initialized = true
             self.hydrate()
 
         if dosave:
@@ -978,66 +999,37 @@ class mainDialog:
                  self.checkApply()
                  
     def on_hostnameEntry_changed(self, entry):
-        profilelist = getProfileList()
-
-        for prof in profilelist:
-            if prof.Active == true:
-                prof.DNS.Hostname = entry.get_text()
-                prof.DNS.commit()
-                break
+        self.active_profile.DNS.Hostname = entry.get_text()
+        self.active_profile.DNS.commit()
         self.checkApply()
         
     def on_domainEntry_changed(self, entry):
-        profilelist = getProfileList()
-
-        for prof in profilelist:
-            if prof.Active == true:
-                prof.DNS.Domainname = entry.get_text()
-                prof.DNS.commit()
-                break
+        self.active_profile.DNS.Domainname = entry.get_text()
+        self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_primaryDnsEntry_changed(self, entry):
-        profilelist = getProfileList()
-
-        for prof in profilelist:
-            if prof.Active == true:
-                prof.DNS.PrimaryDNS = entry.get_text()
-                prof.DNS.commit()
-                break
+        self.active_profile.DNS.PrimaryDNS = entry.get_text()
+        self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_secondaryDnsEntry_changed(self, entry):
-        profilelist = getProfileList()
-
-        for prof in profilelist:
-            if prof.Active == true:
-                prof.DNS.SecondaryDNS = entry.get_text()
-                prof.DNS.commit()
-                break
+        self.active_profile.DNS.SecondaryDNS = entry.get_text()
+        self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_tertiaryDnsEntry_changed(self, entry):
-        profilelist = getProfileList()
-
-        for prof in profilelist:
-            if prof.Active == true:
-                prof.DNS.TertiaryDNS = entry.get_text()
-                prof.DNS.commit()
-                break
+        self.active_profile.DNS.TertiaryDNS = entry.get_text()
+        self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_searchDnsEntry_changed(self, entry):
-        profilelist = getProfileList()
-
-        for prof in profilelist:
-            if prof.Active == true:
-                s = entry.get_text()
-                prof.DNS.SearchList = prof.DNS.SearchList[:0]
-                for sp in string.split(s):
-                    prof.DNS.SearchList.append(sp)
-                prof.DNS.commit()
-                break
+        s = entry.get_text()
+        self.active_profile.DNS.SearchList = self.active_profile.\
+                                             DNS.SearchList[:0]
+        for sp in string.split(s):
+            self.active_profile.DNS.SearchList.append(sp)
+        self.active_profile.DNS.commit()
         self.checkApply()
             
     def on_hostsAddButton_clicked(self, *args):
@@ -1058,7 +1050,7 @@ class mainDialog:
         if button != gtk.RESPONSE_OK and button != 0:
             return
         
-        i = hostslist.addHost()
+        i=  hostslist.addHost()
         hostslist[i].apply(host)
         hostslist[i].commit()
         self.hydrateProfiles()
@@ -1156,17 +1148,14 @@ class mainDialog:
                                       self.dialog)
                 return 1
 
-        i = profilelist.addProfile()
+        i = profilelist.addProfile()        
         prof = profilelist[i]
         prof.apply(profilelist[0])
         prof.ProfileName = text
-        for p in profilelist:
-            p.Active = false
-            
-        prof.Active = true
-
         prof.commit()
-        
+
+        profilelist.switchToProfile(prof, dochange = false)
+
         #self.xml.get_widget("profileList").clear()
         self.initialized = false
         self.hydrateProfiles()
@@ -1271,7 +1260,7 @@ class mainDialog:
 
         del profilelist[profilelist.index(self.getActiveProfile())]
         profilelist.commit()
-        profilelist[0].Active = true
+        profilelist.switchToProfile('default')
         self.initialized = None
         #clist.clear()
         self.hydrate()

@@ -259,14 +259,19 @@ def getNewDialupDevice(devicelist, dev):
 	    return device+str(count)
 	
 def updateNetworkScripts():
-    if not os.path.isdir(SYSCONFDEVICEDIR):
-        os.mkdir(SYSCONFDEVICEDIR)
+    try:
+        if not os.path.isdir(SYSCONFDEVICEDIR):
+            os.mkdir(SYSCONFDEVICEDIR)
 
-    if not os.path.isdir(SYSCONFPROFILEDIR):
-        os.mkdir(SYSCONFPROFILEDIR)
+        if not os.path.isdir(SYSCONFPROFILEDIR):
+            os.mkdir(SYSCONFPROFILEDIR)
 
-    if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
-        os.mkdir(SYSCONFPROFILEDIR+'/default/')
+        if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
+            os.mkdir(SYSCONFPROFILEDIR+'/default/')
+    except (IOError, OSError), errstr :
+        generic_error_dialog (_("Error creating directory!\n%s") \
+                              % (str(errstr)))
+
 
     devlist = os.listdir(OLDSYSCONFDEVICEDIR)
     for dev in devlist:
@@ -281,42 +286,21 @@ def updateNetworkScripts():
             #print dev+" has unknown device type, skipping it."
             continue
 
-        print "Copying "+dev+" to devices and putting it into the default profile."
+        print _("Copying %s to devices and putting "
+                "it into the default profile.") % dev
 
 	unlink(SYSCONFPROFILEDIR+'/default/'+dev)
 
-        try:
-            shutil.copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
-        except:
-            print "An error occured during the conversion of device "+dev+", skipping."
-            (type, value, tb) = sys.exc_info()
-            list = traceback.format_exception (type, value, tb)
-            print list
-            continue
-        else:
-	    link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)
-
-    
+        copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
+        link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)    
 
     if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
-       print "Copying /etc/hosts to default profile."
-       try:
-           shutil.copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
-           shutil.copymode('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
-       except:
-           print "An error occured during moving the /etc/hosts file."
+       print _("Copying /etc/hosts to default profile.")
+       copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
 
-
-    try:   
-        if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
-            print "Copying /etc/resolv.conf to default profile."
-            try:
-                shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
-                shutil.copymode('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
-            except:
-                print "An error occured during moving the /etc/resolv.conf file."
-    except:
-        print "An error occured during copying the /etc/resolv.conf file."
+    if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
+        print "Copying /etc/resolv.conf to default profile."
+        copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
 
 ModemList = None
 def getModemList():
@@ -355,6 +339,8 @@ def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
 		return generic_error_dialog_func(message, parent_dialog,
 						 dialog_type, widget,
 						 page, broken_widget)
+        else:
+            print message
 	return 0
 
 generic_info_dialog_func = None
@@ -365,6 +351,8 @@ def generic_info_dialog (message, parent_dialog = None, dialog_type="info",
 		return generic_info_dialog_func(message, parent_dialog,
 						 dialog_type, widget,
 						 page, broken_widget)
+        else:
+            print message
 	return 0
 
 generic_longinfo_dialog_func = None
@@ -377,6 +365,8 @@ def generic_longinfo_dialog (message, long_message,
 						    parent_dialog,
 						    dialog_type, widget,
 						    page, broken_widget)
+        else:
+            print message
 	return 0
 
 generic_yesnocancel_dialog_func = None
@@ -388,6 +378,8 @@ def generic_yesnocancel_dialog (message, parent_dialog = None,
 		return generic_yesnocancel_dialog_func(message, parent_dialog,
 						       dialog_type, widget,
 						       page, broken_widget)
+        else:
+            print message
 	return 0
 
 generic_yesno_dialog_func = None
@@ -399,6 +391,8 @@ def generic_yesno_dialog (message, parent_dialog = None,
 		return generic_yesno_dialog_func(message, parent_dialog,
 						 dialog_type, widget,
 						 page, broken_widget)
+        else:
+            print message
 	return 0
 
 def set_generic_error_dialog_func(func):
@@ -429,7 +423,7 @@ def unlink(file):
 		os.unlink(file)
                 #print "Removed %s" % file
 	except OSError, errstr:
-                generic_error_dialog (_("Error removing %s: %s!") \
+                generic_error_dialog (_("Error removing\n%s:\n%s!") \
 				      % (file, str(errstr)))
 
 def link(src, dst):
@@ -438,7 +432,17 @@ def link(src, dst):
 	try:
 		os.link(src, dst)
 	except OSError, errstr:
-		generic_error_dialog (_("Error linking %s\nto\n%s: %s!") 
+		generic_error_dialog (_("Error linking %s\nto\n%s:\n%s!") 
+				      % (src, dst, str(errstr)))
+	
+def copy(src, dst):
+	if not os.path.isfile(src):
+		return
+	try:
+		shutil.copy(src, dst)
+                shutil.copymode(src, dst)
+	except (IOError, OSError), errstr:
+		generic_error_dialog (_("Error copying \n%s\nto %s:\n%s!") 
 				      % (src, dst, str(errstr)))
 	
 def symlink(src, dst):
@@ -447,7 +451,7 @@ def symlink(src, dst):
 	try:
 		os.symlink(src, dst)
 	except OSError, errstr:
-		generic_error_dialog (_("Error linking %s\nto\n%s: %s!") 
+		generic_error_dialog (_("Error linking \n%s\nto %s:\n%s!") 
 				      % (src, dst, str(errstr)))
 
 def rename(src, dst):
@@ -455,8 +459,8 @@ def rename(src, dst):
 		return
         try:
 		os.rename(src, dst)
-	except EnvironmentError, errstr:
-		generic_error_dialog (_("Error renaming\n%s\nto\n%s: %s!") \
+	except (IOError, OSError, EnvironmentError), errstr:
+		generic_error_dialog (_("Error renaming \n%s\nto %s:\n%s!") \
 				      % (src, dst, str(errstr)))
 	
 def get_filepath(file):

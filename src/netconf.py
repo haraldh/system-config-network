@@ -74,11 +74,14 @@ if __name__ == '__main__':
         import netconfpkg.gui.GUI_functions
         from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
         from netconfpkg.gui.maindialog import mainDialog
+        from netconfpkg.NC_functions import updateNetworkScripts
 
         netconfpkg.gui.GUI_functions.PROGNAME = PROGNAME
 
         # make ctrl-C work
         signal.signal (signal.SIGINT, signal.SIG_DFL)
+
+        updateNetworkScripts()
 
         progname = os.path.basename(sys.argv[0])
 

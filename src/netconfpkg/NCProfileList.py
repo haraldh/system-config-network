@@ -27,6 +27,7 @@ import NCHardwareList
 
 from NC_functions import *
 from netconfpkg import ProfileList_base
+from netconfpkg import Profile
 from netconfpkg import Host
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -381,32 +382,33 @@ class ProfileList(ProfileList_base):
                 if deviceid in prof.ActiveDevices:
                     del prof.ActiveDevices[prof.ActiveDevices.index(deviceid)]
 
-    def switchToProfile(self, val):
-        devicelist = NCDeviceList.getDeviceList()
-        hardwarelist = NCHardwareList.getHardwareList()
-        profilelist = getProfileList()
-
+    def switchToProfile(self, val, dochange = true):
         found = false
-        for prof in profilelist:
-            if prof.ProfileName == val:
-                found = true
-                break
+        aprof = None
+        for prof in self:
+            if (isinstance(val, str) and prof.ProfileName == val) or \
+                   (isinstance(val, Profile) and prof == val) :
+                    found = true
+                    break
+        else:
+            return None
 
-        if found == false:
-            print "No Profile with name "+val+" could be found."
-            return
-
-        for prof in profilelist:
-            if prof.ProfileName == val:
+        modl = self.modified()
+        for prof in self:
+            mod = prof.modified()
+            if (isinstance(val, str) and prof.ProfileName == val) or \
+                   (isinstance(val, Profile) and prof == val) :
                 prof.Active = true
+                aprof = prof
             else:
                 prof.Active = false
+            if not dochange:
+                prof.setChanged(mod)
 
-        print "Switching to Profile "+val
-
-        devicelist.save()
-        hardwarelist.save()
-        profilelist.save()
+        if not dochange:
+            self.setChanged(mod)
+        
+        return prof
 
 
 PFList = None

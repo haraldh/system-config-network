@@ -124,7 +124,10 @@ if __name__ == '__main__':
                 
             if opt == '-p' or opt == '--profile':
                 profilelist = getProfileList()
-                profilelist.switchToProfile(val)
+                if not profilelist.switchToProfile(val):
+                    print _("No Profile with name %s could be found." % val)
+                profilelist.save()
+                print _("Switching to Profile %s.") % val
                 sys.exit(0)
 
             if opt == '-h' or opt == '--help':
