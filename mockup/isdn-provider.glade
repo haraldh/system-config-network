@@ -60,7 +60,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label8</name>
-	  <label>Pro_vider name:</label>
+	  <label>Pro_vider Name:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -114,7 +114,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label10</name>
-	  <label>Area/Countr_y code:</label>
+	  <label>Area/Countr_y Code:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -141,7 +141,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label11</name>
-	  <label>Phone n_umber:</label>
+	  <label>Phone N_umber:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -202,7 +202,7 @@
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>combo-entry1</default_focus_target>
+	  <default_focus_target>isdn_encap_mode_optionmenu</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -222,14 +222,14 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label14</name>
-	  <label>_Dial mode:</label>
+	  <label>_Dial Mode:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>combo-entry2</default_focus_target>
+	  <default_focus_target>isdn_dial_mode_optionmenu</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -256,7 +256,7 @@
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>combo-entry3</default_focus_target>
+	  <default_focus_target>isdn_auth_optionmenu</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -276,7 +276,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label16</name>
-	  <label>_Login name:</label>
+	  <label>_Login Name:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -424,122 +424,6 @@
 	</widget>
 
 	<widget>
-	  <class>GtkCombo</class>
-	  <name>isdn_encaps_mode_combo</name>
-	  <value_in_list>False</value_in_list>
-	  <ok_if_empty>True</ok_if_empty>
-	  <case_sensitive>False</case_sensitive>
-	  <use_arrows>True</use_arrows>
-	  <use_arrows_always>False</use_arrows_always>
-	  <items>sync PPP
-raw IP
-</items>
-	  <child>
-	    <left_attach>1</left_attach>
-	    <right_attach>2</right_attach>
-	    <top_attach>5</top_attach>
-	    <bottom_attach>6</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
-	  </child>
-
-	  <widget>
-	    <class>GtkEntry</class>
-	    <child_name>GtkCombo:entry</child_name>
-	    <name>combo-entry1</name>
-	    <can_focus>True</can_focus>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text>sync PPP</text>
-	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkCombo</class>
-	  <name>isdn_dial_mode_combo</name>
-	  <value_in_list>False</value_in_list>
-	  <ok_if_empty>True</ok_if_empty>
-	  <case_sensitive>False</case_sensitive>
-	  <use_arrows>True</use_arrows>
-	  <use_arrows_always>False</use_arrows_always>
-	  <items>auto
-manual
-</items>
-	  <child>
-	    <left_attach>1</left_attach>
-	    <right_attach>2</right_attach>
-	    <top_attach>6</top_attach>
-	    <bottom_attach>7</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
-	  </child>
-
-	  <widget>
-	    <class>GtkEntry</class>
-	    <child_name>GtkCombo:entry</child_name>
-	    <name>combo-entry2</name>
-	    <can_focus>True</can_focus>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text>manual</text>
-	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkCombo</class>
-	  <name>isdn_auth_combo</name>
-	  <value_in_list>False</value_in_list>
-	  <ok_if_empty>True</ok_if_empty>
-	  <case_sensitive>False</case_sensitive>
-	  <use_arrows>True</use_arrows>
-	  <use_arrows_always>False</use_arrows_always>
-	  <items>chap
-pap
-chap+pap
-none
-</items>
-	  <child>
-	    <left_attach>1</left_attach>
-	    <right_attach>2</right_attach>
-	    <top_attach>7</top_attach>
-	    <bottom_attach>8</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
-	  </child>
-
-	  <widget>
-	    <class>GtkEntry</class>
-	    <child_name>GtkCombo:entry</child_name>
-	    <name>combo-entry3</name>
-	    <can_focus>True</can_focus>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text>pap</text>
-	  </widget>
-	</widget>
-
-	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_login_name_entry</name>
 	  <can_focus>True</can_focus>
@@ -588,6 +472,80 @@ none
 	</widget>
 
 	<widget>
+	  <class>GtkOptionMenu</class>
+	  <name>isdn_encap_mode_optionmenu</name>
+	  <can_focus>True</can_focus>
+	  <items>raw IP
+sync PPP
+</items>
+	  <initial_choice>1</initial_choice>
+	  <child>
+	    <left_attach>1</left_attach>
+	    <right_attach>2</right_attach>
+	    <top_attach>5</top_attach>
+	    <bottom_attach>6</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>False</yfill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkOptionMenu</class>
+	  <name>isdn_dial_mode_optionmenu</name>
+	  <can_focus>True</can_focus>
+	  <items>auto
+manual
+</items>
+	  <initial_choice>1</initial_choice>
+	  <child>
+	    <left_attach>1</left_attach>
+	    <right_attach>2</right_attach>
+	    <top_attach>6</top_attach>
+	    <bottom_attach>7</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>False</yfill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkOptionMenu</class>
+	  <name>isdn_auth_optionmenu</name>
+	  <can_focus>True</can_focus>
+	  <items>chap
+pap
+chap+pap
+none
+</items>
+	  <initial_choice>1</initial_choice>
+	  <child>
+	    <left_attach>1</left_attach>
+	    <right_attach>2</right_attach>
+	    <top_attach>7</top_attach>
+	    <bottom_attach>8</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>False</yfill>
+	  </child>
+	</widget>
+
+	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_provider_name_entry</name>
 	  <can_focus>True</can_focus>
@@ -616,7 +574,7 @@ none
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>provider_tab_label</name>
-	<label>_Provider</label>
+	<label>Provider</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -778,7 +736,7 @@ none
 	      <bottom_attach>1</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
+	      <xexpand>False</xexpand>
 	      <yexpand>False</yexpand>
 	      <xshrink>False</xshrink>
 	      <yshrink>False</yshrink>
@@ -793,7 +751,7 @@ none
 	  <name>hseparator2</name>
 	  <child>
 	    <padding>20</padding>
-	    <expand>True</expand>
+	    <expand>False</expand>
 	    <fill>True</fill>
 	  </child>
 	</widget>
@@ -808,7 +766,7 @@ none
 	  <column_spacing>8</column_spacing>
 	  <child>
 	    <padding>4</padding>
-	    <expand>True</expand>
+	    <expand>False</expand>
 	    <fill>True</fill>
 	  </child>
 
@@ -946,7 +904,7 @@ none
 	    <class>GtkButton</class>
 	    <name>isdn_dns_add_button</name>
 	    <can_focus>True</can_focus>
-	    <label>Add...</label>
+	    <label>_Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <left_attach>2</left_attach>
@@ -1084,7 +1042,7 @@ none
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>tcpip_tab_label</name>
-	<label>_TCP/IP</label>
+	<label>TCP/IP</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1132,7 +1090,7 @@ none
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label6</name>
-	    <label>Phone in _number:</label>
+	    <label>Phone in _Number:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
@@ -1159,7 +1117,7 @@ none
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label7</name>
-	    <label>Callback _delay:</label>
+	    <label>Callback _Delay:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
@@ -1319,7 +1277,7 @@ none
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label18</name>
-	    <label>Hangup tim_eout:</label>
+	    <label>Hangup Tim_eout:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
@@ -1381,7 +1339,7 @@ none
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>callback_tab_label</name>
-	<label>_Callback</label>
+	<label>Callback</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1416,7 +1374,7 @@ none
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>channel_bundling_tab_label</name>
-	<label>Channel _Bundling</label>
+	<label>Channel Bundling</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1521,7 +1479,7 @@ none
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>compression_tab_label</name>
-	<label>Comp_ression</label>
+	<label>Compression</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1551,8 +1509,8 @@ none
 	  <widget>
 	    <class>GtkTable</class>
 	    <name>table8</name>
-	    <rows>4</rows>
-	    <columns>2</columns>
+	    <rows>3</rows>
+	    <columns>3</columns>
 	    <homogeneous>False</homogeneous>
 	    <row_spacing>0</row_spacing>
 	    <column_spacing>8</column_spacing>
@@ -1568,10 +1526,10 @@ none
 	      <homogeneous>False</homogeneous>
 	      <spacing>0</spacing>
 	      <child>
-		<left_attach>1</left_attach>
-		<right_attach>2</right_attach>
-		<top_attach>3</top_attach>
-		<bottom_attach>4</bottom_attach>
+		<left_attach>2</left_attach>
+		<right_attach>3</right_attach>
+		<top_attach>2</top_attach>
+		<bottom_attach>3</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>False</xexpand>
@@ -1605,10 +1563,10 @@ none
 	      <text_max_length>0</text_max_length>
 	      <text></text>
 	      <child>
-		<left_attach>0</left_attach>
-		<right_attach>1</right_attach>
-		<top_attach>1</top_attach>
-		<bottom_attach>2</bottom_attach>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>0</top_attach>
+		<bottom_attach>1</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>True</xexpand>
@@ -1627,34 +1585,8 @@ none
 	      <label>_Add...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
-		<left_attach>1</left_attach>
-		<right_attach>2</right_attach>
-		<top_attach>1</top_attach>
-		<bottom_attach>2</bottom_attach>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-		<xexpand>False</xexpand>
-		<yexpand>False</yexpand>
-		<xshrink>False</xshrink>
-		<yshrink>False</yshrink>
-		<xfill>True</xfill>
-		<yfill>False</yfill>
-	      </child>
-	    </widget>
-
-	    <widget>
-	      <class>GtkLabel</class>
-	      <name>label22</name>
-	      <label>_Option:</label>
-	      <justify>GTK_JUSTIFY_CENTER</justify>
-	      <wrap>False</wrap>
-	      <xalign>0</xalign>
-	      <yalign>0.5</yalign>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <child>
-		<left_attach>0</left_attach>
-		<right_attach>1</right_attach>
+		<left_attach>2</left_attach>
+		<right_attach>3</right_attach>
 		<top_attach>0</top_attach>
 		<bottom_attach>1</bottom_attach>
 		<xpad>0</xpad>
@@ -1679,10 +1611,10 @@ none
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <child>
-		<left_attach>0</left_attach>
-		<right_attach>1</right_attach>
-		<top_attach>2</top_attach>
-		<bottom_attach>3</bottom_attach>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>1</top_attach>
+		<bottom_attach>2</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>False</xexpand>
@@ -1702,10 +1634,10 @@ none
 	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
 	      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
 	      <child>
-		<left_attach>0</left_attach>
-		<right_attach>1</right_attach>
-		<top_attach>3</top_attach>
-		<bottom_attach>4</bottom_attach>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>2</top_attach>
+		<bottom_attach>3</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>True</xexpand>
@@ -1740,6 +1672,33 @@ none
 		</widget>
 	      </widget>
 	    </widget>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label34</name>
+	      <label>_Option:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <default_focus_target>isdn_option_entry</default_focus_target>
+	      <child>
+		<left_attach>0</left_attach>
+		<right_attach>1</right_attach>
+		<top_attach>0</top_attach>
+		<bottom_attach>1</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>False</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>False</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
 	  </widget>
 	</widget>
 
@@ -1762,7 +1721,7 @@ none
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>extended_option_tab_label</name>
-	<label>_Extended Options</label>
+	<label>Extended Options</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
