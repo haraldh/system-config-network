@@ -18,6 +18,7 @@ GLADE_FILES = \
 	hardwaretype.glade \
 	IsdnHardwareDruid.glade \
 	isdnhardware.glade \
+	maindialog.glade \
 	modemconfig.glade \
 	ModemDruid.glade \
 	NewInterfaceDruid.glade \
@@ -58,6 +59,7 @@ PYTHON_FILES = \
 	InterfaceCreator.py \
 	isdnhardware.py \
 	IsdnInterface.py \
+	maindialog.py \
 	modemconfig.py \
 	ModemInterface.py \
 	NewInterface.py \
