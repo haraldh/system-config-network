@@ -100,7 +100,7 @@ class Address:
 
         return self.toString()
             
-    def getDevice(self):
+    def device(self):
         """
         Returns the device of the address object
         @self The object instance
@@ -114,7 +114,7 @@ class Address:
         """
         self._device=device
 
-    def getAddress(self):
+    def address(self):
         """
         Return the address of the address object
         @self The object instance
@@ -129,7 +129,7 @@ class Address:
         """
         self._address=address
 
-    def getPrefix(self):
+    def prefix(self):
         """
         Get the of the address object
         @self The object instance
@@ -144,14 +144,14 @@ class Address:
         """
         self._prefix=prefix
     
-    def getBroadCast(self):
+    def broadcast(self):
         """
         Return the broadcast address of the address object
         @self The object instance
         """
         return self._broadcast
 
-    def setBroadCast(self,broadcast):
+    def setBroadcast(self,broadcast):
         """
         Set the broadcast address of the address object
         @self The object instance
@@ -183,7 +183,7 @@ class AddressList:
         """
         self._list=[]
 
-    def getAddressList(self):
+    def addressList(self):
         """
         Returns an array of adress objects
         @self The object instance
@@ -240,7 +240,7 @@ class AddressList:
         n=0
         while 1:
            address=Address(filename,n)
-           if not address.getAddress():
+           if not address.address():
                break
            else:
                self.addAddress(address)

@@ -11,6 +11,10 @@
 The base Device class
 """
 
+import sys
+if not "/usr/lib/rhs/python" in sys.path:
+    sys.path.append("/usr/lib/rhs/python")
+
 import os
 import Conf
 import Address
@@ -74,7 +78,7 @@ class Device:
         self._addressList=Address.AddressList()
         self._addressList=self._addresslist.readFile(filename)
 
-    def getName(self):
+    def name(self):
         """
         Return the name of the Device object
         @self The object instance
@@ -92,7 +96,7 @@ class Device:
         self._name=name
         
 
-    def getDescription(self):
+    def description(self):
         """
         Return the description of the Device object
         @self The object instance
@@ -127,7 +131,7 @@ class Device:
         self._enabled=enabled
     
         
-    def getIdentifier(self):
+    def identifier(self):
         """
         Return the identifier of the Device object
         @self The object instance
@@ -144,7 +148,7 @@ class Device:
 
         self._identifier=identifier
         
-    def getType(self):
+    def type(self):
         """
         Return the type of the Device object
         @self The object instance
@@ -161,7 +165,7 @@ class Device:
 
         self._type=type
         
-    def getAddressList(self):
+    def addressList(self):
         """
         Return the list of addresses  of the Device object, type Address.AddressList
         @self The object instance

@@ -11,6 +11,10 @@
 The ConfiguredDevice class
 """
 
+import sys
+if not "/usr/lib/rhs/python" in sys.path:
+    sys.path.append("/usr/lib/rhs/python")
+
 import Conf
 import Device
 import os
@@ -47,12 +51,12 @@ class ConfiguredDevice(Device.Device):
 
     def readFile(self,filename):
         """
-        Read an existing configutation from a configuration file
+        Read an existing configuration from a configuration file
         @self The object instance
         @filename The configuration file
         """
 
-        if not os.exist.path(filename):
+        if not os.path.exists(filename):
             raise IOError,"File not found"
         Device.Device.readFile(self,filename)
         confFile=Conf.ConfShellVar(filename)
@@ -60,7 +64,7 @@ class ConfiguredDevice(Device.Device):
         self._bootProto=confFile["BOOTPROTO"]
         self._fileName=filename
 
-    def getOnBoot(self):
+    def onBoot(self):
         """
         Return the onboot value of the ConfiguredDevice object
         @self The object instance
@@ -77,7 +81,7 @@ class ConfiguredDevice(Device.Device):
 
         self._onBoot=onboot
 
-    def getBootproto(self):
+    def bootproto(self):
         """
         Return the bootproto value of the ConfiguredDevice object
         @self The object instance
@@ -94,7 +98,7 @@ class ConfiguredDevice(Device.Device):
 
         self._bootproto=bootproto
     
-    def getFileName(self):
+    def fileName(self):
         """
         Return the filename value of the ConfiguredDevice object
         @self The object instance
