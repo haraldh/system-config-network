@@ -16,7 +16,6 @@
   <class>GtkWindow</class>
   <name>mainWindow</name>
   <border_width>8</border_width>
-  <tooltip>Choose an connection name here  to monitor</tooltip>
   <title>redhat network control</title>
   <type>GTK_WINDOW_TOPLEVEL</type>
   <position>GTK_WIN_POS_MOUSE</position>
@@ -46,8 +45,8 @@
 
       <widget>
 	<class>GnomePixmap</class>
-	<name>pixmap3</name>
-	<filename>kppp.png</filename>
+	<name>pixmap</name>
+	<filename>control.png</filename>
 	<child>
 	  <padding>0</padding>
 	  <expand>False</expand>
@@ -58,7 +57,7 @@
       <widget>
 	<class>GtkLabel</class>
 	<name>interfaceLabel</name>
-	<label>neat-control provides an easy-to-use interface for configuring,
+	<label>redhat-network-control provides an easy-to-use interface for configuring,
 activating and monitoring any type of network configuration.
 
 The following network interfaces are configured on the system.</label>
@@ -176,6 +175,11 @@ The following network interfaces are configured on the system.</label>
 	  <name>activateButton</name>
 	  <tooltip>click to connect to the interface</tooltip>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_activateButton_clicked</handler>
+	    <last_modification_time>Sat, 26 Jan 2002 13:09:30 GMT</last_modification_time>
+	  </signal>
 	  <label>_Activate</label>
 	  <relief>GTK_RELIEF_NORMAL</relief>
 	</widget>
@@ -185,16 +189,40 @@ The following network interfaces are configured on the system.</label>
 	  <name>deactivateButton</name>
 	  <tooltip>click to disconnect from the interface</tooltip>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_deactivateButton_clicked</handler>
+	    <last_modification_time>Sat, 26 Jan 2002 13:45:52 GMT</last_modification_time>
+	  </signal>
 	  <label>_Deactivate</label>
 	  <relief>GTK_RELIEF_NORMAL</relief>
 	</widget>
 
 	<widget>
 	  <class>GtkButton</class>
-	  <name>editButtonbutton3</name>
+	  <name>editButtonbutton</name>
 	  <tooltip>click to edit the interface</tooltip>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_editButtonbutton_clicked</handler>
+	    <last_modification_time>Sat, 26 Jan 2002 13:45:24 GMT</last_modification_time>
+	  </signal>
 	  <label>_Edit</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>monitorButton</name>
+	  <tooltip>click to monitor the interface</tooltip>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_monitorButton_clicked</handler>
+	    <last_modification_time>Sat, 26 Jan 2002 13:09:50 GMT</last_modification_time>
+	  </signal>
+	  <label>_Monitor</label>
 	  <relief>GTK_RELIEF_NORMAL</relief>
 	</widget>
       </widget>
