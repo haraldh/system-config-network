@@ -75,7 +75,18 @@ class EthernetDevice(Device.Device):
         @self The object instance
         """
         
+    def toString(self):
+        """
+        Return the current configuration in string
+        form
+        """
+
+        res=Device.Device.toString(self)
+        if self._macaddress:
+            res=res+"MACADDRESS=%s\n" % (self._macaddress)
         
+        return res
+    
 
 
 
@@ -143,7 +154,7 @@ class EthernetDevice(Device.Device):
                           re.search("\d+:\s+\w+\s+(\w+)\s+(\w*[:.]\w*[:.]\w*[:.]\w*:*\w*:*\w*)/(\d+)\s+scope\s+(\w+)\s+(\w+)", line).groups()
                 except:
                     continue
-            a = Address()
+            a = Address.Address()
             if address:
                 a.setAddress(address)
             if prefix:
@@ -154,7 +165,7 @@ class EthernetDevice(Device.Device):
                 a.setBroadcast(broadcast)
             if device:
                 a.setDevice(device)
-            addressList.append(a)
+            addressList.addAddress(a)
             
         return addressList
 
@@ -166,3 +177,16 @@ class EthernetDevice(Device.Device):
         else:
             return 0
 
+def test():
+    """
+    Test for EthernetDevice
+    """
+
+    device=EthernetDevice()
+    device.setName("eth0")
+    device.readHardware()
+    print device.toString()
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(test())
