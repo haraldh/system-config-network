@@ -24,7 +24,7 @@ PYTHON_FILES = \
 	NCWireless.py \
 	Control.py
 
-BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
+BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
 		     $(patsubst %.py,%.pyc,$(PYTHON_FILES)))
 
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
@@ -45,4 +45,4 @@ clean:
 
 %.pyc: %.py
 	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
+	@PYTHON@ @PY_COMPILEALL@ -l -d . $srcdir

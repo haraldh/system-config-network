@@ -630,7 +630,7 @@ class mainDialog:
         dlg.set_border_width(10)
         dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
         dlg.vbox.show()
-        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dlg.set_position (gtk.WIN_POS_CENTER
         dlg.set_modal(TRUE)
         dlg.show_all()
         (status, txt) = intf.activate(device)                

@@ -27,4 +27,4 @@ netconfpixmapdir = $(datadir)/pixmaps
 
 netconfpixmap_DATA = neat.png neat-control.xpm
 
-EXTRA_DIST = $(netconfimg_DATA) $(netconfkontrol_DATA) $(netconfpixmap_DATA)
+EXTRA_DIST = $(netconfimg_DATA) $(netconfpixmap_DATA)
