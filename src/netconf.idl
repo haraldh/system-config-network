@@ -29,6 +29,8 @@
         <Route TYPE="LIST">
           <Adress TYPE="STRING"/>
           <Netmask TYPE="STRING"/>
+          <Gateway TYPE="STRING"/>
+          <GatewayDevice TYPE="STRING"/>
           </Route>
         </StaticRoutes>
 
@@ -48,6 +50,7 @@
         <EncapMode TYPE="STRING"/>
         <HangupTimeout TYPE="INTEGER"/>
         <DialMode TYPE="STRING"/>
+        <InitString TYPE="STRING"/>
 
         <Callback TYPE="LIST">
           <Number TYPE="STRING"/>
@@ -76,11 +79,22 @@
         <DeviceId TYPE="STRING"/>
       </ActiveDevices>
       <DNS TYPE="LIST">
-        <Domain TYPE="STRING"/>
-        <ServerList TYPE="LIST" ANONYMOUS="TRUE">
-          <IP TYPE="STRING">
+        <PrimaryDNS TYPE="STRING"/>
+        <SecondaryDNS TYPE="STRING"/>
+        <TernaryDNS TYPE="STRING"/>
+        <SearchList TYPE="LIST" ANONYMOUS="TRUE">
+          <Domain TYPE="STRING">
           </ServerList>
         </DNS>
+      <Hosts TYPE="LIST" ANONYMOUS="TRUE">
+        <Host>
+          <IP TYPE="STRING">
+          <Hostname TYPE="STRING">
+          <Aliases TYPE="LIST" ANONYMOUS="TRUE">
+            <Alias TYPE="STRING">
+            </Aliases>
+          </Host>
+        </Hosts>
       </Profile>   
     </ProfileList>
 
