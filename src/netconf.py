@@ -52,34 +52,35 @@ Usage: redhat-config-network-cmd -p --profile <profile>""")
 
 
 # Argh, another workaround for broken gtk/gnome imports...
-if __name__ == '__main__' and sys.argv[0][-4:] == '-cmd':
+if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
 
     updateNetworkScripts()
 
-    progname = os.path.basename(sys.argv[0])
+    if sys.argv[0][-4:] == '-cmd':
+        progname = os.path.basename(sys.argv[0])
 
-    try:
-        opts, args = getopt.getopt(cmdline, "p:th", ["profile=", "test", "help"])
-        for opt, val in opts:
-            if opt == '-p' or opt == '--profile':
-                profilelist = getProfileList()
-                profilelist.switchToProfile(val)
-                sys.exit(0)
+        try:
+            opts, args = getopt.getopt(cmdline, "p:th", ["profile=", "test", "help"])
+            for opt, val in opts:
+                if opt == '-p' or opt == '--profile':
+                    profilelist = getProfileList()
+                    profilelist.switchToProfile(val)
+                    sys.exit(0)
 
-            if opt == '-h' or opt == '--help':
-                Usage()
-                sys.exit(0)
+                if opt == '-h' or opt == '--help':
+                    Usage()
+                    sys.exit(0)
 
-            if opt == '-t' or opt == '--test':
-                print "Just a test for getopt"
-                sys.exit(0)
+                if opt == '-t' or opt == '--test':
+                    print "Just a test for getopt"
+                    sys.exit(0)
 
-        raise BadUsage
+            raise BadUsage
 
-    except (getopt.error, BadUsage):
-        Usage()
+        except (getopt.error, BadUsage):
+            Usage()
 
 
 import GDK
