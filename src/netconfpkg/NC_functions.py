@@ -69,8 +69,10 @@ deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
 		   '^tr[0-9]+(:[0-9]+)?$' :TOKENRING,
 		   '^lo$' : LO,
 		   '^ctc[0-9]+(:[0-9]+)?$' : CTC,
-		   '^iucv[0-9]+(:[0-9]+)?$' : IUCV
+		   '^iucv[0-9]+(:[0-9]+)?$' : IUCV,
+		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
 		   }
+
 CRTSCTS = "CRTSCTS"
 XONXOFF = "XONXOFF"
 NOFLOW = "NOFLOW"
