@@ -316,17 +316,17 @@ class ModemDialup(Dialup):
                 self.InitStrings[self.InitStrings.addInitString()] = value
                 
 
-        if conf.has_key('PPPOPTIONS'):
+        if parentConf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
             
-            options = conf['PPPOPTIONS']
+            options = parentConf['PPPOPTIONS']
             for o in string.split(options):
                 self.PPPOptions[self.PPPOptions.addPPPOption()] = o
 
         #
         # Workaround for backporting rp3-config stuff
         #
-        if conf[sectname].has_key('Inherits'):
+        if conf.has_key(sectname) and conf[sectname].has_key('Inherits'):
             if conf[sectname]['Inherits'] != 'Dialer Defaults' and \
                (len(conf[sectname]['Inherits']) > 5) and \
                conf[sectname]['Inherits'][:5] == 'Modem':
@@ -405,7 +405,8 @@ class ModemDialup(Dialup):
             for i in xrange(len(self.PPPOptions)):
                 if opt != "": opt = opt + ' '
                 opt = opt + self.PPPOptions[i]
-            conf['PPPOPTIONS'] = opt
+            #print opt
+            parentConf['PPPOPTIONS'] = opt
 
 
         conf[sectname]['Inherits'] = devname
