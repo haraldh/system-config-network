@@ -24,7 +24,7 @@ if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
 from netconfpkg import *
 
 
-PROGNAME='redhat-config-network-tui'
+PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
 _=gettext.gettext
@@ -340,7 +340,7 @@ class ISDNWindow:
             if isdn.Dialup.Password:
                 self.password.set(isdn.Dialup.Password)
             if isdn.Dialup.PhoneNumber:
-                self.phoneno.set(isdn.Dialup.Phonenumber)
+                self.phoneno.set(isdn.Dialup.PhoneNumber)
             if isdn.Dialup.MSN:
                 self.msn.set(isdn.Dialup.MSN)
 
