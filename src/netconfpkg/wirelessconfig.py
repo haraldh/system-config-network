@@ -35,7 +35,6 @@ from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
@@ -76,6 +75,16 @@ class wirelessConfigDialog(deviceConfigDialog):
         else:
             self.xml.get_widget("aliasSupportCB").set_active(FALSE)
 
+        wl = self.device.Wireless
+        if wl:
+            if wl.EssId: self.xml.get_widget("essidEntry").set_text(wl.EssId)
+            if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
+            if wl.Channel and wl.Channel != "":
+                self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
+            if wl.Freq: self.xml.get_widget("frequencyEntry").set_text(wl.Freq)
+            if wl.Rate: self.xml.get_widget("rateEntry").set_text(wl.Rate)
+            if wl.Key: self.xml.get_widget("keyEntry").set_text(wl.Key)
+
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
@@ -86,6 +95,16 @@ class wirelessConfigDialog(deviceConfigDialog):
         if self.xml.get_widget("aliasSupportCB").get_active():
             self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
         else: self.device.Alias = None
+
+        wl = self.device.Wireless
+        if wl:
+            wl.EssId = self.xml.get_widget("essidEntry").get_text()
+            wl.Mode =  self.xml.get_widget("modeEntry").get_text()
+            wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
+            wl.Freq = self.xml.get_widget("frequencyEntry").get_text()
+            wl.Rate = self.xml.get_widget("rateEntry").get_text()
+            wl.Key = self.xml.get_widget("keyEntry").get_text()
+
     
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
