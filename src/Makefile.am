@@ -50,7 +50,7 @@ install-exec-local:
 
 docs:
 	cd $(srcdir)
-	python /usr/lib/python2.2/pydoc.py -w $(PYTHON_FILES)
+	python @PYDOC@ -w $(PYTHON_FILES)
 	mv *.html doc
 
 pycheck:
