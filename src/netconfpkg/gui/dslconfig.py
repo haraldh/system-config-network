@@ -27,6 +27,7 @@ import GdkImlib
 import string
 import gettext
 import string
+import sharedtcpip
 
 from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
@@ -38,9 +39,30 @@ from gtk import FALSE
 
 class dslConfigDialog(deviceConfigDialog):
     def __init__(self, device):
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.NETCONFDIR + glade_file
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
+
         glade_file = "dslconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)
+
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+
+        window = self.sharedtcpip_xml.get_widget ('routeWindow')
+        frame = self.sharedtcpip_xml.get_widget ('routeFrame')
+        vbox = self.xml.get_widget ('routeVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
@@ -97,6 +119,8 @@ class dslConfigDialog(deviceConfigDialog):
         widget.set_position(0)
 
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
@@ -114,6 +138,8 @@ class dslConfigDialog(deviceConfigDialog):
         dialup.SyncPPP = self.xml.get_widget("useSyncpppCB").get_active()
         if not self.device.Device:
             self.device.Device = "dsl"
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         
 
 # make ctrl-C work

@@ -100,7 +100,7 @@
 
       <widget>
 	<class>GtkVBox</class>
-	<name>vbox55</name>
+	<name>generalVbox</name>
 	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
 	<spacing>5</spacing>
@@ -182,16 +182,6 @@
 	</widget>
 
 	<widget>
-	  <class>GtkHSeparator</class>
-	  <name>hseparator1</name>
-	  <child>
-	    <padding>0</padding>
-	    <expand>False</expand>
-	    <fill>True</fill>
-	  </child>
-	</widget>
-
-	<widget>
 	  <class>GtkCheckButton</class>
 	  <name>onBootCB</name>
 	  <can_focus>True</can_focus>
@@ -228,6 +218,16 @@
 	    <fill>False</fill>
 	  </child>
 	</widget>
+
+	<widget>
+	  <class>GtkHSeparator</class>
+	  <name>hseparator1</name>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>True</fill>
+	  </child>
+	</widget>
       </widget>
 
       <widget>
@@ -244,153 +244,18 @@
       </widget>
 
       <widget>
-	<class>GtkHBox</class>
-	<name>protocolsTab</name>
+	<class>GtkVBox</class>
+	<name>routeVbox</name>
 	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
-	<spacing>5</spacing>
-
-	<widget>
-	  <class>GtkScrolledWindow</class>
-	  <name>scrolledwindow1</name>
-	  <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	  <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	  <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	  <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	  <child>
-	    <padding>0</padding>
-	    <expand>True</expand>
-	    <fill>True</fill>
-	  </child>
-
-	  <widget>
-	    <class>GtkCList</class>
-	    <name>protocolList</name>
-	    <can_focus>True</can_focus>
-	    <columns>1</columns>
-	    <column_widths>80</column_widths>
-	    <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
-	    <show_titles>True</show_titles>
-	    <shadow_type>GTK_SHADOW_IN</shadow_type>
-
-	    <widget>
-	      <class>GtkLabel</class>
-	      <child_name>CList:title</child_name>
-	      <name>label228</name>
-	      <label>Protocol Type</label>
-	      <justify>GTK_JUSTIFY_LEFT</justify>
-	      <wrap>False</wrap>
-	      <xalign>0</xalign>
-	      <yalign>0.5</yalign>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	    </widget>
-	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkVBox</class>
-	  <name>vbox53</name>
-	  <homogeneous>False</homogeneous>
-	  <spacing>5</spacing>
-	  <child>
-	    <padding>0</padding>
-	    <expand>False</expand>
-	    <fill>True</fill>
-	    <pack>GTK_PACK_END</pack>
-	  </child>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>button1</name>
-	    <sensitive>False</sensitive>
-	    <can_focus>True</can_focus>
-	    <signal>
-	      <name>clicked</name>
-	      <handler>on_deviceAddButton_clicked</handler>
-	      <last_modification_time>Thu, 24 May 2001 12:47:22 GMT</last_modification_time>
-	    </signal>
-	    <relief>GTK_RELIEF_NORMAL</relief>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>True</fill>
-	    </child>
-
-	    <widget>
-	      <class>GtkLabel</class>
-	      <name>label240</name>
-	      <label>_Add...</label>
-	      <justify>GTK_JUSTIFY_CENTER</justify>
-	      <wrap>False</wrap>
-	      <xalign>0</xalign>
-	      <yalign>0.5</yalign>
-	      <xpad>2</xpad>
-	      <ypad>0</ypad>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>protocolEditButton</name>
-	    <can_focus>True</can_focus>
-	    <signal>
-	      <name>clicked</name>
-	      <handler>on_protocolEditButton_clicked</handler>
-	      <last_modification_time>Thu, 12 Jul 2001 15:33:08 GMT</last_modification_time>
-	    </signal>
-	    <relief>GTK_RELIEF_NORMAL</relief>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>True</fill>
-	    </child>
-
-	    <widget>
-	      <class>GtkLabel</class>
-	      <name>label239</name>
-	      <label>_Edit...</label>
-	      <justify>GTK_JUSTIFY_CENTER</justify>
-	      <wrap>False</wrap>
-	      <xalign>0</xalign>
-	      <yalign>0.5</yalign>
-	      <xpad>2</xpad>
-	      <ypad>0</ypad>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>button4</name>
-	    <sensitive>False</sensitive>
-	    <can_focus>True</can_focus>
-	    <relief>GTK_RELIEF_NORMAL</relief>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
-	    </child>
-
-	    <widget>
-	      <class>GtkLabel</class>
-	      <name>label238</name>
-	      <label>_Delete</label>
-	      <justify>GTK_JUSTIFY_CENTER</justify>
-	      <wrap>False</wrap>
-	      <xalign>0</xalign>
-	      <yalign>0.5</yalign>
-	      <xpad>2</xpad>
-	      <ypad>0</ypad>
-	    </widget>
-	  </widget>
-	</widget>
+	<spacing>0</spacing>
       </widget>
 
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>protocolLabel</name>
-	<label>Protocols</label>
+	<name>label238</name>
+	<label>Route</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -574,7 +439,7 @@ eth5
 	  <spacing>5</spacing>
 	  <child>
 	    <padding>0</padding>
-	    <expand>True</expand>
+	    <expand>False</expand>
 	    <fill>True</fill>
 	  </child>
 
@@ -635,6 +500,27 @@ eth5
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>hardwareDeviceLabel</name>
+	<label>Hardware Device</label>
+	<justify>GTK_JUSTIFY_CENTER</justify>
+	<wrap>False</wrap>
+	<xalign>0.5</xalign>
+	<yalign>0.5</yalign>
+	<xpad>0</xpad>
+	<ypad>0</ypad>
+      </widget>
+
+      <widget>
+	<class>GtkVBox</class>
+	<name>hardwareVbox</name>
+	<border_width>5</border_width>
+	<homogeneous>False</homogeneous>
+	<spacing>0</spacing>
+      </widget>
+
+      <widget>
+	<class>GtkLabel</class>
+	<child_name>Notebook:tab</child_name>
+	<name>label239</name>
 	<label>Hardware Device</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>

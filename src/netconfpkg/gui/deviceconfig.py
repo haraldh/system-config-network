@@ -60,14 +60,9 @@ class deviceConfigDialog:
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
                                                 r"^[a-z|A-Z|0-9\-_:]+$"),
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
-            "on_protocolEditButton_clicked" : self.on_protocolEditButton_clicked,
-            "on_protocolList_button_press_event" : (self.on_generic_clist_button_press_event,
-                                                    self.on_protocolEditButton_clicked)
             })
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
-        self.xml.get_widget("protocolList").append(['TCP/IP'])
-        self.xml.get_widget("protocolList").column_titles_passive ()
 
         self.dialog = self.xml.get_widget("Dialog")
         GUI_functions.load_icon("network.xpm", self.dialog)
@@ -82,11 +77,6 @@ class deviceConfigDialog:
         if re.match(str, text):
             return
         entry.emit_stop_by_name('insert_text')
-
-    def on_protocolEditButton_clicked(self, *args):
-        cfg = tcpdialog.tcpConfigDialog(self.device)
-        dialog = cfg.xml.get_widget ("Dialog")
-        button = dialog.run ()
 
     def on_generic_clist_button_press_event(self, clist, event, func):
         if event.type == GDK._2BUTTON_PRESS:

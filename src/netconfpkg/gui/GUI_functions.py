@@ -9,6 +9,15 @@ from netconfpkg.NC_functions import _
 
 GLADEPATH='netconfpkg/gui/'
 
+def get_history (omenu):
+    menu = omenu.get_menu ().get_active ()
+    index = 0
+    for menu_item in omenu.get_menu ().children ():
+        if menu_item == menu:
+            break
+        index = index + 1
+    return index
+
 def get_icon(pixmap_file, dialog):
     fn = pixmap_file
     if not os.path.exists(pixmap_file):

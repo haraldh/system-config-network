@@ -27,6 +27,10 @@ import GdkImlib
 import string
 import gettext
 import string
+import commands
+import sharedtcpip
+import traceback
+import sys
 from netconfpkg import ethtool
 from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
@@ -45,6 +49,13 @@ _=gettext.gettext
 
 class ethernetConfigDialog(deviceConfigDialog):
     def __init__(self, device):
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.NETCONFDIR + glade_file
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
+
         glade_file = "ethernetconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)    
@@ -54,6 +65,27 @@ class ethernetConfigDialog(deviceConfigDialog):
             "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled,
             "on_hwProbeButton_clicked" : self.on_hwProbeButton_clicked,
             })
+
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+
+        window = self.sharedtcpip_xml.get_widget ('routeWindow')
+        frame = self.sharedtcpip_xml.get_widget ('routeFrame')
+        vbox = self.xml.get_widget ('routeVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
+
+        window = self.sharedtcpip_xml.get_widget ('hardwareWindow')
+        frame = self.sharedtcpip_xml.get_widget ('hardwareFrame')
+        vbox = self.xml.get_widget ('hardwareVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
@@ -83,21 +115,15 @@ class ethernetConfigDialog(deviceConfigDialog):
             self.xml.get_widget("hwAddressCB").set_active(FALSE)
             self.xml.get_widget("hwAddressEntry").set_sensitive(FALSE)
             self.xml.get_widget("hwProbeButton").set_sensitive(FALSE)
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
-        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
-        hw = fields[0]
-        self.device.Device = hw
-        if self.xml.get_widget("aliasSupportCB").get_active():
-            self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
-        else:
-            self.device.Alias = None
-        if self.xml.get_widget("hwAddressCB").get_active():
-            self.device.HardwareAddress = self.xml.get_widget("hwAddressEntry").get_text()
-        else:
-            self.device.HardwareAddress = None
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
 
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
@@ -112,7 +138,8 @@ class ethernetConfigDialog(deviceConfigDialog):
         device = fields[0]
         try: hwaddr = ethtool.get_hwaddr(device) 
         except IOError, err:
-            GUI_functions.generic_error_dialog(str(err), self.dialog)
+            self.error_str = str (err)
+            GUI_functions.gui_error_dialog(self.error_str, self.dialog)
         else:
             self.device.HardwareAddress = hwaddr
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
