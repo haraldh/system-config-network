@@ -548,8 +548,7 @@ class ConfEResolv(Conf):
     def __delitem__(self, varname):
         # delete *every* instance...
         self.rewind()
-        while self.findnextline('[' + self.separators + ']*' + varname +
-				'[' + self.separators + ']'):
+        while self.findnextline('[' + self.separators + ']*' + varname):
             self.deleteline()
         del self.vars[varname]
     def write(self):
