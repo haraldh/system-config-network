@@ -74,7 +74,6 @@ class ConfRoute(Conf.ConfShellVar):
 
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
-                'OnBoot' : 'ONBOOT',
                 'IP' : 'IPADDR',
                 'Netmask' : 'NETMASK',
                 'Gateway' : 'GATEWAY',
@@ -290,7 +289,6 @@ class Device(Device_base):
             else:
                 conf[confkey] = 'no'
 
-
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
         # obsolete
@@ -448,5 +446,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.88 $"
+__date__ = "$Date: 2003/07/30 09:07:20 $"
+__version__ = "$Revision: 1.89 $"

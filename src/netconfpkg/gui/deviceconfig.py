@@ -58,6 +58,8 @@ class deviceConfigDialog:
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = NETCONFDIR + glade_file
 
         self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
                                                  domain=PROGNAME)
@@ -161,5 +163,5 @@ class deviceConfigDialog:
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2003/07/30 09:07:20 $"
+__version__ = "$Revision: 1.17 $"

@@ -103,6 +103,10 @@ class editIPsecDruid:
             if widget:
                 widget.set_text(self.ipsec.IKEKey or "")
 
+
+        self.xml.get_widget('onBootCB').set_active(self.ipsec.OnBoot == TRUE)
+
+
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -187,6 +191,8 @@ class editIPsecDruid:
         else:
             self.ipsec.IKEKey = None
             
+        self.ipsec.OnBoot = self.xml.get_widget('onBootCB').get_active()
+
         if self.ipsec.ConnectionType == "Host2Host":
             for key in [ "LocalNetwork", "LocalNetmask", "LocalGateway",
                          "RemoteNetwork", "RemoteNetmask", "RemoteGateway"]:
@@ -244,5 +250,5 @@ class editIPsecDruid:
             widget.set_text(key)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.3 $"
+__date__ = "$Date: 2003/07/30 09:07:20 $"
+__version__ = "$Revision: 1.4 $"

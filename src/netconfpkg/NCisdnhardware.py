@@ -40,19 +40,19 @@ MODUL = 10
 card = {
     # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
     "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "ASUS COM ISDNLink ISA PnP" : [ "12", "5", "0x200", "", "", "", "ASU1690", "ASU1690", "HiSax", "", "hisax" ],
+    "ASUS COM ISDNLink ISA PnP" : [ "12", "", "", "", "", "", "ASU1690", "ASU1690", "HiSax", "", "hisax" ],
     "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
     "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "", "", "HiSax", "",  "hisax" ],
     "AVM Fritz Card PCMCIA" : [ "", "", "", "", "", "", "", "", "", "", "avma1_cs" ],
     "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244", "0a00", "HiSax", "", "hisax" ],
-    "AVM PnP" : [ "27", "5", "0x300", "", "", "", "AVM0900", "AVM0900", "HiSax", "", "hisax" ],
+    "AVM PnP" : [ "27", "", "", "", "", "", "AVM0900", "AVM0900", "HiSax", "", "hisax" ],
     "Billion ISDN P&P PCI 128k Cologne SE" : [ "35", "", "", "", "", "", "1397", "2bd0", "HiSax", "", "hisax" ],
     "Compaq ISDN S0 ISA" : [ "19", "5", "0x0000", "0x0000", "0x0000", "", "", "", "HiSax", "", "hisax" ],
-    "Creatix Teles PnP" : [ "4", "5", "0x0000", "0x0000", "", "", "", "", "HiSax", "", "hisax" ],
-    "Dr. Neuhaus Niccy PnP" : [ "24", "5", "", "0x0000", "0x0000", "", "", "", "HiSax", "", "hisax" ],
+    "Creatix Teles PnP" : [ "4", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
+    "Dr. Neuhaus Niccy PnP" : [ "24", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
     "Dr. Neuhaus Niccy PCI" : [ "24", "", "", "", "", "", "1267", "1016", "HiSax", "", "hisax" ],
     "Dynalink 128PH PCI" : [ "36", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Eicon.Diehl Diva ISA PnP" : [ "11", "9", "0x180", "", "", "", "", "", "HiSax", "", "hisax" ],
+    "Eicon.Diehl Diva ISA PnP" : [ "11", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
     "Eicon.Diehl Diva 20PRO PCI" : [ "11", "", "", "", "", "", "1133", "e001", "HiSax", "", "hisax" ],
     "Eicon.Diehl Diva 20 PCI" : [ "11", "", "", "", "", "", "1133", "e002", "HiSax", "", "hisax" ],
     "Eicon.Diehl Diva 20PRO_U PCI" : [ "11", "", "", "", "", "", "1133", "e003", "HiSax", "", "hisax" ],
@@ -81,9 +81,9 @@ card = {
     "Teles 8.0" : [ "2", "9", "", "", "", "0xd800", "", "", "HiSax", "", "hisax" ],
     "Teles 16.0" : [ "1", "5", "0xd80", "", "", "0xd000", "", "", "HiSax", "", "hisax" ],
     "Teles 16.3" : [ "3", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Teles 16.3c PnP" : [ "14", "9", "0x580", "", "", "", "TAG2610", "TAG2610", "HiSax", "", "hisax" ],
+    "Teles 16.3c PnP" : [ "14", "", "", "", "", "", "TAG2610", "TAG2610", "HiSax", "", "hisax" ],
     "Teles PCI" : [ "21", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Teles PnP" : [ "4", "5", "0x0000", "0x0000", "", "", "", "", "HiSax", "", "hisax" ],
+    "Teles PnP" : [ "4", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
     "Teles S0Box" : [ "25", "7", "0x378", "", "", "", "", "", "HiSax", "", "hisax" ],
     "USR Sportster intern" : [ "16", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050", "6692", "HiSax", "", "hisax" ]
@@ -280,5 +280,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.22 $"
+__date__ = "$Date: 2003/07/30 09:07:20 $"
+__version__ = "$Revision: 1.23 $"
