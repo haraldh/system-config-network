@@ -63,17 +63,19 @@ class dialupDialog:
             })
 
         self.dialog = self.xml.get_widget("Dialog")
+        self.noteBook = self.xml.get_widget("dialupNotebook")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
         self.dialog.set_icon(pix, mask)
 
+
         if type == "Modem":
-            noteBook = self.xml.get_widget("dialupNotebook")
-            for i in [1,3]:
-                noteBook.get_nth_page(i).hide()
-                self.dialog.set_title("Modem Dialup Configuration")
+            self.dialog.set_title("Modem Dialup Configuration")
+            for i in [1,5]:
+                self.noteBook.get_nth_page(i).hide()
         elif type == "ISDN":
+            self.noteBook.get_nth_page(4).hide()
             self.dialog.set_title("ISDN Dialup Configuration")
         
         self.dialog.show()
