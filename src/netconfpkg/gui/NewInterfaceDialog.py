@@ -40,9 +40,14 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 
-Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-               ADSLInterface, TokenRingInterface, CipeInterface,
-               WirelessInterface ]
+if os.access("/usr/sbin/ciped-cb", os.F_OK):
+    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+                   ADSLInterface, TokenRingInterface, CipeInterface,
+                   WirelessInterface ]
+else:
+    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+                   ADSLInterface, TokenRingInterface, WirelessInterface ]
+
 
 
 class NewInterfaceDialog:
