@@ -38,7 +38,6 @@ import getopt
 import signal
 import os
 import os.path
-import GdkImlib
 import string
 import gettext
 import Conf
@@ -83,6 +82,7 @@ if __name__ == '__main__':
             Usage()
             sys.exit(1)
 
+import GdkImlib
 import GDK
 import GTK
 import gtk

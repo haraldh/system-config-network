@@ -44,6 +44,7 @@ class ProfileList(ProfileList_base):
         curr_prof = nwconf['CURRENT_PROFILE']
         if curr_prof == None or curr_prof == '':
             curr_prof = 'default'
+            use_hostname = nwconf['HOSTNAME']
 
         proflist = os.listdir(SYSCONFPROFILEDIR)
         for pr in proflist:
@@ -130,7 +131,7 @@ class ProfileList(ProfileList_base):
 
         devlist = os.listdir(OLDSYSCONFDEVICEDIR)
         for dev in devlist:
-            if dev[:6] != 'ifcfg-':
+            if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
                 continue
             if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev):
                 try:

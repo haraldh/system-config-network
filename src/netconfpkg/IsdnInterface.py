@@ -22,7 +22,7 @@ from NC_functions import _
 from NC_functions import NETCONFDIR
 import NCHardwareList
 import NCisdnhardware
-import gnome.ui
+#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
