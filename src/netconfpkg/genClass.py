@@ -5,7 +5,7 @@
 ## tab-width: 3
 ## End:
 #
-__version__ = "1.12"
+__version__ = "1.13"
 #
 
 ## Copyright (C) 2000,2001 Red Hat, Inc.
@@ -729,14 +729,14 @@ import sys
 import UserList
 from Alchemist import *
 import FileBlackBox
+
+true = (1==1)
+false = not true
 """)
 
 	if OptFunctions:
 		printb("""
 from """ + ImplPrefix + """_functions import *
-
-true = (1==1)
-false = not true
 """)
 
 	printClass(dr, drname, ImplPrefix)
