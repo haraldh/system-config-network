@@ -4,7 +4,7 @@ PYTHON_FILES = netconf.py
 
 GLADE_FILES = maindialog.glade 
 
-EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c
+EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c module-info
 
 execdir = $(sbindir)
 
@@ -29,6 +29,9 @@ glade_DATA = $(GLADE_FILES)
 
 providerdir = $(pkgdatadir)
 provider_DATA = providerdb
+
+moduleinfodir = $(pkgdatadir)
+moduleinfo_DATA = module-info
 
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
