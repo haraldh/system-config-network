@@ -119,6 +119,33 @@ class ProfileList(ProfileList_base):
             dnsconf.write()
             hoconf.write()
 
+            if prof.Active == false and prof.ProfileName != 'default':
+                continue
+
+            for devId in prof.ActiveDevices:
+                for dev in devicelist:
+                    if dev.DeviceId == devId:
+                        devName = dev.Device
+
+                try:
+                    os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                except:
+                    pass
+
+                try:
+                    os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                except:
+                    pass
+
+                try:
+                    os.symlink(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                    os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                except:
+                    print 'Darn, symlinking device '+devName+','+devId+' failed...'
+
+            if prof.Active == false:
+                continue
+
             if os.path.isfile('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
                 os.rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
 
@@ -144,30 +171,6 @@ class ProfileList(ProfileList_base):
                 os.symlink(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
             except:
                 pass
-
-            if prof.Active == false and prof.ProfileName != 'default':
-                continue
-
-            for devId in prof.ActiveDevices:
-                for dev in devicelist:
-                    if dev.DeviceId == devId:
-                        devName = dev.Device
-
-                try:
-                    os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-                except:
-                    pass
-
-                try:
-                    os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
-                except:
-                    pass
-
-                try:
-                    os.symlink(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
-                    os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-                except:
-                    print 'Darn, symlinking device '+devName+','+devId+' failed...'
 
     def activateDevice (self, deviceid, profile, state=None):
         devicelist = NCDeviceList.getDeviceList()

@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
 Version: 0.3.0
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -35,6 +35,9 @@ rm -rf $RPM_BUILD_ROOT
 /usr/sbin/*
 
 %changelog
+* Thu Jul 11 2001 Phil Knirsch <phil@redhat.de> 0.3.0-2
+- Fixed critical problem during profile saving.
+
 * Thu Jul 10 2001 Phil Knirsch <phil@redhat.de> 0.3.0-1
 - 0.3.0-1
 - Final touches for beta2. Most stuff should work now.
