@@ -8,6 +8,8 @@ import shutil
 true = (1==1)
 false = not true
 
+PROGNAME='redhat-config-network'
+NETCONFDIR='/usr/share/redhat-config-network/'
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
@@ -27,6 +29,38 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
                '^cipcb[0-9]+(:[0-9]+)?$':'CIPE',
                '^lo$':'Loopback'}
+
+def get_icon(pixmap_file, dialog):
+    import gtk
+    import GdkImlib
+    import GDK
+    import GTK
+ 
+    if not os.path.exists(pixmap_file):
+        pixmap_file = "pixmaps/" + pixmap_file
+    if not os.path.exists(pixmap_file):
+        pixmap_file = "../pixmaps/" + pixmap_file
+    if not os.path.exists(pixmap_file):
+        pixmap_file = NC_functions.NETCONFDIR + pixmap_file
+    if not os.path.exists(pixmap_file):
+        return None, None
+ 
+    pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
+    return pix, mask
+ 
+def load_icon(pixmap_file, dialog):
+    import gtk
+    import GdkImlib
+    import GDK
+    import GTK
+ 
+    if not dialog: return
+ 
+    pix, mask = get_icon(pixmap_file, dialog)
+    if not pix: return
+ 
+    gtk.GtkPixmap(pix, mask)
+    if dialog: dialog.set_icon(pix, mask)
 
 def create_ethernet_combo(hardwarelist, devname):
         hwdesc = [ 'eth0', 'eth1', 'eth2',
@@ -57,7 +91,8 @@ def create_ethernet_combo(hardwarelist, devname):
         
         return (hwcurr, hwdesc[:])
 
-def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
+def generic_error_dialog (message, parent_dialog, dialog_type="warning",
+			  widget=None, page=0, broken_widget=None):
     import gnome
     import gnome.ui
 

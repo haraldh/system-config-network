@@ -30,6 +30,8 @@ import gettext
 import re
 
 import providerdb
+import NC_functions
+
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -37,13 +39,14 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(NC_functions.PROGNAME)
 _=gettext.gettext
 
 class providerDialog:
-    def __init__(self, xml_main = None, xml_dialup = None,
+    def __init__(self, device, xml_main = None, xml_dialup = None,
                  connection_type="isdn"):
+        self.device = device
         self.xml_main = xml_main
         self.xml_dialup = xml_dialup
         self.done = FALSE
@@ -51,13 +54,14 @@ class providerDialog:
         self.city = ""
         self.name = ""
         self.connection_type = connection_type
+        self.provider = None
         
         glade_file = "chooseprovider.glade"
-
+        
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
+            glade_file = NC_functions.NETCONFDIR + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
 
@@ -75,56 +79,21 @@ class providerDialog:
             "on_providerTree_tree_unselect_row" : self.on_providerTree_tree_unselect_row
             })
 
-        self.dialog.connect("delete-event", gtk.mainquit)
-        self.dialog.connect("hide", gtk.mainquit)
-        
         self.okButton.set_sensitive(FALSE)
         self.setup_provider_db()
-        self.load_icon("network.xpm")
-        self.dialog.show()
+        NC_functions.load_icon("network.xpm", self.dialog)
+        self.dialog.set_close(TRUE)
 
-    def get_icon(self, pixmap_file):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return None, None
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        return pix, mask
+    def on_Dialog_delete_event(self, *args):
+        pass
     
-    def load_icon(self, pixmap_file, widget = None):
-        pix, mask = self.get_icon(pixmap_file)
-        if not pix:
-            return
-
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
-
     def on_cancelButton_clicked(self, button):
         self.done = FALSE
-        self.dialog.destroy()
 
     def on_okButton_clicked(self, button):
         self.done = TRUE
-        if self.xml_main and self.xml_dialup:
-            self.updateDialog(self.get_provider())
-
-    def updateDialog(self, list):
-        self.xml_dialup.get_widget("providerName").set_text(list[3])
-        self.xml_dialup.get_widget("authEntry").set_text(list[14])
-        self.xml_dialup.get_widget("loginNameEntry").set_text(list[5])
-        self.xml_dialup.get_widget("passwordEntry").set_text(list[6])
-        self.xml_dialup.get_widget("areaCodeEntry").set_text(list[7])
-        self.xml_dialup.get_widget("phoneEntry").set_text(list[8])
-        self.xml_dialup.get_widget("userControlCB")["active"] = TRUE
+        self.provider = self.get_provider()
+        self.dehydrate()
 
     def on_providerTree_tree_select_row(self, ctree, node, column):
         if len(node.children) == 0:
@@ -147,48 +116,97 @@ class providerDialog:
         if self.done:
             isp_list = self.get_provider_list()
             for isp in isp_list:
-                if self.country == isp[0] and self.city == isp[1] \
-                   and self.name == isp[3]:
+                if self.country == isp['Country'] and self.city == isp['City'] \
+                   and self.name == isp['ProviderName']:
                     return isp
 
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
         
-        pix_isp, mask_isp = self.get_icon("isp.xpm")
-        pix_city, mask_city = self.get_icon("city.xpm")
+        pix_isp, mask_isp = NC_functions.get_icon("isp.xpm", self.dialog)
+        pix_city, mask_city = NC_functions.get_icon("city.xpm", self.dialog)
         isp_list = self.get_provider_list()
         _country = ""
         _city = ""
         for isp in isp_list:
-            if _country != isp[0]:
-                pix, mask = self.get_icon(isp[2]+".xpm")
-                country = self.dbtree.insert_node(None, None, [isp[0]], 5,
+            if _country != isp['Country']:
+                pix, mask = NC_functions.get_icon(isp['Flag']+".xpm", self.dialog)
+                country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=FALSE)
-                _country = isp[0]
-            if _city != isp[1]:
-                city = self.dbtree.insert_node(country, None, [isp[1]], 5,
+                _country = isp['Country']
+            if _city != isp['City']:
+                city = self.dbtree.insert_node(country, None, [isp['City']], 5,
                                                pix_city, mask_city,
                                                pix_city, mask_city, is_leaf=FALSE)
-                _city = isp[1]
-            name = self.dbtree.insert_node(city, None, [isp[3]], 5,
+                _city = isp['City']
+            name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=FALSE)
 
+    def hydrate(self):
+        pass
+
+    def dehydrate(self):
+        if not self.provider: return
+        
+        self.device.Dialup.ProviderName = self.provider['ProviderName']
+        self.device.Dialup.Login = self.provider['Login']
+        self.device.Dialup.Password = self.provider['Password']
+        self.device.Dialup.Areacode = self.provider['Areacode']
+        self.device.Dialup.PhoneNumber = self.provider['PhoneNumber']
+        self.device.AllowUser = TRUE
+        self.device.BootProto = 'DIALUP'
+        self.device.Domain = self.provider['Domain']
+        if len(self.provider['DNS']) >0:
+            dns = string.split(self.provider['DNS'])
+            if dns[0]: self.device.Dialup.PrimaryDNS = dns[0]
+            try:
+                if dns[1]: self.device.Dialup.SecondaryDNS = dns[1]
+            except(IndexError):
+                pass
+            self.device.AutoDNS = FALSE
+            self.device.Dialup.PeerDNS = FALSE
+        else:
+            self.device.AutoDNS = TRUE
+            self.device.Dialup.PeerDNS = TRUE
+
+
 class ISDNproviderDialog(providerDialog):
-    def __init__(self, xml_main = None, xml_dialup = None):
-        providerDialog.__init__(self, xml_main, xml_dialup)
+    def __init__(self, device, xml_main = None, xml_dialup = None):
+        providerDialog.__init__(self, device, xml_main, xml_dialup)
 
     def get_provider_list(self):
         return providerdb.get_provider_list("isdn")
 
+    def on_okButton_clicked(self, button):
+        self.done = TRUE
+        self.provider = self.get_provider()
+        providerDialog.dehydrate(self)
+        self.dehydrate()
+
+    def dehydrate(self):
+        self.device.Type = 'ISDN'
+        self.device.Dialup.Authentication = string.lower(self.provider['Authentication'])
+
+
 class ModemproviderDialog(providerDialog):
-    def __init__(self, xml_main = None, xml_dialup = None):
-        providerDialog.__init__(self, xml_main, xml_dialup)
+    def __init__(self, device, xml_main = None, xml_dialup = None):
+        providerDialog.__init__(self, device, xml_main, xml_dialup)
 
     def get_provider_list(self):
         return providerdb.get_provider_list("modem") 
 
+    def on_okButton_clicked(self, button):
+        self.done = TRUE
+        self.provider = self.get_provider()
+        providerDialog.dehydrate(self)
+        self.dehydrate()
 
+    def dehydrate(self):
+        self.device.Type = 'Modem'
+        
+
+        
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)

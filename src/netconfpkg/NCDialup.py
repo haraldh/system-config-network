@@ -17,8 +17,8 @@ from NC_functions import *
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
 _=gettext.gettext
 
 country_code = {
@@ -303,7 +303,11 @@ class IsdnDialup(Dialup):
 
         # DEFROUTE alway yes by ISDN
         conf['DEFROUTE'] = 'yes'
-            
+
+        if conf.has_key('PEERDNS') and conf['PEERDNS'] == "yes":
+            if conf['DNS1']: del conf['DNS1']
+            if conf['DNS2']: del conf['DNS2']
+
         if self.PPPOptions:
             opt = ""
             for i in xrange(len(self.PPPOptions)):

@@ -91,12 +91,13 @@ class DialupDialog(deviceConfigDialog):
         widget =  self.xml.get_widget("countryCodeEntry")
         self.xml.get_widget("countryCodeCombo").set_popdown_strings(country_code_list)
         if self.device.Dialup.Regioncode and len(self.device.Dialup.Regioncode) >0:
-            widget.set_text(string.split(self.device.Dialup.Regioncode, ":")[1])
+            widget.set_text(string.split(self.device.Dialup.Regioncode, ":")[0])
             state = true
         else:
             widget.set_text(_("None"))
-        self.xml.get_widget("countryCodeCombo").set_sensitive(state)
-        self.xml.get_widget("dialingRuleCB").set_active(state)
+        widget = self.xml.get_widget("dialingRuleCB")
+        widget.set_active(state)
+        self.on_dialingRuleCB_toggled(widget)
 
         if self.device.Dialup.Authentication and len(self.device.Dialup.Authentication) >0:
             self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)
@@ -229,8 +230,8 @@ class DialupDialog(deviceConfigDialog):
             clist.remove(clist.selection[0])
 
     def on_chooseButton_clicked(self, button):
-        dialog = providerDialog(self.xml_main, self.xml)
-
+        dialog = providerDialog(self.device, self.xml_main, self.xml)
+        
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
         
@@ -245,8 +246,12 @@ class ISDNDialupDialog(DialupDialog):
         self.dialog.set_title(_("ISDN Dialup Configuration"))
 
     def on_chooseButton_clicked(self, button):
-        dialog = ISDNproviderDialog(self.xml_main, self.xml)
-		
+        dialog = ISDNproviderDialog(self.device, self.xml_main, self.xml)
+        dl = dialog.xml.get_widget("Dialog")
+        dl.run()
+        self.hydrate()
+        DialupDialog.hydrate(self)
+        
     def hydrate(self):
         DialupDialog.hydrate(self)
         if self.device.Dialup.Callback:
@@ -310,7 +315,7 @@ class ModemDialupDialog(DialupDialog):
         self.noteBook.get_nth_page(page).hide()
         
     def on_chooseButton_clicked(self, button):
-        dialog = ModemproviderDialog(self.xml_main, self.xml)
+        dialog = ModemproviderDialog(self.device, self.xml_main, self.xml)
 
     def hydrate(self):
         DialupDialog.hydrate(self)

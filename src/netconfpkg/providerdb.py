@@ -27,7 +27,9 @@ import re
 FALSE = 0
 TRUE = not FALSE
 
-netconf_dir = "/usr/share/redhat-config-network"
+import NC_functions
+
+netconf_dir = NC_functions.NETCONFDIR
 provider_db = "providerdb"
 
 class provider:
@@ -151,11 +153,23 @@ class provider:
         self.ip_mode = ip_mode
     
     def get_provider_data(self):
-        self.provider_data = [self.country, self.city, self.flag, self.name,
-                              self.connection_type, self.user_name, self.password,
-                              self.areacode, self.phone, self.domain, self.dns,
-                              self.netmask, self.encap, self.layer, self.auth_type,
-                              self.ip_mode]
+        self.provider_data = {'Country' : self.country,
+                              'City' : self.city,
+                              'Flag' : self.flag,
+                              'ProviderName' : self.name,
+                              'ConnectionType' : self.connection_type,
+                              'Login': self.user_name,
+                              'Password' : self.password,
+                              'Areacode' : self.areacode,
+                              'PhoneNumber' : self.phone,
+                              'Domain' : self.domain,
+                              'DNS' : self.dns,
+                              'Netmask' : self.netmask,
+                              'EncapMode': self.encap,
+                              'Layer2' : self.layer,
+                              'Authentication': self.auth_type,
+                              'IpMode' : self.ip_mode }
+        
         return self.provider_data
 
 def get_value(s):
