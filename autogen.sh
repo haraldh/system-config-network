@@ -45,7 +45,6 @@ intltoolize --copy -f --automake
 patch -p0 < intltool.patch
 
 autoconf
-autoheader
 aclocal -I . $ACLOCAL_FLAGS
 aclocal
 automake --add-missing $am_opt

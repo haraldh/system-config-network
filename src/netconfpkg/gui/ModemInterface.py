@@ -98,7 +98,7 @@ class ModemInterface:
         if not ModemInterface.modemList:
             dialog = gtk.Dialog(_('Modem probing...'),
                                 None,
-                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT|)
+                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT)
             dialog.set_border_width(10)
             label = gtk.Label(_('Probing for Modems, please wait...'))
             dialog.vbox.pack_start(label, gtk.FALSE)

@@ -1,91 +1,3 @@
-dnl
-dnl AC_PROG_RPM([ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND])
-dnl
-AC_DEFUN(AC_PROG_RPM,
-[dnl
-dnl Check if the rpm program is available
-dnl
-	ac_rpm_bin=''
-	AC_PATH_PROG(ac_rpm_bin, rpm)
-	if	test -n "$ac_rpm_bin"; then
-		ifelse([$1], , :, [$1])
-	else    
-		ifelse([$2], , :, [$2])       
-   fi  
-])
-
-dnl
-dnl AC_CHECK_RPM([PACKAGE [, MINIMAL-VERSION [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND ]]])
-dnl
-AC_DEFUN(AC_CHECK_RPM,
-[dnl
-	failed="true"
-	package=$1
-	vers=$2
-
-	AC_PROG_RPM([], [ AC_MSG_ERROR( [no rpm system] ) ] ) 
-	AC_MSG_CHECKING( [for rpm package $package] )
-
-	version=$(rpm -q --queryformat '%{VERSION}' "$package" 2>/dev/null)
-	release=$(rpm -q --queryformat '%{RELEASE}' "$package" 2>/dev/null)
-
-	if test -n "$version" -a -n "$release"; then
-		AC_MSG_RESULT( [found $version-$release] )
-		if test -n "$vers"; then
-			AC_MSG_CHECKING([checking, if version is newer or equal to $package-$vers])
-			mversion="$vers"					
-			mrelease=$(echo $mversion|cut -d '-' -f 2)
-			test "$mversion" = "$mrelease" && mrelease=""
-			mversion=$(echo $mversion|cut -d '-' -f 1)
-			mmajor=$(echo $mversion|cut -d '.' -f 1)
-			mminor=$(echo $mversion|cut -d '.' -f 2)
-			msubminor=$(echo $mversion|cut -d '.' -f 3)
-			major=$(echo $version|cut -d '.' -f 1)
-			minor=$(echo $version|cut -d '.' -f 2)
-			subminor=$(echo $version|cut -d '.' -f 3)
-
-			test -z "$major" && major=0
-			test -z "$minor" && minor=0
-			test -z "$subminor" && subminor=0
-			test -z "$release" && release=0
-
-			test -z "$mmajor" && mmajor=0
-			test -z "$mminor" && mminor=0
-			test -z "$msubminor" && msubminor=0
-			test -z "$mrelease" && mrelease=0
-			if test "$mmajor" = "$major"; then
-				if test "$mminor" = "$minor"; then
-					if test "$msubminor" = "$subminor"; then
-						if test "$mrelease" -le "$release"; then
-							failed="false"
-						fi
-					elif test "$msubminor" -le "$subminor"; then
-						failed="false"
-					fi
-				elif test "$mminor" -le "$minor"; then
-					failed="false"
-				fi
-			elif test "$mmajor" -le "$major"; then
-				failed="false"
-			fi
-
-			if test "$failed" != "true"; then
-				AC_MSG_RESULT( [yes] )
-			else
-				AC_MSG_RESULT( [failed] )
-			fi
-		fi
-	else
-		AC_MSG_RESULT( [failed] )
-	fi
-
-	if test "$failed" != "true"; then
-		ifelse([$3], , :, [$3])
-	else    
-		ifelse([$4], , :, [$4])
-   fi  
-])
-
 # Macro to add for using GNU gettext.
 # Ulrich Drepper <drepper@cygnus.com>, 1995.
 #
@@ -117,6 +29,8 @@ AC_DEFUN(AM_GLIB_WITH_NLS,
     AC_SUBST(USE_NLS)
 
     USE_INCLUDED_LIBINTL=no
+    AM_PATH_PROG_WITH_TEST(XGETTEXT, xgettext,
+		  [test -z "`$ac_dir/$ac_word -h 2>&1 | grep '(HELP)'`"], :)
 
     dnl If we use NLS figure out what method
     if test "$USE_NLS" = "yes"; then
@@ -166,8 +80,6 @@ AC_DEFUN(AM_GLIB_WITH_NLS,
 	      if test "$MSGFMT" != "no"; then
 		AC_CHECK_FUNCS(dcgettext)
 		AC_PATH_PROG(GMSGFMT, gmsgfmt, $MSGFMT)
-		AM_PATH_PROG_WITH_TEST(XGETTEXT, xgettext,
-		  [test -z "`$ac_dir/$ac_word -h 2>&1 | grep '(HELP)'`"], :)
 		AC_TRY_LINK(, [extern int _nl_msg_cat_cntr;
 			       return _nl_msg_cat_cntr],
 		  [CATOBJEXT=.gmo
@@ -310,33 +222,8 @@ AC_DEFUN(AM_GLIB_WITH_NLS,
   ])
 
 AC_DEFUN(AM_GLIB_GNU_GETTEXT,
-  [AC_REQUIRE([AC_PROG_MAKE_SET])dnl
-   AC_REQUIRE([AC_PROG_CC])dnl
-   AC_REQUIRE([AC_PROG_RANLIB])dnl
-#   AC_REQUIRE([AC_ISC_POSIX])dnl
-   AC_REQUIRE([AC_HEADER_STDC])dnl
-   AC_REQUIRE([AC_C_CONST])dnl
-   AC_REQUIRE([AC_C_INLINE])dnl
-   AC_REQUIRE([AC_TYPE_OFF_T])dnl
-   AC_REQUIRE([AC_TYPE_SIZE_T])dnl
-   AC_REQUIRE([AC_FUNC_ALLOCA])dnl
-   AC_REQUIRE([AC_FUNC_MMAP])dnl
-
-   AC_CHECK_HEADERS([argz.h limits.h locale.h nl_types.h malloc.h string.h \
-unistd.h sys/param.h])
-   AC_CHECK_FUNCS([getcwd munmap putenv setenv setlocale strchr strcasecmp \
-strdup __argz_count __argz_stringify __argz_next])
-
-#   if test "${ac_cv_func_stpcpy+set}" != "set"; then
-#     AC_CHECK_FUNCS(stpcpy)
-#   fi
-#   if test "${ac_cv_func_stpcpy}" = "yes"; then
-#     AC_DEFINE(HAVE_STPCPY)
-#   fi
-
-   AM_LC_MESSAGES
+  [
    AM_GLIB_WITH_NLS
-
    if test "x$CATOBJEXT" != "x"; then
      if test "x$ALL_LINGUAS" = "x"; then
        LINGUAS=
@@ -358,24 +245,8 @@ strdup __argz_count __argz_stringify __argz_next])
      fi
    fi
 
-#   dnl The reference to <locale.h> in the installed <libintl.h> file
-#   dnl must be resolved because we cannot expect the users of this
-#   dnl to define HAVE_LOCALE_H.
-#   if test $ac_cv_header_locale_h = yes; then
-#     INCLUDE_LOCALE_H="#include <locale.h>"
-#   else
-#     INCLUDE_LOCALE_H="\
-#/* The system does not provide the header <locale.h>.  Take care yourself.  */"
-#   fi
-#   AC_SUBST(INCLUDE_LOCALE_H)
-
-   dnl Determine which catalog format we have (if any is needed)
-   dnl For now we know about two different formats:
-   dnl   Linux libc-5 and the normal X/Open format
    test -d po || mkdir po
    if test "$CATOBJEXT" = ".cat"; then
-     AC_CHECK_HEADER(linux/version.h, msgformat=linux, msgformat=xopen)
-
      dnl Transform the SED scripts while copying because some dumb SEDs
      dnl cannot handle comments.
      sed -e '/^#/d' $srcdir/po/$msgformat-msg.sed > po/po2msg.sed
@@ -383,19 +254,6 @@ strdup __argz_count __argz_stringify __argz_next])
    dnl po2tbl.sed is always needed.
    sed -e '/^#.*[^\\]$/d' -e '/^#$/d' \
      $srcdir/po/po2tbl.sed.in > po/po2tbl.sed
-
-#   dnl In the intl/Makefile.in we have a special dependency which makes
-#   dnl only sense for gettext.  We comment this out for non-gettext
-#   dnl packages.
-#   if test "$PACKAGE" = "gettext"; then
-#     GT_NO="#NO#"
-#     GT_YES=
-#   else
-#     GT_NO=
-#     GT_YES="#YES#"
-#   fi
-#   AC_SUBST(GT_NO)
-#   AC_SUBST(GT_YES)
 
    dnl If the AC_CONFIG_AUX_DIR macro for autoconf is used we possibly
    dnl find the mkinstalldirs script in another subdir but ($top_srcdir).
@@ -408,10 +266,6 @@ strdup __argz_count __argz_stringify __argz_next])
      MKINSTALLDIRS="\$(top_srcdir)/mkinstalldirs"
    fi
    AC_SUBST(MKINSTALLDIRS)
-
-#   dnl *** For now the libtool support in intl/Makefile is not for real.
-#   l=
-#   AC_SUBST(l)
 
    dnl Generate list of files to be processed by xgettext which will
    dnl be included in po/Makefile.

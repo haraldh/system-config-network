@@ -8,8 +8,9 @@ URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
-Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2, wvdial, rhpl > 0.15
-BuildRequires: alchemist, alchemist-devel, python >= 2.2, python-devel >= 2.2, libglade2-devel, openjade, docbook-style-dsssl
+BuildArch: noarch
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2, wvdial, rhpl > 0.15 
+BuildRequires: /usr/bin/python2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc
 Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
@@ -36,7 +37,6 @@ firewalls and masquerading, and can use profiles.
 %setup
 %endif
 
-libtoolize --force --copy
 %configure
 
 %if %{rp3}
@@ -89,7 +89,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
 %{_datadir}/pixmaps/*
-%{_libdir}/python2.2/site-packages/ethtoolmodule.so
 %config(noreplace) /etc/X11/sysconfig/*.desktop
 %config(noreplace) /etc/X11/applnk/*/*.desktop
 %config(noreplace) /etc/pam.d/*
@@ -108,6 +107,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Tue Jul  2 2002 Harald Hoyer <harald@redhat.de> 1.1.7-1
+- cleanup, usability
+
 * Mon Jul 01 2002 Than Ngo <than@redhat.com> 1.1.6-1
 - get rid of isdnup userisdnctl, both are now part of isdn4k-utils
 

@@ -1,5 +1,5 @@
 AC_INIT(./acinclude.m4)
-AM_INIT_AUTOMAKE(redhat-config-network, 1.1.6)
+AM_INIT_AUTOMAKE(redhat-config-network, 1.1.7)
 
 PYTHON=python2.2
 AC_SUBST(PYTHON)
@@ -51,23 +51,12 @@ else
 fi
 
 
-AM_PROG_LIBTOOL
-
 dnl prevent to copy po/Makefile.in.in
 GETTEXT_PACKAGE=redhat-config-network
 AC_SUBST(GETTEXT_PACKAGE)
 AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
-
-AC_CHECK_FUNCS([memset])
-AC_CHECK_FUNCS([socket])
-AC_CHECK_FUNCS([strerror])
-AC_CHECK_FUNCS([strrchr])
-AC_CHECK_HEADERS([fcntl.h])
-AC_CHECK_HEADERS([sys/ioctl.h])
-AC_FUNC_LSTAT
-AC_FUNC_MALLOC
-AC_PROG_GCC_TRADITIONAL
+AC_PROG_LN_S
 
 AC_OUTPUT([
 Makefile

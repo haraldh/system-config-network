@@ -27,7 +27,6 @@ GLADE_FILES = \
 	neat-control-propertiesdialog.glade \
 	neat-control-statusdialog.glade \
 	sharedtcpip.glade \
-	tcpipdialog.glade \
 	tokenringconfig.glade \
 	TokenRingHardwareDruid.glade \
 	TokenRingInterfaceDruid.glade \
@@ -67,7 +66,6 @@ PYTHON_FILES = \
 	providerdb.py \
 	provider.py \
 	sharedtcpip.py \
-	tcpdialog.py \
 	tokenringconfig.py \
 	TokenRingHardwareDruid.py \
 	TokenRingInterface.py \
