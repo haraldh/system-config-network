@@ -12,11 +12,22 @@
         <DeviceId TYPE="STRING" VALUE=""/>
       </ActiveDevices>
       <DNS TYPE="LIST">
-        <Domain TYPE="STRING" VALUE=""/>
-        <ServerList TYPE="LIST" ANONYMOUS="TRUE">
-          <IP TYPE="STRING" VALUE=""/>
+        <PrimaryDNS TYPE="STRING"/>
+        <SecondaryDNS TYPE="STRING"/>
+        <TernaryDNS TYPE="STRING"/>
+        <SearchList TYPE="LIST" ANONYMOUS="TRUE">
+          <Domain TYPE="STRING">
           </ServerList>
         </DNS>
+      <HostsList TYPE="LIST" ANONYMOUS="TRUE">
+        <Host>
+          <IP TYPE="STRING">
+          <Hostname TYPE="STRING">
+          <Aliases TYPE="LIST" ANONYMOUS="TRUE">
+            <Alias TYPE="STRING">
+            </Aliases>
+          </Host>
+        </HostsList>
       </Profile>   
     </ProfileList>
     </datatree>
