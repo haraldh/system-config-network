@@ -32,6 +32,7 @@ import string
 import gettext
 import re
 import Conf
+import commands
 import NC_functions
 
 from gtk import TRUE
@@ -73,16 +74,37 @@ class ethernetHardwareDialog:
         self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
+        self.button = 0
 
     def on_Dialog_delete_event(self, *args):
-        pass
+        self.button = 1
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
+        cmd = '/sbin/modprobe '+self.hw.Card.ModuleName
+        if self.hw.Card.IRQ:
+            cmd = cmd + ' irq='+self.hw.Card.IRQ
+        if self.hw.Card.IoPort:
+            cmd = cmd + ' io='+self.hw.Card.IoPort
+        if self.hw.Card.IoPort1:
+            cmd = cmd + ' io1='+self.hw.Card.IoPort1
+        if self.hw.Card.IoPort2:
+            cmd = cmd + ' io2='+self.hw.Card.IoPort2
+        if self.hw.Card.Mem:
+            cmd = cmd + ' mem='+self.hw.Card.Mem
+        if self.hw.Card.DMA0:
+            cmd = cmd + ' dma='+self.hw.Card.DMA0
+        if self.hw.Card.DMA1:
+            cmd = cmd + ' dma1='+self.hw.Card.DMA1
+        (status, output) = commands.getstatusoutput(cmd)
+        if status != 0:
+            NC_functions.generic_error_dialog('The Ethernet card could not be initialized. Please verify your settings and try again.', self.dialog)
+            self.button = 1
+            return
         self.hw.commit()
 
     def on_cancelButton_clicked(self, button):
-        pass
+        self.button = 1
 
     def on_adapterEntry_changed(self, entry):
         pass

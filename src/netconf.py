@@ -931,8 +931,8 @@ class mainDialog:
             else:
                 dialog = addisdnHardwareDialog()
 
-        button = dialog.xml.get_widget('Dialog').run()
-        if button == 0:
+        dialog.xml.get_widget('Dialog').run()
+        if dialog.button == 0:
             hardwarelist.commit()
         else:
             hardwarelist.rollback()
