@@ -572,6 +572,7 @@ class mainDialog:
                 del prof.ActiveDevices[pos]
 
         del devicelist[clist.selection[0]]
+        devicelist.commit()
         self.hydrate()
 
     def on_generic_entry_insert_text(self, entry, partial_text, length, pos, str):
@@ -594,6 +595,7 @@ class mainDialog:
                     prof.Active = true
                     #print "profile " + prof.ProfileName + " activated\n"
                 else: prof.Active = false
+            profilelist.commit()
             self.hydrate()
         
 
@@ -807,6 +809,7 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 del prof.DNS.SearchList[clist.selection[0]]
+                prof.DNS.SearchList.commit()
                 self.hydrate()
 
     def on_hostsAddButton_clicked(self, *args):
@@ -860,6 +863,7 @@ class mainDialog:
             return
 
         del prof.HostsList[clist.selection[0]]
+        prof.HostsList.commit()
         self.hydrate()
 
     def on_profileList_click_column (self, *args):
@@ -898,6 +902,8 @@ class mainDialog:
             p.Active = false
             
         prof.Active = true
+
+        prof.commit()
         
         #self.xml.get_widget("profileList").clear()
         self.initialized = false
@@ -926,7 +932,7 @@ class mainDialog:
         profilelist[i].apply(profile)
         profilelist[i].commit()
         self.initialized = None
-        clist.clear()
+        clist.clear()        
         self.hydrate()
 
     def on_profileRenameButton_clicked (self, *args):
@@ -985,6 +991,7 @@ class mainDialog:
             return
 
         del profilelist[profilelist.index(self.get_active_profile())]
+        profilelist.commit()
         profilelist[0].Active = true
         self.initialized = None
         #clist.clear()
