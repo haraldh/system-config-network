@@ -1,6 +1,6 @@
 ## netconf - A network configuration tool
 # -*- coding: utf-8 -*-
-## Copyright (C) 2001-2004 Red Hat, Inc.
+## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 ## Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
@@ -1678,7 +1678,7 @@ class mainDialog:
         from version import PRG_NAME
         dlg = gnome.ui.About(PRG_NAME,
                              PRG_VERSION,
-                             _("Copyright (c) 2001-2004 Red Hat, Inc."),
+                             _("Copyright (c) 2001-2005 Red Hat, Inc."),
                              _("This software is distributed under the GPL. "
                                "Please report bugs to Red Hat's bug tracking "
                                "system: http://bugzilla.redhat.com/"),

@@ -200,5 +200,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/29 11:03:21 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2005/03/03 17:25:26 $"
+__version__ = "$Revision: 1.12 $"

@@ -614,4 +614,4 @@ if __name__ == '__main__':
 #
 #
 #
-# $Id: coverage.py,v 1.2 2004/06/29 11:03:21 harald Exp $
+# $Id: coverage.py,v 1.3 2005/03/03 17:25:26 harald Exp $

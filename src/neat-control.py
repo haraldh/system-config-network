@@ -3,7 +3,7 @@
 ## redhat-network-control - A easy-to-use interface for configuring/activating
 ## Copyright (C) 2002 Red Hat, Inc.
 ## Copyright (C) 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2003-2004 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2003-2005 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -142,7 +142,7 @@ class mainDialog:
         from version import PRG_NAME
         dlg = gnome.ui.About(PRG_NAME,
                              PRG_VERSION,
-                             _("Copyright (c) 2001-2004 Red Hat, Inc."),
+                             _("Copyright (c) 2001-2005 Red Hat, Inc."),
                              _("This software is distributed under the GPL. "
                                "Please Report bugs to Red Hat's Bug Tracking "
                                "System: http://bugzilla.redhat.com/"),
