@@ -321,7 +321,13 @@ class mainDialog:
         self.hydrateProfiles()
         self.hydrateDevices()
         self.hydrateHardware()
-
+        apply_btn = self.xml.get_widget("applyButton")
+        if self.changed():
+            apply_btn.set_sensitive (TRUE)
+        else:
+            apply_btn.set_sensitive (FALSE)
+            
+            
     def hydrateDevices(self):
         devicelist = getDeviceList()
         activedevicelist = NetworkDevice().get()
