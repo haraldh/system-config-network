@@ -13,7 +13,11 @@ GLADE_FILES = \
 	modemconfig.glade \
 	wirelessconfig.glade \
 	tcpipdialog.glade \
-	devicetype.glade
+	devicetype.glade \
+	ADSLInterfaceDruid.glade \
+	DialupDruid.glade \
+	EthernetHardwareDruid.glade \
+	IsdnHardwareDruid.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py	Firewall.py 
@@ -56,7 +60,11 @@ PYTHON_FILES = \
 	providerdb.py \
 	provider.py \
 	wirelessconfig.py \
-	tcpdialog.py
+	tcpdialog.py \
+	DialupDruid.py \
+	EthernetHardwareDruid.py \
+	InterfaceCreator.py \
+	NewInterface.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 

@@ -196,8 +196,10 @@ class mainDialog:
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
-        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/redhat-config-network/pixmaps/active.xpm")
-        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/redhat-config-network/pixmaps/inactive.xpm")
+        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
+                                                   NETCONFDIR + "pixmaps/active.xpm")
+        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
+                                                     NETCONFDIR + "/pixmaps/inactive.xpm")
 
         row = 0
         for dev in devicelist:
@@ -256,24 +258,6 @@ class mainDialog:
                 clist.select_row(row, 0)
             row = row + 1
 
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.isfile(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.isfile(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.isfile(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.isfile(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
-
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
 
@@ -288,6 +272,10 @@ class mainDialog:
         pass
 
     def on_deviceAddButton_clicked (self, clicked):
+        #interface = NewInterface()
+        #gtk.mainloop()
+        #self.hydrate()
+        
         profilelist = getProfileList()
         devicelist = getDeviceList()
 
@@ -311,7 +299,7 @@ class mainDialog:
                 break
 
             self.hydrate()
-
+        
     def on_deviceCopyButton_clicked (self, button):
         devicelist = getDeviceList()
 
@@ -878,8 +866,13 @@ if __name__ == '__main__':
 
     updateNetworkScripts()
 
-    if sys.argv[0][-4:] != '-cmd':
+    progname = os.path.basename(sys.argv[0])
+    if progname == 'redhat-config-network' or progname == 'neat':
         window = mainDialog()
+        gtk.mainloop()
+        sys.exit(0)
+    elif progname == 'redhat-config-network-druid':
+        interface = NewInterface()
         gtk.mainloop()
         sys.exit(0)
 
