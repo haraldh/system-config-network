@@ -1,4 +1,185 @@
+2003-09-15  Harald Hoyer  <harald@redhat.com>
+
+	* po/nl.po 1.16, po/no.po 1.151, po/pt.po 1.143, po/pt_BR.po 1.11, po/redhat-config-network.pot 1.136, po/ru.po 1.114, po/sv.po 1.157, po/tr.po 1.98, po/vi.po 1.3, po/zh_CN.po 1.107, po/zh_TW.po 1.130, po/cs.po 1.127, po/da.po 1.126, po/de.po 1.183, po/el.po 1.104, po/es.po 1.169, po/fr.po 1.174, po/hu.po 1.9, po/is.po 1.158, po/it.po 1.160, po/ja.po 1.172, po/ko.po 1.169, ChangeLog 1.82.2.15.2.14:
+	*** empty log message ***
+
+	* src/netconfpkg/NC_functions.py 1.71.2.14.2.8:
+	added NC_functions.debug
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.14.2.4:
+	- harden against missing module-info
+	- fix paths for chandev
+
+	* src/netconfpkg/NCDeviceFactory.py 1.4.2.3.2.3: log register()
+
+	* src/netconf.py 1.188.2.5.2.5:
+	added logging to /var/log/redhat-config-network
+	added -d --debug
+
+2003-09-15  Tammy Fox  <tfox@redhat.com>
+
+	* doc/figs/n-t-n-ipsec-diagram.png 1.1, doc/figs/n-to-n-ipsec-local.png 1.1, doc/figs/n-to-n-ipsec-remote.png 1.1, doc/figs/neat-ipsec.png 1.1:
+	New file.
+
+	* doc/figs/n-t-n-ipsec-diagram.png 1.1.2.1, doc/figs/n-to-n-ipsec-local.png 1.1.2.1, doc/figs/n-to-n-ipsec-remote.png 1.1.2.1, doc/figs/neat-cipe.png 1.1.6.1, doc/figs/neat-control.png 1.2.4.1, doc/figs/neat-dns.png 1.3.4.1, doc/figs/neat-ethernet-settings.png 1.3.4.1, doc/figs/neat-ethernet.png 1.3.4.1, doc/figs/neat-hosts.png 1.3.4.1, doc/figs/neat-ipsec.png 1.1.2.1, doc/figs/neat-isdn.png 1.3.4.1, doc/figs/neat-modem.png 1.3.4.1, doc/figs/neat-tokenring.png 1.3.4.1, doc/figs/neat-wireless.png 1.3.4.1, doc/figs/neat-xdsl-settings.png 1.2.4.1, doc/figs/neat-xdsl.png 1.3.4.1, doc/figs/neat.png 1.1.4.1:
+	with ipsec and other updates, from version 1.2.56-1
+
+	* doc/network-config-ipsec-start.html 1.1, doc/network-config-ipsec-test.html 1.1, doc/network-config-ipsec-vpn.html 1.1, doc/network-config-ipsec.html 1.1, doc/network-save-config.html 1.1, doc/rhdocs-man.css 1.1:
+	New file.
+
+	* doc/index.html 1.12.4.1, doc/intro.html 1.6.4.1, doc/legalnotice.html 1.6.4.1, doc/network-aliases.html 1.2.4.1, doc/network-config-activate.html 1.3.4.1, doc/network-config-cipe.html 1.4.4.1, doc/network-config-dns.html 1.4.4.1, doc/network-config-ethernet.html 1.5.4.1, doc/network-config-hosts.html 1.5.4.1, doc/network-config-ipsec-start.html 1.1.2.1, doc/network-config-ipsec-test.html 1.1.2.1, doc/network-config-ipsec-vpn.html 1.1.2.1, doc/network-config-ipsec.html 1.1.2.1, doc/network-config-isdn.html 1.2.4.1, doc/network-config-modem.html 1.4.4.1, doc/network-config-tokenring.html 1.4.4.1, doc/network-config-wireless.html 1.6.4.1, doc/network-config-xdsl.html 1.4.4.1, doc/network-profiles.html 1.2.4.1, doc/network-save-config.html 1.1.2.1, doc/rhdocs-man.css 1.1.2.1:
+	with ipsec and other updates, from version 1.2.56-1
+
+2003-09-10  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/plugins/Makefile.am 1.5.4.1: added NCDevCTC.py
+
+	* src/netconfpkg/plugins/NCHWTokenring.py 1.2.2.1.2.2, src/netconfpkg/plugins/NCHWModem.py 1.2.2.1.2.2, src/netconfpkg/plugins/NCHWIsdn.py 1.2.2.3.2.2, src/netconfpkg/plugins/NCHWEthernet.py 1.2.2.1.2.2:
+	added save()
+
+	* src/netconfpkg/plugins/NCHWCTC.py 1.1: New file.
+
+	* src/netconfpkg/plugins/NCHWCTC.py 1.1.2.1: initial version
+
+	* src/netconfpkg/gui/HardwareDialog.py 1.1: New file.
+
+	* src/netconfpkg/gui/HardwareDialog.py 1.1.2.1: initial version
+
+	* src/netconfpkg/gui/tokenringhardware.py 1.17.2.1.2.2:
+	inherit from HardwareDialog
+
+	* src/netconfpkg/gui/Makefile.am 1.22.2.2.2.2: added HardwareDialog.py
+
+	* src/netconfpkg/gui/maindialog.py 1.23.2.14.2.8:
+	init self.active_profile_name with DEFAULT_PROFILE_NAME
+
+	* src/netconfpkg/gui/editipsec.py 1.1.2.8:
+	use gen_heykey() instead of strange shell commands
+
+	* src/netconfpkg/gui/editipsec.glade 1.1.2.6: fixed tyop
+
+	* src/netconfpkg/gui/ctcconfig.py 1.9.2.1.2.2:
+	import plugins and register dialog for CTC
+
+	* src/netconfpkg/gui/cipeconfig.py 1.23.2.1.2.3:
+	- use gen_heykey() instead of strange shell commands
+	- removed exception with empty LocalPort
+
+	* src/netconfpkg/gui/NewInterfaceDialog.py 1.29.2.1.2.2:
+	use only plugins now
+
+	* src/netconfpkg/gui/EthernetInterface.py 1.30.2.1.2.2:
+	made EthernetInterface more reusable
+
+	* src/netconfpkg/gui/EthernetHardwareDruid.py 1.23.2.1.2.2:
+	'Ethernet' -> ETHERNET
+
+	* src/netconfpkg/gui/CipeInterface.py 1.22.2.1.2.2:
+	use gen_heykey() instead of strange shell commands
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.14.2.3:
+	global _MyWvDial added
+
+	* src/netconfpkg/NCDialup.py 1.59.2.9.2.3: chmod 0600 /etc/wvdial.conf
+
+	* src/netconfpkg/NC_functions.py 1.71.2.14.2.7:
+	- added /dev/modem to the beginning of the modemDeviceList
+	- added gen_hexkey(), which reads from /dev/random
+	- rpms_notinstalled() in big try: except: pass
+	- create_generic_combo() can create list with new devs
+	- getModemList() now with correct modem probing
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.14.2.2: - fixed #103776
+	- added s390 devices
+	- added chandev parsing code
+	- moved specific code to plugins
+
+	* src/netconfpkg/NCHardware.py 1.3.2.3.2.3: added save() and postSave()
+
+2003-09-02  Sarah Smith  <sarahs@redhat.com>
+
+	* po/zh_CN.po 1.106: all updated
+
+2003-08-31  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.103: one more update for el.po
+
+2003-08-29  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.150: Update
+
+2003-08-27  pve-nl  <pve-nl@redhat.com>
+
+	* po/nl.po 1.15: minor fix in nl.po
+
+2003-08-27  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.102: Another update of Greek translation
+
+2003-08-24  morais  <morais@redhat.com>
+
+	* po/pt.po 1.142: consistency fixes
+
+2003-08-23  jncp  <jncp@redhat.com>
+
+	* po/pt.po 1.141: New updates -- jncp
+
+2003-08-22  frolix68  <frolix68@redhat.com>
+
+	* po/el.po 1.101: Updated Greek translation.
+
+2003-08-20  menthos  <menthos@redhat.com>
+
+	* po/sv.po 1.156: 2003-08-21  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2003-08-20  Yelitza Louze  <ylouze@redhat.com>
+
+	* po/es.po 1.168: Updated spanish translation
+
+2003-08-20  Michelle Kim  <mkim@redhat.com>
+
+	* po/ko.po 1.168: updated translation
+
+2003-08-19  lkanter  <lkanter@redhat.com>
+
+	* po/ru.po 1.113: update
+
+2003-08-15  ra  <ra@redhat.com>
+
+	* po/is.po 1.157: *** empty log message ***
+
+2003-08-15  Bernd Groh  <bgroh@redhat.com>
+
+	* po/de.po 1.182: daily update
+
+2003-08-14  Audrey Simons  <asimons@redhat.com>
+
+	* po/fr.po 1.173: Software updates
+
+2003-08-14  menthos  <menthos@redhat.com>
+
+	* po/sv.po 1.155: 2003-08-15  Christian Rose  <menthos@menthos.com>
+
+		* sv.po: Updated Swedish translation.
+
+2003-08-14  mitr  <mitr@redhat.com>
+
+	* po/cs.po 1.126: Update Czech translation
+
 2003-08-14  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/GUI_functions.py 1.21.2.8: no exception on kill
+
+2003-08-14  Hung-Pin Wu  <hpwu@redhat.com>
+
+	* po/zh_TW.po 1.129: Updated translation
+
+2003-08-14  Harald Hoyer  <harald@redhat.com>
+
+	* po/tr.po 1.97, po/zh_CN.po 1.105, po/zh_TW.po 1.128, po/cs.po 1.125, po/da.po 1.125, po/de.po 1.181, po/el.po 1.100, po/es.po 1.167, po/fr.po 1.172, po/hu.po 1.8, po/is.po 1.156, po/it.po 1.159, po/ja.po 1.171, po/ko.po 1.167, po/nl.po 1.14, po/no.po 1.149, po/pt.po 1.140, po/pt_BR.po 1.10, po/redhat-config-network.pot 1.135, po/ru.po 1.112, po/sv.po 1.154, ChangeLog 1.102, configure.in 1.155, redhat-config-network.spec.in 1.186:
+	release 1.3.6-1
 
 	* src/netconfpkg/gui/deviceconfig.py 1.18: fixed #100471
 
