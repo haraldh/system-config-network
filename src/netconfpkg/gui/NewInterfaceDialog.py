@@ -30,6 +30,8 @@ from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
 from GenericInterface import GenericInterface
 from EthernetInterface import EthernetInterface
+from TokenringInterface import TokenringInterface
+from CipeInterface import CipeInterface
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
 from netconfpkg.gui import GUI_functions
@@ -37,7 +39,7 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 
 Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-               ADSLInterface ]
+               ADSLInterface, TokenringInterface, CipeInterface ]
 
 
 class NewInterfaceDialog:
@@ -80,7 +82,7 @@ class NewInterfaceDialog:
             self.interface_clist.set_row_data (row, iface)
 
         # Add the interfaces that have no druid yet
-        devs = [ CIPE, WIRELESS, TOKENRING ]
+        devs = [ WIRELESS ]
         machine = os.uname()[4]
         if machine == 's390' or machine == 's390x':
             devs.append(CTC)

@@ -71,7 +71,7 @@ class tokenringHardware:
     
     def get_druids(self):
         for self.hw in self.hardwarelist:
-            if self.hw.Type == 'Tokenring': return
+            if self.hw.Type == TOKENRING: return
 
         self.has_tokenring = FALSE
         return self.druids[0:]
@@ -113,7 +113,7 @@ class tokenringHardware:
         list = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
-            if modInfo[i]['type'] == "eth":
+            if modInfo[i]['type'] == "tr":
                 list.append(modInfo[i]['description'])
         list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
@@ -128,7 +128,7 @@ class tokenringHardware:
         if not self.has_tokenring:
             id = self.hardwarelist.addHardware()
             self.hw = self.hardwarelist[id]
-        self.hw.Type = 'Tokenring'
+        self.hw.Type = TOKENRING
         self.hw.createCard()
         self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()

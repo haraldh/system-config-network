@@ -29,14 +29,16 @@ from ModemInterface import ModemInterface
 from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
 from EthernetInterface import EthernetInterface
+from TokenringInterface import TokenringInterface
+from CipeInterface import CipeInterface
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 
-Interfaces = [ IsdnInterface, ModemInterface,
-               ADSLInterface, EthernetInterface ]
+Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+               ADSLInterface, TokenringInterface, CipeInterface ]
 
 
 class NewInterface:

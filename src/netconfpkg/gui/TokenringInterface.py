@@ -26,18 +26,17 @@ from netconfpkg import NCDevice
 from netconfpkg import NCProfileList
 from netconfpkg import ethtool
 from netconfpkg.gui import sharedtcpip
-#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
 import libglade
 import string
 import os
-from EthernetHardwareDruid import ethernetHardware
+from TokenRingHardwareDruid import tokenringHardware
 from InterfaceCreator import InterfaceCreator
 
-class EthernetInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, connection_type=ETHERNET, do_save = 1,
+class TokenringInterface(InterfaceCreator):
+    def __init__(self, toplevel=None, connection_type=TOKENRING, do_save = 1,
                  druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
@@ -50,7 +49,7 @@ class EthernetInterface(InterfaceCreator):
             glade_file = NETCONFDIR + glade_file
         self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
 
-        glade_file = 'EthernetInterfaceDruid.glade'
+        glade_file = 'TokenRingInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -74,7 +73,7 @@ class EthernetInterface(InterfaceCreator):
 
         self.devicelist = NCDeviceList.getDeviceList()
         self.device = NCDevice.Device()
-        self.device.Type = ETHERNET
+        self.device.Type = connection_type
         self.device.OnBoot = TRUE
         self.device.AllowUser = FALSE
 
@@ -97,8 +96,8 @@ class EthernetInterface(InterfaceCreator):
             self.druid.remove(i)
             self.druids.append(i)
 
-        self.hwDruid = ethernetHardware(self.toplevel)
-        self.hwDruid.has_ethernet = None
+        self.hwDruid = tokenringHardware(self.toplevel)
+        self.hwDruid.has_tokenring = None
         self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
                       + self.druids[1:]
 
@@ -108,10 +107,10 @@ class EthernetInterface(InterfaceCreator):
             self.xml.get_widget('mtuEntry').set_flags(GTK.Visible)
 
     def get_project_name(self):
-        return _('Ethernet connection')
+        return _('Token Ring connection')
 
     def get_project_description(self):
-        return _("Create a new ethernet connection.")
+        return _("Create a new Token Ring connection.")
 
     def get_druids(self):
         return self.druids
@@ -166,19 +165,17 @@ class EthernetInterface(InterfaceCreator):
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
-
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
         self.devlist = []
         for hw in hardwarelist:
-            if hw.Type == ETHERNET:
+            if hw.Type == TOKENRING:
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
                 
-        clist.append([_("Other Ethernet Card")])
+        clist.append([_("Other Tokenring Card")])
         clist.select_row (self.hw_sel, 0)
-        pass
     
     def on_finish_page_back(self,druid_page, druid):
         pass
