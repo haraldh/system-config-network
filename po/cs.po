@@ -1,4 +1,4 @@
-# $Id: cs.po,v 1.28 2002/06/04 13:32:27 harald Exp $
+# $Id: cs.po,v 1.29 2002/06/04 14:22:01 harald Exp $
 #
 # Czech translation for netcfg
 # Copyright (C) 2001 Free Software Foundation, Inc.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.0\n"
 "POT-Creation-Date: 2002-06-04 16:04+0200\n"
-"PO-Revision-Date: 2001-08-17 16:14+0100\n"
+"PO-Revision-Date: 2002-06-07 03:57+0100\n"
 "Last-Translator: Milan Kerslager <kerslage@linux.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -42,12 +42,15 @@ msgid ""
 "\n"
 "Usage: redhat-config-network-cmd -p --profile <profile>"
 msgstr ""
+"redhat-config-network-cmd - Nástroj pro konfiguraci sítì z pøíkazové rádky\n"
+"\n"
+"Pou¾ití: redhat-config-network-cmd -p --profile <profil>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
 #: src/netconf.py:63
 #, python-format
 msgid "Please restart %s with root permissions!"
-msgstr ""
+msgstr "Spus»te prosím %s s právy administrátora (root)."
 
 #. import GDK
 #. already in NCDeviceList
@@ -68,18 +71,18 @@ msgstr ""
 #. #                  break
 #: src/netconf.py:437 src/netconf.py:450
 msgid "Do you want to save your changes?"
-msgstr ""
+msgstr "Chcete ulo¾it provedené zmìny?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
 #: src/netconf.py:517
 msgid "The Loopback device can not be edited!"
-msgstr ""
+msgstr "Zaøízení loopback nemù¾e být editováno!"
 
 #. Fixed change device names in active list of all profiles
 #: src/netconf.py:575 src/netconfpkg/gui/GenericInterface.py:149
 msgid "This device can not be edited with this tool!"
-msgstr ""
+msgstr "Toto zaøízení nemù¾e být tímto nástrojem editováno!"
 
 #. #        device = devicelist[select]
 #: src/netconf.py:601
@@ -89,31 +92,31 @@ msgstr ""
 #: src/netconf.py:604
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
-msgstr ""
+msgstr "Chcete skuteènì smazat zaøízení '%s'?"
 
 #: src/netconf.py:626
 msgid "You have made some changes in your configuration."
-msgstr ""
+msgstr "Provedli jste zmìny v konfiguraci."
 
 #: src/netconf.py:627
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
+msgstr "Pro aktivaci sí»ového zaøízení %s musí být zmìny ulo¾eny."
 
 #: src/netconf.py:628
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Chcete pokraèovat?"
 
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
 #: src/netconf.py:640 src/neat-control.py:116
 msgid "Network device activating..."
-msgstr ""
+msgstr "Aktivace sí»ového zaøízení..."
 
 #: src/netconf.py:643
 #, python-format
 msgid "Activating network device %s, please wait..."
-msgstr ""
+msgstr "Probíhá aktivace sí»ového zaøízení %s, èekejte prosím..."
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
@@ -121,7 +124,7 @@ msgstr ""
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
 #: src/netconf.py:676 src/neat-control.py:159
 msgid "To be rewritten!"
-msgstr ""
+msgstr "Bude pøepsáno!"
 
 #. print "profile " + prof.ProfileName + " activated\n"
 #. edit_button.set_sensitive(FALSE)
@@ -186,49 +189,53 @@ msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
 msgstr ""
+"Vlo¾te jméno nového profilu.\n"
+"Jméno mù¾e obsahovat pouze písmena a èísla."
 
 #: src/netconf.py:1097 src/netconf.py:1168
 msgid "The name may only contain letters and digits!"
-msgstr ""
+msgstr "Jméno mù¾e obsahovat pouze písmena a èísla!"
 
 #: src/netconf.py:1101 src/netconf.py:1172
 msgid "The profile can't be named \"default\"!"
-msgstr ""
+msgstr "Profil se nemù¾e jmenovat 'default'!"
 
 #: src/netconf.py:1106 src/netconf.py:1181
 msgid "The profile name already exists!"
-msgstr ""
+msgstr "Toto jméno profilu u¾ existuje!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
 #: src/netconf.py:1156
 msgid "The \"default\" profile can't be renamed!"
-msgstr ""
+msgstr "Profil se jménem 'default' nemù¾e být pøejmenován!"
 
 #: src/netconf.py:1159
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
 msgstr ""
+"Vlo¾te prosím nové jméno profilu.\n"
+"Jméno mù¾e obsahovat pouze písmena a èísla."
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
 #: src/netconf.py:1202
 msgid "The \"default\" Profile can not be deleted!"
-msgstr ""
+msgstr "Profil se jménem 'default' nemù¾e být smazán!"
 
 #: src/netconf.py:1205
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
-msgstr ""
+msgstr "Chcete skuteènì smazat profil '%s'?"
 
 #. clist.clear()
 #. hardwarelist.rollback()
 #: src/netconf.py:1329
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
-msgstr ""
+msgstr "Chcete skuteènì smazat '%s'?"
 
 #. remove hardware
 #. remove all devices used this hardware
@@ -250,7 +257,7 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ADSLInterface.py:73
 msgid "xDSL connection"
-msgstr ""
+msgstr "xDSL pøipojení"
 
 #: src/netconfpkg/gui/ADSLInterface.py:79
 msgid ""
@@ -263,6 +270,13 @@ msgid ""
 "Speeds vary according to the technology used, but generally range from "
 "144kbps to 1.0Mbps."
 msgstr ""
+"Vytvoøení xDSL pøipojení. Pøipojení pou¾ívá jeden z mnoha typù broadband "
+"spojení známých pod souhrným oznaèením DSL (Digital Subscriber Lines). "
+"Patøí mezi nì ADSL (asymetrické, tj. smìrem z Internetu je spojení "
+"rychlej¹í, ne¾ smìrem do Internetu), SDSL (symetrické, tj. obì rychlosti "
+"jsou stejné) a nìkolik dal¹ích. Tento zpùsob pøipojení je obvyklý v USA "
+"a postupnì je zavádìn i v ostatních zemích. Rychlost je závislá na "
+"pou¾ité technologii a pohybuje se zhruba od 144kbps do 1Mbps."
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -287,21 +301,21 @@ msgstr ""
 #: src/netconfpkg/gui/WirelessInterface.py:212
 #: src/netconfpkg/gui/TokenRingInterface.py:193
 msgid "You have selected the following information:"
-msgstr ""
+msgstr "Vyplnili jeste následující informace:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:118
 msgid "Ethernet Device:"
-msgstr ""
+msgstr "Ethernetové zaøízení:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:119
 #: src/netconfpkg/gui/DialupDruid.py:110
 msgid "Provider Name:"
-msgstr ""
+msgstr "Jméno poskytovatele:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:120
 #: src/netconfpkg/gui/DialupDruid.py:111
 msgid "Login Name:"
-msgstr ""
+msgstr "Pøihla¹ovací jméno:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:121
 #: src/netconfpkg/gui/DialupDruid.py:113
@@ -310,15 +324,15 @@ msgstr ""
 #: src/netconfpkg/gui/WirelessInterface.py:236
 #: src/netconfpkg/gui/TokenRingInterface.py:211
 msgid "Press \"Finish\" to create this account"
-msgstr ""
+msgstr "Stisknìte 'Dokonèit' pro vytvoøení úètu"
 
 #: src/netconfpkg/gui/DialupDruid.py:109
 msgid "Hardware:"
-msgstr ""
+msgstr "Hardware:"
 
 #: src/netconfpkg/gui/DialupDruid.py:112
 msgid "Phone Number:"
-msgstr ""
+msgstr "Telefonní èíslo:"
 
 #. Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -353,7 +367,7 @@ msgstr ""
 #: src/netconfpkg/gui/ethernethardware.glade.h:21
 #: src/netconfpkg/gui/tokenringhardware.glade.h:21
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámý"
 
 #. pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
 #. self.set_size_request(-1, 1)
@@ -390,7 +404,7 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/IsdnInterface.py:75
 msgid "ISDN connection"
-msgstr ""
+msgstr "ISDN pøipojení"
 
 #: src/netconfpkg/gui/IsdnInterface.py:81
 msgid ""
@@ -403,6 +417,13 @@ msgid ""
 "advanced regions.  It is available but uncommon in the USA.  Speeds range "
 "from 64kbps to 128kbps."
 msgstr ""
+"Vytvoøení ISDN pøipojení. ISDN (Integrated Services Digital Network) "
+"umo¾òuje digitální telefonní spojení s va¹ím poskytovatelem pøipojení "
+"k Internetu. Spojení je zabezpeèeno speciální telefonní linkou k "
+"ústøednì telefonní spoleènosti. Pøipojení je realizováno zaøízením "
+"známým jako Terminal Adater (TA). ISDN je populární v Evropì a v "
+"nìkolika dal¹ích technologicky pokroèilých regionech. V USA je "
+"dostupné, ale obvykle se nepou¾ívá. Dosahuje rychlostí 64 a¾ 128kbps."
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -422,7 +443,7 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ModemInterface.py:68
 msgid "Modem connection"
-msgstr ""
+msgstr "Modemové pøipojení"
 
 #: src/netconfpkg/gui/ModemInterface.py:74
 msgid ""
