@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-07-31 14:45+0200\n"
+"POT-Creation-Date: 2003-08-01 14:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,12 +98,12 @@ msgstr ""
 #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
 #: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1582
+#: src/netconfpkg/gui/maindialog.py:1588
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr ""
 
 #: src/neat-control.py:141 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1583
+#: src/netconfpkg/gui/maindialog.py:1589
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -146,7 +146,7 @@ msgstr ""
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:949
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:955
 msgid "To be rewritten!"
 msgstr ""
 
@@ -1367,7 +1367,7 @@ msgstr ""
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
 #: src/netconfpkg/gui/maindialog.py:660 src/netconfpkg/gui/maindialog.py:753
-#: src/netconfpkg/gui/maindialog.py:976
+#: src/netconfpkg/gui/maindialog.py:982
 msgid "Do you want to save your changes?"
 msgstr ""
 
@@ -1380,25 +1380,30 @@ msgid "Edit Device..."
 msgstr ""
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:873
+#: src/netconfpkg/gui/maindialog.py:860
+#, python-format
+msgid "The device type %s cannot be edited!\n"
+msgstr ""
+
+#: src/netconfpkg/gui/maindialog.py:879
 msgid "The Loopback device can not be removed!"
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:877
+#: src/netconfpkg/gui/maindialog.py:883
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:909 src/netconfpkg/gui/maindialog.py:1662
+#: src/netconfpkg/gui/maindialog.py:915 src/netconfpkg/gui/maindialog.py:1668
 msgid "You have made some changes in your configuration."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:910
+#: src/netconfpkg/gui/maindialog.py:916
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:912 src/netconfpkg/gui/maindialog.py:1665
+#: src/netconfpkg/gui/maindialog.py:918 src/netconfpkg/gui/maindialog.py:1671
 msgid "Do you want to continue?"
 msgstr ""
 
@@ -1414,28 +1419,28 @@ msgstr ""
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1104
+#: src/netconfpkg/gui/maindialog.py:1110
 msgid "The Loopback device can not be disabled!"
 msgstr ""
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1330 src/netconfpkg/gui/maindialog.py:1409
+#: src/netconfpkg/gui/maindialog.py:1336 src/netconfpkg/gui/maindialog.py:1415
 msgid "The name may only contain letters and digits!"
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1335 src/netconfpkg/gui/maindialog.py:1414
+#: src/netconfpkg/gui/maindialog.py:1341 src/netconfpkg/gui/maindialog.py:1420
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1341 src/netconfpkg/gui/maindialog.py:1420
+#: src/netconfpkg/gui/maindialog.py:1347 src/netconfpkg/gui/maindialog.py:1426
 msgid "The profile name already exists!"
 msgstr ""
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1387
+#: src/netconfpkg/gui/maindialog.py:1393
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr ""
@@ -1443,12 +1448,12 @@ msgstr ""
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1442
+#: src/netconfpkg/gui/maindialog.py:1448
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1448
+#: src/netconfpkg/gui/maindialog.py:1454
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr ""
@@ -1456,24 +1461,24 @@ msgstr ""
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1521
+#: src/netconfpkg/gui/maindialog.py:1527
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1539
+#: src/netconfpkg/gui/maindialog.py:1545
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr ""
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1552
+#: src/netconfpkg/gui/maindialog.py:1558
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr ""
 
-#: src/netconfpkg/gui/maindialog.py:1663
+#: src/netconfpkg/gui/maindialog.py:1669
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr ""
@@ -1988,6 +1993,9 @@ msgstr ""
 #. Bugzilla #52252
 #. for i in conf.keys():
 #. if not conf[i] or conf[i] == "": del conf[i]
+#. the key is now stored in a seperate file
+#. conf.oldmode = 0600
+#. conf.chmod(0600)
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
