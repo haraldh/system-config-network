@@ -35,16 +35,19 @@ def get_icon(pixmap_file, dialog):
     import GdkImlib
     import GDK
     import GTK
- 
+
+    fn = pixmap_file
     if not os.path.exists(pixmap_file):
-        pixmap_file = "pixmaps/" + pixmap_file
+        pixmap_file = "pixmaps/" + fn
     if not os.path.exists(pixmap_file):
-        pixmap_file = "../pixmaps/" + pixmap_file
+        pixmap_file = "../pixmaps/" + fn
     if not os.path.exists(pixmap_file):
-        pixmap_file = NC_functions.NETCONFDIR + pixmap_file
+        pixmap_file = NETCONFDIR + fn
+    if not os.path.exists(pixmap_file):
+         pixmap_file = NETCONFDIR + "pixmaps/" + fn
     if not os.path.exists(pixmap_file):
         return None, None
- 
+
     pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
     return pix, mask
  

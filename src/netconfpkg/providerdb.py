@@ -23,14 +23,16 @@ import signal
 import os
 import string
 import re
+import NC_functions
 
 FALSE = 0
 TRUE = not FALSE
 
-import NC_functions
-
-netconf_dir = NC_functions.NETCONFDIR
 provider_db = "providerdb"
+if not os.path.exists(provider_db):
+    provider_db = "netconfpkg/" + provider_db
+if not os.path.exists(provider_db):
+    provider_db = NC_functions.NETCONFDIR + provider_db
 
 class provider:
     def __init__(self):
