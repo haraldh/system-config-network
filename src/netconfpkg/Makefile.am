@@ -42,7 +42,7 @@ INCLUDES = -I/usr/include/python1.5
 
 noinst_LTLIBRARIES = libethtoolmodule.la
 libethtoolmodule_la_SOURCES = ethtool.c	
-pythondir = $(pkgdatadir)/netconfpkg
+pythondir = $(libdir)/python1.5/site-packages/
 python_PROGRAMS = ethtoolmodule.so
 ethtoolmodule_so_SOURCES = 
 ethtoolmodule_so_LDFLAGS = -fPIC -DPIC -shared -Wl,-soname,ethtoolmodule.so -module \

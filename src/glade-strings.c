@@ -81,8 +81,8 @@ void some_function_name() {
    * netconfpkg/gui/ModemDruid.glade:269 */
   _("115200");
 
-  /* netconfpkg/gui/wirelessconfig.glade:610
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:481 */
+  /* netconfpkg/gui/wirelessconfig.glade:454
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:425 */
   _("11M");
 
   /* netconfpkg/gui/EthernetHardwareDruid.glade:464
@@ -117,8 +117,8 @@ void some_function_name() {
    * netconfpkg/gui/ModemDruid.glade:245 */
   _("19200");
 
-  /* netconfpkg/gui/wirelessconfig.glade:610
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:481 */
+  /* netconfpkg/gui/wirelessconfig.glade:454
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:425 */
   _("1M");
 
   /* netconfpkg/gui/IsdnHardwareDruid.glade:523
@@ -133,8 +133,8 @@ void some_function_name() {
    * netconfpkg/gui/ModemDruid.glade:245 */
   _("2400");
 
-  /* netconfpkg/gui/wirelessconfig.glade:610
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:481 */
+  /* netconfpkg/gui/wirelessconfig.glade:454
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:425 */
   _("2M");
 
   /* netconfpkg/gui/EthernetHardwareDruid.glade:464
@@ -171,8 +171,8 @@ void some_function_name() {
    * netconfpkg/gui/tokenringhardware.glade:557 */
   _("5");
 
-  /* netconfpkg/gui/wirelessconfig.glade:610
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:481 */
+  /* netconfpkg/gui/wirelessconfig.glade:454
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:425 */
   _("5.5M");
 
   /* netconfpkg/gui/modemconfig.glade:262
@@ -222,6 +222,9 @@ void some_function_name() {
   /* maindialog.glade:114 */
   _("Active Profile");
 
+  /* netconfpkg/gui/wirelessconfig.glade:584 */
+  _("Ad-Hoc");
+
   /* netconfpkg/gui/edithosts.glade:18 */
   _("Add / Edit Hosts entry");
 
@@ -261,6 +264,14 @@ void some_function_name() {
 
   /* netconfpkg/gui/dslconfig.glade:633 */
   _("Allow the link come up on demand.");
+
+  /* netconfpkg/gui/wirelessconfig.glade:454
+   * netconfpkg/gui/wirelessconfig.glade:478
+   * netconfpkg/gui/wirelessconfig.glade:584
+   * netconfpkg/gui/wirelessconfig.glade:608
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:425
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:449 */
+  _("Auto");
 
   /* netconfpkg/gui/tcpipdialog.glade:548 */
   _("Automatically obtain DNS information from _provider");
@@ -320,7 +331,7 @@ void some_function_name() {
 
   /* netconfpkg/gui/EthernetInterfaceDruid.glade:142
    * netconfpkg/gui/TokenRingInterfaceDruid.glade:142
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:559 */
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:503 */
   _("Configure Network Settings");
 
   /* netconfpkg/gui/CipeInterfaceDruid.glade:43 */
@@ -369,7 +380,7 @@ void some_function_name() {
   /* netconfpkg/gui/TokenRingInterfaceDruid.glade:408 */
   _("Create Tokenring Device");
 
-  /* netconfpkg/gui/WirelessInterfaceDruid.glade:825 */
+  /* netconfpkg/gui/WirelessInterfaceDruid.glade:769 */
   _("Create Wireless Device");
 
   /* netconfpkg/gui/IsdnHardwareDruid.glade:478
@@ -569,17 +580,12 @@ void some_function_name() {
   /* netconfpkg/gui/ADSLInterfaceDruid.glade:193 */
   _("Ethernet _Device:");
 
-  /* netconfpkg/gui/EthernetInterfaceDruid.glade:111
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:111 */
+  /* netconfpkg/gui/EthernetInterfaceDruid.glade:111 */
   _("Ethernet card");
 
   /* netconfpkg/gui/IsdnHardwareDruid.glade:503
    * netconfpkg/gui/isdnhardware.glade:510 */
   _("Eu_ro ISDN (EDSS1)");
-
-  /* netconfpkg/gui/wirelessconfig.glade:641
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:232 */
-  _("Fre_quency:");
 
   /* netconfpkg/gui/sharedtcpip.glade:862
    * netconfpkg/gui/tcpipdialog.glade:653 */
@@ -695,7 +701,7 @@ void some_function_name() {
 
   /* netconfpkg/gui/EthernetInterfaceDruid.glade:335
    * netconfpkg/gui/TokenRingInterfaceDruid.glade:335
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:752 */
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:696 */
   _("MTU:");
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:366 */
@@ -705,6 +711,9 @@ void some_function_name() {
    * netconfpkg/gui/dialupconfig.glade:2159
    * netconfpkg/gui/dslconfig.glade:722 */
   _("Make this connection the default _route");
+
+  /* netconfpkg/gui/wirelessconfig.glade:584 */
+  _("Managed");
 
   /* netconfpkg/gui/sharedtcpip.glade:240
    * netconfpkg/gui/tcpipdialog.glade:215 */
@@ -786,6 +795,9 @@ void some_function_name() {
   /* maindialog.glade:18 */
   _("Network Configuration");
 
+  /* netconfpkg/gui/wirelessconfig.glade:705 */
+  _("Network Name (SSID):");
+
   /* netconfpkg/gui/CipeInterfaceDruid.glade:18
    * netconfpkg/gui/DialupDruid.glade:23
    * netconfpkg/gui/IsdnHardwareDruid.glade:23 */
@@ -827,7 +839,7 @@ void some_function_name() {
   /* netconfpkg/gui/ctcconfig.glade:531
    * netconfpkg/gui/EthernetInterfaceDruid.glade:299
    * netconfpkg/gui/TokenRingInterfaceDruid.glade:299
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:716 */
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:660 */
   _("Please enter the MTU parameter to set the maximum Transfer Unit of this interface. On s390/s390x the MTU has 1492 as default setting");
 
   /* netconfpkg/gui/hardwaretype.glade:97 */
@@ -927,8 +939,7 @@ void some_function_name() {
   /* netconfpkg/gui/EthernetHardwareDruid.glade:48 */
   _("Select Ethernet Adapter");
 
-  /* netconfpkg/gui/EthernetInterfaceDruid.glade:48
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:48 */
+  /* netconfpkg/gui/EthernetInterfaceDruid.glade:48 */
   _("Select Ethernet Device");
 
   /* netconfpkg/gui/IsdnHardwareDruid.glade:60 */
@@ -946,12 +957,17 @@ void some_function_name() {
   /* netconfpkg/gui/TokenRingInterfaceDruid.glade:48 */
   _("Select Tokenring Device");
 
-  /* netconfpkg/gui/EthernetInterfaceDruid.glade:70
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:70 */
+  /* netconfpkg/gui/WirelessInterfaceDruid.glade:48 */
+  _("Select Wireless Device");
+
+  /* netconfpkg/gui/EthernetInterfaceDruid.glade:70 */
   _("Select the Ethernet card you want to configure:");
 
   /* netconfpkg/gui/TokenRingInterfaceDruid.glade:70 */
   _("Select the Tokenring card you want to configure:");
+
+  /* netconfpkg/gui/WirelessInterfaceDruid.glade:70 */
+  _("Select the Wireless card you want to configure:");
 
   /* netconfpkg/gui/dialupconfig.glade:2144 */
   _("Select the authentication protocol used by your ISP.");
@@ -1053,8 +1069,11 @@ void some_function_name() {
   /* netconfpkg/gui/wirelessconfig.glade:18 */
   _("Wireless Device Configuration");
 
-  /* netconfpkg/gui/wirelessconfig.glade:726 */
+  /* netconfpkg/gui/wirelessconfig.glade:752 */
   _("Wireless Settings");
+
+  /* netconfpkg/gui/WirelessInterfaceDruid.glade:111 */
+  _("Wireless card");
 
   /* netconfpkg/gui/tcpipdialog.glade:133 */
   _("You can configure IP address settings for an interface automatically if your network supports it. For manual configuration information, contact your Network Administrator or Internet Service Provider.");
@@ -1122,12 +1141,15 @@ void some_function_name() {
   /* netconfpkg/gui/dialupconfig.glade:2077 */
   _("_Authentication:");
 
+  /* netconfpkg/gui/wirelessconfig.glade:621 */
+  _("_Auto");
+
   /* netconfpkg/gui/modemconfig.glade:149
    * netconfpkg/gui/ModemDruid.glade:130 */
   _("_Baud Rate:");
 
-  /* netconfpkg/gui/wirelessconfig.glade:442
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:259 */
+  /* netconfpkg/gui/wirelessconfig.glade:485
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:297 */
   _("_Channel:");
 
   /* netconfpkg/gui/dialupconfig.glade:694 */
@@ -1173,8 +1195,7 @@ void some_function_name() {
   /* netconfpkg/gui/dialupconfig.glade:1827 */
   _("_Dial Mode:");
 
-  /* netconfpkg/gui/wirelessconfig.glade:388
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:178 */
+  /* netconfpkg/gui/WirelessInterfaceDruid.glade:178 */
   _("_ESSID (Network ID):");
 
   /* maindialog.glade:468 maindialog.glade:861 maindialog.glade:1122
@@ -1224,7 +1245,7 @@ void some_function_name() {
   /* netconfpkg/gui/EthernetInterfaceDruid.glade:219
    * netconfpkg/gui/sharedtcpip.glade:137
    * netconfpkg/gui/TokenRingInterfaceDruid.glade:219
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:636 */
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:580 */
   _("_Hostname (optional):");
 
   /* maindialog.glade:1201 netconfpkg/gui/tcpipdialog.glade:467 */
@@ -1241,8 +1262,8 @@ void some_function_name() {
    * netconfpkg/gui/tokenringhardware.glade:341 */
   _("_IO:");
 
-  /* netconfpkg/gui/wirelessconfig.glade:668
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:313 */
+  /* netconfpkg/gui/wirelessconfig.glade:361
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:351 */
   _("_Key:");
 
   /* netconfpkg/gui/cipeconfig.glade:291
@@ -1273,7 +1294,7 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:548 */
   _("_Minute");
 
-  /* netconfpkg/gui/wirelessconfig.glade:361
+  /* netconfpkg/gui/wirelessconfig.glade:549
    * netconfpkg/gui/WirelessInterfaceDruid.glade:205 */
   _("_Mode:");
 
@@ -1350,6 +1371,9 @@ void some_function_name() {
   /* netconfpkg/gui/dslconfig.glade:507 */
   _("_Service-Name:");
 
+  /* netconfpkg/gui/wirelessconfig.glade:670 */
+  _("_Specified:");
+
   /* netconfpkg/gui/editadress.glade:149
    * netconfpkg/gui/sharedtcpip.glade:320
    * netconfpkg/gui/tcpipdialog.glade:295 */
@@ -1364,8 +1388,8 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:242 */
   _("_Time");
 
-  /* netconfpkg/gui/wirelessconfig.glade:415
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:286 */
+  /* netconfpkg/gui/wirelessconfig.glade:417
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:324 */
   _("_Transmit Rate:");
 
   /* netconfpkg/gui/cipeconfig.glade:373
@@ -1391,12 +1415,7 @@ void some_function_name() {
 
   /* netconfpkg/gui/dialupconfig.glade:1553
    * netconfpkg/gui/dialupconfig.glade:1931
-   * netconfpkg/gui/wirelessconfig.glade:593
-   * netconfpkg/gui/wirelessconfig.glade:610
-   * netconfpkg/gui/wirelessconfig.glade:634
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:398
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:481
-   * netconfpkg/gui/WirelessInterfaceDruid.glade:505 */
+   * netconfpkg/gui/WirelessInterfaceDruid.glade:290 */
   _("auto");
 
   /* netconfpkg/gui/sharedtcpip.glade:72

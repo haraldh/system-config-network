@@ -87,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
 %{_datadir}/pixmaps/*
+%{_libdir}/python1.5/site-packages/ethtoolmodule.so
 %config(noreplace) /etc/X11/sysconfig/*.desktop
 %config(noreplace) /etc/X11/applnk/*/*.desktop
 %config(noreplace) /etc/pam.d/*
@@ -109,7 +110,11 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Wed Apr 17 2002 Trond Eivind Glomsrød <teg@redhat.com> 
 - Turn off wireless. It doesn't work with all modes, all cards
-  and you can't edit IP settings after the initial attempt
+ and you can't edit IP settings after the initial attempt
+
+* Wed Apr 17 2002 Harald Hoyer <harald@redhat.com> 1.0.0-1
+- moved ethmodule.so to /usr/lib
+- call it 1.0.0
 
 * Tue Apr 16 2002 Trond Eivind Glomsrød <teg@redhat.com> 0.9.30-1
 - Updated translations

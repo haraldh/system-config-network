@@ -112,7 +112,7 @@ class ModemInterface:
             ModemInterface.modemList = dlist
             dialog.destroy()
             if dlist == []:
-                generic_error_dialog(_('No modem was found on system.'))
+                generic_error_dialog(_('No modem was found on your system.'))
                 dlist = modemDeviceList
         else:
             dlist = ModemInterface.modemList
