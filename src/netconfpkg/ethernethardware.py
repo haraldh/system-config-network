@@ -85,7 +85,7 @@ class ethernetHardwareDialog:
             pos = pos+1
 
         if idx == -1:
-            idx = hardwarelist.self.addHardware()
+            idx = hardwarelist.addHardware()
 
         hw = hardwarelist[idx]
 
