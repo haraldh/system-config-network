@@ -30,7 +30,14 @@ if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
 PROGNAME='redhat-config-network'
-gettext.install(PROGNAME, "/usr/share/locale", 1)
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+
+try:
+    gettext.install(PROGNAME, "/usr/share/locale", 1)
+except IOError:
+    import __builtin__
+    __builtin__.__dict__['_'] = unicode    
 
 import getopt
 import signal
