@@ -45,7 +45,6 @@ class ModemInterface:
         self.xml = libglade.GladeXML(glade_file, 'druid', domain=NC_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
-            "on_volumeCB_toggled" : self.on_volumeCB_toggled,
             "on_Modem_prepare" : self.on_Modem_prepare,
             "on_Modem_back" : self.on_Modem_back,
             "on_Modem_next" : self.on_Modem_next,
@@ -93,11 +92,6 @@ class ModemInterface:
     def on_Modem_back(self, druid_page, druid):
         self.hardwarelist.rollback()
         
-    def on_volumeCB_toggled(self, check):
-        scale = self.xml.get_widget('volumeMenu')
-        scale.set_sensitive(check['active'])
-        scale.grab_focus()
-
     def setup(self):
         res = kudzu.probe(kudzu.CLASS_MODEM,kudzu.BUS_SERIAL|kudzu.BUS_PCI,kudzu.PROBE_ALL)
         if res == []:
@@ -114,16 +108,17 @@ class ModemInterface:
         self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
         self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
         self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
-        if self.xml.get_widget("volumeCB").get_active():
-            Item = self.xml.get_widget("volumeMenu")["label"]
-            if Item == _("Low"):
-                self.hw.Modem.ModemVolume = 1
-            elif Item == _("Medium"):
-                self.hw.Modem.ModemVolume = 2
-            elif Item == _("High"):
-                self.hw.Modem.ModemVolume = 3
-            elif Item == _("Very High"):
-                self.hw.Modem.ModemVolume = 4
+        Item = self.xml.get_widget("volumeMenu")["label"]
+        if Item == _("Off"):
+            self.hw.Modem.ModemVolume = 0
+        elif Item == _("Low"):
+            self.hw.Modem.ModemVolume = 1
+        elif Item == _("Medium"):
+            self.hw.Modem.ModemVolume = 2
+        elif Item == _("High"):
+            self.hw.Modem.ModemVolume = 3
+        elif Item == _("Very High"):
+            self.hw.Modem.ModemVolume = 4
         else:
             self.hw.Modem.ModemVolume = 0
  

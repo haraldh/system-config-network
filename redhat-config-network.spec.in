@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 3
+Release: 4
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -48,7 +48,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
-* Wed Aug  8 2001 Phil Knirsch <phil@redhat.de> 0.6.7-3
+* Wed Aug  8 2001 Phil Knirsch <phil@redhat.de> 0.6.8-4
+- Added a lot of documentation
+- Final changes to the Modem druid dialog and code to look just like the
+  hardware add dialog for modems.
+
+* Wed Aug  8 2001 Phil Knirsch <phil@redhat.de> 0.6.8-3
 - Added the modem detection for the ModemDruid.
 - Added kudzu as requirement as it is needed for modem detection.
 - For compatibility still check for symlinks, too. Otherwise older setups will

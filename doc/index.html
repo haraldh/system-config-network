@@ -1,10 +1,123 @@
 <HTML>
 <HEAD>
-<TITLE>A placeholder</TITLE>
+<TITLE>The RedHat NEtwork Administration Tool</TITLE>
 </HEAD>
 <BODY>
-<H1>Foo</H1>
+<H1>The RedHat NEtwork Administration Tool</H1>
+<HR>
+<table cellspacing=5>
+  <tr>
+    <td><em>Authors:</em></td><td>Philipp Knirsch</td><td>phil@redhat.de</td>
+  </tr>
+  <tr>
+    <td>&nbsp</td><td>Harald Hoyer</td><td>harald@redhat.de</td>
+  </tr>
+  <tr>
+    <td>&nbsp</td><td>Ngo Than</td><td>than@redhat.de</td>
+  </tr>
+  <tr>
+    <td>&nbsp</td><td>Trond Eivind Glomsrød</td><td>trond@redhat.com</td>
+  </tr>
+</table>
 <P>
-Write me
+<H2>1. Overview</H2>
+<HR>
+Welcome to the RedHat NEtwork Administration Tool. The purpose of this tool is
+to allow a GUI based configuration of your network interfaces, including
+Ethernet, Modem, ISDN, Wireless and xDSL connections as well as virtual
+interfaces like CIPE.
+<P>
+<H2>2. The Basic Dialog</H2>
+<HR>
+<P>
+<H2>5. The Druid</H2>
+<HR>
+In order to easily and quickly set up your Internet access you can use the
+Internet Druid. It offers the possibility to set up either a new Modem, ISDN or
+xDSL Internet connection.
+<P>
+<H3>5.1 Internet Druid dialog</H3>
+<IMG SRC=images/druid1.png ALT="Internet druid dialog">
+<P>
+On the first page you can select which kind of connection you have. Select the
+one you have and press the <em>Next</em> button. That will bring you to the
+selected device type next druid page.
+<P>
+<H3>5.2 Modem druid Step-By-Step</H3>
+<P>
+<H4>5.2.1 Modem hardware configuration dialog</H4>
+<IMG SRC=images/druid3.png ALT="First druid dialog">
+<P>
+If you have never configured your Modem before, either with rp3 or with
+this new configuration tool you will get this dialog to select the modem which
+you want to use for your Internet connection.
+<P>
+In case a modem has been configured previously this dialog will be skipped and
+the already configured modem will be used.
+<P>
+The following things can be configured:<BR>
+<table cellspacing=10>
+  <tr>
+    <td valign=top><strong>Modem Device</strong></td><td>The actualy physical device to which the modem is attached. A list of probed modems will be available or /dev/modem if no valid modem could be detected.</td>
+  </tr>
+  <tr>
+    <td valign=top><strong>Baud Rate</strong></td><td>The actual speed with which the modem is connected to the computer. If you should have problems with the default speed try a lower setting.</td>
+  </tr>
+  <tr>
+    <td valign=top><strong>Flow Control</strong></td><td>The connection type between computer and modem. This depends on the cable used and the capabilities of the modem and the serial device. Modern hardware and cables almost always use Hardware flow control. If the default doesn't work either try None or Software flow control.</td>
+  </tr>
+  <tr>
+    <td valign=top><strong>Modem Volume</strong></td><td>The volume of the modem loudspeaker during dialing and connecting to the remote modem. Ranges between Off, Low, Medium, High and Very High.</td>
+  </tr>
+  <tr>
+    <td valign=top><strong>Use touch tone dialing</strong></td><td>For older telephone systems you might want to disable the use of touch tone dialing and use the old pulse dialing method.</td>
+  </tr>
+</table>
+<P>
+<H4>5.2.2 Initial ISP selection dialog</H4>
+<IMG SRC=images/druid5.png ALT="First druid dialog">
+<P>
+<H4>5.2.3 Filled ISP selection dialog</H4>
+<IMG SRC=images/druid6.png ALT="First druid dialog">
+<P>
+<H4>5.2.4 Finished Modem dialup dialog</H4>
+<IMG SRC=images/druid11.png ALT="First druid dialog">
+
+
+<P>
+<H3>5.3 ISDN druid Step-By-Step</H3>
+<P>
+<H4>5.3.1 ISDN hardware configuration dialog</H4>
+<IMG SRC=images/druid2.png ALT="First druid dialog">
+<P>
+<H4>5.3.2 Initial ISP selection dialog</H4>
+<IMG SRC=images/druid5.png ALT="First druid dialog">
+<P>
+<H4>5.3.3 Filled ISP selection dialog</H4>
+<IMG SRC=images/druid6.png ALT="First druid dialog">
+<P>
+<H3>5.3.4 Finished ISDN dialup dialog</H3>
+<IMG SRC=images/druid7.png ALT="First druid dialog">
+
+
+<P>
+<H3>5.4 xDSL druid Step-By-Step</H3>
+<P>
+<H4>5.4.1 xDSL device configuration dialog</H4>
+<IMG SRC=images/druid4.png ALT="First druid dialog">
+<P>
+<H4>5.4.2 Finished xDSL configuration dialog</H4>
+<IMG SRC=images/druid10.png ALT="First druid dialog">
+<P>
+<H2>7. Todo</H2>
+<HR>
+Future version will are planned to have these features in addition to the
+current ones:
+<ul>
+  <li>Management of multiple network setups (Profiles)
+  <li>Firewall configuration
+  <li>Masquerading/NAT configuration
+  <li>Accounting
+</ul>
 </BODY>
 </HTML>
