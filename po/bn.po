@@ -14,13 +14,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
+# Export = রপ্তানি  
+# Import = আমদানি
+# 'Login = লগ-ইন' এভাবে লিখলে একটু বেশি স্পষ্ট হয়
+# মডেম, দূরবর্তী, হার্ডওয়ার, ইথারনেট
+
 #: neat-control.desktop.in.h:1
 msgid "Control and monitor network devices"
-msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রন এবং পর্যবেক্ষণ করা"
+msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রণ এবং পর্যবেক্ষণ করা"
+#msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রন এবং পর্যবেক্ষণ করা" <-- বানান
 
 #: neat-control.desktop.in.h:2 src/netconfpkg/gui/neat-control.glade.h:12
 msgid "Network Device Control"
 msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রন"
+# আগের মত
 
 #: neat.desktop.in.h:1
 msgid "Configure network devices and connections"
@@ -80,6 +88,7 @@ msgstr "ইন্টারনেট কনফিগারেশন উইজা�
 #: src/neat-control.py:48 src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "সমস্যা: গ্রাফিক্যাল এনভাইরন্‌মেন্ট আরম্ভ করা সম্ভব হয়নি।"
+# 'এনভায়রনমেন্ট' লেখার সময় হসন্ত দেয়ার দরকার আছে বলে মনে হয় না।
 
 #: src/neat-control.py:49 src/netconf.py:76
 msgid ""
@@ -87,6 +96,7 @@ msgid ""
 "environment. "
 msgstr ""
 "এই টুলটি সম্ভবত গ্রাফিক্যাল পরিবেশে চালানো হয়নি বলে বিফল হয়েছে।"
+# শুদ্ধ - 'হয় নি'
 
 #: src/neat-control.py:50 src/netconf.py:77
 msgid ""
@@ -95,6 +105,7 @@ msgid ""
 msgstr ""
 "দয়া করে আপনার নির্ধারিত গ্রাফিক্যাল ইউসার ইন্টারফেস আরম্ভ করুন অথবা DISPLAY ভেরিয়েবলের "
 "মান নির্ধারণ করুন।\n"
+# ...............ইন্টারফেস চালু করুন.........
 
 #. 'on_autoSelectProfileButton_clicked' : \
 #. self.on_autoSelectProfileButton_clicked,
@@ -112,6 +123,7 @@ msgid ""
 msgstr ""
 "এই সফ্‌টওয়েরটি GPL এর  অধিন বিতরণ করা হয়েছে। কোন বাগ ধরা পড়লে তা দয়া করে রেড হ্যাটের বাগ ট্র্যাকিং "
 "সিস্টেমকে জানান: http://bugzilla.redhat.com/"
+# সফটওয়ার
 
 #. Network Device Control Dialog
 #: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
@@ -140,11 +152,13 @@ msgstr "প্রোফাইল বদল করা হচ্ছে"
 #, python-format
 msgid "Switching to profile %s"
 msgstr "%s প্রোফাইলে বদল করা হচ্ছে"
+# আরিকটু স্পষ্ট করেন। সম্ভবত 'বদল' এর বদলে অন্য কিছু লেখা দরকার
 
 #: src/neat-control.py:237
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "%s প্রোফাইলে বদল করা সম্ভব হয়নি"
+# আরিকটু স্পষ্ট করেন
 
 #. Re-read the device list
 #. Update the gui
@@ -162,6 +176,7 @@ msgstr "পুনরায় লিখতে হবে!"
 #: src/neat-control.py:354
 msgid " (active)"
 msgstr " (চালু আছে)"
+# সক্রিয়
 
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
@@ -221,7 +236,8 @@ msgstr "DHCP ব্যবহার করো"
 
 #: src/netconf-tui.py:260
 msgid "Static IP"
-msgstr "স্থায়ি IP"
+msgstr "স্থায়ী IP"
+#msgstr "স্থায়ি IP" <-- বানান
 
 #: src/netconf-tui.py:261
 msgid "Netmask"
@@ -238,14 +254,17 @@ msgstr "ঠিক আছে"
 #: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Cancel"
 msgstr "বাতিল করো"
+# শুধু 'বাতিল'ই যথেষ্ট
 
 #: src/netconf-tui.py:272
 msgid "Ethernet Configuration"
 msgstr "এথারনেট কনফিগারেশন"
+# ইথারনেট
 
 #: src/netconf-tui.py:368 src/netconf-tui.py:474
 msgid "ISP Phonenumber"
 msgstr "ISP র ফোনের নাম্বার"
+#msgstr "ISP-র ফোন নম্বর"
 
 #: src/netconf-tui.py:369 src/netconf-tui.py:475
 msgid "ISP Login"
@@ -258,6 +277,7 @@ msgstr "ISP পাসওয়ার্ড"
 #: src/netconf-tui.py:371
 msgid "Modem Initstring"
 msgstr "মোডেমের Initstring"
+# বানানটা কি 'মডেম' না ?
 
 #: src/netconf-tui.py:379 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
@@ -266,6 +286,7 @@ msgstr "মোডেম কনফিগারেশন"
 #: src/netconf-tui.py:477
 msgid "MSN"
 msgstr "MSN"
+# এটা বাংলায় লিখেন না কেন ?
 
 #: src/netconf-tui.py:485
 msgid "ISDN Configuration"
@@ -302,6 +323,7 @@ msgstr "সমস্যা: %s, %s!"
 #: src/netconf.py:59
 msgid "Starting text version"
 msgstr "টেক্সট ভারসান আরম্ভ করা হচ্ছে"
+# Version = সংস্করণ
 
 #: src/netconf.py:114
 msgid "Loading Network Configuration..."
@@ -368,6 +390,7 @@ msgstr "প্রোফাইল বদল / চালু করো"
 #: src/netconf-cmd.py:108
 msgid "export / import hardware list"
 msgstr "হার্ডওয়েরের তালিকা এক্সপোর্ট / ইম্পোর্ট করো"
+# হার্ডওয়ার
 
 #: src/netconf-cmd.py:110
 msgid "export / import device list (default)"
@@ -380,6 +403,7 @@ msgstr "প্রোফাইল তালিকা এক্সপোর্ট 
 #: src/netconf-cmd.py:114
 msgid "set the root directory"
 msgstr "রুট ডাইরেক্টরি নির্ধারণ করা হোক"
+# অন্য জায়গায়তো 'ডিরেক্টরি'ই লিখেন, এখানে অন্যরকম রাখার কি দরকার ? 
 
 #: src/netconf-cmd.py:115
 msgid "export list (default)"
@@ -391,7 +415,8 @@ msgstr "তালিকা ইম্পোর্ট করো"
 
 #: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
-msgstr "ইম্পোর্ট করার পুর্বের তালিকা মুছে ফেলা হোক"
+msgstr "ইম্পোর্ট করার পূর্বের তালিকা মুছে ফেলা হোক"
+#msgstr "ইম্পোর্ট করার পুর্বের তালিকা মুছে ফেলা হোক" <-- বানান
 
 #: src/netconf-cmd.py:120
 msgid "import from file"
@@ -412,6 +437,7 @@ msgstr "অজানা তালিকা %s\n"
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "এই লাইনটি পার্স করতে সমস্যা হয়েছে: %s"
+# পার্স (Parse)
 
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -449,9 +475,12 @@ msgstr ""
 "এই তালিকায় অন্তর্ভুক্ত সংযোগ ব্যবস্থাগুলো হল ASDL (অ্যাসিমেট্রিক, আপলোডের "
 "তুলনায় দ্রুত ডাউনলোড হয়, ISDL(দুরত্বের জন্য ISDN লাইন ব্যবহার করা হয়), SDSL "
 "(সিমেট্রিক, আপলোড এবং ডাউনলোড সমান গতিতে হয়) এবং আরো অন্যান্য। এই ধরনের "
-"সংযোগ ব্যবস্থা সাধরণত মার্কিন যুক্তরাস্ট্রে ব্যবহৃত হয়ে থাকে এবং বর্তমানে পৃথিবীর অন্যান্য "
+"সংযোগ ব্যবস্থা সাধারণত মার্কিন যুক্তরাস্ট্রে ব্যবহৃত হয়ে থাকে এবং বর্তমানে পৃথিবীর অন্যান্য "
 "জায়গাতেও ব্যবহৃত হচ্ছে। এর গতি ব্যবহৃত প্রযুক্তির ওপর নির্ভর করে, এবং সাধারণত "
 "১৪৪ কিলোবাইট/সেকেন্ড থেকে ১.০ মেগাবাইট/সেকেন্ড মধ্যে সীমাবদ্ধ হয়ে থাকে।"
+# ডিজিটাল, দূরত্ব, যুক্তরাষ্ট্র
+#১৪৪ কিলোবাইট/সেকেন্ড থেকে ১.০ মেগাবাইট/সেকেন্ড এর মধ্যে সীমাবদ্ধ হয়ে থাকে।"
+# ২য় বাক্যটা আরিকটু স্পষ্ট করা গেলে ভাল হয়।
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -478,15 +507,21 @@ msgstr ""
 #: src/netconfpkg/gui/editipsec.py:195
 msgid "You have selected the following information:"
 msgstr "আপনি নিম্নলিখিত তথ্যগুলি বাছাই করেছেন:"
+# আমার কাছে 'গুলি'র থিকে 'গুলো' ভাল শোনায়। আপনের কি মনে হয় ? ;-)
 
 #: src/netconfpkg/gui/ADSLInterface.py:136
 msgid "Ethernet Device:"
 msgstr "এথারনেট ডিভাইস:"
+# ইথার
 
 #: src/netconfpkg/gui/ADSLInterface.py:137
 #: src/netconfpkg/gui/DialupDruid.py:229
 msgid "Provider Name:"
 msgstr "উপলব্ধকারির নাম:"
+# সরবরাহকারীর নাম
+# সংযোগ প্রদানকারীর নাম
+# সেবা প্রদানকারীর নাম
+# সম্ভবত শেষেরটাই সবচেয়ে ভাল। সেবা মানে কিন্তু Service
 
 #: src/netconfpkg/gui/ADSLInterface.py:138
 #: src/netconfpkg/gui/DialupDruid.py:231
@@ -514,6 +549,7 @@ msgstr "CIPE (VPN) সংযোগ"
 #: src/netconfpkg/gui/CipeInterface.py:99
 msgid "Create a new virtual private network connection with CIPE."
 msgstr "CIPE সহযোগে একটি নতুন ভারচুয়েল প্রাইভেট নেটওয়ার্ক সংযোগ তৈরি করুন।"
+# ভার্চুয়াল
 
 #: src/netconfpkg/gui/CipeInterface.py:145
 #: src/netconfpkg/gui/EthernetInterface.py:214
@@ -525,6 +561,7 @@ msgstr "ডিভাইস:"
 #: src/netconfpkg/gui/CipeInterface.py:146
 msgid "Tunnel through Device:"
 msgstr "ডিভাইসের মধ্যবর্তি টানেল:"
+# মধ্যবর্তী
 
 #: src/netconfpkg/gui/CipeInterface.py:147
 msgid "Local Port:"
@@ -534,6 +571,7 @@ msgstr "স্থানীয় পোর্ট:"
 #: src/netconfpkg/gui/CipeInterface.py:154
 msgid "Remote Peer Address:"
 msgstr "দূরবর্তি পীয়ারের ঠিকানা:"
+# পীয়ার (Peer) - না হইলে পাবলিক বুঝবে বলে মনে হয় না ;-)
 
 #: src/netconfpkg/gui/CipeInterface.py:152
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
@@ -543,10 +581,12 @@ msgstr "স্বয়ংক্রিয়"
 #: src/netconfpkg/gui/CipeInterface.py:155
 msgid "Remote Peer Port:"
 msgstr "দূরবর্তি পীয়ারের পোর্ট:"
+# দূরবর্তী
 
 #: src/netconfpkg/gui/CipeInterface.py:157
 msgid "Remote Virtual Address:"
 msgstr "দূরবর্তি ভারচুয়াল ঠিকানা:"
+# ভার্চুয়াল, দূরবর্তী
 
 #: src/netconfpkg/gui/CipeInterface.py:158
 msgid "Local Virtual Address:"
@@ -564,6 +604,7 @@ msgstr "কোনটাই নয় - সার্ভার মোড"
 #: src/netconfpkg/gui/CipeInterface.py:174 src/netconfpkg/gui/cipeconfig.py:80
 msgid " (dynamic)"
 msgstr " (পরিবর্তনশীল)"
+# দারুণ হইছে!
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:211
@@ -583,6 +624,7 @@ msgstr "(নিজস্ব পছন্দ)"
 #: src/netconfpkg/gui/cipeconfig.py:206
 msgid "IP Address of Tunnel Device: "
 msgstr "টানেল ডিভাইসের IP অ্যাড্রেস:"
+# আইপি ঠিকানা লিখলে সমস্যা কি ? শুনতে একটু অদ্ভুত লাগে এটা ঠিক কিন্তু ইন্টারফেস অনুবাদের পুরা ব্যাপারটাইতো অদ্ভুত ;-)
 
 #: src/netconfpkg/gui/CipeInterface.py:312
 #: src/netconfpkg/gui/cipeconfig.py:207
@@ -593,21 +635,25 @@ msgstr "স্থানীয় পোর্ট:"
 #: src/netconfpkg/gui/cipeconfig.py:208
 msgid "Remote Peer Address: "
 msgstr "দূরবর্তি পীয়ারের ঠিকানা:"
+# দূরবর্তী
 
 #: src/netconfpkg/gui/CipeInterface.py:317
 #: src/netconfpkg/gui/cipeconfig.py:212
 msgid "Remote Virtual Address: "
 msgstr "দূরবর্তি ভারচুয়াল ঠিকানা:"
+# দূরবর্তী
 
 #: src/netconfpkg/gui/CipeInterface.py:318
 #: src/netconfpkg/gui/cipeconfig.py:213
 msgid "Local Virtual Address: "
 msgstr "স্থানীয় ভারচুয়াল ঠিকানা:"
+# ভার্চুয়াল
 
 #: src/netconfpkg/gui/CipeInterface.py:319
 #: src/netconfpkg/gui/cipeconfig.py:214
 msgid "Secret Key: "
 msgstr "গোপনীয় চাবি:"
+# 'চাবি'র পরে ইংরেজিতে Key লিখে দিলে বুঝতে সুবিধা হবে মনে হয়
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:329
@@ -621,10 +667,12 @@ msgstr ""
 #: src/netconfpkg/gui/DialupDruid.py:228
 msgid "Hardware:"
 msgstr "হার্ডওয়ের"
+# হার্ডওয়ার
 
 #: src/netconfpkg/gui/DialupDruid.py:232
 msgid "Phone Number:"
 msgstr "ফোনের নাম্বার:"
+#msgstr "ফোন নম্বর:"
 
 #. Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -682,6 +730,7 @@ msgstr "অজানা"
 #: src/netconfpkg/gui/EthernetInterface.py:115
 msgid "Ethernet connection"
 msgstr "এথারনেট সংযোগ"
+# ইথার...
 
 #: src/netconfpkg/gui/EthernetInterface.py:121
 msgid "Create a new ethernet connection."
@@ -717,6 +766,7 @@ msgstr "ডিফল্ট গেটওয়ের ঠিকানা:"
 #: src/netconfpkg/gui/TokenRingInterface.py:223
 msgid "Automatically obtain IP address settings with:"
 msgstr "এর দ্বারা IP অ্যাড্রেসের বৈশিষ্ট্যাবলী স্বয়ংক্রিয়ভাবে প্রাপ্ত করো:"
+# দুঃখিত! কিছু বোঝা যাচ্ছে না
 
 #. print self.devicelist
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -750,6 +800,8 @@ msgid ""
 msgstr ""
 "\n"
 "সফল হয়েছে। দয়া করে আউটপূটটি পড়ুন।"
+# শুদ্ধ - আউটপুট
+# ফলাফল
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -779,10 +831,13 @@ msgstr "একটি নতুন %s সংযোগ তৈরি করুন�
 #: src/netconfpkg/gui/GenericInterface.py:96
 msgid "This wizard still has to be written."
 msgstr "এই উইজার্ডটি এখনো লেখা হয়নি।"
+# হয় নি
 
 #: src/netconfpkg/gui/GenericInterface.py:97
 msgid "Press Finish to get the standard configuration dialog."
 msgstr "স্ট্যানডার্ড কনফিগারেশন ডায়লগটি আনতে হলে সম্পূর্ণ টিপুন।"
+# Finish মানে কি সম্পূর্ণ ? মনে হয় না। দয়া করে Dict দেখেন
+# Standard = প্রমিত, আদর্শ ইত্যাদি
 
 #: src/netconfpkg/gui/GenericInterface.py:98
 msgid "Then, at first, enter the nickname for the device."
@@ -792,6 +847,7 @@ msgstr "প্রথমে, এই ডিভাইসটির জন্য এ�
 #: src/netconfpkg/gui/GenericInterface.py:135
 msgid "This device can not be edited with this tool!"
 msgstr "এই টুলের সাহায্যে এই ডিভাইসটি বদল করা সম্ভব হবে না!"
+# 'বদল' শব্দটা এখানে এক্কেবারেই বেমানান লাগতেছে ;-(
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -833,6 +889,8 @@ msgstr ""
 "অন্যান্য প্রযুক্তিশীল স্থানে ব্যবহৃত হয়ে থাকে। মার্কিন যুক্তরাষ্ট্রে এই ধরনের সংযোগ ব্যবস্থা "
 "উপলব্ধ আছে কিন্তু সাধারণত ব্যবহার করা হয় না। এর গতি ৬৪ কিলোবাইট/সেকেন্ড থেকে "
 "১২৮ কিলোবাইট/সেকেন্ডের মধ্য সীমবদ্ধ থাকে।"
+# 'উপলব্ধ' বেমানান লাগতেছে
+# কোম্পানি, টার্মিনাল
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -884,15 +942,15 @@ msgstr ""
 
 #: src/netconfpkg/gui/ModemInterface.py:114
 msgid "Modem probing..."
-msgstr "মোডেম খঁোজা হচ্ছে..."
+msgstr "মোডেম খোঁজা হচ্ছে..."
 
 #: src/netconfpkg/gui/ModemInterface.py:118
 msgid "Probing for Modems, please wait..."
-msgstr "মোডেম খঁোজা হচ্ছে, একটু অপেক্ষা করুন..."
+msgstr "মোডেম খোঁজা হচ্ছে, একটু অপেক্ষা করুন..."
 
 #: src/netconfpkg/gui/ModemInterface.py:133
 msgid "No modem was found on your system."
-msgstr "আপনার সিস্টেমে কোন মোডেম খঁুজে পাওয়া যায়নি।"
+msgstr "আপনার সিস্টেমে কোন মোডেম খুঁজে পাওয়া যায়নি।"
 
 #. 460800 seems to be to high
 #: src/netconfpkg/gui/ModemInterface.py:154
@@ -906,6 +964,7 @@ msgstr "সাধারণ মোডেম"
 #: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "বন্ধ আছে"
+# শুধু 'বন্ধ' লিখলেও চলে
 
 #: src/netconfpkg/gui/ModemInterface.py:163
 #: src/netconfpkg/gui/modemconfig.py:142
@@ -913,6 +972,7 @@ msgstr "বন্ধ আছে"
 #: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "কমানো আছে"
+# অল্প
 
 #: src/netconfpkg/gui/ModemInterface.py:165
 #: src/netconfpkg/gui/modemconfig.py:144
@@ -921,6 +981,7 @@ msgstr "কমানো আছে"
 #: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Medium"
 msgstr "মধ্যমে আছে"
+# মধ্যম
 
 #: src/netconfpkg/gui/ModemInterface.py:167
 #: src/netconfpkg/gui/modemconfig.py:146
@@ -928,6 +989,7 @@ msgstr "মধ্যমে আছে"
 #: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "বাড়ানো আছে"
+# উচ্চ
 
 #: src/netconfpkg/gui/ModemInterface.py:169
 #: src/netconfpkg/gui/modemconfig.py:148
@@ -935,6 +997,7 @@ msgstr "বাড়ানো আছে"
 #: src/netconfpkg/gui/modemconfig.glade.h:29
 msgid "Very High"
 msgstr "অধিক বাড়ানো আছে"
+# অতি উচ্চ
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1024,7 +1087,7 @@ msgstr "টোকেন রিং সংযোগ"
 
 #: src/netconfpkg/gui/TokenRingInterface.py:118
 msgid "Create a new Token Ring connection."
-msgstr "একটি নতুন টোকেন রিং সযোগ তৈরি করো।"
+msgstr "একটি নতুন টোকেন রিং সংযোগ তৈরি করো।"
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #: src/netconfpkg/gui/TokenRingInterface.py:189
@@ -1143,22 +1206,24 @@ msgstr ""
 #: src/netconfpkg/gui/dialupconfig.glade.h:11
 msgid "Dialup Configuration"
 msgstr "ডায়েল আপ কনফিগারেশন"
+# ডায়াল আপ
 
 #: src/netconfpkg/gui/dialupconfig.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN ডায়েল আপ কনফিগারেশন"
+# ডায়াল আপ
 
 #. get free ISDN device if encap mode is changed
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.py:386
 #: src/netconfpkg/gui/dialupconfig.glade.h:70
 msgid "in"
-msgstr ""
+msgstr "অন্তর্মুখী"
 
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.glade.h:73
 msgid "out"
-msgstr ""
+msgstr "বহির্গামী"
 
 #: src/netconfpkg/gui/dialupconfig.py:337
 #: src/netconfpkg/gui/DialupDruid.glade.h:32
@@ -1199,6 +1264,7 @@ msgstr "কোনটাই নয়"
 #: src/netconfpkg/gui/dialupconfig.py:434
 msgid "Modem Dialup Configuration"
 msgstr "মোডেম ডায়েল আপের কনফিগারেশন"
+#msgstr "মডেম ডায়াল আপ কনফিগারেশন"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1298,6 +1364,7 @@ msgstr "মোডেম ডায়েল আপের কনফিগারেশ
 #: src/netconfpkg/gui/maindialog.py:264
 msgid "Loading Configuration..."
 msgstr "কনফিগারেশন লোড করে চলছে..."
+#msgstr "কনফিগারেশন লোড করা হচ্ছে..."
 
 #: src/netconfpkg/gui/maindialog.py:272
 msgid "Loading Device Configuration..."
@@ -1306,6 +1373,7 @@ msgstr "ডিভাইসের কনফিগারেশন লোড কর
 #: src/netconfpkg/gui/maindialog.py:277
 msgid "Loading Hardware Configuration..."
 msgstr "হার্ডওয়ের কনফিগারেশন লোড করা হচ্ছে..."
+# হার্ডওয়ার
 
 #: src/netconfpkg/gui/maindialog.py:282
 msgid "Loading Profile Configuration..."
@@ -1323,6 +1391,7 @@ msgstr "কনফিগারেশন সেট পরীক্ষা করা
 #, python-format
 msgid "Active Profile: %s (modified)"
 msgstr "চালু প্রোফাইল: %s (পরিবর্তিত হয়েছে)"
+# সক্রিয় প্রোফাইল...
 
 #: src/netconfpkg/gui/maindialog.py:327
 #, python-format
@@ -1349,10 +1418,11 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
-"পরিবর্তনগুলো সংরক্ষণ করা হেয়েছে।\n"
+"পরিবর্তনগুলো সংরক্ষণ করা হয়েছে।\n"
 "আপনি ইচ্ছে করলে নেটওয়ার্ক এবং \n"
 "নেটওয়ার্ক পরিসেবা অথবা কম্পিউটার\n"
 "রিস্টার্ট করতে পারেন।"
+# 'সার্ভিস' এর বাংলা করার দরকার নাই
 
 #: src/netconfpkg/gui/maindialog.py:359
 msgid "Saving Device Configuration..."
@@ -1361,6 +1431,7 @@ msgstr "ডিভাইসের কনফিগারেশন সংরক্�
 #: src/netconfpkg/gui/maindialog.py:366
 msgid "Saving Hardware Configuration..."
 msgstr "হার্ডওয়ের কনফিগারেশন সংরক্ষণ করা হচ্ছে..."
+# হার্ডওয়ার
 
 #: src/netconfpkg/gui/maindialog.py:373
 msgid "Saving Profile Configuration..."
@@ -1403,7 +1474,7 @@ msgstr ""
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
 #: src/netconfpkg/gui/maindialog.py:554
 msgid "Updating Profiles..."
-msgstr ""
+msgstr "প্রোফাইল আপডেট করা হচ্ছে..."
 
 #. print "hydrateProfiles(%s)" % self.active_profile_name
 #. 88357
@@ -1425,7 +1496,7 @@ msgstr "ডিভাইস পরিবর্তন করো..."
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:873
 msgid "The Loopback device can not be removed!"
-msgstr "এই লোপব্যাক ডিভাইসটি সরিয়ে ফেলা সম্ভব নয়!"
+msgstr "এই লুপব্যাক ডিভাইসটি সরিয়ে ফেলা সম্ভব নয়!"
 
 #: src/netconfpkg/gui/maindialog.py:877
 #, python-format
@@ -1435,6 +1506,7 @@ msgstr "আপনি কি \"%s\" ডিভাইসটি মুছে ফে�
 #: src/netconfpkg/gui/maindialog.py:909 src/netconfpkg/gui/maindialog.py:1662
 msgid "You have made some changes in your configuration."
 msgstr "আপনি আপনার নির্ধারিত কনফিগারেশনে বদল করেছেন।"
+# আপনি কি 'পরিবর্তন' অর 'বদল' এর শব্দ দুইটাকে একই অর্থে ব্যবহার করেন ?
 
 #: src/netconfpkg/gui/maindialog.py:910
 #, python-format
@@ -1444,6 +1516,7 @@ msgstr "%s নেটওয়ার্ক ডিভাইসটি চালু ক
 #: src/netconfpkg/gui/maindialog.py:912 src/netconfpkg/gui/maindialog.py:1665
 msgid "Do you want to continue?"
 msgstr "আপনি কি এগিয়া যেতে ইচ্ছুক?"
+# ভাল করে পড়ে দেখেন
 
 #. devicelist = getDeviceList()
 #. self.rename_button.set_sensitive(TRUE)
@@ -1494,7 +1567,7 @@ msgstr "\"%s\" প্রোফাইলটি মুছে ফেলা সম�
 #: src/netconfpkg/gui/maindialog.py:1448
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
-msgstr "\"%s\" প্রফাইলটি মুছে ফেলার ব্যাপারে কি আপনি নিশ্চিত?"
+msgstr "\"%s\" প্রোফাইলটি মুছে ফেলার ব্যাপারে কি আপনি নিশ্চিত?"
 
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
@@ -1506,6 +1579,7 @@ msgid ""
 msgstr ""
 "দুক্ষিত, সম্পাদন করার জন্য কিছু নেই,\n"
 "অথবা এই ধরনটি বর্তমানে সম্পাদনযোগ্য নয়।"
+# দুঃখিত! আপনি 'দুঃখিত' বানানটা ভুল লিখছেন
 
 #: src/netconfpkg/gui/maindialog.py:1539
 #, python-format
@@ -1517,6 +1591,7 @@ msgstr "\"%s\" মুছে ফেলার ব্যাপারে কি আ�
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "\"%s\" ব্যবহৃত সকল ডিভাইস কি আপনি মুছে ফেলতে ইচ্ছুক?"
+#msgstr "ইতিপূর্বে \"%s\" ব্যবহারকারী সকল ডিভাইস কি আপনি মুছে ফেলতে ইচ্ছুক?"
 
 #: src/netconfpkg/gui/maindialog.py:1663
 #, python-format
@@ -1542,11 +1617,13 @@ msgstr "%s IPsec সংযোগটি চালু করতে হলে, প�
 #: src/netconfpkg/gui/tokenringhardware.py:99
 msgid "Command failed: "
 msgstr "বিফল হওয়া কমান্ড:"
+#msgstr "কমান্ডটি ব্যর্থ হয়েছে:"
 
 #: src/netconfpkg/gui/ethernethardware.py:95
 #: src/netconfpkg/gui/tokenringhardware.py:100
 msgid "Output:\n"
 msgstr "আউটপুট:\n"
+# ফলাফল
 
 #: src/netconfpkg/gui/ethernethardware.py:97
 msgid ""
@@ -1555,6 +1632,10 @@ msgid ""
 msgstr ""
 "এথারনেট কার্ডটি আরম্ভ করা সম্ভব হয়নি। \n"
 "এর সম্বন্ধিয় বৈশিষ্ট্যাবলী পরীক্ষা করে পুনরায় চেষ্টা করুন।"
+#msgstr ""
+#"ইথারনেট কার্ডটি চালু করা সম্ভব হয় নি। \n"
+#"এ সম্পর্কিত বৈশিষ্ট্যাবলী পরীক্ষা করে পুনরায় চেষ্টা করুন।"
+# শুদ্ধ - সম্বন্ধীয়
 
 #: src/netconfpkg/gui/tokenringhardware.py:102
 msgid ""
@@ -1563,6 +1644,7 @@ msgid ""
 msgstr ""
 "টোকেন রিং কার্ডটি আরম্ভ করা সম্ভব হয়নি। \n"
 "এর সম্বন্ধিয় বৈশিষ্ট্যাবলী পরীক্ষা করে পুনরায় চেষ্টা করুন।"
+# আগেরটার মত
 
 #. make ctrl-C work
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -1622,10 +1704,12 @@ msgstr ""
 #: src/netconfpkg/Control.py:33
 msgid "Active"
 msgstr "চালু অছে"
+# সক্রিয়
 
 #: src/netconfpkg/Control.py:34
 msgid "Inactive"
 msgstr "বন্ধ করা আছে"
+# নিষ্ক্রিয়
 
 #. remove inactive isdn/ppp device
 #. check real ppp device
@@ -1674,6 +1758,7 @@ msgstr ""
 "%s ডাইরেক্টরিটি উপস্থিত নেই!\n"
 "আপনার জন্য এটি তৈরি করা হবে!\n"
 "আপনার cipe rpm প্যাকেজ ইনস্টল করা উচিত!\n"
+# ডিরেক্টরি
 
 #: src/netconfpkg/NCCipe.py:159
 #, python-format
@@ -1721,6 +1806,7 @@ msgstr "স্বয়ংক্রিয়"
 #: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:71
 msgid "manual"
 msgstr "ম্যানুয়েল"
+# নিজ হাতে, স্ভস্বহস্তে
 
 #: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:114
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
@@ -1751,6 +1837,7 @@ msgstr "এনডোরা"
 #: src/netconfpkg/NCDialup.py:47
 msgid "Argentina"
 msgstr "আর্জেনটিনা"
+#msgstr "আর্জেন্টিনা"
 
 #: src/netconfpkg/NCDialup.py:48
 msgid "Australia"
@@ -1779,6 +1866,7 @@ msgstr "বৃটিশ ভার্জিন আইল্যান্ড"
 #: src/netconfpkg/NCDialup.py:54
 msgid "Bulgaria"
 msgstr "বুলগারিয়া"
+#msgstr "বুলগেরিয়া"
 
 #: src/netconfpkg/NCDialup.py:55
 msgid "Canada"
@@ -1811,6 +1899,7 @@ msgstr "কিউবা"
 #: src/netconfpkg/NCDialup.py:62
 msgid "Czech Republic"
 msgstr "চেক্‌ প্রজাতন্ত্র"
+# হসন্ত লাগবে না
 
 #: src/netconfpkg/NCDialup.py:63
 msgid "Denmark"
@@ -1819,6 +1908,7 @@ msgstr "ডেনমার্ক"
 #: src/netconfpkg/NCDialup.py:64
 msgid "Finland"
 msgstr "ফিন্‌ল্যান্ড"
+# হসন্ত লাগবে না
 
 #: src/netconfpkg/NCDialup.py:65
 msgid "France"
@@ -1831,10 +1921,12 @@ msgstr "জার্মানি"
 #: src/netconfpkg/NCDialup.py:67
 msgid "Greece"
 msgstr "গ্রীস্‌"
+# হসন্ত লাগবে না
 
 #: src/netconfpkg/NCDialup.py:68
 msgid "Hong Kong"
 msgstr "হং কং"
+# হংকং
 
 #: src/netconfpkg/NCDialup.py:69
 msgid "Hungary"
@@ -1859,10 +1951,12 @@ msgstr "আয়ারল্যান্ড"
 #: src/netconfpkg/NCDialup.py:74
 msgid "Israel"
 msgstr "ইজ্‌রেল"
+# ইজরায়েল
 
 #: src/netconfpkg/NCDialup.py:75
 msgid "Italy"
 msgstr "ইটালী"
+# ইতালি, ইটালি
 
 #: src/netconfpkg/NCDialup.py:76
 msgid "Japan"
@@ -1879,10 +1973,12 @@ msgstr "কোরিয় প্রজাতন্ত্র"
 #: src/netconfpkg/NCDialup.py:79
 msgid "Malaysia"
 msgstr "মালায়েশিয়া"
+# মালয়েশিয়া
 
 #: src/netconfpkg/NCDialup.py:80
 msgid "Luxembourg"
 msgstr "লাক্সেমবুর্গ"
+# লুক্সেমবুর্গ <-- Unsure
 
 #: src/netconfpkg/NCDialup.py:81
 msgid "Mexico"
@@ -1927,6 +2023,7 @@ msgstr "সুইডেন"
 #: src/netconfpkg/NCDialup.py:91
 msgid "Switzerland"
 msgstr "সুইত্‌জারল্যান্ড"
+# সুইজারল্যান্ড
 
 #: src/netconfpkg/NCDialup.py:92
 msgid "Taiwan"
@@ -1943,10 +2040,13 @@ msgstr "তুরস্ক"
 #: src/netconfpkg/NCDialup.py:95
 msgid "Ukraine"
 msgstr "ইউক্রেন"
+# ইউক্রেইন
+# সম্ভবত দুইভাবেই লিখা যায়
 
 #: src/netconfpkg/NCDialup.py:96
 msgid "United Kingdom"
 msgstr "ইউনাইটেড কিংডম"
+# যুক্তরাজ্য
 
 #: src/netconfpkg/NCDialup.py:97
 msgid "United States of America"
@@ -1955,10 +2055,12 @@ msgstr "মার্কিন যুক্তরাষ্ট্র"
 #: src/netconfpkg/NCDialup.py:98
 msgid "Vietnam"
 msgstr "ভিয়েত্‌নাম"
+# হসন্ত লাগবে না
 
 #: src/netconfpkg/NCDialup.py:99
 msgid "Yugoslavia"
 msgstr "ইউগোসলাভিয়া"
+# যুগোস্লাভিয়া
 
 #.
 #. XXX FIXME... this is not OO
@@ -2001,7 +2103,8 @@ msgstr "ডিফল্ট প্রোফাইলে %s কপি করা �
 #: src/netconfpkg/NCProfileList.py:207
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "%s ডিভাইসটি %s এর সমতুল্য \"%s\" হার্ডওয়ের ডিভিসটি ব্যবহার করে!\n"
+msgstr "%s ডিভাইসটি %s এর সমতুল্য \"%s\" হার্ডওয়ের ডিভাইসটি ব্যবহার করে!\n"
+# হার্ডওয়ার
 
 #: src/netconfpkg/NCProfileList.py:209
 msgid ""
@@ -2010,6 +2113,7 @@ msgid ""
 msgstr ""
 "একটি অন্য হার্ডওয়ের ডিভাইস বাছাই করুন অথবা \n"
 "শুধুমাত্র একটি স্বক্রিয় করুন।"
+# শেষের বাক্যটা আরিকটু সুন্দর করেন
 
 #. Just to be safe...
 #. if the hostname changed, set it system wide (#55746)
@@ -2069,11 +2173,13 @@ msgstr "সাধারণ"
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "হার্ডওয়ের (CRTSCTS)"
+# হার্ডওয়ার
 
 #: src/netconfpkg/NC_functions.py:113 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "সফ্টওয়ের (XON/XOFF)"
+# সফটওয়ার
 
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
@@ -2088,6 +2194,7 @@ msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
 "নিম্নলিখিত এই প্যাকেজগুলো আপনার সিস্টেমের জন্য দরকারি, ইনস্টল করতেই হবে!"
+# ............দরকারী, সুতরাং অবশ্যই ইনস্টল করতে হবে
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
@@ -2102,6 +2209,7 @@ msgstr ""
 "%s সরিয়ে ফেলা \n"
 "সম্ভব হয়নি:\n"
 "%s!"
+# ফেলা'র পরে \n দিয়েন না
 
 #: src/netconfpkg/NC_functions.py:657
 #, python-format
@@ -2115,6 +2223,7 @@ msgstr ""
 "%s এর\n"
 "সংযোগ করতে সমস্যা হয়েছে:\n"
 "%s!"
+# সংযোগ স্থাপন করতে .............
 
 #: src/netconfpkg/NC_functions.py:668
 #, python-format
@@ -2141,6 +2250,7 @@ msgstr ""
 "%s এর\n"
 "সংযোগ করতে সমস্যা হয়েছে:\n"
 "%s!"
+
 #: src/netconfpkg/NC_functions.py:688
 #, python-format
 msgid ""
@@ -2153,6 +2263,7 @@ msgstr ""
 "%s এ বদল করতে \n"
 "সমস্যা হয়েছে:\n"
 "%s!"
+# আগের মত
 
 #: src/netconfpkg/NC_functions.py:696
 #, python-format
@@ -2162,6 +2273,7 @@ msgid ""
 msgstr ""
 "ডায়রেক্টরি তৈরি করতে সমস্যা হয়েছে!\n"
 "%s"
+# ডিরেক্টরি
 
 #. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -2328,7 +2440,8 @@ msgstr "ঠিক আছে"
 #: src/netconfpkg/NCDevice.py:200
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, ডিভাইসটি নির্ধারন করা হয়নি অথবা উপনামটি কোন সংখ্যা নয়!"
+msgstr "%s, ডিভাইসটি নির্ধারণ করা হয় নি অথবা উপনামটি কোন সংখ্যা নয়!"
+#msgstr "%s, ডিভাইসটি নির্ধারন করা হয়নি অথবা উপনামটি কোন সংখ্যা নয়!" <-- বানান
 
 #. move old <id>.route files to route-<id>
 #. load routes
@@ -2337,6 +2450,7 @@ msgstr "%s, ডিভাইসটি নির্ধারন করা হয়�
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "স্ট্যাটিক রুট ফাইল %s টি অবৈধ"
+# 'টি' বাদ দিলে ভাল শোনায়
 
 #: src/netconfpkg/NCDevice.py:383
 #, python-format
@@ -2360,6 +2474,7 @@ msgstr "%s নেটওয়ার্ক ডিভাইসটি নিষ্ক�
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
 msgstr "দয়া করে রুটের অনুমতিসহ redhat-config-network একবার আরম্ভ করুন!\n"
+# চালু
 
 #: src/netconfpkg/NCDeviceList.py:67
 #, python-format
@@ -2375,6 +2490,7 @@ msgstr "ডিভাইসে %s কপি করে তা ডিফল্ট �
 #: src/netconfpkg/NCDeviceList.py:150
 msgid "Changed the following Nicknames due to the initscripts:\n"
 msgstr "initscripts এর দরুন নিম্নেলিখিত উপনামগুলো পরিবর্তন করা হয়েছে:\n"
+# নিম্নলিখিত
 
 #: src/netconfpkg/NCDeviceList.py:153
 msgid "Nicknames changed"
@@ -2437,6 +2553,7 @@ msgstr "DSL সংযোগ তৈরি করো"
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
 msgid "Enter the login name for this account."
 msgstr "এই অ্যাকাউন্টের জন্য লগিন করার নাম লিখুন।"
+# লগ-ইন
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/DialupDruid.glade.h:10
@@ -2444,6 +2561,7 @@ msgstr "এই অ্যাকাউন্টের জন্য লগিন �
 #: src/netconfpkg/gui/dslconfig.glade.h:10
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "আপনার ISP প্রদত্ত লগিন নাম, এখানে লিখুন।"
+# লগ-ইন
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
@@ -2453,6 +2571,7 @@ msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
 "এই কনফিগারেশনের নাম লিখুন, সাধারণত এটি আপনার ISPর নাম হয়ে থাকে।"
+# ISP লেখার পরে একটা উর্ধ্ব কমা দিয়ে তারপর 'র' লিখতে পারেন। এরকম কোন নিয়ম আছে কিনা সেটা অবশ্য জানি না
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
 msgid "Enter the password for this account."
@@ -2472,10 +2591,12 @@ msgstr ""
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
 msgid "Enter the provider name for this account."
 msgstr "এই অ্যাকাউন্টের উপলব্ধকারির নাম লিখুন।"
+# Provider
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
 msgid "Ethernet _Device:"
 msgstr "এথারনেট _ডিভাইস:"
+# ইথারনেট
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/DialupDruid.glade.h:19
@@ -2515,6 +2636,7 @@ msgstr "_লগিন করার নাম:"
 #: src/netconfpkg/gui/dslconfig.glade.h:27
 msgid "_Provider Name:"
 msgstr "_উপলব্ধকারির নাম:"
+# Provider
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/DialupDruid.glade.h:31
@@ -2527,6 +2649,7 @@ msgstr "_T-Online অ্যাকাউন্টের সেটআপ"
 #: src/netconfpkg/gui/cipeconfig.glade.h:3
 msgid "Configuration for your remote partner"
 msgstr "আপনার দূরবর্তি সঙ্গির জন্য কনফিগারেশন"
+# শুদ্ধ - সঙ্গী
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
 msgid "Configure Tunnel"
@@ -2540,6 +2663,7 @@ msgstr "Cipe সংযোগ তৈরি করো"
 #: src/netconfpkg/gui/cipeconfig.glade.h:4
 msgid "Lo_cal Virtual Address:"
 msgstr "স্থা_নীয় ভারচুয়েল ঠিকানা:"
+# ভার্চুয়াল
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
 #: src/netconfpkg/gui/DialupDruid.glade.h:17
@@ -2551,11 +2675,14 @@ msgstr "নতুন ইন্টারফেস"
 #: src/netconfpkg/gui/cipeconfig.glade.h:5
 msgid "Remote Peer P_ort:"
 msgstr "দূরবর্তি পিয়ার _পোর্ট:"
+# শুদ্ধ - দূরবর্তী
+# আগে Peer এর বানান লিখছেন 'পীয়ার'। ভুলটা কোনখানে হইছে আমি জানি না ?
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/cipeconfig.glade.h:6
 msgid "Remote _Virtual Address:"
 msgstr "দূরবর্তি _ভারচুয়েল ঠিকানা:"
+# শুদ্ধ - দূরবর্তী, ভার্চুয়াল
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
@@ -2570,7 +2697,8 @@ msgstr "_ডিভাইস:"
 #: src/netconfpkg/gui/cipeconfig.glade.h:10
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Generate"
-msgstr ""
+msgstr "উত্‍পাদন (_উ)"
+#msgstr "তৈরি (_ত)"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/cipeconfig.glade.h:11
@@ -2581,6 +2709,7 @@ msgstr "_স্থানীয় পোর্ট:"
 #: src/netconfpkg/gui/cipeconfig.glade.h:13
 msgid "_Remote Peer Address:"
 msgstr "_দূরবর্তি পিয়ারের ঠিকানা:"
+# দূরবর্তী
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
 #: src/netconfpkg/gui/cipeconfig.glade.h:15
@@ -2590,7 +2719,8 @@ msgstr "_গোপনীয় চাবি:"
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
 #: src/netconfpkg/gui/cipeconfig.glade.h:17
 msgid "_Tunnel through Device:"
-msgstr ""
+msgstr "ডিভাইসের মধ্য দিয়ে টানেল:"
+# আপনি আগে এরকম একটা লিখছেন
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:15
 #: src/netconfpkg/gui/cipeconfig.glade.h:18
@@ -2661,19 +2791,23 @@ msgstr "eth4"
 #: src/netconfpkg/gui/DialupDruid.glade.h:2
 msgid "A_rea Code:"
 msgstr "স্থা_নের কোড:"
+# আঞ্চলিক কোড
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:3
 #: src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "Automatically obtain _DNS information from provider"
 msgstr "উপলব্ধকারির থেকে _DNS র তথ্য স্বয়ংক্রিয়ভাবে প্রাপ্ত করো"
+# এটা আরেকটু স্পষ্ট করে লিখলে ভাল হয়
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:4
 msgid "Automatically obtain _IP address settings"
 msgstr "_IP অ্যাড্রেস এর বৈশিষ্ট্যাবলী স্বয়ংক্রিয়ভবে প্রাপ্ত করো"
+# এটাও আরেকটু স্পষ্ট করে লিখলে ভাল হয়
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:5
 msgid "Create Dialup Connection"
 msgstr "ডায়েল আপ সংযোগ তৈরি করো"
+# ডায়াল আপ
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/sharedtcpip.glade.h:6
@@ -2683,6 +2817,7 @@ msgstr "ডিফল্ট _গেটওয়ে অ্যাড্রেস:"
 #: src/netconfpkg/gui/DialupDruid.glade.h:7
 msgid "Encapsulation Mode:"
 msgstr "এন্‌ক্যাপ্‌সুলেশন মোড:"
+# হসন্ত বাদ দেন 
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:8
 #: src/netconfpkg/gui/dialupconfig.glade.h:18
@@ -2691,11 +2826,14 @@ msgid ""
 "example, if you need to reach an outside line, or disable call waiting, put "
 "the necessary numbers here."
 msgstr ""
+"সাধারণ ফোন নম্বর লেখার পূর্বে অন্য কোন নম্বর লেখার প্রয়োজন হলে তা এখানে লিখুন। উদাহরণস্বরূপ, যদি আপনাকে কোন বহিস্থ লাইন ব্যবহার "
+"করতে হয়, বা কল ওয়েটিং (Call Waiting) নিষ্ক্রিয় করতে হয়, তবে প্রয়োজনীয় নম্বরসমূহ এখানে লিখুন।"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:9
 #: src/netconfpkg/gui/dialupconfig.glade.h:19
 msgid "Enter the area code needed to reach your internet provider."
-msgstr "আপনার ইন্টরনেট উপলব্ধকারির সাথে যোগাযোগ করার নির্ধারিত স্থানীয় কোড লিখুন।"
+msgstr "আপনার ইন্টারনেট উপলব্ধকারির সাথে যোগাযোগ করার নির্ধারিত স্থানীয় কোড লিখুন।"
+# Povider
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:13
 #: src/netconfpkg/gui/dialupconfig.glade.h:23
@@ -2714,7 +2852,7 @@ msgstr "ইন্টরনেট উপলব্ধকারি"
 #: src/netconfpkg/gui/DialupDruid.glade.h:16
 #: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
-msgstr ""
+msgstr "নিজ হাতে আইপি ঠিকানার বৈশিষ্ট্য নির্ধারণ"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:18
 msgid "PPP Settings"
@@ -2724,6 +2862,7 @@ msgstr "PPPর বৈশিষ্ট্যাবলী"
 #: src/netconfpkg/gui/dialupconfig.glade.h:37
 msgid "Phone Number"
 msgstr "ফোনের নাম্বার"
+# ফোন নম্বর
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:22
 msgid "Prefi_x:"
@@ -2733,6 +2872,7 @@ msgstr "উপ_পদ:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:39
 msgid "Provider _Name:"
 msgstr "উপলব্ধকারির _নাম:"
+# Provider
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:24
 msgid "Select Provider"
@@ -2903,6 +3043,7 @@ msgstr "রিসোর্স"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:20
 msgid "Select Ethernet Adapter"
 msgstr "এথারনেট অ্যাডাপ্টার বাছাই করুন"
+# ইথারনেট
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:22
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:22
@@ -2973,6 +3114,8 @@ msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
 msgstr ""
+"অনুগ্রহপূর্বক সর্বোচ্চ স্থানান্তর একক নির্ধারণের জন্য এমটিইউ (MTU) পরামিতি লিখুন। s390/s390x-এ এমটিইউ "
+"এর ডিফল্ট মান হল ১৪৯২।"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
 msgid "Select Ethernet Device"
@@ -3218,7 +3361,7 @@ msgstr "অ্যাকাউন্ট সেটআপ"
 
 #: src/netconfpkg/gui/tonline.glade.h:2
 msgid "Associated T-Online _Number:"
-msgstr ""
+msgstr "সংশ্লিষ্ট টি-অনলাইন (T-Online) নম্বর: (_ট)"
 
 #: src/netconfpkg/gui/tonline.glade.h:3
 msgid ""
@@ -3245,6 +3388,7 @@ msgstr "_T-Online অ্যাকাউন্ট"
 #: src/netconfpkg/gui/chooseprovider.glade.h:1
 msgid "Choose a Provider"
 msgstr "উপলব্ধকারি বাছাই করুন"
+# Provider
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:1
 #: src/netconfpkg/gui/ctcconfig.glade.h:1
@@ -3255,6 +3399,7 @@ msgstr "উপলব্ধকারি বাছাই করুন"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
 msgid "Allow all _users to enable and disable the device"
 msgstr "সকল ব্যবহারকারিকে ডিভাইস স্বক্রিয় এবং নিষ্ক্রিয় করার অনুমতি দেও"
+# দাও
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:2
 msgid "CIPE Configuration"
@@ -3269,6 +3414,7 @@ msgstr "CIPE কনফিগারেশন"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
 msgid "_Activate device when computer starts"
 msgstr "_কম্পিউটার আরম্ভ করলে ডিভাইস চালু করো"
+# কম্পিউটার চালু করলে........সচল করো
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:9
 #: src/netconfpkg/gui/ctcconfig.glade.h:10
@@ -3341,11 +3487,13 @@ msgstr "_সম্পাদন..."
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
 msgid "_Hardware Device"
 msgstr "_হার্ডওয়ের ডিভাইস"
+# হার্ডওয়ার
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:12
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
 msgid "_Hardware Device:"
 msgstr "_হার্ডওয়ের ডিভাইস:"
+# হার্ডওয়ার
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
 msgid "_MTU:"
@@ -3358,6 +3506,7 @@ msgstr "_প্রোটোকলসমূহ"
 #: src/netconfpkg/gui/devicetype.glade.h:1
 msgid "Choose Hardware Device Type"
 msgstr "হার্ডওয়ের ডিভাইসের ধরন বাছাই করুন "
+# হার্ডওয়ার
 
 #: src/netconfpkg/gui/devicetype.glade.h:2
 msgid "Please select the type of hardware device to add:"
@@ -3370,6 +3519,7 @@ msgstr "_ডিভাইসের ধরন:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:2
 msgid "A_rea Code"
 msgstr "স্থা_নের কোড"
+# আঞ্চলিক কোড
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:4
 msgid "Ca_llback"
@@ -3382,14 +3532,18 @@ msgstr "কলব্যাকের _বিলম্ব:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:6
 msgid "Callback _Mode:"
 msgstr "কলব্যাকের _মোড:"
+# কলব্যাক মোড
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:7
 msgid "Callback setting"
 msgstr "কলব্যঅ্যাকের বৈশিষ্ট্য"
+# ঠিক করেন
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr "ISPর ডাটাবেস থেকে নতুন উপলব্ধকারি বাছাই করতে হলে, এখানে ক্লিক্‌ করুন।"
+# ক্লিক বানানে হসন্ত লাগে না। 
+# Provider
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Dial _Mode:"
@@ -3401,7 +3555,8 @@ msgstr "ডায়েল-ইন _নম্বর:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:12
 msgid "Enable VJ Connection-_ID Compression"
-msgstr ""
+msgstr "VJ Connection-_ID কম্প্রেশন সক্রিয় করা হোক"
+# নিচেরগুলাও এই রকম
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:13
 msgid "Enable _Address/Control Compression"
@@ -3425,15 +3580,16 @@ msgstr ""
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:24
 msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr "আপনার স্থানীয় ফোন নম্বর লিখুন। মোডেম ব্যবহার করলে এটা লেখা আপনার ইচ্ছর উপর নির্ভর করবে।"
+msgstr "আপনার স্থানীয় ফোন নম্বর লিখুন। মোডেম ব্যবহার করলে এটা লেখা আপনার ইচ্ছার উপর নির্ভর করবে।"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
 msgid "Han_gup Timeout:"
-msgstr ""
+msgstr "লাইন কেটে দেয়ায় বিলম্ব:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:26
 msgid "Let _PPP do all authentication"
 msgstr "_PPPর দ্বারা সকল অনুমোদন করো"
+# অস্পষ্ট
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:27
 msgid "MSN/EA_Z:"
@@ -3450,7 +3606,7 @@ msgstr "মোডেম পো_র্ট:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:30
 msgid "Modem _Initialization String:"
-msgstr ""
+msgstr "মডেমকে সংযোগ স্থাপনে প্রস্তুত করায় ব্যবহৃত পংক্তি: (_প)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:31
 msgid "Modem0"
@@ -3488,6 +3644,7 @@ msgstr "আপনার ISPর দ্বারা ব্যবহৃত অন�
 #: src/netconfpkg/gui/dialupconfig.glade.h:42
 msgid "Use _Callback Control Protocol (CBCP)"
 msgstr "_কলব্যাক কন্ট্রল প্রোটোকল (CBCP) ব্যবহার করো"
+# Control = নিয়ন্ত্রণ
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:43
 msgid "Use _Channel Bundling"
@@ -3497,10 +3654,12 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:19
 msgid "_Advanced"
 msgstr "_উন্নত"
+# অগ্রসর
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:48
 msgid "_Allow only above Dial-In Number"
 msgstr "শুধুমাত্র উপরে লেখা ডায়েল-ইন নাম্বার ব্যবহারের _অনুমতি দেও"
+#msgstr "শুধুমাত্র উপরে উল্লেখিত ডায়েল-ইন নাম্বারের ব্যবহার অনুমোদন করা হোক"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:49
 msgid "_Authentication:"
@@ -3509,10 +3668,12 @@ msgstr "_অনুমোদন:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
 msgid "_Choose Provider..."
 msgstr "_উপলব্ধকারি বাছাই করুন..."
+# Provider
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:51
 msgid "_Compression"
 msgstr "_সংকোচন"
+# এটা অনুবাদ না করাই মনে হয় ভাল
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:53
 msgid "_Dial Mode:"
@@ -3525,6 +3686,7 @@ msgstr "_এনক্যাপসুলেশন মোড:"
 #: src/netconfpkg/gui/dialupconfig.glade.h:56
 msgid "_Hangup Timeout:"
 msgstr ""
+# আগে একবার লিখছি
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:57
 #: src/netconfpkg/gui/dslconfig.glade.h:22
@@ -3549,6 +3711,7 @@ msgstr "_ফোনের নম্বর"
 #: src/netconfpkg/gui/dslconfig.glade.h:26
 msgid "_Provider"
 msgstr "_উপলব্ধকারি"
+# Provider
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "_Use Callback"
@@ -3569,6 +3732,7 @@ msgstr ""
 #: src/netconfpkg/gui/dslconfig.glade.h:6
 msgid "Enable synchronous PPP for the connection"
 msgstr "বর্তমান সংযোগের ক্ষেত্রে সমকালীন PPP স্বক্রিয় করো"
+# সমতালিক/সমলয়িক (Synchronous)
 
 #: src/netconfpkg/gui/dslconfig.glade.h:7
 msgid ""
@@ -3585,6 +3749,7 @@ msgid ""
 msgstr ""
 "আপনার ISPর যদি প্রয়োজন থাকে তাহলে পরিসেবার নাম লিখুন। আপনার এটা জানা না থাকলে, "
 "ISPর সাথে যোগাযোগ করো। বেশির ভাগ ক্ষেত্রে আপনি এটা শূন্য রেখে দিতে পারেন।"
+# সার্ভিস
 
 #: src/netconfpkg/gui/dslconfig.glade.h:9
 msgid "Enter the idle time in seconds after which the link should be dropped."
@@ -3596,15 +3761,18 @@ msgstr "_AC-নাম:"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 msgid "_Maximum idle time:"
-msgstr ""
+msgstr "সর্বোচ্চ নিষ্ক্রিয় সময়: (_স)"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:29
 msgid "_Service-Name:"
 msgstr "_পরিসেবার-নাম:"
+# সেবার নাম
+# সার্ভিসের নাম
 
 #: src/netconfpkg/gui/dslconfig.glade.h:31
 msgid "_Use synchronous PPP"
 msgstr "সমকালীন PPP _ব্যবহার করো"
+# আগের মত
 
 #: src/netconfpkg/gui/dslconfig.glade.h:32
 msgid "xDSL Configuration"
@@ -3677,6 +3845,7 @@ msgstr "IPsec - স্থানীয় নেটওয়ার্ক"
 #: src/netconfpkg/gui/editipsec.glade.h:11
 msgid "IPsec - Remote Network"
 msgstr "IPsec - দূরবর্তি নেটওয়ার্ক"
+# দূরবর্তী
 
 #: src/netconfpkg/gui/editipsec.glade.h:12
 msgid "IPsec - Summary"
@@ -3717,6 +3886,7 @@ msgstr "আপনার স্থানীয় নেটওয়ার্কের 
 #: src/netconfpkg/gui/editipsec.glade.h:21
 msgid "Please enter your remote network settings:"
 msgstr "আপনার দূরবর্তি নেটওয়ার্কের জন্য বৈশিষ্ট্যাবলী লিখুন:"
+# দূরবর্তী
 
 #: src/netconfpkg/gui/editipsec.glade.h:22
 msgid "Please select the type of connection:"
@@ -3733,6 +3903,7 @@ msgid ""
 msgstr ""
 "আপনার জন্য চাবি নির্ধারন করুন অথবা তৈরি করুন। \n"
 "চাবিগুলো প্রতিসম হবে, তাই আপনার দূরবর্তি সঙ্গির জন্য একই থাকতে হবে।"
+# প্রতিসম (Symmetric)
 
 #: src/netconfpkg/gui/editipsec.glade.h:26
 msgid "Remote Network _Address:"
@@ -3810,6 +3981,7 @@ msgstr "আইএসডিএন অ্যাডাপ্টারের কন�
 #: src/netconfpkg/gui/neat-control-statusdialog.glade.h:3
 msgid "Waiting to connect to"
 msgstr "এর সাথে সংযোগ করার জন্য অপেক্ষা করা হচ্ছে"
+# আরিকটু স্পষ্ট করেন
 
 #: src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
 #: src/netconfpkg/gui/neat-control-statusdialog.glade.h:4
@@ -3827,6 +3999,7 @@ msgstr "অনলাইন সময়:"
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
 msgid "click the right mouse button for properties"
 msgstr "মাউসের ডানদিকের বোতাম টিপে বৈশিষ্ট্যাবলী পড়ুন"
+#msgstr "মাউসের ডান বাটন চেপে বৈশিষ্ট্যাবলী পড়ুন"
 
 #: src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
 msgid "Connect to"
@@ -3860,14 +4033,17 @@ msgstr "১.00"
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
 msgid "Confirm _starting connection"
 msgstr "_সংযোগ আরম্ভ করবার সময় অনুমতি নেওয়া হবে"
+#msgstr "সংযোগ স্থাপন নিশ্চিত করুন (_স)"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
 msgid "Confirm stopping _connection"
 msgstr "_সংযোগ বন্ধ করার সময় অনুমতি নেওয়া হবে"
+#msgstr "সংযোগ বিচ্ছিন্নকরণ নিশ্চিত করুন (_ব)"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
 msgid "Cos_t accumulated from the past connection:"
 msgstr "বিগত সংযোগের ক্ষেত্রে খ_রচ: "
+# ব্যায়
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
 msgid "Cost per:"
@@ -3875,7 +4051,8 @@ msgstr "প্রতিটির ক্ষেত্রে খরচ:"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
 msgid "Count:"
-msgstr "গননা:"
+msgstr "গণনা:"
+#msgstr "গননা:" <-- বানান
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
 msgid "M_inimum number of seconds charged:"
@@ -3900,6 +4077,7 @@ msgstr "_ডিবাগ মোড"
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
 msgid "_Extra cost to start a connection:"
 msgstr "_সংযোগ আরম্ভ করার অতিরিক্ত খরচ:"
+#msgstr "সংযোগ স্থাপনের অতিরিক্ত খরচ: (_অ)"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
 msgid "_Hour"
@@ -3911,7 +4089,9 @@ msgstr "_মিনিট"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
 msgid "_Number of seconds in basic accounting unit:"
-msgstr "_মৌলিক গননার ক্ষত্রে যে সেকেন্ড সংখ্যা ব্যবহৃত হবে।"
+msgstr "_মৌলিক গণনার ক্ষেত্রে যে সেকেন্ড সংখ্যা ব্যবহৃত হবে।"
+# msgstr "_মৌলিক গননার ক্ষত্রে যে সেকেন্ড সংখ্যা ব্যবহৃত হবে।" <-- বনান
+# যে সংখ্যক সেকেন্ড
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
 msgid "_Second"
@@ -3928,6 +4108,7 @@ msgstr "_সময়"
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
 msgid "redhat network control - Properties"
 msgstr "রেডহ্যাট নেটওয়ার্ক নিয়ন্ত্রন - বৈশিষ্ট্য"
+# নিয়ন্ত্রণ
 
 #: src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
 #, no-c-format
@@ -3949,6 +4130,7 @@ msgstr "ডিএইচসিপি-র বৈশিষ্ট্যাবলী"
 #: src/netconfpkg/gui/sharedtcpip.glade.h:7
 msgid "Destination Network"
 msgstr "গন্তব্যের নেটওয়ার্ক"
+#msgstr "গন্তব্য নেটওয়ার্ক"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
 msgid "Device _Alias Number:"
@@ -3957,6 +4139,7 @@ msgstr "ডিভাইসের _উপনামের সংখ্যা:"
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
 msgstr "কষ্টকর অবস্থার পরিমাপ:"
+# কাঠিন্যের মাত্রা
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid ""
@@ -3988,6 +4171,7 @@ msgstr "স্থানীয় নেটওয়ার্ক"
 #: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Please select the level of security for this device."
 msgstr "এই ডিভাইসটির জন্য নিরাপত্তার পরিমাপ বাছাই করুন।"
+# নিরাপত্তার মাত্রা
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Prefix (Netmask)"
@@ -3995,7 +4179,7 @@ msgstr "উপপদ (নেটমাস্ক)"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Professional"
-msgstr ""
+msgstr "পেশাদার"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Remote Host / GW"
@@ -4008,26 +4192,33 @@ msgstr "দূরবর্তি নেটওয়ার্ক"
 #: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Security Level"
 msgstr "নিরাপত্তার পরিমাপ"
+#msgstr "নিরাপত্তার মাত্রা"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Select the services you want to provide through this device"
 msgstr "এই ডিভাইসের দ্বারা যে সকল পরিসেবা উপলব্ধ করতে আপনি ইচ্ছুক তা বাছাই করুন"
+# সার্ভিস
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Service"
 msgstr "পরিসেবা"
+# সার্ভিস
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Service Description"
 msgstr "পরিসেবার বিবরণ"
+# সার্ভিস
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Services"
 msgstr "পরিসেবাসমূহ"
+# সার্ভিস
+# 'সমূহ' দরকার নাই
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Static Network Routes"
 msgstr "স্থায়ি নেটওয়ার্ক রুট"
+# স্থায়ী
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Tie to specific ethernet card"
@@ -4063,11 +4254,12 @@ msgstr "_স্বল্প নিরাপত্তা"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Probe"
-msgstr "_খঁোজ করো"
+msgstr "_খোঁজ করো"
+# অনুসন্ধান
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Probe for Address..."
-msgstr "_ঠিকানা খঁোজ করো..."
+msgstr "_ঠিকানা খোঁজ করো..."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Secure Device (LAN)"
@@ -4152,10 +4344,12 @@ msgstr "_নির্ধারিত:"
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
 msgid "_Transmit Rate:"
 msgstr "_প্রেরণ লরার গতি:"
+# এটা কি লিখছেন ?
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Wireless Settings"
 msgstr "_বেতারের বৈশিষ্ট্যাবলী"
+#msgstr "_বেতার যোগাযোগের বৈশিষ্ট্যাবলী"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:1
 msgid "00:00:00:00:00:00"
@@ -4170,6 +4364,7 @@ msgstr ""
 "প্রতিটি ডিভাইসকে কোন একটি প্রকৃত ডিভাইসের সাথে যুক্ত করতে হবে যা আপনি বাছাই করতে "
 "পারবেন। ডিভাইসের উপনাম ব্যবহার করে আপনি একাধিক ডিভাইসকে একটি প্রকৃত ডিভাইসের "
 "সাথে যুক্ত করতে পারবেন।"
+# ২য় বাক্য ভাল করে পড়ে দেখেন। 'ভার্চুয়াল' আছে
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:4
 msgid "Enable _Device Alias support"
@@ -4189,7 +4384,7 @@ msgstr "_উপনাম:"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:14
 msgid "_Probe for Address"
-msgstr "ঠিকানা _খঁোজ করো"
+msgstr "ঠিকানা _খোঁজ করো"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:16
 msgid "_Use Hardware Address"
@@ -4198,6 +4393,7 @@ msgstr "হার্ডওয়েরের ঠিকানা _ব্যবহা
 #: src/netconfpkg/gui/maindialog.glade.h:2
 msgid "Activate the selected device, calling ifup <device>."
 msgstr "ifup <device> ব্যবহার করে, বাছাই করা ডিভাইসটি স্বষ্ক্রিয় করুন।"
+# সক্রিয়
 
 #: src/netconfpkg/gui/maindialog.glade.h:3
 msgid "Aliases"
@@ -4209,7 +4405,7 @@ msgstr "বস্তু"
 
 #: src/netconfpkg/gui/maindialog.glade.h:5
 msgid "DNS Search Path:"
-msgstr "DNS খঁোজার পথ:"
+msgstr "DNS খোঁজার পথ:"
 
 #: src/netconfpkg/gui/maindialog.glade.h:6
 msgid "D_NS"
@@ -4230,6 +4426,7 @@ msgstr "গন্তব্য"
 #: src/netconfpkg/gui/maindialog.glade.h:10
 msgid "Dev_ices"
 msgstr "ডি_ভাইসসমূহ"
+# 'সমূহ' লেখার দরকার নাই
 
 #: src/netconfpkg/gui/maindialog.glade.h:12
 msgid "Do_main:"
@@ -4299,7 +4496,7 @@ msgid ""
 "Multiple logical devices can be associated with a single piece of hardware."
 msgstr ""
 "কম্পিউটারের সাথে সংযুক্ত নেটওয়ার্ক হার্ডওয়ের আপনি এখানে কনফিগার করতে পারেন।"
-"একাধিক লগিক্যাল ডিভাইসকে একটি হার্ডওয়েরের সাথে যুক্ত করা সম্ভব।"
+"একাধিক লজিক্যাল ডিভাইসকে একটি হার্ডওয়েরের সাথে যুক্ত করা সম্ভব।"
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
 msgid ""
@@ -4312,9 +4509,10 @@ msgid ""
 "You may configure the system's hostname, domain, name servers, and search "
 "domain. Name servers are used to look up other hosts on the network."
 msgstr ""
-"আপনি সিস্টেমের হোস্টের নাম , ডোমেন, নামের সার্ভার এবং খঁোজার ডোমেন "
-"কনফিগার করতে পারবেন। নামের সার্ভারগুলো নেটওয়ার্কের অন্য হোস্টদের খঁুজতে "
+"আপনি সিস্টেমের হোস্টের নাম, ডোমেন, নামের সার্ভার এবং খোঁজার ডোমেন "
+"কনফিগার করতে পারবেন। নামের সার্ভারগুলো নেটওয়ার্কের অন্য হোস্টদের খুঁজতে "
 "ব্যবহৃত হয়।"
+# নেইমসার্ভার, ডোমেইন
 
 #: src/netconfpkg/gui/maindialog.glade.h:32
 msgid ""
@@ -4323,12 +4521,15 @@ msgid ""
 "may provide."
 msgstr ""
 "IP অ্যাড্রেসে আপনি স্থায়ি কম্পিউটার হোস্টের নাম প্রেরণ করতে পারেন। যদি DNS "
-"ব্যবহৃত হয় তাহলে, অন্য কোন তথ্যের আগে এই মানগুলো  প্রাথমিক গুরুত্ব পাবে।"
+"ব্যবহৃত হয় তাহলে, অন্য কোন তথ্যের আগে এই মানগুলো প্রাথমিক গুরুত্ব পাবে।"
+# স্থায়ী
+# ২য় বাক্যে 'প্রাথমিক' এর পরিবর্তে 'অধিক'
 
 #: src/netconfpkg/gui/maindialog.glade.h:33
 #: src/netconfpkg/gui/neat-control.glade.h:17
 msgid "_Activate"
 msgstr "_স্বক্রিয় করা"
+# সক্রিয়
 
 #: src/netconfpkg/gui/maindialog.glade.h:34
 #: src/netconfpkg/gui/neat-control.glade.h:19
@@ -4351,6 +4552,7 @@ msgstr "_পর্যবেক্ষণ"
 #: src/netconfpkg/gui/maindialog.glade.h:39
 msgid "_New"
 msgstr "নতুন"
+#msgstr "নতুন (_ন)"
 
 #: src/netconfpkg/gui/maindialog.glade.h:40
 msgid "_Primary DNS:"
@@ -4371,6 +4573,7 @@ msgstr "_তৃতীয় DNS:"
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
 msgid "Ad-Hoc"
 msgstr "তদর্থক"
+# 'অনানুষ্ঠানিক'টা মনে হয় বেশি স্পষ্ট
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "Configure Wireless Connection"
@@ -4399,6 +4602,7 @@ msgstr "বেতার কার্ড"
 #: src/netconfpkg/gui/neat-control.glade.h:1
 msgid "Ac_tivate"
 msgstr "চালু _করো"
+# সক্রিয়
 
 #: src/netconfpkg/gui/neat-control.glade.h:2
 msgid "Active Profile"
@@ -4411,6 +4615,7 @@ msgstr "স্বয়ংক্রিয় _বাছাইপ্রক্রিয়�
 #: src/netconfpkg/gui/neat-control.glade.h:4
 msgid "Click to activate the selected profile"
 msgstr "বাছাই করা প্রোফাইল চালু করতে হলে ক্লিক্‌ করুন"
+# ক্লিক
 
 #: src/netconfpkg/gui/neat-control.glade.h:5
 msgid "Click to bring up the interface"
