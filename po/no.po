@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network 1.0\n"
 "POT-Creation-Date: 2002-11-18 14:46+0100\n"
-"PO-Revision-Date: 2002-08-24 21:18+0200\n"
+"PO-Revision-Date: 2002-12-01 09:38+0100\n"
 "Last-Translator: Trond Eivind Glomsrød <teg@redhat.com>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,6 +46,10 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
+"Endringene er lagret.\n"
+"Du vil kanskje måtte starte\n"
+"nettverket og nettverkstjenestene\n"
+"på nytt."
 
 #. change the default profile to a more understandable name
 #: src/netconf.py:453 src/netconf.py:466
@@ -94,11 +98,13 @@ msgid "Activating network device %s, please wait..."
 msgstr "Aktiverer nettverksenhet %s..."
 
 #: src/netconf.py:639
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Cannot activate network device %s\n"
 "%s"
-msgstr "Kan ikke aktivere nettverksenhet %s"
+msgstr ""
+"Kan ikke aktivere nettverksenhet %s\n"
+"%s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
@@ -177,27 +183,26 @@ msgstr "Vil du virkelig slette \"%s\"?"
 #. remove hardware
 #. remove all devices used this hardware
 #: src/netconf.py:1408
-#, fuzzy
 msgid ""
 "redhat-config-network - graphical network configuration tool\n"
 "\n"
 "Usage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
 msgstr ""
-"redhat-config-network-cmd - nettverkskonfigurering fra kommandolinjen\n"
+"redhat-config-network - nettverkskonfigurering med grafisk grensesnitt\n"
 "\n"
-"Bruk: redhat-config-network-cmd -p --profile <profile>"
+"Bruk: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
 
 #: src/netconf.py:1409
 msgid "  -p, --profile\t\tShow profiles."
-msgstr ""
+msgstr "  -p, --profile\t\tVis profiler."
 
 #: src/netconf.py:1410
 msgid "  -n, --noprofile\tDo not show profiles."
-msgstr ""
+msgstr "  -n, --noprofile\t\tIkke vis profiler."
 
 #: src/netconf.py:1411
 msgid "  -h, --help\t\tShows this help."
-msgstr ""
+msgstr "  -h, --help\t\tVis denne teksten."
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -1153,12 +1158,17 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"Katalogen /etc/cipe mangler!\n"
+"Oppretter den for deg!\n"
+"Du bør installere rpm-pakken med cipe!\n"
 
 #: src/netconfpkg/NCCipe.py:159
 msgid ""
 "Could not create\n"
 "directory /etc/cipe!"
 msgstr ""
+"Kunne ikke opprette\n"
+"katalog /etc/pipe!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -3565,9 +3575,8 @@ msgid "Destination Network"
 msgstr "Målnettverk"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-#, fuzzy
 msgid "Device _Alias Number:"
-msgstr "Enhets _Aliaser:"
+msgstr "Enhets _Aliasnummer:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
@@ -3772,12 +3781,3 @@ msgstr "Konfigurer din Internett-forbindelse"
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "Veiviser for konfigurasjon av Internett"
-
-#~ msgid "Please restart %s with root permissions!"
-#~ msgstr "Start %s på nytt med root-aksess!"
-
-#~ msgid "Error loading Device %s!\n"
-#~ msgstr "Feil under lasting av enhet %s!\n"
-
-#~ msgid "Error opening/writing %s: %s!"
-#~ msgstr "Feil under åpning/skriving %s: %s!"
