@@ -107,6 +107,7 @@ class ModemInterface:
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dialog.set_modal(TRUE)
             label.show_now()
+            dialog.show_all()
             dialog.show_now()
             gtk.gdk.flush()
             while gtk.events_pending():

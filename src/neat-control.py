@@ -167,6 +167,7 @@ class mainDialog:
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             label.show()
             dlg.vbox.show()
+            dlg.show_all()
             dlg.show_now()
             dlg.set_transient_for(self.dialog)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)

@@ -110,7 +110,8 @@ def splash_screen(gfx = None):
         lbl = gtk.Label(_('Loading Network Configuration...'))
         window.add(lbl)
         lbl.show_now()
-        
+
+    window.show_all()
     window.show_now()
     
     while gtk.events_pending():
