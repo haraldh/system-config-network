@@ -202,7 +202,7 @@ class mainDialog:
             "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
             "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
             "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked,
-            })
+        })
 
 
         self.xml.get_widget ("hardware_pixmap").set_from_file("/usr/share/redhat-config-network/pixmaps/connection-ethernet.png")
@@ -211,6 +211,7 @@ class mainDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
+
 
         if showprofile:
             self.xml.get_widget ("profileFrame").show()
@@ -239,7 +240,11 @@ class mainDialog:
         self.tag = timeout_add(4000, self.update_devicelist)
 
         if modus == 'druid': self.on_deviceAddButton_clicked(None)
-            
+
+        # Let this dialog be in the taskbar like a normal window
+        self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
+        self.dialog.show()
+        
     def load(self):
         self.loadDevices()
         self.loadHardware()

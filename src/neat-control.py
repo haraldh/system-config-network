@@ -103,6 +103,9 @@ class mainDialog:
         self.hydrate()
         
         self.tag = timeout_add(4000, self.update_dialog)
+        # Let this dialog be in the taskbar like a normal window
+        self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
+        self.dialog.show()
         
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
