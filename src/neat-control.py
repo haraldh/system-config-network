@@ -201,6 +201,9 @@ class mainDialog:
             ret = Interface().configure(device)
             if ret:
                 devErrorDialog(device, CONFIGURE, self.dialog)
+            self.hydrate()
+            self.hydrateProfiles()
+            self.update_dialog()
                 
     def activate_new_profile(self, profile):
         profilelist = getProfileList()        
