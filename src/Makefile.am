@@ -31,10 +31,6 @@ GLADE_FILES = \
 
 EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES)
 
-#pkgdata_DATA :=
-
-#exec_SCRIPTS = 
-
 execdir = $(sbindir)
 
 all-local:
@@ -46,7 +42,7 @@ all-local:
 pythondir = $(pkgdatadir)
 python_DATA = $(PYTHON_FILES)
 
-gladedir = $(pkgdatadir)/netconfpkg/
+gladedir = $(pkgdatadir)/netconfpkg
 glade_DATA = $(GLADE_FILES)
 
 install-exec-local:
@@ -55,8 +51,6 @@ install-exec-local:
 	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network
 	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd
 	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/neat
-#	install -m 644 $(PYTHON_FILES) $(DESTDIR)$(pkgdatadir)/
-#	install -m 644 $(GLADE_FILES)  $(DESTDIR)$(pkgdatadir)/netconfpkg/
 
 docs:
 	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
