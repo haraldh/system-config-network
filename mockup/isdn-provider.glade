@@ -14,7 +14,7 @@
 
 <widget>
   <class>GtkWindow</class>
-  <name>isdn_provider_config</name>
+  <name>isdn_provider_edit</name>
   <border_width>8</border_width>
   <title>ISDN Provider Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
@@ -87,7 +87,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label9</name>
-	  <label>Pre_fix:</label>
+	  <label>Prefi_x:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -168,7 +168,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label12</name>
-	  <label>_MSN/EAZ:</label>
+	  <label>MSN/EA_Z:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -195,7 +195,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label13</name>
-	  <label>_Encapsulation mode:</label>
+	  <label>_Encapsulation Mode:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -330,6 +330,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_prefix_entry</name>
+	  <tooltip>Enter any number you need to dial before the others. For example, if you need to reach an outside line, or disable call waiting, put necessary numbers here.</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -354,6 +355,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_area_code_entry</name>
+	  <tooltip>Enter the area/city/country code needed to reach your ISP</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -378,6 +380,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_phone_number_entry</name>
+	  <tooltip>Enter the number of the ISP (without area/city/country code)</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -402,6 +405,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_msn_entry</name>
+	  <tooltip>Enter your local phone number</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -426,6 +430,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_login_name_entry</name>
+	  <tooltip>Enter the login name that your ISP gave you here</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -450,6 +455,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_password_entry</name>
+	  <tooltip>Enter the password for your account, If you do not know it, please contact your ISP</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>False</text_visible>
@@ -474,6 +480,7 @@
 	<widget>
 	  <class>GtkOptionMenu</class>
 	  <name>isdn_encap_mode_optionmenu</name>
+	  <tooltip>Set the encapsulation mode</tooltip>
 	  <can_focus>True</can_focus>
 	  <items>raw IP
 sync PPP
@@ -498,6 +505,7 @@ sync PPP
 	<widget>
 	  <class>GtkOptionMenu</class>
 	  <name>isdn_dial_mode_optionmenu</name>
+	  <tooltip>Set dial mode</tooltip>
 	  <can_focus>True</can_focus>
 	  <items>auto
 manual
@@ -522,6 +530,7 @@ manual
 	<widget>
 	  <class>GtkOptionMenu</class>
 	  <name>isdn_auth_optionmenu</name>
+	  <tooltip>Set the authentication protocol used by ISP</tooltip>
 	  <can_focus>True</can_focus>
 	  <items>chap
 pap
@@ -548,6 +557,7 @@ none
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>isdn_provider_name_entry</name>
+	  <tooltip>The name of this connection, usualy just the name of the ISP</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -573,7 +583,7 @@ none
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>provider_tab_label</name>
+	<name>isdn_provider_tab_label</name>
 	<label>Provider</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -606,7 +616,8 @@ none
 
 	  <widget>
 	    <class>GtkCheckButton</class>
-	    <name>checkbutton8</name>
+	    <name>isdn_local_ip_checkbutton</name>
+	    <tooltip>Enable the local IP Adress</tooltip>
 	    <can_focus>True</can_focus>
 	    <label>L_ocal IP Adress:</label>
 	    <active>False</active>
@@ -629,7 +640,8 @@ none
 
 	  <widget>
 	    <class>GtkCheckButton</class>
-	    <name>checkbutton9</name>
+	    <name>isdn_remote_ip_checkbutton</name>
+	    <tooltip>Enable the remote IP Adress</tooltip>
 	    <can_focus>True</can_focus>
 	    <label>_Remote IP Adress:</label>
 	    <active>False</active>
@@ -652,9 +664,10 @@ none
 
 	  <widget>
 	    <class>GtkCheckButton</class>
-	    <name>checkbutton10</name>
+	    <name>isdn_subnet_mask_checkbutton</name>
+	    <tooltip>Enable the subnet mask</tooltip>
 	    <can_focus>True</can_focus>
-	    <label>Subnet Netmas_k:</label>
+	    <label>Subnet Mas_k:</label>
 	    <active>False</active>
 	    <draw_indicator>True</draw_indicator>
 	    <child>
@@ -676,6 +689,7 @@ none
 	  <widget>
 	    <class>GtkEntry</class>
 	    <name>isdn_remote_ip_entry</name>
+	    <tooltip>Enter the remote IP adress, only used with static IP negotiation</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -699,7 +713,8 @@ none
 
 	  <widget>
 	    <class>GtkEntry</class>
-	    <name>isdn_netmask_entry</name>
+	    <name>isdn_subnet_mask_entry</name>
+	    <tooltip>Enter the subnet mask, only used with static IP negotiation</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -724,6 +739,7 @@ none
 	  <widget>
 	    <class>GtkEntry</class>
 	    <name>isdn_local_ip_entry</name>
+	    <tooltip>Enter the local IP adress, only used with static IP negotiation</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -736,7 +752,7 @@ none
 	      <bottom_attach>1</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
+	      <xexpand>True</xexpand>
 	      <yexpand>False</yexpand>
 	      <xshrink>False</xshrink>
 	      <yshrink>False</yshrink>
@@ -773,7 +789,7 @@ none
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label33</name>
-	    <label>Do_main Name:</label>
+	    <label>Doma_in Name:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
@@ -800,6 +816,7 @@ none
 	  <widget>
 	    <class>GtkEntry</class>
 	    <name>isdn_domain_name_entry</name>
+	    <tooltip>Enter the domain name</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -825,12 +842,13 @@ none
 	<widget>
 	  <class>GtkCheckButton</class>
 	  <name>isdn_use_static_dns_checkbutton</name>
+	  <tooltip>Enable static DNS</tooltip>
 	  <can_focus>True</can_focus>
-	  <label>_Use static DNS</label>
+	  <label>Use static D_NS</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
-	    <padding>4</padding>
+	    <padding>9</padding>
 	    <expand>False</expand>
 	    <fill>False</fill>
 	  </child>
@@ -851,34 +869,9 @@ none
 	  </child>
 
 	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label26</name>
-	    <label>DNS IP Adress:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
 	    <class>GtkEntry</class>
 	    <name>isdn_dns_entry</name>
+	    <tooltip>Enter the DNS IP adress</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -903,8 +896,9 @@ none
 	  <widget>
 	    <class>GtkButton</class>
 	    <name>isdn_dns_add_button</name>
+	    <tooltip>Add DNS IP adress into the list</tooltip>
 	    <can_focus>True</can_focus>
-	    <label>_Add...</label>
+	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <left_attach>2</left_attach>
@@ -945,8 +939,9 @@ none
 	    <widget>
 	      <class>GtkButton</class>
 	      <name>isdn_dns_delete_button</name>
+	      <tooltip>Delete the DNS IP Adress</tooltip>
 	      <can_focus>True</can_focus>
-	      <label>_Delete...</label>
+	      <label>Delete...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
@@ -954,46 +949,13 @@ none
 		<fill>False</fill>
 	      </child>
 	    </widget>
-
-	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox9</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>True</yfill>
-	    </child>
-
-	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
-
-	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
 	  </widget>
 
 	  <widget>
 	    <class>GtkScrolledWindow</class>
 	    <name>scrolledwindow1</name>
-	    <hscrollbar_policy>GTK_POLICY_ALWAYS</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_ALWAYS</vscrollbar_policy>
+	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
 	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
 	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
 	    <child>
@@ -1013,7 +975,7 @@ none
 
 	    <widget>
 	      <class>GtkCList</class>
-	      <name>isdn_dns_adress_clist</name>
+	      <name>isdn_dns_server_adress_clist</name>
 	      <can_focus>True</can_focus>
 	      <columns>1</columns>
 	      <column_widths>80</column_widths>
@@ -1025,7 +987,7 @@ none
 		<class>GtkLabel</class>
 		<child_name>CList:title</child_name>
 		<name>label31</name>
-		<label>DNS Adress List</label>
+		<label>DNS Server Adress</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
 		<xalign>0.5</xalign>
@@ -1035,13 +997,40 @@ none
 	      </widget>
 	    </widget>
 	  </widget>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label35</name>
+	    <label>DNS I_P Adress:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>isdn_dns_entry</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
 	</widget>
       </widget>
 
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>tcpip_tab_label</name>
+	<name>isdn_tcpip_tab_label</name>
 	<label>TCP/IP</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1061,8 +1050,9 @@ none
 	<widget>
 	  <class>GtkCheckButton</class>
 	  <name>isdn_callback_checkbutton</name>
+	  <tooltip>Enable callback</tooltip>
 	  <can_focus>True</can_focus>
-	  <label>Turn on callbac_k</label>
+	  <label>Turn on Call_back</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1090,14 +1080,13 @@ none
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label6</name>
-	    <label>Phone in _Number:</label>
+	    <label>Dialin Number:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
-	    <default_focus_target>isdn_phon_in_entry</default_focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>1</right_attach>
@@ -1117,14 +1106,13 @@ none
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label7</name>
-	    <label>Callback _Delay:</label>
+	    <label>Callback Delay:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
-	    <default_focus_target>isdn_callback_delay_spinbutton</default_focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>1</right_attach>
@@ -1144,6 +1132,7 @@ none
 	  <widget>
 	    <class>GtkSpinButton</class>
 	    <name>isdn_callback_delay_spinbutton</name>
+	    <tooltip>Set the callback delay</tooltip>
 	    <can_focus>True</can_focus>
 	    <climb_rate>1</climb_rate>
 	    <digits>0</digits>
@@ -1151,7 +1140,7 @@ none
 	    <update_policy>GTK_UPDATE_ALWAYS</update_policy>
 	    <snap>False</snap>
 	    <wrap>False</wrap>
-	    <value>1</value>
+	    <value>3</value>
 	    <lower>0</lower>
 	    <upper>100</upper>
 	    <step>1</step>
@@ -1175,7 +1164,8 @@ none
 
 	  <widget>
 	    <class>GtkEntry</class>
-	    <name>isdn_phon_in_entry</name>
+	    <name>isdn_dialin_number_entry</name>
+	    <tooltip>Enter the dialin number</tooltip>
 	    <can_focus>True</can_focus>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
@@ -1215,9 +1205,9 @@ none
 
 	  <widget>
 	    <class>GtkCheckButton</class>
-	    <name>isdn_phone_in_allow_checkbutton</name>
+	    <name>isdn_allow_dialin_number_checkbutton</name>
 	    <can_focus>True</can_focus>
-	    <label>_Allow only above the phone in number</label>
+	    <label>Allow only above Dialin Number</label>
 	    <active>False</active>
 	    <draw_indicator>True</draw_indicator>
 	    <child>
@@ -1240,7 +1230,7 @@ none
 	    <class>GtkCheckButton</class>
 	    <name>isdn_cbcp_checkbutton</name>
 	    <can_focus>True</can_focus>
-	    <label>Turn on CBC_P</label>
+	    <label>Turn on Callback Control Protocol (CBCP)</label>
 	    <active>False</active>
 	    <draw_indicator>True</draw_indicator>
 	    <child>
@@ -1259,87 +1249,13 @@ none
 	    </child>
 	  </widget>
 	</widget>
-
-	<widget>
-	  <class>GtkTable</class>
-	  <name>table6</name>
-	  <rows>1</rows>
-	  <columns>3</columns>
-	  <homogeneous>False</homogeneous>
-	  <row_spacing>0</row_spacing>
-	  <column_spacing>8</column_spacing>
-	  <child>
-	    <padding>8</padding>
-	    <expand>False</expand>
-	    <fill>True</fill>
-	  </child>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label18</name>
-	    <label>Hangup Tim_eout:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>isdn_hangup_timeout_spinbutton</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkSpinButton</class>
-	    <name>isdn_hangup_timeout_spinbutton</name>
-	    <can_focus>True</can_focus>
-	    <climb_rate>1</climb_rate>
-	    <digits>0</digits>
-	    <numeric>True</numeric>
-	    <update_policy>GTK_UPDATE_ALWAYS</update_policy>
-	    <snap>False</snap>
-	    <wrap>False</wrap>
-	    <value>0</value>
-	    <lower>0</lower>
-	    <upper>100</upper>
-	    <step>1</step>
-	    <page>10</page>
-	    <page_size>10</page_size>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-	</widget>
       </widget>
 
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>callback_tab_label</name>
-	<label>Callback</label>
+	<name>isdn_callback_tab_label</name>
+	<label>Call Back</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1359,7 +1275,7 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>isdn_channel_bundling_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>_Turn on channel bundling</label>
+	  <label>Turn on _Channel Bundling</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1373,7 +1289,7 @@ none
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>channel_bundling_tab_label</name>
+	<name>isdn_channel_bundling_tab_label</name>
 	<label>Channel Bundling</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1392,9 +1308,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>isdn_vj_header_checkbutton</name>
+	  <name>isdn_vj_header_compression_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on _VJ TCP/IP header compression</label>
+	  <label>_Turn on VJ TCP/IP Header Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1406,9 +1322,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>isdn_vj_connection_checkbutton</name>
+	  <name>isdn_vj_connection_compression_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on V_J connection-ID compression</label>
+	  <label>Turn on V_J Connection-ID Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1420,9 +1336,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>isdn_ac_checkbutton</name>
+	  <name>isdn_ac_compression_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on _adress/control compression</label>
+	  <label>Turn on Adre_ss/Control Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1434,9 +1350,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>isdn_pc_checkbutton</name>
+	  <name>isdn_pc_compression_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on protocol _field compresion</label>
+	  <label>Turn on Protocol _Field Compresion</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1450,7 +1366,7 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>isdn_bsd_compression_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on B_SD compression</label>
+	  <label>Turn on BSD Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1462,9 +1378,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>isdn_ccp_checkbutton</name>
+	  <name>isdn_ccp_compression_checkbutton</name>
 	  <can_focus>True</can_focus>
-	  <label>_Turn on CCP Compression Control Protocol</label>
+	  <label>Turn on CCP Compression Control Protocol</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1478,7 +1394,7 @@ none
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>compression_tab_label</name>
+	<name>isdn_compression_tab_label</name>
 	<label>Compression</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1509,10 +1425,10 @@ none
 	  <widget>
 	    <class>GtkTable</class>
 	    <name>table8</name>
-	    <rows>3</rows>
+	    <rows>2</rows>
 	    <columns>3</columns>
 	    <homogeneous>False</homogeneous>
-	    <row_spacing>0</row_spacing>
+	    <row_spacing>8</row_spacing>
 	    <column_spacing>8</column_spacing>
 	    <child>
 	      <padding>0</padding>
@@ -1528,8 +1444,8 @@ none
 	      <child>
 		<left_attach>2</left_attach>
 		<right_attach>3</right_attach>
-		<top_attach>2</top_attach>
-		<bottom_attach>3</bottom_attach>
+		<top_attach>1</top_attach>
+		<bottom_attach>2</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>False</xexpand>
@@ -1544,7 +1460,7 @@ none
 		<class>GtkButton</class>
 		<name>isdn_option_delete_button</name>
 		<can_focus>True</can_focus>
-		<label>_Delete...</label>
+		<label>Delete...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
 		  <padding>0</padding>
@@ -1557,6 +1473,7 @@ none
 	    <widget>
 	      <class>GtkEntry</class>
 	      <name>isdn_option_entry</name>
+	      <tooltip>Enter the ipppd options </tooltip>
 	      <can_focus>True</can_focus>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
@@ -1579,65 +1496,17 @@ none
 	    </widget>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>isdn_option_add_button</name>
-	      <can_focus>True</can_focus>
-	      <label>_Add...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<left_attach>2</left_attach>
-		<right_attach>3</right_attach>
-		<top_attach>0</top_attach>
-		<bottom_attach>1</bottom_attach>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-		<xexpand>False</xexpand>
-		<yexpand>False</yexpand>
-		<xshrink>False</xshrink>
-		<yshrink>False</yshrink>
-		<xfill>True</xfill>
-		<yfill>False</yfill>
-	      </child>
-	    </widget>
-
-	    <widget>
-	      <class>GtkLabel</class>
-	      <name>label23</name>
-	      <label></label>
-	      <justify>GTK_JUSTIFY_CENTER</justify>
-	      <wrap>False</wrap>
-	      <xalign>0</xalign>
-	      <yalign>0.5</yalign>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <child>
-		<left_attach>1</left_attach>
-		<right_attach>2</right_attach>
-		<top_attach>1</top_attach>
-		<bottom_attach>2</bottom_attach>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-		<xexpand>False</xexpand>
-		<yexpand>False</yexpand>
-		<xshrink>False</xshrink>
-		<yshrink>False</yshrink>
-		<xfill>True</xfill>
-		<yfill>False</yfill>
-	      </child>
-	    </widget>
-
-	    <widget>
 	      <class>GtkScrolledWindow</class>
 	      <name>scrolledwindow2</name>
-	      <hscrollbar_policy>GTK_POLICY_ALWAYS</hscrollbar_policy>
-	      <vscrollbar_policy>GTK_POLICY_ALWAYS</vscrollbar_policy>
+	      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
 	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
 	      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
 	      <child>
 		<left_attach>1</left_attach>
 		<right_attach>2</right_attach>
-		<top_attach>2</top_attach>
-		<bottom_attach>3</bottom_attach>
+		<top_attach>1</top_attach>
+		<bottom_attach>2</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>True</xexpand>
@@ -1662,7 +1531,7 @@ none
 		  <class>GtkLabel</class>
 		  <child_name>CList:title</child_name>
 		  <name>label32</name>
-		  <label>Option List</label>
+		  <label>IPPP Options</label>
 		  <justify>GTK_JUSTIFY_CENTER</justify>
 		  <wrap>False</wrap>
 		  <xalign>0.5</xalign>
@@ -1676,17 +1545,38 @@ none
 	    <widget>
 	      <class>GtkLabel</class>
 	      <name>label34</name>
-	      <label>_Option:</label>
+	      <label>Option:</label>
 	      <justify>GTK_JUSTIFY_CENTER</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
 	      <yalign>0.5</yalign>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <default_focus_target>isdn_option_entry</default_focus_target>
 	      <child>
 		<left_attach>0</left_attach>
 		<right_attach>1</right_attach>
+		<top_attach>0</top_attach>
+		<bottom_attach>1</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>False</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>False</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>isdn_option_add_button</name>
+	      <can_focus>True</can_focus>
+	      <label>Add...</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<left_attach>2</left_attach>
+		<right_attach>3</right_attach>
 		<top_attach>0</top_attach>
 		<bottom_attach>1</bottom_attach>
 		<xpad>0</xpad>
@@ -1703,25 +1593,120 @@ none
 	</widget>
 
 	<widget>
-	  <class>GtkCheckButton</class>
-	  <name>isdn_dialin_server_checkbutton</name>
-	  <can_focus>True</can_focus>
-	  <label>Dialin _Server</label>
-	  <active>False</active>
-	  <draw_indicator>True</draw_indicator>
+	  <class>GtkHSeparator</class>
+	  <name>hseparator3</name>
 	  <child>
 	    <padding>8</padding>
 	    <expand>False</expand>
 	    <fill>True</fill>
 	  </child>
 	</widget>
+
+	<widget>
+	  <class>GtkTable</class>
+	  <name>table12</name>
+	  <rows>2</rows>
+	  <columns>2</columns>
+	  <homogeneous>False</homogeneous>
+	  <row_spacing>8</row_spacing>
+	  <column_spacing>8</column_spacing>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>True</fill>
+	  </child>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label36</name>
+	    <label>Han_gup Timeout:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>isdn_hangup_timeout_spinbutton</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>True</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkCheckButton</class>
+	    <name>isdn_dialin_server_checkbutton</name>
+	    <tooltip>Enable if you want to setup it as dialin server</tooltip>
+	    <can_focus>True</can_focus>
+	    <label>Dialin Server</label>
+	    <active>False</active>
+	    <draw_indicator>True</draw_indicator>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>2</right_attach>
+	      <top_attach>1</top_attach>
+	      <bottom_attach>2</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>True</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>True</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkSpinButton</class>
+	    <name>isdn_hangup_timeout_spinbutton</name>
+	    <tooltip>Set the hangup timeout</tooltip>
+	    <can_focus>True</can_focus>
+	    <climb_rate>1</climb_rate>
+	    <digits>0</digits>
+	    <numeric>True</numeric>
+	    <update_policy>GTK_UPDATE_ALWAYS</update_policy>
+	    <snap>False</snap>
+	    <wrap>False</wrap>
+	    <value>600</value>
+	    <lower>0</lower>
+	    <upper>10000</upper>
+	    <step>1</step>
+	    <page>10</page>
+	    <page_size>10</page_size>
+	    <child>
+	      <left_attach>1</left_attach>
+	      <right_attach>2</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>True</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+	</widget>
       </widget>
 
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>extended_option_tab_label</name>
-	<label>Extended Options</label>
+	<name>isdn_advanced_tab_label</name>
+	<label>Advanced</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -1758,7 +1743,7 @@ none
 
       <widget>
 	<class>GtkButton</class>
-	<name>isdn_ok_button</name>
+	<name>isdn_provider_ok_button</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
@@ -1767,7 +1752,7 @@ none
 
       <widget>
 	<class>GtkButton</class>
-	<name>isdn_cancal_button</name>
+	<name>isdn_provider_cancel_button</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
