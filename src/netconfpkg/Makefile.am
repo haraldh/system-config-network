@@ -28,6 +28,7 @@ IDL_FILES = \
 
 PYTHON_FILES = \
 	ConfSMB.py \
+	cipeconfig.py \
 	deviceconfig.py \
 	devicetype.py \
 	dialupconfig.py \
