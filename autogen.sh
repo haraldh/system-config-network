@@ -41,6 +41,9 @@ esac
 
 glib-gettextize --copy --force
 intltoolize --copy -f --automake
+
+patch -p0 < intltool.patch
+
 autoconf
 autoheader
 aclocal -I . $ACLOCAL_FLAGS
