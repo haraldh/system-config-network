@@ -34,6 +34,7 @@ IDL_FILES = \
 PYTHON_FILES = \
 	ADSLInterface.py \
 	cipeconfig.py \
+	ConfPAP.py \
 	ConfSMB.py \
 	deviceconfig.py \
 	devicetype.py \
