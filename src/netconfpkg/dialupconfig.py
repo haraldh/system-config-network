@@ -98,11 +98,11 @@ class DialupDialog:
         else:
             self.dialog.set_icon(pix, mask)
 
-    def hydrate():
+    def hydrate(self):
         # to be overloaded by specific dialup classes
         pass
 
-    def dehydrate():
+    def dehydrate(self):
         # to be overloaded by specific dialup classes
         pass
 
@@ -216,11 +216,11 @@ class ISDNDialupDialog(DialupDialog):
         
         self.dialog.show()
 
-    def hydrate():
+    def hydrate(self):
         # Fill in Dialog
         pass
 
-    def dehydrate():
+    def dehydrate(self):
         # Fill in Device.Dialup class
         pass
 
@@ -234,11 +234,11 @@ class ModemDialupDialog(DialupDialog):
             
         self.dialog.show()
 
-    def hydrate():
+    def hydrate(self):
         # Fill in Dialog
         pass
 
-    def dehydrate():
+    def dehydrate(self):
         # Fill in Device.Dialup class
         pass
         
