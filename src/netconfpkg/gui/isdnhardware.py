@@ -39,13 +39,6 @@ from gtk import FALSE
 
 class isdnHardwareDialog:
     def __init__(self, hw):
-        glade_file = "sharedtcpip.glade"
-        if not os.path.exists(glade_file):
-            glade_file = GUI_functions.GLADEPATH + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
-
         glade_file = "isdnhardware.glade"
 
         if not os.path.exists(glade_file):
@@ -171,7 +164,6 @@ class isdnHardwareDialog:
                     self.xml.get_widget("io2Entry").set_text(hw.Card.IoPort2)
                 else:
                     self.xml.get_widget("io2Entry").set_sensitive(FALSE)
-        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.hw)
                     
     def dehydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -216,7 +208,6 @@ class isdnHardwareDialog:
             self.hw.Card.IoPort2 = isdncard.IoPort2
         else:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.hw)
 
     def setup(self):
         cardlist = NCisdnhardware.card.keys()
