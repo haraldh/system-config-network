@@ -214,8 +214,6 @@ class ISDNDialupDialog(DialupDialog):
         self.noteBook.get_nth_page(4).hide()
         self.dialog.set_title("ISDN Dialup Configuration")
         
-        self.dialog.show()
-
     def on_chooseButton_clicked(self, button):
         dialog = ISDNproviderDialog(self.xml_main, self.xml_basic, self.xml)
 		
@@ -234,20 +232,21 @@ class ModemDialupDialog(DialupDialog):
         self.dialog.set_title("Modem Dialup Configuration")
         for i in [1,5]:
             self.noteBook.get_nth_page(i).hide()
+        self.hydrate()
             
-        self.dialog.show()
-
     def on_chooseButton_clicked(self, button):
         dialog = ModemproviderDialog(self.xml_main, self.xml_basic, self.xml)
 		
     def hydrate(self):
         # Fill in Dialog
-        pass
+        if self.device.Device:
+            self.xml.get_widget("modemPortEntry").set_text(self.device.Device)
 
     def dehydrate(self):
         # Fill in Device.Dialup class
-        pass
-        
+        self.device.Device = self.xml.get_widget("modemPortEntry").get_text()
+
+
 
 # make ctrl-C work
 if __name__ == "__main__":
@@ -255,4 +254,3 @@ if __name__ == "__main__":
     window = DialupDialog()
     window.run()
     gtk.mainloop()
-
