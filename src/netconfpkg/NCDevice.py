@@ -125,7 +125,7 @@ class Device(Device_base):
 
     def getDeviceAlias(self):
         devname = self.Device
-        if self.Alias and self.Alias != "":
+        if self.Alias != None and self.Alias != "":
             devname = devname + ':' + str(self.Alias)
         return devname
 
@@ -408,12 +408,16 @@ class Device(Device_base):
 
         return ret, msg
 
-    def configure(self):
+    def configure(self):        
         command = '/usr/bin/system-config-network'
-
+        args = ''
+        if not os.path.isfile(command) and getDebugLevel() > 0:
+            command = os.getcwd() + '/system-config-network-gui'
+            args = '-d'
+            
         try:
             (ret, msg) =  generic_run(command,
-                                      [command],
+                                      [command, args],
                                       catchfd = (1,2))
         except RuntimeError, msg:
             ret = -1
@@ -447,5 +451,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/11 14:16:44 $"
-__version__ = "$Revision: 1.99 $"
+__date__ = "$Date: 2004/06/15 13:54:25 $"
+__version__ = "$Revision: 1.100 $"
