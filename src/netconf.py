@@ -45,8 +45,8 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class mainDialog:
-    deviceTypes = {'eth':'Ethernet',
-                   'lo':'Lokal'}
+    deviceTypes = {'eth[0-9]+(:[0-9]+)?':'Ethernet',
+                   'lo':'Loopback'}
 
     def __init__(self):
         glade_file = "maindialog.glade"
@@ -152,7 +152,12 @@ class mainDialog:
         for i in devices:
             devconf = Conf.ConfShellVar("/etc/sysconfig/networking/devices/" + i)
             dev = devconf['DEVICE']
-            clist.append(['', i[6:], devconf['DEVICE']])
+            type = 'Unknown'
+            for j in self.deviceTypes.keys():
+                if re.search(j, dev):
+                    type = self.deviceTypes[j]
+
+            clist.append(['', i[6:], type])
 
             if not nwconf['CURRENT_PROFILE'] or not os.path.exists("/etc/sysconfig/networking/profiles/"+ nwconf['CURRENT_PROFILE'] + "/" + i):
                 clist.set_pixmap(row, 0, inact_xpm)
@@ -205,8 +210,20 @@ class mainDialog:
         pass
 
     def on_deviceAddButton_clicked (self, clicked):
+        clist = self.xml.get_widget("deviceList")
+
+        for i in xrange (clist.rows):
+            type = clist.get_text (i, 1)
+            if type == 'default':
+                continue
+            elif type == 'URL':
+                value = clist.get_text (i, 2)
+            else:
+                value = 'file:' + clist.get_text (i, 2)
+
         basic = basicDialog(self.xml)
-        basic.xml.get_widget ("Dialog").show ()
+        dialog = basic.xml.get_widget ("Dialog")
+        dialog.show ()
 #        gtk.mainloop()
 
     def on_deviceCopyButton_clicked (self, button):
