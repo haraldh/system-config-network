@@ -194,26 +194,28 @@ class mainDialog:
             row = row + 1
 
         row = 0
-        clist = self.xml.get_widget("profileList")
+        clist = self.xml.get_widget("hostsList")
+        clist.clear()
         for prof in profilelist:
             if prof.Active == true:
-                clist2 = self.xml.get_widget("hostsList")
-                clist2.clear()
                 for host in prof.HostsList:
                     al = ''
                     for alias in host.AliasList:
                         al = al + " " + alias
-                    clist2.append([host.IP, host.Hostname, al])
+                    clist.append([host.IP, host.Hostname, al])
             row = row + 1
 
         if self.initialized:
             return
 
+        row = 0
+        clist = self.xml.get_widget("profileList")
         self.initialized = true
         for prof in profilelist:
             clist.append([prof.ProfileName])
             if prof.Active == true:
                 clist.select_row(row, 0)
+            row = row + 1
 
     def load_icon(self, pixmap_file, widget = None):
         if not isfile(pixmap_file):
