@@ -4,6 +4,9 @@ AM_INIT_AUTOMAKE(redhat-config-network, 0.3.2)
 AC_CHECK_RPM(alchemist, 0.16,  , [ 
 	AC_MSG_ERROR( [Please install a newer alchemist rpm] ) ])
 
+ALL_LINGUAS="no"
+AM_GNU_GETTEXT
+
 AC_OUTPUT([
 Makefile
 doc/Makefile
@@ -11,5 +14,6 @@ src/Makefile
 src/doc/Makefile
 src/pixmaps/Makefile
 src/netconfpkg/Makefile
-po/Makefile
+intl/Makefile
+po/Makefile.in
 ])

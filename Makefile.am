@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 
-SUBDIRS=doc src po
+SUBDIRS=doc src intl po
 
 EXTRA_DIST= redhat-config-network.spec doc/configurationfiles.txt doc/detailed_spec \
 	doc/overview neat.desktop neat.console neat.pam
