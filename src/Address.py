@@ -245,9 +245,12 @@ class AddressList:
         @self The object instance
         """
 
-        res=""
-        for i in range(0,len(self._list)):
-            res=res+self._list[i].toString(i)
+        if(len(self._list)>1):
+            res=""
+            for i in range(0,len(self._list)):
+                res=res+self._list[i].toString(i)
+        else:
+            res=self._list[0].toString() 
         return res
 
     def readFile(self,filename):
@@ -257,14 +260,23 @@ class AddressList:
         @filename The file to read from
         """
 
+        # Handle the case where you only have one non-numbered entry
+           
+        address=Address(filename)
+        if address.address():
+            self.addAddress(address)
+            return
+
+        # Handle the ADDRESS0, ADDRESS1, ... case
+        
         n=0
         while 1:
-           address=Address(filename,n)
-           if not address.address():
-               break
-           else:
-               self.addAddress(address)
-               n=n+1
+            address=Address(filename,n)
+            if not address.address():
+                break
+            else:
+                self.addAddress(address)
+                n=n+1
            
 def test():
     """
