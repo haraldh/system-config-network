@@ -1,5 +1,5 @@
-Summary: The network configuration tool for Red Hat Linux
-Name: netconf
+Summary: The NEtwork Adminstration Tool for Red Hat Linux
+Name: redhat-config-network
 Version: 0.2
 Release: 1
 URL: http://www.redhat.com/ 
@@ -18,9 +18,6 @@ masquerading, and can use profiles.
 
 %prep
 %setup -q
-aclocal
-automake --add-missing
-autoconf
 %configure
 
 %build
@@ -34,10 +31,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-/usr/share/netconf
+/usr/share/redhat-config-network
 /usr/sbin/*
 
 %changelog
+* Mon Jul  9 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- 0.2
+- New name - redhat-config-network. 
+  Shortcut: neat (NEtwork Administration Tool)
+
 * Fri Jul 06 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - Require a recent version of initscripts
 - Initial build. Don't obsolete older tools just yet...
