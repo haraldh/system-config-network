@@ -215,16 +215,50 @@ class tcpConfigDialog:
         self.hydrate()
 
     def on_routeUpButton_clicked(self, button):
+        routes = self.device.StaticRoutes
         clist = self.xml.get_widget("networkRouteList")
-        dest = clist.get_text(clist.selection[0], 0)
-        prefix = clist.get_text(clist.selection[0], 1)
-        gateway = clist.get_text(clist.selection[0], 2)
 
-        if len(clist.selection) == 0 or clist.selection == 0:
+        if len(clist.selection) == 0 or clist.selection[0] == 0:
             return
 
+        select_row = clist.selection[0]
+        dest = clist.get_text(select_row, 0)
+        prefix = clist.get_text(select_row, 1)
+        gateway = clist.get_text(select_row, 2)
+
+        rcurrent = routes[select_row]
+        rnew = routes[select_row-1]
+        
+        routes[select_row] = rnew
+        routes[select_row-1] = rcurrent
+        
+        self.hydrate()
+        
+        clist.select_row(select_row-1, 0)
+            
     def on_routeDownButton_clicked(self, button):
-        pass
+        routes = self.device.StaticRoutes
+        clist = self.xml.get_widget("networkRouteList")
+
+        if len(clist.selection) == 0 or clist.selection[0] == len(routes)-1:
+            return
+
+        select_row = clist.selection[0]
+        dest = clist.get_text(select_row, 0)
+        prefix = clist.get_text(select_row, 1)
+        gateway = clist.get_text(select_row, 2)
+
+        rcurrent = routes[select_row]
+        rnew = routes[select_row+1]
+        
+        routes[select_row] = rnew
+        routes[select_row+1] = rcurrent
+        
+        self.hydrate()
+        
+        clist.select_row(select_row+1, 0)
+
+
 
 # make ctrl-C work
 if __name__ == "__main__":
