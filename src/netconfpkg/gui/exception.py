@@ -169,7 +169,7 @@ class FileSelection:
         self.entry = gnome.ui.FileEntry("", "")
         win.vbox.pack_start (info, FALSE)            
         win.vbox.pack_start (self.entry, TRUE)
-        win.set_position (gtk.WIN_POS_MOUSE)
+        win.set_position (gtk.WIN_POS_CENTER)
         win.show_all ()
         self.window = win
         self.rc = self.window.run ()
