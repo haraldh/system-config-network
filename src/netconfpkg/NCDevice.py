@@ -367,7 +367,7 @@ class Device(Device_base):
     def activate(self, dialog = None):        
         if self.Type == ISDN:
             command = '/usr/sbin/isdnup'
-            param = [command, self.getDeviceAlias()]
+            param = [command, self.getDeviceAlias(), self.DeviceId]
         else:
             command = '/sbin/ifup'
             param = [command, self.DeviceId, "up"]
@@ -448,5 +448,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:09:38 $"
-__version__ = "$Revision: 1.92 $"
+__date__ = "$Date: 2003/10/22 17:48:46 $"
+__version__ = "$Revision: 1.93 $"

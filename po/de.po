@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-08 17:24+0200\n"
+"POT-Creation-Date: 2003-10-22 12:39+0200\n"
 "PO-Revision-Date: 2003-10-17 23:32+0200\n"
 "Last-Translator: Andreas Müller <redhat@andreas-mueller.com>\n"
 "Language-Team: \n"
@@ -528,7 +528,8 @@ msgstr "CIPE (VPN) Verbindung"
 
 #: src/netconfpkg/gui/CipeInterface.py:99
 msgid "Create a new virtual private network connection with CIPE."
-msgstr "Erstellen Sie eine neue virtuelle, private Netzwerkverbindung mit CIPE."
+msgstr ""
+"Erstellen Sie eine neue virtuelle, private Netzwerkverbindung mit CIPE."
 
 #: src/netconfpkg/gui/CipeInterface.py:145
 #: src/netconfpkg/gui/EthernetInterface.py:216
@@ -801,7 +802,8 @@ msgstr "Dieses Wizard muss noch geschrieben werden."
 
 #: src/netconfpkg/gui/GenericInterface.py:97
 msgid "Press Finish to get the standard configuration dialog."
-msgstr "Drücken Sie Abschließen, um zum Standard-Konfigurationsdialog zu gelangen."
+msgstr ""
+"Drücken Sie Abschließen, um zum Standard-Konfigurationsdialog zu gelangen."
 
 #: src/netconfpkg/gui/GenericInterface.py:98
 msgid "Then, at first, enter the nickname for the device."
@@ -2285,12 +2287,16 @@ msgstr "Software (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
-msgid "Shall the following packages, which are needed on your system, be installed?"
-msgstr "Sollen die folgenden, auf Ihrem System benötigten, Pakete installiert werden?"
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr ""
+"Sollen die folgenden, auf Ihrem System benötigten, Pakete installiert werden?"
 
 #: src/netconfpkg/NC_functions.py:208
-msgid "You have to install the following packages, which are needed on your system!"
-msgstr "Sie müssen die folgenden, auf Ihrem System benötigten, Pakete installieren!"
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+"Sie müssen die folgenden, auf Ihrem System benötigten, Pakete installieren!"
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
@@ -2681,138 +2687,6 @@ msgstr "Deaktiviere IPsec-Verbindung %s, bitte warten..."
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "IPsec-Verbindung %s kann nicht deaktiviert werden!\n"
 
-#. Module Cyclops version 0.9.4.
-#. Released to the public domain 18-Jul-1999,
-#. by Tim Peters (tim_one@email.msn.com).
-#. Provided as-is; use at your own risk; no warranty; no promises; enjoy!
-#. Some parts of the code, and many ideas, were stolen with gratitude from:
-#. Lars Marius Garshol's Plumbo.py.
-#. Guido van Rossum.
-#. Python's standard library module repr.py.
-#. 0,9,4    18-Jul-1999
-#. added purge_dead_roots arg to find_cycles
-#. rearranged module docstring; added IDLE driver sample
-#. 0,9,3    29-Jun-1999
-#. renamed print_obj to show_obj, and advertised it
-#. redid adjusted refcount computations to account for root-set
-#. objects too
-#. changed get_rootset to return (refcount, cyclic?, obj) triples
-#. 0,9,2    27-Jun-1999
-#. freed __init_tracer from dependence on name "self"
-#. rearranged __find_cycles' inner loop for a nice little speed gain
-#. which was promptly way more than lost by new code to compute &
-#. display adjusted refcounts
-#. which was partly regained by rewriting all that
-#. 0,9,1    26-Jun-1999
-#. added SCC computation/display
-#. added show_cycles; find_cycles no longer prints anything
-#. changed all showXXX names to show_XXX
-#. added install_cycle_filter
-#. 0,9,0    24-Jun-1999
-#. first version I put under source control
-#. ########################################################################
-#. Type-specific reference revealers.
-#.
-#. _T_refs(obj) should return a sequence of all objects directly
-#. reachable from obj.
-#.
-#. _T_tag(obj, i) should return a string briefly describing how
-#. _T_refs(obj][i] was obtained from obj.
-#.
-#. Why the separation?  Speed and space:  string tags are never
-#. computed unless a cycle is found and so something needs to be
-#. printed.
-#. the keys are strings, so not interesting to return
-#. ########################################################################
-#. A class to make short string representations of objects, for speed
-#. and brevity.  The std repr.repr sorts dicts by keys, but we refer to
-#. the keys via numeric subscript in cycle reports, so first a derived
-#. class that leaves dicts in raw order.  Also, instances, instance
-#. methods and classes frequently appear in cycle reports, so avoid
-#. chopping their reprs at all.  We're only trying to prevent massive
-#. expense for massive lists, tuples & dicts.
-#. Boost the limit on types we don't know about; else it's too
-#. easy to get a useless repr string when adding new types via
-#. CycleFinder.chase_type.
-#. Perhaps better to expose this class too, but-- sheesh --
-#. this module is complicated enough!
-#. override base dictionary formatter; the code is almost the same,
-#. we just leave the dict order alone
-#. don't chop instance, class or instance method reprs
-#. Bugs in x.__repr__() can cause arbitrary
-#. exceptions -- then make up something
-#. ########################################################################
-#. CycleFinder is the workhorse.
-#. This clever method of trapping __init__ invocations was
-#. stolen from Lars' plumbo.py.
-#. not a user-visible object
-#. Compute true refcounts for objects in cycles.
-#. From the system refcount, subtract one for each of:
-#. being an element in the loop temp cycleobjs.values()
-#. being bound to "x"
-#. being an argument to getrefcount
-#. being a value in the cycleobjs dict
-#. showing up exactly once somewhere in self.sccno2objs
-#. Need also to subtract refs due to appearances in
-#. self.cycles.  Complication:  some pairs in self.cycles may
-#. be shared.
-#. And need also to subtract refs for membership is self.roots.
-#. While we're at it, also compute adjusted refcounts for other
-#. root set objects.
-#. Subtract one for each of:
-#. being bound to "x"
-#. being an argument to getrefcount
-#. being in self.roots
-#. We want to capture the first argument -- this works whether
-#. or not it's named "self", and in case the function is like
-#. def __init__(*args):
-#. it's still OK:  we'll pick up the name 'args', and add the
-#. tuple it's bound to to the root set; the tuple's first
-#. element is "self", so will be found by the tuple-chaser.
-#. first argname is first element of locals
-#. Clear out everything except:
-#. the root set
-#. the refs_dispatcher
-#. the tag_dispatcher
-#. the cycle filter
-#. stack exactly mirrors __find_cycles' recursive calls; it's a
-#. list of (object, index) pairs.
-#. Map id of active object to its index in self.stack.  Since
-#. it's a depth-first search, there's a cycle iff we hit an
-#. object that's already on the stack.
-#. Set of (addresses of) all interesting objects seen.  Since
-#. we use a depth-first search, there's never a reason to
-#. revisit a node.
-#. List of all cycles found; each element is a stack slice (a
-#. list of (object, index) pairs).
-#. Set of objects found in cycles (maps id(obj) -> obj).
-#. Classifies arcs found in cycles, mapping
-#. (source_type, selector, destination_type) triples to a count
-#. of how many times that triple appears in a cycle.
-#. Support for computing strongly-connected components (SCC).
-#. We do this by merging cycles into equivalence classes.
-#. Could be done faster by e.g. Tarjan's algorithm in
-#. __find_cycles, but would rather keep that lean since cycles
-#. are expected to be unusual.
-#. monotonically increasing SCC id
-#. map id(obj) to obj's sccno
-#. map sccno back to list of objects
-#. For objects in cycles and root set, map address to true
-#. reference count.
-#. Number of arcs examined.
-#. Number of cycles ignored (filtered out).
-#. This can be called an enormous number of times, so speed
-#. tricks are appropriate.
-#. Set of ids of objects being, or formerly, chased.
-#. Maps active object id to index in stack.
-#. complete the cycle
-#. a helper for __study_cycle
-#. Pick (or create) an SCC equivalence class for this cycle.
-#. Merge the equivalence class for obj1 into classwinner.
-#. merge obj1's entire equivalence class
-#. ###############################################################
-#. Various output routines.  If someone is motivated enough to
-#. change one of these, they're motivated enough to subclass us!
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/DialupDruid.glade.h:1
@@ -2856,7 +2730,8 @@ msgstr "Geben Sie den Anmeldenamen ein, den Sie von Ihrem ISP erhalten haben."
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
 "Geben Sie den Namen dieser Konfiguration ein. Gewöhnlich ist es der Name "
 "Ihres ISP."
@@ -3112,7 +2987,8 @@ msgstr ""
 #: src/netconfpkg/gui/DialupDruid.glade.h:13
 #: src/netconfpkg/gui/dialupconfig.glade.h:23
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "Geben Sie die Telefonnummer Ihres ISP (ohne Orts- und Landesvorwahl) ein."
+msgstr ""
+"Geben Sie die Telefonnummer Ihres ISP (ohne Orts- und Landesvorwahl) ein."
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:14
 msgid "IP Settings"
@@ -3681,7 +3557,8 @@ msgstr "Provider wählen"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
 #: src/netconfpkg/gui/ptpconfig.glade.h:2
 msgid "Allow all _users to enable and disable the device"
-msgstr "Zulassen, dass alle Ben_utzer das Gerät aktivieren und deaktivieren können"
+msgstr ""
+"Zulassen, dass alle Ben_utzer das Gerät aktivieren und deaktivieren können"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:2
 msgid "CIPE Configuration"
@@ -3736,7 +3613,8 @@ msgstr "Hardware Geräte-Typ wählen"
 
 #: src/netconfpkg/gui/devicetype.glade.h:2
 msgid "Please select the type of hardware device to add:"
-msgstr "Bitte wählen Sie den Hardware-Gerät Typ aus, den Sie hinzufügen möchten:"
+msgstr ""
+"Bitte wählen Sie den Hardware-Gerät Typ aus, den Sie hinzufügen möchten:"
 
 #: src/netconfpkg/gui/devicetype.glade.h:3
 msgid "_Device type:"
@@ -4587,7 +4465,8 @@ msgstr ""
 "logische Geräte zugeordnet sein."
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
 "Sie können hier Netzwerk-Hardware konfigurieren, die physisch am Computer "
 "angeschlossen sind."
@@ -4837,7 +4716,8 @@ msgstr "Klicken Sie, um Informationen zu erhalten."
 
 #: src/netconfpkg/gui/neat-control.glade.h:8
 msgid "Click to have the system automatically select and activate a profile"
-msgstr "Klicken Sie, damit das System ein Profil automatisch wählt und aktiviert"
+msgstr ""
+"Klicken Sie, damit das System ein Profil automatisch wählt und aktiviert"
 
 #: src/netconfpkg/gui/neat-control.glade.h:9
 msgid "Click to monitor the interface"
@@ -4853,7 +4733,8 @@ msgstr "Eine Profil auswählen"
 
 #: src/netconfpkg/gui/neat-control.glade.h:16
 msgid "The following network interfaces are configured in the active profile."
-msgstr "Die folgenden Netzwerkschnittstellen sind im aktiven Profil konfiguriert."
+msgstr ""
+"Die folgenden Netzwerkschnittstellen sind im aktiven Profil konfiguriert."
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
 msgid "_Info\t"
@@ -5275,4 +5156,3 @@ msgstr "_Punkt-zu-Punkt (IP):"
 
 #~ msgid "window6"
 #~ msgstr "Fenster6"
-
