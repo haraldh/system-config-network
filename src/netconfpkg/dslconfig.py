@@ -129,6 +129,9 @@ class dslConfigDialog:
             dialup.SyncPPP = TRUE
         else: dialup.SyncPPP = FALSE
         
+        if not self.device.Device:
+            self.device.Device="dsl"
+        
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
             pixmap_file = "pixmaps/" + pixmap_file

@@ -334,7 +334,8 @@ class ISDNDialupDialog(DialupDialog):
         else:
             self.device.Dialup.ChannelBundling = false
 
-        self.device.Device="isdn"
+        if not self.device.Device:
+            self.device.Device="isdn"
         #print "Device:", self.device.Device
         
 class ModemDialupDialog(DialupDialog):
@@ -380,6 +381,9 @@ class ModemDialupDialog(DialupDialog):
         self.device.Dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
         self.device.Dialup.InitStrings = self.xml.get_widget("modemInitEntry").get_text()
         self.device.Name = self.xml.get_widget("modemPortEntry").get_text()
+
+        if not self.device.Device:
+            self.device.Device="modem"
 
 # make ctrl-C work
 if __name__ == "__main__":
