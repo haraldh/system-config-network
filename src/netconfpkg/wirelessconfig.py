@@ -49,6 +49,15 @@ class wirelessConfigDialog(deviceConfigDialog):
                                     device, xml_main, xml_basic)    
 
 
+        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'auto',
+                                                                'Managed',
+                                                                'Ad-Hoc',
+                                                                'Master',
+                                                                'Repeater',
+                                                                'Secondary',
+                                                                ])
+
+
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
