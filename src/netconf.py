@@ -217,6 +217,9 @@ class mainDialog:
 
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
+
+        if not os.access('/usr/bin/rp3', os.X_OK):
+            self.xml.get_widget('deviceMonitorButton').hide()
         
         load_icon("network.xpm", self.dialog)
         self.load()
