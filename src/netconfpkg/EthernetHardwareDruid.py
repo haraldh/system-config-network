@@ -33,7 +33,7 @@ from ethernethardware import ethernetHardwareDialog
 class ethernetHardware:
     def __init__ (self, toplevel=None):
 
-        glade_file = "EthernetRingHardwareDruid.glade"
+        glade_file = "EthernetHardwareDruid.glade"
  
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
