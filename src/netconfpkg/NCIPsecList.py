@@ -1,5 +1,5 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Red Hat, Inc.
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -134,7 +134,6 @@ class IPsecList(IPsecList_base):
         return retstr
 
     def _parseLine(self, vals, value):
-        class BadLineException: pass
         if len(vals) <= 1:
             return
         if vals[0] == "IPsecList":

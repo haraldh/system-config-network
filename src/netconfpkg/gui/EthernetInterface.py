@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -144,6 +144,10 @@ class EthernetInterface(InterfaceCreator):
         pass
     
     def on_hostname_config_page_prepare(self, druid_page, druid):
+        self.device.DeviceId = self.device.Device
+        if self.device.Alias:
+            self.device.DeviceId = self.device.DeviceId + ":" \
+                                   + str(self.device.Alias)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         pass
     
@@ -170,6 +174,7 @@ class EthernetInterface(InterfaceCreator):
             self.device.Alias = self.getNextAlias(self.device)
             # must be at bottom, because prepare is called here
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+2])
+
         return TRUE
 
     def on_hw_config_page_prepare(self, druid_page, druid):
@@ -215,7 +220,7 @@ class EthernetInterface(InterfaceCreator):
 
         s = s + "\n" + "   "
         
-        if self.device.BootProto == "static":
+        if self.device.BootProto == "static" or self.device.BootProto == "none":
             s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
             + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
             + _("Default gateway address:") + " " + self.device.Gateway + "\n" + "   "
@@ -247,5 +252,5 @@ class EthernetInterface(InterfaceCreator):
 
 NCDevEthernet.setDevEthernetWizard(EthernetInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 15:54:04 $"
-__version__ = "$Revision: 1.37 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.38 $"

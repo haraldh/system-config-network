@@ -18,9 +18,6 @@ textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import sys
 import string
 
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
-
 if not "/usr/share/system-config-network" in sys.path:
     sys.path.append("/usr/share/system-config-network")
 

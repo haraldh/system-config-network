@@ -90,6 +90,14 @@ def dhcp_hydrate (xml, device):
     # PEERDNS is true, if unset!!
     xml.get_widget('dnsSettingCB').set_active(device.AutoDNS != FALSE)
 
+    if device.Alias != None:
+        device.BootProto = "none"
+        xml.get_widget('ipAutomaticRadio').set_active(FALSE)
+        xml.get_widget('ipStaticRadio').set_active(TRUE)
+        on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
+        xml.get_widget('ipAutomaticRadio').set_sensitive(FALSE)
+    
+
     if device.BootProto == "static" or device.BootProto == "none":
         xml.get_widget('ipAutomaticRadio').set_active(FALSE)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
@@ -388,5 +396,5 @@ if __name__ == '__main__':
     gtk.main() ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 15:54:04 $"
-__version__ = "$Revision: 1.33 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.34 $"

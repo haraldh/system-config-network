@@ -1,7 +1,7 @@
 """Implementation of the generic ethernet device
 """
-## Copyright (C) 2001-2003 Red Hat, Inc.
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Red Hat, Inc.
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -86,5 +86,5 @@ _df.register(DevEthernet, ETHERNET)
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/29 14:42:58 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2005/03/03 16:43:30 $"
+__version__ = "$Revision: 1.8 $"

@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -38,5 +38,5 @@ del _i
 del _files
 del _cmd
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/08 13:42:42 $"
-__version__ = "$Revision: 1.5 $"
+__date__ = "$Date: 2005/03/03 16:43:30 $"
+__version__ = "$Revision: 1.6 $"

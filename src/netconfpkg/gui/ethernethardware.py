@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-sys.path.append("/usr/lib/rhs/python/")
 
 import gtk
 
@@ -178,5 +177,5 @@ class ethernetHardwareDialog:
 NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.31 $"

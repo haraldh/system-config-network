@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -138,7 +138,7 @@ class PTPInterface(EthernetInterface):
             self.device.Mtu = 9216
         self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
 
-        self.device.BootProto = 'static'
+        self.device.BootProto = 'none'
         pass
     
     def on_hw_config_page_back(self, druid_page, druid):

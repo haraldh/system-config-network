@@ -1,4 +1,5 @@
 #!@INTLTOOL_PERL@ -w
+# -*- Mode: perl; indent-tabs-mode: nil; c-basic-offset: 4  -*-
 
 #
 #  The Intltool Message Updater
@@ -29,7 +30,7 @@
 
 ## Release information
 my $PROGRAM = "intltool-update";
-my $VERSION = "0.30";
+my $VERSION = "0.33";
 my $PACKAGE = "intltool";
 
 ## Loaded modules
@@ -73,6 +74,7 @@ my $xml_support =
 "kbd(?:\\.in)+";	# GOK specific. 
 
 my $ini_support =
+"icon(?:\\.in)+|".	# http://www.freedesktop.org/Standards/icon-theme-spec
 "desktop(?:\\.in)+|".	# http://www.freedesktop.org/Standards/menu-spec
 "caves(?:\\.in)+|".	# GNOME Games specific
 "directory(?:\\.in)+|".	# http://www.freedesktop.org/Standards/menu-spec
@@ -81,7 +83,7 @@ my $ini_support =
 "theme(?:\\.in)+";	# http://www.freedesktop.org/Standards/icon-theme-spec
 
 my $buildin_gettext_support = 
-"c|y|cc|cpp|c\\+\\+|h|hh|gob|py";
+"c|y|cs|cc|cpp|c\\+\\+|h|hh|gob|py";
 
 ## Always flush buffer when printing
 $| = 1;
@@ -147,7 +149,8 @@ elsif ((defined $ARGV[0]) && $ARGV[0] =~ /^[a-z]/)
 
     ## Report error if the language file supplied
     ## to the command line is non-existent
-    &Console_WriteError_NotExisting("$lang.po") if ! -s "$lang.po";
+    &Console_WriteError_NotExisting("$SRCDIR/$lang.po")
+        if ! -s "$SRCDIR/$lang.po";
 
     if (!$DIST_ARG)
     {
@@ -208,6 +211,16 @@ Report bugs to http://bugzilla.gnome.org/ (product name "$PACKAGE")
 or send email to <xml-i18n-tools\@gnome.org>.
 _EOF_
     exit;
+}
+
+sub echo_n
+{
+    my $str = shift;
+    my $ret = `echo "$str"`;
+
+    $ret =~ s/\n$//; # do we need the "s" flag?
+
+    return $ret;
 }
 
 sub POFile_DetermineType ($) 
@@ -282,6 +295,13 @@ sub TextFile_DetermineEncoding ($)
     return $gettext_code;
 }
 
+sub isNotValidMissing
+{
+    my ($file) = @_;
+
+    return if $file =~ /^\{arch\}\/.*$/;
+    return if $file =~ /^$varhash{"PACKAGE"}-$varhash{"VERSION"}\/.*$/;
+}
 
 sub FindLeftoutFiles
 {
@@ -394,10 +414,21 @@ sub FindLeftoutFiles
 		}
 	    }	    
 
+	    if (/\.GetString ?\(QUOTEDTEXT/)
+	    {
+                if (defined isNotValidMissing (unpack("x3 A*", $file))) {
+                    ## Remove the first 3 chars and add newline
+                    push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                }
+		last;
+	    }
+
 	    if (/_\(QUOTEDTEXT/)
 	    {
-		## Remove the first 3 chars and add newline
-		push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                if (defined isNotValidMissing (unpack("x3 A*", $file))) {
+                    ## Remove the first 3 chars and add newline
+                    push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                }
 		last;
 	    }
 	}
@@ -413,7 +444,9 @@ sub FindLeftoutFiles
 	    # FIXME: share the pattern matching code with intltool-extract
 	    if (/\s_(.*)=\"/ || /<_[^>]+>/ || /translatable=\"yes\"/)
 	    {
-		push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                if (defined isNotValidMissing (unpack("x3 A*", $file))) {
+                    push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                }
 		last;
 	    }
 	}
@@ -427,7 +460,9 @@ sub FindLeftoutFiles
 	{
 	    if (/_(.*)=/)
 	    {
-		push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                if (defined isNotValidMissing (unpack("x3 A*", $file))) {
+                    push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+                }
 		last;
 	    }
 	}
@@ -436,7 +471,9 @@ sub FindLeftoutFiles
 
     foreach my $file (@buf_i18n_xml_unmarked)
     {
-	push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+        if (defined isNotValidMissing (unpack("x3 A*", $file))) {
+            push @buf_allfiles, unpack("x3 A*", $file) . "\n";
+        }
     }
 
 
@@ -517,7 +554,7 @@ sub Console_WriteError_InvalidOption
 
 sub GenerateHeaders
 {
-    my $EXTRACT = `which intltool-extract 2>/dev/null`;
+    my $EXTRACT = "@INTLTOOL_EXTRACT@";
     chomp $EXTRACT;
 
     $EXTRACT = $ENV{"INTLTOOL_EXTRACT"} if $ENV{"INTLTOOL_EXTRACT"};
@@ -571,12 +608,9 @@ sub GenerateHeaders
 #
 sub GeneratePOTemplate
 {
-    my $XGETTEXT = `which xgettext 2>/dev/null`;
-    my $XGETTEXT_ARGS = '';
+    my $XGETTEXT = $ENV{"XGETTEXT"} || "/usr/bin/xgettext";
+    my $XGETTEXT_ARGS = $ENV{"XGETTEXT_ARGS"} || '';
     chomp $XGETTEXT;
-
-    $XGETTEXT = $ENV{"XGETTEXT"} if $ENV{"XGETTEXT"};
-    $XGETTEXT_ARGS = $ENV{"XGETTEXT_ARGS"} if $ENV{"XGETTEXT_ARGS"};
 
     if (! -x $XGETTEXT)
     {
@@ -589,7 +623,7 @@ sub GeneratePOTemplate
 
     open INFILE, $POTFILES_in;
     unlink "POTFILES.in.temp";
-    open OUTFILE, ">POTFILES.in.temp";
+    open OUTFILE, ">POTFILES.in.temp" or die("Cannot open POTFILES.in.temp for writing");
 
     my $gettext_support_nonascii = 0;
 
@@ -628,14 +662,14 @@ sub GeneratePOTemplate
 	elsif (/\.($xml_support|$ini_support)$/ || /^\[/)
 	{
 	    s/^\[.*]\s*//;
-	    print OUTFILE "$_.h\n";
+            print OUTFILE "../$_.h\n";
 	    push @temp_headers, "../$_.h";
 	    $gettext_code = &TextFile_DetermineEncoding ("../$_.h") if ($gettext_support_nonascii and not defined $forced_gettext_code);
 	} 
 	else 
 	{
 	    if ($SRCDIR eq ".") {
-	        print OUTFILE "$_\n";
+	        print OUTFILE "../$_\n";
 	    } else {
 	        print OUTFILE "$SRCDIR/../$_\n";
 	    }
@@ -680,7 +714,7 @@ sub GeneratePOTemplate
     unlink "$MODULE.pot";
     my @xgettext_argument=("$XGETTEXT",
 			   "--add-comments",
-			   "--directory\=\.\.",
+			   "--directory\=\.",
 			   "--output\=$MODULE\.pot",
 			   "--files-from\=\.\/POTFILES\.in\.temp");
     my $XGETTEXT_KEYWORDS = &FindPOTKeywords;
@@ -745,15 +779,16 @@ sub POFile_Update
 {
     -f "$MODULE.pot" or die "$PROGRAM: $MODULE.pot does not exist.\n";
 
+    my $MSGMERGE = $ENV{"MSGMERGE"} || "/usr/bin/msgmerge";
     my ($lang, $outfile) = @_;
 
-    print "Merging $lang.po with $MODULE.pot..." if $VERBOSE;
+    print "Merging $SRCDIR/$lang.po with $MODULE.pot..." if $VERBOSE;
 
-    my $infile = "$lang.po";
-    $outfile = "$lang.po" if ($outfile eq "");
+    my $infile = "$SRCDIR/$lang.po";
+    $outfile = "$SRCDIR/$lang.po" if ($outfile eq "");
 
     # I think msgmerge won't overwrite old file if merge is not successful
-    system ("msgmerge", "-o", $outfile, $infile, "$MODULE.pot");
+    system ("$MSGMERGE", "-o", $outfile, $infile, "$MODULE.pot");
 }
 
 sub Console_WriteError_NotExisting
@@ -770,7 +805,7 @@ sub GatherPOFiles
 {
     my @po_files = glob ("./*.po");
 
-    @languages = map (&GetLanguageFromPOFile, @po_files);
+    @languages = map (&POFile_GetLanguage, @po_files);
 
     foreach my $lang (@languages) 
     {
@@ -787,14 +822,17 @@ sub POFile_GetLanguage ($)
 sub Console_Write_TranslationStatus
 {
     my ($lang, $output_file) = @_;
+    my $MSGFMT = $ENV{"MSGFMT"} || "/usr/bin/msgfmt";
 
-    $output_file = "$lang.po" if ($output_file eq "");
+    $output_file = "$SRCDIR/$lang.po" if ($output_file eq "");
 
-    system ("msgfmt", "-o", "/dev/null", "--statistics", $output_file);
+    system ("$MSGFMT", "-o", "/dev/null", "--statistics", $output_file);
 }
 
 sub Console_Write_CoverageReport
 {
+    my $MSGFMT = $ENV{"MSGFMT"} || "/usr/bin/msgfmt";
+
     &GatherPOFiles;
 
     foreach my $lang (@languages) 
@@ -808,7 +846,7 @@ sub Console_Write_CoverageReport
     foreach my $lang (@languages)
     {
 	print "$lang: ";
-	system ("msgfmt", "-o", "/dev/null", "--statistics", "$lang.po");
+	system ("$MSGFMT", "-o", "/dev/null", "--statistics", "$SRCDIR/$lang.po");
     }
 }
 
@@ -823,9 +861,9 @@ sub SubstituteVariable
     # variables elsewhere.
     while (<CONF>)
     {
-	if (/^(\w+)=(\S+)/)
+	if (/^(\w+)=(.*)$/)
 	{
-	    $varhash{$1} = $2;
+	    ($varhash{$1} = $2) =~  s/^["'](.*)["']$/$1/;
 	}
     }
     
@@ -837,7 +875,10 @@ sub SubstituteVariable
 	
 	return SubstituteVariable ("$untouched$sub$rest");
     }
-    return $str;
+    
+    # We're using Perl backticks ` and "echo -n" here in order to 
+    # expand any shell escapes (such as backticks themselves) in every variable
+    return echo_n ($str);
 }
 
 sub CONF_Handle_Open
@@ -849,7 +890,34 @@ sub CONF_Handle_Open
 
     if ($base_dirname =~ /^po(-.+)?$/) 
     {
-	if (-f "../configure.ac") 
+	if (-f "Makevars") 
+	{
+	    my $makefile_source;
+
+	    local (*IN);
+	    open (IN, "<Makevars") || die "can't open Makevars: $!";
+
+	    while (<IN>) 
+	    {
+		if (/^top_builddir[ \t]*=/) 
+		{
+		    $src_dir = $_;
+		    $src_dir =~ s/^top_builddir[ \t]*=[ \t]*([^ \t\n\r]*)/$1/;
+
+		    chomp $src_dir;
+                    if (-f "$src_dir" . "/configure.ac") {
+                        $conf_in = "$src_dir" . "/configure.ac" . "\n";
+                    } else {
+                        $conf_in = "$src_dir" . "/configure.in" . "\n";
+                    }
+		    last;
+		}
+	    }
+	    close IN;
+
+	    $conf_in || die "Cannot find top_builddir in Makevars.";
+	}
+	elsif (-f "../configure.ac") 
 	{
 	    $conf_in = "../configure.ac";
 	} 
@@ -862,7 +930,7 @@ sub CONF_Handle_Open
 	    my $makefile_source;
 
 	    local (*IN);
-	    open IN, "<Makefile" || die "can't open Makefile: $!";
+	    open (IN, "<Makefile") || return;
 
 	    while (<IN>) 
 	    {
@@ -882,7 +950,7 @@ sub CONF_Handle_Open
 	    $conf_in || die "Cannot find top_srcdir in Makefile.";
 	}
 
-	open (CONF, "<$conf_in") || die "can't open $conf_in: $!";
+	open (CONF, "<$conf_in");
     }
     else
     {
@@ -894,19 +962,20 @@ sub CONF_Handle_Open
 
 sub FindPackageName
 {
+    my $version;
+    my $domain = &FindMakevarsDomain;
+    my $name = $domain || "untitled";
+
     &CONF_Handle_Open;
 
     my $conf_source; {
 	local (*IN);
-	open (IN, "<&CONF") || die "can't open configure.in/configure.ac: $!";
+	open (IN, "<&CONF") || return $name;
 	seek (IN, 0, 0);
 	local $/; # slurp mode
 	$conf_source = <IN>;
 	close IN;
     }
-
-    my $name = "untitled";
-    my $version;
 
     # priority for getting package name:
     # 1. GETTEXT_PACKAGE
@@ -918,16 +987,23 @@ sub FindPackageName
     if ($conf_source =~ /^AM_INIT_AUTOMAKE\(([^,\)]+),([^,\)]+)/m)
     {
 	($name, $version) = ($1, $2);
-	$name =~ s/[\[\]\s]//g;
-	($varhash{"AC_PACKAGE_VERSION"} = $version) =~ s/[\[\]\s]//g;
+	$name    =~ s/[\[\]\s]//g;
+	$version =~ s/[\[\]\s]//g;
+	$varhash{"AC_PACKAGE_NAME"} = $name;
+	$varhash{"PACKAGE"} = $name;
+	$varhash{"AC_PACKAGE_VERSION"} = $version;
+	$varhash{"VERSION"} = $version;
     }
     
     if ($conf_source =~ /^AC_INIT\(([^,\)]+),([^,\)]+)/m) 
     {
 	($name, $version) = ($1, $2);
-	$name=~ s/[\[\]\s]//g;
+	$name    =~ s/[\[\]\s]//g;
+	$version =~ s/[\[\]\s]//g;
 	$varhash{"AC_PACKAGE_NAME"} = $name;
-	($varhash{"AC_PACKAGE_VERSION"} = $version) =~ s/[\[\]\s]//g;
+	$varhash{"PACKAGE"} = $name;
+	$varhash{"AC_PACKAGE_VERSION"} = $version;
+	$varhash{"VERSION"} = $version;
     }
 
     # \s makes this not work, why?
@@ -937,8 +1013,11 @@ sub FindPackageName
     # used in configure.in/ac without the '$'
     $name =~ s/AC_/\$AC_/g;
     $name =~ s/\$\$/\$/g;
-    
+
+    $name = $domain if $domain;
+
     $name = SubstituteVariable ($name);
+    $name =~ s/^["'](.*)["']$/$1/;
 
     return $name if $name;
 }
@@ -947,18 +1026,38 @@ sub FindPackageName
 sub FindPOTKeywords
 {
 
-    my $keywords = "--keyword\=\_ --keyword\=N\_ --keyword\=U\_";
-    my $make_source; { 
+    my $keywords = "--keyword\=\_ --keyword\=N\_ --keyword\=U\_ --keyword\=Q\_";
+    my $varname = "XGETTEXT_OPTIONS";
+    my $make_source; {
 	local (*IN);
-	open (IN, "<Makefile.in.in") || return $keywords;
+	open (IN, "<Makevars") || (open(IN, "<Makefile.in.in") && ($varname = "XGETTEXT_KEYWORDS")) || return $keywords;
 	seek (IN, 0, 0);
 	local $/; # slurp mode
 	$make_source = <IN>;
 	close IN;
     }
 
-    # \s makes this not work, why?
-    $keywords = $1 if $make_source =~ /^XGETTEXT_KEYWORDS[ ]*=\[?([^\n\]]+)/m;
+    $keywords = $1 if $make_source =~ /^$varname[ ]*=\[?([^\n\]]+)/m;
     
     return $keywords;
+}
+
+sub FindMakevarsDomain
+{
+
+    my $domain = "";
+    my $makevars_source; { 
+	local (*IN);
+	open (IN, "<Makevars") || return $domain;
+	seek (IN, 0, 0);
+	local $/; # slurp mode
+	$makevars_source = <IN>;
+	close IN;
+    }
+
+    $domain = $1 if $makevars_source =~ /^DOMAIN[ ]*=\[?([^\n\]\$]+)/m;
+    $domain =~ s/^\s+//;
+    $domain =~ s/\s+$//;
+    
+    return $domain;
 }

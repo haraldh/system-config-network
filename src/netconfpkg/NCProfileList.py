@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -31,9 +31,6 @@ from NC_functions import *
 from netconfpkg import ProfileList_base
 from netconfpkg import Profile
 from netconfpkg import Host
-
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
 
 from rhpl import Conf
 
@@ -132,22 +129,18 @@ class ProfileList(ProfileList_base):
             hoconf = Conf.ConfFHosts( filename = profdir + '/hosts')
         else:
             hoconf = Conf.ConfFHosts( filename = HOSTSCONF )
-            
+
         hoconf.read()
         hoconf.rewind()
-        while hoconf.findnextcodeline():
-            try:
-                harray = hoconf.getfields()
-                host = Host()
-                host.createAliasList()
-                host.Hostname = harray[1]
-                host.IP = harray[0]
-                for al in harray[2:]:
-                    host.AliasList.append(al);
-                prof.HostsList.append(host)
-                hoconf.nextline()
-            except:
-                break
+        for key in hoconf.keys():
+            host = Host()
+            host.createAliasList()
+            host.Hostname = key
+            host.IP = hoconf[key][0]
+            log.log(4, "Adding %s %s" % (host.Hostname, host.IP))
+            for al in hoconf[key][1]:
+                host.AliasList.append(al);
+            prof.HostsList.append(host)
             
         dnsconf = Conf.ConfEResolv()
         if profdir:

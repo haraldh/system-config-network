@@ -1,4 +1,4 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -329,5 +329,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 15:54:04 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.32 $"

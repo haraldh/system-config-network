@@ -1,6 +1,6 @@
 ## netconf - A network configuration tool
 # -*- coding: utf-8 -*-
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 ## Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
@@ -528,6 +528,8 @@ class mainDialog:
     def hydrateIPsec(self):
         ipseclist = getIPsecList()
         clist = self.xml.get_widget("ipsecList")
+	if not clist:
+		return
         clist.clear()
         clist.set_row_height(17)
         row = 0
@@ -641,7 +643,9 @@ class mainDialog:
         row = 0
         for host in prof.HostsList:
             #88357
-            if host.IP == "127.0.0.1":
+            if host.IP == "127.0.0.1" and \
+               ( host.Hostname == "localhost.localdomain" or \
+                 host.Hostname == "localhost"):
                 continue
             hclist.append([host.IP, host.Hostname,
                            string.join(host.AliasList, ' ')])
@@ -1674,7 +1678,7 @@ class mainDialog:
         from version import PRG_NAME
         dlg = gnome.ui.About(PRG_NAME,
                              PRG_VERSION,
-                             _("Copyright (c) 2001-2003 Red Hat, Inc."),
+                             _("Copyright (c) 2001-2004 Red Hat, Inc."),
                              _("This software is distributed under the GPL. "
                                "Please report bugs to Red Hat's bug tracking "
                                "system: http://bugzilla.redhat.com/"),

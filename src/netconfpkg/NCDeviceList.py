@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -27,9 +27,6 @@ from netconfpkg import DeviceList_base
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from rhpl import ConfSMB
 from rhpl import Conf
-
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
 
 class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
@@ -144,7 +141,6 @@ class DeviceList(DeviceList_base):
 
 
     def _parseLine(self, vals, value):
-        class BadLineException: pass
         if len(vals) <= 1:
             return
         if vals[0] == "DeviceList":
@@ -225,10 +221,12 @@ class DeviceList(DeviceList_base):
 
         for entry in dir:
             if not testFilename(dirname + entry):
+                log.log(5, "not testFilename(%s)" % (dirname + entry))
                 continue
 
             if (len(entry) <= 6) or \
                    entry[:6] != 'ifcfg-':
+                log.log(5, "not ifcfg %s" % (entry))
                 continue
             
             devid = entry[6:]
@@ -237,10 +235,13 @@ class DeviceList(DeviceList_base):
                     break
             else:
                 # check for IPSEC
-                conf = ConfDevice(entry)
+                conf = ConfDevice(devid, dir=dirname)
                 type = IPSEC
-                if conf.has_key("TYPE"): type = conf("TYPE")
+                if conf.has_key("TYPE"):
+                    type = conf["TYPE"]
+                    
                 if type == IPSEC:
+                    log.log(5, "IPSEC %s" % (entry))
                     continue
 
                 # now remove the file
@@ -308,5 +309,5 @@ def getNextDev(base):
     return base + str(num)
                 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/29 14:13:51 $"
-__version__ = "$Revision: 1.61 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.62 $"

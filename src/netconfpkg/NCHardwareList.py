@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -26,9 +26,6 @@ import NCisdnhardware
 from netconfpkg import HardwareList_base
 from netconfpkg.NCHardware import *
 from NC_functions import *
-
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
 
 from rhpl.Conf import *
 from rhpl.ConfSMB import *
@@ -364,9 +361,11 @@ class HardwareList(HardwareList_base):
                                      kudzu.PROBE_SAFE))
         for kudzu_device in kudzulist:
             if not kudzu_device.device and kudzu_device.driver:
-                if kudzu_device.driver + '.ko' in isdnmodulelist:
+                if (kudzu_device.driver + '.o' in isdnmodulelist) or \
+                       (kudzu_device.driver + '.ko' in isdnmodulelist) :
                     kudzu_device.device = ISDN
-                elif kudzu_device.driver + '.ko' in wirelessmodulelist:
+                elif (kudzu_device.driver + '.o' in wirelessmodulelist) or \
+                         (kudzu_device.driver + '.ko' in wirelessmodulelist):
                     kudzu_device.device = WIRELESS
 
             if not kudzu_device.device:
@@ -607,7 +606,6 @@ class HardwareList(HardwareList_base):
 
 
     def _parseLine(self, vals, value):
-        class BadLineException: pass
         if len(vals) <= 1:
             return
         if vals[0] == "HardwareList":
@@ -822,5 +820,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 15:50:31 $"
-__version__ = "$Revision: 1.73 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.74 $"

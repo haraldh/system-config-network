@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2003 Red Hat, Inc.
+## Copyright (C) 2001-2004 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2004 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,6 @@ import sys
 import NC_functions
 
 import string
-
-if not "/usr/lib/rhs/python" in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
 
 from rhpl import Conf
 
@@ -93,5 +90,5 @@ class Wireless(Wireless_base):
         # conf.oldmode = 0600
         # conf.chmod(0600)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/01 11:24:39 $"
-__version__ = "$Revision: 1.17 $"
+__date__ = "$Date: 2005/03/03 16:43:29 $"
+__version__ = "$Revision: 1.18 $"
