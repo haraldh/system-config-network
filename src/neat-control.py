@@ -321,7 +321,8 @@ class mainDialog:
         if len(profilelist) == 1:
             self.xml.get_widget('profileFrame').hide()
 
-        omenu.remove_menu ()
+        if omenu:
+            omenu.remove_menu ()
             
         menu = gtk.Menu ()
         history = 0
@@ -424,5 +425,5 @@ if __name__ == '__main__':
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:24:36 $"
-__version__ = "$Revision: 1.45 $"
+__date__ = "$Date: 2004/03/10 14:39:38 $"
+__version__ = "$Revision: 1.46 $"
