@@ -24,14 +24,21 @@ sysdir=$(sysconfdir)/X11/applnk/System
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/security/console.apps
-	$(INSTALL_DATA) $(srcdir)/neat.console $(DESTDIR)$(sysconfdir)/security/console.apps/neat
-	$(INSTALL_DATA) $(srcdir)/internet-druid.console $(DESTDIR)$(sysconfdir)/security/console.apps/internet-druid
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d
-	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/neat
-	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/internet-druid
 	$(mkinstalldirs) $(DESTDIR)$(prefix)/bin/
-	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/neat
-	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/internet-druid
+
+	for i in neat redhat-config-network redhat-config-network-cmd; do \
+		$(INSTALL_DATA) $(srcdir)/neat.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
+		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
+		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
+	done
+
+	for i in internet-druid redhat-config-network-druid; do \
+		$(INSTALL_DATA) $(srcdir)/internet-druid.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
+		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
+		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
+	done
+
 
 dist: configure Makefile config.h
 
