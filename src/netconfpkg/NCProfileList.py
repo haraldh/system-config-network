@@ -25,7 +25,7 @@ import shutil
 import NCDeviceList
 import NCHardwareList
 
-from NC_functions import _
+from NC_functions import _, unlink, link, rename
 from ProfileList import *
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -172,6 +172,7 @@ class ProfileList(ProfileList_base):
             devicelist.save()
 
     def save(self):
+        print "Saving Profile"
         self.test()
         devicelist = NCDeviceList.getDeviceList()
 
@@ -211,21 +212,15 @@ class ProfileList(ProfileList_base):
         # Remove all files in the default profile directory
         filelist = os.listdir(SYSCONFPROFILEDIR+'/default')
         for file in filelist:
-            try:
-                os.unlink(SYSCONFDEVICEDIR+'/default/'+file)
-            except:
-                pass
+            unlink(SYSCONFPROFILEDIR+'/default/'+file)
 
         devlist = os.listdir(OLDSYSCONFDEVICEDIR)
         for dev in devlist:
             if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
                 continue
             if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
-                try:
-                    os.unlink(OLDSYSCONFDEVICEDIR+'/'+dev)
-                except:
-                    pass
-
+                unlink(OLDSYSCONFDEVICEDIR+'/'+dev)
+                
         for prof in self.data:
             try:
                 os.mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
@@ -278,8 +273,9 @@ class ProfileList(ProfileList_base):
             nwconf.write()
             dnsconf.write()
             hoconf.write()
-
+            #print prof.ActiveDevices
             for devId in prof.ActiveDevices:
+                print "Processing %s" % devId
                 for dev in devicelist:
                     if dev.DeviceId == devId:
                         if dev.Type == "CIPE":
@@ -290,57 +286,33 @@ class ProfileList(ProfileList_base):
                                 devName = devName + ":" + str(dev.Alias)
                         break
 
-                try:
-                    os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
-                except:
-                    pass
-
-                try:
-                    os.link(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
-                except:
-                    pass
+                unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                
+                link(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
 
                 if prof.Active == false and prof.ProfileName != 'default':
                     continue
 
-                try:
-                    os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-                except:
-                    pass
+                unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
 
-                try:
-                    os.link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-                except:
-                    print 'Darn, linking device '+str(devName)+','+str(devId)+' failed...'
+                link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
 
             if prof.Active == false:
                 continue
 
             if os.path.isfile('/etc/resolv.conf') and not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
-                os.rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
+                rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
 
-            try:
-                os.unlink('/etc/resolv.conf')
-            except:
-                pass
+            unlink('/etc/resolv.conf')
 
-            try:
-                os.link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
-            except:
-                pass
+            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
 
             if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
-                os.rename('/etc/hosts', '/etc/hosts.bak')
+                rename('/etc/hosts', '/etc/hosts.bak')
 
-            try:
-                os.unlink('/etc/hosts')
-            except:
-                pass
+            unlink('/etc/hosts')
 
-            try:
-                os.link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
-            except:
-                pass
+            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
 
     def activateDevice (self, deviceid, profile, state=None):
         devicelist = NCDeviceList.getDeviceList()
