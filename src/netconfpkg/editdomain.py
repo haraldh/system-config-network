@@ -107,9 +107,9 @@ class editDomainDialog:
 
     def dehydrate(self):
         profilelist = ProfileList.getProfileList()
-        
+
         for prof in profilelist:
-            if prof.Active == true:
+            if prof.Active == TRUE:
                 index = prof.DNS.SearchList.index(self.Name)
                 n = self.xml.get_widget("domainNameEntry").get_text()
                 
