@@ -62,22 +62,25 @@ class editDomainDialog:
             })
 
         self.dialog = self.xml.get_widget("Dialog")
-        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
+        #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        #self.dialog.connect("hide", gtk.mainquit)
+        self.dialog.set_close(TRUE)
         load_icon("network.xpm", self.dialog)
         self.setup()
         self.hydrate()
         
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
+        pass
+    #    self.dialog.destroy()
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.main.hydrate()
-        self.dialog.destroy()
+    #    self.main.hydrate()
+    #    self.dialog.destroy()
         
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
+        pass
+    #    self.dialog.destroy()
         
     def on_domainNameEntry_insert_text(self, entry, partial_text, length,
                                        pos, str):
@@ -106,11 +109,4 @@ class editDomainDialog:
         self.xml.get_widget("domainNameEntry").set_text(self.Name)
 
 
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    dialog = editAdressDialog()
-    dialog.run()
-    gtk.mainloop()
 

@@ -37,10 +37,10 @@ from gtk import FALSE
 
 
 class dslConfigDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
+    def __init__(self, device):
         glade_file = "dslconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main, xml_basic)
+                                    device)
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)

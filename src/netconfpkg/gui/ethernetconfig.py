@@ -45,10 +45,10 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class ethernetConfigDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
+    def __init__(self, device):
         glade_file = "ethernetconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main, xml_basic)    
+                                    device)    
         self.xml.signal_autoconnect(
             {
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,

@@ -36,10 +36,10 @@ from gtk import TRUE
 from gtk import FALSE
 
 class ctcConfigDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
+    def __init__(self, device):
         glade_file = 'ctcconfig.glade'
         deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main, xml_basic)
+                                    device)
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)

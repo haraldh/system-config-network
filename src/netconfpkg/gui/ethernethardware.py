@@ -49,9 +49,8 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class ethernetHardwareDialog:
-    def __init__(self, hw, xml_main = None):
+    def __init__(self, hw):
         self.hw = hw
-        self.xml_main = xml_main
 
         glade_file = "ethernethardware.glade"
 
@@ -71,15 +70,15 @@ class ethernetHardwareDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
         load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
-        self.button = 0
+        #self.button = 0
 
     def on_Dialog_delete_event(self, *args):
-        self.button = 1
+        #self.button = 1
+        pass
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
@@ -103,11 +102,12 @@ class ethernetHardwareDialog:
             GUI_functions.generic_error_dialog('The Ethernet card could not be initialized. Please verify your settings and try again.', self.dialog)
             self.button = 1
             return
-        self.hw.commit()
+        #self.hw.commit()
 
     def on_cancelButton_clicked(self, button):
-        self.button = 1
-
+        #self.button = 1
+        pass
+    
     def on_adapterEntry_changed(self, entry):
         pass
 

@@ -40,10 +40,10 @@ from gtk import FALSE
 
 
 class DialupDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None):
+    def __init__(self, device):
         glade_file = "dialupconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main)
+                                    device)
         self.edit = FALSE
 
         self.xml.signal_autoconnect(
@@ -198,15 +198,15 @@ class DialupDialog(deviceConfigDialog):
             clist.remove(clist.selection[0])
 
     def on_chooseButton_clicked(self, button):
-        dialog = providerDialog(self.device, self.xml_main, self.xml)
+        dialog = providerDialog(self.device)
         
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
 
  
 class ISDNDialupDialog(DialupDialog):
-    def __init__(self, device, xml_main = None):
-        DialupDialog.__init__(self, device, xml_main)
+    def __init__(self, device):
+        DialupDialog.__init__(self, device)
 
         page = self.noteBook.page_num(self.xml.get_widget ("modemTab"))
         self.noteBook.get_nth_page(page).hide()
@@ -214,7 +214,7 @@ class ISDNDialupDialog(DialupDialog):
         self.dialog.set_title(_("ISDN Dialup Configuration"))
 
     def on_chooseButton_clicked(self, button):
-        dialog = ISDNproviderDialog(self.device, self.xml_main, self.xml)
+        dialog = ISDNproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
         dl.run()
         DialupDialog.hydrate(self)
@@ -306,8 +306,8 @@ class ISDNDialupDialog(DialupDialog):
 
         
 class ModemDialupDialog(DialupDialog):
-    def __init__(self, device, xml_main = None):
-        DialupDialog.__init__(self, device, xml_main)
+    def __init__(self, device):
+        DialupDialog.__init__(self, device)
         
         self.dialog.set_title(_("Modem Dialup Configuration"))
         page = self.noteBook.page_num(self.xml.get_widget ("isdnTab"))
@@ -316,7 +316,7 @@ class ModemDialupDialog(DialupDialog):
         self.noteBook.get_nth_page(page).hide()
         
     def on_chooseButton_clicked(self, button):
-        dialog = ModemproviderDialog(self.device, self.xml_main, self.xml)
+        dialog = ModemproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
         dl.run()
         DialupDialog.hydrate(self)

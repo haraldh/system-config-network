@@ -44,10 +44,10 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class cipeConfigDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
+    def __init__(self, device):
         glade_file = "cipeconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main, xml_basic)    
+                                    device)    
         self.xml.signal_autoconnect(
             {
             "on_remotePeerAddressCB_toggled" : self.on_remotePeerAddressCB_toggled,

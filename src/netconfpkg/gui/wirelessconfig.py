@@ -43,10 +43,9 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class wirelessConfigDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
+    def __init__(self, device):
         glade_file = "wirelessconfig.glade"
-        deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main, xml_basic)    
+        deviceConfigDialog.__init__(self, glade_file, device)
 
 
         self.xml.get_widget("modeCombo").set_popdown_strings( [ 'auto',

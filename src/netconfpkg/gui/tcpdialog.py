@@ -44,8 +44,7 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class tcpConfigDialog:
-    def __init__(self, device, xml = None):
-        self.xml_main = xml
+    def __init__(self, device):
         self.device = device
         glade_file = "tcpipdialog.glade"
 
@@ -148,18 +147,20 @@ class tcpConfigDialog:
         self.device.AutoDNS = self.xml.get_widget('dnsSettingCB').get_active()
 
     def on_Dialog_delete_event(self, *args):
-        self.device.rollback()
+        #self.device.rollback()
+        pass
     
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.device.commit()
+        #self.device.commit()
     
     def on_cancelButton_clicked(self, button):
-        self.device.rollback()
+        #self.device.rollback()
+        pass
     
     def on_applyButton_clicked(self, button):
         self.dehydrate()
-        self.device.commit()
+        #self.device.commit()
     
     def on_ipSettingCB_toggled(self, check):
         self.xml.get_widget("dynamicConfigComboBox").set_sensitive(check["active"])
@@ -176,13 +177,14 @@ class tcpConfigDialog:
         if self.device.StaticRoutes == None: self.device.createStaticRoutes()
         routes = self.device.StaticRoutes
         route = Route()
-        dialog = editAdressDialog(route, self.xml)
+        dialog = editAdressDialog(route)
         dl = dialog.xml.get_widget ("Dialog")
         button = dl.run ()
-        if button == 0:
-            i = routes.addRoute()
-            routes[i].apply(route)
-            routes[i].commit()
+        if button != 0:
+            return
+        i = routes.addRoute()
+        routes[i].apply(route)
+        #routes[i].commit()
         self.hydrate()
 
     def on_routeEditButton_clicked(self, button):
@@ -194,9 +196,11 @@ class tcpConfigDialog:
 
         route = routes[clist.selection[0]]
 
-        dialog = editAdressDialog(route, self.xml)
+        dialog = editAdressDialog(route)
         dl = dialog.xml.get_widget ("Dialog")
-        dl.run ()
+        if dl.run () != 0:
+            return
+        
         self.hydrate()
 
     def on_routeDeleteButton_clicked(self, button):

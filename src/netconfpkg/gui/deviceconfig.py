@@ -43,10 +43,8 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class deviceConfigDialog:
-    def __init__(self, glade_file, device, xml_main = None, xml_basic = None):
+    def __init__(self, glade_file, device):
         self.device = device
-        self.xml_main = xml_main
-        self.xml_basic = xml_basic
 
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
@@ -86,7 +84,7 @@ class deviceConfigDialog:
         entry.emit_stop_by_name('insert_text')
 
     def on_protocolEditButton_clicked(self, *args):
-        cfg = tcpdialog.tcpConfigDialog(self.device, self.xml)
+        cfg = tcpdialog.tcpConfigDialog(self.device)
         dialog = cfg.xml.get_widget ("Dialog")
         button = dialog.run ()
 

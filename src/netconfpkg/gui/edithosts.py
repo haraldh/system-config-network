@@ -42,9 +42,8 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class editHostsDialog:
-    def __init__(self, host, xml_main = None):
+    def __init__(self, host):
         self.host = host
-        self.xml_main = xml_main
 
         glade_file = "edithosts.glade"
 
@@ -77,7 +76,7 @@ class editHostsDialog:
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.host.commit()
+        #self.host.commit()
 
     def on_cancelButton_clicked(self, button):
         pass

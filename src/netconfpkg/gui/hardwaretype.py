@@ -37,8 +37,7 @@ from gtk import FALSE
 
 
 class hardwareTypeDialog:
-    def __init__(self, xml = None):
-        self.xml_main = xml
+    def __init__(self):
         glade_file = "hardwaretype.glade"
 
         if not os.path.exists(glade_file):

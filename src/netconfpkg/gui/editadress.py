@@ -40,9 +40,8 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class editAdressDialog:
-    def __init__(self, route, xml_main = None):
+    def __init__(self, route=None):
         self.route = route
-        self.xml_main = xml_main
 
         glade_file = "editadress.glade"
 
@@ -67,8 +66,8 @@ class editAdressDialog:
 
         self.xml.get_widget ("addressPixmap").load_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
         self.dialog = self.xml.get_widget("Dialog")
-        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
+        #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        #self.dialog.connect("hide", gtk.mainquit)
         self.dialog.set_close(TRUE)
         self.hydrate()
 
@@ -77,7 +76,6 @@ class editAdressDialog:
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.route.commit()
         
     def on_cancelButton_clicked(self, button):
         pass
@@ -102,9 +100,3 @@ class editAdressDialog:
         self.route.Netmask = self.xml.get_widget('netmaskEntry').get_text()
         self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text()
 
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = editAdressDialog()
-    gtk.mainloop()

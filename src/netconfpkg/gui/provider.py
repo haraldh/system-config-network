@@ -44,11 +44,8 @@ gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class providerDialog:
-    def __init__(self, device, xml_main = None, xml_dialup = None,
-                 connection_type="isdn"):
+    def __init__(self, device, connection_type="isdn"):
         self.device = device
-        self.xml_main = xml_main
-        self.xml_dialup = xml_dialup
         self.done = FALSE
         self.country = ""
         self.city = ""
@@ -193,8 +190,8 @@ class providerDialog:
 
 
 class ISDNproviderDialog(providerDialog):
-    def __init__(self, device, xml_main = None, xml_dialup = None):
-        providerDialog.__init__(self, device, xml_main, xml_dialup)
+    def __init__(self, device):
+        providerDialog.__init__(self, device)
 
     def get_provider_list(self):
         return providerdb.get_provider_list("isdn")
@@ -206,8 +203,8 @@ class ISDNproviderDialog(providerDialog):
 
 
 class ModemproviderDialog(providerDialog):
-    def __init__(self, device, xml_main = None, xml_dialup = None):
-        providerDialog.__init__(self, device, xml_main, xml_dialup)
+    def __init__(self, device):
+        providerDialog.__init__(self, device)
 
     def get_provider_list(self):
         return providerdb.get_provider_list("modem") 

@@ -32,7 +32,6 @@ from dialupconfig import *
 from dialupconfig import _
 from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
-from editadress import editAdressDialog
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from gtk import TRUE
@@ -40,8 +39,7 @@ from gtk import FALSE
 
 
 class deviceTypeDialog:
-    def __init__(self, device, xml = None):
-        self.xml_main = xml
+    def __init__(self, device):
         self.device = device
         glade_file = "devicetype.glade"
 
@@ -121,7 +119,7 @@ class deviceTypeDialog:
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
-        self.device.commit()
+        #self.device.commit()
     
     def on_cancelButton_clicked(self, button):
         self.device.rollback()
