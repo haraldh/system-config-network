@@ -192,20 +192,9 @@ class DialupDruid(InterfaceCreator):
         self.dbtree.select_row(0,0)
     
     def dehydrate(self):
-        DeviceId = self.xml.get_widget('providerName').get_text()
-        n = DeviceId
-        num = 0
-        while 1:
-            found = 0
-            for l in self.devicelist:
-                if l.DeviceId == DeviceId:
-                    found = 1
-            if found != 1: break
-            DeviceId = n + str(num)
-            num = num + 1
-
-        self.device.DeviceId = DeviceId
+        self.device.DeviceId = self.xml.get_widget('providerName').get_text()
         self.device.Type = self.connection_type
+
         self.device.BootProto = 'DIALUP'
         self.device.AllowUser = TRUE
         if self.connection_type == 'ISDN':

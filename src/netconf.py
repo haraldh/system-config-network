@@ -50,6 +50,7 @@ def Usage():
     print ( "redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
 
 
+
 # Argh, another workaround for broken gtk/gnome imports...
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
@@ -111,6 +112,7 @@ class mainDialog:
 
         self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
         self.initialized = None
+        self.no_profileentry_update = None
 
         self.xml.signal_autoconnect(
             {
@@ -183,7 +185,7 @@ class mainDialog:
             "on_profileAddButton_clicked" : self.on_profileAddButton_clicked,
             "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
             "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
-            "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked
+            "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked,
             })
 
         self.dialog = self.xml.get_widget("Dialog")
@@ -192,6 +194,10 @@ class mainDialog:
         load_icon("network.xpm", self.dialog)
         self.load()
         self.hydrate()
+        self.xml.get_widget ("deviceList").column_titles_passive ()
+        self.xml.get_widget ("hardwareList").column_titles_passive ()
+        self.xml.get_widget ("dnsList").column_titles_passive ()
+        self.xml.get_widget ("hostsList").column_titles_passive ()
 
     def load(self):
         self.loadDevices()
@@ -247,9 +253,9 @@ class mainDialog:
         profilelist.save()
 
     def hydrate(self):
+        self.hydrateProfiles()
         self.hydrateDevices()
         self.hydrateHardware()
-        self.hydrateProfiles()
 
     def hydrateDevices(self):
         devicelist = getDeviceList()
@@ -263,27 +269,23 @@ class mainDialog:
         row = 0
         for dev in devicelist:
             type = dev.Type
-            clist.append(['', dev.DeviceId, type])
-            clist.set_pixmap(row, 0, inact_xpm)
+            clist.append([dev.DeviceId, type])
+##             clist.set_pixmap(row, 0, inact_xpm)
             clist.set_row_data(row, 0)
-            for prof in profilelist:
-                if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
-                    clist.set_pixmap(row, 0, act_xpm)
-                    clist.set_row_data(row, 1)
-                    break
+##             for prof in profilelist:
+##                 if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
+##                     clist.set_pixmap(row, 0, act_xpm)
+##                     clist.set_row_data(row, 1)
+##                     break
             row = row + 1
+
 
     def hydrateHardware(self):
         hardwarelist = getHardwareList()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
-##        hardwareTypeList = ["Ethernet", "Modem", "ISDN"]
-##        self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
         for hw in hardwarelist:
-##            if hw.Type == "ISDN":
-##                hardwareTypeList = ["Ethernet", "Modem"]
-##                self.xml.get_widget("hardwareTypeCombo").set_popdown_strings(hardwareTypeList)
             clist.append([hw.Description, hw.Type, hw.Name])
 
     def hydrateProfiles(self):
@@ -296,33 +298,49 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active != true:
                 continue
-            self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
-            self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
-            self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
-            self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
-            self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
+            if prof.DNS.Hostname: self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
+            else: self.xml.get_widget('hostnameEntry').set_text('')
+            if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
+            else: self.xml.get_widget('domainnameEntry').set_text('')
+            if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
+            else: self.xml.get_widget('primaryDnsEntry').set_text('')
+            if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
+            else: self.xml.get_widget('secondaryDnsEntry').set_text('')
+            if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
+            else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
             for domain in prof.DNS.SearchList:
                 dclist.append([domain])
 
             for host in prof.HostsList:
                 hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
+            break
 
-        row = 0
-        actrow = 0
-        for prof in profilelist:
-            if prof.Active == true:
-               actrow = row
-               break
-            row = row + 1
-
+            
         if self.initialized:
             return
 
-        clist = self.xml.get_widget("profileList")
         self.initialized = true
+
+        self.xml.get_widget ("searchDnsEntry").set_text ("")
+        self.no_profileentry_update = true
+        omenu = self.xml.get_widget('profileOption')
+        omenu.remove_menu ()
+        menu = gtk.GtkMenu ()
+        history = 0
+        i = 0
         for prof in profilelist:
-            clist.append([prof.ProfileName])
-        clist.select_row(actrow, 0)
+            menu_item = gtk.GtkMenuItem (prof.ProfileName)
+            menu_item.show ()
+            menu_item.signal_connect ("activate", self.on_profileMenuItem_activated, prof.ProfileName)
+            menu.append (menu_item)
+            if prof.ProfileName == self.get_active_profile().ProfileName:
+                history = i
+            i = i+1
+        menu.show ()
+        omenu.set_menu (menu)
+        omenu.set_history (history)
+        menu.children()[history].activate ()
+        self.no_profileentry_update = false
 
     def on_Dialog_delete_event(self, *args):
         button = generic_yesno_dialog(_("Do you want to save your changes?"),
@@ -415,11 +433,11 @@ class mainDialog:
 
         device = devicelist[clist.selection[0]]
 
-        name = clist.get_text(clist.selection[0], 1)
-        type = clist.get_text(clist.selection[0], 2)
+        name = clist.get_text(clist.selection[0], 0)
+        type = clist.get_text(clist.selection[0], 1)
 
         if type == 'Loopback':
-            generic_error_dialog (_('The Loopback device can not be edited!'), self.dislog)
+            generic_error_dialog (_('The Loopback device can not be edited!'), self.dialog)
             return
 
         button = self.editDevice(device)
@@ -481,8 +499,8 @@ class mainDialog:
         select = clist.selection[0]
         device = devicelist[select]
 
-        name = clist.get_text(select, 1)
-        type = clist.get_text(select, 2)
+        name = clist.get_text(select, 0)
+        type = clist.get_text(select, 1)
 
         if type == 'Loopback':
             generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
@@ -507,22 +525,39 @@ class mainDialog:
             return
         entry.emit_stop_by_name('insert_text')
 
+    def on_profileMenuItem_activated(self, menu_item, profile):
+        if profile == 'default':
+            self.xml.get_widget ('profileRenameButton').set_sensitive (FALSE)
+            self.xml.get_widget ('profileDeleteButton').set_sensitive (FALSE)
+        else:
+            self.xml.get_widget ('profileRenameButton').set_sensitive (TRUE)
+            self.xml.get_widget ('profileDeleteButton').set_sensitive (TRUE)
+        if not self.no_profileentry_update:
+            profilelist = getProfileList ()
+            for prof in profilelist:
+                if prof.ProfileName == profile:
+                    prof.Active = true
+                    #print "profile " + prof.ProfileName + " activated\n"
+                else: prof.Active = false
+            self.hydrate()
+        
+
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     edit_button = None, delete_button = None,
                                     copy_button = None, rename_button = None,
                                     up_button = None, down_button = None):
-        profilelist = getProfileList()
+        #profilelist = getProfileList()
         if edit_button: edit_button.set_sensitive(TRUE)
         if rename_button: rename_button.set_sensitive(TRUE)
         if delete_button: delete_button.set_sensitive(TRUE)
         if copy_button: copy_button.set_sensitive(TRUE)
         if up_button: delete_button.set_sensitive(TRUE)
         if down_button: copy_button.set_sensitive(TRUE)
-        if clist.get_name() == 'profileList':
-            for prof in profilelist:
-                prof.Active = false
-            profilelist[row].Active = true
-            self.hydrate()
+        #if clist.get_name() == 'profileList':
+        #    for prof in profilelist:
+        #        prof.Active = false
+        #    profilelist[row].Active = true
+        #    self.hydrate()
 
     def on_generic_clist_unselect_row(self, clist, row, column, event,
                                       edit_button = None, delete_button = None,
@@ -541,6 +576,15 @@ class mainDialog:
         clist.remove_data ("signal_id")
         apply (func)
 
+    def get_active_profile(self):
+        profilelist = getProfileList()
+        for prof in profilelist:
+            if not prof.Active:
+                continue
+            return prof
+
+        return profilelist[0]
+
     def on_generic_clist_button_press_event(self, clist, event, func):
         profilelist = getProfileList()
 
@@ -555,32 +599,40 @@ class mainDialog:
             info = clist.get_selection_info(event.x, event.y)
             if info != None and info[1] == 0:
                 row = info[0]
-                name = clist.get_text(row, 1)
-                type = clist.get_text(row, 2)
-                if type == 'Loopback':
-                    generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
-                    return
+                name = clist.get_text(row, 0)
+                type = clist.get_text(row, 1)
+##                 if type == 'Loopback':
+##                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
+##                     return
 
-                if clist.get_row_data(row) == 0:
-                    xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
-                    clist.set_row_data(row, 1)
-                    curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
-                    if curr_prof.ProfileName == 'default':
-                        for prof in profilelist:
-                            profilelist.activateDevice(name, prof.ProfileName, true)
-                    else:
-                        profilelist.activateDevice(name, curr_prof.ProfileName, true)
-                else:
-                    xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
-                    clist.set_row_data(row, 0)
-                    curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
-                    if curr_prof.ProfileName == 'default':
-                        for prof in profilelist:
-                            profilelist.activateDevice(name, prof.ProfileName, false)
-                    else:
-                        profilelist.activateDevice(name, curr_prof.ProfileName, false)
-#                        profilelist.activateDevice(name, 'default', false)
-                clist.set_pixmap(row, 0, xpm)
+##                 if clist.get_row_data(row) == 0:
+##                     xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
+##                     clist.set_row_data(row, 1)
+##                     curr_prof = self.get_active_profile()
+##                     if curr_prof.ProfileName == 'default':
+##                         for prof in profilelist:
+##                             profilelist.activateDevice(name, prof.ProfileName, true)
+##                     else:
+##                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
+##                         for prof in profilelist:
+##                             if prof.ProfileName == "default":
+##                                 continue
+##                             if name not in prof.ActiveDevices:
+##                                 break
+##                         else:
+##                             profilelist.activateDevice(name, 'default', true)
+                        
+##                 else:
+##                     xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
+##                     clist.set_row_data(row, 0)
+##                     curr_prof = self.get_active_profile()
+##                     if curr_prof.ProfileName == 'default':
+##                         for prof in profilelist:
+##                             profilelist.activateDevice(name, prof.ProfileName, false)
+##                     else:
+##                         profilelist.activateDevice(name, curr_prof.ProfileName, false)
+##                         profilelist.activateDevice(name, 'default', false)
+##                 clist.set_pixmap(row, 0, xpm)
 
     def on_hostnameEntry_changed(self, entry):
         profilelist = getProfileList()
@@ -640,9 +692,9 @@ class mainDialog:
 
     def on_dnsEditButton_clicked (self, *args):
         clist = self.xml.get_widget("dnsList")
+        name = clist.get_text(clist.selection[0], 0)
         if len(clist.selection) == 0:
             return
-        name = clist.get_text(clist.selection[0], 0)
 
         dialog = editDomainDialog(name)
         dialog.main = self
@@ -705,7 +757,7 @@ class mainDialog:
     def on_hostsAddButton_clicked(self, *args):
         profilelist = getProfileList()
 
-        curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
+        curr_prof = self.get_active_profile()
         if not curr_prof.HostsList:
             curr_prof.createHostsList()
         hostslist = curr_prof.HostsList
@@ -723,7 +775,7 @@ class mainDialog:
     def on_hostsEditButton_clicked (self, *args):
         profilelist = getProfileList()
 
-        curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
+        curr_prof = self.get_active_profile()
         hostslist = curr_prof.HostsList
         clist  = self.xml.get_widget("hostsList")
 
@@ -742,10 +794,10 @@ class mainDialog:
 
         clist = self.xml.get_widget('profileList')
 
-        if len(clist.selection) == 0:
-            return
-
-        prof = profilelist[clist.selection[0]]
+        #if len(clist.selection) == 0:
+        #    return
+        #
+        prof = self.get_active_profile()
 
         clist = self.xml.get_widget('hostsList')
 
@@ -764,41 +816,44 @@ class mainDialog:
     def on_profileAddButton_clicked (self, *args):
         import gnome
         import gnome.ui
-        dialog = gnome.ui.GnomeRequestDialog (FALSE, "Please enter the name for the new profile.\nThe name may only contain letters and digits.", "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
+        dialog = gnome.ui.GnomeRequestDialog (FALSE, _("Please enter the name for the new profile.\nThe name may only contain letters and digits."), "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
         dialog.run()
 
     def on_profileAddEntry_changed(self, text):
         profilelist = getProfileList()
 
         if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
-            return
+            generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
+            return 1
+
+        if text == 'default':
+            generic_error_dialog (_('The profile can\'t be named "default"!'), self.dialog)
+            return 1
+
+        for prof in profilelist:
+            if prof.ProfileName == text:
+                generic_error_dialog (_('The profile name already exists!'), self.dialog)
+                return 1
 
         i = profilelist.addProfile()
         prof = profilelist[i]
-        prof.createActiveDevices()
-        prof.createDNS()
-        prof.createHostsList()
-        prof.ProfileName      = text
-        prof.DNS.Hostname     = ''
-        prof.DNS.Domainname   = ''
-        prof.DNS.PrimaryDNS   = ''
-        prof.DNS.SecondaryDNS = ''
-        prof.DNS.TertiaryDNS   = ''
-        prof.DNS.createSearchList()
-        self.xml.get_widget("profileList").clear()
+        prof.apply(profilelist[0])
+        prof.ProfileName = text
+        for p in profilelist:
+            p.Active = false
+            
+        prof.Active = true
+        
+        #self.xml.get_widget("profileList").clear()
         self.initialized = false
         self.hydrate()
+        return 0
 
     def on_profileCopyButton_clicked (self, *args):
         profilelist = getProfileList()
 
-        clist = self.xml.get_widget("profileList")
-
-        if len(clist.selection) == 0:
-            return
-
         profile = Profile()
-        profile.apply(profilelist[clist.selection[0]])
+        profile.apply(self.get_active_profile())
 
         duplicate = TRUE
         num = 0
@@ -820,60 +875,64 @@ class mainDialog:
         self.hydrate()
 
     def on_profileRenameButton_clicked (self, *args):
-        profilelist = getProfileList()
-
-        clist = self.xml.get_widget("profileList")
-
-        if len(clist.selection) == 0:
-            return
-
-        profile = profilelist[clist.selection[0]]
-
         import gnome
         import gnome.ui
-        dialog = gnome.ui.GnomeRequestDialog (FALSE, "Please enter the new name for the profile.\nThe name may only contain letters and digits.", profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
+        profilelist = getProfileList()
+        
+        profile = self.get_active_profile()
+        if profile.ProfileName == 'default':
+            generic_error_dialog (_('The "default" profile can\'t be renamed!'), self.dialog)
+            return
+            
+        dialog = gnome.ui.GnomeRequestDialog (FALSE, _("Please enter the new name for the profile.\nThe name may only contain letters and digits."), profile.ProfileName, 50, self.on_profileRenameEntry_changed, self.dialog)
         dialog.run()
 
     def on_profileRenameEntry_changed(self, text):
         if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
+            generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
+            return
+
+        if text == 'default':
+            generic_error_dialog (_('The profile can\'t be named "default"!'), self.dialog)
             return
 
         profilelist = getProfileList()
 
-        clist = self.xml.get_widget("profileList")
+        profile = self.get_active_profile()
 
-        if len(clist.selection) == 0:
-            return
+        for prof in profilelist:
+            if prof.ProfileName == text and prof != profile:
+                generic_error_dialog (_('The profile name already exists!'), self.dialog)
+                return
 
-        profile = profilelist[clist.selection[0]]
         profile.ProfileName = text
         profile.commit()
         self.initialized = None
-        clist.clear()
         self.hydrate()
 
     def on_profileDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
 
-        clist = self.xml.get_widget('profileList')
+        #clist = self.xml.get_widget('profileList')
 
-        if len(clist.selection) == 0:
-            return
+        #if len(clist.selection) == 0:
+        #    return
 
-        name = profilelist[clist.selection[0]].ProfileName
+        name = self.get_active_profile().ProfileName
 
         if name == 'default':
-            generic_error_dialog (_('The default Profile can not be deleted!'), self.dialog)
+            generic_error_dialog(_('The "default" Profile can not be deleted!'), self.dialog)
             return
 
-        buttons = generic_yesno_dialog(_('Do you really want to delete profile "') + str(name) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
+        buttons = generic_yesno_dialog(_('Do you really want to delete profile "') + str(name) + _('"?'), self.dialog)
 
         if buttons != 0:
             return
 
-        del profilelist[clist.selection[0]]
+        del profilelist[profilelist.index(self.get_active_profile())]
+        profilelist[0].Active = true
         self.initialized = None
-        clist.clear()
+        #clist.clear()
         self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
