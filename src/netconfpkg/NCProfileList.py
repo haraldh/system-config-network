@@ -1,8 +1,12 @@
+import HardwareList
+import DeviceList
 from ProfileList import *
 from os import *
 from os.path import *
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
+
 import Conf
 
 class ProfileList(ProfileList_base):
@@ -13,15 +17,14 @@ class ProfileList(ProfileList_base):
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
-        try:
-            curr_prof = nwconf['CURRENT_PROFILE']
-        except:
+        curr_prof = nwconf['CURRENT_PROFILE']
+        if curr_prof == None or curr_prof == '':
             curr_prof = 'default'
 
         proflist = os.listdir(SYSCONFPROFILEDIR)
         for pr in proflist:
             nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + pr + '/network')
-	    i = self.addProfile()
+            i = self.addProfile()
             prof = self.data[i]
             prof.createActiveDevices()
             prof.createDNS()
@@ -67,6 +70,9 @@ class ProfileList(ProfileList_base):
                     sl.append(ns)
 
     def save(self):
+        devicelist = DeviceList.getDeviceList()
+        hardwarelist = HardwareList.getHardwareList()
+
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
@@ -80,11 +86,52 @@ class ProfileList(ProfileList_base):
             nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/network')
             nwconf['HOSTNAME'] = prof.DNS.Hostname
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf'
-            dnsconf['nameservers'][0] = prof.DNS.PrimaryDNS
-            dnsconf['nameservers'][1] = prof.DNS.SecondaryDNS
-#            dnsconf['nameservers'][2] = prof.DNS.TernaryDNS
+            dnsconf['nameservers'] = []
+            if prof.DNS.PrimaryDNS != '':
+                dnsconf['nameservers'].append(prof.DNS.PrimaryDNS)
+            if prof.DNS.SecondaryDNS!= '':
+                dnsconf['nameservers'].append(prof.DNS.SecondaryDNS)
+            if prof.DNS.TernaryDNS != '':
+                dnsconf['nameservers'].append(prof.DNS.TernaryDNS)
             nwconf.write()
             dnsconf.write()
+
+            if prof.Active == false:
+                continue
+
+            for dev in prof.ActiveDevices:
+                for d in devicelist:
+                    pass
+
+                devId = devicelist[dev].DeviceId
+                devName = hardwarelist[dev.Name].Name
+
+                try:
+                    os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                except:
+                    pass
+
+                try:
+                    os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                except:
+                    pass
+
+                try:
+                    os.symlink(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                    os.symlink(SYSCONFPROFILEDIR+'/'++prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                except:
+                    print 'Darn, symlinking device '+devName+','+devId+' failed...'
+
+
+PFList = None
+
+def getProfileList():
+    global PFList
+    if not PFList:
+        PFList = ProfileList()
+        PFList.load()
+    return PFList
+
 
 if __name__ == '__main__':
     pl = ProfileList()
