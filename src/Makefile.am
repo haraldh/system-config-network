@@ -18,10 +18,11 @@ all-local:
 	ln -s netconf.py redhat-config-network
 	ln -s netconf.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
+	ln -s neat-control.py redhat-control-network
 
 dist-local: glade-strings.c 
 
-glade-strings.c:  $(GLADE_FILES)  $(wildcard $(srcdir)/netconfpkg/gui/*.glade)
+glade-strings.c:  $(GLADE_FILES) $(wildcard $(srcdir)/netconfpkg/gui/*.glade)
 	libglade-xgettext -c -o $(srcdir)/glade-strings.c $^
 
 pythondir = $(pkgdatadir)
@@ -49,6 +50,7 @@ install-exec-local:
 	softdir=$${softdir/#$$p} ; \
 	softdir=$${softdir/#\/} ; \
 	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/neat-control; \
+	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/redhat-control-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-druid; \
