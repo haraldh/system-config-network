@@ -1,14 +1,14 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.5.7
-Release: 1
+Version: 0.6.1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
 Requires: initscripts >= 5.99, usermode , alchemist
-BuildRequires: alchemist, alchemist-devel
+BuildRequires: alchemist, alchemist-devel, python
 Obsoletes: isdn-config internet-config netcfg
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
@@ -39,6 +39,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/redhat-config-network
 %{_datadir}/kontrol-panel/*.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
+%{_datadir}/pixmaps/neat.png
 %config(noreplace) /etc/X11/serverconfig/*.desktop
 %config(noreplace) /etc/X11/applnk/System/*.desktop
 %config(noreplace) /etc/pam.d/*
@@ -47,6 +48,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Thu Aug 02 2001 Phil Knirsch <phil@redhat.de> 0.6.1-2
+- Fixed buggous removal of ifcfg-lo (#50478)
+- Fixed problems with modem volume in hardware dialog
+- Fixed missing /dev/modem for modem setup (#50673)
+
+* Tue Jul 24 2001 Than Ngo <than@redhat.com> 0.6.1-1
+- Some more bugfixes...
+
+* Tue Jul 24 2001 Phil Knirsch <phil@redhat.de> 0.6-2
+- Some more bugfixes...
+
+* Tue Jul 24 2001 Phil Knirsch <phil@redhat.de> 0.6-1
+- Bumped version to 0.6
+
 * Tue Jul 24 2001 Than Ngo <than@redhat.com>
 - add Druid for dialup connection (ISDN/ADSL/Modem)
 

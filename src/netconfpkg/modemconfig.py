@@ -48,7 +48,6 @@ class modemDialog:
 
         self.xml.signal_autoconnect(
             {
-            "on_volumeCB_toggled" : self.on_volumeCB_toggled,
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
@@ -69,11 +68,6 @@ class modemDialog:
 
     def on_cancelButton_clicked(self, button):
         pass
-
-    def on_volumeCB_toggled(self, check):
-        scale = self.xml.get_widget("volumeMenu")
-        scale.set_sensitive(check["active"])
-        scale.grab_focus()
 
     def setup(self):
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modemDeviceList)
@@ -111,16 +105,17 @@ class modemDialog:
         hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
         hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
         hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
-        if self.xml.get_widget("volumeCB")["active"]:
-            Item = self.xml.get_widget("volumeMenu")["label"]
-            if Item == _("Low"):
-                hw.Modem.ModemVolume = 1
-            elif Item == _("Medium"):
-                hw.Modem.ModemVolume = 2
-            elif Item == _("High"):
-                hw.Modem.ModemVolume = 3
-            elif Item == _("Very High"):
-                hw.Modem.ModemVolume = 4
+        Item = self.xml.get_widget("volumeMenu")["label"]
+        if Item == _("Off"):
+            hw.Modem.ModemVolume = 0
+        elif Item == _("Low"):
+            hw.Modem.ModemVolume = 1
+        elif Item == _("Medium"):
+            hw.Modem.ModemVolume = 2
+        elif Item == _("High"):
+            hw.Modem.ModemVolume = 3
+        elif Item == _("Very High"):
+            hw.Modem.ModemVolume = 4
         else:
             hw.Modem.ModemVolume = 0
             
@@ -150,12 +145,7 @@ class editmodemDialog(modemDialog):
                 self.xml.get_widget('baurateEntry').set_text(str(hw.Modem.BaudRate))
                 if hw.Modem.FlowControl:
                     self.xml.get_widget('flowControlEntry').set_text(hw.Modem.FlowControl)
-                print "Modem Volume: " + str(hw.Modem.ModemVolume) + str(type(hw.Modem.ModemVolume))
-                self.xml.get_widget('volumeCB').set_active(hw.Modem.ModemVolume != 0)
-                self.xml.get_widget('volumeMenu').set_sensitive(hw.Modem.ModemVolume != 0)
-
-                if hw.Modem.ModemVolume > 0:
-                    self.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume)-1)
+                self.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume))
 
                 self.xml.get_widget('toneDialingCB').set_active(hw.Modem.DialCommand == 'ATDT')
 
