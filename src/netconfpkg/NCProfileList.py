@@ -212,7 +212,7 @@ class ProfileList(ProfileList_base):
         filelist = os.listdir(SYSCONFPROFILEDIR+'/default')
         for file in filelist:
             try:
-                os.unlink(OLDSYSCONFDEVICEDIR+'/default/'+file)
+                os.unlink(SYSCONFDEVICEDIR+'/default/'+file)
             except:
                 pass
 
