@@ -1047,8 +1047,42 @@ class mainDialog:
         if buttons != 0:
             return
 
+        # remove hardware
         del hardwarelist[clist.selection[0]]
         hardwarelist.commit()
+
+        # remove all devices used this hardware
+        devicelist = getDeviceList()
+        profilelist = getProfileList()
+        dlist = []
+        for d in devicelist:
+            found = FALSE
+            if type == 'Modem':
+                if d.Dialup and d.Dialup.Inherits and dev == d.Dialup.Inherits:
+                    found = TRUE
+            elif type == 'ISDN' and d.Type == 'ISDN':
+                found = TRUE
+            elif type == 'Ethernet':
+                if d.Dialup and d.Dialup.EthDevice == dev:
+                    found = TRUE
+                elif d.Cipe and d.Cipe.TunnelDevice == dev:
+                    found = TRUE
+                elif d.Wireless and d.Device == dev:
+                    found = TRUE
+                elif d.Device == dev:
+                    found = TRUE
+            elif type == 'Token Ring' and d.Device == dev:
+                found = TRUE
+            if found: dlist.append(d)
+            
+        for i in dlist:
+            for prof in profilelist:
+                if i.DeviceId in prof.ActiveDevices:
+                    pos = prof.ActiveDevices.index(i.DeviceId)
+                    del prof.ActiveDevices[pos]
+            devicelist.remove(i)
+            
+        devicelist.commit()
         self.hydrate()
 
 
