@@ -1,6 +1,6 @@
-## Copyright (C) 2001, 2002 Red Hat, Inc.
+## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -193,10 +193,14 @@ class HardwareList(HardwareList_base):
                             
                 for selfkey in self.keydict.keys():
                     confkey = self.keydict[selfkey]
-                    if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                        hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                    if modules[hw.Card.ModuleName] and \
+                           modules[hw.Card.ModuleName]['options'].\
+                           has_key(confkey):
+                        hw.Card.__dict__[selfkey] = modules[\
+                            hw.Card.ModuleName]['options'][confkey]
                 hw.setChanged(true)
-                #generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
+                #generic_info_dialog(_("Found new Hardware\n%s"\
+                #"\nAssigned to: %s" % (hw.Description, hw.Name)))
 
     def updateFromSystem(self):
         modules = ConfModules()
@@ -223,7 +227,10 @@ class HardwareList(HardwareList_base):
                     if hw.Name == device:
                         if hw.Card and hw.Card.ModuleName != mod:
                             generic_error_dialog (\
-                                _("%s has an alias to module %s in modules.conf,\ninstead of currently loaded module %s!") % (hw.Name, hw.Card.ModuleName, mod))
+                                _("%s has an alias to module %s"
+                                  " in modules.conf,\ninstead of "
+                                  "currently loaded module %s!") % \
+                                (hw.Name, hw.Card.ModuleName, mod))
                         break
                 else:
                     i = self.addHardware(getDeviceType(device))
@@ -240,10 +247,16 @@ class HardwareList(HardwareList_base):
 
                     for selfkey in self.keydict.keys():
                         confkey = self.keydict[selfkey]
-                        if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                            hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                        if modules[hw.Card.ModuleName] and \
+                               modules[hw.Card.ModuleName]\
+                               ['options'].has_key(confkey):
+                            hw.Card.__dict__[selfkey] = modules[hw.Card.\
+                                                                ModuleName]\
+                                                                ['options']\
+                                                                [confkey]
                     hw.setChanged(true)
-                    #generic_info_dialog(_("Found new Hardware\n%s\nAssigned to: %s" % (hw.Description, hw.Name)))
+                    #generic_info_dialog(_("Found new Hardware\n%s"
+                    #"\nAssigned to: %s" % (hw.Description, hw.Name)))
 
         #
         # Read from kudzu
@@ -286,8 +299,13 @@ class HardwareList(HardwareList_base):
                             
                 for selfkey in self.keydict.keys():
                     confkey = self.keydict[selfkey]
-                    if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                        hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                    if modules[hw.Card.ModuleName] and \
+                           modules[hw.Card.ModuleName]\
+                           ['options'].has_key(confkey):
+                        hw.Card.__dict__[selfkey] = modules[hw.Card.\
+                                                            ModuleName]\
+                                                            ['options']\
+                                                            [confkey]
                 
 
     def load(self):
@@ -322,8 +340,10 @@ class HardwareList(HardwareList_base):
 
             for selfkey in self.keydict.keys():
                 confkey = self.keydict[selfkey]
-                if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                    hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                if modules[hw.Card.ModuleName] and \
+                       modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                    hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]\
+                                                ['options'][confkey]
                     
 
         isdncard = NCisdnhardware.ConfISDN()
@@ -412,7 +432,8 @@ class HardwareList(HardwareList_base):
                 # Better do it this way!
                 if modules[hw.Card.ModuleName].has_key('options'):
                     for (key, confkey) in self.keydict.items():
-                        if modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                        if modules[hw.Card.ModuleName]\
+                               ['options'].has_key(confkey):
                             del modules[hw.Card.ModuleName]['options'][confkey]
 
                 for (selfkey, confkey) in self.keydict.items():
@@ -424,7 +445,8 @@ class HardwareList(HardwareList_base):
                         dic = modules[hw.Card.ModuleName]
                         if not dic.has_key('options'):
                             dic['options'] = {}
-                        dic['options'][confkey] = str(hw.Card.__dict__[selfkey])
+                        dic['options'][confkey] = \
+                                                str(hw.Card.__dict__[selfkey])
                         modules[hw.Card.ModuleName] = dic
 
 
@@ -440,7 +462,8 @@ class HardwareList(HardwareList_base):
                 # Better do it this way!
                 if modules[hw.Card.ModuleName].has_key('options'):
                     for (key, confkey) in self.keydict.items():
-                        if modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                        if modules[hw.Card.ModuleName]\
+                               ['options'].has_key(confkey):
                             del modules[hw.Card.ModuleName]['options'][confkey]
 
                 for (selfkey, confkey) in self.keydict.items():
@@ -452,13 +475,15 @@ class HardwareList(HardwareList_base):
                         dic = modules[hw.Card.ModuleName]
                         if not dic.has_key('options'):
                             dic['options'] = {}
-                        dic['options'][confkey] = str(hw.Card.__dict__[selfkey])
+                        dic['options'][confkey] = \
+                                                str(hw.Card.__dict__[selfkey])
                         modules[hw.Card.ModuleName] = dic
 
 
             if hw.Type == MODEM and hw.Modem:
                 if not wvdial:
-                    wvdial = ConfSMB('/etc/wvdial.conf', create_if_missing = true)
+                    wvdial = ConfSMB('/etc/wvdial.conf',
+                                     create_if_missing = true)
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
                 wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
