@@ -42,7 +42,6 @@ import os.path
 import string
 from netconfpkg import *
 from rhpl.genClass import *
-from rhpl.log import log
 from version import PRG_VERSION
 from version import PRG_NAME
 
@@ -104,16 +103,19 @@ def Usage():
             "System: http://bugzilla.redhat.com/") + "\n\n")
     sys.stderr.write( _("Usage: %s") % (sys.argv[0]) + '\n')
     sys.stderr.write( "\t-p, --profile <profile> [--activate, -a]: %s"\
-          % _("switch / activate profile") + '\n')
+                      % _("switch / activate profile") + '\n')
     sys.stderr.write( "\t-h, --hardwarelist : %s"\
-          % _("export / import hardware list") + '\n')
+                      % _("export / import hardware list") + '\n')
+    sys.stderr.write( "\t-s, --ipseclist : %s"\
+                      % _("export / import IPsec list") + '\n')
     sys.stderr.write( "\t-d, --devicelist   : %s"\
-          % _("export / import device list (default)") + '\n')
+                      % _("export / import device list (default)") + '\n')
     sys.stderr.write( "\t-o, --profilelist  : %s"\
-          % _("export / import profile list") + '\n')
+                      % _("export / import profile list") + '\n')
     sys.stderr.write( "\t-r, --root=<root>  : %s"\
-          % _("set the root directory") + '\n')
-    sys.stderr.write( "\t-e, --export       : %s" % _("export list (default)") + '\n')
+                      % _("set the root directory") + '\n')
+    sys.stderr.write( "\t-e, --export       : %s" \
+                      % _("export list (default)") + '\n')
     sys.stderr.write( "\t-i, --import       : %s" % _("import list") + '\n')
     sys.stderr.write( "\t-c, --clear        : %s" % \
           _("clear existing list prior of importing") + '\n')
@@ -121,16 +123,18 @@ def Usage():
           _("import from file") + '\n')
     sys.stderr.write('\n')
     
-if __name__ == '__main__':
+def main(cmdline):
+    import os.path
+    from netconfpkg import NC_functions
+    from netconfpkg.NC_functions import log
+    
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
-    from netconfpkg import NC_functions
 
     progname = os.path.basename(sys.argv[0])
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     
-    logfilename = "/var/log/system-config-network"
     do_activate = 0
     switch_profile = 0
     profile = None
@@ -147,7 +151,7 @@ if __name__ == '__main__':
     devlists = []
     
     try:
-        opts, args = getopt.getopt(cmdline, "ap:?r:dhvtief:co",
+        opts, args = getopt.getopt(cmdline, "asp:?r:dhvtief:co",
                                    [
                                     "activate",
                                     "profile=",
@@ -162,6 +166,7 @@ if __name__ == '__main__':
                                     "file=",
                                     "debug",
                                     "hardwarelist",
+                                    "ipseclist",
                                     "profilelist"])
         for opt, val in opts:
             if opt == '-d' or opt == '--devicelist':
@@ -172,6 +177,10 @@ if __name__ == '__main__':
                 devlists.append(getHardwareList())
                 continue
             
+            if opt == '-s' or opt == '--ipseclist':
+                devlists.append(getIPsecList())
+                continue
+
             if opt == '-o' or opt == '--profilelist':
                 devlists.append(getProfileList())
                 continue
@@ -213,7 +222,7 @@ if __name__ == '__main__':
                 
             if opt == '-?' or opt == '--help':
                 Usage()
-                sys.exit(0)
+                return(0)
 
             if opt == '-v' or opt == '--verbose':
                 NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
@@ -229,39 +238,26 @@ if __name__ == '__main__':
       
     except (getopt.error, BadUsage):
         Usage()
-        sys.exit(1)
+        return(1)
 
     try:
 
         if not NC_functions.getDebugLevel():
-            import os
-
-            def log_default_handler (string):
-                import time
-                log.logFile.write ("%s: %s\n" % (time.ctime(), string))
-
-            log.handler = log_default_handler
-
-            if os.path.isfile(logfilename):
-                os.chmod(logfilename, 0600)
-
-            fd = os.open(logfilename,
-                            os.O_APPEND|os.O_WRONLY|os.O_CREAT,
-                            0600)
-
-            lfile = os.fdopen(fd, "a")        
-            log.open(lfile)
+            log.handler = log.syslog_handler
+            log.open()
+        else:
+            log.handler = log.file_handler
+            log.open(sys.stderr)
             
         if chroot:
             prepareRoot(chroot)
 
-        if os.getuid() == 0 or chroot:
-            NCProfileList.updateNetworkScripts()
-            NCDeviceList.updateNetworkScripts()
+        NC_functions.updateNetworkScripts()
 
             
         if not len(devlists):
             devlists = [getDeviceList(), getHardwareList(),
+                        getIPsecList(),
                         getProfileList()]
             
         if clear:
@@ -274,12 +270,13 @@ if __name__ == '__main__':
                 if len(devstr):
                     # remove the last \n
                     print devstr[:-1]                    
-            sys.exit(0)
+            return(0)
 
         elif mode == IMPORT:
             devlistsdict = {
                 "HardwareList" : getHardwareList(),
                 "DeviceList" : getDeviceList(),
+                "IPsecList" : getIPsecList(),
                 "ProfileList" : getProfileList() }
             
             if filename:
@@ -316,10 +313,10 @@ if __name__ == '__main__':
                 log.log(1, devlist)
                 devlist.save()
             
-            sys.exit(0)
+            return(0)
 
         elif test:
-            sys.exit(0)
+            return(0)
 
         elif mode == SWITCH:
             ret = None
@@ -356,14 +353,17 @@ if __name__ == '__main__':
                             if ret:
                                 print msg
                         
-                sys.exit(0)
+                return(0)
 
-        sys.exit(0)
+        return(0)
     except SystemExit, code:
         #print "Exception %s: %s" % (str(SystemExit), str(code))
-        sys.exit(code)
+        return(code)
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
+
+
+if __name__ == '__main__':
+    sys.exit(main(cmdline))
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.18 $"
