@@ -1395,7 +1395,7 @@ class mainDialog:
             dialog = isdnHardwareDialog(hw)
 
         if not dialog:
-            gneric_error_dialog (_("Sorry, there is nothing to be edited,\n"
+            generic_error_dialog (_("Sorry, there is nothing to be edited,\n"
                                    "or this type cannot be edited yet."),
                                   self.dialog)
             return
