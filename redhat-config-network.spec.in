@@ -7,10 +7,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, usermode , alchemist
-%ifnarch s390 s390x
-Requires: kudzu
-%endif
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu
 BuildRequires: alchemist, alchemist-devel, python, libglade-devel
 Obsoletes: isdn-config internet-config netcfg
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -52,7 +49,6 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Sep 12 2001 Than Ngo <than@redhat.com> 0.9.1-1
 - add CTC and IUCV support for s390/s390x
 - disable Dialup on s390/s390x
-- don't requires kudzu on s390/s390x
 
 * Thu Sep  5 2001 Trond Eivind Glomsrød <teg@redhat.com> 0.9-1
 - Add Russian
