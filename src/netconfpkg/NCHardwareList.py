@@ -263,8 +263,10 @@ class HardwareList(HardwareList_base):
 
         for hw in self.data:
             if hw.Type == ETHERNET:
-                modules[hw.Name] = {}
-                modules[hw.Name]['alias'] = hw.Card.ModuleName
+                dic = modules[hw.Name]
+                dic['alias'] = hw.Card.ModuleName
+                modules[hw.Name] = dic
+                
 
                 # No, no, no... only delete known options!!!
                 #modules[hw.Card.ModuleName] = {}
@@ -284,9 +286,11 @@ class HardwareList(HardwareList_base):
                            and (hw.Card.IRQ == _('Unknown') \
                                 or (hw.Card.IRQ == 'Unknown')):
                             continue
-                        if not modules[hw.Card.ModuleName].has_key('options'):
-                            modules[hw.Card.ModuleName]['options'] = {}
-                        modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
+                        dic = modules[hw.Card.ModuleName]
+                        if not dic.has_key('options'):
+                            dic['options'] = {}
+                        dic['options'][confkey] = str(hw.Card.__dict__[selfkey])
+                        modules[hw.Card.ModuleName] = dic
 
 
             if hw.Type == MODEM and hw.Modem:
