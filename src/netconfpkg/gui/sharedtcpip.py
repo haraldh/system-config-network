@@ -46,6 +46,7 @@ def dhcp_init (xml, device):
         "on_ipAutomaticRadio_toggled" : (on_ipBootProto_toggled, xml),
         "on_ipStaticRadio_toggled" : (on_ipBootProto_toggled, xml),
         })
+    on_ipBootProto_toggled(xml.get_widget("ipAutomaticRadio"), xml)
 
 def dhcp_hydrate (xml, device):
     if not device.DeviceId:
