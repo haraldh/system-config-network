@@ -82,7 +82,6 @@ class basicDialog:
 
         notebook = self.xml.get_widget("basicNotebook")
 
-        self.xml.get_widget('deviceTypeComboBox').set_popdown_strings(['Ethernet', 'Modem', 'ISDN', 'xDSL'])
         self.hydrate()
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
@@ -97,12 +96,10 @@ class basicDialog:
         self.dialog.set_close(TRUE)
 
     def hydrate(self):
+        self.xml.get_widget('deviceTypeEntry').set_text(str(self.device.Type))
+        
         if self.device.DeviceId:
             self.xml.get_widget('deviceNameEntry').set_text(self.device.DeviceId)
-            if self.device.Type and self.device.Type != "" \
-               and self.device.Type != "Unknown":
-                self.xml.get_widget('deviceTypeEntry').set_text(str(self.device.Type))
-                self.xml.get_widget("deviceTypeComboBox").set_sensitive(FALSE)
                 
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser)
@@ -186,6 +183,8 @@ class basicDialog:
     def on_configureButton_clicked(self, button):
         deviceType = self.xml.get_widget("deviceTypeEntry").get_text()
         self.device.Type = deviceType
+        self.device.createDialup()
+        
         if deviceType == "Ethernet":
             cfg = ethernetConfigDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
@@ -193,8 +192,7 @@ class basicDialog:
             self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "ISDN":
             self.device.Type = 'ISDN'
-            if not self.device.Dialup:
-                self.device.createDialup()
+            if self.device.Dialup:
                 self.device.Dialup.createCompression()
             cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
@@ -202,8 +200,7 @@ class basicDialog:
             self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "Modem":
             self.device.Type = 'Modem'
-            if not self.device.Dialup:
-                self.device.createDialup()
+            if self.device.Dialup:
                 self.device.Dialup.createCompression()
             cfg = ModemDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
@@ -211,10 +208,8 @@ class basicDialog:
             self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "xDSL":
             self.device.Type = 'xDSL'
-            if not self.device.Dialup:
-                self.device.createDialup()
+            if self.device.Dialup:
                 self.device.Dialup.createCompression()
-                self.device.Dialup.SyncPPP = false
             cfg = dslConfigDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
@@ -234,8 +229,8 @@ class basicDialog:
     def on_deviceNameEntry_changed(self, entry):
         deviceName = string.strip(entry.get_text())
         self.device.DeviceId = deviceName
-        self.xml.get_widget("deviceTypeComboBox").set_sensitive(len(deviceName) > 0)
-        self.xml.get_widget("configureButton").set_sensitive(len(deviceName) > 0)
+        #self.xml.get_widget("deviceTypeComboBox").set_sensitive(len(deviceName) > 0)
+        #self.xml.get_widget("configureButton").set_sensitive(len(deviceName) > 0)
         self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0 and self.device.Device != None)
 
     def on_ipSettingCB_toggled(self, check):
