@@ -177,7 +177,7 @@
 	<items>Managed
 Ad-Hoc
 </items>
-	<initial_choice>0</initial_choice>
+	<initial_choice>1</initial_choice>
 	<child>
 	  <left_attach>1</left_attach>
 	  <right_attach>2</right_attach>
@@ -703,7 +703,7 @@ Ad-Hoc
   <class>GtkWindow</class>
   <name>basicWindow</name>
   <border_width>5</border_width>
-  <title>Basic Setup</title>
+  <title>Add / Edit Device</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
   <modal>False</modal>
@@ -2044,7 +2044,7 @@ DIALUP
 
 	    <widget>
 	      <class>GtkEntry</class>
-	      <name>entry1</name>
+	      <name>HardwareEntry</name>
 	      <can_focus>True</can_focus>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
@@ -2071,7 +2071,7 @@ DIALUP
 
 	    <widget>
 	      <class>GtkButton</class>
-	      <name>button11</name>
+	      <name>configureButton</name>
 	      <can_focus>True</can_focus>
 	      <label>Configure...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
@@ -2125,7 +2125,7 @@ DIALUP
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
-		<default_focus_target>entry12</default_focus_target>
+		<default_focus_target>msnEntry</default_focus_target>
 		<child>
 		  <padding>0</padding>
 		  <expand>False</expand>
@@ -2135,8 +2135,7 @@ DIALUP
 
 	      <widget>
 		<class>GtkEntry</class>
-		<name>entry12</name>
-		<width>100</width>
+		<name>msnEntry</name>
 		<can_focus>True</can_focus>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
@@ -2144,7 +2143,7 @@ DIALUP
 		<text></text>
 		<child>
 		  <padding>0</padding>
-		  <expand>True</expand>
+		  <expand>False</expand>
 		  <fill>True</fill>
 		</child>
 	      </widget>
@@ -2152,7 +2151,7 @@ DIALUP
 
 	    <widget>
 	      <class>GtkCheckButton</class>
-	      <name>checkbutton9</name>
+	      <name>dialingRuleCB</name>
 	      <can_focus>True</can_focus>
 	      <label>_Use Dialing rule</label>
 	      <active>False</active>
@@ -2182,7 +2181,7 @@ DIALUP
 		<spacing>5</spacing>
 		<child>
 		  <padding>0</padding>
-		  <expand>True</expand>
+		  <expand>False</expand>
 		  <fill>True</fill>
 		</child>
 
@@ -2205,7 +2204,7 @@ DIALUP
 
 		<widget>
 		  <class>GtkEntry</class>
-		  <name>entry13</name>
+		  <name>prefixEntry</name>
 		  <width>80</width>
 		  <sensitive>False</sensitive>
 		  <can_focus>True</can_focus>
@@ -2228,7 +2227,7 @@ DIALUP
 		<spacing>5</spacing>
 		<child>
 		  <padding>0</padding>
-		  <expand>True</expand>
+		  <expand>False</expand>
 		  <fill>True</fill>
 		</child>
 
@@ -2250,23 +2249,14 @@ DIALUP
 		</widget>
 
 		<widget>
-		  <class>GtkSpinButton</class>
-		  <name>spinbutton2</name>
-		  <width>20</width>
-		  <sensitive>False</sensitive>
+		  <class>GtkEntry</class>
+		  <name>areaCodeEntry</name>
+		  <width>90</width>
 		  <can_focus>True</can_focus>
-		  <climb_rate>1</climb_rate>
-		  <digits>0</digits>
-		  <numeric>False</numeric>
-		  <update_policy>GTK_UPDATE_ALWAYS</update_policy>
-		  <snap>False</snap>
-		  <wrap>False</wrap>
-		  <value>1</value>
-		  <lower>0</lower>
-		  <upper>100</upper>
-		  <step>1</step>
-		  <page>10</page>
-		  <page_size>10</page_size>
+		  <editable>True</editable>
+		  <text_visible>True</text_visible>
+		  <text_max_length>0</text_max_length>
+		  <text></text>
 		  <child>
 		    <padding>0</padding>
 		    <expand>False</expand>
@@ -2305,7 +2295,7 @@ DIALUP
 
 		<widget>
 		  <class>GtkEntry</class>
-		  <name>entry14</name>
+		  <name>phoneEntry</name>
 		  <can_focus>True</can_focus>
 		  <editable>True</editable>
 		  <text_visible>True</text_visible>
@@ -2314,7 +2304,7 @@ DIALUP
 		  <child>
 		    <padding>0</padding>
 		    <expand>False</expand>
-		    <fill>False</fill>
+		    <fill>True</fill>
 		  </child>
 		</widget>
 	      </widget>
@@ -2339,13 +2329,71 @@ DIALUP
 
 	    <widget>
 	      <class>GtkCombo</class>
-	      <name>combo1</name>
+	      <name>countryCodeCombo</name>
 	      <value_in_list>False</value_in_list>
 	      <ok_if_empty>True</ok_if_empty>
 	      <case_sensitive>False</case_sensitive>
 	      <use_arrows>True</use_arrows>
 	      <use_arrows_always>False</use_arrows_always>
-	      <items></items>
+	      <items>Afghanistan (93)
+Albania (355)
+Algeria (213)
+American  Samoa (684)
+Andorra (376)
+Argentina (54)
+Australia (61)
+Austria (43)
+Belgium (32)
+Bosnia and Herzegonia (387)
+Brazil (55)
+Britisch Virgin Islands (1)
+Bulgaria (359)
+Canada (1)
+Central African Republic (236)
+Chile (56)
+China (86)
+Colombia (47)
+Croatia (385)
+Cuba (53)
+Czech Republic (420)
+Denmark (45)
+Finnland (358)
+France (33)
+Germany (49)
+Greece (30)
+Hong Kong (852)
+Hungary (36)
+Iceland(354)
+India (91)
+Indonesia (62)
+Ireland (353)
+Israel (972)
+Italy (39)
+Japan (81)
+Korea North (850)
+Korea Republic (82)
+Malaysia (60)
+Luxemburg (352)
+Mexico (52)
+Netherlands (31)
+New Zealand (64)
+Norway (47)
+Philippines (63)
+Romania (30)
+Singapore (65)
+Slovakia(421)
+Spain (34)
+Sweden (46)
+Switzerland (41)
+Taiwan (886)
+Thailand (66)
+Turkey (90)
+Ukraine (380)
+United Kingdom (44)
+United States of Amerika (1)
+Vietnam (84)
+Yugoslavia (381)
+</items>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
@@ -2355,12 +2403,12 @@ DIALUP
 	      <widget>
 		<class>GtkEntry</class>
 		<child_name>GtkCombo:entry</child_name>
-		<name>combo-entry1</name>
+		<name>countryCodeEntry</name>
 		<can_focus>True</can_focus>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
-		<text></text>
+		<text>Germany (49)</text>
 	      </widget>
 	    </widget>
 	  </widget>
@@ -2387,7 +2435,7 @@ DIALUP
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
-	    <default_focus_target>optionmenu1</default_focus_target>
+	    <default_focus_target>authMenu</default_focus_target>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -2397,7 +2445,7 @@ DIALUP
 
 	  <widget>
 	    <class>GtkOptionMenu</class>
-	    <name>optionmenu1</name>
+	    <name>authMenu</name>
 	    <can_focus>True</can_focus>
 	    <items>chap
 pap
@@ -2447,7 +2495,7 @@ none
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>entry5</default_focus_target>
+	  <default_focus_target>dialupProviderNameEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -2474,7 +2522,7 @@ none
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>entry6</default_focus_target>
+	  <default_focus_target>dialupLoginNameEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -2501,7 +2549,7 @@ none
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>entry7</default_focus_target>
+	  <default_focus_target>dialupPasswordEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -2520,7 +2568,7 @@ none
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>entry5</name>
+	  <name>dialupProviderNameEntry</name>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -2544,7 +2592,7 @@ none
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>entry6</name>
+	  <name>dialupLoginNameEntry</name>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -2568,7 +2616,7 @@ none
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>entry7</name>
+	  <name>dialupPasswordEntry</name>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>False</text_visible>
@@ -2613,9 +2661,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton2</name>
+	  <name>HeaderCompressionCB</name>
 	  <can_focus>True</can_focus>
-	  <label>_Turn on VJ TCP/IP Header Compression</label>
+	  <label>Turn on VJ TCP/IP Header Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -2627,9 +2675,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton3</name>
+	  <name>connectionCompressionCB</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on V_J Connection-ID Compression</label>
+	  <label>Turn on VJ Connection-ID Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -2641,9 +2689,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton4</name>
+	  <name>acCompressionCB</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on Adre_ss/Control Compression</label>
+	  <label>Turn on Adress/Control Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -2655,9 +2703,9 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton5</name>
+	  <name>pcCompressionCB</name>
 	  <can_focus>True</can_focus>
-	  <label>Turn on Protocol _Field Compresion</label>
+	  <label>Turn on Protocol Field Compresion</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -2669,7 +2717,7 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton6</name>
+	  <name>bsdCompressionCB</name>
 	  <can_focus>True</can_focus>
 	  <label>Turn on BSD Compression</label>
 	  <active>False</active>
@@ -2683,7 +2731,7 @@ none
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton7</name>
+	  <name>cppCompressionCB</name>
 	  <can_focus>True</can_focus>
 	  <label>Turn on CCP Compression Control Protocol</label>
 	  <active>False</active>
@@ -2747,7 +2795,7 @@ none
 
 	<widget>
 	  <class>GtkEntry</class>
-	  <name>entry15</name>
+	  <name>pppOptionEntry</name>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
@@ -2793,7 +2841,7 @@ none
 
 	  <widget>
 	    <class>GtkCTree</class>
-	    <name>ctree3</name>
+	    <name>pppOptionList</name>
 	    <sensitive>False</sensitive>
 	    <can_focus>True</can_focus>
 	    <columns>1</columns>
@@ -2838,27 +2886,40 @@ none
 	  </child>
 
 	  <widget>
-	    <class>GtkButton</class>
-	    <name>button13</name>
-	    <sensitive>False</sensitive>
-	    <can_focus>True</can_focus>
-	    <label>Delete</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <class>GtkVButtonBox</class>
+	    <name>vbuttonbox4</name>
+	    <layout_style>GTK_BUTTONBOX_DEFAULT_STYLE</layout_style>
+	    <spacing>10</spacing>
+	    <child_min_width>85</child_min_width>
+	    <child_min_height>27</child_min_height>
+	    <child_ipad_x>7</child_ipad_x>
+	    <child_ipad_y>0</child_ipad_y>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>False</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>pppOptionDeleteButton</name>
+	      <can_default>True</can_default>
+	      <can_focus>True</can_focus>
+	      <label>Delete</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	    </widget>
 	  </widget>
 	</widget>
 
 	<widget>
-	  <class>GtkButton</class>
-	  <name>button12</name>
-	  <sensitive>False</sensitive>
-	  <can_focus>True</can_focus>
-	  <label>Add...</label>
-	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <class>GtkHButtonBox</class>
+	  <name>hbuttonbox23</name>
+	  <layout_style>GTK_BUTTONBOX_DEFAULT_STYLE</layout_style>
+	  <spacing>30</spacing>
+	  <child_min_width>85</child_min_width>
+	  <child_min_height>27</child_min_height>
+	  <child_ipad_x>7</child_ipad_x>
+	  <child_ipad_y>0</child_ipad_y>
 	  <child>
 	    <left_attach>2</left_attach>
 	    <right_attach>3</right_attach>
@@ -2871,8 +2932,17 @@ none
 	    <xshrink>False</xshrink>
 	    <yshrink>False</yshrink>
 	    <xfill>True</xfill>
-	    <yfill>False</yfill>
+	    <yfill>True</yfill>
 	  </child>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>pppOptionAddButton</name>
+	    <can_default>True</can_default>
+	    <can_focus>True</can_focus>
+	    <label>Add...</label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	  </widget>
 	</widget>
       </widget>
 
@@ -2917,7 +2987,7 @@ none
 
       <widget>
 	<class>GtkButton</class>
-	<name>button8</name>
+	<name>dialupOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
@@ -2926,7 +2996,7 @@ none
 
       <widget>
 	<class>GtkButton</class>
-	<name>button9</name>
+	<name>dialupCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
@@ -3000,39 +3070,12 @@ none
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
-	  <default_focus_target>optionmenu3</default_focus_target>
+	  <default_focus_target>encapModeMenu</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
 	    <top_attach>1</top_attach>
 	    <bottom_attach>2</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
-	  </child>
-	</widget>
-
-	<widget>
-	  <class>GtkLabel</class>
-	  <name>label116</name>
-	  <label>Han_gup Timeout:</label>
-	  <justify>GTK_JUSTIFY_CENTER</justify>
-	  <wrap>False</wrap>
-	  <xalign>0</xalign>
-	  <yalign>0.5</yalign>
-	  <xpad>0</xpad>
-	  <ypad>0</ypad>
-	  <default_focus_target>spinbutton4</default_focus_target>
-	  <child>
-	    <left_attach>0</left_attach>
-	    <right_attach>1</right_attach>
-	    <top_attach>2</top_attach>
-	    <bottom_attach>3</bottom_attach>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
 	    <xexpand>False</xexpand>
@@ -3046,7 +3089,7 @@ none
 
 	<widget>
 	  <class>GtkOptionMenu</class>
-	  <name>optionmenu3</name>
+	  <name>encapModeMenu</name>
 	  <can_focus>True</can_focus>
 	  <items>raw IP
 sync PPP
@@ -3057,38 +3100,6 @@ sync PPP
 	    <right_attach>2</right_attach>
 	    <top_attach>1</top_attach>
 	    <bottom_attach>2</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
-	  </child>
-	</widget>
-
-	<widget>
-	  <class>GtkSpinButton</class>
-	  <name>spinbutton4</name>
-	  <can_focus>True</can_focus>
-	  <climb_rate>1</climb_rate>
-	  <digits>0</digits>
-	  <numeric>False</numeric>
-	  <update_policy>GTK_UPDATE_ALWAYS</update_policy>
-	  <snap>False</snap>
-	  <wrap>False</wrap>
-	  <value>600</value>
-	  <lower>0</lower>
-	  <upper>10000</upper>
-	  <step>1</step>
-	  <page>10</page>
-	  <page_size>10</page_size>
-	  <child>
-	    <left_attach>1</left_attach>
-	    <right_attach>2</right_attach>
-	    <top_attach>2</top_attach>
-	    <bottom_attach>3</bottom_attach>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
 	    <xexpand>False</xexpand>
@@ -3128,12 +3139,16 @@ sync PPP
 
 	<widget>
 	  <class>GtkOptionMenu</class>
-	  <name>optionmenu7</name>
+	  <name>isdnDeviceMenu</name>
 	  <can_focus>True</can_focus>
 	  <items>ippp0
 ippp1
+ippp2
+ippp3
 isdn0
 isdn1
+isdn2
+isdn3
 </items>
 	  <initial_choice>0</initial_choice>
 	  <child>
@@ -3149,6 +3164,65 @@ isdn1
 	    <yshrink>False</yshrink>
 	    <xfill>True</xfill>
 	    <yfill>False</yfill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label116</name>
+	  <label>Han_gup Timeout:</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	  <default_focus_target>hangupTimeoutSpinButton</default_focus_target>
+	  <child>
+	    <left_attach>0</left_attach>
+	    <right_attach>1</right_attach>
+	    <top_attach>2</top_attach>
+	    <bottom_attach>3</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>True</yfill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkSpinButton</class>
+	  <name>hangupTimeoutSpinButton</name>
+	  <can_focus>True</can_focus>
+	  <climb_rate>1</climb_rate>
+	  <digits>0</digits>
+	  <numeric>False</numeric>
+	  <update_policy>GTK_UPDATE_ALWAYS</update_policy>
+	  <snap>False</snap>
+	  <wrap>False</wrap>
+	  <value>600</value>
+	  <lower>0</lower>
+	  <upper>10000</upper>
+	  <step>1</step>
+	  <page>10</page>
+	  <page_size>10</page_size>
+	  <child>
+	    <left_attach>1</left_attach>
+	    <right_attach>2</right_attach>
+	    <top_attach>2</top_attach>
+	    <bottom_attach>3</bottom_attach>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <xexpand>False</xexpand>
+	    <yexpand>False</yexpand>
+	    <xshrink>False</xshrink>
+	    <yshrink>False</yshrink>
+	    <xfill>True</xfill>
+	    <yfill>True</yfill>
 	  </child>
 	</widget>
       </widget>
@@ -3194,7 +3268,7 @@ isdn1
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
-	    <default_focus_target>combo-entry2</default_focus_target>
+	    <default_focus_target>isdnCardComboBox</default_focus_target>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -3210,7 +3284,54 @@ isdn1
 	    <case_sensitive>False</case_sensitive>
 	    <use_arrows>True</use_arrows>
 	    <use_arrows_always>False</use_arrows_always>
-	    <items></items>
+	    <items>ACER P10
+ASUS COM ISDNLink ISA PnP
+ASUS COM ISDNLink PCI
+AVM A1 (Fritz)
+AVM Fritz Card PCMCIA
+AVM PCI (Fritz!PCI)
+AVM PnP
+Compaq ISDN S0 ISA
+Creatix Teles PnP
+Dr. Neuhaus Niccy PnP
+Dr. Neuhaus Niccy PCI
+Dynalink 128PH PCI
+Eicon.Diehl Diva ISA PnP
+Eicon.Diehl Diva 20PRO PCI
+Eicon.Diehl Diva 20 PCI
+Eicon.Diehl Diva 20PRO_U PCI
+Eicon.Diehl Diva 20_U PCI
+ELSA PCC/PCF
+ELSA Quickstep 1000
+ELSA Quickstep 1000 PCI
+ELSA Quickstep 3000 PCI
+ELSA PCMCIA MicroLink cards
+Gazel cards ISA
+Gazel cards PCI
+HFC-2BS0 based cards ISA
+HFC-2BS0 based cards PCI
+HST Saphir
+ITK ix1-micro Rev.2
+MIC card
+NETjet PCI
+Sedlbauer PC 104
+Sedlbauer Speed PCI
+Sedlbauer Speed Card
+Sedlbauer Speed Fax+
+Sedlbauer Speed fax+ PCI
+Sedlbauer Speed Star PCMCIA Card
+Siemens I-Surf 1.0
+Telekom A4T
+Teles 8.0
+Teles 16.0
+Teles 16.3
+Teles 16.3c PnP
+Teles PCI
+Teles PnP
+Teles S0Box
+USR Sportster intern
+W6692 based PCI cards
+</items>
 	    <child>
 	      <padding>0</padding>
 	      <expand>True</expand>
@@ -3220,12 +3341,12 @@ isdn1
 	    <widget>
 	      <class>GtkEntry</class>
 	      <child_name>GtkCombo:entry</child_name>
-	      <name>combo-entry2</name>
+	      <name>isdnCardComboBox</name>
 	      <can_focus>True</can_focus>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
-	      <text></text>
+	      <text>AVM PCI (Fritz!PCI)</text>
 	    </widget>
 	  </widget>
 	</widget>
@@ -3243,7 +3364,7 @@ isdn1
 
 	  <widget>
 	    <class>GtkFrame</class>
-	    <name>frame9</name>
+	    <name>resourceFrame</name>
 	    <sensitive>False</sensitive>
 	    <label>Resource</label>
 	    <label_xalign>0</label_xalign>
@@ -3274,7 +3395,7 @@ isdn1
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
-		<default_focus_target>spinbutton6</default_focus_target>
+		<default_focus_target>irqSpinButton</default_focus_target>
 		<child>
 		  <left_attach>0</left_attach>
 		  <right_attach>1</right_attach>
@@ -3301,7 +3422,7 @@ isdn1
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
-		<default_focus_target>entry16</default_focus_target>
+		<default_focus_target>memEntry</default_focus_target>
 		<child>
 		  <left_attach>0</left_attach>
 		  <right_attach>1</right_attach>
@@ -3328,7 +3449,7 @@ isdn1
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
-		<default_focus_target>entry17</default_focus_target>
+		<default_focus_target>ioEntry</default_focus_target>
 		<child>
 		  <left_attach>0</left_attach>
 		  <right_attach>1</right_attach>
@@ -3355,7 +3476,7 @@ isdn1
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
-		<default_focus_target>entry18</default_focus_target>
+		<default_focus_target>io1Entry</default_focus_target>
 		<child>
 		  <left_attach>0</left_attach>
 		  <right_attach>1</right_attach>
@@ -3382,7 +3503,7 @@ isdn1
 		<yalign>0.5</yalign>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
-		<default_focus_target>entry19</default_focus_target>
+		<default_focus_target>io2Entry</default_focus_target>
 		<child>
 		  <left_attach>0</left_attach>
 		  <right_attach>1</right_attach>
@@ -3401,7 +3522,7 @@ isdn1
 
 	      <widget>
 		<class>GtkSpinButton</class>
-		<name>spinbutton6</name>
+		<name>irqSpinButton</name>
 		<can_focus>True</can_focus>
 		<climb_rate>1</climb_rate>
 		<digits>0</digits>
@@ -3409,9 +3530,9 @@ isdn1
 		<update_policy>GTK_UPDATE_ALWAYS</update_policy>
 		<snap>False</snap>
 		<wrap>False</wrap>
-		<value>1</value>
-		<lower>0</lower>
-		<upper>100</upper>
+		<value>5</value>
+		<lower>3</lower>
+		<upper>15</upper>
 		<step>1</step>
 		<page>10</page>
 		<page_size>10</page_size>
@@ -3433,7 +3554,7 @@ isdn1
 
 	      <widget>
 		<class>GtkEntry</class>
-		<name>entry16</name>
+		<name>memEntry</name>
 		<can_focus>True</can_focus>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
@@ -3457,7 +3578,7 @@ isdn1
 
 	      <widget>
 		<class>GtkEntry</class>
-		<name>entry17</name>
+		<name>ioEntry</name>
 		<can_focus>True</can_focus>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
@@ -3481,7 +3602,7 @@ isdn1
 
 	      <widget>
 		<class>GtkEntry</class>
-		<name>entry18</name>
+		<name>io1Entry</name>
 		<can_focus>True</can_focus>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
@@ -3505,7 +3626,7 @@ isdn1
 
 	      <widget>
 		<class>GtkEntry</class>
-		<name>entry19</name>
+		<name>io2Entry</name>
 		<can_focus>True</can_focus>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
@@ -3531,7 +3652,7 @@ isdn1
 
 	  <widget>
 	    <class>GtkFrame</class>
-	    <name>frame10</name>
+	    <name>channelProtocolFrame</name>
 	    <label>D Channel Protocol</label>
 	    <label_xalign>0</label_xalign>
 	    <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
@@ -3550,7 +3671,7 @@ isdn1
 
 	      <widget>
 		<class>GtkRadioButton</class>
-		<name>radiobutton1</name>
+		<name>euroIsdnButton</name>
 		<can_focus>True</can_focus>
 		<label>Eu_ro ISDN (EDSS1)</label>
 		<active>False</active>
@@ -3564,7 +3685,7 @@ isdn1
 
 	      <widget>
 		<class>GtkRadioButton</class>
-		<name>radiobutton2</name>
+		<name>1tr6Button</name>
 		<can_focus>True</can_focus>
 		<label>1_TR6</label>
 		<active>False</active>
@@ -3602,7 +3723,7 @@ isdn1
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton10</name>
+	  <name>channelBundlingCB</name>
 	  <can_focus>True</can_focus>
 	  <label>Use _Channel Bundling</label>
 	  <active>False</active>
@@ -3616,7 +3737,7 @@ isdn1
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton11</name>
+	  <name>callbackCB</name>
 	  <can_focus>True</can_focus>
 	  <label>Use Call_back</label>
 	  <active>False</active>
@@ -3630,9 +3751,9 @@ isdn1
 
 	<widget>
 	  <class>GtkFrame</class>
-	  <name>frame11</name>
+	  <name>callbackFrame</name>
 	  <sensitive>False</sensitive>
-	  <label>Callback</label>
+	  <label>Callback setting</label>
 	  <label_xalign>0</label_xalign>
 	  <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
 	  <child>
@@ -3679,7 +3800,7 @@ isdn1
 
 	    <widget>
 	      <class>GtkEntry</class>
-	      <name>entry20</name>
+	      <name>dialinNumberEntry</name>
 	      <can_focus>True</can_focus>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
@@ -3749,7 +3870,7 @@ isdn1
 
 	      <widget>
 		<class>GtkSpinButton</class>
-		<name>spinbutton7</name>
+		<name>callbackDelaySpinButton</name>
 		<can_focus>True</can_focus>
 		<climb_rate>1</climb_rate>
 		<digits>0</digits>
@@ -3773,7 +3894,7 @@ isdn1
 
 	    <widget>
 	      <class>GtkCheckButton</class>
-	      <name>checkbutton12</name>
+	      <name>allowDialinNumberCB</name>
 	      <can_focus>True</can_focus>
 	      <label>Allow only above Dialin Number</label>
 	      <active>False</active>
@@ -3796,7 +3917,7 @@ isdn1
 
 	    <widget>
 	      <class>GtkCheckButton</class>
-	      <name>checkbutton13</name>
+	      <name>cbcpCB</name>
 	      <can_focus>True</can_focus>
 	      <label>Use Callback Control Protocol (CBCP)</label>
 	      <active>False</active>
@@ -3821,7 +3942,7 @@ isdn1
 
 	<widget>
 	  <class>GtkCheckButton</class>
-	  <name>checkbutton14</name>
+	  <name>dialinServerCB</name>
 	  <can_focus>True</can_focus>
 	  <label>Configure as Dialin Server</label>
 	  <active>False</active>
@@ -3875,7 +3996,7 @@ isdn1
 
       <widget>
 	<class>GtkButton</class>
-	<name>button14</name>
+	<name>isdnOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
@@ -3884,7 +4005,7 @@ isdn1
 
       <widget>
 	<class>GtkButton</class>
-	<name>button15</name>
+	<name>isdnCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
@@ -3893,7 +4014,7 @@ isdn1
 
       <widget>
 	<class>GtkButton</class>
-	<name>button16</name>
+	<name>isdnHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
@@ -3945,7 +4066,7 @@ isdn1
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
-	<default_focus_target>optionmenu4</default_focus_target>
+	<default_focus_target>modemDeviceMenu</default_focus_target>
 	<child>
 	  <left_attach>0</left_attach>
 	  <right_attach>1</right_attach>
@@ -3972,7 +4093,7 @@ isdn1
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
-	<default_focus_target>optionmenu5</default_focus_target>
+	<default_focus_target>baudRateMenu</default_focus_target>
 	<child>
 	  <left_attach>0</left_attach>
 	  <right_attach>1</right_attach>
@@ -3999,7 +4120,7 @@ isdn1
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
-	<default_focus_target>optionmenu6</default_focus_target>
+	<default_focus_target>flowControlMenu</default_focus_target>
 	<child>
 	  <left_attach>0</left_attach>
 	  <right_attach>1</right_attach>
@@ -4018,7 +4139,7 @@ isdn1
 
       <widget>
 	<class>GtkOptionMenu</class>
-	<name>optionmenu4</name>
+	<name>modemDeviceMenu</name>
 	<can_focus>True</can_focus>
 	<items>/dev/modem
 /dev/ttyS1
@@ -4044,7 +4165,7 @@ isdn1
 
       <widget>
 	<class>GtkOptionMenu</class>
-	<name>optionmenu5</name>
+	<name>baudRateMenu</name>
 	<can_focus>True</can_focus>
 	<items>460800
 230400
@@ -4077,7 +4198,7 @@ isdn1
 
       <widget>
 	<class>GtkOptionMenu</class>
-	<name>optionmenu6</name>
+	<name>flowControlMenu</name>
 	<can_focus>True</can_focus>
 	<items>CRTSCTS
 XON/XOFF
@@ -4113,7 +4234,7 @@ None
 
     <widget>
       <class>GtkCheckButton</class>
-      <name>checkbutton15</name>
+      <name>volumeCB</name>
       <can_focus>True</can_focus>
       <label>_Set Modem Volume</label>
       <active>False</active>
@@ -4146,7 +4267,7 @@ None
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
-	<default_focus_target>hscale1</default_focus_target>
+	<default_focus_target>volumScale</default_focus_target>
 	<child>
 	  <padding>0</padding>
 	  <expand>False</expand>
@@ -4156,10 +4277,10 @@ None
 
       <widget>
 	<class>GtkHScale</class>
-	<name>hscale1</name>
+	<name>volumScale</name>
 	<can_focus>True</can_focus>
 	<draw_value>True</draw_value>
-	<value_pos>GTK_POS_TOP</value_pos>
+	<value_pos>GTK_POS_RIGHT</value_pos>
 	<digits>1</digits>
 	<policy>GTK_UPDATE_CONTINUOUS</policy>
 	<value>0</value>
@@ -4178,9 +4299,9 @@ None
 
     <widget>
       <class>GtkCheckButton</class>
-      <name>checkbutton16</name>
+      <name>toneDialingCB</name>
       <can_focus>True</can_focus>
-      <label>_Modem Device</label>
+      <label>_Use touch tone dialing</label>
       <active>False</active>
       <draw_indicator>True</draw_indicator>
       <child>
@@ -4217,7 +4338,7 @@ None
 
       <widget>
 	<class>GtkButton</class>
-	<name>button17</name>
+	<name>modemOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
@@ -4226,7 +4347,7 @@ None
 
       <widget>
 	<class>GtkButton</class>
-	<name>button18</name>
+	<name>modemCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
@@ -4238,8 +4359,9 @@ None
 
 <widget>
   <class>GtkWindow</class>
-  <name>window4</name>
-  <title>window4</title>
+  <name>ethernetConfig</name>
+  <border_width>5</border_width>
+  <title>Ethernet Configuration</title>
   <type>GTK_WINDOW_TOPLEVEL</type>
   <position>GTK_WIN_POS_NONE</position>
   <modal>False</modal>
@@ -4271,155 +4393,145 @@ None
       </child>
 
       <widget>
-	<class>GtkTable</class>
-	<name>table24</name>
+	<class>GtkVBox</class>
+	<name>vbox52</name>
 	<border_width>5</border_width>
-	<rows>3</rows>
-	<columns>1</columns>
 	<homogeneous>False</homogeneous>
-	<row_spacing>5</row_spacing>
-	<column_spacing>5</column_spacing>
-
-	<widget>
-	  <class>GtkHBox</class>
-	  <name>hbox32</name>
-	  <homogeneous>False</homogeneous>
-	  <spacing>5</spacing>
-	  <child>
-	    <left_attach>0</left_attach>
-	    <right_attach>1</right_attach>
-	    <top_attach>2</top_attach>
-	    <bottom_attach>3</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>True</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>True</yfill>
-	  </child>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label154</name>
-	    <label>Device:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0.5</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkOptionMenu</class>
-	    <name>optionmenu8</name>
-	    <can_focus>True</can_focus>
-	    <items>eth0
-eth1
-eth2
-eth3
-</items>
-	    <initial_choice>0</initial_choice>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label155</name>
-	    <label>Alias:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0.5</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkOptionMenu</class>
-	    <name>optionmenu9</name>
-	    <can_focus>True</can_focus>
-	    <items>none
-0
-1
-2
-3
-4
-</items>
-	    <initial_choice>0</initial_choice>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
-	    </child>
-	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkCheckButton</class>
-	  <name>checkbutton25</name>
-	  <can_focus>True</can_focus>
-	  <label>Enable Device Alias support</label>
-	  <active>False</active>
-	  <draw_indicator>True</draw_indicator>
-	  <child>
-	    <left_attach>0</left_attach>
-	    <right_attach>1</right_attach>
-	    <top_attach>1</top_attach>
-	    <bottom_attach>2</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
-	  </child>
-	</widget>
+	<spacing>5</spacing>
 
 	<widget>
 	  <class>GtkLabel</class>
-	  <name>label156</name>
-	  <label>Each device needs to be attached to physical deivce which can be selected below.
-
-Device Alias support allows you to use multiple virutal devices for one physical device.</label>
-	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <name>label178</name>
+	  <label>Each device needs to be attached to physical deivce which can be selected below. Device Alias support allows you to use multiple virtual devices for one physical device.</label>
+	  <justify>GTK_JUSTIFY_FILL</justify>
 	  <wrap>True</wrap>
 	  <xalign>0</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
 	  <child>
-	    <left_attach>0</left_attach>
-	    <right_attach>1</right_attach>
-	    <top_attach>0</top_attach>
-	    <bottom_attach>1</bottom_attach>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <xexpand>False</xexpand>
-	    <yexpand>False</yexpand>
-	    <xshrink>False</xshrink>
-	    <yshrink>False</yshrink>
-	    <xfill>True</xfill>
-	    <yfill>False</yfill>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>False</fill>
 	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkCheckButton</class>
+	  <name>aliasSupportCB</name>
+	  <can_focus>True</can_focus>
+	  <label>Enable Device Alias support</label>
+	  <active>False</active>
+	  <draw_indicator>True</draw_indicator>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>False</fill>
+	  </child>
+	</widget>
+
+	<widget>
+	  <class>GtkFrame</class>
+	  <name>aliasSettingFrame</name>
+	  <label>Alias Setting</label>
+	  <label_xalign>0</label_xalign>
+	  <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>False</fill>
+	  </child>
+
+	  <widget>
+	    <class>GtkHBox</class>
+	    <name>hbox36</name>
+	    <border_width>5</border_width>
+	    <sensitive>False</sensitive>
+	    <homogeneous>False</homogeneous>
+	    <spacing>5</spacing>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label179</name>
+	      <label>Device:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0.5</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkOptionMenu</class>
+	      <name>ethernetDeviceMenu</name>
+	      <can_focus>True</can_focus>
+	      <items>eth0
+eth1
+eth2
+eth3
+eth4
+eth5
+</items>
+	      <initial_choice>0</initial_choice>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>Placeholder</class>
+	    </widget>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label180</name>
+	      <label>Alias:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0.5</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkOptionMenu</class>
+	      <name>aliasMenu</name>
+	      <can_focus>True</can_focus>
+	      <items>none
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</items>
+	      <initial_choice>0</initial_choice>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+	  </widget>
 	</widget>
       </widget>
 
@@ -4428,6 +4540,23 @@ Device Alias support allows you to use multiple virutal devices for one physical
 	<child_name>Notebook:tab</child_name>
 	<name>label144</name>
 	<label>General</label>
+	<justify>GTK_JUSTIFY_CENTER</justify>
+	<wrap>False</wrap>
+	<xalign>0.5</xalign>
+	<yalign>0.5</yalign>
+	<xpad>0</xpad>
+	<ypad>0</ypad>
+      </widget>
+
+      <widget>
+	<class>Placeholder</class>
+      </widget>
+
+      <widget>
+	<class>GtkLabel</class>
+	<child_name>Notebook:tab</child_name>
+	<name>label157</name>
+	<label>Hardware</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -4464,7 +4593,7 @@ Device Alias support allows you to use multiple virutal devices for one physical
 
       <widget>
 	<class>GtkButton</class>
-	<name>button19</name>
+	<name>ethernetOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
@@ -4473,7 +4602,7 @@ Device Alias support allows you to use multiple virutal devices for one physical
 
       <widget>
 	<class>GtkButton</class>
-	<name>button20</name>
+	<name>ethernetCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
@@ -4482,7 +4611,356 @@ Device Alias support allows you to use multiple virutal devices for one physical
 
       <widget>
 	<class>GtkButton</class>
-	<name>button21</name>
+	<name>ethernetHelpButton</name>
+	<can_default>True</can_default>
+	<can_focus>True</can_focus>
+	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
+	<relief>GTK_RELIEF_NORMAL</relief>
+      </widget>
+    </widget>
+  </widget>
+</widget>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>dslConfig</name>
+  <border_width>5</border_width>
+  <title>xDSL Configuration</title>
+  <type>GTK_WINDOW_TOPLEVEL</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>True</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GtkVBox</class>
+    <name>vbox48</name>
+    <homogeneous>False</homogeneous>
+    <spacing>5</spacing>
+
+    <widget>
+      <class>GtkNotebook</class>
+      <name>notebook6</name>
+      <can_focus>True</can_focus>
+      <show_tabs>True</show_tabs>
+      <show_border>True</show_border>
+      <tab_pos>GTK_POS_TOP</tab_pos>
+      <scrollable>False</scrollable>
+      <tab_hborder>2</tab_hborder>
+      <tab_vborder>2</tab_vborder>
+      <popup_enable>False</popup_enable>
+      <child>
+	<padding>0</padding>
+	<expand>True</expand>
+	<fill>True</fill>
+      </child>
+
+      <widget>
+	<class>GtkVBox</class>
+	<name>vbox50</name>
+	<border_width>5</border_width>
+	<homogeneous>False</homogeneous>
+	<spacing>5</spacing>
+
+	<widget>
+	  <class>GtkHBox</class>
+	  <name>hbox34</name>
+	  <homogeneous>False</homogeneous>
+	  <spacing>5</spacing>
+	  <child>
+	    <padding>0</padding>
+	    <expand>False</expand>
+	    <fill>True</fill>
+	  </child>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label171</name>
+	    <label>dialupHelpButton</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0.5</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkOptionMenu</class>
+	    <name>dslDeviceMenu</name>
+	    <tooltip>Please select the Ethernet interface connected to the DSL modem.</tooltip>
+	    <can_focus>True</can_focus>
+	    <items>eth0
+eth1
+eth2
+eth3
+eth4
+</items>
+	    <initial_choice>0</initial_choice>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>False</fill>
+	    </child>
+	  </widget>
+	</widget>
+      </widget>
+
+      <widget>
+	<class>GtkLabel</class>
+	<child_name>Notebook:tab</child_name>
+	<name>label161</name>
+	<label>General</label>
+	<justify>GTK_JUSTIFY_CENTER</justify>
+	<wrap>False</wrap>
+	<xalign>0.5</xalign>
+	<yalign>0.5</yalign>
+	<xpad>0</xpad>
+	<ypad>0</ypad>
+      </widget>
+
+      <widget>
+	<class>GtkVBox</class>
+	<name>vbox51</name>
+	<border_width>5</border_width>
+	<homogeneous>False</homogeneous>
+	<spacing>0</spacing>
+
+	<widget>
+	  <class>GtkTable</class>
+	  <name>table26</name>
+	  <rows>3</rows>
+	  <columns>2</columns>
+	  <homogeneous>False</homogeneous>
+	  <row_spacing>5</row_spacing>
+	  <column_spacing>5</column_spacing>
+	  <child>
+	    <padding>0</padding>
+	    <expand>True</expand>
+	    <fill>True</fill>
+	  </child>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label172</name>
+	    <label>Pro_vider Name:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>dslProvoderNameEntry</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label173</name>
+	    <label>_Login Name:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>dslLoginNameEntry</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>1</top_attach>
+	      <bottom_attach>2</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label174</name>
+	    <label>Pass_word:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>dslPassWordEntry</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>2</top_attach>
+	      <bottom_attach>3</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <name>dslProvoderNameEntry</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text></text>
+	    <child>
+	      <left_attach>1</left_attach>
+	      <right_attach>2</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>True</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <name>dslLoginNameEntry</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>True</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text></text>
+	    <child>
+	      <left_attach>1</left_attach>
+	      <right_attach>2</right_attach>
+	      <top_attach>1</top_attach>
+	      <bottom_attach>2</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>True</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkEntry</class>
+	    <name>dslPassWordEntry</name>
+	    <can_focus>True</can_focus>
+	    <editable>True</editable>
+	    <text_visible>False</text_visible>
+	    <text_max_length>0</text_max_length>
+	    <text></text>
+	    <child>
+	      <left_attach>1</left_attach>
+	      <right_attach>2</right_attach>
+	      <top_attach>2</top_attach>
+	      <bottom_attach>3</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>True</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+	</widget>
+      </widget>
+
+      <widget>
+	<class>GtkLabel</class>
+	<child_name>Notebook:tab</child_name>
+	<name>label168</name>
+	<label>Account</label>
+	<justify>GTK_JUSTIFY_CENTER</justify>
+	<wrap>False</wrap>
+	<xalign>0.5</xalign>
+	<yalign>0.5</yalign>
+	<xpad>0</xpad>
+	<ypad>0</ypad>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkHSeparator</class>
+      <name>hseparator12</name>
+      <child>
+	<padding>0</padding>
+	<expand>False</expand>
+	<fill>True</fill>
+      </child>
+    </widget>
+
+    <widget>
+      <class>GtkHButtonBox</class>
+      <name>hbuttonbox22</name>
+      <layout_style>GTK_BUTTONBOX_END</layout_style>
+      <spacing>5</spacing>
+      <child_min_width>85</child_min_width>
+      <child_min_height>27</child_min_height>
+      <child_ipad_x>7</child_ipad_x>
+      <child_ipad_y>0</child_ipad_y>
+      <child>
+	<padding>0</padding>
+	<expand>False</expand>
+	<fill>True</fill>
+      </child>
+
+      <widget>
+	<class>GtkButton</class>
+	<name>dslOkButton</name>
+	<can_default>True</can_default>
+	<can_focus>True</can_focus>
+	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
+	<relief>GTK_RELIEF_NORMAL</relief>
+      </widget>
+
+      <widget>
+	<class>GtkButton</class>
+	<name>dslCancelButton</name>
+	<can_default>True</can_default>
+	<can_focus>True</can_focus>
+	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
+	<relief>GTK_RELIEF_NORMAL</relief>
+      </widget>
+
+      <widget>
+	<class>GtkButton</class>
+	<name>dslHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
