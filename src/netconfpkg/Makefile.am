@@ -44,6 +44,7 @@ clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
 	rm -f *.so
+	rm -f *~
 
 %.pyc: %.py
 	@echo "Compiling because of " $*
