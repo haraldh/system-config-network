@@ -1,15 +1,17 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libglade, pygtk, python, pygnome-libglade, pygnome
 BuildRequires: alchemist, alchemist-devel, python, libglade-devel
-Obsoletes: isdn-config internet-config netcfg
+Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
+Source1: rp3-1.1.10.tar.gz
+Patch0: redhat-config-network-0.9.13-neat.patch
 
 %description
 Netconf is the network configuration tool for Red Hat Linux,
@@ -17,16 +19,36 @@ supporting ethernet, ADSL, ISDN and PPP. It can also configure
 firewalls and masquerading, and can use profiles.
 
 %prep
-%setup -q
+%setup -q -a 1
+
+%patch0 -p1 -b .neat
+
 %configure
 
+pushd .
+cd rp3-1.1.10
+%configure
+popd
+
+
 %build
+pushd .
+cd rp3-1.1.10
+make
+popd
 # Don't run right now.. I want to build it even though we don't have doc strings for everything
 #make check
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
+pushd .
+cd rp3-1.1.10/rp3
+%makeinstall
+cd ../docs
+%makeinstall
+popd
+
 %find_lang %name
 
 %clean
@@ -43,6 +65,10 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/security/console.apps/*
 %{_sbindir}/*
 %{_bindir}/*
+%{_datadir}/gnome/help/*/*/*
+%{_datadir}/applets/*/*
+%config %{_sysconfdir}/X11/applnk/*/*
+%config %{_sysconfdir}/CORBA/servers/*
 
 %changelog
 * Mon Mar 11 2002 Trond Eivind Glomsrød <teg@redhat.com> 0.9.13-1
