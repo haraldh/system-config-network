@@ -96,6 +96,7 @@ class providerDialog:
         self.provider = self.get_provider()
         self.dehydrate()
         self.dialog.destroy()
+        self.device.commit()
         
     def on_providerTree_tree_select_row(self, ctree, node, column):
         if len(node.children) == 0:

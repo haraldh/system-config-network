@@ -105,6 +105,7 @@ class DialupDialog(deviceConfigDialog):
         
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
+        self.device.Dialup
         self.device.Dialup.ProviderName = self.xml.get_widget("providerName").get_text()
         self.device.Dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         self.device.Dialup.Password = self.xml.get_widget("passwordEntry").get_text()
