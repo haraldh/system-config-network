@@ -18,7 +18,7 @@
             
 _devFac = None
 
-from rhpl.log import log
+from netconfpkg.NC_functions import log
 
 def getDeviceFactory():
     global _devFac
@@ -33,6 +33,9 @@ from netconfpkg.NCDevice import Device
 
 class DeviceFactory(dict):
     def register(self, theclass, devtype, subtype = None):
+
+        log.log(5, "Register %s %s" % (str(theclass), str(devtype)))
+        
         if not issubclass(theclass, Device):
             raise ValueError, "first argument has to be a subclass of Device"
             
@@ -65,5 +68,5 @@ class DeviceFactory(dict):
 
 from netconfpkg.plugins import *
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2003/10/08 15:09:53 $"
+__version__ = "$Revision: 1.9 $"
