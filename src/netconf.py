@@ -431,7 +431,14 @@ class mainDialog:
         
         interface = NewInterfaceDialog()
 
-        gtk.mainloop()
+        try:
+            gtk.mainloop()            
+        except SystemExit, code:
+            print "Exception %s: %s" % (str(SystemExit), str(code))
+            sys.exit(0)
+        except:
+            handleException(sys.exc_info())
+            
         self.hydrate()
         
     def on_deviceCopyButton_clicked (self, button):
