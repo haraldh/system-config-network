@@ -91,8 +91,8 @@ def printObj(obj, parent = None):
                 if attr[TYPE] != genClass.BOOL:
                     print "%s.%s=%s" % (parent, child, str(val))
                 else:
-                    if val: print "%s.%s=false" % (parent, child)
-                    else: print "%s.%s=true" % (parent, child)
+                    if val: print "%s.%s=true" % (parent, child)
+                    else: print "%s.%s=false" % (parent, child)
                 
         else:
             if val != None:
@@ -110,13 +110,13 @@ if __name__ == '__main__':
     progname = os.path.basename(sys.argv[0])
 
     try:
-        opts, args = getopt.getopt(cmdline, "p:thl",
+        opts, args = getopt.getopt(cmdline, "p:thd",
                                    ["profile=",
                                     "test",
                                     "help",
-                                    "list"])
+                                    "devicelist"])
         for opt, val in opts:
-            if opt == '-l' or opt == '--list':
+            if opt == '-d' or opt == '--devicelist':
                 devlist = getDeviceList()
                 for dev in devlist:
                     if (not args) or (dev.DeviceId in args):
