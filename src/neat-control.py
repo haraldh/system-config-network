@@ -56,10 +56,6 @@ from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
 from netconfpkg.gui.exception import handleException
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
-# Copyright
-TEXT =  _("This software is distributed under the GPL. '\
-'Please Report bugs to Red Hat's Bug Tracking System: '\
-'http://bugzilla.redhat.com/")
 
 device = None
 
@@ -136,10 +132,23 @@ class mainDialog:
         gtk.mainquit()
 
     def on_infoButton_clicked(self, button):
-        print "TBD"
-        #dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
-        #dlg.run_and_close()
-        pass
+        from version import PRG_VERSION
+        from version import PRG_NAME
+        dlg = gnome.ui.About(PRG_NAME,
+                             PRG_VERSION,
+                             _("Copyright (c) 2001,2002 Red Hat, Inc."),
+                             _("This software is distributed under the GPL. "
+                               "Please Report bugs to Red Hat's Bug Tracking "
+                               "System: http://bugzilla.redhat.com/"),
+                             ["Harald Hoyer <harald@redhat.com>",
+                              "Than Ngo <than@redhat.com>",
+                              "Philipp Knirsch <pknirsch@redhat.com>",
+                              unicode("Trond Eivind Glomsrød <teg@redhat.com>",
+                                      "iso8859-1")])
+        
+        dlg.set_transient_for(self.dialog)
+        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dlg.show()
     
     def on_activateButton_clicked(self, button):
         device = self.clist_get_device()
