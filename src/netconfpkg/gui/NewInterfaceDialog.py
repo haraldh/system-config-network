@@ -74,6 +74,7 @@ class NewInterfaceDialog:
         self.interface_clist.column_titles_passive ()
         self.interface_clist.set_row_height(20)
 
+        self.interface_clist.clear()
         interfaces = []
         df = getDeviceFactory()
         dfk = df.keys()
