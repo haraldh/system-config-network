@@ -1,6 +1,6 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.4
+Version: 0.5
 Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
@@ -47,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Tue Jul 17 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- CIPE and wireless added
+
 * Mon Jul 16 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - Add i18n
 - Many minor fixes...
