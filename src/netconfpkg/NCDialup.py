@@ -416,6 +416,9 @@ class ModemDialup(Dialup):
                 self.InitStrings[self.InitStrings.addInitString()] = value
                 
 
+        if self.Compression:
+            self.Compression.load(parentConf)            
+
         if parentConf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
             
@@ -543,6 +546,10 @@ class ModemDialup(Dialup):
             if not conf[i]: del conf[i]
 
         conf.write()
+
+
+        if self.Compression:
+            self.Compression.save(parentConf)            
 
         #
         # Now write the pap and chap-secrets
