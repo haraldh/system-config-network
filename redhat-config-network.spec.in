@@ -1,6 +1,6 @@
 # -*- RPM-SPEC -*-
 %define rp3 0
-Summary: The NEtwork Adminstration Tool for Red Hat Linux
+Summary: The GUI of the NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
 Release: 1
@@ -9,9 +9,10 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
+Obsoletes: isdn-config internet-config rp3
 BuildRequires: python >= 2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
-Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.72, rpm-python
-Obsoletes: isdn-config internet-config netcfg rp3
+Requires: %{name} = %{version}-%{release}-tui
+Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
 Source1: rp3-1.1.10.tar.gz
@@ -22,18 +23,17 @@ Patch3: redhat-config-network-0.9.24-rp3-isdn.patch
 %endif
 
 %description
-This is the network configuration tool for Red Hat Linux,
+This is the GUI of the network configuration tool for Red Hat Linux,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
-%package gui
-Summary: The GUI NEtwork Adminstration Tool for Red Hat Linux
+%package tui
+Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
-Obsoletes: isdn-config internet-config netcfg rp3
-Requires: %{name} = %{version}-%{release}
-Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
+Obsoletes: netcfg
+Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.72, rpm-python
 
-%description gui
-This is the GUI network configuration tool for Red Hat Linux,
+%description tui
+This is the network configuration tool for Red Hat Linux,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %prep
@@ -104,13 +104,13 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/kontrol-panel
 rm -rf $RPM_BUILD_ROOT
 
 
-%files gui
+%files 
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network/pixmaps
 %{_datadir}/redhat-config-network/netconfpkg/gui
 %{_sbindir}/redhat-config-network-gui
 
-%files -f %{name}.lang
+%files -f %{name}.lang tui
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network/help
 %{_datadir}/redhat-config-network/*.py*
@@ -144,6 +144,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Feb  3 2003 Harald Hoyer <harald@redhat.de>
+- gui -> base, base -> tui
+
 * Thu Jan 30 2003 Harald Hoyer <harald@redhat.de> 1.1.93-1
 - 1.1.93
 
