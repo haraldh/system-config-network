@@ -35,6 +35,7 @@ moduleinfo_DATA = module-info
 
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir) $(DESTDIR)$(bindir)
+	install -m 0755 $(srcdir)/version.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-cmd.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
