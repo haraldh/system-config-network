@@ -118,7 +118,7 @@ HWList = None
 def getHardwareList():
     global HWList
     if not HWList:
-        HWList = HardwareList.HardwareList()
+        HWList = HardwareList()
         HWList.load()
     return HWList
 
