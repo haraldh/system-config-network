@@ -257,7 +257,7 @@
                         <property name="visibility">yes</property>
                         <property name="visible">yes</property>
 
-
+                        <signal name="changed" handler="on_essidEntry_changed" />
                       </widget>
                       <packing>
                         <property name="left_attach">1</property>
@@ -358,7 +358,7 @@
                         <property name="visible">yes</property>
                         <property name="adjustment">1 0 100 1 10 10</property>
 
-
+                        <signal name="changed" handler="on_channelSpinButton_changed" />
                       </widget>
                       <packing>
                         <property name="left_attach">1</property>
@@ -503,7 +503,7 @@
                         <property name="visibility">yes</property>
                         <property name="visible">yes</property>
 
-
+                        <signal name="changed" handler="on_keyEntry_changed" />
                       </widget>
                       <packing>
                         <property name="left_attach">1</property>
@@ -577,7 +577,7 @@
                             <property name="visibility">yes</property>
                             <property name="visible">yes</property>
 
-
+                            <signal name="changed" handler="on_hostnameEntry_changed" />
                           </widget>
                           <packing>
                             <property name="padding">0</property>
@@ -680,8 +680,8 @@
                         <property name="max-length">0</property>
                         <property name="visibility">yes</property>
 
-
-
+                        <signal name="changed" handler="on_mtuEntry_changed" />
+                        <signal name="insert_text" handler="on_mtuEntry_insert_text" />
                       </widget>
                       <packing>
                         <property name="left_attach">1</property>

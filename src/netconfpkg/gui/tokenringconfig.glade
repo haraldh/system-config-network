@@ -34,7 +34,7 @@
                 <property name="use_underline">yes</property>
 	      <property name="response_id">-5</property>
 
-
+                <signal name="clicked" handler="on_okButton_clicked" />
               </widget>
             </child>
 
@@ -48,7 +48,7 @@
                 <property name="use_underline">yes</property>
 	      <property name="response_id">-6</property>
 
-
+                <signal name="clicked" handler="on_cancelButton_clicked" />
               </widget>
             </child>
           </widget>
@@ -122,8 +122,8 @@
                         <property name="visibility">yes</property>
                         <property name="visible">yes</property>
 
-
-
+                        <signal name="insert_text" handler="on_deviceNameEntry_insert_text" />
+                        <signal name="changed" handler="on_deviceNameEntry_changed" />
                       </widget>
                       <packing>
                         <property name="left_attach">1</property>
@@ -164,7 +164,7 @@
                     <property name="visible">yes</property>
                     <property name="use_underline">yes</property>
 
-
+                    <signal name="toggled" handler="on_onBootCB_toggled" />
                   </widget>
                   <packing>
                     <property name="padding">0</property>
@@ -182,7 +182,7 @@
                     <property name="visible">yes</property>
                     <property name="use_underline">yes</property>
 
-
+                    <signal name="toggled" handler="on_userControlCB_toggled" />
                   </widget>
                   <packing>
                     <property name="padding">0</property>
