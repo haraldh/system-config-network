@@ -106,7 +106,8 @@ class ModemInterface:
             dialog.set_transient_for(self.toplevel)
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dialog.set_modal(TRUE)
-            dialog.show_all()
+            label.show_now()
+            dialog.show_now()
             gtk.gdk.flush()
             while gtk.events_pending():
                 gtk.main_iteration(gtk.FALSE)
