@@ -4,11 +4,13 @@ from NC_functions import *
 class Callback(Callback_base):
     boolkeydict = { 'Compression' : 'CBCP', }
     
-    keydict = { 'Number' : 'PHONE_IN', }
+    keydict = { 'Number' : 'PHONE_IN',
+                'Type' : 'CALLBACK',
+                }
 
     intkeydict = { 'Hup' : 'CBHUP',
-                'Delay' : 'CBDELAY',
-                }
+                   'Delay' : 'CBDELAY',
+                   }
 
     def __init__(self, list = None, parent = None):
         Callback_base.__init__(self, list, parent)        
@@ -36,9 +38,17 @@ class Callback(Callback_base):
             else:
                 self.__dict__[selfkey] = false            
 
-    def save(self, parentConf):        
+    def save(self, parentConf):
+        conf = parentConf
+        
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: conf[confkey] = ""
+
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
             if self.__dict__[selfkey]:
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
@@ -49,4 +59,6 @@ class Callback(Callback_base):
                 conf[confkey] = 'on'
             else:
                 conf[confkey] = 'off'
-    
+
+        if conf.has_key('CALLBACK') and conf['CALLBACK'] == "off":
+            if conf.has_key('CBCP'): del conf['CBCP']

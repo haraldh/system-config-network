@@ -251,12 +251,13 @@ class ISDNDialupDialog(DialupDialog):
 		
     def hydrate(self):
         DialupDialog.hydrate(self)
-        if self.device.Dialup.Callback != None:
-            self.xml.get_widget("callbackCB").set_active(self.device.Dialup.Callback != None)
+        if self.device.Dialup.Callback:
+            self.xml.get_widget("callbackCB").set_active(true)
+            self.xml.get_widget("callbackFrame").set_sensitive(true)
             self.xml.get_widget("dialinNumberEntry").set_text(self.device.Dialup.Callback.Number)
             self.xml.get_widget("callbackDelaySB").set_value(self.device.Dialup.Callback.Delay)
-            self.xml.get_widget("allowDialinNumberCB").set_active(self.device.Dialup.Secure == true)
-            self.xml.get_widget("cbcpCB").set_active(self.device.Dialup.Callback.CBCP == true)
+            self.xml.get_widget("allowDialinNumberCB").set_active(self.device.Dialup.Secure)
+            self.xml.get_widget("cbcpCB").set_active(self.device.Dialup.Callback.Compression)
         if self.device.Dialup.HangupTimeout:
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(self.device.Dialup.HangupTimeout)
         if self.device.Dialup.DialMode:
@@ -280,28 +281,22 @@ class ISDNDialupDialog(DialupDialog):
         else:
             self.device.Dialup.EncapMode = "rawip"
             self.device.Device = "isdn"
-        
+
+        self.device.Dialup.createCallback()
         if self.xml.get_widget("callbackCB").get_active():
-            self.device.Dialup.createCallback()
+            self.device.Dialup.Callback.Type = "out"
             self.device.Dialup.Callback.Number = self.xml.get_widget("dialinNumberEntry").get_text()
             self.device.Dialup.Callback.Delay = self.xml.get_widget("callbackDelaySB").get_value_as_int()
-            if self.xml.get_widget("allowDialinNumberCB").get_active():
-                self.device.Dialup.Secure = true
-            else:
-                self.device.Dialup.Secure = false
-                
-            if self.xml.get_widget("cbcpCB").get_active():
-                self.device.Dialup.Callback.CBCP = true
-            else:
-                self.device.Dialup.Callback.CBCP = false
+            self.device.Dialup.Callback.Hup = 3
+            self.device.Dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
+            self.device.Dialup.Callback.Compression = self.xml.get_widget("cbcpCB").get_active()
+        else:
+            self.device.Dialup.Callback.Type = "off"
         
         self.device.Dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutISDNSB").get_value_as_int()
         self.device.Dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
         self.device.Dialup.MSN = self.xml.get_widget("msnEntry").get_text()
-        if self.xml.get_widget("channelBundlingCB").get_active():
-            self.device.Dialup.ChannelBundling = true
-        else:
-            self.device.Dialup.ChannelBundling = false
+        self.device.Dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
         self.device.Dialup.Authentication = self.xml.get_widget("authEntry").get_text()
 
 

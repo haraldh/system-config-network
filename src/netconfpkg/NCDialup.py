@@ -269,7 +269,7 @@ class IsdnDialup(Dialup):
         self.Compression.load(conf)
         
         if conf.has_key('CALLBACK'):
-            if conf['CALLBACK'] == 'on':
+            if conf['CALLBACK'] == 'on' or conf['CALLBACK'] == 'out' :
                 callback = self.createCallback()
                 callback.load(conf)
             else:
@@ -327,10 +327,15 @@ class IsdnDialup(Dialup):
             self.Compression.save(conf)
             
         if self.Callback:
-            conf['CALLBACK'] == 'on'
+            conf['CALLBACK'] == 'out'
             self.Callback.save(conf)
         else:
             conf['CALLBACK'] == 'off'
+            if conf.has_key('PHONE_IN'): del conf['PHONE_IN']
+            if conf.has_key('CBHUP'): del conf['CBHUP']
+            if conf.has_key('CBDELAY'): del conf['CBDELAY']
+            if conf.has_key('CBCP'): del conf['CBCP']
+            if conf.has_key('SECURE'): del conf['SECURE']
 
         for i in conf.keys():
             if not conf[i]: del conf[i]
@@ -339,8 +344,7 @@ class IsdnDialup(Dialup):
         
     
 class ModemDialup(Dialup):
-    boolwvdict = { 'StupidMode' : 'Stupid Mode',
-                    }
+    boolwvdict = { 'StupidMode' : 'Stupid Mode', }
 
     wvdict = { 'Login' : 'Username',
                'Password' : 'Password',
