@@ -1,10 +1,14 @@
 EXTRA_DIST := DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl NetworkList.idl Firewall.idl
 
-BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py NetworkList.py Firewall.py
+BUILT_SOURCES = DeviceList.py
+# ProfileList.py HardwareList.py ProviderList.py NetworkList.py Firewall.py
+
+#DeviceList.py: DeviceList.idl /usr/lib/rhs/genClass.py
+#	python /usr/lib/rhs/genClass.py $(srcdir)/$*.idl -c $@ $* 
 
 #pkgdata_DATA :=
 
-exec_SCRIPTS = bindconf-gui
+#exec_SCRIPTS = bindconf-gui
 
 execdir = $(sbindir)
 
@@ -21,6 +25,6 @@ install-data-local:
 clean:
 	rm -f *.pyo *.pyc
 
-%.py: %.idl /usr/lib/rhs/genClass.py
-	python /usr/lib/rhs/genClass.py $(srcdir)/$*.idl -c $@ $*
+%.py: %.idl /usr/lib/rhs/python/genClass.py
+	python /usr/lib/rhs/python/genClass.py -c $(srcdir)/$*.idl $@ $*
 

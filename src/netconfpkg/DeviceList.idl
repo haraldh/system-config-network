@@ -7,60 +7,60 @@
   <datatree>
   <DeviceList TYPE="LIST" ANONYMOUS="TRUE">
     <Device TYPE="LIST">
-      <DeviceId TYPE="STRING"/>
+      <DeviceId TYPE="STRING" VALUE=""/>
 
-      <DeviceName TYPE="STRING"/>
-      <OnBoot TYPE="BOOL"/>
-      <AllowUser TYPE="BOOL"/>
+      <DeviceName TYPE="STRING" VALUE=""/>
+      <OnBoot TYPE="BOOL" VALUE="FALSE"/>
+      <AllowUser TYPE="BOOL" VALUE="FALSE"/>
 
-      <AutoIp TYPE="STRING"/>
+      <AutoIp TYPE="STRING" VALUE=""/>
 
-      <IP TYPE="STRING"/>
-      <Netmask TYPE="STRING"/>
-      <DefaultGW TYPE="STRING"/>
+      <IP TYPE="STRING" VALUE=""/>
+      <Netmask TYPE="STRING" VALUE=""/>
+      <DefaultGW TYPE="STRING" VALUE=""/>
 
-      <Hostname TYPE="STRING"/>
-      <Domain TYPE="STRING"/>
-      <AutoDNS TYPE="BOOL"/>
+      <Hostname TYPE="STRING" VALUE=""/>
+      <Domain TYPE="STRING" VALUE=""/>
+      <AutoDNS TYPE="BOOL" VALUE="FALSE"/>
  
       <StaticRoutes TYPE="LIST" ANONYMOUS="TRUE">
         <Route TYPE="LIST">
-          <Adress TYPE="STRING"/>
-          <Netmask TYPE="STRING"/>
+          <Adress TYPE="STRING" VALUE=""/>
+          <Netmask TYPE="STRING" VALUE=""/>
           </Route>
         </StaticRoutes>
 
-      <Dialup  TYPE="LIST">
-        <ProviderName TYPE="STRING"/>
-        <MSN TYPE="INTEGER"/>
-        <Login TYPE="STRING"/>
-        <Password TYPE="STRING"/>
-        <Authentication TYPE="STRING"/>
+      <Dialup TYPE="LIST">
+        <ProviderName TYPE="STRING" VALUE=""/>
+        <MSN TYPE="INT" VALUE="0"/>
+        <Login TYPE="STRING" VALUE=""/>
+        <Password TYPE="STRING" VALUE=""/>
+        <Authentication TYPE="STRING" VALUE=""/>
 
-        <PPPOptions TYPE="LIST">
-          <Option TYPE="STRING"/>
+        <PPPOptions TYPE="LIST" ANONYMOUS="TRUE">
+          <Option TYPE="STRING" VALUE=""/>
           </PPPOptions>
 
-        <DialinServer TYPE="BOOL"/>
-        <ChannelBundling TYPE="BOOL"/>
-        <EncapMode TYPE="STRING"/>
-        <HangupTimeout TYPE="INTEGER"/>
-        <DialMode TYPE="STRING"/>
+        <DialinServer TYPE="BOOL" VALUE="FALSE"/>
+        <ChannelBundling TYPE="BOOL" VALUE="FALSE"/>
+        <EncapMode TYPE="STRING" VALUE=""/>
+        <HangupTimeout TYPE="INT" VALUE="0"/>
+        <DialMode TYPE="STRING" VALUE=""/>
 
         <Callback TYPE="LIST">
-          <Number TYPE="STRING"/>
-          <Delay TYPE="INTEGER"/>
-          <Restrict TYPE="BOOL"/>
-          <CBCP TYPE="BOOL"/>
+          <Number TYPE="STRING" VALUE=""/>
+          <Delay TYPE="INT" VALUE="0"/>
+          <Restrict TYPE="BOOL" VALUE="FALSE"/>
+          <CBCP TYPE="BOOL" VALUE="FALSE"/>
           </Callback>
 
         <Compression TYPE="LIST">
-          <VJTcpIp TYPE="BOOL"/>
-          <VJID TYPE="BOOL"/>
-          <AdressControl TYPE="BOOL"/>
-          <ProtoField TYPE="BOOL"/>
-          <BSD TYPE="BOOL"/>
-          <CCP TYPE="BOOL"/>
+          <VJTcpIp TYPE="BOOL" VALUE="FALSE"/>
+          <VJID TYPE="BOOL" VALUE="FALSE"/>
+          <AdressControl TYPE="BOOL" VALUE="FALSE"/>
+          <ProtoField TYPE="BOOL" VALUE="FALSE"/>
+          <BSD TYPE="BOOL" VALUE="FALSE"/>
+          <CCP TYPE="BOOL" VALUE="FALSE"/>
           </Compression>        
         </Dialup>
 
