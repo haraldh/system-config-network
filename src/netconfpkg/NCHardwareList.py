@@ -58,13 +58,16 @@ class MyConfModules(ConfModules):
             # workaround for broken regexp implementation
             restr = '^[\\t ]*' + key + '[\\t ]+' + varname
             while self.findnextline(restr):
+                print "1) Deleting %s" % self.line
                 self.deleteline()
 
             restr = '^[\\t ]*' + key + '[\\t ]+\\-k[\\t ]+' + varname
             while self.findnextline(restr):
+                print "2) Deleting %s" % self.line
                 self.deleteline()
 
         del self.vars[varname]
+        print "del self.vars[%s]" % varname
         self.seek(place)
         
 class ConfHWConf(Conf):
@@ -253,13 +256,24 @@ class HardwareList(HardwareList_base):
         modules = MyConfModules()
         wvdial  = ConfSMB('/etc/wvdial.conf')
         isdn    = NCisdnhardware.ConfISDN()
+        
 
         for hw in self.data:
             if hw.Type == 'Ethernet':
                 modules[hw.Name] = {}
                 modules[hw.Name]['alias'] = hw.Card.ModuleName
-                modules[hw.Card.ModuleName] = {}
-                modules[hw.Card.ModuleName]['options'] = {}
+
+                # No, no, no... only delete known options!!!
+                #modules[hw.Card.ModuleName] = {}
+                #modules[hw.Card.ModuleName]['options'] = {}
+                #
+                # Better do it this way!
+                if modules[hw.Card.ModuleName].has_key('options'):
+                    for key in self.keydict.keys():
+                        if modules[hw.Card.ModuleName]['options'].has_key(key):
+                            del modules[hw.Card.ModuleName]['options'][key]
+                            print "del modules[hw.Card.ModuleName]['options'][%s]" % key
+
                 for selfkey in self.keydict.keys():
                     confkey = self.keydict[selfkey]
                     if hw.Card.__dict__[selfkey]:
@@ -268,6 +282,8 @@ class HardwareList(HardwareList_base):
                                 or (hw.Card.IRQ == 'Unknown')):
                             continue
                         modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
+
+
             if hw.Type == 'Modem':
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
