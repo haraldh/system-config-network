@@ -7,7 +7,7 @@ EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
 	neat-control.desktop.in pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
 	ChangeLog system-config-network-cmd.console \
-	system-config-network.sh mkinstalldirs
+	system-config-network.sh 
 
 iconsdir=$(pkgdatadir)
 
@@ -82,13 +82,12 @@ VERSION=@VERSION@
 RELEASE=@RPM_RELEASE@
 CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RELEASE))
 
-archive: distcheck changelog
+archive: changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
-	@cd /tmp/${PKGNAME};./autogen.sh
-	@mv /tmp/${PKGNAME} /tmp/${PACKAGE}-$(VERSION)
-	@dir=$$PWD; cd /tmp; tar cvzf $$dir/${PACKAGE}-$(VERSION).tar.gz ${PACKAGE}-$(VERSION)
-	@rm -rf /tmp/${PACKAGE}-$(VERSION)
+	@cd /tmp/${PKGNAME};./autogen.sh;make distcheck
+	@dir=$$PWD; cd /tmp; mv ${PACKAGE}-$(VERSION).tar.gz  $$dir/
+	@rm -rf /tmp/${PKGNAME}
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
 
 force-tag:
