@@ -92,6 +92,7 @@ class mainDialog:
         self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
         self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
         self.irda_xpm, self.irda_mask = get_icon('pixmaps/irda-16.xpm', self.dialog)
+        self.dsl_xpm, self.dsl_mask = get_icon('pixmaps/dsl.xpm', self.dialog)
         
         load_icon('neat-control.xpm', self.dialog)
         self.xml.get_widget('pixmap').load_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
@@ -252,6 +253,9 @@ class mainDialog:
             elif dev.Type == WIRELESS:
                 device_pixmap = self.irda_xpm
                 device_mask = self.irda_mask
+            elif dev.Type == DSL:
+                device_pixmap = self.dsl_xpm
+                device_mask = self.dsl_mask
             else:
                 device_pixmap = self.lan_xpm
                 device_mask = self.lan_mask
