@@ -21,3 +21,41 @@
  
  .po.cat:
  	sed -f ../intl/po2msg.sed < $< > $*.msg \
+--- po/Makefile.in.in.old	2002-07-18 17:37:10.000000000 +0200
++++ po/Makefile.in.in	2002-07-18 17:37:01.000000000 +0200
+@@ -188,6 +188,8 @@
+ 
+ distclean: clean
+ 	rm -f Makefile Makefile.in POTFILES *.mo *.msg *.cat *.cat.m
++	rm -f po2tbl.sed
++	rm -f .intltool-merge-cache
+ 
+ maintainer-clean: distclean
+ 	@echo "This command is intended for maintainers to use;"
+@@ -195,7 +197,7 @@
+ 	rm -f $(GMOFILES)
+ 
+ distdir = ../$(GETTEXT_PACKAGE)-$(VERSION)/$(subdir)
+-dist distdir: update-po $(DISTFILES)
++dist distdir: $(DISTFILES)
+ 	dists="$(DISTFILES)"; \
+ 	for file in $$dists; do \
+ 	  ln $(srcdir)/$$file $(distdir) 2> /dev/null \
+@@ -221,8 +223,7 @@
+ 	  fi; \
+ 	done
+ 
+-.po: Makefile
+-	$(MAKE)  $(PACKAGE).pot;
++%.po: $(srcdir)/$(GETTEXT_PACKAGE).pot
+ 	PATH=`pwd`/../src:$$PATH; \
+ 	echo; printf "$*: "; \
+ 	if $(MSGMERGE) $*; then \
+@@ -256,6 +257,7 @@
+ 	cd .. \
+ 	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
+ 	       $(SHELL) ./config.status
++	$(MAKE)  $(PACKAGE).pot
+ 
+ # Tell versions [3.59,3.63) of GNU make not to export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
