@@ -9,9 +9,9 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Obsoletes: isdn-config internet-config rp3
+Obsoletes: isdn-config internet-config rp3 redhat-config-gui
 BuildRequires: python >= 2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
-Requires: %{name} = %{version}-%{release}-tui
+Requires: %{name}-tui = %{version}-%{release}
 Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
@@ -144,8 +144,8 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
-* Mon Feb  3 2003 Harald Hoyer <harald@redhat.de>
-- gui -> base, base -> tui
+* Mon Feb  3 2003 Harald Hoyer <harald@redhat.de> 1.1.94-1
+- base -> tui, gui -> base
 
 * Thu Jan 30 2003 Harald Hoyer <harald@redhat.de> 1.1.93-1
 - 1.1.93
