@@ -7,7 +7,8 @@
 ## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
-from snack import *;
+from rhpl.transate import *
+from snack import *
 import sys
 import string
 
