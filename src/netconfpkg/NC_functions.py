@@ -25,9 +25,37 @@ deviceTypes = [ 'Ethernet',
 deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ppp[0-9]+(:[0-9]+)?$':'Modem',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
-               '^irlan[0-9]+(:[0-9]+)?$':'Wireless',
                '^cipcb[0-9]+(:[0-9]+)?$':'CIPE',
                '^lo$':'Loopback'}
+
+def create_ethernet_combo(hardwarelist, devname):
+        hwdesc = [ 'eth0', 'eth1', 'eth2',
+                   'eth3', 'eth4', 'eth5',
+                   'eth6', 'eth7', 'eth8'
+                   ]
+        hwcurr = None
+        
+        for hw in hardwarelist:
+            if hw.Type == "Ethernet":
+                desc = str(hw.Name) + ' (' + hw.Description + ')'
+                try:
+                    i = hwdesc.index(hw.Name)
+                    hwdesc[i] = desc
+                except:
+                    hwdesc.append(desc)
+                    
+                if devname and hw.Name == devname:
+                    hwcurr = desc
+                    
+        if not hwcurr:
+            if devname:
+                hwcurr = devname
+            elif len(hwdesc):
+                hwcurr = hwdesc[0]
+
+        hwdesc.sort()
+        
+        return (hwcurr, hwdesc[:])
 
 def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
     import gnome
