@@ -143,5 +143,6 @@ class tokenringHardware:
         modInfo = NCHardwareList.getModInfo()
         self.hw.Card.ModuleName = 'Unknown'
         for i in modInfo.keys():
-            if modInfo[i]['description'] == self.hw.Description:
+            if modInfo[i].has_key('description') and \
+                   modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i            
