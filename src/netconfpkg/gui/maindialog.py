@@ -24,10 +24,7 @@
 from netconfpkg import *
 from netconfpkg.gui import *
 from netconfpkg.Control import *
-from netconfpkg.gui.GUI_functions import GLADEPATH
-from netconfpkg.gui.GUI_functions import PROGNAME
-from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
 import gtk
@@ -429,7 +426,7 @@ class mainDialog:
                 status_mask = self.off_mask
                 
             device_pixmap, device_mask = \
-                GUI_functions.get_device_icon_mask(dev.Type, self.dialog)
+                get_device_icon_mask(dev.Type, self.dialog)
 
             clist.append(['', status, devname, dev.DeviceId, dev.Type])
             clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm,
@@ -468,7 +465,7 @@ class mainDialog:
         for hw in hardwarelist:
             clist.append([str(hw.Description), str(hw.Type), str(hw.Name), str(hw.Status)])
             device_pixmap, device_mask = \
-                GUI_functions.get_device_icon_mask(hw.Type, self.dialog)
+                get_device_icon_mask(hw.Type, self.dialog)
             clist.set_pixtext(row, DEVICE_COLUMN, hw.Name, 5,
                               device_pixmap,
                               device_mask)
@@ -1466,6 +1463,7 @@ class mainDialog:
         self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
+        from hardwaretype import hardwareTypeDialog
         type = hardwareTypeDialog()
         dialog = type.xml.get_widget ("Dialog")
         dialog.set_transient_for(self.dialog)
@@ -1693,5 +1691,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/01 11:24:39 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2003/08/08 13:42:42 $"
+__version__ = "$Revision: 1.29 $"

@@ -50,6 +50,12 @@ _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
                                       v[0] != '.', \
                                       os.listdir(__path__[0])))
 
+import locale
+locale.setlocale(locale.LC_ALL, "C")
+_files.sort()
+locale.setlocale(locale.LC_ALL, "")
+
+
 for _i in _files:
     _cmd = "from " + _i + " import *"
     exec _cmd
@@ -60,6 +66,6 @@ del _cmd
 del __netconfpkg
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.17 $"
+__date__ = "$Date: 2003/08/08 13:42:42 $"
+__version__ = "$Revision: 1.18 $"
 
