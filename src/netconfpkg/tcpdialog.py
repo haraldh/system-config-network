@@ -112,10 +112,13 @@ class tcpConfigDialog:
 
             clist = self.xml.get_widget('networkRouteList')
             clist.clear()
-            self.device.createStaticRoutes()
-            for route in self.device.StaticRoutes:
-                clist.append([route.Address, route.Netmask, route.Gateway])
 
+            if self.device.StaticRoutes != None:
+                for route in self.device.StaticRoutes:
+                    clist.append([route.Address, route.Netmask, route.Gateway])
+            else:
+                self.device.createStaticRoutes()
+                
     def dehydrate(self):            
         if self.xml.get_widget('ipSettingCB').get_active(): 
             self.device.BootProto = self.xml.get_widget('dynamicConfigEntry').get_text()            
@@ -157,6 +160,7 @@ class tcpConfigDialog:
         self.xml.get_widget("networkRouteFrame").set_sensitive(check["active"] != TRUE)
 
     def on_routeAddButton_clicked(self, button):
+        if self.device.StaticRoutes == None: self.device.createStaticRoutes()
         routes = self.device.StaticRoutes
         route = Route()
         dialog = editAdressDialog(route, self.xml)
