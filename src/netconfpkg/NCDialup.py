@@ -30,7 +30,7 @@ import gettext
 
 import DeviceList
 import NCCompression
-
+import NCHardwareList
 from NC_functions import *
 
 ##
@@ -566,9 +566,17 @@ class ModemDialup(Dialup):
         else:
             parentConf['DEFROUTE'] = 'no'
 
-
         if self.ProviderName:
             parentConf['PROVIDER'] = self.ProviderName
+
+        if parent.Name:
+            hwlist = NCHardwareList.getHardwareList()
+            for hw in hwlist:
+                if hw.Name == parent.Name:
+                    if hw.Modem:
+                        parentConf['MODEMPORT'] = str(hw.Modem.DeviceName)
+                        break
+
 
         conf[sectname]['Inherits'] = devname
 
@@ -577,36 +585,8 @@ class ModemDialup(Dialup):
 
         conf.write()
 
-
         if self.Compression:
             self.Compression.save(parentConf)            
-
-        #
-        # Now write the pap and chap-secrets
-        #
-        #print "device = " + name
-        if not self.Login:
-            return
-        
-        for secretfile in [ "/etc/ppp/pap-secrets", "/etc/ppp/chap-secrets" ]:
-            conf = Conf.Conf(secretfile, '#', ' \t', ' \t')
-            while conf.findnextcodeline():
-                vars = conf.getfields()
-                #print vars
-                if vars and (len(vars) == 3) \
-                   and ((vars[0] == self.Login) \
-                        or (vars[0] == '"' + self.Login + '"')) \
-                        and (vars[1] == name):
-                    #print vars                    
-                    #print conf.getline()
-                    #print "login = " + self.Login + " " + self.Password
-                    conf.setfields([self.Login, devname, self.Password])
-                    #print conf.getline()                    
-                    break
-                    
-                conf.nextline()
-            conf.write()
-
 
 if __name__ == '__main__':
     dev = Device()
