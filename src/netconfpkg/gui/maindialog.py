@@ -36,6 +36,7 @@ PROFILE_COLUMN = 0
 STATUS_COLUMN = 1
 DEVICE_COLUMN = 2
 NICKNAME_COLUMN = 3
+TYPE_COLUMN = 4
 
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
@@ -145,7 +146,8 @@ class mainDialog:
         self.devsel = None
         self.hwsel = None
         self.ipsel = None
-
+        self.active_profile_name = DEFAULT_PROFILE_NAME
+        
 #         clist = self.xml.get_widget("hardwareList")
 #         # First: copy the clist-style
 #         self.style1 = clist.get_style().copy()
@@ -254,11 +256,20 @@ class mainDialog:
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
 
+##         for col in [ PROFILE_COLUMN, STATUS_COLUMN, DEVICE_COLUMN,
+##                      NICKNAME_COLUMN, TYPE_COLUMN ]:
+##             colsize = clist.optimal_column_width(col) + 5
+##             titlesize = clist.get_column_widget(col)
+##             print titlesize.get_children()[0].get_width()
+##             #clist.set_column_width(col, )
+
+        
+
     def nop(self, *args):
         pass
 
     def load(self):
-        self.appBar.push(_("Loading Configuration..."))
+        self.appBar.push(_("Loading configuration..."))
         self.loadDevices()
         self.loadHardware()
         self.loadProfiles()
@@ -266,27 +277,27 @@ class mainDialog:
         self.appBar.pop()
 
     def loadDevices(self):
-        self.appBar.push(_("Loading Device Configuration..."))
+        self.appBar.push(_("Loading device configuration..."))
         devicelist = getDeviceList()
         self.appBar.pop()
         
     def loadHardware(self):
-        self.appBar.push(_("Loading Hardware Configuration..."))
+        self.appBar.push(_("Loading hardware configuration..."))
         hardwarelist = getHardwareList()
         self.appBar.pop()
 
     def loadProfiles(self):
-        self.appBar.push(_("Loading Profile Configuration..."))
+        self.appBar.push(_("Loading profile configuration..."))
         profilelist = getProfileList()
         self.appBar.pop()
     
     def loadIPsec(self):
-        self.appBar.push(_("Loading IPsec Configuration..."))
+        self.appBar.push(_("Loading IPsec configuration..."))
         ipseclist = getIPsecList()
         self.appBar.pop()
     
     def test(self):
-        self.appBar.push(_("Testing Configuration Set..."))
+        self.appBar.push(_("Testing configuration set..."))
         profilelist = getProfileList()
         devicelist = getDeviceList()
         hardwarelist = getHardwareList()
@@ -317,11 +328,11 @@ class mainDialog:
                or devicelist.modified() \
                or hardwarelist.modified() \
                or ipseclist.modified():
-            self.appBar.push(_("Active Profile: %s (modified)") % \
+            self.appBar.push(_("Active profile: %s (modified)") % \
                              self.active_profile_name)
             return true
 
-        self.appBar.push(_("Active Profile: %s")% profname)
+        self.appBar.push(_("Active profile: %s")% profname)
 
         return false
 
@@ -329,7 +340,7 @@ class mainDialog:
         if self.test() != 0:
             return 1
         
-        self.appBar.push(_("Saving Configuration..."))
+        self.appBar.push(_("Saving configuration..."))
         self.appBar.refresh()
         profilelist = getProfileList()
         try:
@@ -341,7 +352,7 @@ class mainDialog:
             self.appBar.pop()
             self.checkApply()     
 	except (IOError, OSError, EnvironmentError), errstr:
-            generic_error_dialog (_("Error saving Configuration!\n%s") \
+            generic_error_dialog (_("Error saving configuration!\n%s") \
                                   % (str(errstr)))
         else:
             generic_info_dialog (_("Changes are saved.\n"
@@ -353,28 +364,28 @@ class mainDialog:
         return 0
 
     def saveDevices(self):
-        self.appBar.push(_("Saving Device Configuration..."))
+        self.appBar.push(_("Saving device configuration..."))
         devicelist = getDeviceList()
         devicelist.save()
         devicelist.setChanged(false)
         self.appBar.pop()
         
     def saveHardware(self):
-        self.appBar.push(_("Saving Hardware Configuration..."))
+        self.appBar.push(_("Saving hardware configuration..."))
         hardwarelist = getHardwareList()
         hardwarelist.save()
         hardwarelist.setChanged(false)
         self.appBar.pop()
         
     def saveProfiles(self):
-        self.appBar.push(_("Saving Profile Configuration..."))
+        self.appBar.push(_("Saving profile configuration..."))
         profilelist = getProfileList()
         profilelist.save()
         profilelist.setChanged(false)
         self.appBar.pop()
 
     def saveIPsecs(self):
-        self.appBar.push(_("Saving IPsec Configuration..."))
+        self.appBar.push(_("Saving IPsec configuration..."))
         ipseclist = getIPsecList()
         ipseclist.save()
         ipseclist.setChanged(false)
@@ -397,7 +408,7 @@ class mainDialog:
             
             
     def hydrateDevices(self):
-        self.appBar.push(_("Updating Devices..."))
+        self.appBar.push(_("Updating devices..."))
         devicelist = getDeviceList()
         activedevicelist = NetworkDevice().get()
         profilelist = getProfileList()
@@ -454,7 +465,7 @@ class mainDialog:
         self.checkApply()
         
     def hydrateHardware(self):
-        self.appBar.push(_("Updating Hardware..."))
+        self.appBar.push(_("Updating hardware..."))
         hardwarelist = getHardwareList()
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
@@ -548,7 +559,7 @@ class mainDialog:
         return self.active_profile
 
     def hydrateProfiles(self):
-        self.appBar.push(_("Updating Profiles..."))
+        self.appBar.push(_("Updating profiles..."))
         profilelist = getProfileList()
 
         hclist = self.xml.get_widget("hostsList")
@@ -816,7 +827,7 @@ class mainDialog:
                                   self.dialog)
             return
 
-        self.appBar.push(_("Edit Device..."))
+        self.appBar.push(_("Edit device..."))
         devId = device.DeviceId
         button = self.editDevice(device)
 
@@ -1386,7 +1397,8 @@ class mainDialog:
         profilelist = getProfileList()
         
         profile = self.getActiveProfile()
-        if profile.ProfileName == 'default':
+        if profile.ProfileName == 'default' or \
+               profile.ProfileName == DEFAULT_PROFILE_NAME:
             generic_error_dialog (_('The "%s" profile can\'t be renamed!') \
                                   % DEFAULT_PROFILE_NAME,
                                   self.dialog)
@@ -1441,7 +1453,7 @@ class mainDialog:
 
         name = self.getActiveProfile().ProfileName
 
-        if name == 'default':
+        if name == 'default' or name == DEFAULT_PROFILE_NAME:
             generic_error_dialog(_('The "%s" Profile '
                                    'can not be deleted!') \
                                  % DEFAULT_PROFILE_NAME,
@@ -1585,8 +1597,8 @@ class mainDialog:
                              PRG_VERSION,
                              _("Copyright (c) 2001-2003 Red Hat, Inc."),
                              _("This software is distributed under the GPL. "
-                               "Please Report bugs to Red Hat's Bug Tracking "
-                               "System: http://bugzilla.redhat.com/"),
+                               "Please report bugs to Red Hat's bug tracking "
+                               "system: http://bugzilla.redhat.com/"),
                              ["Harald Hoyer <harald@redhat.com>",
                               "Than Ngo <than@redhat.com>",
                               "Philipp Knirsch <pknirsch@redhat.com>",
@@ -1691,5 +1703,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/08/08 13:42:42 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.30 $"

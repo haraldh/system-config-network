@@ -272,11 +272,7 @@ class CipeInterface(InterfaceCreator):
         self.updateRemoteOptions()
 
     def on_generateKeyButton_clicked(self, *args):
-        command = '/bin/sh'
-        (status , key ) = gtkExecWithCaptureStatus(command = command,
-                                                   argv = [command, '-c',
-                                                           '(ps aux|md5sum; ps alx|md5sum) | tr -cd 0-9 2>/dev/null'])
-        
+        key = gen_hexkey()
         widget = self.xml.get_widget("secretKeyEntry")
         if key:
             widget.set_text(key)
@@ -335,5 +331,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.26 $"

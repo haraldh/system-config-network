@@ -9,7 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
-"POT-Creation-Date: 2003-09-17 16:28+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-08 17:24+0200\n"
 "PO-Revision-Date: 2003-06-26 15:42+1000\n"
 "Last-Translator: Noriko Mizumoto <noriko@redhat.com>\n"
 "Language-Team: Japanese <kdeveloper@kde.gr.jp>\n"
@@ -34,7 +35,7 @@ msgstr "ネットワークデバイスと接続を設定"
 msgid "Network"
 msgstr "ネットワーク"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:158
+#: neat.desktop.in.h:3 src/netconf-tui.py:141
 #: src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Network Configuration"
 msgstr "ネットワーク設定"
@@ -67,7 +68,7 @@ msgstr "インターネット設定ウィザード"
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/env python
 #. # redhat-network-control - A easy-to-use interface for configuring/activating
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2003 Harald Hoyer <harald@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
@@ -104,12 +105,11 @@ msgstr ""
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
 #: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1589
+#: src/netconfpkg/gui/maindialog.py:1598
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
 #: src/neat-control.py:141 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1590
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -118,11 +118,11 @@ msgstr ""
 "Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:384
+#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
 msgid "Network device activating..."
 msgstr "ne"
 
-#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:385
+#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:381
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい...."
@@ -154,7 +154,7 @@ msgstr "プロファイル%sに切り替え失敗"
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:954
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:963
 msgid "To be rewritten!"
 msgstr "再書き込みとなります!"
 
@@ -171,7 +171,7 @@ msgstr " (動作中)"
 #. make ctrl-C work
 #. !/usr/bin/python
 #. # netconf-tui - a tui network configuration tool
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -195,107 +195,85 @@ msgstr ""
 #. main Screen
 #.
 #: src/netconf-tui.py:135
-msgid "Run anyway"
-msgstr ""
-
-#: src/netconf-tui.py:136
-msgid "IMPORTANT"
-msgstr ""
-
-#: src/netconf-tui.py:137
-#, python-format
-msgid ""
-"This tool is unsupported! Please use the graphical tool, because it will "
-"provide the full functionality.\n"
-"If you have no X server installed on this machine, log in via ssh from a "
-"machine with X and use X11 forwarding. If you really want to use this tool, "
-"press <%s>."
-msgstr ""
-
-#: src/netconf-tui.py:147
-msgid "Quit"
-msgstr ""
-
-#: src/netconf-tui.py:152
 msgid "What do you want to configure?"
 msgstr "何を設定しますか?"
 
-#: src/netconf-tui.py:153
+#: src/netconf-tui.py:136
 msgid "Configure"
 msgstr "設定"
 
-#: src/netconf-tui.py:153
+#: src/netconf-tui.py:136
 msgid "Exit"
 msgstr "出口"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:274 src/netconf-tui.py:383 src/netconf-tui.py:489
+#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
 msgstr "名前"
 
-#: src/netconf-tui.py:275 src/netconf-tui.py:384 src/netconf-tui.py:490
+#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
 #: src/netconfpkg/gui/maindialog.glade.h:11
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "デバイス"
 
-#: src/netconf-tui.py:276
+#: src/netconf-tui.py:260
 msgid "Use DHCP"
 msgstr "DHCPの使用"
 
-#: src/netconf-tui.py:277
+#: src/netconf-tui.py:261
 msgid "Static IP"
 msgstr "静的IP"
 
-#: src/netconf-tui.py:278
+#: src/netconf-tui.py:262
 msgid "Netmask"
 msgstr "ネットマスク"
 
-#: src/netconf-tui.py:279
+#: src/netconf-tui.py:263
 msgid "Default gateway IP"
 msgstr "デフォルトゲートウェイ IP"
 
-#: src/netconf-tui.py:287 src/netconf-tui.py:395 src/netconf-tui.py:501
+#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
 msgid "Ok"
 msgstr "Ok"
 
-#: src/netconf-tui.py:287 src/netconf-tui.py:395 src/netconf-tui.py:501
+#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
 msgid "Cancel"
 msgstr "取り消し"
 
-#: src/netconf-tui.py:289
+#: src/netconf-tui.py:273
 msgid "Ethernet Configuration"
 msgstr "イーサネット設定"
 
-#: src/netconf-tui.py:385 src/netconf-tui.py:491
+#: src/netconf-tui.py:369 src/netconf-tui.py:475
 msgid "ISP Phonenumber"
 msgstr "ISP電話番号"
 
-#: src/netconf-tui.py:386 src/netconf-tui.py:492
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Login"
 msgstr "ISPログイン"
 
-#: src/netconf-tui.py:387 src/netconf-tui.py:493
+#: src/netconf-tui.py:371 src/netconf-tui.py:477
 msgid "ISP Password"
 msgstr "ISPパスワード"
 
-#: src/netconf-tui.py:388
+#: src/netconf-tui.py:372
 msgid "Modem Initstring"
 msgstr "モデムのInitstring"
 
-#: src/netconf-tui.py:396 src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr "モデム設定"
 
-#: src/netconf-tui.py:494
+#: src/netconf-tui.py:478
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:502
+#: src/netconf-tui.py:486
 msgid "ISDN Configuration"
 msgstr "ISDN設定"
 
@@ -401,50 +379,45 @@ msgid "export / import hardware list"
 msgstr "ハードウェア一覧のエキスポート / インポート "
 
 #: src/netconf-cmd.py:110
-#, fuzzy
-msgid "export / import IPsec list"
-msgstr "プロファイル一覧のエキスポート / インポート"
-
-#: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
 msgstr "デバイス一覧(デフォルト)のエキスポート / インポート"
 
-#: src/netconf-cmd.py:114
+#: src/netconf-cmd.py:112
 msgid "export / import profile list"
 msgstr "プロファイル一覧のエキスポート / インポート"
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:114
 msgid "set the root directory"
 msgstr "root ディレクトリの設定"
 
-#: src/netconf-cmd.py:117
+#: src/netconf-cmd.py:115
 msgid "export list (default)"
 msgstr "エキスポート一覧(デフォルト)"
 
-#: src/netconf-cmd.py:118
+#: src/netconf-cmd.py:116
 msgid "import list"
 msgstr "インポート一覧"
 
-#: src/netconf-cmd.py:120
+#: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
 msgstr "インポートする前に既存の一覧を消去"
 
-#: src/netconf-cmd.py:122
+#: src/netconf-cmd.py:120
 msgid "import from file"
 msgstr "ファイルからインポート"
 
-#: src/netconf-cmd.py:227
+#: src/netconf-cmd.py:225
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "不明なオプション %s\n"
 
 #. remove the last \n
-#: src/netconf-cmd.py:287
+#: src/netconf-cmd.py:304
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "不明な一覧 %s\n"
 
-#: src/netconf-cmd.py:291
+#: src/netconf-cmd.py:308
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "行の構文解析にエラー: %s"
@@ -509,22 +482,25 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetInterface.py:215
 #: src/netconfpkg/gui/WirelessInterface.py:283
 #: src/netconfpkg/gui/TokenRingInterface.py:207
-#: src/netconfpkg/gui/editipsec.py:248 src/netconfpkg/gui/PTPInterface.py:210
+#: src/netconfpkg/gui/editipsec.py:201 src/netconfpkg/gui/PTPInterface.py:210
 msgid "You have selected the following information:"
 msgstr "次の情報が選択されました:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:136
-msgid "Ethernet Device:"
+#, fuzzy
+msgid "Ethernet device:"
 msgstr "イーサネットデバイス:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:137
 #: src/netconfpkg/gui/DialupDruid.py:233
-msgid "Provider Name:"
+#, fuzzy
+msgid "Provider name:"
 msgstr "プロバイダ名:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:138
 #: src/netconfpkg/gui/DialupDruid.py:235
-msgid "Login Name:"
+#, fuzzy
+msgid "Login name:"
 msgstr "ログイン名:"
 
 #. widget.set_position(0)
@@ -558,16 +534,19 @@ msgid "Device:"
 msgstr "デバイス:"
 
 #: src/netconfpkg/gui/CipeInterface.py:146
-msgid "Tunnel through Device:"
+#, fuzzy
+msgid "Tunnel through device:"
 msgstr "トンネル通過 デバイス："
 
 #: src/netconfpkg/gui/CipeInterface.py:147
-msgid "Local Port:"
+#, fuzzy
+msgid "Local port:"
 msgstr "ローカル ポート:"
 
 #: src/netconfpkg/gui/CipeInterface.py:152
 #: src/netconfpkg/gui/CipeInterface.py:154
-msgid "Remote Peer Address:"
+#, fuzzy
+msgid "Remote peer address:"
 msgstr "リモート ピア アドレス:"
 
 #: src/netconfpkg/gui/CipeInterface.py:152
@@ -576,15 +555,18 @@ msgid "Auto"
 msgstr "自動"
 
 #: src/netconfpkg/gui/CipeInterface.py:155
-msgid "Remote Peer Port:"
+#, fuzzy
+msgid "Remote peer port:"
 msgstr "リモート ピア ポート:"
 
 #: src/netconfpkg/gui/CipeInterface.py:157
-msgid "Remote Virtual Address:"
+#, fuzzy
+msgid "Remote virtual address:"
 msgstr "リモート 仮想 アドレス:"
 
 #: src/netconfpkg/gui/CipeInterface.py:158
-msgid "Local Virtual Address:"
+#, fuzzy
+msgid "Local virtual address:"
 msgstr "ローカル仮想アドレス:"
 
 #. else:
@@ -616,32 +598,38 @@ msgstr "(自己の選択)"
 
 #: src/netconfpkg/gui/CipeInterface.py:307
 #: src/netconfpkg/gui/cipeconfig.py:207
-msgid "IP Address of Tunnel Device: "
+#, fuzzy
+msgid "IP address of tunnel device: "
 msgstr "トンネルデバイスの IP アドレス"
 
 #: src/netconfpkg/gui/CipeInterface.py:308
 #: src/netconfpkg/gui/cipeconfig.py:208
-msgid "Local Port: "
+#, fuzzy
+msgid "Local port: "
 msgstr "ローカル ポート:"
 
 #: src/netconfpkg/gui/CipeInterface.py:309
 #: src/netconfpkg/gui/cipeconfig.py:209
-msgid "Remote Peer Address: "
+#, fuzzy
+msgid "Remote peer address: "
 msgstr "リモート ピア アドレス:"
 
 #: src/netconfpkg/gui/CipeInterface.py:313
 #: src/netconfpkg/gui/cipeconfig.py:213
-msgid "Remote Virtual Address: "
+#, fuzzy
+msgid "Remote virtual address: "
 msgstr "リモート 仮想 アドレス:"
 
 #: src/netconfpkg/gui/CipeInterface.py:314
 #: src/netconfpkg/gui/cipeconfig.py:214
-msgid "Local Virtual Address: "
+#, fuzzy
+msgid "Local virtual address: "
 msgstr "ローカル 仮想 アドレス:"
 
 #: src/netconfpkg/gui/CipeInterface.py:315
 #: src/netconfpkg/gui/cipeconfig.py:215
-msgid "Secret Key: "
+#, fuzzy
+msgid "Secret key: "
 msgstr "シークレット キー:"
 
 #. widget.set_position(0)
@@ -658,7 +646,8 @@ msgid "Hardware:"
 msgstr "ハードウェア:"
 
 #: src/netconfpkg/gui/DialupDruid.py:236
-msgid "Phone Number:"
+#, fuzzy
+msgid "Phone number:"
 msgstr "電話番号:"
 
 #. Copyright (C) 2001-2003 Red Hat, Inc.
@@ -686,9 +675,6 @@ msgstr "電話番号:"
 #: src/netconfpkg/gui/ethernethardware.py:170
 #: src/netconfpkg/gui/tokenringhardware.py:127
 #: src/netconfpkg/gui/tokenringhardware.py:138
-#: src/netconfpkg/gui/iucvhardware.py:153
-#: src/netconfpkg/gui/iucvhardware.py:170
-#: src/netconfpkg/gui/ctchardware.py:153 src/netconfpkg/gui/ctchardware.py:170
 #: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
 #: src/netconfpkg/NC_functions.py:343 src/netconfpkg/NCDevice.py:205
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
@@ -742,13 +728,15 @@ msgstr "アドレス:"
 #: src/netconfpkg/gui/EthernetInterface.py:228
 #: src/netconfpkg/gui/WirelessInterface.py:296
 #: src/netconfpkg/gui/TokenRingInterface.py:220
-msgid "Subnet Mask:"
+#, fuzzy
+msgid "Subnet mask:"
 msgstr "サブネット マスク:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:229
 #: src/netconfpkg/gui/WirelessInterface.py:297
 #: src/netconfpkg/gui/TokenRingInterface.py:221
-msgid "Default Gateway Address:"
+#, fuzzy
+msgid "Default gateway address:"
 msgstr "デフォルト ゲートウェイ アドレス:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:231
@@ -773,7 +761,9 @@ msgstr "自動的にIPアドレス設定を取得:"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GUI_functions.py:545
+#. print __name__, "waitpid:", msg
+#. print __name__, "waitpid:", msg
+#: src/netconfpkg/gui/GUI_functions.py:547
 #, python-format
 msgid ""
 "Failed to run:\n"
@@ -782,7 +772,7 @@ msgstr ""
 "実行に失敗:\n"
 "%s"
 
-#: src/netconfpkg/gui/GUI_functions.py:548
+#: src/netconfpkg/gui/GUI_functions.py:550
 msgid ""
 "\n"
 "Succeeded. Please read the output."
@@ -954,7 +944,7 @@ msgstr "低"
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Medium"
 msgstr "中間"
 
@@ -1005,7 +995,8 @@ msgid "Mode: "
 msgstr "モード:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:303
-msgid "ESSID (Network ID):"
+#, fuzzy
+msgid "ESSID (network ID):"
 msgstr "ESSID (ネットワークID):"
 
 #: src/netconfpkg/gui/WirelessInterface.py:309
@@ -1013,7 +1004,8 @@ msgid "Channel: "
 msgstr "チャンネル:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:310
-msgid "Transmit Rate: "
+#, fuzzy
+msgid "Transmit rate: "
 msgstr "転送 レート:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:311
@@ -1182,48 +1174,48 @@ msgstr "ISDN ダイアルアップ 設定"
 #. get free ISDN device if encap mode is changed
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.py:386
-#: src/netconfpkg/gui/dialupconfig.glade.h:69
+#: src/netconfpkg/gui/dialupconfig.glade.h:70
 msgid "in"
 msgstr "中"
 
 #: src/netconfpkg/gui/dialupconfig.py:293
-#: src/netconfpkg/gui/dialupconfig.glade.h:72
+#: src/netconfpkg/gui/dialupconfig.glade.h:73
 msgid "out"
 msgstr "出る"
 
 #: src/netconfpkg/gui/dialupconfig.py:337
 #: src/netconfpkg/gui/DialupDruid.glade.h:32
-#: src/netconfpkg/gui/dialupconfig.glade.h:74
+#: src/netconfpkg/gui/dialupconfig.glade.h:75
 msgid "raw IP"
 msgstr "原形IP"
 
 #: src/netconfpkg/gui/dialupconfig.py:339
 #: src/netconfpkg/gui/dialupconfig.py:368
 #: src/netconfpkg/gui/DialupDruid.glade.h:33
-#: src/netconfpkg/gui/dialupconfig.glade.h:75
+#: src/netconfpkg/gui/dialupconfig.glade.h:76
 msgid "sync PPP"
 msgstr "同期PPP"
 
 #: src/netconfpkg/gui/dialupconfig.py:352
 #: src/netconfpkg/gui/dialupconfig.py:420
-#: src/netconfpkg/gui/dialupconfig.glade.h:73
+#: src/netconfpkg/gui/dialupconfig.glade.h:74
 msgid "pap"
 msgstr "PAP"
 
 #: src/netconfpkg/gui/dialupconfig.py:354
 #: src/netconfpkg/gui/dialupconfig.py:422
-#: src/netconfpkg/gui/dialupconfig.glade.h:67
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "chap"
 msgstr "CHAP"
 
 #: src/netconfpkg/gui/dialupconfig.py:357
 #: src/netconfpkg/gui/dialupconfig.py:424
-#: src/netconfpkg/gui/dialupconfig.glade.h:68
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "chap+pap"
 msgstr "CHAP+PAP"
 
 #: src/netconfpkg/gui/dialupconfig.py:359
-#: src/netconfpkg/gui/dialupconfig.glade.h:71
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
 msgid "none"
 msgstr "なし"
 
@@ -1382,55 +1374,67 @@ msgstr "モデム ダイアルアップ設定"
 #. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
 #. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
 #. initialize the button state..
-#: src/netconfpkg/gui/maindialog.py:262
-msgid "Loading Configuration..."
+#. #         for col in [ PROFILE_COLUMN, STATUS_COLUMN, DEVICE_COLUMN,
+#. #                      NICKNAME_COLUMN, TYPE_COLUMN ]:
+#. #             colsize = clist.optimal_column_width(col) + 5
+#. #             titlesize = clist.get_column_widget(col)
+#. #             print titlesize.get_children()[0].get_width()
+#. #             #clist.set_column_width(col, )
+#: src/netconfpkg/gui/maindialog.py:272
+#, fuzzy
+msgid "Loading configuration..."
 msgstr "設定をロードしています..."
 
-#: src/netconfpkg/gui/maindialog.py:270
-msgid "Loading Device Configuration..."
-msgstr "デバイス設定をロードしています..."
-
-#: src/netconfpkg/gui/maindialog.py:275
-msgid "Loading Hardware Configuration..."
-msgstr "ハードウェア設定をロードしています..."
-
 #: src/netconfpkg/gui/maindialog.py:280
-msgid "Loading Profile Configuration..."
-msgstr "プロファイル設定をロードしています..."
+#, fuzzy
+msgid "Loading device configuration..."
+msgstr "デバイス設定をロードしています..."
 
 #: src/netconfpkg/gui/maindialog.py:285
 #, fuzzy
-msgid "Loading IPsec Configuration..."
-msgstr "設定をロードしています..."
+msgid "Loading hardware configuration..."
+msgstr "ハードウェア設定をロードしています..."
 
 #: src/netconfpkg/gui/maindialog.py:290
-msgid "Testing Configuration Set..."
+#, fuzzy
+msgid "Loading profile configuration..."
+msgstr "プロファイル設定をロードしています..."
+
+#: src/netconfpkg/gui/maindialog.py:295
+#, fuzzy
+msgid "Loading IPsec configuration..."
+msgstr "設定をロードしています..."
+
+#: src/netconfpkg/gui/maindialog.py:300
+#, fuzzy
+msgid "Testing configuration set..."
 msgstr "設定のセットをテストしています..."
 
-#: src/netconfpkg/gui/maindialog.py:321
-#, python-format
-msgid "Active Profile: %s (modified)"
+#: src/netconfpkg/gui/maindialog.py:331
+#, fuzzy, python-format
+msgid "Active profile: %s (modified)"
 msgstr "使用中のプロファイル: %s(変更済み)"
 
-#: src/netconfpkg/gui/maindialog.py:325
-#, python-format
-msgid "Active Profile: %s"
+#: src/netconfpkg/gui/maindialog.py:335
+#, fuzzy, python-format
+msgid "Active profile: %s"
 msgstr "使用中のプロファイル: %s"
 
-#: src/netconfpkg/gui/maindialog.py:333
-msgid "Saving Configuration..."
+#: src/netconfpkg/gui/maindialog.py:343
+#, fuzzy
+msgid "Saving configuration..."
 msgstr "設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:345
-#, python-format
+#: src/netconfpkg/gui/maindialog.py:355
+#, fuzzy, python-format
 msgid ""
-"Error saving Configuration!\n"
+"Error saving configuration!\n"
 "%s"
 msgstr ""
 "設定を保存中にエラー発生です\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:348
+#: src/netconfpkg/gui/maindialog.py:358
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -1442,35 +1446,34 @@ msgstr ""
 "サービスの再起動かコンピュータの\n"
 " 再起動ができます。"
 
-#: src/netconfpkg/gui/maindialog.py:357
-msgid "Saving Device Configuration..."
+#: src/netconfpkg/gui/maindialog.py:367
+#, fuzzy
+msgid "Saving device configuration..."
 msgstr "デバイス設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:364
-msgid "Saving Hardware Configuration..."
+#: src/netconfpkg/gui/maindialog.py:374
+#, fuzzy
+msgid "Saving hardware configuration..."
 msgstr "ハードウェアの設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:371
-msgid "Saving Profile Configuration..."
+#: src/netconfpkg/gui/maindialog.py:381
+#, fuzzy
+msgid "Saving profile configuration..."
 msgstr "プロファイルの設定を保存しています..."
 
-#: src/netconfpkg/gui/maindialog.py:378
+#: src/netconfpkg/gui/maindialog.py:388
 #, fuzzy
-msgid "Saving IPsec Configuration..."
+msgid "Saving IPsec configuration..."
 msgstr "設定を保存しています..."
 
-#. #         if ch == -1:
-#. #             ch = self.changed()
-#. #         if ch:
-#. #             apply_btn.set_sensitive (TRUE)
-#. #         else:
-#. #             apply_btn.set_sensitive (FALSE)
-#: src/netconfpkg/gui/maindialog.py:402
-msgid "Updating Devices..."
+#: src/netconfpkg/gui/maindialog.py:411
+#, fuzzy
+msgid "Updating devices..."
 msgstr "デバイスを更新しています..."
 
-#: src/netconfpkg/gui/maindialog.py:459
-msgid "Updating Hardware..."
+#: src/netconfpkg/gui/maindialog.py:468
+#, fuzzy
+msgid "Updating hardware..."
 msgstr "ハードウェアを更新しています..."
 
 #. if hw.Status == HW_OK:
@@ -1496,53 +1499,55 @@ msgstr "ハードウェアを更新しています..."
 #. else:
 #. device.createIPsecList()
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:553
-msgid "Updating Profiles..."
+#: src/netconfpkg/gui/maindialog.py:562
+#, fuzzy
+msgid "Updating profiles..."
 msgstr "プロファイルを更新しています..."
 
 #. print "hydrateProfiles(%s)" % self.active_profile_name
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:659 src/netconfpkg/gui/maindialog.py:752
-#: src/netconfpkg/gui/maindialog.py:981
+#: src/netconfpkg/gui/maindialog.py:668 src/netconfpkg/gui/maindialog.py:761
+#: src/netconfpkg/gui/maindialog.py:990
 msgid "Do you want to save your changes?"
 msgstr "変更を保存しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:817
+#: src/netconfpkg/gui/maindialog.py:826
 msgid "The Loopback device can not be edited!"
 msgstr "ループバックデバイスは編集できません!"
 
-#: src/netconfpkg/gui/maindialog.py:821
-msgid "Edit Device..."
+#: src/netconfpkg/gui/maindialog.py:830
+#, fuzzy
+msgid "Edit device..."
 msgstr "デバイスの編集..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:859
+#: src/netconfpkg/gui/maindialog.py:868
 #, fuzzy, python-format
 msgid "The device type %s cannot be edited!\n"
 msgstr "ループバックデバイスは編集できません!"
 
-#: src/netconfpkg/gui/maindialog.py:878
+#: src/netconfpkg/gui/maindialog.py:887
 msgid "The Loopback device can not be removed!"
 msgstr "ループバックデバイスは消去できません!"
 
-#: src/netconfpkg/gui/maindialog.py:882
+#: src/netconfpkg/gui/maindialog.py:891
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "デバイス\"%s\"を本当に消去しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:914 src/netconfpkg/gui/maindialog.py:1669
+#: src/netconfpkg/gui/maindialog.py:923 src/netconfpkg/gui/maindialog.py:1678
 msgid "You have made some changes in your configuration."
 msgstr "設定の中で変更がされました。"
 
-#: src/netconfpkg/gui/maindialog.py:915
+#: src/netconfpkg/gui/maindialog.py:924
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
 
-#: src/netconfpkg/gui/maindialog.py:917 src/netconfpkg/gui/maindialog.py:1672
+#: src/netconfpkg/gui/maindialog.py:926 src/netconfpkg/gui/maindialog.py:1681
 msgid "Do you want to continue?"
 msgstr "続けますか?"
 
@@ -1558,28 +1563,28 @@ msgstr "続けますか?"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1109
+#: src/netconfpkg/gui/maindialog.py:1118
 msgid "The Loopback device can not be disabled!"
 msgstr "ループバックデバイスは無効にできません!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1335 src/netconfpkg/gui/maindialog.py:1415
+#: src/netconfpkg/gui/maindialog.py:1344 src/netconfpkg/gui/maindialog.py:1424
 msgid "The name may only contain letters and digits!"
 msgstr "名前には文字と数字だけを含めることができます!"
 
-#: src/netconfpkg/gui/maindialog.py:1340 src/netconfpkg/gui/maindialog.py:1420
+#: src/netconfpkg/gui/maindialog.py:1349 src/netconfpkg/gui/maindialog.py:1429
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "プロファイルに\"%s\"という名前をつけることはできません!"
 
-#: src/netconfpkg/gui/maindialog.py:1346 src/netconfpkg/gui/maindialog.py:1426
+#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
 msgid "The profile name already exists!"
 msgstr "そのプロファイル名は既に存在しています!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1393
+#: src/netconfpkg/gui/maindialog.py:1402
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\"プロファイルの名前変更はできません!"
@@ -1587,12 +1592,12 @@ msgstr "\"%s\"プロファイルの名前変更はできません!"
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1448
+#: src/netconfpkg/gui/maindialog.py:1457
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\"プロファイルは削除できません!"
 
-#: src/netconfpkg/gui/maindialog.py:1454
+#: src/netconfpkg/gui/maindialog.py:1463
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "プロファイル\"%s\"を本当に削除しますか?"
@@ -1600,7 +1605,7 @@ msgstr "プロファイル\"%s\"を本当に削除しますか?"
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1528
+#: src/netconfpkg/gui/maindialog.py:1537
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -1608,18 +1613,27 @@ msgstr ""
 "スミマセン。編集する物がないか、\n"
 "又はこのタイプはまだ編集できません。"
 
-#: src/netconfpkg/gui/maindialog.py:1546
+#: src/netconfpkg/gui/maindialog.py:1555
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "本当に\"%s\"を消去しますか?"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1559
+#: src/netconfpkg/gui/maindialog.py:1568
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "\"%s\"を使用するデバイスをすべて削除しますか?"
 
-#: src/netconfpkg/gui/maindialog.py:1670
+#: src/netconfpkg/gui/maindialog.py:1599
+#, fuzzy
+msgid ""
+"This software is distributed under the GPL. Please report bugs to Red Hat's "
+"bug tracking system: http://bugzilla.redhat.com/"
+msgstr ""
+"このソフトウェアはGPLの元で配布されています。バグに関する報告は Red Hatの "
+"Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
+
+#: src/netconfpkg/gui/maindialog.py:1679
 #, fuzzy, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr ""
@@ -1642,18 +1656,15 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ethernethardware.py:94
 #: src/netconfpkg/gui/tokenringhardware.py:67
-#: src/netconfpkg/gui/iucvhardware.py:94 src/netconfpkg/gui/ctchardware.py:94
 msgid "Command failed: "
 msgstr "コマンドフィールド: "
 
 #: src/netconfpkg/gui/ethernethardware.py:95
 #: src/netconfpkg/gui/tokenringhardware.py:68
-#: src/netconfpkg/gui/iucvhardware.py:95 src/netconfpkg/gui/ctchardware.py:95
 msgid "Output:\n"
 msgstr "出力:\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:97
-#: src/netconfpkg/gui/iucvhardware.py:97 src/netconfpkg/gui/ctchardware.py:97
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
@@ -1747,8 +1758,6 @@ msgstr "新しい Cipe 接続作成"
 msgid "IUCV Device"
 msgstr "IUCV デバイス"
 
-#. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
-#. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1779,8 +1788,7 @@ msgstr "新しい Cipe 接続作成"
 msgid "Point to Point (IP):"
 msgstr ""
 
-#. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
-#. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+#. print self.devicelist
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1818,7 +1826,7 @@ msgstr ""
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/env python
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
@@ -1926,11 +1934,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:66
+#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:67
 msgid "auto"
 msgstr "自動"
 
-#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:70
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:71
 msgid "manual"
 msgstr "マニュアル"
 
@@ -2297,6 +2305,10 @@ msgstr "ハードウェア(CRTSCTS):"
 msgid "Software (XON/XOFF)"
 msgstr "ソフトウェア(XON/XOFF)"
 
+#. print "Set verbose %d" % l
+#. print "verbose == %d" % _verbose
+#. print "Set debug %d" % l
+#. print "debug == %d" % _debug
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
@@ -2312,8 +2324,10 @@ msgstr ""
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
+#. print __name__, "waitpid:", msg
+#. print __name__, "waitpid:", msg
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:690
+#: src/netconfpkg/NC_functions.py:692
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2324,7 +2338,7 @@ msgstr ""
 " エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:700
+#: src/netconfpkg/NC_functions.py:702
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2337,7 +2351,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:711
+#: src/netconfpkg/NC_functions.py:713
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2350,7 +2364,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:721
+#: src/netconfpkg/NC_functions.py:723
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2363,7 +2377,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:731
+#: src/netconfpkg/NC_functions.py:733
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2376,7 +2390,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:739
+#: src/netconfpkg/NC_functions.py:741
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2581,21 +2595,21 @@ msgstr ""
 msgid "Static routes file %s is invalid"
 msgstr "静的ルートファイル %s は無効です"
 
-#: src/netconfpkg/NCDevice.py:387
+#: src/netconfpkg/NCDevice.py:383
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "ネットワークデバイス%sを起動できません\n"
 
-#: src/netconfpkg/NCDevice.py:404
+#: src/netconfpkg/NCDevice.py:400
 msgid "Network device deactivating..."
 msgstr "ネットワークデバイスを停止中です..."
 
-#: src/netconfpkg/NCDevice.py:405
+#: src/netconfpkg/NCDevice.py:401
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "ネットワークデバイス%sを停止中です。お待ち下さい..."
 
-#: src/netconfpkg/NCDevice.py:407
+#: src/netconfpkg/NCDevice.py:403
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "ネットワークデバイス%sを停止出来ません\n"
@@ -2846,7 +2860,6 @@ msgstr "ネットワークデバイス%sを停止出来ません\n"
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 #: src/netconfpkg/gui/maindialog.glade.h:1
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/ctchardware.glade.h:1
 #: src/netconfpkg/gui/editipsec.glade.h:1
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/ptpconfig.glade.h:1
@@ -2900,7 +2913,8 @@ msgid "Enter the provider name for this account."
 msgstr "このアカウントのプロバイダ名を入れて下さい。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Ethernet _Device:"
+#, fuzzy
+msgid "Ethernet _device:"
 msgstr "イーサネットデバイス(_D):"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
@@ -2932,20 +2946,22 @@ msgstr "この形式を使用してT-Onlineアカウントデータに入りま�
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
 #: src/netconfpkg/gui/DialupDruid.glade.h:28
-#: src/netconfpkg/gui/dialupconfig.glade.h:57
-#: src/netconfpkg/gui/dslconfig.glade.h:22
-msgid "_Login Name:"
+#: src/netconfpkg/gui/dialupconfig.glade.h:58
+#: src/netconfpkg/gui/dslconfig.glade.h:23
+#, fuzzy
+msgid "_Login name:"
 msgstr "ログイン名(_L):"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/dslconfig.glade.h:26
-msgid "_Provider Name:"
+#: src/netconfpkg/gui/dslconfig.glade.h:27
+#, fuzzy
+msgid "_Provider name:"
 msgstr "プロバイダ名(_P):"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/DialupDruid.glade.h:31
-#: src/netconfpkg/gui/dialupconfig.glade.h:64
-#: src/netconfpkg/gui/dslconfig.glade.h:29
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
+#: src/netconfpkg/gui/dslconfig.glade.h:30
 msgid "_T-Online Account Setup"
 msgstr "T-Onlineアカウント設定(_T)"
 
@@ -2964,7 +2980,8 @@ msgstr "Cipe接続を作成"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/cipeconfig.glade.h:4
-msgid "Lo_cal Virtual Address:"
+#, fuzzy
+msgid "Lo_cal virtual address:"
 msgstr "ローカル仮想アドレス(_c):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
@@ -2975,13 +2992,15 @@ msgstr "新規インターフェース"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
 #: src/netconfpkg/gui/cipeconfig.glade.h:5
-msgid "Remote Peer P_ort:"
-msgstr "リモートピアポート(_o):"
+#, fuzzy
+msgid "Remote _virtual address:"
+msgstr "リモート仮想アドレス(_V):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/cipeconfig.glade.h:6
-msgid "Remote _Virtual Address:"
-msgstr "リモート仮想アドレス(_V):"
+#, fuzzy
+msgid "Remote peer p_ort:"
+msgstr "リモートピアポート(_o):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
@@ -3000,22 +3019,26 @@ msgstr "生成(_G)"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/cipeconfig.glade.h:11
-msgid "_Local Port:"
+#, fuzzy
+msgid "_Local port:"
 msgstr "ローカルポート(_L):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
 #: src/netconfpkg/gui/cipeconfig.glade.h:13
-msgid "_Remote Peer Address:"
+#, fuzzy
+msgid "_Remote peer address:"
 msgstr "リモートピアアドレス(_R):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
 #: src/netconfpkg/gui/cipeconfig.glade.h:15
-msgid "_Secret Key:"
+#, fuzzy
+msgid "_Secret key:"
 msgstr "シークレットキー(_S):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
 #: src/netconfpkg/gui/cipeconfig.glade.h:17
-msgid "_Tunnel through Device:"
+#, fuzzy
+msgid "_Tunnel through device:"
 msgstr "トンネル貫通デバイス(_T):"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:15
@@ -3085,7 +3108,8 @@ msgid "eth4"
 msgstr "eth4"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:2
-msgid "A_rea Code:"
+#, fuzzy
+msgid "A_rea code:"
 msgstr "市街局番(_r):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:3
@@ -3103,11 +3127,13 @@ msgstr "ダイヤルアップ接続を作成"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/sharedtcpip.glade.h:6
-msgid "Default _Gateway Address:"
+#, fuzzy
+msgid "Default _gateway address:"
 msgstr "デフォルトゲートウェイアドレス(_G):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:7
-msgid "Encapsulation Mode:"
+#, fuzzy
+msgid "Encapsulation mode:"
 msgstr "カプセル化モード:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:8
@@ -3141,7 +3167,7 @@ msgid "Internet Provider"
 msgstr "インターネットプロバイダ"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:16
-#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
 msgstr "手動IPアドレス設定"
 
@@ -3160,7 +3186,8 @@ msgstr "接頭番号(_x):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:23
 #: src/netconfpkg/gui/dialupconfig.glade.h:39
-msgid "Provider _Name:"
+#, fuzzy
+msgid "Provider _name:"
 msgstr "プロバイダ名(_N):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:24
@@ -3168,26 +3195,28 @@ msgid "Select Provider"
 msgstr "プロバイダを選択"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:25
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Statically set IP addresses:"
 msgstr "固定のIPアドレス設定:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:27
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/ptpconfig.glade.h:6
 msgid "_Address:"
 msgstr "アドレス(_A):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:29
-msgid "_Phone Number:"
+#, fuzzy
+msgid "_Phone number:"
 msgstr "電話番号(_P):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:30
 #: src/netconfpkg/gui/editadress.glade.h:5
-#: src/netconfpkg/gui/sharedtcpip.glade.h:40
-msgid "_Subnet Mask:"
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#, fuzzy
+msgid "_Subnet mask:"
 msgstr "サブネットマスク(_S):"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
@@ -3328,7 +3357,6 @@ msgstr "IRQ(_Q):"
 #: src/netconfpkg/gui/ethernethardware.glade.h:21
 #: src/netconfpkg/gui/isdnhardware.glade.h:9
 #: src/netconfpkg/gui/tokenringhardware.glade.h:20
-#: src/netconfpkg/gui/ctchardware.glade.h:7
 msgid "Resource"
 msgstr "リソース"
 
@@ -3434,7 +3462,8 @@ msgstr "ユーロISDN(EDSS1)(_r)"
 
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
 #: src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN _Adapters:"
+#, fuzzy
+msgid "ISDN _adapters:"
 msgstr "ISDNアダプタ(_A):"
 
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
@@ -3542,7 +3571,8 @@ msgstr "モデムのプロパティ"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:25
 #: src/netconfpkg/gui/modemconfig.glade.h:25
-msgid "Modem _Volume:"
+#, fuzzy
+msgid "Modem _volume:"
 msgstr "モデム音量(_V):"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:28
@@ -3551,17 +3581,20 @@ msgstr "モデムを選択"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:31
 #: src/netconfpkg/gui/modemconfig.glade.h:30
-msgid "_Baud Rate:"
+#, fuzzy
+msgid "_Baud rate:"
 msgstr "ボードレート(_B):"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:32
 #: src/netconfpkg/gui/modemconfig.glade.h:31
-msgid "_Flow Control:"
+#, fuzzy
+msgid "_Flow control:"
 msgstr "フロー制御(_F):"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:33
 #: src/netconfpkg/gui/modemconfig.glade.h:32
-msgid "_Modem Device:"
+#, fuzzy
+msgid "_Modem device:"
 msgstr "モデムデバイス(_M):"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:34
@@ -3586,37 +3619,37 @@ msgid "Select Token Ring Adapter"
 msgstr "トークンリングアダプタを選択"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:26
-#: src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: src/netconfpkg/gui/tokenringconfig.glade.h:17
 #: src/netconfpkg/gui/tokenringhardware.glade.h:26
 msgid "tr0"
 msgstr "tr0"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:27
-#: src/netconfpkg/gui/tokenringconfig.glade.h:17
+#: src/netconfpkg/gui/tokenringconfig.glade.h:18
 #: src/netconfpkg/gui/tokenringhardware.glade.h:27
 msgid "tr1"
 msgstr "tr1"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:28
-#: src/netconfpkg/gui/tokenringconfig.glade.h:18
+#: src/netconfpkg/gui/tokenringconfig.glade.h:19
 #: src/netconfpkg/gui/tokenringhardware.glade.h:28
 msgid "tr2"
 msgstr "tr2"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:29
-#: src/netconfpkg/gui/tokenringconfig.glade.h:19
+#: src/netconfpkg/gui/tokenringconfig.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:29
 msgid "tr3"
 msgstr "tr3"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:30
-#: src/netconfpkg/gui/tokenringconfig.glade.h:20
+#: src/netconfpkg/gui/tokenringconfig.glade.h:21
 #: src/netconfpkg/gui/tokenringhardware.glade.h:30
 msgid "tr4"
 msgstr "tr4"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:31
-#: src/netconfpkg/gui/tokenringconfig.glade.h:21
+#: src/netconfpkg/gui/tokenringconfig.glade.h:22
 #: src/netconfpkg/gui/tokenringhardware.glade.h:31
 msgid "tr5"
 msgstr "tr5"
@@ -3652,7 +3685,8 @@ msgid "Account Setup"
 msgstr "アカウント設定"
 
 #: src/netconfpkg/gui/tonline.glade.h:2
-msgid "Associated T-Online _Number:"
+#, fuzzy
+msgid "Associated T-Online _number:"
 msgstr "関連したT-Online番号(_N):"
 
 #: src/netconfpkg/gui/tonline.glade.h:3
@@ -3664,15 +3698,18 @@ msgstr ""
 "アクセスは残念ながら不可能です。"
 
 #: src/netconfpkg/gui/tonline.glade.h:4
-msgid "_Adapter Identifier:"
+#, fuzzy
+msgid "_Adapter identifier:"
 msgstr "アダプタ識別子(_A):"
 
 #: src/netconfpkg/gui/tonline.glade.h:5
-msgid "_Concurrent User Number/Suffix:"
+#, fuzzy
+msgid "_Concurrent user number/suffix:"
 msgstr "現在のユーザー番号/接尾辞(_C):"
 
 #: src/netconfpkg/gui/tonline.glade.h:6
-msgid "_Personal Password:"
+#, fuzzy
+msgid "_Personal password:"
 msgstr "個人パスワード(_P):"
 
 #: src/netconfpkg/gui/tonline.glade.h:7
@@ -3718,20 +3755,20 @@ msgid "_General"
 msgstr "全般(_G)"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:12
-#: src/netconfpkg/gui/dialupconfig.glade.h:58
-#: src/netconfpkg/gui/dslconfig.glade.h:24
+#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dslconfig.glade.h:25
 #: src/netconfpkg/gui/ethernetconfig.glade.h:8
 #: src/netconfpkg/gui/wirelessconfig.glade.h:17
-#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: src/netconfpkg/gui/tokenringconfig.glade.h:13
 #: src/netconfpkg/gui/ptpconfig.glade.h:9
 msgid "_Nickname: "
 msgstr "ニックネーム(_N):"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:14
-#: src/netconfpkg/gui/dialupconfig.glade.h:63
-#: src/netconfpkg/gui/dslconfig.glade.h:27
+#: src/netconfpkg/gui/dialupconfig.glade.h:64
+#: src/netconfpkg/gui/dslconfig.glade.h:28
 #: src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: src/netconfpkg/gui/tokenringconfig.glade.h:15
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Route"
 msgstr "ルート(_R)"
@@ -3749,7 +3786,8 @@ msgid "Please select the type of hardware device to add:"
 msgstr "追加するハードウェアデバイスの種類を選択してください:"
 
 #: src/netconfpkg/gui/devicetype.glade.h:3
-msgid "_Device Type:"
+#, fuzzy
+msgid "_Device type:"
 msgstr "デバイスタイプ(_D):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:2
@@ -3761,11 +3799,13 @@ msgid "Ca_llback"
 msgstr "コールバック(_l)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:5
-msgid "Callback _Delay:"
+#, fuzzy
+msgid "Callback _delay:"
 msgstr "コールバック遅延(_D):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:6
-msgid "Callback _Mode:"
+#, fuzzy
+msgid "Callback _mode:"
 msgstr "コールバックモード(_M):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:7
@@ -3778,11 +3818,13 @@ msgstr ""
 "ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
-msgid "Dial _Mode:"
+#, fuzzy
+msgid "Dial _mode:"
 msgstr "ダイヤルモード(_M):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:10
-msgid "Dial-In _Number:"
+#, fuzzy
+msgid "Dial-in _number:"
 msgstr "ダイヤル-イン番号(_N):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:12
@@ -3815,7 +3857,8 @@ msgstr ""
 "自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
-msgid "Han_gup Timeout:"
+#, fuzzy
+msgid "Han_gup timeout:"
 msgstr "回線切断タイムアウト秒数(_g):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:26
@@ -3832,12 +3875,14 @@ msgid "Make this connection the default _route"
 msgstr "この接続を標準のルートにする(_r)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:29
-msgid "Modem P_ort:"
-msgstr "モデムポート(_o):"
+#, fuzzy
+msgid "Modem _initialization string:"
+msgstr "モデム初期化文字列(_I):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:30
-msgid "Modem _Initialization String:"
-msgstr "モデム初期化文字列(_I):"
+#, fuzzy
+msgid "Modem p_ort:"
+msgstr "モデムポート(_o):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:31
 msgid "Modem0"
@@ -3881,7 +3926,7 @@ msgid "Use _Channel Bundling"
 msgstr "チャンネルバンドルを使用(_C)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:46
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "_Add..."
 msgstr "追加(_A)..."
 
@@ -3912,35 +3957,45 @@ msgid "_Delete"
 msgstr "削除(_D)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:53
-msgid "_Dial Mode:"
+#, fuzzy
+msgid "_Dial mode:"
 msgstr "ダイヤルモード(_D):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
-msgid "_Encapsulation Mode:"
+#, fuzzy
+msgid "_Encapsulation mode:"
 msgstr "カプセル化モード(_E):"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:56
-msgid "_Hangup Timeout:"
+#, fuzzy
+msgid "_Hangup timeout:"
 msgstr "回線切断タイムアウト秒数(_H):"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dialupconfig.glade.h:57
+#: src/netconfpkg/gui/dslconfig.glade.h:22
+#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_IPsec"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:60
 msgid "_Options"
 msgstr "オプション(_O)"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:60
-msgid "_PPP Option:"
+#: src/netconfpkg/gui/dialupconfig.glade.h:61
+#, fuzzy
+msgid "_PPP option:"
 msgstr "PPPオプション(_P):"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:61
+#: src/netconfpkg/gui/dialupconfig.glade.h:62
 msgid "_Phone Number"
 msgstr "電話番号(_P)"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:62
-#: src/netconfpkg/gui/dslconfig.glade.h:25
+#: src/netconfpkg/gui/dialupconfig.glade.h:63
+#: src/netconfpkg/gui/dslconfig.glade.h:26
 msgid "_Provider"
 msgstr "プロバイダ(_P)"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:65
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "_Use Callback"
 msgstr "コールバックを使用(_U)"
 
@@ -3981,7 +4036,8 @@ msgid "Enter the idle time in seconds after which the link should be dropped."
 msgstr "未使用時に接続を切断するまでの時間を秒数で入力してください。"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:17
-msgid "_AC-Name:"
+#, fuzzy
+msgid "_AC-name:"
 msgstr "AC-名前(_A):"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:21
@@ -3992,19 +4048,20 @@ msgstr "AC-名前(_A):"
 msgid "_Hardware Device"
 msgstr "ハードウェアデバイス(_H)"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:23
+#: src/netconfpkg/gui/dslconfig.glade.h:24
 msgid "_Maximum idle time:"
 msgstr "最大待機時間(_M):"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:28
-msgid "_Service-Name:"
+#: src/netconfpkg/gui/dslconfig.glade.h:29
+#, fuzzy
+msgid "_Service-name:"
 msgstr "サービス名(_S):"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:30
+#: src/netconfpkg/gui/dslconfig.glade.h:31
 msgid "_Use synchronous PPP"
 msgstr "同期PPPを使用(_U)"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:31
+#: src/netconfpkg/gui/dslconfig.glade.h:32
 msgid "xDSL Configuration"
 msgstr "xDSL設定"
 
@@ -4017,7 +4074,8 @@ msgid "_Gateway:"
 msgstr "ゲートウェイ(_G):"
 
 #: src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain Name:"
+#, fuzzy
+msgid "Domain name:"
 msgstr "ドメイン名:"
 
 #: src/netconfpkg/gui/editdomain.glade.h:2
@@ -4042,7 +4100,6 @@ msgstr "イーサネットデバイス"
 
 #: src/netconfpkg/gui/ethernethardware.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:19
-#: src/netconfpkg/gui/ctchardware.glade.h:5
 msgid "Network Adapters Configuration"
 msgstr "ネットワークアダプタ設定"
 
@@ -4055,7 +4112,8 @@ msgid "Ethernet"
 msgstr "イーサネット"
 
 #: src/netconfpkg/gui/hardwaretype.glade.h:4
-msgid "Hardware Type:"
+#, fuzzy
+msgid "Hardware type:"
 msgstr "ハードウェアタイプ:"
 
 #: src/netconfpkg/gui/hardwaretype.glade.h:5
@@ -4211,7 +4269,8 @@ msgid "Automatically obtain _IP address settings with:"
 msgstr "自動的にIPアドレス設定を取得(_I):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:4
-msgid "Bind to _MAC Address:"
+#, fuzzy
+msgid "Bind to _MAC address:"
 msgstr "マックアドレスにバインド(_M):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:5
@@ -4223,7 +4282,8 @@ msgid "Destination Network"
 msgstr "目的地ネットワーク"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-msgid "Device _Alias Number:"
+#, fuzzy
+msgid "Device _alias number:"
 msgstr "デバイスエイリアス番号(_A):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
@@ -4246,102 +4306,122 @@ msgid "Gateway"
 msgstr "ゲートウェイ"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:13
-msgid "Hardware Device:"
+#, fuzzy
+msgid "Hardware device:"
 msgstr "ハードウェアデバイス:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#, fuzzy
+msgid "IPsec Tunnel Settings"
+msgstr "トンネル設定(_T)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#, fuzzy
+msgid "Local Network"
+msgstr "ネットワーク"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Please select the level of security for this device."
 msgstr "このデバイスのセキュリティレベルを選択して下さい。"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Prefix (Netmask)"
 msgstr "接頭番号(ネットマスク)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Professional"
 msgstr "プロフェッショナル"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+msgid "Remote Host / GW"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#, fuzzy
+msgid "Remote Network"
+msgstr "ネットワーク"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Security Level"
 msgstr "セキュリティレベル"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Select the services you want to provide through this device"
 msgstr "このデバイスを通して装備したいサービスを選択"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Service"
 msgstr "サービス"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Service Description"
 msgstr "サービスの説明"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Services"
 msgstr "サービス"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Static Network Routes"
 msgstr "固定ネットワークルート"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Tie to specific ethernet card"
 msgstr "特定のイーサネットカードへの締結"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Use ethernet device aliases"
 msgstr "イーサネットデバイスエイリアスの使用"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "_Delete..."
 msgstr "削除(_D)..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "_Edit..."
 msgstr "編集(_E)..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Hardware Address"
 msgstr "ハードウェアアドレス(_H):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Hardware:"
 msgstr "ハードウェア(_H):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_High Security (Internet)"
 msgstr "高度セキュリティ(インターネット)(_H)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hostname (optional):"
 msgstr "ホスト名(オプション)(_H):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Low Security"
 msgstr "低度セキュリティ(_L)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Probe"
 msgstr "検出(_P)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Probe for Address..."
 msgstr "アドレスの検出(_P)... "
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Secure Device (LAN)"
 msgstr "セキュアデバイス(LAN)(_S)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "bootp"
 msgstr "bootp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "dhcp"
 msgstr "dhcp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "dialup"
 msgstr "ダイアルアップ"
 
@@ -4367,7 +4447,8 @@ msgstr "5.5M"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:7
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-msgid "Network Name (SSID):"
+#, fuzzy
+msgid "Network name (SSID):"
 msgstr "ネットワーク名(SSID):"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:8
@@ -4411,7 +4492,8 @@ msgstr "指定されたもの(_S):"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:19
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
-msgid "_Transmit Rate:"
+#, fuzzy
+msgid "_Transmit rate:"
 msgstr "転送レート(_T):"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:20
@@ -4437,7 +4519,8 @@ msgid "Enable _Device Alias support"
 msgstr "デバイスエイリアスサポートを有効にする(_D)"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Ha_rdware Address:"
+#, fuzzy
+msgid "Ha_rdware address:"
 msgstr "ハードウェアアドレス(_r):"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:6
@@ -4449,14 +4532,15 @@ msgid "_Alias:"
 msgstr "エイリアス(_A):"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
-msgid "_Hardware Device:"
+#, fuzzy
+msgid "_Hardware device:"
 msgstr "ハードウェアデバイス(_H):"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:13
+#: src/netconfpkg/gui/tokenringconfig.glade.h:14
 msgid "_Probe for Address"
 msgstr "アドレスの検出(_P)"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:15
+#: src/netconfpkg/gui/tokenringconfig.glade.h:16
 msgid "_Use Hardware Address"
 msgstr "ハードウェアアドレスを使用(_U)"
 
@@ -4473,7 +4557,8 @@ msgid "Contents"
 msgstr "内容"
 
 #: src/netconfpkg/gui/maindialog.glade.h:5
-msgid "DNS Search Path:"
+#, fuzzy
+msgid "DNS search path:"
 msgstr "DNS検索パス: "
 
 #: src/netconfpkg/gui/maindialog.glade.h:6
@@ -4654,37 +4739,9 @@ msgstr "設定したいワイヤレスカードを選択:"
 msgid "Wireless card"
 msgstr "ワイヤレスカード"
 
-#: src/netconfpkg/gui/ctchardware.glade.h:2
-msgid "Checksum IP packets"
-msgstr ""
-
-#: src/netconfpkg/gui/ctchardware.glade.h:3
-#, fuzzy
-msgid "Data Channel:"
-msgstr "チャンネル:"
-
-#: src/netconfpkg/gui/ctchardware.glade.h:4
-msgid "Memory Usage:"
-msgstr ""
-
-#: src/netconfpkg/gui/ctchardware.glade.h:6
-#, fuzzy
-msgid "Port:"
-msgstr "ポート"
-
-#: src/netconfpkg/gui/ctchardware.glade.h:8
-#, fuzzy
-msgid "Write Channel:"
-msgstr "チャンネル:"
-
-#: src/netconfpkg/gui/ctchardware.glade.h:9
-#, fuzzy
-msgid "_Read Channel:"
-msgstr "チャンネル(_C):"
-
 #: src/netconfpkg/gui/editipsec.glade.h:2
 #, fuzzy
-msgid "A_uthentication Key:"
+msgid "A_uthentication key:"
 msgstr "認証(_A):"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
@@ -4739,17 +4796,17 @@ msgstr "IPの設定"
 
 #: src/netconfpkg/gui/editipsec.glade.h:14
 #, fuzzy
-msgid "Local Network _Address:"
+msgid "Local network _address:"
 msgstr "ネットワーク"
 
 #: src/netconfpkg/gui/editipsec.glade.h:15
 #, fuzzy
-msgid "Local Network _Gateway:"
+msgid "Local network _gateway:"
 msgstr "ネットワーク"
 
 #: src/netconfpkg/gui/editipsec.glade.h:16
 #, fuzzy
-msgid "Local Subnet _Mask:"
+msgid "Local subnet _mask:"
 msgstr "サブネット マスク:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:17
@@ -4791,23 +4848,23 @@ msgstr ""
 
 #: src/netconfpkg/gui/editipsec.glade.h:26
 #, fuzzy
-msgid "Remote Network _Address:"
+msgid "Remote _IP address:"
 msgstr "リモート ピア アドレス:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:27
 #, fuzzy
-msgid "Remote Network _Gateway:"
-msgstr "ネットワーク"
+msgid "Remote network _address:"
+msgstr "リモート ピア アドレス:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:28
 #, fuzzy
-msgid "Remote Subnet _Mask:"
-msgstr "サブネット マスク:"
+msgid "Remote network _gateway:"
+msgstr "ネットワーク"
 
 #: src/netconfpkg/gui/editipsec.glade.h:29
 #, fuzzy
-msgid "Remote _IP Address:"
-msgstr "リモート ピア アドレス:"
+msgid "Remote subnet _mask:"
+msgstr "サブネット マスク:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:30
 msgid ""
@@ -4822,7 +4879,7 @@ msgstr "コンピュータの起動時にデバイスを起動(_A)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 #, fuzzy
-msgid "_Encryption Key:"
+msgid "_Encryption key:"
 msgstr "カプセル化モード(_E):"
 
 #: src/netconfpkg/gui/editipsec.glade.h:35
@@ -4931,18 +4988,6 @@ msgstr ""
 
 #~ msgid "_Protocols"
 #~ msgstr "プロトコル(_P)"
-
-#, fuzzy
-#~ msgid "IPsec Tunnel Settings"
-#~ msgstr "トンネル設定(_T)"
-
-#, fuzzy
-#~ msgid "Local Network"
-#~ msgstr "ネットワーク"
-
-#, fuzzy
-#~ msgid "Remote Network"
-#~ msgstr "ネットワーク"
 
 #~ msgid "Ad-Hoc"
 #~ msgstr "Ad-Hoc"
@@ -5097,6 +5142,9 @@ msgstr ""
 
 #~ msgid "Minimum Out"
 #~ msgstr "最小の出力"
+
+#~ msgid "Port"
+#~ msgstr "ポート"
 
 #~ msgid "_Copy"
 #~ msgstr "コピー(_C)"

@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network 1.0\n"
-"POT-Creation-Date: 2003-09-17 16:28+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-08 17:24+0200\n"
 "PO-Revision-Date: 2003-02-10 17:48+0100\n"
 "Last-Translator: Trond Eivind Glomsrød <teg@redhat.com>\n"
 "Language-Team: Norwegian <no@li.org>\n"
@@ -29,7 +30,7 @@ msgstr "Konfigurer nettverksenheter og tilkoblinger"
 msgid "Network"
 msgstr "Nettverk"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:158
+#: neat.desktop.in.h:3 src/netconf-tui.py:141
 #: src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Network Configuration"
 msgstr "Nettverkskonfigurasjon"
@@ -62,7 +63,7 @@ msgstr "Veiviser for konfigurasjon av Internett"
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/env python
 #. # redhat-network-control - A easy-to-use interface for configuring/activating
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2003 Harald Hoyer <harald@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
@@ -95,12 +96,11 @@ msgstr ""
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
 #: src/neat-control.py:140 src/netconf-cmd.py:100
-#: src/netconfpkg/gui/maindialog.py:1589
+#: src/netconfpkg/gui/maindialog.py:1598
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Opphavsrett © 2001,2003 Red Hat, Inc."
 
 #: src/neat-control.py:141 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1590
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -110,11 +110,11 @@ msgstr ""
 "bugzilla/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:384
+#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
 msgid "Network device activating..."
 msgstr "Nettverksenheten aktiveres..."
 
-#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:385
+#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:381
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Aktiverer nettverksenhet %s, vennlist vent..."
@@ -147,7 +147,7 @@ msgstr "Kunne ikke skrive til fil %s."
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:954
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:963
 msgid "To be rewritten!"
 msgstr "Skal skrives!"
 
@@ -165,7 +165,7 @@ msgstr "Inaktiv"
 #. make ctrl-C work
 #. !/usr/bin/python
 #. # netconf-tui - a tui network configuration tool
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -190,107 +190,85 @@ msgstr ""
 #. main Screen
 #.
 #: src/netconf-tui.py:135
-msgid "Run anyway"
-msgstr ""
-
-#: src/netconf-tui.py:136
-msgid "IMPORTANT"
-msgstr ""
-
-#: src/netconf-tui.py:137
-#, python-format
-msgid ""
-"This tool is unsupported! Please use the graphical tool, because it will "
-"provide the full functionality.\n"
-"If you have no X server installed on this machine, log in via ssh from a "
-"machine with X and use X11 forwarding. If you really want to use this tool, "
-"press <%s>."
-msgstr ""
-
-#: src/netconf-tui.py:147
-msgid "Quit"
-msgstr ""
-
-#: src/netconf-tui.py:152
 msgid "What do you want to configure?"
 msgstr "Hva ønsker du å konfigurere?"
 
-#: src/netconf-tui.py:153
+#: src/netconf-tui.py:136
 msgid "Configure"
 msgstr "Konfigurer"
 
-#: src/netconf-tui.py:153
+#: src/netconf-tui.py:136
 msgid "Exit"
 msgstr "Avslutt"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:274 src/netconf-tui.py:383 src/netconf-tui.py:489
+#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
 msgstr "Navn"
 
-#: src/netconf-tui.py:275 src/netconf-tui.py:384 src/netconf-tui.py:490
+#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
 #: src/netconfpkg/gui/maindialog.glade.h:11
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Enhet"
 
-#: src/netconf-tui.py:276
+#: src/netconf-tui.py:260
 msgid "Use DHCP"
 msgstr "Bruk DHCP"
 
-#: src/netconf-tui.py:277
+#: src/netconf-tui.py:261
 msgid "Static IP"
 msgstr "Statisk IP"
 
-#: src/netconf-tui.py:278
+#: src/netconf-tui.py:262
 msgid "Netmask"
 msgstr "Nettmaske"
 
-#: src/netconf-tui.py:279
+#: src/netconf-tui.py:263
 msgid "Default gateway IP"
 msgstr "Forvalgt Gateway-adresse"
 
-#: src/netconf-tui.py:287 src/netconf-tui.py:395 src/netconf-tui.py:501
+#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
 msgid "Ok"
 msgstr "Ok"
 
-#: src/netconf-tui.py:287 src/netconf-tui.py:395 src/netconf-tui.py:501
+#: src/netconf-tui.py:271 src/netconf-tui.py:379 src/netconf-tui.py:485
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/netconf-tui.py:289
+#: src/netconf-tui.py:273
 msgid "Ethernet Configuration"
 msgstr "Konfigurasjon av Ethernet"
 
-#: src/netconf-tui.py:385 src/netconf-tui.py:491
+#: src/netconf-tui.py:369 src/netconf-tui.py:475
 msgid "ISP Phonenumber"
 msgstr "Din ISPs telefonnummer"
 
-#: src/netconf-tui.py:386 src/netconf-tui.py:492
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Login"
 msgstr "ISP brukernavn"
 
-#: src/netconf-tui.py:387 src/netconf-tui.py:493
+#: src/netconf-tui.py:371 src/netconf-tui.py:477
 msgid "ISP Password"
 msgstr "ISP passord"
 
-#: src/netconf-tui.py:388
+#: src/netconf-tui.py:372
 msgid "Modem Initstring"
 msgstr "Initieringsstreng for modem:"
 
-#: src/netconf-tui.py:396 src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:380 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr "Modemkonfigurasjon"
 
-#: src/netconf-tui.py:494
+#: src/netconf-tui.py:478
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:502
+#: src/netconf-tui.py:486
 msgid "ISDN Configuration"
 msgstr "Konfigurasjon av ISDN"
 
@@ -400,49 +378,45 @@ msgid "export / import hardware list"
 msgstr ""
 
 #: src/netconf-cmd.py:110
-msgid "export / import IPsec list"
-msgstr ""
-
-#: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:114
+#: src/netconf-cmd.py:112
 msgid "export / import profile list"
 msgstr ""
 
-#: src/netconf-cmd.py:116
+#: src/netconf-cmd.py:114
 msgid "set the root directory"
 msgstr ""
 
-#: src/netconf-cmd.py:117
+#: src/netconf-cmd.py:115
 msgid "export list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:118
+#: src/netconf-cmd.py:116
 msgid "import list"
 msgstr ""
 
-#: src/netconf-cmd.py:120
+#: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
 msgstr ""
 
-#: src/netconf-cmd.py:122
+#: src/netconf-cmd.py:120
 msgid "import from file"
 msgstr ""
 
-#: src/netconf-cmd.py:227
+#: src/netconf-cmd.py:225
 #, python-format
 msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:287
+#: src/netconf-cmd.py:304
 #, fuzzy, python-format
 msgid "Unknown List %s\n"
 msgstr "Ukjent"
 
-#: src/netconf-cmd.py:291
+#: src/netconf-cmd.py:308
 #, python-format
 msgid "Error parsing line: %s"
 msgstr ""
@@ -506,22 +480,25 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetInterface.py:215
 #: src/netconfpkg/gui/WirelessInterface.py:283
 #: src/netconfpkg/gui/TokenRingInterface.py:207
-#: src/netconfpkg/gui/editipsec.py:248 src/netconfpkg/gui/PTPInterface.py:210
+#: src/netconfpkg/gui/editipsec.py:201 src/netconfpkg/gui/PTPInterface.py:210
 msgid "You have selected the following information:"
 msgstr "Du har valgt følgende informasjon:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:136
-msgid "Ethernet Device:"
+#, fuzzy
+msgid "Ethernet device:"
 msgstr "Ethernet-enhet:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:137
 #: src/netconfpkg/gui/DialupDruid.py:233
-msgid "Provider Name:"
+#, fuzzy
+msgid "Provider name:"
 msgstr "Navn på tilbyder:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:138
 #: src/netconfpkg/gui/DialupDruid.py:235
-msgid "Login Name:"
+#, fuzzy
+msgid "Login name:"
 msgstr "Brukernavn:"
 
 #. widget.set_position(0)
@@ -556,16 +533,19 @@ msgid "Device:"
 msgstr "Enhet:"
 
 #: src/netconfpkg/gui/CipeInterface.py:146
-msgid "Tunnel through Device:"
+#, fuzzy
+msgid "Tunnel through device:"
 msgstr "Tunnel gjennom enhet:"
 
 #: src/netconfpkg/gui/CipeInterface.py:147
-msgid "Local Port:"
+#, fuzzy
+msgid "Local port:"
 msgstr "Lokal port:"
 
 #: src/netconfpkg/gui/CipeInterface.py:152
 #: src/netconfpkg/gui/CipeInterface.py:154
-msgid "Remote Peer Address:"
+#, fuzzy
+msgid "Remote peer address:"
 msgstr "Adresse for ekstern vert:"
 
 #: src/netconfpkg/gui/CipeInterface.py:152
@@ -574,15 +554,18 @@ msgid "Auto"
 msgstr "Auto"
 
 #: src/netconfpkg/gui/CipeInterface.py:155
-msgid "Remote Peer Port:"
+#, fuzzy
+msgid "Remote peer port:"
 msgstr "Port på ekstern vert:"
 
 #: src/netconfpkg/gui/CipeInterface.py:157
-msgid "Remote Virtual Address:"
+#, fuzzy
+msgid "Remote virtual address:"
 msgstr "Ekstern virtuell adresse:"
 
 #: src/netconfpkg/gui/CipeInterface.py:158
-msgid "Local Virtual Address:"
+#, fuzzy
+msgid "Local virtual address:"
 msgstr "Lokal virtuell adresse:"
 
 #. else:
@@ -614,32 +597,38 @@ msgstr "(eget valg)"
 
 #: src/netconfpkg/gui/CipeInterface.py:307
 #: src/netconfpkg/gui/cipeconfig.py:207
-msgid "IP Address of Tunnel Device: "
+#, fuzzy
+msgid "IP address of tunnel device: "
 msgstr "IP-addresse for tunnel-enhet: "
 
 #: src/netconfpkg/gui/CipeInterface.py:308
 #: src/netconfpkg/gui/cipeconfig.py:208
-msgid "Local Port: "
+#, fuzzy
+msgid "Local port: "
 msgstr "Lokal port: "
 
 #: src/netconfpkg/gui/CipeInterface.py:309
 #: src/netconfpkg/gui/cipeconfig.py:209
-msgid "Remote Peer Address: "
+#, fuzzy
+msgid "Remote peer address: "
 msgstr "Adresse for ekstern vert: "
 
 #: src/netconfpkg/gui/CipeInterface.py:313
 #: src/netconfpkg/gui/cipeconfig.py:213
-msgid "Remote Virtual Address: "
+#, fuzzy
+msgid "Remote virtual address: "
 msgstr "Ekstern virtuell adresse: "
 
 #: src/netconfpkg/gui/CipeInterface.py:314
 #: src/netconfpkg/gui/cipeconfig.py:214
-msgid "Local Virtual Address: "
+#, fuzzy
+msgid "Local virtual address: "
 msgstr "Lokal virtuell adresse: "
 
 #: src/netconfpkg/gui/CipeInterface.py:315
 #: src/netconfpkg/gui/cipeconfig.py:215
-msgid "Secret Key: "
+#, fuzzy
+msgid "Secret key: "
 msgstr "Hemmelig nøkkel: "
 
 #. widget.set_position(0)
@@ -656,7 +645,8 @@ msgid "Hardware:"
 msgstr "Maskinvare:"
 
 #: src/netconfpkg/gui/DialupDruid.py:236
-msgid "Phone Number:"
+#, fuzzy
+msgid "Phone number:"
 msgstr "Telefonnummer:"
 
 #. Copyright (C) 2001-2003 Red Hat, Inc.
@@ -684,9 +674,6 @@ msgstr "Telefonnummer:"
 #: src/netconfpkg/gui/ethernethardware.py:170
 #: src/netconfpkg/gui/tokenringhardware.py:127
 #: src/netconfpkg/gui/tokenringhardware.py:138
-#: src/netconfpkg/gui/iucvhardware.py:153
-#: src/netconfpkg/gui/iucvhardware.py:170
-#: src/netconfpkg/gui/ctchardware.py:153 src/netconfpkg/gui/ctchardware.py:170
 #: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
 #: src/netconfpkg/NC_functions.py:343 src/netconfpkg/NCDevice.py:205
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
@@ -740,13 +727,15 @@ msgstr "Adresse:"
 #: src/netconfpkg/gui/EthernetInterface.py:228
 #: src/netconfpkg/gui/WirelessInterface.py:296
 #: src/netconfpkg/gui/TokenRingInterface.py:220
-msgid "Subnet Mask:"
+#, fuzzy
+msgid "Subnet mask:"
 msgstr "Subnettmaske:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:229
 #: src/netconfpkg/gui/WirelessInterface.py:297
 #: src/netconfpkg/gui/TokenRingInterface.py:221
-msgid "Default Gateway Address:"
+#, fuzzy
+msgid "Default gateway address:"
 msgstr "Forvalgt Gateway-adresse:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:231
@@ -771,14 +760,16 @@ msgstr "Hent innstillinger for IP-adresse automatisk med:"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GUI_functions.py:545
+#. print __name__, "waitpid:", msg
+#. print __name__, "waitpid:", msg
+#: src/netconfpkg/gui/GUI_functions.py:547
 #, python-format
 msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
 
-#: src/netconfpkg/gui/GUI_functions.py:548
+#: src/netconfpkg/gui/GUI_functions.py:550
 msgid ""
 "\n"
 "Succeeded. Please read the output."
@@ -949,7 +940,7 @@ msgstr "Lav"
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Medium"
 msgstr "Middels"
 
@@ -1000,7 +991,8 @@ msgid "Mode: "
 msgstr "Modus:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:303
-msgid "ESSID (Network ID):"
+#, fuzzy
+msgid "ESSID (network ID):"
 msgstr "ESSID (Nettverks-ID):"
 
 #: src/netconfpkg/gui/WirelessInterface.py:309
@@ -1008,7 +1000,8 @@ msgid "Channel: "
 msgstr "Kanal: "
 
 #: src/netconfpkg/gui/WirelessInterface.py:310
-msgid "Transmit Rate: "
+#, fuzzy
+msgid "Transmit rate: "
 msgstr "Overføringshastighet:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:311
@@ -1175,48 +1168,48 @@ msgstr "Konfigurasjon av oppringt ISDN "
 #. get free ISDN device if encap mode is changed
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.py:386
-#: src/netconfpkg/gui/dialupconfig.glade.h:69
+#: src/netconfpkg/gui/dialupconfig.glade.h:70
 msgid "in"
 msgstr "inn"
 
 #: src/netconfpkg/gui/dialupconfig.py:293
-#: src/netconfpkg/gui/dialupconfig.glade.h:72
+#: src/netconfpkg/gui/dialupconfig.glade.h:73
 msgid "out"
 msgstr "ut"
 
 #: src/netconfpkg/gui/dialupconfig.py:337
 #: src/netconfpkg/gui/DialupDruid.glade.h:32
-#: src/netconfpkg/gui/dialupconfig.glade.h:74
+#: src/netconfpkg/gui/dialupconfig.glade.h:75
 msgid "raw IP"
 msgstr "rå IP"
 
 #: src/netconfpkg/gui/dialupconfig.py:339
 #: src/netconfpkg/gui/dialupconfig.py:368
 #: src/netconfpkg/gui/DialupDruid.glade.h:33
-#: src/netconfpkg/gui/dialupconfig.glade.h:75
+#: src/netconfpkg/gui/dialupconfig.glade.h:76
 msgid "sync PPP"
 msgstr "synkron PPP"
 
 #: src/netconfpkg/gui/dialupconfig.py:352
 #: src/netconfpkg/gui/dialupconfig.py:420
-#: src/netconfpkg/gui/dialupconfig.glade.h:73
+#: src/netconfpkg/gui/dialupconfig.glade.h:74
 msgid "pap"
 msgstr "pap"
 
 #: src/netconfpkg/gui/dialupconfig.py:354
 #: src/netconfpkg/gui/dialupconfig.py:422
-#: src/netconfpkg/gui/dialupconfig.glade.h:67
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "chap"
 msgstr "chap"
 
 #: src/netconfpkg/gui/dialupconfig.py:357
 #: src/netconfpkg/gui/dialupconfig.py:424
-#: src/netconfpkg/gui/dialupconfig.glade.h:68
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "chap+pap"
 msgstr "chap+pap"
 
 #: src/netconfpkg/gui/dialupconfig.py:359
-#: src/netconfpkg/gui/dialupconfig.glade.h:71
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
 msgid "none"
 msgstr "ingen"
 
@@ -1375,55 +1368,67 @@ msgstr "Konfigurasjon av modem"
 #. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
 #. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
 #. initialize the button state..
-#: src/netconfpkg/gui/maindialog.py:262
-msgid "Loading Configuration..."
+#. #         for col in [ PROFILE_COLUMN, STATUS_COLUMN, DEVICE_COLUMN,
+#. #                      NICKNAME_COLUMN, TYPE_COLUMN ]:
+#. #             colsize = clist.optimal_column_width(col) + 5
+#. #             titlesize = clist.get_column_widget(col)
+#. #             print titlesize.get_children()[0].get_width()
+#. #             #clist.set_column_width(col, )
+#: src/netconfpkg/gui/maindialog.py:272
+#, fuzzy
+msgid "Loading configuration..."
 msgstr "Laster konfigurasjon..."
 
-#: src/netconfpkg/gui/maindialog.py:270
-msgid "Loading Device Configuration..."
-msgstr "Laster enhetskonfigurasjon..."
-
-#: src/netconfpkg/gui/maindialog.py:275
-msgid "Loading Hardware Configuration..."
-msgstr "Laster maskinvarekonfigurasjon..."
-
 #: src/netconfpkg/gui/maindialog.py:280
-msgid "Loading Profile Configuration..."
-msgstr "Laster profilkonfigurasjon..."
+#, fuzzy
+msgid "Loading device configuration..."
+msgstr "Laster enhetskonfigurasjon..."
 
 #: src/netconfpkg/gui/maindialog.py:285
 #, fuzzy
-msgid "Loading IPsec Configuration..."
-msgstr "Laster konfigurasjon..."
+msgid "Loading hardware configuration..."
+msgstr "Laster maskinvarekonfigurasjon..."
 
 #: src/netconfpkg/gui/maindialog.py:290
-msgid "Testing Configuration Set..."
+#, fuzzy
+msgid "Loading profile configuration..."
+msgstr "Laster profilkonfigurasjon..."
+
+#: src/netconfpkg/gui/maindialog.py:295
+#, fuzzy
+msgid "Loading IPsec configuration..."
+msgstr "Laster konfigurasjon..."
+
+#: src/netconfpkg/gui/maindialog.py:300
+#, fuzzy
+msgid "Testing configuration set..."
 msgstr "Tester konfigurasjonssett..."
 
-#: src/netconfpkg/gui/maindialog.py:321
-#, python-format
-msgid "Active Profile: %s (modified)"
+#: src/netconfpkg/gui/maindialog.py:331
+#, fuzzy, python-format
+msgid "Active profile: %s (modified)"
 msgstr "Aktiv profil: %s (endret)"
 
-#: src/netconfpkg/gui/maindialog.py:325
-#, python-format
-msgid "Active Profile: %s"
+#: src/netconfpkg/gui/maindialog.py:335
+#, fuzzy, python-format
+msgid "Active profile: %s"
 msgstr "Aktiv profil: %s"
 
-#: src/netconfpkg/gui/maindialog.py:333
-msgid "Saving Configuration..."
+#: src/netconfpkg/gui/maindialog.py:343
+#, fuzzy
+msgid "Saving configuration..."
 msgstr "Lagrer konfigurasjon..."
 
-#: src/netconfpkg/gui/maindialog.py:345
-#, python-format
+#: src/netconfpkg/gui/maindialog.py:355
+#, fuzzy, python-format
 msgid ""
-"Error saving Configuration!\n"
+"Error saving configuration!\n"
 "%s"
 msgstr ""
 "Feil under lagring av konfigurasjon!\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:348
+#: src/netconfpkg/gui/maindialog.py:358
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -1435,35 +1440,34 @@ msgstr ""
 "nettverket og nettverkstjenestene\n"
 "på nytt."
 
-#: src/netconfpkg/gui/maindialog.py:357
-msgid "Saving Device Configuration..."
+#: src/netconfpkg/gui/maindialog.py:367
+#, fuzzy
+msgid "Saving device configuration..."
 msgstr "Lagrer enhetskonfigurasjon..."
 
-#: src/netconfpkg/gui/maindialog.py:364
-msgid "Saving Hardware Configuration..."
+#: src/netconfpkg/gui/maindialog.py:374
+#, fuzzy
+msgid "Saving hardware configuration..."
 msgstr "Lagrer maskinvarekonfigurasjon..."
 
-#: src/netconfpkg/gui/maindialog.py:371
-msgid "Saving Profile Configuration..."
+#: src/netconfpkg/gui/maindialog.py:381
+#, fuzzy
+msgid "Saving profile configuration..."
 msgstr "Lagrer profilkonfigurasjon... "
 
-#: src/netconfpkg/gui/maindialog.py:378
+#: src/netconfpkg/gui/maindialog.py:388
 #, fuzzy
-msgid "Saving IPsec Configuration..."
+msgid "Saving IPsec configuration..."
 msgstr "Lagrer konfigurasjon..."
 
-#. #         if ch == -1:
-#. #             ch = self.changed()
-#. #         if ch:
-#. #             apply_btn.set_sensitive (TRUE)
-#. #         else:
-#. #             apply_btn.set_sensitive (FALSE)
-#: src/netconfpkg/gui/maindialog.py:402
-msgid "Updating Devices..."
+#: src/netconfpkg/gui/maindialog.py:411
+#, fuzzy
+msgid "Updating devices..."
 msgstr "Oppdaterer enheter..."
 
-#: src/netconfpkg/gui/maindialog.py:459
-msgid "Updating Hardware..."
+#: src/netconfpkg/gui/maindialog.py:468
+#, fuzzy
+msgid "Updating hardware..."
 msgstr "Oppdaterer maskinvare..."
 
 #. if hw.Status == HW_OK:
@@ -1489,52 +1493,54 @@ msgstr "Oppdaterer maskinvare..."
 #. else:
 #. device.createIPsecList()
 #. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:553
-msgid "Updating Profiles..."
+#: src/netconfpkg/gui/maindialog.py:562
+#, fuzzy
+msgid "Updating profiles..."
 msgstr "Oppdaterer profiler..."
 
 #. print "hydrateProfiles(%s)" % self.active_profile_name
 #. 88357
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:659 src/netconfpkg/gui/maindialog.py:752
-#: src/netconfpkg/gui/maindialog.py:981
+#: src/netconfpkg/gui/maindialog.py:668 src/netconfpkg/gui/maindialog.py:761
+#: src/netconfpkg/gui/maindialog.py:990
 msgid "Do you want to save your changes?"
 msgstr "Ønsker du å lagre dine endringer?"
 
-#: src/netconfpkg/gui/maindialog.py:817
+#: src/netconfpkg/gui/maindialog.py:826
 msgid "The Loopback device can not be edited!"
 msgstr "loopback-enheten kan ikke redigeres!"
 
-#: src/netconfpkg/gui/maindialog.py:821
-msgid "Edit Device..."
+#: src/netconfpkg/gui/maindialog.py:830
+#, fuzzy
+msgid "Edit device..."
 msgstr "Rediger enhet..."
 
 #. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:859
+#: src/netconfpkg/gui/maindialog.py:868
 #, fuzzy, python-format
 msgid "The device type %s cannot be edited!\n"
 msgstr "loopback-enheten kan ikke redigeres!"
 
-#: src/netconfpkg/gui/maindialog.py:878
+#: src/netconfpkg/gui/maindialog.py:887
 msgid "The Loopback device can not be removed!"
 msgstr "loopback-enheten kan ikke fjernes!"
 
-#: src/netconfpkg/gui/maindialog.py:882
+#: src/netconfpkg/gui/maindialog.py:891
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Vil du virkelig slette enheten «%s»?"
 
-#: src/netconfpkg/gui/maindialog.py:914 src/netconfpkg/gui/maindialog.py:1669
+#: src/netconfpkg/gui/maindialog.py:923 src/netconfpkg/gui/maindialog.py:1678
 msgid "You have made some changes in your configuration."
 msgstr "Du har gjort noen endringer i din konfigurasjon."
 
-#: src/netconfpkg/gui/maindialog.py:915
+#: src/netconfpkg/gui/maindialog.py:924
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "For å kunne aktivere nettverksenheten %s må endringene lagres."
 
-#: src/netconfpkg/gui/maindialog.py:917 src/netconfpkg/gui/maindialog.py:1672
+#: src/netconfpkg/gui/maindialog.py:926 src/netconfpkg/gui/maindialog.py:1681
 msgid "Do you want to continue?"
 msgstr "Ønsker du å fortsette?"
 
@@ -1550,28 +1556,28 @@ msgstr "Ønsker du å fortsette?"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1109
+#: src/netconfpkg/gui/maindialog.py:1118
 msgid "The Loopback device can not be disabled!"
 msgstr "Loopback-enheten kan ikke deaktiveres!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconfpkg/gui/maindialog.py:1335 src/netconfpkg/gui/maindialog.py:1415
+#: src/netconfpkg/gui/maindialog.py:1344 src/netconfpkg/gui/maindialog.py:1424
 msgid "The name may only contain letters and digits!"
 msgstr "Navnet kan kun inneholde bokstaver og tall!"
 
-#: src/netconfpkg/gui/maindialog.py:1340 src/netconfpkg/gui/maindialog.py:1420
+#: src/netconfpkg/gui/maindialog.py:1349 src/netconfpkg/gui/maindialog.py:1429
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Profilen kan ikke ha navnet «%s»!"
 
-#: src/netconfpkg/gui/maindialog.py:1346 src/netconfpkg/gui/maindialog.py:1426
+#: src/netconfpkg/gui/maindialog.py:1355 src/netconfpkg/gui/maindialog.py:1435
 msgid "The profile name already exists!"
 msgstr "Profilnavnet eksisterer allerede!"
 
 #. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1393
+#: src/netconfpkg/gui/maindialog.py:1402
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Kan ikke endre navn på profil «%s»!"
@@ -1579,12 +1585,12 @@ msgstr "Kan ikke endre navn på profil «%s»!"
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconfpkg/gui/maindialog.py:1448
+#: src/netconfpkg/gui/maindialog.py:1457
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Profilen «%s» kan ikke slettes!"
 
-#: src/netconfpkg/gui/maindialog.py:1454
+#: src/netconfpkg/gui/maindialog.py:1463
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Vil du virkelig slette profilen «%s»?"
@@ -1592,7 +1598,7 @@ msgstr "Vil du virkelig slette profilen «%s»?"
 #. clist.clear()
 #. type  = clist.get_text(clist.selection[0], 1)
 #. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1528
+#: src/netconfpkg/gui/maindialog.py:1537
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -1600,18 +1606,28 @@ msgstr ""
 "Beklager - ingenting å redigere,\n"
 "eller denne typen kan ikke redigeres ennå."
 
-#: src/netconfpkg/gui/maindialog.py:1546
+#: src/netconfpkg/gui/maindialog.py:1555
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Vil du virkelig slette «%s»?"
 
 #. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1559
+#: src/netconfpkg/gui/maindialog.py:1568
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Vil du slette alle enheter som brukte «%s»?"
 
-#: src/netconfpkg/gui/maindialog.py:1670
+#: src/netconfpkg/gui/maindialog.py:1599
+#, fuzzy
+msgid ""
+"This software is distributed under the GPL. Please report bugs to Red Hat's "
+"bug tracking system: http://bugzilla.redhat.com/"
+msgstr ""
+"Dette programmet distribueres under betingelsene gitt i GPL. Vennligst "
+"rapporter feil i Red Hat's feilhåndteringssytem: http://bugzilla.redhat.com/"
+"bugzilla/"
+
+#: src/netconfpkg/gui/maindialog.py:1679
 #, fuzzy, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "For å kunne aktivere nettverksenheten %s må endringene lagres."
@@ -1633,18 +1649,15 @@ msgstr "For å kunne aktivere nettverksenheten %s må endringene lagres."
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ethernethardware.py:94
 #: src/netconfpkg/gui/tokenringhardware.py:67
-#: src/netconfpkg/gui/iucvhardware.py:94 src/netconfpkg/gui/ctchardware.py:94
 msgid "Command failed: "
 msgstr "Kommandoen feilet: "
 
 #: src/netconfpkg/gui/ethernethardware.py:95
 #: src/netconfpkg/gui/tokenringhardware.py:68
-#: src/netconfpkg/gui/iucvhardware.py:95 src/netconfpkg/gui/ctchardware.py:95
 msgid "Output:\n"
 msgstr "Utskrift:\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:97
-#: src/netconfpkg/gui/iucvhardware.py:97 src/netconfpkg/gui/ctchardware.py:97
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
@@ -1738,8 +1751,6 @@ msgstr "Opprett en ny %s-tilkobling."
 msgid "IUCV Device"
 msgstr "IUCV-enhet"
 
-#. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
-#. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1770,8 +1781,7 @@ msgstr "Opprett en ny %s-tilkobling."
 msgid "Point to Point (IP):"
 msgstr ""
 
-#. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
-#. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+#. print self.devicelist
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1809,7 +1819,7 @@ msgstr ""
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
 #. ! /usr/bin/env python
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2002 Red Hat, Inc.
 #. # Copyright (C) 2002 Than Ngo <than@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
@@ -1917,11 +1927,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:66
+#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:67
 msgid "auto"
 msgstr "auto"
 
-#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:70
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:71
 msgid "manual"
 msgstr "manuell"
 
@@ -2287,6 +2297,10 @@ msgstr "Maskinvare (CRTSCTS)"
 msgid "Software (XON/XOFF)"
 msgstr "Programvare (XON/XOFF)"
 
+#. print "Set verbose %d" % l
+#. print "verbose == %d" % _verbose
+#. print "Set debug %d" % l
+#. print "debug == %d" % _debug
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
@@ -2301,8 +2315,10 @@ msgstr "Følgende pakker kreves på systemet. Du må installere dem!"
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
+#. print __name__, "waitpid:", msg
+#. print __name__, "waitpid:", msg
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:690
+#: src/netconfpkg/NC_functions.py:692
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2313,7 +2329,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:700
+#: src/netconfpkg/NC_functions.py:702
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2326,7 +2342,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:711
+#: src/netconfpkg/NC_functions.py:713
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2339,7 +2355,7 @@ msgstr ""
 "til %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:721
+#: src/netconfpkg/NC_functions.py:723
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2351,7 +2367,7 @@ msgstr ""
 "til %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:731
+#: src/netconfpkg/NC_functions.py:733
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2364,7 +2380,7 @@ msgstr ""
 "til %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:739
+#: src/netconfpkg/NC_functions.py:741
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2570,21 +2586,21 @@ msgstr "%s, Enhet ikke spesifisert eller alias er ikke et tall!"
 msgid "Static routes file %s is invalid"
 msgstr "Fil %s for statiske ruter er ugyldig"
 
-#: src/netconfpkg/NCDevice.py:387
+#: src/netconfpkg/NCDevice.py:383
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Kan ikke aktivere nettverksenhet %s!\n"
 
-#: src/netconfpkg/NCDevice.py:404
+#: src/netconfpkg/NCDevice.py:400
 msgid "Network device deactivating..."
 msgstr "Deaktiverer nettverksenhet..."
 
-#: src/netconfpkg/NCDevice.py:405
+#: src/netconfpkg/NCDevice.py:401
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Deaktiverer nettverksenhet %s. Vennligst vent..."
 
-#: src/netconfpkg/NCDevice.py:407
+#: src/netconfpkg/NCDevice.py:403
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Kan ikke deaktivere nettverksenhet %s!\n"
@@ -2837,7 +2853,6 @@ msgstr "Kan ikke deaktivere nettverksenhet %s!\n"
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 #: src/netconfpkg/gui/maindialog.glade.h:1
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: src/netconfpkg/gui/ctchardware.glade.h:1
 #: src/netconfpkg/gui/editipsec.glade.h:1
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/ptpconfig.glade.h:1
@@ -2891,7 +2906,8 @@ msgid "Enter the provider name for this account."
 msgstr "Skriv inn tilbydernavn for denne kontoen."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Ethernet _Device:"
+#, fuzzy
+msgid "Ethernet _device:"
 msgstr "Ethernet-_enhet:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
@@ -2923,20 +2939,22 @@ msgstr "Bruk denne formen når du oppgir data for din T-Online-konto."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
 #: src/netconfpkg/gui/DialupDruid.glade.h:28
-#: src/netconfpkg/gui/dialupconfig.glade.h:57
-#: src/netconfpkg/gui/dslconfig.glade.h:22
-msgid "_Login Name:"
+#: src/netconfpkg/gui/dialupconfig.glade.h:58
+#: src/netconfpkg/gui/dslconfig.glade.h:23
+#, fuzzy
+msgid "_Login name:"
 msgstr "_Brukernavn:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-#: src/netconfpkg/gui/dslconfig.glade.h:26
-msgid "_Provider Name:"
+#: src/netconfpkg/gui/dslconfig.glade.h:27
+#, fuzzy
+msgid "_Provider name:"
 msgstr "Navn _på tilbyder:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/DialupDruid.glade.h:31
-#: src/netconfpkg/gui/dialupconfig.glade.h:64
-#: src/netconfpkg/gui/dslconfig.glade.h:29
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
+#: src/netconfpkg/gui/dslconfig.glade.h:30
 msgid "_T-Online Account Setup"
 msgstr "Oppsett av _T-Online-konto"
 
@@ -2955,7 +2973,8 @@ msgstr "Opprett Cipe-tilkobling"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/cipeconfig.glade.h:4
-msgid "Lo_cal Virtual Address:"
+#, fuzzy
+msgid "Lo_cal virtual address:"
 msgstr "Lo_kal virtuell adresse:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
@@ -2966,13 +2985,15 @@ msgstr "Nytt grensesnitt"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
 #: src/netconfpkg/gui/cipeconfig.glade.h:5
-msgid "Remote Peer P_ort:"
-msgstr "P_ort på ekstern vert:"
+#, fuzzy
+msgid "Remote _virtual address:"
+msgstr "Ekstern _virtuell adresse:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/cipeconfig.glade.h:6
-msgid "Remote _Virtual Address:"
-msgstr "Ekstern _virtuell adresse:"
+#, fuzzy
+msgid "Remote peer p_ort:"
+msgstr "P_ort på ekstern vert:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
@@ -2991,22 +3012,26 @@ msgstr "_Generer"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
 #: src/netconfpkg/gui/cipeconfig.glade.h:11
-msgid "_Local Port:"
+#, fuzzy
+msgid "_Local port:"
 msgstr "_Lokal port:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
 #: src/netconfpkg/gui/cipeconfig.glade.h:13
-msgid "_Remote Peer Address:"
+#, fuzzy
+msgid "_Remote peer address:"
 msgstr "Ad_resse for ekstern vert:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
 #: src/netconfpkg/gui/cipeconfig.glade.h:15
-msgid "_Secret Key:"
+#, fuzzy
+msgid "_Secret key:"
 msgstr "_Hemmelig nøkkel:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
 #: src/netconfpkg/gui/cipeconfig.glade.h:17
-msgid "_Tunnel through Device:"
+#, fuzzy
+msgid "_Tunnel through device:"
 msgstr "_Tunneler gjennom enhet:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:15
@@ -3076,7 +3101,8 @@ msgid "eth4"
 msgstr "eth4"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:2
-msgid "A_rea Code:"
+#, fuzzy
+msgid "A_rea code:"
 msgstr "_Retningsnummer:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:3
@@ -3094,11 +3120,13 @@ msgstr "Opprett oppringt tilkobling"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/sharedtcpip.glade.h:6
-msgid "Default _Gateway Address:"
+#, fuzzy
+msgid "Default _gateway address:"
 msgstr "Forvalgt _Gateway-adresse:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:7
-msgid "Encapsulation Mode:"
+#, fuzzy
+msgid "Encapsulation mode:"
 msgstr "Innkapsuleringsmodus:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:8
@@ -3132,7 +3160,7 @@ msgid "Internet Provider"
 msgstr "Internettilbyder"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:16
-#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Manual IP Address Settings"
 msgstr "Manuelle innstillinger for IP-adresse"
 
@@ -3151,7 +3179,8 @@ msgstr "Prefi_ks:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:23
 #: src/netconfpkg/gui/dialupconfig.glade.h:39
-msgid "Provider _Name:"
+#, fuzzy
+msgid "Provider _name:"
 msgstr "_Navn på tilbyder:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:24
@@ -3159,26 +3188,28 @@ msgid "Select Provider"
 msgstr "Velg tilbyder"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:25
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Statically set IP addresses:"
 msgstr "Sett statiske IP adresser:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:27
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/ptpconfig.glade.h:6
 msgid "_Address:"
 msgstr "_Adresse:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:29
-msgid "_Phone Number:"
+#, fuzzy
+msgid "_Phone number:"
 msgstr "Tele_fonnummer:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:30
 #: src/netconfpkg/gui/editadress.glade.h:5
-#: src/netconfpkg/gui/sharedtcpip.glade.h:40
-msgid "_Subnet Mask:"
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+#, fuzzy
+msgid "_Subnet mask:"
 msgstr "_Subnettmaske:"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
@@ -3319,7 +3350,6 @@ msgstr "IR_Q:"
 #: src/netconfpkg/gui/ethernethardware.glade.h:21
 #: src/netconfpkg/gui/isdnhardware.glade.h:9
 #: src/netconfpkg/gui/tokenringhardware.glade.h:20
-#: src/netconfpkg/gui/ctchardware.glade.h:7
 msgid "Resource"
 msgstr "Ressurs"
 
@@ -3425,7 +3455,8 @@ msgstr "Eu_ro ISDN (EDSS1)"
 
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
 #: src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN _Adapters:"
+#, fuzzy
+msgid "ISDN _adapters:"
 msgstr "ISDN-_kort:"
 
 #: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
@@ -3533,7 +3564,8 @@ msgstr "Egenskaper for modem"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:25
 #: src/netconfpkg/gui/modemconfig.glade.h:25
-msgid "Modem _Volume:"
+#, fuzzy
+msgid "Modem _volume:"
 msgstr "Modem _volum:"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:28
@@ -3542,17 +3574,20 @@ msgstr "Velg modem"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:31
 #: src/netconfpkg/gui/modemconfig.glade.h:30
-msgid "_Baud Rate:"
+#, fuzzy
+msgid "_Baud rate:"
 msgstr "_Baudrate:"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:32
 #: src/netconfpkg/gui/modemconfig.glade.h:31
-msgid "_Flow Control:"
+#, fuzzy
+msgid "_Flow control:"
 msgstr "_Flytkontroll:"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:33
 #: src/netconfpkg/gui/modemconfig.glade.h:32
-msgid "_Modem Device:"
+#, fuzzy
+msgid "_Modem device:"
 msgstr "_Modemenhet:"
 
 #: src/netconfpkg/gui/ModemDruid.glade.h:34
@@ -3577,37 +3612,37 @@ msgid "Select Token Ring Adapter"
 msgstr "Velg Token-Ring-kort"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:26
-#: src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: src/netconfpkg/gui/tokenringconfig.glade.h:17
 #: src/netconfpkg/gui/tokenringhardware.glade.h:26
 msgid "tr0"
 msgstr "tr0"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:27
-#: src/netconfpkg/gui/tokenringconfig.glade.h:17
+#: src/netconfpkg/gui/tokenringconfig.glade.h:18
 #: src/netconfpkg/gui/tokenringhardware.glade.h:27
 msgid "tr1"
 msgstr "tr1"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:28
-#: src/netconfpkg/gui/tokenringconfig.glade.h:18
+#: src/netconfpkg/gui/tokenringconfig.glade.h:19
 #: src/netconfpkg/gui/tokenringhardware.glade.h:28
 msgid "tr2"
 msgstr "tr2"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:29
-#: src/netconfpkg/gui/tokenringconfig.glade.h:19
+#: src/netconfpkg/gui/tokenringconfig.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:29
 msgid "tr3"
 msgstr "tr3"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:30
-#: src/netconfpkg/gui/tokenringconfig.glade.h:20
+#: src/netconfpkg/gui/tokenringconfig.glade.h:21
 #: src/netconfpkg/gui/tokenringhardware.glade.h:30
 msgid "tr4"
 msgstr "tr4"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:31
-#: src/netconfpkg/gui/tokenringconfig.glade.h:21
+#: src/netconfpkg/gui/tokenringconfig.glade.h:22
 #: src/netconfpkg/gui/tokenringhardware.glade.h:31
 msgid "tr5"
 msgstr "tr5"
@@ -3643,7 +3678,8 @@ msgid "Account Setup"
 msgstr "Oppsett av konto"
 
 #: src/netconfpkg/gui/tonline.glade.h:2
-msgid "Associated T-Online _Number:"
+#, fuzzy
+msgid "Associated T-Online _number:"
 msgstr "Assosiert T-Online-_nummer:"
 
 #: src/netconfpkg/gui/tonline.glade.h:3
@@ -3655,15 +3691,18 @@ msgstr ""
 "dataene vil du ikke få tilgang til T-Online."
 
 #: src/netconfpkg/gui/tonline.glade.h:4
-msgid "_Adapter Identifier:"
+#, fuzzy
+msgid "_Adapter identifier:"
 msgstr "_Kortidentifikator:"
 
 #: src/netconfpkg/gui/tonline.glade.h:5
-msgid "_Concurrent User Number/Suffix:"
+#, fuzzy
+msgid "_Concurrent user number/suffix:"
 msgstr "_Samtidig brukernummer/suffiks:"
 
 #: src/netconfpkg/gui/tonline.glade.h:6
-msgid "_Personal Password:"
+#, fuzzy
+msgid "_Personal password:"
 msgstr "_Personlig passord:"
 
 #: src/netconfpkg/gui/tonline.glade.h:7
@@ -3709,20 +3748,20 @@ msgid "_General"
 msgstr "_Generelt"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:12
-#: src/netconfpkg/gui/dialupconfig.glade.h:58
-#: src/netconfpkg/gui/dslconfig.glade.h:24
+#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dslconfig.glade.h:25
 #: src/netconfpkg/gui/ethernetconfig.glade.h:8
 #: src/netconfpkg/gui/wirelessconfig.glade.h:17
-#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: src/netconfpkg/gui/tokenringconfig.glade.h:13
 #: src/netconfpkg/gui/ptpconfig.glade.h:9
 msgid "_Nickname: "
 msgstr "_Kallenavn: "
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:14
-#: src/netconfpkg/gui/dialupconfig.glade.h:63
-#: src/netconfpkg/gui/dslconfig.glade.h:27
+#: src/netconfpkg/gui/dialupconfig.glade.h:64
+#: src/netconfpkg/gui/dslconfig.glade.h:28
 #: src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: src/netconfpkg/gui/tokenringconfig.glade.h:15
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Route"
 msgstr "_Rute"
@@ -3740,7 +3779,8 @@ msgid "Please select the type of hardware device to add:"
 msgstr "Vennligst velg type maskinvareenhet som skal legges til:"
 
 #: src/netconfpkg/gui/devicetype.glade.h:3
-msgid "_Device Type:"
+#, fuzzy
+msgid "_Device type:"
 msgstr "_Enhetstype:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:2
@@ -3752,11 +3792,13 @@ msgid "Ca_llback"
 msgstr "Ti_lbakeringing"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:5
-msgid "Callback _Delay:"
+#, fuzzy
+msgid "Callback _delay:"
 msgstr "_Pause før tilbakeringing:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:6
-msgid "Callback _Mode:"
+#, fuzzy
+msgid "Callback _mode:"
 msgstr "Tilbakeringings_modus:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:7
@@ -3768,11 +3810,13 @@ msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr "Klikk her hvis du vil velge en ny tilbyder fra ISP-databasen."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
-msgid "Dial _Mode:"
+#, fuzzy
+msgid "Dial _mode:"
 msgstr "Oppringings_modus:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:10
-msgid "Dial-In _Number:"
+#, fuzzy
+msgid "Dial-in _number:"
 msgstr "Innkommende _nummer:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:12
@@ -3805,7 +3849,8 @@ msgstr ""
 "Skriv inn lokalt telefonnummer. Dette er valgfritt hvis du bruker modem."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
-msgid "Han_gup Timeout:"
+#, fuzzy
+msgid "Han_gup timeout:"
 msgstr "Tidsavbrudd for å le_gge på:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:26
@@ -3822,12 +3867,14 @@ msgid "Make this connection the default _route"
 msgstr "La denne tilkoblingen være standard _rute"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:29
-msgid "Modem P_ort:"
-msgstr "Modemp_ort:"
+#, fuzzy
+msgid "Modem _initialization string:"
+msgstr "_Initieringsstreng for modem:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:30
-msgid "Modem _Initialization String:"
-msgstr "_Initieringsstreng for modem:"
+#, fuzzy
+msgid "Modem p_ort:"
+msgstr "Modemp_ort:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:31
 msgid "Modem0"
@@ -3871,7 +3918,7 @@ msgid "Use _Channel Bundling"
 msgstr "Bruk sammenslåing av _kanaler"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:46
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "_Add..."
 msgstr "_Legg til..."
 
@@ -3902,35 +3949,45 @@ msgid "_Delete"
 msgstr "_Slett"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:53
-msgid "_Dial Mode:"
+#, fuzzy
+msgid "_Dial mode:"
 msgstr "Oppringings_modus:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
-msgid "_Encapsulation Mode:"
+#, fuzzy
+msgid "_Encapsulation mode:"
 msgstr "_Encapsulation modus:"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:56
-msgid "_Hangup Timeout:"
+#, fuzzy
+msgid "_Hangup timeout:"
 msgstr "Ti_dsavbrudd for å legge på:"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dialupconfig.glade.h:57
+#: src/netconfpkg/gui/dslconfig.glade.h:22
+#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_IPsec"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:60
 msgid "_Options"
 msgstr "_Alternativer"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:60
-msgid "_PPP Option:"
+#: src/netconfpkg/gui/dialupconfig.glade.h:61
+#, fuzzy
+msgid "_PPP option:"
 msgstr "_PPP-alternativ:"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:61
+#: src/netconfpkg/gui/dialupconfig.glade.h:62
 msgid "_Phone Number"
 msgstr "_Telefonnummer"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:62
-#: src/netconfpkg/gui/dslconfig.glade.h:25
+#: src/netconfpkg/gui/dialupconfig.glade.h:63
+#: src/netconfpkg/gui/dslconfig.glade.h:26
 msgid "_Provider"
 msgstr "_Tilbyder"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:65
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "_Use Callback"
 msgstr "Br_uk tilbakeringing"
 
@@ -3971,7 +4028,8 @@ msgid "Enter the idle time in seconds after which the link should be dropped."
 msgstr "Oppgi ledig tid i sekunder før tilkoblingen skal tas ned."
 
 #: src/netconfpkg/gui/dslconfig.glade.h:17
-msgid "_AC-Name:"
+#, fuzzy
+msgid "_AC-name:"
 msgstr "_AC-navn:"
 
 #: src/netconfpkg/gui/dslconfig.glade.h:21
@@ -3982,19 +4040,20 @@ msgstr "_AC-navn:"
 msgid "_Hardware Device"
 msgstr "_Maskinvareenhet"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:23
+#: src/netconfpkg/gui/dslconfig.glade.h:24
 msgid "_Maximum idle time:"
 msgstr "_Maksimal ledigtid:"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:28
-msgid "_Service-Name:"
+#: src/netconfpkg/gui/dslconfig.glade.h:29
+#, fuzzy
+msgid "_Service-name:"
 msgstr "Navn på tjene_ste:"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:30
+#: src/netconfpkg/gui/dslconfig.glade.h:31
 msgid "_Use synchronous PPP"
 msgstr "Br_uk synkron PPP"
 
-#: src/netconfpkg/gui/dslconfig.glade.h:31
+#: src/netconfpkg/gui/dslconfig.glade.h:32
 msgid "xDSL Configuration"
 msgstr "Konfigurasjon av xDSL"
 
@@ -4007,7 +4066,8 @@ msgid "_Gateway:"
 msgstr "_Gateway"
 
 #: src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain Name:"
+#, fuzzy
+msgid "Domain name:"
 msgstr "Domenenavn:"
 
 #: src/netconfpkg/gui/editdomain.glade.h:2
@@ -4032,7 +4092,6 @@ msgstr "Ethernet-enhet"
 
 #: src/netconfpkg/gui/ethernethardware.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:19
-#: src/netconfpkg/gui/ctchardware.glade.h:5
 msgid "Network Adapters Configuration"
 msgstr "Konfigurasjon av nettverkskort"
 
@@ -4045,7 +4104,8 @@ msgid "Ethernet"
 msgstr "Ethernet"
 
 #: src/netconfpkg/gui/hardwaretype.glade.h:4
-msgid "Hardware Type:"
+#, fuzzy
+msgid "Hardware type:"
 msgstr "Maskinvaretype:"
 
 #: src/netconfpkg/gui/hardwaretype.glade.h:5
@@ -4201,7 +4261,8 @@ msgid "Automatically obtain _IP address settings with:"
 msgstr "Hent innstillinger for _IP-adresse automatisk med:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:4
-msgid "Bind to _MAC Address:"
+#, fuzzy
+msgid "Bind to _MAC address:"
 msgstr "Bind til _MAC-adresse:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:5
@@ -4213,7 +4274,8 @@ msgid "Destination Network"
 msgstr "Målnettverk"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-msgid "Device _Alias Number:"
+#, fuzzy
+msgid "Device _alias number:"
 msgstr "Enhets _Aliasnummer:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
@@ -4236,102 +4298,122 @@ msgid "Gateway"
 msgstr "Gateway"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:13
-msgid "Hardware Device:"
+#, fuzzy
+msgid "Hardware device:"
 msgstr "Maskinvareenhet:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#, fuzzy
+msgid "IPsec Tunnel Settings"
+msgstr "_Tunnel-innstillinger"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#, fuzzy
+msgid "Local Network"
+msgstr "Nettverk"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Please select the level of security for this device."
 msgstr "Vennligst velg sikkerhetsnivå for denne enheten."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Prefix (Netmask)"
 msgstr "Prefiks (Nettmaske)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Professional"
 msgstr "Profesjonell"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+msgid "Remote Host / GW"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#, fuzzy
+msgid "Remote Network"
+msgstr "Nettverk"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Security Level"
 msgstr "Sikkerhetsnivå"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Select the services you want to provide through this device"
 msgstr "Velg tjenestene du ønsker å tilby via denne enheten"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Service"
 msgstr "Tjeneste"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Service Description"
 msgstr "Beskrivelse av tjeneste"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Services"
 msgstr "Tjenester"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Static Network Routes"
 msgstr "Statiske nettverksruter"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Tie to specific ethernet card"
 msgstr "Bind opp mot valgt Ethernet-kort"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Use ethernet device aliases"
 msgstr "Bruk alias for ethernet-enheter"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "_Delete..."
 msgstr "_Slett..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "_Edit..."
 msgstr "R_ediger..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Hardware Address"
 msgstr "_Maskinvareadresse"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Hardware:"
 msgstr "_Maskinvare:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_High Security (Internet)"
 msgstr "_Høy sikkerhet (Internett)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hostname (optional):"
 msgstr "_Vertsnavn (ikke nødvendig):"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Low Security"
 msgstr "_Lav sikkerhet"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_Probe"
 msgstr "_Søk"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Probe for Address..."
 msgstr "_Søk etter adresse..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Secure Device (LAN)"
 msgstr "_Sikker enhet (LAN)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "bootp"
 msgstr "bootp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "dhcp"
 msgstr "dhcp"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "dialup"
 msgstr "oppringt"
 
@@ -4357,7 +4439,8 @@ msgstr "5.5M"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:7
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-msgid "Network Name (SSID):"
+#, fuzzy
+msgid "Network name (SSID):"
 msgstr "Nettverksnavn (ESSID):"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:8
@@ -4402,7 +4485,8 @@ msgstr "_Spesifisert:"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:19
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
-msgid "_Transmit Rate:"
+#, fuzzy
+msgid "_Transmit rate:"
 msgstr "_Overføringshastighet:"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:20
@@ -4427,7 +4511,8 @@ msgid "Enable _Device Alias support"
 msgstr "Bruk _aliasstøtte for enhet"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Ha_rdware Address:"
+#, fuzzy
+msgid "Ha_rdware address:"
 msgstr "_Maskinvareadresse:"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:6
@@ -4439,14 +4524,15 @@ msgid "_Alias:"
 msgstr "_Alias:"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
-msgid "_Hardware Device:"
+#, fuzzy
+msgid "_Hardware device:"
 msgstr "_Maskinvareenhet:"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:13
+#: src/netconfpkg/gui/tokenringconfig.glade.h:14
 msgid "_Probe for Address"
 msgstr "_Søk etter adresse"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:15
+#: src/netconfpkg/gui/tokenringconfig.glade.h:16
 msgid "_Use Hardware Address"
 msgstr "Bruk _maskinvareadresse"
 
@@ -4463,7 +4549,8 @@ msgid "Contents"
 msgstr "Innhold"
 
 #: src/netconfpkg/gui/maindialog.glade.h:5
-msgid "DNS Search Path:"
+#, fuzzy
+msgid "DNS search path:"
 msgstr "Søkesti for DNS:"
 
 #: src/netconfpkg/gui/maindialog.glade.h:6
@@ -4643,37 +4730,9 @@ msgstr "Velg det trådløse nettverkskortet du ønsker å konfigurere:"
 msgid "Wireless card"
 msgstr "Trådløst nettverkskort"
 
-#: src/netconfpkg/gui/ctchardware.glade.h:2
-msgid "Checksum IP packets"
-msgstr ""
-
-#: src/netconfpkg/gui/ctchardware.glade.h:3
-#, fuzzy
-msgid "Data Channel:"
-msgstr "Kanal: "
-
-#: src/netconfpkg/gui/ctchardware.glade.h:4
-msgid "Memory Usage:"
-msgstr ""
-
-#: src/netconfpkg/gui/ctchardware.glade.h:6
-#, fuzzy
-msgid "Port:"
-msgstr "Lokal port:"
-
-#: src/netconfpkg/gui/ctchardware.glade.h:8
-#, fuzzy
-msgid "Write Channel:"
-msgstr "Kanal: "
-
-#: src/netconfpkg/gui/ctchardware.glade.h:9
-#, fuzzy
-msgid "_Read Channel:"
-msgstr "_Kanal:"
-
 #: src/netconfpkg/gui/editipsec.glade.h:2
 #, fuzzy
-msgid "A_uthentication Key:"
+msgid "A_uthentication key:"
 msgstr "_Autentisering:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
@@ -4728,17 +4787,17 @@ msgstr "IP-innstillinger"
 
 #: src/netconfpkg/gui/editipsec.glade.h:14
 #, fuzzy
-msgid "Local Network _Address:"
+msgid "Local network _address:"
 msgstr "Nettverk"
 
 #: src/netconfpkg/gui/editipsec.glade.h:15
 #, fuzzy
-msgid "Local Network _Gateway:"
+msgid "Local network _gateway:"
 msgstr "Nettverk"
 
 #: src/netconfpkg/gui/editipsec.glade.h:16
 #, fuzzy
-msgid "Local Subnet _Mask:"
+msgid "Local subnet _mask:"
 msgstr "Subnettmaske:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:17
@@ -4780,23 +4839,23 @@ msgstr ""
 
 #: src/netconfpkg/gui/editipsec.glade.h:26
 #, fuzzy
-msgid "Remote Network _Address:"
+msgid "Remote _IP address:"
 msgstr "Adresse for ekstern vert:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:27
 #, fuzzy
-msgid "Remote Network _Gateway:"
-msgstr "Nettverk"
+msgid "Remote network _address:"
+msgstr "Adresse for ekstern vert:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:28
 #, fuzzy
-msgid "Remote Subnet _Mask:"
-msgstr "Subnettmaske:"
+msgid "Remote network _gateway:"
+msgstr "Nettverk"
 
 #: src/netconfpkg/gui/editipsec.glade.h:29
 #, fuzzy
-msgid "Remote _IP Address:"
-msgstr "Adresse for ekstern vert:"
+msgid "Remote subnet _mask:"
+msgstr "Subnettmaske:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:30
 msgid ""
@@ -4811,7 +4870,7 @@ msgstr "_Aktiver enheten når datamaskinen starter opp"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 #, fuzzy
-msgid "_Encryption Key:"
+msgid "_Encryption key:"
 msgstr "_Encapsulation modus:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:35
@@ -4918,18 +4977,6 @@ msgstr ""
 
 #~ msgid "_Protocols"
 #~ msgstr "_Protokoller"
-
-#, fuzzy
-#~ msgid "IPsec Tunnel Settings"
-#~ msgstr "_Tunnel-innstillinger"
-
-#, fuzzy
-#~ msgid "Local Network"
-#~ msgstr "Nettverk"
-
-#, fuzzy
-#~ msgid "Remote Network"
-#~ msgstr "Nettverk"
 
 #~ msgid "Ad-Hoc"
 #~ msgstr "Ad-Hoc"

@@ -42,6 +42,26 @@ class HwIsdn(Hardware):
       if getHardwareType(hardware.Hardware) == ISDN:
          return true
       return false
+
+   def save(self):
+      import NCisdnhardware
+      isdn = NCisdnhardware.ConfISDN()
+        
+      isdn.Description = self.Description
+      isdn.Type = self.Card.Type
+      isdn.ModuleName = self.Card.ModuleName
+      isdn.IRQ = self.Card.IRQ
+      isdn.IoPort = self.Card.IoPort
+      isdn.IoPort1 = self.Card.IoPort1
+      isdn.IoPort2 = self.Card.IoPort2
+      isdn.Mem = self.Card.Mem
+      isdn.ChannelProtocol = self.Card.ChannelProtocol
+      isdn.Firmware = self.Card.Firmware
+      isdn.DriverId = self.Card.DriverId
+      isdn.VendorId = self.Card.VendorId
+      isdn.DeviceId = self.Card.DeviceId
+      isdn.save()
+      
    
 def setHwIsdnDialog(dialog):
    global _hwIsdnDialog
@@ -54,5 +74,5 @@ def setHwIsdnWizard(wizard):
 df = getHardwareFactory()
 df.register(HwIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.5 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.6 $"

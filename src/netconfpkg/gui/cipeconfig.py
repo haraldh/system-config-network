@@ -30,7 +30,6 @@ import commands
 import sharedtcpip
 
 from netconfpkg import *
-from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
@@ -145,7 +144,10 @@ class cipeConfigDialog(deviceConfigDialog):
                     self.device.Cipe.TunnelIP = dev.IP
             
         self.device.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
-        self.device.Cipe.LocalPort = int(self.xml.get_widget("localPortEntry").get_text())
+        self.device.Cipe.LocalPort = self.xml.get_widget("localPortEntry").get_text()
+        try: self.device.Cipe.LocalPort = int(self.device.Cipe.LocalPort)
+        except: self.device.Cipe.LocalPort = 0
+        
         self.device.Cipe.RemoteVirtualAddress = self.xml.get_widget("remoteVirtualAddressEntry").get_text()
         self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()
         self.device.Cipe.SecretKey = self.xml.get_widget("secretKeyEntry").get_text()
@@ -170,13 +172,12 @@ class cipeConfigDialog(deviceConfigDialog):
         self.updateRemoteOptions()
 
     def on_generateKeyButton_clicked(self, *args):
-        key = commands.getoutput('(ps aux|md5sum; ps alx|md5sum) | tr -cd 0-9 2>/dev/null')
+        key = GUI_functions.gen_hexkey()
         widget = self.xml.get_widget("secretKeyEntry")
         if key:
             widget.set_text(key)            
         #widget.set_position(0)
         
-
     def updateRemoteOptions(self, *args):
         ethw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(ethw)
@@ -217,5 +218,5 @@ class cipeConfigDialog(deviceConfigDialog):
 
 NCDevCipe.setDevCipeDialog(cipeConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.28 $"

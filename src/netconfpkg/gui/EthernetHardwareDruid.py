@@ -72,7 +72,7 @@ class ethernetHardware:
     
     def get_druids(self):
         for self.hw in self.hardwarelist:
-            if self.hw.Type == 'Ethernet': return
+            if self.hw.Type == ETHERNET: return
 
         self.has_ethernet = FALSE
         return self.druids[0:]
@@ -159,5 +159,5 @@ class ethernetHardware:
                 (self.hw.Description == i):
                 self.hw.Card.ModuleName = i         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.26 $"

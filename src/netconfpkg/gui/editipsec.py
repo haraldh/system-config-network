@@ -230,25 +230,18 @@ class editIPsecDruid:
         return FALSE
 
     def on_generateAHKeyButton_clicked(self, *args):
-        command = '/bin/sh'
-        (status , key ) = gtkExecWithCaptureStatus(command = command,
-                                                   argv = [command, '-c',
-                                                           '(ps aux|md5sum; ps alx|md5sum) | tr -cd 0-9 2>/dev/null'])
-        
+        key = GUI_functions.gen_hexkey()
         widget = self.xml.get_widget("AHKeyEntry")
         if key:
             widget.set_text(key)
         
     def on_generateESPKeyButton_clicked(self, *args):
-        command = '/bin/sh'
-        (status , key ) = gtkExecWithCaptureStatus(command = command,
-                                                   argv = [command, '-c',
-                                                           '(ps aux|md5sum; ps alx|md5sum) | tr -cd 0-9 2>/dev/null'])
+        key = GUI_functions.gen_hexkey()
         
         widget = self.xml.get_widget("ESPKeyEntry")
         if key:
             widget.set_text(key)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 09:07:20 $"
-__version__ = "$Revision: 1.4 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.5 $"

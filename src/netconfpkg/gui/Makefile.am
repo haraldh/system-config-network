@@ -38,7 +38,8 @@ GLADE_FILES = \
 	wirelessconfig.glade \
 	WirelessInterfaceDruid.glade \
 	neat-control.glade \
-	ctcconfig.glade
+	ptpconfig.glade \
+	PTPInterfaceDruid.glade
 
 PYTHON_FILES = \
 	ADSLInterface.py \
@@ -59,6 +60,7 @@ PYTHON_FILES = \
 	EthernetInterface.py \
 	GenericInterface.py \
 	hardwaretype.py \
+	HardwareDialog.py \
 	__init__.py \
 	InterfaceCreator.py \
 	isdnhardware.py \
@@ -78,7 +80,12 @@ PYTHON_FILES = \
 	tonline.py \
 	wirelessconfig.py \
 	WirelessInterface.py \
-	ctcconfig.py
+	ctcconfig.py \
+	iucvconfig.py \
+	CTCInterface.py \
+	IUCVInterface.py \
+	ptpconfig.py \
+	PTPInterface.py
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
 

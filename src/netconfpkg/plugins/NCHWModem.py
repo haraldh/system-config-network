@@ -41,6 +41,22 @@ class HwModem(Hardware):
       if getHardwareType(hardware.Hardware) == MODEM:
          return true
       return false
+
+   def save(self):
+      from netconfpkg.NCHardwareList import getMyWvDial
+      wvdial = getMyWvDial(create_if_missing = true)
+      wvdial[self.Name]['Modem'] = self.Modem.DeviceName
+      wvdial[self.Name]['Baud'] = str(self.Modem.BaudRate)
+      wvdial[self.Name]['SetVolume'] = str(self.Modem.ModemVolume)
+      wvdial[self.Name]['Dial Command'] = str(self.Modem.DialCommand)
+      if not self.Modem.InitString: self.Modem.InitString = 'ATZ'
+      wvdial[self.Name]['Init1'] = str(self.Modem.InitString)
+      if self.Modem.ModemVolume == 0:
+         wvdial[self.Name]['Init3'] = 'ATM0'
+      else:
+         wvdial[self.Name]['Init3'] = 'ATM1L' + str(self.Modem.ModemVolume)
+         
+      wvdial[self.Name]['FlowControl'] = str(self.Modem.FlowControl)
    
 def setHwModemDialog(dialog):
    global _hwModemDialog
@@ -53,5 +69,5 @@ def setHwModemWizard(wizard):
 df = getHardwareFactory()
 df.register(HwModem, MODEM)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.4 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.5 $"

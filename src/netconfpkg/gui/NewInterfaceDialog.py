@@ -37,7 +37,7 @@ class NewInterfaceDialog:
     def __init__(self, parent_dialog = None):
         self.creator = None
         glade_file = 'NewInterfaceDruid.glade'
-        
+
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
@@ -80,14 +80,17 @@ class NewInterfaceDialog:
         dfk = df.keys()
         dfk.sort()
         for type in dfk:
-            interfaces.append(df.getDeviceClass(type)().getWizard())
+            i = df.getDeviceClass(type)().getWizard()
+            if i:
+                interfaces.append(i)
             
         for iface_creator in interfaces:
             iface = iface_creator (self.toplevel, do_save = None,
                                    druid = self.druid)
             iftype = iface.get_type()
+            row = self.interface_clist.append ( \
+                [ iface.get_project_name () ] )
             
-            row = self.interface_clist.append ( [ iface.get_project_name () ] )
             device_pixmap, device_mask = \
                            GUI_functions.get_device_icon_mask(iftype,
                                                               self.toplevel)
@@ -95,32 +98,8 @@ class NewInterfaceDialog:
             self.interface_clist.set_pixtext (row, 0,
                                               iface.get_project_name (), 5,
                                               device_pixmap, device_mask)
+
             self.interface_clist.set_row_data (row, iface)
-
-
-        # Add the interfaces that have no druid yet
-        devs = []
-        machine = os.uname()[4]
-        if machine == 's390' or machine == 's390x':
-            devs.append(CTC)
-            devs.append(IUCV)
-
-        for type in devs:
-            device_pixmap, device_mask = \
-                           GUI_functions.get_device_icon_mask(type,
-                                                              self.toplevel)
-            iface = GenericInterface (self.toplevel, type = type,
-                                      do_save = None, druid = self.druid)
-            ftype = iface.get_type()
-            row = self.interface_clist.append ( [ iface.get_project_name () ] )
-            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(\
-                iftype, self.toplevel)
-            
-            self.interface_clist.set_pixtext (row, 0,
-                                              iface.get_project_name (),
-                                              5, device_pixmap, device_mask)
-            self.interface_clist.set_row_data (row, iface)
-
 
         self.canceled = FALSE
 
@@ -175,5 +154,5 @@ if __name__ == "__main__":
     gtk.mainloop ()
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.32 $"

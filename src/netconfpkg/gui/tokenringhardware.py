@@ -18,65 +18,33 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-sys.path.append("/usr/lib/rhs/python/")
-
-
-import gtk
-
 import gtk
 import gtk.glade
 import signal
 import os
 
 import string
-import re
 from rhpl import Conf
-import commands
 from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import load_icon
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
-
+from netconfpkg.gui.HardwareDialog import HardwareDialog
 from gtk import TRUE
 from gtk import FALSE
 
-
-
-class tokenringHardwareDialog:
+class tokenringHardwareDialog(HardwareDialog):
     def __init__(self, hw):
-        self.hw = hw
-
-        glade_file = "tokenringhardware.glade"
-
-        if not os.path.exists(glade_file):
-            glade_file = GUI_functions.GLADEPATH + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
-
-        self.xml = gtk.glade.XML(glade_file, None,
-                                     domain=GUI_functions.PROGNAME)
-
-        xml_signal_autoconnect(self.xml,
-            {
+        HardwareDialog.__init__(self, hw,
+                                "tokenringhardware.glade",
+                                {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_adapterEntry_changed" : self.on_adapterEntry_changed
             })
-
-        self.dialog = self.xml.get_widget("Dialog")
-        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        load_icon("network.xpm", self.dialog)
-        
-        self.setup()
-        self.hydrate()
+                                
         self.button = 0
 
-    def on_Dialog_delete_event(self, *args):
-        #self.button = 1
-        pass
-
     def on_okButton_clicked(self, button):
-        self.dehydrate()
+        HardwareDialog.on_okButton_clicked(self, button)
         cmd = [ '/sbin/modprobe ', self.hw.Card.ModuleName ]
         if self.hw.Card.IRQ:
             cmd.append(' irq='+self.hw.Card.IRQ)
@@ -112,6 +80,8 @@ class tokenringHardwareDialog:
         pass
 
     def hydrate(self):
+        HardwareDialog.hydrate(self)
+        
         if self.hw.Name:
             self.xml.get_widget('tokenringDeviceEntry').set_text(self.hw.Name)
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
@@ -133,6 +103,8 @@ class tokenringHardwareDialog:
                 self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
 
     def setup(self):
+        HardwareDialog.setup(self)
+        
         list = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
@@ -145,6 +117,8 @@ class tokenringHardwareDialog:
         self.xml.get_widget('tokenringDeviceEntry').set_text(nextdev)
 
     def dehydrate(self):
+        HardwareDialog.dehydrate(self)
+        
         self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
         self.hw.Type = 'Token Ring'
@@ -170,11 +144,4 @@ class tokenringHardwareDialog:
 
 NCHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
 
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = tokenringHardwareDialog()
-    gtk.mainloop()
-__author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.19 $"
+

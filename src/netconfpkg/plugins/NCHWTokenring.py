@@ -30,6 +30,8 @@ class HwTokenring(Hardware):
        
    def getDialog(self):
       if _hwTokenringDialog == None: return None
+      if hasattr(_hwTokenringDialog, "getDialog"):
+         return _hwTokenringDialog(self).getDialog()
       return _hwTokenringDialog(self).xml.get_widget("Dialog")
    
    def getWizard(self):
@@ -41,6 +43,41 @@ class HwTokenring(Hardware):
       if getHardwareType(hardware.Hardware) == TOKENRING:
          return true
       return false
+
+   def save(self):
+      from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
+
+      hl = getHardwareList()
+
+      modules = getMyConfModules()
+      dic = modules[self.Name]
+      dic['alias'] = self.Card.ModuleName
+      modules[self.Name] = dic
+
+      # No, no, no... only delete known options!!!
+      #WRONG: modules[self.Card.ModuleName] = {}
+      #WRONG: modules[self.Card.ModuleName]['options'] = {}
+      #
+      # Better do it this way!
+      if modules[self.Card.ModuleName].has_key('options'):
+         for (key, confkey) in hl.keydict.items():
+            if modules[self.Card.ModuleName]\
+                   ['options'].has_key(confkey):
+               del modules[self.Card.ModuleName]['options'][confkey]
+
+      for (selfkey, confkey) in hl.keydict.items():
+         if self.Card.__dict__[selfkey]:
+            if selfkey == 'IRQ' \
+               and (self.Card.IRQ == _('Unknown') \
+                    or (self.Card.IRQ == 'Unknown')):
+               continue
+            dic = modules[self.Card.ModuleName]
+            if not dic.has_key('options'):
+               dic['options'] = {}
+            dic['options'][confkey] = \
+                                    str(self.Card.__dict__[selfkey])
+            modules[self.Card.ModuleName] = dic
+      
    
 def setHwTokenringDialog(dialog):
    global _hwTokenringDialog
@@ -53,5 +90,5 @@ def setHwTokenringWizard(wizard):
 df = getHardwareFactory()
 df.register(HwTokenring, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.4 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.5 $"

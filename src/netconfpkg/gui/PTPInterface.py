@@ -26,34 +26,28 @@ from gtk import FALSE
 import gtk.glade
 import string
 import os
-from EthernetHardwareDruid import ethernetHardware
+#from PTPHardwareDruid import PTPHardware
 from InterfaceCreator import InterfaceCreator
 from rhpl import ethtool
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.gui.EthernetInterface import EthernetInterface
 
-class EthernetInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, connection_type=ETHERNET, do_save = 1,
+class PTPInterface(EthernetInterface):
+    def __init__(self, toplevel=None, connection_type=CTC, do_save = 1,
                  druid = None):
-        InterfaceCreator.__init__(self, do_save = do_save)
-        self.toplevel = toplevel
-        self.topdruid = druid
-        self.connection_type = connection_type
-        self.xml = None
+        EthernetInterface.__init__(self, toplevel,
+                                   connection_type,
+                                   do_save, druid)
 
     def init_gui(self):
+        class dummy:
+            def __init__(self):
+                self.druids = []
+                
         if self.xml:
             return
         
-        glade_file = "sharedtcpip.glade"
-        if not os.path.exists(glade_file):
-            glade_file = GLADEPATH + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
-                                                  domain=PROGNAME)
-
-        glade_file = 'EthernetInterfaceDruid.glade'
+        glade_file = 'PTPInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -94,56 +88,56 @@ class EthernetInterface(InterfaceCreator):
         self.hw_sel = 0
         self.hwPage = FALSE
 
-        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
-        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
-        vbox = self.xml.get_widget ('generalVbox')
-        window.remove (frame)
-        vbox.pack_start (frame)
-        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
-
         self.druids = []
         self.druid = self.xml.get_widget('druid')
         for i in self.druid.get_children():
             self.druid.remove(i)
             self.druids.append(i)
 
-        if self.connection_type == ETHERNET:
-            self.hwDruid = ethernetHardware(self.toplevel)
-            self.hwDruid.has_ethernet = None
-            self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
-                          + self.druids[1:]
+        self.hwDruid = dummy()
+#XXX        self.hwDruid = PTPHardware(self.toplevel)
+#XXX        self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
+#XXX                      + self.druids[1:]
 
     def get_project_name(self):
-        return _('Ethernet connection')
+        pass
 
     def get_type(self):
-        return ETHERNET
+        pass
  
     def get_project_description(self):
-        return _("Create a new ethernet connection.")
+        pass
 
-    def get_druids(self):
-        self.init_gui()
-        return self.druids
-    
     def on_hostname_config_page_back(self, druid_page, druid):
         childs = self.topdruid.get_children()
-        if self.hwPage:
-            self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
-        else:
-            self.topdruid.set_page(childs[1])            
+        self.topdruid.set_page(childs[1])            
         return TRUE
     
     def on_hostname_config_page_next(self, druid_page, druid):
-        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
-        if self.hwPage:
-            self.device.Device = self.hwDruid.hw.Name
-            self.device.Alias = None
-        #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+        self.device.IP = self.xml.get_widget('ipAddressEntry').get_text()
+        self.device.Gateway = self.xml.get_widget('ipGatewayEntry').get_text()
+        try:
+            self.device.Mtu = int(self.xml.get_widget('mtuEntry').get_text())
+        except:            
+            self.device.Mtu = 9216
         pass
     
     def on_hostname_config_page_prepare(self, druid_page, druid):
-        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+        if self.device.IP:
+            self.xml.get_widget('ipAddressEntry').set_text(self.device.IP)
+        else:
+            self.xml.get_widget('ipAddressEntry').set_text('')
+
+        if self.device.Gateway:
+            self.xml.get_widget('ipGatewayEntry').set_text(self.device.Gateway)
+        else:
+            self.xml.get_widget('ipGatewayEntry').set_text('')
+
+        if not self.device.Mtu:
+            self.device.Mtu = 9216
+        self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
+
+        self.device.BootProto = 'static'
         pass
     
     def on_hw_config_page_back(self, druid_page, druid):
@@ -159,7 +153,8 @@ class EthernetInterface(InterfaceCreator):
 
         self.hw_sel = clist.selection[0]
         
-        if (self.hw_sel + 1) == clist.rows:
+#XXX        if (self.hw_sel + 1) == clist.rows:
+        if None:
             self.hwPage = TRUE
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
         else:
@@ -188,12 +183,12 @@ class EthernetInterface(InterfaceCreator):
         clist.clear()
         self.devlist = []
         for hw in hardwarelist:
-            if hw.Type == ETHERNET:
+            if hw.Type == self.connection_type:
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
                 
-        clist.append([_("Other Ethernet Card")])
+#XXX        clist.append([_("Other PTP Card")])
         clist.select_row (self.hw_sel, 0)
         pass
     
@@ -223,14 +218,8 @@ class EthernetInterface(InterfaceCreator):
 
         s = s + "\n" + "   "
         
-        if self.device.BootProto == "static":
-            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
-            + _("Default gateway address:") + " " + self.device.Gateway + "\n" + "   "
-        else:
-            s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n"
-
+        s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
+            + _("Point to Point (IP):") + " " + self.device.Gateway + "\n" + "   "
 
         druid_page.set_text(s)
         
@@ -253,7 +242,6 @@ class EthernetInterface(InterfaceCreator):
         self.toplevel.destroy()
         gtk.mainquit()
 
-NCDevEthernet.setDevEthernetWizard(EthernetInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.34 $"
+
+

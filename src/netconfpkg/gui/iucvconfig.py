@@ -32,25 +32,25 @@ from ptpconfig import ptpConfigDialog
 from gtk import TRUE
 from gtk import FALSE
 
-class ctcConfigDialog(ptpConfigDialog):
+class iucvConfigDialog(ptpConfigDialog):
     def __init__(self, device):
         ptpConfigDialog.__init__(self, device)
 
     def hydrate(self):
         ptpConfigDialog.hydrate(self)
 
-        title = _('CTC Device')
+        title = _('IUCV Device')
 
         self.xml.get_widget('Dialog').set_title(title)
                 
         if not self.device.Mtu:
-            self.device.Mtu = 1492
+            self.device.Mtu = 9216
         self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
         
     def dehydrate(self):
         if not self.device.Mtu:
-            self.device.Mtu = 1492
+            self.device.Mtu = 9216
 
-NCDevCTC.setDevCTCDialog(ctcConfigDialog)
+NCDevIUCV.setDevIUCVDialog(iucvConfigDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -17,40 +17,43 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import gtk
-import gtk.glade
-import signal
-import os
-
-import string
-
-import sharedtcpip
 from netconfpkg.gui.GUI_functions import *
-from netconfpkg.plugins import *
-from ptpconfig import ptpConfigDialog
-
+from netconfpkg import *
+from netconfpkg.gui import sharedtcpip
+import gtk
 from gtk import TRUE
 from gtk import FALSE
+import gtk.glade
+import string
+import os
+#from CTCHardwareDruid import CTCHardware
+from InterfaceCreator import InterfaceCreator
+from rhpl import ethtool
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.PTPInterface import PTPInterface
 
-class ctcConfigDialog(ptpConfigDialog):
-    def __init__(self, device):
-        ptpConfigDialog.__init__(self, device)
+class CTCInterface(PTPInterface):
+    def __init__(self, toplevel=None, connection_type=CTC, do_save = 1,
+                 druid = None):
+        PTPInterface.__init__(self, toplevel,
+                                   connection_type,
+                                   do_save, druid)
 
-    def hydrate(self):
-        ptpConfigDialog.hydrate(self)
-
-        title = _('CTC Device')
-
-        self.xml.get_widget('Dialog').set_title(title)
-                
+    def init_gui(self):
+        PTPInterface.init_gui(self)
         if not self.device.Mtu:
             self.device.Mtu = 1492
-        self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
-        
-    def dehydrate(self):
-        if not self.device.Mtu:
-            self.device.Mtu = 1492
 
-NCDevCTC.setDevCTCDialog(ctcConfigDialog)
+    def get_project_name(self):
+        return _('CTC connection')
 
+    def get_type(self):
+        return CTC
+ 
+    def get_project_description(self):
+        return _("Create a new CTC connection.")
+
+NCDevCTC.setDevCTCWizard(CTCInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
+
+

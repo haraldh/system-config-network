@@ -397,8 +397,9 @@ def gui_run(command, argv, searchPath = 0,
     try:
         (pid, status) = os.waitpid(childpid, 0)
     except OSError, (errno, msg):
-        print __name__, "waitpid:", msg
-
+        #print __name__, "waitpid:", msg
+        pass
+    
     if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
         status = os.WEXITSTATUS(status)
     else:
@@ -530,7 +531,8 @@ def gui_run_dialog(command, argv, searchPath = 0,
     try:
         (pid, status) = os.waitpid(childpid, 0)
     except OSError, (errno, msg):
-        print __name__, "waitpid:", msg
+        #print __name__, "waitpid:", msg
+        pass
 
     if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
         status = os.WEXITSTATUS(status)
@@ -588,5 +590,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2003/10/08 15:18:17 $"
+__version__ = "$Revision: 1.27 $"
