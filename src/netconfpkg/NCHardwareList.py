@@ -364,9 +364,9 @@ class HardwareList(HardwareList_base):
                                      kudzu.PROBE_SAFE))
         for kudzu_device in kudzulist:
             if not kudzu_device.device and kudzu_device.driver:
-                if kudzu_device.driver + '.o' in isdnmodulelist:
+                if kudzu_device.driver + '.ko' in isdnmodulelist:
                     kudzu_device.device = ISDN
-                elif kudzu_device.driver + '.o' in wirelessmodulelist:
+                elif kudzu_device.driver + '.ko' in wirelessmodulelist:
                     kudzu_device.device = WIRELESS
 
             if not kudzu_device.device:
@@ -822,5 +822,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/29 14:13:51 $"
-__version__ = "$Revision: 1.72 $"
+__date__ = "$Date: 2005/03/03 15:50:31 $"
+__version__ = "$Revision: 1.73 $"
