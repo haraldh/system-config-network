@@ -91,6 +91,8 @@ class ProfileList(ProfileList_base):
         else:
             self.loadprof('default', None)
 
+        prof = self.getActiveProfile()
+        prof.DNS.Hostname = self.use_hostname        
         self.commit(changed)
 
     def loadprof(self, pr, profdir):        
@@ -257,6 +259,7 @@ class ProfileList(ProfileList_base):
             break
         
     def save(self):
+        import socket
         # Just to be safe...
         os.umask(0022)
 
@@ -268,35 +271,25 @@ class ProfileList(ProfileList_base):
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         dnsconf = Conf.ConfEResolv()
 
-        for prof in self:
-            if prof.Active == true:
-                break
-        else:
-            for prof in self:
-                if prof.ProfileName == 'default':
-                    break
-		
+        act_prof = self.getActiveProfile()		
         
-        if nwconf['HOSTNAME'] != prof.DNS.Hostname:
-            import socket
+        if socket.gethostname() != act_prof.DNS.Hostname:
             # if the hostname changed, set it system wide (#55746)
-            os.system("hostname %s" % prof.DNS.Hostname)
-            log.log(2, "hostname %s" % prof.DNS.Hostname)
+            os.system("hostname %s" % act_prof.DNS.Hostname)
+            log.log(2, "change hostname to %s" % act_prof.DNS.Hostname)
             newip = '127.0.0.1'
             try:
-                newip = socket.gethostbyname(prof.DNS.Hostname)
+                newip = socket.gethostbyname(act_prof.DNS.Hostname)
             except:
-                prof = self.getActiveProfile()
-                for host in prof.HostsList:
+                for host in act_prof.HostsList:
                     if host.IP == '127.0.0.1':
                         host.Hostname = 'localhost.localdomain'
-                        host.AliasList = [ prof.DNS.Hostname,
+                        host.AliasList = [ act_prof.DNS.Hostname,
                                            'localhost']
-                        if prof.DNS.Hostname.find(".") != -1:
-                            host.AliasList.append(prof.DNS.Hostname.split(".")[0])
+                        if act_prof.DNS.Hostname.find(".") != -1:
+                            host.AliasList.append(act_prof.DNS.Hostname.split(".")[0])
             else:
-                prof = self.getActiveProfile()
-                for host in prof.HostsList:
+                for host in act_prof.HostsList:
                     if host.IP == '127.0.0.1':
                         host.Hostname = 'localhost.localdomain'
                         host.AliasList = [ 'localhost' ]
@@ -307,16 +300,16 @@ class ProfileList(ProfileList_base):
                             host.Hostname = hname[0]
                             host.AliasList.extend(hname[1])
                         except:
-                            host.Hostname = prof.DNS.Hostname
-                        if host.Hostname != prof.DNS.Hostname:
-                            host.AliasList.append( prof.DNS.Hostname )
-                        if prof.DNS.Hostname.find(".") != -1:
-                            host.AliasList.append(prof.DNS.Hostname.split(".")[0])
+                            host.Hostname = act_prof.DNS.Hostname
+                        if host.Hostname != act_prof.DNS.Hostname:
+                            host.AliasList.append( act_prof.DNS.Hostname )
+                        if act_prof.DNS.Hostname.find(".") != -1:
+                            host.AliasList.append(act_prof.DNS.Hostname.split(".")[0])
                             
-        nwconf['HOSTNAME'] = prof.DNS.Hostname
+        nwconf['HOSTNAME'] = act_prof.DNS.Hostname
               
-        if prof.ProfileName != 'default':
-            nwconf['CURRENT_PROFILE'] = prof.ProfileName
+        if act_prof.ProfileName != 'default':
+            nwconf['CURRENT_PROFILE'] = act_prof.ProfileName
         else:
             del nwconf['CURRENT_PROFILE']
 
@@ -336,9 +329,10 @@ class ProfileList(ProfileList_base):
                               prof.ProfileName)
 
             nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
-                                       '/' + \
-                                     prof.ProfileName + '/network')
+                                       '/' + prof.ProfileName + '/network')
+            nwconf.write()
             files_used.append(nwconf.filename)
+
 
             nwconf['HOSTNAME'] = prof.DNS.Hostname
             
@@ -388,7 +382,6 @@ class ProfileList(ProfileList_base):
 
             del saved
 
-            nwconf.write()
             dnsconf.write()
             hoconf.write()
 
