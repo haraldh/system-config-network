@@ -24,6 +24,7 @@ from netconfpkg import NCHardwareList
 import gtk
 from gtk import TRUE
 from gtk import FALSE
+import GUI_functions
 import libglade
 import string
 import os
