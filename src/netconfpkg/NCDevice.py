@@ -147,7 +147,6 @@ class Device(Device_base):
             self.Device = name
          
         self.DeviceId = name
-
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
@@ -162,6 +161,9 @@ class Device(Device_base):
                     self.__dict__[selfkey] = false            
             elif not self.__dict__.has_key(selfkey):
                 self.__dict__[selfkey] = false                            
+            
+        if not conf.has_key("PEERDNS"):
+            self.AutoDNS = true
             
         if not self.Gateway:
             try:
@@ -445,5 +447,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:29:03 $"
-__version__ = "$Revision: 1.98 $"
+__date__ = "$Date: 2004/03/11 14:16:44 $"
+__version__ = "$Revision: 1.99 $"
