@@ -320,6 +320,34 @@ class HardwareList(HardwareList_base):
                         modules[hw.Card.ModuleName] = dic
 
 
+            if hw.Type == TOKENRING:
+                dic = modules[hw.Name]
+                dic['alias'] = hw.Card.ModuleName
+                modules[hw.Name] = dic
+
+                # No, no, no... only delete known options!!!
+                #WRONG: modules[hw.Card.ModuleName] = {}
+                #WRONG: modules[hw.Card.ModuleName]['options'] = {}
+                #
+                # Better do it this way!
+                if modules[hw.Card.ModuleName].has_key('options'):
+                    for (key, confkey) in self.keydict.items():
+                        if modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                            del modules[hw.Card.ModuleName]['options'][confkey]
+
+                for (selfkey, confkey) in self.keydict.items():
+                    if hw.Card.__dict__[selfkey]:
+                        if selfkey == 'IRQ' \
+                           and (hw.Card.IRQ == _('Unknown') \
+                                or (hw.Card.IRQ == 'Unknown')):
+                            continue
+                        dic = modules[hw.Card.ModuleName]
+                        if not dic.has_key('options'):
+                            dic['options'] = {}
+                        dic['options'][confkey] = str(hw.Card.__dict__[selfkey])
+                        modules[hw.Card.ModuleName] = dic
+
+
             if hw.Type == MODEM and hw.Modem:
                 if not wvdial:
                     wvdial = ConfSMB('/etc/wvdial.conf', create_if_missing = true)

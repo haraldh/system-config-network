@@ -11,6 +11,7 @@ PYTHON_FILES = \
 	NCHWEthernet.py \
 	NCHWIsdn.py \
 	NCHWModem.py \
+	NCHWWireless.py \
 	NCHWTokenring.py
 
 BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
