@@ -17,6 +17,9 @@ import Address
 import os
 import string
 import re
+if not "/usr/lib/rhs/python" in sys.path:
+    sys.path.append("/usr/lib/rhs/python")
+import Conf
 
 class EthernetDevice(Device.Device):
     """
@@ -75,6 +78,12 @@ class EthernetDevice(Device.Device):
         @self The object instance
         """
         
+        addresses=Address.AddressList()
+        addresses.readFile(filename)
+        self.setAddressList(addAddressList)
+        confFile=Conf.ConfShellVar(filename)
+
+
     def toString(self):
         """
         Return the current configuration in string
