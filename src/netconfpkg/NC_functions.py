@@ -5,6 +5,9 @@ import os
 import os.path
 import shutil
 
+true = (1==1)
+false = not true
+
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
