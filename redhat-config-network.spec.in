@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -46,6 +46,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Thu Aug 16 2001 Phil Knirsch <phil@redhat.de> 0.7.4-2
+- Fixed recalculation of BROADCAST and NETWORK values if IP and netmask are
+  present (#51462)
+
 * Mon Aug 20 2001 Trond Eivind Glomsrød <teg@redhat.com> 0.7.4-1
 - More bugfixes, among them #51929, #51991, #51721, #51722,
   partial #52044, #51720. 
