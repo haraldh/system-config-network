@@ -17,10 +17,11 @@ execdir = $(sbindir)
 #	install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
 
 all-local:
-	ln -s netconf.py netconf
-	ln -s netconf.py netconf-cmd
+	ln -sf netconf.py netconf
+	ln -sf netconf.py netconf-cmd
 
 install-exec-local:
+	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 netconf.py $(DESTDIR)$(pkgdatadir)/
 	ln -sf $(pkgdatadir)/src/netconf.py $(DESTDIR)$(sbindir)/netconf
 	ln -sf $(pkgdatadir)/src/netconf.py $(DESTDIR)$(sbindir)/netconf-cmd
