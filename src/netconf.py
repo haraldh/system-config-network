@@ -271,7 +271,9 @@ class mainDialog:
             self.saveHardware()
             self.saveProfiles()
             return 0
-        else: return 1
+        else:
+            #print "self.test() != 0"
+            return 1
 
     def saveDevices(self):
         devicelist = getDeviceList()
@@ -285,6 +287,7 @@ class mainDialog:
         
     def saveProfiles(self):
         profilelist = getProfileList()
+        #print "profilelist.save()"
         profilelist.save()
         profilelist.changed = false
         
@@ -334,21 +337,32 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active != true:
                 continue
-            if prof.DNS.Hostname: self.xml.get_widget('hostnameEntry').set_text(prof.DNS.Hostname)
+            if prof.DNS.Hostname:
+                self.xml.get_widget('hostnameEntry').set_text(\
+                    prof.DNS.Hostname)
             else: self.xml.get_widget('hostnameEntry').set_text('')
-            if prof.DNS.Domainname: self.xml.get_widget('domainnameEntry').set_text(prof.DNS.Domainname)
+            if prof.DNS.Domainname:
+                self.xml.get_widget('domainnameEntry').set_text(\
+                    prof.DNS.Domainname)
             else: self.xml.get_widget('domainnameEntry').set_text('')
-            if prof.DNS.PrimaryDNS: self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
+            if prof.DNS.PrimaryDNS:
+                self.xml.get_widget('primaryDnsEntry').set_text(\
+                    prof.DNS.PrimaryDNS)
             else: self.xml.get_widget('primaryDnsEntry').set_text('')
-            if prof.DNS.SecondaryDNS: self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
+            if prof.DNS.SecondaryDNS:
+                self.xml.get_widget('secondaryDnsEntry').set_text(\
+                    prof.DNS.SecondaryDNS)
             else: self.xml.get_widget('secondaryDnsEntry').set_text('')
-            if prof.DNS.TertiaryDNS: self.xml.get_widget('tertiaryDnsEntry').set_text(prof.DNS.TertiaryDNS)
+            if prof.DNS.TertiaryDNS:
+                self.xml.get_widget('tertiaryDnsEntry').set_text(\
+                    prof.DNS.TertiaryDNS)
             else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
             for domain in prof.DNS.SearchList:
                 dclist.append([domain])
 
             for host in prof.HostsList:
-                hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
+                hclist.append([host.IP, host.Hostname,
+                               string.join(host.AliasList, ' ')])
             break
 
             
@@ -367,7 +381,9 @@ class mainDialog:
         for prof in profilelist:
             menu_item = gtk.GtkMenuItem (prof.ProfileName)
             menu_item.show ()
-            menu_item.signal_connect ("activate", self.on_profileMenuItem_activated, prof.ProfileName)
+            menu_item.signal_connect ("activate",
+                                      self.on_profileMenuItem_activated,
+                                      prof.ProfileName)
             menu.append (menu_item)
             if prof.ProfileName == self.get_active_profile().ProfileName:
                 history = i
@@ -412,28 +428,10 @@ class mainDialog:
     def on_deviceAddButton_clicked (self, clicked):
         profilelist = getProfileList()
         devicelist = getDeviceList()
+        
+        interface = NewInterfaceDialog()
 
-        device = Device()
-
-        type = deviceTypeDialog(device)
-        dialog = type.xml.get_widget ("Dialog")
-        button = dialog.run ()
-        if button != 0:
-            return
-
-        button = self.editDevice(device)
-        if button != 0:
-            return
-            
-        i = devicelist.addDevice()
-        devicelist[i].apply(device)
-        devicelist[i].commit()
-        for prof in profilelist:
-            if prof.Active == false:
-                continue
-            prof.ActiveDevices.append(device.DeviceId)
-            break
-
+        gtk.mainloop()
         self.hydrate()
         
     def on_deviceCopyButton_clicked (self, button):
