@@ -66,7 +66,7 @@ class ConfSMB(Conf):
     def __init__(self, filename='/etc/samba/smb.conf'):
         self.stanza_re = re.compile('^\s*\[(?P<stanza>[^\]]*)]\s*(?:;.*)?$', re.I)
         Conf.__init__(self, filename, '#;', '=', '=',
-                      merge=1, create_if_missing=0)
+                      merge=1, create_if_missing=1)
 
     def read(self):
         Conf.read(self)
