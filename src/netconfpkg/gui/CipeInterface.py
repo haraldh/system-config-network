@@ -146,7 +146,7 @@ class CipeInterface(InterfaceCreator):
         s = s + _("Local Virtual Address:") + " " + str(self.device.IP) + "\n\n\n"\
             + _("Press \"Finish\" to create this account")
         
-        druid_page.set_text(unicode(s))
+        druid_page.set_text(s)
         
     def hydrate(self):
         cipe = self.device.Cipe

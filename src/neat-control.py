@@ -30,7 +30,7 @@ if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
 PROGNAME='redhat-config-network'
-gettext.install(PROGNAME, "/usr/share/locale")
+gettext.install(PROGNAME, "/usr/share/locale", 1)
 
 import getopt
 import signal
@@ -39,7 +39,6 @@ import os.path
 import posix
 import time
 import string
-import GDK
 import gtk
 import gtk.glade
 from netconfpkg import *
@@ -123,12 +122,12 @@ class mainDialog:
             dlg.set_position (gtk.WIN_POS_MOUSE)
             dlg.set_modal(TRUE)
             dlg.show_all()
-            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
-            dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+            self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
+            dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
             idle_func()
             os.waitpid(child, 0)
-            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-            dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+            self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+            dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
             dlg.destroy()
             
             if NetworkDevice().find(device):
@@ -157,6 +156,8 @@ class mainDialog:
                 devErrorDialog(device, CONFIGURE, self.dialog)
 
     def on_monitorButton_clicked(self, button):
+        generic_error_dialog(_("To be rewritten!"))
+        return
         device = self.clist_get_device()
         if device:
             Interface().monitor(device)
