@@ -28,6 +28,7 @@ import os
 from rhpl import Conf
 from ethernethardware import ethernetHardwareDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg import NCHardwareList
 
 class ethernetHardware:
     def __init__ (self, toplevel=None):
@@ -108,6 +109,10 @@ class ethernetHardware:
                 self.xml.get_widget('dma0Entry').set_text(self.hw.Card.DMA0)
             if self.hw.Card.DMA1:
                 self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
+        else:
+            hwlist = NCHardwareList.getHardwareList()
+            nextDevice = NCHardwareList.getNextDev('eth')
+            self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
 
     def setup(self):
         list = []

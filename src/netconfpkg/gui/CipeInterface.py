@@ -188,11 +188,14 @@ class CipeInterface(InterfaceCreator):
 
         if self.device.Device:
             self.xml.get_widget("cipeDeviceEntry").set_text(self.device.Device)
-
+        else:
+            nextdev = NCDeviceList.getNextDev("cipcb")
+            self.xml.get_widget("cipeDeviceEntry").set_text(nextdev)
+            
         if not cipe.LocalPort:
             cipe.LocalPort = 7777
             
-        self.xml.get_widget("localPortEntry").set_text(str(cipe.LocalPort))            
+        self.xml.get_widget("localPortEntry").set_text(str(cipe.LocalPort))
 
         if cipe.RemotePeerAddress:
             vals = string.split(cipe.RemotePeerAddress, ":")

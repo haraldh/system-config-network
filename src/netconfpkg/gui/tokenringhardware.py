@@ -141,6 +141,8 @@ class tokenringHardwareDialog:
                 list.append(modInfo[i]['description'])
         list.sort()
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+        nextdev = NCHardwareList.getNextDev("tr")
+        self.xml.get_widget('tokenringDeviceEntry').set_text(nextdev)
 
     def dehydrate(self):
         self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()

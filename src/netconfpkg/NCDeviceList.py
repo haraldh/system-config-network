@@ -202,6 +202,20 @@ def getDeviceList():
         #print "DVList.load()"
     #print repr(DVList)
     return DVList
+
+def getNextDev(base):
+    devlist = getDeviceList()
+    num = 0
+    for num in xrange(0,100):
+        for dev in devlist:
+            if dev.Device == base + str(num):
+                break
+        else:
+            # no card seems to use this                         
+            break
+        
+    return base + str(num)
+
                 
 if __name__ == '__main__':
     dl = DeviceList()

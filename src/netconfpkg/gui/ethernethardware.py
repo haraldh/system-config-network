@@ -34,6 +34,7 @@ from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
 from netconfpkg import NCHWEthernet
+from netconfpkg import NCHardwareList
 
 from gtk import TRUE
 from gtk import FALSE
@@ -123,7 +124,11 @@ class ethernetHardwareDialog:
                 self.xml.get_widget('dma0Entry').set_text(str(self.hw.Card.DMA0))
             if self.hw.Card.DMA1:
                 self.xml.get_widget('dma1Entry').set_text(str(self.hw.Card.DMA1))
-
+        else:
+            hwlist = NCHardwareList.getHardwareList()
+            nextDevice = NCHardwareList.getNextDev('eth')
+            self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
+            
     def setup(self):
         list = []
         modInfo = NCHardwareList.getModInfo()

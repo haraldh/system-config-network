@@ -108,6 +108,11 @@ class tokenringHardware:
             if self.hw.Card.DMA1:
                 self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
 
+        else:
+            nextdev = NCHardwareList.getNextDev("tr")
+            self.xml.get_widget('tokenringDeviceEntry').set_text(nextdev)
+
+
     def setup(self):
         list = []
         modInfo = NCHardwareList.getModInfo()
