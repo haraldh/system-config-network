@@ -201,9 +201,6 @@ class mainDialog:
             ret = Interface().configure(device)
             if ret:
                 devErrorDialog(device, CONFIGURE, self.dialog)
-            self.hydrate()
-            self.hydrateProfiles()
-            self.update_dialog()
                 
     def activate_new_profile(self, profile):
         profilelist = getProfileList()        
@@ -418,6 +415,11 @@ class mainDialog:
             
         self.no_profileentry_update = true # ???
         omenu = self.xml.get_widget('profileOption')
+
+        if len(profilelist) == 1:
+            self.xml.get_widget('profileFrame').hide()
+
+        
         omenu.remove_menu ()
         menu = gtk.Menu ()
         history = 0
