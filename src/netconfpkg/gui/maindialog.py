@@ -1409,8 +1409,8 @@ class mainDialog:
                              ["Harald Hoyer <harald@redhat.com>",
                               "Than Ngo <than@redhat.com>",
                               "Philipp Knirsch <pknirsch@redhat.com>",
-                              unicode("Trond Eivind Glomsrød <teg@redhat.com>",
-                                      "iso8859-1")])
+                              "Trond Eivind Glomsrød <teg@redhat.com>"
+                              ])
         
         dlg.set_transient_for(self.dialog)
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
