@@ -46,6 +46,7 @@ class ConfDevices(UserList.UserList):
                 if (len(entry) > 6) and \
                    entry[:6] == 'ifcfg-' and \
                    os.path.isfile(confdir + entry) and \
+                   (confdir + entry)[-1] != "~" and \
                    os.access(confdir + entry, os.R_OK):
                     self.append(entry[6:])
         return
