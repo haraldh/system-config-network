@@ -1,0 +1,87 @@
+#! /usr/bin/python
+
+## netconf - A network configuration tool
+## Copyright (C) 2001 Red Hat, Inc.
+## Copyright (C) 2001 Than Ngo <than@redhat.com>
+ 
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+ 
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+ 
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+import gtk
+import GDK
+import GTK
+import libglade
+import signal
+import os
+import GdkImlib
+import string
+import gettext
+import string
+
+import HardwareList
+from deviceconfig import deviceConfigDialog
+
+from gtk import TRUE
+from gtk import FALSE
+from gtk import CTREE_LINES_DOTTED
+
+##
+## I18N
+##
+gettext.bindtextdomain("netconf", "/usr/share/locale")
+gettext.textdomain("netconf")
+_=gettext.gettext
+
+class cipeConfigDialog(deviceConfigDialog):
+    def __init__(self, device, xml_main = None, xml_basic = None):
+        glade_file = "cipeconfig.glade"
+        deviceConfigDialog.__init__(self, glade_file,
+                                    device, xml_main, xml_basic)    
+
+
+    def hydrate(self):
+        deviceConfigDialog.hydrate(self)
+        ecombo = self.xml.get_widget("ethernetDeviceComboBox")
+        hwdesc = []
+        hwcurr = None
+        hardwarelist = HardwareList.getHardwareList()
+        for hw in hardwarelist:
+            if hw.Type == "Ethernet":
+                desc = str(hw.Name) + ' (' + hw.Description + ')'
+                hwdesc.append(desc)
+                if self.device.Cipe.TunnelDevice and hw.Name == self.device.Cipe.TunnelDevice:
+                    hwcurr = desc
+                    
+        if len(hwdesc):
+            hwdesc.sort()
+            ecombo.set_popdown_strings(hwdesc)
+
+        if not hwcurr and len(hwdesc):
+            hwcurr = hwdesc[0]
+
+        widget = self.xml.get_widget("ethernetDeviceEntry")
+        if self.device.Cipe.TunnelDevice:
+            widget.set_text(hwcurr)
+        widget.set_position(0)
+                
+        if self.Device:
+            self.xml.get_widget("cipeDeviceEntry").set_text(self.Device)
+
+        if self.LocalPort:
+            self.xml.get_widget("").set_text(self.LocalPort)
+
+        #if self.RemotePeer
+
+    def dehydrate(self):
+        self.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
