@@ -1008,7 +1008,7 @@ void some_function_name() {
   _("_AC-Name:");
 
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:421 */
-  _("_Accumlate cost over mutiple connections");
+  _("_Accumulate cost over multiple connections");
 
   /* netconfpkg/gui/cipeconfig.glade:203 netconfpkg/gui/ctcconfig.glade:205
    * netconfpkg/gui/dialupconfig.glade:193
