@@ -90,6 +90,9 @@ class DialupDialog(deviceConfigDialog):
         deviceConfigDialog.hydrate(self)
         hardwarelist = getHardwareList()
 
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
+
         dialup = self.device.Dialup
             
         if dialup.ProviderName != None:
@@ -123,6 +126,8 @@ class DialupDialog(deviceConfigDialog):
 
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         dialup = self.device.Dialup
 
         dialup.ProviderName = self.xml.get_widget("providerName").get_text()
