@@ -2,6 +2,7 @@
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+## Preston Brown <pbrown@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -48,13 +49,14 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.__init__(self, glade_file, device)
 
 
-        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'auto',
-                                                                'Managed',
-                                                                'Ad-Hoc',
-                                                                'Master',
-                                                                'Repeater',
-                                                                'Secondary',
-                                                                ])
+#        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Auto',
+#                                                                'Managed',
+#                                                                'Ad-Hoc'
+#                                                                ])
+        self.xml.signal_autoconnect(
+            {
+            "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
+            })
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
@@ -73,11 +75,18 @@ class wirelessConfigDialog(deviceConfigDialog):
         
         wl = self.device.Wireless
         if wl:
-            if wl.EssId: self.xml.get_widget("essidEntry").set_text(wl.EssId)
+            if wl.EssId:
+                if string.lower(wl.EssId) == "any":
+                    self.xml.get_widget("essidAutoButton").set_active(TRUE)
+                    self.xml.get_widget("essidEntry").set_sensitive(FALSE)
+                else:
+                    self.xml.get_widget("essidSpecButton").set_active(TRUE)
+                    self.xml.get_widget("essidEntry").set_sensitive(TRUE)
+                self.xml.get_widget("essidEntry").set_text(wl.EssId)
+
             if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
             if wl.Channel and wl.Channel != "":
                 self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
-            if wl.Freq: self.xml.get_widget("frequencyEntry").set_text(wl.Freq)
             if wl.Rate: self.xml.get_widget("rateEntry").set_text(wl.Rate)
             if wl.Key: self.xml.get_widget("keyEntry").set_text(wl.Key)
 
@@ -91,9 +100,14 @@ class wirelessConfigDialog(deviceConfigDialog):
 
         wl = self.device.Wireless
         if wl:
-            wl.EssId = self.xml.get_widget("essidEntry").get_text()
+            if self.xml.get_widget("essidAutoButton").get_active():
+                wl.EssId = "any"
+            else:
+                wl.EssId = self.xml.get_widget("essidEntry").get_text()
             wl.Mode =  self.xml.get_widget("modeEntry").get_text()
             wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
-            wl.Freq = self.xml.get_widget("frequencyEntry").get_text()
             wl.Rate = self.xml.get_widget("rateEntry").get_text()
             wl.Key = self.xml.get_widget("keyEntry").get_text()
+
+    def on_essidAutoButton_toggled(self, check):
+        self.xml.get_widget("essidEntry").set_sensitive(not check["active"])

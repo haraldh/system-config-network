@@ -45,11 +45,11 @@
 	<handler>on_hw_config_page_prepare</handler>
 	<last_modification_time>Wed, 06 Mar 2002 10:54:19 GMT</last_modification_time>
       </signal>
-      <title>Select Ethernet Device</title>
+      <title>Select Wireless Device</title>
       <title_color>255,255,255</title_color>
       <background_color>25,25,112</background_color>
       <logo_background_color>24,24,112</logo_background_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
+      <logo_image>network.xpm</logo_image>
 
       <widget>
 	<class>GtkVBox</class>
@@ -67,7 +67,7 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label242</name>
-	  <label>Select the Ethernet card you want to configure:</label>
+	  <label>Select the Wireless card you want to configure:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
@@ -108,7 +108,7 @@
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
 	      <name>label243</name>
-	      <label>Ethernet card</label>
+	      <label>Wireless card</label>
 	      <justify>GTK_JUSTIFY_CENTER</justify>
 	      <wrap>False</wrap>
 	      <xalign>0.5</xalign>
@@ -143,7 +143,7 @@
       <title_color>255,255,255</title_color>
       <background_color>25,25,112</background_color>
       <logo_background_color>24,24,112</logo_background_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
+      <logo_image>network.xpm</logo_image>
 
       <widget>
 	<class>GtkVBox</class>
@@ -161,7 +161,7 @@
 	  <class>GtkTable</class>
 	  <name>table38</name>
 	  <border_width>5</border_width>
-	  <rows>6</rows>
+	  <rows>5</rows>
 	  <columns>2</columns>
 	  <homogeneous>False</homogeneous>
 	  <row_spacing>5</row_spacing>
@@ -215,114 +215,6 @@
 	      <right_attach>1</right_attach>
 	      <top_attach>1</top_attach>
 	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label246</name>
-	    <label>Fre_quency:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>frequencyEntry</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>2</top_attach>
-	      <bottom_attach>3</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label247</name>
-	    <label>_Channel:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>channelSpinButton</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>3</top_attach>
-	      <bottom_attach>4</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label248</name>
-	    <label>_Transmit Rate:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>rateEntry</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>4</top_attach>
-	      <bottom_attach>5</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label249</name>
-	    <label>_Key:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0.5</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <default_focus_target>keyEntry</default_focus_target>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>5</top_attach>
-	      <bottom_attach>6</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>False</xexpand>
@@ -400,26 +292,78 @@
 	  </widget>
 
 	  <widget>
-	    <class>GtkEntry</class>
-	    <name>frequencyEntry</name>
-	    <can_focus>True</can_focus>
-	    <signal>
-	      <name>changed</name>
-	      <handler>on_frequencyEntry_changed</handler>
-	      <last_modification_time>Sat, 30 Mar 2002 16:55:30 GMT</last_modification_time>
-	    </signal>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text></text>
+	    <class>GtkLabel</class>
+	    <name>label247</name>
+	    <label>_Channel:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>channelSpinButton</default_focus_target>
 	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
 	      <top_attach>2</top_attach>
 	      <bottom_attach>3</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
-	      <xexpand>True</xexpand>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label248</name>
+	    <label>_Transmit Rate:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>rateEntry</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>3</top_attach>
+	      <bottom_attach>4</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkLabel</class>
+	    <name>label249</name>
+	    <label>_Key:</label>
+	    <justify>GTK_JUSTIFY_CENTER</justify>
+	    <wrap>False</wrap>
+	    <xalign>0</xalign>
+	    <yalign>0.5</yalign>
+	    <xpad>0</xpad>
+	    <ypad>0</ypad>
+	    <default_focus_target>keyEntry</default_focus_target>
+	    <child>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>4</top_attach>
+	      <bottom_attach>5</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
 	      <yexpand>False</yexpand>
 	      <xshrink>False</xshrink>
 	      <yshrink>False</yshrink>
@@ -452,8 +396,8 @@
 	    <child>
 	      <left_attach>1</left_attach>
 	      <right_attach>2</right_attach>
-	      <top_attach>3</top_attach>
-	      <bottom_attach>4</bottom_attach>
+	      <top_attach>2</top_attach>
+	      <bottom_attach>3</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>True</xexpand>
@@ -473,7 +417,7 @@
 	    <case_sensitive>False</case_sensitive>
 	    <use_arrows>True</use_arrows>
 	    <use_arrows_always>False</use_arrows_always>
-	    <items>auto
+	    <items>Auto
 11M
 5.5M
 2M
@@ -482,8 +426,8 @@
 	    <child>
 	      <left_attach>1</left_attach>
 	      <right_attach>2</right_attach>
-	      <top_attach>4</top_attach>
-	      <bottom_attach>5</bottom_attach>
+	      <top_attach>3</top_attach>
+	      <bottom_attach>4</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>True</xexpand>
@@ -502,7 +446,7 @@
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
-	      <text>auto</text>
+	      <text>Auto</text>
 	    </widget>
 	  </widget>
 
@@ -522,8 +466,8 @@
 	    <child>
 	      <left_attach>1</left_attach>
 	      <right_attach>2</right_attach>
-	      <top_attach>5</top_attach>
-	      <bottom_attach>6</bottom_attach>
+	      <top_attach>4</top_attach>
+	      <bottom_attach>5</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>True</xexpand>
@@ -560,7 +504,7 @@
       <title_color>255,255,255</title_color>
       <background_color>25,25,112</background_color>
       <logo_background_color>24,24,112</logo_background_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
+      <logo_image>network.xpm</logo_image>
 
       <widget>
 	<class>GtkVBox</class>
@@ -826,10 +770,10 @@
       <text></text>
       <background_color>25,25,112</background_color>
       <logo_background_color>24,24,112</logo_background_color>
-      <logo_image>/usr/share/redhat-config-network/pixmaps/network.xpm</logo_image>
       <textbox_color>255,255,255</textbox_color>
       <text_color>0,0,0</text_color>
       <title_color>255,255,255</title_color>
+      <logo_image>network.xpm</logo_image>
     </widget>
   </widget>
 </widget>

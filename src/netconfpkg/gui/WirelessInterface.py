@@ -146,17 +146,13 @@ class WirelessInterface(InterfaceCreator):
         wl.EssId = self.xml.get_widget("essidEntry").get_text()
         wl.Mode =  self.xml.get_widget("modeEntry").get_text()
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
-        wl.Freq = self.xml.get_widget("frequencyEntry").get_text()
         wl.Rate = self.xml.get_widget("rateEntry").get_text()
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_wireless_config_page_prepare(self, druid_page, druid):
-        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'auto',
+        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Auto',
                                                                 'Managed',
                                                                 'Ad-Hoc',
-                                                                'Master',
-                                                                'Repeater',
-                                                                'Secondary',
                                                                 ])
 
     def on_hw_config_page_back(self, druid_page, druid):
@@ -199,7 +195,7 @@ class WirelessInterface(InterfaceCreator):
                 clist.append([desc])
                 self.devlist.append(hw.Name)
                 
-        clist.append([_("Other Ethernet Card")])
+        clist.append([_("Other Wireless Card")])
         clist.select_row (self.hw_sel, 0)
     
     def on_finish_page_back(self,druid_page, druid):
@@ -240,7 +236,6 @@ class WirelessInterface(InterfaceCreator):
 
         s = s + _("ESSID (Network ID):") + " " + str(wl.EssId) + "\n" + "   "\
             + _("Mode: ") + str(wl.Mode) + "\n" + "   "\
-            + _("Frequency: ") + str(wl.Freq) + "\n" + "   "\
             + _("Channel: ") + str(wl.Channel) + "\n" + "   "\
             + _("Transmit Rate: ") + str(wl.Rate) + "\n" + "   "\
             + _("Key: ") + str(wl.Key) + "\n"\
