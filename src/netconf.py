@@ -823,6 +823,6 @@ if __name__ == '__main__':
             print args
 
     except (getopt.error, BadUsage):
-        print """redhat-config-network-cmd - Python network configuration commandline tool
+        print _( """redhat-config-network-cmd - Python network configuration commandline tool
 
-Usage: redhat-config-network-cmd [-p --profile <profile>]"""
+Usage: redhat-config-network-cmd [-p --profile <profile>]""")
