@@ -61,7 +61,16 @@ class cipeConfigDialog(deviceConfigDialog):
             "on_localVirtualAddressEntry_changed" : self.updateRemoteOptions,
             })
 
+        self.on_deviceNameEntry_changed(self.xml.get_widget('deviceNameEntry'))
 
+    def on_deviceNameEntry_changed(self, entry):
+        deviceName = string.strip(entry.get_text())
+        self.device.DeviceId = deviceName
+        nickname = (len(deviceName) > 0)
+        self.xml.get_widget("okButton").set_sensitive(nickname)
+        self.xml.get_widget('tunnelSettingTab').set_sensitive(nickname)
+        self.xml.get_widget('tunnelSettingLabel').set_sensitive(nickname)
+        
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
@@ -156,12 +165,13 @@ class cipeConfigDialog(deviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
-
+        ip = ''
+        
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
             if dev.Device == hw:
                 ip = dev.IP
-        
+
         addr = self.xml.get_widget("remotePeerAddressEntry").get_text()
         port = self.xml.get_widget("remotePeerPortEntry").get_text()
         if not port or port == "":
