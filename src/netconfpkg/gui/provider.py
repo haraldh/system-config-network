@@ -145,6 +145,10 @@ class providerDialog:
         for isp in isp_list:
             if _country != isp['Country']:
                 pix, mask = GUI_functions.get_icon(isp['Flag']+".xpm", self.dialog)
+                if not pix:
+                    pix, mask = GUI_functions.get_icon('unknown-flag.xpm',
+                                                       self.dialog)
+                    
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=FALSE)
                 _country = isp['Country']
@@ -223,5 +227,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.15 $"
+__date__ = "$Date: 2004/04/21 13:10:40 $"
+__version__ = "$Revision: 1.16 $"

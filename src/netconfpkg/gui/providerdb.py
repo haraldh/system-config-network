@@ -27,6 +27,7 @@ from netconfpkg.gui import GUI_functions
 FALSE = 0
 TRUE = not FALSE
 
+## FIXME
 provider_db = "providerdb"
 if not os.path.exists(provider_db):
     provider_db = "netconfpkg/" + "providerdb"
@@ -251,5 +252,5 @@ if __name__ == "__main__":
         print db
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2004/04/21 13:10:40 $"
+__version__ = "$Revision: 1.7 $"
