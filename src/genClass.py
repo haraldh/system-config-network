@@ -5,7 +5,7 @@
 ## tab-width: 3
 ## End:
 #
-__version__ = "1.4"
+__version__ = "1.9"
 #
 
 ## Copyright (C) 2000,2001 Red Hat, Inc.
@@ -83,7 +83,7 @@ class %classname%base:
 		self.__doUnlink()
 
 		# Constructor with object
-		if list and (not parent) and isinstance(list, %classname):
+		if list and (not parent) and isinstance(list, %classname%base):
 			self.apply(list)
 			self.__list = None
 			return
@@ -144,7 +144,7 @@ class %classname%base:
 		%BackupList
 		return
 
-	def copy():
+	def copy(self):
 		n = %classname(None, None)
 		n.apply(self)
 		return n
@@ -165,13 +165,6 @@ ListOps = """
 	def get%childname(self):
 		return self.%childname
 
-
-	def remove%childname(self, child):
-		if child == self.%childname:
-			child = self.%childname
-			self.%childname = None
-			child.unlink()
-
 	def del%childname(self):
 		self.%childname = None
 """
@@ -183,9 +176,15 @@ ListCNLOps = """
 
 ListCLOps = """	
 	def create%childname(self):
-		if not self.%childname:
+		if self.%childname == None:
 			self.%childname = %childname(None, self)
 		return self.%childname
+
+	def remove%childname(self, child):
+		if child == self.%childname:
+			child = self.%childname
+			self.%childname = None
+			child.unlink()
 """
 
 AnonListOps = """
@@ -258,6 +257,10 @@ AnonListCLOps = """
 	def add%childname(self):
 		self.__%classname.append(%childname(None, self))
 		return len(self.__%classname)
+
+	def remove%childname(self, child):
+		try: remove(child)
+		except ValueError: pass
 """
 
 AnonListCNLOps = """
@@ -511,12 +514,12 @@ def printClass(list, basename, baseclass):
 
 				commitalist = commitalist + """
 			if self.%childname:
-				if self.__%childname_bak:
+				if self.__%childname_bak != None:
 					self.__list.getChildByName("%childname").setValue(self.%childname)
 				else:
 					self.__list.addChild(%childtype, "%childname").setValue(self.%childname)
 			else:
-				self.__list.getChildByName("%childname").unlink()
+				if self.__%childname_bak != None: self.__list.getChildByName("%childname").unlink()
 """				
 
 				initlist = initlist \
@@ -541,8 +544,8 @@ def printClass(list, basename, baseclass):
 				
 
 				commitalist = commitalist + """
-			if self.__%childname_bak: self.__%childname_bak.unlink()			
-			if self.%childname:
+			if self.__%childname_bak != None: self.__%childname_bak.unlink()			
+			if self.%childname != None:
 				self.%childname.setList(self.__list.addChild(%childtype, "%childname"))
 				self.%childname.commit()
 """
