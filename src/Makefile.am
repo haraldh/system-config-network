@@ -9,10 +9,6 @@ BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py Net
 
 #exec_SCRIPTS = bindconf-gui
 
-/usr/lib/rhs/python/genClass.py:
-	@echo "Make a softlink from CVS/alchemist/src/genClass.py to /usr/lib/rhs/python/genClass.py"
-	false
-
 execdir = $(sbindir)
 
 install-data-local:
