@@ -51,6 +51,7 @@ PYTHON_FILES = \
 	modemconfig.py \
 	ModemInterface.py \
 	NewInterface.py \
+	NewInterfaceDialog.py \
 	GUI_functions.py \
 	providerdb.py \
 	provider.py \
