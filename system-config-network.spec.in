@@ -1,5 +1,5 @@
 # -*- RPM-SPEC -*-
-Summary: The GUI of the NEtwork Adminstration Tool for Red Hat Linux
+Summary: The GUI of the NEtwork Adminstration Tool
 Name: @PACKAGE@
 Version: @VERSION@
 Release: @RPM_RELEASE@
@@ -16,18 +16,18 @@ Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canva
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
-This is the GUI of the network configuration tool for Red Hat Linux,
+This is the GUI of the network configuration tool,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %package tui
-Summary: The NEtwork Adminstration Tool for Red Hat Linux
+Summary: The NEtwork Adminstration Tool
 Group: Applications/System 
 Obsoletes: netcfg, redhat-config-network-tui
 Provides: redhat-config-network-tui
 Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python, newt, pciutils
 
 %description tui
-This is the network configuration tool for Red Hat Linux,
+This is the network configuration tool,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %prep
@@ -93,6 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-druid
 
 %changelog
+* Thu Apr  1 2004 Harald Hoyer <harald@redhat.com> - 1.3.17
+- translation updates (119610)
+
 * Thu Mar  4 2004 Harald Hoyer <harald@redhat.com> - 1.3.16
 - be more relaxed, when parsing the kernel version (115917)
 - fixed removing of Hostname (115795)
