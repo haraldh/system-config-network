@@ -871,7 +871,7 @@ class ConfModules(Conf):
         self.initvars()
     def initvars(self):
         self.vars = {}
-	keys = ('alias', 'options', 'post-install')
+	keys = ('alias', 'options', 'post-install', 'pre-remove')
         self.rewind()
         while self.findnextcodeline():
             var = self.getfields()
@@ -885,7 +885,7 @@ class ConfModules(Conf):
 		    var[1:2] = []
 	    if len(var) > 2 and var[0] in keys:
 		if not self.vars.has_key(var[1]):
-		    self.vars[var[1]] = {'alias':'', 'options':{}, 'post-install':[], 'keep':0}
+		    self.vars[var[1]] = {'alias':'', 'options':{}, 'post-install':[], 'pre-remove':[], 'keep':0}
 		if not cmp(var[0], 'alias'):
 		    self.vars[var[1]]['alias'] = var[2]
 		elif not cmp(var[0], 'options'):
@@ -896,6 +896,8 @@ class ConfModules(Conf):
 		    self.vars[var[1]]['options'] = self.splitoptlist(var[2:])
 		elif not cmp(var[0], 'post-install'):
 		    self.vars[var[1]]['post-install'] = var[2:]
+		elif not cmp(var[0], 'pre-remove'):
+		    self.vars[var[1]]['pre-remove'] = var[2:]
             self.nextline()
         self.rewind()
     def splitoptlist(self, optlist):
@@ -928,7 +930,7 @@ class ConfModules(Conf):
 	for key in value.keys():
             self.rewind()
             missing=1
-	    findexp = '[\t ]*' + key + '[\t ]+' + varname
+	    findexp = '[\t ]*' + key + '[\t ]+' + varname + '[\t ]+'
 	    if not cmp(key, 'alias'):
 		endofline = value[key]
 		replace = key + ' ' + varname + ' ' + endofline
@@ -936,9 +938,12 @@ class ConfModules(Conf):
 		endofline = self.joinoptlist(value[key])
 		replace = key + ' ' + varname + ' ' + endofline
 		if self.vars[varname].has_key('keep') and self.vars[varname]['keep']:
-		    findexp = '[\t ]*' + key + '[\t ]+-k[\t ]+' + varname
+		    findexp = '[\t ]*' + key + '[\t ]+-k[\t ]+' + varname + '[\t ]+'
 		    replace = key + ' -k ' + varname + ' ' + endofline
 	    elif not cmp(key, 'post-install'):
+		endofline = joinfields(value[key], ' ')
+		replace = key + ' ' + varname + ' ' + endofline
+	    elif not cmp(key, 'pre-remove'):
 		endofline = joinfields(value[key], ' ')
 		replace = key + ' ' + varname + ' ' + endofline
 	    else:
