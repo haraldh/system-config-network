@@ -1,0 +1,4449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Runa Bhattacharjee <runa77@softhome.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: redhat-config-network\n"
+"POT-Creation-Date: 2003-07-08 11:51+0200\n"
+"PO-Revision-Date: 2003-07-26 10:08+0530\n"
+"Last-Translator: Runa Bhattacharjee <runa77@softhome.net>\n"
+"Language-Team: Bengali <redhat-translation@bengalinux.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রন এবং পর্যবেক্ষণ করা"
+
+#: neat-control.desktop.in.h:2 src/netconfpkg/gui/neat-control.glade.h:12
+msgid "Network Device Control"
+msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রন"
+
+#: neat.desktop.in.h:1
+msgid "Configure network devices and connections"
+msgstr "নেটওয়ার্ক ডিভাইস এবং সংযোগ কনফিগার করা"
+
+#: neat.desktop.in.h:2
+msgid "Network"
+msgstr "নেটওয়ার্ক"
+
+#: neat.desktop.in.h:3 src/netconf-tui.py:141
+#: src/netconfpkg/gui/maindialog.glade.h:20
+msgid "Network Configuration"
+msgstr "নেটওয়ার্ক কনফিগারেশন"
+
+#: internet-druid.desktop.in.h:1
+msgid "Configure your connection to the Internet"
+msgstr "ইন্টারনেটের সাথে সংযোগ কনফিগার করুন"
+
+#: internet-druid.desktop.in.h:2
+msgid "Internet Configuration Wizard"
+msgstr "ইন্টারনেট কনফিগারেশন উইজার্ড"
+
+#. -*- python -*-
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. ! /usr/bin/env python
+#. # redhat-network-control - A easy-to-use interface for configuring/activating
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/neat-control.py:48 src/netconf.py:75
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr "সমস্যা: গ্রাফিক্যাল এনভাইরন্‌মেন্ট আরম্ভ করা সম্ভব হয়নি।"
+
+#: src/neat-control.py:49 src/netconf.py:76
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+"এই টুলটি সম্ভবত গ্রাফিক্যাল পরিবেশে চালানো হয়নি বলে বিফল হয়েছে।"
+
+#: src/neat-control.py:50 src/netconf.py:77
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+"দয়া করে আপনার নির্ধারিত গ্রাফিক্যাল ইউসার ইন্টারফেস আরম্ভ করুন অথবা DISPLAY ভেরিয়েবলের "
+"মান নির্ধারণ করুন।\n"
+
+#. 'on_autoSelectProfileButton_clicked' : \
+#. self.on_autoSelectProfileButton_clicked,
+#. Let this dialog be in the taskbar like a normal window
+#: src/neat-control.py:140 src/netconf-cmd.py:100
+#: src/netconfpkg/gui/maindialog.py:1582
+msgid "Copyright (c) 2001-2003 Red Hat, Inc."
+msgstr "কপিরাইট (c) ২০০১-২০০৩ রেড হ্যাট, Inc."
+
+#: src/neat-control.py:141 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1583
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"এই সফ্‌টওয়েরটি GPL এর  অধিন বিতরণ করা হয়েছে। কোন বাগ ধরা পড়লে তা দয়া করে রেড হ্যাটের বাগ ট্র্যাকিং "
+"সিস্টেমকে জানান: http://bugzilla.redhat.com/"
+
+#. Network Device Control Dialog
+#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:380
+msgid "Network device activating..."
+msgstr "নেটওয়ার্ক ডিভাইসকে চালু করা হচ্ছে..."
+
+#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:381
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "%s নেটওয়ার্ক ডিভাইসটি চালু করা হচ্ছে, দয়া করে অপেক্ষা করুন..."
+
+#: src/neat-control.py:215
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "%s নেটওয়ার্ক ডিভাইসটি কনফিগার করা সম্ভব নয়"
+
+#. update dialog #83640
+#. Re-read the device list
+#. Update the gui
+#. forces a re-read of oldprofile
+#: src/neat-control.py:235
+msgid "Switching Profiles"
+msgstr "প্রোফাইল বদল করা হচ্ছে"
+
+#: src/neat-control.py:236
+#, python-format
+msgid "Switching to profile %s"
+msgstr "%s প্রোফাইলে বদল করা হচ্ছে"
+
+#: src/neat-control.py:237
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "%s প্রোফাইলে বদল করা সম্ভব হয়নি"
+
+#. Re-read the device list
+#. Update the gui
+#. forces a re-read of oldprofile
+#. TBD
+#: src/neat-control.py:252 src/netconfpkg/gui/maindialog.py:949
+msgid "To be rewritten!"
+msgstr "পুনরায় লিখতে হবে!"
+
+
+#. self.xml.get_widget('configureButton').set_sensitive(FALSE)
+#. self.xml.get_widget('configureButton').set_sensitive(TRUE)
+#. ???
+#. change the default profile to a more understandable name
+#: src/neat-control.py:354
+msgid " (active)"
+msgstr " (চালু আছে)"
+
+#. ??
+#. print "profile " + prof.ProfileName + " activated\n"
+#. make ctrl-C work
+#. !/usr/bin/python
+#. # netconf-tui - a tui network configuration tool
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. XXX do length limits on obj dumps.
+#. protect from loops
+#.
+#. handleException function
+#.
+#: src/netconf-tui.py:101
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against redhat-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+
+#.
+#. main Screen
+#.
+#: src/netconf-tui.py:135
+msgid "What do you want to configure?"
+msgstr "আপনি কি কনফিগার করতে ইচ্ছুক?"
+
+#: src/netconf-tui.py:136
+msgid "Configure"
+msgstr "কনফিগার"
+
+#: src/netconf-tui.py:136
+msgid "Exit"
+msgstr "বিদায়"
+
+#.
+#. EthernetWindow class
+#.
+#: src/netconf-tui.py:257 src/netconf-tui.py:366 src/netconf-tui.py:472
+#: src/netconfpkg/gui/maindialog.glade.h:19
+msgid "Name"
+msgstr "নাম"
+
+#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
+#: src/netconfpkg/gui/maindialog.glade.h:11
+#: src/netconfpkg/gui/neat-control.glade.h:11
+#: src/netconfpkg/gui/infodialog.glade.h:1
+msgid "Device"
+msgstr "ডিভাইস"
+
+#: src/netconf-tui.py:259
+msgid "Use DHCP"
+msgstr "DHCP ব্যবহার করো"
+
+#: src/netconf-tui.py:260
+msgid "Static IP"
+msgstr "স্থায়ি IP"
+
+#: src/netconf-tui.py:261
+msgid "Netmask"
+msgstr "নেটমাস্ক"
+
+#: src/netconf-tui.py:262
+msgid "Default gateway IP"
+msgstr "ডিফল্ট গেটওয়ে IP"
+
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
+msgid "Ok"
+msgstr "ঠিক আছে"
+
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
+msgid "Cancel"
+msgstr "বাতিল করো"
+
+#: src/netconf-tui.py:272
+msgid "Ethernet Configuration"
+msgstr "এথারনেট কনফিগারেশন"
+
+#: src/netconf-tui.py:368 src/netconf-tui.py:474
+msgid "ISP Phonenumber"
+msgstr "ISP র ফোনের নাম্বার"
+
+#: src/netconf-tui.py:369 src/netconf-tui.py:475
+msgid "ISP Login"
+msgstr "ISP লগ ইন"
+
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
+msgid "ISP Password"
+msgstr "ISP পাসওয়ার্ড"
+
+#: src/netconf-tui.py:371
+msgid "Modem Initstring"
+msgstr "মোডেমের Initstring"
+
+#: src/netconf-tui.py:379 src/netconfpkg/gui/modemconfig.glade.h:23
+msgid "Modem Configuration"
+msgstr "মোডেম কনফিগারেশন"
+
+#: src/netconf-tui.py:477
+msgid "MSN"
+msgstr "MSN"
+
+#: src/netconf-tui.py:485
+msgid "ISDN Configuration"
+msgstr "ISDN কনফিগারেশন"
+
+#.
+#. __main__
+#.
+#. !/usr/bin/python2.2
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Just to be safe...
+#. Workaround for buggy gtk/gnome commandline parsing python bindings.
+#: src/netconf.py:57
+#, python-format
+msgid "Error: %s, %s!"
+msgstr "সমস্যা: %s, %s!"
+
+#: src/netconf.py:59
+msgid "Starting text version"
+msgstr "টেক্সট ভারসান আরম্ভ করা হচ্ছে"
+
+#: src/netconf.py:114
+msgid "Loading Network Configuration..."
+msgstr "নেটওয়ার্ক কনফিগারেশন লোড করা হচ্ছে..."
+
+#: src/netconf.py:127
+msgid ""
+"redhat-config-network - network configuration tool\n"
+"\n"
+"Usage: redhat-config-network -v --verbose"
+msgstr ""
+"রেডহ্যাট-কনফিগ-নেটওয়ার্ক - নেটওয়ার্ক কনফিগারেশন টুল\n"
+"\n"
+"ব্যবহার পদ্ধতি: redhat-config-network -v --verbose"
+
+#. splash_window = splash_screen()
+#. make ctrl-C work
+#. if splash_window:
+#. splash_window.destroy()
+#. del splash_window
+#. print "Exception %s: %s" % (str(SystemExit), str(code))
+#. ! /usr/bin/python2.2
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Workaround for buggy gtk/gnome commandline parsing python bindings.
+#: src/netconf-cmd.py:64
+#, python-format
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+
+#: src/netconf-cmd.py:99
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr "%s - নেটওয়ার্ক কনফিগারেশন কমান্ডলাইন টুল"
+
+#: src/netconf-cmd.py:104
+#, python-format
+msgid "Usage: %s"
+msgstr "ব্যবহার পদ্ধতি: %s"
+
+#: src/netconf-cmd.py:106
+msgid "switch / activate profile"
+msgstr "প্রোফাইল বদল / চালু করো"
+
+#: src/netconf-cmd.py:108
+msgid "export / import hardware list"
+msgstr "হার্ডওয়েরের তালিকা এক্সপোর্ট / ইম্পোর্ট করো"
+
+#: src/netconf-cmd.py:110
+msgid "export / import device list (default)"
+msgstr "ডিভাইস তালিকা (ডিফল্ট) এক্সপোর্ট / ইম্পোর্ট করো"
+
+#: src/netconf-cmd.py:112
+msgid "export / import profile list"
+msgstr "প্রোফাইল তালিকা এক্সপোর্ট / ইম্পোর্ট করো"
+
+#: src/netconf-cmd.py:114
+msgid "set the root directory"
+msgstr "রুট ডাইরেক্টরি নির্ধারণ করা হোক"
+
+#: src/netconf-cmd.py:115
+msgid "export list (default)"
+msgstr "তালিকা (ডিফল্ট) এক্সপোর্ট  করো"
+
+#: src/netconf-cmd.py:116
+msgid "import list"
+msgstr "তালিকা ইম্পোর্ট করো"
+
+#: src/netconf-cmd.py:118
+msgid "clear existing list prior of importing"
+msgstr "ইম্পোর্ট করার পুর্বের তালিকা মুছে ফেলা হোক"
+
+#: src/netconf-cmd.py:120
+msgid "import from file"
+msgstr "ফাইল থেকে ইম্পোর্ট করো"
+
+#: src/netconf-cmd.py:220
+#, python-format
+msgid "Unknown option %s\n"
+msgstr "অজানা অপশন %s\n"
+
+#. remove the last \n
+#: src/netconf-cmd.py:281
+#, python-format
+msgid "Unknown List %s\n"
+msgstr "অজানা তালিকা %s\n"
+
+#: src/netconf-cmd.py:285
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "এই লাইনটি পার্স করতে সমস্যা হয়েছে: %s"
+
+#. print "Exception %s: %s" % (str(SystemExit), str(code))
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ADSLInterface.py:90
+msgid "xDSL connection"
+msgstr "xDSL সংযোগ"
+
+#: src/netconfpkg/gui/ADSLInterface.py:96
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"একটি xDSL সংযোগ তৈরি করো। ডিজিট্যাল সাবস্ক্রাইবার লাইন নামে পরিচিত "
+"বিভিন্ন ধরনের ব্রডব্যান্ড সংযোগ ব্যবস্থার কোন একটি এর সংযোগে ব্যবহার করা হয়। "
+"এই তালিকায় অন্তর্ভুক্ত সংযোগ ব্যবস্থাগুলো হল ASDL (অ্যাসিমেট্রিক, আপলোডের "
+"তুলনায় দ্রুত ডাউনলোড হয়, ISDL(দুরত্বের জন্য ISDN লাইন ব্যবহার করা হয়), SDSL "
+"(সিমেট্রিক, আপলোড এবং ডাউনলোড সমান গতিতে হয়) এবং আরো অন্যান্য। এই ধরনের "
+"সংযোগ ব্যবস্থা সাধরণত মার্কিন যুক্তরাস্ট্রে ব্যবহৃত হয়ে থাকে এবং বর্তমানে পৃথিবীর অন্যান্য "
+"জায়গাতেও ব্যবহৃত হচ্ছে। এর গতি ব্যবহৃত প্রযুক্তির ওপর নির্ভর করে, এবং সাধারণত "
+"১৪৪ কিলোবাইট/সেকেন্ড থেকে ১.০ মেগাবাইট/সেকেন্ড মধ্যে সীমাবদ্ধ হয়ে থাকে।"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#: src/netconfpkg/gui/ADSLInterface.py:135
+#: src/netconfpkg/gui/CipeInterface.py:144
+#: src/netconfpkg/gui/DialupDruid.py:226
+#: src/netconfpkg/gui/EthernetInterface.py:213
+#: src/netconfpkg/gui/WirelessInterface.py:283
+#: src/netconfpkg/gui/TokenRingInterface.py:207
+#: src/netconfpkg/gui/editipsec.py:195
+msgid "You have selected the following information:"
+msgstr "আপনি নিম্নলিখিত তথ্যগুলি বাছাই করেছেন:"
+
+#: src/netconfpkg/gui/ADSLInterface.py:136
+msgid "Ethernet Device:"
+msgstr "এথারনেট ডিভাইস:"
+
+#: src/netconfpkg/gui/ADSLInterface.py:137
+#: src/netconfpkg/gui/DialupDruid.py:229
+msgid "Provider Name:"
+msgstr "উপলব্ধকারির নাম:"
+
+#: src/netconfpkg/gui/ADSLInterface.py:138
+#: src/netconfpkg/gui/DialupDruid.py:231
+msgid "Login Name:"
+msgstr "লগ ইন করার নাম:"
+
+#. widget.set_position(0)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/CipeInterface.py:96
+msgid "CIPE (VPN) connection"
+msgstr "CIPE (VPN) সংযোগ"
+
+#: src/netconfpkg/gui/CipeInterface.py:99
+msgid "Create a new virtual private network connection with CIPE."
+msgstr "CIPE সহযোগে একটি নতুন ভারচুয়েল প্রাইভেট নেটওয়ার্ক সংযোগ তৈরি করুন।"
+
+#: src/netconfpkg/gui/CipeInterface.py:145
+#: src/netconfpkg/gui/EthernetInterface.py:214
+#: src/netconfpkg/gui/WirelessInterface.py:284
+#: src/netconfpkg/gui/TokenRingInterface.py:208
+msgid "Device:"
+msgstr "ডিভাইস:"
+
+#: src/netconfpkg/gui/CipeInterface.py:146
+msgid "Tunnel through Device:"
+msgstr "ডিভাইসের মধ্যবর্তি টানেল:"
+
+#: src/netconfpkg/gui/CipeInterface.py:147
+msgid "Local Port:"
+msgstr "স্থানীয় পোর্ট:"
+
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/CipeInterface.py:154
+msgid "Remote Peer Address:"
+msgstr "দূরবর্তি পীয়ারের ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterface.py:152
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Auto"
+msgstr "স্বয়ংক্রিয়"
+
+#: src/netconfpkg/gui/CipeInterface.py:155
+msgid "Remote Peer Port:"
+msgstr "দূরবর্তি পীয়ারের পোর্ট:"
+
+#: src/netconfpkg/gui/CipeInterface.py:157
+msgid "Remote Virtual Address:"
+msgstr "দূরবর্তি ভারচুয়াল ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterface.py:158
+msgid "Local Virtual Address:"
+msgstr "স্থানীয় ভারচুয়াল ঠিকানা:"
+
+#. else:
+#. self.on_generateKeyButton_clicked()
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:167
+#: src/netconfpkg/gui/CipeInterface.py:235 src/netconfpkg/gui/cipeconfig.py:72
+#: src/netconfpkg/gui/cipeconfig.py:134
+msgid "None - Server Mode"
+msgstr "কোনটাই নয় - সার্ভার মোড"
+
+#: src/netconfpkg/gui/CipeInterface.py:174 src/netconfpkg/gui/cipeconfig.py:80
+msgid " (dynamic)"
+msgstr " (পরিবর্তনশীল)"
+
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:211
+#: src/netconfpkg/gui/CipeInterface.py:265
+#: src/netconfpkg/gui/cipeconfig.py:112 src/netconfpkg/gui/cipeconfig.py:163
+msgid "Server Mode"
+msgstr "সার্ভার মোড"
+
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:300
+#: src/netconfpkg/gui/CipeInterface.py:305
+#: src/netconfpkg/gui/cipeconfig.py:195 src/netconfpkg/gui/cipeconfig.py:200
+msgid "(own choice)"
+msgstr "(নিজস্ব পছন্দ)"
+
+#: src/netconfpkg/gui/CipeInterface.py:311
+#: src/netconfpkg/gui/cipeconfig.py:206
+msgid "IP Address of Tunnel Device: "
+msgstr "টানেল ডিভাইসের IP অ্যাড্রেস:"
+
+#: src/netconfpkg/gui/CipeInterface.py:312
+#: src/netconfpkg/gui/cipeconfig.py:207
+msgid "Local Port: "
+msgstr "স্থানীয় পোর্ট:"
+
+#: src/netconfpkg/gui/CipeInterface.py:313
+#: src/netconfpkg/gui/cipeconfig.py:208
+msgid "Remote Peer Address: "
+msgstr "দূরবর্তি পীয়ারের ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterface.py:317
+#: src/netconfpkg/gui/cipeconfig.py:212
+msgid "Remote Virtual Address: "
+msgstr "দূরবর্তি ভারচুয়াল ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterface.py:318
+#: src/netconfpkg/gui/cipeconfig.py:213
+msgid "Local Virtual Address: "
+msgstr "স্থানীয় ভারচুয়াল ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterface.py:319
+#: src/netconfpkg/gui/cipeconfig.py:214
+msgid "Secret Key: "
+msgstr "গোপনীয় চাবি:"
+
+#. widget.set_position(0)
+#: src/netconfpkg/gui/CipeInterface.py:329
+msgid ""
+"You must enter a secret key \n"
+"or generate one"
+msgstr ""
+"আপনাকে একটি গোপনীয় চাবি লিখতে হবে \n"
+"অথবা তৈরি করতে হবে"
+
+#: src/netconfpkg/gui/DialupDruid.py:228
+msgid "Hardware:"
+msgstr "হার্ডওয়ের"
+
+#: src/netconfpkg/gui/DialupDruid.py:232
+msgid "Phone Number:"
+msgstr "ফোনের নাম্বার:"
+
+#. Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. hwlist = NCHardwareList.getHardwareList()
+#. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
+#. if len(hwdesc):
+#. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#: src/netconfpkg/gui/EthernetHardwareDruid.py:145
+#: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
+#: src/netconfpkg/gui/ethernethardware.py:153
+#: src/netconfpkg/gui/ethernethardware.py:170
+#: src/netconfpkg/gui/tokenringhardware.py:153
+#: src/netconfpkg/gui/tokenringhardware.py:164
+#: src/netconfpkg/NCHardwareList.py:263 src/netconfpkg/NCHardwareList.py:379
+#: src/netconfpkg/NCHardwareList.py:562 src/netconfpkg/NCHardwareList.py:595
+#: src/netconfpkg/NC_functions.py:300 src/netconfpkg/NCDevice.py:206
+#: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:105
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:21
+msgid "Unknown"
+msgstr "অজানা"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print "EthernetInterface getDeviceList"
+#. FIXME
+#: src/netconfpkg/gui/EthernetInterface.py:115
+msgid "Ethernet connection"
+msgstr "এথারনেট সংযোগ"
+
+#: src/netconfpkg/gui/EthernetInterface.py:121
+msgid "Create a new ethernet connection."
+msgstr "একটি নতুন এথারনেট সংযোগ তৈরি করো।"
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#. must be at bottom, because prepare is called here
+#: src/netconfpkg/gui/EthernetInterface.py:194
+msgid "Other Ethernet Card"
+msgstr "অন্য এথারনেট কার্ড"
+
+#: src/netconfpkg/gui/EthernetInterface.py:225
+#: src/netconfpkg/gui/WirelessInterface.py:295
+#: src/netconfpkg/gui/TokenRingInterface.py:219
+#: src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Address:"
+msgstr "ঠিকানা:"
+
+#: src/netconfpkg/gui/EthernetInterface.py:226
+#: src/netconfpkg/gui/WirelessInterface.py:296
+#: src/netconfpkg/gui/TokenRingInterface.py:220
+msgid "Subnet Mask:"
+msgstr "সাবনেট মাস্ক:"
+
+#: src/netconfpkg/gui/EthernetInterface.py:227
+#: src/netconfpkg/gui/WirelessInterface.py:297
+#: src/netconfpkg/gui/TokenRingInterface.py:221
+msgid "Default Gateway Address:"
+msgstr "ডিফল্ট গেটওয়ের ঠিকানা:"
+
+#: src/netconfpkg/gui/EthernetInterface.py:229
+#: src/netconfpkg/gui/WirelessInterface.py:299
+#: src/netconfpkg/gui/TokenRingInterface.py:223
+msgid "Automatically obtain IP address settings with:"
+msgstr "এর দ্বারা IP অ্যাড্রেসের বৈশিষ্ট্যাবলী স্বয়ংক্রিয়ভাবে প্রাপ্ত করো:"
+
+#. print self.devicelist
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/GUI_functions.py:545
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"এটা চালানো সম্ভব হয়নি:\n"
+"%s"
+
+#: src/netconfpkg/gui/GUI_functions.py:548
+msgid ""
+"\n"
+"Succeeded. Please read the output."
+msgstr ""
+"\n"
+"সফল হয়েছে। দয়া করে আউটপূটটি পড়ুন।"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/GenericInterface.py:83
+#, python-format
+msgid "%s connection"
+msgstr "%s সংযোগ"
+
+#: src/netconfpkg/gui/GenericInterface.py:86
+#, python-format
+msgid "Create a new %s connection."
+msgstr "একটি নতুন %s সংযোগ তৈরি করুন।"
+
+#: src/netconfpkg/gui/GenericInterface.py:96
+msgid "This wizard still has to be written."
+msgstr "এই উইজার্ডটি এখনো লেখা হয়নি।"
+
+#: src/netconfpkg/gui/GenericInterface.py:97
+msgid "Press Finish to get the standard configuration dialog."
+msgstr "স্ট্যানডার্ড কনফিগারেশন ডায়লগটি আনতে হলে সম্পূর্ণ টিপুন।"
+
+#: src/netconfpkg/gui/GenericInterface.py:98
+msgid "Then, at first, enter the nickname for the device."
+msgstr "প্রথমে, এই ডিভাইসটির জন্য একটি উপনাম বাছাই করুন।"
+
+#. # FIXME
+#: src/netconfpkg/gui/GenericInterface.py:135
+msgid "This device can not be edited with this tool!"
+msgstr "এই টুলের সাহায্যে এই ডিভাইসটি বদল করা সম্ভব হবে না!"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/IsdnInterface.py:87
+msgid "ISDN connection"
+msgstr "ISDN সংযোগ"
+
+#: src/netconfpkg/gui/IsdnInterface.py:93
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"একটি নতুন ISDN সংযোগ তৈরি করো। এই সংযোগটি ইন্টিগ্রেটেড সার্ভিসেস "
+"ডিজিট্যাল নেটওয়ার্ক ব্যবস্থার সাহায্যে আপনার নির্ধারিত ইন্টারনেট সার্ভিস "
+"প্রভাইডারে ডায়াল করবে। এই প্রযুক্তি একটি বিশেষ ফোনের লাইন ব্যবহার করে "
+"যা আপনার টেলিফোন কম্পানির দ্বারা ইনস্টল করতে হবে। এর সাথে টারমিন্যাল "
+"অ্যাডাপ্টার নামক একটি বিশেষ ডিভাইসও লাগবে যা ISPর সাথে ISDN এর সংযোগ "
+"বিচ্ছিন্ন করতে সাহায্য করবে। এই ধরনের সংযোগ ব্যবস্থা সাধারণত ইউরোপে এবং "
+"অন্যান্য প্রযুক্তিশীল স্থানে ব্যবহৃত হয়ে থাকে। মার্কিন যুক্তরাষ্ট্রে এই ধরনের সংযোগ ব্যবস্থা "
+"উপলব্ধ আছে কিন্তু সাধারণত ব্যবহার করা হয় না। এর গতি ৬৪ কিলোবাইট/সেকেন্ড থেকে "
+"১২৮ কিলোবাইট/সেকেন্ডের মধ্য সীমবদ্ধ থাকে।"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ModemInterface.py:80
+msgid "Modem connection"
+msgstr "মোডেমের সংযোগ"
+
+#: src/netconfpkg/gui/ModemInterface.py:86
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"একটি নতুন মোডেম সংযোগ তৈরি করে। এই সংযোগটি ইন্টারনেট সার্ভিস প্রভাইডারেরকে ডায়েল "
+"করার সময় সিরিয়েল অ্যানালগ মোডেম ব্যবহার করে।এই মোডেমগুলো সাধারণ তামার টেলিফোন লাইনে "
+"শব্দ ব্যবহার করে ডাটা প্রেরণ করে। পৃতিবীর যেসকল যায়গায় টেলিফোন সিস্টেম উপস্থিত আছে "
+"সেখানেই এই ধরনের সংযোগ ব্যবস্থা আছে।"
+
+#: src/netconfpkg/gui/ModemInterface.py:114
+msgid "Modem probing..."
+msgstr "মোডেম খঁোজা হচ্ছে..."
+
+#: src/netconfpkg/gui/ModemInterface.py:118
+msgid "Probing for Modems, please wait..."
+msgstr "মোডেম খঁোজা হচ্ছে, একটু অপেক্ষা করুন..."
+
+#: src/netconfpkg/gui/ModemInterface.py:133
+msgid "No modem was found on your system."
+msgstr "আপনার সিস্টেমে কোন মোডেম খঁুজে পাওয়া যায়নি।"
+
+#. 460800 seems to be to high
+#: src/netconfpkg/gui/ModemInterface.py:154
+#: src/netconfpkg/gui/modemconfig.py:113
+msgid "Generic Modem"
+msgstr "সাধারণ মোডেম"
+
+#: src/netconfpkg/gui/ModemInterface.py:161
+#: src/netconfpkg/gui/modemconfig.py:140
+#: src/netconfpkg/gui/ModemDruid.glade.h:27
+#: src/netconfpkg/gui/modemconfig.glade.h:27
+msgid "Off"
+msgstr "বন্ধ আছে"
+
+#: src/netconfpkg/gui/ModemInterface.py:163
+#: src/netconfpkg/gui/modemconfig.py:142
+#: src/netconfpkg/gui/ModemDruid.glade.h:22
+#: src/netconfpkg/gui/modemconfig.glade.h:21
+msgid "Low"
+msgstr "কমানো আছে"
+
+#: src/netconfpkg/gui/ModemInterface.py:165
+#: src/netconfpkg/gui/modemconfig.py:144
+#: src/netconfpkg/gui/ModemDruid.glade.h:23
+#: src/netconfpkg/gui/modemconfig.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Medium"
+msgstr "মধ্যমে আছে"
+
+#: src/netconfpkg/gui/ModemInterface.py:167
+#: src/netconfpkg/gui/modemconfig.py:146
+#: src/netconfpkg/gui/ModemDruid.glade.h:21
+#: src/netconfpkg/gui/modemconfig.glade.h:20
+msgid "High"
+msgstr "বাড়ানো আছে"
+
+#: src/netconfpkg/gui/ModemInterface.py:169
+#: src/netconfpkg/gui/modemconfig.py:148
+#: src/netconfpkg/gui/ModemDruid.glade.h:30
+#: src/netconfpkg/gui/modemconfig.glade.h:29
+msgid "Very High"
+msgstr "অধিক বাড়ানো আছে"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/WirelessInterface.py:120
+msgid "Wireless connection"
+msgstr "বেতার সংযোগ"
+
+#: src/netconfpkg/gui/WirelessInterface.py:126
+msgid "Create a new wireless connection."
+msgstr "একটি নতুন বেতার সংযোগ তৈরি করো।"
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#: src/netconfpkg/gui/WirelessInterface.py:263
+msgid "Other Wireless Card"
+msgstr "অন্য বেতার কার্ড"
+
+#: src/netconfpkg/gui/WirelessInterface.py:302
+msgid "Mode: "
+msgstr "মোড:"
+
+#: src/netconfpkg/gui/WirelessInterface.py:303
+msgid "ESSID (Network ID):"
+msgstr "ESSID (নেটওয়ার্কের ID):"
+
+#: src/netconfpkg/gui/WirelessInterface.py:309
+msgid "Channel: "
+msgstr "চ্যানেল:"
+
+#: src/netconfpkg/gui/WirelessInterface.py:310
+msgid "Transmit Rate: "
+msgstr "প্রেরণের গতি:"
+
+#: src/netconfpkg/gui/WirelessInterface.py:311
+msgid "Key: "
+msgstr "চাবি:"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/TokenRingInterface.py:112
+msgid "Token Ring connection"
+msgstr "টোকেন রিং সংযোগ"
+
+#: src/netconfpkg/gui/TokenRingInterface.py:118
+msgid "Create a new Token Ring connection."
+msgstr "একটি নতুন টোকেন রিং সযোগ তৈরি করো।"
+
+#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
+#: src/netconfpkg/gui/TokenRingInterface.py:189
+msgid "Other Tokenring Card"
+msgstr "অন্য টোকেনরিং কার্ড"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ctcconfig.py:49
+msgid "CTC Device"
+msgstr "CTC ডিভাইস"
+
+#: src/netconfpkg/gui/ctcconfig.py:52
+msgid "IUCV Device"
+msgstr "IUCV ডিভাইস"
+
+#. widget.set_position(0)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#.
+#. #         vbox = self.xml.get_widget ('ipsecVbox')
+#. #         if vbox:
+#. #             window = self.sharedtcpip_xml.get_widget ('ipsecWindow')
+#. #             frame = self.sharedtcpip_xml.get_widget ('ipsecFrame')
+#. #             window.remove (frame)
+#. #             vbox.pack_start (frame)
+#. #             sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
+#: src/netconfpkg/gui/deviceconfig.py:127
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"%s উপনামটি বর্তমানে ব্যবহার করা হচ্ছে!\n"
+"দয়া করে আরেকটি বাছাই করুন।\n"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. widget.set_position(0)
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/dialupconfig.py:241
+#: src/netconfpkg/gui/dialupconfig.glade.h:11
+msgid "Dialup Configuration"
+msgstr "ডায়েল আপ কনফিগারেশন"
+
+#: src/netconfpkg/gui/dialupconfig.py:273
+msgid "ISDN Dialup Configuration"
+msgstr "ISDN ডায়েল আপ কনফিগারেশন"
+
+#. get free ISDN device if encap mode is changed
+#: src/netconfpkg/gui/dialupconfig.py:293
+#: src/netconfpkg/gui/dialupconfig.py:386
+#: src/netconfpkg/gui/dialupconfig.glade.h:70
+msgid "in"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:293
+#: src/netconfpkg/gui/dialupconfig.glade.h:73
+msgid "out"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:337
+#: src/netconfpkg/gui/DialupDruid.glade.h:32
+#: src/netconfpkg/gui/dialupconfig.glade.h:75
+msgid "raw IP"
+msgstr "raw IP"
+
+#: src/netconfpkg/gui/dialupconfig.py:339
+#: src/netconfpkg/gui/dialupconfig.py:368
+#: src/netconfpkg/gui/DialupDruid.glade.h:33
+#: src/netconfpkg/gui/dialupconfig.glade.h:76
+msgid "sync PPP"
+msgstr "sync PPP"
+
+#: src/netconfpkg/gui/dialupconfig.py:352
+#: src/netconfpkg/gui/dialupconfig.py:420
+#: src/netconfpkg/gui/dialupconfig.glade.h:74
+msgid "pap"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:354
+#: src/netconfpkg/gui/dialupconfig.py:422
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
+msgid "chap"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:357
+#: src/netconfpkg/gui/dialupconfig.py:424
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
+msgid "chap+pap"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.py:359
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
+msgid "none"
+msgstr "কোনটাই নয়"
+
+#: src/netconfpkg/gui/dialupconfig.py:434
+msgid "Modem Dialup Configuration"
+msgstr "মোডেম ডায়েল আপের কনফিগারেশন"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. get the widgets we need
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. make ctrl-C work
+#. !/usr/bin/python2.2
+#. # netconf - A network configuration tool
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # Copyright (C) 2001 - 2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. clist = self.xml.get_widget("hardwareList")
+#. # First: copy the clist-style
+#. self.style1 = clist.get_style().copy()
+#. self.style2 = clist.get_style().copy()
+#. self.style3 = clist.get_style().copy()
+#. color1 = "lightgreen"
+#. color2 = "light salmon"
+#. color3 = "white"
+#. colormap = clist.get_colormap()
+#. self.style1.base[gtk.STATE_NORMAL] = colormap.alloc_color(color1)
+#. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
+#. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
+#. initialize the button state..
+#: src/netconfpkg/gui/maindialog.py:264
+msgid "Loading Configuration..."
+msgstr "কনফিগারেশন লোড করে চলছে..."
+
+#: src/netconfpkg/gui/maindialog.py:272
+msgid "Loading Device Configuration..."
+msgstr "ডিভাইসের কনফিগারেশন লোড করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:277
+msgid "Loading Hardware Configuration..."
+msgstr "হার্ডওয়ের কনফিগারেশন লোড করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:282
+msgid "Loading Profile Configuration..."
+msgstr "প্রোফাইল কনফিগারেশন লোড করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:287
+msgid "Loading IPsec Configuration..."
+msgstr "IPsec কনফিগারেশন লোড করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:292
+msgid "Testing Configuration Set..."
+msgstr "কনফিগারেশন সেট পরীক্ষা করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:323
+#, python-format
+msgid "Active Profile: %s (modified)"
+msgstr "চালু প্রোফাইল: %s (পরিবর্তিত হয়েছে)"
+
+#: src/netconfpkg/gui/maindialog.py:327
+#, python-format
+msgid "Active Profile: %s"
+msgstr "চালু প্রোফাইল: %s"
+
+#: src/netconfpkg/gui/maindialog.py:335
+msgid "Saving Configuration..."
+msgstr "কনফিগারেশন সংরক্ষণ করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:347
+#, python-format
+msgid ""
+"Error saving Configuration!\n"
+"%s"
+msgstr ""
+"কনফিগারেশন সংরক্ষণ করতে সমস্যা দেখা দিয়েছে!\n"
+"%s"
+
+#: src/netconfpkg/gui/maindialog.py:350
+msgid ""
+"Changes are saved.\n"
+"You may want to restart\n"
+"the network and network services\n"
+"or restart the computer."
+msgstr ""
+"পরিবর্তনগুলো সংরক্ষণ করা হেয়েছে।\n"
+"আপনি ইচ্ছে করলে নেটওয়ার্ক এবং \n"
+"নেটওয়ার্ক পরিসেবা অথবা কম্পিউটার\n"
+"রিস্টার্ট করতে পারেন।"
+
+#: src/netconfpkg/gui/maindialog.py:359
+msgid "Saving Device Configuration..."
+msgstr "ডিভাইসের কনফিগারেশন সংরক্ষণ করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:366
+msgid "Saving Hardware Configuration..."
+msgstr "হার্ডওয়ের কনফিগারেশন সংরক্ষণ করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:373
+msgid "Saving Profile Configuration..."
+msgstr "প্রোফাইল কনফিগারেশন সংরক্ষণ করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:380
+msgid "Saving IPsec Configuration..."
+msgstr "IPsec কনফিগারেশন সংরক্ষণ করা হচ্ছে..."
+
+#: src/netconfpkg/gui/maindialog.py:403
+msgid "Updating Devices..."
+msgstr ""
+
+#: src/netconfpkg/gui/maindialog.py:460
+msgid "Updating Hardware..."
+msgstr ""
+
+#. if hw.Status == HW_OK:
+#. clist.set_row_style(row, self.style1)
+#. elif hw.Status == HW_CONF:
+#. clist.set_row_style(row, self.style3)
+#. else:
+#. clist.set_row_style(row, self.style2)
+#. if ipsec.IPsecId in profilelist.ActiveIPsecs:
+#. status = ACTIVE
+#. status_pixmap = self.on_xpm
+#. status_mask = self.on_mask
+#. else:
+#. status = INACTIVE
+#. status_pixmap = self.off_xpm
+#. status_mask = self.off_mask
+#. if device.IPsecList != None:
+#. for ipsec in device.IPsecList:
+#. clist.append([ipsec.RemoteIPAddress or "-",
+#. (ipsec.ConnectionType == "Net2Net" and ipsec.RemoteNetwork) or "-",
+#. (ipsec.ConnectionType == "Net2Net" and ipsec.LocalNetwork) or "-",
+#. ])
+#. else:
+#. device.createIPsecList()
+#. print "getActiveProfile == %s " % self.active_profile.ProfileName
+#: src/netconfpkg/gui/maindialog.py:554
+msgid "Updating Profiles..."
+msgstr ""
+
+#. print "hydrateProfiles(%s)" % self.active_profile_name
+#. 88357
+#. change the default profile to a more understandable name
+#. omenu.set_history (history)
+#: src/netconfpkg/gui/maindialog.py:660 src/netconfpkg/gui/maindialog.py:753
+#: src/netconfpkg/gui/maindialog.py:976
+msgid "Do you want to save your changes?"
+msgstr "এই পরিবর্তনগুলো কি আপনি সংরক্ষণ করতে ইচ্ছুক?"
+
+#: src/netconfpkg/gui/maindialog.py:818
+msgid "The Loopback device can not be edited!"
+msgstr "এই লুপব্যাক ডিভাইসটি পরিবর্তন করা সম্ভব নয়!"
+
+#: src/netconfpkg/gui/maindialog.py:822
+msgid "Edit Device..."
+msgstr "ডিভাইস পরিবর্তন করো..."
+
+#. Fixed change device names in active list of all profiles
+#: src/netconfpkg/gui/maindialog.py:873
+msgid "The Loopback device can not be removed!"
+msgstr "এই লোপব্যাক ডিভাইসটি সরিয়ে ফেলা সম্ভব নয়!"
+
+#: src/netconfpkg/gui/maindialog.py:877
+#, python-format
+msgid "Do you really want to delete device \"%s\"?"
+msgstr "আপনি কি \"%s\" ডিভাইসটি মুছে ফেলার ব্যাপারে নিশ্চিত?"
+
+#: src/netconfpkg/gui/maindialog.py:909 src/netconfpkg/gui/maindialog.py:1662
+msgid "You have made some changes in your configuration."
+msgstr "আপনি আপনার নির্ধারিত কনফিগারেশনে বদল করেছেন।"
+
+#: src/netconfpkg/gui/maindialog.py:910
+#, python-format
+msgid "To activate the network device %s, the changes have to be saved."
+msgstr "%s নেটওয়ার্ক ডিভাইসটি চালু করতে হলে, পরিবর্তনগুলো সংরক্ষণ করতে হবে। "
+
+#: src/netconfpkg/gui/maindialog.py:912 src/netconfpkg/gui/maindialog.py:1665
+msgid "Do you want to continue?"
+msgstr "আপনি কি এগিয়া যেতে ইচ্ছুক?"
+
+#. devicelist = getDeviceList()
+#. self.rename_button.set_sensitive(TRUE)
+#. if self.rename_button: self.rename_button.set_sensitive(FALSE)
+#. clist.remove_data ("signal_id")
+#. don't allow user to edit device if it's active
+#. if clist.get_name() == 'deviceList':
+#. try:
+#. status = clist.get_pixtext(clist.selection[0], 0)[0]
+#. except ValueError:
+#. status = clist.get_text(clist.selection[0], 0)
+#. if status == ACTIVE:
+#. return
+#: src/netconfpkg/gui/maindialog.py:1104
+msgid "The Loopback device can not be disabled!"
+msgstr "লুপব্যাক ডিভাইসটি নিষ্ক্রিয় করা সম্ভব নয়!"
+
+#. if len(clist.selection) == 0:
+#. return
+#.
+#: src/netconfpkg/gui/maindialog.py:1330 src/netconfpkg/gui/maindialog.py:1409
+msgid "The name may only contain letters and digits!"
+msgstr "শুধুমাত্র অক্ষর এবং সংখ্যা ব্যবহার করে নাম লিখতে হবে!"
+
+#: src/netconfpkg/gui/maindialog.py:1335 src/netconfpkg/gui/maindialog.py:1414
+#, python-format
+msgid "The profile can't be named \"%s\"!"
+msgstr "প্রোফাইলের নাম \"%s\" রাখা চলবে না!"
+
+#: src/netconfpkg/gui/maindialog.py:1341 src/netconfpkg/gui/maindialog.py:1420
+msgid "The profile name already exists!"
+msgstr "প্রোফাইলের এই নামটি বর্তমানে আছে!"
+
+#. self.xml.get_widget("profileList").clear()
+#: src/netconfpkg/gui/maindialog.py:1387
+#, python-format
+msgid "The \"%s\" profile can't be renamed!"
+msgstr "\"%s\" প্রোফাইলের নাম বদল করা সম্ভব নয়!"
+
+#. clist = self.xml.get_widget('profileList')
+#. if len(clist.selection) == 0:
+#. return
+#: src/netconfpkg/gui/maindialog.py:1442
+#, python-format
+msgid "The \"%s\" Profile can not be deleted!"
+msgstr "\"%s\" প্রোফাইলটি মুছে ফেলা সম্ভব নয়!"
+
+#: src/netconfpkg/gui/maindialog.py:1448
+#, python-format
+msgid "Do you really want to delete profile \"%s\"?"
+msgstr "\"%s\" প্রফাইলটি মুছে ফেলার ব্যাপারে কি আপনি নিশ্চিত?"
+
+#. clist.clear()
+#. type  = clist.get_text(clist.selection[0], 1)
+#. hw = hardwarelist[clist.selection[0]]
+#: src/netconfpkg/gui/maindialog.py:1521
+msgid ""
+"Sorry, there is nothing to be edited,\n"
+"or this type cannot be edited yet."
+msgstr ""
+"দুক্ষিত, সম্পাদন করার জন্য কিছু নেই,\n"
+"অথবা এই ধরনটি বর্তমানে সম্পাদনযোগ্য নয়।"
+
+#: src/netconfpkg/gui/maindialog.py:1539
+#, python-format
+msgid "Do you really want to delete \"%s\"?"
+msgstr "\"%s\" মুছে ফেলার ব্যাপারে কি আপনি নিশ্চিত?"
+
+#. remove hardware
+#: src/netconfpkg/gui/maindialog.py:1552
+#, python-format
+msgid "Do you want to delete all devices that used \"%s\"?"
+msgstr "\"%s\" ব্যবহৃত সকল ডিভাইস কি আপনি মুছে ফেলতে ইচ্ছুক?"
+
+#: src/netconfpkg/gui/maindialog.py:1663
+#, python-format
+msgid "To activate the IPsec connection %s, the changes have to be saved."
+msgstr "%s IPsec সংযোগটি চালু করতে হলে, পরিবর্তনগুলো সংরক্ষণ করতে হবে।"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/ethernethardware.py:94
+#: src/netconfpkg/gui/tokenringhardware.py:99
+msgid "Command failed: "
+msgstr "বিফল হওয়া কমান্ড:"
+
+#: src/netconfpkg/gui/ethernethardware.py:95
+#: src/netconfpkg/gui/tokenringhardware.py:100
+msgid "Output:\n"
+msgstr "আউটপুট:\n"
+
+#: src/netconfpkg/gui/ethernethardware.py:97
+msgid ""
+"The Ethernet card could not be initialized. \n"
+"Please verify your settings and try again."
+msgstr ""
+"এথারনেট কার্ডটি আরম্ভ করা সম্ভব হয়নি। \n"
+"এর সম্বন্ধিয় বৈশিষ্ট্যাবলী পরীক্ষা করে পুনরায় চেষ্টা করুন।"
+
+#: src/netconfpkg/gui/tokenringhardware.py:102
+msgid ""
+"The Token Ring card could not be initialized. \n"
+"Please verify your settings and try again."
+msgstr ""
+"টোকেন রিং কার্ডটি আরম্ভ করা সম্ভব হয়নি। \n"
+"এর সম্বন্ধিয় বৈশিষ্ট্যাবলী পরীক্ষা করে পুনরায় চেষ্টা করুন।"
+
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Preston Brown <pbrown@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
+#. fields = string.split(hw)
+#. hw = fields[0]
+#. self.device.Device = hw
+#. -*- python -*-
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Import all subpackages of our netconfpkg directory. This code is a real
+#. dirty hack but does the job(tm). It basically finds all .py files in the
+#. package directory and imports from all found files (except __init__.py that
+#. is) ;). Nice for plugin mechanism.
+#. ! /usr/bin/env python
+#. # Copyright (C) 2002 Red Hat, Inc.
+#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/Control.py:33
+msgid "Active"
+msgstr "চালু অছে"
+
+#: src/netconfpkg/Control.py:34
+msgid "Inactive"
+msgstr "বন্ধ করা আছে"
+
+#. remove inactive isdn/ppp device
+#. check real ppp device
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print self.getline()
+#. set first (should be only) instance to values in list value
+#. not a nameserver, so all items on one line...
+#. no matter what, update our idea of the variable...
+#. delete *every* instance...
+#: src/netconfpkg/NCCipe.py:155
+#, python-format
+msgid ""
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+"%s ডাইরেক্টরিটি উপস্থিত নেই!\n"
+"আপনার জন্য এটি তৈরি করা হবে!\n"
+"আপনার cipe rpm প্যাকেজ ইনস্টল করা উচিত!\n"
+
+#: src/netconfpkg/NCCipe.py:159
+#, python-format
+msgid ""
+"Could not create\n"
+"directory %s!"
+msgstr ""
+"%s ডায়রেক্টরিটি তৈরি \n"
+"করা সম্ভব হয়নি!"
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:67
+msgid "auto"
+msgstr "স্বয়ংক্রিয়"
+
+#: src/netconfpkg/NCDialup.py:38 src/netconfpkg/gui/dialupconfig.glade.h:71
+msgid "manual"
+msgstr "ম্যানুয়েল"
+
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:114
+#: src/netconfpkg/gui/ModemDruid.glade.h:26
+#: src/netconfpkg/gui/modemconfig.glade.h:26
+msgid "None"
+msgstr "কোনটাই নয়"
+
+#: src/netconfpkg/NCDialup.py:42
+msgid "Afghanistan"
+msgstr "আফগানিস্থান"
+
+#: src/netconfpkg/NCDialup.py:43
+msgid "Albania"
+msgstr "আলবেনিয়া"
+
+#: src/netconfpkg/NCDialup.py:44
+msgid "Algeria"
+msgstr "আলজিরিয়া"
+
+#: src/netconfpkg/NCDialup.py:45
+msgid "American Samoa"
+msgstr "আমেরিকান সামোয়া"
+
+#: src/netconfpkg/NCDialup.py:46
+msgid "Andorra"
+msgstr "এনডোরা"
+
+#: src/netconfpkg/NCDialup.py:47
+msgid "Argentina"
+msgstr "আর্জেনটিনা"
+
+#: src/netconfpkg/NCDialup.py:48
+msgid "Australia"
+msgstr "অস্ট্রেলিয়া"
+
+#: src/netconfpkg/NCDialup.py:49
+msgid "Austria"
+msgstr "অস্ট্রিয়া"
+
+#: src/netconfpkg/NCDialup.py:50
+msgid "Belgium"
+msgstr "বেলজিয়াম"
+
+#: src/netconfpkg/NCDialup.py:51
+msgid "Bosnia and Hercegovina"
+msgstr "বসনিয়া এবং হার্জগোভিনা"
+
+#: src/netconfpkg/NCDialup.py:52
+msgid "Brazil"
+msgstr "ব্রাজিল"
+
+#: src/netconfpkg/NCDialup.py:53
+msgid "British Virgin Islands"
+msgstr "বৃটিশ ভার্জিন আইল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:54
+msgid "Bulgaria"
+msgstr "বুলগারিয়া"
+
+#: src/netconfpkg/NCDialup.py:55
+msgid "Canada"
+msgstr "কানাডা"
+
+#: src/netconfpkg/NCDialup.py:56
+msgid "Central African Republic"
+msgstr "মধ্য আফ্রিকান প্রজাতন্ত্র"
+
+#: src/netconfpkg/NCDialup.py:57
+msgid "Chile"
+msgstr "চিলি"
+
+#: src/netconfpkg/NCDialup.py:58
+msgid "China"
+msgstr "চীন"
+
+#: src/netconfpkg/NCDialup.py:59
+msgid "Colombia"
+msgstr "কলম্বিয়া"
+
+#: src/netconfpkg/NCDialup.py:60
+msgid "Croatia"
+msgstr "ক্রোয়েশিয়া"
+
+#: src/netconfpkg/NCDialup.py:61
+msgid "Cuba"
+msgstr "কিউবা"
+
+#: src/netconfpkg/NCDialup.py:62
+msgid "Czech Republic"
+msgstr "চেক্‌ প্রজাতন্ত্র"
+
+#: src/netconfpkg/NCDialup.py:63
+msgid "Denmark"
+msgstr "ডেনমার্ক"
+
+#: src/netconfpkg/NCDialup.py:64
+msgid "Finland"
+msgstr "ফিন্‌ল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:65
+msgid "France"
+msgstr "ফ্রান্স"
+
+#: src/netconfpkg/NCDialup.py:66
+msgid "Germany"
+msgstr "জার্মানি"
+
+#: src/netconfpkg/NCDialup.py:67
+msgid "Greece"
+msgstr "গ্রীস্‌"
+
+#: src/netconfpkg/NCDialup.py:68
+msgid "Hong Kong"
+msgstr "হং কং"
+
+#: src/netconfpkg/NCDialup.py:69
+msgid "Hungary"
+msgstr "হাঙ্গেরি"
+
+#: src/netconfpkg/NCDialup.py:70
+msgid "Iceland"
+msgstr "আইসল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:71
+msgid "India"
+msgstr "ভারত"
+
+#: src/netconfpkg/NCDialup.py:72
+msgid "Indonesia"
+msgstr "ইন্দোনেশিয়া"
+
+#: src/netconfpkg/NCDialup.py:73
+msgid "Ireland"
+msgstr "আয়ারল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:74
+msgid "Israel"
+msgstr "ইজ্‌রেল"
+
+#: src/netconfpkg/NCDialup.py:75
+msgid "Italy"
+msgstr "ইটালী"
+
+#: src/netconfpkg/NCDialup.py:76
+msgid "Japan"
+msgstr "জাপান"
+
+#: src/netconfpkg/NCDialup.py:77
+msgid "Korea North"
+msgstr "উত্তর কোরিয়া"
+
+#: src/netconfpkg/NCDialup.py:78
+msgid "Korea Republic"
+msgstr "কোরিয় প্রজাতন্ত্র"
+
+#: src/netconfpkg/NCDialup.py:79
+msgid "Malaysia"
+msgstr "মালায়েশিয়া"
+
+#: src/netconfpkg/NCDialup.py:80
+msgid "Luxembourg"
+msgstr "লাক্সেমবুর্গ"
+
+#: src/netconfpkg/NCDialup.py:81
+msgid "Mexico"
+msgstr "মেক্সিকো"
+
+#: src/netconfpkg/NCDialup.py:82
+msgid "Netherlands"
+msgstr "নেদারল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:83
+msgid "New Zealand"
+msgstr "নিউজিল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:84
+msgid "Norway"
+msgstr "নরওয়ে"
+
+#: src/netconfpkg/NCDialup.py:85
+msgid "Philippines"
+msgstr "ফিলিপাইন্স"
+
+#: src/netconfpkg/NCDialup.py:86
+msgid "Romania"
+msgstr "রুমানিয়া"
+
+#: src/netconfpkg/NCDialup.py:87
+msgid "Singapore"
+msgstr "সিঙ্গাপুর"
+
+#: src/netconfpkg/NCDialup.py:88
+msgid "Slovakia"
+msgstr "স্লোভাকিয়া"
+
+#: src/netconfpkg/NCDialup.py:89
+msgid "Spain"
+msgstr "স্পেন"
+
+#: src/netconfpkg/NCDialup.py:90
+msgid "Sweden"
+msgstr "সুইডেন"
+
+#: src/netconfpkg/NCDialup.py:91
+msgid "Switzerland"
+msgstr "সুইত্‌জারল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:92
+msgid "Taiwan"
+msgstr "তাইওয়ান"
+
+#: src/netconfpkg/NCDialup.py:93
+msgid "Thailand"
+msgstr "থাইল্যান্ড"
+
+#: src/netconfpkg/NCDialup.py:94
+msgid "Turkey"
+msgstr "তুরস্ক"
+
+#: src/netconfpkg/NCDialup.py:95
+msgid "Ukraine"
+msgstr "ইউক্রেন"
+
+#: src/netconfpkg/NCDialup.py:96
+msgid "United Kingdom"
+msgstr "ইউনাইটেড কিংডম"
+
+#: src/netconfpkg/NCDialup.py:97
+msgid "United States of America"
+msgstr "মার্কিন যুক্তরাষ্ট্র"
+
+#: src/netconfpkg/NCDialup.py:98
+msgid "Vietnam"
+msgstr "ভিয়েত্‌নাম"
+
+#: src/netconfpkg/NCDialup.py:99
+msgid "Yugoslavia"
+msgstr "ইউগোসলাভিয়া"
+
+#.
+#. XXX FIXME... this is not OO
+#.
+#. Clean up wvdial
+#. if the loop does not get interrupted by break
+#. we did not find the Modem in the hardwarelist
+#. and it gets deleted
+#. Clean up modules
+#.
+#. XXX FIXME... this is not OO
+#.
+#. print "Testing " + str(mod)
+#. print "Removing " + str(mod)
+#. print str(modules.vars[mod].keys())
+#. print "Test: " + str(modules[mod])
+#. no card seems to use this
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCProfileList.py:56 src/netconfpkg/NCProfileList.py:64
+#, python-format
+msgid "Copying %s to default profile."
+msgstr "ডিফল্ট প্রোফাইলে %s কপি করা হচ্ছে।"
+
+#. 60016
+#. Keep that test for later versions
+#: src/netconfpkg/NCProfileList.py:207
+#, python-format
+msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
+msgstr "%s ডিভাইসটি %s এর সমতুল্য \"%s\" হার্ডওয়ের ডিভিসটি ব্যবহার করে!\n"
+
+#: src/netconfpkg/NCProfileList.py:209
+msgid ""
+"Please select another Hardware Device or \n"
+"activate only one of them."
+msgstr ""
+"একটি অন্য হার্ডওয়ের ডিভাইস বাছাই করুন অথবা \n"
+"শুধুমাত্র একটি স্বক্রিয় করুন।"
+
+#. Just to be safe...
+#. if the hostname changed, set it system wide (#55746)
+#. delete all other entries the user has deleted in the UI
+#. unlink old .route files
+#. Active Profile or default profile
+#. unlink old .route files
+#. Active Profile or default profile
+#. Special actions for the active profile
+#. Remove all unused files that are linked in the device directory
+#. Do not remove used files
+#. Check, if it is a device of neat in every profile directory
+#. Remove all profile directories except default
+#. Remove all files in the profile directory
+#. Do not remove used files
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. Do not clear the non-filled in values
+#. Bugzilla #52252
+#. for i in conf.keys():
+#. if not conf[i] or conf[i] == "": del conf[i]
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NC_functions.py:67
+msgid "Common"
+msgstr "সাধারণ"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: src/netconfpkg/NC_functions.py:112 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/gui/modemconfig.glade.h:19
+msgid "Hardware (CRTSCTS)"
+msgstr "হার্ডওয়ের (CRTSCTS)"
+
+#: src/netconfpkg/NC_functions.py:113 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/gui/modemconfig.glade.h:28
+msgid "Software (XON/XOFF)"
+msgstr "সফ্টওয়ের (XON/XOFF)"
+
+#. self.args = args
+#. print n[rpm.RPMTAG_NAME]
+#: src/netconfpkg/NC_functions.py:155
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr ""
+"আপনার সিস্টেমের জন্য দরকারি, নিম্নলিখিত এই প্যাকেজগুলো ইনস্টল করা হবে কি?"
+
+#: src/netconfpkg/NC_functions.py:168
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+"নিম্নলিখিত এই প্যাকেজগুলো আপনার সিস্টেমের জন্য দরকারি, ইনস্টল করতেই হবে!"
+
+#. test for wireless
+#. Some failsafe return codes (same as in gtk)
+#. print "file '%s' is not a file!" % file
+#: src/netconfpkg/NC_functions.py:647
+#, python-format
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"%s সরিয়ে ফেলা \n"
+"সম্ভব হয়নি:\n"
+"%s!"
+
+#: src/netconfpkg/NC_functions.py:657
+#, python-format
+msgid ""
+"Error linking %s\n"
+"to\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"%s এর সাথে \n"
+"%s এর\n"
+"সংযোগ করতে সমস্যা হয়েছে:\n"
+"%s!"
+
+#: src/netconfpkg/NC_functions.py:668
+#, python-format
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"%s থেকে \n"
+"%s কপি করতে \n"
+"সমস্যা হয়েছে:\n"
+"%s!"
+
+#: src/netconfpkg/NC_functions.py:678
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"%s এর সাথে \n"
+"%s এর\n"
+"সংযোগ করতে সমস্যা হয়েছে:\n"
+"%s!"
+#: src/netconfpkg/NC_functions.py:688
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"%s এর নাম \n"
+"%s এ বদল করতে \n"
+"সমস্যা হয়েছে:\n"
+"%s!"
+
+#: src/netconfpkg/NC_functions.py:696
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"ডায়রেক্টরি তৈরি করতে সমস্যা হয়েছে!\n"
+"%s"
+
+#. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
+#. we only support 1 ISDN card in this version
+#. !/usr/bin/python
+#.
+#. Python wrapper for ipcalc command line IP address manipulation tool
+#. Copyright (c) 2001-2003 Red Hat, Inc. All rights reserved.
+#.
+#. This software may be freely redistributed under the terms of the GNU
+#. public license.
+#.
+#. You should have received a copy of the GNU General Public License
+#. along with this program; if not, write to the Free Software
+#. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#.
+#. Author: Preston Brown <pbrown@redhat.com>
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "নিষ্ক্রিয়"
+
+#. not found in last config and not in actual system
+#: src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "সিস্টেম"
+
+#. found in system
+#: src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "কনফিগার করা আছে"
+
+#. found in config but not in system
+#: src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "ঠিক আছে"
+
+#. found in system and in config
+#. !/usr/bin/python
+#.
+#. test1
+#.
+#. read
+#. write
+#. check
+#. cleanup
+#.
+#. test2
+#.
+#. read
+#. modify
+#. write
+#. check
+#. cleanup
+#.
+#. test3
+#.
+#. read
+#. write
+#. check
+#. cleanup
+#.
+#. test4
+#.
+#. read
+#. modify
+#. write
+#. check
+#. cleanup
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from NC_functions import *
+#. raise KeyError, "%s is already registered" % hwtype
+#. raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from NC_functions import *
+#. raise KeyError, "%s is already registered" % devtype
+#. raise KeyError, "%s.%s is already registered" % (devtype, subtype)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. print status
+#. if ((self.oldmode & 0044) != 0044):
+#. ask = NC_functions.generic_yesno_dialog(\
+#. _("May I change\n%s\nfrom mode %o to %o?") % \
+#. (self.filename, self.oldmode & 03777, 0644))
+#. if ask != RESPONSE_YES:
+#. self.chmod(self.oldmode)
+#. def __str__(self):
+#. if self.Alias != None:
+#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#. self.Alias)
+#. else:
+#. return "Device %s (%s)" % (self.DeviceId, self.Device)
+#. def __repr__(self):
+#. if self.Alias != None:
+#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
+#. self.Alias)
+#. else:
+#. return "Device %s (%s)" % (self.DeviceId, self.Device)
+#. ok, we have to inherit all other data from our master
+#: src/netconfpkg/NCDevice.py:200
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr "%s, ডিভাইসটি নির্ধারন করা হয়নি অথবা উপনামটি কোন সংখ্যা নয়!"
+
+#. move old <id>.route files to route-<id>
+#. load routes
+#. XXX fixme
+#: src/netconfpkg/NCDevice.py:240
+#, python-format
+msgid "Static routes file %s is invalid"
+msgstr "স্ট্যাটিক রুট ফাইল %s টি অবৈধ"
+
+#: src/netconfpkg/NCDevice.py:383
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "%s নেটওয়ার্ক ডিভাইসটি চালু করা সম্ভব নয়!\n"
+
+#: src/netconfpkg/NCDevice.py:400
+msgid "Network device deactivating..."
+msgstr "নেটওয়ার্ক ডিভাইস নিষ্ক্রিয় করা হচ্ছে..."
+
+#: src/netconfpkg/NCDevice.py:401
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "%s নেটওয়ার্ক ডিভাইসটি নিষ্ক্রিয় করা হচ্ছ, দয়া করে অপেক্ষা করুন..."
+
+#: src/netconfpkg/NCDevice.py:403
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "%s নেটওয়ার্ক ডিভাইসটি নিষ্ক্রিয় করা সম্ভব নয়!\n"
+
+#: src/netconfpkg/NCDeviceList.py:63
+msgid "Please start redhat-config-network with root permissions once!\n"
+msgstr "দয়া করে রুটের অনুমতিসহ redhat-config-network একবার আরম্ভ করুন!\n"
+
+#: src/netconfpkg/NCDeviceList.py:67
+#, python-format
+msgid "Copying %s to devices and putting it into the default profile."
+msgstr "ডিভাইসে %s কপি করে তা ডিফল্ট প্রোফাইলে লেখা হচ্ছে।"
+
+#. the initscripts do not like '-'
+#. log.log(4, "%s != %s" % (newDeviceId, dev.DeviceId))
+#. Fixed change device names in active list of all profiles
+#. log.log(4, str(prof.ActiveDevices))
+#. log.log(4, "changed %s" % (prof.ActiveDevices[pos]))
+#. log.log(4, str(prof.ActiveDevices))
+#: src/netconfpkg/NCDeviceList.py:150
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "initscripts এর দরুন নিম্নেলিখিত উপনামগুলো পরিবর্তন করা হয়েছে:\n"
+
+#: src/netconfpkg/NCDeviceList.py:153
+msgid "Nicknames changed"
+msgstr "যে সকল উপনাম পরিবর্তন করা হয়েছে"
+
+#. return DeviceList_base._objToStr(self, obj, parentStr)
+#.
+#. clear all Dialer sections in wvdial.conf
+#. before the new Dialer sections written
+#.
+#.
+#. Clear all pap and chap-secrets generated by netconf
+#.
+#.
+#. traverse all devices in the list
+#.
+#.
+#. really save the device
+#.
+#. if dev.changed:
+#.
+#. Remove old config files
+#.
+#. check for IPSEC
+#. now remove the file
+#. remove old route files
+#. remove route file, if no routes defined
+#. bug #78043
+#. we should have device specific gateways
+#. fixed this way, until we have a way to mark the
+#. default GATEWAY/GATEWAYDEV
+#. no card seems to use this
+#. if dev.Dialup.Callback == None:
+#. dl.save()
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/DialupDruid.glade.h:1
+#: src/netconfpkg/gui/dialupconfig.glade.h:1
+#: src/netconfpkg/gui/dslconfig.glade.h:1
+#: src/netconfpkg/gui/editadress.glade.h:1
+#: src/netconfpkg/gui/edithosts.glade.h:1
+#: src/netconfpkg/gui/editipsec.glade.h:1
+#: src/netconfpkg/gui/ethernethardware.glade.h:1
+#: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/sharedtcpip.glade.h:1
+#: src/netconfpkg/gui/wirelessconfig.glade.h:1
+#: src/netconfpkg/gui/maindialog.glade.h:1
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
+msgid "Configure DSL connection"
+msgstr "DSL সংযোগ কনফিগার করুন"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Create DSL connection"
+msgstr "DSL সংযোগ তৈরি করো"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Enter the login name for this account."
+msgstr "এই অ্যাকাউন্টের জন্য লগিন করার নাম লিখুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/DialupDruid.glade.h:10
+#: src/netconfpkg/gui/dialupconfig.glade.h:20
+#: src/netconfpkg/gui/dslconfig.glade.h:10
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "আপনার ISP প্রদত্ত লগিন নাম, এখানে লিখুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: src/netconfpkg/gui/DialupDruid.glade.h:11
+#: src/netconfpkg/gui/dialupconfig.glade.h:21
+#: src/netconfpkg/gui/dslconfig.glade.h:11
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr ""
+"এই কনফিগারেশনের নাম লিখুন, সাধারণত এটি আপনার ISPর নাম হয়ে থাকে।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+msgid "Enter the password for this account."
+msgstr "এই অ্যাকাউন্টের জন্য পাসওয়ার্ড লিখুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/DialupDruid.glade.h:12
+#: src/netconfpkg/gui/dialupconfig.glade.h:22
+#: src/netconfpkg/gui/dslconfig.glade.h:12
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"আপনার অ্যাকাউন্টের পাসওয়ার্ড লিখুন, আপনার জানা না থাকলে, আপনার ISPর "
+"সাথে যোগাযোগ করুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Enter the provider name for this account."
+msgstr "এই অ্যাকাউন্টের উপলব্ধকারির নাম লিখুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Ethernet _Device:"
+msgstr "এথারনেট _ডিভাইস:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+#: src/netconfpkg/gui/DialupDruid.glade.h:19
+#: src/netconfpkg/gui/dialupconfig.glade.h:36
+#: src/netconfpkg/gui/dslconfig.glade.h:14
+msgid "Pass_word:"
+msgstr "পাস_ওয়ার্ড:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Password (_again):"
+msgstr "পাসওয়ার্ড (_পুনরায়):"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "DSL মোডেমের সাথে সংযুক্ত এথারনেট ডিভাইসটি বাছাই করুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Select the ethernet device for this account."
+msgstr "এই অ্যাকাউন্টের জন্য এথারনেট ডিভাইস বাছাই করুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/DialupDruid.glade.h:26
+#: src/netconfpkg/gui/dialupconfig.glade.h:44
+#: src/netconfpkg/gui/dslconfig.glade.h:16
+msgid "Use this form to enter your T-Online account data."
+msgstr "আপনার T-Online অ্যাকাউন্টের তথ্য লিখতে হলে এই ফর্মটি ব্যবহার করুন।"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/DialupDruid.glade.h:28
+#: src/netconfpkg/gui/dialupconfig.glade.h:58
+#: src/netconfpkg/gui/dslconfig.glade.h:23
+msgid "_Login Name:"
+msgstr "_লগিন করার নাম:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/dslconfig.glade.h:27
+msgid "_Provider Name:"
+msgstr "_উপলব্ধকারির নাম:"
+
+#: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/DialupDruid.glade.h:31
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
+#: src/netconfpkg/gui/dslconfig.glade.h:30
+msgid "_T-Online Account Setup"
+msgstr "_T-Online অ্যাকাউন্টের সেটআপ"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
+#: src/netconfpkg/gui/cipeconfig.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "আপনার দূরবর্তি সঙ্গির জন্য কনফিগারেশন"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
+msgid "Configure Tunnel"
+msgstr "টানেল কনফিগার করুন"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+msgid "Create Cipe Connection"
+msgstr "Cipe সংযোগ তৈরি করো"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/cipeconfig.glade.h:4
+msgid "Lo_cal Virtual Address:"
+msgstr "স্থা_নীয় ভারচুয়েল ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+#: src/netconfpkg/gui/DialupDruid.glade.h:17
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "New Interface"
+msgstr "নতুন ইন্টারফেস"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/cipeconfig.glade.h:5
+msgid "Remote Peer P_ort:"
+msgstr "দূরবর্তি পিয়ার _পোর্ট:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/cipeconfig.glade.h:6
+msgid "Remote _Virtual Address:"
+msgstr "দূরবর্তি _ভারচুয়েল ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:23
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:23
+#: src/netconfpkg/gui/cipeconfig.glade.h:8
+#: src/netconfpkg/gui/ethernethardware.glade.h:24
+#: src/netconfpkg/gui/tokenringhardware.glade.h:23
+msgid "_Device:"
+msgstr "_ডিভাইস:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+#: src/netconfpkg/gui/cipeconfig.glade.h:10
+#: src/netconfpkg/gui/editipsec.glade.h:33
+msgid "_Generate"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+#: src/netconfpkg/gui/cipeconfig.glade.h:11
+msgid "_Local Port:"
+msgstr "_স্থানীয় পোর্ট:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+#: src/netconfpkg/gui/cipeconfig.glade.h:13
+msgid "_Remote Peer Address:"
+msgstr "_দূরবর্তি পিয়ারের ঠিকানা:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+#: src/netconfpkg/gui/cipeconfig.glade.h:15
+msgid "_Secret Key:"
+msgstr "_গোপনীয় চাবি:"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+#: src/netconfpkg/gui/cipeconfig.glade.h:17
+msgid "_Tunnel through Device:"
+msgstr ""
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:15
+#: src/netconfpkg/gui/cipeconfig.glade.h:18
+msgid "_auto"
+msgstr "_স্বয়ংক্রিয়"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:16
+#: src/netconfpkg/gui/cipeconfig.glade.h:19
+msgid "cipcb0"
+msgstr "cipcb0"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:17
+#: src/netconfpkg/gui/cipeconfig.glade.h:20
+msgid "cipcb1"
+msgstr "cipcb1"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:18
+#: src/netconfpkg/gui/cipeconfig.glade.h:21
+msgid "cipcb2"
+msgstr "cipcb2"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:19
+#: src/netconfpkg/gui/cipeconfig.glade.h:22
+msgid "cipcb3"
+msgstr "cipcb3"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:20
+#: src/netconfpkg/gui/cipeconfig.glade.h:23
+msgid "cipcb4"
+msgstr "cipcb4"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:21
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:26
+#: src/netconfpkg/gui/cipeconfig.glade.h:24
+#: src/netconfpkg/gui/ethernethardware.glade.h:27
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
+msgid "eth0"
+msgstr "eth0"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:22
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
+#: src/netconfpkg/gui/cipeconfig.glade.h:25
+#: src/netconfpkg/gui/ethernethardware.glade.h:28
+msgid "eth1"
+msgstr "eth1"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:23
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
+#: src/netconfpkg/gui/cipeconfig.glade.h:26
+#: src/netconfpkg/gui/ethernethardware.glade.h:29
+msgid "eth2"
+msgstr "eth2"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:24
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
+#: src/netconfpkg/gui/cipeconfig.glade.h:27
+#: src/netconfpkg/gui/ethernethardware.glade.h:30
+msgid "eth3"
+msgstr "eth3"
+
+#: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:25
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
+#: src/netconfpkg/gui/cipeconfig.glade.h:28
+#: src/netconfpkg/gui/ethernethardware.glade.h:31
+msgid "eth4"
+msgstr "eth4"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea Code:"
+msgstr "স্থা_নের কোড:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "উপলব্ধকারির থেকে _DNS র তথ্য স্বয়ংক্রিয়ভাবে প্রাপ্ত করো"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "_IP অ্যাড্রেস এর বৈশিষ্ট্যাবলী স্বয়ংক্রিয়ভবে প্রাপ্ত করো"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "ডায়েল আপ সংযোগ তৈরি করো"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:6
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
+msgid "Default _Gateway Address:"
+msgstr "ডিফল্ট _গেটওয়ে অ্যাড্রেস:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation Mode:"
+msgstr "এন্‌ক্যাপ্‌সুলেশন মোড:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:8
+#: src/netconfpkg/gui/dialupconfig.glade.h:18
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:9
+#: src/netconfpkg/gui/dialupconfig.glade.h:19
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "আপনার ইন্টরনেট উপলব্ধকারির সাথে যোগাযোগ করার নির্ধারিত স্থানীয় কোড লিখুন।"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:13
+#: src/netconfpkg/gui/dialupconfig.glade.h:23
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "আপনার ISPর ফোন নাম্বার লিখুন (কোন উপপদ/স্থানীয়/দেশের কোড ছাড়া)।"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IPর বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:15
+#: src/netconfpkg/gui/chooseprovider.glade.h:2
+msgid "Internet Provider"
+msgstr "ইন্টরনেট উপলব্ধকারি"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+msgid "Manual IP Address Settings"
+msgstr ""
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPPর বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:21
+#: src/netconfpkg/gui/dialupconfig.glade.h:37
+msgid "Phone Number"
+msgstr "ফোনের নাম্বার"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Prefi_x:"
+msgstr "উপ_পদ:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:23
+#: src/netconfpkg/gui/dialupconfig.glade.h:39
+msgid "Provider _Name:"
+msgstr "উপলব্ধকারির _নাম:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:24
+msgid "Select Provider"
+msgstr "উপলব্ধকারি বাছাই করুন"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+msgid "Statically set IP addresses:"
+msgstr ""
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:27
+#: src/netconfpkg/gui/editadress.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
+msgid "_Address:"
+msgstr "_ঠিকানা:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:29
+msgid "_Phone Number:"
+msgstr "_ফোনের নাম্বার:"
+
+#: src/netconfpkg/gui/DialupDruid.glade.h:30
+#: src/netconfpkg/gui/editadress.glade.h:5
+#: src/netconfpkg/gui/sharedtcpip.glade.h:44
+msgid "_Subnet Mask:"
+msgstr "_সাবনেট মাস্ক:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+#: src/netconfpkg/gui/ethernethardware.glade.h:2
+#: src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "10"
+msgstr "১০"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: src/netconfpkg/gui/ethernethardware.glade.h:3
+#: src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "11"
+msgstr "১১"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/ethernethardware.glade.h:4
+#: src/netconfpkg/gui/tokenringhardware.glade.h:3
+msgid "12"
+msgstr "১২"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/ethernethardware.glade.h:5
+#: src/netconfpkg/gui/tokenringhardware.glade.h:4
+msgid "13"
+msgstr "১৩"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/ethernethardware.glade.h:6
+#: src/netconfpkg/gui/tokenringhardware.glade.h:5
+msgid "14"
+msgstr "১৪"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/ethernethardware.glade.h:7
+#: src/netconfpkg/gui/tokenringhardware.glade.h:6
+msgid "15"
+msgstr "১৫"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:7
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:7
+#: src/netconfpkg/gui/ethernethardware.glade.h:8
+#: src/netconfpkg/gui/tokenringhardware.glade.h:7
+msgid "3"
+msgstr "৩"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:8
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:8
+#: src/netconfpkg/gui/ethernethardware.glade.h:9
+#: src/netconfpkg/gui/tokenringhardware.glade.h:8
+msgid "4"
+msgstr "৪"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:9
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:9
+#: src/netconfpkg/gui/ethernethardware.glade.h:10
+#: src/netconfpkg/gui/tokenringhardware.glade.h:9
+msgid "5"
+msgstr "৫"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:10
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:10
+#: src/netconfpkg/gui/ethernethardware.glade.h:11
+#: src/netconfpkg/gui/tokenringhardware.glade.h:10
+msgid "6"
+msgstr "৬"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/ethernethardware.glade.h:12
+#: src/netconfpkg/gui/tokenringhardware.glade.h:11
+msgid "7"
+msgstr "৭"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/ethernethardware.glade.h:13
+#: src/netconfpkg/gui/tokenringhardware.glade.h:12
+msgid "8"
+msgstr "৮"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:13
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:13
+#: src/netconfpkg/gui/ethernethardware.glade.h:14
+#: src/netconfpkg/gui/tokenringhardware.glade.h:13
+msgid "9"
+msgstr "৯"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:14
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:14
+#: src/netconfpkg/gui/ethernethardware.glade.h:15
+#: src/netconfpkg/gui/tokenringhardware.glade.h:14
+msgid "DMA0:"
+msgstr "DMA0:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:15
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:15
+#: src/netconfpkg/gui/ethernethardware.glade.h:16
+#: src/netconfpkg/gui/tokenringhardware.glade.h:15
+msgid "DMA1:"
+msgstr "DMA1:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:16
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:16
+#: src/netconfpkg/gui/ethernethardware.glade.h:17
+#: src/netconfpkg/gui/isdnhardware.glade.h:4
+#: src/netconfpkg/gui/tokenringhardware.glade.h:16
+msgid "IO_1:"
+msgstr "IO_1:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:17
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:17
+#: src/netconfpkg/gui/ethernethardware.glade.h:18
+#: src/netconfpkg/gui/isdnhardware.glade.h:5
+#: src/netconfpkg/gui/tokenringhardware.glade.h:17
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:18
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:18
+#: src/netconfpkg/gui/ethernethardware.glade.h:19
+#: src/netconfpkg/gui/isdnhardware.glade.h:6
+#: src/netconfpkg/gui/tokenringhardware.glade.h:18
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:19
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:19
+#: src/netconfpkg/gui/ethernethardware.glade.h:21
+#: src/netconfpkg/gui/isdnhardware.glade.h:9
+#: src/netconfpkg/gui/tokenringhardware.glade.h:20
+msgid "Resource"
+msgstr "রিসোর্স"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:20
+msgid "Select Ethernet Adapter"
+msgstr "এথারনেট অ্যাডাপ্টার বাছাই করুন"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:22
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:22
+#: src/netconfpkg/gui/ethernethardware.glade.h:23
+#: src/netconfpkg/gui/tokenringhardware.glade.h:22
+msgid "_Adapter:"
+msgstr "_অ্যাডাপ্টার:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:24
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:24
+#: src/netconfpkg/gui/ethernethardware.glade.h:25
+#: src/netconfpkg/gui/isdnhardware.glade.h:10
+#: src/netconfpkg/gui/tokenringhardware.glade.h:24
+msgid "_IO:"
+msgstr "_IO:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:25
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:25
+#: src/netconfpkg/gui/ethernethardware.glade.h:26
+#: src/netconfpkg/gui/isdnhardware.glade.h:11
+#: src/netconfpkg/gui/tokenringhardware.glade.h:25
+msgid "_MEM:"
+msgstr "_MEM:"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
+#: src/netconfpkg/gui/ethernethardware.glade.h:32
+msgid "eth5"
+msgstr "eth5"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:32
+#: src/netconfpkg/gui/ethernethardware.glade.h:33
+msgid "eth6"
+msgstr "eth6"
+
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:33
+#: src/netconfpkg/gui/ethernethardware.glade.h:34
+msgid "eth7"
+msgstr "eth7"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Configure Network Settings"
+msgstr "নেটওয়ার্কের বৈশিষ্ট্যাবলী কনফিগার করো"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "এথারনেট ডিভাইস তৈরি করো"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "এথারনেট কার্ড"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+msgid "MTU:"
+msgstr "MTU:"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: src/netconfpkg/gui/ctcconfig.glade.h:4
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "এথারনেট ডিভাইস বাছাই করুন"
+
+#: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the Ethernet card you want to configure:"
+msgstr "যে এথারনেট কার্ড আপনি কনফিগার করতে ইচ্ছুক তা বাছাই করুন:"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+#: src/netconfpkg/gui/isdnhardware.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+#: src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "D Channel Protocol"
+msgstr "D চ্যানেল প্রোটোকল"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+#: src/netconfpkg/gui/isdnhardware.glade.h:3
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "ইউ_রো ISDN (EDSS1)"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+#: src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN _Adapters:"
+msgstr "ISDN _অ্যাডাপ্টার:"
+
+#: src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "ISDN অ্যাডাপ্টার বাছাই করুন"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:1
+msgid "/dev/modem"
+msgstr "/dev/modem"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:2
+#: src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "/dev/ttyI0"
+msgstr "/dev/ttyI0"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:3
+#: src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "/dev/ttyI1"
+msgstr "/dev/ttyI1"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:4
+#: src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "/dev/ttyI2"
+msgstr "/dev/ttyI2"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:5
+#: src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "/dev/ttyS0"
+msgstr "/dev/ttyS0"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:6
+#: src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "/dev/ttyS1"
+msgstr "/dev/ttyS1"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:7
+#: src/netconfpkg/gui/modemconfig.glade.h:6
+msgid "/dev/ttyS2"
+msgstr "/dev/ttyS2"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:8
+#: src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "/dev/ttyS3"
+msgstr "/dev/ttyS3"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:9
+#: src/netconfpkg/gui/modemconfig.glade.h:8
+msgid "115200"
+msgstr "১১৫২০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "1200"
+msgstr "১২০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:11
+#: src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "19200"
+msgstr "১৯২০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:12
+#: src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "230400"
+msgstr "২৩০৪০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:13
+#: src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "2400"
+msgstr "২৪০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:14
+#: src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "300"
+msgstr "৩০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:15
+#: src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "38400"
+msgstr "৩৮৪০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:16
+#: src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "460800"
+msgstr "৪৬০৮০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:17
+#: src/netconfpkg/gui/modemconfig.glade.h:16
+msgid "4800"
+msgstr "৪৮০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:18
+#: src/netconfpkg/gui/modemconfig.glade.h:17
+msgid "57600"
+msgstr "৫৭৬০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:19
+#: src/netconfpkg/gui/modemconfig.glade.h:18
+msgid "9600"
+msgstr "৯৬০০"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:24
+#: src/netconfpkg/gui/modemconfig.glade.h:24
+msgid "Modem Properties"
+msgstr "মোডেমের বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:25
+#: src/netconfpkg/gui/modemconfig.glade.h:25
+msgid "Modem _Volume:"
+msgstr "মোডেমের _আওয়াজ:"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:28
+msgid "Select Modem"
+msgstr "মোডেম বাছাই করুন"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:31
+#: src/netconfpkg/gui/modemconfig.glade.h:30
+msgid "_Baud Rate:"
+msgstr ""
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:32
+#: src/netconfpkg/gui/modemconfig.glade.h:31
+msgid "_Flow Control:"
+msgstr ""
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:33
+#: src/netconfpkg/gui/modemconfig.glade.h:32
+msgid "_Modem Device:"
+msgstr "_মোডেম ডিভাইস:"
+
+#: src/netconfpkg/gui/ModemDruid.glade.h:34
+#: src/netconfpkg/gui/modemconfig.glade.h:33
+msgid "_Use touch tone dialing"
+msgstr "টাচ্‌ টোন ডায়েলিং ব্যবহার _করো"
+
+#: src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "নতুন ধরনের ডিভাইস যোগ করো"
+
+#: src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "ডিভাইসের ধরন"
+
+#: src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "ডিভাইসের ধরন বাছাই করুন"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:20
+msgid "Select Token Ring Adapter"
+msgstr "টোকেন রিং অ্যাডাপ্টার বাছাই করুন"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:26
+#: src/netconfpkg/gui/tokenringconfig.glade.h:17
+#: src/netconfpkg/gui/tokenringhardware.glade.h:26
+msgid "tr0"
+msgstr "tr0"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:27
+#: src/netconfpkg/gui/tokenringconfig.glade.h:18
+#: src/netconfpkg/gui/tokenringhardware.glade.h:27
+msgid "tr1"
+msgstr "tr1"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:28
+#: src/netconfpkg/gui/tokenringconfig.glade.h:19
+#: src/netconfpkg/gui/tokenringhardware.glade.h:28
+msgid "tr2"
+msgstr "tr2"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:29
+#: src/netconfpkg/gui/tokenringconfig.glade.h:20
+#: src/netconfpkg/gui/tokenringhardware.glade.h:29
+msgid "tr3"
+msgstr "tr3"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:30
+#: src/netconfpkg/gui/tokenringconfig.glade.h:21
+#: src/netconfpkg/gui/tokenringhardware.glade.h:30
+msgid "tr4"
+msgstr "tr4"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:31
+#: src/netconfpkg/gui/tokenringconfig.glade.h:22
+#: src/netconfpkg/gui/tokenringhardware.glade.h:31
+msgid "tr5"
+msgstr "tr5"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:32
+#: src/netconfpkg/gui/tokenringhardware.glade.h:32
+msgid "tr6"
+msgstr "tr6"
+
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:33
+#: src/netconfpkg/gui/tokenringhardware.glade.h:33
+msgid "tr7"
+msgstr "tr7"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Tokenring Device"
+msgstr "টোকেনরিং ডিভাইস তৈরি করো"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Tokenring Device"
+msgstr "টোকেনরিং ডিভাইস বাছাই করুন"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the Tokenring card you want to configure:"
+msgstr "যে টোকেনরিং কার্ড কনফিগার করতে ইচ্ছুক তা বাছাই করুন:"
+
+#: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Tokenring card"
+msgstr "টোকেনরিং কার্ড"
+
+#: src/netconfpkg/gui/tonline.glade.h:1
+msgid "Account Setup"
+msgstr "অ্যাকাউন্ট সেটআপ"
+
+#: src/netconfpkg/gui/tonline.glade.h:2
+msgid "Associated T-Online _Number:"
+msgstr ""
+
+#: src/netconfpkg/gui/tonline.glade.h:3
+msgid ""
+"Please enter here your personal account data. Without this data, access to T-"
+"Online is unfortunately not posssible."
+msgstr ""
+
+#: src/netconfpkg/gui/tonline.glade.h:4
+msgid "_Adapter Identifier:"
+msgstr ""
+
+#: src/netconfpkg/gui/tonline.glade.h:5
+msgid "_Concurrent User Number/Suffix:"
+msgstr ""
+
+#: src/netconfpkg/gui/tonline.glade.h:6
+msgid "_Personal Password:"
+msgstr "_নিজস্ব পাসওয়ার্ড:"
+
+#: src/netconfpkg/gui/tonline.glade.h:7
+msgid "_T-Online Account"
+msgstr "_T-Online অ্যাকাউন্ট"
+
+#: src/netconfpkg/gui/chooseprovider.glade.h:1
+msgid "Choose a Provider"
+msgstr "উপলব্ধকারি বাছাই করুন"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:1
+#: src/netconfpkg/gui/ctcconfig.glade.h:1
+#: src/netconfpkg/gui/dialupconfig.glade.h:3
+#: src/netconfpkg/gui/dslconfig.glade.h:2
+#: src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: src/netconfpkg/gui/wirelessconfig.glade.h:6
+#: src/netconfpkg/gui/tokenringconfig.glade.h:2
+msgid "Allow all _users to enable and disable the device"
+msgstr "সকল ব্যবহারকারিকে ডিভাইস স্বক্রিয় এবং নিষ্ক্রিয় করার অনুমতি দেও"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:2
+msgid "CIPE Configuration"
+msgstr "CIPE কনফিগারেশন"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:7
+#: src/netconfpkg/gui/ctcconfig.glade.h:6
+#: src/netconfpkg/gui/dialupconfig.glade.h:45
+#: src/netconfpkg/gui/dslconfig.glade.h:18
+#: src/netconfpkg/gui/ethernetconfig.glade.h:3
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/tokenringconfig.glade.h:7
+msgid "_Activate device when computer starts"
+msgstr "_কম্পিউটার আরম্ভ করলে ডিভাইস চালু করো"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:9
+#: src/netconfpkg/gui/ctcconfig.glade.h:10
+#: src/netconfpkg/gui/dialupconfig.glade.h:55
+#: src/netconfpkg/gui/dslconfig.glade.h:20
+#: src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/tokenringconfig.glade.h:9
+msgid "_General"
+msgstr "_সাধারণ"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:12
+#: src/netconfpkg/gui/ctcconfig.glade.h:14
+#: src/netconfpkg/gui/dialupconfig.glade.h:59
+#: src/netconfpkg/gui/dslconfig.glade.h:25
+#: src/netconfpkg/gui/ethernetconfig.glade.h:7
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Nickname: "
+msgstr "_উপনাম:"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:14
+#: src/netconfpkg/gui/dialupconfig.glade.h:64
+#: src/netconfpkg/gui/dslconfig.glade.h:28
+#: src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Route"
+msgstr "_রুট"
+
+#: src/netconfpkg/gui/cipeconfig.glade.h:16
+msgid "_Tunnel Settings"
+msgstr "_টানেলের বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:2
+msgid "CTC Configuration"
+msgstr "CTC কনফিগারেশন"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:3
+msgid ""
+"Each device needs to be attached to a physical device, which can be selected "
+"below."
+msgstr ""
+"প্রতিটি ডিভাইস একটি প্রকৃত ডিভাইসের সাথে যুক্ত করতে হবে, যা অপনি নিচে বাছাই করতে পারবেন।"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:5
+msgid "Protocol Type"
+msgstr "প্রোটোকলের ধরন"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:7
+#: src/netconfpkg/gui/dialupconfig.glade.h:46
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "_Add..."
+msgstr "_যোগ করো..."
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:8
+#: src/netconfpkg/gui/dialupconfig.glade.h:52
+#: src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_Delete"
+msgstr "_মুছে ফেল"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:9
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+msgid "_Edit..."
+msgstr "_সম্পাদন..."
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:11
+#: src/netconfpkg/gui/dslconfig.glade.h:21
+#: src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Hardware Device"
+msgstr "_হার্ডওয়ের ডিভাইস"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:12
+#: src/netconfpkg/gui/tokenringconfig.glade.h:11
+msgid "_Hardware Device:"
+msgstr "_হার্ডওয়ের ডিভাইস:"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:13
+msgid "_MTU:"
+msgstr "_MTU:"
+
+#: src/netconfpkg/gui/ctcconfig.glade.h:15
+msgid "_Protocols"
+msgstr "_প্রোটোকলসমূহ"
+
+#: src/netconfpkg/gui/devicetype.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "হার্ডওয়ের ডিভাইসের ধরন বাছাই করুন "
+
+#: src/netconfpkg/gui/devicetype.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "যে ধরনের হার্ডওয়ের ডিভাইস যোগ করা হবে তা বাছাই করুন:"
+
+#: src/netconfpkg/gui/devicetype.glade.h:3
+msgid "_Device Type:"
+msgstr "_ডিভাইসের ধরন:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:2
+msgid "A_rea Code"
+msgstr "স্থা_নের কোড"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:4
+msgid "Ca_llback"
+msgstr "ক_লব্যাক"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:5
+msgid "Callback _Delay:"
+msgstr "কলব্যাকের _বিলম্ব:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:6
+msgid "Callback _Mode:"
+msgstr "কলব্যাকের _মোড:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:7
+msgid "Callback setting"
+msgstr "কলব্যঅ্যাকের বৈশিষ্ট্য"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:8
+msgid "Click here, if you want to choose a new provider from the ISP database."
+msgstr "ISPর ডাটাবেস থেকে নতুন উপলব্ধকারি বাছাই করতে হলে, এখানে ক্লিক্‌ করুন।"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:9
+msgid "Dial _Mode:"
+msgstr "ডায়েল _মোড:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:10
+msgid "Dial-In _Number:"
+msgstr "ডায়েল-ইন _নম্বর:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:12
+msgid "Enable VJ Connection-_ID Compression"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:13
+msgid "Enable _Address/Control Compression"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:14
+msgid "Enable _BSD Compression"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:15
+msgid "Enable _CCP Compression Control Protocol"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:16
+msgid "Enable _Protocol Field Compression"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:17
+msgid "Enable _VJ TCP/IP Header Compression"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:24
+msgid "Enter your local phone number. It's optional, if you use a modem."
+msgstr "আপনার স্থানীয় ফোন নম্বর লিখুন। মোডেম ব্যবহার করলে এটা লেখা আপনার ইচ্ছর উপর নির্ভর করবে।"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:25
+msgid "Han_gup Timeout:"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:26
+msgid "Let _PPP do all authentication"
+msgstr "_PPPর দ্বারা সকল অনুমোদন করো"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:27
+msgid "MSN/EA_Z:"
+msgstr "MSN/EA_Z:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:28
+#: src/netconfpkg/gui/dslconfig.glade.h:13
+msgid "Make this connection the default _route"
+msgstr "এই সংযোগটিকে ডিফল্ট _রুট হিসেবে চিহ্নিত করো"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:29
+msgid "Modem P_ort:"
+msgstr "মোডেম পো_র্ট:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:30
+msgid "Modem _Initialization String:"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:31
+msgid "Modem0"
+msgstr "মোডেম০"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:32
+msgid "Modem1"
+msgstr "মোডেম১"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:33
+msgid "Modem2"
+msgstr "মোডেম২"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:34
+msgid "Modem3"
+msgstr "মোডেম৩"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:35
+msgid "PPP Option List"
+msgstr "PPP অপশন তালিকা"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:38
+msgid "Prefi_x"
+msgstr "উপ_পদ"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:40
+#: src/netconfpkg/gui/dslconfig.glade.h:15
+msgid "Restart if _connection dies"
+msgstr "_সংযোগ বন্ধ হয়ে গেলে পুনরায় আরম্ভ করো"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:41
+msgid "Select the authentication protocol used by your ISP."
+msgstr "আপনার ISPর দ্বারা ব্যবহৃত অনুমোদনের প্রোটোকল বাছাই করুন।"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:42
+msgid "Use _Callback Control Protocol (CBCP)"
+msgstr "_কলব্যাক কন্ট্রল প্রোটোকল (CBCP) ব্যবহার করো"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:43
+msgid "Use _Channel Bundling"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:47
+#: src/netconfpkg/gui/dslconfig.glade.h:19
+msgid "_Advanced"
+msgstr "_উন্নত"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:48
+msgid "_Allow only above Dial-In Number"
+msgstr "শুধুমাত্র উপরে লেখা ডায়েল-ইন নাম্বার ব্যবহারের _অনুমতি দেও"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:49
+msgid "_Authentication:"
+msgstr "_অনুমোদন:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:50
+msgid "_Choose Provider..."
+msgstr "_উপলব্ধকারি বাছাই করুন..."
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:51
+msgid "_Compression"
+msgstr "_সংকোচন"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:53
+msgid "_Dial Mode:"
+msgstr "_ডায়েল মোড:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:54
+msgid "_Encapsulation Mode:"
+msgstr "_এনক্যাপসুলেশন মোড:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:56
+msgid "_Hangup Timeout:"
+msgstr ""
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:57
+#: src/netconfpkg/gui/dslconfig.glade.h:22
+#: src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:60
+msgid "_Options"
+msgstr "_অপশনসমূহ"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:61
+msgid "_PPP Option:"
+msgstr "_PPPর অপশন:"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:62
+msgid "_Phone Number"
+msgstr "_ফোনের নম্বর"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:63
+#: src/netconfpkg/gui/dslconfig.glade.h:26
+msgid "_Provider"
+msgstr "_উপলব্ধকারি"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
+msgid "_Use Callback"
+msgstr "_কলব্যাক ব্যবহার করো"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:3
+msgid "Allow dial on _demand"
+msgstr ""
+
+#: src/netconfpkg/gui/dslconfig.glade.h:4
+msgid "Allow the link come up on demand."
+msgstr ""
+
+#: src/netconfpkg/gui/dslconfig.glade.h:5
+msgid "Demand setting"
+msgstr ""
+
+#: src/netconfpkg/gui/dslconfig.glade.h:6
+msgid "Enable synchronous PPP for the connection"
+msgstr "বর্তমান সংযোগের ক্ষেত্রে সমকালীন PPP স্বক্রিয় করো"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:7
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"যদি আপনার ISP কোন অ্যাকসেস্‌ কনসেন্‌ট্রেটরের নাম দিয়ে থাকে তাহলে তা লিখুন। "
+"বেশির ভাগ ক্ষেত্রে আপনি এটি শূন্য রেখে দিতে পারেন।"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:8
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"আপনার ISPর যদি প্রয়োজন থাকে তাহলে পরিসেবার নাম লিখুন। আপনার এটা জানা না থাকলে, "
+"ISPর সাথে যোগাযোগ করো। বেশির ভাগ ক্ষেত্রে আপনি এটা শূন্য রেখে দিতে পারেন।"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:9
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr ""
+
+#: src/netconfpkg/gui/dslconfig.glade.h:17
+msgid "_AC-Name:"
+msgstr "_AC-নাম:"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:24
+msgid "_Maximum idle time:"
+msgstr ""
+
+#: src/netconfpkg/gui/dslconfig.glade.h:29
+msgid "_Service-Name:"
+msgstr "_পরিসেবার-নাম:"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:31
+msgid "_Use synchronous PPP"
+msgstr "সমকালীন PPP _ব্যবহার করো"
+
+#: src/netconfpkg/gui/dslconfig.glade.h:32
+msgid "xDSL Configuration"
+msgstr "xDSL কনফিগারেশন"
+
+#: src/netconfpkg/gui/editadress.glade.h:2
+msgid "Add / Edit IP Address"
+msgstr "Ip অ্যাড্রেস যোগ / সম্পাদন করো"
+
+#: src/netconfpkg/gui/editadress.glade.h:4
+msgid "_Gateway:"
+msgstr "_গেটওয়ে:"
+
+#: src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain Name:"
+msgstr "ডোমেনের নাম:"
+
+#: src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "ডোমেনের নাম সম্পাদন করো"
+
+#: src/netconfpkg/gui/edithosts.glade.h:2
+msgid "Add / Edit Hosts entry"
+msgstr ""
+
+#: src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Aliases:"
+msgstr "উপনাম:"
+
+#: src/netconfpkg/gui/edithosts.glade.h:5
+msgid "Hostname:"
+msgstr "হোস্টের নাম:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication Key:"
+msgstr "অনুমোদনের চাবি:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "IKA (রেকুন) দ্বারা স্বয়ংক্রিয় এনক্রিপশন মোড বাছাই করা"
+
+#: src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "তৈরি _করো"
+
+#: src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
+
+#: src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPsec - সংযোগের ধরন"
+
+#: src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - এনক্রিপশন মোড"
+
+#: src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - চাবি"
+
+#: src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - স্থানীয় নেটওয়ার্ক"
+
+#: src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Remote Network"
+msgstr "IPsec - দূরবর্তি নেটওয়ার্ক"
+
+#: src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Summary"
+msgstr "IPsec - সংক্ষেপ"
+
+#: src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec Settings"
+msgstr "IPsec বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/editipsec.glade.h:14
+msgid "Local Network _Address:"
+msgstr "স্থানীয় নেটওয়ার্ক _ঠিকানা:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local Network _Gateway:"
+msgstr "স্থানীয় নেটওয়ার্ক _গেটওয়ে:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local Subnet _Mask:"
+msgstr "স্থানীয় সাবনেট _মাস্ক:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Manual encryption with a fixed key"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Network to Network encryption (VPN)"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Please enter a nickname for the connection:"
+msgstr "এই সংযোগের জন্য একটি উপনাম নির্ধারণ করুন:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter your local network settings:"
+msgstr "আপনার স্থানীয় নেটওয়ার্কের জন্য বৈশিষ্ট্যাবলী লিখুন:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter your remote network settings:"
+msgstr "আপনার দূরবর্তি নেটওয়ার্কের জন্য বৈশিষ্ট্যাবলী লিখুন:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please select the type of connection:"
+msgstr "সংযোগের ধরন বাছাই করুন:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please select the type of encryption:"
+msgstr "এনক্রিপশনের ধরন বাছাই করুন:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:24
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner need to have the same."
+msgstr ""
+"আপনার জন্য চাবি নির্ধারন করুন অথবা তৈরি করুন। \n"
+"চাবিগুলো প্রতিসম হবে, তাই আপনার দূরবর্তি সঙ্গির জন্য একই থাকতে হবে।"
+
+#: src/netconfpkg/gui/editipsec.glade.h:26
+msgid "Remote Network _Address:"
+msgstr "দূরবর্তি নেটওয়ার্ক _ঠিকানা:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:27
+msgid "Remote Network _Gateway:"
+msgstr "দূরবর্তি নেটওয়ার্ক _গেটওয়ে:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote Subnet _Mask:"
+msgstr "দূরবর্তি সাবনেট _মাস্ক:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote _IP Address:"
+msgstr "দূরবর্তি _IP অ্যাড্রেস"
+
+#: src/netconfpkg/gui/editipsec.glade.h:30
+msgid ""
+"You will now be guided through the\n"
+"setup of the IPsec connetion."
+msgstr ""
+
+
+#: src/netconfpkg/gui/editipsec.glade.h:32
+msgid "_Encryption Key:"
+msgstr ""
+
+#: src/netconfpkg/gui/editipsec.glade.h:34
+msgid "_Nickname:"
+msgstr "_উপনাম:"
+
+#: src/netconfpkg/gui/ethernetconfig.glade.h:2
+msgid "Ethernet Device"
+msgstr "এথারনেট ডিভাইস"
+
+#: src/netconfpkg/gui/ethernethardware.glade.h:20
+#: src/netconfpkg/gui/tokenringhardware.glade.h:19
+msgid "Network Adapters Configuration"
+msgstr "নেটওয়ার্ক অ্যাডাপ্টারের কনফিগারেশন"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:2
+msgid "Choose Hardware Type"
+msgstr "হার্ডওয়েরের ধরন বাছাই করুন"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Ethernet"
+msgstr "এথারনেট"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:4
+msgid "Hardware Type:"
+msgstr "হার্ডওয়েরার ধরন:"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:5
+msgid "ISDN"
+msgstr "আইএসডিএন"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Modem"
+msgstr "মোডেম"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Please select the hardware device type you want to create"
+msgstr "যে ধরনের হার্ডওয়ের আপনি তৈরি করে ইচ্ছুক তা বাছাই করুন"
+
+#: src/netconfpkg/gui/hardwaretype.glade.h:8
+msgid "Token Ring"
+msgstr "টোকেন রিং"
+
+#: src/netconfpkg/gui/isdnhardware.glade.h:7
+msgid "ISDN Adapters Configuration"
+msgstr "আইএসডিএন অ্যাডাপ্টারের কনফিগারেশন"
+
+#: src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:3
+msgid "Waiting to connect to"
+msgstr "এর সাথে সংযোগ করার জন্য অপেক্ষা করা হচ্ছে"
+
+#: src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:4
+msgid "Waiting..."
+msgstr "অপেক্ষা করা হচ্ছে..."
+
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "০০:০০:০০"
+
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "অনলাইন সময়:"
+
+#: src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "মাউসের ডানদিকের বোতাম টিপে বৈশিষ্ট্যাবলী পড়ুন"
+
+#: src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "এর সাথে সংযোগ করো"
+
+#: src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "এর থেকে বিচ্ছিন্ন করো"
+
+#: src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+#: src/netconfpkg/gui/neat-control.glade.h:18
+msgid "_Configure..."
+msgstr "_কনফিগার..."
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "$"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "০.০০"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+msgid "1"
+msgstr "১"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "১.00"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Confirm _starting connection"
+msgstr "_সংযোগ আরম্ভ করবার সময় অনুমতি নেওয়া হবে"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm stopping _connection"
+msgstr "_সংযোগ বন্ধ করার সময় অনুমতি নেওয়া হবে"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Cos_t accumulated from the past connection:"
+msgstr "বিগত সংযোগের ক্ষেত্রে খ_রচ: "
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cost per:"
+msgstr "প্রতিটির ক্ষেত্রে খরচ:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Count:"
+msgstr "গননা:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "M_inimum number of seconds charged:"
+msgstr "_সর্বনিম্ন যে সংখ্যক সেকেন্ডের জন্য মূল্য ধার্য করা হবে:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "_Accumulate cost over multiple connections"
+msgstr "_একাধিক সংযোগের একত্রিত খরচ"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "_Basic"
+msgstr "_মৌলিক"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Cost"
+msgstr "_খরচ"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Debug mode"
+msgstr "_ডিবাগ মোড"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Extra cost to start a connection:"
+msgstr "_সংযোগ আরম্ভ করার অতিরিক্ত খরচ:"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Hour"
+msgstr "_ঘন্টা"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Minute"
+msgstr "_মিনিট"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_মৌলিক গননার ক্ষত্রে যে সেকেন্ড সংখ্যা ব্যবহৃত হবে।"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Second"
+msgstr "_সেকেন্ড"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Terminate connection when session closes"
+msgstr "_সেশন বন্ধ হয়ে গেলে সংযোগ বিচ্ছিন্ন করো"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Time"
+msgstr "_সময়"
+
+#: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "redhat network control - Properties"
+msgstr "রেডহ্যাট নেটওয়ার্ক নিয়ন্ত্রন - বৈশিষ্ট্য"
+
+#: src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#, no-c-format
+msgid "%P %%"
+msgstr "%P %%"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+msgid "Automatically obtain _IP address settings with:"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+msgid "Bind to _MAC Address:"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+msgid "DHCP Settings"
+msgstr "ডিএইচসিপি-র বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:7
+msgid "Destination Network"
+msgstr "গন্তব্যের নেটওয়ার্ক"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+msgid "Device _Alias Number:"
+msgstr "ডিভাইসের _উপনামের সংখ্যা:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
+msgid "Difficulty level:"
+msgstr "কষ্টকর অবস্থার পরিমাপ:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:10
+msgid ""
+"Each connection needs to be associated with a physical device which can be "
+"selected below."
+msgstr ""
+"প্রতিটি সংযোগ কোন একটি প্রকৃত ডিভাইসের সাথে যুক্ত হতে হবে যা আপনি বাছাই করতে পারবেন।"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:11
+msgid "Easy"
+msgstr "সহজ"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:12
+msgid "Gateway"
+msgstr "গেটওয়ে"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+msgid "Hardware Device:"
+msgstr "হার্ডওয়ের ডিভাইস:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+msgid "IPsec Tunnel Settings"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+msgid "Local Network"
+msgstr "স্থানীয় নেটওয়ার্ক"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+msgid "Please select the level of security for this device."
+msgstr "এই ডিভাইসটির জন্য নিরাপত্তার পরিমাপ বাছাই করুন।"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+msgid "Prefix (Netmask)"
+msgstr "উপপদ (নেটমাস্ক)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+msgid "Professional"
+msgstr ""
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+msgid "Remote Host / GW"
+msgstr "দূরবর্তি হোস্ট /GW"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+msgid "Remote Network"
+msgstr "দূরবর্তি নেটওয়ার্ক"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+msgid "Security Level"
+msgstr "নিরাপত্তার পরিমাপ"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+msgid "Select the services you want to provide through this device"
+msgstr "এই ডিভাইসের দ্বারা যে সকল পরিসেবা উপলব্ধ করতে আপনি ইচ্ছুক তা বাছাই করুন"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+msgid "Service"
+msgstr "পরিসেবা"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+msgid "Service Description"
+msgstr "পরিসেবার বিবরণ"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+msgid "Services"
+msgstr "পরিসেবাসমূহ"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+msgid "Static Network Routes"
+msgstr "স্থায়ি নেটওয়ার্ক রুট"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+msgid "Tie to specific ethernet card"
+msgstr "নির্ধারিত এথারনেট কার্ডের সাথে যুক্ত করো"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+msgid "Use ethernet device aliases"
+msgstr "এথারনেট ডিভাইসের উপনাম ব্যবহার করো"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+msgid "_Delete..."
+msgstr "_মুছে ফেলা..."
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+msgid "_Hardware Address"
+msgstr "_হার্ডওয়েরের ঠিকানা"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
+msgid "_Hardware:"
+msgstr "_হার্ডওয়ের:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+msgid "_High Security (Internet)"
+msgstr "_অধিক নিরাপত্তা (ইন্টারনেট)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
+msgid "_Hostname (optional):"
+msgstr "_হোস্টের নাম (ঐচ্ছিক):"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:40
+msgid "_Low Security"
+msgstr "_স্বল্প নিরাপত্তা"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:41
+msgid "_Probe"
+msgstr "_খঁোজ করো"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:42
+msgid "_Probe for Address..."
+msgstr "_ঠিকানা খঁোজ করো..."
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:43
+msgid "_Secure Device (LAN)"
+msgstr "_নিরাপদ ডিভাইস (ল্যান)"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "bootp"
+msgstr "bootp"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:46
+msgid "dhcp"
+msgstr "dhcp"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:47
+msgid "dialup"
+msgstr "ডায়েল আপ"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:2
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "11M"
+msgstr "11M"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:3
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "1M"
+msgstr "1M"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:4
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+msgid "2M"
+msgstr "2M"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:5
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+msgid "5.5M"
+msgstr "5.5M"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+msgid "Network Name (SSID):"
+msgstr "নেটওয়ার্কের নাম (SSID):"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+""
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid "Wireless Device Configuration"
+msgstr "বেতার ডিভাইসের কনফিগারেশন"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+msgid "_Auto"
+msgstr "_স্বয়ংক্রিয়"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+msgid "_Channel:"
+msgstr "_চ্যানেল:"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
+msgid "_Key (use 0x for hex):"
+msgstr "_চাবি (হেক্সের জন্য 0x ব্যবহার করুন):"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
+msgid "_Mode:"
+msgstr "_মোড:"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:23
+msgid "_Specified:"
+msgstr "_নির্ধারিত:"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
+msgid "_Transmit Rate:"
+msgstr "_প্রেরণ লরার গতি:"
+
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+msgid "_Wireless Settings"
+msgstr "_বেতারের বৈশিষ্ট্যাবলী"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "০০:০০:০০:০০:০০:০০"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:3
+msgid ""
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
+msgstr ""
+"প্রতিটি ডিভাইসকে কোন একটি প্রকৃত ডিভাইসের সাথে যুক্ত করতে হবে যা আপনি বাছাই করতে "
+"পারবেন। ডিভাইসের উপনাম ব্যবহার করে আপনি একাধিক ডিভাইসকে একটি প্রকৃত ডিভাইসের "
+"সাথে যুক্ত করতে পারবেন।"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:4
+msgid "Enable _Device Alias support"
+msgstr "_ডিভাইসের উপনাম ব্যবহার স্বক্রিয় করো"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Ha_rdware Address:"
+msgstr "হার্ড_ওয়েরর ঠিকানা:"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Token Ring Device"
+msgstr "টোকেন রিং ডিভাইস"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:8
+msgid "_Alias:"
+msgstr "_উপনাম:"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:14
+msgid "_Probe for Address"
+msgstr "ঠিকানা _খঁোজ করো"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:16
+msgid "_Use Hardware Address"
+msgstr "হার্ডওয়েরের ঠিকানা _ব্যবহার করো"
+
+#: src/netconfpkg/gui/maindialog.glade.h:2
+msgid "Activate the selected device, calling ifup <device>."
+msgstr "ifup <device> ব্যবহার করে, বাছাই করা ডিভাইসটি স্বষ্ক্রিয় করুন।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:3
+msgid "Aliases"
+msgstr "উপনাম"
+
+#: src/netconfpkg/gui/maindialog.glade.h:4
+msgid "Contents"
+msgstr "বস্তু"
+
+#: src/netconfpkg/gui/maindialog.glade.h:5
+msgid "DNS Search Path:"
+msgstr "DNS খঁোজার পথ:"
+
+#: src/netconfpkg/gui/maindialog.glade.h:6
+msgid "D_NS"
+msgstr "D_NS"
+
+#: src/netconfpkg/gui/maindialog.glade.h:7
+msgid "Deactivate the selected device, calling ifdown <device>."
+msgstr "ifdown <device> ব্যবহার করে, বাছাই করা ডিভাইসটি নিষ্ক্রিয় করুন।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:8
+msgid "Description"
+msgstr "বিবরণ"
+
+#: src/netconfpkg/gui/maindialog.glade.h:9
+msgid "Destination"
+msgstr "গন্তব্য"
+
+#: src/netconfpkg/gui/maindialog.glade.h:10
+msgid "Dev_ices"
+msgstr "ডি_ভাইসসমূহ"
+
+#: src/netconfpkg/gui/maindialog.glade.h:12
+msgid "Do_main:"
+msgstr "ডো_মেন:"
+
+#: src/netconfpkg/gui/maindialog.glade.h:13
+msgid "H_osts"
+msgstr "_হোস্ট"
+
+#: src/netconfpkg/gui/maindialog.glade.h:14
+msgid "Hard_ware"
+msgstr "হার্ড_ওয়ের"
+
+#: src/netconfpkg/gui/maindialog.glade.h:15
+msgid "IP"
+msgstr "IP"
+
+#: src/netconfpkg/gui/maindialog.glade.h:16
+msgid "IP_sec"
+msgstr "IP_sec"
+
+#: src/netconfpkg/gui/maindialog.glade.h:17
+msgid "List of devices which are currently configurable on your system."
+msgstr "আপনার সিস্টেমে বর্তমানে উপস্থিত কনফিগার করার যোগ্য ডিভাইসের তালিকা।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:18
+msgid "Monitor the selected device."
+msgstr "বাছাই করা ডিভাইসটি পর্যবেক্ষণ করুন।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:21
+msgid "New Profile"
+msgstr "নতুন প্রোফাইল"
+
+#: src/netconfpkg/gui/maindialog.glade.h:22
+#: src/netconfpkg/gui/neat-control.glade.h:13
+msgid "Nickname"
+msgstr "উপনাম"
+
+#: src/netconfpkg/gui/maindialog.glade.h:23
+msgid ""
+"Please enter the name for the profile.\n"
+"The name may only contain letters and digits."
+msgstr ""
+"প্রোফাইলের জন্য একটি নাম লিখুন।\n"
+"নাম শুধুমাত্র অক্ষর এবং সংখ্যা দিয়ে গঠন করা যাবে।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:25
+msgid "Profile"
+msgstr "প্রোফাইল"
+
+#: src/netconfpkg/gui/maindialog.glade.h:26
+#: src/netconfpkg/gui/neat-control.glade.h:15
+msgid "Status"
+msgstr "অবস্থান"
+
+#: src/netconfpkg/gui/maindialog.glade.h:27
+msgid "Type"
+msgstr "ধরন"
+
+#: src/netconfpkg/gui/maindialog.glade.h:28
+msgid "You may configure IPsec tunnels and host to host connections here."
+msgstr "IPsec টানেল এবং হোস্টের-এর-সাথে-হোস্টের সংযোগ আপনি এখানে কনফিগার করতে পারেন।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:29
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"কম্পিউটারের সাথে সংযুক্ত নেটওয়ার্ক হার্ডওয়ের আপনি এখানে কনফিগার করতে পারেন।"
+"একাধিক লগিক্যাল ডিভাইসকে একটি হার্ডওয়েরের সাথে যুক্ত করা সম্ভব।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:30
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"কম্পিউটারের সাথে সংযুক্ত নেটওয়ার্ক হার্ডওয়ের আপনি এখানে কনফিগার করতে পারেন।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:31
+msgid ""
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
+msgstr ""
+"আপনি সিস্টেমের হোস্টের নাম , ডোমেন, নামের সার্ভার এবং খঁোজার ডোমেন "
+"কনফিগার করতে পারবেন। নামের সার্ভারগুলো নেটওয়ার্কের অন্য হোস্টদের খঁুজতে "
+"ব্যবহৃত হয়।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:32
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"IP অ্যাড্রেসে আপনি স্থায়ি কম্পিউটার হোস্টের নাম প্রেরণ করতে পারেন। যদি DNS "
+"ব্যবহৃত হয় তাহলে, অন্য কোন তথ্যের আগে এই মানগুলো  প্রাথমিক গুরুত্ব পাবে।"
+
+#: src/netconfpkg/gui/maindialog.glade.h:33
+#: src/netconfpkg/gui/neat-control.glade.h:17
+msgid "_Activate"
+msgstr "_স্বক্রিয় করা"
+
+#: src/netconfpkg/gui/maindialog.glade.h:34
+#: src/netconfpkg/gui/neat-control.glade.h:19
+msgid "_Deactivate"
+msgstr "_নিষ্ক্রিয় করা"
+
+#: src/netconfpkg/gui/maindialog.glade.h:36
+msgid "_Edit"
+msgstr "_সম্পাদন"
+
+#: src/netconfpkg/gui/maindialog.glade.h:37
+msgid "_Hostname:"
+msgstr "_হোস্টের নাম:"
+
+#: src/netconfpkg/gui/maindialog.glade.h:38
+#: src/netconfpkg/gui/neat-control.glade.h:21
+msgid "_Monitor"
+msgstr "_পর্যবেক্ষণ"
+
+#: src/netconfpkg/gui/maindialog.glade.h:39
+msgid "_New"
+msgstr "নতুন"
+
+#: src/netconfpkg/gui/maindialog.glade.h:40
+msgid "_Primary DNS:"
+msgstr "_প্রাথমিক DNS:"
+
+#: src/netconfpkg/gui/maindialog.glade.h:41
+msgid "_Profile"
+msgstr "_প্রোফাইল"
+
+#: src/netconfpkg/gui/maindialog.glade.h:42
+msgid "_Secondary DNS:"
+msgstr "_দ্বিতীয় DNS:"
+
+#: src/netconfpkg/gui/maindialog.glade.h:43
+msgid "_Tertiary DNS:"
+msgstr "_তৃতীয় DNS:"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+msgid "Ad-Hoc"
+msgstr "তদর্থক"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+msgid "Configure Wireless Connection"
+msgstr "বেতার সংযোগ কনফিগার করুন"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Create Wireless Device"
+msgstr "বেতার ডিভাইস তৈরি করো"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+msgid "Managed"
+msgstr "পরিচালিত"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+msgid "Select Wireless Device"
+msgstr "বেতার ডিভাইস বাছাই করুন"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+msgid "Select the Wireless card you want to configure:"
+msgstr "যে বেতার কার্ড আপনি কনফিগার করতে ইচ্ছুক তা বাছাই করুন:"
+
+#: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+msgid "Wireless card"
+msgstr "বেতার কার্ড"
+
+#: src/netconfpkg/gui/neat-control.glade.h:1
+msgid "Ac_tivate"
+msgstr "চালু _করো"
+
+#: src/netconfpkg/gui/neat-control.glade.h:2
+msgid "Active Profile"
+msgstr "চলতি প্রোফাইল"
+
+#: src/netconfpkg/gui/neat-control.glade.h:3
+msgid "Auto _Select"
+msgstr "স্বয়ংক্রিয় _বাছাইপ্রক্রিয়া"
+
+#: src/netconfpkg/gui/neat-control.glade.h:4
+msgid "Click to activate the selected profile"
+msgstr "বাছাই করা প্রোফাইল চালু করতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:5
+msgid "Click to bring up the interface"
+msgstr "ইন্টারফেস দেখতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:6
+msgid "Click to configure the interface"
+msgstr "ইন্টারফেস কনফিগার করতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:7
+msgid "Click to get infos"
+msgstr "তথ্য পেতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:8
+msgid "Click to have the system automatically select and activate a profile"
+msgstr "সিস্টেমের দ্বারা স্বয়ংক্রিয়ভাবে প্রোফাইল বাছাই করে চালু করতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:9
+msgid "Click to monitor the interface"
+msgstr "ইন্টারফেস পর্যবেক্ষণ করতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:10
+msgid "Click to shutdown the interface"
+msgstr "ইন্টারফেস বন্ধ করতে হলে ক্লিক্‌ করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:14
+msgid "Select a profile"
+msgstr "একটি প্রোফাইল বাছাই করুন"
+
+#: src/netconfpkg/gui/neat-control.glade.h:16
+msgid "The following network interfaces are configured in the active profile."
+msgstr "নিম্নলিখিত নেটওয়ার্ক ইন্টারফেসগুলো চলতি প্রোফাইলে কনফিগার করা আছে।"
+
+#: src/netconfpkg/gui/neat-control.glade.h:20
+msgid "_Info\t"
+msgstr "_তথ্য\t"
