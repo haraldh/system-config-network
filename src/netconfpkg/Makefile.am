@@ -19,6 +19,9 @@ GLADE_FILES = \
 	ModemDruid.glade \
 	NewInterfaceDruid.glade \
 	tcpipdialog.glade \
+	tokenringconfig.glade \
+	TokenRingHardwareDruid.glade \
+	tokenringhardware.glade \
 	wirelessconfig.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
@@ -73,6 +76,9 @@ PYTHON_FILES = \
 	providerdb.py \
 	provider.py \
 	tcpdialog.py \
+	tokenringconfig.py \
+	TokenRingHardwareDruid.py \
+	tokenringqhardware.py \
 	wirelessconfig.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
