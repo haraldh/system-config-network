@@ -14,9 +14,9 @@ install-data-local:
 	$(INSTALL_DATA) neat.pam $(sysconfdir)/pam.d/neat
 	$(mkinstalldirs) $(prefix)/bin/
 	ln -fs consolehelper $(prefix)/bin/neat
-	$(mkinstalldirs) $(datadir)/kontrol-panel/icons $(datadir)/desktop-folders/sysconfig $(sysconfdir)/X11/applnk/System/
+	$(mkinstalldirs) $(datadir)/kontrol-panel/icons $(sysconfdir)/X11/serverconfig $(sysconfdir)/X11/applnk/System/
 	$(INSTALL_DATA) neat.desktop $(datadir)/kontrol-panel
-	$(INSTALL_DATA) neat.desktop $(datadir)/desktop-folders/sysconfig
+	$(INSTALL_DATA) neat.desktop $(sysconfdir)/X11/serverconfig
 	$(INSTALL_DATA) neat.desktop $(sysconfdir)/X11/applnk/System/neat.desktop
 
 srpm: distcheck

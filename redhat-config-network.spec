@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
 Version: 0.3.2
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -34,7 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/redhat-config-network
 %{_datadir}/kontrol-panel/neat.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
-%{_datadir}/desktop-folders/sysconfig/neat.desktop
+%config(noreplace) /etc/X11/serverconfig/neat.desktop
 %config(noreplace) /etc/X11/applnk/System/neat.desktop
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
