@@ -319,6 +319,8 @@ class mainDialog:
         self.saveDevices()
         self.saveProfiles()
         self.checkApply()
+        generic_error_dialog (_("Changes are saved.\nYou may want to restart\nthe network and network services\nor restart the computer."),
+                              self.dialog)
         return 0
 
     def saveDevices(self):
