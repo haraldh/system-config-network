@@ -8,7 +8,7 @@ EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c
 
 execdir = $(sbindir)
 
-all-local:
+all-local: 
 	rm -f redhat-config-network
 	rm -f redhat-config-network-cmd
 	rm -f redhat-config-network-druid
@@ -16,8 +16,10 @@ all-local:
 	ln -s netconf.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
 
+dist-local: glade-strings.c 
+
 glade-strings.c:  maindialog.glade  $(wildcard netconfpkg/*.glade)
-	libglade-xgettext -c -o $(srcdir)/glade-strings.c $?
+	libglade-xgettext -c -o $(srcdir)/glade-strings.c $^
 
 pythondir = $(pkgdatadir)
 ###python_DATA = $(PYTHON_FILES)
