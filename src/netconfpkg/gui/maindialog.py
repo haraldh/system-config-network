@@ -54,18 +54,17 @@ class mainDialog:
             glade_file = GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
-
+        
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.no_profileentry_update = None
-
 
         self.edit_button = self.xml.get_widget("editButton")
         self.delete_button = self.xml.get_widget("deleteButton")
         self.copy_button = self.xml.get_widget("copyButton")
         self.activate_button = self.xml.get_widget("activateButton")
         self.deactivate_button = self.xml.get_widget("deactivateButton")
-        self.monitor_button = self.xml.get_widget("deviceMonitorButton")
+        #self.monitor_button = self.xml.get_widget("deviceMonitorButton")
         self.up_button = self.xml.get_widget("upButton")
         self.down_button = self.xml.get_widget("downButton")
 
@@ -75,8 +74,8 @@ class mainDialog:
             self.on_activateButton_clicked,
             "on_deactivateButton_clicked" : \
             self.on_deactivateButton_clicked,
-            "on_deviceMonitorButton_clicked" : \
-            self.on_deviceMonitorButton_clicked,
+#            "on_deviceMonitorButton_clicked" : \
+#            self.on_deviceMonitorButton_clicked,
             "on_deviceList_select_row" : 
             self.on_generic_clist_select_row,
             "on_deviceList_unselect_row" : 
@@ -163,8 +162,8 @@ class mainDialog:
 #         self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
 #         self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
 
-        if not os.access('/usr/bin/rp3', os.X_OK):
-            self.xml.get_widget('deviceMonitorButton').hide()
+#        if not os.access('/usr/bin/rp3', os.X_OK):
+#            self.xml.get_widget('deviceMonitorButton').hide()
         
         load_icon("network.xpm", self.dialog)
         
@@ -986,9 +985,9 @@ class mainDialog:
 
         self.tag = gtk.timeout_add(4000, self.updateDevicelist)
 
-    def on_deviceMonitorButton_clicked(self, button):
-        generic_error_dialog(_("To be rewritten!"), self.dialog)
-        return
+#    def on_deviceMonitorButton_clicked(self, button):
+#        generic_error_dialog(_("To be rewritten!"), self.dialog)
+#        return
     
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
@@ -1742,5 +1741,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 14:16:56 $"
-__version__ = "$Revision: 1.37 $"
+__date__ = "$Date: 2004/03/10 14:39:06 $"
+__version__ = "$Revision: 1.38 $"
