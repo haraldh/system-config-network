@@ -41,7 +41,8 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class dslConfigDialog:
-    def __init__(self, xml_main = None, xml_basic = None):
+    def __init__(self, device, xml_main = None, xml_basic = None):
+        self.device = device
         self.xml_main = xml_main
         self.xml_basic = xml_basic
 
@@ -64,7 +65,6 @@ class dslConfigDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
-        self.dialog.show()
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -83,22 +83,18 @@ class dslConfigDialog:
             widget.set(pix, mask)
         else:
             self.dialog.set_icon(pix, mask)
-            
+
     def on_Dialog_delete_event(self, *args):
         self.dialog.destroy()
-        gtk.mainquit()
 
     def on_okButton_clicked(self, button):
         self.dialog.destroy()
-        gtk.mainquit()
 
     def on_cancelButton_clicked(self, button):
         self.dialog.destroy()
-        gtk.mainquit()
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     dslConfigDialog()
     gtk.mainloop()
-
