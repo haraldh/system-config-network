@@ -283,7 +283,8 @@ class mainDialog:
 
         basic = basicDialog(self.xml)
         dialog = basic.xml.get_widget ("Dialog")
-        dialog.show ()
+        dialog.run ()
+        print 'FOO'
 
     def on_deviceCopyButton_clicked (self, button):
         pass
@@ -322,7 +323,8 @@ class mainDialog:
 
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
-        dialog.show ()
+        dialog.run ()
+        print 'FOO'
 
     def on_deviceDeleteButton_clicked (self, button):
         pass
@@ -437,9 +439,11 @@ class mainDialog:
         if deviceType == 'Ethernet' or deviceType == 'Token Ring' or  \
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
             dialog = ethernetHardwareDialog(self.xml)
+            global hardwarelist
+            dialog.hardwarelist = hardwarelist
+            dialog.main = self
             if not edit:
                 return
-            global hardwarelist
             clist = self.xml.get_widget('hardwareList')
             type  = clist.get_text(clist.selection[0], 1)
             dev   = clist.get_text(clist.selection[0], 2)
