@@ -1,3 +1,4 @@
+# translation of ru.po to 
 # translation of ru.po to Russian
 # Copyright (C) YEAR ORGANIZATION
 # Leonid Kanter <leon@geon.donetsk.ua>, 2003
@@ -7,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "POT-Creation-Date: 2003-09-17 16:28+0200\n"
-"PO-Revision-Date: 2003-02-24 15:01+0200\n"
+"PO-Revision-Date: 2003-10-07 17:09+0300\n"
 "Last-Translator: Leonid Kanter <leon@geon.donetsk.ua>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.1\n"
-"X-Generator: KBabel 1.0\n"
+"X-Generator: KBabel 1.0.1\n"
 
 #: neat-control.desktop.in.h:1
 msgid "Control and monitor network devices"
@@ -81,19 +82,21 @@ msgstr "Мастер подключения к Интернет"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/neat-control.py:48 src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
-msgstr ""
+msgstr "ОШИБКА: Не удается инициализировать графическое окружение. "
 
 #: src/neat-control.py:49 src/netconf.py:76
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
-msgstr ""
+msgstr "Наиболее вероятная причина - утилита не была запущена в графическом окружении. "
 
 #: src/neat-control.py:50 src/netconf.py:77
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
 msgstr ""
+"Запустите графическое окружение либо установите переменную окружения "
+"DISPLAY.\n"
 
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
@@ -122,28 +125,27 @@ msgid "Activating network device %s, please wait..."
 msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
 
 #: src/neat-control.py:215
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot configure network device %s"
-msgstr "Не удается активировать устройство сети %s"
+msgstr "Не удается настроить устройство сети %s"
 
 #. update dialog #83640
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
 #: src/neat-control.py:235
-#, fuzzy
 msgid "Switching Profiles"
-msgstr "Активный профиль"
+msgstr "Переключение профилей"
 
 #: src/neat-control.py:236
-#, fuzzy, python-format
+#, python-format
 msgid "Switching to profile %s"
-msgstr "Активный профиль"
+msgstr "Активируется профиль %s"
 
 #: src/neat-control.py:237
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to switch to profile %s"
-msgstr "Ошибка записи в файл %s"
+msgstr "Ошибка активирования профиля %s"
 
 #. Re-read the device list
 #. Update the gui
@@ -158,9 +160,8 @@ msgstr "Должно быть переписано!"
 #. ???
 #. change the default profile to a more understandable name
 #: src/neat-control.py:354
-#, fuzzy
 msgid " (active)"
-msgstr "Неактивно"
+msgstr " (активен)"
 
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
@@ -193,11 +194,11 @@ msgstr ""
 #.
 #: src/netconf-tui.py:135
 msgid "Run anyway"
-msgstr ""
+msgstr "Выполнить все равно"
 
 #: src/netconf-tui.py:136
 msgid "IMPORTANT"
-msgstr ""
+msgstr "ВАЖНО"
 
 #: src/netconf-tui.py:137
 #, python-format
@@ -208,10 +209,15 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
+"Эта утилита не поддерживается! Используйте графическую версию, "
+"которая предоставляет полную функциональность.\n"
+"Если X-сервер не установлен на этой машине, зайдите по ssh с машины, "
+"на которой запущен X-сервер, и используйте проброс X. Если вы "
+"действительно хотите использовать это средство, нажмите <%s>."
 
 #: src/netconf-tui.py:147
 msgid "Quit"
-msgstr ""
+msgstr "Выход"
 
 #: src/netconf-tui.py:152
 msgid "What do you want to configure?"
@@ -325,24 +331,22 @@ msgid "Error: %s, %s!"
 msgstr "Ошибка: %s, %s!"
 
 #: src/netconf.py:59
-#, fuzzy
 msgid "Starting text version"
-msgstr "Запускается текстовая версия:"
+msgstr "Запускается текстовая версия"
 
 #: src/netconf.py:114
 msgid "Loading Network Configuration..."
 msgstr "Загружается конфигурация сети..."
 
 #: src/netconf.py:127
-#, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
 "\n"
 "Usage: redhat-config-network -v --verbose"
 msgstr ""
-"redhat-config-network-cmd - Python network configuration commandline tool\n"
+"redhat-config-network - утилита настройки сети\n"
 "\n"
-"Применение: redhat-config-network-cmd -p --profile <profile>"
+"Применение: redhat-config-network--v --verbose"
 
 #. splash_window = splash_screen()
 #. make ctrl-C work
@@ -370,84 +374,83 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:64
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
 "Please file a detailed bug report against the component %s at \n"
 "https://bugzilla.redhat.com/bugzilla\n"
 "using the text below.\n"
 msgstr ""
-"Произошло необработанное исключение.  Скорее всего это ошибка. Пожалуйста "
-"скопируйте полный текст исключения или сохраните отладочную информацию в "
-"файл и заполните подробный отчет об ошибке в компоненте redhat-config-"
-"network на https://bugzilla.redhat.com/bugzilla"
+"Произошло необработанное исключение.  Скорее всего это ошибка\n"
+"Пожалуйста скопируйте полный текст исключения или сохраните\n"
+"отладочную информацию в файл и заполните подробный отчет об\n"
+"ошибке в компоненте %s на https://bugzilla.redhat.com/bugzilla.\n"
 
 #: src/netconf-cmd.py:99
 #, python-format
 msgid "%s - network configuration commandline tool"
-msgstr ""
+msgstr "%s - утилита настройки сети для командной строки"
 
 #: src/netconf-cmd.py:104
 #, python-format
 msgid "Usage: %s"
-msgstr ""
+msgstr "Применение: %s"
 
 #: src/netconf-cmd.py:106
-#, fuzzy
 msgid "switch / activate profile"
-msgstr "Нажмите, чтобы активировать выбранный профиль"
+msgstr "переключить / активировать профиль"
 
 #: src/netconf-cmd.py:108
 msgid "export / import hardware list"
-msgstr ""
+msgstr "экспорт / импорт списка оборудования"
 
 #: src/netconf-cmd.py:110
 msgid "export / import IPsec list"
-msgstr ""
+msgstr "экспорт / импорт списка IPsec"
 
 #: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
-msgstr ""
+msgstr "экспорт / импорт списка оборудования (по умолчанию)"
 
 #: src/netconf-cmd.py:114
 msgid "export / import profile list"
-msgstr ""
+msgstr "экспорт / импорт списка профилей"
 
 #: src/netconf-cmd.py:116
 msgid "set the root directory"
-msgstr ""
+msgstr "устанавливает корневой каталог"
 
 #: src/netconf-cmd.py:117
 msgid "export list (default)"
-msgstr ""
+msgstr "экспорт списка (по умолчанию("
 
 #: src/netconf-cmd.py:118
 msgid "import list"
-msgstr ""
+msgstr "импорт списка"
 
 #: src/netconf-cmd.py:120
 msgid "clear existing list prior of importing"
-msgstr ""
+msgstr "очистить существующий список перед импортом"
 
 #: src/netconf-cmd.py:122
 msgid "import from file"
-msgstr ""
+msgstr "импорт из файла"
 
 #: src/netconf-cmd.py:227
 #, python-format
 msgid "Unknown option %s\n"
-msgstr ""
+msgstr "Неизвестный параметр %s\n"
 
 #. remove the last \n
 #: src/netconf-cmd.py:287
-#, fuzzy, python-format
+#, python-format
 msgid "Unknown List %s\n"
-msgstr "Неизвестный"
+msgstr "Неизвестный список %s\n"
 
 #: src/netconf-cmd.py:291
-#, fuzzy, python-format
+#, python-format
 msgid "Error parsing line: %s"
-msgstr "Ошибка загрузки устройства %s!\n"
+msgstr "Ошибка разбора строки: %s"
 
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -467,7 +470,7 @@ msgstr "Ошибка загрузки устройства %s!\n"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ADSLInterface.py:90
 msgid "xDSL connection"
-msgstr "Cоединение xDSL"
+msgstr "соединение xDSL"
 
 #: src/netconfpkg/gui/ADSLInterface.py:96
 msgid ""
@@ -780,12 +783,16 @@ msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
+"Ошибка выполнения:\n"
+"%s"
 
 #: src/netconfpkg/gui/GUI_functions.py:548
 msgid ""
 "\n"
 "Succeeded. Please read the output."
 msgstr ""
+"\n"
+"Выполнено. Ознакомьтесь с выводом."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1113,6 +1120,8 @@ msgid ""
 "Nickname %s is already in use!\n"
 "Please choose another one.\n"
 msgstr ""
+"Псевдоним %s уже испольуется!\n"
+"Выберите другой.\n"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1395,9 +1404,8 @@ msgid "Loading Profile Configuration..."
 msgstr "Загружается конфигурация профиля..."
 
 #: src/netconfpkg/gui/maindialog.py:285
-#, fuzzy
 msgid "Loading IPsec Configuration..."
-msgstr "Загружается конфигурация..."
+msgstr "Загружается конфигурация IPsec..."
 
 #: src/netconfpkg/gui/maindialog.py:290
 msgid "Testing Configuration Set..."
@@ -1450,9 +1458,8 @@ msgid "Saving Profile Configuration..."
 msgstr "Сохранение конфигурации профиля..."
 
 #: src/netconfpkg/gui/maindialog.py:378
-#, fuzzy
 msgid "Saving IPsec Configuration..."
-msgstr "Сохранение конфигурации..."
+msgstr "Сохранение конфигурации IPsec..."
 
 #. #         if ch == -1:
 #. #             ch = self.changed()
@@ -1514,9 +1521,9 @@ msgstr "Изменить устройство..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:859
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "Изменение настройки устройства loopback невозможно!"
+msgstr "Измененить устройство типа %s невозможно!\n"
 
 #: src/netconfpkg/gui/maindialog.py:878
 msgid "The Loopback device can not be removed!"
@@ -1534,8 +1541,7 @@ msgstr "В конфигурацию были внесены изменения."
 #: src/netconfpkg/gui/maindialog.py:915
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"Для активирования сетевого устройства %s изменения должны быть сохранены."
+msgstr "Для активирования сетевого устройства %s изменения должны быть сохранены."
 
 #: src/netconfpkg/gui/maindialog.py:917 src/netconfpkg/gui/maindialog.py:1672
 msgid "Do you want to continue?"
@@ -1612,14 +1618,12 @@ msgstr "Вы действительно хотите удалить \"%s\"?"
 #: src/netconfpkg/gui/maindialog.py:1559
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr ""
-"Вы действительно хотите удалить все устройства, которые использует \"%s\"?"
+msgstr "Вы действительно хотите удалить все устройства, которые использует \"%s\"?"
 
 #: src/netconfpkg/gui/maindialog.py:1670
-#, fuzzy, python-format
+#, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
-msgstr ""
-"Для активирования сетевого устройства %s изменения должны быть сохранены."
+msgstr "Для активирования соединения IPsec %s изменения должны быть сохранены."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1715,14 +1719,12 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from CTCHardwareDruid import CTCHardware
 #: src/netconfpkg/gui/CTCInterface.py:48
-#, fuzzy
 msgid "CTC connection"
-msgstr "Соединение %s"
+msgstr "Соединение CTC"
 
 #: src/netconfpkg/gui/CTCInterface.py:54
-#, fuzzy
 msgid "Create a new CTC connection."
-msgstr "Создать новое соединение %s."
+msgstr "Создать новое соединение CTC."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1762,18 +1764,16 @@ msgstr "Устройство IUCV"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from IUCVHardwareDruid import IUCVHardware
 #: src/netconfpkg/gui/IUCVInterface.py:48
-#, fuzzy
 msgid "IUCV connection"
-msgstr "Соединение ISDN"
+msgstr "Соединение IUCV"
 
 #: src/netconfpkg/gui/IUCVInterface.py:54
-#, fuzzy
 msgid "Create a new IUCV connection."
-msgstr "Создать новое соединение %s."
+msgstr "Создать новое соединение IUCV."
 
 #: src/netconfpkg/gui/PTPInterface.py:222
 msgid "Point to Point (IP):"
-msgstr ""
+msgstr "Точка-точка (IP)"
 
 #. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 #. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
@@ -1873,24 +1873,24 @@ msgstr "Неактивно"
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Directory %s is missing!\n"
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
-"Каталог /etc/cipe отсутствует!\n"
+"Каталог %s отсутствует!\n"
 "Сейчас он будет создан.\n"
-"Вы должны установить rpm-пакет /etc/cipe!\n"
+"Вы должны установить rpm-пакет cipe!\n"
 
 #: src/netconfpkg/NCCipe.py:159
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Could not create\n"
 "directory %s!"
 msgstr ""
 "Не удается создать\n"
-"каталог /etc/cipe!"
+"каталог %s!"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -2206,17 +2206,16 @@ msgstr "Югославия"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCProfileList.py:56 src/netconfpkg/NCProfileList.py:64
-#, fuzzy, python-format
+#, python-format
 msgid "Copying %s to default profile."
-msgstr "/etc/hosts копируется в основной профиль."
+msgstr "%s копируется в основной профиль."
 
 #. 60016
 #. Keep that test for later versions
 #: src/netconfpkg/NCProfileList.py:207
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
-"Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
+msgstr "Устройство %s использует то же аппаратное устройство \"%s\", что и %s!\n"
 
 #: src/netconfpkg/NCProfileList.py:209
 msgid ""
@@ -2296,17 +2295,14 @@ msgstr "Программное (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "Должны ли следующие пакеты, которые требуются для вашей системы, быть "
 "установлены?"
 
 #: src/netconfpkg/NC_functions.py:208
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr ""
-"Вы должны установить следующие пакеты, которые необходимы в вашей системе!"
+msgid "You have to install the following packages, which are needed on your system!"
+msgstr "Вы должны установить следующие пакеты, которые необходимы в вашей системе!"
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
@@ -2449,25 +2445,23 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCHardware.py:21
-#, fuzzy
 msgid "inactive"
-msgstr "Неактивно"
+msgstr "неактивно"
 
 #. not found in last config and not in actual system
 #: src/netconfpkg/NCHardware.py:22
 msgid "system"
-msgstr ""
+msgstr "система"
 
 #. found in system
 #: src/netconfpkg/NCHardware.py:23
-#, fuzzy
 msgid "configured"
-msgstr "Настроить"
+msgstr "настроено"
 
 #. found in config but not in system
 #: src/netconfpkg/NCHardware.py:24
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #. found in system and in config
 #. !/usr/bin/python
@@ -2600,8 +2594,7 @@ msgstr "Не удается деактивировать устройство с
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
-msgstr ""
-"Первый раз redhat-config-network необходимо запускать с правами root!\n"
+msgstr "Первый раз redhat-config-network необходимо запускать с правами root!\n"
 
 #: src/netconfpkg/NCDeviceList.py:67
 #, python-format
@@ -2616,12 +2609,11 @@ msgstr "%s копируется в устройства и помещается 
 #. log.log(4, str(prof.ActiveDevices))
 #: src/netconfpkg/NCDeviceList.py:150
 msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr ""
+msgstr "Следующие псевдонимы изменяются из-за инитскриптов:\n"
 
 #: src/netconfpkg/NCDeviceList.py:153
-#, fuzzy
 msgid "Nicknames changed"
-msgstr "Псевдоним: "
+msgstr "Псевдонимы изменены"
 
 #. return DeviceList_base._objToStr(self, obj, parentStr)
 #.
@@ -2671,34 +2663,32 @@ msgstr "Псевдоним: "
 #. save ipsec settings
 #.
 #: src/netconfpkg/NCIPsec.py:168
-#, fuzzy
 msgid "IPsec activating..."
-msgstr "Активируется сетевое устройство..."
+msgstr "Активируется IPsec..."
 
 #: src/netconfpkg/NCIPsec.py:169
-#, fuzzy, python-format
+#, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
+msgstr "Активируется соединение IPsec %s, подождите пожалуйста..."
 
 #: src/netconfpkg/NCIPsec.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate IPsec connection %s!\n"
-msgstr "Не удается активировать устройство %s!\n"
+msgstr "Не удается активировать соединение IPsec %s!\n"
 
 #: src/netconfpkg/NCIPsec.py:188
-#, fuzzy
 msgid "IPsec deactivating..."
-msgstr "Деактивируется сетевое устройство..."
+msgstr "Деактивируется IPsec..."
 
 #: src/netconfpkg/NCIPsec.py:189
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "Деактивируется сетевое устройство %s, подождите пожалуйста..."
+msgstr "Деактивируется соединение IPsec %s, подождите пожалуйста..."
 
 #: src/netconfpkg/NCIPsec.py:191
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "Не удается деактивировать устройство сети %s!\n"
+msgstr "Не удается деактивировать соединение IPsec %s!\n"
 
 #. Module Cyclops version 0.9.4.
 #. Released to the public domain 18-Jul-1999,
@@ -2876,8 +2866,7 @@ msgstr "Укажите учетное имя, выданное вашим ISP."
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "Укажите имя этого соединения, как правило это просто имя вашего ISP."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -4493,9 +4482,8 @@ msgid "Description"
 msgstr "Описание"
 
 #: src/netconfpkg/gui/maindialog.glade.h:9
-#, fuzzy
 msgid "Destination"
-msgstr "Сеть назначения"
+msgstr "Назначение"
 
 #: src/netconfpkg/gui/maindialog.glade.h:10
 msgid "Dev_ices"
@@ -4519,7 +4507,7 @@ msgstr "IP"
 
 #: src/netconfpkg/gui/maindialog.glade.h:16
 msgid "IP_sec"
-msgstr ""
+msgstr "IP_sec"
 
 #: src/netconfpkg/gui/maindialog.glade.h:17
 msgid "List of devices which are currently configurable on your system."
@@ -4561,7 +4549,7 @@ msgstr "Тип"
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
 msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr ""
+msgstr "Здесь можно настроить туннели IPsec и соединения точка-точка."
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
 msgid ""
@@ -4573,10 +4561,8 @@ msgstr ""
 "логических устройств."
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr ""
-"Здесь вы можете настроить оборудование, физически подключенное к компьютеру."
+msgid "You may configure network hardware physically attached to the computer here."
+msgstr "Здесь вы можете настроить оборудование, физически подключенное к компьютеру."
 
 #: src/netconfpkg/gui/maindialog.glade.h:31
 msgid ""
@@ -4661,179 +4647,159 @@ msgstr "Беспроводная карта"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:2
 msgid "Checksum IP packets"
-msgstr ""
+msgstr "Контрольные суммы пакетов IP"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:3
-#, fuzzy
 msgid "Data Channel:"
-msgstr "Канал: "
+msgstr "Канал данных:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:4
 msgid "Memory Usage:"
-msgstr ""
+msgstr "Использование памяти:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:6
-#, fuzzy
 msgid "Port:"
-msgstr "Порт"
+msgstr "Порт:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:8
-#, fuzzy
 msgid "Write Channel:"
-msgstr "Канал: "
+msgstr "Канал записи:"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:9
-#, fuzzy
 msgid "_Read Channel:"
-msgstr "_Канал:"
+msgstr "Канал _чтения:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:2
-#, fuzzy
 msgid "A_uthentication Key:"
-msgstr "_Аутентификация:"
+msgstr "Ключ а_утентификации:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
 msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr ""
+msgstr "Режим автоматического шифрования через IKA (racoon)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:4
-#, fuzzy
 msgid "Ge_nerate"
 msgstr "_Создать"
 
 #: src/netconfpkg/gui/editipsec.glade.h:5
 msgid "Host to Host encryption"
-msgstr ""
+msgstr "Шифрование узел-узел"
 
 #: src/netconfpkg/gui/editipsec.glade.h:6
 msgid "IPsec"
-msgstr ""
+msgstr "IPsec"
 
 #: src/netconfpkg/gui/editipsec.glade.h:7
-#, fuzzy
 msgid "IPsec - Connection Type"
-msgstr "Соединение %s"
+msgstr "IPsec - тип соединения"
 
 #: src/netconfpkg/gui/editipsec.glade.h:8
-#, fuzzy
 msgid "IPsec - Encryption Mode"
-msgstr "Режим инкапсуляции:"
+msgstr "IPsec - режим шифрования"
 
 #: src/netconfpkg/gui/editipsec.glade.h:9
 msgid "IPsec - Keys"
-msgstr ""
+msgstr "IPsec - ключи"
 
 #: src/netconfpkg/gui/editipsec.glade.h:10
-#, fuzzy
 msgid "IPsec - Local Network"
-msgstr "Сеть"
+msgstr "IPsec - локальная сеть"
 
 #: src/netconfpkg/gui/editipsec.glade.h:11
-#, fuzzy
 msgid "IPsec - Remote Network"
-msgstr "Сеть"
+msgstr "IPsec - удаленная сеть"
 
 #: src/netconfpkg/gui/editipsec.glade.h:12
 msgid "IPsec - Summary"
-msgstr ""
+msgstr "IPsec - сводка"
 
 #: src/netconfpkg/gui/editipsec.glade.h:13
-#, fuzzy
 msgid "IPsec Settings"
 msgstr "Параметры IP"
 
 #: src/netconfpkg/gui/editipsec.glade.h:14
-#, fuzzy
 msgid "Local Network _Address:"
-msgstr "Сеть"
+msgstr "_Адрес локальной сети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:15
-#, fuzzy
 msgid "Local Network _Gateway:"
-msgstr "Сеть"
+msgstr "_Шлюз локальной сети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:16
-#, fuzzy
 msgid "Local Subnet _Mask:"
-msgstr "Маска подсети:"
+msgstr "_Маска локальной подсети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:17
 msgid "Manual encryption with a fixed key"
-msgstr ""
+msgstr "Шифрование с заданным вручную ключом"
 
 #: src/netconfpkg/gui/editipsec.glade.h:18
 msgid "Network to Network encryption (VPN)"
-msgstr ""
+msgstr "Шифрование сеть-сеть (VPN)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:19
-#, fuzzy
 msgid "Please enter a nickname for the connection:"
-msgstr "Выберите тип оборудования, которое должно быть установлено:"
+msgstr "Введите псевдоним для этого соединения:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter your local network settings:"
-msgstr ""
+msgstr "Введите параметры локальной сети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:21
 msgid "Please enter your remote network settings:"
-msgstr ""
+msgstr "Введите параметры удаленной сети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:22
-#, fuzzy
 msgid "Please select the type of connection:"
-msgstr "Выберите тип оборудования, которое должно быть установлено:"
+msgstr "Выберите тип соединения:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:23
-#, fuzzy
 msgid "Please select the type of encryption:"
-msgstr "Выберите тип оборудования, которое должно быть установлено:"
+msgstr "Выберите тип шифрования:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:24
 msgid ""
 "Please specify your keys or generate them. \n"
 "The keys are symmetric, so your remote partner need to have the same."
 msgstr ""
+"Укажите ваши ключи или создайте их.\n"
+"Ключи симметричны, то есть удаленная сторона должна иметь такие же."
 
 #: src/netconfpkg/gui/editipsec.glade.h:26
-#, fuzzy
 msgid "Remote Network _Address:"
-msgstr "Адрес удаленной машины:"
+msgstr "_Адрес удаленной сети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:27
-#, fuzzy
 msgid "Remote Network _Gateway:"
-msgstr "Сеть"
+msgstr "_Шлюз удаленной сети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:28
-#, fuzzy
 msgid "Remote Subnet _Mask:"
-msgstr "Маска подсети:"
+msgstr "_Маска удаленной подсети:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:29
-#, fuzzy
 msgid "Remote _IP Address:"
-msgstr "Адрес удаленной машины:"
+msgstr "Удаленный адрес _IP:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:30
 msgid ""
 "You will now be guided through the\n"
 "setup of the IPsec connection."
 msgstr ""
+"Сейчас вы будете проведены через\n"
+"настройку соединения IPsec."
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
-#, fuzzy
 msgid "_Activate connection when computer starts"
-msgstr "_Активировать устройство при запуске компьютера"
+msgstr "_Активировать соединение при запуске компьютера"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
-#, fuzzy
 msgid "_Encryption Key:"
-msgstr "_Режим инкапсуляции:"
+msgstr "_Ключ шифрования:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:35
-#, fuzzy
 msgid "_Nickname:"
-msgstr "Псевдоним: "
+msgstr "_Псевдоним:"
 
 #: src/netconfpkg/gui/neat-control.glade.h:1
 msgid "Ac_tivate"
@@ -4884,39 +4850,34 @@ msgid "The following network interfaces are configured in the active profile."
 msgstr "В активном профиле были настроены следующие интерфейсы."
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
-#, fuzzy
 msgid "_Info\t"
-msgstr "Сведения"
+msgstr "_Сведения\t"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
 msgid "Card"
-msgstr ""
+msgstr "Карта"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-#, fuzzy
 msgid "Create Device"
-msgstr "Создать устройство Ethernet"
+msgstr "Создать устройство"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/ptpconfig.glade.h:4
-#, fuzzy
 msgid "MT_U:"
-msgstr "MTU:"
+msgstr "MT_U:"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
-#, fuzzy
 msgid "Select Device"
-msgstr "Выбор типа соединения"
+msgstr "Выбор устройства"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-#, fuzzy
 msgid "Select the card you want to configure:"
-msgstr "Выберите карту Ethernet для этого соединения:"
+msgstr "Выберите карту, которую необходимо настроить:"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/ptpconfig.glade.h:10
 msgid "_Point to Point (IP):"
-msgstr ""
+msgstr "_Точка-точка (IP):"
 
 #~ msgid "CTC Configuration"
 #~ msgstr "Настройка CTC"
@@ -5160,3 +5121,4 @@ msgstr ""
 
 #~ msgid "_ESSID (Network ID):"
 #~ msgstr "_ESSID (Network ID):"
+
