@@ -23,7 +23,7 @@ MAINTAINERCLEANFILES=ChangeLog
 
 sysdir=$(sysconfdir)/X11/applnk/System
 
-.PHONY: rp3 changelog srpm
+.PHONY: rp3 changelog srpm archive tag-srpm srpm force-tag-srpm
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/security/console.apps
