@@ -13,6 +13,102 @@ typedef __uint8_t u8;	/* ditto */
 
 #include <Python.h>
 
+static PyObject *
+get_active_devices (PyObject * self, PyObject * args)
+{
+  PyObject * list;
+  int numreqs = 30;
+  struct ifconf ifc;
+  struct ifreq *ifr;
+  int n, err = -1;
+  int skfd;
+  
+  /* SIOCGIFCONF currently seems to only work properly on AF_INET sockets
+     (as of 2.1.128) */ 
+  /* Open control socket. */
+  skfd = socket(AF_INET, SOCK_DGRAM, 0);
+  if(skfd < 0) {
+    PyErr_SetString(PyExc_OSError, strerror(errno));
+    return NULL;
+  }
+  
+  ifc.ifc_buf = NULL;
+  for (;;) {
+    ifc.ifc_len = sizeof(struct ifreq) * numreqs;
+    ifc.ifc_buf = realloc(ifc.ifc_buf, ifc.ifc_len);
+    
+    if (ioctl(skfd, SIOCGIFCONF, &ifc) < 0) {
+      PyErr_SetString(PyExc_OSError, strerror(errno));
+      free(ifc.ifc_buf);
+      return NULL;
+    }
+    if (ifc.ifc_len == sizeof(struct ifreq) * numreqs) {
+      /* assume it overflowed and try again */
+      numreqs += 10;
+      continue;
+    }
+    break;
+  }
+  
+  list = PyList_New(0);
+  ifr = ifc.ifc_req;
+  for (n = 0; n < ifc.ifc_len; n += sizeof(struct ifreq)) {
+    printf("Testing %s.\n", ifr->ifr_name);
+    if (!(ioctl(skfd, SIOCGIFFLAGS, ifr) < 0))
+      if (ifr->ifr_flags & IFF_UP)
+	PyList_Append(list, PyString_FromString(ifr->ifr_name));
+    ifr++;
+  }
+
+  return list;
+}
+
+static PyObject *
+get_devices (PyObject * self, PyObject * args)
+{
+  PyObject * list;
+  int numreqs = 30;
+  struct ifconf ifc;
+  struct ifreq *ifr;
+  int n, err = -1;
+  int skfd;
+  
+  /* SIOCGIFCONF currently seems to only work properly on AF_INET sockets
+     (as of 2.1.128) */ 
+  /* Open control socket. */
+  skfd = socket(AF_INET, SOCK_DGRAM, 0);
+  if(skfd < 0) {
+    PyErr_SetString(PyExc_OSError, strerror(errno));
+    return NULL;
+  }
+  
+  ifc.ifc_buf = NULL;
+  for (;;) {
+    ifc.ifc_len = sizeof(struct ifreq) * numreqs;
+    ifc.ifc_buf = realloc(ifc.ifc_buf, ifc.ifc_len);
+    
+    if (ioctl(skfd, SIOCGIFCONF, &ifc) < 0) {
+      PyErr_SetString(PyExc_OSError, strerror(errno));
+      free(ifc.ifc_buf);
+      return NULL;
+    }
+    if (ifc.ifc_len == sizeof(struct ifreq) * numreqs) {
+      /* assume it overflowed and try again */
+      numreqs += 10;
+      continue;
+    }
+    break;
+  }
+  
+  list = PyList_New(0);
+  ifr = ifc.ifc_req;
+  for (n = 0; n < ifc.ifc_len; n += sizeof(struct ifreq)) {
+    PyList_Append(list, PyString_FromString(ifr->ifr_name));
+    ifr++;
+  }
+
+  return list;
+}
 
 static PyObject *
 get_hwaddress (PyObject * self, PyObject * args)
@@ -112,6 +208,10 @@ static struct PyMethodDef PyEthModuleMethods[] = {
           (PyCFunction) get_module, METH_VARARGS, NULL },
     	{ "get_hwaddr",
           (PyCFunction) get_hwaddress, METH_VARARGS, NULL },
+    	{ "get_devices",
+          (PyCFunction) get_devices, METH_VARARGS, NULL },
+    	{ "get_active_devices",
+          (PyCFunction) get_active_devices, METH_VARARGS, NULL },
 	{ NULL, NULL, 0, NULL }	
 };
 
