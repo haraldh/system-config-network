@@ -78,17 +78,6 @@ class DeviceList(DeviceList_base):
         self.commit(changed=false)
 
         #
-        # traverse all devices in the list
-        #
-        for dev in self:                        
-            #
-            # really save the device
-            #
-            #if dev.changed:
-            dev.save()
-
-
-        #
         # clear all Dialer sections in wvdial.conf
         # before the new Dialer sections written
         #
@@ -112,11 +101,18 @@ class DeviceList(DeviceList_base):
         #
         for dev in self:                        
             #
+            # really save the device
+            #
+            #if dev.changed:
+            dev.save()
+
+            #
             # write the pap and chap-secrets, if any
             #
             if dev.Dialup and dev.Dialup.Login:
                 papconf[dev.Dialup.Login] = str(dev.Dialup.Password)
                 chapconf[dev.Dialup.Login] = str(dev.Dialup.Password)
+
 
         papconf.write()
         chapconf.write()
@@ -161,7 +157,7 @@ class DeviceList(DeviceList_base):
                 if dev.DeviceId == devid:
                     break
             else:
-                #print "Removing %s" % (SYSCONFDEVICEDIR + entry)
+                print "Removing %s" % (SYSCONFDEVICEDIR + entry)
                 unlink(SYSCONFDEVICEDIR + entry)
                 unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
 
