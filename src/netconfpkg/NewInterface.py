@@ -29,6 +29,7 @@ from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
 import HardwareList
 import NCisdnhardware
+from NC_functions import *
 
 Interfaces = [ IsdnInterface, ModemInterface, ADSLInterface ]
 
@@ -48,6 +49,7 @@ class NewInterface:
         # get the widgets we need
         self.toplevel = xml.get_widget ('toplevel')
         self.druid = xml.get_widget ('druid')
+        self.start_page = xml.get_widget('start_page')
         self.interface_clist = xml.get_widget ('interface_clist')
         self.description_label = xml.get_widget ('description_label')
 
@@ -59,6 +61,8 @@ class NewInterface:
               'on_interface_clist_select_row' : self.on_interface_clist_select_row,
               })
 
+        load_icon("network.xpm", self.toplevel)
+        
         # Initialize the clist
         self.interface_clist.column_titles_passive ()
 
@@ -71,7 +75,7 @@ class NewInterface:
 
         self.toplevel.show_all ()
         self.on_start_page_prepare (None, None)
-
+        
     def on_start_page_prepare (self, druid_page, druid):
         self.interface_clist.grab_focus ()
         self.druid.set_buttons_sensitive (FALSE, TRUE, TRUE)
@@ -80,14 +84,14 @@ class NewInterface:
         interface = self.interface_clist.get_row_data (self.interface_clist.selection[0])
 
         # remove all other children
-        for I in self.druid.children()[1:]:
-            self.druid.remove(I)
+        for i in self.druid.children()[1:]:
+            self.druid.remove(i)
 
         druid_pages = interface.get_druids()
         if druid_pages:
-            for I in druid_pages:
-                self.druid.append_page (I)
-                I.show()
+            for i in druid_pages:
+                self.druid.append_page(i)
+                i.show()
             return FALSE
         else:
             return TRUE
