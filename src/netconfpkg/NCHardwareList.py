@@ -20,7 +20,7 @@
 import sys
 import os
 import string
-
+import ethtool
 import NCisdnhardware
 
 from HardwareList import *
@@ -129,6 +129,9 @@ class HardwareList(HardwareList_base):
         hwconf = ConfHWConf()
         wvdial = ConfSMB('/etc/wvdial.conf')
 
+        #
+        # Read /etc/modules.conf
+        #
         for mod in modules.keys():
             type = getDeviceType(mod)
             if type == 'Unknown':
@@ -141,17 +144,49 @@ class HardwareList(HardwareList_base):
             hw.Type = type
             hw.createCard()
             for info in modinfo.keys():
-                if info == modules[mod]['alias'] and modinfo[info]['type'] == 'eth':
+                if info == modules[mod]['alias']:
                     hw.Card.ModuleName = info
-                    hw.Description = modinfo[info]['description']
-                    # for h in hwconf.keys():
-                    #     if hwconf[h]['driver'] == info:
-                    #         pass
+                    if modinfo[info].has_key('description'):
+                        hw.Description = modinfo[info]['description']
 
             for selfkey in self.keydict.keys():
                 confkey = self.keydict[selfkey]
                 if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
                     hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+
+        #
+        # Read in actual system state
+        #
+        for i in xrange(20):
+            device = "eth%d" % i            
+            try:
+                mod = ethtool.get_module(device)
+            except:
+                mod = ""
+                
+            if mod != None and mod != "":
+                for hw in self.data:
+                    if hw.Name == device:
+                        if hw.Card and hw.Card.ModuleName != mod:
+                            generic_error_dialog ("%s has set module %s instead of currently loaded %s in modules.conf" % (hw.Name, hw.Card.ModuleName, mod))
+                        break
+                else:
+                    i = self.addHardware()
+                    hw = self.data[i]
+                hw.Name = device
+                hw.Description = device
+                hw.Type = getDeviceType(device)
+                hw.createCard()
+                for info in modinfo.keys():
+                    if info == mod:
+                        hw.Card.ModuleName = info
+                        if modinfo[info].has_key('description'):
+                            hw.Description = modinfo[info]['description']
+
+                for selfkey in self.keydict.keys():
+                    confkey = self.keydict[selfkey]
+                    if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                        hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
 
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
