@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "POT-Creation-Date: 2002-11-13 16:07+0100\n"
-"PO-Revision-Date: 2002-09-04 12:46GMT+10:00\n"
+"PO-Revision-Date: 2002-11-14 16:22GMT+10:00\n"
 "Last-Translator: James Hashida <khashida@redhat.com>\n"
-"Language-Team: Japanese <i18-list@redhat.com>\n"
+"Language-Team: Japanese <i18n-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0beta1\n"
+"X-Generator: KBabel 1.0beta2\n"
 
 #. ! /usr/bin/python2.2
 #. # netconf - A network configuration tool
@@ -66,6 +66,10 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
+"変更を保存しました。\n "
+"ネットワークかネットワーク\n"
+"サービスの再起動かコンピュータの\n "
+"再起動ができます。"
 
 #. change the default profile to a more understandable name
 #: src/netconf.py:493 src/netconf.py:506
@@ -99,8 +103,7 @@ msgstr "設定の中で変更がされました。"
 #: src/netconf.py:688
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
+msgstr "ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
 
 #: src/netconf.py:690
 msgid "Do you want to continue?"
@@ -119,11 +122,13 @@ msgid "Activating network device %s, please wait..."
 msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい...."
 
 #: src/netconf.py:712
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Cannot activate network device %s\n"
 "%s"
-msgstr "ネットワークデバイス%sを起動できません。"
+msgstr ""
+"ネットワークデバイス%sの起動が\n"
+"出来ません%s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
@@ -1141,12 +1146,17 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"ディレクトリ/etc/cipeがありません\n"
+"作成してよろしいですか\n"
+"cipe rpmパッケージをインストールして下さい\n"
 
 #: src/netconfpkg/NCCipe.py:159
 msgid ""
 "Could not create\n"
 "directory /etc/cipe!"
 msgstr ""
+"ディレクトリ/etc/cipe\n "
+"を作成出来ませんでした"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1211,8 +1221,7 @@ msgstr "デバイスタイプが指定されていません。"
 #: src/netconfpkg/NCDevice.py:229
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr ""
-"%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
+msgstr "%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
@@ -1625,8 +1634,7 @@ msgstr ""
 #: src/netconfpkg/NCProfileList.py:134
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
-"デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
+msgstr "デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
 
 #: src/netconfpkg/NCProfileList.py:135
 msgid ""
@@ -2064,8 +2072,7 @@ msgstr ""
 "す。。。。 多重論理デバイスは単独のハードウェアと関連付ができます。"
 
 #: src/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr ""
 "ここでコンピュータと物理的に接続しているネットワークハードウェアを設定できま"
 "す。"
@@ -2204,8 +2211,7 @@ msgstr "ISPから取得したログイン名をここに入力して下さい。
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "この設定の名前を入れて下さい。普通は単にISPの名前です。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -3122,8 +3128,7 @@ msgstr "コールバック設定"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
-msgstr ""
-"ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
+msgstr "ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Compression"
@@ -3163,8 +3168,7 @@ msgstr "VJ TCP/IPヘッダ圧縮を有効にする(_V)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
 msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr ""
-"自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
+msgstr "自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:27
 msgid "Han_gup Timeout:"
@@ -3564,9 +3568,8 @@ msgid "Destination Network"
 msgstr "目的地ネットワーク"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-#, fuzzy
 msgid "Device _Alias Number:"
-msgstr "デバイスエイリアス(_A):"
+msgstr "デバイスエイリアス番号(_A):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
@@ -3576,8 +3579,7 @@ msgstr "難易度レベル:"
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
-msgstr ""
-"それぞれの接続は下記から選べる物理的デバイスと連携している必要があります。"
+msgstr "それぞれの接続は下記から選べる物理的デバイスと連携している必要があります。"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
@@ -3914,3 +3916,4 @@ msgstr "インターネット設定ウィザード"
 #~ "さい。\n"
 #~ " ありがとうございます。 \n"
 #~ "%s "
+
