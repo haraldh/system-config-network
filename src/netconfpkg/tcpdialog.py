@@ -30,11 +30,11 @@ import gettext
 import re
 
 from editadress import editAdressDialog
+from NCDeviceList import *
 from NC_functions import *
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
@@ -64,7 +64,9 @@ class tcpConfigDialog:
             "on_defaultRouteCB_toggled" : self.on_defaultRouteCB_toggled,
             "on_routeAddButton_clicked" : self.on_routeAddButton_clicked,
             "on_routeEditButton_clicked" : self.on_routeEditButton_clicked,
-            "on_routeDeleteButton_clicked" : self.on_routeDeleteButton_clicked
+            "on_routeDeleteButton_clicked" : self.on_routeDeleteButton_clicked,
+            "on_routeUpButton_clicked" : self.on_routeUpButton_clicked,
+            "on_routeDownButton_clicked" : self.on_routeDownButton_clicked
             })
 
         self.dialog = self.xml.get_widget("Dialog")
@@ -197,13 +199,11 @@ class tcpConfigDialog:
         self.hydrate()
 
     def on_routeDeleteButton_clicked(self, button):
-        devicelist = getDeviceList()
+        if not self.device.StaticRoutes:
+            self.device.createStaticRoutes()
 
-        curr_dev = devicelist[self.xml_main.get_widget('deviceList').selection[0]]      
-        if not curr_dev.StaticRoutes:
-            curr_dev.createStaticRoutes()
-        routes = curr_dev.StaticRoutes
-    
+        routes = self.device.StaticRoutes
+
         clist  = self.xml.get_widget("networkRouteList")
       
         if len(clist.selection) == 0:
@@ -211,6 +211,18 @@ class tcpConfigDialog:
 
         del routes[clist.selection[0]]
         self.hydrate()
+
+    def on_routeUpButton_clicked(self, button):
+        clist = self.xml.get_widget("networkRouteList")
+        dest = clist.get_text(clist.selection[0], 0)
+        prefix = clist.get_text(clist.selection[0], 1)
+        gateway = clist.get_text(clist.selection[0], 2)
+
+        if len(clist.selection) == 0 or clist.selection == 0:
+            return
+
+    def on_routeDownButton_clicked(self, button):
+        pass
 
 # make ctrl-C work
 if __name__ == "__main__":

@@ -35,7 +35,6 @@ import tcpdialog
 
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
@@ -118,8 +117,10 @@ class deviceConfigDialog:
         pass
     
     def hydrate(self):
+        widget = self.xml.get_widget('deviceNameEntry')
+        widget.grab_focus()
         if self.device.DeviceId:
-            self.xml.get_widget('deviceNameEntry').set_text(self.device.DeviceId)
+            widget.set_text(self.device.DeviceId)
                 
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == TRUE)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == TRUE)

@@ -76,21 +76,31 @@ class dslConfigDialog(deviceConfigDialog):
         if dialup.EthDevice:
             widget.set_text(hwcurr)
         widget.set_position(0)
-            
+
+        widget = self.xml.get_widget("providerNameEntry")
         if dialup.ProviderName:
-            self.xml.get_widget("providerNameEntry").set_text(dialup.ProviderName)
+            widget.set_text(dialup.ProviderName)
+        widget.set_position(0)
 
+        widget = self.xml.get_widget("loginNameEntry")
         if dialup.Login:
-            self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
+            widget.set_text(dialup.Login)
+        widget.set_position(0)
 
+        widget =  self.xml.get_widget("passwordEntry")
         if dialup.Password:
-            self.xml.get_widget("passwordEntry").set_text(dialup.Password)
-            
-        if dialup.ServiceName:
-            self.xml.get_widget("serviceNameEntry").set_text(dialup.ServiceName)
+            widget.set_text(dialup.Password)
+        widget.set_position(0)
 
+        widget = self.xml.get_widget("serviceNameEntry")
+        if dialup.ServiceName:
+            widget.set_text(dialup.ServiceName)
+        widget.set_position(0)
+
+        widget = self.xml.get_widget("acNameEntry")
         if dialup.AcName:
-            self.xml.get_widget("acNameEntry").set_text(dialup.AcName)
+            widget.set_text(dialup.AcName)
+        widget.set_position(0)
 
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
 
@@ -111,7 +121,7 @@ class dslConfigDialog(deviceConfigDialog):
         else: dialup.SyncPPP = FALSE
         
         if not self.device.Device:
-            self.device.Device="dsl"
+            self.device.Device = "dsl"
         
     
 # make ctrl-C work
