@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2003-09-12 15:41+0200\n"
+"POT-Creation-Date: 2003-09-17 16:28+0200\n"
 "PO-Revision-Date: 2003-09-16 10:32+0100\n"
 "Last-Translator: Pedro Morais <morais@kde.org\n"
 "Language-Team: pt <morais@kde.org>\n"
@@ -112,11 +112,11 @@ msgstr ""
 "para o Sistema de Registo de Erros da Red Hat: http://bugzilla.redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:382
+#: src/neat-control.py:167 src/netconfpkg/NCDevice.py:384
 msgid "Network device activating..."
 msgstr "A activar o dispositivo de rede..."
 
-#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:383
+#: src/neat-control.py:170 src/netconfpkg/NCDevice.py:385
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "A activar o dispositivo de rede %s, espere um pouco..."
@@ -206,8 +206,11 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
-"Esta ferramenta não é suportada! Por favor utilize a ferramenta gráfica, que lhe oferece todas as funcionalidades.\n"
-"Se não tem um servidor de X instalado nesta máquina, ligue-se a ela por ssh de uma máquin acom X e utilize o reencaminhamento do protocolo X11. Se quer mesmo utilizar esta ferramenta, carregue em <%s>."
+"Esta ferramenta não é suportada! Por favor utilize a ferramenta gráfica, que "
+"lhe oferece todas as funcionalidades.\n"
+"Se não tem um servidor de X instalado nesta máquina, ligue-se a ela por ssh "
+"de uma máquin acom X e utilize o reencaminhamento do protocolo X11. Se quer "
+"mesmo utilizar esta ferramenta, carregue em <%s>."
 
 #: src/netconf-tui.py:147
 msgid "Quit"
@@ -506,10 +509,10 @@ msgstr ""
 #: src/netconfpkg/gui/ADSLInterface.py:135
 #: src/netconfpkg/gui/CipeInterface.py:144
 #: src/netconfpkg/gui/DialupDruid.py:230
-#: src/netconfpkg/gui/EthernetInterface.py:214
+#: src/netconfpkg/gui/EthernetInterface.py:215
 #: src/netconfpkg/gui/WirelessInterface.py:283
 #: src/netconfpkg/gui/TokenRingInterface.py:207
-#: src/netconfpkg/gui/editipsec.py:248
+#: src/netconfpkg/gui/editipsec.py:248 src/netconfpkg/gui/PTPInterface.py:210
 msgid "You have selected the following information:"
 msgstr "Seleccionou a seguinte informação:"
 
@@ -550,9 +553,10 @@ msgid "Create a new virtual private network connection with CIPE."
 msgstr "Criar uma nova ligação de rede privada virtual com o CIPE."
 
 #: src/netconfpkg/gui/CipeInterface.py:145
-#: src/netconfpkg/gui/EthernetInterface.py:215
+#: src/netconfpkg/gui/EthernetInterface.py:216
 #: src/netconfpkg/gui/WirelessInterface.py:284
 #: src/netconfpkg/gui/TokenRingInterface.py:208
+#: src/netconfpkg/gui/PTPInterface.py:211
 msgid "Device:"
 msgstr "Dispositivo:"
 
@@ -685,8 +689,11 @@ msgstr "Número de Telefone:"
 #: src/netconfpkg/gui/ethernethardware.py:170
 #: src/netconfpkg/gui/tokenringhardware.py:127
 #: src/netconfpkg/gui/tokenringhardware.py:138
-#: src/netconfpkg/NCHardwareList.py:405 src/netconfpkg/NCHardwareList.py:525
-#: src/netconfpkg/NC_functions.py:322 src/netconfpkg/NCDevice.py:205
+#: src/netconfpkg/gui/iucvhardware.py:153
+#: src/netconfpkg/gui/iucvhardware.py:170
+#: src/netconfpkg/gui/ctchardware.py:153 src/netconfpkg/gui/ctchardware.py:170
+#: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
+#: src/netconfpkg/NC_functions.py:343 src/netconfpkg/NCDevice.py:205
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
 #: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:105
@@ -713,41 +720,41 @@ msgstr "Desconhecido"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print "EthernetInterface getDeviceList"
-#. FIXME
-#: src/netconfpkg/gui/EthernetInterface.py:116
+#: src/netconfpkg/gui/EthernetInterface.py:117
 msgid "Ethernet connection"
 msgstr "Ligação Ethernet"
 
-#: src/netconfpkg/gui/EthernetInterface.py:122
+#: src/netconfpkg/gui/EthernetInterface.py:123
 msgid "Create a new ethernet connection."
 msgstr "Criar uma nova ligação Ethernet."
 
 #. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #. must be at bottom, because prepare is called here
-#: src/netconfpkg/gui/EthernetInterface.py:195
+#: src/netconfpkg/gui/EthernetInterface.py:196
 msgid "Other Ethernet Card"
 msgstr "Outra Placa Ethernet"
 
-#: src/netconfpkg/gui/EthernetInterface.py:226
+#: src/netconfpkg/gui/EthernetInterface.py:227
 #: src/netconfpkg/gui/WirelessInterface.py:295
 #: src/netconfpkg/gui/TokenRingInterface.py:219
+#: src/netconfpkg/gui/PTPInterface.py:221
 #: src/netconfpkg/gui/edithosts.glade.h:3
 msgid "Address:"
 msgstr "Endereço:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:227
+#: src/netconfpkg/gui/EthernetInterface.py:228
 #: src/netconfpkg/gui/WirelessInterface.py:296
 #: src/netconfpkg/gui/TokenRingInterface.py:220
 msgid "Subnet Mask:"
 msgstr "Máscara da Sub-rede:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:228
+#: src/netconfpkg/gui/EthernetInterface.py:229
 #: src/netconfpkg/gui/WirelessInterface.py:297
 #: src/netconfpkg/gui/TokenRingInterface.py:221
 msgid "Default Gateway Address:"
 msgstr "Endereço da 'Gateway' por Omissão:"
 
-#: src/netconfpkg/gui/EthernetInterface.py:230
+#: src/netconfpkg/gui/EthernetInterface.py:231
 #: src/netconfpkg/gui/WirelessInterface.py:299
 #: src/netconfpkg/gui/TokenRingInterface.py:223
 msgid "Automatically obtain IP address settings with:"
@@ -1082,15 +1089,10 @@ msgstr "Outra Placa 'Token Ring'"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ctcconfig.py:50
+#: src/netconfpkg/gui/ctcconfig.py:42 src/netconfpkg/gui/ptpconfig.glade.h:3
 msgid "CTC Device"
 msgstr "Dispositivo CTC"
 
-#: src/netconfpkg/gui/ctcconfig.py:53
-msgid "IUCV Device"
-msgstr "Dispositivo IUCV"
-
-#. widget.set_position(0)
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1236,6 +1238,62 @@ msgstr "nenhum"
 msgid "Modem Dialup Configuration"
 msgstr "Configuração do Acesso 'Dialup' por Modem"
 
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+#. self.dialog.connect("hide", gtk.mainquit)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.host.commit()
+#. make ctrl-C work
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+#. self.dialog.connect("hide", gtk.mainquit)
+#. self.dialog.destroy()
+#. self.main.hydrate()
+#. self.dialog.destroy()
+#. self.dialog.destroy()
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
@@ -1588,15 +1646,18 @@ msgstr "Para activar a ligação IPsec %s, tem de gravar as suas alterações."
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ethernethardware.py:94
 #: src/netconfpkg/gui/tokenringhardware.py:67
+#: src/netconfpkg/gui/iucvhardware.py:94 src/netconfpkg/gui/ctchardware.py:94
 msgid "Command failed: "
 msgstr "O comando falhou: "
 
 #: src/netconfpkg/gui/ethernethardware.py:95
 #: src/netconfpkg/gui/tokenringhardware.py:68
+#: src/netconfpkg/gui/iucvhardware.py:95 src/netconfpkg/gui/ctchardware.py:95
 msgid "Output:\n"
 msgstr "Resultado:\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:97
+#: src/netconfpkg/gui/iucvhardware.py:97 src/netconfpkg/gui/ctchardware.py:97
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
@@ -1632,6 +1693,114 @@ msgstr ""
 #. fields = string.split(hw)
 #. hw = fields[0]
 #. self.device.Device = hw
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from CTCHardwareDruid import CTCHardware
+#: src/netconfpkg/gui/CTCInterface.py:48
+#, fuzzy
+msgid "CTC connection"
+msgstr "Ligação %s"
+
+#: src/netconfpkg/gui/CTCInterface.py:54
+#, fuzzy
+msgid "Create a new CTC connection."
+msgstr "Criar uma nova ligação %s."
+
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/gui/iucvconfig.py:42
+msgid "IUCV Device"
+msgstr "Dispositivo IUCV"
+
+#. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
+#. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. from IUCVHardwareDruid import IUCVHardware
+#: src/netconfpkg/gui/IUCVInterface.py:48
+#, fuzzy
+msgid "IUCV connection"
+msgstr "Ligação RDIS"
+
+#: src/netconfpkg/gui/IUCVInterface.py:54
+#, fuzzy
+msgid "Create a new IUCV connection."
+msgstr "Criar uma nova ligação %s."
+
+#: src/netconfpkg/gui/PTPInterface.py:222
+msgid "Point to Point (IP):"
+msgstr ""
+
+#. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
+#. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. self.device.Device = self.xml.get_widget('deviceEntry').get_text()
 #. -*- python -*-
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1769,7 +1938,7 @@ msgstr "auto"
 msgid "manual"
 msgstr "manual"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:120
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:117
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -2116,31 +2285,31 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:69
+#: src/netconfpkg/NC_functions.py:66
 msgid "Common"
 msgstr "Comuns"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:118 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:115 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Hardware (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:119 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:116 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Software (XON/XOFF)"
 
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
-#: src/netconfpkg/NC_functions.py:174
+#: src/netconfpkg/NC_functions.py:195
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "Devem os seguintes pacotes, necessários ao seu sistema, ser instalados?"
 
-#: src/netconfpkg/NC_functions.py:187
+#: src/netconfpkg/NC_functions.py:208
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "Tem que instalar os seguintes pacotes, necessários ao seu sistema."
@@ -2148,7 +2317,7 @@ msgstr "Tem que instalar os seguintes pacotes, necessários ao seu sistema."
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:669
+#: src/netconfpkg/NC_functions.py:690
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2159,7 +2328,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:679
+#: src/netconfpkg/NC_functions.py:700
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2172,7 +2341,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:690
+#: src/netconfpkg/NC_functions.py:711
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2185,7 +2354,7 @@ msgstr ""
 "para %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:700
+#: src/netconfpkg/NC_functions.py:721
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2199,7 +2368,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:710
+#: src/netconfpkg/NC_functions.py:731
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2212,7 +2381,7 @@ msgstr ""
 "para %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:718
+#: src/netconfpkg/NC_functions.py:739
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2239,6 +2408,28 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
 #. we only support 1 ISDN card in this version
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. take a peek in the config file
+#.
+#. Remove old config files
+#.
+#. check for IPSEC
+#.
+#. Remove old key files
+#.
+#. check for IPSEC
 #. !/usr/bin/python
 #.
 #. Python wrapper for ipcalc command line IP address manipulation tool
@@ -2389,110 +2580,29 @@ msgstr "%s, dispositivo não indicado ou com nome alternativo não numérico!"
 #. move old <id>.route files to route-<id>
 #. load routes
 #. XXX fixme
-#: src/netconfpkg/NCDevice.py:239
+#: src/netconfpkg/NCDevice.py:242
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "O ficheiro de rotas estáticas %s é inválido"
 
-#: src/netconfpkg/NCDevice.py:385
+#: src/netconfpkg/NCDevice.py:387
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Não foi possível activar o dispositivo de rede %s!\n"
 
-#: src/netconfpkg/NCDevice.py:402
+#: src/netconfpkg/NCDevice.py:404
 msgid "Network device deactivating..."
 msgstr "A desactivar o dispositivo de rede..."
 
-#: src/netconfpkg/NCDevice.py:403
+#: src/netconfpkg/NCDevice.py:405
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "A desactivar o dispositivo de rede %s, espere um pouco..."
 
-#: src/netconfpkg/NCDevice.py:405
+#: src/netconfpkg/NCDevice.py:407
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Não foi possível desactivar o dispositivo de rede %s!\n"
-
-#. #     def _createAttr(self, child=None):
-#. #         if not hasattr(self, "Dialup") or not self.Dialup:
-#. #             log.log(4, "createAttr(%s)" % child)
-#. #             # not exactly OO...
-#. #             from netconfpkg.NCDeviceFactory import getDeviceFactory
-#. #             df = getDeviceFactory()
-#. #             devclass = None
-#. #             if self.Type:
-#. #                 devclass = df.getDeviceClass(self.Type)
-#. #             else:
-#. #                 log.log(4, "createAttr(%s) - Type not set" % child)
-#. #             if devclass:
-#. #                 newdev = devclass()
-#. #                 if hasattr(newdev, "create" + child):
-#. #                     func = getattr(newdev, "create" + child)
-#. #                     setattr(self, child, func())
-#. #             else:
-#. #                 log.log(4, "createAttr(%s) - no devclass" % child)
-#. #                 return Device_base._createAttr(self, child)
-#. #         return getattr(self, child)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. "IPsecId" : "IPSECID",
-#. load ipsec
-#. Just to be safe...
-#. save ipsec settings
-#.
-#: src/netconfpkg/NCIPsec.py:168
-msgid "IPsec activating..."
-msgstr "A activar o IPsec..."
-
-#: src/netconfpkg/NCIPsec.py:169
-#, python-format
-msgid "Activating IPsec connection %s, please wait..."
-msgstr "A activar o ligação IPsec %s, espere um pouco..."
-
-#: src/netconfpkg/NCIPsec.py:171
-#, python-format
-msgid "Cannot activate IPsec connection %s!\n"
-msgstr "Não foi possível activar a ligação IPsec %s!\n"
-
-#: src/netconfpkg/NCIPsec.py:188
-msgid "IPsec deactivating..."
-msgstr "A desactivar o IPsec..."
-
-#: src/netconfpkg/NCIPsec.py:189
-#, python-format
-msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "A desactivar a ligação IPsec %s, espere um pouco..."
-
-#: src/netconfpkg/NCIPsec.py:191
-#, python-format
-msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "Não foi possível desactivar a ligação IPsec %s!\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
@@ -2549,6 +2659,184 @@ msgstr "Alcunhas alteradas"
 #. no card seems to use this
 #. if dev.Dialup.Callback == None:
 #. dl.save()
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
+#. # This program is free software; you can redistribute it and/or modify
+#. # it under the terms of the GNU General Public License as published by
+#. # the Free Software Foundation; either version 2 of the License, or
+#. # (at your option) any later version.
+#. # This program is distributed in the hope that it will be useful,
+#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. # GNU General Public License for more details.
+#. # You should have received a copy of the GNU General Public License
+#. # along with this program; if not, write to the Free Software
+#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. "IPsecId" : "IPSECID",
+#. load ipsec
+#. Just to be safe...
+#. save ipsec settings
+#.
+#: src/netconfpkg/NCIPsec.py:168
+msgid "IPsec activating..."
+msgstr "A activar o IPsec..."
+
+#: src/netconfpkg/NCIPsec.py:169
+#, python-format
+msgid "Activating IPsec connection %s, please wait..."
+msgstr "A activar o ligação IPsec %s, espere um pouco..."
+
+#: src/netconfpkg/NCIPsec.py:171
+#, python-format
+msgid "Cannot activate IPsec connection %s!\n"
+msgstr "Não foi possível activar a ligação IPsec %s!\n"
+
+#: src/netconfpkg/NCIPsec.py:188
+msgid "IPsec deactivating..."
+msgstr "A desactivar o IPsec..."
+
+#: src/netconfpkg/NCIPsec.py:189
+#, python-format
+msgid "Deactivating IPsec connection %s, please wait..."
+msgstr "A desactivar a ligação IPsec %s, espere um pouco..."
+
+#: src/netconfpkg/NCIPsec.py:191
+#, python-format
+msgid "Cannot deactivate IPsec connection %s!\n"
+msgstr "Não foi possível desactivar a ligação IPsec %s!\n"
+
+#. Module Cyclops version 0.9.4.
+#. Released to the public domain 18-Jul-1999,
+#. by Tim Peters (tim_one@email.msn.com).
+#. Provided as-is; use at your own risk; no warranty; no promises; enjoy!
+#. Some parts of the code, and many ideas, were stolen with gratitude from:
+#. Lars Marius Garshol's Plumbo.py.
+#. Guido van Rossum.
+#. Python's standard library module repr.py.
+#. 0,9,4    18-Jul-1999
+#. added purge_dead_roots arg to find_cycles
+#. rearranged module docstring; added IDLE driver sample
+#. 0,9,3    29-Jun-1999
+#. renamed print_obj to show_obj, and advertised it
+#. redid adjusted refcount computations to account for root-set
+#. objects too
+#. changed get_rootset to return (refcount, cyclic?, obj) triples
+#. 0,9,2    27-Jun-1999
+#. freed __init_tracer from dependence on name "self"
+#. rearranged __find_cycles' inner loop for a nice little speed gain
+#. which was promptly way more than lost by new code to compute &
+#. display adjusted refcounts
+#. which was partly regained by rewriting all that
+#. 0,9,1    26-Jun-1999
+#. added SCC computation/display
+#. added show_cycles; find_cycles no longer prints anything
+#. changed all showXXX names to show_XXX
+#. added install_cycle_filter
+#. 0,9,0    24-Jun-1999
+#. first version I put under source control
+#. ########################################################################
+#. Type-specific reference revealers.
+#.
+#. _T_refs(obj) should return a sequence of all objects directly
+#. reachable from obj.
+#.
+#. _T_tag(obj, i) should return a string briefly describing how
+#. _T_refs(obj][i] was obtained from obj.
+#.
+#. Why the separation?  Speed and space:  string tags are never
+#. computed unless a cycle is found and so something needs to be
+#. printed.
+#. the keys are strings, so not interesting to return
+#. ########################################################################
+#. A class to make short string representations of objects, for speed
+#. and brevity.  The std repr.repr sorts dicts by keys, but we refer to
+#. the keys via numeric subscript in cycle reports, so first a derived
+#. class that leaves dicts in raw order.  Also, instances, instance
+#. methods and classes frequently appear in cycle reports, so avoid
+#. chopping their reprs at all.  We're only trying to prevent massive
+#. expense for massive lists, tuples & dicts.
+#. Boost the limit on types we don't know about; else it's too
+#. easy to get a useless repr string when adding new types via
+#. CycleFinder.chase_type.
+#. Perhaps better to expose this class too, but-- sheesh --
+#. this module is complicated enough!
+#. override base dictionary formatter; the code is almost the same,
+#. we just leave the dict order alone
+#. don't chop instance, class or instance method reprs
+#. Bugs in x.__repr__() can cause arbitrary
+#. exceptions -- then make up something
+#. ########################################################################
+#. CycleFinder is the workhorse.
+#. This clever method of trapping __init__ invocations was
+#. stolen from Lars' plumbo.py.
+#. not a user-visible object
+#. Compute true refcounts for objects in cycles.
+#. From the system refcount, subtract one for each of:
+#. being an element in the loop temp cycleobjs.values()
+#. being bound to "x"
+#. being an argument to getrefcount
+#. being a value in the cycleobjs dict
+#. showing up exactly once somewhere in self.sccno2objs
+#. Need also to subtract refs due to appearances in
+#. self.cycles.  Complication:  some pairs in self.cycles may
+#. be shared.
+#. And need also to subtract refs for membership is self.roots.
+#. While we're at it, also compute adjusted refcounts for other
+#. root set objects.
+#. Subtract one for each of:
+#. being bound to "x"
+#. being an argument to getrefcount
+#. being in self.roots
+#. We want to capture the first argument -- this works whether
+#. or not it's named "self", and in case the function is like
+#. def __init__(*args):
+#. it's still OK:  we'll pick up the name 'args', and add the
+#. tuple it's bound to to the root set; the tuple's first
+#. element is "self", so will be found by the tuple-chaser.
+#. first argname is first element of locals
+#. Clear out everything except:
+#. the root set
+#. the refs_dispatcher
+#. the tag_dispatcher
+#. the cycle filter
+#. stack exactly mirrors __find_cycles' recursive calls; it's a
+#. list of (object, index) pairs.
+#. Map id of active object to its index in self.stack.  Since
+#. it's a depth-first search, there's a cycle iff we hit an
+#. object that's already on the stack.
+#. Set of (addresses of) all interesting objects seen.  Since
+#. we use a depth-first search, there's never a reason to
+#. revisit a node.
+#. List of all cycles found; each element is a stack slice (a
+#. list of (object, index) pairs).
+#. Set of objects found in cycles (maps id(obj) -> obj).
+#. Classifies arcs found in cycles, mapping
+#. (source_type, selector, destination_type) triples to a count
+#. of how many times that triple appears in a cycle.
+#. Support for computing strongly-connected components (SCC).
+#. We do this by merging cycles into equivalence classes.
+#. Could be done faster by e.g. Tarjan's algorithm in
+#. __find_cycles, but would rather keep that lean since cycles
+#. are expected to be unusual.
+#. monotonically increasing SCC id
+#. map id(obj) to obj's sccno
+#. map sccno back to list of objects
+#. For objects in cycles and root set, map address to true
+#. reference count.
+#. Number of arcs examined.
+#. Number of cycles ignored (filtered out).
+#. This can be called an enormous number of times, so speed
+#. tricks are appropriate.
+#. Set of ids of objects being, or formerly, chased.
+#. Maps active object id to index in stack.
+#. complete the cycle
+#. a helper for __study_cycle
+#. Pick (or create) an SCC equivalence class for this cycle.
+#. Merge the equivalence class for obj1 into classwinner.
+#. merge obj1's entire equivalence class
+#. ###############################################################
+#. Various output routines.  If someone is motivated enough to
+#. change one of these, they're motivated enough to subclass us!
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/DialupDruid.glade.h:1
@@ -2556,13 +2844,17 @@ msgstr "Alcunhas alteradas"
 #: src/netconfpkg/gui/dslconfig.glade.h:1
 #: src/netconfpkg/gui/editadress.glade.h:1
 #: src/netconfpkg/gui/edithosts.glade.h:1
-#: src/netconfpkg/gui/editipsec.glade.h:1
+#: src/netconfpkg/gui/ethernetconfig.glade.h:1
 #: src/netconfpkg/gui/ethernethardware.glade.h:1
 #: src/netconfpkg/gui/hardwaretype.glade.h:1
 #: src/netconfpkg/gui/sharedtcpip.glade.h:1
 #: src/netconfpkg/gui/wirelessconfig.glade.h:1
 #: src/netconfpkg/gui/maindialog.glade.h:1
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/ctchardware.glade.h:1
+#: src/netconfpkg/gui/editipsec.glade.h:1
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
+#: src/netconfpkg/gui/ptpconfig.glade.h:1
 msgid "*"
 msgstr "*"
 
@@ -2888,6 +3180,8 @@ msgstr "Definir os endereços IP estaticamente:"
 #: src/netconfpkg/gui/DialupDruid.glade.h:27
 #: src/netconfpkg/gui/editadress.glade.h:3
 #: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+#: src/netconfpkg/gui/ptpconfig.glade.h:6
 msgid "_Address:"
 msgstr "_Endereço:"
 
@@ -3039,6 +3333,7 @@ msgstr "IR_Q:"
 #: src/netconfpkg/gui/ethernethardware.glade.h:21
 #: src/netconfpkg/gui/isdnhardware.glade.h:9
 #: src/netconfpkg/gui/tokenringhardware.glade.h:20
+#: src/netconfpkg/gui/ctchardware.glade.h:7
 msgid "Resource"
 msgstr "Recurso"
 
@@ -3089,6 +3384,7 @@ msgstr "eth7"
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:3
 msgid "Configure Network Settings"
 msgstr "Configurar as Opções da Rede"
 
@@ -3103,13 +3399,13 @@ msgstr "Placa Ethernet"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+#: src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
 msgid "MTU:"
 msgstr "MTU:"
 
 #: src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: src/netconfpkg/gui/ctcconfig.glade.h:4
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
@@ -3394,12 +3690,12 @@ msgid "Choose a Provider"
 msgstr "Escolha um Fornecedor"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:1
-#: src/netconfpkg/gui/ctcconfig.glade.h:1
 #: src/netconfpkg/gui/dialupconfig.glade.h:3
 #: src/netconfpkg/gui/dslconfig.glade.h:2
-#: src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: src/netconfpkg/gui/ethernetconfig.glade.h:2
 #: src/netconfpkg/gui/wirelessconfig.glade.h:6
 #: src/netconfpkg/gui/tokenringconfig.glade.h:2
+#: src/netconfpkg/gui/ptpconfig.glade.h:2
 msgid "Allow all _users to enable and disable the device"
 msgstr "Permitir a todos os _utilizadores activar e desactivar o dispositivo"
 
@@ -3408,100 +3704,47 @@ msgid "CIPE Configuration"
 msgstr "Configuração do CIPE"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:7
-#: src/netconfpkg/gui/ctcconfig.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:45
 #: src/netconfpkg/gui/dslconfig.glade.h:18
-#: src/netconfpkg/gui/ethernetconfig.glade.h:3
+#: src/netconfpkg/gui/ethernetconfig.glade.h:5
 #: src/netconfpkg/gui/wirelessconfig.glade.h:10
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
+#: src/netconfpkg/gui/ptpconfig.glade.h:5
 msgid "_Activate device when computer starts"
 msgstr "_Activar dispositivo quando o computador arranca"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:9
-#: src/netconfpkg/gui/ctcconfig.glade.h:10
 #: src/netconfpkg/gui/dialupconfig.glade.h:55
 #: src/netconfpkg/gui/dslconfig.glade.h:20
-#: src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: src/netconfpkg/gui/ethernetconfig.glade.h:6
 #: src/netconfpkg/gui/wirelessconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:9
+#: src/netconfpkg/gui/ptpconfig.glade.h:7
 msgid "_General"
 msgstr "_Geral"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:12
-#: src/netconfpkg/gui/ctcconfig.glade.h:14
 #: src/netconfpkg/gui/dialupconfig.glade.h:58
 #: src/netconfpkg/gui/dslconfig.glade.h:24
-#: src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: src/netconfpkg/gui/ethernetconfig.glade.h:8
 #: src/netconfpkg/gui/wirelessconfig.glade.h:17
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: src/netconfpkg/gui/ptpconfig.glade.h:9
 msgid "_Nickname: "
 msgstr "Alcu_nha: "
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:14
 #: src/netconfpkg/gui/dialupconfig.glade.h:63
 #: src/netconfpkg/gui/dslconfig.glade.h:27
-#: src/netconfpkg/gui/ethernetconfig.glade.h:7
+#: src/netconfpkg/gui/ethernetconfig.glade.h:9
 #: src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Route"
 msgstr "_Rota"
 
 #: src/netconfpkg/gui/cipeconfig.glade.h:16
 msgid "_Tunnel Settings"
 msgstr "Configuração do _Túnel"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:2
-msgid "CTC Configuration"
-msgstr "Configuração de CTC"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:3
-msgid ""
-"Each device needs to be attached to a physical device, which can be selected "
-"below."
-msgstr ""
-"Cada dispositivo necessita de estar ligado a um dispositivo físico, que pode "
-"ser seleccionado abaixo."
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:5
-msgid "Protocol Type"
-msgstr "Tipo de Protocolo"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:7
-#: src/netconfpkg/gui/dialupconfig.glade.h:46
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
-msgid "_Add..."
-msgstr "_Adicionar..."
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:8
-#: src/netconfpkg/gui/dialupconfig.glade.h:52
-#: src/netconfpkg/gui/maindialog.glade.h:35
-msgid "_Delete"
-msgstr "Apa_gar"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:9
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
-msgid "_Edit..."
-msgstr "_Editar..."
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:11
-#: src/netconfpkg/gui/dslconfig.glade.h:21
-#: src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
-#: src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Hardware Device"
-msgstr "Dispositivo de _Hardware"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/tokenringconfig.glade.h:11
-msgid "_Hardware Device:"
-msgstr "Dispositivo de _Hardware:"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:13
-msgid "_MTU:"
-msgstr "_MTU:"
-
-#: src/netconfpkg/gui/ctcconfig.glade.h:15
-msgid "_Protocols"
-msgstr "_Protocolos"
 
 #: src/netconfpkg/gui/devicetype.glade.h:1
 msgid "Choose Hardware Device Type"
@@ -3642,6 +3885,11 @@ msgstr "Utilizar '_Callback Control Protocol' (CBCP)"
 msgid "Use _Channel Bundling"
 msgstr "Utilizar Agrupamento de _Canais"
 
+#: src/netconfpkg/gui/dialupconfig.glade.h:46
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+msgid "_Add..."
+msgstr "_Adicionar..."
+
 #: src/netconfpkg/gui/dialupconfig.glade.h:47
 #: src/netconfpkg/gui/dslconfig.glade.h:19
 msgid "_Advanced"
@@ -3662,6 +3910,11 @@ msgstr "_Escolher o Fornecedor..."
 #: src/netconfpkg/gui/dialupconfig.glade.h:51
 msgid "_Compression"
 msgstr "_Compressão"
+
+#: src/netconfpkg/gui/dialupconfig.glade.h:52
+#: src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_Delete"
+msgstr "Apa_gar"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:53
 msgid "_Dial Mode:"
@@ -3738,6 +3991,14 @@ msgstr ""
 msgid "_AC-Name:"
 msgstr "Nome _AC:"
 
+#: src/netconfpkg/gui/dslconfig.glade.h:21
+#: src/netconfpkg/gui/ethernetconfig.glade.h:7
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/tokenringconfig.glade.h:10
+#: src/netconfpkg/gui/ptpconfig.glade.h:8
+msgid "_Hardware Device"
+msgstr "Dispositivo de _Hardware"
+
 #: src/netconfpkg/gui/dslconfig.glade.h:23
 msgid "_Maximum idle time:"
 msgstr "Tempo _máximo de espera:"
@@ -3782,145 +4043,13 @@ msgstr "Nomes alternativos:"
 msgid "Hostname:"
 msgstr "Nome da máquina:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:2
-msgid "A_uthentication Key:"
-msgstr "Chave de a_utenticação:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:3
-msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr "Modo de cifragem seleccionado automaticamente por IKA (racoon)"
-
-#: src/netconfpkg/gui/editipsec.glade.h:4
-msgid "Ge_nerate"
-msgstr "Ge_rar"
-
-#: src/netconfpkg/gui/editipsec.glade.h:5
-msgid "Host to Host encryption"
-msgstr "Cifragem Máquina a Máquina"
-
-#: src/netconfpkg/gui/editipsec.glade.h:6
-msgid "IPsec"
-msgstr "IPsec"
-
-#: src/netconfpkg/gui/editipsec.glade.h:7
-msgid "IPsec - Connection Type"
-msgstr "IPSec - Tipo de Ligação"
-
-#: src/netconfpkg/gui/editipsec.glade.h:8
-msgid "IPsec - Encryption Mode"
-msgstr "IPsec - Modo de Encapsulamento"
-
-#: src/netconfpkg/gui/editipsec.glade.h:9
-msgid "IPsec - Keys"
-msgstr "IPsec - Chaves"
-
-#: src/netconfpkg/gui/editipsec.glade.h:10
-msgid "IPsec - Local Network"
-msgstr "IPsec - Rede Local"
-
-#: src/netconfpkg/gui/editipsec.glade.h:11
-msgid "IPsec - Remote Network"
-msgstr "IPSec - Rede Remota"
-
-#: src/netconfpkg/gui/editipsec.glade.h:12
-msgid "IPsec - Summary"
-msgstr "IPsec - Sumário"
-
-#: src/netconfpkg/gui/editipsec.glade.h:13
-msgid "IPsec Settings"
-msgstr "Configuração do IPsec"
-
-#: src/netconfpkg/gui/editipsec.glade.h:14
-msgid "Local Network _Address:"
-msgstr "Endereço da Rede Loc_al:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:15
-msgid "Local Network _Gateway:"
-msgstr "'_Gateway' da Rede Local:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:16
-msgid "Local Subnet _Mask:"
-msgstr "_Máscara da Sub-rede Local:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:17
-msgid "Manual encryption with a fixed key"
-msgstr "Cifragem manual com uma chave fixa"
-
-#: src/netconfpkg/gui/editipsec.glade.h:18
-msgid "Network to Network encryption (VPN)"
-msgstr "Cifragem Rede a Rede (VPN)"
-
-#: src/netconfpkg/gui/editipsec.glade.h:19
-msgid "Please enter a nickname for the connection:"
-msgstr "Por favor seleccione a alcunhar para a ligação:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:20
-msgid "Please enter your local network settings:"
-msgstr "Por favor indique a configuração da rede local:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:21
-msgid "Please enter your remote network settings:"
-msgstr "Por favor indique a configuração da rede remota:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:22
-msgid "Please select the type of connection:"
-msgstr "Por favor seleccione o tipo de ligação:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:23
-msgid "Please select the type of encryption:"
-msgstr "Por favor seleccione o tipo de cifra:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:24
-msgid ""
-"Please specify your keys or generate them. \n"
-"The keys are symmetric, so your remote partner need to have the same."
-msgstr ""
-"Por favor indique as suas chaves ou gere-as. \n"
-"As chaves são simétricas, por isso o seu parceiro remote tem que as ter "
-"também."
-
-#: src/netconfpkg/gui/editipsec.glade.h:26
-msgid "Remote Network _Address:"
-msgstr "Endereço da Rede Remot_a:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:27
-msgid "Remote Network _Gateway:"
-msgstr "'_Gateway' da Rede Remota:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:28
-msgid "Remote Subnet _Mask:"
-msgstr "_Máscara da Sub-rede Remota:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:29
-msgid "Remote _IP Address:"
-msgstr "Endereço _ IP Remoto:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:30
-msgid ""
-"You will now be guided through the\n"
-"setup of the IPsec connection."
-msgstr ""
-"Vai ser guiado através da\n"
-"configuração da ligação IPsec."
-
-#: src/netconfpkg/gui/editipsec.glade.h:32
-msgid "_Activate connection when computer starts"
-msgstr "_Activar a ligação quando o computador arranca"
-
-#: src/netconfpkg/gui/editipsec.glade.h:33
-msgid "_Encryption Key:"
-msgstr "Chav_e de Cifragem:"
-
-#: src/netconfpkg/gui/editipsec.glade.h:35
-msgid "_Nickname:"
-msgstr "Alcu_nha:"
-
-#: src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: src/netconfpkg/gui/ethernetconfig.glade.h:3
 msgid "Ethernet Device"
 msgstr "Dispositivo Ethernet"
 
 #: src/netconfpkg/gui/ethernethardware.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:19
+#: src/netconfpkg/gui/ctchardware.glade.h:5
 msgid "Network Adapters Configuration"
 msgstr "Configuração de Adaptadores de Rede"
 
@@ -4176,6 +4305,10 @@ msgstr "Usar os nomes alternativos dos dispositivos Ethernet"
 msgid "_Delete..."
 msgstr "Apa_gar..."
 
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+msgid "_Edit..."
+msgstr "_Editar..."
+
 #: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "_Hardware Address"
 msgstr "Endereço de Ha_rdware"
@@ -4323,6 +4456,10 @@ msgstr "Dispositivo Token Ring"
 #: src/netconfpkg/gui/tokenringconfig.glade.h:8
 msgid "_Alias:"
 msgstr "Nome _Alternativo:"
+
+#: src/netconfpkg/gui/tokenringconfig.glade.h:11
+msgid "_Hardware Device:"
+msgstr "Dispositivo de _Hardware:"
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
 msgid "_Probe for Address"
@@ -4529,6 +4666,167 @@ msgstr "Seleccione a placa Sem-Fios que deseja configurar:"
 msgid "Wireless card"
 msgstr "Place Sem-Fios"
 
+#: src/netconfpkg/gui/ctchardware.glade.h:2
+msgid "Checksum IP packets"
+msgstr ""
+
+#: src/netconfpkg/gui/ctchardware.glade.h:3
+#, fuzzy
+msgid "Data Channel:"
+msgstr "Canal: "
+
+#: src/netconfpkg/gui/ctchardware.glade.h:4
+msgid "Memory Usage:"
+msgstr ""
+
+#: src/netconfpkg/gui/ctchardware.glade.h:6
+#, fuzzy
+msgid "Port:"
+msgstr "Porta Local:"
+
+#: src/netconfpkg/gui/ctchardware.glade.h:8
+#, fuzzy
+msgid "Write Channel:"
+msgstr "Canal: "
+
+#: src/netconfpkg/gui/ctchardware.glade.h:9
+#, fuzzy
+msgid "_Read Channel:"
+msgstr "_Canal:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication Key:"
+msgstr "Chave de a_utenticação:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "Modo de cifragem seleccionado automaticamente por IKA (racoon)"
+
+#: src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "Ge_rar"
+
+#: src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr "Cifragem Máquina a Máquina"
+
+#: src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
+
+#: src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPSec - Tipo de Ligação"
+
+#: src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - Modo de Encapsulamento"
+
+#: src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - Chaves"
+
+#: src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - Rede Local"
+
+#: src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Remote Network"
+msgstr "IPSec - Rede Remota"
+
+#: src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Summary"
+msgstr "IPsec - Sumário"
+
+#: src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec Settings"
+msgstr "Configuração do IPsec"
+
+#: src/netconfpkg/gui/editipsec.glade.h:14
+msgid "Local Network _Address:"
+msgstr "Endereço da Rede Loc_al:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local Network _Gateway:"
+msgstr "'_Gateway' da Rede Local:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local Subnet _Mask:"
+msgstr "_Máscara da Sub-rede Local:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Manual encryption with a fixed key"
+msgstr "Cifragem manual com uma chave fixa"
+
+#: src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Network to Network encryption (VPN)"
+msgstr "Cifragem Rede a Rede (VPN)"
+
+#: src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Please enter a nickname for the connection:"
+msgstr "Por favor seleccione a alcunhar para a ligação:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter your local network settings:"
+msgstr "Por favor indique a configuração da rede local:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter your remote network settings:"
+msgstr "Por favor indique a configuração da rede remota:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please select the type of connection:"
+msgstr "Por favor seleccione o tipo de ligação:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please select the type of encryption:"
+msgstr "Por favor seleccione o tipo de cifra:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:24
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner need to have the same."
+msgstr ""
+"Por favor indique as suas chaves ou gere-as. \n"
+"As chaves são simétricas, por isso o seu parceiro remote tem que as ter "
+"também."
+
+#: src/netconfpkg/gui/editipsec.glade.h:26
+msgid "Remote Network _Address:"
+msgstr "Endereço da Rede Remot_a:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:27
+msgid "Remote Network _Gateway:"
+msgstr "'_Gateway' da Rede Remota:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote Subnet _Mask:"
+msgstr "_Máscara da Sub-rede Remota:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote _IP Address:"
+msgstr "Endereço _ IP Remoto:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:30
+msgid ""
+"You will now be guided through the\n"
+"setup of the IPsec connection."
+msgstr ""
+"Vai ser guiado através da\n"
+"configuração da ligação IPsec."
+
+#: src/netconfpkg/gui/editipsec.glade.h:32
+msgid "_Activate connection when computer starts"
+msgstr "_Activar a ligação quando o computador arranca"
+
+#: src/netconfpkg/gui/editipsec.glade.h:33
+msgid "_Encryption Key:"
+msgstr "Chav_e de Cifragem:"
+
+#: src/netconfpkg/gui/editipsec.glade.h:35
+msgid "_Nickname:"
+msgstr "Alcu_nha:"
+
 #: src/netconfpkg/gui/neat-control.glade.h:1
 msgid "Ac_tivate"
 msgstr "_Activar"
@@ -4581,6 +4879,55 @@ msgstr "As seguintes interfaces de rede estão configuradas no perfil activo."
 #: src/netconfpkg/gui/neat-control.glade.h:20
 msgid "_Info\t"
 msgstr "_Informação"
+
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+msgid "Card"
+msgstr ""
+
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+#, fuzzy
+msgid "Create Device"
+msgstr "Criar um Dispositivo Ethernet"
+
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
+#: src/netconfpkg/gui/ptpconfig.glade.h:4
+#, fuzzy
+msgid "MT_U:"
+msgstr "MTU:"
+
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
+#, fuzzy
+msgid "Select Device"
+msgstr "Seleccione o Tipo de Dispositivo"
+
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#, fuzzy
+msgid "Select the card you want to configure:"
+msgstr "Seleccione a placa Ethernet que deseja configurar:"
+
+#: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:9
+#: src/netconfpkg/gui/ptpconfig.glade.h:10
+msgid "_Point to Point (IP):"
+msgstr ""
+
+#~ msgid "CTC Configuration"
+#~ msgstr "Configuração de CTC"
+
+#~ msgid ""
+#~ "Each device needs to be attached to a physical device, which can be "
+#~ "selected below."
+#~ msgstr ""
+#~ "Cada dispositivo necessita de estar ligado a um dispositivo físico, que "
+#~ "pode ser seleccionado abaixo."
+
+#~ msgid "Protocol Type"
+#~ msgstr "Tipo de Protocolo"
+
+#~ msgid "_MTU:"
+#~ msgstr "_MTU:"
+
+#~ msgid "_Protocols"
+#~ msgstr "_Protocolos"
 
 #~ msgid "_IPsec"
 #~ msgstr "_IPsec"
