@@ -37,7 +37,8 @@ from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
 
 class EthernetInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
+    def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1,
+                 druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
         self.topdruid = druid
@@ -100,6 +101,11 @@ class EthernetInterface(InterfaceCreator):
         self.hwDruid.has_ethernet = None
         self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
                       + self.druids[1:]
+
+        if self.device.Type == CTC or self.device.Type == IUCV:
+            self.xml.get_widget('mtuAlignment').set_flags(GTK.Visible)
+            self.xml.get_widget('mtuLabel').set_flags(GTK.Visible)
+            self.xml.get_widget('mtuEntry').set_flags(GTK.Visible)
 
     def get_project_name(self):
         return _('Ethernet connection')
