@@ -645,6 +645,8 @@ class mainDialog:
         self.hydrate()
 
     def on_deviceActivateButton_clicked(self, button):
+        clist = self.xml.get_widget("deviceList")
+
         if len(clist.selection) == 0:
             return
         
