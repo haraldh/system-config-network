@@ -13,7 +13,8 @@ doc_DATA   = chapter-network-config-isdn.html \
 	network-config-wireless.html \
 	network-config-xdsl.html 
 
-EXTRA_DIST = configurationfiles.txt detailed_spec overview
+EXTRA_DIST = configurationfiles.txt detailed_spec overview \
+	chapter-network-config-isdn.html \
 	index.html \
 	intro.html \
 	legalnotice.html \
@@ -24,4 +25,4 @@ EXTRA_DIST = configurationfiles.txt detailed_spec overview
 	network-config-modem.html \
 	network-config-tokenring.html \
 	network-config-wireless.html \
-	network-config-xdsl.html 
+	network-config-xdsl.html
