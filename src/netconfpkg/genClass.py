@@ -240,7 +240,7 @@ AnonListCLOps = """
 		return len(self.data)-1
 
 	def remove%childname(self, child):
-		try: remove(child)
+		try: self.remove(child)
 		except ValueError: pass
 
 	def __setitem__(self, i, item):
@@ -515,7 +515,7 @@ def printClass(list, basename, baseclass):
 							 + '\t\tself.%childname = self.__%childname_bak\n'
 			
 			commitalist = commitalist + \
-							  '\t\t\tcommitChild("%childname", %childtype, changed)\n'
+							  '\t\t\tself.commitChild("%childname", %childtype, changed)\n'
 
 			if ctype != Data.ADM_TYPE_LIST:
 				#
