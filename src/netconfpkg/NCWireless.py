@@ -26,17 +26,9 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
-import gettext
 
 from netconfpkg import Wireless_base
 from NC_functions import *
-
-##
-## I18N
-##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
-_=gettext.gettext
 
 class Wireless(Wireless_base):
     keydict = { 'Mode' : 'MODE',

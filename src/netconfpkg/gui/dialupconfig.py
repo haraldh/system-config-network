@@ -25,7 +25,6 @@ import signal
 import os
 
 import string
-import gettext
 import re
 import sharedtcpip
 
@@ -35,7 +34,6 @@ from netconfpkg.NCCallback import *
 from netconfpkg.NCHardwareList import *
 from netconfpkg.NCDialup import *
 from netconfpkg.gui.GUI_functions import *
-from netconfpkg.NC_functions import _
 from provider import *
 from gtk import TRUE
 from gtk import FALSE

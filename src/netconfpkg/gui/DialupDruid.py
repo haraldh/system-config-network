@@ -22,7 +22,6 @@ import gtk
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
-from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import *
 import gtk.glade
 import string

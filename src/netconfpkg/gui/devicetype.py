@@ -25,11 +25,9 @@ import signal
 import os
 
 import string
-import gettext
 import re
 
 from dialupconfig import *
-from dialupconfig import _
 from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from netconfpkg.gui.GUI_functions import *

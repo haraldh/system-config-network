@@ -25,7 +25,6 @@ import NCisdnhardware
 
 from netconfpkg import HardwareList_base
 from NC_functions import *
-from netconfpkg.NC_functions import _
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")

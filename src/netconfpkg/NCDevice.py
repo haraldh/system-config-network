@@ -30,7 +30,6 @@ import Conf
 import ConfSMB
 import NCHardwareList
 from NC_functions import *
-from NC_functions import _
 from netconfpkg import Device_base
 import NCDialup
 import NCCipe

@@ -25,12 +25,10 @@ import signal
 import os
 
 import string
-import gettext
 import re
 
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import modemDeviceList
 from netconfpkg.NC_functions import modemFlowControls
 from netconfpkg.gui.GUI_functions import load_icon

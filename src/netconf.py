@@ -39,21 +39,19 @@ sys.argv = sys.argv[:1]
 import getopt
 import signal
 import os
+import gettext
+
+PROGNAME='redhat-config-network'
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+gettext.install(PROGNAME, "/usr/share/locale", 1)
 
 os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 
 import os.path
 import string
-import gettext
 from netconfpkg import *
 #from netconfpkg import Control
-
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
 
 def Usage():
     print _("redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
@@ -1381,6 +1379,7 @@ class mainDialog:
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     progname = os.path.basename(sys.argv[0])
+
 
     try:
         opts, args = getopt.getopt(cmdline, "p", ["profile"])

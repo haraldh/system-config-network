@@ -21,8 +21,6 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import _
-from netconfpkg import *
 from netconfpkg import *
 import gtk
 from gtk import TRUE

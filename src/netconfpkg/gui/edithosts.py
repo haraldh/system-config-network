@@ -25,21 +25,12 @@ import signal
 import os
 
 import string
-import gettext
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 
 from gtk import TRUE
 from gtk import FALSE
-
-
-##
-## I18N
-##
-gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(GUI_functions.PROGNAME)
-_=gettext.gettext
 
 class editHostsDialog:
     def __init__(self, host):

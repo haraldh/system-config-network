@@ -16,7 +16,6 @@
 
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import *
-from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import NETCONFDIR
 from netconfpkg import *
 from netconfpkg import *
@@ -147,7 +146,7 @@ class CipeInterface(InterfaceCreator):
         s = s + _("Local Virtual Address:") + " " + str(self.device.IP) + "\n\n\n"\
             + _("Press \"Finish\" to create this account")
         
-        druid_page.set_text(s)
+        druid_page.set_text(unicode(s))
         
     def hydrate(self):
         cipe = self.device.Cipe
@@ -173,8 +172,8 @@ class CipeInterface(InterfaceCreator):
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if cipe.TunnelDevice and curr:
-           widget.set_text(curr)
-        widget.set_position(0)
+           widget.set_text(unicode(curr))
+        #widget.set_position(0)
 
         if self.device.Device:
             self.xml.get_widget("cipeDeviceEntry").set_text(self.device.Device)
@@ -213,7 +212,7 @@ class CipeInterface(InterfaceCreator):
         #else:
         #    self.on_generateKeyButton_clicked()
             
-        widget.set_position(0)
+        #widget.set_position(0)
 
         self.updateRemoteOptions()
 
@@ -262,19 +261,19 @@ class CipeInterface(InterfaceCreator):
         widget = self.xml.get_widget("secretKeyEntry")
         if key:
             widget.set_text(key)
-        widget.set_position(0)
+        #widget.set_position(0)
 
 
     def updateRemoteOptions(self, *args):
-
         ethw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(ethw)
-        d = fields[0]
         ip = '0.0.0.0 (auto)'
-
-        for dev in self.devicelist:
-            if dev.Device == d:
-                ip = dev.IP
+        
+        if len(fields):
+            d = fields[0]
+            for dev in self.devicelist:
+                if dev.Device == d:
+                    ip = dev.IP
 
         addr = self.xml.get_widget("remotePeerAddressEntry").get_text()
         port = self.xml.get_widget("remotePeerPortEntry").get_text()
@@ -299,19 +298,16 @@ class CipeInterface(InterfaceCreator):
         mytxt = mytxt + _("Remote Virtual Address: ") + str(localvirtualaddress) + "\n"
         mytxt = mytxt + _("Local Virtual Address: ") + str(remotevirtualaddress) + "\n"
         mytxt = mytxt + _("Secret Key: ") + str(secretkey) + "\n"
-        widget = self.xml.get_widget("remoteConfigTxt")
-        if widget.get_length():
-            widget.delete_text(0, widget.get_length()-1)
-        widget.insert_defaults(mytxt)
-        widget.set_position(0)
+        
+        widget = self.xml.get_widget("remoteConfigTxt").get_buffer()
+        widget.set_text(mytxt)
+        #widget.set_position(0)
 
     def check(self):
         keywidget = self.xml.get_widget("secretKeyEntry")
         txt = keywidget.get_text()
         if not txt or txt == "":
-            GUI_functions.gui_error_dialog(_("You must enter a secret key \nor generate one"),
-                             None, dialog_type="error",
-                             broken_widget = keywidget)
+            GUI_functions.gui_error_dialog(_("You must enter a secret key \nor generate one"), self.xml.get_widget ('Dialog'), broken_widget = keywidget)
             return FALSE
         return TRUE
             

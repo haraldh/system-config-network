@@ -25,13 +25,11 @@ import signal
 import os
 
 import string
-import gettext
 import string
 import sharedtcpip
 
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import _
 from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE

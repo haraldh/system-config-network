@@ -21,7 +21,6 @@ import os
 import os.path
 
 from NC_functions import *
-from NC_functions import _
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
 import ConfPAP

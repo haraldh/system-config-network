@@ -9,7 +9,6 @@
 
 from snack import *;
 import sys
-import gettext
 import string
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -25,9 +24,6 @@ from netconfpkg import *
 
 
 PROGNAME='redhat-config-network'
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
 
 
 def mainScreen(screen):

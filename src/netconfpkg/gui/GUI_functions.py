@@ -4,7 +4,6 @@ from gtk import TRUE
 from gtk import FALSE
 
 from netconfpkg.NC_functions import *
-from netconfpkg.NC_functions import _
 
 GLADEPATH='netconfpkg/gui/'
 

@@ -23,7 +23,6 @@ import gtk
 import gnome.ui
 from string import joinfields
 from cPickle import Pickler
-from netconfpkg.NC_functions import _
 from netconfpkg.gui.GUI_functions import generic_error_dialog, get_icon, \
      WrappingLabel, addFrame
 dumpHash = {}

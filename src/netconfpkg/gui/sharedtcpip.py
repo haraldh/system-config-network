@@ -8,7 +8,6 @@ import signal
 import os
 
 import string
-import gettext
 import re
 from netconfpkg import NCHardwareList
 from netconfpkg import NC_functions
@@ -22,14 +21,6 @@ from netconfpkg import *
 import sys, traceback
 from gtk import TRUE
 from gtk import FALSE
-
-###
-### I18N
-###
-gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(GUI_functions.PROGNAME)
-_=gettext.gettext
-
 
 ###
 ### DHCP

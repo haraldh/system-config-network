@@ -23,7 +23,6 @@ import os
 import os.path
 import shutil
 import signal
-import gettext
 import string
 import ethtool
 import ethtool
@@ -47,10 +46,6 @@ ACTIVATE = 3
 DEACTIVATE = 4
 CONFIGURE = 5
 MONITOR = 6
-
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_ = gettext.gettext
 
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')

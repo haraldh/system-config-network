@@ -25,7 +25,6 @@ import signal
 import os
 
 import string
-import gettext
 import re
 
 import providerdb
@@ -35,13 +34,6 @@ from netconfpkg.gui.GUI_functions import load_icon
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
-
-##
-## I18N
-##
-gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(GUI_functions.PROGNAME)
-_=gettext.gettext
 
 class providerDialog:
     def __init__(self, device, connection_type="isdn"):

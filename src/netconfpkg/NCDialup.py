@@ -26,13 +26,11 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
-import gettext
 
 from netconfpkg import Dialup_base
 import NCCompression
 import NCHardwareList
 from NC_functions import *
-from NC_functions import _
 
 DM_AUTO='auto'
 DM_MANUAL='manual'

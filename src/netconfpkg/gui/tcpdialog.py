@@ -25,7 +25,6 @@ import signal
 import os
 
 import string
-import gettext
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
@@ -35,13 +34,6 @@ from netconfpkg.NCDeviceList import *
 
 from gtk import TRUE
 from gtk import FALSE
-
-##
-## I18N
-##
-gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(GUI_functions.PROGNAME)
-_=gettext.gettext
 
 class tcpConfigDialog:
     def __init__(self, device):

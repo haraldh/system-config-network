@@ -26,16 +26,9 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
-import gettext
 
 from NC_functions import *
 
-##
-## I18N
-##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
-_=gettext.gettext
 
 class ConfCipeOptions(Conf.Conf):
     def __init__(self, name):

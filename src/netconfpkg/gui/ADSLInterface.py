@@ -19,7 +19,6 @@
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import _
 from netconfpkg.NC_functions import *
 from netconfpkg import *
 from netconfpkg import *
@@ -85,7 +84,7 @@ class ADSLInterface(InterfaceCreator):
                  "others.  These types of connections are common in the United States, "
                  "and are gaining acceptance elsewhere.  Speeds vary according to the "
                  "technology used, but generally range from 144kbps to 1.0Mbps.")
-
+                       
     def get_druids(self):
         hwDruid = ethernetHardware(self.toplevel)
         druid = hwDruid.get_druids()
@@ -192,5 +191,3 @@ class ADSLInterface(InterfaceCreator):
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
         dialup.DefRoute = TRUE
         self.device.AutoDNS = TRUE
-
-
