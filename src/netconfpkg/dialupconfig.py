@@ -117,7 +117,6 @@ class DialupDialog(deviceConfigDialog):
             widget.set_sensitive(len(self.device.Dialup.PPPOptions)>0)
             for plist in self.device.Dialup.PPPOptions:
                 widget.append([plist])
-
         
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
@@ -128,7 +127,7 @@ class DialupDialog(deviceConfigDialog):
             self.device.Dialup.Areacode = self.xml.get_widget("areaCodeEntry").get_text()
             self.device.Dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
             country = self.xml.get_widget("countryCodeEntry").get_text()
-            self.device.Dialup.Regioncode = country + ":" + str(country_code[country])
+            self.device.Dialup.Regioncode = country + ":" + str(NCDialup.country_code[country])
         self.device.Dialup.PhoneNumber = self.xml.get_widget("phoneEntry").get_text()
 
         self.device.Dialup.PPPOptions = None
@@ -331,6 +330,8 @@ class ModemDialupDialog(DialupDialog):
            s = ""
            widget = self.xml.get_widget("modemInitEntry")
            for plist in self.device.Dialup.InitStrings:
+               if (len(plist) >= 2) and (plist[:2] == 'AT') and len(s):
+                   plist = plist[2:]
                s = s + plist
            widget.set_text(s)
 
@@ -341,6 +342,7 @@ class ModemDialupDialog(DialupDialog):
         if self.device.Name:
             self.xml.get_widget("modemPortEntry").set_text(self.device.Name)
 
+        self.xml.get_widget("stupidModeCB").set_active(self.device.Dialup.StupidMode == true)
 
     def dehydrate(self):
         DialupDialog.dehydrate(self)
@@ -360,6 +362,8 @@ class ModemDialupDialog(DialupDialog):
         self.device.Dialup.createInitStrings()
         for i in string.split(self.xml.get_widget("modemInitEntry").get_text()):
             self.device.Dialup.InitStrings.append(i)
+
+        self.device.Dialup.StupidMode = (self.xml.get_widget("stupidModeCB").get_active() == true)
 
 
 # make ctrl-C work
