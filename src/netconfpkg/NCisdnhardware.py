@@ -75,7 +75,10 @@ card = {
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050:6692", "", "hisax" ]
     }
 
-
+kernelver = os.uname()[2]
+if os.path.exists('/lib/modules/'+kernelver+'/kernel/drivers/isdn/hisax/hisax_fcpcipnp.o'):
+    card["AVM PCI (Fritz!PCI v2)"] = [ "", "", "", "", "", "", "1244:0e00", "", "hisax_fcpcipnp" ]
+	
 class ConfISDN:
     def __init__(self):
         self.Id = "HiSax"
