@@ -239,10 +239,7 @@ class mainDialog:
                     dclist.append([domain])
 
                 for host in prof.HostsList:
-                    al = ''
-                    for alias in host.AliasList:
-                        al = al + " " + alias
-                    hclist.append([host.IP, host.Hostname, al])
+                    hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
 
         if self.initialized:
             return
@@ -439,20 +436,20 @@ class mainDialog:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
                     clist.set_row_data(row, 1)
                     curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
-                    for prof in profilelist:
-                        if curr_prof.ProfileName != 'default' and prof.Active == false:
-                            continue
-                        if name not in prof.ActiveDevices:
-                            prof.ActiveDevices.append(name)
+                    if curr_prof.ProfileName == 'default':
+                        for prof in profilelist:
+                            activateDevice(name, prof.ProfileName, true)
+                    else:
+                        activateDevice(name, curr_prof.ProfileName, true)
                 else:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
                     clist.set_row_data(row, 0)
                     curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
-                    for prof in profilelist:
-                        if curr_prof.ProfileName != 'default' and prof.Active == false:
-                            continue
-                        if name in prof.ActiveDevices:
-                            del prof.ActiveDevices[prof.ActiveDevices.index(name)]
+                    if curr_prof.ProfileName == 'default':
+                        for prof in profilelist:
+                            activateDevice(name, prof.ProfileName, false)
+                    else:
+                        activateDevice(name, curr_prof.ProfileName, false)
                 clist.set_pixmap(row, 0, xpm)
 
     def on_hostnameEntry_changed(self, entry):
@@ -492,6 +489,7 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.SearchList.append(searchDnsEntry)
+                prof.DNS.SearchList.commit()
                 self.hydrate()
 
     def on_dnsEditButton_clicked (self, *args):
@@ -520,8 +518,10 @@ class mainDialog:
                 n = prof.DNS.SearchList[index-1]
                 prof.DNS.SearchList[index-1] = name
                 prof.DNS.SearchList[index] = n
+                prof.DNS.SearchList.commit()
                 self.hydrate()
-            
+                clist.select_row(index-1, 0)
+
     def on_dnsDownButton_clicked (self, *args):
         clist = self.xml.get_widget("dnsList")
         name = clist.get_text(clist.selection[0], 0)
@@ -538,7 +538,9 @@ class mainDialog:
                 n = prof.DNS.SearchList[index+1]
                 prof.DNS.SearchList[index+1] = name
                 prof.DNS.SearchList[index] = n
+                prof.DNS.SearchList.commit()
                 self.hydrate()
+                clist.select_row(index+1, 0)
 
     def on_dnsDeleteButton_clicked (self, *args):
         clist = self.xml.get_widget("dnsList")
@@ -551,11 +553,39 @@ class mainDialog:
                 self.hydrate()
 
     def on_hostsAddButton_clicked(self, *args):
-        print "on_hostsAddButton_clicked"
-        pass
+        global profilelist
+
+        curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
+        if not curr_prof.HostsList:
+            curr_prof.createHostsList()
+        hostslist = curr_prof.HostsList
+        host = Host()
+        clist  = self.xml.get_widget("hostsList")
+        dialog = editHostsDialog(host, self.xml)
+        dl = dialog.xml.get_widget ("Dialog")
+        button = dl.run ()
+        if button == 0:
+            i = hostslist.addHost()
+            hostslist[i].apply(host)
+            hostslist[i].commit()
+        self.hydrate()
 
     def on_hostsEditButton_clicked (self, *args):
-        pass
+        global profilelist
+
+        curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
+        hostslist = curr_prof.HostsList
+        clist  = self.xml.get_widget("hostsList")
+
+        if len(clist.selection) == 0:
+            return
+
+        host = hostslist[clist.selection[0]]
+
+        dialog = editHostsDialog(host, self.xml)
+        dl = dialog.xml.get_widget ("Dialog")
+        dl.run ()
+        self.hydrate()
 
     def on_hostsDeleteButton_clicked (self, *args):
         clist = self.xml.get_widget('profileList')
