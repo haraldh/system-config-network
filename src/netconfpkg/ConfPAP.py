@@ -149,7 +149,7 @@ class ConfPAP(Conf.Conf):
             login = '\"' + varname + '\"'
             server = '*'
 
-         value = '\"' + value + '\"'
+        value = '\"' + value + '\"'
             
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
