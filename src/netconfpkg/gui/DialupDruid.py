@@ -178,6 +178,8 @@ class DialupDruid(InterfaceCreator):
                 self.xml.get_widget('ipStaticRadio')),
         dialup = self.device.createDialup()
         dialup.EncapMode = 'syncppp'
+        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
+                                                self.device)
     
     def on_raw_ip_activate(self, *args):
         self.xml.get_widget('ipAutomaticRadio').set_active(FALSE)
@@ -187,7 +189,9 @@ class DialupDruid(InterfaceCreator):
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(FALSE)
         dialup = self.device.createDialup()
         dialup.EncapMode = 'rawip'
-
+        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
+                                                self.device)
+        
     def on_dhcp_page_back(self, druid_page, druid):
         return TRUE
     
@@ -403,5 +407,5 @@ class DialupDruid(InterfaceCreator):
             dialup.StupidMode = TRUE
             dialup.InitString = ''
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/30 12:37:20 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2003/07/31 12:58:41 $"
+__version__ = "$Revision: 1.27 $"
