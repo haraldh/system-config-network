@@ -17,6 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg import NCHardwareList
@@ -71,6 +72,9 @@ class ADSLInterface(InterfaceCreator):
 
     def get_project_name(self):
         return _('xDSL connection')
+
+    def get_type(self):
+        return DSL
 
     def get_project_description(self):
         return _("Create an xDSL connection.  This is a connection that uses one of "

@@ -110,6 +110,9 @@ class EthernetInterface(InterfaceCreator):
     def get_project_name(self):
         return _('Ethernet connection')
 
+    def get_type(self):
+        return ETHERNET
+ 
     def get_project_description(self):
         return _("Create a new ethernet connection.")
 

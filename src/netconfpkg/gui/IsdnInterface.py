@@ -19,9 +19,9 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
-from netconfpkg.NC_functions import NETCONFDIR
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
 #import gnome.ui
@@ -68,6 +68,9 @@ class IsdnInterface:
         
     def get_project_name(self):
         return _('ISDN connection')
+
+    def get_type(self):
+        return ISDN
 
     def get_project_description(self):
         return _("Create a new ISDN connection.  This is a connection that uses an "

@@ -107,6 +107,9 @@ class WirelessInterface(InterfaceCreator):
     def get_project_name(self):
         return _('Wireless connection')
 
+    def get_type(self):
+        return WIRELESS
+
     def get_project_description(self):
         return _("Create a new wireless connection.")
 

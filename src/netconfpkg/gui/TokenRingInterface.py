@@ -109,6 +109,9 @@ class TokenRingInterface(InterfaceCreator):
     def get_project_name(self):
         return _('Token Ring connection')
 
+    def get_type(self):
+        return TOKENRING
+
     def get_project_description(self):
         return _("Create a new Token Ring connection.")
 

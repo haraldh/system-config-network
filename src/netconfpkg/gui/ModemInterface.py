@@ -17,7 +17,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg import NCHardwareList
@@ -67,6 +67,9 @@ class ModemInterface:
         
     def get_project_name(self):
         return _('Modem connection')
+
+    def get_type(self):
+        return MODEM
 
     def get_project_description (self):
         return _("Create a new Modem connection.  This is a connection that uses a "

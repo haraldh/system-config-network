@@ -83,10 +83,13 @@ class CipeInterface(InterfaceCreator):
             self.druids.append(I)
 
     def get_project_name(self):
-        return _('CIPE connection')
+        return _('Cipe connection')
 
     def get_project_description(self):
-        return _("Create a new CIPE connection.")
+        return _("Create a new Cipe connection.")
+
+    def get_type(self):
+        return CIPE
 
     def get_druids(self):
         return self.druids
