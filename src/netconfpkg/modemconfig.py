@@ -94,7 +94,7 @@ class modemDialog:
         self.dialog.destroy()
 
     def on_volumeCB_toggled(self, check):
-        scale = self.xml.get_widget("volumScale")
+        scale = self.xml.get_widget("volumeMenu")
         scale.set_sensitive(check["active"])
         scale.grab_focus()
 
