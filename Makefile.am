@@ -6,7 +6,7 @@ EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
 	internet-druid.console internet-druid.desktop.in \
 	neat-control.desktop.in pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
-	po/po2tbl.sed.in
+	po/po2tbl.sed.in ChangeLog
 
 icons1dir=$(datadir)/kontrol-panel
 icons2dir=$(pkgdatadir)
@@ -16,6 +16,10 @@ icons2_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
 icons1_in_files=$(icons1_DATA:.desktop=.desktop.in)
 icons2_in_files=$(icons2_DATA:.desktop=.desktop.in)
+
+CLEANFILES=$(icons1_DATA) $(icons2_DATA)
+DISTCLEANFILES=intltool-extract intltool-merge intltool-update
+MAINTAINERCLEANFILES=ChangeLog
 
 @INTLTOOL_DESKTOP_RULE@
 
@@ -57,12 +61,17 @@ changelog:
 	rcs2log | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
 		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
 
-dist: configure Makefile config.h changelog
+clean:
+	rm -f neat.desktop
+	rm -f neat-control.desktop
+
 
 PKGNAME=${PACKAGE}
 VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))
-archive:
+
+archive: distcheck changelog
+	cvs ci -m "" ChangeLog
 	cvs tag -cFR $(CVSTAG) .
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`; cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
@@ -72,6 +81,6 @@ archive:
 	@rm -rf /tmp/${PKGNAME}-$(VERSION)
 	@echo "The archive is in ${PKGNAME}-$(VERSION).tar.gz"
 
-srpm: dist
+srpm: archive
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
