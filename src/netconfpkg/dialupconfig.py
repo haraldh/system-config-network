@@ -316,7 +316,11 @@ class ModemDialupDialog(DialupDialog):
         
     def on_chooseButton_clicked(self, button):
         dialog = ModemproviderDialog(self.device, self.xml_main, self.xml)
-
+        dl = dialog.xml.get_widget("Dialog")
+        dl.run()
+        self.hydrate()
+        DialupDialog.hydrate(self)
+        
     def hydrate(self):
         DialupDialog.hydrate(self)
         hardwarelist = getHardwareList()
