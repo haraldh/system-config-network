@@ -32,8 +32,8 @@ void some_function_name() {
   /* netconfpkg/modemconfig.glade:217 netconfpkg/ModemDruid.glade:197 */
   _("/dev/ttyS3");
 
-  /* netconfpkg/ethernetconfig.glade:605
-   * netconfpkg/tokenringconfig.glade:605 */
+  /* netconfpkg/ethernetconfig.glade:606
+   * netconfpkg/tokenringconfig.glade:606 */
   _("00:00:00:00:00:00");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
@@ -164,7 +164,7 @@ void some_function_name() {
   /* netconfpkg/modemconfig.glade:264 netconfpkg/ModemDruid.glade:244 */
   _("9600");
 
-  /* netconfpkg/dialupconfig.glade:476 */
+  /* netconfpkg/dialupconfig.glade:477 */
   _("A_rea Code");
 
   /* netconfpkg/DialupDruid.glade:221 */
@@ -185,14 +185,14 @@ void some_function_name() {
   /* netconfpkg/NewInterfaceDruid.glade:23 */
   _("Add new Device Type");
 
-  /* netconfpkg/cipeconfig.glade:318 netconfpkg/tcpipdialog.glade:1599 */
+  /* netconfpkg/cipeconfig.glade:319 netconfpkg/tcpipdialog.glade:1599 */
   _("Add...");
 
   /* netconfpkg/edithosts.glade:101 */
   _("Address:");
 
-  /* netconfpkg/dialupconfig.glade:1840 netconfpkg/dialupconfig.glade:2252
-   * netconfpkg/dslconfig.glade:835 */
+  /* netconfpkg/dialupconfig.glade:1841 netconfpkg/dialupconfig.glade:2253
+   * netconfpkg/dslconfig.glade:836 */
   _("Advanced");
 
   /* maindialog.glade:915 */
@@ -216,13 +216,13 @@ void some_function_name() {
   /* netconfpkg/cipeconfig.glade:18 */
   _("CIPE Configuration");
 
-  /* netconfpkg/dialupconfig.glade:1451 */
+  /* netconfpkg/dialupconfig.glade:1452 */
   _("Callback");
 
-  /* netconfpkg/dialupconfig.glade:1287 */
+  /* netconfpkg/dialupconfig.glade:1288 */
   _("Callback _Delay:");
 
-  /* netconfpkg/dialupconfig.glade:1238 */
+  /* netconfpkg/dialupconfig.glade:1239 */
   _("Callback setting");
 
   /* netconfpkg/devicetype.glade:16 */
@@ -234,13 +234,13 @@ void some_function_name() {
   /* netconfpkg/chooseprovider.glade:18 */
   _("Choose a Provider");
 
-  /* netconfpkg/dialupconfig.glade:826 */
+  /* netconfpkg/dialupconfig.glade:827 */
   _("Click here, if you want to choose a new provider from the ISP database.");
 
-  /* netconfpkg/dialupconfig.glade:984 */
+  /* netconfpkg/dialupconfig.glade:985 */
   _("Compression");
 
-  /* netconfpkg/cipeconfig.glade:984 */
+  /* netconfpkg/cipeconfig.glade:987 */
   _("Configuration for your remote partner");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:53 */
@@ -280,7 +280,7 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:374 */
   _("Default _Gateway Address:");
 
-  /* netconfpkg/cipeconfig.glade:371 netconfpkg/dslconfig.glade:378
+  /* netconfpkg/cipeconfig.glade:373 netconfpkg/dslconfig.glade:379
    * netconfpkg/tcpipdialog.glade:1686 */
   _("Delete");
 
@@ -299,10 +299,10 @@ void some_function_name() {
   /* maindialog.glade:771 */
   _("Devices");
 
-  /* netconfpkg/dialupconfig.glade:1511 */
+  /* netconfpkg/dialupconfig.glade:1512 */
   _("Dial _Mode:");
 
-  /* netconfpkg/dialupconfig.glade:1260 */
+  /* netconfpkg/dialupconfig.glade:1261 */
   _("Dial-In _Number:");
 
   /* netconfpkg/dialupconfig.glade:18 */
@@ -320,8 +320,8 @@ void some_function_name() {
   /* netconfpkg/editdomain.glade:98 */
   _("Domain Name:");
 
-  /* netconfpkg/ethernetconfig.glade:412
-   * netconfpkg/tokenringconfig.glade:412 */
+  /* netconfpkg/ethernetconfig.glade:413
+   * netconfpkg/tokenringconfig.glade:413 */
   _("Each device needs to be attached to a physical device which can be selected below. Device Alias support allows you to use multiple virtual devices for one physical device.");
 
   /* netconfpkg/wirelessconfig.glade:408 */
@@ -333,68 +333,68 @@ void some_function_name() {
   /* netconfpkg/editdomain.glade:18 */
   _("Edit Domain Name");
 
-  /* netconfpkg/cipeconfig.glade:347 netconfpkg/tcpipdialog.glade:1628 */
+  /* netconfpkg/cipeconfig.glade:348 netconfpkg/tcpipdialog.glade:1628 */
   _("Edit...");
 
-  /* netconfpkg/dialupconfig.glade:893 */
+  /* netconfpkg/dialupconfig.glade:894 */
   _("Enable VJ Connection-_ID Compression");
 
-  /* netconfpkg/dialupconfig.glade:912 */
+  /* netconfpkg/dialupconfig.glade:913 */
   _("Enable _Address/Control Compression");
 
-  /* netconfpkg/dialupconfig.glade:950 */
+  /* netconfpkg/dialupconfig.glade:951 */
   _("Enable _BSD Compression");
 
-  /* netconfpkg/dialupconfig.glade:969 */
+  /* netconfpkg/dialupconfig.glade:970 */
   _("Enable _CCP Compression Control Protocol");
 
-  /* netconfpkg/ethernetconfig.glade:435
-   * netconfpkg/tokenringconfig.glade:435 */
+  /* netconfpkg/ethernetconfig.glade:436
+   * netconfpkg/tokenringconfig.glade:436 */
   _("Enable _Device Alias support");
 
-  /* netconfpkg/dialupconfig.glade:931 */
+  /* netconfpkg/dialupconfig.glade:932 */
   _("Enable _Protocol Field Compression");
 
-  /* netconfpkg/dialupconfig.glade:874 */
+  /* netconfpkg/dialupconfig.glade:875 */
   _("Enable _VJ TCP/IP Header Compression");
 
-  /* netconfpkg/dslconfig.glade:809 */
+  /* netconfpkg/dslconfig.glade:810 */
   _("Enable synchronous PPP for the connection");
 
-  /* netconfpkg/dialupconfig.glade:561 netconfpkg/DialupDruid.glade:306 */
+  /* netconfpkg/dialupconfig.glade:562 netconfpkg/DialupDruid.glade:306 */
   _("Enter any numbers you need to dial before the normal phone number. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here.");
 
-  /* netconfpkg/dslconfig.glade:784 */
+  /* netconfpkg/dslconfig.glade:785 */
   _("Enter the Access Concentrator name, if you have been given one by your ISP. In most cases you can leave this blank.");
 
-  /* netconfpkg/dslconfig.glade:759 */
+  /* netconfpkg/dslconfig.glade:760 */
   _("Enter the Service Name, if your ISP requires it. If you don't know it, please contact your ISP. In most cases you can leave this blank.");
 
-  /* netconfpkg/dialupconfig.glade:592 netconfpkg/DialupDruid.glade:337 */
+  /* netconfpkg/dialupconfig.glade:593 netconfpkg/DialupDruid.glade:337 */
   _("Enter the area code needed to reach your internet provider.");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:245 */
   _("Enter the login name for this account.");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:359
-   * netconfpkg/dialupconfig.glade:694 netconfpkg/DialupDruid.glade:439
-   * netconfpkg/dslconfig.glade:492 */
+   * netconfpkg/dialupconfig.glade:695 netconfpkg/DialupDruid.glade:439
+   * netconfpkg/dslconfig.glade:493 */
   _("Enter the login name, that your ISP gave you here.");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:401
-   * netconfpkg/dialupconfig.glade:781 netconfpkg/DialupDruid.glade:526
-   * netconfpkg/dslconfig.glade:579 */
+   * netconfpkg/dialupconfig.glade:782 netconfpkg/DialupDruid.glade:526
+   * netconfpkg/dslconfig.glade:580 */
   _("Enter the name of this configuration, usually just the name of your ISP.");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:271 */
   _("Enter the password for this account.");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:317
-   * netconfpkg/dialupconfig.glade:724 netconfpkg/DialupDruid.glade:469
-   * netconfpkg/dslconfig.glade:522 */
+   * netconfpkg/dialupconfig.glade:725 netconfpkg/DialupDruid.glade:469
+   * netconfpkg/dslconfig.glade:523 */
   _("Enter the password for your account. If you do not know it, please contact your ISP.");
 
-  /* netconfpkg/dialupconfig.glade:530 netconfpkg/DialupDruid.glade:275 */
+  /* netconfpkg/dialupconfig.glade:531 netconfpkg/DialupDruid.glade:275 */
   _("Enter the phone number of your ISP (without prefix/area/country code).");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:89 */
@@ -403,7 +403,7 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:1114 netconfpkg/tcpipdialog.glade:1418 */
   _("Enter your device bound traffic rules here.");
 
-  /* netconfpkg/dialupconfig.glade:2054 */
+  /* netconfpkg/dialupconfig.glade:2055 */
   _("Enter your local phone number. It's optional, if you use a modem.");
 
   /* netconfpkg/hardwaretype.glade:152 netconfpkg/hardwaretype.glade:172 */
@@ -412,7 +412,7 @@ void some_function_name() {
   /* netconfpkg/ethernetconfig.glade:18 */
   _("Ethernet Device");
 
-  /* netconfpkg/ADSLInterfaceDruid.glade:193 netconfpkg/dslconfig.glade:604 */
+  /* netconfpkg/ADSLInterfaceDruid.glade:193 netconfpkg/dslconfig.glade:605 */
   _("Ethernet _Device:");
 
   /* netconfpkg/IsdnHardwareDruid.glade:502
@@ -431,11 +431,11 @@ void some_function_name() {
    * netconfpkg/wirelessconfig.glade:237 */
   _("General");
 
-  /* netconfpkg/ethernetconfig.glade:583
-   * netconfpkg/tokenringconfig.glade:583 */
+  /* netconfpkg/ethernetconfig.glade:584
+   * netconfpkg/tokenringconfig.glade:584 */
   _("Ha_rdware Address:");
 
-  /* netconfpkg/dialupconfig.glade:1874 */
+  /* netconfpkg/dialupconfig.glade:1875 */
   _("Han_gup Timeout:");
 
   /* maindialog.glade:482 */
@@ -445,8 +445,8 @@ void some_function_name() {
    * netconfpkg/ModemDruid.glade:283 netconfpkg/ModemDruid.glade:307 */
   _("Hardware (CRTSCTS)");
 
-  /* netconfpkg/ethernetconfig.glade:637
-   * netconfpkg/tokenringconfig.glade:637
+  /* netconfpkg/ethernetconfig.glade:638
+   * netconfpkg/tokenringconfig.glade:638
    * netconfpkg/wirelessconfig.glade:490 */
   _("Hardware Device");
 
@@ -506,19 +506,19 @@ void some_function_name() {
   /* netconfpkg/chooseprovider.glade:133 netconfpkg/DialupDruid.glade:137 */
   _("Internet Provider");
 
-  /* netconfpkg/dialupconfig.glade:1769 */
+  /* netconfpkg/dialupconfig.glade:1770 */
   _("Let _PPP do all authentication");
 
-  /* netconfpkg/cipeconfig.glade:871 */
+  /* netconfpkg/cipeconfig.glade:874 */
   _("Lo_cal Virtual Address:");
 
   /* netconfpkg/modemconfig.glade:371 netconfpkg/ModemDruid.glade:351 */
   _("Low");
 
-  /* netconfpkg/dialupconfig.glade:2027 */
+  /* netconfpkg/dialupconfig.glade:2028 */
   _("MSN/EA_Z:");
 
-  /* netconfpkg/dialupconfig.glade:1815 */
+  /* netconfpkg/dialupconfig.glade:1816 */
   _("Make this connection the default _route");
 
   /* netconfpkg/tcpipdialog.glade:215 */
@@ -549,28 +549,28 @@ void some_function_name() {
   /* netconfpkg/modemconfig.glade:18 */
   _("Modem Configuration");
 
-  /* netconfpkg/dialupconfig.glade:1701 */
+  /* netconfpkg/dialupconfig.glade:1702 */
   _("Modem P_ort:");
 
   /* netconfpkg/modemconfig.glade:100 netconfpkg/ModemDruid.glade:80 */
   _("Modem Properties");
 
-  /* netconfpkg/dialupconfig.glade:1650 */
+  /* netconfpkg/dialupconfig.glade:1651 */
   _("Modem _Initialization String:");
 
   /* netconfpkg/modemconfig.glade:347 netconfpkg/ModemDruid.glade:327 */
   _("Modem _Volume:");
 
-  /* netconfpkg/dialupconfig.glade:1737 netconfpkg/dialupconfig.glade:1761 */
+  /* netconfpkg/dialupconfig.glade:1738 netconfpkg/dialupconfig.glade:1762 */
   _("Modem0");
 
-  /* netconfpkg/dialupconfig.glade:1737 */
+  /* netconfpkg/dialupconfig.glade:1738 */
   _("Modem1");
 
-  /* netconfpkg/dialupconfig.glade:1737 */
+  /* netconfpkg/dialupconfig.glade:1738 */
   _("Modem2");
 
-  /* netconfpkg/dialupconfig.glade:1737 */
+  /* netconfpkg/dialupconfig.glade:1738 */
   _("Modem3");
 
   /* maindialog.glade:902 */
@@ -598,18 +598,18 @@ void some_function_name() {
   /* netconfpkg/modemconfig.glade:371 netconfpkg/ModemDruid.glade:351 */
   _("Off");
 
-  /* netconfpkg/dialupconfig.glade:1199 */
+  /* netconfpkg/dialupconfig.glade:1200 */
   _("Options");
 
-  /* netconfpkg/dialupconfig.glade:1054 */
+  /* netconfpkg/dialupconfig.glade:1055 */
   _("PPP Option List");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:167
-   * netconfpkg/dialupconfig.glade:667 netconfpkg/DialupDruid.glade:412
-   * netconfpkg/dslconfig.glade:465 */
+   * netconfpkg/dialupconfig.glade:668 netconfpkg/DialupDruid.glade:412
+   * netconfpkg/dslconfig.glade:466 */
   _("Pass_word:");
 
-  /* netconfpkg/dialupconfig.glade:416 netconfpkg/DialupDruid.glade:161 */
+  /* netconfpkg/dialupconfig.glade:417 netconfpkg/DialupDruid.glade:161 */
   _("Phone Number");
 
   /* netconfpkg/hardwaretype.glade:97 */
@@ -624,7 +624,7 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:1202 netconfpkg/tcpipdialog.glade:1506 */
   _("Port");
 
-  /* netconfpkg/dialupconfig.glade:449 */
+  /* netconfpkg/dialupconfig.glade:450 */
   _("Prefi_x");
 
   /* netconfpkg/DialupDruid.glade:194 */
@@ -636,34 +636,34 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:820 netconfpkg/tcpipdialog.glade:1080 */
   _("Professional");
 
-  /* netconfpkg/dialupconfig.glade:397 */
+  /* netconfpkg/dialupconfig.glade:398 */
   _("Protocol");
 
-  /* netconfpkg/cipeconfig.glade:280 netconfpkg/dialupconfig.glade:285
+  /* netconfpkg/cipeconfig.glade:281 netconfpkg/dialupconfig.glade:285
    * netconfpkg/dslconfig.glade:282 netconfpkg/ethernetconfig.glade:280
    * netconfpkg/tokenringconfig.glade:280
    * netconfpkg/wirelessconfig.glade:280 */
   _("Protocol Type");
 
-  /* netconfpkg/cipeconfig.glade:387 netconfpkg/dslconfig.glade:394
-   * netconfpkg/ethernetconfig.glade:392
-   * netconfpkg/tokenringconfig.glade:392
+  /* netconfpkg/cipeconfig.glade:390 netconfpkg/dslconfig.glade:395
+   * netconfpkg/ethernetconfig.glade:393
+   * netconfpkg/tokenringconfig.glade:393
    * netconfpkg/wirelessconfig.glade:388 */
   _("Protocols");
 
-  /* netconfpkg/dialupconfig.glade:849 netconfpkg/dslconfig.glade:683 */
+  /* netconfpkg/dialupconfig.glade:850 netconfpkg/dslconfig.glade:684 */
   _("Provider");
 
-  /* netconfpkg/dialupconfig.glade:754 netconfpkg/DialupDruid.glade:499 */
+  /* netconfpkg/dialupconfig.glade:755 netconfpkg/DialupDruid.glade:499 */
   _("Provider _Name:");
 
   /* maindialog.glade:204 */
   _("Remo_ve");
 
-  /* netconfpkg/cipeconfig.glade:956 */
+  /* netconfpkg/cipeconfig.glade:959 */
   _("Remote Peer P_ort:");
 
-  /* netconfpkg/cipeconfig.glade:644 */
+  /* netconfpkg/cipeconfig.glade:647 */
   _("Remote _Virtual Address:");
 
   /* netconfpkg/EthernetHardwareDruid.glade:235
@@ -674,7 +674,7 @@ void some_function_name() {
    * netconfpkg/tokenringhardware.glade:265 */
   _("Resource");
 
-  /* netconfpkg/dialupconfig.glade:1792 */
+  /* netconfpkg/dialupconfig.glade:1793 */
   _("Restart if _connection dies");
 
   /* netconfpkg/tcpipdialog.glade:769 */
@@ -707,10 +707,10 @@ void some_function_name() {
   /* netconfpkg/TokenRingHardwareDruid.glade:48 */
   _("Select Token Ring Adapter");
 
-  /* netconfpkg/dialupconfig.glade:2217 */
+  /* netconfpkg/dialupconfig.glade:2218 */
   _("Select the authentication protocol used by your ISP.");
 
-  /* netconfpkg/ADSLInterfaceDruid.glade:454 netconfpkg/dslconfig.glade:666 */
+  /* netconfpkg/ADSLInterfaceDruid.glade:454 netconfpkg/dslconfig.glade:667 */
   _("Select the ethernet device connected to the DSL modem.");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:219 */
@@ -749,7 +749,7 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:1399 */
   _("Traffic");
 
-  /* netconfpkg/cipeconfig.glade:1019 */
+  /* netconfpkg/cipeconfig.glade:1022 */
   _("Tunnel Settings");
 
   /* maindialog.glade:353 maindialog.glade:624 */
@@ -765,10 +765,10 @@ void some_function_name() {
    * netconfpkg/tokenringhardware.glade:581 */
   _("Unknown");
 
-  /* netconfpkg/dialupconfig.glade:1396 */
+  /* netconfpkg/dialupconfig.glade:1397 */
   _("Use _Callback Control Protocol (CBCP)");
 
-  /* netconfpkg/dialupconfig.glade:2237 */
+  /* netconfpkg/dialupconfig.glade:2238 */
   _("Use _Channel Bundling");
 
   /* netconfpkg/modemconfig.glade:371 netconfpkg/ModemDruid.glade:351 */
@@ -796,7 +796,7 @@ void some_function_name() {
   /* maindialog.glade:811 */
   _("You may specify static computer hostname to IP address mappings here.  If DNS is in use, these settings will take precedence over any information it may provide.");
 
-  /* netconfpkg/dslconfig.glade:732 */
+  /* netconfpkg/dslconfig.glade:733 */
   _("_AC-Name:");
 
   /* netconfpkg/cipeconfig.glade:203 netconfpkg/dialupconfig.glade:203
@@ -815,7 +815,7 @@ void some_function_name() {
   _("_Add");
 
   /* maindialog.glade:407 maindialog.glade:666 maindialog.glade:957
-   * netconfpkg/dialupconfig.glade:328 netconfpkg/dialupconfig.glade:1183
+   * netconfpkg/dialupconfig.glade:328 netconfpkg/dialupconfig.glade:1184
    * netconfpkg/dslconfig.glade:325 netconfpkg/ethernetconfig.glade:323
    * netconfpkg/tcpipdialog.glade:693 netconfpkg/tcpipdialog.glade:1295
    * netconfpkg/tokenringconfig.glade:323
@@ -825,14 +825,14 @@ void some_function_name() {
   /* netconfpkg/editadress.glade:122 netconfpkg/tcpipdialog.glade:322 */
   _("_Address:");
 
-  /* netconfpkg/ethernetconfig.glade:510
-   * netconfpkg/tokenringconfig.glade:510 */
+  /* netconfpkg/ethernetconfig.glade:511
+   * netconfpkg/tokenringconfig.glade:511 */
   _("_Alias:");
 
-  /* netconfpkg/dialupconfig.glade:1368 */
+  /* netconfpkg/dialupconfig.glade:1369 */
   _("_Allow only above Dial-In Number");
 
-  /* netconfpkg/dialupconfig.glade:2150 */
+  /* netconfpkg/dialupconfig.glade:2151 */
   _("_Authentication:");
 
   /* netconfpkg/modemconfig.glade:149 netconfpkg/ModemDruid.glade:129 */
@@ -841,31 +841,31 @@ void some_function_name() {
   /* netconfpkg/wirelessconfig.glade:593 */
   _("_Channel:");
 
-  /* netconfpkg/dialupconfig.glade:833 */
+  /* netconfpkg/dialupconfig.glade:834 */
   _("_Choose Provider...");
 
   /* maindialog.glade:724 netconfpkg/tcpipdialog.glade:1353 */
   _("_Copy");
 
   /* maindialog.glade:465 maindialog.glade:753 maindialog.glade:1015
-   * maindialog.glade:1452 netconfpkg/dialupconfig.glade:381
-   * netconfpkg/dialupconfig.glade:1104 netconfpkg/ethernetconfig.glade:376
+   * maindialog.glade:1452 netconfpkg/dialupconfig.glade:382
+   * netconfpkg/dialupconfig.glade:1105 netconfpkg/ethernetconfig.glade:377
    * netconfpkg/tcpipdialog.glade:751 netconfpkg/tcpipdialog.glade:1382
-   * netconfpkg/tokenringconfig.glade:376
+   * netconfpkg/tokenringconfig.glade:377
    * netconfpkg/wirelessconfig.glade:372 */
   _("_Delete");
 
   /* netconfpkg/devicetype.glade:125 */
   _("_Device Type:");
 
-  /* netconfpkg/cipeconfig.glade:785
+  /* netconfpkg/cipeconfig.glade:788
    * netconfpkg/EthernetHardwareDruid.glade:110
    * netconfpkg/ethernethardware.glade:181
    * netconfpkg/TokenRingHardwareDruid.glade:110
    * netconfpkg/tokenringhardware.glade:181 */
   _("_Device:");
 
-  /* netconfpkg/dialupconfig.glade:1900 */
+  /* netconfpkg/dialupconfig.glade:1901 */
   _("_Dial Mode:");
 
   /* netconfpkg/wirelessconfig.glade:539 */
@@ -879,7 +879,7 @@ void some_function_name() {
    * netconfpkg/wirelessconfig.glade:347 */
   _("_Edit...");
 
-  /* netconfpkg/dialupconfig.glade:2084 */
+  /* netconfpkg/dialupconfig.glade:2085 */
   _("_Encapsulation Mode:");
 
   /* netconfpkg/modemconfig.glade:176 netconfpkg/ModemDruid.glade:156 */
@@ -888,14 +888,14 @@ void some_function_name() {
   /* netconfpkg/editadress.glade:234 */
   _("_Gateway:");
 
-  /* netconfpkg/cipeconfig.glade:746 */
+  /* netconfpkg/cipeconfig.glade:749 */
   _("_Generate");
 
-  /* netconfpkg/dialupconfig.glade:1485 */
+  /* netconfpkg/dialupconfig.glade:1486 */
   _("_Hangup Timeout:");
 
-  /* netconfpkg/ethernetconfig.glade:459
-   * netconfpkg/tokenringconfig.glade:459
+  /* netconfpkg/ethernetconfig.glade:460
+   * netconfpkg/tokenringconfig.glade:460
    * netconfpkg/wirelessconfig.glade:436 */
   _("_Hardware Device:");
 
@@ -916,12 +916,12 @@ void some_function_name() {
   /* netconfpkg/wirelessconfig.glade:819 */
   _("_Key:");
 
-  /* netconfpkg/cipeconfig.glade:420 */
+  /* netconfpkg/cipeconfig.glade:423 */
   _("_Local Port:");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:141
-   * netconfpkg/dialupconfig.glade:640 netconfpkg/DialupDruid.glade:385
-   * netconfpkg/dslconfig.glade:438 */
+   * netconfpkg/dialupconfig.glade:641 netconfpkg/DialupDruid.glade:385
+   * netconfpkg/dslconfig.glade:439 */
   _("_Login Name:");
 
   /* netconfpkg/tcpipdialog.glade:918 */
@@ -950,10 +950,10 @@ void some_function_name() {
    * netconfpkg/wirelessconfig.glade:125 */
   _("_Nickname: ");
 
-  /* netconfpkg/dialupconfig.glade:1138 */
+  /* netconfpkg/dialupconfig.glade:1139 */
   _("_PPP Option:");
 
-  /* netconfpkg/dialupconfig.glade:503 */
+  /* netconfpkg/dialupconfig.glade:504 */
   _("_Phone Number");
 
   /* netconfpkg/DialupDruid.glade:248 */
@@ -962,14 +962,14 @@ void some_function_name() {
   /* maindialog.glade:1231 */
   _("_Primary DNS:");
 
-  /* netconfpkg/ethernetconfig.glade:622
-   * netconfpkg/tokenringconfig.glade:622 */
+  /* netconfpkg/ethernetconfig.glade:623
+   * netconfpkg/tokenringconfig.glade:623 */
   _("_Probe for Address");
 
-  /* netconfpkg/ADSLInterfaceDruid.glade:115 netconfpkg/dslconfig.glade:552 */
+  /* netconfpkg/ADSLInterfaceDruid.glade:115 netconfpkg/dslconfig.glade:553 */
   _("_Provider Name:");
 
-  /* netconfpkg/cipeconfig.glade:447 */
+  /* netconfpkg/cipeconfig.glade:450 */
   _("_Remote Peer Address:");
 
   /* maindialog.glade:191 */
@@ -978,13 +978,13 @@ void some_function_name() {
   /* maindialog.glade:1204 */
   _("_Secondary DNS:");
 
-  /* netconfpkg/cipeconfig.glade:759 */
+  /* netconfpkg/cipeconfig.glade:762 */
   _("_Secret Key:");
 
   /* netconfpkg/tcpipdialog.glade:933 */
   _("_Secure Device (LAN)");
 
-  /* netconfpkg/dslconfig.glade:705 */
+  /* netconfpkg/dslconfig.glade:706 */
   _("_Service-Name:");
 
   /* netconfpkg/editadress.glade:149 netconfpkg/tcpipdialog.glade:295 */
@@ -996,26 +996,26 @@ void some_function_name() {
   /* netconfpkg/wirelessconfig.glade:566 */
   _("_Transmit Rate:");
 
-  /* netconfpkg/cipeconfig.glade:502 */
+  /* netconfpkg/cipeconfig.glade:505 */
   _("_Tunnel through Device:");
 
-  /* netconfpkg/dialupconfig.glade:1224 */
+  /* netconfpkg/dialupconfig.glade:1225 */
   _("_Use Callback");
 
-  /* netconfpkg/ethernetconfig.glade:559
-   * netconfpkg/tokenringconfig.glade:559 */
+  /* netconfpkg/ethernetconfig.glade:560
+   * netconfpkg/tokenringconfig.glade:560 */
   _("_Use Hardware Address");
 
-  /* netconfpkg/dslconfig.glade:811 */
+  /* netconfpkg/dslconfig.glade:812 */
   _("_Use synchronous PPP");
 
   /* netconfpkg/modemconfig.glade:390 netconfpkg/ModemDruid.glade:370 */
   _("_Use touch tone dialing");
 
-  /* netconfpkg/cipeconfig.glade:857 */
+  /* netconfpkg/cipeconfig.glade:860 */
   _("_auto");
 
-  /* netconfpkg/dialupconfig.glade:1626 netconfpkg/dialupconfig.glade:2004
+  /* netconfpkg/dialupconfig.glade:1627 netconfpkg/dialupconfig.glade:2005
    * netconfpkg/wirelessconfig.glade:744
    * netconfpkg/wirelessconfig.glade:761
    * netconfpkg/wirelessconfig.glade:785 */
@@ -1024,25 +1024,25 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:191 */
   _("bootp");
 
-  /* netconfpkg/dialupconfig.glade:2206 */
+  /* netconfpkg/dialupconfig.glade:2207 */
   _("chap");
 
-  /* netconfpkg/dialupconfig.glade:2206 */
+  /* netconfpkg/dialupconfig.glade:2207 */
   _("chap+pap");
 
-  /* netconfpkg/cipeconfig.glade:616 netconfpkg/cipeconfig.glade:636 */
+  /* netconfpkg/cipeconfig.glade:619 netconfpkg/cipeconfig.glade:639 */
   _("cipcb0");
 
-  /* netconfpkg/cipeconfig.glade:616 */
+  /* netconfpkg/cipeconfig.glade:619 */
   _("cipcb1");
 
-  /* netconfpkg/cipeconfig.glade:616 */
+  /* netconfpkg/cipeconfig.glade:619 */
   _("cipcb2");
 
-  /* netconfpkg/cipeconfig.glade:616 */
+  /* netconfpkg/cipeconfig.glade:619 */
   _("cipcb3");
 
-  /* netconfpkg/cipeconfig.glade:616 */
+  /* netconfpkg/cipeconfig.glade:619 */
   _("cipcb4");
 
   /* netconfpkg/tcpipdialog.glade:191 netconfpkg/tcpipdialog.glade:206 */
@@ -1051,9 +1051,9 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:191 */
   _("dialup");
 
-  /* netconfpkg/cipeconfig.glade:558 netconfpkg/cipeconfig.glade:578
-   * netconfpkg/ethernetconfig.glade:488
-   * netconfpkg/ethernetconfig.glade:503
+  /* netconfpkg/cipeconfig.glade:561 netconfpkg/cipeconfig.glade:581
+   * netconfpkg/ethernetconfig.glade:489
+   * netconfpkg/ethernetconfig.glade:504
    * netconfpkg/EthernetHardwareDruid.glade:170
    * netconfpkg/EthernetHardwareDruid.glade:185
    * netconfpkg/ethernethardware.glade:241
@@ -1062,31 +1062,31 @@ void some_function_name() {
    * netconfpkg/wirelessconfig.glade:480 */
   _("eth0");
 
-  /* netconfpkg/cipeconfig.glade:558 netconfpkg/ethernetconfig.glade:488
+  /* netconfpkg/cipeconfig.glade:561 netconfpkg/ethernetconfig.glade:489
    * netconfpkg/EthernetHardwareDruid.glade:170
    * netconfpkg/ethernethardware.glade:241
    * netconfpkg/wirelessconfig.glade:465 */
   _("eth1");
 
-  /* netconfpkg/cipeconfig.glade:558 netconfpkg/ethernetconfig.glade:488
+  /* netconfpkg/cipeconfig.glade:561 netconfpkg/ethernetconfig.glade:489
    * netconfpkg/EthernetHardwareDruid.glade:170
    * netconfpkg/ethernethardware.glade:241
    * netconfpkg/wirelessconfig.glade:465 */
   _("eth2");
 
-  /* netconfpkg/cipeconfig.glade:558 netconfpkg/ethernetconfig.glade:488
+  /* netconfpkg/cipeconfig.glade:561 netconfpkg/ethernetconfig.glade:489
    * netconfpkg/EthernetHardwareDruid.glade:170
    * netconfpkg/ethernethardware.glade:241
    * netconfpkg/wirelessconfig.glade:465 */
   _("eth3");
 
-  /* netconfpkg/cipeconfig.glade:558 netconfpkg/ethernetconfig.glade:488
+  /* netconfpkg/cipeconfig.glade:561 netconfpkg/ethernetconfig.glade:489
    * netconfpkg/EthernetHardwareDruid.glade:170
    * netconfpkg/ethernethardware.glade:241
    * netconfpkg/wirelessconfig.glade:465 */
   _("eth4");
 
-  /* netconfpkg/ethernetconfig.glade:488
+  /* netconfpkg/ethernetconfig.glade:489
    * netconfpkg/EthernetHardwareDruid.glade:170
    * netconfpkg/ethernethardware.glade:241
    * netconfpkg/wirelessconfig.glade:465 */
@@ -1100,51 +1100,51 @@ void some_function_name() {
    * netconfpkg/ethernethardware.glade:241 */
   _("eth7");
 
-  /* netconfpkg/dialupconfig.glade:1626 netconfpkg/dialupconfig.glade:1641
-   * netconfpkg/dialupconfig.glade:2004 netconfpkg/dialupconfig.glade:2019 */
+  /* netconfpkg/dialupconfig.glade:1627 netconfpkg/dialupconfig.glade:1642
+   * netconfpkg/dialupconfig.glade:2005 netconfpkg/dialupconfig.glade:2020 */
   _("manual");
 
-  /* netconfpkg/dialupconfig.glade:2206 netconfpkg/tcpipdialog.glade:191 */
+  /* netconfpkg/dialupconfig.glade:2207 netconfpkg/tcpipdialog.glade:191 */
   _("none");
 
-  /* netconfpkg/dialupconfig.glade:2206 netconfpkg/dialupconfig.glade:2222 */
+  /* netconfpkg/dialupconfig.glade:2207 netconfpkg/dialupconfig.glade:2223 */
   _("pap");
 
-  /* netconfpkg/dialupconfig.glade:2119 */
+  /* netconfpkg/dialupconfig.glade:2120 */
   _("raw IP");
 
-  /* netconfpkg/dialupconfig.glade:2119 netconfpkg/dialupconfig.glade:2143 */
+  /* netconfpkg/dialupconfig.glade:2120 netconfpkg/dialupconfig.glade:2144 */
   _("sync PPP");
 
-  /* netconfpkg/tokenringconfig.glade:488
-   * netconfpkg/tokenringconfig.glade:503
+  /* netconfpkg/tokenringconfig.glade:489
+   * netconfpkg/tokenringconfig.glade:504
    * netconfpkg/TokenRingHardwareDruid.glade:170
    * netconfpkg/TokenRingHardwareDruid.glade:185
    * netconfpkg/tokenringhardware.glade:241
    * netconfpkg/tokenringhardware.glade:256 */
   _("tr0");
 
-  /* netconfpkg/tokenringconfig.glade:488
+  /* netconfpkg/tokenringconfig.glade:489
    * netconfpkg/TokenRingHardwareDruid.glade:170
    * netconfpkg/tokenringhardware.glade:241 */
   _("tr1");
 
-  /* netconfpkg/tokenringconfig.glade:488
+  /* netconfpkg/tokenringconfig.glade:489
    * netconfpkg/TokenRingHardwareDruid.glade:170
    * netconfpkg/tokenringhardware.glade:241 */
   _("tr2");
 
-  /* netconfpkg/tokenringconfig.glade:488
+  /* netconfpkg/tokenringconfig.glade:489
    * netconfpkg/TokenRingHardwareDruid.glade:170
    * netconfpkg/tokenringhardware.glade:241 */
   _("tr3");
 
-  /* netconfpkg/tokenringconfig.glade:488
+  /* netconfpkg/tokenringconfig.glade:489
    * netconfpkg/TokenRingHardwareDruid.glade:170
    * netconfpkg/tokenringhardware.glade:241 */
   _("tr4");
 
-  /* netconfpkg/tokenringconfig.glade:488
+  /* netconfpkg/tokenringconfig.glade:489
    * netconfpkg/TokenRingHardwareDruid.glade:170
    * netconfpkg/tokenringhardware.glade:241 */
   _("tr5");
