@@ -138,14 +138,15 @@ class WirelessInterface(InterfaceCreator):
         self.device.createWireless()
         wl = self.device.Wireless
         wl.EssId = self.xml.get_widget("essidEntry").get_text()
+        if not wl.EssId:
+            wl.EssId = "Any"
         wl.Mode =  self.xml.get_widget("modeEntry").get_text()
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
         wl.Rate = self.xml.get_widget("rateEntry").get_text()
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_wireless_config_page_prepare(self, druid_page, druid):
-        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Auto',
-                                                                'Managed',
+        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Managed',
                                                                 'Ad-Hoc',
                                                                 ])
 
@@ -228,12 +229,19 @@ class WirelessInterface(InterfaceCreator):
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n" + "   "
 
-        s = s + _("ESSID (Network ID):") + " " + str(wl.EssId) + "\n" + "   "\
-            + _("Mode: ") + str(wl.Mode) + "\n" + "   "\
-            + _("Channel: ") + str(wl.Channel) + "\n" + "   "\
+        s = s + "   " + _("Mode: ") + str(wl.Mode) + "\n"
+        s = s + _("ESSID (Network ID):") + " " + str(wl.EssId) + "\n"
+        if wl.Mode != "Managed":
+            s = s + "   "\
+            + _("Channel: ") + str(wl.Channel) + "\n"
+        s = s + "   "\
             + _("Transmit Rate: ") + str(wl.Rate) + "\n" + "   "\
-            + _("Key: ") + str(wl.Key) + "\n"\
-            + "\n\n" + _("Press \"Finish\" to create this account")
+            + _("Key: ")
+        if wl.Key:
+            s = s + str(wl.Key) + "\n"
+        else:
+            s = s + "encryption disabled\n"
+        s = s + "\n\n" + _("Press \"Finish\" to create this account")
 
         druid_page.set_text(s)
         
