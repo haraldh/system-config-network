@@ -74,4 +74,4 @@ install-exec-local:
 	install -m 644 *.py *.glade $(DESTDIR)$(pkgdatadir)/netconfpkg
 
 %.py: %.idl genClass.py
-	python genClass.py -f -c $(srcdir)/$*.idl $@ NC
+	python $(srcdir)/genClass.py -f -c $(srcdir)/$*.idl $@ NC
