@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network VERSION\n"
 "POT-Creation-Date: 2003-09-12 15:41+0200\n"
-"PO-Revision-Date: 2003-07-08 19:56+0200\n"
+"PO-Revision-Date: 2003-09-15 21:00+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -194,11 +194,11 @@ msgstr ""
 #.
 #: src/netconf-tui.py:135
 msgid "Run anyway"
-msgstr ""
+msgstr "Přesto spustit"
 
 #: src/netconf-tui.py:136
 msgid "IMPORTANT"
-msgstr ""
+msgstr "DŮLEŽITÉ"
 
 #: src/netconf-tui.py:137
 #, python-format
@@ -209,10 +209,12 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
+"Tento nástroj není podporován! Použijte prosím grafický nástroj, protože poskytuje všechny funkce.\n"
+"Pokud v počítači není nainstalován X server, přihlaste se pomocí ssh ze stroje s X a použijte předávání X11. Pokud opravdu chcete používat tento nástroj, stisknete <%s>."
 
 #: src/netconf-tui.py:147
 msgid "Quit"
-msgstr ""
+msgstr "Skončit"
 
 #: src/netconf-tui.py:152
 msgid "What do you want to configure?"
@@ -400,9 +402,8 @@ msgid "export / import hardware list"
 msgstr "exportovat / importovat seznam hardware"
 
 #: src/netconf-cmd.py:110
-#, fuzzy
 msgid "export / import IPsec list"
-msgstr "exportovat / importovat seznam profilů"
+msgstr "exportovat / importovat seznam IPsec"
 
 #: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
@@ -1465,9 +1466,9 @@ msgstr "Upravit zařízení..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:859
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "Zařízení loopback nemůže být editováno!"
+msgstr "Zařízení typu %s nemůže být upravováno!\n"
 
 #: src/netconfpkg/gui/maindialog.py:878
 msgid "The Loopback device can not be removed!"
@@ -1550,8 +1551,8 @@ msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
 msgstr ""
-"Je mi líto, není co editovat,\n"
-"nebo tento typ ještě nelze editovat."
+"Je mi líto, není co upravovat,\n"
+"nebo tento typ ještě nelze upravovat."
 
 #: src/netconfpkg/gui/maindialog.py:1546
 #, python-format
@@ -2463,34 +2464,32 @@ msgstr "Nemohu deaktivovat síťové zařízení %s!\n"
 #. save ipsec settings
 #.
 #: src/netconfpkg/NCIPsec.py:168
-#, fuzzy
 msgid "IPsec activating..."
-msgstr "Aktivace síťového zařízení..."
+msgstr "IPsec se aktivuje..."
 
 #: src/netconfpkg/NCIPsec.py:169
-#, fuzzy, python-format
+#, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "Aktivuji síťové zařízení %s, čekejte prosím..."
+msgstr "Aktivuji připojení IPsec %s, čekejte prosím..."
 
 #: src/netconfpkg/NCIPsec.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate IPsec connection %s!\n"
-msgstr "Nemohu aktivovat síťové zařízení %s!\n"
+msgstr "Nemohu aktivovat pripojení IPsec %s!\n"
 
 #: src/netconfpkg/NCIPsec.py:188
-#, fuzzy
 msgid "IPsec deactivating..."
-msgstr "Deaktivace síťového zařízení..."
+msgstr "IPsec se deaktivuje..."
 
 #: src/netconfpkg/NCIPsec.py:189
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "Deaktivují síťové zařízení %s, čekejte prosím..."
+msgstr "Deaktivují připojení IPsec %s, čekejte prosím..."
 
 #: src/netconfpkg/NCIPsec.py:191
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "Nemohu deaktivovat síťové zařízení %s!\n"
+msgstr "Nemohu deaktivovat připojení IPsec %s!\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
@@ -3897,9 +3896,8 @@ msgstr ""
 "nastavením připojení IPsec."
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
-#, fuzzy
 msgid "_Activate connection when computer starts"
-msgstr "Aktivovat zařízení _při startu počítače"
+msgstr "_Aktivovat připojení při startu počítače"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption Key:"
@@ -4569,9 +4567,6 @@ msgstr "V aktivním profilu jsou nakonfigurována následující síťová rozhr
 msgid "_Info\t"
 msgstr "_Info   "
 
-#~ msgid "_IPsec"
-#~ msgstr "_IPsec"
-
 #~ msgid "IPsec Tunnel Settings"
 #~ msgstr "Nastavení tunelu IPsec"
 
@@ -4583,12 +4578,6 @@ msgstr "_Info   "
 
 #~ msgid "Remote Network"
 #~ msgstr "Vzdálená síť"
-
-#~ msgid "Ad-Hoc"
-#~ msgstr "Ad-Hoc"
-
-#~ msgid "Managed"
-#~ msgstr "Managed"
 
 #~ msgid ""
 #~ "Not all network interfaces in selected profile \"%s\" could be activated."
@@ -4609,9 +4598,6 @@ msgstr "_Info   "
 
 #~ msgid "Exception Occured"
 #~ msgstr "Nastala výjimka"
-
-#~ msgid "Debug"
-#~ msgstr "Ladící režim"
 
 #~ msgid "Save to file"
 #~ msgstr "Uložit do souboru"
