@@ -22,7 +22,6 @@ from NC_functions import _
 from NC_functions import modemDeviceList
 import NCHardwareList
 import NCisdnhardware
-#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -79,9 +78,9 @@ class ModemInterface:
         id = self.hardwarelist.addHardware()
         self.hw = self.hardwarelist[id]
         self.hw.Type = Type
+        self.hw.Name = Type + '0'
         if Type == 'ISDN':  self.hw.createCard()
         elif Type == 'Modem': self.hw.createModem()
-        self.hw.Name = Type + '0'
  
         return self.druids[0:] + dialup.get_druids()
 

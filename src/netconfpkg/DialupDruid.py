@@ -194,12 +194,14 @@ class DialupDruid(InterfaceCreator):
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('providerName').get_text()
         self.device.Type = self.connection_type
+
         self.device.BootProto = 'DIALUP'
         self.device.AllowUser = TRUE
         if self.connection_type == 'ISDN':
             self.device.Device = 'ippp'
         elif self.connection_type == 'Modem':
             self.device.Device = 'modem'
+            self.device.Name  = 'Modem0'
         self.device.AutoDNS = TRUE
         dialup = self.device.createDialup()
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()

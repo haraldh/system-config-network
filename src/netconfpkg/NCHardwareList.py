@@ -202,6 +202,7 @@ class HardwareList(HardwareList_base):
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
                 wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
                 wvdial[hw.Name]['Dial Command'] = str(hw.Modem.DialCommand)
+                if not hw.Modem.InitString: hw.Modem.InitString = 'ATZ'
                 wvdial[hw.Name]['Init1'] = str(hw.Modem.InitString)
             if hw.Type == "ISDN":
                 isdn.Description = hw.Description
