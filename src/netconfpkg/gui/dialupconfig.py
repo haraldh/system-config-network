@@ -225,12 +225,20 @@ class ISDNDialupDialog(DialupDialog):
 
         dialup = self.device.Dialup
 
+        if dialup.PhoneInNumber:
+            self.xml.get_widget("dialinNumberEntry").set_text(dialup.PhoneInNumber)
+
+        if dialup.Secure:
+            self.xml.get_widget("allowDialinNumberCB").set_active(dialup.Secure)
+            
         if dialup.Callback and dialup.Callback.Type != 'off':
+            if dialup.Callback.Type == 'in':
+                self.xml.get_widget('CallbackMode').set_history(0)
+            else:
+                self.xml.get_widget('CallbackMode').set_history(1)
             self.xml.get_widget("callbackCB").set_active(true)
             self.xml.get_widget("callbackFrame").set_sensitive(true)
-            self.xml.get_widget("dialinNumberEntry").set_text(dialup.Callback.Number)
             self.xml.get_widget("callbackDelaySB").set_value(dialup.Callback.Delay)
-            self.xml.get_widget("allowDialinNumberCB").set_active(dialup.Secure)
             self.xml.get_widget("cbcpCB").set_active(dialup.Callback.Compression)
 
         if dialup.HangupTimeout:
@@ -283,13 +291,17 @@ class ISDNDialupDialog(DialupDialog):
             dialup.EncapMode = "rawip"
             self.device.Device = "isdn"
 
+        dialup.PhoneInNumber = self.xml.get_widget("dialinNumberEntry").get_text()
+        dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
+        
         if not dialup.Callback: dialup.createCallback()
         if self.xml.get_widget("callbackCB").get_active():
-            dialup.Callback.Type = "out"
-            dialup.Callback.Number = self.xml.get_widget("dialinNumberEntry").get_text()
+            if self.xml.get_widget('CallbackMode')['label'] == _('in'):
+                dialup.Callback.Type = 'in'
+            else:
+                dialup.Callback.Type = 'out'
             dialup.Callback.Delay = self.xml.get_widget("callbackDelaySB").get_value_as_int()
             dialup.Callback.Hup = false
-            dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
             dialup.Callback.Compression = self.xml.get_widget("cbcpCB").get_active()
         else:
             dialup.Callback.Type = "off"

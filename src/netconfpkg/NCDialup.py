@@ -100,7 +100,8 @@ class Dialup(DeviceList.Dialup_base):
     def __init__(self, list = None, parent = None):
         DeviceList.Dialup_base.__init__(self, list, parent)        
         self.createCompression()
-        
+
+
 class DslDialup(Dialup):
     boolkeydict = { 'PeerDNS' : 'RESOLV_MODS',
                     'SyncPPP' : 'SYNCHRONOUS',
@@ -226,6 +227,7 @@ class IsdnDialup(Dialup):
                 'Areacode' : 'AREACODE',
                 'Regioncode' : 'REGIONCODE',
                 'PhoneNumber' : 'PHONE_OUT',
+                'PhoneInNumber': 'PHONE_IN',
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
                 'ChargeHup' : 'CHARGEHUP',
@@ -271,16 +273,6 @@ class IsdnDialup(Dialup):
             else:
                 self.DefRoute = false
 
-        if conf.has_key("PASSWORD"):
-            self.Password = conf["PASSWORD"]
-        elif self.Login:
-            papconf = getPAPConf()
-            chapconf = getCHAPConf()
-            for conf in [chapconf, papconf]:
-                if conf.has_key(self.Login):
-                    if conf[self.Login].has_key("*"):
-                        self.Password = conf[self.Login]["*"]
-        
         if conf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
             
@@ -303,15 +295,24 @@ class IsdnDialup(Dialup):
 
         if not self.PPPOptions:
             self.createPPPOptions()
-        
         self.Compression.load(conf)
-        
+
         if conf.has_key('CALLBACK'):
-            if conf['CALLBACK'] == 'on' or conf['CALLBACK'] == 'out' :
+            if conf['CALLBACK'] == 'in' or conf['CALLBACK'] == 'out':
                 callback = self.createCallback()
                 callback.load(conf)
             else:
                 self.delCallback()
+
+        if conf.has_key("PASSWORD"):
+            self.Password = conf["PASSWORD"]
+        elif self.Login:
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            for conf in [chapconf, papconf]:
+                if conf.has_key(self.Login):
+                    if conf[self.Login].has_key("*"):
+                        self.Password = conf[self.Login]["*"]
 
         self.commit(changed=false)
 
@@ -369,19 +370,15 @@ class IsdnDialup(Dialup):
 
         if self.Compression:
             self.Compression.save(conf)
-            
+
         if self.Callback:
-            conf['CALLBACK'] == 'out'
+            conf['CALLBACK'] = self.Callback.Type
             self.Callback.save(conf)
         else:
-            conf['CALLBACK'] == 'off'
-
-        if conf['CALLBACK'] == 'off':
-            if conf.has_key('PHONE_IN'): del conf['PHONE_IN']
+            conf['CALLBACK'] = 'off'
             if conf.has_key('CBHUP'): del conf['CBHUP']
             if conf.has_key('CBDELAY'): del conf['CBDELAY']
             if conf.has_key('CBCP'): del conf['CBCP']
-            if conf.has_key('SECURE'): del conf['SECURE']
 
         for i in conf.keys():
             if not conf[i]: del conf[i]

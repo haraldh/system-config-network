@@ -485,7 +485,7 @@ class mainDialog:
         button = self.editDevice(device)
 
         if button != 0:
-            device.rollback()
+            #device.rollback()
             return
 
         device.commit()

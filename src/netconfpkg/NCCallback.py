@@ -19,13 +19,12 @@
 
 from DeviceList import *
 from NC_functions import *
-
+ 
 class Callback(Callback_base):
     boolkeydict = { 'Compression' : 'CBCP',
                     'Hup' : 'CBHUP' }
     
-    keydict = { 'Number' : 'PHONE_IN',
-                'Type' : 'CALLBACK' }
+    keydict = { 'Type' : 'CALLBACK' }
 
     intkeydict = { 'Delay' : 'CBDELAY' }
 
