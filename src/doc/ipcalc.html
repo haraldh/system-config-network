@@ -1,0 +1,79 @@
+
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module ipcalc</title>
+<style type="text/css"><!--
+TT { font-family: lucidatypewriter, lucida console, courier }
+--></style></head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#7799ee">
+<td valign=bottom><small>&nbsp;<br></small
+><font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>ipcalc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/preston/programming/netconf/src/ipcalc.py">/usr/preston/programming/netconf/src/ipcalc.py</a></font></td></tr></table>
+    <p><small><tt>#&nbsp;Python&nbsp;wrapper&nbsp;for&nbsp;ipcalc&nbsp;command&nbsp;line&nbsp;IP&nbsp;address&nbsp;manipulation&nbsp;tool<br>
+#&nbsp;Copyright&nbsp;(c)&nbsp;2001&nbsp;Red&nbsp;Hat,&nbsp;Inc.&nbsp;All&nbsp;rights&nbsp;reserved.<br>
+#<br>
+#&nbsp;This&nbsp;software&nbsp;may&nbsp;be&nbsp;freely&nbsp;redistributed&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;GNU<br>
+#&nbsp;public&nbsp;license.<br>
+#&nbsp;<br>
+#&nbsp;You&nbsp;should&nbsp;have&nbsp;received&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;GNU&nbsp;General&nbsp;Public&nbsp;License<br>
+#&nbsp;along&nbsp;with&nbsp;this&nbsp;program;&nbsp;if&nbsp;not,&nbsp;write&nbsp;to&nbsp;the&nbsp;Free&nbsp;Software<br>
+#&nbsp;Foundation,&nbsp;Inc.,&nbsp;675&nbsp;Mass&nbsp;Ave,&nbsp;Cambridge,&nbsp;MA&nbsp;02139,&nbsp;USA.<br>
+#<br>
+#&nbsp;Author:&nbsp;Preston&nbsp;Brown&nbsp;&lt;pbrown@redhat.com&gt;</tt></small></p>
+
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><table width="100%"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><small><a href="ipcalc.html#IPCalc">IPCalc</a>
+</small></font></dt></dl>
+ 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="IPCalc">class <strong>IPCalc</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt>A&nbsp;wrapper&nbsp;class&nbsp;that&nbsp;encapsulates&nbsp;the&nbsp;command&nbsp;line<br>
+functionality&nbsp;of&nbsp;the&nbsp;ipcalc&nbsp;command,&nbsp;providing&nbsp;access&nbsp;to&nbsp;computing<br>
+network&nbsp;prefixes,&nbsp;netmasks,&nbsp;etc.&nbsp;from&nbsp;python.<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="IPCalc-__init__"><strong>__init__</strong></a>(self, address, prefix<small><font color="#909090">=None</font></small>, netmask<small><font color="#909090">=None</font></small>)<dd><small><tt>Initialize&nbsp;an&nbsp;<a href="#IPCalc">IPCalc</a>&nbsp;object.&nbsp;&nbsp;Address&nbsp;must&nbsp;be&nbsp;provided,&nbsp;and<br>
+in&nbsp;order&nbsp;for&nbsp;most&nbsp;of&nbsp;the&nbsp;other&nbsp;calculations&nbsp;to&nbsp;be&nbsp;possible,<br>
+one&nbsp;of&nbsp;prefix&nbsp;or&nbsp;netmask&nbsp;must&nbsp;also&nbsp;be&nbsp;provided.</tt></small></dl>
+<dl><dt><a name="IPCalc-broadcast"><strong>broadcast</strong></a>(self)</dl>
+<dl><dt><a name="IPCalc-netmask"><strong>netmask</strong></a>(self)</dl>
+<dl><dt><a name="IPCalc-network"><strong>network</strong></a>(self)</dl>
+<dl><dt><a name="IPCalc-prefix"><strong>prefix</strong></a>(self)</dl>
+</td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="-test"><strong>test</strong></a>()<dd><small><tt>Test&nbsp;function&nbsp;for&nbsp;the&nbsp;<a href="#IPCalc">IPCalc</a>&nbsp;class.</tt></small></dl>
+</td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><strong>__file__</strong> = './ipcalc.pyc'<br>
+<strong>__name__</strong> = 'ipcalc'</td></tr></table>
+</body></html>

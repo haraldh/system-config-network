@@ -1,0 +1,104 @@
+
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module EthernetDevice</title>
+<style type="text/css"><!--
+TT { font-family: lucidatypewriter, lucida console, courier }
+--></style></head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#7799ee">
+<td valign=bottom><small>&nbsp;<br></small
+><font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>EthernetDevice</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/preston/programming/netconf/src/EthernetDevice.py">/usr/preston/programming/netconf/src/EthernetDevice.py</a></font></td></tr></table>
+    <p><small><tt>A&nbsp;generic&nbsp;network&nbsp;device&nbsp;class,&nbsp;containg&nbsp;data&nbsp;and&nbsp;functionality&nbsp;shared<br>
+between&nbsp;different&nbsp;kinds&nbsp;of&nbsp;network&nbsp;devices</tt></small></p>
+
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><table width="100%"><tr><td width="25%" valign=top><a href="Address.html">Address</a><br>
+<a href="Device.html">Device</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><small><a href="Device.html#Device">Device.Device</a>
+</small></font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><small><a href="EthernetDevice.html#EthernetDevice">EthernetDevice</a>
+</small></font></dt></dl>
+</dd>
+</dl>
+ 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="EthernetDevice">class <strong>EthernetDevice</strong></a>(<a href="Device.html#Device">Device.Device</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt>A&nbsp;specialization&nbsp;of&nbsp;the&nbsp;<a href="Device.html#Device">Device</a>&nbsp;class&nbsp;for&nbsp;Ethernet&nbsp;devices<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="EthernetDevice-HWaddressList"><strong>HWaddressList</strong></a>(self)<dd><small><tt>returns&nbsp;a&nbsp;list&nbsp;of&nbsp;internet&nbsp;addresses&nbsp;(both&nbsp;IPv4&nbsp;and&nbsp;IPv6)<br>
+associated&nbsp;with&nbsp;this&nbsp;device,&nbsp;including&nbsp;aliases.</tt></small></dl>
+<dl><dt><a name="EthernetDevice-HWenabled"><strong>HWenabled</strong></a>(self)<dd><small><tt>returns&nbsp;1&nbsp;if&nbsp;a&nbsp;device&nbsp;is&nbsp;enabled&nbsp;(up),&nbsp;0&nbsp;otherwise.</tt></small></dl>
+<dl><dt><a name="EthernetDevice-HWid"><strong>HWid</strong></a>(self)<dd><small><tt>returns&nbsp;the&nbsp;ID&nbsp;associated&nbsp;with&nbsp;this&nbsp;device,&nbsp;usually&nbsp;a&nbsp;MAC&nbsp;address.</tt></small></dl>
+<dl><dt><a name="EthernetDevice-HWsetId"><strong>HWsetId</strong></a>(self, newId)<dd><small><tt>set&nbsp;the&nbsp;ID&nbsp;of&nbsp;this&nbsp;device.&nbsp;&nbsp;Returns&nbsp;0&nbsp;on&nbsp;failure;&nbsp;1&nbsp;on&nbsp;success.</tt></small></dl>
+<dl><dt><a name="EthernetDevice-HWtype"><strong>HWtype</strong></a>(self)<dd><small><tt>return&nbsp;the&nbsp;type&nbsp;of&nbsp;device,&nbsp;i.e.&nbsp;"wireless",&nbsp;"ethernet",&nbsp;"loopback",&nbsp;etc.</tt></small></dl>
+<dl><dt><a name="EthernetDevice-__init__"><strong>__init__</strong></a>(self)<dd><small><tt>The&nbsp;initialization&nbsp;routine&nbsp;for&nbsp;an&nbsp;<a href="#EthernetDevice">EthernetDevice</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="EthernetDevice-addressList"><strong>addressList</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-description"><strong>description</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-getMACAddress"><strong>getMACAddress</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;currently&nbsp;configured&nbsp;MAC&nbsp;address<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="EthernetDevice-identifier"><strong>identifier</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-isEnabled"><strong>isEnabled</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-name"><strong>name</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-readConfig"><strong>readConfig</strong></a>(self, filename)<dd><small><tt>Read&nbsp;the&nbsp;configuration&nbsp;of&nbsp;this&nbsp;device<br>
+from&nbsp;the&nbsp;given&nbsp;file<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="EthernetDevice-readHardware"><strong>readHardware</strong></a>(self)<dd><small><tt>Read&nbsp;the&nbsp;active&nbsp;settings&nbsp;(and&nbsp;hardware&nbsp;specific&nbsp;details,&nbsp;like&nbsp;MAC&nbsp;addresses)<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="EthernetDevice-setAddressList"><strong>setAddressList</strong></a>(self, list)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setDescription"><strong>setDescription</strong></a>(self, description)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setEnabled"><strong>setEnabled</strong></a>(self, enabled)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setIdentifier"><strong>setIdentifier</strong></a>(self, identifier)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setMACAddress"><strong>setMACAddress</strong></a>(self, macaddress)<dd><small><tt>Set&nbsp;the&nbsp;MAC&nbsp;address&nbsp;for&nbsp;the&nbsp;<a href="#EthernetDevice">EthernetDevice</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@macaddress&nbsp;The&nbsp;new&nbsp;MAC&nbsp;address</tt></small></dl>
+<dl><dt><a name="EthernetDevice-setName"><strong>setName</strong></a>(self, name)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setType"><strong>setType</strong></a>(self, type)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-toString"><strong>toString</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;current&nbsp;configuration&nbsp;in&nbsp;string<br>
+form</tt></small></dl>
+<dl><dt><a name="EthernetDevice-type"><strong>type</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-writeConfig"><strong>writeConfig</strong></a>(self, profile<small><font color="#909090">='default'</font></small>, mode<small><font color="#909090">=420</font></small>)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-writeHardware"><strong>writeHardware</strong></a>(self)<dd><small><tt>Apply&nbsp;the&nbsp;current&nbsp;configuration&nbsp;to&nbsp;the&nbsp;system<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+</td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="-test"><strong>test</strong></a>()<dd><small><tt>Test&nbsp;for&nbsp;<a href="#EthernetDevice">EthernetDevice</a></tt></small></dl>
+</td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><strong>__file__</strong> = './EthernetDevice.pyc'<br>
+<strong>__name__</strong> = 'EthernetDevice'</td></tr></table>
+</body></html>

@@ -1,0 +1,136 @@
+
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Address</title>
+<style type="text/css"><!--
+TT { font-family: lucidatypewriter, lucida console, courier }
+--></style></head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#7799ee">
+<td valign=bottom><small>&nbsp;<br></small
+><font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Address</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/preston/programming/netconf/src/Address.py">/usr/preston/programming/netconf/src/Address.py</a></font></td></tr></table>
+    <p><small><tt>Classes&nbsp;for&nbsp;managing&nbsp;an&nbsp;address&nbsp;and&nbsp;list&nbsp;of&nbsp;these</tt></small></p>
+
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><table width="100%"><tr><td width="25%" valign=top><a href="Conf.html">Conf</a><br>
+</td><td width="25%" valign=top><a href="ipcalc.html">ipcalc</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><small><a href="Address.html#Address">Address</a>
+</small></font></dt><dt><font face="helvetica, arial"><small><a href="Address.html#AddressList">AddressList</a>
+</small></font></dt></dl>
+ 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="Address">class <strong>Address</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt>The&nbsp;class&nbsp;for&nbsp;address&nbsp;description<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="Address-__cmp__"><strong>__cmp__</strong></a>(self, other)<dd><small><tt>Compares&nbsp;two&nbsp;addresses...&nbsp;returns&nbsp;0&nbsp;for&nbsp;equal<br>
+(address&nbsp;and&nbsp;device&nbsp;are&nbsp;compared),&nbsp;otherwise&nbsp;1<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@other&nbsp;The&nbsp;object&nbsp;to&nbsp;compare&nbsp;to</tt></small></dl>
+<dl><dt><a name="Address-__init__"><strong>__init__</strong></a>(self, filename<small><font color="#909090">=''</font></small>, number<small><font color="#909090">=''</font></small>)<dd><small><tt>The&nbsp;initialization&nbsp;of&nbsp;an&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-__str__"><strong>__str__</strong></a>(self)<dd><small><tt>Converts&nbsp;the&nbsp;structure&nbsp;to&nbsp;a&nbsp;multiline&nbsp;string,<br>
+for&nbsp;storage<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-address"><strong>address</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;address&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-broadcast"><strong>broadcast</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;broadcast&nbsp;address&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-device"><strong>device</strong></a>(self)<dd><small><tt>Returns&nbsp;the&nbsp;device&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-prefix"><strong>prefix</strong></a>(self)<dd><small><tt>Get&nbsp;the&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-readFile"><strong>readFile</strong></a>(self, filename, number<small><font color="#909090">=''</font></small>)<dd><small><tt>Read&nbsp;configuration&nbsp;file,&nbsp;and&nbsp;populate&nbsp;the&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@filename&nbsp;The&nbsp;file&nbsp;to&nbsp;read&nbsp;from<br>
+@number&nbsp;The&nbsp;address&nbsp;sequence&nbsp;no</tt></small></dl>
+<dl><dt><a name="Address-readOldFile"><strong>readOldFile</strong></a>(self, filename)<dd><small><tt>Read&nbsp;old&nbsp;ifcfg-&lt;foo&gt;&nbsp;file<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@file&nbsp;The&nbsp;file&nbsp;from&nbsp;which&nbsp;to&nbsp;read&nbsp;the&nbsp;configuration</tt></small></dl>
+<dl><dt><a name="Address-scope"><strong>scope</strong></a>(self)<dd><small><tt>Returns&nbsp;the&nbsp;scope&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Address-setAddress"><strong>setAddress</strong></a>(self, address)<dd><small><tt>Set&nbsp;the&nbsp;address&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@address&nbsp;The&nbsp;new&nbsp;address</tt></small></dl>
+<dl><dt><a name="Address-setBroadcast"><strong>setBroadcast</strong></a>(self, broadcast)<dd><small><tt>Set&nbsp;the&nbsp;broadcast&nbsp;address&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@broadcast&nbsp;The&nbsp;new&nbsp;broadcast&nbsp;address</tt></small></dl>
+<dl><dt><a name="Address-setDevice"><strong>setDevice</strong></a>(self, device)<dd><small><tt>Set&nbsp;the&nbsp;device&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@device&nbsp;The&nbsp;device&nbsp;name</tt></small></dl>
+<dl><dt><a name="Address-setPrefix"><strong>setPrefix</strong></a>(self, prefix)<dd><small><tt>Set&nbsp;the&nbsp;prefix&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@prefix&nbsp;The&nbsp;new&nbsp;prefix</tt></small></dl>
+<dl><dt><a name="Address-setScope"><strong>setScope</strong></a>(self, scope)<dd><small><tt>Set&nbsp;the&nbsp;scope&nbsp;of&nbsp;the&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@scope&nbsp;The&nbsp;scope</tt></small></dl>
+<dl><dt><a name="Address-toString"><strong>toString</strong></a>(self, number<small><font color="#909090">=''</font></small>)<dd><small><tt>Converts&nbsp;the&nbsp;structure&nbsp;to&nbsp;a&nbsp;multiline&nbsp;string,<br>
+for&nbsp;storage<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@number&nbsp;The&nbsp;sequence&nbsp;number&nbsp;of&nbsp;this&nbsp;address</tt></small></dl>
+</td></tr></table> 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="AddressList">class <strong>AddressList</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt>Maintains&nbsp;a&nbsp;list&nbsp;of&nbsp;addresses<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="AddressList-__init__"><strong>__init__</strong></a>(self)<dd><small><tt>Initializes&nbsp;an&nbsp;empty&nbsp;list&nbsp;of&nbsp;addresses<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="AddressList-addAddress"><strong>addAddress</strong></a>(self, address)<dd><small><tt>Add&nbsp;an&nbsp;address&nbsp;to&nbsp;the&nbsp;array&nbsp;of&nbsp;address&nbsp;objects<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@address&nbsp;The&nbsp;address&nbsp;to&nbsp;add</tt></small></dl>
+<dl><dt><a name="AddressList-addressList"><strong>addressList</strong></a>(self)<dd><small><tt>Returns&nbsp;an&nbsp;array&nbsp;of&nbsp;adress&nbsp;objects<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="AddressList-deleteAddress"><strong>deleteAddress</strong></a>(self, address, device)<dd><small><tt>Delete&nbsp;an&nbsp;address&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@address&nbsp;The&nbsp;address&nbsp;of&nbsp;the&nbsp;device&nbsp;to&nbsp;delete<br>
+@device&nbsp;The&nbsp;device&nbsp;to&nbsp;delete</tt></small></dl>
+<dl><dt><a name="AddressList-readFile"><strong>readFile</strong></a>(self, filename)<dd><small><tt>Read&nbsp;configuration&nbsp;file,&nbsp;and&nbsp;populate&nbsp;the&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@filename&nbsp;The&nbsp;file&nbsp;to&nbsp;read&nbsp;from</tt></small></dl>
+<dl><dt><a name="AddressList-setAddressList"><strong>setAddressList</strong></a>(self, list)<dd><small><tt>Explicitly&nbsp;sets&nbsp;the&nbsp;array&nbsp;of&nbsp;array&nbsp;objects<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="AddressList-toString"><strong>toString</strong></a>(self)<dd><small><tt>Return&nbsp;a&nbsp;multiline&nbsp;string&nbsp;containing&nbsp;the&nbsp;addresses,<br>
+in&nbsp;the&nbsp;format&nbsp;of&nbsp;ADDRESS0,&nbsp;...,&nbsp;ADDRESS1&nbsp;etc<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+</td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="-test"><strong>test</strong></a>()<dd><small><tt>Test&nbsp;for&nbsp;<a href="#AddressList">AddressList</a>&nbsp;and&nbsp;<a href="#Address">Address</a></tt></small></dl>
+</td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><strong>__file__</strong> = './Address.pyc'<br>
+<strong>__name__</strong> = 'Address'</td></tr></table>
+</body></html>

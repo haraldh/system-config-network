@@ -1,0 +1,98 @@
+
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Device</title>
+<style type="text/css"><!--
+TT { font-family: lucidatypewriter, lucida console, courier }
+--></style></head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#7799ee">
+<td valign=bottom><small>&nbsp;<br></small
+><font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Device</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/preston/programming/netconf/src/Device.py">/usr/preston/programming/netconf/src/Device.py</a></font></td></tr></table>
+    <p><small><tt>A&nbsp;generic&nbsp;network&nbsp;device&nbsp;class,&nbsp;containg&nbsp;data&nbsp;and&nbsp;functionality&nbsp;shared<br>
+between&nbsp;different&nbsp;kinds&nbsp;of&nbsp;network&nbsp;devices</tt></small></p>
+
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><table width="100%"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><small><a href="Device.html#Device">Device</a>
+</small></font></dt></dl>
+ 
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#000000" face="helvetica, arial"><a name="Device">class <strong>Device</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><small><tt>The&nbsp;class&nbsp;containing&nbsp;common&nbsp;fields&nbsp;for&nbsp;all&nbsp;classes&nbsp;of&nbsp;devices.<br>&nbsp;</tt></small></td></tr>
+<tr><td>&nbsp;&nbsp;</td>
+<td width="100%"><dl><dt><a name="Device-__init__"><strong>__init__</strong></a>(self)<dd><small><tt>The&nbsp;initialization&nbsp;of&nbsp;the&nbsp;common&nbsp;device.<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-addressList"><strong>addressList</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;list&nbsp;of&nbsp;addresses&nbsp;&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object,&nbsp;type&nbsp;Address.AddressList<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-description"><strong>description</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;description&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-identifier"><strong>identifier</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;identifier&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-isEnabled"><strong>isEnabled</strong></a>(self)<dd><small><tt>Return&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object&nbsp;is&nbsp;enabled<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-name"><strong>name</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-readConfig"><strong>readConfig</strong></a>(self, filename)<dd><small><tt>Read&nbsp;the&nbsp;configuration&nbsp;data&nbsp;for&nbsp;the&nbsp;device&nbsp;from&nbsp;the&nbsp;given&nbsp;file<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@filename&nbsp;The&nbsp;file&nbsp;to&nbsp;read&nbsp;the&nbsp;configuration&nbsp;from</tt></small></dl>
+<dl><dt><a name="Device-readHardware"><strong>readHardware</strong></a>(self)<dd><small><tt>Read&nbsp;the&nbsp;active&nbsp;settings&nbsp;(and&nbsp;hardware&nbsp;specific&nbsp;details,&nbsp;like&nbsp;MAC&nbsp;addresses)<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-setAddressList"><strong>setAddressList</strong></a>(self, list)<dd><small><tt>Set&nbsp;the&nbsp;AddressList&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@list&nbsp;The&nbsp;new&nbsp;list&nbsp;of&nbsp;addresses&nbsp;in&nbsp;the&nbsp;object,&nbsp;type&nbsp;Address.AddressList</tt></small></dl>
+<dl><dt><a name="Device-setDescription"><strong>setDescription</strong></a>(self, description)<dd><small><tt>Set&nbsp;the&nbsp;description&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@description&nbsp;The&nbsp;new&nbsp;description</tt></small></dl>
+<dl><dt><a name="Device-setEnabled"><strong>setEnabled</strong></a>(self, enabled)<dd><small><tt>Set&nbsp;the&nbsp;enabled&nbsp;status&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@enabled&nbsp;The&nbsp;new&nbsp;enabled&nbsp;status</tt></small></dl>
+<dl><dt><a name="Device-setIdentifier"><strong>setIdentifier</strong></a>(self, identifier)<dd><small><tt>Set&nbsp;the&nbsp;identifier&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@identifier&nbsp;The&nbsp;new&nbsp;identifier</tt></small></dl>
+<dl><dt><a name="Device-setName"><strong>setName</strong></a>(self, name)<dd><small><tt>Set&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@name&nbsp;The&nbsp;new&nbsp;name</tt></small></dl>
+<dl><dt><a name="Device-setType"><strong>setType</strong></a>(self, type)<dd><small><tt>Set&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@type&nbsp;The&nbsp;new&nbsp;type</tt></small></dl>
+<dl><dt><a name="Device-toString"><strong>toString</strong></a>(self)<dd><small><tt>Return&nbsp;a&nbsp;string&nbsp;representation&nbsp;of&nbsp;the&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-type"><strong>type</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;<a href="#Device">Device</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+<dl><dt><a name="Device-writeConfig"><strong>writeConfig</strong></a>(self, profile<small><font color="#909090">='default'</font></small>, mode<small><font color="#909090">=420</font></small>)<dd><small><tt>Write&nbsp;the&nbsp;configuration&nbsp;data&nbsp;for&nbsp;the&nbsp;device&nbsp;to&nbsp;the&nbsp;given&nbsp;file<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@filename&nbsp;The&nbsp;profile&nbsp;to&nbsp;apply&nbsp;the&nbsp;data&nbsp;to<br>
+@mode&nbsp;The&nbsp;permissons&nbsp;for&nbsp;the&nbsp;configuration&nbsp;file&nbsp;-&nbsp;default&nbsp;0644</tt></small></dl>
+<dl><dt><a name="Device-writeHardware"><strong>writeHardware</strong></a>(self)<dd><small><tt>Apply&nbsp;the&nbsp;current&nbsp;settings&nbsp;to&nbsp;the&nbsp;device<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
+</td></tr></table></td></tr></table>
+<p><table width="100%" cellspacing=0 cellpadding=2 border=0>
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
+><font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
+<td width="100%"><strong>NETCFGPATH</strong> = '/etc/syconfig/networking'<br>
+<strong>__file__</strong> = './Device.pyc'<br>
+<strong>__name__</strong> = 'Device'</td></tr></table>
+</body></html>
