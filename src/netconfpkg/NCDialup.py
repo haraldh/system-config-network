@@ -65,9 +65,9 @@ class DslDialup(Dialup):
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if self.__dict__[selfkey]:
-                conf[confkey] = 'no'
-            else:
                 conf[confkey] = 'yes'
+            else:
+                conf[confkey] = 'no'
 
         if not conf.has_key('CONNECT_TIMEOUT'):
             conf['CONNECT_TIMEOUT'] = '60'
