@@ -183,7 +183,7 @@ class mainDialog:
 
         row = 0
         for dev in devicelist:
-            type = "Unknown"
+            type = dev.Type
             for i in xrange(len(hardwarelist)):
                 if hardwarelist[i].Name == dev.Device:
                     type = hardwarelist[i].Type
