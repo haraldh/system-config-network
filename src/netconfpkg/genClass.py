@@ -75,11 +75,11 @@ BackupList = "# BackupList\n"
 ApplyList = "# ApplyList\n"
 
 ClassHeader = """
-class %classname%base:
+class %classname%base%baseclass:
 	def __init__(self, list = None, parent = None):
+		%BaseInit
 		self.__parent = parent
 		self.dead = 0
-
 		self.__doUnlink()
 
 		# Constructor with object
@@ -188,75 +188,27 @@ ListCLOps = """
 """
 
 AnonListOps = """
-	def __len__ (self):
-		return len(self.__%classname)
-
-	def __getitem__(self, key):
-		return self.__%classname[key]
-
-	def __setitem__(self, key, value):
-		self.__%classname[key] = value
-
-	def __delitem__(self, key):
-		del self.__%classname[key]
-
-	def __getslice__(self, i, j):
-		return self.__%classname[i:j]
-
-	def __setslice__(self, i, j, s):
-		self.__%classname[i:j] = s
-
-	def __delslice__(self, i, j):
-		del self.__%classname[i:j]
-
-	def append (self, x):
-		return self.__%classname.append(x)
-
-	def extend (self, l):
-		return self.__%classname.extend(l)
-
-	def count(self, x):
-		return self.__%classname.count(x)
-
-	def index(self, x):
-		return self.__%classname.index(x)
-
-	def insert(self, i, x):
-		return self.__%classname.insert(i, x)
-
-	def pop(self, i = None):
-		return self.__%classname.pop(i)
-
-	def remove(self, x):
-		return self.__%classname.remove(x)
-
-	def reverse(self):
-		return self.__%classname.reverse()
-
-	def sort(self, cmpfunc = None):
-		return self.__%classname.sort(cmpfunc)
-
 	def get%childname(self, pos):
-		return self.__%classname[pos]
+		return self.data[pos]
 
 	def del%childname(self, pos):
-		self.__%classname.pop(pos)
+		self.data.pop(pos)
 		return 0
 
 	def getNum%childname(self):
-		return len(self.__%classname)
+		return len(self.data)
 
 	def move%childname(self, pos1, pos2):
 		direct = 0
 		if pos2 > pos1: direct = 1
-		obj = self.__%classname.pop(pos1)
-		self.__%classname.insert(obj, pos2 - direct)
+		obj = self.data.pop(pos1)
+		self.data.insert(obj, pos2 - direct)
 		return 0
 """
 AnonListCLOps = """
 	def add%childname(self):
-		self.__%classname.append(%childname(None, self))
-		return len(self.__%classname)
+		self.data.append(%childname(None, self))
+		return len(self.data)-1
 
 	def remove%childname(self, child):
 		try: remove(child)
@@ -265,22 +217,22 @@ AnonListCLOps = """
 
 AnonListCNLOps = """
 	def add%childname(self):
-		self.__%classname.append(None)
-		return len(self.__%classname)
+		self.data.append(None)
+		return len(self.data)
 
 	# @brief set the value of %childname
 	# @param pos the position in the list of the %childname object
 	# @param value the value
 	# @return @c 0 on success
 	def set%childname(self, pos, value):
-		self.__%classname[pos] = value
+		self.data[pos] = value
 		return 0
 """
 
 AnonListPKOps = """
 	def __getitem__ (self, key):
 		for i in xrange (len (self)):
-			if self.__%classname.%childname[i].%childkey == key:
+			if self.data.%childname[i].%childkey == key:
 				return child
 		return None
 
@@ -289,12 +241,12 @@ AnonListPKOps = """
 
 	def __delitem__ (self, key):
 		for i in xrange (len (self)):
-			if self.__%classname.%childname[i].%childkey == key:
+			if self.data.%childname[i].%childkey == key:
 
 		raise KeyError, key
 
 	def keys (self):
-		if self.__%classname == []:
+		if self.data == []:
 			return []
 
 		retval = []
@@ -341,6 +293,7 @@ def printClass(list, basename, baseclass):
 	applylist= ApplyList
 	base = ""
 	methods = ""
+	baseclass = ""
 	setlist = "#SetList\n"
 	initlist = InitList
 	unlinklist = UnlinkList
@@ -349,7 +302,8 @@ def printClass(list, basename, baseclass):
 	rollbacklist = RollbackList
 	testlist = TestList
 	backuplist = BackupList
-
+	baseinit = ""
+	
 	dobase = not (OptNoBase or OptCondBase)
 
 	#
@@ -391,7 +345,9 @@ def printClass(list, basename, baseclass):
 
 		if list.isAnonymous():
 			setlist = setlist + "\t\tself.__list.setAnonymous(1)\n"
-						
+			baseclass = "(UserList.UserList)"
+			baseinit = "UserList.UserList.__init__(self)"
+			
 		if list.isAtomic():
 			setlist = setlist + "\t\tself.__list.setAtomic(1)\n"
 						
@@ -405,18 +361,18 @@ def printClass(list, basename, baseclass):
 
 			methods = methods + AnonListOps
 
-			unlinklist = unlinklist + '\t\tself.__%classname = []\n'
-			unlinklist = unlinklist + '\t\tself.__%classname_bak = []\n'
+			unlinklist = unlinklist + '\t\tself.data = []\n'
+			unlinklist = unlinklist + '\t\tself.data_bak = []\n'
 
 			backuplist = backuplist \
-						  + "\t\tself.__%classname = self.__%classname_bak[:]\n"
+						  + "\t\tself.data = self.data_bak[:]\n"
 							
 			commitlist = commitlist \
-							 + '\t\tself.__%classname_bak = self.__%classname[:]\n'
+							 + '\t\tself.data_bak = self.data[:]\n'
 
 			testlist = testlist \
-					  + '\t\tfor pos in xrange(len(self.__%classname)):\n' \
-					  + '\t\t\tself.test%childname(self.__%classname[pos])\n'
+					  + '\t\tfor pos in xrange(len(self.data)):\n' \
+					  + '\t\t\tself.test%childname(self.data[pos])\n'
 			
 			
 			if ctype != Data.ADM_TYPE_LIST:				
@@ -437,14 +393,14 @@ def printClass(list, basename, baseclass):
 
 				initlist = initlist \
 							  + "\t\t\tfor i in xrange(self.__list.getNumChildren()):\n"\
-							  + '\t\t\t\tself.__%classname_bak.append(' \
+							  + '\t\t\t\tself.data_bak.append(' \
 							  + 'self.__list.getChildByIndex(i).getValue())\n'
 
 				commitalist = commitalist \
-								  + '\t\t\tfor i in xrange(len(self.__%classname_bak)):\n' \
-								  + '\t\t\t\tself.__%classname_bak.unlink()\n' \
-								  + '\t\t\tfor i in xrange(len(self.__%classname)):\n' \
-								  + '\t\t\t\tself.__list.addChild(%childtype, "%childname").setValue(self.__%classname[i])\n' 
+								  + '\t\t\tfor i in xrange(len(self.data_bak)):\n' \
+								  + '\t\t\t\tself.data_bak.unlink()\n' \
+								  + '\t\t\tfor i in xrange(len(self.data)):\n' \
+								  + '\t\t\t\tself.__list.addChild(%childtype, "%childname").setValue(self.data[i])\n' 
 				
 				#########################				
 			else:
@@ -466,14 +422,14 @@ def printClass(list, basename, baseclass):
 
 				initlist = initlist \
 							  + "\t\t\tfor i in xrange(self.__list.getNumChildren()):\n"\
-							  + '\t\t\t\tself.__%classname_bak.append(%childname(self.__list.getChildByIndex(i), self))\n'
+							  + '\t\t\t\tself.data_bak.append(%childname(self.__list.getChildByIndex(i), self))\n'
 				
 				commitalist = commitalist + """
-			for i in xrange(len(self.__%classname_bak)):
-				self.__%classname_bak.unlink()
-			for i in xrange(len(self.__%classname)):
-				self.__%classname[i].setList(self.__list.addChild(%childtype, "%childname"))
-				self.__%classname[i].commit()
+			for i in xrange(len(self.data_bak)):
+				self.data_bak.unlink()
+			for i in xrange(len(self.data)):
+				self.data[i].setList(self.__list.addChild(%childtype, "%childname"))
+				self.data[i].commit()
 """							  
 				#########################
 			
@@ -571,6 +527,8 @@ def printClass(list, basename, baseclass):
 		
 	methods = ClassHeader + methods		
 	methods = string.replace(methods, '%SetList', setlist)
+	methods = string.replace(methods, '%baseclass', baseclass)
+	methods = string.replace(methods, '%BaseInit', baseinit)
 	methods = string.replace(methods, '%BackupList', backuplist)
 	methods = string.replace(methods, '%ApplyList', applylist)
 	methods = string.replace(methods, '%TestList', testlist)
@@ -741,6 +699,7 @@ if __name__ == '__main__':
 #
 
 import sys
+import UserList
 from Alchemist import *
 import FileBlackBox
 """)
