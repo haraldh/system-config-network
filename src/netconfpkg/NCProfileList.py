@@ -70,7 +70,6 @@ class ProfileList(ProfileList_base):
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
-        hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
         curr_prof = nwconf['CURRENT_PROFILE']
         use_hostname = nwconf['HOSTNAME']
@@ -103,7 +102,8 @@ class ProfileList(ProfileList_base):
                    if d.DeviceId == dev[6:]:
                        prof.ActiveDevices.append(dev[6:])
 
-            hoconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + '/hosts'
+            hoconf = Conf.ConfFHosts( filename = netconfpkg.ROOT + \
+                                      SYSCONFPROFILEDIR + '/' + pr + '/hosts')
             hoconf.read()
             hoconf.rewind()
             while hoconf.findnextcodeline():
@@ -119,6 +119,7 @@ class ProfileList(ProfileList_base):
                     hoconf.nextline()
                 except:
                     break
+                
             dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
             dnsconf.read()
             prof.DNS.Hostname     = use_hostname
@@ -226,8 +227,6 @@ class ProfileList(ProfileList_base):
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
-        hoconf = Conf.ConfEHosts()
-        hoconf.fsf()
         dnsconf = Conf.ConfEResolv()
 
         for prof in self:
@@ -325,8 +324,10 @@ class ProfileList(ProfileList_base):
 
             dnsconf['nameservers'] = nameservers
 
-            hoconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
-                              '/hosts'            
+            hoconf = Conf.ConfFHosts(filename = netconfpkg.ROOT + \
+                                     SYSCONFPROFILEDIR + '/' + \
+                                     prof.ProfileName + \
+                                     '/hosts')
 
             saved = []
             
@@ -493,5 +494,5 @@ if __name__ == '__main__':
 
     pl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.72 $"
+__date__ = "$Date: 2003/05/22 09:51:37 $"
+__version__ = "$Revision: 1.73 $"
