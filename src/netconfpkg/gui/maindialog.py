@@ -1,4 +1,5 @@
 ## netconf - A network configuration tool
+# -*- coding: utf-8 -*-
 ## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -366,9 +367,9 @@ class mainDialog:
             generic_error_dialog (_("Error saving configuration!\n%s") \
                                   % (str(errstr)))
         else:
-            generic_info_dialog (_("Changes are saved."
-                                   "You may want to restart"
-                                   "the network and network services"
+            generic_info_dialog (_("Changes are saved. "
+                                   "You may want to restart "
+                                   "the network and network services "
                                    "or restart the computer."),
                                  self.dialog)
         self.appBar.pop()
@@ -1545,7 +1546,7 @@ class mainDialog:
             return button
     
         else:
-            generic_error_dialog (_("Sorry, there is nothing to be edited,"
+            generic_error_dialog (_("Sorry, there is nothing to be edited, "
                                     "or this type cannot be edited yet."),
                                   self.dialog)
             return RESPONSE_CANCEL                    
@@ -1714,5 +1715,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:35:56 $"
-__version__ = "$Revision: 1.34 $"
+__date__ = "$Date: 2003/12/16 11:21:51 $"
+__version__ = "$Revision: 1.35 $"
