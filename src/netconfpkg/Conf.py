@@ -328,7 +328,7 @@ class ConfShellVar(Conf):
         place=self.tell()
         self.rewind()
         missing=1
-        while self.findnextline('[\t ]*' + varname + '='):
+        while self.findnextline('^[\t ]*' + varname + '='):
             if re.search('[ \t${}*@!~<>?;%^()#&]', value) > -1:
         	self.sedline('=.*', "='" + value + "'")
 	    else:
@@ -341,11 +341,14 @@ class ConfShellVar(Conf):
         	self.insertline(varname + "='" + value + "'")
 	    else:
         	self.insertline(varname + '=' + value)
+        
         self.vars[varname] = value
+
     def __delitem__(self, varname):
         # delete *every* instance...
+        
         self.rewind()
-        while self.findnextline('[\t ]*' + varname + '='):
+        while self.findnextline('^[\t ]*' + varname + '='):
             self.deleteline()
 	if self.vars.has_key(varname):
             del self.vars[varname]
@@ -465,7 +468,7 @@ class ConfEHosts(Conf):
     def __delitem__(self, varname):
         # delete *every* instance...
         self.rewind()
-        while self.findnextline('[' + self.separators + ']*' +
+        while self.findnextline('^[' + self.separators + ']*' +
                                 regsub.gsub('\.', '\\\\.', varname) +
 				'[' + self.separators + ']'):
             self.deleteline()
@@ -548,7 +551,7 @@ class ConfEResolv(Conf):
     def __delitem__(self, varname):
         # delete *every* instance...
         self.rewind()
-        while self.findnextline('[' + self.separators + ']*' + varname):
+        while self.findnextline('^[' + self.separators + ']*' + varname):
             self.deleteline()
         del self.vars[varname]
     def write(self):
