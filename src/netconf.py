@@ -453,7 +453,7 @@ class mainDialog:
             name = prof.ProfileName
             # change the default profile to a more understandable name
             if name == "default":
-                name = _(DEFAULT_PROFILE_NAME)
+                name = DEFAULT_PROFILE_NAME
             menu_item = gtk.MenuItem (name)
             menu_item.show ()
             menu_item.connect ("activate",
