@@ -1,6 +1,5 @@
 from DeviceList import *
 from NC_functions import *
-from os.path import *
 from ConfSMB import *
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -13,25 +12,133 @@ class Dialup(Dialup_base):
         Dialup_base.__init__(self, list, parent)        
 
 class IsdnDialup(Dialup):                        
+
+    boolkeydict = { 'Secure' : 'SECURE',
+                     'ChannelBundling' : 'BUNDLING',
+                     'DefRoute' : 'DELDEFAULTROUTE',
+                     }
+    
+    keydict = { 'ProviderName' : 'PROVIDER',
+                 'Login' : 'USER',
+                 'Password' : 'PASSWORD',
+                 'EncapMode' : 'ENCAP',
+                 'DialMode' : 'DIALMODE',                 
+                 'MSN' : 'MSN',
+                 'Prefix' : 'PREFIX',
+                 'Areacode' : 'AREACODE',
+                 'Regioncode' : 'REGIONCODE',
+                 'PhoneOut' : 'PHONE_OUT',
+                 'HangupTimeout' : 'HUPTIMEOUT',
+                 'DNS1' : 'DNS1',
+                 'DNS2' : 'DNS2',
+                 'Layer2' : 'LAYER',
+                 'ChargeHup' : 'CHARGEHUP',
+                 'ChargeInt' : 'CHARGEINT',
+                 'DialMax' : 'DIALMAX',
+                 'Authentication' : 'AUTH',
+                 'Ihup' : 'IHUP',
+                 'SlaveDevice' : 'SLAVE_DEVICE',
+               }
+    
     def __init__(self, list = None, parent = None):
         Dialup.__init__(self, list, parent)        
 
     def load(self, parentConf):
-        devdir = SYSCONFDEVICEDIR + name + '.d/'
-        if not isdir(devdir):
-            return
+        conf = parentConf
+
+        for selfkey in self.keydict.keys():
+            confkey = self.keydict[selfkey]
+            if conf.has_key(confkey):
+                self.__dict__[selfkey] = conf[confkey]
+
+        for selfkey in self.boolkeydict.keys():
+            confkey = self.boolkeydict[selfkey]
+            if conf.has_key(confkey):
+                if conf[confkey] == 'on':
+                    self.__dict__[selfkey] = true
+                else:
+                    self.__dict__[selfkey] = false            
+            else:
+                self.__dict__[selfkey] = false            
+
+        if conf.has_key('DELDEFAULTROUTE'):
+            if conf['DELDEFAULTROUTE'] == 'enabled':
+                self.DefRoute = true
+            else:
+                self.DefRoute = false
+
+        parent = self.getParent()
+
+        if parent:
+            if conf.has_key('LOCAL_IP'):
+                parent.IP = conf['LOCAL_IP']
+            if conf.has_key('REMOTE_IP'):
+                parent.Gateway = conf['REMOTE_IP']
+            if conf.has_key('BOOT'):
+                if conf['BOOT'] == 'on':
+                    parent.OnBoot = true
+                else:
+                    parent.OnBoot = false
+
+        compression = self.createCompression()
+        compression.load()
+        if conf.has_key('CALLBACK'):
+            if conf['CALLBACK'] == 'on':
+                callback = self.createCallback()
+                callback.load()
+            else:
+                self.delCallback()
+
+        self.commit()
 
     def save(self, parentConf):
-        devdir = SYSCONFDEVICEDIR + name + '.d/'
-        if not isdir(devdir):
-            os.mkdir(devdir)
+        conf = parentConf
+        
+        for selfkey in self.keydict.keys():
+            confkey = self.keydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: conf[confkey] = ""
 
+        for selfkey in self.boolkeydict.keys():
+            confkey = self.boolkeydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = 'on'
+            else:
+                conf[confkey] = 'off'
+
+        if self.DefRoute:
+            conf['DELDEFAULTROUTE'] = 'enabled'
+        else:
+            conf['DELDEFAULTROUTE'] = 'disabled'
+
+        parent = self.getParent()
+
+        if conf.has_key('LOCAL_IP'):
+            del conf['LOCAL_IP']
+        if conf.has_key('REMOTE_IP'):
+            del conf['REMOTE_IP']
+        if conf.has_key('BOOT'):
+            del conf['BOOT']
+
+        if self.Compression:
+            self.Compression.save()
+            
+        if self.Callback:
+            conf['CALLBACK'] == 'on'
+            self.Callback.save()
+        else:
+            conf['CALLBACK'] == 'off'
+
+        conf.write()
+        
+    
 class ModemDialup(Dialup):
     wvdict = { 'Login' : 'Username',
                'Password' : 'Password',
                'Prefix' : 'Dial Prefix',
                'Areacode' : 'Area Code',
-               'PhoneOut' : 'Phone',
+               'PhoneNumber' : 'Phone',
                }                   
                         
     def __init__(self, list = None, parent = None):
