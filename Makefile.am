@@ -23,6 +23,8 @@ icons3_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
 sysdir=$(sysconfdir)/X11/applnk/System
 
+.PHONY: rp3 changelog srpm
+
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/security/console.apps
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d
@@ -46,7 +48,10 @@ changelog:
 
 dist: configure Makefile config.h changelog
 
-srpm: distcheck
+srpm: distcheck rp3-1.1.10.tar.gz
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
 
+rp3-1.1.10.tar.gz: 
+	ncftpget ftp://porkchop.redhat.com/mnt/redhat/beehive/comps/dist/7.2/rp3/1.1.10-3/SRPMS/rp3-1.1.10-3.src.rpm
+	(rpm2cpio rp3-1.1.10-3.src.rpm |cpio -i rp3-1.1.10.tar.gz) && rm -f rp3-1.1.10-3.src.rpm

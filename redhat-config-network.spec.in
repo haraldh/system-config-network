@@ -11,7 +11,9 @@ Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libg
 BuildRequires: alchemist, alchemist-devel, python, libglade-devel, gnome-core-devel
 Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
+%if %{rp3}
 Source1: rp3-1.1.10.tar.gz
+%endif
 Patch0: redhat-config-network-0.9.13-neat.patch
 
 %description
