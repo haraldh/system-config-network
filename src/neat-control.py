@@ -88,11 +88,6 @@ class mainDialog:
         self.dialog.connect('hide', gtk.mainquit)
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
-        self.lan_xpm, self.lan_mask = get_icon('pixmaps/ethernet.xpm', self.dialog)
-        self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
-        self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
-        self.irda_xpm, self.irda_mask = get_icon('pixmaps/irda-16.xpm', self.dialog)
-        self.dsl_xpm, self.dsl_mask = get_icon('pixmaps/dsl.xpm', self.dialog)
         
         load_icon('neat-control.xpm', self.dialog)
         self.xml.get_widget('pixmap').load_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
@@ -225,44 +220,24 @@ class mainDialog:
         row = 0
         
         for dev in self.devicelist:
-            for i in self.activedevicelist:
+            devname = dev.Device
+            if dev.Alias and dev.Alias != "":
+                devname = devname + ':' + str(dev.Alias)
+
+            if devname in self.activedevicelist:
+                status = ACTIVE
+                status_pixmap = self.on_xpm
+                status_mask = self.on_mask
+            else:
                 status = INACTIVE
                 status_pixmap = self.off_xpm
                 status_mask = self.off_mask
-                if i == dev.Device:
-                    status = ACTIVE
-                    status_pixmap = self.on_xpm
-                    status_mask = self.on_mask
-                    break
 
-            if dev.Type == MODEM:
-                device_pixmap = self.ppp_xpm
-                device_mask = self.ppp_mask
-            elif dev.Type == ETHERNET:
-                device_pixmap = self.lan_xpm
-                device_mask = self.lan_mask
-            elif dev.Type == CIPE:
-                device_pixmap = self.lan_xpm
-                device_mask = self.lan_mask
-            elif dev.Type == TOKENRING:
-                device_pixmap = self.lan_xpm
-                device_mask = self.lan_mask
-            elif dev.Type == ISDN:
-                device_pixmap = self.isdn_xpm
-                device_mask = self.isdn_mask
-            elif dev.Type == WIRELESS:
-                device_pixmap = self.irda_xpm
-                device_mask = self.irda_mask
-            elif dev.Type == DSL:
-                device_pixmap = self.dsl_xpm
-                device_mask = self.dsl_mask
-            else:
-                device_pixmap = self.lan_xpm
-                device_mask = self.lan_mask
+            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(dev.Type, self.dialog)
                 
-            clist.append([status, dev.Device, dev.DeviceId])
+            clist.append([status, devname, dev.DeviceId])
             clist.set_pixtext(row, STATUS, status, 5, status_pixmap, status_mask)
-            clist.set_pixtext(row, DEVICE, dev.Device, 5, device_pixmap, device_mask)
+            clist.set_pixtext(row, DEVICE, devname, 5, device_pixmap, device_mask)
             row = row + 1
             
     def update_dialog(self):

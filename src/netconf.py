@@ -342,7 +342,7 @@ class mainDialog:
                 status_mask = self.off_mask
                 
             device_pixmap, device_mask = \
-                GUI_functions.get_device_icon_mask(devname, self.dialog)
+                GUI_functions.get_device_icon_mask(dev.Type, self.dialog)
 
             clist.append([status, devname, dev.DeviceId, dev.Type])
 ##          clist.set_pixmap(row, 0, inact_xpm)
