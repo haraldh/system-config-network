@@ -42,6 +42,14 @@ msgstr "アカウント"
 msgid "cipcb3"
 msgstr "cipcb3"
 
+#: ../src/netconfpkg/ADSLInterface.py:75
+msgid ""
+"Create a new xDSL connection.  The xDSL connection is used primarily for "
+"connecting to an ISP over a ethernet."
+msgstr ""
+"新規xDSL接続を作成します。xDSL接続はイーサネットを使ったISPへの接続で"
+"最初に使用されます。"
+
 #: ../src/glade-strings.c:861
 msgid "_Authentication:"
 msgstr "認証(_A):"
@@ -50,7 +58,7 @@ msgstr "認証(_A):"
 msgid "Ethernet _Device:"
 msgstr "イーサネットデバイス(_D):"
 
-#: ../src/glade-strings.c:461
+#: ../src/glade-strings.c:461 ../src/netconfpkg/ModemInterface.py:116
 msgid "High"
 msgstr "高"
 
@@ -70,8 +78,7 @@ msgstr "モデムの選択"
 msgid ""
 "Each device needs to be attached to a physical device which can be selected "
 "below."
-msgstr ""
-"各デバイスを下で選択する物理デバイスに結びつける必要があります。"
+msgstr "各デバイスを下で選択する物理デバイスに結びつける必要があります。"
 
 #: ../src/glade-strings.c:196
 msgid "Allow only above Dialin Number"
@@ -132,6 +139,10 @@ msgstr "デバイス(_D):"
 msgid "Configure DSL connection"
 msgstr "DSL接続の設定"
 
+#: ../src/netconfpkg/ADSLInterface.py:106
+msgid "You have selected the following information:"
+msgstr "次の情報が選択されました:"
+
 #: ../src/glade-strings.c:926
 msgid "_Service-Name:"
 msgstr "サービス名(_S):"
@@ -176,7 +187,7 @@ msgstr "9600"
 msgid "chap+pap"
 msgstr "CHAP+PAP"
 
-#: ../src/glade-strings.c:836
+#: ../src/glade-strings.c:836 ../src/netconfpkg/ModemInterface.py:118
 msgid "Very High"
 msgstr "最高"
 
@@ -288,6 +299,10 @@ msgstr "ドメイン:"
 msgid "Wireless"
 msgstr "無線"
 
+#: ../src/netconfpkg/ModemInterface.py:68
+msgid "Modem connection"
+msgstr "Modem接続"
+
 #: ../src/glade-strings.c:57
 msgid "1200"
 msgstr "1200"
@@ -299,6 +314,10 @@ msgstr "モード:"
 #: ../src/glade-strings.c:701
 msgid "Restart if connection dies"
 msgstr "接続が切断されたら再接続"
+
+#: ../src/netconfpkg/ADSLInterface.py:109
+msgid "Login Name:"
+msgstr "ログイン名:"
 
 #: ../src/glade-strings.c:842
 msgid "Wireless Device Configuration"
@@ -596,7 +615,7 @@ msgstr "すべてのユーザにこのデバイスの使用を許可(_e)"
 msgid "CTC"
 msgstr "CTC"
 
-#: ../src/glade-strings.c:520
+#: ../src/glade-strings.c:520 ../src/netconfpkg/ModemInterface.py:112
 msgid "Low"
 msgstr "低"
 
@@ -657,6 +676,10 @@ msgstr "同期PPP"
 msgid "_Provider Name:"
 msgstr "プロバイダ名(_P):"
 
+#: ../src/netconfpkg/ModemInterface.py:106
+msgid "Generic Modem"
+msgstr "一般的なモデム設定"
+
 #: ../src/glade-strings.c:185
 msgid "Aliases"
 msgstr "別名"
@@ -684,6 +707,10 @@ msgstr "リモートパートナーの設定"
 #: ../src/glade-strings.c:845
 msgid "Wireless Settings"
 msgstr "無線設定"
+
+#: ../src/netconfpkg/ADSLInterface.py:72
+msgid "xDSL connection"
+msgstr "xDSL接続"
 
 #: ../src/glade-strings.c:394
 msgid ""
@@ -799,6 +826,10 @@ msgstr "なし"
 msgid "Click here if you want to choose an new provider from ISP database"
 msgstr "ISPデータベースから新規プロバイダを選択したい場合はここをクリック"
 
+#: ../src/netconfpkg/ADSLInterface.py:108
+msgid "Provider Name:"
+msgstr "プロバイダ名:"
+
 #: ../src/glade-strings.c:809
 msgid "Turn on VJ Connection-ID Compression"
 msgstr "VJ接続ID圧縮を有効に"
@@ -831,6 +862,10 @@ msgstr "修辞句(_x):"
 msgid "Pocket (ATP)"
 msgstr "ポケット(ATP)"
 
+#: ../src/netconfpkg/ADSLInterface.py:110
+msgid "Press \"Finish\" to create this account"
+msgstr "「完了」をクリックするとこのアカウントが作成されます"
+
 #: ../src/glade-strings.c:98
 msgid "38400"
 msgstr "38400"
@@ -851,7 +886,7 @@ msgstr "xDSL設定"
 msgid "Repeater"
 msgstr "リピータ"
 
-#: ../src/glade-strings.c:548
+#: ../src/glade-strings.c:548 ../src/netconfpkg/ModemInterface.py:114
 msgid "Medium"
 msgstr "中間"
 
@@ -911,6 +946,14 @@ msgstr "マスタ"
 #: ../src/glade-strings.c:14
 msgid "/dev/ttyI0"
 msgstr "/dev/ttyI0"
+
+#: ../src/netconfpkg/IsdnInterface.py:71
+msgid ""
+"Create a new ISDN connection.  The ISDN interface is used primarily for "
+"connecting to an ISP over a ISDN."
+msgstr ""
+"新規ISDN接続を作成します。ISDNインターフェースはISDNでのISPへの接続で最初に使"
+"用されます。"
 
 #: ../src/glade-strings.c:72
 msgid "19200"
@@ -1153,6 +1196,14 @@ msgstr "モデム設定"
 msgid "IO_2:"
 msgstr "IO2(_2):"
 
+#: ../src/netconfpkg/ADSLInterface.py:107
+msgid "Ethernet Device:"
+msgstr "イーサネットデバイス:"
+
+#: ../src/netconfpkg/IsdnInterface.py:68
+msgid "ISDN connection"
+msgstr "ISDN接続"
+
 #: ../src/glade-strings.c:447
 msgid "Hardware (CRTSCTS)"
 msgstr "ハードウェア(CRTSCTS)"
@@ -1196,6 +1247,14 @@ msgstr "ハングアップタイムアウト(_g):"
 #: ../src/glade-strings.c:911
 msgid "_MEM:"
 msgstr "メモリ(_M):"
+
+#: ../src/netconfpkg/ModemInterface.py:71
+msgid ""
+"Create a new Modem connection.  The dialup interface is used primarily for "
+"connecting to an ISP over a modem."
+msgstr ""
+"新規モデム接続を作成します。ダイアルアップインターフェースはモデムを使った"
+"ISPへの接続で最初に使用されます。"
 
 #: ../src/glade-strings.c:716
 msgid "Secondary DNS:"
