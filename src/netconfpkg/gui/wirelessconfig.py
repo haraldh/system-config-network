@@ -51,15 +51,14 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.__init__(self, glade_file, device)
 
 
-#        self.xml.get_widget("modeCombo").set_popdown_strings( [ 'Auto',
-#                                                                'Managed',
-#                                                                'Ad-Hoc'
-#                                                                ])
         self.xml.signal_autoconnect(
             {
             "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
             })
 
+        self.xml.get_widget("modeEntry").connect("changed",
+                                                 self.on_modeChanged)
+                                                 
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
         vbox = self.xml.get_widget ('generalVbox')
@@ -72,7 +71,6 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.hydrate(self)
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
-
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
                     
         hwlist = NCHardwareList.getHardwareList()
@@ -88,6 +86,8 @@ class wirelessConfigDialog(deviceConfigDialog):
         
         wl = self.device.Wireless
         if wl:
+            if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
+            
             if wl.EssId:
                 if string.lower(wl.EssId) == "any":
                     self.xml.get_widget("essidAutoButton").set_active(TRUE)
@@ -97,11 +97,13 @@ class wirelessConfigDialog(deviceConfigDialog):
                     self.xml.get_widget("essidEntry").set_sensitive(TRUE)
                 self.xml.get_widget("essidEntry").set_text(wl.EssId)
 
-            if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
             if wl.Channel and wl.Channel != "":
                 self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
             if wl.Rate: self.xml.get_widget("rateEntry").set_text(wl.Rate)
             if wl.Key: self.xml.get_widget("keyEntry").set_text(wl.Key)
+
+        self.on_modeChanged(self.xml.get_widget("modeEntry"))
+        self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
 
     def dehydrate(self):
@@ -127,3 +129,14 @@ class wirelessConfigDialog(deviceConfigDialog):
 
     def on_essidAutoButton_toggled(self, check):
         self.xml.get_widget("essidEntry").set_sensitive(not check.get_active())
+
+    def on_modeChanged(self, entry):
+        if string.lower(entry.get_text()) == "managed":
+            self.xml.get_widget("channelSpinButton").set_sensitive(FALSE)
+            self.xml.get_widget("rateCombo").set_sensitive(FALSE)
+            self.xml.get_widget("rateEntry").set_sensitive(FALSE)
+        else:
+            self.xml.get_widget("channelSpinButton").set_sensitive(TRUE)
+            self.xml.get_widget("rateCombo").set_sensitive(TRUE)
+            self.xml.get_widget("rateEntry").set_sensitive(TRUE)
+        self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
