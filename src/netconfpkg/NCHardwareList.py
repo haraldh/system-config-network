@@ -170,8 +170,10 @@ class HardwareList(HardwareList_base):
             hw.Description = 'Generic Modem'
             hw.Type = 'Modem'
             hw.createModem()
+            if not wvdial[dev].has_key('Modem'): wvdial[dev]['Modem'] = '/dev/modem'
             hw.Modem.DeviceName = wvdial[dev]['Modem']
-            hw.Modem.BaudRate = wvdial[dev]['Baud']
+            if not wvdial[dev].has_key('Baud'): wvdial[dev]['Baud'] = '115200'
+            hw.Modem.BaudRate = int(wvdial[dev]['Baud'])
             if not wvdial[dev].has_key('SetVolume'): wvdial[dev]['SetVolume'] = '0'
             hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
             if not wvdial[dev].has_key('Dial Command'): wvdial[dev]['Dial Command'] = 'ATDT'

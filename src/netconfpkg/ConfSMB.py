@@ -120,7 +120,12 @@ class ConfSMB(Conf):
 
     def get_entry(self):
         vars = self.getfields()
-        vars[1] = joinfields(vars[1:len(vars)], '=')               
+
+        try:
+            vars[1] = joinfields(vars[1:len(vars)], '=')
+        except(LookupError):
+            return 0
+
         if not vars:
             return 0
         if len(vars) != 2:
