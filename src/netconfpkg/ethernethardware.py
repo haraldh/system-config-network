@@ -21,6 +21,8 @@
 import sys
 sys.path.append("/usr/lib/rhs/python/")
 
+from HardwareList import *
+
 import gtk
 import GDK
 import GTK
@@ -37,6 +39,7 @@ from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
 
+
 ##
 ## I18N
 ##
@@ -45,7 +48,7 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class ethernetHardwareDialog:
-    def __init__(self, xml_main = None):
+    def __init__(self, xml_main = None, edit = None):
         self.xml_main = xml_main
 
         glade_file = "ethernethardware.glade"
@@ -68,33 +71,15 @@ class ethernetHardwareDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
-        self.updateDialog()
-        self.dialog.show()
-        
+        self.setup()
+        self.hydrate()
+
     def on_Dialog_delete_event(self, *args):
         self.dialog.destroy()
         
     def on_okButton_clicked(self, button):
-        idx = -1
-        pos = 0
-        for hw in self.hardwarelist:
-            if hw.Name == self.xml.get_widget('ethernetDeviceEntry').get_text():
-                idx = pos
-            pos = pos+1
-
-        if idx == -1:
-            idx = self.hardwarelist.addHardware()
-
-        hw = self.hardwarelist[idx]
-
-        hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
-        hw.Description = self.xml.get_widget('adapterEntry').get_text()
-        hw.Type = 'Ethernet'
-        hw.createCard()
-        print self.xml.get_widget('adapterComboBox').list
-        hw.Card.ModuleName = ''
-
-        self.main.setup()
+        self.dehydrate()
+        self.main.hydrate()
         self.dialog.destroy()
 
     def on_cancelButton_clicked(self, button):
@@ -120,8 +105,11 @@ class ethernetHardwareDialog:
             widget.set(pix, mask)
         else:
             self.dialog.set_icon(pix, mask)
-            
-    def updateDialog(self):
+
+    def hydrate(self):
+        pass
+        
+    def setup(self):
         list = []
         modInfo = Conf.ConfModInfo()
         for i in modInfo.keys():
@@ -129,6 +117,37 @@ class ethernetHardwareDialog:
                 list.append(modInfo[i]['description'])
         self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
 
+    def dehydrate(self):
+        hardwarelist = getHardwareList()
+
+        idx = -1
+        pos = 0
+        for hw in hardwarelist:
+            if hw.Name == self.xml.get_widget('ethernetDeviceEntry').get_text():
+                idx = pos
+            pos = pos+1
+
+        if idx == -1:
+            idx = hardwarelist.addHardware()
+
+        hw = hardwarelist[idx]
+
+        hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
+        hw.Description = self.xml.get_widget('adapterEntry').get_text()
+        hw.Type = 'Ethernet'
+        hw.createCard()
+        hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
+        hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
+        hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
+        hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
+        hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
+        hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
+        hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
+        modInfo = Conf.ConfModInfo()
+        hw.Card.ModuleName = 'Unknown'
+        for i in modInfo.keys():
+            if modInfo[i]['description'] == hw.Description:
+                hw.Card.ModuleName = i
 
 
 
@@ -137,4 +156,3 @@ if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = ethernetHardwareDialog()
     gtk.mainloop()
-
