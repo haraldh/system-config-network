@@ -34,6 +34,7 @@ from netconfpkg import NCisdnhardware
 from netconfpkg import NCDeviceList
 from netconfpkg import NCDevice
 from netconfpkg import NCProfileList
+from netconfpkg import NCDialup
 from InterfaceCreator import InterfaceCreator
 
 class DialupDruid(InterfaceCreator):
@@ -230,7 +231,7 @@ class DialupDruid(InterfaceCreator):
             dialup.Authentication = '+pap -chap'
         dialup.DefRoute = FALSE
         dialup.PeerDNS = TRUE
-        dialup.DialMode = 'manual'
+        dialup.DialMode = NCDialup.DM_MANUAL
         if self.connection_type == 'ISDN':
             dialup.EncapMode = 'syncppp'
 
