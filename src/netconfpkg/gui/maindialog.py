@@ -707,8 +707,7 @@ class mainDialog:
                                           'delete device "%s"?')) % \
                                        str(device.DeviceId),
                                        self.dialog,
-                                       widget = clist,
-                                       page = clist.selection[0])
+                                       widget = clist)
 
         if buttons != RESPONSE_YES:
             return
