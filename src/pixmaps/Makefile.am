@@ -9,6 +9,7 @@ netconfimg_DATA = \
 	keys.xpm \
 	network.xpm \
 	no.xpm \
+	si.xpm \
 	us.xpm \
 	nameresolution_alias.png \
 	connection-ethernet.png \
