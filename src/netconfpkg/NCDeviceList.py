@@ -54,9 +54,18 @@ class DeviceList(DeviceList_base):
 
     def load(self):
         devices = ConfDevices()
+        msg = ""
         for dev in devices:
             i = self.addDevice()
-            self.data[i].load(dev)
+            try:
+                self.data[i].load(dev)
+            except:
+                msg = msg + (_("Error loading Device %s!\n") % dev)
+                del self.data[i]
+
+        if msg != "":
+            print msg
+            
         self.commit()
 
     def test(self):

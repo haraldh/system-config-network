@@ -183,10 +183,13 @@ class Device(DeviceList.Device_base):
             except (OSError, IOError), msg:
                 pass
 
-        aliaspos = string.find(self.Device, ':')
-        if aliaspos != -1:
-            self.Alias = int(self.Device[aliaspos+1:])
-            self.Device = self.Device[:aliaspos]
+        try:
+            aliaspos = string.find(self.Device, ':')
+            if aliaspos != -1:
+                self.Alias = int(self.Device[aliaspos+1:])
+                self.Device = self.Device[:aliaspos]
+        except TypeError:
+            raise TypeError, _("Device not specified or alias not a number!")
 
         if not self.Type or self.Type == "" or self.Type == "Unknown":
             hwlist = NCHardwareList.getHardwareList()
