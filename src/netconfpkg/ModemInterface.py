@@ -85,15 +85,6 @@ class ModemInterface:
         return self.druids[0:] + dialup.get_druids()
 
     def on_Modem_prepare(self, druid_page, druid):
-        pass
- 
-    def on_Modem_next(self, druid_page, druid):
-        self.dehydrate()
- 
-    def on_Modem_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
-        
-    def setup(self):
         dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, 'Modem probing...')
         dialog.set_border_width(10)
         vbox = gtk.GtkVBox(1)
@@ -114,7 +105,17 @@ class ModemInterface:
                     dlist.append(dev)
         dialog.destroy()
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
-    
+        pass
+ 
+    def on_Modem_next(self, druid_page, druid):
+        self.dehydrate()
+ 
+    def on_Modem_back(self, druid_page, druid):
+        self.hardwarelist.rollback()
+        
+    def setup(self):
+        pass
+
     def dehydrate(self):
         self.hw.Description = _('Generic Modem')
         self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
