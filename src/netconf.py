@@ -27,7 +27,6 @@ import os
 import GdkImlib
 import string
 import gettext
-import re
 import Conf
 
 from netconfpkg import *
@@ -45,10 +44,6 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class mainDialog:
-    deviceTypes = {'eth[0-9]+(:[0-9]+)?':'Ethernet',
-                   'ppp[0-9]+(:[0-9]+)?':'Modem',
-                   'lo':'Loopback'}
-
     def __init__(self):
         glade_file = "maindialog.glade"
 
@@ -181,11 +176,7 @@ class mainDialog:
 
         row = 0
         for dev in devicelist:
-            type = 'Unknown'
-            for j in self.deviceTypes.keys():
-                if re.search(j, dev.Device):
-                    type = self.deviceTypes[j]
-
+            type = getDeviceType(dev.Device)
             clist.append(['', dev.DeviceId[6:], type])
             clist.set_pixmap(row, 0, inact_xpm)
             for prof in profilelist:
@@ -193,16 +184,32 @@ class mainDialog:
                     clist.set_pixmap(row, 0, act_xpm)
             row = row + 1
 
-        row = 0
-        clist = self.xml.get_widget("hostsList")
+        clist = self.xml.get_widget("hardwareList")
         clist.clear()
+        for hw in hardwarelist:
+            if hw.Type == 'Modem':
+                devname = hw.Modem.DeviceName
+            else:
+                devname = hw.Card.DeviceName
+            clist.append([hw.Description, hw.Type, devname])
+
+        dclist = self.xml.get_widget("dnsList")
+        dclist.clear()
+        hclist = self.xml.get_widget("hostsList")
+        hclist.clear()
         for prof in profilelist:
             if prof.Active == true:
+                self.xml.get_widget('primaryDnsEntry').set_text(prof.DNS.PrimaryDNS)
+                self.xml.get_widget('secondaryDnsEntry').set_text(prof.DNS.SecondaryDNS)
+                self.xml.get_widget('ternaryDnsEntry').set_text(prof.DNS.TernaryDNS)
+                for domain in prof.DNS.SearchList:
+                    dclist.append([domain])
+
                 for host in prof.HostsList:
                     al = ''
                     for alias in host.AliasList:
                         al = al + " " + alias
-                    clist.append([host.IP, host.Hostname, al])
+                    hclist.append([host.IP, host.Hostname, al])
             row = row + 1
 
         if self.initialized:
