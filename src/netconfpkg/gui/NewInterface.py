@@ -74,10 +74,17 @@ class NewInterface:
         
         # Initialize the clist
         self.interface_clist.column_titles_passive ()
+        self.interface_clist.set_row_height(20)
 
         for iface_creator in Interfaces:
             iface = iface_creator (self.toplevel)
+            iftype = iface.get_type()
+            
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
+            device_pixmap, device_mask = \
+                           GUI_functions.get_device_icon_mask(iftype, self.toplevel)
+
+            self.interface_clist.set_pixtext (row, 0, iface.get_project_name (), 5, device_pixmap, device_mask)
             self.interface_clist.set_row_data (row, iface)
 
         self.interface_clist.select_row (0, 0)
