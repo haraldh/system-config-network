@@ -5,6 +5,8 @@ import string
 from HardwareList import *
 from NCisdnhardware import *
 
+import NC_functions
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
@@ -69,7 +71,7 @@ class HardwareList(HardwareList_base):
         wvdial = ConfSMB('/etc/wvdial.conf')
 
         for mod in modules.keys():
-            type = getDeviceType(mod)
+            type = NC_functions.getDeviceType(mod)
             if type == 'Unknown':
                 continue
 
