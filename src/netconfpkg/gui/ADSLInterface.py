@@ -35,10 +35,10 @@ from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
 
 class ADSLInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1):
+    def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
-        
+        self.topdruid = druid
         glade_file = 'ADSLInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):

@@ -36,7 +36,7 @@ import libglade
 import DialupDruid
 
 class IsdnInterface:
-    def __init__ (self, toplevel=None, do_save = 1):
+    def __init__ (self, toplevel=None, do_save = 1, druid = None):
         glade_file = 'IsdnHardwareDruid.glade'
         self.do_save = do_save
         if not os.path.isfile(glade_file):

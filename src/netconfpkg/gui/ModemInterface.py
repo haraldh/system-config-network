@@ -36,7 +36,7 @@ import DialupDruid
 
 class ModemInterface:
     modemList = None
-    def __init__ (self, toplevel=None, do_save = 1):
+    def __init__ (self, toplevel=None, do_save = 1, druid = None):
         self.do_save = do_save
         glade_file = 'ModemDruid.glade'
 

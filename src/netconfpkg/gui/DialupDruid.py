@@ -38,7 +38,7 @@ from netconfpkg import NCDialup
 from InterfaceCreator import InterfaceCreator
 
 class DialupDruid(InterfaceCreator):
-    def __init__ (self, toplevel=None, connection_type='ISDN', do_save = 1):
+    def __init__ (self, toplevel=None, connection_type='ISDN', do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         glade_file = 'DialupDruid.glade'
 
