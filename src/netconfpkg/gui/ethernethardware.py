@@ -20,7 +20,6 @@
 import sys
 sys.path.append("/usr/lib/rhs/python/")
 
-
 import gtk
 
 import gtk
@@ -33,6 +32,7 @@ import commands
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg import *
+from netconfpkg import NCHWEthernet
 
 from gtk import TRUE
 from gtk import FALSE
@@ -158,8 +158,5 @@ class ethernetHardwareDialog:
                    modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i
 
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = ethernetHardwareDialog()
-    gtk.mainloop()
+
+NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
