@@ -30,7 +30,9 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%find_lang %name
+
+%files -f %{name}.lang
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
 %{_datadir}/kontrol-panel/neat.desktop
