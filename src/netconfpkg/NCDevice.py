@@ -232,7 +232,7 @@ class Device(DeviceList.Device_base):
 
         conf = ConfDevice(self.DeviceId)
 
-        if not self.Wireless and self.BootProto == None:
+        if not self.Cipe and self.BootProto == None:
             self.BootProto = 'dhcp'
 
         if self.BootProto:
