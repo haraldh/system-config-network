@@ -26,6 +26,9 @@ from netconfpkg.gui.GUI_functions import generic_error_dialog, get_icon, \
      WrappingLabel, addFrame
 dumpHash = {}
 
+from netconfpkg import PRG_VERSION
+from netconfpkg import PROGNAME
+
 from gtk import *
 
 class ExceptionWindow:
@@ -130,7 +133,7 @@ def dumpClass(instance, fd, level=0):
         else:
             fd.write("%s%s: %s\n" % (pad, key, value))
 
-def dumpException(out, text, tb):
+def dumpException(out, text, tb):    
     p = Pickler(out)
 
     out.write(text)
@@ -184,6 +187,8 @@ class FileSelection:
 def handleException((type, value, tb)):
     list = traceback.format_exception (type, value, tb)
     text = joinfields (list, "")
+    text = "Program: %s\nVersion: %s\n%s" % (PROGNAME, PRG_VERSION, text)
+
     while 1:
         rc = exceptionWindow (_("Exception Occurred"), text)
         
