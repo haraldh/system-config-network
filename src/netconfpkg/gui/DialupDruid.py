@@ -117,8 +117,7 @@ class DialupDruid(InterfaceCreator):
             _("Hardware:") + "  " + hw.Description + "\n" + "    " + \
             _("Provider Name:") + "  " + dialup.ProviderName + "\n" +  "    " + \
             _("Login Name:") + "  " + dialup.Login + "\n" +  "    " + \
-            _("Phone Number:") + "  " + dialup.PhoneNumber + "\n\n\n" + \
-            _("Press \"Finish\" to create this account")
+            _("Phone Number:") + "  " + dialup.PhoneNumber
         
         druid_page.set_text(s)
         

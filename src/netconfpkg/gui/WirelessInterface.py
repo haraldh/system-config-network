@@ -244,7 +244,6 @@ class WirelessInterface(InterfaceCreator):
             s = s + str(wl.Key) + "\n"
         else:
             s = s + "encryption disabled\n"
-        s = s + "\n\n" + _("Press \"Finish\" to create this account")
 
         druid_page.set_text(s)
         

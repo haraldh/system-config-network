@@ -125,9 +125,7 @@ class ADSLInterface(InterfaceCreator):
         s = _("You have selected the following information:") + "\n\n" + "    " + \
             _("Ethernet Device:") + "  " + dialup.EthDevice + "\n" + "    " + \
             _("Provider Name:") + "  " + dialup.ProviderName + "\n" +  "    " + \
-            _("Login Name:") + "  " + dialup.Login + "\n\n\n" +  "    " + \
-            _("Press \"Finish\" to create this account")
-        
+            _("Login Name:") + "  " + dialup.Login         
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):

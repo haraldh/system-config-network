@@ -209,7 +209,6 @@ class TokenRingInterface(InterfaceCreator):
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n"
-        s = s + "\n\n" + _("Press \"Finish\" to create this account")
    
         druid_page.set_text(s)
         

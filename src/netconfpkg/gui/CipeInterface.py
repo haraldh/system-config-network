@@ -143,8 +143,7 @@ class CipeInterface(InterfaceCreator):
                 + _("Remote Peer Port:") + " " + str(cipe.LocalPort) + "\n" + "    "
     
         s = s + _("Remote Virtual Address:") + " " + str(cipe.RemoteVirtualAddress) + "\n" + "    "
-        s = s + _("Local Virtual Address:") + " " + str(self.device.IP) + "\n\n\n"\
-            + _("Press \"Finish\" to create this account")
+        s = s + _("Local Virtual Address:") + " " + str(self.device.IP)
         
         druid_page.set_text(s)
         
