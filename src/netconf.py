@@ -41,6 +41,8 @@ import signal
 import os
 import gettext
 
+os.umask(0644)
+
 PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
@@ -489,7 +491,7 @@ class mainDialog:
             button = generic_yesno_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
-            if button == gtk.RESPONSE_YES:
+            if button == RESPONSE_YES:
                 self.save()
             
         gtk.mainquit()
@@ -503,11 +505,11 @@ class mainDialog:
                 _("Do you want to save your changes?"),
                 self.dialog)
             
-            if button == gtk.RESPONSE_YES:
+            if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
             
-            if button == gtk.RESPONSE_CANCEL:
+            if button == RESPONSE_CANCEL:
                 return
             
         gtk.mainquit()
@@ -655,7 +657,7 @@ class mainDialog:
 
         buttons = generic_yesno_dialog((_('Do you really want to delete device "%s"?')) % str(device.DeviceId), self.dialog, widget = clist, page = clist.selection[0])
 
-        if buttons != gtk.RESPONSE_YES:
+        if buttons != RESPONSE_YES:
             return
 
         for prof in profilelist:
@@ -687,15 +689,14 @@ class mainDialog:
                 _("Do you want to continue?") ,
                 self.dialog)
                 
-            if button == gtk.RESPONSE_YES:
+            if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
             
-            if button == gtk.RESPONSE_NO:
+            if button == RESPONSE_NO:
                 return
 
         intf = Interface()
-        child = intf.activate(device)
         dlg = gtk.Dialog(_('Network device activating...'))
         dlg.set_border_width(10)
         dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
@@ -703,22 +704,14 @@ class mainDialog:
         dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dlg.set_modal(TRUE)
         dlg.show_all()
-        import time
-        while (1):
-            while gtk.events_pending():
-                gtk.mainiteration()
-            pid, waitstat = os.waitpid(child, os.WNOHANG)
-            if (pid != 0):
-                break
-            else:
-                time.sleep(0.1)
-                
+        (status, txt) = intf.activate(device)                
         dlg.destroy()
+        
+        if status != 0:
+            generic_error_dialog(_('Cannot activate network device %s\n%s') % (device, txt))
 
         if NetworkDevice().find(device):
             self.update_devicelist()
-        else:
-            devErrorDialog(device, ACTIVATE, self.dialog)
 
         self.tag = timeout_add(4000, self.update_devicelist)
             
@@ -1307,7 +1300,7 @@ class mainDialog:
 
         buttons = generic_yesno_dialog((_('Do you really want to delete profile "%s"?')) % str(name), self.dialog)
 
-        if buttons != gtk.RESPONSE_YES:
+        if buttons != RESPONSE_YES:
             return
 
         del profilelist[profilelist.index(self.get_active_profile())]
@@ -1442,7 +1435,7 @@ class mainDialog:
         buttons = generic_yesno_dialog((_('Do you really want to delete "%s"?')) % str(description),
                                        self.dialog, widget = clist, page = clist.selection[0])
 
-        if buttons != gtk.RESPONSE_YES:
+        if buttons != RESPONSE_YES:
             return
 
         # remove hardware
