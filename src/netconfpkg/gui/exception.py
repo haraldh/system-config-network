@@ -195,7 +195,7 @@ def handleException((type, value, tb)):
         sys.exit(10)
 
     while 1:
-        fs = FileSelection(_("Please specify a file to save the dumb"))
+        fs = FileSelection(_("Please specify a file to save the dump"))
         rc = fs.getrc()
         if rc == 0:
             file = fs.get_filename()
