@@ -286,7 +286,7 @@ class ModemWindow:
             elif bb.buttonPressed(res)=="ok":
                 self.processInfo()
                 self.devicelist.save()
-                screen.popWindow
+                screen.popWindow()
                 break
 
 class ISDNWindow:
@@ -389,7 +389,7 @@ class ISDNWindow:
             elif bb.buttonPressed(res)=="ok":
                 self.processInfo()
                 self.devicelist.save()
-                screen.popWindow
+                screen.popWindow()
                 break
                 
     
