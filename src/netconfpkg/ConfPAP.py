@@ -69,18 +69,18 @@ class ConfPAP(Conf.Conf):
             # print self.getline()
             var = self.getfields()
 
-            if len(var[0]) and var[0][0] in '\'"':
-                # found quote; strip from beginning and end
-                quote = var[0][0]
-                var[0] = var[0][1:]
-                p = -1
-                try:
-                    while cmp(var[0][p], quote):
-                        # ignore whitespace, etc.
-                        p = p - 1
-                except:
-                    raise IndexError, 'end quote not found in '+self.filename+':'+var[0]
-                var[0] = var[0][:p]
+            #if len(var[0]) and var[0][0] in '\'"':
+            #    # found quote; strip from beginning and end
+            #    quote = var[0][0]
+            #    var[0] = var[0][1:]
+            #    p = -1
+            #    try:
+            #        while cmp(var[0][p], quote):
+            #            # ignore whitespace, etc.
+            #            p = p - 1
+            #    except:
+            #        raise IndexError, 'end quote not found in '+self.filename+':'+var[0]
+            #    var[0] = var[0][:p]
                 
             if var and (len(var) == 3):
                 self.vars[var[0]] = var[2]
@@ -120,10 +120,10 @@ class ConfPAP(Conf.Conf):
         self.seek(self.beginlineplace)
         missing=1
         if len(varname) == 2:
-            login = varname[0]
+            login = '\"' + varname[0] + '\"'
             server = varname[1]
         else:
-            login = varname
+            login = '\"' + varname + '\"'
             if len(value) == 2:
                 server = value[0]
                 value = value[1]

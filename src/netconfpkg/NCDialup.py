@@ -32,13 +32,7 @@ import DeviceList
 import NCCompression
 import NCHardwareList
 from NC_functions import *
-
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
+from NC_functions import _
 
 country_code = {
     _("None") : 0,
@@ -109,8 +103,9 @@ class Dialup(DeviceList.Dialup_base):
         
 class DslDialup(Dialup):
     boolkeydict = { 'PeerDNS' : 'RESOLV_MODS',
-                    'DefRoute' : 'DEFROUTE',
                     'SyncPPP' : 'SYNCHRONOUS',
+                    'Persist' : 'PERSIST',
+                    'DefRoute' : 'DEFROUTE',
                     }
     
     keydict = { 'ProviderName' : 'PROVIDER',
@@ -199,9 +194,10 @@ class DslDialup(Dialup):
 
 
 class IsdnDialup(Dialup):                        
-
     boolkeydict = { 'Secure' : 'SECURE',
                     'ChannelBundling' : 'BUNDLING',
+                    'Persist' : 'PERSIST',
+                    'DefRoute' : 'DEFROUTE',
                     }
     
     intkeydict = {'MSN' : 'MSN',
@@ -366,7 +362,8 @@ class IsdnDialup(Dialup):
         
     
 class ModemDialup(Dialup):
-    boolwvdict = { 'StupidMode' : 'Stupid Mode', }
+    boolwvdict = { 'StupidMode' : 'Stupid Mode',
+                   }
 
     wvdict = { 'Login' : 'Username',
                'Password' : 'Password',
@@ -422,32 +419,32 @@ class ModemDialup(Dialup):
         #
         # Read Modem Init strings
         #
-        if not self.InitStrings: self.createInitStrings()
-        for i in xrange(1, 10) :
-            confkey = 'Init'
-            if i: confkey = confkey + str(i)                
-            value = None
-            
-            if conf.has_key(sectname) and conf[sectname].has_key(confkey):
-                value = conf[sectname][confkey]
-            elif conf.has_key('Dialer Defaults') \
-               and conf['Dialer Defaults'].has_key(confkey):
-                value = conf['Dialer Defaults'][confkey]
-                
-            if value:
-                #print confkey + " = " + value
-                self.InitStrings[self.InitStrings.addInitString()] = value
-                
+        if conf.has_key(sectname) and conf[sectname].has_key('Init3'):
+            self.InitString = conf[sectname]['Init3']
 
         if self.Compression:
             self.Compression.load(parentConf)            
 
         if parentConf.has_key('PROVIDER'):
             self.ProviderName = parentConf['PROVIDER']
-            
+
+        if parentConf.has_key('PERSIST'):
+            self.Persist = parentConf['PERSIST'] == 'yes'
+
+        if parentConf.has_key('DEFROUTE'):
+            self.DefRoute = parentConf['DEFROUTE'] == 'yes'
+
+        if parentConf.has_key('DEMAND'):
+            if parentConf['DEMAND'] == 'yes':
+                self.DialMode = 'auto'
+            else:
+                self.DialMode = 'manuell'
+
+        if parentConf.has_key('IDLETIMEOUT'):
+            self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
+
         if parentConf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
-            
             options = parentConf['PPPOPTIONS']
             for o in string.split(options):
                 self.PPPOptions[self.PPPOptions.addPPPOption()] = o
@@ -533,26 +530,15 @@ class ModemDialup(Dialup):
         #
         # Write Modem Init strings
         #
-        if conf[sectname].has_key('Init'):
-            del conf[sectname]['Init']
-        if self.InitStrings:
-            for i in xrange(1, min([len(self.InitStrings), 9]) + 1):
-                confkey = 'Init'
-                if i: confkey = confkey + str(i)                
-            
-                if self.InitStrings[i - 1]:
-                    conf[sectname][confkey] = str(self.InitStrings[i - 1])
-                else:
-                    if conf[sectname].has_key(confkey):
-                        del conf[sectname][confkey]
-
+        if conf[sectname].has_key('Init'): del conf[sectname]['Init']
+        if self.InitString: conf[sectname]['Init3'] = str(self.InitString)
+        #else: del conf[sectname]['Init3'] 
 
         if self.PPPOptions:
             opt = ""
             for i in xrange(len(self.PPPOptions)):
                 if opt != "": opt = opt + ' '
                 opt = opt + self.PPPOptions[i]
-            #print opt
             parentConf['PPPOPTIONS'] = opt
 
 
@@ -568,6 +554,14 @@ class ModemDialup(Dialup):
 
         if self.ProviderName:
             parentConf['PROVIDER'] = self.ProviderName
+
+        if self.DialMode == 'auto':
+            parentConf['DEMAND'] = 'yes'
+        else:
+            parentConf['DEMAND'] = 'no'
+
+        if self.HangupTimeout:
+            parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
         if parent.Name:
             hwlist = NCHardwareList.getHardwareList()

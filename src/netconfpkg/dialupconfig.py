@@ -33,17 +33,11 @@ from NCDeviceList import *
 from NCCallback import *
 from NCHardwareList import *
 from NC_functions import *
-
+from NC_functions import _
 from provider import *
 from gtk import TRUE
 from gtk import FALSE
 
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
 
 class DialupDialog(deviceConfigDialog):
     def __init__(self, device, xml_main = None):
@@ -103,7 +97,7 @@ class DialupDialog(deviceConfigDialog):
             widget.set_sensitive(len(dialup.PPPOptions)>0)
             for plist in dialup.PPPOptions:
                 widget.append([plist])
-        
+
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
         dialup = self.device.Dialup
@@ -319,15 +313,8 @@ class ModemDialupDialog(DialupDialog):
         if dialup.DialMode:
             self.xml.get_widget("dialModeEntry").set_text(dialup.DialMode)
 
-        if dialup.InitStrings:
-           s = ""
-           widget = self.xml.get_widget("modemInitEntry")
-           for plist in dialup.InitStrings:
-               if (len(plist) >= 2) and (plist[:2] == 'AT') and len(s):
-                   plist = plist[2:]
-               s = s + plist
-           widget.set_text(s)
-
+        if dialup.InitString:
+           widget = self.xml.get_widget("modemInitEntry").set_text(dialup.InitString)
         if dialup.Persist:
             self.xml.get_widget("persistCB").set_active(dialup.Persist)
         if dialup.DefRoute:
@@ -339,26 +326,15 @@ class ModemDialupDialog(DialupDialog):
 
     def dehydrate(self):
         DialupDialog.dehydrate(self)
-
         dialup = self.device.Dialup
-        
-        dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutSB").get_value()
+        dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
-        dialup.InitStrings = self.xml.get_widget("modemInitEntry").get_text()
+        dialup.InitString = self.xml.get_widget("modemInitEntry").get_text()
         self.device.Name = self.xml.get_widget("modemPortEntry").get_text()
-
-        if not self.device.Device:
-            self.device.Device = "modem"
-
+        if not self.device.Device: self.device.Device = "modem"
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
-
-        dialup.InitStrings = None
-        dialup.createInitStrings()
-        for i in string.split(self.xml.get_widget("modemInitEntry").get_text()):
-            dialup.InitStrings.append(i)
-
-        dialup.StupidMode = (self.xml.get_widget("stupidModeCB").get_active() == true)
+        dialup.StupidMode = self.xml.get_widget("stupidModeCB").get_active() == true
 
 
 # make ctrl-C work

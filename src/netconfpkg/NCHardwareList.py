@@ -172,8 +172,13 @@ class HardwareList(HardwareList_base):
             hw.createModem()
             hw.Modem.DeviceName = wvdial[dev]['Modem']
             hw.Modem.BaudRate = wvdial[dev]['Baud']
+            if not wvdial[dev].has_key('SetVolume'): wvdial[dev]['SetVolume'] = '0'
             hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
+            if not wvdial[dev].has_key('Dial Command'): wvdial[dev]['Dial Command'] = 'ATDT'
             hw.Modem.DialCommand = wvdial[dev]['Dial Command']
+            if not hw.Modem.InitString: wvdial[dev]['Init1'] = 'ATZ'
+            hw.Modem.InitString =  wvdial[dev]['Init1']
+                
         self.commit()
 
     def save(self):
@@ -197,6 +202,7 @@ class HardwareList(HardwareList_base):
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
                 wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
                 wvdial[hw.Name]['Dial Command'] = str(hw.Modem.DialCommand)
+                wvdial[hw.Name]['Init1'] = str(hw.Modem.InitString)
             if hw.Type == "ISDN":
                 isdn.Description = hw.Description
                 isdn.Type = hw.Card.Type
