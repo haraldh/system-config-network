@@ -264,11 +264,15 @@ class Device(DeviceList.Device_base):
         conf = ConfDevice(self.DeviceId)
         conf.fsf()
         
-        if not self.Cipe and self.BootProto == None:
+        if not self.Cipe and self.BootProto == None \
+           and (self.IP == None or self.IP == ""):
             self.BootProto = 'dhcp'
 
         if self.BootProto:
             self.BootProto = string.lower(self.BootProto)
+
+        if self.BootProto == "static":
+            self.BootProto = "none"
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
