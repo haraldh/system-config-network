@@ -51,7 +51,6 @@ def mainScreen(screen):
             break
         elif bb.buttonPressed(res)=='configure':
             todo=li.current()
-            screen.popWindow()
             if(todo=="Ethernet"):
                 nw=EthernetWindow(screen,getDeviceList())
                 nw.runIt()
@@ -61,6 +60,7 @@ def mainScreen(screen):
             elif(todo=="ISDN"):
                 iw=ISDNWindow(screen,getDeviceList())
                 iw.runIt()
+    screen.popWindow()
 
 class EthernetWindow:
     def __init__(self,screen,devicelist,eth=None):
