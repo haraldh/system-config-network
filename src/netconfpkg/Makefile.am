@@ -22,7 +22,11 @@ clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
 
-DeviceList.py: DeviceList.idl genClass.py NCDeviceList.py NCDevice.py
+DeviceList.py: DeviceList.idl genClass.py NCDeviceList.py NCDevice.py NCDialup.py
+
+HardwareList.py: NCHardwareList.py 
+
+
 
 %.py: %.idl genClass.py
 	python genClass.py -f -c $(srcdir)/$*.idl $@ NC
