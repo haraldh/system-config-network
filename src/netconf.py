@@ -287,6 +287,7 @@ class mainDialog:
                     hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
 
         row = 0
+        actrow = 0
         for prof in profilelist:
             if prof.Active == true:
                actrow = row
