@@ -154,7 +154,7 @@ def updateNetworkScripts():
 
     devlist = os.listdir(OLDSYSCONFDEVICEDIR)
     for dev in devlist:
-        if dev[:6] != 'ifcfg-':
+        if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
             continue
 
         if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev):

@@ -28,7 +28,7 @@ import string
 import gettext
 import re
 
-import ProfileList
+import NCProfileList
 import NC_functions
 from gtk import TRUE
 from gtk import FALSE
@@ -86,7 +86,7 @@ class editDomainDialog:
         pass
 
     def dehydrate(self):
-        profilelist = ProfileList.getProfileList()
+        profilelist = NCProfileList.getProfileList()
 
         for prof in profilelist:
             if prof.Active == TRUE:
