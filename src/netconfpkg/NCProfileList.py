@@ -39,7 +39,29 @@ class ProfileList(ProfileList_base):
     def __init__(self, list = None, parent = None):
         ProfileList_base.__init__(self, list, parent)        
 
+    def updateNetworkScripts(self):
+        try:
+            if not os.path.isdir(SYSCONFDEVICEDIR):
+                os.mkdir(SYSCONFDEVICEDIR)
+
+            if not os.path.isdir(SYSCONFPROFILEDIR):
+                os.mkdir(SYSCONFPROFILEDIR)
+
+            if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
+                os.mkdir(SYSCONFPROFILEDIR+'/default/')
+        except (IOError, OSError), errstr :
+            generic_error_dialog (_("Error creating directory!\n%s") \
+                                  % (str(errstr)))
+        if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
+           print _("Copying /etc/hosts to default profile.")
+           copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
+
+        if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
+            print "Copying /etc/resolv.conf to default profile."
+            copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
+
     def load(self):
+        self.updateNetworkScripts()
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')

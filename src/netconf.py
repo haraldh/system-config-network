@@ -56,7 +56,7 @@ import string
 import signal
 
 try:
-    from netconfpkg.gui.exception import handleException
+    from rhpl.exception import handleException
 except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
     if os.path.isfile("/usr/sbin/redhat-config-network-tui"):        
@@ -65,23 +65,64 @@ except RuntimeError, msg:
     sys.exit(10)
 
 
-sys.excepthook = lambda type, value, tb: handleException((type, value, tb))
+from version import PRG_VERSION
+from version import PRG_NAME
+
+sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
+                                                         PROGNAME, PRG_VERSION)
+
+NETCONFDIR='/usr/share/redhat-config-network/'
+
+import gtk
+
+def get_pixpath(pixmap_file):
+    fn = pixmap_file
+    if not os.path.exists(pixmap_file):
+        pixmap_file = "pixmaps/" + fn
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "../pixmaps/" + fn
+            if not os.path.exists(pixmap_file):
+                pixmap_file = NETCONFDIR + fn
+                if not os.path.exists(pixmap_file):
+                    pixmap_file = NETCONFDIR + "pixmaps/" + fn
+                    if not os.path.exists(pixmap_file):
+                        pixmap_file = "/usr/share/pixmaps/" + fn
+                        if not os.path.exists(pixmap_file):
+                            return None
+
+    return pixmap_file
+
+def splash_screen():
+    window = gtk.Window(gtk.WINDOW_POPUP)
+    window.set_position (gtk.WIN_POS_CENTER)
+    pixmap_wid = gtk.Image()
+    pixfile = get_pixpath("redhat-config-network-splash.png")
+    if not pixfile:
+        return None
+    pixmap_wid.set_from_file(pixfile)
+    window.add(pixmap_wid)
+    window.show_all()
+    pixmap_wid.realize()
+    while gtk.events_pending():
+        gtk.main_iteration()
+
+    return window
 
 if __name__ == '__main__':
     try:
+        splash_window = splash_screen()
         import gnome
         import gtk.glade
         import netconfpkg.gui.GUI_functions
+        import netconfpkg
+        netconfpkg.PRG_NAME = PRG_NAME
         from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
         from netconfpkg.gui.maindialog import mainDialog
-        from netconfpkg.NC_functions import updateNetworkScripts
 
         netconfpkg.gui.GUI_functions.PROGNAME = PROGNAME
 
         # make ctrl-C work
         signal.signal (signal.SIGINT, signal.SIG_DFL)
-
-        updateNetworkScripts()
 
         progname = os.path.basename(sys.argv[0])
 
@@ -99,12 +140,17 @@ if __name__ == '__main__':
                 sys.exit(1)                
 
         window = mainDialog()
+        
+        if splash_window:
+            splash_window.destroy()
+            del splash_window
+            
         gtk.main()
 
     except SystemExit, code:
         #print "Exception %s: %s" % (str(SystemExit), str(code))
         sys.exit(code)
     except:
-        handleException(sys.exc_info())
+        handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
     sys.exit(0)

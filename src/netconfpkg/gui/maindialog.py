@@ -209,9 +209,6 @@ class mainDialog:
             deactivate_button = self.xml.get_widget("deviceDeactivateButton"),
             monitor_button = self.xml.get_widget("deviceMonitorButton"))
         
-        # Let this dialog be in the taskbar like a normal window
-        #self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
-
         gtk.Tooltips().enable()
         
         self.dialog.show()

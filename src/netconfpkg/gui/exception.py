@@ -22,12 +22,7 @@ import types
 import gtk
 from string import joinfields
 from cPickle import Pickler
-from netconfpkg.gui.GUI_functions import generic_error_dialog, get_icon, \
-     addFrame
 dumpHash = {}
-
-from netconfpkg import PRG_VERSION
-from netconfpkg import PROGNAME
 
 from gtk import *
 
@@ -194,14 +189,14 @@ class FileSelection:
 #
 # handleException function
 #
-def handleException((type, value, tb)):
+def handleException((type, value, tb), progname, version):
     list = traceback.format_exception (type, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
     if len(tblast):
         tblast = tblast[len(tblast)-1]
     extxt = traceback.format_exception_only(type, value)
-    text = "Component: %s\n" % PROGNAME
-    text = text + "Version: %s\n" % PRG_VERSION  
+    text = "Component: %s\n" % progname
+    text = text + "Version: %s\n" % version
     text = text + "Summary: TB "
     if tblast and len(tblast) > 3:
         tblast = tblast[:3]

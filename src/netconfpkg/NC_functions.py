@@ -30,12 +30,13 @@ from rhpl import ethtool
 true = (1==1)
 false = not true
 
-PROGNAME='redhat-config-network'
+PROGNAME = "redhat-config-network"
+
 NETCONFDIR='/usr/share/redhat-config-network/'
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
-SYSCONFNETWORK='/etc/sysconfig/network'
+SYSCONFNETWORK='/etc/sysconfig/network/'
 
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
@@ -258,49 +259,6 @@ def getNewDialupDevice(devicelist, dev):
 	else:
 	    return device+str(count)
 	
-def updateNetworkScripts():
-    try:
-        if not os.path.isdir(SYSCONFDEVICEDIR):
-            os.mkdir(SYSCONFDEVICEDIR)
-
-        if not os.path.isdir(SYSCONFPROFILEDIR):
-            os.mkdir(SYSCONFPROFILEDIR)
-
-        if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
-            os.mkdir(SYSCONFPROFILEDIR+'/default/')
-    except (IOError, OSError), errstr :
-        generic_error_dialog (_("Error creating directory!\n%s") \
-                              % (str(errstr)))
-
-
-    devlist = os.listdir(OLDSYSCONFDEVICEDIR)
-    for dev in devlist:
-        if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
-            continue
-
-        if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
-            #print dev+" already a link, skipping it."
-            continue
-
-        if getDeviceType(dev[6:]) == _('Unknown'):
-            #print dev+" has unknown device type, skipping it."
-            continue
-
-        print _("Copying %s to devices and putting "
-                "it into the default profile.") % dev
-
-	unlink(SYSCONFPROFILEDIR+'/default/'+dev)
-
-        copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
-        link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)    
-
-    if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
-       print _("Copying /etc/hosts to default profile.")
-       copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
-
-    if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
-        print "Copying /etc/resolv.conf to default profile."
-        copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
 
 ModemList = None
 def getModemList():

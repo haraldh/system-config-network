@@ -57,7 +57,45 @@ class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
         DeviceList_base.__init__(self, list, parent)        
 
+    def updateNetworkScripts(self):
+        try:
+            if not os.path.isdir(SYSCONFDEVICEDIR):
+                os.mkdir(SYSCONFDEVICEDIR)
+
+            if not os.path.isdir(SYSCONFPROFILEDIR):
+                os.mkdir(SYSCONFPROFILEDIR)
+
+            if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
+                os.mkdir(SYSCONFPROFILEDIR+'/default/')
+        except (IOError, OSError), errstr :
+            generic_error_dialog (_("Error creating directory!\n%s") \
+                                  % (str(errstr)))
+
+
+        devlist = os.listdir(OLDSYSCONFDEVICEDIR)
+        for dev in devlist:
+            if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
+                continue
+
+            if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
+                #print dev+" already a link, skipping it."
+                continue
+
+            if getDeviceType(dev[6:]) == _('Unknown'):
+                #print dev+" has unknown device type, skipping it."
+                continue
+
+            print _("Copying %s to devices and putting "
+                    "it into the default profile.") % dev
+
+            unlink(SYSCONFPROFILEDIR+'/default/'+dev)
+
+            copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
+            link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)    
+
+
     def load(self):
+        self.updateNetworkScripts()
         df = getDeviceFactory()
         devices = ConfDevices()
         msg = ""

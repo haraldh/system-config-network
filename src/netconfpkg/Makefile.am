@@ -37,12 +37,11 @@ PYTHON_FILES = \
 	NCHWEthernet.py \
 	NCHWIsdn.py \
 	NCHWModem.py \
-	NCHWTokenring.py
+	NCHWTokenring.py 
 
 BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
 		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) __init__.py
 
-__init__.py: __init__.py.in
 
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 

@@ -1,3 +1,4 @@
+# -*- python -*-
 ## Copyright (C) 2001, 2002 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
@@ -21,9 +22,25 @@
 # dirty hack but does the job(tm). It basically finds all .py files in the
 # package directory and imports from all found files (except __init__.py that
 # is) ;). Nice for plugin mechanism.
+import netconfpkg
+
+netconfpkg.Use_Alchemist = None
+
+from rhpl.genClass import GenClass_read_classfile
+
+for _idl_file in [ "DeviceList.idl",
+                  "HardwareList.idl",
+                  "ProfileList.idl" ]:
+    GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = netconfpkg)
+
+del _idl_file
 
 import os
-_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
+_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
+                                      v != "__init__.py" and \
+                                      v != 'genClass.py' and \
+                                      v[0] != '.', \
+                                      os.listdir(__path__[0])))
 
 for _i in _files:
     _cmd = "from " + _i + " import *"

@@ -1,6 +1,6 @@
 SUBDIRS=netconfpkg pixmaps doc
 
-PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py
+PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py version.py
 
 GLADE_FILES = neat-control.glade
 
@@ -8,7 +8,9 @@ EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb module-info
 
 execdir = $(sbindir)
 
-all-local: 
+version.py: version.py.in
+
+all-local: version.py 
 	rm -f redhat-config-network
 	rm -f redhat-config-network-cmd
 	rm -f redhat-config-network-tui
