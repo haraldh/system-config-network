@@ -120,6 +120,7 @@ class editDomainDialog:
                     prof.DNS.SearchList[index] = n
 
                 self.hydrate()
+                prof.DNS.SearchList.commit()
     
     def setup(self):
         self.xml.get_widget("domainNameEntry").set_text(self.Name)
