@@ -23,7 +23,7 @@ import gtk
 from string import joinfields
 from cPickle import Pickler
 from netconfpkg.gui.GUI_functions import generic_error_dialog, get_icon, \
-     WrappingLabel, addFrame
+     addFrame
 dumpHash = {}
 
 from netconfpkg import PRG_VERSION
@@ -48,16 +48,13 @@ class ExceptionWindow:
         sw.set_policy (gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         hbox = gtk.HBox (gtk.FALSE)
         hbox.set_border_width(5)
-        
-        info = WrappingLabel(_("An unhandled exception has occured.  This "
+        txt = _("An unhandled exception has occured.  This "
                           "is most likely a bug.  Please save the crash "
                           "dump and file a detailed bug "
                           "report against redhat-config-network at "
-                          '<A HREF="https://bugzilla.redhat.com/bugzilla/">https://bugzilla.redhat.com/bugzilla</a>'
-                          ))
-        info.set_use_markup(TRUE)
-        info.set_size_request (400, -1)
-
+                          "https://bugzilla.redhat.com/bugzilla)")
+        info = gtk.Label(txt)
+        info.set_line_wrap(TRUE)
         hbox.pack_start (sw, gtk.TRUE)
         win.vbox.pack_start (info, gtk.FALSE)
         win.vbox.pack_start (hbox, gtk.TRUE)
@@ -197,7 +194,9 @@ def handleException((type, value, tb)):
     text = "Component: %s\n" % PROGNAME
     text = text + "Version: %s\n" % PRG_VERSION  
     text = text + "Summary: TB "
-    for t in tblast:
+    if tblast and len(tblast) > 3:
+        tblast = tblast[:3]
+    for t in tblast:        
         text = text + str(t) + ":"
     text = text + extxt[0]
     text = text + joinfields(list, "")
