@@ -210,10 +210,30 @@ class mainDialog:
         profilelist = getProfileList()
         profilelist.commit()
 
+    def test(self):
+        profilelist = getProfileList()
+        devicelist = getDeviceList()
+        hardwarelist = getHardwareList()
+        
+        try:
+            devicelist.test()
+            profilelist.test()
+            hardwarelist.test()
+        except TestError, msg:
+            generic_error_dialog (str(msg), self.dialog)
+            return 1                            
+        
+        return 0
+
+
     def save(self):
-        self.saveDevices()
-        self.saveHardware()
-        self.saveProfiles()
+        getDeviceList().fixInterfaces()
+        if self.test() == 0:
+            self.saveDevices()
+            self.saveHardware()
+            self.saveProfiles()
+            return 0
+        else: return 1
 
     def saveDevices(self):
         devicelist = getDeviceList()
@@ -318,7 +338,8 @@ class mainDialog:
         button = generic_yesnocancel_dialog(_("Do you want to save your changes?"),
                                       self.dialog)
         if button == 0:
-            self.save()
+            if self.save() != 0:
+                return
             
         if button != 2:
             gtk.mainquit()
@@ -397,7 +418,7 @@ class mainDialog:
         type = clist.get_text(clist.selection[0], 2)
 
         if type == 'Loopback':
-            generic_error_dialog ('The Loopback device can not be edited!', self.xml.get_widget ("Dialog"))
+            generic_error_dialog ('The Loopback device can not be edited!', self.dislog)
             return
 
         button = self.editDevice(device)
@@ -535,7 +556,7 @@ class mainDialog:
                 name = clist.get_text(row, 1)
                 type = clist.get_text(row, 2)
                 if type == 'Loopback':
-                    generic_error_dialog ('The Loopback device can not be disabled!', self.xml.get_widget ("Dialog"))
+                    generic_error_dialog ('The Loopback device can not be disabled!', self.dialog)
                     return
 
                 if clist.get_row_data(row) == 0:
@@ -838,7 +859,7 @@ class mainDialog:
         name = profilelist[clist.selection[0]].ProfileName
 
         if name == 'default':
-            generic_error_dialog ('The default Profile can not be deleted!', self.xml.get_widget ("Dialog"))
+            generic_error_dialog ('The default Profile can not be deleted!', self.dialog)
             return
 
         buttons = generic_yesno_dialog(_('Do you really want to delete profile "') + str(name) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
