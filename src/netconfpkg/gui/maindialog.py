@@ -1,7 +1,7 @@
 #!/usr/bin/python2.2
 
 ## netconf - A network configuration tool
-## Copyright (C) 2001, 2002 Red Hat, Inc.
+## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 ## Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>

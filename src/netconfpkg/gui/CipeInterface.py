@@ -1,4 +1,4 @@
-## Copyright (C) 2001, 2002 Red Hat, Inc.
+## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by

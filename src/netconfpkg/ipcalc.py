@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #
 # Python wrapper for ipcalc command line IP address manipulation tool
-# Copyright (c) 2001, 2002 Red Hat, Inc. All rights reserved.
+# Copyright (c) 2001-2003 Red Hat, Inc. All rights reserved.
 #
 # This software may be freely redistributed under the terms of the GNU
 # public license.

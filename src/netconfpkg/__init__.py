@@ -1,7 +1,7 @@
 # -*- python -*-
-## Copyright (C) 2001, 2002 Red Hat, Inc.
+## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify

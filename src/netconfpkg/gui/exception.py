@@ -5,7 +5,7 @@
 # Erik Troan <ewt@redhat.com>
 # Harald Hoyer <harald@redhat.com>
 #
-# Copyright 2001, 2002 Red Hat, Inc.
+# Copyright 2001-2003 Red Hat, Inc.
 #
 # This software may be freely redistributed under the terms of the GNU
 # library public license.
