@@ -1,0 +1,2134 @@
+2001-08-01  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in: Add support for Japanese
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec.in, /cvs/rhl/netcfg/configure.in:
+	0.6.2
+
+2001-08-01  Satoru Sato  <ssato@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/po/ja.po: added ja.po.
+
+	* /cvs/rhl/netcfg/internet-druid.desktop, /cvs/rhl/netcfg/neat.desktop:
+	added japanese entries in *.desktop and ja.po.
+
+2001-07-31  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py: Don't hang when running -cmd
+
+2001-07-30  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCCipe.py: fixed #50327
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: added MODEMPORT to Modem
+	PAP/CHAP is now handled by NCDeviceList.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py: handle PAP/CHAP
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: ConfPAP.py added
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfPAP.py: initial version
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	fixed typo in HWAdress Probe Button
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py, /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	HardwareList -> NCHardwareList
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.py:
+	HardwareList -> NCHardwareList
+	check for empty HardwareList
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py:
+	removed import of HardwareList
+
+	* /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.py:
+	HardwareList -> NCHardwareList
+
+2001-07-26  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec.in, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/src/pixmaps/Makefile.am:
+	* many fixes
+
+2001-07-25  Federico Musto  <federico@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/po/de.po, /cvs/rhl/netcfg/po/es.po, /cvs/rhl/netcfg/po/fr.po, /cvs/rhl/netcfg/po/it.po:
+	drop1
+
+2001-07-24  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py:
+	* detect PCI ISDN apdater
+
+	* /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/NCisdnhardware.py:
+	* detect ISDN pci adapter
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	Modem.ModemVolume is an int!
+
+2001-07-24  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec.in, /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed some more pixmap problems.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/glade-strings.c, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/po/de.po, /cvs/rhl/netcfg/po/es.po, /cvs/rhl/netcfg/po/fr.po, /cvs/rhl/netcfg/po/it.po, /cvs/rhl/netcfg/po/no.po, /cvs/rhl/netcfg/po/redhat-config-network.pot:
+	- Changed all occurences of Ternary to Tertiary (correct spelling)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed a typo that prevented the 3rd DNS entry to work.
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	fixed nameserver ordering
+
+2001-07-24  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed stupid bug that prevented the update of the old configuration files.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed problem with missing active profile and the preselection of the GTK
+	  clist row.
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in:
+	create redhat-config-network.spec from redhat-config-network.spec.in
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec.in: initial version
+
+2001-07-24  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py:
+	Make NETCONFDIR work
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/Makefile.am: fixed kontrol-panel icons1dir
+
+	* /cvs/rhl/netcfg/neat.console: sorry
+
+	* /cvs/rhl/netcfg/Makefile.am: some make distcheck cleanups
+
+2001-07-24  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: Add missing files...
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/autogen.sh: added autoheader
+
+	* /cvs/rhl/netcfg/configure.in: added config.h to AC_OUTPUT
+
+	* /cvs/rhl/netcfg/config.h.in: initial version
+
+	* /cvs/rhl/netcfg/src/Makefile.am: check-local -> pycheck
+
+	* /cvs/rhl/netcfg/Makefile.am: some cleanups ! GRRRR
+
+	* /cvs/rhl/netcfg/configure.in: added config.h to AC_OUTPUT
+
+2001-07-24  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/Makefile.am:
+	Make sure the new files are actually distributed.
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/config.h.in:
+	initial version (generated by autoheader (./autogen.sh))
+
+	* /cvs/rhl/netcfg/config.h.in: New file.
+
+2001-07-24  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/configure.in:
+	0.5.7
+
+2001-07-24  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am: - Fixed missing rm for druid.
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	commented debug print's
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	reimplement ConfModules in MyConfModules cause of broken __delitem__
+
+2001-07-24  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am: * internet-druid
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec: * add internet-druid
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py, /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/po/redhat-config-network.pot, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/internet-druid.console, /cvs/rhl/netcfg/internet-druid.desktop, /cvs/rhl/netcfg/Makefile.am:
+	* fix description - ADSLInterface.py, IsdnInterface.py, ModemInterface.py
+	* add internet-druid.desktop
+	* clean up main in netconf.py
+
+2001-07-24  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py, /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py, /cvs/rhl/netcfg/src/netconfpkg/devicetype.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/editdomain.py, /cvs/rhl/netcfg/src/netconfpkg/edithosts.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/__init__.py, /cvs/rhl/netcfg/src/netconfpkg/InterfaceCreator.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NCisdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Updated the Copyright notices.
+	- Final fix the the gtk/gnome import problems with the commandline.
+
+2001-07-24  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	remove all stale Modem entries in wvdial
+
+2001-07-24  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py:
+	* fix bug in loading pixmap
+	* add missing import NC_functions in NewInterface
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ModemDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NewInterfaceDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/po/redhat-config-network.pot, /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	* Druid for dialup
+	* many fixes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.py, /cvs/rhl/netcfg/src/netconfpkg/InterfaceCreator.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py, /cvs/rhl/netcfg/src/netconfpkg/ADSLInterfaceDruid.glade, /cvs/rhl/netcfg/src/netconf.py:
+	* implement druid for dialup (Modem/xDSL/ISDN)
+
+2001-07-24  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- Bugfix in apply of NCDevice (again the createFOO().apply problem)
+
+2001-07-23  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.py:
+	* many fixes
+
+2001-07-23  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- First support for hardware address configuration of ethernet interfaces.
+	  Still missing is the initscript support and the new ifcfg-eth-HWADDR device
+	  linking sheme.
+
+2001-07-22  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.py:
+	* bug fixes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py:
+	* remove unused Cablemodem Interface
+
+	* /cvs/rhl/netcfg/src/netconf.py: * add support wizard
+
+	* /cvs/rhl/netcfg/src/netconfpkg/CipeInterface.py:
+	* add Cipe interface schablone
+
+	* /cvs/rhl/netcfg/src/netconfpkg/CipeInterface.py: New file.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetInterface.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/netconfpkg/WirelessInterface.py:
+	* Implement wizard for adding device ISDN/xDSL/Modem
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterface.py, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.py, /cvs/rhl/netcfg/src/netconfpkg/EthernetInterface.py, /cvs/rhl/netcfg/src/netconfpkg/IsdnInterface.py, /cvs/rhl/netcfg/src/netconfpkg/ModemInterface.py, /cvs/rhl/netcfg/src/netconfpkg/NewInterface.py, /cvs/rhl/netcfg/src/netconfpkg/WirelessInterface.py:
+	New file.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterfaceDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/IsdnHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/ModemDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/NewInterfaceDruid.glade:
+	* Druid Glade files for ADSL/ISDN/Modem
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterfaceDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/IsdnHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/ModemDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/NewInterfaceDruid.glade:
+	* remove, it should be checked into another branch
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ADSLInterfaceDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/DialupDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/EthernetHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/IsdnHardwareDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/ModemDruid.glade, /cvs/rhl/netcfg/src/netconfpkg/NewInterfaceDruid.glade:
+	* Druid gladefile for ADSL/Dialup/Modem/Ethernet
+
+2001-07-20  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.5.5
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	If we're going to have names there, I'll add mine
+
+2001-07-19  tayninh1  <tayninh1@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py: * fix commit again
+
+	* /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py: * fix static routes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py: * clean codes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade: * fix widget name
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py: * add commit
+
+2001-07-19  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCCallback.py, /cvs/rhl/netcfg/src/netconfpkg/NCCipe.py, /cvs/rhl/netcfg/src/netconfpkg/NCCompression.py, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconfpkg/NCWireless.py, /cvs/rhl/netcfg/src/netconf.py:
+	added copyright notice
+
+2001-07-19  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/inspect.py, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/pydoc.py:
+	inspect and pydoc are part of the python package.
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec:
+	Don't obsolete rp3 - gnome-lokkit needs it
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.5.4
+
+2001-07-19  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed a very stupid bug in switchToProfile which prevented it from atually
+	  working.
+	- Fixed the 'removed-device-dangling-profile-symlink' problem.
+
+2001-07-18  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py, /cvs/rhl/netcfg/src/netconfpkg/tcpipdialog.glade:
+	* add device.commit
+	* fix bug in loading icon
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.py, /cvs/rhl/netcfg/src/netconfpkg/chooseprovider.glade, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.py, /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py, /cvs/rhl/netcfg/src/netconfpkg/devicetype.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/editdomain.py, /cvs/rhl/netcfg/src/netconfpkg/edithosts.py, /cvs/rhl/netcfg/src/netconfpkg/ProfileList.idl, /cvs/rhl/netcfg/src/netconf.py:
+	* use global load_icon
+	* don't support country code
+	* fix bugs in loading of provider
+	* fix DNS bug
+
+2001-07-18  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/netconf.py:
+	"ternary" -> "tertiary"
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.5.3
+
+2001-07-18  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	added PROVIDER/ProviderName to ModemDialup
+
+2001-07-18  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed a small problem with missing keys in ConfSMB
+	- Fixed the missing ethernet hwardware load/save functionality in modules.conf
+	- Fixed a problem with the save of profiles and devices.
+
+2001-07-17  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	* fix minor bug in callback
+
+2001-07-17  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec: Doh
+
+	* /cvs/rhl/netcfg/po/fr.po, /cvs/rhl/netcfg/po/it.po, /cvs/rhl/netcfg/po/no.po, /cvs/rhl/netcfg/po/redhat-config-network.pot, /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/po/de.po, /cvs/rhl/netcfg/po/es.po, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.5.2
+
+2001-07-17  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/providerdb.py:
+	* search provider db in correct PATH
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py:
+	* search providerdb in correct PATH
+
+2001-07-17  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py: - Added profile renaming.
+
+2001-07-17  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.5.1
+
+2001-07-17  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am: corrected providerdir
+
+2001-07-17  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/po/redhat-config-network.pot: Updated...
+
+	* /cvs/rhl/netcfg/po/de.po, /cvs/rhl/netcfg/po/es.po, /cvs/rhl/netcfg/po/fr.po, /cvs/rhl/netcfg/po/it.po, /cvs/rhl/netcfg/po/no.po:
+	Added test strings.
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/po/de.po, /cvs/rhl/netcfg/po/es.po, /cvs/rhl/netcfg/po/fr.po, /cvs/rhl/netcfg/po/it.po, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.5, and add skeletons for more languages.
+
+2001-07-17  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editdomain.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py:
+	* use global NETCONFDIR PROGNAME
+
+	* /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py:
+	* implement Down/Up callback
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	* call hydrade if ok button is pressed
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/providerdb:
+	* update providerdb
+	* remove DNSx if PEERDNS=yes
+	* move get_icon and load_icon from python module into NC_functions
+	* many fixes
+
+2001-07-17  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed the device copy to not make have duplicate names
+	- Added the profile copy stuff.
+
+2001-07-17  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	corrected typo
+
+	* /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.py:
+	removed alias from wireless hardware
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: added Wireless files
+
+	* /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade:
+	added key and more combo parameters
+
+	* /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.py:
+	hydration of wireless specific parameters
+
+2001-07-17  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed the problem with the missing devices after saving.
+	- Fixed the dangling symlinks in /etc/sysconfig/network-scripts
+
+2001-07-17  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	added and corrected Wireless
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	added compression loading/saving
+
+	* /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade:
+	new protocol style added
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: added createWireless
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCCipe.py: minor 'None' checks
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconf.py:
+	added Wireless
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	added NC_functions.create_ethernet_combo
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py:
+	switched to use NC_functions.create_ethernet_combo
+
+	* /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCWireless.py, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.py:
+	initial version
+
+2001-07-16  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in:
+	Don't check for alchemist being present with  AC_CHECK_RPM
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec:
+	Add build dependency on alchemist
+
+	* /cvs/rhl/netcfg/src/Makefile.am:
+	Don't mark netconf.py as a data file, it gets installed twice (second time with 644 permissions)
+
+	* /cvs/rhl/netcfg/src/Makefile.am: Fix directory names
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec:
+	Move %find_lang to correct location in spec file
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec: Disable make check
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	Add more i18n
+
+	* /cvs/rhl/netcfg/po/no.po: Add some Norwegian strings
+
+2001-07-16  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: added NCCipe.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCCipe.py: initial version
+
+2001-07-16  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/autogen.sh, /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/Makefile.am:
+	Add more i18n infrastructure
+
+	* /cvs/rhl/netcfg/po/Makefile.am, /cvs/rhl/netcfg/po/no.po, /cvs/rhl/netcfg/po/redhat-config-network.pot:
+	Add more i18n infrastructure.
+
+2001-07-16  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py: true and false added
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: better import
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconf.py:
+	added CIPE
+
+2001-07-16  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/po/POTFILES.in: Add it...
+
+2001-07-16  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.glade:
+	height and width changes
+	renaming
+	new remote peer port entry
+
+	* /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.py: initial version
+
+2001-07-16  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/glade-strings.c: First build.
+
+	* /cvs/rhl/netcfg/src/Makefile.am:
+	Create glade-strings.c with the strings from glade files
+
+	* /cvs/rhl/netcfg/src/netconf.py: Mark a string as translateable...
+
+2001-07-16  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py:
+	* Change SLAVEDEVICE to SLAVE_DEVICE
+	* Change DELDEFAULTROUTE DEFROUTE
+	* add None into Countrycode list
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCCallback.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	* Change CBCP -> Compression
+	* add Callback Type
+	* fixed save function in NCCallback.py
+
+2001-07-16  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.py: initial version
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	correct cipe device name
+
+	* /cvs/rhl/netcfg/src/netconfpkg/devicetype.py:
+	init device types from global list without Loopback
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: added cipeconfig.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	added CIPE and Wireless deviceTypeDict and deviceTypes entries
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	always createCompression in NCDialup.__init__
+	generic_error_dialog for unknown device types
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	always createCompression in NCDialup.__init__
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	corrected copy and paste error
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	hydration/dehydration of ppp compression options
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade:
+	renamed some compression CBs
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: added StupidMode
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	added StupidMode to Modem
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	added PERSIST and DEFROUTE and InitSctrings
+
+2001-07-16  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py:
+	* many fixes
+
+2001-07-13  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/.cvsignore: Removing mockup
+
+2001-07-13  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/edithosts.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/provider.py:
+	* set follow mouse, set modial dialog in glade files, listbox as browse
+	* many bugfixes
+
+2001-07-12  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py, /cvs/rhl/netcfg/src/netconfpkg/tcpipdialog.glade:
+	* many bugfixes
+
+2001-07-12  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am: make correct symbolic links ;-)
+
+	* /cvs/rhl/netcfg/src/Makefile.am: added providerdb to EXTRA_DIST
+
+	* /cvs/rhl/netcfg/src/Address.py, /cvs/rhl/netcfg/src/ADSLInterface.py, /cvs/rhl/netcfg/src/ATMInterface.py, /cvs/rhl/netcfg/src/CableInterface.py, /cvs/rhl/netcfg/src/ConfiguredDevice.py, /cvs/rhl/netcfg/src/Device.py, /cvs/rhl/netcfg/src/dialup.glade, /cvs/rhl/netcfg/src/DialupInterface.py, /cvs/rhl/netcfg/src/EthernetDevice.py, /cvs/rhl/netcfg/src/EthernetInterface.py, /cvs/rhl/netcfg/src/FirewallDruid.py, /cvs/rhl/netcfg/src/firewall-druids.glade, /cvs/rhl/netcfg/src/InterfaceCreator.py, /cvs/rhl/netcfg/src/mainwindow.glade, /cvs/rhl/netcfg/src/MainWindow.py, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netiface.py, /cvs/rhl/netcfg/src/new_interface_druid.glade, /cvs/rhl/netcfg/src/NewInterface.py, /cvs/rhl/netcfg/src/Resolver.py, /cvs/rhl/netcfg/src/WirelessInterface.py, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/CheckList.py:
+	clean up unused files
+
+	* /cvs/rhl/netcfg/src/Makefile.am:
+	cleaned up and removed the unused files
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py, /cvs/rhl/netcfg/src/netconfpkg/devicetype.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py, /cvs/rhl/netcfg/src/netconfpkg/tcpipdialog.glade, /cvs/rhl/netcfg/src/netconf.py:
+	merged in changes from branch protoStyle
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py:
+	set_position(0) for ethernetDeviceEntry in any case
+
+	* /cvs/rhl/netcfg/src/netconf.py: more spaces
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	device.createDialup() in editDevice() in case it should exist
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	return self.Dialup in createDialup in any way
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py:
+	change OK button to sensitive on deviceNameEntry_changed
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py:
+	set position of deviceEntry to 0 in any way
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade: dunno
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py:
+	changed to use deviceConfigDialog
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade:
+	added General and Protocol tabs
+
+2001-07-12  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/devicetype.glade, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconf.py:
+	* some fixes for adding devices
+
+2001-07-12  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconf.py:
+	- Added a check-local using the pychecker on our Python source files.
+	  Don't use it from the spec file (yet?)
+	- Fixed a tiny unused variable thing in netconf.py
+
+2001-07-12  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: added more files
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade:
+	protcolList -> protocolList
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py: added tcpipdialog
+	added deviceName checks from basicdialog
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	added editDevice to be called from on_deviceEdit and on_deviceAdd
+
+	* /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py:
+	copied from basicdialog and stripped down to tcp/ip options only
+
+	* /cvs/rhl/netcfg/src/netconfpkg/tcpdialog.py: New file.
+
+2001-07-12  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed renameing problem from netconf to redhat-foo-bar at some other
+	  places.
+
+2001-07-12  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py: corrected import
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	named the device specific widgets
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py: corrected import
+	added call to base class hydration/dehydration
+	better tab hiding for isdn and modem
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade:
+	named the isdn and modem tabs
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py: added dehydration
+	better bool <-> checkbox hydration
+
+2001-07-12  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py: implement new protocol
+
+2001-07-12  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py: initial version
+
+	* /cvs/rhl/netcfg/src/netconfpkg/deviceconfig.py: New file.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	changed to use deviceConfigDialog
+
+	* /cvs/rhl/netcfg/src/netconfpkg/tcpipdialog.glade: initial version
+
+	* /cvs/rhl/netcfg/src/netconfpkg/tcpipdialog.glade: New file.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	New Protocol Style
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py: unlink -> os.unlink
+
+	* /cvs/rhl/netcfg/src/netconfpkg/devicetype.py: initial version
+
+2001-07-11  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/Makefile.am:
+	New location for serverconf files
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec:
+	Don't mark the KDE desktop file as a config file
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec: Fix typos
+
+	* /cvs/rhl/netcfg/Makefile.am, /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/src/pixmaps/Makefile.am:
+	Fixes to the build process
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: Remove extra backslash
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am:
+	Can't find any devicetype.py file here, removing it from the makefile for now
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.3.2
+
+	* /cvs/rhl/netcfg/Makefile.am:
+	Add neat.desktop to the directory for system configuration tools
+
+	* /cvs/rhl/netcfg/neat.desktop: Add Norwegian translation
+
+2001-07-11  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: more dependencies
+
+	* /cvs/rhl/netcfg/src/netconfpkg/genClass.py:
+	commit and rollback for childlists
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py: changed TRUE -> true
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py:
+	cosmetic changes to device combo box
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	removed ethernetDeviceComboBox width
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py:
+	cosmetic changes to device combo box
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade:
+	strange widget changes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	minor configureDevice changes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade:
+	removed deviceType combo box
+
+	* /cvs/rhl/netcfg/src/netconfpkg/devicetype.glade: initial dialog
+
+	* /cvs/rhl/netcfg/src/netconf.py: added deviceType dialog
+
+2001-07-11  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec: * requires alchemist
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/Makefile.am, /cvs/rhl/netcfg/neat.console, /cvs/rhl/netcfg/neat.desktop, /cvs/rhl/netcfg/neat.pam, /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/src/pixmaps/neat.png:
+	- obsolete isdn-config internet-config
+	- requires consolehelper
+	- add icon and desktop file
+
+2001-07-11  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/edithosts.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed two traceback problems which were produced by wrongly using rollback()
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed critical bug during save of profiles.
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- Final updates and fixes for 0.3.0 release.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- /etc/sysconfig/static-routes is now being written.
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	set a virtual device name, if not given
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	correct method overloading
+	PPPOptions dehydration
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	PPPOPTIONS for modem now in ifcfg
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/redhat-config-network.spec, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	- Static routes now nearly complete.
+	- Fixed some missing files in Makefile.am of netconfpkg.
+	- New release, built 0.2.2-2
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py: added DSL
+
+2001-07-10  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconf.py:
+	* hydrate/dehydrate
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: - Forgot to import math
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- More work on static routes for devices.
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: added NCisdnhardware.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py: cleaned up a bit
+	set correct device
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py:
+	added hydration and dehydration
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade:
+	named ethernetDeviceComboBox and make it expandable
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	changed no to yes and otherwise
+
+2001-07-10  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py: More renaming changes
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.2.2
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed the updateNetworkScript NOT to remove original files until the user
+	  has clicked OK ;)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Corrected profile switching from commandline
+	- Fixed the DeviceList.idl for the StaticRoutes address
+	- pppX and ipppY cfg files are now created correctly.
+	- Static routes changes and additions.
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: chmod ifcfg to 0600
+
+2001-07-10  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/editdomain.py, /cvs/rhl/netcfg/src/netconfpkg/edithosts.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py:
+	/usr/share/netconf -> /usr/share/redhat-config-network
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: fixed DSL options
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: added DSL Dialup type
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: added DSL Options
+
+2001-07-10  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/redhat-config-network.spec:
+	0.2.1
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: added DSLDialup
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	added PPPOPTIONS to ModemDialup
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/Makefile.am:
+	removed comments
+
+	* /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am:
+	fixed for distcheck and rpm packaging
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Hopefully last import bugfixes
+	- Moved the activateDevice and switchProfile functions to NCProfileList
+	- Final version of the hosts and resolv.conf writer
+	- Updated updateNetworkScript to move the hosts and resolv.conf, too if they
+	  are regular files.
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am:
+	added complete path to genClass.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am:
+	removed EXTRA_DIST from than
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: added PPPOPTIONS
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/edithosts.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py:
+	- Fixed another set of import problems.
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: added NCCallback
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCCallback.py: initial version
+
+2001-07-10  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am: * fix
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/editdomain.py:
+	- Fix for wrong true (instead of TRUE)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- Another import fix.
+
+2001-07-10  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	Layer changes in IsdnDialup
+
+2001-07-10  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/netconf.spec, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/editdomain.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Lrge cleanup of  import foo and from foo import * updates.
+
+2001-07-10  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	* implement hydrate for ISDN
+
+2001-07-10  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/Makefile.am, /cvs/rhl/netcfg/src/Makefile.am:
+	Renaming
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/netconf.spec, /cvs/rhl/netcfg/redhat-config-network.spec:
+	Namechange
+
+	* /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/netconf.spec, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconf.py:
+	Prepare for 0.2, various fixes so it doesn't fail to run
+
+2001-07-09  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/edithosts.py:
+	- Dialog code for Hosts add/edit operation.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/edithosts.glade:
+	- Dialog for Hosts entry add/edit operation.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/editdomain.py:
+	- Added the commit() call to update the SearchList in case of dehydration.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py:
+	- Added the device to the init() call (like with the other dialogs)
+	- Removed the dialog.show() call, is replaced by run() from calling function.
+	- No gtk.mainquit() calls in the delete/ok/cancel cases.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	- Removed the dialog.show(). Dialogs are run() from the calling function now.
+	- Switch to hydrate/dehydrate and first implementation.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- Fixed problem of unconfigured devices. Now the OK button is disabled until
+	  the device has been configured and it has a name.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- New function activateDevice to (de)activate a certain device in a profile.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Moved the functionality to activate devices to NC_functions.
+	- Use string.join() to create alias list for hosts
+	- Call commit() on DNS.SearchList when valid changes have been made
+	- Select correct row for up/down movement in DNS search
+	- Complete implementation of the hostsAdd and -Edit functions.
+
+2001-07-09  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/editdomain.glade, /cvs/rhl/netcfg/src/netconfpkg/editdomain.py:
+	* implement edit domain
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	* implement  DNS Add/Edit/Down/Up/Delete Callbacks
+
+2001-07-08  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconf.py:
+	* implement hydrate/dehydrate for Modem devices
+	* many bug fixes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCisdnhardware.py, /cvs/rhl/netcfg/src/netconf.py:
+	* implement hardwareDeleteButton callback
+	* implement deviceType ISDN
+	* implement load/save isdn hardware
+	* many bug fixes
+
+2001-07-06  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/netconf.spec: Require a recent version of initscripts
+
+	* /cvs/rhl/netcfg/netconf.spec: Make the package noarch
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	Don't look for pixmaps in a relative location.
+
+	* /cvs/rhl/netcfg/src/pixmaps/Makefile.am:
+	Pixmaps in separate directory
+
+	* /cvs/rhl/netcfg/src/Makefile.am: Fix location of glade files
+
+	* /cvs/rhl/netcfg/src/Makefile.am:
+	Install these glade files as well as the rest
+
+	* /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconf.py:
+	Some changes to make it fail later than it used to
+
+	* /cvs/rhl/netcfg/doc/Makefile.am, /cvs/rhl/netcfg/po/Makefile.am, /cvs/rhl/netcfg/src/doc/Makefile.am, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/pixmaps/Makefile.am, /cvs/rhl/netcfg/configure.in:
+	Make the build process less broken.
+
+	* /cvs/rhl/netcfg/Makefile.am: Update
+
+2001-07-05  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCisdnhardware.py:
+	* some fixes
+
+2001-07-05  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/.cvsignore, /cvs/rhl/netcfg/src/netconfpkg/.cvsignore:
+	- Added *.swp to the .cvsignore files (vi work files)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py:
+	- Updated the dialog to be conform with our nameing conventions.
+	- Nearly complete hydrate and dehydrate implementations now.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.glade:
+	- Added DMA0 and DMA1 text entries.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/editadress.py:
+	- Cleaned up the editAddressDialog __init__() method.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed missing hardwarelist global in hydrateDevices
+	- Tiny code cleanup in addDevice
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- Fixed the required device configuration before being able to add a device.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	- Added missing DeviceName to Modem member.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Nearly complete fix for the device activation and deactivation for default
+	  and none default profiles.
+	- Hardware dialog updates to use the dialog.run() method for the gnome dialogs.
+	- Fixed typo in hardware dialog dehydration for IRQ.
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	- Made the profileList Browse instead of Single as selection mode (we always
+	  need exactly 1 profile to be selected).
+
+2001-07-05  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.glade, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/NCisdnhardware.py:
+	* remove duplicate updateDialog in ethernethardware.py
+	* hardware selection works
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCisdnhardware.py: * add ISDNResource
+
+2001-07-04  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- Switched the dialog read/write nameing convention to hydrate/dehydrate.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Removed some unnecessary debug prints
+	- Fixed the missing save functionality of the default profile
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Move the import gnome stuff into the class methods as it conflicted with
+	  the commandline parsing again.
+	- Removed the unused Rename callbacks in the autoconnect calls
+	- Added the Hosts tab buttons to the autoconnect call
+	- Changed the Profile Edit to Rename button stuff
+	- Added all the Hosts button callbacks
+	- Implemented the Hosts del button callback
+	- Implemented the Profile add button callback
+	- Implemented the Profile del button callback
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	- Profiles don't have a Edit button but a Rename button.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py: - Tiny code cleanup
+
+	* /cvs/rhl/netcfg/src/netconfpkg/__init__.py:
+	- Excluded the genClass.py to be imported during netconfpkg importing.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- Moved the import gnome and import gnome.ui lines to the generic_error_dialog
+	  function as import gnome.ui does a complete commandline parsing which breaks
+	  completely our own!
+	- Implemented the profile switching function. Takes a profile name as argument
+	  and switches to that.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py: - Tiny code cleanup
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Switch from setup/digest nameing to apacheconf conform hydrate/dehydrate for
+	  dialog filling and parsing.
+	- First getopt based commandline parsing. Implemented profile switching.
+
+2001-07-03  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	* fix device setup (isdn modem)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	* fix dialup device (isdn modem)
+
+2001-07-03  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	- Fixed the wrongly defined hydrate and dehydrate functions. We might want to
+	  rename them anyway...
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade:
+	- Added the modemPort Combo box for the modem selection. Still needs to be
+	  hooked up with the GUI code correctly.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- Initialized a couple of missing variables.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Added the cleanup of the whole profile dir before saving. Might be too
+	  much, but it's a start and works.
+	- Fixed the missing Domainname entry.
+	- Fixed the device check during save.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	- Fixed small problem with the missing InitStrings member
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- Added the nexessary apply() method as the createDailup() call can return
+	  None.
+	- Reverted the createDialup() call to the original after this fix.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Fixes a problem in the device copy button callback, should work now.
+	- Implemented the device delete button callback.
+	- Fixed the missing activation/deactivation of devices in the device selection
+	  callback.
+
+2001-07-03  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/providerdb:
+	* add Compuserv into isdn database
+	* connection type (isdn,modem) now correct
+
+2001-07-03  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- Renamed the fill_dialog and read_dialog functions to be conform with our
+	  naming style. (setupDialog and digestDialog now).
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- First version of the function to update the old network configuration when
+	  netconf is run for the first time. Works ok already.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed a small problem where the current profile was not detected correctly.
+	- Extended the save function to start creating the correct files and symlinks
+	  in the appropriate places.
+	- Added the getProfileList function. Same reason as in hardware and device list.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	- Added getDeviceList() function. Needed for global access to one single
+	  device list (see hardware and profile list as well)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- We need a Dialup member in the Device, otherwise we get killed by the
+	  genClass generated classes for loading and saving.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Used the getFOO functions for the various lists instead of the global
+	  variables.
+	- Implemented the dialog parsing of the device edit and add callbacks
+	- Implemented the device copy callback
+	- Fixed a small bug in the device rename callback
+	- Fixed the Host- and Domainname entry callbacks
+	- Integrated the old configuration update script
+
+	* /cvs/rhl/netcfg/src/Makefile.am:
+	- Fixed missing rm commands for the links.
+
+2001-06-29  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am: Fix locations
+
+	* /cvs/rhl/netcfg/netconf.spec: Add the files...
+
+	* /cvs/rhl/netcfg/src/Makefile.am: More destdir fixes
+
+	* /cvs/rhl/netcfg/netconf.spec: Add a specfile...
+
+	* /cvs/rhl/netcfg/src/Makefile.am:
+	* Make sure that not only the first build succeeds
+	* Add initial support for DESTDIR
+
+2001-06-28  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconf, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconf.py:
+	- First support for commandline tool by using symbolic links.
+	- Changes in main gui callbacks and netconf.py to support DNS/Hostname entries
+	  correctly.
+	- Start of profile writing.
+
+2001-06-22  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py:
+	- dialupDialog -> DialupDialog (hey, where was that name convention)
+	- added ISDNDialupDialog and ModemDialupDialog
+	- added hydrate() and dehydrate() sceletons to be filled in
+	- GtkWindow -> GnomeDialog changes for button handling
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- init the deviceTypeComboBox with the possible Device Types
+	- deactivate the deviceTypeComboBox, once the type is specified and configured
+	- seperate object creation (seperate classes) for Modem and ISDN
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- deviceTypes is now a list of supported/possible device types
+	- deviceTypeDict is the dictionary for Name/Type
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	- special treatment for ints (no, it isn't code for sex :)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	- print also Type in __main__
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- initialize type with Device.Type in DeviceList
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py:
+	- removed import of from dialupconfig import dialupDialog
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py, /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- renamed Isdn to ISDN
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py: ok, readded
+	import gnome
+	import gnome.ui
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py: removed:
+		import gnome
+		import gnome.ui
+	cause it got loaded way too much
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: DNS1 -> PrimaryDNS
+	DNS2 -> SecondaryDNS
+	pass parentConf to child load()/save()
+
+2001-06-22  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.glade:
+	* fix GUI
+
+2001-06-22  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: - removed debugging print
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- retest unknown device type
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- added Isdn to getDeviceType()
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- changes for ISDN in createDialup()
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: changes for ISDN
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: - class IsdnDialup added
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCCompression.py: initial version
+
+2001-06-22  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade, /cvs/rhl/netcfg/src/netconfpkg/chooseprovider.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/editadress.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.glade, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade:
+	* fix glade files
+
+2001-06-22  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/configure.in: check for alchemist 0.16
+
+	* /cvs/rhl/netcfg/acinclude.m4: check for emtpy release
+
+	* /cvs/rhl/netcfg/acinclude.m4: minor simplification
+
+	* /cvs/rhl/netcfg/acinclude.m4, /cvs/rhl/netcfg/configure.in:
+	added alchemist rpm check
+
+2001-06-21  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py: - read and fill dialog
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl:
+	Alias with default value 0
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py:
+	-        if self.device.Alias:
+	+        if self.device.Alias != None:
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	dialog is now resizeable
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	- dialog is filled with basic device data
+	- dialog is now a GnomeDialog
+	- commit() in ok and apply
+	- rollback() in cancel
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade:
+	- dialog can now be resize
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	- commit() in load() and save()
+	- cosmetic for loop changes
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- typecast to int for self.Alias
+	- commit() in load() and save()
+	- check for Alias != None instead of if Alias:
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: - Alias is now INTEGER
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- moved basicdialog stuff to basicdialog
+	- changed deviceTypeEntry to hardwareTypeEntry
+	- dialogs are now GnomeDialog
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py:
+	read and write data to and from the dialog now
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: force str(self.Alias)
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: - added Alias and Type
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: - added Alias
+
+2001-06-21  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/chooseprovider.glade, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/editadress.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade, /cvs/rhl/netcfg/src/netconf.py:
+	- Switched all glade dialogs from GtkWindow to GnomeDialog
+	- Fixed the hardware list problem in basicdialog.py
+
+2001-06-21  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade:
+	changed to GnomeDialog
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade:
+	uneditable Device
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade:
+	uneditable DeviceType
+
+2001-06-21  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade:
+	* remove auth combobox
+
+2001-06-21  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	deviceTypeEntry renamed to hardwareTypeEntry
+	hardwareTypeCombo named
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- fix in getHardwareList()
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- loadHardware() now uses getHardwareList()
+	- devicelist now uses HardwareList for the device type
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- added getHardwareList()
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py: create_if_missing = 1
+
+2001-06-20  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py:
+	- Tiny typo fix for adding a new hardware device.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Removed import of Resolver (not needed anymore).
+
+	* /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py:
+	- Reflected change from slider to option menu for modem volume.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/modemconfig.glade:
+	- Changed Modem volume slider to option menu as glade hor. sliders are a piece
+	  of junk.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py:
+	- Nearly finished dialog extraction.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.glade:
+	- Changed irq spinbutton to combobox (as we need 'Unknown' for IRQ as well).
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- Updated to reflect name change (DeviceName -> ModuleName)
+	- Minor fixes in modem reading
+
+	* /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	- Renamed DeviceName to ModuleName in Hardware.Card (as we use it to store the
+	  module name).
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Tons of hardware setup dialog reading done.
+
+2001-06-20  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	- removed debugging prints
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	- correct pap and chap secrets
+	- correct WVDIALSECT handling
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: - added class IsdnDialup
+	- name instead of modemsect
+	- more comments
+	- typo in save
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	getDeviceType(self.DeviceId) instead of Device
+	self.Dialup.save instead of saveModem
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py:
+	typo in ConfSMBSubDict.__delitem__
+
+	* /cvs/rhl/netcfg/src/netconfpkg/__init__.py:
+	exclude files starting with '.'
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- added empty string and 'None' handling for getDeviceType
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	- made Device specific Dialup classes
+	- rp3-config compatibility
+	- Device config stuff moved in also
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	moved all Dialup specific stuff to NCDialup.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: nicer formatting
+
+2001-06-20  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade:
+	* split adsl in 2 Tabs (general and advanded)
+	* removw dialin server checkbox
+
+2001-06-20  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	only delete devices, that are no more in the DeviceList
+
+2001-06-19  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade:
+	- Removed Domain entry from Hosts tab
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- Added complete modem reading
+	- Added complete writing.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- Removed DOMAIN from hash.
+	- Added DEVHOSTNAME to hash.
+
+2001-06-19  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py:
+	removed typos in ConfSMBSubDict
+	type in __getitem__
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: removed debug output
+
+2001-06-19  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl:
+	- Removed Domain member from Device list.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Added the Hostname and Automatic DNS reading into basic dialog setup
+	- Warning Dialog that Loopback device can not be deactivated.
+
+2001-06-19  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py: fixed varname typo
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: fixed InitStrings typo
+
+	* /cvs/rhl/netcfg/src/netconfpkg/Makefile.am:
+	more genClass/idl dependencies
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	call device type specific dialup saving and loading methods
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py:
+	split into save/load{DeviceType}
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDialup.py: initial version
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl: added InitStrings
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py: first working version
+
+2001-06-19  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed a small missing value problems with the read of host and domainname.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Working checkboxes now for the device list.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade:
+	- Fixed the confusing default route and static route setup.
+
+2001-06-19  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ConfSMB.py: initial version
+
+2001-06-19  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ProfileList.idl:
+	- Added global Hostname and Domainname members to DNS list.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Added reading of global host and domainname.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Added dialog setup for global hostname and domainname
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	- Added global hostname and domainname information to DNS tab
+
+2001-06-19  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl:
+	changed Device.DefaultGW to Device.Gateway
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py: added SYSCONFNETWORK
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	fill in gateway from /etc/sysconfig/network, if empty and if in subnetmask
+
+2001-06-18  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed updated DeviceId name for profiles and GUI.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Fixed DNS server reading.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- Fixed missing boolean entries duing read.
+
+2001-06-18  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py:
+	removed traffíc, security and accounting tabs from dialog
+
+2001-06-18  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Added start of basic dialog fill-in.
+
+2001-06-18  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	- no OLDSYSCONFDIR
+	- devices begin with ifcfg-
+
+2001-06-13  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- Moved device type check from netconf.py to netconfpkg/NC_functions.py
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- Added the DNS reader to the general profile loader.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py:
+	- Wrote complete hardware setup loader, including new Conf parser for hwconf.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	- Added Description member to Hardware list.
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Moved the device type check to netconfpkg/NC_functions.py
+	- Lots of setup updates. All tabs should now be filled with correct values
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	- Fixed the Hardware tab (missing one column)
+
+2001-06-12  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/netconf.py:
+	- Small fixes to netconf.py to clear the clists correctly and to modularize
+	  the setup routine a little cleaner
+	- Fixed wrong signals for the Hosts tab in the main dialog (still uses the
+	  device signals ;).
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl, /cvs/rhl/netcfg/src/netconf.py:
+	- Device list works display working.
+	- Hosts reader and display working.
+	- Profile reader, display and switching working.
+
+2001-06-12  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/genClass.py:
+	return len-1 instead of len for add%childname()
+
+2001-06-11  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ProfileList.idl:
+	- Added 'Active' member to a single profile
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py:
+	- Added SYSCONFPROFILEDIR
+	- Added generic_error_dialog() for later global use
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	- Small fix to reflect the correct imports of the base classes
+
+	* /cvs/rhl/netcfg/src/netconf.py:
+	- Bigger updates to the load ans setup of the GUI.
+
+	* /cvs/rhl/netcfg/src/Resolver.py:
+	- Fixed wrong profile directory name.
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCHardwareList.py, /cvs/rhl/netcfg/src/netconfpkg/NCProfileList.py:
+	- First dummy load/save implementations of the hardware and profile lists.
+
+2001-06-11  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	DEVICE -> Device
+	NAME -> Name
+	no DeviceName
+	DeviceId if filename
+
+	* /cvs/rhl/netcfg/src/netconfpkg/genClass.py: moved true and false
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	do not set variable, if not defined in config file
+
+	* /cvs/rhl/netcfg/src/netconfpkg/genClass.py: - added commitChild
+	- better import
+
+2001-06-11  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl:
+	* add some missing stuff for provider configuration
+
+2001-06-11  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: AUTODNS -> RESOLV_MODS
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	fallback to old config directory
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py:
+	Fallback to old config directory
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NC_functions.py: some constants
+
+2001-06-08  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/.cvsignore, /cvs/rhl/netcfg/src/.cvsignore, /cvs/rhl/netcfg/src/netconfpkg/.cvsignore:
+	- Added some .cvsignore files as those ? during cvs up really started to annoy
+	  me.
+
+2001-06-08  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/genClass.py: switched to UserList
+
+	* /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/genClass.py, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	*** empty log message ***
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDevice.py: initial version
+
+2001-06-08  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py:
+	- Removed superfluious import statement
+
+	* /cvs/rhl/netcfg/src/active.xpm, /cvs/rhl/netcfg/src/inactive.xpm, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/src/pixmaps/active.xpm, /cvs/rhl/netcfg/src/pixmaps/inactive.xpm:
+	- Moved the new pixmaps for the device listing to the appropriate subdir
+	- Fixed the netconf.py to load the pixmaps from the correct place
+
+2001-06-08  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/NCDeviceList.py, /cvs/rhl/netcfg/src/netconfpkg/Makefile.am, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/src/DeviceList.idl, /cvs/rhl/netcfg/src/Firewall.idl, /cvs/rhl/netcfg/src/genClass.py, /cvs/rhl/netcfg/src/HardwareList.idl, /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/NetworkList.idl, /cvs/rhl/netcfg/src/ProfileList.idl, /cvs/rhl/netcfg/src/ProviderList.idl:
+	*** empty log message ***
+
+2001-06-08  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/active.xpm, /cvs/rhl/netcfg/src/inactive.xpm, /cvs/rhl/netcfg/src/netconf, /cvs/rhl/netcfg/src/netconf.py:
+	- Added the pixmaps for the main dialog device tab
+	- Added the netconf start app
+	- Updated the main dialog device list loading
+
+2001-06-07  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Changed the genClass prefix in order to have the load/save implementaion
+	  separation.
+	- Load operation for devices from the native files. Basic stuff works.
+	- Removed the mainquit stuff from the basicdialog buttons callbacks.
+
+2001-06-06  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/netconf.py:
+	* fix load_icon
+	* add function for loading ethernet cards
+
+2001-06-06  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/ProfileList.idl, /cvs/rhl/netcfg/src/ProfileList.idl:
+	- Fixed a couple of XML errors in this file.
+
+	* /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/maindialog.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/netconf.py:
+	- Fixed the glade loading problems with the first try of the netconf plugin
+	- Fixed the netconf.py app to finally do the right thing(tm)
+
+	* /cvs/rhl/netcfg/src/basicdialog.glade, /cvs/rhl/netcfg/src/basicdialog.py, /cvs/rhl/netcfg/src/CheckList.py, /cvs/rhl/netcfg/src/chooseprovider.glade, /cvs/rhl/netcfg/src/cipeconfig.glade, /cvs/rhl/netcfg/src/dialupconfig.glade, /cvs/rhl/netcfg/src/dialupconfig.py, /cvs/rhl/netcfg/src/dslconfig.glade, /cvs/rhl/netcfg/src/dslconfig.py, /cvs/rhl/netcfg/src/editadress.glade, /cvs/rhl/netcfg/src/editadress.py, /cvs/rhl/netcfg/src/ethernetconfig.glade, /cvs/rhl/netcfg/src/ethernetconfig.py, /cvs/rhl/netcfg/src/ethernethardware.glade, /cvs/rhl/netcfg/src/ethernethardware.py, /cvs/rhl/netcfg/src/isdnhardware.glade, /cvs/rhl/netcfg/src/isdnhardware.py, /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/modemconfig.glade, /cvs/rhl/netcfg/src/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.glade, /cvs/rhl/netcfg/src/netconfpkg/basicdialog.py, /cvs/rhl/netcfg/src/netconfpkg/CheckList.py, /cvs/rhl/netcfg/src/netconfpkg/chooseprovider.glade, /cvs/rhl/netcfg/src/netconfpkg/cipeconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dialupconfig.py, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/dslconfig.py, /cvs/rhl/netcfg/src/netconfpkg/editadress.glade, /cvs/rhl/netcfg/src/netconfpkg/editadress.py, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernetconfig.py, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.glade, /cvs/rhl/netcfg/src/netconfpkg/ethernethardware.py, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.glade, /cvs/rhl/netcfg/src/netconfpkg/isdnhardware.py, /cvs/rhl/netcfg/src/netconfpkg/maindialog.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.glade, /cvs/rhl/netcfg/src/netconfpkg/modemconfig.py, /cvs/rhl/netcfg/src/netconfpkg/providerdb.py, /cvs/rhl/netcfg/src/netconfpkg/provider.py, /cvs/rhl/netcfg/src/netconfpkg/wirelessconfig.glade, /cvs/rhl/netcfg/src/providerdb.py, /cvs/rhl/netcfg/src/provider.py, /cvs/rhl/netcfg/src/wirelessconfig.glade:
+	- Moved the whole slew of .py and .glade files into the netconf package
+	  directory using the new plugin mechanism.
+	- Changed netconf.py to use the new netconf package.
+
+2001-06-06  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/dialupconfig.glade, /cvs/rhl/netcfg/src/dialupconfig.py, /cvs/rhl/netcfg/src/modemconfig.glade:
+	* add modem init string in dialup dialog
+	* some python codes
+
+2001-06-06  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconfpkg/__init__.py:
+	- Nice little Python plugin package using automatic module import (dirty hack)
+
+2001-06-06  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/ethernethardware.py: * add ethernethardware.py
+
+2001-06-06  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/doc/configurationfiles.txt:
+	- Added hosts section to configuration files.
+	- Fixed a few wrongly speced things in the profiles section.
+
+2001-06-05  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/ProfileList.idl, /cvs/rhl/netcfg/src/ProfileList.idl:
+	- Add Gateway and GatewayDevice to static route to DeviceList.idl
+	- Fixed DNS member of Profile
+	- Added HostsList member to Progile
+
+2001-06-05  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/basicdialog.py, /cvs/rhl/netcfg/src/dialupconfig.py, /cvs/rhl/netcfg/src/editadress.glade, /cvs/rhl/netcfg/src/editadress.py, /cvs/rhl/netcfg/src/ethernethardware.glade, /cvs/rhl/netcfg/src/isdnhardware.py, /cvs/rhl/netcfg/src/modemconfig.glade, /cvs/rhl/netcfg/src/modemconfig.py, /cvs/rhl/netcfg/src/netconf.py:
+	* GUI fixes
+	* add editadress class
+
+2001-06-05  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	- Fixed a name problem in the DNS tab.
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	- Added the Gatway and GatewayDevice memebrs to static routing.
+	- Added the InitString member to the Dialup device setup.
+	- Fixed the DNS member in the profiles section.
+	- Added the Hosts member to the profiles section.
+
+	* /cvs/rhl/netcfg/src/maindialog.glade:
+	- Removed the Rename button from the Device tab
+	- Added the Hosts cofiguration tab (mightily neglected up to now!)
+
+	* /cvs/rhl/netcfg/docs/overview: - Moved to doc/ directory
+
+2001-06-04  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.glade: * obsolete netconf.glade.
+
+	* /cvs/rhl/netcfg/src/basicdialog.glade, /cvs/rhl/netcfg/src/basicdialog.py, /cvs/rhl/netcfg/src/dslconfig.glade, /cvs/rhl/netcfg/src/dslconfig.py, /cvs/rhl/netcfg/src/ethernetconfig.glade, /cvs/rhl/netcfg/src/ethernetconfig.py, /cvs/rhl/netcfg/src/netconf.py:
+	* add dslconfig ethernetconfig
+	* some fixes in GUI
+
+	* /cvs/rhl/netcfg/src/pixmaps/city.xpm, /cvs/rhl/netcfg/src/pixmaps/isp.xpm:
+	* add somes pixmaps
+
+	* /cvs/rhl/netcfg/src/basicdialog.glade, /cvs/rhl/netcfg/src/basicdialog.py, /cvs/rhl/netcfg/src/chooseprovider.glade, /cvs/rhl/netcfg/src/cipeconfig.glade, /cvs/rhl/netcfg/src/dialupconfig.glade, /cvs/rhl/netcfg/src/dialupconfig.py, /cvs/rhl/netcfg/src/dslconfig.glade, /cvs/rhl/netcfg/src/editadress.glade, /cvs/rhl/netcfg/src/ethernetconfig.glade, /cvs/rhl/netcfg/src/ethernethardware.glade, /cvs/rhl/netcfg/src/isdnhardware.glade, /cvs/rhl/netcfg/src/isdnhardware.py, /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/modemconfig.glade, /cvs/rhl/netcfg/src/modemconfig.py, /cvs/rhl/netcfg/src/netconf.glade, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/src/provider.py, /cvs/rhl/netcfg/src/wirelessconfig.glade:
+	* make netconf modular
+	* some bugfixes in GUI
+	* add provider class for reading isp and adding into Ctree
+
+2001-06-02  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/doc/overview:
+	* we need someone who has experence in Gtk GUI. I have tried to do it, but
+	  it takes to much time, and we don't much time here. I want
+	  to focus on dialup stuff now
+
+2001-06-01  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.glade, /cvs/rhl/netcfg/src/netconf.py:
+	* fix problem by loading pixmap, please don't make changes in netconf.glade,
+	  use annother glade files in src. netconf should be deleted after netconf.py
+	  is fixed for using glade files
+
+	* /cvs/rhl/netcfg/mockup/network.xpm, /cvs/rhl/netcfg/mockup/new_interface_druid.glade, /cvs/rhl/netcfg/mockup/no.xpm, /cvs/rhl/netcfg/mockup/us.xpm, /cvs/rhl/netcfg/mockup/wirelessconfig.glade, /cvs/rhl/netcfg/src/basicdialog.glade, /cvs/rhl/netcfg/src/chooseprovider.glade, /cvs/rhl/netcfg/src/cipeconfig.glade, /cvs/rhl/netcfg/src/dialupconfig.glade, /cvs/rhl/netcfg/src/dialup.glade, /cvs/rhl/netcfg/src/dslconfig.glade, /cvs/rhl/netcfg/src/editadress.glade, /cvs/rhl/netcfg/src/ethernetconfig.glade, /cvs/rhl/netcfg/src/ethernethardware.glade, /cvs/rhl/netcfg/src/firewall-druids.glade, /cvs/rhl/netcfg/src/isdnhardware.glade, /cvs/rhl/netcfg/src/maindialog.glade, /cvs/rhl/netcfg/src/modemconfig.glade, /cvs/rhl/netcfg/src/netconf.glade, /cvs/rhl/netcfg/src/new_interface_druid.glade, /cvs/rhl/netcfg/src/pixmaps/de.xpm, /cvs/rhl/netcfg/src/pixmaps/keys.xpm, /cvs/rhl/netcfg/src/pixmaps/network.xpm, /cvs/rhl/netcfg/src/pixmaps/no.xpm, /cvs/rhl/netcfg/src/pixmaps/us.xpm, /cvs/rhl/netcfg/src/wirelessconfig.glade, /cvs/rhl/netcfg/mockup/basicdialog.glade, /cvs/rhl/netcfg/mockup/chooseprovider.glade, /cvs/rhl/netcfg/mockup/cipeconfig.glade, /cvs/rhl/netcfg/mockup/de.xpm, /cvs/rhl/netcfg/mockup/dialupconfig.glade, /cvs/rhl/netcfg/mockup/dialup.glade, /cvs/rhl/netcfg/mockup/dslconfig.glade, /cvs/rhl/netcfg/mockup/editadress.glade, /cvs/rhl/netcfg/mockup/ethernetconfig.glade, /cvs/rhl/netcfg/mockup/ethernethardware.glade, /cvs/rhl/netcfg/mockup/firewall-druids.glade, /cvs/rhl/netcfg/mockup/isdnhardware.glade, /cvs/rhl/netcfg/mockup/keys.xpm, /cvs/rhl/netcfg/mockup/maindialog.glade, /cvs/rhl/netcfg/mockup/modemconfig.glade, /cvs/rhl/netcfg/mockup/netconf.glade:
+	* move glade file into src
+	* move pixmaps in src/pixmaps
+
+	* /cvs/rhl/netcfg/mockup/adsl-config.glade, /cvs/rhl/netcfg/mockup/ADSLInterface.py, /cvs/rhl/netcfg/mockup/ATMInterface.py, /cvs/rhl/netcfg/mockup/CableInterface.py, /cvs/rhl/netcfg/mockup/CheckList.py, /cvs/rhl/netcfg/mockup/devicewidgets.glade, /cvs/rhl/netcfg/mockup/DialupInterface.py, /cvs/rhl/netcfg/mockup/EthernetInterface.py, /cvs/rhl/netcfg/mockup/FirewallDruid.py, /cvs/rhl/netcfg/mockup/InterfaceCreator.py, /cvs/rhl/netcfg/mockup/isdn-hardware.glade, /cvs/rhl/netcfg/mockup/isdn-provider.glade, /cvs/rhl/netcfg/mockup/maindialog.glade, /cvs/rhl/netcfg/mockup/MainWindow.py, /cvs/rhl/netcfg/mockup/modemconfig.glade, /cvs/rhl/netcfg/mockup/netconf.py, /cvs/rhl/netcfg/mockup/NewInterface.py, /cvs/rhl/netcfg/mockup/WirelessInterface.py, /cvs/rhl/netcfg/src/ADSLInterface.py, /cvs/rhl/netcfg/src/ATMInterface.py, /cvs/rhl/netcfg/src/CableInterface.py, /cvs/rhl/netcfg/src/CheckList.py, /cvs/rhl/netcfg/src/DialupInterface.py, /cvs/rhl/netcfg/src/EthernetInterface.py, /cvs/rhl/netcfg/src/FirewallDruid.py, /cvs/rhl/netcfg/src/InterfaceCreator.py, /cvs/rhl/netcfg/src/netconf.py, /cvs/rhl/netcfg/src/NewInterface.py, /cvs/rhl/netcfg/src/WirelessInterface.py:
+	* move python code into src
+	* remove some unneeded glade files
+
+2001-06-01  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/doc/configurationfiles.txt, /cvs/rhl/netcfg/doc/detailed_spec, /cvs/rhl/netcfg/doc/overview:
+	- Moved overview to doc instead of docs
+	- First detailed spec draft
+	- Some additions and changes to the configurationfiles.txt
+
+2001-05-31  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/EthernetDevice.py:
+	Use the new device file reading
+
+	* /cvs/rhl/netcfg/src/Device.py:
+	Read the information it knows about....
+
+	* /cvs/rhl/netcfg/doc/configurationfiles.txt:
+	Add information on addresses
+
+	* /cvs/rhl/netcfg/src/EthernetDevice.py: Minor fixes.
+
+2001-05-31  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/genClass.py, /cvs/rhl/netcfg/src/netconfpkg/genClass.py, /cvs/rhl/netcfg/mockup/netconf.glade:
+	*** empty log message ***
+
+2001-05-31  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade:
+	- Test of read only netconf.glade file
+
+2001-05-31  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/basicdialog.glade, /cvs/rhl/netcfg/mockup/chooseprovider.glade, /cvs/rhl/netcfg/mockup/cipeconfig.glade, /cvs/rhl/netcfg/mockup/dialupconfig.glade, /cvs/rhl/netcfg/mockup/dslconfig.glade, /cvs/rhl/netcfg/mockup/editadress.glade, /cvs/rhl/netcfg/mockup/ethernetconfig.glade, /cvs/rhl/netcfg/mockup/ethernethardware.glade, /cvs/rhl/netcfg/mockup/isdnhardware.glade, /cvs/rhl/netcfg/mockup/maindialog.glade, /cvs/rhl/netcfg/mockup/modemconfig.glade, /cvs/rhl/netcfg/mockup/netconf.glade, /cvs/rhl/netcfg/mockup/wirelessconfig.glade:
+	* split netconf.glade
+
+2001-05-31  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	*** empty log message ***
+
+	* /cvs/rhl/netcfg/src/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	added Type
+
+	* /cvs/rhl/netcfg/src/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	genClass comform
+
+	* /cvs/rhl/netcfg/src/doc/Address.html, /cvs/rhl/netcfg/src/doc/EthernetDevice.html, /cvs/rhl/netcfg/src/doc/ipcalc.html, /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/pydoc.py:
+	*** empty log message ***
+
+2001-05-31  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl:
+	- Added Modem section to HardwareList IDL.
+
+2001-05-31  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/doc/Address.html, /cvs/rhl/netcfg/src/doc/Device.html, /cvs/rhl/netcfg/src/doc/EthernetDevice.html, /cvs/rhl/netcfg/src/doc/ipcalc.html, /cvs/rhl/netcfg/src/Makefile.am:
+	*** empty log message ***
+
+2001-05-31  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	- Added Modem to HardwareList
+
+2001-05-31  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Makefile.am, /cvs/rhl/netcfg/src/genClass.py, /cvs/rhl/netcfg/src/netconfpkg/genClass.py, /cvs/rhl/netcfg/src/Makefile, /cvs/rhl/netcfg/src/Firewall.idl, /cvs/rhl/netcfg/src/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/Firewall.idl, /cvs/rhl/netcfg/src/netconfpkg/HardwareList.idl, /cvs/rhl/netcfg/src/netconfpkg/NetworkList.idl, /cvs/rhl/netcfg/src/netconfpkg/ProfileList.idl, /cvs/rhl/netcfg/src/netconfpkg/ProviderList.idl, /cvs/rhl/netcfg/src/NetworkList.idl, /cvs/rhl/netcfg/src/ProfileList.idl, /cvs/rhl/netcfg/src/ProviderList.idl, /cvs/rhl/netcfg/src/Resolver.py, /cvs/rhl/netcfg/src/DeviceList.idl, /cvs/rhl/netcfg/src/netconfpkg/DeviceList.idl, /cvs/rhl/netcfg/autogen.sh, /cvs/rhl/netcfg/configure.in, /cvs/rhl/netcfg/Makefile.am:
+	*** empty log message ***
+
+2001-05-31  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/providerdb, /cvs/rhl/netcfg/src/providerdb.py:
+	* add providerdb for ISDN and Modem
+
+2001-05-30  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/netiface.py: Fix typo
+
+	* /cvs/rhl/netcfg/src/Address.py: Don't reimport sys
+
+2001-05-30  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: cipe
+
+2001-05-30  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade, /cvs/rhl/netcfg/mockup/netconf.py:
+	* some cosmetic in GUI
+	* add some test functions in netconf.py
+
+2001-05-30  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: firewall and cipe
+
+2001-05-30  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade:
+	* some changes in security dialog
+
+2001-05-30  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: Firewall + Shaping
+
+2001-05-30  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade, /cvs/rhl/netcfg/mockup/netconf.py:
+	* complete GUI
+	* some test funtion in netconf.py
+
+2001-05-29  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/doc/configurationfiles.txt:
+	Added the beginnings of configuration file documentation
+
+	* /cvs/rhl/netcfg/mockup/netconf.py:
+	Comment two lines which makes the program abort.
+
+2001-05-28  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade, /cvs/rhl/netcfg/mockup/netconf.py:
+	* major changes in GUI layout
+
+2001-05-28  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	typos
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	more firewall options
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	typos
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	more settings
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	more device settings
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	more device options
+
+2001-05-28  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade, /cvs/rhl/netcfg/mockup/netconf.py:
+	* some changes in GUI
+
+	* /cvs/rhl/netcfg/mockup/de.xpm, /cvs/rhl/netcfg/mockup/keys.xpm, /cvs/rhl/netcfg/mockup/network.xpm, /cvs/rhl/netcfg/mockup/no.xpm, /cvs/rhl/netcfg/mockup/us.xpm:
+	* add some pixmaps
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	add more datas
+
+2001-05-28  Harald Hoyer  <harald@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/netconf.idl, /cvs/rhl/netcfg/src/netconfpkg/netconf.idl:
+	*** empty log message ***
+
+2001-05-26  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade, /cvs/rhl/netcfg/mockup/netconf.py:
+	* added netconf.py
+	* fixed GUI
+
+2001-05-23  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: some cosmetic fixes
+
+2001-05-23  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/Resolver.py: New file
+
+2001-05-23  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade:
+	* some changes in basic setup dialog and mainWindow
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: * add provider database
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: rename Widget
+
+2001-05-22  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/netconf.glade: * 1. version of netconf.glade
+
+2001-05-22  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/docs/overview: - Overview file for the whole project.
+
+2001-05-21  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/devicewidgets.glade: Fix typo.
+
+2001-05-21  Preston Brown  <pbrown@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/.cvsignore: *** empty log message ***
+
+	* /cvs/rhl/netcfg/mockup/adsl-config.glade, /cvs/rhl/netcfg/mockup/isdn-hardware.glade, /cvs/rhl/netcfg/mockup/isdn-provider.glade:
+	more layout adjustments.
+
+2001-05-21  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/EthernetDevice.py:
+	Add gateway field, until the routes are added
+
+	* /cvs/rhl/netcfg/src/Address.py: Bugfixes
+
+2001-05-21  Preston Brown  <pbrown@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/devicewidgets.glade:
+	fix some minor layout issues
+
+2001-05-21  Phil Knirsch  <pknirsch@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/devicewidgets.glade:
+	- Updated device mockup to reflect the more finalized GUI.
+
+2001-05-17  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/adsl-config.glade, /cvs/rhl/netcfg/mockup/isdn-hardware.glade, /cvs/rhl/netcfg/mockup/isdn-provider.glade:
+	* add adsl GUI
+
+2001-05-16  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/EthernetDevice.py:
+	Make sure it finds Conf, read config files.
+
+	* /cvs/rhl/netcfg/src/Address.py:
+	Better integration of address file handling
+
+2001-05-16  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/isdn-provider.glade: * some fixes in GUI
+
+2001-05-15  Than Ngo  <than@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/isdn-hardware.glade:
+	* butoon cannel instead close
+
+	* /cvs/rhl/netcfg/mockup/isdn-hardware.glade, /cvs/rhl/netcfg/mockup/isdn-provider.glade:
+	* creates ISDN GUI
+
+2001-05-11  Preston Brown  <pbrown@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/doc/Address.html, /cvs/rhl/netcfg/src/doc/Device.html, /cvs/rhl/netcfg/src/doc/EthernetDevice.html, /cvs/rhl/netcfg/src/doc/ipcalc.html, /cvs/rhl/netcfg/src/Makefile:
+	documentation
+
+2001-05-11  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/EthernetDevice.py: Fixes.
+
+	* /cvs/rhl/netcfg/src/Address.py: Add scope(),setScope()
+
+	* /cvs/rhl/netcfg/src/EthernetDevice.py: Added.
+
+2001-05-11  Preston Brown  <pbrown@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/mainwindow.glade: moved to ../src
+
+	* /cvs/rhl/netcfg/mockup/devicewidgets.glade:
+	lots of skeletons for some widgets.
+
+	* /cvs/rhl/netcfg/src/inspect.py, /cvs/rhl/netcfg/src/mainwindow.glade, /cvs/rhl/netcfg/src/MainWindow.py, /cvs/rhl/netcfg/src/pydoc.py:
+	beginnings on a toplevel window
+
+2001-05-09  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/Address.py: Add pythonlib to PYTHONPATH
+
+	* /cvs/rhl/netcfg/src/Device.py:
+	Do configuration the New and Improved way
+
+2001-05-09  Preston Brown  <pbrown@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/src/Address.py, /cvs/rhl/netcfg/src/ipcalc.py:
+	fix for when config files don't have an address specified.
+
+	* /cvs/rhl/netcfg/src/Address.py, /cvs/rhl/netcfg/src/ConfiguredDevice.py, /cvs/rhl/netcfg/src/Device.py:
+	typo fixes.
+
+2001-05-09  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/Device.py: Lack of capitalization
+
+2001-05-07  Preston Brown  <pbrown@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/.cvsignore, /cvs/rhl/netcfg/mockup/mainwindow.glade, /cvs/rhl/netcfg/mockup/MainWindow.py:
+	skeleton for main window.
+
+2001-05-04  Jonathan Blandford  <jrb@halden.devel.redhat.com>
+
+	* /cvs/rhl/netcfg/mockup/dialup.glade, /cvs/rhl/netcfg/mockup/firewall-druids.glade, /cvs/rhl/netcfg/mockup/new_interface_druid.glade, /cvs/rhl/netcfg/mockup/WirelessInterface.py, /cvs/rhl/netcfg/mockup/ADSLInterface.py, /cvs/rhl/netcfg/mockup/ATMInterface.py, /cvs/rhl/netcfg/mockup/CableInterface.py, /cvs/rhl/netcfg/mockup/CheckList.py, /cvs/rhl/netcfg/mockup/DialupInterface.py, /cvs/rhl/netcfg/mockup/EthernetInterface.py, /cvs/rhl/netcfg/mockup/FirewallDruid.py, /cvs/rhl/netcfg/mockup/InterfaceCreator.py, /cvs/rhl/netcfg/mockup/NewInterface.py:
+	added mockup
+
+2001-05-04  Trond Eivind Glomsrød  <teg@redhat.com>
+
+	* /cvs/rhl/netcfg/src/Address.py, /cvs/rhl/netcfg/src/ConfiguredDevice.py, /cvs/rhl/netcfg/src/Device.py, /cvs/rhl/netcfg/src/ipcalc.py, /cvs/rhl/netcfg/src/netiface.py:
+	Added source files to CVS
+
