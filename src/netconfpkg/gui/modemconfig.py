@@ -38,7 +38,7 @@ from gtk import TRUE
 from gtk import FALSE
 
 class modemDialog:
-    def __init__(self, device):
+    def __init__(self, hw):
         glade_file = "modemconfig.glade"
 
         if not os.path.exists(glade_file):
@@ -57,7 +57,7 @@ class modemDialog:
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
-        self.hw = device
+        self.hw = hw
 
         self.setup()
         self.hydrate()
