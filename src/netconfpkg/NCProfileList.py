@@ -32,7 +32,8 @@ class ProfileList(ProfileList_base):
                 prof.Active = false
             devlist = os.listdir(SYSCONFPROFILEDIR + '/' + pr)
             for dev in devlist:
-               prof.ActiveDevices.append(dev)
+               if dev[:6] == 'ifcfg-':
+                   prof.ActiveDevices.append(dev[6:])
             hoconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/hosts'
             hoconf.read()
             for ip in hoconf.keys():

@@ -186,7 +186,7 @@ class mainDialog:
         row = 0
         for dev in devicelist:
             type = getDeviceType(dev.Device)
-            clist.append(['', dev.DeviceId[6:], type])
+            clist.append(['', dev.DeviceId, type])
             clist.set_pixmap(row, 0, inact_xpm)
             for prof in profilelist:
                 if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
