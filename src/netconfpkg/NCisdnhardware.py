@@ -20,43 +20,45 @@
 import os
 import signal
 import string
- 
+import commands
+import sys
+
 card = {
     # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, pci_id, firmware, module ]
     "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "hisax" ],
     "ASUS COM ISDNLink ISA PnP" : [ "12", "5", "0x200", "", "", "", "", "", "hisax" ],
-    "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "","","hisax" ],
-    "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "","", "hisax" ],
-    "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "12440a00", "", "hisax" ],
+    "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "","", "hisax" ],
+    "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "","",  "hisax" ],
+    "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244:0a00", "", "hisax" ],
     "AVM PnP" : [ "27", "5", "0x300", "", "", "", "", "", "hisax" ],
     "Compaq ISDN S0 ISA" : [ "19", "5", "0x0000", "0x0000", "0x0000", "", "", "", "hisax" ],
     "Creatix Teles PnP" : [ "4", "5", "0x0000", "0x0000", "", "", "", "", "hisax" ],
     "Dr. Neuhaus Niccy PnP" : [ "24", "5", "", "0x0000", "0x0000", "", "", "", "hisax" ],
-    "Dr. Neuhaus Niccy PCI" : [ "24", "", "", "", "", "", "12671016", "", "hisax" ],
+    "Dr. Neuhaus Niccy PCI" : [ "24", "", "", "", "", "", "1267:1016", "", "hisax" ],
     "Dynalink 128PH PCI" : [ "36", "", "", "", "", "", "", "", "hisax" ],
     "Eicon.Diehl Diva ISA PnP" : [ "11", "9", "0x180", "", "", "", "", "", "hisax" ],
-    "Eicon.Diehl Diva 20PRO PCI" : [ "11", "", "", "", "", "", "1133e001", "", "hisax" ],
-    "Eicon.Diehl Diva 20 PCI" : [ "11", "", "", "", "", "", "1133e002", "", "hisax" ],
-    "Eicon.Diehl Diva 20PRO_U PCI" : [ "11", "", "", "", "", "", "1133e003", "", "hisax" ],
-    "Eicon.Diehl Diva 20_U PCI" : [ "11", "", "", "", "", "", "1133e004", "", "hisax" ],
+    "Eicon.Diehl Diva 20PRO PCI" : [ "11", "", "", "", "", "", "1133:e001", "", "hisax" ],
+    "Eicon.Diehl Diva 20 PCI" : [ "11", "", "", "", "", "", "1133:e002", "", "hisax" ],
+    "Eicon.Diehl Diva 20PRO_U PCI" : [ "11", "", "", "", "", "", "1133:e003", "", "hisax" ],
+    "Eicon.Diehl Diva 20_U PCI" : [ "11", "", "", "", "", "", "1133:e004", "", "hisax" ],
     "ELSA PCC/PCF" : [ "6", "", "", "", "", "", "", "", "hisax" ],
     "ELSA Quickstep 1000" : [ "7", "5", "0x300", "", "", "", "", "", "hisax" ],
-    "ELSA Quickstep 1000 PCI" : [ "18", "", "", "", "", "", "10481000", "", "hisax" ],
-    "ELSA Quickstep 3000 PCI" : [ "18", "", "", "", "", "", "10483000", "", "hisax" ],
+    "ELSA Quickstep 1000 PCI" : [ "18", "", "", "", "", "", "1048:1000", "", "hisax" ],
+    "ELSA Quickstep 3000 PCI" : [ "18", "", "", "", "", "", "1048:3000", "", "hisax" ],
     "ELSA PCMCIA MicroLink cards" : [ "", "", "", "", "", "", "", "", "elsa_cs" ],
     "Gazel cards ISA" : [ "34", "5", "0x300", "", "", "", "", "", "hisax" ],
-    "Gazel cards PCI" : [ "34", "", "", "", "", "", "10b51030", "", "hisax" ],
+    "Gazel cards PCI" : [ "34", "", "", "", "", "", "10b5:1030", "", "hisax" ],
     "HFC-2BS0 based cards ISA" : [ "13", "9", "0xd80", "", "", "", "", "", "hisax" ],
-    "HFC-2BS0 based cards PCI" : [ "35", "", "", "", "", "", "13972bd0", "", "hisax" ],
+    "HFC-2BS0 based cards PCI" : [ "35", "", "", "", "", "", "1397:2bd0", "", "hisax" ],
     "HST Saphir" : [ "31", "5", "0x300", "", "", "", "", "", "hisax" ],
     "ITK ix1-micro Rev.2" : [ "9", "9", "0xd80", "", "", "", "", "", "hisax" ],
     "MIC card" : [ "17", "9", "0xd80", "", "", "", "", "", "hisax" ],
-    "NETjet PCI" : [ "20", "", "", "", "", "", "e1590001", "", "hisax" ],
+    "NETjet PCI" : [ "20", "", "", "", "", "", "e159:0001", "", "hisax" ],
     "Sedlbauer PC 104" : [ "15", "9", "0xd80", "", "", "", "", "", "hisax" ],
     "Sedlbauer Speed PCI" : [ "15", "", "", "", "", "", "", "", "hisax" ],
     "Sedlbauer Speed Card" : [ "15", "9", "0xd80", "", "", "", "", "", "hisax" ],
     "Sedlbauer Speed Fax+" : [ "28", "9", "0xd80", "", "", "", "", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
-    "Sedlbauer Speed fax+ PCI" : [ "28", "", "", "", "", "", "e1590002", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
+    "Sedlbauer Speed fax+ PCI" : [ "28", "", "", "", "", "", "e159:0002", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
     "Sedlbauer Speed Star PCMCIA Card" : [ "", "", "", "", "", "", "", "", "sedlbauer_cs" ],
     "Siemens I-Surf 1.0" : [ "29", "9", "0xd80", "", "", "0xd000", "", "", "hisax" ],
     "Telekom A4T" : [ "32", "", "", "", "", "", "", "", "hisax" ],
@@ -68,7 +70,7 @@ card = {
     "Teles PnP" : [ "4", "5", "0x0000", "0x0000", "", "", "", "", "hisax" ],
     "Teles S0Box" : [ "25", "7", "0x378", "", "", "", "", "", "hisax" ],
     "USR Sportster intern" : [ "16", "9", "0xd80", "", "", "", "", "", "hisax" ],
-    "W6692 based PCI cards" : [ "36", "", "", "", "", "", "10506692", "", "hisax" ]
+    "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050:6692", "", "hisax" ]
     }
 
 
@@ -177,6 +179,15 @@ class ConfISDN:
             
         except(IOError): pass
 
+    def detect(self):
+        f = '/sbin/lspci'
+        if not os.path.exists(f): return
+        
+        line = commands.getoutput(f + ' -n 2>/dev/null')
+        for i in card.keys():
+            if len(card[i][6]) >0 and string.find(line, card[i][6])>0:
+                return {i : card[i]}
+
     def get_resource(self, name):
         if card.has_key(name):
             self.Description = name
@@ -189,15 +200,17 @@ class ConfISDN:
             self.Pci_id = card[name][6]
             self.Firmware = card[name][7]
             self.ModuleName = card[name][8]
-        
-        
+
+
 if __name__ == "__main__":
     conf = ConfISDN()
     if conf.load() < 0:
-        conf.Description = "Sedlbauer Speed fax+ PCI"
-        conf.Type = "28"
-        conf.ModuleName = "hisax"
-        conf.Firmware = "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN"
+        new_card = conf.detect()
+        if new_card:
+            conf.get_resource(new_card.keys()[0])
+        else:
+            print "not found:"
+            sys.exit(0)
 
     print "Channel Protocol: ", conf.ChannelProtocol
     print "Name: ", conf.Description
@@ -212,4 +225,3 @@ if __name__ == "__main__":
     print "Modul: ", conf.ModuleName
     print "ID: ", conf.Id
 
-    conf.save()
