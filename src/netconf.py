@@ -208,7 +208,8 @@ class mainDialog:
             widget = self.xml.get_widget('deviceFrame')
             page = notebook.page_num(widget)
             notebook.set_page(1)
-        
+            #notebook.set_page(page)
+            
     def load(self):
         self.loadDevices()
         self.loadHardware()
