@@ -18,21 +18,24 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+import sys
+
+netconf_dir = "/usr/share/netconf"
+sys.path.append (netconf_dir)
+
 import gtk
 import GDK
 import GTK
-import gnome
-import gnome.help
-import gnome.ui
-import gnome.config
 import libglade
 import signal
 import os
 import GdkImlib
 import string
+import dialup
 
 from gtk import TRUE
 from gtk import FALSE
+from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
@@ -72,14 +75,15 @@ def on_mainHelpButton_clicked (*args):
     pass
 
 def on_deviceAddButton_clicked (clicked):
+    xml.get_widget ("deviceNameEntry").grab_focus ()
     dialog = xml.get_widget ("basicDialog")
-    dialog.set_title ("Add new Device")
+    dialog.set_title (_("Add an new Device"))
     dialog.show ()
 
-def on_deviceCopyButton_clicked (*args):
+def on_deviceCopyButton_clicked (button):
     pass
 
-def on_deviceRenameButton_clicked (*args):
+def on_deviceRenameButton_clicked (button):
     pass
 
 def on_deviceEditButton_clicked (*args):
@@ -87,7 +91,7 @@ def on_deviceEditButton_clicked (*args):
     dialog.set_title ("Edit Device")
     dialog.show ()
 
-def on_deviceDeleteButton_clicked (*args):
+def on_deviceDeleteButton_clicked (button):
     pass
 
 def on_deviceList_select_row (*args):
@@ -143,22 +147,60 @@ def on_helpButton_clicked (*args):
 
 def on_deviceNameEntry_changed (entry):
     deviceName = string.strip (entry.get_text ())
-    xml.get_widget ("deviceTypeMenu").set_sensitive (len(deviceName) > 0)
+    xml.get_widget ("deviceTypeComboBox").set_sensitive (len(deviceName) > 0)
     xml.get_widget ("deviceConfigureButton").set_sensitive (len(deviceName) > 0)
-    
-def on_advancedButton_clicked (button):
-    deviceType = xml.get_widget ("deviceTypeMenu").get_menu()
-    index = deviceType.children().index (deviceType.get_active())
-    
-    if index == 0:
-        xml.get_widget ("ethernetConfigDialog").show ()
-    elif index == 1 or index == 2:
-        xml.get_widget ("DialupConfigDialog").show ()
-    elif index == 3:
-        xml.get_widget ("dslConfigDialog").show ()
-    elif index == 4:
-        xml.get_widget ("wirelessDeviceConfigDialog").show ()
 
+def on_deviceTypeEntry_changed (entry):
+    pass
+
+def on_advancedButton_clicked (button):
+    noteBook = xml.get_widget ("dialupNotebook")
+    dialog = xml.get_widget ("DialupConfigDialog")
+    deviceType = xml.get_widget ("deviceTypeEntry").get_text ()
+
+    ## need to show all widgets in dialup notebook
+    noteBook.show_all()
+    
+    ## show the 1 page as default
+    noteBook.set_page(0);
+    
+    if deviceType == "Arcnet":
+        pass
+    elif deviceType == "Ethernet":
+        xml.get_widget ("ethernetConfigDialog").show ()
+    elif deviceType == "Modem":
+        ## hide some widgets which are not used here
+        for i in [1,2,5,7]:
+            noteBook.get_nth_page (i).hide ()
+        dialog.set_title ("Modem Dialup Configuration")
+        dialog.show ()
+    elif deviceType == "ISDN":
+        ## hide some widgets which are not used here
+        noteBook.get_nth_page (1).hide ()
+        noteBook.get_nth_page (3).hide ()
+        dialog.set_title ("ISDN Dialup Configuration")
+        xml.get_widget ("DialupConfigDialog").show ()
+    elif deviceType == "xDSL":
+        ## hide some widgets which are not used here
+        for i in [0,2,3,5,6,7]:
+            noteBook.get_nth_page (i).hide ()
+        dialog.set_title ("xDSL Configuration")
+        dialog.show ()
+    elif deviceType == "Wireless":
+        xml.get_widget ("wirelessDeviceConfigDialog").show ()
+    elif deviceType == "Token Ring":
+        pass
+    elif deviceType == "Pocket (ATP)":
+        pass
+    elif deviceType == "SLIP":
+        pass
+    elif deviceType == "PLIP":
+        pass
+    elif deviceType == "CIPE":
+        pass
+    elif deviceType == "CTC":
+        pass
+    
 def on_onBootCB_toggled (check):
     pass
 
@@ -166,8 +208,12 @@ def on_userControlCB_toggled (check):
     pass
 
 def on_ipSettingCB_toggled (check):
-    xml.get_widget ("dynamicConfigMenu").set_sensitive (check["active"])
+    xml.get_widget ("dynamicConfigComboBox").set_sensitive (check["active"])
     xml.get_widget ("ipSettingFrame").set_sensitive (check["active"] != TRUE)
+    if check["active"]:
+        xml.get_widget ("dynamicConfigEntry").grab_focus ()
+    else:
+        xml.get_widget ("addressEntry").grab_focus ()
 
 def on_dynamicConfigMenu_clicked (menu):
     pass
@@ -223,8 +269,16 @@ def on_configureButton_clicked (click):
 def on_msnEntry_changed (*args):
     pass
 
-def on_dialingRuleCB_toggled (*args):
-    pass
+def on_dialingRuleCB_toggled (check):
+    prefixEntry = xml.get_widget ("prefixEntry")
+    prefixEntry.set_sensitive (check["active"])
+    xml.get_widget ("areaCodeEntry").set_sensitive (check["active"])
+    xml.get_widget ("countryCodeCombo").set_sensitive (check["active"])
+    ## set right focus
+    if check["active"]:
+        prefixEntry.grab_focus ()
+    else:
+        xml.get_widget ("phoneEntry").grab_focus ()
 
 def on_prefixEntry_changed (*args):
     pass
@@ -277,20 +331,27 @@ def on_bsdCompressionCB_toggled (*args):
 def on_cppCompressionCB_toggled (*args):
     pass
 
-def on_pppOptionEntry_changed (*args):
-    pass
+def on_pppOptionEntry_changed (entry):
+    option = string.strip (entry.get_text ())
+    xml.get_widget ("pppOptionAddButton").set_sensitive (len (option) > 0)
 
-def on_pppOptionAddButton_clicked (*args):
-    pass
+def on_pppOptionAddButton_clicked (button):
+    entry = xml.get_widget ("pppOptionEntry")
+    xml.get_widget ("ipppOptionList").set_sensitive (TRUE)
+    xml.get_widget ("ipppOptionList").append ([entry.get_text ()])
+    entry.set_text("")
+    entry.grab_focus()
+    
+def on_pppOptionList_select_row (clist, r, c, event):
+    xml.get_widget ("pppOptionDeleteButton").set_sensitive (TRUE)
+    
+def on_ipppOptionList_unselect_row (clist, r, c, event):
+    xml.get_widget ("pppOptionDeleteButton").set_sensitive (FALSE)
 
-def on_pppOptionList_click_column (*args):
-    pass
-
-def on_pppOptionList_select_row (*args):
-    pass
-
-def on_pppOptionDeleteButton_clicked (*args):
-    pass
+def on_pppOptionDeleteButton_clicked (button):
+    clist = xml.get_widget ("ipppOptionList")
+    if clist.selection:
+        clist.remove(clist.selection[0])
 
 def on_isdnOkButton_clicked (*args):
     pass
@@ -310,19 +371,49 @@ def on_encapModeMenu_clicked (*args):
 def on_hangupTimeoutSpinButton_changed (*args):
     pass
 
-def setup ():
-    accountPixmapPath = "keys.png"
-    if not os.path.exists (accountPixmapPath):
-        accountPixmapPath = "/usr/share/pixmaps/" + accountPixmapPath
-        
-    xml.get_widget ("accountPixmap").load_file (accountPixmapPath)
-        
+def on_callbackCB_toggled (check):
+    xml.get_widget ("callbackFrame").set_sensitive (check["active"])
+    xml.get_widget ("dialinNumberEntry").grab_focus()
 
+def on_aliasSupportCB_toggled (check):
+    xml.get_widget ("aliasSpinBox").set_sensitive (check["active"])
+
+def set_icon (widget, pixmapFile):
+    if os.path.exists (pixmapFile):
+        pix, mask = gtk.create_pixmap_from_xpm (gtk.GtkWindow (), None, pixmapFile)
+        widget.set (pix, mask)
+
+def setup_provider_db():
+    dbtree = xml.get_widget ("providerTree")
+    dbtree.set_line_style(CTREE_LINES_DOTTED)
+    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "de.xpm")
+    node1 = dbtree.insert_node(None, None, ["Germany"], 5, pix, mask, pix, mask, is_leaf=FALSE)
+    node2 = dbtree.insert_node(node1, None, ["T Online"])
+    node3 = dbtree.insert_node(node1, None, ["Freenet"])
+    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "us.xpm")
+    node4 = dbtree.insert_node(None, None, ["America"], 5, pix, mask, pix, mask, is_leaf=FALSE)
+    node5 = dbtree.insert_node(node4, None, ["ATT"])
+    node6 = dbtree.insert_node(node4, None, ["Bell"])
+    pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "no.xpm")
+    node7 = dbtree.insert_node(None, None, ["Norway"], 5, pix, mask, pix, mask, is_leaf=FALSE)
+    node8 = dbtree.insert_node(node7, None, ["Nextra"])
+    
+def setup ():
+    accountPixmap = xml.get_widget ("accountPixmap")
+    networkPixmap = xml.get_widget ("networkPixmap")
+    basicNotebook = xml.get_widget ("basicNotebook")
+    set_icon (accountPixmap, "keys.xpm")
+    set_icon (networkPixmap, "network.xpm")
+    for i in [4,5,6]:
+        basicNotebook.get_nth_page (i).hide ()
+
+    setup_provider_db()
+    
 def main ():
     xml.signal_autoconnect (
         {
         "delete_event" : delete_event,
-        # netconf
+        ## netconf
         "on_mainDialog_delete_event" : on_mainDialog_delete_event,
         "on_mainOkButton_clicked" : on_mainOkButton_clicked,
         "on_mainCancelButton_clicked" : on_mainCancelButton_clicked,
@@ -346,11 +437,12 @@ def main ():
         "on_profileCopyButton_clicked" : on_profileCopyButton_clicked,
         "on_profileRenameButton_clicked" : on_profileRenameButton_clicked,
         "on_profileDeleteButton_clicked" : on_profileDeleteButton_clicked,
-        # Add / Edit Device
+        ## Add / Edit Device
         "on_okButton_clicked" : on_okButton_clicked,
         "on_cancelButton_clicked" : on_cancelButton_clicked,
         "on_helpButton_clicked" : on_helpButton_clicked,
         "on_deviceNameEntry_changed" : on_deviceNameEntry_changed,
+        "on_deviceTypeEntry_changed" : on_deviceTypeEntry_changed,
         "on_advancedButton_clicked" : on_advancedButton_clicked,
         "on_onBootCB_toggled" : on_onBootCB_toggled,
         "on_userControlCB_toggled" : on_userControlCB_toggled,
@@ -368,7 +460,7 @@ def main ():
         "on_routeAddButton_clicked" : on_routeAddButton_clicked,
         "on_routeEditButton_clicked" : on_routeEditButton_clicked,
         "on_routeDeleteButton_clicked" : on_routeDeleteButton_clicked,
-        # Dialup Configuration
+        ## Dialup Configuration
         "on_dialupOkButton_enter" : on_dialupOkButton_enter,
         "on_dialupCancelButton_clicked" : on_dialupCancelButton_clicked,
         "on_dialupHelpButton_clicked" : on_dialupHelpButton_clicked,
@@ -379,7 +471,6 @@ def main ():
         "on_areaCodeEntry_changed" : on_areaCodeEntry_changed,
         "on_phoneEntry_changed" : on_phoneEntry_changed,
         "on_countryCodeEntry_changed" : on_countryCodeEntry_changed,
-        "on_authMenu_enter" : on_authMenu_enter,
         "on_providerTree_tree_select_row" : on_providerTree_tree_select_row,
         "on_providerTree_click_column" : on_providerTree_click_column,
         "on_providerTree_select_row" : on_providerTree_select_row,
@@ -394,16 +485,18 @@ def main ():
         "on_cppCompressionCB_toggled" : on_cppCompressionCB_toggled,
         "on_pppOptionEntry_changed" : on_pppOptionEntry_changed,
         "on_pppOptionAddButton_clicked" : on_pppOptionAddButton_clicked,
-        "on_pppOptionList_click_column" : on_pppOptionList_click_column,
         "on_pppOptionList_select_row" : on_pppOptionList_select_row,
+        "on_ipppOptionList_unselect_row" : on_ipppOptionList_unselect_row,
         "on_pppOptionDeleteButton_clicked" : on_pppOptionDeleteButton_clicked,
-        # ISDN Configuration
         "on_isdnOkButton_clicked" : on_isdnOkButton_clicked,
         "on_isdnCancelButton_clicked" : on_isdnCancelButton_clicked,
         "on_isdnHelpButton_clicked" : on_isdnHelpButton_clicked,
         "on_isdnDeviceMenu_clicked" : on_isdnDeviceMenu_clicked,
         "on_encapModeMenu_clicked" : on_encapModeMenu_clicked,
-        "on_hangupTimeoutSpinButton_changed" : on_hangupTimeoutSpinButton_changed
+        "on_hangupTimeoutSpinButton_changed" : on_hangupTimeoutSpinButton_changed,
+        "on_callbackCB_toggled" : on_callbackCB_toggled,
+        ## ethernetConfigDialog
+        "on_aliasSupportCB_toggled" : on_aliasSupportCB_toggled
         })
 
     setup ()
