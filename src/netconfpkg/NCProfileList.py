@@ -76,14 +76,17 @@ class ProfileList(ProfileList_base):
 
             hoconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/hosts'
             hoconf.read()
-            for ip in hoconf.keys():
+            hoconf.rewind()
+            while hoconf.findnextcodeline():
+                harray = hoconf.getfields()
                 host = Host()
                 host.createAliasList()
-                host.IP = ip
-                host.Hostname = hoconf[ip][0]
-                for al in hoconf[ip][1]:
+                host.Hostname = harray[1]
+                host.IP = harray[0]
+                for al in harray[2:]:
                     host.AliasList.append(al);
                 prof.HostsList.append(host)
+                hoconf.nextline()
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
             dnsconf.read()
             prof.DNS.Hostname     = use_hostname
@@ -288,8 +291,8 @@ class ProfileList(ProfileList_base):
             saved = []
             
             for host in prof.HostsList:
-                hoconf[host.IP] = [host.Hostname, host.AliasList]
-                saved.append(host.IP)
+                hoconf[host.Hostname] = [host.IP, host.AliasList]
+                saved.append(host.Hostname)
                 
             for i in hoconf.keys():
                 if not i in saved:

@@ -439,9 +439,9 @@ class ConfEHosts(Conf):
             var = self.getfields()
             if len(var) > 2:
 		# has nicknames
-                self.vars[var[0]] = [ var[1], var[2:] ]
+                self.vars[var[1]] = [ var[0], var[2:] ]
 	    elif len(var) > 1:
-                self.vars[var[0]] = [ var[1], [] ]
+                self.vars[var[1]] = [ var[0], [] ]
 	    else:
 		raise BadFile, 'Malformed /etc/hosts file'
             self.nextline()
@@ -452,26 +452,22 @@ class ConfEHosts(Conf):
         else:
             return ''
     def __setitem__(self, varname, value):
+	print varname, value, self.lines
         # set first (should be only) instance to values in list value
         place=self.tell()
         self.rewind()
-        if self.findnextline('^' + re.sub('\.', '\\\\.', varname) +
-                             '[' + self.separators + ']+'):
+        while self.findnextline('^\S*[' + self.separators + ']+' + varname):
             self.deleteline()
-	    self.insertlinelist([ varname, value[0],
-                                  joinfields(value[1], self.separator) ])
             self.seek(place)
         else:
             self.seek(place)
-	    self.insertlinelist([ varname, value[0],
+	    self.insertlinelist([ value[0], varname,
                                   joinfields(value[1], self.separator) ])
         self.vars[varname] = value
     def __delitem__(self, varname):
         # delete *every* instance...
         self.rewind()
-        while self.findnextline('^[' + self.separators + ']*' +
-                                re.sub('\.', '\\\\.', varname) +
-				'[' + self.separators + ']'):
+        while self.findnextline('^\S*[' + self.separators + ']+' + varname): 
             self.deleteline()
         del self.vars[varname]
     def keys(self):
@@ -483,7 +479,7 @@ class ConfEHosts(Conf):
         while self.findnextcodeline():
             # initialize dictionary of variable/name pairs
             var = self.getfields()
-            keys.append(var[0])
+            keys.append(var[1])
             self.nextline()
 	self.seek(place)
 	return keys
