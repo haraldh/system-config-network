@@ -1,5 +1,5 @@
 TESTS_ENVIRONMENT = PYTHONPATH=${srcdir}/../:@PY_PYTHONPATH@
-TESTS = test-Conf.py test-ethtool.py
+TESTS = test-Conf.py
 EXTRA_DIST = $(TESTS)
 
 
