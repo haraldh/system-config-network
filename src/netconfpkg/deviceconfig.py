@@ -60,7 +60,7 @@ class deviceConfigDialog:
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9]+$"),
+                                                r"^[a-z|A-Z|0-9\-_]+$"),
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_protocolEditButton_clicked" : self.on_protocolEditButton_clicked,
             "on_protocolList_button_press_event" : (self.on_generic_clist_button_press_event,
