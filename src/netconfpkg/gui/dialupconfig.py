@@ -357,7 +357,7 @@ class ISDNDialupDialog(DialupDialog):
 
         dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
         if dialup.ChannelBundling:
-            dialup.SlaveDevice = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
+            dialup.SlaveDevice = getNewDialupDevice(getDeviceList(), self.device)
         else:
             dialup.SlaveDevice = None
         dialup.DefRoute = self.xml.get_widget("defrouteISDNCB").get_active()
@@ -439,7 +439,7 @@ class ModemDialupDialog(DialupDialog):
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         dialup.Inherits = self.xml.get_widget("modemPortEntry").get_text()
         if not self.device.Device:
-            self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
+            self.device.Device = getNewDialupDevice(getDeviceList(), self.device)
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
         dialup.StupidMode = self.xml.get_widget("stupidModeCB").get_active() == true
