@@ -63,12 +63,12 @@ class DeviceList(DeviceList_base):
         msg = ""
         for dev in devices:
             i = self.addDevice()
-            self.data[i].load(dev)            
-            devclass = df.getDeviceClass(self.data[i].Type)
+            self[i].load(dev)            
+            devclass = df.getDeviceClass(self[i].Type)
             if devclass:
                 newdev = devclass()
                 newdev.load(dev)
-                self.data[i] = newdev
+                self[i] = newdev
             else:
                 raise "NO DEVICE CLASS FOUND FOR %s" % dev
                 

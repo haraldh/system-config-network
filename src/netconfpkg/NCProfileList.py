@@ -55,9 +55,10 @@ class ProfileList(ProfileList_base):
             if not os.path.isdir(SYSCONFPROFILEDIR + '/' + pr):
                 continue
             
-            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + pr + '/network')
+            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + pr + \
+                                       '/network')
             i = self.addProfile()
-            prof = self.data[i]
+            prof = self[i]
             prof.createActiveDevices()
             prof.createDNS()
             prof.createHostsList()
@@ -130,9 +131,14 @@ class ProfileList(ProfileList_base):
                 else:
                     continue
             
-                if devmap.has_key(device.Device) and device.Alias == devmap[device.Device].Alias:
-                    msg = (_('Device %s uses the same Hardware Device "%s" like %s!\n') \
-                          + _('Please select another Hardware Device or \nactivate only one of them.')) % (device.DeviceId, device.Device, devmap[device.Device].DeviceId)
+                if devmap.has_key(device.Device) and \
+                       device.Alias == devmap[device.Device].Alias:
+                    msg = (_('Device %s uses the same Hardware Device '
+                             '"%s" like %s!\n') \
+                          + _('Please select another Hardware Device or \n'
+                              'activate only one of them.')) % \
+                              (device.DeviceId, device.Device, \
+                               devmap[device.Device].DeviceId)
                     raise TestError(msg)
 
                 devmap[device.Device] = device
@@ -194,7 +200,7 @@ class ProfileList(ProfileList_base):
         hoconf.fsf()
         dnsconf = Conf.ConfEResolv()
 
-        for prof in self.data:
+        for prof in self:
             if prof.Active == true:
                 break
         
@@ -256,15 +262,17 @@ class ProfileList(ProfileList_base):
         for file in filelist:
             unlink(SYSCONFPROFILEDIR+'/default/'+file)
                 
-        for prof in self.data:
+        for prof in self:
             try:
                 os.mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
             except:
                 pass
 
-            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/network')
+            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + \
+                                       prof.ProfileName + '/network')
             nwconf['HOSTNAME'] = prof.DNS.Hostname
-            dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf'
+            dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+                               '/resolv.conf'
 
             dnsconf['domain'] = ''
             if prof.DNS.Domainname != '':
@@ -289,7 +297,8 @@ class ProfileList(ProfileList_base):
 
             dnsconf['nameservers'] = nameservers
 
-            hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts'            
+            hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+                              '/hosts'            
 
             saved = []
             
@@ -323,32 +332,39 @@ class ProfileList(ProfileList_base):
 
                 unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
                 
-                link(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
+                link(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/' +\
+                     prof.ProfileName+'/ifcfg-'+devId)
 
                 if prof.Active == false and prof.ProfileName != 'default':
                     continue
 
                 unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
 
-                link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId,
+                     OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
 
             if prof.Active == false:
                 continue
 
-            if os.path.isfile('/etc/resolv.conf') and not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
+            if os.path.isfile('/etc/resolv.conf') and not \
+                   ishardlink('/etc/resolv.conf') and not \
+                   os.path.islink('/etc/resolv.conf'):
                 rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
             else:
                 unlink('/etc/resolv.conf')
 
-            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
+            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+                 '/resolv.conf', '/etc/resolv.conf')
             os.chmod('/etc/resolv.conf', 0644)
                 
-            if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
+            if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') \
+                   and not os.path.islink('/etc/hosts'):
                 rename('/etc/hosts', '/etc/hosts.bak')
             else:
                 unlink('/etc/hosts')
 
-            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
+            link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', \
+                 '/etc/hosts')
             os.chmod('/etc/hosts', 0644)
 
     def activateDevice (self, deviceid, profile, state=None):

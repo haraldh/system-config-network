@@ -134,7 +134,7 @@ class HardwareList(HardwareList_base):
         hwc = hwf.getHardwareClass(type)
         if hwc:
             newhw = hwc()
-            self.data[i] = newhw
+            self[i] = newhw
         return i
 
     def updateFromSystem(self):
@@ -157,7 +157,7 @@ class HardwareList(HardwareList_base):
                 mod = None
 
             if mod != None and mod != "":
-                for hw in self.data:
+                for hw in self:
                     if hw.Name == device:
                         if hw.Card and hw.Card.ModuleName != mod:
                             generic_error_dialog (\
@@ -165,7 +165,7 @@ class HardwareList(HardwareList_base):
                         break
                 else:
                     i = self.addHardware(getDeviceType(device))
-                    hw = self.data[i]
+                    hw = self[i]
                     hw.Name = device
                     hw.Description = mod
                     hw.Type = getDeviceType(device)
@@ -200,7 +200,7 @@ class HardwareList(HardwareList_base):
                 continue
 
             i = self.addHardware(type)
-            hw = self.data[i]
+            hw = self[i]
             hw.Name = mod
             hw.Description = module
             hw.Type = type
@@ -222,7 +222,7 @@ class HardwareList(HardwareList_base):
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
             i = self.addHardware(ISDN)
-            hw = self.data[i]
+            hw = self[i]
             hw.Name = "ISDN Card 0"
             hw.Description = isdncard.Description
             hw.Type = ISDN
@@ -250,7 +250,7 @@ class HardwareList(HardwareList_base):
                     continue
 
                 i = self.addHardware(MODEM)
-                hw = self.data[i]
+                hw = self[i]
                 hw.Name = dev
                 hw.Description = 'Generic Modem'
                 hw.Type = MODEM
@@ -291,7 +291,7 @@ class HardwareList(HardwareList_base):
         isdn    = NCisdnhardware.ConfISDN()
         
 
-        for hw in self.data:
+        for hw in self:
             if hw.Type == ETHERNET:
                 dic = modules[hw.Name]
                 dic['alias'] = hw.Card.ModuleName
@@ -351,7 +351,7 @@ class HardwareList(HardwareList_base):
             for dev in wvdial.keys():
                 if dev[:5] != 'Modem':
                     continue
-                for hw in self.data:
+                for hw in self:
                     if hw.Type == MODEM and hw.Name == dev:
                         break
                 else:
@@ -366,7 +366,7 @@ class HardwareList(HardwareList_base):
             if type != 'Ethernet':
                 continue
             #print "Testing " + str(mod)
-            for hw in self.data:
+            for hw in self:
                 if hw.Type == ETHERNET and hw.Name == mod:
                     break
             else:
