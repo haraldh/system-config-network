@@ -66,12 +66,13 @@ class DeviceList(DeviceList_base):
         if msg != "":
             print msg
             
-        self.commit()
-
+        self.commit(false)
+        
     def test(self):
         pass
     
     def save(self):
+        self.commit(false)
         try:
             dir = os.listdir(SYSCONFDEVICEDIR)
         except OSError, msg:

@@ -217,15 +217,18 @@ class mainDialog:
 
     def loadDevices(self):
         devicelist = getDeviceList()
-        devicelist.commit()
+        # already in NCDeviceList
+        # devicelist.commit() 
 
     def loadHardware(self):
         hardwarelist = getHardwareList()
-        hardwarelist.commit()
+        # already in NCHardwareList
+        # hardwarelist.commit()
 
     def loadProfiles(self):
         profilelist = getProfileList()
-        profilelist.commit()
+        # already in NCProfileList
+        # profilelist.commit()
 
     def test(self):
         profilelist = getProfileList()
@@ -242,6 +245,15 @@ class mainDialog:
         
         return 0
 
+    def changed(self):
+        profilelist = getProfileList()
+        devicelist = getDeviceList()
+        hardwarelist = getHardwareList()
+        
+        if profilelist.changed or devicelist.changed or hardwarelist.changed:
+            return true
+
+        return false
 
     def save(self):
         if self.test() == 0:
@@ -354,25 +366,32 @@ class mainDialog:
         self.no_profileentry_update = false
 
     def on_Dialog_delete_event(self, *args):
-        button = generic_yesno_dialog(_("Do you want to save your changes?"),
-                                      self.dialog)
-        if button == 0:
-            self.save()
+        if self.changed():        
+            button = generic_yesno_dialog(
+                _("Do you want to save your changes?"),
+                self.dialog)
+            if button == 0:
+                self.save()
             
         gtk.mainquit()
 
     def on_applyButton_clicked (self, button):
         self.save()
 
-    def on_okButton_clicked (self, *args):
-        button = generic_yesnocancel_dialog(_("Do you want to save your changes?"),
-                                      self.dialog)
-        if button == 0:
-            if self.save() != 0:
+    def on_okButton_clicked (self, *args):        
+        if self.changed():        
+            button = generic_yesnocancel_dialog(
+                _("Do you want to save your changes?"),
+                self.dialog)
+            
+            if button == 0:
+                if self.save() != 0:
+                    return
+            
+            if button == 2:
                 return
             
-        if button != 2:
-            gtk.mainquit()
+        gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
         gnome.help.goto ("/usr/share/redhat-config-network/help/index.html")

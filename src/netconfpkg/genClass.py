@@ -5,7 +5,7 @@
 ## tab-width: 3
 ## End:
 #
-__version__ = "1.13"
+__version__ = "2.0"
 #
 
 ## Copyright (C) 2000,2001 Red Hat, Inc.
@@ -79,6 +79,7 @@ class %classname%base%baseclass:
 	def __init__(self, list = None, parent = None):
 		%BaseInit
 		self.__parent = parent
+		self.changed = false
 		self.dead = 0
 		self.doClear()
 
@@ -131,7 +132,13 @@ class %classname%base%baseclass:
 		%TestList
 		pass
 
-	def commit(self):
+	def setChanged(self, val):
+		self.changed = val
+		if self.__parent and val:
+			self.__parent.setChanged(val)
+		
+	def commit(self, changed=true):
+		#self.setChanged(changed)			
 		if self.__list:
 			%CommitAList
 			pass
@@ -173,7 +180,7 @@ ListCNLOps = """
 	def set%childname(self, value):
 		self.%childname = value
 
-	def commitChild(self, name, type):
+	def commitChild(self, name, type, changed=true):
 		if self.__dict__[name]:
 			if self.__dict__['__' + name + '_bak'] != None:
 				self.__list.getChildByName(name).setValue(self.__dict__[name])
@@ -197,12 +204,12 @@ ListCLOps = """
 			self.%childname = None
 			child.unlink()
 
-	def commitChild(self, name, type):
+	def commitChild(self, name, type, changed=true):
 		if self.__dict__['__' + name + '_bak'] != None:
 			self.__dict__['__' + name + '_bak'].unlink()
 		if self.__dict__[name] != None:
 			self.__dict__[name].setList(self.__list.addChild(type, name))
-			self.__dict__[name].commit()
+			self.__dict__[name].commit(changed)
 		
 """
 
@@ -248,31 +255,31 @@ AnonListCNLOps = """
 		return 0
 """
 
-AnonListPKOps = """
-	def __getitem__ (self, key):
-		for i in xrange (len (self)):
-			if self.data.%childname[i].%childkey == key:
-				return child
-		return None
+#  AnonListPKOps = """
+#  	def __getitem__ (self, key):
+#  		for i in xrange (len (self)):
+#  			if self.data.%childname[i].%childkey == key:
+#  				return child
+#  		return None
 
-	def __setitem__ (self, key, value):
-		raise 'TypeError', "Unable to explicitly set a %childname.  Use %classname::add instead"
+#  	def __setitem__ (self, key, value):
+#  		raise 'TypeError', "Unable to explicitly set a %childname.  Use %classname::add instead"
 
-	def __delitem__ (self, key):
-		for i in xrange (len (self)):
-			if self.data.%childname[i].%childkey == key:
+#  	def __delitem__ (self, key):
+#  		for i in xrange (len (self)):
+#  			if self.data.%childname[i].%childkey == key:
 
-		raise KeyError, key
+#  		raise KeyError, key
 
-	def keys (self):
-		if self.data == []:
-			return []
+#  	def keys (self):
+#  		if self.data == []:
+#  			return []
 
-		retval = []
-		for i in xrange (len (self)):
-			retval.append (self.__virtualhosts.getvirtualhost (i).getVHName())
-		return retval
-"""
+#  		retval = []
+#  		for i in xrange (len (self)):
+#  			retval.append (self.__virtualhosts.getvirtualhost (i).getVHName())
+#  		return retval
+#  """
 
 
 AnonCNList = """
@@ -394,6 +401,8 @@ def printClass(list, basename, baseclass):
 						  + "\t\tself.data = self.data_bak[:]\n"
 							
 			commitlist = commitlist \
+							 + '\t\tif self.data_bak != self.data: self.setChanged(changed)\n'
+			commitlist = commitlist \
 							 + '\t\tself.data_bak = self.data[:]\n'
 
 			testlist = testlist \
@@ -455,11 +464,11 @@ def printClass(list, basename, baseclass):
 				self.data_bak.unlink()
 			for i in xrange(len(self.data)):
 				self.data[i].setList(self.__list.addChild(%childtype, "%childname"))
-				self.data[i].commit()
+				self.data[i].commit(changed)
 """							  
 				commitlist = commitlist \
 								 + '\t\tfor child in self.data_bak:\n' \
-								 + '\t\t\tchild.commit()\n'
+								 + '\t\t\tchild.commit(changed)\n'
 
 				backuplist = backuplist \
 								 + '\t\tfor child in self.data:\n' \
@@ -486,10 +495,12 @@ def printClass(list, basename, baseclass):
 							 + '\t\tself.%childname = self.__%childname_bak\n'
 			
 			commitlist = commitlist \
+							 + '\t\tif self.__%childname_bak != self.%childname: self.setChanged(changed)\n'
+			commitlist = commitlist \
 							 + '\t\tself.__%childname_bak = self.%childname\n'
 
 			commitalist = commitalist + \
-							  '\t\t\tcommitChild("%childname", %childtype)\n'
+							  '\t\t\tcommitChild("%childname", %childtype, changed)\n'
 
 			if ctype != Data.ADM_TYPE_LIST:
 				#
@@ -524,7 +535,7 @@ def printClass(list, basename, baseclass):
 				applylist = applylist \
 							  + '\t\tself.create%childname().apply(other.get%childname())\n'
 				commitlist = commitlist +\
-								 '\t\tif self.%childname: self.%childname.commit()\n'
+								 '\t\tif self.%childname: self.%childname.commit(changed)\n'
 
 				backuplist = backuplist +\
 								 '\t\tif self.%childname: self.%childname.rollback()\n'

@@ -131,8 +131,8 @@ class Cipe(DeviceList.Cipe_base):
             if conf.has_key('key'):
                 self.SecretKey = conf['key']
                 
-        self.commit()
-
+        self.commit(false)
+        
     def save(self, parentConf):
         conf = parentConf
 
