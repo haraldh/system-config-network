@@ -28,6 +28,8 @@ import string
 import gettext
 import string
 import commands
+import sharedtcpip
+
 from netconfpkg import NCDeviceList
 from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
@@ -45,7 +47,15 @@ _=gettext.gettext
 
 class cipeConfigDialog(deviceConfigDialog):
     def __init__(self, device):
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = GUI_functions.NETCONFDIR + glade_file
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
+        
         glade_file = "cipeconfig.glade"
+        
         deviceConfigDialog.__init__(self, glade_file,
                                     device)    
         self.xml.signal_autoconnect(
@@ -61,6 +71,13 @@ class cipeConfigDialog(deviceConfigDialog):
             "on_localVirtualAddressEntry_changed" : self.updateRemoteOptions,
             })
 
+        window = self.sharedtcpip_xml.get_widget ('routeWindow')
+        frame = self.sharedtcpip_xml.get_widget ('routeFrame')
+        vbox = self.xml.get_widget ('routeVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.route_init (self.sharedtcpip_xml, self.device)
+        
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
@@ -120,7 +137,8 @@ class cipeConfigDialog(deviceConfigDialog):
         widget.set_position(0)
 
         self.updateRemoteOptions()
-
+        sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
+        
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
 
@@ -139,6 +157,8 @@ class cipeConfigDialog(deviceConfigDialog):
         else:
             self.device.Cipe.RemotePeerAddress = self.xml.get_widget("remotePeerAddressEntry").get_text() + ":" + self.xml.get_widget("remotePeerPortEntry").get_text()
 
+        sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
+        
     def on_protocolEditButton_clicked(self, *args):
         self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()
         deviceConfigDialog.on_protocolEditButton_clicked(self, args)
