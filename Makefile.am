@@ -39,8 +39,11 @@ install-data-local:
 		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
+changelog:
+	rcs2log | sed -e 's|/cvs/rhl/netcfg/||g' \
+		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
 
-dist: configure Makefile config.h
+dist: configure Makefile config.h changelog
 
 srpm: distcheck
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
