@@ -689,7 +689,7 @@ class mainDialog:
             if NetworkDevice().find(device):
                 self.update_devicelist()
             else:
-                devErrorDialog(device, ACTIVATE)
+                devErrorDialog(device, ACTIVATE, self.dialog)
     
     def on_deviceDeactivateButton_clicked(self, button):
         device = self.clist_get_device()
@@ -699,7 +699,7 @@ class mainDialog:
             if not ret:
                 self.update_devicelist()
             else:
-                devErrorDialog(device, DEACTIVATE)
+                devErrorDialog(device, DEACTIVATE, self.dialog)
 
     def on_deviceMonitorButton_clicked(self, button):
         device = self.clist_get_device()
