@@ -14,7 +14,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
 Source1: rp3-1.1.10.tar.gz
 Patch0: redhat-config-network-0.9.13-neat.patch
-Patch1: redhat-config-network-0.9.23-rp3-font.patch
+Patch1: redhat-config-network-0.9.21-rp3.patch
+Patch2: redhat-config-network-0.9.23-rp3-font.patch
 %endif
 
 %description
@@ -26,7 +27,8 @@ firewalls and masquerading, and can use profiles.
 %if %{rp3}
 %setup -q -a 1
 %patch0 -p1 -b .neat
-%patch1 -p1 -b .font
+%patch1 -p0 -b .rp3
+%patch2 -p1 -b .font
 %else
 %setup
 %endif
