@@ -53,7 +53,8 @@ class tcpConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, None,
+                                     domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,

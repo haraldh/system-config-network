@@ -54,8 +54,8 @@ class ethernetConfigDialog(deviceConfigDialog):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
-
+        self.sharedtcpip_xml = libglade.GladeXML(glade_file, None,
+                                                 domain=GUI_functions.PROGNAME)
         glade_file = "ethernetconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device)    

@@ -40,7 +40,8 @@ class ethernetHardware:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
  
-        self.xml = libglade.GladeXML(glade_file, 'druid')
+        self.xml = libglade.GladeXML(glade_file, 'druid',
+                                     domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_adapterEntry_changed" : self.on_adapterEntry_changed,

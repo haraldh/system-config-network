@@ -364,6 +364,6 @@ def dsl_hardware_dehydrate(xml, device):
 
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    xml = libglade.GladeXML('sharedtcpip.glade', None)
+    xml = libglade.GladeXML('sharedtcpip.glade', None, domain=GUI_functions.PROGNAME)
     dhcp_init (xml, None)
     gtk.mainloop ()

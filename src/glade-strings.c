@@ -277,7 +277,7 @@ void some_function_name() {
   /* netconfpkg/gui/neat-control-propertiesdialog.glade:298 */
   _("Basic");
 
-  /* netconfpkg/gui/sharedtcpip.glade:1626 */
+  /* netconfpkg/gui/sharedtcpip.glade:1628 */
   _("Bind to _MAC Address:");
 
   /* netconfpkg/gui/cipeconfig.glade:18 */
@@ -428,7 +428,7 @@ void some_function_name() {
   /* netconfpkg/gui/NewInterfaceDruid.glade:122 */
   _("Device Type");
 
-  /* netconfpkg/gui/sharedtcpip.glade:1654 */
+  /* netconfpkg/gui/sharedtcpip.glade:1656 */
   _("Device _Aliases:");
 
   /* maindialog.glade:644 */
@@ -1300,7 +1300,7 @@ void some_function_name() {
   /* maindialog.glade:1369 */
   _("_Primary DNS:");
 
-  /* netconfpkg/gui/sharedtcpip.glade:1607 */
+  /* netconfpkg/gui/sharedtcpip.glade:1609 */
   _("_Probe");
 
   /* netconfpkg/gui/tokenringconfig.glade:623 */

@@ -48,7 +48,8 @@ class DialupDialog(deviceConfigDialog):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+                                                  domain=PROGNAME)
 
         glade_file = "dialupconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,

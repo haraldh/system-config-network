@@ -50,7 +50,8 @@ class GenericInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None,
+                                                  domain=PROGNAME)
 
         glade_file = 'GenericInterfaceDruid.glade'
 
