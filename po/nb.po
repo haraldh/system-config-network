@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: redhat-config-network 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-10-08 17:24+0200\n"
-"PO-Revision-Date: 2003-10-15 00:18+0200\n"
+"PO-Revision-Date: 2003-10-19 09:52+0200\n"
 "Last-Translator: Trond Eivind Glomsrød <teg@redhat.com>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "Nettverkskonfigurasjon"
 
 #: internet-druid.desktop.in.h:1
 msgid "Configure your connection to the Internet"
-msgstr "Konfigurer din Internett-forbindelse"
+msgstr "Konfigurer din Internett-tilkobling"
 
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
@@ -79,19 +79,19 @@ msgstr "Veiviser for konfigurasjon av Internett"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/neat-control.py:48 src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
-msgstr ""
+msgstr "FEIL: Kan ikke initiere grafisk miljø."
 
 #: src/neat-control.py:49 src/netconf.py:76
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
-msgstr ""
+msgstr "Den mest sannsynlige årsaken til denne feilen er at verktøyet ble kjørt uten å ha startet det grafiske miljøet. "
 
 #: src/neat-control.py:50 src/netconf.py:77
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
-msgstr ""
+msgstr "Vennligst start ditt grafiske brukergrensesnitt eller sett miljøvariabelen DISPLAY.\n"
 
 #. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
@@ -307,15 +307,14 @@ msgid "Loading Network Configuration..."
 msgstr "Laster nettverkskonfigurasjon..."
 
 #: src/netconf.py:127
-#, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
 "\n"
 "Usage: redhat-config-network -v --verbose"
 msgstr ""
-"redhat-config-network-cmd - nettverkskonfigurering for kommandolinjen\n"
+"redhat-config-network - verktøy for konfigurasjon av nettverk\n"
 "\n"
-"Bruk: redhat-config-network-cmd -p --profile <profil> -a --activate"
+"Bruk: redhat-config-network -v --verbose"
 
 #. splash_window = splash_screen()
 #. make ctrl-C work
@@ -343,22 +342,21 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:64
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
 "Please file a detailed bug report against the component %s at \n"
 "https://bugzilla.redhat.com/bugzilla\n"
 "using the text below.\n"
 msgstr ""
-"Et uhåndtert unntak er oppstått. Dette er mest sannsynlig en feil i "
-"programmet. Vennligst lagre feilmeldingen, og opprett deretter en detaljert "
-"feilrapport for komponenten «redhat-config-network» på https://bugzilla."
-"redhat.com/bugzilla"
+"Et uhåndtert unntak er oppstått. Dette er mest sannsynlig en feil i programmet. Vennligst opprett en detaljert feilrapport for komponenten %s på \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"med teksten som finnes under.\n"
 
 #: src/netconf-cmd.py:99
 #, python-format
 msgid "%s - network configuration commandline tool"
-msgstr ""
+msgstr "%s - verktøy for konfigurasjon av nettverk på kommandolinjen"
 
 #: src/netconf-cmd.py:104
 #, python-format
@@ -375,36 +373,36 @@ msgstr "eksporter / importer maskinvareliste"
 
 #: src/netconf-cmd.py:110
 msgid "export / import device list (default)"
-msgstr ""
+msgstr "eksporter / importer enhetsliste (forvalgt)"
 
 #: src/netconf-cmd.py:112
 msgid "export / import profile list"
-msgstr ""
+msgstr "eksporter / importer liste med profiler"
 
 #: src/netconf-cmd.py:114
 msgid "set the root directory"
-msgstr ""
+msgstr "sett rotkatalog"
 
 #: src/netconf-cmd.py:115
 msgid "export list (default)"
-msgstr ""
+msgstr "eksporter liste (forvalgt)"
 
 #: src/netconf-cmd.py:116
 msgid "import list"
-msgstr ""
+msgstr "importer liste"
 
 #: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
-msgstr ""
+msgstr "tøm eksisterende liste før import"
 
 #: src/netconf-cmd.py:120
 msgid "import from file"
-msgstr ""
+msgstr "importer fra fil"
 
 #: src/netconf-cmd.py:225
 #, python-format
 msgid "Unknown option %s\n"
-msgstr ""
+msgstr "Ukjent flagg %s\n"
 
 #. remove the last \n
 #: src/netconf-cmd.py:304
@@ -746,12 +744,14 @@ msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
+"Feil under kjøring:\n"
+"%s"
 
 #: src/netconfpkg/gui/GUI_functions.py:550
 msgid ""
 "\n"
 "Succeeded. Please read the output."
-msgstr ""
+msgstr "\nFullført. Vennligst les utdata."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1079,6 +1079,8 @@ msgid ""
 "Nickname %s is already in use!\n"
 "Please choose another one.\n"
 msgstr ""
+"Kallenavn %s er allerede i bruk!\n"
+"Vennligst velg et annet.\n"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1479,9 +1481,9 @@ msgstr "Rediger enhet..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:868
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "Enhetstype %s kan ikke redigeres!"
+msgstr "Enhetstypen %s kan ikke redigeres!\n"
 
 #: src/netconfpkg/gui/maindialog.py:887
 msgid "The Loopback device can not be removed!"
@@ -1579,19 +1581,15 @@ msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Vil du slette alle enheter som brukte «%s»?"
 
 #: src/netconfpkg/gui/maindialog.py:1599
-#, fuzzy
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
-msgstr ""
-"Dette programmet distribueres under betingelsene gitt i GPL. Vennligst "
-"rapporter feil i Red Hat's feilhåndteringssytem: http://bugzilla.redhat.com/"
-"bugzilla/"
+msgstr "Dette programmet distribueres under betingelsene gitt i GPL. Vennligst rapporter feil i Red Hat's feilhåndteringssytem: http://bugzilla.redhat.com/"
 
 #: src/netconfpkg/gui/maindialog.py:1679
-#, fuzzy, python-format
+#, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
-msgstr "For å kunne aktivere nettverksenheten %s må endringene lagres."
+msgstr "Endringene må lagres før du kan aktivere IPsec-tilkobling %s."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1736,7 +1734,7 @@ msgstr "Opprett en ny IUCV-tilkobling."
 
 #: src/netconfpkg/gui/PTPInterface.py:222
 msgid "Point to Point (IP):"
-msgstr ""
+msgstr "Punkt-til-punkt (IP):"
 
 #. print self.devicelist
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -1835,15 +1833,15 @@ msgstr "Inaktiv"
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Directory %s is missing!\n"
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
-"Katalogen /etc/cipe mangler!\n"
+"Katalogen %s mangler!\n"
 "Oppretter den for deg!\n"
-"Du bør installere rpm-pakken med cipe!\n"
+"Du bør installere rpm-pakken cipe!\n"
 
 #: src/netconfpkg/NCCipe.py:159
 #, python-format
@@ -2561,9 +2559,8 @@ msgid "Cannot deactivate network device %s!\n"
 msgstr "Kan ikke deaktivere nettverksenhet %s!\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
-#, fuzzy
 msgid "Please start redhat-config-network with root permissions once!\n"
-msgstr "Vennligst start %s på nytt med rettigheter som root!"
+msgstr "Vennligst start redhat-config-network en gang med rettigheter som root!\n"
 
 #: src/netconfpkg/NCDeviceList.py:67
 #, python-format
@@ -2578,7 +2575,7 @@ msgstr "Kopierer %s til enheter og legger den inn i forvalgt profil."
 #. log.log(4, str(prof.ActiveDevices))
 #: src/netconfpkg/NCDeviceList.py:150
 msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr ""
+msgstr "Endret følgende kallenavn pga initscripts:\n"
 
 #: src/netconfpkg/NCDeviceList.py:153
 msgid "Nicknames changed"
@@ -4092,11 +4089,11 @@ msgstr "1.00"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
 msgid "Confirm _starting connection"
-msgstr "Bekreft opp_start av forbindelse"
+msgstr "Bekreft opp_start av tilkobling"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
 msgid "Confirm stopping _connection"
-msgstr "Bekreft nedtagning av _forbindelse"
+msgstr "Bekreft nedtagning av _tilkobling"
 
 #: src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
 msgid "Cos_t accumulated from the past connection:"
@@ -4195,8 +4192,7 @@ msgstr "Vanskelighetsnivå:"
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
-msgstr ""
-"Hver forbindelse må assosieres med en fysisk enhet som kan velges under"
+msgstr "Hver tilkobling må kobles til en fysisk enhet som kan velges under"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
@@ -4533,7 +4529,7 @@ msgstr "Type"
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
 msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr ""
+msgstr "Du kan konfigurere IPsec-tunneler og vert-til-vert tilkoblinger her."
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
 msgid ""
@@ -4682,86 +4678,80 @@ msgid "Local network _address:"
 msgstr "Lokal nettverks_adresse:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:15
-#, fuzzy
 msgid "Local network _gateway:"
-msgstr "Nettverk"
+msgstr "Lokal _gateway for nettverk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:16
-#, fuzzy
 msgid "Local subnet _mask:"
-msgstr "Subnettmaske:"
+msgstr "Subnett_maske for lokalt nettverk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:17
 msgid "Manual encryption with a fixed key"
-msgstr ""
+msgstr "Manuell kryptering med en fast nøkkel"
 
 #: src/netconfpkg/gui/editipsec.glade.h:18
 msgid "Network to Network encryption (VPN)"
-msgstr ""
+msgstr "Nettverk-til-nettverk kryptering (VPN)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:19
-#, fuzzy
 msgid "Please enter a nickname for the connection:"
-msgstr "Vennligst velg type maskinvareenhet som skal legges til:"
+msgstr "Vennligst oppgi et kallenavn for tilkoblingen:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter your local network settings:"
-msgstr ""
+msgstr "Vennligst oppgi innstillinger for ditt lokale nettverk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:21
 msgid "Please enter your remote network settings:"
-msgstr ""
+msgstr "Vennligst oppgi innstillinger for det eksterne nettverket:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:22
-#, fuzzy
 msgid "Please select the type of connection:"
-msgstr "Vennligst velg type maskinvareenhet som skal legges til:"
+msgstr "Vennligst velg type tilkobling:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:23
-#, fuzzy
 msgid "Please select the type of encryption:"
-msgstr "Vennligst velg type maskinvareenhet som skal legges til:"
+msgstr "Vennligst velg type kryptering:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:24
 msgid ""
 "Please specify your keys or generate them. \n"
 "The keys are symmetric, so your remote partner need to have the same."
 msgstr ""
+"Vennligst oppgi dine nøkler eller generer dem.\n"
+"Nøklene er symmetriske så din eksterne samarbeidspart må ha de samme nøklene."
 
 #: src/netconfpkg/gui/editipsec.glade.h:26
-#, fuzzy
 msgid "Remote _IP address:"
-msgstr "Adresse for ekstern vert:"
+msgstr "Ekstern _IP-adresse:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:27
-#, fuzzy
 msgid "Remote network _address:"
-msgstr "Adresse for ekstern vert:"
+msgstr "Ekstern nettverks_adresse:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:28
-#, fuzzy
 msgid "Remote network _gateway:"
-msgstr "Nettverk"
+msgstr "_Gateway for eksternt nettverk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:29
-#, fuzzy
 msgid "Remote subnet _mask:"
-msgstr "Subnettmaske:"
+msgstr "Subnettmaske for eksternt nettverk:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:30
 msgid ""
 "You will now be guided through the\n"
 "setup of the IPsec connection."
 msgstr ""
+"Du vil nå gå gjennom\n"
+"oppsett av IPsec-tilkoblingen."
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
-#, fuzzy
 msgid "_Activate connection when computer starts"
-msgstr "_Aktiver enheten når datamaskinen starter opp"
+msgstr "_Aktiver tilkoblingen når datamaskinen starter"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption key:"
-msgstr ""
+msgstr "Krypt_eringsnøkkel:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:35
 msgid "_Nickname:"
@@ -4816,9 +4806,8 @@ msgid "The following network interfaces are configured in the active profile."
 msgstr "Følgende nettverksgrensesnitt er konfigurert i aktiv profil."
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
-#, fuzzy
 msgid "_Info\t"
-msgstr "Informasjon"
+msgstr "_Informasjon\t"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
 msgid "Card"
@@ -4838,9 +4827,8 @@ msgid "Select Device"
 msgstr "Velg enhet"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-#, fuzzy
 msgid "Select the card you want to configure:"
-msgstr "Velg Ethernet-kortet du ønsker å konfigurere:"
+msgstr "Velg kortet du vil konfigurere:"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/ptpconfig.glade.h:10
