@@ -26,6 +26,7 @@ import NC_functions
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
+import FCNTL
 import Conf
 import ConfSMB
 import NCHardwareList
@@ -38,18 +39,30 @@ import NCCipe
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
         new = false
-        if not os.access(SYSCONFDEVICEDIR + 'ifcfg-' + name, os.R_OK):
+        self.filename = SYSCONFDEVICEDIR + 'ifcfg-' + name
+        if not os.access(self.filename, os.R_OK):
             new = true
+            self.oldmode = -1
+        else:
+            status = os.stat(self.filename)
+            self.oldmode = status[0]
+            #print status
             
-        Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + 'ifcfg-' + name)
-        self.chmod(0600)
-
+        Conf.ConfShellVar.__init__(self, self.filename)
+        
         if new:
             self.rewind()
             self.insertline("# Please read /usr/share/doc/initscripts-*/sysconfig.txt")
             self.nextline()
             self.insertline("# for the documentation of these parameters.");
             self.rewind()
+
+    def write(self):
+        self.chmod(0644)
+        if ((self.oldmode & 0044) != 0044):
+            if not NC_functions.generic_yesno_dialog(_("May I change\n%s\nfrom mode %o to %o?") % (self.filename, self.oldmode & 03777, 0644)):
+                self.chmod(self.oldmode)
+        Conf.ConfShellVar.write(self)
             
 class ConfRoute(Conf.ConfShellVar):
     def __init__(self, name):
@@ -77,6 +90,7 @@ class Device(DeviceList.Device_base):
         
     def __init__(self, list = None, parent = None):
         DeviceList.Device_base.__init__(self, list, parent)        
+        self.oldname = None
 
     def createDialup(self):
         if self.Type:
@@ -128,6 +142,8 @@ class Device(DeviceList.Device_base):
         conf = ConfDevice(name)
         rconf = ConfRoute(name)
 
+        self.oldname = name
+
         if not conf.has_key("DEVICE"):
             aliaspos = string.find(name, ':')
             if aliaspos != -1:
@@ -173,7 +189,8 @@ class Device(DeviceList.Device_base):
                         if out == network:
                             self.Gateway = str(gw)
                             
-            except (OSError, IOError), msg:
+            except EnvironmentError, msg:
+                NC_functions.generic_error_dialog(str(msg))
                 pass
 
         try:
@@ -182,7 +199,8 @@ class Device(DeviceList.Device_base):
                 self.Alias = int(self.Device[aliaspos+1:])
                 self.Device = self.Device[:aliaspos]
         except TypeError:
-            raise TypeError, _("Device not specified or alias not a number!")
+            NC_functions.generic_error_dialog(_("%s, Device not specified or alias not a number!") % self.DeviceId)
+            #raise TypeError, _("Device not specified or alias not a number!")
 
         if not self.Type or self.Type == "" or self.Type == "Unknown":
             hwlist = NCHardwareList.getHardwareList()
@@ -223,7 +241,7 @@ class Device(DeviceList.Device_base):
                 self.Mtu = conf['MTU']
                 
         if math.fmod(num, 3) != 0:
-            print (_("Static routes file for %s has not vaild format")) % name
+             NC_functions.generic_error_dialog((_("Static routes file for %s has not vaild format")) % name)
         else:
             for p in xrange(0, num/3):
                 i = self.StaticRoutes.addRoute()
@@ -236,6 +254,12 @@ class Device(DeviceList.Device_base):
     def save(self):
         self.commit()
 
+        if self.oldname and (self.oldname != self.DeviceId):
+            #print "Moving %s to %s" % (self.oldname, self.DeviceId)
+            NC_functions.rename(SYSCONFDEVICEDIR + 'ifcfg-' + self.oldname,
+                      SYSCONFDEVICEDIR + 'ifcfg-' + self.DeviceId)
+        self.oldname = self.DeviceId
+            
         conf = ConfDevice(self.DeviceId)
         conf.fsf()
         
