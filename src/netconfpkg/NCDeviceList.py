@@ -280,7 +280,6 @@ class DeviceList(DeviceList_base):
             
             devid = entry[6:]
                 
-            found = false
             for dev in self:
                 if dev.DeviceId == devid:
                     break
@@ -289,6 +288,43 @@ class DeviceList(DeviceList_base):
                 log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
                 unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
                 log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid))
+
+        # remove old route files
+        for entry in dir:
+            if (len(entry) <= 6) or \
+               entry[:6] != '.route' or \
+               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
+                continue
+            devid = entry[6:]
+                
+            for dev in self:
+                if dev.DeviceId == devid:
+                    break
+            else:
+                # remove route file, if no routes defined
+                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
+                log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.route')
+                log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.route'))
+
+        # remove old ipsec files
+        for entry in dir:
+            if (len(entry) <= 6) or \
+               entry[:6] != '.ipsec' or \
+               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
+                continue
+            devid = entry[6:]
+                
+            for dev in self:
+                if dev.DeviceId == devid:
+                    break
+            else:
+                # remove ipsec file, if no ipsec vpns defined
+                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
+                log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.ipsec')
+                log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.ipsec'))
+
 
         # bug #78043
         # we should have device specific gateways
@@ -426,5 +462,5 @@ if __name__ == '__main__':
         print "---------------------------------------"
     #dl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.55 $"
+__date__ = "$Date: 2003/07/01 13:00:04 $"
+__version__ = "$Revision: 1.56 $"

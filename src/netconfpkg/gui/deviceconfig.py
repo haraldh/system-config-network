@@ -28,6 +28,7 @@ import string
 import re
 
 from netconfpkg.gui.GUI_functions import *
+from netconfpkg.gui import sharedtcpip
 from netconfpkg import nop
 from netconfpkg import NCDeviceList
 
@@ -54,10 +55,25 @@ class deviceConfigDialog:
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             })
 
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GLADEPATH + glade_file
+
+        self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
+                                                 domain=PROGNAME)
+
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
         load_icon("network.xpm", self.dialog)
         #
+
+        vbox = self.xml.get_widget ('ipsecVbox')
+        if vbox:
+            window = self.sharedtcpip_xml.get_widget ('ipsecWindow')
+            frame = self.sharedtcpip_xml.get_widget ('ipsecFrame')
+            window.remove (frame)
+            vbox.pack_start (frame)
+            sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
 
         self.hydrate()
 
@@ -130,5 +146,5 @@ class deviceConfigDialog:
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.14 $"
+__date__ = "$Date: 2003/07/01 13:00:04 $"
+__version__ = "$Revision: 1.15 $"

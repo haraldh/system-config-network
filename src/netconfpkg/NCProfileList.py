@@ -335,41 +335,42 @@ class ProfileList(ProfileList_base):
             del hoconf
             
             for devId in prof.ActiveDevices:
-                devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + '/ifcfg-' + devId
+                for prefix in [ 'ifcfg-', 'ipsec-', 'route-' ]:
+                    devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                  prefix + devId
+                    profilename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                                  prof.ProfileName + '/' + prefix + devId
+                    unlink(profilename)
+
+                    link(devfilename, profilename)
+                    files_used.append(devfilename)
+                    files_used.append(profilename)
+
+                # unlink old .route files
                 profilename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
-                              prof.ProfileName+'/ifcfg-'+devId
+                              prof.ProfileName + '/' + devId + '.route'
                 unlink(profilename)
-                
-                link(devfilename, profilename)
-                files_used.append(devfilename)
-                files_used.append(profilename)
-                
-                routefilename = netconfpkg.ROOT + SYSCONFDEVICEDIR+devId+".route"
-                routeprofname = netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + \
-                                prof.ProfileName + '/' + devId + ".route"
-                
-                if os.path.isfile(routefilename):
-                    unlink(routeprofname)
-                    link(routefilename, routeprofname)
-                    files_used.append(routefilename)
-                    files_used.append(routeprofname)
+
                     
                 if prof.Active == false and prof.ProfileName != 'default':
                     continue
 
                 # Active Profile or default profile
-
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devId)
-                link(profilename,
-                     netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devId)
-                files_used.append(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devId)
                 
-                if os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR+devId+".route"):
-                    unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + devId + ".route")
-                    link(routefilename,
-                         netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + devId + ".route")
-                    files_used.append(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + devId \
-                                      + ".route")
+                for prefix in [ 'ifcfg-', 'ipsec-', 'route-' ]:
+                    devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                      '/' + prefix + devId
+                    profilename = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                               '/' + prefix + devId
+                    if os.path.isfile(devfilename):
+                        unlink(profilename)
+                        link(devfilename, profilename)
+                        files_used.append(devfilename)
+
+                # unlink old .route files
+                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                       '/' + devId + '.route')
+                
 
             if prof.Active == false:                
                 continue
@@ -533,5 +534,5 @@ if __name__ == '__main__':
 
     pl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.74 $"
+__date__ = "$Date: 2003/07/01 13:00:04 $"
+__version__ = "$Revision: 1.75 $"

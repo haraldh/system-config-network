@@ -69,8 +69,18 @@ class ConfDevice(Conf.ConfShellVar):
             
 class ConfRoute(Conf.ConfShellVar):
     def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + name + '.route')
+        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + name)
         self.chmod(0644)
+
+class ConfIPsec(Conf.ConfShellVar):
+    def __init__(self, name):
+        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'ipsec-' + name)
+        self.chmod(0644)
+
+class ConfKeys(Conf.ConfShellVar):
+    def __init__(self, name):
+        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'keys-' + name)
+        self.chmod(0600)
 
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
@@ -132,7 +142,6 @@ class Device(Device_base):
     def load(self, name):
         from netconfpkg.NCDeviceList import getDeviceList
         conf = ConfDevice(name)
-        rconf = ConfRoute(name)
 
         self.oldname = name
 
@@ -224,6 +233,15 @@ class Device(Device_base):
             if conf['MTU']:
                 self.Mtu = conf['MTU']
 
+        # move old <id>.route files to route-<id>
+        file = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                self.DeviceId + '.route'
+        if os.path.isfile(file):
+            NC_functions.rename(file,
+                                netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                'route-' + self.DeviceId )
+        # load routes
+        rconf = ConfRoute(name)
         num = len(rconf.keys())
         self.createStaticRoutes()
 
@@ -235,9 +253,48 @@ class Device(Device_base):
             for p in xrange(0, int(num/3)):
                 i = self.StaticRoutes.addRoute()
                 route = self.StaticRoutes[i]
-                route.Address = rconf['ADDRESS'+str(p)]
-                route.Netmask = rconf['NETMASK'+str(p)]
-                route.Gateway = rconf['GATEWAY'+str(p)]
+                route.Address = rconf['ADDRESS' + str(p)]
+                route.Netmask = rconf['NETMASK' + str(p)]
+                route.Gateway = rconf['GATEWAY' + str(p)]
+
+        # load ipsec
+        iconf = ConfIPsec(name)
+        ipsec_entries = [
+            "LocalNetwork",
+            "LocalNetmask",
+            "LocalGateway",
+            "RemoteNetwork",
+            "RemoteNetmask",
+            "RemoteGateway",
+            "RemoteIPAddress",
+            "ConnectionType",
+            "EncryptionMode",
+            ]
+        key_entries = [
+            "AHKey",
+            "ESPKey",
+            ]
+        keys = iconf.keys()
+        cons = []
+        for key in keys:
+            if key[:14] == "ENCRYPTIONMODE":
+                cons.append(key[14:])
+        cons.sort()
+        log.log(5, "cons = %s" % cons)
+        if len(cons):
+            keyconf = ConfKeys(name)
+            self.createIPsecList()
+            for con in cons:
+                i = self.IPsecList.addIPsec()
+                ipsec = self.IPsecList[i]
+                for key in ipsec_entries:
+                    if iconf.has_key(string.upper(key) + con):
+                        setattr(ipsec, key, iconf[string.upper(key) + con])
+                for key in key_entries:
+                    if keyconf.has_key(string.upper(key) + con):
+                        setattr(ipsec, key, keyconf[string.upper(key) + con])
+                
+        
         self.commit(changed=false)
                 
     def save(self):
@@ -246,8 +303,11 @@ class Device(Device_base):
         self.commit()
 
         if self.oldname and (self.oldname != self.DeviceId):
-            NC_functions.rename(netconfpkg.ROOT + SYSCONFDEVICEDIR + 'ifcfg-' + self.oldname,
-                                netconfpkg.ROOT + SYSCONFDEVICEDIR + 'ifcfg-' + self.DeviceId)
+            for prefix in [ 'ifcfg-', 'ipsec-', 'route-' ]:
+                NC_functions.rename(netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                    prefix + self.oldname,
+                                    netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                    prefix + self.DeviceId)            
 
         conf = ConfDevice(self.DeviceId)
         conf.fsf()
@@ -336,9 +396,6 @@ class Device(Device_base):
                     rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
-        else:
-            # remove route file, if no routes defined
-            unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + self.DeviceId + '.route')
             
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
@@ -352,6 +409,47 @@ class Device(Device_base):
             del conf['RESOLV_MODS']
 
         conf.write()
+
+        if self.IPsecList and len(self.IPsecList):            
+            # save ipsec settings
+            conf = ConfIPsec(self.DeviceId)
+            conf.fsf()
+            ipsec_entries = [
+                "LocalNetwork",
+                "LocalNetmask",
+                "LocalGateway",
+                "RemoteNetwork",
+                "RemoteNetmask",
+                "RemoteGateway",
+                "RemoteIPAddress",
+                "ConnectionType",
+                "EncryptionMode",
+                ]
+
+            num = 0
+            for ipsec in self.IPsecList:
+                for key in ipsec_entries:
+                    if hasattr(ipsec, key):
+                        conf[string.upper(key) + str(num)] = \
+                                               getattr(ipsec, key) or ""
+                num += 1
+            conf.write()
+
+            conf = ConfKeys(self.DeviceId)
+            conf.fsf()
+            ipsec_entries = [
+                "AHKey",
+                "ESPKey",
+                ]
+
+            num = 0
+            for ipsec in self.IPsecList:
+                for key in ipsec_entries:
+                    if hasattr(ipsec, key):
+                        conf[string.upper(key) + str(num)] = \
+                                               getattr(ipsec, key) or ""
+                num += 1
+            conf.write()            
 
         self.oldname = self.DeviceId
         
@@ -439,5 +537,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.86 $"
+__date__ = "$Date: 2003/07/01 13:00:04 $"
+__version__ = "$Revision: 1.87 $"

@@ -39,14 +39,6 @@ from gtk import FALSE
 
 class tokenringConfigDialog(deviceConfigDialog):
     def __init__(self, device):
-        glade_file = "sharedtcpip.glade"
-        if not os.path.exists(glade_file):
-            glade_file = GUI_functions.GLADEPATH + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
-        self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
-                                                 domain=GUI_functions.PROGNAME)
-
         glade_file = "tokenringconfig.glade"
         deviceConfigDialog.__init__(self, glade_file, device)    
         xml_signal_autoconnect(self.xml,
@@ -137,5 +129,5 @@ class tokenringConfigDialog(deviceConfigDialog):
 
 NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.13 $"
+__date__ = "$Date: 2003/07/01 13:00:04 $"
+__version__ = "$Revision: 1.14 $"
