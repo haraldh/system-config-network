@@ -80,15 +80,16 @@ class ConfSMBSubDict(UserDict):
 #  So: turn off browsing home directories with
 #     smb['homes'][browseable] = 0
 class ConfSMB(Conf):
-    
     def __init__(self, filename='/etc/samba/smb.conf'):
         self.stanza_re = re.compile('^\s*\[(?P<stanza>[^\]]*)]\s*(?:;.*)?$', re.I)
         Conf.__init__(self, filename, '#;', '=', '=',
                       merge=1, create_if_missing=1)
-
+        self.chmod(0600)
+        
     def read(self):
         Conf.read(self)
         self.initvars()
+        self.chmod(0600)
         
     def initvars(self):
         self.vars = {}
@@ -252,17 +253,9 @@ class ConfSMB(Conf):
 
 
 if __name__ == '__main__':
-    smb = ConfSMB()
-    print smb.vars
-    smb['global']['load printers'] = 'no'
-    for line in smb.lines:
-        print line    
-    del smb['global']
-    print smb.vars
-    for line in smb.lines:
-        print line
-    smb['section']['test'] = "HALLO";
-    print smb.vars
-    for line in smb.lines:
-        print line
+    conf = ConfSMB(filename = '/etc/wvdial.conf')
+    print conf.vars
+    for confkey in conf.vars.keys():
+        print "key:", confkey
+
     

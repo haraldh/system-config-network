@@ -27,21 +27,13 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
-import gettext
-
+import ConfSMB
 import NCHardwareList
-
 from NC_functions import *
+from NC_functions import _
 import DeviceList
 import NCDialup
 import NCCipe
-
-##
-## I18N
-##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
-_=gettext.gettext
 
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
