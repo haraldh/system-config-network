@@ -136,7 +136,7 @@ class DeviceList(DeviceList_base):
                     fp2 = os.open('/etc/sysconfig/network-scripts/route-'+dev.Device, os.O_WRONLY| os.O_CREAT, 0600)
                     for route in dev.StaticRoutes:
                         os.write(fp, dev.Device+" net "+route.Address+" netmask "+route.Netmask+" gw "+route.Gateway+"\n")
-                        ipc = ipcalc.IPCalc(dev.IP, netmask=dev.Netmask)
+                        ipc = ipcalc.IPCalc(route.Address, netmask=route.Netmask)
                         os.write(fp2, ipc.network()+'/'+ipc.prefix()+" via "+route.Gateway+"\n")
                     os.close(fp2)
 
