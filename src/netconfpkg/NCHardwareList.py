@@ -57,16 +57,16 @@ class MyConfModules(ConfModules):
             # workaround for broken regexp implementation
             restr = '^[\\t ]*' + key + '[\\t ]+' + varname
             while self.findnextline(restr):
-                print "1) Deleting %s" % self.line
+                #print "1) Deleting %s" % self.line
                 self.deleteline()
 
             restr = '^[\\t ]*' + key + '[\\t ]+\\-k[\\t ]+' + varname
             while self.findnextline(restr):
-                print "2) Deleting %s" % self.line
+                #print "2) Deleting %s" % self.line
                 self.deleteline()
 
         del self.vars[varname]
-        print "del self.vars[%s]" % varname
+        #print "del self.vars[%s]" % varname
         self.seek(place)
         
 class ConfHWConf(Conf):
