@@ -1,6 +1,6 @@
 SUBDIRS=netconfpkg pixmaps doc
 
-PYTHON_FILES = netconf.py 
+PYTHON_FILES = netconf.py netconf-tui.py
 
 GLADE_FILES = maindialog.glade 
 
