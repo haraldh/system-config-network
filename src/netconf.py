@@ -629,7 +629,8 @@ class mainDialog:
             if name in prof.ActiveDevices:
                 pos = prof.ActiveDevices.index(name)
                 del prof.ActiveDevices[pos]
-
+        profilelist.commit()
+        
         del devicelist[clist.selection[0]]
         devicelist.commit()
         self.hydrate()
@@ -662,8 +663,6 @@ class mainDialog:
             self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.destroy()
-
-            print "NetworkDevice().find(%s)" % device
 
             if NetworkDevice().find(device):
                 self.update_devicelist()
