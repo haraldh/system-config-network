@@ -5,7 +5,8 @@ SUBDIRS = doc src po
 EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
 	internet-druid.console internet-druid.desktop.in \
 	neat-control.desktop.in pycheckrc \
-	intltool-extract.in intltool-merge.in intltool-update.in
+	intltool-extract.in intltool-merge.in intltool-update.in \
+	po/po2tbl.sed.in
 
 icons1dir=$(datadir)/kontrol-panel
 icons2dir=$(sysconfdir)/X11/sysconfig
@@ -61,10 +62,6 @@ changelog:
 
 dist: configure Makefile config.h changelog
 
-srpm: distcheck rp3-1.1.10.tar.gz
+srpm: dist
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
 
-
-rp3-1.1.10.tar.gz: 
-	ncftpget ftp://porkchop.redhat.com/mnt/redhat/beehive/comps/dist/7.2/rp3/1.1.10-3/SRPMS/rp3-1.1.10-3.src.rpm
-	(rpm2cpio rp3-1.1.10-3.src.rpm |cpio -i rp3-1.1.10.tar.gz) && rm -f rp3-1.1.10-3.src.rpm
