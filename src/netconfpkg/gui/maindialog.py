@@ -175,61 +175,74 @@ class mainDialog:
         page = notebook.page_num(widget)
         notebook.set_current_page(page)
 
+        # remove IPsec from Fedora
+        widget = self.xml.get_widget('ipsecFrame')
+        page = notebook.page_num(widget)
+        notebook.remove_page(page)
+
         self.page_num = {
             PAGE_DEVICES : notebook.page_num(\
             self.xml.get_widget('deviceFrame')),
             PAGE_HARDWARE : notebook.page_num(\
             self.xml.get_widget('hardwareFrame')),
-            PAGE_IPSEC : notebook.page_num(\
-            self.xml.get_widget('ipsecFrame')),
+        # remove IPsec from Fedora
+#            PAGE_IPSEC : notebook.page_num(\
+#            self.xml.get_widget('ipsecFrame')),
+            PAGE_IPSEC : 0,
             PAGE_HOSTS : notebook.page_num(\
             self.xml.get_widget('hostFrame')),
             PAGE_DNS : notebook.page_num(\
             self.xml.get_widget('dnsFrame')),
             }
 
+
         self.active_page = self.page_num[PAGE_DEVICES]
         
         self.addButtonFunc = {
-            PAGE_DEVICES : self.on_deviceAddButton_clicked,
-            PAGE_HARDWARE : self.on_hardwareAddButton_clicked,
-            PAGE_IPSEC : self.on_ipsecAddButton_clicked,
-            PAGE_HOSTS : self.on_hostsAddButton_clicked,
+            self.page_num[PAGE_DEVICES] : self.on_deviceAddButton_clicked,
+            self.page_num[PAGE_HARDWARE] : self.on_hardwareAddButton_clicked,
+            self.page_num[PAGE_IPSEC] : self.on_ipsecAddButton_clicked,
+            self.page_num[PAGE_HOSTS] : self.on_hostsAddButton_clicked,
             }
 
         self.activateButtonFunc = {
-            PAGE_DEVICES : self.on_deviceActivateButton_clicked,
-            PAGE_HARDWARE : self.nop,
-            PAGE_IPSEC : self.on_ipsecActivateButton_clicked,
-            PAGE_HOSTS : self.nop,
+            self.page_num[PAGE_DEVICES] : \
+            self.on_deviceActivateButton_clicked,
+            self.page_num[PAGE_HARDWARE] : self.nop,
+            self.page_num[PAGE_IPSEC] : self.on_ipsecActivateButton_clicked,
+            self.page_num[PAGE_HOSTS] : self.nop,
             }
 
         self.deactivateButtonFunc = {
-            PAGE_DEVICES : self.on_deviceDeactivateButton_clicked,
-            PAGE_HARDWARE : self.nop,
-            PAGE_IPSEC : self.on_ipsecDeactivateButton_clicked,
-            PAGE_HOSTS : self.nop,
+            self.page_num[PAGE_DEVICES] : \
+            self.on_deviceDeactivateButton_clicked,
+            self.page_num[PAGE_HARDWARE] : self.nop,
+            self.page_num[PAGE_IPSEC] : \
+            self.on_ipsecDeactivateButton_clicked,
+            self.page_num[PAGE_HOSTS] : self.nop,
             }
 
         self.editButtonFunc = {
-            PAGE_DEVICES : self.on_deviceEditButton_clicked,
-            PAGE_HARDWARE : self.on_hardwareEditButton_clicked,
-            PAGE_IPSEC : self.on_ipsecEditButton_clicked,
-            PAGE_HOSTS : self.on_hostsEditButton_clicked,
+            self.page_num[PAGE_DEVICES] : self.on_deviceEditButton_clicked,
+            self.page_num[PAGE_HARDWARE] : \
+            self.on_hardwareEditButton_clicked,
+            self.page_num[PAGE_IPSEC] : self.on_ipsecEditButton_clicked,
+            self.page_num[PAGE_HOSTS] : self.on_hostsEditButton_clicked,
             }
 
         self.copyButtonFunc = {
-            PAGE_DEVICES : self.on_deviceCopyButton_clicked,
-            PAGE_HARDWARE : self.nop,
-            PAGE_IPSEC : self.nop,
-            PAGE_HOSTS : self.nop,
+            self.page_num[PAGE_DEVICES] : self.on_deviceCopyButton_clicked,
+            self.page_num[PAGE_HARDWARE] : self.nop,
+            self.page_num[PAGE_IPSEC] : self.nop,
+            self.page_num[PAGE_HOSTS] : self.nop,
             }
 
         self.deleteButtonFunc = {
-            PAGE_DEVICES : self.on_deviceDeleteButton_clicked,
-            PAGE_HARDWARE : self.on_hardwareDeleteButton_clicked,
-            PAGE_IPSEC : self.on_ipsecDeleteButton_clicked,
-            PAGE_HOSTS : self.on_hostsDeleteButton_clicked,
+            self.page_num[PAGE_DEVICES] : self.on_deviceDeleteButton_clicked,
+            self.page_num[PAGE_HARDWARE] : \
+            self.on_hardwareDeleteButton_clicked,
+            self.page_num[PAGE_IPSEC] : self.on_ipsecDeleteButton_clicked,
+            self.page_num[PAGE_HOSTS] : self.on_hostsDeleteButton_clicked,
             }
 
         self.editMap = {
@@ -1703,5 +1716,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2003/10/24 15:34:15 $"
+__version__ = "$Revision: 1.31 $"
