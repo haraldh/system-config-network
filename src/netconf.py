@@ -1050,6 +1050,10 @@ class mainDialog:
 
     def on_hardwareEditButton_clicked (self, *args):
         clist = self.xml.get_widget('hardwareList')
+
+        if len(clist.selection) == 0:
+            return
+
         type  = clist.get_text(clist.selection[0], 1)
         self.showHardwareDialog(type, true)
 
