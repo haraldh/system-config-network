@@ -113,11 +113,12 @@ def rpms_notinstalled(namelist):
     if len(namelist) == 0:
         namelist = [ namelist ]
 
-    toinstall = namelist
-
-    for name in namelist:    
+    toinstall = namelist[:]
+   
+    for name in namelist:
         mi = ts.dbMatch('name', name)
         for n in mi:
+            print n[rpm.RPMTAG_NAME]
             if n[rpm.RPMTAG_NAME] == name:
                 toinstall.remove(name)
                 break
