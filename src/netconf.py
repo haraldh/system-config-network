@@ -218,8 +218,7 @@ class mainDialog:
             notebook = self.xml.get_widget('mainNotebook')
             widget = self.xml.get_widget('deviceFrame')
             page = notebook.page_num(widget)
-            notebook.set_page(1)
-            #notebook.set_page(page)
+            notebook.set_page(page)
             
     def load(self):
         self.loadDevices()
@@ -416,24 +415,26 @@ class mainDialog:
 
         device = Device()
 
-        type = deviceTypeDialog(device, self.xml)
+        type = deviceTypeDialog(device)
         dialog = type.xml.get_widget ("Dialog")
         button = dialog.run ()
         if button != 0:
             return
 
         button = self.editDevice(device)
-        if button == 0:
-            i = devicelist.addDevice()
-            devicelist[i].apply(device)
-            devicelist[i].commit()
-            for prof in profilelist:
-                if prof.Active == false:
-                    continue
-                prof.ActiveDevices.append(device.DeviceId)
-                break
+        if button != 0:
+            return
+            
+        i = devicelist.addDevice()
+        devicelist[i].apply(device)
+        devicelist[i].commit()
+        for prof in profilelist:
+            if prof.Active == false:
+                continue
+            prof.ActiveDevices.append(device.DeviceId)
+            break
 
-            self.hydrate()
+        self.hydrate()
         
     def on_deviceCopyButton_clicked (self, button):
         devicelist = getDeviceList()
@@ -484,6 +485,7 @@ class mainDialog:
         button = self.editDevice(device)
 
         if button != 0:
+            device.rollback()
             return
 
         device.commit()
@@ -506,42 +508,42 @@ class mainDialog:
         device.createWireless()
 
         if type == ETHERNET:
-            cfg = ethernetConfigDialog(device, self.xml)
+            cfg = ethernetConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == TOKENRING:
-            cfg = tokenringConfigDialog(device, self.xml)
+            cfg = tokenringConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == ISDN:
-            cfg = ISDNDialupDialog(device, self.xml)
+            cfg = ISDNDialupDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == MODEM:
-            cfg = ModemDialupDialog(device, self.xml)
+            cfg = ModemDialupDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == DSL:
-            cfg = dslConfigDialog(device, self.xml)
+            cfg = dslConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == CIPE:
-            cfg = cipeConfigDialog(device, self.xml)
+            cfg = cipeConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == WIRELESS:
-            cfg = wirelessConfigDialog(device, self.xml)
+            cfg = wirelessConfigDialog(device)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == CTC or type == IUCV:
-            cfg = ctcConfigDialog(device, self.xml)
+            cfg = ctcConfigDialog(device)
             dialog =  cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
@@ -706,35 +708,40 @@ class mainDialog:
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.Hostname = entry.get_text()
-
+                break
+            
     def on_domainEntry_changed(self, entry):
         profilelist = getProfileList()
 
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.Domainname = entry.get_text()
-
+                break
+            
     def on_primaryDnsEntry_changed(self, entry):
         profilelist = getProfileList()
 
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.PrimaryDNS = entry.get_text()
-
+                break
+            
     def on_secondaryDnsEntry_changed(self, entry):
         profilelist = getProfileList()
 
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.SecondaryDNS = entry.get_text()
-
+                break
+            
     def on_tertiaryDnsEntry_changed(self, entry):
         profilelist = getProfileList()
 
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.TertiaryDNS = entry.get_text()
-
+                break
+            
     def on_searchDnsEntry_changed(self, entry):
         if len (string.strip (entry.get_text ())) == 0:
             self.xml.get_widget ("dnsAddButton").set_sensitive (FALSE)
@@ -753,7 +760,9 @@ class mainDialog:
             if prof.Active == true:
                 prof.DNS.SearchList.append(searchDnsEntry)
                 prof.DNS.SearchList.commit()
-                self.hydrate()
+                break
+            
+        self.hydrate()
         self.xml.get_widget("searchDnsEntry").grab_focus ()
 
     def on_dnsEditButton_clicked (self, *args):
@@ -764,7 +773,10 @@ class mainDialog:
 
         dialog = editDomainDialog(name)
         dialog.main = self
-        dialog.xml.get_widget("Dialog").run()
+        button = dialog.xml.get_widget("Dialog").run()
+        if button != 0:            
+            return
+        self.hydrate()
 
     def on_dnsUpButton_clicked (self, button):
         profilelist = getProfileList()
@@ -784,8 +796,10 @@ class mainDialog:
                 prof.DNS.SearchList[index-1] = name
                 prof.DNS.SearchList[index] = n
                 prof.DNS.SearchList.commit()
-                self.hydrate()
                 clist.select_row(index-1, 0)
+                break
+
+        self.hydrate()
 
     def on_dnsDownButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -805,8 +819,10 @@ class mainDialog:
                 prof.DNS.SearchList[index+1] = name
                 prof.DNS.SearchList[index] = n
                 prof.DNS.SearchList.commit()
-                self.hydrate()
                 clist.select_row(index+1, 0)
+                break
+            
+        self.hydrate()
 
     def on_dnsDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -819,7 +835,9 @@ class mainDialog:
             if prof.Active == true:
                 del prof.DNS.SearchList[clist.selection[0]]
                 prof.DNS.SearchList.commit()
-                self.hydrate()
+                break
+            
+        self.hydrate()
 
     def on_hostsAddButton_clicked(self, *args):
         profilelist = getProfileList()
@@ -830,13 +848,15 @@ class mainDialog:
         hostslist = curr_prof.HostsList
         host = Host()
         clist  = self.xml.get_widget("hostsList")
-        dialog = editHostsDialog(host, self.xml)
+        dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
         button = dl.run ()
-        if button == 0:
-            i = hostslist.addHost()
-            hostslist[i].apply(host)
-            hostslist[i].commit()
+        if button != 0:
+            return
+        
+        i = hostslist.addHost()
+        hostslist[i].apply(host)
+        hostslist[i].commit()
         self.hydrate()
 
     def on_hostsEditButton_clicked (self, *args):
@@ -851,9 +871,13 @@ class mainDialog:
 
         host = hostslist[clist.selection[0]]
 
-        dialog = editHostsDialog(host, self.xml)
+        dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
-        dl.run ()
+        button = dl.run ()
+        if button != 0:
+            host.rollback()
+            return
+        host.commit()
         self.hydrate()
 
     def on_hostsDeleteButton_clicked (self, *args):
@@ -885,12 +909,14 @@ class mainDialog:
         import gnome
         import gnome.ui
         dialog = gnome.ui.GnomeRequestDialog (FALSE, _("Please enter the name for the new profile.\nThe name may only contain letters and digits."), "NewProfile", 50, self.on_profileAddEntry_changed, self.dialog)
-        dialog.run()
+        dialog.run()        
 
     def on_profileAddEntry_changed(self, text):
         profilelist = getProfileList()
 
-        if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
+        if not text:
+            return
+        if not re.match("^[a-z|A-Z|0-9]+$", text):
             generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
             return 1
 
@@ -941,7 +967,7 @@ class mainDialog:
         profilelist[i].apply(profile)
         profilelist[i].commit()
         self.initialized = None
-        clist.clear()        
+        #clist.clear()        
         self.hydrate()
 
     def on_profileRenameButton_clicked (self, *args):
@@ -958,7 +984,10 @@ class mainDialog:
         dialog.run()
 
     def on_profileRenameEntry_changed(self, text):
-        if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
+        if not text:
+            return
+        
+        if not re.match("^[a-z|A-Z|0-9]+$", text):
             generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
             return
 
@@ -1009,7 +1038,7 @@ class mainDialog:
     def on_hardwareAddButton_clicked (self, *args):
         device = Device()
 
-        type = hardwareTypeDialog(self.xml)
+        type = hardwareTypeDialog()
         dialog = type.xml.get_widget ("Dialog")
 
         button = dialog.run ()
@@ -1030,8 +1059,7 @@ class mainDialog:
         if deviceType == ETHERNET or deviceType == TOKENRING  or  \
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
             if not edit:
-                i = hardwarelist.addHardware()
-                hw = hardwarelist[i]
+                hw = Hardware()
             else:
                 clist = self.xml.get_widget('hardwareList')
 
@@ -1040,9 +1068,9 @@ class mainDialog:
 
                 hw = hardwarelist[clist.selection[0]]
 	    if deviceType == TOKENRING:
-            	dialog = tokenringHardwareDialog(hw, self.xml)
+            	dialog = tokenringHardwareDialog(hw)
 	    else:
-            	dialog = ethernetHardwareDialog(hw, self.xml)
+            	dialog = ethernetHardwareDialog(hw)
 
         if deviceType == MODEM:
             if edit:
@@ -1069,11 +1097,19 @@ class mainDialog:
             else:
                 dialog = addisdnHardwareDialog()
 
-        dialog.xml.get_widget('Dialog').run()
-        if dialog.button == 0:
-            hardwarelist.commit()
-        else:
-            hardwarelist.rollback()
+        button = dialog.xml.get_widget('Dialog').run()
+        
+        if button != 0:
+            if edit:
+                hw.rollback()
+            #hardwarelist.rollback()
+            return
+        
+        if not edit:
+            i = hardwarelist.addHardware()
+            hardwarelist[i].apply(hw)
+            hardwarelist[i].commit()
+        hardwarelist.commit()
         self.hydrate()
 
     def on_hardwareDeleteButton_clicked (self, *args):
