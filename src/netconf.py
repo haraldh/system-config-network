@@ -289,18 +289,13 @@ class mainDialog:
         profilelist = getProfileList()
         devicelist = getDeviceList()
 
-        clist = self.xml.get_widget("deviceList")
-
-        for i in xrange (clist.rows):
-            type = clist.get_text (i, 1)
-            if type == 'default':
-                continue
-            elif type == 'URL':
-                value = clist.get_text (i, 2)
-            else:
-                value = 'file:' + clist.get_text (i, 2)
-
         device = Device()
+
+        type = deviceTypeDialog(device, self.xml)
+        dialog = type.xml.get_widget ("Dialog")
+        button = dialog.run ()
+        if button != 0:
+            return
 
         basic = basicDialog(device, self.xml)
         basic.xml.get_widget ("okButton").set_sensitive(FALSE)
@@ -314,6 +309,8 @@ class mainDialog:
                 if prof.Active == false:
                     continue
                 prof.ActiveDevices.append(device.DeviceId)
+                break
+
             self.hydrate()
 
     def on_deviceCopyButton_clicked (self, button):
