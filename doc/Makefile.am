@@ -1,3 +1,4 @@
+SUBDIRS =  stylesheet-images figs
 docdir     = $(datadir)/redhat-config-network/help
 doc_DATA   = chapter-network-config-isdn.html \
 	index.html \
