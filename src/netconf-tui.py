@@ -188,9 +188,10 @@ class EthernetWindow:
                     self.eth=dev
                     break
             if not self.eth:
-                self.eth=Device()
-                self.eth.Type="Ethernet"
-                self.devicelist.append(self.eth)
+                df = NCDeviceFactory.getDeviceFactory()        
+                self.eth = df.getDeviceClass(ETHERNET)()
+                i = self.devicelist.addDevice()
+                self.devicelist[i] = self.eth
         else:
             self.eth=eth
 
@@ -517,5 +518,5 @@ if __name__=="__main__":
 
     screen.finish()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2003/10/08 15:08:21 $"
+__version__ = "$Revision: 1.22 $"
