@@ -25,7 +25,6 @@ import NCisdnhardware
 
 from netconfpkg import HardwareList_base
 from netconfpkg.NCHardware import Hardware
-from netconfpkg.NCHardwareFactory import getHardwareFactory
 from NC_functions import *
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -129,6 +128,7 @@ class HardwareList(HardwareList_base):
 
 
     def addHardware(self, type = None):
+        from netconfpkg.NCHardwareFactory import getHardwareFactory
         i = HardwareList_base.addHardware(self)
         hwf = getHardwareFactory()
         hwc = hwf.getHardwareClass(type)

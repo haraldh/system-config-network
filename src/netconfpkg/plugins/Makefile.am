@@ -1,6 +1,6 @@
-SUBDIRS=gui plugins tests
 
 PYTHON_FILES = \
+	__init__.py \
 	NCDevADSL.py \
 	NCDevCipe.py \
 	NCDevEthernet.py \
