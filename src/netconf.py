@@ -130,7 +130,6 @@ class mainDialog:
                                                   self.on_deviceEditButton_clicked),
             "on_applyButton_clicked" : self.on_applyButton_clicked,
             "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_helpButton_clicked" : self.on_helpButton_clicked,
             "on_hardwareAddButton_clicked" : self.on_hardwareAddButton_clicked,
             "on_hardwareEditButton_clicked" : self.on_hardwareEditButton_clicked,
@@ -305,17 +304,24 @@ class mainDialog:
         clist.select_row(actrow, 0)
 
     def on_Dialog_delete_event(self, *args):
+        button = generic_yesno_dialog(_("Do you want to save your changes?"),
+                                      self.dialog)
+        if button == 0:
+            self.save()
+            
         gtk.mainquit()
 
     def on_applyButton_clicked (self, button):
         self.save()
 
-    def on_okButton_clicked (self, button):
-        self.save()
-        gtk.mainquit()
-
-    def on_cancelButton_clicked(self, button):
-        gtk.mainquit()
+    def on_okButton_clicked (self, *args):
+        button = generic_yesnocancel_dialog(_("Do you want to save your changes?"),
+                                      self.dialog)
+        if button == 0:
+            self.save()
+            
+        if button != 2:
+            gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
         gnome.help.goto ("/usr/share/redhat-config-network/help/index.html")
@@ -436,7 +442,7 @@ class mainDialog:
             button = dialog.run ()
 
         else:
-            generic_error_dialog ('This device can not be edited with this tool!', self.xml.get_widget ("Dialog"))
+            generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)
 
 
         return button
@@ -456,7 +462,12 @@ class mainDialog:
         type = clist.get_text(clist.selection[0], 2)
 
         if type == 'Loopback':
-            generic_error_dialog ('The Loopback device can not be removed!', self.xml.get_widget ("Dialog"))
+            generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
+            return
+
+        buttons = generic_yesno_dialog(_('Do you really want to delete device "') + str(name) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
+
+        if buttons != 0:
             return
 
         for prof in profilelist:
@@ -824,9 +835,17 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        if profilelist[clist.selection[0]].ProfileName == 'default':
+        name = profilelist[clist.selection[0]].ProfileName
+
+        if name == 'default':
             generic_error_dialog ('The default Profile can not be deleted!', self.xml.get_widget ("Dialog"))
             return
+
+        buttons = generic_yesno_dialog(_('Do you really want to delete profile "') + str(name) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
+
+        if buttons != 0:
+            return
+
         del profilelist[clist.selection[0]]
         self.initialized = None
         clist.clear()
@@ -911,6 +930,11 @@ class mainDialog:
         description = clist.get_text(clist.selection[0], 0)
         type = clist.get_text(clist.selection[0], 1)
         dev = clist.get_text(clist.selection[0], 2)
+
+        buttons = generic_yesno_dialog(_('Do you really want to delete "') + str(description) + _('"?'), self.dialog, widget = clist, page = clist.selection[0])
+
+        if buttons != 0:
+            return
 
         del hardwarelist[clist.selection[0]]
         hardwarelist.commit()
