@@ -193,8 +193,8 @@ def handleException((type, value, tb)):
     extxt = traceback.format_exception_only(type, value)
     text = "Component: %s\n" % PROGNAME
     text = text + "Version: %s\n" % PRG_VERSION
-    text = text + "Summary: TB %s:%s: %s\n" % (tblast[0], tblast[1],
-                                               tblast[2], extxt[0])
+    text = text + "Summary: TB %s:%s:%s: %s\n" % (tblast[0], tblast[1],
+                                                  tblast[2], extxt[0])
     text = text + joinfields(list, "")
 
     while 1:
