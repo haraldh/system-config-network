@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "POT-Creation-Date: 2002-12-13 17:17+0100\n"
-"PO-Revision-Date: 2002-11-19 09:01+1000\n"
+"PO-Revision-Date: 2002-12-16 16:31+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Chinese (Traditional) <i18n-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.1\n"
-"X-Generator: KBabel 1.0beta2\n"
+"X-Generator: KBabel 1.1\n"
 
 #: src/neat-control.glade.h:1 src/netconf-tui.py:156 src/netconf-tui.py:263
 #: src/netconf-tui.py:366 src/netconfpkg/gui/maindialog.glade.h:12
@@ -229,13 +229,13 @@ msgstr "ISDN 組態設定"
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf.py:61
-#, fuzzy, python-format
+#, python-format
 msgid "Error: %s, %s!"
-msgstr "移除 %s 發生錯誤: %s！"
+msgstr "錯誤: %s, %s！"
 
 #: src/netconf.py:63
 msgid "Starting text version:"
-msgstr ""
+msgstr "進入文字模式:"
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -259,15 +259,14 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #: src/netconf-cmd.py:61
-#, fuzzy
 msgid ""
 "redhat-config-network-cmd - network configuration commandline tool\n"
 "\n"
 "Usage: redhat-config-network-cmd -p --profile <profile>"
 msgstr ""
-"redhat-config-network-cmd - 圖形化的網路組態設定工具\n"
+"redhat-config-network-cmd - 網路組態設定的命令列工具\n"
 "\n"
-"用法: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
+"用法: redhat-config-network-cmd -p --profile <profile>"
 
 #. print "%s.%s" % (pname, child)
 #. printObj(val, "%s.%s" % (parent, child))
@@ -375,8 +374,7 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:23
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -728,9 +726,8 @@ msgid "Automatically obtain _DNS information from provider"
 msgstr "從提供者自動取得 _DNS 資訊"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:4
-#, fuzzy
 msgid "Automatically obtain _IP address settings"
-msgstr "在此自動取得 _IP 位址設定:"
+msgstr "自動取得 _IP 位址設定"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:5
 msgid "Create Dialup Connection"
@@ -742,9 +739,8 @@ msgid "Default _Gateway Address:"
 msgstr "預設閘道器位址(_G):"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:7
-#, fuzzy
 msgid "Encapsulation Mode:"
-msgstr "封裝模式(_E):"
+msgstr "封裝模式:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:8
 #: src/netconfpkg/gui/dialupconfig.glade.h:20
@@ -777,9 +773,8 @@ msgid "Manual IP Address Settings"
 msgstr "手動 IP 位址設定"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:17
-#, fuzzy
 msgid "PPP Settings"
-msgstr "TCP/IP 設定"
+msgstr "PPP 設定"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:19
 #: src/netconfpkg/gui/dialupconfig.glade.h:41
@@ -2469,18 +2464,20 @@ msgstr "網路介面卡組態設定"
 #: src/netconfpkg/gui/ethernethardware.py:91
 #: src/netconfpkg/gui/tokenringhardware.py:98
 msgid "Command failed: "
-msgstr ""
+msgstr "指令失敗:"
 
 #: src/netconfpkg/gui/ethernethardware.py:92
 #: src/netconfpkg/gui/tokenringhardware.py:99
 msgid "Output:\n"
-msgstr ""
+msgstr "輸出:\n"
 
 #: src/netconfpkg/gui/ethernethardware.py:94
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
 msgstr ""
+"無法初始化乙太網路卡。\n"
+"請檢查您的設定然後再試一次。"
 
 #.
 #. exception.py - general exception formatting and saving
@@ -2932,6 +2929,8 @@ msgid ""
 "The Token Ring card could not be initialized. \n"
 "Please verify your settings and try again."
 msgstr ""
+"無法初始化記號環狀網路卡。\n"
+"請檢查您的設定然後再試一次。"
 
 #: src/netconfpkg/gui/wirelessconfig.glade.h:2
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
@@ -3018,7 +3017,7 @@ msgstr "無線網路卡"
 
 #: src/netconfpkg/gui/maindialog.glade.h:2
 msgid "Activate the selected device, calling ifup <device>."
-msgstr ""
+msgstr "啟動選取的裝置，呼叫 ifup <裝置名稱>。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:3
 msgid "Add..."
@@ -3030,7 +3029,7 @@ msgstr "別名"
 
 #: src/netconfpkg/gui/maindialog.glade.h:5
 msgid "Contents"
-msgstr ""
+msgstr "內容"
 
 #: src/netconfpkg/gui/maindialog.glade.h:6
 msgid "Copy"
@@ -3041,13 +3040,12 @@ msgid "DNS"
 msgstr "DNS"
 
 #: src/netconfpkg/gui/maindialog.glade.h:8
-#, fuzzy
 msgid "DNS Search Path:"
-msgstr "DNS 搜尋路徑"
+msgstr "DNS 搜尋路徑:"
 
 #: src/netconfpkg/gui/maindialog.glade.h:9
 msgid "Deactivate the selected device, calling ifdown <device>."
-msgstr ""
+msgstr "停用選取的裝置，呼叫 ifdown <裝置名稱>。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:10
 msgid "Delete"
@@ -3075,11 +3073,11 @@ msgstr "主機"
 
 #: src/netconfpkg/gui/maindialog.glade.h:18
 msgid "List of devices which are currently configurable on your system."
-msgstr ""
+msgstr "目前在系統上可設定的裝置清單。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Monitor the selected device."
-msgstr ""
+msgstr "監視選取的裝置。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:22
 msgid "New Profile"
@@ -3098,9 +3096,8 @@ msgid "Profile"
 msgstr "資料檔"
 
 #: src/netconfpkg/gui/maindialog.glade.h:27
-#, fuzzy
 msgid "Rename..."
-msgstr "重新命名(_R)..."
+msgstr "重新命名..."
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
 msgid "Type"
@@ -3115,8 +3112,7 @@ msgstr ""
 "聯。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:31
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:32
@@ -3124,6 +3120,8 @@ msgid ""
 "You may configure the system's hostname, domain, name servers, and search "
 "domain. Name servers are used to look up other hosts on the network."
 msgstr ""
+"您可以設定系統的主機名稱、網域、名稱伺服器以及搜尋網域。 名稱伺服器是用來 "
+"搜尋網路中其他的主機。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:33
 msgid ""
@@ -3135,9 +3133,8 @@ msgstr ""
 "定會取代任何它提供的的資訊。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:36
-#, fuzzy
 msgid "_Edit"
-msgstr "編輯(_E)..."
+msgstr "編輯(_E)"
 
 #: src/netconfpkg/gui/maindialog.glade.h:37
 msgid "_Hostname:"
@@ -3185,34 +3182,28 @@ msgstr "共同的"
 #. Let this dialog be in the taskbar like a normal window
 #. self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
 #: src/netconfpkg/gui/maindialog.py:225
-#, fuzzy
 msgid "Loading Configuration..."
-msgstr "數據機組態設定"
+msgstr "組態設定載入中..."
 
 #: src/netconfpkg/gui/maindialog.py:232
-#, fuzzy
 msgid "Loading Device Configuration..."
-msgstr "無線網路裝置設定"
+msgstr "裝置組態設定載入中..."
 
 #: src/netconfpkg/gui/maindialog.py:237
-#, fuzzy
 msgid "Loading Hardware Configuration..."
-msgstr "數據機組態設定"
+msgstr "硬體組態設定載入中..."
 
 #: src/netconfpkg/gui/maindialog.py:242
-#, fuzzy
 msgid "Loading Profile Configuration..."
-msgstr "數據機組態設定"
+msgstr "載入資料檔組態設定中..."
 
 #: src/netconfpkg/gui/maindialog.py:247
-#, fuzzy
 msgid "Testing Configuration Set..."
-msgstr "CTC 組態設定"
+msgstr "組態設定組測試中..."
 
 #: src/netconfpkg/gui/maindialog.py:279
-#, fuzzy
 msgid "Saving Configuration..."
-msgstr "ISDN 組態設定"
+msgstr "儲存組態設定中..."
 
 #: src/netconfpkg/gui/maindialog.py:287
 msgid ""
@@ -3227,33 +3218,28 @@ msgstr ""
 "或重新開機。"
 
 #: src/netconfpkg/gui/maindialog.py:295
-#, fuzzy
 msgid "Saving Device Configuration..."
-msgstr "無線網路裝置設定"
+msgstr "儲存裝置組態設定中..."
 
 #: src/netconfpkg/gui/maindialog.py:302
-#, fuzzy
 msgid "Saving Hardware Configuration..."
-msgstr "ISDN 介面卡組態設定"
+msgstr "儲存硬體組態設定中..."
 
 #: src/netconfpkg/gui/maindialog.py:309
-#, fuzzy
 msgid "Saving Profile Configuration..."
-msgstr "ISDN 撥號網路設定"
+msgstr "儲存資料檔組態設定中..."
 
 #: src/netconfpkg/gui/maindialog.py:331
-#, fuzzy
 msgid "Updating Devices..."
-msgstr "編輯..."
+msgstr "裝置資訊更新中..."
 
 #: src/netconfpkg/gui/maindialog.py:387
-#, fuzzy
 msgid "Updating Hardware..."
-msgstr "ISDN 介面卡組態設定"
+msgstr "硬體資料更新中..."
 
 #: src/netconfpkg/gui/maindialog.py:398
 msgid "Updating Profiles..."
-msgstr ""
+msgstr "更新資料檔中..."
 
 #. change the default profile to a more understandable name
 #. omenu.set_history (history)
@@ -3267,9 +3253,8 @@ msgid "The Loopback device can not be edited!"
 msgstr "無法編輯 Loopback 裝置！"
 
 #: src/netconfpkg/gui/maindialog.py:621
-#, fuzzy
 msgid "Edit Device..."
-msgstr "編輯..."
+msgstr "編輯裝置..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:670
@@ -3295,9 +3280,9 @@ msgid "Do you want to continue?"
 msgstr "您想要繼續嗎？"
 
 #: src/netconfpkg/gui/maindialog.py:734
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate network device %s\n"
-msgstr "無法啟動網路裝置 %s"
+msgstr "無法啟動網路裝置 %s\n"
 
 #. devicelist = getDeviceList()
 #. edit_button.set_sensitive(FALSE)
@@ -3333,17 +3318,17 @@ msgstr "此資料檔案名稱已經存在！"
 
 #. self.xml.get_widget("profileList").clear()
 #: src/netconfpkg/gui/maindialog.py:1217
-#, fuzzy, python-format
+#, python-format
 msgid "The \"%s\" profile can't be renamed!"
-msgstr "無法重新命名 \"預設的\" 資料檔！"
+msgstr "無法重新命名 \"%s\" 資料檔！"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
 #: src/netconfpkg/gui/maindialog.py:1272
-#, fuzzy, python-format
+#, python-format
 msgid "The \"%s\" Profile can not be deleted!"
-msgstr "無法刪除 \"預設\" 的檔案資料！"
+msgstr "無法刪除 \"%s\" 的資料檔！"
 
 #: src/netconfpkg/gui/maindialog.py:1278
 #, python-format
@@ -3366,9 +3351,9 @@ msgstr "您真的要刪除 \"%s\" 嗎?"
 
 #. remove hardware
 #: src/netconfpkg/gui/maindialog.py:1378
-#, fuzzy, python-format
+#, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr "您真的要刪除 \"%s\" 裝置嗎?"
+msgstr "您真的要刪除使用 \"%s\" 的所有裝置嗎?"
 
 #. remove all devices used this hardware
 #.
@@ -3380,7 +3365,7 @@ msgstr "您真的要刪除 \"%s\" 裝置嗎?"
 #. ETHERNET
 #: src/netconfpkg/gui/maindialog.py:1431
 msgid "Copyright (c) 2001,2002 Red Hat, Inc."
-msgstr ""
+msgstr "版權所有 (c) 2001,2002 Red Hat, Inc."
 
 #. -*- python -*-
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -3899,7 +3884,7 @@ msgstr ""
 
 #: src/netconfpkg/NC_functions.py:128
 msgid "Shall I install the following packages,which are needed on your system?"
-msgstr ""
+msgstr "想要安裝您系統所需的下列套件嗎？"
 
 #. print dev+" has unknown device type, skipping it."
 #. Some failsafe return codes (same as in gtk)
@@ -4446,3 +4431,4 @@ msgstr "網際網路組態設定精靈"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
+
