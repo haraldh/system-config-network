@@ -571,7 +571,7 @@ class mainDialog:
         profilelist = getProfileList()
         for prof in profilelist:
             if devId in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(device.DeviceId)
+                pos = prof.ActiveDevices.index(devId)
                 prof.ActiveDevices[pos] = device.DeviceId
                 prof.commit()
 
