@@ -120,7 +120,6 @@ class Device(Device_base):
             return true
         return false
 
-
     def getDeviceAlias(self):
         devname = self.Device
         if self.Alias and self.Alias != "":
@@ -169,12 +168,15 @@ class Device(Device_base):
                     gw = cfg['GATEWAY']
                     
                     if gw and self.Netmask:                    
-                        network = commands.getoutput('ipcalc --network ' + str(self.IP) \
-                                            + ' ' + str(self.Netmask) + \
-                                            ' 2>/dev/null')
+                        network = commands.getoutput('ipcalc --network ' + \
+                                                     str(self.IP) + \
+                                                     ' ' + str(self.Netmask) +\
+                                                     ' 2>/dev/null')
                         
-                        out = commands.getoutput('ipcalc --network ' + str(gw) + ' ' \
-                                        + str(self.Netmask) + ' 2>/dev/null')
+                        out = commands.getoutput('ipcalc --network ' + \
+                                                 str(gw) + ' ' \
+                                                 + str(self.Netmask) + \
+                                                 ' 2>/dev/null')
                         
                         if out == network:
                             self.Gateway = str(gw)
@@ -189,7 +191,10 @@ class Device(Device_base):
                 self.Alias = int(self.Device[aliaspos+1:])
                 self.Device = self.Device[:aliaspos]
         except TypeError:
-            NC_functions.generic_error_dialog(_("%s, Device not specified or alias not a number!") % self.DeviceId)
+            NC_functions.generic_error_dialog(_("%s, "
+                                                "Device not specified "
+                                                "or alias not a number!") % \
+                                              self.DeviceId)
             #raise TypeError, _("Device not specified or alias not a number!")
 
         if not self.Type or self.Type == "" or self.Type == _("Unknown"):
@@ -217,7 +222,8 @@ class Device(Device_base):
                 self.Mtu = conf['MTU']
                 
         if math.fmod(num, 3) != 0:
-             NC_functions.generic_error_dialog((_("Static routes file %s is invalid")) % name)
+             NC_functions.generic_error_dialog((_("Static routes file %s "
+                                                  "is invalid")) % name)
         else:
             for p in xrange(0, num/3):
                 i = self.StaticRoutes.addRoute()
@@ -270,15 +276,16 @@ class Device(Device_base):
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
         if self.IP and self.Netmask:
-            broadcast = commands.getoutput('ipcalc --broadcast ' + str(self.IP) \
-                                            + ' ' + str(self.Netmask) + \
+            broadcast = commands.getoutput('ipcalc --broadcast ' + \
+                                           str(self.IP) + \
+                                           ' ' + str(self.Netmask) + \
                                             ' 2>/dev/null')
             if broadcast:
                 conf['BROADCAST'] = broadcast[10:]
 
-            network = commands.getoutput('ipcalc --network ' + str(self.IP) \
-                                            + ' ' + str(self.Netmask) + \
-                                            ' 2>/dev/null')
+            network = commands.getoutput('ipcalc --network ' + str(self.IP) + \
+                                         ' ' + str(self.Netmask) + \
+                                         ' 2>/dev/null')
             if network:
                 conf['NETWORK'] = network[8:]
 
