@@ -188,7 +188,10 @@ if __name__ == '__main__':
     NC_functions.setDebugLevel(0)
     hotshot = 0
     chroot = None
-    logfilename = "/var/log/redhat-config-network"
+    if os.getuid() == 0:
+        logfilename = "/var/log/redhat-config-network"
+    else:
+        logfilename = None
     
     try:
         opts, args = getopt.getopt(cmdline, "vhrd",
@@ -226,7 +229,7 @@ if __name__ == '__main__':
         Usage()
         sys.exit(1)    
 
-    if not NC_functions.getDebugLevel():
+    if not NC_functions.getDebugLevel() and logfilename:
         import os
         
         def log_default_handler (string):
@@ -268,5 +271,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:09:03 $"
-__version__ = "$Revision: 1.195 $"
+__date__ = "$Date: 2003/10/27 13:28:33 $"
+__version__ = "$Revision: 1.196 $"
