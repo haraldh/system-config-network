@@ -17,7 +17,12 @@ class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
         Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + 'ifcfg-' + name)
         self.chmod(0600)
-            
+
+class ConfRoute(Conf.ConfShellVar):
+    def __init__(self, name):
+        Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name + '.route')
+        self.chmod(0600)
+
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
                 'Name' : 'NAME',
@@ -88,6 +93,7 @@ class Device(Device_base):
     def load(self, name):
         
         conf = ConfDevice(name)
+        rconf = ConfRoute(name)
 
         self.DeviceId = name
         
@@ -146,6 +152,10 @@ class Device(Device_base):
         if dialup:
             #print "Loading Dialup"
             dialup.load(conf)
+
+        num = len(rconf.keys())
+        if math.fmod(num, 3) != 0:
+            print "Static routes file for "+name+" has not vaild format"
 
         self.commit()
                 

@@ -272,7 +272,7 @@ class ModemDialupDialog(DialupDialog):
 		
     def hydrate(self):
         global hardwarelist
-        
+
         hardwarelist = getHardwareList()
         devicelist = []
 

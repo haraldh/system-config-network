@@ -125,9 +125,11 @@ class basicDialog:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
             if self.device.AutoDNS:
                 self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
-            clist = self.xml.get_widget('staticRouteCList')
+            clist = self.xml.get_widget('networkRouteList')
+            clist.clear()
+            self.device.createStaticRoutes()
             for route in self.device.StaticRoutes:
-                print route.Address
+                clist.append([route.Address, route.Netmask, route.Gateway])
                 
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
