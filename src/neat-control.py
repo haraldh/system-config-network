@@ -82,7 +82,10 @@ class mainDialog:
         self.dialog.connect('hide', gtk.mainquit)
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
-        
+
+        if not os.access('/usr/bin/rp3', os.X_OK):
+            self.xml.get_widget('monitorButton').hide()
+
         load_icon('neat-control.xpm', self.dialog)
         self.xml.get_widget('pixmap').set_from_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
         clist = self.xml.get_widget('interfaceClist')
@@ -113,19 +116,19 @@ class mainDialog:
         if device:
             intf = Interface()
             child = intf.activate(device)
-            dlg = gtk.Window(gtk.WINDOW_DIALOG, _('Network device activating...'))
+            dlg = gtk.Dialog(_('Network device activating...'))
             dlg.set_border_width(10)
-            dlg.vbox.add(gtk.Label(_('Activating for Network device %s, please wait...') %(device)))
+            dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
             dlg.vbox.show()
             dlg.set_position (gtk.WIN_POS_MOUSE)
             dlg.set_modal(TRUE)
             dlg.show_all()
-            self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
-            dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
+            #self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
+            #dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
             idle_func()
             os.waitpid(child, 0)
-            self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-            dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+            #self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+            #dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
             dlg.destroy()
             
             if NetworkDevice().find(device):
