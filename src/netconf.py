@@ -44,7 +44,12 @@ import gettext
 PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
-gettext.install(PROGNAME, "/usr/share/locale", 1)
+
+try:
+    gettext.install(PROGNAME, "/usr/share/locale", 1)
+except IOError:
+    import __builtin__
+    __builtin__.__dict__['_'] = unicode    
 
 os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 
