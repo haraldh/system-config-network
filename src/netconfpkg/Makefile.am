@@ -1,4 +1,4 @@
-SUBDIRS=gui
+SUBDIRS=gui tests
 
 GENCLASS_FILES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py	Firewall.py 

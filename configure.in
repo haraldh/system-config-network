@@ -3,26 +3,41 @@ AM_INIT_AUTOMAKE(redhat-config-network, 0.9.11)
 
 ALL_LINGUAS="cs da de es fr is it ja ko no ru sv"
 
-paths=$(python <<EOF
+paths=`python <<EOF
 import sys;
 for p in sys.path:
    if len(p): print p
-EOF)
+EOF`
+
+AC_MSG_CHECKING([for your python path])
+AC_SUBST(PY_PYTHONPATH)
+PY_PYTHONPATH=`python <<EOF
+import sys;
+path=""
+for p in sys.path:
+   if len(p): 
+	if path: path=path + p + ":" 
+	else: path=p
+print path;
+EOF`
+AC_MSG_RESULT([$PY_PYTHONPATH]);
+
 
 AC_MSG_CHECKING([for compileall])
 
+AC_SUBST(PY_COMPILEALL)
 PY_COMPILEALL="/usr/lib/python2.2/compileall.pyc"
 for p in $paths;do test -f "$p/compileall.pyc" && PY_COMPILEALL="$p/compileall.pyc" && break;done
 
 if ! test -f $PY_COMPILEALL;then
-	AC_MSG_ERROR([compileall.pyc not found in $paths]);
+	AC_MSG_ERROR([compileall.pyc not found in $PY_PYTHONPATH]);
 else
 	AC_MSG_RESULT([$PY_COMPILEALL]);
-	AC_SUBST(PY_COMPILEALL)
 fi
 
 AC_MSG_CHECKING([for pydoc])
 
+AC_SUBST(PY_PYDOC)
 PY_PYDOC="/usr/lib/python2.2/pydoc.py"
 for p in $paths;do test -f "$p/pydoc.py" && PY_PYDOC="$p/pydoc.py" && break;done
 
@@ -30,7 +45,6 @@ if ! test -f $PY_PYDOC;then
 	AC_MSG_ERROR([pydoc.py not found in $paths]);
 else
 	AC_MSG_RESULT([$PY_PYDOC]);
-	AC_SUBST(PY_PYDOC)
 fi
 
 dnl prevent to copy po/Makefile.in.in
@@ -46,6 +60,7 @@ src/Makefile
 src/doc/Makefile
 src/pixmaps/Makefile
 src/netconfpkg/Makefile
+src/netconfpkg/tests/Makefile
 src/netconfpkg/gui/Makefile
 po/Makefile.in
 ])
