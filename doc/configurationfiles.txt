@@ -11,13 +11,16 @@ multiple configuration are available, and can be selected when needed.
 Information can be shared between all profiles by being global.
 Profiles contain separate versions of complete files.
 
-*) The global files are stored in /etc/sysconfig/networking/<FILENAME>
+*) The global files are stored in /etc/sysconfig/networking/devices/<FILENAME>
 
-*) The files for the default profile are stored in
+*) The files for the default profile are softlinked from
    /etc/sysconfig/networking/default
 
-*) Files for other profiles are stored in
-   /etc/sysconfig/networking/<name-of-profile>/
+*) Files for other profiles are softlinked from
+   /etc/sysconfig/networking/profiles/<name-of-profile>/
+
+*) The startup files will be softlinked to
+   /etc/sysconfig/network-scripts/ifcfg-<kerneldevicename>
 
 FILES:
 
@@ -43,6 +46,7 @@ HOSTNAME (FQDN), NETWORKING ("yes","no"), GATEWAY (no need for
 GATEWAYDEV, if you already have routes and interfaces configured,
 right?), NISDOMAINNAME (or should we just move this kindof information 
 somewhere else, so LDAP etc, can be configured in the same file), 
+Additionally it may contain CURRENT_PROFILE (and maybe DEFAULT_PROFILE).
 
 All IPX is gone
 
@@ -53,6 +57,14 @@ which just listed the commands to the route command... ipv4 and 6
 should be in the same file.
 
 *4* ifcfg-<identifier>
+
+For the devices in networking/devices/ we will drop the notion of using the
+sick way of storing semantic information about the devices in the filename
+but rather use the netconf device names here and do the 'conversion' to the
+old style upon exit of netconf and/or via the profile selection tool.
+
+We might even want to adapt the initscripts to do the right thing if time
+permits.
 
 This will vary slightly for different kinds of devices... they are in
 name=value format. Here are the ones common for all devices:
@@ -72,3 +84,10 @@ a DHCP server.
 A list of adresses, which contains DEVICE, ADDRESS, PREFIX, SCOPE and BROADCAST -
 since this is a list, add the number of the device in the name - e.g, DEVICE0, SCOPE2 
 etc.
+
+*5* ppp, provider and wvdial
+
+For dialup configuration we have to additionally store the corresponding ppp,
+wvdial and provider information. this will be done under the
+networking/devices/devicename.d directory where we can keep any of these link
+specific files/directories.
