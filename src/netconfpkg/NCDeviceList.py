@@ -99,8 +99,12 @@ class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
         DeviceList_base.__init__(self, list, parent)        
 
+
     def load(self):
         changed = updateNetworkScripts()
+
+        self.__delslice__(0, len(self))
+
         df = getDeviceFactory()
         devices = ConfDevices()
         msg = ""
@@ -252,9 +256,9 @@ class DeviceList(DeviceList_base):
 
 DVList = None
 
-def getDeviceList():
+def getDeviceList(refresh = None):
     global DVList
-    if DVList == None:
+    if DVList == None or refresh:
         DVList = DeviceList()
         DVList.load()
     return DVList

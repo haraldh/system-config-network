@@ -51,7 +51,8 @@ import locale
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
-
+import __builtin__
+__builtin__.__dict__['_'] = _
 
 def handleException((type, value, tb), progname, version, debug=None):
     import pdb
@@ -119,6 +120,7 @@ if __name__ == '__main__':
     test = 0
     EXPORT = 1
     IMPORT = 2
+    SWITCH = 3
     mode = EXPORT
     filename = None
     clear = 0
@@ -157,6 +159,7 @@ if __name__ == '__main__':
                 continue
             
             if opt == '-p' or opt == '--profile':
+                mode = SWITCH
                 switch_profile = 1
                 profile = val
                 continue
@@ -178,6 +181,7 @@ if __name__ == '__main__':
                 continue
             
             if opt == '-a' or opt == '--activate':
+                mode = SWITCH
                 do_activate = 1
                 continue
 
@@ -280,23 +284,40 @@ if __name__ == '__main__':
         elif test:
             sys.exit(0)
 
-        else:
+        elif mode == SWITCH:
+            ret = None
             profilelist = getProfileList()
-
-            if switch_profile:
+            actdev = Control.NetworkDevice()
+            actdev.load()
+            aprof = profilelist.getActiveProfile()
+            
+            if switch_profile and aprof.ProfileName != profile:
                 log.log(1, "Switching to profile %s" % profile)
+                if do_activate:
+                    for p in profilelist:
+                        if p.ProfileName == profile:
+                            aprof = p
+                            break
+                    for device in getDeviceList():
+                        if device.DeviceId not in aprof.ActiveDevices:
+                            if actdev.find(device.Device):
+                                (ret, msg) = device.deactivate()
+                                if ret:
+                                    print msg
                 profilelist.switchToProfile(profile)
                 profilelist.save()
+
+            actdev.load()
 
             if do_activate:
                 aprof = profilelist.getActiveProfile()
                 for device in getDeviceList():
                     if device.DeviceId in aprof.ActiveDevices:
-                        (ret, msg) = device.activate()
-                    else:
-                        (ret, msg) = device.deactivate()
-                    if ret:
-                        print msg
+                        if not actdev.find(device.Device) and \
+                           device.OnBoot:
+                            (ret, msg) = device.activate()
+                            if ret:
+                                print msg
                         
                 sys.exit(0)
 

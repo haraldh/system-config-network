@@ -301,7 +301,7 @@ def hardware_init(xml, device):
 
 def hardware_hydrate(xml, device):
     hwlist = getHardwareList()
-    (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Device)
+    (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Device, type = device.Type)
     omenu = xml.get_widget("hardwareDeviceOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()

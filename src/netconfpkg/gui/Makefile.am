@@ -18,6 +18,7 @@ GLADE_FILES = \
 	hardwaretype.glade \
 	IsdnHardwareDruid.glade \
 	isdnhardware.glade \
+	infodialog.glade \
 	maindialog.glade \
 	modemconfig.glade \
 	ModemDruid.glade \

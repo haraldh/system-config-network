@@ -38,6 +38,13 @@ verbose = 0
 
 PROGNAME = "redhat-config-network"
 
+import locale
+from rhpl.translate import _, N_, textdomain_codeset
+locale.setlocale(locale.LC_ALL, "")
+textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
+import __builtin__
+__builtin__.__dict__['_'] = _
+
 NETCONFDIR='/usr/share/redhat-config-network/'
 
 
@@ -55,15 +62,6 @@ HWCONF='/etc/sysconfig/hwconf'
 ISDNCARDCONF='/etc/sysconfig/isdncard'
 PAPFILE = "/etc/ppp/pap-secrets"
 CHAPFILE = "/etc/ppp/chap-secrets"
-
-import gettext
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-except IOError:
-    import __builtin__
-    __builtin__.__dict__['_'] = unicode    
 
 DEFAULT_PROFILE_NAME=_("Common")
 
@@ -136,7 +134,7 @@ def rpms_notinstalled(namelist):
     for name in namelist:
         mi = ts.dbMatch('name', name)
         for n in mi:
-            print n[rpm.RPMTAG_NAME]
+            #print n[rpm.RPMTAG_NAME]
             if n[rpm.RPMTAG_NAME] == name:
                 toinstall.remove(name)
                 break
@@ -188,7 +186,7 @@ def getCHAPConf():
         DVchapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + CHAPFILE)
     return DVchapconf
 
-def create_ethernet_combo(hardwarelist, devname):
+def create_ethernet_combo(hardwarelist, devname, type = ETHERNET):
         hwdesc = [ 'eth0', 'eth1', 'eth2',
                    'eth3', 'eth4', 'eth5',
                    'eth6', 'eth7', 'eth8'
@@ -196,7 +194,7 @@ def create_ethernet_combo(hardwarelist, devname):
         hwcurr = None
         
         for hw in hardwarelist:
-            if hw.Type == ETHERNET:
+            if hw.Type == type:
                 desc = str(hw.Name) + ' (' + hw.Description + ')'
                 try:
                     i = hwdesc.index(hw.Name)
@@ -432,6 +430,7 @@ def generic_run_dialog (command, argv, searchPath = 0,
             print title
             print label
 
+            log.log(1, "Running %s %s" % (command, string.join(argv)))
             (read, write) = os.pipe()
 
             childpid = os.fork()
@@ -452,7 +451,7 @@ def generic_run_dialog (command, argv, searchPath = 0,
                     os.dup2(stdin, 0)
                     os.close(stdin)
 
-                if (searchPath):
+                if (searchPath):                    
                     os.execvp(command, argv)
                 else:
                     os.execv(command, argv)
@@ -466,6 +465,82 @@ def generic_run_dialog (command, argv, searchPath = 0,
                 while (s):
                     try:
                         (fdin, fdout, fderr) = select.select([read], [], [], 0.1)
+                    except:
+                        fdin = []
+                        pass
+
+                    if len(fdin):
+                        s = os.read(read, 100)
+                        sys.stdout.write(s)
+                        rc = rc + s
+
+            except Exception, e:
+                os.kill(childpid, 15)
+                raise e
+
+            os.close(read)
+
+            try:
+                (pid, status) = os.waitpid(childpid, 0)
+            except OSError, (errno, msg):
+                print __name__, "waitpid:", msg
+
+            if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
+                status = os.WEXITSTATUS(status)
+            else:
+                status = -1
+
+            return (status, rc)
+
+generic_run_func = None
+def generic_run (command, argv, searchPath = 0,
+                 root = '/', stdin = 0,
+                 catchfd = 1, closefd = -1):
+        import select
+        global generic_run_func
+	if generic_run_func:
+		return generic_run_func(command, argv, searchPath,
+                                               root, stdin, catchfd)
+        else:
+            if not os.access (root + command, os.X_OK):
+                raise RuntimeError, command + " can not be run"
+
+            log.log(1, "Running %s %s" % (command, string.join(argv)))
+            (read, write) = os.pipe()
+
+            childpid = os.fork()
+            if (not childpid):
+                if (root and root != '/'): os.chroot (root)
+                if isinstance(catchfd, tuple):
+                    for fd in catchfd:
+                        os.dup2(write, fd)
+                else:
+                    os.dup2(write, catchfd)
+                os.close(write)
+                os.close(read)
+
+                if closefd != -1:
+                    os.close(closefd)
+
+                if stdin:
+                    os.dup2(stdin, 0)
+                    os.close(stdin)
+
+                if (searchPath):                    
+                    os.execvp(command, argv)
+                else:
+                    os.execv(command, argv)
+
+                sys.exit(1)
+            try:
+                os.close(write)
+
+                rc = ""
+                s = "1"
+                while (s):
+                    try:
+                        (fdin, fdout, fderr) = select.select([read],
+                                                             [], [], 0.1)
                     except:
                         fdin = []
                         pass
@@ -516,6 +591,10 @@ def set_generic_yesno_dialog_func(func):
 def set_generic_run_dialog_func(func):
 	global generic_run_dialog_func
 	generic_run_dialog_func = func
+
+def set_generic_run_func(func):
+	global generic_run_func
+	generic_run_func = func
    
 
 def unlink(file):

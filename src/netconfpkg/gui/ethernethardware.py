@@ -34,6 +34,7 @@ from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import *
 from netconfpkg import NCHWEthernet
+from netconfpkg import NCHWWireless
 from netconfpkg import NCHardwareList
 
 from gtk import TRUE
@@ -145,7 +146,8 @@ class ethernetHardwareDialog:
     def dehydrate(self):
         self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
-        self.hw.Type = 'Ethernet'
+        if not self.hw.Type:
+            self.hw.Type = ETHERNET
         self.hw.createCard()
         if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
            self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
@@ -173,3 +175,4 @@ class ethernetHardwareDialog:
 
 
 NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
+NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)

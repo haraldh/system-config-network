@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
-"POT-Creation-Date: 2003-04-29 15:42+0200\n"
+"POT-Creation-Date: 2003-05-07 11:49+0200\n"
 "PO-Revision-Date: 2003-02-22 12:11GMT+10:00\n"
 "Last-Translator: James Hashida <khashida@redhat.com>\n"
 "Language-Team: Japanese <i18-list@redhat.com>\n"
@@ -33,7 +33,7 @@ msgstr "ネットワークデバイスと接続を設定"
 msgid "Network"
 msgstr "ネットワーク"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:148
+#: neat.desktop.in.h:3 src/netconf-tui.py:141
 #: src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Network Configuration"
 msgstr "ネットワーク設定"
@@ -80,13 +80,14 @@ msgstr "インターネット設定ウィザード"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:135 src/netconf-cmd.py:87
+#: src/neat-control.py:132 src/netconf-cmd.py:88
 #: src/netconfpkg/gui/maindialog.py:1391
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:136 src/netconf-cmd.py:88
+#: src/neat-control.py:133 src/netconf-cmd.py:89
 #: src/netconfpkg/gui/maindialog.py:1392
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
@@ -96,75 +97,44 @@ msgstr ""
 "Bug Tracking System: http://bugzilla.redhat.com/まで送ってください。"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:370
+#: src/neat-control.py:159 src/netconfpkg/NCDevice.py:371
 msgid "Network device activating..."
 msgstr "ne"
 
-#: src/neat-control.py:165 src/netconfpkg/NCDevice.py:371
+#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:372
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい...."
 
-#: src/neat-control.py:185 src/neat-control.py:250
-#, python-format
-msgid "Cannot activate network device %s"
-msgstr "ネットワークデバイス%sを起動できません。"
-
-#. update dialog #83640
-#: src/neat-control.py:203 src/neat-control.py:233
-#, python-format
-msgid "Cannot deactivate network device %s"
-msgstr "ネットワークデバイス%sを停止することが出来ません。"
-
-#: src/neat-control.py:217
+#: src/neat-control.py:207
 #, fuzzy, python-format
 msgid "Cannot configure network device %s"
 msgstr "ネットワークデバイス%sを起動できません。"
 
-#. Display dialog notification of action
-#: src/neat-control.py:260
-msgid "Activating profile..."
-msgstr "プロファイルを起動しています..."
-
-#: src/neat-control.py:263
-msgid "Activating the selected profile, please wait..."
-msgstr "選択したプロファイルを起動中です。お待ち下さい..."
-
-#. Disable the activate button
-#. Get the profile to activate from the menu
-#. Activate the selected profile
-#. Check results of the activation
-#: src/neat-control.py:282
-#, python-format
-msgid ""
-"Not all network interfaces in selected profile \"%s\" could be activated."
-msgstr ""
-"選択したプロファイル\"%s\"のネットワークインターフェイスを全て起動することは "
-"出来ません。"
-
+#. update dialog #83640
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#. import time
-#. Make sure the user really wants to auto select ...
-#. Continue with auto select
-#: src/neat-control.py:309
-msgid "Attempting to auto-detect and activate a valid profile, please wait..."
-msgstr "有効なプロファイルを自動検出し起動しようとしています。お待ち下さい..."
+#: src/neat-control.py:227
+#, fuzzy
+msgid "Switching Profiles"
+msgstr "プロファイル%sに切替中です。"
 
-#: src/neat-control.py:311
-msgid "Autoselecting profile..."
-msgstr "プロファイルを自動選択しています..."
+#: src/neat-control.py:228
+#, fuzzy, python-format
+msgid "Switching to profile %s"
+msgstr "プロファイル%sに切替中です。"
 
-#. Check status of the auto select script and respond accordingly
-#. Grab any error output
-#. errstr='Error: No available profile found. Network unavailable.'
-#. Grab the profile name from the output of the script
+#: src/neat-control.py:229
+#, fuzzy, python-format
+msgid "Failed to switch to profile %s"
+msgstr "ファイル%s書き込み失敗"
+
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:350 src/netconfpkg/gui/maindialog.py:817
+#: src/neat-control.py:244 src/netconfpkg/gui/maindialog.py:817
 msgid "To be rewritten!"
 msgstr "再書き込みとなります!"
 
@@ -172,6 +142,11 @@ msgstr "再書き込みとなります!"
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
+#: src/neat-control.py:346
+#, fuzzy
+msgid " (active)"
+msgstr "休止中"
+
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
 #. make ctrl-C work
@@ -197,90 +172,89 @@ msgstr ""
 "を保存して、その後 http://bugzilla.redhat.com/bugzilla のredhat-config-"
 "networkにバグレポートの詳細を提出してください。"
 
-#. Strange... why do I have to reinstall _() ??
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:142
+#: src/netconf-tui.py:135
 msgid "What do you want to configure?"
 msgstr "何を設定しますか?"
 
-#: src/netconf-tui.py:143
+#: src/netconf-tui.py:136
 msgid "Configure"
 msgstr "設定"
 
-#: src/netconf-tui.py:143
+#: src/netconf-tui.py:136
 msgid "Exit"
 msgstr "出口"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:264 src/netconf-tui.py:373 src/netconf-tui.py:479
+#: src/netconf-tui.py:257 src/netconf-tui.py:366 src/netconf-tui.py:472
 #: src/netconfpkg/gui/maindialog.glade.h:17
 msgid "Name"
 msgstr "名前"
 
-#: src/netconf-tui.py:265 src/netconf-tui.py:374 src/netconf-tui.py:480
+#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
 #: src/netconfpkg/gui/maindialog.glade.h:10
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "デバイス"
 
-#: src/netconf-tui.py:266
+#: src/netconf-tui.py:259
 msgid "Use DHCP"
 msgstr "DHCPの使用"
 
-#: src/netconf-tui.py:267
+#: src/netconf-tui.py:260
 msgid "Static IP"
 msgstr "静的IP"
 
-#: src/netconf-tui.py:268
+#: src/netconf-tui.py:261
 msgid "Netmask"
 msgstr "ネットマスク"
 
-#: src/netconf-tui.py:269
+#: src/netconf-tui.py:262
 msgid "Default gateway IP"
 msgstr "デフォルトゲートウェイ IP"
 
-#: src/netconf-tui.py:277 src/netconf-tui.py:385 src/netconf-tui.py:491
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Ok"
 msgstr "Ok"
 
-#: src/netconf-tui.py:277 src/netconf-tui.py:385 src/netconf-tui.py:491
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Cancel"
 msgstr "取り消し"
 
-#: src/netconf-tui.py:279
+#: src/netconf-tui.py:272
 msgid "Ethernet Configuration"
 msgstr "イーサネット設定"
 
-#: src/netconf-tui.py:375 src/netconf-tui.py:481
+#: src/netconf-tui.py:368 src/netconf-tui.py:474
 msgid "ISP Phonenumber"
 msgstr "ISP電話番号"
 
-#: src/netconf-tui.py:376 src/netconf-tui.py:482
+#: src/netconf-tui.py:369 src/netconf-tui.py:475
 msgid "ISP Login"
 msgstr "ISPログイン"
 
-#: src/netconf-tui.py:377 src/netconf-tui.py:483
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Password"
 msgstr "ISPパスワード"
 
-#: src/netconf-tui.py:378
+#: src/netconf-tui.py:371
 msgid "Modem Initstring"
 msgstr "モデムのInitstring"
 
-#: src/netconf-tui.py:386 src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:379 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr "モデム設定"
 
-#: src/netconf-tui.py:484
+#: src/netconf-tui.py:477
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:492
+#: src/netconf-tui.py:485
 msgid "ISDN Configuration"
 msgstr "ISDN設定"
 
@@ -307,21 +281,21 @@ msgstr "ISDN設定"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:58
+#: src/netconf.py:57
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "エラー：%s, %s!"
 
-#: src/netconf.py:60
+#: src/netconf.py:59
 #, fuzzy
 msgid "Starting text version"
 msgstr "テキストバージョンを開始:"
 
-#: src/netconf.py:109
+#: src/netconf.py:108
 msgid "Loading Network Configuration..."
 msgstr "ネットワーク設定をロードしています..."
 
-#: src/netconf.py:122
+#: src/netconf.py:121
 #, fuzzy
 msgid ""
 "redhat-config-network - network configuration tool\n"
@@ -353,7 +327,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf-cmd.py:63
+#: src/netconf-cmd.py:64
 #, fuzzy, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -365,65 +339,65 @@ msgstr ""
 "を保存して、その後 http://bugzilla.redhat.com/bugzilla のredhat-config-"
 "networkにバグレポートの詳細を提出してください。"
 
-#: src/netconf-cmd.py:86
+#: src/netconf-cmd.py:87
 #, fuzzy, python-format
 msgid "%s - network configuration commandline tool"
 msgstr "ネットワーク設定"
 
-#: src/netconf-cmd.py:91
+#: src/netconf-cmd.py:92
 #, python-format
 msgid "Usage: %s"
 msgstr ""
 
-#: src/netconf-cmd.py:93
+#: src/netconf-cmd.py:94
 #, fuzzy
 msgid "switch / activate profile"
 msgstr "クリックして選択したプロファイルを有効にして下さい"
 
-#: src/netconf-cmd.py:95
+#: src/netconf-cmd.py:96
 msgid "export / import hardware list"
 msgstr ""
 
-#: src/netconf-cmd.py:97
+#: src/netconf-cmd.py:98
 msgid "export / import device list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:99
+#: src/netconf-cmd.py:100
 msgid "export / import profile list"
 msgstr ""
 
-#: src/netconf-cmd.py:101
+#: src/netconf-cmd.py:102
 msgid "set the root directory"
 msgstr ""
 
-#: src/netconf-cmd.py:102
+#: src/netconf-cmd.py:103
 msgid "export list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:103
+#: src/netconf-cmd.py:104
 msgid "import list"
 msgstr ""
 
-#: src/netconf-cmd.py:105
+#: src/netconf-cmd.py:106
 msgid "clear existing list prior of importing"
 msgstr ""
 
-#: src/netconf-cmd.py:107
+#: src/netconf-cmd.py:108
 msgid "import from file"
 msgstr ""
 
-#: src/netconf-cmd.py:204
+#: src/netconf-cmd.py:208
 #, python-format
 msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:265
+#: src/netconf-cmd.py:269
 #, fuzzy, python-format
 msgid "Unknown List %s\n"
 msgstr "不明"
 
-#: src/netconf-cmd.py:269
+#: src/netconf-cmd.py:273
 #, fuzzy, python-format
 msgid "Error parsing line: %s"
 msgstr "デバイス%sを読み込み中にエラー\n"
@@ -659,13 +633,13 @@ msgstr "電話番号:"
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:145
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
-#: src/netconfpkg/gui/ethernethardware.py:151
-#: src/netconfpkg/gui/ethernethardware.py:168
+#: src/netconfpkg/gui/ethernethardware.py:153
+#: src/netconfpkg/gui/ethernethardware.py:170
 #: src/netconfpkg/gui/tokenringhardware.py:153
 #: src/netconfpkg/gui/tokenringhardware.py:164
-#: src/netconfpkg/NCHardwareList.py:251 src/netconfpkg/NCHardwareList.py:342
-#: src/netconfpkg/NCHardwareList.py:524 src/netconfpkg/NCHardwareList.py:557
-#: src/netconfpkg/NC_functions.py:263 src/netconfpkg/NCDevice.py:208
+#: src/netconfpkg/NCHardwareList.py:255 src/netconfpkg/NCHardwareList.py:371
+#: src/netconfpkg/NCHardwareList.py:554 src/netconfpkg/NCHardwareList.py:587
+#: src/netconfpkg/NC_functions.py:261 src/netconfpkg/NCDevice.py:207
 #: src/netconfpkg/NCDevice.py:215 src/netconfpkg/NCDeviceList.py:58
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
@@ -746,14 +720,14 @@ msgstr "自動的にIPアドレス設定を取得:"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GUI_functions.py:469
+#: src/netconfpkg/gui/GUI_functions.py:544
 #, python-format
 msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
 
-#: src/netconfpkg/gui/GUI_functions.py:472
+#: src/netconfpkg/gui/GUI_functions.py:547
 msgid ""
 "\n"
 "Succeeded. Please read the output."
@@ -1282,23 +1256,6 @@ msgstr "モデム ダイアルアップ設定"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. get the widgets we need
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. make ctrl-C work
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1562,17 +1519,17 @@ msgstr "\"%s\"を使用するデバイスをすべて削除しますか?"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ethernethardware.py:93
+#: src/netconfpkg/gui/ethernethardware.py:94
 #: src/netconfpkg/gui/tokenringhardware.py:99
 msgid "Command failed: "
 msgstr "コマンドフィールド: "
 
-#: src/netconfpkg/gui/ethernethardware.py:94
+#: src/netconfpkg/gui/ethernethardware.py:95
 #: src/netconfpkg/gui/tokenringhardware.py:100
 msgid "Output:\n"
 msgstr "出力:\n"
 
-#: src/netconfpkg/gui/ethernethardware.py:96
+#: src/netconfpkg/gui/ethernethardware.py:97
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
@@ -1755,7 +1712,7 @@ msgstr "自動"
 msgid "manual"
 msgstr "マニュアル"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:113
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:111
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -2031,13 +1988,13 @@ msgstr "/etc/hostsをデフォルトプロファイルにコピー中です。"
 
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:163
+#: src/netconfpkg/NCProfileList.py:164
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 "デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
 
-#: src/netconfpkg/NCProfileList.py:165
+#: src/netconfpkg/NCProfileList.py:166
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -2085,31 +2042,32 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:68
+#: src/netconfpkg/NC_functions.py:66
 msgid "Common"
 msgstr "共通"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:111 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:109 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "ハードウェア(CRTSCTS):"
 
-#: src/netconfpkg/NC_functions.py:112 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:110 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "ソフトウェア(XON/XOFF)"
 
 #. self.args = args
-#: src/netconfpkg/NC_functions.py:154
+#. print n[rpm.RPMTAG_NAME]
+#: src/netconfpkg/NC_functions.py:152
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr "システムに必要とされる次のパッケージをインストールしますか?"
 
 #. print "toinstall %s" % str(toinstall)
 #. print "plist %s" % str(plist)
-#: src/netconfpkg/NC_functions.py:169
+#: src/netconfpkg/NC_functions.py:167
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
@@ -2118,7 +2076,7 @@ msgstr ""
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:529
+#: src/netconfpkg/NC_functions.py:608
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2129,7 +2087,7 @@ msgstr ""
 " エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:539
+#: src/netconfpkg/NC_functions.py:618
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2142,7 +2100,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:550
+#: src/netconfpkg/NC_functions.py:629
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2155,7 +2113,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:560
+#: src/netconfpkg/NC_functions.py:639
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2168,7 +2126,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:570
+#: src/netconfpkg/NC_functions.py:649
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2181,7 +2139,7 @@ msgstr ""
 "エラー：\n"
 " %s"
 
-#: src/netconfpkg/NC_functions.py:578
+#: src/netconfpkg/NC_functions.py:657
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2345,7 +2303,7 @@ msgstr ""
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:202
+#: src/netconfpkg/NCDevice.py:201
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr ""
@@ -2357,21 +2315,21 @@ msgstr ""
 msgid "Static routes file %s is invalid"
 msgstr "静的ルートファイル %s は無効です"
 
-#: src/netconfpkg/NCDevice.py:373
+#: src/netconfpkg/NCDevice.py:374
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "ネットワークデバイス%sを起動できません\n"
 
-#: src/netconfpkg/NCDevice.py:390
+#: src/netconfpkg/NCDevice.py:391
 msgid "Network device deactivating..."
 msgstr "ネットワークデバイスを停止中です..."
 
-#: src/netconfpkg/NCDevice.py:391
+#: src/netconfpkg/NCDevice.py:392
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "ネットワークデバイス%sを停止中です。お待ち下さい..."
 
-#: src/netconfpkg/NCDevice.py:393
+#: src/netconfpkg/NCDevice.py:394
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "ネットワークデバイス%sを停止出来ません\n"
@@ -2626,7 +2584,6 @@ msgstr "cipcb4"
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth0"
 msgstr "eth0"
 
@@ -2634,7 +2591,6 @@ msgstr "eth0"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth1"
 msgstr "eth1"
 
@@ -2642,7 +2598,6 @@ msgstr "eth1"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth2"
 msgstr "eth2"
 
@@ -2650,7 +2605,6 @@ msgstr "eth2"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth3"
 msgstr "eth3"
 
@@ -2658,7 +2612,6 @@ msgstr "eth3"
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth4"
 msgstr "eth4"
 
@@ -2938,7 +2891,6 @@ msgstr "MEM(_M):"
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
 msgid "eth5"
 msgstr "eth5"
 
@@ -3277,7 +3229,7 @@ msgstr "CIPEの設定"
 #: src/netconfpkg/gui/dialupconfig.glade.h:45
 #: src/netconfpkg/gui/dslconfig.glade.h:18
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
 msgid "_Activate device when computer starts"
 msgstr "コンピュータの起動時にデバイスを起動(_A)"
@@ -3287,7 +3239,7 @@ msgstr "コンピュータの起動時にデバイスを起動(_A)"
 #: src/netconfpkg/gui/dialupconfig.glade.h:55
 #: src/netconfpkg/gui/dslconfig.glade.h:20
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:9
 msgid "_General"
 msgstr "全般(_G)"
@@ -3297,7 +3249,7 @@ msgstr "全般(_G)"
 #: src/netconfpkg/gui/dialupconfig.glade.h:58
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
 msgid "_Nickname: "
 msgstr "ニックネーム(_N):"
@@ -3319,7 +3271,6 @@ msgid "CTC Configuration"
 msgstr "CTCの設定"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3351,13 +3302,12 @@ msgstr "編集(_E)..."
 #: src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
 msgid "_Hardware Device"
 msgstr "ハードウェアデバイス(_H)"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
 msgid "_Hardware Device:"
 msgstr "ハードウェアデバイス(_H):"
@@ -3972,12 +3922,12 @@ msgstr "2M"
 msgid "5.5M"
 msgstr "5.5M"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Network Name (SSID):"
 msgstr "ネットワーク名(SSID):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid ""
 "Used to manipulate encryption or scrambling keys and encryption mode. To set "
@@ -3987,41 +3937,41 @@ msgstr ""
 "暗号化の操作、又は鍵と暗号モードのスクランブルに使用されます。現在の暗号鍵 を"
 "16進法で設定するには、0xXXXXXXXXの形式で、鍵に0xを前に追加して入力します。"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "Wireless Device Configuration"
 msgstr "ワイヤレスデバイス設定"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
 msgid "_Auto"
 msgstr "自動(_A)"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
 msgid "_Channel:"
 msgstr "チャンネル(_C):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
 msgid "_Key (use 0x for hex):"
 msgstr "鍵(_K)(16進法には0xを使用):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
 msgid "_Mode:"
 msgstr "モード(_M):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:23
 msgid "_Specified:"
 msgstr "指定されたもの(_S):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
 msgid "_Transmit Rate:"
 msgstr "転送レート(_T):"
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Wireless Settings"
 msgstr "ワイヤレス設定(_W)"
 
@@ -4306,6 +4256,32 @@ msgstr ""
 msgid "_Info\t"
 msgstr "情報"
 
+#~ msgid "Cannot activate network device %s"
+#~ msgstr "ネットワークデバイス%sを起動できません。"
+
+#~ msgid "Cannot deactivate network device %s"
+#~ msgstr "ネットワークデバイス%sを停止することが出来ません。"
+
+#~ msgid "Activating profile..."
+#~ msgstr "プロファイルを起動しています..."
+
+#~ msgid "Activating the selected profile, please wait..."
+#~ msgstr "選択したプロファイルを起動中です。お待ち下さい..."
+
+#~ msgid ""
+#~ "Not all network interfaces in selected profile \"%s\" could be activated."
+#~ msgstr ""
+#~ "選択したプロファイル\"%s\"のネットワークインターフェイスを全て起動すること"
+#~ "は 出来ません。"
+
+#~ msgid ""
+#~ "Attempting to auto-detect and activate a valid profile, please wait..."
+#~ msgstr ""
+#~ "有効なプロファイルを自動検出し起動しようとしています。お待ち下さい..."
+
+#~ msgid "Autoselecting profile..."
+#~ msgstr "プロファイルを自動選択しています..."
+
 #~ msgid ""
 #~ "redhat-config-network-cmd - network configuration commandline tool\n"
 #~ "\n"
@@ -4335,9 +4311,6 @@ msgstr "情報"
 
 #~ msgid "Please specify a file to save the dump"
 #~ msgstr "ダンプを保存するファイルを指定してください"
-
-#~ msgid "Failed to write to file %s."
-#~ msgstr "ファイル%s書き込み失敗"
 
 #~ msgid ""
 #~ "The application's state has been successfully\n"
@@ -4390,9 +4363,6 @@ msgstr "情報"
 
 #~ msgid "No Profile with name %s could be found."
 #~ msgstr "%sと言うプロファイルが見付かりません。"
-
-#~ msgid "Switching to Profile %s."
-#~ msgstr "プロファイル%sに切替中です。"
 
 #~ msgid "General"
 #~ msgstr "全般"

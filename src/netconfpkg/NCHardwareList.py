@@ -24,7 +24,6 @@ from rhpl import ethtool
 import NCisdnhardware
 
 from netconfpkg import HardwareList_base
-from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NCHardware import *
 from NC_functions import *
 
@@ -161,11 +160,11 @@ class HardwareList(HardwareList_base):
         modules = ConfModules()
         ethlist = ethtool.get_devices()
 
+        hdellist = []
         for h in self:
             if h.Status == HW_OK:
-                log.log(5, "Removing %s from HWList" % h.Name)
-                self.remove(h)
-
+                hdellist.append(h)
+                
         #
         # Read from kudzu
         #
@@ -242,31 +241,43 @@ class HardwareList(HardwareList_base):
                     break
 
             log.log(3, "Found dev %s - %s" % (dev, module))
-            
-            i = self.addHardware(getDeviceType(dev))
-            hw = self[i]
-            if string.find (kudzu_device.desc, "|") != -1:
-                mfg, desc = string.split (kudzu_device.desc, "|")
-            else:
-                mfg = _("Unknown")
-                desc = kudzu_device.desc
+            # if it is already in our HW list do not delete it.
+            for h in hdellist:
+                if h.Name == dev and h.Card.ModuleName == module:
+                    hdellist.remove(h)
+                    break
+            else:            
+                i = self.addHardware(getDeviceType(dev))
+                hw = self[i]
+                if string.find (kudzu_device.desc, "|") != -1:
+                    mfg, desc = string.split (kudzu_device.desc, "|")
+                else:
+                    mfg = _("Unknown")
+                    desc = kudzu_device.desc
 
-            hw.Name = dev
-                
-            hw.Description = desc
-            hw.Type = getDeviceType(dev)
-            hw.Status = HW_OK
-            hw.createCard()
-            hw.Card.ModuleName = module
+                hw.Name = dev
 
-            for selfkey in self.keydict.keys():
-                confkey = self.keydict[selfkey]
-                if modules[hw.Card.ModuleName] and \
-                       modules[hw.Card.ModuleName]['options'].\
-                       has_key(confkey):
-                    hw.Card.__dict__[selfkey] = modules[\
-                           hw.Card.ModuleName]['options'][confkey]
-            hw.setChanged(true)
+                hw.Description = desc
+                hw.Type = getDeviceType(dev)
+                hw.Status = HW_OK
+                hw.createCard()
+                hw.Card.ModuleName = module
+
+                for selfkey in self.keydict.keys():
+                    confkey = self.keydict[selfkey]
+                    if modules[hw.Card.ModuleName] and \
+                           modules[hw.Card.ModuleName]['options'].\
+                           has_key(confkey):
+                        hw.Card.__dict__[selfkey] = modules[\
+                               hw.Card.ModuleName]['options'][confkey]
+                hw.setChanged(true)
+
+        for h in hdellist:
+            log.log(5, "Removing %s from HWList" % h.Name)
+            self.remove(h)
+
+        del hdellist
+
 
     def updateFromSystem(self):
         modules = ConfModules()
@@ -274,10 +285,12 @@ class HardwareList(HardwareList_base):
 
         self.updateFromKudzu()
 
+        hdellist = []
+        
         for h in self:
             if h.Status == HW_SYSTEM:
-                log.log(5, "Removing %s from HWList" % h.Name)
-                self.remove(h)
+                hdellist.append(h)
+                
         #
         # Read in actual system state
         #
@@ -287,7 +300,7 @@ class HardwareList(HardwareList_base):
                 if h.Name == device:
                     break
 
-            if h and h.Name == device:
+            if h and h.Name == device and h.Status != HW_SYSTEM:
                 continue
 
             if device[:3] != "eth":
@@ -303,29 +316,45 @@ class HardwareList(HardwareList_base):
                 mod = None
 
             if mod != None and mod != "":
-                i = self.addHardware(getDeviceType(device))
-                hw = self[i]
-                hw.Name = device
-                hw.Description = mod
-                hw.Status = HW_SYSTEM
-                hw.Type = getDeviceType(device)                        
-                hw.createCard()
-                hw.Card.ModuleName = mod
-                for info in modinfo.keys():
-                    if info == mod:
-                        if modinfo[info].has_key('description'):
-                            hw.Description = modinfo[info]['description']
-                            
-                for selfkey in self.keydict.keys():
-                    confkey = self.keydict[selfkey]
-                    if modules[hw.Card.ModuleName] and \
-                           modules[hw.Card.ModuleName]\
-                           ['options'].has_key(confkey):
-                        hw.Card.__dict__[selfkey] = modules[hw.Card.\
-                                                            ModuleName]\
-                                                            ['options']\
-                                                            [confkey]
-                hw.setChanged(true)
+                # if it is already in our HW list do not delete it.
+                for h in hdellist:
+                    if h.Name == device and h.Card.ModuleName == mod:
+                        log.log(5, "Found %s:%s, which is already in our list!" % (device, mod))
+                        hdellist.remove(h)
+                        break
+                    else:
+                        log.log(5, "%s != %s and %s != %s" % (h.Name, device, h.Card.ModuleName, mod))
+                else:
+                    i = self.addHardware(getDeviceType(device))
+                    hw = self[i]
+                    hw.Name = device
+                    hw.Description = mod
+                    hw.Status = HW_SYSTEM
+                    hw.Type = getDeviceType(device)                        
+                    hw.createCard()
+                    hw.Card.ModuleName = mod
+                    for info in modinfo.keys():
+                        if info == mod:
+                            if modinfo[info].has_key('description'):
+                                hw.Description = modinfo[info]['description']
+
+                    for selfkey in self.keydict.keys():
+                        confkey = self.keydict[selfkey]
+                        if modules[hw.Card.ModuleName] and \
+                               modules[hw.Card.ModuleName]\
+                               ['options'].has_key(confkey):
+                            hw.Card.__dict__[selfkey] = modules[hw.Card.\
+                                                                ModuleName]\
+                                                                ['options']\
+                                                                [confkey]
+                    hw.setChanged(true)
+
+        for h in hdellist:
+            log.log(5, "Removing %s from HWList" % h.Name)
+            self.remove(h)
+
+        del hdellist
+
 
     def updateFromModules(self):
         modules = ConfModules()
@@ -408,6 +437,7 @@ class HardwareList(HardwareList_base):
     def load(self):
         hwconf = ConfHWConf()          
 
+	# first clear the list
         self.__delslice__(0, len(self))
         
         self.updateFromSystem()        
@@ -486,7 +516,7 @@ class HardwareList(HardwareList_base):
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
         self.commit(changed=false)
-        self.updateFromSystem()
+        #self.updateFromSystem()
 
     def save(self):
         modules = MyConfModules()
@@ -637,9 +667,9 @@ class HardwareList(HardwareList_base):
 
 HWList = None
 
-def getHardwareList():
+def getHardwareList(refresh = None):
     global HWList
-    if HWList == None:
+    if HWList == None or refresh:
         HWList = HardwareList()
         HWList.load()
     return HWList

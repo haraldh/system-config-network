@@ -1,4 +1,59 @@
+2003-05-07  Harald Hoyer  <harald@redhat.com>
+
+	* po/tr.po 1.73.2.11, po/zh_CN.po 1.80.2.11, po/zh_TW.po 1.101.2.11, po/redhat-config-network.pot 1.113.2.12, po/ru.po 1.91.2.11, po/sv.po 1.133.2.11, po/ko.po 1.140.2.11, po/no.po 1.129.2.11, po/pt.po 1.112.2.11, po/es.po 1.140.2.11, po/fr.po 1.142.2.11, po/is.po 1.121.2.11, po/it.po 1.137.2.11, po/ja.po 1.148.2.11, configure.in 1.144.2.4, po/cs.po 1.98.2.12, po/da.po 1.105.2.11, po/de.po 1.153.2.11, po/el.po 1.75.2.11, redhat-config-network.spec.in 1.171.2.9, ChangeLog 1.82.2.11:
+	release 1.2.6
+
+	* src/neat-control.py 1.36.2.10: mark active profiles "active"
+
+2003-05-05  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NCDevice.py 1.82.2.13:
+	use usernetctl instead of ifup/ifdown as a workaround for the broken initscripts..
+
+2003-05-01  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/NC_functions.py 1.71.2.13, src/netconfpkg/gui/ethernethardware.py 1.24.2.2, src/netconfpkg/gui/sharedtcpip.py 1.23.2.2:
+	better wireless hw combo
+
+	* src/netconfpkg/gui/ethernethardware.py 1.24.2.1:
+	let the ethernethw dialog be also the wireless hw dialog
+
+	* src/netconfpkg/NC_functions.py 1.71.2.12: removed debugging print
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.12: better HW list handling
+
+	* src/netconfpkg/gui/Makefile.am 1.22.2.2: infodialog.glade added
+
+	* src/netconfpkg/gui/wirelessconfig.glade 1.21.2.1:
+	removed redundant part of gui
+
+	* src/netconfpkg/NCDevice.py 1.82.2.11: no early import of plugins
+
+2003-04-30  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/gui/sharedtcpip.py 1.11.4.5: typo
+
+	* src/netconf-tui.py 1.6.4.4: .Name -> DeviceId
+
+	* redhat-config-network.spec.in 1.118.4.6, src/netconf-tui.py 1.6.4.3, src/netconf.py 1.133.4.3, src/netconfpkg/gui/sharedtcpip.py 1.11.4.4:
+	fixed RHBA-2002:257 issues
+
+	* po/redhat-config-network.pot 1.113.2.11, po/ru.po 1.91.2.10, po/sv.po 1.133.2.10, po/tr.po 1.73.2.10, po/zh_CN.po 1.80.2.10, po/zh_TW.po 1.101.2.10, po/is.po 1.121.2.10, po/it.po 1.137.2.10, po/ja.po 1.148.2.10, po/ko.po 1.140.2.10, po/no.po 1.129.2.10, po/pt.po 1.112.2.10, po/cs.po 1.98.2.11, po/da.po 1.105.2.10, po/de.po 1.153.2.10, po/el.po 1.75.2.10, po/es.po 1.140.2.10, po/fr.po 1.142.2.10, src/neat-control.py 1.36.2.9, src/netconf-cmd.py 1.8.2.9, src/netconfpkg/NCDevice.py 1.82.2.10, src/netconfpkg/NCDeviceList.py 1.50.2.11, src/netconfpkg/NCHardwareList.py 1.66.2.11, src/netconfpkg/NCProfileList.py 1.66.2.10, src/netconfpkg/NC_functions.py 1.71.2.11, src/netconfpkg/gui/GUI_functions.py 1.21.2.4, src/netconfpkg/gui/neat-control.glade 1.2.2.2:
+	fixed configure button in r-control-n
+
+	* po/zh_TW.po 1.101.2.9, po/redhat-config-network.pot 1.113.2.10, po/ru.po 1.91.2.9, po/sv.po 1.133.2.9, po/tr.po 1.73.2.9, po/zh_CN.po 1.80.2.9, po/ko.po 1.140.2.9, po/no.po 1.129.2.9, po/pt.po 1.112.2.9, po/el.po 1.75.2.9, po/es.po 1.140.2.9, po/fr.po 1.142.2.9, po/is.po 1.121.2.9, po/it.po 1.137.2.9, po/ja.po 1.148.2.9, po/cs.po 1.98.2.10, po/da.po 1.105.2.9, po/de.po 1.153.2.9, src/neat-control.py 1.36.2.8, src/netconf-cmd.py 1.8.2.8, src/netconf-tui.py 1.16.2.3, src/netconf.py 1.188.2.3, src/netconfpkg/NC_functions.py 1.71.2.10, redhat-config-network.spec.in 1.171.2.8, ChangeLog 1.82.2.10:
+	fixed #89915 and #89916
+
 2003-04-29  Harald Hoyer  <harald@redhat.com>
+
+	* redhat-config-network.spec.in 1.171.2.7, ChangeLog 1.82.2.9:
+	remove HW dupes
+
+	* src/netconfpkg/NCHardwareList.py 1.66.2.10:
+	first collect devices to delete, then delete them
+
+	* src/netconfpkg/Control.py 1.17, src/netconfpkg/DeviceList.idl 1.36, src/netconfpkg/HardwareList.idl 1.13, src/netconfpkg/NCCipe.py 1.14, src/netconfpkg/NCDevice.py 1.83, src/netconfpkg/NCDeviceFactory.py 1.5, src/netconfpkg/NCDeviceList.py 1.52, src/netconfpkg/NCDialup.py 1.60, src/netconfpkg/NCHardware.py 1.4, src/netconfpkg/NCHardwareFactory.py 1.6, src/netconfpkg/NCHardwareList.py 1.67, src/netconfpkg/NCProfileList.py 1.70, src/netconfpkg/NCWireless.py 1.14, src/netconfpkg/NC_functions.py 1.74, src/netconfpkg/NCisdnhardware.py 1.19, src/netconfpkg/__init__.py 1.13, src/netconfpkg/gui/DialupDruid.py 1.22, src/netconfpkg/gui/GUI_functions.py 1.22, src/netconfpkg/gui/Makefile.am 1.23, src/netconfpkg/gui/__init__.py 1.6, src/netconfpkg/gui/deviceconfig.py 1.12, src/netconfpkg/gui/devicetype.py 1.10, src/netconfpkg/gui/dialupconfig.py 1.34, src/netconfpkg/gui/dslconfig.glade 1.17, src/netconfpkg/gui/dslconfig.py 1.21, src/netconfpkg/gui/exception.py 1.22, src/netconfpkg/gui/infodialog.glade 1.2, src/netconfpkg/gui/maindialog.glade 1.7, src/netconfpkg/gui/maindialog.py 1.24, src/netconfpkg/gui/neat-control.glade 1.3, src/netconfpkg/gui/wirelessconfig.py 1.20, src/netconfpkg/plugins/NCDevADSL.py 1.3, src/netconfpkg/plugins/NCDevCipe.py 1.3, src/netconfpkg/plugins/NCDevIsdn.py 1.3, src/netconfpkg/plugins/NCDevModem.py 1.3, src/netconfpkg/plugins/NCHWIsdn.py 1.3, po/redhat-config-network.pot 1.121, po/ru.po 1.99, po/sv.po 1.142, po/tr.po 1.81, po/zh_CN.po 1.90, po/zh_TW.po 1.110, src/Makefile.am 1.73, src/neat-control.py 1.37, src/netconf-cmd.py 1.9, src/netconf-tui.py 1.18, src/netconf.py 1.189, po/es.po 1.149, po/fr.po 1.152, po/is.po 1.139, po/it.po 1.146, po/ja.po 1.157, po/ko.po 1.150, po/no.po 1.137, po/pt.po 1.122, ChangeLog 1.91, Makefile.am 1.43, neat.desktop.in 1.7, po/POTFILES.in 1.27, po/cs.po 1.108, po/da.po 1.113, po/de.po 1.164, po/el.po 1.85, redhat-config-network.spec.in 1.177:
+	merged in 1.2.4
 
 	* ChangeLog 1.82.2.8, redhat-config-network.spec.in 1.171.2.6:
 	release 1.2.4 moved

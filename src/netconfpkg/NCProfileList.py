@@ -63,9 +63,10 @@ def updateNetworkScripts():
 class ProfileList(ProfileList_base):
     def __init__(self, list = None, parent = None):
         ProfileList_base.__init__(self, list, parent)        
-
+    
     def load(self):
         changed = updateNetworkScripts()
+        self.__delslice__(0, len(self))
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)

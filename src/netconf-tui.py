@@ -123,13 +123,6 @@ sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
 
 from netconfpkg import *
 
-import __builtin__
-# Strange... why do I have to reinstall _() ??
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-    __builtin__.__dict__['_'] = gettext.gettext
-except IOError:
-    __builtin__.__dict__['_'] = unicode    
 
 #
 # main Screen

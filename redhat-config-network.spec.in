@@ -4,7 +4,7 @@ Summary: The GUI of the NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
 Release: 1
-URL: http://www.redhat.com/ 
+URL: http://people.redhat.com/harald/redhat-config-network
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
@@ -146,8 +146,17 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
-* Mon Feb 24 2003 Harald Hoyer <harald@redhat.de> 1.3.0-1
-- begin kernel style versioning scheme
+* Thu May 01 2003 Harald Hoyer <harald@redhat.de> 1.2.6
+- use unsernetctl instead of ifdown/ifup
+
+* Thu May 01 2003 Harald Hoyer <harald@redhat.de> 1.2.5
+- fixed early import of plugins
+
+* Wed Apr 30 2003 Harald Hoyer <harald@redhat.de> 1.2.4-3
+- fixed #89915 and #89916
+
+* Tue Apr 29 2003 Harald Hoyer <harald@redhat.de> 1.2.4-1
+- 1.2.4 bugfix release
 
 * Wed Apr  2 2003 Harald Hoyer <harald@redhat.de> 1.2.3-3
 - Bugfix release for 9

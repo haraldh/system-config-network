@@ -27,7 +27,6 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 from rhpl import Conf
 from rhpl import ConfSMB
-import NCHardwareList
 from NC_functions import *
 from netconfpkg import Device_base
 import NCDialup
@@ -206,6 +205,7 @@ class Device(Device_base):
             #raise TypeError, _("Device not specified or alias not a number!")
 
         if not self.Type or self.Type == "" or self.Type == _("Unknown"):
+            import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Device:
@@ -358,14 +358,15 @@ class Device(Device_base):
     def activate(self, dialog = None):        
         if self.Type == ISDN:
             command = '/usr/sbin/isdnup'
+            param = [command, self.DeviceId]
         else:
-            command = '/sbin/ifup'
+            command = '/usr/sbin/usernetctl'
+            param = [command, self.DeviceId, "up"]
 
         try:
             (ret, msg) =  generic_run_dialog(\
                 command,
-                [command,
-                 self.DeviceId],
+                param,
                 catchfd = (1,2),
                 title = _('Network device activating...'),
                 label = _('Activating network device %s, '
@@ -380,12 +381,12 @@ class Device(Device_base):
         return ret, msg
 
     def deactivate(self, dialog = None):
-        command = '/sbin/ifdown'
+        command = '/usr/sbin/usernetctl'
+        param = [command, self.DeviceId, "down"]
         
         try:
             (ret, msg) = generic_run_dialog(\
-                command,
-                [command, self.DeviceId],
+                command, param,
                 catchfd = (1,2),
                 title = _('Network device deactivating...'),
                 label = _('Deactivating network device %s, '
@@ -400,12 +401,12 @@ class Device(Device_base):
         return ret, msg
 
     def configure(self):
-        command = 'redhat-config-network'
+        command = '/usr/bin/redhat-config-network'
 
         try:
-            (ret, msg) =  gtkExecWithCaptureStatus(command,
-                                                   [command],
-                                                   catchfd = (1,2))
+            (ret, msg) =  generic_run(command,
+                                      [command],
+                                      catchfd = (1,2))
         except RuntimeError, msg:
             ret = -1
             

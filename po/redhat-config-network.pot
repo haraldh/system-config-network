@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-04-29 15:42+0200\n"
+"POT-Creation-Date: 2003-05-07 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:148
+#: neat.desktop.in.h:3 src/netconf-tui.py:141
 #: src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Network Configuration"
 msgstr ""
@@ -78,13 +78,15 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#. 'on_autoSelectProfileButton_clicked' : \
+#. self.on_autoSelectProfileButton_clicked,
 #. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:135 src/netconf-cmd.py:87
+#: src/neat-control.py:132 src/netconf-cmd.py:88
 #: src/netconfpkg/gui/maindialog.py:1391
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr ""
 
-#: src/neat-control.py:136 src/netconf-cmd.py:88
+#: src/neat-control.py:133 src/netconf-cmd.py:89
 #: src/netconfpkg/gui/maindialog.py:1392
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
@@ -92,73 +94,43 @@ msgid ""
 msgstr ""
 
 #. Network Device Control Dialog
-#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:370
+#: src/neat-control.py:159 src/netconfpkg/NCDevice.py:371
 msgid "Network device activating..."
 msgstr ""
 
-#: src/neat-control.py:165 src/netconfpkg/NCDevice.py:371
+#: src/neat-control.py:162 src/netconfpkg/NCDevice.py:372
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr ""
 
-#: src/neat-control.py:185 src/neat-control.py:250
-#, python-format
-msgid "Cannot activate network device %s"
-msgstr ""
-
-#. update dialog #83640
-#: src/neat-control.py:203 src/neat-control.py:233
-#, python-format
-msgid "Cannot deactivate network device %s"
-msgstr ""
-
-#: src/neat-control.py:217
+#: src/neat-control.py:207
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr ""
 
-#. Display dialog notification of action
-#: src/neat-control.py:260
-msgid "Activating profile..."
-msgstr ""
-
-#: src/neat-control.py:263
-msgid "Activating the selected profile, please wait..."
-msgstr ""
-
-#. Disable the activate button
-#. Get the profile to activate from the menu
-#. Activate the selected profile
-#. Check results of the activation
-#: src/neat-control.py:282
-#, python-format
-msgid ""
-"Not all network interfaces in selected profile \"%s\" could be activated."
-msgstr ""
-
+#. update dialog #83640
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
-#. import time
-#. Make sure the user really wants to auto select ...
-#. Continue with auto select
-#: src/neat-control.py:309
-msgid "Attempting to auto-detect and activate a valid profile, please wait..."
+#: src/neat-control.py:227
+msgid "Switching Profiles"
 msgstr ""
 
-#: src/neat-control.py:311
-msgid "Autoselecting profile..."
+#: src/neat-control.py:228
+#, python-format
+msgid "Switching to profile %s"
 msgstr ""
 
-#. Check status of the auto select script and respond accordingly
-#. Grab any error output
-#. errstr='Error: No available profile found. Network unavailable.'
-#. Grab the profile name from the output of the script
+#: src/neat-control.py:229
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr ""
+
 #. Re-read the device list
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:350 src/netconfpkg/gui/maindialog.py:817
+#: src/neat-control.py:244 src/netconfpkg/gui/maindialog.py:817
 msgid "To be rewritten!"
 msgstr ""
 
@@ -166,6 +138,10 @@ msgstr ""
 #. self.xml.get_widget('configureButton').set_sensitive(TRUE)
 #. ???
 #. change the default profile to a more understandable name
+#: src/neat-control.py:346
+msgid " (active)"
+msgstr ""
+
 #. ??
 #. print "profile " + prof.ProfileName + " activated\n"
 #. make ctrl-C work
@@ -188,90 +164,89 @@ msgid ""
 "at https://bugzilla.redhat.com/bugzilla"
 msgstr ""
 
-#. Strange... why do I have to reinstall _() ??
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:142
+#: src/netconf-tui.py:135
 msgid "What do you want to configure?"
 msgstr ""
 
-#: src/netconf-tui.py:143
+#: src/netconf-tui.py:136
 msgid "Configure"
 msgstr ""
 
-#: src/netconf-tui.py:143
+#: src/netconf-tui.py:136
 msgid "Exit"
 msgstr ""
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:264 src/netconf-tui.py:373 src/netconf-tui.py:479
+#: src/netconf-tui.py:257 src/netconf-tui.py:366 src/netconf-tui.py:472
 #: src/netconfpkg/gui/maindialog.glade.h:17
 msgid "Name"
 msgstr ""
 
-#: src/netconf-tui.py:265 src/netconf-tui.py:374 src/netconf-tui.py:480
+#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
 #: src/netconfpkg/gui/maindialog.glade.h:10
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr ""
 
-#: src/netconf-tui.py:266
+#: src/netconf-tui.py:259
 msgid "Use DHCP"
 msgstr ""
 
-#: src/netconf-tui.py:267
+#: src/netconf-tui.py:260
 msgid "Static IP"
 msgstr ""
 
-#: src/netconf-tui.py:268
+#: src/netconf-tui.py:261
 msgid "Netmask"
 msgstr ""
 
-#: src/netconf-tui.py:269
+#: src/netconf-tui.py:262
 msgid "Default gateway IP"
 msgstr ""
 
-#: src/netconf-tui.py:277 src/netconf-tui.py:385 src/netconf-tui.py:491
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Ok"
 msgstr ""
 
-#: src/netconf-tui.py:277 src/netconf-tui.py:385 src/netconf-tui.py:491
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Cancel"
 msgstr ""
 
-#: src/netconf-tui.py:279
+#: src/netconf-tui.py:272
 msgid "Ethernet Configuration"
 msgstr ""
 
-#: src/netconf-tui.py:375 src/netconf-tui.py:481
+#: src/netconf-tui.py:368 src/netconf-tui.py:474
 msgid "ISP Phonenumber"
 msgstr ""
 
-#: src/netconf-tui.py:376 src/netconf-tui.py:482
+#: src/netconf-tui.py:369 src/netconf-tui.py:475
 msgid "ISP Login"
 msgstr ""
 
-#: src/netconf-tui.py:377 src/netconf-tui.py:483
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Password"
 msgstr ""
 
-#: src/netconf-tui.py:378
+#: src/netconf-tui.py:371
 msgid "Modem Initstring"
 msgstr ""
 
-#: src/netconf-tui.py:386 src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:379 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr ""
 
-#: src/netconf-tui.py:484
+#: src/netconf-tui.py:477
 msgid "MSN"
 msgstr ""
 
-#: src/netconf-tui.py:492
+#: src/netconf-tui.py:485
 msgid "ISDN Configuration"
 msgstr ""
 
@@ -298,20 +273,20 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Just to be safe...
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:58
+#: src/netconf.py:57
 #, python-format
 msgid "Error: %s, %s!"
 msgstr ""
 
-#: src/netconf.py:60
+#: src/netconf.py:59
 msgid "Starting text version"
 msgstr ""
 
-#: src/netconf.py:109
+#: src/netconf.py:108
 msgid "Loading Network Configuration..."
 msgstr ""
 
-#: src/netconf.py:122
+#: src/netconf.py:121
 msgid ""
 "redhat-config-network - network configuration tool\n"
 "\n"
@@ -339,7 +314,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf-cmd.py:63
+#: src/netconf-cmd.py:64
 #, python-format
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.\n"
@@ -348,64 +323,64 @@ msgid ""
 "using the text below.\n"
 msgstr ""
 
-#: src/netconf-cmd.py:86
+#: src/netconf-cmd.py:87
 #, python-format
 msgid "%s - network configuration commandline tool"
 msgstr ""
 
-#: src/netconf-cmd.py:91
+#: src/netconf-cmd.py:92
 #, python-format
 msgid "Usage: %s"
 msgstr ""
 
-#: src/netconf-cmd.py:93
+#: src/netconf-cmd.py:94
 msgid "switch / activate profile"
 msgstr ""
 
-#: src/netconf-cmd.py:95
+#: src/netconf-cmd.py:96
 msgid "export / import hardware list"
 msgstr ""
 
-#: src/netconf-cmd.py:97
+#: src/netconf-cmd.py:98
 msgid "export / import device list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:99
+#: src/netconf-cmd.py:100
 msgid "export / import profile list"
 msgstr ""
 
-#: src/netconf-cmd.py:101
+#: src/netconf-cmd.py:102
 msgid "set the root directory"
 msgstr ""
 
-#: src/netconf-cmd.py:102
+#: src/netconf-cmd.py:103
 msgid "export list (default)"
 msgstr ""
 
-#: src/netconf-cmd.py:103
+#: src/netconf-cmd.py:104
 msgid "import list"
 msgstr ""
 
-#: src/netconf-cmd.py:105
+#: src/netconf-cmd.py:106
 msgid "clear existing list prior of importing"
 msgstr ""
 
-#: src/netconf-cmd.py:107
+#: src/netconf-cmd.py:108
 msgid "import from file"
 msgstr ""
 
-#: src/netconf-cmd.py:204
+#: src/netconf-cmd.py:208
 #, python-format
 msgid "Unknown option %s\n"
 msgstr ""
 
 #. remove the last \n
-#: src/netconf-cmd.py:265
+#: src/netconf-cmd.py:269
 #, python-format
 msgid "Unknown List %s\n"
 msgstr ""
 
-#: src/netconf-cmd.py:269
+#: src/netconf-cmd.py:273
 #, python-format
 msgid "Error parsing line: %s"
 msgstr ""
@@ -633,13 +608,13 @@ msgstr ""
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:145
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
-#: src/netconfpkg/gui/ethernethardware.py:151
-#: src/netconfpkg/gui/ethernethardware.py:168
+#: src/netconfpkg/gui/ethernethardware.py:153
+#: src/netconfpkg/gui/ethernethardware.py:170
 #: src/netconfpkg/gui/tokenringhardware.py:153
 #: src/netconfpkg/gui/tokenringhardware.py:164
-#: src/netconfpkg/NCHardwareList.py:251 src/netconfpkg/NCHardwareList.py:342
-#: src/netconfpkg/NCHardwareList.py:524 src/netconfpkg/NCHardwareList.py:557
-#: src/netconfpkg/NC_functions.py:263 src/netconfpkg/NCDevice.py:208
+#: src/netconfpkg/NCHardwareList.py:255 src/netconfpkg/NCHardwareList.py:371
+#: src/netconfpkg/NCHardwareList.py:554 src/netconfpkg/NCHardwareList.py:587
+#: src/netconfpkg/NC_functions.py:261 src/netconfpkg/NCDevice.py:207
 #: src/netconfpkg/NCDevice.py:215 src/netconfpkg/NCDeviceList.py:58
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
@@ -720,14 +695,14 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/GUI_functions.py:469
+#: src/netconfpkg/gui/GUI_functions.py:544
 #, python-format
 msgid ""
 "Failed to run:\n"
 "%s"
 msgstr ""
 
-#: src/netconfpkg/gui/GUI_functions.py:472
+#: src/netconfpkg/gui/GUI_functions.py:547
 msgid ""
 "\n"
 "Succeeded. Please read the output."
@@ -1246,23 +1221,6 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. get the widgets we need
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. make ctrl-C work
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1517,17 +1475,17 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ethernethardware.py:93
+#: src/netconfpkg/gui/ethernethardware.py:94
 #: src/netconfpkg/gui/tokenringhardware.py:99
 msgid "Command failed: "
 msgstr ""
 
-#: src/netconfpkg/gui/ethernethardware.py:94
+#: src/netconfpkg/gui/ethernethardware.py:95
 #: src/netconfpkg/gui/tokenringhardware.py:100
 msgid "Output:\n"
 msgstr ""
 
-#: src/netconfpkg/gui/ethernethardware.py:96
+#: src/netconfpkg/gui/ethernethardware.py:97
 msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
@@ -1701,7 +1659,7 @@ msgstr ""
 msgid "manual"
 msgstr ""
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:113
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:111
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -1977,12 +1935,12 @@ msgstr ""
 
 #. 60016
 #. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:163
+#: src/netconfpkg/NCProfileList.py:164
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 
-#: src/netconfpkg/NCProfileList.py:165
+#: src/netconfpkg/NCProfileList.py:166
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -2028,31 +1986,32 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:68
+#: src/netconfpkg/NC_functions.py:66
 msgid "Common"
 msgstr ""
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:111 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:109 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:112 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:110 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr ""
 
 #. self.args = args
-#: src/netconfpkg/NC_functions.py:154
+#. print n[rpm.RPMTAG_NAME]
+#: src/netconfpkg/NC_functions.py:152
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 
 #. print "toinstall %s" % str(toinstall)
 #. print "plist %s" % str(plist)
-#: src/netconfpkg/NC_functions.py:169
+#: src/netconfpkg/NC_functions.py:167
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
@@ -2060,7 +2019,7 @@ msgstr ""
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:529
+#: src/netconfpkg/NC_functions.py:608
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2068,7 +2027,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:539
+#: src/netconfpkg/NC_functions.py:618
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2077,7 +2036,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:550
+#: src/netconfpkg/NC_functions.py:629
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2086,7 +2045,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:560
+#: src/netconfpkg/NC_functions.py:639
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2095,7 +2054,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:570
+#: src/netconfpkg/NC_functions.py:649
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2104,7 +2063,7 @@ msgid ""
 "%s!"
 msgstr ""
 
-#: src/netconfpkg/NC_functions.py:578
+#: src/netconfpkg/NC_functions.py:657
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2266,7 +2225,7 @@ msgstr ""
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:202
+#: src/netconfpkg/NCDevice.py:201
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr ""
@@ -2277,21 +2236,21 @@ msgstr ""
 msgid "Static routes file %s is invalid"
 msgstr ""
 
-#: src/netconfpkg/NCDevice.py:373
+#: src/netconfpkg/NCDevice.py:374
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr ""
 
-#: src/netconfpkg/NCDevice.py:390
+#: src/netconfpkg/NCDevice.py:391
 msgid "Network device deactivating..."
 msgstr ""
 
-#: src/netconfpkg/NCDevice.py:391
+#: src/netconfpkg/NCDevice.py:392
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr ""
 
-#: src/netconfpkg/NCDevice.py:393
+#: src/netconfpkg/NCDevice.py:394
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr ""
@@ -2544,7 +2503,6 @@ msgstr ""
 #: src/netconfpkg/gui/cipeconfig.glade.h:24
 #: src/netconfpkg/gui/ethernethardware.glade.h:27
 #: src/netconfpkg/gui/neat-control-monitordialog.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "eth0"
 msgstr ""
 
@@ -2552,7 +2510,6 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:27
 #: src/netconfpkg/gui/cipeconfig.glade.h:25
 #: src/netconfpkg/gui/ethernethardware.glade.h:28
-#: src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "eth1"
 msgstr ""
 
@@ -2560,7 +2517,6 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:28
 #: src/netconfpkg/gui/cipeconfig.glade.h:26
 #: src/netconfpkg/gui/ethernethardware.glade.h:29
-#: src/netconfpkg/gui/wirelessconfig.glade.h:25
 msgid "eth2"
 msgstr ""
 
@@ -2568,7 +2524,6 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:29
 #: src/netconfpkg/gui/cipeconfig.glade.h:27
 #: src/netconfpkg/gui/ethernethardware.glade.h:30
-#: src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "eth3"
 msgstr ""
 
@@ -2576,7 +2531,6 @@ msgstr ""
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:30
 #: src/netconfpkg/gui/cipeconfig.glade.h:28
 #: src/netconfpkg/gui/ethernethardware.glade.h:31
-#: src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "eth4"
 msgstr ""
 
@@ -2853,7 +2807,6 @@ msgstr ""
 
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:31
 #: src/netconfpkg/gui/ethernethardware.glade.h:32
-#: src/netconfpkg/gui/wirelessconfig.glade.h:28
 msgid "eth5"
 msgstr ""
 
@@ -3188,7 +3141,7 @@ msgstr ""
 #: src/netconfpkg/gui/dialupconfig.glade.h:45
 #: src/netconfpkg/gui/dslconfig.glade.h:18
 #: src/netconfpkg/gui/ethernetconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: src/netconfpkg/gui/wirelessconfig.glade.h:10
 #: src/netconfpkg/gui/tokenringconfig.glade.h:7
 msgid "_Activate device when computer starts"
 msgstr ""
@@ -3198,7 +3151,7 @@ msgstr ""
 #: src/netconfpkg/gui/dialupconfig.glade.h:55
 #: src/netconfpkg/gui/dslconfig.glade.h:20
 #: src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: src/netconfpkg/gui/wirelessconfig.glade.h:13
 #: src/netconfpkg/gui/tokenringconfig.glade.h:9
 msgid "_General"
 msgstr ""
@@ -3208,7 +3161,7 @@ msgstr ""
 #: src/netconfpkg/gui/dialupconfig.glade.h:58
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: src/netconfpkg/gui/wirelessconfig.glade.h:17
 #: src/netconfpkg/gui/tokenringconfig.glade.h:12
 msgid "_Nickname: "
 msgstr ""
@@ -3230,7 +3183,6 @@ msgid "CTC Configuration"
 msgstr ""
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:3
-#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -3260,13 +3212,12 @@ msgstr ""
 #: src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: src/netconfpkg/gui/wirelessconfig.glade.h:14
 #: src/netconfpkg/gui/tokenringconfig.glade.h:10
 msgid "_Hardware Device"
 msgstr ""
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:12
-#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/tokenringconfig.glade.h:11
 msgid "_Hardware Device:"
 msgstr ""
@@ -3874,12 +3825,12 @@ msgstr ""
 msgid "5.5M"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: src/netconfpkg/gui/wirelessconfig.glade.h:7
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "Network Name (SSID):"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: src/netconfpkg/gui/wirelessconfig.glade.h:8
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid ""
 "Used to manipulate encryption or scrambling keys and encryption mode. To set "
@@ -3887,41 +3838,41 @@ msgid ""
 "0xXXXXXXXX."
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid "Wireless Device Configuration"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: src/netconfpkg/gui/wirelessconfig.glade.h:11
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
 msgid "_Auto"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: src/netconfpkg/gui/wirelessconfig.glade.h:12
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
 msgid "_Channel:"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
 msgid "_Key (use 0x for hex):"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
 msgid "_Mode:"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: src/netconfpkg/gui/wirelessconfig.glade.h:18
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:23
 msgid "_Specified:"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: src/netconfpkg/gui/wirelessconfig.glade.h:19
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
 msgid "_Transmit Rate:"
 msgstr ""
 
-#: src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Wireless Settings"
 msgstr ""
 

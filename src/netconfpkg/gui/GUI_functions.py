@@ -331,6 +331,81 @@ def xml_signal_autoconnect (xml, map):
         else:                
             xml.signal_connect(signal, func)
 
+
+def gui_run(command, argv, searchPath = 0,
+              root = '/', stdin = 0,
+              catchfd = 1, closefd = -1):
+    import gtk
+    import os
+    import select
+    import string
+    
+    if not os.access (root + command, os.X_OK):
+	raise RuntimeError, command + " can not be run"
+
+    (read, write) = os.pipe()
+
+    childpid = os.fork()
+    if (not childpid):
+        if (root and root != '/'): os.chroot (root)
+        if isinstance(catchfd, tuple):
+            for fd in catchfd:
+                os.dup2(write, fd)
+        else:
+            os.dup2(write, catchfd)
+	os.close(write)
+	os.close(read)
+
+	if closefd != -1:
+	    os.close(closefd)
+
+	if stdin:
+	    os.dup2(stdin, 0)
+	    os.close(stdin)
+
+	if (searchPath):
+	    os.execvp(command, argv)
+	else:
+	    os.execv(command, argv)
+
+	sys.exit(1)
+    try:
+        os.close(write)
+
+        rc = ""
+        s = "1"
+        while (s):
+            try:
+                (fdin, fdout, fderr) = select.select([read], [], [], 0.1)
+            except:
+                fdin = []
+                pass
+
+            while gtk.events_pending():
+                gtk.mainiteration()
+            
+            if len(fdin):
+                s = os.read(read, 100)
+                rc = rc + s
+
+    except Exception, e:
+        os.kill(childpid, 15)
+        raise e
+        
+    os.close(read)
+    
+    try:
+        (pid, status) = os.waitpid(childpid, 0)
+    except OSError, (errno, msg):
+        print __name__, "waitpid:", msg
+
+    if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
+        status = os.WEXITSTATUS(status)
+    else:
+        status = -1
+
+    return (status, rc)
+
 __cancelPressed = None
 __dialogClosed = None
 
@@ -435,7 +510,7 @@ def gui_run_dialog(command, argv, searchPath = 0,
                 raise CancelException
             
             if len(fdin):
-                s = os.read(read, 100)
+                s = os.read(read, 1024)
                 rc = rc + s
                 iter = buffer.get_end_iter()
                 buffer.insert(iter, str(s), len(s))
@@ -509,4 +584,5 @@ def __getXmlFile():
     return __xmlfile
 
 set_generic_run_dialog_func(gui_run_dialog)
+set_generic_run_func(gui_run)
 

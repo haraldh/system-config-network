@@ -39,13 +39,12 @@ if not "/usr/share/" + PROGNAME in sys.path:
 cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
 
-
-PROGNAME='redhat-config-network'
-
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
+import __builtin__
+__builtin__.__dict__['_'] = _
 
 os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 

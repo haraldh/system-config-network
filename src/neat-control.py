@@ -19,7 +19,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-import gettext
 
 if not '/usr/lib/rhs/python' in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -31,14 +30,12 @@ if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
 PROGNAME='redhat-config-network'
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-except IOError:
-    import __builtin__
-    __builtin__.__dict__['_'] = unicode    
+import locale
+from rhpl.translate import _, N_, textdomain_codeset
+locale.setlocale(locale.LC_ALL, "")
+textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
+import __builtin__
+__builtin__.__dict__['_'] = _
 
 import signal
 import os
@@ -82,8 +79,8 @@ class mainDialog:
             'on_monitorButton_clicked' : self.on_monitorButton_clicked,
             'on_profileActivateButton_clicked' : \
             self.on_profileActivateButton_clicked,
-            'on_autoSelectProfileButton_clicked' : \
-            self.on_autoSelectProfileButton_clicked,
+#            'on_autoSelectProfileButton_clicked' : \
+#            self.on_autoSelectProfileButton_clicked,
             'on_interfaceClist_select_row' : (\
             self.on_generic_clist_select_row,
             self.xml.get_widget('activateButton'),
@@ -179,12 +176,7 @@ class mainDialog:
             (ret, msg) = dev.activate()
             dlg.destroy()
             
-            if NetworkDevice().find(device):
-                self.update_dialog()
-            else:
-                errorString = _('Cannot activate network device %s') \
-                              % (device.DeviceId)
-                generic_longinfo_dialog(errorString, msg, self.dialog);
+            self.update_dialog()
 
         self.tag = gtk.timeout_add(4000, self.update_dialog)
             
@@ -197,91 +189,47 @@ class mainDialog:
             return
         if dev and device:
             (ret, msg) = dev.deactivate()
-            if not ret:
-                self.update_dialog()
-            else:
-                errorString = _('Cannot deactivate network device %s')\
-                              % (device.deviceId)
-                generic_longinfo_dialog(errorString, msg, self.dialog);
+            self.update_dialog()
 
     def on_configureButton_clicked(self, button):
         device = self.clist_get_nickname()
+        if not device:
+            return
+        
         for dev in getDeviceList():
             if dev.DeviceId == device:
                 break
         else:
             return
-        if device:
-            (ret, msg) = dev.configure()
-            if ret:
-                errorString = _('Cannot configure network device %s')\
-                              % (device)
-                generic_longinfo_dialog(errorString, msg, self.dialog);
+        
+        (ret, msg) = dev.configure()
+        if ret:
+            errorString = _('Cannot configure network device %s')\
+                          % (device)
+            generic_longinfo_dialog(errorString, msg, self.dialog);
+            
         # update dialog #83640
+        # Re-read the device list
+        self.devicelist = self.getProfDeviceList(refresh=true)
+        self.activedevicelist = NetworkDevice().get()
+        # Update the gui
+        self.hydrateProfiles(refresh = TRUE)
+        self.hydrate(refresh = TRUE)
+        self.oldprofile = None # forces a re-read of oldprofile
         self.update_dialog()
         
-    def activate_new_profile(self, profile):
-        profilelist = getProfileList()        
-        aprof = self.get_active_profile()
-        print "Active Device List "
-        print aprof.ActiveDevices
-        for device in getDeviceList():
-            if device.DeviceId in aprof.ActiveDevices:
-                continue
-            (ret, msg) = device.deactivate()
-            if ret:
-                errorString = _('Cannot deactivate network device %s')\
-                              % (device.deviceId)
-                generic_longinfo_dialog(errorString, msg, self.dialog);
-
-        log.log(3, "Switching to profile %s" % profile)
-        profilelist.switchToProfile(profile)
-        profilelist.save()
-        aprof = profilelist.getActiveProfile()
-        aprof = self.get_active_profile()
-        
-        log.log(3, "Active Device List ")
-        log.log(3, str(aprof.ActiveDevices))
-
-        for device in getDeviceList():
-            if device.DeviceId in aprof.ActiveDevices:
-                (ret, msg) = device.activate()
-                if ret:
-                    errorString = _('Cannot activate network device %s') \
-                                  % (device.DeviceId)
-                    generic_longinfo_dialog(errorString, msg, self.dialog);
-        
-        self.update_dialog()
-
-        return 0
-
     def on_profileActivateButton_clicked(self, button):
-        # Display dialog notification of action
-        dlg = gtk.Dialog(_('Activating profile...'),
-                         self.dialog,
-                         gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT)
-        label=gtk.Label(_('Activating the selected profile, please wait...'))
-        dlg.vbox.add(label)
-        dlg.set_border_width(10)
-        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        label.show()
-        dlg.vbox.show()
-        dlg.show_now()
-        idle_func()
-        
-        # Disable the activate button
-        self.xml.get_widget('profileActivateButton').set_sensitive(FALSE)
-        # Get the profile to activate from the menu
-        profilelist = getProfileList()
         profile = self.get_active_profile().ProfileName
-        # Activate the selected profile
-        status=self.activate_new_profile(profile)
-        dlg.destroy()
-        # Check results of the activation
-        if status != 0:
-            generic_error_dialog(_('Not all network interfaces in '\
-                                   'selected profile \"%s\" could '\
-                                   'be activated.') %(profile))
+
+        generic_run_dialog(
+            command = "/usr/bin/redhat-config-network-cmd",
+            argv = [ "redhat-config-network-cmd", "-a", "-p", profile ],
+            title = _("Switching Profiles"),
+            label = _("Switching to profile %s") % profile,
+            errlabel = _("Failed to switch to profile %s") % profile,
+            dialog = self.dialog)
+                           
+
         # Re-read the device list
         self.devicelist = self.getProfDeviceList(refresh=true)
         self.activedevicelist = NetworkDevice().get()
@@ -290,60 +238,6 @@ class mainDialog:
         self.oldprofile = None # forces a re-read of oldprofile
         self.hydrateProfiles()
         self.update_dialog()
-
-    def on_autoSelectProfileButton_clicked(self, button):
-        #import time
-        import popen2
-        import re
-        # Make sure the user really wants to auto select ...
-        yesno=generic_yesno_dialog('The system will now attempt to ' \
-                                   'auto-detect and activate a valid network '\
-                                   'profile.\n\nWarning: This process stops ' \
-                                   'and restarts the network. Some currently'\
-                                   ' active programs which are using the '\
-                                   'network (servers in particular) may '\
-                                   'exhibit problems afterwards.\n\nDo you '\
-                                   'want to continue?')
-        if yesno != gtk.RESPONSE_YES: return
-        # Continue with auto select
-        label=gtk.Label(_('Attempting to auto-detect and activate '\
-                          'a valid profile, please wait...'))
-        dlg = gtk.Dialog(_('Autoselecting profile...'),
-                         self.dialog,
-                         gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT)
-        dlg.vbox.add(label)
-        dlg.set_border_width(10)
-        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        label.show()
-        dlg.vbox.show()
-        dlg.show_now()
-        idle_func()
-        asp=popen2.Popen3(autoselect_profile_cmd,capturestderr=true)
-        status=asp.wait()
-        dlg.destroy()
-        # Check status of the auto select script and respond accordingly
-        if status != 0:		
-            # Grab any error output
-            errstr="Error:"
-            for s in asp.childerr.readlines(): errstr=errstr + " " +s
-            #errstr='Error: No available profile found. Network unavailable.'
-            generic_error_dialog(_(errstr))
-        else:
-            # Grab the profile name from the output of the script
-            profile = None
-            for s in asp.fromchild.readlines(): 
-                m=re.search('(?<=Using\ profile: ).*',s)
-                if m != None:
-                    profile=m.group()
-                    self.set_profile_active(profile)
-            # Re-read the device list
-            self.devicelist = self.getProfDeviceList(refresh=true) 
-            self.activedevicelist = NetworkDevice().get()
-            # Update the gui
-            self.oldprofile = None # forces a re-read of oldprofile
-            self.hydrate()
-            self.hydrateProfiles()
-            self.update_dialog()
 
     def on_monitorButton_clicked(self, button):
         # TBD
@@ -395,7 +289,7 @@ class mainDialog:
         dev = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
         return dev
 
-    def hydrate(self):
+    def hydrate(self, refresh = None):
         clist = self.xml.get_widget('interfaceClist')
         clist.clear()
         clist.set_row_height(20)
@@ -428,9 +322,9 @@ class mainDialog:
                               device_mask)
             row = row + 1
 
-    def hydrateProfiles(self):
-        profilelist = getProfileList()
-            
+    def hydrateProfiles(self, refresh = None):
+        profilelist = getProfileList(refresh)
+        
         self.no_profileentry_update = true # ???
         omenu = self.xml.get_widget('profileOption')
 
@@ -448,6 +342,8 @@ class mainDialog:
             import netconf
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
+            if prof.Active == true:
+                name += _(" (active)")
             menu_item = gtk.MenuItem (name)
             menu_item.show ()
             menu_item.connect ("activate",
@@ -485,7 +381,7 @@ class mainDialog:
     def getProfDeviceList(self, refresh=None):
         profilelist = getProfileList(refresh)
         prof=profilelist.getActiveProfile()
-        devlist = getDeviceList()
+        devlist = getDeviceList(refresh)
         activedevlist = []
         for devid in prof.ActiveDevices:
             for dev in devlist:
