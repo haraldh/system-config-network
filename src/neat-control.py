@@ -311,7 +311,8 @@ class mainDialog:
             if dev.Alias and dev.Alias != "":
                 devname = devname + ':' + str(dev.Alias)
 
-            if devname in self.activedevicelist:
+            if devname in self.activedevicelist or \
+                   dev.DeviceId in self.activedevicelist:
                 status = ACTIVE
                 status_pixmap = self.on_xpm
                 status_mask = self.on_mask
@@ -439,5 +440,5 @@ if __name__ == '__main__':
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.41 $"
+__date__ = "$Date: 2003/10/24 14:49:45 $"
+__version__ = "$Revision: 1.42 $"
