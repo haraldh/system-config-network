@@ -105,7 +105,15 @@ class Device(Device_base):
 #         else:
 #             return "Device %s (%s)" % (self.DeviceId, self.Device)
 
-            
+
+    def getDialog(self):
+        raise "getDialog not Implemented"
+
+    def getWizard(self):
+        raise "getWizard not Implemented"
+
+    def isType(self, device):
+        raise "isType not Implemented"
 
     def createDialup(self):
         if self.Type:

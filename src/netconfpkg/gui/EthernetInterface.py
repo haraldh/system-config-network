@@ -241,3 +241,5 @@ class EthernetInterface(InterfaceCreator):
 
         self.toplevel.destroy()
         gtk.mainquit()
+
+NCDevEthernet.setDevEthernetWizard(EthernetInterface)

@@ -26,27 +26,19 @@ import gtk.glade
 # do not remove this (needed to access methods of self.druid
 import gnome.ui
 
-from ModemInterface import ModemInterface
-from ADSLInterface import ADSLInterface
-from IsdnInterface import IsdnInterface
-from GenericInterface import GenericInterface
-from EthernetInterface import EthernetInterface
-from TokenRingInterface import TokenRingInterface
-from CipeInterface import CipeInterface
-from WirelessInterface import WirelessInterface
-from netconfpkg import *
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg.NCDeviceFactory import getDeviceFactory
 
-if os.access("/usr/sbin/ciped-cb", os.F_OK):
-    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-                   ADSLInterface, TokenRingInterface, CipeInterface,
-                   WirelessInterface ]
-else:
-    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
-                   ADSLInterface, TokenRingInterface, WirelessInterface ]
+#if os.access("/usr/sbin/ciped-cb", os.F_OK):
+#    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#                   ADSLInterface, TokenRingInterface, CipeInterface,
+#                   WirelessInterface ]
+#else:
+#    Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#                   ADSLInterface, TokenRingInterface, WirelessInterface ]
 
 
 
@@ -85,7 +77,12 @@ class NewInterfaceDialog:
         self.interface_clist.column_titles_passive ()
         self.interface_clist.set_row_height(20)
 
-        for iface_creator in Interfaces:
+        interfaces = []
+        df = getDeviceFactory()
+        for type in df:            
+            interfaces.append(df.getDeviceClass(type)().getWizard())
+            
+        for iface_creator in interfaces:
             iface = iface_creator (self.toplevel, do_save = None, druid = self.druid)
             iftype = iface.get_type()
             

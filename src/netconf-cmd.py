@@ -39,7 +39,12 @@ sys.argv = sys.argv[:1]
 import getopt
 import signal
 import os
+os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 import gettext
+import os.path
+import string
+from netconfpkg import *
+from rhpl.genClass import *
 
 PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
@@ -51,44 +56,36 @@ except IOError:
     import __builtin__
     __builtin__.__dict__['_'] = unicode    
 
-os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
-
-import os.path
-import string
-from netconfpkg import *
-from rhpl import genClass
 
 def Usage():
-    print _("redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
+    print _("redhat-config-network-cmd - network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
 
 def printClass(classname, parent = None):    
     for child, attr in classname.Attributes.items():
-        if child == genClass.SELF: continue
+        if child == SELF: continue
 
         if parent: pname = "%s.%s" % (parent, classname.Attributes[SELF][NAME])
         else: pname = classname.Attributes[SELF][NAME]
         
-        if attr[TYPE] != genClass.LIST:
-            print "%s.%s" % (pname, child)
+        if attr[TYPE] != LIST:
+            #print "%s.%s" % (pname, child)
+            pass
         else:
             printClass(getattr(netconfpkg, child),
                        pname)
 
 def printObj(obj, parent = None):
-#    if parent: pname = "%s.%s" % (parent, obj._attributes[SELF][NAME])
-#    else: pname = obj._attributes[SELF][NAME]
-    
     for child, attr in obj._attributes.items():
-        if child == genClass.SELF: continue
+        if child == SELF: continue
 
         val = None
         
         if hasattr(obj, child):
             val = getattr(obj, child)
             
-        if attr[TYPE] != genClass.LIST:
+        if attr[TYPE] != LIST:
             if val != None:
-                if attr[TYPE] != genClass.BOOL:
+                if attr[TYPE] != BOOL:
                     print "%s.%s=%s" % (parent, child, str(val))
                 else:
                     if val: print "%s.%s=true" % (parent, child)
@@ -96,12 +93,13 @@ def printObj(obj, parent = None):
                 
         else:
             if val != None:
-                printObj(val, "%s.%s" % (parent, child))
+                #printObj(val, "%s.%s" % (parent, child))
+                pass
 
 if __name__ == '__main__':
-#    if os.getuid() != 0:
-#        print _("Please restart %s with root permissions!") % (sys.argv[0])
-#        sys.exit(10)
+    if os.getuid() != 0:
+        print _("Please restart %s with root permissions!") % (sys.argv[0])
+        sys.exit(10)
         
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass

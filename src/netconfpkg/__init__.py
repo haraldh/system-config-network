@@ -23,6 +23,8 @@
 # is) ;). Nice for plugin mechanism.
 import netconfpkg
 
+netconfpkg.Use_Alchemist = None
+
 from rhpl.genClass import GenClass_read_classfile
 
 for idl_file in [ "DeviceList.idl",

@@ -60,46 +60,6 @@ import os.path
 import string
 from netconfpkg import *
 
-def Usage():
-    print _("redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
-
-# Argh, another workaround for broken gtk/gnome imports...
-if __name__ == '__main__':
-
-    if os.getuid() != 0:
-        print _("Please restart %s with root permissions!") % (sys.argv[0])
-        sys.exit(10)
-        
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    class BadUsage: pass
-    updateNetworkScripts()
-
-    if sys.argv[0][-4:] == '-cmd':
-        progname = os.path.basename(sys.argv[0])
-
-        try:
-            opts, args = getopt.getopt(cmdline, "p:th", ["profile=", "test", "help"])
-            for opt, val in opts:
-                if opt == '-p' or opt == '--profile':
-                    profilelist = getProfileList()
-                    profilelist.switchToProfile(val)
-                    sys.exit(0)
-
-                if opt == '-h' or opt == '--help':
-                    Usage()
-                    sys.exit(0)
-
-                if opt == '-t' or opt == '--test':
-                    print "Just a test for getopt"
-                    sys.exit(0)
-
-            raise BadUsage
-
-        except (getopt.error, BadUsage):
-            Usage()
-            sys.exit(1)
-
-
 from netconfpkg.gui import *
 from netconfpkg.Control import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
@@ -601,40 +561,7 @@ class mainDialog:
 
     def editDevice(self, device):
         button = 0
-        type = device.Type
-        device.createDialup()
-        device.createCipe()
-        device.createWireless()
-
-        if type == ETHERNET:
-            cfg = ethernetConfigDialog(device)
-
-        elif type == TOKENRING:
-            cfg = tokenringConfigDialog(device)
-
-        elif type == ISDN:
-            cfg = ISDNDialupDialog(device)
-
-        elif type == MODEM:
-            cfg = ModemDialupDialog(device)
-
-        elif type == DSL:
-            cfg = dslConfigDialog(device)
-
-        elif type == CIPE:
-            cfg = cipeConfigDialog(device)
-
-        elif type == WIRELESS:
-            cfg = wirelessConfigDialog(device)
-
-        elif type == CTC or type == IUCV:
-            cfg = ctcConfigDialog(device)
-
-        else:
-            generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)
-            return button
-            
-        dialog = cfg.xml.get_widget ("Dialog")
+        dialog = device.getDialog()
         dialog.set_transient_for(self.dialog)
         button = dialog.run()
         dialog.destroy()
@@ -1477,20 +1404,32 @@ class mainDialog:
         devicelist.commit()
         self.hydrate()
 
+def Usage():
+    print _("redhat-config-network - graphical network configuration tool\n\nUsage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]")
+    print _("  -p, --profile\t\tShow profiles.")
+    print _("  -n, --noprofile\tDo not show profiles.")
+    print _("  -h, --help\t\tShows this help.")
+
 # make ctrl-C work
 if __name__ == '__main__':
+    class BadUsage: pass
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     progname = os.path.basename(sys.argv[0])
 
     showprofile = 1
 
     try:
-        opts, args = getopt.getopt(cmdline, "pn", ["profile", "noprofile"])
+        opts, args = getopt.getopt(cmdline, "pnh", ["profile",
+                                                    "noprofile",
+                                                    "help"])
         for opt, val in opts:
             if opt == '-p' or opt == '--profile':
                 showprofile = 1
             if opt == '-n' or opt == '--noprofile':
                 showprofile = 0
+            if opt == '-h' or opt == '--help':
+                Usage()
+                sys.exit(0)
             else: raise BadUsage
 
     except (getopt.error, BadUsage):

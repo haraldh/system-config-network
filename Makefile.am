@@ -8,16 +8,13 @@ EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
 	intltool-extract.in intltool-merge.in intltool-update.in \
 	po/po2tbl.sed.in ChangeLog redhat-config-network-cmd.console
 
-icons1dir=$(datadir)/kontrol-panel
-icons2dir=$(pkgdatadir)
+iconsdir=$(pkgdatadir)
 
-icons1_DATA=neat.desktop internet-druid.desktop neat-control.desktop
-icons2_DATA=neat.desktop internet-druid.desktop neat-control.desktop
+icons_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
-icons1_in_files=$(icons1_DATA:.desktop=.desktop.in)
-icons2_in_files=$(icons2_DATA:.desktop=.desktop.in)
+icons_in_files=$(icons_DATA:.desktop=.desktop.in)
 
-CLEANFILES=$(icons1_DATA) $(icons2_DATA)
+CLEANFILES=$(icons_DATA)
 DISTCLEANFILES=intltool-extract intltool-merge intltool-update
 MAINTAINERCLEANFILES=ChangeLog
 

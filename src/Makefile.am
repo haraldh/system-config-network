@@ -1,6 +1,6 @@
 SUBDIRS=netconfpkg pixmaps doc
 
-PYTHON_FILES = netconf.py netconf-tui.py neat-control.py
+PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py
 
 GLADE_FILES = maindialog.glade neat-control.glade
 
@@ -14,7 +14,7 @@ all-local:
 	rm -f redhat-config-network-druid
 	rm -f  redhat-control-network
 	ln -s netconf.py redhat-config-network
-	ln -s netconf.py redhat-config-network-cmd
+	ln -s netconf-cmd.py redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network-druid
 	ln -s neat-control.py redhat-control-network
 
@@ -30,6 +30,7 @@ moduleinfo_DATA = module-info
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir) $(DESTDIR)$(bindir)
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
+	install -m 0755 $(srcdir)/netconf-cmd.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/neat-control.py $(DESTDIR)$(pkgdatadir)/
 	softdir=$(pkgdatadir); \
@@ -41,7 +42,7 @@ install-exec-local:
 	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/neat-control; \
 	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/redhat-control-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
-	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
+	ln  -fs ../$${softdir}/netconf-cmd.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-druid; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \

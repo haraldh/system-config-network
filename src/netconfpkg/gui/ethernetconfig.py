@@ -37,6 +37,7 @@ from rhpl import ethtool
 from gtk import TRUE
 from gtk import FALSE
 
+
 class ethernetConfigDialog(deviceConfigDialog):
     def __init__(self, device):
         glade_file = "sharedtcpip.glade"
@@ -110,3 +111,4 @@ class ethernetConfigDialog(deviceConfigDialog):
             self.device.HardwareAddress = hwaddr
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
             
+NCDevEthernet.setDevEthernetDialog(ethernetConfigDialog)

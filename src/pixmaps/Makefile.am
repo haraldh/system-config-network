@@ -23,10 +23,6 @@ netconfimg_DATA = \
 	blue_empty_led.xpm isdn.xpm off.xpm plip.xpm red_empty_led.xpm \
 	blue_led.xpm ethernet.xpm loopback.xpm on.xpm ppp.xpm red_led.xpm
 
-netconfkontroldir = $(datadir)/kontrol-panel/icons
-
-netconfkontrol_DATA = neat.png neat-control.xpm
-
 netconfpixmapdir = $(datadir)/pixmaps
 
 netconfpixmap_DATA = neat.png neat-control.xpm

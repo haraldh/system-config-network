@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ko\n"
-"POT-Creation-Date: 2002-11-13 16:07+0100\n"
+"POT-Creation-Date: 2002-11-18 13:47+0100\n"
 "PO-Revision-Date: 2002-08-23 09:17+1000\n"
 "Last-Translator: Michelle Kim <mkim@redhat.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -34,29 +34,13 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #. Just to be safe...
-#: src/netconf.py:64
-msgid ""
-"redhat-config-network-cmd - Python network configuration commandline tool\n"
-"\n"
-"Usage: redhat-config-network-cmd -p --profile <profile>"
-msgstr ""
-"redhat-config-network-cmd - 파이썬(Python) 네트웍 설정 명령행 도구\n"
-"\n"
-"사용법: redhat-config-network-cmd -p --profile <프로파일>"
-
-#. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:70
-#, python-format
-msgid "Please restart %s with root permissions!"
-msgstr "Root 권한으로 %s (을)를 재시작 하시기 바랍니다!"
-
-#: src/netconf.py:121
+#: src/netconf.py:81
 msgid "Common"
 msgstr "일반"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
-#: src/netconf.py:325
+#: src/netconf.py:285
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -65,57 +49,53 @@ msgid ""
 msgstr ""
 
 #. change the default profile to a more understandable name
-#: src/netconf.py:493 src/netconf.py:506
+#: src/netconf.py:453 src/netconf.py:466
 msgid "Do you want to save your changes?"
 msgstr "변경하신 내용을 저장하시겠습니까?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:576
+#: src/netconf.py:536
 msgid "The Loopback device can not be edited!"
 msgstr "루프백 장치를 편집할 수 없습니다!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
-msgid "This device can not be edited with this tool!"
-msgstr "이 장치는 이 설정 프로그램으로 편집할 수 없습니다!"
-
-#: src/netconf.py:656
+#: src/netconf.py:583
 msgid "The Loopback device can not be removed!"
 msgstr "루프백 장치는 삭제하실 수 없습니다!"
 
-#: src/netconf.py:659
+#: src/netconf.py:586
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "정말로 \"%s\" 장치를 삭제하시겠습니까?"
 
-#: src/netconf.py:687
+#: src/netconf.py:614
 msgid "You have made some changes in your configuration."
 msgstr "여러분은 일부 설정을 변경 하셨습니다."
 
-#: src/netconf.py:688
+#: src/netconf.py:615
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
 
-#: src/netconf.py:690
+#: src/netconf.py:617
 msgid "Do you want to continue?"
 msgstr "계속 하시겠습니까?"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:701 src/neat-control.py:129
+#: src/netconf.py:628 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "네트워크 장치 활성화..."
 
-#: src/netconf.py:703 src/neat-control.py:131
+#: src/netconf.py:630 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "네트웍 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
 
-#: src/netconf.py:712
+#: src/netconf.py:639
 #, fuzzy, python-format
 msgid ""
 "Cannot activate network device %s\n"
@@ -126,7 +106,7 @@ msgstr "네트워크 장치 %s를 활성화할 수 없습니다"
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:735 src/neat-control.py:170
+#: src/netconf.py:662 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "다시 작성해야 합니다!"
 
@@ -143,46 +123,46 @@ msgstr "다시 작성해야 합니다!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:898
+#: src/netconf.py:825
 msgid "The Loopback device can not be disabled!"
 msgstr "루프백 장치를 비활성화할 수 없습니다!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1192 src/netconf.py:1269
+#: src/netconf.py:1119 src/netconf.py:1196
 msgid "The name may only contain letters and digits!"
 msgstr "이름에는 글자와 숫자만 사용가능 합니다!"
 
-#: src/netconf.py:1196 src/netconf.py:1273
+#: src/netconf.py:1123 src/netconf.py:1200
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "프로파일의 이름을\"%s\"으로 하실 수 없습니다!"
 
-#: src/netconf.py:1201 src/netconf.py:1278
+#: src/netconf.py:1128 src/netconf.py:1205
 msgid "The profile name already exists!"
 msgstr "프로파일 이름이 이미 존재합니다!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1250
+#: src/netconf.py:1177
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"기본\" 프로파일을 다른이름으로 바꾸실 수 없습니다!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1299
+#: src/netconf.py:1226
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "\"default\" 프로파일을 삭제할 수 없습니다!"
 
-#: src/netconf.py:1302
+#: src/netconf.py:1229
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "정말로 \"%s\" 프로파일을 삭제하시겠습니까?"
 
 #. clist.clear()
-#: src/netconf.py:1394
+#: src/netconf.py:1321
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -191,13 +171,36 @@ msgstr ""
 "이러한 유형은 편집하실 수 없습니다."
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1436
+#: src/netconf.py:1363
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "정말로 \"%s\" (을)를 삭제하시겠습니까?"
 
 #. remove hardware
 #. remove all devices used this hardware
+#: src/netconf.py:1408
+#, fuzzy
+msgid ""
+"redhat-config-network - graphical network configuration tool\n"
+"\n"
+"Usage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
+msgstr ""
+"redhat-config-network-cmd - 파이썬(Python) 네트웍 설정 명령행 도구\n"
+"\n"
+"사용법: redhat-config-network-cmd -p --profile <프로파일>"
+
+#: src/netconf.py:1409
+msgid "  -p, --profile\t\tShow profiles."
+msgstr ""
+
+#: src/netconf.py:1410
+msgid "  -n, --noprofile\tDo not show profiles."
+msgstr ""
+
+#: src/netconf.py:1411
+msgid "  -h, --help\t\tShows this help."
+msgstr ""
+
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -310,8 +313,8 @@ msgstr "전화 번호:"
 #: src/netconfpkg/gui/ethernethardware.py:138
 #: src/netconfpkg/gui/ethernethardware.py:155
 #: src/netconfpkg/gui/tokenringhardware.py:144
-#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
-#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:188
+#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:240
+#: src/netconfpkg/NCDevice.py:247 src/netconfpkg/NCHardwareList.py:188
 #: src/netconfpkg/NCHardwareList.py:303 src/netconfpkg/NC_functions.py:174
 #: src/netconfpkg/NC_functions.py:239
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
@@ -851,6 +854,13 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. do not remove this (needed to access methods of self.druid
+#. if os.access("/usr/sbin/ciped-cb", os.F_OK):
+#. Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#. ADSLInterface, TokenRingInterface, CipeInterface,
+#. WirelessInterface ]
+#. else:
+#. Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#. ADSLInterface, TokenRingInterface, WirelessInterface ]
 #. get the widgets we need
 #. Initialize the clist
 #. Add the interfaces that have no druid yet
@@ -965,6 +975,10 @@ msgstr "표준 설정 다이얼로그를 보기위해 끝내기를 누르십시�
 #: src/netconfpkg/gui/GenericInterface.py:97
 msgid "Then, at first, enter the nickname for the device."
 msgstr "그러면, 우선, 장치에 대한 별명을 입력하십시오."
+
+#: src/netconfpkg/gui/GenericInterface.py:133
+msgid "This device can not be edited with this tool!"
+msgstr "이 장치는 이 설정 프로그램으로 편집할 수 없습니다!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1203,20 +1217,20 @@ msgstr ""
 #. self.Alias)
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#: src/netconfpkg/NCDevice.py:130 src/netconfpkg/NCDevice.py:141
-#: src/netconfpkg/NCDevice.py:152
+#: src/netconfpkg/NCDevice.py:138 src/netconfpkg/NCDevice.py:149
+#: src/netconfpkg/NCDevice.py:160
 msgid "Device type not specified"
 msgstr "장치 타입이 지정되지 않았습니다"
 
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:229
+#: src/netconfpkg/NCDevice.py:237
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, 장치가 지정되지 않았거나 알리아스가 숫자가 아닙니다!"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
-#: src/netconfpkg/NCDevice.py:271
+#: src/netconfpkg/NCDevice.py:279
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "%s에 대한 정적 라우트 파일은 부적절합니다"
@@ -1244,12 +1258,6 @@ msgstr "%s에 대한 정적 라우트 파일은 부적절합니다"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from netconfpkg.NCDevice import Device
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
-#. print self.data[i]
-#: src/netconfpkg/NCDeviceList.py:69
-#, python-format
-msgid "Error loading Device %s!\n"
-msgstr "%s 장치를 로딩하는데 에러가 났습니다!\n"
-
 #.
 #. clear all Dialer sections in wvdial.conf
 #. before the new Dialer sections written
@@ -3775,6 +3783,12 @@ msgstr "인터넷 연결 설정"
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "인터넷 설정 마법사"
+
+#~ msgid "Please restart %s with root permissions!"
+#~ msgstr "Root 권한으로 %s (을)를 재시작 하시기 바랍니다!"
+
+#~ msgid "Error loading Device %s!\n"
+#~ msgstr "%s 장치를 로딩하는데 에러가 났습니다!\n"
 
 #~ msgid "Error opening/writing %s: %s!"
 #~ msgstr "%s를 열고/쓰는데 에러가 났습니다: %s!"

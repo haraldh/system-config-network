@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2002-11-13 16:07+0100\n"
+"POT-Creation-Date: 2002-11-18 13:47+0100\n"
 "PO-Revision-Date: 2002-11-14 11:35+1000\n"
 "Last-Translator: Ben Wu <hpwu@redhat.com>\n"
 "Language-Team: Chinese (Traditional) <i18n-list@redhat.com>\n"
@@ -35,29 +35,13 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #. Just to be safe...
-#: src/netconf.py:64
-msgid ""
-"redhat-config-network-cmd - Python network configuration commandline tool\n"
-"\n"
-"Usage: redhat-config-network-cmd -p --profile <profile>"
-msgstr ""
-"redhat-config-network-cmd - Python 網路組態設定命令列工具程式\n"
-"\n"
-"用法: redhat-config-network-cmd -p --profile <profile>"
-
-#. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:70
-#, python-format
-msgid "Please restart %s with root permissions!"
-msgstr "請使用 root 的權限重新啟動 %s！"
-
-#: src/netconf.py:121
+#: src/netconf.py:81
 msgid "Common"
 msgstr "共同的"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
-#: src/netconf.py:325
+#: src/netconf.py:285
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -70,56 +54,52 @@ msgstr ""
 "或重新開機。"
 
 #. change the default profile to a more understandable name
-#: src/netconf.py:493 src/netconf.py:506
+#: src/netconf.py:453 src/netconf.py:466
 msgid "Do you want to save your changes?"
 msgstr "您想要儲存變更嗎？"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:576
+#: src/netconf.py:536
 msgid "The Loopback device can not be edited!"
 msgstr "無法編輯 Loopback 裝置！"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
-msgid "This device can not be edited with this tool!"
-msgstr "無法使用這個工具程式編輯該裝置！"
-
-#: src/netconf.py:656
+#: src/netconf.py:583
 msgid "The Loopback device can not be removed!"
 msgstr "無法移除 Loopback 裝置！"
 
-#: src/netconf.py:659
+#: src/netconf.py:586
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "您真的要刪除 \"%s\" 裝置嗎?"
 
-#: src/netconf.py:687
+#: src/netconf.py:614
 msgid "You have made some changes in your configuration."
 msgstr "您已經更改了一些設定。"
 
-#: src/netconf.py:688
+#: src/netconf.py:615
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "為了要啟用網路裝置 %s，必須先儲存更改。"
 
-#: src/netconf.py:690
+#: src/netconf.py:617
 msgid "Do you want to continue?"
 msgstr "您想要繼續嗎？"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:701 src/neat-control.py:129
+#: src/netconf.py:628 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "網路裝置啟動中..."
 
-#: src/netconf.py:703 src/neat-control.py:131
+#: src/netconf.py:630 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "網路裝置 %s 啟動中，請稍後..."
 
-#: src/netconf.py:712
+#: src/netconf.py:639
 #, python-format
 msgid ""
 "Cannot activate network device %s\n"
@@ -132,7 +112,7 @@ msgstr ""
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:735 src/neat-control.py:170
+#: src/netconf.py:662 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "即將重新寫入！"
 
@@ -149,46 +129,46 @@ msgstr "即將重新寫入！"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:898
+#: src/netconf.py:825
 msgid "The Loopback device can not be disabled!"
 msgstr "無法停用 Loopback 裝置！"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1192 src/netconf.py:1269
+#: src/netconf.py:1119 src/netconf.py:1196
 msgid "The name may only contain letters and digits!"
 msgstr "名稱只可包含字母與數字！"
 
-#: src/netconf.py:1196 src/netconf.py:1273
+#: src/netconf.py:1123 src/netconf.py:1200
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "資料檔無法被命名為 \"%s\"！"
 
-#: src/netconf.py:1201 src/netconf.py:1278
+#: src/netconf.py:1128 src/netconf.py:1205
 msgid "The profile name already exists!"
 msgstr "此資料檔案名稱已經存在！"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1250
+#: src/netconf.py:1177
 msgid "The \"default\" profile can't be renamed!"
 msgstr "無法重新命名 \"預設的\" 資料檔！"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1299
+#: src/netconf.py:1226
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "無法刪除 \"預設\" 的檔案資料！"
 
-#: src/netconf.py:1302
+#: src/netconf.py:1229
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "您真的想要刪除 \"%s\" 資料檔嗎？"
 
 #. clist.clear()
-#: src/netconf.py:1394
+#: src/netconf.py:1321
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -197,13 +177,36 @@ msgstr ""
 "或這個類型還不能被編輯。"
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1436
+#: src/netconf.py:1363
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "您真的要刪除 \"%s\" 嗎?"
 
 #. remove hardware
 #. remove all devices used this hardware
+#: src/netconf.py:1408
+#, fuzzy
+msgid ""
+"redhat-config-network - graphical network configuration tool\n"
+"\n"
+"Usage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
+msgstr ""
+"redhat-config-network-cmd - Python 網路組態設定命令列工具程式\n"
+"\n"
+"用法: redhat-config-network-cmd -p --profile <profile>"
+
+#: src/netconf.py:1409
+msgid "  -p, --profile\t\tShow profiles."
+msgstr ""
+
+#: src/netconf.py:1410
+msgid "  -n, --noprofile\tDo not show profiles."
+msgstr ""
+
+#: src/netconf.py:1411
+msgid "  -h, --help\t\tShows this help."
+msgstr ""
+
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -314,8 +317,8 @@ msgstr "電話號碼:"
 #: src/netconfpkg/gui/ethernethardware.py:138
 #: src/netconfpkg/gui/ethernethardware.py:155
 #: src/netconfpkg/gui/tokenringhardware.py:144
-#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
-#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:188
+#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:240
+#: src/netconfpkg/NCDevice.py:247 src/netconfpkg/NCHardwareList.py:188
 #: src/netconfpkg/NCHardwareList.py:303 src/netconfpkg/NC_functions.py:174
 #: src/netconfpkg/NC_functions.py:239
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
@@ -848,6 +851,13 @@ msgstr "這個應用程式的狀態已經成功的寫入 '%s' 檔案。"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. do not remove this (needed to access methods of self.druid
+#. if os.access("/usr/sbin/ciped-cb", os.F_OK):
+#. Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#. ADSLInterface, TokenRingInterface, CipeInterface,
+#. WirelessInterface ]
+#. else:
+#. Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#. ADSLInterface, TokenRingInterface, WirelessInterface ]
 #. get the widgets we need
 #. Initialize the clist
 #. Add the interfaces that have no druid yet
@@ -962,6 +972,10 @@ msgstr "按下完成以取得標準的設定對話窗。"
 #: src/netconfpkg/gui/GenericInterface.py:97
 msgid "Then, at first, enter the nickname for the device."
 msgstr "然後，首先輸入這個裝置的匿名。"
+
+#: src/netconfpkg/gui/GenericInterface.py:133
+msgid "This device can not be edited with this tool!"
+msgstr "無法使用這個工具程式編輯該裝置！"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1205,20 +1219,20 @@ msgstr ""
 #. self.Alias)
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#: src/netconfpkg/NCDevice.py:130 src/netconfpkg/NCDevice.py:141
-#: src/netconfpkg/NCDevice.py:152
+#: src/netconfpkg/NCDevice.py:138 src/netconfpkg/NCDevice.py:149
+#: src/netconfpkg/NCDevice.py:160
 msgid "Device type not specified"
 msgstr "沒有指定裝置類型"
 
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:229
+#: src/netconfpkg/NCDevice.py:237
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s，沒有指定裝置或別名不是一個數字！"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
-#: src/netconfpkg/NCDevice.py:271
+#: src/netconfpkg/NCDevice.py:279
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "靜態路由檔案 %s 有無效的格式"
@@ -1246,12 +1260,6 @@ msgstr "靜態路由檔案 %s 有無效的格式"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from netconfpkg.NCDevice import Device
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
-#. print self.data[i]
-#: src/netconfpkg/NCDeviceList.py:69
-#, python-format
-msgid "Error loading Device %s!\n"
-msgstr "載入 %s 裝置發生錯誤！\n"
-
 #.
 #. clear all Dialer sections in wvdial.conf
 #. before the new Dialer sections written
@@ -2065,7 +2073,8 @@ msgstr ""
 "聯。"
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "在此您可以設定實體連接至電腦的網路硬體。"
 
 #: src/maindialog.glade.h:29
@@ -2202,7 +2211,8 @@ msgstr "在此輸入 ISP 給您的登入名稱。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "輸入這個設定的名稱，通常就是您的 ISP 名稱。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -3760,6 +3770,12 @@ msgstr "設定您的網際網路連線"
 msgid "Internet Configuration Wizard"
 msgstr "網際網路組態設定精靈"
 
+#~ msgid "Please restart %s with root permissions!"
+#~ msgstr "請使用 root 的權限重新啟動 %s！"
+
+#~ msgid "Error loading Device %s!\n"
+#~ msgstr "載入 %s 裝置發生錯誤！\n"
+
 #~ msgid "Error opening/writing %s: %s!"
 #~ msgstr "開啟/寫入 %s: %s 發生錯誤！"
 
@@ -3902,4 +3918,3 @@ msgstr "網際網路組態設定精靈"
 
 #~ msgid "Fre_quency:"
 #~ msgstr "頻率(_q)："
-

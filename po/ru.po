@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"POT-Creation-Date: 2002-11-13 16:07+0100\n"
+"POT-Creation-Date: 2002-11-18 13:47+0100\n"
 "PO-Revision-Date: 2002-09-10 00:40+0300\n"
 "Last-Translator: Leon Kanter <leon@blackcatlinux.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -35,29 +35,13 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #. Just to be safe...
-#: src/netconf.py:64
-msgid ""
-"redhat-config-network-cmd - Python network configuration commandline tool\n"
-"\n"
-"Usage: redhat-config-network-cmd -p --profile <profile>"
-msgstr ""
-"redhat-config-network-cmd - Python network configuration commandline tool\n"
-"\n"
-"Применение: redhat-config-network-cmd -p --profile <profile>"
-
-#. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:70
-#, python-format
-msgid "Please restart %s with root permissions!"
-msgstr "Перезапустите %s с правами пользователя root!"
-
-#: src/netconf.py:121
+#: src/netconf.py:81
 msgid "Common"
 msgstr "Общее"
 
 #. initialize the button state..
 #. Let this dialog be in the taskbar like a normal window
-#: src/netconf.py:325
+#: src/netconf.py:285
 msgid ""
 "Changes are saved.\n"
 "You may want to restart\n"
@@ -66,57 +50,53 @@ msgid ""
 msgstr ""
 
 #. change the default profile to a more understandable name
-#: src/netconf.py:493 src/netconf.py:506
+#: src/netconf.py:453 src/netconf.py:466
 msgid "Do you want to save your changes?"
 msgstr "Сохранить изменения?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:576
+#: src/netconf.py:536
 msgid "The Loopback device can not be edited!"
 msgstr "Изменение настройки устройства loopback невозможно!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:634 src/netconfpkg/gui/GenericInterface.py:133
-msgid "This device can not be edited with this tool!"
-msgstr "Устройство не может быть настроено при помощи этой программы!"
-
-#: src/netconf.py:656
+#: src/netconf.py:583
 msgid "The Loopback device can not be removed!"
 msgstr "Устройство Loopback не может быть удалено!"
 
-#: src/netconf.py:659
+#: src/netconf.py:586
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Вы действительно хотите удалить устройство \"%s\"?"
 
-#: src/netconf.py:687
+#: src/netconf.py:614
 msgid "You have made some changes in your configuration."
 msgstr "В конфигурацию были внесены изменения."
 
-#: src/netconf.py:688
+#: src/netconf.py:615
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Для активирования сетевого устройства %s изменения должны быть сохранены."
 
-#: src/netconf.py:690
+#: src/netconf.py:617
 msgid "Do you want to continue?"
 msgstr "Продолжить?"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:701 src/neat-control.py:129
+#: src/netconf.py:628 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Активируется сетевое устройство..."
 
-#: src/netconf.py:703 src/neat-control.py:131
+#: src/netconf.py:630 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
 
-#: src/netconf.py:712
+#: src/netconf.py:639
 #, fuzzy, python-format
 msgid ""
 "Cannot activate network device %s\n"
@@ -127,7 +107,7 @@ msgstr "Не удается активировать устройство сет
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:735 src/neat-control.py:170
+#: src/netconf.py:662 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Должно быть переписано!"
 
@@ -144,46 +124,46 @@ msgstr "Должно быть переписано!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:898
+#: src/netconf.py:825
 msgid "The Loopback device can not be disabled!"
 msgstr "Устройство Loopback не может быть запрещено!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1192 src/netconf.py:1269
+#: src/netconf.py:1119 src/netconf.py:1196
 msgid "The name may only contain letters and digits!"
 msgstr "Имя может содержать только буквы и цифры!"
 
-#: src/netconf.py:1196 src/netconf.py:1273
+#: src/netconf.py:1123 src/netconf.py:1200
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Профиль не может быть назван \"%s\"!"
 
-#: src/netconf.py:1201 src/netconf.py:1278
+#: src/netconf.py:1128 src/netconf.py:1205
 msgid "The profile name already exists!"
 msgstr "Имя профиля уже существует!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1250
+#: src/netconf.py:1177
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"основной\" профиль не может быть переименован!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1299
+#: src/netconf.py:1226
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Профиль \"основной\" не может быть удален!"
 
-#: src/netconf.py:1302
+#: src/netconf.py:1229
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Вы действительно хотите удалить профиль \"%s\"?"
 
 #. clist.clear()
-#: src/netconf.py:1394
+#: src/netconf.py:1321
 msgid ""
 "Sorry, there is nothing to be edited,\n"
 "or this type cannot be edited yet."
@@ -192,13 +172,36 @@ msgstr ""
 "или этот тип еще не может быть измнен."
 
 #. hardwarelist.rollback()
-#: src/netconf.py:1436
+#: src/netconf.py:1363
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
 
 #. remove hardware
 #. remove all devices used this hardware
+#: src/netconf.py:1408
+#, fuzzy
+msgid ""
+"redhat-config-network - graphical network configuration tool\n"
+"\n"
+"Usage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
+msgstr ""
+"redhat-config-network-cmd - Python network configuration commandline tool\n"
+"\n"
+"Применение: redhat-config-network-cmd -p --profile <profile>"
+
+#: src/netconf.py:1409
+msgid "  -p, --profile\t\tShow profiles."
+msgstr ""
+
+#: src/netconf.py:1410
+msgid "  -n, --noprofile\tDo not show profiles."
+msgstr ""
+
+#: src/netconf.py:1411
+msgid "  -h, --help\t\tShows this help."
+msgstr ""
+
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
@@ -312,8 +315,8 @@ msgstr "Номер телефона:"
 #: src/netconfpkg/gui/ethernethardware.py:138
 #: src/netconfpkg/gui/ethernethardware.py:155
 #: src/netconfpkg/gui/tokenringhardware.py:144
-#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
-#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:188
+#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:240
+#: src/netconfpkg/NCDevice.py:247 src/netconfpkg/NCHardwareList.py:188
 #: src/netconfpkg/NCHardwareList.py:303 src/netconfpkg/NC_functions.py:174
 #: src/netconfpkg/NC_functions.py:239
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
@@ -853,6 +856,13 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. do not remove this (needed to access methods of self.druid
+#. if os.access("/usr/sbin/ciped-cb", os.F_OK):
+#. Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#. ADSLInterface, TokenRingInterface, CipeInterface,
+#. WirelessInterface ]
+#. else:
+#. Interfaces = [ EthernetInterface, IsdnInterface, ModemInterface,
+#. ADSLInterface, TokenRingInterface, WirelessInterface ]
 #. get the widgets we need
 #. Initialize the clist
 #. Add the interfaces that have no druid yet
@@ -967,6 +977,10 @@ msgstr "Нажмите \"Готово\", чтобы получить станд�
 #: src/netconfpkg/gui/GenericInterface.py:97
 msgid "Then, at first, enter the nickname for the device."
 msgstr "После этого в первую очередь введите псевдоним устройства."
+
+#: src/netconfpkg/gui/GenericInterface.py:133
+msgid "This device can not be edited with this tool!"
+msgstr "Устройство не может быть настроено при помощи этой программы!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1205,20 +1219,20 @@ msgstr ""
 #. self.Alias)
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#: src/netconfpkg/NCDevice.py:130 src/netconfpkg/NCDevice.py:141
-#: src/netconfpkg/NCDevice.py:152
+#: src/netconfpkg/NCDevice.py:138 src/netconfpkg/NCDevice.py:149
+#: src/netconfpkg/NCDevice.py:160
 msgid "Device type not specified"
 msgstr "Тип устройства не указан"
 
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:229
+#: src/netconfpkg/NCDevice.py:237
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, устройство не указано или алиас не является числом!"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
-#: src/netconfpkg/NCDevice.py:271
+#: src/netconfpkg/NCDevice.py:279
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Файл статических маршрутов %s неверный"
@@ -1246,12 +1260,6 @@ msgstr "Файл статических маршрутов %s неверный"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from netconfpkg.NCDevice import Device
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
-#. print self.data[i]
-#: src/netconfpkg/NCDeviceList.py:69
-#, python-format
-msgid "Error loading Device %s!\n"
-msgstr "Ошибка загрузки устройства %s!\n"
-
 #.
 #. clear all Dialer sections in wvdial.conf
 #. before the new Dialer sections written
@@ -3779,6 +3787,12 @@ msgstr "Настраивает ваше подключение к Интерне
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "Мастер подключения к Интернет"
+
+#~ msgid "Please restart %s with root permissions!"
+#~ msgstr "Перезапустите %s с правами пользователя root!"
+
+#~ msgid "Error loading Device %s!\n"
+#~ msgstr "Ошибка загрузки устройства %s!\n"
 
 #~ msgid "Error opening/writing %s: %s!"
 #~ msgstr "Ошибка открытия/записи %s: %s!"

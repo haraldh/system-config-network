@@ -24,6 +24,7 @@ from NC_functions import *
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
 from netconfpkg import ipcalc
+from netconfpkg.NCDeviceFactory import getDeviceFactory
 from rhpl import ConfPAP
 from rhpl import ConfSMB
 from rhpl import Conf
@@ -57,21 +58,20 @@ class DeviceList(DeviceList_base):
         DeviceList_base.__init__(self, list, parent)        
 
     def load(self):
+        df = getDeviceFactory()
         devices = ConfDevices()
         msg = ""
         for dev in devices:
             i = self.addDevice()
-            #print self.data[i]
-            self.data[i].load(dev)
-            try:
-                pass
-            except:
-                msg = msg + (_("Error loading Device %s!\n") % dev)
-                del self.data[i]
-
-        if msg != "":
-            print msg
-            
+            self.data[i].load(dev)            
+            devclass = df.getDeviceClass(self.data[i].Type)
+            if devclass:
+                newdev = devclass()
+                newdev.load(dev)
+                self.data[i] = newdev
+            else:
+                raise "NO DEVICE CLASS FOUND FOR %s" % dev
+                
         self.commit(changed=false)
         
     def test(self):
