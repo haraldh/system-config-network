@@ -80,18 +80,16 @@ PYTHON_FILES = \
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
 
-BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
-		     $(patsubst %.py,%.pyc,$(PYTHON_FILES)))
-
 netconfpkgdir = $(pkgdatadir)/netconfpkg/gui
-netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
+netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES)
 
 execdir = $(sbindir)
 
 clean:
 	rm -f *.pyo *.pyc *~ *\#
-	rm -f ${BUILT_SOURCES}
 
-%.pyc: %.py
-	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
+install-data-local: install-netconfpkgDATA
+	$(top_srcdir)/py-compile -$(DESTDIR)$(netconfpkgdir)/*.py
+
+uninstall-local:
+	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?

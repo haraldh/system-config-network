@@ -2,17 +2,10 @@ SUBDIRS=netconfpkg pixmaps
 
 PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py version.py
 
-BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
-		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) 
-
 EXTRA_DIST = $(PYTHON_FILES) providerdb module-info
 
 execdir = $(sbindir)
 
-
-%.pyc: %.py
-	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
 
 all-local: version.py 
 	rm -f redhat-config-network-gui
@@ -35,7 +28,7 @@ provider_DATA = providerdb
 moduleinfodir = $(pkgdatadir)
 moduleinfo_DATA = module-info
 
-install-exec-local:
+install-exec-local: 
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir) $(DESTDIR)$(bindir)
 	install -m 0755 $(srcdir)/version.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
@@ -57,6 +50,7 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/redhat-config-network-tui; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
+	$(top_srcdir)/py-compile - $(DESTDIR)$(pkgdatadir)/*.py
 
 uninstall-local:
 	rm -fr $(DESTDIR)$(pkgdatadir)
@@ -68,6 +62,7 @@ uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/neat
 	rm -f  $(DESTDIR)$(sbindir)/neat-tui
 	rm -f  $(DESTDIR)$(sbindir)/neat-druid
+	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
 
 docs:
 	cd $(srcdir)
@@ -79,4 +74,3 @@ pycheck:
 
 clean:
 	rm -f *.pyo *.pyc *~ *\#
-	rm -f ${BUILT_SOURCES}

@@ -28,27 +28,21 @@ PYTHON_FILES = \
 	NCCard.py \
 	NCDeviceFactory.py
 
-BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
-		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) 
-
 
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg
-netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES) $(IDL_FILES)
-
-
-INCLUDES = -I/usr/include/python2.2
-
+netconfpkg_DATA = $(PYTHON_FILES) $(IDL_FILES)
 
 execdir = $(sbindir)
 
 clean:
 	rm -f *.pyo *.pyc
-	rm -f ${BUILT_SOURCES}
 	rm -f *.so
 	rm -f *~
 
-%.pyc: %.py
-	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
+install-data-local: install-netconfpkgDATA
+	$(top_srcdir)/py-compile -$(DESTDIR)$(netconfpkgdir)/*.py
+
+uninstall-local:
+	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?

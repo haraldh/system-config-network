@@ -14,27 +14,18 @@ PYTHON_FILES = \
 	NCHWWireless.py \
 	NCHWTokenring.py
 
-BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
-		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) 
-
-
 EXTRA_DIST = $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg/plugins
-netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES) 
-
-
-INCLUDES = -I/usr/include/python2.2
-
-
-execdir = $(sbindir)
+netconfpkg_DATA = $(PYTHON_FILES) 
 
 clean:
 	rm -f *.pyo *.pyc
-	rm -f ${BUILT_SOURCES}
 	rm -f *.so
 	rm -f *~
 
-%.pyc: %.py
-	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
+install-data-local: install-netconfpkgDATA
+	$(top_srcdir)/py-compile $(DESTDIR)$(netconfpkgdir)/*.py
+
+uninstall-local:
+	rm -f $(DESTDIR)$(netconfpkgdir)/*.py?
