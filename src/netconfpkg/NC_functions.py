@@ -7,7 +7,14 @@ SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
 SYSCONFNETWORK='/etc/sysconfig/network'
 
-deviceTypes = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
+deviceTypes = [ 'Ethernet',
+                'Modem',
+                'ISDN',
+                'Loopback',
+                'xDSL',
+                ]
+
+deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ppp[0-9]+(:[0-9]+)?$':'Modem',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
                '^lo$':'Loopback'}
@@ -31,7 +38,7 @@ def getDeviceType(devname):
     if not devname or devname == "":
         return type
     
-    for i in deviceTypes.keys():
+    for i in deviceTypeDict.keys():
         if re.search(i, devname):
-            type = deviceTypes[i]
+            type = deviceTypeDict[i]
     return type
