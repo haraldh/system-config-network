@@ -195,21 +195,20 @@ def updateNetworkScripts():
 
         print "Copying "+dev+" to devices and putting it into the default profile."
 
-        try:
-            os.unlink(SYSCONFPROFILEDIR+'/default/'+dev)
-        except:
-            pass
+	unlink(SYSCONFPROFILEDIR+'/default/'+dev)
 
         try:
             shutil.copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
-            os.link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)
-#            os.link(SYSCONFPROFILEDIR+'/default/'+dev, OLDSYSCONFDEVICEDIR+'/'+dev)
         except:
             print "An error occured during the conversion of device "+dev+", skipping."
             (type, value, tb) = sys.exc_info()
             list = traceback.format_exception (type, value, tb)
             print list
             continue
+        else:
+	    link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)
+
+    
 
     if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
        print "Copying /etc/hosts to default profile."
@@ -287,13 +286,19 @@ def set_generic_yesno_dialog_func(func):
 	generic_yesno_dialog_func = func
 
 def unlink(file):
+	if not os.path.isfile(file):
+		#print "file '%s' is not a file!" % file
+		return
 	try:
 		os.unlink(file)
+                #print "Removed %s" % file
 	except OSError, errstr:
                 generic_error_dialog (_("Error removing %s: %s!") \
 				      % (file, str(errstr)))
 
 def link(src, dst):
+	if not os.path.isfile(src):
+		return
 	try:
 		os.link(src, dst)
 	except OSError, errstr:
@@ -301,7 +306,9 @@ def link(src, dst):
 				      % (src, dst, str(errstr)))
 	
 def rename(src, dst):
-	try:
+	if not os.path.isfile(src) and not os.path.isdir(src):
+		return
+        try:
 		os.rename(src, dst)
 	except EnvironmentError, errstr:
 		generic_error_dialog (_("Error renaming\n%s\nto\n%s: %s!") \
