@@ -21,7 +21,6 @@ Patch1: redhat-config-network-0.9.21-rp3.patch
 Patch2: redhat-config-network-0.9.23-rp3-font.patch
 Patch3: redhat-config-network-0.9.24-rp3-isdn.patch
 %endif
-Conflicts: isdn4k-utils < 3.2-5.p1
 
 %description
 This is the GUI of the network configuration tool for Red Hat Linux,
@@ -106,7 +105,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files 
-
+%defattr(-,root,root)
+%{_datadir}/redhat-config-network/pixmaps
 %{_datadir}/redhat-config-network/netconfpkg/gui
 %{_sbindir}/redhat-config-network-gui
 %{_sbindir}/internet-druid
