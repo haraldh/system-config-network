@@ -423,6 +423,9 @@ class ModemDialup(Dialup):
         if self.Compression:
             self.Compression.load(parentConf)            
 
+        if parentConf.has_key('PROVIDER'):
+            self.ProviderName = parentConf['PROVIDER']
+            
         if parentConf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
             
@@ -543,6 +546,10 @@ class ModemDialup(Dialup):
             parentConf['DEFROUTE'] = 'yes'
         else:
             parentConf['DEFROUTE'] = 'no'
+
+
+        if self.ProviderName:
+            parentConf['PROVIDER'] = self.ProviderName
 
         conf[sectname]['Inherits'] = devname
 
