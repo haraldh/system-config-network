@@ -6,6 +6,7 @@ URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
+BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -36,7 +37,7 @@ rm -rf $RPM_BUILD_ROOT
 /usr/sbin/*
 
 %changelog
-* Fri Jun 29 2001 Trond Eivind Glomsrød <teg@redhat.com>
+* Fri Jul 06 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - Initial build. Don't obsolete older tools just yet...
 
 
