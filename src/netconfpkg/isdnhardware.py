@@ -59,15 +59,16 @@ class isdnHardwareDialog:
         NC_functions.load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
         self.setup()
+        self.button = 0
 
     def on_Dialog_delete_event(self, *args):
-        pass
+        self.button = 1
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
-        pass
+        self.button = 1
 
     def on_isdnCardEntry_changed(self, entry):
         cardname = entry.get_text()

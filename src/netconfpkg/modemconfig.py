@@ -59,15 +59,16 @@ class modemDialog:
         self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
-
+        self.button = 0
+        
     def on_Dialog_delete_event(self, *args):
-        pass
+        self.button = 1
         
     def on_okButton_clicked(self, button):
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
-        pass
+        self.button = 1
 
     def setup(self):
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modemDeviceList)
