@@ -29,10 +29,11 @@ import string
 import gettext
 import re
 
-from dialupconfig import dialupDialog
+from dialupconfig import *
 from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from editadress import editAdressDialog
+from NC_functions import *
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -80,6 +81,7 @@ class basicDialog:
 
         notebook = self.xml.get_widget("basicNotebook")
 
+        self.xml.get_widget('deviceTypeComboBox').set_popdown_strings(deviceTypes)
         self.fill_dialog()
 
         for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
@@ -92,11 +94,14 @@ class basicDialog:
         self.dialog.set_close(TRUE)
         #self.dialog.close_hides(TRUE)
         #self.dialog.show()
-
     def fill_dialog(self):
         if self.device.DeviceId:
             self.xml.get_widget('deviceNameEntry').set_text(self.device.DeviceId)
-            self.xml.get_widget('deviceTypeEntry').set_text(str(self.device.Type))
+            if self.device.Type and self.device.Type != "" \
+               and self.device.Type != "Unknown":
+                self.xml.get_widget('deviceTypeEntry').set_text(str(self.device.Type))
+                self.xml.get_widget("deviceTypeComboBox").set_sensitive(FALSE)
+                
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser)
             
@@ -105,7 +110,8 @@ class basicDialog:
             self.xml.get_widget('netmaskEntry').set_text(self.device.Netmask)
             self.xml.get_widget('gatewayEntry').set_text(self.device.Gateway)
 
-            self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
+            if self.device.Hostname:
+                self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
             self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
 
     def read_dialog(self):
@@ -168,11 +174,13 @@ class basicDialog:
             dialog =cfg.xml.get_widget ("Dialog")
             dialog.run ()
         elif deviceType == "ISDN":
-            dialupDialog(self.xml_main, self.xml)
-            gtk.mainloop()
+            cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
+            dialog =cfg.xml.get_widget ("Dialog")
+            dialog.run ()
         elif deviceType == "Modem":
-            dialupDialog(self.xml_main, self.xml, "Modem")
-            gtk.mainloop()
+            cfg = ModemDialupDialog(self.device, self.xml_main, self.xml)
+            dialog =cfg.xml.get_widget ("Dialog")
+            dialog.run ()
         elif deviceType == "xDSL":
             dslConfigDialog()
             gtk.mainloop()
