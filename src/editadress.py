@@ -39,14 +39,21 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class modemDialog:
-    def __init__(self, xml_main = None):
+class editAdressDialog:
+    def __init__(self, xml_main = None, xml_basic = None, list = None):
         self.xml_main = xml_main
-        self.xml = libglade.GladeXML("modemconfig.glade", None, domain="netconf")
+        self.xml_basic = xml_basic
+        self.list = list
+        self.xml = libglade.GladeXML("editadress.glade", None, domain="netconf")
 
         self.xml.signal_autoconnect(
             {
-            "on_volumeCB_toggled" : self.on_volumeCB_toggled,
+            "on_addressEntry_insert_text" : (self.on_generic_entry_insert_text,
+                                             r"^[a-f|0-9\.]"),
+            "on_netmaskEntry_insert_text" : (self.on_generic_entry_insert_text,
+                                             r"^[a-f|0-9\.]"),
+            "on_gatewayEntry_insert_text" : (self.on_generic_entry_insert_text,
+                                             r"^[a-f|0-9\.]"),
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
@@ -54,9 +61,10 @@ class modemDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
+                                               "pixmaps/network.xpm")
+        gtk.GtkPixmap(pix, mask) 
         self.dialog.set_icon(pix, mask)
-        gtk.GtkPixmap(pix, mask)
         self.dialog.show()
         
     def on_Dialog_delete_event(self, *args):
@@ -64,21 +72,26 @@ class modemDialog:
         
     def on_okButton_clicked(self, button):
         self.dialog.destroy()
-
+        
     def on_cancelButton_clicked(self, button):
         self.dialog.destroy()
+        
+    def on_isdnCardEntry_changed(self, entry):
+        pass
 
-    def on_volumeCB_toggled(self, check):
-        scale = self.xml.get_widget("volumScale")
-        scale.set_sensitive(check["active"])
-        scale.grab_focus()
-
+    def on_generic_entry_insert_text(self, entry, partial_text, length,
+                                     pos, str):
+        text = partial_text[0:length]
+        if re.match(str, text):
+            return
+        entry.emit_stop_by_name('insert_text')
+        
     def updateDialog(self):
         pass
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = modemDialog()
+    window = editAdressDialog()
     gtk.mainloop()
 

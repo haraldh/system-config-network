@@ -32,6 +32,7 @@ import re
 from dialupconfig import dialupDialog
 from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
+from editadress import editAdressDialog
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -58,7 +59,10 @@ class basicDialog:
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
                                                 r"^[a-z|A-Z|0-9]+$"),
             "on_ipSettingCB_toggled" : self.on_ipSettingCB_toggled,
-            "on_defaultRouteCB_toggled" : self.on_defaultRouteCB_toggled
+            "on_defaultRouteCB_toggled" : self.on_defaultRouteCB_toggled,
+            "on_routeAddButton_clicked" : self.on_routeAddButton_clicked,
+            "on_routeEditButton_clicked" : self.on_routeEditButton_clicked,
+            "on_routeDeleteButton_clicked" : self.on_routeDeleteButton_clicked
             })
 
         self.dialog = self.xml.get_widget("Dialog")
@@ -134,7 +138,16 @@ class basicDialog:
 
     def on_defaultRouteCB_toggled(self, check):
         self.xml.get_widget("networkRouteFrame").set_sensitive(check["active"] != TRUE)
-                                                            
+
+    def on_routeAddButton_clicked(self, button):
+        editAdressDialog(self.xml_main, self.xml)
+
+    def on_routeEditButton_clicked(self, button):
+        editAdressDialog(self.xml_main, self.xml, list)
+
+    def on_routeDeleteButton_clicked(self, button):
+        pass
+
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)

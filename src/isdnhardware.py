@@ -54,9 +54,11 @@ class isdnHardwareDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
+                                               "pixmaps/network.xpm")
+        
+        gtk.GtkPixmap(pix, mask)
         self.dialog.set_icon(pix, mask)
-
         self.dialog.show()
         
     def on_Dialog_delete_event(self, *args):

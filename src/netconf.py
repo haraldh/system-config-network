@@ -32,6 +32,9 @@ import re
 from Resolver import ResolverFile
 from basicdialog import basicDialog
 from isdnhardware import isdnHardwareDialog
+from ethernethardware import ethernetHardwareDialog
+from modemconfig import modemDialog
+
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED

@@ -177,7 +177,7 @@ class dialupDialog:
     def on_chooseButton_clicked(self, button):
         dialog = providerDialog(self.xml_main, self.xml_basic, self.xml)
 
-    def set_title(self, title):
+    def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
 
 # make ctrl-C work

@@ -16,11 +16,6 @@
   <class>GtkWindow</class>
   <name>Dialog</name>
   <visible>False</visible>
-  <signal>
-    <name>delete_event</name>
-    <handler>delete_event</handler>
-    <last_modification_time>Fri, 25 May 2001 23:11:46 GMT</last_modification_time>
-  </signal>
   <title>Add / Edit IP Address</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_MOUSE</position>
@@ -107,9 +102,9 @@
 	<name>addressEntry</name>
 	<can_focus>True</can_focus>
 	<signal>
-	  <name>changed</name>
-	  <handler>on_editAddressEntry_activate</handler>
-	  <last_modification_time>Thu, 24 May 2001 13:24:24 GMT</last_modification_time>
+	  <name>insert_text</name>
+	  <handler>on_addressEntry_insert_text</handler>
+	  <last_modification_time>Tue, 05 Jun 2001 13:13:42 GMT</last_modification_time>
 	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
@@ -136,9 +131,9 @@
 	<name>netmaskEntry</name>
 	<can_focus>True</can_focus>
 	<signal>
-	  <name>changed</name>
-	  <handler>on_editNetmaskEntry_changed</handler>
-	  <last_modification_time>Thu, 24 May 2001 13:24:28 GMT</last_modification_time>
+	  <name>insert_text</name>
+	  <handler>on_netmaskEntry_insert_text</handler>
+	  <last_modification_time>Tue, 05 Jun 2001 13:13:47 GMT</last_modification_time>
 	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
@@ -190,6 +185,11 @@
 	<class>GtkEntry</class>
 	<name>gatewayEntry</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>insert_text</name>
+	  <handler>on_gatewayEntry_insert_text</handler>
+	  <last_modification_time>Tue, 05 Jun 2001 13:13:50 GMT</last_modification_time>
+	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
 	<text_max_length>15</text_max_length>
@@ -243,8 +243,8 @@
 	<can_focus>True</can_focus>
 	<signal>
 	  <name>clicked</name>
-	  <handler>on_editOkButton_clicked</handler>
-	  <last_modification_time>Thu, 24 May 2001 13:24:36 GMT</last_modification_time>
+	  <handler>on_okButton_clicked</handler>
+	  <last_modification_time>Tue, 05 Jun 2001 13:03:24 GMT</last_modification_time>
 	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
@@ -257,8 +257,8 @@
 	<can_focus>True</can_focus>
 	<signal>
 	  <name>clicked</name>
-	  <handler>on_editCancelButton_clicked</handler>
-	  <last_modification_time>Thu, 24 May 2001 13:24:52 GMT</last_modification_time>
+	  <handler>on_cancelButton_clicked</handler>
+	  <last_modification_time>Tue, 05 Jun 2001 13:03:28 GMT</last_modification_time>
 	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
