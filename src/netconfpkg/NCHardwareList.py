@@ -38,8 +38,8 @@ def getModInfo():
     global ModInfo
     if ModInfo == None:
         try:
-            ModInfo = ConfModInfo(filename = '/boot/module-info-g')
-        except VersionMismatch:
+            ModInfo = ConfModInfo(filename = '/boot/module-info')
+        except (VersionMismatch, FileMissing):
             # ok, take fallback
             ModInfo = ConfModInfo(filename = NETCONFDIR + '/module-info')
     return ModInfo
