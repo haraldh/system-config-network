@@ -31,6 +31,7 @@ card = {
     "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "","",  "hisax" ],
     "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244:0a00", "", "hisax" ],
     "AVM PnP" : [ "27", "5", "0x300", "", "", "", "", "", "hisax" ],
+    "Billion ISDN P&P PCI 128k Cologne SE" : [ "35", "", "", "", "", "", "1397:2bd0", "", "hisax" ],
     "Compaq ISDN S0 ISA" : [ "19", "5", "0x0000", "0x0000", "0x0000", "", "", "", "hisax" ],
     "Creatix Teles PnP" : [ "4", "5", "0x0000", "0x0000", "", "", "", "", "hisax" ],
     "Dr. Neuhaus Niccy PnP" : [ "24", "5", "", "0x0000", "0x0000", "", "", "", "hisax" ],
