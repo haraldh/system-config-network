@@ -139,8 +139,13 @@ class EthernetInterface(InterfaceCreator):
     
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
-        self.hw_sel = clist.selection[0]
         childs = self.topdruid.get_children()
+
+        if not len(clist.selection):
+            self.topdruid.set_page(childs[1])
+            return TRUE
+
+        self.hw_sel = clist.selection[0]
         
         if (self.hw_sel + 1) == clist.rows:
             self.hwPage = TRUE
