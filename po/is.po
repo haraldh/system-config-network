@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.1\n"
-"POT-Creation-Date: 2002-07-08 18:05+0200\n"
+"POT-Creation-Date: 2002-07-17 16:57+0200\n"
 "PO-Revision-Date: Thu Aug 31 12:49:26 2001\n"
 "Last-Translator: Richard Allen <ra@hp.is>\n"
 "Language-Team: is <kde-isl@mmedia.is>\n"
@@ -33,8 +33,7 @@ msgstr ""
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#. from netconfpkg import Control
-#: src/netconf.py:62
+#: src/netconf.py:61
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -45,97 +44,73 @@ msgstr ""
 "Notkun: redhat-config-network-cmd -p --profile <sniðmát>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:68
+#: src/netconf.py:67
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Vinsamlegast keyrið %s með rótarheimildum!"
 
-#. import GDK
 #. Let this dialog be in the taskbar like a normal window
-#. already in NCDeviceList
-#. devicelist.commit()
-#. already in NCHardwareList
-#. hardwarelist.commit()
-#. already in NCProfileList
-#. profilelist.commit()
-#. print "profilelist.save()"
-#. #        profilelist = getProfileList()
-#. print devicelist
-#. #          clist.set_pixmap(row, 0, inact_xpm)
-#. #          for prof in profilelist:
-#. #              if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
-#. #                  clist.set_pixmap(row, 0, act_xpm)
-#. #                  clist.set_row_data(row, 1)
-#. #                  break
-#: src/netconf.py:461 src/netconf.py:474
+#: src/netconf.py:470 src/netconf.py:483
 msgid "Do you want to save your changes?"
 msgstr "Viltu vista breytingum?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:544
+#: src/netconf.py:550
 msgid "The Loopback device can not be edited!"
 msgstr "Það er ekki hægt að breyta loopback tækinu!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:602 src/netconfpkg/gui/GenericInterface.py:133
+#: src/netconf.py:608 src/netconfpkg/gui/GenericInterface.py:133
 msgid "This device can not be edited with this tool!"
 msgstr "Það er ekki hægt að breyta þessu tæki með þessu tóli!"
 
-#. #        device = devicelist[select]
-#: src/netconf.py:628
+#: src/netconf.py:630
 msgid "The Loopback device can not be removed!"
 msgstr "Ekki er hægt að eyða loopback tækinu!"
 
-#: src/netconf.py:631
+#: src/netconf.py:633
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Viltu virkilega eyða tækinu \"%s\"?"
 
-#: src/netconf.py:653
+#: src/netconf.py:658
 msgid "You have made some changes in your configuration."
 msgstr "Þú hefur gert breytingar á stillingunum þínum."
 
-#: src/netconf.py:654
+#: src/netconf.py:659
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Til að virkja netkortið %s verður að vista breytingunum."
 
-#: src/netconf.py:655
+#: src/netconf.py:661
 msgid "Do you want to continue?"
 msgstr "Viltu halda áfram?"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:667 src/neat-control.py:129
+#: src/netconf.py:673 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Netkort að fara í gang..."
 
-#: src/netconf.py:669 src/neat-control.py:131
+#: src/netconf.py:675 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Ræsi netkortið %s. Vinsamlegast bíðið..."
 
-#. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
-#. dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
-#. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-#. dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-#: src/netconf.py:701 src/neat-control.py:170
+#. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
+#. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
+#. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+#. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
+#: src/netconf.py:706 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Verður endurrituð!"
 
 #. print "profile " + prof.ProfileName + " activated\n"
 #. edit_button.set_sensitive(FALSE)
 #. edit_button.set_sensitive(TRUE)
-#. profilelist = getProfileList()
-#. if clist.get_name() == 'profileList':
-#. for prof in profilelist:
-#. prof.Active = false
-#. profilelist[row].Active = true
-#. self.hydrate()
 #. clist.remove_data ("signal_id")
-#. #        profilelist = getProfileList()
 #. don't allow user to edit device if it's active
 #. if clist.get_name() == 'deviceList':
 #. try:
@@ -144,94 +119,47 @@ msgstr "Verður endurrituð!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#. if clist.get_name() == 'deviceList' and event.type == GDK.BUTTON_PRESS:
-#. info = clist.get_selection_info(event.x, event.y)
-#. if info != None and info[1] == 0:
-#. row = info[0]
-#. #                name = clist.get_text(row, 0)
-#. #                type = clist.get_text(row, 1)
-#. #                 if type == 'Loopback':
-#. #                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
-#. #                     return
-#. #                 if clist.get_row_data(row) == 0:
-#. #                     xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
-#. #                     clist.set_row_data(row, 1)
-#. #                     curr_prof = self.get_active_profile()
-#. #                     if curr_prof.ProfileName == 'default':
-#. #                         for prof in profilelist:
-#. #                             profilelist.activateDevice(name, prof.ProfileName, true)
-#. #                     else:
-#. #                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
-#. #                         for prof in profilelist:
-#. #                             if prof.ProfileName == "default":
-#. #                                 continue
-#. #                             if name not in prof.ActiveDevices:
-#. #                                 break
-#. #                         else:
-#. #                             profilelist.activateDevice(name, 'default', true)
-#. #                 else:
-#. #                     xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
-#. #                     clist.set_row_data(row, 0)
-#. #                     curr_prof = self.get_active_profile()
-#. #                     if curr_prof.ProfileName == 'default':
-#. #                         for prof in profilelist:
-#. #                             profilelist.activateDevice(name, prof.ProfileName, false)
-#. #                     else:
-#. #                         profilelist.activateDevice(name, curr_prof.ProfileName, false)
-#. #                         profilelist.activateDevice(name, 'default', false)
-#. #                 clist.set_pixmap(row, 0, xpm)
+#: src/netconf.py:867
+#, fuzzy
+msgid "The Loopback device can not be disabled!"
+msgstr "Það er ekki hægt að breyta loopback tækinu!"
+
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1126
-msgid ""
-"Please enter the name for the new profile.\n"
-"The name may only contain letters and digits."
-msgstr ""
-"Vinsamlegast sláðu inn heiti fyrir nýja sniðið.\n"
-"Það má einungis innihalda bókstafi og tölur."
-
-#: src/netconf.py:1137 src/netconf.py:1208
+#: src/netconf.py:1157 src/netconf.py:1234
 msgid "The name may only contain letters and digits!"
 msgstr "Heitið má einungis innihalda bókstafi og tölur!"
 
-#: src/netconf.py:1141 src/netconf.py:1212
+#: src/netconf.py:1161 src/netconf.py:1238
 msgid "The profile can't be named \"default\"!"
 msgstr "Sniðið má ekki heita \"default\"!"
 
-#: src/netconf.py:1146 src/netconf.py:1221
+#: src/netconf.py:1166 src/netconf.py:1243
 msgid "The profile name already exists!"
 msgstr "Það er þegar til snið með þessu heiti!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1195
+#: src/netconf.py:1215
 msgid "The \"default\" profile can't be renamed!"
 msgstr "Sniðið \"default\" er ekki hægt að endurnefna!"
-
-#: src/netconf.py:1198
-msgid ""
-"Please enter the new name for the profile.\n"
-"The name may only contain letters and digits."
-msgstr ""
-"Vinsamlegast sláðu inn nýtt heiti fyrir þetta \n"
-"snið. Það má aðeins innihalda bókstafi og tölustafi."
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1242
+#: src/netconf.py:1264
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Ekki má eyða \"default\" sniðinu!"
 
-#: src/netconf.py:1245
+#: src/netconf.py:1267
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Viltu virkilega eyða sniðinu \"%s\"?"
 
 #. clist.clear()
 #. hardwarelist.rollback()
-#: src/netconf.py:1371
+#: src/netconf.py:1393
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Viltu virkilega eyða \"%s\"?"
@@ -315,15 +243,6 @@ msgstr "Heiti þjónustuveitu:"
 msgid "Login Name:"
 msgstr "Notandheiti:"
 
-#: src/netconfpkg/gui/ADSLInterface.py:129
-#: src/netconfpkg/gui/DialupDruid.py:121
-#: src/netconfpkg/gui/EthernetInterface.py:215
-#: src/netconfpkg/gui/CipeInterface.py:147
-#: src/netconfpkg/gui/WirelessInterface.py:247
-#: src/netconfpkg/gui/TokenRingInterface.py:212
-msgid "Press \"Finish\" to create this account"
-msgstr "Sláðu á \"Ljúka\" til að búa þennan notanda til"
-
 #: src/netconfpkg/gui/DialupDruid.py:117
 msgid "Hardware:"
 msgstr "Vélbúnaður:"
@@ -351,15 +270,15 @@ msgstr "Símanúmer:"
 #. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
 #. if len(hwdesc):
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
-#: src/netconfpkg/gui/EthernetHardwareDruid.py:138
-#: src/netconfpkg/gui/TokenRingHardwareDruid.py:134
-#: src/netconfpkg/gui/ethernethardware.py:137
-#: src/netconfpkg/gui/ethernethardware.py:154
-#: src/netconfpkg/gui/tokenringhardware.py:143
-#: src/netconfpkg/gui/tokenringhardware.py:154 src/netconfpkg/NCDevice.py:225
-#: src/netconfpkg/NCDevice.py:232 src/netconfpkg/NCHardwareList.py:143
-#: src/netconfpkg/NCHardwareList.py:297 src/netconfpkg/NC_functions.py:171
-#: src/netconfpkg/NC_functions.py:227
+#: src/netconfpkg/gui/EthernetHardwareDruid.py:139
+#: src/netconfpkg/gui/TokenRingHardwareDruid.py:135
+#: src/netconfpkg/gui/ethernethardware.py:138
+#: src/netconfpkg/gui/ethernethardware.py:155
+#: src/netconfpkg/gui/tokenringhardware.py:144
+#: src/netconfpkg/gui/tokenringhardware.py:155 src/netconfpkg/NCDevice.py:232
+#: src/netconfpkg/NCDevice.py:239 src/netconfpkg/NCHardwareList.py:143
+#: src/netconfpkg/NCHardwareList.py:297 src/netconfpkg/NC_functions.py:173
+#: src/netconfpkg/NC_functions.py:229
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/ethernethardware.glade.h:22
@@ -588,55 +507,55 @@ msgstr "Mjög hátt"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:156
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:155
 msgid "None - Server Mode"
 msgstr "Engin - Þjónahamur"
 
-#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:163
+#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:162
 msgid " (dynamic)"
 msgstr " (dínamískt)"
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
-#: src/netconfpkg/gui/CipeInterface.py:197
-#: src/netconfpkg/gui/CipeInterface.py:250
+#: src/netconfpkg/gui/CipeInterface.py:196
+#: src/netconfpkg/gui/CipeInterface.py:249
 msgid "Server Mode"
 msgstr "Þjónahamur"
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
-#: src/netconfpkg/gui/CipeInterface.py:281
-#: src/netconfpkg/gui/CipeInterface.py:286
+#: src/netconfpkg/gui/CipeInterface.py:280
+#: src/netconfpkg/gui/CipeInterface.py:285
 msgid "(own choice)"
 msgstr "(egið val)"
 
 #: src/netconfpkg/gui/cipeconfig.py:213
-#: src/netconfpkg/gui/CipeInterface.py:292
+#: src/netconfpkg/gui/CipeInterface.py:291
 msgid "IP Address of Tunnel Device: "
 msgstr "IP vistfang gangnatækis: "
 
 #: src/netconfpkg/gui/cipeconfig.py:214
-#: src/netconfpkg/gui/CipeInterface.py:293
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "Local Port: "
 msgstr "Staðbundin gátt: "
 
 #: src/netconfpkg/gui/cipeconfig.py:215
-#: src/netconfpkg/gui/CipeInterface.py:294
+#: src/netconfpkg/gui/CipeInterface.py:293
 msgid "Remote Peer Address: "
 msgstr "Vistfang fjartengdrar vélar: "
 
 #: src/netconfpkg/gui/cipeconfig.py:219
-#: src/netconfpkg/gui/CipeInterface.py:298
+#: src/netconfpkg/gui/CipeInterface.py:297
 msgid "Remote Virtual Address: "
 msgstr "Fjartengt sýndarvistfang: "
 
 #: src/netconfpkg/gui/cipeconfig.py:220
-#: src/netconfpkg/gui/CipeInterface.py:299
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "Local Virtual Address: "
 msgstr "Sýndarvistfang: "
 
 #: src/netconfpkg/gui/cipeconfig.py:221
-#: src/netconfpkg/gui/CipeInterface.py:300
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Secret Key: "
 msgstr "Leynilykill: "
 
@@ -1032,7 +951,7 @@ msgid "Local Virtual Address:"
 msgstr "Sýndarvistfang:"
 
 #. widget.set_position(0)
-#: src/netconfpkg/gui/CipeInterface.py:310
+#: src/netconfpkg/gui/CipeInterface.py:309
 msgid ""
 "You must enter a secret key \n"
 "or generate one"
@@ -1209,14 +1128,14 @@ msgid "Device type not specified"
 msgstr "Tegund tækis var ekki gefin upp"
 
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:222
+#: src/netconfpkg/NCDevice.py:229
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, tækið var ekki gefið upp eða samheitið er ekki tala!"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
-#: src/netconfpkg/NCDevice.py:264
+#: src/netconfpkg/NCDevice.py:271
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Skráin %s sem inniheldur fastar netrútur er ógild"
@@ -1274,7 +1193,7 @@ msgstr "Villa við að lesa inn tækið %s!\n"
 #.
 #. traverse all devices in the list
 #.
-#: src/netconfpkg/NCDeviceList.py:144
+#: src/netconfpkg/NCDeviceList.py:149
 #, python-format
 msgid "Error opening/writing %s: %s!"
 msgstr "Villa við að opna/rita í %s: %s!"
@@ -1311,7 +1230,7 @@ msgstr "sjálfvirkt"
 msgid "manual"
 msgstr "handvirkt"
 
-#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:87
+#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:89
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -1643,12 +1562,14 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:85 src/netconfpkg/gui/ModemDruid.glade.h:20
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: src/netconfpkg/NC_functions.py:87 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Vélbúnaðar (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:86 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:88 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Hugbúnaður (XON/XOFF)"
@@ -1656,12 +1577,12 @@ msgstr "Hugbúnaður (XON/XOFF)"
 #. print dev+" has unknown device type, skipping it."
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:329
+#: src/netconfpkg/NC_functions.py:335
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr "Villa við að fjarlægja %s: %s!"
 
-#: src/netconfpkg/NC_functions.py:338 src/netconfpkg/NC_functions.py:347
+#: src/netconfpkg/NC_functions.py:344 src/netconfpkg/NC_functions.py:353
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -1672,7 +1593,7 @@ msgstr ""
 "í\n"
 "%s: %s!"
 
-#: src/netconfpkg/NC_functions.py:356
+#: src/netconfpkg/NC_functions.py:362
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -1806,85 +1727,85 @@ msgstr "Get ekki fylgst með ásandi netkortsins %s"
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 #. # Copyright (C) 2001, 2002 Harald Hoyer <harald@redhat.com>
 #. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#: src/netconf-tui.py:35
+#: src/netconf-tui.py:36
 msgid "What do you want to configure?"
 msgstr "Hvað viltu stilla?"
 
-#: src/netconf-tui.py:36
+#: src/netconf-tui.py:37
 msgid "Configure"
 msgstr "Stillingar"
 
-#: src/netconf-tui.py:36
+#: src/netconf-tui.py:37
 msgid "Exit"
 msgstr "Hætta"
 
-#: src/netconf-tui.py:41 neat.desktop.in.h:1 src/maindialog.glade.h:16
+#: src/netconf-tui.py:42 neat.desktop.in.h:1 src/maindialog.glade.h:17
 msgid "Network Configuration"
 msgstr "Stillingar nets"
 
-#: src/netconf-tui.py:152 src/netconf-tui.py:259 src/netconf-tui.py:362
-#: src/maindialog.glade.h:15
+#: src/netconf-tui.py:153 src/netconf-tui.py:260 src/netconf-tui.py:363
+#: src/maindialog.glade.h:16
 msgid "Name"
 msgstr "Heiti"
 
-#: src/netconf-tui.py:153 src/netconf-tui.py:260 src/netconf-tui.py:363
-#: src/maindialog.glade.h:8 src/neat-control.glade.h:1
+#: src/netconf-tui.py:154 src/netconf-tui.py:261 src/netconf-tui.py:364
+#: src/maindialog.glade.h:9 src/neat-control.glade.h:1
 msgid "Device"
 msgstr "Tæki"
 
-#: src/netconf-tui.py:154
+#: src/netconf-tui.py:155
 msgid "Use DHCP"
 msgstr "Nota DHCP"
 
-#: src/netconf-tui.py:155
+#: src/netconf-tui.py:156
 msgid "Static IP"
 msgstr "Fast IP vistfang"
 
-#: src/netconf-tui.py:156
+#: src/netconf-tui.py:157
 msgid "Netmask"
 msgstr "Netmöskvi"
 
-#: src/netconf-tui.py:157
+#: src/netconf-tui.py:158
 msgid "Default gateway IP"
 msgstr "Vistfang sjálfgefinnar gáttar"
 
-#: src/netconf-tui.py:165 src/netconf-tui.py:271 src/netconf-tui.py:374
+#: src/netconf-tui.py:166 src/netconf-tui.py:272 src/netconf-tui.py:375
 msgid "Ok"
 msgstr "Í Lagi"
 
-#: src/netconf-tui.py:165 src/netconf-tui.py:271 src/netconf-tui.py:374
+#: src/netconf-tui.py:166 src/netconf-tui.py:272 src/netconf-tui.py:375
 msgid "Cancel"
 msgstr "Hætta við"
 
-#: src/netconf-tui.py:167
+#: src/netconf-tui.py:168
 msgid "Ethernet Configuration"
 msgstr "Stillingar nets"
 
-#: src/netconf-tui.py:261 src/netconf-tui.py:364
+#: src/netconf-tui.py:262 src/netconf-tui.py:365
 msgid "ISP Phonenumber"
 msgstr "Símanúmer"
 
-#: src/netconf-tui.py:262 src/netconf-tui.py:365
+#: src/netconf-tui.py:263 src/netconf-tui.py:366
 msgid "ISP Login"
 msgstr "Notandanafi"
 
-#: src/netconf-tui.py:263 src/netconf-tui.py:366
+#: src/netconf-tui.py:264 src/netconf-tui.py:367
 msgid "ISP Password"
 msgstr "Lykilorð"
 
-#: src/netconf-tui.py:264
+#: src/netconf-tui.py:265
 msgid "Modem Initstring"
 msgstr "Frumstillistrengur módalds"
 
-#: src/netconf-tui.py:272 src/netconfpkg/gui/modemconfig.glade.h:23
+#: src/netconf-tui.py:273 src/netconfpkg/gui/modemconfig.glade.h:23
 msgid "Modem Configuration"
 msgstr "Stillingar módalds"
 
-#: src/netconf-tui.py:367
+#: src/netconf-tui.py:368
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:375
+#: src/netconf-tui.py:376
 msgid "ISDN Configuration"
 msgstr "Stillingar ISDN"
 
@@ -1916,79 +1837,105 @@ msgstr ""
 msgid "Red Hat's Network Configuration Tool"
 msgstr "Red Hat netstillingatólið"
 
-#: src/maindialog.glade.h:1
+#: src/maindialog.glade.h:1 src/netconfpkg/gui/editadress.glade.h:1
+#: src/netconfpkg/gui/ethernethardware.glade.h:1
+#: src/netconfpkg/gui/hardwaretype.glade.h:1
+#: src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/maindialog.glade.h:2
 msgid "Ac_tivate"
 msgstr "Vi_rkja"
 
-#: src/maindialog.glade.h:2
+#: src/maindialog.glade.h:3
 msgid "Active Profile"
 msgstr "Virkt snið"
 
-#: src/maindialog.glade.h:3
+#: src/maindialog.glade.h:4
 msgid "Aliases"
 msgstr "Samheiti"
 
-#: src/maindialog.glade.h:4
+#: src/maindialog.glade.h:5
 msgid "DNS"
 msgstr "DNS"
 
-#: src/maindialog.glade.h:5
+#: src/maindialog.glade.h:6
 msgid "DNS Search Path"
 msgstr "DNS leitarslóð"
 
-#: src/maindialog.glade.h:6
+#: src/maindialog.glade.h:7
 msgid "Deact_ivate"
 msgstr "_Slökkva"
 
-#: src/maindialog.glade.h:7
+#: src/maindialog.glade.h:8
 msgid "Description"
 msgstr "Lýsing"
 
-#: src/maindialog.glade.h:9
+#: src/maindialog.glade.h:10
 msgid "Devices"
 msgstr "Tæki"
 
-#: src/maindialog.glade.h:10
+#: src/maindialog.glade.h:11
 msgid "Do_main:"
 msgstr "Lé_n:"
 
-#: src/maindialog.glade.h:11
+#: src/maindialog.glade.h:12
 msgid "Domain Name"
 msgstr "Lénsheiti"
 
-#: src/maindialog.glade.h:12
+#: src/maindialog.glade.h:13
 msgid "Hardware"
 msgstr "Vélbúnaður"
 
-#: src/maindialog.glade.h:13
+#: src/maindialog.glade.h:14
 msgid "Hosts"
 msgstr "Velar"
 
-#: src/maindialog.glade.h:14 src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/maindialog.glade.h:15 src/netconfpkg/gui/sharedtcpip.glade.h:14
 msgid "IP"
 msgstr "IP"
 
-#: src/maindialog.glade.h:17 src/neat-control.glade.h:3
+#: src/maindialog.glade.h:18
+#, fuzzy
+msgid "New Profile"
+msgstr "Virkt snið"
+
+#: src/maindialog.glade.h:19 src/neat-control.glade.h:3
 msgid "Nickname"
 msgstr "Heiti"
 
-#: src/maindialog.glade.h:18
+#: src/maindialog.glade.h:20
+#, fuzzy
+msgid ""
+"Please enter the name for the profile.\n"
+"The name may only contain letters and digits."
+msgstr ""
+"Vinsamlegast sláðu inn heiti fyrir nýja sniðið.\n"
+"Það má einungis innihalda bókstafi og tölur."
+
+#: src/maindialog.glade.h:22
+#, fuzzy
+msgid "Profile"
+msgstr "Virkt snið"
+
+#: src/maindialog.glade.h:23
 msgid "Remo_ve"
 msgstr "Eyð_a"
 
-#: src/maindialog.glade.h:19
+#: src/maindialog.glade.h:24
 msgid "Search D_omain:"
 msgstr "Leita í lé_ni:"
 
-#: src/maindialog.glade.h:20 src/neat-control.glade.h:5
+#: src/maindialog.glade.h:25 src/neat-control.glade.h:5
 msgid "Status"
 msgstr "Staða"
 
-#: src/maindialog.glade.h:21
+#: src/maindialog.glade.h:26
 msgid "Type"
 msgstr "Tegund"
 
-#: src/maindialog.glade.h:22
+#: src/maindialog.glade.h:27
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
@@ -1996,12 +1943,12 @@ msgstr ""
 "Þú getur stillt nettæki tengd raunverulegum vélbúnaði hér. Þú getur haft "
 "mörg sýndarnettæki á hverju raunverulegu netkorti."
 
-#: src/maindialog.glade.h:23
+#: src/maindialog.glade.h:28
 msgid ""
 "You may configure network hardware physically attached to the computer here."
 msgstr "Hér getur þú stillt þau netkort sem eru í vélinni þinni."
 
-#: src/maindialog.glade.h:24
+#: src/maindialog.glade.h:29
 msgid ""
 "You may specify static computer hostname to IP address mappings here.  If "
 "DNS is in use, these settings will take precedence over any information it "
@@ -2011,59 +1958,56 @@ msgstr ""
 "Ef DNS er í notkun munu þessar upplýsingar vega þyngra en þær sem koma úr "
 "DNS."
 
-#: src/maindialog.glade.h:25
+#: src/maindialog.glade.h:30
 msgid "_Add"
 msgstr "_Bæta við"
 
-#: src/maindialog.glade.h:26 src/netconfpkg/gui/ctcconfig.glade.h:10
+#: src/maindialog.glade.h:31 src/netconfpkg/gui/ctcconfig.glade.h:10
 #: src/netconfpkg/gui/dialupconfig.glade.h:50
 #: src/netconfpkg/gui/sharedtcpip.glade.h:35
-#: src/netconfpkg/gui/tokenringconfig.glade.h:12
 msgid "_Add..."
 msgstr "Bæta við..."
 
-#: src/maindialog.glade.h:27 src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/maindialog.glade.h:32 src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Copy"
 msgstr "_Afrita"
 
-#: src/maindialog.glade.h:28 src/netconfpkg/gui/ctcconfig.glade.h:11
+#: src/maindialog.glade.h:33 src/netconfpkg/gui/ctcconfig.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:54
 #: src/netconfpkg/gui/sharedtcpip.glade.h:38
-#: src/netconfpkg/gui/tokenringconfig.glade.h:14
 msgid "_Delete"
 msgstr "_Eyða"
 
-#: src/maindialog.glade.h:29 src/netconfpkg/gui/ctcconfig.glade.h:12
+#: src/maindialog.glade.h:34 src/netconfpkg/gui/ctcconfig.glade.h:12
 #: src/netconfpkg/gui/sharedtcpip.glade.h:39
-#: src/netconfpkg/gui/tokenringconfig.glade.h:15
 msgid "_Edit..."
 msgstr "_Breyta..."
 
-#: src/maindialog.glade.h:30
+#: src/maindialog.glade.h:35
 msgid "_Hostname:"
 msgstr "_Vélarheiti:"
 
-#: src/maindialog.glade.h:31
+#: src/maindialog.glade.h:36
 msgid "_Monitor"
 msgstr "_Fylgjast með"
 
-#: src/maindialog.glade.h:32
+#: src/maindialog.glade.h:37
 msgid "_New..."
 msgstr "_Nýtt..."
 
-#: src/maindialog.glade.h:33
+#: src/maindialog.glade.h:38
 msgid "_Primary DNS:"
 msgstr "_Fyrsti DNS þjónn:"
 
-#: src/maindialog.glade.h:34
+#: src/maindialog.glade.h:39
 msgid "_Rename..."
 msgstr "_Endurnefna..."
 
-#: src/maindialog.glade.h:35
+#: src/maindialog.glade.h:40
 msgid "_Secondary DNS:"
 msgstr "_Auka DNS þjónn:"
 
-#: src/maindialog.glade.h:36
+#: src/maindialog.glade.h:41
 msgid "_Tertiary DNS:"
 msgstr "Þ_riðji DNS þjónn:"
 
@@ -2799,37 +2743,37 @@ msgid "Select Token Ring Adapter"
 msgstr "Veldu tókanetkort"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:26
-#: src/netconfpkg/gui/tokenringconfig.glade.h:20
+#: src/netconfpkg/gui/tokenringconfig.glade.h:16
 #: src/netconfpkg/gui/tokenringhardware.glade.h:26
 msgid "tr0"
 msgstr "tr0"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:27
-#: src/netconfpkg/gui/tokenringconfig.glade.h:21
+#: src/netconfpkg/gui/tokenringconfig.glade.h:17
 #: src/netconfpkg/gui/tokenringhardware.glade.h:27
 msgid "tr1"
 msgstr "tr1"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:28
-#: src/netconfpkg/gui/tokenringconfig.glade.h:22
+#: src/netconfpkg/gui/tokenringconfig.glade.h:18
 #: src/netconfpkg/gui/tokenringhardware.glade.h:28
 msgid "tr2"
 msgstr "tr2"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:29
-#: src/netconfpkg/gui/tokenringconfig.glade.h:23
+#: src/netconfpkg/gui/tokenringconfig.glade.h:19
 #: src/netconfpkg/gui/tokenringhardware.glade.h:29
 msgid "tr3"
 msgstr "tr3"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:30
-#: src/netconfpkg/gui/tokenringconfig.glade.h:24
+#: src/netconfpkg/gui/tokenringconfig.glade.h:20
 #: src/netconfpkg/gui/tokenringhardware.glade.h:30
 msgid "tr4"
 msgstr "tr4"
 
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:31
-#: src/netconfpkg/gui/tokenringconfig.glade.h:25
+#: src/netconfpkg/gui/tokenringconfig.glade.h:21
 #: src/netconfpkg/gui/tokenringhardware.glade.h:31
 msgid "tr5"
 msgstr "tr5"
@@ -2956,6 +2900,7 @@ msgstr "Almennt"
 #: src/netconfpkg/gui/dialupconfig.glade.h:45
 #: src/netconfpkg/gui/dslconfig.glade.h:19
 #: src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: src/netconfpkg/gui/tokenringconfig.glade.h:8
 msgid "Route"
 msgstr "Rúta"
 
@@ -2968,7 +2913,7 @@ msgstr "Stillingar gangna"
 #: src/netconfpkg/gui/dialupconfig.glade.h:49
 #: src/netconfpkg/gui/dslconfig.glade.h:21
 #: src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: src/netconfpkg/gui/tokenringconfig.glade.h:10
 #: src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Activate device when computer starts"
 msgstr "_Gangsetja tækið þegar vélin ræsir"
@@ -2978,7 +2923,7 @@ msgstr "_Gangsetja tækið þegar vélin ræsir"
 #: src/netconfpkg/gui/dialupconfig.glade.h:59
 #: src/netconfpkg/gui/dslconfig.glade.h:24
 #: src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: src/netconfpkg/gui/tokenringconfig.glade.h:17
+#: src/netconfpkg/gui/tokenringconfig.glade.h:13
 #: src/netconfpkg/gui/wirelessconfig.glade.h:22
 msgid "_Nickname: "
 msgstr "_Heiti: "
@@ -3005,17 +2950,15 @@ msgid "Hardware Device"
 msgstr "Vélbúnaðartæki"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:7
-#: src/netconfpkg/gui/tokenringconfig.glade.h:8
 msgid "Protocol Type"
 msgstr "Tegund prótókolls"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:8
-#: src/netconfpkg/gui/tokenringconfig.glade.h:9
 msgid "Protocols"
 msgstr "Prótókollar"
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:13
-#: src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: src/netconfpkg/gui/tokenringconfig.glade.h:12
 #: src/netconfpkg/gui/wirelessconfig.glade.h:19
 msgid "_Hardware Device:"
 msgstr "_Vélbúnaðartæki:"
@@ -3273,13 +3216,6 @@ msgstr "_Nota samhæft PPP"
 #: src/netconfpkg/gui/dslconfig.glade.h:28
 msgid "xDSL Configuration"
 msgstr "Stillingar xDLS"
-
-#: src/netconfpkg/gui/editadress.glade.h:1
-#: src/netconfpkg/gui/ethernethardware.glade.h:1
-#: src/netconfpkg/gui/hardwaretype.glade.h:1
-#: src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "*"
-msgstr "*"
 
 #: src/netconfpkg/gui/editadress.glade.h:2
 msgid "Add / Edit IP Address"
@@ -3680,19 +3616,19 @@ msgstr "Virkja samheitastuðning tækja"
 msgid "Ha_rdware Address:"
 msgstr "Vélbúnaða_r vistfang:"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:10
+#: src/netconfpkg/gui/tokenringconfig.glade.h:9
 msgid "Token Ring Device"
 msgstr "Tókanetstæki"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:13
+#: src/netconfpkg/gui/tokenringconfig.glade.h:11
 msgid "_Alias:"
 msgstr "_SAmheiti:"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:18
+#: src/netconfpkg/gui/tokenringconfig.glade.h:14
 msgid "_Probe for Address"
 msgstr "_Leita að vistfangi"
 
-#: src/netconfpkg/gui/tokenringconfig.glade.h:19
+#: src/netconfpkg/gui/tokenringconfig.glade.h:15
 msgid "_Use Hardware Address"
 msgstr "_Nota vélbúnaðarvistfang"
 
@@ -3735,6 +3671,16 @@ msgstr "Stillingar netkorta"
 #: internet-druid.desktop.in.h:1
 msgid "Internet Configuration Wizard"
 msgstr "Internetálfur"
+
+#~ msgid ""
+#~ "Please enter the new name for the profile.\n"
+#~ "The name may only contain letters and digits."
+#~ msgstr ""
+#~ "Vinsamlegast sláðu inn nýtt heiti fyrir þetta \n"
+#~ "snið. Það má aðeins innihalda bókstafi og tölustafi."
+
+#~ msgid "Press \"Finish\" to create this account"
+#~ msgstr "Sláðu á \"Ljúka\" til að búa þennan notanda til"
 
 #~ msgid "Demand _value:"
 #~ msgstr "Sjáfvirkni_gildi:"
