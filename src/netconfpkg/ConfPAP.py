@@ -121,14 +121,11 @@ class ConfPAP(Conf.Conf):
         missing=1
         if len(varname) == 2:
             login = '\"' + varname[0] + '\"'
-            server = varname[1]
+            server = '*'
         else:
             login = '\"' + varname + '\"'
-            if len(value) == 2:
-                server = value[0]
-                value = value[1]
-            else:
-                server = '*'                
+            value = '\"' + value[1] + '\"'
+            server = '*'
             
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
