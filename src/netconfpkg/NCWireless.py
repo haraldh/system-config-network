@@ -42,7 +42,6 @@ class Wireless(DeviceList.Wireless_base):
     keydict = { 'Mode' : 'MODE',
                 'EssId' : 'ESSID',
                 'Channel' : 'CHANNEL',
-                'Freq' : 'FREQ',
                 'Rate' : 'RATE',
                 'Key' : 'KEY',
                 }
