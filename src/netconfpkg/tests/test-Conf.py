@@ -88,3 +88,4 @@ if expectConf(filename, str):
     sys.exit(10)
 # cleanup
 os.unlink(filename)
+sys.exit(0)
