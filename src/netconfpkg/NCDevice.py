@@ -29,7 +29,7 @@ if not "/usr/lib/rhs/python" in sys.path:
 import Conf
 import gettext
 
-import HardwareList
+import NCHardwareList
 
 from NC_functions import *
 import DeviceList
@@ -197,7 +197,7 @@ class Device(DeviceList.Device_base):
             self.Device = self.Device[:aliaspos]
 
         if not self.Type or self.Type == "" or self.Type == "Unknown":
-            hwlist = HardwareList.getHardwareList()
+            hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Device:
                     self.Type = hw.Type

@@ -20,7 +20,7 @@
 import NC_functions
 from NC_functions import _
 from NC_functions import modemDeviceList
-import HardwareList
+import NCHardwareList
 import NCisdnhardware
 #import gnome.ui
 import gtk
@@ -53,7 +53,7 @@ class ModemInterface:
             })
         
         self.toplevel = toplevel
-        self.hardwarelist = HardwareList.getHardwareList()
+        self.hardwarelist = NCHardwareList.getHardwareList()
         self.hw = None
         self.druids = []
         

@@ -28,7 +28,7 @@ import libglade
 from ModemInterface import ModemInterface
 from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
-import HardwareList
+import NCHardwareList
 import NCisdnhardware
 from NC_functions import *
 
@@ -98,7 +98,7 @@ class NewInterface:
             return TRUE
 
     def on_cancel_interface(self, *args):
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.rollback()
         
         self.toplevel.destroy()
