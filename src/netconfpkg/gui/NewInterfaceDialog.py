@@ -79,6 +79,7 @@ class NewInterfaceDialog:
         self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.toplevel)
         self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.toplevel)
         self.irda_xpm, self.irda_mask = get_icon('pixmaps/irda-16.xpm', self.toplevel)
+        self.dsl_xpm, self.dsl_mask = get_icon('pixmaps/dsl.xpm', self.toplevel)
         
         # Initialize the clist
         self.interface_clist.column_titles_passive ()
@@ -101,6 +102,9 @@ class NewInterfaceDialog:
             elif iftype == WIRELESS:
                 device_pixmap = self.irda_xpm
                 device_mask = self.irda_mask
+            elif iftype == DSL:
+                device_pixmap = self.dsl_xpm
+                device_mask = self.dsl_mask
             else:
                 device_pixmap = self.lan_xpm
                 device_mask = self.lan_mask
