@@ -33,8 +33,9 @@ AC_DEFUN(AC_CHECK_RPM,
 		AC_MSG_RESULT( [found $version-$release] )
 		if test -n "$vers"; then
 			AC_MSG_CHECKING([checking, if version is newer or equal to $package-$vers])
-			mversion="$vers"
+			mversion="$vers"					
 			mrelease=$(echo $mversion|cut -d '-' -f 2)
+			test "$mversion" = "$mrelease" && mrelease=""
 			mversion=$(echo $mversion|cut -d '-' -f 1)
 			mmajor=$(echo $mversion|cut -d '.' -f 1)
 			mminor=$(echo $mversion|cut -d '.' -f 2)
@@ -52,7 +53,6 @@ AC_DEFUN(AC_CHECK_RPM,
 			test -z "$mminor" && mminor=0
 			test -z "$msubminor" && msubminor=0
 			test -z "$mrelease" && mrelease=0
-
 			if test "$mmajor" = "$major"; then
 				if test "$mminor" = "$minor"; then
 					if test "$msubminor" = "$subminor"; then
