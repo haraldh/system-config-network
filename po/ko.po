@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ko\n"
 "POT-Creation-Date: 2002-11-18 14:46+0100\n"
-"PO-Revision-Date: 2002-08-23 09:17+1000\n"
+"PO-Revision-Date: 2002-11-21 14:09+1000\n"
 "Last-Translator: Michelle Kim <mkim@redhat.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0beta1\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #. ! /usr/bin/python2.2
 #. # netconf - A network configuration tool
@@ -47,6 +47,10 @@ msgid ""
 "the network and network services\n"
 "or restart the computer."
 msgstr ""
+"변경 사항이 저장되었습니다.\n"
+"네트워크와 네트워크 서비스를 \n"
+"재시작하시거나 \n"
+"컴퓨터를 재시작하시기 바랍니다."
 
 #. change the default profile to a more understandable name
 #: src/netconf.py:453 src/netconf.py:466
@@ -76,8 +80,7 @@ msgstr "여러분은 일부 설정을 변경 하셨습니다."
 #: src/netconf.py:615
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr ""
-"네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
+msgstr "네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
 
 #: src/netconf.py:617
 msgid "Do you want to continue?"
@@ -96,11 +99,13 @@ msgid "Activating network device %s, please wait..."
 msgstr "네트웍 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
 
 #: src/netconf.py:639
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Cannot activate network device %s\n"
 "%s"
-msgstr "네트워크 장치 %s를 활성화할 수 없습니다"
+msgstr ""
+"네트워크 장치 %s를 활성화할 수 없습니다\n"
+"%s"
 
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
@@ -179,27 +184,26 @@ msgstr "정말로 \"%s\" (을)를 삭제하시겠습니까?"
 #. remove hardware
 #. remove all devices used this hardware
 #: src/netconf.py:1408
-#, fuzzy
 msgid ""
 "redhat-config-network - graphical network configuration tool\n"
 "\n"
 "Usage: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
 msgstr ""
-"redhat-config-network-cmd - 파이썬(Python) 네트웍 설정 명령행 도구\n"
+"redhat-config-network - 그래픽 네트워크 설정 도구\n"
 "\n"
-"사용법: redhat-config-network-cmd -p --profile <프로파일>"
+"사용법: redhat-config-network [-pnh] [--profile] [--noprofile] [--help]"
 
 #: src/netconf.py:1409
 msgid "  -p, --profile\t\tShow profiles."
-msgstr ""
+msgstr "  -p, --profile\t\t프로파일을 보여줌."
 
 #: src/netconf.py:1410
 msgid "  -n, --noprofile\tDo not show profiles."
-msgstr ""
+msgstr "  -n, --noprofile\t프로파일을 보여주지 않음."
 
 #: src/netconf.py:1411
 msgid "  -h, --help\t\tShows this help."
-msgstr ""
+msgstr "  -h, --help\t\t이 도움말을 보여줌."
 
 #. make ctrl-C work
 #. print "Exception %s: %s" % (str(SystemExit), str(code))
@@ -1156,12 +1160,17 @@ msgid ""
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
+"/etc/cipe 디렉토리가 없습니다!\n"
+"디렉토리를 생성하겠습니다!\n"
+"cipe rpm 패키지를 설치해 주십시오!\n"
 
 #: src/netconfpkg/NCCipe.py:159
 msgid ""
 "Could not create\n"
 "directory /etc/cipe!"
 msgstr ""
+"/etc/cipe 디렉토리를\n"
+"생성하지 못했습니다!"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -2071,10 +2080,8 @@ msgstr ""
 "적 장치들이 한개의 하드웨어와 연결될 수도 있습니다."
 
 #: src/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr ""
-"여기서 컴퓨터에 물리적으로 연결된 네트워크 하드웨어를 설정하실 수 있습니다."
+msgid "You may configure network hardware physically attached to the computer here."
+msgstr "여기서 컴퓨터에 물리적으로 연결된 네트워크 하드웨어를 설정하실 수 있습니다."
 
 #: src/maindialog.glade.h:29
 msgid ""
@@ -2211,10 +2218,8 @@ msgstr "ISP가 제공한 로그인 이름을 여기에 입력해 주십시오."
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr ""
-"이 설정명을 입력해 주십시오, 보통은 여러분 ISP의 이름을 입력하시면 됩니다."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgstr "이 설정명을 입력해 주십시오, 보통은 여러분 ISP의 이름을 입력하시면 됩니다."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
 msgid "Enter the password for this account."
@@ -3574,9 +3579,8 @@ msgid "Destination Network"
 msgstr "목적 네트워크"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:8
-#, fuzzy
 msgid "Device _Alias Number:"
-msgstr "장치 별칭(_A):"
+msgstr "장치 별칭 번호(_A):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
@@ -3897,3 +3901,4 @@ msgstr "인터넷 설정 마법사"
 
 #~ msgid "Activating for Network device %s, please wait..."
 #~ msgstr "네트워크 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
+
