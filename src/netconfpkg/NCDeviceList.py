@@ -68,6 +68,16 @@ class DeviceList(DeviceList_base):
                 dev.save()
 
         self.commit()
+
+DVList = None
+
+def getDeviceList():
+    global DVList
+    if not DVList:
+        DVList = DeviceList()
+        DVList.load()
+    return DVList
+
                 
 if __name__ == '__main__':
     dl = DeviceList()
