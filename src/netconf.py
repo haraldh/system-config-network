@@ -640,15 +640,17 @@ class mainDialog:
 
         if device:
             if self.changed():
-                button = generic_yesnocancel_dialog(
-                    _("Do you want to save your changes?"),
+                button = generic_yesno_dialog(
+                    _("You have made some changes in your configuration.") + "\n" +\
+                    _("To activate the network device %s, the changes have to be saved.") % (device) + "\n\n" +\
+                    _("Do you want to continue?") ,
                     self.dialog)
                 
                 if button == 0:
                     if self.save() != 0:
                         return
             
-                if button == 2:
+                if button == 1:
                     return
 
             intf = Interface()
@@ -656,7 +658,7 @@ class mainDialog:
             dlg = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Network device activating...'))
             dlg.set_border_width(10)
             vbox = gtk.GtkVBox(1)
-            vbox.add(gtk.GtkLabel(_('Activating for Network device %s, please wait...') %(device)))
+            vbox.add(gtk.GtkLabel(_('Activating network device %s, please wait...') %(device)))
             vbox.show()
             dlg.add(vbox)
             dlg.set_position (gtk.WIN_POS_MOUSE)
