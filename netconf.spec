@@ -7,6 +7,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
+Requires: initscripts >= 5.99
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -38,6 +39,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Fri Jul 06 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- Require a recent version of initscripts
 - Initial build. Don't obsolete older tools just yet...
 
 
