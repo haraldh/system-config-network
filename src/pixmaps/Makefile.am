@@ -12,18 +12,20 @@ netconfimg_DATA = \
 	si.xpm \
 	us.xpm \
 	uk.xpm \
+	cs.xpm \
 	nameresolution_alias.png \
 	connection-ethernet.png \
+	neat-control-logo.png \
 	network.png \
-	blue_empty_led.xpm control.xpm isdn.xpm off.xpm plip.xpm red_empty_led.xpm \
+	blue_empty_led.xpm isdn.xpm off.xpm plip.xpm red_empty_led.xpm \
 	blue_led.xpm ethernet.xpm loopback.xpm on.xpm ppp.xpm red_led.xpm
 
 netconfkontroldir = $(datadir)/kontrol-panel/icons
 
-netconfkontrol_DATA = neat.png neat-control.png
+netconfkontrol_DATA = neat.png neat-control.xpm
 
 netconfpixmapdir = $(datadir)/pixmaps
 
-netconfpixmap_DATA = neat.png neat-control.png
+netconfpixmap_DATA = neat.png neat-control.xpm
 
 EXTRA_DIST = $(netconfimg_DATA) $(netconfkontrol_DATA) $(netconfpixmap_DATA)
