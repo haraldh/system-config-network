@@ -15,9 +15,10 @@ class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)        
 
-class DSLDialup(Dialup):
+class DslDialup(Dialup):
     boolkeydict = { 'PeerDNS' : 'PEERDNS',
                     'DefRoute' : 'DEFROUTE',
+                    'SyncPPP' : 'SYNCHRONOUS',
                     }
     
     keydict = { 'ProviderName' : 'PROVIDER',
@@ -25,7 +26,9 @@ class DSLDialup(Dialup):
                 'Password' : 'PASS',
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
-                'SlaveDevice' : 'ETH',
+                'EthDevice' : 'ETH',
+                'ServiceName' : 'SERVICENAME',
+                'AcName' : 'ACNAME',
                 }
 
     def __init__(self, list = None, parent = None):
@@ -40,16 +43,10 @@ class DSLDialup(Dialup):
                 self.__dict__[selfkey] = conf[confkey]
                 #print "self." + selfkey + " = " + conf[confkey]
 
-        for selfkey in self.intkeydict.keys():
-            confkey = self.intkeydict[selfkey]
-            if conf.has_key(confkey) and len(conf[confkey]):
-                self.__dict__[selfkey] = int(conf[confkey])
-                #print "self." + selfkey + " = " + conf[confkey]
-
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
-                if conf[confkey] == 'on':
+                if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = true
                 else:
                     self.__dict__[selfkey] = false            
@@ -68,12 +65,9 @@ class DSLDialup(Dialup):
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if self.__dict__[selfkey]:
-                conf[confkey] = 'on'
+                conf[confkey] = 'no'
             else:
-                conf[confkey] = 'off'
-
-        if not conf.has_key('SYNCHRONOUS'):
-            conf['SYNCHRONOUS'] = 'no'
+                conf[confkey] = 'yes'
 
         if not conf.has_key('CONNECT_TIMEOUT'):
             conf['CONNECT_TIMEOUT'] = '60'
@@ -446,9 +440,6 @@ class ModemDialup(Dialup):
 
 if __name__ == '__main__':
     dev = Device()
-    dev.load('ippp0')
-    if dev.Dialup.PPPOptions:
-        for i in xrange(len(dev.Dialup.PPPOptions)):
-            print str(i) + ": " + dev.Dialup.PPPOptions[i]
-
+    dev.load('tdslHomeTonline')
+    print dev.Dialup.Login
     dev.save()
