@@ -191,13 +191,17 @@ class basicDialog:
             cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "Modem":
             cfg = ModemDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "xDSL":
-            dslConfigDialog()
-            gtk.mainloop()
+            cfg = dslConfigDialog(self.device, self.xml_main, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "CIPE":
             print "CIPE configuration"
         elif deviceType == "Wireless":
