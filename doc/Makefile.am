@@ -1,1 +1,1 @@
-EXTRA_DIST = configurationfiles.txt  detailed_spec  overview
+EXTRA_DIST = configurationfiles.txt  detailed_spec  overview index.html

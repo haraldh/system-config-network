@@ -36,6 +36,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
+%doc doc/index.html
 %{_datadir}/redhat-config-network
 %{_datadir}/kontrol-panel/*.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
@@ -48,6 +49,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Tue Aug  7 2001 Trond Eivind Glomsrød <teg@redhat.com> 0.6.6-1
+- Add online help capability (#50739)
+
 * Mon Aug  6 2001 Trond Eivind Glomsrød <teg@redhat.com> 0.6.6-1
 - Disable profiles in GUI and as necesarry in code
 

@@ -89,6 +89,7 @@ import gtk
 import libglade
 import gnome
 import gnome.ui
+import gnome.help
 from gtk import TRUE
 from gtk import FALSE
 
@@ -313,7 +314,7 @@ class mainDialog:
         gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
-        pass
+        gnome.help.goto ("/usr/share/doc/redhat-config-network-0.6.7/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
         #interface = NewInterface()
