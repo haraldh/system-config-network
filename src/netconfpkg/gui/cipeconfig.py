@@ -70,7 +70,11 @@ class cipeConfigDialog(deviceConfigDialog):
         
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
-            d = str(dev.Device) + ' (' + dev.IP + ')'
+            d = str(dev.Device)
+            if not dev.IP or dev.IP == "":
+                d = d + ' (dynamic)'
+            else:
+                d = d + ' (' + str(dev.IP) + ')'
             desc.append(d)
             if self.device.Cipe.TunnelDevice == dev.Device:
                 curr = d
