@@ -30,17 +30,11 @@ import string
 
 import NCHardwareList
 import NC_functions
-
+from NC_functions import _
 from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE
 
-##
-## I18N
-##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
-_=gettext.gettext
 
 class dslConfigDialog(deviceConfigDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
@@ -110,16 +104,14 @@ class dslConfigDialog(deviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
+        self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         dialup.EthDevice = hw
         dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         dialup.Password = self.xml.get_widget("passwordEntry").get_text()
         dialup.ServiceName = self.xml.get_widget("serviceNameEntry").get_text()
         dialup.AcName = self.xml.get_widget("acNameEntry").get_text()
-        if self.xml.get_widget("useSyncpppCB").get_active():
-            dialup.SyncPPP = TRUE
-        else: dialup.SyncPPP = FALSE
-        
+        dialup.SyncPPP = self.xml.get_widget("useSyncpppCB").get_active()
         if not self.device.Device:
             self.device.Device = "dsl"
         

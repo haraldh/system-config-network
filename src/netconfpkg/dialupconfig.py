@@ -234,10 +234,10 @@ class ISDNDialupDialog(DialupDialog):
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(dialup.HangupTimeout)
         if dialup.DialMode:
             self.xml.get_widget("dialModeISDNEntry").set_text(dialup.DialMode)
-        if dialup.EncapMode == "raw IP":
-            self.xml.get_widget("encapModeEntry").set_text('raw IP')
+        if dialup.EncapMode == _("raw IP"):
+            self.xml.get_widget("encapModeEntry").set_text(_('raw IP'))
         else:
-            self.xml.get_widget("encapModeEntry").set_text('sync PPP')
+            self.xml.get_widget("encapModeEntry").set_text(_('sync PPP'))
         if dialup.MSN:
             self.xml.get_widget("msnEntry").set_text(str(dialup.MSN))
         if dialup.ChannelBundling:
@@ -257,8 +257,8 @@ class ISDNDialupDialog(DialupDialog):
         DialupDialog.dehydrate(self)
         
         dialup = self.device.Dialup
-        
-        if self.xml.get_widget("encapModeEntry").get_text() == "sync PPP":
+        self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
+        if self.xml.get_widget("encapModeEntry").get_text() == _("sync PPP"):
             dialup.EncapMode = "syncppp"
             self.device.Device = "ippp"
         else:
