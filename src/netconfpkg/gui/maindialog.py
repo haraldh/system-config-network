@@ -1011,17 +1011,17 @@ class mainDialog:
 
         prof = self.active_profile
         
-        if devicelist.modified() or hardwarelist.modified() or \
-               (prof and prof.modified()):
-            button = generic_yesnocancel_dialog(
-                _("Do you want to save your changes?"),
-                self.dialog)
+#         if devicelist.modified() or hardwarelist.modified() or \
+#                (prof and prof.modified()):
+#             button = generic_yesnocancel_dialog(
+#                 _("Do you want to save your changes?"),
+#                 self.dialog)
             
-            if button == RESPONSE_YES:
-                dosave = true
+#             if button == RESPONSE_YES:
+#                 dosave = true
             
-            if button == RESPONSE_CANCEL:
-                return
+#             if button == RESPONSE_CANCEL:
+#                 return
 
         if profile == 'default':
             self.xml.get_widget ('profileRenameMenu').set_sensitive (FALSE)
@@ -1073,12 +1073,12 @@ class mainDialog:
             self.deactivate_button.set_sensitive(TRUE)
             self.delete_button.set_sensitive(TRUE)
             
-#             if len(clist.selection) == 0:
-#                 return
+            if len(clist.selection) == 0:
+                return
 
-#             self.devsel = clist.get_row_data(clist.selection[0])
-#             if not self.devsel:
-#                 return
+            self.devsel = clist.get_row_data(clist.selection[0])
+            if not self.devsel:
+                return
             
 #             curr_prof = self.getActiveProfile()
             
@@ -1742,5 +1742,5 @@ class mainDialog:
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/04 13:26:25 $"
-__version__ = "$Revision: 1.36 $"
+__date__ = "$Date: 2004/03/04 14:16:56 $"
+__version__ = "$Revision: 1.37 $"
