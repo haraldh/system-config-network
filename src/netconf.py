@@ -867,7 +867,7 @@ if __name__ == '__main__':
     updateNetworkScripts()
 
     progname = os.path.basename(sys.argv[0])
-    if progname == 'redhat-config-network' or progname == 'neat':
+    if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
         window = mainDialog()
         gtk.mainloop()
         sys.exit(0)

@@ -17,7 +17,9 @@ GLADE_FILES = \
 	ADSLInterfaceDruid.glade \
 	DialupDruid.glade \
 	EthernetHardwareDruid.glade \
-	IsdnHardwareDruid.glade
+	IsdnHardwareDruid.glade \
+	ModemDruid.glade \
+	NewInterfaceDruid.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py	Firewall.py 
@@ -64,7 +66,8 @@ PYTHON_FILES = \
 	DialupDruid.py \
 	EthernetHardwareDruid.py \
 	InterfaceCreator.py \
-	NewInterface.py
+	NewInterface.py \
+	ModemInterface.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 

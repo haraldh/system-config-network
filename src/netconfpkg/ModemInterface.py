@@ -1,0 +1,107 @@
+import NC_functions
+from NC_functions import _
+from NC_functions import modemDeviceList
+import HardwareList
+import NCisdnhardware
+import gnome.ui
+import gtk
+from gtk import TRUE
+from gtk import FALSE
+import libglade
+import string
+import os
+import providerdb
+import libglade
+import DialupDruid
+
+
+class ModemInterface:
+    def __init__ (self, toplevel=None):
+        glade_file = 'ModemDruid.glade'
+
+        if not os.path.isfile(glade_file):
+            glade_file = 'netconfpkg/' + glade_file
+        if not os.path.isfile(glade_file):
+            glade_file = NETCONFDIR + glade_file
+ 
+        self.xml = libglade.GladeXML(glade_file, 'druid')
+        self.xml.signal_autoconnect(
+            {
+            "on_volumeCB_toggled" : self.on_volumeCB_toggled,
+            "on_Modem_prepare" : self.on_Modem_prepare,
+            "on_Modem_back" : self.on_Modem_back,
+            "on_Modem_next" : self.on_Modem_next,
+            })
+        
+        self.toplevel = toplevel
+        self.hardwarelist = HardwareList.getHardwareList()
+        self.hw = None
+        self.druids = []
+        
+        druid = self.xml.get_widget('druid')
+        for I in druid.children():
+            druid.remove(I)
+            self.druids.append(I)
+
+        self.setup()
+        
+    def get_project_name(self):
+        return _('Modem connection')
+
+    def get_project_description (self):
+        return _('Create a new Modem connection.  The dialup interface is used primarily for connecting to an ISP over a modem.  This is a really lame description that should be fixed up later')
+
+    def get_druids(self):
+        Type = 'Modem'
+        dialup = DialupDruid.DialupDruid(self.toplevel, Type)
+        for self.hw in self.hardwarelist:
+            if self.hw.Type == Type: return dialup.get_druids()
+ 
+        id = self.hardwarelist.addHardware()
+        self.hw = self.hardwarelist[id]
+        self.hw.Type = Type
+        if Type == 'ISDN':  self.hw.createCard()
+        elif Type == 'Modem': self.hw.createModem()
+        self.hw.Name = Type + '0'
+ 
+        return self.druids[0:] + dialup.get_druids()
+
+    def on_Modem_prepare(self, druid_page, druid):
+        pass
+ 
+    def on_Modem_next(self, druid_page, druid):
+        self.dehydrate()
+ 
+    def on_Modem_back(self, druid_page, druid):
+        self.hardwarelist.rollback()
+        
+    def on_volumeCB_toggled(self, check):
+        scale = self.xml.get_widget('volumeMenu')
+        scale.set_sensitive(check['active'])
+        scale.grab_focus()
+
+    def setup(self):
+        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modemDeviceList)
+    
+    def dehydrate(self):
+        self.hw.Description = _('Generic Modem')
+        self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
+        self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baurateEntry").get_text())
+        self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
+        if self.xml.get_widget("volumeCB").get_active():
+            Item = self.xml.get_widget("volumeMenu")["label"]
+            if Item == _("Low"):
+                self.hw.Modem.ModemVolume = 1
+            elif Item == _("Medium"):
+                self.hw.Modem.ModemVolume = 2
+            elif Item == _("High"):
+                self.hw.Modem.ModemVolume = 3
+            elif Item == _("Very High"):
+                self.hw.Modem.ModemVolume = 4
+        else:
+            self.hw.Modem.ModemVolume = 0
+ 
+        if self.xml.get_widget("toneDialingCB")["active"]:
+            self.hw.Modem.DialCommand = "ATDT"
+        else:
+            self.hw.Modem.DialCommand = "ATDP"

@@ -31,18 +31,10 @@ import re
 
 import HardwareList
 import NC_functions
+from NC_functions import _
+from NC_functions import modemDeviceList
 from gtk import TRUE
 from gtk import FALSE
-
-##
-## I18N
-##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
-_=gettext.gettext
-
-modem_device_list = [ "/dev/ttyS0", "/dev/ttyS1", "/dev/ttyS2", "/dev/ttyS3",
-                      "/dev/ttyI0", "/dev/ttyI1", "/dev/ttyI2", "/dev/ttyI3" ]
 
 class modemDialog:
     def __init__(self):
@@ -85,7 +77,7 @@ class modemDialog:
         scale.grab_focus()
 
     def setup(self):
-        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modem_device_list)
+        self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(modemDeviceList)
 
     def hydrate(self):
         pass

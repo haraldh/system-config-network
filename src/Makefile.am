@@ -13,6 +13,7 @@ all-local:
 	rm -f redhat-config-network-cmd
 	ln -s netconf.py redhat-config-network
 	ln -s netconf.py redhat-config-network-cmd
+	ln -s netconf.py redhat-config-network-druid
 
 glade-strings.c: *.glade  netconfpkg/*.glade
 	libglade-xgettext -c -o $(srcdir)/glade-strings.c $?

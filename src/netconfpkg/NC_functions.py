@@ -23,6 +23,7 @@ import sys
 import os
 import os.path
 import shutil
+import gettext
 
 true = (1==1)
 false = not true
@@ -34,6 +35,10 @@ SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
 SYSCONFNETWORK='/etc/sysconfig/network'
 
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+_ = gettext.gettext
+
 deviceTypes = [ 'Ethernet',
                 'Modem',
                 'ISDN',
@@ -42,6 +47,9 @@ deviceTypes = [ 'Ethernet',
                 'CIPE',
                 'Wireless'
                 ]
+
+modemDeviceList = [ '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
+                     '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3' ]
 
 deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ppp[0-9]+(:[0-9]+)?$':'Modem',

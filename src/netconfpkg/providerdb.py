@@ -187,7 +187,8 @@ def get_provider_list(Type="isdn"):
 
     db = open(provider_db, "r")
     line = db.readline()
-
+    Type = string.lower(Type)
+	
     while line:
         line = string.strip(line)
         if len(line) == 0 or line[0] == "#":

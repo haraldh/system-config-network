@@ -1,6 +1,6 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.5.5
+Version: 0.5.6
 Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
@@ -47,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Tue Jul 24 2001 Than Ngo <than@redhat.com>
+- add Druid for dialup connection (ISDN/ADSL/Modem)
+
 * Thu Jul 19 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - Obsolete netcfg - rp3 is next, when gnome-lokkit doesn't require
   it anymore
