@@ -134,7 +134,9 @@ class ADSLInterface(InterfaceCreator):
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
-
+        self.profilelist.commit()
+        self.devicelist.commit()
+        
         self.save()
         self.toplevel.destroy()
         gtk.mainquit()

@@ -108,6 +108,8 @@ class ProfileList(ProfileList_base):
 
     def test(self):
         self.fixInterfaces()
+        return
+        # Keep that test for later versions
         devmap = {}
         devicelist = NCDeviceList.getDeviceList()
         
@@ -129,6 +131,10 @@ class ProfileList(ProfileList_base):
 
                 devmap[device.Device] = device
             break
+        
+    def commit(self, changed=false):        
+        self.test()
+        ProfileList_base.commit(self, changed)
         
     def fixInterfaces(self):
         pppnum = 0
@@ -172,9 +178,6 @@ class ProfileList(ProfileList_base):
                     break
             break
         
-        if changed:
-            devicelist.save()
-
     def save(self):
         self.test()
         devicelist = NCDeviceList.getDeviceList()

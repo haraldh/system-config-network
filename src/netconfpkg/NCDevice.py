@@ -259,6 +259,7 @@ class Device(DeviceList.Device_base):
             #print "Moving %s to %s" % (self.oldname, self.DeviceId)
             NC_functions.rename(SYSCONFDEVICEDIR + 'ifcfg-' + self.oldname,
                       SYSCONFDEVICEDIR + 'ifcfg-' + self.DeviceId)
+
         self.oldname = self.DeviceId
             
         conf = ConfDevice(self.DeviceId)

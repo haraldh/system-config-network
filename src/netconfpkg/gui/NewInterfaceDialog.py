@@ -116,12 +116,17 @@ class NewInterfaceDialog:
 
         self.toplevel.show_all ()
         self.on_start_page_prepare (None, None)
+
+        print "init()"
         
     def on_start_page_prepare (self, druid_page, druid):
         self.interface_clist.grab_focus ()
         self.druid.set_buttons_sensitive (FALSE, TRUE, TRUE)
+        print "on_start_page_prepare"
         
     def on_start_page_next (self, druid, druid_page):
+        print "on_start_page_next"
+        
         interface = self.interface_clist.get_row_data (\
             self.interface_clist.selection[0])
 

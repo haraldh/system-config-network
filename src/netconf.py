@@ -261,9 +261,9 @@ class mainDialog:
         hardwarelist = getHardwareList()
         
         try:
+            hardwarelist.test()
             devicelist.test()
             profilelist.test()
-            hardwarelist.test()
         except TestError, msg:
             generic_error_dialog (str(msg), self.dialog)
             return 1                            
@@ -282,8 +282,8 @@ class mainDialog:
 
     def save(self):
         if self.test() == 0:
-            self.saveDevices()
             self.saveHardware()
+            self.saveDevices()
             self.saveProfiles()
             return 0
         else:

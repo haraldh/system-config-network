@@ -172,5 +172,8 @@ class GenericInterface(InterfaceCreator):
                     continue
                 prof.ActiveDevices.append(self.device.DeviceId)
                 break
+
+        self.profilelist.commit()
+        self.devicelist.commit()
         
         gtk.mainquit()

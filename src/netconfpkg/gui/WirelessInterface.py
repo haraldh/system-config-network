@@ -259,6 +259,8 @@ class WirelessInterface(InterfaceCreator):
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
+        self.profilelist.commit()
+        self.devicelist.commit()
         
         self.toplevel.destroy()
         gtk.mainquit()
