@@ -76,8 +76,9 @@ CATALOGS = @CATALOGS@
 	file=$(srcdir)/`echo $* | sed 's,.*/,,'`.gmo \
 	  && rm -f $$file && $(GMSGFMT) --statistics -o $$file $<
 
+.PHONY: findpy
 
-all: all-@USE_NLS@
+all: all-@USE_NLS@ 
 
 all-yes: $(CATALOGS)
 all-no:
@@ -86,16 +87,19 @@ all-no:
 # otherwise packages like GCC can not be built if only parts of the source
 # have been downloaded.
 
+findpy:
+	(cd $(top_srcdir)/;find src -name *.py -print ) > $(srcdir)/POTFILES.in
+
 POTFILES-RHL: $(POTFILES) $(srcdir)/POTFILES.in
-	rm -rf POTFILES-RHL
+	rm -rf POTFILES
 	for file in `cat $(srcdir)/POTFILES.in`; do \
 	  if expr $$file : .*.glade$$ > /dev/null; then \
 	    gladestr=`echo $$file | sed 's/.glade$$/.gladestr/'`; \
 	    libglade-xgettext -c -o $(top_srcdir)/$$gladestr \
 	      $(top_srcdir)/$$file; \
-	    echo $(top_srcdir)/$$gladestr >> POTFILES-RHL; \
+	    echo $(top_srcdir)/$$gladestr  >> POTFILES-RHL; \
 	  else \
-  	    echo $(top_srcdir)/$$file >> POTFILES-RHL; \
+  	    echo $(top_srcdir)/$$file  >> POTFILES-RHL; \
 	  fi; \
 	done
 
@@ -162,7 +166,7 @@ mostlyclean:
 clean: mostlyclean
 
 distclean: clean
-	rm -f Makefile Makefile.in POTFILES *.mo
+	rm -f Makefile Makefile.in POTFILES-RHL *.mo
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
@@ -171,6 +175,7 @@ maintainer-clean: distclean
 
 distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 dist distdir:
+	$(MAKE) findpy
 	$(MAKE) update-po
 	@$(MAKE) dist2
 # This is a separate target because 'update-po' must be executed before.

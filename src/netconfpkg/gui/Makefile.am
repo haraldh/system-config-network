@@ -21,6 +21,11 @@ GLADE_FILES = \
 	modemconfig.glade \
 	ModemDruid.glade \
 	NewInterfaceDruid.glade \
+	neat-control-debugdialog.glade \
+	neat-control-monitordialog.glade \
+	neat-control-popupmenu.glade \
+	neat-control-propertiesdialog.glade \
+	neat-control-statusdialog.glade \
 	sharedtcpip.glade \
 	tcpipdialog.glade \
 	tokenringconfig.glade \
