@@ -58,6 +58,8 @@ cd rp3-1.1.10/rp3
 cd ../docs
 %makeinstall
 popd
+# use neat-control
+rm -f $RPM_BUILD_ROOT/etc/X11/applnk/Internet/rp3.desktop
 %endif
 
 %find_lang %name
@@ -83,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Thu Mar 14 2002 Than Ngo <than@redhat.com> 0.9.16-1
+- various fixes
+
 * Thu Mar 14 2002 Than Ngo <than@redhat.com> 0.9.15-1
 - add desktop file for neat-control
 - various fixes, additions
