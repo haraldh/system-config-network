@@ -88,7 +88,9 @@ class ethernetConfigDialog:
             hwcurr = hwdesc[0]
 
         if self.device.Device:
-            self.xml.get_widget("ethernetDeviceEntry").set_text(hwcurr)
+            widget = self.xml.get_widget("ethernetDeviceEntry")
+            widget.set_text(hwcurr)
+            widget.set_position(0)
         
         if self.device.Alias != None:
             self.xml.get_widget("aliasSupportCB").set_active(TRUE)

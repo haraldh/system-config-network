@@ -95,8 +95,10 @@ class dslConfigDialog:
             hwcurr = hwdesc[0]
 
         if dialup.EthDevice:
-            self.xml.get_widget("ethernetDeviceEntry").set_text(hwcurr)
-
+            widget = self.xml.get_widget("ethernetDeviceEntry")
+            widget.set_text(hwcurr)
+            widget.set_position(0)
+            
         if dialup.ProviderName:
             self.xml.get_widget("providerNameEntry").set_text(dialup.ProviderName)
 
@@ -112,7 +114,7 @@ class dslConfigDialog:
         if dialup.AcName:
             self.xml.get_widget("acNameEntry").set_text(dialup.AcName)
 
-        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP)
+        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == true)
 
     def dehydrate(self):
         dialup = self.device.Dialup
