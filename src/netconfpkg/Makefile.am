@@ -67,6 +67,7 @@ PYTHON_FILES = \
 	NCProfileList.py \
 	NCWireless.py \
 	NewInterface.py \
+	PasswordCrypt.py \
 	providerdb.py \
 	provider.py \
 	tcpdialog.py \
