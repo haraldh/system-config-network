@@ -466,7 +466,7 @@ class ModemDialup(Dialup):
         if not parentConf.has_key('WVDIALSECT'):
             # set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
             parentConf['WVDIALSECT'] = name
-            sectname = 'Dialer xml.get_widget ('bindconf').show_all () ' + name
+            sectname = 'Dialer ' + name
         else:
             # get section name
             sectname = 'Dialer ' + parentConf['WVDIALSECT']
