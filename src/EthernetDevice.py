@@ -17,6 +17,7 @@ import Address
 import os
 import string
 import re
+import sys
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 import Conf
@@ -34,6 +35,25 @@ class EthernetDevice(Device.Device):
 
         Device.Device.__init__(self)
         self._macaddress=None
+        self._bootproto=None
+
+        # remove when proper routing is working
+        self._gateway=None
+
+
+    #remove when proper routing is working
+
+    def setGateway(self,gateway):
+        """
+        FIXME: Remove
+        """
+        self._gateway=gateway
+
+    def gateWay(self):
+        """
+        FIXME: Remove
+        """
+        return self._gateway
 
     def readHardware(self):
         """
@@ -70,6 +90,21 @@ class EthernetDevice(Device.Device):
 
         return self._macaddress
 
+    def setBootProto(self,boot):
+        """
+        Set the boot protocol for the EthernetDevice object
+        @self The object instance
+        @macaddress The new boot protocol
+        """
+        self._bootproto=bootproto
+
+    def getBootProto(self):
+        """
+        Return the currently configured boot protocol
+        @self The object instance
+        """
+
+        return self._bootproto
     
     def readConfig(self,filename):
         """
@@ -80,7 +115,7 @@ class EthernetDevice(Device.Device):
         
         addresses=Address.AddressList()
         addresses.readFile(filename)
-        self.setAddressList(addAddressList)
+        self.setAddressList(addresses)
         confFile=Conf.ConfShellVar(filename)
 
 
@@ -96,6 +131,7 @@ class EthernetDevice(Device.Device):
         
         return res
     
+
 
 
 
