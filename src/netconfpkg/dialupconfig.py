@@ -104,12 +104,12 @@ class DialupDialog(deviceConfigDialog):
             self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)
 
         if self.device.Dialup.Compression:
-            if self.device.Dialup.Compression.VJTcpIp:
-                self.xml.get_widget("HeaderCompressionCB").set_active(self.device.Dialup.Compression.VJTcpIp == true)
-            if self.device.Dialup.Compression.VJID:
-                self.xml.get_widget("connectionCompressionCB").set_active(self.device.Dialup.Compression.VJID == true)
-            if self.device.Dialup.Compression.AdressControl:
-                self.xml.get_widget("acCompressionCB").set_active(self.device.Dialup.Compression.AdressControl == true)
+            self.xml.get_widget("headerCompressionCB").set_active(self.device.Dialup.Compression.VJTcpIp == true)
+            self.xml.get_widget("connectionCompressionCB").set_active(self.device.Dialup.Compression.VJID == true)
+            self.xml.get_widget("acCompressionCB").set_active(self.device.Dialup.Compression.AdressControl == true)
+            self.xml.get_widget("pfCompressionCB").set_active(self.device.Dialup.Compression.ProtoField == true)
+            self.xml.get_widget("bsdCompressionCB").set_active(self.device.Dialup.Compression.BSD == true)
+            self.xml.get_widget("cppCompressionCB").set_active(self.device.Dialup.Compression.CCP == true)
 
         if self.device.Dialup.PPPOptions:
             widget = self.xml.get_widget("pppOptionList")
@@ -129,6 +129,16 @@ class DialupDialog(deviceConfigDialog):
             country = self.xml.get_widget("countryCodeEntry").get_text()
             self.device.Dialup.Regioncode = country + ":" + str(NCDialup.country_code[country])
         self.device.Dialup.PhoneNumber = self.xml.get_widget("phoneEntry").get_text()
+
+        if not self.device.Dialup.Compression:
+            self.device.Dialup.createCompression()
+            
+        self.device.Dialup.Compression.VJTcpIp = self.xml.get_widget("headerCompressionCB").get_active()
+        self.device.Dialup.Compression.VJID = self.xml.get_widget("connectionCompressionCB").get_active()
+        self.device.Dialup.Compression.AdressControl = self.xml.get_widget("acCompressionCB").get_active()
+        self.device.Dialup.Compression.ProtoField = self.xml.get_widget("pfCompressionCB").get_active()
+        self.device.Dialup.Compression.BSD = self.xml.get_widget("bsdCompressionCB").get_active()
+        self.device.Dialup.Compression.CCP = self.xml.get_widget("cppCompressionCB").get_active()
 
         self.device.Dialup.PPPOptions = None
         self.device.Dialup.createPPPOptions()
