@@ -868,6 +868,7 @@ class odict(UserDict):
         self._keys.remove(key)
 
     def __setitem__(self, key, item):
+        #print "[%s] = %s" % (str(key), str(item))
         UserDict.__setitem__(self, key, item)
         if key not in self._keys: self._keys.append(key)
 

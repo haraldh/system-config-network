@@ -4,7 +4,7 @@ AM_INIT_AUTOMAKE(redhat-config-network, 1.1.1)
 PYTHON=python2.2
 AC_SUBST(PYTHON)
 
-ALL_LINGUAS="cs da de es fr is it ja ko no pt ru sv tr zh_CN.GB2312 zh_TW.Big5 zh_TW"
+ALL_LINGUAS="cs da de el es fr is it ja ko no pt ru sv tr zh_CN.GB2312 zh_CN zh_TW.Big5 zh_TW"
 
 paths=`python2.2 <<EOF
 import sys;
@@ -50,11 +50,22 @@ else
 	AC_MSG_RESULT([$PY_PYDOC]);
 fi
 
+
 AM_PROG_LIBTOOL
 
 dnl prevent to copy po/Makefile.in.in
 AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
+
+AC_CHECK_FUNCS([memset])
+AC_CHECK_FUNCS([socket])
+AC_CHECK_FUNCS([strerror])
+AC_CHECK_FUNCS([strrchr])
+AC_CHECK_HEADERS([fcntl.h])
+AC_CHECK_HEADERS([sys/ioctl.h])
+AC_FUNC_LSTAT
+AC_FUNC_MALLOC
+AC_PROG_GCC_TRADITIONAL
 
 AC_OUTPUT([
 Makefile
