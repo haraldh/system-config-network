@@ -82,9 +82,9 @@ class ethernetHardwareDialog:
         if self.hw.Card.Mem:
             cmd = cmd + ' mem='+self.hw.Card.Mem
         if self.hw.Card.DMA0:
-            cmd = cmd + ' dma='+self.hw.Card.DMA0
+            cmd = cmd + ' dma='+str(self.hw.Card.DMA0)
         if self.hw.Card.DMA1:
-            cmd = cmd + ' dma1='+self.hw.Card.DMA1
+            cmd = cmd + ' dma1='+str(self.hw.Card.DMA1)
         (status, output) = commands.getstatusoutput(cmd)
         if status != 0:
             GUI_functions.generic_error_dialog('The Ethernet card could not be initialized. Please verify your settings and try again.', self.dialog)
@@ -113,9 +113,9 @@ class ethernetHardwareDialog:
             if self.hw.Card.IoPort2:
                 self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
             if self.hw.Card.DMA0:
-                self.xml.get_widget('dma0Entry').set_text(self.hw.Card.DMA0)
+                self.xml.get_widget('dma0Entry').set_text(str(self.hw.Card.DMA0))
             if self.hw.Card.DMA1:
-                self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
+                self.xml.get_widget('dma1Entry').set_text(str(self.hw.Card.DMA1))
 
     def setup(self):
         list = []
@@ -140,8 +140,13 @@ class ethernetHardwareDialog:
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-        self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
-        self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
+        val = self.xml.get_widget('dma0Entry').get_text()
+        if val != "" or val != None:
+            self.hw.Card.DMA0 = val
+        val = self.xml.get_widget('dma1Entry').get_text()
+        if val != "" or val != None:
+            self.hw.Card.DMA1 = val
+
         modInfo = NCHardwareList.getModInfo()
         if not self.hw.Card.ModuleName or self.hw.Card.ModuleName == "":
             self.hw.Card.ModuleName = _('Unknown')
