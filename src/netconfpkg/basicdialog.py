@@ -77,6 +77,16 @@ class basicDialog:
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
         self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
+
+        notebook = self.xml.get_widget("basicNotebook")
+
+        for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
+            widget = self.xml.get_widget (wname)
+            if widget:
+                page = notebook.page_num(widget)
+                if page:                
+                    notebook.remove_page(page)
+
         self.dialog.show()
 
     def load_icon(self, pixmap_file, widget = None):
