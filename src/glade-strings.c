@@ -198,7 +198,7 @@ void some_function_name() {
   _("Callback setting");
 
   /* netconfpkg/devicetype.glade:16 */
-  _("Choose Device Type");
+  _("Choose Hardware Device Type");
 
   /* netconfpkg/hardwaretype.glade:16 */
   _("Choose Hardware Type");
@@ -303,9 +303,6 @@ void some_function_name() {
   /* netconfpkg/cipeconfig.glade:347 netconfpkg/tcpipdialog.glade:1628 */
   _("Edit...");
 
-  /* netconfpkg/dslconfig.glade:809 */
-  _("Enable "Use synchronous PPP", if you want to use it.");
-
   /* netconfpkg/dialupconfig.glade:893 */
   _("Enable VJ Connection-_ID Compression");
 
@@ -326,6 +323,9 @@ void some_function_name() {
 
   /* netconfpkg/dialupconfig.glade:874 */
   _("Enable _VJ TCP/IP Header Compression");
+
+  /* netconfpkg/dslconfig.glade:809 */
+  _("Enables synchronous PPP for the connection");
 
   /* netconfpkg/dialupconfig.glade:561 netconfpkg/DialupDruid.glade:306 */
   _("Enter any numbers you need to dial before the normal phone number. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here.");
@@ -568,14 +568,14 @@ void some_function_name() {
   /* netconfpkg/dialupconfig.glade:416 netconfpkg/DialupDruid.glade:161 */
   _("Phone Number");
 
-  /* netconfpkg/devicetype.glade:97 */
-  _("Please select the device type, you want to create");
-
   /* netconfpkg/hardwaretype.glade:97 */
   _("Please select the hardware device type, you want to create");
 
   /* netconfpkg/tcpipdialog.glade:855 */
   _("Please select the level of security for this device.");
+
+  /* netconfpkg/devicetype.glade:97 */
+  _("Please select the type of hardware device to add:");
 
   /* netconfpkg/tcpipdialog.glade:1202 netconfpkg/tcpipdialog.glade:1506 */
   _("Port");
