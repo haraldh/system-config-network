@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign 1.4
 
 SUBDIRS=doc src po
 
-EXTRA_DIST= redhat-config-network.spec neat.desktop neat.console neat.pam internet-druid.console internet-druid.desktop 
+EXTRA_DIST= redhat-config-network.spec neat.desktop neat.console neat.pam internet-druid.console internet-druid.desktop neat-control.desktop 
 
 #neatconsoledir=$(sysconfdir)/security/console.apps/neat
 #neatconsole_DATA=neat.console 
@@ -19,6 +19,7 @@ icons3dir=$(sysconfdir)/X11/applnk/System
 icons1_DATA=neat.desktop internet-druid.desktop
 icons2_DATA=neat.desktop internet-druid.desktop
 icons3_DATA=neat.desktop internet-druid.desktop
+icons4_DATA=neat-control.desktop
 
 sysdir=$(sysconfdir)/X11/applnk/System
 

@@ -29,7 +29,7 @@ if not "/usr/share/redhat-config-network" in sys.path:
 if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
     sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
-PROGNAME='redhat-control-network'
+PROGNAME='redhat-config-network'
 gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
 gettext.textdomain(PROGNAME)
 _=gettext.gettext
@@ -38,6 +38,7 @@ import getopt
 import signal
 import os
 import os.path
+import posix
 import time
 import string
 import GDK
@@ -56,6 +57,7 @@ TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red
 
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
+device = None
 
 class mainDialog:
     def __init__(self):
@@ -111,23 +113,27 @@ class mainDialog:
         device = self.clist_get_device()
         if device:
             child = Interface().activate(device)
-            signal.signal(signal.SIGUSR1, self.handler)
             dlg = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Network device activating...'))
             dlg.set_border_width(10)
             vbox = gtk.GtkVBox(1)
             vbox.add(gtk.GtkLabel(_('Activating for Network device %s, please wait...') %(device)))
+            vbox.show()
             dlg.add(vbox)
             dlg.set_position (gtk.WIN_POS_MOUSE)
             dlg.set_modal(TRUE)
             dlg.show_all()
+            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
+            dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
             idle_func()
-            time.sleep(1)
             os.waitpid(child, 0)
+            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
+            dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.destroy()
             if NetworkDevice().find(device):
                 self.hydrate()
             else:
                 self.errorDialog(device, ACTIVATE)
+
         
     def on_deactivateButton_clicked(self, button):
         device = self.clist_get_device()
@@ -241,22 +247,23 @@ class mainDialog:
             
     def errorDialog(self, device, error_type):
         if error_type == ACTIVATE:
-            errorString = _('cannot activate network device %s') %(device)
+            errorString = _('Cannot activate network device %s') %(device)
         elif error_type == DEACTIVATE:
-            errorString = _('cannot deactivate network device %s') %(device)
+            errorString = _('Cannot deactivate network device %s') %(device)
         elif error_type == STATUS:
-            errorString = _('cannot show status of network device %s') %(device)
+            errorString = _('Cannot show status of network device %s') %(device)
         elif error_type == MONITOR:
-            errorString = _('cannot monitor status of network device %s') %(device)
+            errorString = _('Cannot monitor status of network device %s') %(device)
 
         dlg = gnome.ui.GnomeMessageBox(errorString, 'error', _('Close'))
+        dlg.set_position(gtk.WIN_POS_MOUSE)
         dlg.run_and_close()
 
 
 def idle_func():
     while gtk.events_pending():
         gtk.mainiteration()
-                    
+
 
 # make ctrl-C work
 if __name__ == '__main__':

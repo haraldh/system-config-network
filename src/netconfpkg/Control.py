@@ -94,8 +94,8 @@ class Interface:
             return -1
 
     def monitor(self, device):
-        ## todo, Janathon??
-        pass
+        ret = fork_exec(0, '/usr/bin/rp3', ['/usr/bin/rp3', '-i', device])
+        return ret
     
     def allow(self, device):
         pass
