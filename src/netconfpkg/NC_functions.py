@@ -27,6 +27,9 @@ def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=
 
 def getDeviceType(devname):
     type = 'Unknown'
+    if not devname or devname == "":
+        return type
+    
     for i in deviceTypes.keys():
         if re.search(i, devname):
             type = deviceTypes[i]
