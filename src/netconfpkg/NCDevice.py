@@ -102,8 +102,6 @@ class Device(Device_base):
             for hw in hwlist:
                 if hw.Name == self.Device:
                     self.Type = hw.Type
-
-        print "Type == " + self.Type
                     
         if (not self.Type or self.Type == "" or self.Type == "Unknown" ) \
            and self.Device:            
