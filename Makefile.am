@@ -69,10 +69,13 @@ changelog:
 	rcs2log -v | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
 		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
 
-clean:
+clean-local:
 	rm -f neat.desktop
 	rm -f neat-control.desktop
 	rm -f *~ *\#
+
+distclean-local:
+	rm -f $(top_builddir)/po/po2tbl.sed
 
 PKGNAME=${PACKAGE}
 VERSION=@VERSION@
