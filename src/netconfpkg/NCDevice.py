@@ -8,11 +8,21 @@ if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
 import Conf
+import gettext
 
 import HardwareList
 
 from NC_functions import *
-from DeviceList import *
+import DeviceList
+import NCDialup
+import NCCipe
+
+##
+## I18N
+##
+gettext.bindtextdomain("netconf", "/usr/share/locale")
+gettext.textdomain("netconf")
+_=gettext.gettext
 
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
@@ -24,7 +34,7 @@ class ConfRoute(Conf.ConfShellVar):
         Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name + '.route')
         self.chmod(0600)
 
-class Device(Device_base):
+class Device(DeviceList.Device_base):
     keydict = { 'Device' : 'DEVICE',
                 'Name' : 'NAME',
                 'OnBoot' : 'ONBOOT',
@@ -43,7 +53,7 @@ class Device(Device_base):
                     }
         
     def __init__(self, list = None, parent = None):
-        Device_base.__init__(self, list, parent)        
+        DeviceList.Device_base.__init__(self, list, parent)        
 
     def apply(self, other):
         if not other:
@@ -88,7 +98,21 @@ class Device(Device_base):
             return self.Dialup
 
         else:
-            raise TypeError, "Device type not specified"
+            raise TypeError, _("Device type not specified")
+
+    def createCipe(self):
+        if self.Type:
+            if self.Type == "CIPE":
+                DeviceList.Device_base.createCipe(self)
+            else:
+                #print "Non-CIPE type: " + self.Type
+                self.Cipe = None
+                
+            return self.Cipe
+
+        else:
+            raise TypeError, _("Device type not specified")
+
 
     def load(self, name):
         
@@ -119,15 +143,15 @@ class Device(Device_base):
                     gw = cfg['GATEWAY']
                     
                     if gw and self.Netmask:                    
-                        network = commands.getoutput('ipcalc --network ' + self.IP \
-                                            + ' ' + self.Netmask + \
+                        network = commands.getoutput('ipcalc --network ' + str(self.IP) \
+                                            + ' ' + str(self.Netmask) + \
                                             ' 2>/dev/null')
                         
-                        out = commands.getoutput('ipcalc --network ' + gw + ' ' \
-                                        + self.Netmask + ' 2>/dev/null')
+                        out = commands.getoutput('ipcalc --network ' + str(gw) + ' ' \
+                                        + str(self.Netmask) + ' 2>/dev/null')
                         
                         if out == network:
-                            self.Gateway = gw
+                            self.Gateway = str(gw)
                             
             except (OSError, IOError), msg:
                 pass
@@ -153,11 +177,16 @@ class Device(Device_base):
             #print "Loading Dialup"
             dialup.load(conf)
 
+        cipe = self.createCipe()
+        if cipe:
+            cipe.load(conf)
+
         num = len(rconf.keys())
         self.createStaticRoutes()
 
         if math.fmod(num, 3) != 0:
-            print "Static routes file for "+name+" has not vaild format"
+            print _("Static routes file for ") + name \
+                  + _(" has not vaild format")
         else:
             for p in xrange(0, num/3):
                 i = self.StaticRoutes.addRoute()
@@ -190,7 +219,10 @@ class Device(Device_base):
                     
         if self.Dialup:
             self.Dialup.save(conf)
- 
+
+        if self.Cipe:
+            self.Cipe.save(conf)
+
         if self.StaticRoutes and len(self.StaticRoutes) > 0:
             rconf = ConfRoute(self.DeviceId)
             p = 0
@@ -200,5 +232,8 @@ class Device(Device_base):
                 rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
+
+        for i in conf.keys():
+            if not conf[i] or conf[i] == "": del conf[i]
 
         conf.write()

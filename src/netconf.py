@@ -350,7 +350,8 @@ class mainDialog:
         button = 0
         type = device.Type
         device.createDialup()
-
+        device.createCipe()
+        
         if type == "Ethernet":
             cfg = ethernetConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
@@ -372,8 +373,9 @@ class mainDialog:
             button = dialog.run ()
 
         elif type == "CIPE":
-            button = 1
-            print "CIPE configuration"
+            cfg = cipeConfigDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
             
         elif type == "Wireless":
             button = 1
