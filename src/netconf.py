@@ -469,7 +469,7 @@ class mainDialog:
         device.createCipe()
         device.createWireless()
 
-        if type == "ethernet":
+        if type == "Ethernet":
             cfg = ethernetconfigdialog(device, self.xml)
             dialog = cfg.xml.get_widget ("dialog")
             button = dialog.run ()
