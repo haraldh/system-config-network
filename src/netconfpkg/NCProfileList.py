@@ -21,8 +21,10 @@ import sys
 import os
 import os.path
 import shutil
+import string
 
 import NCDeviceList
+import NCIPsecList
 import NCHardwareList
 
 from NC_functions import *
@@ -49,14 +51,20 @@ def updateNetworkScripts():
     if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
         mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/')
 
-    if not ishardlink(netconfpkg.ROOT + HOSTSCONF) and not os.path.islink(netconfpkg.ROOT + HOSTSCONF):
-        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + HOSTSCONF))
-        copy(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/hosts')
+    if not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
+           and not os.path.islink(netconfpkg.ROOT + HOSTSCONF):
+        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + \
+                     HOSTSCONF))
+        copy(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + \
+             SYSCONFPROFILEDIR+'/default/hosts')
         changed = true
 
-    if not ishardlink(netconfpkg.ROOT + RESOLVCONF) and not os.path.islink(netconfpkg.ROOT + RESOLVCONF):
-        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + RESOLVCONF))
-        copy(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/resolv.conf')
+    if not ishardlink(netconfpkg.ROOT + RESOLVCONF) \
+           and not os.path.islink(netconfpkg.ROOT + RESOLVCONF):
+        log.log(1, _("Copying %s to default profile." % netconfpkg.ROOT + \
+                     RESOLVCONF))
+        copy(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + \
+             SYSCONFPROFILEDIR+'/default/resolv.conf')
         changed = true
     return changed
 
@@ -65,13 +73,15 @@ from types import ListType
 class MyFileList(ListType):
     def __setitem__(self, key, value):
         value = os.path.abspath(value)
-        log.log(5, "MyFileList.__setitem__(self, %s, %s)" % (str(key), str(value)))
+        log.log(5, "MyFileList.__setitem__(self, %s, %s)" % (str(key),
+                                                             str(value)))
         return ListType.__setitem__(self, key, value)
 
     def __contains__(self, obj):
         obj = os.path.abspath(obj)
-        log.log(5, "MyFileList.__contains__(self, %s)" % str(obj))
-        return ListType.__contains__(self, os.path.abspath(obj))
+        ret = ListType.__contains__(self, os.path.abspath(obj))
+        log.log(5, "MyFileList.__contains__(self, %s) == %s" % (str(obj), str(ret)))
+        return ret
 
     def append(self, obj):
         obj = os.path.abspath(obj)
@@ -86,6 +96,7 @@ class ProfileList(ProfileList_base):
         changed = updateNetworkScripts()
         self.__delslice__(0, len(self))
         devicelist = NCDeviceList.getDeviceList()
+        ipseclist = NCIPsecList.getIPsecList()
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         dnsconf = Conf.ConfEResolv()
@@ -97,14 +108,16 @@ class ProfileList(ProfileList_base):
         proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)        
         for pr in proflist:
             # 60016
-            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr):
+            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
+                                 '/' + pr):
                 continue
             
-            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + \
-                                     '/network')
+            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
+                                       '/' + pr + '/network')
             i = self.addProfile()
             prof = self[i]
             prof.createActiveDevices()
+            prof.createActiveIPsecs()
             prof.createDNS()
             prof.createHostsList()
             prof.ProfileName = pr
@@ -112,14 +125,24 @@ class ProfileList(ProfileList_base):
                 prof.Active = true
             else:
                 prof.Active = false
-            devlist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr)
+            devlist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
+                                 '/' + pr)
             for dev in devlist:
                if dev[:6] != 'ifcfg-':
                    continue
                for d in devicelist:
                    if d.DeviceId == dev[6:]:
                        prof.ActiveDevices.append(dev[6:])
-
+                       break
+                   
+            for ipsec in devlist:
+               if ipsec[:6] != 'ifcfg-':
+                   continue
+               for d in ipseclist:
+                   if d.IPsecId == ipsec[6:]:
+                       prof.ActiveIPsecs.append(ipsec[6:])
+                       break
+                   
             hoconf = Conf.ConfFHosts( filename = netconfpkg.ROOT + \
                                       SYSCONFPROFILEDIR + '/' + pr + '/hosts')
             hoconf.read()
@@ -138,7 +161,8 @@ class ProfileList(ProfileList_base):
                 except:
                     break
                 
-            dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
+            dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                               pr + '/resolv.conf'
             dnsconf.read()
             prof.DNS.Hostname     = use_hostname
             prof.DNS.Domainname   = ''
@@ -271,11 +295,15 @@ class ProfileList(ProfileList_base):
         files_used = MyFileList()
                 
         for prof in self:
-            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName):
-                mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName)
-            files_used.append(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName)
+            if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
+                                 '/' + prof.ProfileName):
+                mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                      prof.ProfileName)
+            files_used.append(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                              prof.ProfileName)
 
-            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+            nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
+                                       '/' + \
                                      prof.ProfileName + '/network')
             files_used.append(nwconf.filename)
 
@@ -327,7 +355,6 @@ class ProfileList(ProfileList_base):
 
             del saved
 
-
             nwconf.write()
             dnsconf.write()
             hoconf.write()
@@ -335,7 +362,7 @@ class ProfileList(ProfileList_base):
             del hoconf
             
             for devId in prof.ActiveDevices:
-                for prefix in [ 'ifcfg-', 'ipsec-', 'route-' ]:
+                for prefix in [ 'ifcfg-', 'route-', 'keys-']:
                     devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                   prefix + devId
                     profilename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
@@ -355,22 +382,48 @@ class ProfileList(ProfileList_base):
                 if prof.Active == false and prof.ProfileName != 'default':
                     continue
 
-                # Active Profile or default profile
-                
-                for prefix in [ 'ifcfg-', 'ipsec-', 'route-' ]:
+                # Active Profile or default profile                
+                for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
                     devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                       '/' + prefix + devId
                     profilename = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
-                               '/' + prefix + devId
+                                  '/' + prefix + devId
+                       
                     if os.path.isfile(devfilename):
                         unlink(profilename)
                         link(devfilename, profilename)
-                        files_used.append(devfilename)
+                        files_used.append(profilename)
 
                 # unlink old .route files
                 unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
                        '/' + devId + '.route')
-                
+
+            for devId in prof.ActiveIPsecs:
+                for prefix in [ 'ifcfg-', 'keys-']:
+                    devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                  prefix + devId
+                    profilename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                                  prof.ProfileName + '/' + prefix + devId
+                    unlink(profilename)
+
+                    link(devfilename, profilename)
+                    files_used.append(devfilename)
+                    files_used.append(profilename)
+
+                if prof.Active == false and prof.ProfileName != 'default':
+                    continue
+
+                # Active Profile or default profile                
+                for prefix in [ 'ifcfg-', 'keys-' ]:
+                    devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                      '/' + prefix + devId
+                    profilename = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                                  '/' + prefix + devId
+                       
+                    if os.path.isfile(devfilename):
+                        unlink(profilename)
+                        link(devfilename, profilename)
+                        files_used.append(profilename)                
 
             if prof.Active == false:                
                 continue
@@ -380,30 +433,35 @@ class ProfileList(ProfileList_base):
             if os.path.isfile(netconfpkg.ROOT + RESOLVCONF) and not \
                    ishardlink(netconfpkg.ROOT + RESOLVCONF) and not \
                    os.path.islink(netconfpkg.ROOT + RESOLVCONF):
-                rename(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + RESOLVCONF + '.bak')
+                rename(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + \
+                       RESOLVCONF + '.bak')
             else:
                 unlink(netconfpkg.ROOT + RESOLVCONF)
 
-            link(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
+            link(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                 prof.ProfileName + \
                  '/resolv.conf', netconfpkg.ROOT + RESOLVCONF)
             os.chmod(netconfpkg.ROOT + RESOLVCONF, 0644)
                 
-            if os.path.isfile(netconfpkg.ROOT + HOSTSCONF) and not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
+            if os.path.isfile(netconfpkg.ROOT + HOSTSCONF) \
+                   and not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
                    and not os.path.islink(netconfpkg.ROOT + HOSTSCONF):
-                rename(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + HOSTSCONF + '.bak')
+                rename(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + \
+                       HOSTSCONF + '.bak')
             else:
                 unlink(netconfpkg.ROOT + HOSTSCONF)
 
-            link(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', \
+            link(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+                 prof.ProfileName + '/hosts', \
                  netconfpkg.ROOT + HOSTSCONF)
-            os.chmod(netconfpkg.ROOT + HOSTSCONF, 0644)
+            os.chmod(netconfpkg.ROOT + HOSTSCONF, 0644)        
 
-        
-
-        # First remove all files that are linked in the device directory
+        # Remove all unused files that are linked in the device directory
         devlist = os.listdir(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
-        for dev in devlist:
-            if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
+        for dev in devlist:            
+            if string.split(dev, '-')[0] not in [ 'ifcfg', 'route',
+                                                  'keys' ] \
+                                                  or dev == 'ifcfg-lo':
                 continue
             file = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev
             if file in files_used:
@@ -431,7 +489,8 @@ class ProfileList(ProfileList_base):
             # Remove all files in the profile directory
             filelist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + prof)
             for file in filelist:
-                filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + prof + '/' + file
+                filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + prof + '/' + \
+                           file
                 if filename in files_used:
                     # Do not remove used files
                     continue                
@@ -450,6 +509,20 @@ class ProfileList(ProfileList_base):
             else:
                 if deviceid in prof.ActiveDevices:
                     del prof.ActiveDevices[prof.ActiveDevices.index(deviceid)]
+
+    def activateIpsec (self, ipsecid, profile, state=None):
+        ipseclist = NCIPsecList.getIPsecList()
+        profilelist = getProfileList()
+
+        for prof in profilelist:
+            if prof.ProfileName != profile:
+                continue
+            if state:
+                if ipsecid not in prof.ActiveIPsecs:
+                    prof.ActiveIPsecs.append(ipsecid)
+            else:
+                if ipsecid in prof.ActiveIPsecs:
+                    del prof.ActiveIPsecs[prof.ActiveIPsecs.index(ipsecid)]
 
     def switchToProfile(self, val, dochange = true):
         found = false
@@ -491,7 +564,8 @@ class ProfileList(ProfileList_base):
     def _objToStr(self, parentStr = None):
         retstr = ""
         for profile in self:
-            retstr += profile._objToStr("ProfileList.%s" % (profile.ProfileName))
+            retstr += profile._objToStr("ProfileList.%s" % \
+                                        (profile.ProfileName))
 
         return retstr
 
@@ -534,5 +608,5 @@ if __name__ == '__main__':
 
     pl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/01 13:00:04 $"
-__version__ = "$Revision: 1.75 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.76 $"

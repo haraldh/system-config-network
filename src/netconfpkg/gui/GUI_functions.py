@@ -331,6 +331,7 @@ def xml_signal_autoconnect (xml, map):
         else:                
             xml.signal_connect(signal, func)
 
+
 def gui_run(command, argv, searchPath = 0,
               root = '/', stdin = 0,
               catchfd = 1, closefd = -1):
@@ -469,7 +470,6 @@ def gui_run_dialog(command, argv, searchPath = 0,
     childpid = os.fork()
     if (not childpid):
         os.environ["CONSOLETYPE"] = 'serial'
-    
         if (root and root != '/'): os.chroot (root)
         if isinstance(catchfd, tuple):
             for fd in catchfd:
@@ -513,7 +513,7 @@ def gui_run_dialog(command, argv, searchPath = 0,
             if len(fdin):
                 s = os.read(read, 1024)
                 rc = rc + s
-                iter = buffer.get_end_iter()                
+                iter = buffer.get_end_iter()
                 buffer.insert(iter, str(s))
                 vadj = swindow.get_vadjustment()
                 if vadj.value + vadj.page_size >= vadj.upper - 5:
@@ -588,5 +588,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/26 11:18:04 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.26 $"

@@ -172,5 +172,5 @@ if __name__ == "__main__":
     gtk.mainloop()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/01 13:00:04 $"
-__version__ = "$Revision: 1.23 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.24 $"

@@ -37,9 +37,7 @@ class Hardware(Hardware_base):
     def isType(self, device):
         raise NotImplemented
     
-import netconfpkg
-netconfpkg.Hardware = Hardware
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.7 $"

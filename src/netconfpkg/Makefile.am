@@ -4,6 +4,7 @@ IDL_FILES = \
 	DeviceList.idl \
 	Firewall.idl \
 	HardwareList.idl \
+	IPsecList.idl \
 	NetworkList.idl \
 	ProfileList.idl \
 	ProviderList.idl
@@ -22,6 +23,8 @@ PYTHON_FILES = \
 	NCHardwareList.py \
 	NCHardwareFactory.py \
 	NCisdnhardware.py \
+	NCIPsec.py \
+	NCIPsecList.py \
 	NCProfileList.py \
 	NCWireless.py \
 	Control.py \

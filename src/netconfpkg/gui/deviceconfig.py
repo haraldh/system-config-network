@@ -67,13 +67,13 @@ class deviceConfigDialog:
         load_icon("network.xpm", self.dialog)
         #
 
-        vbox = self.xml.get_widget ('ipsecVbox')
-        if vbox:
-            window = self.sharedtcpip_xml.get_widget ('ipsecWindow')
-            frame = self.sharedtcpip_xml.get_widget ('ipsecFrame')
-            window.remove (frame)
-            vbox.pack_start (frame)
-            sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
+##         vbox = self.xml.get_widget ('ipsecVbox')
+##         if vbox:
+##             window = self.sharedtcpip_xml.get_widget ('ipsecWindow')
+##             frame = self.sharedtcpip_xml.get_widget ('ipsecFrame')
+##             window.remove (frame)
+##             vbox.pack_start (frame)
+##             sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
 
         self.hydrate()
 
@@ -108,26 +108,41 @@ class deviceConfigDialog:
     def on_okButton_clicked(self, button):
         self.dehydrate()
         devicelist = NCDeviceList.getDeviceList()
+        ipseclist = NCIPsecList.getIPsecList()
+        dup = None
         for dev in devicelist:
             if dev == self.device:
                 continue
             if dev.DeviceId == self.device.DeviceId:
-                generic_error_dialog (\
-                _("Nickname %s is already in use!\nPlease choose another one.\n") \
-                                      % (self.device.DeviceId))
-                duplicate = TRUE
-                num = 0
-                while duplicate:
-                    devname = self.device.DeviceId + '_' + str(num)
-                    duplicate = FALSE
-                    for dev in devicelist:
-                        if dev.DeviceId == devname:
-                            duplicate = TRUE
-                            break
-                    num = num + 1
-                self.device.DeviceId = devname
-                break
-        
+                dup = 1
+
+        for ipsec in ipseclist:
+            if dev == self.device:
+                continue
+            if ipsec.IPsecId == self.device.DeviceId:
+                dup = 1
+
+        if dup:
+            generic_error_dialog (\
+            _("Nickname %s is already in use!\nPlease choose another one.\n") \
+                                  % (self.device.DeviceId))
+            duplicate = TRUE
+            num = 0
+            while duplicate:
+                devname = self.device.DeviceId + '_' + str(num)
+                duplicate = FALSE
+                for dev in devicelist:
+                    if dev.DeviceId == devname:
+                        duplicate = TRUE
+                        break
+                for ipsec in ipseclist:
+                    if ipsec.IPsecId == devname:
+                        duplicate = TRUE
+                        break
+                num = num + 1
+            self.device.DeviceId = devname
+        return TRUE
+    
     def on_cancelButton_clicked(self, button):
         pass
 
@@ -146,5 +161,5 @@ class deviceConfigDialog:
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/01 13:00:04 $"
-__version__ = "$Revision: 1.15 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.16 $"

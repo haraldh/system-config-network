@@ -35,12 +35,12 @@ __netconfpkg.Use_Alchemist = None
 from rhpl.genClass import GenClass_read_classfile
 
 for _idl_file in [ "DeviceList.idl",
-                  "HardwareList.idl",
-                  "ProfileList.idl" ]:
+                   "HardwareList.idl",
+                   "IPsecList.idl",
+                   "ProfileList.idl" ]:
     GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = __netconfpkg)
     
 del _idl_file
-del __netconfpkg
 
 import os
 
@@ -54,12 +54,12 @@ for _i in _files:
     _cmd = "from " + _i + " import *"
     exec _cmd
 
-from plugins import *
-
 del _i
 del _files
 del _cmd
+del __netconfpkg
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/25 09:42:22 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.17 $"
+

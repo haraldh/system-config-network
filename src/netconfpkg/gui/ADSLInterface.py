@@ -21,7 +21,6 @@ from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import *
 from netconfpkg import *
-from netconfpkg.plugins import NCDevADSL
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -232,5 +231,5 @@ class ADSLInterface(InterfaceCreator):
 
 NCDevADSL.setDevADSLWizard(ADSLInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/25 09:42:22 $"
-__version__ = "$Revision: 1.23 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.24 $"

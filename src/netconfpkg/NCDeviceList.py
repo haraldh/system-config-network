@@ -19,6 +19,7 @@
 
 import os
 import os.path
+import string
 
 from NC_functions import *
 #from netconfpkg.NCDevice import Device
@@ -27,7 +28,6 @@ from netconfpkg.NCDeviceFactory import getDeviceFactory
 from rhpl import ConfSMB
 from rhpl import Conf
 from rhpl.log import log
-import UserList
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -47,7 +47,7 @@ def updateNetworkScripts():
     devlist = os.listdir(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
     changed = false
     for dev in devlist:
-        if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
+        if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo' or string.find(dev, '.rpmsave') != -1 or string.find(dev, '.rpmnew') != -1:
             continue
 
         if os.path.islink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/'+dev):
@@ -74,26 +74,6 @@ def updateNetworkScripts():
         changed = true
     return changed
 
-class ConfDevices(UserList.UserList):
-    def __init__(self):
-        UserList.UserList.__init__(self)
-
-        #for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
-        confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR    
-        try:
-            dir = os.listdir(confdir)
-        except OSError, msg:
-            pass
-        else:
-            for entry in dir:
-                if (len(entry) > 6) and \
-                   entry[:6] == 'ifcfg-' and \
-                   os.path.isfile(confdir + entry) and \
-                   (confdir + entry)[-1] != "~" and \
-                   os.access(confdir + entry, os.R_OK):
-                    self.append(entry[6:])
-        return
-
 class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
         DeviceList_base.__init__(self, list, parent)        
@@ -118,6 +98,9 @@ class DeviceList(DeviceList_base):
             if conf.has_key("DEVICE"):
                 device = conf["DEVICE"]
             del conf
+
+            if type == "IPSEC":
+                continue
 
             if not type or type == "" or type == _("Unknown"):
                 import NCHardwareList
@@ -217,6 +200,7 @@ class DeviceList(DeviceList_base):
         dev._parseLine(vals[2:], value)
     
     def save(self):
+        from NCDevice import ConfDevice
         from types import DictType
         self.commit(changed=false)
 
@@ -272,6 +256,7 @@ class DeviceList(DeviceList_base):
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
                   + netconfpkg.ROOT + SYSCONFDEVICEDIR + ': ' + str(msg)
+
         for entry in dir:
             if (len(entry) <= 6) or \
                entry[:6] != 'ifcfg-' or \
@@ -279,11 +264,18 @@ class DeviceList(DeviceList_base):
                 continue
             
             devid = entry[6:]
-                
             for dev in self:
                 if dev.DeviceId == devid:
                     break
             else:
+                # check for IPSEC
+                conf = ConfDevice(entry)
+                type = None
+                if conf.has_key("TYPE"): type = conf("TYPE")
+                if type == IPSEC:
+                    continue
+
+                # now remove the file
                 unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
                 log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
                 unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+devid)
@@ -306,24 +298,6 @@ class DeviceList(DeviceList_base):
                 log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
                 unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.route')
                 log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.route'))
-
-        # remove old ipsec files
-        for entry in dir:
-            if (len(entry) <= 6) or \
-               entry[:6] != '.ipsec' or \
-               (not os.path.isfile(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)):
-                continue
-            devid = entry[6:]
-                
-            for dev in self:
-                if dev.DeviceId == devid:
-                    break
-            else:
-                # remove ipsec file, if no ipsec vpns defined
-                unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + entry)
-                log.log(2, "rm %s" % (netconfpkg.ROOT + SYSCONFDEVICEDIR + entry))
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.ipsec')
-                log.log(2, "rm %s" % (netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+devid+'.ipsec'))
 
 
         # bug #78043
@@ -462,5 +436,5 @@ if __name__ == '__main__':
         print "---------------------------------------"
     #dl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/01 13:00:04 $"
-__version__ = "$Revision: 1.56 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.57 $"

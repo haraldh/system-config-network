@@ -18,7 +18,6 @@ from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 from editadress import editAdressDialog
-from editipsec import editIPsecDruid
 from netconfpkg import *
 import sys, traceback
 from gtk import TRUE
@@ -260,144 +259,6 @@ def route_dehydrate(xml, device):
 
 
 ###
-### IPsecs
-###
-def ipsec_update(xml, device):
-    clist = xml.get_widget('networkIpsecList')
-    clist.clear()
-
-    if device.IPsecList != None:
-        for ipsec in device.IPsecList:            
-            clist.append([ipsec.RemoteIPAddress or "-",
-                          (ipsec.ConnectionType == "Net2Net" and ipsec.RemoteNetwork) or "-",
-                          (ipsec.ConnectionType == "Net2Net" and ipsec.LocalNetwork) or "-",
-                          ])
-    else:
-        device.createIPsecList()
-
-def on_ipsecAddButton_clicked(button, xml, device, parent_dialog):
-    if device.IPsecList == None:
-        device.createIPsecList()
-    ipsecs = device.IPsecList
-    ipsec = IPsec()
-
-    canceled = ipsecDruid(ipsec, parent_dialog)
-
-    if canceled:
-        return
-    i = ipsecs.addIPsec()
-    ipsecs[i].apply(ipsec)
-    #ipsecs[i].commit()
-    ipsec_update(xml, device)
-
-def on_ipsecEditButton_clicked(button, xml, device, parent_dialog):
-    ipsecs = device.IPsecList
-    clist  = xml.get_widget("networkIpsecList")
-
-    if len(clist.selection) == 0:
-        return
-
-    ipsec = ipsecs[clist.selection[0]]
-
-    ipsecDruid(ipsec, parent_dialog)
-    
-    ipsec_update(xml, device)
-
-def ipsecDruid(ipsec, parent_dialog):
-    dialog = editIPsecDruid(ipsec)
-    
-    dl = dialog.druid
-
-    if parent_dialog:
-        dl.set_transient_for(parent_dialog)
-        dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-    else:
-        dl.set_position (gtk.WIN_POS_CENTER)
-        
-    gtk.mainloop()            
-    dl.destroy()
-
-    return dialog.canceled
-    
-def on_ipsecDeleteButton_clicked(button, xml, device):
-    if not device.IPsecList:
-        device.createIPsecList()
-
-    ipsecs = device.IPsecList
-    
-    clist  = xml.get_widget("networkIpsecList")
-
-    if len(clist.selection) == 0:
-        return
-
-    del ipsecs[clist.selection[0]]
-    ipsec_update(xml, device)
-
-def on_ipsecUpButton_clicked(button, xml, device):
-    ipsecs = device.IPsecList
-    clist = xml.get_widget("networkIpsecList")
-
-    if len(clist.selection) == 0 or clist.selection[0] == 0:
-        return
-
-    select_row = clist.selection[0]
-    dest = clist.get_text(select_row, 0)
-    prefix = clist.get_text(select_row, 1)
-    gateway = clist.get_text(select_row, 2)
-
-    rcurrent = ipsecs[select_row]
-    rnew = ipsecs[select_row-1]
-
-    ipsecs[select_row] = rnew
-    ipsecs[select_row-1] = rcurrent
-
-    ipsec_update(xml, device)
-
-    clist.select_row(select_row-1, 0)
-
-def on_ipsecDownButton_clicked(button, xml, device):
-    ipsecs = device.IPsecList
-    clist = xml.get_widget("networkIpsecList")
-
-    if len(clist.selection) == 0 or clist.selection[0] == len(ipsecs)-1:
-        return
-
-    select_row = clist.selection[0]
-    dest = clist.get_text(select_row, 0)
-    prefix = clist.get_text(select_row, 1)
-    gateway = clist.get_text(select_row, 2)
-
-    rcurrent = ipsecs[select_row]
-    rnew = ipsecs[select_row+1]
-
-    ipsecs[select_row] = rnew
-    ipsecs[select_row+1] = rcurrent
-
-    ipsec_update(xml, device)
-
-    clist.select_row(select_row+1, 0)
-
-
-def ipsec_init(xml, device, dialog = None):
-    xml_signal_autoconnect(xml, { \
-        "on_ipsecAddButton_clicked" : (on_ipsecAddButton_clicked,
-                                       xml, device, dialog),
-        "on_ipsecEditButton_clicked" : (on_ipsecEditButton_clicked,
-                                        xml, device, dialog),
-        "on_ipsecDeleteButton_clicked" : (on_ipsecDeleteButton_clicked,
-                                          xml, device),
-        })
-    ipsec_update(xml, device)
-
-
-def ipsec_hydrate(xml, device):
-    pass
-
-def ipsec_dehydrate(xml, device):
-    pass
-
-
-###
 ### Hardware (ethernet)
 ###
 
@@ -526,5 +387,5 @@ if __name__ == '__main__':
     gtk.mainloop ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/01 13:00:04 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.30 $"

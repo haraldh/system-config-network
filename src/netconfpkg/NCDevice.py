@@ -72,16 +72,6 @@ class ConfRoute(Conf.ConfShellVar):
         Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + name)
         self.chmod(0644)
 
-class ConfIPsec(Conf.ConfShellVar):
-    def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'ipsec-' + name)
-        self.chmod(0644)
-
-class ConfKeys(Conf.ConfShellVar):
-    def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'keys-' + name)
-        self.chmod(0600)
-
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
                 'OnBoot' : 'ONBOOT',
@@ -256,44 +246,6 @@ class Device(Device_base):
                 route.Address = rconf['ADDRESS' + str(p)]
                 route.Netmask = rconf['NETMASK' + str(p)]
                 route.Gateway = rconf['GATEWAY' + str(p)]
-
-        # load ipsec
-        iconf = ConfIPsec(name)
-        ipsec_entries = [
-            "LocalNetwork",
-            "LocalNetmask",
-            "LocalGateway",
-            "RemoteNetwork",
-            "RemoteNetmask",
-            "RemoteGateway",
-            "RemoteIPAddress",
-            "ConnectionType",
-            "EncryptionMode",
-            ]
-        key_entries = [
-            "AHKey",
-            "ESPKey",
-            ]
-        keys = iconf.keys()
-        cons = []
-        for key in keys:
-            if key[:14] == "ENCRYPTIONMODE":
-                cons.append(key[14:])
-        cons.sort()
-        log.log(5, "cons = %s" % cons)
-        if len(cons):
-            keyconf = ConfKeys(name)
-            self.createIPsecList()
-            for con in cons:
-                i = self.IPsecList.addIPsec()
-                ipsec = self.IPsecList[i]
-                for key in ipsec_entries:
-                    if iconf.has_key(string.upper(key) + con):
-                        setattr(ipsec, key, iconf[string.upper(key) + con])
-                for key in key_entries:
-                    if keyconf.has_key(string.upper(key) + con):
-                        setattr(ipsec, key, keyconf[string.upper(key) + con])
-                
         
         self.commit(changed=false)
                 
@@ -303,7 +255,7 @@ class Device(Device_base):
         self.commit()
 
         if self.oldname and (self.oldname != self.DeviceId):
-            for prefix in [ 'ifcfg-', 'ipsec-', 'route-' ]:
+            for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
                 NC_functions.rename(netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                     prefix + self.oldname,
                                     netconfpkg.ROOT + SYSCONFDEVICEDIR + \
@@ -410,47 +362,6 @@ class Device(Device_base):
 
         conf.write()
 
-        if self.IPsecList and len(self.IPsecList):            
-            # save ipsec settings
-            conf = ConfIPsec(self.DeviceId)
-            conf.fsf()
-            ipsec_entries = [
-                "LocalNetwork",
-                "LocalNetmask",
-                "LocalGateway",
-                "RemoteNetwork",
-                "RemoteNetmask",
-                "RemoteGateway",
-                "RemoteIPAddress",
-                "ConnectionType",
-                "EncryptionMode",
-                ]
-
-            num = 0
-            for ipsec in self.IPsecList:
-                for key in ipsec_entries:
-                    if hasattr(ipsec, key):
-                        conf[string.upper(key) + str(num)] = \
-                                               getattr(ipsec, key) or ""
-                num += 1
-            conf.write()
-
-            conf = ConfKeys(self.DeviceId)
-            conf.fsf()
-            ipsec_entries = [
-                "AHKey",
-                "ESPKey",
-                ]
-
-            num = 0
-            for ipsec in self.IPsecList:
-                for key in ipsec_entries:
-                    if hasattr(ipsec, key):
-                        conf[string.upper(key) + str(num)] = \
-                                               getattr(ipsec, key) or ""
-                num += 1
-            conf.write()            
-
         self.oldname = self.DeviceId
         
     def activate(self, dialog = None):        
@@ -458,7 +369,7 @@ class Device(Device_base):
             command = '/usr/sbin/isdnup'
             param = [command, self.DeviceId]
         else:
-            command = '/usr/sbin/usernetctl'
+            command = '/sbin/ifup'
             param = [command, self.DeviceId, "up"]
 
         try:
@@ -479,7 +390,7 @@ class Device(Device_base):
         return ret, msg
 
     def deactivate(self, dialog = None):
-        command = '/usr/sbin/usernetctl'
+        command = '/sbin/ifdown'
         param = [command, self.DeviceId, "down"]
         
         try:
@@ -537,5 +448,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/01 13:00:04 $"
-__version__ = "$Revision: 1.87 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.88 $"

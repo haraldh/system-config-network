@@ -28,6 +28,7 @@ from rhpl import ethtool
 from rhpl import Conf
 from rhpl import ConfSMB
 from rhpl.log import log
+import UserList
 
 import string
 
@@ -75,6 +76,7 @@ WIRELESS = 'Wireless'
 TOKENRING = 'Token Ring'
 CTC = 'CTC'
 IUCV = 'IUCV'
+IPSEC = 'IPSEC'
 
 deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV ]
 
@@ -169,7 +171,49 @@ def request_rpms(pkgs = []):
         return 1
     return 0
 
+def netmask_to_bits(netmask):
+    import string
+    vals = string.split(netmask, ".")
+    if len(vals) == 4:
+        netmask = 0
+        for val in vals:
+            netmask *= 256
+            try: netmask += long(val)
+            except: pass
+    else:
+        return 0
+    
+    bits = 0
+    while netmask:
+        if netmask & 1: bits += 1
+        netmask = netmask >> 1
 
+    return bits
+
+def bits_to_netmask(bits):
+    try:
+        bits = int(bits)
+    except:
+        return ""
+    
+    rem = 32 - bits
+    netmask = long(0)
+
+    while bits:
+        netmask = netmask << 1
+        netmask = netmask | 1
+        bits -= 1
+        
+    while rem:
+        netmask = netmask << 1
+        rem -= 1
+    
+    netstr = str(netmask >> 24) + "." + \
+             str(netmask >> 16 & 255) + "." + \
+             str(netmask >> 8 & 255) + "." + \
+             str(netmask & 255)
+
+    return netstr
 
 DVpapconf = None
 def getPAPConf():
@@ -662,6 +706,30 @@ def get_filepath(file):
 		return None
 	else: return fn
 
+
+class ConfDevices(UserList.UserList):
+    def __init__(self):
+        UserList.UserList.__init__(self)
+
+        #for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
+        confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR    
+        try:
+            dir = os.listdir(confdir)
+        except OSError, msg:
+            pass
+        else:
+            for entry in dir:
+                if (len(entry) > 6) and \
+                   entry[:6] == 'ifcfg-' and \
+                   os.path.isfile(confdir + entry) and \
+                   (confdir + entry)[-1] != "~" and \
+                   string.find(entry, '.rpmsave') == -1 and \
+                   string.find(entry, '.rpmnew') == -1 and \
+                   os.access(confdir + entry, os.R_OK):
+                    self.append(entry[6:])
+        return
+
+
 import netconfpkg
 netconfpkg.ROOT = "/"
 	
@@ -687,5 +755,5 @@ def prepareRoot(root):
             log.log(2, "%s already exists" % (root + dir))
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/18 11:06:57 $"
-__version__ = "$Revision: 1.77 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.78 $"

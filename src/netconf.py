@@ -185,13 +185,15 @@ if __name__ == '__main__':
     from netconfpkg import NC_functions
     NC_functions.verbose = 0
     hotshot = 0
+    chroot = None
     
     try:
-        opts, args = getopt.getopt(cmdline, "vh",
+        opts, args = getopt.getopt(cmdline, "vhr",
                                    [
                                     "verbose",
                                     "help",
                                     "hotshot",
+                                    "root"
                                     ])
         for opt, val in opts:
             if opt == '-v' or opt == '--verbose':
@@ -206,11 +208,18 @@ if __name__ == '__main__':
                 Usage()
                 sys.exit(0)
 
+            if opt == '-r' or opt == '--root':
+                chroot = val
+                continue
+
             raise BadUsage
 
     except (getopt.error, BadUsage):
         Usage()
         sys.exit(1)
+
+    if chroot:
+        prepareRoot(chroot)
         
     if hotshot:
         import tempfile
@@ -226,12 +235,11 @@ if __name__ == '__main__':
         s = hotshot.stats.load(filename)
         s.strip_dirs().sort_stats('time').print_stats(20)
         s.strip_dirs().sort_stats('cumulative').print_stats(20)
-        os.unlink(filename)
-               
+        os.unlink(filename)               
     else:
         main()
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/06/25 09:42:22 $"
-__version__ = "$Revision: 1.193 $"
+__date__ = "$Date: 2003/07/08 09:45:48 $"
+__version__ = "$Revision: 1.194 $"
