@@ -22,9 +22,8 @@ Patch3: redhat-config-network-0.9.24-rp3-isdn.patch
 %endif
 
 %description
-Netconf is the network configuration tool for Red Hat Linux,
-supporting ethernet, ADSL, ISDN and PPP. It can also configure
-firewalls and masquerading, and can use profiles.
+This is the network configuration tool for Red Hat Linux,
+supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %prep
 %if %{rp3}
@@ -104,6 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/neat
 %{_sbindir}/neat-tui
 %{_sbindir}/redhat-config-network
+%{_sbindir}/redhat-config-network-tui
 %{_sbindir}/redhat-config-network-cmd
 %{_sbindir}/redhat-config-network-druid
 %{_bindir}/*
