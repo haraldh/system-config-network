@@ -45,9 +45,22 @@ textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
 __builtin__.__dict__['_'] = _
 
+_kernel_version = None
+def kernel_version():
+    global _kernel_version
+    if not _kernel_version:
+        (sysname, nodename, release, version, machine) = os.uname()
+        (ver, rel) = string.split(release, "-")        
+        _kernel_version = string.split(ver, ".")        
+    return _kernel_version
+
+def cmp_kernel_version(v1, v2):
+    for i in (1, 2, 3):        
+        if v1[i] != v2[i]:
+            return int(v1[i]) - int(v2[i])
+    
+
 NETCONFDIR='/usr/share/system-config-network/'
-
-
 OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
 SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
@@ -57,7 +70,12 @@ HOSTSCONF='/etc/hosts'
 RESOLVCONF='/etc/resolv.conf'
 CIPEDIR="/etc/cipe"
 PPPDIR="/etc/ppp"
-MODULESCONF='/etc/modules.conf'
+
+if cmp_kernel_version([2,5,0], kernel_version()) < 0:
+    MODULESCONF='/etc/modprobe.conf'
+else:
+    MODULESCONF='/etc/modules.conf'
+    
 HWCONF='/etc/sysconfig/hwconf'
 ISDNCARDCONF='/etc/sysconfig/isdncard'
 PAPFILE = "/etc/ppp/pap-secrets"
@@ -811,5 +829,5 @@ class ConfKeys(Conf.ConfShellVar):
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.83 $"
+__date__ = "$Date: 2004/01/28 11:10:02 $"
+__version__ = "$Revision: 1.84 $"
