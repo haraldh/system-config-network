@@ -32,15 +32,20 @@ void some_function_name() {
   /* netconfpkg/modemconfig.glade:217 netconfpkg/ModemDruid.glade:197 */
   _("/dev/ttyS3");
 
-  /* netconfpkg/ethernetconfig.glade:605 */
+  /* netconfpkg/ethernetconfig.glade:605
+   * netconfpkg/tokenringconfig.glade:605 */
   _("00:00:00:00:00:00");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("10");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("11");
 
   /* netconfpkg/modemconfig.glade:264 netconfpkg/modemconfig.glade:288
@@ -51,22 +56,30 @@ void some_function_name() {
   _("11M");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("12");
 
   /* netconfpkg/modemconfig.glade:264 netconfpkg/ModemDruid.glade:244 */
   _("1200");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("13");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("14");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("15");
 
   /* netconfpkg/modemconfig.glade:264 netconfpkg/ModemDruid.glade:244 */
@@ -89,7 +102,9 @@ void some_function_name() {
   _("2M");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("3");
 
   /* netconfpkg/modemconfig.glade:264 netconfpkg/ModemDruid.glade:244 */
@@ -99,7 +114,9 @@ void some_function_name() {
   _("38400");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("4");
 
   /* netconfpkg/modemconfig.glade:264 netconfpkg/ModemDruid.glade:244 */
@@ -109,7 +126,9 @@ void some_function_name() {
   _("4800");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("5");
 
   /* netconfpkg/wirelessconfig.glade:761 */
@@ -119,19 +138,27 @@ void some_function_name() {
   _("57600");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("6");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("7");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("8");
 
   /* netconfpkg/EthernetHardwareDruid.glade:463
-   * netconfpkg/ethernethardware.glade:557 */
+   * netconfpkg/ethernethardware.glade:557
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/tokenringhardware.glade:557 */
   _("9");
 
   /* netconfpkg/modemconfig.glade:264 netconfpkg/ModemDruid.glade:244 */
@@ -176,6 +203,7 @@ void some_function_name() {
 
   /* netconfpkg/cipeconfig.glade:222 netconfpkg/dialupconfig.glade:222
    * netconfpkg/dslconfig.glade:224 netconfpkg/ethernetconfig.glade:222
+   * netconfpkg/tokenringconfig.glade:222
    * netconfpkg/wirelessconfig.glade:222 */
   _("Allow all _users to enable and disable the device");
 
@@ -232,11 +260,15 @@ void some_function_name() {
   _("D Channel Protocol");
 
   /* netconfpkg/EthernetHardwareDruid.glade:392
-   * netconfpkg/ethernethardware.glade:588 */
+   * netconfpkg/ethernethardware.glade:588
+   * netconfpkg/TokenRingHardwareDruid.glade:392
+   * netconfpkg/tokenringhardware.glade:588 */
   _("DMA0:");
 
   /* netconfpkg/EthernetHardwareDruid.glade:418
-   * netconfpkg/ethernethardware.glade:614 */
+   * netconfpkg/ethernethardware.glade:614
+   * netconfpkg/TokenRingHardwareDruid.glade:418
+   * netconfpkg/tokenringhardware.glade:614 */
   _("DMA1:");
 
   /* maindialog.glade:1271 */
@@ -288,7 +320,8 @@ void some_function_name() {
   /* netconfpkg/editdomain.glade:98 */
   _("Domain Name:");
 
-  /* netconfpkg/ethernetconfig.glade:412 */
+  /* netconfpkg/ethernetconfig.glade:412
+   * netconfpkg/tokenringconfig.glade:412 */
   _("Each device needs to be attached to a physical device which can be selected below. Device Alias support allows you to use multiple virtual devices for one physical device.");
 
   /* netconfpkg/wirelessconfig.glade:408 */
@@ -315,7 +348,8 @@ void some_function_name() {
   /* netconfpkg/dialupconfig.glade:969 */
   _("Enable _CCP Compression Control Protocol");
 
-  /* netconfpkg/ethernetconfig.glade:435 */
+  /* netconfpkg/ethernetconfig.glade:435
+   * netconfpkg/tokenringconfig.glade:435 */
   _("Enable _Device Alias support");
 
   /* netconfpkg/dialupconfig.glade:931 */
@@ -372,7 +406,7 @@ void some_function_name() {
   /* netconfpkg/dialupconfig.glade:2054 */
   _("Enter your local phone number. It's optional, if you use a modem.");
 
-  /* netconfpkg/hardwaretype.glade:151 netconfpkg/hardwaretype.glade:171 */
+  /* netconfpkg/hardwaretype.glade:152 netconfpkg/hardwaretype.glade:172 */
   _("Ethernet");
 
   /* netconfpkg/ethernetconfig.glade:18 */
@@ -393,10 +427,12 @@ void some_function_name() {
 
   /* netconfpkg/cipeconfig.glade:237 netconfpkg/dialupconfig.glade:237
    * netconfpkg/dslconfig.glade:239 netconfpkg/ethernetconfig.glade:237
+   * netconfpkg/tokenringconfig.glade:237
    * netconfpkg/wirelessconfig.glade:237 */
   _("General");
 
-  /* netconfpkg/ethernetconfig.glade:583 */
+  /* netconfpkg/ethernetconfig.glade:583
+   * netconfpkg/tokenringconfig.glade:583 */
   _("Ha_rdware Address:");
 
   /* netconfpkg/dialupconfig.glade:1874 */
@@ -410,6 +446,7 @@ void some_function_name() {
   _("Hardware (CRTSCTS)");
 
   /* netconfpkg/ethernetconfig.glade:637
+   * netconfpkg/tokenringconfig.glade:637
    * netconfpkg/wirelessconfig.glade:490 */
   _("Hardware Device");
 
@@ -431,13 +468,17 @@ void some_function_name() {
   /* netconfpkg/EthernetHardwareDruid.glade:338
    * netconfpkg/ethernethardware.glade:368
    * netconfpkg/IsdnHardwareDruid.glade:268
-   * netconfpkg/isdnhardware.glade:276 */
+   * netconfpkg/isdnhardware.glade:276
+   * netconfpkg/TokenRingHardwareDruid.glade:338
+   * netconfpkg/tokenringhardware.glade:368 */
   _("IO_1:");
 
   /* netconfpkg/EthernetHardwareDruid.glade:365
    * netconfpkg/ethernethardware.glade:395
    * netconfpkg/IsdnHardwareDruid.glade:295
-   * netconfpkg/isdnhardware.glade:303 */
+   * netconfpkg/isdnhardware.glade:303
+   * netconfpkg/TokenRingHardwareDruid.glade:365
+   * netconfpkg/tokenringhardware.glade:395 */
   _("IO_2:");
 
   /* maindialog.glade:1329 netconfpkg/tcpipdialog.glade:1176
@@ -447,10 +488,12 @@ void some_function_name() {
   /* netconfpkg/EthernetHardwareDruid.glade:257
    * netconfpkg/ethernethardware.glade:287
    * netconfpkg/IsdnHardwareDruid.glade:187
-   * netconfpkg/isdnhardware.glade:195 */
+   * netconfpkg/isdnhardware.glade:195
+   * netconfpkg/TokenRingHardwareDruid.glade:257
+   * netconfpkg/tokenringhardware.glade:287 */
   _("IR_Q:");
 
-  /* netconfpkg/hardwaretype.glade:151 */
+  /* netconfpkg/hardwaretype.glade:152 */
   _("ISDN");
 
   /* netconfpkg/isdnhardware.glade:18 */
@@ -500,7 +543,7 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:1241 netconfpkg/tcpipdialog.glade:1545 */
   _("Minimum Out");
 
-  /* netconfpkg/hardwaretype.glade:151 */
+  /* netconfpkg/hardwaretype.glade:152 */
   _("Modem");
 
   /* netconfpkg/modemconfig.glade:18 */
@@ -533,7 +576,8 @@ void some_function_name() {
   /* maindialog.glade:1342 */
   _("Name");
 
-  /* netconfpkg/ethernethardware.glade:18 */
+  /* netconfpkg/ethernethardware.glade:18
+   * netconfpkg/tokenringhardware.glade:18 */
   _("Network Adapters Configuration");
 
   /* maindialog.glade:18 */
@@ -597,11 +641,13 @@ void some_function_name() {
 
   /* netconfpkg/cipeconfig.glade:280 netconfpkg/dialupconfig.glade:285
    * netconfpkg/dslconfig.glade:282 netconfpkg/ethernetconfig.glade:280
+   * netconfpkg/tokenringconfig.glade:280
    * netconfpkg/wirelessconfig.glade:280 */
   _("Protocol Type");
 
   /* netconfpkg/cipeconfig.glade:387 netconfpkg/dslconfig.glade:394
    * netconfpkg/ethernetconfig.glade:392
+   * netconfpkg/tokenringconfig.glade:392
    * netconfpkg/wirelessconfig.glade:388 */
   _("Protocols");
 
@@ -623,7 +669,9 @@ void some_function_name() {
   /* netconfpkg/EthernetHardwareDruid.glade:235
    * netconfpkg/ethernethardware.glade:265
    * netconfpkg/IsdnHardwareDruid.glade:165
-   * netconfpkg/isdnhardware.glade:173 */
+   * netconfpkg/isdnhardware.glade:173
+   * netconfpkg/TokenRingHardwareDruid.glade:235
+   * netconfpkg/tokenringhardware.glade:265 */
   _("Resource");
 
   /* netconfpkg/dialupconfig.glade:1792 */
@@ -655,6 +703,9 @@ void some_function_name() {
 
   /* netconfpkg/DialupDruid.glade:55 */
   _("Select Provider");
+
+  /* netconfpkg/TokenRingHardwareDruid.glade:48 */
+  _("Select Token Ring Adapter");
 
   /* netconfpkg/dialupconfig.glade:2217 */
   _("Select the authentication protocol used by your ISP.");
@@ -689,6 +740,12 @@ void some_function_name() {
   /* netconfpkg/tcpipdialog.glade:18 */
   _("TCP/IP Settings");
 
+  /* netconfpkg/hardwaretype.glade:152 */
+  _("Token Ring");
+
+  /* netconfpkg/tokenringconfig.glade:18 */
+  _("Token Ring Device");
+
   /* netconfpkg/tcpipdialog.glade:1399 */
   _("Traffic");
 
@@ -701,7 +758,11 @@ void some_function_name() {
   /* netconfpkg/EthernetHardwareDruid.glade:463
    * netconfpkg/EthernetHardwareDruid.glade:487
    * netconfpkg/ethernethardware.glade:557
-   * netconfpkg/ethernethardware.glade:581 */
+   * netconfpkg/ethernethardware.glade:581
+   * netconfpkg/TokenRingHardwareDruid.glade:463
+   * netconfpkg/TokenRingHardwareDruid.glade:487
+   * netconfpkg/tokenringhardware.glade:557
+   * netconfpkg/tokenringhardware.glade:581 */
   _("Unknown");
 
   /* netconfpkg/dialupconfig.glade:1396 */
@@ -727,11 +788,14 @@ void some_function_name() {
 
   /* netconfpkg/cipeconfig.glade:203 netconfpkg/dialupconfig.glade:203
    * netconfpkg/dslconfig.glade:205 netconfpkg/ethernetconfig.glade:203
+   * netconfpkg/tokenringconfig.glade:203
    * netconfpkg/wirelessconfig.glade:203 */
   _("_Activate device when computer starts");
 
   /* netconfpkg/EthernetHardwareDruid.glade:83
-   * netconfpkg/ethernethardware.glade:113 */
+   * netconfpkg/ethernethardware.glade:113
+   * netconfpkg/TokenRingHardwareDruid.glade:83
+   * netconfpkg/tokenringhardware.glade:113 */
   _("_Adapter:");
 
   /* maindialog.glade:1191 */
@@ -741,13 +805,15 @@ void some_function_name() {
    * netconfpkg/dialupconfig.glade:328 netconfpkg/dialupconfig.glade:1183
    * netconfpkg/dslconfig.glade:325 netconfpkg/ethernetconfig.glade:323
    * netconfpkg/tcpipdialog.glade:693 netconfpkg/tcpipdialog.glade:1295
+   * netconfpkg/tokenringconfig.glade:323
    * netconfpkg/wirelessconfig.glade:318 */
   _("_Add...");
 
   /* netconfpkg/editadress.glade:122 netconfpkg/tcpipdialog.glade:322 */
   _("_Address:");
 
-  /* netconfpkg/ethernetconfig.glade:510 */
+  /* netconfpkg/ethernetconfig.glade:510
+   * netconfpkg/tokenringconfig.glade:510 */
   _("_Alias:");
 
   /* netconfpkg/dialupconfig.glade:1368 */
@@ -772,6 +838,7 @@ void some_function_name() {
    * maindialog.glade:1455 netconfpkg/dialupconfig.glade:381
    * netconfpkg/dialupconfig.glade:1104 netconfpkg/ethernetconfig.glade:376
    * netconfpkg/tcpipdialog.glade:751 netconfpkg/tcpipdialog.glade:1382
+   * netconfpkg/tokenringconfig.glade:376
    * netconfpkg/wirelessconfig.glade:372 */
   _("_Delete");
 
@@ -780,7 +847,9 @@ void some_function_name() {
 
   /* netconfpkg/cipeconfig.glade:785
    * netconfpkg/EthernetHardwareDruid.glade:110
-   * netconfpkg/ethernethardware.glade:181 */
+   * netconfpkg/ethernethardware.glade:181
+   * netconfpkg/TokenRingHardwareDruid.glade:110
+   * netconfpkg/tokenringhardware.glade:181 */
   _("_Device:");
 
   /* netconfpkg/dialupconfig.glade:1900 */
@@ -793,6 +862,7 @@ void some_function_name() {
    * maindialog.glade:1426 netconfpkg/dialupconfig.glade:357
    * netconfpkg/dslconfig.glade:354 netconfpkg/ethernetconfig.glade:352
    * netconfpkg/tcpipdialog.glade:722 netconfpkg/tcpipdialog.glade:1324
+   * netconfpkg/tokenringconfig.glade:352
    * netconfpkg/wirelessconfig.glade:347 */
   _("_Edit...");
 
@@ -812,6 +882,7 @@ void some_function_name() {
   _("_Hangup Timeout:");
 
   /* netconfpkg/ethernetconfig.glade:459
+   * netconfpkg/tokenringconfig.glade:459
    * netconfpkg/wirelessconfig.glade:436 */
   _("_Hardware Device:");
 
@@ -824,7 +895,9 @@ void some_function_name() {
   /* netconfpkg/EthernetHardwareDruid.glade:311
    * netconfpkg/ethernethardware.glade:341
    * netconfpkg/IsdnHardwareDruid.glade:241
-   * netconfpkg/isdnhardware.glade:249 */
+   * netconfpkg/isdnhardware.glade:249
+   * netconfpkg/TokenRingHardwareDruid.glade:311
+   * netconfpkg/tokenringhardware.glade:341 */
   _("_IO:");
 
   /* netconfpkg/wirelessconfig.glade:819 */
@@ -844,7 +917,9 @@ void some_function_name() {
   /* netconfpkg/EthernetHardwareDruid.glade:284
    * netconfpkg/ethernethardware.glade:314
    * netconfpkg/IsdnHardwareDruid.glade:214
-   * netconfpkg/isdnhardware.glade:222 */
+   * netconfpkg/isdnhardware.glade:222
+   * netconfpkg/TokenRingHardwareDruid.glade:284
+   * netconfpkg/tokenringhardware.glade:314 */
   _("_MEM:");
 
   /* netconfpkg/wirelessconfig.glade:512 */
@@ -858,6 +933,7 @@ void some_function_name() {
 
   /* netconfpkg/cipeconfig.glade:125 netconfpkg/dialupconfig.glade:125
    * netconfpkg/dslconfig.glade:127 netconfpkg/ethernetconfig.glade:125
+   * netconfpkg/tokenringconfig.glade:125
    * netconfpkg/wirelessconfig.glade:125 */
   _("_Nickname: ");
 
@@ -873,7 +949,8 @@ void some_function_name() {
   /* maindialog.glade:846 */
   _("_Primary DNS:");
 
-  /* netconfpkg/ethernetconfig.glade:622 */
+  /* netconfpkg/ethernetconfig.glade:622
+   * netconfpkg/tokenringconfig.glade:622 */
   _("_Probe for Address");
 
   /* netconfpkg/ADSLInterfaceDruid.glade:115 netconfpkg/dslconfig.glade:552 */
@@ -912,7 +989,8 @@ void some_function_name() {
   /* netconfpkg/dialupconfig.glade:1224 */
   _("_Use Callback");
 
-  /* netconfpkg/ethernetconfig.glade:559 */
+  /* netconfpkg/ethernetconfig.glade:559
+   * netconfpkg/tokenringconfig.glade:559 */
   _("_Use Hardware Address");
 
   /* netconfpkg/dslconfig.glade:811 */
@@ -1025,9 +1103,51 @@ void some_function_name() {
   /* netconfpkg/dialupconfig.glade:2119 netconfpkg/dialupconfig.glade:2143 */
   _("sync PPP");
 
+  /* netconfpkg/tokenringconfig.glade:488
+   * netconfpkg/tokenringconfig.glade:503
+   * netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/TokenRingHardwareDruid.glade:185
+   * netconfpkg/tokenringhardware.glade:241
+   * netconfpkg/tokenringhardware.glade:256 */
+  _("tr0");
+
+  /* netconfpkg/tokenringconfig.glade:488
+   * netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr1");
+
+  /* netconfpkg/tokenringconfig.glade:488
+   * netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr2");
+
+  /* netconfpkg/tokenringconfig.glade:488
+   * netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr3");
+
+  /* netconfpkg/tokenringconfig.glade:488
+   * netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr4");
+
+  /* netconfpkg/tokenringconfig.glade:488
+   * netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr5");
+
+  /* netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr6");
+
+  /* netconfpkg/TokenRingHardwareDruid.glade:170
+   * netconfpkg/tokenringhardware.glade:241 */
+  _("tr7");
+
   /* netconfpkg/ADSLInterfaceDruid.glade:18
    * netconfpkg/EthernetHardwareDruid.glade:18
-   * netconfpkg/ModemDruid.glade:18 */
+   * netconfpkg/ModemDruid.glade:18
+   * netconfpkg/TokenRingHardwareDruid.glade:18 */
   _("window1");
 
   /* netconfpkg/dslconfig.glade:18 */
