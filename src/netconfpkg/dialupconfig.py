@@ -80,9 +80,6 @@ class DialupDialog(deviceConfigDialog):
         if dialup.Prefix != None:
             self.xml.get_widget("prefixEntry").set_text(dialup.Prefix)
 
-        if dialup.Authentication and len(dialup.Authentication) >0:
-            self.xml.get_widget("authEntry").set_text(dialup.Authentication)
-
         if dialup.Compression:
             self.xml.get_widget("headerCompressionCB").set_active(dialup.Compression.VJTcpIp == true)
             self.xml.get_widget("connectionCompressionCB").set_active(dialup.Compression.VJID == true)
@@ -245,7 +242,15 @@ class ISDNDialupDialog(DialupDialog):
         if dialup.ChannelBundling:
             self.xml.get_widget("channelBundlingCB").set_active(dialup.ChannelBundling == true)
         if dialup.Authentication:
-            self.xml.get_widget("authEntry").set_text(dialup.Authentication)
+            if dialup.Authentication == '+pap -chap':
+                auth = _('pap')
+            elif dialup.Authentication == '-pap +chap':
+                auth = _('chap')
+            elif dialup.Authentication == '+pap +chap':
+                auth = _('chap+pap')
+            else:
+                auth = _('none')
+            self.xml.get_widget("authEntry").set_text(auth)
 
     def dehydrate(self):
         DialupDialog.dehydrate(self)
@@ -274,9 +279,16 @@ class ISDNDialupDialog(DialupDialog):
         dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
         dialup.MSN = self.xml.get_widget("msnEntry").get_text()
         dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
-        dialup.Authentication = self.xml.get_widget("authEntry").get_text()
-
-
+        auth = self.xml.get_widget("authEntry").get_text()
+        if auth == _('pap'):
+            dialup.Authentication = '+pap -chap'
+        elif auth == _('chap'):
+            dialup.Authentication = '-pap +chap'
+        elif auth == _('chap+pap'):
+            dialup.Authentication = '+chap +pap'
+        else:
+            dialup.Authentication = 'noauth'
+            
         
 class ModemDialupDialog(DialupDialog):
     def __init__(self, device, xml_main = None):
