@@ -78,6 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/X11/applnk/*/*.desktop
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
+%attr(4755,root,root) /sbin/userisdnctl
 %{_sbindir}/*
 %{_bindir}/*
 %if %{rp3}
@@ -87,6 +88,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Sat Mar 16 2002 Than Ngo <than@redhat.com> 0.9.18-1
+- add userisdnctl for ISDN
+
 * Thu Mar 14 2002 Trond Eivind Glomsrød <teg@redhat.com> 0.9.17-1
 - Even more fixes
 
