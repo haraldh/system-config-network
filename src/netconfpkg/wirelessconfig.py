@@ -28,7 +28,7 @@ import string
 import gettext
 import string
 
-import HardwareList
+import NCHardwareList
 import NC_functions
 from deviceconfig import deviceConfigDialog
 
@@ -53,14 +53,14 @@ class wirelessConfigDialog(deviceConfigDialog):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
                     
-        hwlist = HardwareList.getHardwareList()
+        hwlist = NCHardwareList.getHardwareList()
         (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist,self.device.Device)
 
         if len(hwdesc):
             ecombo.set_popdown_strings(hwdesc)
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
-        if self.device.Device:
+        if self.device.Device and hwcurr:
             widget.set_text(hwcurr)
         widget.set_position(0)
         

@@ -29,7 +29,7 @@ import gettext
 import string
 import commands
 import NCDeviceList
-import HardwareList
+import NCHardwareList
 import NC_functions
 from deviceconfig import deviceConfigDialog
 
@@ -65,7 +65,7 @@ class cipeConfigDialog(deviceConfigDialog):
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-        hwlist = HardwareList.getHardwareList()
+        hwlist = NCHardwareList.getHardwareList()
         (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist,
                                                  self.device.Cipe.TunnelDevice)
                     
@@ -73,7 +73,7 @@ class cipeConfigDialog(deviceConfigDialog):
             ecombo.set_popdown_strings(hwdesc)
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
-        if self.device.Cipe.TunnelDevice:
+        if self.device.Cipe.TunnelDevice and hwcurr:
             widget.set_text(hwcurr)
         widget.set_position(0)
                 

@@ -28,7 +28,7 @@ import string
 import gettext
 import string
 
-import HardwareList
+import NCHardwareList
 import NC_functions
 
 from deviceconfig import deviceConfigDialog
@@ -55,7 +55,7 @@ class dslConfigDialog(deviceConfigDialog):
 
         hwdesc = []
         hwcurr = None
-        hardwarelist = HardwareList.getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Type == "Ethernet":
                 desc = str(hw.Name) + ' (' + hw.Description + ')'
@@ -72,8 +72,9 @@ class dslConfigDialog(deviceConfigDialog):
             hwcurr = hwdesc[0]
 
         widget = self.xml.get_widget("ethernetDeviceEntry")
-        if dialup.EthDevice:
+        if dialup.EthDevice and hwcurr:
             widget.set_text(hwcurr)
+            
         widget.set_position(0)
 
         widget = self.xml.get_widget("providerNameEntry")

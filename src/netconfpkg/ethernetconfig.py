@@ -29,7 +29,7 @@ import gettext
 import string
 import commands
 
-import HardwareList
+import NCHardwareList
 import NC_functions
 from deviceconfig import deviceConfigDialog
 
