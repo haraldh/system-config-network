@@ -19,19 +19,17 @@
 
 import sys
 
-PROGNAME = 'redhat-network-control'
-MAINDIR = '/usr/share/' + PROGNAME
-NEATDIR = '/usr/share/redhat-config-network'
+NAME = 'Redhat Network Control'
 
 if not '/usr/lib/rhs/python' in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not MAINDIR in sys.path:
-    sys.path.append(MAINDIR)
+if not "/usr/share/redhat-config-network" in sys.path:
+    sys.path.append("/usr/share/redhat-config-network")
 
-if not NEATDIR in sys.path:
-    sys.path.append(NEATDIR)
-
+if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
+    sys.path.append("/usr/share/redhat-config-network/netconfpkg")
+    
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
@@ -48,8 +46,8 @@ import libglade
 import gnome
 import gnome.ui
 import gnome.help
-from functions import *
 from netconfpkg import *
+from functions import *
 
 ##
 ## I18N
@@ -70,7 +68,7 @@ class mainDialog:
         if not os.path.isfile(glade_file):
             glade_file = GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = MAINDIR + glade_file
+            glade_file = NETCONFDIR + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain=PROGNAME)
 
@@ -103,25 +101,30 @@ class mainDialog:
         gtk.mainquit()
 
     def on_infoButton_clicked(self, button):
-        dlg = gnome.ui.GnomeAbout(PROGNAME, VERSION, COPYRIGHT, AUTORS, TEXT)
+        dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
         dlg.run_and_close()
-        
-    def on_activateButton_clicked(self, button):
-        print 'activate button clicked'
 
+    def on_activateButton_clicked(self, button):
+        Interface().activate(self.clist_get_device())
+        
     def on_deactivateButton_clicked(self, button):
-        print 'deactivate button clicked'
+        Interface().deactivate(self.clist_get_device())
 
     def on_configureButton_clicked(self, button):
-        print 'configure button clicked'
+        Interface().configure(self.clist_get_device())
 
     def on_monitorButton_clicked(self, button):
-        print 'monitor button clicked'
+        Interface().monitor(self.clist_get_device())
 
     def on_generic_clist_select_row(self, clist, row, column, event,
                                     activate_button = None, deactivate_button = None,
                                     configure_button = None, monitor_button = None):
-        if clist.get_text(clist.selection[0], 0) == ACTIVE:
+        try:
+            status = clist.get_pixtext(clist.selection[0], 0)[0]
+        except ValueError:
+            status = clist.get_text(clist.selection[0], 0)
+            
+        if status == ACTIVE:
             self.xml.get_widget('activateButton').set_sensitive(FALSE)
             self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
             self.xml.get_widget('configureButton').set_sensitive(FALSE)
@@ -131,28 +134,70 @@ class mainDialog:
             self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
             self.xml.get_widget('configureButton').set_sensitive(TRUE)
             self.xml.get_widget('monitorButton').set_sensitive(FALSE)
-
+        
         if activate_button: pass
         if deactivate_button: pass
         if configure_button: pass
         if monitor_button: pass
 
+    def clist_get_status(self):
+        clist = self.xml.get_widget('interfaceClist')
+        dev = clist.get_pixtext(clist.selection[0], STATUS)[0]
+        return dev
+
+    def clist_get_device(self):
+        clist = self.xml.get_widget('interfaceClist')
+        dev = clist.get_pixtext(clist.selection[0], DEVICE)[0]
+        return dev
+
+    def clist_get_nickname(self):
+        clist = self.xml.get_widget('interfaceClist')
+        dev = clist.get_text(clist.selection[0], NICKNAME)
+        return dev
+    
     def hydrate(self):
         devicelist = getDeviceList()
-        activedevicelist = ProcNetDevice().load()
+        activedevicelist = ProcNetRoute().load()
         clist = self.xml.get_widget('interfaceClist')
         clist.clear()
-        on_xpm, mask = get_icon ('pixmaps/on.xpm', self.dialog)
-        off_xpm, mask = get_icon ('pixmaps/off.xpm', self.dialog)
+        clist.set_row_height(20)
+        on_xpm, on_mask = get_icon('pixmaps/on.xpm', self.dialog)
+        off_xpm, off_mask = get_icon('pixmaps/off.xpm', self.dialog)
+        lan_xpm, lan_mask = get_icon('pixmaps/ethernet.xpm', self.dialog)
+        ppp_xpm, ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
+        isdn_xpm, isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
+        status_pixmap = None
+        status_mask = None
+        device_pixmap = None
+        device_mask = None
+        status = None
+        row = 0
         
         for dev in devicelist:
             for i in activedevicelist:
                 status = INACTIVE
+                status_pixmap = off_xpm
+                status_mask = off_mask
                 if i == dev.Device:
                     status = ACTIVE
+                    status_pixmap = on_xpm
+                    status_mask = on_mask
                     break
-            clist.append([status, dev.Device, dev.DeviceId])
 
+            if dev.Device[:3] == 'ppp':
+                device_pixmap = ppp_xpm
+                device_mask = ppp_mask
+            elif dev.Device[:3] == 'eth' or dev.Device[:5] == 'cipcb' or dev.Device[:2] == 'tr':
+                device_pixmap = lan_xpm
+                device_mask = lan_mask
+            elif dev.Device[:4] == 'ippp' or dev.Device[:4] == 'isdn':
+                device_pixmap = isdn_xpm
+                device_mask = isdn_mask
+
+            clist.append([status, dev.Device, dev.DeviceId])
+            clist.set_pixtext(row, STATUS, status, 5, status_pixmap, status_mask)
+            clist.set_pixtext(row, DEVICE, dev.Device, 5, device_pixmap, device_mask)
+            row = row + 1
 
 
 def get_icon(pixmap_file, dialog):

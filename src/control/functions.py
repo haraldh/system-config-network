@@ -17,15 +17,18 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 VERSION = '0.1.0'
-GLADEPATH = ''
-COPYRIGHT = 'Copyright (c) 2002 Red Hat, Inc.'
+COPYRIGHT = 'Copyright (C) 2002 Red Hat, Inc.'
 AUTORS = ['Than Ngo <than@redhat.com>']
 
 NETWORKDIR = '/etc/sysconfig/network-scripts/'
 NETWORKPREFIX = 'ifcfg'
 PROCNETDEV = '/proc/net/dev'
+PROCNETROUTE = '/proc/net/route'
 TRUE = (1==1)
 FALSE = not TRUE
+STATUS = 0
+DEVICE = 1
+NICKNAME = 2
 
 import re
 import traceback
@@ -39,16 +42,20 @@ import string
 
 class ProcNetDevice:
     def __init__(self):
+        pass
+
+
+class ProcNetRoute:
+    def __init__(self):
         self.activedevicelist = []
 
     def load(self):
         try:
-            device = open(PROCNETDEV, 'r')
-            device.readline()
+            device = open(PROCNETROUTE, 'r')
             device.readline()
             line = device.readline()
             while line:
-                s = string.split(line, ':', 1)
+                s = string.split(line)
                 if s[0]:
                     dev = string.strip(s[0])
                     if dev != 'lo':
@@ -62,9 +69,48 @@ class ProcNetDevice:
         return self.activedevicelist
 
 
+class Interface:
+    def __init__(self):
+        pass
+
+    def activate(self, device):
+        print 'waiting to connect to %s' % (device)
+
+    def deactivate(self, device):
+        print 'waiting to disconnect from %s' % (device)
+
+    def status(self, device):
+        print 'status from %s' % (device)
+
+    def configure(self, device):
+        print 'configure %s' % (device)
+
+    def monitor(self, device):
+        print 'monitor %s' % (device)
+    
+    def allow(self, device):
+        pass
+
+    
+class Monitor:
+    def __init__(self):
+        pass
+
+    def txrx_update(self):
+        pass
+
+    def onlinetime_update(self):
+        pass
+
+    def cost_update(self):
+        pass
+
+    def speed_update(self):
+        pass
+    
 
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    devicelist = ProcNetDevice().load()
+    devicelist = ProcNetRoute().load()
     print devicelist

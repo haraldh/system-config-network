@@ -14,7 +14,7 @@
 
 <widget>
   <class>GnomeDialog</class>
-  <name>displayDialog</name>
+  <name>dialog</name>
   <title>eth0</title>
   <type>GTK_WINDOW_TOPLEVEL</type>
   <position>GTK_WIN_POS_NONE</position>
@@ -22,7 +22,7 @@
   <allow_shrink>False</allow_shrink>
   <allow_grow>False</allow_grow>
   <auto_shrink>False</auto_shrink>
-  <auto_close>False</auto_close>
+  <auto_close>True</auto_close>
   <hide_on_close>False</hide_on_close>
 
   <widget>
@@ -140,7 +140,7 @@
 
 	<widget>
 	  <class>GtkLabel</class>
-	  <name>label6</name>
+	  <name>onlinetimeLabel</name>
 	  <label>Online time:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
@@ -157,7 +157,7 @@
 
 	<widget>
 	  <class>GtkLabel</class>
-	  <name>onlinetimeLabel</name>
+	  <name>countLabel</name>
 	  <label>00:00:00</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
@@ -186,8 +186,8 @@
 
 	  <widget>
 	    <class>GnomePixmap</class>
-	    <name>pixmap1</name>
-	    <filename>red_empty_led_xpm.xpm</filename>
+	    <name>inPixmap</name>
+	    <filename>red_empty_led.xpm</filename>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -197,8 +197,8 @@
 
 	  <widget>
 	    <class>GnomePixmap</class>
-	    <name>pixmap2</name>
-	    <filename>blue_empty_led_xpm.xpm</filename>
+	    <name>outPixmap</name>
+	    <filename>red_led.xpm</filename>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
