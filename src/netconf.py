@@ -144,8 +144,7 @@ class mainDialog:
 
     def loadHardware(self):
         global hardwarelist
-        hardwarelist = HardwareList()
-        hardwarelist.load()
+        hardwarelist = getHardwareList()
 
     def loadProfiles(self):
         global profilelist
@@ -184,7 +183,10 @@ class mainDialog:
 
         row = 0
         for dev in devicelist:
-            type = getDeviceType(dev.Device)
+            type = "Unknown"
+            for i in xrange(len(hardwarelist)):
+                if hardwarelist[i].Name == dev.Device:
+                    type = hardwarelist[i].Type
             clist.append(['', dev.DeviceId, type])
             clist.set_pixmap(row, 0, inact_xpm)
             clist.set_row_data(row, 0)
