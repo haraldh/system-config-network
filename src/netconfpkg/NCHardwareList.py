@@ -172,7 +172,7 @@ class HardwareList(HardwareList_base):
             hw.createModem()
             hw.Modem.DeviceName = wvdial[dev]['Modem']
             hw.Modem.BaudRate = wvdial[dev]['Baud']
-            hw.Modem.ModemVolume = wvdial[dev]['SetVolume']
+            hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
             hw.Modem.DialCommand = wvdial[dev]['Dial Command']
         self.commit()
 
