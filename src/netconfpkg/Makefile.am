@@ -40,11 +40,18 @@ PYTHON_FILES = \
 	isdnhardware.py \
 	modemconfig.py \
 	providerdb.py \
-	provider.py
+	provider.py \
+   NCDeviceList.py \
+   NCDevice.py \
+   NCDialup.py \
+   NCCallback.py \
+	NCHardwareList.py \
+	NC_functions.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
-#pkgdata_DATA :=
+netconfpkgdir = $(pkgdatadir)/netconfpkg
+netconfpkg_DATA := $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
 
 #exec_SCRIPTS =
 
@@ -64,14 +71,9 @@ clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
 
-DeviceList.py: DeviceList.idl genClass.py NCDeviceList.py NCDevice.py NCDialup.py NCCallback.py
+DeviceList.py: $(srcdir)/DeviceList.idl $(srcdir)/genClass.py $(srcdir)/NCDeviceList.py $(srcdir)/NCDevice.py $(srcdir)/NCDialup.py $(srcdir)/NCCallback.py
 
-HardwareList.py: NCHardwareList.py 
+HardwareList.py: $(srcdir)/NCHardwareList.py 
 
-
-install-exec-local:
-	mkdir -p $(DESTDIR)$(pkgdatadir)/netconfpkg
-	install -m 644 *.py *.glade $(DESTDIR)$(pkgdatadir)/netconfpkg
-
-%.py: %.idl genClass.py
+%.py: %.idl $(srcdir)/genClass.py
 	python $(srcdir)/genClass.py -f -c $(srcdir)/$*.idl $@ NC

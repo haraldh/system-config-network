@@ -43,14 +43,20 @@ all-local:
 	ln -s netconf.py netconf
 	ln -s netconf.py netconf-cmd
 
+pythondir = $(pkgdatadir)
+python_DATA = $(PYTHON_FILES)
+
+gladedir = $(pkgdatadir)/netconfpkg/
+glade_DATA = $(GLADE_FILES)
+
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
-	install -m 0755 netconf.py $(DESTDIR)$(pkgdatadir)/
+	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network
 	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd
 	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/neat
-	install -m 644 $(PYTHON_FILES) $(DESTDIR)$(pkgdatadir)/
-	install -m 644 $(GLADE_FILES)  $(DESTDIR)$(pkgdatadir)/netconfpkg/
+#	install -m 644 $(PYTHON_FILES) $(DESTDIR)$(pkgdatadir)/
+#	install -m 644 $(GLADE_FILES)  $(DESTDIR)$(pkgdatadir)/netconfpkg/
 
 docs:
 	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
