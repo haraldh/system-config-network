@@ -89,7 +89,7 @@ def gui_error_dialog (message, parent_dialog,
         if isinstance (widget, gtk.CList):
             widget.select_row (page, 0)
         elif isinstance (widget, gtk.Notebook):
-            widget.set_page (page)
+            widget.set_current_page (page)
     if broken_widget != None:
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.Entry):
@@ -116,7 +116,7 @@ def gui_yesnocancel_dialog (message, parent_dialog,
         if isinstance (widget, gtk.CList):
             widget.select_row (page, 0)
         elif isinstance (widget, gtk.Notebook):
-            widget.set_page (page)
+            widget.set_current_page (page)
     if broken_widget != None:
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.Entry):
@@ -139,7 +139,7 @@ def gui_yesno_dialog (message, parent_dialog,
         if isinstance (widget, gtk.CList):
             widget.select_row (page, 0)
         elif isinstance (widget, gtk.Notebook):
-            widget.set_page (page)
+            widget.set_current_page (page)
     if broken_widget != None:
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.Entry):
