@@ -126,13 +126,43 @@
 
   <NetworkList TYPE="LIST" ANONYMOUS="TRUE">
     <Network TYPE="LIST">
+      <NetName TYPE="STRING"/>
       <NetMask TYPE="STRING"/>
       <NetBits TYPE="INTEGER"/>
-      <NetName TYPE="STRING"/>
       </Network>
     </NetworkList>
 
   <Firewall TYPE="LIST">
+
+    <GUIMode TYPE="STRING/>
+
+    <EasySetup TYPE="LIST">
+      <Level TYPE="STRING"/>
+      <ServiceList TYPE="LIST" ANONYMOUS="TRUE">
+        <ServiceName TYPE="STRING"/>
+        </ServiceList>
+      <SecureDeviceList TYPE="LIST" ANONYMOUS="TRUE">
+        <DeviceId TYPE="STRING">
+        </SecureDeviceList>
+      </EasySetup>
+
+    <MediumSetup TYPE="LIST">
+      <InDeviceList TYPE="LIST" ANONYMOUS="TRUE">
+        <DeviceId TYPE="STRING">
+        </InDeviceList>
+
+      <OuterDeviceList TYPE="LIST" ANONYMOUS="TRUE">
+        <DeviceId TYPE="STRING">
+        </OuterDeviceList>
+
+      <MasqList TYPE="LIST" ANONYMOUS="TRUE">
+        <MasqEntry>
+          <InDevice TYPE="STRING"/>
+          <OutDevice TYPE="STRING"/>
+          <Ports TYPE="STRING"/>
+          </MasqEntry>
+        </MasqList>
+      </MediumSetup>
 
     <ChainList TYPE="LIST" ANONYMOUS="TRUE">
       <Chain TYPE="LIST">
@@ -145,6 +175,7 @@
     <RuleList TYPE="LIST" ANONYMOUS="TRUE">
       <Rule TYPE="LIST">
         <RuleName  TYPE="STRING"/>
+        <RuleGroup  TYPE="STRING"/>
         <Protocol TYPE="STRING"/>
         <Source TYPE="STRING"/>
         <Destination TYPE="STRING"/>
@@ -191,6 +222,7 @@
             <State TYPE="STRING"/>
             <Unclean TYPE="STRING"/>
             <MatchTos TYPE="STRING"/>
+            <TTLMatch TYPE="INTEGER"/>
             </Match>
           </MatchList>
           <Target TYPE="LIST">
@@ -209,6 +241,17 @@
             <DNATtoDest TYPE="STRING"/>
             <MASQtoPort TYPE="STRING"/>
             <REDIRtoPort TYPE="STRING"/>
+            <TTL TYPE="LIST">
+              <TTLSet TYPE="INTEGER"/>
+              <TTLDec TYPE="INTEGER"/>
+              <TTLInc TYPE="INTEGER"/>
+              </TTL>
+            <ULOG>
+              <ULOGnlgroup TYPE="STRING"/>
+              <ULOGprefix TYPE="STRING"/>
+              <ULOGcprange TYPE="INTEGER"/>
+              <ULOGqthreshold TYPE="INTEGER"/>
+              </ULOG>
             </Target>
         </Rule>
       </RuleList>
