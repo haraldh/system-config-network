@@ -1,13 +1,13 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 2
+Release: 3
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, usermode , alchemist
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu
 BuildRequires: alchemist, alchemist-devel, python
 Obsoletes: isdn-config internet-config netcfg
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -48,10 +48,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Wed Aug  8 2001 Phil Knirsch <phil@redhat.de> 0.6.7-3
+- Added the modem detection for the ModemDruid.
+- Added kudzu as requirement as it is needed for modem detection.
+- For compatibility still check for symlinks, too. Otherwise older setups will
+  break.
+
 * Tue Aug  7 2001 Phil Knirsch <phil@redhat.de> 0.6.7-2
 - Fixed various important bugzilla bugs
 - Added and implemented the add Hardware dialog.
 - Added a working Apply button.
+- Switched to using hardlinks instead of symlinks for config files.
 
 * Tue Aug  7 2001 Trond Eivind Glomsrød <teg@redhat.com> 0.6.7-1
 - Add online help capability (#50739)

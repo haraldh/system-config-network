@@ -160,7 +160,7 @@ def updateNetworkScripts():
         if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
             continue
 
-        if ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
+        if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
             #print dev+" already a link, skipping it."
             continue
 
@@ -186,14 +186,14 @@ def updateNetworkScripts():
             print list
             continue
 
-    if not ishardlink('/etc/hosts'):
+    if not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
        print "Copying /etc/hosts to default profile."
        try:
            shutil.copy('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
        except:
            print "An error occured during moving the /etc/hosts file."
 
-    if not ishardlink('/etc/resolv.conf'):
+    if not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
        print "Copying /etc/resolv.conf to default profile."
        try:
            shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')

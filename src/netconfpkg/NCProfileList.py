@@ -148,7 +148,7 @@ class ProfileList(ProfileList_base):
         for dev in devlist:
             if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
                 continue
-            if ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
+            if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
                 try:
                     os.unlink(OLDSYSCONFDEVICEDIR+'/'+dev)
                 except:
@@ -218,7 +218,7 @@ class ProfileList(ProfileList_base):
             if prof.Active == false:
                 continue
 
-            if os.path.isfile('/etc/resolv.conf') and not ishardlink('/etc/resolv.conf'):
+            if os.path.isfile('/etc/resolv.conf') and not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
                 os.rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
 
             try:
@@ -231,7 +231,7 @@ class ProfileList(ProfileList_base):
             except:
                 pass
 
-            if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts'):
+            if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
                 os.rename('/etc/hosts', '/etc/hosts.bak')
 
             try:
