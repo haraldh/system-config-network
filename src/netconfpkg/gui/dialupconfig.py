@@ -358,7 +358,8 @@ class ISDNDialupDialog(DialupDialog):
         dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
         if dialup.ChannelBundling:
             dialup.SlaveDevice = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
-
+        else:
+            dialup.SlaveDevice = None
         dialup.DefRoute = self.xml.get_widget("defrouteISDNCB").get_active()
 
         auth = self.xml.get_widget("authEntry").get_text()
