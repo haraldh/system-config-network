@@ -89,6 +89,7 @@ all-no:
 
 findpy:
 	(cd $(top_srcdir)/;find src -name *.py -print ) > $(srcdir)/POTFILES.in
+	(cd $(top_srcdir)/;find src -name glade-strings.c -print ) >> $(srcdir)/POTFILES.in
 
 POTFILES-RHL: $(POTFILES) $(srcdir)/POTFILES.in
 	rm -rf POTFILES
