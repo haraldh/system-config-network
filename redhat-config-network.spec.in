@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 2
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -48,6 +48,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Tue Aug  7 2001 Phil Knirsch <phil@redhat.de> 0.6.7-2
+- Fixed various important bugzilla bugs
+- Added and implemented the add Hardware dialog.
+- Added a working Apply button.
+
 * Tue Aug  7 2001 Trond Eivind Glomsrød <teg@redhat.com> 0.6.7-1
 - Add online help capability (#50739)
 
