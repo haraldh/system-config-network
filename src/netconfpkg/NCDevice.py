@@ -8,10 +8,7 @@ import Conf
 
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
-        if isfile(SYSCONFDEVICEDIR + name):
-            Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name)
-        elif isfile(OLDSYSCONFDEVICEDIR + 'ifcfg-' + name):
-            Conf.ConfShellVar.__init__(self, OLDSYSCONFDEVICEDIR + 'ifcfg-' + name)
+        Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + 'ifcfg-' + name)
             
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
