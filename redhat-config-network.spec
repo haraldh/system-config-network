@@ -1,9 +1,9 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.3.1
+Version: 0.3.2
 Release: 1
 URL: http://www.redhat.com/ 
-Source0: %{name}-%{version}.tar.bz2
+Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
@@ -12,14 +12,12 @@ Obsoletes: isdn-config internet-config
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
-Netconf is the network configuration tool for Red Hat Linux, supporting
-ethernet, ASDL, ISDN and PPP. It can also configure firewalls and
-masquerading, and can use profiles.
-
+Netconf is the network configuration tool for Red Hat Linux,
+supporting ethernet, ASDL, ISDN and PPP. It can also configure
+firewalls and masquerading, and can use profiles.
 
 %prep
 %setup -q
-test -x autogen.sh && ./autogen.sh
 %configure
 
 %build
@@ -36,6 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/redhat-config-network
 %{_datadir}/kontrol-panel/neat.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
+%{_datadir}/desktop-folders/sysconfig/neat.desktop
 %{_sysconfdir}/X11/applnk/System/neat.desktop
 %{_sysconfdir}/pam.d/*
 %{_sysconfdir}/security/console.apps/*
@@ -43,6 +42,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Wed Jul 11 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- Don't run autogen.sh
+- Add Norwegian translation
+- install into the configuration tool desktop directory
+
 * Wed Jul 11 2001 Than Ngo <than@redhat.com> 0.3.1-1
 - obsolete isdn-config internet-config
 - requires consolehelper, alchemist
