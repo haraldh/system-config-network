@@ -24,7 +24,7 @@ from netconfpkg import NCisdnhardware
 from netconfpkg import NCDeviceList
 from netconfpkg import NCDevice
 from netconfpkg import NCProfileList
-from netconfpkg import ethtool
+import ethtool
 from netconfpkg.gui import sharedtcpip
 import gtk
 from gtk import TRUE

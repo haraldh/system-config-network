@@ -12,7 +12,7 @@ import gettext
 import re
 import NCHardwareList
 import NC_functions
-from netconfpkg import ethtool
+import ethtool
 
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon

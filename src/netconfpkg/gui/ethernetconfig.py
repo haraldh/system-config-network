@@ -31,7 +31,7 @@ import commands
 import sharedtcpip
 import traceback
 import sys
-from netconfpkg import ethtool
+import ethtool
 from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog

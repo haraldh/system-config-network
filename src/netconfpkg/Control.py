@@ -26,7 +26,7 @@ import signal
 import gettext
 import string
 import ethtool
-from netconfpkg import ethtool
+import ethtool
 from NC_functions import *
 
 VERSION = '0.1.0'
