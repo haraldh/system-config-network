@@ -45,9 +45,9 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class basicDialog:
-    def __init__(self, xml = None):
+    def __init__(self, device, xml = None):
         self.xml_main = xml
-
+        self.device = device
         glade_file = "basicdialog.glade"
 
         if not os.path.exists(glade_file):
@@ -61,7 +61,7 @@ class basicDialog:
             "on_configureButton_clicked" : self.on_configureButton_clicked,
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
-            "on_helpButton_clicked" : self.on_helpButton_clicked,
+            "on_applyButton_clicked" : self.on_applyButton_clicked,
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
                                                 r"^[a-z|A-Z|0-9]+$"),
@@ -78,6 +78,21 @@ class basicDialog:
         self.load_icon("network.xpm")
         self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
 
+        if device.DeviceId:
+            self.xml.get_widget('deviceNameEntry').set_text(device.DeviceId)
+            self.xml.get_widget('deviceTypeEntry').set_text(str(device.Type))
+            self.xml.get_widget('onBootCB').set_active(device.OnBoot)
+            self.xml.get_widget('userControlCB').set_active(device.AllowUser)
+            
+            self.xml.get_widget('ipSettingCB').set_active(device.BootProto != 'static')
+            if device.BootProto == 'static':
+                self.xml.get_widget('addressEntry').set_text(device.IP)
+                self.xml.get_widget('netmaskEntry').set_text(device.Netmask)
+                self.xml.get_widget('gatewayEntry').set_text(device.Gateway)
+
+            self.xml.get_widget('hostnameEntry').set_text(device.Hostname)
+            self.xml.get_widget('dnsSettingCB').set_active(device.AutoDNS)
+
         notebook = self.xml.get_widget("basicNotebook")
 
         for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
@@ -87,7 +102,9 @@ class basicDialog:
                 if page:                
                     notebook.remove_page(page)
 
-        self.dialog.show()
+        self.dialog.set_close(TRUE)
+        #self.dialog.close_hides(TRUE)
+        #self.dialog.show()
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -108,25 +125,27 @@ class basicDialog:
             self.dialog.set_icon(pix, mask)
         
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
-#        gtk.mainquit()
-
+        pass
+    
     def on_okButton_clicked(self, button):
-        self.dialog.destroy()
-#        gtk.mainquit()
-
+        self.device.commit()
+        pass
+    
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
-#        gtk.mainquit()
-
-    def on_helpButton_clicked(self, button):
+        self.device.rollback()
+        pass
+    
+    def on_applyButton_clicked(self, button):
+        self.device.commit()
         pass
 
     def on_configureButton_clicked(self, button):
         deviceType = self.xml.get_widget("deviceTypeEntry").get_text()
+        self.device.Type = deviceType
         if deviceType == "Ethernet":
-            ethernetConfigDialog(self.xml_main, self.xml)
-            gtk.mainloop()
+            cfg = ethernetConfigDialog(self.device, self.xml_main, self.xml)
+            dialog =cfg.xml.get_widget ("Dialog")
+            dialog.run ()
         elif deviceType == "ISDN":
             dialupDialog(self.xml_main, self.xml)
             gtk.mainloop()
