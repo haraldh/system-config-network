@@ -26,6 +26,7 @@
       <Gateway TYPE="STRING" VALUE=""/>
 
       <Hostname TYPE="STRING" VALUE=""/>
+      <Domain TYPE="STRING" VALUE=""/>
       <AutoDNS TYPE="BOOL" VALUE="FALSE"/>
 
       <StaticRoutes TYPE="LIST" ANONYMOUS="TRUE">
@@ -39,24 +40,31 @@
 
       <Dialup TYPE="LIST">
         <ProviderName TYPE="STRING" VALUE=""/>
-        <Persist TYPE="BOOL" VALUE="FALSE"/>
-        <DefRoute TYPE="BOOL" VALUE="FALSE"/>
-        
-        <PhoneIn TYPE="STRING" VALUE=""/>
-        <PhoneOut TYPE="STRING" VALUE=""/>
-        <ChargeHup TYPE="STRING" VALUE=""/>
-        <ChargeInt TYPE="STRING" VALUE=""/>
-        <Ihup TYPE="STRING" VALUE=""/>
-        <DialMax TYPE="INT" VALUE="3"/>
-		
-        <MSN TYPE="INT" VALUE="0"/>
-        <Prefix TYPE="STRING" VALUE=""/>
-        <Areacode TYPE="STRING" VALUE=""/>
-        <Regioncode TYPE="STRING" VALUE=""/>
+
         <Login TYPE="STRING" VALUE=""/>
         <Password TYPE="STRING" VALUE=""/>
         <Authentication TYPE="STRING" VALUE=""/>
 
+        <MSN TYPE="INT" VALUE="0"/>
+        <Prefix TYPE="STRING" VALUE=""/>
+        <Areacode TYPE="STRING" VALUE=""/>
+        <Regioncode TYPE="STRING" VALUE=""/>
+        <PhoneNumber TYPE="STRING" VALUE=""/>
+
+        <LocalIP TYPE="STRING" VALUE=""/>        
+        <RemoteIP TYPE="STRING" VALUE=""/>        
+        <PrimaryDNS TYPE="STRING" VALUE=""/>        
+        <SecondaryDNS TYPE="STRING" VALUE=""/>        
+        <Persist TYPE="BOOL" VALUE="FALSE"/>
+        <DefRoute TYPE="BOOL" VALUE="FALSE"/>
+        
+        <ChargeHup TYPE="STRING" VALUE=""/>
+        <ChargeInt TYPE="STRING" VALUE=""/>
+        <Ihup TYPE="STRING" VALUE=""/>
+        <DialMax TYPE="INT" VALUE="3"/>
+
+        <Layer2 TYPE="STRING" VALUE=""/>
+		
         <PPPOptions TYPE="LIST" ANONYMOUS="TRUE">
           <Option TYPE="STRING" VALUE=""/>
           </PPPOptions>
@@ -67,6 +75,9 @@
         <HangupTimeout TYPE="INT" VALUE="360"/>
         <DialMode TYPE="STRING" VALUE="manual"/>
 
+        <SlaveDevice TYPE="STRING" VALUE=""/>    
+        <Secure TYPE="BOOL" VALUE="FALSE"/>
+
         <InitStrings TYPE="LIST" ANONYMOUS="TRUE">
           <InitString TYPE="STRING" VALUE=""/>
           </InitStrings>
@@ -74,7 +85,7 @@
         <Callback TYPE="LIST">
           <Number TYPE="STRING" VALUE=""/>
           <Delay TYPE="INT" VALUE="3"/>
-          <Restrict TYPE="BOOL" VALUE="FALSE"/>
+          <Hup TYPE="INT" VALUE="3"/>
           <CBCP TYPE="BOOL" VALUE="FALSE"/>
           </Callback>
 
