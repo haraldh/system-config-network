@@ -68,7 +68,10 @@ class deviceTypeDialog:
         self.load_icon("network.xpm")
         self.load_icon("network.xpm", self.xml.get_widget("networkPixmap"))
 
-        self.xml.get_widget('deviceTypeCombo').set_popdown_strings(['Ethernet', 'Modem', 'ISDN', 'xDSL'])
+        devicetypes=deviceTypes[:]
+        devicetypes.remove('Loopback')
+
+        self.xml.get_widget('deviceTypeCombo').set_popdown_strings(devicetypes)
         self.hydrate()
 
         self.dialog.set_close(TRUE)
