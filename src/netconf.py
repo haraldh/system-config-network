@@ -650,11 +650,12 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
         
-        device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
+        dev = clist.get_row_data(clist.selection[0])
+        device = dev.getDeviceAlias()
 
         timeout_remove(self.tag)
         
-        if device.changed:
+        if dev.changed:
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n" +\
                 _("To activate the network device %s, the changes have to be saved.") % (device) +\
