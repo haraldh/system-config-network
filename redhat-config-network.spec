@@ -37,10 +37,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
-%{_datadir}/kontrol-panel/neat.desktop
+%{_datadir}/kontrol-panel/*.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
-%config(noreplace) /etc/X11/serverconfig/neat.desktop
-%config(noreplace) /etc/X11/applnk/System/neat.desktop
+%config(noreplace) /etc/X11/serverconfig/*.desktop
+%config(noreplace) /etc/X11/applnk/System/*.desktop
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
 %{_sbindir}/*
