@@ -71,7 +71,7 @@ VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))
 
 archive: distcheck changelog
-	cvs ci -m "" ChangeLog
+	cvs ci -m "release $(VERSION)"
 	cvs tag -cFR $(CVSTAG) .
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`; cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}

@@ -1,4 +1,4 @@
-# $Id: cs.po,v 1.41 2002/07/17 14:57:07 harald Exp $
+# $Id: cs.po,v 1.42 2002/07/23 14:01:52 harald Exp $
 #
 # Czech translation for netcfg
 # Copyright (C) 2001 Free Software Foundation, Inc.
@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.0\n"
-"POT-Creation-Date: 2002-07-23 16:10+0200\n"
+"POT-Creation-Date: 2002-07-24 13:07+0200\n"
 "PO-Revision-Date: 2002-06-09 01:48+0100\n"
 "Last-Translator: Milan Kerslager <kerslage@linux.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -51,52 +51,57 @@ msgstr ""
 msgid "Please restart %s with root permissions!"
 msgstr "Spus»te prosím %s s právy administrátora (root)."
 
+#: src/netconf.py:118
+msgid "Common"
+msgstr ""
+
 #. Let this dialog be in the taskbar like a normal window
-#: src/netconf.py:469 src/netconf.py:482
+#. change the default profile to a more understandable name
+#: src/netconf.py:475 src/netconf.py:488
 msgid "Do you want to save your changes?"
 msgstr "Chcete ulo¾it provedené zmìny?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:549
+#: src/netconf.py:555
 msgid "The Loopback device can not be edited!"
 msgstr "Zaøízení loopback nemù¾e být editováno!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:607 src/netconfpkg/gui/GenericInterface.py:133
+#: src/netconf.py:613 src/netconfpkg/gui/GenericInterface.py:133
 msgid "This device can not be edited with this tool!"
 msgstr "Toto zaøízení nemù¾e být tímto nástrojem editováno!"
 
-#: src/netconf.py:629
+#: src/netconf.py:635
 msgid "The Loopback device can not be removed!"
 msgstr "Loopback zaøízení nemù¾e být odebráno!"
 
-#: src/netconf.py:632
+#: src/netconf.py:638
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Chcete skuteènì smazat zaøízení '%s'?"
 
-#: src/netconf.py:659
+#: src/netconf.py:666
 msgid "You have made some changes in your configuration."
 msgstr "Provedli jste zmìny v konfiguraci."
 
-#: src/netconf.py:660
+#: src/netconf.py:667
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "Pro aktivaci sí»ového zaøízení %s musí být zmìny ulo¾eny."
 
-#: src/netconf.py:662
+#: src/netconf.py:669
 msgid "Do you want to continue?"
 msgstr "Chcete pokraèovat?"
 
 #. Let this dialog be in the taskbar like a normal window
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:674 src/neat-control.py:129
+#: src/netconf.py:681 src/neat-control.py:129
 msgid "Network device activating..."
 msgstr "Aktivace sí»ového zaøízení..."
 
-#: src/netconf.py:676 src/neat-control.py:131
+#: src/netconf.py:683 src/neat-control.py:131
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Probíhá aktivace sí»ového zaøízení %s, èekejte prosím..."
@@ -105,7 +110,7 @@ msgstr "Probíhá aktivace sí»ového zaøízení %s, èekejte prosím..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:707 src/neat-control.py:170
+#: src/netconf.py:715 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Bude pøepsáno!"
 
@@ -121,7 +126,7 @@ msgstr "Bude pøepsáno!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:868
+#: src/netconf.py:876
 #, fuzzy
 msgid "The Loopback device can not be disabled!"
 msgstr "Zaøízení loopback nemù¾e být editováno!"
@@ -129,39 +134,40 @@ msgstr "Zaøízení loopback nemù¾e být editováno!"
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1162 src/netconf.py:1239
+#: src/netconf.py:1170 src/netconf.py:1247
 msgid "The name may only contain letters and digits!"
 msgstr "Jméno mù¾e obsahovat pouze písmena a èísla!"
 
-#: src/netconf.py:1166 src/netconf.py:1243
-msgid "The profile can't be named \"default\"!"
+#: src/netconf.py:1174 src/netconf.py:1251
+#, fuzzy, python-format
+msgid "The profile can't be named \"%s\"!"
 msgstr "Profil se nemù¾e jmenovat 'default'!"
 
-#: src/netconf.py:1171 src/netconf.py:1248
+#: src/netconf.py:1179 src/netconf.py:1256
 msgid "The profile name already exists!"
 msgstr "Toto jméno profilu u¾ existuje!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1220
+#: src/netconf.py:1228
 msgid "The \"default\" profile can't be renamed!"
 msgstr "Profil se jménem 'default' nemù¾e být pøejmenován!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1269
+#: src/netconf.py:1277
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Profil se jménem 'default' nemù¾e být smazán!"
 
-#: src/netconf.py:1272
+#: src/netconf.py:1280
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Chcete skuteènì smazat profil '%s'?"
 
 #. clist.clear()
 #. hardwarelist.rollback()
-#: src/netconf.py:1398
+#: src/netconf.py:1406
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Chcete skuteènì smazat '%s'?"
