@@ -9,7 +9,10 @@ netconfimg_DATA = \
 	keys.xpm \
 	network.xpm \
 	no.xpm \
-	us.xpm 
+	us.xpm \
+	nameresolution_alias.png \
+	connection-ethernet.png \
+	network.png
 
 netconfkontroldir = $(datadir)/kontrol-panel/icons
 

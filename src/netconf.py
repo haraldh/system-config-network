@@ -188,6 +188,10 @@ class mainDialog:
             "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked,
             })
 
+
+        self.xml.get_widget ("hardware_pixmap").load_file("/usr/share/redhat-config-network/pixmaps/connection-ethernet.png")
+        self.xml.get_widget ("hosts_pixmap").load_file("/usr/share/redhat-config-network/pixmaps/nameresolution_alias.png")
+        self.xml.get_widget ("devices_pixmap").load_file("/usr/share/redhat-config-network/pixmaps/network.png")
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)

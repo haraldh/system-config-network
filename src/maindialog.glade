@@ -211,7 +211,6 @@
       <widget>
 	<class>GtkNotebook</class>
 	<name>notebook1</name>
-	<border_width>4</border_width>
 	<can_focus>True</can_focus>
 	<show_tabs>True</show_tabs>
 	<show_border>True</show_border>
@@ -228,14 +227,66 @@
 
 	<widget>
 	  <class>GtkVBox</class>
-	  <name>vbox90</name>
+	  <name>vbox92</name>
+	  <border_width>5</border_width>
 	  <homogeneous>False</homogeneous>
 	  <spacing>5</spacing>
 
 	  <widget>
 	    <class>GtkHBox</class>
-	    <name>hbox8</name>
-	    <border_width>5</border_width>
+	    <name>hbox21</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>8</spacing>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>True</fill>
+	    </child>
+
+	    <widget>
+	      <class>GnomePixmap</class>
+	      <name>hardware_pixmap</name>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>True</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label301</name>
+	      <label>You may configure network hardware physically attached to the computer here.
+
+
+</label>
+	      <justify>GTK_JUSTIFY_LEFT</justify>
+	      <wrap>True</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
+	      </child>
+	    </widget>
+	  </widget>
+
+	  <widget>
+	    <class>GtkHSeparator</class>
+	    <name>hseparator25</name>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>True</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkHBox</class>
+	    <name>hbox18</name>
 	    <homogeneous>False</homogeneous>
 	    <spacing>5</spacing>
 	    <child>
@@ -246,7 +297,7 @@
 
 	    <widget>
 	      <class>GtkScrolledWindow</class>
-	      <name>scrolledwindow6</name>
+	      <name>scrolledwindow18</name>
 	      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
 	      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
 	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
@@ -259,25 +310,25 @@
 
 	      <widget>
 		<class>GtkCList</class>
-		<name>deviceList</name>
+		<name>hardwareList</name>
 		<can_focus>True</can_focus>
 		<signal>
 		  <name>button_press_event</name>
-		  <handler>on_deviceList_button_press_event</handler>
-		  <last_modification_time>Fri, 01 Jun 2001 21:05:48 GMT</last_modification_time>
+		  <handler>on_hardwareList_button_press_event</handler>
+		  <last_modification_time>Wed, 13 Jun 2001 12:41:08 GMT</last_modification_time>
 		</signal>
 		<signal>
 		  <name>select_row</name>
-		  <handler>on_deviceList_select_row</handler>
-		  <last_modification_time>Fri, 01 Jun 2001 21:10:18 GMT</last_modification_time>
+		  <handler>on_hardwareList_select_row</handler>
+		  <last_modification_time>Wed, 13 Jun 2001 12:41:18 GMT</last_modification_time>
 		</signal>
 		<signal>
 		  <name>unselect_row</name>
-		  <handler>on_deviceList_unselect_row</handler>
-		  <last_modification_time>Fri, 01 Jun 2001 21:10:28 GMT</last_modification_time>
+		  <handler>on_hardwareList_unselect_row</handler>
+		  <last_modification_time>Wed, 13 Jun 2001 12:41:25 GMT</last_modification_time>
 		</signal>
-		<columns>2</columns>
-		<column_widths>124,80</column_widths>
+		<columns>3</columns>
+		<column_widths>187,66,80</column_widths>
 		<selection_mode>GTK_SELECTION_BROWSE</selection_mode>
 		<show_titles>True</show_titles>
 		<shadow_type>GTK_SHADOW_IN</shadow_type>
@@ -285,8 +336,8 @@
 		<widget>
 		  <class>GtkLabel</class>
 		  <child_name>CList:title</child_name>
-		  <name>label188</name>
-		  <label>Nickname</label>
+		  <name>label273</name>
+		  <label>Description</label>
 		  <justify>GTK_JUSTIFY_CENTER</justify>
 		  <wrap>False</wrap>
 		  <xalign>0</xalign>
@@ -298,8 +349,21 @@
 		<widget>
 		  <class>GtkLabel</class>
 		  <child_name>CList:title</child_name>
-		  <name>label189</name>
+		  <name>label274</name>
 		  <label>Type</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		</widget>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <child_name>CList:title</child_name>
+		  <name>label275</name>
+		  <label>Device</label>
 		  <justify>GTK_JUSTIFY_CENTER</justify>
 		  <wrap>False</wrap>
 		  <xalign>0</xalign>
@@ -312,35 +376,34 @@
 
 	    <widget>
 	      <class>GtkVBox</class>
-	      <name>vbox13</name>
+	      <name>vbox73</name>
 	      <homogeneous>False</homogeneous>
 	      <spacing>5</spacing>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
 		<fill>True</fill>
-		<pack>GTK_PACK_END</pack>
 	      </child>
 
 	      <widget>
 		<class>GtkButton</class>
-		<name>deviceAddButton</name>
+		<name>hardwareAddButton</name>
 		<can_focus>True</can_focus>
 		<signal>
 		  <name>clicked</name>
-		  <handler>on_deviceAddButton_clicked</handler>
-		  <last_modification_time>Thu, 24 May 2001 12:47:22 GMT</last_modification_time>
+		  <handler>on_hardwareAddButton_clicked</handler>
+		  <last_modification_time>Tue, 29 May 2001 22:30:19 GMT</last_modification_time>
 		</signal>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
 		  <padding>0</padding>
 		  <expand>False</expand>
-		  <fill>True</fill>
+		  <fill>False</fill>
 		</child>
 
 		<widget>
 		  <class>GtkLabel</class>
-		  <name>label281</name>
+		  <name>label282</name>
 		  <label>_Add...</label>
 		  <justify>GTK_JUSTIFY_CENTER</justify>
 		  <wrap>False</wrap>
@@ -353,12 +416,12 @@
 
 	      <widget>
 		<class>GtkButton</class>
-		<name>deviceEditButton</name>
+		<name>hardwareEditButton</name>
 		<can_focus>True</can_focus>
 		<signal>
 		  <name>clicked</name>
-		  <handler>on_deviceEditButton_clicked</handler>
-		  <last_modification_time>Thu, 24 May 2001 12:47:44 GMT</last_modification_time>
+		  <handler>on_hardwareEditButton_clicked</handler>
+		  <last_modification_time>Tue, 29 May 2001 22:30:25 GMT</last_modification_time>
 		</signal>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
@@ -369,7 +432,7 @@
 
 		<widget>
 		  <class>GtkLabel</class>
-		  <name>label279</name>
+		  <name>label283</name>
 		  <label>_Edit...</label>
 		  <justify>GTK_JUSTIFY_CENTER</justify>
 		  <wrap>False</wrap>
@@ -382,41 +445,12 @@
 
 	      <widget>
 		<class>GtkButton</class>
-		<name>deviceCopyButton</name>
+		<name>hardwareDeleteButton</name>
 		<can_focus>True</can_focus>
 		<signal>
 		  <name>clicked</name>
-		  <handler>on_deviceCopyButton_clicked</handler>
-		  <last_modification_time>Thu, 24 May 2001 12:47:31 GMT</last_modification_time>
-		</signal>
-		<relief>GTK_RELIEF_NORMAL</relief>
-		<child>
-		  <padding>0</padding>
-		  <expand>False</expand>
-		  <fill>True</fill>
-		</child>
-
-		<widget>
-		  <class>GtkLabel</class>
-		  <name>label280</name>
-		  <label>_Copy</label>
-		  <justify>GTK_JUSTIFY_CENTER</justify>
-		  <wrap>False</wrap>
-		  <xalign>0</xalign>
-		  <yalign>0.5</yalign>
-		  <xpad>2</xpad>
-		  <ypad>0</ypad>
-		</widget>
-	      </widget>
-
-	      <widget>
-		<class>GtkButton</class>
-		<name>deviceDeleteButton</name>
-		<can_focus>True</can_focus>
-		<signal>
-		  <name>clicked</name>
-		  <handler>on_deviceDeleteButton_clicked</handler>
-		  <last_modification_time>Thu, 24 May 2001 12:47:48 GMT</last_modification_time>
+		  <handler>on_hardwareDeleteButton_clicked</handler>
+		  <last_modification_time>Tue, 29 May 2001 22:30:12 GMT</last_modification_time>
 		</signal>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
@@ -427,7 +461,7 @@
 
 		<widget>
 		  <class>GtkLabel</class>
-		  <name>label278</name>
+		  <name>label284</name>
 		  <label>_Delete</label>
 		  <justify>GTK_JUSTIFY_CENTER</justify>
 		  <wrap>False</wrap>
@@ -435,6 +469,295 @@
 		  <yalign>0.5</yalign>
 		  <xpad>2</xpad>
 		  <ypad>0</ypad>
+		</widget>
+	      </widget>
+	    </widget>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <child_name>Notebook:tab</child_name>
+	  <name>label291</name>
+	  <label>Hardware</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkVBox</class>
+	  <name>vbox90</name>
+	  <homogeneous>False</homogeneous>
+	  <spacing>5</spacing>
+
+	  <widget>
+	    <class>GtkVBox</class>
+	    <name>vbox91</name>
+	    <border_width>5</border_width>
+	    <homogeneous>False</homogeneous>
+	    <spacing>5</spacing>
+	    <child>
+	      <padding>0</padding>
+	      <expand>True</expand>
+	      <fill>True</fill>
+	    </child>
+
+	    <widget>
+	      <class>GtkHBox</class>
+	      <name>hbox20</name>
+	      <homogeneous>False</homogeneous>
+	      <spacing>8</spacing>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>True</fill>
+	      </child>
+
+	      <widget>
+		<class>GnomePixmap</class>
+		<name>devices_pixmap</name>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>True</fill>
+		</child>
+	      </widget>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label300</name>
+		<label>You may configure network devices associated with physical hardware here.  Multiple logical devices can be associated with a single piece of hardware.</label>
+		<justify>GTK_JUSTIFY_LEFT</justify>
+		<wrap>True</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<child>
+		  <padding>0</padding>
+		  <expand>True</expand>
+		  <fill>True</fill>
+		</child>
+	      </widget>
+	    </widget>
+
+	    <widget>
+	      <class>GtkHSeparator</class>
+	      <name>hseparator24</name>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>True</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkHBox</class>
+	      <name>hbox8</name>
+	      <homogeneous>False</homogeneous>
+	      <spacing>5</spacing>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
+	      </child>
+
+	      <widget>
+		<class>GtkScrolledWindow</class>
+		<name>scrolledwindow6</name>
+		<hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+		<vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+		<hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+		<vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+		<child>
+		  <padding>0</padding>
+		  <expand>True</expand>
+		  <fill>True</fill>
+		</child>
+
+		<widget>
+		  <class>GtkCList</class>
+		  <name>deviceList</name>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>button_press_event</name>
+		    <handler>on_deviceList_button_press_event</handler>
+		    <last_modification_time>Fri, 01 Jun 2001 21:05:48 GMT</last_modification_time>
+		  </signal>
+		  <signal>
+		    <name>select_row</name>
+		    <handler>on_deviceList_select_row</handler>
+		    <last_modification_time>Fri, 01 Jun 2001 21:10:18 GMT</last_modification_time>
+		  </signal>
+		  <signal>
+		    <name>unselect_row</name>
+		    <handler>on_deviceList_unselect_row</handler>
+		    <last_modification_time>Fri, 01 Jun 2001 21:10:28 GMT</last_modification_time>
+		  </signal>
+		  <columns>2</columns>
+		  <column_widths>124,80</column_widths>
+		  <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
+		  <show_titles>True</show_titles>
+		  <shadow_type>GTK_SHADOW_IN</shadow_type>
+
+		  <widget>
+		    <class>GtkLabel</class>
+		    <child_name>CList:title</child_name>
+		    <name>label188</name>
+		    <label>Nickname</label>
+		    <justify>GTK_JUSTIFY_CENTER</justify>
+		    <wrap>False</wrap>
+		    <xalign>0</xalign>
+		    <yalign>0.5</yalign>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		  </widget>
+
+		  <widget>
+		    <class>GtkLabel</class>
+		    <child_name>CList:title</child_name>
+		    <name>label189</name>
+		    <label>Type</label>
+		    <justify>GTK_JUSTIFY_CENTER</justify>
+		    <wrap>False</wrap>
+		    <xalign>0</xalign>
+		    <yalign>0.5</yalign>
+		    <xpad>0</xpad>
+		    <ypad>0</ypad>
+		  </widget>
+		</widget>
+	      </widget>
+
+	      <widget>
+		<class>GtkVBox</class>
+		<name>vbox13</name>
+		<homogeneous>False</homogeneous>
+		<spacing>5</spacing>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>True</fill>
+		  <pack>GTK_PACK_END</pack>
+		</child>
+
+		<widget>
+		  <class>GtkButton</class>
+		  <name>deviceAddButton</name>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>clicked</name>
+		    <handler>on_deviceAddButton_clicked</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:47:22 GMT</last_modification_time>
+		  </signal>
+		  <relief>GTK_RELIEF_NORMAL</relief>
+		  <child>
+		    <padding>0</padding>
+		    <expand>False</expand>
+		    <fill>True</fill>
+		  </child>
+
+		  <widget>
+		    <class>GtkLabel</class>
+		    <name>label281</name>
+		    <label>_Add...</label>
+		    <justify>GTK_JUSTIFY_CENTER</justify>
+		    <wrap>False</wrap>
+		    <xalign>0</xalign>
+		    <yalign>0.5</yalign>
+		    <xpad>2</xpad>
+		    <ypad>0</ypad>
+		  </widget>
+		</widget>
+
+		<widget>
+		  <class>GtkButton</class>
+		  <name>deviceEditButton</name>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>clicked</name>
+		    <handler>on_deviceEditButton_clicked</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:47:44 GMT</last_modification_time>
+		  </signal>
+		  <relief>GTK_RELIEF_NORMAL</relief>
+		  <child>
+		    <padding>0</padding>
+		    <expand>False</expand>
+		    <fill>False</fill>
+		  </child>
+
+		  <widget>
+		    <class>GtkLabel</class>
+		    <name>label279</name>
+		    <label>_Edit...</label>
+		    <justify>GTK_JUSTIFY_CENTER</justify>
+		    <wrap>False</wrap>
+		    <xalign>0</xalign>
+		    <yalign>0.5</yalign>
+		    <xpad>2</xpad>
+		    <ypad>0</ypad>
+		  </widget>
+		</widget>
+
+		<widget>
+		  <class>GtkButton</class>
+		  <name>deviceCopyButton</name>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>clicked</name>
+		    <handler>on_deviceCopyButton_clicked</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:47:31 GMT</last_modification_time>
+		  </signal>
+		  <relief>GTK_RELIEF_NORMAL</relief>
+		  <child>
+		    <padding>0</padding>
+		    <expand>False</expand>
+		    <fill>True</fill>
+		  </child>
+
+		  <widget>
+		    <class>GtkLabel</class>
+		    <name>label280</name>
+		    <label>_Copy</label>
+		    <justify>GTK_JUSTIFY_CENTER</justify>
+		    <wrap>False</wrap>
+		    <xalign>0</xalign>
+		    <yalign>0.5</yalign>
+		    <xpad>2</xpad>
+		    <ypad>0</ypad>
+		  </widget>
+		</widget>
+
+		<widget>
+		  <class>GtkButton</class>
+		  <name>deviceDeleteButton</name>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>clicked</name>
+		    <handler>on_deviceDeleteButton_clicked</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:47:48 GMT</last_modification_time>
+		  </signal>
+		  <relief>GTK_RELIEF_NORMAL</relief>
+		  <child>
+		    <padding>0</padding>
+		    <expand>False</expand>
+		    <fill>False</fill>
+		  </child>
+
+		  <widget>
+		    <class>GtkLabel</class>
+		    <name>label278</name>
+		    <label>_Delete</label>
+		    <justify>GTK_JUSTIFY_CENTER</justify>
+		    <wrap>False</wrap>
+		    <xalign>0</xalign>
+		    <yalign>0.5</yalign>
+		    <xpad>2</xpad>
+		    <ypad>0</ypad>
+		  </widget>
 		</widget>
 	      </widget>
 	    </widget>
@@ -455,96 +778,17 @@
 	</widget>
 
 	<widget>
-	  <class>GtkHBox</class>
-	  <name>hbox18</name>
+	  <class>GtkVBox</class>
+	  <name>vbox93</name>
 	  <border_width>5</border_width>
 	  <homogeneous>False</homogeneous>
 	  <spacing>5</spacing>
 
 	  <widget>
-	    <class>GtkScrolledWindow</class>
-	    <name>scrolledwindow18</name>
-	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	    <child>
-	      <padding>0</padding>
-	      <expand>True</expand>
-	      <fill>True</fill>
-	    </child>
-
-	    <widget>
-	      <class>GtkCList</class>
-	      <name>hardwareList</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>button_press_event</name>
-		<handler>on_hardwareList_button_press_event</handler>
-		<last_modification_time>Wed, 13 Jun 2001 12:41:08 GMT</last_modification_time>
-	      </signal>
-	      <signal>
-		<name>select_row</name>
-		<handler>on_hardwareList_select_row</handler>
-		<last_modification_time>Wed, 13 Jun 2001 12:41:18 GMT</last_modification_time>
-	      </signal>
-	      <signal>
-		<name>unselect_row</name>
-		<handler>on_hardwareList_unselect_row</handler>
-		<last_modification_time>Wed, 13 Jun 2001 12:41:25 GMT</last_modification_time>
-	      </signal>
-	      <columns>3</columns>
-	      <column_widths>187,66,80</column_widths>
-	      <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
-	      <show_titles>True</show_titles>
-	      <shadow_type>GTK_SHADOW_IN</shadow_type>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label273</name>
-		<label>Description</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label274</name>
-		<label>Type</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label275</name>
-		<label>Device</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox73</name>
+	    <class>GtkHBox</class>
+	    <name>hbox22</name>
 	    <homogeneous>False</homogeneous>
-	    <spacing>5</spacing>
+	    <spacing>8</spacing>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -552,89 +796,230 @@
 	    </child>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>hardwareAddButton</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_hardwareAddButton_clicked</handler>
-		<last_modification_time>Tue, 29 May 2001 22:30:19 GMT</last_modification_time>
-	      </signal>
-	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <class>GnomePixmap</class>
+	      <name>hosts_pixmap</name>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
-		<fill>False</fill>
+		<fill>True</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label302</name>
+	      <label>You may specify static computer hostname to IP address mappings here.  If DNS is in use, these settings will take precedence over any information it may provide.</label>
+	      <justify>GTK_JUSTIFY_LEFT</justify>
+	      <wrap>True</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
+	      </child>
+	    </widget>
+	  </widget>
+
+	  <widget>
+	    <class>GtkHSeparator</class>
+	    <name>hseparator26</name>
+	    <child>
+	      <padding>0</padding>
+	      <expand>False</expand>
+	      <fill>True</fill>
+	    </child>
+	  </widget>
+
+	  <widget>
+	    <class>GtkHBox</class>
+	    <name>hbox16</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>5</spacing>
+	    <child>
+	      <padding>0</padding>
+	      <expand>True</expand>
+	      <fill>True</fill>
+	    </child>
+
+	    <widget>
+	      <class>GtkScrolledWindow</class>
+	      <name>scrolledwindow19</name>
+	      <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
+	      <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
+	      <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
+	      <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
 	      </child>
 
 	      <widget>
-		<class>GtkLabel</class>
-		<name>label282</name>
-		<label>_Add...</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>2</xpad>
-		<ypad>0</ypad>
+		<class>GtkCList</class>
+		<name>hostsList</name>
+		<can_focus>True</can_focus>
+		<signal>
+		  <name>button_press_event</name>
+		  <handler>on_hostsList_button_press_event</handler>
+		  <last_modification_time>Tue, 12 Jun 2001 16:33:16 GMT</last_modification_time>
+		</signal>
+		<signal>
+		  <name>select_row</name>
+		  <handler>on_hostsList_select_row</handler>
+		  <last_modification_time>Tue, 12 Jun 2001 16:33:21 GMT</last_modification_time>
+		</signal>
+		<signal>
+		  <name>unselect_row</name>
+		  <handler>on_hostsList_unselect_row</handler>
+		  <last_modification_time>Tue, 12 Jun 2001 16:33:26 GMT</last_modification_time>
+		</signal>
+		<columns>3</columns>
+		<column_widths>104,124,80</column_widths>
+		<selection_mode>GTK_SELECTION_BROWSE</selection_mode>
+		<show_titles>True</show_titles>
+		<shadow_type>GTK_SHADOW_IN</shadow_type>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <child_name>CList:title</child_name>
+		  <name>label269</name>
+		  <label>IP</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		</widget>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <child_name>CList:title</child_name>
+		  <name>label270</name>
+		  <label>Name</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		</widget>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <child_name>CList:title</child_name>
+		  <name>label271</name>
+		  <label>Aliases</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>0</xpad>
+		  <ypad>0</ypad>
+		</widget>
 	      </widget>
 	    </widget>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>hardwareEditButton</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_hardwareEditButton_clicked</handler>
-		<last_modification_time>Tue, 29 May 2001 22:30:25 GMT</last_modification_time>
-	      </signal>
-	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <class>GtkVBox</class>
+	      <name>vbox89</name>
+	      <homogeneous>False</homogeneous>
+	      <spacing>5</spacing>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
-		<fill>False</fill>
+		<fill>True</fill>
+		<pack>GTK_PACK_END</pack>
 	      </child>
 
 	      <widget>
-		<class>GtkLabel</class>
-		<name>label283</name>
-		<label>_Edit...</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>2</xpad>
-		<ypad>0</ypad>
+		<class>GtkButton</class>
+		<name>button1</name>
+		<can_focus>True</can_focus>
+		<signal>
+		  <name>clicked</name>
+		  <handler>on_hostsAddButton_clicked</handler>
+		  <last_modification_time>Tue, 12 Jun 2001 16:32:49 GMT</last_modification_time>
+		</signal>
+		<relief>GTK_RELIEF_NORMAL</relief>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>True</fill>
+		</child>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label288</name>
+		  <label>_Add...</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>2</xpad>
+		  <ypad>0</ypad>
+		</widget>
 	      </widget>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>hardwareDeleteButton</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_hardwareDeleteButton_clicked</handler>
-		<last_modification_time>Tue, 29 May 2001 22:30:12 GMT</last_modification_time>
-	      </signal>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
 
 	      <widget>
-		<class>GtkLabel</class>
-		<name>label284</name>
-		<label>_Delete</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>2</xpad>
-		<ypad>0</ypad>
+		<class>GtkButton</class>
+		<name>button3</name>
+		<can_focus>True</can_focus>
+		<signal>
+		  <name>clicked</name>
+		  <handler>on_hostsEditButton_clicked</handler>
+		  <last_modification_time>Tue, 12 Jun 2001 16:32:58 GMT</last_modification_time>
+		</signal>
+		<relief>GTK_RELIEF_NORMAL</relief>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>True</fill>
+		</child>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label289</name>
+		  <label>_Edit...</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>2</xpad>
+		  <ypad>0</ypad>
+		</widget>
+	      </widget>
+
+	      <widget>
+		<class>GtkButton</class>
+		<name>button4</name>
+		<can_focus>True</can_focus>
+		<signal>
+		  <name>clicked</name>
+		  <handler>on_hostsDeleteButton_clicked</handler>
+		  <last_modification_time>Tue, 12 Jun 2001 16:33:06 GMT</last_modification_time>
+		</signal>
+		<relief>GTK_RELIEF_NORMAL</relief>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>False</fill>
+		</child>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label290</name>
+		  <label>_Delete</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>2</xpad>
+		  <ypad>0</ypad>
+		</widget>
 	      </widget>
 	    </widget>
 	  </widget>
@@ -643,8 +1028,8 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <child_name>Notebook:tab</child_name>
-	  <name>label291</name>
-	  <label>Hardware</label>
+	  <name>label268</name>
+	  <label>Hosts</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0.5</xalign>
@@ -1269,206 +1654,6 @@
 	  <child_name>Notebook:tab</child_name>
 	  <name>label185</name>
 	  <label>DNS</label>
-	  <justify>GTK_JUSTIFY_CENTER</justify>
-	  <wrap>False</wrap>
-	  <xalign>0.5</xalign>
-	  <yalign>0.5</yalign>
-	  <xpad>0</xpad>
-	  <ypad>0</ypad>
-	</widget>
-
-	<widget>
-	  <class>GtkHBox</class>
-	  <name>hbox16</name>
-	  <border_width>5</border_width>
-	  <homogeneous>False</homogeneous>
-	  <spacing>5</spacing>
-
-	  <widget>
-	    <class>GtkScrolledWindow</class>
-	    <name>scrolledwindow19</name>
-	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	    <child>
-	      <padding>0</padding>
-	      <expand>True</expand>
-	      <fill>True</fill>
-	    </child>
-
-	    <widget>
-	      <class>GtkCList</class>
-	      <name>hostsList</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>button_press_event</name>
-		<handler>on_hostsList_button_press_event</handler>
-		<last_modification_time>Tue, 12 Jun 2001 16:33:16 GMT</last_modification_time>
-	      </signal>
-	      <signal>
-		<name>select_row</name>
-		<handler>on_hostsList_select_row</handler>
-		<last_modification_time>Tue, 12 Jun 2001 16:33:21 GMT</last_modification_time>
-	      </signal>
-	      <signal>
-		<name>unselect_row</name>
-		<handler>on_hostsList_unselect_row</handler>
-		<last_modification_time>Tue, 12 Jun 2001 16:33:26 GMT</last_modification_time>
-	      </signal>
-	      <columns>3</columns>
-	      <column_widths>104,124,80</column_widths>
-	      <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
-	      <show_titles>True</show_titles>
-	      <shadow_type>GTK_SHADOW_IN</shadow_type>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label269</name>
-		<label>IP</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label270</name>
-		<label>Name</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label271</name>
-		<label>Aliases</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-	  </widget>
-
-	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox89</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>5</spacing>
-	    <child>
-	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>True</fill>
-	      <pack>GTK_PACK_END</pack>
-	    </child>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>button1</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_hostsAddButton_clicked</handler>
-		<last_modification_time>Tue, 12 Jun 2001 16:32:49 GMT</last_modification_time>
-	      </signal>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<name>label288</name>
-		<label>_Add...</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>2</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>button3</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_hostsEditButton_clicked</handler>
-		<last_modification_time>Tue, 12 Jun 2001 16:32:58 GMT</last_modification_time>
-	      </signal>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-	      </child>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<name>label289</name>
-		<label>_Edit...</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>2</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>button4</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_hostsDeleteButton_clicked</handler>
-		<last_modification_time>Tue, 12 Jun 2001 16:33:06 GMT</last_modification_time>
-	      </signal>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<name>label290</name>
-		<label>_Delete</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>2</xpad>
-		<ypad>0</ypad>
-	      </widget>
-	    </widget>
-	  </widget>
-	</widget>
-
-	<widget>
-	  <class>GtkLabel</class>
-	  <child_name>Notebook:tab</child_name>
-	  <name>label268</name>
-	  <label>Hosts</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0.5</xalign>
