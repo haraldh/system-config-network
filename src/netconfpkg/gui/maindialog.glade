@@ -191,45 +191,56 @@ The name may only contain letters and digits.</property>
 	      <child>
 		<widget class="GtkMenuItem" id="profileMenu">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Profile</property>
+		  <property name="label" translatable="yes">_Profile</property>
 		  <property name="use_underline">True</property>
 
 		  <child>
 		    <widget class="GtkMenu" id="profileMenu_menu">
 
 		      <child>
-			<widget class="GtkMenuItem" id="profileAddMenu">
+			<widget class="GtkImageMenuItem" id="profileAddMenu">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Add...</property>
+			  <property name="stock_item">GNOMEUIINFO_MENU_NEW_ITEM</property>
+			  <property name="label" translatable="yes">_New</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="on_profileAddMenu_activate" last_modification_time="Wed, 04 Dec 2002 15:59:32 GMT"/>
 			</widget>
 		      </child>
 
 		      <child>
-			<widget class="GtkMenuItem" id="profileCopyMenu">
+			<widget class="GtkImageMenuItem" id="profileCopyMenu">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Copy</property>
-			  <property name="use_underline">True</property>
+			  <property name="stock_item">GNOMEUIINFO_MENU_COPY_ITEM</property>
 			  <signal name="activate" handler="on_profileCopyMenu_activate" last_modification_time="Wed, 04 Dec 2002 15:59:32 GMT"/>
 			</widget>
 		      </child>
 
 		      <child>
-			<widget class="GtkMenuItem" id="profileRenameMenu">
+			<widget class="GtkImageMenuItem" id="profileRenameMenu">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Rename...</property>
-			  <property name="use_underline">True</property>
+			  <property name="stock_item">GNOMEUIINFO_MENU_PROPERTIES_ITEM</property>
 			  <signal name="activate" handler="on_profileRenameMenu_activate" last_modification_time="Wed, 04 Dec 2002 15:59:32 GMT"/>
 			</widget>
 		      </child>
 
 		      <child>
-			<widget class="GtkMenuItem" id="profileDeleteMenu">
+			<widget class="GtkImageMenuItem" id="profileDeleteMenu">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Delete</property>
+			  <property name="label" translatable="yes">_Delete</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="on_profileDeleteMenu_activate" last_modification_time="Wed, 04 Dec 2002 11:30:42 GMT"/>
+
+			  <child internal-child="image">
+			    <widget class="GtkImage" id="image6">
+			      <property name="visible">True</property>
+			      <property name="stock">gtk-delete</property>
+			      <property name="icon_size">1</property>
+			      <property name="xalign">0.5</property>
+			      <property name="yalign">0.5</property>
+			      <property name="xpad">0</property>
+			      <property name="ypad">0</property>
+			    </widget>
+			  </child>
 			</widget>
 		      </child>
 
@@ -464,6 +475,8 @@ The name may only contain letters and digits.</property>
 	      <property name="show_border">True</property>
 	      <property name="tab_pos">GTK_POS_TOP</property>
 	      <property name="scrollable">False</property>
+	      <property name="tab_hborder">2</property>
+	      <property name="tab_vborder">2</property>
 	      <property name="enable_popup">False</property>
 	      <signal name="switch_page" handler="on_mainNotebook_switch_page" last_modification_time="Tue, 10 Dec 2002 13:39:25 GMT"/>
 
@@ -651,8 +664,8 @@ The name may only contain letters and digits.</property>
 	      <child>
 		<widget class="GtkLabel" id="deviceLabel">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Devices</property>
-		  <property name="use_underline">False</property>
+		  <property name="label" translatable="yes">Dev_ices</property>
+		  <property name="use_underline">True</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
 		  <property name="wrap">False</property>
@@ -820,8 +833,8 @@ The name may only contain letters and digits.</property>
 	      <child>
 		<widget class="GtkLabel" id="hardwareLabel">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Hardware</property>
-		  <property name="use_underline">False</property>
+		  <property name="label" translatable="yes">Hard_ware</property>
+		  <property name="use_underline">True</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
 		  <property name="wrap">False</property>
@@ -1209,8 +1222,8 @@ The name may only contain letters and digits.</property>
 	      <child>
 		<widget class="GtkLabel" id="dnsLabel">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">DNS</property>
-		  <property name="use_underline">False</property>
+		  <property name="label" translatable="yes">D_NS</property>
+		  <property name="use_underline">True</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
 		  <property name="wrap">False</property>
@@ -1375,8 +1388,8 @@ The name may only contain letters and digits.</property>
 	      <child>
 		<widget class="GtkLabel" id="hostsLabel">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Hosts</property>
-		  <property name="use_underline">False</property>
+		  <property name="label" translatable="yes">H_osts</property>
+		  <property name="use_underline">True</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
 		  <property name="wrap">False</property>
