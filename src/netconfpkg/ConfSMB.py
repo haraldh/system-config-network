@@ -24,7 +24,7 @@ import os
 from UserDict import *
 
 class ConfSMBSubDict(UserDict):
-    def __init__(self, parent_conf, stanza, initdict):
+    def __init__(self, parent_conf, stanza, initdict=None):
         UserDict.__init__(self, initdict)
         self.conf = parent_conf
         self.stanza = stanza
@@ -193,7 +193,7 @@ class ConfSMB(Conf):
                 self.fsf()
                 self.insertline('[' + stanza + ']')
                 self.nextline()
-                self.vars[stanza] = ConfSMBSubDict(smb, stanza)
+                self.vars[stanza] = ConfSMBSubDict(self, stanza)
                 
         return self.vars[stanza]
         
