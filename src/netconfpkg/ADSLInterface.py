@@ -72,7 +72,7 @@ class ADSLInterface(InterfaceCreator):
         return _('xDSL connection')
 
     def get_project_description(self):
-        return _('Create a new xDSL connection.  This is a really lame description that should be fixed up later')
+        return _('Create a new xDSL connection.  The xDSL connection is used primarily for connecting to an ISP over a ethernet.')
 
     def get_druids(self):
         hwDruid = ethernetHardware(self.toplevel)

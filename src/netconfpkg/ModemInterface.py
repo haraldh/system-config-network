@@ -68,7 +68,7 @@ class ModemInterface:
         return _('Modem connection')
 
     def get_project_description (self):
-        return _('Create a new Modem connection.  The dialup interface is used primarily for connecting to an ISP over a modem.  This is a really lame description that should be fixed up later')
+        return _('Create a new Modem connection.  The dialup interface is used primarily for connecting to an ISP over a modem.')
 
     def get_druids(self):
         Type = 'Modem'

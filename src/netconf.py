@@ -923,12 +923,13 @@ class mainDialog:
 
 # make ctrl-C work
 if __name__ == '__main__':
+    signal.signal (signal.SIGINT, signal.SIG_DFL)
     progname = os.path.basename(sys.argv[0])
     if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
         window = mainDialog()
         gtk.mainloop()
-        sys.exit(0)
-    elif progname == 'redhat-config-network-druid':
+    elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
         interface = NewInterface()
         gtk.mainloop()
-        sys.exit(0)
+
+    sys.exit(0)

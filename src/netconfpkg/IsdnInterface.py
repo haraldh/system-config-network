@@ -67,7 +67,7 @@ class IsdnInterface:
         return _('ISDN connection')
 
     def get_project_description(self):
-        return _('Create a new ISDN connection.  The ISDN interface is used primarily for connecting to an ISP over a ISDN.  This is a really lame description that should be fixed up later')
+        return _('Create a new ISDN connection.  The ISDN interface is used primarily for connecting to an ISP over a ISDN.')
 
     def get_druids(self):
         Type = 'ISDN'
