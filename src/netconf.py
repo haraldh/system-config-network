@@ -294,6 +294,7 @@ class mainDialog:
         if (button == 0):
             i = devicelist.addDevice()
             devicelist[i].apply(device)
+            devicelist[i].commit()
             for prof in profilelist:
                 if prof.Active == false:
                     continue
@@ -301,10 +302,20 @@ class mainDialog:
             self.setup()
 
     def on_deviceCopyButton_clicked (self, button):
-        device = Device(devicelist[clist.selection[0]])
-        device.DeviceId = device.DeviceId + '.Copy'
+        global profilelist, devicelist
+
+        clist = self.xml.get_widget("deviceList")
+
+        if len(clist.selection) == 0:
+            return
+
+        device = Device()
+        device.apply(devicelist[clist.selection[0]])
+        device.DeviceId = device.DeviceId + 'Copy'
         i = devicelist.addDevice()
         devicelist[i].apply(device)
+        devicelist[i].commit()
+        self.setup()
 
     def on_deviceRenameButton_clicked (self, button):
         pass
@@ -333,7 +344,30 @@ class mainDialog:
         self.setup()
         
     def on_deviceDeleteButton_clicked (self, button):
-        pass
+        global devicelist, profilelist
+        clist = self.xml.get_widget("deviceList")
+
+        if len(clist.selection) == 0:
+            return
+
+        device = devicelist[clist.selection[0]]
+
+        name = clist.get_text(clist.selection[0], 1)
+        type = clist.get_text(clist.selection[0], 2)
+
+        if type == 'Loopback':
+            generic_error_dialog ('The Loopback device can not be removed!', self.xml.get_widget ("Dialog"))
+            return
+
+        for prof in profilelist:
+            try:
+                pos = prof.ActiveDevices.index(name)
+                del prof.ActiveDevices[pos]
+            except:
+                pass
+
+        del devicelist[clist.selection[0]]
+        self.setup()
 
     def on_generic_entry_insert_text(self, entry, partial_text, length, pos, str):
         text = partial_text[0:length]
@@ -386,6 +420,7 @@ class mainDialog:
             info = clist.get_selection_info(event.x, event.y)
             if info != None and info[1] == 0:
                 row = info[0]
+                name = clist.get_text(row, 1)
                 type = clist.get_text(row, 2)
                 if type == 'Loopback':
                     generic_error_dialog ('The Loopback device can not be disabled!', self.xml.get_widget ("Dialog"))
@@ -394,9 +429,21 @@ class mainDialog:
                 if clist.get_row_data(row) == 0:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
                     clist.set_row_data(row, 1)
+                    for prof in profilelist:
+                        if prof.Active == false:
+                            continue
+                        prof.ActiveDevices.append(name)
                 else:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
                     clist.set_row_data(row, 0)
+                    for prof in profilelist:
+                        if prof.Active == false:
+                            continue
+                        pos = 0
+                        for dev in prof.ActiveDevices:
+                            if dev == name:
+                                del prof.ActiveDevices[pos]
+                            pos = pos + 1
                 clist.set_pixmap(row, 0, xpm)
 
     def on_hostnameEntry_changed(self, entry):
