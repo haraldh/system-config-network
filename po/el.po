@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "POT-Creation-Date: 2003-08-08 15:52+0200\n"
-"PO-Revision-Date: 2003-08-22 16:38-0200\n"
+"PO-Revision-Date: 2003-08-27 16:23-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,7 @@ msgstr "Οδηγός Σύνδεσής στο Διαδίκτυο"
 #: src/neat-control.py:48
 #: src/netconf.py:75
 msgid "ERROR: Unable to initialize graphical environment. "
-msgstr ""
+msgstr "ΣΦΑΛΜΑ: Αδύνατη η αρχικοποίηση του γραφικού περιβάλλοντος."
 
 #: src/neat-control.py:49
 #: src/netconf.py:76
@@ -146,14 +146,14 @@ msgid "Switching Profiles"
 msgstr "Ενημέρωση Προφίλ..."
 
 #: src/neat-control.py:236
-#, fuzzy, python-format
+#, python-format
 msgid "Switching to profile %s"
-msgstr "Κάντε κλικ για να ενεργοποιηθή το επιλεγμένο προφίλ"
+msgstr "Εναλλαγή στο προφίλ %s"
 
 #: src/neat-control.py:237
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to switch to profile %s"
-msgstr "Αποτυχία εγγραφής στο αρχείο %s."
+msgstr "Αποτυχία ενναλαγής στο προφίλ %s"
 
 #. Re-read the device list
 #. Update the gui
@@ -321,8 +321,9 @@ msgid "Error: %s, %s!"
 msgstr "Σφάλμα: %s, %s!"
 
 #: src/netconf.py:59
+#, fuzzy
 msgid "Starting text version"
-msgstr ""
+msgstr "Γίνεται εκκίνηση της έκδοσης κειμένου"
 
 #: src/netconf.py:114
 msgid "Loading Network Configuration..."
@@ -384,9 +385,8 @@ msgid "Usage: %s"
 msgstr ""
 
 #: src/netconf-cmd.py:106
-#, fuzzy
 msgid "switch / activate profile"
-msgstr "Κάντε κλικ για να ενεργοποιηθή το επιλεγμένο προφίλ"
+msgstr "ενναλαγή / ενεργοποίηση προφίλ"
 
 #: src/netconf-cmd.py:108
 msgid "export / import hardware list"
@@ -414,14 +414,14 @@ msgstr "εισαγωγή λίστας"
 
 #: src/netconf-cmd.py:118
 msgid "clear existing list prior of importing"
-msgstr ""
+msgstr "καθαρισμός της υπάρχουσας λίστας πριν την εισαγωγή"
 
 #: src/netconf-cmd.py:120
 msgid "import from file"
 msgstr "εισαγωγή από αρχείο"
 
 #: src/netconf-cmd.py:220
-#, fuzzy, python-format
+#, python-format
 msgid "Unknown option %s\n"
 msgstr "Άγνωστη επιλογή %s\n"
 
@@ -493,7 +493,6 @@ msgstr "Συσκευή ethernet:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:137
 #: src/netconfpkg/gui/DialupDruid.py:233
-#, fuzzy
 msgid "Provider name:"
 msgstr "Όνομα Παρόχου:"
 
@@ -729,9 +728,8 @@ msgstr "Μάσκα υποδικτύου:"
 #: src/netconfpkg/gui/EthernetInterface.py:227
 #: src/netconfpkg/gui/WirelessInterface.py:297
 #: src/netconfpkg/gui/TokenRingInterface.py:221
-#, fuzzy
 msgid "Default gateway address:"
-msgstr "Εξ ορισμού Διεύθυνση Πύλης Δικτύου:"
+msgstr "Εξ ορισμού διεύθυνση πύλης δικτύου:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:229
 #: src/netconfpkg/gui/WirelessInterface.py:299
@@ -883,7 +881,7 @@ msgstr "Γίνεται ανίχνευση για Μόντεμ, παρακαλώ 
 
 #: src/netconfpkg/gui/ModemInterface.py:133
 msgid "No modem was found on your system."
-msgstr "Δεν βρέθηκε μόντεμ στο σύστημα σας."
+msgstr "Δε βρέθηκε μόντεμ στο σύστημα σας."
 
 #. 460800 seems to be to high
 #: src/netconfpkg/gui/ModemInterface.py:154
@@ -1070,11 +1068,14 @@ msgstr "Συσκευή IUCV"
 #. #             vbox.pack_start (frame)
 #. #             sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
 #: src/netconfpkg/gui/deviceconfig.py:129
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Nickname %s is already in use!\n"
 "Please choose another one.\n"
 msgstr ""
+"Το παρατσούκλι %s ήδη χρησιμοποιείται!\n"
+"Παρακαλώ επιλέξτε κάποιο άλλο.\n"
+" "
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1523,9 +1524,9 @@ msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Θέλετε πραγματικά να διαγράψετε όλες τις συσκευές που χρησιμοποιήθηκαν \"%s\";"
 
 #: src/netconfpkg/gui/maindialog.py:1667
-#, fuzzy, python-format
+#, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
-msgstr "Για να  ενεργοποιήσετε τη συσκευή δικτύου  %s, πρέπει να αποθηκευθούν οι αλλαγές που έγιναν."
+msgstr "Για να  ενεργοποιήσετε τη σύνδεση IPsec  %s, πρέπει να αποθηκευθούν οι αλλαγές που έγιναν."
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1557,7 +1558,7 @@ msgid ""
 "The Ethernet card could not be initialized. \n"
 "Please verify your settings and try again."
 msgstr ""
-"Δεν μπόρεσε να γίνει αρχικοποίηση της κάρτας Ethernet. \n"
+"Δε μπόρεσε να γίνει αρχικοποίηση της κάρτας Ethernet. \n"
 "Παρακαλώ ελέξτε τις ρυθμίσεις σας και προσπαθήστε ξανά."
 
 #: src/netconfpkg/gui/tokenringhardware.py:102
@@ -1565,7 +1566,7 @@ msgid ""
 "The Token Ring card could not be initialized. \n"
 "Please verify your settings and try again."
 msgstr ""
-"Δεν μπόρεσε να γίνει αρχικοποίηση της κάρτας Token Ring. \n"
+"Δε μπόρεσε να γίνει αρχικοποίηση της κάρτας Token Ring. \n"
 "Παρακαλώ ελέξτε τις ρυθμίσεις σας και προσπαθήστε ξανά."
 
 #. make ctrl-C work
@@ -1669,13 +1670,13 @@ msgstr "Ανενεργή"
 #. no matter what, update our idea of the variable...
 #. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Directory %s is missing!\n"
 "Will create it for you!\n"
 "You should install the cipe rpm package!\n"
 msgstr ""
-"Ο κατάλογος /etc/cipe δεν υπάρχει!\n"
+"Ο κατάλογος % δεν υπάρχει!\n"
 "Θα τον δημιουργήσω για σας!\n"
 "Πρέπει να εγκαταστήσετε το πακέτο rpm cipe!\n"
 
@@ -1685,7 +1686,7 @@ msgid ""
 "Could not create\n"
 "directory %s!"
 msgstr ""
-"Δεν μπόρεσε να δημιουργηθεί\n"
+"Δε μπόρεσε να δημιουργηθεί\n"
 "ο κατάλογος %s!"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -2334,7 +2335,7 @@ msgstr ""
 #: src/netconfpkg/NCDevice.py:381
 #, python-format
 msgid "Cannot activate network device %s!\n"
-msgstr "Δεν μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s!\n"
+msgstr "Δε μπορεί να ενεργοποιηθεί η συσκευή δικτύου %s!\n"
 
 #: src/netconfpkg/NCDevice.py:398
 msgid "Network device deactivating..."
@@ -2348,12 +2349,11 @@ msgstr "Απενεργοποίηση συσκευής δικτύου %s, παρ�
 #: src/netconfpkg/NCDevice.py:401
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
-msgstr "Δεν μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s!\n"
+msgstr "Δε μπορεί να απενεργοποιηθεί η δικτυακή συσκευή %s!\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
-#, fuzzy
 msgid "Please start redhat-config-network with root permissions once!\n"
-msgstr "Παρακαλώ επανεκκινήστε το %s με δικαιώματα διαχειριστή συστήματος!"
+msgstr "Παρακαλώ εκτελέστε μια φορά το redhat-config-network με δικαιώματα διαχειριστή συστήματος!\n"
 
 #: src/netconfpkg/NCDeviceList.py:67
 #, python-format
@@ -2371,9 +2371,8 @@ msgid "Changed the following Nicknames due to the initscripts:\n"
 msgstr ""
 
 #: src/netconfpkg/NCDeviceList.py:153
-#, fuzzy
 msgid "Nicknames changed"
-msgstr "_Παρατσούκλι:"
+msgstr "Τα παρατσούκλια άλλαξαν"
 
 #. return DeviceList_base._objToStr(self, obj, parentStr)
 #.
@@ -2502,16 +2501,15 @@ msgstr "Όνομα σύνδεσης:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
 #: src/netconfpkg/gui/dslconfig.glade.h:27
-#, fuzzy
 msgid "_Provider name:"
-msgstr "Όνομα _Παροχέα:"
+msgstr "Όνομα _Παρόχου:"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
 #: src/netconfpkg/gui/DialupDruid.glade.h:31
 #: src/netconfpkg/gui/dialupconfig.glade.h:65
 #: src/netconfpkg/gui/dslconfig.glade.h:30
 msgid "_T-Online Account Setup"
-msgstr ""
+msgstr "Ρύθμιση Λογαριασμού _T-Online"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
 #: src/netconfpkg/gui/cipeconfig.glade.h:3
@@ -2701,7 +2699,7 @@ msgstr "Ρυθμίσεις IP"
 #: src/netconfpkg/gui/chooseprovider.glade.h:2
 #, fuzzy
 msgid "Internet Provider"
-msgstr "Παροχέας Internet"
+msgstr "Πάροχος Internet"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:16
 #: src/netconfpkg/gui/sharedtcpip.glade.h:16
@@ -3230,7 +3228,7 @@ msgstr "_Προσωπικό συνθηματικό:"
 
 #: src/netconfpkg/gui/tonline.glade.h:7
 msgid "_T-Online Account"
-msgstr ""
+msgstr "Λογαριασμός _T-Online"
 
 #: src/netconfpkg/gui/chooseprovider.glade.h:1
 msgid "Choose a Provider"
@@ -3651,12 +3649,13 @@ msgid "IPsec - Connection Type"
 msgstr "IPsec - Τύπος Σύνδεσης"
 
 #: src/netconfpkg/gui/editipsec.glade.h:8
+#, fuzzy
 msgid "IPsec - Encryption Mode"
-msgstr ""
+msgstr "Κατάσταση κρυπτογράφησης - IPsec"
 
 #: src/netconfpkg/gui/editipsec.glade.h:9
 msgid "IPsec - Keys"
-msgstr ""
+msgstr "Κλειδιά - IPsec"
 
 #: src/netconfpkg/gui/editipsec.glade.h:10
 msgid "IPsec - Local Network"
@@ -3951,8 +3950,9 @@ msgid "Difficulty level:"
 msgstr "Επίπεδο δυσκολίας:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:10
+#, fuzzy
 msgid "Each connection needs to be associated with a physical device which can be selected below."
-msgstr ""
+msgstr "Κάθε σύνδεση πρέπει να αντιστοιχιστεί με μιά πραγματική συσκευή η οποία μπορεί να επιλεχθεί παρακάτω."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
@@ -3967,9 +3967,8 @@ msgid "Hardware device:"
 msgstr "Συσκευή υλικού:"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:14
-#, fuzzy
 msgid "IPsec Tunnel Settings"
-msgstr "Ρυθμίσεις _Tunnel"
+msgstr "Ρυθμίσεις IPsec Tunnel"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "Local Network"
