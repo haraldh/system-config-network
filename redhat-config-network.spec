@@ -1,6 +1,6 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.5
+Version: 0.5.1
 Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
