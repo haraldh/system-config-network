@@ -140,8 +140,12 @@ class ethernetHardwareDialog:
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-        self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
-        self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
+        val=self.xml.get_widget('dma0Entry').get_text()
+        if val:
+            self.hw.Card.DMA0 = int(val)
+        val=self.xml.get_widget('dma1Entry').get_text()
+        if val:
+            self.hw.card.DMA1 = int(val)
 
         modInfo = NCHardwareList.getModInfo()
         if not self.hw.Card.ModuleName or self.hw.Card.ModuleName == "":
