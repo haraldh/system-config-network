@@ -138,23 +138,28 @@ class providerDialog:
 
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
+        self.dbtree.set_row_height(20)
         
         pix_isp, mask_isp = GUI_functions.get_icon("isp.xpm", self.dialog)
         pix_city, mask_city = GUI_functions.get_icon("city.xpm", self.dialog)
+
         isp_list = self.get_provider_list()
         _country = ""
         _city = ""
+
         for isp in isp_list:
             if _country != isp['Country']:
                 pix, mask = GUI_functions.get_icon(isp['Flag']+".xpm", self.dialog)
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=FALSE)
                 _country = isp['Country']
+                _city = ''
             if _city != isp['City']:
                 city = self.dbtree.insert_node(country, None, [isp['City']], 5,
                                                pix_city, mask_city,
                                                pix_city, mask_city, is_leaf=FALSE)
                 _city = isp['City']
+                
             name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=FALSE)
