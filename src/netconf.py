@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
         except (getopt.error, BadUsage):
             Usage()
-
+            sys.exit(1)
 
 import GDK
 import GTK
