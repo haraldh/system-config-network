@@ -206,6 +206,29 @@ class ProfileList(ProfileList_base):
         except:
             pass
 
+
+        # First remove all files that are linked in the device directory
+        devlist = os.listdir(OLDSYSCONFDEVICEDIR)
+        for dev in devlist:
+            if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
+                continue
+            file = OLDSYSCONFDEVICEDIR+'/'+dev
+            stat = os.stat(file)
+            if stat[3] > 1:
+                # Check, if it is a device of neat in every profile directory
+                dirlist = os.listdir(SYSCONFPROFILEDIR)
+                for dir in dirlist:
+                    dirname = SYSCONFPROFILEDIR + '/' + dir
+                    if not os.path.isdir(dirname):
+                        continue
+                    filelist = os.listdir(dirname)                    
+                    for file2 in filelist:
+                        stat2 = os.stat(dirname + '/' + file2)
+                        if os.path.samestat(stat, stat2):
+                            unlink(file)
+
+                        
+
         # Remove all profile directories except default
         proflist = os.listdir(SYSCONFPROFILEDIR)
         for prof in proflist:
@@ -217,17 +240,11 @@ class ProfileList(ProfileList_base):
             except:
                 pass
 
+
         # Remove all files in the default profile directory
         filelist = os.listdir(SYSCONFPROFILEDIR+'/default')
         for file in filelist:
             unlink(SYSCONFPROFILEDIR+'/default/'+file)
-
-        devlist = os.listdir(OLDSYSCONFDEVICEDIR)
-        for dev in devlist:
-            if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
-                continue
-            if os.path.islink(OLDSYSCONFDEVICEDIR+'/'+dev) or ishardlink(OLDSYSCONFDEVICEDIR+'/'+dev):
-                unlink(OLDSYSCONFDEVICEDIR+'/'+dev)
                 
         for prof in self.data:
             try:
