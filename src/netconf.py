@@ -470,8 +470,8 @@ class mainDialog:
         device.createWireless()
 
         if type == "Ethernet":
-            cfg = ethernetconfigdialog(device, self.xml)
-            dialog = cfg.xml.get_widget ("dialog")
+            cfg = ethernetConfigDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
 
         elif type == "Token Ring":
