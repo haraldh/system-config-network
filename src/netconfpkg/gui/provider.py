@@ -102,6 +102,7 @@ class providerDialog:
         self.okButton.set_sensitive(FALSE)
 
     def on_providerTree_button_press_event(self, clist, event, func):
+        return
         if event.type == gtk.gdk._2BUTTON_PRESS:
             if self.okButton.get_property("sensitive"):
                 info = clist.get_selection_info(event.x, event.y)

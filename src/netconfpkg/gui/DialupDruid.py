@@ -232,6 +232,7 @@ class DialupDruid(InterfaceCreator):
 
         if self.connection_type == ISDN:
             dialup.EncapMode = 'syncppp'
+            dialup.HangupTimeout = 600
             
         if self.connection_type == MODEM:
             self.device.Name  = DeviceId
