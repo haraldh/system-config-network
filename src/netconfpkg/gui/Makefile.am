@@ -19,6 +19,7 @@ GLADE_FILES = \
 	modemconfig.glade \
 	ModemDruid.glade \
 	NewInterfaceDruid.glade \
+	sharedtcpip.glade \
 	tcpipdialog.glade \
 	tokenringconfig.glade \
 	TokenRingHardwareDruid.glade \
@@ -53,6 +54,7 @@ PYTHON_FILES = \
 	GUI_functions.py \
 	providerdb.py \
 	provider.py \
+	sharedtcpip.py \
 	tcpdialog.py \
 	tokenringconfig.py \
 	TokenRingHardwareDruid.py \
