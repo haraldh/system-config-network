@@ -44,8 +44,8 @@ class HwIsdn(Hardware):
       return false
 
    def save(self):
-      import NCisdnhardware
-      isdn = NCisdnhardware.ConfISDN()
+      import netconfpkg.NCisdnhardware
+      isdn = netconfpkg.NCisdnhardware.ConfISDN()
         
       isdn.Description = self.Description
       isdn.Type = self.Card.Type
@@ -74,5 +74,5 @@ def setHwIsdnWizard(wizard):
 df = getHardwareFactory()
 df.register(HwIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/08 15:18:17 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2003/10/22 10:21:25 $"
+__version__ = "$Revision: 1.7 $"
