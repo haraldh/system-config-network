@@ -275,7 +275,7 @@ class ProfileList(ProfileList_base):
             hoconf.write()
             #print prof.ActiveDevices
             for devId in prof.ActiveDevices:
-                print "Processing %s" % devId
+                #print "Processing %s" % devId
                 for dev in devicelist:
                     if dev.DeviceId == devId:
                         if dev.Type == "CIPE":
@@ -302,15 +302,15 @@ class ProfileList(ProfileList_base):
 
             if os.path.isfile('/etc/resolv.conf') and not ishardlink('/etc/resolv.conf') and not os.path.islink('/etc/resolv.conf'):
                 rename('/etc/resolv.conf', '/etc/resolv.conf.bak')
-
-            unlink('/etc/resolv.conf')
+            else:
+                unlink('/etc/resolv.conf')
 
             link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
 
             if os.path.isfile('/etc/hosts') and not ishardlink('/etc/hosts') and not os.path.islink('/etc/hosts'):
                 rename('/etc/hosts', '/etc/hosts.bak')
-
-            unlink('/etc/hosts')
+            else:
+                unlink('/etc/hosts')
 
             link(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
 
