@@ -151,7 +151,7 @@ VersionMismatch = 'Conf.VersionMismatch'
 SystemFull      = 'conf.SystemFull'
 
 from string import *
-from regex import *
+from re import *
 import string
 import regsub
 import os
@@ -749,13 +749,14 @@ class ConfChatFile(ConfChat):
 	dialexp = compile('^ATD[TP]?[-0-9,. #*()+]+')
 	if self.list:
 	    for (p,q) in self.list:
+                tempmatch=dialexp.match(q)
         	if not cmp(p, 'ABORT'):
         	    if not q in self.abortstrings:
         		self.abortlist.append([p,q])
 		elif not cmp(q, self.devconf['INITSTRING']):
 		    # ignore INITSTRING
 		    pass
-		elif not self.dialcmd and dialexp.search(q) >= 0:
+                elif not self.dialcmd and tempmatch:
 		    # First instance of something that looks like a dial
 		    # command and a phone number we take as such.
 		    index = search('[-0-9,. #*()+]+', q)
