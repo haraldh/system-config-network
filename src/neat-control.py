@@ -93,6 +93,7 @@ class mainDialog:
         self.xml.get_widget('pixmap').load_file('/usr/share/redhat-config-network/pixmaps/neat-control-logo.png')
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
+        
         self.devicelist = getDeviceList()
         self.activedevicelist = NetworkDevice().get()
         self.hydrate()
@@ -250,6 +251,7 @@ class mainDialog:
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
+    if os.getuid() == 0: updateNetworkScripts()
     window = mainDialog()
     gtk.mainloop()
 
