@@ -232,8 +232,10 @@ class ISDNDialupDialog(DialupDialog):
             self.xml.get_widget("callbackDelaySB").set_value(dialup.Callback.Delay)
             self.xml.get_widget("allowDialinNumberCB").set_active(dialup.Secure)
             self.xml.get_widget("cbcpCB").set_active(dialup.Callback.Compression)
+
         if dialup.HangupTimeout:
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(dialup.HangupTimeout)
+            
         if dialup.DialMode:
             if dialup.DialMode == 'auto':
                 dialmode = _('auto')
@@ -241,13 +243,20 @@ class ISDNDialupDialog(DialupDialog):
                 dialmode = _('manual')
         else:
             dialmode = _('manual')
+            
         self.xml.get_widget("dialModeISDNEntry").set_text(dialmode)
+        
         if dialup.EncapMode == 'rawip':
             self.xml.get_widget("encapModeEntry").set_text(_('raw IP'))
         else:
             self.xml.get_widget("encapModeEntry").set_text(_('sync PPP'))
+
         if dialup.MSN:
             self.xml.get_widget("msnEntry").set_text(str(dialup.MSN))
+
+        if dialup.DefRoute != None:
+            self.xml.get_widget("defrouteISDNCB").set_active(dialup.DefRoute)
+        
         if dialup.ChannelBundling:
             self.xml.get_widget("channelBundlingCB").set_active(dialup.ChannelBundling == true)
         if dialup.Authentication:
@@ -265,6 +274,7 @@ class ISDNDialupDialog(DialupDialog):
         DialupDialog.dehydrate(self)
         
         dialup = self.device.Dialup
+        
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         if self.xml.get_widget("encapModeEntry").get_text() == _("sync PPP"):
             dialup.EncapMode = "syncppp"
@@ -292,8 +302,11 @@ class ISDNDialupDialog(DialupDialog):
         else:
             dialup.DialMode = 'manual'
             dialup.DefRoute = FALSE
+
         dialup.MSN = self.xml.get_widget("msnEntry").get_text()
         dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
+        dialup.DefRoute = self.xml.get_widget("defrouteISDNCB").get_active()
+
         auth = self.xml.get_widget("authEntry").get_text()
         if auth == _('pap'):
             dialup.Authentication = '+pap -chap'
@@ -348,10 +361,13 @@ class ModemDialupDialog(DialupDialog):
 
         if dialup.InitString:
            widget = self.xml.get_widget("modemInitEntry").set_text(dialup.InitString)
+
         if dialup.Persist:
             self.xml.get_widget("persistCB").set_active(dialup.Persist)
-        if dialup.DefRoute:
+
+        if dialup.DefRoute != None:
             self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute)
+
         if dialup.Inherits:
             self.xml.get_widget("modemPortEntry").set_text(dialup.Inherits)
 

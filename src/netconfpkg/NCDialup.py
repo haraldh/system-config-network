@@ -210,7 +210,6 @@ class IsdnDialup(Dialup):
     boolkeydict = { 'Secure' : 'SECURE',
                     'ChannelBundling' : 'BUNDLING',
                     'Persist' : 'PERSIST',
-                    'DefRoute' : 'DEFROUTE',
                     }
     
     intkeydict = {'MSN' : 'MSN',
@@ -266,11 +265,11 @@ class IsdnDialup(Dialup):
             else:
                 self.__dict__[selfkey] = false            
 
-#        if conf.has_key('DELDEFAULTROUTE'):
-#            if conf['DELDEFAULTROUTE'] == 'enabled':
-#                self.DefRoute = true
-#            else:
-#                self.DefRoute = false
+        if conf.has_key('DEFROUTE'):
+            if conf['DEFROUTE'] == 'yes':
+                self.DefRoute = true
+            else:
+                self.DefRoute = false
 
         if conf.has_key("PASSWORD"):
             self.Password = conf["PASSWORD"]
@@ -338,8 +337,10 @@ class IsdnDialup(Dialup):
             else:
                 conf[confkey] = 'off'
 
-        # DEFROUTE alway yes by ISDN
-        conf['DEFROUTE'] = 'yes'
+        if self.DefRoute:
+            conf['DEFROUTE'] = 'yes'
+        else:
+            conf['DEFROUTE'] = 'no'
 
         if conf.has_key('PEERDNS') and conf['PEERDNS'] == "yes":
             if conf['DNS1']: del conf['DNS1']
@@ -362,6 +363,7 @@ class IsdnDialup(Dialup):
             del conf['REMOTE_IP']
         if conf.has_key('BOOT'):
             del conf['BOOT']
+
         if conf.has_key('PASSWORD'):
             del conf['PASSWORD']
 
