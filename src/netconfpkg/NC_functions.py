@@ -95,6 +95,23 @@ def updateNetworkScripts():
             print list
             continue
 
+def activateDevice (deviceid, profile, state=None):
+    from DeviceList import *
+    from ProfileList import *
+
+    devicelist = getDeviceList()
+    profilelist = getProfileList()
+
+    for prof in profilelist:
+        if prof.Profilename != profile:
+            continue
+        if state:
+            if deviceid not in prof.ActiveDevices:
+                prof.ActiveDevices.append(deviceid)
+        else:
+            if deviceid in prof.ActiveDevices:
+                del prof.ActiveDevices[prof.ActiveDevices.index(name)]
+
 def switchToProfile(val):
     from DeviceList import *
     from HardwareList import *
