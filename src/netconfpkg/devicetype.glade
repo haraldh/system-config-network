@@ -122,13 +122,14 @@
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label1</name>
-	  <label>Device Type:</label>
+	  <label>_Device Type:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0.5</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>deviceTypeOption</default_focus_target>
 	  <child>
 	    <padding>0</padding>
 	    <expand>False</expand>
@@ -137,48 +138,16 @@
 	</widget>
 
 	<widget>
-	  <class>GtkCombo</class>
-	  <name>deviceTypeCombo</name>
-	  <width>110</width>
-	  <value_in_list>False</value_in_list>
-	  <ok_if_empty>False</ok_if_empty>
-	  <case_sensitive>False</case_sensitive>
-	  <use_arrows>True</use_arrows>
-	  <use_arrows_always>False</use_arrows_always>
-	  <items>Arcnet
-Ethernet
-Modem
-ISDN
-SLIP
-PLIP
-Pocket (ATP)
-Token Ring
-xDSL
-Wireless
-CIPE
-CTC
-</items>
+	  <class>GtkOptionMenu</class>
+	  <name>deviceTypeOption</name>
+	  <can_focus>True</can_focus>
+	  <items></items>
+	  <initial_choice>0</initial_choice>
 	  <child>
 	    <padding>0</padding>
 	    <expand>True</expand>
 	    <fill>True</fill>
 	  </child>
-
-	  <widget>
-	    <class>GtkEntry</class>
-	    <child_name>GtkCombo:entry</child_name>
-	    <name>deviceTypeEntry</name>
-	    <can_focus>True</can_focus>
-	    <signal>
-	      <name>changed</name>
-	      <handler>on_deviceTypeEntry_changed</handler>
-	      <last_modification_time>Sat, 26 May 2001 12:57:54 GMT</last_modification_time>
-	    </signal>
-	    <editable>False</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text>Ethernet</text>
-	  </widget>
 	</widget>
       </widget>
     </widget>

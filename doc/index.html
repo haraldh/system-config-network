@@ -35,18 +35,51 @@
 </table>
  
 <p> </p>
-<h2>1. Overview</h2>
+<h2>1 Overview</h2>
  
 <hr> Welcome to the Red Hat NEtwork Administration Tool. The purpose of this
-tool is to allow a GUI based configuration of your network interfaces, including 
-Ethernet, Modem, ISDN, Wireless and xDSL connections as well as virtual interfaces
-like CIPE. 
-<p> </p>
-<h2>2. The Basic Dialog</h2>
- 
-<hr> 
-<p> </p>
-<h2>5. The Druid</h2>
+tool is to allow a GUI based configuration of your network interfaces,
+including Ethernet, Modem, ISDN, Wireless and xDSL connections as well as
+virtual interfaces like CIPE. 
+<p>
+<h2>2 The Administration tool</h2>
+<hr>
+The administration tool itself, called redhat-config-network or neat allows you
+to configure and administer most of your network interfaces.
+<P>
+The tool itself is separated into 4 different parts:
+<ul>
+  <li>Network device configuration
+  <li>Hardware configuration
+  <li>DNS configuration
+  <li>Hosts configuration
+</ul>
+<h3>2.1 The first screen</h3>
+<img src="images/neat1.png" alt="First notebook of main dialog">
+<P>
+The first screen when you start redhat-config-network should look similar to
+this the first time you start it.
+<P>
+As already described the main dialog is spearated into 4 tabs or notebooks.
+The first one you see is the network device configuration notebook. On this
+you can add, edit, copy and delete your network devices.
+<P>
+A network device in neat is always linked to a real physical hardware device
+(which has to be configured in the Hardware notebook) in some way.
+<P>
+Network devices can be active or inactive. Active means that the actual
+configuration for that device will be stored and used by the system when you
+either apply your changes or if you close the application and chose to save
+your changes and restart your network afterwards.
+<P>
+The <i>Help</i> button will bring up this help which you are reading right now.
+<P>
+The <i>Apply</i> button will store all your devices and other changes you have
+made and will make the active devices visible for the system.
+The <i>Close</i> button closes the application. A dialog will ask you wether
+you want to store the configuration or not or if you don't want to quit the
+application after all.
+<h2>5 The Druid</h2>
  
 <hr> In order to easily and quickly set up your Internet access you can use
 the Internet Druid. It offers the possibility to set up either a new Modem,
@@ -175,7 +208,6 @@ login name and the phone number of he ISP.<br>
 Clicking on <i>Finish</i> will store your selection. With <i>Back</i> you
 can go back and make any changes you seem fit. Finally <i>Cancel</i> just
 quits the druid and leaves the current configuration untouched.<br>
-   
 <p> </p>
 <h3>5.3 ISDN druid Step-By-Step</h3>
  

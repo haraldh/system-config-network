@@ -59,6 +59,7 @@ class DialupDialog(deviceConfigDialog):
             })
 
         self.noteBook = self.xml.get_widget("dialupNotebook")
+        self.xml.get_widget ("pppOptionList").column_titles_passive ()
 
     def hydrate(self):
         deviceConfigDialog.hydrate(self)

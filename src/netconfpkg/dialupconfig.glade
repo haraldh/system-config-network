@@ -200,7 +200,7 @@
 	    <handler>on_onBootCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:44 GMT</last_modification_time>
 	  </signal>
-	  <label>Activate device when computer _boots</label>
+	  <label>_Activate device when computer starts</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -219,7 +219,7 @@
 	    <handler>on_userControlCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:49 GMT</last_modification_time>
 	  </signal>
-	  <label>Allow all users to enable and disable the devic_e</label>
+	  <label>Allow all _users to enable and disable the device</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -282,7 +282,7 @@
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
 	      <name>label232</name>
-	      <label>Protocol Name</label>
+	      <label>Protocol Type</label>
 	      <justify>GTK_JUSTIFY_LEFT</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -315,13 +315,24 @@
 	      <handler>on_protocolAddButton_clicked</handler>
 	      <last_modification_time>Sun, 15 Jul 2001 14:17:12 GMT</last_modification_time>
 	    </signal>
-	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label236</name>
+	      <label>_Add...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
@@ -333,45 +344,47 @@
 	      <handler>on_protocolEditButton_clicked</handler>
 	      <last_modification_time>Thu, 12 Jul 2001 12:25:27 GMT</last_modification_time>
 	    </signal>
-	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label235</name>
+	      <label>_Edit...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox73</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
+	    <class>GtkButton</class>
+	    <name>button1</name>
+	    <can_focus>True</can_focus>
+	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>True</fill>
-	      <pack>GTK_PACK_END</pack>
+	      <fill>False</fill>
 	    </child>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>protocolDeleteButton</name>
-	      <sensitive>False</sensitive>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_protocolDeleteButton_clicked</handler>
-		<last_modification_time>Sun, 15 Jul 2001 14:17:39 GMT</last_modification_time>
-	      </signal>
-	      <label>Delete...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-		<pack>GTK_PACK_END</pack>
-	      </child>
+	      <class>GtkLabel</class>
+	      <name>label234</name>
+	      <label>_Delete</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
 	    </widget>
 	  </widget>
 	</widget>
@@ -381,7 +394,7 @@
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
 	<name>label231</name>
-	<label>Protocols</label>
+	<label>Protocol</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
 	<xalign>0.5</xalign>
@@ -433,7 +446,7 @@
 	      <widget>
 		<class>GtkLabel</class>
 		<name>label104</name>
-		<label>Prefi_x:</label>
+		<label>Prefi_x</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
 		<xalign>0</xalign>
@@ -460,7 +473,7 @@
 	      <widget>
 		<class>GtkLabel</class>
 		<name>label105</name>
-		<label>A_rea Code:</label>
+		<label>A_rea Code</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
 		<xalign>0</xalign>
@@ -487,7 +500,7 @@
 	      <widget>
 		<class>GtkLabel</class>
 		<name>label106</name>
-		<label>_Phone Number:</label>
+		<label>_Phone Number</label>
 		<justify>GTK_JUSTIFY_CENTER</justify>
 		<wrap>False</wrap>
 		<xalign>0</xalign>
@@ -858,7 +871,7 @@
 	    <handler>on_HeaderCompressionCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:02:11 GMT</last_modification_time>
 	  </signal>
-	  <label>Turn on VJ TCP/IP Header Compression</label>
+	  <label>Enable _VJ TCP/IP Header Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -877,7 +890,7 @@
 	    <handler>on_connectionCompressionCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:02:15 GMT</last_modification_time>
 	  </signal>
-	  <label>Turn on VJ Connection-ID Compression</label>
+	  <label>Enable VJ Connection-_ID Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -896,7 +909,7 @@
 	    <handler>on_acCompressionCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:02:20 GMT</last_modification_time>
 	  </signal>
-	  <label>Turn on Adress/Control Compression</label>
+	  <label>Enable _Address/Control Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -915,7 +928,7 @@
 	    <handler>on_pcCompressionCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:02:24 GMT</last_modification_time>
 	  </signal>
-	  <label>Turn on Protocol Field Compression</label>
+	  <label>Enable _Protocol Field Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -934,7 +947,7 @@
 	    <handler>on_bsdCompressionCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:02:31 GMT</last_modification_time>
 	  </signal>
-	  <label>Turn on BSD Compression</label>
+	  <label>Enable _BSD Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -953,7 +966,7 @@
 	    <handler>on_cppCompressionCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:02:35 GMT</last_modification_time>
 	  </signal>
-	  <label>Turn on CCP Compression Control Protocol</label>
+	  <label>Enable _CCP Compression Control Protocol</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -986,13 +999,13 @@
 
 	<widget>
 	  <class>GtkTable</class>
-	  <name>table16</name>
-	  <border_width>5</border_width>
+	  <name>table33</name>
+	  <border_width>4</border_width>
 	  <rows>2</rows>
-	  <columns>3</columns>
+	  <columns>2</columns>
 	  <homogeneous>False</homogeneous>
-	  <row_spacing>5</row_spacing>
-	  <column_spacing>5</column_spacing>
+	  <row_spacing>4</row_spacing>
+	  <column_spacing>4</column_spacing>
 	  <child>
 	    <padding>0</padding>
 	    <expand>True</expand>
@@ -1000,49 +1013,33 @@
 	  </child>
 
 	  <widget>
-	    <class>GtkEntry</class>
-	    <name>pppOptionEntry</name>
+	    <class>GtkCList</class>
+	    <name>pppOptionList</name>
+	    <sensitive>False</sensitive>
 	    <can_focus>True</can_focus>
 	    <signal>
-	      <name>changed</name>
-	      <handler>on_pppOptionEntry_changed</handler>
-	      <last_modification_time>Thu, 24 May 2001 13:02:44 GMT</last_modification_time>
+	      <name>select_row</name>
+	      <handler>on_pppOptionList_select_row</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:03:04 GMT</last_modification_time>
 	    </signal>
-	    <editable>True</editable>
-	    <text_visible>True</text_visible>
-	    <text_max_length>0</text_max_length>
-	    <text></text>
+	    <signal>
+	      <name>unselect_row</name>
+	      <handler>on_ipppOptionList_unselect_row</handler>
+	      <last_modification_time>Sun, 27 May 2001 00:10:00 GMT</last_modification_time>
+	    </signal>
+	    <columns>1</columns>
+	    <column_widths>80</column_widths>
+	    <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
+	    <show_titles>True</show_titles>
+	    <shadow_type>GTK_SHADOW_IN</shadow_type>
 	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
 	      <top_attach>0</top_attach>
 	      <bottom_attach>1</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkScrolledWindow</class>
-	    <name>scrolledwindow13</name>
-	    <hscrollbar_policy>GTK_POLICY_AUTOMATIC</hscrollbar_policy>
-	    <vscrollbar_policy>GTK_POLICY_AUTOMATIC</vscrollbar_policy>
-	    <hupdate_policy>GTK_UPDATE_CONTINUOUS</hupdate_policy>
-	    <vupdate_policy>GTK_UPDATE_CONTINUOUS</vupdate_policy>
-	    <child>
-	      <left_attach>1</left_attach>
-	      <right_attach>2</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
 	      <yexpand>True</yexpand>
 	      <xshrink>False</xshrink>
 	      <yshrink>False</yshrink>
@@ -1051,51 +1048,29 @@
 	    </child>
 
 	    <widget>
-	      <class>GtkCList</class>
-	      <name>pppOptionList</name>
-	      <sensitive>False</sensitive>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>select_row</name>
-		<handler>on_pppOptionList_select_row</handler>
-		<last_modification_time>Thu, 24 May 2001 13:03:04 GMT</last_modification_time>
-	      </signal>
-	      <signal>
-		<name>unselect_row</name>
-		<handler>on_ipppOptionList_unselect_row</handler>
-		<last_modification_time>Sun, 27 May 2001 00:10:00 GMT</last_modification_time>
-	      </signal>
-	      <columns>1</columns>
-	      <column_widths>80</column_widths>
-	      <selection_mode>GTK_SELECTION_BROWSE</selection_mode>
-	      <show_titles>True</show_titles>
-	      <shadow_type>GTK_SHADOW_IN</shadow_type>
-
-	      <widget>
-		<class>GtkLabel</class>
-		<child_name>CList:title</child_name>
-		<name>label184</name>
-		<label>PPP Option List</label>
-		<justify>GTK_JUSTIFY_CENTER</justify>
-		<wrap>False</wrap>
-		<xalign>0</xalign>
-		<yalign>0.5</yalign>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-	      </widget>
+	      <class>GtkLabel</class>
+	      <child_name>CList:title</child_name>
+	      <name>label184</name>
+	      <label>PPP Option List</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
 	    </widget>
 	  </widget>
 
 	  <widget>
 	    <class>GtkVBox</class>
-	    <name>vbox57</name>
+	    <name>vbox73</name>
 	    <homogeneous>False</homogeneous>
 	    <spacing>0</spacing>
 	    <child>
-	      <left_attach>2</left_attach>
-	      <right_attach>3</right_attach>
-	      <top_attach>1</top_attach>
-	      <bottom_attach>2</bottom_attach>
+	      <left_attach>1</left_attach>
+	      <right_attach>2</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>False</xexpand>
@@ -1116,34 +1091,37 @@
 		<handler>on_pppOptionDeleteButton_clicked</handler>
 		<last_modification_time>Thu, 24 May 2001 13:03:10 GMT</last_modification_time>
 	      </signal>
-	      <label>Delete...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
 		<fill>False</fill>
-		<pack>GTK_PACK_END</pack>
 	      </child>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label237</name>
+		<label>_Delete</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
 	    </widget>
 	  </widget>
 
 	  <widget>
-	    <class>GtkButton</class>
-	    <name>pppOptionAddButton</name>
-	    <sensitive>False</sensitive>
-	    <can_focus>True</can_focus>
-	    <signal>
-	      <name>clicked</name>
-	      <handler>on_pppOptionAddButton_clicked</handler>
-	      <last_modification_time>Thu, 24 May 2001 13:02:50 GMT</last_modification_time>
-	    </signal>
-	    <label>Add...</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <class>GtkHBox</class>
+	    <name>hbox56</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>4</spacing>
 	    <child>
-	      <left_attach>2</left_attach>
-	      <right_attach>3</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
+	      <left_attach>0</left_attach>
+	      <right_attach>1</right_attach>
+	      <top_attach>1</top_attach>
+	      <bottom_attach>2</bottom_attach>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>False</xexpand>
@@ -1151,34 +1129,65 @@
 	      <xshrink>False</xshrink>
 	      <yshrink>False</yshrink>
 	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkLabel</class>
-	    <name>label108</name>
-	    <label>PPP Option:</label>
-	    <justify>GTK_JUSTIFY_CENTER</justify>
-	    <wrap>False</wrap>
-	    <xalign>0</xalign>
-	    <yalign>0</yalign>
-	    <xpad>0</xpad>
-	    <ypad>0</ypad>
-	    <child>
-	      <left_attach>0</left_attach>
-	      <right_attach>1</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>2</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>True</yshrink>
-	      <xfill>True</xfill>
 	      <yfill>True</yfill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label238</name>
+	      <label>_PPP Option:</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0.5</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <default_focus_target>pppOptionEntry</default_focus_target>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkEntry</class>
+	      <name>pppOptionEntry</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_pppOptionEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 13:02:44 GMT</last_modification_time>
+	      </signal>
+	      <editable>True</editable>
+	      <text_visible>True</text_visible>
+	      <text_max_length>0</text_max_length>
+	      <text></text>
+	      <child>
+		<padding>0</padding>
+		<expand>True</expand>
+		<fill>True</fill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>pppOptionAddButton</name>
+	      <sensitive>False</sensitive>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_pppOptionAddButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 13:02:50 GMT</last_modification_time>
+	      </signal>
+	      <label>_Add...</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+	    </widget>
 	  </widget>
 	</widget>
       </widget>
@@ -1212,7 +1221,7 @@
 	    <handler>on_callbackCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:20:19 GMT</last_modification_time>
 	  </signal>
-	  <label>Use Call_back</label>
+	  <label>_Use Callback</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -1248,13 +1257,14 @@
 	    <widget>
 	      <class>GtkLabel</class>
 	      <name>label201</name>
-	      <label>Dialin Number:</label>
+	      <label>Dial-In _Number:</label>
 	      <justify>GTK_JUSTIFY_CENTER</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
 	      <yalign>0.5</yalign>
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
+	      <default_focus_target>dialinNumberEntry</default_focus_target>
 	      <child>
 		<left_attach>0</left_attach>
 		<right_attach>1</right_attach>
@@ -1274,7 +1284,7 @@
 	    <widget>
 	      <class>GtkLabel</class>
 	      <name>label202</name>
-	      <label>Callback Delay:</label>
+	      <label>Callback _Delay:</label>
 	      <justify>GTK_JUSTIFY_CENTER</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -1355,7 +1365,7 @@
 		<handler>on_allowDialinNumberCB_toggled</handler>
 		<last_modification_time>Thu, 24 May 2001 13:20:43 GMT</last_modification_time>
 	      </signal>
-	      <label>Allow only above Dialin Number</label>
+	      <label>_Allow only above Dial-In Number</label>
 	      <active>False</active>
 	      <draw_indicator>True</draw_indicator>
 	      <child>
@@ -1383,7 +1393,7 @@
 		<handler>on_cbcpCB_toggled</handler>
 		<last_modification_time>Thu, 24 May 2001 13:21:12 GMT</last_modification_time>
 	      </signal>
-	      <label>Use Callback Control Protocol (CBCP)</label>
+	      <label>Use _Callback Control Protocol (CBCP)</label>
 	      <active>False</active>
 	      <draw_indicator>True</draw_indicator>
 	      <child>
@@ -1472,7 +1482,7 @@
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label116</name>
-	    <label>Han_gup Timeout:</label>
+	    <label>_Hangup Timeout:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
@@ -1498,7 +1508,7 @@
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label220</name>
-	    <label>_Dial Mode:</label>
+	    <label>Dial _Mode:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
@@ -1637,13 +1647,14 @@ manual
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label227</name>
-	    <label>Modem Initialization String:</label>
+	    <label>Modem _Initialization String:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>modemInitEntry</default_focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>1</right_attach>
@@ -1687,13 +1698,14 @@ manual
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label228</name>
-	    <label>Modem Port:</label>
+	    <label>Modem P_ort:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>modemPortEntry</default_focus_target>
 	    <child>
 	      <left_attach>0</left_attach>
 	      <right_attach>1</right_attach>
@@ -1754,7 +1766,7 @@ Modem3
 	    <class>GtkCheckButton</class>
 	    <name>stupidModeCB</name>
 	    <can_focus>True</can_focus>
-	    <label>Let PPP do all authentication</label>
+	    <label>Let _PPP do all authentication</label>
 	    <active>True</active>
 	    <draw_indicator>True</draw_indicator>
 	    <child>
@@ -1777,7 +1789,7 @@ Modem3
 	    <class>GtkCheckButton</class>
 	    <name>persistCB</name>
 	    <can_focus>True</can_focus>
-	    <label>Restart if connection dies</label>
+	    <label>Restart if _connection dies</label>
 	    <active>False</active>
 	    <draw_indicator>True</draw_indicator>
 	    <child>
@@ -1800,7 +1812,7 @@ Modem3
 	    <class>GtkCheckButton</class>
 	    <name>defrouteCB</name>
 	    <can_focus>True</can_focus>
-	    <label>Make this connection the default route</label>
+	    <label>Make this connection the default _route</label>
 	    <active>True</active>
 	    <draw_indicator>True</draw_indicator>
 	    <child>

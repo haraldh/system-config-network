@@ -680,13 +680,24 @@ none
 		  <handler>on_routeAddButton_clicked</handler>
 		  <last_modification_time>Thu, 24 May 2001 12:54:43 GMT</last_modification_time>
 		</signal>
-		<label>Add...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
 		  <padding>0</padding>
 		  <expand>False</expand>
 		  <fill>False</fill>
 		</child>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label265</name>
+		  <label>_Add...</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>2</xpad>
+		  <ypad>0</ypad>
+		</widget>
 	      </widget>
 
 	      <widget>
@@ -698,69 +709,24 @@ none
 		  <handler>on_routeEditButton_clicked</handler>
 		  <last_modification_time>Thu, 24 May 2001 12:54:48 GMT</last_modification_time>
 		</signal>
-		<label>Edit...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
 		  <padding>0</padding>
 		  <expand>False</expand>
 		  <fill>False</fill>
 		</child>
-	      </widget>
-
-	      <widget>
-		<class>Placeholder</class>
-	      </widget>
-
-	      <widget>
-		<class>GtkVBox</class>
-		<name>vbox90</name>
-		<homogeneous>False</homogeneous>
-		<spacing>5</spacing>
-		<child>
-		  <padding>0</padding>
-		  <expand>True</expand>
-		  <fill>True</fill>
-		</child>
 
 		<widget>
-		  <class>GtkButton</class>
-		  <name>routeUpButton</name>
-		  <can_focus>True</can_focus>
-		  <signal>
-		    <name>clicked</name>
-		    <handler>on_routeUpButton_clicked</handler>
-		    <last_modification_time>Thu, 12 Jul 2001 17:08:46 GMT</last_modification_time>
-		  </signal>
-		  <stock_button>GNOME_STOCK_BUTTON_UP</stock_button>
-		  <relief>GTK_RELIEF_NORMAL</relief>
-		  <child>
-		    <padding>0</padding>
-		    <expand>False</expand>
-		    <fill>False</fill>
-		  </child>
+		  <class>GtkLabel</class>
+		  <name>label266</name>
+		  <label>_Edit...</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>2</xpad>
+		  <ypad>0</ypad>
 		</widget>
-
-		<widget>
-		  <class>GtkButton</class>
-		  <name>routeDownButton</name>
-		  <can_focus>True</can_focus>
-		  <signal>
-		    <name>clicked</name>
-		    <handler>on_routeDownButton_clicked</handler>
-		    <last_modification_time>Thu, 12 Jul 2001 17:08:55 GMT</last_modification_time>
-		  </signal>
-		  <stock_button>GNOME_STOCK_BUTTON_DOWN</stock_button>
-		  <relief>GTK_RELIEF_NORMAL</relief>
-		  <child>
-		    <padding>0</padding>
-		    <expand>False</expand>
-		    <fill>False</fill>
-		  </child>
-		</widget>
-	      </widget>
-
-	      <widget>
-		<class>Placeholder</class>
 	      </widget>
 
 	      <widget>
@@ -772,13 +738,24 @@ none
 		  <handler>on_routeDeleteButton_clicked</handler>
 		  <last_modification_time>Thu, 24 May 2001 12:54:52 GMT</last_modification_time>
 		</signal>
-		<label>Delete...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
 		  <padding>0</padding>
 		  <expand>False</expand>
 		  <fill>False</fill>
 		</child>
+
+		<widget>
+		  <class>GtkLabel</class>
+		  <name>label267</name>
+		  <label>_Delete</label>
+		  <justify>GTK_JUSTIFY_CENTER</justify>
+		  <wrap>False</wrap>
+		  <xalign>0</xalign>
+		  <yalign>0.5</yalign>
+		  <xpad>2</xpad>
+		  <ypad>0</ypad>
+		</widget>
 	      </widget>
 	    </widget>
 	  </widget>
@@ -834,38 +811,19 @@ none
 	  </widget>
 
 	  <widget>
-	    <class>GtkCombo</class>
-	    <name>combo14</name>
-	    <value_in_list>False</value_in_list>
-	    <ok_if_empty>True</ok_if_empty>
-	    <case_sensitive>False</case_sensitive>
-	    <use_arrows>True</use_arrows>
-	    <use_arrows_always>False</use_arrows_always>
+	    <class>GtkOptionMenu</class>
+	    <name>optionmenu1</name>
+	    <can_focus>True</can_focus>
 	    <items>Easy
 Medium
 Professional
 </items>
+	    <initial_choice>0</initial_choice>
 	    <child>
 	      <padding>0</padding>
-	      <expand>False</expand>
+	      <expand>True</expand>
 	      <fill>True</fill>
 	    </child>
-
-	    <widget>
-	      <class>GtkEntry</class>
-	      <child_name>GtkCombo:entry</child_name>
-	      <name>difficultyLevelEntry</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>changed</name>
-		<handler>on_difficultyLevelEntry_changed</handler>
-		<last_modification_time>Wed, 30 May 2001 11:21:34 GMT</last_modification_time>
-	      </signal>
-	      <editable>False</editable>
-	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
-	      <text>Easy</text>
-	    </widget>
 	  </widget>
 	</widget>
 
@@ -1324,31 +1282,24 @@ Professional
 		<handler>on_trafficAddButton_clicked</handler>
 		<last_modification_time>Wed, 30 May 2001 11:24:35 GMT</last_modification_time>
 	      </signal>
-	      <label>Add...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
 		<fill>False</fill>
 	      </child>
-	    </widget>
 
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>trafficCopyButton</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_trafficCopyButton_clicked</handler>
-		<last_modification_time>Wed, 30 May 2001 11:24:54 GMT</last_modification_time>
-	      </signal>
-	      <label>Copy...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label268</name>
+		<label>_Add...</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
 	    </widget>
 
 	    <widget>
@@ -1360,43 +1311,81 @@ Professional
 		<handler>on_trafficEditButton_clicked</handler>
 		<last_modification_time>Wed, 30 May 2001 11:25:11 GMT</last_modification_time>
 	      </signal>
-	      <label>Edit...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
 		<fill>False</fill>
 	      </child>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label270</name>
+		<label>_Edit...</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
 	    </widget>
 
 	    <widget>
-	      <class>GtkVBox</class>
-	      <name>vbox84</name>
-	      <homogeneous>False</homogeneous>
-	      <spacing>0</spacing>
+	      <class>GtkButton</class>
+	      <name>trafficCopyButton</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficCopyButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:24:54 GMT</last_modification_time>
+	      </signal>
+	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
-		<expand>True</expand>
-		<fill>True</fill>
+		<expand>False</expand>
+		<fill>False</fill>
 	      </child>
 
 	      <widget>
-		<class>GtkButton</class>
-		<name>trafficDeleteButton</name>
-		<can_focus>True</can_focus>
-		<signal>
-		  <name>clicked</name>
-		  <handler>on_trafficDeleteButton_clicked</handler>
-		  <last_modification_time>Wed, 30 May 2001 11:25:39 GMT</last_modification_time>
-		</signal>
-		<label>Delete</label>
-		<relief>GTK_RELIEF_NORMAL</relief>
-		<child>
-		  <padding>0</padding>
-		  <expand>False</expand>
-		  <fill>False</fill>
-		  <pack>GTK_PACK_END</pack>
-		</child>
+		<class>GtkLabel</class>
+		<name>label269</name>
+		<label>_Copy</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
+	    </widget>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>trafficDeleteButton</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficDeleteButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:25:39 GMT</last_modification_time>
+	      </signal>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label271</name>
+		<label>_Delete</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
 	      </widget>
 	    </widget>
 	  </widget>
@@ -1597,31 +1586,24 @@ Professional
 		<handler>on_trafficAddButton_clicked</handler>
 		<last_modification_time>Wed, 30 May 2001 11:24:35 GMT</last_modification_time>
 	      </signal>
-	      <label>Add...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
 		<fill>False</fill>
 	      </child>
-	    </widget>
 
-	    <widget>
-	      <class>GtkButton</class>
-	      <name>button2</name>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_trafficCopyButton_clicked</handler>
-		<last_modification_time>Wed, 30 May 2001 11:24:54 GMT</last_modification_time>
-	      </signal>
-	      <label>Copy...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>False</fill>
-	      </child>
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label272</name>
+		<label>Add...</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
 	    </widget>
 
 	    <widget>
@@ -1633,43 +1615,81 @@ Professional
 		<handler>on_trafficEditButton_clicked</handler>
 		<last_modification_time>Wed, 30 May 2001 11:25:11 GMT</last_modification_time>
 	      </signal>
-	      <label>Edit...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
 		<fill>False</fill>
 	      </child>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label274</name>
+		<label>Edit...</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
 	    </widget>
 
 	    <widget>
-	      <class>GtkVBox</class>
-	      <name>vbox89</name>
-	      <homogeneous>False</homogeneous>
-	      <spacing>0</spacing>
+	      <class>GtkButton</class>
+	      <name>button2</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficCopyButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:24:54 GMT</last_modification_time>
+	      </signal>
+	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
-		<expand>True</expand>
-		<fill>True</fill>
+		<expand>False</expand>
+		<fill>False</fill>
 	      </child>
 
 	      <widget>
-		<class>GtkButton</class>
-		<name>button4</name>
-		<can_focus>True</can_focus>
-		<signal>
-		  <name>clicked</name>
-		  <handler>on_trafficDeleteButton_clicked</handler>
-		  <last_modification_time>Wed, 30 May 2001 11:25:39 GMT</last_modification_time>
-		</signal>
+		<class>GtkLabel</class>
+		<name>label273</name>
+		<label>Copy</label>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
+	      </widget>
+	    </widget>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>button4</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_trafficDeleteButton_clicked</handler>
+		<last_modification_time>Wed, 30 May 2001 11:25:39 GMT</last_modification_time>
+	      </signal>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+	      </child>
+
+	      <widget>
+		<class>GtkLabel</class>
+		<name>label275</name>
 		<label>Delete</label>
-		<relief>GTK_RELIEF_NORMAL</relief>
-		<child>
-		  <padding>0</padding>
-		  <expand>False</expand>
-		  <fill>False</fill>
-		  <pack>GTK_PACK_END</pack>
-		</child>
+		<justify>GTK_JUSTIFY_CENTER</justify>
+		<wrap>False</wrap>
+		<xalign>0</xalign>
+		<yalign>0.5</yalign>
+		<xpad>2</xpad>
+		<ypad>0</ypad>
 	      </widget>
 	    </widget>
 	  </widget>

@@ -71,9 +71,11 @@ class tcpConfigDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        self.xml.get_widget("networkPixmap").load_file(NETCONFDIR+"pixmaps/network.xpm")
+        self.xml.get_widget("networkPixmap").load_file(NC_functions.NETCONFDIR+"pixmaps/network.xpm")
         NC_functions.load_icon("network.xpm", self.dialog)
 
+        clist = self.xml.get_widget ("networkRouteList")
+        clist.column_titles_passive ()
         notebook = self.xml.get_widget("basicNotebook")
 
         self.hydrate()

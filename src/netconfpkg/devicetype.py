@@ -69,16 +69,27 @@ class deviceTypeDialog:
         devicetypes=deviceTypes[:]
         devicetypes.remove('Loopback')
 
-        self.xml.get_widget('deviceTypeCombo').set_popdown_strings(devicetypes)
+        omenu = self.xml.get_widget('deviceTypeOption')
+        omenu.remove_menu ()
+        menu = gtk.GtkMenu ()
+        for device_name in devicetypes:
+            menu_item = gtk.GtkMenuItem (device_name)
+            menu_item.set_data ("device", device_name)
+            menu_item.show ()
+            menu.append (menu_item)
+        menu.show ()
+        omenu.set_menu (menu)
+        omenu.grab_focus ()
         self.hydrate()
-
         self.dialog.set_close(TRUE)
 
     def hydrate(self):
         pass
     
     def dehydrate(self):
-        self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
+        omenu = self.xml.get_widget('deviceTypeOption')
+        item = omenu.get_menu ().get_active ()
+        self.device.Type = item.get_data ("device")
         
     def on_okButton_clicked(self, button):
         self.dehydrate()

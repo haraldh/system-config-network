@@ -202,7 +202,7 @@
 	    <handler>on_onBootCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:44 GMT</last_modification_time>
 	  </signal>
-	  <label>Activate device when computer _boots</label>
+	  <label>_Activate device when computer starts</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -221,7 +221,7 @@
 	    <handler>on_userControlCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:49 GMT</last_modification_time>
 	  </signal>
-	  <label>Allow all users to enable and disable the devic_e</label>
+	  <label>Allow all _users to enable and disable the device</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -279,7 +279,7 @@
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
 	      <name>label231</name>
-	      <label>Protocol Name</label>
+	      <label>Protocol Type</label>
 	      <justify>GTK_JUSTIFY_LEFT</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -312,13 +312,24 @@
 	      <handler>on_deviceAddButton_clicked</handler>
 	      <last_modification_time>Thu, 24 May 2001 12:47:22 GMT</last_modification_time>
 	    </signal>
-	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label234</name>
+	      <label>_Add...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
@@ -330,45 +341,47 @@
 	      <handler>on_protocolEditButton_clicked</handler>
 	      <last_modification_time>Thu, 12 Jul 2001 15:33:08 GMT</last_modification_time>
 	    </signal>
-	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label233</name>
+	      <label>_Edit...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox73</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
+	    <class>GtkButton</class>
+	    <name>button3</name>
+	    <can_focus>True</can_focus>
+	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>True</fill>
-	      <pack>GTK_PACK_END</pack>
+	      <fill>False</fill>
 	    </child>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>button3</name>
-	      <sensitive>False</sensitive>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_deviceDeleteButton_clicked</handler>
-		<last_modification_time>Thu, 24 May 2001 12:47:48 GMT</last_modification_time>
-	      </signal>
-	      <label>Delete...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-		<pack>GTK_PACK_END</pack>
-	      </child>
+	      <class>GtkLabel</class>
+	      <name>label232</name>
+	      <label>Delete</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
 	    </widget>
 	  </widget>
 	</widget>
@@ -743,7 +756,7 @@
 	<widget>
 	  <class>GtkEntry</class>
 	  <name>serviceNameEntry</name>
-	  <tooltip>Enter the Service-Name if your ISP requires.  If you don't know it please contact your ISP. In most cases you can leave it blank.</tooltip>
+	  <tooltip>Enter the Service Name if your ISP requires it.  If you don't know it, please contact your ISP. In most cases you can leave this blank.</tooltip>
 	  <can_focus>True</can_focus>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>

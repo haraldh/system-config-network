@@ -69,6 +69,7 @@ class deviceConfigDialog:
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
         self.xml.get_widget("protocolList").append(['TCP/IP'])
+        self.xml.get_widget("protocolList").column_titles_passive ()
 
         self.dialog = self.xml.get_widget("Dialog")
         NC_functions.load_icon("network.xpm", self.dialog)

@@ -200,7 +200,7 @@
 	    <handler>on_onBootCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:44 GMT</last_modification_time>
 	  </signal>
-	  <label>Activate device when computer _boots</label>
+	  <label>_Activate device when computer starts</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -219,7 +219,7 @@
 	    <handler>on_userControlCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:49 GMT</last_modification_time>
 	  </signal>
-	  <label>Allow all users to enable and disable the devic_e</label>
+	  <label>Allow all _users to enable and disable the device</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -277,7 +277,7 @@
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
 	      <name>label228</name>
-	      <label>Protocol Name</label>
+	      <label>Protocol Type</label>
 	      <justify>GTK_JUSTIFY_LEFT</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -305,13 +305,24 @@
 	    <name>button1</name>
 	    <sensitive>False</sensitive>
 	    <can_focus>True</can_focus>
-	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label233</name>
+	      <label>_Add...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
@@ -323,40 +334,48 @@
 	      <handler>on_protocolEditButton_clicked</handler>
 	      <last_modification_time>Thu, 12 Jul 2001 15:33:08 GMT</last_modification_time>
 	    </signal>
-	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label234</name>
+	      <label>_Edit...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox54</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
+	    <class>GtkButton</class>
+	    <name>button4</name>
+	    <sensitive>False</sensitive>
+	    <can_focus>True</can_focus>
+	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>True</fill>
-	      <pack>GTK_PACK_END</pack>
+	      <fill>False</fill>
 	    </child>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>button4</name>
-	      <sensitive>False</sensitive>
-	      <can_focus>True</can_focus>
-	      <label>Delete...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-		<pack>GTK_PACK_END</pack>
-	      </child>
+	      <class>GtkLabel</class>
+	      <name>label235</name>
+	      <label>_Delete</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
 	    </widget>
 	  </widget>
 	</widget>
@@ -414,13 +433,14 @@
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>deviceLabel</name>
-	    <label>Hardware Device:</label>
+	    <label>_Hardware Device:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0.5</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>ethernetDeviceEntry</default_focus_target>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -479,6 +499,7 @@ eth5
       <widget>
 	<class>GtkTable</class>
 	<name>table6</name>
+	<border_width>5</border_width>
 	<rows>6</rows>
 	<columns>2</columns>
 	<homogeneous>False</homogeneous>
@@ -488,13 +509,14 @@ eth5
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label22</name>
-	  <label>Mode:</label>
+	  <label>_Mode:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>7.45058e-09</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>modeEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -514,13 +536,14 @@ eth5
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label21</name>
-	  <label>ESSID (Network ID):</label>
+	  <label>_ESSID (Network ID):</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>7.45058e-09</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>essidEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -540,13 +563,14 @@ eth5
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label23</name>
-	  <label>Transmit Rate:</label>
+	  <label>_Transmit Rate:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>rateEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -566,13 +590,14 @@ eth5
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label25</name>
-	  <label>Channel:</label>
+	  <label>_Channel:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>7.45058e-09</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>channelSpinButton</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -770,13 +795,14 @@ Secondary
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label24</name>
-	  <label>Frequency:</label>
+	  <label>Fre_quency:</label>
 	  <justify>GTK_JUSTIFY_LEFT</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>frequencyEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>
@@ -796,13 +822,14 @@ Secondary
 	<widget>
 	  <class>GtkLabel</class>
 	  <name>label232</name>
-	  <label>Key:</label>
+	  <label>_Key:</label>
 	  <justify>GTK_JUSTIFY_CENTER</justify>
 	  <wrap>False</wrap>
 	  <xalign>0</xalign>
 	  <yalign>0.5</yalign>
 	  <xpad>0</xpad>
 	  <ypad>0</ypad>
+	  <default_focus_target>keyEntry</default_focus_target>
 	  <child>
 	    <left_attach>0</left_attach>
 	    <right_attach>1</right_attach>

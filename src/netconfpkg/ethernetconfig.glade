@@ -200,7 +200,7 @@
 	    <handler>on_onBootCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:44 GMT</last_modification_time>
 	  </signal>
-	  <label>Activate device when computer _boots</label>
+	  <label>_Activate device when computer starts</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -219,7 +219,7 @@
 	    <handler>on_userControlCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 12:52:49 GMT</last_modification_time>
 	  </signal>
-	  <label>Allow all users to enable and disable the devic_e</label>
+	  <label>Allow all _users to enable and disable the device</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -277,7 +277,7 @@
 	      <class>GtkLabel</class>
 	      <child_name>CList:title</child_name>
 	      <name>label228</name>
-	      <label>Protocol Name</label>
+	      <label>Protocol Type</label>
 	      <justify>GTK_JUSTIFY_LEFT</justify>
 	      <wrap>False</wrap>
 	      <xalign>0</xalign>
@@ -310,13 +310,24 @@
 	      <handler>on_deviceAddButton_clicked</handler>
 	      <last_modification_time>Thu, 24 May 2001 12:47:22 GMT</last_modification_time>
 	    </signal>
-	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label240</name>
+	      <label>_Add...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
@@ -328,45 +339,47 @@
 	      <handler>on_protocolEditButton_clicked</handler>
 	      <last_modification_time>Thu, 12 Jul 2001 15:33:08 GMT</last_modification_time>
 	    </signal>
-	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
 	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkLabel</class>
+	      <name>label239</name>
+	      <label>_Edit...</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
+	    </widget>
 	  </widget>
 
 	  <widget>
-	    <class>GtkVBox</class>
-	    <name>vbox54</name>
-	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
+	    <class>GtkButton</class>
+	    <name>button4</name>
+	    <can_focus>True</can_focus>
+	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>True</fill>
-	      <pack>GTK_PACK_END</pack>
+	      <fill>False</fill>
 	    </child>
 
 	    <widget>
-	      <class>GtkButton</class>
-	      <name>button4</name>
-	      <sensitive>False</sensitive>
-	      <can_focus>True</can_focus>
-	      <signal>
-		<name>clicked</name>
-		<handler>on_deviceDeleteButton_clicked</handler>
-		<last_modification_time>Thu, 24 May 2001 12:47:48 GMT</last_modification_time>
-	      </signal>
-	      <label>Delete...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
-	      <child>
-		<padding>0</padding>
-		<expand>False</expand>
-		<fill>True</fill>
-		<pack>GTK_PACK_END</pack>
-	      </child>
+	      <class>GtkLabel</class>
+	      <name>label238</name>
+	      <label>_Delete</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>2</xpad>
+	      <ypad>0</ypad>
 	    </widget>
 	  </widget>
 	</widget>
@@ -419,7 +432,7 @@
 	    <handler>on_aliasSupportCB_toggled</handler>
 	    <last_modification_time>Thu, 24 May 2001 13:22:35 GMT</last_modification_time>
 	  </signal>
-	  <label>Enable Device Alias support</label>
+	  <label>Enable _Device Alias support</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -443,13 +456,14 @@
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>deviceLabel</name>
-	    <label>Hardware Device:</label>
+	    <label>_Hardware Device:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0.5</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>ethernetDeviceEntry</default_focus_target>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -493,13 +507,14 @@ eth5
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label222</name>
-	    <label>Alias:</label>
+	    <label>_Alias:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0.5</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>aliasSpinBox</default_focus_target>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -541,7 +556,7 @@ eth5
 	    <handler>on_hwAddressCB_toggled</handler>
 	    <last_modification_time>Mon, 23 Jul 2001 13:28:10 GMT</last_modification_time>
 	  </signal>
-	  <label>Use Hardware Address</label>
+	  <label>_Use Hardware Address</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
@@ -565,13 +580,14 @@ eth5
 	  <widget>
 	    <class>GtkLabel</class>
 	    <name>label237</name>
-	    <label>Hardware Address:</label>
+	    <label>Ha_rdware Address:</label>
 	    <justify>GTK_JUSTIFY_CENTER</justify>
 	    <wrap>False</wrap>
 	    <xalign>0.5</xalign>
 	    <yalign>0.5</yalign>
 	    <xpad>0</xpad>
 	    <ypad>0</ypad>
+	    <default_focus_target>hwAddressEntry</default_focus_target>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
@@ -603,7 +619,7 @@ eth5
 	      <handler>on_hwProbeButton_clicked</handler>
 	      <last_modification_time>Mon, 23 Jul 2001 13:25:34 GMT</last_modification_time>
 	    </signal>
-	    <label>Probe for Address</label>
+	    <label>_Probe for Address</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
