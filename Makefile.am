@@ -42,7 +42,7 @@ install-data-local:
 
 	$(INSTALL_DATA) $(srcdir)/redhat-config-network-cmd.console $(DESTDIR)$(sysconfdir)/redhat-config-network-cmd; \
 	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/redhat-config-network-cmd; \
-	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/redhat-config-network-cmd ; \
+	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/redhat-config-network-cmd ; 
 
 
 	for i in internet-druid redhat-config-network-druid; do \
