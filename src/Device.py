@@ -13,6 +13,11 @@ between different kinds of network devices
 """
 
 import os
+import Address
+import sys
+if not "/usr/lib/rhs/python" in sys.path:
+    sys.path.append("/usr/lib/rhs/python")
+import Conf
 
 NETCFGPATH="/etc/syconfig/networking"
 
@@ -43,9 +48,14 @@ class Device:
         @filename The file to read the configuration from
         """
 
-        # implement in subclasses
-        pass
-    
+        list=Address.AddressList()
+        list.readFile(filename)
+        confFile=Conf.ConfShellVar(filename)
+        self._name=confFile["NAME"]
+        self._description=confFile["DESCRIPTION"]
+        self._enabled=confFile["ENABLED"]
+        self._identifier=confFile["IDENTIFIER"]
+        self._type=confFile["TYPE"]
 
     def writeConfig(self,profile="default",mode=0644):
         """
