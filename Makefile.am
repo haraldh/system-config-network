@@ -6,7 +6,7 @@ EXTRA_DIST= redhat-config-network.spec neat.desktop.in neat.console neat.pam \
 	internet-druid.console internet-druid.desktop.in \
 	neat-control.desktop.in pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
-	po/po2tbl.sed.in ChangeLog redhat-config-network-cmd.console \
+	ChangeLog redhat-config-network-cmd.console \
 	redhat-config-network.sh
 
 iconsdir=$(pkgdatadir)
