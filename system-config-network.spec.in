@@ -8,7 +8,8 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Obsoletes: isdn-config internet-config rp3 redhat-config-gui redhat-config-network
+Obsoletes: isdn-config internet-config rp3 redhat-config-network
+Provides: redhat-config-network
 BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
 Requires: %{name}-tui = %{version}-%{release}
 Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
@@ -22,6 +23,7 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
 Obsoletes: netcfg, redhat-config-network-tui
+Provides: redhat-config-network-tui
 Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python, newt
 
 %description tui
