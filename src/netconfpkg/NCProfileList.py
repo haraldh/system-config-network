@@ -2,11 +2,10 @@ import sys
 import os
 import os.path
 
-import HardwareList
-import DeviceList
+import NCDeviceList
+import NCHardwareList
 
 from ProfileList import *
-from NC_functions import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -74,8 +73,7 @@ class ProfileList(ProfileList_base):
                     sl.append(ns)
 
     def save(self):
-        devicelist = DeviceList.getDeviceList()
-        hardwarelist = HardwareList.getHardwareList()
+        devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
@@ -102,14 +100,50 @@ class ProfileList(ProfileList_base):
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf'
             dnsconf['domain'] = [prof.DNS.Domainname]
             dnsconf['nameservers'] = []
+            dnsconf['search'] = prof.DNS.SearchList
             if prof.DNS.PrimaryDNS != '':
                 dnsconf['nameservers'].append(prof.DNS.PrimaryDNS)
             if prof.DNS.SecondaryDNS!= '':
                 dnsconf['nameservers'].append(prof.DNS.SecondaryDNS)
             if prof.DNS.TernaryDNS != '':
                 dnsconf['nameservers'].append(prof.DNS.TernaryDNS)
+
+            hoconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts'
+            for i in hoconf.keys():
+                del hoconf[i]
+
+            for host in prof.HostsList:
+                hoconf[host.IP] = [host.Hostname, host.AliasList]
+
             nwconf.write()
             dnsconf.write()
+            hoconf.write()
+
+            if os.path.isfile('/etc/resolv.conf'):
+                os.rename('/etc/hosts', '/etc/resolv.conf.bak')
+
+            try:
+                os.unlink('/etc/resolv.conf')
+            except:
+                pass
+
+            try:
+                os.symlink(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf', '/etc/resolv.conf')
+            except:
+                pass
+
+            if os.path.isfile('/etc/hosts'):
+                os.rename('/etc/hosts', '/etc/hosts.bak')
+
+            try:
+                os.unlink('/etc/hosts')
+            except:
+                pass
+
+            try:
+                os.symlink(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/hosts', '/etc/hosts')
+            except:
+                pass
 
             if prof.Active == false and prof.ProfileName != 'default':
                 continue
@@ -134,6 +168,47 @@ class ProfileList(ProfileList_base):
                     os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
                 except:
                     print 'Darn, symlinking device '+devName+','+devId+' failed...'
+
+    def activateDevice (self, deviceid, profile, state=None):
+        devicelist = NCDeviceList.getDeviceList()
+        profilelist = getProfileList()
+
+        for prof in profilelist:
+            if prof.ProfileName != profile:
+                continue
+            if state:
+                if deviceid not in prof.ActiveDevices:
+                    prof.ActiveDevices.append(deviceid)
+            else:
+                if deviceid in prof.ActiveDevices:
+                    del prof.ActiveDevices[prof.ActiveDevices.index(deviceid)]
+
+    def switchToProfile(self, val):
+        devicelist = NCDeviceList.getDeviceList()
+        hardwarelist = NCHardwareList.getHardwareList()
+        profilelist = getProfileList()
+
+        found = false
+        for prof in profilelist:
+            if prof.ProfileName == val:
+                found = true
+                break
+
+        if found == false:
+            print "No Profile with name "+val+" could be found."
+            return
+
+        for prof in profilelist:
+            if prof.ProfileName == val:
+                prof.Active = true
+        else:
+                prof.Active = false
+
+        print "Switching to Profile "+val
+
+        devicelist.save()
+        hardwarelist.save()
+        profilelist.save()
 
 
 PFList = None

@@ -2,10 +2,10 @@ import sys
 import os
 import string
 
-from HardwareList import *
-from NCisdnhardware import *
+import NCisdnhardware
 
-import NC_functions
+from HardwareList import *
+from NC_functions import *
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -71,7 +71,7 @@ class HardwareList(HardwareList_base):
         wvdial = ConfSMB('/etc/wvdial.conf')
 
         for mod in modules.keys():
-            type = NC_functions.getDeviceType(mod)
+            type = getDeviceType(mod)
             if type == 'Unknown':
                 continue
 
@@ -91,7 +91,7 @@ class HardwareList(HardwareList_base):
                     #         pass
 
         
-        isdncard = ConfISDN()
+        isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
             i = self.addHardware()
             hw = self.data[i]
@@ -129,7 +129,7 @@ class HardwareList(HardwareList_base):
     def save(self):
         modules = ConfModules()
         wvdial  = ConfSMB('/etc/wvdial.conf')
-        isdn    = ConfISDN()
+        isdn    = NCisdnhardware.ConfISDN()
         
         for hw in self.data:
             if hw.Type == 'Ethernet':

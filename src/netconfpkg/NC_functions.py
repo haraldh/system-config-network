@@ -21,10 +21,6 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
                '^lo$':'Loopback'}
 
-import DeviceList
-import HardwareList
-import ProfileList
-
 def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
     import gnome
     import gnome.ui
@@ -53,8 +49,6 @@ def getDeviceType(devname):
     return type
 
 def updateNetworkScripts():
-    devlist = os.listdir(OLDSYSCONFDEVICEDIR)
-
     if not os.path.isdir(SYSCONFDEVICEDIR):
         os.mkdir(SYSCONFDEVICEDIR)
 
@@ -64,6 +58,7 @@ def updateNetworkScripts():
     if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
         os.mkdir(SYSCONFPROFILEDIR+'/default/')
 
+    devlist = os.listdir(OLDSYSCONFDEVICEDIR)
     for dev in devlist:
         if dev[:6] != 'ifcfg-':
             continue
@@ -99,43 +94,16 @@ def updateNetworkScripts():
             print list
             continue
 
-def activateDevice (deviceid, profile, state=None):
-    devicelist = DeviceList.getDeviceList()
-    profilelist = ProfileList.getProfileList()
+    if not os.path.islink('/etc/hosts'):
+       print "Moving /etc/hosts to default profile."
+       try:
+           os.rename('/etc/hosts', SYSCONFPROFILEDIR+'/default/hosts')
+       except:
+           print "An error occured during moving the /etc/hosts file."
 
-    for prof in profilelist:
-        if prof.ProfileName != profile:
-            continue
-        if state:
-            if deviceid not in prof.ActiveDevices:
-                prof.ActiveDevices.append(deviceid)
-        else:
-            if deviceid in prof.ActiveDevices:
-                del prof.ActiveDevices[prof.ActiveDevices.index(deviceid)]
-
-def switchToProfile(val):
-    devicelist = DeviceList.getDeviceList()
-    hardwarelist = HardwareList.getHardwareList()
-    profilelist = ProfileList.getProfileList()
-
-    found = false
-    for prof in profilelist:
-        if prof.ProfileName == val:
-            found = true
-            break
-
-    if found == false:
-        print "No Profile with name "+val+" could be found."
-        return
-
-    for prof in profilelist:
-        if prof.ProfileName == val:
-            prof.Active = true
-        else:
-            prof.Active = false
-
-    print "Switching to Profile "+val
-
-    devicelist.save()
-    hardwarelist.save()
-    profilelist.save()
+    if not os.path.islink('/etc/resolv.conf'):
+       print "Moving /etc/resolv.conf to default profile."
+       try:
+           os.rename('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
+       except:
+           print "An error occured during moving the /etc/resolv.conf file."

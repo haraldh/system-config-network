@@ -34,10 +34,10 @@ if not "/usr/share/netconf" in sys.path:
     sys.path.append("/usr/share/netconf")
 
 import Conf
+import gtk
 
 from netconfpkg import *
 
-import gtk
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -447,19 +447,19 @@ class mainDialog:
                     curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
                     if curr_prof.ProfileName == 'default':
                         for prof in profilelist:
-                            activateDevice(name, prof.ProfileName, true)
+                            profilelist.activateDevice(name, prof.ProfileName, true)
                     else:
-                        activateDevice(name, curr_prof.ProfileName, true)
+                        profilelist.activateDevice(name, curr_prof.ProfileName, true)
                 else:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
                     clist.set_row_data(row, 0)
                     curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
                     if curr_prof.ProfileName == 'default':
                         for prof in profilelist:
-                            activateDevice(name, prof.ProfileName, false)
+                            profilelist.activateDevice(name, prof.ProfileName, false)
                     else:
-                        activateDevice(name, curr_prof.ProfileName, false)
-#                        activateDevice(name, 'default', false)
+                        profilelist.activateDevice(name, curr_prof.ProfileName, false)
+#                        profilelist.activateDevice(name, 'default', false)
                 clist.set_pixmap(row, 0, xpm)
 
     def on_hostnameEntry_changed(self, entry):
