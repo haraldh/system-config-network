@@ -175,20 +175,20 @@ class HardwareList(HardwareList_base):
                 else:
                     i = self.addHardware()
                     hw = self.data[i]
-                hw.Name = device
-                hw.Description = device
-                hw.Type = getDeviceType(device)
-                hw.createCard()
-                for info in modinfo.keys():
-                    if info == mod:
-                        hw.Card.ModuleName = info
-                        if modinfo[info].has_key('description'):
-                            hw.Description = modinfo[info]['description']
+                    hw.Name = device
+                    hw.Description = device
+                    hw.Type = getDeviceType(device)
+                    hw.createCard()
+                    for info in modinfo.keys():
+                        if info == mod:
+                            hw.Card.ModuleName = info
+                            if modinfo[info].has_key('description'):
+                                hw.Description = modinfo[info]['description']
 
-                for selfkey in self.keydict.keys():
-                    confkey = self.keydict[selfkey]
-                    if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                        hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
+                    for selfkey in self.keydict.keys():
+                        confkey = self.keydict[selfkey]
+                        if modules[hw.Card.ModuleName] and modules[hw.Card.ModuleName]['options'].has_key(confkey):
+                            hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]['options'][confkey]
 
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
