@@ -31,6 +31,7 @@ from IsdnInterface import IsdnInterface
 from EthernetInterface import EthernetInterface
 from TokenRingInterface import TokenRingInterface
 from CipeInterface import CipeInterface
+from WirelessInterface import WirelessInterface
 from netconfpkg import *
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
