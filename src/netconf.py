@@ -227,7 +227,6 @@ class mainDialog:
 
 
     def save(self):
-        getDeviceList().fixInterfaces()
         if self.test() == 0:
             self.saveDevices()
             self.saveHardware()
