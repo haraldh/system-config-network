@@ -31,7 +31,6 @@ import signal
 import os
 import GdkImlib
 import string
-import dialup
 
 from gtk import TRUE
 from gtk import FALSE
