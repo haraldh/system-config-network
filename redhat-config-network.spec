@@ -9,7 +9,7 @@ Group: Applications/System
 BuildArch: noarch
 Requires: initscripts >= 5.99, usermode , alchemist
 BuildRequires: alchemist, alchemist-devel
-Obsoletes: isdn-config internet-config netcfg rp3
+Obsoletes: isdn-config internet-config netcfg
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -48,7 +48,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Thu Jul 19 2001 Trond Eivind Glomsrød <teg@redhat.com>
-- Obsolete netcfg and rp3
+- Obsolete netcfg - rp3 is next, when gnome-lokkit doesn't require
+  it anymore
 - More fixes...
 
 * Tue Jul 17 2001 Trond Eivind Glomsrød <teg@redhat.com>
