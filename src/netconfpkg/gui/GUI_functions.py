@@ -83,7 +83,6 @@ def get_icon(pixmap_file, dialog):
     
     pix, mask = pixbuf.render_pixmap_and_mask()
     
-    #pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
     return pix, mask
 
 def load_icon(pixmap_file, dialog):
@@ -117,7 +116,7 @@ def gui_error_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_position (gtk.WIN_POS_CENTER)
 
     ret = dialog.run ()
     dialog.destroy()
@@ -146,8 +145,53 @@ def gui_info_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_position (gtk.WIN_POS_CENTER)
 
+    ret = dialog.run ()
+    dialog.destroy()
+    return ret
+
+def gui_longinfo_dialog (message, long_message, parent_dialog,
+                         message_type=gtk.MESSAGE_INFO,
+                         widget=None, page=0, broken_widget=None):
+    
+    dialog = gtk.MessageDialog(parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
+                               message)
+    
+    vbox=dialog.get_children()[0]
+    buffer = gtk.TextBuffer(None)
+    buffer.set_text(long_message)
+    textbox = gtk.TextView()
+    textbox.set_buffer(buffer)
+    textbox.set_property("editable", gtk.FALSE)
+    textbox.set_property("cursor_visible", gtk.FALSE)
+    sw = gtk.ScrolledWindow ()
+    sw.add (textbox)
+    sw.set_policy (gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+    hbox = gtk.HBox (gtk.FALSE)
+    hbox.set_border_width(5)
+    hbox.pack_start (sw, gtk.TRUE)
+    vbox.pack_start (hbox, gtk.TRUE)
+
+    if widget != None:
+        if isinstance (widget, gtk.CList):
+            widget.select_row (page, 0)
+        elif isinstance (widget, gtk.Notebook):
+            widget.set_current_page (page)
+    if broken_widget != None:
+        broken_widget.grab_focus ()
+        if isinstance (broken_widget, gtk.Entry):
+            broken_widget.select_region (0, -1)
+
+    if parent_dialog:
+        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_transient_for(parent_dialog)
+    else:
+        dialog.set_position (gtk.WIN_POS_CENTER)
+
+    dialog.show_all()
     ret = dialog.run ()
     dialog.destroy()
     return ret
@@ -175,7 +219,7 @@ def gui_error_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_position (gtk.WIN_POS_CENTER)
         
     ret = dialog.run ()
     dialog.destroy()
@@ -208,7 +252,7 @@ def gui_yesnocancel_dialog (message, parent_dialog,
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         dialog.set_transient_for(parent_dialog)
     else:
-        dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+        dialog.set_position (gtk.WIN_POS_CENTER)
 
     ret = dialog.run ()
     dialog.destroy()
@@ -254,6 +298,7 @@ def gui_yesno_dialog (message, parent_dialog,
     return RESPONSE_NO
 
 set_generic_info_dialog_func(gui_info_dialog)
+set_generic_longinfo_dialog_func(gui_longinfo_dialog)
 set_generic_error_dialog_func(gui_error_dialog)
 set_generic_yesnocancel_dialog_func(gui_yesnocancel_dialog)
 set_generic_yesno_dialog_func(gui_yesno_dialog)

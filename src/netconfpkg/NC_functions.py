@@ -71,6 +71,7 @@ iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
 deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
 		   '^ppp[0-9]+(:[0-9]+)?$' : MODEM,
 		   '^ippp[0-9]+(:[0-9]+)?$' : ISDN,
+		   '^isdn[0-9]+(:[0-9]+)?$' : ISDN,
 		   '^cipcb[0-9]+(:[0-9]+)?$' : CIPE,
 		   '^tr[0-9]+(:[0-9]+)?$' :TOKENRING,
 		   '^lo$' : LO,
@@ -326,6 +327,18 @@ def generic_info_dialog (message, parent_dialog = None, dialog_type="info",
 						 page, broken_widget)
 	return 0
 
+generic_longinfo_dialog_func = None
+def generic_longinfo_dialog (message, long_message,
+			     parent_dialog = None, dialog_type="info",
+			     widget=None, page=0, broken_widget=None):
+	global generic_longinfo_dialog_func
+	if generic_longinfo_dialog_func:
+		return generic_longinfo_dialog_func(message, long_message,
+						    parent_dialog,
+						    dialog_type, widget,
+						    page, broken_widget)
+	return 0
+
 generic_yesnocancel_dialog_func = None
 def generic_yesnocancel_dialog (message, parent_dialog = None, dialog_type="question",
 			  widget=None, page=0, broken_widget=None):
@@ -353,7 +366,11 @@ def set_generic_error_dialog_func(func):
 
 def set_generic_info_dialog_func(func):
 	global generic_info_dialog_func
-	generic_error_info_func = func
+	generic_info_dialog_func = func
+	
+def set_generic_longinfo_dialog_func(func):
+	global generic_longinfo_dialog_func
+	generic_longinfo_dialog_func = func
 	
 def set_generic_yesnocancel_dialog_func(func):
 	global generic_yesnocancel_dialog_func
