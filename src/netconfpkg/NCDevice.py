@@ -61,7 +61,7 @@ class ConfDevice(Conf.ConfShellVar):
         self.chmod(0644)
         if ((self.oldmode & 0044) != 0044):
             ask = NC_functions.generic_yesno_dialog(_("May I change\n%s\nfrom mode %o to %o?") % (self.filename, self.oldmode & 03777, 0644))
-            if ask == 0:
+            if ask != 0:
                 self.chmod(self.oldmode)
         Conf.ConfShellVar.write(self)
             
@@ -288,7 +288,10 @@ class Device(DeviceList.Device_base):
             if self.__dict__[selfkey]:
                 conf[confkey] = 'yes'
             else:
-                conf[confkey] = 'no'
+                # delete the key, rather than set it to no
+                # 62127
+                # conf[confkey] = 'no'
+                del conf[confkey]
 
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
