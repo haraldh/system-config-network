@@ -1,7 +1,8 @@
+%define neat-control 0
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 2
+Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -32,22 +33,26 @@ popd
 
 
 %build
+%if !%{neat-control}
 pushd .
 cd rp3-1.1.10
 make
 popd
+%endif
 # Don't run right now.. I want to build it even though we don't have doc strings for everything
 #make check
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
+%if !%{neat-control}
 pushd .
 cd rp3-1.1.10/rp3
 %makeinstall
 cd ../docs
 %makeinstall
 popd
+%endif
 
 %find_lang %name
 
