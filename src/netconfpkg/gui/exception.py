@@ -47,7 +47,8 @@ class ExceptionWindow:
         sw.add (textbox)
         sw.set_policy (gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         hbox = gtk.HBox (gtk.FALSE)
-
+        hbox.set_border_width(5)
+        
         info = WrappingLabel(_("An unhandled exception has occured.  This "
                                "is most likely a bug.  Please save the crash "
                                "dump and file a detailed bug "
@@ -58,6 +59,7 @@ class ExceptionWindow:
         hbox.pack_start (sw, gtk.TRUE)
         win.vbox.pack_start (info, gtk.FALSE)
         win.vbox.pack_start (hbox, gtk.TRUE)
+        win.vbox.set_border_width(5)
         win.set_size_request (500, 300)
         win.set_position (gtk.WIN_POS_CENTER)
         addFrame(win)
@@ -167,13 +169,13 @@ class FileSelection:
 
         info = gtk.Label(text)
         self.entry = gnome.ui.FileEntry("", "")
+        self.entry.set_modal(TRUE)
         win.vbox.pack_start (info, FALSE)            
         win.vbox.pack_start (self.entry, TRUE)
         win.set_position (gtk.WIN_POS_CENTER)
         win.show_all ()
         self.window = win
         self.rc = self.window.run ()
-        self.window.destroy()
 
     def quit (self, dialog, button):
         self.rc = button
@@ -186,8 +188,14 @@ class FileSelection:
         
 def handleException((type, value, tb)):
     list = traceback.format_exception (type, value, tb)
-    text = joinfields (list, "")
-    text = "Program: %s\nVersion: %s\n%s" % (PROGNAME, PRG_VERSION, text)
+    tblast = traceback.extract_tb(tb, limit=None)
+    tblast = tblast[len(tblast)-1]
+    extxt = traceback.format_exception_only(type, value)
+    text = "Component: %s\n" % PROGNAME
+    text = text + "Version: %s\n" % PRG_VERSION
+    text = text + "Summary: TB %s:%s: %s\n" % (tblast[0], tblast[1],
+                                               tblast[2], extxt[0])
+    text = text + joinfields(list, "")
 
     while 1:
         rc = exceptionWindow (_("Exception Occurred"), text)
@@ -204,6 +212,7 @@ def handleException((type, value, tb)):
             rc = fs.getrc()
             if rc == gtk.RESPONSE_OK:
                 file = fs.get_filename()
+                print file
                 fs.window.destroy()
                 
                 if not file or file=="":
