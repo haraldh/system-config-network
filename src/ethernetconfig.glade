@@ -17,11 +17,6 @@
   <name>Dialog</name>
   <border_width>5</border_width>
   <visible>False</visible>
-  <signal>
-    <name>delete_event</name>
-    <handler>delete_event</handler>
-    <last_modification_time>Fri, 25 May 2001 23:16:23 GMT</last_modification_time>
-  </signal>
   <title>Ethernet Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_MOUSE</position>
@@ -250,8 +245,8 @@ eth5
 	<can_focus>True</can_focus>
 	<signal>
 	  <name>clicked</name>
-	  <handler>on_ethernetOkButton_clicked</handler>
-	  <last_modification_time>Thu, 24 May 2001 13:23:47 GMT</last_modification_time>
+	  <handler>on_okButton_clicked</handler>
+	  <last_modification_time>Mon, 04 Jun 2001 22:51:25 GMT</last_modification_time>
 	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
@@ -267,21 +262,12 @@ eth5
 	  <handler>on_ethernetCancelButton_clicked</handler>
 	  <last_modification_time>Thu, 24 May 2001 13:23:52 GMT</last_modification_time>
 	</signal>
-	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
-	<relief>GTK_RELIEF_NORMAL</relief>
-      </widget>
-
-      <widget>
-	<class>GtkButton</class>
-	<name>helpButton</name>
-	<can_default>True</can_default>
-	<can_focus>True</can_focus>
 	<signal>
 	  <name>clicked</name>
-	  <handler>on_ethernetHelpButton_clicked</handler>
-	  <last_modification_time>Thu, 24 May 2001 13:23:56 GMT</last_modification_time>
+	  <handler>on_cancelButton_clicked</handler>
+	  <last_modification_time>Mon, 04 Jun 2001 22:51:30 GMT</last_modification_time>
 	</signal>
-	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
+	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
     </widget>

@@ -122,6 +122,7 @@ class mainDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/network.xpm")
+        gtk.GtkPixmap(pix, mask)
         self.dialog.set_icon(pix, mask)
 
         res_file = ResolverFile()
@@ -150,7 +151,7 @@ class mainDialog:
         pass
 
     def on_deviceAddButton_clicked (self, clicked):
-        dialog = basicDialog(self.xml)
+        basicDialog(self.xml)
         gtk.mainloop()
 
     def on_deviceCopyButton_clicked (self, button):
