@@ -44,9 +44,9 @@ class ProfileList(ProfileList_base):
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
         curr_prof = nwconf['CURRENT_PROFILE']
+        use_hostname = nwconf['HOSTNAME']
         if curr_prof == None or curr_prof == '':
             curr_prof = 'default'
-            use_hostname = nwconf['HOSTNAME']
 
         proflist = os.listdir(SYSCONFPROFILEDIR)
         for pr in proflist:
@@ -81,12 +81,13 @@ class ProfileList(ProfileList_base):
                 prof.HostsList.append(host)
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
             dnsconf.read()
-            prof.DNS.Hostname     = ''
+            prof.DNS.Hostname     = use_hostname
             prof.DNS.Domainname   = ''
             prof.DNS.PrimaryDNS   = ''
             prof.DNS.SecondaryDNS = ''
-            prof.DNS.TertiaryDNS   = ''
-            prof.DNS.Hostname     = nwconf['HOSTNAME']
+            prof.DNS.TertiaryDNS  = ''
+            if nwconf['HOSTNAME'] != '':
+                prof.DNS.Hostname     = nwconf['HOSTNAME']
             if len(dnsconf['domain']) > 0:
                 prof.DNS.Domainname   = dnsconf['domain'][0]
             if dnsconf.has_key('nameservers'):
