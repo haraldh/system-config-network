@@ -864,13 +864,13 @@ def testFilename(filename):
     if filename[-1] == "~":
         return false
 
-    if len(filename) > 7 and filename[:7] == '.rpmnew'):
+    if len(filename) > 7 and filename[:7] == '.rpmnew':
         return false
 
-    if len(filename) > 8 and filename[:8] == '.rpmsave'):
+    if len(filename) > 8 and filename[:8] == '.rpmsave':
         return false
 
-    if len(filename) > 8 and filename[:8] == '.rpmorig'):
+    if len(filename) > 8 and filename[:8] == '.rpmorig':
         return false
 
     return true
