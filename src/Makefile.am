@@ -1,4 +1,35 @@
-SUBDIRS=netconfpkg
+SUBDIRS=netconfpkg pixmaps doc
+
+PYTHON_FILES = \
+	Address.py \
+	ADSLInterface.py \
+	ATMInterface.py \
+	CableInterface.py \
+	ConfiguredDevice.py \
+	Device.py \
+	DialupInterface.py \
+	EthernetDevice.py \
+	EthernetInterface.py \
+	FirewallDruid.py \
+	inspect.py \
+	InterfaceCreator.py \
+	ipcalc.py \
+	MainWindow.py \
+	netconf.py \
+	netiface.py \
+	NewInterface.py \
+	pydoc.py \
+	Resolver.py \
+	WirelessInterface.py
+
+GLADE_FILES = \
+	dialup.glade \
+	firewall-druids.glade \
+	maindialog.glade \
+	mainwindow.glade \
+	new_interface_druid.glade 
+
+EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES)
 
 #pkgdata_DATA :=
 
@@ -6,27 +37,17 @@ SUBDIRS=netconfpkg
 
 execdir = $(sbindir)
 
-#install-data-local:
-#	chmod 600 $(sysconfdir)/alchemist/namespace/dns/local.adl
-#	chmod 600 $(sysconfdir)/alchemist/switchboard/dns.switchboard.adl
-#	$(mkinstalldirs) $(localstatedir)/cache/alchemist/dns
-#	$(mkinstalldirs) $(datadir)/kontrol-panel/icons
-#	$(mkinstalldirs) $(sysconfdir)/X11/applnk/System
-#	install -m 0644 $(srcdir)/bindconf.png $(datadir)/kontrol-panel/icons/
-#	install -m 0644 $(srcdir)/bindconf-konfig.desktop $(datadir)/kontrol-panel/bindconf.desktop
-#	install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
-
 all-local:
-	rm netconf
-	rm netconf-cmd
+	rm -f netconf
+	rm -f netconf-cmd
 	ln -s netconf.py netconf
 	ln -s netconf.py netconf-cmd
 
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 netconf.py $(DESTDIR)$(pkgdatadir)/
-	ln -sf $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf
-	ln -sf $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf-cmd
+	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf
+	ln  $(pkgdatadir)/netconf.py $(DESTDIR)$(sbindir)/netconf-cmd
 
 docs:
 	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
