@@ -339,6 +339,9 @@ class IsdnDialup(Dialup):
         
     
 class ModemDialup(Dialup):
+    boolwvdict = { 'StupidMode' : 'Stupid Mode',
+                    }
+
     wvdict = { 'Login' : 'Username',
                'Password' : 'Password',
                'Prefix' : 'Dial Prefix',
@@ -375,11 +378,26 @@ class ModemDialup(Dialup):
                 #print selfkey + " = " + value
                 self.__dict__[selfkey] = value
 
+
+        for selfkey in self.boolwvdict.keys():
+            confkey = self.boolwvdict[selfkey]
+            value = None
+            if conf.has_key(sectname) and conf[sectname].has_key(confkey):
+                value = conf[sectname][confkey]
+            elif conf.has_key('Dialer Defaults') \
+               and conf['Dialer Defaults'].has_key(confkey):
+                value = conf['Dialer Defaults'][confkey]
+                
+            if value and value != '0':
+                self.__dict__[selfkey] = true
+            else:
+                self.__dict__[selfkey] = false
+
         #
         # Read Modem Init strings
         #
         if not self.InitStrings: self.createInitStrings()
-        for i in xrange(9) :
+        for i in xrange(1, 10) :
             confkey = 'Init'
             if i: confkey = confkey + str(i)                
             value = None
@@ -448,10 +466,10 @@ class ModemDialup(Dialup):
         if not parentConf.has_key('WVDIALSECT'):
             # set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
             parentConf['WVDIALSECT'] = name
-            sectname = 'Dialer ' + name
+            sectname = 'Dialer xml.get_widget ('bindconf').show_all () ' + name
         else:
             # get section name
-            sectname = parentConf['WVDIALSECT']
+            sectname = 'Dialer ' + parentConf['WVDIALSECT']
 
         # Correct PAPNAME in ifcfg-ppp[0-9]
         if self.Login:
@@ -469,14 +487,29 @@ class ModemDialup(Dialup):
             else:
                 if conf[sectname].has_key(confkey):
                     del conf[sectname][confkey] 
+        
 
+        for selfkey in self.boolwvdict.keys():
+            confkey = self.boolwvdict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[sectname][confkey] = '1'
+            else:
+                if conf[sectname].has_key(confkey):
+                    del conf[sectname][confkey] 
+        
+
+        #
+        # Write Modem Init strings
+        #
+        if conf[sectname].has_key('Init'):
+            del conf[sectname]['Init']
         if self.InitStrings:
-            for i in xrange(min([len(self.InitStrings), 9])):
+            for i in xrange(1, min([len(self.InitStrings), 9]) + 1):
                 confkey = 'Init'
                 if i: confkey = confkey + str(i)                
             
-                if self.InitStrings[i]:
-                    conf[sectname][confkey] = str(self.InitStrings[i])
+                if self.InitStrings[i - 1]:
+                    conf[sectname][confkey] = str(self.InitStrings[i - 1])
                 else:
                     if conf[sectname].has_key(confkey):
                         del conf[sectname][confkey]
@@ -490,6 +523,16 @@ class ModemDialup(Dialup):
             #print opt
             parentConf['PPPOPTIONS'] = opt
 
+
+        if self.Persist:
+            parentConf['PERSIST'] = 'yes'
+        else:
+            parentConf['PERSIST'] = 'no'
+
+        if self.DefRoute:
+            parentConf['DEFROUTE'] = 'yes'
+        else:
+            parentConf['DEFROUTE'] = 'no'
 
         conf[sectname]['Inherits'] = devname
 
