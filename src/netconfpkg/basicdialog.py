@@ -82,7 +82,7 @@ class basicDialog:
         notebook = self.xml.get_widget("basicNotebook")
 
         self.xml.get_widget('deviceTypeComboBox').set_popdown_strings(deviceTypes)
-        self.setupDialog()
+        self.hydrate()
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
@@ -97,7 +97,7 @@ class basicDialog:
         #self.dialog.close_hides(TRUE)
         #self.dialog.show()
 
-    def setupDialog(self):
+    def hydrate(self):
         if self.device.DeviceId:
             self.xml.get_widget('deviceNameEntry').set_text(self.device.DeviceId)
             if self.device.Type and self.device.Type != "" \
@@ -117,7 +117,7 @@ class basicDialog:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
             self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
 
-    def digestDialog(self):
+    def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
@@ -159,14 +159,14 @@ class basicDialog:
         self.device.rollback()
     
     def on_okButton_clicked(self, button):
-        self.digestDialog()
+        self.dehydrate()
         self.device.commit()
     
     def on_cancelButton_clicked(self, button):
         self.device.rollback()
     
     def on_applyButton_clicked(self, button):
-        self.digestDialog()
+        self.dehydrate()
         self.device.commit()
 
     def on_configureButton_clicked(self, button):
