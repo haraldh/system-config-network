@@ -161,7 +161,7 @@ status(char *name) {
     isdninfo = open("/dev/isdn/isdninfo", O_RDONLY);
     if (isdninfo < 0) {
       perror("Can't open /dev/isdninfo or /dev/isdn/isdninfo");
-      exit(-1);
+      return -1;
     }
   }
 
@@ -171,7 +171,7 @@ status(char *name) {
     fprintf(stderr, "Make sure that you are using the correct version.\n");
     fprintf(stderr, "(Try recompiling isdnctrl).\n");
     close(isdninfo);
-    exit(-1);
+    return -1;
   }
   data_version = (data_version >> 8) & 0xff;
   
@@ -179,13 +179,13 @@ status(char *name) {
     fprintf(stderr, "Kernel-version too old, terminating.\n");
     fprintf(stderr, "UPDATE YOUR KERNEL.\n");
     close(isdninfo);
-    exit(-1);
+    return -1;
   }
   if (data_version > 6) {
     fprintf(stderr, "Kernel-version newer than isdnctrl-version, terminating.\n");
     fprintf(stderr, "GET A NEW VERSION OF isdn4k-utils.\n");
     close(isdninfo);
-    exit(-1);
+    return -1;
   }
 
   memset(&phone, 0, sizeof phone);
