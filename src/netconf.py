@@ -3,17 +3,17 @@
 ## netconf - A network configuration tool
 ## Copyright (C) 2001 Red Hat, Inc.
 ## Copyright (C) 2001 Than Ngo <than@redhat.com>
- 
+
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
 ## the Free Software Foundation; either version 2 of the License, or
 ## (at your option) any later version.
- 
+
 ## This program is distributed in the hope that it will be useful,
 ## but WITHOUT ANY WARRANTY; without even the implied warranty of
 ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ## GNU General Public License for more details.
- 
+
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -262,10 +262,10 @@ class mainDialog:
             pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
         if not os.path.isfile(pixmap_file):
             return
- 
+
         pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
         gtk.GtkPixmap(pix, mask)
- 
+
         if widget:
             widget.set(pix, mask)
         else:
@@ -319,11 +319,23 @@ class mainDialog:
 
         device = Device()
         device.apply(devicelist[clist.selection[0]])
-        device.DeviceId = device.DeviceId + 'Copy'
+
+        duplicate = TRUE
+        num = 0
+        while duplicate:
+            devname = device.DeviceId + 'Copy' + str(num)
+            duplicate = FALSE
+            for dev in devicelist:
+                if dev.DeviceId == devname:
+                    duplicate = TRUE
+                    break
+            num = num + 1
+        device.DeviceId = devname
+
         i = devicelist.addDevice()
         devicelist[i].apply(device)
         devicelist[i].commit()
-        self.hydrate()        
+        self.hydrate()
 
     def on_deviceEditButton_clicked (self, *args):
         devicelist = getDeviceList()
@@ -343,7 +355,7 @@ class mainDialog:
             return
 
         button = self.editDevice(device)
-        
+
         self.hydrate()
 
     def editDevice(self, device):
@@ -352,22 +364,22 @@ class mainDialog:
         device.createDialup()
         device.createCipe()
         device.createWireless()
-        
+
         if type == "Ethernet":
             cfg = ethernetConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-            
+
         elif type == "ISDN":
             cfg = ISDNDialupDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-            
+
         elif type == "Modem":
             cfg = ModemDialupDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-            
+
         elif type == "xDSL":
             cfg = dslConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
@@ -377,18 +389,18 @@ class mainDialog:
             cfg = cipeConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-            
+
         elif type == "Wireless":
             cfg = wirelessConfigDialog(device, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
-        
+
         else:
             generic_error_dialog ('This device can not be edited with this tool!', self.xml.get_widget ("Dialog"))
 
 
         return button
-            
+
     def on_deviceDeleteButton_clicked (self, button):
         devicelist = getDeviceList()
         profilelist = getProfileList()
@@ -541,7 +553,7 @@ class mainDialog:
         self.xml.get_widget("searchDnsEntry").set_text("")
         if len(string.strip(searchDnsEntry)) == 0:
             return
-        
+
         for prof in profilelist:
             if prof.Active == true:
                 prof.DNS.SearchList.append(searchDnsEntry)
@@ -553,11 +565,11 @@ class mainDialog:
         name = clist.get_text(clist.selection[0], 0)
         if len(clist.selection) == 0:
             return
-        
+
         dialog = editDomainDialog(name)
         dialog.main = self
         dialog.xml.get_widget("Dialog").run()
-        
+
     def on_dnsUpButton_clicked (self, button):
         profilelist = getProfileList()
 
@@ -572,7 +584,7 @@ class mainDialog:
                 index = prof.DNS.SearchList.index(name)
                 if index == 0:
                     return
-                
+
                 n = prof.DNS.SearchList[index-1]
                 prof.DNS.SearchList[index-1] = name
                 prof.DNS.SearchList[index] = n
@@ -594,7 +606,7 @@ class mainDialog:
                 index = prof.DNS.SearchList.index(name)
                 if len(prof.DNS.SearchList) == index + 1:
                     return
-                
+
                 n = prof.DNS.SearchList[index+1]
                 prof.DNS.SearchList[index+1] = name
                 prof.DNS.SearchList[index] = n
@@ -608,7 +620,7 @@ class mainDialog:
         clist = self.xml.get_widget("dnsList")
         if len(clist.selection) == 0:
             return
-        
+
         for prof in profilelist:
             if prof.Active == true:
                 del prof.DNS.SearchList[clist.selection[0]]
@@ -702,6 +714,34 @@ class mainDialog:
         self.hydrate()
 
     def on_profileCopyButton_clicked (self, *args):
+        profilelist = getProfileList()
+
+        clist = self.xml.get_widget("profileList")
+
+        if len(clist.selection) == 0:
+            return
+
+        profile = Profile()
+        profile.apply(profilelist[clist.selection[0]])
+
+        duplicate = TRUE
+        num = 0
+        while duplicate:
+            profnam = profile.ProfileName + 'Copy' + str(num)
+            duplicate = FALSE
+            for prof in profilelist:
+                if prof.ProfileName == profnam:
+                    duplicate = TRUE
+                    break
+            num = num + 1
+        profile.ProfileName = profnam
+
+        i = profilelist.addProfile()
+        profilelist[i].apply(profile)
+        profilelist[i].commit()
+        self.initialized = None
+        clist.clear()
+        self.hydrate()
         pass
 
     def on_profileRenameButton_clicked (self, *args):
@@ -719,6 +759,8 @@ class mainDialog:
             generic_error_dialog ('The default Profile can not be deleted!', self.xml.get_widget ("Dialog"))
             return
         del profilelist[clist.selection[0]]
+        self.initialized = None
+        clist.clear()
         self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
@@ -771,14 +813,14 @@ class mainDialog:
                 dialog = editisdnHardwareDialog(hw.Description)
             else:
                 dialog = addisdnHardwareDialog()
-                
+
         button = dialog.xml.get_widget('Dialog').run()
         if button == 0:
             hardwarelist.commit()
         else:
             hardwarelist.rollback()
         self.hydrate()
-            
+
     def on_hardwareDeleteButton_clicked (self, *args):
         hardwarelist = getHardwareList()
 
