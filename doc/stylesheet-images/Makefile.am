@@ -1,3 +1,3 @@
 docdir     = $(datadir)/redhat-config-network/help/stylesheet-images
-doc_DATA   =  note.png  tip.png  warning.png
+doc_DATA   :=  $(notdir $(wildcard $(srcdir)/*.png))
 EXTRA_DIST =  $(doc_DATA)
