@@ -14,11 +14,17 @@
 
 <widget>
   <class>GtkWindow</class>
-  <name>wirelessDeviceConfig</name>
+  <name>wirelessDeviceConfigDialog</name>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:11:09 GMT</last_modification_time>
+  </signal>
   <title>Wireless Device Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -174,6 +180,11 @@
 	<class>GtkOptionMenu</class>
 	<name>modeMenu</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_modeMenu_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:25:10 GMT</last_modification_time>
+	</signal>
 	<items>Managed
 Ad-Hoc
 </items>
@@ -224,6 +235,11 @@ Ad-Hoc
 	<class>GtkSpinButton</class>
 	<name>channelSpinButton</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>changed</name>
+	  <handler>on_channelSpinButton_changed</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:25:21 GMT</last_modification_time>
+	</signal>
 	<climb_rate>1</climb_rate>
 	<digits>0</digits>
 	<numeric>False</numeric>
@@ -256,6 +272,11 @@ Ad-Hoc
 	<class>GtkEntry</class>
 	<name>essidEntry</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>changed</name>
+	  <handler>on_essidEntry_changed</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:25:05 GMT</last_modification_time>
+	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
 	<text_max_length>0</text_max_length>
@@ -280,6 +301,11 @@ Ad-Hoc
 	<class>GtkEntry</class>
 	<name>apAddressEntry</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>changed</name>
+	  <handler>on_apAddressEntry_changed</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:25:15 GMT</last_modification_time>
+	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
 	<text_max_length>0</text_max_length>
@@ -305,15 +331,22 @@ Ad-Hoc
 
 <widget>
   <class>GtkWindow</class>
-  <name>mainWindow</name>
+  <name>mainDialog</name>
   <border_width>5</border_width>
+  <signal>
+    <name>delete_event</name>
+    <handler>on_mainDialog_delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 22:14:25 GMT</last_modification_time>
+  </signal>
   <title>netconf</title>
   <type>GTK_WINDOW_TOPLEVEL</type>
   <position>GTK_WIN_POS_NONE</position>
   <modal>False</modal>
+  <default_width>445</default_width>
+  <default_height>350</default_height>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
-  <auto_shrink>False</auto_shrink>
+  <auto_shrink>True</auto_shrink>
 
   <widget>
     <class>GtkVBox</class>
@@ -362,8 +395,18 @@ Ad-Hoc
 	    <class>GtkCList</class>
 	    <name>deviceList</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>select_row</name>
+	      <handler>on_deviceList_select_row</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:48:55 GMT</last_modification_time>
+	    </signal>
+	    <signal>
+	      <name>click_column</name>
+	      <handler>on_deviceList_click_column</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:49:06 GMT</last_modification_time>
+	    </signal>
 	    <columns>3</columns>
-	    <column_widths>80,80,80</column_widths>
+	    <column_widths>41,124,80</column_widths>
 	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
 	    <show_titles>True</show_titles>
 	    <shadow_type>GTK_SHADOW_IN</shadow_type>
@@ -418,18 +461,24 @@ Ad-Hoc
 	    <padding>0</padding>
 	    <expand>False</expand>
 	    <fill>True</fill>
+	    <pack>GTK_PACK_END</pack>
 	  </child>
 
 	  <widget>
 	    <class>GtkButton</class>
 	    <name>deviceAddButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_deviceAddButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:47:22 GMT</last_modification_time>
+	    </signal>
 	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>False</fill>
+	      <fill>True</fill>
 	    </child>
 	  </widget>
 
@@ -437,12 +486,17 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>deviceCopyButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_deviceCopyButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:47:31 GMT</last_modification_time>
+	    </signal>
 	    <label>Copy...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>False</fill>
+	      <fill>True</fill>
 	    </child>
 	  </widget>
 
@@ -450,12 +504,17 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>deviceRenameButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_deviceRenameButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:47:37 GMT</last_modification_time>
+	    </signal>
 	    <label>Rename...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>False</fill>
+	      <fill>True</fill>
 	    </child>
 	  </widget>
 
@@ -463,30 +522,50 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>deviceEditButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_deviceEditButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:47:44 GMT</last_modification_time>
+	    </signal>
 	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>False</fill>
+	      <fill>True</fill>
 	    </child>
 	  </widget>
 
 	  <widget>
-	    <class>Placeholder</class>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>deviceDeleteButton</name>
-	    <can_focus>True</can_focus>
-	    <label>Delete...</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <class>GtkVBox</class>
+	    <name>vbox59</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>0</spacing>
 	    <child>
 	      <padding>0</padding>
 	      <expand>False</expand>
-	      <fill>False</fill>
+	      <fill>True</fill>
+	      <pack>GTK_PACK_END</pack>
 	    </child>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>deviceDeleteButton</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_deviceDeleteButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:47:48 GMT</last_modification_time>
+	      </signal>
+	      <label>Delete...</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>True</fill>
+		<pack>GTK_PACK_END</pack>
+	      </child>
+	    </widget>
 	  </widget>
 	</widget>
       </widget>
@@ -540,6 +619,11 @@ Ad-Hoc
 	    <class>GtkCList</class>
 	    <name>dnsList</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>select_row</name>
+	      <handler>on_dnsList_select_row</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:50:02 GMT</last_modification_time>
+	    </signal>
 	    <columns>1</columns>
 	    <column_widths>80</column_widths>
 	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
@@ -585,6 +669,11 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>dnsAddButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_dnsAddButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:49:16 GMT</last_modification_time>
+	    </signal>
 	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
@@ -598,6 +687,11 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>dnsEditButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_dnsEditButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:49:31 GMT</last_modification_time>
+	    </signal>
 	    <label>Edit...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
@@ -622,6 +716,11 @@ Ad-Hoc
 	      <class>GtkButton</class>
 	      <name>dnsUpButton</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_dnsUpButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:49:34 GMT</last_modification_time>
+	      </signal>
 	      <stock_button>GNOME_STOCK_BUTTON_UP</stock_button>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
@@ -635,6 +734,11 @@ Ad-Hoc
 	      <class>GtkButton</class>
 	      <name>dnsDownButton</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_dnsDownButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:49:40 GMT</last_modification_time>
+	      </signal>
 	      <stock_button>GNOME_STOCK_BUTTON_DOWN</stock_button>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
@@ -646,20 +750,34 @@ Ad-Hoc
 	  </widget>
 
 	  <widget>
-	    <class>Placeholder</class>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>dnsDeleteButton</name>
-	    <can_focus>True</can_focus>
-	    <label>Delete...</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <class>GtkVBox</class>
+	    <name>vbox61</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>0</spacing>
 	    <child>
 	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
+	      <expand>True</expand>
+	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>dnsDeleteButton</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_dnsDeleteButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:49:44 GMT</last_modification_time>
+	      </signal>
+	      <label>Delete...</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+		<pack>GTK_PACK_END</pack>
+	      </child>
+	    </widget>
 	  </widget>
 	</widget>
       </widget>
@@ -701,8 +819,18 @@ Ad-Hoc
 	    <class>GtkCList</class>
 	    <name>profileList</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>click_column</name>
+	      <handler>on_profileList_click_column</handler>
+	      <last_modification_time>Thu, 24 May 2001 14:40:39 GMT</last_modification_time>
+	    </signal>
+	    <signal>
+	      <name>select_row</name>
+	      <handler>on_profileList_select_row</handler>
+	      <last_modification_time>Thu, 24 May 2001 14:40:45 GMT</last_modification_time>
+	    </signal>
 	    <columns>2</columns>
-	    <column_widths>80,80</column_widths>
+	    <column_widths>43,80</column_widths>
 	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
 	    <show_titles>True</show_titles>
 	    <shadow_type>GTK_SHADOW_IN</shadow_type>
@@ -750,6 +878,11 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>profileAddButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_profileAddButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:50:12 GMT</last_modification_time>
+	    </signal>
 	    <label>Add...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
@@ -763,6 +896,11 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>profileCopyButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_profileCopyButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:50:16 GMT</last_modification_time>
+	    </signal>
 	    <label>Copy...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
@@ -776,6 +914,11 @@ Ad-Hoc
 	    <class>GtkButton</class>
 	    <name>profileRenameButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_profileRenameButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:50:21 GMT</last_modification_time>
+	    </signal>
 	    <label>Rename...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
@@ -786,20 +929,34 @@ Ad-Hoc
 	  </widget>
 
 	  <widget>
-	    <class>Placeholder</class>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>profileDeleteButton</name>
-	    <can_focus>True</can_focus>
-	    <label>Delete...</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <class>GtkVBox</class>
+	    <name>vbox60</name>
+	    <homogeneous>False</homogeneous>
+	    <spacing>0</spacing>
 	    <child>
 	      <padding>0</padding>
-	      <expand>False</expand>
-	      <fill>False</fill>
+	      <expand>True</expand>
+	      <fill>True</fill>
 	    </child>
+
+	    <widget>
+	      <class>GtkButton</class>
+	      <name>profileDeleteButton</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_profileDeleteButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:50:26 GMT</last_modification_time>
+	      </signal>
+	      <label>Delete...</label>
+	      <relief>GTK_RELIEF_NORMAL</relief>
+	      <child>
+		<padding>0</padding>
+		<expand>False</expand>
+		<fill>False</fill>
+		<pack>GTK_PACK_END</pack>
+	      </child>
+	    </widget>
 	  </widget>
 	</widget>
       </widget>
@@ -848,6 +1005,11 @@ Ad-Hoc
 	<name>mainOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_mainOkButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:48:48 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -857,6 +1019,11 @@ Ad-Hoc
 	<name>mainCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_mainCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 12:48:05 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -866,6 +1033,11 @@ Ad-Hoc
 	<name>mainHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_mainHelpButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 12:48:11 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -875,12 +1047,18 @@ Ad-Hoc
 
 <widget>
   <class>GtkWindow</class>
-  <name>basicWindow</name>
+  <name>basicDialog</name>
   <border_width>5</border_width>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:11:32 GMT</last_modification_time>
+  </signal>
   <title>Add / Edit Device</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -986,7 +1164,7 @@ Ad-Hoc
 	    <class>GtkHBox</class>
 	    <name>hbox14</name>
 	    <homogeneous>False</homogeneous>
-	    <spacing>0</spacing>
+	    <spacing>5</spacing>
 	    <child>
 	      <left_attach>1</left_attach>
 	      <right_attach>2</right_attach>
@@ -1005,6 +1183,7 @@ Ad-Hoc
 	    <widget>
 	      <class>GtkOptionMenu</class>
 	      <name>deviceTypeMenu</name>
+	      <sensitive>False</sensitive>
 	      <can_focus>True</can_focus>
 	      <items>Ethernet
 Modem
@@ -1014,7 +1193,7 @@ Wireless
 CIPE
 CTC
 </items>
-	      <initial_choice>4</initial_choice>
+	      <initial_choice>0</initial_choice>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
@@ -1023,14 +1202,16 @@ CTC
 	    </widget>
 
 	    <widget>
-	      <class>Placeholder</class>
-	    </widget>
-
-	    <widget>
 	      <class>GtkButton</class>
-	      <name>advancedButton</name>
+	      <name>deviceConfigureButton</name>
+	      <sensitive>False</sensitive>
 	      <can_focus>True</can_focus>
-	      <label>Advanced...</label>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_advancedButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:52:29 GMT</last_modification_time>
+	      </signal>
+	      <label>Configure...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
@@ -1044,6 +1225,11 @@ CTC
 	    <class>GtkEntry</class>
 	    <name>deviceNameEntry</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>changed</name>
+	      <handler>on_deviceNameEntry_changed</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:51:25 GMT</last_modification_time>
+	    </signal>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
 	    <text_max_length>0</text_max_length>
@@ -1079,6 +1265,11 @@ CTC
 	  <class>GtkCheckButton</class>
 	  <name>onBootCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_onBootCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 12:52:44 GMT</last_modification_time>
+	  </signal>
 	  <label>Activate device when computer _boots</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
@@ -1093,6 +1284,11 @@ CTC
 	  <class>GtkCheckButton</class>
 	  <name>userControlCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_userControlCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 12:52:49 GMT</last_modification_time>
+	  </signal>
 	  <label>Allow all users to enable and disable the devic_e</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -1156,6 +1352,11 @@ CTC
 	    <class>GtkCheckButton</class>
 	    <name>ipSettingCB</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_ipSettingCB_toggled</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:53:25 GMT</last_modification_time>
+	    </signal>
 	    <label>Automatically obtain _IP address settings with:</label>
 	    <active>True</active>
 	    <draw_indicator>True</draw_indicator>
@@ -1170,6 +1371,11 @@ CTC
 	    <class>GtkOptionMenu</class>
 	    <name>dynamicConfigMenu</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_dynamicConfigMenu_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:53:19 GMT</last_modification_time>
+	    </signal>
 	    <items>DHCP
 BOOTP
 DIALUP
@@ -1185,7 +1391,8 @@ DIALUP
 
 	<widget>
 	  <class>GtkFrame</class>
-	  <name>frame5</name>
+	  <name>ipSettingFrame</name>
+	  <sensitive>False</sensitive>
 	  <label>Manual IP Address Settings</label>
 	  <label_xalign>0</label_xalign>
 	  <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
@@ -1209,9 +1416,14 @@ DIALUP
 	      <class>GtkEntry</class>
 	      <name>addressEntry</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_addressEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 12:53:52 GMT</last_modification_time>
+	      </signal>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
+	      <text_max_length>15</text_max_length>
 	      <text></text>
 	      <child>
 		<left_attach>1</left_attach>
@@ -1233,9 +1445,14 @@ DIALUP
 	      <class>GtkEntry</class>
 	      <name>netmaskEntry</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_netmaskEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 12:53:55 GMT</last_modification_time>
+	      </signal>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
+	      <text_max_length>15</text_max_length>
 	      <text></text>
 	      <child>
 		<left_attach>1</left_attach>
@@ -1257,9 +1474,14 @@ DIALUP
 	      <class>GtkEntry</class>
 	      <name>gatewayEntry</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_gatewayEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 12:53:59 GMT</last_modification_time>
+	      </signal>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
+	      <text_max_length>15</text_max_length>
 	      <text></text>
 	      <child>
 		<left_attach>1</left_attach>
@@ -1478,6 +1700,11 @@ DIALUP
 	    <class>GtkEntry</class>
 	    <name>hostnameEntry</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>changed</name>
+	      <handler>on_hostnameEntry_changed</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:54:10 GMT</last_modification_time>
+	    </signal>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
 	    <text_max_length>0</text_max_length>
@@ -1502,6 +1729,11 @@ DIALUP
 	    <class>GtkEntry</class>
 	    <name>domainEntry</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>changed</name>
+	      <handler>on_domainEntry_changed</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:54:14 GMT</last_modification_time>
+	    </signal>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
 	    <text_max_length>0</text_max_length>
@@ -1544,6 +1776,11 @@ DIALUP
 	  <class>GtkCheckButton</class>
 	  <name>dnsSettingCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_dnsSettingCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 12:54:18 GMT</last_modification_time>
+	  </signal>
 	  <label>Automatically obtain DNS information from _provider</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
@@ -1579,6 +1816,11 @@ DIALUP
 	  <class>GtkCheckButton</class>
 	  <name>defaultRouteCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_defaultRouteCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 12:54:25 GMT</last_modification_time>
+	  </signal>
 	  <label>Default net_work route</label>
 	  <active>True</active>
 	  <draw_indicator>True</draw_indicator>
@@ -1591,7 +1833,8 @@ DIALUP
 
 	<widget>
 	  <class>GtkFrame</class>
-	  <name>frame6</name>
+	  <name>networkRouteFrame</name>
+	  <sensitive>False</sensitive>
 	  <label>Manual Network Routes</label>
 	  <label_xalign>0</label_xalign>
 	  <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
@@ -1612,6 +1855,16 @@ DIALUP
 	      <class>GtkCList</class>
 	      <name>networkRouteList</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>click_column</name>
+		<handler>on_networkRouteList_click_column</handler>
+		<last_modification_time>Thu, 24 May 2001 12:54:32 GMT</last_modification_time>
+	      </signal>
+	      <signal>
+		<name>select_row</name>
+		<handler>on_networkRouteList_select_row</handler>
+		<last_modification_time>Thu, 24 May 2001 12:54:36 GMT</last_modification_time>
+	      </signal>
 	      <columns>3</columns>
 	      <column_widths>124,115,80</column_widths>
 	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
@@ -1678,6 +1931,11 @@ DIALUP
 		<class>GtkButton</class>
 		<name>routeAddButton</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>clicked</name>
+		  <handler>on_routeAddButton_clicked</handler>
+		  <last_modification_time>Thu, 24 May 2001 12:54:43 GMT</last_modification_time>
+		</signal>
 		<label>Add...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
@@ -1691,6 +1949,11 @@ DIALUP
 		<class>GtkButton</class>
 		<name>routeEditButton</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>clicked</name>
+		  <handler>on_routeEditButton_clicked</handler>
+		  <last_modification_time>Thu, 24 May 2001 12:54:48 GMT</last_modification_time>
+		</signal>
 		<label>Edit...</label>
 		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
@@ -1701,20 +1964,34 @@ DIALUP
 	      </widget>
 
 	      <widget>
-		<class>Placeholder</class>
-	      </widget>
-
-	      <widget>
-		<class>GtkButton</class>
-		<name>routeDeleteButton</name>
-		<can_focus>True</can_focus>
-		<label>Delete...</label>
-		<relief>GTK_RELIEF_NORMAL</relief>
+		<class>GtkVBox</class>
+		<name>vbox62</name>
+		<homogeneous>False</homogeneous>
+		<spacing>0</spacing>
 		<child>
 		  <padding>0</padding>
-		  <expand>False</expand>
-		  <fill>False</fill>
+		  <expand>True</expand>
+		  <fill>True</fill>
 		</child>
+
+		<widget>
+		  <class>GtkButton</class>
+		  <name>routeDeleteButton</name>
+		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>clicked</name>
+		    <handler>on_routeDeleteButton_clicked</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:54:52 GMT</last_modification_time>
+		  </signal>
+		  <label>Delete...</label>
+		  <relief>GTK_RELIEF_NORMAL</relief>
+		  <child>
+		    <padding>0</padding>
+		    <expand>False</expand>
+		    <fill>False</fill>
+		    <pack>GTK_PACK_END</pack>
+		  </child>
+		</widget>
 	      </widget>
 	    </widget>
 	  </widget>
@@ -1741,7 +2018,7 @@ DIALUP
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>label78</name>
+	<name>securityLabel</name>
 	<label>Security</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1758,7 +2035,7 @@ DIALUP
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>label48</name>
+	<name>trafficLabel</name>
 	<label>Traffic</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1775,7 +2052,7 @@ DIALUP
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>label83</name>
+	<name>accountingLabel</name>
 	<label>Accounting</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -1816,6 +2093,11 @@ DIALUP
 	<name>okButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_okButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 12:52:54 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -1825,6 +2107,11 @@ DIALUP
 	<name>cancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_cancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 12:53:00 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -1834,6 +2121,11 @@ DIALUP
 	<name>helpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_helpButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 12:53:06 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -1843,11 +2135,17 @@ DIALUP
 
 <widget>
   <class>GtkWindow</class>
-  <name>editAddressWindow</name>
+  <name>editAddressDialog</name>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:11:46 GMT</last_modification_time>
+  </signal>
   <title>Add / Edit IP Address</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -1929,9 +2227,14 @@ DIALUP
 	<class>GtkEntry</class>
 	<name>editAddressEntry</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>changed</name>
+	  <handler>on_editAddressEntry_activate</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:24:24 GMT</last_modification_time>
+	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
-	<text_max_length>0</text_max_length>
+	<text_max_length>15</text_max_length>
 	<text></text>
 	<child>
 	  <left_attach>1</left_attach>
@@ -1953,9 +2256,14 @@ DIALUP
 	<class>GtkEntry</class>
 	<name>editNetmaskEntry</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>changed</name>
+	  <handler>on_editNetmaskEntry_changed</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:24:28 GMT</last_modification_time>
+	</signal>
 	<editable>True</editable>
 	<text_visible>True</text_visible>
-	<text_max_length>0</text_max_length>
+	<text_max_length>15</text_max_length>
 	<text></text>
 	<child>
 	  <left_attach>1</left_attach>
@@ -2004,6 +2312,11 @@ DIALUP
 	<name>editOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_editOkButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:24:36 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -2013,6 +2326,11 @@ DIALUP
 	<name>editCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_editCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:24:52 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -2022,12 +2340,20 @@ DIALUP
 
 <widget>
   <class>GtkWindow</class>
-  <name>DialupConfig</name>
+  <name>DialupConfigDialog</name>
   <border_width>5</border_width>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:15:21 GMT</last_modification_time>
+  </signal>
   <title>Dialup Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
+  <default_width>459</default_width>
+  <default_height>360</default_height>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -2102,17 +2428,19 @@ DIALUP
 	    </widget>
 
 	    <widget>
-	      <class>GtkEntry</class>
-	      <name>HardwareEntry</name>
-	      <can_focus>True</can_focus>
-	      <editable>True</editable>
-	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
-	      <text></text>
+	      <class>GtkLabel</class>
+	      <name>dialupHardwareEntry</name>
+	      <label>no hardware was configured</label>
+	      <justify>GTK_JUSTIFY_CENTER</justify>
+	      <wrap>False</wrap>
+	      <xalign>0.5</xalign>
+	      <yalign>0.5</yalign>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
 	      <child>
 		<padding>0</padding>
-		<expand>True</expand>
-		<fill>True</fill>
+		<expand>False</expand>
+		<fill>False</fill>
 	      </child>
 	    </widget>
 	  </widget>
@@ -2132,6 +2460,11 @@ DIALUP
 	      <class>GtkButton</class>
 	      <name>configureButton</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_configureButton_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 12:59:08 GMT</last_modification_time>
+	      </signal>
 	      <label>Configure...</label>
 	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
@@ -2196,6 +2529,11 @@ DIALUP
 		<class>GtkEntry</class>
 		<name>msnEntry</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_msnEntry_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 12:59:14 GMT</last_modification_time>
+		</signal>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
@@ -2212,6 +2550,11 @@ DIALUP
 	      <class>GtkCheckButton</class>
 	      <name>dialingRuleCB</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>toggled</name>
+		<handler>on_dialingRuleCB_toggled</handler>
+		<last_modification_time>Thu, 24 May 2001 12:59:18 GMT</last_modification_time>
+	      </signal>
 	      <label>_Use Dialing rule</label>
 	      <active>False</active>
 	      <draw_indicator>True</draw_indicator>
@@ -2267,6 +2610,11 @@ DIALUP
 		  <width>80</width>
 		  <sensitive>False</sensitive>
 		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>changed</name>
+		    <handler>on_prefixEntry_changed</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:59:22 GMT</last_modification_time>
+		  </signal>
 		  <editable>True</editable>
 		  <text_visible>True</text_visible>
 		  <text_max_length>0</text_max_length>
@@ -2311,7 +2659,13 @@ DIALUP
 		  <class>GtkEntry</class>
 		  <name>areaCodeEntry</name>
 		  <width>90</width>
+		  <sensitive>False</sensitive>
 		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>changed</name>
+		    <handler>on_areaCodeEntry_changed</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:59:28 GMT</last_modification_time>
+		  </signal>
 		  <editable>True</editable>
 		  <text_visible>True</text_visible>
 		  <text_max_length>0</text_max_length>
@@ -2356,6 +2710,11 @@ DIALUP
 		  <class>GtkEntry</class>
 		  <name>phoneEntry</name>
 		  <can_focus>True</can_focus>
+		  <signal>
+		    <name>changed</name>
+		    <handler>on_phoneEntry_changed</handler>
+		    <last_modification_time>Thu, 24 May 2001 12:59:32 GMT</last_modification_time>
+		  </signal>
 		  <editable>True</editable>
 		  <text_visible>True</text_visible>
 		  <text_max_length>0</text_max_length>
@@ -2463,8 +2822,14 @@ Yugoslavia (381)
 		<class>GtkEntry</class>
 		<child_name>GtkCombo:entry</child_name>
 		<name>countryCodeEntry</name>
+		<sensitive>False</sensitive>
 		<can_focus>True</can_focus>
-		<editable>True</editable>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_countryCodeEntry_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 12:59:49 GMT</last_modification_time>
+		</signal>
+		<editable>False</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
 		<text>Germany (49)</text>
@@ -2506,6 +2871,11 @@ Yugoslavia (381)
 	    <class>GtkOptionMenu</class>
 	    <name>authMenu</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_authMenu_enter</handler>
+	      <last_modification_time>Thu, 24 May 2001 12:59:59 GMT</last_modification_time>
+	    </signal>
 	    <items>chap
 pap
 chap+pap
@@ -2546,7 +2916,7 @@ none
 	  <name>hpaned1</name>
 	  <handle_size>10</handle_size>
 	  <gutter_size>6</gutter_size>
-	  <position>0</position>
+	  <position>180</position>
 	  <child>
 	    <padding>0</padding>
 	    <expand>True</expand>
@@ -2569,6 +2939,21 @@ none
 	      <class>GtkCTree</class>
 	      <name>providerTree</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>tree_select_row</name>
+		<handler>on_providerTree_tree_select_row</handler>
+		<last_modification_time>Thu, 24 May 2001 13:00:38 GMT</last_modification_time>
+	      </signal>
+	      <signal>
+		<name>click_column</name>
+		<handler>on_providerTree_click_column</handler>
+		<last_modification_time>Thu, 24 May 2001 13:01:22 GMT</last_modification_time>
+	      </signal>
+	      <signal>
+		<name>select_row</name>
+		<handler>on_providerTree_select_row</handler>
+		<last_modification_time>Thu, 24 May 2001 13:01:34 GMT</last_modification_time>
+	      </signal>
 	      <columns>1</columns>
 	      <column_widths>80</column_widths>
 	      <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
@@ -2593,7 +2978,8 @@ none
 	  <widget>
 	    <class>GtkTable</class>
 	    <name>table15</name>
-	    <rows>3</rows>
+	    <border_width>5</border_width>
+	    <rows>4</rows>
 	    <columns>2</columns>
 	    <homogeneous>False</homogeneous>
 	    <row_spacing>5</row_spacing>
@@ -2617,8 +3003,8 @@ none
 	      <child>
 		<left_attach>0</left_attach>
 		<right_attach>1</right_attach>
-		<top_attach>0</top_attach>
-		<bottom_attach>1</bottom_attach>
+		<top_attach>1</top_attach>
+		<bottom_attach>2</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>False</xexpand>
@@ -2644,8 +3030,8 @@ none
 	      <child>
 		<left_attach>0</left_attach>
 		<right_attach>1</right_attach>
-		<top_attach>1</top_attach>
-		<bottom_attach>2</bottom_attach>
+		<top_attach>2</top_attach>
+		<bottom_attach>3</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>False</xexpand>
@@ -2671,8 +3057,8 @@ none
 	      <child>
 		<left_attach>0</left_attach>
 		<right_attach>1</right_attach>
-		<top_attach>2</top_attach>
-		<bottom_attach>3</bottom_attach>
+		<top_attach>3</top_attach>
+		<bottom_attach>4</bottom_attach>
 		<xpad>0</xpad>
 		<ypad>0</ypad>
 		<xexpand>False</xexpand>
@@ -2688,30 +3074,11 @@ none
 	      <class>GtkEntry</class>
 	      <name>dialupProviderNameEntry</name>
 	      <can_focus>True</can_focus>
-	      <editable>True</editable>
-	      <text_visible>True</text_visible>
-	      <text_max_length>0</text_max_length>
-	      <text></text>
-	      <child>
-		<left_attach>1</left_attach>
-		<right_attach>2</right_attach>
-		<top_attach>0</top_attach>
-		<bottom_attach>1</bottom_attach>
-		<xpad>0</xpad>
-		<ypad>0</ypad>
-		<xexpand>True</xexpand>
-		<yexpand>False</yexpand>
-		<xshrink>True</xshrink>
-		<yshrink>False</yshrink>
-		<xfill>True</xfill>
-		<yfill>False</yfill>
-	      </child>
-	    </widget>
-
-	    <widget>
-	      <class>GtkEntry</class>
-	      <name>dialupLoginNameEntry</name>
-	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_dialupProviderNameEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 13:01:53 GMT</last_modification_time>
+	      </signal>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
@@ -2734,10 +3101,15 @@ none
 
 	    <widget>
 	      <class>GtkEntry</class>
-	      <name>dialupPasswordEntry</name>
+	      <name>dialupLoginNameEntry</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_dialupLoginNameEntry_activate</handler>
+		<last_modification_time>Thu, 24 May 2001 13:01:59 GMT</last_modification_time>
+	      </signal>
 	      <editable>True</editable>
-	      <text_visible>False</text_visible>
+	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
 	      <text></text>
 	      <child>
@@ -2754,6 +3126,67 @@ none
 		<xfill>True</xfill>
 		<yfill>False</yfill>
 	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkEntry</class>
+	      <name>dialupPasswordEntry</name>
+	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_dialupPasswordEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 13:02:05 GMT</last_modification_time>
+	      </signal>
+	      <editable>True</editable>
+	      <text_visible>False</text_visible>
+	      <text_max_length>0</text_max_length>
+	      <text></text>
+	      <child>
+		<left_attach>1</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>3</top_attach>
+		<bottom_attach>4</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>0</ypad>
+		<xexpand>True</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>True</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>False</yfill>
+	      </child>
+	    </widget>
+
+	    <widget>
+	      <class>GtkHBox</class>
+	      <name>hbox38</name>
+	      <homogeneous>False</homogeneous>
+	      <spacing>0</spacing>
+	      <child>
+		<left_attach>0</left_attach>
+		<right_attach>2</right_attach>
+		<top_attach>0</top_attach>
+		<bottom_attach>1</bottom_attach>
+		<xpad>0</xpad>
+		<ypad>5</ypad>
+		<xexpand>False</xexpand>
+		<yexpand>False</yexpand>
+		<xshrink>False</xshrink>
+		<yshrink>False</yshrink>
+		<xfill>True</xfill>
+		<yfill>True</yfill>
+	      </child>
+
+	      <widget>
+		<class>GnomePixmap</class>
+		<name>accountPixmap</name>
+		<filename>keys.xpm</filename>
+		<child>
+		  <padding>0</padding>
+		  <expand>False</expand>
+		  <fill>False</fill>
+		</child>
+	      </widget>
 	    </widget>
 	  </widget>
 	</widget>
@@ -2783,6 +3216,11 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>HeaderCompressionCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_HeaderCompressionCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:11 GMT</last_modification_time>
+	  </signal>
 	  <label>Turn on VJ TCP/IP Header Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -2797,6 +3235,11 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>connectionCompressionCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_connectionCompressionCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:15 GMT</last_modification_time>
+	  </signal>
 	  <label>Turn on VJ Connection-ID Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -2811,6 +3254,11 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>acCompressionCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_acCompressionCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:20 GMT</last_modification_time>
+	  </signal>
 	  <label>Turn on Adress/Control Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -2825,6 +3273,11 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>pcCompressionCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_pcCompressionCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:24 GMT</last_modification_time>
+	  </signal>
 	  <label>Turn on Protocol Field Compresion</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -2839,6 +3292,11 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>bsdCompressionCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_bsdCompressionCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:31 GMT</last_modification_time>
+	  </signal>
 	  <label>Turn on BSD Compression</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -2853,6 +3311,11 @@ none
 	  <class>GtkCheckButton</class>
 	  <name>cppCompressionCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_cppCompressionCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:35 GMT</last_modification_time>
+	  </signal>
 	  <label>Turn on CCP Compression Control Protocol</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -2917,6 +3380,11 @@ none
 	  <class>GtkEntry</class>
 	  <name>pppOptionEntry</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>changed</name>
+	    <handler>on_pppOptionEntry_changed</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:44 GMT</last_modification_time>
+	  </signal>
 	  <editable>True</editable>
 	  <text_visible>True</text_visible>
 	  <text_max_length>0</text_max_length>
@@ -2963,6 +3431,16 @@ none
 	    <class>GtkCList</class>
 	    <name>pppOptionList</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>click_column</name>
+	      <handler>on_pppOptionList_click_column</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:02:55 GMT</last_modification_time>
+	    </signal>
+	    <signal>
+	      <name>select_row</name>
+	      <handler>on_pppOptionList_select_row</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:03:04 GMT</last_modification_time>
+	    </signal>
 	    <columns>1</columns>
 	    <column_widths>80</column_widths>
 	    <selection_mode>GTK_SELECTION_SINGLE</selection_mode>
@@ -3008,6 +3486,11 @@ none
 	    <class>GtkButton</class>
 	    <name>pppOptionDeleteButton</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_pppOptionDeleteButton_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:03:10 GMT</last_modification_time>
+	    </signal>
 	    <label>Delete...</label>
 	    <relief>GTK_RELIEF_NORMAL</relief>
 	    <child>
@@ -3022,6 +3505,11 @@ none
 	  <class>GtkButton</class>
 	  <name>pppOptionAddButton</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_pppOptionAddButton_clicked</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:02:50 GMT</last_modification_time>
+	  </signal>
 	  <label>Add...</label>
 	  <relief>GTK_RELIEF_NORMAL</relief>
 	  <child>
@@ -3085,6 +3573,11 @@ none
 	<name>dialupOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_dialupOkButton_enter</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:00:08 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -3094,15 +3587,25 @@ none
 	<name>dialupCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_dialupCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:00:14 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
 
       <widget>
 	<class>GtkButton</class>
-	<name>button10</name>
+	<name>dialupHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_dialupHelpButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 21:51:12 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -3112,12 +3615,18 @@ none
 
 <widget>
   <class>GtkWindow</class>
-  <name>isdnConfig</name>
+  <name>isdnConfigDialog</name>
   <border_width>5</border_width>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:15:58 GMT</last_modification_time>
+  </signal>
   <title>ISDN Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -3186,6 +3695,11 @@ none
 	  <class>GtkOptionMenu</class>
 	  <name>encapModeMenu</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_encapModeMenu_clicked</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:05:03 GMT</last_modification_time>
+	  </signal>
 	  <items>raw IP
 sync PPP
 </items>
@@ -3236,6 +3750,11 @@ sync PPP
 	  <class>GtkOptionMenu</class>
 	  <name>isdnDeviceMenu</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_isdnDeviceMenu_clicked</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:04:59 GMT</last_modification_time>
+	  </signal>
 	  <items>ippp0
 ippp1
 ippp2
@@ -3293,6 +3812,11 @@ isdn3
 	  <class>GtkSpinButton</class>
 	  <name>hangupTimeoutSpinButton</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>changed</name>
+	    <handler>on_hangupTimeoutSpinButton_changed</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:05:15 GMT</last_modification_time>
+	  </signal>
 	  <climb_rate>1</climb_rate>
 	  <digits>0</digits>
 	  <numeric>False</numeric>
@@ -3438,7 +3962,12 @@ W6692 based PCI cards
 	      <child_name>GtkCombo:entry</child_name>
 	      <name>isdnCardEntry</name>
 	      <can_focus>True</can_focus>
-	      <editable>True</editable>
+	      <signal>
+		<name>changed</name>
+		<handler>on_isdnCardEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 13:05:25 GMT</last_modification_time>
+	      </signal>
+	      <editable>False</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
 	      <text>AVM PCI (Fritz!PCI)</text>
@@ -3619,6 +4148,11 @@ W6692 based PCI cards
 		<class>GtkSpinButton</class>
 		<name>irqSpinButton</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_irqSpinButton_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:05:30 GMT</last_modification_time>
+		</signal>
 		<climb_rate>1</climb_rate>
 		<digits>0</digits>
 		<numeric>False</numeric>
@@ -3651,6 +4185,11 @@ W6692 based PCI cards
 		<class>GtkEntry</class>
 		<name>memEntry</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_memEntry_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:05:36 GMT</last_modification_time>
+		</signal>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
@@ -3675,6 +4214,11 @@ W6692 based PCI cards
 		<class>GtkEntry</class>
 		<name>ioEntry</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_ioEntry_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:05:41 GMT</last_modification_time>
+		</signal>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
@@ -3699,6 +4243,11 @@ W6692 based PCI cards
 		<class>GtkEntry</class>
 		<name>io1Entry</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_io1Entry_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:16:32 GMT</last_modification_time>
+		</signal>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
@@ -3723,6 +4272,11 @@ W6692 based PCI cards
 		<class>GtkEntry</class>
 		<name>io2Entry</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_io2Entry_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:16:42 GMT</last_modification_time>
+		</signal>
 		<editable>True</editable>
 		<text_visible>True</text_visible>
 		<text_max_length>0</text_max_length>
@@ -3768,6 +4322,11 @@ W6692 based PCI cards
 		<class>GtkRadioButton</class>
 		<name>euroIsdnButton</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>toggled</name>
+		  <handler>on_euroIsdnButton_toggled</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:16:51 GMT</last_modification_time>
+		</signal>
 		<label>Eu_ro ISDN (EDSS1)</label>
 		<active>False</active>
 		<draw_indicator>True</draw_indicator>
@@ -3782,6 +4341,11 @@ W6692 based PCI cards
 		<class>GtkRadioButton</class>
 		<name>1tr6Button</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>toggled</name>
+		  <handler>on_1tr6Button_toggled</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:16:57 GMT</last_modification_time>
+		</signal>
 		<label>1_TR6</label>
 		<active>False</active>
 		<draw_indicator>True</draw_indicator>
@@ -3820,6 +4384,11 @@ W6692 based PCI cards
 	  <class>GtkCheckButton</class>
 	  <name>channelBundlingCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_channelBundlingCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:20:14 GMT</last_modification_time>
+	  </signal>
 	  <label>Use _Channel Bundling</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -3834,6 +4403,11 @@ W6692 based PCI cards
 	  <class>GtkCheckButton</class>
 	  <name>callbackCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_callbackCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:20:19 GMT</last_modification_time>
+	  </signal>
 	  <label>Use Call_back</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -3897,6 +4471,11 @@ W6692 based PCI cards
 	      <class>GtkEntry</class>
 	      <name>dialinNumberEntry</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>changed</name>
+		<handler>on_dialinNumberEntry_changed</handler>
+		<last_modification_time>Thu, 24 May 2001 13:20:56 GMT</last_modification_time>
+	      </signal>
 	      <editable>True</editable>
 	      <text_visible>True</text_visible>
 	      <text_max_length>0</text_max_length>
@@ -3967,6 +4546,11 @@ W6692 based PCI cards
 		<class>GtkSpinButton</class>
 		<name>callbackDelaySpinButton</name>
 		<can_focus>True</can_focus>
+		<signal>
+		  <name>changed</name>
+		  <handler>on_callbackDelaySpinButton_changed</handler>
+		  <last_modification_time>Thu, 24 May 2001 13:20:49 GMT</last_modification_time>
+		</signal>
 		<climb_rate>1</climb_rate>
 		<digits>0</digits>
 		<numeric>False</numeric>
@@ -3991,6 +4575,11 @@ W6692 based PCI cards
 	      <class>GtkCheckButton</class>
 	      <name>allowDialinNumberCB</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>toggled</name>
+		<handler>on_allowDialinNumberCB_toggled</handler>
+		<last_modification_time>Thu, 24 May 2001 13:20:43 GMT</last_modification_time>
+	      </signal>
 	      <label>Allow only above Dialin Number</label>
 	      <active>False</active>
 	      <draw_indicator>True</draw_indicator>
@@ -4014,6 +4603,11 @@ W6692 based PCI cards
 	      <class>GtkCheckButton</class>
 	      <name>cbcpCB</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>toggled</name>
+		<handler>on_cbcpCB_toggled</handler>
+		<last_modification_time>Thu, 24 May 2001 13:21:12 GMT</last_modification_time>
+	      </signal>
 	      <label>Use Callback Control Protocol (CBCP)</label>
 	      <active>False</active>
 	      <draw_indicator>True</draw_indicator>
@@ -4039,6 +4633,11 @@ W6692 based PCI cards
 	  <class>GtkCheckButton</class>
 	  <name>dialinServerCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_dialinServerCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:21:18 GMT</last_modification_time>
+	  </signal>
 	  <label>Configure as Dialin Server</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -4094,6 +4693,11 @@ W6692 based PCI cards
 	<name>isdnOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_isdnOkButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:17:06 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4103,6 +4707,11 @@ W6692 based PCI cards
 	<name>isdnCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_isdnCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:17:14 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4112,6 +4721,11 @@ W6692 based PCI cards
 	<name>isdnHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_isdnHelpButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:17:21 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4121,12 +4735,18 @@ W6692 based PCI cards
 
 <widget>
   <class>GtkWindow</class>
-  <name>modemConfig</name>
+  <name>modemConfigDialog</name>
   <border_width>5</border_width>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:16:11 GMT</last_modification_time>
+  </signal>
   <title>Modem Configuration</title>
   <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -4236,6 +4856,11 @@ W6692 based PCI cards
 	<class>GtkOptionMenu</class>
 	<name>modemDeviceMenu</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_modemDeviceMenu_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:03:28 GMT</last_modification_time>
+	</signal>
 	<items>/dev/modem
 /dev/ttyS1
 /dev/ttyS2
@@ -4262,6 +4887,11 @@ W6692 based PCI cards
 	<class>GtkOptionMenu</class>
 	<name>baudRateMenu</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_baudRateMenu_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:03:35 GMT</last_modification_time>
+	</signal>
 	<items>460800
 230400
 115200
@@ -4295,6 +4925,11 @@ W6692 based PCI cards
 	<class>GtkOptionMenu</class>
 	<name>flowControlMenu</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_flowControlMenu_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:03:38 GMT</last_modification_time>
+	</signal>
 	<items>CRTSCTS
 XON/XOFF
 None
@@ -4331,6 +4966,11 @@ None
       <class>GtkCheckButton</class>
       <name>volumeCB</name>
       <can_focus>True</can_focus>
+      <signal>
+	<name>toggled</name>
+	<handler>on_volumeCB_toggled</handler>
+	<last_modification_time>Thu, 24 May 2001 13:03:43 GMT</last_modification_time>
+      </signal>
       <label>_Set Modem Volume</label>
       <active>False</active>
       <draw_indicator>True</draw_indicator>
@@ -4374,6 +5014,11 @@ None
 	<class>GtkHScale</class>
 	<name>volumScale</name>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>configure_event</name>
+	  <handler>on_volumScale_configure_event</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:04:17 GMT</last_modification_time>
+	</signal>
 	<draw_value>True</draw_value>
 	<value_pos>GTK_POS_RIGHT</value_pos>
 	<digits>1</digits>
@@ -4396,6 +5041,11 @@ None
       <class>GtkCheckButton</class>
       <name>toneDialingCB</name>
       <can_focus>True</can_focus>
+      <signal>
+	<name>toggled</name>
+	<handler>on_toneDialingCB_toggled</handler>
+	<last_modification_time>Thu, 24 May 2001 13:04:22 GMT</last_modification_time>
+      </signal>
       <label>_Use touch tone dialing</label>
       <active>False</active>
       <draw_indicator>True</draw_indicator>
@@ -4436,6 +5086,11 @@ None
 	<name>modemOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_modemOkButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:04:28 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4445,6 +5100,11 @@ None
 	<name>modemCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_modemCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:04:35 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4454,12 +5114,18 @@ None
 
 <widget>
   <class>GtkWindow</class>
-  <name>ethernetConfig</name>
+  <name>ethernetConfigDialog</name>
   <border_width>5</border_width>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:16:23 GMT</last_modification_time>
+  </signal>
   <title>Ethernet Configuration</title>
-  <type>GTK_WINDOW_TOPLEVEL</type>
+  <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -4515,6 +5181,11 @@ None
 	  <class>GtkCheckButton</class>
 	  <name>aliasSupportCB</name>
 	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_aliasSupportCB_toggled</handler>
+	    <last_modification_time>Thu, 24 May 2001 13:22:35 GMT</last_modification_time>
+	  </signal>
 	  <label>Enable Device Alias support</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
@@ -4566,6 +5237,11 @@ None
 	      <class>GtkOptionMenu</class>
 	      <name>ethernetDeviceMenu</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_ethernetDeviceMenu_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 13:22:40 GMT</last_modification_time>
+	      </signal>
 	      <items>eth0
 eth1
 eth2
@@ -4606,6 +5282,11 @@ eth5
 	      <class>GtkOptionMenu</class>
 	      <name>aliasMenu</name>
 	      <can_focus>True</can_focus>
+	      <signal>
+		<name>clicked</name>
+		<handler>on_aliasMenu_clicked</handler>
+		<last_modification_time>Thu, 24 May 2001 13:22:45 GMT</last_modification_time>
+	      </signal>
 	      <items>none
 0
 1
@@ -4650,7 +5331,7 @@ eth5
       <widget>
 	<class>GtkLabel</class>
 	<child_name>Notebook:tab</child_name>
-	<name>label157</name>
+	<name>hardwareLabel</name>
 	<label>Hardware</label>
 	<justify>GTK_JUSTIFY_CENTER</justify>
 	<wrap>False</wrap>
@@ -4691,6 +5372,11 @@ eth5
 	<name>ethernetOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_ethernetOkButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:23:47 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4700,6 +5386,11 @@ eth5
 	<name>ethernetCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_ethernetCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:23:52 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4709,6 +5400,11 @@ eth5
 	<name>ethernetHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_ethernetHelpButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:23:56 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -4718,12 +5414,18 @@ eth5
 
 <widget>
   <class>GtkWindow</class>
-  <name>dslConfig</name>
+  <name>dslConfigDialog</name>
   <border_width>5</border_width>
+  <visible>False</visible>
+  <signal>
+    <name>delete_event</name>
+    <handler>delete_event</handler>
+    <last_modification_time>Fri, 25 May 2001 23:16:39 GMT</last_modification_time>
+  </signal>
   <title>xDSL Configuration</title>
-  <type>GTK_WINDOW_TOPLEVEL</type>
+  <type>GTK_WINDOW_DIALOG</type>
   <position>GTK_WIN_POS_NONE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
   <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
@@ -4791,6 +5493,11 @@ eth5
 	    <name>dslDeviceMenu</name>
 	    <tooltip>Please select the Ethernet interface connected to the DSL modem.</tooltip>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>clicked</name>
+	      <handler>on_dslDeviceMenu_clicked</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:17:34 GMT</last_modification_time>
+	    </signal>
 	    <items>eth0
 eth1
 eth2
@@ -4926,6 +5633,11 @@ eth4
 	    <class>GtkEntry</class>
 	    <name>dslProviderNameEntry</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>changed</name>
+	      <handler>on_dslProviderNameEntry_changed</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:21:57 GMT</last_modification_time>
+	    </signal>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
 	    <text_max_length>0</text_max_length>
@@ -4950,6 +5662,11 @@ eth4
 	    <class>GtkEntry</class>
 	    <name>dslLoginNameEntry</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>changed</name>
+	      <handler>on_dslLoginNameEntry_changed</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:22:02 GMT</last_modification_time>
+	    </signal>
 	    <editable>True</editable>
 	    <text_visible>True</text_visible>
 	    <text_max_length>0</text_max_length>
@@ -4974,6 +5691,11 @@ eth4
 	    <class>GtkEntry</class>
 	    <name>dslPassWordEntry</name>
 	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>changed</name>
+	      <handler>on_dslPassWordEntry_changed</handler>
+	      <last_modification_time>Thu, 24 May 2001 13:22:08 GMT</last_modification_time>
+	    </signal>
 	    <editable>True</editable>
 	    <text_visible>False</text_visible>
 	    <text_max_length>0</text_max_length>
@@ -5040,6 +5762,11 @@ eth4
 	<name>dslOkButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_dslOkButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:17:41 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -5049,6 +5776,11 @@ eth4
 	<name>dslCancelButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_dslCancelButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:17:45 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
@@ -5058,6 +5790,11 @@ eth4
 	<name>dslHelpButton</name>
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
+	<signal>
+	  <name>clicked</name>
+	  <handler>on_dslHelpButton_clicked</handler>
+	  <last_modification_time>Thu, 24 May 2001 13:23:24 GMT</last_modification_time>
+	</signal>
 	<stock_button>GNOME_STOCK_BUTTON_HELP</stock_button>
 	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
