@@ -39,7 +39,9 @@ xlc )
     am_opt=--include-deps;;
 esac
 
+autoconf
 gettextize --copy --force
+autoheader
 aclocal $ACLOCAL_FLAGS
 automake --add-missing $am_opt
 autoconf
