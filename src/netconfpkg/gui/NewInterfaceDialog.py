@@ -75,12 +75,6 @@ class NewInterfaceDialog:
 
         load_icon("network.xpm", self.toplevel)
         
-        self.lan_xpm, self.lan_mask = get_icon('pixmaps/ethernet.xpm', self.toplevel)
-        self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.toplevel)
-        self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.toplevel)
-        self.irda_xpm, self.irda_mask = get_icon('pixmaps/irda-16.xpm', self.toplevel)
-        self.dsl_xpm, self.dsl_mask = get_icon('pixmaps/dsl.xpm', self.toplevel)
-        
         # Initialize the clist
         self.interface_clist.column_titles_passive ()
         self.interface_clist.set_row_height(20)
@@ -90,24 +84,7 @@ class NewInterfaceDialog:
             iftype = iface.get_type()
             
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
-            if iftype == ISDN:
-                device_pixmap = self.isdn_xpm
-                device_mask = self.isdn_mask
-            elif iftype == MODEM:
-                device_pixmap = self.ppp_xpm
-                device_mask = self.ppp_mask
-            elif iftype == ETHERNET or iftype == TOKENRING or iftype == CIPE:
-                device_pixmap = self.lan_xpm
-                device_mask = self.lan_mask
-            elif iftype == WIRELESS:
-                device_pixmap = self.irda_xpm
-                device_mask = self.irda_mask
-            elif iftype == DSL:
-                device_pixmap = self.dsl_xpm
-                device_mask = self.dsl_mask
-            else:
-                device_pixmap = self.lan_xpm
-                device_mask = self.lan_mask
+            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(iftype, self.toplevel)
                 
             self.interface_clist.set_pixtext (row, 0, iface.get_project_name (), 5, device_pixmap, device_mask)
             self.interface_clist.set_row_data (row, iface)
@@ -120,13 +97,13 @@ class NewInterfaceDialog:
             devs.append(CTC)
             devs.append(IUCV)
 
-        device_pixmap = self.isdn_xpm
-        device_mask = self.isdn_mask
-        
         for type in devs:
             iface = GenericInterface (self.toplevel, type = type,
                                       do_save = None, druid = self.druid)
+            ftype = iface.get_type()
             row = self.interface_clist.append ( [ iface.get_project_name () ] )
+            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(iftype, self.toplevel)
+            
             self.interface_clist.set_pixtext (row, 0, iface.get_project_name (), 5, device_pixmap, device_mask)
             self.interface_clist.set_row_data (row, iface)
 
