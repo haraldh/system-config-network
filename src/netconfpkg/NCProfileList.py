@@ -136,11 +136,6 @@ class ProfileList(ProfileList_base):
                         devName = dev.Device
 
                 try:
-                    os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-                except:
-                    pass
-
-                try:
                     os.unlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
                 except:
                     pass
@@ -152,6 +147,11 @@ class ProfileList(ProfileList_base):
 
                 if prof.Active == false and prof.ProfileName != 'default':
                     continue
+
+                try:
+                    os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                except:
+                    pass
 
                 try:
                     os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)

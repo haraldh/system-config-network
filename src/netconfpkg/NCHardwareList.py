@@ -63,6 +63,12 @@ class ConfHWConf(Conf):
 class HardwareList(HardwareList_base):
     def __init__(self, list = None, parent = None):
         HardwareList_base.__init__(self, list, parent)        
+        self.keydict = { 'IoPort' : 'io',
+                         'IRQ' : 'irq',
+                         'Mem' : 'mem',
+                         'DMA0' : 'dma',
+        }
+
 
     def load(self):
         modules = ConfModules()
@@ -85,12 +91,15 @@ class HardwareList(HardwareList_base):
                 if info == modules[mod]['alias'] and modinfo[info]['type'] == 'eth':
                     hw.Card.ModuleName = info
                     hw.Description = modinfo[info]['description']
-
                     # for h in hwconf.keys():
                     #     if hwconf[h]['driver'] == info:
                     #         pass
 
-        
+            for selfkey in self.keydict.keys():
+                confkey = self.keydict[selfkey]
+                if modules[mod]['options'].has_key(confkey):
+                    hw.Card.__dict__[selfkey] = modules[mod]['options'][confkey]
+
         isdncard = NCisdnhardware.ConfISDN()
         if isdncard.load() > 0:
             i = self.addHardware()
@@ -130,10 +139,16 @@ class HardwareList(HardwareList_base):
         modules = ConfModules()
         wvdial  = ConfSMB('/etc/wvdial.conf')
         isdn    = NCisdnhardware.ConfISDN()
-        
+
         for hw in self.data:
             if hw.Type == 'Ethernet':
+                modules[hw.Name] = {}
                 modules[hw.Name]['alias'] = hw.Card.ModuleName
+                modules[hw.Name]['options'] = {}
+                for selfkey in self.keydict.keys():
+                    confkey = self.keydict[selfkey]
+                    if hw.Card.__dict__[selfkey]:
+                        modules[hw.Name]['options'][confkey] = str(hw.Card.__dict__[selfkey])
             if hw.Type == 'Modem':
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)

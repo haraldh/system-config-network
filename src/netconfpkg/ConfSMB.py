@@ -32,8 +32,11 @@ class ConfSMBSubDict(UserDict):
     def __setitem__(self, varname, value):        
         self.conf.rewind()
         if not self.conf.find_stanza(self.stanza):
-            raise Exception, "Unvalid stanza " + self.stanza        
-        
+            raise Exception, "Unvalid stanza " + self.stanza
+
+        if not value:
+            return
+
         if self.conf.find_entry_in_current_stanza(varname):
             self.conf.sedline('=.*', '= ' + value)
         else:
