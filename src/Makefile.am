@@ -2,7 +2,7 @@ SUBDIRS=netconfpkg pixmaps doc
 
 PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py
 
-GLADE_FILES = maindialog.glade neat-control.glade
+GLADE_FILES = neat-control.glade
 
 EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb module-info
 
