@@ -119,6 +119,8 @@ class ModemInterface:
             dlist = ModemInterface.modemList
 
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
+        # 460800 seems to be to high
+        self.xml.get_widget("baurateEntry").set_text(57600)
  
     def on_Modem_next(self, druid_page, druid):
         self.dehydrate()
