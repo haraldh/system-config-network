@@ -23,13 +23,27 @@ class Device(Device_base):
                 }
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
-                    'AllowUser' : 'ALLOWUSER',
+                    'AllowUser' : 'USERCTL',
                     'AutoDNS' : 'RESOLV_MODS',
                     }
         
     def __init__(self, list = None, parent = None):
         Device_base.__init__(self, list, parent)        
+
+    def createDialup(self):
+        if self.Device:
+            type = getDeviceType(self.Device)
+            if type == "Modem":
+                if (self.Dialup == None) \
+                   or not isinstance(self.Dialup, NCDialup.ModemDialup):
+                    self.Dialup = NCDialup.ModemDialup(None, self)
+                return self.Dialup
+            else:
+                return None
                     
+        else:
+            raise TypeError, "Device type not specified"
+        
     def load(self, name):
         
         conf = ConfDevice(name)
@@ -71,10 +85,17 @@ class Device(Device_base):
             except (OSError, IOError), msg:
                 pass
 
-        type = getDeviceType(self.Device)
-        if type == "Modem":
-            self.createDialup().loadModem(self.DeviceId)
-        
+        if self.Device:
+            type = getDeviceType(self.Device)
+            if type == "Modem":
+                modemsect = self.DeviceId
+                if conf.has_key('WVDIALSECT'):
+                    modemsect = conf['WVDIALSECT']
+                    
+        dialup = self.createDialup()
+        if dialup:
+            dialup.load(conf)
+                
     def save(self):
         conf = ConfDevice(self.DeviceId)
 
@@ -90,9 +111,8 @@ class Device(Device_base):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
-
-        conf.write()
                     
-        type = getDeviceType(self.Device)
-        if type == "Modem":
-            self.createDialup().saveModem(self.DeviceId, self.Device)
+        if self.Dialup:
+            self.Dialup.saveModem(conf)
+            
+        conf.write()
