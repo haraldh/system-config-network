@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "POT-Creation-Date: 2003-09-17 16:28+0200\n"
-"PO-Revision-Date: 2003-07-08 16:45+1000\n"
+"PO-Revision-Date: 2003-09-25 00:10+1000\n"
 "Last-Translator: Sarah Saiying Wang <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <i18n@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -193,11 +193,11 @@ msgstr ""
 #.
 #: src/netconf-tui.py:135
 msgid "Run anyway"
-msgstr ""
+msgstr "照旧运行"
 
 #: src/netconf-tui.py:136
 msgid "IMPORTANT"
-msgstr ""
+msgstr "重要"
 
 #: src/netconf-tui.py:137
 #, python-format
@@ -208,10 +208,13 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
+"该工具是不被支持的！请使用图形化工具，因为它提供了完整的功能性。\n"
+"如果你在这个机器上没有安装 X 服务器，从一个带有 X 的机器上通过 "
+"ssh 来登录，然后使用 X11 转发。如果您真的想使用这个工具，请按<%s>。"
 
 #: src/netconf-tui.py:147
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: src/netconf-tui.py:152
 msgid "What do you want to configure?"
@@ -398,9 +401,8 @@ msgid "export / import hardware list"
 msgstr "导入/导出硬件列表"
 
 #: src/netconf-cmd.py:110
-#, fuzzy
 msgid "export / import IPsec list"
-msgstr "导出/导入配置文件列表"
+msgstr "导出/导入 IPsec 列表"
 
 #: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
@@ -1391,9 +1393,8 @@ msgid "Loading Profile Configuration..."
 msgstr "载入配置文件..."
 
 #: src/netconfpkg/gui/maindialog.py:285
-#, fuzzy
 msgid "Loading IPsec Configuration..."
-msgstr "载入配置文件..."
+msgstr "载入 IPsec 配置文件..."
 
 #: src/netconfpkg/gui/maindialog.py:290
 msgid "Testing Configuration Set..."
@@ -1447,9 +1448,8 @@ msgid "Saving Profile Configuration..."
 msgstr "保存配置文件..."
 
 #: src/netconfpkg/gui/maindialog.py:378
-#, fuzzy
 msgid "Saving IPsec Configuration..."
-msgstr "保存配置..."
+msgstr "保存 IPsec 配置..."
 
 #. #         if ch == -1:
 #. #             ch = self.changed()
@@ -1511,9 +1511,9 @@ msgstr "编辑设备..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:859
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "无法编辑环回设备！"
+msgstr "设备类型 %s 无法被编辑！\n"
 
 #: src/netconfpkg/gui/maindialog.py:878
 msgid "The Loopback device can not be removed!"
@@ -1611,9 +1611,9 @@ msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "您确信要删除所有使用“%s”的设备吗？"
 
 #: src/netconfpkg/gui/maindialog.py:1670
-#, fuzzy, python-format
+#, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
-msgstr "要激活网络设备 %s，您必须储存改变。"
+msgstr "要激活 IPsec 连接 %s，您必须保存改变。"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1709,14 +1709,12 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from CTCHardwareDruid import CTCHardware
 #: src/netconfpkg/gui/CTCInterface.py:48
-#, fuzzy
 msgid "CTC connection"
-msgstr "Cipe 连接"
+msgstr "CTC 连接"
 
 #: src/netconfpkg/gui/CTCInterface.py:54
-#, fuzzy
 msgid "Create a new CTC connection."
-msgstr "建立一个新的 Cipe 连接。"
+msgstr "建立一个新的 CTC 连接。"
 
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1756,18 +1754,16 @@ msgstr "IUCV 设备"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. from IUCVHardwareDruid import IUCVHardware
 #: src/netconfpkg/gui/IUCVInterface.py:48
-#, fuzzy
 msgid "IUCV connection"
-msgstr "ISDN 连接"
+msgstr "IUCV 连接"
 
 #: src/netconfpkg/gui/IUCVInterface.py:54
-#, fuzzy
 msgid "Create a new IUCV connection."
-msgstr "建立一个新的 Cipe 连接。"
+msgstr "建立一个新的 IUCV 连接。"
 
 #: src/netconfpkg/gui/PTPInterface.py:222
 msgid "Point to Point (IP):"
-msgstr ""
+msgstr "点对点（IP）："
 
 #. NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 #. NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
@@ -2289,13 +2285,11 @@ msgstr "软件 (XON/XOFF)"
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
 #: src/netconfpkg/NC_functions.py:195
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
+msgid "Shall the following packages, which are needed on your system, be installed?"
 msgstr "是否要安装下列在您的系统上需要的软件包？"
 
 #: src/netconfpkg/NC_functions.py:208
-msgid ""
-"You have to install the following packages, which are needed on your system!"
+msgid "You have to install the following packages, which are needed on your system!"
 msgstr "您必须安装下列软件包，它们是您的系统必需的！"
 
 #. test for wireless
@@ -2657,34 +2651,32 @@ msgstr "绰号被改变"
 #. save ipsec settings
 #.
 #: src/netconfpkg/NCIPsec.py:168
-#, fuzzy
 msgid "IPsec activating..."
-msgstr "网络设备正在被激活..."
+msgstr "IPsec 正在被激活..."
 
 #: src/netconfpkg/NCIPsec.py:169
-#, fuzzy, python-format
+#, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "正在激活网络设备 %s，请稍候..."
+msgstr "正在激活 IPsec 连接 %s，请稍候..."
 
 #: src/netconfpkg/NCIPsec.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate IPsec connection %s!\n"
-msgstr "无法激活网络设备 %s！\n"
+msgstr "无法激活 IPsec 连接 %s！\n"
 
 #: src/netconfpkg/NCIPsec.py:188
-#, fuzzy
 msgid "IPsec deactivating..."
-msgstr "网络设备正在被解除..."
+msgstr "IPsec 正在被解除..."
 
 #: src/netconfpkg/NCIPsec.py:189
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "正在解除网络设备 %s，请稍候..."
+msgstr "正在解除 IPsec 连接 %s，请稍候..."
 
 #: src/netconfpkg/NCIPsec.py:191
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "无法解除网络设备 %s！\n"
+msgstr "无法解除 IPsec 连接 %s！\n"
 
 #. Module Cyclops version 0.9.4.
 #. Released to the public domain 18-Jul-1999,
@@ -2862,8 +2854,7 @@ msgstr "在此处输入您的 ISP 给您的登录名。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:11
 #: src/netconfpkg/gui/dialupconfig.glade.h:21
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
+msgid "Enter the name of this configuration, usually just the name of your ISP."
 msgstr "输入本次配置的名称，通常是您的 ISP 的名称。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -4466,9 +4457,8 @@ msgid "Description"
 msgstr "描述"
 
 #: src/netconfpkg/gui/maindialog.glade.h:9
-#, fuzzy
 msgid "Destination"
-msgstr "目标网络"
+msgstr "目标"
 
 #: src/netconfpkg/gui/maindialog.glade.h:10
 msgid "Dev_ices"
@@ -4491,9 +4481,8 @@ msgid "IP"
 msgstr "IP"
 
 #: src/netconfpkg/gui/maindialog.glade.h:16
-#, fuzzy
 msgid "IP_sec"
-msgstr "IPsec"
+msgstr "IP_sec"
 
 #: src/netconfpkg/gui/maindialog.glade.h:17
 msgid "List of devices which are currently configurable on your system."
@@ -4535,18 +4524,16 @@ msgstr "类型"
 
 #: src/netconfpkg/gui/maindialog.glade.h:28
 msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr ""
+msgstr "您可以在此处配置 IPsec 隧道和主机到主机的连接。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:29
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
-msgstr ""
-"您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
+msgstr "您可在此处配置与物理硬件相连的网络设备。单个硬件上可有多个虚拟设备与之相连。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may configure network hardware physically attached to the computer here."
+msgid "You may configure network hardware physically attached to the computer here."
 msgstr "您可以在此处配置与计算机物理连接的网络硬件。"
 
 #: src/netconfpkg/gui/maindialog.glade.h:31
@@ -4631,31 +4618,27 @@ msgstr "无线卡"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:2
 msgid "Checksum IP packets"
-msgstr ""
+msgstr "校验和 IP 分组"
 
 #: src/netconfpkg/gui/ctchardware.glade.h:3
-#, fuzzy
 msgid "Data Channel:"
-msgstr "频道："
+msgstr "数据频道："
 
 #: src/netconfpkg/gui/ctchardware.glade.h:4
 msgid "Memory Usage:"
-msgstr ""
+msgstr "内存用量："
 
 #: src/netconfpkg/gui/ctchardware.glade.h:6
-#, fuzzy
 msgid "Port:"
-msgstr "端口"
+msgstr "端口："
 
 #: src/netconfpkg/gui/ctchardware.glade.h:8
-#, fuzzy
 msgid "Write Channel:"
-msgstr "频道："
+msgstr "写入频道："
 
 #: src/netconfpkg/gui/ctchardware.glade.h:9
-#, fuzzy
 msgid "_Read Channel:"
-msgstr "频道(_C)："
+msgstr "读取频道(_C)："
 
 #: src/netconfpkg/gui/editipsec.glade.h:2
 msgid "A_uthentication Key:"
@@ -4726,9 +4709,8 @@ msgid "Network to Network encryption (VPN)"
 msgstr "网络到网络加密(VPN)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:19
-#, fuzzy
 msgid "Please enter a nickname for the connection:"
-msgstr "请选择连接类型："
+msgstr "请为该连接输入一个绰号："
 
 #: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter your local network settings:"
@@ -4779,16 +4761,14 @@ msgstr ""
 "IPsec 连接的设置过程。"
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
-#, fuzzy
 msgid "_Activate connection when computer starts"
-msgstr "当计算机启动时激活设备(_A)"
+msgstr "当计算机启动时激活连接(_A)"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption Key:"
 msgstr "加密钥匙(_E)："
 
 #: src/netconfpkg/gui/editipsec.glade.h:35
-#, fuzzy
 msgid "_Nickname:"
 msgstr "绰号(_N)："
 
@@ -4846,33 +4826,29 @@ msgstr "信息(_I)\t"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
 msgid "Card"
-msgstr ""
+msgstr "卡"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-#, fuzzy
 msgid "Create Device"
-msgstr "创建以太网设备"
+msgstr "创建设备"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/ptpconfig.glade.h:4
-#, fuzzy
 msgid "MT_U:"
-msgstr "MTU："
+msgstr "MT_U:"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
-#, fuzzy
 msgid "Select Device"
-msgstr "选择设备类型"
+msgstr "选择设备"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-#, fuzzy
 msgid "Select the card you want to configure:"
-msgstr "选择您想配置的以太网卡："
+msgstr "选择您想配置的卡："
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/ptpconfig.glade.h:10
 msgid "_Point to Point (IP):"
-msgstr ""
+msgstr "点对点(I_P)："
 
 #~ msgid "CTC Configuration"
 #~ msgstr "CTC 配置"
@@ -5270,3 +5246,4 @@ msgstr ""
 #~ "向 redhat-config-network 汇报部件错误。多谢！\n"
 #~ "\n"
 #~ "%s"
+
