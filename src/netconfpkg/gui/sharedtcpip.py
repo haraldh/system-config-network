@@ -30,23 +30,21 @@ DHCP=0
 BOOTP=1
 DIALUP=2
 
-def on_ipAutomaticRadio_toggled(widget, xml):
-    active = widget.get_active()
+def on_ipBootProto_toggled(widget, xml):
+    if widget.name == "ipAutomaticRadio":
+        active = widget.get_active()
+    else:
+        active = not widget.get_active()
+        
     xml.get_widget('ipProtocolOmenu').set_sensitive(active)
     xml.get_widget('dhcpSettingFrame').set_sensitive(active)
     xml.get_widget('ipSettingFrame').set_sensitive(not active)
 
-def on_ipStaticRadio_toggled(widget, xml):
-    active = widget.get_active()
-    xml.get_widget('ipProtocolOmenu').set_sensitive(not active)
-    xml.get_widget('dhcpSettingFrame').set_sensitive(not active)
-    xml.get_widget('ipSettingFrame').set_sensitive(active)
-
 def dhcp_init (xml, device):
     xml.signal_autoconnect(
         {
-        "on_ipAutomaticRadio_toggled" : (on_ipAutomaticRadio_toggled, xml),
-        "on_ipStaticRadio_toggled" : (on_ipStaticRadio_toggled, xml),
+        "on_ipAutomaticRadio_toggled" : (on_ipBootProto_toggled, xml),
+        "on_ipStaticRadio_toggled" : (on_ipBootProto_toggled, xml),
         })
 
 def dhcp_hydrate (xml, device):
@@ -91,11 +89,14 @@ def dhcp_hydrate (xml, device):
     xml.get_widget('dnsSettingCB').set_active(device.AutoDNS == TRUE)
 
     if device.BootProto == "static" or device.BootProto == "none":
-        xml.get_widget('ipAutomaticRadio').set_active(TRUE)
+        xml.get_widget('ipAutomaticRadio').set_active(FALSE)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
+        on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml),
     else:
-        xml.get_widget('ipStaticRadio').set_active(TRUE)
         xml.get_widget('ipAutomaticRadio').set_active(TRUE)
+        xml.get_widget('ipStaticRadio').set_active(FALSE)
+        on_ipBootProto_toggled(xml.get_widget('ipStaticRadio'), xml),
+
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
