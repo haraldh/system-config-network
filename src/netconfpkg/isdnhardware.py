@@ -190,7 +190,8 @@ class isdnHardwareDialog:
         hw.Description = isdncard.Description
         hw.Card.ModuleName = isdncard.ModuleName
         hw.Card.Type = isdncard.Type
-
+        hw.Card.Firmware = isdncard.Firmware
+        
         if self.xml.get_widget("euroIsdnButton").get_active():
             hw.Card.ChannelProtocol = "2"
         else:

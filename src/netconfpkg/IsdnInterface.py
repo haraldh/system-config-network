@@ -19,9 +19,10 @@
 
 import NC_functions
 from NC_functions import _
+from NC_functions import NETCONFDIR
 import HardwareList
 import NCisdnhardware
-#import gnome.ui
+import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -39,7 +40,7 @@ class IsdnInterface:
         if not os.path.isfile(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = NETCONFDIR + glade_file
             
         self.xml = libglade.GladeXML(glade_file, 'druid')
         
@@ -62,7 +63,7 @@ class IsdnInterface:
             self.druids.append(I)
             
         self.setup()
-
+        
     def get_project_name(self):
         return _('ISDN connection')
 
@@ -72,15 +73,10 @@ class IsdnInterface:
     def get_druids(self):
         Type = 'ISDN'
         dialup = DialupDruid.DialupDruid(self.toplevel, Type)
-        for self.hw in self.hardwarelist:
-            if self.hw.Type == Type: return dialup.get_druids()
+        for hw in self.hardwarelist:
+            if hw.Type == Type: return dialup.get_druids()
 
-        id = self.hardwarelist.addHardware()
-        self.hw = self.hardwarelist[id]
-        self.hw.Type = Type
-        self.hw.createCard()
-        self.hw.Name = "ISDN Card 0"
-        
+        self.hydrate()
         return self.druids[0:] + dialup.get_druids()
             
     def on_isdn_hardware_page_prepare(self, druid_page, druid):
@@ -132,6 +128,65 @@ class IsdnInterface:
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
+    def hydrate(self):
+        has_card = FALSE
+        id = self.hardwarelist.addHardware()
+        self.hw = self.hardwarelist[id]
+        self.hw.Type = 'ISDN'
+        self.hw.createCard()
+        self.hw.Name = "ISDN Card 0"
+        conf = NCisdnhardware.ConfISDN()
+        new_card = conf.detect()
+        cardname = ''
+        if new_card:
+            has_card = TRUE
+            cardname = new_card.keys()[0]
+            conf.get_resource(cardname)
+            self.hw.Card.ChannelProtocol = '2'
+            self.hw.Card.IRQ = conf.IRQ
+            self.hw.Card.Mem = conf.Mem
+            self.hw.Card.IoPort = conf.IoPort
+            self.hw.Card.IoPort1 = conf.IoPort1
+            self.hw.Card.IoPort2 = conf.IoPort2
+            
+        if has_card:
+                if self.hw.Card.ChannelProtocol == '2':
+                    self.xml.get_widget("euroIsdnButton").set_active(TRUE)
+                else:
+                    self.xml.get_widget("1tr6Button").set_active(TRUE)
+
+                self.xml.get_widget("isdnCardEntry").set_text(cardname)
+                
+                if self.hw.Card.IRQ:
+                    self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
+                    self.xml.get_widget("irqSpinButton").set_value(string.atoi(self.hw.Card.IRQ))
+                else:
+                    self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
+
+                if self.hw.Card.Mem:
+                    self.xml.get_widget("memEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("memEntry").set_text(self.hw.Card.Mem)
+                else:
+                    self.xml.get_widget("memEntry").set_sensitive(FALSE)
+
+                if self.hw.Card.IoPort:
+                    self.xml.get_widget("ioEntry").set_sensitive(TRUE)
+                    self.xml.get_widget("ioEntry").set_text(self.hw.Card.IoPort)
+                else:
+                    self.xml.get_widget("ioEntry").set_sensitive(FALSE)
+
+                if self.hw.Card.IoPort1:
+                    self.xml.get_widget("io1Entry").set_sensitive(TRUE)
+                    self.xml.get_widget("io1Entry").set_text(self.hw.Card.IoPort1)
+                else:
+                    self.xml.get_widget("io1Entry").set_sensitive(FALSE)
+
+                if self.hw.Card.IoPort2:
+                    self.xml.get_widget("io2Entry").set_sensitive(TRUE)
+                    self.xml.get_widget("io2Entry").set_text(self.hw.Card.IoPort2)
+                else:
+                    self.xml.get_widget("io2Entry").set_sensitive(FALSE)
+
     def dehydrate(self):
         isdncard = NCisdnhardware.ConfISDN()
         isdncard.get_resource(self.xml.get_widget('isdnCardEntry').get_text())
@@ -139,7 +194,8 @@ class IsdnInterface:
         self.hw.Description = isdncard.Description
         self.hw.Card.ModuleName = isdncard.ModuleName
         self.hw.Card.Type = isdncard.Type
-
+        self.hw.Card.Firmware = isdncard.Firmware
+        
         if self.xml.get_widget("euroIsdnButton").get_active():
             self.hw.Card.ChannelProtocol = "2"
         else:
