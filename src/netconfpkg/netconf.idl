@@ -9,13 +9,48 @@
 
   <DeviceList>
     <Device>
-      <DeviceName/>
-      <Hostname/>
-      <IP/>
-      <Netmask/>
+      <DeviceName TYPE="STRING"/>
+      <Hostname TYPE="STRING"/>
+      <IP TYPE="STRING"/>
+      <Netmask TYPE="STRING"/>
+
       <StaticRoutes>
-        <Route/>
+        <Route TYPE="STRING"/>
         </StaticRoutes>
+
+      <Dialup>
+        <ProviderName TYPE="STRING"/>
+        <MSN TYPE="INTEGER"/>
+        <Login TYPE="STRING"/>
+        <Password TYPE="STRING"/>
+        <Authentication TYPE="STRING"/>
+
+        <PPPOptions TYPE="LIST">
+          <Option TYPE="STRING"/>
+          </PPPOptions>
+
+        <DialinServer TYPE="BOOL"/>
+        <ChannelBundling TYPE="BOOL"/>
+        <EncapMode TYPE="STRING"/>
+        <HangupTimeout TYPE="INTEGER"/>
+        <DialMode TYPE="STRING"/>
+
+        <Callback TYPE="LIST">
+          <Number TYPE="STRING"/>
+          <Delay TYPE="INTEGER"/>
+          <Restrict TYPE="BOOL"/>
+          <CBCP TYPE="BOOL"/>
+
+        <Compression>
+          <VJTcpIp TYPE="BOOL"/>
+          <VJID TYPE="BOOL"/>
+          <AdressControl TYPE="BOOL"/>
+          <ProtoField TYPE="BOOL"/>
+          <BSD TYPE="BOOL"/>
+          <CCP TYPE="BOOL"/>
+          </Compression>        
+        </Dialup>
+
       </Device>
     </DeviceList>
 
@@ -54,7 +89,6 @@
   <ProviderList>
     <Provider>
       <ProviderName/>
-      </Provider>
         <Country/>
         <Flag/>
         <City/>
@@ -67,7 +101,8 @@
         <Encaps/>
         <Layer2/>
         <Auth/>
-        <Ipsetup/>
+        <Ipsetup/>     
+      </Provider>
     </ProviderList>
 
   <Accounting>
@@ -77,6 +112,45 @@
     </Traffic>
 
   <Firewall>
+    <FilterList>
+      <Filter>
+        <Protocol/>
+        <Source/>
+        <Destination/>
+        <Jump/>
+        <InInterface/>
+        <OutInterface/>
+        <Fragment/>
+        <Match>
+          <Tcp>
+            <SourcePort/>
+            <DestPort/>
+            <TcpFlags/>
+            <Syn/>
+            <TcpOption/>
+            </Tcp>
+          <Udp>
+            <SourcePort/>
+            <DestPort/>
+            </Udp>
+          <Icmp>
+            <IcmpType/>
+            </Icmp>
+          <Mac>
+            <MacSource/>
+            </Mac>
+          <Limit>
+            <Rate/>
+            <Burst/>
+            </Limit>
+          
+          </Match>
+        </Filter>
+      </FilterList>
+    <NAT>
+      </NAT>
+    <Mangle>
+      </Mangle>
     </Firewall>
 
   </Netconf>
