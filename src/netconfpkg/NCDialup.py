@@ -573,7 +573,7 @@ class ModemDialup(Dialup):
         # Write the wvdial section
         #
         conf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
-
+        conf.chmod(0600)
         if not conf.has_key(sectname):
             conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
         
@@ -672,5 +672,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.63 $"
+__date__ = "$Date: 2003/10/08 15:10:13 $"
+__version__ = "$Revision: 1.64 $"
