@@ -432,12 +432,21 @@ class ProfileList(ProfileList_base):
         
         return prof
 
+    def getActiveProfile(self):
+        for prof in self:
+            if not prof.Active:
+                continue
+            return prof
+
+        if len(self):
+            return self[0]
+        
 
 PFList = None
 
-def getProfileList():
+def getProfileList(refresh=None):
     global PFList
-    if PFList == None:
+    if PFList == None or refresh:
         PFList = ProfileList()
         PFList.load()
     return PFList
