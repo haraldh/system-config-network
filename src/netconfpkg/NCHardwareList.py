@@ -76,7 +76,7 @@ class HardwareList(HardwareList_base):
             hw.createCard()
             for info in modinfo.keys():
                 if info == modules[mod]['alias'] and modinfo[info]['type'] == 'eth':
-                    hw.Card.DeviceName = info
+                    hw.Card.ModuleName = info
                     hw.Description = modinfo[info]['description']
 
 #                        for h in hwconf.keys():
@@ -85,7 +85,7 @@ class HardwareList(HardwareList_base):
 
         wvdial = ConfSMB('/etc/wvdial.conf')
         for dev in wvdial.keys():
-            if dev[:7] == 'Dialer ':
+            if dev[:5] != 'Modem':
                 continue
 
             i = self.addHardware()
@@ -94,7 +94,6 @@ class HardwareList(HardwareList_base):
             hw.Description = 'Generic Modem'
             hw.Type = 'Modem'
             hw.createModem()
-            print type, dev, wvdial[dev]
             hw.Modem.DeviceName = wvdial[dev]['Modem']
             hw.Modem.BaudRate = wvdial[dev]['Baud']
             hw.Modem.ModemVolume = wvdial[dev]['SetVolume']
@@ -105,9 +104,9 @@ class HardwareList(HardwareList_base):
         wvdial  = ConfSMB('/etc/wvdial.conf')
         for hw in self.data:
             if hw.Type == 'Ethernet':
-                modules[hw.Name]['alias'] = hw.Card.DeviceName
+                modules[hw.Name]['alias'] = hw.Card.ModuleName
             if hw.Type == 'Modem':
-                wvdial[hw.Name]['Modem'] = hw.Name
+                wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = hw.Modem.BaudRate
                 wvdial[hw.Name]['SetVolume'] = hw.Modem.ModemVolume
                 wvdial[hw.Name]['Dial Command'] = hw.Modem.DialCommand
