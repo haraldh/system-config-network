@@ -83,6 +83,11 @@ class DeviceList(DeviceList_base):
     def save(self):
         self.commit(changed=false)
 
+        nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
+        if nwconf.has_key("NETWORKING") and self.getNumDevices() > 0:
+            nwconf["NETWORKING"] = "yes"
+        nwconf.write()
+
         #
         # clear all Dialer sections in wvdial.conf
         # before the new Dialer sections written
