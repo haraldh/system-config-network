@@ -25,14 +25,15 @@ _devEthernetDialog = None
 _devEthernetWizard = None
 
 class DevEthernet(Device):
-   """The class NCDevEthernetcan be obtained by calling:
+   """An object of class DevEthernet can be obtained by calling:
    
    df = getDeviceFactory()
    ethernetclass = df.getDeviceClass(ETHERNET)
    ethernetdevice = ethernetclass()
 
-   It has the following attributes, with the corresponding initscripts
-   variables:
+   It has the following attributes, show here with the corresponding
+   initscripts variables:
+   
    Device          - DEVICE=<name of physical device (except
                      dynamically-allocated PPP devices where it
                      is the "logical name")>
@@ -84,5 +85,5 @@ _df.register(DevEthernet, ETHERNET)
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/05/16 09:45:00 $"
-__version__ = "$Revision: 1.3 $"
+__date__ = "$Date: 2003/05/21 09:07:14 $"
+__version__ = "$Revision: 1.4 $"
