@@ -1,0 +1,82 @@
+--- redhat-config-network-0.9.13/rp3-1.1.10/rp3/appapplet.c.neat	Tue Mar 12 15:23:11 2002
++++ redhat-config-network-0.9.13/rp3-1.1.10/rp3/appapplet.c	Tue Mar 12 16:12:32 2002
+@@ -216,9 +216,8 @@
+     if (the_toplevel) {
+ 	GtkWidget *popupMenu;
+ 	GnomeUIInfo popupMenuInfo[] = {
+-	    GNOMEUIINFO_MENU_ABOUT_ITEM(properties_about_show, NULL),
+ 	    GNOMEUIINFO_MENU_PROPERTIES_ITEM(properties_dialog_show, i),
+-	    { GNOME_APP_UI_ITEM, _("Configure PPP..."), NULL,
++	    { GNOME_APP_UI_ITEM, _("Configure Network..."), NULL,
+ 	      properties_rp3config_show_nowait, NULL, NULL, GNOME_APP_PIXMAP_NONE,
+ 	      0, 0, (GdkModifierType) 0, NULL },
+ 	    GNOMEUIINFO_SEPARATOR,
+@@ -246,10 +245,10 @@
+ 	    if (is_usernet) return;
+ 	}
+ 
+-	popupMenuInfo[4].label =
++	popupMenuInfo[3].label =
+ 	    g_strdup_printf(_("Connect to %s%s"), i->friendlyName,
+ 			    i->cloneList ? _(" or clone") : "");
+-	popupMenuInfo[5].label =
++	popupMenuInfo[4].label =
+ 	    g_strdup_printf(_("Disconnect from %s%s"), i->friendlyName,
+ 			    i->cloneList ? _(" or clone") : "");
+ 	/* NOTE: callback data in GnomeUIInfo is IGNORED when
+@@ -258,8 +257,8 @@
+ 	 */
+ 
+ 	if (menu_connect) {
+-	    gtk_label_set_text(menu_connect, popupMenuInfo[4].label);
+-	    gtk_label_set_text(menu_disconnect, popupMenuInfo[5].label);
++	    gtk_label_set_text(menu_connect, popupMenuInfo[3].label);
++	    gtk_label_set_text(menu_disconnect, popupMenuInfo[4].label);
+ 	} else {
+ 	    if (!the_accel) {
+ 		the_accel = gtk_accel_group_new();
+@@ -271,15 +270,15 @@
+ 	    gnome_popup_menu_attach(popupMenu, attach1, i);
+ 	    if (attach2) gnome_popup_menu_attach(popupMenu, attach2, i);
+ 	    appapplet_set_menu_items(i, netmon,
+-		popupMenuInfo[4].widget, popupMenuInfo[5].widget);
++		popupMenuInfo[3].widget, popupMenuInfo[4].widget);
+ 
+ 	    if (!is_usernet) {
+-		menu_connect = GTK_LABEL(GTK_BIN(popupMenuInfo[4].widget)->child);
+-		menu_disconnect = GTK_LABEL(GTK_BIN(popupMenuInfo[5].widget)->child);
++		menu_connect = GTK_LABEL(GTK_BIN(popupMenuInfo[3].widget)->child);
++		menu_disconnect = GTK_LABEL(GTK_BIN(popupMenuInfo[4].widget)->child);
+ 	    }
+ 	}
++	g_free(popupMenuInfo[3].label);
+ 	g_free(popupMenuInfo[4].label);
+-	g_free(popupMenuInfo[5].label);
+ 
+     } else {
+ 
+@@ -287,12 +286,9 @@
+ 	    "properties", GNOME_STOCK_MENU_PROP, _("Properties..."),
+ 	    properties_dialog_show, i);
+ 	applet_widget_register_stock_callback(APPLET_WIDGET(the_applet),
+-	    "configure", GNOME_STOCK_MENU_PROP, _("Configure PPP..."),
++	    "configure", GNOME_STOCK_MENU_PROP, _("Configure Network..."),
+ 	    properties_rp3config_show_nowait, NULL);
+ 	appapplet_set_menu_items(i, netmon, NULL, NULL);
+-	applet_widget_register_stock_callback(APPLET_WIDGET(the_applet),
+-	    "about", GNOME_STOCK_MENU_ABOUT, _("About..."),
+-	    properties_about_show, NULL);
+     }
+     appapplet_set_netmon_tooltip(netmon, i);
+ }
+--- redhat-config-network-0.9.13/rp3-1.1.10/rp3/properties.c.neat	Tue Mar 12 15:23:53 2002
++++ redhat-config-network-0.9.13/rp3-1.1.10/rp3/properties.c	Tue Mar 12 15:54:00 2002
+@@ -275,7 +275,7 @@
+ properties_rp3config_show_nowait(AppletWidget *applet, gpointer data) {
+     pid_t child;
+ 
+-    child = fork_exec(0, "/usr/bin/rp3-config", NULL);
++    child = fork_exec(0, "/usr/bin/redhat-config-network", NULL);
+     display_wait(child, NULL, NULL, 0); /* clean up later */
+ }
+ 
