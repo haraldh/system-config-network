@@ -109,7 +109,7 @@ class deviceConfigDialog:
         deviceName = string.strip(entry.get_text())
         self.device.DeviceId = deviceName
         self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0)
-
+        
     def on_okButton_clicked(self, button):
         self.dehydrate()
         

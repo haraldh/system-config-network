@@ -42,6 +42,8 @@ class dslConfigDialog(deviceConfigDialog):
         deviceConfigDialog.__init__(self, glade_file,
                                     device, xml_main, xml_basic)
         
+        self.on_deviceNameEntry_changed(self.xml.get_widget('deviceNameEntry'))
+        
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         dialup = self.device.Dialup
@@ -115,7 +117,19 @@ class dslConfigDialog(deviceConfigDialog):
         if not self.device.Device:
             self.device.Device = "dsl"
         
-    
+    def on_deviceNameEntry_changed(self, entry):
+        deviceName = string.strip(entry.get_text())
+        self.device.DeviceId = deviceName
+        nickname = (len(deviceName) > 0)
+        self.xml.get_widget("okButton").set_sensitive(nickname)
+        self.xml.get_widget('protocolsTab').set_sensitive(nickname)
+        self.xml.get_widget('providerTab').set_sensitive(nickname)
+        self.xml.get_widget('advancedTab').set_sensitive(nickname)
+        self.xml.get_widget('protocolLabel').set_sensitive(nickname)
+        self.xml.get_widget('providerLabel').set_sensitive(nickname)
+        self.xml.get_widget('advancedLabel').set_sensitive(nickname)
+
+
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)

@@ -56,8 +56,21 @@ class wirelessConfigDialog(deviceConfigDialog):
                                                                 'Repeater',
                                                                 'Secondary',
                                                                 ])
-
-
+        
+        self.on_deviceNameEntry_changed(self.xml.get_widget('deviceNameEntry'))
+        
+    def on_deviceNameEntry_changed(self, entry):
+        deviceName = string.strip(entry.get_text())
+        self.device.DeviceId = deviceName
+        nickname = (len(deviceName) > 0)
+        self.xml.get_widget("okButton").set_sensitive(nickname)
+        self.xml.get_widget('protocolsTab').set_sensitive(nickname)
+        self.xml.get_widget('hardwareDeviceTab').set_sensitive(nickname)
+        self.xml.get_widget('wirelessSettingTab').set_sensitive(nickname)
+        self.xml.get_widget('protocolLabel').set_sensitive(nickname)
+        self.xml.get_widget('hardwareDeviceLabel').set_sensitive(nickname)
+        self.xml.get_widget('wirelessSettingLabel').set_sensitive(nickname)
+        
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")

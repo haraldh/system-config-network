@@ -60,7 +60,8 @@ class DialupDialog(deviceConfigDialog):
 
         self.noteBook = self.xml.get_widget("dialupNotebook")
         self.xml.get_widget ("pppOptionList").column_titles_passive ()
-
+        self.on_deviceNameEntry_changed(self.xml.get_widget('deviceNameEntry'))
+        
     def hydrate(self):
         deviceConfigDialog.hydrate(self)
         hardwarelist = getHardwareList()
@@ -203,8 +204,26 @@ class DialupDialog(deviceConfigDialog):
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
 
-
-
+    def on_deviceNameEntry_changed(self, entry):
+        deviceName = string.strip(entry.get_text())
+        self.device.DeviceId = deviceName
+        nickname = (len(deviceName) > 0)
+        self.xml.get_widget("okButton").set_sensitive(nickname)
+        self.xml.get_widget('protocolsTab').set_sensitive(nickname)
+        self.xml.get_widget('providerTab').set_sensitive(nickname)
+        self.xml.get_widget('compressionTab').set_sensitive(nickname)
+        self.xml.get_widget('optionsTab').set_sensitive(nickname)
+        self.xml.get_widget('callbackTab').set_sensitive(nickname)
+        self.xml.get_widget('isdnTab').set_sensitive(nickname)
+        self.xml.get_widget('modemTab').set_sensitive(nickname)
+        self.xml.get_widget('protocolLabel').set_sensitive(nickname)
+        self.xml.get_widget('providerLabel').set_sensitive(nickname)
+        self.xml.get_widget('compressionLabel').set_sensitive(nickname)
+        self.xml.get_widget('optionsLabel').set_sensitive(nickname)
+        self.xml.get_widget('callbackLabel').set_sensitive(nickname)
+        self.xml.get_widget('advancedLabel').set_sensitive(nickname)
+        self.xml.get_widget('advancedISDNLabel').set_sensitive(nickname)
+        
 class ISDNDialupDialog(DialupDialog):
     def __init__(self, device, xml_main = None):
         DialupDialog.__init__(self, device, xml_main)
@@ -300,7 +319,7 @@ class ISDNDialupDialog(DialupDialog):
             dialup.Authentication = '+chap +pap'
         else:
             dialup.Authentication = 'noauth'
-            
+
         
 class ModemDialupDialog(DialupDialog):
     def __init__(self, device, xml_main = None):
