@@ -1,7 +1,7 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.3.2
-Release: 2
+Version: 0.4
+Release: 1
 URL: http://www.redhat.com/ 
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -45,6 +45,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Mon Jul 16 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- Add i18n
+- Many minor fixes...
+
 * Wed Jul 11 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - Don't run autogen.sh
 - Mark files in /etc as configuration files
