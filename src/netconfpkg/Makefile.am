@@ -1,5 +1,5 @@
 EXTRA_DIST = DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl \
-             NetworkList.idl Firewall.idl genClass.py NCDeviceList.py
+             NetworkList.idl Firewall.idl genClass.py
 
 GLADE_FILES = \
 	basicdialog.glade \
@@ -67,7 +67,7 @@ clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
 
-DeviceList.py: DeviceList.idl genClass.py NCDeviceList.py NCDevice.py NCDialup.py
+DeviceList.py: DeviceList.idl genClass.py NCDeviceList.py NCDevice.py NCDialup.py NCCallback.py
 
 HardwareList.py: NCHardwareList.py 
 
