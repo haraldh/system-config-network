@@ -218,15 +218,8 @@ class WirelessInterface(InterfaceCreator):
         else:
             self.device.HardwareAddress = hwaddr
 
-        s = _("You have selected the following information:") + "\n\n"\
-            + _("Device: ") + str(self.device.DeviceId) + "\n"
-
-        s = s + _("ESSID (Network ID): ") + str(wl.EssId) + "\n"\
-            + _("Mode: ") + str(wl.Mode) + "\n"\
-            + _("Frequency: ") + str(wl.Freq) + "\n"\
-            + _("Channel: ") + str(wl.Channel) + "\n"\
-            + _("Transmit Rate: ") + str(wl.Rate) + "\n"\
-            + _("Key: ") + str(wl.Key) + "\n"
+        s = _("You have selected the following information:") + "\n\n" + "   "\
+            + _("Device:") + " " + str(self.device.DeviceId) + " "
 
         hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
@@ -234,16 +227,24 @@ class WirelessInterface(InterfaceCreator):
                 s = s + "(" + hw.Description + ")"
                 break
 
-        s = s + "\n"
-        
+        s = s + "\n" + "   "
+
         if self.device.BootProto == "static":
-            s = s + _("Address:") + " " + self.device.IP + "\n"\
-            + _("Subnet Mask:") + " " + self.device.Netmask + "\n"\
-            + _("Default Gateway Address:") + " " + self.device.Gateway + "\n"
+            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
+            + _("Subnet Mask:") + " " + self.device.Netmask + "\n" + "   "\
+            + _("Default Gateway Address:") + " " + self.device.Gateway + "\n" + "   "
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n"
-        
+                + self.device.BootProto + "\n" + "   "
+
+        s = s + _("ESSID (Network ID):") + " " + str(wl.EssId) + "\n" + "   "\
+            + _("Mode: ") + str(wl.Mode) + "\n" + "   "\
+            + _("Frequency: ") + str(wl.Freq) + "\n" + "   "\
+            + _("Channel: ") + str(wl.Channel) + "\n" + "   "\
+            + _("Transmit Rate: ") + str(wl.Rate) + "\n" + "   "\
+            + _("Key: ") + str(wl.Key) + "\n"\
+            + "\n\n" + _("Press \"Finish\" to create this account")
+
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):

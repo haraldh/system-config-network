@@ -128,21 +128,22 @@ class CipeInterface(InterfaceCreator):
         self.device.DeviceId = self.device.Device
         cipe = self.device.Cipe
         
-        s = _("You have selected the following information:") + "\n\n"\
-            + _("Device: ") + str(self.device.DeviceId) + "\n"\
-            + _("Tunnel through Device: ") + str(cipe.TunnelDevice) + "\n"\
-            + _("Local Port: ") + str(cipe.LocalPort) + "\n"
+        s = _("You have selected the following information:") + "\n\n" + "    "\
+            + _("Device:") + " " + str(self.device.DeviceId) + "\n" + "    "\
+            + _("Tunnel through Device:") + " " + str(cipe.TunnelDevice) + "\n" + "    "\
+            + _("Local Port:") + " " + str(cipe.LocalPort) + "\n" + "    "
         
         if cipe.RemotePeerAddress == "0.0.0.0" \
                or cipe.RemotePeerAddress == "" \
                or not cipe.RemotePeerAddress:
-            s = s + _("Remote Peer Address: ") + _("Auto") + "\n"
+            s = s + _("Remote Peer Address:") + " " + _("Auto") + "\n" + "    "
         else:
-            s = s + _("Remote Peer Address: ") + cipe.RemotePeerAddress + "\n"\
-                + _("Remote Peer Port: ") + " " + str(cipe.LocalPort) + "\n"
+            s = s + _("Remote Peer Address:") + " " + cipe.RemotePeerAddress + "\n" + "    "\
+                + _("Remote Peer Port:") + " " + str(cipe.LocalPort) + "\n" + "    "
     
-        s = s + _("Remote Virtual Address: ") + " " + str(cipe.RemoteVirtualAddress) + "\n"
-        s = s + _("Local Virtual Address: ") + " " + self.device.IP + "\n"
+        s = s + _("Remote Virtual Address:") + " " + str(cipe.RemoteVirtualAddress) + "\n" + "    "
+        s = s + _("Local Virtual Address:") + " " + self.device.IP + "\n\n\n"\
+            + _("Press \"Finish\" to create this account")
         
         druid_page.set_text(s)
         
