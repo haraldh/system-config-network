@@ -242,7 +242,7 @@ class mainDialog:
         self.appBar.push(_("Loading Profile Configuration..."))
         profilelist = getProfileList()
         self.appBar.pop()
-
+    
     def test(self):
         self.appBar.push(_("Testing Configuration Set..."))
         profilelist = getProfileList()
@@ -283,6 +283,12 @@ class mainDialog:
         self.saveProfiles()
         self.appBar.pop()
         self.checkApply()        
+
+        generic_info_dialog (_("Changes are saved.\n"
+                               "You may want to restart\n"
+                               "the network and network services\n"
+                               "or restart the computer."),
+                             self.dialog)
         return 0
 
     def saveDevices(self):
@@ -536,13 +542,8 @@ class mainDialog:
         pass
         
     def on_applyButton_clicked (self, button):
-        if self.save() == 0:
-            generic_info_dialog (_("Changes are saved.\n"
-                                    "You may want to restart\n"
-                                    "the network and network services\n"
-                                    "or restart the computer."),
-                                  self.dialog)
-
+        self.save()
+        
     def on_okButton_clicked (self, *args):
         if self.changed():        
             button = generic_yesnocancel_dialog(
@@ -555,12 +556,6 @@ class mainDialog:
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-                else:
-                    generic_info_dialog (_("Changes are saved.\n"
-                                           "You may want to restart\n"
-                                           "the network and network services\n"
-                                           "or restart the computer."),
-                                         self.dialog)
                                 
         gtk.mainquit()
         return
