@@ -119,7 +119,7 @@ class IsdnDialup(Dialup):
                 'Prefix' : 'PREFIX',
                 'Areacode' : 'AREACODE',
                 'Regioncode' : 'REGIONCODE',
-                'PhoneOut' : 'PHONE_OUT',
+                'PhoneNumber' : 'PHONE_OUT',
                 'PrimaryDNS' : 'DNS1',
                 'SecondaryDNS' : 'DNS2',
                 'Layer2' : 'LAYER',

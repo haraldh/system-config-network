@@ -192,11 +192,20 @@ class basicDialog:
             button = dialog.run ()
             self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "ISDN":
+            self.device.Type = 'ISDN'
+            if not self.device.Dialup:
+                self.device.createDialup()
+                self.device.Dialup.createCompression()
             cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()
+            self.device.Type = 'ISDN'
             self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "Modem":
+            self.device.Type = 'Modem'
+            if not self.device.Dialup:
+                self.device.createDialup()
+                self.device.Dialup.createCompression()
             cfg = ModemDialupDialog(self.device, self.xml_main, self.xml)
             dialog = cfg.xml.get_widget ("Dialog")
             button = dialog.run ()

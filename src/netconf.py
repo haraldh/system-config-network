@@ -197,9 +197,6 @@ class mainDialog:
         row = 0
         for dev in devicelist:
             type = dev.Type
-            for i in xrange(len(hardwarelist)):
-                if hardwarelist[i].Name == dev.Device:
-                    type = hardwarelist[i].Type
             clist.append(['', dev.DeviceId, type])
             clist.set_pixmap(row, 0, inact_xpm)
             clist.set_row_data(row, 0)
