@@ -83,16 +83,16 @@ if __name__ == '__main__':
             Usage()
             sys.exit(1)
 
-import GdkImlib
 import GDK
-import GTK
 import gtk
 import libglade
 import gnome
 import gnome.ui
 import gnome.help
-from gtk import TRUE
-from gtk import FALSE
+
+
+TRUE=gtk.TRUE
+FALSE=gtk.FALSE
 
 ##
 ## I18N
@@ -259,7 +259,7 @@ class mainDialog:
 
     def hydrateDevices(self):
         devicelist = getDeviceList()
-        profilelist = getProfileList()
+##        profilelist = getProfileList()
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
@@ -511,7 +511,7 @@ class mainDialog:
             return
 
         select = clist.selection[0]
-        device = devicelist[select]
+##        device = devicelist[select]
 
         name = clist.get_text(select, 0)
         type = clist.get_text(select, 1)
@@ -600,7 +600,7 @@ class mainDialog:
         return profilelist[0]
 
     def on_generic_clist_button_press_event(self, clist, event, func):
-        profilelist = getProfileList()
+##        profilelist = getProfileList()
 
         if event.type == GDK._2BUTTON_PRESS:
             info = clist.get_selection_info(event.x, event.y)
@@ -613,8 +613,8 @@ class mainDialog:
             info = clist.get_selection_info(event.x, event.y)
             if info != None and info[1] == 0:
                 row = info[0]
-                name = clist.get_text(row, 0)
-                type = clist.get_text(row, 1)
+##                name = clist.get_text(row, 0)
+##                type = clist.get_text(row, 1)
 ##                 if type == 'Loopback':
 ##                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
 ##                     return
