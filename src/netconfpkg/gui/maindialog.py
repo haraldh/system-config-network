@@ -565,7 +565,7 @@ class mainDialog:
     
     def on_helpButton_clicked(self, button):
         import gnome
-        gnome.url_show("ghelp://" + NETCONFDIR + \
+        gnome.url_show("file:" + NETCONFDIR + \
                        "/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
