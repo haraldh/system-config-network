@@ -35,35 +35,33 @@ class ConfPAP(Conf.Conf):
         self.initvars()
         self.chmod(0600)
 
+    def findline(self, val):
+        # returns false if no more lines matching pattern
+        while self.line < len(self.lines):
+            if self.lines[self.line] == val:
+                return 1
+            self.line = self.line + 1
+        # if while loop terminated, pattern not found.
+        return 0
+
     def initvars(self):
         self.vars = {}
         self.beginlineplace = 0
         self.endlineplace = 0
         self.rewind()
 
-        if not self.findnextline(self.beginline):
-            #self.rewind()
+        if not self.findline(self.beginline):
             self.insertline(self.beginline)
 
         self.beginlineplace = self.tell()
         
-        self.rewind()
-
-        missing = 1
-        while self.findnextline():
-            if self.endline == self.getline():
-                self.endlineplace = self.tell()
-                missing = 0
-                break
-            self.nextline()
-            
-        if missing:
+        if not self.findline(self.endline):
             self.seek(self.beginlineplace)
             self.nextline()
             self.insertline(self.endline)
-            self.endlineplace = self.tell()
-
-        #self.seek(self.beginlineplace)
+        
+        self.endlineplace = self.tell()
+        
         self.rewind()
 
         while self.findnextcodeline():
