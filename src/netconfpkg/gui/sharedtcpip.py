@@ -116,9 +116,7 @@ def dhcp_dehydrate (xml, device):
     device.IP = xml.get_widget('ipAddressEntry').get_text()
     device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
     device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
-    hname = xml.get_widget('hostnameEntry').get_text()
-    if hname != None and hname != '':
-        device.Hostname = hname
+    device.Hostname = xml.get_widget('hostnameEntry').get_text()
 
 ###
 ### ROUTES
@@ -387,5 +385,5 @@ if __name__ == '__main__':
     gtk.mainloop ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/07/08 09:45:48 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2004/03/04 13:55:39 $"
+__version__ = "$Revision: 1.31 $"
