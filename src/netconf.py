@@ -20,7 +20,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+#
 PROGNAME='system-config-network'
 
 import sys
@@ -270,5 +270,5 @@ if __name__ == '__main__':
         
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/01 15:20:33 $"
-__version__ = "$Revision: 1.200 $"
+__date__ = "$Date: 2003/12/02 10:26:30 $"
+__version__ = "$Revision: 1.201 $"
