@@ -1,6 +1,7 @@
 # 
 #
 #
+#
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Allan Sims <allsi@eau.ee>, 2004.
@@ -10,7 +11,7 @@ msgstr ""
 "Project-Id-Version: et\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-01-29 15:39+0100\n"
-"PO-Revision-Date: 2004-02-28 16:12+0200\n"
+"PO-Revision-Date: 2004-02-28 17:56+0200\n"
 "Last-Translator: Allan Sims <allsi@eau.ee>\n"
 "Language-Team: Estonian <Eesti>\n"
 "MIME-Version: 1.0\n"
@@ -560,7 +561,7 @@ msgstr "Kohalik virtuaalne aadress:"
 #: src/netconfpkg/gui/CipeInterface.py:236 src/netconfpkg/gui/cipeconfig.py:71
 #: src/netconfpkg/gui/cipeconfig.py:133
 msgid "None - Server Mode"
-msgstr "Ei üksiki - serveri moodus "
+msgstr "Ei üksiki - serveri režiim "
 
 #: src/netconfpkg/gui/CipeInterface.py:175 src/netconfpkg/gui/cipeconfig.py:79
 msgid " (dynamic)"
@@ -571,7 +572,7 @@ msgstr " (dünaamiline)"
 #: src/netconfpkg/gui/CipeInterface.py:266
 #: src/netconfpkg/gui/cipeconfig.py:111 src/netconfpkg/gui/cipeconfig.py:165
 msgid "Server Mode"
-msgstr "Serveri moodus"
+msgstr "Serveri režiim"
 
 #. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:297
@@ -929,7 +930,7 @@ msgstr "Muu traadita ühenduse kaart"
 
 #: src/netconfpkg/gui/WirelessInterface.py:303
 msgid "Mode:"
-msgstr "Moodus:"
+msgstr "Režiim:"
 
 #: src/netconfpkg/gui/WirelessInterface.py:304
 msgid "ESSID (network ID):"
@@ -2245,13 +2246,15 @@ msgstr "%s kopeerimine vaike profiilile."
 #: src/netconfpkg/NCProfileList.py:209
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr ""
+msgstr "Seade %s kasutab sama Riistvara seadet \"%s\" nagu %s!\n"
 
 #: src/netconfpkg/NCProfileList.py:211
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
 msgstr ""
+"Palun vali mõni teine riistvara seade või\n"
+"aktiveeri ainult üks nendest."
 
 #. Just to be safe...
 #. commit the changes
@@ -2333,7 +2336,7 @@ msgstr "Kas järgmisi pakette, mida on süsteemil vaja, võib installeerida?"
 
 #: src/netconfpkg/NC_functions.py:229
 msgid "You have to install the following packages, which are needed on your system!"
-msgstr ""
+msgstr "Sa pead installeerima järgnevad paketid, millised on süsteemile vajalikud!"
 
 #. test for wireless
 #. Some failsafe return codes (same as in gtk)
@@ -2347,6 +2350,9 @@ msgid ""
 "%s:\n"
 "%s!"
 msgstr ""
+"Viga eemaldamisel\n"
+"%s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:728
 #, python-format
@@ -2356,6 +2362,10 @@ msgid ""
 "%s:\n"
 "%s!"
 msgstr ""
+"Viga ühendamisel %s\n"
+"\n"
+"%s-le:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:739
 #, python-format
@@ -2365,6 +2375,10 @@ msgid ""
 "to %s:\n"
 "%s!"
 msgstr ""
+"Viga kopeerides \n"
+"%s\n"
+"%s:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:749
 #, python-format
@@ -2374,6 +2388,10 @@ msgid ""
 "to %s:\n"
 "%s!"
 msgstr ""
+"Viga ühendades \n"
+"%s\n"
+"%s-le:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:759
 #, python-format
@@ -2383,6 +2401,10 @@ msgid ""
 "to %s:\n"
 "%s!"
 msgstr ""
+"Viga nimetades  \n"
+"%s\n"
+"ümber %s-ks:\n"
+"%s!"
 
 #: src/netconfpkg/NC_functions.py:767
 #, python-format
@@ -2390,6 +2412,8 @@ msgid ""
 "Error creating directory!\n"
 "%s"
 msgstr ""
+"Viga kataloogi loomisel!\n"
+"%s"
 
 #. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
@@ -2464,17 +2488,17 @@ msgstr "Mitte aktiivne"
 #. not found in last config and not in actual system
 #: src/netconfpkg/NCHardware.py:22
 msgid "system"
-msgstr ""
+msgstr "süsteem"
 
 #. found in system
 #: src/netconfpkg/NCHardware.py:23
 msgid "configured"
-msgstr ""
+msgstr "seadistatud"
 
 #. found in config but not in system
 #: src/netconfpkg/NCHardware.py:24
 msgid "ok"
-msgstr ""
+msgstr "olgu"
 
 #. found in system and in config
 #. !/usr/bin/python
@@ -2578,7 +2602,7 @@ msgstr ""
 #: src/netconfpkg/NCDevice.py:200
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr ""
+msgstr "%s, seade on määramata või alias ei ole number!"
 
 #. move old <id>.route files to route-<id>
 #. load routes
@@ -2586,12 +2610,12 @@ msgstr ""
 #: src/netconfpkg/NCDevice.py:243
 #, python-format
 msgid "Static routes file %s is invalid"
-msgstr ""
+msgstr "Staatiline marsruudi fail %s on vigane"
 
 #: src/netconfpkg/NCDevice.py:380 src/netconfpkg/plugins/NCDevIsdn.py:75
 #, python-format
 msgid "Cannot activate network device %s!\n"
-msgstr ""
+msgstr "Ei saa aktiveerida võrguseadet %s!\n"
 
 #: src/netconfpkg/NCDevice.py:397 src/netconfpkg/plugins/NCDevIsdn.py:95
 msgid "Network device deactivating..."
@@ -2605,7 +2629,7 @@ msgstr "Võrguseadme %s deaktiveerimine, palun oota..."
 #: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
-msgstr ""
+msgstr "Ei saa deaktiveerida võrguseadet %s!\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start system-config-network with root permissions once!\n"
@@ -4030,7 +4054,7 @@ msgstr "Kirjeldus"
 
 #: src/netconfpkg/gui/maindialog.glade.h:9
 msgid "Destination"
-msgstr ""
+msgstr "Sihtkoht"
 
 #: src/netconfpkg/gui/maindialog.glade.h:10
 msgid "Dev_ices"
@@ -4038,7 +4062,7 @@ msgstr "_Seadmed"
 
 #: src/netconfpkg/gui/maindialog.glade.h:12
 msgid "Do_main:"
-msgstr ""
+msgstr "Do_meen:"
 
 #: src/netconfpkg/gui/maindialog.glade.h:13
 msgid "H_osts"
@@ -4050,11 +4074,11 @@ msgstr "Riist_vara"
 
 #: src/netconfpkg/gui/maindialog.glade.h:15
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: src/netconfpkg/gui/maindialog.glade.h:16
 msgid "IP_sec"
-msgstr ""
+msgstr "IP_sec"
 
 #: src/netconfpkg/gui/maindialog.glade.h:17
 msgid "List of devices which are currently configurable on your system."
@@ -4062,7 +4086,7 @@ msgstr ""
 
 #: src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Monitor the selected device."
-msgstr ""
+msgstr "Vaatle valitud seadmeid"
 
 #: src/netconfpkg/gui/maindialog.glade.h:21
 msgid "New Profile"
@@ -4140,11 +4164,11 @@ msgstr "_Arvuti nimi:"
 #: src/netconfpkg/gui/maindialog.glade.h:37
 #: src/netconfpkg/gui/neat-control.glade.h:21
 msgid "_Monitor"
-msgstr ""
+msgstr "_Vaatle"
 
 #: src/netconfpkg/gui/maindialog.glade.h:38
 msgid "_New"
-msgstr ""
+msgstr "_Uus"
 
 #: src/netconfpkg/gui/maindialog.glade.h:39
 msgid "_Primary DNS:"
@@ -4168,23 +4192,23 @@ msgstr "Seadista traadita ühendus"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
 msgid "Create Wireless Device"
-msgstr ""
+msgstr "Loo traadita seade"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
 msgid "Select Wireless Device"
-msgstr ""
+msgstr "Vali traadita seade"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid "Select the wireless card you want to configure:"
-msgstr ""
+msgstr "Vali traadita kaart, mida soovid seadistada:"
 
 #: src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 msgid "Wireless card"
-msgstr ""
+msgstr "Traadita kaart"
 
 #: src/netconfpkg/gui/editipsec.glade.h:2
 msgid "A_uthentication key:"
-msgstr ""
+msgstr "A_utentimise võti:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
 msgid "Automatic encryption mode selection via IKA (racoon)"
@@ -4192,15 +4216,15 @@ msgstr ""
 
 #: src/netconfpkg/gui/editipsec.glade.h:4
 msgid "Ge_nerate"
-msgstr ""
+msgstr "Ge_nereeri"
 
 #: src/netconfpkg/gui/editipsec.glade.h:5
 msgid "Host to Host encryption"
-msgstr ""
+msgstr "Arvuti - arvuti krüpteerimine"
 
 #: src/netconfpkg/gui/editipsec.glade.h:6
 msgid "IPsec"
-msgstr ""
+msgstr "IPsec"
 
 #: src/netconfpkg/gui/editipsec.glade.h:7
 msgid "IPsec - Connection Type"
@@ -4208,31 +4232,31 @@ msgstr "IPsec - ühenduse tüüp"
 
 #: src/netconfpkg/gui/editipsec.glade.h:8
 msgid "IPsec - Encryption Mode"
-msgstr ""
+msgstr "IPsec - krüpteerimise režiim"
 
 #: src/netconfpkg/gui/editipsec.glade.h:9
 msgid "IPsec - Keys"
-msgstr ""
+msgstr "IPsec - võtmed"
 
 #: src/netconfpkg/gui/editipsec.glade.h:10
 msgid "IPsec - Local Network"
-msgstr ""
+msgstr "IPsec - kohalik võrk"
 
 #: src/netconfpkg/gui/editipsec.glade.h:11
 msgid "IPsec - Remote Network"
-msgstr ""
+msgstr "IPsec - kaug võrg"
 
 #: src/netconfpkg/gui/editipsec.glade.h:12
 msgid "IPsec - Summary"
-msgstr ""
+msgstr "IPsec - Kokkuvõte"
 
 #: src/netconfpkg/gui/editipsec.glade.h:13
 msgid "IPsec Settings"
-msgstr ""
+msgstr "IPsec seaded"
 
 #: src/netconfpkg/gui/editipsec.glade.h:14
 msgid "Local network _address:"
-msgstr ""
+msgstr "Kohaliku võrgu _aadress:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:15
 msgid "Local network _gateway:"
@@ -4256,11 +4280,11 @@ msgstr "Palun sisesta ühendusele hüüdnimi:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter your local network settings:"
-msgstr ""
+msgstr "Palun sisesta oma kohaliku võrgu seaded:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:21
 msgid "Please enter your remote network settings:"
-msgstr ""
+msgstr "Palun sisesta oma kaug võrgu seaded:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:22
 msgid "Please select the type of connection:"
@@ -4278,11 +4302,11 @@ msgstr ""
 
 #: src/netconfpkg/gui/editipsec.glade.h:26
 msgid "Remote _IP address:"
-msgstr ""
+msgstr "Kaug _IP aadress:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:27
 msgid "Remote network _address:"
-msgstr ""
+msgstr "Kaug võrgu _aadress:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:28
 msgid "Remote network _gateway:"
@@ -4302,11 +4326,11 @@ msgstr "_Arvuti käivitamisel aktiveeri ühendus"
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
 msgid "_Encryption key:"
-msgstr ""
+msgstr "_Krüpteerimise võti:"
 
 #: src/netconfpkg/gui/neat-control.glade.h:1
 msgid "Ac_tivate"
-msgstr ""
+msgstr "Ak_tiveeri"
 
 #: src/netconfpkg/gui/neat-control.glade.h:2
 msgid "Active Profile"
@@ -4314,19 +4338,19 @@ msgstr "Aktiivne profiil"
 
 #: src/netconfpkg/gui/neat-control.glade.h:3
 msgid "Auto _Select"
-msgstr ""
+msgstr "Automaatne _valik"
 
 #: src/netconfpkg/gui/neat-control.glade.h:4
 msgid "Click to activate the selected profile"
-msgstr ""
+msgstr "Vajuta valitud profiili aktiveerimiseks"
 
 #: src/netconfpkg/gui/neat-control.glade.h:5
 msgid "Click to bring up the interface"
-msgstr ""
+msgstr "Vajuta liidese ülestoomiseks"
 
 #: src/netconfpkg/gui/neat-control.glade.h:6
 msgid "Click to configure the interface"
-msgstr ""
+msgstr "Vajuta liidese seadistamiseks"
 
 #: src/netconfpkg/gui/neat-control.glade.h:7
 msgid "Click to get infos"
@@ -4338,11 +4362,11 @@ msgstr ""
 
 #: src/netconfpkg/gui/neat-control.glade.h:9
 msgid "Click to monitor the interface"
-msgstr ""
+msgstr "Vajuta liidese vaatlemiseks"
 
 #: src/netconfpkg/gui/neat-control.glade.h:10
 msgid "Click to shutdown the interface"
-msgstr ""
+msgstr "Vajuta liidese seiskamiseks"
 
 #: src/netconfpkg/gui/neat-control.glade.h:14
 msgid "Select a profile"
@@ -4350,19 +4374,19 @@ msgstr "Vali profiil"
 
 #: src/netconfpkg/gui/neat-control.glade.h:16
 msgid "The following network interfaces are configured in the active profile."
-msgstr ""
+msgstr "Järgnevad võrguliidesed on seadistatud aktiivses profiilis."
 
 #: src/netconfpkg/gui/neat-control.glade.h:20
 msgid "_Info"
-msgstr ""
+msgstr "_Info"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
 msgid "Card"
-msgstr ""
+msgstr "Kaart"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
 msgid "Create Device"
-msgstr ""
+msgstr "Loo seade"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
 #: src/netconfpkg/gui/ptpconfig.glade.h:5
@@ -4371,14 +4395,14 @@ msgstr ""
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
 msgid "Select Device"
-msgstr ""
+msgstr "Vali seade"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
 msgid "Select the card you want to configure:"
-msgstr ""
+msgstr "Vali kaart, mida soovid seadistada:"
 
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:9
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Point to Point (IP):"
-msgstr ""
+msgstr "Punkt-punkt (IP):"
 
