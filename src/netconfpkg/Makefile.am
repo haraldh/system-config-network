@@ -1,3 +1,6 @@
+EXTRA_DIST = DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl \
+             NetworkList.idl Firewall.idl genClass.py NCDeviceList.py
+
 GLADE_FILES = \
 	basicdialog.glade \
 	chooseprovider.glade \
@@ -12,6 +15,9 @@ GLADE_FILES = \
 	isdnhardware.glade \
 	modemconfig.glade \
 	wirelessconfig.glade
+
+BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
+                ProviderList.py NetworkList.py
 
 IDL_FILES = \
 	DeviceList.idl \
