@@ -36,11 +36,27 @@ EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 netconfpkgdir = $(pkgdatadir)/netconfpkg
 netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES)
 
+
+INCLUDES = -I/usr/include/python1.5
+
+noinst_LTLIBRARIES = libethtoolmodule.la
+libethtoolmodule_la_SOURCES = ethtool.c	
+pythondir = $(pkgdatadir)/netconfpkg
+python_PROGRAMS = ethtoolmodule.so
+ethtoolmodule_so_SOURCES = 
+ethtoolmodule_so_LDFLAGS = -fPIC -DPIC -shared -Wl,-soname,ethtoolmodule.so -module \
+			  -avoid-version -export-symbols-regex initethtool \
+			  libethtoolmodule.la
+
+ethtoolmodule.so: $(libethtoolmodule_la_OBJECTS)
+	$(LINK) -g -o $@ $^ $(ethtoolmodule_so_LDFLAGS)
+
 execdir = $(sbindir)
 
 clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
+	rm -f *.so
 
 DeviceList.py: $(srcdir)/DeviceList.idl $(srcdir)/genClass.py $(srcdir)/NCDeviceList.py $(srcdir)/NCDevice.py $(srcdir)/NCDialup.py $(srcdir)/NCCallback.py
 
