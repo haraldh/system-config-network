@@ -1,7 +1,6 @@
 EXTRA_DIST := DeviceList.idl ProfileList.idl HardwareList.idl ProviderList.idl NetworkList.idl Firewall.idl
 
-BUILT_SOURCES = DeviceList.py
-# ProfileList.py HardwareList.py ProviderList.py NetworkList.py Firewall.py
+BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py NetworkList.py Firewall.py
 
 #DeviceList.py: DeviceList.idl /usr/lib/rhs/genClass.py
 #	python /usr/lib/rhs/genClass.py $(srcdir)/$*.idl -c $@ $* 
@@ -9,6 +8,10 @@ BUILT_SOURCES = DeviceList.py
 #pkgdata_DATA :=
 
 #exec_SCRIPTS = bindconf-gui
+
+/usr/lib/rhs/python/genClass.py:
+	@echo "Make a softlink from CVS/alchemist/src/genClass.py to /usr/lib/rhs/python/genClass.py"
+	false
 
 execdir = $(sbindir)
 
