@@ -101,6 +101,8 @@ class Cipe(Cipe_base):
     
     keydict = { 'RemotePeerAddress' : 'PEER',
                 'RemoteVirtualAddress' : 'PTPADDR',
+                'TunnelDevice' : 'TUNNELDEV',
+                'TunnelIP' : 'ME',
                 }
     
     def __init__(self, list = None, parent = None):
@@ -149,6 +151,13 @@ class Cipe(Cipe_base):
         
         parent = self.getParent()
         if parent:
+            if not os.path.isdir("/etc/cipe"):
+                generic_error_dialog(_("Directory /etc/cipe is missing!\nWill create it for you!\nYou should install the cipe rpm package!\n"))
+                try:
+                    os.mkdir("/etc/cipe")
+                except:
+                    generic_error_dialog(_("Could not create\ndirectory /etc/cipe!"))
+                    return
             conf = ConfCipeOptions(parent.DeviceId)
             if conf:
                 if self.SecretKey: conf['key'] = self.SecretKey

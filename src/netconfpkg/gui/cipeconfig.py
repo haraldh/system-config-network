@@ -138,13 +138,19 @@ class cipeConfigDialog(deviceConfigDialog):
         deviceConfigDialog.dehydrate(self)
 
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
-        hw = fields[0]
-        if self.device.Cipe.TunnelDevice == "None":
+        if hw == _('None - Server Mode'):
             self.device.Cipe.TunnelDevice = None
+            self.device.Cipe.TunnelIP = "0.0.0.0"
         else:
+            fields = string.split(hw)
+            hw = fields[0]
             self.device.Cipe.TunnelDevice = hw
-
+            self.device.Cipe.TunnelIP = "0.0.0.0"
+            devlist = NCDeviceList.getDeviceList()
+            for dev in devlist:
+                if dev.Device == hw and dev.IP:
+                    self.device.Cipe.TunnelIP = dev.IP
+            
         self.device.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
         self.device.Cipe.LocalPort = int(self.xml.get_widget("localPortEntry").get_text())
         self.device.Cipe.RemoteVirtualAddress = self.xml.get_widget("remoteVirtualAddressEntry").get_text()
