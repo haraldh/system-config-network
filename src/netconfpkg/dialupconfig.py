@@ -29,6 +29,9 @@ import string
 import gettext
 import re
 
+from NCDeviceList import *
+from NCHardwareList import *
+
 from provider import *
 from gtk import TRUE
 from gtk import FALSE
@@ -99,11 +102,9 @@ class DialupDialog:
             self.dialog.set_icon(pix, mask)
 
     def hydrate(self):
-        # to be overloaded by specific dialup classes
         pass
 
     def dehydrate(self):
-        # to be overloaded by specific dialup classes
         pass
 
     def on_Dialog_delete_event(self, *args):
@@ -212,15 +213,47 @@ class ISDNDialupDialog(DialupDialog):
         DialupDialog.__init__(self, device, xml_main, xml_basic)
 
         self.noteBook.get_nth_page(4).hide()
-        self.dialog.set_title("ISDN Dialup Configuration")
+        self.dialog.set_title(_("ISDN Dialup Configuration"))
+        self.hydrate()
         
     def on_chooseButton_clicked(self, button):
         dialog = ISDNproviderDialog(self.xml_main, self.xml_basic, self.xml)
 		
     def hydrate(self):
-        # Fill in Dialog
-        pass
+        global hardwarelist
+        
+        hardwarelist = getHardwareList()
 
+        self.xml.get_widget("providerName").set_text(self.device.Dialup.ProviderName)
+        self.xml.get_widget("loginNameEntry").set_text(self.device.Dialup.Login)
+        self.xml.get_widget("passwordEntry").set_text(self.device.Dialup.Password)
+        self.xml.get_widget("areaCodeEntry").set_text(self.device.Dialup.Areacode)
+        self.xml.get_widget("phoneEntry").set_text(self.device.Dialup.PhoneOut)
+        self.xml.get_widget("prefixEntry").set_text(self.device.Dialup.Prefix)
+        self.xml.get_widget("callbackCB").set_active(self.device.Dialup.Callback != None)
+        self.xml.get_widget("dialingRuleCB").set_active(len(self.device.Dialup.Areacode) >0 or
+                                                        len(self.device.Dialup.Prefix) >0 or
+                                                        len(self.device.Dialup.Regioncode) >0)
+        if len(self.device.Dialup.Regioncode) >0:
+            self.xml.get_widget("countryCodeEntry").set_text(self.device.Dialup.Regioncode)
+
+        if len(self.device.Dialup.Authentication) >0:
+            self.xml.get_widget("authEntry").set_text(self.device.Dialup.Authentication)
+
+        if self.device.Dialup.Callback != None:
+            self.xml.get_widget("dialinNumberEntry").set_text(self.device.Dialup.Callback.Number)
+            self.xml.get_widget("callbackDelaySB").set_value(self.device.Dialup.Callback.Delay)
+            self.xml.get_widget("allowDialinNumberCB").set_active(self.device.Dialup.Secure == true)
+            self.xml.get_widget("cbcpCB").set_active(self.device.Dialup.Callback.CBCP == true)
+
+        self.xml.get_widget("HeaderCompressionCB").set_active(self.device.Dialup.Compression.VJTcpIp == true)
+        self.xml.get_widget("connectionCompressionCB").set_active(self.device.Dialup.Compression.VJID == true)
+        self.xml.get_widget("acCompressionCB").set_active(self.device.Dialup.Compression.AdressControl == true)
+
+        self.xml.get_widget("ipppOptionList").set_sensitive(len(self.device.Dialup.PPPOptions)>0)
+        for plist in self.device.Dialup.PPPOptions:
+            self.xml.get_widget("ipppOptionList").append([plist])
+        
     def dehydrate(self):
         # Fill in Device.Dialup class
         pass
@@ -229,7 +262,7 @@ class ModemDialupDialog(DialupDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
         DialupDialog.__init__(self, device, xml_main, xml_basic)
         
-        self.dialog.set_title("Modem Dialup Configuration")
+        self.dialog.set_title(_("Modem Dialup Configuration"))
         for i in [1,5]:
             self.noteBook.get_nth_page(i).hide()
         self.hydrate()
@@ -238,9 +271,19 @@ class ModemDialupDialog(DialupDialog):
         dialog = ModemproviderDialog(self.xml_main, self.xml_basic, self.xml)
 		
     def hydrate(self):
+        global hardwarelist
+        
+        hardwarelist = getHardwareList()
+        devicelist = []
+
+        for hw in hardwarelist:
+            if hw.Type == 'Modem':
+                devicelist.append(hw.Name)
+                continue
+
         # Fill in Dialog
-        if self.device.Device:
-            self.xml.get_widget("modemPortEntry").set_text(self.device.Device)
+        if devicelist:
+            self.xml.get_widget("modemPortCombo").set_popdown_strings(devicelist)
 
     def dehydrate(self):
         # Fill in Device.Dialup class

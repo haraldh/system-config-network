@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 from DeviceList import *
 from os import *
 from os.path import *
@@ -73,7 +75,7 @@ DVList = None
 
 def getDeviceList():
     global DVList
-    if not DVList:
+    if DVList == None:
         DVList = DeviceList()
         DVList.load()
     return DVList
@@ -83,11 +85,98 @@ if __name__ == '__main__':
     dl = DeviceList()
     dl.load()
     for dev in dl:
-        print "ID: " + str(dev.DeviceId)
-        print "Device: " + str(dev.Device)
-        print "Name: " + str(dev.Name)
-        print "IP: " + str(dev.IP)
-        print "OnBoot: " + str(dev.OnBoot)
-        print "Type: " + str(dev.Type)
-        print "---------"
-    dl.save()
+        if dev.Type == "Ethernet":
+            continue
+            print "ID: " + str(dev.DeviceId)
+            print "Name: " + str(dev.Name)
+            print "Device: " + str(dev.Device)
+            print "Alias: " + str(dev.Alias)
+            print "Type: " + str(dev.Type)
+            print "OnBoot: " + str(dev.OnBoot)
+            print "AllowUser: " + str(dev.AllowUser)
+            print "BootProto: " + str(dev.BootProto)
+            print "IP: " + str(dev.IP)
+            print "Netmask: " + str(dev.Netmask)
+            print "Gateway: " + str(dev.Netmask)
+            print "Hostname: " + str(dev.Hostname)
+            print "Domain: " + str(dev.Domain)
+            print "AutoDNS: " + str(dev.AutoDNS)
+        elif dev.Type == "Modem" or dev.Type == "ISDN":
+            print "Device: ", str(dev.Device)
+            print "Provider Name: " + str(dev.Dialup.ProviderName)
+            print "Login: " + str(dev.Dialup.Login)
+            print "Password: " + str(dev.Dialup.Password)
+            print "Authentication: " + str(dev.Dialup.Authentication)
+            print "MSN: " + str(dev.Dialup.MSN)
+            print "Prefix: " + str(dev.Dialup.Prefix)
+            print "Areacode: " + str(dev.Dialup.Areacode)
+            print "Regioncode: " + str(dev.Dialup.Regioncode)
+            print "PhoneNumber: " + str(dev.Dialup.PhoneNumber)
+            print "LocalIP: " + str(dev.Dialup.LocalIP)
+            print "RemoteIP: " + str(dev.Dialup.RemoteIP)
+            print "PrimaryDNS: " + str(dev.Dialup.PrimaryDNS)
+            print "SecondaryDNS: " + str(dev.Dialup.SecondaryDNS)
+            print "Persist: " + str(dev.Dialup.Persist)
+            print "DefRoute: " + str(dev.Dialup.DefRoute)
+            print "ChargeHup: " + str(dev.Dialup.ChargeHup)
+            print "ChargeInt: " + str(dev.Dialup.ChargeInt)
+            print "Ihup: " + str(dev.Dialup.Ihup)
+            print "DialMax: " + str(dev.Dialup.DialMax)
+            print "Layer2: " + str(dev.Dialup.Layer2)
+            print "PPP Options: " , dev.Dialup.PPPOptions
+            if dev.Dialup.DialinServer:
+                print "DialinServer: yes"
+            else:
+                print "DialinServer: no"
+            if dev.Dialup.ChannelBundling:
+                print "ChannelBundling: yes"
+            else:
+                print "ChannelBundling: no"
+            print "EncapMode: " + str(dev.Dialup.EncapMode)
+            print "HangupTimeout: " + str(dev.Dialup.HangupTimeout)
+            print "DialMode: " + str(dev.Dialup.DialMode)
+            print "SlaveDevice: " + str(dev.Dialup.SlaveDevice)
+            if dev.Dialup.Secure:
+                print "Secure: yes"
+            else:
+                print "Secure: no"
+            print "InitStrings: ", dev.Dialup.InitStrings
+            print "Callback:", dev.Dialup.Callback
+            #if dev.Dialup.Callback == None:
+            print "  Number:",  dev.Dialup.Callback.Number
+            print "  Delay:", dev.Dialup.Callback.Hup
+            if dev.Dialup.Callback.CBCP:
+                print "  CBCP: yes"
+            else:
+                print "  CBCP: no"
+            
+            print "Compression:"
+            if dev.Dialup.Compression:
+                if dev.Dialup.Compression.VJTcpIp:
+                    print "  VJTcpIp: yes"
+                else:
+                    print "  VJTcpIp: no"
+                if dev.Dialup.Compression.VJID:
+                    print "  VJID: yes"
+                else:
+                    print "  VJID: no"
+                if dev.Dialup.Compression.AdressControl:
+                    print "  AdressControl: yes"
+                else:
+                    print "  AdressControl: no"
+                if dev.Dialup.Compression.ProtoField:
+                    print "  ProtoField: yes"
+                else:
+                    print "  ProtoField: no"
+                if dev.Dialup.Compression.BSD:
+                    print "  BSD: yes"
+                else:
+                    print "  BSD: no"
+                if dev.Dialup.Compression.CCP:
+                    print "  CCP: yes"
+                else:
+                    print "  CCP: no"
+                                        
+            
+        print "---------------------------------------"
+    #dl.save()

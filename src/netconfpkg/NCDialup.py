@@ -2,6 +2,8 @@ from DeviceList import *
 from NC_functions import *
 from ConfSMB import *
 
+import string
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
@@ -40,6 +42,7 @@ class IsdnDialup(Dialup):
                 'Authentication' : 'AUTH',
                 'Ihup' : 'IHUP',
                 'SlaveDevice' : 'SLAVE_DEVICE',
+                'Layer2' : 'L2_PROT',
                 }
     
     def __init__(self, list = None, parent = None):
@@ -89,12 +92,48 @@ class IsdnDialup(Dialup):
                 else:
                     parent.OnBoot = false
 
+        if not self.PPPOptions:
+            self.createPPPOptions()
+        
         compression = self.createCompression()
         compression.load(conf)
+        
+        if conf['VJ'] == 'on' or conf['VJ'] == 'yes':
+            compression.VJTcpIp = true
+        else:
+            compression.VJTcpIp = false
+        if conf['VJCCOMP'] == 'on' or conf['VJCCOMP'] == 'yes':
+            compression.VJID = true
+        else:
+            compression.VJID = false
+        if conf['AC'] == 'on' or conf['AC'] == 'yes':
+            compression.AdressControl = true
+        else:
+            compression.AdressControl = false
+        if conf['PC'] == 'on' or conf['PC'] == 'yes':
+            compression.ProtoField = true
+        else:
+            compression.ProtoField = false
+        if conf['BSDCOMP'] == 'on' or conf['BSDCOMP'] == 'yes':
+            compression.BSD = true
+        else:
+            compression.BSD = false
+        if conf['CCP'] == 'on' or conf['CCP'] == 'yes':
+            compression.CCP = true
+        else:
+            compression.CCP = false
+
         if conf.has_key('CALLBACK'):
             if conf['CALLBACK'] == 'on':
                 callback = self.createCallback()
                 callback.load(conf)
+                callback.Number = conf['PHONE_IN']
+                callback.Delay = string.atoi(conf['CBDELAY'])
+                callback.Hup = conf['CBHUP']
+                if conf['CBCP'] == 'on' or conf['CBCP'] == 'yes':
+                    callback.CBCP = true
+                else:
+                    callback.CBCP = false
             else:
                 self.delCallback()
 
@@ -102,7 +141,7 @@ class IsdnDialup(Dialup):
 
     def save(self, parentConf):
         conf = parentConf
-        
+
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
