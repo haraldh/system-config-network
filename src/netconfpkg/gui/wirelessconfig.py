@@ -104,6 +104,7 @@ class wirelessConfigDialog(deviceConfigDialog):
                 self.xml.get_widget("essidEntry").set_sensitive(FALSE)
             else:
                 self.xml.get_widget("essidSpecButton").set_active(TRUE)
+                self.xml.get_widget("essidAutoButton").set_active(FALSE)
                 self.xml.get_widget("essidEntry").set_sensitive(TRUE)
             if wl.EssId:
                 self.xml.get_widget("essidEntry").set_text(wl.EssId)
