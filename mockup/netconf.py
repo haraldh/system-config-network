@@ -401,8 +401,8 @@ def setup ():
     accountPixmap = xml.get_widget ("accountPixmap")
     networkPixmap = xml.get_widget ("networkPixmap")
     basicNotebook = xml.get_widget ("basicNotebook")
-    set_icon (accountPixmap, "keys.xpm")
-    set_icon (networkPixmap, "network.xpm")
+#    set_icon (accountPixmap, "keys.xpm")
+#    set_icon (networkPixmap, "network.xpm")
     for i in [4,5,6]:
         basicNotebook.get_nth_page (i).hide ()
 
