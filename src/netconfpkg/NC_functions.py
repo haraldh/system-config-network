@@ -72,15 +72,15 @@ ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
 
 iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
 
-deviceTypeDict = { '^eth[0-9]+(:[0-9]+)?$' : ETHERNET,
-		   '^ppp[0-9]+(:[0-9]+)?$' : MODEM,
-		   '^ippp[0-9]+(:[0-9]+)?$' : ISDN,
-		   '^isdn[0-9]+(:[0-9]+)?$' : ISDN,
-		   '^cipcb[0-9]+(:[0-9]+)?$' : CIPE,
-		   '^tr[0-9]+(:[0-9]+)?$' :TOKENRING,
+deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
+		   '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
+		   '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
+		   '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
+		   '^cipcb[0-9]*(:[0-9]+)?$' : CIPE,
+		   '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
 		   '^lo$' : LO,
-		   '^ctc[0-9]+(:[0-9]+)?$' : CTC,
-		   '^iucv[0-9]+(:[0-9]+)?$' : IUCV,
+		   '^ctc[0-9]*(:[0-9]+)?$' : CTC,
+		   '^iucv[0-9]*(:[0-9]+)?$' : IUCV,
 		   }
 # Removed for now, until we have a config dialog for infrared
 #		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
@@ -272,7 +272,7 @@ def getModemList():
 	    return ModemList[:]
     
     import kudzu
-    res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_USB|kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
+    res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_UNSPEC, kudzu.PROBE_ALL)
     ModemList = []
     if res != []:
         for v in res:
