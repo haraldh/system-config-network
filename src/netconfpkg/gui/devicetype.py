@@ -33,7 +33,8 @@ from dialupconfig import _
 from ethernetconfig import ethernetConfigDialog
 from dslconfig import dslConfigDialog
 from editadress import editAdressDialog
-from NC_functions import *
+from netconfpkg.gui.NC_functions import *
+from netconfpkg.gui.NC_functions import load_icon
 from gtk import TRUE
 from gtk import FALSE
 
@@ -45,7 +46,7 @@ class deviceTypeDialog:
         glade_file = "devicetype.glade"
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 

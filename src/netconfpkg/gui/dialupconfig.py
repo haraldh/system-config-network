@@ -29,11 +29,11 @@ import gettext
 import re
 
 from deviceconfig import deviceConfigDialog
-from NCDeviceList import *
-from NCCallback import *
-from NCHardwareList import *
-from NC_functions import *
-from NC_functions import _
+from netconfpkg.NCDeviceList import *
+from netconfpkg.NCCallback import *
+from netconfpkg.NCHardwareList import *
+from netconfpkg.gui.NC_functions import *
+from netconfpkg.NC_functions import _
 from provider import *
 from gtk import TRUE
 from gtk import FALSE

@@ -22,7 +22,7 @@ import signal
 import os
 import string
 import re
-import NC_functions
+from netconfpkg.gui import GUI_functions
 
 FALSE = 0
 TRUE = not FALSE
@@ -31,9 +31,9 @@ provider_db = "providerdb"
 if not os.path.exists(provider_db):
     provider_db = "netconfpkg/" + "providerdb"
 if not os.path.exists(provider_db):
-    provider_db = NC_functions.NETCONFDIR + "providerdb"
+    provider_db = GUI_functions.NETCONFDIR + "providerdb"
 if not os.path.exists(provider_db):
-    provider_db = NC_functions.NETCONFDIR + "netconfpkg/" + "providerdb"
+    provider_db = GUI_functions.NETCONFDIR + "netconfpkg/" + "providerdb"
 
 class provider:
     def __init__(self):

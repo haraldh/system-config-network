@@ -1,31 +1,6 @@
-GLADE_FILES = \
-	ADSLInterfaceDruid.glade \
-	chooseprovider.glade \
-	cipeconfig.glade \
-	devicetype.glade \
-	dialupconfig.glade \
-	DialupDruid.glade \
-	dslconfig.glade \
-	editadress.glade \
-	editdomain.glade \
-	edithosts.glade \
-	ethernetconfig.glade \
-	EthernetHardwareDruid.glade \
-	ethernethardware.glade \
-	hardwaretype.glade \
-	IsdnHardwareDruid.glade \
-	isdnhardware.glade \
-	modemconfig.glade \
-	ModemDruid.glade \
-	NewInterfaceDruid.glade \
-	tcpipdialog.glade \
-	tokenringconfig.glade \
-	TokenRingHardwareDruid.glade \
-	tokenringhardware.glade \
-	wirelessconfig.glade \
-	ctcconfig.glade
+SUBDIRS=gui
 
-BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
+GENCLASS_FILES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py	Firewall.py 
 
 IDL_FILES = \
@@ -37,30 +12,11 @@ IDL_FILES = \
 	ProviderList.idl
 
 PYTHON_FILES = \
-	ADSLInterface.py \
-	cipeconfig.py \
+	__init__.py \
 	Conf.py \
 	ConfPAP.py \
 	ConfSMB.py \
-	deviceconfig.py \
-	devicetype.py \
-	dialupconfig.py \
-	DialupDruid.py \
-	dslconfig.py \
-	editadress.py \
-	editdomain.py \
-	edithosts.py \
-	ethernetconfig.py \
-	EthernetHardwareDruid.py \
-	ethernethardware.py \
 	genClass.py \
-	hardwaretype.py \
-	__init__.py \
-	InterfaceCreator.py \
-	isdnhardware.py \
-	IsdnInterface.py \
-	modemconfig.py \
-	ModemInterface.py \
 	NCCallback.py \
 	NCCipe.py \
 	NCCompression.py \
@@ -72,21 +28,14 @@ PYTHON_FILES = \
 	NCisdnhardware.py \
 	NCProfileList.py \
 	NCWireless.py \
-	NewInterface.py \
-	PasswordCrypt.py \
-	providerdb.py \
-	provider.py \
-	tcpdialog.py \
-	tokenringconfig.py \
-	TokenRingHardwareDruid.py \
-	tokenringhardware.py \
-	wirelessconfig.py \
-	ctcconfig.py
+	PasswordCrypt.py 
 
-EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
+BUILT_SOURCES = $(patsubst %.py,%.pyc,$(GENCLASS_FILES) $(PYTHON_FILES)) $(GENCLASS_FILES)
+
+EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg
-netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
+netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES)
 
 execdir = $(sbindir)
 
@@ -102,3 +51,6 @@ ProfileList.py: $(srcdir)/ProfileList.idl $(srcdir)/genClass.py $(srcdir)/NCProf
 
 %.py: %.idl $(srcdir)/genClass.py
 	python $(srcdir)/genClass.py -f -c $(srcdir)/$*.idl $@ NC
+
+%.pyc: $(GENCLASS_FILES) $(PYTHON_FILES)
+	python /usr/lib/python1.5/compileall.pyc -l -d . $(srcdir)

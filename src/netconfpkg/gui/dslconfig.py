@@ -28,9 +28,9 @@ import string
 import gettext
 import string
 
-import NCHardwareList
-import NC_functions
-from NC_functions import _
+from netconfpkg import NCHardwareList
+from netconfpkg.gui import GUI_functions
+from netconfpkg.NC_functions import _
 from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE

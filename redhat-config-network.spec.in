@@ -7,7 +7,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libglade, pygtk, python, pygnome-libglade, pyghome
+Requires: initscripts >= 5.99, usermode , alchemist, kudzu, libglade, pygtk-libglade, pygtk, python, pygnome-libglade, pygnome
 BuildRequires: alchemist, alchemist-devel, python, libglade-devel
 Obsoletes: isdn-config internet-config netcfg
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -46,6 +46,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Wed Oct 24 2001 Harald Hoyer <harald@redhat.com> 0.9.6gs-1
+- seperated gui from data layer
+- make .pyc ghost files
+
 * Mon Oct 22 2001 Harald Hoyer <harald@redhat.com> 0.9.5-1
 - fixed consolehelper
 - added chars [_-] ro nickname pattern

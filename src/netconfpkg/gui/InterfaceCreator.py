@@ -17,10 +17,10 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from NCDeviceList import *
-from NCDevice import *
-from NCProfileList import *
-from NCHardwareList import *
+from netconfpkg.NCDeviceList import *
+from netconfpkg.NCDevice import *
+from netconfpkg.NCProfileList import *
+from netconfpkg.NCHardwareList import *
 
 class InterfaceCreator:
     def __init__ (self):

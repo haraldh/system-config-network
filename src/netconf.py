@@ -45,19 +45,28 @@ os.environ["PYGTK_FATAL_EXCEPTIONS"] = '1'
 import os.path
 import string
 import gettext
-import Conf
 from netconfpkg import *
+##
+## I18N
+##
+gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+gettext.textdomain(PROGNAME)
+_=gettext.gettext
 
 def Usage():
-    print ( "redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
+    print _("redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
 
 
 
 # Argh, another workaround for broken gtk/gnome imports...
 if __name__ == '__main__':
+
+    if os.getuid() != 0:
+        print _("Please restart %s with root permissions!") % (sys.argv[0])
+        sys.exit(10)
+        
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
-
     updateNetworkScripts()
 
     if sys.argv[0][-4:] == '-cmd':
@@ -86,6 +95,9 @@ if __name__ == '__main__':
             sys.exit(1)
 
 
+from netconfpkg.gui import *
+from netconfpkg.gui.GUI_functions import GLADEPATH
+from netconfpkg.gui.exception import handleException
 import GDK
 import gtk
 import libglade
@@ -96,19 +108,13 @@ import gnome.help
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
 
-##
-## I18N
-##
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-_=gettext.gettext
 
 class mainDialog:
     def __init__(self):
         glade_file = "maindialog.glade"
 
         if not os.path.isfile(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
 
@@ -1128,13 +1134,15 @@ class mainDialog:
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     progname = os.path.basename(sys.argv[0])
-    if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
-        window = mainDialog()
-    elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
-        interface = NewInterface()
 
-    try:        
+    try:
+        if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
+            window = mainDialog()
+        elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
+            interface = NewInterface()
+            
         gtk.mainloop()
+
     except SystemExit, code:
         sys.exit(0)
     except:

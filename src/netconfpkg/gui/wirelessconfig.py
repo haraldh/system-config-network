@@ -28,8 +28,8 @@ import string
 import gettext
 import string
 
-import NCHardwareList
-import NC_functions
+from netconfpkg import NCHardwareList
+from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
@@ -38,8 +38,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
+gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class wirelessConfigDialog(deviceConfigDialog):
@@ -62,7 +62,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
                     
         hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist,self.device.Device)
+        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,self.device.Device)
 
         if len(hwdesc):
             ecombo.set_popdown_strings(hwdesc)

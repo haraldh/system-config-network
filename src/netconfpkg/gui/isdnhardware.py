@@ -28,10 +28,11 @@ import string
 import gettext
 import re
 
-import NCHardwareList
-import NCisdnhardware
-import NC_functions
-from NC_functions import _
+from netconfpkg import NCHardwareList
+from netconfpkg import NCisdnhardware
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.NC_functions import _
 
 from gtk import TRUE
 from gtk import FALSE
@@ -41,11 +42,11 @@ class isdnHardwareDialog:
         glade_file = "isdnhardware.glade"
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -56,7 +57,7 @@ class isdnHardwareDialog:
 
         self.cardname = cardname
         self.dialog = self.xml.get_widget("Dialog")
-        NC_functions.load_icon("network.xpm", self.dialog)
+        load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
         self.setup()
         self.button = 0

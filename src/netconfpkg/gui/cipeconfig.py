@@ -28,9 +28,9 @@ import string
 import gettext
 import string
 import commands
-import NCDeviceList
-import NCHardwareList
-import NC_functions
+from netconfpkg import NCDeviceList
+from netconfpkg import NCHardwareList
+from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
@@ -39,8 +39,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
+gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class cipeConfigDialog(deviceConfigDialog):
@@ -65,7 +65,7 @@ class cipeConfigDialog(deviceConfigDialog):
         deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
         hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist,
+        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist,
                                                               self.device.Cipe.TunnelDevice)
                     
         if len(hwdesc):

@@ -142,12 +142,23 @@ class Device(DeviceList.Device_base):
 
 
     def load(self, name):
-        
+        from netconfpkg.NCDeviceList import getDeviceList
         conf = ConfDevice(name)
         rconf = ConfRoute(name)
 
+        if not conf.has_key("DEVICE"):
+            aliaspos = string.find(name, ':')
+            if aliaspos != -1:
+                # ok, we have to inherit all other data from our master
+                for dev in getDeviceList():
+                    if dev.Device == name[:aliaspos]:
+                        self.apply(dev)
+                        break
+
+            self.Device = name
+         
         self.DeviceId = name
-        
+
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
@@ -160,9 +171,9 @@ class Device(DeviceList.Device_base):
                     self.__dict__[selfkey] = true
                 else:
                     self.__dict__[selfkey] = false            
-            else:
-                self.__dict__[selfkey] = false            
-
+            elif not self.__dict__.has_key(selfkey):
+                self.__dict__[selfkey] = false                            
+            
         if not self.Gateway:
             try:
                 cfg = Conf.ConfShellVar(SYSCONFNETWORK)

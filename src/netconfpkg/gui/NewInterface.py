@@ -28,10 +28,11 @@ import libglade
 from ModemInterface import ModemInterface
 from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
-import NCHardwareList
-import NCisdnhardware
-import NC_functions
-from NC_functions import *
+from netconfpkg import NCHardwareList
+from netconfpkg import NCisdnhardware
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.NC_functions import *
+from netconfpkg.gui.NC_functions import load_icon
 
 Interfaces = [ IsdnInterface, ModemInterface, ADSLInterface ]
 
@@ -42,11 +43,11 @@ class NewInterface:
         glade_file = 'NewInterfaceDruid.glade'
 
         if not os.path.isfile(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        xml = libglade.GladeXML (glade_file, 'toplevel', domain=NC_functions.PROGNAME)
+        xml = libglade.GladeXML (glade_file, 'toplevel', domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.toplevel = xml.get_widget ('toplevel')

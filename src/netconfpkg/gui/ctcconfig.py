@@ -28,8 +28,8 @@ import string
 import gettext
 import string
 
-from NC_functions import *
-from NC_functions import _
+from netconfpkg.gui.NC_functions import *
+from netconfpkg.NC_functions import _
 from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE

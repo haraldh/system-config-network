@@ -28,9 +28,10 @@ import string
 import gettext
 import re
 
-import NCHardwareList
-from NC_functions import *
-from NC_functions import _
+from netconfpkg import NCHardwareList
+from netconfpkg.gui.NC_functions import *
+from netconfpkg.gui.NC_functions import load_icon
+from netconfpkg.NC_functions import _
 from gtk import TRUE
 from gtk import FALSE
 
@@ -41,7 +42,7 @@ class hardwareTypeDialog:
         glade_file = "hardwaretype.glade"
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 

@@ -18,10 +18,10 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import NC_functions
-from NC_functions import _
-import NCHardwareList
-import NCisdnhardware
+from netconfpkg.gui import GUI_functions
+from netconfpkg.NC_functions import _
+from netconfpkg import NCHardwareList
+from netconfpkg import NCisdnhardware
 import kudzu
 import gtk
 from gtk import TRUE
@@ -42,9 +42,9 @@ class ModemInterface:
         if not os.path.isfile(glade_file):
             glade_file = 'netconfpkg/' + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
  
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_Modem_prepare" : self.on_Modem_prepare,

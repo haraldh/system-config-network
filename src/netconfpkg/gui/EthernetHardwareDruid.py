@@ -17,9 +17,9 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import NC_functions
-from NC_functions import _
-import NCHardwareList
+from netconfpkg.gui import GUI_functions
+from netconfpkg.NC_functions import _
+from netconfpkg import NCHardwareList
 #import gnome.ui
 import gtk
 from gtk import TRUE
@@ -27,18 +27,18 @@ from gtk import FALSE
 import libglade
 import string
 import os
-import Conf
-from tokenringhardware import tokenringHardwareDialog
+from netconfpkg import Conf
+from ethernethardware import ethernetHardwareDialog
 
-class tokenringHardware:
+class ethernetHardware:
     def __init__ (self, toplevel=None):
 
-        glade_file = "TokenRingHardwareDruid.glade"
+        glade_file = "EthernetHardwareDruid.glade"
  
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
  
         self.xml = libglade.GladeXML(glade_file, 'druid')
         self.xml.signal_autoconnect(
@@ -52,7 +52,7 @@ class tokenringHardware:
         self.toplevel = toplevel
         self.hardwarelist = NCHardwareList.getHardwareList()
         self.hw = None
-        self.has_tokenring = TRUE
+        self.has_ethernet = TRUE
         self.druids = []
  
         druid = self.xml.get_widget('druid')
@@ -71,9 +71,9 @@ class tokenringHardware:
     
     def get_druids(self):
         for self.hw in self.hardwarelist:
-            if self.hw.Type == 'Token Ring': return
+            if self.hw.Type == 'Ethernet': return
 
-        self.has_tokenring = FALSE
+        self.has_ethernet = FALSE
         return self.druids[0:]
 
     def on_hardware_page_prepare(self, druid_page, druid):
@@ -90,7 +90,7 @@ class tokenringHardware:
     
     def hydrate(self):
         if self.hw and self.hw.Name:
-            self.xml.get_widget('tokenringDeviceEntry').set_text(self.hw.Name)
+            self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
             self.xml.get_widget('adapterEntry').set_sensitive(FALSE)
             self.xml.get_widget('adapterComboBox').set_sensitive(FALSE)
@@ -110,21 +110,19 @@ class tokenringHardware:
                 self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
 
     def setup(self):
-        list = []
-        modInfo = Conf.ConfModInfo()
-        for i in modInfo.keys():
-            if modInfo[i]['type'] == "tr":
-                list.append(modInfo[i]['description'])
-        list.sort()
-        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+        hwlist = NCHardwareList.getHardwareList()
+        (hwcurr, hwdesc) = GUI_functions.create_ethernet_combo(hwlist, self.device.Device)
+        
+        if len(hwdesc):
+            self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
 
     def dehydrate(self):
-        if not self.has_tokenring:
+        if not self.has_ethernet:
             id = self.hardwarelist.addHardware()
             self.hw = self.hardwarelist[id]
-        self.hw.Type = 'Token Ring'
+        self.hw.Type = 'Ethernet'
         self.hw.createCard()
-        self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()
+        self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
         self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()

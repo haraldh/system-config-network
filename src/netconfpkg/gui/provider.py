@@ -29,7 +29,8 @@ import gettext
 import re
 
 import providerdb
-import NC_functions
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.NC_functions import load_icon
 
 from gtk import TRUE
 from gtk import FALSE
@@ -38,8 +39,8 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
+gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class providerDialog:
@@ -58,11 +59,11 @@ class providerDialog:
         glade_file = "chooseprovider.glade"
         
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.dbtree = self.xml.get_widget("providerTree")
@@ -81,7 +82,7 @@ class providerDialog:
 
         self.okButton.set_sensitive(FALSE)
         self.setup_provider_db()
-        NC_functions.load_icon("network.xpm", self.dialog)
+        load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
 
     def on_Dialog_delete_event(self, *args):
@@ -141,14 +142,14 @@ class providerDialog:
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
         
-        pix_isp, mask_isp = NC_functions.get_icon("isp.xpm", self.dialog)
-        pix_city, mask_city = NC_functions.get_icon("city.xpm", self.dialog)
+        pix_isp, mask_isp = GUI_functions.get_icon("isp.xpm", self.dialog)
+        pix_city, mask_city = GUI_functions.get_icon("city.xpm", self.dialog)
         isp_list = self.get_provider_list()
         _country = ""
         _city = ""
         for isp in isp_list:
             if _country != isp['Country']:
-                pix, mask = NC_functions.get_icon(isp['Flag']+".xpm", self.dialog)
+                pix, mask = GUI_functions.get_icon(isp['Flag']+".xpm", self.dialog)
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=FALSE)
                 _country = isp['Country']

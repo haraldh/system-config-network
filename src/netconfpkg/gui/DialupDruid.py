@@ -23,17 +23,17 @@ import gtk
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
-from NC_functions import _
+from netconfpkg.NC_functions import _
 import libglade
 import string
 import os
 import providerdb
-import NC_functions
-import NCHardwareList
-import NCisdnhardware
-import NCDeviceList
-import NCDevice
-import NCProfileList
+from netconfpkg.gui import GUI_functions
+from netconfpkg import NCHardwareList
+from netconfpkg import NCisdnhardware
+from netconfpkg import NCDeviceList
+from netconfpkg import NCDevice
+from netconfpkg import NCProfileList
 from InterfaceCreator import InterfaceCreator
 
 class DialupDruid(InterfaceCreator):
@@ -41,11 +41,11 @@ class DialupDruid(InterfaceCreator):
         glade_file = 'DialupDruid.glade'
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, 'druid', domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
         self.xml.signal_autoconnect(
             { "on_dialup_page_prepare" : self.on_dialup_page_prepare,
               "on_dialup_page_next" : self.on_dialup_page_next,
@@ -169,14 +169,14 @@ class DialupDruid(InterfaceCreator):
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
         widget = self.xml.get_widget ('providerTree')
-        pix_isp, mask_isp = NC_functions.get_icon('isp.xpm', widget)
-        pix_city, mask_city = NC_functions.get_icon('city.xpm', widget)
+        pix_isp, mask_isp = GUI_functions.get_icon('isp.xpm', widget)
+        pix_city, mask_city = GUI_functions.get_icon('city.xpm', widget)
         isp_list = self.get_provider_list()
         _country = ""
         _city = ""
         for isp in isp_list:
             if _country != isp['Country']:
-                pix, mask = NC_functions.get_icon(isp['Flag'] + '.xpm', widget)
+                pix, mask = GUI_functions.get_icon(isp['Flag'] + '.xpm', widget)
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=FALSE)
                 _country = isp['Country']

@@ -30,7 +30,7 @@ import string
 import re
 
 import tcpdialog
-import NC_functions
+from netconfpkg.gui import GUI_functions
 
 from gtk import TRUE
 from gtk import FALSE
@@ -38,8 +38,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
+gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class deviceConfigDialog:
@@ -49,18 +49,18 @@ class deviceConfigDialog:
         self.xml_basic = xml_basic
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9\-_]+$"),
+                                                r"^[a-z|A-Z|0-9\-_:]+$"),
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_protocolEditButton_clicked" : self.on_protocolEditButton_clicked,
             "on_protocolList_button_press_event" : (self.on_generic_clist_button_press_event,
@@ -72,7 +72,7 @@ class deviceConfigDialog:
         self.xml.get_widget("protocolList").column_titles_passive ()
 
         self.dialog = self.xml.get_widget("Dialog")
-        NC_functions.load_icon("network.xpm", self.dialog)
+        GUI_functions.load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
 
         self.hydrate()

@@ -28,16 +28,17 @@ import string
 import gettext
 import re
 
-import NCProfileList
-import NC_functions
+from netconfpkg import NCProfileList
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.NC_functions import load_icon
 from gtk import TRUE
 from gtk import FALSE
 
 ##
 ## I18N
 ##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
+gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class editDomainDialog:
@@ -47,11 +48,11 @@ class editDomainDialog:
         glade_file = "editdomain.glade"
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -63,7 +64,7 @@ class editDomainDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        NC_functions.load_icon("network.xpm", self.dialog)
+        load_icon("network.xpm", self.dialog)
         self.setup()
         self.hydrate()
         

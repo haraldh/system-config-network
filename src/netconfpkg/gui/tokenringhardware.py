@@ -31,9 +31,10 @@ import GdkImlib
 import string
 import gettext
 import re
-import Conf
+from netconfpkg import Conf
 import commands
-import NC_functions
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.NC_functions import load_icon
 
 from gtk import TRUE
 from gtk import FALSE
@@ -42,8 +43,8 @@ from gtk import FALSE
 ##
 ## I18N
 ##
-gettext.bindtextdomain(NC_functions.PROGNAME, "/usr/share/locale")
-gettext.textdomain(NC_functions.PROGNAME)
+gettext.bindtextdomain(GUI_functions.PROGNAME, "/usr/share/locale")
+gettext.textdomain(GUI_functions.PROGNAME)
 _=gettext.gettext
 
 class tokenringHardwareDialog:
@@ -54,11 +55,11 @@ class tokenringHardwareDialog:
         glade_file = "tokenringhardware.glade"
 
         if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = NC_functions.NETCONFDIR + glade_file
+            glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain=NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
 
         self.xml.signal_autoconnect(
             {
@@ -70,7 +71,7 @@ class tokenringHardwareDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
-        NC_functions.load_icon("network.xpm", self.dialog)
+        load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
@@ -98,7 +99,7 @@ class tokenringHardwareDialog:
             cmd = cmd + ' dma1='+self.hw.Card.DMA1
         (status, output) = commands.getstatusoutput(cmd)
         if status != 0:
-            NC_functions.generic_error_dialog('The Token Ring card could not be initialized. Please verify your settings and try again.', self.dialog)
+            GUI_functions.generic_error_dialog('The Token Ring card could not be initialized. Please verify your settings and try again.', self.dialog)
             self.button = 1
             return
         self.hw.commit()

@@ -19,11 +19,11 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import NC_functions
-from NC_functions import _
-from NC_functions import NETCONFDIR
-import NCHardwareList
-import NCisdnhardware
+from netconfpkg.gui import GUI_functions
+from netconfpkg.NC_functions import _
+from netconfpkg.NC_functions import NETCONFDIR
+from netconfpkg import NCHardwareList
+from netconfpkg import NCisdnhardware
 #import gnome.ui
 import gtk
 from gtk import TRUE
@@ -40,11 +40,11 @@ class IsdnInterface:
         glade_file = 'IsdnHardwareDruid.glade'
 
         if not os.path.isfile(glade_file):
-            glade_file = "netconfpkg/" + glade_file
+            glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
             
-        self.xml = libglade.GladeXML(glade_file, 'druid', NC_functions.PROGNAME)
+        self.xml = libglade.GladeXML(glade_file, 'druid', GUI_functions.PROGNAME)
         
         self.xml.signal_autoconnect(
             {
