@@ -420,9 +420,11 @@ class GenClassAList(GenClass, UserList):
                self.data.append(child.getValue())
 
    def rollback(self):
-      #print "------------ rollback %s -------" % self._attributes[SELF][NAME]
-      for child in self.data_bak:
-         child.rollback()
+      for childkey in self._attributes[SELF][CHILDKEYS]:
+         val = self._attributes[childkey]
+         if val[TYPE] == LIST:               
+            for child in self.data_bak:
+               child.rollback()
       self.data = self.data_bak[:]
       
    def apply(self, other):
