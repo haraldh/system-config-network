@@ -30,8 +30,7 @@ class Device(Device_base):
         
     def __init__(self, list = None, parent = None):
         Device_base.__init__(self, list, parent)        
-        conf = None
-
+                    
     def load(self, name):
         
         conf = ConfDevice(name)
@@ -72,7 +71,10 @@ class Device(Device_base):
                             
             except (OSError, IOError), msg:
                 pass
-                        
+
+        type = getDeviceType(self.Device)
+        if type == "Modem":
+            self.createDialup().loadModem(self.DeviceId)
         
     def save(self):
         conf = ConfDevice(self.DeviceId)
@@ -80,8 +82,8 @@ class Device(Device_base):
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
-                conf[confkey] = "'" + str(self.__dict__[selfkey]) + "'"
-            else: conf[confkey] = "''"
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: conf[confkey] = ""
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
@@ -92,3 +94,6 @@ class Device(Device_base):
 
         conf.write()
                     
+        type = getDeviceType(self.Device)
+        if type == "Modem":
+            self.createDialup().saveModem(self.DeviceId, self.Device)
