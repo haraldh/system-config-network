@@ -322,7 +322,7 @@ class CipeInterface(InterfaceCreator):
         keywidget = self.xml.get_widget("secretKeyEntry")
         txt = keywidget.get_text()
         if not txt or txt == "":
-            GUI_functions.gui_error_dialog(_("You must enter a secret key"
+            GUI_functions.gui_error_dialog(_("You must enter a secret key "
                                              "or generate one"),
                                            self.toplevel,
                                            broken_widget = keywidget)
@@ -331,5 +331,5 @@ class CipeInterface(InterfaceCreator):
             
 NCDevCipe.setDevCipeWizard(CipeInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/11/25 08:33:50 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2003/12/16 11:20:31 $"
+__version__ = "$Revision: 1.28 $"
