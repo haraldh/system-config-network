@@ -25,6 +25,7 @@
 	  <property name="position">GNOME_EDGE_START</property>
 	  <property name="title" translatable="yes">IPsec</property>
 	  <property name="text" translatable="yes">You will now be guided through the setup of the IPsec connection.</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="next" handler="on_ipsecDruidPageStart_next" last_modification_time="Mon, 07 Jul 2003 09:22:37 GMT"/>
 	</widget>
       </child>
@@ -32,7 +33,8 @@
       <child>
 	<widget class="GnomeDruidPageStandard" id="druidpagestandard1">
 	  <property name="visible">True</property>
-	  <property name="title" translatable="yes"></property>
+	  <property name="title" translatable="yes">IPsec - Nickname</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 
 	  <child internal-child="vbox">
 	    <widget class="GtkVBox" id="druid-vbox8">
@@ -82,7 +84,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -157,6 +159,7 @@
 	<widget class="GnomeDruidPageStandard" id="ipsecDruidConnectionTypePage">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">IPsec - Connection Type</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="next" handler="on_ipsecDruidConnectionTypePage_next" last_modification_time="Mon, 30 Jun 2003 11:05:44 GMT"/>
 	  <signal name="prepare" handler="on_ipsecDruidConnectionTypePage_prepare" last_modification_time="Mon, 30 Jun 2003 11:05:54 GMT"/>
 
@@ -246,6 +249,7 @@
 	<widget class="GnomeDruidPageStandard" id="ipsecDruidEncryptionModePage">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">IPsec - Encryption Mode</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="next" handler="on_ipsecDruidEncryptionModePage_next" last_modification_time="Mon, 30 Jun 2003 11:06:27 GMT"/>
 	  <signal name="prepare" handler="on_ipsecDruidEncryptionModePage_prepare" last_modification_time="Mon, 30 Jun 2003 11:06:32 GMT"/>
 
@@ -335,6 +339,7 @@
 	<widget class="GnomeDruidPageStandard" id="ipsecDruidLocalNetworkPage">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">IPsec - Local Network</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="next" handler="on_ipsecDruidLocalNetworkPage_next" last_modification_time="Mon, 30 Jun 2003 11:06:40 GMT"/>
 	  <signal name="prepare" handler="on_ipsecDruidLocalNetworkPage_prepare" last_modification_time="Mon, 30 Jun 2003 11:06:43 GMT"/>
 
@@ -411,7 +416,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -433,7 +438,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -480,7 +485,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -534,6 +539,7 @@
 	<widget class="GnomeDruidPageStandard" id="ipsecDruidRemoteNetworkPage">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">IPsec - Remote Network</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="next" handler="on_ipsecDruidRemoteNetworkPage_next" last_modification_time="Mon, 30 Jun 2003 11:06:51 GMT"/>
 	  <signal name="prepare" handler="on_ipsecDruidRemoteNetworkPage_prepare" last_modification_time="Mon, 30 Jun 2003 11:06:55 GMT"/>
 
@@ -635,7 +641,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -706,7 +712,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -728,7 +734,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -750,7 +756,7 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char" translatable="yes">*</property>
 		      <property name="activates_default">False</property>
@@ -780,6 +786,7 @@
 	<widget class="GnomeDruidPageStandard" id="ipsecDruidKeysPage">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">IPsec - Keys</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="next" handler="on_ipsecDruidKeysPage_next" last_modification_time="Mon, 30 Jun 2003 11:07:03 GMT"/>
 	  <signal name="prepare" handler="on_ipsecDruidKeysPage_prepare" last_modification_time="Mon, 30 Jun 2003 11:07:07 GMT"/>
 
@@ -812,7 +819,7 @@
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="no"></property>
+			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char" translatable="yes">*</property>
 			  <property name="activates_default">False</property>
@@ -910,7 +917,7 @@
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="no"></property>
+			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char" translatable="yes">*</property>
 			  <property name="activates_default">False</property>
@@ -989,6 +996,7 @@ The keys are symmetric, so your remote partner need to have the same.</property>
 	  <property name="visible">True</property>
 	  <property name="position">GNOME_EDGE_FINISH</property>
 	  <property name="title" translatable="yes">IPsec - Summary</property>
+	  <property name="logo">/usr/share/system-config-network/pixmaps/secure.png</property>
 	  <signal name="finish" handler="on_ipsecDruidFinishPage_finish" last_modification_time="Mon, 30 Jun 2003 12:51:48 GMT"/>
 	  <signal name="prepare" handler="on_ipsecDruidFinishPage_prepare" last_modification_time="Mon, 30 Jun 2003 12:51:36 GMT"/>
 	</widget>
