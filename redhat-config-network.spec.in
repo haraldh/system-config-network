@@ -65,12 +65,19 @@ cd rp3-1.1.10/rp3
 %makeinstall
 cd ../docs
 %makeinstall
+cd ../po
+%makeinstall
 popd
 # use neat-control
 rm -f $RPM_BUILD_ROOT/etc/X11/applnk/Internet/rp3.desktop
 %endif
 
 %find_lang %name
+
+%if %{rp3}
+%find_lang rp3
+cat rp3.lang >>%{name}.lang
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
