@@ -169,20 +169,15 @@ def on_advancedButton_clicked (button):
         xml.get_widget ("ethernetConfigDialog").show ()
     elif deviceType == "Modem":
         ## hide some widgets which are not used here
-        for i in [1,2,5,7]:
+        for i in [1,3]:
             noteBook.get_nth_page (i).hide ()
         dialog.set_title ("Modem Dialup Configuration")
         dialog.show ()
     elif deviceType == "ISDN":
-        ## hide some widgets which are not used here
-        noteBook.get_nth_page (1).hide ()
-        noteBook.get_nth_page (3).hide ()
         dialog.set_title ("ISDN Dialup Configuration")
         xml.get_widget ("DialupConfigDialog").show ()
     elif deviceType == "xDSL":
-        ## hide some widgets which are not used here
-        for i in [0,2,3,5,6,7]:
-            noteBook.get_nth_page (i).hide ()
+        dialog = xml.get_widget ("dslConfigDialog")
         dialog.set_title ("xDSL Configuration")
         dialog.show ()
     elif deviceType == "Wireless":
@@ -374,6 +369,40 @@ def on_callbackCB_toggled (check):
     xml.get_widget ("callbackFrame").set_sensitive (check["active"])
     xml.get_widget ("dialinNumberEntry").grab_focus()
 
+def on_chooseProvider_clicked (button):
+    xml.get_widget ("chooseProviderDialog").show ()
+
+def on_providerCancelButton_clicked (button):
+    xml.get_widget ("chooseProviderDialog").hide ()
+
+def on_providerOkButton_clicked (button):
+    xml.get_widget ("chooseProviderDialog").hide ()
+
+def on_chooseProviderDialog_delete_event (win, event = None):
+    win.hide ()
+    return TRUE
+
+def on_hardwareAddButton_clicked (button):
+    deviceType = xml.get_widget ("hardwareDevicetypeEntry").get_text ()
+    if deviceType == "Ethernet":
+        xml.get_widget ("ethernetHardwareDialog"). show ()
+    if deviceType == "Token Ring":
+        xml.get_widget ("ethernetHardwareDialog"). show ()
+    if deviceType == "Pocket (ATP)":
+        xml.get_widget ("ethernetHardwareDialog"). show ()
+    if deviceType == "Arcnet":
+        xml.get_widget ("ethernetHardwareDialog"). show ()
+    if deviceType == "Modem":
+        xml.get_widget ("modemConfigDialog").show ()
+    if deviceType == "ISDN":
+        xml.get_widget ("isdnHardwareDialog").show ()
+
+def on_hardwareEditButton_clicked (button):
+    on_hardwareAddButton_clicked (button)
+
+def on_hardwareDeleteButton_clicked (button):
+    pass
+
 def on_aliasSupportCB_toggled (check):
     xml.get_widget ("aliasSpinBox").set_sensitive (check["active"])
 
@@ -382,7 +411,7 @@ def set_icon (widget, pixmapFile):
         pix, mask = gtk.create_pixmap_from_xpm (gtk.GtkWindow (), None, pixmapFile)
         widget.set (pix, mask)
 
-def setup_provider_db():
+def setup_provider_db ():
     dbtree = xml.get_widget ("providerTree")
     dbtree.set_line_style(CTREE_LINES_DOTTED)
     pix, mask = gtk.create_pixmap_from_xpm (dbtree, None, "de.xpm")
@@ -398,16 +427,24 @@ def setup_provider_db():
     node8 = dbtree.insert_node(node7, None, ["Nextra"])
     
 def setup ():
-    accountPixmap = xml.get_widget ("accountPixmap")
     networkPixmap = xml.get_widget ("networkPixmap")
     basicNotebook = xml.get_widget ("basicNotebook")
-#    set_icon (accountPixmap, "keys.xpm")
-#    set_icon (networkPixmap, "network.xpm")
+    set_icon (networkPixmap, "network.xpm")
     for i in [4,5,6]:
         basicNotebook.get_nth_page (i).hide ()
 
     setup_provider_db()
-    
+
+def on_ethernetHardwareDialog_delete_event (win, event = None):
+    win.hide ()
+    return TRUE
+
+def on_networkOkButton_clicked (button):
+    xml.get_widget ("ethernetHardwareDialog").hide ()
+
+def on_networkCancelButton_clicked (button):
+    xml.get_widget ("ethernetHardwareDialog").hide ()
+
 def main ():
     xml.signal_autoconnect (
         {
@@ -494,8 +531,20 @@ def main ():
         "on_encapModeMenu_clicked" : on_encapModeMenu_clicked,
         "on_hangupTimeoutSpinButton_changed" : on_hangupTimeoutSpinButton_changed,
         "on_callbackCB_toggled" : on_callbackCB_toggled,
+        "on_providerCancelButton_clicked" : on_providerCancelButton_clicked,
+        "on_providerOkButton_clicked" : on_providerOkButton_clicked,
+        "on_chooseProviderDialog_delete_event" : on_chooseProviderDialog_delete_event,
+        "on_chooseProvider_clicked" : on_chooseProvider_clicked,
+        # Hardware Configuration
+        "on_hardwareAddButton_clicked" : on_hardwareAddButton_clicked,
+        "on_hardwareEditButton_clicked" : on_hardwareEditButton_clicked,
+        "on_hardwareDeleteButton_clicked" : on_hardwareDeleteButton_clicked,
         ## ethernetConfigDialog
-        "on_aliasSupportCB_toggled" : on_aliasSupportCB_toggled
+        "on_aliasSupportCB_toggled" : on_aliasSupportCB_toggled,
+        "on_networkOkButton_clicked" : on_networkOkButton_clicked,
+        "on_networkCancelButton_clicked" : on_networkCancelButton_clicked,
+        "on_ethernetHardwareDialog_delete_event" : on_ethernetHardwareDialog_delete_event
+
         })
 
     setup ()
