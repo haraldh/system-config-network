@@ -37,9 +37,20 @@ import NCCipe
 
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
+        new = false
+        if not os.access(SYSCONFDEVICEDIR + 'ifcfg-' + name, os.R_OK):
+            new = true
+            
         Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + 'ifcfg-' + name)
         self.chmod(0600)
 
+        if new:
+            self.rewind()
+            self.insertline("# Please read /usr/share/doc/initscripts-*/sysconfig.txt")
+            self.nextline()
+            self.insertline("# for the documentation of these parameters.");
+            self.rewind()
+            
 class ConfRoute(Conf.ConfShellVar):
     def __init__(self, name):
         Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + name + '.route')
@@ -249,7 +260,8 @@ class Device(DeviceList.Device_base):
         self.commit()
 
         conf = ConfDevice(self.DeviceId)
-
+        conf.fsf()
+        
         if not self.Cipe and self.BootProto == None:
             self.BootProto = 'dhcp'
 
