@@ -259,7 +259,7 @@ class HardwareList(HardwareList_base):
         
 
         for hw in self.data:
-            if hw.Type == 'Ethernet':
+            if hw.Type == ETHERNET:
                 modules[hw.Name] = {}
                 modules[hw.Name]['alias'] = hw.Card.ModuleName
 
@@ -284,7 +284,7 @@ class HardwareList(HardwareList_base):
                         modules[hw.Card.ModuleName]['options'][confkey] = str(hw.Card.__dict__[selfkey])
 
 
-            if hw.Type == 'Modem':
+            if hw.Type == MODEM and hw.Modem:
                 wvdial[hw.Name]['Modem'] = hw.Modem.DeviceName
                 wvdial[hw.Name]['Baud'] = str(hw.Modem.BaudRate)
                 wvdial[hw.Name]['SetVolume'] = str(hw.Modem.ModemVolume)
@@ -292,7 +292,7 @@ class HardwareList(HardwareList_base):
                 if not hw.Modem.InitString: hw.Modem.InitString = 'ATZ'
                 wvdial[hw.Name]['Init1'] = str(hw.Modem.InitString)
                 wvdial[hw.Name]['FlowControl'] = str(hw.Modem.FlowControl)
-            if hw.Type == "ISDN":
+            if hw.Type == ISDN:
                 isdn.Description = hw.Description
                 isdn.Type = hw.Card.Type
                 isdn.ModuleName = hw.Card.ModuleName
@@ -312,7 +312,7 @@ class HardwareList(HardwareList_base):
             if dev[:5] != 'Modem':
                 continue
             for hw in self.data:
-                if hw.Type == 'Modem' and hw.Name == dev:
+                if hw.Type == MODEM and hw.Name == dev:
                     break
             else:
                 # if the loop does not get interrupted by break
@@ -327,7 +327,7 @@ class HardwareList(HardwareList_base):
                 continue
             #print "Testing " + str(mod)
             for hw in self.data:
-                if hw.Type == 'Ethernet' and hw.Name == mod:
+                if hw.Type == ETHERNET and hw.Name == mod:
                     break
             else:
                 #print "Removing " + str(mod)
