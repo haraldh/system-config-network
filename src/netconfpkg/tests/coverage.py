@@ -79,6 +79,25 @@ c = {}
 # See [van Rossum 2001-07-20a, 3.2] for a description of frame and code
 # objects.
 
+import os.path
+    
+def do_realpath(path):
+    if os.path.islink(path):
+        path = os.readlink(path)
+        
+    head, tail = os.path.split(path)
+
+    if not tail:
+        return path
+    
+    head = do_realpath(head)
+
+    return os.path.join(head, tail)
+
+def realpath(path):
+    return do_realpath(os.path.abspath(path))
+
+
 def t(f, x, y):
     c[(f.f_code.co_filename, f.f_lineno)] = 1
     return t
@@ -243,7 +262,7 @@ class coverage:
                     if os.path.exists(g):
                         f = g
                         break
-            cf = os.path.normcase(os.path.abspath(f))
+            cf = realpath(os.path.normcase(os.path.abspath(f)))
             self.canonical_filename_cache[filename] = cf
         return self.canonical_filename_cache[filename]
 
@@ -595,4 +614,4 @@ if __name__ == '__main__':
 #
 #
 #
-# $Id: coverage.py,v 1.1 2004/06/15 14:07:25 harald Exp $
+# $Id: coverage.py,v 1.2 2004/06/29 11:03:21 harald Exp $

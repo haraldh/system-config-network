@@ -182,17 +182,23 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    import coverage
-    coverage.erase()
-    coverage.start()
+    do_coverage = None
+    if do_coverage:
+        import coverage
+        coverage.erase()
+        coverage.start()
+        
     from rhpl import Conf
     testRunner = unittest.TextTestRunner(verbosity=2)
     result = testRunner.run(suite())
-    coverage.stop()    
-    m = sys.modules.values()
-    coverage.the_coverage.report(Conf, show_missing=0 )    
+    
+    if do_coverage:
+        coverage.stop()    
+        m = sys.modules.values()
+        coverage.the_coverage.report(Conf, show_missing=0 )
+        
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/06/15 13:59:06 $"
-__version__ = "$Revision: 1.10 $"
+__date__ = "$Date: 2004/06/29 11:03:21 $"
+__version__ = "$Revision: 1.11 $"
