@@ -326,10 +326,8 @@ class ISDNDialupDialog(DialupDialog):
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         if self.xml.get_widget("encapModeEntry").get_text() == _("sync PPP"):
             dialup.EncapMode = "syncppp"
-            self.device.Device = "ippp"
         else:
             dialup.EncapMode = "rawip"
-            self.device.Device = "isdn"
 
         dialup.PhoneInNumber = self.xml.get_widget("dialinNumberEntry").get_text()
         dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
@@ -356,7 +354,11 @@ class ISDNDialupDialog(DialupDialog):
             dialup.DefRoute = FALSE
 
         dialup.MSN = self.xml.get_widget("msnEntry").get_text()
+
         dialup.ChannelBundling = self.xml.get_widget("channelBundlingCB").get_active()
+        if dialup.ChannelBundling:
+            dialup.SlaveDevice = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
+
         dialup.DefRoute = self.xml.get_widget("defrouteISDNCB").get_active()
 
         auth = self.xml.get_widget("authEntry").get_text()
@@ -435,7 +437,8 @@ class ModemDialupDialog(DialupDialog):
         dialup.InitString = self.xml.get_widget("modemInitEntry").get_text()
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
         dialup.Inherits = self.xml.get_widget("modemPortEntry").get_text()
-        if not self.device.Device: self.device.Device = "modem"
+        if not self.device.Device:
+            self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
         dialup.StupidMode = self.xml.get_widget("stupidModeCB").get_active() == true

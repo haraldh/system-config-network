@@ -20,6 +20,7 @@
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
+from netconfpkg.NC_functions import *
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
 from netconfpkg import NCDeviceList
@@ -189,7 +190,7 @@ class ADSLInterface(InterfaceCreator):
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         dialup.Password = self.xml.get_widget("passwordEntry").get_text()
         dialup.SyncPPP = FALSE
-        self.device.Device = "dsl"
+        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
         dialup.DefRoute = TRUE
         self.device.AutoDNS = TRUE
 

@@ -170,6 +170,34 @@ def getDeviceType(devname):
             type = deviceTypeDict[i]
     return type
 
+def getNewDialupDevice(devicelist, dev):
+    dlist = []
+    count = 0
+    device = None
+
+    for i in devicelist:
+	if dev.Device != i.Device:
+	    dlist.append(i.Device)
+	    if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
+	        dlist.append(i.Dialup.SlaveDevice)
+	else:
+	    if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
+	        dlist.append(i.Device)
+
+    if dev.Type == ISDN:
+        if dev.Dialup.EncapMode == 'syncppp':
+	    device = 'ippp'
+	else:
+	    device = 'isdn'
+    else:
+        device = 'ppp'
+
+    while 1:
+        if device+str(count) in dlist:
+	    count = count + 1
+	else:
+	    return device+str(count)
+	
 def updateNetworkScripts():
     if not os.path.isdir(SYSCONFDEVICEDIR):
         os.mkdir(SYSCONFDEVICEDIR)

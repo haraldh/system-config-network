@@ -137,6 +137,7 @@ class ProfileList(ProfileList_base):
         ProfileList_base.commit(self, changed)
         
     def fixInterfaces(self):
+        return
         pppnum = 0
         ipppnum = 0
         isdnnum = 0

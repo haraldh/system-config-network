@@ -24,6 +24,7 @@ from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
 from netconfpkg.NC_functions import _
+from netconfpkg.NC_functions import *
 import libglade
 import string
 import os
@@ -220,14 +221,17 @@ class DialupDruid(InterfaceCreator):
         dialup = self.device.createDialup()
         self.device.BootProto = 'dialup'
         self.device.AllowUser = TRUE
-        if self.connection_type == 'ISDN':
-            self.device.Device = 'ippp'
-        elif self.connection_type == 'Modem':
-            self.device.Device = 'modem'
+
+        if self.connection_type == ISDN:
+            dialup.EncapMode = 'syncppp'
+            
+        if self.connection_type == MODEM:
             self.device.Name  = DeviceId
             dialup.Inherits = 'Modem0'
             dialup.StupidMode = TRUE
             dialup.InitString = ''
+
+        self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
         self.device.AutoDNS = TRUE
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()
         dialup.Areacode = self.xml.get_widget('areaCodeEntry').get_text()
@@ -242,7 +246,5 @@ class DialupDruid(InterfaceCreator):
         dialup.DefRoute = TRUE
         self.device.AutoDNS = TRUE
         dialup.DialMode = NCDialup.DM_MANUAL
-        if self.connection_type == 'ISDN':
-            dialup.EncapMode = 'syncppp'
 
             
