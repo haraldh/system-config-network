@@ -41,7 +41,7 @@ class ModemInterface:
         if not os.path.isfile(glade_file):
             glade_file = 'netconfpkg/' + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = NETCONFDIR + glade_file
+            glade_file = NC_functions.NETCONFDIR + glade_file
  
         self.xml = libglade.GladeXML(glade_file, 'druid')
         self.xml.signal_autoconnect(
