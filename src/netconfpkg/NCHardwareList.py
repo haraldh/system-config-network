@@ -181,7 +181,7 @@ class HardwareList(HardwareList_base):
             if not hw.Modem.InitString: wvdial[dev]['Init1'] = 'ATZ'
             hw.Modem.InitString =  wvdial[dev]['Init1']
                 
-        self.commit(false)
+        self.commit(changed=false)
         
     def save(self):
         modules = MyConfModules()

@@ -232,7 +232,7 @@ class Device(DeviceList.Device_base):
                 route.Address = rconf['ADDRESS'+str(p)]
                 route.Netmask = rconf['NETMASK'+str(p)]
                 route.Gateway = rconf['GATEWAY'+str(p)]
-        self.commit(false)
+        self.commit(changed=false)
                 
     def save(self):
         self.commit()

@@ -314,7 +314,7 @@ class IsdnDialup(Dialup):
             else:
                 self.delCallback()
 
-        self.commit(false)
+        self.commit(changed=false)
 
     def save(self, parentConf):
         conf = parentConf

@@ -100,7 +100,7 @@ class ProfileList(ProfileList_base):
             if dnsconf.has_key('search'):
                 for ns in dnsconf['search']:
                     sl.append(ns)
-        self.commit(false)
+        self.commit(changed=false)
 
     def test(self):
         self.fixInterfaces()
