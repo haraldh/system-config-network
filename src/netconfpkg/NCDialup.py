@@ -60,7 +60,7 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
                 
             if value:
-                print selfkey + " = " + value
+                #print selfkey + " = " + value
                 self.__dict__[selfkey] = value
 
         #
@@ -79,7 +79,7 @@ class ModemDialup(Dialup):
                 
             if value:
                 if not self.InitStrings: self.createInitStrings()
-                print confkey + " = " + value
+                #print confkey + " = " + value
                 self.InitStrings[self.InitStrings.addInitString()] = value
                 
         #
@@ -165,7 +165,7 @@ class ModemDialup(Dialup):
         #
         # Now write the pap and chap-secrets
         #
-        print "device = " + name
+        #print "device = " + name
         if not self.Login:
             return
         
@@ -182,7 +182,7 @@ class ModemDialup(Dialup):
                     #print conf.getline()
                     #print "login = " + self.Login + " " + self.Password
                     conf.setfields([self.Login, devname, self.Password])
-                    print conf.getline()                    
+                    #print conf.getline()                    
                     break
                     
                 conf.nextline()
@@ -192,6 +192,6 @@ class ModemDialup(Dialup):
 if __name__ == '__main__':
     dev = Device()
     dev.load('ppp1')
-    dev.Dialup.Password = "Hello"
+    dev.Dialup.Password = "*********"
     dev.commit()
     dev.save()
