@@ -43,10 +43,11 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 
 docs:
+	cd $(srcdir)
 	python /usr/lib/python1.5/pydoc.py -w $(PYTHON_FILES)
 	mv *.html doc
 
-check-local:
+pycheck:
 	pychecker $(PYTHON_FILES)
 
 clean:
