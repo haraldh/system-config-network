@@ -69,7 +69,9 @@ class NewInterfaceDialog:
 
         interfaces = []
         df = getDeviceFactory()
-        for type in df:            
+        dfk = df.keys()
+        dfk.sort()
+        for type in dfk:
             interfaces.append(df.getDeviceClass(type)().getWizard())
             
         for iface_creator in interfaces:
