@@ -113,12 +113,11 @@ class EthernetDevice(Device.Device):
         @self The object instance
         """
         
-        addresses=Address.AddressList()
-        addresses.readFile(filename)
-        self.setAddressList(addresses)
+        Device.Device.readConfig(self,filename)
         confFile=Conf.ConfShellVar(filename)
+        self._bootproto=confFile["BOOTPROTO"]
+        self._macaddress=confFile["MACADDRESS"]
         
-
     def toString(self):
         """
         Return the current configuration in string
@@ -128,11 +127,9 @@ class EthernetDevice(Device.Device):
         res=Device.Device.toString(self)
         if self._macaddress:
             res=res+"MACADDRESS=%s\n" % (self._macaddress)
-        
+        if self._bootproto:
+            res=res+"BOOTPROTO=%s\n" % (self._macaddress)
         return res
-    
-
-
 
 
 # These methods query the systems, not the objects, and are thus prefixed
