@@ -14,12 +14,13 @@ all-local:
 	rm -f redhat-config-network-tui
 	rm -f redhat-config-network-druid
 	rm -f  redhat-control-network
-	ln -s netconf.py redhat-config-network
-	ln -s netconf-cmd.py redhat-config-network-cmd
-	ln -s netconf.py redhat-config-network-druid
-	ln -s netconf-tui.py redhat-config-network-tui
-	ln -s neat-control.py redhat-control-network
-	chmod 0755 $(PYTHON_FILES)
+	ln -s $(srcdir)/netconf.py redhat-config-network
+	ln -s $(srcdir)/netconf-cmd.py redhat-config-network-cmd
+	ln -s $(srcdir)/netconf.py redhat-config-network-druid
+	ln -s $(srcdir)/netconf-tui.py redhat-config-network-tui
+	ln -s $(srcdir)/neat-control.py redhat-control-network
+	chmod 0755 redhat-config-network redhat-config-network-cmd 
+	chmod 0755 redhat-config-network-druid redhat-config-network-tui redhat-control-network
 
 gladedir = $(pkgdatadir)/netconfpkg/gui
 glade_DATA = $(GLADE_FILES)
@@ -73,5 +74,5 @@ pycheck:
 	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
 
 clean:
-	rm -f *.pyo *.pyc
+	rm -f *.pyo *.pyc *~ *\#
 	rm -f ${BUILT_SOURCES}
