@@ -29,35 +29,49 @@ msgstr ""
 msgid "Please restart %s with root permissions!"
 msgstr "Redémarrer %s avec les privilèges du superutilisateur."
 
-#: ../src/netconf.py:462 ../src/netconf.py:475
+#: ../src/netconf.py:441 ../src/netconf.py:454
 msgid "Do you want to save your changes?"
 msgstr "Voulez-vous sauvegarder vos modifications ?"
 
-#: ../src/netconf.py:548
+#: ../src/netconf.py:527
 msgid "The Loopback device can not be edited!"
 msgstr "Le loopback ne peut pas être modifié !"
 
-#: ../src/netconf.py:622 ../src/netconfpkg/gui/GenericInterface.py:156
+#: ../src/netconf.py:601 ../src/netconfpkg/gui/GenericInterface.py:156
 msgid "This device can not be edited with this tool!"
 msgstr "Ce dispositif ne peut pas être modifié à l'aide de cet outil !"
 
-#: ../src/netconf.py:643
+#: ../src/netconf.py:622
 msgid "The Loopback device can not be removed!"
 msgstr "Le loopback ne peut pas être supprimé !"
 
-#: ../src/netconf.py:646
+#: ../src/netconf.py:625
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Voulez-vous réellement effacer le périphérique \"%s\"?"
 
-#: ../src/neat-control.py:122 ../src/netconf.py:665
+#: ../src/netconf.py:647
+msgid "You have made some changes in your configuration."
+msgstr ""
+
+#: ../src/netconf.py:648
+msgid "To activate the network device %s, the changes have to be saved."
+msgstr ""
+
+#: ../src/netconf.py:649
+#, fuzzy
+msgid "Do you want to continue?"
+msgstr "Que voulez-vous configurer ?"
+
+#: ../src/netconf.py:661 ../src/neat-control.py:119
 msgid "Network device activating..."
 msgstr "Activation en cours du périphérique réseau"
 
-#: ../src/neat-control.py:125 ../src/netconf.py:668
-msgid "Activating for Network device %s, please wait..."
+#: ../src/netconf.py:664
+#, fuzzy
+msgid "Activating network device %s, please wait..."
 msgstr "Activation en cours du périphérique réseau %s, patienter"
 
-#: ../src/netconf.py:1107
+#: ../src/netconf.py:1099
 msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
@@ -65,23 +79,23 @@ msgstr ""
 "Entrez le nom du nouveau profil.\n"
 "Ce nom ne peut contenir que des lettres et des chiffres."
 
-#: ../src/netconf.py:1116 ../src/netconf.py:1187
+#: ../src/netconf.py:1108 ../src/netconf.py:1179
 msgid "The name may only contain letters and digits!"
 msgstr "Le nom ne peut contenir que des lettres et des chiffres !"
 
-#: ../src/netconf.py:1120 ../src/netconf.py:1191
+#: ../src/netconf.py:1112 ../src/netconf.py:1183
 msgid "The profile can't be named \"default\"!"
 msgstr "Le profil ne peut pas être appelé \"défaut\"!"
 
-#: ../src/netconf.py:1125 ../src/netconf.py:1200
+#: ../src/netconf.py:1117 ../src/netconf.py:1192
 msgid "The profile name already exists!"
 msgstr "Le nom de profil existe déjà !"
 
-#: ../src/netconf.py:1176
+#: ../src/netconf.py:1168
 msgid "The \"default\" profile can't be renamed!"
 msgstr "Le profil par \"défaut\" ne peut pas être renommé !"
 
-#: ../src/netconf.py:1179
+#: ../src/netconf.py:1171
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
@@ -89,32 +103,32 @@ msgstr ""
 "Entrez le nouveau nom du profil.\n"
 "Ce nom ne peut contenir que des lettres et des chiffres."
 
-#: ../src/netconf.py:1221
+#: ../src/netconf.py:1213
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Le profil par \"défaut\" ne peut pas être supprimé !"
 
-#: ../src/netconf.py:1224
+#: ../src/netconf.py:1216
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Voulez-vous réellement effacer le profil \"%s\"?"
 
-#: ../src/netconf.py:1344
+#: ../src/netconf.py:1336
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Voulez-vous réellement effacer \"%s\"?"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:74
+#: ../src/netconfpkg/gui/ADSLInterface.py:75
 msgid "xDSL connection"
 msgstr "Connexion xDSL"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:80
+#: ../src/netconfpkg/gui/ADSLInterface.py:81
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber Lines. "
-" This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL "
-"(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at "
-"the same speed), and several others.  These types of connections are common "
-"in the United States, and are gaining acceptance elsewhere.  Speeds vary "
-"according to the technology used, but generally range from 144kbps to "
-"1.0Mbps."
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
 msgstr ""
 "Créer une connexion xDSL. Il s'agit d'une connexion qui utilise l'un des "
 "différents types de connexion à bande large appelés Lignes d'abonnés "
@@ -125,71 +139,72 @@ msgstr ""
 "d'autres pays. La vitesse varie en fonction de la technologie utilisée mais "
 "généralement est comprise entre 144kb/s et 1.0Mb/s."
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:118
-#: ../src/netconfpkg/gui/CipeInterface.py:131
-#: ../src/netconfpkg/gui/DialupDruid.py:107
+#: ../src/netconfpkg/gui/ADSLInterface.py:119
+#: ../src/netconfpkg/gui/DialupDruid.py:108
 #: ../src/netconfpkg/gui/EthernetInterface.py:202
-#: ../src/netconfpkg/gui/TokenRingInterface.py:199
+#: ../src/netconfpkg/gui/CipeInterface.py:133
 #: ../src/netconfpkg/gui/WirelessInterface.py:222
+#: ../src/netconfpkg/gui/TokenRingInterface.py:199
 msgid "You have selected the following information:"
 msgstr "Vous avez sélectionné les informations suivantes :"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:119
+#: ../src/netconfpkg/gui/ADSLInterface.py:120
 msgid "Ethernet Device:"
 msgstr "Périphérique Ethernet :"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:120
-#: ../src/netconfpkg/gui/DialupDruid.py:109
+#: ../src/netconfpkg/gui/ADSLInterface.py:121
+#: ../src/netconfpkg/gui/DialupDruid.py:110
 msgid "Provider Name:"
 msgstr "Nom du fournisseur"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:121
-#: ../src/netconfpkg/gui/DialupDruid.py:110
+#: ../src/netconfpkg/gui/ADSLInterface.py:122
+#: ../src/netconfpkg/gui/DialupDruid.py:111
 msgid "Login Name:"
 msgstr "Nom de connexion :"
 
-#: ../src/netconfpkg/gui/ADSLInterface.py:122
-#: ../src/netconfpkg/gui/CipeInterface.py:146
-#: ../src/netconfpkg/gui/DialupDruid.py:112
+#: ../src/netconfpkg/gui/ADSLInterface.py:123
+#: ../src/netconfpkg/gui/DialupDruid.py:113
 #: ../src/netconfpkg/gui/EthernetInterface.py:221
-#: ../src/netconfpkg/gui/TokenRingInterface.py:217
+#: ../src/netconfpkg/gui/CipeInterface.py:148
 #: ../src/netconfpkg/gui/WirelessInterface.py:247
+#: ../src/netconfpkg/gui/TokenRingInterface.py:217
 msgid "Press \"Finish\" to create this account"
 msgstr "Appuyer sur \"Fin\" pour créer ce compte"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:108
+#: ../src/netconfpkg/gui/DialupDruid.py:109
 msgid "Hardware:"
 msgstr "Matériel :"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:111
+#: ../src/netconfpkg/gui/DialupDruid.py:112
 msgid "Phone Number:"
 msgstr "Numéro de téléphone :"
 
-#: ../src/glade-strings.c:1026 ../src/netconfpkg/NCDevice.py:206
-#: ../src/netconfpkg/NCDevice.py:213 ../src/netconfpkg/NCHardwareList.py:145
-#: ../src/netconfpkg/NCHardwareList.py:281
-#: ../src/netconfpkg/NC_functions.py:164 ../src/netconfpkg/NC_functions.py:192
 #: ../src/netconfpkg/gui/EthernetHardwareDruid.py:137
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.py:137
 #: ../src/netconfpkg/gui/ethernethardware.py:145
 #: ../src/netconfpkg/gui/ethernethardware.py:157
 #: ../src/netconfpkg/gui/tokenringhardware.py:150
 #: ../src/netconfpkg/gui/tokenringhardware.py:161
+#: ../src/netconfpkg/NCDevice.py:206 ../src/netconfpkg/NCDevice.py:213
+#: ../src/netconfpkg/NCHardwareList.py:145
+#: ../src/netconfpkg/NCHardwareList.py:285
+#: ../src/netconfpkg/NC_functions.py:164 ../src/netconfpkg/NC_functions.py:220
+#: ../src/glade-strings.c:1030
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:71
 #: ../src/netconfpkg/gui/GUI_functions.py:88
+#: ../src/netconfpkg/gui/GUI_functions.py:105
 msgid "Yes"
 msgstr "Oui"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:71
 #: ../src/netconfpkg/gui/GUI_functions.py:88
+#: ../src/netconfpkg/gui/GUI_functions.py:105
 msgid "No"
 msgstr "Non"
 
-#: ../src/netconf-tui.py:169 ../src/netconf-tui.py:275
-#: ../src/netconf-tui.py:378 ../src/netconfpkg/gui/GUI_functions.py:71
+#: ../src/netconfpkg/gui/GUI_functions.py:88 ../src/netconf-tui.py:169
+#: ../src/netconf-tui.py:275 ../src/netconf-tui.py:378
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -214,9 +229,9 @@ msgstr ""
 "installée par votre société de télécommunications. Elle requiert également "
 "un dispositif appelé adaptateur de terminal qui termine la connexion RNIS de "
 "votre fournisseur d'accès à Internet. Ce type de connexion est très répandu "
-"en Europe et dans d'autres régions technologiquement avancées. Aux "
-"Etats-Unis elle est plus rare mais disponible. Sa vitesse varie entre 64kb/s "
-"et 128kb/s."
+"en Europe et dans d'autres régions technologiquement avancées. Aux Etats-"
+"Unis elle est plus rare mais disponible. Sa vitesse varie entre 64kb/s et "
+"128kb/s."
 
 #: ../src/netconfpkg/gui/ModemInterface.py:69
 msgid "Modem connection"
@@ -244,86 +259,90 @@ msgstr "Détection du  modem..."
 msgid "Probing for Modems, please wait..."
 msgstr "Détection des modems, patienter."
 
-#: ../src/netconfpkg/gui/ModemInterface.py:129
+#: ../src/netconfpkg/gui/ModemInterface.py:115
+msgid "No modem was found on system."
+msgstr ""
+
+#: ../src/netconfpkg/gui/ModemInterface.py:132
 msgid "Generic Modem"
 msgstr "Modem générique"
 
-#: ../src/glade-strings.c:805 ../src/netconfpkg/gui/ModemInterface.py:136
-#: ../src/netconfpkg/gui/modemconfig.py:122
+#: ../src/netconfpkg/gui/ModemInterface.py:139
+#: ../src/netconfpkg/gui/modemconfig.py:125 ../src/glade-strings.c:806
 msgid "Off"
 msgstr "Off"
 
-#: ../src/glade-strings.c:690 ../src/netconfpkg/gui/ModemInterface.py:138
-#: ../src/netconfpkg/gui/modemconfig.py:124
+#: ../src/netconfpkg/gui/ModemInterface.py:141
+#: ../src/netconfpkg/gui/modemconfig.py:127 ../src/glade-strings.c:691
 msgid "Low"
 msgstr "Bas"
 
-#: ../src/glade-strings.c:733 ../src/netconfpkg/gui/ModemInterface.py:140
-#: ../src/netconfpkg/gui/modemconfig.py:126
+#: ../src/netconfpkg/gui/ModemInterface.py:143
+#: ../src/netconfpkg/gui/modemconfig.py:129 ../src/glade-strings.c:734
 msgid "Medium"
 msgstr "Moyen"
 
-#: ../src/glade-strings.c:627 ../src/netconfpkg/gui/ModemInterface.py:142
-#: ../src/netconfpkg/gui/modemconfig.py:128
+#: ../src/netconfpkg/gui/ModemInterface.py:145
+#: ../src/netconfpkg/gui/modemconfig.py:131 ../src/glade-strings.c:625
 msgid "High"
 msgstr "Haut"
 
-#: ../src/glade-strings.c:1039 ../src/netconfpkg/gui/ModemInterface.py:144
-#: ../src/netconfpkg/gui/modemconfig.py:130
+#: ../src/netconfpkg/gui/ModemInterface.py:147
+#: ../src/netconfpkg/gui/modemconfig.py:133 ../src/glade-strings.c:1043
 msgid "Very High"
 msgstr "Très haut"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:155
 #: ../src/netconfpkg/gui/cipeconfig.py:87
+#: ../src/netconfpkg/gui/CipeInterface.py:157
 msgid "None - Server Mode"
 msgstr "Aucun - Mode serveur"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:160
 #: ../src/netconfpkg/gui/cipeconfig.py:93
+#: ../src/netconfpkg/gui/CipeInterface.py:162
 msgid " (dynamic)"
 msgstr " (dynamique)"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:192
-#: ../src/netconfpkg/gui/CipeInterface.py:236
 #: ../src/netconfpkg/gui/cipeconfig.py:125
 #: ../src/netconfpkg/gui/cipeconfig.py:173
+#: ../src/netconfpkg/gui/CipeInterface.py:194
+#: ../src/netconfpkg/gui/CipeInterface.py:238
 msgid "Server Mode"
 msgstr "Mode serveur"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:267
-#: ../src/netconfpkg/gui/CipeInterface.py:272
 #: ../src/netconfpkg/gui/cipeconfig.py:205
 #: ../src/netconfpkg/gui/cipeconfig.py:210
+#: ../src/netconfpkg/gui/CipeInterface.py:269
+#: ../src/netconfpkg/gui/CipeInterface.py:274
 msgid "(own choice)"
 msgstr "(propre choix)"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:278
 #: ../src/netconfpkg/gui/cipeconfig.py:216
+#: ../src/netconfpkg/gui/CipeInterface.py:280
 msgid "IP Address of Tunnel Device: "
 msgstr "Adresse IP du périphérique tunnel :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:279
 #: ../src/netconfpkg/gui/cipeconfig.py:217
+#: ../src/netconfpkg/gui/CipeInterface.py:281
 msgid "Local Port: "
 msgstr "Port local :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:280
 #: ../src/netconfpkg/gui/cipeconfig.py:218
+#: ../src/netconfpkg/gui/CipeInterface.py:282
 msgid "Remote Peer Address: "
 msgstr "Adresse paire distante :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:284
 #: ../src/netconfpkg/gui/cipeconfig.py:222
+#: ../src/netconfpkg/gui/CipeInterface.py:286
 msgid "Remote Virtual Address: "
 msgstr "Adresse virtuelle distante :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:285
 #: ../src/netconfpkg/gui/cipeconfig.py:223
+#: ../src/netconfpkg/gui/CipeInterface.py:287
 msgid "Local Virtual Address: "
 msgstr "Adresse virtuelle locale :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:286
 #: ../src/netconfpkg/gui/cipeconfig.py:224
+#: ../src/netconfpkg/gui/CipeInterface.py:288
 msgid "Secret Key: "
 msgstr "Clé secrète :"
 
@@ -335,53 +354,53 @@ msgstr "Périphérique CTC"
 msgid "IUCV Device"
 msgstr "Périphérique IUCV"
 
-#: ../src/glade-strings.c:444 ../src/netconfpkg/gui/dialupconfig.py:225
+#: ../src/netconfpkg/gui/dialupconfig.py:230 ../src/glade-strings.c:442
 msgid "Dialup Configuration"
 msgstr "Configuration de la numérotation"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:236
+#: ../src/netconfpkg/gui/dialupconfig.py:241
 msgid "ISDN Dialup Configuration"
 msgstr "Configuration de la numérotation RNIS"
 
-#: ../src/glade-strings.c:1488 ../src/netconfpkg/gui/dialupconfig.py:254
-#: ../src/netconfpkg/gui/dialupconfig.py:334
+#: ../src/netconfpkg/gui/dialupconfig.py:259
+#: ../src/netconfpkg/gui/dialupconfig.py:337 ../src/glade-strings.c:1516
 msgid "in"
 msgstr "entrée"
 
-#: ../src/glade-strings.c:1501 ../src/netconfpkg/gui/dialupconfig.py:254
+#: ../src/netconfpkg/gui/dialupconfig.py:259 ../src/glade-strings.c:1529
 msgid "out"
 msgstr "sortie"
 
-#: ../src/glade-strings.c:1508 ../src/netconfpkg/gui/dialupconfig.py:293
+#: ../src/netconfpkg/gui/dialupconfig.py:298 ../src/glade-strings.c:1536
 msgid "raw IP"
 msgstr "IP brut"
 
-#: ../src/glade-strings.c:1515 ../src/netconfpkg/gui/dialupconfig.py:295
-#: ../src/netconfpkg/gui/dialupconfig.py:322
+#: ../src/netconfpkg/gui/dialupconfig.py:300
+#: ../src/netconfpkg/gui/dialupconfig.py:327 ../src/glade-strings.c:1550
 msgid "sync PPP"
 msgstr "PPP synchronisé"
 
-#: ../src/glade-strings.c:1505 ../src/netconfpkg/gui/dialupconfig.py:307
-#: ../src/netconfpkg/gui/dialupconfig.py:358
+#: ../src/netconfpkg/gui/dialupconfig.py:312
+#: ../src/netconfpkg/gui/dialupconfig.py:366 ../src/glade-strings.c:1533
 msgid "pap"
 msgstr "pap"
 
-#: ../src/glade-strings.c:1394 ../src/netconfpkg/gui/dialupconfig.py:309
-#: ../src/netconfpkg/gui/dialupconfig.py:360
+#: ../src/netconfpkg/gui/dialupconfig.py:314
+#: ../src/netconfpkg/gui/dialupconfig.py:368 ../src/glade-strings.c:1407
 msgid "chap"
 msgstr "chap"
 
-#: ../src/glade-strings.c:1397 ../src/netconfpkg/gui/dialupconfig.py:311
-#: ../src/netconfpkg/gui/dialupconfig.py:362
+#: ../src/netconfpkg/gui/dialupconfig.py:316
+#: ../src/netconfpkg/gui/dialupconfig.py:370 ../src/glade-strings.c:1410
 msgid "chap+pap"
 msgstr "chap+pap"
 
-#: ../src/glade-strings.c:1498 ../src/netconfpkg/gui/dialupconfig.py:313
-#: ../src/netconfpkg/gui/tcpdialog.py:137
+#: ../src/netconfpkg/gui/dialupconfig.py:318
+#: ../src/netconfpkg/gui/tcpdialog.py:137 ../src/glade-strings.c:1526
 msgid "none"
 msgstr "aucun"
 
-#: ../src/netconfpkg/gui/dialupconfig.py:372
+#: ../src/netconfpkg/gui/dialupconfig.py:380
 msgid "Modem Dialup Configuration"
 msgstr "Configuration de la numérotation du modem"
 
@@ -401,8 +420,8 @@ msgstr ""
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please copy "
 "the full text of this exception or save the crash dump to a file then file a "
-"detailed bug report against redhat-config-network at "
-"http://bugzilla.redhat.com/bugzilla/"
+"detailed bug report against redhat-config-network at http://bugzilla.redhat."
+"com/bugzilla/"
 msgstr ""
 "Une exception inattendue s'est produite. Il s'agit probablement d'un bogue. "
 "Copiez tout le texte de cette excetption ou sauvegardez le vidage dans un "
@@ -433,8 +452,8 @@ msgstr ""
 "L'état de l'application a été écrit sur le\n"
 "fichier %s."
 
-#: ../src/glade-strings.c:1431 ../src/netconfpkg/gui/tcpdialog.py:116
-#: ../src/netconfpkg/gui/tcpdialog.py:136
+#: ../src/netconfpkg/gui/tcpdialog.py:116
+#: ../src/netconfpkg/gui/tcpdialog.py:136 ../src/glade-strings.c:1459
 msgid "dialup"
 msgstr "numérotation"
 
@@ -451,34 +470,34 @@ msgstr "Créer une nouvelle connexion Ethernet."
 msgid "Other Ethernet Card"
 msgstr "Autre carte Ethernet"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:132
 #: ../src/netconfpkg/gui/EthernetInterface.py:203
-#: ../src/netconfpkg/gui/TokenRingInterface.py:200
+#: ../src/netconfpkg/gui/CipeInterface.py:134
 #: ../src/netconfpkg/gui/WirelessInterface.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:200
 msgid "Device:"
 msgstr "Périphérique :"
 
-#: ../src/glade-strings.c:240 ../src/netconfpkg/gui/EthernetInterface.py:214
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: ../src/netconfpkg/gui/EthernetInterface.py:214
 #: ../src/netconfpkg/gui/WirelessInterface.py:234
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211 ../src/glade-strings.c:238
 msgid "Address:"
 msgstr "Adresse :"
 
 #: ../src/netconfpkg/gui/EthernetInterface.py:215
-#: ../src/netconfpkg/gui/TokenRingInterface.py:212
 #: ../src/netconfpkg/gui/WirelessInterface.py:235
+#: ../src/netconfpkg/gui/TokenRingInterface.py:212
 msgid "Subnet Mask:"
 msgstr "Masque de sous-réseau :"
 
 #: ../src/netconfpkg/gui/EthernetInterface.py:216
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
 #: ../src/netconfpkg/gui/WirelessInterface.py:236
+#: ../src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Default Gateway Address:"
 msgstr "Adresse de la passerelle par défaut :"
 
 #: ../src/netconfpkg/gui/EthernetInterface.py:218
-#: ../src/netconfpkg/gui/TokenRingInterface.py:215
 #: ../src/netconfpkg/gui/WirelessInterface.py:238
+#: ../src/netconfpkg/gui/TokenRingInterface.py:215
 msgid "Automatically obtain IP address settings with:"
 msgstr "Obtenir automatiquement les paramètres de l'adresse IP avec :"
 
@@ -510,32 +529,32 @@ msgstr "Connexion Cipe"
 msgid "Create a new Cipe connection."
 msgstr "Créer une nouvelle connexion Cipe."
 
-#: ../src/netconfpkg/gui/CipeInterface.py:133
+#: ../src/netconfpkg/gui/CipeInterface.py:135
 msgid "Tunnel through Device:"
 msgstr "Tunnel à travers le périphérique :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:134
+#: ../src/netconfpkg/gui/CipeInterface.py:136
 msgid "Local Port:"
 msgstr "Port local :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:139
 #: ../src/netconfpkg/gui/CipeInterface.py:141
+#: ../src/netconfpkg/gui/CipeInterface.py:143
 msgid "Remote Peer Address:"
 msgstr "Adresse paire distante :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:139
+#: ../src/netconfpkg/gui/CipeInterface.py:141
 msgid "Auto"
 msgstr "Auto"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:142
+#: ../src/netconfpkg/gui/CipeInterface.py:144
 msgid "Remote Peer Port:"
 msgstr "Porte paire distante :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:144
+#: ../src/netconfpkg/gui/CipeInterface.py:146
 msgid "Remote Virtual Address:"
 msgstr "Adresse virtuelle distante :"
 
-#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/CipeInterface.py:147
 msgid "Local Virtual Address:"
 msgstr "Adresse virtuelle locale :"
 
@@ -606,24 +625,24 @@ msgstr "%s, Périphérique non spécifié ou alias n'est pas un numéro !"
 msgid "Static routes file %s is invalid"
 msgstr "Le fichier des routes statiques %s n'est pas valide."
 
-#: ../src/netconfpkg/NCDeviceList.py:66
+#: ../src/netconfpkg/NCDeviceList.py:67
 msgid "Error loading Device %s!\n"
 msgstr "Erreur lors du chargement du périphérique %s !\n"
 
-#: ../src/netconfpkg/NCDeviceList.py:134
+#: ../src/netconfpkg/NCDeviceList.py:135
 msgid "Error opening/writing %s: %s!"
 msgstr "Erreur lors de l'ouverture/écriture de %s: %s !"
 
-#: ../src/glade-strings.c:1387 ../src/netconfpkg/NCDialup.py:40
+#: ../src/netconfpkg/NCDialup.py:40 ../src/glade-strings.c:1400
 msgid "auto"
 msgstr "auto"
 
-#: ../src/glade-strings.c:1494 ../src/netconfpkg/NCDialup.py:41
+#: ../src/netconfpkg/NCDialup.py:41 ../src/glade-strings.c:1522
 msgid "manual"
 msgstr "manuel"
 
-#: ../src/glade-strings.c:798 ../src/netconfpkg/NCDialup.py:44
-#: ../src/netconfpkg/NC_functions.py:80
+#: ../src/netconfpkg/NCDialup.py:44 ../src/netconfpkg/NC_functions.py:80
+#: ../src/glade-strings.c:799
 msgid "None"
 msgstr "Aucun"
 
@@ -859,7 +878,7 @@ msgstr "Vietnam"
 msgid "Yugoslavia"
 msgstr "Yugoslavie"
 
-#: ../src/netconfpkg/NCHardwareList.py:183
+#: ../src/netconfpkg/NCHardwareList.py:187
 msgid ""
 "%s has an alias to module %s in modules.conf,\n"
 "instead of currently loaded module %s!"
@@ -867,12 +886,12 @@ msgstr ""
 "%s a un alias au module %s dans modules.conf,\n"
 "au lieu du module actuellement chargé %s !"
 
-#: ../src/netconfpkg/NCProfileList.py:126
+#: ../src/netconfpkg/NCProfileList.py:127
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
 "Le périphérique %s utilise le même périphérique matériel \"%s\" que %s !\n"
 
-#: ../src/netconfpkg/NCProfileList.py:127
+#: ../src/netconfpkg/NCProfileList.py:128
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -880,19 +899,19 @@ msgstr ""
 "Veuillez sélectionner un autre périphérique matériel\n"
 "ou en activer un seul."
 
-#: ../src/glade-strings.c:611 ../src/netconfpkg/NC_functions.py:78
+#: ../src/netconfpkg/NC_functions.py:78 ../src/glade-strings.c:609
 msgid "Hardware (CRTSCTS)"
 msgstr "Matériel (CRTSCTS)"
 
-#: ../src/glade-strings.c:979 ../src/netconfpkg/NC_functions.py:79
+#: ../src/netconfpkg/NC_functions.py:79 ../src/glade-strings.c:983
 msgid "Software (XON/XOFF)"
 msgstr "Logiciel (XON/XOFF)"
 
-#: ../src/netconfpkg/NC_functions.py:296
+#: ../src/netconfpkg/NC_functions.py:322
 msgid "Error removing %s: %s!"
 msgstr "Erreur lors de la suppression de %s: %s !"
 
-#: ../src/netconfpkg/NC_functions.py:305
+#: ../src/netconfpkg/NC_functions.py:331 ../src/netconfpkg/NC_functions.py:340
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -902,7 +921,7 @@ msgstr ""
 "vers\n"
 "%s: %s !"
 
-#: ../src/netconfpkg/NC_functions.py:314
+#: ../src/netconfpkg/NC_functions.py:349
 msgid ""
 "Error renaming\n"
 "%s\n"
@@ -914,27 +933,27 @@ msgstr ""
 "en\n"
 "%s: %s!"
 
-#: ../src/netconfpkg/Control.py:54
+#: ../src/netconfpkg/Control.py:55
 msgid "Active"
 msgstr "Activer"
 
-#: ../src/netconfpkg/Control.py:55
+#: ../src/netconfpkg/Control.py:56
 msgid "Inactive"
 msgstr "Désactiver"
 
-#: ../src/netconfpkg/Control.py:169
+#: ../src/netconfpkg/Control.py:179
 msgid "Cannot activate network device %s"
 msgstr "Impossible d'activer le dispositif réseau %s"
 
-#: ../src/netconfpkg/Control.py:171
+#: ../src/netconfpkg/Control.py:181
 msgid "Cannot deactivate network device %s"
 msgstr "Impossible de désactiver le périphérique réseau %s"
 
-#: ../src/netconfpkg/Control.py:173
+#: ../src/netconfpkg/Control.py:183
 msgid "Cannot show status of network device %s"
 msgstr "Impossible de montrer l'état du périphérique réseau %s"
 
-#: ../src/netconfpkg/Control.py:175
+#: ../src/netconfpkg/Control.py:185
 msgid "Cannot monitor status of network device %s"
 msgstr "Impossible de monitorer l'état du périphérique réseau %s"
 
@@ -950,17 +969,17 @@ msgstr "Configurer"
 msgid "Exit"
 msgstr "Quitter"
 
-#: ../src/glade-strings.c:786 ../src/netconf-tui.py:45
+#: ../src/netconf-tui.py:45 ../src/glade-strings.c:787
 msgid "Network Configuration"
 msgstr "Configuration de réseau"
 
-#: ../src/glade-strings.c:779 ../src/netconf-tui.py:156
-#: ../src/netconf-tui.py:263 ../src/netconf-tui.py:366
+#: ../src/netconf-tui.py:156 ../src/netconf-tui.py:263
+#: ../src/netconf-tui.py:366 ../src/glade-strings.c:780
 msgid "Name"
 msgstr "Nom"
 
-#: ../src/glade-strings.c:426 ../src/netconf-tui.py:157
-#: ../src/netconf-tui.py:264 ../src/netconf-tui.py:367
+#: ../src/netconf-tui.py:157 ../src/netconf-tui.py:264
+#: ../src/netconf-tui.py:367 ../src/glade-strings.c:424
 msgid "Device"
 msgstr "Périphérique"
 
@@ -1005,7 +1024,7 @@ msgstr "Mot de passe ISP"
 msgid "Modem Initstring"
 msgstr "Chaîne d'initialisation du modem "
 
-#: ../src/glade-strings.c:749 ../src/netconf-tui.py:276
+#: ../src/netconf-tui.py:276 ../src/glade-strings.c:750
 msgid "Modem Configuration"
 msgstr "Configuration du modem"
 
@@ -1025,6 +1044,10 @@ msgstr ""
 "Ce logiciel est réglementé par la GPL. Signalez les bogues éventuels au Bug "
 "Tracking System de Red Hat : http://bugzilla.redhat.com/"
 
+#: ../src/neat-control.py:122
+msgid "Activating for Network device %s, please wait..."
+msgstr "Activation en cours du périphérique réseau %s, patienter"
+
 #: ../src/glade-strings.c:10
 msgid "$"
 msgstr "$"
@@ -1033,470 +1056,470 @@ msgstr "$"
 msgid "%P %%"
 msgstr "%P %%"
 
-#: ../src/glade-strings.c:21
+#: ../src/glade-strings.c:18
 msgid "/dev/modem"
 msgstr "/dev/modem"
 
-#: ../src/glade-strings.c:25
+#: ../src/glade-strings.c:22
 msgid "/dev/ttyI0"
 msgstr "/dev/ttyI0"
 
-#: ../src/glade-strings.c:29
+#: ../src/glade-strings.c:26
 msgid "/dev/ttyI1"
 msgstr "/dev/ttyI1"
 
-#: ../src/glade-strings.c:33
+#: ../src/glade-strings.c:30
 msgid "/dev/ttyI2"
 msgstr "/dev/ttyI2"
 
-#: ../src/glade-strings.c:37
+#: ../src/glade-strings.c:35
 msgid "/dev/ttyS0"
 msgstr "/dev/ttyS0"
 
-#: ../src/glade-strings.c:41
+#: ../src/glade-strings.c:39
 msgid "/dev/ttyS1"
 msgstr "/dev/ttyS1"
 
-#: ../src/glade-strings.c:45
+#: ../src/glade-strings.c:43
 msgid "/dev/ttyS2"
 msgstr "/dev/ttyS2"
 
-#: ../src/glade-strings.c:49
+#: ../src/glade-strings.c:47
 msgid "/dev/ttyS3"
 msgstr "/dev/ttyS3"
 
-#: ../src/glade-strings.c:53
+#: ../src/glade-strings.c:51
 msgid "0.00"
 msgstr "0.00"
 
-#: ../src/glade-strings.c:56
+#: ../src/glade-strings.c:54
 msgid "00:00:00"
 msgstr "00:00:00"
 
-#: ../src/glade-strings.c:59
+#: ../src/glade-strings.c:57
 msgid "00:00:00:00:00:00"
 msgstr "00:00:00:00:00:00"
 
-#: ../src/glade-strings.c:63
+#: ../src/glade-strings.c:61
 msgid "1"
 msgstr "1"
 
-#: ../src/glade-strings.c:66
+#: ../src/glade-strings.c:64
 msgid "1.00"
 msgstr "1.00"
 
-#: ../src/glade-strings.c:72
+#: ../src/glade-strings.c:70
 msgid "10"
 msgstr "10"
 
-#: ../src/glade-strings.c:78
+#: ../src/glade-strings.c:76
 msgid "11"
 msgstr "11"
 
-#: ../src/glade-strings.c:84
+#: ../src/glade-strings.c:82
 msgid "115200"
 msgstr "115200"
 
-#: ../src/glade-strings.c:88
+#: ../src/glade-strings.c:86
 msgid "11M"
 msgstr "11M"
 
-#: ../src/glade-strings.c:94
+#: ../src/glade-strings.c:92
 msgid "12"
 msgstr "12"
 
-#: ../src/glade-strings.c:98
+#: ../src/glade-strings.c:96
 msgid "1200"
 msgstr "1200"
 
-#: ../src/glade-strings.c:104
+#: ../src/glade-strings.c:102
 msgid "13"
 msgstr "13"
 
-#: ../src/glade-strings.c:110
+#: ../src/glade-strings.c:108
 msgid "14"
 msgstr "14"
 
-#: ../src/glade-strings.c:116
+#: ../src/glade-strings.c:114
 msgid "15"
 msgstr "15"
 
-#: ../src/glade-strings.c:120
+#: ../src/glade-strings.c:118
 msgid "19200"
 msgstr "19200"
 
-#: ../src/glade-strings.c:124
+#: ../src/glade-strings.c:122
 msgid "1M"
 msgstr "1M"
 
-#: ../src/glade-strings.c:128
+#: ../src/glade-strings.c:126
 msgid "1_TR6"
 msgstr "1_TR6"
 
-#: ../src/glade-strings.c:132
+#: ../src/glade-strings.c:130
 msgid "230400"
 msgstr "230400"
 
-#: ../src/glade-strings.c:136
+#: ../src/glade-strings.c:134
 msgid "2400"
 msgstr "2400"
 
-#: ../src/glade-strings.c:140
+#: ../src/glade-strings.c:138
 msgid "2M"
 msgstr "2M"
 
-#: ../src/glade-strings.c:146
+#: ../src/glade-strings.c:144
 msgid "3"
 msgstr "3"
 
-#: ../src/glade-strings.c:150
+#: ../src/glade-strings.c:148
 msgid "300"
 msgstr "300"
 
-#: ../src/glade-strings.c:154
+#: ../src/glade-strings.c:152
 msgid "38400"
 msgstr "38400"
 
-#: ../src/glade-strings.c:160
+#: ../src/glade-strings.c:158
 msgid "4"
 msgstr "4"
 
-#: ../src/glade-strings.c:164
+#: ../src/glade-strings.c:162
 msgid "460800"
 msgstr "460800"
 
-#: ../src/glade-strings.c:168
+#: ../src/glade-strings.c:166
 msgid "4800"
 msgstr "4800"
 
-#: ../src/glade-strings.c:174
+#: ../src/glade-strings.c:172
 msgid "5"
 msgstr "5"
 
-#: ../src/glade-strings.c:178
+#: ../src/glade-strings.c:176
 msgid "5.5M"
 msgstr "5.5M"
 
-#: ../src/glade-strings.c:182
+#: ../src/glade-strings.c:180
 msgid "57600"
 msgstr "57600"
 
-#: ../src/glade-strings.c:188
+#: ../src/glade-strings.c:186
 msgid "6"
 msgstr "6"
 
-#: ../src/glade-strings.c:194
+#: ../src/glade-strings.c:192
 msgid "7"
 msgstr "7"
 
-#: ../src/glade-strings.c:200
+#: ../src/glade-strings.c:198
 msgid "8"
 msgstr "8"
 
-#: ../src/glade-strings.c:206
+#: ../src/glade-strings.c:204
 msgid "9"
 msgstr "9"
 
-#: ../src/glade-strings.c:210
+#: ../src/glade-strings.c:208
 msgid "9600"
 msgstr "9600"
 
-#: ../src/glade-strings.c:213
+#: ../src/glade-strings.c:211
 msgid "A_rea Code"
 msgstr "Code de zo_ne"
 
-#: ../src/glade-strings.c:216
+#: ../src/glade-strings.c:214
 msgid "A_rea Code:"
 msgstr "Code de zo_ne :"
 
-#: ../src/glade-strings.c:219
+#: ../src/glade-strings.c:217
 msgid "Ac_tivate"
 msgstr "Ac_tiver"
 
-#: ../src/glade-strings.c:222
+#: ../src/glade-strings.c:220
 msgid "Accounting"
 msgstr "Compte"
 
-#: ../src/glade-strings.c:225
+#: ../src/glade-strings.c:223
 msgid "Active Profile"
 msgstr "Activer profil"
 
-#: ../src/glade-strings.c:228
+#: ../src/glade-strings.c:226
 msgid "Add / Edit Hosts entry"
 msgstr "Ajouter / Modifier entrée hôtes"
 
-#: ../src/glade-strings.c:231
+#: ../src/glade-strings.c:229
 msgid "Add / Edit IP Address"
 msgstr "Ajouter / Modifier adresse IP"
 
-#: ../src/glade-strings.c:234
+#: ../src/glade-strings.c:232
 msgid "Add new Device Type"
 msgstr "Ajouter nouveau type de périphérique"
 
-#: ../src/glade-strings.c:237
+#: ../src/glade-strings.c:235
 msgid "Add..."
 msgstr "Ajouter"
 
-#: ../src/glade-strings.c:245
+#: ../src/glade-strings.c:243
 msgid "Advanced"
 msgstr "Avancé"
 
-#: ../src/glade-strings.c:248
+#: ../src/glade-strings.c:246
 msgid "Aliases"
 msgstr "Alias"
 
-#: ../src/glade-strings.c:251
+#: ../src/glade-strings.c:249
 msgid "Aliases:"
 msgstr "Alias :"
 
-#: ../src/glade-strings.c:259
+#: ../src/glade-strings.c:257
 msgid "Allow all _users to enable and disable the device"
 msgstr ""
 "Permettre à tous les _utilisateurs d'activer et de désactiver le périphérique"
 
-#: ../src/glade-strings.c:262
+#: ../src/glade-strings.c:260
 msgid "Allow dial on _demand"
 msgstr "Autoriser connexion _sur demande"
 
-#: ../src/glade-strings.c:265
+#: ../src/glade-strings.c:263
 msgid "Allow the link come up on demand."
 msgstr "Autoriser la connexion au lien sur demande."
 
-#: ../src/glade-strings.c:268
+#: ../src/glade-strings.c:266
 msgid "Automatically obtain DNS information from _provider"
 msgstr "Obtenir automatiquement les informations DNS du _fournisseur"
 
-#: ../src/glade-strings.c:271
+#: ../src/glade-strings.c:269
 msgid "Automatically obtain _DNS information from provider"
 msgstr "Obtenir automatiquement les informations _DNS du fournisseur"
 
-#: ../src/glade-strings.c:275
+#: ../src/glade-strings.c:273
 msgid "Automatically obtain _IP address settings with:"
 msgstr "Obtenir automatiquement les paramètres de l'adresse _IP avec :"
 
-#: ../src/glade-strings.c:278
+#: ../src/glade-strings.c:276
 msgid "Basic"
 msgstr "De base"
 
-#: ../src/glade-strings.c:281
+#: ../src/glade-strings.c:279
 msgid "Bind to _MAC Address:"
 msgstr "Lier à l'adresse _MAC :"
 
-#: ../src/glade-strings.c:284
+#: ../src/glade-strings.c:282
 msgid "CIPE Configuration"
 msgstr "Configuration CIPE"
 
-#: ../src/glade-strings.c:287
+#: ../src/glade-strings.c:285
 msgid "CTC Configuration"
 msgstr "Configuration CTC"
 
-#: ../src/glade-strings.c:290
+#: ../src/glade-strings.c:288
 msgid "Callback"
 msgstr "Rappel"
 
-#: ../src/glade-strings.c:293
+#: ../src/glade-strings.c:291
 msgid "Callback _Delay:"
 msgstr "_Temps de rappel :"
 
-#: ../src/glade-strings.c:296
+#: ../src/glade-strings.c:294
 msgid "Callback _Mode:"
 msgstr "_Mode de rappel :"
 
-#: ../src/glade-strings.c:299
+#: ../src/glade-strings.c:297
 msgid "Callback setting"
 msgstr "Configuration de rappel"
 
-#: ../src/glade-strings.c:302
+#: ../src/glade-strings.c:300
 msgid "Choose Hardware Device Type"
 msgstr "Choisir type de périphérique matériel"
 
-#: ../src/glade-strings.c:305
+#: ../src/glade-strings.c:303
 msgid "Choose Hardware Type"
 msgstr "Choisir type de matériel"
 
-#: ../src/glade-strings.c:308
+#: ../src/glade-strings.c:306
 msgid "Choose a Provider"
 msgstr "Choisir un fournisseur d'accès à Internet"
 
-#: ../src/glade-strings.c:311
+#: ../src/glade-strings.c:309
 msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr ""
 "Cliquer ici pour choisir un nouveau fournisseur dans la banque de données "
 "ISP."
 
-#: ../src/glade-strings.c:314
+#: ../src/glade-strings.c:312
 msgid "Compression"
 msgstr "Compression"
 
-#: ../src/glade-strings.c:318
+#: ../src/glade-strings.c:316
 msgid "Configuration for your remote partner"
 msgstr "Configuration du partenaire distant"
 
-#: ../src/glade-strings.c:321
+#: ../src/glade-strings.c:319
 msgid "Configure DSL connection"
 msgstr "Configurer la connexion DSL"
 
-#: ../src/glade-strings.c:326
+#: ../src/glade-strings.c:324
 msgid "Configure Network Settings"
 msgstr "Configurer les paramètres réseau"
 
-#: ../src/glade-strings.c:329
+#: ../src/glade-strings.c:327
 msgid "Configure Tunnel"
 msgstr "Configurer tunnel"
 
-#: ../src/glade-strings.c:332
+#: ../src/glade-strings.c:330
 msgid "Configure Wireless Connection"
 msgstr "Configurer connexion sans fil"
 
-#: ../src/glade-strings.c:335
+#: ../src/glade-strings.c:333
 msgid "Confirm _starting connection"
 msgstr "Confirmer _démarrage connexion"
 
-#: ../src/glade-strings.c:338
+#: ../src/glade-strings.c:336
 msgid "Confirm stopping _connection"
 msgstr "Confirmer _arrêt connexion"
 
-#: ../src/glade-strings.c:341
+#: ../src/glade-strings.c:339
 msgid "Connect to"
 msgstr "Connecter à"
 
-#: ../src/glade-strings.c:344
+#: ../src/glade-strings.c:342
 msgid "Copy"
 msgstr "Copier"
 
-#: ../src/glade-strings.c:347
+#: ../src/glade-strings.c:345
 msgid "Cos_t accumulated from the past connection:"
 msgstr "Coû_t accumulé depuis la dernière connexion :"
 
-#: ../src/glade-strings.c:350
+#: ../src/glade-strings.c:348
 msgid "Cost"
 msgstr "Coût "
 
-#: ../src/glade-strings.c:353
+#: ../src/glade-strings.c:351
 msgid "Cost per:"
 msgstr "Coût par :"
 
-#: ../src/glade-strings.c:356
+#: ../src/glade-strings.c:354
 msgid "Count:"
 msgstr "Comptage :"
 
-#: ../src/glade-strings.c:359
+#: ../src/glade-strings.c:357
 msgid "Create Cipe Connection"
 msgstr "Créer une connexion Cipe"
 
-#: ../src/glade-strings.c:362
+#: ../src/glade-strings.c:360
 msgid "Create DSL connection"
 msgstr "Créer une connexion DSL"
 
-#: ../src/glade-strings.c:365
+#: ../src/glade-strings.c:363
 msgid "Create Dialup Connection"
 msgstr "Créer une connexion via modem"
 
-#: ../src/glade-strings.c:369
+#: ../src/glade-strings.c:367
 msgid "Create Ethernet Device"
 msgstr "Créer un périphérique Ethernet "
 
-#: ../src/glade-strings.c:372
+#: ../src/glade-strings.c:370
 msgid "Create Tokenring Device"
 msgstr "Créer un périphérique Token Ring"
 
-#: ../src/glade-strings.c:375
+#: ../src/glade-strings.c:373
 msgid "Create Wireless Device"
 msgstr "Créer un périphérique sans fil"
 
-#: ../src/glade-strings.c:379
+#: ../src/glade-strings.c:377
 msgid "D Channel Protocol"
 msgstr "Protocole canal D"
 
-#: ../src/glade-strings.c:382
+#: ../src/glade-strings.c:380
 msgid "DHCP Settings"
 msgstr "Configuration DHCP"
 
-#: ../src/glade-strings.c:388
+#: ../src/glade-strings.c:386
 msgid "DMA0:"
 msgstr "DMA0 :"
 
-#: ../src/glade-strings.c:394
+#: ../src/glade-strings.c:392
 msgid "DMA1:"
 msgstr "DMA1 :"
 
-#: ../src/glade-strings.c:397
+#: ../src/glade-strings.c:395
 msgid "DNS"
 msgstr "DNS"
 
-#: ../src/glade-strings.c:400
+#: ../src/glade-strings.c:398
 msgid "DNS Search Path"
 msgstr "Chemin de recherche DNS"
 
-#: ../src/glade-strings.c:403
+#: ../src/glade-strings.c:401
 msgid "Deact_ivate"
 msgstr "Désact_iver"
 
-#: ../src/glade-strings.c:407
+#: ../src/glade-strings.c:405
 msgid "Default _Gateway Address:"
 msgstr "Adresse de la _passerelle par défaut :"
 
-#: ../src/glade-strings.c:410
+#: ../src/glade-strings.c:408
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../src/glade-strings.c:413
+#: ../src/glade-strings.c:411
 msgid "Demand _value:"
 msgstr "Valeur de _requête :"
 
-#: ../src/glade-strings.c:416
+#: ../src/glade-strings.c:414
 msgid "Demand setting"
 msgstr "Configuration de requête"
 
-#: ../src/glade-strings.c:419
+#: ../src/glade-strings.c:417
 msgid "Description"
 msgstr "Description"
 
-#: ../src/glade-strings.c:423
+#: ../src/glade-strings.c:421
 msgid "Destination Network"
 msgstr "Réseau de destination"
 
-#: ../src/glade-strings.c:429
+#: ../src/glade-strings.c:427
 msgid "Device Type"
 msgstr "Type de périphérique"
 
-#: ../src/glade-strings.c:432
+#: ../src/glade-strings.c:430
 msgid "Device _Aliases:"
 msgstr "_Alias périphérique :"
 
-#: ../src/glade-strings.c:435
+#: ../src/glade-strings.c:433
 msgid "Devices"
 msgstr "Périphériques"
 
-#: ../src/glade-strings.c:438
+#: ../src/glade-strings.c:436
 msgid "Dial _Mode:"
 msgstr "_Mode de connexion :"
 
-#: ../src/glade-strings.c:441
+#: ../src/glade-strings.c:439
 msgid "Dial-In _Number:"
 msgstr "Numéro de _téléphone :"
 
-#: ../src/glade-strings.c:448
+#: ../src/glade-strings.c:446
 msgid "Difficulty level:"
 msgstr "Niveau de difficulté :"
 
-#: ../src/glade-strings.c:451
+#: ../src/glade-strings.c:449
 msgid "Disconnect from"
 msgstr "Déconnecter de"
 
-#: ../src/glade-strings.c:454
+#: ../src/glade-strings.c:452
 msgid "Do_main:"
 msgstr "Do_maine :"
 
-#: ../src/glade-strings.c:457
+#: ../src/glade-strings.c:455
 msgid "Domain Name"
 msgstr "Nom de domaine"
 
-#: ../src/glade-strings.c:460
+#: ../src/glade-strings.c:458
 msgid "Domain Name:"
 msgstr "Nom de domaine :"
 
-#: ../src/glade-strings.c:463
+#: ../src/glade-strings.c:461
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
@@ -1504,7 +1527,7 @@ msgstr ""
 "Chaque connexion doit être associée à un périphérique physique qui peut être "
 "sélectionné ci-dessous."
 
-#: ../src/glade-strings.c:466
+#: ../src/glade-strings.c:464
 msgid ""
 "Each device needs to be attached to a physical device which can be selected "
 "below. Device Alias support allows you to use multiple virtual devices for "
@@ -1514,7 +1537,7 @@ msgstr ""
 "sélectionné ci-dessous. L'option Alias périphérique permet d'utiliser "
 "différents périphériques virtuels pour un seul dispositif physique."
 
-#: ../src/glade-strings.c:470
+#: ../src/glade-strings.c:468
 msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
@@ -1522,51 +1545,51 @@ msgstr ""
 "Chaque connexion doit être associée à un périphérique physique qui peut être "
 "sélectionné ci-dessous. "
 
-#: ../src/glade-strings.c:476
+#: ../src/glade-strings.c:474
 msgid "Easy"
 msgstr "Simple"
 
-#: ../src/glade-strings.c:479
+#: ../src/glade-strings.c:477
 msgid "Edit Domain Name"
 msgstr "Modifier nom de domaine"
 
-#: ../src/glade-strings.c:482
+#: ../src/glade-strings.c:480
 msgid "Edit..."
 msgstr "Modifier"
 
-#: ../src/glade-strings.c:485
+#: ../src/glade-strings.c:483
 msgid "Enable VJ Connection-_ID Compression"
 msgstr "Activer compression _ID connexion VJ"
 
-#: ../src/glade-strings.c:488
+#: ../src/glade-strings.c:486
 msgid "Enable _Address/Control Compression"
 msgstr "Activer compression _Adresse/Contrôle"
 
-#: ../src/glade-strings.c:491
+#: ../src/glade-strings.c:489
 msgid "Enable _BSD Compression"
 msgstr "Activer compression _BSD"
 
-#: ../src/glade-strings.c:494
+#: ../src/glade-strings.c:492
 msgid "Enable _CCP Compression Control Protocol"
 msgstr "Activer protocole de contrôle compression _CCP"
 
-#: ../src/glade-strings.c:497
+#: ../src/glade-strings.c:495
 msgid "Enable _Device Alias support"
 msgstr "Activer option Alias _Périphérique"
 
-#: ../src/glade-strings.c:500
+#: ../src/glade-strings.c:498
 msgid "Enable _Protocol Field Compression"
 msgstr "Activer compression champ _Protocole"
 
-#: ../src/glade-strings.c:503
+#: ../src/glade-strings.c:501
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "Activer compression d'en-tête TCP/IP _VJ"
 
-#: ../src/glade-strings.c:506
+#: ../src/glade-strings.c:504
 msgid "Enable synchronous PPP for the connection"
 msgstr "Activer PPP synchrone pour la connexion"
 
-#: ../src/glade-strings.c:510
+#: ../src/glade-strings.c:508
 msgid ""
 "Enter any numbers you need to dial before the normal phone number. For "
 "example, if you need to reach an outside line, or disable call waiting, put "
@@ -1576,7 +1599,7 @@ msgstr ""
 "exemple, si vous devez joindre une ligne externe ou désactiver l'attente "
 "d'appels, entrez ici les numéros nécessaires."
 
-#: ../src/glade-strings.c:513
+#: ../src/glade-strings.c:511
 msgid ""
 "Enter the Access Concentrator name, if you have been given one by your ISP. "
 "In most cases you can leave this blank."
@@ -1584,7 +1607,7 @@ msgstr ""
 "Entrez le nom du concentrateur d'accès que votre fournisseur d'accès à "
 "Internet vous a fourni. Si vous ne le connaissez pas, laissez le champ vide."
 
-#: ../src/glade-strings.c:516
+#: ../src/glade-strings.c:514
 msgid ""
 "Enter the Service Name, if your ISP requires it. If you don't know it, "
 "please contact your ISP. In most cases you can leave this blank."
@@ -1593,39 +1616,39 @@ msgstr ""
 "Si vous ne le connaissez pas, contactez votre fournisseur d'accès. Dans la "
 "plupart des cas, vous pouvez laisser le champ vide."
 
-#: ../src/glade-strings.c:520
+#: ../src/glade-strings.c:518
 msgid "Enter the area code needed to reach your internet provider."
 msgstr ""
 "Entrez le préfixe que vous devez composer pour joindre votre fournisseur "
 "d'accès à Internet."
 
-#: ../src/glade-strings.c:523
+#: ../src/glade-strings.c:521
 msgid "Enter the idle time in seconds after which the link should be dropped."
 msgstr ""
 "Entrez le temps d'inactivité en secondes après lequel la connexion "
 "s'interrompt."
 
-#: ../src/glade-strings.c:526
+#: ../src/glade-strings.c:524
 msgid "Enter the login name for this account."
 msgstr "Entrer le nom de connexion pour ce compte."
 
-#: ../src/glade-strings.c:532
+#: ../src/glade-strings.c:530
 msgid "Enter the login name, that your ISP gave you here."
 msgstr ""
 "Entrer ici le nom de connexion fourni par le fournisseur d'accès à Internet."
 
-#: ../src/glade-strings.c:538
+#: ../src/glade-strings.c:536
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
 "Entrer le nom de cette configuration, généralement le nom de votre "
 "fournisseur d'accès à Internet."
 
-#: ../src/glade-strings.c:541
+#: ../src/glade-strings.c:539
 msgid "Enter the password for this account."
 msgstr "Entrer le mot de passe pour ce compte."
 
-#: ../src/glade-strings.c:547
+#: ../src/glade-strings.c:545
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
 "your ISP."
@@ -1633,222 +1656,226 @@ msgstr ""
 "Entez le mot de passe pour ce compte. Si vous ne le connaissez pas, "
 "contactez votre fournisseur d'accès à Internet."
 
-#: ../src/glade-strings.c:551
+#: ../src/glade-strings.c:549
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
 msgstr ""
 "Entrer le numéro de téléphone de votre ISP (sans préfixes ni codes de zone)."
 
-#: ../src/glade-strings.c:554
+#: ../src/glade-strings.c:552
 msgid "Enter the provider name for this account."
 msgstr "Entrer le nom du fournisseur d'accès pour ce compte."
 
-#: ../src/glade-strings.c:559
+#: ../src/glade-strings.c:557
 msgid "Enter your device bound traffic rules here."
 msgstr "Entrer ici les règles de trafic du périphérique."
 
-#: ../src/glade-strings.c:562
+#: ../src/glade-strings.c:560
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr ""
 "Entrez votre numéro de téléphone local. Si vous utilisez un modem, ce numéro "
 "est optionnel."
 
-#: ../src/glade-strings.c:566
+#: ../src/glade-strings.c:564
 msgid "Ethernet"
 msgstr "Ethernet "
 
-#: ../src/glade-strings.c:569
+#: ../src/glade-strings.c:567
 msgid "Ethernet Device"
 msgstr "Périphérique Ethernet "
 
-#: ../src/glade-strings.c:572
+#: ../src/glade-strings.c:570
 msgid "Ethernet _Device:"
 msgstr "_Périphérique Ethernet :"
 
-#: ../src/glade-strings.c:576
+#: ../src/glade-strings.c:574
 msgid "Ethernet card"
 msgstr "Carte Ethernet"
 
-#: ../src/glade-strings.c:580
+#: ../src/glade-strings.c:578
 msgid "Eu_ro ISDN (EDSS1)"
 msgstr "Eu_ro ISDN (EDSS1)"
 
-#: ../src/glade-strings.c:584
+#: ../src/glade-strings.c:582
 msgid "Fre_quency:"
 msgstr "Fré_quence :"
 
-#: ../src/glade-strings.c:588
+#: ../src/glade-strings.c:586
 msgid "Gateway"
 msgstr "Passerelle"
 
-#: ../src/glade-strings.c:596
+#: ../src/glade-strings.c:594
 msgid "General"
 msgstr "Général"
 
-#: ../src/glade-strings.c:599
+#: ../src/glade-strings.c:597
 msgid "Ha_rdware Address:"
 msgstr "Adresse ma_tériel :"
 
-#: ../src/glade-strings.c:602
+#: ../src/glade-strings.c:600
 msgid "Han_gup Timeout:"
 msgstr "Sus_pendre la temporisation :"
 
-#: ../src/glade-strings.c:605
+#: ../src/glade-strings.c:603
 msgid "Hardware"
 msgstr "Matériel "
 
-#: ../src/glade-strings.c:617
+#: ../src/glade-strings.c:615
 msgid "Hardware Device"
 msgstr "Périphérique matériel "
 
-#: ../src/glade-strings.c:620
+#: ../src/glade-strings.c:618
 msgid "Hardware Device:"
 msgstr "Périphérique matériel :"
 
-#: ../src/glade-strings.c:623
+#: ../src/glade-strings.c:621
 msgid "Hardware Type:"
 msgstr "Type matériel :"
 
-#: ../src/glade-strings.c:630
+#: ../src/glade-strings.c:628
 msgid "Hostname"
 msgstr "Nom d'hôte"
 
-#: ../src/glade-strings.c:633
+#: ../src/glade-strings.c:631
 msgid "Hostname:"
 msgstr "Nom d'hôte :"
 
-#: ../src/glade-strings.c:636
+#: ../src/glade-strings.c:634
 msgid "Hosts"
 msgstr "Hôtes"
 
-#: ../src/glade-strings.c:644
+#: ../src/glade-strings.c:642
 msgid "IO_1:"
 msgstr "IO_1:"
 
-#: ../src/glade-strings.c:652
+#: ../src/glade-strings.c:650
 msgid "IO_2:"
 msgstr "IO_2:"
 
-#: ../src/glade-strings.c:657
+#: ../src/glade-strings.c:655
 msgid "IP"
 msgstr "IP"
 
-#: ../src/glade-strings.c:665
+#: ../src/glade-strings.c:663
 msgid "IR_Q:"
 msgstr "IR_Q:"
 
-#: ../src/glade-strings.c:668
+#: ../src/glade-strings.c:666
 msgid "ISDN"
 msgstr "RNIS"
 
-#: ../src/glade-strings.c:671
+#: ../src/glade-strings.c:669
 msgid "ISDN Adapters Configuration"
 msgstr "Configuration adaptateurs RNIS"
 
-#: ../src/glade-strings.c:675
+#: ../src/glade-strings.c:673
 msgid "ISDN _Adapters:"
 msgstr "_Adaptateurs RNIS :"
 
-#: ../src/glade-strings.c:679
+#: ../src/glade-strings.c:676
+msgid "Info"
+msgstr ""
+
+#: ../src/glade-strings.c:680
 msgid "Internet Provider"
 msgstr "Fournisseur d'accès à Internet"
 
-#: ../src/glade-strings.c:682
+#: ../src/glade-strings.c:683
 msgid "Let _PPP do all authentication"
 msgstr "Laisser que _PPP effectue toute l'authentification"
 
-#: ../src/glade-strings.c:686
+#: ../src/glade-strings.c:687
 msgid "Lo_cal Virtual Address:"
 msgstr "Adresse virtuelle lo_cale :"
 
-#: ../src/glade-strings.c:693
+#: ../src/glade-strings.c:694
 msgid "MSN/EA_Z:"
 msgstr "MSN/EA_Z :"
 
-#: ../src/glade-strings.c:698
+#: ../src/glade-strings.c:699
 msgid "MTU:"
 msgstr "MTU :"
 
-#: ../src/glade-strings.c:701
+#: ../src/glade-strings.c:702
 msgid "M_inimum number of seconds charged:"
 msgstr "Nombre m_inimum de secondes comptabilisées :"
 
-#: ../src/glade-strings.c:706
+#: ../src/glade-strings.c:707
 msgid "Make this connection the default _route"
 msgstr "Faire de cette connexion la _route par défaut"
 
-#: ../src/glade-strings.c:710
+#: ../src/glade-strings.c:711
 msgid "Manual IP Address Settings"
 msgstr "Configuration manuelle de l'adresse IP"
 
-#: ../src/glade-strings.c:715
+#: ../src/glade-strings.c:716
 msgid "Mask"
 msgstr "Masque"
 
-#: ../src/glade-strings.c:720
+#: ../src/glade-strings.c:721
 msgid "Maximum In"
 msgstr "Entrée minimum"
 
-#: ../src/glade-strings.c:725
+#: ../src/glade-strings.c:726
 msgid "Maximum Out"
 msgstr "Sortie maximum"
 
-#: ../src/glade-strings.c:738
+#: ../src/glade-strings.c:739
 msgid "Minimum In"
 msgstr "Entrée minimum"
 
-#: ../src/glade-strings.c:743
+#: ../src/glade-strings.c:744
 msgid "Minimum Out"
 msgstr "Sortie minimum"
 
-#: ../src/glade-strings.c:746
+#: ../src/glade-strings.c:747
 msgid "Modem"
 msgstr "Modem"
 
-#: ../src/glade-strings.c:752
+#: ../src/glade-strings.c:753
 msgid "Modem P_ort:"
 msgstr "P_ort du modem :"
 
-#: ../src/glade-strings.c:756
+#: ../src/glade-strings.c:757
 msgid "Modem Properties"
 msgstr "Propriétés du modem"
 
-#: ../src/glade-strings.c:759
+#: ../src/glade-strings.c:760
 msgid "Modem _Initialization String:"
 msgstr "Chaîne d'_initialisation du modem :"
 
-#: ../src/glade-strings.c:763
+#: ../src/glade-strings.c:764
 msgid "Modem _Volume:"
 msgstr "_Volume du modem :"
 
-#: ../src/glade-strings.c:767
+#: ../src/glade-strings.c:768
 msgid "Modem0"
 msgstr "Modem0"
 
-#: ../src/glade-strings.c:770
+#: ../src/glade-strings.c:771
 msgid "Modem1"
 msgstr "Modem1"
 
-#: ../src/glade-strings.c:773
+#: ../src/glade-strings.c:774
 msgid "Modem2"
 msgstr "Modem2"
 
-#: ../src/glade-strings.c:776
+#: ../src/glade-strings.c:777
 msgid "Modem3"
 msgstr "Modem3"
 
-#: ../src/glade-strings.c:783
+#: ../src/glade-strings.c:784
 msgid "Network Adapters Configuration"
 msgstr "Configuration des adaptateurs de réseau"
 
-#: ../src/glade-strings.c:791
+#: ../src/glade-strings.c:792
 msgid "New Interface"
 msgstr "Nouvelle interface"
 
-#: ../src/glade-strings.c:794
+#: ../src/glade-strings.c:795
 msgid "Nickname"
 msgstr "Surnom"
 
-#: ../src/glade-strings.c:801
+#: ../src/glade-strings.c:802
 msgid ""
 "Note that DNS information from automatic device configuration will take "
 "precedence over any settings done globally."
@@ -1856,27 +1883,27 @@ msgstr ""
 "Noter que l'information DNS de la configuration automatique du périphérique "
 "a la priorité sur toute configuration effectuée de façon globale."
 
-#: ../src/glade-strings.c:808
+#: ../src/glade-strings.c:809
 msgid "Online time:"
 msgstr "Temps en ligne :"
 
-#: ../src/glade-strings.c:811
+#: ../src/glade-strings.c:812
 msgid "Options"
 msgstr "Options"
 
-#: ../src/glade-strings.c:814
+#: ../src/glade-strings.c:815
 msgid "PPP Option List"
 msgstr "Liste des options PPP"
 
-#: ../src/glade-strings.c:820
+#: ../src/glade-strings.c:821
 msgid "Pass_word:"
 msgstr "Mot de _passe :"
 
-#: ../src/glade-strings.c:824
+#: ../src/glade-strings.c:825
 msgid "Phone Number"
 msgstr "Numéro de téléphone "
 
-#: ../src/glade-strings.c:830
+#: ../src/glade-strings.c:831
 msgid ""
 "Please enter the MTU parameter to set the maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
@@ -1884,244 +1911,249 @@ msgstr ""
 "Entrer le paramètre MTU pour configurer le Maximum Transfer Unit de cette "
 "interface. Sur machines s390/s390x, le MTU est configuré par défaut sur 1492."
 
-#: ../src/glade-strings.c:833
+#: ../src/glade-strings.c:834
 msgid "Please select the hardware device type, you want to create"
 msgstr ""
 "Sélectionnez le type de périphérique matériel que vous souhaitez créer."
 
-#: ../src/glade-strings.c:837
+#: ../src/glade-strings.c:838
 msgid "Please select the level of security for this device."
 msgstr "Sélectionner le niveau de sécurité de ce périphérique."
 
-#: ../src/glade-strings.c:840
+#: ../src/glade-strings.c:841
 msgid "Please select the type of hardware device to add:"
 msgstr "Sélectionner le type de périphérique matériel à ajouter :"
 
-#: ../src/glade-strings.c:845
+#: ../src/glade-strings.c:846
 msgid "Port"
 msgstr "Port"
 
-#: ../src/glade-strings.c:848
+#: ../src/glade-strings.c:849
 msgid "Prefi_x"
 msgstr "Préfi_xe"
 
-#: ../src/glade-strings.c:851
+#: ../src/glade-strings.c:852
 msgid "Prefi_x:"
 msgstr "Préfi_xe :"
 
-#: ../src/glade-strings.c:855
+#: ../src/glade-strings.c:856
 msgid "Prefix (Netmask)"
 msgstr "Préfixe (masque de réseau)"
 
-#: ../src/glade-strings.c:861
+#: ../src/glade-strings.c:862
 msgid "Professional"
 msgstr "Professionnel"
 
-#: ../src/glade-strings.c:865
+#: ../src/glade-strings.c:866
 msgid "Protocol Type"
 msgstr "Type de protocole"
 
-#: ../src/glade-strings.c:869
+#: ../src/glade-strings.c:870
 msgid "Protocols"
 msgstr "Protocoles"
 
-#: ../src/glade-strings.c:873
+#: ../src/glade-strings.c:874
 msgid "Provider"
 msgstr "Fournisseur d'accès à Internet"
 
-#: ../src/glade-strings.c:877
+#: ../src/glade-strings.c:878
 msgid "Provider _Name:"
 msgstr "_Nom du fournisseur d'accès à Internet :"
 
-#: ../src/glade-strings.c:880
+#: ../src/glade-strings.c:881
+#, fuzzy
+msgid "Red Hat Control Network"
+msgstr "Réseau de destination"
+
+#: ../src/glade-strings.c:884
 msgid "Remo_ve"
 msgstr "Supprim_er"
 
-#: ../src/glade-strings.c:884
+#: ../src/glade-strings.c:888
 msgid "Remote Peer P_ort:"
 msgstr "P_ort paire distant :"
 
-#: ../src/glade-strings.c:888
+#: ../src/glade-strings.c:892
 msgid "Remote _Virtual Address:"
 msgstr "Adresse _virtuelle distante :"
 
-#: ../src/glade-strings.c:896
+#: ../src/glade-strings.c:900
 msgid "Resource"
 msgstr "Ressource"
 
-#: ../src/glade-strings.c:899
+#: ../src/glade-strings.c:903
 msgid "Restart if _connection dies"
 msgstr "Redémarrer si la _connexion s'interrompt"
 
-#: ../src/glade-strings.c:905
+#: ../src/glade-strings.c:909
 msgid "Route"
 msgstr "Route"
 
-#: ../src/glade-strings.c:908
+#: ../src/glade-strings.c:912
 msgid "Routing"
 msgstr "Acheminement"
 
-#: ../src/glade-strings.c:911
+#: ../src/glade-strings.c:915
 msgid "Search D_omain:"
 msgstr "D_omaine de recherche :"
 
-#: ../src/glade-strings.c:914
+#: ../src/glade-strings.c:918
 msgid "Security"
 msgstr "Sécurité"
 
-#: ../src/glade-strings.c:918
+#: ../src/glade-strings.c:922
 msgid "Security Level"
 msgstr "Niveau de sécurité"
 
-#: ../src/glade-strings.c:921
+#: ../src/glade-strings.c:925
 msgid "Select Device Type"
 msgstr "Sélectionner type de périphérique"
 
-#: ../src/glade-strings.c:924
+#: ../src/glade-strings.c:928
 msgid "Select Ethernet Adapter"
 msgstr "Sélectionner adaptateur Ethernet"
 
-#: ../src/glade-strings.c:928
+#: ../src/glade-strings.c:932
 msgid "Select Ethernet Device"
 msgstr "Sélectionner périphérique Ethernet "
 
-#: ../src/glade-strings.c:931
+#: ../src/glade-strings.c:935
 msgid "Select ISDN Adapter"
 msgstr "Sélectionner adaptateur RNIS"
 
-#: ../src/glade-strings.c:934
+#: ../src/glade-strings.c:938
 msgid "Select Modem"
 msgstr "Sélectionner modem "
 
-#: ../src/glade-strings.c:937
+#: ../src/glade-strings.c:941
 msgid "Select Provider"
 msgstr "Sélectionner fournisseur d'accès à Internet :"
 
-#: ../src/glade-strings.c:940
+#: ../src/glade-strings.c:944
 msgid "Select Token Ring Adapter"
 msgstr "Sélectionner adaptateur Token Ring"
 
-#: ../src/glade-strings.c:943
+#: ../src/glade-strings.c:947
 msgid "Select Tokenring Device"
 msgstr "Sélectionner périphérique Tokenring"
 
-#: ../src/glade-strings.c:947
+#: ../src/glade-strings.c:951
 msgid "Select the Ethernet card you want to configure:"
 msgstr "Sélectionnez la carte Ethernet que vous souhaitez configurer :"
 
-#: ../src/glade-strings.c:950
+#: ../src/glade-strings.c:954
 msgid "Select the Tokenring card you want to configure:"
 msgstr "Sélectionnez la carte Tokenring que vous souhaitez configurer :"
 
-#: ../src/glade-strings.c:953
+#: ../src/glade-strings.c:957
 msgid "Select the authentication protocol used by your ISP."
 msgstr ""
 "Sélectionnez le protocole d'authentification utilisé par votre fournisseur "
 "d'accès à Internet."
 
-#: ../src/glade-strings.c:956
+#: ../src/glade-strings.c:960
 msgid "Select the ethernet device connected to the DSL modem."
 msgstr "Sélectionner la carte Ethernet connectée au modem DSL."
 
-#: ../src/glade-strings.c:959
+#: ../src/glade-strings.c:963
 msgid "Select the ethernet device for this account."
 msgstr "Sélectionner la carte Ethernet pour ce compte."
 
-#: ../src/glade-strings.c:963
+#: ../src/glade-strings.c:967
 msgid "Select the services you want to provide through this device"
 msgstr ""
 "Sélectionnez les services que vous voulez fournir à l'aide de ce "
 "périphérique."
 
-#: ../src/glade-strings.c:967
+#: ../src/glade-strings.c:971
 msgid "Service"
 msgstr "Service"
 
-#: ../src/glade-strings.c:971
+#: ../src/glade-strings.c:975
 msgid "Service Description"
 msgstr "Description du service"
 
-#: ../src/glade-strings.c:975
+#: ../src/glade-strings.c:979
 msgid "Services"
 msgstr "Services"
 
-#: ../src/glade-strings.c:983
+#: ../src/glade-strings.c:987
 msgid "Static Network Routes"
 msgstr "Routes de réseau statiques"
 
-#: ../src/glade-strings.c:986
+#: ../src/glade-strings.c:990
 msgid "Statically set IP addresses:"
 msgstr "Configurer statiquement les adresses IP :"
 
-#: ../src/glade-strings.c:989
+#: ../src/glade-strings.c:993
 msgid "Status"
 msgstr "Etat"
 
-#: ../src/glade-strings.c:992
+#: ../src/glade-strings.c:996
 msgid "TCP/IP"
 msgstr "TCP/IP"
 
-#: ../src/glade-strings.c:995
+#: ../src/glade-strings.c:999
 msgid "TCP/IP Settings"
 msgstr "Configuration TCP/IP"
 
-#: ../src/glade-strings.c:998
+#: ../src/glade-strings.c:1002
 msgid "Tie to specific ethernet card"
 msgstr "Lier à une carte Ethernet spécifique"
 
-#: ../src/glade-strings.c:1001
+#: ../src/glade-strings.c:1005
 msgid "Token Ring"
 msgstr "Token Ring"
 
-#: ../src/glade-strings.c:1004
+#: ../src/glade-strings.c:1008
 msgid "Token Ring Device"
 msgstr "Périphérique Token Ring"
 
-#: ../src/glade-strings.c:1007
+#: ../src/glade-strings.c:1011
 msgid "Tokenring card"
 msgstr "Carte Token Ring"
 
-#: ../src/glade-strings.c:1010
+#: ../src/glade-strings.c:1014
 msgid "Traffic"
 msgstr "Trafic"
 
-#: ../src/glade-strings.c:1013
+#: ../src/glade-strings.c:1017
 msgid "Tunnel Settings"
 msgstr "Configuration tunnel"
 
-#: ../src/glade-strings.c:1016
+#: ../src/glade-strings.c:1020
 msgid "Type"
 msgstr "Type"
 
-#: ../src/glade-strings.c:1029
+#: ../src/glade-strings.c:1033
 msgid "Use _Callback Control Protocol (CBCP)"
 msgstr "Utiliser le protocole de contrôle du _rappel"
 
-#: ../src/glade-strings.c:1032
+#: ../src/glade-strings.c:1036
 msgid "Use _Channel Bundling"
 msgstr "Utiliser l'_assembleur de canaux"
 
-#: ../src/glade-strings.c:1035
+#: ../src/glade-strings.c:1039
 msgid "Use ethernet device aliases"
 msgstr "Utiliser alias carte Ethernet"
 
-#: ../src/glade-strings.c:1043
+#: ../src/glade-strings.c:1047
 msgid "Waiting to connect to"
 msgstr "En attente de se connecter à"
 
-#: ../src/glade-strings.c:1047
+#: ../src/glade-strings.c:1051
 msgid "Waiting..."
 msgstr "Patienter"
 
-#: ../src/glade-strings.c:1050
+#: ../src/glade-strings.c:1054
 msgid "Wireless Device Configuration"
 msgstr "Configuration périphérique sans fil"
 
-#: ../src/glade-strings.c:1053
+#: ../src/glade-strings.c:1057
 msgid "Wireless Settings"
 msgstr "Configuration sans fil"
 
-#: ../src/glade-strings.c:1056
+#: ../src/glade-strings.c:1060
 msgid ""
 "You can configure IP address settings for an interface automatically if your "
 "network supports it. For manual configuration information, contact your "
@@ -2131,7 +2163,7 @@ msgstr ""
 "permet. Pour des informations sur la configuration manuelle, contactez votre "
 "administrateur système ou votre fournisseur d'accès à Internet."
 
-#: ../src/glade-strings.c:1059
+#: ../src/glade-strings.c:1063
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
@@ -2140,7 +2172,7 @@ msgstr ""
 "physique. Différents périphériques logiques peuvent être associés à un seul "
 "élément matériel."
 
-#: ../src/glade-strings.c:1062
+#: ../src/glade-strings.c:1066
 msgid ""
 "You may configure network hardware physically attached to the computer "
 "here.\n"
@@ -2152,7 +2184,7 @@ msgstr ""
 "\n"
 "\n"
 
-#: ../src/glade-strings.c:1069
+#: ../src/glade-strings.c:1073
 msgid ""
 "You may specify static computer hostname to IP address mappings here.  If "
 "DNS is in use, these settings will take precedence over any information it "
@@ -2162,430 +2194,473 @@ msgstr ""
 "le DNS est en cours d'utilisation, ces paramètres auront la priorité sur "
 "toutes les autres informations fournies."
 
-#: ../src/glade-strings.c:1072
+#: ../src/glade-strings.c:1076
 msgid "_AC-Name:"
 msgstr "Nom _CA :"
 
-#: ../src/glade-strings.c:1075
+#: ../src/glade-strings.c:1079
 msgid "_Accumulate cost over multiple connections"
 msgstr "_Accumuler le coût sur différentes connexions"
 
-#: ../src/glade-strings.c:1083
+#: ../src/glade-strings.c:1082
+#, fuzzy
+msgid "_Activate"
+msgstr "Ac_tiver"
+
+#: ../src/glade-strings.c:1090
 msgid "_Activate device when computer starts"
 msgstr "_Activer le périphérique au démarrage de l'ordinateur"
 
-#: ../src/glade-strings.c:1089
+#: ../src/glade-strings.c:1096
 msgid "_Adapter:"
 msgstr "_Adaptateur :"
 
-#: ../src/glade-strings.c:1092
+#: ../src/glade-strings.c:1099
 msgid "_Add"
 msgstr "_Ajouter"
 
-#: ../src/glade-strings.c:1102
+#: ../src/glade-strings.c:1109
 msgid "_Add..."
 msgstr "_Ajouter"
 
-#: ../src/glade-strings.c:1107
+#: ../src/glade-strings.c:1114
 msgid "_Address:"
 msgstr "_Adresse :"
 
-#: ../src/glade-strings.c:1110
+#: ../src/glade-strings.c:1117
 msgid "_Alias:"
 msgstr "_Alias :"
 
-#: ../src/glade-strings.c:1113
+#: ../src/glade-strings.c:1120
 msgid "_Allow only above Dial-In Number"
 msgstr "N'_authoriser qu'après la numérotation"
 
-#: ../src/glade-strings.c:1116
+#: ../src/glade-strings.c:1123
 msgid "_Authentication:"
 msgstr "_Authentification :"
 
-#: ../src/glade-strings.c:1120
+#: ../src/glade-strings.c:1127
 msgid "_Baud Rate:"
 msgstr "_Vitesse de transmission :"
 
-#: ../src/glade-strings.c:1124
+#: ../src/glade-strings.c:1131
 msgid "_Channel:"
 msgstr "_Canal :"
 
-#: ../src/glade-strings.c:1127
+#: ../src/glade-strings.c:1134
 msgid "_Choose Provider..."
 msgstr "_Choisir le fournisseur"
 
-#: ../src/glade-strings.c:1130
+#: ../src/glade-strings.c:1137
 msgid "_Configure..."
 msgstr "_Configurer"
 
-#: ../src/glade-strings.c:1134
+#: ../src/glade-strings.c:1141
 msgid "_Copy"
 msgstr "_Copier"
 
-#: ../src/glade-strings.c:1137
+#: ../src/glade-strings.c:1144
 msgid "_Cost"
 msgstr "_Coût"
 
-#: ../src/glade-strings.c:1140
+#: ../src/glade-strings.c:1147
+#, fuzzy
+msgid "_Deactivate"
+msgstr "Désact_iver"
+
+#: ../src/glade-strings.c:1150
 msgid "_Debug mode"
 msgstr "_Mode de débogage"
 
-#: ../src/glade-strings.c:1150
+#: ../src/glade-strings.c:1160
 msgid "_Delete"
 msgstr "_Supprimer"
 
-#: ../src/glade-strings.c:1153
+#: ../src/glade-strings.c:1163
 msgid "_Device Type:"
 msgstr "_Type de périphérique :"
 
-#: ../src/glade-strings.c:1161
+#: ../src/glade-strings.c:1171
 msgid "_Device:"
 msgstr "_Périphérique :"
 
-#: ../src/glade-strings.c:1164
+#: ../src/glade-strings.c:1174
 msgid "_Dial Mode:"
 msgstr "_Mode de numérotation :"
 
-#: ../src/glade-strings.c:1168
+#: ../src/glade-strings.c:1178
 msgid "_ESSID (Network ID):"
 msgstr "_ESSID (ID du réseau) :"
 
-#: ../src/glade-strings.c:1177
+#: ../src/glade-strings.c:1187
 msgid "_Edit..."
 msgstr "_Modifier"
 
-#: ../src/glade-strings.c:1180
+#: ../src/glade-strings.c:1190
 msgid "_Encapsulation Mode:"
 msgstr "_Mode d'encapsulation :"
 
-#: ../src/glade-strings.c:1183
+#: ../src/glade-strings.c:1193
 msgid "_Extra cost to start a connection:"
 msgstr "Coût _extra pour activer une connexion :"
 
-#: ../src/glade-strings.c:1187
+#: ../src/glade-strings.c:1197
 msgid "_Flow Control:"
 msgstr "_Contrôle de flux :"
 
-#: ../src/glade-strings.c:1190
+#: ../src/glade-strings.c:1200
 msgid "_Gateway:"
 msgstr "_Passerelle"
 
-#: ../src/glade-strings.c:1194
+#: ../src/glade-strings.c:1204
 msgid "_Generate"
 msgstr "_Générer"
 
-#: ../src/glade-strings.c:1197
+#: ../src/glade-strings.c:1207
 msgid "_Hangup Timeout:"
 msgstr "_Suspendre la temporisation :"
 
-#: ../src/glade-strings.c:1200
+#: ../src/glade-strings.c:1210
 msgid "_Hardware Address"
 msgstr "Adresse _matériel "
 
-#: ../src/glade-strings.c:1205
+#: ../src/glade-strings.c:1215
 msgid "_Hardware Device:"
 msgstr "Périphérique _matériel :"
 
-#: ../src/glade-strings.c:1208
+#: ../src/glade-strings.c:1218
 msgid "_Hardware:"
 msgstr "_Matériel :"
 
-#: ../src/glade-strings.c:1212
+#: ../src/glade-strings.c:1222
 msgid "_High Security (Internet)"
 msgstr "_Haute sécurité (Internet)"
 
-#: ../src/glade-strings.c:1218
+#: ../src/glade-strings.c:1228
 msgid "_Hostname (optional):"
 msgstr "_Nom d'hôte (optionnel) :"
 
-#: ../src/glade-strings.c:1221
+#: ../src/glade-strings.c:1231
 msgid "_Hostname:"
 msgstr "_Nom d'hôte :"
 
-#: ../src/glade-strings.c:1224
+#: ../src/glade-strings.c:1234
 msgid "_Hour"
 msgstr "_Heure"
 
-#: ../src/glade-strings.c:1232
+#: ../src/glade-strings.c:1242
 msgid "_IO:"
 msgstr "_ES :"
 
-#: ../src/glade-strings.c:1236
+#: ../src/glade-strings.c:1246
 msgid "_Key:"
 msgstr "_Clé :"
 
-#: ../src/glade-strings.c:1240
+#: ../src/glade-strings.c:1250
 msgid "_Local Port:"
 msgstr "_Port local :"
 
-#: ../src/glade-strings.c:1246
+#: ../src/glade-strings.c:1256
 msgid "_Login Name:"
 msgstr "_Nom de connexion :"
 
-#: ../src/glade-strings.c:1250
+#: ../src/glade-strings.c:1260
 msgid "_Low Security"
 msgstr "_Sécurité réduite"
 
-#: ../src/glade-strings.c:1258
+#: ../src/glade-strings.c:1268
 msgid "_MEM:"
 msgstr "_MEM :"
 
-#: ../src/glade-strings.c:1261
+#: ../src/glade-strings.c:1271
 msgid "_MTU:"
 msgstr "_MTU :"
 
-#: ../src/glade-strings.c:1264
+#: ../src/glade-strings.c:1274
 msgid "_Minute"
 msgstr "_Minute"
 
-#: ../src/glade-strings.c:1268
+#: ../src/glade-strings.c:1278
 msgid "_Mode:"
 msgstr "_Mode :"
 
-#: ../src/glade-strings.c:1272
+#: ../src/glade-strings.c:1282
 msgid "_Modem Device:"
 msgstr "Périphérique _modem :"
 
-#: ../src/glade-strings.c:1275
+#: ../src/glade-strings.c:1285
 msgid "_Monitor"
 msgstr "_Moniteur"
 
-#: ../src/glade-strings.c:1278
+#: ../src/glade-strings.c:1288
+#, fuzzy
+msgid "_Monitor..."
+msgstr "_Moniteur"
+
+#: ../src/glade-strings.c:1291
 msgid "_New..."
 msgstr "_Nouveau"
 
-#: ../src/glade-strings.c:1286
+#: ../src/glade-strings.c:1299
 msgid "_Nickname: "
 msgstr "_Surnom"
 
-#: ../src/glade-strings.c:1289
+#: ../src/glade-strings.c:1302
 msgid "_Number of seconds in basic accounting unit:"
 msgstr "_Nombre de secondes dans l'unité de comptabilisation de base :"
 
-#: ../src/glade-strings.c:1292
+#: ../src/glade-strings.c:1305
 msgid "_PPP Option:"
 msgstr "_Option PPP :"
 
-#: ../src/glade-strings.c:1295
+#: ../src/glade-strings.c:1308
 msgid "_Phone Number"
 msgstr "_Numéro de téléphone :"
 
-#: ../src/glade-strings.c:1298
+#: ../src/glade-strings.c:1311
 msgid "_Phone Number:"
 msgstr "_Numéro de téléphone :"
 
-#: ../src/glade-strings.c:1301
+#: ../src/glade-strings.c:1314
 msgid "_Primary DNS:"
 msgstr "_DNS primaire :"
 
-#: ../src/glade-strings.c:1304
+#: ../src/glade-strings.c:1317
 msgid "_Probe"
 msgstr "_Détecter"
 
-#: ../src/glade-strings.c:1307
+#: ../src/glade-strings.c:1320
 msgid "_Probe for Address"
 msgstr "_Détecter l'adresse"
 
-#: ../src/glade-strings.c:1310
+#: ../src/glade-strings.c:1323
 msgid "_Probe for Address..."
 msgstr "_Détecter l'adresse"
 
-#: ../src/glade-strings.c:1314
+#: ../src/glade-strings.c:1327
 msgid "_Provider Name:"
 msgstr "_Nom du fournisseur :"
 
-#: ../src/glade-strings.c:1318
+#: ../src/glade-strings.c:1331
 msgid "_Remote Peer Address:"
 msgstr "_Adresse paire distante :"
 
-#: ../src/glade-strings.c:1321
+#: ../src/glade-strings.c:1334
 msgid "_Rename..."
 msgstr "_Renommer"
 
-#: ../src/glade-strings.c:1324
+#: ../src/glade-strings.c:1337
 msgid "_Second"
 msgstr "_Seconde"
 
-#: ../src/glade-strings.c:1327
+#: ../src/glade-strings.c:1340
 msgid "_Secondary DNS:"
 msgstr "_DNS secondaire :"
 
-#: ../src/glade-strings.c:1331
+#: ../src/glade-strings.c:1344
 msgid "_Secret Key:"
 msgstr "_Clé secrète :"
 
-#: ../src/glade-strings.c:1335
+#: ../src/glade-strings.c:1348
 msgid "_Secure Device (LAN)"
 msgstr "_Périphérique sécurisé (LAN)"
 
-#: ../src/glade-strings.c:1338
+#: ../src/glade-strings.c:1351
 msgid "_Service-Name:"
 msgstr "_Nom de service :"
 
-#: ../src/glade-strings.c:1343
+#: ../src/glade-strings.c:1356
 msgid "_Subnet Mask:"
 msgstr "_Masque de sous-réseau :"
 
-#: ../src/glade-strings.c:1346
+#: ../src/glade-strings.c:1359
 msgid "_Terminate connection when session closes"
 msgstr "_Terminer la connexion à la fin de la session"
 
-#: ../src/glade-strings.c:1349
+#: ../src/glade-strings.c:1362
 msgid "_Tertiary DNS:"
 msgstr "_DNS tertiaire :"
 
-#: ../src/glade-strings.c:1352
+#: ../src/glade-strings.c:1365
 msgid "_Time"
 msgstr "_Durée"
 
-#: ../src/glade-strings.c:1356
+#: ../src/glade-strings.c:1369
 msgid "_Transmit Rate:"
 msgstr "Taux de _transmission :"
 
-#: ../src/glade-strings.c:1360
+#: ../src/glade-strings.c:1373
 msgid "_Tunnel through Device:"
 msgstr "_Tunnel à travers le périphérique :"
 
-#: ../src/glade-strings.c:1363
+#: ../src/glade-strings.c:1376
 msgid "_Use Callback"
 msgstr "_Utiliser le rappel"
 
-#: ../src/glade-strings.c:1366
+#: ../src/glade-strings.c:1379
 msgid "_Use Hardware Address"
 msgstr "_Utiliser adresse matériel"
 
-#: ../src/glade-strings.c:1369
+#: ../src/glade-strings.c:1382
 msgid "_Use synchronous PPP"
 msgstr "_Utiliser PPP synchrone"
 
-#: ../src/glade-strings.c:1373
+#: ../src/glade-strings.c:1386
 msgid "_Use touch tone dialing"
 msgstr "_Utiliser la numérotation à touches"
 
-#: ../src/glade-strings.c:1377
+#: ../src/glade-strings.c:1390
 msgid "_auto"
 msgstr "_auto"
 
-#: ../src/glade-strings.c:1391
+#: ../src/glade-strings.c:1404
 msgid "bootp"
 msgstr "bootp"
 
-#: ../src/glade-strings.c:1403
+#: ../src/glade-strings.c:1416
 msgid "cipcb0"
 msgstr "cipcb0"
 
-#: ../src/glade-strings.c:1407
+#: ../src/glade-strings.c:1420
 msgid "cipcb1"
 msgstr "cipcb1"
 
-#: ../src/glade-strings.c:1411
+#: ../src/glade-strings.c:1424
 msgid "cipcb2"
 msgstr "cipcb2"
 
-#: ../src/glade-strings.c:1415
+#: ../src/glade-strings.c:1428
 msgid "cipcb3"
 msgstr "cipcb3"
 
-#: ../src/glade-strings.c:1419
+#: ../src/glade-strings.c:1432
 msgid "cipcb4"
 msgstr "cipcb4"
 
-#: ../src/glade-strings.c:1422
+#: ../src/glade-strings.c:1435
 msgid "click the right mouse button for properties"
 msgstr "cliquer avec le bouton droit de la souris pour afficher les propriétés"
 
-#: ../src/glade-strings.c:1427
+#: ../src/glade-strings.c:1438
+msgid "click to bring up the interface"
+msgstr ""
+
+#: ../src/glade-strings.c:1441
+msgid "click to configure the interface"
+msgstr ""
+
+#: ../src/glade-strings.c:1444
+msgid "click to get infos"
+msgstr ""
+
+#: ../src/glade-strings.c:1447
+msgid "click to monitor the interface"
+msgstr ""
+
+#: ../src/glade-strings.c:1450
+msgid "click to shutdown the interface"
+msgstr ""
+
+#: ../src/glade-strings.c:1455
 msgid "dhcp"
 msgstr "dhcp"
 
-#: ../src/glade-strings.c:1444
+#: ../src/glade-strings.c:1472
 msgid "eth0"
 msgstr "eth0"
 
-#: ../src/glade-strings.c:1451
+#: ../src/glade-strings.c:1479
 msgid "eth1"
 msgstr "eth1"
 
-#: ../src/glade-strings.c:1458
+#: ../src/glade-strings.c:1486
 msgid "eth2"
 msgstr "eth2"
 
-#: ../src/glade-strings.c:1465
+#: ../src/glade-strings.c:1493
 msgid "eth3"
 msgstr "eth3"
 
-#: ../src/glade-strings.c:1472
+#: ../src/glade-strings.c:1500
 msgid "eth4"
 msgstr "eth4"
 
-#: ../src/glade-strings.c:1477
+#: ../src/glade-strings.c:1505
 msgid "eth5"
 msgstr "eth5"
 
-#: ../src/glade-strings.c:1481
+#: ../src/glade-strings.c:1509
 msgid "eth6"
 msgstr "eth6"
 
-#: ../src/glade-strings.c:1485
+#: ../src/glade-strings.c:1513
 msgid "eth7"
 msgstr "eth7"
 
-#: ../src/glade-strings.c:1511
+#: ../src/glade-strings.c:1539
 msgid "redhat network control - Properties"
 msgstr "Contrôle de redhat network - Propriétés"
 
-#: ../src/glade-strings.c:1523
+#: ../src/glade-strings.c:1542
+msgid ""
+"redhat-control-network provides an easy-to-use interface for configuring,\n"
+"activating and monitoring any type of network configuration.\n"
+"\n"
+"The following network interfaces are configured on the system."
+msgstr ""
+
+#: ../src/glade-strings.c:1558
 msgid "tr0"
 msgstr "tr0"
 
-#: ../src/glade-strings.c:1528
+#: ../src/glade-strings.c:1563
 msgid "tr1"
 msgstr "tr1"
 
-#: ../src/glade-strings.c:1533
+#: ../src/glade-strings.c:1568
 msgid "tr2"
 msgstr "tr2"
 
-#: ../src/glade-strings.c:1538
+#: ../src/glade-strings.c:1573
 msgid "tr3"
 msgstr "tr3"
 
-#: ../src/glade-strings.c:1543
+#: ../src/glade-strings.c:1578
 msgid "tr4"
 msgstr "tr4"
 
-#: ../src/glade-strings.c:1548
+#: ../src/glade-strings.c:1583
 msgid "tr5"
 msgstr "tr5"
 
-#: ../src/glade-strings.c:1552
+#: ../src/glade-strings.c:1587
 msgid "tr6"
 msgstr "tr6"
 
-#: ../src/glade-strings.c:1556
+#: ../src/glade-strings.c:1591
 msgid "tr7"
 msgstr "tr7"
 
-#: ../src/glade-strings.c:1567
+#: ../src/glade-strings.c:1602
 msgid "window1"
 msgstr "fenêtre1"
 
-#: ../src/glade-strings.c:1570
+#: ../src/glade-strings.c:1605
 msgid "window3"
 msgstr "fenêtre3"
 
-#: ../src/glade-strings.c:1573
+#: ../src/glade-strings.c:1608
 msgid "window4"
 msgstr "fenêtre4"
 
-#: ../src/glade-strings.c:1576
+#: ../src/glade-strings.c:1611
 msgid "window5"
 msgstr "fenêtre5"
 
-#: ../src/glade-strings.c:1579
+#: ../src/glade-strings.c:1614
 msgid "window6"
 msgstr "fenêtre6"
 
-#: ../src/glade-strings.c:1582
+#: ../src/glade-strings.c:1617
 msgid "xDSL Configuration"
 msgstr "Configuration xDSL"
