@@ -26,5 +26,4 @@ clean:
 	rm -f *.pyo *.pyc
 
 %.py: %.idl genClass.py
-	python genClass.py -c $(srcdir)/$*.idl $@ $*
-
+	python genClass.py -c $(srcdir)/$*.idl $@ NC

@@ -99,15 +99,15 @@ class basicDialog:
         
     def on_Dialog_delete_event(self, *args):
         self.dialog.destroy()
-        gtk.mainquit()
+#        gtk.mainquit()
 
     def on_okButton_clicked(self, button):
         self.dialog.destroy()
-        gtk.mainquit()
+#        gtk.mainquit()
 
     def on_cancelButton_clicked(self, button):
         self.dialog.destroy()
-        gtk.mainquit()
+#        gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
         pass

@@ -28,6 +28,7 @@ import GdkImlib
 import string
 import gettext
 import re
+import Conf
 
 from netconfpkg import *
 from Resolver import ResolverFile
@@ -44,6 +45,9 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class mainDialog:
+    deviceTypes = {'eth':'Ethernet',
+                   'lo':'Lokal'}
+
     def __init__(self):
         glade_file = "maindialog.glade"
 
@@ -53,6 +57,7 @@ class mainDialog:
             glade_file = "/usr/share/netconf/" + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        
 
         self.xml.signal_autoconnect(
             {
@@ -129,7 +134,33 @@ class mainDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
+	self.load()
 
+    def load(self):
+        self.loadDevices()
+        self.loadDNS()
+
+    def loadDevices(self):
+        devices = filter(lambda x: x[:6] == 'ifcfg-', os.listdir("/etc/sysconfig/networking/devices/"))
+        clist = self.xml.get_widget("deviceList")
+	act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "active.xpm")
+	inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "inactive.xpm")
+
+        nwconf = Conf.ConfShellVar("/etc/sysconfig/network")
+
+        row = 0
+        for i in devices:
+            devconf = Conf.ConfShellVar("/etc/sysconfig/networking/devices/" + i)
+            dev = devconf['DEVICE']
+            clist.append(['', i[6:], devconf['DEVICE']])
+
+            if not nwconf['CURRENT_PROFILE'] or not os.path.exists("/etc/sysconfig/networking/profiles/"+ nwconf['CURRENT_PROFILE'] + "/" + i):
+                clist.set_pixmap(row, 0, inact_xpm)
+            else:
+                clist.set_pixmap(row, 0, act_xpm)
+            row = row + 1
+
+    def loadDNS(self):
         res_file = ResolverFile()
         try:
             res_file.readProfile()
@@ -174,8 +205,9 @@ class mainDialog:
         pass
 
     def on_deviceAddButton_clicked (self, clicked):
-        basicDialog(self.xml)
-        gtk.mainloop()
+        basic = basicDialog(self.xml)
+        basic.xml.get_widget ("Dialog").show ()
+#        gtk.mainloop()
 
     def on_deviceCopyButton_clicked (self, button):
         pass
@@ -184,7 +216,8 @@ class mainDialog:
         pass
 
     def on_deviceEditButton_clicked (self, *args):
-        dialog = xml_basic.get_widget ("Dialog")
+        basic = basicDialog(self.xml)
+        dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
         dialog.show ()
 
@@ -230,7 +263,7 @@ class mainDialog:
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
                 id = clist.signal_connect("button_release_event",
-                                          on_generic_clist_button_release_event,
+                                          self.on_generic_clist_button_release_event,
                                           func)
                 clist.set_data("signal_id", id)
 
