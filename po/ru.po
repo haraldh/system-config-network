@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"POT-Creation-Date: 2002-08-14 18:03+0200\n"
+"POT-Creation-Date: 2002-08-22 16:31-0400\n"
 "PO-Revision-Date: 2002-08-09 16:36+0300\n"
 "Last-Translator: Leon Kanter <leon@blackcatlinux.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -111,7 +111,7 @@ msgstr "Активируется сетевое устройство %s, под�
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:731 src/neat-control.py:170
+#: src/netconf.py:739 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "Должно быть переписано!"
 
@@ -128,47 +128,53 @@ msgstr "Должно быть переписано!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:894
+#: src/netconf.py:902
 msgid "The Loopback device can not be disabled!"
 msgstr "Устройство Loopback не может быть запрещено!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1188 src/netconf.py:1265
+#: src/netconf.py:1196 src/netconf.py:1273
 msgid "The name may only contain letters and digits!"
 msgstr "Имя может содержать только буквы и цифры!"
 
-#: src/netconf.py:1192 src/netconf.py:1269
+#: src/netconf.py:1200 src/netconf.py:1277
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Профиль не может быть назван \"%s\"!"
 
-#: src/netconf.py:1197 src/netconf.py:1274
+#: src/netconf.py:1205 src/netconf.py:1282
 msgid "The profile name already exists!"
 msgstr "Имя профиля уже существует!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1246
+#: src/netconf.py:1254
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"основной\" профиль не может быть переименован!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1295
+#: src/netconf.py:1303
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "Профиль \"основной\" не может быть удален!"
 
-#: src/netconf.py:1298
+#: src/netconf.py:1306
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Вы действительно хотите удалить профиль \"%s\"?"
 
 #. clist.clear()
+#: src/netconf.py:1398
+msgid ""
+"Sorry, there is nothing to be edited,\n"
+"or this type cannot be edited yet."
+msgstr ""
+
 #. hardwarelist.rollback()
-#: src/netconf.py:1424
+#: src/netconf.py:1440
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Вы действительно хотите удалить \"%s\"?"
@@ -400,7 +406,8 @@ msgstr "Поиск модемов, подождите пожалуйста..."
 msgid "No modem was found on your system."
 msgstr "Модемы в вашей системе не обнаружены."
 
-#: src/netconfpkg/gui/ModemInterface.py:133
+#. 460800 seems to be to high
+#: src/netconfpkg/gui/ModemInterface.py:135
 msgid "Generic Modem"
 msgstr "Стандартный модем"
 
@@ -451,21 +458,21 @@ msgstr "Стандартный модем"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:140
+#: src/netconfpkg/gui/ModemInterface.py:142
 #: src/netconfpkg/gui/modemconfig.py:123
 #: src/netconfpkg/gui/ModemDruid.glade.h:27
 #: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "Звук выключен"
 
-#: src/netconfpkg/gui/ModemInterface.py:142
+#: src/netconfpkg/gui/ModemInterface.py:144
 #: src/netconfpkg/gui/modemconfig.py:125
 #: src/netconfpkg/gui/ModemDruid.glade.h:22
 #: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "Низкая"
 
-#: src/netconfpkg/gui/ModemInterface.py:144
+#: src/netconfpkg/gui/ModemInterface.py:146
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
@@ -473,14 +480,14 @@ msgstr "Низкая"
 msgid "Medium"
 msgstr "Средняя"
 
-#: src/netconfpkg/gui/ModemInterface.py:146
+#: src/netconfpkg/gui/ModemInterface.py:148
 #: src/netconfpkg/gui/modemconfig.py:129
 #: src/netconfpkg/gui/ModemDruid.glade.h:21
 #: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "Высокая"
 
-#: src/netconfpkg/gui/ModemInterface.py:148
+#: src/netconfpkg/gui/ModemInterface.py:150
 #: src/netconfpkg/gui/modemconfig.py:131
 #: src/netconfpkg/gui/ModemDruid.glade.h:30
 #: src/netconfpkg/gui/modemconfig.glade.h:29

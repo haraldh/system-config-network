@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.0\n"
-"POT-Creation-Date: 2002-08-14 18:03+0200\n"
+"POT-Creation-Date: 2002-08-22 16:31-0400\n"
 "PO-Revision-Date: 2002-08-22 09:23GMT+10:00\n"
 "Last-Translator: Sarah Smith <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <zh@li.org>\n"
@@ -110,7 +110,7 @@ msgstr "正在激活网络设备 %s，请稍候..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:731 src/neat-control.py:170
+#: src/netconf.py:739 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "需要重写！"
 
@@ -127,47 +127,53 @@ msgstr "需要重写！"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:894
+#: src/netconf.py:902
 msgid "The Loopback device can not be disabled!"
 msgstr "无法禁用环回设备！"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1188 src/netconf.py:1265
+#: src/netconf.py:1196 src/netconf.py:1273
 msgid "The name may only contain letters and digits!"
 msgstr "名称只能包含字母和数字！"
 
-#: src/netconf.py:1192 src/netconf.py:1269
+#: src/netconf.py:1200 src/netconf.py:1277
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "该配置文件不能被命名为“%s”！"
 
-#: src/netconf.py:1197 src/netconf.py:1274
+#: src/netconf.py:1205 src/netconf.py:1282
 msgid "The profile name already exists!"
 msgstr "配置文件名已存在！"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1246
+#: src/netconf.py:1254
 msgid "The \"default\" profile can't be renamed!"
 msgstr "“默认”的配置文件不能被更名！"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1295
+#: src/netconf.py:1303
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "“默认”的配置文件不能被删除！"
 
-#: src/netconf.py:1298
+#: src/netconf.py:1306
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "你确信要删除配置文件“%s”吗？"
 
 #. clist.clear()
+#: src/netconf.py:1398
+msgid ""
+"Sorry, there is nothing to be edited,\n"
+"or this type cannot be edited yet."
+msgstr ""
+
 #. hardwarelist.rollback()
-#: src/netconf.py:1424
+#: src/netconf.py:1440
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "你确信要删除“%s”吗？"
@@ -391,7 +397,8 @@ msgstr "正在探测调制解调器，请稍候..."
 msgid "No modem was found on your system."
 msgstr "在你的系统上没有发现调制解调器。"
 
-#: src/netconfpkg/gui/ModemInterface.py:133
+#. 460800 seems to be to high
+#: src/netconfpkg/gui/ModemInterface.py:135
 msgid "Generic Modem"
 msgstr "通用调制解调器"
 
@@ -442,21 +449,21 @@ msgstr "通用调制解调器"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:140
+#: src/netconfpkg/gui/ModemInterface.py:142
 #: src/netconfpkg/gui/modemconfig.py:123
 #: src/netconfpkg/gui/ModemDruid.glade.h:27
 #: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "关"
 
-#: src/netconfpkg/gui/ModemInterface.py:142
+#: src/netconfpkg/gui/ModemInterface.py:144
 #: src/netconfpkg/gui/modemconfig.py:125
 #: src/netconfpkg/gui/ModemDruid.glade.h:22
 #: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "低"
 
-#: src/netconfpkg/gui/ModemInterface.py:144
+#: src/netconfpkg/gui/ModemInterface.py:146
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
@@ -464,14 +471,14 @@ msgstr "低"
 msgid "Medium"
 msgstr "中"
 
-#: src/netconfpkg/gui/ModemInterface.py:146
+#: src/netconfpkg/gui/ModemInterface.py:148
 #: src/netconfpkg/gui/modemconfig.py:129
 #: src/netconfpkg/gui/ModemDruid.glade.h:21
 #: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "高"
 
-#: src/netconfpkg/gui/ModemInterface.py:148
+#: src/netconfpkg/gui/ModemInterface.py:150
 #: src/netconfpkg/gui/modemconfig.py:131
 #: src/netconfpkg/gui/ModemDruid.glade.h:30
 #: src/netconfpkg/gui/modemconfig.glade.h:29
@@ -2006,10 +2013,12 @@ msgstr "类型"
 msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
-msgstr "你可在此处配置与物理硬件相连的网络设备。 单个硬件上可有多重虚拟设备与之相连。"
+msgstr ""
+"你可在此处配置与物理硬件相连的网络设备。 单个硬件上可有多重虚拟设备与之相连。"
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "你可以在此处配置与计算机物理连接的网络硬件。"
 
 #: src/maindialog.glade.h:29
@@ -2146,7 +2155,8 @@ msgstr "在此处输入你的 ISP 给你的登录名。"
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "输入本次配置的名称，通常是你的 ISP 的名称。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -3837,4 +3847,3 @@ msgstr "互联网配置向导"
 #~ "向 redhat-config-network 汇报部件错误。多谢！\n"
 #~ "\n"
 #~ "%s"
-

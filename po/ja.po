@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
-"POT-Creation-Date: 2002-08-14 18:03+0200\n"
+"POT-Creation-Date: 2002-08-22 16:31-0400\n"
 "PO-Revision-Date: 2002-08-21 09:15GMT+10:00\n"
 "Last-Translator: James Hashida <khashida@redhat.com>\n"
 "Language-Team: Japanese <i18-list@redhat.com>\n"
@@ -90,7 +90,8 @@ msgstr "設定の中で変更がされました。"
 #: src/netconf.py:683
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr "ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
+msgstr ""
+"ネットワークデバイス %sを起動するために、変更を保存しなければなりません。"
 
 #: src/netconf.py:685
 msgid "Do you want to continue?"
@@ -112,7 +113,7 @@ msgstr "ネットワーク デバイス%sを起動中です。お待ち下さい
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
-#: src/netconf.py:731 src/neat-control.py:170
+#: src/netconf.py:739 src/neat-control.py:170
 msgid "To be rewritten!"
 msgstr "再書き込みとなります!"
 
@@ -129,47 +130,53 @@ msgstr "再書き込みとなります!"
 #. status = clist.get_text(clist.selection[0], 0)
 #. if status == ACTIVE:
 #. return
-#: src/netconf.py:894
+#: src/netconf.py:902
 msgid "The Loopback device can not be disabled!"
 msgstr "ループバックデバイスは無効にできません!"
 
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1188 src/netconf.py:1265
+#: src/netconf.py:1196 src/netconf.py:1273
 msgid "The name may only contain letters and digits!"
 msgstr "名前には文字と数字だけを含めることができます!"
 
-#: src/netconf.py:1192 src/netconf.py:1269
+#: src/netconf.py:1200 src/netconf.py:1277
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "プロファイルに\"%s\"という名前をつけることはできません!"
 
-#: src/netconf.py:1197 src/netconf.py:1274
+#: src/netconf.py:1205 src/netconf.py:1282
 msgid "The profile name already exists!"
 msgstr "そのプロファイル名は既に存在しています!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1246
+#: src/netconf.py:1254
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"デフォルト\"プロファイルの名前を変更することはできません!"
 
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1295
+#: src/netconf.py:1303
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "\"デフォルト\"プロファイルは消去できません!"
 
-#: src/netconf.py:1298
+#: src/netconf.py:1306
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "プロファイル\"%s\"を本当に消去しますか\""
 
 #. clist.clear()
+#: src/netconf.py:1398
+msgid ""
+"Sorry, there is nothing to be edited,\n"
+"or this type cannot be edited yet."
+msgstr ""
+
 #. hardwarelist.rollback()
-#: src/netconf.py:1424
+#: src/netconf.py:1440
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "本当に\"%s\"を消去しますか?"
@@ -397,7 +404,8 @@ msgstr "モデムを検出中です。お待ち下さい"
 msgid "No modem was found on your system."
 msgstr "システムにモデムが検出されませんでした。"
 
-#: src/netconfpkg/gui/ModemInterface.py:133
+#. 460800 seems to be to high
+#: src/netconfpkg/gui/ModemInterface.py:135
 msgid "Generic Modem"
 msgstr "一般的なモデム設定"
 
@@ -448,21 +456,21 @@ msgstr "一般的なモデム設定"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:140
+#: src/netconfpkg/gui/ModemInterface.py:142
 #: src/netconfpkg/gui/modemconfig.py:123
 #: src/netconfpkg/gui/ModemDruid.glade.h:27
 #: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "オフ"
 
-#: src/netconfpkg/gui/ModemInterface.py:142
+#: src/netconfpkg/gui/ModemInterface.py:144
 #: src/netconfpkg/gui/modemconfig.py:125
 #: src/netconfpkg/gui/ModemDruid.glade.h:22
 #: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "低"
 
-#: src/netconfpkg/gui/ModemInterface.py:144
+#: src/netconfpkg/gui/ModemInterface.py:146
 #: src/netconfpkg/gui/modemconfig.py:127
 #: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/modemconfig.glade.h:22
@@ -470,14 +478,14 @@ msgstr "低"
 msgid "Medium"
 msgstr "中間"
 
-#: src/netconfpkg/gui/ModemInterface.py:146
+#: src/netconfpkg/gui/ModemInterface.py:148
 #: src/netconfpkg/gui/modemconfig.py:129
 #: src/netconfpkg/gui/ModemDruid.glade.h:21
 #: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "高"
 
-#: src/netconfpkg/gui/ModemInterface.py:148
+#: src/netconfpkg/gui/ModemInterface.py:150
 #: src/netconfpkg/gui/modemconfig.py:131
 #: src/netconfpkg/gui/ModemDruid.glade.h:30
 #: src/netconfpkg/gui/modemconfig.glade.h:29
@@ -1157,7 +1165,8 @@ msgstr "デバイスタイプが指定されていません。"
 #: src/netconfpkg/NCDevice.py:229
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
+msgstr ""
+"%s, デバイスが指定されていないか、又は エイリアスは番号ではありません。"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
@@ -1581,7 +1590,8 @@ msgstr ""
 #: src/netconfpkg/NCProfileList.py:134
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
+msgstr ""
+"デバイス %sは %sの様に、おなじハードウェアデバイス \"%s\" を使用します。\n"
 
 #: src/netconfpkg/NCProfileList.py:135
 msgid ""
@@ -2017,7 +2027,8 @@ msgstr ""
 "す。。。。 多重論理デバイスは単独のハードウェアと関連付ができます。"
 
 #: src/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
 "ここでコンピュータと物理的に接続しているネットワークハードウェアを設定できま"
 "す。"
@@ -2156,7 +2167,8 @@ msgstr "ISPから取得したログイン名をここに入力して下さい。
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "この設定の名前を入れて下さい。普通は単にISPの名前です。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
@@ -3073,7 +3085,8 @@ msgstr "コールバック設定"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
-msgstr "ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
+msgstr ""
+"ISPデータベースから新しいプロバイダを選択する場合はここをクリックして下さい。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Compression"
@@ -3113,7 +3126,8 @@ msgstr "VJ TCP/IPヘッダ圧縮を有効にする(_V)"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
 msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr "自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
+msgstr ""
+"自分の地域の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:27
 msgid "Han_gup Timeout:"
@@ -3524,7 +3538,8 @@ msgstr "難易度レベル:"
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
-msgstr "それぞれの接続は下記から選べる物理的デバイスと連携している必要があります。"
+msgstr ""
+"それぞれの接続は下記から選べる物理的デバイスと連携している必要があります。"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid "Easy"
@@ -3858,4 +3873,3 @@ msgstr "インターネット設定ウィザード"
 #~ "さい。\n"
 #~ " ありがとうございます。 \n"
 #~ "%s "
-
