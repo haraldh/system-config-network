@@ -42,10 +42,9 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class providerDialog:
-    def __init__(self, xml_main = None, xml_basic = None,
-                 xml_dialup = None, connection_type="isdn"):
+    def __init__(self, xml_main = None, xml_dialup = None,
+                 connection_type="isdn"):
         self.xml_main = xml_main
-        self.xml_basic = xml_basic
         self.xml_dialup = xml_dialup
         self.done = FALSE
         self.country = ""
@@ -116,7 +115,7 @@ class providerDialog:
     def on_okButton_clicked(self, button):
         self.done = TRUE
         self.dialog.destroy()
-        if self.xml_main and self.xml_basic and self.xml_dialup:
+        if self.xml_main and self.xml_dialup:
             self.updateDialog(self.get_provider())
 
     def updateDialog(self, list):
@@ -126,7 +125,7 @@ class providerDialog:
         self.xml_dialup.get_widget("passwordEntry").set_text(list[6])
         self.xml_dialup.get_widget("areaCodeEntry").set_text(list[7])
         self.xml_dialup.get_widget("phoneEntry").set_text(list[8])
-        self.xml_basic.get_widget("userControlCB")["active"] = TRUE
+        self.xml_dialup.get_widget("userControlCB")["active"] = TRUE
 
     def on_providerTree_tree_select_row(self, ctree, node, column):
         if len(node.children) == 0:
@@ -177,17 +176,15 @@ class providerDialog:
                                            pix_isp, mask_isp, is_leaf=FALSE)
 
 class ISDNproviderDialog(providerDialog):
-    def __init__(self, xml_main = None, xml_basic = None,
-                 xml_dialup = None):
-        providerDialog.__init__(self, xml_main, xml_basic, xml_dialup)
+    def __init__(self, xml_main = None, xml_dialup = None):
+        providerDialog.__init__(self, xml_main, xml_dialup)
 
     def get_provider_list(self):
         return providerdb.get_provider_list("isdn")
 
 class ModemproviderDialog(providerDialog):
-    def __init__(self, xml_main = None, xml_basic = None,
-                 xml_dialup = None):
-        providerDialog.__init__(self, xml_main, xml_basic, xml_dialup)
+    def __init__(self, xml_main = None, xml_dialup = None):
+        providerDialog.__init__(self, xml_main, xml_dialup)
 
     def get_provider_list(self):
         return providerdb.get_provider_list("modem") 
@@ -197,6 +194,7 @@ class ModemproviderDialog(providerDialog):
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = providerDialog()
+    window.run()
     gtk.mainloop()
     print window.get_provider()
 

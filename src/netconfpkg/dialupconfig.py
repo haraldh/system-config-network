@@ -37,7 +37,6 @@ from NCHardwareList import *
 from provider import *
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
@@ -47,10 +46,10 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class DialupDialog(deviceConfigDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
+    def __init__(self, device, xml_main = None):
         glade_file = "dialupconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
-                                    device, xml_main, xml_basic)    
+                                    device, xml_main)
         self.edit = FALSE
 
         self.xml.signal_autoconnect(
@@ -208,15 +207,15 @@ class DialupDialog(deviceConfigDialog):
             clist.remove(clist.selection[0])
 
     def on_chooseButton_clicked(self, button):
-        dialog = providerDialog(self.xml_main, self.xml_basic, self.xml)
+        dialog = providerDialog(self.xml_main, self.xml)
 
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
         
 
 class ISDNDialupDialog(DialupDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
-        DialupDialog.__init__(self, device, xml_main, xml_basic)
+    def __init__(self, device, xml_main = None):
+        DialupDialog.__init__(self, device, xml_main)
 
         page = self.noteBook.page_num(self.xml.get_widget ("modemTab"))
         self.noteBook.get_nth_page(page).hide()        
@@ -224,7 +223,7 @@ class ISDNDialupDialog(DialupDialog):
         self.dialog.set_title(_("ISDN Dialup Configuration"))
 
     def on_chooseButton_clicked(self, button):
-        dialog = ISDNproviderDialog(self.xml_main, self.xml_basic, self.xml)
+        dialog = ISDNproviderDialog(self.xml_main, self.xml)
 		
     def hydrate(self):
         DialupDialog.hydrate(self)
@@ -278,12 +277,12 @@ class ISDNDialupDialog(DialupDialog):
             self.device.Dialup.createCallback()
             self.device.Dialup.Callback.Number = self.xml.get_widget("dialinNumberEntry").get_text()
             self.device.Dialup.Callback.Delay = self.xml.get_widget("callbackDelaySB").get_value_as_int()
-            if self.xml.get_widget("allowDialinNumberCB")["active"]:
+            if self.xml.get_widget("allowDialinNumberCB").get_active():
                 self.device.Dialup.Secure = true
             else:
                 self.device.Dialup.Secure = false
                 
-            if self.xml.get_widget("cbcpCB")["active"]:
+            if self.xml.get_widget("cbcpCB").get_active():
                 self.device.Dialup.Callback.CBCP = true
             else:
                 self.device.Dialup.Callback.CBCP = false
@@ -292,18 +291,19 @@ class ISDNDialupDialog(DialupDialog):
         self.device.Dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
         self.device.Dialup.EncapMode = self.xml.get_widget("encapModeEntry").get_text()
         self.device.Dialup.MSN = self.xml.get_widget("msnEntry").get_text()
-        if self.xml.get_widget("channelBundlingCB")['active']:
+        if self.xml.get_widget("channelBundlingCB").get_active():
             self.device.Dialup.ChannelBundling = true
         else:
             self.device.Dialup.ChannelBundling = false
 
         if not self.device.Device:
             self.device.Device="isdn"
-        #print "Device:", self.device.Device
+
+
         
 class ModemDialupDialog(DialupDialog):
-    def __init__(self, device, xml_main = None, xml_basic = None):
-        DialupDialog.__init__(self, device, xml_main, xml_basic)
+    def __init__(self, device, xml_main = None):
+        DialupDialog.__init__(self, device, xml_main)
         
         self.dialog.set_title(_("Modem Dialup Configuration"))
         page = self.noteBook.page_num(self.xml.get_widget ("isdnTab"))
@@ -311,11 +311,8 @@ class ModemDialupDialog(DialupDialog):
         page = self.noteBook.page_num(self.xml.get_widget ("callbackTab"))
         self.noteBook.get_nth_page(page).hide()
         
-        #for i in [1,5]:
-        #self.noteBook.get_nth_page(i).hide()
-
     def on_chooseButton_clicked(self, button):
-        dialog = ModemproviderDialog(self.xml_main, self.xml_basic, self.xml)
+        dialog = ModemproviderDialog(self.xml_main, self.xml)
 
     def hydrate(self):
         DialupDialog.hydrate(self)
@@ -334,7 +331,7 @@ class ModemDialupDialog(DialupDialog):
         if self.device.Dialup.DialMode:
             self.xml.get_widget("dialModeEntry").set_text(self.device.Dialup.DialMode)
         #        if self.device.Dialup.InitStrings:
-        self.xml.get_widget("modemInitEntry").set_sensitive(FALSE)
+        # self.xml.get_widget("modemInitEntry").set_sensitive(FALSE)
 
         if self.device.Name:
             self.xml.get_widget("modemPortEntry").set_text(self.device.Name)
@@ -349,7 +346,7 @@ class ModemDialupDialog(DialupDialog):
         self.device.Name = self.xml.get_widget("modemPortEntry").get_text()
 
         if not self.device.Device:
-            self.device.Device="modem"
+            self.device.Device = "modem"
 
 # make ctrl-C work
 if __name__ == "__main__":
