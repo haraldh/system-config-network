@@ -156,7 +156,6 @@ import re
 import string
 import regsub
 import os
-import PasswordCrypt
 
 # Implementation:
 # A configuration file is a list of lines.
@@ -1604,73 +1603,6 @@ class _unix_reflector:
 		self.pw.shadow[self.user].expires = value
 	else:
 	    raise AttributeError, name
-class ConfUnix:
-    def __init__(self):
-	self.passwd = ConfPasswd()
-	if os.path.isfile('/etc/shadow'):
-	    self.shadow = ConfShadow()
-	else:
-	    self.shadow = None
-	# Find out whether crypt or md5 passwords are the default
-	# on this machine.
-	self.cryptmethod = PasswordCrypt.crypt_passwd
-	if os.path.isfile('/etc/pam.d/passwd'):
-	    p = Conf('/etc/pam.d/passwd')
-	    if p.findnextline('^password.*pam_pwdb.so.*md5'):
-		self.cryptmethod = PasswordCrypt.md5_passwd
-
-    def getfreeuid(self):
-	return self.passwd.getfreeuid()
-    def addentry(self, username, password, uid, gid, gecos, homedir, shell,
-		 lastchanged=-1, mindays=-1, maxdays=-1,
-		 warndays=-1, gracedays=-1, expires=-1):
-	if self.shadow:
-	    self.passwd.addentry(username, 'x', uid, gid, gecos,
-		homedir, shell)
-	    self.shadow.addentry(username, password,
-		lastchanged, mindays, maxdays, warndays, gracedays, expires)
-	else:
-	    self.passwd.addentry(username, password, uid, gid, gecos,
-		homedir, shell)
-    def addfullentry(self, username, password, uid, gid, fullname, office,
-		officephone, homephone, homedir, shell,
-		lastchanged=-1, mindays=-1, maxdays=-1,
-		warndays=-1, gracedays=-1, expires=-1):
-	self.addentry(username, password, uid, gid, string.join([
-		fullname, office, officephone, homephone, ''], ','),
-		homedir, shell, lastchanged, mindays, maxdays,
-		warndays, gracedays, expires)
-    def shadowexists(self):
-	if self.shadow:
-	    return 1
-	else:
-	    return 0
-
-    def encrypt(self, password):
-	return self.cryptmethod(password)
-
-    def write(self):
-	self.passwd.write()
-	if self.shadow:
-	    self.shadow.write()
-
-    def __getitem__(self, key):
-	if self.passwd.has_key(key):
-	    return _unix_reflector(self, key)
-	else:
-	    return None
-    def __setitem__(self, key):
-	# items are objects which the higher-level code can't touch
-	raise AttributeError, 'Object is immutable'
-    def __delitem__(self, key):
-	del self.passwd[key]
-	if self.shadow:
-	    del self.shadow[key]
-    def keys(self):
-	return self.passwd.keys()
-    def has_key(self, key):
-	return self.passwd.has_key(key)
-
 
 # ConfPAP(Conf):
 #  Yet another dictionary, this one for /etc/ppp/pap-secrets
