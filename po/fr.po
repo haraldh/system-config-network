@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2003-01-20 17:38+0100\n"
+"POT-Creation-Date: 2003-01-29 14:03+0100\n"
 "PO-Revision-Date: 2003-01-21 08:58+0100\n"
 "Last-Translator: Audrey Simons <asimons@redhat.com>\n"
 "Language-Team: french <fr@li.org>\n"
@@ -29,25 +29,26 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Copyright
-#: src/neat-control.py:60
-msgid ""
-"This software is distributed under the GPL. ''Please Report bugs to Red "
-"Hat's Bug Tracking System: ''http://bugzilla.redhat.com/"
-msgstr ""
-"Ce logiciel est réglementé par la GPL. Signalez les bogues éventuels au Bug "
-"Tracking System de Red Hat: http://bugzilla.redhat.com/"
-
 #. Some command strings
 #. Let this dialog be in the taskbar like a normal window
-#. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
-#. dlg.run_and_close()
+#: src/neat-control.py:139 src/netconfpkg/gui/maindialog.py:1405
+msgid "Copyright (c) 2001,2002 Red Hat, Inc."
+msgstr "Copyright (c) 2001,2002 Red Hat, Inc."
+
+#: src/neat-control.py:140 src/netconfpkg/gui/maindialog.py:1406
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Ce logiciel est réglementé par la GPL. Signalez les bogues éventuels au Bug "
+"Tracking System de Red Hat : http://bugzilla.redhat.com/"
+
 #. Network Device Control Dialog
-#: src/neat-control.py:151 src/netconfpkg/gui/maindialog.py:753
+#: src/neat-control.py:160 src/netconfpkg/gui/maindialog.py:753
 msgid "Network device activating..."
 msgstr "Activation du périphérique réseau en cours..."
 
-#: src/neat-control.py:154 src/netconfpkg/gui/maindialog.py:755
+#: src/neat-control.py:163 src/netconfpkg/gui/maindialog.py:755
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Activation du périphérique réseau en cours %s, veuillez patienter..."
@@ -57,11 +58,11 @@ msgstr "Activation du périphérique réseau en cours %s, veuillez patienter..."
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(gtk.LEFT_PTR))
 #. Display dialog notification of action
-#: src/neat-control.py:230
+#: src/neat-control.py:239
 msgid "Activating profile..."
 msgstr "Activation du profile..."
 
-#: src/neat-control.py:233
+#: src/neat-control.py:242
 msgid "Activating the selected profile, please wait..."
 msgstr "Activation du profile sélectionné, veuillez patienter..."
 
@@ -69,10 +70,13 @@ msgstr "Activation du profile sélectionné, veuillez patienter..."
 #. Get the profile to activate from the menu
 #. Activate the selected profile
 #. Check results of the activation
-#: src/neat-control.py:252
+#: src/neat-control.py:261
 #, python-format
-msgid "Not all network interfaces in selected profile \"%s\" could be activated."
-msgstr "Toutes les interfaces réseau du profile sélectionné \"%s\" n'ont pas pû être activées."
+msgid ""
+"Not all network interfaces in selected profile \"%s\" could be activated."
+msgstr ""
+"Toutes les interfaces réseau du profile sélectionné \"%s\" n'ont pas pû être "
+"activées."
 
 #. Re-read the device list
 #. Update the gui
@@ -80,11 +84,13 @@ msgstr "Toutes les interfaces réseau du profile sélectionné \"%s\" n'ont pas pû 
 #. import time
 #. Make sure the user really wants to auto select ...
 #. Continue with auto select
-#: src/neat-control.py:279
+#: src/neat-control.py:288
 msgid "Attempting to auto-detect and activate a valid profile, please wait..."
-msgstr "Détection automatique et activation d'un profile valide, veuillez patienter..."
+msgstr ""
+"Détection automatique et activation d'un profile valide, veuillez "
+"patienter..."
 
-#: src/neat-control.py:281
+#: src/neat-control.py:290
 msgid "Autoselecting profile..."
 msgstr "Sélection automatique d'un profile..."
 
@@ -96,7 +102,7 @@ msgstr "Sélection automatique d'un profile..."
 #. Update the gui
 #. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:320 src/netconfpkg/gui/maindialog.py:810
+#: src/neat-control.py:329 src/netconfpkg/gui/maindialog.py:810
 msgid "To be rewritten!"
 msgstr "A réécrire!"
 
@@ -280,8 +286,8 @@ msgid ""
 "\n"
 "Usage: redhat-config-network-cmd -p --profile <profile> -a --activate"
 msgstr ""
-"redhat-config-network-cmd - outil de ligne de commande de la configuration du "
-"réseau\n"
+"redhat-config-network-cmd - outil de ligne de commande de la configuration "
+"du réseau\n"
 "\n"
 "Utilisation: redhat-config-network-cmd -p --profile <profile> -a --activate"
 
@@ -530,7 +536,7 @@ msgstr "Numéro de téléphone:"
 #: src/netconfpkg/gui/tokenringhardware.py:162
 #: src/netconfpkg/NCHardwareList.py:199 src/netconfpkg/NCHardwareList.py:313
 #: src/netconfpkg/NCHardwareList.py:341 src/netconfpkg/NC_functions.py:221
-#: src/netconfpkg/NCDevice.py:203 src/netconfpkg/NCDevice.py:210
+#: src/netconfpkg/NCDevice.py:207 src/netconfpkg/NCDevice.py:214
 #: src/netconfpkg/NCDeviceList.py:84
 msgid "Unknown"
 msgstr "Inconnu"
@@ -1346,7 +1352,8 @@ msgstr "Désactivation du périphérique réseau en cours..."
 #: src/netconfpkg/gui/maindialog.py:791
 #, python-format
 msgid "Deactivating network device %s, please wait..."
-msgstr "Désactivation du périphérique réseau %s en cours, veuillez patienter..."
+msgstr ""
+"Désactivation du périphérique réseau %s en cours, veuillez patienter..."
 
 #: src/netconfpkg/gui/maindialog.py:802
 #, python-format
@@ -1423,26 +1430,6 @@ msgstr "Voulez-vous vraiment effacer \"%s\"?"
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Voulez-vous supprimer tous les périphériques qui ont utilisé \"%s\"?"
-
-#. remove all devices used this hardware
-#.
-#. FIXME!! This has to be modular, not hardcoded!
-#.
-#. DSL
-#. CIPE
-#. WIRELESS
-#. ETHERNET
-#: src/netconfpkg/gui/maindialog.py:1405
-msgid "Copyright (c) 2001,2002 Red Hat, Inc."
-msgstr "Copyright (c) 2001,2002 Red Hat, Inc."
-
-#: src/netconfpkg/gui/maindialog.py:1406
-msgid ""
-"This software is distributed under the GPL. Please Report bugs to Red Hat's "
-"Bug Tracking System: http://bugzilla.redhat.com/"
-msgstr ""
-"Ce logiciel est réglementé par la GPL. Signalez les bogues éventuels au Bug "
-"Tracking System de Red Hat : http://bugzilla.redhat.com/"
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -1998,7 +1985,8 @@ msgstr "Copie en cours de /etc/hosts dans le profile par défaut."
 #: src/netconfpkg/NCProfileList.py:159
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "Le périphérique %s utilise le même périphérique matériel \"%s\" que %s !\n"
+msgstr ""
+"Le périphérique %s utilise le même périphérique matériel \"%s\" que %s !\n"
 
 #: src/netconfpkg/NCProfileList.py:161
 msgid ""
@@ -2073,7 +2061,8 @@ msgid "Software (XON/XOFF)"
 msgstr "Logiciel (XON/XOFF)"
 
 #: src/netconfpkg/NC_functions.py:136
-msgid "Shall the following packages, which are needed on your system, be installed?"
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "Les paquetages suivants, qui sont nécessaires sur votre système, doivent-ils "
 "être installés?"
@@ -2283,12 +2272,12 @@ msgstr ""
 #. else:
 #. return "Device %s (%s)" % (self.DeviceId, self.Device)
 #. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:197
+#: src/netconfpkg/NCDevice.py:201
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, Périphérique non spécifié ou alias n'est pas un numéro !"
 
-#: src/netconfpkg/NCDevice.py:228
+#: src/netconfpkg/NCDevice.py:232
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Le fichier des routes statiques %s n'est pas valide."
@@ -2366,6 +2355,13 @@ msgstr "Configurer la connexion à Internet"
 #: internet-druid.desktop.in.h:2
 msgid "Internet Configuration Wizard"
 msgstr "Assistant à la configuration Internet"
+
+#~ msgid ""
+#~ "This software is distributed under the GPL. ''Please Report bugs to Red "
+#~ "Hat's Bug Tracking System: ''http://bugzilla.redhat.com/"
+#~ msgstr ""
+#~ "Ce logiciel est réglementé par la GPL. Signalez les bogues éventuels au "
+#~ "Bug Tracking System de Red Hat: http://bugzilla.redhat.com/"
 
 #~ msgid "No Profile with name %s could be found."
 #~ msgstr "Aucun profile portant le nom %s n'a pu être trouvé. "
@@ -3819,4 +3815,3 @@ msgstr "Assistant à la configuration Internet"
 
 #~ msgid "Activating for Network device %s, please wait..."
 #~ msgstr "Activation en cours du périphérique réseau %s, patienter"
-
