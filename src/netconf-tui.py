@@ -392,5 +392,8 @@ class ISDNWindow:
     
 if __name__=="__main__":
     screen=SnackScreen()
-    mainScreen(screen)
-    screen.finish()
+    try:
+        mainScreen(screen)
+        screen.finish()
+    finally:
+        screen.finish()
