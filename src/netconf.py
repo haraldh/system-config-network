@@ -321,6 +321,9 @@ class mainDialog:
             basic.xml.get_widget('netmaskEntry').set_text(device.Netmask)
             basic.xml.get_widget('gatewayEntry').set_text(device.Gateway)
 
+        basic.xml.get_widget('hostnameEntry').set_text(device.Hostname)
+        basic.xml.get_widget('dnsSettingCB').set_active(device.AutoDNS)
+
         dialog = basic.xml.get_widget ("Dialog")
         dialog.set_title ("Edit Device")
         dialog.show ()
@@ -379,6 +382,11 @@ class mainDialog:
             info = clist.get_selection_info(event.x, event.y)
             if info != None and info[1] == 0:
                 row = info[0]
+                type = clist.get_text(row, 2)
+                if type == 'Loopback':
+                    generic_error_dialog ('The Loopback device can not be disabled!', self.xml.get_widget ("Dialog"))
+                    return
+
                 if clist.get_row_data(row) == 0:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
                     clist.set_row_data(row, 1)
