@@ -115,6 +115,8 @@ FALSE=gtk.FALSE
 
 showprofile = 0
 
+DEFAULT_PROFILE_NAME=_("Common")
+
 class mainDialog:
     def __init__(self, modus=None):
         glade_file = "maindialog.glade"
@@ -448,11 +450,15 @@ class mainDialog:
         history = 0
         i = 0
         for prof in profilelist:
-            menu_item = gtk.MenuItem (prof.ProfileName)
+            name = prof.ProfileName
+            # change the default profile to a more understandable name
+            if name == "default":
+                name = _(DEFAULT_PROFILE_NAME)
+            menu_item = gtk.MenuItem (name)
             menu_item.show ()
             menu_item.connect ("activate",
-                                      self.on_profileMenuItem_activated,
-                                      prof.ProfileName)
+                               self.on_profileMenuItem_activated,
+                               prof.ProfileName)
             menu.append (menu_item)
             if prof.ProfileName == self.get_active_profile().ProfileName:
                 history = i
@@ -1164,8 +1170,8 @@ class mainDialog:
             generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
             return 1
 
-        if text == 'default':
-            generic_error_dialog (_('The profile can\'t be named "default"!'), self.dialog)
+        if text == 'default' or text == DEFAULT_PROFILE_NAME:
+            generic_error_dialog (_('The profile can\'t be named "%s"!') % text, self.dialog)
             return 1
 
         for prof in profilelist:
@@ -1241,8 +1247,8 @@ class mainDialog:
             generic_error_dialog (_('The name may only contain letters and digits!'), self.dialog)
             return
 
-        if text == 'default':
-            generic_error_dialog (_('The profile can\'t be named "default"!'), self.dialog)
+        if text == 'default' or text == DEFAULT_PROFILE_NAME:
+            generic_error_dialog (_('The profile can\'t be named "%s"!') % text, self.dialog)
             return
 
         for prof in profilelist:
