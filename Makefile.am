@@ -66,7 +66,7 @@ uninstall-local:
 	done
 
 changelog:
-	rcs2log -v | sed -e 's|/usr/local/CVS/system-config-network/||g' \
+	rcs2log -v | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
 		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
 
 clean-local:
@@ -89,6 +89,7 @@ archive: changelog
 	@dir=$$PWD; mv ${PACKAGE}-$(VERSION).tar.gz  $$dir/ ;cd /tmp
 	@rm -rf /tmp/${PKGNAME}
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
+	@mv ${PACKAGE}-$(VERSION).tar.gz $(top_builddir)
 
 force-tag:
 	cvs ci -m "release $(VERSION)-$(RELEASE) moved"
@@ -99,13 +100,13 @@ tag:
 	cvs tag -cR $(CVSTAG) .
 
 tag-srpm: changelog tag archive
-	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
+	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
 
 force-tag-srpm: force-tag archive
-	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
+	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
 
 srpm: distcheck changelog
-	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
+	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
 
 newversion:
 	perl -p -i -e 'if (/RELEASE=(.*)/) { $$newrel = $$1 + 1;s/RELEASE=.*/RELEASE=$$newrel/; };' configure.in

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network-1.3.13\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-29 15:39+0100\n"
+"POT-Creation-Date: 2004-03-15 11:29+0100\n"
 "PO-Revision-Date: 2004-01-30 17:12+0100\n"
 "Last-Translator: Peter van Egdom <p.van.egdom@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -46,46 +46,11 @@ msgstr "Uw verbinding met het Internet configureren"
 msgid "Internet Configuration Wizard"
 msgstr "Internet Configuratie Wizard"
 
-#. -*- python -*-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Import all subpackages of our netconfpkg directory. This code is a real
-#. dirty hack but does the job(tm). It basically finds all .py files in the
-#. package directory and imports from all found files (except __init__.py that
-#. is) ;). Nice for plugin mechanism.
-#. ! /usr/bin/python
-#. -*- coding: utf-8 -*-
-#. # redhat-network-control - A easy-to-use interface for configuring/activating
-#. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/neat-control.py:49 src/netconf.py:75
+#: src/neat-control.py:46 src/netconf.py:72
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "FOUT: Niet in staat om de grafische omgeving te initialiseren. "
 
-#: src/neat-control.py:50 src/netconf.py:76
+#: src/neat-control.py:47 src/netconf.py:73
 msgid ""
 "Most likely cause of failure is that the tool was not run using a graphical "
 "environment. "
@@ -93,7 +58,7 @@ msgstr ""
 "De meest waarschijnlijke oorzaak is dat het programma niet is opgestart "
 "vanuit een grafische omgeving. "
 
-#: src/neat-control.py:51 src/netconf.py:77
+#: src/neat-control.py:48 src/netconf.py:74
 msgid ""
 "Please either start your graphical user interface or set your DISPLAY "
 "variable.\n"
@@ -101,14 +66,12 @@ msgstr ""
 "Start alstublieft uw grafische gebruikers interface of stel uw DISPLAY "
 "variabele in.\n"
 
-#. 'on_autoSelectProfileButton_clicked' : #. self.on_autoSelectProfileButton_clicked,
-#. Let this dialog be in the taskbar like a normal window
-#: src/neat-control.py:141 src/netconf-cmd.py:101
-#: src/netconfpkg/gui/maindialog.py:1610
+#: src/neat-control.py:138 src/netconf-cmd.py:101
+#: src/netconfpkg/gui/maindialog.py:1636
 msgid "Copyright (c) 2001-2003 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2003 Red Hat, Inc."
 
-#: src/neat-control.py:142 src/netconf-cmd.py:102
+#: src/neat-control.py:139 src/netconf-cmd.py:102
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -116,71 +79,34 @@ msgstr ""
 "Deze software wordt verspreid onder de GPL. Rapporteer bugs alstublieft bij "
 "Red Hat's bugbeheer systeem: http://bugzilla.redhat.com/"
 
-#. Network Device Control Dialog
-#: src/neat-control.py:168 src/netconfpkg/NCDevice.py:377
-#: src/netconfpkg/plugins/NCDevIsdn.py:72
-msgid "Network device activating..."
-msgstr "Activeren netwerkapparaat..."
-
-#: src/neat-control.py:171 src/netconfpkg/NCDevice.py:378
-#: src/netconfpkg/plugins/NCDevIsdn.py:73
-#, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "Bezig met activeren netwerkapparaat %s, even geduld alstublieft..."
-
-#: src/neat-control.py:216
+#: src/neat-control.py:193
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "Kan netwerkapparaat %s niet configureren"
 
-#. update dialog #83640
-#. Re-read the device list
-#. Update the gui
-#. forces a re-read of oldprofile
-#: src/neat-control.py:236
+#: src/neat-control.py:213
 msgid "Switching Profiles"
 msgstr "Profielen omschakelen"
 
-#: src/neat-control.py:237
+#: src/neat-control.py:214
 #, python-format
 msgid "Switching to profile %s"
 msgstr "Omschakelen naar profiel %s"
 
-#: src/neat-control.py:238
+#: src/neat-control.py:215
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "Omschakelen naar profiel %s mislukt."
 
-#. Re-read the device list
-#. Update the gui
-#. forces a re-read of oldprofile
 #. TBD
-#: src/neat-control.py:253 src/netconfpkg/gui/maindialog.py:975
+#: src/neat-control.py:230
 msgid "To be rewritten!"
 msgstr "Moet worden herschreven!"
 
-#. self.xml.get_widget('configureButton').set_sensitive(FALSE)
-#. self.xml.get_widget('configureButton').set_sensitive(TRUE)
-#. ???
-#. change the default profile to a more understandable name
-#: src/neat-control.py:356
+#: src/neat-control.py:337
 msgid " (active)"
 msgstr " (actief)"
 
-#. ??
-#. print "profile " + prof.ProfileName + " activated\n"
-#. make ctrl-C work
-#. !/usr/bin/python
-#. -*- coding: utf-8 -*-
-#. # netconf-tui - a tui network configuration tool
-#. # Copyright (C) 2002-2003 Red Hat, Inc.
-#. # Copyright (C) 2002-2003 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # Copyright (C) 2002-2003 Harald Hoyer <harald@redhat.com>
-#. XXX do length limits on obj dumps.
-#. protect from loops
-#.
-#. handleException function
-#.
 #: src/netconf-tui.py:100
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
@@ -192,9 +118,6 @@ msgstr ""
 "voor onderdeel system-config-network bij https://bugzilla.redhat.com/"
 "bugzilla/"
 
-#.
-#. main Screen
-#.
 #: src/netconf-tui.py:134
 msgid "What do you want to configure?"
 msgstr "Wat wilt u configureren?"
@@ -207,9 +130,6 @@ msgstr "Configureren"
 msgid "Exit"
 msgstr "Afsluiten"
 
-#.
-#. EthernetWindow class
-#.
 #: src/netconf-tui.py:257 src/netconf-tui.py:366 src/netconf-tui.py:472
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
@@ -278,44 +198,20 @@ msgstr "MSN"
 msgid "ISDN Configuration"
 msgstr "ISDN Configuratie"
 
-#.
-#. __main__
-#.
-#. !/usr/bin/python
-#. -*- coding: utf-8 -*-
-#. # netconf - A network configuration tool
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Just to be safe...
-#. Workaround for buggy gtk/gnome commandline parsing python bindings.
-#: src/netconf.py:57
+#: src/netconf.py:56
 #, python-format
 msgid "Error: %s, %s!"
 msgstr "Fout: %s, %s!"
 
-#: src/netconf.py:59
+#: src/netconf.py:58
 msgid "Starting text version"
 msgstr "Text versie starten"
 
-#: src/netconf.py:114
+#: src/netconf.py:111
 msgid "Loading Network Configuration..."
 msgstr "Netwerk Configuratie laden..."
 
-#: src/netconf.py:127
+#: src/netconf.py:124
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -325,32 +221,12 @@ msgstr ""
 "\n"
 "Gebruik: system-config-network -v --verbose"
 
-#. splash_window = splash_screen()
-#. make ctrl-C work
-#. if splash_window:
-#. splash_window.destroy()
-#. del splash_window
-#. print "Exception %s: %s" % (str(SystemExit), str(code))
-#. ! /usr/bin/python
-#. -*- coding: utf-8 -*-
-#. # netconf - A network configuration tool
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Workaround for buggy gtk/gnome commandline parsing python bindings.
+#: src/netconf.py:253
+#, fuzzy
+msgid "Please start system-config-network with root permissions!\n"
+msgstr ""
+"Start alstublieft system-config-network een keer op met root rechten!\n"
+
 #: src/netconf-cmd.py:65
 #, python-format
 msgid ""
@@ -416,7 +292,6 @@ msgstr "importeer vanuit bestand"
 msgid "Unknown option %s\n"
 msgstr "Onbekende optie %s\n"
 
-#. remove the last \n
 #: src/netconf-cmd.py:306
 #, python-format
 msgid "Unknown List %s\n"
@@ -427,22 +302,6 @@ msgstr "Onbekende Lijst %s\n"
 msgid "Error parsing line: %s"
 msgstr "Fout bij verwerken regel: %s"
 
-#. print "Exception %s: %s" % (str(SystemExit), str(code))
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ADSLInterface.py:90
 msgid "xDSL connection"
 msgstr "xDSL-verbinding"
@@ -468,22 +327,6 @@ msgstr ""
 "van de technologie die wordt gebruikt, maar zijn normaal gesproken tussen de "
 "144kbps en 1.0Mbps."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:135
 #: src/netconfpkg/gui/CipeInterface.py:145
 #: src/netconfpkg/gui/DialupDruid.py:230
@@ -508,20 +351,6 @@ msgstr "Naam aanbieder:"
 msgid "Login name:"
 msgstr "Login naam:"
 
-#. widget.set_position(0)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/CipeInterface.py:97
 msgid "CIPE (VPN) connection"
 msgstr "CIPE (VPN) verbinding"
@@ -571,9 +400,6 @@ msgstr "Virtueel adres op afstand:"
 msgid "Local virtual address:"
 msgstr "Lokaal virtueel adres:"
 
-#. else:
-#. self.on_generateKeyButton_clicked()
-#. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:168
 #: src/netconfpkg/gui/CipeInterface.py:236 src/netconfpkg/gui/cipeconfig.py:71
 #: src/netconfpkg/gui/cipeconfig.py:133
@@ -584,14 +410,12 @@ msgstr "Geen - servermodus"
 msgid " (dynamic)"
 msgstr " (dynamisch)"
 
-#. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:212
 #: src/netconfpkg/gui/CipeInterface.py:266
 #: src/netconfpkg/gui/cipeconfig.py:111 src/netconfpkg/gui/cipeconfig.py:165
 msgid "Server Mode"
 msgstr "Servermodus"
 
-#. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:297
 #: src/netconfpkg/gui/CipeInterface.py:302
 #: src/netconfpkg/gui/cipeconfig.py:196 src/netconfpkg/gui/cipeconfig.py:201
@@ -606,7 +430,6 @@ msgstr "IP-adres voor tunnel-apparaat:"
 msgid "Secret key:"
 msgstr "Privé-sleutel:"
 
-#. widget.set_position(0)
 #: src/netconfpkg/gui/CipeInterface.py:326
 msgid "You must enter a secret key or generate one"
 msgstr "Het is nodig dat u een privé-sleutel aangeeft of aanmaakt"
@@ -619,25 +442,7 @@ msgstr "Hardware:"
 msgid "Phone number:"
 msgstr "Telefoonnummer:"
 
-#. Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. hwlist = NCHardwareList.getHardwareList()
-#. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
-#. if len(hwdesc):
-#. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#. raise TypeError, _("Device not specified or alias not a number!")
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:145
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
 #: src/netconfpkg/gui/ethernethardware.py:154
@@ -645,10 +450,10 @@ msgstr "Telefoonnummer:"
 #: src/netconfpkg/gui/tokenringhardware.py:126
 #: src/netconfpkg/gui/tokenringhardware.py:137
 #: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
-#: src/netconfpkg/NC_functions.py:364 src/netconfpkg/NCDevice.py:206
+#: src/netconfpkg/NC_functions.py:370 src/netconfpkg/NCDevice.py:208
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
-#: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:105
+#: src/netconfpkg/NCDeviceList.py:71
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:8
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:8
 #: src/netconfpkg/gui/ethernethardware.glade.h:9
@@ -656,22 +461,6 @@ msgstr "Telefoonnummer:"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print "EthernetInterface getDeviceList"
 #: src/netconfpkg/gui/EthernetInterface.py:118
 msgid "Ethernet connection"
 msgstr "Ethernetverbinding"
@@ -680,8 +469,6 @@ msgstr "Ethernetverbinding"
 msgid "Create a new ethernet connection."
 msgstr "Een nieuwe ethernetverbinding maken."
 
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-#. must be at bottom, because prepare is called here
 #: src/netconfpkg/gui/EthernetInterface.py:197
 msgid "Other Ethernet Card"
 msgstr "Andere ethernetkaart"
@@ -712,25 +499,7 @@ msgstr "Standaard gateway-adres:"
 msgid "Automatically obtain IP address settings with:"
 msgstr "Automatisch IP-adres-instellingen verkrijgen met:"
 
-#. print self.devicelist
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print __name__, "waitpid:", msg
-#. print __name__, "waitpid:", msg
-#: src/netconfpkg/gui/GUI_functions.py:557
+#: src/netconfpkg/gui/GUI_functions.py:569
 #, python-format
 msgid ""
 "Failed to run:\n"
@@ -739,25 +508,10 @@ msgstr ""
 "Starten mislukt van:\n"
 "%s"
 
-#: src/netconfpkg/gui/GUI_functions.py:560
+#: src/netconfpkg/gui/GUI_functions.py:572
 msgid "Succeeded. Please read the output."
 msgstr "Geslaagd. Bekijk alstublieft de uitvoer."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/GenericInterface.py:84
 #, python-format
 msgid "%s connection"
@@ -780,28 +534,10 @@ msgstr "Druk op Voltooien om de standaard configuratie-dialoog te krijgen."
 msgid "Then, at first, enter the nickname for the device."
 msgstr "Voer daarna als eerste de alias voor het apparaat in."
 
-#. # FIXME
 #: src/netconfpkg/gui/GenericInterface.py:136
 msgid "This device can not be edited with this tool!"
 msgstr "Dit apparaat kan niet worden bewerkt met dit gereedschap!"
 
-#. -*- coding: utf-8 -*-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/IsdnInterface.py:88
 msgid "ISDN connection"
 msgstr "ISDN-verbinding"
@@ -827,38 +563,6 @@ msgstr ""
 "VS bestaat het wel, maar is het ongebruikelijk.  Snelheden variëren tussen "
 "64 en 128 kbps."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. -*- coding: utf-8 -*-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ModemInterface.py:80
 msgid "Modem connection"
 msgstr "Modemverbinding"
@@ -889,7 +593,6 @@ msgstr "Bezig met onderzoeken modems, even geduld alstublieft..."
 msgid "No modem was found on your system."
 msgstr "Er is geen modem gevonden op uw systeem."
 
-#. 460800 seems to be to high
 #: src/netconfpkg/gui/ModemInterface.py:162
 #: src/netconfpkg/gui/modemconfig.py:113
 msgid "Generic Modem"
@@ -913,7 +616,7 @@ msgstr "Laag"
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:4
 #: src/netconfpkg/gui/modemconfig.glade.h:4
-#: src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Medium"
 msgstr "Midden"
 
@@ -931,21 +634,6 @@ msgstr "Hoog"
 msgid "Very High"
 msgstr "Erg hoog"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/WirelessInterface.py:121
 msgid "Wireless connection"
 msgstr "Draadloze verbinding"
@@ -954,7 +642,6 @@ msgstr "Draadloze verbinding"
 msgid "Create a new wireless connection."
 msgstr "Een nieuwe draadloze verbinding maken."
 
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #: src/netconfpkg/gui/WirelessInterface.py:264
 msgid "Other Wireless Card"
 msgstr "Andere draadloze kaart"
@@ -987,40 +674,6 @@ msgstr "Sleutel: "
 msgid "encryption disabled"
 msgstr "encryptie uitgeschakeld"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Import all subpackages of our netconfpkg directory. This code is a real
-#. dirty hack but does the job(tm). It basically finds all .py files in the
-#. package directory and imports from all found files (except __init__.py that
-#. is) ;). Nice for plugin mechanism.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/TokenRingInterface.py:113
 msgid "Token Ring connection"
 msgstr "Token Ring-verbinding"
@@ -1029,7 +682,6 @@ msgstr "Token Ring-verbinding"
 msgid "Create a new Token Ring connection."
 msgstr "Een nieuwe Token Ring-verbinding maken."
 
-#. self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 #: src/netconfpkg/gui/TokenRingInterface.py:190
 msgid "Other Tokenring Card"
 msgstr "Andere Token Ring-kaart"
@@ -1058,48 +710,10 @@ msgstr "Lokaal virtueel adres: "
 msgid "Secret key: "
 msgstr "Privé-sleutel: "
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ctcconfig.py:42 src/netconfpkg/gui/ptpconfig.glade.h:3
 msgid "CTC Device"
 msgstr "CTC-apparaat"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#.
-#. #         vbox = self.xml.get_widget ('ipsecVbox')
-#. #         if vbox:
-#. #             window = self.sharedtcpip_xml.get_widget ('ipsecWindow')
-#. #             frame = self.sharedtcpip_xml.get_widget ('ipsecFrame')
-#. #             window.remove (frame)
-#. #             vbox.pack_start (frame)
-#. #             sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
 #: src/netconfpkg/gui/deviceconfig.py:130
 #, python-format
 msgid ""
@@ -1109,58 +723,6 @@ msgstr ""
 "Alias %s is al in gebruik!\n"
 "Kies alstublieft een andere.\n"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. widget.set_position(0)
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/dialupconfig.py:241
 #: src/netconfpkg/gui/dialupconfig.glade.h:11
 msgid "Dialup Configuration"
@@ -1170,7 +732,6 @@ msgstr "Inbelconfiguratie"
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN-inbelconfiguratie"
 
-#. get free ISDN device if encap mode is changed
 #: src/netconfpkg/gui/dialupconfig.py:293
 #: src/netconfpkg/gui/dialupconfig.py:386
 #: src/netconfpkg/gui/dialupconfig.glade.h:64
@@ -1219,205 +780,45 @@ msgstr "geen"
 msgid "Modem Dialup Configuration"
 msgstr "Modem-inbelconfiguratie"
 
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-#. self.dialog.connect("hide", gtk.mainquit)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.host.commit()
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-#. self.dialog.connect("hide", gtk.mainquit)
-#. self.dialog.destroy()
-#. self.main.hydrate()
-#. self.dialog.destroy()
-#. self.dialog.destroy()
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. get the widgets we need
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. make ctrl-C work
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. make ctrl-C work
-#. # netconf - A network configuration tool
-#. -*- coding: utf-8 -*-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Copyright (C) 2001, 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # Copyright (C) 2001 - 2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. clist = self.xml.get_widget("hardwareList")
-#. # First: copy the clist-style
-#. self.style1 = clist.get_style().copy()
-#. self.style2 = clist.get_style().copy()
-#. self.style3 = clist.get_style().copy()
-#. color1 = "lightgreen"
-#. color2 = "light salmon"
-#. color3 = "white"
-#. colormap = clist.get_colormap()
-#. self.style1.base[gtk.STATE_NORMAL] = colormap.alloc_color(color1)
-#. self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
-#. self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
-#. remove IPsec from Fedora
-#. remove IPsec from Fedora
-#. PAGE_IPSEC : notebook.page_num(#. self.xml.get_widget('ipsecFrame')),
-#. initialize the button state..
-#. #         for col in [ PROFILE_COLUMN, STATUS_COLUMN, DEVICE_COLUMN,
-#. #                      NICKNAME_COLUMN, TYPE_COLUMN ]:
-#. #             colsize = clist.optimal_column_width(col) + 5
-#. #             titlesize = clist.get_column_widget(col)
-#. #             print titlesize.get_children()[0].get_width()
-#. #             #clist.set_column_width(col, )
-#: src/netconfpkg/gui/maindialog.py:284
+#: src/netconfpkg/gui/maindialog.py:292
 msgid "Loading configuration..."
 msgstr "Configuratie laden..."
 
-#: src/netconfpkg/gui/maindialog.py:292
+#: src/netconfpkg/gui/maindialog.py:300
 msgid "Loading device configuration..."
 msgstr "Apparaat configuratie laden..."
 
-#: src/netconfpkg/gui/maindialog.py:297
+#: src/netconfpkg/gui/maindialog.py:305
 msgid "Loading hardware configuration..."
 msgstr "Hardware configuratie laden..."
 
-#: src/netconfpkg/gui/maindialog.py:302
+#: src/netconfpkg/gui/maindialog.py:310
 msgid "Loading profile configuration..."
 msgstr "Profiel configuratie laden..."
 
-#: src/netconfpkg/gui/maindialog.py:307
+#: src/netconfpkg/gui/maindialog.py:315
 msgid "Loading IPsec configuration..."
 msgstr "IPsec configuratie laden..."
 
-#: src/netconfpkg/gui/maindialog.py:312
+#: src/netconfpkg/gui/maindialog.py:320
 msgid "Testing configuration set..."
 msgstr "Configuratie set testen..."
 
-#: src/netconfpkg/gui/maindialog.py:343
+#: src/netconfpkg/gui/maindialog.py:351
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "Actief Profiel: %s (gewijzigd)"
 
-#: src/netconfpkg/gui/maindialog.py:347
+#: src/netconfpkg/gui/maindialog.py:355
 #, python-format
 msgid "Active profile: %s"
 msgstr "Actief Profiel: %s"
 
-#: src/netconfpkg/gui/maindialog.py:355
+#: src/netconfpkg/gui/maindialog.py:363
 msgid "Saving configuration..."
 msgstr "Configuratie wegschrijven..."
 
-#: src/netconfpkg/gui/maindialog.py:367
+#: src/netconfpkg/gui/maindialog.py:375
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1426,7 +827,7 @@ msgstr ""
 "Fout bij wegschrijven Configuratie!\n"
 "%s"
 
-#: src/netconfpkg/gui/maindialog.py:370
+#: src/netconfpkg/gui/maindialog.py:378
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
@@ -1434,176 +835,124 @@ msgstr ""
 "Veranderingen zijn opgeslagen. U wilt wellicht het netwerk en de netwerk "
 "diensten of de computer herstarten."
 
-#: src/netconfpkg/gui/maindialog.py:379
+#: src/netconfpkg/gui/maindialog.py:387
 msgid "Saving device configuration..."
 msgstr "Opslaan apparaat configuratie..."
 
-#: src/netconfpkg/gui/maindialog.py:386
+#: src/netconfpkg/gui/maindialog.py:394
 msgid "Saving hardware configuration..."
 msgstr "Opslaan hardware configuratie..."
 
-#: src/netconfpkg/gui/maindialog.py:393
+#: src/netconfpkg/gui/maindialog.py:401
 msgid "Saving profile configuration..."
 msgstr "Opslaan profiel configuratie..."
 
-#: src/netconfpkg/gui/maindialog.py:400
+#: src/netconfpkg/gui/maindialog.py:408
 msgid "Saving IPsec configuration..."
 msgstr "Opslaan IPsec configuratie..."
 
-#: src/netconfpkg/gui/maindialog.py:423
+#: src/netconfpkg/gui/maindialog.py:431
 msgid "Updating devices..."
 msgstr "Apparaten bijwerken..."
 
-#: src/netconfpkg/gui/maindialog.py:480
+#: src/netconfpkg/gui/maindialog.py:494
 msgid "Updating hardware..."
 msgstr "Hardware bijwerken..."
 
-#. if hw.Status == HW_OK:
-#. clist.set_row_style(row, self.style1)
-#. elif hw.Status == HW_CONF:
-#. clist.set_row_style(row, self.style3)
-#. else:
-#. clist.set_row_style(row, self.style2)
-#. if ipsec.IPsecId in profilelist.ActiveIPsecs:
-#. status = ACTIVE
-#. status_pixmap = self.on_xpm
-#. status_mask = self.on_mask
-#. else:
-#. status = INACTIVE
-#. status_pixmap = self.off_xpm
-#. status_mask = self.off_mask
-#. if device.IPsecList != None:
-#. for ipsec in device.IPsecList:
-#. clist.append([ipsec.RemoteIPAddress or "-",
-#. (ipsec.ConnectionType == "Net2Net" and ipsec.RemoteNetwork) or "-",
-#. (ipsec.ConnectionType == "Net2Net" and ipsec.LocalNetwork) or "-",
-#. ])
-#. else:
-#. device.createIPsecList()
-#. print "getActiveProfile == %s " % self.active_profile.ProfileName
-#: src/netconfpkg/gui/maindialog.py:574
+#: src/netconfpkg/gui/maindialog.py:588
 msgid "Updating profiles..."
 msgstr "Profielen bijwerken..."
 
-#. print "hydrateProfiles(%s)" % self.active_profile_name
-#. 88357
-#. change the default profile to a more understandable name
-#. omenu.set_history (history)
-#: src/netconfpkg/gui/maindialog.py:680 src/netconfpkg/gui/maindialog.py:773
-#: src/netconfpkg/gui/maindialog.py:1002
+#: src/netconfpkg/gui/maindialog.py:694 src/netconfpkg/gui/maindialog.py:787
 msgid "Do you want to save your changes?"
 msgstr "Wilt u uw wijzigingen opslaan?"
 
-#: src/netconfpkg/gui/maindialog.py:838
+#: src/netconfpkg/gui/maindialog.py:852
 msgid "The Loopback device can not be edited!"
 msgstr "Het loopback-apparaat kan niet worden bewerkt!"
 
-#: src/netconfpkg/gui/maindialog.py:842
+#: src/netconfpkg/gui/maindialog.py:856
 msgid "Edit device..."
 msgstr "Apparaat bewerken..."
 
-#. Fixed change device names in active list of all profiles
-#: src/netconfpkg/gui/maindialog.py:880
+#: src/netconfpkg/gui/maindialog.py:894
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "Het apparaat-type %s kan niet worden bewerkt!"
 
-#: src/netconfpkg/gui/maindialog.py:899
+#: src/netconfpkg/gui/maindialog.py:913
 msgid "The Loopback device can not be removed!"
 msgstr "Het loopback-apparaat kan niet worden verwijderd!"
 
-#: src/netconfpkg/gui/maindialog.py:903
+#: src/netconfpkg/gui/maindialog.py:917
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Wilt u echt het apparaat \"%s\" verwijderen?"
 
-#: src/netconfpkg/gui/maindialog.py:935 src/netconfpkg/gui/maindialog.py:1690
+#: src/netconfpkg/gui/maindialog.py:949 src/netconfpkg/gui/maindialog.py:1716
 msgid "You have made some changes in your configuration."
 msgstr "U heeft enkele wijzigingen gemaakt in uw configuratie."
 
-#: src/netconfpkg/gui/maindialog.py:936
+#: src/netconfpkg/gui/maindialog.py:950
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Om het netwerkapparaat %s te activeren, moeten de wijzigingen worden "
 "opgeslagen."
 
-#: src/netconfpkg/gui/maindialog.py:938 src/netconfpkg/gui/maindialog.py:1693
+#: src/netconfpkg/gui/maindialog.py:952 src/netconfpkg/gui/maindialog.py:1719
 msgid "Do you want to continue?"
 msgstr "Wilt u doorgaan?"
 
-#. devicelist = getDeviceList()
-#. self.rename_button.set_sensitive(TRUE)
-#. if self.rename_button: self.rename_button.set_sensitive(FALSE)
-#. clist.remove_data ("signal_id")
-#. don't allow user to edit device if it's active
-#. if clist.get_name() == 'deviceList':
-#. try:
-#. status = clist.get_pixtext(clist.selection[0], 0)[0]
-#. except ValueError:
-#. status = clist.get_text(clist.selection[0], 0)
-#. if status == ACTIVE:
-#. return
-#: src/netconfpkg/gui/maindialog.py:1130
+#: src/netconfpkg/gui/maindialog.py:1156
 msgid "The Loopback device can not be disabled!"
 msgstr "Het loopback-apparaat kan niet worden uitgezet!"
 
-#. if len(clist.selection) == 0:
-#. return
-#.
-#: src/netconfpkg/gui/maindialog.py:1356 src/netconfpkg/gui/maindialog.py:1436
+#: src/netconfpkg/gui/maindialog.py:1382 src/netconfpkg/gui/maindialog.py:1462
 msgid "The name may only contain letters and digits!"
 msgstr "De naam mag alleen letters en getallen bevatten!"
 
-#: src/netconfpkg/gui/maindialog.py:1361 src/netconfpkg/gui/maindialog.py:1441
+#: src/netconfpkg/gui/maindialog.py:1387 src/netconfpkg/gui/maindialog.py:1467
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "Het profiel mag niet \"%s\" heten!"
 
-#: src/netconfpkg/gui/maindialog.py:1367 src/netconfpkg/gui/maindialog.py:1447
+#: src/netconfpkg/gui/maindialog.py:1393 src/netconfpkg/gui/maindialog.py:1473
 msgid "The profile name already exists!"
 msgstr "De profielnaam bestaat al!"
 
-#. self.xml.get_widget("profileList").clear()
-#: src/netconfpkg/gui/maindialog.py:1414
+#: src/netconfpkg/gui/maindialog.py:1440
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "Het \"%s\" profiel kan niet worden hernoemd!"
 
-#. clist = self.xml.get_widget('profileList')
-#. if len(clist.selection) == 0:
-#. return
-#: src/netconfpkg/gui/maindialog.py:1469
+#: src/netconfpkg/gui/maindialog.py:1495
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "Het \"%s\" profiel kan niet worden verwijderd!"
 
-#: src/netconfpkg/gui/maindialog.py:1475
+#: src/netconfpkg/gui/maindialog.py:1501
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Wilt u echt het profiel \"%s\" verwijderen?"
 
-#. clist.clear()
-#. type  = clist.get_text(clist.selection[0], 1)
-#. hw = hardwarelist[clist.selection[0]]
-#: src/netconfpkg/gui/maindialog.py:1549
+#: src/netconfpkg/gui/maindialog.py:1575
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 "Sorry, er is niets om te bewerken, of deze soort kan nog niet worden bewerkt."
 
-#: src/netconfpkg/gui/maindialog.py:1567
+#: src/netconfpkg/gui/maindialog.py:1593
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Wilt u echt \"%s\" verwijderen?"
 
-#. remove hardware
-#: src/netconfpkg/gui/maindialog.py:1580
+#: src/netconfpkg/gui/maindialog.py:1606
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Wilt u alle apparaten die \"%s\" hebben gebruikt verwijderen?"
 
-#: src/netconfpkg/gui/maindialog.py:1611
+#: src/netconfpkg/gui/maindialog.py:1637
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -1611,28 +960,13 @@ msgstr ""
 "Deze software wordt verspreid onder de GPL. Rapporteer bugs alstublieft bij "
 "Red Hat's bugbeheer systeem: http://bugzilla.redhat.com/"
 
-#: src/netconfpkg/gui/maindialog.py:1691
+#: src/netconfpkg/gui/maindialog.py:1717
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr ""
 "Om de IPsec connectie %s te activeren, moeten de wijzigingen worden "
 "opgeslagen."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/ethernethardware.py:94
 msgid "Command failed: "
 msgstr "Commando faalde: "
@@ -1649,21 +983,6 @@ msgstr ""
 "De Ethernet kaart kon niet worden geïnitialiseerd. Controleer alstublieft uw "
 "instellingen en probeer het opnieuw."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/tokenringhardware.py:67
 #, python-format
 msgid ""
@@ -1685,55 +1004,6 @@ msgstr ""
 "De Token Ring kaart kon niet worden geïnitialiseerd. Controleer alstublieft "
 "uw instellingen en probeer het opnieuw."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # Preston Brown <pbrown@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-#. fields = string.split(hw)
-#. hw = fields[0]
-#. self.device.Device = hw
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. from CTCHardwareDruid import CTCHardware
 #: src/netconfpkg/gui/CTCInterface.py:48
 msgid "CTC connection"
 msgstr "CTC verbinding"
@@ -1742,41 +1012,10 @@ msgstr "CTC verbinding"
 msgid "Create a new CTC connection."
 msgstr "Een nieuwe CTC verbinding maken."
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/iucvconfig.py:42
 msgid "IUCV Device"
 msgstr "IUCV-apparaat"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. from IUCVHardwareDruid import IUCVHardware
 #: src/netconfpkg/gui/IUCVInterface.py:48
 msgid "IUCV connection"
 msgstr "IUCV verbinding"
@@ -1789,57 +1028,6 @@ msgstr "Een nieuwe IUCV verbinding maken."
 msgid "Point to Point (IP):"
 msgstr "Point to Point (IP):"
 
-#. print self.devicelist
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. self.device.Device = self.xml.get_widget('deviceEntry').get_text()
-#. -*- python -*-
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Import all subpackages of our netconfpkg directory. This code is a real
-#. dirty hack but does the job(tm). It basically finds all .py files in the
-#. package directory and imports from all found files (except __init__.py that
-#. is) ;). Nice for plugin mechanism.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/Control.py:34
 msgid "Active"
 msgstr "Actief"
@@ -1848,43 +1036,6 @@ msgstr "Actief"
 msgid "Inactive"
 msgstr "Inactief"
 
-#. remove inactive isdn/ppp device
-#. check real ppp device
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print self.getline()
-#. set first (should be only) instance to values in list value
-#. not a nameserver, so all items on one line...
-#. no matter what, update our idea of the variable...
-#. delete *every* instance...
 #: src/netconfpkg/NCCipe.py:155
 #, python-format
 msgid ""
@@ -1905,36 +1056,6 @@ msgstr ""
 "Kan directory %s\n"
 "niet aanmaken!"
 
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/NCDialup.py:37 src/netconfpkg/gui/dialupconfig.glade.h:63
 msgid "auto"
 msgstr "auto"
@@ -1943,7 +1064,7 @@ msgstr "auto"
 msgid "manual"
 msgstr "handmatig"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:138
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:142
 #: src/netconfpkg/gui/ModemDruid.glade.h:7
 #: src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -2237,56 +1358,12 @@ msgstr "Vietnam"
 msgid "Yugoslavia"
 msgstr "Joegoslavië"
 
-#. return DeviceList_base._objToStr(self, obj, parentStr)
-#. first clear the list
-#.
-#. XXX FIXME... this is not OO
-#.
-#.
-#. XXX FIXME... this is not OO
-#.
-#. self.updateFromSystem()
-#. Clean up wvdial
-#. if the loop does not get interrupted by break
-#. we did not find the Modem in the hardwarelist
-#. and it gets deleted
-#. Clean up modules
-#.
-#. XXX FIXME... this is not OO
-#.
-#. print "Testing " + str(mod)
-#. print "Removing " + str(mod)
-#. print str(modules.vars[mod].keys())
-#. print "Test: " + str(modules[mod])
-#. no card seems to use this
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NCProfileList.py:57 src/netconfpkg/NCProfileList.py:66
-#, python-format
-msgid "Copying %s to default profile."
-msgstr "%s kopieeren naar standaard profiel."
-
-#. 60016
-#. Keep that test for later versions
-#: src/netconfpkg/NCProfileList.py:209
+#: src/netconfpkg/NCProfileList.py:203
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "Apparaat %s gebruikt hetzelfde hardware-apparaat \"%s\" als %s!\n"
 
-#: src/netconfpkg/NCProfileList.py:211
+#: src/netconfpkg/NCProfileList.py:205
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -2294,98 +1371,33 @@ msgstr ""
 "Selecteer alstublieft een ander hardware-apparaat \n"
 "of activeer slechts een van beide."
 
-#. Just to be safe...
-#. commit the changes
-#. if the hostname changed, set it system wide (#55746)
-#. delete all other entries the user has deleted in the UI
-#. unlink old .route files
-#. Active Profile or default profile
-#. unlink old .route files
-#. Active Profile or default profile
-#. Special actions for the active profile
-#. Remove all unused files that are linked in the device directory
-#. Do not remove used files
-#. Check, if it is a device of neat in every profile directory
-#. Remove all profile directories except default
-#. Remove all files in the profile directory
-#. Do not remove used files
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. Do not clear the non-filled in values
-#. Bugzilla #52252
-#. for i in conf.keys():
-#. if not conf[i] or conf[i] == "": del conf[i]
-#. the key is now stored in a seperate file
-#. conf.oldmode = 0600
-#. conf.chmod(0600)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:87
+#: src/netconfpkg/NC_functions.py:91
 msgid "Common"
 msgstr "Algemeen"
 
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:136 src/netconfpkg/gui/ModemDruid.glade.h:1
+#: src/netconfpkg/NC_functions.py:140 src/netconfpkg/gui/ModemDruid.glade.h:1
 #: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "Hardware (CRTSCTS)"
 msgstr "Hardware (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:137 src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/NC_functions.py:141 src/netconfpkg/gui/ModemDruid.glade.h:10
 #: src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "Software (XON/XOFF)"
 
-#. print "Set verbose %d" % l
-#. print "verbose == %d" % _verbose
-#. print "Set debug %d" % l
-#. print "debug == %d" % _debug
-#. self.args = args
-#. print n[rpm.RPMTAG_NAME]
-#: src/netconfpkg/NC_functions.py:216
+#: src/netconfpkg/NC_functions.py:220
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
 "Zal ik de volgende pakketten, die op uw systeem nodig zijn, installeren?"
 
-#: src/netconfpkg/NC_functions.py:229
+#: src/netconfpkg/NC_functions.py:233
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr ""
 "U dient de volgende pakketten, die op uw systeem nodig zijn, te installeren!"
 
-#. test for wireless
-#. Some failsafe return codes (same as in gtk)
-#. print __name__, "waitpid:", msg
-#. print __name__, "waitpid:", msg
-#. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:718
+#: src/netconfpkg/NC_functions.py:732
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2396,20 +1408,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:728
-#, python-format
-msgid ""
-"Error linking %s\n"
-"to\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"Fout bij verbinden %s\n"
-"met\n"
-"%s:\n"
-"%s!"
-
-#: src/netconfpkg/NC_functions.py:739
+#: src/netconfpkg/NC_functions.py:752
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2422,7 +1421,7 @@ msgstr ""
 "naar %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:749
+#: src/netconfpkg/NC_functions.py:762
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2435,7 +1434,7 @@ msgstr ""
 "naar %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:759
+#: src/netconfpkg/NC_functions.py:772
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2448,7 +1447,7 @@ msgstr ""
 "naar %s:\n"
 "%s!"
 
-#: src/netconfpkg/NC_functions.py:767
+#: src/netconfpkg/NC_functions.py:780
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2457,72 +1456,21 @@ msgstr ""
 "Fout bij het maken van directory!\n"
 "%s"
 
-#. for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
-#. we only support 1 ISDN card in this version
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. take a peek in the config file
-#.
-#. Remove old config files
-#.
-#. check for IPSEC
-#.
-#. Remove old key files
-#.
-#. check for IPSEC
-#. !/usr/bin/python
-#.
-#. Python wrapper for ipcalc command line IP address manipulation tool
-#. Copyright (c) 2001-2003 Red Hat, Inc. All rights reserved.
-#.
-#. This software may be freely redistributed under the terms of the GNU
-#. public license.
-#.
-#. You should have received a copy of the GNU General Public License
-#. along with this program; if not, write to the Free Software
-#. Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#.
-#. Author: Preston Brown <pbrown@redhat.com>
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#: src/netconfpkg/NC_functions.py:832
+#, fuzzy, python-format
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "%s kopieeren naar apparaten en neerzetten in het standaard profiel."
+
+#: src/netconfpkg/NC_functions.py:842
+#, fuzzy, python-format
+msgid "Copying %s to profile %s."
+msgstr "%s kopieeren naar standaard profiel."
+
+#: src/netconfpkg/NC_functions.py:852
+#, fuzzy, python-format
+msgid "Linking %s to profile %s."
+msgstr "Omschakelen naar profiel %s"
+
 #: src/netconfpkg/NCHardware.py:21
 msgid "inactive"
 msgstr "Inactief"
@@ -2542,204 +1490,52 @@ msgstr "geconfigureerd"
 msgid "ok"
 msgstr "ok"
 
-#. found in system and in config
-#. !/usr/bin/python
-#.
-#. test1
-#.
-#. read
-#. write
-#. check
-#. cleanup
-#.
-#. test2
-#.
-#. read
-#. modify
-#. write
-#. check
-#. cleanup
-#.
-#. test3
-#.
-#. read
-#. write
-#. check
-#. cleanup
-#.
-#. test4
-#.
-#. read
-#. modify
-#. write
-#. check
-#. cleanup
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. from NC_functions import *
-#. raise KeyError, "%s is already registered" % hwtype
-#. raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. from NC_functions import *
-#. raise KeyError, "%s is already registered" % devtype
-#. raise KeyError, "%s.%s is already registered" % (devtype, subtype)
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. print status
-#. if ((self.oldmode & 0044) != 0044):
-#. ask = NC_functions.generic_yesno_dialog(#. _("May I change\n%s\nfrom mode %o to %o?") % #. (self.filename, self.oldmode & 03777, 0644))
-#. if ask != RESPONSE_YES:
-#. self.chmod(self.oldmode)
-#. def __str__(self):
-#. if self.Alias != None:
-#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
-#. self.Alias)
-#. else:
-#. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#. def __repr__(self):
-#. if self.Alias != None:
-#. return "Device %s (%s:%d)" % (self.DeviceId, self.Device,
-#. self.Alias)
-#. else:
-#. return "Device %s (%s)" % (self.DeviceId, self.Device)
-#. ok, we have to inherit all other data from our master
-#: src/netconfpkg/NCDevice.py:200
+#: src/netconfpkg/NCDevice.py:202
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, apparaat niet aangegeven of alias is geen getal!"
 
-#. move old <id>.route files to route-<id>
-#. load routes
-#. XXX fixme
-#: src/netconfpkg/NCDevice.py:243
+#: src/netconfpkg/NCDevice.py:245
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "Bestand %s voor statische routes is niet geldig"
 
-#: src/netconfpkg/NCDevice.py:380 src/netconfpkg/plugins/NCDevIsdn.py:75
+#: src/netconfpkg/NCDevice.py:379 src/netconfpkg/plugins/NCDevIsdn.py:73
+msgid "Network device activating..."
+msgstr "Activeren netwerkapparaat..."
+
+#: src/netconfpkg/NCDevice.py:380 src/netconfpkg/plugins/NCDevIsdn.py:74
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "Bezig met activeren netwerkapparaat %s, even geduld alstublieft..."
+
+#: src/netconfpkg/NCDevice.py:382 src/netconfpkg/plugins/NCDevIsdn.py:76
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Kan netwerkapparaat %s niet activeren!\n"
 
-#: src/netconfpkg/NCDevice.py:397 src/netconfpkg/plugins/NCDevIsdn.py:95
+#: src/netconfpkg/NCDevice.py:399 src/netconfpkg/plugins/NCDevIsdn.py:97
 msgid "Network device deactivating..."
 msgstr "Deactiveren netwerkapparaat..."
 
-#: src/netconfpkg/NCDevice.py:398 src/netconfpkg/plugins/NCDevIsdn.py:96
+#: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Bezig met deactiveren netwerkapparaat %s, even geduld alstublieft..."
 
-#: src/netconfpkg/NCDevice.py:400 src/netconfpkg/plugins/NCDevIsdn.py:98
+#: src/netconfpkg/NCDevice.py:402 src/netconfpkg/plugins/NCDevIsdn.py:100
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Kan netwerkapparaat %s niet deactiveren!\n"
 
-#: src/netconfpkg/NCDeviceList.py:63
-msgid "Please start system-config-network with root permissions once!\n"
-msgstr ""
-"Start alstublieft system-config-network een keer op met root rechten!\n"
-
-#: src/netconfpkg/NCDeviceList.py:67
-#, python-format
-msgid "Copying %s to devices and putting it into the default profile."
-msgstr "%s kopieeren naar apparaten en neerzetten in het standaard profiel."
-
-#. the initscripts do not like '-'
-#. log.log(4, "%s != %s" % (newDeviceId, dev.DeviceId))
-#. Fixed change device names in active list of all profiles
-#. log.log(4, str(prof.ActiveDevices))
-#. log.log(4, "changed %s" % (prof.ActiveDevices[pos]))
-#. log.log(4, str(prof.ActiveDevices))
-#: src/netconfpkg/NCDeviceList.py:150
+#: src/netconfpkg/NCDeviceList.py:116
 msgid "Changed the following Nicknames due to the initscripts:\n"
 msgstr "De volgende aliassen zijn veranderd vanwege de initscripts:\n"
 
-#: src/netconfpkg/NCDeviceList.py:153
+#: src/netconfpkg/NCDeviceList.py:119
 msgid "Nicknames changed"
 msgstr "Aliassen veranderd"
 
-#. return DeviceList_base._objToStr(self, obj, parentStr)
-#.
-#. clear all Dialer sections in wvdial.conf
-#. before the new Dialer sections written
-#.
-#.
-#. Clear all pap and chap-secrets generated by netconf
-#.
-#.
-#. traverse all devices in the list
-#.
-#.
-#. really save the device
-#.
-#. if dev.changed:
-#.
-#. Remove old config files
-#.
-#. check for IPSEC
-#. now remove the file
-#. remove old route files
-#. remove route file, if no routes defined
-#. bug #78043
-#. we should have device specific gateways
-#. fixed this way, until we have a way to mark the
-#. default GATEWAY/GATEWAYDEV
-#. no card seems to use this
-#. # Copyright (C) 2001-2003 Red Hat, Inc.
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # This program is free software; you can redistribute it and/or modify
-#. # it under the terms of the GNU General Public License as published by
-#. # the Free Software Foundation; either version 2 of the License, or
-#. # (at your option) any later version.
-#. # This program is distributed in the hope that it will be useful,
-#. # but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. # GNU General Public License for more details.
-#. # You should have received a copy of the GNU General Public License
-#. # along with this program; if not, write to the Free Software
-#. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#. "IPsecId" : "IPSECID",
-#. load ipsec
-#. Just to be safe...
-#. save ipsec settings
-#.
 #: src/netconfpkg/NCIPsec.py:168
 msgid "IPsec activating..."
 msgstr "IPsec activeren..."
@@ -2930,7 +1726,7 @@ msgstr "_Apparaat:"
 
 #: src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
 #: src/netconfpkg/gui/cipeconfig.glade.h:11
-#: src/netconfpkg/gui/editipsec.glade.h:33
+#: src/netconfpkg/gui/editipsec.glade.h:34
 msgid "_Generate"
 msgstr "_Aanmaken"
 
@@ -2964,7 +1760,7 @@ msgid "A_rea code:"
 msgstr "_Netnummer:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#: src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _DNS information from provider"
 msgstr "Automatisch _DNS informatie verkrijgen van aanbieder"
 
@@ -2977,7 +1773,6 @@ msgid "Create Dialup Connection"
 msgstr "Inbelverbinding maken"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
-#: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "Default _gateway address:"
 msgstr "Standaard _gateway-adres:"
 
@@ -3021,7 +1816,7 @@ msgid "Internet Provider"
 msgstr "Internet-aanbieder"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:16
-#: src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Manual IP Address Settings"
 msgstr "Handmatige IP-adres instellingen"
 
@@ -3048,13 +1843,12 @@ msgid "Select Provider"
 msgstr "Selecteer aanbieder"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:24
-#: src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Statically set IP addresses:"
 msgstr "Statisch ingestelde IP-adressen:"
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:26
 #: src/netconfpkg/gui/editadress.glade.h:3
-#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
 #: src/netconfpkg/gui/ptpconfig.glade.h:7
 msgid "_Address:"
@@ -3380,7 +2174,7 @@ msgstr "_Algemeen"
 #: src/netconfpkg/gui/ethernetconfig.glade.h:9
 #: src/netconfpkg/gui/wirelessconfig.glade.h:14
 #: src/netconfpkg/gui/tokenringconfig.glade.h:13
-#: src/netconfpkg/gui/editipsec.glade.h:34
+#: src/netconfpkg/gui/editipsec.glade.h:35
 #: src/netconfpkg/gui/ptpconfig.glade.h:10
 msgid "_Nickname:"
 msgstr "_Alias:"
@@ -3524,7 +2318,7 @@ msgid "Use _Channel Bundling"
 msgstr "_Kanaalbundeling gebruiken"
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:43
-#: src/netconfpkg/gui/sharedtcpip.glade.h:32
+#: src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "_Add..."
 msgstr "_Toevoegen..."
 
@@ -3848,31 +2642,41 @@ msgstr "_Tijd"
 msgid "redhat network control - Properties"
 msgstr "redhat netwerk controle - Eigenschappen"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:3
+#: src/netconfpkg/gui/sharedtcpip.glade.h:2
+#, fuzzy
+msgid "A_ddress:"
+msgstr "Adres:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Automatically obtain _IP address settings with:"
 msgstr "Automatisch _IP-adres instellingen verkrijgen met:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:4
+#: src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "Bind to _MAC address:"
 msgstr "Binden aan _MAC-adres:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "DHCP Settings"
 msgstr "DHCP instellingen"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:7
+#, fuzzy
+msgid "Default ga_teway address:"
+msgstr "Standaard gateway-adres:"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:8
 msgid "Destination Network"
 msgstr "Doelnetwerk"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Device _alias number:"
 msgstr "Apparaat-aliassen:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:9
+#: src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid "Difficulty level:"
 msgstr "Moeilijkheidsniveau:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
@@ -3880,102 +2684,103 @@ msgstr ""
 "Elke verbinding moet worden geassocieerd met een fysiek apparaat wat "
 "hieronder kan worden geselecteerd."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:11
+#: src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Easy"
 msgstr "Makkelijk"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:12
+#: src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "Gateway"
 msgstr "Gateway"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:13
+#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#, fuzzy
+msgid "H_ostname (optional):"
+msgstr "_Hostnaam (optioneel):"
+
+#: src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "Hardware device:"
 msgstr "Hardware-apparaat:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "IPsec Tunnel Settings"
 msgstr "IPsec Tunnel instellingen"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Local Network"
 msgstr "Lokaal Netwerk"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Please select the level of security for this device."
 msgstr "Selecteer alstublieft het veiligheidsniveau voor dit apparaat."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Prefix (Netmask)"
 msgstr "Voorvoegsel (netmasker)"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: src/netconfpkg/gui/sharedtcpip.glade.h:22
 msgid "Professional"
 msgstr "Professioneel"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Remote Host / GW"
 msgstr "Host op afstand / GW"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Remote Network"
 msgstr "Netwerk op afstand"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Security Level"
 msgstr "Veiligheidsniveau"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
 msgstr ""
 "Selecteer de voorzieningen die u via dit apparaat beschikbaar wilt maken"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
 msgstr "Voorziening"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Service Description"
 msgstr "Voorziening beschrijving"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Services"
 msgstr "Voorzieningen"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Static Network Routes"
 msgstr "Statische netwerkroutes"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:30
+#: src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Tie to specific ethernet card"
 msgstr "Binden aan specifieke ethernetkaart"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Use ethernet device aliases"
 msgstr "Ethernet kaart aliassen gebruiken"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "_Delete..."
 msgstr "_Verwijderen..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Edit..."
 msgstr "_Bewerken..."
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Hardware Address"
 msgstr "_Hardware-adres"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Hardware:"
 msgstr "_Hardware:"
 
-#: src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_High Security (Internet)"
 msgstr "_Hoge veiligheid (Internet)"
-
-#: src/netconfpkg/gui/sharedtcpip.glade.h:39
-msgid "_Hostname (optional):"
-msgstr "_Hostnaam (optioneel):"
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Low Security"
@@ -4341,58 +3146,63 @@ msgid "IPsec - Local Network"
 msgstr "IPsec - Lokaal netwerk"
 
 #: src/netconfpkg/gui/editipsec.glade.h:11
+#, fuzzy
+msgid "IPsec - Nickname"
+msgstr "Alias"
+
+#: src/netconfpkg/gui/editipsec.glade.h:12
 msgid "IPsec - Remote Network"
 msgstr "IPsec - Netwerk op afstand"
 
-#: src/netconfpkg/gui/editipsec.glade.h:12
+#: src/netconfpkg/gui/editipsec.glade.h:13
 msgid "IPsec - Summary"
 msgstr "IPsec - Samenvatting"
 
-#: src/netconfpkg/gui/editipsec.glade.h:13
+#: src/netconfpkg/gui/editipsec.glade.h:14
 msgid "IPsec Settings"
 msgstr "IPsec - Instellingen"
 
-#: src/netconfpkg/gui/editipsec.glade.h:14
+#: src/netconfpkg/gui/editipsec.glade.h:15
 msgid "Local network _address:"
 msgstr "Lokaal netwerk _adres:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:15
+#: src/netconfpkg/gui/editipsec.glade.h:16
 msgid "Local network _gateway:"
 msgstr "Lokaal netwerk _gateway:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:16
+#: src/netconfpkg/gui/editipsec.glade.h:17
 msgid "Local subnet _mask:"
 msgstr "Lokaal subnet _masker:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:17
+#: src/netconfpkg/gui/editipsec.glade.h:18
 msgid "Manual encryption with a fixed key"
 msgstr "Handmatige encryptie met een vaste sleutel"
 
-#: src/netconfpkg/gui/editipsec.glade.h:18
+#: src/netconfpkg/gui/editipsec.glade.h:19
 msgid "Network to Network encryption (VPN)"
 msgstr "Netwerk naar Netwerk encryptie (VPN)"
 
-#: src/netconfpkg/gui/editipsec.glade.h:19
+#: src/netconfpkg/gui/editipsec.glade.h:20
 msgid "Please enter a nickname for the connection:"
 msgstr "Voer alstublieft een alias in voor de connectie:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:20
+#: src/netconfpkg/gui/editipsec.glade.h:21
 msgid "Please enter your local network settings:"
 msgstr "Voer alstublieft uw lokale netwerk instellingen in:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:21
+#: src/netconfpkg/gui/editipsec.glade.h:22
 msgid "Please enter your remote network settings:"
 msgstr "Voer alstublieft uw netwerk-op-afstand instellingen in:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:22
+#: src/netconfpkg/gui/editipsec.glade.h:23
 msgid "Please select the type of connection:"
 msgstr "Selecteer alstublieft het soort connectie:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:23
+#: src/netconfpkg/gui/editipsec.glade.h:24
 msgid "Please select the type of encryption:"
 msgstr "Selecteer alstublieft het soort encryptie:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:24
+#: src/netconfpkg/gui/editipsec.glade.h:25
 msgid ""
 "Please specify your keys or generate them. \n"
 "The keys are symmetric, so your remote partner need to have the same."
@@ -4400,31 +3210,31 @@ msgstr ""
 "Geef alstublieft uw sleutels of genereer ze. \n"
 "De sleutels zijn symmetrisch, dus uw partner op afstand heeft dezelfde nodig."
 
-#: src/netconfpkg/gui/editipsec.glade.h:26
+#: src/netconfpkg/gui/editipsec.glade.h:27
 msgid "Remote _IP address:"
 msgstr "_IP adres op afstand:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:27
+#: src/netconfpkg/gui/editipsec.glade.h:28
 msgid "Remote network _address:"
 msgstr "Netwerk _adres op afstand:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:28
+#: src/netconfpkg/gui/editipsec.glade.h:29
 msgid "Remote network _gateway:"
 msgstr "Netwerk _gateway op afstand:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:29
+#: src/netconfpkg/gui/editipsec.glade.h:30
 msgid "Remote subnet _mask:"
 msgstr "Subnet _masker op afstand:"
 
-#: src/netconfpkg/gui/editipsec.glade.h:30
+#: src/netconfpkg/gui/editipsec.glade.h:31
 msgid "You will now be guided through the setup of the IPsec connection."
 msgstr "U zal nu worden geleid door de installatie van de IPsec connectie."
 
-#: src/netconfpkg/gui/editipsec.glade.h:31
+#: src/netconfpkg/gui/editipsec.glade.h:32
 msgid "_Activate connection when computer starts"
 msgstr "Connectie activeren bij _starten computer"
 
-#: src/netconfpkg/gui/editipsec.glade.h:32
+#: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption key:"
 msgstr "_Encryptie sleutel:"
 
@@ -4507,6 +3317,17 @@ msgstr "Selecteer de kaart die u wilt configureren:"
 #: src/netconfpkg/gui/ptpconfig.glade.h:11
 msgid "_Point to Point (IP):"
 msgstr "_Point to Point (IP):"
+
+#~ msgid ""
+#~ "Error linking %s\n"
+#~ "to\n"
+#~ "%s:\n"
+#~ "%s!"
+#~ msgstr ""
+#~ "Fout bij verbinden %s\n"
+#~ "met\n"
+#~ "%s:\n"
+#~ "%s!"
 
 #~ msgid "Mode: "
 #~ msgstr "Modus: "

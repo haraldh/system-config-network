@@ -3,7 +3,7 @@ Summary: The GUI of the NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
 Release: @RPM_RELEASE@
-URL: http://people.redhat.com/harald/system-config-network
+URL: http://fedora.redhat.com/projects/config-tools/redhat-config-network.html
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
@@ -93,10 +93,30 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-druid
 
 %changelog
-* Thu Jan 29 2004 Harald Hoyer <harald@faro.stuttgart.redhat.com> - 1.3.15
+* Thu Mar  4 2004 Harald Hoyer <harald@redhat.com> - 1.3.16
+- be more relaxed, when parsing the kernel version (115917)
+- fixed removing of Hostname (115795)
+- fixed "DevEthernet instance has no attribute 'IPv6Init'" (116375)
+- removed save dialog, when switching profiles (107399)
+- added generic Initstrings (115768)
+- added secure.png logo
+- added "-c" parameter for activate/deactivate
+- changed hotkeys to avoid double entries
+- use new pixmap loading code (only take local paths, if debugging is active)
+- moved updateNetworkScripts() to NC_functions.py
+- fallback on /etc/sysconfig/network-scripts
+- removed /usr/lib/rhs/python from sys.path
+- added -? as a command line option
+- corrected --root= option for gui
+- activate/deactivate buttons always sensitive
+- check for ipsec-tools and dynamically display ipsec tab
+- no second dialog while activating in system-control-network
+- change hosts file on hostname change
+
+* Thu Jan 29 2004 Harald Hoyer <harald@redhat.com> - 1.3.15
 - added IPv6 support per device (111377)
 
-* Wed Jan 28 2004 Harald Hoyer <harald@faro.stuttgart.redhat.com> - 1.3.14
+* Wed Jan 28 2004 Harald Hoyer <harald@redhat.com> - 1.3.14
 - modules.conf -> modprobe.conf
 
 * Thu Dec 18 2003 Harald Hoyer <harald@redhat.de> 1.3.13-2
