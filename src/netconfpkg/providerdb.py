@@ -30,9 +30,11 @@ TRUE = not FALSE
 
 provider_db = "providerdb"
 if not os.path.exists(provider_db):
-    provider_db = "netconfpkg/" + provider_db
+    provider_db = "netconfpkg/" + "providerdb"
 if not os.path.exists(provider_db):
-    provider_db = NC_functions.NETCONFDIR + provider_db
+    provider_db = NC_functions.NETCONFDIR + "providerdb"
+if not os.path.exists(provider_db):
+    provider_db = NC_functions.NETCONFDIR + "netconfpkg/" + "providerdb"
 
 class provider:
     def __init__(self):
