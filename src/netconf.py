@@ -253,6 +253,17 @@ class mainDialog:
 
         if modus == 'druid': self.on_deviceAddButton_clicked(None)
 
+        # initialize the button state..
+        clist = self.xml.get_widget("deviceList")
+        self.on_generic_clist_select_row(\
+            clist, 0, 0, 0,
+            edit_button = self.xml.get_widget("deviceEditButton"),
+            delete_button = self.xml.get_widget("deviceDeleteButton"),
+            copy_button = self.xml.get_widget("deviceCopyButton"),
+            activate_button = self.xml.get_widget("deviceActivateButton"),
+            deactivate_button = self.xml.get_widget("deviceDeactivateButton"),
+            monitor_button = self.xml.get_widget("deviceMonitorButton"))
+        
         # Let this dialog be in the taskbar like a normal window
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
@@ -786,24 +797,26 @@ class mainDialog:
                                     activate_button = None,
                                     deactivate_button = None,
                                     monitor_button = None):
-        devicelist = getDeviceList()
+        #devicelist = getDeviceList()
 
         if edit_button: edit_button.set_sensitive(TRUE)
         if rename_button: rename_button.set_sensitive(TRUE)
         if delete_button: delete_button.set_sensitive(TRUE)
         if copy_button: copy_button.set_sensitive(TRUE)
-        if up_button: delete_button.set_sensitive(TRUE)
-        if down_button: copy_button.set_sensitive(TRUE)
+        if up_button: up_button.set_sensitive(TRUE)
+        if down_button: down_button.set_sensitive(TRUE)
 
         if clist.get_name() == 'deviceList':
             if len(clist.selection) == 0:
                 return
             
+            curr_prof = self.get_active_profile()
             self.devsel = clist.get_row_data(clist.selection[0])
             
             status = self.clist_get_status()
 
-            if status == ACTIVE:
+            if status == ACTIVE and \
+                   (self.devsel.DeviceId in curr_prof.ActiveDevices):
                 activate_button.set_sensitive(FALSE)
                 deactivate_button.set_sensitive(TRUE)
                 #edit_button.set_sensitive(FALSE)
