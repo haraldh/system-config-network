@@ -12,6 +12,7 @@ class ProfileList(ProfileList_base):
     def load(self):
         nwconf = Conf.ConfShellVar("/etc/sysconfig/network")
         hoconf = Conf.ConfEHosts()
+        dnsconf = Conf.ConfEResolv()
         try:
             curr_prof = nwconf['CURRENT_PROFILE']
         except:
@@ -42,6 +43,23 @@ class ProfileList(ProfileList_base):
                 for al in hoconf[ip][1]:
                     host.AliasList.append(al);
                 prof.HostsList.append(host)
+            dnsconf.filename = SYSCONFPROFILEDIR + '/' + pr + '/resolv.conf'
+            dnsconf.read()
+            if dnsconf.has_key('nameservers'):
+                prof.DNS.PrimaryDNS = dnsconf['nameservers'][0]
+                if len(dnsconf['nameservers']) > 1:
+                    prof.DNS.SecondaryDNS = dnsconf['nameservers'][1]
+                else:
+                    prof.DNS.SecondaryDNS = ''
+                if len(dnsconf['nameservers']) > 2:
+                    prof.DNS.TernaryDNS = dnsconf['nameservers'][2]
+                else:
+                    prof.DNS.TernaryDNS = ''
+
+            sl = prof.DNS.createSearchList()
+            if dnsconf.has_key('search'):
+                for ns in dnsconf['search']:
+                    sl.append(ns)
 
     def save(self):
         pass
