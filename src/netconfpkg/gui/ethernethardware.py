@@ -74,10 +74,8 @@ class ethernetHardwareDialog:
         self.dialog.set_close(TRUE)
         self.setup()
         self.hydrate()
-        #self.button = 0
 
     def on_Dialog_delete_event(self, *args):
-        #self.button = 1
         pass
 
     def on_okButton_clicked(self, button):
@@ -100,12 +98,9 @@ class ethernetHardwareDialog:
         (status, output) = commands.getstatusoutput(cmd)
         if status != 0:
             GUI_functions.generic_error_dialog('The Ethernet card could not be initialized. Please verify your settings and try again.', self.dialog)
-            self.button = 1
-            return
-        #self.hw.commit()
+        pass
 
     def on_cancelButton_clicked(self, button):
-        #self.button = 1
         pass
     
     def on_adapterEntry_changed(self, entry):

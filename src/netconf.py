@@ -1142,7 +1142,7 @@ class mainDialog:
         else:
             hw.commit()
 
-        if hw.changed:
+        if hardwarelist.changed:
             self.hydrate()
             hw.changed = false
 
