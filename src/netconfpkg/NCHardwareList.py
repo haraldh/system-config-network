@@ -158,8 +158,10 @@ class HardwareList(HardwareList_base):
         #
         # Read in actual system state
         #
-        for i in xrange(20):
-            device = "eth%d" % i            
+        for device in ethtool.get_devices():
+            if device[:3] != "eth":
+                continue
+            
             try:
                 mod = ethtool.get_module(device)
             except:
