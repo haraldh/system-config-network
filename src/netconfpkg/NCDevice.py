@@ -97,12 +97,17 @@ class Device(Device_base):
             self.Alias = int(self.Device[aliaspos+1:])
             self.Device = self.Device[:aliaspos]
 
-        if not self.Type:
-            self.Type = "Unknown"
+        if not self.Type or self.Type == "" or self.Type == "Unknown":
             hwlist = HardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Device:
                     self.Type = hw.Type
+
+        print "Type == " + self.Type
+                    
+        if (not self.Type or self.Type == "" or self.Type == "Unknown" ) \
+           and self.Device:            
+            self.Type = getDeviceType(self.Device)
 
         #print "Creating Dialup"
         dialup = self.createDialup()
