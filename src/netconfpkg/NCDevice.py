@@ -113,6 +113,19 @@ class Device(DeviceList.Device_base):
         else:
             raise TypeError, _("Device type not specified")
 
+    def createWireless(self):
+        if self.Type:
+            if self.Type == "CIPE":
+                DeviceList.Device_base.createWireless(self)
+            else:
+                #print "Non-CIPE type: " + self.Type
+                self.Cipe = None
+                
+            return self.Cipe
+
+        else:
+            raise TypeError, _("Device type not specified")
+
 
     def load(self, name):
         
@@ -166,6 +179,7 @@ class Device(DeviceList.Device_base):
             for hw in hwlist:
                 if hw.Name == self.Device:
                     self.Type = hw.Type
+                    break
                     
         if (not self.Type or self.Type == "" or self.Type == "Unknown" ) \
            and self.Device:            
@@ -180,6 +194,10 @@ class Device(DeviceList.Device_base):
         cipe = self.createCipe()
         if cipe:
             cipe.load(conf)
+
+        wireless = self.createWireless()
+        if wireless:
+            wireless.load(conf)
 
         num = len(rconf.keys())
         self.createStaticRoutes()
