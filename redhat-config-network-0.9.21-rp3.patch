@@ -1,0 +1,57 @@
+diff -ur rp3-1.1.10/rp3/Makefile.am rp3-1.1.10/rp3/Makefile.am
+--- rp3-1.1.10/rp3/Makefile.am	Mon Jan 31 18:48:27 2000
++++ rp3-1.1.10/rp3/Makefile.am	Mon Apr  1 17:39:22 2002
+@@ -12,7 +12,7 @@
+ 
+ INCLUDES = -I$(top_srcdir)/utils -I$(includedir) $(GNOME_INCLUDEDIR) \
+ 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+-	-I$(top_srcdir)/intl
++	-I$(top_srcdir)/intl $(ORBIT_CFLAGS)
+ 
+ 
+ bin_PROGRAMS = rp3
+diff -ur rp3-1.1.10/wvdial-libs/streams/wvlog.h rp3-1.1.10/wvdial-libs/streams/wvlog.h
+--- rp3-1.1.10/wvdial-libs/streams/wvlog.h	Fri Aug 13 20:58:53 1999
++++ rp3-1.1.10/wvdial-libs/streams/wvlog.h	Mon Apr  1 17:32:42 2002
+@@ -25,7 +25,7 @@
+ // or transmits log messages.
+ class WvLogRcvBase
+ {
+-    friend WvLog;
++    friend class WvLog;
+ protected:
+     const char *appname(const WvLog *log) const;
+     virtual void log(const WvLog *source, int loglevel,
+@@ -43,7 +43,7 @@
+ // to all registered WvLogRcv's.
+ class WvLog : public WvStream
+ {
+-    friend WvLogRcvBase;
++    friend class WvLogRcvBase;
+ public:
+     enum LogLevel {
+ 	Critical = 0,
+diff -ur rp3-1.1.10/wvdial-libs/utils/wvhashtable.h rp3-1.1.10/wvdial-libs/utils/wvhashtable.h
+--- rp3-1.1.10/wvdial-libs/utils/wvhashtable.h	Fri Jan 28 00:01:26 2000
++++ rp3-1.1.10/wvdial-libs/utils/wvhashtable.h	Mon Apr  1 17:31:47 2002
+@@ -139,7 +139,7 @@
+     _type_##List *sl()							\
+ 	{ return (_type_##List *)slots; }				\
+     									\
+-    ~##_classname_()							\
++    ~ _classname_()							\
+         { shutdown(); delete[] sl(); }					\
+     									\
+     void add(_type_ *data, bool auto_free)				\
+diff -ur rp3-1.1.10/wvdial-libs/utils/wvlinklist.h rp3-1.1.10/wvdial-libs/utils/wvlinklist.h
+--- rp3-1.1.10/wvdial-libs/utils/wvlinklist.h	Fri Jun 16 07:26:00 2000
++++ rp3-1.1.10/wvdial-libs/utils/wvlinklist.h	Mon Apr  1 17:30:30 2002
+@@ -127,7 +127,7 @@
+     _newname_()						\
+ 	{ setup(); }					\
+ 							\
+-    ~##_newname_() 					\
++    ~ _newname_() 					\
+ 	{ shutdown(); _zap(); }				\
+ 							\
+     void zap()						\
