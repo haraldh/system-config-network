@@ -41,9 +41,9 @@ gettext.textdomain("netconf")
 _=gettext.gettext
 
 class editAdressDialog:
-    def __init__(self, xml_main = None, list = None):
+    def __init__(self, route, xml_main = None):
+        self.route = route
         self.xml_main = xml_main
-        self.list = list
 
         glade_file = "editadress.glade"
 
@@ -70,7 +70,8 @@ class editAdressDialog:
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
-        self.dialog.show()
+        self.dialog.set_close(TRUE)
+        self.hydrate()
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -91,30 +92,38 @@ class editAdressDialog:
             self.dialog.set_icon(pix, mask)
             
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
+        pass
         
     def on_okButton_clicked(self, button):
-        self.dialog.destroy()
+        self.dehydrate()
+        self.route.commit()
         
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
-        
-    def on_isdnCardEntry_changed(self, entry):
         pass
-
+        
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
         if re.match(str, text):
             return
         entry.emit_stop_by_name('insert_text')
-        
-    def updateDialog(self):
-        pass
+
+    def hydrate(self):
+        if self.route.Address:
+            self.xml.get_widget('addressEntry').set_text(self.route.Address)
+        if self.route.Netmask:
+            self.xml.get_widget('netmaskEntry').set_text(self.route.Netmask)
+        if self.route.Gateway:
+            self.xml.get_widget('gatewayEntry').set_text(self.route.Gateway)
+
+    def dehydrate(self):
+        self.route.Address = self.xml.get_widget('addressEntry').get_text()
+        self.route.Netmask = self.xml.get_widget('netmaskEntry').get_text()
+        self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text()
+
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     window = editAdressDialog()
     gtk.mainloop()
-

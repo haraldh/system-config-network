@@ -779,7 +779,8 @@ if __name__ == '__main__':
         opts, args = getopt.getopt(sys.argv[1:], "p:t", ["profile=", "test"])
         for opt, val in opts:
             if opt == '-p' or opt == '--profile':
-                switchToProfile(val)
+                profilelist = getProfileList()
+                profilelist.switchToProfile(val)
                 continue
 
             if opt == '-t' or opt == '--test':

@@ -66,8 +66,16 @@ class DeviceList(DeviceList_base):
                         unlink(SYSCONFDEVICEDIR + entry)
                 except OSError, msg:
                     raise IOError, 'Error removing old device. ' + str(msg)
-        finally:            
+        finally:
+            pppnum = 0
+            ipppnum = 0
             for dev in self:
+                if dev.Type == "Modem":
+                    dev.Device = "ppp"+str(pppnum)
+                    pppnum = pppnum + 1
+                if dev.Type == "ISDN":
+                    dev.Device = "ippp"+str(ipppnum)
+                    ipppnum = ipppnum + 1
                 dev.save()
 
         self.commit()

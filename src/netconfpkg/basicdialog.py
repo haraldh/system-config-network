@@ -125,7 +125,10 @@ class basicDialog:
                 self.xml.get_widget('hostnameEntry').set_text(self.device.Hostname)
             if self.device.AutoDNS:
                 self.xml.get_widget('dnsSettingCB').set_active(self.device.AutoDNS)
-
+            clist = self.xml.get_widget('staticRouteCList')
+            for route in self.device.StaticRoutes:
+                print route.Address
+                
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.Type = self.xml.get_widget('deviceTypeEntry').get_text()
@@ -232,7 +235,24 @@ class basicDialog:
         self.xml.get_widget("networkRouteFrame").set_sensitive(check["active"] != TRUE)
 
     def on_routeAddButton_clicked(self, button):
-        editAdressDialog(self.xml_main, self.xml)
+        devicelist = getDeviceList()
+
+        curr_dev = devicelist[self.xml_main.get_widget('deviceList').selection[0]]
+        if not curr_dev.StaticRoutes:
+            curr_dev.createStaticRoutes()
+        routes = curr_dev.StaticRoutes
+
+        route = Route()
+
+        clist  = self.xml.get_widget("List")
+        dialog = editAdressDialog(route, self.xml)
+        dl = dialog.xml.get_widget ("Dialog")
+        button = dl.run ()
+        if button == 0:
+            i = routes.addRoute()
+            routes[i].apply(route)
+            routes[i].commit()
+        self.hydrate()
 
     def on_routeEditButton_clicked(self, button):
         editAdressDialog(self.xml_main, self.xml, list)
