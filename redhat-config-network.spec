@@ -1,13 +1,14 @@
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: redhat-config-network
-Version: 0.3.0
-Release: 2
+Version: 0.3.1
+Release: 1
 URL: http://www.redhat.com/ 
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99
+Requires: initscripts >= 5.99, /usr/bin/consolehelper
+Obsoletes: isdn-config internet-config
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -18,6 +19,7 @@ masquerading, and can use profiles.
 
 %prep
 %setup -q
+test -x autogen.sh && ./autogen.sh
 %configure
 
 %build
@@ -31,14 +33,25 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-/usr/share/redhat-config-network
-/usr/sbin/*
+%{_datadir}/redhat-config-network
+%{_datadir}/kontrol-panel/neat.desktop
+%{_datadir}/kontrol-panel/icons/neat.png
+%{_sysconfdir}/X11/applnk/System/neat.desktop
+%{_sysconfdir}/pam.d/*
+%{_sysconfdir}/security/console.apps/*
+%{_sbindir}/*
+%{_bindir}/*
 
 %changelog
-* Thu Jul 11 2001 Phil Knirsch <phil@redhat.de> 0.3.0-2
+* Wed Jul 11 2001 Than Ngo <than@redhat.com> 0.3.1-1
+- obsolete isdn-config internet-config
+- requires consolehelper
+- add icon and desktop file
+
+* Wed Jul 11 2001 Phil Knirsch <phil@redhat.de> 0.3.0-2
 - Fixed critical problem during profile saving.
 
-* Thu Jul 10 2001 Phil Knirsch <phil@redhat.de> 0.3.0-1
+* Wed Jul 10 2001 Phil Knirsch <phil@redhat.de> 0.3.0-1
 - 0.3.0-1
 - Final touches for beta2. Most stuff should work now.
 
