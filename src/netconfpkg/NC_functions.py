@@ -50,7 +50,10 @@ def kernel_version():
     global _kernel_version
     if not _kernel_version:
         (sysname, nodename, release, version, machine) = os.uname()
-        (ver, rel) = string.split(release, "-")        
+        if release.find("-") != -1:
+            (ver, rel) = release.split("-")
+        else:
+            ver = release
         _kernel_version = string.split(ver, ".")        
     return _kernel_version
 
@@ -60,16 +63,17 @@ def cmp_kernel_version(v1, v2):
             return int(v1[i]) - int(v2[i])
     
 
-NETCONFDIR='/usr/share/system-config-network/'
-OLDSYSCONFDEVICEDIR='/etc/sysconfig/network-scripts/'
-SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
-SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
-SYSCONFNETWORK='/etc/sysconfig/network'
-WVDIALCONF='/etc/wvdial.conf'
-HOSTSCONF='/etc/hosts'
-RESOLVCONF='/etc/resolv.conf'
-CIPEDIR="/etc/cipe"
-PPPDIR="/etc/ppp"
+NETCONFDIR = '/usr/share/system-config-network/'
+OLDSYSCONFDEVICEDIR = '/etc/sysconfig/network-scripts/'
+SYSCONFNETWORKING = '/etc/sysconfig/networking/'
+SYSCONFDEVICEDIR = SYSCONFNETWORKING + 'devices/'
+SYSCONFPROFILEDIR = SYSCONFNETWORKING + 'profiles/'
+SYSCONFNETWORK = '/etc/sysconfig/network'
+WVDIALCONF = '/etc/wvdial.conf'
+HOSTSCONF = '/etc/hosts'
+RESOLVCONF = '/etc/resolv.conf'
+CIPEDIR = "/etc/cipe"
+PPPDIR = "/etc/ppp"
 
 if cmp_kernel_version([2,5,0], kernel_version()) < 0:
     MODULESCONF='/etc/modprobe.conf'
@@ -93,7 +97,7 @@ LO = 'Loopback'
 DSL = 'xDSL'
 CIPE = 'CIPE'
 WIRELESS = 'Wireless'
-TOKENRING = 'Token Ring'
+TOKENRING = 'TokenRing'
 CTC = 'CTC'
 IUCV = 'IUCV'
 IPSEC = 'IPSEC'
@@ -297,7 +301,9 @@ def create_combo(hardwarelist, devname, type, default_devices):
 
     for hw in hardwarelist:
         if hw.Type == type:
-            desc = str(hw.Name) + ' (' + hw.Description + ')'
+            desc = str(hw.Name)
+            if hw.Description:
+                desc += ' (' + hw.Description + ')'
             try:
                 i = hwdesc.index(hw.Name)
                 hwdesc[i] = desc
@@ -380,9 +386,11 @@ def getDeviceType(devname):
     return type
 
 def getNickName(devicelist, dev):
+    nickname = []
     for d in devicelist:
         if d.Device == dev:
-            return d.DeviceId
+            nickname.append(d.DeviceId)
+    return nickname
 
 def getNewDialupDevice(devicelist, dev):
     dlist = []
@@ -583,7 +591,10 @@ def generic_run_dialog (command, argv, searchPath = 0,
                         rc = rc + s
 
             except Exception, e:
-                os.kill(childpid, 15)
+                try:
+                    os.kill(childpid, 15)
+                except:
+                    pass
                 raise e
 
             os.close(read)
@@ -660,7 +671,10 @@ def generic_run (command, argv, searchPath = 0,
                         rc = rc + s
 
             except Exception, e:
-                os.kill(childpid, 15)
+                try:
+                    os.kill(childpid, 15)
+                except:
+                    pass
                 raise e
 
             os.close(read)
@@ -724,10 +738,9 @@ def link(src, dst):
 	try:
 		os.link(src, dst)
                 log.log(2, "ln %s %s" % (src, dst))
-	except OSError, errstr:
-		generic_error_dialog (_("Error linking %s\nto\n%s:\n%s!") 
-				      % (src, dst, str(errstr)))
-	
+	except:
+            symlink(src, dst)
+            
 def copy(src, dst):
 	if not os.path.isfile(src):
 		return
@@ -777,15 +790,80 @@ def get_filepath(file):
 		return None
 	else: return fn
 
+__updatedNetworkScripts = 0
+
+def updateNetworkScripts():
+    global __updatedNetworkScripts
+    
+    if __updatedNetworkScripts:
+        return
+
+    if not os.access(getRoot(), os.W_OK):
+        return
+        
+    prepareRoot(getRoot())
+
+    firsttime = 0
+    
+    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
+        firsttime = 1
+        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default')
+
+    curr_prof = 'default'
+    if not firsttime:
+        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        if nwconf.has_key('CURRENT_PROFILE'):
+            curr_prof = nwconf['CURRENT_PROFILE']
+
+    devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
+
+    for dev in devlist:
+        if dev == 'lo':           
+            continue
+
+        if os.path.islink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+ dev) \
+               or ishardlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+dev):
+            continue
+
+        unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
+        link(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+dev,
+             netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
+
+        log.log(1, _("Linking %s to devices and putting "
+                     "it in profile %s.") % (dev, curr_prof))
+
+        unlink(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev)
+        link(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev,
+             netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev)    
+
+    if not os.path.isfile(netconfpkg.ROOT + HOSTSCONF) or \
+           (not ishardlink(netconfpkg.ROOT + HOSTSCONF) \
+           and not os.path.islink(netconfpkg.ROOT + HOSTSCONF)):
+        log.log(1, _("Copying %s to profile %s." % (netconfpkg.ROOT + \
+                     HOSTSCONF, curr_prof)))
+        unlink(netconfpkg.ROOT + \
+               SYSCONFPROFILEDIR+'/' + curr_prof + '/hosts')
+        link(netconfpkg.ROOT + HOSTSCONF, netconfpkg.ROOT + \
+             SYSCONFPROFILEDIR+'/' + curr_prof + '/hosts')
+
+    if not os.path.isfile(netconfpkg.ROOT + RESOLVCONF) or \
+           ( not ishardlink(netconfpkg.ROOT + RESOLVCONF) \
+            and not os.path.islink(netconfpkg.ROOT + RESOLVCONF)):
+        log.log(1, _("Linking %s to profile %s." % (netconfpkg.ROOT + \
+                     RESOLVCONF, curr_prof)))
+        unlink(netconfpkg.ROOT + \
+               SYSCONFPROFILEDIR+'/' + curr_prof + '/resolv.conf')
+        link(netconfpkg.ROOT + RESOLVCONF, netconfpkg.ROOT + \
+             SYSCONFPROFILEDIR+'/' + curr_prof + '/resolv.conf')
+
+    __updatedNetworkScripts = 1
 
 class ConfDevices(UserList.UserList):
-    def __init__(self):
+    def __init__(self, confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR):
         UserList.UserList.__init__(self)
-
-        #for confdir in [ netconfpkg.ROOT + SYSCONFDEVICEDIR, netconfpkg.ROOT + OLDSYSCONFDEVICEDIR ]:
-        confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR    
+        confdir += '/'
         try:
-            dir = os.listdir(confdir)
+            dir = os.listdir(confdir)            
         except OSError, msg:
             pass
         else:
@@ -798,8 +876,7 @@ class ConfDevices(UserList.UserList):
                    string.find(entry, '.rpmnew') == -1 and \
                    os.access(confdir + entry, os.R_OK):
                     self.append(entry[6:])
-        return
-	
+                    	
 def setRoot(root):
     netconfpkg.ROOT = root
 
@@ -810,16 +887,13 @@ def prepareRoot(root):
     setRoot(root)
     
     for dir in "/etc", "/etc/sysconfig", \
-        "/etc/sysconfig/networking", \
+        SYSCONFNETWORKING, \
         OLDSYSCONFDEVICEDIR, \
         SYSCONFDEVICEDIR, \
         SYSCONFPROFILEDIR, \
         CIPEDIR, PPPDIR:
         if not os.path.isdir(root + dir):
-            log.log(2, "mkdir %s" % root + dir)
             mkdir(root + dir)
-        else:
-            log.log(2, "%s already exists" % (root + dir))
 
 
 class ConfKeys(Conf.ConfShellVar):
@@ -829,5 +903,5 @@ class ConfKeys(Conf.ConfShellVar):
 
             
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/28 11:10:02 $"
-__version__ = "$Revision: 1.84 $"
+__date__ = "$Date: 2004/03/04 13:37:29 $"
+__version__ = "$Revision: 1.85 $"
