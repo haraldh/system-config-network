@@ -93,4 +93,89 @@ if expectConf(filename, str):
     sys.exit(10)
 # cleanup
 os.unlink(filename)
+
+#
+# test3
+#
+filename = "test3.out"
+str = """# Modules test file
+alias parport_lowlevel parport_pc
+#alias eth0 3c59x
+alias eth3 3c59x
+#alias eth0 3c59x
+#alias sound-slot-1 emu10k1
+alias sound-slot-0 emu10k1
+#alias sound-slot-1 emu10k1
+# comment comment
+post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
+post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+"""
+# read
+writeConf(filename, str)
+conf = Conf.ConfModules(filename)
+os.unlink(filename)
+# write
+conf.write()
+del conf
+# check
+if expectConf(filename, str):
+    writeConf(filename + '.orig', str)
+    print "Test1 failed!!!!"
+    os.system("diff -u " + filename + " " + filename + ".orig")
+    sys.exit(10)
+# cleanup
+os.unlink(filename)
+
+#
+# test4
+#
+filename = "test4.out"
+str = """# Modules test file
+alias parport_lowlevel parport_pc
+#alias eth0 3c59x
+alias eth3 3c59x
+#alias eth0 3c59x
+#alias sound-slot-1 emu10k1
+alias sound-slot-0 emu10k1
+#alias sound-slot-1 emu10k1
+# comment comment
+post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
+post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+"""
+# read
+writeConf(filename, str)
+conf = Conf.ConfModules(filename)
+os.unlink(filename)
+# modify
+conf["eth3"]["alias"] = "3c59xaaa"
+conf["eth0"] = { "alias" : "3c59x" }
+# write
+conf.write()
+del conf
+# check
+str = """# Modules test file
+alias parport_lowlevel parport_pc
+#alias eth0 3c59x
+alias eth3 3c59xaaa
+#alias eth0 3c59x
+#alias sound-slot-1 emu10k1
+alias sound-slot-0 emu10k1
+#alias sound-slot-1 emu10k1
+# comment comment
+post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
+post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+alias eth0 3c59x
+"""
+if expectConf(filename, str):
+    writeConf(filename + '.orig', str)
+    print "Test2 failed!!!!"
+    os.system("diff -u " + filename + " " + filename + ".orig")
+    sys.exit(10)
+# cleanup
+os.unlink(filename)
+
+
 sys.exit(0)
