@@ -314,7 +314,7 @@ class mainDialog:
         gtk.mainquit()
 
     def on_helpButton_clicked(self, button):
-        gnome.help.goto ("/usr/share/doc/redhat-config-network-0.6.7/index.html")
+        gnome.help.goto ("/usr/share/redhat-config-network/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
         #interface = NewInterface()
