@@ -27,7 +27,8 @@ PYTHON_FILES = \
 	NCHardwareList.py \
 	NCisdnhardware.py \
 	NCProfileList.py \
-	NCWireless.py 
+	NCWireless.py \
+	Control.py
 
 BUILT_SOURCES = $(patsubst %.py,%.pyc,$(GENCLASS_FILES) $(PYTHON_FILES)) $(GENCLASS_FILES)
 
