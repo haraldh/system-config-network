@@ -23,12 +23,12 @@ import sys
 import os
 import os.path
 import shutil
-import gettext
 from rhpl import ConfPAP
 from rhpl import ethtool
 
 true = (1==1)
 false = not true
+
 
 PROGNAME = "redhat-config-network"
 
@@ -38,13 +38,16 @@ SYSCONFDEVICEDIR='/etc/sysconfig/networking/devices/'
 SYSCONFPROFILEDIR='/etc/sysconfig/networking/profiles/'
 SYSCONFNETWORK='/etc/sysconfig/network/'
 
-gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
-gettext.textdomain(PROGNAME)
-try:
-    gettext.install(PROGNAME, "/usr/share/locale", 1)
-except IOError:
-    import __builtin__
-    __builtin__.__dict__['_'] = unicode    
+#import gettext
+#gettext.bindtextdomain(PROGNAME, "/usr/share/locale")
+#gettext.textdomain(PROGNAME)
+#try:
+#    gettext.install(PROGNAME, "/usr/share/locale", 1)
+#except IOError:
+#    import __builtin__
+#    __builtin__.__dict__['_'] = unicode    
+
+DEFAULT_PROFILE_NAME=_("Common")
 
 ETHERNET = 'Ethernet'
 MODEM = 'Modem'
