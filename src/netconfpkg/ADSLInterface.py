@@ -75,7 +75,7 @@ class ADSLInterface(InterfaceCreator):
         return _("Create an xDSL connection.  This is a connection that uses one of "
                  "several types of broadband connections collective known as Digital "
                  "Subscriber Lines.  This list includes ADSL (Asymmetric, faster "
-                 "downloads than uploads), IDSL(over an ISDN line for distance), SDSL "
+                 "downloads than uploads), IDSL (over an ISDN line for distance), SDSL "
                  "(Symmetric, downloads and uploads at the same speed), and several "
                  "others.  These types of connections are common in the United States, "
                  "and are gaining acceptance elsewhere.  Speeds vary according to the "
