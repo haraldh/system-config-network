@@ -220,6 +220,7 @@ class mainDialog:
         self.lan_xpm, self.lan_mask = get_icon('pixmaps/ethernet.xpm', self.dialog)
         self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
         self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
+        self.irda_xpm, self.irda_mask = get_icon('pixmaps/irda-16.xpm', self.dialog)
         
         load_icon("network.xpm", self.dialog)
         self.load()
@@ -326,8 +327,6 @@ class mainDialog:
         inact_xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
         status_pixmap = self.off_xpm
         status_mask = self.off_mask
-        device_pixmap = self.lan_xpm
-        device_mask = self.lan_mask
         status = INACTIVE
         
         row = 0
@@ -342,15 +341,27 @@ class mainDialog:
                     status_mask = self.on_mask
                     break
 
-            if dev.Device[:3] == 'ppp':
+            if dev.Type == MODEM:
                 device_pixmap = self.ppp_xpm
                 device_mask = self.ppp_mask
-            elif dev.Device[:3] == 'eth' or dev.Device[:5] == 'cipcb' or dev.Device[:2] == 'tr':
+            elif dev.Type == ETHERNET:
                 device_pixmap = self.lan_xpm
                 device_mask = self.lan_mask
-            elif dev.Device[:4] == 'ippp' or dev.Device[:4] == 'isdn':
+            elif dev.Type == CIPE:
+                device_pixmap = self.lan_xpm
+                device_mask = self.lan_mask
+            elif dev.Type == TOKENRING:
+                device_pixmap = self.lan_xpm
+                device_mask = self.lan_mask
+            elif dev.Type == ISDN:
                 device_pixmap = self.isdn_xpm
                 device_mask = self.isdn_mask
+            elif dev.Type == WIRELESS:
+                device_pixmap = self.irda_xpm
+                device_mask = self.irda_mask
+            else:
+                device_pixmap = self.lan_xpm
+                device_mask = self.lan_mask
 
             clist.append([status, dev.Device, dev.DeviceId, dev.Type])
 ##          clist.set_pixmap(row, 0, inact_xpm)
