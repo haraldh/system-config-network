@@ -110,11 +110,19 @@ class ethernetHardware:
                 self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
 
     def setup(self):
-        hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
+        list = []
+        modInfo = Conf.ConfModInfo()
+        for i in modInfo.keys():
+            if modInfo[i]['type'] == "eth":
+                list.append(modInfo[i]['description'])
+        list.sort()
+        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+
+#          hwlist = NCHardwareList.getHardwareList()
+#          (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
         
-        if len(hwdesc):
-            self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#          if len(hwdesc):
+#              self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
 
     def dehydrate(self):
         if not self.has_ethernet:

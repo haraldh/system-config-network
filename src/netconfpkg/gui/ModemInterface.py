@@ -91,10 +91,10 @@ class ModemInterface:
         return self.druids[0:] + dialup.get_druids()
 
     def on_Modem_prepare(self, druid_page, druid):
-        dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, 'Modem probing...')
+        dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Modem probing...'))
         dialog.set_border_width(10)
         vbox = gtk.GtkVBox(1)
-        vbox.add(gtk.GtkLabel('Probing for Modems, please wait...'))
+        vbox.add(gtk.GtkLabel(_('Probing for Modems, please wait...')))
         dialog.add(vbox)
         dialog.set_position (gtk.WIN_POS_MOUSE)
         dialog.show_all()

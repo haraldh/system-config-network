@@ -54,7 +54,7 @@ class dslConfigDialog(deviceConfigDialog):
             if hw.Type == "Ethernet":
                 desc = str(hw.Name) + ' (' + hw.Description + ')'
                 hwdesc.append(desc)
-                if dialup.EthDevice and \
+                if dialup and dialup.EthDevice and \
                    hw.Name == dialup.EthDevice:
                     hwcurr = desc
                     
