@@ -1,4 +1,28 @@
+2003-12-17  kmaraas  <kmaraas@redhat.com>
+
+	* po/no.po 1.165: Update
+
+2003-12-17  Harald Hoyer  <harald@redhat.com>
+
+	* src/netconfpkg/plugins/NCDevIsdn.py 1.6, po/sv.po 1.171, po/system-config-network.pot 1.6, po/tr.po 1.108, po/zh_CN.po 1.121, po/zh_TW.po 1.145, src/netconf-cmd.py 1.18, src/netconf-tui.py 1.25, src/netconfpkg/Control.py 1.23, src/netconfpkg/NCDevice.py 1.96, src/netconfpkg/NCDeviceList.py 1.59, src/netconfpkg/NCProfileList.py 1.78, src/netconfpkg/NC_functions.py 1.83, src/netconfpkg/gui/DialupDruid.glade 1.17, src/netconfpkg/gui/DialupDruid.py 1.28, src/netconfpkg/gui/GUI_functions.py 1.31, src/netconfpkg/gui/ModemDruid.glade 1.15, src/netconfpkg/gui/ModemInterface.py 1.34, src/netconfpkg/gui/ethernethardware.py 1.30, src/netconfpkg/gui/tonline.glade 1.6, src/netconfpkg/gui/tonline.py 1.7, src/providerdb 1.15, po/hu.po 1.18, po/is.po 1.172, po/it.po 1.170, po/ja.po 1.182, po/ko.po 1.181, po/nl.po 1.33, po/no.po 1.164, po/pt.po 1.161, po/pt_BR.po 1.20, po/ru.po 1.126, configure.in 1.164, po/cs.po 1.144, po/da.po 1.136, po/de.po 1.194, po/el.po 1.118, po/es.po 1.179, po/fr.po 1.190, system-config-network.spec.in 1.4:
+	merged in bugfixes from the RHEL erratum
+	- fixed T-Online dialog #110911
+	- default flow control to CTSRTS #110347
+	- only clear login/pw on provider select, if provider has its own number
+	- fixed cancel of dialup process #103421
+	- default to "/" for chrooted configuration
+	- default to "default" profile if none active
+	- fixed "activate button not active" #110193
+	- scn-tui requires newt #104213
+	- fixed #107816, by recognizing /var/run/ppp-ppp<NICKNAME>.pid
+	- fixed a bug in ISDN activate #100677
+
+	* src/netconfpkg/gui/dialupconfig.glade 1.22:
+	Patch fixing the 'hangup timeout' and 'dialup mode' entries wrt "widget `GtkVBox' isn't suitable for mnemonic activation" (thx to Miloslav Trmac)
+
 2003-12-16  Harald Hoyer  <harald@redhat.com>
+
+	* ChangeLog 1.114: release 1.3.12-1
 
 	* src/netconfpkg/gui/tokenringhardware.py 1.23:
 	corrected translation string

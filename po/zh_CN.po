@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-16 12:25+0100\n"
+"POT-Creation-Date: 2003-12-17 14:43+0100\n"
 "PO-Revision-Date: 2003-12-04 14:33+1000\n"
 "Last-Translator: Sarah Wang <sarahs@redhat.com>\n"
 "Language-Team: Simplified Chinese <i18n@redhat.com>\n"
@@ -38,7 +38,7 @@ msgstr "配置网络设备和连接"
 msgid "Network"
 msgstr "网络"
 
-#: neat.desktop.in.h:3 src/netconf-tui.py:142
+#: neat.desktop.in.h:3 src/netconf-tui.py:140
 #: src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Network Configuration"
 msgstr "网络配置"
@@ -118,11 +118,13 @@ msgstr ""
 "redhat.com/"
 
 #. Network Device Control Dialog
-#: src/neat-control.py:168 src/netconfpkg/NCDevice.py:380
+#: src/neat-control.py:168 src/netconfpkg/NCDevice.py:376
+#: src/netconfpkg/plugins/NCDevIsdn.py:72
 msgid "Network device activating..."
 msgstr "网络设备正在被激活..."
 
-#: src/neat-control.py:171 src/netconfpkg/NCDevice.py:381
+#: src/neat-control.py:171 src/netconfpkg/NCDevice.py:377
+#: src/netconfpkg/plugins/NCDevIsdn.py:73
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "正在激活网络设备 %s，请稍候..."
@@ -172,17 +174,15 @@ msgstr "（活跃）"
 #. !/usr/bin/python
 #. -*- coding: utf-8 -*-
 #. # netconf-tui - a tui network configuration tool
-#. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
-#. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
-#. # Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
+#. # Copyright (C) 2002-2003 Red Hat, Inc.
+#. # Copyright (C) 2002-2003 Trond Eivind GlomsrÃ¸d <teg@redhat.com>
+#. # Copyright (C) 2002-2003 Harald Hoyer <harald@redhat.com>
 #. XXX do length limits on obj dumps.
 #. protect from loops
 #.
 #. handleException function
 #.
-#: src/netconf-tui.py:102
+#: src/netconf-tui.py:100
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against system-config-network "
@@ -195,86 +195,86 @@ msgstr ""
 #.
 #. main Screen
 #.
-#: src/netconf-tui.py:136
+#: src/netconf-tui.py:134
 msgid "What do you want to configure?"
 msgstr "您想配置什么？"
 
-#: src/netconf-tui.py:137
+#: src/netconf-tui.py:135
 msgid "Configure"
 msgstr "配置"
 
-#: src/netconf-tui.py:137
+#: src/netconf-tui.py:135
 msgid "Exit"
 msgstr "退出"
 
 #.
 #. EthernetWindow class
 #.
-#: src/netconf-tui.py:259 src/netconf-tui.py:368 src/netconf-tui.py:474
+#: src/netconf-tui.py:257 src/netconf-tui.py:366 src/netconf-tui.py:472
 #: src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Name"
 msgstr "名称"
 
-#: src/netconf-tui.py:260 src/netconf-tui.py:369 src/netconf-tui.py:475
+#: src/netconf-tui.py:258 src/netconf-tui.py:367 src/netconf-tui.py:473
 #: src/netconfpkg/gui/maindialog.glade.h:11
 #: src/netconfpkg/gui/neat-control.glade.h:11
 #: src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "设备"
 
-#: src/netconf-tui.py:261
+#: src/netconf-tui.py:259
 msgid "Use DHCP"
 msgstr "使用 DHCP"
 
-#: src/netconf-tui.py:262
+#: src/netconf-tui.py:260
 msgid "Static IP"
 msgstr "静态 IP"
 
-#: src/netconf-tui.py:263
+#: src/netconf-tui.py:261
 msgid "Netmask"
 msgstr "子网掩码"
 
-#: src/netconf-tui.py:264
+#: src/netconf-tui.py:262
 msgid "Default gateway IP"
 msgstr "默认网关 IP"
 
-#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Ok"
 msgstr "确定"
 
-#: src/netconf-tui.py:272 src/netconf-tui.py:380 src/netconf-tui.py:486
+#: src/netconf-tui.py:270 src/netconf-tui.py:378 src/netconf-tui.py:484
 msgid "Cancel"
 msgstr "取消"
 
-#: src/netconf-tui.py:274
+#: src/netconf-tui.py:272
 msgid "Ethernet Configuration"
 msgstr "以太网配置"
 
-#: src/netconf-tui.py:370 src/netconf-tui.py:476
+#: src/netconf-tui.py:368 src/netconf-tui.py:474
 msgid "ISP Phonenumber"
 msgstr "ISP 的电话号码"
 
-#: src/netconf-tui.py:371 src/netconf-tui.py:477
+#: src/netconf-tui.py:369 src/netconf-tui.py:475
 msgid "ISP Login"
 msgstr "ISP 登录"
 
-#: src/netconf-tui.py:372 src/netconf-tui.py:478
+#: src/netconf-tui.py:370 src/netconf-tui.py:476
 msgid "ISP Password"
 msgstr "ISP 口令"
 
-#: src/netconf-tui.py:373
+#: src/netconf-tui.py:371
 msgid "Modem Initstring"
 msgstr "调制解调器初始字串"
 
-#: src/netconf-tui.py:381 src/netconfpkg/gui/modemconfig.glade.h:5
+#: src/netconf-tui.py:379 src/netconfpkg/gui/modemconfig.glade.h:5
 msgid "Modem Configuration"
 msgstr "调制解调器配置"
 
-#: src/netconf-tui.py:479
+#: src/netconf-tui.py:477
 msgid "MSN"
 msgstr "MSN"
 
-#: src/netconf-tui.py:487
+#: src/netconf-tui.py:485
 msgid "ISDN Configuration"
 msgstr "ISDN 配置"
 
@@ -409,18 +409,18 @@ msgstr "导入前清除现存列表"
 msgid "import from file"
 msgstr "从文件中导入"
 
-#: src/netconf-cmd.py:226
+#: src/netconf-cmd.py:227
 #, python-format
 msgid "Unknown option %s\n"
 msgstr "未知选项 %s\n"
 
 #. remove the last \n
-#: src/netconf-cmd.py:305
+#: src/netconf-cmd.py:306
 #, python-format
 msgid "Unknown List %s\n"
 msgstr "未知列表 %s\n"
 
-#: src/netconf-cmd.py:309
+#: src/netconf-cmd.py:310
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "解析行时出错：%s"
@@ -633,12 +633,12 @@ msgstr "电话号码："
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:145
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:141
-#: src/netconfpkg/gui/ethernethardware.py:153
-#: src/netconfpkg/gui/ethernethardware.py:170
+#: src/netconfpkg/gui/ethernethardware.py:154
+#: src/netconfpkg/gui/ethernethardware.py:171
 #: src/netconfpkg/gui/tokenringhardware.py:126
 #: src/netconfpkg/gui/tokenringhardware.py:137
 #: src/netconfpkg/NCHardwareList.py:414 src/netconfpkg/NCHardwareList.py:534
-#: src/netconfpkg/NC_functions.py:343 src/netconfpkg/NCDevice.py:205
+#: src/netconfpkg/NC_functions.py:346 src/netconfpkg/NCDevice.py:205
 #: src/netconfpkg/plugins/NCHWEthernet.py:60
 #: src/netconfpkg/plugins/NCHWTokenring.py:71
 #: src/netconfpkg/NCDeviceList.py:57 src/netconfpkg/NCDeviceList.py:105
@@ -723,7 +723,7 @@ msgstr "自动获取 IP 地址设置使用："
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print __name__, "waitpid:", msg
 #. print __name__, "waitpid:", msg
-#: src/netconfpkg/gui/GUI_functions.py:549
+#: src/netconfpkg/gui/GUI_functions.py:557
 #, python-format
 msgid ""
 "Failed to run:\n"
@@ -732,7 +732,7 @@ msgstr ""
 "运行失败：\n"
 "%s"
 
-#: src/netconfpkg/gui/GUI_functions.py:552
+#: src/netconfpkg/gui/GUI_functions.py:560
 msgid "Succeeded. Please read the output."
 msgstr "成功。请阅读输出。"
 
@@ -847,11 +847,11 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemInterface.py:81
+#: src/netconfpkg/gui/ModemInterface.py:80
 msgid "Modem connection"
 msgstr "调制解调器连接"
 
-#: src/netconfpkg/gui/ModemInterface.py:87
+#: src/netconfpkg/gui/ModemInterface.py:86
 msgid ""
 "Create a new Modem connection.  This is a connection that uses a serial "
 "analog modem to dial into to your Internet Service Provider. These modems "
@@ -863,39 +863,39 @@ msgstr ""
 "务提供商。此类调制解调器在一般电话铜线上用声音来传递信息。此类连接几乎在所有"
 "有电话系统的地方都有。"
 
-#: src/netconfpkg/gui/ModemInterface.py:115
+#: src/netconfpkg/gui/ModemInterface.py:114
 msgid "Modem probing..."
 msgstr "正在探测调制解调器..."
 
-#: src/netconfpkg/gui/ModemInterface.py:119
+#: src/netconfpkg/gui/ModemInterface.py:118
 msgid "Probing for Modems, please wait..."
 msgstr "正在探测调制解调器，请稍候..."
 
-#: src/netconfpkg/gui/ModemInterface.py:134
+#: src/netconfpkg/gui/ModemInterface.py:133
 msgid "No modem was found on your system."
 msgstr "在您的系统上没有发现调制解调器。"
 
 #. 460800 seems to be to high
-#: src/netconfpkg/gui/ModemInterface.py:155
+#: src/netconfpkg/gui/ModemInterface.py:162
 #: src/netconfpkg/gui/modemconfig.py:113
 msgid "Generic Modem"
 msgstr "通用调制解调器"
 
-#: src/netconfpkg/gui/ModemInterface.py:162
+#: src/netconfpkg/gui/ModemInterface.py:174
 #: src/netconfpkg/gui/modemconfig.py:140
 #: src/netconfpkg/gui/ModemDruid.glade.h:8
 #: src/netconfpkg/gui/modemconfig.glade.h:9
 msgid "Off"
 msgstr "关"
 
-#: src/netconfpkg/gui/ModemInterface.py:164
+#: src/netconfpkg/gui/ModemInterface.py:176
 #: src/netconfpkg/gui/modemconfig.py:142
 #: src/netconfpkg/gui/ModemDruid.glade.h:3
 #: src/netconfpkg/gui/modemconfig.glade.h:3
 msgid "Low"
 msgstr "低"
 
-#: src/netconfpkg/gui/ModemInterface.py:166
+#: src/netconfpkg/gui/ModemInterface.py:178
 #: src/netconfpkg/gui/modemconfig.py:144
 #: src/netconfpkg/gui/ModemDruid.glade.h:4
 #: src/netconfpkg/gui/modemconfig.glade.h:4
@@ -903,14 +903,14 @@ msgstr "低"
 msgid "Medium"
 msgstr "中"
 
-#: src/netconfpkg/gui/ModemInterface.py:168
+#: src/netconfpkg/gui/ModemInterface.py:180
 #: src/netconfpkg/gui/modemconfig.py:146
 #: src/netconfpkg/gui/ModemDruid.glade.h:2
 #: src/netconfpkg/gui/modemconfig.glade.h:2
 msgid "High"
 msgstr "高"
 
-#: src/netconfpkg/gui/ModemInterface.py:170
+#: src/netconfpkg/gui/ModemInterface.py:182
 #: src/netconfpkg/gui/modemconfig.py:148
 #: src/netconfpkg/gui/ModemDruid.glade.h:11
 #: src/netconfpkg/gui/modemconfig.glade.h:11
@@ -1169,14 +1169,14 @@ msgid "out"
 msgstr "出"
 
 #: src/netconfpkg/gui/dialupconfig.py:337
-#: src/netconfpkg/gui/DialupDruid.glade.h:32
+#: src/netconfpkg/gui/DialupDruid.glade.h:31
 #: src/netconfpkg/gui/dialupconfig.glade.h:67
 msgid "raw IP"
 msgstr "原始 IP"
 
 #: src/netconfpkg/gui/dialupconfig.py:339
 #: src/netconfpkg/gui/dialupconfig.py:368
-#: src/netconfpkg/gui/DialupDruid.glade.h:33
+#: src/netconfpkg/gui/DialupDruid.glade.h:32
 #: src/netconfpkg/gui/dialupconfig.glade.h:68
 msgid "sync PPP"
 msgstr "同步 PPP"
@@ -1801,9 +1801,9 @@ msgstr "点对点（IP）："
 #. dirty hack but does the job(tm). It basically finds all .py files in the
 #. package directory and imports from all found files (except __init__.py that
 #. is) ;). Nice for plugin mechanism.
-#. ! /usr/bin/env python
-#. # Copyright (C) 2002 Red Hat, Inc.
-#. # Copyright (C) 2002 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Red Hat, Inc.
+#. # Copyright (C) 2001-2003 Than Ngo <than@redhat.com>
+#. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
 #. # it under the terms of the GNU General Public License as published by
 #. # the Free Software Foundation; either version 2 of the License, or
@@ -1918,7 +1918,7 @@ msgstr "自动"
 msgid "manual"
 msgstr "手工"
 
-#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:117
+#: src/netconfpkg/NCDialup.py:41 src/netconfpkg/NC_functions.py:120
 #: src/netconfpkg/gui/ModemDruid.glade.h:7
 #: src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -2270,6 +2270,7 @@ msgstr ""
 "或只激活其中之一。"
 
 #. Just to be safe...
+#. commit the changes
 #. if the hostname changed, set it system wide (#55746)
 #. delete all other entries the user has deleted in the UI
 #. unlink old .route files
@@ -2320,18 +2321,18 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:66
+#: src/netconfpkg/NC_functions.py:69
 msgid "Common"
 msgstr "公用"
 
 #. Removed for now, until we have a config dialog for infrared
 #. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: src/netconfpkg/NC_functions.py:115 src/netconfpkg/gui/ModemDruid.glade.h:1
+#: src/netconfpkg/NC_functions.py:118 src/netconfpkg/gui/ModemDruid.glade.h:1
 #: src/netconfpkg/gui/modemconfig.glade.h:1
 msgid "Hardware (CRTSCTS)"
 msgstr "硬件 (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:116 src/netconfpkg/gui/ModemDruid.glade.h:10
+#: src/netconfpkg/NC_functions.py:119 src/netconfpkg/gui/ModemDruid.glade.h:10
 #: src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "软件 (XON/XOFF)"
@@ -2342,12 +2343,12 @@ msgstr "软件 (XON/XOFF)"
 #. print "debug == %d" % _debug
 #. self.args = args
 #. print n[rpm.RPMTAG_NAME]
-#: src/netconfpkg/NC_functions.py:195
+#: src/netconfpkg/NC_functions.py:198
 msgid ""
 "Shall the following packages, which are needed on your system, be installed?"
 msgstr "是否要安装下列在您的系统上需要的软件包？"
 
-#: src/netconfpkg/NC_functions.py:208
+#: src/netconfpkg/NC_functions.py:211
 msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "您必须安装下列软件包，它们是您的系统必需的！"
@@ -2357,7 +2358,7 @@ msgstr "您必须安装下列软件包，它们是您的系统必需的！"
 #. print __name__, "waitpid:", msg
 #. print __name__, "waitpid:", msg
 #. print "file '%s' is not a file!" % file
-#: src/netconfpkg/NC_functions.py:697
+#: src/netconfpkg/NC_functions.py:700
 #, python-format
 msgid ""
 "Error removing\n"
@@ -2367,7 +2368,7 @@ msgstr ""
 "删除 %s 时出错：\n"
 "%s！"
 
-#: src/netconfpkg/NC_functions.py:707
+#: src/netconfpkg/NC_functions.py:710
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2380,7 +2381,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: src/netconfpkg/NC_functions.py:718
+#: src/netconfpkg/NC_functions.py:721
 #, python-format
 msgid ""
 "Error copying \n"
@@ -2393,7 +2394,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: src/netconfpkg/NC_functions.py:728
+#: src/netconfpkg/NC_functions.py:731
 #, python-format
 msgid ""
 "Error linking \n"
@@ -2406,7 +2407,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: src/netconfpkg/NC_functions.py:738
+#: src/netconfpkg/NC_functions.py:741
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -2419,7 +2420,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: src/netconfpkg/NC_functions.py:746
+#: src/netconfpkg/NC_functions.py:749
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -2623,21 +2624,21 @@ msgstr "%s，没有指定设备或别名不是数字！"
 msgid "Static routes file %s is invalid"
 msgstr "静态路由文件 %s 无效"
 
-#: src/netconfpkg/NCDevice.py:383
+#: src/netconfpkg/NCDevice.py:379 src/netconfpkg/plugins/NCDevIsdn.py:75
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "无法激活网络设备 %s！\n"
 
-#: src/netconfpkg/NCDevice.py:400
+#: src/netconfpkg/NCDevice.py:396 src/netconfpkg/plugins/NCDevIsdn.py:95
 msgid "Network device deactivating..."
 msgstr "网络设备正在被解除..."
 
-#: src/netconfpkg/NCDevice.py:401
+#: src/netconfpkg/NCDevice.py:397 src/netconfpkg/plugins/NCDevIsdn.py:96
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "正在解除网络设备 %s，请稍候..."
 
-#: src/netconfpkg/NCDevice.py:403
+#: src/netconfpkg/NCDevice.py:399 src/netconfpkg/plugins/NCDevIsdn.py:98
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "无法解除网络设备 %s！\n"
@@ -2692,8 +2693,6 @@ msgstr "绰号被改变"
 #. fixed this way, until we have a way to mark the
 #. default GATEWAY/GATEWAYDEV
 #. no card seems to use this
-#. if dev.Dialup.Callback == None:
-#. dl.save()
 #. # Copyright (C) 2001-2003 Red Hat, Inc.
 #. # Copyright (C) 2001-2003 Harald Hoyer <harald@redhat.com>
 #. # This program is free software; you can redistribute it and/or modify
@@ -2816,7 +2815,6 @@ msgid "Pass_word:"
 msgstr "口令(_W)："
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:12
-#: src/netconfpkg/gui/DialupDruid.glade.h:20
 msgid "Password (_again):"
 msgstr "口令(重复) (_A)："
 
@@ -2829,14 +2827,14 @@ msgid "Select the ethernet device for this account."
 msgstr "选择该帐号的以太网设备。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-#: src/netconfpkg/gui/DialupDruid.glade.h:26
+#: src/netconfpkg/gui/DialupDruid.glade.h:25
 #: src/netconfpkg/gui/dialupconfig.glade.h:40
 #: src/netconfpkg/gui/dslconfig.glade.h:16
 msgid "Use this form to enter your T-Online account data."
 msgstr "使用该表格来输入您的 T-Online 账号数据。"
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-#: src/netconfpkg/gui/DialupDruid.glade.h:28
+#: src/netconfpkg/gui/DialupDruid.glade.h:27
 #: src/netconfpkg/gui/dialupconfig.glade.h:53
 #: src/netconfpkg/gui/dslconfig.glade.h:23
 msgid "_Login name:"
@@ -2848,7 +2846,7 @@ msgid "_Provider name:"
 msgstr "提供商名称(_P)："
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
-#: src/netconfpkg/gui/DialupDruid.glade.h:31
+#: src/netconfpkg/gui/DialupDruid.glade.h:30
 #: src/netconfpkg/gui/dialupconfig.glade.h:60
 #: src/netconfpkg/gui/dslconfig.glade.h:30
 msgid "_T-Online Account Setup"
@@ -2992,30 +2990,30 @@ msgstr "手工设置 IP 地址"
 msgid "PPP Settings"
 msgstr "PPP 设置"
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:21
+#: src/netconfpkg/gui/DialupDruid.glade.h:20
 #: src/netconfpkg/gui/dialupconfig.glade.h:33
 msgid "Phone Number"
 msgstr "电话号码"
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:22
+#: src/netconfpkg/gui/DialupDruid.glade.h:21
 msgid "Prefi_x:"
 msgstr "前缀(_X)："
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:23
+#: src/netconfpkg/gui/DialupDruid.glade.h:22
 #: src/netconfpkg/gui/dialupconfig.glade.h:35
 msgid "Provider _name:"
 msgstr "提供商名称(_N)："
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:24
+#: src/netconfpkg/gui/DialupDruid.glade.h:23
 msgid "Select Provider"
 msgstr "选择提供商"
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:25
+#: src/netconfpkg/gui/DialupDruid.glade.h:24
 #: src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Statically set IP addresses:"
 msgstr "静态设置的 IP 地址："
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:27
+#: src/netconfpkg/gui/DialupDruid.glade.h:26
 #: src/netconfpkg/gui/editadress.glade.h:3
 #: src/netconfpkg/gui/sharedtcpip.glade.h:33
 #: src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
@@ -3023,11 +3021,11 @@ msgstr "静态设置的 IP 地址："
 msgid "_Address:"
 msgstr "地址(_A)："
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:29
+#: src/netconfpkg/gui/DialupDruid.glade.h:28
 msgid "_Phone number:"
 msgstr "电话号码(_P)："
 
-#: src/netconfpkg/gui/DialupDruid.glade.h:30
+#: src/netconfpkg/gui/DialupDruid.glade.h:29
 #: src/netconfpkg/gui/editadress.glade.h:5
 #: src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Subnet mask:"
