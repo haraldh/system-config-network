@@ -296,10 +296,7 @@ class mainDialog:
         if button != 0:
             return
 
-        basic = basicDialog(device, self.xml)
-        basic.xml.get_widget ("okButton").set_sensitive(FALSE)
-        dialog = basic.xml.get_widget ("Dialog")
-        button = dialog.run ()
+        button = self.editDevice(device)
         if button == 0:
             i = devicelist.addDevice()
             devicelist[i].apply(device)
@@ -326,7 +323,7 @@ class mainDialog:
         i = devicelist.addDevice()
         devicelist[i].apply(device)
         devicelist[i].commit()
-        self.hydrate()
+        self.hydrate()        
 
     def on_deviceEditButton_clicked (self, *args):
         devicelist = getDeviceList()
@@ -345,12 +342,46 @@ class mainDialog:
             generic_error_dialog ('The Loopback device can not be edited!', self.xml.get_widget ("Dialog"))
             return
 
-        basic = basicDialog(device, self.xml)
-        dialog = basic.xml.get_widget ("Dialog")
-        dialog.set_title ("Edit Device")
-        button = dialog.run ()
+        button = self.editDevice(device)
+        
         self.hydrate()
 
+    def editDevice(self, device):
+        button = 0
+        type = device.Type
+        device.createDialup()
+        if type == "Ethernet":
+            cfg = ethernetConfigDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+        elif type == "ISDN":
+            if device.Dialup:
+                device.Dialup.createCompression()                
+            cfg = ISDNDialupDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+        elif type == "Modem":
+            if device.Dialup:
+                device.Dialup.createCompression()
+            cfg = ModemDialupDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+        elif type == "xDSL":
+            if device.Dialup:
+                device.Dialup.createCompression()
+            cfg = dslConfigDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+
+        elif type == "CIPE":
+            button = 1
+            print "CIPE configuration"
+        elif type == "Wireless":
+            button = 1
+            print "wireless configuration"
+
+        return button
+            
     def on_deviceDeleteButton_clicked (self, button):
         devicelist = getDeviceList()
         profilelist = getProfileList()

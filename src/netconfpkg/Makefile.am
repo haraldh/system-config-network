@@ -2,6 +2,7 @@ GLADE_FILES = \
 	basicdialog.glade \
 	chooseprovider.glade \
 	cipeconfig.glade \
+	devicetype.glade \
 	dialupconfig.glade \
 	dslconfig.glade \
 	editadress.glade \
@@ -12,6 +13,7 @@ GLADE_FILES = \
 	isdnhardware.glade \
 	modemconfig.glade \
 	wirelessconfig.glade \
+	tcpipdialog.glade \
 	devicetype.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
@@ -26,10 +28,11 @@ IDL_FILES = \
 	ProviderList.idl
 
 PYTHON_FILES = \
-	genClass.py \
 	basicdialog.py \
 	CheckList.py \
 	ConfSMB.py \
+	deviceconfig.py \
+	devicetype.py \
 	dialupconfig.py \
 	dslconfig.py \
 	editadress.py \
@@ -37,11 +40,11 @@ PYTHON_FILES = \
 	edithosts.py \
 	ethernetconfig.py \
 	ethernethardware.py \
+	Firewall.py \
+	genClass.py \
 	__init__.py \
 	isdnhardware.py \
 	modemconfig.py \
-	providerdb.py \
-	provider.py \
 	NCCallback.py \
 	NCCompression.py \
 	NCDeviceList.py \
@@ -49,8 +52,11 @@ PYTHON_FILES = \
 	NCDialup.py \
 	NC_functions.py \
 	NCHardwareList.py \
+	NCisdnhardware.py \
 	NCProfileList.py \
-	NCisdnhardware.py
+	providerdb.py \
+	provider.py \
+	tcpdialog.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 

@@ -31,6 +31,7 @@ import string
 
 import HardwareList
 
+from deviceconfig import deviceConfigDialog
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -42,37 +43,14 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class dslConfigDialog:
+class dslConfigDialog(deviceConfigDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
-        self.device = device
-        self.xml_main = xml_main
-        self.xml_basic = xml_basic
-
         glade_file = "dslconfig.glade"
-
-        if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
-
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
-
-        self.xml.signal_autoconnect(
-            {
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
-            })
-
-        self.dialog = self.xml.get_widget("Dialog")
-        #self.dialog.connect("hide", gtk.mainquit)
-        self.load_icon("network.xpm")
-
-        self.hydrate()
-
-        self.dialog.set_close(TRUE)
-
-
+        deviceConfigDialog.__init__(self, glade_file,
+                                    device, xml_main, xml_basic)
+        
     def hydrate(self):
+        deviceConfigDialog.hydrate(self)
         dialup = self.device.Dialup
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
 
@@ -94,10 +72,10 @@ class dslConfigDialog:
         if not hwcurr and len(hwdesc):
             hwcurr = hwdesc[0]
 
+        widget = self.xml.get_widget("ethernetDeviceEntry")
         if dialup.EthDevice:
-            widget = self.xml.get_widget("ethernetDeviceEntry")
             widget.set_text(hwcurr)
-            widget.set_position(0)
+        widget.set_position(0)
             
         if dialup.ProviderName:
             self.xml.get_widget("providerNameEntry").set_text(dialup.ProviderName)
@@ -114,9 +92,10 @@ class dslConfigDialog:
         if dialup.AcName:
             self.xml.get_widget("acNameEntry").set_text(dialup.AcName)
 
-        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == true)
+        self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == TRUE)
 
     def dehydrate(self):
+        deviceConfigDialog.dehydrate(self)
         dialup = self.device.Dialup
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
@@ -134,29 +113,6 @@ class dslConfigDialog:
         if not self.device.Device:
             self.device.Device="dsl"
         
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
-
-    def on_okButton_clicked(self, button):
-        self.dehydrate()
-        
-    def on_cancelButton_clicked(self, button):
-        pass
     
 # make ctrl-C work
 if __name__ == "__main__":

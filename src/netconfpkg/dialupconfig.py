@@ -29,6 +29,7 @@ import string
 import gettext
 import re
 
+from deviceconfig import deviceConfigDialog
 from NCDeviceList import *
 from NCCallback import *
 from NCHardwareList import *
@@ -45,27 +46,16 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class DialupDialog:
+class DialupDialog(deviceConfigDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
-        self.xml_main = xml_main
-        self.xml_basic = xml_basic
-        self.device = device
-        self.edit = FALSE
-        
         glade_file = "dialupconfig.glade"
-
-        if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
-
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        deviceConfigDialog.__init__(self, glade_file,
+                                    device, xml_main, xml_basic)    
+        self.edit = FALSE
 
         self.xml.signal_autoconnect(
             {
             "on_chooseButton_clicked" : self.on_chooseButton_clicked,
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_helpButton_clicked" : self.on_helpButton_clicked,
             "on_dialingRuleCB_toggled" : self.on_dialingRuleCB_toggled,
             "on_callbackCB_toggled" : self.on_callbackCB_toggled,
@@ -76,30 +66,10 @@ class DialupDialog:
             "on_pppOptionDeleteButton_clicked" : self.on_pppOptionDeleteButton_clicked
             })
 
-        self.dialog = self.xml.get_widget("Dialog")
         self.noteBook = self.xml.get_widget("dialupNotebook")
-        self.load_icon("network.xpm")
-        self.dialog.set_close(TRUE)
-
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
 
     def hydrate(self):
+        deviceConfigDialog.hydrate(self)
         hardwarelist = getHardwareList()
         if self.device.Dialup.ProviderName:
             self.xml.get_widget("providerName").set_text(self.device.Dialup.ProviderName)
@@ -138,6 +108,7 @@ class DialupDialog:
 
         
     def dehydrate(self):
+        deviceConfigDialog.dehydrate(self)
         self.device.Dialup.ProviderName = self.xml.get_widget("providerName").get_text()
         self.device.Dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         self.device.Dialup.Password = self.xml.get_widget("passwordEntry").get_text()
@@ -152,15 +123,6 @@ class DialupDialog:
         for i in xrange (clist.rows):
             self.device.Dialup.PPPOptions.append(clist.get_text (i, 0))
             
-    def on_Dialog_delete_event(self, *args):
-        pass
-    
-    def on_okButton_clicked(self, button):
-        self.dehydrate()
-    
-    def on_cancelButton_clicked(self, button):
-        pass
-    
     def on_helpButton_clicked(self, button):
         pass
 
@@ -256,9 +218,10 @@ class ISDNDialupDialog(DialupDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
         DialupDialog.__init__(self, device, xml_main, xml_basic)
 
-        self.noteBook.get_nth_page(4).hide()
+        page = self.noteBook.page_num(self.xml.get_widget ("modemTab"))
+        self.noteBook.get_nth_page(page).hide()        
+        
         self.dialog.set_title(_("ISDN Dialup Configuration"))
-        self.hydrate()
 
     def on_chooseButton_clicked(self, button):
         dialog = ISDNproviderDialog(self.xml_main, self.xml_basic, self.xml)
@@ -343,10 +306,13 @@ class ModemDialupDialog(DialupDialog):
         DialupDialog.__init__(self, device, xml_main, xml_basic)
         
         self.dialog.set_title(_("Modem Dialup Configuration"))
-        for i in [1,5]:
-            self.noteBook.get_nth_page(i).hide()
-
-        self.hydrate()
+        page = self.noteBook.page_num(self.xml.get_widget ("isdnTab"))
+        self.noteBook.get_nth_page(page).hide()        
+        page = self.noteBook.page_num(self.xml.get_widget ("callbackTab"))
+        self.noteBook.get_nth_page(page).hide()
+        
+        #for i in [1,5]:
+        #self.noteBook.get_nth_page(i).hide()
 
     def on_chooseButton_clicked(self, button):
         dialog = ModemproviderDialog(self.xml_main, self.xml_basic, self.xml)

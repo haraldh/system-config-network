@@ -74,20 +74,19 @@ class Device(Device_base):
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.ModemDialup):
                     self.Dialup = NCDialup.ModemDialup(None, self)
-                return self.Dialup
             elif self.Type == "ISDN":
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.IsdnDialup):
                     self.Dialup = NCDialup.IsdnDialup(None, self)
-                return self.Dialup
             elif self.Type == "xDSL":
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.DslDialup):
                     self.Dialup = NCDialup.DslDialup(None, self)
-                return self.Dialup
             else:
                 self.Dialup = None
-                return self.Dialup
+                
+            return self.Dialup
+
         else:
             raise TypeError, "Device type not specified"
 

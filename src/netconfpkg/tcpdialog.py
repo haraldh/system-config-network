@@ -29,9 +29,6 @@ import string
 import gettext
 import re
 
-from dialupconfig import *
-from ethernetconfig import ethernetConfigDialog
-from dslconfig import dslConfigDialog
 from editadress import editAdressDialog
 from NC_functions import *
 
@@ -46,11 +43,11 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class basicDialog:
+class tcpConfigDialog:
     def __init__(self, device, xml = None):
         self.xml_main = xml
         self.device = device
-        glade_file = "basicdialog.glade"
+        glade_file = "tcpipdialog.glade"
 
         if not os.path.exists(glade_file):
             glade_file = "netconfpkg/" + glade_file
@@ -60,13 +57,9 @@ class basicDialog:
         self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
         self.xml.signal_autoconnect(
             {
-            "on_configureButton_clicked" : self.on_configureButton_clicked,
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_applyButton_clicked" : self.on_applyButton_clicked,
-            "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
-            "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9]+$"),
             "on_ipSettingCB_toggled" : self.on_ipSettingCB_toggled,
             "on_defaultRouteCB_toggled" : self.on_defaultRouteCB_toggled,
             "on_routeAddButton_clicked" : self.on_routeAddButton_clicked,
@@ -83,8 +76,6 @@ class basicDialog:
         notebook = self.xml.get_widget("basicNotebook")
 
         self.hydrate()
-
-        self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
         for wname in [ "trafficFrame", "securityFrame", "accountingFrame" ]:
             widget = self.xml.get_widget (wname)
@@ -167,60 +158,7 @@ class basicDialog:
     def on_applyButton_clicked(self, button):
         self.dehydrate()
         self.device.commit()
-
-    def on_configureButton_clicked(self, button):
-        deviceType = self.xml.get_widget("deviceTypeEntry").get_text()
-        self.device.Type = deviceType
-        self.device.createDialup()
-        
-        if deviceType == "Ethernet":
-            cfg = ethernetConfigDialog(self.device, self.xml_main, self.xml)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
-            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
-        elif deviceType == "ISDN":
-            self.device.Type = 'ISDN'
-            if self.device.Dialup:
-                self.device.Dialup.createCompression()
-            cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
-            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
-        elif deviceType == "Modem":
-            self.device.Type = 'Modem'
-            if self.device.Dialup:
-                self.device.Dialup.createCompression()
-            cfg = ModemDialupDialog(self.device, self.xml_main, self.xml)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
-            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
-        elif deviceType == "xDSL":
-            self.device.Type = 'xDSL'
-            if self.device.Dialup:
-                self.device.Dialup.createCompression()
-            cfg = dslConfigDialog(self.device, self.xml_main, self.xml)
-            dialog = cfg.xml.get_widget ("Dialog")
-            button = dialog.run ()
-            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
-        elif deviceType == "CIPE":
-            print "CIPE configuration"
-        elif deviceType == "Wireless":
-            print "wireless configuration"
-
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
-        text = partial_text[0:length]
-        if re.match(str, text):
-            return
-        entry.emit_stop_by_name('insert_text')
     
-    def on_deviceNameEntry_changed(self, entry):
-        deviceName = string.strip(entry.get_text())
-        self.device.DeviceId = deviceName
-        #self.xml.get_widget("deviceTypeComboBox").set_sensitive(len(deviceName) > 0)
-        #self.xml.get_widget("configureButton").set_sensitive(len(deviceName) > 0)
-        self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0 and self.device.Device != None)
-
     def on_ipSettingCB_toggled(self, check):
         self.xml.get_widget("dynamicConfigComboBox").set_sensitive(check["active"])
         self.xml.get_widget("ipSettingFrame").set_sensitive(check["active"] != TRUE)

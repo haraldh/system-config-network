@@ -30,6 +30,7 @@ import gettext
 import string
 
 import HardwareList
+from deviceconfig import deviceConfigDialog
 
 from gtk import TRUE
 from gtk import FALSE
@@ -42,34 +43,20 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class ethernetConfigDialog:
+class ethernetConfigDialog(deviceConfigDialog):
     def __init__(self, device, xml_main = None, xml_basic = None):
-        self.device = device
-        self.xml_main = xml_main
-        self.xml_basic = xml_basic
         glade_file = "ethernetconfig.glade"
-
-        if not os.path.exists(glade_file):
-            glade_file = "netconfpkg/" + glade_file
-        if not os.path.exists(glade_file):
-            glade_file = "/usr/share/redhat-config-network/" + glade_file
-
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
-
+        deviceConfigDialog.__init__(self, glade_file,
+                                    device, xml_main, xml_basic)    
         self.xml.signal_autoconnect(
             {
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             })
 
-        self.dialog = self.xml.get_widget("Dialog")
-        #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        #self.dialog.connect("hide", gtk.mainquit)
-        self.load_icon("network.xpm")
 
+    def hydrate(self):
+        deviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
-
         hwdesc = []
         hwcurr = None
         hardwarelist = HardwareList.getHardwareList()
@@ -87,41 +74,20 @@ class ethernetConfigDialog:
         if not hwcurr and len(hwdesc):
             hwcurr = hwdesc[0]
 
+        widget = self.xml.get_widget("ethernetDeviceEntry")
         if self.device.Device:
-            widget = self.xml.get_widget("ethernetDeviceEntry")
             widget.set_text(hwcurr)
-            widget.set_position(0)
+        widget.set_position(0)
         
         if self.device.Alias != None:
             self.xml.get_widget("aliasSupportCB").set_active(TRUE)
             self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
         else:
             self.xml.get_widget("aliasSupportCB").set_active(FALSE)
-        
-        self.dialog.set_close(TRUE)
 
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.exists(pixmap_file):
-            return
 
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
-            
-    def on_Dialog_delete_event(self, *args):
-        pass
-    
-    def on_okButton_clicked(self, button):
+    def dehydrate(self):
+        deviceConfigDialog.dehydrate(self)
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
@@ -129,16 +95,6 @@ class ethernetConfigDialog:
         if self.xml.get_widget("aliasSupportCB").get_active():
             self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
         else: self.device.Alias = None
-        #print "Device = " + str(self.device.Device) + ':' + str(self.device.Alias)
-    
-    def on_cancelButton_clicked(self, button):
-        pass
     
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    ethernetConfigDialog()
-    gtk.mainloop()

@@ -13,11 +13,12 @@
 <widget>
   <class>GnomeDialog</class>
   <name>Dialog</name>
+  <title>Choose Device Type</title>
   <type>GTK_WINDOW_TOPLEVEL</type>
   <position>GTK_WIN_POS_MOUSE</position>
-  <modal>False</modal>
+  <modal>True</modal>
   <allow_shrink>False</allow_shrink>
-  <allow_grow>False</allow_grow>
+  <allow_grow>True</allow_grow>
   <auto_shrink>False</auto_shrink>
   <auto_close>False</auto_close>
   <hide_on_close>False</hide_on_close>
@@ -27,7 +28,7 @@
     <child_name>GnomeDialog:vbox</child_name>
     <name>dialog-vbox1</name>
     <homogeneous>False</homogeneous>
-    <spacing>8</spacing>
+    <spacing>5</spacing>
     <child>
       <padding>4</padding>
       <expand>True</expand>
@@ -42,7 +43,7 @@
       <spacing>8</spacing>
       <child_min_width>85</child_min_width>
       <child_min_height>27</child_min_height>
-      <child_ipad_x>7</child_ipad_x>
+      <child_ipad_x>0</child_ipad_x>
       <child_ipad_y>0</child_ipad_y>
       <child>
 	<padding>0</padding>
@@ -82,7 +83,7 @@
       <class>GtkVBox</class>
       <name>vbox1</name>
       <homogeneous>False</homogeneous>
-      <spacing>5</spacing>
+      <spacing>8</spacing>
       <child>
 	<padding>0</padding>
 	<expand>True</expand>
@@ -92,10 +93,11 @@
       <widget>
 	<class>GtkLabel</class>
 	<name>label2</name>
-	<label>Select the device type, you want to create:</label>
-	<justify>GTK_JUSTIFY_CENTER</justify>
+	<width>300</width>
+	<label>Please select the device type, you want to create</label>
+	<justify>GTK_JUSTIFY_LEFT</justify>
 	<wrap>True</wrap>
-	<xalign>0.5</xalign>
+	<xalign>0</xalign>
 	<yalign>0.5</yalign>
 	<xpad>0</xpad>
 	<ypad>0</ypad>
@@ -113,7 +115,7 @@
 	<spacing>5</spacing>
 	<child>
 	  <padding>0</padding>
-	  <expand>True</expand>
+	  <expand>False</expand>
 	  <fill>True</fill>
 	</child>
 
