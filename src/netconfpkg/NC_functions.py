@@ -23,7 +23,7 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^ppp[0-9]+(:[0-9]+)?$':'Modem',
                '^ippp[0-9]+(:[0-9]+)?$':'ISDN',
                '^irlan[0-9]+(:[0-9]+)?$':'Wireless',
-               '^cipe[0-9]+(:[0-9]+)?$':'CIPE',
+               '^cipcb[0-9]+(:[0-9]+)?$':'CIPE',
                '^lo$':'Loopback'}
 
 def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
