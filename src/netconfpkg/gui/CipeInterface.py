@@ -50,7 +50,10 @@ class CipeInterface(InterfaceCreator):
     def init_gui(self):
         if self.xml:
             return
-        
+       
+        if request_rpms(["cipe"]):
+            return 
+ 
         glade_file = 'CipeInterfaceDruid.glade'
 
         if not os.path.isfile(glade_file):

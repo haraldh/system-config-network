@@ -52,7 +52,10 @@ class ADSLInterface(InterfaceCreator):
     def init_gui(self):
         if self.xml:
             return
-        
+       
+        if request_rpms(["rp-pppoe"]):
+            return
+ 
         glade_file = 'ADSLInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):

@@ -38,6 +38,19 @@ class ModemInterface:
     modemList = None
     def __init__ (self, toplevel=None, do_save = 1, druid = None):
         self.do_save = do_save
+        self.toplevel = toplevel
+        self.hardwarelist = NCHardwareList.getHardwareList()
+        self.hw = None
+        self.druids = []
+        self.xml = None
+
+    def init_gui(self):
+        if self.xml:
+            return true
+
+	if request_rpms(["ppp", "wvdial"]):
+            return false
+ 
         glade_file = 'ModemDruid.glade'
 
         if not os.path.isfile(glade_file):
@@ -53,10 +66,6 @@ class ModemInterface:
             "on_Modem_next" : self.on_Modem_next,
             })
         
-        self.toplevel = toplevel
-        self.hardwarelist = NCHardwareList.getHardwareList()
-        self.hw = None
-        self.druids = []
         
         druid = self.xml.get_widget('druid')
         for I in druid.get_children():
@@ -64,6 +73,8 @@ class ModemInterface:
             self.druids.append(I)
 
         self.setup()
+
+        return true
         
     def get_project_name(self):
         return _('Modem connection')
@@ -80,6 +91,9 @@ class ModemInterface:
 
 
     def get_druids(self):
+        if not self.init_gui():
+            return []
+            
         Type = MODEM
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
                                          do_save = self.do_save)

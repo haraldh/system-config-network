@@ -44,8 +44,11 @@ class IsdnInterface:
 
     def init_gui(self):
         if self.xml:
-            return
-        
+            return true
+
+	if request_rpms(["isdn4k-utils"]):
+            return false
+ 
         glade_file = 'IsdnHardwareDruid.glade'
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
@@ -70,6 +73,8 @@ class IsdnInterface:
             self.druids.append(I)
             
         self.setup()
+
+        return true
         
     def on_cancel_interface(self, *args):
         self.hardwarelist.rollback()
@@ -98,7 +103,8 @@ class IsdnInterface:
                  "128kbps.")
 
     def get_druids(self):
-        self.init_gui()
+        if not self.init_gui():
+            return []
         
         Type = ISDN
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
@@ -110,8 +116,8 @@ class IsdnInterface:
         return self.druids[0:] + dialup.get_druids()
             
     def on_isdn_hardware_page_prepare(self, druid_page, druid):
-        pass
-    
+    	pass
+
     def on_isdn_hardware_page_next(self, druid_page, druid):
         self.dehydrate()
 

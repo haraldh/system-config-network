@@ -54,6 +54,9 @@ class WirelessInterface(InterfaceCreator):
     def init_gui(self):
         if self.xml:
             return
+
+        if request_rpms(["wireless-tools"]):
+            return
         
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):

@@ -129,7 +129,6 @@ def assure_rpms(pkgs = []):
     toinstall = rpms_notinstalled(pkgs)
 
     r = RESPONSE_NO
-    
     if len(toinstall):
         import string
         plist = string.join(toinstall, '\n')
@@ -137,7 +136,24 @@ def assure_rpms(pkgs = []):
                                       "which are needed on your system, "
                                       "be installed?"),
                                     plist, dialog_type="question")
+        return r
     return r
+
+def request_rpms(pkgs = []):
+    toinstall = rpms_notinstalled(pkgs)
+
+    if len(toinstall):
+        import string
+        plist = string.join(toinstall, '\n')
+        #print "toinstall %s" % str(toinstall)
+        #print "plist %s" % str(plist)
+	r = generic_longinfo_dialog(_("You have to install the following packages, "
+                                      "which are needed on your system!"),
+                                    plist, dialog_type="info")
+        return 1
+    return 0
+
+
 
 DVpapconf = None
 def getPAPConf():
