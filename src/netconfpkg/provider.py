@@ -168,6 +168,7 @@ class providerDialog:
 
     def dehydrate(self):
         if not self.provider: return
+        if self.device.Dialup == None: self.device.createDialup()
         self.device.Dialup.ProviderName = self.provider['ProviderName']
         self.device.Dialup.Login = self.provider['Login']
         self.device.Dialup.Password = self.provider['Password']
