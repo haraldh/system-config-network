@@ -1,8 +1,8 @@
 SUBDIRS=netconfpkg pixmaps doc
 
-PYTHON_FILES = netconf.py netconf-tui.py
+PYTHON_FILES = netconf.py netconf-tui.py neat-control.py
 
-GLADE_FILES = maindialog.glade 
+GLADE_FILES = maindialog.glade neat-control.glade
 
 EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c module-info
 
@@ -37,12 +37,14 @@ install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
+	install -m 0755 $(srcdir)/neat-control.py $(DESTDIR)$(pkgdatadir)/
 	softdir=$(pkgdatadir); \
 	p=$(DESTDIR) ; \
 	softdir=$${softdir/#$$p} ; \
 	p=$(prefix) ; \
 	softdir=$${softdir/#$$p} ; \
 	softdir=$${softdir/#\/} ; \
+	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/neat-control; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-druid; \
