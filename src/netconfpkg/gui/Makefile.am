@@ -85,7 +85,7 @@ netconfpkg_DATA = $(GLADE_FILES) $(PYTHON_FILES) $(BUILT_SOURCES)
 execdir = $(sbindir)
 
 clean:
-	rm -f *.pyo *.pyc
+	rm -f *.pyo *.pyc *~ *\#
 	rm -f ${BUILT_SOURCES}
 
 %.pyc: %.py
