@@ -151,7 +151,8 @@ VersionMismatch = 'Conf.VersionMismatch'
 SystemFull      = 'conf.SystemFull'
 
 from string import *
-from re import *
+import regex
+import re
 import string
 import regsub
 import os
@@ -191,7 +192,7 @@ class Conf:
     def findnextline(self, regexp='.*'):
         # returns false if no more lines matching pattern
         while self.line < len(self.lines):
-            if search(regexp, self.lines[self.line]) > -1:
+            if re.search(regexp, self.lines[self.line]):
                 return 1
             self.line = self.line + 1
         # if while loop terminated, pattern not found.
@@ -337,7 +338,7 @@ class ConfShellVar(Conf):
             self.nextline()
         if missing:
             self.seek(place)
-            if search('[ \t${}*@!~<>?;%^()#]', value) > -1:
+            if re.search('[ \t${}*@!~<>?;%^()#]', value):
         	self.insertline(varname + "='" + value + "'")
 	    else:
         	self.insertline(varname + '=' + value)
@@ -746,20 +747,21 @@ class ConfChatFile(ConfChat):
 	self.dialcmd = ''
 	self.phonenum = ''
 	self.chatlist = []
-	dialexp = compile('^ATD[TP]?[-0-9,. #*()+]+')
+	dialexp = re.compile('^ATD[TP]?[-0-9,. #*()+]+')
 	if self.list:
 	    for (p,q) in self.list:
-                tempmatch=dialexp.match(q)
         	if not cmp(p, 'ABORT'):
         	    if not q in self.abortstrings:
         		self.abortlist.append([p,q])
 		elif not cmp(q, self.devconf['INITSTRING']):
 		    # ignore INITSTRING
 		    pass
-                elif not self.dialcmd and tempmatch:
+                elif not self.dialcmd and dialexp.search(q):
+                    #elif not self.dialcmd and tempmatch:
 		    # First instance of something that looks like a dial
 		    # command and a phone number we take as such.
-		    index = search('[-0-9,. #*()+]+', q)
+		    tmp = re.search('[-0-9,. #*()+]+', q)
+                    index=tmp.group(1)
 		    self.dialcmd = q[:index]
 		    self.phonenum = q[index:]
 		elif not cmp(p, 'CONNECT'):
@@ -909,7 +911,7 @@ class ConfModules(Conf):
 		dict[optup[0]] = optup[1]
 	return dict
     def splitopt(self, opt):
-	eq = search('=', opt)
+	eq = string.find('=', opt)
 	if eq > 0:
 	    return (opt[:eq], opt[eq+1:])
 	else:
@@ -1034,17 +1036,17 @@ class ConfModInfo(Conf):
 		    # get argument name (first "field" is null again)
 		    thislist = []
 		    # point at first character of argument description
-		    p = search('"', line)
+		    p = string.find('"', line)
 		    while p != -1 and p < len(line):
-			q = search('"', line[p+1:])
+			q = string.find('"', line[p+1:])
 			# deal with escaped quotes (\")
 			while q != -1 and not cmp(line[p+q-1], '\\'):
-			    q = search('"', line[p+q+1:])
+			    q = string.find('"', line[p+q+1:])
 			if q == -1:
 			    break
 			thislist.append(line[p+1:p+q+1])
 			# advance to beginning of next string, if any
-			r = search('"', line[p+q+2:])
+			r = string.find('"', line[p+q+2:])
 			if r >= 0:
 			    p = p+q+2+r
 			else:
