@@ -290,6 +290,170 @@ The name may only contain letters and digits.</property>
       </child>
 
       <child>
+	<widget class="BonoboDockItem" id="commonDockitem">
+	  <property name="visible">True</property>
+	  <property name="shadow_type">GTK_SHADOW_OUT</property>
+
+	  <child>
+	    <widget class="GtkToolbar" id="commonToolbar">
+	      <property name="visible">True</property>
+	      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+	      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+	      <property name="tooltips">True</property>
+
+	      <child>
+		<widget class="button" id="addButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Create a new device.</property>
+		  <property name="label">gtk-new</property>
+		  <property name="use_stock">True</property>
+		  <signal name="clicked" handler="on_addButton_clicked" last_modification_time="Tue, 10 Dec 2002 13:31:36 GMT"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="editButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Edit the selected device.</property>
+		  <property name="label" translatable="yes">_Edit</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-properties</property>
+		  <signal name="clicked" handler="on_editButton_clicked" last_modification_time="Tue, 10 Dec 2002 13:31:29 GMT"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="copyButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Make a copy of the currently selected device.</property>
+		  <property name="label">gtk-copy</property>
+		  <property name="use_stock">True</property>
+		  <signal name="clicked" handler="on_copyButton_clicked" last_modification_time="Tue, 10 Dec 2002 13:31:23 GMT"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="deleteButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Delete the selected device.</property>
+		  <property name="label">gtk-delete</property>
+		  <property name="use_stock">True</property>
+		  <signal name="clicked" handler="on_deleteButton_clicked" last_modification_time="Tue, 10 Dec 2002 13:31:16 GMT"/>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="placement">BONOBO_DOCK_TOP</property>
+	  <property name="band">1</property>
+	  <property name="position">0</property>
+	  <property name="offset">0</property>
+	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_NORMAL</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="BonoboDockItem" id="deviceDockitem">
+	  <property name="visible">True</property>
+	  <property name="shadow_type">GTK_SHADOW_OUT</property>
+
+	  <child>
+	    <widget class="GtkToolbar" id="deviceToolbar">
+	      <property name="visible">True</property>
+	      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+	      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+	      <property name="tooltips">True</property>
+
+	      <child>
+		<widget class="button" id="deviceActivateButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Activate the selected device, calling ifup &lt;device&gt;.</property>
+		  <property name="label" translatable="yes">_Activate</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-yes</property>
+		  <signal name="clicked" handler="on_deviceActivateButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:22:49 GMT"/>
+		</widget>
+		<packing>
+		  <property name="new_group">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="button" id="deviceDeactivateButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Deactivate the selected device, calling ifdown &lt;device&gt;.</property>
+		  <property name="label" translatable="yes">_Deactivate</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-no</property>
+		  <signal name="clicked" handler="on_deviceDeactivateButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:23:07 GMT"/>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="placement">BONOBO_DOCK_TOP</property>
+	  <property name="band">1</property>
+	  <property name="position">1</property>
+	  <property name="offset">0</property>
+	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_NORMAL</property>
+	</packing>
+      </child>
+
+      <child>
+	<widget class="BonoboDockItem" id="posDockitem">
+	  <property name="visible">True</property>
+	  <property name="shadow_type">GTK_SHADOW_OUT</property>
+
+	  <child>
+	    <widget class="GtkToolbar" id="posToolbar">
+	      <property name="visible">True</property>
+	      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+	      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+	      <property name="tooltips">True</property>
+
+	      <child>
+		<widget class="button" id="upButton">
+		  <property name="visible">True</property>
+		  <property name="label">gtk-go-up</property>
+		  <property name="use_stock">True</property>
+		  <signal name="clicked" handler="on_upButton_clicked" last_modification_time="Tue, 10 Dec 2002 13:31:01 GMT"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="downButton">
+		  <property name="visible">True</property>
+		  <property name="label">gtk-go-down</property>
+		  <property name="use_stock">True</property>
+		  <signal name="clicked" handler="on_downButton_clicked" last_modification_time="Tue, 10 Dec 2002 13:30:56 GMT"/>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="button" id="deviceMonitorButton">
+		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">Monitor the selected device.</property>
+		  <property name="label" translatable="yes">_Monitor</property>
+		  <property name="use_underline">True</property>
+		  <property name="stock_pixmap">gtk-zoom-fit</property>
+		  <signal name="clicked" handler="on_deviceMonitorButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:23:24 GMT"/>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+	</widget>
+	<packing>
+	  <property name="placement">BONOBO_DOCK_TOP</property>
+	  <property name="band">2</property>
+	  <property name="position">0</property>
+	  <property name="offset">0</property>
+	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_NORMAL</property>
+	</packing>
+      </child>
+
+      <child>
 	<widget class="GtkVBox" id="vbox89">
 	  <property name="visible">True</property>
 	  <property name="homogeneous">False</property>
@@ -305,6 +469,7 @@ The name may only contain letters and digits.</property>
 	      <property name="tab_pos">GTK_POS_TOP</property>
 	      <property name="scrollable">False</property>
 	      <property name="enable_popup">False</property>
+	      <signal name="switch_page" handler="on_mainNotebook_switch_page" last_modification_time="Tue, 10 Dec 2002 13:39:25 GMT"/>
 
 	      <child>
 		<widget class="GtkVBox" id="deviceFrame">
@@ -363,103 +528,6 @@ The name may only contain letters and digits.</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkToolbar" id="toolbar3">
-		      <property name="visible">True</property>
-		      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
-		      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
-		      <property name="tooltips">True</property>
-
-		      <child>
-			<widget class="button" id="deviceAddButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Create a new device.</property>
-			  <property name="label">gtk-new</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_deviceAddButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:46:18 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="deviceEditButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Edit the selected device.</property>
-			  <property name="label" translatable="yes">_Edit</property>
-			  <property name="use_underline">True</property>
-			  <property name="stock_pixmap">gtk-properties</property>
-			  <signal name="clicked" handler="on_deviceEditButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:21:12 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="deviceCopyButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Make a copy of the currently selected device.</property>
-			  <property name="label">gtk-copy</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_deviceCopyButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:22:00 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="deviceDeleteButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Delete the selected device.</property>
-			  <property name="label">gtk-delete</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_deviceDeleteButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:22:26 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkHSeparator" id="hseparator27">
-			  <property name="visible">True</property>
-			</widget>
-			<packing>
-			  <property name="new_group">True</property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="button" id="deviceActivateButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Activate the selected device, calling ifup &lt;device&gt;.</property>
-			  <property name="label" translatable="yes">_Activate</property>
-			  <property name="use_underline">True</property>
-			  <property name="stock_pixmap">gtk-yes</property>
-			  <signal name="clicked" handler="on_deviceActivateButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:22:49 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="deviceDeactivateButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Deactivate the selected device, calling ifdown &lt;device&gt;.</property>
-			  <property name="label" translatable="yes">_Deactivate</property>
-			  <property name="use_underline">True</property>
-			  <property name="stock_pixmap">gtk-no</property>
-			  <signal name="clicked" handler="on_deviceDeactivateButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:23:07 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="deviceMonitorButton">
-			  <property name="visible">True</property>
-			  <property name="tooltip" translatable="yes">Monitor the selected device.</property>
-			  <property name="label" translatable="yes">_Monitor</property>
-			  <property name="use_underline">True</property>
-			  <property name="stock_pixmap">gtk-zoom-fit</property>
-			  <signal name="clicked" handler="on_deviceMonitorButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:23:24 GMT"/>
-			</widget>
-		      </child>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">False</property>
-		      <property name="fill">False</property>
-		    </packing>
-		  </child>
-
-		  <child>
 		    <widget class="GtkHBox" id="hbox8">
 		      <property name="visible">True</property>
 		      <property name="homogeneous">False</property>
@@ -500,6 +568,9 @@ The name may only contain letters and digits.</property>
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <accessibility>
+				    <atkproperty name="AtkObject::accessible_description" translatable="yes">if checked, device is active in profile</atkproperty>
+				  </accessibility>
 				</widget>
 			      </child>
 
@@ -602,6 +673,9 @@ The name may only contain letters and digits.</property>
 		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
 		  <property name="ypad">0</property>
+		  <accessibility>
+		    <atkproperty name="AtkObject::accessible_description" translatable="yes">test test</atkproperty>
+		  </accessibility>
 		</widget>
 		<packing>
 		  <property name="type">tab</property>
@@ -661,48 +735,6 @@ The name may only contain letters and digits.</property>
 		      <property name="padding">0</property>
 		      <property name="expand">False</property>
 		      <property name="fill">True</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkToolbar" id="toolbar4">
-		      <property name="visible">True</property>
-		      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
-		      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
-		      <property name="tooltips">True</property>
-
-		      <child>
-			<widget class="button" id="hardwareAddButton">
-			  <property name="visible">True</property>
-			  <property name="label">gtk-new</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_hardwareAddButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:24:01 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="hardwareEditButton">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">_Edit</property>
-			  <property name="use_underline">True</property>
-			  <property name="stock_pixmap">gtk-properties</property>
-			  <signal name="clicked" handler="on_hardwareEditButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:24:19 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="hardwareDeleteButton">
-			  <property name="visible">True</property>
-			  <property name="label">gtk-delete</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_hardwareDeleteButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:24:36 GMT"/>
-			</widget>
-		      </child>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">False</property>
-		      <property name="fill">False</property>
 		    </packing>
 		  </child>
 
@@ -879,73 +911,6 @@ The name may only contain letters and digits.</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkToolbar" id="toolbar5">
-		      <property name="visible">True</property>
-		      <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
-		      <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
-		      <property name="tooltips">True</property>
-
-		      <child>
-			<widget class="button" id="hostsAddButton">
-			  <property name="visible">True</property>
-			  <property name="label">gtk-new</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_hostsAddButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:25:21 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="hostsEditButton">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">_Edit</property>
-			  <property name="use_underline">True</property>
-			  <property name="stock_pixmap">gtk-properties</property>
-			  <signal name="clicked" handler="on_hostsEditButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:25:41 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="hostsDeleteButton">
-			  <property name="visible">True</property>
-			  <property name="label">gtk-delete</property>
-			  <property name="use_stock">True</property>
-			  <signal name="clicked" handler="on_hostsDeleteButton_clicked" last_modification_time="Mon, 25 Nov 2002 14:26:04 GMT"/>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="GtkHSeparator" id="hseparator28">
-			  <property name="visible">True</property>
-			</widget>
-			<packing>
-			  <property name="new_group">True</property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="button" id="button35">
-			  <property name="visible">True</property>
-			  <property name="label">gtk-go-up</property>
-			  <property name="use_stock">True</property>
-			</widget>
-		      </child>
-
-		      <child>
-			<widget class="button" id="button36">
-			  <property name="visible">True</property>
-			  <property name="label">gtk-go-down</property>
-			  <property name="use_stock">True</property>
-			</widget>
-		      </child>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">False</property>
-		      <property name="fill">False</property>
-		    </packing>
-		  </child>
-
-		  <child>
 		    <widget class="GtkHBox" id="hbox16">
 		      <property name="visible">True</property>
 		      <property name="homogeneous">False</property>
@@ -1089,7 +1054,7 @@ The name may only contain letters and digits.</property>
 		      <child>
 			<widget class="GtkLabel" id="label316">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">blub.</property>
+			  <property name="label" translatable="yes">FIXME... more text!</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_FILL</property>
