@@ -34,7 +34,10 @@ FALSE = not TRUE
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
 
-isdnctrl = '/usr/sbin/isdnstatus'
+if os.getuid() == 0: isdnctrl = '/sbin/isdnctrl'
+else: isdnctrl = '/usr/sbin/userisdnctl'
+            
+import glob
 
 class NetworkDevice:
     def __init__(self):
@@ -61,8 +64,13 @@ class NetworkDevice:
             
         # check real ppp device
         for i in xrange(0, 10):
-            if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):                
+            if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
                 self.activedevicelist.append('ppp%s' %(i))
+
+        for pid in glob('/var/run/ppp-*.pid'):
+            pid = pid[13:]
+            pid = pid[:-4]
+            self.activedevicelist.append(pid)
                     
         self.activedevicelist.sort()
         
@@ -75,5 +83,5 @@ class NetworkDevice:
         return FALSE
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/23 17:56:45 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2003/10/24 15:17:22 $"
+__version__ = "$Revision: 1.21 $"
