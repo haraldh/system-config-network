@@ -171,7 +171,7 @@ class mainDialog:
             return
         dev = clist.get_text(clist.selection[0], NICKNAME)
         return dev
-    
+
     def hydrate(self):
         devicelist = getDeviceList()
         activedevicelist = ProcNetRoute().load()

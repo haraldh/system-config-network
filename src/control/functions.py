@@ -77,6 +77,9 @@ class Interface:
         print 'waiting to connect to %s' % (device)
 
     def deactivate(self, device):
+        pid = os.fork()
+        if not pid:
+            pass
         print 'waiting to disconnect from %s' % (device)
 
     def status(self, device):
@@ -109,6 +112,21 @@ class Monitor:
         pass
     
 
+def fork_exec(wait, path, arg):
+    child = os.fork()
+    
+    if not child:
+        os.execl(path, arg)
+        os._exit(1)
+
+    if not wait: return child
+
+    status = os.wait(child)
+    if os.WIFEXITED(status) and (WEXITSTATUS(status) == 0):
+        return WEXITSTATUS(status)
+    return -1
+
+    
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
