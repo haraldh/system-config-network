@@ -20,10 +20,6 @@
 
 import sys
 import getopt
-import gtk
-import GDK
-import GTK
-import libglade
 import signal
 import os
 import GdkImlib
@@ -37,6 +33,7 @@ import Conf
 
 from netconfpkg import *
 
+import gtk
 from gtk import TRUE
 from gtk import FALSE
 from gtk import CTREE_LINES_DOTTED
@@ -50,6 +47,12 @@ _=gettext.gettext
 
 class mainDialog:
     def __init__(self):
+        import GDK
+        import GTK
+        import libglade
+        import gnome
+        import gnome.ui
+
         glade_file = "maindialog.glade"
 
         if not isfile(glade_file):
@@ -64,19 +67,16 @@ class mainDialog:
             {
             "on_deviceAddButton_clicked" : self.on_deviceAddButton_clicked,
             "on_deviceCopyButton_clicked" : self.on_deviceCopyButton_clicked,
-            "on_deviceRenameButton_clicked" : self.on_deviceRenameButton_clicked,
             "on_deviceEditButton_clicked" : self.on_deviceEditButton_clicked,
             "on_deviceDeleteButton_clicked" : self.on_deviceDeleteButton_clicked,
             "on_deviceList_select_row" : (self.on_generic_clist_select_row,
                                           self.xml.get_widget("deviceEditButton"),
                                           self.xml.get_widget("deviceDeleteButton"),
-                                          self.xml.get_widget("deviceCopyButton"),
-                                          self.xml.get_widget("deviceRenameButton")),
+                                          self.xml.get_widget("deviceCopyButton")),
             "on_deviceList_unselect_row" : (self.on_generic_clist_unselect_row,
                                             self.xml.get_widget("deviceEditButton"),
                                             self.xml.get_widget("deviceDeleteButton"),
-                                            self.xml.get_widget("deviceCopyButton"),
-                                            self.xml.get_widget("deviceRenameButton")),
+                                            self.xml.get_widget("deviceCopyButton")),
             "on_deviceList_button_press_event" : (self.on_generic_clist_button_press_event,
                                                   self.on_deviceEditButton_clicked),
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -118,6 +118,9 @@ class mainDialog:
                                          self.xml.get_widget("dnsDownButton")),
             "on_dnsList_button_press_event" : (self.on_generic_clist_button_press_event,
                                                self.on_dnsEditButton_clicked),
+            "on_hostsAddButton_clicked" : self.on_hostsAddButton_clicked,
+            "on_hostsEditButton_clicked" : self.on_hostsEditButton_clicked,
+            "on_hostsDeleteButton_clicked" : self.on_hostsDeleteButton_clicked,
             "on_profileList_unselect_row" : (self.on_generic_clist_unselect_row,
                                              self.xml.get_widget("profileEditButton"),
                                              self.xml.get_widget("profileDeleteButton"),
@@ -127,9 +130,10 @@ class mainDialog:
                                            self.xml.get_widget("profileDeleteButton"),
                                            self.xml.get_widget("profileCopyButton")),
             "on_profileList_button_press_event" : (self.on_generic_clist_button_press_event,
-                                                   self.on_profileDeleteButton_clicked),
+                                                   self.on_profileRenameButton_clicked),
             "on_profileAddButton_clicked" : self.on_profileAddButton_clicked,
             "on_profileCopyButton_clicked" : self.on_profileCopyButton_clicked,
+            "on_profileRenameButton_clicked" : self.on_profileRenameButton_clicked,
             "on_profileDeleteButton_clicked" : self.on_profileDeleteButton_clicked
             })
 
@@ -318,9 +322,6 @@ class mainDialog:
         devicelist[i].commit()
         self.hydrate()
 
-    def on_deviceRenameButton_clicked (self, button):
-        pass
-
     def on_deviceEditButton_clicked (self, *args):
         global devicelist
 
@@ -490,6 +491,29 @@ class mainDialog:
     def on_dnsDeleteButton_clicked (self, *args):
         pass
 
+    def on_hostsAddButton_clicked(self, *args):
+        print "on_hostsAddButton_clicked"
+        pass
+
+    def on_hostsEditButton_clicked (self, *args):
+        pass
+
+    def on_hostsDeleteButton_clicked (self, *args):
+        clist = self.xml.get_widget('profileList')
+
+        if len(clist.selection) == 0:
+            return
+
+        prof = profilelist[clist.selection[0]]
+
+        clist = self.xml.get_widget('hostsList')
+
+        if len(clist.selection) == 0:
+            return
+
+        del prof.HostsList[clist.selection[0]]
+        self.hydrate()
+
     def on_profileList_click_column (self, *args):
         pass
 
@@ -497,13 +521,48 @@ class mainDialog:
         pass
 
     def on_profileAddButton_clicked (self, *args):
-        pass
+        import gnome
+        import gnome.ui
+        dialog = gnome.ui.GnomeRequestDialog (FALSE, "Please enter the name for the new profile.\nThe name may only contain letters and digits.", "NewProfile", 50, self.on_profileEntry_changed, self.dialog)
+        dialog.run()
+
+    def on_profileEntry_changed(self, text):
+        if not text or not re.match("^[a-z|A-Z|0-9]+$", text):
+            return
+
+        i = profilelist.addProfile()
+        prof = profilelist[i]
+        prof.createActiveDevices()
+        prof.createDNS()
+        prof.createHostsList()
+        prof.ProfileName      = text
+        prof.DNS.Hostname     = ''
+        prof.DNS.Domainname   = ''
+        prof.DNS.PrimaryDNS   = ''
+        prof.DNS.SecondaryDNS = ''
+        prof.DNS.TernaryDNS   = ''
+        prof.DNS.createSearchList()
+        self.xml.get_widget("profileList").clear()
+        self.initialized = false
+        self.hydrate()
 
     def on_profileCopyButton_clicked (self, *args):
         pass
 
-    def on_profileDeleteButton_clicked (self, *args):
+    def on_profileRenameButton_clicked (self, *args):
         pass
+
+    def on_profileDeleteButton_clicked (self, *args):
+        clist = self.xml.get_widget('profileList')
+
+        if len(clist.selection) == 0:
+            return
+
+        if profilelist[clist.selection[0]].ProfileName == 'default':
+            generic_error_dialog ('The default Profile can not be deleted!', self.xml.get_widget ("Dialog"))
+            return
+        del profilelist[clist.selection[0]]
+        self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
         type = self.xml.get_widget('hardwareTypeEntry').get_text()
@@ -576,7 +635,6 @@ class mainDialog:
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
-
 
     updateNetworkScripts()
 
