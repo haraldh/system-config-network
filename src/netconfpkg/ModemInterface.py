@@ -2,6 +2,7 @@
 ## Copyright (C) 2001 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001 Philipp Knirsch <pknirsch@redhat.com>
+## Copyright (C) 2001 Trond Eivind Glomsrød <teg@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -71,8 +72,8 @@ class ModemInterface:
                  "serial analog modem to dial into to your Internet Service Provider. "
                  "These modems use sound over a normal copper telephone line to transmit "
                  "data.  These types of connections are available just about anywhere in "
-                 "the world where there is a phone system.  Speeds range from 14.4kbps "
-                 "to 50kbps")
+                 "the world where there is a phone system.")
+
 
     def get_druids(self):
         Type = 'Modem'
