@@ -132,7 +132,7 @@ class TokenRingInterface(InterfaceCreator):
         if self.hwPage:
             self.device.Device = self.hwDruid.hw.Name
             self.device.Alias = None
-        self.device.Hostname = self.xml.get_widget("hostnameEntry")
+        self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
         pass
     
     def on_hostname_config_page_prepare(self, druid_page, druid):
