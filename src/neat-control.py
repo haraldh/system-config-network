@@ -111,6 +111,8 @@ class mainDialog:
 
     def on_activateButton_clicked(self, button):
         device = self.clist_get_device()
+        timeout_remove(self.tag)
+        
         if device:
             intf = Interface()
             child = intf.activate(device)
@@ -143,7 +145,8 @@ class mainDialog:
             else:
                 devErrorDialog(device, ACTIVATE, self.dialog)
 
-        
+        self.tag = timeout_add(4000, self.update_dialog)
+            
     def on_deactivateButton_clicked(self, button):
         device = self.clist_get_device()
         if device:
