@@ -21,6 +21,7 @@ class Device(Device_base):
                 'Netmask' : 'NETMASK',
                 'Gateway' : 'GATEWAY',
                 'Hostname' : 'DEVHOSTNAME',
+                'Domain' : 'DOMAIN',
                 'BootProto' : 'BOOTPROTO',
                 'Type' : 'TYPE',
                 }
@@ -39,6 +40,11 @@ class Device(Device_base):
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.ModemDialup):
                     self.Dialup = NCDialup.ModemDialup(None, self)
+                return self.Dialup
+            elif self.Type == "Isdn":
+                if (self.Dialup == None) \
+                   or not isinstance(self.Dialup, NCDialup.IsdnDialup):
+                    self.Dialup = NCDialup.IsdnDialup(None, self)
                 return self.Dialup
             else:
                 return None                    
