@@ -28,6 +28,10 @@ NETCONFDIR="/usr/share/" + PROGNAME + '/'
 if not NETCONFDIR in sys.path:
     sys.path.append(NETCONFDIR)
 
+# Workaround for buggy gtk/gnome commandline parsing python bindings.
+cmdline = sys.argv[1:]
+sys.argv = sys.argv[:1]
+
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
@@ -125,11 +129,13 @@ class mainDialog:
         self.dialog.show()
         
     def on_Dialog_delete_event(self, *args):
+        self.dialog = None
         gtk.mainquit()
 
     def on_closeButton_clicked(self, button):
+        self.dialog = None
         gtk.mainquit()
-
+        
     def on_infoButton_clicked(self, button):
         from version import PRG_VERSION
         from version import PRG_NAME
@@ -189,6 +195,10 @@ class mainDialog:
             return
         
         (ret, msg) = dev.configure()
+
+        if not self.dialog:
+            return FALSE
+
         if ret:
             errorString = _('Cannot configure network device %s')\
                           % (device)
@@ -404,6 +414,8 @@ class mainDialog:
                 self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
     
     def update_dialog(self):
+        if not self.dialog:
+            return FALSE
         activedevicelistold = self.activedevicelist
         self.activedevicelist = NetworkDevice().get()
         
@@ -420,10 +432,39 @@ if __name__ == '__main__':
     if os.getuid() == 0:        
         NCProfileList.updateNetworkScripts()
         NCDeviceList.updateNetworkScripts()
+    import getopt
+    class BadUsage: pass
+
+    try:
+        opts, args = getopt.getopt(cmdline, "vh?d",
+                                   [
+                                    "verbose",
+                                    "debug", 
+                                    "help",
+                                    "hotshot",
+                                    "root="
+                                    ])
+        for opt, val in opts:
+            if opt == '-v' or opt == '--verbose':
+                NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
+                continue
+
+            if opt == '-d' or opt == '--debug':
+                NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
+                continue
+
+            if opt == '-h' or opt == "?" or opt == '--help':
+                Usage()
+                sys.exit(0)
+
+    except (getopt.error, BadUsage):
+        Usage()
+        sys.exit(1)    
+
     window = mainDialog()
     gtk.mainloop()
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/03/10 14:39:38 $"
-__version__ = "$Revision: 1.46 $"
+__date__ = "$Date: 2004/06/15 13:52:42 $"
+__version__ = "$Revision: 1.47 $"
