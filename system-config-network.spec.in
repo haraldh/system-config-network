@@ -24,7 +24,7 @@ Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
 Obsoletes: netcfg, redhat-config-network-tui
 Provides: redhat-config-network-tui
-Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python, newt
+Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python, newt, pciutils
 
 %description tui
 This is the network configuration tool for Red Hat Linux,
@@ -93,6 +93,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-druid
 
 %changelog
+* Tue Dec 16 2003 Harald Hoyer <harald@redhat.de> 1.3.12
+- renamed redhat-config-network -> system-config-network
+- added pciutils requirement
+- added utf-8 encoding comments
+- corrected some translation strings
+- added redhat-config-network provides
+
 * Tue Oct 28 2003 Harald Hoyer <harald@redhat.de> 1.3.10
 - removed restriction on t-online password entry #105970
 - failsafe changing the error image #108094
