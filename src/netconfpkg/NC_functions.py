@@ -186,7 +186,8 @@ def generic_error_dialog (message, parent_dialog, dialog_type="warning",
     import gnome
     import gnome.ui
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, "Button_Ok")
-    dialog.set_parent (parent_dialog)
+    if parent_dialog:
+	    dialog.set_parent (parent_dialog)
     if widget != None:
         if isinstance (widget, gtk.GtkCList):
             widget.select_row (page, 0)
@@ -196,6 +197,8 @@ def generic_error_dialog (message, parent_dialog, dialog_type="warning",
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.GtkEntry):
             broken_widget.select_region (0, -1)
+
+    dialog.set_position (gtk.WIN_POS_MOUSE)
     dialog.run ()
 
 def generic_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
@@ -203,7 +206,8 @@ def generic_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
     import gnome
     import gnome.ui
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, _("Yes"), _("No"), _("Cancel"))
-    dialog.set_parent (parent_dialog)
+    if parent_dialog:
+	    dialog.set_parent (parent_dialog)
     if widget != None:
         if isinstance (widget, gtk.GtkCList):
             widget.select_row (page, 0)
@@ -213,6 +217,7 @@ def generic_yesnocancel_dialog (message, parent_dialog, dialog_type="question",
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.GtkEntry):
             broken_widget.select_region (0, -1)
+    dialog.set_position (gtk.WIN_POS_MOUSE)
     return dialog.run ()
 
 def generic_yesno_dialog (message, parent_dialog, dialog_type="question",
@@ -220,7 +225,8 @@ def generic_yesno_dialog (message, parent_dialog, dialog_type="question",
     import gnome
     import gnome.ui
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, _("Yes"), _("No"))
-    dialog.set_parent (parent_dialog)
+    if parent_dialog:
+	    dialog.set_parent (parent_dialog)
     if widget != None:
         if isinstance (widget, gtk.GtkCList):
             widget.select_row (page, 0)
@@ -230,6 +236,7 @@ def generic_yesno_dialog (message, parent_dialog, dialog_type="question",
         broken_widget.grab_focus ()
         if isinstance (broken_widget, gtk.GtkEntry):
             broken_widget.select_region (0, -1)
+    dialog.set_position (gtk.WIN_POS_MOUSE)
     return dialog.run ()
 
 def getDeviceType(devname):
