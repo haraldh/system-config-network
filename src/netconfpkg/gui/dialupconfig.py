@@ -235,7 +235,7 @@ class ISDNDialupDialog(DialupDialog):
 
         page = self.noteBook.page_num(self.xml.get_widget ("modemTab"))
         self.noteBook.get_nth_page(page).hide()
-        
+
         self.dialog.set_title(_("ISDN Dialup Configuration"))
 
     def on_chooseButton_clicked(self, button):
@@ -324,10 +324,16 @@ class ISDNDialupDialog(DialupDialog):
         dialup = self.device.Dialup
         
         self.device.Name = self.xml.get_widget('deviceNameEntry').get_text()
+
+        encap_mode_old = dialup.EncapMode
         if self.xml.get_widget("encapModeEntry").get_text() == _("sync PPP"):
             dialup.EncapMode = "syncppp"
         else:
             dialup.EncapMode = "rawip"
+
+        # get free ISDN device if encap mode is changed
+        if encap_mode_old != dialup.EncapMode:
+            self.device.Device = getNewDialupDevice(getDeviceList(), self.device)
 
         dialup.PhoneInNumber = self.xml.get_widget("dialinNumberEntry").get_text()
         dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
