@@ -94,7 +94,8 @@ class wirelessConfigDialog(deviceConfigDialog):
             else:
                 self.xml.get_widget("essidSpecButton").set_active(TRUE)
                 self.xml.get_widget("essidEntry").set_sensitive(TRUE)
-            self.xml.get_widget("essidEntry").set_text(wl.EssId)
+            if wl.EssId:
+                self.xml.get_widget("essidEntry").set_text(wl.EssId)
 
             if wl.Channel and wl.Channel != "":
                 self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
