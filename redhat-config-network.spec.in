@@ -87,6 +87,8 @@ rm -f $RPM_BUILD_ROOT/etc/X11/applnk/Internet/rp3.desktop
 cat rp3.lang >>%{name}.lang
 %endif
 
+rm -rf $RPM_BUILD_ROOT%{_datadir}/kontrol-panel
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -115,6 +117,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Dec 11 2002 Elliot Lee <sopwith@redhat.com> 1.1.80-1
+- Remove unpackaged files
+
 * Mon Sep  2 2002 Than Ngo <than@redhat.com> 1.1.20-1
 - don't crash by selecting provider
 - Set correct HangupTimeout for ISDN connection
