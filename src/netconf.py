@@ -512,7 +512,7 @@ class mainDialog:
 
     def on_helpButton_clicked(self, button):
         import gnome
-        gnome.url_show("file:///usr/share/redhat-config-network/help/index.html")
+        gnome.url_show("ghelp:///usr/share/redhat-config-network/help/index.html")
 
     def on_deviceAddButton_clicked (self, clicked):
         #profilelist = getProfileList()
