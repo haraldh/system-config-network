@@ -115,9 +115,25 @@ class Address:
         """
         Set the device of the address object
         @self The object instance
+        @device The device name
         """
         self._device=device
 
+    def scope(self):
+        """
+        Returns the scope of the address object
+        @self The object instance
+        """
+        return self._scope
+
+    def setScope(self,scope):
+        """
+        Set the scope of the address object
+        @self The object instance
+        @scope The scope 
+        """
+        self._scope=scope
+        
     def address(self):
         """
         Return the address of the address object
