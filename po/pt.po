@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
-"POT-Creation-Date: 2002-06-04 16:04+0200\n"
+"POT-Creation-Date: 2002-06-12 12:41+0200\n"
 "PO-Revision-Date: 2002-06-04 17:53+0100\n"
 "Last-Translator: Pedro Morais <morais@kde.org\n"
 "Language-Team: pt <morais@kde.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #. from netconfpkg import Control
-#: src/netconf.py:57
+#: src/netconf.py:62
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -45,7 +45,7 @@ msgstr ""
 "Utilização: redhat-config-network-cmd -p --profile <perfil>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:63
+#: src/netconf.py:68
 #, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Por favor reinicie o %s com permissões de root!"
@@ -67,52 +67,52 @@ msgstr "Por favor reinicie o %s com permissões de root!"
 #. #                  clist.set_pixmap(row, 0, act_xpm)
 #. #                  clist.set_row_data(row, 1)
 #. #                  break
-#: src/netconf.py:437 src/netconf.py:450
+#: src/netconf.py:442 src/netconf.py:455
 msgid "Do you want to save your changes?"
 msgstr "Quer gravar as suas alterações?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:517
+#: src/netconf.py:522
 msgid "The Loopback device can not be edited!"
 msgstr "O dispositivo de Loopback não pode ser editado!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:575 src/netconfpkg/gui/GenericInterface.py:149
+#: src/netconf.py:580 src/netconfpkg/gui/GenericInterface.py:149
 msgid "This device can not be edited with this tool!"
 msgstr "Este dispositivo não pode ser editado com esta ferramenta!"
 
 #. #        device = devicelist[select]
-#: src/netconf.py:601
+#: src/netconf.py:606
 msgid "The Loopback device can not be removed!"
 msgstr "O dispositivo Loopback não pode ser removido!"
 
-#: src/netconf.py:604
+#: src/netconf.py:609
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "Quer mesmo apagar o dispositivo \"%s\"?"
 
-#: src/netconf.py:626
+#: src/netconf.py:631
 msgid "You have made some changes in your configuration."
 msgstr "Efectou algumas modificações na sua configuração."
 
-#: src/netconf.py:627
+#: src/netconf.py:632
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "Para activar o dispositivo de rede %s, tem de gravar as suas alterações."
 
-#: src/netconf.py:628
+#: src/netconf.py:633
 msgid "Do you want to continue?"
 msgstr "Deseja continuar?"
 
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/netconf.py:640 src/neat-control.py:116
+#: src/netconf.py:645 src/neat-control.py:116
 msgid "Network device activating..."
 msgstr "A activar o dispositivo de rede..."
 
-#: src/netconf.py:643
+#: src/netconf.py:647
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "A activar o dispositivo de rede %s, espere um pouco..."
@@ -121,7 +121,7 @@ msgstr "A activar o dispositivo de rede %s, espere um pouco..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-#: src/netconf.py:676 src/neat-control.py:159
+#: src/netconf.py:679 src/neat-control.py:157
 msgid "To be rewritten!"
 msgstr "A ser reescrito!"
 
@@ -183,7 +183,7 @@ msgstr "A ser reescrito!"
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1087
+#: src/netconf.py:1090
 msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
@@ -191,25 +191,25 @@ msgstr ""
 "Por favor insira o nome do novo perfil.\n"
 "O nome só pode conter letras e dígitos."
 
-#: src/netconf.py:1097 src/netconf.py:1168
+#: src/netconf.py:1100 src/netconf.py:1171
 msgid "The name may only contain letters and digits!"
 msgstr "O nome só pode conter letras e dígitos"
 
-#: src/netconf.py:1101 src/netconf.py:1172
+#: src/netconf.py:1104 src/netconf.py:1175
 msgid "The profile can't be named \"default\"!"
 msgstr "O nome do perfil não pode ser \"por omissão\"!"
 
-#: src/netconf.py:1106 src/netconf.py:1181
+#: src/netconf.py:1109 src/netconf.py:1184
 msgid "The profile name already exists!"
 msgstr "Já existe um perfil com esse nome!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1156
+#: src/netconf.py:1159
 msgid "The \"default\" profile can't be renamed!"
 msgstr "Não é possível alterar o nome do perfil \"por omissão\"!"
 
-#: src/netconf.py:1159
+#: src/netconf.py:1162
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
@@ -220,18 +220,18 @@ msgstr ""
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1202
+#: src/netconf.py:1205
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "O Perfil \"por omissão\" não pode ser apagado!"
 
-#: src/netconf.py:1205
+#: src/netconf.py:1208
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "Quer mesmo apagar o perfil \"%s\"?"
 
 #. clist.clear()
 #. hardwarelist.rollback()
-#: src/netconf.py:1329
+#: src/netconf.py:1332
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "Quer mesmo apagar \"%s\"?"
@@ -356,12 +356,12 @@ msgstr "Número de Telefone:"
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:135
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:135
 #: src/netconfpkg/gui/ethernethardware.py:135
-#: src/netconfpkg/gui/ethernethardware.py:152
+#: src/netconfpkg/gui/ethernethardware.py:148
 #: src/netconfpkg/gui/tokenringhardware.py:143
 #: src/netconfpkg/gui/tokenringhardware.py:154 src/netconfpkg/NCDevice.py:220
 #: src/netconfpkg/NCDevice.py:227 src/netconfpkg/NCHardwareList.py:144
-#: src/netconfpkg/NCHardwareList.py:286 src/netconfpkg/NC_functions.py:164
-#: src/netconfpkg/NC_functions.py:220
+#: src/netconfpkg/NCHardwareList.py:284 src/netconfpkg/NC_functions.py:168
+#: src/netconfpkg/NC_functions.py:224
 #: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/ethernethardware.glade.h:21
@@ -1815,7 +1815,7 @@ msgstr "auto"
 msgid "manual"
 msgstr "manual"
 
-#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:80
+#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:84
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -2148,12 +2148,12 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:78 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:82 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "Hardware (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:79 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:83 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "Software (XON/XOFF)"
@@ -2161,12 +2161,12 @@ msgstr "Software (XON/XOFF)"
 #. print dev+" has unknown device type, skipping it."
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:322
+#: src/netconfpkg/NC_functions.py:326
 #, python-format
 msgid "Error removing %s: %s!"
 msgstr "Erro ao remover o %s: %s!"
 
-#: src/netconfpkg/NC_functions.py:331 src/netconfpkg/NC_functions.py:340
+#: src/netconfpkg/NC_functions.py:335 src/netconfpkg/NC_functions.py:344
 #, python-format
 msgid ""
 "Error linking %s\n"
@@ -2177,7 +2177,7 @@ msgstr ""
 "a\n"
 "%s: %s!"
 
-#: src/netconfpkg/NC_functions.py:349
+#: src/netconfpkg/NC_functions.py:353
 #, python-format
 msgid ""
 "Error renaming\n"
@@ -2457,7 +2457,7 @@ msgstr ""
 "Este programa é distribuído segundo a GPL. Por favor comunique qualquer erro "
 "para o Sistema de Registo de Erros da Red Hat: http://bugzilla.redhat.com/"
 
-#: src/neat-control.py:119
+#: src/neat-control.py:118
 #, python-format
 msgid "Activating for Network device %s, please wait..."
 msgstr "A activar o dispositivo de rede %s, espere um pouco..."

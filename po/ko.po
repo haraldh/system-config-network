@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg\n"
-"POT-Creation-Date: 2002-06-04 16:04+0200\n"
+"POT-Creation-Date: 2002-06-12 12:41+0200\n"
 "PO-Revision-Date: 2002-06-06 13:35GMT+10.00\n"
 "Last-Translator: Michelle Kim <mkim@brisbane.redhat.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. Workaround for buggy gtk/gnome commandline parsing python bindings.
 #. from netconfpkg import Control
-#: src/netconf.py:57
+#: src/netconf.py:62
 msgid ""
 "redhat-config-network-cmd - Python network configuration commandline tool\n"
 "\n"
@@ -45,7 +45,8 @@ msgstr ""
 "사용법: redhat-config-network-cmd -p --profile <프로파일>"
 
 #. Argh, another workaround for broken gtk/gnome imports...
-#: src/netconf.py:63
+#: src/netconf.py:68
+#, python-format
 msgid "Please restart %s with root permissions!"
 msgstr "Root 권한으로 %s (을)를 재시작 하시기 바랍니다!"
 
@@ -66,49 +67,53 @@ msgstr "Root 권한으로 %s (을)를 재시작 하시기 바랍니다!"
 #. #                  clist.set_pixmap(row, 0, act_xpm)
 #. #                  clist.set_row_data(row, 1)
 #. #                  break
-#: src/netconf.py:437 src/netconf.py:450
+#: src/netconf.py:442 src/netconf.py:455
 msgid "Do you want to save your changes?"
 msgstr "변경하신 내용을 저장하시겠습니까?"
 
 #. profilelist = getProfileList()
 #. devicelist = getDeviceList()
-#: src/netconf.py:517
+#: src/netconf.py:522
 msgid "The Loopback device can not be edited!"
 msgstr "루프백 장치를 편집할 수 없습니다!"
 
 #. Fixed change device names in active list of all profiles
-#: src/netconf.py:575 src/netconfpkg/gui/GenericInterface.py:149
+#: src/netconf.py:580 src/netconfpkg/gui/GenericInterface.py:149
 msgid "This device can not be edited with this tool!"
 msgstr "이 장치는 이 설정 프로그램으로 편집할 수 없습니다!"
 
 #. #        device = devicelist[select]
-#: src/netconf.py:601
+#: src/netconf.py:606
 msgid "The Loopback device can not be removed!"
 msgstr "루프백 장치는 삭제하실 수 없습니다!"
 
-#: src/netconf.py:604
+#: src/netconf.py:609
+#, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "정말로 \"%s\" 장치를 삭제하시겠습니까?"
 
-#: src/netconf.py:626
+#: src/netconf.py:631
 msgid "You have made some changes in your configuration."
 msgstr "여러분은 일부 설정을 변경 하셨습니다."
 
-#: src/netconf.py:627
+#: src/netconf.py:632
+#, python-format
 msgid "To activate the network device %s, the changes have to be saved."
-msgstr "네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
+msgstr ""
+"네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
 
-#: src/netconf.py:628
+#: src/netconf.py:633
 msgid "Do you want to continue?"
 msgstr "계속 하시겠습니까?"
 
 #. dlg = gnome.ui.GnomeAbout(NAME, VERSION, COPYRIGHT, AUTORS, TEXT)
 #. dlg.run_and_close()
-#: src/neat-control.py:116 src/netconf.py:640
+#: src/netconf.py:645 src/neat-control.py:116
 msgid "Network device activating..."
 msgstr "네트워크 장치 활성화..."
 
-#: src/netconf.py:643
+#: src/netconf.py:647
+#, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "네트웍 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
 
@@ -116,7 +121,7 @@ msgstr "네트웍 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
 #. self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
 #. dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-#: src/neat-control.py:159 src/netconf.py:676
+#: src/netconf.py:679 src/neat-control.py:157
 msgid "To be rewritten!"
 msgstr "다시 작성해야 합니다!"
 
@@ -178,7 +183,7 @@ msgstr "다시 작성해야 합니다!"
 #. if len(clist.selection) == 0:
 #. return
 #.
-#: src/netconf.py:1087
+#: src/netconf.py:1090
 msgid ""
 "Please enter the name for the new profile.\n"
 "The name may only contain letters and digits."
@@ -186,25 +191,25 @@ msgstr ""
 "새로운 프로파일을 위한 이름을 입력해 주십시요.\n"
 "이름에는 글자와 숫자만 사용하실수 있습니다."
 
-#: src/netconf.py:1097 src/netconf.py:1168
+#: src/netconf.py:1100 src/netconf.py:1171
 msgid "The name may only contain letters and digits!"
 msgstr "이름에는 글자와 숫자만 사용가능 합니다!"
 
-#: src/netconf.py:1101 src/netconf.py:1172
+#: src/netconf.py:1104 src/netconf.py:1175
 msgid "The profile can't be named \"default\"!"
 msgstr "프로파일의 이름을 \"기본\" 으로 하실 수 없습니다!"
 
-#: src/netconf.py:1106 src/netconf.py:1181
+#: src/netconf.py:1109 src/netconf.py:1184
 msgid "The profile name already exists!"
 msgstr "프로파일 이름이 이미 존재합니다!"
 
 #. self.xml.get_widget("profileList").clear()
 #. clist.clear()
-#: src/netconf.py:1156
+#: src/netconf.py:1159
 msgid "The \"default\" profile can't be renamed!"
 msgstr "\"기본\" 프로파일을 다른이름으로 바꾸실 수 없습니다!"
 
-#: src/netconf.py:1159
+#: src/netconf.py:1162
 msgid ""
 "Please enter the new name for the profile.\n"
 "The name may only contain letters and digits."
@@ -215,17 +220,19 @@ msgstr ""
 #. clist = self.xml.get_widget('profileList')
 #. if len(clist.selection) == 0:
 #. return
-#: src/netconf.py:1202
+#: src/netconf.py:1205
 msgid "The \"default\" Profile can not be deleted!"
 msgstr "\"default\" 프로파일을 삭제할 수 없습니다!"
 
-#: src/netconf.py:1205
+#: src/netconf.py:1208
+#, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "정말로 \"%s\" 프로파일을 삭제하시겠습니까?"
 
 #. clist.clear()
 #. hardwarelist.rollback()
-#: src/netconf.py:1329
+#: src/netconf.py:1332
+#, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "정말로 \"%s\" (을)를 삭제하시겠습니까?"
 
@@ -254,21 +261,21 @@ msgstr "xDSL 연결"
 #: src/netconfpkg/gui/ADSLInterface.py:79
 msgid ""
 "Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber Lines. "
-" This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL "
-"(over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at "
-"the same speed), and several others.  These types of connections are common "
-"in the United States, and are gaining acceptance elsewhere.  Speeds vary "
-"according to the technology used, but generally range from 144kbps to "
-"1.0Mbps."
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
 msgstr ""
-"xDSL 연결을 생성합니다.  이 연결은 보통 디지털 구독자 라인(DSL) 이라고 "
-"불리는 광역 접속 매체의 여러 유형 중 하나를 사용하는 것입니다.  이 목록에는 "
-"ADSL (비대칭, 다운로드가 업로드보다 빠름), IDSL (원거리를 위한 ISDN 라인에 "
-"사용), SDSL (대칭, 다운로드와 업로드가 같은 속도임), 등등.  이러한 유형의 "
-"접속은 미국에서 일반적으로 사용되며, 다른곳에서도 점점 증가되는 추세입니다.  "
-"속도는 어떤 기술을 사용하느냐에 따라 다를수 있으며, 일반적으로 114kbps 에서 "
-"1.0Mbps 범위의 속도를 가집니다."
+"xDSL 연결을 생성합니다.  이 연결은 보통 디지털 구독자 라인(DSL) 이라고 불리"
+"는 광역 접속 매체의 여러 유형 중 하나를 사용하는 것입니다.  이 목록에는 ADSL "
+"(비대칭, 다운로드가 업로드보다 빠름), IDSL (원거리를 위한 ISDN 라인에 사용), "
+"SDSL (대칭, 다운로드와 업로드가 같은 속도임), 등등.  이러한 유형의 접속은 미"
+"국에서 일반적으로 사용되며, 다른곳에서도 점점 증가되는 추세입니다.  속도는 어"
+"떤 기술을 사용하느냐에 따라 다를수 있으며, 일반적으로 114kbps 에서 1.0Mbps 범"
+"위의 속도를 가집니다."
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -287,11 +294,11 @@ msgstr ""
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. get the widgets we need
 #: src/netconfpkg/gui/ADSLInterface.py:117
-#: src/netconfpkg/gui/CipeInterface.py:132
 #: src/netconfpkg/gui/DialupDruid.py:108
 #: src/netconfpkg/gui/EthernetInterface.py:195
-#: src/netconfpkg/gui/TokenRingInterface.py:193
+#: src/netconfpkg/gui/CipeInterface.py:132
 #: src/netconfpkg/gui/WirelessInterface.py:212
+#: src/netconfpkg/gui/TokenRingInterface.py:193
 msgid "You have selected the following information:"
 msgstr "다음과 같은 정보를 선택하셨습니다:"
 
@@ -310,11 +317,11 @@ msgid "Login Name:"
 msgstr "로그인 이름:"
 
 #: src/netconfpkg/gui/ADSLInterface.py:121
-#: src/netconfpkg/gui/CipeInterface.py:147
 #: src/netconfpkg/gui/DialupDruid.py:113
 #: src/netconfpkg/gui/EthernetInterface.py:214
-#: src/netconfpkg/gui/TokenRingInterface.py:211
+#: src/netconfpkg/gui/CipeInterface.py:147
 #: src/netconfpkg/gui/WirelessInterface.py:236
+#: src/netconfpkg/gui/TokenRingInterface.py:211
 msgid "Press \"Finish\" to create this account"
 msgstr "이 계정을 생성하시려면, \"완료\"를 누르십시요"
 
@@ -345,19 +352,19 @@ msgstr "전화 번호:"
 #. (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
 #. if len(hwdesc):
 #. self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
-#: src/netconfpkg/NCDevice.py:220 src/netconfpkg/NCDevice.py:227
-#: src/netconfpkg/NCHardwareList.py:144 src/netconfpkg/NCHardwareList.py:286
-#: src/netconfpkg/NC_functions.py:164 src/netconfpkg/NC_functions.py:220
-#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/EthernetHardwareDruid.py:135
-#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
 #: src/netconfpkg/gui/TokenRingHardwareDruid.py:135
-#: src/netconfpkg/gui/ethernethardware.glade.h:21
 #: src/netconfpkg/gui/ethernethardware.py:135
-#: src/netconfpkg/gui/ethernethardware.py:152
-#: src/netconfpkg/gui/tokenringhardware.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.py:148
 #: src/netconfpkg/gui/tokenringhardware.py:143
-#: src/netconfpkg/gui/tokenringhardware.py:154
+#: src/netconfpkg/gui/tokenringhardware.py:154 src/netconfpkg/NCDevice.py:220
+#: src/netconfpkg/NCDevice.py:227 src/netconfpkg/NCHardwareList.py:144
+#: src/netconfpkg/NCHardwareList.py:284 src/netconfpkg/NC_functions.py:168
+#: src/netconfpkg/NC_functions.py:224
+#: src/netconfpkg/gui/EthernetHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:21
+#: src/netconfpkg/gui/ethernethardware.glade.h:21
+#: src/netconfpkg/gui/tokenringhardware.glade.h:21
 msgid "Unknown"
 msgstr "알 수 없음"
 
@@ -409,13 +416,13 @@ msgid ""
 "advanced regions.  It is available but uncommon in the USA.  Speeds range "
 "from 64kbps to 128kbps."
 msgstr ""
-"새로운 ISDN 연결을 생성합니다.  이 연결은 ISDN 라인을 통해서 인터넷 서비스 "
-"회사에 접속하기 위해 사용합니다.  이 접속은 전화 회사에서 설치하는 특별한 "
-"전화선이 필요합니다. 또한, 인터넷 서비스 회사로 부터 ISDN 연결의 한끝 지점을 "
-"차단하기 위한 터미널 아답터(TA)라는 장치가 필요합니다.  이러한 접속 유형은 "
-"유럽과 그 외 기술적으로 선진된 나라에서 대중적으로 사용되고 있습니다.  이 "
-"접속은 미국에서도 사용하고 있으나 일반적으로 사용되고 있지는 않습니다.  "
-"속도는 64kbps 에서 128kbps 범위의 속도를 가집니다."
+"새로운 ISDN 연결을 생성합니다.  이 연결은 ISDN 라인을 통해서 인터넷 서비스 회"
+"사에 접속하기 위해 사용합니다.  이 접속은 전화 회사에서 설치하는 특별한 전화"
+"선이 필요합니다. 또한, 인터넷 서비스 회사로 부터 ISDN 연결의 한끝 지점을 차단"
+"하기 위한 터미널 아답터(TA)라는 장치가 필요합니다.  이러한 접속 유형은 유럽"
+"과 그 외 기술적으로 선진된 나라에서 대중적으로 사용되고 있습니다.  이 접속은 "
+"미국에서도 사용하고 있으나 일반적으로 사용되고 있지는 않습니다.  속도는 "
+"64kbps 에서 128kbps 범위의 속도를 가집니다."
 
 #. # Copyright (C) 2001, 2002 Red Hat, Inc.
 #. # Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -445,11 +452,10 @@ msgid ""
 "of connections are available just about anywhere in the world where there is "
 "a phone system."
 msgstr ""
-"새로운 모뎀 연결을 생성합니다.  이 연결은 직렬 아날로그 모뎀으로 인터넷 "
-"서비스 회사에 접속하기 위해 사용합니다. 이 직렬 아날로그 모뎀은 일반적인 "
-"구리 전화선에 소리 신호를 이용하여 데이터를 주고 받습니다.  이런 유형의 "
-"접속은 세계의 어느 곳에서든지 기존의 전화 시스템이 있는 곳에서는 항상 "
-"유용합니다."
+"새로운 모뎀 연결을 생성합니다.  이 연결은 직렬 아날로그 모뎀으로 인터넷 서비"
+"스 회사에 접속하기 위해 사용합니다. 이 직렬 아날로그 모뎀은 일반적인 구리 전"
+"화선에 소리 신호를 이용하여 데이터를 주고 받습니다.  이런 유형의 접속은 세계"
+"의 어느 곳에서든지 기존의 전화 시스템이 있는 곳에서는 항상 유용합니다."
 
 #: src/netconfpkg/gui/ModemInterface.py:99
 msgid "Modem probing..."
@@ -514,40 +520,40 @@ msgstr "일반 모뎀"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/ModemDruid.glade.h:27
 #: src/netconfpkg/gui/ModemInterface.py:139
-#: src/netconfpkg/gui/modemconfig.glade.h:27
 #: src/netconfpkg/gui/modemconfig.py:123
+#: src/netconfpkg/gui/ModemDruid.glade.h:27
+#: src/netconfpkg/gui/modemconfig.glade.h:27
 msgid "Off"
 msgstr "끔"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:22
 #: src/netconfpkg/gui/ModemInterface.py:141
-#: src/netconfpkg/gui/modemconfig.glade.h:21
 #: src/netconfpkg/gui/modemconfig.py:125
+#: src/netconfpkg/gui/ModemDruid.glade.h:22
+#: src/netconfpkg/gui/modemconfig.glade.h:21
 msgid "Low"
 msgstr "낮음"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:23
 #: src/netconfpkg/gui/ModemInterface.py:143
-#: src/netconfpkg/gui/modemconfig.glade.h:22
 #: src/netconfpkg/gui/modemconfig.py:127
+#: src/netconfpkg/gui/ModemDruid.glade.h:23
+#: src/netconfpkg/gui/modemconfig.glade.h:22
 #: src/netconfpkg/gui/sharedtcpip.glade.h:19
 #: src/netconfpkg/gui/tcpipdialog.glade.h:20
 msgid "Medium"
 msgstr "중간"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:21
 #: src/netconfpkg/gui/ModemInterface.py:145
-#: src/netconfpkg/gui/modemconfig.glade.h:20
 #: src/netconfpkg/gui/modemconfig.py:129
+#: src/netconfpkg/gui/ModemDruid.glade.h:21
+#: src/netconfpkg/gui/modemconfig.glade.h:20
 msgid "High"
 msgstr "높음"
 
-#: src/netconfpkg/gui/ModemDruid.glade.h:30
 #: src/netconfpkg/gui/ModemInterface.py:147
-#: src/netconfpkg/gui/modemconfig.glade.h:29
 #: src/netconfpkg/gui/modemconfig.py:131
+#: src/netconfpkg/gui/ModemDruid.glade.h:30
+#: src/netconfpkg/gui/modemconfig.glade.h:29
 msgid "Very High"
 msgstr "매우 높음"
 
@@ -585,55 +591,55 @@ msgstr "매우 높음"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/CipeInterface.py:156 src/netconfpkg/gui/cipeconfig.py:79
+#: src/netconfpkg/gui/cipeconfig.py:79 src/netconfpkg/gui/CipeInterface.py:156
 msgid "None - Server Mode"
 msgstr "없음 - 서버 모드"
 
-#: src/netconfpkg/gui/CipeInterface.py:163 src/netconfpkg/gui/cipeconfig.py:87
+#: src/netconfpkg/gui/cipeconfig.py:87 src/netconfpkg/gui/CipeInterface.py:163
 msgid " (dynamic)"
 msgstr " (동적)"
 
 #. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
 #: src/netconfpkg/gui/CipeInterface.py:197
 #: src/netconfpkg/gui/CipeInterface.py:250
-#: src/netconfpkg/gui/cipeconfig.py:119 src/netconfpkg/gui/cipeconfig.py:170
 msgid "Server Mode"
 msgstr "서버 모드"
 
 #. widget.set_position(0)
+#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
 #: src/netconfpkg/gui/CipeInterface.py:281
 #: src/netconfpkg/gui/CipeInterface.py:286
-#: src/netconfpkg/gui/cipeconfig.py:202 src/netconfpkg/gui/cipeconfig.py:207
 msgid "(own choice)"
 msgstr "(스스로 선택)"
 
-#: src/netconfpkg/gui/CipeInterface.py:292
 #: src/netconfpkg/gui/cipeconfig.py:213
+#: src/netconfpkg/gui/CipeInterface.py:292
 msgid "IP Address of Tunnel Device: "
 msgstr "터널 장치의 IP 주소: "
 
-#: src/netconfpkg/gui/CipeInterface.py:293
 #: src/netconfpkg/gui/cipeconfig.py:214
+#: src/netconfpkg/gui/CipeInterface.py:293
 msgid "Local Port: "
 msgstr "로컬 포트: "
 
-#: src/netconfpkg/gui/CipeInterface.py:294
 #: src/netconfpkg/gui/cipeconfig.py:215
+#: src/netconfpkg/gui/CipeInterface.py:294
 msgid "Remote Peer Address: "
 msgstr "원격 Peer 주소:"
 
-#: src/netconfpkg/gui/CipeInterface.py:298
 #: src/netconfpkg/gui/cipeconfig.py:219
+#: src/netconfpkg/gui/CipeInterface.py:298
 msgid "Remote Virtual Address: "
 msgstr "원격 가상 주소:"
 
-#: src/netconfpkg/gui/CipeInterface.py:299
 #: src/netconfpkg/gui/cipeconfig.py:220
+#: src/netconfpkg/gui/CipeInterface.py:299
 msgid "Local Virtual Address: "
 msgstr "로컬 가상 주소:"
 
-#: src/netconfpkg/gui/CipeInterface.py:300
 #: src/netconfpkg/gui/cipeconfig.py:221
+#: src/netconfpkg/gui/CipeInterface.py:300
 msgid "Secret Key: "
 msgstr "비밀 키:"
 
@@ -707,8 +713,8 @@ msgstr "IUCV 장치"
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/gui/dialupconfig.glade.h:12
 #: src/netconfpkg/gui/dialupconfig.py:228
+#: src/netconfpkg/gui/dialupconfig.glade.h:12
 msgid "Dialup Configuration"
 msgstr "전화걸기 설정"
 
@@ -716,48 +722,48 @@ msgstr "전화걸기 설정"
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN 전화걸기 설정"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:66
 #: src/netconfpkg/gui/dialupconfig.py:257
 #: src/netconfpkg/gui/dialupconfig.py:335
+#: src/netconfpkg/gui/dialupconfig.glade.h:66
 msgid "in"
 msgstr "안에"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:69
 #: src/netconfpkg/gui/dialupconfig.py:257
+#: src/netconfpkg/gui/dialupconfig.glade.h:69
 msgid "out"
 msgstr "아웃"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:71
 #: src/netconfpkg/gui/dialupconfig.py:296
+#: src/netconfpkg/gui/dialupconfig.glade.h:71
 msgid "raw IP"
 msgstr "raw IP"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:72
 #: src/netconfpkg/gui/dialupconfig.py:298
 #: src/netconfpkg/gui/dialupconfig.py:325
+#: src/netconfpkg/gui/dialupconfig.glade.h:72
 msgid "sync PPP"
 msgstr "동기식 PPP"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:70
 #: src/netconfpkg/gui/dialupconfig.py:310
 #: src/netconfpkg/gui/dialupconfig.py:364
+#: src/netconfpkg/gui/dialupconfig.glade.h:70
 msgid "pap"
 msgstr "PAP"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:64
 #: src/netconfpkg/gui/dialupconfig.py:312
 #: src/netconfpkg/gui/dialupconfig.py:366
+#: src/netconfpkg/gui/dialupconfig.glade.h:64
 msgid "chap"
 msgstr "chap"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:65
 #: src/netconfpkg/gui/dialupconfig.py:314
 #: src/netconfpkg/gui/dialupconfig.py:368
+#: src/netconfpkg/gui/dialupconfig.glade.h:65
 msgid "chap+pap"
 msgstr "CHAP+PAP"
 
-#: src/netconfpkg/gui/dialupconfig.glade.h:68
 #: src/netconfpkg/gui/dialupconfig.py:316 src/netconfpkg/gui/tcpdialog.py:129
+#: src/netconfpkg/gui/dialupconfig.glade.h:68
 #: src/netconfpkg/gui/tcpipdialog.glade.h:53
 msgid "none"
 msgstr "없음"
@@ -787,13 +793,13 @@ msgstr "모뎀 전화걸기 설정"
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please copy "
 "the full text of this exception or save the crash dump to a floppy then file "
-"a detailed bug report against anaconda at "
-"http://bugzilla.redhat.com/bugzilla/"
+"a detailed bug report against anaconda at http://bugzilla.redhat.com/"
+"bugzilla/"
 msgstr ""
-"처리할 수 없는 예외적인 상황이 발생되었습니다.  이와같은 상황은 버그로 "
-"예상됩니다.  이 오류의 내용을 전부 복사하시거나 파일로 저장하신 후에 아나콘다에 대한 버그의 "
-"내용을 http://bugzilla.redhat.com/bugzilla/ 로 "
-"자세히 보고해 주시기 바랍니다."
+"처리할 수 없는 예외적인 상황이 발생되었습니다.  이와같은 상황은 버그로 예상됩"
+"니다.  이 오류의 내용을 전부 복사하시거나 파일로 저장하신 후에 아나콘다에 대"
+"한 버그의 내용을 http://bugzilla.redhat.com/bugzilla/ 로 자세히 보고해 주시"
+"기 바랍니다."
 
 #. I did it this way for future expantion
 #. 0 is debug
@@ -816,10 +822,12 @@ msgid "Please specify a file to save the dump"
 msgstr "오류내용(dump)을 기록할 파일을 지정해 주십시요"
 
 #: src/netconfpkg/gui/exception.py:213
+#, python-format
 msgid "Failed to write to file %s."
 msgstr "%s 파일에 기록하는데 실패했습니다."
 
 #: src/netconfpkg/gui/exception.py:217
+#, python-format
 msgid ""
 "The application's state has been successfully\n"
 "written to the file '%s'."
@@ -878,8 +886,8 @@ msgstr ""
 #. self.dialog.connect("delete-event", self.on_Dialog_delete_event)
 #. self.dialog.connect("hide", self.on_Dialog_delete_event)
 #. disable TCP/IP and hostname Tabs for CIPE
-#: src/netconfpkg/gui/sharedtcpip.glade.h:51
 #: src/netconfpkg/gui/tcpdialog.py:108 src/netconfpkg/gui/tcpdialog.py:128
+#: src/netconfpkg/gui/sharedtcpip.glade.h:51
 #: src/netconfpkg/gui/tcpipdialog.glade.h:52
 msgid "dialup"
 msgstr "전화걸기"
@@ -952,35 +960,35 @@ msgstr "새로운 이더넷 연결 생성"
 msgid "Other Ethernet Card"
 msgstr "다른 이더넷 카드"
 
-#: src/netconfpkg/gui/CipeInterface.py:133
 #: src/netconfpkg/gui/EthernetInterface.py:196
-#: src/netconfpkg/gui/TokenRingInterface.py:194
+#: src/netconfpkg/gui/CipeInterface.py:133
 #: src/netconfpkg/gui/WirelessInterface.py:213
+#: src/netconfpkg/gui/TokenRingInterface.py:194
 msgid "Device:"
 msgstr "장치:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:207
-#: src/netconfpkg/gui/TokenRingInterface.py:205
 #: src/netconfpkg/gui/WirelessInterface.py:224
+#: src/netconfpkg/gui/TokenRingInterface.py:205
 #: src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "주소:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:208
-#: src/netconfpkg/gui/TokenRingInterface.py:206
 #: src/netconfpkg/gui/WirelessInterface.py:225
+#: src/netconfpkg/gui/TokenRingInterface.py:206
 msgid "Subnet Mask:"
 msgstr "서브넷 마스크:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:209
-#: src/netconfpkg/gui/TokenRingInterface.py:207
 #: src/netconfpkg/gui/WirelessInterface.py:226
+#: src/netconfpkg/gui/TokenRingInterface.py:207
 msgid "Default Gateway Address:"
 msgstr "기본 게이트웨이 주소:"
 
 #: src/netconfpkg/gui/EthernetInterface.py:211
-#: src/netconfpkg/gui/TokenRingInterface.py:209
 #: src/netconfpkg/gui/WirelessInterface.py:228
+#: src/netconfpkg/gui/TokenRingInterface.py:209
 msgid "Automatically obtain IP address settings with:"
 msgstr "IP 주소 설정을 자동으로 얻기:"
 
@@ -1012,10 +1020,12 @@ msgstr "IP 주소 설정을 자동으로 얻기:"
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #: src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
 msgid "%s connection"
 msgstr "%s 연결"
 
 #: src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
 msgid "Create a new %s connection."
 msgstr "새 %s 연결 생성"
 
@@ -1671,6 +1681,7 @@ msgstr "다른 토큰 링 카드"
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #. print status
 #: src/netconfpkg/NCDevice.py:61
+#, python-format
 msgid ""
 "May I change\n"
 "%s\n"
@@ -1699,12 +1710,14 @@ msgstr "장치 타입이 지정되지 않았습니다"
 
 #. ok, we have to inherit all other data from our master
 #: src/netconfpkg/NCDevice.py:217
+#, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, 장치가 지정되지 않았거나 알리아스가 숫자가 아닙니다!"
 
 #. print "Creating Dialup"
 #. print "Loading Dialup"
 #: src/netconfpkg/NCDevice.py:259
+#, python-format
 msgid "Static routes file %s is invalid"
 msgstr "%s에 대한 정적 라우트 파일은 부적절합니다"
 
@@ -1734,6 +1747,7 @@ msgstr "%s에 대한 정적 라우트 파일은 부적절합니다"
 #. for confdir in [ SYSCONFDEVICEDIR, OLDSYSCONFDEVICEDIR ]:
 #. print self.data[i]
 #: src/netconfpkg/NCDeviceList.py:69
+#, python-format
 msgid "Error loading Device %s!\n"
 msgstr "%s 장치를 로딩하는데 에러가 났습니다!\n"
 
@@ -1761,6 +1775,7 @@ msgstr "%s 장치를 로딩하는데 에러가 났습니다!\n"
 #. traverse all devices in the list
 #.
 #: src/netconfpkg/NCDeviceList.py:140
+#, python-format
 msgid "Error opening/writing %s: %s!"
 msgstr "%s를 열고/쓰는데 에러가 났습니다: %s!"
 
@@ -1796,7 +1811,7 @@ msgstr "자동"
 msgid "manual"
 msgstr "수동"
 
-#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:80
+#: src/netconfpkg/NCDialup.py:42 src/netconfpkg/NC_functions.py:84
 #: src/netconfpkg/gui/ModemDruid.glade.h:26
 #: src/netconfpkg/gui/modemconfig.glade.h:26
 msgid "None"
@@ -2039,6 +2054,7 @@ msgstr "유고슬라비아"
 #.
 #. No Alias devices
 #: src/netconfpkg/NCHardwareList.py:186
+#, python-format
 msgid ""
 "%s has an alias to module %s in modules.conf,\n"
 "instead of currently loaded module %s!"
@@ -2073,6 +2089,7 @@ msgstr ""
 #. 60016
 #. Keep that test for later versions
 #: src/netconfpkg/NCProfileList.py:128
+#, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "%s 장치는 똑같은 하드웨어 장치 \"%s\"를 %s처럼 사용하고 있습니다!\n"
 
@@ -2126,12 +2143,12 @@ msgstr ""
 #. # You should have received a copy of the GNU General Public License
 #. # along with this program; if not, write to the Free Software
 #. # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#: src/netconfpkg/NC_functions.py:78 src/netconfpkg/gui/ModemDruid.glade.h:20
+#: src/netconfpkg/NC_functions.py:82 src/netconfpkg/gui/ModemDruid.glade.h:20
 #: src/netconfpkg/gui/modemconfig.glade.h:19
 msgid "Hardware (CRTSCTS)"
 msgstr "하드웨어 (CRTSCTS)"
 
-#: src/netconfpkg/NC_functions.py:79 src/netconfpkg/gui/ModemDruid.glade.h:29
+#: src/netconfpkg/NC_functions.py:83 src/netconfpkg/gui/ModemDruid.glade.h:29
 #: src/netconfpkg/gui/modemconfig.glade.h:28
 msgid "Software (XON/XOFF)"
 msgstr "소프트웨어 (XON/XOFF)"
@@ -2139,11 +2156,13 @@ msgstr "소프트웨어 (XON/XOFF)"
 #. print dev+" has unknown device type, skipping it."
 #. print "file '%s' is not a file!" % file
 #. print "Removed %s" % file
-#: src/netconfpkg/NC_functions.py:322
+#: src/netconfpkg/NC_functions.py:326
+#, python-format
 msgid "Error removing %s: %s!"
 msgstr "%s를 제거하는데 에러가 났습니다: %s!"
 
-#: src/netconfpkg/NC_functions.py:331 src/netconfpkg/NC_functions.py:340
+#: src/netconfpkg/NC_functions.py:335 src/netconfpkg/NC_functions.py:344
+#, python-format
 msgid ""
 "Error linking %s\n"
 "to\n"
@@ -2153,7 +2172,8 @@ msgstr ""
 "%s 로\n"
 "연결하는데 에러가 났습니다: %s!"
 
-#: src/netconfpkg/NC_functions.py:349
+#: src/netconfpkg/NC_functions.py:353
+#, python-format
 msgid ""
 "Error renaming\n"
 "%s\n"
@@ -2300,18 +2320,22 @@ msgstr "비활성화"
 #. remove inactive isdn/ppp device
 #. check real ppp device
 #: src/netconfpkg/Control.py:174
+#, python-format
 msgid "Cannot activate network device %s"
 msgstr "네트워크 장치 %s를 활성화할 수 없습니다"
 
 #: src/netconfpkg/Control.py:176
+#, python-format
 msgid "Cannot deactivate network device %s"
 msgstr "네트워크 장치 %s를 비활성화 시킬 수 없습니다"
 
 #: src/netconfpkg/Control.py:178
+#, python-format
 msgid "Cannot show status of network device %s"
 msgstr "네트워크 장치 %s의 상태를 나타날 수 없습니다"
 
 #: src/netconfpkg/Control.py:180
+#, python-format
 msgid "Cannot monitor status of network device %s"
 msgstr "네트워크 장치 %s 의 상태를 모니터할 수 없습니다"
 
@@ -2335,17 +2359,17 @@ msgstr "설정"
 msgid "Exit"
 msgstr "나가기"
 
-#: neat.desktop.in.h:1 src/maindialog.glade.h:16 src/netconf-tui.py:41
+#: src/netconf-tui.py:41 neat.desktop.in.h:1 src/maindialog.glade.h:16
 msgid "Network Configuration"
 msgstr "네트워크 설정"
 
-#: src/maindialog.glade.h:15 src/netconf-tui.py:152 src/netconf-tui.py:259
-#: src/netconf-tui.py:362
+#: src/netconf-tui.py:152 src/netconf-tui.py:259 src/netconf-tui.py:362
+#: src/maindialog.glade.h:15
 msgid "Name"
 msgstr "이름"
 
-#: src/maindialog.glade.h:8 src/neat-control.glade.h:1 src/netconf-tui.py:153
-#: src/netconf-tui.py:260 src/netconf-tui.py:363
+#: src/netconf-tui.py:153 src/netconf-tui.py:260 src/netconf-tui.py:363
+#: src/maindialog.glade.h:8 src/neat-control.glade.h:1
 msgid "Device"
 msgstr "장치"
 
@@ -2425,10 +2449,11 @@ msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
 msgstr ""
-"이 소프트웨어는 GPL 하에 배포되고 있습니다. 버그에 대한 보고는 Red Hat의 "
-"버그 추적 시스템 사이트인 http://bugzilla.redhat.com/ 로 해주십시오."
+"이 소프트웨어는 GPL 하에 배포되고 있습니다. 버그에 대한 보고는 Red Hat의 버"
+"그 추적 시스템 사이트인 http://bugzilla.redhat.com/ 로 해주십시오."
 
-#: src/neat-control.py:119
+#: src/neat-control.py:118
+#, python-format
 msgid "Activating for Network device %s, please wait..."
 msgstr "네트워크 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시요..."
 
@@ -2514,12 +2539,14 @@ msgid ""
 "You may configure network devices associated with physical hardware here.  "
 "Multiple logical devices can be associated with a single piece of hardware."
 msgstr ""
-"여기서 하드웨어와 연결된 네트워크 장치들을 설정하실 수 있습니다.  여러 "
-"논리적 장치들이 한개의 하드웨어와 연결될 수도 있습니다."
+"여기서 하드웨어와 연결된 네트워크 장치들을 설정하실 수 있습니다.  여러 논리"
+"적 장치들이 한개의 하드웨어와 연결될 수도 있습니다."
 
 #: src/maindialog.glade.h:23
-msgid "You may configure network hardware physically attached to the computer here."
-msgstr "여기서 컴퓨터에 물리적으로 연결된 네트워크 하드웨어를 설정하실 수 있습니다."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"여기서 컴퓨터에 물리적으로 연결된 네트워크 하드웨어를 설정하실 수 있습니다."
 
 #: src/maindialog.glade.h:24
 msgid ""
@@ -2671,8 +2698,10 @@ msgstr "ISP가 제공한 로그인 이름을 여기에 입력해 주십시오."
 #: src/netconfpkg/gui/DialupDruid.glade.h:6
 #: src/netconfpkg/gui/dialupconfig.glade.h:22
 #: src/netconfpkg/gui/dslconfig.glade.h:12
-msgid "Enter the name of this configuration, usually just the name of your ISP."
-msgstr "이 설정명을 입력해 주십시오, 보통은 여러분 ISP의 이름을 입력하시면 됩니다."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr ""
+"이 설정명을 입력해 주십시오, 보통은 여러분 ISP의 이름을 입력하시면 됩니다."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
 msgid "Enter the password for this account."
@@ -2686,8 +2715,8 @@ msgid ""
 "Enter the password for your account. If you do not know it, please contact "
 "your ISP."
 msgstr ""
-"여러분 계정의 패스워드를 입력해 주십시오. 만일 모르신다면, 여러분 ISP로 "
-"문의하시기 바랍니다."
+"여러분 계정의 패스워드를 입력해 주십시오. 만일 모르신다면, 여러분 ISP로 문의"
+"하시기 바랍니다."
 
 #: src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
 msgid "Enter the provider name for this account."
@@ -2878,9 +2907,9 @@ msgid ""
 "example, if you need to reach an outside line, or disable call waiting, put "
 "the necessary numbers here."
 msgstr ""
-"일반 전화 번호를 누르시기 전에 다른 번호를 입력하십시오. 예를 들면, 외부로 "
-"전화를 거시거나, 전화 대기를 취소하시려면 해당하는 번호들을 여기에 "
-"입력하십시오."
+"일반 전화 번호를 누르시기 전에 다른 번호를 입력하십시오. 예를 들면, 외부로 전"
+"화를 거시거나, 전화 대기를 취소하시려면 해당하는 번호들을 여기에 입력하십시"
+"오."
 
 #: src/netconfpkg/gui/DialupDruid.glade.h:4
 #: src/netconfpkg/gui/dialupconfig.glade.h:20
@@ -3515,8 +3544,8 @@ msgid ""
 "Each device needs to be attached to a physical device, which can be selected "
 "below."
 msgstr ""
-"개별 장치는 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 "
-"있습니다."
+"개별 장치는 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 있습"
+"니다."
 
 #: src/netconfpkg/gui/ctcconfig.glade.h:5
 #: src/netconfpkg/gui/dslconfig.glade.h:15
@@ -3586,8 +3615,8 @@ msgstr "콜백 설정"
 #: src/netconfpkg/gui/dialupconfig.glade.h:8
 msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr ""
-"만일 새로운 ISP 데이타베이스에서 새로운 제공사업자를 선택하기 원하시면, "
-"이곳을 클릭해 주십시오."
+"만일 새로운 ISP 데이타베이스에서 새로운 제공사업자를 선택하기 원하시면, 이곳"
+"을 클릭해 주십시오."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:9
 msgid "Compression"
@@ -3628,8 +3657,8 @@ msgstr "VJ TCP/IP 헤더 압축 활성화(_V)"
 #: src/netconfpkg/gui/dialupconfig.glade.h:25
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr ""
-"지역 전화 번호를 입력해 주십시오. 모뎀을 사용하시는 경우에 대해서만 선택 "
-"사항입니다."
+"지역 전화 번호를 입력해 주십시오. 모뎀을 사용하시는 경우에 대해서만 선택 사항"
+"입니다."
 
 #: src/netconfpkg/gui/dialupconfig.glade.h:27
 msgid "Han_gup Timeout:"
@@ -3766,8 +3795,8 @@ msgid ""
 "Enter the Access Concentrator name, if you have been given one by your ISP. "
 "In most cases you can leave this blank."
 msgstr ""
-"인터넷 서비스 제공사업자(ISP)에서 액세스 집선 장치의 이름을 받으셨다면 그 "
-"이름을 입력하십시오. 대부분의 경우 빈칸으로 두셔도 됩니다."
+"인터넷 서비스 제공사업자(ISP)에서 액세스 집선 장치의 이름을 받으셨다면 그 이"
+"름을 입력하십시오. 대부분의 경우 빈칸으로 두셔도 됩니다."
 
 #: src/netconfpkg/gui/dslconfig.glade.h:9
 msgid ""
@@ -4046,8 +4075,8 @@ msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
 msgstr ""
-"개별 접속은 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 "
-"있습니다."
+"개별 접속은 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 있습"
+"니다."
 
 #: src/netconfpkg/gui/sharedtcpip.glade.h:10
 #: src/netconfpkg/gui/tcpipdialog.glade.h:10
@@ -4234,8 +4263,8 @@ msgid ""
 "Note that DNS information from automatic device configuration will take "
 "precedence over any settings done globally."
 msgstr ""
-"자동 장치 설정에서 생기는 DNS 정보는 전체적으로 설정된 어떤 세팅들 보다 "
-"우선된다는 것을 기억해 주십시오."
+"자동 장치 설정에서 생기는 DNS 정보는 전체적으로 설정된 어떤 세팅들 보다 우선"
+"된다는 것을 기억해 주십시오."
 
 #: src/netconfpkg/gui/tcpipdialog.glade.h:28
 msgid "Routing"
@@ -4264,8 +4293,8 @@ msgid ""
 "Network Administrator or Internet Service Provider."
 msgstr ""
 "만일 여러분 네트워크가 지원한다면 인터페이스에 대한 IP 주소 세팅을 자동으로 "
-"설정하실 수 있습니다. 수동 설정에 대한 정보는, 네트워크 관리자나 인터넷 "
-"서비스 제공 회사에 문의하시기 바랍니다."
+"설정하실 수 있습니다. 수동 설정에 대한 정보는, 네트워크 관리자나 인터넷 서비"
+"스 제공 회사에 문의하시기 바랍니다."
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:1
 msgid "00:00:00:00:00:00"
@@ -4277,9 +4306,9 @@ msgid ""
 "below. Device Alias support allows you to use multiple virtual devices for "
 "one physical device."
 msgstr ""
-"개별 장치는 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 "
-"있습니다. 장치 별칭(알리아스) 지원은 여러분이 한개의 장치에 여러 가상 장치를 "
-"사용하시는 것을 가능하게 해줍니다."
+"개별 장치는 물리적 장치와 연결되어야 하며 그 장치는 아래에서 선택하실 수 있습"
+"니다. 장치 별칭(알리아스) 지원은 여러분이 한개의 장치에 여러 가상 장치를 사용"
+"하시는 것을 가능하게 해줍니다."
 
 #: src/netconfpkg/gui/tokenringconfig.glade.h:4
 msgid "Enable _Device Alias support"
@@ -4344,4 +4373,3 @@ msgstr "네트워크 장치 제어"
 #: internet-druid.desktop.in.h:1
 msgid "Internet Configuration Wizard"
 msgstr "인터넷 설정 마법사"
-
