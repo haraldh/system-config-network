@@ -8,6 +8,7 @@ License: GPL
 Group: Applications/System 
 BuildArch: noarch
 Requires: initscripts >= 5.99, usermode , alchemist
+BuildRequires: alchemist, alchemist-devel
 Obsoletes: isdn-config internet-config
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
