@@ -130,6 +130,10 @@ class ConfISDN:
                 self.Description = self.get_value(line)
             elif line[:7] == "MODULE=":
                 self.ModuleName = self.get_value(line)
+            elif line[:10] == "VENDOR_ID=":
+                self.VendorId = self.get_value(line)
+            elif  line[:10] == "DEVICE_ID=":
+                self.DeviceId = self.get_value(line)
             elif line[:9] == "FIRMWARE=":
                 self.Firmware = self.get_value(line)
             elif line[:10] == "RESOURCES=":
