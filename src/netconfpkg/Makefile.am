@@ -1,5 +1,4 @@
 GLADE_FILES = \
-	basicdialog.glade \
 	chooseprovider.glade \
 	cipeconfig.glade \
 	devicetype.glade \
@@ -17,7 +16,7 @@ GLADE_FILES = \
 	devicetype.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
-                ProviderList.py NetworkList.py
+                ProviderList.py NetworkList.py	Firewall.py 
 
 IDL_FILES = \
 	DeviceList.idl \
@@ -29,7 +28,6 @@ IDL_FILES = \
 
 PYTHON_FILES = \
 	basicdialog.py \
-	CheckList.py \
 	ConfSMB.py \
 	deviceconfig.py \
 	devicetype.py \
@@ -40,7 +38,6 @@ PYTHON_FILES = \
 	edithosts.py \
 	ethernetconfig.py \
 	ethernethardware.py \
-	Firewall.py \
 	genClass.py \
 	__init__.py \
 	isdnhardware.py \
