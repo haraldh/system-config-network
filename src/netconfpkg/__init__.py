@@ -23,7 +23,8 @@
 # is) ;). Nice for plugin mechanism.
 import netconfpkg
 
-from genClass import GenClass_read_classfile
+from rhpl.genClass import GenClass_read_classfile
+
 for idl_file in [ "DeviceList.idl",
                   "HardwareList.idl",
                   "ProfileList.idl"]:
