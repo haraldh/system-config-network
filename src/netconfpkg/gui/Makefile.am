@@ -35,6 +35,7 @@ GLADE_FILES = \
 	tonline.glade \
 	wirelessconfig.glade \
 	WirelessInterfaceDruid.glade \
+	neat-control.glade \
 	ctcconfig.glade
 
 PYTHON_FILES = \
@@ -79,7 +80,7 @@ PYTHON_FILES = \
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
 
-BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
+BUILT_SOURCES = $(if $(shell test -w $(srcdir) && echo OK), \
 		     $(patsubst %.py,%.pyc,$(PYTHON_FILES)))
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg/gui
@@ -93,4 +94,4 @@ clean:
 
 %.pyc: %.py
 	@echo "Compiling because of " $*
-	@PYTHON@ @PY_COMPILEALL@ -l -d . $srcdir
+	@PYTHON@ @PY_COMPILEALL@ -l -d . $(srcdir)
