@@ -15,9 +15,9 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDevice import *
+from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import DSL
 import netconfpkg 
 
 _devADSLDialog = None
@@ -68,3 +68,6 @@ def setDevADSLWizard(wizard):
 
 df = getDeviceFactory()
 df.register(DevADSL, DSL)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.4 $"

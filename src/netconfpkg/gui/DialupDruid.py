@@ -401,3 +401,6 @@ class DialupDruid(InterfaceCreator):
             dialup.Inherits = 'Modem0'
             dialup.StupidMode = TRUE
             dialup.InitString = ''
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.23 $"

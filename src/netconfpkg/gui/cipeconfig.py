@@ -224,3 +224,6 @@ class cipeConfigDialog(deviceConfigDialog):
         widget.set_text(mytxt)
 
 NCDevCipe.setDevCipeDialog(cipeConfigDialog)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.24 $"

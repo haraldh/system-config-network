@@ -691,3 +691,6 @@ def prepareRoot(root):
         else:
             log.log(2, "%s already exists" % (root + dir))
             
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.76 $"

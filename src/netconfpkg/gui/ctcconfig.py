@@ -69,3 +69,6 @@ class ctcConfigDialog(deviceConfigDialog):
         deviceConfigDialog.dehydrate(self)
         self.device.Device = self.xml.get_widget('deviceEntry').get_text()
         self.device.Mtu = str(self.xml.get_widget('mtuEntry').get_text())
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.10 $"

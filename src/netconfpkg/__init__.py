@@ -1,3 +1,6 @@
+"""Package for network configuration.
+Provides reading and writing of the system's configuration files"""
+
 # -*- python -*-
 ## Copyright (C) 2001-2003 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -22,6 +25,7 @@
 # dirty hack but does the job(tm). It basically finds all .py files in the
 # package directory and imports from all found files (except __init__.py that
 # is) ;). Nice for plugin mechanism.
+
 import sys
 
 __netconfpkg = sys.modules[__name__]
@@ -53,3 +57,7 @@ del _i
 del _files
 del _cmd
 del __netconfpkg
+
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.14 $"

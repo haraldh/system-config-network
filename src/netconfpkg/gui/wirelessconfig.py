@@ -155,3 +155,6 @@ class wirelessConfigDialog(deviceConfigDialog):
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.21 $"

@@ -93,3 +93,6 @@ class editAdressDialog:
         self.route.Netmask = self.xml.get_widget('netmaskEntry').get_text()
         self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text()
 
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.12 $"

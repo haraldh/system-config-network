@@ -76,6 +76,18 @@ def handleException((type, value, tb), progname, version, debug=None):
         text += str(t) + ":"
     text += extxt[0]
     text += joinfields(list, "")
+
+    trace = tb
+    while trace.tb_next:
+        trace = trace.tb_next
+    frame = trace.tb_frame
+    text += ("\nLocal variables in innermost frame:\n")
+    try:
+        for (key, value) in frame.f_locals.items():
+            text += "%s: %s\n" % (key, value)
+    except:
+        pass
+
     sys.stderr.write(text)
     if debug:
         pdb.post_mortem (tb)
@@ -221,7 +233,6 @@ if __name__ == '__main__':
         if os.getuid() == 0 or chroot:
             NCProfileList.updateNetworkScripts()
             NCDeviceList.updateNetworkScripts()
-
             
         if not len(devlists):
             devlists = [getDeviceList(), getHardwareList(),
@@ -327,3 +338,6 @@ if __name__ == '__main__':
         sys.exit(code)
     except:
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION, debug = debug)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.11 $"

@@ -190,3 +190,6 @@ class ModemInterface:
             self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
 
 NCDevModem.setDevModemWizard(ModemInterface)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.31 $"

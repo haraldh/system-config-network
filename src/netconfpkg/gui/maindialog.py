@@ -227,7 +227,6 @@ class mainDialog:
 
         self.dialog.show()
         
-        self.dialog.show()
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
 
@@ -491,13 +490,16 @@ class mainDialog:
                 string.join(prof.DNS.SearchList))
         else:
             self.xml.get_widget('searchDnsEntry').set_text('')
-        
+
+        row = 0
         for host in prof.HostsList:
             #88357
             if host.IP == "127.0.0.1":
                 continue
             hclist.append([host.IP, host.Hostname,
                            string.join(host.AliasList, ' ')])
+            hclist.set_row_data(row, host)
+            row += 1
             
         if self.initialized:
             self.appBar.pop()
@@ -562,7 +564,7 @@ class mainDialog:
         # Check if we aren't called in a dialog destroy event
         if self.xml.get_widget ("addButton") == None:
             return
-        
+
         self.xml.get_widget ("addButton").set_sensitive(false)
         self.xml.get_widget ("editButton").set_sensitive(false)
         self.xml.get_widget ("copyButton").set_sensitive(false)
@@ -1068,7 +1070,7 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        host = hostslist[clist.selection[0]]
+        host = clist.get_row_data(clist.selection[0])
 
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
@@ -1104,7 +1106,7 @@ class mainDialog:
         todel.reverse()
 
         for i in todel:
-            del prof.HostsList[i]
+            prof.HostsList.remove(clist.get_row_data(i))
             
         prof.HostsList.commit()
         self.hydrateProfiles()
@@ -1403,3 +1405,6 @@ class mainDialog:
         dlg.show()
 
 
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.25 $"

@@ -111,12 +111,34 @@ class Dialup(Dialup_base):
             else:
                 self.DialMode = DM_MANUAL
 
+        if self.Login:
+            log.log(6, "Looking for %s" % self.Login)
+            papconf = getPAPConf()
+            chapconf = getCHAPConf()
+            devidstr = self.getParent().DeviceId
+            for conf in [chapconf, papconf]:
+                if conf.has_key(self.Login):
+                    log.log(6, "Found %s" % conf[self.Login])
+                    if conf[self.Login].has_key("*"):
+                        self.Password = conf[self.Login]["*"]
+                    if conf[self.Login].has_key(devidstr):
+
+                        self.Password = conf[self.Login][devidstr]
+                        log.log(6, "Found %s" % self.Password)
+                        break
+        else:
+            log.log(6, "No self.login!!!")
+            
     def save(self, parentConf):
         if self.Login:
             papconf = getPAPConf()
             chapconf = getCHAPConf()
+            # set *
+            papconf[self.Login] = str(self.Password)
+            chapconf[self.Login] = str(self.Password)
+            # set specific auth also
             papconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
-            chapconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
+            chapconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)            
         if self.DialMode == DM_AUTO:
             parentConf['DEMAND'] = 'yes'
         else:
@@ -144,7 +166,6 @@ class DslDialup(Dialup):
         Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
-        Dialup.load(self, parentConf)
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -163,15 +184,11 @@ class DslDialup(Dialup):
             else:
                 self.__dict__[selfkey] = false            
 
+        # We need self.login, so we call it this late
+        Dialup.load(self, parentConf)
+
         if conf.has_key("PASS"):
             self.Password = conf["PASS"]            
-        elif self.Login:
-            papconf = getPAPConf()
-            chapconf = getCHAPConf()
-            for conf in [chapconf, papconf]:
-                if conf.has_key(self.Login):
-                    if conf[self.Login].has_key("*"):
-                        self.Password = conf[self.Login]["*"]
 
         if parentConf.has_key('IDLETIMEOUT'):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
@@ -271,7 +288,6 @@ class IsdnDialup(Dialup):
         Dialup.__init__(self, list, parent)        
 
     def load(self, parentConf):
-        Dialup.load(self, parentConf)
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -295,6 +311,9 @@ class IsdnDialup(Dialup):
                     self.__dict__[selfkey] = false            
             else:
                 self.__dict__[selfkey] = false            
+
+        # We need self.login, so we call it this late
+        Dialup.load(self, parentConf)
 
         if conf.has_key('DEFROUTE'):
             if conf['DEFROUTE'] == 'yes':
@@ -335,13 +354,6 @@ class IsdnDialup(Dialup):
 
         if conf.has_key("PASSWORD"):
             self.Password = conf["PASSWORD"]
-        elif self.Login:
-            papconf = getPAPConf()
-            chapconf = getCHAPConf()
-            for conf in [chapconf, papconf]:
-                if conf.has_key(self.Login):
-                    if conf[self.Login].has_key("*"):
-                        self.Password = conf[self.Login]["*"]
 
         self.commit(changed=false)
 
@@ -435,7 +447,6 @@ class ModemDialup(Dialup):
         Dialup.__init__(self, list, parent)                
 
     def load(self, parentConf):
-        Dialup.load(self, parentConf)
         parent = self.getParent()
 
         if parent:
@@ -474,6 +485,9 @@ class ModemDialup(Dialup):
                 self.__dict__[selfkey] = true
             else:
                 self.__dict__[selfkey] = false
+
+        # We need self.login, so we call it this late
+        Dialup.load(self, parentConf)
 
         #
         # Read Modem Init strings
@@ -525,17 +539,6 @@ class ModemDialup(Dialup):
                         #print "Found " + sect
                         self.Inherits = sect
                         break
-
-        #
-        # if there is no password yet, try to get it from pap/chap
-        #
-        if self.Login and not self.Password:
-            papconf = getPAPConf()
-            chapconf = getCHAPConf()
-            for conf in [chapconf, papconf]:
-                if conf.has_key(self.Login):
-                    if conf[self.Login].has_key("*"):
-                        self.Password = conf[self.Login]["*"]
 
         
     def save(self, parentConf):
@@ -659,3 +662,6 @@ if __name__ == '__main__':
     dev.load('tdslHomeTonline')
     print dev.Dialup.Login
     dev.save()
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.61 $"

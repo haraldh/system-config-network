@@ -263,3 +263,6 @@ class IsdnInterface:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
 NCDevIsdn.setDevIsdnWizard(IsdnInterface)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.16 $"

@@ -32,3 +32,6 @@ for _i in _files:
 del _i
 del _files
 del _cmd
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.3 $"

@@ -101,7 +101,7 @@ def splash_screen(gfx = None):
         window.add(pixmap_wid)
         pixmap_wid.show_now()
     else:
-        window = gtk.Window()
+        window = gtk.Window(gtk.WINDOW_POPUP)
         window.set_title(PRG_NAME)
         window.set_position (gtk.WIN_POS_CENTER)
         window.set_border_width(5)
@@ -120,34 +120,8 @@ def splash_screen(gfx = None):
 def Usage():
     print _("redhat-config-network - network configuration tool\n\nUsage: redhat-config-network -v --verbose")
 
-if __name__ == '__main__':
-    import getopt
-    class BadUsage: pass
-    splash_window = None
+def main():
     from netconfpkg import NC_functions
-    NC_functions.verbose = 0
-    
-    try:
-        opts, args = getopt.getopt(cmdline, "vh",
-                                   [
-                                    "verbose",
-                                    "help",
-                                    ])
-        for opt, val in opts:
-            if opt == '-v' or opt == '--verbose':
-                NC_functions.verbose += 1
-                continue
-            
-            if opt == '-h' or opt == '--help':
-                Usage()
-                sys.exit(0)
-
-            raise BadUsage
-
-    except (getopt.error, BadUsage):
-        Usage()
-        sys.exit(1)
-
     log.set_loglevel(NC_functions.verbose)
 
     try:
@@ -180,11 +154,12 @@ if __name__ == '__main__':
                 sys.exit(1)                
 
         window = mainDialog()
+
         
         if splash_window:
             splash_window.destroy()
             del splash_window
-            
+
         gtk.main()
 
     except SystemExit, code:
@@ -196,4 +171,60 @@ if __name__ == '__main__':
             del splash_window
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
+if __name__ == '__main__':
+    import getopt
+    class BadUsage: pass
+    splash_window = None
+    from netconfpkg import NC_functions
+    NC_functions.verbose = 0
+    hotshot = 0
+    
+    try:
+        opts, args = getopt.getopt(cmdline, "vh",
+                                   [
+                                    "verbose",
+                                    "help",
+                                    "hotshot",
+                                    ])
+        for opt, val in opts:
+            if opt == '-v' or opt == '--verbose':
+                NC_functions.verbose += 1
+                continue
+
+            if opt == '--hotshot':
+                hotshot += 1
+                continue
+            
+            if opt == '-h' or opt == '--help':
+                Usage()
+                sys.exit(0)
+
+            raise BadUsage
+
+    except (getopt.error, BadUsage):
+        Usage()
+        sys.exit(1)
+        
+    if hotshot:
+        import tempfile
+        from hotshot import Profile
+        import hotshot.stats
+        filename = tempfile.mktemp()
+        prof = Profile(filename)
+        try:
+            prof = prof.runcall(main)
+        except SystemExit:
+            pass
+
+        s = hotshot.stats.load(filename)
+        s.strip_dirs().sort_stats('time').print_stats(20)
+        s.strip_dirs().sort_stats('cumulative').print_stats(20)
+        os.unlink(filename)
+               
+    else:
+        main()
+        
     sys.exit(0)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.191 $"

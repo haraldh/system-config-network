@@ -88,6 +88,14 @@ class MyConfModules(ConfModules):
         log.ldel(2, self.filename, varname)
         self.seek(place)
         
+_MyConfModules = None
+def getMyConfModules(refresh = None):
+    global _MyConfModules
+    if _MyConfModules == None or refresh:
+        _MyConfModules = MyConfModules()
+    return _MyConfModules
+
+        
 class ConfHWConf(Conf):
     def __init__(self):
         Conf.__init__(self, netconfpkg.ROOT + HWCONF)
@@ -157,7 +165,7 @@ class HardwareList(HardwareList_base):
 
     def updateFromKudzu(self):
         import kudzu
-        modules = ConfModules()
+        modules = getMyConfModules()
         ethlist = ethtool.get_devices()
 
         hdellist = []
@@ -280,7 +288,7 @@ class HardwareList(HardwareList_base):
 
 
     def updateFromSystem(self):
-        modules = ConfModules()
+        modules = getMyConfModules()
         modinfo = getModInfo()            
 
         self.updateFromKudzu()
@@ -357,7 +365,7 @@ class HardwareList(HardwareList_base):
 
 
     def updateFromModules(self):
-        modules = ConfModules()
+        modules = getMyConfModules()
         modinfo = getModInfo()
         #
         # Read /etc/modules.conf
@@ -519,7 +527,7 @@ class HardwareList(HardwareList_base):
         #self.updateFromSystem()
 
     def save(self):
-        modules = MyConfModules()
+        modules = getMyConfModules(refresh = true)
         if not os.access(netconfpkg.ROOT + WVDIALCONF, os.R_OK):
             wvdial  = None
         else:
@@ -716,3 +724,6 @@ if __name__ == '__main__':
         print "-----------------------------------------"
 
     hl.save()
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.69 $"

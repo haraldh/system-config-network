@@ -331,7 +331,6 @@ def xml_signal_autoconnect (xml, map):
         else:                
             xml.signal_connect(signal, func)
 
-
 def gui_run(command, argv, searchPath = 0,
               root = '/', stdin = 0,
               catchfd = 1, closefd = -1):
@@ -586,3 +585,6 @@ def __getXmlFile():
 set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.24 $"

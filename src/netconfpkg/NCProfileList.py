@@ -220,6 +220,8 @@ class ProfileList(ProfileList_base):
             break
         
     def save(self):
+        # Just to be safe...
+        os.umask(0022)
         self.commit(changed=false)
         devicelist = NCDeviceList.getDeviceList()
 
@@ -296,6 +298,7 @@ class ProfileList(ProfileList_base):
             nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
                                      prof.ProfileName + '/network')
             nwconf['HOSTNAME'] = prof.DNS.Hostname
+            
             dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + prof.ProfileName + \
                                '/resolv.conf'
 
@@ -489,3 +492,6 @@ if __name__ == '__main__':
         print "---------"
 
     pl.save()
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.72 $"

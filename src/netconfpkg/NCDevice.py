@@ -70,7 +70,7 @@ class ConfDevice(Conf.ConfShellVar):
 class ConfRoute(Conf.ConfShellVar):
     def __init__(self, name):
         Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + name + '.route')
-        self.chmod(0600)
+        self.chmod(0644)
 
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
@@ -243,6 +243,8 @@ class Device(Device_base):
         self.commit(changed=false)
                 
     def save(self):
+        # Just to be safe...
+        os.umask(0022)
         self.commit()
 
         if self.oldname and (self.oldname != self.DeviceId):
@@ -438,3 +440,6 @@ class Device(Device_base):
 ##                 log.log(4, "createAttr(%s) - no devclass" % child)
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.85 $"

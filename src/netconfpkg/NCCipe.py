@@ -165,3 +165,6 @@ class Cipe(Cipe_base):
                 if not conf.has_key("cttl"): conf["cttl"] = '64'
         
                 conf.write()
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.15 $"

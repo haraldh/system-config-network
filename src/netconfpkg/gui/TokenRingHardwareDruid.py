@@ -153,3 +153,6 @@ class tokenringHardware:
             if modInfo[i].has_key('description') and \
                    modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i            
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.14 $"

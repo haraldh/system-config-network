@@ -26,7 +26,7 @@ def getHardwareFactory():
     return _hwFac
 
 from rhpl.log import log
-from NC_functions import *
+#from NC_functions import *
 from netconfpkg.NCHardware import Hardware
 import NCDevice
 
@@ -36,12 +36,16 @@ class HardwareFactory(dict):
             raise ValueError, "First argument has to be a subclass of Hardware!"        
         if not subtype:
             if self.has_key(hwtype):
-                raise KeyError, "%s is already registered" % hwtype
+                #raise KeyError, "%s is already registered" % hwtype
+                log.log(1, "KeyError, %s is already registered" % hwtype)
+                return
             else:
                 self[hwtype] = { 0 : theclass }
         else:
             if self.has_key(hwtype) and self[hwtype].has_key(subtype):
-                raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
+                #raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
+                log.log(1, "KeyError %s.%s is already registered" % (hwtype, subtype))
+                return
             else:
                 if not self.has_key(hwtype):
                     self[hwtype] = {}
@@ -58,3 +62,6 @@ class HardwareFactory(dict):
             
 
 from netconfpkg.plugins import *
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.7 $"

@@ -176,3 +176,6 @@ class ethernetHardwareDialog:
 
 NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
 NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.26 $"

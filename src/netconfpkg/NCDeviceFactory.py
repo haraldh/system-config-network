@@ -26,7 +26,7 @@ def getDeviceFactory():
 
     return _devFac
 
-from NC_functions import *
+#from NC_functions import *
 from netconfpkg.NCDevice import Device
 
 class DeviceFactory(dict):
@@ -36,12 +36,16 @@ class DeviceFactory(dict):
             
         if not subtype:
             if self.has_key(devtype):
-                raise KeyError, "%s is already registered" % devtype
+                #raise KeyError, "%s is already registered" % devtype
+                log.log(1, "KeyError, %s is already registered" % devtype)
+                return
             else:
                 self[devtype] = { 0 : theclass }
         else:
             if self.has_key(devtype) and self[devtype].has_key(subtype):
-                raise KeyError, "%s.%s is already registered" % (devtype, subtype)
+                #raise KeyError, "%s.%s is already registered" % (devtype, subtype)
+                log.log(1, "KeyError, %s.%s is already registered" % (devtype, subtype))
+                return
             else:
                 if not self.has_key(devtype):
                     self[devtype] = {}
@@ -58,3 +62,6 @@ class DeviceFactory(dict):
             return self[devtype][0]
 
 from netconfpkg.plugins import *
+__author__ = "Harald Hoyer <harald@redhat.com>"
+__date__ = "$Date: 2003/05/16 09:45:00 $"
+__version__ = "$Revision: 1.6 $"
