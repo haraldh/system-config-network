@@ -269,8 +269,8 @@ class HardwareList(HardwareList_base):
                 
 
                 # No, no, no... only delete known options!!!
-                #modules[hw.Card.ModuleName] = {}
-                #modules[hw.Card.ModuleName]['options'] = {}
+                #WRONG: modules[hw.Card.ModuleName] = {}
+                #WRONG: modules[hw.Card.ModuleName]['options'] = {}
                 #
                 # Better do it this way!
                 if modules[hw.Card.ModuleName].has_key('options'):
