@@ -88,6 +88,8 @@ class cipeConfigDialog(deviceConfigDialog):
         
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
+            if self.device.Device and dev.Device == self.device.Device:
+                continue
             d = str(dev.Device)
             if not dev.IP or dev.IP == "":
                 d = d + _(' (dynamic)')
@@ -146,7 +148,10 @@ class cipeConfigDialog(deviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
-        self.device.Cipe.TunnelDevice = hw
+        if self.device.Cipe.TunnelDevice == "None":
+            self.device.Cipe.TunnelDevice = None
+        else:
+            self.device.Cipe.TunnelDevice = hw
 
         self.device.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
         self.device.Cipe.LocalPort = int(self.xml.get_widget("localPortEntry").get_text())

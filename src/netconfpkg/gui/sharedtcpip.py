@@ -10,8 +10,8 @@ import GdkImlib
 import string
 import gettext
 import re
-import NCHardwareList
-import NC_functions
+from netconfpkg import NCHardwareList
+from netconfpkg import NC_functions
 import ethtool
 
 from netconfpkg.gui import GUI_functions

@@ -52,7 +52,7 @@ class deviceConfigDialog:
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
         self.xml = libglade.GladeXML(glade_file, None, domain=GUI_functions.PROGNAME)
-
+        self.dialog = self.xml.get_widget("Dialog")
         self.xml.signal_autoconnect(
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -64,7 +64,6 @@ class deviceConfigDialog:
 
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
-        self.dialog = self.xml.get_widget("Dialog")
         GUI_functions.load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
 

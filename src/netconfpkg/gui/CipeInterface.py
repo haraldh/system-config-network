@@ -131,7 +131,7 @@ class CipeInterface(InterfaceCreator):
         cipe = self.device.Cipe
         
         s = _("You have selected the following information:") + "\n\n" + "    "\
-            + _("Device:") + " " + str(self.device.DeviceId) + "\n" + "    "\
+            + _("Device:") + " " + str(self.device.Device) + "\n" + "    "\
             + _("Tunnel through Device:") + " " + str(cipe.TunnelDevice) + "\n" + "    "\
             + _("Local Port:") + " " + str(cipe.LocalPort) + "\n" + "    "
         
@@ -157,6 +157,8 @@ class CipeInterface(InterfaceCreator):
         desc = [_('None - Server Mode')];
 
         for dev in self.devicelist:
+            if self.device.Device and dev.Device == self.device.Device:
+                continue
             d = str(dev.Device)
             if not dev.IP or dev.IP == "":
                 d = d + _(' (dynamic)')
@@ -177,8 +179,10 @@ class CipeInterface(InterfaceCreator):
         if self.device.Device:
             self.xml.get_widget("cipeDeviceEntry").set_text(self.device.Device)
 
-        if cipe.LocalPort:
-            self.xml.get_widget("localPortEntry").set_text(str(self.device.Cipe.LocalPort))
+        if not cipe.LocalPort:
+            cipe.LocalPort = 7777
+            
+        self.xml.get_widget("localPortEntry").set_text(str(cipe.LocalPort))            
 
         if cipe.RemotePeerAddress:
             vals = string.split(cipe.RemotePeerAddress, ":")
@@ -201,10 +205,14 @@ class CipeInterface(InterfaceCreator):
         if cipe.RemoteVirtualAddress:
             self.xml.get_widget("remoteVirtualAddressEntry").set_text(self.device.Cipe.RemoteVirtualAddress)
         if self.device.IP: self.xml.get_widget("localVirtualAddressEntry").set_text(self.device.IP)
+
         widget = self.xml.get_widget("secretKeyEntry")
         
         if cipe.SecretKey:
             widget.set_text(self.device.Cipe.SecretKey)
+        #else:
+        #    self.on_generateKeyButton_clicked()
+            
         widget.set_position(0)
 
         self.updateRemoteOptions()
@@ -213,13 +221,18 @@ class CipeInterface(InterfaceCreator):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
-        self.device.Cipe.TunnelDevice = hw
+        if self.device.Cipe.TunnelDevice == "None":
+            self.device.Cipe.TunnelDevice = None
+        else:
+            self.device.Cipe.TunnelDevice = hw
 
         self.device.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
+        self.device.DeviceId = self.device.Device
         self.device.Cipe.LocalPort = int(self.xml.get_widget("localPortEntry").get_text())
         self.device.Cipe.RemoteVirtualAddress = self.xml.get_widget("remoteVirtualAddressEntry").get_text()
-        self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()
+        self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()        
         self.device.Cipe.SecretKey = self.xml.get_widget("secretKeyEntry").get_text()
+
         if self.xml.get_widget("remotePeerAddressCB").get_active():
             self.device.Cipe.RemotePeerAddress = "0.0.0.0"
         else:
@@ -293,5 +306,12 @@ class CipeInterface(InterfaceCreator):
         widget.set_position(0)
 
     def check(self):
+        keywidget = self.xml.get_widget("secretKeyEntry")
+        txt = keywidget.get_text()
+        if not txt or txt == "":
+            GUI_functions.gui_error_dialog(_("You must enter a secret key \nor generate one"),
+                             None, dialog_type="error",
+                             broken_widget = keywidget)
+            return FALSE
         return TRUE
             
