@@ -60,7 +60,8 @@ class isdnHardwareDialog:
         load_icon("network.xpm", self.dialog)
         self.dialog.set_close(TRUE)
         self.setup()
-
+        self.hydrate()
+        
     def on_Dialog_delete_event(self, *args):
         pass
 
@@ -106,9 +107,7 @@ class isdnHardwareDialog:
             self.xml.get_widget("io2Entry").set_sensitive(FALSE)
 
     def hydrate(self):
-        has_card = FALSE
-        hardwarelist = NCHardwareList.getHardwareList()
-        
+        has_card = FALSE        
         hw = self.hw
         
         if not hw.Name:
@@ -124,6 +123,8 @@ class isdnHardwareDialog:
                 hw.Card.IoPort = conf.IoPort
                 hw.Card.IoPort1 = conf.IoPort1
                 hw.Card.IoPort2 = conf.IoPort2
+        else:
+            has_card = TRUE
             
         if has_card:    
                 if hw.Card.ChannelProtocol == '2':
@@ -131,7 +132,7 @@ class isdnHardwareDialog:
                 else:
                     self.xml.get_widget("1tr6Button").set_active(TRUE)
 
-                self.xml.get_widget("adapterEntry").set_text(self.cardname)
+                self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
                 
                 if hw.Card.IRQ:
                     self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
