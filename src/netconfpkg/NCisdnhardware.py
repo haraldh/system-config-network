@@ -77,7 +77,7 @@ card = {
 
 kernelver = os.uname()[2]
 if os.path.exists('/lib/modules/'+kernelver+'/kernel/drivers/isdn/hisax/hisax_fcpcipnp.o'):
-    card["AVM PCI (Fritz!PCI v2)"] = [ "", "", "", "", "", "", "1244:0e00", "", "hisax_fcpcipnp" ]
+    card["AVM PCI (Fritz!PCI v2)"] = [ "0", "", "", "", "", "", "1244:0e00", "", "hisax_fcpcipnp" ]
 	
 class ConfISDN:
     def __init__(self):
@@ -159,22 +159,25 @@ class ConfISDN:
 
             rs = "RESOURCES=\""
             if self.Type:
-                rs = rs + "type=" + str(self.Type) + " protocol=" + str(self.ChannelProtocol)
-                if self.IRQ:
-                    rs = rs + " irq=" + str(self.IRQ)
-                if self.Id:
-                    rs = rs + " id=" + str(self.Id)
-                if self.IoPort:
-                    if self.Type == "4" or self.Type == "19" or self.Type == "24":
-                        rs = rs + " io0=" + str(self.IoPort)
-                    else:
-                        rs = rs + " io=" + str(self.IoPort)
-                if self.IoPort1:
-                    rs = rs + " io1=" + str(self.IoPort1)
-                if self.IoPort2:
-                    rs = rs + " io2=" + str(self.IoPort2)
-                if self.Mem:
-                    rs = rs + " mem=" + str(self.Mem)
+                if self.Type == '0':
+                    rs = rs + "protocol=" + str(self.ChannelProtocol)
+                else:
+                    rs = rs + "type=" + str(self.Type) + " protocol=" + str(self.ChannelProtocol)
+                    if self.IRQ:
+                        rs = rs + " irq=" + str(self.IRQ)
+                    if self.Id:
+                        rs = rs + " id=" + str(self.Id)
+                    if self.IoPort:
+                        if self.Type == "4" or self.Type == "19" or self.Type == "24":
+                            rs = rs + " io0=" + str(self.IoPort)
+                        else:
+                            rs = rs + " io=" + str(self.IoPort)
+                    if self.IoPort1:
+                        rs = rs + " io1=" + str(self.IoPort1)
+                    if self.IoPort2:
+                        rs = rs + " io2=" + str(self.IoPort2)
+                    if self.Mem:
+                        rs = rs + " mem=" + str(self.Mem)
             else:
                 rs = rs + "NONE"
 
