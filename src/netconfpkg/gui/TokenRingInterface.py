@@ -35,7 +35,7 @@ import os
 from TokenRingHardwareDruid import tokenringHardware
 from InterfaceCreator import InterfaceCreator
 
-class TokenringInterface(InterfaceCreator):
+class TokenRingInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=TOKENRING, do_save = 1,
                  druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)

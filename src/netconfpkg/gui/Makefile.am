@@ -2,6 +2,7 @@ GLADE_FILES = \
 	ADSLInterfaceDruid.glade \
 	chooseprovider.glade \
 	cipeconfig.glade \
+	CipeInterfaceDruid.glade \
 	devicetype.glade \
 	dialupconfig.glade \
 	DialupDruid.glade \
@@ -24,6 +25,7 @@ GLADE_FILES = \
 	tcpipdialog.glade \
 	tokenringconfig.glade \
 	TokenRingHardwareDruid.glade \
+	TokenRingInterfaceDruid.glade \
 	tokenringhardware.glade \
 	wirelessconfig.glade \
 	ctcconfig.glade
@@ -31,6 +33,7 @@ GLADE_FILES = \
 PYTHON_FILES = \
 	ADSLInterface.py \
 	cipeconfig.py \
+	CipeInterface.py \
 	deviceconfig.py \
 	devicetype.py \
 	dialupconfig.py \
@@ -61,6 +64,7 @@ PYTHON_FILES = \
 	tcpdialog.py \
 	tokenringconfig.py \
 	TokenRingHardwareDruid.py \
+	TokenRingInterface.py \
 	tokenringhardware.py \
 	wirelessconfig.py \
 	ctcconfig.py
