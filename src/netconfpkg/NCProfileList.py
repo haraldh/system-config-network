@@ -288,8 +288,6 @@ class ProfileList(ProfileList_base):
                             devName = dev.Device
                             if dev.Alias != None:
                                 devName = devName + ":" + str(dev.Alias)
-                            else:
-                                print "%s has no Alias" % devName
                         break
 
                 try:
@@ -312,8 +310,6 @@ class ProfileList(ProfileList_base):
 
                 try:
                     os.link(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-                    print "linking %s to %s" % (SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
-
                 except:
                     print 'Darn, linking device '+str(devName)+','+str(devId)+' failed...'
 
