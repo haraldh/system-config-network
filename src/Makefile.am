@@ -36,6 +36,7 @@ moduleinfo_DATA = module-info
 install-exec-local:
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir)
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
+	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/
 	softdir=$(pkgdatadir); \
 	p=$(DESTDIR) ; \
 	softdir=$${softdir/#$$p} ; \
@@ -46,6 +47,7 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-cmd; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/redhat-config-network-druid; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
+	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 
 docs:
