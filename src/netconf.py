@@ -30,7 +30,7 @@ if not "/usr/share/redhat-config-network" in sys.path:
     sys.path.append("/usr/share/redhat-config-network")
 
 if not "/usr/share/redhat-config-network/netconfpkg/" in sys.path:
-    sys.path.append("/usr/share/redhat-config-network")
+    sys.path.append("/usr/share/redhat-config-network/netconfpkg")
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
 cmdline = sys.argv[1:]
