@@ -79,7 +79,12 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
 %attr(4755,root,root) /sbin/userisdnctl
-%{_sbindir}/*
+%{_sbindir}/internet-druid
+%{_sbindir}/neat
+%{_sbindir}/neat-tui
+%{_sbindir}/redhat-config-network
+%{_sbindir}/redhat-config-network-cmd
+%{_sbindir}/redhat-config-network-druid
 %{_bindir}/*
 %if %{rp3}
 %{_datadir}/gnome/help/*/*/*

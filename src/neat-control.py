@@ -134,7 +134,7 @@ class mainDialog:
             # isdnctrl dial device must be started for connecting by ISDN
             if len(device) > 4:
                 if device[:4] == 'isdn' or device[:4] == 'ippp':
-                    os.system('/sbin/userisdnctl dial %s>&/dev/null' %(device))
+                    os.system('/usr/sbin/userisdnctl dial %s>&/dev/null' %(device))
                     time.sleep(3)
 
             self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
