@@ -53,7 +53,6 @@ get_active_devices (PyObject * self, PyObject * args)
   list = PyList_New(0);
   ifr = ifc.ifc_req;
   for (n = 0; n < ifc.ifc_len; n += sizeof(struct ifreq)) {
-    printf("Testing %s.\n", ifr->ifr_name);
     if (!(ioctl(skfd, SIOCGIFFLAGS, ifr) < 0))
       if (ifr->ifr_flags & IFF_UP)
 	PyList_Append(list, PyString_FromString(ifr->ifr_name));
