@@ -60,7 +60,7 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
                 
             if value:
-                #print selfkey + " = " + value
+                print selfkey + " = " + value
                 self.__dict__[selfkey] = value
 
         #
@@ -79,7 +79,7 @@ class ModemDialup(Dialup):
                 
             if value:
                 if not self.InitStrings: self.createInitStrings()
-                #print confkey + " = " + value
+                print confkey + " = " + value
                 self.InitStrings[self.InitStrings.addInitString()] = value
                 
         #
@@ -118,19 +118,27 @@ class ModemDialup(Dialup):
 
         if parent:                                
             devname = parent.Device
-            # get WVDIALSECT from ifcfg-ppp?
-            parentConf['WVDIALSECT'] = devname
             name = parent.DeviceId
         else:
             devname = '*'
-            name = "None"
+            name = "Default"
 
-        # Correct PAPNAME in ifcfg-ppp?
+        if not parentConf.has_key('WVDIALSECT'):
+            # set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
+            parentConf['WVDIALSECT'] = name
+            sectname = 'Dialer ' + name
+        else:
+            # get section name
+            sectname = parentConf['WVDIALSECT']
+
+        # Correct PAPNAME in ifcfg-ppp[0-9]
         if self.Login:
             parentConf['PAPNAME'] = self.Login
-                   
+
+        #
+        # Write the wvdial section
+        #
         conf = ConfSMB(filename = '/etc/wvdial.conf')
-        sectname = 'Dialer ' + name
         
         for selfkey in self.wvdict.keys():
             confkey = self.wvdict[selfkey]
@@ -157,7 +165,7 @@ class ModemDialup(Dialup):
         #
         # Now write the pap and chap-secrets
         #
-        #print "device = " + devname
+        print "device = " + name
         if not self.Login:
             return
         
@@ -169,17 +177,21 @@ class ModemDialup(Dialup):
                 if vars and (len(vars) == 3) \
                    and ((vars[0] == self.Login) \
                         or (vars[0] == '"' + self.Login + '"')) \
-                        and (vars[1] == devname):
+                        and (vars[1] == name):
                     #print vars                    
                     #print conf.getline()
-                    #print "login = " + self.Login
-                    pass
+                    #print "login = " + self.Login + " " + self.Password
+                    conf.setfields([self.Login, devname, self.Password])
+                    print conf.getline()                    
+                    break
                     
                 conf.nextline()
+            conf.write()
 
 
 if __name__ == '__main__':
-    dl = ModemDialup()
-    dl.load()
-#    dl.Password = "mypassword"
-#    dl.saveModem('phone2', 'ppp0')
+    dev = Device()
+    dev.load('ppp1')
+    dev.Dialup.Password = "Hello"
+    dev.commit()
+    dev.save()
