@@ -77,19 +77,19 @@ clean-local:
 distclean-local:
 	rm -f $(top_builddir)/po/po2tbl.sed
 
-PKGNAME=${PACKAGE}
+PKGNAME=$(subst system-config,redhat-config,$(PACKAGE))
 VERSION=@VERSION@
 RELEASE=@RPM_RELEASE@
 CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RELEASE))
 
 archive: distcheck changelog
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
-	@CVSROOT=`cat CVS/Root`; cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
+	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
 	@cd /tmp/${PKGNAME};./autogen.sh
-	@mv /tmp/${PKGNAME} /tmp/${PKGNAME}-$(VERSION)
-	@dir=$$PWD; cd /tmp; tar cvzf $$dir/${PKGNAME}-$(VERSION).tar.gz ${PKGNAME}-$(VERSION)
-	@rm -rf /tmp/${PKGNAME}-$(VERSION)
-	@echo "The archive is in ${PKGNAME}-$(VERSION).tar.gz"
+	@mv /tmp/${PKGNAME} /tmp/${PACKAGE}-$(VERSION)
+	@dir=$$PWD; cd /tmp; tar cvzf $$dir/${PACKAGE}-$(VERSION).tar.gz ${PACKAGE}-$(VERSION)
+	@rm -rf /tmp/${PACKAGE}-$(VERSION)
+	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
 
 force-tag:
 	cvs ci -m "release $(VERSION)-$(RELEASE) moved"
