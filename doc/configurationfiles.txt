@@ -14,13 +14,14 @@ Profiles contain separate versions of complete files.
 *) The global files are stored in /etc/sysconfig/networking/devices/<FILENAME>
 
 *) The files for the default profile are softlinked from
-   /etc/sysconfig/networking/default
+   /etc/sysconfig/networking/profiles/default
 
 *) Files for other profiles are softlinked from
    /etc/sysconfig/networking/profiles/<name-of-profile>/
 
 *) The startup files will be softlinked to
    /etc/sysconfig/network-scripts/ifcfg-<kerneldevicename>
+
 
 FILES:
 
@@ -36,8 +37,12 @@ the same thing.
 2) Up to three lines of the form "nameserver 192.168.0.1" with the DNS
    servers the system will use for name resolution
 
+*2* hosts
 
-*2* network 
+Again, this file will be copied to /etc/hosts from the activated profile, but
+only if it is different.
+
+*3* network 
 
 This replaces the old /etc/sysconfig/network, and contains at least
 the following information in the name=value ("shell") format:
@@ -50,13 +55,13 @@ Additionally it may contain CURRENT_PROFILE (and maybe DEFAULT_PROFILE).
 
 All IPX is gone
 
-*3* staticroute
+*4* staticroute
 
 Format not yet here, but it's NOT going to be the same as earlier,
 which just listed the commands to the route command... ipv4 and 6
 should be in the same file.
 
-*4* ifcfg-<identifier>
+*5* ifcfg-<identifier>
 
 For the devices in networking/devices/ we will drop the notion of using the
 sick way of storing semantic information about the devices in the filename
@@ -71,7 +76,7 @@ name=value format. Here are the ones common for all devices:
 
 NAME, DESCRIPTION, ENABLED, IDENTIFIER, TYPE
 
-*4.1* Ethernet
+*5.1* Ethernet
 
 MACADDRESS - this is the address to match to: You can specify that a
 device has a certain mac address so you can map a network device to a
@@ -85,7 +90,7 @@ A list of adresses, which contains DEVICE, ADDRESS, PREFIX, SCOPE and BROADCAST 
 since this is a list, add the number of the device in the name - e.g, DEVICE0, SCOPE2 
 etc.
 
-*5* ppp, provider and wvdial
+*6* ppp, provider and wvdial
 
 For dialup configuration we have to additionally store the corresponding ppp,
 wvdial and provider information. this will be done under the
