@@ -202,7 +202,8 @@ class mainDialog:
         self.xml.get_widget ("hardwareList").column_titles_passive ()
         self.xml.get_widget ("dnsList").column_titles_passive ()
         self.xml.get_widget ("hostsList").column_titles_passive ()
-
+        if getDeviceList(): self.xml.get_widget('notebook1').set_page(1)
+        
     def load(self):
         self.loadDevices()
         self.loadHardware()
@@ -440,7 +441,7 @@ class mainDialog:
         name = clist.get_text(clist.selection[0], 0)
         type = clist.get_text(clist.selection[0], 1)
 
-        if type == 'Loopback':
+        if type == LO:
             generic_error_dialog (_('The Loopback device can not be edited!'), self.dialog)
             return
 
@@ -984,7 +985,7 @@ class mainDialog:
     def showHardwareDialog(self, deviceType, edit):
         hardwarelist = getHardwareList()
 
-        if deviceType == 'Ethernet' or deviceType == 'Token Ring' or  \
+        if deviceType == ETHERNET or deviceType == TOKENRING  or  \
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
             if not edit:
                 i = hardwarelist.addHardware()
@@ -996,12 +997,12 @@ class mainDialog:
                     return
 
                 hw = hardwarelist[clist.selection[0]]
-	    if deviceType == 'Token Ring':
+	    if deviceType == TOKENRING:
             	dialog = tokenringHardwareDialog(hw, self.xml)
 	    else:
             	dialog = ethernetHardwareDialog(hw, self.xml)
 
-        if deviceType == 'Modem':
+        if deviceType == MODEM:
             if edit:
                 clist = self.xml.get_widget('hardwareList')
                 type  = clist.get_text(clist.selection[0], 1)
@@ -1013,7 +1014,7 @@ class mainDialog:
             else:
                 dialog = addmodemDialog()
 
-        if deviceType == 'ISDN':
+        if deviceType == ISDN:
             if edit:
                 clist = self.xml.get_widget('hardwareList')
                 Description = clist.get_text(clist.selection[0], 0)
@@ -1062,12 +1063,12 @@ class mainDialog:
         dlist = []
         for d in devicelist:
             found = FALSE
-            if type == 'Modem':
+            if type == MODEM:
                 if d.Dialup and d.Dialup.Inherits and dev == d.Dialup.Inherits:
                     found = TRUE
-            elif type == 'ISDN' and d.Type == 'ISDN':
+            elif type == ISDN and d.Type == ISDN:
                 found = TRUE
-            elif type == 'Ethernet':
+            elif type == ETHERNET:
                 if d.Dialup and d.Dialup.EthDevice == dev:
                     found = TRUE
                 elif d.Cipe and d.Cipe.TunnelDevice == dev:
@@ -1076,7 +1077,7 @@ class mainDialog:
                     found = TRUE
                 elif d.Device == dev:
                     found = TRUE
-            elif type == 'Token Ring' and d.Device == dev:
+            elif type == TOKENRING and d.Device == dev:
                 found = TRUE
             if found: dlist.append(d)
             
