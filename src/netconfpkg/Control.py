@@ -67,7 +67,7 @@ class NetworkDevice:
             if os.access('/var/run/ppp-ppp%s.pid' %(i), os.F_OK):
                 self.activedevicelist.append('ppp%s' %(i))
 
-        for pid in glob('/var/run/ppp-*.pid'):
+        for pid in glob.glob('/var/run/ppp-*.pid'):
             pid = pid[13:]
             pid = pid[:-4]
             self.activedevicelist.append(pid)
@@ -83,5 +83,5 @@ class NetworkDevice:
         return FALSE
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/10/24 15:17:22 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2003/10/24 15:30:04 $"
+__version__ = "$Revision: 1.22 $"
