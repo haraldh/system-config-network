@@ -1086,7 +1086,12 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        del prof.HostsList[clist.selection[0]]
+        todel = list(clist.selection)
+        todel.reverse()
+
+        for i in todel:
+            del prof.HostsList[i]
+            
         prof.HostsList.commit()
         self.hydrate()
 
