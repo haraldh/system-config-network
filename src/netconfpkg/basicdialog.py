@@ -174,16 +174,17 @@ class basicDialog:
         self.device.Type = deviceType
         if deviceType == "Ethernet":
             cfg = ethernetConfigDialog(self.device, self.xml_main, self.xml)
-            dialog =cfg.xml.get_widget ("Dialog")
-            dialog.run ()
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+            self.on_deviceNameEntry_changed(self.xml.get_widget("deviceNameEntry"))
         elif deviceType == "ISDN":
             cfg = ISDNDialupDialog(self.device, self.xml_main, self.xml)
-            dialog =cfg.xml.get_widget ("Dialog")
-            dialog.run ()
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
         elif deviceType == "Modem":
             cfg = ModemDialupDialog(self.device, self.xml_main, self.xml)
-            dialog =cfg.xml.get_widget ("Dialog")
-            dialog.run ()
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
         elif deviceType == "xDSL":
             dslConfigDialog()
             gtk.mainloop()
@@ -204,7 +205,7 @@ class basicDialog:
         self.device.DeviceId = deviceName
         self.xml.get_widget("deviceTypeComboBox").set_sensitive(len(deviceName) > 0)
         self.xml.get_widget("configureButton").set_sensitive(len(deviceName) > 0)
-        self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0)
+        self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0 and self.device.Device != None)
 
     def on_ipSettingCB_toggled(self, check):
         self.xml.get_widget("dynamicConfigComboBox").set_sensitive(check["active"])
