@@ -217,3 +217,21 @@ def updateNetworkScripts():
            shutil.copy('/etc/resolv.conf', SYSCONFPROFILEDIR+'/default/resolv.conf')
        except:
            print "An error occured during moving the /etc/resolv.conf file."
+
+ModemList = None
+def getModemList():
+    global ModemList
+    if ModemList:
+	    return ModemList[:]
+    
+    import kudzu
+    res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
+    if res == []:
+        ModemList = ['/dev/modem']
+    else:
+        ModemList = []
+	for v in res:
+	    dev = str(v[0])
+            if dev != 'None':
+                ModemList.append(dev)
+    return ModemList[:]

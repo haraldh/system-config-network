@@ -22,7 +22,6 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import _
 from netconfpkg import NCHardwareList
 from netconfpkg import NCisdnhardware
-import kudzu
 import gtk
 from gtk import TRUE
 from gtk import FALSE
@@ -36,6 +35,7 @@ import DialupDruid
 
 
 class ModemInterface:
+    modemList = None
     def __init__ (self, toplevel=None):
         glade_file = 'ModemDruid.glade'
 
@@ -91,26 +91,23 @@ class ModemInterface:
         return self.druids[0:] + dialup.get_druids()
 
     def on_Modem_prepare(self, druid_page, druid):
-        dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Modem probing...'))
-        dialog.set_border_width(10)
-        vbox = gtk.GtkVBox(1)
-        vbox.add(gtk.GtkLabel(_('Probing for Modems, please wait...')))
-        dialog.add(vbox)
-        dialog.set_position (gtk.WIN_POS_MOUSE)
-        dialog.show_all()
-        while gtk.events_pending():
-            gtk.mainiteration(FALSE)
-        time.sleep(1)
-        res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
-        if res == []:
-            dlist = ['/dev/modem']
+        if not ModemInterface.modemList:
+            dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Modem probing...'))
+            dialog.set_border_width(10)
+            vbox = gtk.GtkVBox(1)
+            vbox.add(gtk.GtkLabel(_('Probing for Modems, please wait...')))
+            dialog.add(vbox)
+            dialog.set_position (gtk.WIN_POS_MOUSE)
+            dialog.set_modal(TRUE)
+            dialog.show_all()
+            while gtk.events_pending():
+                gtk.mainiteration(FALSE)
+            time.sleep(1)
+            dlist = GUI_functions.getModemList()
+            ModemInterface.modemList = dlist
+            dialog.destroy()
         else:
-            dlist = []
-            for v in res:
-                dev = str(v[0])
-                if dev != 'None':
-                    dlist.append(dev)
-        dialog.destroy()
+            dlist = ModemInterface.modemList
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
         pass
  
