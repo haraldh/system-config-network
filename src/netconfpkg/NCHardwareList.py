@@ -113,6 +113,16 @@ class HardwareList(HardwareList_base):
         modules.write()
         wvdial.write()
 
+HWList = None
+
+def getHardwareList():
+    global HWList
+    if not HWList:
+        HWList = HardwareList.HardwareList()
+        HWList.load()
+    return HWList
+
+
 if __name__ == '__main__':
     hl = HardwareList()
     hl.load()
