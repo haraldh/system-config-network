@@ -30,8 +30,8 @@ import gettext
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-if not "/usr/share/netconf" in sys.path:
-    sys.path.append("/usr/share/netconf")
+if not "/usr/share/redhat-config-network" in sys.path:
+    sys.path.append("/usr/share/redhat-config-network")
 
 import Conf
 import gtk
@@ -45,8 +45,8 @@ from gtk import CTREE_LINES_DOTTED
 ##
 ## I18N
 ##
-gettext.bindtextdomain("netconf", "/usr/share/locale")
-gettext.textdomain("netconf")
+gettext.bindtextdomain("redhat-config-network", "/usr/share/locale")
+gettext.textdomain("redhat-config-network")
 _=gettext.gettext
 
 class mainDialog:
@@ -62,9 +62,9 @@ class mainDialog:
         if not os.path.isfile(glade_file):
             glade_file = "netconfpkg/" + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = "/usr/share/netconf/" + glade_file
+            glade_file = "/usr/share/redhat-config-network/" + glade_file
 
-        self.xml = libglade.GladeXML(glade_file, None, domain="netconf")
+        self.xml = libglade.GladeXML(glade_file, None, domain="redhat-config-network")
         self.initialized = None
 
         self.xml.signal_autoconnect(
@@ -191,8 +191,8 @@ class mainDialog:
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
-        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/netconf/pixmaps/active.xpm")
-        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/netconf/pixmaps/inactive.xpm")
+        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/redhat-config-network/pixmaps/active.xpm")
+        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "/usr/share/redhat-config-network/pixmaps/inactive.xpm")
 
         row = 0
         for dev in devicelist:
@@ -260,7 +260,7 @@ class mainDialog:
         if not os.path.isfile(pixmap_file):
             pixmap_file = "../pixmaps/" + pixmap_file
         if not os.path.isfile(pixmap_file):
-            pixmap_file = "/usr/share/netconf/" + pixmap_file
+            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
         if not os.path.isfile(pixmap_file):
             return
  
@@ -770,7 +770,7 @@ if __name__ == '__main__':
 
     updateNetworkScripts()
 
-    if sys.argv[0][-11:] != 'netconf-cmd':
+    if sys.argv[0][-11:] != 'redhat-config-network-cmd':
         window = mainDialog()
         gtk.mainloop()
         sys.exit(0)
@@ -793,6 +793,6 @@ if __name__ == '__main__':
             print args
 
     except (getopt.error, BadUsage):
-        print """netconf-cmd - Python network configuration commandline tool
+        print """redhat-config-network-cmd - Python network configuration commandline tool
 
-Usage: netconf-cmd [-p --profile <profile>]"""
+Usage: redhat-config-network-cmd [-p --profile <profile>]"""
