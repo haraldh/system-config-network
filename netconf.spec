@@ -32,7 +32,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-
+/usr/share/netconf
+/usr/sbin/*
 
 %changelog
 * Fri Jun 29 2001 Trond Eivind Glomsrød <teg@redhat.com>
