@@ -237,10 +237,8 @@ class mainDialog:
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
-        act_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
-                                                   NETCONFDIR + "pixmaps/active.xpm")
-        inact_xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None,
-                                                     NETCONFDIR + "/pixmaps/inactive.xpm")
+        act_xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
+        inact_xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
 
         row = 0
         for dev in devicelist:
@@ -303,24 +301,6 @@ class mainDialog:
         for prof in profilelist:
             clist.append([prof.ProfileName])
         clist.select_row(actrow, 0)
-
-    def load_icon(self, pixmap_file, widget = None):
-        if not os.path.isfile(pixmap_file):
-            pixmap_file = "pixmaps/" + pixmap_file
-        if not os.path.isfile(pixmap_file):
-            pixmap_file = "../pixmaps/" + pixmap_file
-        if not os.path.isfile(pixmap_file):
-            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
-        if not os.path.isfile(pixmap_file):
-            return
-
-        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
-        gtk.GtkPixmap(pix, mask)
-
-        if widget:
-            widget.set(pix, mask)
-        else:
-            self.dialog.set_icon(pix, mask)
 
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
@@ -543,7 +523,7 @@ class mainDialog:
                     return
 
                 if clist.get_row_data(row) == 0:
-                    xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
+                    xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
                     clist.set_row_data(row, 1)
                     curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
                     if curr_prof.ProfileName == 'default':
@@ -552,7 +532,7 @@ class mainDialog:
                     else:
                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
                 else:
-                    xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
+                    xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
                     clist.set_row_data(row, 0)
                     curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
                     if curr_prof.ProfileName == 'default':
