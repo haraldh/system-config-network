@@ -16,10 +16,10 @@ EXTRA_DIST= redhat-config-network.spec neat.desktop neat.console neat.pam intern
 icons1dir=$(datadir)/kontrol-panel
 icons2dir=$(sysconfdir)/X11/sysconfig
 icons3dir=$(sysconfdir)/X11/applnk/System
-icons1_DATA=neat.desktop internet-druid.desktop
-icons2_DATA=neat.desktop internet-druid.desktop
-icons3_DATA=neat.desktop internet-druid.desktop
-icons4_DATA=neat-control.desktop
+
+icons1_DATA=neat.desktop internet-druid.desktop neat-control.desktop
+icons2_DATA=neat.desktop internet-druid.desktop neat-control.desktop
+icons3_DATA=neat.desktop internet-druid.desktop neat-control.desktop
 
 sysdir=$(sysconfdir)/X11/applnk/System
 
