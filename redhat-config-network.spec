@@ -27,11 +27,11 @@ firewalls and masquerading, and can use profiles.
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
+%find_lang %name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%find_lang %name
 
 %files -f %{name}.lang
 %defattr(-,root,root)
