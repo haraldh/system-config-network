@@ -50,12 +50,12 @@
       <widget>
 	<class>GtkTable</class>
 	<name>provider_table</name>
-	<border_width>20</border_width>
+	<border_width>5</border_width>
 	<rows>10</rows>
 	<columns>2</columns>
 	<homogeneous>False</homogeneous>
-	<row_spacing>8</row_spacing>
-	<column_spacing>8</column_spacing>
+	<row_spacing>5</row_spacing>
+	<column_spacing>5</column_spacing>
 
 	<widget>
 	  <class>GtkLabel</class>
@@ -596,9 +596,9 @@ none
       <widget>
 	<class>GtkVBox</class>
 	<name>vbox7</name>
-	<border_width>20</border_width>
+	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
-	<spacing>0</spacing>
+	<spacing>5</spacing>
 
 	<widget>
 	  <class>GtkTable</class>
@@ -617,7 +617,6 @@ none
 	  <widget>
 	    <class>GtkCheckButton</class>
 	    <name>isdn_local_ip_checkbutton</name>
-	    <tooltip>Enable the local IP Adress</tooltip>
 	    <can_focus>True</can_focus>
 	    <label>L_ocal IP Adress:</label>
 	    <active>False</active>
@@ -641,7 +640,6 @@ none
 	  <widget>
 	    <class>GtkCheckButton</class>
 	    <name>isdn_remote_ip_checkbutton</name>
-	    <tooltip>Enable the remote IP Adress</tooltip>
 	    <can_focus>True</can_focus>
 	    <label>_Remote IP Adress:</label>
 	    <active>False</active>
@@ -665,7 +663,6 @@ none
 	  <widget>
 	    <class>GtkCheckButton</class>
 	    <name>isdn_subnet_mask_checkbutton</name>
-	    <tooltip>Enable the subnet mask</tooltip>
 	    <can_focus>True</can_focus>
 	    <label>Subnet Mas_k:</label>
 	    <active>False</active>
@@ -766,7 +763,7 @@ none
 	  <class>GtkHSeparator</class>
 	  <name>hseparator2</name>
 	  <child>
-	    <padding>20</padding>
+	    <padding>0</padding>
 	    <expand>False</expand>
 	    <fill>True</fill>
 	  </child>
@@ -842,13 +839,12 @@ none
 	<widget>
 	  <class>GtkCheckButton</class>
 	  <name>isdn_use_static_dns_checkbutton</name>
-	  <tooltip>Enable static DNS</tooltip>
 	  <can_focus>True</can_focus>
 	  <label>Use static D_NS</label>
 	  <active>False</active>
 	  <draw_indicator>True</draw_indicator>
 	  <child>
-	    <padding>9</padding>
+	    <padding>0</padding>
 	    <expand>False</expand>
 	    <fill>False</fill>
 	  </child>
@@ -860,10 +856,10 @@ none
 	  <rows>2</rows>
 	  <columns>3</columns>
 	  <homogeneous>False</homogeneous>
-	  <row_spacing>8</row_spacing>
-	  <column_spacing>8</column_spacing>
+	  <row_spacing>5</row_spacing>
+	  <column_spacing>5</column_spacing>
 	  <child>
-	    <padding>4</padding>
+	    <padding>0</padding>
 	    <expand>True</expand>
 	    <fill>True</fill>
 	  </child>
@@ -885,29 +881,6 @@ none
 	      <xpad>0</xpad>
 	      <ypad>0</ypad>
 	      <xexpand>True</xexpand>
-	      <yexpand>False</yexpand>
-	      <xshrink>False</xshrink>
-	      <yshrink>False</yshrink>
-	      <xfill>True</xfill>
-	      <yfill>False</yfill>
-	    </child>
-	  </widget>
-
-	  <widget>
-	    <class>GtkButton</class>
-	    <name>isdn_dns_add_button</name>
-	    <tooltip>Add DNS IP adress into the list</tooltip>
-	    <can_focus>True</can_focus>
-	    <label>Add...</label>
-	    <relief>GTK_RELIEF_NORMAL</relief>
-	    <child>
-	      <left_attach>2</left_attach>
-	      <right_attach>3</right_attach>
-	      <top_attach>0</top_attach>
-	      <bottom_attach>1</bottom_attach>
-	      <xpad>0</xpad>
-	      <ypad>0</ypad>
-	      <xexpand>False</xexpand>
 	      <yexpand>False</yexpand>
 	      <xshrink>False</xshrink>
 	      <yshrink>False</yshrink>
@@ -942,7 +915,6 @@ none
 	      <tooltip>Delete the DNS IP Adress</tooltip>
 	      <can_focus>True</can_focus>
 	      <label>Delete...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<padding>0</padding>
 		<expand>False</expand>
@@ -1024,6 +996,28 @@ none
 	      <yfill>False</yfill>
 	    </child>
 	  </widget>
+
+	  <widget>
+	    <class>GtkButton</class>
+	    <name>isdn_dns_add_button</name>
+	    <tooltip>Add DNS IP adress into the list</tooltip>
+	    <can_focus>True</can_focus>
+	    <label>Add...</label>
+	    <child>
+	      <left_attach>2</left_attach>
+	      <right_attach>3</right_attach>
+	      <top_attach>0</top_attach>
+	      <bottom_attach>1</bottom_attach>
+	      <xpad>0</xpad>
+	      <ypad>0</ypad>
+	      <xexpand>False</xexpand>
+	      <yexpand>False</yexpand>
+	      <xshrink>False</xshrink>
+	      <yshrink>False</yshrink>
+	      <xfill>True</xfill>
+	      <yfill>False</yfill>
+	    </child>
+	  </widget>
 	</widget>
       </widget>
 
@@ -1043,14 +1037,13 @@ none
       <widget>
 	<class>GtkVBox</class>
 	<name>callback_vbox</name>
-	<border_width>20</border_width>
+	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
-	<spacing>0</spacing>
+	<spacing>5</spacing>
 
 	<widget>
 	  <class>GtkCheckButton</class>
 	  <name>isdn_callback_checkbutton</name>
-	  <tooltip>Enable callback</tooltip>
 	  <can_focus>True</can_focus>
 	  <label>Turn on Call_back</label>
 	  <active>False</active>
@@ -1065,12 +1058,12 @@ none
 	<widget>
 	  <class>GtkTable</class>
 	  <name>table3</name>
-	  <border_width>10</border_width>
+	  <border_width>5</border_width>
 	  <rows>2</rows>
 	  <columns>2</columns>
 	  <homogeneous>False</homogeneous>
-	  <row_spacing>8</row_spacing>
-	  <column_spacing>8</column_spacing>
+	  <row_spacing>5</row_spacing>
+	  <column_spacing>5</column_spacing>
 	  <child>
 	    <padding>0</padding>
 	    <expand>False</expand>
@@ -1191,11 +1184,10 @@ none
 	<widget>
 	  <class>GtkTable</class>
 	  <name>table5</name>
-	  <border_width>10</border_width>
 	  <rows>2</rows>
 	  <columns>1</columns>
 	  <homogeneous>False</homogeneous>
-	  <row_spacing>8</row_spacing>
+	  <row_spacing>5</row_spacing>
 	  <column_spacing>0</column_spacing>
 	  <child>
 	    <padding>0</padding>
@@ -1267,7 +1259,7 @@ none
       <widget>
 	<class>GtkVBox</class>
 	<name>channel_bundling_vbox</name>
-	<border_width>20</border_width>
+	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
 	<spacing>0</spacing>
 
@@ -1302,9 +1294,9 @@ none
       <widget>
 	<class>GtkVBox</class>
 	<name>compression_vbox</name>
-	<border_width>20</border_width>
+	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
-	<spacing>8</spacing>
+	<spacing>5</spacing>
 
 	<widget>
 	  <class>GtkCheckButton</class>
@@ -1407,9 +1399,9 @@ none
       <widget>
 	<class>GtkVBox</class>
 	<name>vbox5</name>
-	<border_width>20</border_width>
+	<border_width>5</border_width>
 	<homogeneous>False</homogeneous>
-	<spacing>8</spacing>
+	<spacing>5</spacing>
 
 	<widget>
 	  <class>GtkHBox</class>
@@ -1461,7 +1453,6 @@ none
 		<name>isdn_option_delete_button</name>
 		<can_focus>True</can_focus>
 		<label>Delete...</label>
-		<relief>GTK_RELIEF_NORMAL</relief>
 		<child>
 		  <padding>0</padding>
 		  <expand>False</expand>
@@ -1573,7 +1564,6 @@ none
 	      <name>isdn_option_add_button</name>
 	      <can_focus>True</can_focus>
 	      <label>Add...</label>
-	      <relief>GTK_RELIEF_NORMAL</relief>
 	      <child>
 		<left_attach>2</left_attach>
 		<right_attach>3</right_attach>
@@ -1596,7 +1586,7 @@ none
 	  <class>GtkHSeparator</class>
 	  <name>hseparator3</name>
 	  <child>
-	    <padding>8</padding>
+	    <padding>0</padding>
 	    <expand>False</expand>
 	    <fill>True</fill>
 	  </child>
@@ -1608,8 +1598,8 @@ none
 	  <rows>2</rows>
 	  <columns>2</columns>
 	  <homogeneous>False</homogeneous>
-	  <row_spacing>8</row_spacing>
-	  <column_spacing>8</column_spacing>
+	  <row_spacing>5</row_spacing>
+	  <column_spacing>5</column_spacing>
 	  <child>
 	    <padding>0</padding>
 	    <expand>False</expand>
@@ -1646,7 +1636,6 @@ none
 	  <widget>
 	    <class>GtkCheckButton</class>
 	    <name>isdn_dialin_server_checkbutton</name>
-	    <tooltip>Enable if you want to setup it as dialin server</tooltip>
 	    <can_focus>True</can_focus>
 	    <label>Dialin Server</label>
 	    <active>False</active>
@@ -1733,7 +1722,7 @@ none
       <spacing>0</spacing>
       <child_min_width>85</child_min_width>
       <child_min_height>27</child_min_height>
-      <child_ipad_x>7</child_ipad_x>
+      <child_ipad_x>0</child_ipad_x>
       <child_ipad_y>0</child_ipad_y>
       <child>
 	<padding>0</padding>
@@ -1747,7 +1736,6 @@ none
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_OK</stock_button>
-	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
 
       <widget>
@@ -1756,7 +1744,6 @@ none
 	<can_default>True</can_default>
 	<can_focus>True</can_focus>
 	<stock_button>GNOME_STOCK_BUTTON_CANCEL</stock_button>
-	<relief>GTK_RELIEF_NORMAL</relief>
       </widget>
     </widget>
   </widget>
