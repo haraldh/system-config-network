@@ -58,21 +58,23 @@ class DeviceList(DeviceList_base):
         DeviceList_base.__init__(self, list, parent)        
 
     def updateNetworkScripts(self):
-        try:
-            if not os.path.isdir(SYSCONFDEVICEDIR):
-                os.mkdir(SYSCONFDEVICEDIR)
-
-            if not os.path.isdir(SYSCONFPROFILEDIR):
-                os.mkdir(SYSCONFPROFILEDIR)
-
-            if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
-                os.mkdir(SYSCONFPROFILEDIR+'/default/')
-        except (IOError, OSError), errstr :
-            generic_error_dialog (_("Error creating directory!\n%s") \
-                                  % (str(errstr)))
+        if os.getuid() == 0:
+            try:
+                if not os.path.isdir(SYSCONFDEVICEDIR):
+                    os.mkdir(SYSCONFDEVICEDIR)
+                    
+                    if not os.path.isdir(SYSCONFPROFILEDIR):
+                        os.mkdir(SYSCONFPROFILEDIR)
+                        
+                    if not os.path.isdir(SYSCONFPROFILEDIR+'/default/'):
+                        os.mkdir(SYSCONFPROFILEDIR+'/default/')
+            except (IOError, OSError), errstr :
+                generic_error_dialog (_("Error creating directory!\n%s") \
+                                      % (str(errstr)))
 
 
         devlist = os.listdir(OLDSYSCONFDEVICEDIR)
+        changed = false
         for dev in devlist:
             if dev[:6] != 'ifcfg-' or dev == 'ifcfg-lo':
                 continue
@@ -85,6 +87,12 @@ class DeviceList(DeviceList_base):
                 #print dev+" has unknown device type, skipping it."
                 continue
 
+
+            if os.getuid() != 0:
+                generic_error_dialog (_("Please start redhat-config-network "
+                                        "with root permissions once!\n"))
+                return
+
             print _("Copying %s to devices and putting "
                     "it into the default profile.") % dev
 
@@ -92,10 +100,11 @@ class DeviceList(DeviceList_base):
 
             copy(OLDSYSCONFDEVICEDIR+'/'+dev, SYSCONFDEVICEDIR+'/'+dev)
             link(SYSCONFDEVICEDIR+'/'+dev, SYSCONFPROFILEDIR+'/default/'+dev)    
-
-
+            changed = true
+        return changed
+    
     def load(self):
-        self.updateNetworkScripts()
+        changed = self.updateNetworkScripts()
         df = getDeviceFactory()
         devices = ConfDevices()
         msg = ""
@@ -110,7 +119,7 @@ class DeviceList(DeviceList_base):
             else:
                 raise "NO DEVICE CLASS FOUND FOR %s" % dev
                 
-        self.commit(changed=false)
+        self.commit(changed)
         
     def test(self):
         pass
