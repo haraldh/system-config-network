@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: redhat-config-network\n"
 "POT-Creation-Date: 2003-09-12 15:41+0200\n"
-"PO-Revision-Date: 2003-07-08 11:16+0100\n"
+"PO-Revision-Date: 2003-09-16 10:32+0100\n"
 "Last-Translator: Pedro Morais <morais@kde.org\n"
 "Language-Team: pt <morais@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -191,11 +191,11 @@ msgstr ""
 #.
 #: src/netconf-tui.py:135
 msgid "Run anyway"
-msgstr ""
+msgstr "Executar mesmo assim"
 
 #: src/netconf-tui.py:136
 msgid "IMPORTANT"
-msgstr ""
+msgstr "IMPORTANTE"
 
 #: src/netconf-tui.py:137
 #, python-format
@@ -206,10 +206,12 @@ msgid ""
 "machine with X and use X11 forwarding. If you really want to use this tool, "
 "press <%s>."
 msgstr ""
+"Esta ferramenta não é suportada! Por favor utilize a ferramenta gráfica, que lhe oferece todas as funcionalidades.\n"
+"Se não tem um servidor de X instalado nesta máquina, ligue-se a ela por ssh de uma máquin acom X e utilize o reencaminhamento do protocolo X11. Se quer mesmo utilizar esta ferramenta, carregue em <%s>."
 
 #: src/netconf-tui.py:147
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
 #: src/netconf-tui.py:152
 msgid "What do you want to configure?"
@@ -398,9 +400,8 @@ msgid "export / import hardware list"
 msgstr "exportar / importar lista de hardware"
 
 #: src/netconf-cmd.py:110
-#, fuzzy
 msgid "export / import IPsec list"
-msgstr "exportar / import lista de perfis"
+msgstr "exportar / import lista IPsec"
 
 #: src/netconf-cmd.py:112
 msgid "export / import device list (default)"
@@ -1465,9 +1466,9 @@ msgstr "Editar o Dispositivo..."
 
 #. Fixed change device names in active list of all profiles
 #: src/netconfpkg/gui/maindialog.py:859
-#, fuzzy, python-format
+#, python-format
 msgid "The device type %s cannot be edited!\n"
-msgstr "O dispositivo de Loopback não pode ser editado!"
+msgstr "O tipo de dispositivo %s não pode ser editado!\n"
 
 #: src/netconfpkg/gui/maindialog.py:878
 msgid "The Loopback device can not be removed!"
@@ -2466,34 +2467,32 @@ msgstr "Não foi possível desactivar o dispositivo de rede %s!\n"
 #. save ipsec settings
 #.
 #: src/netconfpkg/NCIPsec.py:168
-#, fuzzy
 msgid "IPsec activating..."
-msgstr "A activar o dispositivo de rede..."
+msgstr "A activar o IPsec..."
 
 #: src/netconfpkg/NCIPsec.py:169
-#, fuzzy, python-format
+#, python-format
 msgid "Activating IPsec connection %s, please wait..."
-msgstr "A activar o dispositivo de rede %s, espere um pouco..."
+msgstr "A activar o ligação IPsec %s, espere um pouco..."
 
 #: src/netconfpkg/NCIPsec.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot activate IPsec connection %s!\n"
-msgstr "Não foi possível activar o dispositivo de rede %s!\n"
+msgstr "Não foi possível activar a ligação IPsec %s!\n"
 
 #: src/netconfpkg/NCIPsec.py:188
-#, fuzzy
 msgid "IPsec deactivating..."
-msgstr "A desactivar o dispositivo de rede..."
+msgstr "A desactivar o IPsec..."
 
 #: src/netconfpkg/NCIPsec.py:189
-#, fuzzy, python-format
+#, python-format
 msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "A desactivar o dispositivo de rede %s, espere um pouco..."
+msgstr "A desactivar a ligação IPsec %s, espere um pouco..."
 
 #: src/netconfpkg/NCIPsec.py:191
-#, fuzzy, python-format
+#, python-format
 msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "Não foi possível desactivar o dispositivo de rede %s!\n"
+msgstr "Não foi possível desactivar a ligação IPsec %s!\n"
 
 #: src/netconfpkg/NCDeviceList.py:63
 msgid "Please start redhat-config-network with root permissions once!\n"
@@ -3765,7 +3764,7 @@ msgstr "_Gateway:"
 
 #: src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain Name:"
-msgstr "Nome do Domínio:"
+msgstr "Nome do domínio:"
 
 #: src/netconfpkg/gui/editdomain.glade.h:2
 msgid "Edit Domain Name"
@@ -3777,15 +3776,15 @@ msgstr "Adicionar / Editar Entrada de Máquina"
 
 #: src/netconfpkg/gui/edithosts.glade.h:4
 msgid "Aliases:"
-msgstr "Nomes Alternativos:"
+msgstr "Nomes alternativos:"
 
 #: src/netconfpkg/gui/edithosts.glade.h:5
 msgid "Hostname:"
-msgstr "Nome da Máquina:"
+msgstr "Nome da máquina:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:2
 msgid "A_uthentication Key:"
-msgstr "Chave de A_utenticação:"
+msgstr "Chave de a_utenticação:"
 
 #: src/netconfpkg/gui/editipsec.glade.h:3
 msgid "Automatic encryption mode selection via IKA (racoon)"
@@ -3905,9 +3904,8 @@ msgstr ""
 "configuração da ligação IPsec."
 
 #: src/netconfpkg/gui/editipsec.glade.h:32
-#, fuzzy
 msgid "_Activate connection when computer starts"
-msgstr "_Activar dispositivo quando o computador arranca"
+msgstr "_Activar a ligação quando o computador arranca"
 
 #: src/netconfpkg/gui/editipsec.glade.h:33
 msgid "_Encryption Key:"
