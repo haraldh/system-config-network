@@ -94,8 +94,6 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/X11/applnk/*/*.desktop
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
-%attr(4755,root,root) /usr/sbin/userisdnctl
-%{_sbindir}/isdnup
 %{_sbindir}/internet-druid
 %{_sbindir}/neat
 %{_sbindir}/neat-tui
@@ -110,6 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Jul 01 2002 Than Ngo <than@redhat.com> 1.1.6-1
+- get rid of isdnup userisdnctl, both are now part of isdn4k-utils
+
 * Thu Jun 27 2002 Harald Hoyer <harald@redhat.de> 1.1.5-1
 - many bug fixes due to gtk2 conversion
 - fixed #67273 #66200 #65185 #65073 #63963

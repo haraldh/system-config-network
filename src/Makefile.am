@@ -4,10 +4,7 @@ PYTHON_FILES = netconf.py netconf-tui.py neat-control.py
 
 GLADE_FILES = maindialog.glade neat-control.glade
 
-EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb module-info isdnup
-
-sbin_PROGRAMS = userisdnctl
-userisdnctl_SOURCES = userisdnctl.c isdn.h isdnif.h
+EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb module-info
 
 execdir = $(sbindir)
 
@@ -56,7 +53,6 @@ install-exec-local:
 
 uninstall-local:
 	rm -fr $(DESTDIR)$(pkgdatadir)
-	rm -f  $(DESTDIR)$(sbindir)/isdnup
 	rm -f  $(DESTDIR)$(bindir)/neat-control 
 	rm -f  $(DESTDIR)$(bindir)/redhat-control-network
 	rm -f  $(DESTDIR)$(sbindir)/redhat-config-network
