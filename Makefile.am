@@ -63,7 +63,7 @@ changelog:
 dist: configure Makefile config.h changelog
 
 PKGNAME=${PACKAGE}
-VERSION=$(shell awk '/Version:/ { print $$2 }' ${PKGNAME}.spec)
+VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))
 archive:
 	cvs tag -cFR $(CVSTAG) .
