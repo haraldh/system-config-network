@@ -28,6 +28,7 @@ from gtk import FALSE
 import libglade
 import string
 import os
+import time
 import providerdb
 import libglade
 import DialupDruid
@@ -93,6 +94,15 @@ class ModemInterface:
         self.hardwarelist.rollback()
         
     def setup(self):
+        dialog = gtk.GtkWindow(gtk.WINDOW_DIALOG, 'Modem probing...')
+        dialog.set_border_width(10)
+        vbox = gtk.GtkVBox(1)
+        vbox.add(gtk.GtkLabel('Probing for Modems, please wait...'))
+        dialog.add(vbox)
+        dialog.show_all()
+        while gtk.events_pending():
+            gtk.mainiteration(FALSE)
+        time.sleep(1)
         res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_SERIAL|kudzu.BUS_PCI, kudzu.PROBE_ALL)
         if res == []:
             dlist = ['/dev/modem']
@@ -102,7 +112,7 @@ class ModemInterface:
                 dev = str(v[0])
                 if dev != 'None':
                     dlist.append(dev)
-
+        dialog.destroy()
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
     
     def dehydrate(self):
