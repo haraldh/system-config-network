@@ -184,7 +184,7 @@ class mainDialog:
         self.hydrateProfiles()
 
     def hydrateDevices(self):
-        global devicelist, profilelist
+        global devicelist, profilelist, hardwarelist
 
         clist = self.xml.get_widget("deviceList")
         clist.clear()
@@ -297,7 +297,7 @@ class mainDialog:
         basic.xml.get_widget ("okButton").set_sensitive(FALSE)
         dialog = basic.xml.get_widget ("Dialog")
         button = dialog.run ()
-        if (button == 0):
+        if button == 0:
             i = devicelist.addDevice()
             devicelist[i].apply(device)
             devicelist[i].commit()
