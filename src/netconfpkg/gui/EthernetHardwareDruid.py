@@ -24,7 +24,6 @@ from netconfpkg import NCHardwareList
 import gtk
 from gtk import TRUE
 from gtk import FALSE
-import GUI_functions
 import libglade
 import string
 import os
@@ -42,7 +41,7 @@ class ethernetHardware:
             glade_file = NETCONFDIR + glade_file
  
         self.xml = libglade.GladeXML(glade_file, 'druid',
-                                     domain=GUI_functions.PROGNAME)
+                                     domain=PROGNAME)
         self.xml.signal_autoconnect(
             {
             "on_adapterEntry_changed" : self.on_adapterEntry_changed,
