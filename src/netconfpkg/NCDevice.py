@@ -35,9 +35,9 @@ from rhpl.log import log
 from rhpl.executil import gtkExecWithCaptureStatus
 
 class ConfDevice(Conf.ConfShellVar):
-    def __init__(self, name):
+    def __init__(self, name, dir = netconfpkg.ROOT + SYSCONFDEVICEDIR):
         new = false
-        self.filename = netconfpkg.ROOT + SYSCONFDEVICEDIR + 'ifcfg-' + name
+        self.filename = dir + 'ifcfg-' + name
         if not os.access(self.filename, os.R_OK):
             new = true
             self.oldmode = 0644
@@ -382,7 +382,7 @@ class Device(Device_base):
                 dialog = dialog)
             
         except RuntimeError, msg:
-            ret = -1        
+            ret = -1                
 
         return ret, msg
 
@@ -445,5 +445,5 @@ class Device(Device_base):
 ##                 return Device_base._createAttr(self, child)
 ##         return getattr(self, child)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2004/01/29 14:42:57 $"
-__version__ = "$Revision: 1.97 $"
+__date__ = "$Date: 2004/03/04 13:29:03 $"
+__version__ = "$Revision: 1.98 $"
