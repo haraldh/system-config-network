@@ -77,6 +77,18 @@ class ProfileList(ProfileList_base):
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
 
+        try:
+            os.system('/bin/rm -rf '+SYSCONFPROFILEDIR)
+        except:
+            print "FOO"
+            pass
+
+        try:
+            os.mkdir(SYSCONFPROFILEDIR)
+        except:
+            print "BAR"
+            pass
+
         for prof in self.data:
             try:
                 mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
@@ -86,6 +98,7 @@ class ProfileList(ProfileList_base):
             nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/network')
             nwconf['HOSTNAME'] = prof.DNS.Hostname
             dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf'
+            dnsconf['domain'] = [prof.DNS.Domainname]
             dnsconf['nameservers'] = []
             if prof.DNS.PrimaryDNS != '':
                 dnsconf['nameservers'].append(prof.DNS.PrimaryDNS)
@@ -99,12 +112,10 @@ class ProfileList(ProfileList_base):
             if prof.Active == false:
                 continue
 
-            for dev in prof.ActiveDevices:
-                for d in devicelist:
-                    pass
-
-                devId = devicelist[dev].DeviceId
-                devName = hardwarelist[dev.Name].Name
+            for devId in prof.ActiveDevices:
+                for dev in devicelist:
+                    if dev.DeviceId == devId:
+                        devName = dev.Device
 
                 try:
                     os.unlink(OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
@@ -118,7 +129,7 @@ class ProfileList(ProfileList_base):
 
                 try:
                     os.symlink(SYSCONFDEVICEDIR+'/ifcfg-'+devId, SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId)
-                    os.symlink(SYSCONFPROFILEDIR+'/'++prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
+                    os.symlink(SYSCONFPROFILEDIR+'/'+prof.ProfileName+'/ifcfg-'+devId, OLDSYSCONFDEVICEDIR+'/ifcfg-'+devName)
                 except:
                     print 'Darn, symlinking device '+devName+','+devId+' failed...'
 
