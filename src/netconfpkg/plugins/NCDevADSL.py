@@ -18,8 +18,7 @@
 from netconfpkg.NCDevice import *
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import *
-
-from netconfpkg import NCDialup
+import netconfpkg 
 
 _devADSLDialog = None
 _devADSLWizard = None
@@ -28,7 +27,7 @@ class DevADSL(Device):
    def __init__(self, list = None, parent = None):
       Device.__init__(self, list, parent)
       self.Type = DSL
-      self.Dialup = NCDialup.DslDialup(None, self)
+      self.Dialup = netconfpkg.NCDialup.DslDialup(None, self)
 
    def load(self, name):
       conf = ConfDevice(name)
@@ -37,8 +36,8 @@ class DevADSL(Device):
       
    def createDialup(self):
       if (self.Dialup == None) \
-             or not isinstance(self.Dialup, NCDialup.DslDialup):
-         self.Dialup = NCDialup.DslDialup(None, self)
+             or not isinstance(self.Dialup, netconfpkg.NCDialup.DslDialup):
+         self.Dialup = netconfpkg.NCDialup.DslDialup(None, self)
       return self.Dialup
       
    def getDialog(self):

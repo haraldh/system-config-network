@@ -29,7 +29,6 @@ from rhpl import Conf
 
 from netconfpkg import Dialup_base
 import NCCompression
-import NCHardwareList
 from NC_functions import *
 
 DM_AUTO='auto'
@@ -600,6 +599,7 @@ class ModemDialup(Dialup):
             parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
         if self.Inherits:
+            import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Inherits:

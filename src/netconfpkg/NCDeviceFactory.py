@@ -51,3 +51,5 @@ def getDeviceFactory():
         _devFac = DeviceFactory()
 
     return _devFac
+
+from netconfpkg.plugins import *

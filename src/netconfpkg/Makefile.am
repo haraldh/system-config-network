@@ -1,4 +1,4 @@
-SUBDIRS=gui tests
+SUBDIRS=gui plugins tests
 
 IDL_FILES = \
 	DeviceList.idl \
@@ -26,18 +26,7 @@ PYTHON_FILES = \
 	NCWireless.py \
 	Control.py \
 	NCCard.py \
-	NCDevADSL.py \
-	NCDevCipe.py \
-	NCDevEthernet.py \
-	NCDeviceFactory.py \
-	NCDevIsdn.py \
-	NCDevModem.py \
-	NCDevTokenRing.py \
-	NCDevWireless.py \
-	NCHWEthernet.py \
-	NCHWIsdn.py \
-	NCHWModem.py \
-	NCHWTokenring.py 
+	NCDeviceFactory.py
 
 BUILT_SOURCES = $(if $(shell test -w $srcdir && echo OK), \
 		     $(patsubst %.py,%.pyc,$(PYTHON_FILES))) __init__.py
