@@ -265,9 +265,12 @@ class mainDialog:
         profilelist = getProfileList()
         devicelist = getDeviceList()
         hardwarelist = getHardwareList()
+
+        self.appBar.pop()
         
         if profilelist.modified() or \
                devicelist.modified() or hardwarelist.modified():
+            self.appBar.push(_("modified"))
             return true
 
         return false
@@ -577,8 +580,6 @@ class mainDialog:
         return (not interface.canceled)
         
     def on_deviceCopyButton_clicked (self, button):
-        devicelist = getDeviceList()
-
         clist = self.xml.get_widget("deviceList")
 
         if len(clist.selection) == 0:
@@ -591,6 +592,7 @@ class mainDialog:
 
         duplicate = TRUE
         num = 0
+        devicelist = getDeviceList()
         while duplicate:
             devname = device.DeviceId + 'Copy' + str(num)
             duplicate = FALSE
@@ -628,6 +630,8 @@ class mainDialog:
             return
 
         device.commit()
+        devicelist = getDeviceList()
+        devicelist.commit()
 
         if not device.modified():
             self.appBar.pop()
