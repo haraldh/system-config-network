@@ -18,8 +18,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-
-import gtk
 import gtk.glade
 import signal
 import os
@@ -64,7 +62,7 @@ class tcpConfigDialog:
         self.dialog = self.xml.get_widget("Dialog")
         #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         #self.dialog.connect("hide", self.on_Dialog_delete_event)
-        self.xml.get_widget("networkPixmap").load_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
+        self.xml.get_widget("networkPixmap").set_from_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
         load_icon("network.xpm", self.dialog)
 
         clist = self.xml.get_widget ("networkRouteList")
