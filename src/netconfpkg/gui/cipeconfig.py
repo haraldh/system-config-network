@@ -127,7 +127,7 @@ class cipeConfigDialog(deviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         hw = fields[0]
-        self.device.TunnelDevice = hw
+        self.device.Cipe.TunnelDevice = hw
 
         self.device.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
         self.device.Cipe.LocalPort = int(self.xml.get_widget("localPortEntry").get_text())
