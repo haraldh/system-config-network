@@ -67,7 +67,24 @@ class ProfileList(ProfileList_base):
                     sl.append(ns)
 
     def save(self):
-        pass
+        nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
+        hoconf = Conf.ConfEHosts()
+        dnsconf = Conf.ConfEResolv()
+
+        for prof in self.data:
+            try:
+                mkdir(SYSCONFPROFILEDIR + '/' + prof.ProfileName)
+            except:
+                pass
+
+            nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/network')
+            nwconf['HOSTNAME'] = prof.DNS.Hostname
+            dnsconf.filename = SYSCONFPROFILEDIR + '/' + prof.ProfileName + '/resolv.conf'
+            dnsconf['nameservers'][0] = prof.DNS.PrimaryDNS
+            dnsconf['nameservers'][1] = prof.DNS.SecondaryDNS
+#            dnsconf['nameservers'][2] = prof.DNS.TernaryDNS
+            nwconf.write()
+            dnsconf.write()
 
 if __name__ == '__main__':
     pl = ProfileList()

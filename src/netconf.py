@@ -27,6 +27,11 @@ import os
 import GdkImlib
 import string
 import gettext
+import sys
+
+if not "/usr/lib/rhs/python" in sys.path:
+    sys.path.append("/usr/lib/rhs/python")
+
 import Conf
 
 from netconfpkg import *
@@ -87,9 +92,11 @@ class mainDialog:
                                               self.xml.get_widget("hardwareDeleteButton")),
             "on_hardwareList_button_press_event" : (self.on_generic_clist_button_press_event,
                                                     self.on_hardwareEditButton_clicked),
-            "on_primaryDnsEntry_changed" : (self.on_generic_entry_insert_text, r'^[^/ ]+$'),
-            "on_secondaryDnsEntry_changed" : (self.on_generic_entry_insert_text,  r'^[^/ ]+$'),
-            "on_ternaryDnsEntry_changed" : (self.on_generic_entry_insert_text,  r'^[^/ ]+$'),
+            "on_hostnameEntry_changed" : self.on_hostnameEntry_changed,
+            "on_domainEntry_changed" : self.on_domainEntry_changed,
+            "on_primaryDnsEntry_changed" : self.on_primaryDnsEntry_changed,
+            "on_secondaryDnsEntry_changed" : self.on_secondaryDnsEntry_changed,
+            "on_ternaryDnsEntry_changed" : self.on_ternaryDnsEntry_changed,
             "on_searchDnsEntry_changed" : self.on_searchDnsEntry_changed,
             "on_dnsAddButton_clicked" : self.on_dnsAddButton_clicked,
             "on_dnsEditButton_clicked" : self.on_dnsEditButton_clicked,
@@ -378,7 +385,32 @@ class mainDialog:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
                     clist.set_row_data(row, 0)
                 clist.set_pixmap(row, 0, xpm)
-                
+
+    def on_hostnameEntry_changed(self, entry):
+        for prof in profilelist:
+            if prof.Active == true:
+                prof.DNS.Hostname = entry
+
+    def on_domainEntry_changed(self, entry):
+        for prof in profilelist:
+            if prof.Active == true:
+                prof.DNS.Domainname = entry
+
+    def on_primaryDnsEntry_changed(self, entry):
+        for prof in profilelist:
+            if prof.Active == true:
+                prof.DNS.PrimaryDNS = entry
+
+    def on_secondaryDnsEntry_changed(self, entry):
+        for prof in profilelist:
+            if prof.Active == true:
+                prof.DNS.SecondaryDNS = entry
+
+    def on_ternaryDnsEntry_changed(self, entry):
+        for prof in profilelist:
+            if prof.Active == true:
+                prof.DNS.TernaryDNS = entry
+
     def on_searchDnsEntry_changed(self, entry):
         pass
 
@@ -482,5 +514,8 @@ class mainDialog:
 # make ctrl-C work
 if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = mainDialog()
-    gtk.mainloop()
+    if sys.argv[0][-11:] != 'netconf-cmd':
+        window = mainDialog()
+        gtk.mainloop()
+        sys.exit(0);
+    print 'Running netconf in commandline mode'

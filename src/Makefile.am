@@ -16,6 +16,15 @@ execdir = $(sbindir)
 #	install -m 0644 $(srcdir)/bindconf-konfig.desktop $(datadir)/kontrol-panel/bindconf.desktop
 #	install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
 
+all-local:
+	ln -s netconf.py netconf
+	ln -s netconf.py netconf-cmd
+
+install-exec-local:
+	install -m 0755 $(srcdir)/src/netconf.py $(pkgdatadir)/
+	ln -s $(pkgdatadir)/src/netconf.py $(sbindir)/netconf
+	ln -s $(pkgdatadir)/src/netconf.py $(sbindir)/netconf-cmd
+
 docs:
 	python ./pydoc.py -w Device Address EthernetDevice ipcalc DeviceList ProfileList HardwareList ProviderList NetworkList Firewall
 	mv *.html doc
@@ -23,4 +32,3 @@ docs:
 clean:
 	rm -f *.pyo *.pyc
 	rm -f ${BUILT_SOURCES}
-
