@@ -25,6 +25,7 @@ import shutil
 import NCDeviceList
 import NCHardwareList
 
+from NC_functions import _
 from ProfileList import *
 
 if not "/usr/lib/rhs/python" in sys.path:
@@ -99,6 +100,32 @@ class ProfileList(ProfileList_base):
                 for ns in dnsconf['search']:
                     sl.append(ns)
         self.commit()
+
+    def test(self):
+        devmap = {}
+        devicelist = NCDeviceList.getDeviceList()
+        
+        for prof in self:
+            for devId in prof.ActiveDevices:
+                for dev in devicelist:
+                    if dev.DeviceId == devId:
+                        device = dev
+                        break
+                else:
+                    continue
+            
+                if devmap.has_key(device.Device):
+                    msg = _('Device ') + device.DeviceId \
+                          + _(' uses the same Hardware Device "') \
+                          + device.Device + _('" like ') \
+                          + devmap[device.Device].DeviceId \
+                          + _('!') + "\n" \
+                          + _('Please select another Hardware Device or \nactivate only one of them.')
+                    raise TestError(msg)
+
+                devmap[device.Device] = device
+
+        
 
     def save(self):
         devicelist = NCDeviceList.getDeviceList()
