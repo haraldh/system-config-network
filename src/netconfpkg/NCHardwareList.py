@@ -158,6 +158,9 @@ class HardwareList(HardwareList_base):
             hw.Card.IRQ = isdncard.IRQ
             hw.Card.ChannelProtocol = isdncard.ChannelProtocol
             hw.Card.Firmware = isdncard.Firmware
+            hw.Card.DriverId = isdncard.DriverId
+            hw.Card.VendorId = isdncard.VendorId
+            hw.Card.DeviceId = isdncard.DeviceId
             
         wvdial = ConfSMB('/etc/wvdial.conf')
         for dev in wvdial.keys():
@@ -218,8 +221,9 @@ class HardwareList(HardwareList_base):
                 isdn.Mem = hw.Card.Mem
                 isdn.ChannelProtocol = hw.Card.ChannelProtocol
                 isdn.Firmware = hw.Card.Firmware
-                isdn.Id = "HiSax"
-
+                isdn.DriverId = hw.Card.DriverId
+                isdn.VendorId = hw.Card.VendorId
+                isdn.DeviceId = hw.Card.DeviceId
 
         # Clean up wvdial
         for dev in wvdial.keys():

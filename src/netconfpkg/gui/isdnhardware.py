@@ -126,7 +126,7 @@ class isdnHardwareDialog:
                 has_card = TRUE
                 self.cardname = new_card.keys()[0]
                 conf.get_resource(self.cardname)
-                hw.Card.ChannelProtocol = '2'
+                hw.Card.ChannelProtocol = conf.ChannelProtocol
                 hw.Card.IRQ = conf.IRQ
                 hw.Card.Mem = conf.Mem
                 hw.Card.IoPort = conf.IoPort
@@ -193,11 +193,14 @@ class isdnHardwareDialog:
         hw.Card.ModuleName = isdncard.ModuleName
         hw.Card.Type = isdncard.Type
         hw.Card.Firmware = isdncard.Firmware
+        hw.Card.VendorId = isdncard.VendorId
+        hw.Card.DeviceId = isdncard.DeviceId
+        hw.Card.DriverId = isdncard.DriverId
         
         if self.xml.get_widget("euroIsdnButton").get_active():
-            hw.Card.ChannelProtocol = "2"
+            hw.Card.ChannelProtocol = '2'
         else:
-            hw.Card.ChannelProtocol = "1"
+            hw.Card.ChannelProtocol = '1'
 
         if not self.xml.get_widget('irqSpinButton')["sensitive"]:
             hw.Card.IRQ = isdncard.IRQ
