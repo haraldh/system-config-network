@@ -4,7 +4,7 @@ BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py Net
 
 #pkgdata_DATA :=
 
-#exec_SCRIPTS = bindconf-gui
+#exec_SCRIPTS =
 
 execdir = $(sbindir)
 

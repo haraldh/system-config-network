@@ -2,7 +2,7 @@ SUBDIRS=netconfpkg
 
 #pkgdata_DATA :=
 
-#exec_SCRIPTS = bindconf-gui
+#exec_SCRIPTS = 
 
 execdir = $(sbindir)
 
