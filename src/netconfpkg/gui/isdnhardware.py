@@ -28,7 +28,6 @@ import string
 import re
 
 from netconfpkg import *
-from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 
@@ -211,6 +210,8 @@ class isdnHardwareDialog:
         cardlist = NCisdnhardware.card.keys()
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
+
+NCHWIsdn.setHwIsdnDialog(isdnHardwareDialog)
 
 # make ctrl-C work
 if __name__ == "__main__":

@@ -141,6 +141,9 @@ class modemDialog:
         if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
             self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
 
+
+NCHWModem.setHwModemDialog(modemDialog)
+
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)

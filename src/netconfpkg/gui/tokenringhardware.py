@@ -158,6 +158,9 @@ class tokenringHardwareDialog:
                    modInfo[i]['description'] == self.hw.Description:
                 self.hw.Card.ModuleName = i
 
+
+NCHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
+
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
