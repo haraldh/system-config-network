@@ -32,7 +32,7 @@ class Device(Device_base):
 
     def createDialup(self):
         if self.Device:
-            type = getDeviceType(self.Device)
+            type = getDeviceType(self.DeviceId)
             if type == "Modem":
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.ModemDialup):
@@ -85,15 +85,11 @@ class Device(Device_base):
             except (OSError, IOError), msg:
                 pass
 
-        if self.Device:
-            type = getDeviceType(self.Device)
-            if type == "Modem":
-                modemsect = self.DeviceId
-                if conf.has_key('WVDIALSECT'):
-                    modemsect = conf['WVDIALSECT']
                     
+        #print "Creating Dialup"
         dialup = self.createDialup()
         if dialup:
+            #print "Loading Dialup"
             dialup.load(conf)
                 
     def save(self):
@@ -113,6 +109,6 @@ class Device(Device_base):
                 conf[confkey] = 'no'
                     
         if self.Dialup:
-            self.Dialup.saveModem(conf)
+            self.Dialup.save(conf)
             
         conf.write()
