@@ -452,7 +452,6 @@ class ConfEHosts(Conf):
         else:
             return ''
     def __setitem__(self, varname, value):
-	print varname, value, self.lines
         # set first (should be only) instance to values in list value
         place=self.tell()
         self.rewind()
