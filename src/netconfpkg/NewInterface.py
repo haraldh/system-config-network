@@ -30,6 +30,7 @@ from ADSLInterface import ADSLInterface
 from IsdnInterface import IsdnInterface
 import NCHardwareList
 import NCisdnhardware
+import NC_functions
 from NC_functions import *
 
 Interfaces = [ IsdnInterface, ModemInterface, ADSLInterface ]
