@@ -48,8 +48,12 @@ class ProfileList(ProfileList_base):
         if curr_prof == None or curr_prof == '':
             curr_prof = 'default'
 
-        proflist = os.listdir(SYSCONFPROFILEDIR)
+        proflist = os.listdir(SYSCONFPROFILEDIR)        
         for pr in proflist:
+            # 60016
+            if not os.path.isdir(SYSCONFPROFILEDIR + '/' + pr):
+                continue
+            
             nwconf = Conf.ConfShellVar(SYSCONFPROFILEDIR + '/' + pr + '/network')
             i = self.addProfile()
             prof = self.data[i]
@@ -177,6 +181,7 @@ class ProfileList(ProfileList_base):
 
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
         hoconf = Conf.ConfEHosts()
+        hoconf.fsf()
         dnsconf = Conf.ConfEResolv()
 
         for prof in self.data:
