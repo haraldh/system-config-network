@@ -351,6 +351,7 @@ class mainDialog:
         type = device.Type
         device.createDialup()
         device.createCipe()
+        device.createWireless()
         
         if type == "Ethernet":
             cfg = ethernetConfigDialog(device, self.xml)
@@ -378,9 +379,10 @@ class mainDialog:
             button = dialog.run ()
             
         elif type == "Wireless":
-            button = 1
-            print "wireless configuration"
-
+            cfg = wirelessConfigDialog(device, self.xml)
+            dialog = cfg.xml.get_widget ("Dialog")
+            button = dialog.run ()
+        
         else:
             generic_error_dialog ('This device can not be edited with this tool!', self.xml.get_widget ("Dialog"))
 
