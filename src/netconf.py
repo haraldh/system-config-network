@@ -61,10 +61,7 @@ except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
     if os.path.isfile("/usr/sbin/redhat-config-network-tui"):        
         print _("Starting text version:")
-        os.execv("./redhat-config-network-tui", sys.argv)
-    if os.path.isfile("./redhat-config-network-tui"):        
-        print _("Starting text version:")
-        os.execv("./redhat-config-network-tui", sys.argv)    
+        os.execv("/usr/sbin/redhat-config-network-tui", sys.argv)
     sys.exit(10)
 
 
