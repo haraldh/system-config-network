@@ -2,6 +2,8 @@ from DeviceList import *
 from NC_functions import *
 from os.path import *
 from commands import *
+import HardwareList
+import string
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -20,6 +22,7 @@ class Device(Device_base):
                 'Gateway' : 'GATEWAY',
                 'Hostname' : 'DEVHOSTNAME',
                 'BootProto' : 'BOOTPROTO',
+                'Type' : 'TYPE',
                 }
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
@@ -31,16 +34,14 @@ class Device(Device_base):
         Device_base.__init__(self, list, parent)        
 
     def createDialup(self):
-        if self.Device:
-            type = getDeviceType(self.DeviceId)
-            if type == "Modem":
+        if self.Type:
+            if self.Type == "Modem":
                 if (self.Dialup == None) \
                    or not isinstance(self.Dialup, NCDialup.ModemDialup):
                     self.Dialup = NCDialup.ModemDialup(None, self)
                 return self.Dialup
             else:
-                return None
-                    
+                return None                    
         else:
             raise TypeError, "Device type not specified"
         
@@ -85,7 +86,18 @@ class Device(Device_base):
             except (OSError, IOError), msg:
                 pass
 
-                    
+        aliaspos = string.find(self.Device, ':')
+        if aliaspos != -1:
+            self.Alias = self.Device[aliaspos+1:]
+            self.Device = self.Device[:aliaspos]
+
+        if not self.Type:
+            self.Type = "Unknown"
+            hwlist = HardwareList.getHardwareList()
+            for hw in hwlist:
+                if hw.Name == self.Device:
+                    self.Type = hw.Type
+
         #print "Creating Dialup"
         dialup = self.createDialup()
         if dialup:
@@ -100,6 +112,9 @@ class Device(Device_base):
             if self.__dict__[selfkey]:
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
+
+        if self.Alias:
+            conf['DEVICE'] = self.Device + ':' + self.Alias
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
