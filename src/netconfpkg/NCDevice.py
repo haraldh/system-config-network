@@ -78,35 +78,6 @@ class Device(DeviceList.Device_base):
     def __init__(self, list = None, parent = None):
         DeviceList.Device_base.__init__(self, list, parent)        
 
-    def apply(self, other):
-        if not other:
-            self.unlink()
-            return
-        # ApplyList
-        self.setDeviceId(other.getDeviceId())
-        self.setName(other.getName())
-        self.setDevice(other.getDevice())
-        self.setAlias(other.getAlias())
-        self.setType(other.getType())
-        self.setOnBoot(other.getOnBoot())
-        self.setAllowUser(other.getAllowUser())
-        self.setBootProto(other.getBootProto())
-        self.setIP(other.getIP())
-        self.setNetmask(other.getNetmask())
-        self.setGateway(other.getGateway())
-        self.setHostname(other.getHostname())
-        self.setDomain(other.getDomain())
-        self.setAutoDNS(other.getAutoDNS())
-        self.setHardwareAddress(other.getHardwareAddress())
-        if self.createStaticRoutes():
-            self.StaticRoutes.apply(other.getStaticRoutes())
-        if self.createCipe():
-            self.Cipe.apply(other.getCipe())
-        if self.createWireless():
-            self.Wireless.apply(other.getWireless())
-        if self.createDialup():
-            self.Dialup.apply(other.getDialup())
-
     def createDialup(self):
         if self.Type:
             if self.Type == MODEM:
@@ -230,6 +201,12 @@ class Device(DeviceList.Device_base):
             #print "Loading Dialup"
             dialup.load(conf)
 
+        if conf.has_key("RESOLV_MODS"):
+            if conf["RESOLV_MODS"] != "no":
+                self.AutoDNS = true
+            else:
+                self.AutoDNS = false
+
         cipe = self.createCipe()
         if cipe:
             cipe.load(conf)
@@ -329,5 +306,9 @@ class Device(DeviceList.Device_base):
         if not self.Wireless:
             for i in conf.keys():
                 if not conf[i] or conf[i] == "": del conf[i]
+
+        # RESOLV_MODS should be PEERDNS
+        if conf.has_key('RESOLV_MODS'):
+            del conf['RESOLV_MODS']
 
         conf.write()

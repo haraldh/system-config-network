@@ -67,9 +67,6 @@ class DialupDialog(deviceConfigDialog):
         hardwarelist = getHardwareList()
 
         dialup = self.device.Dialup
-        if dialup.PeerDNS == None:
-            self.device.AutoDNS = TRUE
-            dialup.PeerDNS = TRUE
             
         if dialup.ProviderName != None:
             self.xml.get_widget("providerName").set_text(dialup.ProviderName)

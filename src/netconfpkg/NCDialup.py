@@ -109,8 +109,7 @@ class Dialup(DeviceList.Dialup_base):
 
 
 class DslDialup(Dialup):
-    boolkeydict = { 'PeerDNS' : 'RESOLV_MODS',
-                    'SyncPPP' : 'SYNCHRONOUS',
+    boolkeydict = { 'SyncPPP' : 'SYNCHRONOUS',
                     'Persist' : 'PERSIST',
                     'DefRoute' : 'DEFROUTE',
                     }
@@ -157,7 +156,6 @@ class DslDialup(Dialup):
                     if conf[self.Login].has_key("*"):
                         self.Password = conf[self.Login]["*"]
 
-
     def save(self, parentConf):
         conf = parentConf
 
@@ -203,9 +201,6 @@ class DslDialup(Dialup):
 
         for i in conf.keys():
             if not conf[i]: del conf[i]
-
-        if conf.has_key('RESOLV_MODS'):
-            del conf['RESOLV_MODS']
 
         if conf.has_key('PASS'):
             del conf['PASS']

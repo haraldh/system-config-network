@@ -184,6 +184,6 @@ class ADSLInterface(InterfaceCreator):
         dialup.SyncPPP = FALSE
         self.device.Device = "dsl"
         dialup.DefRoute = TRUE
-        dialup.PeerDNS = TRUE
+        self.device.AutoDNS = TRUE
 
 

@@ -183,10 +183,8 @@ class providerDialog:
             except(IndexError):
                 pass
             self.device.AutoDNS = FALSE
-            self.device.Dialup.PeerDNS = FALSE
         else:
             self.device.AutoDNS = TRUE
-            self.device.Dialup.PeerDNS = TRUE
 
 
 class ISDNproviderDialog(providerDialog):

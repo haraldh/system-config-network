@@ -230,7 +230,7 @@ class DialupDruid(InterfaceCreator):
         else:
             dialup.Authentication = '+pap -chap'
         dialup.DefRoute = TRUE
-        dialup.PeerDNS = TRUE
+        self.device.AutoDNS = TRUE
         dialup.DialMode = NCDialup.DM_MANUAL
         if self.connection_type == 'ISDN':
             dialup.EncapMode = 'syncppp'
