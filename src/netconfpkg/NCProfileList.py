@@ -278,10 +278,41 @@ class ProfileList(ProfileList_base):
 		
         
         if nwconf['HOSTNAME'] != prof.DNS.Hostname:
+            import socket
             # if the hostname changed, set it system wide (#55746)
             os.system("hostname %s" % prof.DNS.Hostname)
             log.log(2, "hostname %s" % prof.DNS.Hostname)
-            
+            newip = '127.0.0.1'
+            try:
+                newip = socket.gethostbyname(prof.DNS.Hostname)
+            except:
+                prof = self.getActiveProfile()
+                for host in prof.HostsList:
+                    if host.IP == '127.0.0.1':
+                        host.Hostname = 'localhost.localdomain'
+                        host.AliasList = [ prof.DNS.Hostname,
+                                           'localhost']
+                        if prof.DNS.Hostname.find(".") != -1:
+                            host.AliasList.append(prof.DNS.Hostname.split(".")[0])
+            else:
+                prof = self.getActiveProfile()
+                for host in prof.HostsList:
+                    if host.IP == '127.0.0.1':
+                        host.Hostname = 'localhost.localdomain'
+                        host.AliasList = [ 'localhost' ]
+                    if host.IP == newip:
+                        host.AliasList = []
+                        try:
+                            hname = socket.gethostbyaddr(newip)
+                            host.Hostname = hname[0]
+                            host.AliasList.extend(hname[1])
+                        except:
+                            host.Hostname = prof.DNS.Hostname
+                        if host.Hostname != prof.DNS.Hostname:
+                            host.AliasList.append( prof.DNS.Hostname )
+                        if prof.DNS.Hostname.find(".") != -1:
+                            host.AliasList.append(prof.DNS.Hostname.split(".")[0])
+                            
         nwconf['HOSTNAME'] = prof.DNS.Hostname
               
         if prof.ProfileName != 'default':
