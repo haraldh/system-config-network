@@ -88,7 +88,7 @@ class Device(Device_base):
 
         aliaspos = string.find(self.Device, ':')
         if aliaspos != -1:
-            self.Alias = self.Device[aliaspos+1:]
+            self.Alias = int(self.Device[aliaspos+1:])
             self.Device = self.Device[:aliaspos]
 
         if not self.Type:
@@ -103,8 +103,12 @@ class Device(Device_base):
         if dialup:
             #print "Loading Dialup"
             dialup.load(conf)
+
+        self.commit()
                 
     def save(self):
+        self.commit()
+
         conf = ConfDevice(self.DeviceId)
 
         for selfkey in self.keydict.keys():
@@ -113,7 +117,7 @@ class Device(Device_base):
                 conf[confkey] = str(self.__dict__[selfkey])
             else: conf[confkey] = ""
 
-        if self.Alias:
+        if self.Alias != None:
             conf['DEVICE'] = str(self.Device) + ':' + str(self.Alias)
 
         for selfkey in self.boolkeydict.keys():
