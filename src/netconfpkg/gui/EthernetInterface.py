@@ -98,6 +98,8 @@ class EthernetInterface(InterfaceCreator):
 
         self.hwDruid = ethernetHardware(self.toplevel)
         self.hwDruid.has_ethernet = None
+        self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
+                      + self.druids[1:]
 
     def get_project_name(self):
         return _('Ethernet connection')
@@ -106,7 +108,6 @@ class EthernetInterface(InterfaceCreator):
         return _("Create a new ethernet connection.")
 
     def get_druids(self):
-        self.druids = [self.druids[0]] + self.hwDruid.druids[:] + self.druids[1:]
         return self.druids
     
     def on_hostname_config_page_back(self, druid_page, druid):
