@@ -294,6 +294,7 @@ class mainDialog:
         device = Device()
 
         basic = basicDialog(device, self.xml)
+        basic.xml.get_widget ("okButton").set_sensitive(FALSE)
         dialog = basic.xml.get_widget ("Dialog")
         button = dialog.run ()
         if (button == 0):
@@ -344,7 +345,7 @@ class mainDialog:
         dialog.set_title ("Edit Device")
         button = dialog.run ()
         self.hydrate()
-        
+
     def on_deviceDeleteButton_clicked (self, button):
         global devicelist, profilelist
         clist = self.xml.get_widget("deviceList")
@@ -362,11 +363,9 @@ class mainDialog:
             return
 
         for prof in profilelist:
-            try:
+            if name in prof.ActiveDevices:
                 pos = prof.ActiveDevices.index(name)
                 del prof.ActiveDevices[pos]
-            except:
-                pass
 
         del devicelist[clist.selection[0]]
         self.hydrate()
@@ -431,21 +430,21 @@ class mainDialog:
                 if clist.get_row_data(row) == 0:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/active.xpm")
                     clist.set_row_data(row, 1)
+                    curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
                     for prof in profilelist:
-                        if prof.Active == false:
+                        if curr_prof.ProfileName != 'default' and prof.Active == false:
                             continue
-                        prof.ActiveDevices.append(name)
+                        if name not in prof.ActiveDevices:
+                            prof.ActiveDevices.append(name)
                 else:
                     xpm, mask = gtk.create_pixmap_from_xpm(self.dialog, None, "pixmaps/inactive.xpm")
                     clist.set_row_data(row, 0)
+                    curr_prof = profilelist[self.xml.get_widget('profileList').selection[0]]
                     for prof in profilelist:
-                        if prof.Active == false:
+                        if curr_prof.ProfileName != 'default' and prof.Active == false:
                             continue
-                        pos = 0
-                        for dev in prof.ActiveDevices:
-                            if dev == name:
-                                del prof.ActiveDevices[pos]
-                            pos = pos + 1
+                        if name in prof.ActiveDevices:
+                            del prof.ActiveDevices[prof.ActiveDevices.index(name)]
                 clist.set_pixmap(row, 0, xpm)
 
     def on_hostnameEntry_changed(self, entry):
@@ -576,9 +575,7 @@ class mainDialog:
     def showHardwareDialog(self, deviceType, edit):
         if deviceType == 'Ethernet' or deviceType == 'Token Ring' or  \
            deviceType == 'Pocket (ATP)' or deviceType == 'Arcnet':
-            dialog = ethernetHardwareDialog(self.xml)
-            global hardwarelist
-            dialog.hardwarelist = hardwarelist
+            dialog = ethernetHardwareDialog(self.xml, edit)
             dialog.main = self
             if not edit:
                 return
@@ -595,10 +592,12 @@ class mainDialog:
 
             dialog.xml.get_widget('ethernetDeviceEntry').set_text(hw.Name)
             if hw.Card.IRQ:
-                dialog.xml.get_widget('irqEntry').set_text(hw.Name)
+                dialog.xml.get_widget('irqEntry').set_text(hw.Card.IRQ)
             else:
                 dialog.xml.get_widget('irqEntry').set_sensitive(false)
                 dialog.xml.get_widget('irqComboBox').set_sensitive(false)
+
+            dialog.xml.get_widget('Dialog').run()
 
         if deviceType == 'Modem':
             dialog = modemDialog(self.xml)
@@ -622,11 +621,13 @@ class mainDialog:
                 dialog.xml.get_widget('volumeMenu').set_history(int(hw.Modem.ModemVolume)-1)
 
             dialog.xml.get_widget('toneDialingCB').set_active(hw.Modem.DialCommand == 'ATDT')
+            dialog.xml.get_widget('Dialog').run()
 
         if deviceType == 'ISDN':
             dialog = isdnHardwareDialog(self.xml)
             if not edit:
                 return
+            dialog.xml.get_widget('Dialog').run()
 
     def on_hardwareDeleteButton_clicked (self, *args):
         pass
