@@ -34,7 +34,8 @@ class Device(Device_base):
         Device_base.__init__(self, list, parent)        
         conf = None
 
-    def load(self, name):        
+    def load(self, name):
+        
         conf = ConfDevice(name)
         
         for selfkey in self.keydict.keys():
@@ -47,8 +48,7 @@ class Device(Device_base):
             if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = true
-                else: self.__dict__[selfkey] = false
-            else: self.__dict__[selfkey] = false
+                else: self.__dict__[selfkey] = false            
 
         if not self.DeviceId:
             self.DeviceId = name
