@@ -1,5 +1,7 @@
 ## Copyright (C) 2001 Red Hat, Inc.
 ## Copyright (C) 2001 Than Ngo <than@redhat.com>
+## Copyright (C) 2001 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -19,7 +21,7 @@ import NC_functions
 from NC_functions import _
 import HardwareList
 import NCisdnhardware
-import gnome.ui
+#import gnome.ui
 import gtk
 from gtk import TRUE
 from gtk import FALSE

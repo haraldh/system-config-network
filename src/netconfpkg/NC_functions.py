@@ -24,6 +24,12 @@ import os
 import os.path
 import shutil
 import gettext
+import gtk
+import GdkImlib
+import GDK
+import GTK
+#import gnome
+#import gnome.ui
 
 true = (1==1)
 false = not true
@@ -58,11 +64,6 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^lo$':'Loopback'}
 
 def get_icon(pixmap_file, dialog):
-    import gtk
-    import GdkImlib
-    import GDK
-    import GTK
-
     fn = pixmap_file
     if not os.path.exists(pixmap_file):
         pixmap_file = "pixmaps/" + fn
@@ -79,11 +80,6 @@ def get_icon(pixmap_file, dialog):
     return pix, mask
  
 def load_icon(pixmap_file, dialog):
-    import gtk
-    import GdkImlib
-    import GDK
-    import GTK
- 
     if not dialog: return
  
     pix, mask = get_icon(pixmap_file, dialog)
@@ -123,9 +119,6 @@ def create_ethernet_combo(hardwarelist, devname):
 
 def generic_error_dialog (message, parent_dialog, dialog_type="warning",
 			  widget=None, page=0, broken_widget=None):
-    import gnome
-    import gnome.ui
-
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, "Button_Ok")
     dialog.set_parent (parent_dialog)
     if widget != None:

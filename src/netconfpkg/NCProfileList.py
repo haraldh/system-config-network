@@ -105,6 +105,19 @@ class ProfileList(ProfileList_base):
         hoconf = Conf.ConfEHosts()
         dnsconf = Conf.ConfEResolv()
 
+        for prof in self.data:
+            if prof.Active == true:
+                break
+
+        nwconf['HOSTNAME'] = prof.DNS.Hostname
+
+        if prof.ProfileName != 'default':
+            nwconf['CURRENT_PROFILE'] = prof.ProfileName
+        else:
+            del nwconf['CURRENT_PROFILE']
+
+        nwconf.write()
+
         try:
             os.system('/bin/rm -rf '+SYSCONFPROFILEDIR)
         except:

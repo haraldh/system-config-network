@@ -22,13 +22,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-import getopt
-import signal
-import os
-import os.path
-import GdkImlib
-import string
-import gettext
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -36,14 +29,67 @@ if not "/usr/lib/rhs/python" in sys.path:
 if not "/usr/share/redhat-config-network" in sys.path:
     sys.path.append("/usr/share/redhat-config-network")
 
+
+# Workaround for buggy gtk/gnome commandline parsing python bindings.
+cmdline = sys.argv[1:]
+sys.argv = sys.argv[:1]
+
+import getopt
+import signal
+import os
+import os.path
+import GdkImlib
+import string
+import gettext
 import Conf
-import gtk
 
 from netconfpkg import *
 
+def Usage():
+    print ( """redhat-config-network-cmd - Python network configuration commandline tool
+
+Usage: redhat-config-network-cmd -p --profile <profile>""")
+
+
+# Argh, another workaround for broken gtk/gnome imports...
+if __name__ == '__main__' and sys.argv[0][-4:] == '-cmd':
+    signal.signal (signal.SIGINT, signal.SIG_DFL)
+    class BadUsage: pass
+
+    updateNetworkScripts()
+
+    progname = os.path.basename(sys.argv[0])
+
+    try:
+        opts, args = getopt.getopt(cmdline, "p:th", ["profile=", "test", "help"])
+        for opt, val in opts:
+            if opt == '-p' or opt == '--profile':
+                profilelist = getProfileList()
+                profilelist.switchToProfile(val)
+                sys.exit(0)
+
+            if opt == '-h' or opt == '--help':
+                Usage()
+                sys.exit(0)
+
+            if opt == '-t' or opt == '--test':
+                print "Just a test for getopt"
+                sys.exit(0)
+
+        raise BadUsage
+
+    except (getopt.error, BadUsage):
+        Usage()
+
+
+import GDK
+import GTK
+import gtk
+import libglade
+import gnome
+import gnome.ui
 from gtk import TRUE
 from gtk import FALSE
-from gtk import CTREE_LINES_DOTTED
 
 ##
 ## I18N
@@ -54,12 +100,6 @@ _=gettext.gettext
 
 class mainDialog:
     def __init__(self):
-        import GDK
-        import GTK
-        import libglade
-        import gnome
-        import gnome.ui
-
         glade_file = "maindialog.glade"
 
         if not os.path.isfile(glade_file):
@@ -246,17 +286,39 @@ class mainDialog:
                 for host in prof.HostsList:
                     hclist.append([host.IP, host.Hostname, string.join(host.AliasList, ' ')])
 
+        row = 0
+        for prof in profilelist:
+            if prof.Active == true:
+               actrow = row
+               break
+            row = row + 1
+
         if self.initialized:
             return
 
-        row = 0
         clist = self.xml.get_widget("profileList")
         self.initialized = true
         for prof in profilelist:
             clist.append([prof.ProfileName])
-            if prof.Active == true:
-                clist.select_row(row, 0)
-            row = row + 1
+        clist.select_row(actrow, 0)
+
+    def load_icon(self, pixmap_file, widget = None):
+        if not os.path.isfile(pixmap_file):
+            pixmap_file = "pixmaps/" + pixmap_file
+        if not os.path.isfile(pixmap_file):
+            pixmap_file = "../pixmaps/" + pixmap_file
+        if not os.path.isfile(pixmap_file):
+            pixmap_file = "/usr/share/redhat-config-network/" + pixmap_file
+        if not os.path.isfile(pixmap_file):
+            return
+
+        pix, mask = gtk.create_pixmap_from_xpm(self.dialog, None, pixmap_file)
+        gtk.GtkPixmap(pix, mask)
+
+        if widget:
+            widget.set(pix, mask)
+        else:
+            self.dialog.set_icon(pix, mask)
 
     def on_Dialog_delete_event(self, *args):
         gtk.mainquit()
@@ -861,11 +923,6 @@ class mainDialog:
 
 # make ctrl-C work
 if __name__ == '__main__':
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    class BadUsage: pass
-
-    updateNetworkScripts()
-
     progname = os.path.basename(sys.argv[0])
     if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
         window = mainDialog()
@@ -875,25 +932,3 @@ if __name__ == '__main__':
         interface = NewInterface()
         gtk.mainloop()
         sys.exit(0)
-
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "p:t", ["profile=", "test"])
-        for opt, val in opts:
-            if opt == '-p' or opt == '--profile':
-                profilelist = getProfileList()
-                profilelist.switchToProfile(val)
-                continue
-
-            if opt == '-t' or opt == '--test':
-                print "Just a test for getopt"
-                continue
-
-            raise BadUsage
-
-        for arg in args:
-            print args
-
-    except (getopt.error, BadUsage):
-        print _( """redhat-config-network-cmd - Python network configuration commandline tool
-
-Usage: redhat-config-network-cmd [-p --profile <profile>]""")

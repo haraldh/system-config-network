@@ -1,6 +1,7 @@
-## netconf - A network configuration tool
 ## Copyright (C) 2001 Red Hat, Inc.
-## Copyright (C) 2001 Phil Knirsch <pknirsch@redhat.com>
+## Copyright (C) 2001 Than Ngo <than@redhat.com>
+## Copyright (C) 2001 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -15,7 +16,6 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 
 # Import all subpackages of our netconfpkg directory. This code is a real
 # dirty hack but does the job(tm). It basically finds all .py files in the
