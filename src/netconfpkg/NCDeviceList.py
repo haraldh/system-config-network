@@ -63,7 +63,7 @@ class DeviceList(DeviceList_base):
                             found = true
                             break
                     if not found:
-                        unlink(SYSCONFDEVICEDIR + entry)
+                        os.unlink(SYSCONFDEVICEDIR + entry)
                 except OSError, msg:
                     raise IOError, 'Error removing old device. ' + str(msg)
         finally:
