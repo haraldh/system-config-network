@@ -129,29 +129,6 @@ class DeviceList(DeviceList_base):
         chapconf.write()
 
         #
-        # Static routes
-        #
-        try:
-            fp = os.open('/etc/sysconfig/static-routes', os.O_WRONLY| os.O_CREAT, 0600)
-            #
-            # traverse all devices in the list
-            #
-            for dev in self:                        
-                if fp and dev.StaticRoutes and len(dev.StaticRoutes) > 0:
-                    fp2 = os.open('/etc/sysconfig/network-scripts/route-'+dev.Device, os.O_WRONLY| os.O_CREAT, 0600)
-                    for route in dev.StaticRoutes:
-                        os.write(fp, dev.Device+" net "+route.Address+" netmask "+route.Netmask+" gw "+route.Gateway+"\n")
-                        ipc = ipcalc.IPCalc(route.Address, netmask=route.Netmask)
-                        os.write(fp2, ipc.network()+'/'+ipc.prefix()+" via "+route.Gateway+"\n")
-                    os.close(fp2)
-
-        except EnvironmentError, errstr:
-            generic_error_dialog (_("Error opening/writing %s: %s!") % ('/etc/sysconfig/static-routes', str(errstr)))
-        else:
-            os.close(fp)
-
-
-        #
         # Remove old config files
         #
         try:
