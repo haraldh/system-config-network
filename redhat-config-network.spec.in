@@ -1,4 +1,4 @@
-%define neat-control 0
+%define neat_control 0
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Name: @PACKAGE@
 Version: @VERSION@
@@ -33,7 +33,7 @@ popd
 
 
 %build
-%if ! %{neat-control}
+%if ! %{neat_control}
 pushd .
 cd rp3-1.1.10
 make
@@ -45,7 +45,7 @@ popd
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall
-%if !%{neat-control}
+%if !%{neat_control}
 pushd .
 cd rp3-1.1.10/rp3
 %makeinstall
