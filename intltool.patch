@@ -21,8 +21,20 @@
  
  .po.cat:
  	sed -f ../intl/po2msg.sed < $< > $*.msg \
---- po/Makefile.in.in.old	2002-07-18 17:37:10.000000000 +0200
-+++ po/Makefile.in.in	2002-07-18 17:37:01.000000000 +0200
+
+--- po/Makefile.in.in	2002-07-22 17:12:12.000000000 +0200
++++ po/Makefile.in.in	2002-07-22 17:12:08.000000000 +0200
+@@ -97,8 +97,8 @@
+ 
+ all: all-@USE_NLS@
+ 
+-all-yes: $(CATALOGS)
+-all-no:
++all-yes: $(CATALOGS) Makefile
++all-no: Makefile
+ 
+ $(srcdir)/$(GETTEXT_PACKAGE).pot: $(POTFILES)
+ 	$(GENPOT)
 @@ -188,6 +188,8 @@
  
  distclean: clean
@@ -41,6 +53,15 @@
  	dists="$(DISTFILES)"; \
  	for file in $$dists; do \
  	  ln $(srcdir)/$$file $(distdir) 2> /dev/null \
+@@ -203,7 +205,7 @@
+ 	done
+ 
+ update-po: Makefile
+-	$(MAKE) $(GETTEXT_PACKAGE).pot
++	$(GENPOT)
+ 	PATH=`pwd`/../src:$$PATH; \
+ 	cd $(srcdir); \
+ 	catalogs='$(CATALOGS)'; \
 @@ -221,8 +223,7 @@
  	  fi; \
  	done
@@ -51,11 +72,11 @@
  	PATH=`pwd`/../src:$$PATH; \
  	echo; printf "$*: "; \
  	if $(MSGMERGE) $*; then \
-@@ -256,6 +257,7 @@
- 	cd .. \
- 	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
- 	       $(SHELL) ./config.status
-+	$(MAKE)  $(PACKAGE).pot
+@@ -251,6 +252,7 @@
+ 		| sed -e '$$s/\\$$//') > $@-t \
+ 	    && chmod a-w $@-t \
+ 	    && mv $@-t $@ )
++	$(MAKE) update-po
  
- # Tell versions [3.59,3.63) of GNU make not to export all variables.
- # Otherwise a system limit (for SysV at least) may be exceeded.
+ Makefile: Makefile.in.in ../config.status POTFILES
+ 	cd .. \
