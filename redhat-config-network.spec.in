@@ -9,8 +9,8 @@ Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, usermode , kudzu, libglade2, pygtk2-libglade, pygtk2, python, gnome-python2, rhpl >= 0.72, gnome-python2-canvas, rpm-python
 BuildRequires: python >= 2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
+Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.72, rpm-python
 Obsoletes: isdn-config internet-config netcfg rp3
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 %if %{rp3}
@@ -23,6 +23,17 @@ Patch3: redhat-config-network-0.9.24-rp3-isdn.patch
 
 %description
 This is the network configuration tool for Red Hat Linux,
+supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
+
+%package gui
+Summary: The GUI NEtwork Adminstration Tool for Red Hat Linux
+Group: Applications/System 
+Obsoletes: isdn-config internet-config netcfg rp3
+Requires: %{name} = %{version}-%{release}
+Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
+
+%description gui
+This is the GUI network configuration tool for Red Hat Linux,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %prep
@@ -93,10 +104,22 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/kontrol-panel
 rm -rf $RPM_BUILD_ROOT
 
 
+%files gui
+%defattr(-,root,root)
+%{_datadir}/redhat-config-network/pixmaps
+%{_datadir}/redhat-config-network/netconfpkg/gui
+%{_sbindir}/redhat-config-network-gui
+
 %files -f %{name}.lang
 %defattr(-,root,root)
-
-%{_datadir}/redhat-config-network
+%{_datadir}/redhat-config-network/help
+%{_datadir}/redhat-config-network/*.py*
+%dir %{_datadir}/redhat-config-network/netconfpkg
+%{_datadir}/redhat-config-network/netconfpkg/plugins
+%{_datadir}/redhat-config-network/netconfpkg/*.py*
+%{_datadir}/redhat-config-network/netconfpkg/*.idl
+%{_datadir}/redhat-config-network/module-info
+%{_datadir}/redhat-config-network/providerdb
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
 %config(noreplace) /etc/pam.d/*
@@ -108,7 +131,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/redhat-config-network-tui
 %{_sbindir}/redhat-config-network-cmd
 %{_sbindir}/redhat-config-network-druid
-%{_bindir}/*
+%{_bindir}/internet-druid
+%{_bindir}/neat
+%{_bindir}/redhat-config-network
+%{_bindir}/redhat-config-network-cmd
+%{_bindir}/redhat-config-network-druid
 
 %if %{rp3}
 %{_datadir}/gnome/help/*/*/*
