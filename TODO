@@ -4,6 +4,77 @@
 - implement better traceback fallback mode
 - implement more logical sanity checks
 
+BUGS FOR THE TESTSUITE #86560 alias rcn-testsuite
+==================================================
+76558 	TB: neat:388:hydrateDevices -> existing ~/pixmaps
+106745 	TB NC_functions.py:232:ishardlink:OSError: [Errno 2] No such file or directory: '/etc/resolv.conf'
+117238 	redhat-config-network crash caused by * in /etc/hosts / sre.py:229:_compile:error: multiple repeat
+117834 	redhat-config-network crashes with a really large providerdb
+122475 	redhat-config-network changing network bonding configuration in /etc/modules.conf
+122732 	Modifying hostname doesn't update /etc/hosts
+122846 	system-config-network behaves incorrectly when PEERDNS is not in config file
+122965 	Conf.py:1125:__setitem__:TypeError: cannot concatenate 'str' and 'NoneType' objects
+123438 	Text-based setup fails to create modem networking files
+
+PROFILING BUGS #125274 alias rcn-profiling
+===========================================
+75958 	modules.conf not in profile handling / pcmcia cards shall not be aliased
+85404 	network config does unnecessary file updates
+85651 	Unintuitive configuring of profiles
+90019 	integrate /etc/hosts.conf
+90171 	Network profiles in the current state have a rather dubious utilty
+98252 	No such file or directory: '//etc/sysconfig/network-scripts//ifcfg-lo.rpmsave'
+103760 	TB maindialog.py:284:changed:AttributeError: mainDialog instance has no attribute 'active_profile_name'
+106069 	redhat-config-network-cmd --profile XX does not update the ifcfg-* files correctly
+107273 	redhat-config-network-cmd fails to update IP address from DHCP to static
+108118 	TB maindialog.py:610:on_editButton_clicked:KeyError: 2
+109500 	Network configuration forgets static network route
+109901 	redhat-config-network profile deletion impossible through GUI.
+110206 	Can not delete static interface specific routes
+110838 	redhat-config-network does not create the proper links for copied interfaces in /etc/sysconfig/network-scripts when changing profiles
+111591 	It is impossible to make different profiles, each having a different WEP key.
+112793 	Per-profile device selection doesn't work
+114715 	Hard Links Created Backwards
+115792 	Default profile interface configuration out-of-sync
+118073 	cannot remove profiles
+119169 	Some bugs in redhat-config-network's handling of profiles
+122994 	WEP configuration not in Network Profiles
+123438 	Text-based setup fails to create modem networking files
+124643 	system-config-network-cmd does not work as advertised
+125022 	controlpanel does not remove route if deleted from gui
+
+MODEM BUGS #125272 alias rcn-modem
+==================================
+72050   redhat-config-network-1.1.16-1: cannot activate modem connection
+82806 	Combo LAN/Modem card does not initialize reliably
+97027 	redhat-config-network discards entries in /etc/ppp/chap-secrets
+98761 	Software flow control (XON/XOFF) not work !
+102339 	Failed to activate ppp0 with error 8
+102368 	USB modem not found
+104111 	crashes occur when attempting to activate/deactivate modem while using Network tool.
+106980 	nework device control does not set modem "active"
+107816 	Interface status list not updated after activation of interface
+112675 	ppp0 does not connect under Fedora Core
+113152 	RH-CFG-network cannot detect U.S. Robotics 56k Voice Faxmodem Pro in USB mode, does not set port speed
+114075 	Redhat-config-network gui fails to update modem icon
+119728 	NCHardwareList.py:512:load:ValueError: invalid literal for int(): low
+122230 	Active state of modem connection not displayed
+122811 	system-config-network: We want a option to disable `+FCLASS=0' AT command.
+123438 	Text-based setup fails to create modem networking files
+124705 	modem status still deactivated after successful login
+125017 	AT commands in system-config-network
+
+ISDN BUGS #125273 alias rcn-isdn
+================================
+85385   ippp0 isdn connection not terminated after timeout
+91607 	Incorrect parameters for AVM PCI (Fritz!PCI v2) in file isdncard
+101628 	ISDN, no default route after hangup or reboot
+109917 	tool fails to properly configure ISDN connections
+112194 	Status of a isdn connection doesn't change to active.
+119992 	internet connection cannot be terminated by pressing the deactivate buttom in the neat gui
+122810 	system-config-network: `ISDN' description mislead in Japan
+
+
 RFE BUGZILLAS
 =============
 51391	"RFE: Internet config lacks rp3s abilities"
