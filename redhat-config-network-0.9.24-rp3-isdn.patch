@@ -1,0 +1,15 @@
+--- redhat-config-network-0.9.24/rp3-1.1.10/utils/interface.c.orig	Sat Apr 13 01:37:02 2002
++++ redhat-config-network-0.9.24/rp3-1.1.10/utils/interface.c	Sat Apr 13 13:34:14 2002
+@@ -497,7 +497,11 @@
+ 
+     if (s == INTERFACE_UP) {
+ 	i->txrx_init = FALSE; /* ignore initial spike next time */
+-	ret = fork_exec(0, "/sbin/ifup", i->interfaceName);
++	if (!strncmp("ippp", i->logicalName, 4) ||
++	    !strncmp("isdn", i->logicalName, 4))
++	  ret = fork_exec(0, "/usr/sbin/isdnup", i->interfaceName);
++	else
++	  ret = fork_exec(0, "/sbin/ifup", i->interfaceName);
+     } else /* s == INTERFACE_DOWN */ {
+ 	ret = fork_exec(0, "/sbin/ifdown", i->interfaceName);
+     }
