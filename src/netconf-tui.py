@@ -218,8 +218,8 @@ class EthernetWindow:
         """
 
         if eth:
-            if eth.Name:
-                self.name.set(eth.Name)
+            if eth.DeviceId:
+                self.name.set(eth.DeviceId)
             if eth.Device:
                 self.hwdev.set(eth.Device)
             if eth.BootProto:
@@ -251,7 +251,7 @@ class EthernetWindow:
         Extracts info from the screen, and puts it into a device object
         """
 
-        self.eth.Name=self.name.value()
+        self.eth.DeviceId=self.name.value()
         self.eth.Device=self.hwdev.value()
         if self.dynip.value():
             self.eth.BootProto="dhcp"
@@ -331,10 +331,10 @@ class ModemWindow:
                     self.modem=dev
                     break
             if not self.modem:
-                self.modem=Device()
-                self.modem.Type="Modem"
-                self.modem.createDialup()
-                self.devicelist.append(self.modem)
+                df = NCDeviceFactory.getDeviceFactory()        
+                self.modem = df.getDeviceClass(MODEM)()
+                i = self.devicelist.addDevice()
+                self.devicelist[i] = self.modem
         else:
             self.modem=modem
 
@@ -347,8 +347,8 @@ class ModemWindow:
 
 
         if modem:
-            if modem.Name:
-                self.name.set(modem.Name)
+            if modem.DeviceId:
+                self.name.set(modem.DeviceId)
             if modem.Device:
                 self.hwdev.set(modem.Device)
             if modem.Dialup.Login:
@@ -356,16 +356,16 @@ class ModemWindow:
             if modem.Dialup.Password:
                 self.password.set(modem.Dialup.Password)
             if modem.Dialup.InitString:
-                self.modeminit.set(modem.Dialup.InitString)
+                self.initstring.set(modem.Dialup.InitString)
             if modem.Dialup.PhoneNumber:
-                self.phoneno.set(modem.Dialup.Phonenumber)
+                self.phoneno.set(modem.Dialup.PhoneNumber)
 
     def processInfo(self):
         """
         Extracts info from the screen, and puts it into a device object
         """
 
-        self.modem.Name=self.name.value()
+        self.modem.DeviceId=self.name.value()
         self.modem.Device=self.hwdev.value()
         self.modem.Dialup.Login=self.login.value()
         self.modem.Dialup.Password=self.password.value()
@@ -437,10 +437,10 @@ class ISDNWindow:
                     self.isdn=dev
                     break
             if not self.isdn:
-                self.isdn=Device()
-                self.isdn.Type="ISDN"
-                self.isdn.createDialup()
-                self.devicelist.append(self.isdn)
+                df = NCDeviceFactory.getDeviceFactory()        
+                self.isdn = df.getDeviceClass(ISDN)()
+                i = self.devicelist.addDevice()
+                self.devicelist[i] = self.isdn
         else:
             self.isdn=isdn
 
@@ -453,8 +453,8 @@ class ISDNWindow:
 
 
         if isdn:
-            if isdn.Name:
-                self.name.set(isdn.Name)
+            if isdn.DeviceId:
+                self.name.set(isdn.DeviceId)
             if isdn.Device:
                 self.hwdev.set(isdn.Device)
             if isdn.Dialup.Login:
@@ -471,7 +471,7 @@ class ISDNWindow:
         Extracts info from the screen, and puts it into a device object
         """
 
-        self.isdn.Name=self.name.value()
+        self.isdn.DeviceId=self.name.value()
         self.isdn.Device=self.hwdev.value()
         self.isdn.Dialup.Login=self.login.value()
         self.isdn.Dialup.Password=self.password.value()
