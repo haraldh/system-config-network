@@ -2,6 +2,8 @@
 ## Copyright (C) 2001 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001 Philipp Knirsch <pknirsch@redhat.com>
+## Copyright (C) 2001 Trond Eivind Glomsrød <teg@redhat.com>
+
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -68,7 +70,15 @@ class IsdnInterface:
         return _('ISDN connection')
 
     def get_project_description(self):
-        return _('Create a new ISDN connection.  The ISDN interface is used primarily for connecting to an ISP over a ISDN.')
+        return _("Create a new ISDN connection.  This is a connection that uses an "
+                 "Integrated Services Digital Network line to dial into to your Internet "
+                 "Service Provider.  This type of technology requires a special phone "
+                 "line to be installed by your telephone company. It also requires a "
+                 "device known as a Terminal Adapter(TA) to terminate the ISDN "
+                 "connection from your ISP.  This type of connection is popular in "
+                 "Europe and several other technologically advanced regions.  It is "
+                 "available but uncommon in the USA.  Speeds range from 64kbps to "
+                 "128kbps.")
 
     def get_druids(self):
         Type = 'ISDN'

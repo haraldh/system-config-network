@@ -72,7 +72,14 @@ class ADSLInterface(InterfaceCreator):
         return _('xDSL connection')
 
     def get_project_description(self):
-        return _('Create a new xDSL connection.  The xDSL connection is used primarily for connecting to an ISP over a ethernet.')
+        return _("Create an xDSL connection.  This is a connection that uses one of "
+                 "several types of broadband connections collective known as Digital "
+                 "Subscriber Lines.  This list includes ADSL (Asymmetric, faster "
+                 "downloads than uploads), IDSL(over an ISDN line for distance), SDSL "
+                 "(Symmetric, downloads and uploads at the same speed), and several "
+                 "others.  These types of connections are common in the United States, "
+                 "and are gaining acceptance elsewhere.  Speeds vary according to the "
+                 "technology used, but generally range from 144kbps to 1.0Mbps.")
 
     def get_druids(self):
         hwDruid = ethernetHardware(self.toplevel)

@@ -67,7 +67,12 @@ class ModemInterface:
         return _('Modem connection')
 
     def get_project_description (self):
-        return _('Create a new Modem connection.  The dialup interface is used primarily for connecting to an ISP over a modem.')
+        return _("Create a new Modem connection.  This is a connection that uses a "
+                 "serial analog modem to dial into to your Internet Service Provider. "
+                 "These modems use sound over a normal copper telephone line to transmit "
+                 "data.  These types of connections are available just about anywhere in "
+                 "the world where there is a phone system.  Speeds range from 14.4kbps "
+                 "to 50kbps")
 
     def get_druids(self):
         Type = 'Modem'
