@@ -56,7 +56,6 @@ os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 import os.path
 import string
 from netconfpkg import *
-#from netconfpkg import Control
 
 def Usage():
     print _("redhat-config-network-cmd - Python network configuration commandline tool\n\nUsage: redhat-config-network-cmd -p --profile <profile>")
@@ -99,12 +98,17 @@ if __name__ == '__main__':
 
 
 from netconfpkg.gui import *
+from netconfpkg.Control import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.exception import handleException
-#import GDK
 import gtk
 import gtk.glade
 gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
+
+PROFILE_COLUMN = 0
+STATUS_COLUMN = 1
+DEVICE_COLUMN = 2
+NICKNAME_COLUMN = 3
 
 TRUE=gtk.TRUE
 FALSE=gtk.FALSE
@@ -220,6 +224,8 @@ class mainDialog:
 
         self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
+        self.act_xpm, self.act_mask = get_icon ("pixmaps/active.xpm", self.dialog)
+        self.inact_xpm, self.inact_mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
 
         self.devsel = None
 
@@ -258,18 +264,12 @@ class mainDialog:
 
     def loadDevices(self):
         devicelist = getDeviceList()
-        # already in NCDeviceList
-        # devicelist.commit() 
 
     def loadHardware(self):
         hardwarelist = getHardwareList()
-        # already in NCHardwareList
-        # hardwarelist.commit()
 
     def loadProfiles(self):
         profilelist = getProfileList()
-        # already in NCProfileList
-        # profilelist.commit()
 
     def test(self):
         profilelist = getProfileList()
@@ -319,7 +319,6 @@ class mainDialog:
         
     def saveProfiles(self):
         profilelist = getProfileList()
-        #print "profilelist.save()"
         profilelist.save()
         profilelist.setChanged(false)
         
@@ -342,8 +341,7 @@ class mainDialog:
     def hydrateDevices(self):
         devicelist = getDeviceList()
         activedevicelist = NetworkDevice().get()
-##        profilelist = getProfileList()
-        #print devicelist
+        profilelist = getProfileList()
         devsel = self.devsel
 
         clist = self.xml.get_widget("deviceList")
@@ -351,17 +349,13 @@ class mainDialog:
         clist.clear()
         
         clist.set_row_height(17)
-        act_xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
-        inact_xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
         status_pixmap = self.off_xpm
         status_mask = self.off_mask
         status = INACTIVE
 
         row = 0
         for dev in devicelist:
-            devname = dev.Device
-            if dev.Alias and dev.Alias != "":
-                devname = devname + ':' + str(dev.Alias)
+            devname = dev.getDeviceAlias()
 
             if devname in activedevicelist:
                 status = ACTIVE
@@ -375,15 +369,18 @@ class mainDialog:
             device_pixmap, device_mask = \
                 GUI_functions.get_device_icon_mask(dev.Type, self.dialog)
 
-            clist.append([status, devname, dev.DeviceId, dev.Type])
-##          clist.set_pixmap(row, 0, inact_xpm)
-            clist.set_pixtext(row, STATUS, status, 5, status_pixmap, status_mask)
-            clist.set_pixtext(row, DEVICE, devname, 5, device_pixmap, device_mask)
-##          for prof in profilelist:
-##              if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
-##                  clist.set_pixmap(row, 0, act_xpm)
-##                  clist.set_row_data(row, 1)
-##                  break
+            clist.append(['', status, devname, dev.DeviceId, dev.Type])
+            clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm, self.inact_mask)
+            clist.set_pixtext(row, STATUS_COLUMN, status, 5, status_pixmap, status_mask)
+            clist.set_pixtext(row, DEVICE_COLUMN, devname, 5, device_pixmap, device_mask)
+            clist.set_row_data(row, dev)
+            
+            for prof in profilelist:
+                if (prof.Active == true or prof.ProfileName == 'default') and dev.DeviceId in prof.ActiveDevices:
+                    clist.set_pixmap(row, PROFILE_COLUMN, self.act_xpm, self.act_mask)
+                    break
+                
+
             if dev == devsel:
                 clist.select_row(row, 0)
                 
@@ -520,7 +517,7 @@ class mainDialog:
             return
 
         device = Device()
-        device.apply(devicelist[clist.selection[0]])
+        device.apply(clist.get_row_data(clist.selection[0]))
 
         duplicate = TRUE
         num = 0
@@ -547,12 +544,9 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        device = devicelist[clist.selection[0]]
+        device = clist.get_row_data(clist.selection[0])
 
-        name = clist.get_text(clist.selection[0], 2)
-        type = clist.get_text(clist.selection[0], 3)
-
-        if type == LO:
+        if device.Type == LO:
             generic_error_dialog (_('The Loopback device can not be edited!'), self.dialog)
             return
 
@@ -565,16 +559,16 @@ class mainDialog:
 
         device.commit()
 
-        if not device.changed:
+        if not device.modified():
             return
 
         # Fixed change device names in active list of all profiles
         profilelist = getProfileList()
         for prof in profilelist:
             if devId in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(name)
+                pos = prof.ActiveDevices.index(device.Name)
                 prof.ActiveDevices[pos] = device.DeviceId
-        prof.commit()
+                prof.commit()
 
         self.hydrate()
         device.changed = false
@@ -630,13 +624,9 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        select = clist.selection[0]
-##        device = devicelist[select]
+        device = clist.get_row_data(clist.selection[0])
 
-        name = clist.get_text(select, 2)
-        type = clist.get_text(select, 3)
-
-        if type == 'Loopback':
+        if device.Type == 'Loopback':
             generic_error_dialog (_('The Loopback device can not be removed!'), self.dialog)
             return
 
@@ -646,8 +636,8 @@ class mainDialog:
             return
 
         for prof in profilelist:
-            if name in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(name)
+            if device.Name in prof.ActiveDevices:
+                pos = prof.ActiveDevices.index(device.Name)
                 del prof.ActiveDevices[pos]
         profilelist.commit()
         
@@ -656,50 +646,53 @@ class mainDialog:
         self.hydrate()
 
     def on_deviceActivateButton_clicked(self, button):
-        device = self.clist_get_device()
+        if len(clist.selection) == 0:
+            return
+        
+        device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
+
         timeout_remove(self.tag)
         
-        if device:
-            if self.changed():
-                button = generic_yesno_dialog(
-                    _("You have made some changes in your configuration.") + "\n" +\
-                    _("To activate the network device %s, the changes have to be saved.") % (device) + "\n\n" +\
-                    _("Do you want to continue?") ,
-                    self.dialog)
+        if device.changed:
+            button = generic_yesno_dialog(
+                _("You have made some changes in your configuration.") + "\n" +\
+                _("To activate the network device %s, the changes have to be saved.") % (device) +\
+                "\n\n" +\
+                _("Do you want to continue?") ,
+                self.dialog)
                 
-                if button == gtk.RESPONSE_YES:
-                    if self.save() != 0:
-                        return
-            
-                if button == gtk.RESPONSE_NO:
+            if button == gtk.RESPONSE_YES:
+                if self.save() != 0:
                     return
+            
+            if button == gtk.RESPONSE_NO:
+                return
 
-            intf = Interface()
-            child = intf.activate(device)
-            dlg = gtk.Dialog(_('Network device activating...'))
-            dlg.set_border_width(10)
-            dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
-            dlg.vbox.show()
-            dlg.set_position (gtk.WIN_POS_MOUSE)
-            dlg.set_modal(TRUE)
-            dlg.show_all()
-#            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
-#            dlg.get_window().set_cursor(gtk.cursor_new(GDK.WATCH))
-            idle_func()
-            os.waitpid(child, 0)
-#            self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-#            dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
-            dlg.destroy()
+        intf = Interface()
+        child = intf.activate(device)
+        dlg = gtk.Dialog(_('Network device activating...'))
+        dlg.set_border_width(10)
+        dlg.vbox.add(gtk.Label(_('Activating network device %s, please wait...') %(device)))
+        dlg.vbox.show()
+        dlg.set_position (gtk.WIN_POS_MOUSE)
+        dlg.set_modal(TRUE)
+        dlg.show_all()
+        idle_func()
+        os.waitpid(child, 0)
+        dlg.destroy()
 
-            if NetworkDevice().find(device):
-                self.update_devicelist()
-            else:
-                devErrorDialog(device, ACTIVATE, self.dialog)
+        if NetworkDevice().find(device):
+            self.update_devicelist()
+        else:
+            devErrorDialog(device, ACTIVATE, self.dialog)
 
         self.tag = timeout_add(4000, self.update_devicelist)
             
     def on_deviceDeactivateButton_clicked(self, button):
-        device = self.clist_get_device()
+        if len(clist.selection) == 0:
+            return
+        
+        device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
         
         if device:
             intf = Interface()
@@ -712,7 +705,7 @@ class mainDialog:
     def on_deviceMonitorButton_clicked(self, button):
         generic_error_dialog(_("To be rewritten!"))
         return
-        device = self.clist_get_device()
+        device = clist.get_row_data(clist.selection[0]).getDeviceAlias()
         if device:
             Interface().monitor(device)
     
@@ -720,21 +713,27 @@ class mainDialog:
         clist = self.xml.get_widget('deviceList')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_pixtext(clist.selection[0], STATUS)[0]
+        if not clist.get_row_data(clist.selection[0]):
+            return
+        dev = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
         return dev
 
     def clist_get_device(self):
         clist = self.xml.get_widget('deviceList')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_pixtext(clist.selection[0], DEVICE)[0]
+        if not clist.get_row_data(clist.selection[0]):
+            return
+        dev = clist.get_pixtext(clist.selection[0], DEVICE_COLUMN)[0]
         return dev
 
     def clist_get_nickname(self):
         clist = self.xml.get_widget('deviceList')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_text(clist.selection[0], NICKNAME)
+        if not clist.get_row_data(clist.selection[0]):
+            return
+        dev = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
         return dev
 
     def update_devicelist(self):
@@ -767,7 +766,7 @@ class mainDialog:
                     prof.Active = true
                     #print "profile " + prof.ProfileName + " activated\n"
                 else: prof.Active = false
-            profilelist.commit()
+                prof.commit()
             self.hydrate()
         
 
@@ -793,10 +792,7 @@ class mainDialog:
             
             self.devsel = devicelist[clist.selection[0]]
             
-            try:
-                status = clist.get_pixtext(clist.selection[0], 0)[0]
-            except ValueError:
-                status = clist.get_text(clist.selection[0], 0)
+            status = self.clist_get_status()
 
             if status == ACTIVE:
                 activate_button.set_sensitive(FALSE)
@@ -811,12 +807,6 @@ class mainDialog:
                 delete_button.set_sensitive(TRUE)
                 monitor_button.set_sensitive(FALSE)
 
-        #profilelist = getProfileList()
-        #if clist.get_name() == 'profileList':
-        #    for prof in profilelist:
-        #        prof.Active = false
-        #    profilelist[row].Active = true
-        #    self.hydrate()
 
     def on_generic_clist_unselect_row(self, clist, row, column, event,
                                       edit_button = None, delete_button = None,
@@ -845,7 +835,7 @@ class mainDialog:
         return profilelist[0]
 
     def on_generic_clist_button_press_event(self, clist, event, func):
-##        profilelist = getProfileList()
+        profilelist = getProfileList()
 
         # don't allow user to edit device if it's active
         #if clist.get_name() == 'deviceList':
@@ -865,46 +855,46 @@ class mainDialog:
                                    func)
                 clist.set_data("signal_id", id)
                  
-#         if clist.get_name() == 'deviceList' and event.type == GDK.BUTTON_PRESS:
-#             info = clist.get_selection_info(event.x, event.y)
-#             if info != None and info[1] == 0:
-#                 row = info[0]
+        if clist.get_name() == 'deviceList' and gtk.gdk.BUTTON_PRESS:
+             info = clist.get_selection_info(event.x, event.y)
+             if info != None and info[1] == 0:
+                 row = info[0]
 
+                 device = clist.get_row_data(row)
+                 name = device.DeviceId
+                 type = device.Type
+                 if type == LO:
+                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
+                     return
 
-##                name = clist.get_text(row, 0)
-##                type = clist.get_text(row, 1)
-##                 if type == 'Loopback':
-##                     generic_error_dialog (_('The Loopback device can not be disabled!'), self.dialog)
-##                     return
+                 curr_prof = self.get_active_profile()
 
-##                 if clist.get_row_data(row) == 0:
-##                     xpm, mask = get_icon ("pixmaps/active.xpm", self.dialog)
-##                     clist.set_row_data(row, 1)
-##                     curr_prof = self.get_active_profile()
-##                     if curr_prof.ProfileName == 'default':
-##                         for prof in profilelist:
-##                             profilelist.activateDevice(name, prof.ProfileName, true)
-##                     else:
-##                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
-##                         for prof in profilelist:
-##                             if prof.ProfileName == "default":
-##                                 continue
-##                             if name not in prof.ActiveDevices:
-##                                 break
-##                         else:
-##                             profilelist.activateDevice(name, 'default', true)
+                 if device.DeviceId not in curr_prof.ActiveDevices:
+                     xpm, mask = self.act_xpm, self.act_mask
+                     curr_prof = self.get_active_profile()
+                     if curr_prof.ProfileName == 'default':
+                         for prof in profilelist:
+                             profilelist.activateDevice(name, prof.ProfileName, true)
+                     else:
+                         profilelist.activateDevice(name, curr_prof.ProfileName, true)
+                         for prof in profilelist:
+                             if prof.ProfileName == "default":
+                                 continue
+                             if name not in prof.ActiveDevices:
+                                 break
+                         else:
+                             profilelist.activateDevice(name, 'default', true)
                         
-##                 else:
-##                     xpm, mask = get_icon ("pixmaps/inactive.xpm", self.dialog)
-##                     clist.set_row_data(row, 0)
-##                     curr_prof = self.get_active_profile()
-##                     if curr_prof.ProfileName == 'default':
-##                         for prof in profilelist:
-##                             profilelist.activateDevice(name, prof.ProfileName, false)
-##                     else:
-##                         profilelist.activateDevice(name, curr_prof.ProfileName, false)
-##                         profilelist.activateDevice(name, 'default', false)
-##                 clist.set_pixmap(row, 0, xpm)
+                 else:
+                     xpm, mask = self.inact_xpm, self.inact_mask
+                     if curr_prof.ProfileName == 'default':
+                         for prof in profilelist:
+                             profilelist.activateDevice(name, prof.ProfileName, false)
+                     else:
+                         profilelist.activateDevice(name, curr_prof.ProfileName, false)
+                         profilelist.activateDevice(name, 'default', false)
+                         
+                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
 
     def on_hostnameEntry_changed(self, entry):
         profilelist = getProfileList()
@@ -1449,12 +1439,15 @@ if __name__ == '__main__':
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     progname = os.path.basename(sys.argv[0])
 
+    showprofile = 1
 
     try:
-        opts, args = getopt.getopt(cmdline, "p", ["profile"])
+        opts, args = getopt.getopt(cmdline, "pn", ["profile", "noprofile"])
         for opt, val in opts:
             if opt == '-p' or opt == '--profile':
                 showprofile = 1
+            if opt == '-n' or opt == '--noprofile':
+                showprofile = 0
             else: raise BadUsage
 
     except (getopt.error, BadUsage):

@@ -276,15 +276,28 @@
                                 <child>
                                   <widget class="GtkCList" id="deviceList">
                                     <property name="can_focus">yes</property>
-                                    <property name="column_widths">80,54,87,80</property>
+                                    <property name="column_widths">35,80,54,87,80</property>
                                     <property name="selection_mode">GTK_SELECTION_BROWSE</property>
                                     <property name="show_titles">yes</property>
-                                    <property name="n_columns">4</property>
+                                    <property name="n_columns">5</property>
                                     <property name="visible">yes</property>
 
                                     <signal name="button_press_event" handler="on_deviceList_button_press_event" />
                                     <signal name="select_row" handler="on_deviceList_select_row" />
                                     <signal name="unselect_row" handler="on_deviceList_unselect_row" />
+
+                                    <child>
+                                      <widget class="GtkLabel" id="label303">
+                                        <property name="label" translatable="yes">Profile</property>
+                                        <property name="justify">GTK_JUSTIFY_LEFT</property>
+                                        <property name="wrap">no</property>
+                                        <property name="xalign">0</property>
+                                        <property name="yalign">0.5</property>
+                                        <property name="xpad">0</property>
+                                        <property name="ypad">0</property>
+                                        <property name="visible">yes</property>
+                                      </widget>
+                                    </child>
 
                                     <child>
                                       <widget class="GtkLabel" id="label303">

@@ -157,6 +157,13 @@ class Device(Device_base):
             return true
         return false
 
+
+    def getDeviceAlias(self):
+        devname = self.Device
+        if self.Alias and self.Alias != "":
+            devname = devname + ':' + str(self.Alias)
+        return devname
+
     def load(self, name):
         from netconfpkg.NCDeviceList import getDeviceList
         conf = ConfDevice(name)

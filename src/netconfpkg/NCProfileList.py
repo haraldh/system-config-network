@@ -135,7 +135,7 @@ class ProfileList(ProfileList_base):
                 devmap[device.Device] = device
             break
         
-    def commit(self, changed=false):        
+    def commit(self, changed=true):        
         self.test()
         ProfileList_base.commit(self, changed)
         
@@ -183,7 +183,7 @@ class ProfileList(ProfileList_base):
             break
         
     def save(self):
-        self.test()
+        self.commit(changed=false)
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')

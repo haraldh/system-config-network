@@ -84,7 +84,7 @@ class DeviceList(DeviceList_base):
         self.commit(changed=false)
 
         nwconf = Conf.ConfShellVar('/etc/sysconfig/network')
-        if nwconf.has_key("NETWORKING") and self.getNumDevices() > 0:
+        if nwconf.has_key("NETWORKING") and len(self) > 0:
             nwconf["NETWORKING"] = "yes"
         nwconf.write()
 
