@@ -30,7 +30,7 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 Summary: The NEtwork Adminstration Tool for Red Hat Linux
 Group: Applications/System 
 Obsoletes: netcfg
-Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.72, rpm-python
+Requires: initscripts >= 5.99, usermode , kudzu, python, rhpl >= 0.83, rpm-python
 
 %description tui
 This is the network configuration tool for Red Hat Linux,
@@ -109,6 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/redhat-config-network/pixmaps
 %{_datadir}/redhat-config-network/netconfpkg/gui
 %{_sbindir}/redhat-config-network-gui
+%{_sbindir}/internet-druid
+%{_bindir}/redhat-control-network
+%{_bindir}/neat-control
+%{_bindir}/internet-druid
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -124,14 +128,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/*
 %config(noreplace) /etc/pam.d/*
 %config(noreplace) /etc/security/console.apps/*
-%{_sbindir}/internet-druid
 %{_sbindir}/neat
 %{_sbindir}/neat-tui
 %{_sbindir}/redhat-config-network
 %{_sbindir}/redhat-config-network-tui
 %{_sbindir}/redhat-config-network-cmd
 %{_sbindir}/redhat-config-network-druid
-%{_bindir}/internet-druid
 %{_bindir}/neat
 %{_bindir}/redhat-config-network
 %{_bindir}/redhat-config-network-cmd
