@@ -202,7 +202,12 @@ class mainDialog:
         self.xml.get_widget ("hardwareList").column_titles_passive ()
         self.xml.get_widget ("dnsList").column_titles_passive ()
         self.xml.get_widget ("hostsList").column_titles_passive ()
-        if getDeviceList(): self.xml.get_widget('notebook1').set_page(1)
+        
+        if getDeviceList():
+            notebook = self.xml.get_widget('mainNotebook')
+            widget = self.xml.get_widget('deviceFrame')
+            page = notebook.page_num(widget)
+            notebook.set_page(1)
         
     def load(self):
         self.loadDevices()
