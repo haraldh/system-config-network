@@ -325,7 +325,7 @@ void some_function_name() {
   _("Enable _VJ TCP/IP Header Compression");
 
   /* netconfpkg/dslconfig.glade:809 */
-  _("Enables synchronous PPP for the connection");
+  _("Enable synchronous PPP for the connection");
 
   /* netconfpkg/dialupconfig.glade:561 netconfpkg/DialupDruid.glade:306 */
   _("Enter any numbers you need to dial before the normal phone number. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here.");
