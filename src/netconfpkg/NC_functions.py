@@ -293,12 +293,35 @@ def getModemList():
 	        ModemList.append('/dev/' + dev)
     return ModemList[:]
 
+# Some failsafe return codes (same as in gtk)
+RESPONSE_NONE = -1
+RESPONSE_REJECT = -2
+RESPONSE_ACCEPT = -3
+RESPONSE_DELETE_EVENT = -4
+RESPONSE_OK = -5
+RESPONSE_CANCEL = -6
+RESPONSE_CLOSE = -7
+RESPONSE_YES = -8
+RESPONSE_NO = -9
+RESPONSE_APPLY = -10
+RESPONSE_HELP = -11
+
 generic_error_dialog_func = None
 def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
 			  widget=None, page=0, broken_widget=None):
 	global generic_error_dialog_func
 	if generic_error_dialog_func:
 		return generic_error_dialog_func(message, parent_dialog,
+						 dialog_type, widget,
+						 page, broken_widget)
+	return 0
+
+generic_info_dialog_func = None
+def generic_info_dialog (message, parent_dialog = None, dialog_type="info",
+			  widget=None, page=0, broken_widget=None):
+	global generic_info_dialog_func
+	if generic_info_dialog_func:
+		return generic_info_dialog_func(message, parent_dialog,
 						 dialog_type, widget,
 						 page, broken_widget)
 	return 0
@@ -327,6 +350,10 @@ def generic_yesno_dialog (message, parent_dialog = None,
 def set_generic_error_dialog_func(func):
 	global generic_error_dialog_func
 	generic_error_dialog_func = func
+
+def set_generic_info_dialog_func(func):
+	global generic_info_dialog_func
+	generic_error_info_func = func
 	
 def set_generic_yesnocancel_dialog_func(func):
 	global generic_yesnocancel_dialog_func
