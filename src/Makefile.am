@@ -6,6 +6,8 @@ GLADE_FILES = maindialog.glade neat-control.glade
 
 EXTRA_DIST = $(PYTHON_FILES) $(GLADE_FILES) providerdb glade-strings.c module-info
 
+bin_PROGRAMS = userisdnctl
+
 execdir = $(sbindir)
 
 all-local: 
@@ -51,6 +53,8 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
+	mkdir -p $(DESTDIR)/sbin
+	install -m 0755 userisdnctl $(DESTDIR)/sbin
 
 docs:
 	cd $(srcdir)
