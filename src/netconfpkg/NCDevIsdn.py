@@ -33,9 +33,9 @@ class DevIsdn(Device):
        return _devIsdnWizard
 
    def isType(self, device):
-       if device.Type == ETHERNET:
+       if device.Type == ISDN:
            return true
-       if getDeviceType(device.Device) == ETHERNET:
+       if getDeviceType(device.Device) == ISDN:
            return true
        return false
 
@@ -48,4 +48,4 @@ def setDevIsdnWizard(wizard):
     _devIsdnWizard = wizard
 
 df = getDeviceFactory()
-df.register(DevIsdn, ETHERNET)
+df.register(DevIsdn, ISDN)

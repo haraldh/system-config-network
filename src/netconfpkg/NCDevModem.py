@@ -33,9 +33,9 @@ class DevModem(Device):
        return _devModemWizard
 
    def isType(self, device):
-       if device.Type == ETHERNET:
+       if device.Type == MODEM:
            return true
-       if getDeviceType(device.Device) == ETHERNET:
+       if getDeviceType(device.Device) == MODEM:
            return true
        return false
 
@@ -48,4 +48,4 @@ def setDevModemWizard(wizard):
     _devModemWizard = wizard
 
 df = getDeviceFactory()
-df.register(DevModem, ETHERNET)
+df.register(DevModem, MODEM)

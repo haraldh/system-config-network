@@ -132,3 +132,6 @@ class tokenringConfigDialog(deviceConfigDialog):
 #             return
 #         self.device.HardwareAddress = hwaddr
 #         self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
+
+
+NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)

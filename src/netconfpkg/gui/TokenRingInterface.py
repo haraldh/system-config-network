@@ -235,3 +235,5 @@ class TokenRingInterface(InterfaceCreator):
 
         self.toplevel.destroy()
         gtk.mainquit()
+
+NCDevTokenRing.setDevTokenRingWizard(TokenRingInterface)

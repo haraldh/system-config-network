@@ -33,9 +33,9 @@ class DevTokenRing(Device):
        return _devTokenRingWizard
 
    def isType(self, device):
-       if device.Type == ETHERNET:
+       if device.Type == TOKENRING:
            return true
-       if getDeviceType(device.Device) == ETHERNET:
+       if getDeviceType(device.Device) == TOKENRING:
            return true
        return false
 
@@ -48,4 +48,4 @@ def setDevTokenRingWizard(wizard):
     _devTokenRingWizard = wizard
 
 df = getDeviceFactory()
-df.register(DevTokenRing, ETHERNET)
+df.register(DevTokenRing, TOKENRING)

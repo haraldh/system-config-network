@@ -33,9 +33,9 @@ class DevCipe(Device):
        return _devCipeWizard
 
    def isType(self, device):
-       if device.Type == ETHERNET:
+       if device.Type == CIPE:
            return true
-       if getDeviceType(device.Device) == ETHERNET:
+       if getDeviceType(device.Device) == CIPE:
            return true
        return false
 
@@ -48,4 +48,4 @@ def setDevCipeWizard(wizard):
     _devCipeWizard = wizard
 
 df = getDeviceFactory()
-df.register(DevCipe, ETHERNET)
+df.register(DevCipe, CIPE)

@@ -33,9 +33,9 @@ class DevADSL(Device):
        return _devADSLWizard
 
    def isType(self, device):
-       if device.Type == ETHERNET:
+       if device.Type == DSL:
            return true
-       if getDeviceType(device.Device) == ETHERNET:
+       if getDeviceType(device.Device) == DSL:
            return true
        return false
 
@@ -48,4 +48,4 @@ def setDevADSLWizard(wizard):
     _devADSLWizard = wizard
 
 df = getDeviceFactory()
-df.register(DevADSL, ETHERNET)
+df.register(DevADSL, DSL)

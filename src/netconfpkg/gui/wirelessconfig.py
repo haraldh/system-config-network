@@ -141,3 +141,5 @@ class wirelessConfigDialog(deviceConfigDialog):
             self.xml.get_widget("rateCombo").set_sensitive(TRUE)
             self.xml.get_widget("rateEntry").set_sensitive(TRUE)
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
+
+NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)

@@ -33,9 +33,9 @@ class DevWireless(Device):
        return _devWirelessWizard
 
    def isType(self, device):
-       if device.Type == ETHERNET:
+       if device.Type == WIRELESS:
            return true
-       if getDeviceType(device.Device) == ETHERNET:
+       if getDeviceType(device.Device) == WIRELESS:
            return true
        return false
 
@@ -48,4 +48,4 @@ def setDevWirelessWizard(wizard):
     _devWirelessWizard = wizard
 
 df = getDeviceFactory()
-df.register(DevWireless, ETHERNET)
+df.register(DevWireless, WIRELESS)

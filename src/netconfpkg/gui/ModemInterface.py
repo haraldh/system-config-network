@@ -169,3 +169,5 @@ class ModemInterface:
             self.xml.get_widget('baudrateEntry').set_text(str(self.hw.Modem.BaudRate))
         if self.hw.Modem.FlowControl != None and modemFlowControls.has_key(self.hw.Modem.FlowControl):
             self.xml.get_widget('flowControlEntry').set_text(modemFlowControls[self.hw.Modem.FlowControl])
+
+NCDevModem.setDevModemWizard(ModemInterface)

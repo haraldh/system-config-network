@@ -318,3 +318,5 @@ class WirelessInterface(InterfaceCreator):
         
         self.toplevel.destroy()
         gtk.mainquit()
+
+NCDevWireless.setDevWirelessWizard(WirelessInterface)

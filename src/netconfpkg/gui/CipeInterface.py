@@ -317,3 +317,4 @@ class CipeInterface(InterfaceCreator):
             return FALSE
         return TRUE
             
+NCDevCipe.setDevCipeWizard(CipeInterface)

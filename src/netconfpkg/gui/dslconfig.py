@@ -131,8 +131,12 @@ class dslConfigDialog(deviceConfigDialog):
         sharedtcpip.dsl_hardware_dehydrate (self.sharedtcpip_xml, self.device)
         
 
+
+NCDevADSL.setDevADSLDialog(dslConfigDialog)
+
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     dslConfigDialog()
     gtk.mainloop()
+

@@ -197,3 +197,5 @@ class ADSLInterface(InterfaceCreator):
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), self.device)
         dialup.DefRoute = TRUE
         self.device.AutoDNS = TRUE
+
+NCDevADSL.setDevADSLWizard(ADSLInterface)

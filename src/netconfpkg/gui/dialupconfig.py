@@ -29,6 +29,8 @@ import re
 import sharedtcpip
 
 from deviceconfig import deviceConfigDialog
+from netconfpkg import NCDevIsdn
+from netconfpkg import NCDevModem
 from netconfpkg.NCDeviceList import *
 from netconfpkg.NCCallback import *
 from netconfpkg.NCHardwareList import *
@@ -451,6 +453,10 @@ class ModemDialupDialog(DialupDialog):
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
         dialup.StupidMode = self.xml.get_widget("stupidModeCB").get_active() == true
+
+
+NCDevIsdn.setDevIsdnDialog(ISDNDialupDialog)
+NCDevModem.setDevModemDialog(ModemDialupDialog)
 
 
 # make ctrl-C work
