@@ -17,6 +17,8 @@ install-data-local:
 	$(mkinstalldirs) $(datadir)/kontrol-panel/icons
 	$(INSTALL_DATA) neat.desktop $(datadir)/kontrol-panel
 	$(INSTALL_DATA) src/pixmaps/neat.png $(datadir)/kontrol-panel/icons
-				
+	$(INSTALL_DATA) neat.desktop $(datadir)desktop-folders/sysconfig
+
+
 srpm: distcheck
 	rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir `pwd`" --define "_specdir `pwd`" -ts @PACKAGE@-@VERSION@.tar.gz
