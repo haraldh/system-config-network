@@ -16,6 +16,7 @@ from DeviceList import *
 class ConfDevice(Conf.ConfShellVar):
     def __init__(self, name):
         Conf.ConfShellVar.__init__(self, SYSCONFDEVICEDIR + 'ifcfg-' + name)
+        self.chmod(0600)
             
 class Device(Device_base):
     keydict = { 'Device' : 'DEVICE',
