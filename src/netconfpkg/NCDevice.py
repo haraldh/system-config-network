@@ -233,6 +233,9 @@ class Device(DeviceList.Device_base):
 
         conf = ConfDevice(self.DeviceId)
 
+        if self.BootProto:
+            self.BootProto = string.lower(self.BootProto)
+
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
