@@ -48,10 +48,6 @@ class wirelessConfigDialog(deviceConfigDialog):
         glade_file = "wirelessconfig.glade"
         deviceConfigDialog.__init__(self, glade_file,
                                     device, xml_main, xml_basic)    
-        self.xml.signal_autoconnect(
-            {
-            "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
-            })
 
 
     def hydrate(self):
@@ -69,12 +65,6 @@ class wirelessConfigDialog(deviceConfigDialog):
             widget.set_text(hwcurr)
         widget.set_position(0)
         
-        if self.device.Alias != None:
-            self.xml.get_widget("aliasSupportCB").set_active(TRUE)
-            self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
-        else:
-            self.xml.get_widget("aliasSupportCB").set_active(FALSE)
-
         wl = self.device.Wireless
         if wl:
             if wl.EssId: self.xml.get_widget("essidEntry").set_text(wl.EssId)
@@ -92,9 +82,6 @@ class wirelessConfigDialog(deviceConfigDialog):
         fields = string.split(hw)
         hw = fields[0]
         self.device.Device = hw
-        if self.xml.get_widget("aliasSupportCB").get_active():
-            self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
-        else: self.device.Alias = None
 
         wl = self.device.Wireless
         if wl:
@@ -104,7 +91,3 @@ class wirelessConfigDialog(deviceConfigDialog):
             wl.Freq = self.xml.get_widget("frequencyEntry").get_text()
             wl.Rate = self.xml.get_widget("rateEntry").get_text()
             wl.Key = self.xml.get_widget("keyEntry").get_text()
-
-    
-    def on_aliasSupportCB_toggled(self, check):
-        self.xml.get_widget("aliasSpinBox").set_sensitive(check["active"])
