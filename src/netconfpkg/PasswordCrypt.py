@@ -17,12 +17,12 @@
 
 import string
 import crypt
-import rand
+import random
 
 def _mk_crypt_salt():
     ret = ['','']
     for i in [0,1]:
-        j = rand.choice(range(0,64))
+        j = random.choice(range(0,64))
         if (j < 26):
             ret[i] = string.lowercase[j]
         elif (j < 52):
