@@ -1,6 +1,4 @@
 import re
-import gnome
-import gnome.ui
 import traceback
 import sys
 import os
@@ -24,6 +22,9 @@ deviceTypeDict = {'^eth[0-9]+(:[0-9]+)?$':'Ethernet',
                '^lo$':'Loopback'}
 
 def generic_error_dialog (message, parent_dialog, dialog_type="warning", widget=None, page=0, broken_widget=None):
+    import gnome
+    import gnome.ui
+
     dialog = gnome.ui.GnomeMessageBox (message, dialog_type, "Button_Ok")
     dialog.set_parent (parent_dialog)
     if widget != None:
@@ -93,3 +94,35 @@ def updateNetworkScripts():
             list = traceback.format_exception (type, value, tb)
             print list
             continue
+
+def switchToProfile(val):
+    from DeviceList import *
+    from HardwareList import *
+    from ProfileList import *
+
+    global devicelist, hardwarelist, profilelist
+    devicelist = getDeviceList()
+    hardwarelist = getHardwareList()
+    profilelist = getProfileList()
+
+    found = false
+    for prof in profilelist:
+        if prof.ProfileName == val:
+            found = true
+            break
+
+    if found == false:
+        print "No Profile with name "+val+" could be found."
+        return
+
+    for prof in profilelist:
+        if prof.ProfileName == val:
+            prof.Active = true
+        else:
+            prof.Active = false
+
+    print "Switching to Profile "+val
+
+    devicelist.save()
+    hardwarelist.save()
+    profilelist.save()
