@@ -111,7 +111,7 @@ class ethernetHardware:
 
     def setup(self):
         list = []
-        modInfo = Conf.ConfModInfo()
+        modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
                 list.append(modInfo[i]['description'])
@@ -139,7 +139,7 @@ class ethernetHardware:
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
         self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
         self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
-        modInfo = Conf.ConfModInfo()
+        modInfo = NCHardwareList.getModInfo()
         self.hw.Card.ModuleName = 'Unknown'
         for i in modInfo.keys():
             if modInfo[i]['description'] == self.hw.Description:

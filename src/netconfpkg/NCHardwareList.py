@@ -32,6 +32,18 @@ if not "/usr/lib/rhs/python" in sys.path:
 from Conf import *
 from ConfSMB import *
 
+ModInfo = None
+
+def getModInfo():
+    global ModInfo
+    if ModInfo == None:
+        try:
+            ModInfo = ConfModInfo(filename = '/boot/module-info-g')
+        except VersionMismatch:
+            # ok, take fallback
+            ModInfo = ConfModInfo(filename = NETCONFDIR + '/module-info')
+    return ModInfo
+
 class MyConfModules(ConfModules):
     def __init__(self, filename = '/etc/modules.conf'):
         ConfModules.__init__(self, filename)
@@ -42,7 +54,7 @@ class MyConfModules(ConfModules):
         for key in self.vars[varname].keys():
             self.rewind()
 
-            # workaround for brokem regexp implementation
+            # workaround for broken regexp implementation
             restr = '^[\\t ]*' + key + '[\\t ]+' + varname
             while self.findnextline(restr):
                 self.deleteline()
@@ -113,7 +125,7 @@ class HardwareList(HardwareList_base):
 
     def load(self):
         modules = ConfModules()
-        modinfo = ConfModInfo()
+        modinfo = getModInfo()
         hwconf = ConfHWConf()
         wvdial = ConfSMB('/etc/wvdial.conf')
 

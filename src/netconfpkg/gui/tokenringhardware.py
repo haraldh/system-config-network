@@ -35,6 +35,7 @@ from netconfpkg import Conf
 import commands
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
+from netconfpkg import NCHardwareList
 
 from gtk import TRUE
 from gtk import FALSE
@@ -133,7 +134,7 @@ class tokenringHardwareDialog:
 
     def setup(self):
         list = []
-        modInfo = Conf.ConfModInfo()
+        modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "tr":
                 list.append(modInfo[i]['description'])
@@ -152,7 +153,7 @@ class tokenringHardwareDialog:
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
         self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
         self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
-        modInfo = Conf.ConfModInfo()
+        modInfo = NCHardwareList.getModInfo()
         self.hw.Card.ModuleName = 'Unknown'
         for i in modInfo.keys():
             if modInfo[i]['description'] == self.hw.Description:
