@@ -9,6 +9,23 @@ from netconfpkg.NC_functions import _
 
 GLADEPATH='netconfpkg/gui/'
 
+DEVPIXMAPS = {}
+
+def get_device_icon_mask(devtype, dialog):
+    if not DEVPIXMAPS.has_key(ETHERNET):
+        DEVPIXMAPS[ETHERNET] = get_icon('pixmaps/ethernet.xpm', dialog)
+        DEVPIXMAPS[MODEM] = get_icon('pixmaps/ppp.xpm', dialog)
+        DEVPIXMAPS[ISDN] = get_icon('pixmaps/isdn.xpm', dialog)
+        DEVPIXMAPS[WIRELESS] = get_icon('pixmaps/irda-16.xpm', dialog)
+        DEVPIXMAPS[DSL] = get_icon('pixmaps/dsl.xpm', dialog)
+        DEVPIXMAPS[TOKENRING] = DEVPIXMAPS[ETHERNET]
+        DEVPIXMAPS[CIPE] = DEVPIXMAPS[ETHERNET]
+
+    if not DEVPIXMAPS.has_key(devtype):
+        return DEVPIXMAPS[ETHERNET]
+    else:
+        return DEVPIXMAPS[devtype]
+
 def get_history (omenu):
     menu = omenu.get_menu ().get_active ()
     index = 0
