@@ -21,7 +21,7 @@ all-local:
 
 dist-local: glade-strings.c 
 
-glade-strings.c:  maindialog.glade  $(wildcard $(srcdir)/netconfpkg/gui/*.glade)
+glade-strings.c:  maindialog.glade neat-control.glade $(wildcard $(srcdir)/netconfpkg/gui/*.glade)
 	libglade-xgettext -c -o $(srcdir)/glade-strings.c $^
 
 pythondir = $(pkgdatadir)
