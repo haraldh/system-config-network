@@ -58,6 +58,7 @@ class mainDialog:
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.no_profileentry_update = None
+
         xml_signal_autoconnect(self.xml,
             {
             "on_deviceActivateButton_clicked" : \
@@ -569,9 +570,7 @@ class mainDialog:
                        "/help/index.html")        
 
     def on_deviceAddButton_clicked (self, clicked):
-        if not self.interface:
-            self.interface = NewInterfaceDialog(self.dialog)
-        interface.
+        interface = NewInterfaceDialog(self.dialog)
         gtk.mainloop()            
             
         if not interface.canceled:
