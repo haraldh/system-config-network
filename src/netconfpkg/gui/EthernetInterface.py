@@ -24,6 +24,8 @@ from netconfpkg import NCisdnhardware
 from netconfpkg import NCDeviceList
 from netconfpkg import NCDevice
 from netconfpkg import NCProfileList
+from netconfpkg import ethtool
+from netconfpkg.gui import sharedtcpip
 #import gnome.ui
 import gtk
 from gtk import TRUE
@@ -35,9 +37,17 @@ from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
 
 class EthernetInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1):
+    def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
+        self.topdruid = druid
+
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = NETCONFDIR + glade_file
+        self.sharedtcpip_xml = libglade.GladeXML (glade_file, None)
 
         glade_file = 'EthernetInterfaceDruid.glade'
 
@@ -60,55 +70,108 @@ class EthernetInterface(InterfaceCreator):
               }
             )
 
+
         self.devicelist = NCDeviceList.getDeviceList()
         self.device = NCDevice.Device()
+        self.device.Type = ETHERNET
+        self.device.OnBoot = TRUE
+        self.device.AllowUser = FALSE
+
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
         self.connection_type = connection_type
+        self.hw_sel = 0
+        self.hwPage = FALSE
+
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+
         self.druids = []
-        
         self.druid = self.xml.get_widget('druid')
         for i in self.druid.children():
             self.druid.remove(i)
             self.druids.append(i)
 
+        self.hwDruid = ethernetHardware(self.toplevel)
+        self.hwDruid.has_ethernet = None
+
     def get_project_name(self):
-        return _('ethernet connection')
+        return _('Ethernet connection')
 
     def get_project_description(self):
-        return _("Create an ethernet connection.")
+        return _("Create a new ethernet connection.")
 
     def get_druids(self):
-        hwDruid = ethernetHardware(self.toplevel)
-        hwDruid.has_ethernet = None
-        return [self.druids[0]] + hwDruid.druids[:] + self.druids[1:]
-
+        self.druids = [self.druids[0]] + self.hwDruid.druids[:] + self.druids[1:]
+        return self.druids
+    
     def on_hostname_config_page_back(self, druid_page, druid):
-        pass
+        childs = self.topdruid.children()
+        if self.hwPage:
+            self.topdruid.set_page(childs[2])
+        else:
+            self.topdruid.set_page(childs[1])            
+        return TRUE
     
     def on_hostname_config_page_next(self, druid_page, druid):
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        if self.hwPage:
+            self.device.Device = self.hwDruid.hw.Name
+            self.device.Alias = None
         pass
     
     def on_hostname_config_page_prepare(self, druid_page, druid):
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         pass
     
     def on_hw_config_page_back(self, druid_page, druid):
         pass
     
     def on_hw_config_page_next(self, druid_page, druid):
-        pass
+        clist = self.xml.get_widget("hardwareList")
+        self.hw_sel = clist.selection[0]
+        childs = self.topdruid.children()
+        
+        if (self.hw_sel + 1) == clist.rows:
+            self.hwPage = TRUE
+            self.topdruid.set_page(childs[2])
+        else:
+            self.hwPage = FALSE
+            self.topdruid.set_page(childs[3])
+            self.device.Device = self.devlist[clist.selection[0]]
+            alias = None
+            for dev in self.devicelist:
+                if not dev.Device == self.device.Device:
+                    continue
+                if dev.Alias:
+                    if not alias:
+                        alias = dev.Alias
+                    elif alias <= dev.Alias:
+                        alias = dev.Alias + 1
+                else: alias = 1
+            self.device.Alias = alias
+        return TRUE
 
     def on_hw_config_page_prepare(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
 
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
+        self.devlist = []
         for hw in hardwarelist:
             if hw.Type == ETHERNET:
-                clist.append([hw.Description + " (" + hw.Name + ")"])
-
+                desc = hw.Description + " (" + hw.Name + ")"
+                clist.append([desc])
+                self.devlist.append(hw.Name)
+                
         clist.append([_("Other Ethernet Card")])
-
+        clist.select_row (self.hw_sel, 0)
+        pass
+    
     def on_finish_page_back(self,druid_page, druid):
         pass
         
@@ -117,5 +180,27 @@ class EthernetInterface(InterfaceCreator):
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid):
+        self.device.DeviceId = self.device.Device
+        if self.device.Alias:
+            self.device.DeviceId = self.device.DeviceId + ":" \
+                                   + str(self.device.Alias)
+
+        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
+        except IOError, err:
+            pass
+        else:
+            self.device.HardwareAddress = hwaddr
+
+        hardwarelist = NCHardwareList.getHardwareList()
+        hardwarelist.commit()
+        i = self.devicelist.addDevice()
+        self.devicelist[i].apply(self.device)
+        self.devicelist[i].commit()
+        for prof in self.profilelist:
+            if prof.Active == FALSE:
+                continue
+            prof.ActiveDevices.append(self.device.DeviceId)
+            break
+        
         self.toplevel.destroy()
         gtk.mainquit()
