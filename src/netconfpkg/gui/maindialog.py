@@ -196,7 +196,7 @@ class mainDialog:
             }
         
         self.activedevicelist = NetworkDevice().get()
-        self.tag = timeout_add(4000, self.update_devicelist)
+        self.tag = timeout_add(4000, self.updateDevicelist)
                 
         # initialize the button state..
         clist = self.xml.get_widget("deviceList")
@@ -268,11 +268,16 @@ class mainDialog:
         hardwarelist = getHardwareList()
 
         self.appBar.pop()
+
+        profname = self.active_profile_name
         
         if profilelist.modified() or \
                devicelist.modified() or hardwarelist.modified():
-            self.appBar.push(_("modified"))
+            self.appBar.push(_("Active Profile: %s (modified)") % \
+                             self.active_profile_name)
             return true
+
+        self.appBar.push(_("Active Profile: %s")% profname)
 
         return false
 
@@ -398,6 +403,9 @@ class mainDialog:
         self.appBar.pop()
         self.checkApply()
 
+    def getActiveProfile(self):
+        return self.active_profile
+
     def hydrateProfiles(self):
         self.appBar.push(_("Updating Profiles..."))
         profilelist = getProfileList()
@@ -405,38 +413,47 @@ class mainDialog:
         hclist = self.xml.get_widget("hostsList")
         hclist.clear()
         hclist.set_row_height(17)
-        for prof in profilelist:
-            if prof.Active != true:
-                continue
-            if prof.DNS.Hostname:
-                self.xml.get_widget('hostnameEntry').set_text(\
-                    prof.DNS.Hostname)
-            else: self.xml.get_widget('hostnameEntry').set_text('')
-            if prof.DNS.Domainname:
-                self.xml.get_widget('domainnameEntry').set_text(\
-                    prof.DNS.Domainname)
-            else: self.xml.get_widget('domainnameEntry').set_text('')
-            if prof.DNS.PrimaryDNS:
-                self.xml.get_widget('primaryDnsEntry').set_text(\
-                    prof.DNS.PrimaryDNS)
-            else: self.xml.get_widget('primaryDnsEntry').set_text('')
-            if prof.DNS.SecondaryDNS:
-                self.xml.get_widget('secondaryDnsEntry').set_text(\
-                    prof.DNS.SecondaryDNS)
-            else: self.xml.get_widget('secondaryDnsEntry').set_text('')
-            if prof.DNS.TertiaryDNS:
-                self.xml.get_widget('tertiaryDnsEntry').set_text(\
-                    prof.DNS.TertiaryDNS)
-            else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
-            if prof.DNS.SearchList:
-                self.xml.get_widget('searchDnsEntry').set_text(\
-                    string.join(prof.DNS.SearchList))
-                
-            for host in prof.HostsList:
-                hclist.append([host.IP, host.Hostname,
-                               string.join(host.AliasList, ' ')])
-            break
 
+        for prof in profilelist:
+            if not prof.Active:
+                continue
+
+            name = prof.ProfileName            
+            if name == "default":
+                name = DEFAULT_PROFILE_NAME
+            self.active_profile_name = name
+        else:
+            prof = profilelist[0]
+
+        self.active_profile = prof
+        
+        if prof.DNS.Hostname:
+            self.xml.get_widget('hostnameEntry').set_text(\
+                prof.DNS.Hostname)
+        else: self.xml.get_widget('hostnameEntry').set_text('')
+        if prof.DNS.Domainname:
+            self.xml.get_widget('domainnameEntry').set_text(\
+                prof.DNS.Domainname)
+        else: self.xml.get_widget('domainnameEntry').set_text('')
+        if prof.DNS.PrimaryDNS:
+            self.xml.get_widget('primaryDnsEntry').set_text(\
+                prof.DNS.PrimaryDNS)
+        else: self.xml.get_widget('primaryDnsEntry').set_text('')
+        if prof.DNS.SecondaryDNS:
+            self.xml.get_widget('secondaryDnsEntry').set_text(\
+                prof.DNS.SecondaryDNS)
+        else: self.xml.get_widget('secondaryDnsEntry').set_text('')
+        if prof.DNS.TertiaryDNS:
+            self.xml.get_widget('tertiaryDnsEntry').set_text(\
+                prof.DNS.TertiaryDNS)
+        else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
+        if prof.DNS.SearchList:
+            self.xml.get_widget('searchDnsEntry').set_text(\
+                string.join(prof.DNS.SearchList))
+
+        for host in prof.HostsList:
+            hclist.append([host.IP, host.Hostname,
+                           string.join(host.AliasList, ' ')])
             
         if self.initialized:
             self.appBar.pop()
@@ -468,7 +485,7 @@ class mainDialog:
                                self.on_profileMenuItem_activated,
                                prof.ProfileName)
             omenu.append (menu_item)
-            if prof.ProfileName == self.get_active_profile().ProfileName:
+            if prof.ProfileName == self.getActiveProfile().ProfileName:
                 history = i
             i = i+1
 	#omenu.set_history (history)
@@ -477,6 +494,16 @@ class mainDialog:
         self.appBar.pop()
         self.checkApply()
 
+    def updateDevicelist(self):
+        activedevicelistold = self.activedevicelist
+        self.activedevicelist = NetworkDevice().get()
+
+        if activedevicelistold != self.activedevicelist:
+            self.hydrateDevices()
+            return TRUE
+
+        return TRUE
+    
     def on_Dialog_delete_event(self, *args):
         if self.changed():        
             button = generic_yesno_dialog(
@@ -739,9 +766,9 @@ class mainDialog:
                                     (device), txt, self.dialog)
 
         if NetworkDevice().find(device):
-            self.update_devicelist()
+            self.updateDevicelist()
 
-        self.tag = timeout_add(4000, self.update_devicelist)
+        self.tag = timeout_add(4000, self.updateDevicelist)
             
     def on_deviceDeactivateButton_clicked(self, button):
         clist = self.xml.get_widget("deviceList")
@@ -754,7 +781,7 @@ class mainDialog:
             intf = Interface()
             ret = intf.deactivate(device)
             if not ret:
-                self.update_devicelist()
+                self.updateDevicelist()
             else:
                 devErrorDialog(device, DEACTIVATE, self.dialog)
 
@@ -765,43 +792,6 @@ class mainDialog:
         if device:
             Interface().monitor(device)
     
-    def clist_get_status(self):
-        clist = self.xml.get_widget('deviceList')
-        if len(clist.selection) == 0:
-            return
-        if not clist.get_row_data(clist.selection[0]):
-            return
-        dev = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
-        return dev
-
-    def clist_get_device(self):
-        clist = self.xml.get_widget('deviceList')
-        if len(clist.selection) == 0:
-            return
-        if not clist.get_row_data(clist.selection[0]):
-            return
-        dev = clist.get_pixtext(clist.selection[0], DEVICE_COLUMN)[0]
-        return dev
-
-    def clist_get_nickname(self):
-        clist = self.xml.get_widget('deviceList')
-        if len(clist.selection) == 0:
-            return
-        if not clist.get_row_data(clist.selection[0]):
-            return
-        dev = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
-        return dev
-
-    def update_devicelist(self):
-        activedevicelistold = self.activedevicelist
-        self.activedevicelist = NetworkDevice().get()
-
-        if activedevicelistold != self.activedevicelist:
-            self.hydrateDevices()
-            return TRUE
-
-        return TRUE
-    
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -810,7 +800,7 @@ class mainDialog:
         entry.emit_stop_by_name('insert_text')
 
     def on_profileMenuItem_activated(self, menu_item, profile):
-        if not menu_item.active:
+        if not menu_item or menu_item.active:
             return
         
         profilelist = getProfileList()
@@ -850,7 +840,7 @@ class mainDialog:
                 else: prof.Active = false
                 prof.commit()
             self.hydrate()
-            
+
         if dosave:
             self.save()
 
@@ -873,11 +863,13 @@ class mainDialog:
         if clist.get_name() == 'deviceList':
             if len(clist.selection) == 0:
                 return
-            
-            curr_prof = self.get_active_profile()
+
             self.devsel = clist.get_row_data(clist.selection[0])
+            if not self.devsel:
+                return
             
-            status = self.clist_get_status()
+            curr_prof = self.getActiveProfile()
+            status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
 
             if status == ACTIVE and \
                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
@@ -910,15 +902,6 @@ class mainDialog:
         clist.disconnect (id)
         #clist.remove_data ("signal_id")
         apply (func)
-
-    def get_active_profile(self):
-        profilelist = getProfileList()
-        for prof in profilelist:
-            if not prof.Active:
-                continue
-            return prof
-
-        return profilelist[0]
 
     def on_generic_clist_button_press_event(self, clist, event, func):
         profilelist = getProfileList()
@@ -955,11 +938,11 @@ class mainDialog:
                                            self.dialog)
                      return
 
-                 curr_prof = self.get_active_profile()
+                 curr_prof = self.getActiveProfile()
 
                  if device.DeviceId not in curr_prof.ActiveDevices:
                      xpm, mask = self.act_xpm, self.act_mask
-                     curr_prof = self.get_active_profile()
+                     curr_prof = self.getActiveProfile()
                      if curr_prof.ProfileName == 'default':
                          for prof in profilelist:
                              profilelist.activateDevice(name,
@@ -1060,7 +1043,7 @@ class mainDialog:
     def on_hostsAddButton_clicked(self, *args):
         profilelist = getProfileList()
 
-        curr_prof = self.get_active_profile()
+        curr_prof = self.getActiveProfile()
         if not curr_prof.HostsList:
             curr_prof.createHostsList()
         hostslist = curr_prof.HostsList
@@ -1083,7 +1066,7 @@ class mainDialog:
     def on_hostsEditButton_clicked (self, *args):
         profilelist = getProfileList()
 
-        curr_prof = self.get_active_profile()
+        curr_prof = self.getActiveProfile()
         hostslist = curr_prof.HostsList
         clist  = self.xml.get_widget("hostsList")
 
@@ -1114,7 +1097,7 @@ class mainDialog:
         #if len(clist.selection) == 0:
         #    return
         #
-        prof = self.get_active_profile()
+        prof = self.getActiveProfile()
 
         clist = self.xml.get_widget('hostsList')
 
@@ -1193,7 +1176,7 @@ class mainDialog:
         profilelist = getProfileList()
 
         profile = Profile()
-        profile.apply(self.get_active_profile())
+        profile.apply(self.getActiveProfile())
 
         duplicate = TRUE
         num = 0
@@ -1216,7 +1199,7 @@ class mainDialog:
     def on_profileRenameMenu_activate (self, *args):
         profilelist = getProfileList()
         
-        profile = self.get_active_profile()
+        profile = self.getActiveProfile()
         if profile.ProfileName == 'default':
             generic_error_dialog (_('The "%s" profile can\'t be renamed!') \
                                   % DEFAULT_PROFILE_NAME,
@@ -1270,7 +1253,7 @@ class mainDialog:
         #if len(clist.selection) == 0:
         #    return
 
-        name = self.get_active_profile().ProfileName
+        name = self.getActiveProfile().ProfileName
 
         if name == 'default':
             generic_error_dialog(_('The "%s" Profile '
@@ -1286,7 +1269,7 @@ class mainDialog:
         if buttons != RESPONSE_YES:
             return
 
-        del profilelist[profilelist.index(self.get_active_profile())]
+        del profilelist[profilelist.index(self.getActiveProfile())]
         profilelist.commit()
         profilelist[0].Active = true
         self.initialized = None
