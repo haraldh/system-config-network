@@ -11,7 +11,8 @@ GLADE_FILES = \
 	ethernethardware.glade \
 	isdnhardware.glade \
 	modemconfig.glade \
-	wirelessconfig.glade
+	wirelessconfig.glade \
+	devicetype.glade
 
 BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py \
                 ProviderList.py NetworkList.py
@@ -49,7 +50,8 @@ PYTHON_FILES = \
 	NC_functions.py \
 	NCHardwareList.py \
 	NCProfileList.py \
-	NCisdnhardware.py
+	NCisdnhardware.py \
+	devicetype.py
 
 EXTRA_DIST = $(GLADE_FILES) $(IDL_FILES) $(PYTHON_FILES)
 
@@ -64,7 +66,9 @@ clean:
 
 DeviceList.py: $(srcdir)/DeviceList.idl $(srcdir)/genClass.py $(srcdir)/NCDeviceList.py $(srcdir)/NCDevice.py $(srcdir)/NCDialup.py $(srcdir)/NCCallback.py
 
-HardwareList.py: $(srcdir)/NCHardwareList.py 
+HardwareList.py: $(srcdir)/HardwareList.idl $(srcdir)/genClass.py $(srcdir)/NCHardwareList.py 
+
+ProfileList.py: $(srcdir)/ProfileList.idl $(srcdir)/genClass.py $(srcdir)/NCProfileList.py 
 
 %.py: %.idl $(srcdir)/genClass.py
 	python $(srcdir)/genClass.py -f -c $(srcdir)/$*.idl $@ NC
