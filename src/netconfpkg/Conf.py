@@ -257,16 +257,12 @@ class Conf:
 	if not self.create_if_missing and not file_exists:
 	    raise FileMissing, self.filename + ' does not exist.'
 	if file_exists:
-            self.lines = []
-            try:
-                self.file = open(self.filename, 'r', -1)
-                self.lines = self.file.readlines()
-                # strip newlines
-                for index in range(len(self.lines)):
-                    self.lines[index] = self.lines[index][:-1]
-                self.file.close()
-            except:
-                pass
+            self.file = open(self.filename, 'r', -1)
+            self.lines = self.file.readlines()
+            # strip newlines
+            for index in range(len(self.lines)):
+                self.lines[index] = self.lines[index][:-1]
+            self.file.close()
 	else:
 	    self.lines = []
     def write(self):
