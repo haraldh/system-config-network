@@ -1109,7 +1109,10 @@ class mainDialog:
             i = hardwarelist.addHardware()
             hardwarelist[i].apply(hw)
             hardwarelist[i].commit()
-        hardwarelist.commit()
+            hardwarelist.commit()
+        else:
+            hw.commit()
+            
         self.hydrate()
 
     def on_hardwareDeleteButton_clicked (self, *args):

@@ -184,14 +184,18 @@ ListCNLOps = """
 		self.%childname = value
 
 	def commitChild(self, name, type, changed=true):
-		if self.__dict__[name]:
-			if self.__dict__['__' + name + '_bak'] != None:
-				self.__list.getChildByName(name).setValue(self.__dict__[name])
+		if self.__list:
+			if self.__dict__[name]:
+				if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != None:
+					self.__list.getChildByName(name).setValue(self.__dict__[name])
+				else:
+					self.__list.addChild(type, name).setValue(self.__dict__[name])
 			else:
-				self.__list.addChild(type, name).setValue(self.__dict__[name])
-		else:
-			if self.__dict__['__' + name + '_bak'] != None:
-				self.__list.getChildByName(name).unlink()
+				if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != None:
+					self.__list.getChildByName(name).unlink()
+		if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != self.__dict__[name]:
+			self.setChanged(changed)			
+			self.__dict__['__' + name + '_bak'] = self.__dict__[name]
 		
 """
 
@@ -208,12 +212,16 @@ ListCLOps = """
 			child.unlink()
 
 	def commitChild(self, name, type, changed=true):
-		if self.__dict__['__' + name + '_bak'] != None:
-			self.__dict__['__' + name + '_bak'].unlink()
-		if self.__dict__[name] != None:
-			self.__dict__[name].setList(self.__list.addChild(type, name))
+		if self.__list:
+			if self.__dict__.has_key('__' + name + '_bak') and self.__dict__['__' + name + '_bak'] != None:
+				self.__dict__['__' + name + '_bak'].unlink()
+			if self.__dict__[name] != None:
+				self.__dict__[name].setList(self.__list.addChild(type, name))
+		if hasattr(self.__dict__[name], "commit"):
 			self.__dict__[name].commit(changed)
-		
+		if not self.__dict__.has_key('__' + name + '_bak') or self.__dict__['__' + name + '_bak'] != self.__dict__[name]:
+			self.setChanged(changed)
+			self.__dict__['__' + name + '_bak'] = self.__dict__[name]		
 """
 
 AnonListOps = """
@@ -487,7 +495,7 @@ def printClass(list, basename, baseclass):
 				self.data[i].commit(changed)
 """							  
 				commitlist = commitlist \
-								 + '\t\tfor child in self.data_bak:\n' \
+								 + '\t\tfor child in self.data:\n' \
 								 + '\t\t\tchild.commit(changed)\n'
 
 				backuplist = backuplist \
@@ -511,11 +519,11 @@ def printClass(list, basename, baseclass):
 			unlinklist = unlinklist + '\t\tself.%childname = None\n'
 			unlinklist = unlinklist + '\t\tself.__%childname_bak = None\n'
 
-			backuplist = backuplist \
-							 + '\t\tself.%childname = self.__%childname_bak\n'
+			backuplist = backuplist + \
+				     '\t\tself.%childname = self.__%childname_bak\n'
 			
-			commitalist = commitalist + \
-							  '\t\t\tself.commitChild("%childname", %childtype, changed)\n'
+			commitlist = commitlist + \
+				     '\t\tself.commitChild("%childname", %childtype, changed)\n'
 
 			if ctype != Data.ADM_TYPE_LIST:
 				#
@@ -533,10 +541,6 @@ def printClass(list, basename, baseclass):
 				initlist = initlist \
 							  + '\t\t\t\tself.__%childname_bak = child.getValue()\n'
 
-				commitlist = commitlist \
-							 + '\t\tif self.__%childname_bak != self.%childname: self.setChanged(changed)\n'
-				commitlist = commitlist \
-							 + '\t\tself.__%childname_bak = self.%childname\n'
 				
 				#########################				
 			else:
@@ -557,11 +561,6 @@ def printClass(list, basename, baseclass):
 
 				backuplist = backuplist +\
 								 '\t\tif self.%childname: self.%childname.rollback()\n'
-								 
-				commitlist = commitlist +\
-								 '\t\tif self.%childname != self.__%childname_bak: self.%childname.commit(changed)\n'
-				commitlist = commitlist \
-							 + '\t\tself.__%childname_bak = self.%childname\n'
 				
 				
 				#########################
