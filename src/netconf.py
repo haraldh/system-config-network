@@ -680,7 +680,7 @@ class mainDialog:
             if len(device) > 4:
                 if device[:4] == 'isdn' or device[:4] == 'ippp':
                     intf.isdndial(device)
-                    time.sleep(3)
+                    time.sleep(5)
 
             self.dialog.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
             dlg.get_window().set_cursor(gtk.cursor_new(GDK.LEFT_PTR))
@@ -775,26 +775,26 @@ class mainDialog:
         if up_button: delete_button.set_sensitive(TRUE)
         if down_button: copy_button.set_sensitive(TRUE)
 
-        #if clist.get_name() == 'deviceList':
-        #    if len(clist.selection) == 0:
-        #        return
-        #    try:
-        #        status = clist.get_pixtext(clist.selection[0], 0)[0]
-        #    except ValueError:
-        #        status = clist.get_text(clist.selection[0], 0)
+        if clist.get_name() == 'deviceList':
+            if len(clist.selection) == 0:
+                return
+            try:
+                status = clist.get_pixtext(clist.selection[0], 0)[0]
+            except ValueError:
+                status = clist.get_text(clist.selection[0], 0)
 
-        #    if status == ACTIVE:
-        #        activate_button.set_sensitive(FALSE)
-        #        deactivate_button.set_sensitive(TRUE)
-        #        edit_button.set_sensitive(FALSE)
-        #        delete_button.set_sensitive(FALSE)
-        #        monitor_button.set_sensitive(TRUE)
-        #    else:
-        #        activate_button.set_sensitive(TRUE)
-        #        deactivate_button.set_sensitive(FALSE)
-        #        edit_button.set_sensitive(TRUE)
-        #        delete_button.set_sensitive(TRUE)
-        #        monitor_button.set_sensitive(FALSE)
+            if status == ACTIVE:
+                activate_button.set_sensitive(FALSE)
+                deactivate_button.set_sensitive(TRUE)
+                #edit_button.set_sensitive(FALSE)
+                delete_button.set_sensitive(FALSE)
+                monitor_button.set_sensitive(TRUE)
+            else:
+                activate_button.set_sensitive(TRUE)
+                deactivate_button.set_sensitive(FALSE)
+                #edit_button.set_sensitive(TRUE)
+                delete_button.set_sensitive(TRUE)
+                monitor_button.set_sensitive(FALSE)
 
         #profilelist = getProfileList()
         #if clist.get_name() == 'profileList':
