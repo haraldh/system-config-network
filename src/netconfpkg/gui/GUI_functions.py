@@ -46,11 +46,11 @@ NC_functions.RESPONSE_HELP = gtk.RESPONSE_HELP
 
 def get_device_icon_mask(devtype, dialog):
     if not DEVPIXMAPS.has_key(ETHERNET):
-        DEVPIXMAPS[ETHERNET] = get_icon('pixmaps/ethernet.xpm', dialog)
-        DEVPIXMAPS[MODEM] = get_icon('pixmaps/ppp.xpm', dialog)
-        DEVPIXMAPS[ISDN] = get_icon('pixmaps/isdn.xpm', dialog)
-        DEVPIXMAPS[WIRELESS] = get_icon('pixmaps/irda-16.xpm', dialog)
-        DEVPIXMAPS[DSL] = get_icon('pixmaps/dsl.xpm', dialog)
+        DEVPIXMAPS[ETHERNET] = get_icon('ethernet.xpm', dialog)
+        DEVPIXMAPS[MODEM] = get_icon('ppp.xpm', dialog)
+        DEVPIXMAPS[ISDN] = get_icon('isdn.xpm', dialog)
+        DEVPIXMAPS[WIRELESS] = get_icon('irda-16.xpm', dialog)
+        DEVPIXMAPS[DSL] = get_icon('dsl.xpm', dialog)
         DEVPIXMAPS[TOKENRING] = DEVPIXMAPS[ETHERNET]
         DEVPIXMAPS[CIPE] = DEVPIXMAPS[ETHERNET]
 
@@ -74,29 +74,35 @@ def idle_func():
 
 def get_pixbuf(pixmap_file):
     fn = pixmap_file
-    if not os.path.exists(pixmap_file):
-        pixmap_file = "pixmaps/" + fn
-        if not os.path.exists(pixmap_file):
-            pixmap_file = "../pixmaps/" + fn
+    
+    if getDebugLevel() > 0:
+        if not os.path.exists(fn):
+            pixmap_file = "pixmaps/" + fn
             if not os.path.exists(pixmap_file):
-                pixmap_file = NETCONFDIR + fn
-                if not os.path.exists(pixmap_file):
-                    pixmap_file = NETCONFDIR + "pixmaps/" + fn
-                    if not os.path.exists(pixmap_file):
-                        pixmap_file = "/usr/share/pixmaps/" + fn
-                        if not os.path.exists(pixmap_file):
-                            return None, None
+                pixmap_file = "../pixmaps/" + fn
+
+    if not os.path.exists(pixmap_file):
+        pixmap_file = NETCONFDIR + "pixmaps/" + fn
+        if not os.path.exists(pixmap_file):
+            pixmap_file = "/usr/share/pixmaps/" + fn
+            if not os.path.exists(pixmap_file):
+                return None
+
 
     pixbuf = gtk.gdk.pixbuf_new_from_file(pixmap_file)
 
     return pixbuf
 
 def get_icon(pixmap_file, dialog = None):
-    pixbuf = get_pixbuf(pixmap_file)
+    try:
+        pixbuf = get_pixbuf(pixmap_file)
+        if pixbuf:
+            pix, mask = pixbuf.render_pixmap_and_mask()
     
-    pix, mask = pixbuf.render_pixmap_and_mask()
+            return pix, mask        
+    except: pass
     
-    return pix, mask
+    return None, None
 
 def load_icon(pixmap_file, dialog):
     if not dialog: return
@@ -527,10 +533,16 @@ def gui_run_dialog(command, argv, searchPath = 0,
     except CancelException:
         try:
             os.kill(childpid, 15)
+            os.kill(childpid, 3)
+            os.kill(childpid, 1)
+            #os.kill(childpid, 9)
         except: pass
     except Exception, e:
         try:
             os.kill(childpid, 15)
+            os.kill(childpid, 3)
+            os.kill(childpid, 1)
+            #os.kill(childpid, 9)
         except: pass
         raise e
         
@@ -585,13 +597,20 @@ def __getXmlFile():
     import os
     if __xmlfile:
         return __xmlfile
+
+    glade_name = "infodialog.glade"
+    glade_file = glade_name
     
-    glade_file = "infodialog.glade"
-    
+    if getDebugLevel() > 0:
+        if not os.path.isfile(glade_file):
+            glade_file = GLADEPATH + glade_name
+        if not os.path.isfile(glade_file):
+            glade_file = NETCONFDIR + glade_name
+    else:        
+        glade_file = NETCONFDIR + glade_name
+
     if not os.path.isfile(glade_file):
-        glade_file = GLADEPATH + glade_file
-    if not os.path.isfile(glade_file):
-        glade_file = NETCONFDIR + glade_file
+        glade_file = NETCONFDIR + GLADEPATH + glade_name
             
     __xmlfile = gtk.glade.XML(glade_file, None, domain=PROGNAME)
     return __xmlfile
@@ -600,5 +619,5 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/17 13:40:58 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2004/03/04 13:39:01 $"
+__version__ = "$Revision: 1.32 $"
