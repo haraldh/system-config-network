@@ -169,6 +169,10 @@ class HardwareList(HardwareList_base):
         for device in ethtool.get_devices():
             if device[:3] != "eth":
                 continue
+
+            # No Alias devices
+            if string.find(device, ':') == -1:
+                continue
             
             try:
                 mod = ethtool.get_module(device)
