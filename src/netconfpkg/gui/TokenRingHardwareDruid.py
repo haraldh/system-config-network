@@ -25,7 +25,6 @@ from gtk import FALSE
 import gtk.glade
 import string
 import os
-from netconfpkg import Conf
 from tokenringhardware import tokenringHardwareDialog
 
 class tokenringHardware:
@@ -133,7 +132,7 @@ class tokenringHardware:
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
         if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
            self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
-            self.hw.Card.IRQ = ""
+            self.hw.Card.IRQ = None
         else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()

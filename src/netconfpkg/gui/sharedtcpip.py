@@ -11,7 +11,7 @@ import string
 import re
 from netconfpkg import NCHardwareList
 from netconfpkg import NC_functions
-import ethtool
+from rhpl import ethtool
 
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon

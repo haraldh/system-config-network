@@ -24,8 +24,7 @@ import os.path
 import shutil
 import signal
 import string
-import ethtool
-import ethtool
+from rhpl import ethtool
 from NC_functions import *
 
 VERSION = '0.1.0'

@@ -26,8 +26,8 @@ import NC_functions
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-import Conf
-import ConfSMB
+from rhpl import Conf
+from rhpl import ConfSMB
 import NCHardwareList
 from NC_functions import *
 from netconfpkg import Device_base

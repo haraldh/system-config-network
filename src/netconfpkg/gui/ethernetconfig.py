@@ -32,6 +32,7 @@ import sys
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
+from rhpl import ethtool
 
 from gtk import TRUE
 from gtk import FALSE

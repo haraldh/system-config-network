@@ -28,6 +28,7 @@ import string
 import os
 from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
+from rhpl import ethtool
 
 class EthernetInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=ETHERNET, do_save = 1,

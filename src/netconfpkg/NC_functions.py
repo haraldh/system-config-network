@@ -24,7 +24,7 @@ import os
 import os.path
 import shutil
 import gettext
-import ConfPAP
+from rhpl import ConfPAP
 
 true = (1==1)
 false = not true

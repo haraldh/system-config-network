@@ -30,7 +30,7 @@ import os
 
 import string
 import re
-from netconfpkg import Conf
+from rhpl import Conf
 import commands
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
@@ -141,7 +141,7 @@ class tokenringHardwareDialog:
         self.hw.createCard()
         if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
            self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
-            self.hw.Card.IRQ = ""
+            self.hw.Card.IRQ = None
         else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()

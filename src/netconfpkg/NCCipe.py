@@ -25,7 +25,7 @@ import string
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-import Conf
+from rhpl import Conf
 
 from NC_functions import *
 

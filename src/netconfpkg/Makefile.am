@@ -10,10 +10,6 @@ IDL_FILES = \
 
 PYTHON_FILES = \
 	__init__.py \
-	Conf.py \
-	ConfPAP.py \
-	ConfSMB.py \
-	genClass.py \
 	ipcalc.py \
 	NCCallback.py \
 	NCCipe.py \
@@ -39,18 +35,6 @@ netconfpkg_DATA = $(PYTHON_FILES) $(BUILT_SOURCES) $(IDL_FILES)
 
 INCLUDES = -I/usr/include/python2.2
 
-noinst_LTLIBRARIES = libethtoolmodule.la
-libethtoolmodule_la_SOURCES = ethtool.c	
-pythondir = $(libdir)/python2.2/site-packages/
-python_PROGRAMS = ethtoolmodule.so
-ethtoolmodule_so_SOURCES = 
-ethtoolmodule_so_LDFLAGS = -fPIC -DPIC -shared -Wl,-soname,ethtoolmodule.so \
-                           -module \
-			   -avoid-version -export-symbols-regex initethtool \
-			   libethtoolmodule.la
-
-ethtoolmodule.so$(EXEEXT): $(libethtoolmodule_la_OBJECTS)
-	$(LINK) -g -o $@ $^ $(ethtoolmodule_so_LDFLAGS)
 
 execdir = $(sbindir)
 

@@ -18,14 +18,14 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-import ConfSMB
+from rhpl import ConfSMB
 
 import string
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-import Conf
+from rhpl import Conf
 
 from netconfpkg import Dialup_base
 import NCCompression

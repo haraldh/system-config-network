@@ -32,7 +32,7 @@ from netconfpkg import Host
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-import Conf
+from rhpl import Conf
 
 class ProfileList(ProfileList_base):
     def __init__(self, list = None, parent = None):

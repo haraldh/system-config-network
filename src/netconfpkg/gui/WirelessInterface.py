@@ -28,6 +28,7 @@ import string
 import os
 from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
+from rhpl import ethtool
 
 class WirelessInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=WIRELESS, do_save = 1,

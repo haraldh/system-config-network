@@ -20,7 +20,7 @@
 import sys
 import os
 import string
-import ethtool
+from rhpl import ethtool
 import NCisdnhardware
 
 from netconfpkg import HardwareList_base
@@ -29,8 +29,8 @@ from NC_functions import *
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-from Conf import *
-from ConfSMB import *
+from rhpl.Conf import *
+from rhpl.ConfSMB import *
 
 ModInfo = None
 

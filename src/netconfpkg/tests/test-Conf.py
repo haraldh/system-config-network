@@ -25,7 +25,7 @@ def expectConf(filename, str):
     if lines != str:
         return 1
 
-import Conf
+from rhpl import Conf
 
 #
 # test1

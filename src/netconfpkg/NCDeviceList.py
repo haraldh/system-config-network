@@ -23,14 +23,13 @@ import os.path
 from NC_functions import *
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
-import ConfPAP
-import ConfSMB
+from rhpl import ConfPAP
+from rhpl import ConfSMB
+from rhpl import Conf
 import UserList
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
-
-import Conf
 
 class ConfDevices(UserList.UserList):
     def __init__(self):
