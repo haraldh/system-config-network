@@ -82,10 +82,10 @@ class CipeInterface(InterfaceCreator):
             self.druids.append(I)
 
     def get_project_name(self):
-        return _('Cipe connection')
+        return _('CIPE (VPN) connection')
 
     def get_project_description(self):
-        return _("Create a new Cipe connection.")
+        return _("Create a new virtual private network connection with CIPE.")
 
     def get_type(self):
         return CIPE
