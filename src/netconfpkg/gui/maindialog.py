@@ -210,11 +210,11 @@ class mainDialog:
             monitor_button = self.xml.get_widget("deviceMonitorButton"))
         
         gtk.Tooltips().enable()
+
+        self.dialog.show()
         
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
-
-        self.dialog.show()
 
     def nop(self, *args):
         pass
@@ -1399,8 +1399,10 @@ class mainDialog:
 
 
     def on_about_activate(self, *args):
-        dlg = gnome.ui.About(PROGNAME,
-                             netconfpkg.PRG_VERSION,
+        from version import PRG_VERSION
+        from version import PRG_NAME
+        dlg = gnome.ui.About(PRG_NAME,
+                             PRG_VERSION,
                              _("Copyright (c) 2001,2002 Red Hat, Inc."),
                              _("This software is distributed under the GPL. "
                                "Please Report bugs to Red Hat's Bug Tracking "
