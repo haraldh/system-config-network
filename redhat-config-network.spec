@@ -7,7 +7,7 @@ Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: Applications/System 
 BuildArch: noarch
-Requires: initscripts >= 5.99, /usr/bin/consolehelper
+Requires: initscripts >= 5.99, /usr/bin/consolehelper, alchemist
 Obsoletes: isdn-config internet-config
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
@@ -45,8 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Wed Jul 11 2001 Than Ngo <than@redhat.com> 0.3.1-1
 - obsolete isdn-config internet-config
-- requires consolehelper
+- requires consolehelper, alchemist
 - add icon and desktop file
+- use bzip2
 
 * Wed Jul 11 2001 Phil Knirsch <phil@redhat.de> 0.3.0-2
 - Fixed critical problem during profile saving.
