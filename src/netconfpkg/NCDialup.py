@@ -12,6 +12,20 @@ class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)        
 
+class IsdnDialup(Dialup):                        
+    def __init__(self, list = None, parent = None):
+        Dialup.__init__(self, list, parent)        
+
+    def load(self, parentConf):
+        devdir = SYSCONFDEVICEDIR + name + '.d/'
+        if not isdir(devdir):
+            return
+
+    def save(self, parentConf):
+        devdir = SYSCONFDEVICEDIR + name + '.d/'
+        if not isdir(devdir):
+            os.mkdir(devdir)
+
 class ModemDialup(Dialup):
     wvdict = { 'Login' : 'Username',
                'Password' : 'Password',
@@ -21,26 +35,16 @@ class ModemDialup(Dialup):
                }                   
                         
     def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)        
-
-    def loadIsdn(self, name):
-        devdir = SYSCONFDEVICEDIR + name + '.d/'
-        if not isdir(devdir):
-            return
-
-    def saveIsdn(self, name, device):
-        devdir = SYSCONFDEVICEDIR + name + '.d/'
-        if not isdir(devdir):
-            os.mkdir(devdir)
-        
+        Dialup.__init__(self, list, parent)                
 
     def load(self, parentConf):
         parent = self.getParent()
+
         if parent:
-            modemsect = parent.DeviceId
+            name = parent.DeviceId
             
         if parentConf.has_key('WVDIALSECT'):
-            modemsect = parentConf['WVDIALSECT']
+            name = parentConf['WVDIALSECT']
 
         conf = ConfSMB(filename = '/etc/wvdial.conf')
         
@@ -59,6 +63,9 @@ class ModemDialup(Dialup):
                 #print selfkey + " = " + value
                 self.__dict__[selfkey] = value
 
+        #
+        # Read Modem Init strings
+        #
         for i in xrange(9) :
             confkey = 'Init'
             if i: confkey = confkey + str(i)                
@@ -101,28 +108,26 @@ class ModemDialup(Dialup):
                            conf[sect].has_key('Baud') and \
                            conf[sect]['Modem'] == modemdev and \
                            conf[sect]['Baud'] == modembaud:
-                            print "Found " + sect
+                            #print "Found " + sect
                             if parent:                                
                                 parent.Device = sect
                             break
         
     def save(self, parentConf):
-        #devdir = SYSCONFDEVICEDIR + name + '.d/'
-        #if not isdir(devdir):
-        #    os.mkdir(devdir)
-        #
         parent = self.getParent()
 
         if parent:                                
             devname = parent.Device
+            # get WVDIALSECT from ifcfg-ppp?
             parentConf['WVDIALSECT'] = devname
             name = parent.DeviceId
         else:
             devname = '*'
             name = "None"
-        
+
+        # Correct PAPNAME in ifcfg-ppp?
         if self.Login:
-            parentCconf['PAPNAME'] = self.Login
+            parentConf['PAPNAME'] = self.Login
                    
         conf = ConfSMB(filename = '/etc/wvdial.conf')
         sectname = 'Dialer ' + name
@@ -149,26 +154,32 @@ class ModemDialup(Dialup):
                     
         conf.write()
 
-        print "device = " + devname
+        #
+        # Now write the pap and chap-secrets
+        #
+        #print "device = " + devname
+        if not self.Login:
+            return
+        
         for secretfile in [ "/etc/ppp/pap-secrets", "/etc/ppp/chap-secrets" ]:
             conf = Conf.Conf(secretfile, '#', ' \t', ' \t')
             while conf.findnextcodeline():
                 vars = conf.getfields()
-                print vars
+                #print vars
                 if vars and (len(vars) == 3) \
                    and ((vars[0] == self.Login) \
                         or (vars[0] == '"' + self.Login + '"')) \
                         and (vars[1] == devname):
-                    print vars                    
-                    print conf.getline()
-                    print "login = " + self.Login
+                    #print vars                    
+                    #print conf.getline()
+                    #print "login = " + self.Login
                     pass
                     
                 conf.nextline()
 
 
 if __name__ == '__main__':
-    dl = Dialup()
-    dl.loadModem('test2')
+    dl = ModemDialup()
+    dl.load()
 #    dl.Password = "mypassword"
 #    dl.saveModem('phone2', 'ppp0')
