@@ -250,12 +250,12 @@ class ISDNDialupDialog(DialupDialog):
         dialog = ISDNproviderDialog(self.device, self.xml_main, self.xml)
         dl = dialog.xml.get_widget("Dialog")
         dl.run()
-        self.hydrate()
         DialupDialog.hydrate(self)
+        self.hydrate()
         
     def hydrate(self):
         DialupDialog.hydrate(self)
-        if self.device.Dialup.Callback:
+        if self.device.Dialup.Callback and self.device.Dialup.Callback.Type != 'off':
             self.xml.get_widget("callbackCB").set_active(true)
             self.xml.get_widget("callbackFrame").set_sensitive(true)
             self.xml.get_widget("dialinNumberEntry").set_text(self.device.Dialup.Callback.Number)
@@ -286,7 +286,7 @@ class ISDNDialupDialog(DialupDialog):
             self.device.Dialup.EncapMode = "rawip"
             self.device.Device = "isdn"
 
-        self.device.Dialup.createCallback()
+        if not self.device.Dialup.Callback: self.device.Dialup.createCallback()
         if self.xml.get_widget("callbackCB").get_active():
             self.device.Dialup.Callback.Type = "out"
             self.device.Dialup.Callback.Number = self.xml.get_widget("dialinNumberEntry").get_text()
@@ -296,7 +296,7 @@ class ISDNDialupDialog(DialupDialog):
             self.device.Dialup.Callback.Compression = self.xml.get_widget("cbcpCB").get_active()
         else:
             self.device.Dialup.Callback.Type = "off"
-        
+
         self.device.Dialup.HangupTimeout = self.xml.get_widget("hangupTimeoutISDNSB").get_value_as_int()
         self.device.Dialup.DialMode = self.xml.get_widget("dialModeISDNEntry").get_text()
         self.device.Dialup.MSN = self.xml.get_widget("msnEntry").get_text()
@@ -319,8 +319,8 @@ class ModemDialupDialog(DialupDialog):
         dialog = ModemproviderDialog(self.device, self.xml_main, self.xml)
         dl = dialog.xml.get_widget("Dialog")
         dl.run()
-        self.hydrate()
         DialupDialog.hydrate(self)
+        self.hydrate()
         
     def hydrate(self):
         DialupDialog.hydrate(self)
