@@ -14,8 +14,8 @@ class ConfDevice(Conf.ConfShellVar):
             Conf.ConfShellVar.__init__(self, OLDSYSCONFDEVICEDIR + 'ifcfg-' + name)
             
 class Device(Device_base):
-    keydict = { 'DeviceId' : 'NAME',
-                'DeviceName' : 'DEVICE',
+    keydict = { 'Device' : 'DEVICE',
+                'Name' : 'NAME',
                 'OnBoot' : 'ONBOOT',
                 'IP' : 'IPADDR',
                 'Netmask' : 'NETMASK',
@@ -37,6 +37,8 @@ class Device(Device_base):
     def load(self, name):
         
         conf = ConfDevice(name)
+
+        self.DeviceId = name
         
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
@@ -49,9 +51,6 @@ class Device(Device_base):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = true
                 else: self.__dict__[selfkey] = false            
-
-        if not self.DeviceId:
-            self.DeviceId = name
             
     def save(self):
         conf = ConfDevice(self.DeviceId)
