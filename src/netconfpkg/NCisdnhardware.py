@@ -29,6 +29,7 @@ card = {
     "ASUS COM ISDNLink ISA PnP" : [ "12", "5", "0x200", "", "", "", "", "", "hisax" ],
     "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "","", "hisax" ],
     "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "","",  "hisax" ],
+    "AVM Fritz Card PCMCIA" : [ "", "", "", "", "", "", "", "", "avma1_cs" ],
     "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244:0a00", "", "hisax" ],
     "AVM PnP" : [ "27", "5", "0x300", "", "", "", "", "", "hisax" ],
     "Billion ISDN P&P PCI 128k Cologne SE" : [ "35", "", "", "", "", "", "1397:2bd0", "", "hisax" ],
