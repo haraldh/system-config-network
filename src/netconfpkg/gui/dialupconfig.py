@@ -476,7 +476,7 @@ class ModemDialupDialog(DialupDialog):
     def dehydrate(self):
         DialupDialog.dehydrate(self)
         dialup = self.device.Dialup
-        dialup.HangupTimeout = self.xml.get_widget(}\
+        dialup.HangupTimeout = self.xml.get_widget(\
                                "hangupTimeoutSB").get_value_as_int()
         dialup.DialMode = self.xml.get_widget("dialModeEntry").get_text()
         if dialup.DialMode == DialModes[DM_AUTO]: dialup.DialMode = DM_AUTO
