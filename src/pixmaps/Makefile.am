@@ -15,4 +15,8 @@ netconfkontroldir = $(datadir)/kontrol-panel/icons
 
 netconfkontrol_DATA = neat.png
 
-EXTRA_DIST = $(netconfimg_DATA) $(netconfkontrol_DATA)
+netconfpixmapdir = $(datadir)/pixmaps
+
+netconfpixmap_DATA = neat.png
+
+EXTRA_DIST = $(netconfimg_DATA) $(netconfkontrol_DATA) $(netconfpixmap_DATA)

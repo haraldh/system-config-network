@@ -909,9 +909,8 @@ if __name__ == '__main__':
     progname = os.path.basename(sys.argv[0])
     if progname == 'redhat-config-network' or progname == 'neat' or progname == 'netconf.py':
         window = mainDialog()
-        gtk.mainloop()
     elif progname == 'redhat-config-network-druid' or progname == 'internet-druid':
         interface = NewInterface()
-        gtk.mainloop()
 
+    gtk.mainloop()
     sys.exit(0)
