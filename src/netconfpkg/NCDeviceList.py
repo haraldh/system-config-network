@@ -33,6 +33,7 @@ class DeviceList(DeviceList_base):
         for dev in devices:
             i = self.addDevice()
             self.data[i].load(dev)
+        self.commit()
 
     def save(self):
         try:
@@ -54,8 +55,8 @@ class DeviceList(DeviceList_base):
                 try:
                     found = false
                     #print "searching for " + devid
-                    for i in xrange(len(self)):
-                        if self[i].DeviceId == devid:
+                    for dev in self:
+                        if dev.DeviceId == devid:
                             found = true
                             break
                     if not found:
@@ -63,17 +64,19 @@ class DeviceList(DeviceList_base):
                 except OSError, msg:
                     raise IOError, 'Error removing old device. ' + str(msg)
         finally:            
-            for i in xrange(len(self)):
-                self.data[i].save()
+            for dev in self:
+                dev.save()
 
+        self.commit()
+                
 if __name__ == '__main__':
     dl = DeviceList()
     dl.load()
-    for i in xrange(len(dl)):
-        print "ID: " + str(dl[i].DeviceId)
-        print "Device: " + str(dl[i].Device)
-        print "Name: " + str(dl[i].Name)
-        print "IP: " + str(dl[i].IP)
-        print "OnBoot: " + str(dl[i].OnBoot)
+    for dev in dl:
+        print "ID: " + str(dev.DeviceId)
+        print "Device: " + str(dev.Device)
+        print "Name: " + str(dev.Name)
+        print "IP: " + str(dev.IP)
+        print "OnBoot: " + str(dev.OnBoot)
         print "---------"
     dl.save()
