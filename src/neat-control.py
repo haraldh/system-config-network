@@ -47,6 +47,10 @@ import gnome
 import gnome.ui
 import gnome.help
 from netconfpkg import *
+from netconfpkg import Control
+from netconfpkg.gui import *
+from netconfpkg.gui.GUI_functions import GLADEPATH
+from netconfpkg.gui.exception import handleException
 
 TEXT =  _("This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/")
 
@@ -88,7 +92,7 @@ class mainDialog:
         self.ppp_xpm, self.ppp_mask = get_icon('pixmaps/ppp.xpm', self.dialog)
         self.isdn_xpm, self.isdn_mask = get_icon('pixmaps/isdn.xpm', self.dialog)
         load_icon('pixmaps/control.xpm', self.dialog)
-        self.xml.get_widget('pixmap').load_file('pixmaps/control.xpm')
+        self.xml.get_widget('pixmap').load_file('/usr/share/redhat-config-network/pixmaps/control.xpm')
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
         self.hydrate()
@@ -251,31 +255,6 @@ class mainDialog:
     def handler(self):
         sys.exit(12)
         
-def get_icon(pixmap_file, dialog):
-    fn = pixmap_file
-    if not os.path.exists(pixmap_file):
-        pixmap_file = 'pixmaps/' + fn
-    if not os.path.exists(pixmap_file):
-        pixmap_file = '../pixmaps/' + fn
-    if not os.path.exists(pixmap_file):
-        pixmap_file = NETCONFDIR + fn
-    if not os.path.exists(pixmap_file):
-         pixmap_file = NETCONFDIR + 'pixmaps/' + fn
-    if not os.path.exists(pixmap_file):
-        return None, None
-
-    pix, mask = gtk.create_pixmap_from_xpm(dialog, None, pixmap_file)
-    return pix, mask
-
-def load_icon(pixmap_file, dialog):
-    if not dialog: return
-
-    pix, mask = get_icon(pixmap_file, dialog)
-    if not pix: return
-
-    gtk.GtkPixmap(pix, mask)
-    if dialog: dialog.set_icon(pix, mask)
-
 def idle_func():
     while gtk.events_pending():
         gtk.mainiteration()
