@@ -637,7 +637,20 @@ class mainDialog:
 
     def on_deviceActivateButton_clicked(self, button):
         device = self.clist_get_device()
+
         if device:
+            if self.changed():
+                button = generic_yesnocancel_dialog(
+                    _("Do you want to save your changes?"),
+                    self.dialog)
+                
+                if button == 0:
+                    if self.save() != 0:
+                        return
+            
+                if button == 2:
+                    return
+
             intf = Interface()
             child = intf.activate(device)
             dlg = gtk.GtkWindow(gtk.WINDOW_DIALOG, _('Network device activating...'))

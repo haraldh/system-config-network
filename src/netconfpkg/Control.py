@@ -109,6 +109,9 @@ class Interface:
         except:
             return -1
 
+    def exist(self, device):
+        return os.access(NETWORKDIR + NETWORKPREFIX + '-' + device)
+        
     def isdndial(self, device):
         if os.getuid() != 0:
             os.system('/usr/sbin/userisdnctl dial %s>&/dev/null' %(device))
