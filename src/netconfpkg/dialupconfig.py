@@ -41,11 +41,12 @@ gettext.bindtextdomain("netconf", "/usr/share/locale")
 gettext.textdomain("netconf")
 _=gettext.gettext
 
-class dialupDialog:
-    def __init__(self, xml_main = None, xml_basic = None, type = "ISDN"):
+class DialupDialog:
+    def __init__(self, device, xml_main = None, xml_basic = None):
         self.xml_main = xml_main
         self.xml_basic = xml_basic
-
+        self.device = device
+        
         glade_file = "dialupconfig.glade"
 
         if not os.path.exists(glade_file):
@@ -72,19 +73,12 @@ class dialupDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         self.noteBook = self.xml.get_widget("dialupNotebook")
-        self.dialog.connect("delete-event", self.on_Dialog_delete_event)
-        self.dialog.connect("hide", gtk.mainquit)
+        #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
+        #self.dialog.connect("hide", gtk.mainquit)
         self.load_icon("network.xpm")
 
-        if type == "Modem":
-            self.dialog.set_title("Modem Dialup Configuration")
-            for i in [1,5]:
-                self.noteBook.get_nth_page(i).hide()
-        elif type == "ISDN":
-            self.noteBook.get_nth_page(4).hide()
-            self.dialog.set_title("ISDN Dialup Configuration")
-        
-        self.dialog.show()
+        self.dialog.set_close(TRUE)
+
 
     def load_icon(self, pixmap_file, widget = None):
         if not os.path.exists(pixmap_file):
@@ -104,18 +98,24 @@ class dialupDialog:
         else:
             self.dialog.set_icon(pix, mask)
 
+    def hydrate():
+        # to be overloaded by specific dialup classes
+        pass
+
+    def dehydrate():
+        # to be overloaded by specific dialup classes
+        pass
+
     def on_Dialog_delete_event(self, *args):
-        self.dialog.destroy()
-        gtk.mainquit()
-        
+        pass
+    
     def on_okButton_clicked(self, button):
-        self.dialog.destroy()
-        gtk.mainquit()
-
+        self.dehydrate()
+        pass
+    
     def on_cancelButton_clicked(self, button):
-        self.dialog.destroy()
-        gtk.mainquit()
-
+        pass
+    
     def on_helpButton_clicked(self, button):
         pass
 
@@ -205,10 +205,47 @@ class dialupDialog:
 
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
+        
+
+class ISDNDialupDialog(DialupDialog):
+    def __init__(self, device, xml_main = None, xml_basic = None):
+        DialupDialog.__init__(self, device, xml_main, xml_basic)
+
+        self.noteBook.get_nth_page(4).hide()
+        self.dialog.set_title("ISDN Dialup Configuration")
+        
+        self.dialog.show()
+
+    def hydrate():
+        # Fill in Dialog
+        pass
+
+    def dehydrate():
+        # Fill in Device.Dialup class
+        pass
+
+class ModemDialupDialog(DialupDialog):
+    def __init__(self, device, xml_main = None, xml_basic = None):
+        DialupDialog.__init__(self, device, xml_main, xml_basic)
+        
+        self.dialog.set_title("Modem Dialup Configuration")
+        for i in [1,5]:
+            self.noteBook.get_nth_page(i).hide()
+            
+        self.dialog.show()
+
+    def hydrate():
+        # Fill in Dialog
+        pass
+
+    def dehydrate():
+        # Fill in Device.Dialup class
+        pass
+        
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = dialupDialog()
+    window = DialupDialog()
     gtk.mainloop()
 
