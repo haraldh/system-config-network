@@ -10,7 +10,7 @@ TT { font-family: lucidatypewriter, lucida console, courier }
 <td valign=bottom><small>&nbsp;<br></small
 ><font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>EthernetDevice</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/preston/programming/netconf/src/EthernetDevice.py">/usr/preston/programming/netconf/src/EthernetDevice.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/harald/cvs/netconf.old/src/EthernetDevice.py">/home/harald/cvs/netconf.old/src/EthernetDevice.py</a></font></td></tr></table>
     <p><small><tt>A&nbsp;generic&nbsp;network&nbsp;device&nbsp;class,&nbsp;containg&nbsp;data&nbsp;and&nbsp;functionality&nbsp;shared<br>
 between&nbsp;different&nbsp;kinds&nbsp;of&nbsp;network&nbsp;devices</tt></small></p>
 
@@ -21,11 +21,13 @@ between&nbsp;different&nbsp;kinds&nbsp;of&nbsp;network&nbsp;devices</tt></small>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
 <td width="100%"><table width="100%"><tr><td width="25%" valign=top><a href="Address.html">Address</a><br>
-<a href="Device.html">Device</a><br>
-</td><td width="25%" valign=top><a href="os.html">os</a><br>
-<a href="re.html">re</a><br>
-</td><td width="25%" valign=top><a href="string.html">string</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table>
+<a href="Conf.html">Conf</a><br>
+</td><td width="25%" valign=top><a href="Device.html">Device</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="string.html">string</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td></tr></table></td></tr></table>
 <p><table width="100%" cellspacing=0 cellpadding=2 border=0>
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom><small><small>&nbsp;<br></small></small
@@ -59,6 +61,9 @@ associated&nbsp;with&nbsp;this&nbsp;device,&nbsp;including&nbsp;aliases.</tt></s
 @self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
 <dl><dt><a name="EthernetDevice-addressList"><strong>addressList</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
 <dl><dt><a name="EthernetDevice-description"><strong>description</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-gateWay"><strong>gateWay</strong></a>(self)<dd><small><tt>FIXME:&nbsp;Remove</tt></small></dl>
+<dl><dt><a name="EthernetDevice-getBootProto"><strong>getBootProto</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;currently&nbsp;configured&nbsp;boot&nbsp;protocol<br>
+@self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
 <dl><dt><a name="EthernetDevice-getMACAddress"><strong>getMACAddress</strong></a>(self)<dd><small><tt>Return&nbsp;the&nbsp;currently&nbsp;configured&nbsp;MAC&nbsp;address<br>
 @self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
 <dl><dt><a name="EthernetDevice-identifier"><strong>identifier</strong></a>(self)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
@@ -70,8 +75,12 @@ from&nbsp;the&nbsp;given&nbsp;file<br>
 <dl><dt><a name="EthernetDevice-readHardware"><strong>readHardware</strong></a>(self)<dd><small><tt>Read&nbsp;the&nbsp;active&nbsp;settings&nbsp;(and&nbsp;hardware&nbsp;specific&nbsp;details,&nbsp;like&nbsp;MAC&nbsp;addresses)<br>
 @self&nbsp;The&nbsp;object&nbsp;instance</tt></small></dl>
 <dl><dt><a name="EthernetDevice-setAddressList"><strong>setAddressList</strong></a>(self, list)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setBootProto"><strong>setBootProto</strong></a>(self, boot)<dd><small><tt>Set&nbsp;the&nbsp;boot&nbsp;protocol&nbsp;for&nbsp;the&nbsp;<a href="#EthernetDevice">EthernetDevice</a>&nbsp;object<br>
+@self&nbsp;The&nbsp;object&nbsp;instance<br>
+@macaddress&nbsp;The&nbsp;new&nbsp;boot&nbsp;protocol</tt></small></dl>
 <dl><dt><a name="EthernetDevice-setDescription"><strong>setDescription</strong></a>(self, description)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
 <dl><dt><a name="EthernetDevice-setEnabled"><strong>setEnabled</strong></a>(self, enabled)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
+<dl><dt><a name="EthernetDevice-setGateway"><strong>setGateway</strong></a>(self, gateway)<dd><small><tt>FIXME:&nbsp;Remove</tt></small></dl>
 <dl><dt><a name="EthernetDevice-setIdentifier"><strong>setIdentifier</strong></a>(self, identifier)<small><font color="#909090"><font face="helvetica, arial"> from <a href="Device.html#Device">Device.Device</a></font></font></small></dl>
 <dl><dt><a name="EthernetDevice-setMACAddress"><strong>setMACAddress</strong></a>(self, macaddress)<dd><small><tt>Set&nbsp;the&nbsp;MAC&nbsp;address&nbsp;for&nbsp;the&nbsp;<a href="#EthernetDevice">EthernetDevice</a>&nbsp;object<br>
 @self&nbsp;The&nbsp;object&nbsp;instance<br>
@@ -99,6 +108,6 @@ form</tt></small></dl>
 ><font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;&nbsp;</td>
-<td width="100%"><strong>__file__</strong> = './EthernetDevice.pyc'<br>
+<td width="100%"><strong>__file__</strong> = './EthernetDevice.py'<br>
 <strong>__name__</strong> = 'EthernetDevice'</td></tr></table>
 </body></html>

@@ -8,15 +8,19 @@ BUILT_SOURCES = DeviceList.py ProfileList.py HardwareList.py ProviderList.py Net
 
 execdir = $(sbindir)
 
-install-data-local:
-	#chmod 600 $(sysconfdir)/alchemist/namespace/dns/local.adl
-	#chmod 600 $(sysconfdir)/alchemist/switchboard/dns.switchboard.adl
-	#$(mkinstalldirs) $(localstatedir)/cache/alchemist/dns
-	#$(mkinstalldirs) $(datadir)/kontrol-panel/icons
-	#$(mkinstalldirs) $(sysconfdir)/X11/applnk/System
-	#install -m 0644 $(srcdir)/bindconf.png $(datadir)/kontrol-panel/icons/
-	#install -m 0644 $(srcdir)/bindconf-konfig.desktop $(datadir)/kontrol-panel/bindconf.desktop
-	#install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
+#install-data-local:
+#	chmod 600 $(sysconfdir)/alchemist/namespace/dns/local.adl
+#	chmod 600 $(sysconfdir)/alchemist/switchboard/dns.switchboard.adl
+#	$(mkinstalldirs) $(localstatedir)/cache/alchemist/dns
+#	$(mkinstalldirs) $(datadir)/kontrol-panel/icons
+#	$(mkinstalldirs) $(sysconfdir)/X11/applnk/System
+#	install -m 0644 $(srcdir)/bindconf.png $(datadir)/kontrol-panel/icons/
+#	install -m 0644 $(srcdir)/bindconf-konfig.desktop $(datadir)/kontrol-panel/bindconf.desktop
+#	install -m 0644 $(srcdir)/bindconf.desktop $(sysconfdir)/X11/applnk/System/
+
+docs:
+	python ./pydoc.py -w $(basename $(notdir $(wildcard *.py)))
+	mv *.html doc
 
 clean:
 	rm -f *.pyo *.pyc
