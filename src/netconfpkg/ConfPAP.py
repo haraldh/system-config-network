@@ -119,13 +119,16 @@ class ConfPAP(Conf.Conf):
         place=self.tell()
         self.seek(self.beginlineplace)
         missing=1
-        if len(varname) == 2:
-            login = '\"' + varname[0] + '\"'
-            server = '*'
-        else:
-            login = '\"' + varname + '\"'
-            value = '\"' + value[1] + '\"'
-            server = '*'
+        login = '\"' + varname + '\"'
+        value = '\"' + value[1] + '\"'
+        server = '*'
+        #if len(varname) == 2:
+        #    login = '\"' + varname[0] + '\"'
+        #    server = '*'
+        #else:
+        #    login = '\"' + varname + '\"'
+        #    value = '\"' + value[1] + '\"'
+        #    server = '*'
             
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
@@ -148,12 +151,14 @@ class ConfPAP(Conf.Conf):
     def __delitem__(self, varname):
         # delete *every* instance...
         self.seek(self.beginlineplace)
-        if len(varname) == 2:
-            login = varname[0]
-            server = varname[1]
-        else:
-            login = varname
-            server = None        
+        login = varname
+        server = None
+        #if len(varname) == 2:
+        #    login = varname[0]
+        #    server = varname[1]
+        #else:
+        #    login = varname
+        #    server = None        
 
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
