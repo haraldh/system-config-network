@@ -32,7 +32,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{_datadir}/redhat-config-network
-%config(noreplace) %{_datadir}/kontrol-panel/neat.desktop
+%{_datadir}/kontrol-panel/neat.desktop
 %{_datadir}/kontrol-panel/icons/neat.png
 %{_datadir}/desktop-folders/sysconfig/neat.desktop
 %config(noreplace) /etc/X11/applnk/System/neat.desktop
