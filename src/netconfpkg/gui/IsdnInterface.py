@@ -125,7 +125,7 @@ class IsdnInterface:
  
         if card.IRQ:
             self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
-            self.xml.get_widget("irqSpinButton").set_value(string.atoi(card.IRQ))
+            self.xml.get_widget("irqSpinButton").set_value(int(card.IRQ))
         else:
             self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
  

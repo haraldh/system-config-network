@@ -110,16 +110,16 @@ class Device(Device_base):
 
 
     def getDialog(self):
-        raise "getDialog not Implemented"
+        raise NotImplemented
 
     def getWizard(self):
-        raise "getWizard not Implemented"
+        raise NotImplemented
 
     def isType(self, device):
-        raise "isType not Implemented"
+        raise NotImplemented
 
-    def testDeviceId(self, value):
-        if re.search(r"^[a-z|A-Z|0-9\-_:]+$"):
+    def testDeviceId(self, value, child = None):
+        if re.search(r"^[a-z|A-Z|0-9\-_:]+$", value):
             return true
         return false
 
@@ -228,7 +228,7 @@ class Device(Device_base):
              NC_functions.generic_error_dialog((_("Static routes file %s "
                                                   "is invalid")) % name)
         else:
-            for p in xrange(0, num/3):
+            for p in xrange(0, int(num/3)):
                 i = self.StaticRoutes.addRoute()
                 route = self.StaticRoutes[i]
                 route.Address = rconf['ADDRESS'+str(p)]

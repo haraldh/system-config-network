@@ -211,6 +211,8 @@ def create_tokenring_combo(hardwarelist, devname):
 def ishardlink(file):
     return os.stat(file)[3] > 1
 
+def getHardwareType(devname):
+    return getDeviceType(devname)
 
 def getDeviceType(devname):
     type = _('Unknown')

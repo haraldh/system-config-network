@@ -91,7 +91,7 @@ def get_pixbuf(pixmap_file):
 
     return pixbuf
 
-def get_icon(pixmap_file, dialog):
+def get_icon(pixmap_file, dialog = None):
     pixbuf = get_pixbuf(pixmap_file)
     
     pix, mask = pixbuf.render_pixmap_and_mask()

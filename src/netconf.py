@@ -52,7 +52,6 @@ except IOError:
 os.environ["PYgtk_FATAL_EXCEPTIONS"] = '1'
 
 import os.path
-import string
 import signal
 
 try:
@@ -92,23 +91,32 @@ def get_pixpath(pixmap_file):
 
     return pixmap_file
 
-def splash_screen():
-    window = gtk.Window(gtk.WINDOW_POPUP)
-    window.set_position (gtk.WIN_POS_CENTER)
-    pixmap_wid = gtk.Image()
-    pixfile = get_pixpath("redhat-config-network-splash.png")
-    if not pixfile:
-        return None
-    pixmap_wid.set_from_file(pixfile)
-    window.add(pixmap_wid)
+def splash_screen(gfx = None):
+    if gfx:
+        window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_position (gtk.WIN_POS_CENTER)
+        pixmap_wid = gtk.Image()
+        pixfile = get_pixpath("redhat-config-network-splash.png")
+        if not pixfile:
+            return None
+        pixmap_wid.set_from_file(pixfile)
+        window.add(pixmap_wid)
+        pixmap_wid.realize()
+    else:
+        window = gtk.Window()
+        window.set_position (gtk.WIN_POS_CENTER)
+        
+        lbl = gtk.Label(_('Loading Network Configuration...'))
+        window.add(lbl)
+        
     window.show_all()
-    pixmap_wid.realize()
     while gtk.events_pending():
         gtk.main_iteration()
 
     return window
 
 if __name__ == '__main__':
+    splash_window = None
     try:
         splash_window = splash_screen()
         import gnome
@@ -129,8 +137,7 @@ if __name__ == '__main__':
         showprofile = 1
 
         gnome.program_init(PROGNAME, PRG_VERSION)
-        gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
-        
+        gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")        
 
         if progname == 'redhat-config-network-druid' or \
                progname == 'internet-druid':

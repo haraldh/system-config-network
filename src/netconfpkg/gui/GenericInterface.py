@@ -100,6 +100,7 @@ class GenericInterface(InterfaceCreator):
         druid_page.set_text(s)
         
     def editDevice(self, device):
+        ## FIXME
         button = 0
         type = device.Type
         device.createDialup()

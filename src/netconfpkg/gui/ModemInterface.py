@@ -139,7 +139,7 @@ class ModemInterface:
         self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
         if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
             self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
-        self.hw.Modem.BaudRate = string.atoi(self.xml.get_widget("baudrateEntry").get_text())
+        self.hw.Modem.BaudRate = int(self.xml.get_widget("baudrateEntry").get_text())
         self.hw.Modem.FlowControl = self.xml.get_widget("flowControlEntry").get_text()
         Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):

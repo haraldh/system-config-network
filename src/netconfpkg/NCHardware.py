@@ -23,11 +23,12 @@ class Hardware(Hardware_base):
         Hardware_base.__init__(self, list, parent)        
 
     def getDialog(self):
-        raise "getDialog not Implemented"
+        raise NotImplemented
 
     def getWizard(self):
-        raise "getWizard not Implemented"
+        raise NotImplemented
 
     def isType(self, device):
-        raise "isType not Implemented"
+        raise NotImplemented
+    
 

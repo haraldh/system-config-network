@@ -76,7 +76,7 @@ class isdnHardwareDialog:
         
         if card.IRQ:
             self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
-            self.xml.get_widget("irqSpinButton").set_value(string.atoi(card.IRQ))
+            self.xml.get_widget("irqSpinButton").set_value(int(card.IRQ))
         else:
             self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
 
@@ -135,7 +135,7 @@ class isdnHardwareDialog:
                 
                 if hw.Card.IRQ:
                     self.xml.get_widget("irqSpinButton").set_sensitive(TRUE)
-                    self.xml.get_widget("irqSpinButton").set_value(string.atoi(hw.Card.IRQ))
+                    self.xml.get_widget("irqSpinButton").set_value(int(hw.Card.IRQ))
                 else:
                     self.xml.get_widget("irqSpinButton").set_sensitive(FALSE)
 

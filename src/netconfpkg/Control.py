@@ -167,8 +167,8 @@ def fork_exec(wait, path, arg):
     if not wait: return child
 
     status = os.wait(child)
-    if os.WIFEXITED(status) and (WEXITSTATUS(status) == 0):
-        return WEXITSTATUS(status)
+    if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0):
+        return os.WEXITSTATUS(status)
 
     return -1
 

@@ -127,7 +127,7 @@ class modemDialog:
             
         self.hw.Modem.DeviceName = self.xml.get_widget(\
             "modemDeviceEntry").get_text()
-        self.hw.Modem.BaudRate = string.atoi(\
+        self.hw.Modem.BaudRate = int(\
             self.xml.get_widget("baudrateEntry").get_text())
 
         flow = self.xml.get_widget("flowControlEntry").get_text()

@@ -163,13 +163,7 @@ class cipeConfigDialog(deviceConfigDialog):
             self.device.Cipe.RemotePeerAddress = self.xml.get_widget("remotePeerAddressEntry").get_text() + ":" + self.xml.get_widget("remotePeerPortEntry").get_text()
 
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
-        
-    def on_protocolEditButton_clicked(self, *args):
-        self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()
-        deviceConfigDialog.on_protocolEditButton_clicked(self, args)
-        if self.device.IP:
-            self.xml.get_widget("localVirtualAddressEntry").set_text(self.device.IP)
-        
+                
     def on_remotePeerAddressCB_toggled(self, *args):
         if self.xml.get_widget("remotePeerAddressCB").get_active():
             self.xml.get_widget("remotePeerAddressEntry").set_sensitive(FALSE)

@@ -106,9 +106,10 @@ class EthernetInterface(InterfaceCreator):
                       + self.druids[1:]
 
         if self.device.Type == CTC or self.device.Type == IUCV:
-            self.xml.get_widget('mtuAlignment').set_flags(gtk.Visible)
-            self.xml.get_widget('mtuLabel').set_flags(gtk.Visible)
-            self.xml.get_widget('mtuEntry').set_flags(gtk.Visible)
+            # FIXME
+            self.xml.get_widget('mtuAlignment').show()
+            self.xml.get_widget('mtuLabel').show()
+            self.xml.get_widget('mtuEntry').show()
 
     def get_project_name(self):
         return _('Ethernet connection')

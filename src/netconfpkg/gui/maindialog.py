@@ -211,10 +211,10 @@ class mainDialog:
         
         gtk.Tooltips().enable()
         
-        self.dialog.show()
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
 
+        self.dialog.show()
 
     def nop(self, *args):
         pass

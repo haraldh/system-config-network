@@ -91,11 +91,11 @@ def dhcp_hydrate (xml, device):
     if device.BootProto == "static" or device.BootProto == "none":
         xml.get_widget('ipAutomaticRadio').set_active(FALSE)
         xml.get_widget('ipStaticRadio').set_active(TRUE)
-        on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml),
+        on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
     else:
         xml.get_widget('ipAutomaticRadio').set_active(TRUE)
         xml.get_widget('ipStaticRadio').set_active(FALSE)
-        on_ipBootProto_toggled(xml.get_widget('ipStaticRadio'), xml),
+        on_ipBootProto_toggled(xml.get_widget('ipStaticRadio'), xml)
 
 
 def dhcp_dehydrate (xml, device):
