@@ -1,6 +1,7 @@
 import sys
 import string
 import commands
+import math
 import NC_functions
 
 if not "/usr/lib/rhs/python" in sys.path:
