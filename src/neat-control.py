@@ -21,16 +21,13 @@
 
 import sys
 
-if not '/usr/lib/rhs/python' in sys.path:
-    sys.path.append("/usr/lib/rhs/python")
-
-if not "/usr/share/system-config-network" in sys.path:
-    sys.path.append("/usr/share/system-config-network")
-
-if not "/usr/share/system-config-network/netconfpkg/" in sys.path:
-    sys.path.append("/usr/share/system-config-network/netconfpkg")
-
 PROGNAME='system-config-network'
+
+NETCONFDIR="/usr/share/" + PROGNAME + '/'
+
+if not NETCONFDIR in sys.path:
+    sys.path.append(NETCONFDIR)
+
 import locale
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
@@ -101,15 +98,15 @@ class mainDialog:
         self.dialog = self.xml.get_widget('mainWindow')
         self.dialog.connect('delete-event', self.on_Dialog_delete_event)
         self.dialog.connect('hide', gtk.mainquit)
-        self.on_xpm, self.on_mask = get_icon('pixmaps/on.xpm', self.dialog)
-        self.off_xpm, self.off_mask = get_icon('pixmaps/off.xpm', self.dialog)
+        self.on_xpm, self.on_mask = get_icon('on.xpm', self.dialog)
+        self.off_xpm, self.off_mask = get_icon('off.xpm', self.dialog)
 
         if not os.access('/usr/bin/rp3', os.X_OK):
             self.xml.get_widget('monitorButton').hide()
 
         load_icon('neat-control.xpm', self.dialog)
-        self.xml.get_widget('pixmap').set_from_file(\
-            '/usr/share/system-config-network/pixmaps/neat-control-logo.png')
+        pix = self.xml.get_widget('pixmap')
+	pix.set_from_pixbuf(get_pixbuf('neat-control-logo.png'))
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
         
@@ -164,27 +161,7 @@ class mainDialog:
         gtk.timeout_remove(self.tag)
         
         if device:
-            # Network Device Control Dialog
-            dlg = gtk.Dialog(_('Network device activating...'),
-                             self.dialog,
-                             gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT)
-            label=gtk.Label(_('Activating network device %s, '\
-                              'please wait...') %(nickname))
-            dlg.vbox.add(label)
-            dlg.set_border_width(10)
-            dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-            label.show()
-            dlg.vbox.show()
-            dlg.show_all()
-            dlg.show_now()
-            dlg.set_transient_for(self.dialog)
-            dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-            dlg.set_modal(TRUE)
-            dlg.show_all()
-            idle_func()
             (ret, msg) = dev.activate()
-            dlg.destroy()
-            
             self.update_dialog()
 
         self.tag = gtk.timeout_add(4000, self.update_dialog)
@@ -266,14 +243,17 @@ class mainDialog:
         except ValueError:
             status = clist.get_text(clist.selection[0], 0)
             
+        self.xml.get_widget('activateButton').set_sensitive(TRUE)
+        self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
+
         if status == ACTIVE:
-            self.xml.get_widget('activateButton').set_sensitive(FALSE)
-            self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
+            #self.xml.get_widget('activateButton').set_sensitive(FALSE)
+            #self.xml.get_widget('deactivateButton').set_sensitive(TRUE)
             #self.xml.get_widget('configureButton').set_sensitive(FALSE)
             self.xml.get_widget('monitorButton').set_sensitive(TRUE)
         else:
-            self.xml.get_widget('activateButton').set_sensitive(TRUE)
-            self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
+            #self.xml.get_widget('activateButton').set_sensitive(TRUE)
+            #self.xml.get_widget('deactivateButton').set_sensitive(FALSE)
             #self.xml.get_widget('configureButton').set_sensitive(TRUE)
             self.xml.get_widget('monitorButton').set_sensitive(FALSE)
         
@@ -444,5 +424,5 @@ if __name__ == '__main__':
 
     sys.exit(0)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2003/12/16 11:18:46 $"
-__version__ = "$Revision: 1.44 $"
+__date__ = "$Date: 2004/03/04 13:24:36 $"
+__version__ = "$Revision: 1.45 $"
