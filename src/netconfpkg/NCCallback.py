@@ -24,7 +24,8 @@ class Callback(Callback_base):
     boolkeydict = { 'Compression' : 'CBCP',
                     'Hup' : 'CBHUP' }
     
-    keydict = { 'Type' : 'CALLBACK' }
+    keydict = { 'Type' : 'CALLBACK',
+                'MSN' : 'CBCP_MSN',}
 
     intkeydict = { 'Delay' : 'CBDELAY' }
 

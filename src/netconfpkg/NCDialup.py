@@ -442,6 +442,7 @@ class IsdnDialup(Dialup):
             if conf.has_key('CBHUP'): del conf['CBHUP']
             if conf.has_key('CBDELAY'): del conf['CBDELAY']
             if conf.has_key('CBCP'): del conf['CBCP']
+            if conf.has_key('CBCP_MSN'): del conf['CBCP_MSN']
 
         for i in conf.keys():
             if not conf[i]: del conf[i]
@@ -691,5 +692,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.69 $"
+__date__ = "$Date: 2005/04/20 13:14:21 $"
+__version__ = "$Revision: 1.70 $"

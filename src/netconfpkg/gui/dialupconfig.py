@@ -315,6 +315,8 @@ class ISDNDialupDialog(DialupDialog):
                 dialup.Callback.Delay)
             self.xml.get_widget("cbcpCB").set_active(\
                 dialup.Callback.Compression)
+            self.xml.get_widget("cbcpMSNEntry").set_text(\
+                dialup.Callback.MSN)
 
         if dialup.HangupTimeout:
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(\
@@ -389,6 +391,8 @@ class ISDNDialupDialog(DialupDialog):
             dialup.Callback.Hup = false
             dialup.Callback.Compression = self.xml.get_widget(\
                 "cbcpCB").get_active()
+            dialup.Callback.MSN = self.xml.get_widget(\
+                "cbcpMSNEntry").get_text()
         else:
             dialup.Callback.Type = "off"
 
@@ -515,5 +519,5 @@ if __name__ == "__main__":
     window.run()
     gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.41 $"
+__date__ = "$Date: 2005/04/20 13:14:21 $"
+__version__ = "$Revision: 1.42 $"
