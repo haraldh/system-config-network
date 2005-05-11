@@ -78,14 +78,6 @@ class tokenringConfigDialog(deviceConfigDialog):
         else:
             self.xml.get_widget("aliasSupportCB").set_active(False)
 
-#         if self.device.HardwareAddress != None:
-#             self.xml.get_widget("hwAddressCB").set_active(True)
-#             self.xml.get_widget("hwAddressEntry").set_text(self.device.HardwareAddress)
-#         else:
-#             self.xml.get_widget("hwAddressCB").set_active(False)
-#             self.xml.get_widget("hwAddressEntry").set_sensitive(False)
-#             self.xml.get_widget("hwProbeButton").set_sensitive(False)
-
     def dehydrate(self):
         deviceConfigDialog.dehydrate(self)
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
@@ -100,27 +92,11 @@ class tokenringConfigDialog(deviceConfigDialog):
         else:
             self.device.Alias = None
             
-#         if self.xml.get_widget("hwAddressCB").get_active():
-#             self.device.HardwareAddress = self.xml.get_widget("hwAddressEntry").get_text()
-#         else:
-#             self.device.HardwareAddress = None
-
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
-
-#     def on_hwAddressCB_toggled(self, check):
-#         self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
-#         self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
-
-#     def on_hwProbeButton_clicked(self, button):
-#         hwaddr = commands.getoutput("LC_ALL= LANG= /sbin/ip -o link show "+self.device.Device+" | sed 's/.*link\/ether \([[:alnum:]:]*\).*/\\1/'")
-#         if hwaddr[:6] == 'Device':
-#             return
-#         self.device.HardwareAddress = hwaddr
-#         self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
 
 
 NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.18 $"
+__date__ = "$Date: 2005/05/11 15:52:01 $"
+__version__ = "$Revision: 1.19 $"
