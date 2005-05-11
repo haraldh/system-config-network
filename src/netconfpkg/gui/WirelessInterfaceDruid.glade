@@ -12,6 +12,12 @@
   <property name="modal">True</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">True</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+  <property name="focus_on_map">True</property>
 
   <child>
     <widget class="GnomeDruid" id="druid">
@@ -23,9 +29,9 @@
 	<widget class="GnomeDruidPageStandard" id="hw_config_page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">Select Wireless Device</property>
-	  <property name="title_foreground">#ffffff</property>
-	  <property name="logo_background">#191970</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="title_foreground">#ffffffffffff</property>
+	  <property name="logo_background">#191919197070</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_hw_config_page_back"/>
 	  <signal name="next" handler="on_hw_config_page_next"/>
 	  <signal name="prepare" handler="on_hw_config_page_prepare"/>
@@ -50,6 +56,10 @@
 		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
 		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -88,6 +98,10 @@
 			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
 			</widget>
 		      </child>
 		    </widget>
@@ -108,9 +122,9 @@
 	<widget class="GnomeDruidPageStandard" id="wireless_config_page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">Configure Wireless Connection</property>
-	  <property name="title_foreground">#ffffff</property>
-	  <property name="logo_background">#191970</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="title_foreground">#ffffffffffff</property>
+	  <property name="logo_background">#191919197070</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_wireless_config_page_back"/>
 	  <signal name="next" handler="on_wireless_config_page_next"/>
 	  <signal name="prepare" handler="on_wireless_config_page_prepare"/>
@@ -146,6 +160,10 @@
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
 		      <property name="mnemonic_widget">keyEntry</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -160,15 +178,15 @@
 		  <child>
 		    <widget class="GtkEntry" id="keyEntry">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Used to manipulate encryption or scrambling keys and encryption mode. To set the current encryption key in hex digits enter the key with 0x prepended as 0xXXXXXXXX.</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char" translatable="yes">*</property>
+		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-                      <property name="tooltip" translatable="yes">Used to manipulate encryption or scrambling keys and encryption mode. To set the current encryption key in hex digits enter the key with 0x prepended as 0xXXXXXXXX.</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -193,6 +211,10 @@
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
 		      <property name="mnemonic_widget">rateEntry</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -220,9 +242,9 @@
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="no"></property>
+			  <property name="text"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char" translatable="no">*</property>
+			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			</widget>
 		      </child>
@@ -239,7 +261,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget18">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">Auto</property>
+				  <property name="label">Auto</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -249,6 +271,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -261,7 +287,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget20">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">11M</property>
+				  <property name="label">11M</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -271,6 +297,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -283,7 +313,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget22">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">5.5M</property>
+				  <property name="label">5.5M</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -293,6 +323,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -305,7 +339,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget24">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">2M</property>
+				  <property name="label">2M</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -315,6 +349,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -327,7 +365,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget26">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">1M</property>
+				  <property name="label">1M</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -337,6 +375,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -349,7 +391,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget28">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no"></property>
+				  <property name="label"></property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -359,6 +401,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -384,11 +430,15 @@
 		      <property name="justify">GTK_JUSTIFY_CENTER</property>
 		      <property name="wrap">False</property>
 		      <property name="selectable">False</property>
-		      <property name="xalign">7.45058e-09</property>
+		      <property name="xalign">7.45058015283e-09</property>
 		      <property name="yalign">0.5</property>
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
 		      <property name="mnemonic_widget">channelSpinButton</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -430,11 +480,15 @@
 		      <property name="justify">GTK_JUSTIFY_CENTER</property>
 		      <property name="wrap">False</property>
 		      <property name="selectable">False</property>
-		      <property name="xalign">7.45058e-09</property>
+		      <property name="xalign">7.45058015283e-09</property>
 		      <property name="yalign">0.5</property>
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
 		      <property name="mnemonic_widget">modeEntry</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -462,9 +516,9 @@
 			  <property name="editable">False</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="no"></property>
+			  <property name="text"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char" translatable="no">*</property>
+			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			</widget>
 		      </child>
@@ -481,7 +535,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget31">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">Auto</property>
+				  <property name="label">Auto</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -491,6 +545,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -503,7 +561,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget33">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">Managed</property>
+				  <property name="label">Managed</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -513,6 +571,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -525,7 +587,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget35">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no">Ad-Hoc</property>
+				  <property name="label">Ad-Hoc</property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -535,6 +597,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -547,7 +613,7 @@
 			      <child>
 				<widget class="GtkLabel" id="convertwidget37">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="no"></property>
+				  <property name="label"></property>
 				  <property name="use_underline">False</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -557,6 +623,10 @@
 				  <property name="yalign">0.5</property>
 				  <property name="xpad">0</property>
 				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
 				</widget>
 			      </child>
 			    </widget>
@@ -586,6 +656,7 @@
 			  <property name="label" translatable="yes">_Auto</property>
 			  <property name="use_underline">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
 			  <property name="active">True</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
@@ -605,10 +676,11 @@
 			  <property name="label" translatable="yes">_Specified:</property>
 			  <property name="use_underline">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-		          <property name="group">essidAutoButton</property>
+			  <property name="group">essidAutoButton</property>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -624,9 +696,9 @@
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="no"></property>
+			  <property name="text"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char" translatable="no">*</property>
+			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -673,6 +745,10 @@
 		      <property name="yalign">0.5</property>
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -699,9 +775,9 @@
 	<widget class="GnomeDruidPageStandard" id="eth_hostname_page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">Configure Network Settings</property>
-	  <property name="title_foreground">#ffffff</property>
-	  <property name="logo_background">#191970</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="title_foreground">#ffffffffffff</property>
+	  <property name="logo_background">#191919197070</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_hostname_config_page_back"/>
 	  <signal name="next" handler="on_hostname_config_page_next"/>
 	  <signal name="prepare" handler="on_hostname_config_page_prepare"/>
@@ -747,9 +823,9 @@
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text" translatable="no"></property>
+		      <property name="text"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char" translatable="yes">*</property>
+		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -773,6 +849,10 @@
 		      <property name="yalign">0.5</property>
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">0</property>
@@ -790,6 +870,10 @@
 		      <property name="yalign">0.5</property>
 		      <property name="xscale">1</property>
 		      <property name="yscale">1</property>
+		      <property name="top_padding">0</property>
+		      <property name="bottom_padding">0</property>
+		      <property name="left_padding">0</property>
+		      <property name="right_padding">0</property>
 
 		      <child>
 			<widget class="GtkHSeparator" id="hseparator4">
@@ -823,10 +907,10 @@
 	  <property name="visible">True</property>
 	  <property name="position">GNOME_EDGE_FINISH</property>
 	  <property name="title" translatable="yes">Create Wireless Device</property>
-	  <property name="text" translatable="no"></property>
+	  <property name="text"></property>
 	  <property name="title_color">#ffffffffffff</property>
 	  <property name="text_color">#000000000000</property>
-	  <property name="logo_background_color">#191970</property>
+	  <property name="logo_background_color">#191919197070</property>
 	  <property name="textbox_color">#ffffffffffff</property>
 	  <signal name="finish" handler="on_finish_page_finish"/>
 	  <signal name="prepare" handler="on_finish_page_prepare"/>

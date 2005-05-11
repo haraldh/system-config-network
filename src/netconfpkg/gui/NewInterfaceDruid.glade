@@ -13,6 +13,12 @@
   <property name="default_height">400</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+  <property name="focus_on_map">True</property>
   <signal name="delete_event" handler="on_toplevel_delete_event"/>
 
   <child>
@@ -26,9 +32,9 @@
 	<widget class="GnomeDruidPageStandard" id="start_page">
 	  <property name="visible">True</property>
 	  <property name="title" translatable="yes">Select Device Type</property>
-	  <property name="title_foreground">#ffffff</property>
+	  <property name="title_foreground">#ffffffffffff</property>
 	  <property name="logo_background">#e7a44085e628</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="prepare" handler="on_start_page_prepare"/>
 	  <signal name="next" handler="on_start_page_next"/>
 
@@ -76,6 +82,10 @@
 			      <property name="yalign">0.5</property>
 			      <property name="xpad">0</property>
 			      <property name="ypad">0</property>
+			      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			      <property name="width_chars">-1</property>
+			      <property name="single_line_mode">False</property>
+			      <property name="angle">0</property>
 			    </widget>
 			  </child>
 			</widget>
@@ -100,6 +110,8 @@
 			<widget class="GtkTextView" id="description_label">
 			  <property name="visible">True</property>
 			  <property name="editable">False</property>
+			  <property name="overwrite">False</property>
+			  <property name="accepts_tab">True</property>
 			  <property name="justification">GTK_JUSTIFY_LEFT</property>
 			  <property name="wrap_mode">GTK_WRAP_WORD</property>
 			  <property name="cursor_visible">False</property>
@@ -109,7 +121,7 @@
 			  <property name="left_margin">0</property>
 			  <property name="right_margin">0</property>
 			  <property name="indent">0</property>
-			  <property name="text" translatable="no"></property>
+			  <property name="text"></property>
 			</widget>
 		      </child>
 		    </widget>

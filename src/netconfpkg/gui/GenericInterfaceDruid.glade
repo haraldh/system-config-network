@@ -1,41 +1,47 @@
 <?xml version="1.0" standalone="no"?> <!--*- mode: xml -*-->
-<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd" >
+<!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-  <requires lib="gnome" />
+<requires lib="gnome"/>
 
-  <widget class="GtkWindow" id="window1">
-    <property name="title" translatable="no">window1</property>
-    <property name="type">GTK_WINDOW_TOPLEVEL</property>
-    <property name="modal">no</property>
-    <property name="allow_shrink">no</property>
-    <property name="allow_grow">yes</property>
-    <property name="window-position">GTK_WIN_POS_CENTER_ON_PARENT</property>
-    <property name="visible">yes</property>
+<widget class="GtkWindow" id="window1">
+  <property name="visible">True</property>
+  <property name="title">window1</property>
+  <property name="type">GTK_WINDOW_TOPLEVEL</property>
+  <property name="window_position">GTK_WIN_POS_NONE</property>
+  <property name="modal">False</property>
+  <property name="resizable">True</property>
+  <property name="destroy_with_parent">False</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
+  <property name="focus_on_map">True</property>
 
-    <child>
-      <widget class="GnomeDruid" id="druid">
-        <property name="visible">yes</property>
+  <child>
+    <widget class="GnomeDruid" id="druid">
+      <property name="border_width">4</property>
+      <property name="visible">True</property>
+      <property name="show_help">False</property>
 
-        <child>
-          <widget class="GnomeDruidPageEdge" id="finish_page">
-            <property name="title" translatable="yes">Create Ethernet Device</property>
-            <property name="text" translatable="no"></property>
-            <property name="logo_image">/usr/share/system-config-network/pixmaps/network.xpm</property>
-            <property name="position">GNOME_EDGE_FINISH</property>
-            <property name="visible">yes</property>
-            <property name="title_color">#ffffff</property>
-            <property name="text_color">#000000</property>
-            
-            <property name="logo_background_color">#191970</property>
-            <property name="textbox_color">#ffffff</property>
+      <child>
+	<widget class="GnomeDruidPageEdge" id="finish_page">
+	  <property name="visible">True</property>
+	  <property name="position">GNOME_EDGE_FINISH</property>
+	  <property name="title" translatable="yes">Create Ethernet Device</property>
+	  <property name="text"></property>
+	  <property name="title_color">#ffffffffffff</property>
+	  <property name="text_color">#000000000000</property>
+	  <property name="logo_background_color">#191919197070</property>
+	  <property name="textbox_color">#ffffffffffff</property>
+	  <signal name="finish" handler="on_finish_page_finish"/>
+	  <signal name="prepare" handler="on_finish_page_prepare"/>
+	  <signal name="back" handler="on_finish_page_back"/>
+	</widget>
+      </child>
+    </widget>
+  </child>
+</widget>
 
-            <signal name="finish" handler="on_finish_page_finish" />
-            <signal name="prepare" handler="on_finish_page_prepare" />
-            <signal name="back" handler="on_finish_page_back" />
-          </widget>
-        </child>
-      </widget>
-    </child>
-  </widget>
 </glade-interface>
