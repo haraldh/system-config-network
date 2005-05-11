@@ -148,6 +148,7 @@ class mainDialog:
         self.devsel = None
         self.hwsel = None
         self.ipsel = None
+        self.lastbuttonevent = None
         self.active_profile_name = DEFAULT_PROFILE_NAME
         
 #         clist = self.xml.get_widget("hardwareList")
@@ -282,9 +283,7 @@ class mainDialog:
 ##             colsize = clist.optimal_column_width(col) + 5
 ##             titlesize = clist.get_column_widget(col)
 ##             print titlesize.get_children()[0].get_width()
-##             #clist.set_column_width(col, )
-
-        
+##             #clist.set_column_width(col, )        
 
     def nop(self, *args):
         pass
@@ -1078,6 +1077,58 @@ class mainDialog:
             if not self.hwsel:
                 return
 
+
+        if clist.get_name() == 'ipsecList' and \
+               self.lastbuttonevent and \
+               self.lastbuttonevent.type == gtk.gdk.BUTTON_PRESS:
+             info = clist.get_selection_info(int(self.lastbuttonevent.x),
+                                             int(self.lastbuttonevent.y))
+             if info != None and info[1] == 0:
+                 profilelist = getProfileList()
+                 row = info[0]
+
+                 ipsec = clist.get_row_data(row)
+                 name = ipsec.IPsecId
+
+                 curr_prof = self.getActiveProfile()
+
+                 if ipsec.IPsecId not in curr_prof.ActiveIPsecs:
+                     xpm, mask = self.act_xpm, self.act_mask
+                     curr_prof = self.getActiveProfile()
+                     if curr_prof.ProfileName == 'default':
+                         for prof in profilelist:
+                             profilelist.activateIpsec(name,
+                                                        prof.ProfileName, true)
+                     else:
+                         profilelist.activateIpsec(name,
+                                                    curr_prof.ProfileName,
+                                                    true)
+                         for prof in profilelist:
+                             if prof.ProfileName == "default":
+                                 continue
+                             if name not in prof.ActiveIPsecs:
+                                 break
+                         else:
+                             profilelist.activateIpsec(name, 'default', true)
+                        
+                 else:
+                     xpm, mask = self.inact_xpm, self.inact_mask
+                     if curr_prof.ProfileName == 'default':
+                         for prof in profilelist:
+                             profilelist.activateIpsec(name, prof.ProfileName,
+                                                        false)
+                     else:
+                         profilelist.activateIpsec(name,
+                                                    curr_prof.ProfileName,
+                                                    false)
+                         profilelist.activateIpsec(name, 'default', false)
+
+                 for prof in profilelist:
+                     prof.commit()
+                 
+                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
+                 self.checkApply()
+
         if clist.get_name() == 'ipsecList':
             if len(clist.selection) == 0:
                 return
@@ -1090,6 +1141,65 @@ class mainDialog:
             self.delete_button.set_sensitive(True)
 
 
+
+        if clist.get_name() == 'deviceList' and \
+               self.lastbuttonevent and \
+               self.lastbuttonevent.type == gtk.gdk.BUTTON_PRESS:
+            
+            info = clist.get_selection_info(int(self.lastbuttonevent.x),
+                                            int(self.lastbuttonevent.y))
+            #print self.lastbuttonevent.x, self.lastbuttonevent.y, info
+            if info != None and info[1] == 0:
+                row = info[0]
+                profilelist = getProfileList()
+
+                device = clist.get_row_data(row)
+                name = device.DeviceId
+                type = device.Type
+                if type == LO:
+                    generic_error_dialog (_('The Loopback device '
+                                            'can not be disabled!'),
+                                          self.dialog)
+                    return
+
+                curr_prof = self.getActiveProfile()
+
+                if device.DeviceId not in curr_prof.ActiveDevices:
+                    xpm, mask = self.act_xpm, self.act_mask
+                    curr_prof = self.getActiveProfile()
+                    if curr_prof.ProfileName == 'default':
+                        for prof in profilelist:
+                            profilelist.activateDevice(name,
+                                                       prof.ProfileName, true)
+                    else:
+                        profilelist.activateDevice(name,
+                                                   curr_prof.ProfileName,
+                                                   true)
+                        for prof in profilelist:
+                            if prof.ProfileName == "default":
+                                continue
+                            if name not in prof.ActiveDevices:
+                                break
+                        else:
+                            profilelist.activateDevice(name, 'default', true)
+
+                else:
+                    xpm, mask = self.inact_xpm, self.inact_mask
+                    if curr_prof.ProfileName == 'default':
+                        for prof in profilelist:
+                            profilelist.activateDevice(name, prof.ProfileName,
+                                                       false)
+                    else:
+                        profilelist.activateDevice(name,
+                                                   curr_prof.ProfileName,
+                                                   false)
+                        profilelist.activateDevice(name, 'default', false)
+
+                for prof in profilelist:
+                    prof.commit()
+
+                clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
+                self.checkApply()
 
         if clist.get_name() == 'deviceList':
             self.activate_button.set_sensitive(True)
@@ -1150,6 +1260,8 @@ class mainDialog:
         apply (func)
 
     def on_generic_clist_button_press_event(self, clist, event, *args):
+        #print "on_generic_clist_button_press_event"
+        self.lastbuttonevent = event
         profilelist = getProfileList()
 
         # don't allow user to edit device if it's active
@@ -1175,105 +1287,6 @@ class mainDialog:
                                    func)
                 clist.set_data("signal_id", id)
                          
-        if clist.get_name() == 'deviceList' and gtk.gdk.BUTTON_PRESS:
-             info = clist.get_selection_info(int(event.x), int(event.y))
-             if info != None and info[1] == 0:
-                 row = info[0]
-
-                 device = clist.get_row_data(row)
-                 name = device.DeviceId
-                 type = device.Type
-                 if type == LO:
-                     generic_error_dialog (_('The Loopback device '
-                                             'can not be disabled!'),
-                                           self.dialog)
-                     return
-
-                 curr_prof = self.getActiveProfile()
-
-                 if device.DeviceId not in curr_prof.ActiveDevices:
-                     xpm, mask = self.act_xpm, self.act_mask
-                     curr_prof = self.getActiveProfile()
-                     if curr_prof.ProfileName == 'default':
-                         for prof in profilelist:
-                             profilelist.activateDevice(name,
-                                                        prof.ProfileName, true)
-                     else:
-                         profilelist.activateDevice(name,
-                                                    curr_prof.ProfileName,
-                                                    true)
-                         for prof in profilelist:
-                             if prof.ProfileName == "default":
-                                 continue
-                             if name not in prof.ActiveDevices:
-                                 break
-                         else:
-                             profilelist.activateDevice(name, 'default', true)
-                        
-                 else:
-                     xpm, mask = self.inact_xpm, self.inact_mask
-                     if curr_prof.ProfileName == 'default':
-                         for prof in profilelist:
-                             profilelist.activateDevice(name, prof.ProfileName,
-                                                        false)
-                     else:
-                         profilelist.activateDevice(name,
-                                                    curr_prof.ProfileName,
-                                                    false)
-                         profilelist.activateDevice(name, 'default', false)
-
-                 for prof in profilelist:
-                     prof.commit()
-                 
-                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
-                 self.checkApply()
-
-        if clist.get_name() == 'ipsecList' and gtk.gdk.BUTTON_PRESS:
-             info = clist.get_selection_info(int(event.x), int(event.y))
-             if info != None and info[1] == 0:
-                 row = info[0]
-
-                 ipsec = clist.get_row_data(row)
-                 name = ipsec.IPsecId
-
-                 curr_prof = self.getActiveProfile()
-
-                 if ipsec.IPsecId not in curr_prof.ActiveIPsecs:
-                     xpm, mask = self.act_xpm, self.act_mask
-                     curr_prof = self.getActiveProfile()
-                     if curr_prof.ProfileName == 'default':
-                         for prof in profilelist:
-                             profilelist.activateIpsec(name,
-                                                        prof.ProfileName, true)
-                     else:
-                         profilelist.activateIpsec(name,
-                                                    curr_prof.ProfileName,
-                                                    true)
-                         for prof in profilelist:
-                             if prof.ProfileName == "default":
-                                 continue
-                             if name not in prof.ActiveIPsecs:
-                                 break
-                         else:
-                             profilelist.activateIpsec(name, 'default', true)
-                        
-                 else:
-                     xpm, mask = self.inact_xpm, self.inact_mask
-                     if curr_prof.ProfileName == 'default':
-                         for prof in profilelist:
-                             profilelist.activateIpsec(name, prof.ProfileName,
-                                                        false)
-                     else:
-                         profilelist.activateIpsec(name,
-                                                    curr_prof.ProfileName,
-                                                    false)
-                         profilelist.activateIpsec(name, 'default', false)
-
-                 for prof in profilelist:
-                     prof.commit()
-                 
-                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
-                 self.checkApply()
                  
     def on_hostnameEntry_changed(self, entry):
         if (self.ignore_widget_changes):
