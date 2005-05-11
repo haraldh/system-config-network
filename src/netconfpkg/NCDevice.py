@@ -83,6 +83,7 @@ class Device(Device_base):
                 }
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
+                    'OnParent' : 'ONPARENT',
                     'AllowUser' : 'USERCTL',
                     'AutoDNS' : 'PEERDNS',
                     'Slave' : 'SLAVE',
@@ -279,6 +280,12 @@ class Device(Device_base):
             elif self.__dict__[selfkey] == false:
                 conf[confkey] = 'no'
 
+        # cleanup
+        if self.Alias != None:
+            del conf['ONBOOT']
+        else:
+            del conf['ONPARENT']
+
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
         # obsolete
@@ -339,6 +346,11 @@ class Device(Device_base):
             # remove route file, if no routes defined
             unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + self.DeviceId + '.route')
             unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
+
+        # remove empty gateway entries
+        if not self.Gateway:
+            del conf['GATEWAY']            
+            
             
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
