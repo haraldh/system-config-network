@@ -67,7 +67,7 @@ def get_history (omenu):
 
 def idle_func():
     while gtk.events_pending():
-        gtk.mainiteration()
+        gtk.main_iteration()
 
 def get_pixbuf(pixmap_file):
     fn = pixmap_file
@@ -385,7 +385,7 @@ def gui_run(command, argv, searchPath = 0,
                 pass
 
             while gtk.events_pending():
-                gtk.mainiteration()
+                gtk.main_iteration()
             
             if len(fdin):
                 s = os.read(read, 100)
@@ -513,7 +513,7 @@ def gui_run_dialog(command, argv, searchPath = 0,
                 pass
 
             while gtk.events_pending():
-                gtk.mainiteration()
+                gtk.main_iteration()
 
             if __cancelPressed or __dialogClosed:
                 raise CancelException
@@ -616,5 +616,3 @@ set_generic_run_dialog_func(gui_run_dialog)
 set_generic_run_func(gui_run)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:00 $"
-__version__ = "$Revision: 1.35 $"
