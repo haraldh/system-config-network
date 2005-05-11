@@ -149,8 +149,6 @@ class NewInterfaceDialog:
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     interface = NewInterface ()
-    gtk.main() ()
+    gtk.main ()
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:00 $"
-__version__ = "$Revision: 1.36 $"
