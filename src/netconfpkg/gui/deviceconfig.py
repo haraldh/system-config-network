@@ -46,6 +46,7 @@ class deviceConfigDialog:
         xml_signal_autoconnect(self.xml,
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
+            "on_notebook_switch_page" : self.on_notebook_switch_page,
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
             "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
                                                 r"^[a-z|A-Z|0-9\_:]+$"),
@@ -64,19 +65,14 @@ class deviceConfigDialog:
         self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
 
         load_icon("network.xpm", self.dialog)
-        #
-
-##         vbox = self.xml.get_widget ('ipsecVbox')
-##         if vbox:
-##             window = self.sharedtcpip_xml.get_widget ('ipsecWindow')
-##             frame = self.sharedtcpip_xml.get_widget ('ipsecFrame')
-##             window.remove (frame)
-##             vbox.pack_start (frame)
-##             sharedtcpip.ipsec_init (self.sharedtcpip_xml, self.device, self.dialog)
 
         self.hydrate()
 
 
+    def on_notebook_switch_page(self, *args):        
+        self.dehydrate()
+        self.hydrate()
+        
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -152,15 +148,21 @@ class deviceConfigDialog:
             widget.set_text(self.device.DeviceId)
                 
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == True)
+            self.xml.get_widget('onParentCB').set_active(self.device.OnParent == True)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
             self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
-
+            if self.device.Alias != None:
+                self.xml.get_widget('onBootCB').hide()
+                self.xml.get_widget('onParentCB').show()
+            else:
+                self.xml.get_widget('onBootCB').show()
+                self.xml.get_widget('onParentCB').hide()
 
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
         self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
+        self.device.OnParent = self.xml.get_widget('onParentCB').get_active()
         self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
         self.device.IPv6Init = self.xml.get_widget('ipv6InitCB').get_active()
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.22 $"
