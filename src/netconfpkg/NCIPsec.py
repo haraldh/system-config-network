@@ -36,6 +36,10 @@ class IPsec(IPsec_base):
         "RemoteGateway" : "DSTGW",
         "RemoteIPAddress" : "DST",
         "OnBoot" : "ONBOOT",
+        "SPI_AH_IN" : "SPI_AH_IN",
+        "SPI_AH_OUT" : "SPI_AH_OUT",
+        "SPI_ESP_IN" : "SPI_ESP_IN",
+        "SPI_ESP_OUT" : "SPI_ESP_OUT",
         }
     key_entries = {
         "AHKey" : "KEY_AH",
@@ -133,15 +137,17 @@ class IPsec(IPsec_base):
             conf["IKE_METHOD"] = "PSK"
         else:
             del conf["IKE_METHOD"]
-            try:
-                import zlib
-                # create some simple SPI ids, that hopefully do not reveal the key
-                conf["SPI_AH_IN"]   = str(zlib.crc32(self.AHKey  + "IN",  0) & 0x7FFFFFFF)
-                conf["SPI_AH_OUT"]  = str(zlib.crc32(self.AHKey  + "OUT", 0) & 0x7FFFFFFF)
-                conf["SPI_ESP_IN"]  = str(zlib.crc32(self.ESPKey + "IN",  0) & 0x7FFFFFFF)
-                conf["SPI_ESP_OUT"] = str(zlib.crc32(self.ESPKey + "OUT", 0) & 0x7FFFFFFF)
-            except:
-                pass
+            spi_entries = { "SPI_AH_IN" : "SPI_AH_IN",
+                            "SPI_AH_OUT" : "SPI_AH_OUT",
+                            "SPI_ESP_IN" : "SPI_ESP_IN",
+                            "SPI_ESP_OUT" : "SPI_ESP_OUT" }
+
+            for selfkey in spi_entries.keys():
+                confkey = spi_entries[selfkey]
+                if self.__dict__[selfkey]:
+                    conf[confkey] = str(self.__dict__[selfkey])
+                else: conf[confkey] = ""
+
              
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]

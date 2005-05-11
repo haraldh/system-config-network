@@ -21,11 +21,12 @@ import gtk
 import gtk.glade
 import signal
 import os
+import sha
 
 import string
 import re
 from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, gui_error_dialog
 from rhpl.executil import *
 from netconfpkg.NCProfileList import getProfileList
 
@@ -47,6 +48,9 @@ class editIPsecDruid:
             "on_ipsecidEntry_insert_text" : \
             (self.on_generic_entry_insert_text,
              r"^[a-z|A-Z|0-9\_:]+$"),
+            "on_spiEntry_insert_text" : \
+            (self.on_generic_entry_insert_text,
+             r"^[0-9]+$"),            
             "on_ipsecDruidPageStart_next" :
             self.on_ipsecDruidPageStart_next,
             "on_ipsecDruidNicknamePage_next" :
@@ -94,6 +98,10 @@ class editIPsecDruid:
             "remoteSubnetEntry" : "RemoteNetmask",
             "remoteGatewayEntry" : "RemoteGateway",
             "remoteIPEntry" : "RemoteIPAddress",
+            "SPI_AH_IN_Entry" : "SPI_AH_IN",
+            "SPI_AH_OUT_Entry" : "SPI_AH_OUT",
+            "SPI_ESP_IN_Entry" : "SPI_ESP_IN",
+            "SPI_ESP_OUT_Entry" : "SPI_ESP_OUT",
             "AHKeyEntry" : "AHKey",
             "ESPKeyEntry" : "ESPKey",
             "ipsecidEntry" : "IPsecId",
@@ -141,7 +149,8 @@ class editIPsecDruid:
     def on_ipsecDruidConnectionTypePage_next(self, druid_page, druid):
         if self.xml.get_widget("hosttohostEncryptionRadio").get_active():
             self.ipsec.ConnectionType = "Host2Host"
-            self.xml.get_widget("ipsecDruidLocalNetworkPage").hide()
+            self.xml.get_widget("localIPTable").hide()
+                
             for widget in [ "remoteNetworkEntry",
                             "remoteSubnetEntry",
                             "remoteGatewayEntry",
@@ -152,6 +161,7 @@ class editIPsecDruid:
                 self.xml.get_widget(widget).hide()
         else:
             self.ipsec.ConnectionType = "Net2Net"
+            self.xml.get_widget("localIPTable").show()
             self.xml.get_widget("ipsecDruidLocalNetworkPage").show()
             for widget in [ "remoteNetworkEntry",
                             "remoteSubnetEntry",
@@ -173,25 +183,50 @@ class editIPsecDruid:
     def on_ipsecDruidEncryptionModePage_next(self, druid_page, druid):
         if self.xml.get_widget("manualEncryptionRadio").get_active():
             self.ipsec.EncryptionMode = "manual"
-            for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton" ]:
+            for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton",
+                            "spiInTable", "spiOutTable" ]:
                 self.xml.get_widget(widget).show()
+            self.xml.get_widget("ipsecDruidLocalNetworkPage").show()
         else:
             self.ipsec.EncryptionMode = "auto"
-            for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton" ]:
+            for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton",
+                            "spiInTable", "spiOutTable" ]:
                 self.xml.get_widget(widget).hide()
-
+                
+            if self.ipsec.ConnectionType == "Host2Host":                
+                self.xml.get_widget("ipsecDruidLocalNetworkPage").hide()
+            else:
+                self.xml.get_widget("ipsecDruidLocalNetworkPage").show()
+                
         return False
                         
     def on_ipsecDruidLocalNetworkPage_prepare(self, druid_page, druid):
         return False
     
     def on_ipsecDruidLocalNetworkPage_next(self, druid_page, druid):
+        if self.ipsec.EncryptionMode == "manual":
+            for widget_name in [ "SPI_AH_IN_Entry", "SPI_ESP_IN_Entry" ]:
+                widget = self.xml.get_widget(widget_name)
+                val = widget.get_text()
+
+                try:
+                    val = int(val)
+                    if val < 256:
+                        raise ValueError
+                except:
+                    gui_error_dialog(_("Please enter a unique security parameter index between 256 and 4294967295."),
+                                     self.druid, widget = druid,
+                                     page = druid_page, broken_widget = widget)
+                    return 1
+                    
+        if self.xml.get_widget("hosttohostEncryptionRadio").get_active():
+            return 0
+        
         for widget in [ "localNetworkEntry", "localSubnetEntry",
                         "localGatewayEntry" ]:
             if not self.xml.get_widget(widget).get_text():
-                return True
-
-        return False
+                return 1
+        return 0
     
     def on_ipsecDruidRemoteNetworkPage_prepare(self, druid_page, druid):
         return False
@@ -233,6 +268,10 @@ class editIPsecDruid:
             self.ipsec.ESPKey = None
             self.ipsec.IKEKey = self.ipsec.AHKey
             self.ipsec.AHKey = None
+            self.ipsec.SPI_AH_IN = None            
+            self.ipsec.SPI_AH_OUT = None            
+            self.ipsec.SPI_ESP_IN = None            
+            self.ipsec.SPI_ESP_OUT = None            
         else:
             self.ipsec.IKEKey = None
             
@@ -274,18 +313,32 @@ class editIPsecDruid:
         gtk.main_quit()
         return False
 
+    def getKeyFromPassphrase(self, keylen):
+        pdialog = self.xml.get_widget("passphraseDialog")
+        phraseEntry = self.xml.get_widget("passphraseEntry")
+
+        phraseEntry.set_text('')
+        pdialog.show()
+        button = pdialog.run()
+        pdialog.hide()
+        if button != gtk.RESPONSE_OK and button != 0:
+            return
+
+        phrase = phraseEntry.get_text()
+        shasum = sha.new(phrase).hexdigest()
+
+        if len(shasum) > keylen: shasum = shasum[:keylen]
+
+        return shasum
+
     def on_generateAHKeyButton_clicked(self, *args):
-        key = GUI_functions.gen_hexkey(20)
+        shasum = self.getKeyFromPassphrase(20)
         widget = self.xml.get_widget("AHKeyEntry")
-        if key:
-            widget.set_text(key)
+        widget.set_text(shasum)
         
     def on_generateESPKeyButton_clicked(self, *args):
-        key = GUI_functions.gen_hexkey(24)
+        shasum = self.getKeyFromPassphrase(24)
         widget = self.xml.get_widget("ESPKeyEntry")
-        if key:
-            widget.set_text(key)
+        widget.set_text(shasum)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-
