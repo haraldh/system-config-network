@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2005 Red Hat, Inc.
+## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -157,5 +157,3 @@ class ethernetHardware:
                 (self.hw.Description == i):
                 self.hw.Card.ModuleName = i         
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:00 $"
-__version__ = "$Revision: 1.29 $"

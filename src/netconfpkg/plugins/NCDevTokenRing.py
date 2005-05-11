@@ -51,5 +51,5 @@ def setDevTokenRingWizard(wizard):
 df = getDeviceFactory()
 df.register(DevTokenRing, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2005/05/11 16:58:28 $"
+__version__ = "$Revision: 1.7 $"

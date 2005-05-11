@@ -519,5 +519,3 @@ if __name__ == "__main__":
     window.run()
     gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/04/20 13:14:21 $"
-__version__ = "$Revision: 1.42 $"

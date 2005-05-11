@@ -90,5 +90,3 @@ class editAdressDialog:
         self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.17 $"
