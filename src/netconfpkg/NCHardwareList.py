@@ -715,6 +715,10 @@ class HardwareList(HardwareList_base):
     def save(self):
         modules = getMyConfModules(refresh = true)
 
+        # cleanup isdnconf
+        isdn = NCisdnhardware.ConfISDN()
+        isdn.cleanup()  
+
         for hw in self:
             hw.save()
 
@@ -757,6 +761,7 @@ class HardwareList(HardwareList_base):
                 #print str(modules.vars[mod].keys())
                 del modules[mod]
                 #print "Test: " + str(modules[mod])
+
                 
         modules.write()
         if wvdial:
@@ -820,5 +825,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.75 $"
+__date__ = "$Date: 2005/10/19 10:44:49 $"
+__version__ = "$Revision: 1.76 $"

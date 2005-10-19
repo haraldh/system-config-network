@@ -1140,8 +1140,6 @@ class mainDialog:
             self.deactivate_button.set_sensitive(True)
             self.delete_button.set_sensitive(True)
 
-
-
         if clist.get_name() == 'deviceList' and \
                self.lastbuttonevent and \
                self.lastbuttonevent.type == gtk.gdk.BUTTON_PRESS:

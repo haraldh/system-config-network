@@ -45,6 +45,7 @@ card = {
     "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "", "", "HiSax", "",  "hisax" ],
     "AVM Fritz Card PCMCIA" : [ "", "", "", "", "", "", "", "", "", "", "avma1_cs" ],
     "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244", "0a00", "HiSax", "", "hisax" ],
+    "AVM PCI (Fritz!PCI v2)" : [ "0", "", "", "", "", "", "1244", "0e00", "", "", "hisax_fcpcipnp" ],
     "AVM PnP" : [ "27", "", "", "", "", "", "AVM0900", "AVM0900", "HiSax", "", "hisax" ],
     "Billion ISDN P&P PCI 128k Cologne SE" : [ "35", "", "", "", "", "", "1397", "2bd0", "HiSax", "", "hisax" ],
     "Compaq ISDN S0 ISA" : [ "19", "5", "0x0000", "0x0000", "0x0000", "", "", "", "HiSax", "", "hisax" ],
@@ -89,9 +90,6 @@ card = {
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050", "6692", "HiSax", "", "hisax" ]
     }
 
-kernelver = os.uname()[2]
-if os.path.exists('/lib/modules/'+kernelver+'/kernel/drivers/isdn/hisax/hisax_fcpcipnp.o'):
-    card['AVM PCI (Fritz!PCI v2)'] = [ "0", "", "", "", "", "", "1244", "0e00", "", "", "hisax_fcpcipnp" ]
 	
 class ConfISDN:
     keydict = { 'Description' : 'NAME',
@@ -211,6 +209,17 @@ class ConfISDN:
 
         conf.write()
 
+
+    def cleanup(self, f = None):
+        if f == None:
+            f = netconfpkg.ROOT + ISDNCARDCONF 
+        # we only support 1 ISDN card in this version
+        if not self.Description:
+            if os.path.exists(f):
+                os.unlink(f)
+            return
+
+
     def detect(self):
         fpci = '/sbin/lspci'
         fpnp = '/proc/bus/isapnp/devices'
@@ -280,5 +289,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.25 $"
+__date__ = "$Date: 2005/10/19 10:44:49 $"
+__version__ = "$Revision: 1.26 $"

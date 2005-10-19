@@ -230,6 +230,9 @@ class IsdnInterface:
         self.hw.Card.ModuleName = isdncard.ModuleName
         self.hw.Card.Type = isdncard.Type
         self.hw.Card.Firmware = isdncard.Firmware
+        self.hw.Card.VendorId = isdncard.VendorId
+        self.hw.Card.DeviceId = isdncard.DeviceId
+        self.hw.Card.DriverId = isdncard.DriverId
         
         if self.xml.get_widget("euroIsdnButton").get_active():
             self.hw.Card.ChannelProtocol = "2"
