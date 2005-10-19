@@ -98,4 +98,5 @@ execdir = $(sbindir)
 CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
 
 fixpath:
-	perl -pi -e 's#logo">([^/][^>]*)<#logo">/usr/share/system-config-network/pixmaps/$1<#g'  *.glade
+	perl -pi -e 's#logo">([^/>][^>]*)<#logo">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade
+	perl -pi -e 's#pixbuf">([^/>][^>]*)<#pixbuf">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade
