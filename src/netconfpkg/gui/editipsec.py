@@ -322,7 +322,7 @@ class editIPsecDruid:
         button = pdialog.run()
         pdialog.hide()
         if button != gtk.RESPONSE_OK and button != 0:
-            return
+            return None
 
         phrase = phraseEntry.get_text()
         shasum = sha.new(phrase).hexdigest()
@@ -333,12 +333,14 @@ class editIPsecDruid:
 
     def on_generateAHKeyButton_clicked(self, *args):
         shasum = self.getKeyFromPassphrase(20)
-        widget = self.xml.get_widget("AHKeyEntry")
-        widget.set_text(shasum)
+        if shasum:
+            widget = self.xml.get_widget("AHKeyEntry")
+            widget.set_text(shasum)
         
     def on_generateESPKeyButton_clicked(self, *args):
         shasum = self.getKeyFromPassphrase(24)
-        widget = self.xml.get_widget("ESPKeyEntry")
-        widget.set_text(shasum)
+        if shasum:
+            widget = self.xml.get_widget("ESPKeyEntry")
+            widget.set_text(shasum)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
