@@ -13,17 +13,15 @@ all-local: version.py
 	rm -f system-config-network-gui
 	rm -f system-config-network-cmd
 	rm -f system-config-network-tui
-	rm -f system-config-network-druid
 	rm -f  system-control-network
 	rm -f netconf_cmd.py
 	ln -s $(srcdir)/netconf.py system-config-network-gui
 	ln -s $(srcdir)/netconf-cmd.py system-config-network-cmd
 	ln -s $(srcdir)/netconf-cmd.py netconf_cmd.py
-	ln -s $(srcdir)/netconf.py system-config-network-druid
 	ln -s $(srcdir)/netconf-tui.py system-config-network-tui
 	ln -s $(srcdir)/neat-control.py system-control-network
 	chmod 0755 system-config-network-gui system-config-network-cmd 
-	chmod 0755 system-config-network-druid system-config-network-tui system-control-network
+	chmod 0755 system-config-network-tui system-control-network
 
 
 providerdir = $(pkgdatadir)
@@ -49,7 +47,6 @@ install-exec-local:
 	ln  -fs ../$${softdir}/neat-control.py $(DESTDIR)$(bindir)/system-control-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/system-config-network-gui; \
 	ln  -fs ../$${softdir}/netconf-cmd.py $(DESTDIR)$(sbindir)/system-config-network-cmd; \
-	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/system-config-network-druid; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/system-config-network-tui; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
@@ -62,10 +59,8 @@ uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-gui
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-tui
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
-	rm -f  $(DESTDIR)$(sbindir)/system-config-network-druid
 	rm -f  $(DESTDIR)$(sbindir)/neat
 	rm -f  $(DESTDIR)$(sbindir)/neat-tui
-	rm -f  $(DESTDIR)$(sbindir)/neat-druid
 	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
 
 docs:
