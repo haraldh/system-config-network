@@ -53,7 +53,6 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/neat; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/system-config-network-tui; \
 	ln  -fs ../$${softdir}/netconf-tui.py $(DESTDIR)$(sbindir)/neat-tui; \
-	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/internet-druid ;
 	$(top_srcdir)/py-compile - $(DESTDIR)$(pkgdatadir)/*.py
 
 uninstall-local:
