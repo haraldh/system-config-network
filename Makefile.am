@@ -3,7 +3,6 @@ AUTOMAKE_OPTIONS = foreign 1.4
 SUBDIRS = doc src po
 
 EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
-	internet-druid.console internet-druid.desktop.in \
 	neat-control.desktop.in pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
 	ChangeLog system-config-network-cmd.console \
@@ -11,7 +10,7 @@ EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
 
 iconsdir=$(pkgdatadir)
 
-icons_DATA=neat.desktop internet-druid.desktop neat-control.desktop
+icons_DATA=neat.desktop neat-control.desktop
 
 icons_in_files=$(icons_DATA:.desktop=.desktop.in)
 
@@ -43,23 +42,9 @@ install-data-local:
 	$(INSTALL_DATA) $(srcdir)/system-config-network-cmd.console $(DESTDIR)$(sysconfdir)/security/console.apps/system-config-network-cmd; \
 	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/system-config-network-cmd; \
 	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/system-config-network-cmd ; 
-
-
-	for i in internet-druid system-config-network-druid; do \
-		$(INSTALL_DATA) $(srcdir)/internet-druid.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
-		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
-		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
-	done
-
 uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/system-control-network
 	for i in neat system-config-network system-config-network-cmd; do \
-		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
-		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
-		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
-	done
-
-	for i in internet-druid system-config-network-druid; do \
 		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		rm -f $(DESTDIR)$(prefix)/bin/$$i; \

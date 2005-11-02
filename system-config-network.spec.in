@@ -43,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 
 mkdir $RPM_BUILD_ROOT%{_datadir}/applications
 
-for i in neat.desktop internet-druid.desktop neat-control.desktop; do \
+for i in neat.desktop neat-control.desktop; do \
   desktop-file-install --vendor redhat --delete-original       \
     --dir $RPM_BUILD_ROOT%{_datadir}/applications             \
     --add-category X-Red-Hat-Base                             \
@@ -61,9 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/system-config-network/pixmaps
 %{_datadir}/system-config-network/netconfpkg/gui
 %{_sbindir}/system-config-network-gui
-%{_sbindir}/internet-druid
 %{_bindir}/neat-control
-%{_bindir}/internet-druid
 %{_bindir}/system-control-network
 %{_sbindir}/system-config-network-druid
 %{_bindir}/system-config-network-druid
@@ -93,6 +91,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Wed Nov 02 2005 Harald Hoyer <harald@redhat.com> - 1.3.30
+- removed interdruid
+- reversed Cancel/Ok button ordering
+
 * Tue Oct 25 2005 Harald Hoyer <harald@redhat.com> - 1.3.29
 - fixed profileFrame labeling
 
