@@ -42,7 +42,11 @@ class DevModem(Device):
       return self.Dialup
    
    def getDialog(self):
-      return _devModemDialog(self).xml.get_widget("Dialog")
+      dialog =  _devModemDialog(self)
+      if hasattr(dialog, "xml"):
+         return dialog.xml.get_widget("Dialog")
+
+      return dialog
     
    def getWizard(self):
       return _devModemWizard
@@ -71,5 +75,5 @@ def setDevModemWizard(wizard):
 df = getDeviceFactory()
 df.register(DevModem, MODEM)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2006/07/06 14:15:06 $"
+__version__ = "$Revision: 1.8 $"

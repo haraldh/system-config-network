@@ -57,7 +57,11 @@ class DevEthernet(Device):
        
    def getDialog(self):
       """get the gtk.Dialog of the ethernet configuration dialog"""
-      return _devEthernetDialog(self).xml.get_widget("Dialog")
+      dialog =  _devEthernetDialog(self)
+      if hasattr(dialog, "xml"):
+         return dialog.xml.get_widget("Dialog")
+
+      return dialog
     
    def getWizard(self):
       """get the wizard of the ethernet wizard"""
@@ -86,5 +90,5 @@ _df.register(DevEthernet, ETHERNET)
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2006/07/06 14:15:06 $"
+__version__ = "$Revision: 1.10 $"
