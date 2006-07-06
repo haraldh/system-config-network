@@ -126,10 +126,12 @@ class TestRCN(unittest.TestCase):
         from netconfpkg import \
              NCDeviceList, NCProfileList, \
              NCHardwareList, NCIPsecList
+
+        from netconfpkg.NC_functions import log
+	 
         NC_functions.setVerboseLevel(100)
         NC_functions.setDebugLevel(100)
-        from rhpl.log import log
-        log.set_loglevel(NC_functions.getVerboseLevel())
+	log.set_loglevel(NC_functions.getVerboseLevel())
         
         devlists = [
             NCHardwareList.getHardwareList(),
@@ -151,7 +153,7 @@ class TestRCN(unittest.TestCase):
         self.oldstdout = sys.stdout
         sys.stdout = open("stdout", "w")
         sys.stderr = open("stderr", "w")
-        from rhpl.log import log
+	from netconfpkg.NC_functions import log
         log.open()
 
     def redirectEnd(self):
@@ -159,7 +161,7 @@ class TestRCN(unittest.TestCase):
         sys.stdout.close()
         sys.stderr = self.oldstderr
         sys.stdout = self.oldstdout
-        from rhpl.log import log
+	from netconfpkg.NC_functions import log
         log.open()
 
     def test00Basic(self):
@@ -260,8 +262,8 @@ ProfileList.default.ProfileName=default
         from netconfpkg import  \
              NCDeviceList, NCProfileList, \
              NCHardwareList, NCIPsecList
-        from rhpl.log import log
         
+	from netconfpkg.NC_functions import log
         profilelist = NCProfileList.getProfileList()
         NC_functions.setVerboseLevel(100)
         NC_functions.setDebugLevel(100)
@@ -355,5 +357,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.3 $"
+__date__ = "$Date: 2006/07/06 14:20:19 $"
+__version__ = "$Revision: 1.4 $"

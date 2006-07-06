@@ -27,8 +27,6 @@ from rhpl import ConfPAP
 from rhpl import ethtool
 from rhpl import Conf
 from rhpl import ConfSMB
-import rhpl.log
-
 
 import UserList
 
@@ -1044,7 +1042,5 @@ class LogFile:
 
 log = LogFile()
 						
-rhpl.log = log
-
             
 __author__ = "Harald Hoyer <harald@redhat.com>"

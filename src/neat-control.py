@@ -61,7 +61,6 @@ from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
 from rhpl.exception import handleException
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from rhpl.log import log
 
 device = None
 
