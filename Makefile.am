@@ -52,7 +52,7 @@ uninstall-local:
 
 changelog:
 	rcs2log -v | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
-		-e 's|@.*\.redhat\.com|@redhat.com|g' > ChangeLog
+		-e 's|@.*\.redhat\.com|@redhat.com|g' -e 's|@.*\.home|@redhat.com|g'> ChangeLog
 
 clean-local:
 	rm -f neat.desktop
