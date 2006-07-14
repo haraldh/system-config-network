@@ -83,29 +83,28 @@ def get_pixbuf( pixmap_file ):
         if not os.path.exists( pixmap_file ):
             pixmap_file = "/usr/share/pixmaps/" + fn
             if not os.path.exists( pixmap_file ):
-                gui_error_dialog( _( 
-"""Could not find file %s.
+                raise NCException( _( 
+"""Could not find file '%s'.
 Please check your installation!
-Run: "rpm -V system-config-network"
-""" ) )
-                return None
+Run: 'rpm -V system-config-network'
+""" ) % fn )
 
-
-    pixbuf = gtk.gdk.pixbuf_new_from_file( pixmap_file )
-
-    return pixbuf
+    try:
+        pixmap = gtk.gdk.pixbuf_new_from_file( pixmap_file )
+    except:    
+        raise NCException( _( 
+"""Could not load the file '%s'.
+Please check your installation!
+Run: 'rpm -V system-config-network'
+""" ) % pixmap_file )
+        
+    return pixmap
 
 def get_icon( pixmap_file, dialog = None ):
-    try:
-        pixbuf = get_pixbuf( pixmap_file )
-        if pixbuf:
-            pix, mask = pixbuf.render_pixmap_and_mask()
-    
-            return pix, mask        
-    except: pass
-    
-    return None, None
-
+    pixbuf = get_pixbuf( pixmap_file )
+    if pixbuf:
+        return pixbuf.render_pixmap_and_mask()
+        
 def load_icon( pixmap_file, dialog ):
     if not dialog: return
  
@@ -172,7 +171,7 @@ def gui_info_dialog ( message, parent_dialog,
     dialog.destroy()
     return ret
 
-def gui_longinfo_dialog ( message, long_message, parent_dialog, 
+def gui_longinfo_dialog ( message, long_message, parent_dialog=None, 
                          message_type=gtk.MESSAGE_INFO, 
                          widget=None, page=0, broken_widget=None ):
     
