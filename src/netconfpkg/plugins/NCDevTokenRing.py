@@ -24,32 +24,36 @@ _devTokenRingWizard = None
 
 class DevTokenRing(Device):    
    def __init__(self, list = None, parent = None):
-       Device.__init__(self, list, parent)
-       self.Type = TOKENRING
+      Device.__init__(self, list, parent)
+      self.Type = TOKENRING
 
    def getDialog(self):
-       return _devTokenRingDialog(self).xml.get_widget("Dialog")
-    
+      dialog =  _devTokenRingDialog(self)
+      if hasattr(dialog, "xml"):
+         return dialog.xml.get_widget("Dialog")
+
+      return dialog
+
    def getWizard(self):
-       return _devTokenRingWizard
+      return _devTokenRingWizard
 
    def isType(self, device):
-       if device.Type == TOKENRING:
-           return true
-       if getDeviceType(device.Device) == TOKENRING:
-           return true
-       return false
+      if device.Type == TOKENRING:
+         return true
+      if getDeviceType(device.Device) == TOKENRING:
+         return true
+      return false
 
 def setDevTokenRingDialog(dialog):
-    global _devTokenRingDialog
-    _devTokenRingDialog = dialog
+   global _devTokenRingDialog
+   _devTokenRingDialog = dialog
 
 def setDevTokenRingWizard(wizard):
-    global _devTokenRingWizard
-    _devTokenRingWizard = wizard
+   global _devTokenRingWizard
+   _devTokenRingWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevTokenRing, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/05/11 16:58:28 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2006/07/14 12:06:33 $"
+__version__ = "$Revision: 1.8 $"

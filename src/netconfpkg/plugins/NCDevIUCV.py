@@ -50,8 +50,12 @@ class DevIUCV(DevEthernet):
       Device.save(self)
 
    def getDialog(self):
-      """get the gtk.Dialog of the iucv configuration dialog"""
-      return _devIUCVDialog(self).xml.get_widget("Dialog")
+      """get the iucv configuration dialog"""
+      dialog =  _devIUCVDialog(self)
+      if hasattr(dialog, "xml"):
+         return dialog.xml.get_widget("Dialog")
+
+      return dialog
     
    def getWizard(self):
       """get the wizard of the iucv wizard"""

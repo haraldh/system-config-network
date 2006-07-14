@@ -49,8 +49,12 @@ class DevCTC(DevEthernet):
       Device.save(self)
       
    def getDialog(self):
-      """get the gtk.Dialog of the ctc configuration dialog"""
-      return _devCTCDialog(self).xml.get_widget("Dialog")
+      """get the ctc configuration dialog"""
+      dialog =  _devCTCDialog(self)
+      if hasattr(dialog, "xml"):
+         return dialog.xml.get_widget("Dialog")
+
+      return dialog
     
    def getWizard(self):
       """get the wizard of the ctc wizard"""
