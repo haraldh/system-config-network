@@ -30,103 +30,104 @@ import NCDialup
 import NCCipe
 from rhpl.executil import gtkExecWithCaptureStatus
 
-class ConfDevice(Conf.ConfShellVar):
-    def __init__(self, name, dir = None):
+class ConfDevice( Conf.ConfShellVar ):
+    def __init__( self, name, dir = None ):
         if dir == None:
             dir = netconfpkg.ROOT + SYSCONFDEVICEDIR
         new = false
         self.filename = dir + 'ifcfg-' + name
-        if not os.access(self.filename, os.R_OK):
+        if not os.access( self.filename, os.R_OK ):
             new = true
             self.oldmode = 0644
         else:
-            status = os.stat(self.filename)
+            status = os.stat( self.filename )
             self.oldmode = status[0]
             #print status
             
-        Conf.ConfShellVar.__init__(self, self.filename)
+        Conf.ConfShellVar.__init__( self, self.filename )
         
         if new:
             self.rewind()
-            self.insertline("# Please read /usr/share/doc/"
-                            "initscripts-*/sysconfig.txt")
+            self.insertline( "# Please read /usr/share/doc/"
+                            "initscripts-*/sysconfig.txt" )
             self.nextline()
-            self.insertline("# for the documentation of these parameters.");
+            self.insertline( "# for the documentation of these parameters." );
             self.rewind()
     
-    def write(self):
-        self.chmod(self.oldmode)
-        log.log(2, "chmod %#o %s" % (self.oldmode & 03777, self.filename))
+    def write( self ):
+        self.chmod( self.oldmode )
+        log.log( 2, "chmod %#o %s" % ( self.oldmode & 03777, self.filename ) )
         #if ((self.oldmode & 0044) != 0044):
         #    ask = NC_functions.generic_yesno_dialog(\
         #        _("May I change\n%s\nfrom mode %o to %o?") % \
         #        (self.filename, self.oldmode & 03777, 0644))
         #    if ask != RESPONSE_YES:
         #        self.chmod(self.oldmode)
-        Conf.ConfShellVar.write(self)
+        Conf.ConfShellVar.write( self )
             
-class ConfRoute(Conf.ConfShellVar):
-    def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + name)
-        self.chmod(0644)
+class ConfRoute( Conf.ConfShellVar ):
+    def __init__( self, name ):
+        Conf.ConfShellVar.__init__( self, netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                    'route-' + name )
+        self.chmod( 0644 )
 
-class Device(Device_base):
-    keydict = { 'Device' : 'DEVICE',
-                'IP' : 'IPADDR',
-                'Netmask' : 'NETMASK',
-                'Gateway' : 'GATEWAY',
-                'Hostname' : 'DHCP_HOSTNAME',
-                'Domain' : 'DOMAIN',
-                'BootProto' : 'BOOTPROTO',
-                'Type' : 'TYPE',
-                'HardwareAddress' : 'HWADDR',
+class Device( Device_base ):
+    keydict = { 'Device' : 'DEVICE', 
+                'IP' : 'IPADDR', 
+                'Netmask' : 'NETMASK', 
+                'Gateway' : 'GATEWAY', 
+                'Hostname' : 'DHCP_HOSTNAME', 
+                'Domain' : 'DOMAIN', 
+                'BootProto' : 'BOOTPROTO', 
+                'Type' : 'TYPE', 
+                'HardwareAddress' : 'HWADDR', 
                 }
 
-    boolkeydict = { 'OnBoot' : 'ONBOOT',
-                    'OnParent' : 'ONPARENT',
-                    'AllowUser' : 'USERCTL',
-                    'AutoDNS' : 'PEERDNS',
-                    'Slave' : 'SLAVE',
-                    'IPv6Init' : 'IPV6INIT',
+    boolkeydict = { 'OnBoot' : 'ONBOOT', 
+                    'OnParent' : 'ONPARENT', 
+                    'AllowUser' : 'USERCTL', 
+                    'AutoDNS' : 'PEERDNS', 
+                    'Slave' : 'SLAVE', 
+                    'IPv6Init' : 'IPV6INIT', 
                     }
         
-    def __init__(self, list = None, parent = None):
-        Device_base.__init__(self, list, parent)        
+    def __init__( self, list = None, parent = None ):
+        Device_base.__init__( self, list, parent )        
         self.oldname = None
 
-    def getDialog(self):
+    def getDialog( self ):
         return None
 
-    def getWizard(self):
+    def getWizard( self ):
         return None
 
-    def isType(self, device):
+    def isType( self, device ):
         return None
 
-    def testDeviceId(self, value, child = None):
-        if re.search(r"^[a-z|A-Z|0-9\_:]+$", value):
+    def testDeviceId( self, value, child = None ):
+        if re.search( r"^[a-z|A-Z|0-9\_:]+$", value ):
             return true
         return false
 
-    def getDeviceAlias(self):
+    def getDeviceAlias( self ):
         devname = self.Device
         if self.Alias != None and self.Alias != "":
-            devname = devname + ':' + str(self.Alias)
+            devname = devname + ':' + str( self.Alias )
         return devname
 
-    def load(self, name):
-        conf = ConfDevice(name)
+    def load( self, name ):
+        conf = ConfDevice( name )
 
         self.oldname = name
 
-        if not conf.has_key("DEVICE"):
-            aliaspos = string.find(name, ':')
+        if not conf.has_key( "DEVICE" ):
+            aliaspos = string.find( name, ':' )
             if aliaspos != -1:
                 from netconfpkg.NCDeviceList import getDeviceList
                 # ok, we have to inherit all other data from our master
                 for dev in getDeviceList():
                     if dev.Device == name[:aliaspos]:
-                        self.apply(dev)
+                        self.apply( dev )
                         break
 
             self.Device = name
@@ -134,63 +135,63 @@ class Device(Device_base):
         self.DeviceId = name
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if conf.has_key(confkey):
+            if conf.has_key( confkey ):
                 self.__dict__[selfkey] = conf[confkey]
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if conf.has_key(confkey):
+            if conf.has_key( confkey ):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = true
                 else:
                     self.__dict__[selfkey] = false            
-            elif not self.__dict__.has_key(selfkey):
+            elif not self.__dict__.has_key( selfkey ):
                 self.__dict__[selfkey] = false                            
             
-        if not conf.has_key("PEERDNS"):
+        if not conf.has_key( "PEERDNS" ):
             self.AutoDNS = None
             
         if not self.Gateway:
             try:
-                cfg = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
-                if cfg.has_key('GATEWAY'):
+                cfg = Conf.ConfShellVar( netconfpkg.ROOT + SYSCONFNETWORK )
+                if cfg.has_key( 'GATEWAY' ):
                     gw = cfg['GATEWAY']
                     
                     if gw and self.Netmask:
                         try:
-                            network = commands.getoutput('ipcalc --network '+\
-                                                         str(self.IP) + \
+                            network = commands.getoutput( 'ipcalc --network '+\
+                                                         str( self.IP ) + \
                                                          ' ' + \
-                                                         str(self.Netmask) +\
-                                                         ' 2>/dev/null')
+                                                         str( self.Netmask ) +\
+                                                         ' 2>/dev/null' )
                             
-                            out = commands.getoutput('ipcalc --network ' + \
-                                                     str(gw) + ' ' \
-                                                     + str(self.Netmask) + \
-                                                     ' 2>/dev/null')
+                            out = commands.getoutput( 'ipcalc --network ' + \
+                                                     str( gw ) + ' ' \
+                                                     + str( self.Netmask ) + \
+                                                     ' 2>/dev/null' )
                             if out == network:
-                                self.Gateway = str(gw)
+                                self.Gateway = str( gw )
                         except:
                             pass
                         
                             
             except EnvironmentError, msg:
-                NC_functions.generic_error_dialog(str(msg))
+                NC_functions.generic_error_dialog( str( msg ) )
                 pass
 
         try:
-            aliaspos = string.find(self.Device, ':')
+            aliaspos = string.find( self.Device, ':' )
             if aliaspos != -1:
-                self.Alias = int(self.Device[aliaspos+1:])
+                self.Alias = int( self.Device[aliaspos+1:] )
                 self.Device = self.Device[:aliaspos]
         except TypeError:
-            NC_functions.generic_error_dialog(_("%s, "
+            NC_functions.generic_error_dialog( _( "%s, "
                                                 "Device not specified "
-                                                "or alias not a number!") % \
-                                              self.DeviceId)
+                                                "or alias not a number!" ) % \
+                                              self.DeviceId )
             #raise TypeError, _("Device not specified or alias not a number!")
 
-        if not self.Type or self.Type == "" or self.Type == _("Unknown"):
+        if not self.Type or self.Type == "" or self.Type == _( "Unknown" ):
             import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
@@ -198,68 +199,68 @@ class Device(Device_base):
                     self.Type = hw.Type
                     break
             else:
-                self.Type = NC_functions.getDeviceType(self.Device)
+                self.Type = NC_functions.getDeviceType( self.Device )
 
-        if conf.has_key("RESOLV_MODS"):
+        if conf.has_key( "RESOLV_MODS" ):
             if conf["RESOLV_MODS"] != "no":
                 self.AutoDNS = true
             else:
                 self.AutoDNS = false
 
         if self.Type == CTC or self.Type == IUCV:
-            if conf.has_key("MTU") and conf['MTU']:
+            if conf.has_key( "MTU" ) and conf['MTU']:
                 try:
-                    self.Mtu = int(conf['MTU'])
+                    self.Mtu = int( conf['MTU'] )
                 except:
                     pass
 
         # move old <id>.route files to route-<id>
         file = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                 self.DeviceId + '.route'
-        if os.path.isfile(file):
-            NC_functions.rename(file,
+        if os.path.isfile( file ):
+            NC_functions.rename( file, 
                                 netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                 'route-' + self.DeviceId )
         # load routes
-        rconf = ConfRoute(name)
-        num = len(rconf.keys())
+        rconf = ConfRoute( name )
+        num = len( rconf.keys() )
         self.createStaticRoutes()
 
-        # XXX fixme
-        if math.fmod(num, 3) != 0:
-             NC_functions.generic_error_dialog((_("Static routes file %s "
-                                                  "is invalid")) % name)
+        # FIXME
+        if math.fmod( num, 3 ) != 0:
+             NC_functions.generic_error_dialog( ( _( "Static routes file %s "
+                                                  "is invalid" ) ) % name )
         else:
-            for p in xrange(0, int(num/3)):
+            for p in xrange( 0, int( num/3 ) ):
                 i = self.StaticRoutes.addRoute()
                 route = self.StaticRoutes[i]
-                route.Address = rconf['ADDRESS' + str(p)]
-                route.Netmask = rconf['NETMASK' + str(p)]
-                route.Gateway = rconf['GATEWAY' + str(p)]
+                route.Address = rconf['ADDRESS' + str( p )]
+                route.Netmask = rconf['NETMASK' + str( p )]
+                route.Gateway = rconf['GATEWAY' + str( p )]
         
-        self.commit(changed=false)
+        self.commit( changed=false )
                 
-    def save(self):
+    def save( self ):
         # Just to be safe...
-        os.umask(0022)
+        os.umask( 0022 )
         self.commit()
 
-        if self.oldname and (self.oldname != self.DeviceId):
+        if self.oldname and ( self.oldname != self.DeviceId ):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
-                NC_functions.rename(netconfpkg.ROOT + SYSCONFDEVICEDIR + \
-                                    prefix + self.oldname,
+                NC_functions.rename( netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                    prefix + self.oldname, 
                                     netconfpkg.ROOT + SYSCONFDEVICEDIR + \
-                                    prefix + self.DeviceId)            
+                                    prefix + self.DeviceId )            
 
-        conf = ConfDevice(self.DeviceId)
+        conf = ConfDevice( self.DeviceId )
         conf.fsf()
         
         if not self.Cipe and self.BootProto == None \
-           and (self.IP == None or self.IP == ""):
+           and ( self.IP == None or self.IP == "" ):
             self.BootProto = 'dhcp'
                 
         if self.BootProto:
-            self.BootProto = string.lower(self.BootProto)
+            self.BootProto = string.lower( self.BootProto )
 
         if self.BootProto == "static":
             self.BootProto = "none"
@@ -267,11 +268,8 @@ class Device(Device_base):
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+                conf[confkey] = str( self.__dict__[selfkey] )
             else: conf[confkey] = ""
-
-        if self.Alias != None:
-            conf['DEVICE'] = str(self.Device) + ':' + str(self.Alias)
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
@@ -282,30 +280,33 @@ class Device(Device_base):
 
         # cleanup
         if self.Alias != None:
+            conf['DEVICE'] = str( self.Device ) + ':' + str( self.Alias )
             del conf['ONBOOT']
+            # Alias interfaces should not have a HWADDR (bug #188321, #197401)            
+            del conf['HWADDR']
         else:
             del conf['ONPARENT']
 
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
         # obsolete
-        if self.IP and self.Netmask and conf.has_key('BROADCAST'):
+        if self.IP and self.Netmask and conf.has_key( 'BROADCAST' ):
             try:
-                broadcast = commands.getoutput('ipcalc --broadcast ' + \
-                                               str(self.IP) + \
-                                               ' ' + str(self.Netmask) + \
-                                               ' 2>/dev/null')
+                broadcast = commands.getoutput( 'ipcalc --broadcast ' + \
+                                               str( self.IP ) + \
+                                               ' ' + str( self.Netmask ) + \
+                                               ' 2>/dev/null' )
                 if broadcast:
                     conf['BROADCAST'] = broadcast[10:]
             except:
                 pass
 
-        if self.IP and self.Netmask and conf.has_key('NETWORK'):
+        if self.IP and self.Netmask and conf.has_key( 'NETWORK' ):
             try:
-                network = commands.getoutput('ipcalc --network ' + \
-                                             str(self.IP) + \
-                                             ' ' + str(self.Netmask) + \
-                                             ' 2>/dev/null')
+                network = commands.getoutput( 'ipcalc --network ' + \
+                                             str( self.IP ) + \
+                                             ' ' + str( self.Netmask ) + \
+                                             ' 2>/dev/null' )
                 if network:
                     conf['NETWORK'] = network[8:]
             except:
@@ -315,37 +316,37 @@ class Device(Device_base):
             del conf['BROADCAST']
 
         if self.Type == CTC or self.Type == IUCV:                
-            conf['MTU'] = str(self.Mtu)
-            if conf.has_key("GATEWAY") and conf['GATEWAY']:
+            conf['MTU'] = str( self.Mtu )
+            if conf.has_key( "GATEWAY" ) and conf['GATEWAY']:
                 conf['REMIP'] = conf['GATEWAY']
 
         if self.Dialup:
-            self.Dialup.save(conf)
+            self.Dialup.save( conf )
 
         if self.Cipe:
-            self.Cipe.save(conf)
+            self.Cipe.save( conf )
 
         if self.Wireless:
-            self.Wireless.save(conf)
+            self.Wireless.save( conf )
 
-        if self.StaticRoutes and len(self.StaticRoutes) > 0:
-            rconf = ConfRoute(self.DeviceId)
+        if self.StaticRoutes and len( self.StaticRoutes ) > 0:
+            rconf = ConfRoute( self.DeviceId )
             for key in rconf.keys():
                 del rconf[key]
             p = 0
             for route in self.StaticRoutes:
                 if route.Address:
-                    rconf['ADDRESS'+str(p)] = route.Address
+                    rconf['ADDRESS'+str( p )] = route.Address
                 if route.Netmask:
-                    rconf['NETMASK'+str(p)] = route.Netmask
+                    rconf['NETMASK'+str( p )] = route.Netmask
                 if route.Gateway:
-                    rconf['GATEWAY'+str(p)] = route.Gateway
+                    rconf['GATEWAY'+str( p )] = route.Gateway
                 p = p + 1
             rconf.write()
         else:
             # remove route file, if no routes defined
-            unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + self.DeviceId + '.route')
-            unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
+            unlink( netconfpkg.ROOT + SYSCONFDEVICEDIR + self.DeviceId + '.route' )
+            unlink( netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
 
         # remove empty gateway entries
         if not self.Gateway:
@@ -360,74 +361,74 @@ class Device(Device_base):
                     del conf[i]
 
         # RESOLV_MODS should be PEERDNS
-        if conf.has_key('RESOLV_MODS'):
+        if conf.has_key( 'RESOLV_MODS' ):
             del conf['RESOLV_MODS']
 
         conf.write()
 
         self.oldname = self.DeviceId
         
-    def activate(self, dialog = None):        
+    def activate( self, dialog = None ):        
         command = '/sbin/ifup'
         param = [command, self.DeviceId, "up"]
 
         try:
-            (ret, msg) =  generic_run_dialog(\
-                command,
-                param,
-                catchfd = (1,2),
-                title = _('Network device activating...'),
-                label = _('Activating network device %s, '
-                          'please wait...') % (self.DeviceId),
-                errlabel = _('Cannot activate '
-                             'network device %s!\n') % (self.DeviceId),
-                dialog = dialog)
+            ( ret, msg ) =  generic_run_dialog( \
+                command, 
+                param, 
+                catchfd = ( 1, 2 ), 
+                title = _( 'Network device activating...' ), 
+                label = _( 'Activating network device %s, '
+                          'please wait...' ) % ( self.DeviceId ), 
+                errlabel = _( 'Cannot activate '
+                             'network device %s!\n' ) % ( self.DeviceId ), 
+                dialog = dialog )
             
         except RuntimeError, msg:
             ret = -1                
 
         return ret, msg
 
-    def deactivate(self, dialog = None):
+    def deactivate( self, dialog = None ):
         command = '/sbin/ifdown'
         param = [command, self.DeviceId, "down"]
         
         try:
-            (ret, msg) = generic_run_dialog(\
-                command, param,
-                catchfd = (1,2),
-                title = _('Network device deactivating...'),
-                label = _('Deactivating network device %s, '
-                          'please wait...') % (self.DeviceId),
-                errlabel = _('Cannot deactivate '
-                             'network device %s!\n') % (self.DeviceId),
-                dialog = dialog)
+            ( ret, msg ) = generic_run_dialog( \
+                command, param, 
+                catchfd = ( 1, 2 ), 
+                title = _( 'Network device deactivating...' ), 
+                label = _( 'Deactivating network device %s, '
+                          'please wait...' ) % ( self.DeviceId ), 
+                errlabel = _( 'Cannot deactivate '
+                             'network device %s!\n' ) % ( self.DeviceId ), 
+                dialog = dialog )
             
         except RuntimeError, msg:
             ret = -1
 
         return ret, msg
 
-    def configure(self):        
+    def configure( self ):        
         command = '/usr/bin/system-config-network'
         args = ''
-        if not os.path.isfile(command) and getDebugLevel() > 0:
+        if not os.path.isfile( command ) and getDebugLevel() > 0:
             command = os.getcwd() + '/system-config-network-gui'
             args = '-d'
             
         try:
-            (ret, msg) =  generic_run(command,
-                                      [command, args],
-                                      catchfd = (1,2))
+            ( ret, msg ) =  generic_run( command, 
+                                      [command, args], 
+                                      catchfd = ( 1, 2 ) )
         except RuntimeError, msg:
             ret = -1
             
         return ret, msg
 
-    def monitor(self):
+    def monitor( self ):
         pass
 
-    def getHWDevice(self):
+    def getHWDevice( self ):
         return self.Device
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
