@@ -130,6 +130,7 @@ def Usage():
 
 def main(splash = None):
     from netconfpkg import NC_functions
+    from netconfpkg.NCException import NCException
     log.set_loglevel(NC_functions.getVerboseLevel())
     splash_window = None
 
@@ -162,10 +163,16 @@ def main(splash = None):
             gtk.main()
             if interface.canceled:
                 sys.exit(1)                
+                
+        try:
+            window = mainDialog()
+        except NCException, e:
+            NC_functions.generic_error_dialog(str(e))
+            return
+        except:
+            raise
+            return
 
-        window = mainDialog()
-
-        
         if splash_window:
             splash_window.destroy()
             del splash_window
