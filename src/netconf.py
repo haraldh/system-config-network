@@ -164,14 +164,7 @@ def main(splash = None):
             if interface.canceled:
                 sys.exit(1)                
                 
-        try:
-            window = mainDialog()
-        except NCException, e:
-            NC_functions.generic_error_dialog(str(e))
-            return
-        except:
-            raise
-            return
+        window = mainDialog()
 
         if splash_window:
             splash_window.destroy()
@@ -180,17 +173,20 @@ def main(splash = None):
         gtk.main()
 
     except SystemExit, code:
-        #print "Exception %s: %s" % (str(SystemExit), str(code))
         sys.exit(code)
+    except NCException, e:
+        NC_functions.generic_error_dialog(str(e))
+        return
     except:
         if splash_window:
             splash_window.destroy()
             del splash_window
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
+class BadUsage: pass
+
 if __name__ == '__main__':
     import getopt
-    class BadUsage: pass
     splash_window = None
     from netconfpkg import NC_functions
     NC_functions.setVerboseLevel(2)
