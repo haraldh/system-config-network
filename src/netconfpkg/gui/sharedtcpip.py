@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-## Copyright (C) 2001-2005 Red Hat, Inc.
-## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2006 Red Hat, Inc.
+## Copyright (C) 2001-2006 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -38,6 +38,8 @@ import sys, traceback
 ###
 ### DHCP
 ###
+
+# FIXME: Add MTU
 
 DHCP=0
 BOOTP=1
@@ -127,6 +129,10 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('ipStaticRadio').set_active(False)
         on_ipBootProto_toggled(xml.get_widget('ipStaticRadio'), xml)
 
+    if device.Mtu != None and xml.get_widget('mtuCB'):
+        xml.get_widget('mtuSpin').set_value(device.Mtu)
+        xml.get_widget('mtuCB').set_active(True)
+
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
@@ -140,6 +146,7 @@ def dhcp_dehydrate (xml, device):
             device.BootProto = 'none'
     else:
         device.BootProto = 'none'
+        
 
     device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
     device.IP = xml.get_widget('ipAddressEntry').get_text()
@@ -148,6 +155,13 @@ def dhcp_dehydrate (xml, device):
     hname = xml.get_widget('hostnameEntry').get_text()
     if hname != None and hname != '':
         device.Hostname = hname
+        
+    if xml.get_widget('mtuCB').get_active():
+        device.Mtu = int(xml.get_widget('mtuSpin').get_value())
+    else:
+        device.Mtu = None
+        
+    
 
 ###
 ### ROUTES
@@ -420,5 +434,5 @@ if __name__ == '__main__':
     gtk.main ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/05/11 15:49:53 $"
-__version__ = "$Revision: 1.36 $"
+__date__ = "$Date: 2006/07/17 13:19:10 $"
+__version__ = "$Revision: 1.37 $"
