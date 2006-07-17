@@ -26,26 +26,39 @@ import os
 import string
 import string
 import sharedtcpip
+import gobject
 
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from deviceconfig import deviceConfigDialog
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.GUI_functions import *
+
+modeList = [ 
+    [ _("Auto") , "Auto" ],
+    [ _("Ad-Hoc") , "Ad-Hoc"],
+    [ _("Managed") , "Managed"],
+    [ _("Master") , "Master"],
+#    [ _("Repeater") , "Repeater"],
+#    [ _("Secondary") , "Secondary"]
+]
 
 class wirelessConfigDialog(deviceConfigDialog):
     def __init__(self, device):
         glade_file = "wirelessconfig.glade"
+
+        self.initialized = False
+
         deviceConfigDialog.__init__(self, glade_file, device)
+        
+        if not self.initialized:
+            self.do_init()
 
-
+    def do_init(self):
         xml_signal_autoconnect(self.xml,
             {
             "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
             })
 
-        self.xml.get_widget("modeEntry").connect("changed",
-                                                 self.on_modeChanged)
-                                                 
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
         vbox = self.xml.get_widget ('generalVbox')
@@ -66,9 +79,33 @@ class wirelessConfigDialog(deviceConfigDialog):
         window.remove (frame)
         vbox.pack_start (frame)
         sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
-        
 
+        self.modestore = gtk.ListStore(gobject.TYPE_STRING, 
+                                    gobject.TYPE_STRING)
+        for i in modeList:
+            self.modestore.append(i)
+        
+        combo = self.xml.get_widget("modeCombo")            
+        combo.set_model(self.modestore)
+        cell = gtk.CellRendererText()
+        combo.pack_start(cell, True)
+        combo.add_attribute(cell, 'text', 0)
+            
+        self.xml.get_widget("rateCombo").set_popdown_strings((
+            _("Auto"),
+            "11M",
+            "5.5M",
+            "2M",
+            "1M"
+        ))
+                
+        combo.connect("changed", self.on_modeChanged)
+        self.initialized = True
+        
     def hydrate(self):
+        if not self.initialized:
+            self.do_init()
+
         deviceConfigDialog.hydrate(self)
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
@@ -77,8 +114,11 @@ class wirelessConfigDialog(deviceConfigDialog):
         
         wl = self.device.Wireless
         if wl:
-            if wl.Mode: self.xml.get_widget("modeEntry").set_text(wl.Mode)
-            
+            if wl.Mode and self.modestore:
+                values = [ r[1] for r in self.modestore ]
+                match_row = values.index(wl.Mode)
+                self.xml.get_widget("modeCombo").set_active(match_row)
+                                
             if wl.EssId == "":
                 self.xml.get_widget("essidAutoButton").set_active(True)
                 self.xml.get_widget("essidEntry").set_sensitive(False)
@@ -91,7 +131,10 @@ class wirelessConfigDialog(deviceConfigDialog):
 
             if wl.Channel and wl.Channel != "":
                 self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
-            if wl.Rate: self.xml.get_widget("rateEntry").set_text(wl.Rate)
+
+            if wl.Rate: 
+                self.xml.get_widget("rateEntry").set_text(_(wl.Rate))
+                
             if wl.Key: self.xml.get_widget("keyEntry").set_text(wl.Key)
 
         self.on_modeChanged(self.xml.get_widget("modeEntry"))
@@ -105,28 +148,32 @@ class wirelessConfigDialog(deviceConfigDialog):
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
 
-        #hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        #fields = string.split(hw)
-        #hw = fields[0]
-        #self.device.Device = hw
-
         wl = self.device.Wireless
         if wl:
             if self.xml.get_widget("essidAutoButton").get_active():
                 wl.EssId = ""
             else:
                 wl.EssId = self.xml.get_widget("essidEntry").get_text()
-            wl.Mode =  self.xml.get_widget("modeEntry").get_text()            
+                
+            row = self.xml.get_widget("modeCombo").get_active()
+            wl.Mode = self.modestore[row][1]
             
             wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
-            wl.Rate = self.xml.get_widget("rateEntry").get_text()
+
+            rate = self.xml.get_widget("rateEntry").get_text()
+            if rate == _("Auto"):
+                wl.Rate = "Auto"
+            else:
+                wl.Rate = rate
+                
             wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_essidAutoButton_toggled(self, check):
         self.xml.get_widget("essidEntry").set_sensitive(not check.get_active())
 
     def on_modeChanged(self, entry):
-        if string.lower(entry.get_text()) == "managed":
+        mode = self.modestore[self.xml.get_widget("modeCombo").get_active()][1]
+        if mode == "Managed":
             self.xml.get_widget("channelSpinButton").set_sensitive(False)
             self.xml.get_widget("rateCombo").set_sensitive(False)
             self.xml.get_widget("rateEntry").set_sensitive(False)
@@ -138,5 +185,5 @@ class wirelessConfigDialog(deviceConfigDialog):
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2006/07/17 13:14:21 $"
+__version__ = "$Revision: 1.29 $"

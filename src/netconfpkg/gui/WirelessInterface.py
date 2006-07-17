@@ -156,9 +156,11 @@ class WirelessInterface(InterfaceCreator):
             wl.EssId = ""
         else:
             wl.EssId = self.xml.get_widget("essidEntry").get_text()
+        # FIXME: translation bug!
         wl.Mode =  self.xml.get_widget("modeEntry").get_text()            
             
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
+        # FIXME: translation bug!
         wl.Rate = self.xml.get_widget("rateEntry").get_text()
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
@@ -198,6 +200,7 @@ class WirelessInterface(InterfaceCreator):
                                                  self.on_modeChanged)
 
     def on_modeChanged(self, entry):
+        # FIXME: translation bug!
         if string.lower(entry.get_text()) == "managed":
             self.xml.get_widget("channelSpinButton").set_sensitive(False)
             self.xml.get_widget("rateCombo").set_sensitive(False)

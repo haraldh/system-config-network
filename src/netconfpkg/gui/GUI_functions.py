@@ -113,6 +113,20 @@ def load_icon( pixmap_file, dialog ):
      
     if dialog: dialog.set_icon( pixbuf )
 
+
+def TreeStore_match_func(row, data):
+    column, key = data # data is a tuple containing column number, key
+    return row[column] == key
+
+def TreeStore_search(rows, func, data):
+    if not rows: return None
+    for row in rows:
+        if func(row, data):
+            return row
+        result = TreeStore_search(row.iterchildren(), func, data)
+        if result: return result
+    return None
+
 def gui_error_dialog ( message, parent_dialog, 
                       message_type=gtk.MESSAGE_ERROR, 
                       widget=None, page=0, broken_widget=None ):
