@@ -82,6 +82,11 @@ class Device( Device_base ):
                 'Type' : 'TYPE', 
                 'HardwareAddress' : 'HWADDR', 
                 }
+                
+    intkeydict = {
+                    'Mtu' : 'MTU', 
+                 }
+                
 
     boolkeydict = { 'OnBoot' : 'ONBOOT', 
                     'OnParent' : 'ONPARENT', 
@@ -137,6 +142,11 @@ class Device( Device_base ):
             confkey = self.keydict[selfkey]
             if conf.has_key( confkey ):
                 self.__dict__[selfkey] = conf[confkey]
+
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
+            if conf.has_key(confkey) and len(conf[confkey]):
+                self.__dict__[selfkey] = int(conf[confkey])
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
@@ -226,7 +236,7 @@ class Device( Device_base ):
         num = len( rconf.keys() )
         self.createStaticRoutes()
 
-        # FIXME
+        # FIXME: better parsing of static routes!
         if math.fmod( num, 3 ) != 0:
              NC_functions.generic_error_dialog( ( _( "Static routes file %s "
                                                   "is invalid" ) ) % name )
@@ -264,12 +274,22 @@ class Device( Device_base ):
 
         if self.BootProto == "static":
             self.BootProto = "none"
+            
+        # Do not set GATEWAY with dhcp
+        if self.BootProto == 'dhcp':
+            self.Gateway = None
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
                 conf[confkey] = str( self.__dict__[selfkey] )
             else: conf[confkey] = ""
+
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: del conf[confkey]
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
@@ -300,6 +320,8 @@ class Device( Device_base ):
                     conf['BROADCAST'] = broadcast[10:]
             except:
                 pass
+        else:
+            del conf['BROADCAST']
 
         if self.IP and self.Netmask and conf.has_key( 'NETWORK' ):
             try:
@@ -313,7 +335,6 @@ class Device( Device_base ):
                 pass                
         else:
             del conf['NETWORK']
-            del conf['BROADCAST']
 
         if self.Type == CTC or self.Type == IUCV:                
             conf['MTU'] = str( self.Mtu )
