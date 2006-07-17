@@ -1,10 +1,10 @@
 ## netconf - A network configuration tool
 # -*- coding: utf-8 -*-
-## Copyright (C) 2001-2005 Red Hat, Inc.
+## Copyright (C) 2001-2006 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 ## Copyright (C) 2001, 2002 Trond Eivind Glomsrød <teg@redhat.com>
-## Copyright (C) 2001 - 2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2006 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -38,9 +38,6 @@ DEVICE_COLUMN = 2
 NICKNAME_COLUMN = 3
 TYPE_COLUMN = 4
 
-True=True
-False=False
-
 PAGE_DEVICES = 0
 PAGE_HARDWARE = 1
 PAGE_IPSEC = 2
@@ -65,7 +62,6 @@ class mainDialog:
         self.copy_button = self.xml.get_widget("copyButton")
         self.activate_button = self.xml.get_widget("activateButton")
         self.deactivate_button = self.xml.get_widget("deactivateButton")
-        #self.monitor_button = self.xml.get_widget("deviceMonitorButton")
         self.up_button = self.xml.get_widget("upButton")
         self.down_button = self.xml.get_widget("downButton")
 
@@ -75,8 +71,6 @@ class mainDialog:
             self.on_activateButton_clicked,
             "on_deactivateButton_clicked" : \
             self.on_deactivateButton_clicked,
-#            "on_deviceMonitorButton_clicked" : \
-#            self.on_deviceMonitorButton_clicked,
             "on_deviceList_select_row" : 
             self.on_generic_clist_select_row,
             "on_deviceList_unselect_row" : 
@@ -119,7 +113,6 @@ class mainDialog:
         })
 
         self.appBar = self.xml.get_widget ("appbar")
-
         widget = self.xml.get_widget ("hardware_pixmap")
         widget.set_from_pixbuf(get_pixbuf("connection-ethernet.png"))
         widget = self.xml.get_widget ("hosts_pixmap")
@@ -130,7 +123,6 @@ class mainDialog:
         widget.set_from_pixbuf(get_pixbuf("network.png"))
         widget = self.xml.get_widget ("ipsec_pixmap")
         widget.set_from_pixbuf(get_pixbuf("secure.png"))
-
 
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.set_position (gtk.WIN_POS_CENTER)
@@ -150,23 +142,7 @@ class mainDialog:
         self.ipsel = None
         self.lastbuttonevent = None
         self.active_profile_name = DEFAULT_PROFILE_NAME
-        
-#         clist = self.xml.get_widget("hardwareList")
-#         # First: copy the clist-style
-#         self.style1 = clist.get_style().copy()
-#         self.style2 = clist.get_style().copy()
-#         self.style3 = clist.get_style().copy()
-#         color1 = "lightgreen"
-#         color2 = "light salmon"
-#         color3 = "white"
-#         colormap = clist.get_colormap()
-#         self.style1.base[gtk.STATE_NORMAL] = colormap.alloc_color(color1)
-#         self.style2.base[gtk.STATE_NORMAL] = colormap.alloc_color(color2)
-#         self.style3.base[gtk.STATE_NORMAL] = colormap.alloc_color(color3)
-
-#        if not os.access('/usr/bin/rp3', os.X_OK):
-#            self.xml.get_widget('deviceMonitorButton').hide()
-        
+                
         load_icon("network.xpm", self.dialog)
         
         self.xml.get_widget ("deviceList").column_titles_passive ()
@@ -179,9 +155,9 @@ class mainDialog:
         notebook.set_current_page(page)
        
         if rpms_notinstalled(["ipsec-tools"]) == []:
-            do_ipsec = 1
+            do_ipsec = True
         else:
-            do_ipsec = None
+            do_ipsec = False
                         
         if not do_ipsec:
             # remove IPsec
@@ -278,13 +254,6 @@ class mainDialog:
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
 
-##         for col in [ PROFILE_COLUMN, STATUS_COLUMN, DEVICE_COLUMN,
-##                      NICKNAME_COLUMN, TYPE_COLUMN ]:
-##             colsize = clist.optimal_column_width(col) + 5
-##             titlesize = clist.get_column_widget(col)
-##             print titlesize.get_children()[0].get_width()
-##             #clist.set_column_width(col, )        
-
     def nop(self, *args):
         pass
 
@@ -371,15 +340,15 @@ class mainDialog:
             self.saveProfiles()
             self.appBar.pop()
             self.checkApply()     
-	except (IOError, OSError, EnvironmentError), errstr:
+        except (IOError, OSError, EnvironmentError), errstr:
             generic_error_dialog (_("Error saving configuration!\n%s") \
-                                  % (str(errstr)))
+                                      % (str(errstr)))
         else:
             generic_info_dialog (_("Changes are saved. "
                                    "You may want to restart "
                                    "the network and network services "
                                    "or restart the computer."),
-                                 self.dialog)
+                                   self.dialog)
         self.appBar.pop()
         return 0
 
@@ -420,12 +389,6 @@ class mainDialog:
     def checkApply(self, ch = -1):
         if ch == -1:
             ch = self.changed()
-#         apply_btn = self.xml.get_widget("save")
-#         if ch:
-#             apply_btn.set_sensitive (True)
-#         else:
-#             apply_btn.set_sensitive (False)
-            
             
     def hydrateDevices(self):
         self.appBar.push(_("Updating devices..."))
@@ -512,14 +475,7 @@ class mainDialog:
             if hw == hwsel:
                 log.log(5, "Selecting row %d" % row)
                 clist.select_row(row, 0)
-
-#             if hw.Status == HW_OK:
-#                 clist.set_row_style(row, self.style1)
-#             elif hw.Status == HW_CONF:
-#                 clist.set_row_style(row, self.style3)
-#             else:
-#                 clist.set_row_style(row, self.style2)
-                
+                               
             row += 1
         self.appBar.pop()
         self.checkApply()
@@ -527,8 +483,8 @@ class mainDialog:
     def hydrateIPsec(self):
         ipseclist = getIPsecList()
         clist = self.xml.get_widget("ipsecList")
-	if not clist:
-		return
+        if not clist:
+		    return
         clist.clear()
         clist.set_row_height(17)
         row = 0
@@ -573,18 +529,7 @@ class mainDialog:
         self.appBar.pop()
         self.checkApply()
 
-
-#         if device.IPsecList != None:
-#             for ipsec in device.IPsecList:            
-#                 clist.append([ipsec.RemoteIPAddress or "-",
-#                               (ipsec.ConnectionType == "Net2Net" and ipsec.RemoteNetwork) or "-",
-#                               (ipsec.ConnectionType == "Net2Net" and ipsec.LocalNetwork) or "-",
-#                               ])
-#         else:
-#             device.createIPsecList()
-
     def getActiveProfile(self):
-        #print "getActiveProfile == %s " % self.active_profile.ProfileName
         return self.active_profile
 
     def hydrateProfiles(self):
@@ -607,7 +552,6 @@ class mainDialog:
         else:
             prof = profilelist[0]
 
-        #print "hydrateProfiles(%s)" % self.active_profile_name
         self.active_profile = prof
         self.ignore_widget_changes = true
         
@@ -682,14 +626,11 @@ class mainDialog:
                                self.on_profileMenuItem_activated,
                                prof.ProfileName)
             omenu.append (menu_item)
-	#omenu.set_history (history)
         self.no_profileentry_update = false
         self.appBar.pop()
         self.checkApply()
 
     def updateDevicelist(self):
-	import commands
-	#print commands.getoutput("ps -flp %d" % os.getpid())
         activedevicelistold = self.activedevicelist
         self.activedevicelist = NetworkDevice().get()
 
@@ -1022,10 +963,7 @@ class mainDialog:
 
         self.tag = gobject.timeout_add(4000, self.updateDevicelist)
 
-#    def on_deviceMonitorButton_clicked(self, button):
-#        generic_error_dialog(_("To be rewritten!"), self.dialog)
-#        return
-    
+
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -1037,8 +975,6 @@ class mainDialog:
         if not menu_item or not menu_item.active:
             return
 
-        #print "on_profileMenuItem_activated(%s)" % profile
-        
         profilelist = getProfileList()
         devicelist = getDeviceList()
         hardwarelist = getHardwareList()
@@ -1053,22 +989,18 @@ class mainDialog:
             self.xml.get_widget ('profileDeleteMenu').set_sensitive (True)
             
         if not self.no_profileentry_update:
-            #profilelist.switchToProfile(profile, dochange = false)
             profilelist.switchToProfile(profile, dochange = true)
             self.initialized = true
             self.hydrate()
 
         self.checkApply()
 
-    def on_generic_clist_select_row(self, clist, row, column, event):
-        #devicelist = getDeviceList()
-        
+    def on_generic_clist_select_row(self, clist, row, column, event):       
         self.edit_button.set_sensitive(True)
         self.delete_button.set_sensitive(True)
 
         if self.active_page == self.page_num[PAGE_DEVICES]:
             self.copy_button.set_sensitive(True)
-            #self.rename_button.set_sensitive(True)
 
         if clist.get_name() == 'hardwareList':
             if len(clist.selection) == 0:
@@ -1146,7 +1078,7 @@ class mainDialog:
             
             info = clist.get_selection_info(int(self.lastbuttonevent.x),
                                             int(self.lastbuttonevent.y))
-            #print self.lastbuttonevent.x, self.lastbuttonevent.y, info
+
             if info != None and info[1] == 0:
                 row = info[0]
                 profilelist = getProfileList()
@@ -1227,19 +1159,16 @@ class mainDialog:
                 self.activate_button.set_sensitive(True)
                 self.deactivate_button.set_sensitive(True)
                 self.delete_button.set_sensitive(False)
-                #self.monitor_button.set_sensitive(True)
             else:
                 self.activate_button.set_sensitive(True)
                 #self.deactivate_button.set_sensitive(False)
                 self.deactivate_button.set_sensitive(True)
                 self.delete_button.set_sensitive(True)
-                #self.monitor_button.set_sensitive(False)
 
             if self.devsel.Slave:
                 self.activate_button.set_sensitive(False)
                 self.deactivate_button.set_sensitive(False)
                 self.delete_button.set_sensitive(True)
-                #self.monitor_button.set_sensitive(False)
 
 
 
@@ -1254,23 +1183,11 @@ class mainDialog:
     def on_generic_clist_button_release_event(self, clist, event, func):
         id = clist.get_data ("signal_id")
         clist.disconnect (id)
-        #clist.remove_data ("signal_id")
         apply (func)
 
     def on_generic_clist_button_press_event(self, clist, event, *args):
-        #print "on_generic_clist_button_press_event"
         self.lastbuttonevent = event
         profilelist = getProfileList()
-
-        # don't allow user to edit device if it's active
-        #if clist.get_name() == 'deviceList':
-        #    try:
-        #        status = clist.get_pixtext(clist.selection[0], 0)[0]
-        #    except ValueError:
-        #        status = clist.get_text(clist.selection[0], 0)
-
-        #    if status == ACTIVE:
-        #        return
                 
         if event.type == gtk.gdk._2BUTTON_PRESS:
             info = clist.get_selection_info(int(event.x), int(event.y))
@@ -1391,6 +1308,7 @@ class mainDialog:
         #if len(clist.selection) == 0:
         #    return
         #
+        
         prof = self.getActiveProfile()
 
         clist = self.xml.get_widget('hostsList')
