@@ -1,6 +1,6 @@
-## Copyright (C) 2001-2005 Red Hat, Inc.
+## Copyright (C) 2001-2006 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
-## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001-2006 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@ from rhpl import ConfPAP
 from rhpl import ethtool
 from rhpl import Conf
 from rhpl import ConfSMB
-
+from NCException import NCException
 import UserList
 
 import string
@@ -478,6 +478,7 @@ RESPONSE_NO = -9
 RESPONSE_APPLY = -10
 RESPONSE_HELP = -11
 
+# FIXME: replace "print message" with logging
 generic_error_dialog_func = None
 def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
 			  widget=None, page=0, broken_widget=None):
@@ -972,6 +973,7 @@ def updateNetworkScripts(force = false):
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 
+# FIXME: use pythons logging handlers
 import sys
 import syslog
 
