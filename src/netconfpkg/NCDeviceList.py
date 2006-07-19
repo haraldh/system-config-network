@@ -161,6 +161,9 @@ class DeviceList(DeviceList_base):
         dev._parseLine(vals[2:], value)
     
     def save(self):
+        # FIXME: [163040] "Exception Occurred" when saving
+        # fail gracefully, with informing, which file, and why
+        
         from NCDevice import ConfDevice
         from types import DictType
         self.commit(changed=false)
@@ -309,5 +312,5 @@ def getNextDev(base):
     return base + str(num)
                 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.63 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.64 $"

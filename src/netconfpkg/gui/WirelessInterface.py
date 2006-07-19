@@ -198,6 +198,7 @@ class WirelessInterface(InterfaceCreator):
             wl.Rate = "Auto"
         else:
             wl.Rate = rate
+        # FIXME: [168036] check the key!
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_wireless_config_page_prepare(self, druid_page, druid):

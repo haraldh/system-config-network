@@ -292,6 +292,7 @@ DVpapconf = None
 def getPAPConf():
     global DVpapconf
     if DVpapconf == None or DVpapconf.filename != netconfpkg.ROOT + PAPFILE:
+        # FIXME: [197781] catch exceptions
         DVpapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + PAPFILE)
     return DVpapconf
 
@@ -299,6 +300,7 @@ DVchapconf = None
 def getCHAPConf():
     global DVchapconf
     if DVchapconf == None or DVchapconf.filename != netconfpkg.ROOT + CHAPFILE:
+        # FIXME: [197781] catch exceptions
         DVchapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + CHAPFILE)
     return DVchapconf
 
@@ -451,6 +453,8 @@ def getNewDialupDevice(devicelist, dev):
 
 ModemList = None
 def getModemList():
+    # FIXME: [165331] Can't detect external modem on /dev/ttyS0
+    # move to plugins!
     global ModemList
     if ModemList:
 	    return ModemList[:]
@@ -920,10 +924,12 @@ def updateNetworkScripts(force = false):
 
     curr_prof = 'default'
     if not firsttime:
+        # FIXME: [197781] catch exceptions
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         if nwconf.has_key('CURRENT_PROFILE'):
             curr_prof = nwconf['CURRENT_PROFILE']
 
+    # FIXME: [197781] catch exceptions
     devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
 
     for dev in devlist:
@@ -974,6 +980,7 @@ def updateNetworkScripts(force = false):
 #
 
 # FIXME: use pythons logging handlers
+# FIXME: [183066] DeprecationWarning: rhpl.log is deprecated 
 import sys
 import syslog
 

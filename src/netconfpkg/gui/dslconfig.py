@@ -33,7 +33,7 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
 from deviceconfig import deviceConfigDialog
 
-
+# FIXME: [131556] system-config-network lacks support for pppoatm
 class dslConfigDialog(deviceConfigDialog):
     def __init__(self, device):
         glade_file = "dslconfig.glade"

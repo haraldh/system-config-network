@@ -43,6 +43,8 @@ DHCP=0
 BOOTP=1
 DIALUP=2
 
+# FIXME: [183338] use SEARCH not resolv.conf
+
 def on_ipBootProto_toggled(widget, xml):
     if widget.name == "ipAutomaticRadio":
         active = widget.get_active()
@@ -147,10 +149,11 @@ def dhcp_dehydrate (xml, device):
         
 
     device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
-    device.IP = xml.get_widget('ipAddressEntry').get_text()
-    device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
-    device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
-    hname = xml.get_widget('hostnameEntry').get_text()
+    device.IP = string.strip(xml.get_widget('ipAddressEntry').get_text())
+    device.Netmask = string.strip(xml.get_widget('ipNetmaskEntry').get_text())
+    device.Gateway = string.strip(xml.get_widget('ipGatewayEntry').get_text())
+    # FIXED: [169819] Trailing space in host name causes crash
+    hname = string.strip(xml.get_widget('hostnameEntry').get_text())
     if hname != None and hname != '':
         device.Hostname = hname
         
@@ -432,5 +435,5 @@ if __name__ == '__main__':
     gtk.main ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 09:57:18 $"
-__version__ = "$Revision: 1.38 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.39 $"

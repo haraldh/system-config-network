@@ -71,7 +71,9 @@ class Wireless(Wireless_base):
         else:
             keyconf["KEY"] = self.Key
         keyconf.write()
-            
+        # FIXME: [167995] Wireless card mode cannot be set to Auto
+        # FIXME: [162830] activate notifier box does not presist long enough to read it
+        # check, if the interface support RATE, FREQ, etc.
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
@@ -90,5 +92,5 @@ class Wireless(Wireless_base):
         # conf.oldmode = 0600
         # conf.chmod(0600)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.19 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.20 $"

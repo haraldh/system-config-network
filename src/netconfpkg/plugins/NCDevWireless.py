@@ -22,6 +22,10 @@ from netconfpkg.NC_functions import *
 _devWirelessDialog = None
 _devWirelessWizard = None
 
+# FIXME: add detection method for Wireless HW
+# FIXME: [190317] Dell Wireless 1390 802.11g Mini Card doesn't work
+# FIXME: [183272] system-config-network unable to see cisco pcmcia wireless card using airo driver
+
 class DevWireless(Device):    
    def __init__(self, list = None, parent = None):
       Device.__init__(self, list, parent)
@@ -65,5 +69,5 @@ def setDevWirelessWizard(wizard):
 df = getDeviceFactory()
 df.register(DevWireless, WIRELESS)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/14 12:06:33 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.9 $"

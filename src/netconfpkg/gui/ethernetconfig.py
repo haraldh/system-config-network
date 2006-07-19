@@ -34,6 +34,8 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from deviceconfig import deviceConfigDialog
 from rhpl import ethtool
 
+# FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
+
 class ethernetConfigDialog(deviceConfigDialog):
     def __init__(self, device):
         glade_file = "ethernetconfig.glade"

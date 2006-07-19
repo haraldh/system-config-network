@@ -109,6 +109,7 @@ class ModemInterface:
 
     def on_Modem_prepare(self, druid_page, druid):
         if not ModemInterface.modemList:
+            # FIXME: [165331] Can't detect external modem on /dev/ttyS0
             dialog = gtk.Dialog(_('Modem probing...'),
                                 None,
                                 gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT)

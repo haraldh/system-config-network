@@ -53,6 +53,8 @@ class NetworkDevice:
             if getDeviceType(i) == ISDN:
                 if os.access(isdnctrl, os.X_OK):
                     for nick in nickname:
+                        # FIXME: [161737] isdn status is wrong
+                        # "isdnctrl %s status" ??
                         if os.system(isdnctrl +
                                      ' %s >& /dev/null' %(nickname)) == 0:
                             break

@@ -30,6 +30,7 @@ from InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
 
+# FIXME: [131556] system-config-network lacks support for pppoatm
 class ADSLInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)

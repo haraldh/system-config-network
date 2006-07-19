@@ -314,6 +314,9 @@ ProfileList.default.ProfileName=default
         ipseclist.setChanged(false)
 
 
+# FIXME: check [165543] system-config-network-cmd - incorrect profile import - hosts file
+# FIXME: check [165536] TB /usr/lib/python2.3/string.py:135:join:TypeError: sequence expected, NoneType found
+
 def suite():
     suite = unittest.TestSuite()
     suite = unittest.makeSuite(TestRCN,'test')
@@ -357,5 +360,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/06 14:20:19 $"
-__version__ = "$Revision: 1.4 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.5 $"

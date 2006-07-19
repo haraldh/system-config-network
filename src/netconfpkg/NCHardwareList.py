@@ -66,6 +66,7 @@ class MyConfModules(ConfModules):
         # have the value at parsing time
         if filename == None:
             filename = netconfpkg.ROOT + MODULESCONF
+        # FIXME: [187640] Support aliases in /etc/modprobe.d/
         ConfModules.__init__(self, filename)
         
     def __delitem__(self, varname):
@@ -196,7 +197,8 @@ class HardwareList(HardwareList_base):
                  }
 
     def __init__(self, list = None, parent = None):
-        HardwareList_base.__init__(self, list, parent)        
+        HardwareList_base.__init__(self, list, parent)
+        # FIXME: [198070] use modinfo to determine options
         self.keydict = { 'IoPort' : 'io',
                          'IRQ' : 'irq',
                          'Mem' : 'mem',
@@ -630,10 +632,11 @@ class HardwareList(HardwareList_base):
     def load(self):
         hwconf = ConfHWConf()          
 
-	# first clear the list
+	    # first clear the list
         self.__delslice__(0, len(self))
         
         self.readChandev()
+        # FIXME: move HW detection to NCDev*
         self.updateFromSystem()        
         self.updateFromModules()
         
@@ -667,7 +670,7 @@ class HardwareList(HardwareList_base):
                 hw.Card.DeviceId = isdncard.DeviceId
             
         #
-        # XXX FIXME... this is not OO
+        # FIXME: This is not OO!
         #
         try:
             wvdial = ConfSMB(netconfpkg.ROOT + WVDIALCONF)
@@ -742,11 +745,12 @@ class HardwareList(HardwareList_base):
                     # and it gets deleted
                     del wvdial[dev]
                     
+        # FIXME: [198070] use modinfo to determine options
         # Clean up modules
         for mod in modules.keys():
             type = getDeviceType(mod)
             #
-            # XXX FIXME... this is not OO
+            # FIXME: This is not OO!!
             #
             if type != ETHERNET and type != TOKENRING:
                 continue
@@ -825,5 +829,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/10/19 10:44:49 $"
-__version__ = "$Revision: 1.76 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.77 $"

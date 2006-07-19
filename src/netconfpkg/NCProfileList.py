@@ -125,6 +125,7 @@ class ProfileList(ProfileList_base):
                     prof.ActiveIPsecs.append(ipsec)
                     break
 
+        # FIXME: [198898] new backend for /etc/hosts
         if profdir:
             hoconf = Conf.ConfFHosts( filename = profdir + '/hosts')
         else:
@@ -141,7 +142,8 @@ class ProfileList(ProfileList_base):
             for al in hoconf[key][1]:
                 host.AliasList.append(al);
             prof.HostsList.append(host)
-            
+        
+        # FIXME: [183338] use SEARCH not resolv.conf
         dnsconf = Conf.ConfEResolv()
         if profdir:
             dnsconf.filename = profdir + '/resolv.conf'
@@ -252,16 +254,19 @@ class ProfileList(ProfileList_base):
             break
         
     def save(self):
+        # FIXME: [163040] "Exception Occurred" when saving
+        # fail gracefully, with informing, which file, and why
         import socket
         # Just to be safe...
         os.umask(0022)
 
-	# commit the changes
+	    # commit the changes
         self.commit(changed=false)
 
         devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        # FIXME: [183338] use SEARCH not resolv.conf
         dnsconf = Conf.ConfEResolv()
 
         act_prof = self.getActiveProfile()		
@@ -269,6 +274,7 @@ class ProfileList(ProfileList_base):
         if socket.gethostname() != act_prof.DNS.Hostname and \
                getDebugLevel() < 10:
             if os.getuid() == 0:
+                # FIXME: [169733] Renaming machine prevents applications from opening                
                 # if the hostname changed, set it system wide (#55746)
                 os.system("hostname %s" % act_prof.DNS.Hostname)
                 log.log(2, "change hostname to %s" % act_prof.DNS.Hostname)
@@ -342,7 +348,7 @@ class ProfileList(ProfileList_base):
 
 
             nwconf['HOSTNAME'] = prof.DNS.Hostname
-            
+            # FIXME: [183338] use SEARCH not resolv.conf
             dnsconf.filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
                                prof.ProfileName + '/resolv.conf'
 
@@ -370,7 +376,7 @@ class ProfileList(ProfileList_base):
                 nameservers.append(prof.DNS.TertiaryDNS)
 
             dnsconf['nameservers'] = nameservers
-
+            # FIXME: [198898] new backend for /etc/hosts
             hoconf = Conf.ConfFHosts(filename = netconfpkg.ROOT + \
                                      SYSCONFPROFILEDIR + '/' + \
                                      prof.ProfileName + \
@@ -381,7 +387,7 @@ class ProfileList(ProfileList_base):
             for host in prof.HostsList:
                 hoconf[host.Hostname] = [host.IP, host.AliasList]
                 saved.append(host.Hostname)
-                
+            # FIXME: check [166855] system-config-network, 'save' erases local loopback entry    
             for i in hoconf.keys():
                 if not i in saved:
                     # delete all other entries the user has deleted in the UI

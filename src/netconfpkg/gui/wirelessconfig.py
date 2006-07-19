@@ -165,7 +165,7 @@ class wirelessConfigDialog(deviceConfigDialog):
                 wl.Rate = "Auto"
             else:
                 wl.Rate = rate
-                
+            # FIXME: [168036] check the key!
             wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_essidAutoButton_toggled(self, check):
@@ -185,5 +185,5 @@ class wirelessConfigDialog(deviceConfigDialog):
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/17 13:14:21 $"
-__version__ = "$Revision: 1.29 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.30 $"

@@ -105,6 +105,9 @@ class IPsec(IPsec_base):
         pass
     
     def save(self):
+        # FIXME: [163040] "Exception Occurred" when saving
+        # fail gracefully, with informing, which file, and why
+        
         # Just to be safe...
         os.umask(0022)
         self.commit()

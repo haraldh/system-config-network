@@ -107,7 +107,8 @@ country_code = {
     _("United Kingdom") : 44,
     _("United States of America") : 1,
     _("Vietnam") : 84,
-    _("Yugoslavia") : 381
+    _("Serbia") : 381, # FIXED: [175078] String (country name) change request
+    _("Montenegro") : 381
     }
 
 class Dialup(Dialup_base):
@@ -156,7 +157,7 @@ class Dialup(Dialup_base):
             parentConf['DEMAND'] = 'no'        
 
 
-
+# FIXME: [131556] system-config-network lacks support for pppoatm
 class DslDialup(Dialup):
     boolkeydict = { 'SyncPPP' : 'SYNCHRONOUS',
                     'Persist' : 'PERSIST',
@@ -472,7 +473,8 @@ class ModemDialup(Dialup):
 
         if parent:
             name = parent.DeviceId
-            
+        # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf when a dialup connection is saved    
+        # FIXME: [168087] Fails to retain ppp connection passwords containing spaces between saves
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
@@ -692,5 +694,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/04/20 13:14:21 $"
-__version__ = "$Revision: 1.70 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.71 $"

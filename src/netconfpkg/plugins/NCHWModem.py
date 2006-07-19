@@ -22,6 +22,8 @@ from netconfpkg.NC_functions import *
 _hwModemDialog = None
 _hwModemWizard = None
 
+# FIXME: [177472] Speedtouch USB 330 modem not recognised
+
 class HwModem(Hardware):    
    def __init__(self, list = None, parent = None):
       Hardware.__init__(self, list, parent)
@@ -69,5 +71,5 @@ def setHwModemWizard(wizard):
 df = getHardwareFactory()
 df.register(HwModem, MODEM)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2006/07/19 15:18:13 $"
+__version__ = "$Revision: 1.8 $"

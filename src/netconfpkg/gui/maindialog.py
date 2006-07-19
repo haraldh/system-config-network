@@ -57,6 +57,7 @@ class mainDialog:
         
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
+        self.help_displayed = False
         self.no_profileentry_update = None
 
         self.edit_button = self.xml.get_widget("editButton")
@@ -118,6 +119,8 @@ class mainDialog:
         if not hasattr(self.appBar, "push") or not hasattr(self.appBar, "push"):
             self.appBar.push = nop
             self.appBar.pop = nop
+            
+        # FIXME: [188232] 'NoneType' object has no attribute 'set_from_pixbuf'
         widget = self.xml.get_widget ("hardware_pixmap")
         widget.set_from_pixbuf(get_pixbuf("connection-ethernet.png"))
         widget = self.xml.get_widget ("hosts_pixmap")
@@ -761,9 +764,16 @@ class mainDialog:
         return
     
     def on_helpButton_clicked(self, button):
-        import gnome
-        gnome.url_show("file:" + NETCONFDIR + \
-                       "/help/index.html")        
+        #import gnome
+        #gnome.url_show("file:" + NETCONFDIR + \
+        #               "/help/index.html") 
+        # Fixes Bug 190242 – Firefox instance running as root when 
+        # used to read docs for system-config-*
+        if not self.help_displayed:
+            self.help_displayed = True
+            gui_run("/usr/bin/gnome-help", ["gnome-help", "file://" + NETCONFDIR + \
+                "/help/index.html"] )
+            self.help_displayed = False
 
     def on_deviceAddButton_clicked (self, clicked):
         interface = NewInterfaceDialog(self.dialog)
@@ -905,7 +915,7 @@ class mainDialog:
         dev = clist.get_row_data(clist.selection[0])
         device = dev.getDeviceAlias()
 
-        gtk.timeout_remove(self.tag)
+        gobject.source_remove(self.tag)
 
         profilelist = getProfileList()
         profilelist.commit()
@@ -943,7 +953,7 @@ class mainDialog:
         if not device:
             return
         
-        gtk.timeout_remove(self.tag)
+        gobject.source_remove(self.tag)
 
         profilelist = getProfileList()
         profilelist.commit()

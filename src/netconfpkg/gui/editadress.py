@@ -85,6 +85,8 @@ class editAdressDialog:
             self.xml.get_widget('gatewayEntry').set_text(self.route.Gateway)
 
     def dehydrate(self):
+        # FIXME: [183337] system-config-network doesn't check route fields
+        
         self.route.Address = string.split(self.xml.get_widget('addressEntry').get_text())
         self.route.Netmask = string.split(self.xml.get_widget('netmaskEntry').get_text())
         self.route.Gateway = string.split(self.xml.get_widget('gatewayEntry').get_text())

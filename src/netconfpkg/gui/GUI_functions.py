@@ -360,7 +360,7 @@ def gui_run( command, argv, searchPath = 0,
     import os
     import select
     import string
-    
+
     if not os.access ( root + command, os.X_OK ):
 	raise RuntimeError, command + " can not be run"
 
@@ -433,6 +433,7 @@ def gui_run( command, argv, searchPath = 0,
 __cancelPressed = None
 __dialogClosed = None
 
+# FIXME: [192273] Long lag in cancel button response, UI freezes
 def gui_run_dialog( command, argv, searchPath = 0, 
               root = '/', stdin = 0, 
               catchfd = 1, closefd = -1, title = None, 

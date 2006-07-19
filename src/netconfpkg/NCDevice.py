@@ -71,6 +71,7 @@ class ConfRoute( Conf.ConfShellVar ):
                                     'route-' + name )
         self.chmod( 0644 )
 
+# FIXME: [157630] system-config-networks needs options for setting default route and metric
 class Device( Device_base ):
     keydict = { 'Device' : 'DEVICE', 
                 'IP' : 'IPADDR', 
@@ -251,6 +252,9 @@ class Device( Device_base ):
         self.commit( changed=false )
                 
     def save( self ):
+        # FIXME: [163040] "Exception Occurred" when saving
+        # fail gracefully, with informing, which file, and why
+        
         # Just to be safe...
         os.umask( 0022 )
         self.commit()
@@ -277,7 +281,11 @@ class Device( Device_base ):
             
         # Do not set GATEWAY with dhcp
         if self.BootProto == 'dhcp':
+            # [169526] lost Gateway when I change static IP by DHCP
+            # #167593, #162902, #169113, #149780
             self.Gateway = None
+            self.IP = None
+            self.Netmask = None
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
@@ -300,6 +308,8 @@ class Device( Device_base ):
 
         # cleanup
         if self.Alias != None:
+            # FIXME: [167991] Add consistency check for aliasing
+            # check, if a parent device exists!!!
             conf['DEVICE'] = str( self.Device ) + ':' + str( self.Alias )
             del conf['ONBOOT']
             # Alias interfaces should not have a HWADDR (bug #188321, #197401)            
@@ -350,6 +360,7 @@ class Device( Device_base ):
         if self.Wireless:
             self.Wireless.save( conf )
 
+        # FIXME: RFE [174974] limitation of setting routing
         if self.StaticRoutes and len( self.StaticRoutes ) > 0:
             rconf = ConfRoute( self.DeviceId )
             for key in rconf.keys():
