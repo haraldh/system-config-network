@@ -18,6 +18,7 @@ PYTHON_FILES = \
 	NCDeviceList.py \
 	NCDevice.py \
 	NCDialup.py \
+	NCException.py \
 	NC_functions.py \
 	NCHardware.py \
 	NCHardwareList.py \
