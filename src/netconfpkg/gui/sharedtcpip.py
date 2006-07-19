@@ -39,8 +39,6 @@ import sys, traceback
 ### DHCP
 ###
 
-# FIXME: Add MTU
-
 DHCP=0
 BOOTP=1
 DIALUP=2
@@ -434,5 +432,5 @@ if __name__ == '__main__':
     gtk.main ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/17 13:19:10 $"
-__version__ = "$Revision: 1.37 $"
+__date__ = "$Date: 2006/07/19 09:57:18 $"
+__version__ = "$Revision: 1.38 $"

@@ -62,7 +62,7 @@ class DevIsdn(Device):
       # XXX FIXME
       return "ISDN Card 0"
 
-   def activate(self, dialog = None):        
+   def activate( self, dialog = None ):        
       command = '/bin/sh'
       param = [ command,
                 "-c",
@@ -121,5 +121,5 @@ def setDevIsdnWizard(wizard):
 df = getDeviceFactory()
 df.register(DevIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/06 14:15:06 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2006/07/19 09:57:35 $"
+__version__ = "$Revision: 1.12 $"
