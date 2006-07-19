@@ -84,12 +84,12 @@ class editHostsDialog:
             self.xml.get_widget('aliasesEntry').set_text(string.join(self.host.AliasList, ' '))
 
     def dehydrate(self):
-        self.host.IP = self.xml.get_widget('addressEntry').get_text()
-        self.host.Hostname = self.xml.get_widget('hostnameEntry').get_text()
+        self.host.IP = string.strip(self.xml.get_widget('addressEntry').get_text())
+        self.host.Hostname = string.strip(self.xml.get_widget('hostnameEntry').get_text())
         self.host.AliasList = None
         self.host.createAliasList()
         for al in string.split(self.xml.get_widget('aliasesEntry').get_text(), ' '):
-            self.host.AliasList.append(al)
+            self.host.AliasList.append(string.split(al))
 
 # make ctrl-C work
 if __name__ == "__main__":
