@@ -89,7 +89,7 @@ class editHostsDialog:
         self.host.AliasList = None
         self.host.createAliasList()
         for al in string.split(self.xml.get_widget('aliasesEntry').get_text(), ' '):
-            self.host.AliasList.append(string.split(al))
+            self.host.AliasList.append(string.strip(al))
 
 # make ctrl-C work
 if __name__ == "__main__":

@@ -85,8 +85,8 @@ class editAdressDialog:
             self.xml.get_widget('gatewayEntry').set_text(self.route.Gateway)
 
     def dehydrate(self):
-        self.route.Address = self.xml.get_widget('addressEntry').get_text()
-        self.route.Netmask = self.xml.get_widget('netmaskEntry').get_text()
-        self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text()
+        self.route.Address = string.split(self.xml.get_widget('addressEntry').get_text())
+        self.route.Netmask = string.split(self.xml.get_widget('netmaskEntry').get_text())
+        self.route.Gateway = string.split(self.xml.get_widget('gatewayEntry').get_text())
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
