@@ -18,6 +18,7 @@
   <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
+  <property name="urgency_hint">False</property>
 
   <child>
     <widget class="GnomeDruid" id="druid">
@@ -31,7 +32,7 @@
 	  <property name="title" translatable="yes">Select Wireless Device</property>
 	  <property name="title_foreground">#ffffffffffff</property>
 	  <property name="logo_background">#191919197070</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_hw_config_page_back"/>
 	  <signal name="next" handler="on_hw_config_page_next"/>
 	  <signal name="prepare" handler="on_hw_config_page_prepare"/>
@@ -124,7 +125,7 @@
 	  <property name="title" translatable="yes">Configure Wireless Connection</property>
 	  <property name="title_foreground">#ffffffffffff</property>
 	  <property name="logo_background">#191919197070</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_wireless_config_page_back"/>
 	  <signal name="next" handler="on_wireless_config_page_next"/>
 	  <signal name="prepare" handler="on_wireless_config_page_prepare"/>
@@ -253,162 +254,6 @@
 			<widget class="GtkList" id="convertwidget16">
 			  <property name="visible">True</property>
 			  <property name="selection_mode">GTK_SELECTION_BROWSE</property>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget17">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget18">
-				  <property name="visible">True</property>
-				  <property name="label">Auto</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget19">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget20">
-				  <property name="visible">True</property>
-				  <property name="label">11M</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget21">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget22">
-				  <property name="visible">True</property>
-				  <property name="label">5.5M</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget23">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget24">
-				  <property name="visible">True</property>
-				  <property name="label">2M</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget25">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget26">
-				  <property name="visible">True</property>
-				  <property name="label">1M</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget27">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget28">
-				  <property name="visible">True</property>
-				  <property name="label"></property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
 			</widget>
 		      </child>
 		    </widget>
@@ -484,7 +329,6 @@
 		      <property name="yalign">0.5</property>
 		      <property name="xpad">0</property>
 		      <property name="ypad">0</property>
-		      <property name="mnemonic_widget">modeEntry</property>
 		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
 		      <property name="width_chars">-1</property>
 		      <property name="single_line_mode">False</property>
@@ -496,149 +340,6 @@
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
 		      <property name="x_options">fill</property>
-		      <property name="y_options"></property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkCombo" id="modeCombo">
-		      <property name="visible">True</property>
-		      <property name="value_in_list">True</property>
-		      <property name="allow_empty">False</property>
-		      <property name="case_sensitive">False</property>
-		      <property name="enable_arrow_keys">True</property>
-		      <property name="enable_arrows_always">False</property>
-
-		      <child internal-child="entry">
-			<widget class="GtkEntry" id="modeEntry">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">False</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
-			</widget>
-		      </child>
-
-		      <child internal-child="list">
-			<widget class="GtkList" id="convertwidget29">
-			  <property name="visible">True</property>
-			  <property name="selection_mode">GTK_SELECTION_BROWSE</property>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget30">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget31">
-				  <property name="visible">True</property>
-				  <property name="label">Auto</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget32">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget33">
-				  <property name="visible">True</property>
-				  <property name="label">Managed</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget34">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget35">
-				  <property name="visible">True</property>
-				  <property name="label">Ad-Hoc</property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkListItem" id="convertwidget36">
-			      <property name="visible">True</property>
-
-			      <child>
-				<widget class="GtkLabel" id="convertwidget37">
-				  <property name="visible">True</property>
-				  <property name="label"></property>
-				  <property name="use_underline">False</property>
-				  <property name="use_markup">False</property>
-				  <property name="justify">GTK_JUSTIFY_LEFT</property>
-				  <property name="wrap">False</property>
-				  <property name="selectable">False</property>
-				  <property name="xalign">0</property>
-				  <property name="yalign">0.5</property>
-				  <property name="xpad">0</property>
-				  <property name="ypad">0</property>
-				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-				  <property name="width_chars">-1</property>
-				  <property name="single_line_mode">False</property>
-				  <property name="angle">0</property>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-			</widget>
-		      </child>
-		    </widget>
-		    <packing>
-		      <property name="left_attach">1</property>
-		      <property name="right_attach">2</property>
-		      <property name="top_attach">0</property>
-		      <property name="bottom_attach">1</property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -759,6 +460,30 @@
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
+
+		  <child>
+		    <widget class="GtkEventBox" id="eventbox1">
+		      <property name="visible">True</property>
+		      <property name="visible_window">True</property>
+		      <property name="above_child">False</property>
+
+		      <child>
+			<widget class="GtkComboBox" id="modeCombo">
+			  <property name="visible">True</property>
+			  <property name="add_tearoffs">False</property>
+			  <property name="focus_on_click">True</property>
+			</widget>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">0</property>
+		      <property name="bottom_attach">1</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options">fill</property>
+		    </packing>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -777,7 +502,7 @@
 	  <property name="title" translatable="yes">Configure Network Settings</property>
 	  <property name="title_foreground">#ffffffffffff</property>
 	  <property name="logo_background">#191919197070</property>
-	  <property name="logo">/usr/share/system-config-network/pixmaps/network.xpm</property>
+	  <property name="logo">network.xpm</property>
 	  <signal name="back" handler="on_hostname_config_page_back"/>
 	  <signal name="next" handler="on_hostname_config_page_next"/>
 	  <signal name="prepare" handler="on_hostname_config_page_prepare"/>

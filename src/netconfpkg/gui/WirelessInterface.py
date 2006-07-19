@@ -28,7 +28,17 @@ from EthernetHardwareDruid import ethernetHardware
 from InterfaceCreator import InterfaceCreator
 from rhpl import ethtool
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+import gobject
 
+modeList = [ 
+    [ _("Auto") , "Auto" ],
+    [ _("Ad-Hoc") , "Ad-Hoc"],
+    [ _("Managed") , "Managed"],
+    [ _("Master") , "Master"],
+#    [ _("Repeater") , "Repeater"],
+#    [ _("Secondary") , "Secondary"]
+]
+    
 class WirelessInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=WIRELESS, do_save = 1,
                  druid = None):
@@ -49,6 +59,8 @@ class WirelessInterface(InterfaceCreator):
         self.hw_sel = 0
         self.hwPage = False
         self.druids = []
+
+
 
     def init_gui(self):
         if self.xml:
@@ -114,6 +126,27 @@ class WirelessInterface(InterfaceCreator):
         self.hwDruid.has_ethernet = None
         self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
                       + self.druids[1:]
+                      
+        self.modestore = gtk.ListStore(gobject.TYPE_STRING, 
+                                    gobject.TYPE_STRING)
+        for i in modeList:
+            self.modestore.append(i)
+        
+        combo = self.xml.get_widget("modeCombo")            
+        combo.set_model(self.modestore)
+        cell = gtk.CellRendererText()
+        combo.pack_start(cell, True)
+        combo.add_attribute(cell, 'text', 0)
+        combo.set_active(0)
+            
+        self.xml.get_widget("rateCombo").set_popdown_strings((
+            _("Auto"),
+            "11M",
+            "5.5M",
+            "2M",
+            "1M"
+        ))
+                        
 
     def get_project_name(self):
         return _('Wireless connection')
@@ -156,12 +189,15 @@ class WirelessInterface(InterfaceCreator):
             wl.EssId = ""
         else:
             wl.EssId = self.xml.get_widget("essidEntry").get_text()
-        # FIXME: translation bug!
-        wl.Mode =  self.xml.get_widget("modeEntry").get_text()            
+        row = self.xml.get_widget("modeCombo").get_active()
+        wl.Mode = self.modestore[row][1]
             
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
-        # FIXME: translation bug!
-        wl.Rate = self.xml.get_widget("rateEntry").get_text()
+        rate = self.xml.get_widget("rateEntry").get_text()
+        if rate == _("Auto"):
+            wl.Rate = "Auto"
+        else:
+            wl.Rate = rate
         wl.Key = self.xml.get_widget("keyEntry").get_text()
 
     def on_wireless_config_page_prepare(self, druid_page, druid):
@@ -176,8 +212,10 @@ class WirelessInterface(InterfaceCreator):
                 pass
             else:
                 if info.has_key("Mode"):
-                    self.xml.get_widget("modeEntry").set_text(info["Mode"])
-
+                    values = [ r[1] for r in self.modestore ]
+                    match_row = values.index(info["Mode"])
+                    self.xml.get_widget("modeCombo").set_active(match_row)
+ 
                 if info.has_key("ESSID") and info["ESSID"] != "":
                     self.xml.get_widget("essidSpecButton").set_active(True)
                     self.xml.get_widget("essidEntry").set_sensitive(True)
@@ -188,20 +226,22 @@ class WirelessInterface(InterfaceCreator):
 
                 if info.has_key("Frequency") and info["Frequency"] < 1000:
                     self.xml.get_widget("channelSpinButton").set_value(int(info["Frequency"]))
+                    
                 if info.has_key("BitRate"):
-                    self.xml.get_widget("rateEntry").set_text(info["BitRate"])
+                    self.xml.get_widget("rateEntry").set_text(_(info["BitRate"]))
 
                 if info.has_key("Key") and info["Key"] != "off":
                     self.xml.get_widget("keyEntry").set_text(info["Key"])
-        self.on_modeChanged(self.xml.get_widget("modeEntry"))
+                    
+        self.on_modeChanged(self.xml.get_widget("modeCombo"))
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
-        self.xml.get_widget("modeEntry").connect("changed",
+        self.xml.get_widget("modeCombo").connect("changed",
                                                  self.on_modeChanged)
 
     def on_modeChanged(self, entry):
-        # FIXME: translation bug!
-        if string.lower(entry.get_text()) == "managed":
+        mode = self.modestore[self.xml.get_widget("modeCombo").get_active()][1]
+        if mode == "Managed":
             self.xml.get_widget("channelSpinButton").set_sensitive(False)
             self.xml.get_widget("rateCombo").set_sensitive(False)
             self.xml.get_widget("rateEntry").set_sensitive(False)
