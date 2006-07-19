@@ -151,6 +151,7 @@ class deviceConfigDialog:
             self.xml.get_widget('onParentCB').set_active(self.device.OnParent == True)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
             self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
+                
             if self.device.Alias != None:
                 self.xml.get_widget('onBootCB').hide()
                 self.xml.get_widget('onParentCB').show()

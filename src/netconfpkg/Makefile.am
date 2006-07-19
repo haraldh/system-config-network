@@ -31,7 +31,6 @@ PYTHON_FILES = \
 	NCCard.py \
 	NCDeviceFactory.py
 
-
 EXTRA_DIST = $(IDL_FILES) $(PYTHON_FILES)
 
 netconfpkgdir = $(pkgdatadir)/netconfpkg

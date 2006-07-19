@@ -28,7 +28,6 @@ from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
 import gtk
 import gtk.glade
-import gnome.ui
 import gnome
 import gobject
 
@@ -43,6 +42,9 @@ PAGE_HARDWARE = 1
 PAGE_IPSEC = 2
 PAGE_DNS = 3
 PAGE_HOSTS = 4
+    
+def nop(str=None):
+    pass
     
 class mainDialog:
     def __init__(self):
@@ -113,6 +115,9 @@ class mainDialog:
         })
 
         self.appBar = self.xml.get_widget ("appbar")
+        if not hasattr(self.appBar, "push") or not hasattr(self.appBar, "push"):
+            self.appBar.push = nop
+            self.appBar.pop = nop
         widget = self.xml.get_widget ("hardware_pixmap")
         widget.set_from_pixbuf(get_pixbuf("connection-ethernet.png"))
         widget = self.xml.get_widget ("hosts_pixmap")
@@ -1605,21 +1610,40 @@ class mainDialog:
     def on_about_activate(self, *args):
         from version import PRG_VERSION
         from version import PRG_NAME
-        dlg = gnome.ui.About(PRG_NAME,
-                             PRG_VERSION,
-                             _("Copyright (c) 2001-2005 Red Hat, Inc."),
-                             _("This software is distributed under the GPL. "
-                               "Please report bugs to Red Hat's bug tracking "
-                               "system: http://bugzilla.redhat.com/"),
-                             ["Harald Hoyer <harald@redhat.com>",
-                              "Than Ngo <than@redhat.com>",
-                              "Philipp Knirsch <pknirsch@redhat.com>",
-                              "Trond Eivind Glomsrød <teg@redhat.com>"
-                              ])
-        
-        dlg.set_transient_for(self.dialog)
-        dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        dlg.show()
+        if not hasattr(gtk, "AboutDialog"):
+            import gnome.ui
+            dlg = gnome.ui.About(PRG_NAME,
+                                 PRG_VERSION,
+                                 _("Copyright (c) 2001-2005 Red Hat, Inc."),
+                                 _("This software is distributed under the GPL. "
+                                   "Please Report bugs to Red Hat's Bug Tracking "
+                                   "System: http://bugzilla.redhat.com/"),
+                                 ["Harald Hoyer <harald@redhat.com>",
+                                  "Than Ngo <than@redhat.com>",
+                                  "Philipp Knirsch <pknirsch@redhat.com>",
+                                  "Trond Eivind Glomsrød <teg@redhat.com>",
+                                  ])
+            dlg.set_transient_for(self.dialog)
+            dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+            dlg.show()        
+        else:
+            dlg = gtk.AboutDialog()
+            dlg.set_name(PRG_NAME)
+            dlg.set_version(PRG_VERSION)
+            dlg.set_copyright(_("Copyright (c) 2001-2005 Red Hat, Inc."))
+            dlg.set_authors(["Harald Hoyer <harald@redhat.com>",
+                             "Than Ngo <than@redhat.com>",
+                             "Philipp Knirsch <pknirsch@redhat.com>",
+                             "Trond Eivind Glomsrød <teg@redhat.com>",
+                             ])
+            dlg.set_documenters(["Tammy Fox <tfox@redhat.com>"])
+            dlg.set_copyright(_("This software is distributed under the GPL. \n"
+                                "Please Report bugs to Red Hat's Bug Tracking \n"
+                                "System: http://bugzilla.redhat.com/"))
+            dlg.set_transient_for(self.dialog)
+            dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
+            dlg.run()
+            dlg.destroy()
 
     def on_ipsecAddButton_clicked(self, *args):
         ipsecs = getIPsecList()
