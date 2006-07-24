@@ -143,41 +143,38 @@ def loadConfig(screen):
 #
 # main Screen
 #
-def mainScreen(screen):
+def newDevice(screen):
     """
     Displays the main screen
     @screen The snack screen instance
     """
-    exception.action(_("Displaying main screen"))
-    while 1:
-        t=TextboxReflowed(25,_("What do you want to configure?"))
-        bb=ButtonBar(screen,((_("Configure"),"configure"),(_("Exit"),"exit")))
-        li=Listbox(5,width=25,returnExit=1)
-        li.append("Ethernet","Ethernet")
-        li.append("Modem","Modem")
-        li.append("ISDN","ISDN")
-        g=GridForm(screen,_("Network Configuration"),1,3)
-        g.add(t,0,0)
-        g.add(li,0,1)
-        g.add(bb,0,2)
-        res=g.run()
-        if bb.buttonPressed(res)=='exit':
-            screen.popWindow()
-            break
-        elif bb.buttonPressed(res)=='configure':
-            screen.popWindow()
-            todo=li.current()
-            if(todo=="Ethernet"):
-                nw=EthernetWindow(screen,getDeviceList())
-                nw.runIt()
-            elif(todo=="Modem"):
-                mw=ModemWindow(screen,getDeviceList())
-                mw.runIt()
-            elif(todo=="ISDN"):
-                iw=ISDNWindow(screen,getDeviceList())
-                iw.runIt()
-
-def selectDevice(screen, type=None):
+    t=TextboxReflowed(25,_("Which device type do you want to add?"))
+    bb=ButtonBar(screen,((_("Add"),"add"),(_("Cancel"),"cancel")))
+    li=Listbox(5,width=25,returnExit=1)
+    li.append(_("Ethernet"), ETHERNET)
+    li.append(_("Modem"), MODEM)
+    li.append(_("ISDN"), ISDN)
+    g=GridForm(screen,_("Network Configuration"),1,3)
+    g.add(t,0,0)
+    g.add(li,0,1)
+    g.add(bb,0,2)
+    res=g.run()
+    screen.popWindow()
+    if bb.buttonPressed(res) != 'cancel':
+        todo=li.current()
+        df = NCDeviceFactory.getDeviceFactory()
+        dev = None
+        devclass = df.getDeviceClass(todo)
+        devlist = getDeviceList()
+        if not devclass: return -1
+        dev = devclass()
+        if dev:
+            i = devlist.addDevice()
+            devlist[i] = dev
+            return dev
+    return -2
+                
+def selectDevice(screen):
     li=Listbox(5,returnExit=1)
     l = 0
     le = screen.width - 6
@@ -206,13 +203,15 @@ def selectDevice(screen, type=None):
     g.add(li,0,1)
     g.add(bb,0,2,growx=1)
     res = g.run()
+    screen.popWindow()
     if bb.buttonPressed(res)=="quit":
         ret = -1
     elif bb.buttonPressed(res)=="cancel":
         ret = None
     else:
         ret=li.current()
-    screen.popWindow()
+        if not ret:
+            ret = newDevice(screen)
     return ret
 
                 
@@ -266,24 +265,33 @@ if __name__=="__main__":
 #    exception.installExceptionHandler(PRG_NAME, PRG_VERSION, gui=0,
 #                                      debug=debug)
     screen=SnackScreen()
+    plist = getProfileList()
+    devlist = getDeviceList()
     try:
         #mainScreen(screen)
         loadConfig(screen)
         while True:
             dev = selectDevice(screen)
             if dev == -1:
-                getDeviceList().save()
-                plist = getProfileList()
-                plist.activateDevice(self.dev.DeviceId,
-                                     plist.getActiveProfile().ProfileName,
-                                     state = True)
+                devlist.save()
                 plist.save()
                 break
-            if dev == None:
+            elif dev == -2:
+                continue
+            elif dev == None:
                 break
             
             dialog = dev.getDialog()
-            dialog.runIt(screen)
+            if dialog.runIt(screen):
+                dev.commit()
+                devlist.commit()
+                plist.activateDevice(dev.DeviceId,
+                                     plist.getActiveProfile().ProfileName,
+                                     state = True)
+                plist.commit()
+            else:
+                dev.rollback()
+                devlist.rollback()
             
         screen.finish()
         #print dir(screen)
