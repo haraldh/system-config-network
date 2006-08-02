@@ -28,12 +28,12 @@ import sharedtcpip
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 
-class tokenringConfigDialog(deviceConfigDialog):
+class tokenringConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "tokenringconfig.glade"
-        deviceConfigDialog.__init__(self, glade_file, device)    
+        DeviceConfigDialog.__init__(self, glade_file, device)    
         xml_signal_autoconnect(self.xml,
             {
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
@@ -56,7 +56,7 @@ class tokenringConfigDialog(deviceConfigDialog):
         sharedtcpip.route_init (self.sharedtcpip_xml, self.device, self.dialog)
 
     def hydrate(self):
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
 
@@ -79,7 +79,7 @@ class tokenringConfigDialog(deviceConfigDialog):
             self.xml.get_widget("aliasSupportCB").set_active(False)
 
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
 
@@ -98,5 +98,5 @@ class tokenringConfigDialog(deviceConfigDialog):
 
 NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/05/11 15:52:01 $"
-__version__ = "$Revision: 1.19 $"
+__date__ = "$Date: 2006/08/02 12:59:44 $"
+__version__ = "$Revision: 1.20 $"

@@ -31,7 +31,7 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
-class ADSLInterface(InterfaceCreator):
+class ADSLInterfaceDruid(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type='Ethernet', do_save = 1, druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
@@ -51,7 +51,7 @@ class ADSLInterface(InterfaceCreator):
         if request_rpms(["rp-pppoe"]):
             return
  
-        glade_file = 'ADSLInterfaceDruid.glade'
+        glade_file = 'ADSLInterfaceDruidDruid.glade'
 
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
@@ -229,5 +229,5 @@ class ADSLInterface(InterfaceCreator):
         dialup.DefRoute = True
         self.device.AutoDNS = True
 
-NCDevADSL.setDevADSLWizard(ADSLInterface)
+NCDevADSL.setDevADSLWizard(ADSLInterfaceDruid)
 __author__ = "Harald Hoyer <harald@redhat.com>"

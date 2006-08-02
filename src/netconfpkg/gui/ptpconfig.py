@@ -27,12 +27,12 @@ import string
 import sharedtcpip
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.plugins import *
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 
-class ptpConfigDialog(deviceConfigDialog):
+class ptpConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "ptpconfig.glade"
-        deviceConfigDialog.__init__(self, glade_file,
+        DeviceConfigDialog.__init__(self, glade_file,
                                     device)
 
         window = self.sharedtcpip_xml.get_widget ('routeWindow')
@@ -51,7 +51,7 @@ class ptpConfigDialog(deviceConfigDialog):
         self.hydrate ()
 
     def hydrate(self):
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
                 
@@ -73,7 +73,7 @@ class ptpConfigDialog(deviceConfigDialog):
         self.device.BootProto = 'static'
         
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)
 

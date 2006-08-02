@@ -31,15 +31,15 @@ import sys
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 from rhpl import ethtool
 
 # FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
 
-class ethernetConfigDialog(deviceConfigDialog):
+class ethernetConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "ethernetconfig.glade"
-        deviceConfigDialog.__init__(self, glade_file,
+        DeviceConfigDialog.__init__(self, glade_file,
                                     device)    
 
         xml_signal_autoconnect(self.xml, { \
@@ -72,13 +72,13 @@ class ethernetConfigDialog(deviceConfigDialog):
         self.hydrate ()
 
     def hydrate(self):
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
 
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)

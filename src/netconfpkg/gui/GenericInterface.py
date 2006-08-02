@@ -113,16 +113,16 @@ class GenericInterface(InterfaceCreator):
             cfg = tokenringConfigDialog(device)
 
         elif type == ISDN:
-            cfg = ISDNDialupDialog(device)
+            cfg = ISDNDialupInterfaceDialog(device)
 
         elif type == MODEM:
-            cfg = ModemDialupDialog(device)
+            cfg = ModemDialupInterfaceDialog(device)
 
         elif type == DSL:
-            cfg = dslConfigDialog(device)
+            cfg = ADSLInterfaceDialog(device)
 
         elif type == CIPE:
-            cfg = cipeConfigDialog(device)
+            cfg = CipeInterfaceDialog(device)
 
         elif type == WIRELESS:
             cfg = wirelessConfigDialog(device)

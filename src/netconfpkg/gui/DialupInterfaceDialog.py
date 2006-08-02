@@ -27,7 +27,7 @@ import string
 import re
 import sharedtcpip
 
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg import NCDevIsdn
 from netconfpkg import NCDevModem
 from netconfpkg.NCDeviceList import *
@@ -40,10 +40,10 @@ from netconfpkg.gui.tonline import TonlineDialog
 from provider import *
 
 
-class DialupDialog(deviceConfigDialog):
+class DialupInterfaceDialog(DeviceConfigDialog):
     def __init__(self, device):
-        glade_file = "dialupconfig.glade"
-        deviceConfigDialog.__init__(self, glade_file,
+        glade_file = "DialupInterfaceDialog.glade"
+        DeviceConfigDialog.__init__(self, glade_file,
                                     device)
         self.edit = False
 
@@ -82,7 +82,7 @@ class DialupDialog(deviceConfigDialog):
         self.hydrate ()
 
     def hydrate(self):
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
         hardwarelist = getHardwareList()
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
@@ -126,7 +126,7 @@ class DialupDialog(deviceConfigDialog):
                 widget.append([plist])
 
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         dialup = self.device.Dialup
@@ -260,9 +260,9 @@ class DialupDialog(deviceConfigDialog):
             self.xml.get_widget("providerName").set_text("T-Online")
 
  
-class ISDNDialupDialog(DialupDialog):
+class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
     def __init__(self, device):
-        DialupDialog.__init__(self, device)
+        DialupInterfaceDialog.__init__(self, device)
 
         page = self.noteBook.page_num(self.xml.get_widget ("modemTab"))
         self.noteBook.get_nth_page(page).hide()
@@ -275,11 +275,11 @@ class ISDNDialupDialog(DialupDialog):
         dl.set_transient_for(self.dialog)
         dl.run()
         dl.destroy()        
-        DialupDialog.hydrate(self)
+        DialupInterfaceDialog.hydrate(self)
         self.hydrate()
 
     def hydrate(self):
-        DialupDialog.hydrate(self)
+        DialupInterfaceDialog.hydrate(self)
 
         dialup = self.device.Dialup
 
@@ -359,7 +359,7 @@ class ISDNDialupDialog(DialupDialog):
             self.xml.get_widget("authEntry").set_text(auth)
 
     def dehydrate(self):
-        DialupDialog.dehydrate(self)
+        DialupInterfaceDialog.dehydrate(self)
         
         dialup = self.device.Dialup
         
@@ -428,9 +428,9 @@ class ISDNDialupDialog(DialupDialog):
             dialup.Authentication = 'noauth'
 
         
-class ModemDialupDialog(DialupDialog):
+class ModemDialupInterfaceDialog(DialupInterfaceDialog):
     def __init__(self, device):
-        DialupDialog.__init__(self, device)
+        DialupInterfaceDialog.__init__(self, device)
         
         self.dialog.set_title(_("Modem Dialup Configuration"))
         page = self.noteBook.page_num(self.xml.get_widget ("isdnTab"))
@@ -444,11 +444,11 @@ class ModemDialupDialog(DialupDialog):
         dl.set_transient_for(self.dialog)
         dl.run()
         dl.destroy()
-        DialupDialog.hydrate(self)
+        DialupInterfaceDialog.hydrate(self)
         self.hydrate()
         
     def hydrate(self):
-        DialupDialog.hydrate(self)
+        DialupInterfaceDialog.hydrate(self)
         hardwarelist = getHardwareList()
         devicelist = []
         for hw in hardwarelist:
@@ -490,7 +490,7 @@ class ModemDialupDialog(DialupDialog):
             self.device.Dialup.StupidMode == true)
 
     def dehydrate(self):
-        DialupDialog.dehydrate(self)
+        DialupInterfaceDialog.dehydrate(self)
         dialup = self.device.Dialup
         dialup.HangupTimeout = self.xml.get_widget(\
                                "hangupTimeoutSB").get_value_as_int()
@@ -508,14 +508,14 @@ class ModemDialupDialog(DialupDialog):
             "stupidModeCB").get_active() == true
 
 
-NCDevIsdn.setDevIsdnDialog(ISDNDialupDialog)
-NCDevModem.setDevModemDialog(ModemDialupDialog)
+NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
+NCDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
 
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = DialupDialog()
+    window = DialupInterfaceDialog()
     window.run()
     gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"

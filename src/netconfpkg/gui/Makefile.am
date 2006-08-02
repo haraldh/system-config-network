@@ -1,12 +1,12 @@
 GLADE_FILES = \
 	ADSLInterfaceDruid.glade \
-	chooseprovider.glade \
-	cipeconfig.glade \
+	ADSLInterfaceDialog.glade \
+	ChooseProvider.glade \
+	CipeInterfaceDialog.glade \
 	CipeInterfaceDruid.glade \
-	devicetype.glade \
-	dialupconfig.glade \
+	DeviceTypeDialog.glade \
+	DialupInterfaceDialog.glade \
 	DialupDruid.glade \
-	dslconfig.glade \
 	editadress.glade \
 	editdomain.glade \
 	edithosts.glade \
@@ -42,14 +42,14 @@ GLADE_FILES = \
 	PTPInterfaceDruid.glade
 
 PYTHON_FILES = \
-	ADSLInterface.py \
-	cipeconfig.py \
+	ADSLInterfaceDruid.py \
+	ADSLInterfaceDialog.py \
+	CipeInterfaceDialog.py \
 	CipeInterface.py \
-	deviceconfig.py \
-	devicetype.py \
-	dialupconfig.py \
+	DeviceConfigDialog.py \
+	DeviceTypeDialog.py \
+	DialupInterfaceDialog.py \
 	DialupDruid.py \
-	dslconfig.py \
 	editadress.py \
 	editdomain.py \
 	edithosts.py \
@@ -80,9 +80,9 @@ PYTHON_FILES = \
 	tonline.py \
 	wirelessconfig.py \
 	WirelessInterface.py \
-	ctcconfig.py \
+	CTCInterfaceDialog.py \
 	iucvconfig.py \
-	CTCInterface.py \
+	CTCInterfaceDruid.py \
 	IUCVInterface.py \
 	ptpconfig.py \
 	PTPInterface.py
@@ -95,7 +95,7 @@ netconfpkg_PYTHON = $(PYTHON_FILES)
 
 execdir = $(sbindir)
 
-CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.gladep))
+CLEANFILES = $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.gladep)) $(notdir $(wildcard *.bak)) $(notdir $(wildcard *.pyc))
 
 fixpath:
 	perl -pi -e 's#logo">([^/>][^>]*)<#logo">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade

@@ -30,14 +30,14 @@ import sharedtcpip
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 
 
-class cipeConfigDialog(deviceConfigDialog):
+class CipeInterfaceDialog(DeviceConfigDialog):
     def __init__(self, device):
-        glade_file = "cipeconfig.glade"
+        glade_file = "CipeInterfaceDialog.glade"
         
-        deviceConfigDialog.__init__(self, glade_file,
+        DeviceConfigDialog.__init__(self, glade_file,
                                     device)    
         xml_signal_autoconnect(self.xml, 
             {
@@ -60,7 +60,7 @@ class cipeConfigDialog(deviceConfigDialog):
         sharedtcpip.route_init (self.sharedtcpip_xml, self.device, self.dialog)
         
     def hydrate(self):
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
 
         curr = None
@@ -123,7 +123,7 @@ class cipeConfigDialog(deviceConfigDialog):
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
 
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         if hw == _('None - Server Mode'):
@@ -212,5 +212,5 @@ class cipeConfigDialog(deviceConfigDialog):
         widget = self.xml.get_widget("remoteConfigTxt").get_buffer()
         widget.set_text(mytxt)
 
-NCDevCipe.setDevCipeDialog(cipeConfigDialog)
+NCDevCipe.setDevCipeDialog(CipeInterfaceDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -32,7 +32,7 @@ from netconfpkg import nop
 from netconfpkg import NCDeviceList
 from netconfpkg import NCIPsecList
 
-class deviceConfigDialog:
+class DeviceConfigDialog:
     def __init__(self, glade_file, device):
         self.device = device
 

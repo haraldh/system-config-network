@@ -30,7 +30,7 @@ import gobject
 
 from netconfpkg import *
 from netconfpkg.gui import GUI_functions
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import *
 
 modeList = [ 
@@ -42,13 +42,13 @@ modeList = [
 #    [ _("Secondary") , "Secondary"]
 ]
 
-class wirelessConfigDialog(deviceConfigDialog):
+class wirelessConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "wirelessconfig.glade"
 
         self.initialized = False
 
-        deviceConfigDialog.__init__(self, glade_file, device)
+        DeviceConfigDialog.__init__(self, glade_file, device)
         
         if not self.initialized:
             self.do_init()
@@ -106,7 +106,7 @@ class wirelessConfigDialog(deviceConfigDialog):
         if not self.initialized:
             self.do_init()
 
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
@@ -142,7 +142,7 @@ class wirelessConfigDialog(deviceConfigDialog):
 
 
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
 
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
@@ -185,5 +185,5 @@ class wirelessConfigDialog(deviceConfigDialog):
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2006/08/02 12:59:44 $"
+__version__ = "$Revision: 1.31 $"

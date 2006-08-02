@@ -43,7 +43,7 @@ class providerDialog:
         self.connection_type = connection_type
         self.provider = None
         
-        glade_file = "chooseprovider.glade"
+        glade_file = "ChooseProvider.glade"
         
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
@@ -224,5 +224,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2006/08/02 12:59:44 $"
+__version__ = "$Revision: 1.21 $"

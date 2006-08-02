@@ -31,13 +31,13 @@ from netconfpkg import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
-from deviceconfig import deviceConfigDialog
+from DeviceConfigDialog import DeviceConfigDialog
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
-class dslConfigDialog(deviceConfigDialog):
+class ADSLInterfaceDialog(DeviceConfigDialog):
     def __init__(self, device):
-        glade_file = "dslconfig.glade"
-        deviceConfigDialog.__init__(self, glade_file,
+        glade_file = "ADSLInterfaceDialog.glade"
+        DeviceConfigDialog.__init__(self, glade_file,
                                     device)
 
         xml_signal_autoconnect(self.xml, {
@@ -67,7 +67,7 @@ class dslConfigDialog(deviceConfigDialog):
         self.hydrate ()
 
     def hydrate(self):
-        deviceConfigDialog.hydrate(self)
+        DeviceConfigDialog.hydrate(self)
         dialup = self.device.Dialup
         widget = self.xml.get_widget("providerNameEntry")
         if dialup.ProviderName:
@@ -114,7 +114,7 @@ class dslConfigDialog(deviceConfigDialog):
 
 
     def dehydrate(self):
-        deviceConfigDialog.dehydrate(self)
+        DeviceConfigDialog.dehydrate(self)
         dialup = self.device.Dialup
         dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
@@ -160,12 +160,12 @@ class dslConfigDialog(deviceConfigDialog):
         dialup.Password = dialog.password
         self.hydrate()
 
-NCDevADSL.setDevADSLDialog(dslConfigDialog)
+NCDevADSL.setDevADSLDialog(ADSLInterfaceDialog)
 
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    dslConfigDialog()
+    ADSLInterfaceDialog()
     gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

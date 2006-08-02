@@ -30,7 +30,7 @@ from rhpl import ethtool
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.PTPInterface import PTPInterface
 
-class CTCInterface(PTPInterface):
+class CTCInterfaceDruid(PTPInterface):
     def __init__(self, toplevel=None, connection_type=CTC, do_save = 1,
                  druid = None):
         PTPInterface.__init__(self, toplevel,
@@ -51,7 +51,7 @@ class CTCInterface(PTPInterface):
     def get_project_description(self):
         return _("Create a new CTC connection.")
 
-NCDevCTC.setDevCTCWizard(CTCInterface)
+NCDevCTC.setDevCTCWizard(CTCInterfaceDruid)
 __author__ = "Harald Hoyer <harald@redhat.com>"
 
 

@@ -319,7 +319,7 @@ def on_hardwareMACToggle_toggled(widget, xml, device):
     xml.get_widget("hardwareProbeButton").set_sensitive (widget.get_active())
 
 def on_hardwareProbeButton_clicked(widget, xml, device):
-    omenu = xml.get_widget("hardwareDeviceOmenu")
+    omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_children()[0].get()
     device = string.split(hw)[0]
     try: hwaddr = ethtool.get_hwaddr(device) 
@@ -351,7 +351,7 @@ def hardware_init(xml, device):
 def hardware_hydrate(xml, device):
     hwlist = getHardwareList()
     (hwcurr, hwdesc) = NC_functions.create_generic_combo(hwlist, device.Device, type = device.Type)
-    omenu = xml.get_widget("hardwareDeviceOmenu")
+    omenu = xml.get_widget("hwdvOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()
     history = 0
@@ -388,7 +388,7 @@ def hardware_hydrate(xml, device):
         xml.get_widget("hardwareProbeButton").set_sensitive(False)
 
 def hardware_dehydrate(xml, device):
-    omenu = xml.get_widget("hardwareDeviceOmenu")
+    omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_child().get_label()
     device.Device = string.split(hw)[0]
     if xml.get_widget("hardwareAliasesToggle").get_active():
@@ -407,7 +407,7 @@ def dsl_hardware_init(xml, device):
 def dsl_hardware_hydrate(xml, device):
     hwlist = getHardwareList()
     (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Dialup.EthDevice)
-    omenu = xml.get_widget("hardwareDeviceOmenu")
+    omenu = xml.get_widget("hwdvOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()
     history = 0
@@ -424,7 +424,7 @@ def dsl_hardware_hydrate(xml, device):
 
 
 def dsl_hardware_dehydrate(xml, device):
-    omenu = xml.get_widget("hardwareDeviceOmenu")
+    omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_child().get_label()
     device.Dialup.EthDevice = string.split(hw)[0]
 
@@ -435,5 +435,5 @@ if __name__ == '__main__':
     gtk.main ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.39 $"
+__date__ = "$Date: 2006/08/02 12:59:44 $"
+__version__ = "$Revision: 1.40 $"

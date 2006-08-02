@@ -26,19 +26,19 @@ import os
 import string
 import re
 
-from dialupconfig import *
+from DialupInterfaceDialog import *
 from ethernetconfig import ethernetConfigDialog
-from dslconfig import dslConfigDialog
+from ADSLInterfaceDialog import ADSLInterfaceDialog
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import NCHardwareList
 
 
-class deviceTypeDialog:
+class DeviceTypeDialog:
     def __init__(self, device):
         self.device = device
-        glade_file = "devicetype.glade"
+        glade_file = "DeviceTypeDialog.glade"
 
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
