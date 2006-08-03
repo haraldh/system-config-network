@@ -119,7 +119,7 @@ class TestRCN(unittest.TestCase):
             pass                    
         
     def getConf(self):
-        PROGNAME='redhat-config-network'
+        PROGNAME='system-config-network'
         from netconfpkg import NC_functions
         NC_functions.prepareRoot(CHROOT)
 	
@@ -360,5 +360,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.5 $"
+__date__ = "$Date: 2006/08/03 12:42:49 $"
+__version__ = "$Revision: 1.6 $"
