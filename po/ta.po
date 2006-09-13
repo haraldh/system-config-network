@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-02 12:39+0100\n"
+"POT-Creation-Date: 2006-07-18 16:44+0200\n"
 "PO-Revision-Date: 2006-04-24 12:55+0530\n"
 "Last-Translator: Felix <ifelix@redhat.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
 "\n"
 
 #: .././neat-control.desktop.in.h:1
@@ -37,8 +38,8 @@ msgstr "வலைப் பின்னல் சாதனம் மற்று
 msgid "Network"
 msgstr "வலை பின்னல்"
 
-#: .././neat.desktop.in.h:3 .././src/netconf-tui.py:137
-#: .././src/netconfpkg/gui/maindialog.glade.h:19
+#: .././neat.desktop.in.h:3 .././src/netconf-tui.py:128
+#: .././src/netconf-tui.py:159 .././src/netconfpkg/gui/maindialog.glade.h:19
 msgid "Network Configuration"
 msgstr "வலைப் பின்னல் வடிவமைக்கவும்"
 
@@ -58,12 +59,12 @@ msgid ""
 "variable.\n"
 msgstr "படக்காட்சி சூழலை தொடங்கவும் அல்லது காட்சிக்கான மாறியை அமைக்கவும்.\n"
 
-#: .././src/neat-control.py:145 .././src/netconf-cmd.py:98
-#: .././src/netconfpkg/gui/maindialog.py:1692
+#: .././src/neat-control.py:144 .././src/netconf-cmd.py:98
+#: .././src/netconfpkg/gui/maindialog.py:1610
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "காப்புரிமை (c) 2001-2005 Red Hat, Inc."
 
-#: .././src/neat-control.py:146 .././src/netconf-cmd.py:99
+#: .././src/neat-control.py:145 .././src/netconf-cmd.py:99
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -71,35 +72,35 @@ msgstr ""
 "இந்த மென்பொருள் GPL உரிமத்தின் கீழ் விநியோகிக்கப்பட்டுள்ளது. பிழைகளை http://bugzilla."
 "redhat.com/ க்கு அனுப்பவும்"
 
-#: .././src/neat-control.py:204
+#: .././src/neat-control.py:203
 #, python-format
 msgid "Cannot configure network device %s"
 msgstr "%s வலைப் பின்னல் சாதனத்தை அமைக்க முடியவில்லை"
 
-#: .././src/neat-control.py:224
+#: .././src/neat-control.py:223
 msgid "Switching Profiles"
 msgstr "விவரகுறிப்பு நிலைமாற்றல்"
 
-#: .././src/neat-control.py:225
+#: .././src/neat-control.py:224
 #, python-format
 msgid "Switching to profile %s"
 msgstr " %s க்கு விவரத்தினை மாற்றவும்"
 
-#: .././src/neat-control.py:226
+#: .././src/neat-control.py:225
 #, python-format
 msgid "Failed to switch to profile %s"
 msgstr "விவரத்தை மாற்றும் போது தோல்வி %s"
 
 #. TBD
-#: .././src/neat-control.py:241
+#: .././src/neat-control.py:240
 msgid "To be rewritten!"
 msgstr "மீண்டும் எழுத வேண்டியவை."
 
-#: .././src/neat-control.py:348
+#: .././src/neat-control.py:347
 msgid " (active)"
 msgstr "(நடப்பில் உள்ள)"
 
-#: .././src/netconf-tui.py:97
+#: .././src/netconf-tui.py:98
 msgid ""
 "An unhandled exception has occured.  This is most likely a bug.  Please save "
 "the crash dump and file a detailed bug report against system-config-network "
@@ -108,87 +109,70 @@ msgstr ""
 "கையாள முடியாத பிழை நேர்ந்தது. நொறிங்கிய கோப்புகளை சேமித்து system-config-network "
 "இல் https://bugzilla.redhat.com/bugzilla பிழை அறிக்கை அனுப்பவும்."
 
-#: .././src/netconf-tui.py:131
+#: .././src/netconf-tui.py:126
+#, fuzzy
+msgid "Loading configuration"
+msgstr "அமைப்பை ஏற்றுகிறது..."
+
+#: .././src/netconf-tui.py:127
+#, fuzzy
+msgid "Loading Device Configuration"
+msgstr "சதன அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது"
+
+#: .././src/netconf-tui.py:133
+#, fuzzy
+msgid "Loading Hardware Configuration"
+msgstr "வன்பொருள் அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது"
+
+#: .././src/netconf-tui.py:137
+#, fuzzy
+msgid "Loading Profile Configuration"
+msgstr "விவர அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது"
+
+#: .././src/netconf-tui.py:151
+msgid "Displaying main screen"
+msgstr ""
+
+#: .././src/netconf-tui.py:153
 msgid "What do you want to configure?"
 msgstr "தாங்கள் எதனை வடிவமைக்க விரும்புகிறீர்கள்?"
 
-#: .././src/netconf-tui.py:132
+#: .././src/netconf-tui.py:154
 msgid "Configure"
 msgstr "அமை"
 
-#: .././src/netconf-tui.py:132
+#: .././src/netconf-tui.py:154
 msgid "Exit"
 msgstr "வெளியேறு"
 
-#: .././src/netconf-tui.py:254 .././src/netconf-tui.py:363
-#: .././src/netconf-tui.py:469 .././src/netconfpkg/gui/maindialog.glade.h:18
-msgid "Name"
-msgstr "பெயர்"
-
-#: .././src/netconf-tui.py:255 .././src/netconf-tui.py:364
-#: .././src/netconf-tui.py:470 .././src/netconfpkg/gui/maindialog.glade.h:10
-#: .././src/netconfpkg/gui/neat-control.glade.h:11
-#: .././src/netconfpkg/gui/infodialog.glade.h:1
-msgid "Device"
+#: .././src/netconf-tui.py:203
+#, fuzzy
+msgid "<New Device>"
 msgstr "சாதனம்"
 
-#: .././src/netconf-tui.py:256
-msgid "Use DHCP"
-msgstr "DHCP யை பயன்படுத்து"
+#: .././src/netconf-tui.py:204
+#, fuzzy
+msgid "Select A Device"
+msgstr "சாதனத்தை தேர்ந்தெடு"
 
-#: .././src/netconf-tui.py:257
-msgid "Static IP"
-msgstr "நிலையான IP"
+#: .././src/netconf-tui.py:205
+msgid "Quit"
+msgstr ""
 
-#: .././src/netconf-tui.py:258
-msgid "Netmask"
-msgstr "நெட் மாஸ்க்"
-
-#: .././src/netconf-tui.py:259
-msgid "Default gateway IP"
-msgstr "இயல்பான வாயிலின் IP"
-
-#: .././src/netconf-tui.py:267 .././src/netconf-tui.py:375
-#: .././src/netconf-tui.py:481
-msgid "Ok"
-msgstr "சரி"
-
-#: .././src/netconf-tui.py:267 .././src/netconf-tui.py:375
-#: .././src/netconf-tui.py:481
+#: .././src/netconf-tui.py:205
 msgid "Cancel"
 msgstr "ரத்து செய்"
 
-#: .././src/netconf-tui.py:269
-msgid "Ethernet Configuration"
-msgstr "ஈத்தர்நெட் அமைப்பு"
-
-#: .././src/netconf-tui.py:365 .././src/netconf-tui.py:471
-msgid "ISP Phonenumber"
-msgstr "ISP தொலைப்பேசி எண்"
-
-#: .././src/netconf-tui.py:366 .././src/netconf-tui.py:472
-msgid "ISP Login"
-msgstr "ISP நுழைவுக்கான பெயர் "
-
-#: .././src/netconf-tui.py:367 .././src/netconf-tui.py:473
-msgid "ISP Password"
-msgstr "ISP கடவுச்சொல்"
-
-#: .././src/netconf-tui.py:368
-msgid "Modem Initstring"
-msgstr "மோடம் அச்சுப்பொறி"
-
-#: .././src/netconf-tui.py:376 .././src/netconfpkg/gui/modemconfig.glade.h:6
-msgid "Modem Configuration"
-msgstr "மோடம் அமைப்பு"
-
-#: .././src/netconf-tui.py:474
-msgid "MSN"
-msgstr "MSN "
-
-#: .././src/netconf-tui.py:482
-msgid "ISDN Configuration"
-msgstr "ISDN அமைப்பு"
+#: .././src/netconf-tui.py:220
+#, fuzzy
+msgid ""
+"system-config-network - network configuration tool\n"
+"\n"
+"Usage: system-config-network -v --verbose -d --debug"
+msgstr ""
+"system-config-network - வலைப்பின்னல் அமைப்பு கருவி\n"
+"\n"
+"பயன்பாடு: system-config-network -v --verbose"
 
 #: .././src/netconf.py:55
 #, python-format
@@ -213,7 +197,7 @@ msgstr ""
 "\n"
 "பயன்பாடு: system-config-network -v --verbose"
 
-#: .././src/netconf.py:249
+#: .././src/netconf.py:252
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "system-config-network root உரிமையோடு துவங்கு !\n"
 
@@ -321,7 +305,7 @@ msgstr ""
 #: .././src/netconfpkg/gui/CipeInterface.py:137
 #: .././src/netconfpkg/gui/DialupDruid.py:223
 #: .././src/netconfpkg/gui/EthernetInterface.py:210
-#: .././src/netconfpkg/gui/WirelessInterface.py:272
+#: .././src/netconfpkg/gui/WirelessInterface.py:315
 #: .././src/netconfpkg/gui/TokenRingInterface.py:197
 #: .././src/netconfpkg/gui/editipsec.py:285
 #: .././src/netconfpkg/gui/PTPInterface.py:200
@@ -352,7 +336,7 @@ msgstr "CIPE யுடன் ஒரு புதிய மெய்நிகர�
 
 #: .././src/netconfpkg/gui/CipeInterface.py:138
 #: .././src/netconfpkg/gui/EthernetInterface.py:211
-#: .././src/netconfpkg/gui/WirelessInterface.py:273
+#: .././src/netconfpkg/gui/WirelessInterface.py:316
 #: .././src/netconfpkg/gui/TokenRingInterface.py:198
 #: .././src/netconfpkg/gui/PTPInterface.py:201
 msgid "Device:"
@@ -374,7 +358,13 @@ msgid "Remote peer address:"
 msgstr "தொடர்பற்ற முகவரி:"
 
 #: .././src/netconfpkg/gui/CipeInterface.py:145
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: .././src/netconfpkg/gui/WirelessInterface.py:34
+#: .././src/netconfpkg/gui/WirelessInterface.py:143
+#: .././src/netconfpkg/gui/WirelessInterface.py:197
+#: .././src/netconfpkg/gui/wirelessconfig.py:37
+#: .././src/netconfpkg/gui/wirelessconfig.py:95
+#: .././src/netconfpkg/gui/wirelessconfig.py:164
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:6
 msgid "Auto"
 msgstr "தானாக"
 
@@ -447,7 +437,7 @@ msgstr "தொலைபேசி எண்"
 #: .././src/netconfpkg/gui/tokenringhardware.py:135
 #: .././src/netconfpkg/NCHardwareList.py:445
 #: .././src/netconfpkg/NCHardwareList.py:565
-#: .././src/netconfpkg/NC_functions.py:389 .././src/netconfpkg/NCDevice.py:193
+#: .././src/netconfpkg/NC_functions.py:387 .././src/netconfpkg/NCDevice.py:204
 #: .././src/netconfpkg/plugins/NCHWEthernet.py:60
 #: .././src/netconfpkg/plugins/NCHWTokenring.py:71
 #: .././src/netconfpkg/NCDeviceList.py:67
@@ -471,7 +461,7 @@ msgid "Other Ethernet Card"
 msgstr "மற்ற ஈத்தர்நெட் அட்டை"
 
 #: .././src/netconfpkg/gui/EthernetInterface.py:222
-#: .././src/netconfpkg/gui/WirelessInterface.py:284
+#: .././src/netconfpkg/gui/WirelessInterface.py:327
 #: .././src/netconfpkg/gui/TokenRingInterface.py:209
 #: .././src/netconfpkg/gui/PTPInterface.py:211
 #: .././src/netconfpkg/gui/edithosts.glade.h:2
@@ -479,31 +469,47 @@ msgid "Address:"
 msgstr "முகவரி"
 
 #: .././src/netconfpkg/gui/EthernetInterface.py:223
-#: .././src/netconfpkg/gui/WirelessInterface.py:285
+#: .././src/netconfpkg/gui/WirelessInterface.py:328
 #: .././src/netconfpkg/gui/TokenRingInterface.py:210
 msgid "Subnet mask:"
 msgstr "துணை வலைமனை"
 
 #: .././src/netconfpkg/gui/EthernetInterface.py:224
-#: .././src/netconfpkg/gui/WirelessInterface.py:286
+#: .././src/netconfpkg/gui/WirelessInterface.py:329
 #: .././src/netconfpkg/gui/TokenRingInterface.py:211
 msgid "Default gateway address:"
 msgstr "இயல்பான வாயிலின் முகவரி"
 
 #: .././src/netconfpkg/gui/EthernetInterface.py:226
-#: .././src/netconfpkg/gui/WirelessInterface.py:288
+#: .././src/netconfpkg/gui/WirelessInterface.py:331
 #: .././src/netconfpkg/gui/TokenRingInterface.py:213
 msgid "Automatically obtain IP address settings with:"
 msgstr "தானாகவே IP முகவரியை அமைத்துக்கொள் "
 
-#: .././src/netconfpkg/gui/GUI_functions.py:566
+#: .././src/netconfpkg/gui/GUI_functions.py:87
+#, python-format
+msgid ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+
+#: .././src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+
+#: .././src/netconfpkg/gui/GUI_functions.py:584
 #, python-format
 msgid ""
 "Failed to run:\n"
 "%s"
 msgstr "%s இயக்கம் தோல்வியடைந்தது"
 
-#: .././src/netconfpkg/gui/GUI_functions.py:569
+#: .././src/netconfpkg/gui/GUI_functions.py:587
 msgid "Succeeded. Please read the output."
 msgstr "வெற்றி. விளைவை படிக்கவும்."
 
@@ -606,7 +612,7 @@ msgstr "குறைவு "
 #: .././src/netconfpkg/gui/modemconfig.py:140
 #: .././src/netconfpkg/gui/ModemDruid.glade.h:5
 #: .././src/netconfpkg/gui/modemconfig.glade.h:5
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:19
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:18
 msgid "Medium"
 msgstr "ஊடகம்"
 
@@ -624,43 +630,62 @@ msgstr "உயர்ந்த"
 msgid "Very High"
 msgstr "மிக உயர்ந்த"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:119
+#: .././src/netconfpkg/gui/WirelessInterface.py:35
+#: .././src/netconfpkg/gui/wirelessconfig.py:38
+msgid "Ad-Hoc"
+msgstr "Ad-Hoc"
+
+#: .././src/netconfpkg/gui/WirelessInterface.py:36
+#: .././src/netconfpkg/gui/wirelessconfig.py:39
+msgid "Managed"
+msgstr "கையாளப்பட்டது"
+
+#: .././src/netconfpkg/gui/WirelessInterface.py:37
+#: .././src/netconfpkg/gui/wirelessconfig.py:40
+msgid "Master"
+msgstr ""
+
+#: .././src/netconfpkg/gui/WirelessInterface.py:152
 msgid "Wireless connection"
 msgstr " கம்பியில்லா இணைப்பு"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:125
+#: .././src/netconfpkg/gui/WirelessInterface.py:158
 msgid "Create a new wireless connection."
 msgstr "புதிய கம்பியில்லா இணைப்பை உருவாக்கு "
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:252
+#: .././src/netconfpkg/gui/WirelessInterface.py:231
+msgid "BitRate"
+msgstr ""
+
+#: .././src/netconfpkg/gui/WirelessInterface.py:295
 msgid "Other Wireless Card"
 msgstr "கம்பியில்லா சாதன அமைவு"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:291
+#: .././src/netconfpkg/gui/WirelessInterface.py:334
 msgid "Mode:"
 msgstr "பாங்கு:"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:292
+#: .././src/netconfpkg/gui/WirelessInterface.py:335
 msgid "ESSID (network ID):"
 msgstr "ESSID (வலைப்பின்னல்அடையாளம்):"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:294
+#: .././src/netconfpkg/gui/WirelessInterface.py:337
 msgid "Automatic"
 msgstr "தானாக"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:298
+#: .././src/netconfpkg/gui/WirelessInterface.py:341
 msgid "Channel:"
 msgstr "சேனல்:"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:299
+#: .././src/netconfpkg/gui/WirelessInterface.py:342
 msgid "Transmit rate:"
 msgstr "அனுப்பும் விகிதம்:"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:300
+#: .././src/netconfpkg/gui/WirelessInterface.py:343
 msgid "Key: "
 msgstr "விசை:"
 
-#: .././src/netconfpkg/gui/WirelessInterface.py:306
+#: .././src/netconfpkg/gui/WirelessInterface.py:349
 msgid "encryption disabled"
 msgstr "குறியாக்கம் செயல்நீக்கப்பட்டது"
 
@@ -774,52 +799,52 @@ msgstr "எதுவும் இல்லை"
 msgid "Modem Dialup Configuration"
 msgstr "மோடம் டயல் அப் அமைப்பு"
 
-#: .././src/netconfpkg/gui/maindialog.py:292
+#: .././src/netconfpkg/gui/maindialog.py:261
 msgid "Loading configuration..."
 msgstr "அமைப்பை ஏற்றுகிறது..."
 
-#: .././src/netconfpkg/gui/maindialog.py:300
+#: .././src/netconfpkg/gui/maindialog.py:269
 msgid "Loading device configuration..."
 msgstr "சதன அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது"
 
-#: .././src/netconfpkg/gui/maindialog.py:305
+#: .././src/netconfpkg/gui/maindialog.py:274
 msgid "Loading hardware configuration..."
 msgstr "வன்பொருள் அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது"
 
-#: .././src/netconfpkg/gui/maindialog.py:310
+#: .././src/netconfpkg/gui/maindialog.py:279
 msgid "Loading profile configuration..."
 msgstr "விவர அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது"
 
-#: .././src/netconfpkg/gui/maindialog.py:315
+#: .././src/netconfpkg/gui/maindialog.py:284
 msgid "Loading IPsec configuration..."
 msgstr "IPsec அமைப்பை உள்வாங்கிக் கொண்டிருக்கிறது..."
 
-#: .././src/netconfpkg/gui/maindialog.py:320
+#: .././src/netconfpkg/gui/maindialog.py:289
 msgid "Testing configuration set..."
 msgstr "அமைப்பு சோதிக்கப்படுகிறது.."
 
-#: .././src/netconfpkg/gui/maindialog.py:351
+#: .././src/netconfpkg/gui/maindialog.py:320
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "நடப்பில் உள்ள விவரம்%s (திருத்தப்பட்ட)"
 
-#: .././src/netconfpkg/gui/maindialog.py:355
+#: .././src/netconfpkg/gui/maindialog.py:324
 #, python-format
 msgid "Active profile: %s"
 msgstr "நடப்பில் உள்ள விவரம்:%s"
 
-#: .././src/netconfpkg/gui/maindialog.py:363
+#: .././src/netconfpkg/gui/maindialog.py:332
 msgid "Saving configuration..."
 msgstr "அமைப்பு சேமிக்கப்படுகிறது..."
 
-#: .././src/netconfpkg/gui/maindialog.py:375
+#: .././src/netconfpkg/gui/maindialog.py:344
 #, python-format
 msgid ""
 "Error saving configuration!\n"
 "%s"
 msgstr " %s வடிவமைப்பு சேமிப்புத் தவறு"
 
-#: .././src/netconfpkg/gui/maindialog.py:378
+#: .././src/netconfpkg/gui/maindialog.py:347
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
@@ -827,137 +852,138 @@ msgstr ""
 "மாற்றங்கள் சேமிக்கப்பட்டுள்ளது.தாங்கள் வலைப் பின்னலையும் அல்லது வலைப் பின்னல் சேவையையும் "
 "மீண்டும் துவக்க வேண்டியிருக்கும்.அல்லது கணிணியை மீண்டும் துவக்கவும்"
 
-#: .././src/netconfpkg/gui/maindialog.py:387
+#: .././src/netconfpkg/gui/maindialog.py:356
 msgid "Saving device configuration..."
 msgstr "அமைப்பு கோப்பு சேமிப்படுகிறது...."
 
-#: .././src/netconfpkg/gui/maindialog.py:394
+#: .././src/netconfpkg/gui/maindialog.py:363
 msgid "Saving hardware configuration..."
 msgstr "வன்பொருள் அமைப்பை சேமித்துக்கொண்டிருக்கிறது"
 
-#: .././src/netconfpkg/gui/maindialog.py:401
+#: .././src/netconfpkg/gui/maindialog.py:370
 msgid "Saving profile configuration..."
 msgstr "விவர அமைப்பை சேமித்துக்கொண்டிருக்கிறது"
 
-#: .././src/netconfpkg/gui/maindialog.py:408
+#: .././src/netconfpkg/gui/maindialog.py:377
 msgid "Saving IPsec configuration..."
 msgstr "IPsec அமைப்பை சேமித்துக்கொண்டிருக்கிறது"
 
-#: .././src/netconfpkg/gui/maindialog.py:431
+#: .././src/netconfpkg/gui/maindialog.py:394
 msgid "Updating devices..."
 msgstr "சாதனங்களை புதுப்பித்தல்...."
 
-#: .././src/netconfpkg/gui/maindialog.py:495
+#: .././src/netconfpkg/gui/maindialog.py:458
 msgid "Updating hardware..."
 msgstr "வன்பொருள்களை புதுப்பித்தல் "
 
-#: .././src/netconfpkg/gui/maindialog.py:591
+#: .././src/netconfpkg/gui/maindialog.py:536
 msgid "Updating profiles..."
 msgstr "விவரங்களை புதுப்பித்தல்...."
 
-#: .././src/netconfpkg/gui/maindialog.py:708
-#: .././src/netconfpkg/gui/maindialog.py:804
+#: .././src/netconfpkg/gui/maindialog.py:649
+#: .././src/netconfpkg/gui/maindialog.py:745
 msgid "Do you want to save your changes?"
 msgstr "மாற்றங்களை சேமிக்க வேண்டுமா?"
 
-#: .././src/netconfpkg/gui/maindialog.py:869
+#: .././src/netconfpkg/gui/maindialog.py:810
 msgid "The Loopback device can not be edited!"
 msgstr "மீளச்செய்யும் சாதனத்தை மாற்ற முடியவில்லை"
 
-#: .././src/netconfpkg/gui/maindialog.py:873
+#: .././src/netconfpkg/gui/maindialog.py:814
 msgid "Edit device..."
 msgstr "சாதனத்தை திருத்து.."
 
-#: .././src/netconfpkg/gui/maindialog.py:911
+#: .././src/netconfpkg/gui/maindialog.py:852
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "%s சாதனத்தின் வகையை மாற்ற முடியாது.!"
 
-#: .././src/netconfpkg/gui/maindialog.py:930
+#: .././src/netconfpkg/gui/maindialog.py:871
 msgid "The Loopback device can not be removed!"
 msgstr "மீளச்செய்யும் சாதனத்தை நீக்க முடியவில்லை"
 
-#: .././src/netconfpkg/gui/maindialog.py:934
+#: .././src/netconfpkg/gui/maindialog.py:875
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "சாதனத்தை நீக்க வேண்டுமா\"%s\"?"
 
-#: .././src/netconfpkg/gui/maindialog.py:969
-#: .././src/netconfpkg/gui/maindialog.py:1006
-#: .././src/netconfpkg/gui/maindialog.py:1775
-#: .././src/netconfpkg/gui/maindialog.py:1805
+#: .././src/netconfpkg/gui/maindialog.py:910
+#: .././src/netconfpkg/gui/maindialog.py:947
+#: .././src/netconfpkg/gui/maindialog.py:1693
+#: .././src/netconfpkg/gui/maindialog.py:1723
 msgid "You have made some changes in your configuration."
 msgstr "அமைப்பில் மாற்றங்கள் செய்துள்ளீர்கள்"
 
-#: .././src/netconfpkg/gui/maindialog.py:970
+#: .././src/netconfpkg/gui/maindialog.py:911
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "வலைப்பின்னல் சாதனத்தை செயல்படுத்த %s,  மாற்றங்களை சேமிக்க வேண்டும்"
 
-#: .././src/netconfpkg/gui/maindialog.py:972
-#: .././src/netconfpkg/gui/maindialog.py:1009
-#: .././src/netconfpkg/gui/maindialog.py:1778
-#: .././src/netconfpkg/gui/maindialog.py:1808
+#: .././src/netconfpkg/gui/maindialog.py:913
+#: .././src/netconfpkg/gui/maindialog.py:950
+#: .././src/netconfpkg/gui/maindialog.py:1696
+#: .././src/netconfpkg/gui/maindialog.py:1726
 msgid "Do you want to continue?"
 msgstr "தொடர விருப்பமா?"
 
-#: .././src/netconfpkg/gui/maindialog.py:1007
+#: .././src/netconfpkg/gui/maindialog.py:948
 #, python-format
 msgid "To deactivate the network device %s, the changes have to be saved."
 msgstr "வலைப்பின்னல் சாதனத்தை செயல்படுத்த %s, மாற்றங்களை சேமிக்க வேண்டும்"
 
-#: .././src/netconfpkg/gui/maindialog.py:1158
+#: .././src/netconfpkg/gui/maindialog.py:1090
 msgid "The Loopback device can not be disabled!"
 msgstr "மீளச்செய்யும் சாதனத்தை செயலிழக்க செய்ய முடியவில்லை"
 
-#: .././src/netconfpkg/gui/maindialog.py:1438
-#: .././src/netconfpkg/gui/maindialog.py:1518
+#: .././src/netconfpkg/gui/maindialog.py:1356
+#: .././src/netconfpkg/gui/maindialog.py:1436
 msgid "The name may only contain letters and digits!"
 msgstr "பெயரில் எண்களும் எழுத்துக்களும் மட்டும் இருக்க வேண்டும்"
 
-#: .././src/netconfpkg/gui/maindialog.py:1443
-#: .././src/netconfpkg/gui/maindialog.py:1523
+#: .././src/netconfpkg/gui/maindialog.py:1361
+#: .././src/netconfpkg/gui/maindialog.py:1441
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "விவரத்திற்கு பெயர்தர முடியவில்லை \"%s\"!"
 
-#: .././src/netconfpkg/gui/maindialog.py:1449
-#: .././src/netconfpkg/gui/maindialog.py:1529
+#: .././src/netconfpkg/gui/maindialog.py:1367
+#: .././src/netconfpkg/gui/maindialog.py:1447
 msgid "The profile name already exists!"
 msgstr "விவரப்பெயர் ஏற்கனவே உள்ளது"
 
-#: .././src/netconfpkg/gui/maindialog.py:1496
+#: .././src/netconfpkg/gui/maindialog.py:1414
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "விவரம் \"%s\" பெயர்மாற்ற முடியாது"
 
-#: .././src/netconfpkg/gui/maindialog.py:1551
+#: .././src/netconfpkg/gui/maindialog.py:1469
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "விவரம் \"%s\" நீக்க முடியாது"
 
-#: .././src/netconfpkg/gui/maindialog.py:1557
+#: .././src/netconfpkg/gui/maindialog.py:1475
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "விவரத்தை நீக்க வேண்டுமா\"%s\"?"
 
-#: .././src/netconfpkg/gui/maindialog.py:1631
-msgid "Sorry, there is nothing to be edited, or this type cannot be edited yet."
+#: .././src/netconfpkg/gui/maindialog.py:1549
+msgid ""
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 "மன்னிக்கவும், இங்கு தொகுக்ககூடியவை ஏதுமில்லை. அல்லது இந்த வகையை இன்னும் தொகுக்கும் வசதி "
 "இல்லை."
 
-#: .././src/netconfpkg/gui/maindialog.py:1649
+#: .././src/netconfpkg/gui/maindialog.py:1567
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "நீக்கவேண்டுமா \"%s\"?"
 
-#: .././src/netconfpkg/gui/maindialog.py:1662
+#: .././src/netconfpkg/gui/maindialog.py:1580
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "பயன்படுத்திய சாதனங்களை நீக்க விருப்பமா\"%s\"?"
 
-#: .././src/netconfpkg/gui/maindialog.py:1693
+#: .././src/netconfpkg/gui/maindialog.py:1611
 msgid ""
 "This software is distributed under the GPL. Please report bugs to Red Hat's "
 "bug tracking system: http://bugzilla.redhat.com/"
@@ -965,12 +991,12 @@ msgstr ""
 "இந் த மென்பொருள் GPL உரிமத்தின் கீழ் விநியோகிக்கப்படுகிறது. தயவு செய்து  Red Hat இன் "
 "வழு நீக்கும் அமைப்பில் : http://bugzilla.redhat.com/ வழுவை அனுப்பவும்..redhat.com/"
 
-#: .././src/netconfpkg/gui/maindialog.py:1776
+#: .././src/netconfpkg/gui/maindialog.py:1694
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "IPsec இணைப்பைப்பயன்படுத்த %s, மாற்றங்கள் சேமிக்கப்பட்டது."
 
-#: .././src/netconfpkg/gui/maindialog.py:1806
+#: .././src/netconfpkg/gui/maindialog.py:1724
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "IPsec இணைப்பைப்பயன்படுத்த %s, மாற்றங்கள் சேமிக்கப்பட்டது."
@@ -992,8 +1018,10 @@ msgstr ""
 "முயற்சிக்கவும்."
 
 #: .././src/netconfpkg/gui/editipsec.py:217
-msgid "Please enter a unique security parameter index between 256 and 4294967295."
-msgstr "256 மற்றும் 4294967295க்கு இடைப்பட்ட தனித்தன்மையான மதிப்புரு அகரவரிசையை உள்ளிடவும்."
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr ""
+"256 மற்றும் 4294967295க்கு இடைப்பட்ட தனித்தன்மையான மதிப்புரு அகரவரிசையை உள்ளிடவும்."
 
 #: .././src/netconfpkg/gui/tokenringhardware.py:65
 #, python-format
@@ -1078,7 +1106,7 @@ msgstr "தானாக"
 msgid "manual"
 msgstr "கைம்முறை"
 
-#: .././src/netconfpkg/NCDialup.py:38 .././src/netconfpkg/NC_functions.py:152
+#: .././src/netconfpkg/NCDialup.py:38 .././src/netconfpkg/NC_functions.py:150
 #: .././src/netconfpkg/gui/ModemDruid.glade.h:7
 #: .././src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -1385,32 +1413,34 @@ msgstr ""
 "தயவு செய்து ஏதாவது வேறொரு வன்பொருள்\n"
 "சாதனத்தை தேர்வு செய்யவும் அல்லது செயல்படுத்தவும்."
 
-#: .././src/netconfpkg/NC_functions.py:101
+#: .././src/netconfpkg/NC_functions.py:99
 msgid "Common"
 msgstr "பொது"
 
-#: .././src/netconfpkg/NC_functions.py:150
+#: .././src/netconfpkg/NC_functions.py:148
 #: .././src/netconfpkg/gui/ModemDruid.glade.h:2
 #: .././src/netconfpkg/gui/modemconfig.glade.h:2
 msgid "Hardware (CRTSCTS)"
 msgstr "வன்பொருள் (CRTSCTS)"
 
-#: .././src/netconfpkg/NC_functions.py:151
+#: .././src/netconfpkg/NC_functions.py:149
 #: .././src/netconfpkg/gui/ModemDruid.glade.h:10
 #: .././src/netconfpkg/gui/modemconfig.glade.h:10
 msgid "Software (XON/XOFF)"
 msgstr "மென்பொருள் (XON/XOFF)"
 
-#: .././src/netconfpkg/NC_functions.py:230
-msgid "Shall the following packages, which are needed on your system, be installed?"
+#: .././src/netconfpkg/NC_functions.py:228
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr "தங்கள் கணிணியினால் தேவைப்படும் பல பணித்தொகுப்புகளை நிறுவலாமா?"
 
-#: .././src/netconfpkg/NC_functions.py:243
-msgid "You have to install the following packages, which are needed on your system!"
+#: .././src/netconfpkg/NC_functions.py:241
+msgid ""
+"You have to install the following packages, which are needed on your system!"
 msgstr "தாங்கள் தங்கள் கணிணிக்கு தேவைப்படும் கீழ்காணும் பணித்தொகுப்புகளை நிறுவ வேண்டும்."
 
-#: .././src/netconfpkg/NC_functions.py:762
-#: .././src/netconfpkg/NC_functions.py:773
+#: .././src/netconfpkg/NC_functions.py:761
+#: .././src/netconfpkg/NC_functions.py:772
 #, python-format
 msgid ""
 "Error removing\n"
@@ -1420,7 +1450,7 @@ msgstr ""
 "%s:\n"
 "%s! நீக்கல் தவறு"
 
-#: .././src/netconfpkg/NC_functions.py:793
+#: .././src/netconfpkg/NC_functions.py:792
 #, python-format
 msgid ""
 "Error copying \n"
@@ -1432,7 +1462,7 @@ msgstr ""
 " முதல் %s:\n"
 "%s!"
 
-#: .././src/netconfpkg/NC_functions.py:803
+#: .././src/netconfpkg/NC_functions.py:802
 #, python-format
 msgid ""
 "Error linking \n"
@@ -1444,7 +1474,7 @@ msgstr ""
 " %s:\n"
 "%s!"
 
-#: .././src/netconfpkg/NC_functions.py:813
+#: .././src/netconfpkg/NC_functions.py:812
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -1456,14 +1486,14 @@ msgstr ""
 " %s:\n"
 "%s!"
 
-#: .././src/netconfpkg/NC_functions.py:821
+#: .././src/netconfpkg/NC_functions.py:820
 #, python-format
 msgid ""
 "Error creating directory!\n"
 "%s"
 msgstr "தொகுப்பினை உருவாக்குவதில் தவறு: %s"
 
-#: .././src/netconfpkg/NC_functions.py:943
+#: .././src/netconfpkg/NC_functions.py:942
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s ஐ சாதனத்தில் இணைத்து %s விவரத்தில் சேர்கிறது."
@@ -1487,46 +1517,46 @@ msgstr "அமைக்கப்பட்டது"
 msgid "ok"
 msgstr "சரி"
 
-#: .././src/netconfpkg/NCDevice.py:187
+#: .././src/netconfpkg/NCDevice.py:198
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, சாதனம் குறிப்பிடப்படவில்லை அல்லது புனைப்பெயர் காணவில்லை"
 
-#: .././src/netconfpkg/NCDevice.py:230
+#: .././src/netconfpkg/NCDevice.py:241
 #, python-format
 msgid "Static routes file %s is invalid"
 msgstr "நிலையான பாதை கோப்பு %s செல்லாது"
 
-#: .././src/netconfpkg/NCDevice.py:379
-#: .././src/netconfpkg/plugins/NCDevIsdn.py:73
+#: .././src/netconfpkg/NCDevice.py:401
+#: .././src/netconfpkg/plugins/NCDevIsdn.py:77
 msgid "Network device activating..."
 msgstr "வலைப் பின்னல் சாதனம் செயல் படுத்தப்பட்டள்ளது"
 
-#: .././src/netconfpkg/NCDevice.py:380
-#: .././src/netconfpkg/plugins/NCDevIsdn.py:74
+#: .././src/netconfpkg/NCDevice.py:402
+#: .././src/netconfpkg/plugins/NCDevIsdn.py:78
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr " %s வலைப் பின்னல் சாதனம் செயல் படுத்தப்படுகிறது. தயவு செய்து காத்திருக்கவும்..."
 
-#: .././src/netconfpkg/NCDevice.py:382
-#: .././src/netconfpkg/plugins/NCDevIsdn.py:76
+#: .././src/netconfpkg/NCDevice.py:404
+#: .././src/netconfpkg/plugins/NCDevIsdn.py:80
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "வலைப்பின்னல் சாதனத்தை செயல்படுத்த முடிவில்லை %s!\n"
 
-#: .././src/netconfpkg/NCDevice.py:399
-#: .././src/netconfpkg/plugins/NCDevIsdn.py:97
+#: .././src/netconfpkg/NCDevice.py:421
+#: .././src/netconfpkg/plugins/NCDevIsdn.py:101
 msgid "Network device deactivating..."
 msgstr "வலைப் பின்னல் சாதனம் செயலிழந்துகொண்டிருக்கிறது. "
 
-#: .././src/netconfpkg/NCDevice.py:400
-#: .././src/netconfpkg/plugins/NCDevIsdn.py:98
+#: .././src/netconfpkg/NCDevice.py:422
+#: .././src/netconfpkg/plugins/NCDevIsdn.py:102
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "வலைப்பின்னல் சாதனம் %s, செயலிழந்துகொண்டிருக்கிறது. தயவுசெய்து காத்திருக்கவும்.."
 
-#: .././src/netconfpkg/NCDevice.py:402
-#: .././src/netconfpkg/plugins/NCDevIsdn.py:100
+#: .././src/netconfpkg/NCDevice.py:424
+#: .././src/netconfpkg/plugins/NCDevIsdn.py:104
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "வலைப்பின்னல் சாதனத்தை செயலிழக்க செய்ய முடியவில்லை %s!\n"
@@ -1595,7 +1625,8 @@ msgstr "உங்கள் ISP தந்த நுழைவுப்பெயர
 #: .././src/netconfpkg/gui/DialupDruid.glade.h:11
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:21
 #: .././src/netconfpkg/gui/dslconfig.glade.h:11
-msgid "Enter the name of this configuration, usually just the name of your ISP."
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr "இந் த வடிவமைப்புக்கான பெயரை உள்ளிடவும், பொதுவாக  ISP யின் பெயர்"
 
 #: .././src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
@@ -1761,7 +1792,7 @@ msgid "A_rea code:"
 msgstr "(_r)வட்டார குறியீடு:"
 
 #: .././src/netconfpkg/gui/DialupDruid.glade.h:3
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:3
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "Automatically obtain _DNS information from provider"
 msgstr "_DNS தகவலை இணையசேவை தருபவரிடமிருந்து தானாகவே பெற்றுக்கொள்"
 
@@ -1812,7 +1843,7 @@ msgid "Internet Provider"
 msgstr "இணையசேவை தருபவர்"
 
 #: .././src/netconfpkg/gui/DialupDruid.glade.h:16
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:17
 msgid "Manual IP Address Settings"
 msgstr "IP முகவரியை கைம்முறையாக அமை."
 
@@ -1959,7 +1990,6 @@ msgstr "ஈத்தர்நெட் அட்டை"
 
 #: .././src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: .././src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
 msgid "MTU:"
 msgstr "MTU: "
@@ -2110,7 +2140,7 @@ msgstr "_அளிப்பவரை தேர்வுசெய்..."
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:2
 #: .././src/netconfpkg/gui/dslconfig.glade.h:1
 #: .././src/netconfpkg/gui/ethernetconfig.glade.h:1
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:6
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:5
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:2
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:1
 msgid "Allow all _users to enable and disable the device"
@@ -2128,7 +2158,7 @@ msgstr "தொலை கூட்டாளிக்கான அமைப்ப�
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:11
 #: .././src/netconfpkg/gui/dslconfig.glade.h:5
 #: .././src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:7
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:4
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:3
 msgid "Enable IPv_6 configuration for this interface"
@@ -2137,8 +2167,8 @@ msgstr "இந்த இடைமுகத்திற்கான IPv_6 அம�
 #: .././src/netconfpkg/gui/cipeconfig.glade.h:8
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:45
 #: .././src/netconfpkg/gui/dslconfig.glade.h:18
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: .././src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:12
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:8
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:5
 msgid "_Activate device when computer starts"
@@ -2147,8 +2177,8 @@ msgstr "(_A)கணினி துவங்கும் போது சாத�
 #: .././src/netconfpkg/gui/cipeconfig.glade.h:9
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:46
 #: .././src/netconfpkg/gui/dslconfig.glade.h:19
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: .././src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:13
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:9
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:6
 msgid "_Activate device when parent device starts"
@@ -2157,8 +2187,8 @@ msgstr "பெற்றோர் சாதனத்தைத் துவங்�
 #: .././src/netconfpkg/gui/cipeconfig.glade.h:11
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:56
 #: .././src/netconfpkg/gui/dslconfig.glade.h:21
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: .././src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:11
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:8
 msgid "_General"
@@ -2167,8 +2197,8 @@ msgstr "பொது"
 #: .././src/netconfpkg/gui/cipeconfig.glade.h:14
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:59
 #: .././src/netconfpkg/gui/dslconfig.glade.h:26
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:21
+#: .././src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:20
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:14
 #: .././src/netconfpkg/gui/editipsec.glade.h:38
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:10
@@ -2178,8 +2208,8 @@ msgstr "(_N)புனைப்பெயர்:"
 #: .././src/netconfpkg/gui/cipeconfig.glade.h:16
 #: .././src/netconfpkg/gui/dialupconfig.glade.h:64
 #: .././src/netconfpkg/gui/dslconfig.glade.h:29
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:10
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: .././src/netconfpkg/gui/ethernetconfig.glade.h:9
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:21
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:16
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:12
 msgid "_Route"
@@ -2476,7 +2506,7 @@ msgid "_AC-name:"
 msgstr "_AC-பெயர்:"
 
 #: .././src/netconfpkg/gui/dslconfig.glade.h:22
-#: .././src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: .././src/netconfpkg/gui/ethernetconfig.glade.h:7
 #: .././src/netconfpkg/gui/tokenringconfig.glade.h:12
 #: .././src/netconfpkg/gui/ptpconfig.glade.h:9
 msgid "_Hardware Device"
@@ -2574,6 +2604,10 @@ msgstr "<b>D தட நெறிமுறை</b>"
 #: .././src/netconfpkg/gui/isdnhardware.glade.h:8
 msgid "ISDN Adapters Configuration"
 msgstr "ISDN இணைப்பான் அமைப்பு"
+
+#: .././src/netconfpkg/gui/modemconfig.glade.h:6
+msgid "Modem Configuration"
+msgstr "மோடம் அமைப்பு"
 
 #: .././src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
 #: .././src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
@@ -2699,43 +2733,38 @@ msgid "redhat network control - Properties"
 msgstr "Red Hat வலைப்பின்னல் கட்டுப்பாட்டுக்கான - பண்புகள்"
 
 #: .././src/netconfpkg/gui/sharedtcpip.glade.h:1
-#: .././src/netconfpkg/gui/editipsec.glade.h:1
-msgid "*"
-msgstr "* "
-
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:2
 msgid "A_ddress:"
 msgstr "(_d)முகவரி"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:4
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "தானாகவே _IP முகவரியை அமைத்துக்கொள் "
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:5
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:4
 msgid "Bind to _MAC address:"
 msgstr "_MAC விலாசத்தோடு அமை:"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:6
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:5
 msgid "DHCP Settings"
 msgstr "DHCP அமைவு"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:7
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:6
 msgid "Default ga_teway address:"
 msgstr "(_t)முன்இருந்த வாயிலின் முகவரி:"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:8
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:7
 msgid "Destination Network"
 msgstr "வலைப் பின்னல் இலக்கு"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:9
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:8
 msgid "Device _alias number:"
 msgstr "சாதனத்தின் மாற்று எண்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:9
 msgid "Difficulty level:"
 msgstr "கடினத்தன்மையின் மட்டம்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:11
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:10
 msgid ""
 "Each connection needs to be associated with a physical device which can be "
 "selected below."
@@ -2743,69 +2772,73 @@ msgstr ""
 "ஒவ்வொரு இணைப்பும் கீழே தேர்வு செய்யக்கூடிய ஒரு பருநிலை சாதனத்துடன் சேர்ந்துகொள்ள "
 "வேண்டியுள்ளது."
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:12
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:11
 msgid "Easy"
 msgstr "எளிமையான"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:13
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:12
 msgid "Gateway"
 msgstr "வாயில்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:14
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:13
 msgid "H_ostname (optional):"
 msgstr "(_o)புரவலன் பெயர் (விருப்ப)"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:15
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:14
 msgid "Hardware device:"
 msgstr "வன்பொருள் சாதனம்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:16
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:15
 msgid "IPsec Tunnel Settings"
 msgstr "IPsec பாதை அமைத்தல்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:17
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:16
 msgid "Local Network"
 msgstr "வளாக வலைப் பின்னல்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:20
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "இந்த சாதனத்திற்கான பாதுகாப்பின் மட்டத்தை தேர்வுசெய்யவும்."
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:21
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:20
 msgid "Prefix (Netmask)"
 msgstr "முன் ஒட்டு (Netmask) "
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:22
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:21
 msgid "Professional"
 msgstr "தொழில்ரீதியான"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:23
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:22
 msgid "Remote Host / GW"
 msgstr "தொடர்பில்லா புரவலன் / GW"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:24
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:23
 msgid "Remote Network"
 msgstr "தொடர்பில்லா வலைப் பின்னல்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:24
 msgid "Security Level"
 msgstr "பாதுகாப்பு மட்டம்"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Select the services you want to provide through this device"
 msgstr "இந்த சாதனத்தின் வழியாக நீங்கள் பெற விரும்பும் சேவையை தேர்வு செய்யவும்."
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Service"
 msgstr "சேவை"
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service Description"
 msgstr "சேவை வருணனை "
 
-#: .././src/netconfpkg/gui/sharedtcpip.glade.h:29
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Services"
 msgstr "சேவைகள்"
+
+#: .././src/netconfpkg/gui/sharedtcpip.glade.h:29
+msgid "Set MTU to:"
+msgstr ""
 
 #: .././src/netconfpkg/gui/sharedtcpip.glade.h:30
 msgid "Static Network Routes"
@@ -2883,20 +2916,21 @@ msgstr "2M"
 msgid "5.5M"
 msgstr "5.5M"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:5
-msgid "Ad-Hoc"
-msgstr "Ad-Hoc"
-
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:9
-msgid "Managed"
-msgstr "கையாளப்பட்டது"
-
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:8
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
 msgid "Network name (SSID):"
 msgstr "வலைப் பின்னல் பெயர்(SSID):"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronisation master or acts as an "
+"Access Point) or Auto."
+msgstr ""
+
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:10
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid ""
 "Used to manipulate encryption or scrambling keys and encryption mode. To set "
@@ -2906,45 +2940,45 @@ msgstr ""
 "மறையாக்கம் விசைகள் மற்றும் சிக்கலான விசைகளை மாற்ற உதவும். தற்போதைய மறையாக்க பாங்கை "
 "அமைக்க ஹெக்ஸ் டிஜிட்டை 0x க்கு பின் உள்ளிடவும்."
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:11
 msgid "Wireless Device Configuration"
 msgstr "கம்பியில்லா சாதன அமைவு"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:14
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
 msgid "_Auto"
 msgstr "(_A)தானாக"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:15
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
 msgid "_Channel:"
 msgstr "(_C)வழி:"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:17
 msgid "_Hardware device"
 msgstr "(_H)வன்பொருள் சாதனம்"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:18
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
 msgid "_Key (use 0x for hex):"
 msgstr "(_K)விசை (hexக்கு 0x ஐ பயன்படுத்து) :"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:19
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
 msgid "_Mode:"
 msgstr "(_M)வகை:"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:22
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
 msgid "_Specified:"
 msgstr "(_S)குறிப்பிடப்பட்ட:"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:23
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "_Transmit rate:"
 msgstr "(_T)அனுப்பும் விகிதம்:"
 
-#: .././src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: .././src/netconfpkg/gui/wirelessconfig.glade.h:24
 msgid "_Wireless Settings"
 msgstr "(_W)கப்பியில்லாஅமைப்புகள்"
 
@@ -3049,6 +3083,12 @@ msgstr "இலக்கு"
 msgid "Dev_ices"
 msgstr "(_c)சாதனங்கள்"
 
+#: .././src/netconfpkg/gui/maindialog.glade.h:10
+#: .././src/netconfpkg/gui/neat-control.glade.h:11
+#: .././src/netconfpkg/gui/infodialog.glade.h:1
+msgid "Device"
+msgstr "சாதனம்"
+
 #: .././src/netconfpkg/gui/maindialog.glade.h:11
 msgid "Do_main:"
 msgstr "(_m)களம்:"
@@ -3076,6 +3116,10 @@ msgstr "தற்போது கணினியில் நிறுவப்�
 #: .././src/netconfpkg/gui/maindialog.glade.h:17
 msgid "Monitor the selected device."
 msgstr "தேர்ந்தெடுக்கப்பட்ட சாதனத்தை கண்காணிக்கவும்."
+
+#: .././src/netconfpkg/gui/maindialog.glade.h:18
+msgid "Name"
+msgstr "பெயர்"
 
 #: .././src/netconfpkg/gui/maindialog.glade.h:20
 msgid "New Profile"
@@ -3120,7 +3164,8 @@ msgstr ""
 "சாதனங்களை ஒரே வன்பொருளுடன் தொடர்புபடுத்தலாம்."
 
 #: .././src/netconfpkg/gui/maindialog.glade.h:28
-msgid "You may configure network hardware physically attached to the computer here."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
 msgstr "இங்கு பருநிலையாக கணிணியுடன் இணைக்கப்பட்ட வன்பொருள்களை வடிவமைக்கலாம்."
 
 #: .././src/netconfpkg/gui/maindialog.glade.h:29
@@ -3202,6 +3247,10 @@ msgstr "நீங்கள் அமைக்க விரும்பும் 
 #: .././src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
 msgid "Wireless card"
 msgstr "கம்பி இல்லா அட்டை"
+
+#: .././src/netconfpkg/gui/editipsec.glade.h:1
+msgid "*"
+msgstr "* "
 
 #: .././src/netconfpkg/gui/editipsec.glade.h:2
 msgid "A_uthentication key:"
@@ -3433,3 +3482,38 @@ msgstr "அமைக்க வேண்டிய அட்டையைத் த
 msgid "_Point to Point (IP):"
 msgstr "_Point to Point (IP):"
 
+#~ msgid "Use DHCP"
+#~ msgstr "DHCP யை பயன்படுத்து"
+
+#~ msgid "Static IP"
+#~ msgstr "நிலையான IP"
+
+#~ msgid "Netmask"
+#~ msgstr "நெட் மாஸ்க்"
+
+#~ msgid "Default gateway IP"
+#~ msgstr "இயல்பான வாயிலின் IP"
+
+#~ msgid "Ok"
+#~ msgstr "சரி"
+
+#~ msgid "Ethernet Configuration"
+#~ msgstr "ஈத்தர்நெட் அமைப்பு"
+
+#~ msgid "ISP Phonenumber"
+#~ msgstr "ISP தொலைப்பேசி எண்"
+
+#~ msgid "ISP Login"
+#~ msgstr "ISP நுழைவுக்கான பெயர் "
+
+#~ msgid "ISP Password"
+#~ msgstr "ISP கடவுச்சொல்"
+
+#~ msgid "Modem Initstring"
+#~ msgstr "மோடம் அச்சுப்பொறி"
+
+#~ msgid "MSN"
+#~ msgstr "MSN "
+
+#~ msgid "ISDN Configuration"
+#~ msgstr "ISDN அமைப்பு"
