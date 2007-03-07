@@ -24,7 +24,7 @@ from netconfpkg.NC_functions import ETHERNET
 _devEthernetDialog = None
 _devEthernetWizard = None
 
-class DevEthernet(Device):
+class DevEthernet( Device ):
    """An object of class DevEthernet can be obtained by calling:
    
    df = getDeviceFactory()
@@ -50,45 +50,49 @@ class DevEthernet(Device):
    AutoDNS         - PEERDNS=yes|no - modify /etc/resolv.conf if peer uses
                      msdns extension (PPP only) or DNS{1,2} are set, or if
                      using pump or dhcpcd. default to "yes"."""
+                     
+   Type = ETHERNET
+   SubType = None
+   Priority = 0
    
-   def __init__(self, list = None, parent = None):
-      Device.__init__(self, list, parent)
+   def __init__( self, list = None, parent = None ):
+      Device.__init__( self, list, parent )
       self.Type = ETHERNET
        
-   def getDialog(self):
+   def getDialog( self ):
       """get the gtk.Dialog of the ethernet configuration dialog"""
-      dialog =  _devEthernetDialog(self)
-      if hasattr(dialog, "xml"):
-         return dialog.xml.get_widget("Dialog")
+      dialog =  _devEthernetDialog( self )
+      if hasattr( dialog, "xml" ):
+         return dialog.xml.get_widget( "Dialog" )
 
       return dialog
     
-   def getWizard(self):
+   def getWizard( self ):
       """get the wizard of the ethernet wizard"""
       return _devEthernetWizard
 
-   def isType(self, device):
+   def isType( self, device ):
       """returns true of the device is of the same type as this class"""
       if device.Type == ETHERNET:
          return true
-      if getDeviceType(device.Device) == ETHERNET:
+      if getDeviceType( device.Device ) == ETHERNET:
          return true
       return false
 
-def setDevEthernetDialog(dialog):
+def setDevEthernetDialog( dialog ):
    """Set the ethernet dialog class"""
    global _devEthernetDialog
    _devEthernetDialog = dialog
 
-def setDevEthernetWizard(wizard):
+def setDevEthernetWizard( wizard ):
    """Set the ethernet wizard class"""
    global _devEthernetWizard
    _devEthernetWizard = wizard
 
 _df = getDeviceFactory()
-_df.register(DevEthernet, ETHERNET)
+_df.register( DevEthernet )
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/06 14:15:06 $"
-__version__ = "$Revision: 1.10 $"
+__date__ = "$Date: 2007/03/07 14:00:39 $"
+__version__ = "$Revision: 1.11 $"
