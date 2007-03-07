@@ -18,49 +18,58 @@
 _hwFac = None
 
 def getHardwareFactory():
-    global _hwFac
+   global _hwFac
     
-    if _hwFac == None:
-        _hwFac = HardwareFactory()
+   if _hwFac == None:
+       _hwFac = HardwareFactory()
 
-    return _hwFac
+   return _hwFac
 
 from NC_functions import log
 from netconfpkg.NCHardware import Hardware
 import NCDevice
 
 class HardwareFactory(dict):
-    def register(self, theclass, hwtype, subtype = None):
-        if not issubclass(theclass, Hardware):
-            raise ValueError, "First argument has to be a subclass of Hardware!"        
-        if not subtype:
-            if self.has_key(hwtype):
-                #raise KeyError, "%s is already registered" % hwtype
-                log.log(1, "KeyError, %s is already registered" % hwtype)
-                return
-            else:
-                self[hwtype] = { 0 : theclass }
-        else:
-            if self.has_key(hwtype) and self[hwtype].has_key(subtype):
-                #raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
-                log.log(1, "KeyError %s.%s is already registered" % (hwtype, subtype))
-                return
-            else:
-                if not self.has_key(hwtype):
-                    self[hwtype] = {}
-                self[hwtype][subtype] = theclass
+   def register(self, theclass, hwtype = None, subtype = None):          
+      if not issubclass(theclass, Hardware):
+         raise ValueError, "First argument has to be a subclass of Hardware!"
 
-    def getHardwareClass(self, hwtype, subtype = None):        
-        if not self.has_key(hwtype):
-            log.log(1, "Error: %s not in HardwareFactory!" % hwtype)
-            return Hardware
-        if subtype and self[type].has_key(subtype):
-            return self[hwtype][subtype]
-        else:
-            return self[hwtype][0]
+      if not hwtype:
+         if hasattr(theclass, "Type"):
+            hwtype = theclass.Type
+         else:
+            return
+
+      if not subtype and hasattr(theclass, "SubType"):
+            subtype = theclass.SubType
+      
+      if not subtype:
+         if self.has_key(hwtype):
+            #raise KeyError, "%s is already registered" % hwtype
+            log.log(1, "KeyError, %s is already registered" % hwtype)
+            return
+         else:
+            self[hwtype] = { 0 : theclass }
+      else:
+         if self.has_key(hwtype) and self[hwtype].has_key(subtype):
+            #raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
+            log.log(1, "KeyError %s.%s is already registered" % (hwtype, subtype))
+            return
+         else:
+            if not self.has_key(hwtype):
+               self[hwtype] = {}
+            self[hwtype][subtype] = theclass
+
+   def getHardwareClass(self, hwtype, subtype = None):        
+      if not self.has_key(hwtype):
+         log.log(1, "Error: %s not in HardwareFactory!" % hwtype)
+         return Hardware
+      if subtype and self[type].has_key(subtype):
+         return self[hwtype][subtype]
+      else:
+         return self[hwtype][0]
             
-
 from netconfpkg.plugins import *
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2007/03/07 13:55:33 $"
+__version__ = "$Revision: 1.12 $"
