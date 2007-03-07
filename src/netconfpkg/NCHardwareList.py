@@ -34,14 +34,14 @@ from rhpl.executil import *
 ModInfo = None
 isdnmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
+    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
     isdnmodulelist = string.split(msg)
 except:
     pass
 
 wirelessmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/{kernel,unsupported}/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
+    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
     wirelessmodulelist = string.split(msg)
 except:
     pass
@@ -829,5 +829,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:40 $"
-__version__ = "$Revision: 1.78 $"
+__date__ = "$Date: 2007/03/07 13:57:35 $"
+__version__ = "$Revision: 1.79 $"
