@@ -11,8 +11,9 @@ DIE=0
 
 glib-gettextize --copy --force
 intltoolize --copy -f --automake
+aclocal -I m4
 
-autoreconf -i -m -f
+autoreconf -i -m -f -I m4
 cd $THEDIR
 
 $srcdir/configure --enable-maintainer-mode "$@"

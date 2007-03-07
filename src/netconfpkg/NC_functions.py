@@ -23,10 +23,10 @@ import sys
 import os
 import os.path
 import shutil
-from rhpl import ConfPAP
+from netconfpkg.conf import ConfPAP
+from netconfpkg.conf import Conf
+from netconfpkg.conf import ConfSMB
 from rhpl import ethtool
-from rhpl import Conf
-from rhpl import ConfSMB
 from NCException import NCException
 import UserList
 
@@ -407,10 +407,11 @@ def getDeviceType(devname):
 
     if type == ETHERNET:
         try:
+            from rhpl import iwlib
 	    # test for wireless
-	    info = ethtool.get_iwconfig(devname)
+	    info = iwlib.get_iwconfig(devname)
 	    type = WIRELESS
-        except IOError:
+        except:
 	    pass
         
     return type

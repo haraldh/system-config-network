@@ -32,7 +32,7 @@ __netconfpkg = sys.modules[__name__]
 
 __netconfpkg.Use_Alchemist = None
 
-from rhpl.genClass import GenClass_read_classfile
+from genClass import GenClass_read_classfile
 
 for _idl_file in [ "DeviceList.idl",
                    "HardwareList.idl",
@@ -66,6 +66,6 @@ del _cmd
 del __netconfpkg
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2007/03/07 13:44:40 $"
+__version__ = "$Revision: 1.21 $"
 

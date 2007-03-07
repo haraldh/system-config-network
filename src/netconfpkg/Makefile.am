@@ -1,4 +1,4 @@
-SUBDIRS=gui plugins tests
+SUBDIRS=gui tui plugins tests conf
 
 IDL_FILES = \
 	DeviceList.idl \
@@ -11,6 +11,7 @@ IDL_FILES = \
 
 PYTHON_FILES = \
 	__init__.py \
+	genClass.py \
 	ipcalc.py \
 	NCCallback.py \
 	NCCipe.py \
@@ -40,5 +41,5 @@ netconfpkg_PYTHON = $(PYTHON_FILES)
 
 execdir = $(sbindir)
 
-CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
+CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.pyc))
 

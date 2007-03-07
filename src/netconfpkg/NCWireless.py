@@ -22,7 +22,7 @@ import NC_functions
 
 import string
 
-from rhpl import Conf
+from netconfpkg.conf import Conf
 
 from netconfpkg import Wireless_base
 from NC_functions import *
@@ -92,5 +92,5 @@ class Wireless(Wireless_base):
         # conf.oldmode = 0600
         # conf.chmod(0600)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2007/03/07 13:44:40 $"
+__version__ = "$Revision: 1.21 $"

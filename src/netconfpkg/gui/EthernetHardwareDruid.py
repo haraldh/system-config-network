@@ -23,7 +23,7 @@ import gtk
 import gtk.glade
 import string
 import os
-from rhpl import Conf
+from netconfpkg.conf import Conf
 from ethernethardware import ethernetHardwareDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import NCHardwareList

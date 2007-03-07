@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 
-SUBDIRS = doc src po
+SUBDIRS = doc src po m4
 
 EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
 	neat-control.desktop.in pycheckrc \

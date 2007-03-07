@@ -22,8 +22,8 @@ import string
 import commands
 import math
 import NC_functions
-from rhpl import Conf
-from rhpl import ConfSMB
+from netconfpkg.conf import Conf
+from netconfpkg.conf import ConfSMB
 from NC_functions import *
 from netconfpkg import Device_base
 import NCDialup

@@ -393,6 +393,8 @@ class mainDialog:
         self.hydrateDevices()
         self.hydrateHardware()
         self.hydrateIPsec()
+        self.on_mainNotebook_switch_page(None, None,
+                                         self.active_page)
 
     def checkApply(self, ch = -1):
         if ch == -1:

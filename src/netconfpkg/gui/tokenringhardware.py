@@ -24,7 +24,7 @@ import signal
 import os
 
 import string
-from rhpl import Conf
+from netconfpkg.conf import Conf
 from netconfpkg.gui import GUI_functions
 from netconfpkg import *
 from netconfpkg.gui.HardwareDialog import HardwareDialog

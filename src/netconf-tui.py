@@ -11,7 +11,8 @@ from snack import *
 PROGNAME='system-config-network'
 
 import locale
-from rhpl import ethtool, exception
+from rhpl import ethtool
+from netconfpkg import exception
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
@@ -180,8 +181,12 @@ def selectDevice(screen):
     le = screen.width - 6
     if le <= 0: le = 5
     for dev in getDeviceList():
-        if not dev.getDialog():
+        try:
+            if not dev.getDialog():
+                continue
+        except:
             continue
+        
         l += 1
         for hw in getHardwareList():
             if hw.Name == dev.Device and hw.Description:

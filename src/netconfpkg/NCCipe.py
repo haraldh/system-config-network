@@ -22,7 +22,7 @@ import NC_functions
 from netconfpkg import Cipe_base
 import string
 
-from rhpl import Conf
+from netconfpkg.conf import Conf
 
 from NC_functions import *
 

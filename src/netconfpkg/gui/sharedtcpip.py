@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 ## Copyright (C) 2001-2006 Red Hat, Inc.
 ## Copyright (C) 2001-2006 Harald Hoyer <harald@redhat.com>
 
@@ -428,12 +426,6 @@ def dsl_hardware_dehydrate(xml, device):
     hw = omenu.get_child().get_label()
     device.Dialup.EthDevice = string.split(hw)[0]
 
-if __name__ == '__main__':
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    xml = gtk.glade.XML('sharedtcpip.glade', None, domain=GUI_functions.PROGNAME)
-    dhcp_init (xml, None)
-    gtk.main ()
-
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/08/02 12:59:44 $"
-__version__ = "$Revision: 1.40 $"
+__date__ = "$Date: 2007/03/07 13:44:41 $"
+__version__ = "$Revision: 1.41 $"

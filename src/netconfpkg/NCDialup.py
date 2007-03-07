@@ -18,12 +18,10 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
-from rhpl import ConfSMB
-
 import string
 
-from rhpl import Conf
-
+from netconfpkg.conf import Conf
+from netconfpkg.conf import ConfSMB
 from netconfpkg import Dialup_base
 import NCCompression
 from NC_functions import *
@@ -694,5 +692,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.71 $"
+__date__ = "$Date: 2007/03/07 13:44:40 $"
+__version__ = "$Revision: 1.72 $"

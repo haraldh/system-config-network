@@ -50,7 +50,7 @@ import os.path
 import signal
 
 try:
-    from rhpl.exception import handleException
+    from netconfpkg.exception import handleException
 except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
     if os.path.isfile("/usr/sbin/system-config-network-tui"):        
@@ -128,7 +128,7 @@ def splash_screen(gfx = None):
 def Usage():
     print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose")
 
-def main(splash = None):
+def runit(splash = None):
     from netconfpkg import NC_functions
     from netconfpkg.NCException import NCException
     log.set_loglevel(NC_functions.getVerboseLevel())
@@ -154,7 +154,7 @@ def main(splash = None):
 
         showprofile = 1
 
-        gnome.program_init(PROGNAME, PRG_VERSION)
+        gnome.program_init(PROGNAME, "scn")
         gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")        
 
         if progname == 'system-config-network-druid' or \
@@ -185,7 +185,7 @@ def main(splash = None):
 
 class BadUsage: pass
 
-if __name__ == '__main__':
+def main(cmdline):
     import getopt
     splash_window = None
     from netconfpkg import NC_functions
@@ -224,7 +224,7 @@ if __name__ == '__main__':
 
             if opt == '-h' or opt == "?" or opt == '--help':
                 Usage()
-                sys.exit(0)
+                return 0
 
             if opt == '-r' or opt == '--root':
                 chroot = val
@@ -234,7 +234,7 @@ if __name__ == '__main__':
 
     except (getopt.error, BadUsage):
         Usage()
-        sys.exit(1)    
+        return 1
 
     if not NC_functions.getDebugLevel():
         log.handler = log.syslog_handler
@@ -251,7 +251,7 @@ if __name__ == '__main__':
             from netconfpkg.gui import GUI_functions
             GUI_functions.generic_error_dialog (_("Please start system-config-network "
                                                  "with root permissions!\n"))
-            sys.exit(10)
+            return 10
 
     if chroot:
         NC_functions.prepareRoot(chroot)
@@ -264,7 +264,7 @@ if __name__ == '__main__':
         filename = tempfile.mktemp()
         prof = Profile(filename)
         try:
-            prof = prof.runcall(main)
+            prof = prof.runcall(runit)
         except SystemExit:
             pass
 
@@ -273,8 +273,11 @@ if __name__ == '__main__':
         s.strip_dirs().sort_stats('cumulative').print_stats(20)
         os.unlink(filename)               
     else:
-        main(splash)
+        runit(splash)
         
-    sys.exit(0)
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main(cmdline))
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

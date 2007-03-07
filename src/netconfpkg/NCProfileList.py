@@ -32,7 +32,7 @@ from netconfpkg import ProfileList_base
 from netconfpkg import Profile
 from netconfpkg import Host
 
-from rhpl import Conf
+from netconfpkg.conf import Conf
 
 from types import ListType
 

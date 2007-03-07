@@ -25,8 +25,8 @@ from NC_functions import *
 #from netconfpkg.NCDevice import Device
 from netconfpkg import DeviceList_base
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from rhpl import ConfSMB
-from rhpl import Conf
+from netconfpkg.conf import ConfSMB
+from netconfpkg.conf import Conf
 
 class DeviceList(DeviceList_base):
     def __init__(self, list = None, parent = None):
@@ -312,5 +312,5 @@ def getNextDev(base):
     return base + str(num)
                 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.64 $"
+__date__ = "$Date: 2007/03/07 13:44:40 $"
+__version__ = "$Revision: 1.65 $"

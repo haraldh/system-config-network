@@ -59,7 +59,7 @@ from netconfpkg import Control
 from netconfpkg.gui import *
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
-from rhpl.exception import handleException
+from netconfpkg.exception import handleException
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 device = None

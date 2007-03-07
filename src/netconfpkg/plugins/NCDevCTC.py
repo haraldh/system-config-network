@@ -50,6 +50,8 @@ class DevCTC(DevEthernet):
       
    def getDialog(self):
       """get the ctc configuration dialog"""
+      if not _devCTCDialog:
+         return None
       dialog =  _devCTCDialog(self)
       if hasattr(dialog, "xml"):
          return dialog.xml.get_widget("Dialog")

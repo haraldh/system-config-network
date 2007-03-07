@@ -2,7 +2,7 @@
 Summary: The GUI of the Network Adminstration Tool
 Name: @PACKAGE@
 Version: @VERSION@
-Release: @RPM_RELEASE@
+Release: @RPM_RELEASE@%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/redhat-config-network.html
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -10,7 +10,7 @@ Group: Applications/System
 BuildArch: noarch
 Obsoletes: isdn-config internet-config rp3 redhat-config-network
 Provides: redhat-config-network = %{version}
-BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp
+BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp, perl-XML-Parser
 Requires: %{name}-tui = %{version}-%{release}
 Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -24,14 +24,14 @@ Summary: The NEtwork Adminstration Tool
 Group: Applications/System 
 Obsoletes: netcfg, redhat-config-network-tui
 Provides: redhat-config-network-tui
-Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.93.2, rpm-python, newt, pciutils
+Requires: initscripts >= 0:5.99, usermode , kudzu, python, rhpl >= 0:0.193, rpm-python, newt, pciutils
 
 %description tui
 This is the network configuration tool,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %prep
-%setup
+%setup -q
 
 %configure
 
@@ -39,7 +39,7 @@ supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+make DESTDIR=$RPM_BUILD_ROOT install
 
 mkdir $RPM_BUILD_ROOT%{_datadir}/applications
 
@@ -60,6 +60,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_datadir}/system-config-network/pixmaps
 %{_datadir}/system-config-network/netconfpkg/gui
+%{_datadir}/system-config-network/netconf.py*
+%{_datadir}/system-config-network/neat-control.py*
 %{_sbindir}/system-config-network-gui
 %{_bindir}/neat-control
 %{_bindir}/system-control-network
@@ -68,10 +70,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
-%{_datadir}/system-config-network/help
-%{_datadir}/system-config-network/*.py*
 %dir %{_datadir}/system-config-network
+%{_datadir}/system-config-network/help
+%{_datadir}/system-config-network/netconf-cmd.py*
+%{_datadir}/system-config-network/netconf-tui.py*
+%{_datadir}/system-config-network/version.py*
 %dir %{_datadir}/system-config-network/netconfpkg
+%{_datadir}/system-config-network/netconfpkg/conf
+%{_datadir}/system-config-network/netconfpkg/tui
 %{_datadir}/system-config-network/netconfpkg/plugins
 %{_datadir}/system-config-network/netconfpkg/*.py*
 %{_datadir}/system-config-network/netconfpkg/*.idl
@@ -89,7 +95,40 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Mon Jan  8 2007 Harald Hoyer <harald@redhat.com> - 1.3.99%{?dist}
+- fixed #221289
+- Resolves: rhbz#221289
+
+* Fri Dec 15 2006 Harald Hoyer <harald@redhat.com> - 1.3.98%{?dist}
+- translation update (bug #216559)
+- Resolves: rhbz#216559
+
+* Tue Nov 28 2006 Harald Hoyer <harald@redhat.com> - 1.3.97%{?dist}
+- translation update
+
+* Thu Nov  2 2006 Harald Hoyer <harald@redhat.com> - 1.3.96%{?dist}
+- Resolves: rhbz #211980, rhbz #213181
+
+* Wed Oct  4 2006 Harald Hoyer <harald@redhat.com> - 1.3.95
+- translation update (bug #208886)
+- use rhpl.iwlib for wireless functions (bug #197954)
+- added perl-XML-Parser build requirement
+
+* Tue Aug 15 2006 Harald Hoyer <harald@redhat.com> - 1.3.94
+- translation update (bug #182650)
+
+* Tue Aug 15 2006 Harald Hoyer <harald@redhat.com> - 1.3.93
+- added tui subdir (bug #202560)
+
+* Fri Aug 11 2006 Harald Hoyer <harald@redhat.com> - 1.3.92
+- fixed #201659 
+- translation update
+
+* Tue Jul 25 2006 Harald Hoyer <harald@redhat.com> - 1.3.91
+- fixed "New Device" in text-mode
+
 * Tue Jul 18 2006 Harald Hoyer <harald@redhat.com> - 1.3.90
+- fixed:
 - [135014] MTU and MRU should be confiurable for ADSL
 - [141055] system-config-network needs to be able to set MTU
 - [149780] no GATEWAY, IPADDR and NETMASK, if BOOTPROTO=dhcp 

@@ -15,7 +15,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from rhpl import Conf
+from netconfpkg.conf import Conf
 from NC_functions import *
 from netconfpkg import IPsec_base
 

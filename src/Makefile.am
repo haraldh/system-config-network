@@ -4,7 +4,7 @@ PYTHON_FILES = netconf.py netconf-tui.py neat-control.py netconf-cmd.py version.
 
 EXTRA_DIST = $(PYTHON_FILES) providerdb module-info
 
-CLEANFILES := version.pyc $(notdir $(wildcard netconf_cmd.py*)) $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
+CLEANFILES := version.pyc $(notdir $(wildcard netconf_cmd.py*)) $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.pyc))
 
 execdir = $(sbindir)
 
@@ -32,7 +32,7 @@ moduleinfo_DATA = module-info
 
 install-exec-local: 
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir) $(DESTDIR)$(bindir)
-	install -m 0755 $(srcdir)/version.py $(DESTDIR)$(pkgdatadir)/
+	install -m 0644 $(srcdir)/version.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-cmd.py $(DESTDIR)$(pkgdatadir)/
 	install -m 0755 $(srcdir)/netconf-tui.py $(DESTDIR)$(pkgdatadir)/

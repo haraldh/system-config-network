@@ -42,6 +42,9 @@ class DevWireless(Device):
       return self.Wireless
    
    def getDialog(self):
+      if not _devWirelessDialog:
+         return None
+      
       dialog =  _devWirelessDialog(self)
       if hasattr(dialog, "xml"):
          return dialog.xml.get_widget("Dialog")
@@ -69,5 +72,5 @@ def setDevWirelessWizard(wizard):
 df = getDeviceFactory()
 df.register(DevWireless, WIRELESS)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2007/03/07 13:44:41 $"
+__version__ = "$Revision: 1.10 $"

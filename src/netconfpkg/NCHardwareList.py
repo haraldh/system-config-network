@@ -27,8 +27,8 @@ from netconfpkg import HardwareList_base
 from netconfpkg.NCHardware import *
 from NC_functions import *
 
-from rhpl.Conf import *
-from rhpl.ConfSMB import *
+from netconfpkg.conf.Conf import *
+from netconfpkg.conf.ConfSMB import *
 from rhpl.executil import *
 
 ModInfo = None
@@ -829,5 +829,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 15:18:13 $"
-__version__ = "$Revision: 1.77 $"
+__date__ = "$Date: 2007/03/07 13:44:40 $"
+__version__ = "$Revision: 1.78 $"

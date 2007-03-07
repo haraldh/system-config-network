@@ -1,5 +1,3 @@
-#!/usr/bin/python
-#
 # Python wrapper for ipcalc command line IP address manipulation tool
 # Copyright (c) 2001-2005 Red Hat, Inc. All rights reserved.
 #
@@ -80,5 +78,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2007/03/07 13:44:41 $"
+__version__ = "$Revision: 1.7 $"

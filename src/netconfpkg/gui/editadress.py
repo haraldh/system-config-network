@@ -86,9 +86,8 @@ class editAdressDialog:
 
     def dehydrate(self):
         # FIXME: [183337] system-config-network doesn't check route fields
-        
-        self.route.Address = string.split(self.xml.get_widget('addressEntry').get_text())
-        self.route.Netmask = string.split(self.xml.get_widget('netmaskEntry').get_text())
-        self.route.Gateway = string.split(self.xml.get_widget('gatewayEntry').get_text())
+        self.route.Address = string.strip(self.xml.get_widget('addressEntry').get_text())
+        self.route.Netmask = string.strip(self.xml.get_widget('netmaskEntry').get_text())
+        self.route.Gateway = string.strip(self.xml.get_widget('gatewayEntry').get_text())
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

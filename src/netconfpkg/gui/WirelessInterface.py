@@ -208,8 +208,9 @@ class WirelessInterface(InterfaceCreator):
 
         if self.device.Device != None:
             try:
-                info = ethtool.get_iwconfig(self.device.Device)
-            except IOError:
+                from rhpl import iwlib
+                info = iwlib.get_iwconfig(self.device.Device)
+            except:
                 pass
             else:
                 if info.has_key("Mode"):

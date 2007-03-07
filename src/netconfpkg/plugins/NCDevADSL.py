@@ -41,6 +41,8 @@ class DevADSL(Device):
       return self.Dialup
       
    def getDialog(self):
+      if not _devADSLDialog:
+         return None
       dialog =  _devADSLDialog(self)
       if hasattr(dialog, "xml"):
          return dialog.xml.get_widget("Dialog")
@@ -73,5 +75,5 @@ def setDevADSLWizard(wizard):
 df = getDeviceFactory()
 df.register(DevADSL, DSL)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/14 12:06:33 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2007/03/07 13:44:41 $"
+__version__ = "$Revision: 1.9 $"

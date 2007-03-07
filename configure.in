@@ -1,14 +1,14 @@
-AC_INIT(./acinclude.m4)
+AC_INIT(./aclocal.m4)
 
 MAJOR=1
-MINOR=3
-RELEASE=91
+MINOR=4
+RELEASE=0
 
 RPM_RELEASE=1
 
 AM_INIT_AUTOMAKE(system-config-network, $MAJOR.$MINOR.$RELEASE)
 
-ALL_LINGUAS="ar bg bn_IN bn bn_IN ca cs cy da de el en_EN en_GB es et fa fi fr gu he hi hr hu id is it ja ka ko ku lo mk ml mr ms nb nl no or pa pl pt_BR pt ru si sk sl sq sr sr@Latn sv ta tr uk ur vi zh_CN zh_TW"
+ALL_LINGUAS="ar as be bg bn_IN bn ca cs cy da de el en_EN en_GB es et fa fi fr gu he hi hr hu hy id is it ja ka kn ko ku lo mk ml mr ms my nb nl no or pa pl pt_BR pt ro ru si sk sl sq sr@Latn sr sv ta te tr uk ur vi zh_CN zh_TW"
 
 AM_PATH_PYTHON
 
@@ -24,6 +24,7 @@ AC_SUBST(RPM_RELEASE)
 AC_OUTPUT([
 Makefile
 config.h
+m4/Makefile
 doc/Makefile
 doc/figs/Makefile
 doc/stylesheet-images/Makefile
@@ -33,6 +34,8 @@ src/netconfpkg/Makefile
 src/netconfpkg/tests/Makefile
 src/netconfpkg/plugins/Makefile
 src/netconfpkg/gui/Makefile
+src/netconfpkg/tui/Makefile
+src/netconfpkg/conf/Makefile
 src/version.py
 system-config-network.spec
 po/Makefile.in
