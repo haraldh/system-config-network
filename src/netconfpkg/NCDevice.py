@@ -73,6 +73,10 @@ class ConfRoute( Conf.ConfShellVar ):
 
 # FIXME: [157630] system-config-networks needs options for setting default route and metric
 class Device( Device_base ):
+    Type = ETHERNET
+    SubType = None
+    Priority = 0
+   
     keydict = { 'Device' : 'DEVICE', 
                 'IP' : 'IPADDR', 
                 'Netmask' : 'NETMASK', 
