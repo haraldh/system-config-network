@@ -1267,6 +1267,7 @@ class mainDialog:
         self.checkApply()
             
     def on_hostsAddButton_clicked(self, *args):
+        # FIXME: Provide possibility to define order from /etc/hosts.conf
         if (self.ignore_widget_changes):
             return;
         profilelist = getProfileList()
@@ -1351,6 +1352,7 @@ class mainDialog:
         entry.emit_stop_by_name('insert_text')
 
     def on_profileAddMenu_activate (self, *args):
+        # FIXME: do not reset button state
         dialog = self.xml.get_widget("ProfileNameDialog")
         dialog.set_transient_for(self.dialog)
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
