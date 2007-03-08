@@ -37,10 +37,10 @@ class HwWireless(Hardware):
 
    def isType(self, hardware):
       if hardware.Type == WIRELESS:
-         return true
+         return True
       if getHardwareType(hardware.Hardware) == WIRELESS:
-         return true
-      return false
+         return True
+      return False
 
 def setHwWirelessDialog(dialog):
    global _hwEthernetDialog
@@ -53,5 +53,5 @@ def setHwWirelessWizard(wizard):
 df = getHardwareFactory()
 df.register(HwWireless, WIRELESS)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.8 $"

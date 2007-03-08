@@ -462,7 +462,7 @@ class HardwareList(HardwareList_base):
                            has_key(confkey):
                         hw.Card.__dict__[selfkey] = modules[\
                                hw.Card.ModuleName]['options'][confkey]
-                hw.setChanged(true)
+                hw.setChanged(True)
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
@@ -543,7 +543,7 @@ class HardwareList(HardwareList_base):
                                                                 ModuleName]\
                                                                 ['options']\
                                                                 [confkey]
-                    hw.setChanged(true)
+                    hw.setChanged(True)
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
@@ -712,11 +712,11 @@ class HardwareList(HardwareList_base):
                     wvdial[dev]['FlowControl'] = CRTSCTS
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
-        self.commit(changed=false)
+        self.commit(changed=False)
         #self.updateFromSystem()
 
     def save(self):
-        modules = getMyConfModules(refresh = true)
+        modules = getMyConfModules(refresh = True)
 
         # cleanup isdnconf
         isdn = NCisdnhardware.ConfISDN()
@@ -726,7 +726,7 @@ class HardwareList(HardwareList_base):
             hw.save()
 
         try:
-            wvdial = getMyWvDial(create_if_missing = false)
+            wvdial = getMyWvDial(create_if_missing = False)
         except:
             wvdial = None
             pass
@@ -829,5 +829,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:57:35 $"
-__version__ = "$Revision: 1.79 $"
+__date__ = "$Date: 2007/03/08 12:56:41 $"
+__version__ = "$Revision: 1.80 $"

@@ -71,13 +71,13 @@ class DevEthernet( Device ):
       """get the wizard of the ethernet wizard"""
       return _devEthernetWizard
 
-   def isType( self, device ):
-      """returns true of the device is of the same type as this class"""
+   def isType(self, device):
+      """returns True of the device is of the same type as this class"""
       if device.Type == ETHERNET:
-         return true
-      if getDeviceType( device.Device ) == ETHERNET:
-         return true
-      return false
+         return True
+      if getDeviceType(device.Device) == ETHERNET:
+         return True
+      return False
 
 def setDevEthernetDialog( dialog ):
    """Set the ethernet dialog class"""
@@ -94,5 +94,5 @@ _df.register( DevEthernet )
 
 del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 14:00:39 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.12 $"

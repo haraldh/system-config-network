@@ -208,7 +208,7 @@ class Conf:
     def nextline(self):
         self.line = min([self.line + 1, len(self.lines)])
     def findnextline(self, regexp=None):
-        # returns false if no more lines matching pattern
+        # returns False if no more lines matching pattern
         while self.line < len(self.lines):
             if regexp:
                 if hasattr(regexp, "search"):
@@ -342,7 +342,7 @@ class ConfShellVar(Conf):
         while self.findnextline(self.nextreg):
             # initialize dictionary of variable/name pairs
             var = self.getfields()
-	    # fields 1..n are false separations on "=" character in string,
+	    # fields 1..n are False separations on "=" character in string,
 	    # so we need to join them back together.
 	    var[1] = joinfields(var[1:len(var)], '=')
 	    if len(var[1]) and var[1][0] in '\'"':
@@ -1805,7 +1805,7 @@ class ConfSysctl(Conf):
         self.rewind()
         while self.findnextcodeline():
             var = self.getfields()
-	    # fields 1..n are false matches on "=" character in string,
+	    # fields 1..n are False matches on "=" character in string,
             # which is messed up, but try to deal with it
 	    var[1] = joinfields(var[1:len(var)], '=')
 	    # snip off leading and trailing spaces, which are legal (it's

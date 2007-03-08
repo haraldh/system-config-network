@@ -32,8 +32,8 @@ import UserList
 
 import string
 
-true = (1==1)
-false = not true
+True = (1==1)
+False = not True
 
 PROGNAME = "system-config-network"
 
@@ -374,7 +374,7 @@ def issamefile(file1, file2):
         s1 = os.stat(file1)
         s2 = os.stat(file2)
     except:
-        return false
+        return False
     return os.path.samestat(s1, s2)
 
 def getHardwareType(devname):
@@ -858,26 +858,26 @@ class ConfDevices(UserList.UserList):
 
 def testFilename(filename):
     if not len(filename):
-        return false
+        return False
     
     if (not os.access(filename, os.R_OK)) or \
            (not os.path.isfile(filename)) or \
            (os.path.islink(filename)):
-        return false
+        return False
 
     if filename[-1] == "~":
-        return false
+        return False
 
     if len(filename) > 7 and filename[:7] == '.rpmnew':
-        return false
+        return False
 
     if len(filename) > 8 and filename[:8] == '.rpmsave':
-        return false
+        return False
 
     if len(filename) > 8 and filename[:8] == '.rpmorig':
-        return false
+        return False
 
-    return true
+    return True
 
 def setRoot(root):
     netconfpkg.ROOT = root
@@ -906,7 +906,7 @@ class ConfKeys(Conf.ConfShellVar):
 
 __updatedNetworkScripts = 0
 
-def updateNetworkScripts(force = false):
+def updateNetworkScripts(force = False):
     global __updatedNetworkScripts
     
     if __updatedNetworkScripts and (not force):

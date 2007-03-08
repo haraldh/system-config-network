@@ -166,7 +166,7 @@ class DeviceList(DeviceList_base):
         
         from NCDevice import ConfDevice
         from types import DictType
-        self.commit(changed=false)
+        self.commit(changed=False)
 
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         if len(self) > 0:
@@ -312,5 +312,5 @@ def getNextDev(base):
     return base + str(num)
                 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:40 $"
-__version__ = "$Revision: 1.65 $"
+__date__ = "$Date: 2007/03/08 12:56:41 $"
+__version__ = "$Revision: 1.66 $"

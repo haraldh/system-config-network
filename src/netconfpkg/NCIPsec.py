@@ -64,11 +64,11 @@ class IPsec(IPsec_base):
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
-                    self.__dict__[selfkey] = true
+                    self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = false            
+                    self.__dict__[selfkey] = False            
             elif not self.__dict__.has_key(selfkey):
-                self.__dict__[selfkey] = false                            
+                self.__dict__[selfkey] = False                            
 
         conf = ConfKeys(name)
         for selfkey in self.key_entries.keys():
@@ -101,7 +101,7 @@ class IPsec(IPsec_base):
         
         self.oldname = self.IPsecId
 
-        self.commit(changed=false)
+        self.commit(changed=False)
         pass
     
     def save(self):

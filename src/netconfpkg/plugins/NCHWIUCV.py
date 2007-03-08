@@ -40,10 +40,10 @@ class HwIUCV(Hardware):
 
    def isType(self, hardware):
       if hardware.Type == IUCV:
-         return true
+         return True
       if getHardwareType(hardware.Hardware) == IUCV:
-         return true
-      return false
+         return True
+      return False
 
 def setHwIUCVDialog(dialog):
    global _hwIUCVDialog

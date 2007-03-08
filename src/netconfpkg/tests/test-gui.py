@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-true = (1==1)
-false = not true
+True = (1==1)
+False = not True
 
 import unittest
 import sys
@@ -24,7 +24,7 @@ CHROOT = os.path.abspath(os.getcwd()) + "/./rcntest-root"
 BASICSETUP="""DeviceList.Ethernet.eth0.Type=Ethernet
 DeviceList.Ethernet.eth0.BootProto=dhcp
 DeviceList.Ethernet.eth0.Device=eth0
-DeviceList.Ethernet.eth0.OnBoot=true
+DeviceList.Ethernet.eth0.OnBoot=True
 DeviceList.Ethernet.eth0.DeviceId=eth0
 ProfileList.default.ActiveDevices.1=eth0
 ProfileList.default.HostsList.1.IP=127.0.0.1
@@ -39,7 +39,7 @@ ProfileList.default.DNS.Domainname=
 ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
 ProfileList.default.DNS.TertiaryDNS=
 ProfileList.default.DNS.PrimaryDNS=172.16.2.2
-ProfileList.default.Active=true
+ProfileList.default.Active=True
 ProfileList.default.ProfileName=default
 """
 
@@ -84,10 +84,10 @@ def expectConf(fileorlines, str):
             print "\n- %s\n+ %s\n" % (str[i], lines[i])
             break
     else:
-        return true
+        return True
     
     print lines
-    return false
+    return False
 
     
 
@@ -151,8 +151,8 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    docoverage = false
-    #docoverage = true
+    docoverage = False
+    #docoverage = True
     if docoverage:
         import coverage
         coverage.erase()
@@ -184,5 +184,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/08/03 12:42:19 $"
-__version__ = "$Revision: 1.1 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.2 $"

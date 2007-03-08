@@ -39,10 +39,10 @@ class DevTokenRing(Device):
 
    def isType(self, device):
       if device.Type == TOKENRING:
-         return true
+         return True
       if getDeviceType(device.Device) == TOKENRING:
-         return true
-      return false
+         return True
+      return False
 
 def setDevTokenRingDialog(dialog):
    global _devTokenRingDialog
@@ -55,5 +55,5 @@ def setDevTokenRingWizard(wizard):
 df = getDeviceFactory()
 df.register(DevTokenRing, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/14 12:06:33 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.9 $"

@@ -31,12 +31,12 @@ class DevCTC(DevEthernet):
       self.Type = CTC
        
    def isType(self, device):
-      """returns true of the device is of the same type as this class"""
+      """returns True of the device is of the same type as this class"""
       if device.Type == CTC:
-         return true
+         return True
       if getDeviceType(device.Device) == CTC:
-         return true
-      return false
+         return True
+      return False
 
    def load(self, name):
       Device.load(self, name)

@@ -39,10 +39,10 @@ class HwTokenring(Hardware):
    
    def isType(self, hardware):
       if hardware.Type == TOKENRING:
-         return true
+         return True
       if getHardwareType(hardware.Hardware) == TOKENRING:
-         return true
-      return false
+         return True
+      return False
 
    def save(self):
       from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
@@ -90,5 +90,5 @@ def setHwTokenringWizard(wizard):
 df = getHardwareFactory()
 df.register(HwTokenring, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.8 $"

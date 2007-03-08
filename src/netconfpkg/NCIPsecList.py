@@ -49,7 +49,7 @@ class IPsecList(IPsecList_base):
             ipsec.load(ipsec_name)
             self.append(ipsec)
                         
-        self.commit(false)
+        self.commit(False)
                 
     def save(self):
         from NCIPsec import ConfIPsec

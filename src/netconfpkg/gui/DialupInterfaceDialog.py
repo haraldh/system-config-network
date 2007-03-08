@@ -106,17 +106,17 @@ class DialupInterfaceDialog(DeviceConfigDialog):
 
         if dialup.Compression:
             self.xml.get_widget("headerCompressionCB").set_active(\
-                dialup.Compression.VJTcpIp == true)
+                dialup.Compression.VJTcpIp == True)
             self.xml.get_widget("connectionCompressionCB").set_active(\
-                dialup.Compression.VJID == true)
+                dialup.Compression.VJID == True)
             self.xml.get_widget("acCompressionCB").set_active(\
-                dialup.Compression.AdressControl == true)
+                dialup.Compression.AdressControl == True)
             self.xml.get_widget("pfCompressionCB").set_active(\
-                dialup.Compression.ProtoField == true)
+                dialup.Compression.ProtoField == True)
             self.xml.get_widget("bsdCompressionCB").set_active(\
-                dialup.Compression.BSD == true)
+                dialup.Compression.BSD == True)
             self.xml.get_widget("cppCompressionCB").set_active(\
-                dialup.Compression.CCP == true)
+                dialup.Compression.CCP == True)
 
         if dialup.PPPOptions:
             widget = self.xml.get_widget("pppOptionList")
@@ -303,8 +303,8 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
                 dialup.Secure)
             
         if dialup.Callback and dialup.Callback.Type != 'off':
-            self.xml.get_widget("callbackCB").set_active(true)
-            self.xml.get_widget("callbackFrame").set_sensitive(true)
+            self.xml.get_widget("callbackCB").set_active(True)
+            self.xml.get_widget("callbackFrame").set_sensitive(True)
             if dialup.Callback.Type == 'in':
                 self.xml.get_widget('CallbackMode').set_history(0)
             else:
@@ -345,7 +345,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         
         if dialup.ChannelBundling:
             self.xml.get_widget("channelBundlingCB").set_active(\
-                dialup.ChannelBundling == true)
+                dialup.ChannelBundling == True)
         if dialup.Authentication:
             if dialup.Authentication == '+pap -chap':
                 auth = _('pap')
@@ -388,7 +388,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
                 dialup.Callback.Type = 'out'
             dialup.Callback.Delay = self.xml.get_widget(\
                 "callbackDelaySB").get_value_as_int()
-            dialup.Callback.Hup = false
+            dialup.Callback.Hup = False
             dialup.Callback.Compression = self.xml.get_widget(\
                 "cbcpCB").get_active()
             dialup.Callback.MSN = self.xml.get_widget(\
@@ -487,7 +487,7 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
             self.xml.get_widget("modemPortEntry").set_text(dialup.Inherits)
 
         self.xml.get_widget("stupidModeCB").set_active(\
-            self.device.Dialup.StupidMode == true)
+            self.device.Dialup.StupidMode == True)
 
     def dehydrate(self):
         DialupInterfaceDialog.dehydrate(self)
@@ -505,7 +505,7 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         dialup.DefRoute = self.xml.get_widget("defrouteCB").get_active()
         dialup.StupidMode = self.xml.get_widget(\
-            "stupidModeCB").get_active() == true
+            "stupidModeCB").get_active() == True
 
 
 NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)

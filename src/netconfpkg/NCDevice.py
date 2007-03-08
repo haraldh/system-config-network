@@ -34,10 +34,10 @@ class ConfDevice( Conf.ConfShellVar ):
     def __init__( self, name, dir = None ):
         if dir == None:
             dir = netconfpkg.ROOT + SYSCONFDEVICEDIR
-        new = false
+        new = False
         self.filename = dir + 'ifcfg-' + name
         if not os.access( self.filename, os.R_OK ):
-            new = true
+            new = True
             self.oldmode = 0644
         else:
             status = os.stat( self.filename )
@@ -116,8 +116,8 @@ class Device( Device_base ):
 
     def testDeviceId( self, value, child = None ):
         if re.search( r"^[a-z|A-Z|0-9\_:]+$", value ):
-            return true
-        return false
+            return True
+        return False
 
     def getDeviceAlias( self ):
         devname = self.Device
@@ -157,11 +157,11 @@ class Device( Device_base ):
             confkey = self.boolkeydict[selfkey]
             if conf.has_key( confkey ):
                 if conf[confkey] == 'yes':
-                    self.__dict__[selfkey] = true
+                    self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = false            
+                    self.__dict__[selfkey] = False            
             elif not self.__dict__.has_key( selfkey ):
-                self.__dict__[selfkey] = false                            
+                self.__dict__[selfkey] = False                            
             
         if not conf.has_key( "PEERDNS" ):
             self.AutoDNS = None
@@ -218,9 +218,9 @@ class Device( Device_base ):
 
         if conf.has_key( "RESOLV_MODS" ):
             if conf["RESOLV_MODS"] != "no":
-                self.AutoDNS = true
+                self.AutoDNS = True
             else:
-                self.AutoDNS = false
+                self.AutoDNS = False
 
         if self.Type == CTC or self.Type == IUCV:
             if conf.has_key( "MTU" ) and conf['MTU']:
@@ -253,7 +253,7 @@ class Device( Device_base ):
                 route.Netmask = rconf['NETMASK' + str( p )]
                 route.Gateway = rconf['GATEWAY' + str( p )]
         
-        self.commit( changed=false )
+        self.commit( changed=False )
                 
     def save( self ):
         # FIXME: [163040] "Exception Occurred" when saving
@@ -305,9 +305,9 @@ class Device( Device_base ):
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey] == true:
+            if self.__dict__[selfkey] == True:
                 conf[confkey] = 'yes'
-            elif self.__dict__[selfkey] == false:
+            elif self.__dict__[selfkey] == False:
                 conf[confkey] = 'no'
 
         # cleanup

@@ -327,11 +327,11 @@ class mainDialog:
                or ipseclist.modified():
             self.appBar.push(_("Active profile: %s (modified)") % \
                              self.active_profile_name)
-            return true
+            return True
 
         self.appBar.push(_("Active profile: %s")% profname)
 
-        return false
+        return False
 
     def save(self):
         if self.test() != 0:
@@ -364,28 +364,28 @@ class mainDialog:
         self.appBar.push(_("Saving device configuration..."))
         devicelist = getDeviceList()
         devicelist.save()
-        devicelist.setChanged(false)
+        devicelist.setChanged(False)
         self.appBar.pop()
         
     def saveHardware(self):
         self.appBar.push(_("Saving hardware configuration..."))
         hardwarelist = getHardwareList()
         hardwarelist.save()
-        hardwarelist.setChanged(false)
+        hardwarelist.setChanged(False)
         self.appBar.pop()
         
     def saveProfiles(self):
         self.appBar.push(_("Saving profile configuration..."))
         profilelist = getProfileList()
         profilelist.save()
-        profilelist.setChanged(false)
+        profilelist.setChanged(False)
         self.appBar.pop()
 
     def saveIPsecs(self):
         self.appBar.push(_("Saving IPsec configuration..."))
         ipseclist = getIPsecList()
         ipseclist.save()
-        ipseclist.setChanged(false)
+        ipseclist.setChanged(False)
         self.appBar.pop()
         
     def hydrate(self):
@@ -447,7 +447,7 @@ class mainDialog:
             clist.set_row_data(row, dev)
             
             for prof in profilelist:
-                if (prof.Active == true or prof.ProfileName == 'default') and \
+                if (prof.Active == True or prof.ProfileName == 'default') and \
                        dev.DeviceId in prof.ActiveDevices:
                     if self.act_xpm:
                         clist.set_pixmap(row, PROFILE_COLUMN,
@@ -524,7 +524,7 @@ class mainDialog:
             clist.set_row_data(row, ipsec)
             
             for prof in profilelist:
-                if (prof.Active == true or prof.ProfileName == 'default') and \
+                if (prof.Active == True or prof.ProfileName == 'default') and \
                        ipsec.IPsecId in prof.ActiveIPsecs:
                     clist.set_pixmap(row, PROFILE_COLUMN,
                                      self.act_xpm, self.act_mask)
@@ -563,7 +563,7 @@ class mainDialog:
             prof = profilelist[0]
 
         self.active_profile = prof
-        self.ignore_widget_changes = true
+        self.ignore_widget_changes = True
         
         if prof.DNS.Hostname:
             self.xml.get_widget('hostnameEntry').set_text(\
@@ -591,7 +591,7 @@ class mainDialog:
         else:
             self.xml.get_widget('searchDnsEntry').set_text('')
 
-        self.ignore_widget_changes = false
+        self.ignore_widget_changes = False
         
         row = 0
         for host in prof.HostsList:
@@ -610,10 +610,10 @@ class mainDialog:
             self.checkApply()
             return
 
-        self.initialized = true
+        self.initialized = True
 
-        self.no_profileentry_update = true
-        self.ignore_widget_changes = false
+        self.no_profileentry_update = True
+        self.ignore_widget_changes = False
         omenu = self.xml.get_widget('profileMenu')
         omenu = omenu.get_submenu()
         clist = omenu.get_children()
@@ -631,12 +631,12 @@ class mainDialog:
                 group = menu_item
             menu_item.show ()
             if prof.Active:
-                menu_item.set_active(true)
+                menu_item.set_active(True)
             menu_item.connect ("activate",
                                self.on_profileMenuItem_activated,
                                prof.ProfileName)
             omenu.append (menu_item)
-        self.no_profileentry_update = false
+        self.no_profileentry_update = False
         self.appBar.pop()
         self.checkApply()
 
@@ -672,43 +672,43 @@ class mainDialog:
         if self.xml.get_widget ("addButton") == None:
             return
         
-        self.xml.get_widget ("addButton").set_sensitive(false)
-        self.xml.get_widget ("editButton").set_sensitive(false)
-        self.xml.get_widget ("copyButton").set_sensitive(false)
-        self.xml.get_widget ("deleteButton").set_sensitive(false)
+        self.xml.get_widget ("addButton").set_sensitive(False)
+        self.xml.get_widget ("editButton").set_sensitive(False)
+        self.xml.get_widget ("copyButton").set_sensitive(False)
+        self.xml.get_widget ("deleteButton").set_sensitive(False)
         self.xml.get_widget ("commonDockitem").hide()
         self.xml.get_widget ("deviceDockitem").hide()
         self.xml.get_widget ("posDockitem").hide()
         
         if page_num == self.page_num[PAGE_DEVICES]:                        
             clist = self.xml.get_widget("deviceList")
-            self.xml.get_widget ("addButton").set_sensitive(true)
-            self.xml.get_widget ("editButton").set_sensitive(true)
-            self.xml.get_widget ("copyButton").set_sensitive(true)
-            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("addButton").set_sensitive(True)
+            self.xml.get_widget ("editButton").set_sensitive(True)
+            self.xml.get_widget ("copyButton").set_sensitive(True)
+            self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
             self.xml.get_widget ("deviceDockitem").show()
                                 
         elif page_num == self.page_num[PAGE_HARDWARE]:
             clist = self.xml.get_widget("hardwareList")
-            self.xml.get_widget ("addButton").set_sensitive(true)
-            self.xml.get_widget ("editButton").set_sensitive(true)
-            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("addButton").set_sensitive(True)
+            self.xml.get_widget ("editButton").set_sensitive(True)
+            self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
                 
         elif page_num == self.page_num[PAGE_IPSEC]:
             clist = self.xml.get_widget("ipsecList")
-            self.xml.get_widget ("addButton").set_sensitive(true)
-            self.xml.get_widget ("editButton").set_sensitive(true)
-            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("addButton").set_sensitive(True)
+            self.xml.get_widget ("editButton").set_sensitive(True)
+            self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
             self.xml.get_widget ("deviceDockitem").show()
                 
         elif page_num == self.page_num[PAGE_HOSTS]:
             clist = None
-            self.xml.get_widget ("addButton").set_sensitive(true)
-            self.xml.get_widget ("editButton").set_sensitive(true)
-            self.xml.get_widget ("deleteButton").set_sensitive(true)
+            self.xml.get_widget ("addButton").set_sensitive(True)
+            self.xml.get_widget ("editButton").set_sensitive(True)
+            self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
 
         elif page_num == self.page_num[PAGE_DNS]:
@@ -854,7 +854,7 @@ class mainDialog:
                 prof.commit()
 
         self.hydrateDevices()
-        device.changed = false
+        device.changed = False
         self.appBar.pop()
 
     def editDevice(self, device):
@@ -1006,8 +1006,8 @@ class mainDialog:
             self.xml.get_widget ('profileDeleteMenu').set_sensitive (True)
             
         if not self.no_profileentry_update:
-            profilelist.switchToProfile(profile, dochange = true)
-            self.initialized = true
+            profilelist.switchToProfile(profile, dochange = True)
+            self.initialized = True
             self.hydrate()
 
         self.checkApply()
@@ -1047,30 +1047,30 @@ class mainDialog:
                      if curr_prof.ProfileName == 'default':
                          for prof in profilelist:
                              profilelist.activateIpsec(name,
-                                                        prof.ProfileName, true)
+                                                        prof.ProfileName, True)
                      else:
                          profilelist.activateIpsec(name,
                                                     curr_prof.ProfileName,
-                                                    true)
+                                                    True)
                          for prof in profilelist:
                              if prof.ProfileName == "default":
                                  continue
                              if name not in prof.ActiveIPsecs:
                                  break
                          else:
-                             profilelist.activateIpsec(name, 'default', true)
+                             profilelist.activateIpsec(name, 'default', True)
                         
                  else:
                      xpm, mask = self.inact_xpm, self.inact_mask
                      if curr_prof.ProfileName == 'default':
                          for prof in profilelist:
                              profilelist.activateIpsec(name, prof.ProfileName,
-                                                        false)
+                                                        False)
                      else:
                          profilelist.activateIpsec(name,
                                                     curr_prof.ProfileName,
-                                                    false)
-                         profilelist.activateIpsec(name, 'default', false)
+                                                    False)
+                         profilelist.activateIpsec(name, 'default', False)
 
                  for prof in profilelist:
                      prof.commit()
@@ -1117,30 +1117,30 @@ class mainDialog:
                     if curr_prof.ProfileName == 'default':
                         for prof in profilelist:
                             profilelist.activateDevice(name,
-                                                       prof.ProfileName, true)
+                                                       prof.ProfileName, True)
                     else:
                         profilelist.activateDevice(name,
                                                    curr_prof.ProfileName,
-                                                   true)
+                                                   True)
                         for prof in profilelist:
                             if prof.ProfileName == "default":
                                 continue
                             if name not in prof.ActiveDevices:
                                 break
                         else:
-                            profilelist.activateDevice(name, 'default', true)
+                            profilelist.activateDevice(name, 'default', True)
 
                 else:
                     xpm, mask = self.inact_xpm, self.inact_mask
                     if curr_prof.ProfileName == 'default':
                         for prof in profilelist:
                             profilelist.activateDevice(name, prof.ProfileName,
-                                                       false)
+                                                       False)
                     else:
                         profilelist.activateDevice(name,
                                                    curr_prof.ProfileName,
-                                                   false)
-                        profilelist.activateDevice(name, 'default', false)
+                                                   False)
+                        profilelist.activateDevice(name, 'default', False)
 
                 for prof in profilelist:
                     prof.commit()
@@ -1316,7 +1316,7 @@ class mainDialog:
         host.commit()
         if host.changed:
             self.hydrateProfiles()
-            host.changed = false
+            host.changed = False
 
     def on_hostsDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -1393,10 +1393,10 @@ class mainDialog:
         prof.ProfileName = text
         prof.commit()
 
-        profilelist.switchToProfile(prof, dochange = false)
+        profilelist.switchToProfile(prof, dochange = False)
 
         #self.xml.get_widget("profileList").clear()
-        self.initialized = false
+        self.initialized = False
         self.hydrateProfiles()
         return 0
 
@@ -1405,7 +1405,7 @@ class mainDialog:
 
         profile = Profile()
         profile.apply(self.getActiveProfile())
-        profile.Active = false
+        profile.Active = False
         duplicate = True
         num = 0
         while duplicate:
@@ -1472,7 +1472,7 @@ class mainDialog:
         self.initialized = None
         if profile.changed:
             self.hydrateProfiles()
-            profile.changed = false
+            profile.changed = False
 
     def on_profileDeleteMenu_activate (self, *args):
         profilelist = getProfileList()

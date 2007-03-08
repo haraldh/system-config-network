@@ -52,10 +52,10 @@ class DevCipe(Device):
 
    def isType(self, device):
       if device.Type == CIPE:
-         return true
+         return True
       if getDeviceType(device.Device) == CIPE:
-         return true
-      return false
+         return True
+      return False
 
    def getHWDevice(self):
       if self.Cipe:
@@ -75,5 +75,5 @@ if NC_functions.DOCIPE:
    df.register(DevCipe, CIPE)
    
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/14 12:06:33 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.10 $"

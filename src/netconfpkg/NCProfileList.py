@@ -104,9 +104,9 @@ class ProfileList(ProfileList_base):
         prof.ProfileName = pr
 
         if pr == self.curr_prof:
-            prof.Active = true
+            prof.Active = True
         else:
-            prof.Active = false
+            prof.Active = False
 
         if profdir:
             devlist = ConfDevices(profdir)
@@ -206,7 +206,7 @@ class ProfileList(ProfileList_base):
                 devmap[device.Device] = device
             break
         
-    def commit(self, changed=true):        
+    def commit(self, changed=True):        
         self.test()
         ProfileList_base.commit(self, changed)
         
@@ -237,7 +237,7 @@ class ProfileList(ProfileList_base):
                             if dstr != dev.Device:
                                 dev.Device = dstr
                                 changed = 1
-                            if dev.Dialup.ChannelBundling == true:
+                            if dev.Dialup.ChannelBundling == True:
                                 ipppnum = ipppnum + 1
                                 dstr = "ippp"+str(ipppnum)
                                 if dstr != dev.Dialup.SlaveDevice:
@@ -261,7 +261,7 @@ class ProfileList(ProfileList_base):
         os.umask(0022)
 
 	    # commit the changes
-        self.commit(changed=false)
+        self.commit(changed=False)
 
         devicelist = NCDeviceList.getDeviceList()
 
@@ -317,7 +317,7 @@ class ProfileList(ProfileList_base):
                                 if not hname in host.AliasList:
                                     host.AliasList.append(hname)
 
-            act_prof.HostsList.commit(changed=false)
+            act_prof.HostsList.commit(changed=False)
 
         nwconf['HOSTNAME'] = act_prof.DNS.Hostname
               
@@ -421,7 +421,7 @@ class ProfileList(ProfileList_base):
                 unlink(profilename)
 
                     
-                if prof.Active == false and prof.ProfileName != 'default':
+                if prof.Active == False and prof.ProfileName != 'default':
                     continue
 
                 # Active Profile or default profile                
@@ -456,7 +456,7 @@ class ProfileList(ProfileList_base):
                         files_used.append(devfilename)
                         files_used.append(profilename)
 
-                if prof.Active == false and prof.ProfileName != 'default':
+                if prof.Active == False and prof.ProfileName != 'default':
                     continue
 
                 # Active Profile or default profile                
@@ -473,7 +473,7 @@ class ProfileList(ProfileList_base):
                             
                         files_used.append(profilename)                
 
-            if prof.Active == false:                
+            if prof.Active == False:                
                 continue
 
             # Special actions for the active profile
@@ -569,13 +569,13 @@ class ProfileList(ProfileList_base):
                 if ipsecid in prof.ActiveIPsecs:
                     del prof.ActiveIPsecs[prof.ActiveIPsecs.index(ipsecid)]
 
-    def switchToProfile(self, val, dochange = true):
-        found = false
+    def switchToProfile(self, val, dochange = True):
+        found = False
         aprof = None
         for prof in self:
             if (isinstance(val, str) and prof.ProfileName == val) or \
                    (isinstance(val, Profile) and prof == val) :
-                    found = true
+                    found = True
                     break
         else:
             return None
@@ -585,10 +585,10 @@ class ProfileList(ProfileList_base):
             mod = prof.modified()
             if (isinstance(val, str) and prof.ProfileName == val) or \
                    (isinstance(val, Profile) and prof == val) :
-                prof.Active = true
+                prof.Active = True
                 aprof = prof
             else:
-                prof.Active = false
+                prof.Active = False
             if not dochange:
                 prof.setChanged(mod)
 

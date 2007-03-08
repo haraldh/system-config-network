@@ -38,7 +38,7 @@ class ConfPAP(Conf.Conf):
         self.chmod(0600)
 
     def findline(self, val):
-        # returns false if no more lines matching pattern
+        # returns False if no more lines matching pattern
         while self.line < len(self.lines):
             if self.lines[self.line] == val:
                 return 1

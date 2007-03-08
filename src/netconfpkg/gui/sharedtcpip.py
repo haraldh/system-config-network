@@ -99,7 +99,7 @@ def dhcp_hydrate (xml, device):
     else:
         xml.get_widget("ipProtocolOmenu").set_history(DHCP)
 
-    # PEERDNS is true, if unset!!
+    # PEERDNS is True, if unset!!
     xml.get_widget('dnsSettingCB').set_active(device.AutoDNS != False)
 
     if device.Alias != None:
@@ -427,5 +427,5 @@ def dsl_hardware_dehydrate(xml, device):
     device.Dialup.EthDevice = string.split(hw)[0]
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:41 $"
-__version__ = "$Revision: 1.41 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.42 $"

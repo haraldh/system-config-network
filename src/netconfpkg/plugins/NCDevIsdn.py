@@ -53,10 +53,10 @@ class DevIsdn(Device):
 
    def isType(self, device):
       if device.Type == ISDN:
-         return true
+         return True
       if getDeviceType(device.Device) == ISDN:
-         return true
-      return false
+         return True
+      return False
 
    def getHWDevice(self):
       # XXX FIXME
@@ -121,5 +121,5 @@ def setDevIsdnWizard(wizard):
 df = getDeviceFactory()
 df.register(DevIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/07/19 09:57:35 $"
-__version__ = "$Revision: 1.12 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.13 $"

@@ -56,10 +56,10 @@ class DevWireless(Device):
 
    def isType(self, device):
       if device.Type == WIRELESS:
-         return true
+         return True
       if getDeviceType(device.Device) == WIRELESS:
-         return true
-      return false
+         return True
+      return False
 
 def setDevWirelessDialog(dialog):
    global _devWirelessDialog
@@ -72,5 +72,5 @@ def setDevWirelessWizard(wizard):
 df = getDeviceFactory()
 df.register(DevWireless, WIRELESS)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:41 $"
-__version__ = "$Revision: 1.10 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.11 $"

@@ -125,7 +125,7 @@ class Cipe(Cipe_base):
             if conf.has_key('key'):
                 self.SecretKey = conf['key']
                 
-        self.commit(changed=false)
+        self.commit(changed=False)
         
     def save(self, parentConf):
         conf = parentConf

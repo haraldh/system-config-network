@@ -19,8 +19,8 @@ file (alchemist style).
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 __author__ = "Harald Hoyer"
-__date__ = "$Date: 2007/03/07 13:44:40 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.28 $"
 
 import new
 from UserList import UserList
@@ -28,8 +28,8 @@ import sys
 import traceback
 from types import *
 # first some defines
-true = (1==1)
-false = not true
+True = (1==1)
+False = not True
 
 Alchemist = None
 LIST = "LIST"
@@ -64,7 +64,7 @@ class GenClass:
       """Constructor with the parent list and optional the Alchemist list."""
       self._attributes = self.__class__.Attributes
       self._parent = parent
-      self.changed = false
+      self.changed = False
       self._dead = 0
 
       # initialize all variables with None
@@ -77,13 +77,13 @@ class GenClass:
 
       if isinstance(list, Alchemist.Context):
          self.fromContext(list.getDataRoot().getChildByIndex(0))
-         self.commit(changed = false)
+         self.commit(changed = False)
          
       if isinstance(list, Alchemist.Data):
          self.fromContext(list)
-         self.commit(changed = false)
+         self.commit(changed = False)
       
-   def commit(self, changed=true):
+   def commit(self, changed=True):
       """Stub"""
       raise NotImplemented
 
@@ -111,7 +111,7 @@ class GenClass:
       type = self._attributes[child][TYPE]
 
       if type == BOOL:
-         if value != None and value != true and value != false:
+         if value != None and value != True and value != False:
             raise TypeError
 
       elif value == None:
@@ -197,8 +197,8 @@ class GenClass:
                   if attr[TYPE] != BOOL:
                      retstr += "%s.%d=%s\n" % (parentStr, num, str(val))
                   else:
-                     if val: retstr += "%s.%d=true\n" % (parentStr, num)
-                     else: retstr += "%s.%d=false\n" % (parentStr, num)
+                     if val: retstr += "%s.%d=True\n" % (parentStr, num)
+                     else: retstr += "%s.%d=False\n" % (parentStr, num)
                   num += 1
             
          return retstr
@@ -216,8 +216,8 @@ class GenClass:
                if attr[TYPE] != BOOL:
                   retstr += "%s.%s=%s\n" % (parentStr, child, str(val))
                else:
-                  if val: retstr += "%s.%s=true\n" % (parentStr, child)
-                  else: retstr += "%s.%s=false\n" % (parentStr, child)
+                  if val: retstr += "%s.%s=True\n" % (parentStr, child)
+                  else: retstr += "%s.%s=False\n" % (parentStr, child)
                 
          else:
             if val != None:
@@ -250,10 +250,10 @@ class GenClass:
             if self._attributes[key][TYPE] == INT:
                setattr(self, key, int(value))
             elif self._attributes[key][TYPE] == BOOL:
-               if value == "true":
-                  setattr(self, key, true)
-               elif value == "false":
-                  setattr(self, key, false)
+               if value == "True":
+                  setattr(self, key, True)
+               elif value == "False":
+                  setattr(self, key, False)
             else:
                setattr(self, key, value)            
          return
@@ -384,7 +384,7 @@ class GenClassList(GenClass):
          else:
             getattr(self, "test" + i)(self.__dict__[i])
 
-   def commit(self, changed=true):
+   def commit(self, changed=True):
       for i in self._attributes[SELF][CHILDKEYS]:
          val = self._attributes[i]
          if hasattr(self, "commit" + i):
@@ -467,7 +467,7 @@ class GenClassList(GenClass):
                                    achild, self)
             setattr(self, child, nchild)
 
-   def _commitAttr(self, changed=true, child=None):
+   def _commitAttr(self, changed=True, child=None):
       cd = getattr(self, child)
       
       if self._attributes[child][TYPE] == LIST:
@@ -566,7 +566,7 @@ class GenClassAList(GenClass, UserList):
             else:
                nchild.setValue(child)
                
-   def commit(self, changed=true):
+   def commit(self, changed=True):
       if self.data_bak != None and self.data == None:
          #print "%s changed" % self._attributes[SELF][NAME]
          self.setChanged(changed)
@@ -755,7 +755,7 @@ def GenClass_new_class(attributes, myglobals):
                             {})
    return (newclass, implclass)
 
-def __generateClassAlchemist(list, parent = None, optlower = false, myglobals = None):
+def __generateClassAlchemist(list, parent = None, optlower = False, myglobals = None):
    import Alchemist
     
    if myglobals.has_key(list.getName()):
@@ -818,15 +818,15 @@ def __generateClassAlchemist(list, parent = None, optlower = false, myglobals = 
    myglobals[list.getName() + '_base' ] = baseclass
    myglobals[list.getName() ] = implclass
 
-def __GenClass_read_classfile_Alchemist(boxpath, mod = None, OptLower = false):
+def __GenClass_read_classfile_Alchemist(boxpath, mod = None, OptLower = False):
    bbc = Alchemist.Context(name = 'FileBlackBox', serial = 1)
    broot = bbc.getDataRoot()
    list = broot.addChild(Alchemist.Data.ADM_TYPE_LIST, 'box_cfg')
    list.addChild(Alchemist.Data.ADM_TYPE_STRING, 'path').setValue(boxpath)
    list.addChild(Alchemist.Data.ADM_TYPE_STRING,
                  'box_type').setValue('FileBlackBox')
-   list.addChild(Alchemist.Data.ADM_TYPE_BOOL, 'readable').setValue(true)
-   list.addChild(Alchemist.Data.ADM_TYPE_BOOL, 'writable').setValue(false)
+   list.addChild(Alchemist.Data.ADM_TYPE_BOOL, 'readable').setValue(True)
+   list.addChild(Alchemist.Data.ADM_TYPE_BOOL, 'writable').setValue(False)
    bb = FileBlackBox.FileBlackBox(list)
 
    if bb.errNo():
@@ -848,7 +848,7 @@ def __GenClass_read_classfile_Alchemist(boxpath, mod = None, OptLower = false):
 
    __generateClassAlchemist(dr, myglobals = mod.__dict__)
 
-def __generateClass(list, parent = None, optlower = false, myglobals = None):
+def __generateClass(list, parent = None, optlower = False, myglobals = None):
    listname = list.nodeName.encode()
    if myglobals.has_key(listname):
       return
@@ -936,7 +936,7 @@ def __generateClass(list, parent = None, optlower = false, myglobals = None):
    myglobals[listname + '_base' ] = baseclass
    myglobals[listname] = implclass
 
-def __GenClass_read_classfile(boxpath, mod = None, OptLower = false):
+def __GenClass_read_classfile(boxpath, mod = None, OptLower = False):
    import xml.dom.minidom
 
    doc = xml.dom.minidom.parse(boxpath)
@@ -950,7 +950,7 @@ def __GenClass_read_classfile(boxpath, mod = None, OptLower = false):
       
    __generateClass(dr, myglobals = mod.__dict__)
 
-def GenClass_read_classfile(boxpath, mod, OptLower = false):
+def GenClass_read_classfile(boxpath, mod, OptLower = False):
    """Load the classfile and use the Alchemist, if Use_Alchemist is set in the module"""
    global Alchemist
    global LIST
@@ -992,6 +992,9 @@ def GenClass_read_classfile(boxpath, mod, OptLower = false):
 __credits__ = """
 Changelog:
 $Log: genClass.py,v $
+Revision 1.28  2007/03/08 12:56:42  harald
+true -> True, false -> False
+
 Revision 1.27  2007/03/07 13:44:40  harald
 merged changes from EL5
 

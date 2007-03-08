@@ -54,10 +54,10 @@ class DevADSL(Device):
    
    def isType(self, device):
       if device.Type == DSL:
-         return true
+         return True
       if getDeviceType(device.Device) == DSL:
-         return true
-      return false
+         return True
+      return False
 
    def getHWDevice(self):
       if self.Dialup:
@@ -75,5 +75,5 @@ def setDevADSLWizard(wizard):
 df = getDeviceFactory()
 df.register(DevADSL, DSL)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:41 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.10 $"

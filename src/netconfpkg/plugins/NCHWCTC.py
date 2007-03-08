@@ -40,10 +40,10 @@ class HwCTC(Hardware):
 
    def isType(self, hardware):
       if hardware.Type == CTC:
-         return true
+         return True
       if getHardwareType(hardware.Hardware) == CTC:
-         return true
-      return false
+         return True
+      return False
 
 def setHwCTCDialog(dialog):
    global _hwCTCDialog

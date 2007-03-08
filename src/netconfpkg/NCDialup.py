@@ -188,11 +188,11 @@ class DslDialup(Dialup):
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
-                    self.__dict__[selfkey] = true
+                    self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = false            
+                    self.__dict__[selfkey] = False            
             else:
-                self.__dict__[selfkey] = false            
+                self.__dict__[selfkey] = False            
 
         # We need self.login, so we call it this late
         Dialup.load(self, parentConf)
@@ -325,20 +325,20 @@ class IsdnDialup(Dialup):
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'on':
-                    self.__dict__[selfkey] = true
+                    self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = false            
+                    self.__dict__[selfkey] = False            
             else:
-                self.__dict__[selfkey] = false            
+                self.__dict__[selfkey] = False            
 
         # We need self.login, so we call it this late
         Dialup.load(self, parentConf)
 
         if conf.has_key('DEFROUTE'):
             if conf['DEFROUTE'] == 'yes':
-                self.DefRoute = true
+                self.DefRoute = True
             else:
-                self.DefRoute = false
+                self.DefRoute = False
 
         if conf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
@@ -356,9 +356,9 @@ class IsdnDialup(Dialup):
                 parent.Gateway = conf['REMOTE_IP']
             if conf.has_key('BOOT'):
                 if conf['BOOT'] == 'on':
-                    parent.OnBoot = true
+                    parent.OnBoot = True
                 else:
-                    parent.OnBoot = false
+                    parent.OnBoot = False
 
         if not self.PPPOptions:
             self.createPPPOptions()
@@ -374,7 +374,7 @@ class IsdnDialup(Dialup):
         if conf.has_key("PASSWORD"):
             self.Password = conf["PASSWORD"]
 
-        self.commit(changed=false)
+        self.commit(changed=False)
 
     def save(self, parentConf):
         Dialup.save(self, parentConf)
@@ -503,9 +503,9 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
                 
             if value and value != '0':
-                self.__dict__[selfkey] = true
+                self.__dict__[selfkey] = True
             else:
-                self.__dict__[selfkey] = false
+                self.__dict__[selfkey] = False
 
         # We need self.login, so we call it this late
         Dialup.load(self, parentConf)
@@ -692,5 +692,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:40 $"
-__version__ = "$Revision: 1.72 $"
+__date__ = "$Date: 2007/03/08 12:56:41 $"
+__version__ = "$Revision: 1.73 $"

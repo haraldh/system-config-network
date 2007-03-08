@@ -43,10 +43,10 @@ class IsdnInterface:
 
     def init_gui(self):
         if self.xml:
-            return true
+            return True
 
 	if request_rpms(["isdn4k-utils"]):
-            return false
+            return False
  
         glade_file = 'IsdnHardwareDruid.glade'
         if not os.path.isfile(glade_file):
@@ -73,7 +73,7 @@ class IsdnInterface:
             
         self.setup()
 
-        return true
+        return True
         
     def on_cancel_interface(self, *args):
         self.hardwarelist.rollback()

@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-true = (1==1)
-false = not true
+True = (1==1)
+False = not True
 
 import unittest
 import sys
@@ -24,7 +24,7 @@ CHROOT = os.path.abspath(os.getcwd()) + "/./rcntest-root"
 BASICSETUP="""DeviceList.Ethernet.eth0.Type=Ethernet
 DeviceList.Ethernet.eth0.BootProto=dhcp
 DeviceList.Ethernet.eth0.Device=eth0
-DeviceList.Ethernet.eth0.OnBoot=true
+DeviceList.Ethernet.eth0.OnBoot=True
 DeviceList.Ethernet.eth0.DeviceId=eth0
 ProfileList.default.ActiveDevices.1=eth0
 ProfileList.default.HostsList.1.IP=127.0.0.1
@@ -39,7 +39,7 @@ ProfileList.default.DNS.Domainname=
 ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
 ProfileList.default.DNS.TertiaryDNS=
 ProfileList.default.DNS.PrimaryDNS=172.16.2.2
-ProfileList.default.Active=true
+ProfileList.default.Active=True
 ProfileList.default.ProfileName=default
 """
 
@@ -84,10 +84,10 @@ def expectConf(fileorlines, str):
             print "\n- %s\n+ %s\n" % (str[i], lines[i])
             break
     else:
-        return true
+        return True
     
     print lines
-    return false
+    return False
 
     
 
@@ -183,7 +183,7 @@ class TestRCN(unittest.TestCase):
         self.redirectStd()
         from netconfpkg import NC_functions
         NC_functions.prepareRoot(CHROOT)
-        NC_functions.updateNetworkScripts(true)
+        NC_functions.updateNetworkScripts(True)
         devstr = self.getConf()
         expect = BASICSETUP
         self.redirectEnd()
@@ -207,7 +207,7 @@ class TestRCN(unittest.TestCase):
         prof.ProfileName = text
         prof.commit()
 
-        profilelist.switchToProfile(prof, dochange = true)
+        profilelist.switchToProfile(prof, dochange = True)
 
         self.save()
         
@@ -215,7 +215,7 @@ class TestRCN(unittest.TestCase):
         expect = """DeviceList.Ethernet.eth0.Type=Ethernet
 DeviceList.Ethernet.eth0.BootProto=dhcp
 DeviceList.Ethernet.eth0.Device=eth0
-DeviceList.Ethernet.eth0.OnBoot=true
+DeviceList.Ethernet.eth0.OnBoot=True
 DeviceList.Ethernet.eth0.DeviceId=eth0
 ProfileList.newprofile.ActiveDevices.1=eth0
 ProfileList.newprofile.HostsList.1.IP=127.0.0.1
@@ -230,7 +230,7 @@ ProfileList.newprofile.DNS.Domainname=
 ProfileList.newprofile.DNS.Hostname=jever.stuttgart.redhat.com
 ProfileList.newprofile.DNS.TertiaryDNS=
 ProfileList.newprofile.DNS.PrimaryDNS=172.16.2.2
-ProfileList.newprofile.Active=true
+ProfileList.newprofile.Active=True
 ProfileList.newprofile.ProfileName=newprofile
 ProfileList.default.ActiveDevices.1=eth0
 ProfileList.default.HostsList.1.IP=127.0.0.1
@@ -245,7 +245,7 @@ ProfileList.default.DNS.Domainname=
 ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
 ProfileList.default.DNS.TertiaryDNS=
 ProfileList.default.DNS.PrimaryDNS=172.16.2.2
-ProfileList.default.Active=false
+ProfileList.default.Active=False
 ProfileList.default.ProfileName=default
 """
         self.redirectEnd()
@@ -293,25 +293,25 @@ ProfileList.default.ProfileName=default
         from netconfpkg import NCDeviceList
         devicelist = NCDeviceList.getDeviceList()
         devicelist.save()
-        devicelist.setChanged(false)
+        devicelist.setChanged(False)
         
     def saveHardware(self):
         from netconfpkg import NCHardwareList
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.save()
-        hardwarelist.setChanged(false)
+        hardwarelist.setChanged(False)
         
     def saveProfiles(self):
         from netconfpkg import NCProfileList
         profilelist = NCProfileList.getProfileList()
         profilelist.save()
-        profilelist.setChanged(false)
+        profilelist.setChanged(False)
 
     def saveIPsecs(self):
         from netconfpkg import NCIPsecList
         ipseclist = NCIPsecList.getIPsecList()
         ipseclist.save()
-        ipseclist.setChanged(false)
+        ipseclist.setChanged(False)
 
 
 # FIXME: check [165543] system-config-network-cmd - incorrect profile import - hosts file
@@ -323,8 +323,8 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    docoverage = false
-    #docoverage = true
+    docoverage = False
+    #docoverage = True
     if docoverage:
         import coverage
         coverage.erase()
@@ -360,5 +360,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/08/03 12:42:49 $"
-__version__ = "$Revision: 1.6 $"
+__date__ = "$Date: 2007/03/08 12:56:42 $"
+__version__ = "$Revision: 1.7 $"

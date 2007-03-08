@@ -44,10 +44,10 @@ class ModemInterface:
 
     def init_gui(self):
         if self.xml:
-            return true
+            return True
 
 	if request_rpms(["ppp", "wvdial"]):
-            return false
+            return False
  
         glade_file = 'ModemDruid.glade'
 
@@ -72,7 +72,7 @@ class ModemInterface:
 
         self.setup()
 
-        return true
+        return True
         
     def get_project_name(self):
         return _('Modem connection')

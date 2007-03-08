@@ -226,7 +226,7 @@ class mainDialog:
             
         # update dialog #83640
         # Re-read the device list
-        self.devicelist = self.getProfDeviceList(refresh=true)
+        self.devicelist = self.getProfDeviceList(refresh=True)
         self.activedevicelist = NetworkDevice().get()
         # Update the gui
         self.hydrateProfiles(refresh = True)
@@ -247,7 +247,7 @@ class mainDialog:
                            
 
         # Re-read the device list
-        self.devicelist = self.getProfDeviceList(refresh=true)
+        self.devicelist = self.getProfDeviceList(refresh=True)
         self.activedevicelist = NetworkDevice().get()
         # Update the gui
         self.hydrate()
@@ -345,7 +345,7 @@ class mainDialog:
     def hydrateProfiles(self, refresh = None):
         profilelist = getProfileList(refresh)
         
-        self.no_profileentry_update = true # ???
+        self.no_profileentry_update = True # ???
         omenu = self.xml.get_widget('profileOption')
 
         if len(profilelist) == 1:
@@ -363,7 +363,7 @@ class mainDialog:
             import netconf
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
-            if prof.Active == true:
+            if prof.Active == True:
                 name += _(" (active)")
             menu_item = gtk.MenuItem (name)
             menu_item.show ()
@@ -387,7 +387,7 @@ class mainDialog:
             omenu.set_history (history)
             
         menu.get_children()[history].activate ()
-        self.no_profileentry_update = false # ??
+        self.no_profileentry_update = False # ??
 
     def get_active_profile(self):
         profilelist = getProfileList()
@@ -397,9 +397,9 @@ class mainDialog:
         profilelist = getProfileList ()
         for prof in profilelist:
             if prof.ProfileName == profile:
-                prof.Active = true
+                prof.Active = True
                 #print "profile " + prof.ProfileName + " activated\n"
-            else: prof.Active = false
+            else: prof.Active = False
             prof.commit()
 
     def getProfDeviceList(self, refresh=None):

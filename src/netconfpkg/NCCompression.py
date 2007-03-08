@@ -39,11 +39,11 @@ class Compression(Compression_base):
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'on':
-                    self.__dict__[selfkey] = true
+                    self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = false            
+                    self.__dict__[selfkey] = False            
             else:
-                self.__dict__[selfkey] = false            
+                self.__dict__[selfkey] = False            
 
     def save(self, parentConf):        
         conf = parentConf

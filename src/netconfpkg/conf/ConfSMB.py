@@ -24,7 +24,7 @@
 #  Toplevel key is a string representing a share
 #  Second level keys are literals representing config options.
 #  Booleans are set and stored as 0/1, but read in the file as any legal
-#  value, including (case insensitive) 0/false/no and 1/true/yes
+#  value, including (case insensitive) 0/False/no and 1/True/yes
 #  So: turn off browsing home directories with
 #     smb['homes'] = [ 'browseable', 0 ]
 
@@ -75,7 +75,7 @@ class ConfSMBSubDict(UserDict):
 #  Toplevel key is a string representing a share
 #  Second level keys are literals representing config options.
 #  Booleans are set and stored as 0/1, but read in the file as any legal
-#  value, including (case insensitive) 0/false/no and 1/true/yes
+#  value, including (case insensitive) 0/False/no and 1/True/yes
 #  So: turn off browsing home directories with
 #     smb['homes'][browseable] = 0
 class ConfSMB(Conf):
@@ -147,7 +147,7 @@ class ConfSMB(Conf):
         return self.findnextline('^[\t ]*[\[A-Za-z_]+.*')
     
     def is_stanza_decl(self):
-        # return true if the current line is of the form [...]
+        # return True if the current line is of the form [...]
         if self.stanza_re.match(self.getline()):
             return 1
         return 0
