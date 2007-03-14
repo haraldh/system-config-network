@@ -1,4 +1,5 @@
-from snack import *
+import snack
+import string
 from rhpl import ethtool
 #
 # General TCP/IP
@@ -14,12 +15,12 @@ class NCTcpIpDialog:
              If none are there, one will be added.
         """
         self.dev = dev
-        self.name=Entry(20,"")
-        self.hwdev=Entry(20,"")
-        self.dynip=Checkbox("")
-        self.statip=Entry(20,"")
-        self.netmask=Entry(20,"")
-        self.gw=Entry(20,"")
+        self.name=snack.Entry(20,"")
+        self.hwdev=snack.Entry(20,"")
+        self.dynip=snack.Checkbox("")
+        self.statip=snack.Entry(20,"")
+        self.netmask=snack.Entry(20,"")
+        self.gw=snack.Entry(20,"")
 
     def setState(self, dev=None):
         """
@@ -55,9 +56,9 @@ class NCTcpIpDialog:
         if self.dynip.selected():
             state=FLAGS_SET
         else:
-            state=FLAGS_RESET
+            state=snack.FLAGS_RESET
         for i in self.statip,self.netmask,self.gw:
-            i.setFlags(FLAG_DISABLED,state)
+            i.setFlags(snack.FLAG_DISABLED,state)
 
     def processInfo(self):
         """
@@ -87,14 +88,14 @@ class NCTcpIpDialog:
         Show and run the screen, save files if necesarry
         """
         self.screen=screen
-        g1=Grid(1,1)
-        g2=Grid(2,6)
-        g2.setField(Label (_("Name")),0,0,anchorLeft=1)
-        g2.setField(Label (_("Device")),0,1,anchorLeft=1)
-        g2.setField(Label (_("Use DHCP")),0,2,anchorLeft=1)
-        g2.setField(Label (_("Static IP")),0,3,anchorLeft=1)
-        g2.setField(Label (_("Netmask")),0,4,anchorLeft=1)
-        g2.setField(Label (_("Default gateway IP")),0,5,anchorLeft=1)
+        g1=snack.Grid(1,1)
+        g2=snack.Grid(2,6)
+        g2.setField(snack.Label (_("Name")),0,0,anchorLeft=1)
+        g2.setField(snack.Label (_("Device")),0,1,anchorLeft=1)
+        g2.setField(snack.Label (_("Use DHCP")),0,2,anchorLeft=1)
+        g2.setField(snack.Label (_("Static IP")),0,3,anchorLeft=1)
+        g2.setField(snack.Label (_("Netmask")),0,4,anchorLeft=1)
+        g2.setField(snack.Label (_("Default gateway IP")),0,5,anchorLeft=1)
         g2.setField(self.name,1,0,(1,0,0,0))
         g2.setField(self.hwdev,1,1,(1,0,0,0))
         g2.setField(self.dynip,1,2,(1,0,0,0),anchorLeft=1)
@@ -102,9 +103,9 @@ class NCTcpIpDialog:
         g2.setField(self.netmask,1,4,(1,0,0,0))
         g2.setField(self.gw,1,5,(1,0,0,0))
         self.dynip.setCallback(self.useDynamicCheckBox)
-        bb=ButtonBar(self.screen,((_("Ok"),"ok"),(_("Cancel"),"cancel")))
+        bb=snack.ButtonBar(self.screen,((_("Ok"),"ok"),(_("Cancel"),"cancel")))
         self.setState(self.dev)
-        tl=GridForm(screen,_("Devernet Configuration"),1,3)
+        tl=snack.GridForm(screen,_("Devernet Configuration"),1,3)
         tl.add(g1,0,0,(0,0,0,1),anchorLeft=1)
         tl.add(g2,0,1,(0,0,0,1))
         tl.add(bb,0,2,growx=1)

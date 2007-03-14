@@ -1,6 +1,5 @@
 from netconfpkg.plugins.NCDevModem import *
-
-from snack import *
+import snack
 #
 # ModemWindow class
 #
@@ -15,12 +14,12 @@ class NCModemInterface:
                If none are there, one will be added.
         """
 
-        self.name=Entry(20,"")
-        self.hwdev=Entry(20,"")
-        self.login=Entry(20,"")
-        self.phoneno=Entry(20,"")
-        self.password=Entry(20,"",password=1)
-        self.initstring=Entry(20,"")
+        self.name=snack.Entry(20,"")
+        self.hwdev=snack.Entry(20,"")
+        self.login=snack.Entry(20,"")
+        self.phoneno=snack.Entry(20,"")
+        self.password=snack.Entry(20,"",password=1)
+        self.initstring=snack.Entry(20,"")
         self.modem=modem
 
     def setState(self,modem=None):
@@ -62,22 +61,22 @@ class NCModemInterface:
         Show and run the screen, save files if necesarry
         """
         self.screen=screen
-        g1=Grid(1,1)
-        g2=Grid(2,6)
-        g2.setField(Label (_("Name")),0,0,anchorLeft=1)
-        g2.setField(Label (_("Device")),0,1,anchorLeft=1)
-        g2.setField(Label (_("ISP Phonenumber")),0,2,anchorLeft=1)
-        g2.setField(Label (_("ISP Login")),0,3,anchorLeft=1)
-        g2.setField(Label (_("ISP Password")),0,4,anchorLeft=1)
-        g2.setField(Label (_("Modem Initstring")),0,5,anchorLeft=1)
+        g1=snack.Grid(1,1)
+        g2=snack.Grid(2,6)
+        g2.setField(snack.Label (_("Name")),0,0,anchorLeft=1)
+        g2.setField(snack.Label (_("Device")),0,1,anchorLeft=1)
+        g2.setField(snack.Label (_("ISP Phonenumber")),0,2,anchorLeft=1)
+        g2.setField(snack.Label (_("ISP Login")),0,3,anchorLeft=1)
+        g2.setField(snack.Label (_("ISP Password")),0,4,anchorLeft=1)
+        g2.setField(snack.Label (_("Modem Initstring")),0,5,anchorLeft=1)
         g2.setField(self.name,1,0,(1,0,0,0))
         g2.setField(self.hwdev,1,1,(1,0,0,0))
         g2.setField(self.phoneno,1,2,(1,0,0,0),anchorLeft=1)
         g2.setField(self.login,1,3,(1,0,0,0))
         g2.setField(self.password,1,4,(1,0,0,0))
         g2.setField(self.initstring,1,5,(1,0,0,0))
-        bb=ButtonBar(self.screen,((_("Ok"),"ok"),(_("Cancel"),"cancel")))
-        tl=GridForm(screen,_("Modem Configuration"),1,3)
+        bb=snack.ButtonBar(self.screen,((_("Ok"),"ok"),(_("Cancel"),"cancel")))
+        tl=snack.GridForm(screen,_("Modem Configuration"),1,3)
         tl.add(g1,0,0,(0,0,0,1),anchorLeft=1)
         tl.add(g2,0,1,(0,0,0,1))
         tl.add(bb,0,2,growx=1)
