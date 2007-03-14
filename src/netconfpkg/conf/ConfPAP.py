@@ -23,12 +23,14 @@ if not "/usr/lib/rhs/python" in sys.path:
 import Conf
 
 class ConfPAP(Conf.Conf):
-    beginline = '####### redhat-config-network will overwrite this part!!! (begin) ##########'
-    endline = '####### redhat-config-network will overwrite this part!!! (end) ############'
+    __beginline = '####### system-config-network will overwrite this part!!! (begin) ##########'
+    __endline = '####### system-config-network will overwrite this part!!! (end) ############'
+    __beginlineold = '^####### redhat-config-network will overwrite.*'
+    __endlineold = '^####### redhat-config-network will overwrite.*'
 
     def __init__(self, filename):
-        self.beginlineplace = 0
-        self.endlineplace = 0
+        self.__beginlineplace = 0
+        self.__endlineplace = 0
         Conf.Conf.__init__(self, filename, '#', ' \t', ' \t')
         self.chmod(0600)
 
@@ -36,6 +38,9 @@ class ConfPAP(Conf.Conf):
         Conf.Conf.read(self)
         self.initvars()
         self.chmod(0600)
+        # convert old marker to new
+        self.sedline(self.__beginlineold, self.__beginline)
+        self.sedline(self.__endlineold, self.__endline)
 
     def findline(self, val):
         # returns False if no more lines matching pattern
@@ -50,30 +55,30 @@ class ConfPAP(Conf.Conf):
         self.line = 0
 
     def rewind(self):
-        self.line = self.beginlineplace
+        self.line = self.__beginlineplace
 
     def initvars(self):
         self.vars = {}
-        self.beginlineplace = 0
-        self.endlineplace = 0
+        self.__beginlineplace = 0
+        self.__endlineplace = 0
         self.real_rewind()
 
-        if not self.findline(self.beginline):
-            self.insertline(self.beginline)
+        if not self.findline(self.__beginline):
+            self.insertline(self.__beginline)
 
-        self.beginlineplace = self.tell()
+        self.__beginlineplace = self.tell()
 
-        if not self.findline(self.endline):
-            self.seek(self.beginlineplace)
+        if not self.findline(self.__endline):
+            self.seek(self.__beginlineplace)
             self.nextline()
-            self.insertline(self.endline)
+            self.insertline(self.__endline)
 
-        self.endlineplace = self.tell()
+        self.__endlineplace = self.tell()
 
         self.real_rewind()
 
         while self.findnextcodeline():
-            if self.tell() >= self.endlineplace:
+            if self.tell() >= self.__endlineplace:
                 break
             # initialize dictionary of variable/name pairs
             # print self.getline()
@@ -111,11 +116,11 @@ class ConfPAP(Conf.Conf):
 
     def insertline(self, line=''):
         place = self.tell()
-        if place < self.beginlineplace:
-            self.beginlineplace = self.beginlineplace + 1
+        if place < self.__beginlineplace:
+            self.__beginlineplace = self.__beginlineplace + 1
 
-        if place < self.endlineplace:
-            self.endlineplace = self.endlineplace + 1
+        if place < self.__endlineplace:
+            self.__endlineplace = self.__endlineplace + 1
 
         self.lines.insert(self.line, line)
 
@@ -123,11 +128,11 @@ class ConfPAP(Conf.Conf):
         place = self.tell()
         self.lines[self.line:self.line+1] = []
 
-        if place < self.beginlineplace:
-            self.beginlineplace = self.beginlineplace -1
+        if place < self.__beginlineplace:
+            self.__beginlineplace = self.__beginlineplace -1
 
-        if place < self.endlineplace:
-            self.endlineplace = self.endlineplace - 1
+        if place < self.__endlineplace:
+            self.__endlineplace = self.__endlineplace - 1
 
     def __getitem__(self, varname):
         if self.vars.has_key(varname):
@@ -150,7 +155,7 @@ class ConfPAP(Conf.Conf):
         value = '\"' + svalue + '\"'
 
         while self.findnextcodeline():
-            if self.tell() >= self.endlineplace:
+            if self.tell() >= self.__endlineplace:
                 break
 
             var = self.getfields()
@@ -163,7 +168,7 @@ class ConfPAP(Conf.Conf):
 
         if missing:
             self.delallitem(varname)
-            self.seek(self.endlineplace)
+            self.seek(self.__endlineplace)
             self.insertlinelist([ login, server, value ] )
 
 
@@ -189,7 +194,7 @@ class ConfPAP(Conf.Conf):
             server = "*"
 
         while self.findnextcodeline():
-            if self.tell() >= self.endlineplace:
+            if self.tell() >= self.__endlineplace:
                 break
 
             var = self.getfields()
