@@ -1111,6 +1111,17 @@ class ConfModules(Conf):
         else:
             return odict()
 
+    def __quote(self, s):
+        s = s.replace('\\', '\\\\')
+        s = s.replace('*', '\\*')
+        s = s.replace('?', '\\?')
+        s = s.replace('.', '\\.')
+        s = s.replace('(', '\\(')
+        s = s.replace(')', '\\)')
+        s = s.replace('^', '\\^')
+        s = s.replace('$', '\\$')
+        return s
+
     def __setitem__(self, varname, value):
         # set *every* instance (should only be one, but...) to avoid surprises
         place=self.tell()
@@ -1118,7 +1129,7 @@ class ConfModules(Conf):
         for key in value.keys():
             self.rewind()
             missing=1
-            findexp = '^[\t ]*' + key + '[\t ]+' + varname + '[\t ]+'
+            findexp = '^[\t ]*' + self.__quote(key) + '[\t ]+' + self.__quote(varname) + '[\t ]+'
             if not cmp(key, 'alias'):
                 endofline = value[key]
                 replace = key + ' ' + varname + ' ' + endofline
@@ -1135,6 +1146,11 @@ class ConfModules(Conf):
                 # some idiot apparantly put an unrecognized key in
                 # the dictionary; ignore it...
                 continue
+            
+            # FIXED: [146291] GUI adds trailing spaces to "options" lines
+            # in /etc/modprobe.conf when adding/deleting wireless devices
+            replace = replace.rstrip()
+            
             if endofline:
                 # there's something to write...
                 while self.findnextline(findexp):
@@ -1153,6 +1169,7 @@ class ConfModules(Conf):
                 while self.findnextline(findexp):
                     self.deleteline()
         self.seek(place)
+        
     def __delitem__(self, varname):
         # delete *every* instance...
         place=self.tell()
