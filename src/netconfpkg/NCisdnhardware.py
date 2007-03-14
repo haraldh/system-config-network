@@ -90,7 +90,7 @@ card = {
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050", "6692", "HiSax", "", "hisax" ]
     }
 
-	
+        
 class ConfISDN:
     keydict = { 'Description' : 'NAME',
                 'ModuleName' : 'MODULE',
@@ -289,5 +289,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/10/19 10:44:49 $"
-__version__ = "$Revision: 1.26 $"
+__date__ = "$Date: 2007/03/14 09:03:33 $"
+__version__ = "$Revision: 1.27 $"

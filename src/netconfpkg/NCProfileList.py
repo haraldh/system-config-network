@@ -260,7 +260,7 @@ class ProfileList(ProfileList_base):
         # Just to be safe...
         os.umask(0022)
 
-	    # commit the changes
+            # commit the changes
         self.commit(changed=False)
 
         devicelist = NCDeviceList.getDeviceList()
@@ -269,7 +269,7 @@ class ProfileList(ProfileList_base):
         # FIXME: [183338] use SEARCH not resolv.conf
         dnsconf = Conf.ConfEResolv()
 
-        act_prof = self.getActiveProfile()		
+        act_prof = self.getActiveProfile()              
         
         if socket.gethostname() != act_prof.DNS.Hostname and \
                getDebugLevel() < 10:

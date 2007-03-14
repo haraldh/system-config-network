@@ -65,7 +65,7 @@ def expectConf(fileorlines, str):
         lines = file.readlines()
         lines.sort()
         for i in xrange(len(lines)):
-	    if lines[i][-1:] == "\n":
+            if lines[i][-1:] == "\n":
                 lines[i] = lines[i][:-1]
 
     else:
@@ -76,7 +76,7 @@ def expectConf(fileorlines, str):
     #str = string.join(str, '\n')
     if str[0] == "":
         str = str[1:]
-	    
+            
     l = min(len(lines), len(str))
 
     for i in xrange(l):
@@ -179,10 +179,10 @@ if __name__ == "__main__":
                 m.append(sys.modules[key])
                 
         coverage.the_coverage.report(m, show_missing=0 )    
-	coverage.the_coverage.annotate(m, os.getcwd())
+        coverage.the_coverage.annotate(m, os.getcwd())
 
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.2 $"
+__date__ = "$Date: 2007/03/14 09:03:33 $"
+__version__ = "$Revision: 1.3 $"

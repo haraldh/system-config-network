@@ -116,29 +116,29 @@ deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, 
 
 modemDeviceList = [ '/dev/modem',
                     '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
-		    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3',
-		    '/dev/input/ttyACM0', '/dev/input/ttyACM1',
-		    '/dev/input/ttyACM2', '/dev/input/ttyACM3',
-		    '/dev/ttyM0', '/dev/ttyM1' ]
+                    '/dev/ttyI0', '/dev/ttyI1', '/dev/ttyI2', '/dev/ttyI3',
+                    '/dev/input/ttyACM0', '/dev/input/ttyACM1',
+                    '/dev/input/ttyACM2', '/dev/input/ttyACM3',
+                    '/dev/ttyM0', '/dev/ttyM1' ]
 
 ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
 
 iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
 
 deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
-		   '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
-		   '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
-		   '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
-		   '^cipcb[0-9]*(:[0-9]+)?$' : CIPE,
-		   '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
-		   '^lo$' : LO,
-		   '^ctc[0-9]*(:[0-9]+)?$' : CTC,
-		   '^hsi[0-9]*(:[0-9]+)?$' : HSI,
-		   '^iucv[0-9]*(:[0-9]+)?$' : IUCV,
-		   '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,                   
-		   }
+                   '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
+                   '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
+                   '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
+                   '^cipcb[0-9]*(:[0-9]+)?$' : CIPE,
+                   '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
+                   '^lo$' : LO,
+                   '^ctc[0-9]*(:[0-9]+)?$' : CTC,
+                   '^hsi[0-9]*(:[0-9]+)?$' : HSI,
+                   '^iucv[0-9]*(:[0-9]+)?$' : IUCV,
+                   '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,                   
+                   }
 # Removed for now, until we have a config dialog for infrared
-#		   '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#                  '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
 
 
 CRTSCTS = "CRTSCTS"
@@ -146,8 +146,8 @@ XONXOFF = "XONXOFF"
 NOFLOW = "NOFLOW"
 
 modemFlowControls = { CRTSCTS : _("Hardware (CRTSCTS)"),
-		      XONXOFF : _("Software (XON/XOFF)"),
-		      NOFLOW :  _("None") } 
+                      XONXOFF : _("Software (XON/XOFF)"),
+                      NOFLOW :  _("None") } 
 
 
 def nop(*args):
@@ -225,7 +225,7 @@ def assure_rpms(pkgs = []):
     if len(toinstall):
         import string
         plist = string.join(toinstall, '\n')
-	r = generic_longinfo_dialog(_("Shall the following packages, "
+        r = generic_longinfo_dialog(_("Shall the following packages, "
                                       "which are needed on your system, "
                                       "be installed?"),
                                     plist, dialog_type="question")
@@ -238,7 +238,7 @@ def request_rpms(pkgs = []):
     if len(toinstall):
         import string
         plist = string.join(toinstall, '\n')
-	r = generic_longinfo_dialog(_("You have to install the following packages, "
+        r = generic_longinfo_dialog(_("You have to install the following packages, "
                                       "which are needed on your system!"),
                                     plist, dialog_type="info")
         return 1
@@ -408,11 +408,11 @@ def getDeviceType(devname):
     if type == ETHERNET:
         try:
             from rhpl import iwlib
-	    # test for wireless
-	    info = iwlib.get_iwconfig(devname)
-	    type = WIRELESS
+            # test for wireless
+            info = iwlib.get_iwconfig(devname)
+            type = WIRELESS
         except:
-	    pass
+            pass
         
     return type
 
@@ -429,28 +429,28 @@ def getNewDialupDevice(devicelist, dev):
     device = None
 
     for i in devicelist:
-	if dev.Device != i.Device:
-	    dlist.append(i.Device)
-	    if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
-	        dlist.append(i.Dialup.SlaveDevice)
-	else:
-	    if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
-	        dlist.append(i.Device)
+        if dev.Device != i.Device:
+            dlist.append(i.Device)
+            if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
+                dlist.append(i.Dialup.SlaveDevice)
+        else:
+            if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
+                dlist.append(i.Device)
 
     if dev.Type == ISDN:
         if dev.Dialup.EncapMode == 'syncppp':
-	    device = 'ippp'
-	else:
-	    device = 'isdn'
+            device = 'ippp'
+        else:
+            device = 'isdn'
     else:
         device = 'ppp'
 
     while 1:
         if device+str(count) in dlist:
-	    count = count + 1
-	else:
-	    return device+str(count)
-	
+            count = count + 1
+        else:
+            return device+str(count)
+        
 
 ModemList = None
 def getModemList():
@@ -458,16 +458,16 @@ def getModemList():
     # move to plugins!
     global ModemList
     if ModemList:
-	    return ModemList[:]
+            return ModemList[:]
     
     import kudzu
     res = kudzu.probe(kudzu.CLASS_MODEM, kudzu.BUS_UNSPEC, kudzu.PROBE_ALL)
     ModemList = []
     if res != []:
         for v in res:
-	    dev = str(v.device)
-	    if dev and dev != 'None':
-	        ModemList.append('/dev/' + dev)
+            dev = str(v.device)
+            if dev and dev != 'None':
+                ModemList.append('/dev/' + dev)
     return ModemList[:]
 
 # Some failsafe return codes (same as in gtk)
@@ -486,77 +486,77 @@ RESPONSE_HELP = -11
 # FIXME: replace "print message" with logging
 generic_error_dialog_func = None
 def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
-			  widget=None, page=0, broken_widget=None):
-	global generic_error_dialog_func
-	if generic_error_dialog_func:
-		return generic_error_dialog_func("%s:\n\n%s" % (PROGNAME,
+                          widget=None, page=0, broken_widget=None):
+        global generic_error_dialog_func
+        if generic_error_dialog_func:
+                return generic_error_dialog_func("%s:\n\n%s" % (PROGNAME,
                                                                 message),
                                                  parent_dialog,
-						 dialog_type, widget,
-						 page, broken_widget)
+                                                 dialog_type, widget,
+                                                 page, broken_widget)
         else:
             print message
-	return 0
+        return 0
 
 generic_info_dialog_func = None
 def generic_info_dialog (message, parent_dialog = None, dialog_type="info",
-			  widget=None, page=0, broken_widget=None):
-	global generic_info_dialog_func
-	if generic_info_dialog_func:
-		return generic_info_dialog_func("%s:\n\n%s" % (PROGNAME,
+                          widget=None, page=0, broken_widget=None):
+        global generic_info_dialog_func
+        if generic_info_dialog_func:
+                return generic_info_dialog_func("%s:\n\n%s" % (PROGNAME,
                                                                message),
                                                 parent_dialog,
                                                 dialog_type, widget,
                                                 page, broken_widget)
         else:
             print message
-	return 0
+        return 0
 
 generic_longinfo_dialog_func = None
 def generic_longinfo_dialog (message, long_message,
-			     parent_dialog = None, dialog_type="info",
-			     widget=None, page=0, broken_widget=None):
-	global generic_longinfo_dialog_func
-	if generic_longinfo_dialog_func:
-		return generic_longinfo_dialog_func("%s:\n\n%s" % (PROGNAME,
+                             parent_dialog = None, dialog_type="info",
+                             widget=None, page=0, broken_widget=None):
+        global generic_longinfo_dialog_func
+        if generic_longinfo_dialog_func:
+                return generic_longinfo_dialog_func("%s:\n\n%s" % (PROGNAME,
                                                                    message),
                                                     long_message,
-						    parent_dialog,
-						    dialog_type, widget,
-						    page, broken_widget)
+                                                    parent_dialog,
+                                                    dialog_type, widget,
+                                                    page, broken_widget)
         else:
             print message
-	return 0
+        return 0
 
 generic_yesnocancel_dialog_func = None
 def generic_yesnocancel_dialog (message, parent_dialog = None,
                                 dialog_type="question",
                                 widget=None, page=0, broken_widget=None):
-	global generic_yesnocancel_dialog_func
-	if generic_yesnocancel_dialog_func:
-		return generic_yesnocancel_dialog_func("%s:\n\n%s" % (PROGNAME,
+        global generic_yesnocancel_dialog_func
+        if generic_yesnocancel_dialog_func:
+                return generic_yesnocancel_dialog_func("%s:\n\n%s" % (PROGNAME,
                                                                       message),
                                                        parent_dialog,
-						       dialog_type, widget,
-						       page, broken_widget)
+                                                       dialog_type, widget,
+                                                       page, broken_widget)
         else:
             print message
-	return 0
+        return 0
 
 generic_yesno_dialog_func = None
 def generic_yesno_dialog (message, parent_dialog = None,
-			  dialog_type="question",
-			  widget=None, page=0, broken_widget=None):
-	global generic_yesno_dialog_func
-	if generic_yesno_dialog_func:
-		return generic_yesno_dialog_func("%s:\n\n%s" % (PROGNAME,
+                          dialog_type="question",
+                          widget=None, page=0, broken_widget=None):
+        global generic_yesno_dialog_func
+        if generic_yesno_dialog_func:
+                return generic_yesno_dialog_func("%s:\n\n%s" % (PROGNAME,
                                                                 message),
                                                  parent_dialog,
-						 dialog_type, widget,
-						 page, broken_widget)
+                                                 dialog_type, widget,
+                                                 page, broken_widget)
         else:
             print message
-	return 0
+        return 0
 
 generic_run_dialog_func = None
 def generic_run_dialog (command, argv, searchPath = 0,
@@ -565,8 +565,8 @@ def generic_run_dialog (command, argv, searchPath = 0,
                         label = None, errlabel = None, dialog = None):
         import select
         global generic_run_dialog_func
-	if generic_run_dialog_func:
-		return generic_run_dialog_func(command, argv, searchPath,
+        if generic_run_dialog_func:
+                return generic_run_dialog_func(command, argv, searchPath,
                                                root, stdin, catchfd,
                                                title = "%s:\n\n%s" % (PROGNAME,
                                                                       title),
@@ -652,8 +652,8 @@ def generic_run (command, argv, searchPath = 0,
                  catchfd = 1, closefd = -1):
         import select
         global generic_run_func
-	if generic_run_func:
-		return generic_run_func(command, argv, searchPath,
+        if generic_run_func:
+                return generic_run_func(command, argv, searchPath,
                                                root, stdin, catchfd)
         else:
             if not os.access (root + command, os.X_OK):
@@ -727,44 +727,44 @@ def generic_run (command, argv, searchPath = 0,
             return (status, rc)
 
 def set_generic_error_dialog_func(func):
-	global generic_error_dialog_func
-	generic_error_dialog_func = func
+        global generic_error_dialog_func
+        generic_error_dialog_func = func
 
 def set_generic_info_dialog_func(func):
-	global generic_info_dialog_func
-	generic_info_dialog_func = func
-	
+        global generic_info_dialog_func
+        generic_info_dialog_func = func
+        
 def set_generic_longinfo_dialog_func(func):
-	global generic_longinfo_dialog_func
-	generic_longinfo_dialog_func = func
-	
+        global generic_longinfo_dialog_func
+        generic_longinfo_dialog_func = func
+        
 def set_generic_yesnocancel_dialog_func(func):
-	global generic_yesnocancel_dialog_func
-	generic_yesnocancel_dialog_func = func
-	
+        global generic_yesnocancel_dialog_func
+        generic_yesnocancel_dialog_func = func
+        
 def set_generic_yesno_dialog_func(func):
-	global generic_yesno_dialog_func
-	generic_yesno_dialog_func = func
+        global generic_yesno_dialog_func
+        generic_yesno_dialog_func = func
 
 def set_generic_run_dialog_func(func):
-	global generic_run_dialog_func
-	generic_run_dialog_func = func
+        global generic_run_dialog_func
+        generic_run_dialog_func = func
 
 def set_generic_run_func(func):
-	global generic_run_func
-	generic_run_func = func
+        global generic_run_func
+        generic_run_func = func
    
 
 def unlink(file):
-	if not (os.path.isfile(file) or os.path.islink(file)):
-		#print "file '%s' is not a file!" % file
-		return
-	try:
-		os.unlink(file)
+        if not (os.path.isfile(file) or os.path.islink(file)):
+                #print "file '%s' is not a file!" % file
+                return
+        try:
+                os.unlink(file)
                 log.log(2, "rm %s" % file)
-	except OSError, errstr:
+        except OSError, errstr:
                 generic_error_dialog (_("Error removing\n%s:\n%s!") \
-				      % (file, str(errstr)))
+                                      % (file, str(errstr)))
 
 def rmdir(file):
     if not os.path.isdir(file):
@@ -778,44 +778,44 @@ def rmdir(file):
                               % (file, str(errstr)))
         
 def link(src, dst):
-	if not os.path.isfile(src):
-		return
-	try:
-		os.link(src, dst)
+        if not os.path.isfile(src):
+                return
+        try:
+                os.link(src, dst)
                 log.log(2, "ln %s %s" % (src, dst))
-	except:
+        except:
             symlink(src, dst)
             
 def copy(src, dst):
-	if not os.path.isfile(src):
-		return
-	try:
-		shutil.copy(src, dst)
+        if not os.path.isfile(src):
+                return
+        try:
+                shutil.copy(src, dst)
                 shutil.copymode(src, dst)
                 log.log(2, "cp %s %s" % (src, dst))
-	except (IOError, OSError), errstr:
-		generic_error_dialog (_("Error copying \n%s\nto %s:\n%s!") 
-				      % (src, dst, str(errstr)))
-	
+        except (IOError, OSError), errstr:
+                generic_error_dialog (_("Error copying \n%s\nto %s:\n%s!") 
+                                      % (src, dst, str(errstr)))
+        
 def symlink(src, dst):
-	if not os.path.isfile(src):
-		return
-	try:
-		os.symlink(src, dst)
+        if not os.path.isfile(src):
+                return
+        try:
+                os.symlink(src, dst)
                 log.log(2, "ln -s %s %s" % (src, dst))
-	except OSError, errstr:
-		generic_error_dialog (_("Error linking \n%s\nto %s:\n%s!") 
-				      % (src, dst, str(errstr)))
+        except OSError, errstr:
+                generic_error_dialog (_("Error linking \n%s\nto %s:\n%s!") 
+                                      % (src, dst, str(errstr)))
 
 def rename(src, dst):
-	if not os.path.isfile(src) and not os.path.isdir(src):
-		return
+        if not os.path.isfile(src) and not os.path.isdir(src):
+                return
         try:
-		os.rename(src, dst)
+                os.rename(src, dst)
                 log.log(2, "mv %s %s" % (src, dst))
-	except (IOError, OSError, EnvironmentError), errstr:
-		generic_error_dialog (_("Error renaming \n%s\nto %s:\n%s!") \
-				      % (src, dst, str(errstr)))
+        except (IOError, OSError, EnvironmentError), errstr:
+                generic_error_dialog (_("Error renaming \n%s\nto %s:\n%s!") \
+                                      % (src, dst, str(errstr)))
 
 def mkdir(path):
     try:
@@ -826,14 +826,14 @@ def mkdir(path):
                               % (str(errstr)))
 
 def get_filepath(file):
-	fn = file
-	if not os.path.exists(fn):
-		fn = NETCONFDIR + file
-	else: return fn
-	
-	if not os.path.exists(fn):
-		return None
-	else: return fn
+        fn = file
+        if not os.path.exists(fn):
+                fn = NETCONFDIR + file
+        else: return fn
+        
+        if not os.path.exists(fn):
+                return None
+        else: return fn
 
 class ConfDevices(UserList.UserList):
     def __init__(self, confdir = None):
@@ -1006,21 +1006,21 @@ class LogFile:
             pass        
 
     def open (self, file = None):
-	if type(file) == type("hello"):
+        if type(file) == type("hello"):
             try:
                 self.logFile = open(file, "w")
             except:
                 self.logFile = sys.stderr
-	elif file:
-	    self.logFile = file
-	else:
+        elif file:
+            self.logFile = file
+        else:
             self.logFile = sys.stderr
         
     def getFile (self):
         return self.logFile.fileno ()
 
     def __call__(self, format, *args):
-	self.handler (format % args)
+        self.handler (format % args)
         
     def file_handler (self, string, level = 0):
         import time
@@ -1028,7 +1028,7 @@ class LogFile:
 
     def syslog_handler (self, string, level = syslog.LOG_INFO):
         import syslog
-	syslog.syslog(level, string)
+        syslog.syslog(level, string)
 
     def set_loglevel(self, level):
         self.level = level
@@ -1051,6 +1051,6 @@ class LogFile:
 
 
 log = LogFile()
-						
+                                                
             
 __author__ = "Harald Hoyer <harald@redhat.com>"

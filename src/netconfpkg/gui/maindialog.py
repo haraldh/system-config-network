@@ -494,7 +494,7 @@ class mainDialog:
         ipseclist = getIPsecList()
         clist = self.xml.get_widget("ipsecList")
         if not clist:
-		    return
+                    return
         clist.clear()
         clist.set_row_height(17)
         row = 0

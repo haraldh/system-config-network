@@ -92,21 +92,21 @@ class MyConfModules(ConfModules):
 
 
     def splitopt(self, opt):
-	eq = find(opt, '=')
-	if eq > 0:
-	    return (opt[:eq], opt[eq+1:])
-	else:
-	    return (opt, None)
+        eq = find(opt, '=')
+        if eq > 0:
+            return (opt[:eq], opt[eq+1:])
+        else:
+            return (opt, None)
 
     def joinoptlist(self, dict):
-	optstring = ''
-	for key in dict.keys():
+        optstring = ''
+        for key in dict.keys():
             if dict[key] != None:
                 optstring = optstring + key + '=' + dict[key] + ' '
             else:
                 optstring = optstring + key + ' '
                 
-	return optstring
+        return optstring
 
 
         
@@ -489,7 +489,7 @@ class HardwareList(HardwareList_base):
         # Read in actual system state
         #
         for device in ethtool.get_devices():
-	    h = None
+            h = None
             for h in self:
                 if h.Name == device:
                     break
@@ -632,7 +632,7 @@ class HardwareList(HardwareList_base):
     def load(self):
         hwconf = ConfHWConf()          
 
-	    # first clear the list
+            # first clear the list
         self.__delslice__(0, len(self))
         
         self.readChandev()
@@ -829,5 +829,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:41 $"
-__version__ = "$Revision: 1.80 $"
+__date__ = "$Date: 2007/03/14 09:03:32 $"
+__version__ = "$Revision: 1.81 $"

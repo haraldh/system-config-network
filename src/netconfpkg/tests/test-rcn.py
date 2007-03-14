@@ -65,7 +65,7 @@ def expectConf(fileorlines, str):
         lines = file.readlines()
         lines.sort()
         for i in xrange(len(lines)):
-	    if lines[i][-1:] == "\n":
+            if lines[i][-1:] == "\n":
                 lines[i] = lines[i][:-1]
 
     else:
@@ -76,7 +76,7 @@ def expectConf(fileorlines, str):
     #str = string.join(str, '\n')
     if str[0] == "":
         str = str[1:]
-	    
+            
     l = min(len(lines), len(str))
 
     for i in xrange(l):
@@ -122,16 +122,16 @@ class TestRCN(unittest.TestCase):
         PROGNAME='system-config-network'
         from netconfpkg import NC_functions
         NC_functions.prepareRoot(CHROOT)
-	
+        
         from netconfpkg import \
              NCDeviceList, NCProfileList, \
              NCHardwareList, NCIPsecList
 
         from netconfpkg.NC_functions import log
-	 
+         
         NC_functions.setVerboseLevel(100)
         NC_functions.setDebugLevel(100)
-	log.set_loglevel(NC_functions.getVerboseLevel())
+        log.set_loglevel(NC_functions.getVerboseLevel())
         
         devlists = [
             NCHardwareList.getHardwareList(),
@@ -153,7 +153,7 @@ class TestRCN(unittest.TestCase):
         self.oldstdout = sys.stdout
         sys.stdout = open("stdout", "w")
         sys.stderr = open("stderr", "w")
-	from netconfpkg.NC_functions import log
+        from netconfpkg.NC_functions import log
         log.open()
 
     def redirectEnd(self):
@@ -161,7 +161,7 @@ class TestRCN(unittest.TestCase):
         sys.stdout.close()
         sys.stderr = self.oldstderr
         sys.stdout = self.oldstdout
-	from netconfpkg.NC_functions import log
+        from netconfpkg.NC_functions import log
         log.open()
 
     def test00Basic(self):
@@ -174,8 +174,8 @@ class TestRCN(unittest.TestCase):
         expect = BASICSETUP
         self.redirectEnd()
 
-	self.failUnless(expectConf("stdout", expect))
-	
+        self.failUnless(expectConf("stdout", expect))
+        
 
     def test01Read(self):
         """Test manual reading"""
@@ -263,7 +263,7 @@ ProfileList.default.ProfileName=default
              NCDeviceList, NCProfileList, \
              NCHardwareList, NCIPsecList
         
-	from netconfpkg.NC_functions import log
+        from netconfpkg.NC_functions import log
         profilelist = NCProfileList.getProfileList()
         NC_functions.setVerboseLevel(100)
         NC_functions.setDebugLevel(100)
@@ -352,7 +352,7 @@ if __name__ == "__main__":
                 m.append(sys.modules[key])
                 
         coverage.the_coverage.report(m, show_missing=0 )    
-	coverage.the_coverage.annotate(m, os.getcwd())
+        coverage.the_coverage.annotate(m, os.getcwd())
     #coverage.the_coverage.report(netconfpkg.NC_functions, show_missing=0 )
     #print sys.modules.keys()
     os.system("rm -fr %s" % CHROOT)
@@ -360,5 +360,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2007/03/14 09:03:33 $"
+__version__ = "$Revision: 1.8 $"

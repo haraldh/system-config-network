@@ -45,7 +45,7 @@ class IsdnInterface:
         if self.xml:
             return True
 
-	if request_rpms(["isdn4k-utils"]):
+        if request_rpms(["isdn4k-utils"]):
             return False
  
         glade_file = 'IsdnHardwareDruid.glade'
@@ -115,7 +115,7 @@ class IsdnInterface:
         return self.druids[0:] + dialup.get_druids()
             
     def on_isdn_hardware_page_prepare(self, druid_page, druid):
-    	pass
+        pass
 
     def on_isdn_hardware_page_next(self, druid_page, druid):
         self.dehydrate()

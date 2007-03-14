@@ -186,7 +186,7 @@ def get_provider_list(Type="isdn"):
     db = open(provider_db, "r")
     line = db.readline()
     Type = string.lower(Type)
-	
+        
     while line:
         line = string.strip(line)
         if len(line) == 0 or line[0] == "#":
@@ -250,5 +250,5 @@ if __name__ == "__main__":
         print db
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.10 $"
+__date__ = "$Date: 2007/03/14 09:03:33 $"
+__version__ = "$Revision: 1.11 $"

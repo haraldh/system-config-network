@@ -19,8 +19,8 @@ file (alchemist style).
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 __author__ = "Harald Hoyer"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2007/03/14 09:03:33 $"
+__version__ = "$Revision: 1.29 $"
 
 import new
 from UserList import UserList
@@ -151,7 +151,7 @@ class GenClass:
 
    def _setParent(self, parent):
       """Set the parent list (private)"""
-      self._parent = parent			
+      self._parent = parent                     
       
    def toContext(self, list):
       """Convert this list to the internal Alchemist representation."""
@@ -331,7 +331,7 @@ class GenClass:
 
    def modified(self):
       return self.changed
-			
+                        
    def setChanged(self, val):
       self.changed = val
       if self._parent != None and val:
@@ -374,7 +374,7 @@ class GenClassList(GenClass):
          val = self._attributes[i]
          self.__dict__[i] = None
          self.__dict__['__' + i + '_bak'] = None
-			      
+                              
    def test(self):
       for i in self._attributes[SELF][CHILDKEYS]:
          val = self._attributes[i]
@@ -389,7 +389,7 @@ class GenClassList(GenClass):
          val = self._attributes[i]
          if hasattr(self, "commit" + i):
             getattr(self, "commit" + i)(changed)
-	
+        
    def rollback(self):
       #print "----------- rollback %s -------" % self._attributes[SELF][NAME]
       for i in self._attributes[SELF][CHILDKEYS]:
@@ -420,7 +420,7 @@ class GenClassList(GenClass):
 
    def _delAttr(self, child=None):
       self.__dict__[child] = None
-	
+        
    def __setattr__(self, name, value):
       if hasattr(self, "set" + name):
          getattr(self, "set" + name)(value)
@@ -476,7 +476,7 @@ class GenClassList(GenClass):
 
       if getattr(self, '__' + child + '_bak') != cd:
          #print "%s changed" % child
-         self.setChanged(changed)			
+         self.setChanged(changed)                       
 
       setattr(self, '__' + child + '_bak', cd)      
 
@@ -541,7 +541,7 @@ class GenClassAList(GenClass, UserList):
    def _doClear(self):
       self.data = []
       self.data_bak = []
-			
+                        
    def test(self):
       for child in self.data:
          child.test()
@@ -591,7 +591,7 @@ class GenClassAList(GenClass, UserList):
                child.commit(changed)
          
       self.data_bak = self.data[:]
-	
+        
    def fromContext(self, list):
       if not list: return      
       if isinstance(list, Alchemist.Context):
@@ -696,7 +696,7 @@ class GenClassAList(GenClass, UserList):
       UserList.append(self, item)
       if isinstance(item, GenClass):
          item._setParent(self)
-		
+                
    def insert(self, i, item):
       UserList.insert(self, i, item)
       item._setParent(self)
@@ -992,6 +992,9 @@ def GenClass_read_classfile(boxpath, mod, OptLower = False):
 __credits__ = """
 Changelog:
 $Log: genClass.py,v $
+Revision 1.29  2007/03/14 09:03:33  harald
+untabified source
+
 Revision 1.28  2007/03/08 12:56:42  harald
 true -> True, false -> False
 

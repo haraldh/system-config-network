@@ -362,7 +362,7 @@ def gui_run( command, argv, searchPath = 0,
     import string
 
     if not os.access ( root + command, os.X_OK ):
-	raise RuntimeError, command + " can not be run"
+        raise RuntimeError, command + " can not be run"
 
     ( read, write ) = os.pipe()
 
@@ -374,22 +374,22 @@ def gui_run( command, argv, searchPath = 0,
                 os.dup2( write, fd )
         else:
             os.dup2( write, catchfd )
-	os.close( write )
-	os.close( read )
+        os.close( write )
+        os.close( read )
 
-	if closefd != -1:
-	    os.close( closefd )
+        if closefd != -1:
+            os.close( closefd )
 
-	if stdin:
-	    os.dup2( stdin, 0 )
-	    os.close( stdin )
+        if stdin:
+            os.dup2( stdin, 0 )
+            os.close( stdin )
 
-	if ( searchPath ):
-	    os.execvp( command, argv )
-	else:
-	    os.execv( command, argv )
+        if ( searchPath ):
+            os.execvp( command, argv )
+        else:
+            os.execv( command, argv )
 
-	sys.exit( 1 )
+        sys.exit( 1 )
     try:
         os.close( write )
 
@@ -490,7 +490,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
     dlg.show_now()
 
     if not os.access ( root + command, os.X_OK ):
-	raise RuntimeError, command + " can not be run"
+        raise RuntimeError, command + " can not be run"
 
     ( read, write ) = os.pipe()
 
@@ -503,22 +503,22 @@ def gui_run_dialog( command, argv, searchPath = 0,
                 os.dup2( write, fd )
         else:
             os.dup2( write, catchfd )
-	os.close( write )
-	os.close( read )
+        os.close( write )
+        os.close( read )
 
-	if closefd != -1:
-	    os.close( closefd )
+        if closefd != -1:
+            os.close( closefd )
 
-	if stdin:
-	    os.dup2( stdin, 0 )
-	    os.close( stdin )
+        if stdin:
+            os.dup2( stdin, 0 )
+            os.close( stdin )
 
-	if ( searchPath ):
-	    os.execvp( command, argv )
-	else:
-	    os.execv( command, argv )
+        if ( searchPath ):
+            os.execvp( command, argv )
+        else:
+            os.execv( command, argv )
 
-	sys.exit( 1 )
+        sys.exit( 1 )
     try:
         os.close( write )
 
