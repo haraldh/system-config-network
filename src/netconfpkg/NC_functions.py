@@ -23,17 +23,14 @@ import sys
 import os
 import os.path
 import shutil
-from netconfpkg.conf import ConfPAP
-from netconfpkg.conf import Conf
-from netconfpkg.conf import ConfSMB
 from rhpl import ethtool
+from conf import ConfPAP
+from conf import Conf
+from conf import ConfSMB
 from NCException import NCException
 import UserList
 
 import string
-
-True = (1==1)
-False = not True
 
 PROGNAME = "system-config-network"
 
