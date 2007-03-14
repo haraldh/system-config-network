@@ -86,7 +86,7 @@ def expectConf(fileorlines, str):
     else:
         return True
 
-    print lines
+    print string.join(lines, "\n")
     return False
 
 
@@ -134,8 +134,8 @@ class TestRCN(unittest.TestCase):
         log.set_loglevel(NC_functions.getVerboseLevel())
 
         devlists = [
-            NCHardwareList.getHardwareList(),
-            NCIPsecList.getIPsecList(),
+#            NCHardwareList.getHardwareList(),
+#            NCIPsecList.getIPsecList(),
             NCDeviceList.getDeviceList(),
             NCProfileList.getProfileList(),
             ]
@@ -169,13 +169,11 @@ class TestRCN(unittest.TestCase):
         self.setupChroot()
         self.redirectStd()
         import netconf_cmd
-        cmdline = [ "-r", CHROOT ]
+        cmdline = [ "-d", "-o", "--root=" + CHROOT ]
         netconf_cmd.main(cmdline)
         expect = BASICSETUP
         self.redirectEnd()
-
         self.failUnless(expectConf("stdout", expect))
-
 
     def test01Read(self):
         """Test manual reading"""
@@ -330,7 +328,7 @@ if __name__ == "__main__":
         coverage.erase()
         coverage.start()
     #import netconf_cmd
-    import netconfpkg
+    #import netconfpkg
     testRunner = unittest.TextTestRunner(verbosity=2)
     result = testRunner.run(suite())
     if docoverage:
@@ -348,8 +346,8 @@ if __name__ == "__main__":
                 continue
             if key.find("netconfpkg") != -1:
                 m.append(sys.modules[key])
-            elif key.find("rhpl") != -1:
-                m.append(sys.modules[key])
+#            elif key.find("rhpl") != -1:
+#                m.append(sys.modules[key])
 
         coverage.the_coverage.report(m, show_missing=0 )
         coverage.the_coverage.annotate(m, os.getcwd())
@@ -360,5 +358,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2007/03/14 13:39:43 $"
+__version__ = "$Revision: 1.10 $"

@@ -5,6 +5,15 @@ import sys
 import string
 import os
 
+sys.path.append(os.getcwd() + "/../../")
+
+if os.environ.has_key("srcdir"):
+    srcdir = os.environ["srcdir"]
+    sys.path.append(srcdir + "/../../")
+else:
+    srcdir = os.getcwd()
+
+
 def writeConf(filename, str):
     try: os.unlink(filename)
     except OSError: pass
@@ -106,6 +115,10 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+alias char-major-195* nvidia
+alias eth4 3c501
+alias foo* bar
+# LAST LINE
 """
         # read
         writeConf(self.filename, str)
@@ -141,6 +154,10 @@ post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1
 options parport_pc io=0x378 irq=7
 options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0
 options 3c59x debug=2
+alias char-major-195* nvidia
+alias eth0 3c59xsss
+alias foo* bar
+# LAST LINE
 """
         # read
         writeConf(self.filename, str)
@@ -149,6 +166,7 @@ options 3c59x debug=2
         # modify
         conf["eth3"]["alias"] = "3c59xaaa"
         conf["eth0"] = { "alias" : "3c59x" }
+        conf["foo*"] = { "alias" : "baz" }
         # write
         conf.write()
         del conf
@@ -168,7 +186,10 @@ post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1
 options parport_pc io=0x378 irq=7
 options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0
 options 3c59x debug=2
+alias char-major-195* nvidia
 alias eth0 3c59x
+alias foo* baz
+# LAST LINE
 """
         if not expectConf(self.filename, str):
             writeConf(self.filename + '.orig', str)
@@ -182,23 +203,37 @@ def suite():
     return suite
 
 if __name__ == "__main__":
-    do_coverage = None
+    do_coverage = False
+    #do_coverage = True
     if do_coverage:
         import coverage
         coverage.erase()
         coverage.start()
 
-    from rhpl import Conf
+    from netconfpkg.conf import *
     testRunner = unittest.TextTestRunner(verbosity=2)
     result = testRunner.run(suite())
 
     if do_coverage:
         coverage.stop()
-        m = sys.modules.values()
-        coverage.the_coverage.report(Conf, show_missing=0 )
+        m = []
+        keys = []
+        keys.extend(sys.modules.keys())
+        keys.sort()
+        for key in keys:
+            try:
+                path = sys.modules[key].__file__
+            except:
+                path = ""
+            if path.find(".py") == -1:
+                continue
+            if key.find("netconfpkg.conf") != -1:
+                m.append(sys.modules[key])
+        
+        coverage.the_coverage.report(m, show_missing=0 )
 
     sys.exit(not result.wasSuccessful())
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.13 $"
+__date__ = "$Date: 2007/03/14 13:39:43 $"
+__version__ = "$Revision: 1.14 $"
