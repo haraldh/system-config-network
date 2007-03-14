@@ -31,8 +31,7 @@ import NCDeviceList
 ACTIVE = _('Active')
 INACTIVE = _('Inactive')
 
-if os.getuid() == 0: isdnctrl = '/sbin/isdnctrl'
-else: isdnctrl = '/usr/sbin/userisdnctl'
+isdnctrl = '/usr/sbin/userisdnctl'
 
 import glob
 
@@ -53,10 +52,8 @@ class NetworkDevice:
             if getDeviceType(i) == ISDN:
                 if os.access(isdnctrl, os.X_OK):
                     for nick in nickname:
-                        # FIXME: [161737] isdn status is wrong
-                        # "isdnctrl %s status" ??
-                        if os.system(isdnctrl +
-                                     ' %s >& /dev/null' %(nickname)) == 0:
+                        if os.system(userisdnctrl +
+                                     ' %s status >& /dev/null' %(nickname)) == 0:
                             break
                         else:
                             self.activedevicelist.remove(i)
