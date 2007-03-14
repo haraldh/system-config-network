@@ -19,61 +19,61 @@ from netconfpkg.NCDevice import *
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import *
 
-import netconfpkg 
+import netconfpkg
 
 _devModemDialog = None
 _devModemWizard = None
 
-class DevModem(Device):    
-   def __init__(self, list = None, parent = None):
-      Device.__init__(self, list, parent)
-      self.Type = MODEM
-      self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
+class DevModem(Device):
+    def __init__(self, list = None, parent = None):
+        Device.__init__(self, list, parent)
+        self.Type = MODEM
+        self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
 
-   def load(self, name):
-      conf = ConfDevice(name)
-      Device.load(self, name)
-      self.Dialup.load(conf)
-      
-   def createDialup(self):
-      if (self.Dialup == None) \
-             or not isinstance(self.Dialup, netconfpkg.NCDialup.ModemDialup):
-         self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
-      return self.Dialup
-   
-   def getDialog(self):
-      dialog =  _devModemDialog(self)
-      if hasattr(dialog, "xml"):
-         return dialog.xml.get_widget("Dialog")
+    def load(self, name):
+        conf = ConfDevice(name)
+        Device.load(self, name)
+        self.Dialup.load(conf)
 
-      return dialog
-    
-   def getWizard(self):
-      return _devModemWizard
-   
-   def isType(self, device):
-      if device.Type == MODEM:
-         return True
-      if getDeviceType(device.Device) == MODEM:
-         return True
-      return False
+    def createDialup(self):
+        if (self.Dialup == None) \
+               or not isinstance(self.Dialup, netconfpkg.NCDialup.ModemDialup):
+            self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
+        return self.Dialup
 
-   def getHWDevice(self):
-      if self.Dialup:
-         return self.Dialup.Inherits
-      
-      return None
+    def getDialog(self):
+        dialog =  _devModemDialog(self)
+        if hasattr(dialog, "xml"):
+            return dialog.xml.get_widget("Dialog")
+
+        return dialog
+
+    def getWizard(self):
+        return _devModemWizard
+
+    def isType(self, device):
+        if device.Type == MODEM:
+            return True
+        if getDeviceType(device.Device) == MODEM:
+            return True
+        return False
+
+    def getHWDevice(self):
+        if self.Dialup:
+            return self.Dialup.Inherits
+
+        return None
 
 def setDevModemDialog(dialog):
-   global _devModemDialog
-   _devModemDialog = dialog
+    global _devModemDialog
+    _devModemDialog = dialog
 
 def setDevModemWizard(wizard):
-   global _devModemWizard
-   _devModemWizard = wizard
+    global _devModemWizard
+    _devModemWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevModem, MODEM)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.10 $"

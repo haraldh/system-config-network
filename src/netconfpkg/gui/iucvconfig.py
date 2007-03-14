@@ -39,11 +39,11 @@ class iucvConfigDialog(ptpConfigDialog):
         title = _('IUCV Device')
 
         self.xml.get_widget('Dialog').set_title(title)
-                
+
         if not self.device.Mtu:
             self.device.Mtu = 9216
         self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
-        
+
     def dehydrate(self):
         if not self.device.Mtu:
             self.device.Mtu = 9216

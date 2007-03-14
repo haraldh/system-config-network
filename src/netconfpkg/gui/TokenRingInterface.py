@@ -49,11 +49,11 @@ class TokenRingInterface(InterfaceCreator):
         self.hw_sel = 0
         self.hwPage = False
         self.druids = []
-        
+
     def init_gui(self):
         if self.xml:
             return
-        
+
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -119,15 +119,15 @@ class TokenRingInterface(InterfaceCreator):
     def get_druids(self):
         self.init_gui()
         return self.druids
-    
+
     def on_hostname_config_page_back(self, druid_page, druid):
         childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[2])
         else:
-            self.topdruid.set_page(childs[1])            
+            self.topdruid.set_page(childs[1])
         return True
-    
+
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         if self.hwPage:
@@ -135,14 +135,14 @@ class TokenRingInterface(InterfaceCreator):
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
         pass
-    
+
     def on_hostname_config_page_prepare(self, druid_page, druid):
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         pass
-    
+
     def on_hw_config_page_back(self, druid_page, druid):
         pass
-    
+
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
 
@@ -160,7 +160,7 @@ class TokenRingInterface(InterfaceCreator):
         else:
             self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
-            
+
             self.device.Alias = self.getNextAlias(self.device)
             self.topdruid.set_page(childs[3])
         return True
@@ -175,20 +175,20 @@ class TokenRingInterface(InterfaceCreator):
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
-                
+
         clist.append([_("Other Tokenring Card")])
         clist.select_row (self.hw_sel, 0)
-    
+
     def on_finish_page_back(self,druid_page, druid):
         pass
-        
+
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
+        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError, err:
             pass
         else:
@@ -204,7 +204,7 @@ class TokenRingInterface(InterfaceCreator):
                 break
 
         s = s + "\n" + "   "
-        
+
         if self.device.BootProto == "static":
             s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
             + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
@@ -212,9 +212,9 @@ class TokenRingInterface(InterfaceCreator):
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n"
-   
+
         druid_page.set_text(s)
-        
+
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
@@ -225,7 +225,7 @@ class TokenRingInterface(InterfaceCreator):
                 continue
             prof.ActiveDevices.append(self.device.DeviceId)
             break
-        
+
         self.profilelist.commit()
         self.devicelist.commit()
 

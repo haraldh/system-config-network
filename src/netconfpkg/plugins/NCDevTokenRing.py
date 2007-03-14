@@ -22,38 +22,38 @@ from netconfpkg.NC_functions import *
 _devTokenRingDialog = None
 _devTokenRingWizard = None
 
-class DevTokenRing(Device):    
-   def __init__(self, list = None, parent = None):
-      Device.__init__(self, list, parent)
-      self.Type = TOKENRING
+class DevTokenRing(Device):
+    def __init__(self, list = None, parent = None):
+        Device.__init__(self, list, parent)
+        self.Type = TOKENRING
 
-   def getDialog(self):
-      dialog =  _devTokenRingDialog(self)
-      if hasattr(dialog, "xml"):
-         return dialog.xml.get_widget("Dialog")
+    def getDialog(self):
+        dialog =  _devTokenRingDialog(self)
+        if hasattr(dialog, "xml"):
+            return dialog.xml.get_widget("Dialog")
 
-      return dialog
+        return dialog
 
-   def getWizard(self):
-      return _devTokenRingWizard
+    def getWizard(self):
+        return _devTokenRingWizard
 
-   def isType(self, device):
-      if device.Type == TOKENRING:
-         return True
-      if getDeviceType(device.Device) == TOKENRING:
-         return True
-      return False
+    def isType(self, device):
+        if device.Type == TOKENRING:
+            return True
+        if getDeviceType(device.Device) == TOKENRING:
+            return True
+        return False
 
 def setDevTokenRingDialog(dialog):
-   global _devTokenRingDialog
-   _devTokenRingDialog = dialog
+    global _devTokenRingDialog
+    _devTokenRingDialog = dialog
 
 def setDevTokenRingWizard(wizard):
-   global _devTokenRingWizard
-   _devTokenRingWizard = wizard
+    global _devTokenRingWizard
+    _devTokenRingWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevTokenRing, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.9 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.10 $"

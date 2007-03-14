@@ -39,7 +39,7 @@ class provider:
         self.provider_data = []
         self.clear()
         pass
-    
+
     def clear(self):
         self.country = ""
         self.city = ""
@@ -57,13 +57,13 @@ class provider:
         self.layer = ""
         self.auth_type = ""
         self.ip_mode = ""
-    
+
     def get_country(self):
         return self.country
 
     def set_country(self, country):
         self.country = country
-    
+
     def get_city(self):
         return self.city
 
@@ -99,31 +99,31 @@ class provider:
 
     def set_password(self,password):
         self.password = password
-        
+
     def get_areacode(self):
         return self.areacode
 
     def set_areacode(self, areacode):
         self.areacode = areacode
-    
+
     def get_phone(self):
         return self.phone
-    
+
     def set_phone(self, phone):
         self.phone = phone
-    
+
     def get_domain(self):
         return self.domain
 
     def set_domain(self, domain):
         self.domain = domain
-    
+
     def get_dns(self):
         return self.dns
 
     def set_dns(self, dns):
         self.dns = dns
-    
+
     def get_netmask(self):
         return self.netmask
 
@@ -135,25 +135,25 @@ class provider:
 
     def set_encap(self, encap):
         self.encap = encap
-    
+
     def get_layer(self):
         return self.layer
 
     def set_layer(self, layer):
         self.layer = layer
-    
+
     def get_auth_type(self):
         return self.auth_type
-    
+
     def set_auth_type(self, auth_type):
         self.auth_type = auth_type
-    
+
     def get_ip_mode(self):
         return self.ip_mode
 
     def set_ip_mode(self, ip_mode):
         self.ip_mode = ip_mode
-    
+
     def get_provider_data(self):
         self.provider_data = {'Country' : self.country,
                               'City' : self.city,
@@ -171,7 +171,7 @@ class provider:
                               'Layer2' : self.layer,
                               'Authentication': self.auth_type,
                               'IpMode' : self.ip_mode }
-        
+
         return self.provider_data
 
 def get_value(s):
@@ -186,7 +186,7 @@ def get_provider_list(Type="isdn"):
     db = open(provider_db, "r")
     line = db.readline()
     Type = string.lower(Type)
-        
+
     while line:
         line = string.strip(line)
         if len(line) == 0 or line[0] == "#":
@@ -198,7 +198,7 @@ def get_provider_list(Type="isdn"):
             return db_list
 
         isp = provider()
-        
+
         while line[:5] != "[End]":
             line = string.strip(line)
             if line[:9] == "[Country]":
@@ -250,5 +250,5 @@ if __name__ == "__main__":
         print db
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:03:33 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.12 $"

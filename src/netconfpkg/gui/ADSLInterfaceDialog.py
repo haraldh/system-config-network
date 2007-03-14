@@ -107,7 +107,7 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
         self.xml.get_widget("useSyncpppCB").set_active(dialup.SyncPPP == True)
 
         self.xml.get_widget("defrouteCB").set_active(dialup.DefRoute == True)
-        
+
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.dsl_hardware_hydrate (self.sharedtcpip_xml, self.device)
@@ -130,13 +130,13 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
                                        get_text())
         else:
             dialup.DialMode = DM_MANUAL
-            
+
         if not self.device.Device:
             self.device.Device = "dsl"
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.dsl_hardware_dehydrate (self.sharedtcpip_xml, self.device)
-        
+
     def on_dialonDemandCB_clicked(self, *args):
         self.xml.get_widget("idleTimeSB").set_sensitive(\
             self.xml.get_widget("dialonDemandCB").get_active())
@@ -147,12 +147,12 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)
         dl = dialog.xml.get_widget ("Dialog")
-        
+
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        
+
         if dl.run() != gtk.RESPONSE_OK:
-            dl.destroy()        
+            dl.destroy()
             return
 
         dl.destroy()

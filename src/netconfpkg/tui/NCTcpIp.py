@@ -29,7 +29,7 @@ class NCTcpIpDialog:
         """
         if not dev:
             dev = self.dev
-            
+
         if dev:
             if dev.DeviceId:
                 self.name.set(dev.DeviceId)
@@ -45,13 +45,13 @@ class NCTcpIpDialog:
                 self.netmask.set(dev.Netmask)
             if dev.Gateway:
                 self.gw.set(dev.Gateway)
-        
+
     def useDynamicCheckBox(self):
         """
         Set the static IP field to enabled/disabled
         determined by the dynamic IP field
         """
-        
+
         if self.dynip.selected():
             state=FLAGS_SET
         else:
@@ -76,12 +76,12 @@ class NCTcpIpDialog:
             self.dev.Netmask=self.netmask.value()
             self.dev.Gateway=self.gw.value()
             self.dev.BootProto=None
-        try: hwaddr = ethtool.get_hwaddr(self.dev.Device) 
+        try: hwaddr = ethtool.get_hwaddr(self.dev.Device)
         except IOError, err:
             pass
         else:
             self.dev.HardwareAddress = hwaddr
-    
+
     def runIt(self, screen):
         """
         Show and run the screen, save files if necesarry

@@ -32,12 +32,12 @@ class ethernetHardware:
     def __init__ (self, toplevel=None):
 
         glade_file = "EthernetHardwareDruid.glade"
- 
+
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
- 
+
         self.xml = gtk.glade.XML(glade_file, 'druid',
                                      domain=PROGNAME)
         xml_signal_autoconnect(self.xml,
@@ -53,21 +53,21 @@ class ethernetHardware:
         self.hw = None
         self.has_ethernet = True
         self.druids = []
- 
+
         druid = self.xml.get_widget('druid')
         for I in druid.get_children():
             druid.remove(I)
             self.druids.append(I)
-            
+
         self.setup()
         self.hydrate()
-        
+
     def get_project_name(self):
         pass
 
     def get_project_description(self):
         pass
-    
+
     def get_druids(self):
         for self.hw in self.hardwarelist:
             if self.hw.Type == ETHERNET: return
@@ -77,7 +77,7 @@ class ethernetHardware:
 
     def on_hardware_page_prepare(self, druid_page, druid):
         pass
-    
+
     def on_hardware_page_next(self, druid_page, druid):
         self.dehydrate()
 
@@ -86,7 +86,7 @@ class ethernetHardware:
 
     def on_adapterEntry_changed(self, entry):
         pass
-    
+
     def hydrate(self):
         if self.hw and self.hw.Name:
             self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
@@ -127,7 +127,7 @@ class ethernetHardware:
 
 #          hwlist = NCHardwareList.getHardwareList()
 #          (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
-        
+
 #          if len(hwdesc):
 #              self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
 
@@ -155,5 +155,5 @@ class ethernetHardware:
             if (modInfo[i].has_key('description') and \
                 modInfo[i]['description'] == self.hw.Description) or \
                 (self.hw.Description == i):
-                self.hw.Card.ModuleName = i         
+                self.hw.Card.ModuleName = i
 __author__ = "Harald Hoyer <harald@redhat.com>"

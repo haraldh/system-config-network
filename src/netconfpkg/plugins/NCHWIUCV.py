@@ -22,44 +22,42 @@ from netconfpkg.NC_functions import *
 _hwIUCVDialog = None
 _hwIUCVWizard = None
 
-class HwIUCV(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = IUCV
-      self.createCard()
-      self.Description = "IUCV Device"
-      
-   def getDialog(self):
-      if _hwIUCVDialog == None: return None
-      if hasattr(_hwIUCVDialog, getDialog):
-         return _hwIUCVDialog(self).getDialog()
-      return _hwIUCVDialog(self).xml.get_widget("Dialog")
-    
-   def getWizard(self):
-      return _hwIUCVWizard
+class HwIUCV(Hardware):
+    def __init__(self, list = None, parent = None):
+        Hardware.__init__(self, list, parent)
+        self.Type = IUCV
+        self.createCard()
+        self.Description = "IUCV Device"
 
-   def isType(self, hardware):
-      if hardware.Type == IUCV:
-         return True
-      if getHardwareType(hardware.Hardware) == IUCV:
-         return True
-      return False
+    def getDialog(self):
+        if _hwIUCVDialog == None: return None
+        if hasattr(_hwIUCVDialog, getDialog):
+            return _hwIUCVDialog(self).getDialog()
+        return _hwIUCVDialog(self).xml.get_widget("Dialog")
+
+    def getWizard(self):
+        return _hwIUCVWizard
+
+    def isType(self, hardware):
+        if hardware.Type == IUCV:
+            return True
+        if getHardwareType(hardware.Hardware) == IUCV:
+            return True
+        return False
 
 def setHwIUCVDialog(dialog):
-   global _hwIUCVDialog
-   _hwIUCVDialog = dialog
+    global _hwIUCVDialog
+    _hwIUCVDialog = dialog
 
 def setHwIUCVWizard(wizard):
-   global _hwIUCVWizard
-   _hwIUCVWizard = wizard
+    global _hwIUCVWizard
+    _hwIUCVWizard = wizard
 
 import os
 machine = os.uname()[4]
 if machine == 's390' or machine == 's390x' \
-       or os.path.isfile("/etc/chandev.conf"):   
-   df = getHardwareFactory()
-   df.register(HwIUCV, IUCV)
-   
+       or os.path.isfile("/etc/chandev.conf"):
+    df = getHardwareFactory()
+    df.register(HwIUCV, IUCV)
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

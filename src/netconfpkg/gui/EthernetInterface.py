@@ -42,7 +42,7 @@ class EthernetInterface(InterfaceCreator):
     def init_gui(self):
         if self.xml:
             return
-        
+
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -83,7 +83,7 @@ class EthernetInterface(InterfaceCreator):
             self.device = devclass()
         else:
             self.device = NCDevEthernet.DevEthernet()
-            
+
         self.device.Type = self.connection_type
         self.device.OnBoot = True
         self.device.AllowUser = False
@@ -117,22 +117,22 @@ class EthernetInterface(InterfaceCreator):
 
     def get_type(self):
         return ETHERNET
- 
+
     def get_project_description(self):
         return _("Create a new ethernet connection.")
 
     def get_druids(self):
         self.init_gui()
         return self.druids
-    
+
     def on_hostname_config_page_back(self, druid_page, druid):
         childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
         else:
-            self.topdruid.set_page(childs[1])            
+            self.topdruid.set_page(childs[1])
         return True
-    
+
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         if self.hwPage:
@@ -140,7 +140,7 @@ class EthernetInterface(InterfaceCreator):
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
         pass
-    
+
     def on_hostname_config_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
@@ -148,10 +148,10 @@ class EthernetInterface(InterfaceCreator):
                                    + str(self.device.Alias)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         pass
-    
+
     def on_hw_config_page_back(self, druid_page, druid):
         pass
-    
+
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
         childs = self.topdruid.get_children()
@@ -161,14 +161,14 @@ class EthernetInterface(InterfaceCreator):
             return True
 
         self.hw_sel = clist.selection[0]
-        
+
         if (self.hw_sel + 1) == clist.rows:
             self.hwPage = True
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
         else:
             self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
-            
+
             self.device.Alias = self.getNextAlias(self.device)
             # must be at bottom, because prepare is called here
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+2])
@@ -187,21 +187,21 @@ class EthernetInterface(InterfaceCreator):
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
-                
+
         clist.append([_("Other Ethernet Card")])
         clist.select_row (self.hw_sel, 0)
         pass
-    
+
     def on_finish_page_back(self,druid_page, druid):
         pass
-        
+
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
+        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError, err:
             pass
         else:
@@ -217,7 +217,7 @@ class EthernetInterface(InterfaceCreator):
                 break
 
         s = s + "\n" + "   "
-        
+
         if self.device.BootProto == "static" or self.device.BootProto == "none":
             s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
             + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
@@ -228,14 +228,14 @@ class EthernetInterface(InterfaceCreator):
 
 
         druid_page.set_text(s)
-        
+
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = getHardwareList()
         hardwarelist.commit()
         #print self.devicelist
         self.devicelist.append(self.device)
         self.device.commit()
-        
+
         for prof in self.profilelist:
             if prof.Active == False:
                 continue

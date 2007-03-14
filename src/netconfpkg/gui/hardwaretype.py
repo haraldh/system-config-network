@@ -56,21 +56,21 @@ class hardwareTypeDialog:
         if machine == 's390' or machine == 's390x':
             devicetypes = [ ETHERNET, TOKENRING ]
         else:
-            df = getHardwareFactory()        
+            df = getHardwareFactory()
             devicetypes = df.keys()
-            
+
         for hw in hardwarelist:
             if hw.Type == ISDN:
                 devicetypes.remove(ISDN)
                 break
 
-        
+
         self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
         self.hydrate()
 
     def hydrate(self):
         pass
-    
+
     def dehydrate(self):
         self.type = self.xml.get_widget('hardwareTypeEntry').get_text()
 
@@ -88,5 +88,5 @@ if __name__ == "__main__":
     gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.16 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.17 $"

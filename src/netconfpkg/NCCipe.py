@@ -49,13 +49,13 @@ class ConfCipeOptions(Conf.Conf):
                 self.vars[var[0]] = ""
             self.nextline()
         self.rewind()
-        
+
     def __getitem__(self, varname):
         if self.vars.has_key(varname):
             return self.vars[varname]
         else:
             return None
-        
+
     def __setitem__(self, varname, value):
         # set first (should be only) instance to values in list value
         place=self.tell()
@@ -71,7 +71,7 @@ class ConfCipeOptions(Conf.Conf):
             self.insertlinelist([ varname, value ])
         # no matter what, update our idea of the variable...
         self.vars[varname] = value
-        
+
     def __delitem__(self, varname):
         # delete *every* instance...
         self.rewind()
@@ -79,32 +79,32 @@ class ConfCipeOptions(Conf.Conf):
                                 '[' + self.separators + ']'):
             self.deleteline()
         del self.vars[varname]
-        
+
     def write(self):
         for key in self.vars.keys():
             self[key] = self.vars[key]
         Conf.Conf.write(self)
-        
+
     def keys(self):
         return self.vars.keys()
-    
+
     def has_key(self, key):
         return self.vars.has_key(key)
 
-        
+
 class Cipe(Cipe_base):
     intkeydict = {'LocalPort' : 'MYPORT',
                   }
-    
+
     keydict = { 'RemotePeerAddress' : 'PEER',
                 'RemoteVirtualAddress' : 'PTPADDR',
                 'TunnelDevice' : 'TUNNELDEV',
                 'TunnelIP' : 'ME',
                 }
-    
+
     def __init__(self, list = None, parent = None):
-        Cipe_base.__init__(self, list, parent)        
-        
+        Cipe_base.__init__(self, list, parent)
+
     def load(self, parentConf):
         conf = parentConf
 
@@ -124,9 +124,9 @@ class Cipe(Cipe_base):
             conf = ConfCipeOptions(parent.DeviceId)
             if conf.has_key('key'):
                 self.SecretKey = conf['key']
-                
+
         self.commit(changed=False)
-        
+
     def save(self, parentConf):
         conf = parentConf
 
@@ -145,7 +145,7 @@ class Cipe(Cipe_base):
         for i in conf.keys():
             if not conf[i] or conf[i] == "": del conf[i]
 
-        
+
         parent = self.getParent()
         if parent:
             if not os.path.isdir(netconfpkg.ROOT + CIPEDIR):
@@ -160,6 +160,6 @@ class Cipe(Cipe_base):
                 if self.SecretKey: conf['key'] = self.SecretKey
                 if not conf.has_key("maxerr"): conf["maxerr"] = '-1'
                 if not conf.has_key("cttl"): conf["cttl"] = '64'
-        
+
                 conf.write()
 __author__ = "Harald Hoyer <harald@redhat.com>"

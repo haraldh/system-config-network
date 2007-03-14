@@ -90,7 +90,7 @@ card = {
     "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050", "6692", "HiSax", "", "hisax" ]
     }
 
-        
+
 class ConfISDN:
     keydict = { 'Description' : 'NAME',
                 'ModuleName' : 'MODULE',
@@ -113,7 +113,7 @@ class ConfISDN:
         self.Firmware = ""
         self.ModuleName = ""
         self.Resources = ""
-        
+
     def get_value(self, s):
         if string.find(s, "=") < 0:
             return ""
@@ -125,7 +125,7 @@ class ConfISDN:
     def load(self, f = None):
 
         if not f:
-            f = netconfpkg.ROOT + ISDNCARDCONF            
+            f = netconfpkg.ROOT + ISDNCARDCONF
         if not os.path.exists(f):
             return -1
 
@@ -161,10 +161,10 @@ class ConfISDN:
             self.Type = '0'
 
         return 1
-    
+
     def save(self, f = None):
         if f == None:
-            f = netconfpkg.ROOT + ISDNCARDCONF 
+            f = netconfpkg.ROOT + ISDNCARDCONF
         # we only support 1 ISDN card in this version
         if not self.Description:
             if os.path.exists(f):
@@ -172,7 +172,7 @@ class ConfISDN:
             return
 
         conf = Conf.ConfShellVar(filename = f)
-        
+
         rs = ""
         if self.Type:
             rs = rs + "protocol=" + str(self.ChannelProtocol)
@@ -212,7 +212,7 @@ class ConfISDN:
 
     def cleanup(self, f = None):
         if f == None:
-            f = netconfpkg.ROOT + ISDNCARDCONF 
+            f = netconfpkg.ROOT + ISDNCARDCONF
         # we only support 1 ISDN card in this version
         if not self.Description:
             if os.path.exists(f):
@@ -289,5 +289,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:03:33 $"
-__version__ = "$Revision: 1.27 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.28 $"

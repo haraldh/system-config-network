@@ -42,8 +42,8 @@ class ConfSMBSubDict(UserDict):
         UserDict.__init__(self, initdict)
         self.conf = parent_conf
         self.stanza = stanza
-        
-    def __setitem__(self, varname, value):        
+
+    def __setitem__(self, varname, value):
         self.conf.rewind()
         if not self.conf.find_stanza(self.stanza):
             raise Exception, "Unvalid stanza " + self.stanza
@@ -61,13 +61,13 @@ class ConfSMBSubDict(UserDict):
     def __delitem__(self, varname):
         self.conf.rewind()
         if not self.conf.find_stanza(self.stanza):
-            raise Exception, "Unvalid stanza " + self.stanza        
-            
+            raise Exception, "Unvalid stanza " + self.stanza
+
         if self.conf.find_entry_in_current_stanza(varname):
             self.conf.deleteline()
         else:
             raise Exception, "Unvalid entry " + varname + " in stanza " + self.stanza
-        
+
         UserDict.__delitem__(self, varname)
 
 # ConfSMB(Conf):
@@ -83,11 +83,11 @@ class ConfSMB(Conf):
         self.stanza_re = re.compile('^\s*\[(?P<stanza>[^\]]*)]\s*(?:;.*)?$', re.I)
         Conf.__init__(self, filename, '#;', '=', '=',
                       merge=1, create_if_missing = create_if_missing)
-        
+
     def read(self):
         Conf.read(self)
         self.initvars()
-        
+
     def initvars(self):
         self.vars = {}
         self.rewind()
@@ -97,35 +97,35 @@ class ConfSMB(Conf):
             if not stanza:
                 break
             stanzavars = {}
-            
+
             self.nextline()
-            
+
             while self.findnextcodeline():
                 #print "initvars: " + self.getline()
                 vars = self.next_entry()
                 if not vars:
                     break
-                
+
                 name = vars[0]
                 value = vars[1]
                 stanzavars[name] = value
                 self.nextline()
 
             self.vars[stanza] = ConfSMBSubDict(self, stanza, stanzavars)
-            
+
         self.rewind()
 
     def get_entry(self):
         vars = self.getfields()
-            
-        try:            
+
+        try:
             vars = [vars[0], joinfields(vars[1:len(vars)], '=')]
         except(LookupError):
             return 0
 
         if not vars:
             return 0
-      
+
         return [strip(vars[0]), strip(vars[1])]
 
     def next_entry(self):
@@ -133,19 +133,19 @@ class ConfSMB(Conf):
             #print "next_entry: " + self.getline()
             if self.is_stanza_decl():
                 return 0
-            
+
             vars = self.get_entry()
-            
+
             if vars:
                 return vars
-            
-            self.nextline()            
-            
+
+            self.nextline()
+
         return 0
-                
+
     def findnextcodeline(self):
         return self.findnextline('^[\t ]*[\[A-Za-z_]+.*')
-    
+
     def is_stanza_decl(self):
         # return True if the current line is of the form [...]
         if self.stanza_re.match(self.getline()):
@@ -162,12 +162,12 @@ class ConfSMB(Conf):
             if m and (stanza_name == m.group('stanza')):
                 self.nextline()
                 return 1
-            
+
             self.nextline()
-            
+
         self.rewind()
         return 0
-                
+
     def next_stanza(self):
         # leave the current line at the first line of the stanza
         # (the first line after the [stanza_name] entry)
@@ -177,12 +177,12 @@ class ConfSMB(Conf):
                 stanza = m.group('stanza')
                 if stanza:
                     return stanza
-                
+
             self.nextline()
-            
+
         self.rewind()
         return 0
-                
+
     def prevline(self):
         self.line = max([self.line - 1, 0])
 
@@ -201,10 +201,10 @@ class ConfSMB(Conf):
             else:
                 name = vars[0]
                 if name == entry_name:
-                    return 1                
+                    return 1
             self.nextline()
         return 0
-        
+
     def __getitem__(self, stanza):
         if not self.has_key(stanza):
             self.rewind()
@@ -213,9 +213,9 @@ class ConfSMB(Conf):
                 self.insertline('[' + stanza + ']')
                 self.nextline()
                 self.vars[stanza] = ConfSMBSubDict(self, stanza)
-                
+
         return self.vars[stanza]
-        
+
     def __setitem__(self, stanza, value):
         if not self.has_key(stanza):
             self.rewind()
@@ -223,13 +223,13 @@ class ConfSMB(Conf):
                 self.fsf()
                 self.insertline('[' + stanza + ']')
                 self.nextline()
-                
+
             if isinstance(value, ConfSMBSubDict):
                 self.vars[stanza] = value
                 return
             else:
                 self.vars[stanza] = ConfSMBSubDict(self, stanza)
-                    
+
         for i in value.keys():
             self.vars[stanza][i] = value[i]
 
@@ -247,7 +247,7 @@ class ConfSMB(Conf):
     def keys(self):
         # no need to return list in order here, I think.
         return self.vars.keys()
-    
+
     def has_key(self, key):
         return self.vars.has_key(key)
 
@@ -257,5 +257,3 @@ if __name__ == '__main__':
     print conf.vars
     for confkey in conf.vars.keys():
         print "key:", confkey
-
-    

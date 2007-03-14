@@ -30,7 +30,7 @@ class TonlineDialog:
     def __init__(self, login, pw):
         self.login = login
         self.password = pw
-        
+
         glade_file = "tonline.glade"
 
         if not os.path.exists(glade_file):
@@ -57,12 +57,12 @@ class TonlineDialog:
             })
 
         self.dialog = self.xml.get_widget("Dialog")
-        
+
         self.hydrate()
 
     def on_okButton_clicked(self, button):
         self.dehydrate()
-    
+
     def on_cancelButton_clicked(self, button):
         pass
 
@@ -75,11 +75,11 @@ class TonlineDialog:
             self.xml.get_widget('okButton').set_sensitive(False)
         else:
             self.xml.get_widget('okButton').set_sensitive(True)
-    
+
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
-            
+
         if re.match(str, text):
             return
         entry.emit_stop_by_name('insert_text')
@@ -88,7 +88,7 @@ class TonlineDialog:
         if len(entry.get_text()) < minlen:
             self.xml.get_widget('okButton').set_sensitive(False)
         self.check()
-            
+
     def hydrate(self):
         ak = ""
         zn = ""
@@ -105,7 +105,7 @@ class TonlineDialog:
                 zn = s[12:]
             else:
                 ak = s
-        
+
         self.xml.get_widget('AKEntry').set_text(ak)
         self.xml.get_widget('ZNEntry').set_text(zn)
         self.xml.get_widget('mbnEntry').set_text(mbn)
@@ -118,8 +118,8 @@ class TonlineDialog:
                      (self.xml.get_widget('AKEntry').get_text(),
                       self.xml.get_widget('ZNEntry').get_text(),
                       self.xml.get_widget('mbnEntry').get_text())
-        
+
         self.password = self.xml.get_widget('pwEntry').get_text()
-        
+
         pass
 __author__ = "Harald Hoyer <harald@redhat.com>"

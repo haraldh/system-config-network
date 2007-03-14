@@ -101,10 +101,10 @@ def handleException((type, value, tb), progname, version):
              "dump and file a detailed bug "
              "report against system-config-network at "
              "https://bugzilla.redhat.com/bugzilla") + "\n" + text
-    
+
     if tblast and len(tblast) > 3:
         tblast = tblast[:3]
-    for t in tblast:        
+    for t in tblast:
         text = text + str(t) + ":"
     text = text + extxt[0]
     text = text + joinfields(list, "")
@@ -113,7 +113,7 @@ def handleException((type, value, tb), progname, version):
     import pdb
     pdb.post_mortem (tb)
     os.kill(os.getpid(), signal.SIGKILL)
-        
+
     sys.exit(10)
 
 sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
@@ -140,7 +140,7 @@ def loadConfig(screen):
     screen.refresh()
     profilelist = getProfileList()
     screen.popWindow()
-    
+
 #
 # main Screen
 #
@@ -174,7 +174,7 @@ def newDevice(screen):
             devlist[i] = dev
             return dev
     return -2
-                
+
 def selectDevice(screen):
     li=Listbox(5,returnExit=1)
     l = 0
@@ -186,7 +186,7 @@ def selectDevice(screen):
                 continue
         except:
             continue
-        
+
         l += 1
         for hw in getHardwareList():
             if hw.Name == dev.Device and hw.Description:
@@ -194,14 +194,14 @@ def selectDevice(screen):
                                              dev.Device,
                                              hw.Description))[:le], dev)
                 break
-            
+
         else:
             li.append(("%s (%s) - %s" % (dev.DeviceId,
                                     dev.Device, dev.Type))[:le], dev)
-            
+
     if not l:
         return None
-    
+
     li.append(_("<New Device>"), None)
     g=GridForm(screen,_("Select A Device"),1,3)
     bb=ButtonBar(screen,((_("Quit"),"quit"), (_("Cancel"),"cancel")))
@@ -219,7 +219,7 @@ def selectDevice(screen):
             ret = newDevice(screen)
     return ret
 
-                
+
 def Usage():
     print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose -d --debug")
 
@@ -234,12 +234,12 @@ if __name__=="__main__":
     NC_functions.setDebugLevel(0)
     chroot = None
     debug = 0
-    
+
     try:
         opts, args = getopt.getopt(sys.argv[1:], "vh?r:d",
                                    [
                                     "verbose",
-                                    "debug", 
+                                    "debug",
                                     "help",
                                     "root="
                                     ])
@@ -265,7 +265,7 @@ if __name__=="__main__":
 
     except (getopt.error, BadUsage):
         Usage()
-        sys.exit(1)    
+        sys.exit(1)
 
 #    exception.installExceptionHandler(PRG_NAME, PRG_VERSION, gui=0,
 #                                      debug=debug)
@@ -285,7 +285,7 @@ if __name__=="__main__":
                 continue
             elif dev == None:
                 break
-            
+
             dialog = dev.getDialog()
             if dialog.runIt(screen):
                 dev.commit()
@@ -297,7 +297,7 @@ if __name__=="__main__":
             else:
                 dev.rollback()
                 devlist.rollback()
-            
+
         screen.finish()
         #print dir(screen)
         #print dev
@@ -307,5 +307,5 @@ if __name__=="__main__":
     except:
         screen.finish()
         raise
-    
+
 __author__ = "Trond Eivind Glomsrød <teg@redhat.com>, Harald Hoyer <harald@redhat.com>"

@@ -41,7 +41,7 @@ class HardwareDialog:
         self.dialog = self.xml.get_widget(dialogname)
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         load_icon("network.xpm", self.dialog)
-        
+
         self.setup()
         self.hydrate()
 
@@ -57,16 +57,14 @@ class HardwareDialog:
 
     def on_cancelButton_clicked(self, button):
         pass
-    
+
     def hydrate(self):
         pass
-    
+
     def setup(self):
         pass
-    
+
     def dehydrate(self):
         pass
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

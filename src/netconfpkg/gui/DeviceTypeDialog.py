@@ -91,7 +91,7 @@ class DeviceTypeDialog:
         if not cipeFound: devicetypes.remove(CIPE)
         if not tokenringFound: devicetypes.remove(TOKENRING)
         if not wirelessFound: devicetypes.remove(WIRELESS)
-        
+
         omenu = self.xml.get_widget('deviceTypeOption')
         omenu.remove_menu ()
         menu = gtk.Menu ()
@@ -104,22 +104,22 @@ class DeviceTypeDialog:
         omenu.set_menu (menu)
         omenu.grab_focus ()
         self.hydrate()
-        
+
 
     def hydrate(self):
         pass
-    
+
     def dehydrate(self):
         omenu = self.xml.get_widget('deviceTypeOption')
         item = omenu.get_menu ().get_active ()
         self.device.Type = item.get_data ("device")
-        
+
     def on_okButton_clicked(self, button):
         self.dehydrate()
-    
+
     def on_cancelButton_clicked(self, button):
         self.device.rollback()
-    
+
 
 # make ctrl-C work
 if __name__ == "__main__":

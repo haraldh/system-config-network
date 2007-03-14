@@ -57,7 +57,7 @@ class NCIsdnInterface:
         self.isdn.Dialup.PhoneNumber=self.phoneno.value()
         self.isdn.Dialup.MSN=self.msn.value()
 
-    
+
     def runIt(self, screen):
         """
         Show and run the screen, save files if necesarry

@@ -70,7 +70,7 @@ def handleException((type, value, tb), progname, version, debug=None):
     text += "Summary: TB "
     if tblast and len(tblast) > 3:
         tblast = tblast[:3]
-    for t in tblast:        
+    for t in tblast:
         text += str(t) + ":"
     text += extxt[0]
     text += joinfields(list, "")
@@ -120,19 +120,19 @@ def Usage():
     sys.stderr.write( "\t-f, --file=<file>  : %s" % \
           _("import from file") + '\n')
     sys.stderr.write('\n')
-    
+
 def main(cmdline):
     import os.path
     from netconfpkg import NC_functions
     from netconfpkg.NC_functions import log
-    
+
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage: pass
 
     progname = os.path.basename(sys.argv[0])
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
-    
+
     do_activate = 0
     switch_profile = 0
     profile = None
@@ -147,7 +147,7 @@ def main(cmdline):
     chroot = None
     debug = None
     devlists = []
-    
+
     try:
         opts, args = getopt.getopt(cmdline, "asp:?r:dhvtief:co",
                                    [
@@ -170,11 +170,11 @@ def main(cmdline):
             if opt == '-d' or opt == '--devicelist':
                 devlists.append(getDeviceList())
                 continue
-                
+
             if opt == '-h' or opt == '--hardwarelist':
                 devlists.append(getHardwareList())
                 continue
-            
+
             if opt == '-s' or opt == '--ipseclist':
                 devlists.append(getIPsecList())
                 continue
@@ -182,7 +182,7 @@ def main(cmdline):
             if opt == '-o' or opt == '--profilelist':
                 devlists.append(getProfileList())
                 continue
-            
+
             if opt == '-p' or opt == '--profile':
                 mode = SWITCH
                 switch_profile = 1
@@ -192,19 +192,19 @@ def main(cmdline):
             if opt == '-f' or opt == '--file':
                 filename = val
                 continue
-            
+
             if opt == '-r' or opt == '--root':
                 chroot = val
                 continue
-            
+
             if opt == '-c' or opt == '--clear':
                 clear = 1
                 continue
-            
+
             if opt == '-t' or opt == '--test':
                 test = 1
                 continue
-            
+
             if opt == '-a' or opt == '--activate':
                 mode = SWITCH
                 do_activate = 1
@@ -217,7 +217,7 @@ def main(cmdline):
             if opt == '-e' or opt == '--export':
                 mode = EXPORT
                 continue
-                
+
             if opt == '-?' or opt == '--help':
                 Usage()
                 return(0)
@@ -233,7 +233,7 @@ def main(cmdline):
 
             sys.stderr.write(_("Unknown option %s\n" % opt))
             raise BadUsage
-      
+
     except (getopt.error, BadUsage):
         Usage()
         return(1)
@@ -246,18 +246,18 @@ def main(cmdline):
         else:
             log.handler = log.file_handler
             log.open(sys.stderr)
-            
+
         if chroot:
             prepareRoot(chroot)
 
         NC_functions.updateNetworkScripts()
 
-            
+
         if not len(devlists):
             devlists = [getDeviceList(), getHardwareList(),
                         getIPsecList(),
                         getProfileList()]
-            
+
         if clear:
             for devlist in devlists:
                 del devlist[0:len(devlist)-1]
@@ -267,7 +267,7 @@ def main(cmdline):
                 devstr =  str(devlist)
                 if len(devstr):
                     # remove the last \n
-                    print devstr[:-1]                    
+                    print devstr[:-1]
             return(0)
 
         elif mode == IMPORT:
@@ -276,14 +276,14 @@ def main(cmdline):
                 "DeviceList" : getDeviceList(),
                 "IPsecList" : getIPsecList(),
                 "ProfileList" : getProfileList() }
-            
+
             if filename:
                 file = open(filename, "r")
             else:
                 file = sys.stdin
-         
+
             lines = file.readlines()
-      
+
             for line in lines:
                 try:
                     line = line[:-1]
@@ -300,17 +300,17 @@ def main(cmdline):
                     else:
                         sys.stderr.write(_("Unknown List %s\n", vals[0]))
                         raise ParseError
-                        
+
                 except Exception, e:
                     pe = ParseError(_("Error parsing line: %s") % line)
                     pe.args += e.args
                     raise pe
 
-                
+
             for devlist in devlists:
                 log.log(1, devlist)
                 devlist.save()
-            
+
             return(0)
 
         elif test:
@@ -322,7 +322,7 @@ def main(cmdline):
             actdev = Control.NetworkDevice()
             actdev.load()
             aprof = profilelist.getActiveProfile()
-            
+
             if switch_profile and aprof.ProfileName != profile:
                 log.log(1, "Switching to profile %s" % profile)
                 if do_activate:
@@ -350,7 +350,7 @@ def main(cmdline):
                             (ret, msg) = device.activate()
                             if ret:
                                 print msg
-                        
+
                 return(0)
 
         return(0)

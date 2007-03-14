@@ -56,19 +56,19 @@ class MyFileList(ListType):
 
 class ProfileList(ProfileList_base):
     def __init__(self, list = None, parent = None):
-        ProfileList_base.__init__(self, list, parent)        
-    
+        ProfileList_base.__init__(self, list, parent)
+
     def load(self):
         self.curr_prof = 'default'
         nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
         if nwconf.has_key('CURRENT_PROFILE'):
             self.curr_prof = nwconf['CURRENT_PROFILE']
-            
+
         if nwconf.has_key('HOSTNAME'):
             self.use_hostname = nwconf['HOSTNAME']
         else:
             self.use_hostname = 'localhost'
-            
+
         if self.curr_prof == None or self.curr_prof == '':
             self.curr_prof = 'default'
 
@@ -77,7 +77,7 @@ class ProfileList(ProfileList_base):
 
         proflist = []
         if os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR):
-            proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)        
+            proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
             for pr in proflist:
                 # 60016
                 profdir = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + pr
@@ -88,10 +88,10 @@ class ProfileList(ProfileList_base):
             self.loadprof('default', None)
 
         prof = self.getActiveProfile()
-        prof.DNS.Hostname = self.use_hostname        
+        prof.DNS.Hostname = self.use_hostname
         self.commit(changed)
 
-    def loadprof(self, pr, profdir):        
+    def loadprof(self, pr, profdir):
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
 
@@ -112,7 +112,7 @@ class ProfileList(ProfileList_base):
             devlist = ConfDevices(profdir)
         else:
             devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
-            
+
         for dev in devlist:
             for d in devicelist:
                 if d.DeviceId == dev:
@@ -142,7 +142,7 @@ class ProfileList(ProfileList_base):
             for al in hoconf[key][1]:
                 host.AliasList.append(al);
             prof.HostsList.append(host)
-        
+
         # FIXME: [183338] use SEARCH not resolv.conf
         dnsconf = Conf.ConfEResolv()
         if profdir:
@@ -160,7 +160,7 @@ class ProfileList(ProfileList_base):
             nwconf = Conf.ConfShellVar(profdir + '/network')
         else:
             nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
-            
+
         if nwconf['HOSTNAME'] != '':
             prof.DNS.Hostname     = nwconf['HOSTNAME']
         if len(dnsconf['domain']) > 0:
@@ -181,7 +181,7 @@ class ProfileList(ProfileList_base):
         # Keep that test for later versions
         devmap = {}
         devicelist = NCDeviceList.getDeviceList()
-        
+
         for prof in self:
             if not prof.Active:
                 continue
@@ -192,7 +192,7 @@ class ProfileList(ProfileList_base):
                         break
                 else:
                     continue
-            
+
                 if devmap.has_key(device.Device) and \
                        device.Alias == devmap[device.Device].Alias:
                     msg = (_('Device %s uses the same Hardware Device '
@@ -205,11 +205,11 @@ class ProfileList(ProfileList_base):
 
                 devmap[device.Device] = device
             break
-        
-    def commit(self, changed=True):        
+
+    def commit(self, changed=True):
         self.test()
         ProfileList_base.commit(self, changed)
-        
+
     def fixInterfaces(self):
         return
         pppnum = 0
@@ -224,10 +224,10 @@ class ProfileList(ProfileList_base):
                 for dev in devicelist:
                     if dev.DeviceId != devid:
                         continue
-                        
+
                     if dev.Type == MODEM or dev.Type == DSL:
                         dstr = "ppp"+str(pppnum)
-                        if dev.Device != dstr:                            
+                        if dev.Device != dstr:
                             dev.Device = dstr
                             changed = 1
                         pppnum = pppnum + 1
@@ -252,7 +252,7 @@ class ProfileList(ProfileList_base):
                             isdnnum = isdnnum + 1
                     break
             break
-        
+
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
         # fail gracefully, with informing, which file, and why
@@ -269,16 +269,16 @@ class ProfileList(ProfileList_base):
         # FIXME: [183338] use SEARCH not resolv.conf
         dnsconf = Conf.ConfEResolv()
 
-        act_prof = self.getActiveProfile()              
-        
+        act_prof = self.getActiveProfile()
+
         if socket.gethostname() != act_prof.DNS.Hostname and \
                getDebugLevel() < 10:
             if os.getuid() == 0:
-                # FIXME: [169733] Renaming machine prevents applications from opening                
+                # FIXME: [169733] Renaming machine prevents applications from opening
                 # if the hostname changed, set it system wide (#55746)
                 os.system("hostname %s" % act_prof.DNS.Hostname)
                 log.log(2, "change hostname to %s" % act_prof.DNS.Hostname)
-                
+
             newip = '127.0.0.1'
             try:
                 newip = socket.gethostbyname(act_prof.DNS.Hostname)
@@ -292,7 +292,7 @@ class ProfileList(ProfileList_base):
                             host.AliasList.append(act_prof.DNS.Hostname.split(".")[0])
                         else:
                             host.AliasList.append(act_prof.DNS.Hostname)
-            else:                
+            else:
                 if newip != "127.0.0.1":
                     # We found an IP for the hostname
                     for host in act_prof.HostsList:
@@ -320,7 +320,7 @@ class ProfileList(ProfileList_base):
             act_prof.HostsList.commit(changed=False)
 
         nwconf['HOSTNAME'] = act_prof.DNS.Hostname
-              
+
         if act_prof.ProfileName != 'default':
             nwconf['CURRENT_PROFILE'] = act_prof.ProfileName
         else:
@@ -332,7 +332,7 @@ class ProfileList(ProfileList_base):
             mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
 
         files_used = MyFileList()
-                
+
         for prof in self:
             if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR + \
                                  '/' + prof.ProfileName):
@@ -353,7 +353,7 @@ class ProfileList(ProfileList_base):
                                prof.ProfileName + '/resolv.conf'
 
             files_used.append(dnsconf.filename)
-            
+
             dnsconf['domain'] = ''
             if prof.DNS.Domainname != '':
                 dnsconf['domain'] = [prof.DNS.Domainname]
@@ -387,7 +387,7 @@ class ProfileList(ProfileList_base):
             for host in prof.HostsList:
                 hoconf[host.Hostname] = [host.IP, host.AliasList]
                 saved.append(host.Hostname)
-            # FIXME: check [166855] system-config-network, 'save' erases local loopback entry    
+            # FIXME: check [166855] system-config-network, 'save' erases local loopback entry
             for i in hoconf.keys():
                 if not i in saved:
                     # delete all other entries the user has deleted in the UI
@@ -399,7 +399,7 @@ class ProfileList(ProfileList_base):
             hoconf.write()
 
             del hoconf
-            
+
             for devId in prof.ActiveDevices:
                 for prefix in [ 'ifcfg-', 'route-', 'keys-']:
                     devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
@@ -411,7 +411,7 @@ class ProfileList(ProfileList_base):
                         if not issamefile(devfilename, profilename):
                             unlink(profilename)
                             link(devfilename, profilename)
-                        
+
                         files_used.append(devfilename)
                         files_used.append(profilename)
 
@@ -420,17 +420,17 @@ class ProfileList(ProfileList_base):
                               prof.ProfileName + '/' + devId + '.route'
                 unlink(profilename)
 
-                    
+
                 if prof.Active == False and prof.ProfileName != 'default':
                     continue
 
-                # Active Profile or default profile                
+                # Active Profile or default profile
                 for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
                     devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                       '/' + prefix + devId
                     profilename = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
                                   '/' + prefix + devId
-                       
+
                     if os.path.isfile(devfilename):
                         if not issamefile(devfilename, profilename):
                             unlink(profilename)
@@ -452,28 +452,28 @@ class ProfileList(ProfileList_base):
                         if not issamefile(devfilename, profilename):
                             unlink(profilename)
                             link(devfilename, profilename)
-                            
+
                         files_used.append(devfilename)
                         files_used.append(profilename)
 
                 if prof.Active == False and prof.ProfileName != 'default':
                     continue
 
-                # Active Profile or default profile                
+                # Active Profile or default profile
                 for prefix in [ 'ifcfg-', 'keys-' ]:
                     devfilename = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                       '/' + prefix + devId
                     profilename = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
                                   '/' + prefix + devId
-                       
+
                     if os.path.isfile(devfilename):
                         if not issamefile(devfilename, profilename):
                             unlink(profilename)
                             link(devfilename, profilename)
-                            
-                        files_used.append(profilename)                
 
-            if prof.Active == False:                
+                        files_used.append(profilename)
+
+            if prof.Active == False:
                 continue
 
             # Special actions for the active profile
@@ -511,14 +511,14 @@ class ProfileList(ProfileList_base):
                         dirname = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + dir
                         if not os.path.isdir(dirname):
                             continue
-                        filelist = os.listdir(dirname)                    
+                        filelist = os.listdir(dirname)
                         for file2 in filelist:
                             stat2 = os.stat(dirname + '/' + file2)
                             if os.path.samestat(stat, stat2):
                                 unlink(file)
             except:
                 pass
-                        
+
 
         # Remove all profile directories except default
         proflist = os.listdir(netconfpkg.ROOT + SYSCONFPROFILEDIR)
@@ -531,7 +531,7 @@ class ProfileList(ProfileList_base):
                 if filename in files_used:
                     # Do not remove used files
                     log.log(6, "%s not removed" % filename)
-                    continue                
+                    continue
                 unlink(filename)
 
             filename = netconfpkg.ROOT + SYSCONFPROFILEDIR + prof
@@ -575,8 +575,8 @@ class ProfileList(ProfileList_base):
         for prof in self:
             if (isinstance(val, str) and prof.ProfileName == val) or \
                    (isinstance(val, Profile) and prof == val) :
-                    found = True
-                    break
+                found = True
+                break
         else:
             return None
 
@@ -594,7 +594,7 @@ class ProfileList(ProfileList_base):
 
         if not dochange:
             self.setChanged(modl)
-        
+
         return prof
 
     def getActiveProfile(self):
@@ -625,11 +625,11 @@ class ProfileList(ProfileList_base):
             if profile.ProfileName == vals[0]:
                 profile._parseLine(vals[1:], value)
                 return
-        
+
         i = self.addProfile()
         self[i].ProfileName = vals[0]
         self[i]._parseLine(vals[1:], value)
-        
+
 
 __PFList = None
 __PFList_root = netconfpkg.ROOT
@@ -637,7 +637,7 @@ __PFList_root = netconfpkg.ROOT
 def getProfileList(refresh=None):
     global __PFList
     global __PFList_root
-    
+
     if __PFList == None or refresh or \
            __PFList_root != netconfpkg.ROOT:
         __PFList = ProfileList()

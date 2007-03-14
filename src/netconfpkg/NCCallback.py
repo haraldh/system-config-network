@@ -23,18 +23,18 @@ from netconfpkg import Callback_base
 class Callback(Callback_base):
     boolkeydict = { 'Compression' : 'CBCP',
                     'Hup' : 'CBHUP' }
-    
+
     keydict = { 'Type' : 'CALLBACK',
                 'MSN' : 'CBCP_MSN',}
 
     intkeydict = { 'Delay' : 'CBDELAY' }
 
     def __init__(self, list = None, parent = None):
-        Callback_base.__init__(self, list, parent)        
+        Callback_base.__init__(self, list, parent)
 
     def load(self, parentConf):
         conf = parentConf
-        
+
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
@@ -51,13 +51,13 @@ class Callback(Callback_base):
                 if conf[confkey] == 'on':
                     self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = False            
+                    self.__dict__[selfkey] = False
             else:
-                self.__dict__[selfkey] = False            
+                self.__dict__[selfkey] = False
 
     def save(self, parentConf):
         conf = parentConf
-        
+
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
@@ -78,5 +78,5 @@ class Callback(Callback_base):
                 conf[confkey] = 'off'
 
 
-            
+
 __author__ = "Harald Hoyer <harald@redhat.com>"

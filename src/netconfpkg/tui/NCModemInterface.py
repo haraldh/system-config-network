@@ -56,7 +56,7 @@ class NCModemInterface:
         self.modem.Dialup.Password=self.password.value()
         self.modem.Dialup.InitString=self.initstring.value()
         self.modem.Dialup.PhoneNumber=self.phoneno.value()
-    
+
     def runIt(self, screen):
         """
         Show and run the screen, save files if necesarry

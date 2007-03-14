@@ -43,9 +43,9 @@ class ConfDevice( Conf.ConfShellVar ):
             status = os.stat( self.filename )
             self.oldmode = status[0]
             #print status
-            
+
         Conf.ConfShellVar.__init__( self, self.filename )
-        
+
         if new:
             self.rewind()
             self.insertline( "# Please read /usr/share/doc/"
@@ -53,7 +53,7 @@ class ConfDevice( Conf.ConfShellVar ):
             self.nextline()
             self.insertline( "# for the documentation of these parameters." );
             self.rewind()
-    
+
     def write( self ):
         self.chmod( self.oldmode )
         log.log( 2, "chmod %#o %s" % ( self.oldmode & 03777, self.filename ) )
@@ -64,7 +64,7 @@ class ConfDevice( Conf.ConfShellVar ):
         #    if ask != RESPONSE_YES:
         #        self.chmod(self.oldmode)
         Conf.ConfShellVar.write( self )
-            
+
 class ConfRoute( Conf.ConfShellVar ):
     def __init__( self, name ):
         Conf.ConfShellVar.__init__( self, netconfpkg.ROOT + SYSCONFDEVICEDIR + \
@@ -76,33 +76,33 @@ class Device( Device_base ):
     Type = ETHERNET
     SubType = None
     Priority = 0
-   
-    keydict = { 'Device' : 'DEVICE', 
-                'IP' : 'IPADDR', 
-                'Netmask' : 'NETMASK', 
-                'Gateway' : 'GATEWAY', 
-                'Hostname' : 'DHCP_HOSTNAME', 
-                'Domain' : 'DOMAIN', 
-                'BootProto' : 'BOOTPROTO', 
-                'Type' : 'TYPE', 
-                'HardwareAddress' : 'HWADDR', 
-                }
-                
-    intkeydict = {
-                    'Mtu' : 'MTU', 
-                 }
-                
 
-    boolkeydict = { 'OnBoot' : 'ONBOOT', 
-                    'OnParent' : 'ONPARENT', 
-                    'AllowUser' : 'USERCTL', 
-                    'AutoDNS' : 'PEERDNS', 
-                    'Slave' : 'SLAVE', 
-                    'IPv6Init' : 'IPV6INIT', 
+    keydict = { 'Device' : 'DEVICE',
+                'IP' : 'IPADDR',
+                'Netmask' : 'NETMASK',
+                'Gateway' : 'GATEWAY',
+                'Hostname' : 'DHCP_HOSTNAME',
+                'Domain' : 'DOMAIN',
+                'BootProto' : 'BOOTPROTO',
+                'Type' : 'TYPE',
+                'HardwareAddress' : 'HWADDR',
+                }
+
+    intkeydict = {
+                    'Mtu' : 'MTU',
+                 }
+
+
+    boolkeydict = { 'OnBoot' : 'ONBOOT',
+                    'OnParent' : 'ONPARENT',
+                    'AllowUser' : 'USERCTL',
+                    'AutoDNS' : 'PEERDNS',
+                    'Slave' : 'SLAVE',
+                    'IPv6Init' : 'IPV6INIT',
                     }
-        
+
     def __init__( self, list = None, parent = None ):
-        Device_base.__init__( self, list, parent )        
+        Device_base.__init__( self, list, parent )
         self.oldname = None
 
     def getDialog( self ):
@@ -141,7 +141,7 @@ class Device( Device_base ):
                         break
 
             self.Device = name
-         
+
         self.DeviceId = name
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
@@ -159,19 +159,19 @@ class Device( Device_base ):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = False            
+                    self.__dict__[selfkey] = False
             elif not self.__dict__.has_key( selfkey ):
-                self.__dict__[selfkey] = False                            
-            
+                self.__dict__[selfkey] = False
+
         if not conf.has_key( "PEERDNS" ):
             self.AutoDNS = None
-            
+
         if not self.Gateway:
             try:
                 cfg = Conf.ConfShellVar( netconfpkg.ROOT + SYSCONFNETWORK )
                 if cfg.has_key( 'GATEWAY' ):
                     gw = cfg['GATEWAY']
-                    
+
                     if gw and self.Netmask:
                         try:
                             network = commands.getoutput( 'ipcalc --network '+\
@@ -179,7 +179,7 @@ class Device( Device_base ):
                                                          ' ' + \
                                                          str( self.Netmask ) +\
                                                          ' 2>/dev/null' )
-                            
+
                             out = commands.getoutput( 'ipcalc --network ' + \
                                                      str( gw ) + ' ' \
                                                      + str( self.Netmask ) + \
@@ -188,8 +188,8 @@ class Device( Device_base ):
                                 self.Gateway = str( gw )
                         except:
                             pass
-                        
-                            
+
+
             except EnvironmentError, msg:
                 NC_functions.generic_error_dialog( str( msg ) )
                 pass
@@ -233,7 +233,7 @@ class Device( Device_base ):
         file = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                 self.DeviceId + '.route'
         if os.path.isfile( file ):
-            NC_functions.rename( file, 
+            NC_functions.rename( file,
                                 netconfpkg.ROOT + SYSCONFDEVICEDIR + \
                                 'route-' + self.DeviceId )
         # load routes
@@ -243,8 +243,8 @@ class Device( Device_base ):
 
         # FIXME: better parsing of static routes!
         if math.fmod( num, 3 ) != 0:
-             NC_functions.generic_error_dialog( ( _( "Static routes file %s "
-                                                  "is invalid" ) ) % name )
+            NC_functions.generic_error_dialog( ( _( "Static routes file %s "
+                                                 "is invalid" ) ) % name )
         else:
             for p in xrange( 0, int( num/3 ) ):
                 i = self.StaticRoutes.addRoute()
@@ -252,13 +252,13 @@ class Device( Device_base ):
                 route.Address = rconf['ADDRESS' + str( p )]
                 route.Netmask = rconf['NETMASK' + str( p )]
                 route.Gateway = rconf['GATEWAY' + str( p )]
-        
+
         self.commit( changed=False )
-                
+
     def save( self ):
         # FIXME: [163040] "Exception Occurred" when saving
         # fail gracefully, with informing, which file, and why
-        
+
         # Just to be safe...
         os.umask( 0022 )
         self.commit()
@@ -266,23 +266,23 @@ class Device( Device_base ):
         if self.oldname and ( self.oldname != self.DeviceId ):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
                 NC_functions.rename( netconfpkg.ROOT + SYSCONFDEVICEDIR + \
-                                    prefix + self.oldname, 
+                                    prefix + self.oldname,
                                     netconfpkg.ROOT + SYSCONFDEVICEDIR + \
-                                    prefix + self.DeviceId )            
+                                    prefix + self.DeviceId )
 
         conf = ConfDevice( self.DeviceId )
         conf.fsf()
-        
+
         if not self.Cipe and self.BootProto == None \
            and ( self.IP == None or self.IP == "" ):
             self.BootProto = 'dhcp'
-                
+
         if self.BootProto:
             self.BootProto = string.lower( self.BootProto )
 
         if self.BootProto == "static":
             self.BootProto = "none"
-            
+
         # Do not set GATEWAY with dhcp
         if self.BootProto == 'dhcp':
             # [169526] lost Gateway when I change static IP by DHCP
@@ -316,7 +316,7 @@ class Device( Device_base ):
             # check, if a parent device exists!!!
             conf['DEVICE'] = str( self.Device ) + ':' + str( self.Alias )
             del conf['ONBOOT']
-            # Alias interfaces should not have a HWADDR (bug #188321, #197401)            
+            # Alias interfaces should not have a HWADDR (bug #188321, #197401)
             del conf['HWADDR']
         else:
             del conf['ONPARENT']
@@ -346,11 +346,11 @@ class Device( Device_base ):
                 if network:
                     conf['NETWORK'] = network[8:]
             except:
-                pass                
+                pass
         else:
             del conf['NETWORK']
 
-        if self.Type == CTC or self.Type == IUCV:                
+        if self.Type == CTC or self.Type == IUCV:
             conf['MTU'] = str( self.Mtu )
             if conf.has_key( "GATEWAY" ) and conf['GATEWAY']:
                 conf['REMIP'] = conf['GATEWAY']
@@ -386,9 +386,9 @@ class Device( Device_base ):
 
         # remove empty gateway entries
         if not self.Gateway:
-            del conf['GATEWAY']            
-            
-            
+            del conf['GATEWAY']
+
+
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
         if not self.Wireless:
@@ -403,62 +403,62 @@ class Device( Device_base ):
         conf.write()
 
         self.oldname = self.DeviceId
-        
-    def activate( self, dialog = None ):        
+
+    def activate( self, dialog = None ):
         command = '/sbin/ifup'
         param = [command, self.DeviceId, "up"]
 
         try:
             ( ret, msg ) =  generic_run_dialog( \
-                command, 
-                param, 
-                catchfd = ( 1, 2 ), 
-                title = _( 'Network device activating...' ), 
+                command,
+                param,
+                catchfd = ( 1, 2 ),
+                title = _( 'Network device activating...' ),
                 label = _( 'Activating network device %s, '
-                          'please wait...' ) % ( self.DeviceId ), 
+                          'please wait...' ) % ( self.DeviceId ),
                 errlabel = _( 'Cannot activate '
-                             'network device %s!\n' ) % ( self.DeviceId ), 
+                             'network device %s!\n' ) % ( self.DeviceId ),
                 dialog = dialog )
-            
+
         except RuntimeError, msg:
-            ret = -1                
+            ret = -1
 
         return ret, msg
 
     def deactivate( self, dialog = None ):
         command = '/sbin/ifdown'
         param = [command, self.DeviceId, "down"]
-        
+
         try:
             ( ret, msg ) = generic_run_dialog( \
-                command, param, 
-                catchfd = ( 1, 2 ), 
-                title = _( 'Network device deactivating...' ), 
+                command, param,
+                catchfd = ( 1, 2 ),
+                title = _( 'Network device deactivating...' ),
                 label = _( 'Deactivating network device %s, '
-                          'please wait...' ) % ( self.DeviceId ), 
+                          'please wait...' ) % ( self.DeviceId ),
                 errlabel = _( 'Cannot deactivate '
-                             'network device %s!\n' ) % ( self.DeviceId ), 
+                             'network device %s!\n' ) % ( self.DeviceId ),
                 dialog = dialog )
-            
+
         except RuntimeError, msg:
             ret = -1
 
         return ret, msg
 
-    def configure( self ):        
+    def configure( self ):
         command = '/usr/bin/system-config-network'
         args = ''
         if not os.path.isfile( command ) and getDebugLevel() > 0:
             command = os.getcwd() + '/system-config-network-gui'
             args = '-d'
-            
+
         try:
-            ( ret, msg ) =  generic_run( command, 
-                                      [command, args], 
+            ( ret, msg ) =  generic_run( command,
+                                      [command, args],
                                       catchfd = ( 1, 2 ) )
         except RuntimeError, msg:
             ret = -1
-            
+
         return ret, msg
 
     def monitor( self ):

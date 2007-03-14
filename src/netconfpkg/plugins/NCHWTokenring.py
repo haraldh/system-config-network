@@ -22,73 +22,73 @@ from netconfpkg.NC_functions import *
 _hwTokenringDialog = None
 _hwTokenringWizard = None
 
-class HwTokenring(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = TOKENRING
-      self.createCard()
-       
-   def getDialog(self):
-      if _hwTokenringDialog == None: return None
-      if hasattr(_hwTokenringDialog, "getDialog"):
-         return _hwTokenringDialog(self).getDialog()
-      return _hwTokenringDialog(self).xml.get_widget("Dialog")
-   
-   def getWizard(self):
-      return _hwTokenringWizard
-   
-   def isType(self, hardware):
-      if hardware.Type == TOKENRING:
-         return True
-      if getHardwareType(hardware.Hardware) == TOKENRING:
-         return True
-      return False
+class HwTokenring(Hardware):
+    def __init__(self, list = None, parent = None):
+        Hardware.__init__(self, list, parent)
+        self.Type = TOKENRING
+        self.createCard()
 
-   def save(self):
-      from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
+    def getDialog(self):
+        if _hwTokenringDialog == None: return None
+        if hasattr(_hwTokenringDialog, "getDialog"):
+            return _hwTokenringDialog(self).getDialog()
+        return _hwTokenringDialog(self).xml.get_widget("Dialog")
 
-      hl = getHardwareList()
+    def getWizard(self):
+        return _hwTokenringWizard
 
-      modules = getMyConfModules()
-      dic = modules[self.Name]
-      dic['alias'] = self.Card.ModuleName
-      modules[self.Name] = dic
+    def isType(self, hardware):
+        if hardware.Type == TOKENRING:
+            return True
+        if getHardwareType(hardware.Hardware) == TOKENRING:
+            return True
+        return False
 
-      # No, no, no... only delete known options!!!
-      #WRONG: modules[self.Card.ModuleName] = {}
-      #WRONG: modules[self.Card.ModuleName]['options'] = {}
-      #
-      # Better do it this way!
-      if modules[self.Card.ModuleName].has_key('options'):
-         for (key, confkey) in hl.keydict.items():
-            if modules[self.Card.ModuleName]\
-                   ['options'].has_key(confkey):
-               del modules[self.Card.ModuleName]['options'][confkey]
+    def save(self):
+        from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
 
-      for (selfkey, confkey) in hl.keydict.items():
-         if self.Card.__dict__[selfkey]:
-            if selfkey == 'IRQ' \
-               and (self.Card.IRQ == _('Unknown') \
-                    or (self.Card.IRQ == 'Unknown')):
-               continue
-            dic = modules[self.Card.ModuleName]
-            if not dic.has_key('options'):
-               dic['options'] = {}
-            dic['options'][confkey] = \
-                                    str(self.Card.__dict__[selfkey])
-            modules[self.Card.ModuleName] = dic
-      
-   
+        hl = getHardwareList()
+
+        modules = getMyConfModules()
+        dic = modules[self.Name]
+        dic['alias'] = self.Card.ModuleName
+        modules[self.Name] = dic
+
+        # No, no, no... only delete known options!!!
+        #WRONG: modules[self.Card.ModuleName] = {}
+        #WRONG: modules[self.Card.ModuleName]['options'] = {}
+        #
+        # Better do it this way!
+        if modules[self.Card.ModuleName].has_key('options'):
+            for (key, confkey) in hl.keydict.items():
+                if modules[self.Card.ModuleName]\
+                       ['options'].has_key(confkey):
+                    del modules[self.Card.ModuleName]['options'][confkey]
+
+        for (selfkey, confkey) in hl.keydict.items():
+            if self.Card.__dict__[selfkey]:
+                if selfkey == 'IRQ' \
+                   and (self.Card.IRQ == _('Unknown') \
+                        or (self.Card.IRQ == 'Unknown')):
+                    continue
+                dic = modules[self.Card.ModuleName]
+                if not dic.has_key('options'):
+                    dic['options'] = {}
+                dic['options'][confkey] = \
+                                        str(self.Card.__dict__[selfkey])
+                modules[self.Card.ModuleName] = dic
+
+
 def setHwTokenringDialog(dialog):
-   global _hwTokenringDialog
-   _hwTokenringDialog = dialog
+    global _hwTokenringDialog
+    _hwTokenringDialog = dialog
 
 def setHwTokenringWizard(wizard):
-   global _hwTokenringWizard
-   _hwTokenringWizard = wizard
+    global _hwTokenringWizard
+    _hwTokenringWizard = wizard
 
 df = getHardwareFactory()
 df.register(HwTokenring, TOKENRING)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.9 $"

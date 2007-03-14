@@ -52,10 +52,10 @@ class isdnHardwareDialog:
         self.hw = hw
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-        
+
         self.setup()
         self.hydrate()
-        
+
     def on_Dialog_delete_event(self, *args):
         pass
 
@@ -69,7 +69,7 @@ class isdnHardwareDialog:
         cardname = entry.get_text()
         card = NCisdnhardware.ConfISDN()
         card.get_resource(cardname)
-        
+
         if card.IRQ:
             self.xml.get_widget("irqSpinButton").set_sensitive(True)
             self.xml.get_widget("irqSpinButton").set_value(int(card.IRQ))
@@ -101,9 +101,9 @@ class isdnHardwareDialog:
             self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def hydrate(self):
-        has_card = False        
+        has_card = False
         hw = self.hw
-        
+
         if not hw.Name:
             conf = NCisdnhardware.ConfISDN()
             new_card = conf.detect()
@@ -119,46 +119,46 @@ class isdnHardwareDialog:
                 hw.Card.IoPort2 = conf.IoPort2
         else:
             has_card = True
-            
-        if has_card:    
-                if hw.Card.ChannelProtocol == '2':
-                    self.xml.get_widget("euroIsdnButton").set_active(True)
-                else:
-                    self.xml.get_widget("1tr6Button").set_active(True)
 
-                if self.hw.Description:
-                    self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
-                
-                if hw.Card.IRQ:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(True)
-                    self.xml.get_widget("irqSpinButton").set_value(int(hw.Card.IRQ))
-                else:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(False)
+        if has_card:
+            if hw.Card.ChannelProtocol == '2':
+                self.xml.get_widget("euroIsdnButton").set_active(True)
+            else:
+                self.xml.get_widget("1tr6Button").set_active(True)
 
-                if hw.Card.Mem:
-                    self.xml.get_widget("memEntry").set_sensitive(True)
-                    self.xml.get_widget("memEntry").set_text(hw.Card.Mem)
-                else:
-                    self.xml.get_widget("memEntry").set_sensitive(False)
+            if self.hw.Description:
+                self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
 
-                if hw.Card.IoPort:
-                    self.xml.get_widget("ioEntry").set_sensitive(True)
-                    self.xml.get_widget("ioEntry").set_text(hw.Card.IoPort)
-                else:
-                    self.xml.get_widget("ioEntry").set_sensitive(False)
+            if hw.Card.IRQ:
+                self.xml.get_widget("irqSpinButton").set_sensitive(True)
+                self.xml.get_widget("irqSpinButton").set_value(int(hw.Card.IRQ))
+            else:
+                self.xml.get_widget("irqSpinButton").set_sensitive(False)
 
-                if hw.Card.IoPort1:
-                    self.xml.get_widget("io1Entry").set_sensitive(True)
-                    self.xml.get_widget("io1Entry").set_text(hw.Card.IoPort1)
-                else:
-                    self.xml.get_widget("io1Entry").set_sensitive(False)
+            if hw.Card.Mem:
+                self.xml.get_widget("memEntry").set_sensitive(True)
+                self.xml.get_widget("memEntry").set_text(hw.Card.Mem)
+            else:
+                self.xml.get_widget("memEntry").set_sensitive(False)
 
-                if hw.Card.IoPort2:
-                    self.xml.get_widget("io2Entry").set_sensitive(True)
-                    self.xml.get_widget("io2Entry").set_text(hw.Card.IoPort2)
-                else:
-                    self.xml.get_widget("io2Entry").set_sensitive(False)
-                    
+            if hw.Card.IoPort:
+                self.xml.get_widget("ioEntry").set_sensitive(True)
+                self.xml.get_widget("ioEntry").set_text(hw.Card.IoPort)
+            else:
+                self.xml.get_widget("ioEntry").set_sensitive(False)
+
+            if hw.Card.IoPort1:
+                self.xml.get_widget("io1Entry").set_sensitive(True)
+                self.xml.get_widget("io1Entry").set_text(hw.Card.IoPort1)
+            else:
+                self.xml.get_widget("io1Entry").set_sensitive(False)
+
+            if hw.Card.IoPort2:
+                self.xml.get_widget("io2Entry").set_sensitive(True)
+                self.xml.get_widget("io2Entry").set_text(hw.Card.IoPort2)
+            else:
+                self.xml.get_widget("io2Entry").set_sensitive(False)
+
     def dehydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
         isdncard = NCisdnhardware.ConfISDN()
@@ -172,7 +172,7 @@ class isdnHardwareDialog:
         self.hw.Card.VendorId = isdncard.VendorId
         self.hw.Card.DeviceId = isdncard.DeviceId
         self.hw.Card.DriverId = isdncard.DriverId
-        
+
         if self.xml.get_widget("euroIsdnButton").get_active():
             self.hw.Card.ChannelProtocol = '2'
         else:
@@ -216,5 +216,5 @@ if __name__ == "__main__":
     window = isdnHardwareDialog()
     gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.23 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.24 $"

@@ -39,7 +39,7 @@ for _idl_file in [ "DeviceList.idl",
                    "IPsecList.idl",
                    "ProfileList.idl" ]:
     GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = __netconfpkg)
-    
+
 del _idl_file
 
 import os
@@ -66,6 +66,5 @@ del _cmd
 del __netconfpkg
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:40 $"
-__version__ = "$Revision: 1.21 $"
-
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.22 $"

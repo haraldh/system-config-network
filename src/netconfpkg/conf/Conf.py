@@ -245,7 +245,7 @@ class Conf:
         return self.findnextline(rx)
     def getline(self):
         if self.line >= len(self.lines):
-            return ''        
+            return ''
         return self.lines[self.line]
     def getfields(self):
         # returns list of fields split by self.separators
@@ -300,7 +300,7 @@ class Conf:
                 if len(self.lines[index]) and self.lines[index][-1] == '\n':
                     self.lines[index] = self.lines[index][:-1]
                 if len(self.lines[index]) and self.lines[index][-1] == '\r':
-                    self.lines[index] = self.lines[index][:-1]                
+                    self.lines[index] = self.lines[index][:-1]
             self.file.close()
         else:
             self.lines = []
@@ -332,7 +332,7 @@ class ConfShellVar(Conf):
         self.quotereg = re.compile('[ \t${}*@!~<>?;%^()#&=]')
         Conf.__init__(self, filename, commenttype='#',
                       separators='=', separator='=')
-        
+
     def read(self):
         Conf.read(self)
         self.initvars()
@@ -359,7 +359,7 @@ class ConfShellVar(Conf):
                 var[1] = var[1][:p]
             else:
                 var[1] = re.sub('#.*', '', var[1])
-                
+
             self.vars[var[0]] = var[1]
             self.nextline()
         self.rewind()
@@ -389,12 +389,12 @@ class ConfShellVar(Conf):
                 self.insertline(varname + "='" + value + "'")
             else:
                 self.insertline(varname + '=' + value)
-        
+
         self.vars[varname] = value
 
     def __delitem__(self, varname):
         # delete *every* instance...
-        
+
         self.rewind()
         while self.findnextline('^[\t ]*' + varname + '='):
             self.deleteline()
@@ -504,7 +504,7 @@ class ConfEHosts(Conf):
             return self.vars[varname]
         else:
             return ''
-        
+
     def __setitem__(self, varname, value):
         # set first (should be only) instance to values in list value
         place=self.tell()
@@ -521,7 +521,7 @@ class ConfEHosts(Conf):
         # delete *every* instance...
         self.rewind()
         while self.findnextline('^\S*' + varname + '[' + \
-                                self.separators + ']+'): 
+                                self.separators + ']+'):
             self.deleteline()
         del self.vars[varname]
 
@@ -574,7 +574,7 @@ class ConfFHosts(Conf):
             return self.vars[varname]
         else:
             return ''
-        
+
     def __setitem__(self, varname, value):
         # set first (should be only) instance to values in list value
         place=self.tell()
@@ -597,7 +597,7 @@ class ConfFHosts(Conf):
     def __delitem__(self, varname):
         # delete *every* instance...
         self.rewind()
-        while self.findnextline('^\S*[' + self.separators + ']+' + varname): 
+        while self.findnextline('^\S*[' + self.separators + ']+' + varname):
             self.deleteline()
         del self.vars[varname]
 
@@ -667,7 +667,7 @@ class ConfEResolv(Conf):
             # not a nameserver, so all items on one line...
             if self.findnextline('^' + varname + '[' + self.separators + ']+'):
                 self.deleteline()
-                self.insertlinelist([ varname, 
+                self.insertlinelist([ varname,
                                       joinfields(value, self.separator) ])
                 self.seek(place)
             else:
@@ -692,7 +692,7 @@ class ConfEResolv(Conf):
         # resolv['search'].append('another.domain')
         for key in self.vars.keys():
             self[key] = self.vars[key]
-            
+
         if self.filename != '/etc/resolv.conf':
             Conf.write(self)
         else:
@@ -815,7 +815,7 @@ class ConfChat(Conf):
         self.list = []
         i = 0
         hastick = 0
-        s = '' 
+        s = ''
         chatlist = []
         for line in self.lines:
             s = s + line + ' '
@@ -927,7 +927,7 @@ class ConfChatFile(ConfChat):
     def write(self):
         self._makelist()
         ConfChat.write(self)
- 
+
 
 
 # ConfChatFileClone(ConfChatFile):
@@ -1110,7 +1110,7 @@ class ConfModules(Conf):
             return self.vars[varname]
         else:
             return odict()
-        
+
     def __setitem__(self, varname, value):
         # set *every* instance (should only be one, but...) to avoid surprises
         place=self.tell()
@@ -1499,7 +1499,7 @@ class ConfPasswd(ConfPwO):
             return self.getfreeid(2)
         except:
             raise SystemFull, 'No UIDs available'
-        
+
 
 # ConfShadow(ConfPwO)
 #  This class presents a data-oriented class for making changes

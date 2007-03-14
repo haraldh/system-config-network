@@ -50,7 +50,7 @@ class editIPsecDruid:
              r"^[a-z|A-Z|0-9\_:]+$"),
             "on_spiEntry_insert_text" : \
             (self.on_generic_entry_insert_text,
-             r"^[0-9]+$"),            
+             r"^[0-9]+$"),
             "on_ipsecDruidPageStart_next" :
             self.on_ipsecDruidPageStart_next,
             "on_ipsecDruidNicknamePage_next" :
@@ -83,9 +83,9 @@ class editIPsecDruid:
             self.on_generateAHKeyButton_clicked,
             "on_generateESPKeyButton_clicked" :
             self.on_generateESPKeyButton_clicked,
-            "on_ipsecDruid_cancel" : self.on_ipsecDruid_cancel,            
+            "on_ipsecDruid_cancel" : self.on_ipsecDruid_cancel,
             })
-        
+
         self.druid = self.xml.get_widget("Druid")
         self.druidwidget = self.xml.get_widget("ipsecDruid")
         self.canceled = False
@@ -106,7 +106,7 @@ class editIPsecDruid:
             "ESPKeyEntry" : "ESPKey",
             "ipsecidEntry" : "IPsecId",
             }
-            
+
         for key, val in self.entries.items():
             if val:
                 widget = self.xml.get_widget(key)
@@ -137,20 +137,20 @@ class editIPsecDruid:
             return True
         else:
             return False
-        
+
     def on_ipsecDruidConnectionTypePage_prepare(self, druid_page, druid):
         if self.ipsec.ConnectionType == "Host2Host":
             self.xml.get_widget("hosttohostEncryptionRadio").set_active(True)
         else:
             self.xml.get_widget("nettonetEncryptionRadio").set_active(True)
-            
+
         return False
 
     def on_ipsecDruidConnectionTypePage_next(self, druid_page, druid):
         if self.xml.get_widget("hosttohostEncryptionRadio").get_active():
             self.ipsec.ConnectionType = "Host2Host"
             self.xml.get_widget("localIPTable").hide()
-                
+
             for widget in [ "remoteNetworkEntry",
                             "remoteSubnetEntry",
                             "remoteGatewayEntry",
@@ -172,7 +172,7 @@ class editIPsecDruid:
                             ]:
                 self.xml.get_widget(widget).show()
         return False
-            
+
     def on_ipsecDruidEncryptionModePage_prepare(self, druid_page, druid):
         if self.ipsec.EncryptionMode == "manual":
             self.xml.get_widget("manualEncryptionRadio").set_active(True)
@@ -192,17 +192,17 @@ class editIPsecDruid:
             for widget in [ "ESPKeyLabel", "ESPKeyEntry", "ESPKeyButton",
                             "spiInTable", "spiOutTable" ]:
                 self.xml.get_widget(widget).hide()
-                
-            if self.ipsec.ConnectionType == "Host2Host":                
+
+            if self.ipsec.ConnectionType == "Host2Host":
                 self.xml.get_widget("ipsecDruidLocalNetworkPage").hide()
             else:
                 self.xml.get_widget("ipsecDruidLocalNetworkPage").show()
-                
+
         return False
-                        
+
     def on_ipsecDruidLocalNetworkPage_prepare(self, druid_page, druid):
         return False
-    
+
     def on_ipsecDruidLocalNetworkPage_next(self, druid_page, druid):
         if self.ipsec.EncryptionMode == "manual":
             for widget_name in [ "SPI_AH_IN_Entry", "SPI_ESP_IN_Entry" ]:
@@ -218,19 +218,19 @@ class editIPsecDruid:
                                      self.druid, widget = druid,
                                      page = druid_page, broken_widget = widget)
                     return 1
-                    
+
         if self.xml.get_widget("hosttohostEncryptionRadio").get_active():
             return 0
-        
+
         for widget in [ "localNetworkEntry", "localSubnetEntry",
                         "localGatewayEntry" ]:
             if not self.xml.get_widget(widget).get_text():
                 return 1
         return 0
-    
+
     def on_ipsecDruidRemoteNetworkPage_prepare(self, druid_page, druid):
         return False
-    
+
     def on_ipsecDruidRemoteNetworkPage_next(self, druid_page, druid):
         wlist = [ "remoteIPEntry" ]
         if self.ipsec.ConnectionType == "Net2Net":
@@ -242,7 +242,7 @@ class editIPsecDruid:
                 return True
 
         return False
-    
+
     def on_ipsecDruidKeysPage_prepare(self, druid_page, druid):
         return False
 
@@ -255,11 +255,11 @@ class editIPsecDruid:
             if not self.xml.get_widget(widget).get_text():
                 return True
 
-        return False    
-    
+        return False
+
     def on_ipsecDruidFinishPage_prepare(self, druid_page, druid):
         for key, val in self.entries.items():
-            widget = self.xml.get_widget(key)            
+            widget = self.xml.get_widget(key)
             entry = (widget and widget.get_text()) or None
             if entry:
                 setattr(self.ipsec, val, entry)
@@ -268,32 +268,32 @@ class editIPsecDruid:
             self.ipsec.ESPKey = None
             self.ipsec.IKEKey = self.ipsec.AHKey
             self.ipsec.AHKey = None
-            self.ipsec.SPI_AH_IN = None            
-            self.ipsec.SPI_AH_OUT = None            
-            self.ipsec.SPI_ESP_IN = None            
-            self.ipsec.SPI_ESP_OUT = None            
+            self.ipsec.SPI_AH_IN = None
+            self.ipsec.SPI_AH_OUT = None
+            self.ipsec.SPI_ESP_IN = None
+            self.ipsec.SPI_ESP_OUT = None
         else:
             self.ipsec.IKEKey = None
-            
+
         self.ipsec.OnBoot = self.xml.get_widget('onBootCB').get_active()
 
         if self.ipsec.ConnectionType == "Host2Host":
             for key in [ "LocalNetwork", "LocalNetmask", "LocalGateway",
                          "RemoteNetwork", "RemoteNetmask", "RemoteGateway"]:
                 setattr(self.ipsec, key, None)
-        
+
         s = _("You have selected the following information:") + "\n\n"
         s += str(self.ipsec)
         druid_page.set_text(s)
         return False
-    
+
     def on_ipsecDruidFinishPage_finish(self, druid_page, druid):
         profilelist = getProfileList()
         for prof in profilelist:
             if self.ipsec.oldname and self.ipsec.oldname in prof.ActiveIPsecs:
                 prof.ActiveIPsecs.remove(self.ipsec.oldname)
                 prof.ActiveIPsecs.append(self.ipsec.IPsecId)
-                
+
             if prof.Active == False:
                 continue
             if not self.ipsec.oldname:
@@ -306,7 +306,7 @@ class editIPsecDruid:
         self.druid.destroy()
         gtk.main_quit()
         return False
-    
+
     def on_ipsecDruid_cancel(self, *args):
         self.canceled = True
         self.druid.destroy()
@@ -336,7 +336,7 @@ class editIPsecDruid:
         if shasum:
             widget = self.xml.get_widget("AHKeyEntry")
             widget.set_text(shasum)
-        
+
     def on_generateESPKeyButton_clicked(self, *args):
         shasum = self.getKeyFromPassphrase(24)
         if shasum:

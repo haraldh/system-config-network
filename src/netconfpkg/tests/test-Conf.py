@@ -25,10 +25,10 @@ def expectConf(filename, str):
 class TestConf(unittest.TestCase):
     filename = "test.out"
     def tearDown(self):
-        try: 
+        try:
             os.unlink(self.filename)
-        except: pass            
-        
+        except: pass
+
     def testReadWrite(self):
         """Conf class: basic reading and writing"""
         str = """
@@ -165,9 +165,9 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
-options parport_pc io=0x378 irq=7 
-options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0 
-options 3c59x debug=2 
+options parport_pc io=0x378 irq=7
+options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0
+options 3c59x debug=2
 alias eth0 3c59x
 """
         if not expectConf(self.filename, str):
@@ -187,18 +187,18 @@ if __name__ == "__main__":
         import coverage
         coverage.erase()
         coverage.start()
-        
+
     from rhpl import Conf
     testRunner = unittest.TextTestRunner(verbosity=2)
     result = testRunner.run(suite())
-    
+
     if do_coverage:
-        coverage.stop()    
+        coverage.stop()
         m = sys.modules.values()
         coverage.the_coverage.report(Conf, show_missing=0 )
-        
+
     sys.exit(not result.wasSuccessful())
-    
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.12 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.13 $"

@@ -3,7 +3,7 @@
 #
 # This software may be freely redistributed under the terms of the GNU
 # public license.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -56,13 +56,13 @@ class IPCalc:
             self.prefix()
         text = os.popen("ipcalc -n %s/%s" % (self._address, self._prefix)).read()
         return re.match("NETWORK=(\S+)", text).groups()[0]
-                        
+
     def broadcast(self):
         if not self._prefix:
             self.prefix()
         text = os.popen("ipcalc -b %s/%s" % (self._address, self._prefix)).read()
         return re.match("BROADCAST=(\S+)", text).groups()[0]
-    
+
 def test():
     """Test function for the IPCalc class."""
 
@@ -71,12 +71,12 @@ def test():
     print "netmask:", ipc.netmask()
     print "bcast:", ipc.broadcast()
     print "network:", ipc.network()
-    
-    
+
+
 if __name__ == "__main__":
     test()
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:41 $"
-__version__ = "$Revision: 1.7 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.8 $"

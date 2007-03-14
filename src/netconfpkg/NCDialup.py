@@ -46,7 +46,7 @@ country_code = {
     _("Belgium") : 32,
     _("Bosnia and Hercegovina") : 387,
     _("Brazil") : 55,
-    _("British Virgin Islands") : 1, 
+    _("British Virgin Islands") : 1,
     _("Bulgaria") : 359,
     _("Canada") : 1,
     _("Central African Republic") : 236,
@@ -111,7 +111,7 @@ country_code = {
 
 class Dialup(Dialup_base):
     def __init__(self, list = None, parent = None):
-        Dialup_base.__init__(self, list, parent)        
+        Dialup_base.__init__(self, list, parent)
         self.createCompression()
 
     def load(self, parentConf):
@@ -138,7 +138,7 @@ class Dialup(Dialup_base):
                         break
         else:
             log.log(6, "No self.login!!!")
-            
+
     def save(self, parentConf):
         if self.Login:
             papconf = getPAPConf()
@@ -148,11 +148,11 @@ class Dialup(Dialup_base):
             chapconf[self.Login] = str(self.Password)
             # set specific auth also
             papconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
-            chapconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)            
+            chapconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
         if self.DialMode == DM_AUTO:
             parentConf['DEMAND'] = 'yes'
         else:
-            parentConf['DEMAND'] = 'no'        
+            parentConf['DEMAND'] = 'no'
 
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
@@ -161,7 +161,7 @@ class DslDialup(Dialup):
                     'Persist' : 'PERSIST',
                     'DefRoute' : 'DEFROUTE',
                     }
-    
+
     keydict = { 'ProviderName' : 'PROVIDER',
                 'Login' : 'USER',
                 'PrimaryDNS' : 'DNS1',
@@ -190,22 +190,22 @@ class DslDialup(Dialup):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = False            
+                    self.__dict__[selfkey] = False
             else:
-                self.__dict__[selfkey] = False            
+                self.__dict__[selfkey] = False
 
         # We need self.login, so we call it this late
         Dialup.load(self, parentConf)
 
         if conf.has_key("PASS"):
-            self.Password = conf["PASS"]            
+            self.Password = conf["PASS"]
 
         if parentConf.has_key('IDLETIMEOUT'):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
 
     def save(self, parentConf):
         Dialup.save(self, parentConf)
-        
+
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -264,29 +264,29 @@ class DslDialup(Dialup):
 
         if conf.has_key('PASS'):
             del conf['PASS']
-        
+
         if not conf.has_key('PEERDNS'):
             conf['PEERDNS'] = "no"
-            
+
         conf.write()
 
 
-class IsdnDialup(Dialup):                        
+class IsdnDialup(Dialup):
     boolkeydict = { 'Secure' : 'SECURE',
                     'ChannelBundling' : 'BUNDLING',
                     'Persist' : 'PERSIST',
                     }
-    
+
     intkeydict = {'DialMax' : 'DIALMAX',
                   'HangupTimeout' : 'HUPTIMEOUT',
                   }
-    
+
     keydict = { 'MSN' : 'MSN',
                 'ProviderName' : 'PROVIDER',
                 'Login' : 'USER',
                 'Password' : 'PASSWORD',
                 'EncapMode' : 'ENCAP',
-                'DialMode' : 'DIALMODE',                 
+                'DialMode' : 'DIALMODE',
                 'Prefix' : 'PREFIX',
                 'Areacode' : 'AREACODE',
                 'Regioncode' : 'REGIONCODE',
@@ -302,9 +302,9 @@ class IsdnDialup(Dialup):
                 'Layer2' : 'L2_PROT',
                 'Layer3' : 'L3_PROT',
                 }
-    
+
     def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)        
+        Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
         conf = parentConf
@@ -327,9 +327,9 @@ class IsdnDialup(Dialup):
                 if conf[confkey] == 'on':
                     self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = False            
+                    self.__dict__[selfkey] = False
             else:
-                self.__dict__[selfkey] = False            
+                self.__dict__[selfkey] = False
 
         # We need self.login, so we call it this late
         Dialup.load(self, parentConf)
@@ -342,7 +342,7 @@ class IsdnDialup(Dialup):
 
         if conf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
-            
+
             options = conf['PPPOPTIONS']
             for o in string.split(options):
                 self.PPPOptions[self.PPPOptions.addPPPOption()] = o
@@ -445,13 +445,13 @@ class IsdnDialup(Dialup):
 
         for i in conf.keys():
             if not conf[i]: del conf[i]
-        
+
         if not conf.has_key('PEERDNS'):
             conf['PEERDNS'] = "no"
-            
+
         conf.write()
-        
-    
+
+
 class ModemDialup(Dialup):
     boolwvdict = { 'StupidMode' : 'Stupid Mode',
                    }
@@ -461,23 +461,23 @@ class ModemDialup(Dialup):
                'Prefix' : 'Dial Prefix',
                'Areacode' : 'Area Code',
                'PhoneNumber' : 'Phone',
-               }                   
-                        
+               }
+
     def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)                
+        Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
         parent = self.getParent()
 
         if parent:
             name = parent.DeviceId
-        # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf when a dialup connection is saved    
+        # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf when a dialup connection is saved
         # FIXME: [168087] Fails to retain ppp connection passwords containing spaces between saves
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
         conf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
-        
+
         sectname = 'Dialer ' + name
 
         for selfkey in self.wvdict.keys():
@@ -488,7 +488,7 @@ class ModemDialup(Dialup):
             elif conf.has_key('Dialer Defaults') \
                and conf['Dialer Defaults'].has_key(confkey):
                 value = conf['Dialer Defaults'][confkey]
-                
+
             if value:
                 self.__dict__[selfkey] = value
 
@@ -501,7 +501,7 @@ class ModemDialup(Dialup):
             elif conf.has_key('Dialer Defaults') \
                and conf['Dialer Defaults'].has_key(confkey):
                 value = conf['Dialer Defaults'][confkey]
-                
+
             if value and value != '0':
                 self.__dict__[selfkey] = True
             else:
@@ -517,7 +517,7 @@ class ModemDialup(Dialup):
             self.InitString = conf[sectname]['Init3']
 
         if self.Compression:
-            self.Compression.load(parentConf)            
+            self.Compression.load(parentConf)
 
         if parentConf.has_key('PROVIDER'):
             self.ProviderName = parentConf['PROVIDER']
@@ -561,7 +561,7 @@ class ModemDialup(Dialup):
                         self.Inherits = sect
                         break
 
-        
+
     def save(self, parentConf):
         Dialup.save(self, parentConf)
         parent = self.getParent()
@@ -588,15 +588,15 @@ class ModemDialup(Dialup):
         conf.chmod(0600)
         if not conf.has_key(sectname):
             conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
-        
+
         for selfkey in self.wvdict.keys():
             confkey = self.wvdict[selfkey]
             if self.__dict__[selfkey]:
                 conf[sectname][confkey] = str(self.__dict__[selfkey])
             else:
                 if conf[sectname].has_key(confkey):
-                    del conf[sectname][confkey] 
-        
+                    del conf[sectname][confkey]
+
 
         for selfkey in self.boolwvdict.keys():
             confkey = self.boolwvdict[selfkey]
@@ -604,8 +604,8 @@ class ModemDialup(Dialup):
                 conf[sectname][confkey] = '1'
             else:
                 if conf[sectname].has_key(confkey):
-                    del conf[sectname][confkey] 
-        
+                    del conf[sectname][confkey]
+
         #
         # Write Modem Init strings
         #
@@ -619,7 +619,7 @@ class ModemDialup(Dialup):
             conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0'
         if self.InitString:
             conf[sectname]['Init3'] = str(self.InitString)
-        #else: del conf[sectname]['Init3'] 
+        #else: del conf[sectname]['Init3']
 
         if self.PPPOptions:
             opt = ""
@@ -662,22 +662,22 @@ class ModemDialup(Dialup):
 
         for i in conf.keys():
             if not conf[i]: del conf[i]
-            
+
         conf.write()
 
         if self.Compression:
-            self.Compression.save(parentConf)            
+            self.Compression.save(parentConf)
 
         # Write /etc/ppp/peers/DeviceId
         # bug #77763
         peerdir = netconfpkg.ROOT + PPPDIR + "/peers/"
         if not os.path.isdir(peerdir):
-            mkdir(peerdir)        
+            mkdir(peerdir)
         if parent.oldname and (parent.oldname != parent.DeviceId):
             unlink(peerdir + parent.oldname)
         filename = peerdir + parent.DeviceId
         try:
-            file = open(filename, "w")            
+            file = open(filename, "w")
             line = 'connect "/usr/bin/wvdial --remotename ' + \
                    '%s --chat \'%s\'"' % ( parent.DeviceId, name )
             file.write(line + '\n')
@@ -685,12 +685,12 @@ class ModemDialup(Dialup):
             file.close()
         except KeyError:
             pass
-        
+
 if __name__ == '__main__':
     dev = Device()
     dev.load('tdslHomeTonline')
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:41 $"
-__version__ = "$Revision: 1.73 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.74 $"

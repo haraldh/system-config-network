@@ -66,16 +66,16 @@ class IPsec(IPsec_base):
                 if conf[confkey] == 'yes':
                     self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = False            
+                    self.__dict__[selfkey] = False
             elif not self.__dict__.has_key(selfkey):
-                self.__dict__[selfkey] = False                            
+                self.__dict__[selfkey] = False
 
         conf = ConfKeys(name)
         for selfkey in self.key_entries.keys():
             confkey = self.key_entries[selfkey]
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey] or None
-                
+
         if conf.has_key("IKE_PSK") and conf["IKE_PSK"]:
             self.EncryptionMode = "auto"
         else:
@@ -98,16 +98,16 @@ class IPsec(IPsec_base):
             self.ConnectionType = "Net2Net"
         else:
             self.ConnectionType = "Host2Host"
-        
+
         self.oldname = self.IPsecId
 
         self.commit(changed=False)
         pass
-    
+
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
         # fail gracefully, with informing, which file, and why
-        
+
         # Just to be safe...
         os.umask(0022)
         self.commit()
@@ -135,7 +135,7 @@ class IPsec(IPsec_base):
         else:
             for key in ["SRCNET", "DSTNET", "SRCGW", "DSTGW"]:
                 del conf[key]
-            
+
         if self.EncryptionMode == "auto":
             conf["IKE_METHOD"] = "PSK"
         else:
@@ -151,7 +151,7 @@ class IPsec(IPsec_base):
                     conf[confkey] = str(self.__dict__[selfkey])
                 else: conf[confkey] = ""
 
-             
+
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if self.__dict__[selfkey]:
@@ -160,7 +160,7 @@ class IPsec(IPsec_base):
                 conf[confkey] = 'no'
 
         conf.write()
-        
+
         conf = ConfKeys(self.IPsecId)
         conf.fsf()
         for selfkey in self.key_entries.keys():
@@ -174,7 +174,7 @@ class IPsec(IPsec_base):
         #
         self.oldname = self.IPsecId
 
-    def activate(self, dialog = None):        
+    def activate(self, dialog = None):
         command = '/sbin/ifup'
         param = [command, self.IPsecId, "up"]
 
@@ -189,16 +189,16 @@ class IPsec(IPsec_base):
                 errlabel = _('Cannot activate '
                              'IPsec connection %s!\n') % (self.IPsecId),
                 dialog = dialog)
-            
+
         except RuntimeError, msg:
-            ret = -1        
+            ret = -1
 
         return ret, msg
 
     def deactivate(self, dialog = None):
         command = '/sbin/ifdown'
         param = [command, self.IPsecId, "down"]
-        
+
         try:
             (ret, msg) = generic_run_dialog(\
                 command, param,
@@ -209,7 +209,7 @@ class IPsec(IPsec_base):
                 errlabel = _('Cannot deactivate '
                              'IPsec connection %s!\n') % (self.IPsecId),
                 dialog = dialog)
-            
+
         except RuntimeError, msg:
             ret = -1
 

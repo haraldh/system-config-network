@@ -48,9 +48,9 @@ class IPsecList(IPsecList_base):
             ipsec = IPsec()
             ipsec.load(ipsec_name)
             self.append(ipsec)
-                        
+
         self.commit(False)
-                
+
     def save(self):
         from NCIPsec import ConfIPsec
         for ipsec in self:
@@ -72,9 +72,9 @@ class IPsecList(IPsecList_base):
             if (len(entry) <= 6) or \
                    entry[:6] != 'ifcfg-':
                 continue
-            
+
             ipsecid = entry[6:]
-                
+
             for ipsec in self:
                 if ipsec.IPsecId == ipsecid:
                     break
@@ -105,9 +105,9 @@ class IPsecList(IPsecList_base):
             if (len(entry) <= 5) or \
                entry[:5] != 'keys-':
                 continue
-            
+
             ipsecid = entry[5:]
-                
+
             for ipsec in self:
                 if ipsec.IPsecId == ipsecid:
                     break
@@ -115,11 +115,11 @@ class IPsecList(IPsecList_base):
                 # check for IPSEC
                 from NCDevice import ConfDevice
                 conf = ConfDevice(ipsecid)
-                type = None                
+                type = None
                 if conf.has_key("TYPE"): type = conf["TYPE"]
                 if type:
                     continue
-                
+
                 unlink(dirname + entry)
                 unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
 
@@ -145,12 +145,12 @@ class IPsecList(IPsecList_base):
             if ipsec.IPsecId == vals[0]:
                 ipsec._parseLine(vals[1:], value)
                 return
-        
+
         i = self.addIPsec()
         self[i].IPsecId = vals[0]
         self[i]._parseLine(vals[1:], value)
-    
-    
+
+
 IPSList = None
 
 def getIPsecList(refresh = None):

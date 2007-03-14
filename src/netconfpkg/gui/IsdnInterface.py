@@ -47,15 +47,15 @@ class IsdnInterface:
 
         if request_rpms(["isdn4k-utils"]):
             return False
- 
+
         glade_file = 'IsdnHardwareDruid.glade'
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
-            
+
         self.xml = gtk.glade.XML(glade_file, 'druid', GUI_functions.PROGNAME)
-        
+
         xml_signal_autoconnect(self.xml,
             {
             "on_isdnCardEntry_changed" : self.on_isdnCardEntry_changed,
@@ -64,17 +64,17 @@ class IsdnInterface:
             "on_isdn_hardware_page_back" : self.on_isdn_hardware_page_back,
             'on_druid_cancel' : self.on_cancel_interface,
             })
-        
+
 
         druid = self.xml.get_widget ('druid')
         for I in druid.get_children():
             druid.remove(I)
             self.druids.append(I)
-            
+
         self.setup()
 
         return True
-        
+
     def on_cancel_interface(self, *args):
         self.hardwarelist.rollback()
         devicelist = NCDeviceList.getDeviceList()
@@ -104,7 +104,7 @@ class IsdnInterface:
     def get_druids(self):
         if not self.init_gui():
             return []
-        
+
         Type = ISDN
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
                                          do_save = self.do_save)
@@ -113,7 +113,7 @@ class IsdnInterface:
 
         self.hydrate()
         return self.druids[0:] + dialup.get_druids()
-            
+
     def on_isdn_hardware_page_prepare(self, druid_page, druid):
         pass
 
@@ -127,31 +127,31 @@ class IsdnInterface:
         cardname = entry.get_text()
         card = NCisdnhardware.ConfISDN()
         card.get_resource(cardname)
- 
+
         if card.IRQ:
             self.xml.get_widget("irqSpinButton").set_sensitive(True)
             self.xml.get_widget("irqSpinButton").set_value(int(card.IRQ))
         else:
             self.xml.get_widget("irqSpinButton").set_sensitive(False)
- 
+
         if card.Mem:
             self.xml.get_widget("memEntry").set_sensitive(True)
             self.xml.get_widget("memEntry").set_text(card.Mem)
         else:
             self.xml.get_widget("memEntry").set_sensitive(False)
- 
+
         if card.IoPort:
             self.xml.get_widget("ioEntry").set_sensitive(True)
             self.xml.get_widget("ioEntry").set_text(card.IoPort)
         else:
             self.xml.get_widget("ioEntry").set_sensitive(False)
- 
+
         if card.IoPort1:
             self.xml.get_widget("io1Entry").set_sensitive(True)
             self.xml.get_widget("io1Entry").set_text(card.IoPort1)
         else:
             self.xml.get_widget("io1Entry").set_sensitive(False)
- 
+
         if card.IoPort2:
             self.xml.get_widget("io2Entry").set_sensitive(True)
             self.xml.get_widget("io2Entry").set_text(card.IoPort2)
@@ -183,44 +183,44 @@ class IsdnInterface:
             self.hw.Card.IoPort = conf.IoPort
             self.hw.Card.IoPort1 = conf.IoPort1
             self.hw.Card.IoPort2 = conf.IoPort2
-            
+
         if has_card:
-                if self.hw.Card.ChannelProtocol == '2':
-                    self.xml.get_widget("euroIsdnButton").set_active(True)
-                else:
-                    self.xml.get_widget("1tr6Button").set_active(True)
+            if self.hw.Card.ChannelProtocol == '2':
+                self.xml.get_widget("euroIsdnButton").set_active(True)
+            else:
+                self.xml.get_widget("1tr6Button").set_active(True)
 
-                self.xml.get_widget("isdnCardEntry").set_text(cardname)
-                
-                if self.hw.Card.IRQ:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(True)
-                    self.xml.get_widget("irqSpinButton").set_value(string.atoi(self.hw.Card.IRQ))
-                else:
-                    self.xml.get_widget("irqSpinButton").set_sensitive(False)
+            self.xml.get_widget("isdnCardEntry").set_text(cardname)
 
-                if self.hw.Card.Mem:
-                    self.xml.get_widget("memEntry").set_sensitive(True)
-                    self.xml.get_widget("memEntry").set_text(self.hw.Card.Mem)
-                else:
-                    self.xml.get_widget("memEntry").set_sensitive(False)
+            if self.hw.Card.IRQ:
+                self.xml.get_widget("irqSpinButton").set_sensitive(True)
+                self.xml.get_widget("irqSpinButton").set_value(string.atoi(self.hw.Card.IRQ))
+            else:
+                self.xml.get_widget("irqSpinButton").set_sensitive(False)
 
-                if self.hw.Card.IoPort:
-                    self.xml.get_widget("ioEntry").set_sensitive(True)
-                    self.xml.get_widget("ioEntry").set_text(self.hw.Card.IoPort)
-                else:
-                    self.xml.get_widget("ioEntry").set_sensitive(False)
+            if self.hw.Card.Mem:
+                self.xml.get_widget("memEntry").set_sensitive(True)
+                self.xml.get_widget("memEntry").set_text(self.hw.Card.Mem)
+            else:
+                self.xml.get_widget("memEntry").set_sensitive(False)
 
-                if self.hw.Card.IoPort1:
-                    self.xml.get_widget("io1Entry").set_sensitive(True)
-                    self.xml.get_widget("io1Entry").set_text(self.hw.Card.IoPort1)
-                else:
-                    self.xml.get_widget("io1Entry").set_sensitive(False)
+            if self.hw.Card.IoPort:
+                self.xml.get_widget("ioEntry").set_sensitive(True)
+                self.xml.get_widget("ioEntry").set_text(self.hw.Card.IoPort)
+            else:
+                self.xml.get_widget("ioEntry").set_sensitive(False)
 
-                if self.hw.Card.IoPort2:
-                    self.xml.get_widget("io2Entry").set_sensitive(True)
-                    self.xml.get_widget("io2Entry").set_text(self.hw.Card.IoPort2)
-                else:
-                    self.xml.get_widget("io2Entry").set_sensitive(False)
+            if self.hw.Card.IoPort1:
+                self.xml.get_widget("io1Entry").set_sensitive(True)
+                self.xml.get_widget("io1Entry").set_text(self.hw.Card.IoPort1)
+            else:
+                self.xml.get_widget("io1Entry").set_sensitive(False)
+
+            if self.hw.Card.IoPort2:
+                self.xml.get_widget("io2Entry").set_sensitive(True)
+                self.xml.get_widget("io2Entry").set_text(self.hw.Card.IoPort2)
+            else:
+                self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def dehydrate(self):
         isdncard = NCisdnhardware.ConfISDN()
@@ -233,32 +233,32 @@ class IsdnInterface:
         self.hw.Card.VendorId = isdncard.VendorId
         self.hw.Card.DeviceId = isdncard.DeviceId
         self.hw.Card.DriverId = isdncard.DriverId
-        
+
         if self.xml.get_widget("euroIsdnButton").get_active():
             self.hw.Card.ChannelProtocol = "2"
         else:
             self.hw.Card.ChannelProtocol = "1"
- 
+
         if not self.xml.get_widget('irqSpinButton').get_property("sensitive"):
             self.hw.Card.IRQ = isdncard.IRQ
         else:
             self.hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
- 
+
         if not self.xml.get_widget('memEntry').get_property("sensitive"):
             self.hw.Card.Mem = isdncard.Mem
         else:
             self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
- 
+
         if not self.xml.get_widget('ioEntry').get_property("sensitive"):
             self.hw.Card.IoPort = isdncard.IoPort
         else:
             self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
- 
+
         if not self.xml.get_widget('io1Entry').get_property("sensitive"):
             self.hw.Card.IoPort1 = isdncard.IoPort1
         else:
             self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
- 
+
         if not self.xml.get_widget('io2Entry').get_property("sensitive"):
             self.hw.Card.IoPort2 = isdncard.IoPort2
         else:

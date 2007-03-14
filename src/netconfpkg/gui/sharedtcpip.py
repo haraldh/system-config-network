@@ -48,7 +48,7 @@ def on_ipBootProto_toggled(widget, xml):
         active = widget.get_active()
     else:
         active = not widget.get_active()
-        
+
     xml.get_widget('ipProtocolOmenu').set_sensitive(active)
     xml.get_widget('dhcpSettingFrame').set_sensitive(active)
     xml.get_widget('ipSettingFrame').set_sensitive(not active)
@@ -73,7 +73,7 @@ def dhcp_hydrate (xml, device):
         else:
             device_type = 'dhcp'
 
-        
+
     if device.Hostname:
         xml.get_widget('hostnameEntry').set_text(device.Hostname)
     else:
@@ -108,7 +108,7 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('ipStaticRadio').set_active(True)
         on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
         xml.get_widget('ipAutomaticRadio').set_sensitive(False)
-    
+
 
     if device.Alias != None:
         device.BootProto = "none"
@@ -116,7 +116,7 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('ipStaticRadio').set_active(True)
         on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
         xml.get_widget('ipAutomaticRadio').set_sensitive(False)
-    
+
 
     if device.BootProto == "static" or device.BootProto == "none":
         xml.get_widget('ipAutomaticRadio').set_active(False)
@@ -144,7 +144,7 @@ def dhcp_dehydrate (xml, device):
             device.BootProto = 'none'
     else:
         device.BootProto = 'none'
-        
+
 
     device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
     device.IP = string.strip(xml.get_widget('ipAddressEntry').get_text())
@@ -154,13 +154,13 @@ def dhcp_dehydrate (xml, device):
     hname = string.strip(xml.get_widget('hostnameEntry').get_text())
     if hname != None and hname != '':
         device.Hostname = hname
-        
+
     if xml.get_widget('mtuCB').get_active():
         device.Mtu = int(xml.get_widget('mtuSpin').get_value())
     else:
         device.Mtu = None
-        
-    
+
+
 
 ###
 ### ROUTES
@@ -192,14 +192,14 @@ def on_routeEditButton_clicked(button, xml, device, parent_dialog):
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
     else:
         dl.set_position (gtk.WIN_POS_CENTER)
-        
+
     if dl.run() != gtk.RESPONSE_OK:
-        dl.destroy()        
+        dl.destroy()
         return
     dl.destroy()
     route_update(xml, device)
 
-    
+
 def on_routeDeleteButton_clicked(button, xml, device):
     if not device.StaticRoutes:
         device.createStaticRoutes()
@@ -264,14 +264,14 @@ def on_routeAddButton_clicked(button, xml, device, parent_dialog):
     routes = device.StaticRoutes
     route = Route()
     dialog = editAdressDialog(route)
-    dl = dialog.xml.get_widget ("Dialog")    
+    dl = dialog.xml.get_widget ("Dialog")
 
     if parent_dialog:
         dl.set_transient_for(parent_dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
     else:
         dl.set_position (gtk.WIN_POS_CENTER)
-        
+
     button = dl.run()
     dl.destroy()
     if button != gtk.RESPONSE_OK:
@@ -311,7 +311,7 @@ def on_hardwareAliasesToggle_toggled(widget, xml, device):
         device.Alias = 0
     else:
         device.Alias = None
-        
+
 def on_hardwareMACToggle_toggled(widget, xml, device):
     xml.get_widget("hardwareMACEntry").set_sensitive (widget.get_active())
     xml.get_widget("hardwareProbeButton").set_sensitive (widget.get_active())
@@ -320,18 +320,18 @@ def on_hardwareProbeButton_clicked(widget, xml, device):
     omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_children()[0].get()
     device = string.split(hw)[0]
-    try: hwaddr = ethtool.get_hwaddr(device) 
+    try: hwaddr = ethtool.get_hwaddr(device)
     except IOError, err:
         error_str = str (err)
         GUI_functions.gui_error_dialog(error_str, omenu.get_toplevel())
     else:
         xml.get_widget("hardwareMACEntry").set_text(hwaddr)
-    
+
 def on_hardwareConfigureButton_clicked(widget, xml, device):
     pass
 
 
-    
+
 def hardware_init(xml, device):
     xml_signal_autoconnect(xml, {\
         "on_hardwareAliasesToggle_toggled" : \
@@ -427,5 +427,5 @@ def dsl_hardware_dehydrate(xml, device):
     device.Dialup.EthDevice = string.split(hw)[0]
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.42 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.43 $"

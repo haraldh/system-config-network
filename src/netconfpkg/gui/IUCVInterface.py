@@ -47,11 +47,9 @@ class IUCVInterface(PTPInterface):
 
     def get_type(self):
         return IUCV
- 
+
     def get_project_description(self):
         return _("Create a new IUCV connection.")
 
 NCDevIUCV.setDevIUCVWizard(IUCVInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

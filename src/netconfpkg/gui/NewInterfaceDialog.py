@@ -40,9 +40,9 @@ class NewInterfaceDialog:
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
-            
+
         self.xml = gtk.glade.XML (glade_file, 'toplevel',
-                                  domain=GUI_functions.PROGNAME)        
+                                  domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.toplevel = self.xml.get_widget ('toplevel')
@@ -52,10 +52,10 @@ class NewInterfaceDialog:
         self.description_label = self.xml.get_widget ('description_label')
 
         if parent_dialog:
-            self.toplevel.set_transient_for(parent_dialog)        
+            self.toplevel.set_transient_for(parent_dialog)
             self.toplevel.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         else:
-            self.toplevel.set_position (gtk.WIN_POS_CENTER)            
+            self.toplevel.set_position (gtk.WIN_POS_CENTER)
 
         xml_signal_autoconnect (self.xml,
             { 'on_toplevel_delete_event' : self.on_cancel_interface,
@@ -67,7 +67,7 @@ class NewInterfaceDialog:
               })
 
         load_icon("network.xpm", self.toplevel)
-        
+
         # Initialize the clist
         self.interface_clist.column_titles_passive ()
         self.interface_clist.set_row_height(20)
@@ -81,18 +81,18 @@ class NewInterfaceDialog:
             i = df.getDeviceClass(type)().getWizard()
             if i:
                 interfaces.append(i)
-            
+
         for iface_creator in interfaces:
             iface = iface_creator (self.toplevel, do_save = None,
                                    druid = self.druid)
             iftype = iface.get_type()
             row = self.interface_clist.append ( \
                 [ iface.get_project_name () ] )
-            
+
             device_pixmap, device_mask = \
                            GUI_functions.get_device_icon_mask(iftype,
                                                               self.toplevel)
-                
+
             self.interface_clist.set_pixtext (row, 0,
                                               iface.get_project_name (), 5,
                                               device_pixmap, device_mask)
@@ -105,11 +105,11 @@ class NewInterfaceDialog:
 
         self.toplevel.show_all ()
         self.on_start_page_prepare (None, None)
-        
+
     def on_start_page_prepare (self, druid_page, druid):
         self.interface_clist.grab_focus ()
         self.druid.set_buttons_sensitive (False, True, True, True)
-        
+
     def on_start_page_next (self, druid, druid_page):
         interface = self.interface_clist.get_row_data (\
             self.interface_clist.selection[0])
@@ -150,5 +150,5 @@ if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     interface = NewInterface ()
     gtk.main ()
-    
+
 __author__ = "Harald Hoyer <harald@redhat.com>"

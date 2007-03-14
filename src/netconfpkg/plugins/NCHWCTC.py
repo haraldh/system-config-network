@@ -22,44 +22,42 @@ from netconfpkg.NC_functions import *
 _hwCTCDialog = None
 _hwCTCWizard = None
 
-class HwCTC(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = CTC
-      self.createCard()
-      self.Description = "CTC Device"
-      
-   def getDialog(self):
-      if _hwCTCDialog == None: return None
-      if hasattr(_hwCTCDialog, getDialog):
-         return _hwCTCDialog(self).getDialog()
-      return _hwCTCDialog(self).xml.get_widget("Dialog")
-    
-   def getWizard(self):
-      return _hwCTCWizard
+class HwCTC(Hardware):
+    def __init__(self, list = None, parent = None):
+        Hardware.__init__(self, list, parent)
+        self.Type = CTC
+        self.createCard()
+        self.Description = "CTC Device"
 
-   def isType(self, hardware):
-      if hardware.Type == CTC:
-         return True
-      if getHardwareType(hardware.Hardware) == CTC:
-         return True
-      return False
+    def getDialog(self):
+        if _hwCTCDialog == None: return None
+        if hasattr(_hwCTCDialog, getDialog):
+            return _hwCTCDialog(self).getDialog()
+        return _hwCTCDialog(self).xml.get_widget("Dialog")
+
+    def getWizard(self):
+        return _hwCTCWizard
+
+    def isType(self, hardware):
+        if hardware.Type == CTC:
+            return True
+        if getHardwareType(hardware.Hardware) == CTC:
+            return True
+        return False
 
 def setHwCTCDialog(dialog):
-   global _hwCTCDialog
-   _hwCTCDialog = dialog
+    global _hwCTCDialog
+    _hwCTCDialog = dialog
 
 def setHwCTCWizard(wizard):
-   global _hwCTCWizard
-   _hwCTCWizard = wizard
+    global _hwCTCWizard
+    _hwCTCWizard = wizard
 
 import os
 machine = os.uname()[4]
 if machine == 's390' or machine == 's390x' \
        or os.path.isfile("/etc/chandev.conf"):
-   df = getHardwareFactory()
-   df.register(HwCTC, CTC)
-   
+    df = getHardwareFactory()
+    df.register(HwCTC, CTC)
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

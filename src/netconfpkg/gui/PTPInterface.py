@@ -41,10 +41,10 @@ class PTPInterface(EthernetInterface):
         class dummy:
             def __init__(self):
                 self.druids = []
-                
+
         if self.xml:
             return
-        
+
         glade_file = 'PTPInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):
@@ -77,7 +77,7 @@ class PTPInterface(EthernetInterface):
             self.device = devclass()
         else:
             self.device = NCDevEthernet.DevEthernet()
-            
+
         self.device.Type = self.connection_type
         self.device.OnBoot = True
         self.device.AllowUser = False
@@ -103,24 +103,24 @@ class PTPInterface(EthernetInterface):
 
     def get_type(self):
         pass
- 
+
     def get_project_description(self):
         pass
 
     def on_hostname_config_page_back(self, druid_page, druid):
         childs = self.topdruid.get_children()
-        self.topdruid.set_page(childs[1])            
+        self.topdruid.set_page(childs[1])
         return True
-    
+
     def on_hostname_config_page_next(self, druid_page, druid):
         self.device.IP = self.xml.get_widget('ipAddressEntry').get_text()
         self.device.Gateway = self.xml.get_widget('ipGatewayEntry').get_text()
         try:
             self.device.Mtu = int(self.xml.get_widget('mtuEntry').get_text())
-        except:            
+        except:
             self.device.Mtu = 9216
         pass
-    
+
     def on_hostname_config_page_prepare(self, druid_page, druid):
         if self.device.IP:
             self.xml.get_widget('ipAddressEntry').set_text(self.device.IP)
@@ -138,10 +138,10 @@ class PTPInterface(EthernetInterface):
 
         self.device.BootProto = 'none'
         pass
-    
+
     def on_hw_config_page_back(self, druid_page, druid):
         pass
-    
+
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
         childs = self.topdruid.get_children()
@@ -151,7 +151,7 @@ class PTPInterface(EthernetInterface):
             return True
 
         self.hw_sel = clist.selection[0]
-        
+
 #XXX        if (self.hw_sel + 1) == clist.rows:
         if None:
             self.hwPage = True
@@ -159,7 +159,7 @@ class PTPInterface(EthernetInterface):
         else:
             self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
-            
+
             self.device.Alias = self.getNextAlias(self.device)
             # must be at bottom, because prepare is called here
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+2])
@@ -177,21 +177,21 @@ class PTPInterface(EthernetInterface):
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
-                
+
 #XXX        clist.append([_("Other PTP Card")])
         clist.select_row (self.hw_sel, 0)
         pass
-    
+
     def on_finish_page_back(self,druid_page, druid):
         pass
-        
+
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
+        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError, err:
             pass
         else:
@@ -207,19 +207,19 @@ class PTPInterface(EthernetInterface):
                 break
 
         s = s + "\n" + "   "
-        
+
         s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
             + _("Point to Point (IP):") + " " + self.device.Gateway + "\n" + "   "
 
         druid_page.set_text(s)
-        
+
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = getHardwareList()
         hardwarelist.commit()
         #print self.devicelist
         self.devicelist.append(self.device)
         self.device.commit()
-        
+
         for prof in self.profilelist:
             if prof.Active == False:
                 continue
@@ -233,5 +233,3 @@ class PTPInterface(EthernetInterface):
         gtk.main_quit()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

@@ -36,10 +36,10 @@ from DeviceConfigDialog import DeviceConfigDialog
 class CipeInterfaceDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "CipeInterfaceDialog.glade"
-        
+
         DeviceConfigDialog.__init__(self, glade_file,
-                                    device)    
-        xml_signal_autoconnect(self.xml, 
+                                    device)
+        xml_signal_autoconnect(self.xml,
             {
             "on_remotePeerAddressCB_toggled" : self.on_remotePeerAddressCB_toggled,
             "on_generateKeyButton_clicked" : self.on_generateKeyButton_clicked,
@@ -58,14 +58,14 @@ class CipeInterfaceDialog(DeviceConfigDialog):
         window.remove (frame)
         vbox.pack_start (frame)
         sharedtcpip.route_init (self.sharedtcpip_xml, self.device, self.dialog)
-        
+
     def hydrate(self):
         DeviceConfigDialog.hydrate(self)
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
 
         curr = None
         desc = [_('None - Server Mode')];
-        
+
         devlist = NCDeviceList.getDeviceList()
         for dev in devlist:
             if self.device.Device and dev.Device == self.device.Device:
@@ -78,7 +78,7 @@ class CipeInterfaceDialog(DeviceConfigDialog):
             desc.append(d)
             if self.device.Cipe.TunnelDevice == dev.Device:
                 curr = d
-                            
+
         if len(desc):
             ecombo.set_popdown_strings(desc)
 
@@ -86,7 +86,7 @@ class CipeInterfaceDialog(DeviceConfigDialog):
         if self.device.Cipe.TunnelDevice and curr:
             widget.set_text(curr)
         #widget.set_position(0)
-                
+
         if self.device.Device:
             self.xml.get_widget("cipeDeviceEntry").set_text(self.device.Device)
 
@@ -100,7 +100,7 @@ class CipeInterfaceDialog(DeviceConfigDialog):
                 port = vals[1]
                 self.xml.get_widget("remotePeerPortEntry").set_text(port)
             self.xml.get_widget("remotePeerAddressEntry").set_text(addr)
-                
+
         if self.device.Cipe.RemotePeerAddress == "0.0.0.0" \
            or self.device.Cipe.RemotePeerAddress == "" \
            or not self.device.Cipe.RemotePeerAddress:
@@ -108,9 +108,9 @@ class CipeInterfaceDialog(DeviceConfigDialog):
             self.xml.get_widget("remotePeerPortEntry").set_text("")
             self.xml.get_widget("remotePeerAddressEntry").set_sensitive(False)
             self.xml.get_widget("remotePeerPortEntry").set_sensitive(False)
-            self.xml.get_widget("remotePeerAddressCB").set_active(True)            
+            self.xml.get_widget("remotePeerAddressCB").set_active(True)
 
-            
+
         if self.device.Cipe.RemoteVirtualAddress:
             self.xml.get_widget("remoteVirtualAddressEntry").set_text(self.device.Cipe.RemoteVirtualAddress)
         if self.device.IP: self.xml.get_widget("localVirtualAddressEntry").set_text(self.device.IP)
@@ -121,7 +121,7 @@ class CipeInterfaceDialog(DeviceConfigDialog):
 
         self.updateRemoteOptions()
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
-        
+
     def dehydrate(self):
         DeviceConfigDialog.dehydrate(self)
 
@@ -138,12 +138,12 @@ class CipeInterfaceDialog(DeviceConfigDialog):
             for dev in devlist:
                 if dev.Device == hw and dev.IP:
                     self.device.Cipe.TunnelIP = dev.IP
-            
+
         self.device.Device = self.xml.get_widget("cipeDeviceEntry").get_text()
         self.device.Cipe.LocalPort = self.xml.get_widget("localPortEntry").get_text()
         try: self.device.Cipe.LocalPort = int(self.device.Cipe.LocalPort)
         except: self.device.Cipe.LocalPort = 0
-        
+
         self.device.Cipe.RemoteVirtualAddress = self.xml.get_widget("remoteVirtualAddressEntry").get_text()
         self.device.IP = self.xml.get_widget("localVirtualAddressEntry").get_text()
         self.device.Cipe.SecretKey = self.xml.get_widget("secretKeyEntry").get_text()
@@ -153,7 +153,7 @@ class CipeInterfaceDialog(DeviceConfigDialog):
             self.device.Cipe.RemotePeerAddress = self.xml.get_widget("remotePeerAddressEntry").get_text() + ":" + self.xml.get_widget("remotePeerPortEntry").get_text()
 
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
-                
+
     def on_remotePeerAddressCB_toggled(self, *args):
         if self.xml.get_widget("remotePeerAddressCB").get_active():
             self.xml.get_widget("remotePeerAddressEntry").set_sensitive(False)
@@ -171,9 +171,9 @@ class CipeInterfaceDialog(DeviceConfigDialog):
         key = GUI_functions.gen_hexkey()
         widget = self.xml.get_widget("secretKeyEntry")
         if key:
-            widget.set_text(key)            
+            widget.set_text(key)
         #widget.set_position(0)
-        
+
     def updateRemoteOptions(self, *args):
         ethw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(ethw)
@@ -184,7 +184,7 @@ class CipeInterfaceDialog(DeviceConfigDialog):
             d = fields[0]
             for dev in devlist:
                 if dev.Device == d:
-                    ip = dev.IP        
+                    ip = dev.IP
 
         addr = self.xml.get_widget("remotePeerAddressEntry").get_text()
         port = self.xml.get_widget("remotePeerPortEntry").get_text()
@@ -195,9 +195,9 @@ class CipeInterfaceDialog(DeviceConfigDialog):
         remotevirtualaddress = self.xml.get_widget("remoteVirtualAddressEntry").get_text()
         if addr == "0.0.0.0" or addr == "":
             addr = _("(own choice)")
-            
+
         localvirtualaddress = self.xml.get_widget("localVirtualAddressEntry").get_text()
-        
+
         secretkey = self.xml.get_widget("secretKeyEntry").get_text()
         mytxt = ""
         mytxt = mytxt + _("IP address of tunnel device: ") + str(addr) + "\n"

@@ -48,14 +48,14 @@ class ModemInterface:
 
         if request_rpms(["ppp", "wvdial"]):
             return False
- 
+
         glade_file = 'ModemDruid.glade'
 
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
- 
+
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
         xml_signal_autoconnect(self.xml,
             {
@@ -63,8 +63,8 @@ class ModemInterface:
             "on_Modem_back" : self.on_Modem_back,
             "on_Modem_next" : self.on_Modem_next,
             })
-        
-        
+
+
         druid = self.xml.get_widget('druid')
         for I in druid.get_children():
             druid.remove(I)
@@ -73,7 +73,7 @@ class ModemInterface:
         self.setup()
 
         return True
-        
+
     def get_project_name(self):
         return _('Modem connection')
 
@@ -91,20 +91,20 @@ class ModemInterface:
     def get_druids(self):
         if not self.init_gui():
             return []
-            
+
         Type = MODEM
         dialup = DialupDruid.DialupDruid(self.toplevel, Type,
                                          do_save = self.do_save)
         for self.hw in self.hardwarelist:
             if self.hw.Type == Type: return dialup.get_druids()
- 
+
         id = self.hardwarelist.addHardware(Type)
         self.hw = self.hardwarelist[id]
         self.hw.Type = Type
         self.hw.Name = Type + '0'
         if Type == 'ISDN':  self.hw.createCard()
         elif Type == 'Modem': self.hw.createModem()
- 
+
         return self.druids[0:] + dialup.get_druids()
 
     def on_Modem_prepare(self, druid_page, druid):
@@ -142,19 +142,19 @@ class ModemInterface:
         self.xml.get_widget(\
                 'flowControlEntry').set_text(\
                 modemFlowControls[CRTSCTS])
- 
+
     def on_Modem_next(self, druid_page, druid):
         self.dehydrate()
- 
+
     def on_Modem_back(self, druid_page, druid):
         self.hardwarelist.rollback()
-        
+
     def setup(self):
         flowcontrols = []
         for i in modemFlowControls.keys():
             flowcontrols.append(modemFlowControls[i])
         self.xml.get_widget(\
-            "flowControlCombo").set_popdown_strings(flowcontrols)        
+            "flowControlCombo").set_popdown_strings(flowcontrols)
         pass
 
     def dehydrate(self):
@@ -167,7 +167,7 @@ class ModemInterface:
         for i in modemFlowControls.keys():
             if modemFlowControls[i] == flow:
                 self.hw.Modem.FlowControl = i
-                break        
+                break
 
         Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):
@@ -182,7 +182,7 @@ class ModemInterface:
             self.hw.Modem.ModemVolume = 4
         else:
             self.hw.Modem.ModemVolume = 0
- 
+
         if self.xml.get_widget("toneDialingCB").get_active():
             self.hw.Modem.DialCommand = "ATDT"
         else:
@@ -207,7 +207,7 @@ class ModemInterface:
             self.xml.get_widget(\
                 'flowControlEntry').set_text(\
                 modemFlowControls[CRTSCTS])
-            
-        
+
+
 NCDevModem.setDevModemWizard(ModemInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"

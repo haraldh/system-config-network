@@ -15,14 +15,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-            
+
 _devFac = None
 
 from netconfpkg.NC_functions import log
 
 def getDeviceFactory():
     global _devFac
-    
+
     if _devFac == None:
         _devFac = DeviceFactory()
 
@@ -35,10 +35,10 @@ class DeviceFactory(dict):
     def register(self, theclass, devtype, subtype = None):
 
         log.log(5, "Register %s %s" % (str(theclass), str(devtype)))
-        
+
         if not issubclass(theclass, Device):
             raise ValueError, "first argument has to be a subclass of Device"
-            
+
         if not subtype:
             if self.has_key(devtype):
                 #raise KeyError, "%s is already registered" % devtype
@@ -60,7 +60,7 @@ class DeviceFactory(dict):
         if not self.has_key(devtype):
             log.log(1, "Error: %s not in DeviceFactory!" % devtype)
             return Device
-        
+
         if subtype and self[devtype].has_key(subtype):
             return self[devtype][subtype]
         else:
@@ -68,5 +68,5 @@ class DeviceFactory(dict):
 
 from netconfpkg.plugins import *
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.12 $"

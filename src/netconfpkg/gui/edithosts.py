@@ -55,7 +55,7 @@ class editHostsDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-        
+
         self.hydrate()
 
     def on_Dialog_delete_event(self, *args):

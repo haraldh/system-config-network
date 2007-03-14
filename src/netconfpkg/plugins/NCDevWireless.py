@@ -26,51 +26,51 @@ _devWirelessWizard = None
 # FIXME: [190317] Dell Wireless 1390 802.11g Mini Card doesn't work
 # FIXME: [183272] system-config-network unable to see cisco pcmcia wireless card using airo driver
 
-class DevWireless(Device):    
-   def __init__(self, list = None, parent = None):
-      Device.__init__(self, list, parent)
-      self.Type = WIRELESS
-      self.createWireless()
-      
-   def load(self, name):
-      conf = ConfDevice(name)
-      Device.load(self, name)
-      self.Wireless.load(conf)
+class DevWireless(Device):
+    def __init__(self, list = None, parent = None):
+        Device.__init__(self, list, parent)
+        self.Type = WIRELESS
+        self.createWireless()
 
-   def createWireless(self):
-      Device.createWireless(self)
-      return self.Wireless
-   
-   def getDialog(self):
-      if not _devWirelessDialog:
-         return None
-      
-      dialog =  _devWirelessDialog(self)
-      if hasattr(dialog, "xml"):
-         return dialog.xml.get_widget("Dialog")
+    def load(self, name):
+        conf = ConfDevice(name)
+        Device.load(self, name)
+        self.Wireless.load(conf)
 
-      return dialog
-    
-   def getWizard(self):
-      return _devWirelessWizard
+    def createWireless(self):
+        Device.createWireless(self)
+        return self.Wireless
 
-   def isType(self, device):
-      if device.Type == WIRELESS:
-         return True
-      if getDeviceType(device.Device) == WIRELESS:
-         return True
-      return False
+    def getDialog(self):
+        if not _devWirelessDialog:
+            return None
+
+        dialog =  _devWirelessDialog(self)
+        if hasattr(dialog, "xml"):
+            return dialog.xml.get_widget("Dialog")
+
+        return dialog
+
+    def getWizard(self):
+        return _devWirelessWizard
+
+    def isType(self, device):
+        if device.Type == WIRELESS:
+            return True
+        if getDeviceType(device.Device) == WIRELESS:
+            return True
+        return False
 
 def setDevWirelessDialog(dialog):
-   global _devWirelessDialog
-   _devWirelessDialog = dialog
+    global _devWirelessDialog
+    _devWirelessDialog = dialog
 
 def setDevWirelessWizard(wizard):
-   global _devWirelessWizard
-   _devWirelessWizard = wizard
+    global _devWirelessWizard
+    _devWirelessWizard = wizard
 
 df = getDeviceFactory()
 df.register(DevWireless, WIRELESS)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.12 $"

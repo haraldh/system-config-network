@@ -43,14 +43,14 @@ class ADSLInterfaceDruid(InterfaceCreator):
         self.connection_type = connection_type
         self.druids = []
         self.xml = None
-        
+
     def init_gui(self):
         if self.xml:
             return
-       
+
         if request_rpms(["rp-pppoe"]):
             return
- 
+
         glade_file = 'ADSLInterfaceDruidDruid.glade'
 
         if not os.path.exists(glade_file):
@@ -68,11 +68,11 @@ class ADSLInterfaceDruid(InterfaceCreator):
               "on_finish_page_back" : self.on_finish_page_back,
               "on_providerNameEntry_insert_text" : (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
               "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
-              
+
               }
             )
 
-        
+
         self.druid = self.xml.get_widget('druid')
         for i in self.druid.get_children():
             self.druid.remove(i)
@@ -100,7 +100,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
                  "others.  These types of connections are common in the United States, "
                  "and are gaining acceptance elsewhere.  Speeds vary according to the "
                  "technology used, but generally range from 144kbps to 1.0Mbps.")
-                       
+
     def get_druids(self):
         self.init_gui()
         hwDruid = ethernetHardware(self.toplevel)
@@ -110,7 +110,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
 
     def on_dsl_config_page_back(self, druid_page, druid):
         pass
-    
+
     def on_dsl_config_page_next(self, druid_page, druid):
         if self.check():
             self.dehydrate()
@@ -120,10 +120,10 @@ class ADSLInterfaceDruid(InterfaceCreator):
 
     def on_dsl_config_page_prepare(self, druid_page, druid):
         self.hydrate()
-        
+
     def on_finish_page_back(self,druid_page, druid):
         self.devicelist.rollback()
-        
+
     def on_finish_page_prepare(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
@@ -134,9 +134,9 @@ class ADSLInterfaceDruid(InterfaceCreator):
         s = _("You have selected the following information:") + "\n\n" + "    " + \
             _("Ethernet device:") + "  " + dialup.EthDevice + "\n" + "    " + \
             _("Provider name:") + "  " + dialup.ProviderName + "\n" +  "    " + \
-            _("Login name:") + "  " + dialup.Login         
+            _("Login name:") + "  " + dialup.Login
         druid_page.set_text(s)
-        
+
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
@@ -149,7 +149,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
             break
         self.profilelist.commit()
         self.devicelist.commit()
-        
+
         self.save()
         self.toplevel.destroy()
         gtk.main_quit()
@@ -159,11 +159,11 @@ class ADSLInterfaceDruid(InterfaceCreator):
            and len(string.strip(self.xml.get_widget("loginNameEntry").get_text())) >0 \
            and len(string.strip(self.xml.get_widget("passwordEntry").get_text())) >0 \
            and len(string.strip(self.xml.get_widget("ethernetDeviceEntry").get_text())) >0)
-    
+
     def hydrate(self):
         dialup = self.device.Dialup
         ecombo = self.xml.get_widget("ethernetDeviceComboBox")
- 
+
         hwdesc = []
         hwcurr = None
         hardwarelist = NCHardwareList.getHardwareList()
@@ -178,26 +178,26 @@ class ADSLInterfaceDruid(InterfaceCreator):
         if len(hwdesc):
             hwdesc.sort()
             ecombo.set_popdown_strings(hwdesc)
- 
+
         if not hwcurr and len(hwdesc):
             hwcurr = hwdesc[0]
- 
+
         widget = self.xml.get_widget("ethernetDeviceEntry")
         if dialup and dialup.EthDevice:
             widget.set_text(hwcurr)
         #widget.set_position(0)
- 
+
     def on_tonlineButton_clicked(self, *args):
         self.dehydrate()
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)
         dl = dialog.xml.get_widget ("Dialog")
-        
+
         dl.set_transient_for(self.toplevel)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        
+
         if dl.run() != gtk.RESPONSE_OK:
-            dl.destroy()        
+            dl.destroy()
             return
 
         dl.destroy()
@@ -210,7 +210,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
     def dehydrate(self):
         self.device.DeviceId = self.xml.get_widget('providerNameEntry').get_text()
         self.device.DeviceId = re.sub('-', '_', self.device.DeviceId)
-        
+
         self.device.Type = 'xDSL'
         self.device.BootProto = 'dialup'
         self.device.AllowUser = True

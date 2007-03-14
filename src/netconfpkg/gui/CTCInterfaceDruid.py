@@ -47,11 +47,9 @@ class CTCInterfaceDruid(PTPInterface):
 
     def get_type(self):
         return CTC
- 
+
     def get_project_description(self):
         return _("Create a new CTC connection.")
 
 NCDevCTC.setDevCTCWizard(CTCInterfaceDruid)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

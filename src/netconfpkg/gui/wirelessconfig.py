@@ -33,7 +33,7 @@ from netconfpkg.gui import GUI_functions
 from DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import *
 
-modeList = [ 
+modeList = [
     [ _("Auto") , "Auto" ],
     [ _("Ad-Hoc") , "Ad-Hoc"],
     [ _("Managed") , "Managed"],
@@ -49,7 +49,7 @@ class wirelessConfigDialog(DeviceConfigDialog):
         self.initialized = False
 
         DeviceConfigDialog.__init__(self, glade_file, device)
-        
+
         if not self.initialized:
             self.do_init()
 
@@ -80,17 +80,17 @@ class wirelessConfigDialog(DeviceConfigDialog):
         vbox.pack_start (frame)
         sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
 
-        self.modestore = gtk.ListStore(gobject.TYPE_STRING, 
+        self.modestore = gtk.ListStore(gobject.TYPE_STRING,
                                     gobject.TYPE_STRING)
         for i in modeList:
             self.modestore.append(i)
-        
-        combo = self.xml.get_widget("modeCombo")            
+
+        combo = self.xml.get_widget("modeCombo")
         combo.set_model(self.modestore)
         cell = gtk.CellRendererText()
         combo.pack_start(cell, True)
         combo.add_attribute(cell, 'text', 0)
-            
+
         self.xml.get_widget("rateCombo").set_popdown_strings((
             _("Auto"),
             "11M",
@@ -98,10 +98,10 @@ class wirelessConfigDialog(DeviceConfigDialog):
             "2M",
             "1M"
         ))
-                
+
         combo.connect("changed", self.on_modeChanged)
         self.initialized = True
-        
+
     def hydrate(self):
         if not self.initialized:
             self.do_init()
@@ -111,14 +111,14 @@ class wirelessConfigDialog(DeviceConfigDialog):
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
-        
+
         wl = self.device.Wireless
         if wl:
             if wl.Mode and self.modestore:
                 values = [ r[1] for r in self.modestore ]
                 match_row = values.index(wl.Mode)
                 self.xml.get_widget("modeCombo").set_active(match_row)
-                                
+
             if wl.EssId == "":
                 self.xml.get_widget("essidAutoButton").set_active(True)
                 self.xml.get_widget("essidEntry").set_sensitive(False)
@@ -132,9 +132,9 @@ class wirelessConfigDialog(DeviceConfigDialog):
             if wl.Channel and wl.Channel != "":
                 self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
 
-            if wl.Rate: 
+            if wl.Rate:
                 self.xml.get_widget("rateEntry").set_text(_(wl.Rate))
-                
+
             if wl.Key: self.xml.get_widget("keyEntry").set_text(wl.Key)
 
         self.on_modeChanged(self.xml.get_widget("modeEntry"))
@@ -154,10 +154,10 @@ class wirelessConfigDialog(DeviceConfigDialog):
                 wl.EssId = ""
             else:
                 wl.EssId = self.xml.get_widget("essidEntry").get_text()
-                
+
             row = self.xml.get_widget("modeCombo").get_active()
             wl.Mode = self.modestore[row][1]
-            
+
             wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
 
             rate = self.xml.get_widget("rateEntry").get_text()
@@ -185,5 +185,5 @@ class wirelessConfigDialog(DeviceConfigDialog):
 
 NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/08/02 12:59:44 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.32 $"

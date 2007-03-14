@@ -30,7 +30,7 @@ from rhpl import ethtool
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 import gobject
 
-modeList = [ 
+modeList = [
     [ _("Auto") , "Auto" ],
     [ _("Ad-Hoc") , "Ad-Hoc"],
     [ _("Managed") , "Managed"],
@@ -38,7 +38,7 @@ modeList = [
 #    [ _("Repeater") , "Repeater"],
 #    [ _("Secondary") , "Secondary"]
 ]
-    
+
 class WirelessInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=WIRELESS, do_save = 1,
                  druid = None):
@@ -68,7 +68,7 @@ class WirelessInterface(InterfaceCreator):
 
         if request_rpms(["wireless-tools"]):
             return
-        
+
         glade_file = "sharedtcpip.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -126,19 +126,19 @@ class WirelessInterface(InterfaceCreator):
         self.hwDruid.has_ethernet = None
         self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
                       + self.druids[1:]
-                      
-        self.modestore = gtk.ListStore(gobject.TYPE_STRING, 
+
+        self.modestore = gtk.ListStore(gobject.TYPE_STRING,
                                     gobject.TYPE_STRING)
         for i in modeList:
             self.modestore.append(i)
-        
-        combo = self.xml.get_widget("modeCombo")            
+
+        combo = self.xml.get_widget("modeCombo")
         combo.set_model(self.modestore)
         cell = gtk.CellRendererText()
         combo.pack_start(cell, True)
         combo.add_attribute(cell, 'text', 0)
         combo.set_active(0)
-            
+
         self.xml.get_widget("rateCombo").set_popdown_strings((
             _("Auto"),
             "11M",
@@ -146,7 +146,7 @@ class WirelessInterface(InterfaceCreator):
             "2M",
             "1M"
         ))
-                        
+
 
     def get_project_name(self):
         return _('Wireless connection')
@@ -160,15 +160,15 @@ class WirelessInterface(InterfaceCreator):
     def get_druids(self):
         self.init_gui()
         return self.druids
-    
+
     def on_hostname_config_page_back(self, druid_page, druid):
         pass
-    
+
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
         pass
-    
+
     def on_hostname_config_page_prepare(self, druid_page, druid):
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         pass
@@ -178,7 +178,7 @@ class WirelessInterface(InterfaceCreator):
         if self.hwPage:
             self.topdruid.set_page(childs[2])
         else:
-            self.topdruid.set_page(childs[1])            
+            self.topdruid.set_page(childs[1])
         return True
 
     def on_wireless_config_page_next(self, druid_page, druid):
@@ -191,7 +191,7 @@ class WirelessInterface(InterfaceCreator):
             wl.EssId = self.xml.get_widget("essidEntry").get_text()
         row = self.xml.get_widget("modeCombo").get_active()
         wl.Mode = self.modestore[row][1]
-            
+
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
         rate = self.xml.get_widget("rateEntry").get_text()
         if rate == _("Auto"):
@@ -217,7 +217,7 @@ class WirelessInterface(InterfaceCreator):
                     values = [ r[1] for r in self.modestore ]
                     match_row = values.index(info["Mode"])
                     self.xml.get_widget("modeCombo").set_active(match_row)
- 
+
                 if info.has_key("ESSID") and info["ESSID"] != "":
                     self.xml.get_widget("essidSpecButton").set_active(True)
                     self.xml.get_widget("essidEntry").set_sensitive(True)
@@ -228,13 +228,13 @@ class WirelessInterface(InterfaceCreator):
 
                 if info.has_key("Frequency") and info["Frequency"] < 1000:
                     self.xml.get_widget("channelSpinButton").set_value(int(info["Frequency"]))
-                    
+
                 if info.has_key("BitRate"):
                     self.xml.get_widget("rateEntry").set_text(_(info["BitRate"]))
 
                 if info.has_key("Key") and info["Key"] != "off":
                     self.xml.get_widget("keyEntry").set_text(info["Key"])
-                    
+
         self.on_modeChanged(self.xml.get_widget("modeCombo"))
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
@@ -258,8 +258,8 @@ class WirelessInterface(InterfaceCreator):
 
     def on_hw_config_page_back(self, druid_page, druid):
         pass
-    
-    def on_hw_config_page_next(self, druid_page, druid):        
+
+    def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
 
         childs = self.topdruid.get_children()
@@ -267,9 +267,9 @@ class WirelessInterface(InterfaceCreator):
         if not len(clist.selection):
             self.topdruid.set_page(childs[1])
             return True
-        
+
         self.hw_sel = clist.selection[0]
-        
+
         if (self.hw_sel + 1) == clist.rows:
             self.hwPage = True
             self.topdruid.set_page(childs[2])
@@ -293,13 +293,13 @@ class WirelessInterface(InterfaceCreator):
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
-                
+
         clist.append([_("Other Wireless Card")])
         clist.select_row (self.hw_sel, 0)
-    
+
     def on_finish_page_back(self,druid_page, druid):
         pass
-        
+
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
         wl = self.device.Wireless
@@ -308,7 +308,7 @@ class WirelessInterface(InterfaceCreator):
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
+        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError, err:
             pass
         else:
@@ -331,7 +331,7 @@ class WirelessInterface(InterfaceCreator):
             + _("Default gateway address:") + " " + self.device.Gateway + "\n"
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n" 
+                + self.device.BootProto + "\n"
 
         s = s + _("Mode:") + " " + str(wl.Mode) + "\n"
         s = s + _("ESSID (network ID):") + " "
@@ -344,14 +344,14 @@ class WirelessInterface(InterfaceCreator):
         s = s + _("Transmit rate:") + " " + str(wl.Rate) + "\n" \
             + _("Key: ")
 
-        
+
         if wl.Key:
             s = s + str(wl.Key) + "\n"
         else:
             s = s + _("encryption disabled") + "\n"
 
         druid_page.set_text(s)
-        
+
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
@@ -364,7 +364,7 @@ class WirelessInterface(InterfaceCreator):
             break
         self.profilelist.commit()
         self.devicelist.commit()
-        
+
         self.toplevel.destroy()
         gtk.main_quit()
 

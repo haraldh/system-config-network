@@ -71,7 +71,7 @@ def idle_func():
 
 def get_pixbuf( pixmap_file ):
     fn = pixmap_file
-    
+
     if getDebugLevel() > 0:
         if not os.path.exists( fn ):
             pixmap_file = "pixmaps/" + fn
@@ -83,7 +83,7 @@ def get_pixbuf( pixmap_file ):
         if not os.path.exists( pixmap_file ):
             pixmap_file = "/usr/share/pixmaps/" + fn
             if not os.path.exists( pixmap_file ):
-                raise NCException( _( 
+                raise NCException( _(
 """Could not find file '%s'.
 Please check your installation!
 Run: 'rpm -V system-config-network'
@@ -91,26 +91,26 @@ Run: 'rpm -V system-config-network'
 
     try:
         pixmap = gtk.gdk.pixbuf_new_from_file( pixmap_file )
-    except:    
-        raise NCException( _( 
+    except:
+        raise NCException( _(
 """Could not load the file '%s'.
 Please check your installation!
 Run: 'rpm -V system-config-network'
 """ ) % pixmap_file )
-        
+
     return pixmap
 
 def get_icon( pixmap_file, dialog = None ):
     pixbuf = get_pixbuf( pixmap_file )
     if pixbuf:
         return pixbuf.render_pixmap_and_mask()
-        
+
 def load_icon( pixmap_file, dialog ):
     if not dialog: return
- 
+
     pixbuf = get_pixbuf( pixmap_file )
     if not pixbuf: return
-     
+
     if dialog: dialog.set_icon( pixbuf )
 
 
@@ -127,15 +127,15 @@ def TreeStore_search(rows, func, data):
         if result: return result
     return None
 
-def gui_error_dialog ( message, parent_dialog, 
-                      message_type=gtk.MESSAGE_ERROR, 
+def gui_error_dialog ( message, parent_dialog,
+                      message_type=gtk.MESSAGE_ERROR,
                       widget=None, page=0, broken_widget=None ):
-    
-    dialog = gtk.MessageDialog( parent_dialog, 
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT, 
-                               message_type, gtk.BUTTONS_OK, 
+
+    dialog = gtk.MessageDialog( parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
                                message )
-    
+
     if widget != None:
         if isinstance ( widget, gtk.CList ):
             widget.select_row ( page, 0 )
@@ -156,15 +156,15 @@ def gui_error_dialog ( message, parent_dialog,
     dialog.destroy()
     return ret
 
-def gui_info_dialog ( message, parent_dialog, 
-                      message_type=gtk.MESSAGE_INFO, 
+def gui_info_dialog ( message, parent_dialog,
+                      message_type=gtk.MESSAGE_INFO,
                       widget=None, page=0, broken_widget=None ):
-    
-    dialog = gtk.MessageDialog( parent_dialog, 
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT, 
-                               message_type, gtk.BUTTONS_OK, 
+
+    dialog = gtk.MessageDialog( parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
                                message )
-    
+
     if widget != None:
         if isinstance ( widget, gtk.CList ):
             widget.select_row ( page, 0 )
@@ -185,15 +185,15 @@ def gui_info_dialog ( message, parent_dialog,
     dialog.destroy()
     return ret
 
-def gui_longinfo_dialog ( message, long_message, parent_dialog=None, 
-                         message_type=gtk.MESSAGE_INFO, 
+def gui_longinfo_dialog ( message, long_message, parent_dialog=None,
+                         message_type=gtk.MESSAGE_INFO,
                          widget=None, page=0, broken_widget=None ):
-    
-    dialog = gtk.MessageDialog( parent_dialog, 
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT, 
-                               message_type, gtk.BUTTONS_OK, 
+
+    dialog = gtk.MessageDialog( parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
                                str( message ) )
-    
+
     vbox=dialog.get_children()[0]
     buffer = gtk.TextBuffer( None )
     buffer.set_text( str( long_message ) )
@@ -230,15 +230,15 @@ def gui_longinfo_dialog ( message, long_message, parent_dialog=None,
     dialog.destroy()
     return ret
 
-def gui_error_dialog ( message, parent_dialog=None, 
-                      message_type=gtk.MESSAGE_ERROR, 
+def gui_error_dialog ( message, parent_dialog=None,
+                      message_type=gtk.MESSAGE_ERROR,
                       widget=None, page=0, broken_widget=None ):
-    
-    dialog = gtk.MessageDialog( parent_dialog, 
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT, 
-                               message_type, gtk.BUTTONS_OK, 
+
+    dialog = gtk.MessageDialog( parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type, gtk.BUTTONS_OK,
                                message )
-    
+
     if widget != None:
         if isinstance ( widget, gtk.CList ):
             widget.select_row ( page, 0 )
@@ -248,25 +248,25 @@ def gui_error_dialog ( message, parent_dialog=None,
         broken_widget.grab_focus ()
         if isinstance ( broken_widget, gtk.Entry ):
             broken_widget.select_region ( 0, -1 )
-        
+
     if parent_dialog:
         dialog.set_position ( gtk.WIN_POS_CENTER_ON_PARENT )
         dialog.set_transient_for( parent_dialog )
     else:
         dialog.set_position ( gtk.WIN_POS_CENTER )
-        
+
     ret = dialog.run ()
     dialog.destroy()
     return ret
 
 
-def gui_yesnocancel_dialog ( message, parent_dialog, 
-                            message_type=gtk.MESSAGE_QUESTION, 
+def gui_yesnocancel_dialog ( message, parent_dialog,
+                            message_type=gtk.MESSAGE_QUESTION,
                             widget=None, page=0, broken_widget=None ):
-    dialog = gtk.MessageDialog( parent_dialog, 
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT, 
-                               message_type, 
-                               gtk.BUTTONS_YES_NO, 
+    dialog = gtk.MessageDialog( parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type,
+                               gtk.BUTTONS_YES_NO,
                                message )
     dialog.add_button( gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL )
 
@@ -298,14 +298,14 @@ def gui_yesnocancel_dialog ( message, parent_dialog,
 
     return RESPONSE_CANCEL
 
-def gui_yesno_dialog ( message, parent_dialog, 
-                      message_type=gtk.MESSAGE_QUESTION, 
+def gui_yesno_dialog ( message, parent_dialog,
+                      message_type=gtk.MESSAGE_QUESTION,
                       widget=None, page=0, broken_widget=None ):
 
-    dialog = gtk.MessageDialog( parent_dialog, 
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT, 
-                               message_type, 
-                               gtk.BUTTONS_YES_NO, 
+    dialog = gtk.MessageDialog( parent_dialog,
+                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                               message_type,
+                               gtk.BUTTONS_YES_NO,
                                message )
     if widget != None:
         if isinstance ( widget, gtk.CList ):
@@ -349,12 +349,12 @@ def xml_signal_autoconnect ( xml, map ):
     for ( signal, func ) in map.items():
         if isinstance( func, tuple ):
             xml.signal_connect( signal, *func )
-        else:                
+        else:
             xml.signal_connect( signal, func )
 
 
-def gui_run( command, argv, searchPath = 0, 
-              root = '/', stdin = 0, 
+def gui_run( command, argv, searchPath = 0,
+              root = '/', stdin = 0,
               catchfd = 1, closefd = -1 ):
     import gtk
     import os
@@ -404,7 +404,7 @@ def gui_run( command, argv, searchPath = 0,
 
             while gtk.events_pending():
                 gtk.main_iteration()
-            
+
             if len( fdin ):
                 s = os.read( read, 100 )
                 rc = rc + s
@@ -414,15 +414,15 @@ def gui_run( command, argv, searchPath = 0,
             os.kill( childpid, 15 )
         except: pass
         raise e
-        
+
     os.close( read )
-    
+
     try:
         ( pid, status ) = os.waitpid( childpid, 0 )
     except OSError, ( errno, msg ):
         #print __name__, "waitpid:", msg
         pass
-    
+
     if os.WIFEXITED( status ) and ( os.WEXITSTATUS( status ) == 0 ):
         status = os.WEXITSTATUS( status )
     else:
@@ -434,9 +434,9 @@ __cancelPressed = None
 __dialogClosed = None
 
 # FIXME: [192273] Long lag in cancel button response, UI freezes
-def gui_run_dialog( command, argv, searchPath = 0, 
-              root = '/', stdin = 0, 
-              catchfd = 1, closefd = -1, title = None, 
+def gui_run_dialog( command, argv, searchPath = 0,
+              root = '/', stdin = 0,
+              catchfd = 1, closefd = -1, title = None,
               label = None, errlabel = None, dialog = None ):
     import gtk
     import os
@@ -445,7 +445,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
     global __cancelPressed
     global __dialogClosed
     class CancelException: pass
-    
+
     __cancelPressed = 0
     __dialogClosed = 0
     xml = __getXmlFile()
@@ -456,13 +456,13 @@ def gui_run_dialog( command, argv, searchPath = 0,
     if img:
         img.set_from_stock( "gtk-dialog-info", 6 )
     xml.signal_autoconnect( { "on_cancelbutton_clicked" :
-                             __on_cancelbutton_clicked, 
+                             __on_cancelbutton_clicked,
                              "on_Dialog_close" :
-                             __on_Dialog_close, 
+                             __on_Dialog_close,
                              "on_okbutton_clicked" :
-                             __on_okbutton_clicked, 
+                             __on_okbutton_clicked,
                              } )
-    
+
     dlg.connect( "delete-event", __on_Dialog_close )
     dlg.connect( "hide", __on_Dialog_close )
     if title:
@@ -477,7 +477,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
     textview.set_property( "editable", False )
     textview.set_wrap_mode( gtk.WRAP_WORD )
     buffer = gtk.TextBuffer( None )
-    mark = buffer.create_mark( "end", buffer.get_start_iter(), 
+    mark = buffer.create_mark( "end", buffer.get_start_iter(),
                               left_gravity=False )
     textview.set_buffer( buffer )
     if dialog:
@@ -536,7 +536,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
 
             if __cancelPressed or __dialogClosed:
                 raise CancelException
-            
+
             if len( fdin ):
                 s = os.read( read, 1024 )
                 rc = rc + s
@@ -545,7 +545,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
                 vadj = swindow.get_vadjustment()
                 if vadj.value + vadj.page_size >= vadj.upper - 5:
                     textview.scroll_mark_onscreen( mark )
-                
+
     except CancelException:
         try:
             os.kill( childpid, 15 )
@@ -561,9 +561,9 @@ def gui_run_dialog( command, argv, searchPath = 0,
             #os.kill(childpid, 9)
         except: pass
         raise e
-        
+
     os.close( read )
-    
+
     try:
         ( pid, status ) = os.waitpid( childpid, 0 )
     except OSError, ( errno, msg ):
@@ -585,13 +585,13 @@ def gui_run_dialog( command, argv, searchPath = 0,
             lbl.set_text( _( "Failed to run:\n%s" ) % string.join( argv ) )
 
     elif len( s ):
-        lbl.set_text( label + '\n' + _( "Succeeded. Please read the output." ) )        
-        
+        lbl.set_text( label + '\n' + _( "Succeeded. Please read the output." ) )
+
     if ( status or len( s ) ) and not __dialogClosed:
         okbutton.set_sensitive ( True )
         cancelbutton.set_sensitive ( False )
         dlg.run()
-        
+
     dlg.hide()
     return ( status, rc )
 
@@ -603,11 +603,11 @@ def __on_okbutton_clicked( *args ):
 def __on_cancelbutton_clicked( *args ):
     global __cancelPressed
     __cancelPressed = 1
-    
+
 def __on_Dialog_close( *args ):
     global __dialogClosed
     __dialogClosed = 1
-    
+
 def __getXmlFile():
     global __xmlfile
     import os
@@ -616,18 +616,18 @@ def __getXmlFile():
 
     glade_name = "infodialog.glade"
     glade_file = glade_name
-    
+
     if getDebugLevel() > 0:
         if not os.path.isfile( glade_file ):
             glade_file = GLADEPATH + glade_name
         if not os.path.isfile( glade_file ):
             glade_file = NETCONFDIR + glade_name
-    else:        
+    else:
         glade_file = NETCONFDIR + glade_name
 
     if not os.path.isfile( glade_file ):
         glade_file = NETCONFDIR + GLADEPATH + glade_name
-            
+
     __xmlfile = gtk.glade.XML( glade_file, None, domain=PROGNAME )
     return __xmlfile
 

@@ -22,57 +22,57 @@ from netconfpkg.NC_functions import *
 _hwIsdnDialog = None
 _hwIsdnWizard = None
 
-class HwIsdn(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = ISDN
-      self.createCard()
-      self.Card.ChannelProtocol = "2"
-       
-   def getDialog(self):
-      if _hwIsdnDialog == None: return None
-      return _hwIsdnDialog(self).xml.get_widget("Dialog")
-   
-   def getWizard(self):
-      return _hwIsdnWizard
-   
-   def isType(self, hardware):
-      if hardware.Type == ISDN:
-         return True
-      if getHardwareType(hardware.Hardware) == ISDN:
-         return True
-      return False
+class HwIsdn(Hardware):
+    def __init__(self, list = None, parent = None):
+        Hardware.__init__(self, list, parent)
+        self.Type = ISDN
+        self.createCard()
+        self.Card.ChannelProtocol = "2"
 
-   def save(self):
-      import netconfpkg.NCisdnhardware
-      isdn = netconfpkg.NCisdnhardware.ConfISDN()
-        
-      isdn.Description = self.Description
-      isdn.Type = self.Card.Type
-      isdn.ModuleName = self.Card.ModuleName
-      isdn.IRQ = self.Card.IRQ
-      isdn.IoPort = self.Card.IoPort
-      isdn.IoPort1 = self.Card.IoPort1
-      isdn.IoPort2 = self.Card.IoPort2
-      isdn.Mem = self.Card.Mem
-      isdn.ChannelProtocol = self.Card.ChannelProtocol
-      isdn.Firmware = self.Card.Firmware
-      isdn.DriverId = self.Card.DriverId
-      isdn.VendorId = self.Card.VendorId
-      isdn.DeviceId = self.Card.DeviceId
-      isdn.save()
-      
-   
+    def getDialog(self):
+        if _hwIsdnDialog == None: return None
+        return _hwIsdnDialog(self).xml.get_widget("Dialog")
+
+    def getWizard(self):
+        return _hwIsdnWizard
+
+    def isType(self, hardware):
+        if hardware.Type == ISDN:
+            return True
+        if getHardwareType(hardware.Hardware) == ISDN:
+            return True
+        return False
+
+    def save(self):
+        import netconfpkg.NCisdnhardware
+        isdn = netconfpkg.NCisdnhardware.ConfISDN()
+
+        isdn.Description = self.Description
+        isdn.Type = self.Card.Type
+        isdn.ModuleName = self.Card.ModuleName
+        isdn.IRQ = self.Card.IRQ
+        isdn.IoPort = self.Card.IoPort
+        isdn.IoPort1 = self.Card.IoPort1
+        isdn.IoPort2 = self.Card.IoPort2
+        isdn.Mem = self.Card.Mem
+        isdn.ChannelProtocol = self.Card.ChannelProtocol
+        isdn.Firmware = self.Card.Firmware
+        isdn.DriverId = self.Card.DriverId
+        isdn.VendorId = self.Card.VendorId
+        isdn.DeviceId = self.Card.DeviceId
+        isdn.save()
+
+
 def setHwIsdnDialog(dialog):
-   global _hwIsdnDialog
-   _hwIsdnDialog = dialog
+    global _hwIsdnDialog
+    _hwIsdnDialog = dialog
 
 def setHwIsdnWizard(wizard):
-   global _hwIsdnWizard
-   _hwIsdnWizard = wizard
+    global _hwIsdnWizard
+    _hwIsdnWizard = wizard
 
 df = getHardwareFactory()
 df.register(HwIsdn, ISDN)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.10 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.11 $"

@@ -57,18 +57,18 @@ class editAdressDialog:
         self.dialog = self.xml.get_widget("Dialog")
         #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         #self.dialog.connect("hide", gtk.main_quit)
-        
+
         self.hydrate()
 
     def on_Dialog_delete_event(self, *args):
         pass
-        
+
     def on_okButton_clicked(self, button):
         self.dehydrate()
-    
+
     def on_cancelButton_clicked(self, button):
         pass
-        
+
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]

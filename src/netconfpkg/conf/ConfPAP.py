@@ -25,7 +25,7 @@ import Conf
 class ConfPAP(Conf.Conf):
     beginline = '####### redhat-config-network will overwrite this part!!! (begin) ##########'
     endline = '####### redhat-config-network will overwrite this part!!! (end) ############'
-    
+
     def __init__(self, filename):
         self.beginlineplace = 0
         self.endlineplace = 0
@@ -62,14 +62,14 @@ class ConfPAP(Conf.Conf):
             self.insertline(self.beginline)
 
         self.beginlineplace = self.tell()
-        
+
         if not self.findline(self.endline):
             self.seek(self.beginlineplace)
             self.nextline()
             self.insertline(self.endline)
-        
+
         self.endlineplace = self.tell()
-        
+
         self.real_rewind()
 
         while self.findnextcodeline():
@@ -78,14 +78,14 @@ class ConfPAP(Conf.Conf):
             # initialize dictionary of variable/name pairs
             # print self.getline()
             var = self.getfields()
-                
+
             if var and (len(var) >= 3):
                 if not self.vars.has_key(var[0]):
                     self.vars[var[0]] = {}
             self.vars[var[0]][var[1]] = var[2]
-            
+
             self.nextline()
-            
+
         self.rewind()
 
     def getfields(self):
@@ -113,19 +113,19 @@ class ConfPAP(Conf.Conf):
         place = self.tell()
         if place < self.beginlineplace:
             self.beginlineplace = self.beginlineplace + 1
-            
+
         if place < self.endlineplace:
             self.endlineplace = self.endlineplace + 1
-            
+
         self.lines.insert(self.line, line)
 
     def deleteline(self):
         place = self.tell()
         self.lines[self.line:self.line+1] = []
-        
+
         if place < self.beginlineplace:
             self.beginlineplace = self.beginlineplace -1
-            
+
         if place < self.endlineplace:
             self.endlineplace = self.endlineplace - 1
 
@@ -148,24 +148,24 @@ class ConfPAP(Conf.Conf):
             server = '*'
 
         value = '\"' + svalue + '\"'
-            
+
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
                 break
 
             var = self.getfields()
-            
-            if var and (len(var) >= 3):                
+
+            if var and (len(var) >= 3):
                 if login == var[0] and server == var[1]:
-                        self.setfields([ login, server, value ] )
-                        missing=0
+                    self.setfields([ login, server, value ] )
+                    missing=0
             self.nextline()
-            
+
         if missing:
             self.delallitem(varname)
             self.seek(self.endlineplace)
             self.insertlinelist([ login, server, value ] )
-                
+
 
         if isinstance(varname, ListType):
             if not self.vars.has_key(varname[0]):
@@ -177,7 +177,7 @@ class ConfPAP(Conf.Conf):
             self.vars[varname]["*"] = svalue
 
         self.seek(place)
-        
+
     def __delitem__(self, varname):
         place=self.tell()
         self.rewind()
@@ -186,19 +186,19 @@ class ConfPAP(Conf.Conf):
             server = varname[1]
         else:
             login = varname
-            server = "*"        
+            server = "*"
 
         while self.findnextcodeline():
             if self.tell() >= self.endlineplace:
                 break
 
             var = self.getfields()
-            
-            if var and (len(var) >= 3):                
+
+            if var and (len(var) >= 3):
                 if login == var[0] and server == var[1]:
                     self.deleteline()
             self.nextline()
-                    
+
         if self.vars.has_key(login):
             if self.vars[login].has_key(server):
                 del self.vars[login][server]
@@ -219,13 +219,13 @@ class ConfPAP(Conf.Conf):
 
         while self.findnextcodeline():
             var = self.getfields()
-            
-            if var and (len(var) >= 3):                
+
+            if var and (len(var) >= 3):
                 if login == var[0] and server == var[1]:
                     self.deleteline()
 
             self.nextline()
-                    
+
         if self.vars.has_key(login):
             if self.vars[login].has_key(server):
                 del self.vars[login][server]
@@ -237,16 +237,16 @@ class ConfPAP(Conf.Conf):
     def has_key(self, key):
         if self.vars.has_key(key): return 1
         return 0
-    
+
     def keys(self):
-        return self.vars.keys()        
+        return self.vars.keys()
 
 if __name__ == '__main__':
     pap = ConfPAP("/etc/ppp/pap-secrets")
     for key in pap.keys():
         print key + ' ' + str(pap[key])
         del pap[key]
-        
+
     pap['test1'] = 'pappasswd1'
     pap['test2'] = 'pappasswd2'
     pap['test3'] = 'pappasswd3'
@@ -256,4 +256,3 @@ if __name__ == '__main__':
     print pap.lines
 
     pap.write()
-

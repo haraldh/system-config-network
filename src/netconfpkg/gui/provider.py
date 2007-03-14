@@ -42,9 +42,9 @@ class providerDialog:
         self.name = ""
         self.connection_type = connection_type
         self.provider = None
-        
+
         glade_file = "ChooseProvider.glade"
-        
+
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
@@ -56,7 +56,7 @@ class providerDialog:
         self.dbtree = self.xml.get_widget("providerTree")
         self.dialog = self.xml.get_widget("Dialog")
         self.okButton = self.xml.get_widget("okButton")
-        
+
         xml_signal_autoconnect(self.xml,
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
@@ -70,11 +70,11 @@ class providerDialog:
         self.okButton.set_sensitive(False)
         self.setup_provider_db()
         load_icon("network.xpm", self.dialog)
-        
+
 
     def on_Dialog_delete_event(self, *args):
         pass
-    
+
     def on_cancelButton_clicked(self, button):
         self.done = False
 
@@ -84,7 +84,7 @@ class providerDialog:
         self.dehydrate()
         self.dialog.destroy()
         self.device.commit()
-        
+
     def on_providerTree_tree_select_row(self, ctree, node, column):
         node = ctree.selection[0]
         if len(node.children) == 0:
@@ -116,10 +116,10 @@ class providerDialog:
             clist.disconnect (id)
             clist.remove_data ("signal_id")
             apply(func)
-        
+
     def get_provider_list(self):
         return providerdb.get_provider_list()
-    
+
     def get_provider(self):
         if self.done:
             isp_list = self.get_provider_list()
@@ -131,7 +131,7 @@ class providerDialog:
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
         self.dbtree.set_row_height(20)
-        
+
         pix_isp, mask_isp = GUI_functions.get_icon("isp.xpm", self.dialog)
         pix_city, mask_city = GUI_functions.get_icon("city.xpm", self.dialog)
 
@@ -145,7 +145,7 @@ class providerDialog:
                 if not pix:
                     pix, mask = GUI_functions.get_icon('unknown-flag.xpm',
                                                        self.dialog)
-                    
+
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=False)
                 _country = isp['Country']
@@ -155,7 +155,7 @@ class providerDialog:
                                                pix_city, mask_city,
                                                pix_city, mask_city, is_leaf=False)
                 _city = isp['City']
-                
+
             name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=False)
@@ -206,14 +206,14 @@ class ModemproviderDialog(providerDialog):
         providerDialog.__init__(self, device)
 
     def get_provider_list(self):
-        return providerdb.get_provider_list("modem") 
+        return providerdb.get_provider_list("modem")
 
     def dehydrate(self):
         providerDialog.dehydrate(self)
         self.device.Type = 'Modem'
-        
 
-        
+
+
 # make ctrl-C work
 if __name__ == "__main__":
     signal.signal (signal.SIGINT, signal.SIG_DFL)
@@ -224,5 +224,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/08/02 12:59:44 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.22 $"

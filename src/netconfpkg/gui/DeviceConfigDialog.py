@@ -69,10 +69,10 @@ class DeviceConfigDialog:
         self.hydrate()
 
 
-    def on_notebook_switch_page(self, *args):        
+    def on_notebook_switch_page(self, *args):
         self.dehydrate()
         self.hydrate()
-        
+
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -94,12 +94,12 @@ class DeviceConfigDialog:
         clist.disconnect (id)
         clist.remove_data ("signal_id")
         apply (func)
-        
+
     def on_deviceNameEntry_changed(self, entry):
         deviceName = string.strip(entry.get_text())
         self.device.DeviceId = deviceName
         self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0)
-        
+
     def on_okButton_clicked(self, button):
         self.dehydrate()
         devicelist = NCDeviceList.getDeviceList()
@@ -137,7 +137,7 @@ class DeviceConfigDialog:
                 num = num + 1
             self.device.DeviceId = devname
         return True
-    
+
     def on_cancelButton_clicked(self, button):
         pass
 
@@ -146,12 +146,12 @@ class DeviceConfigDialog:
         widget.grab_focus()
         if self.device.DeviceId:
             widget.set_text(self.device.DeviceId)
-                
+
             self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == True)
             self.xml.get_widget('onParentCB').set_active(self.device.OnParent == True)
             self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
             self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
-                
+
             if self.device.Alias != None:
                 self.xml.get_widget('onBootCB').hide()
                 self.xml.get_widget('onParentCB').show()

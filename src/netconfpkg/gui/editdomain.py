@@ -53,24 +53,24 @@ class editDomainDialog:
         self.dialog = self.xml.get_widget("Dialog")
         #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         #self.dialog.connect("hide", gtk.main_quit)
-        
+
         load_icon("network.xpm", self.dialog)
         self.setup()
         self.hydrate()
-        
+
     def on_Dialog_delete_event(self, *args):
         pass
     #    self.dialog.destroy()
-        
+
     def on_okButton_clicked(self, button):
         self.dehydrate()
     #    self.main.hydrate()
     #    self.dialog.destroy()
-        
+
     def on_cancelButton_clicked(self, button):
         pass
     #    self.dialog.destroy()
-        
+
     def on_domainNameEntry_insert_text(self, entry, partial_text, length,
                                        pos, str):
         pass
@@ -85,7 +85,7 @@ class editDomainDialog:
             if prof.Active == True:
                 index = prof.DNS.SearchList.index(self.Name)
                 n = self.xml.get_widget("domainNameEntry").get_text()
-                
+
                 if len(string.strip(n)) == 0:
                     del prof.DNS.SearchList[index]
                 else:
@@ -93,7 +93,7 @@ class editDomainDialog:
 
                 self.hydrate()
                 prof.DNS.SearchList.commit()
-    
+
     def setup(self):
         self.xml.get_widget("domainNameEntry").set_text(self.Name)
 

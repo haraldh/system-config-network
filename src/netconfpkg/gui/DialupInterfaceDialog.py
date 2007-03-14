@@ -47,7 +47,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
                                     device)
         self.edit = False
 
-        xml_signal_autoconnect(self.xml, 
+        xml_signal_autoconnect(self.xml,
             {
             "on_chooseButton_clicked" : self.on_chooseButton_clicked,
             "on_helpButton_clicked" : self.on_helpButton_clicked,
@@ -89,7 +89,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
 
         dialup = self.device.Dialup
-            
+
         if dialup.ProviderName != None:
             self.xml.get_widget("providerName").set_text(dialup.ProviderName)
         if dialup.Login != None:
@@ -140,7 +140,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
 
         if not dialup.Compression:
             dialup.createCompression()
-            
+
         dialup.Compression.VJTcpIp = self.xml.get_widget(\
             "headerCompressionCB").get_active()
         dialup.Compression.VJID = self.xml.get_widget(\
@@ -159,7 +159,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         clist = self.xml.get_widget("pppOptionList")
         for i in xrange (clist.rows):
             dialup.PPPOptions.append(clist.get_text (i, 0))
-            
+
     def on_helpButton_clicked(self, button):
         pass
 
@@ -169,7 +169,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
     def on_callbackCB_toggled(self, check):
         self.xml.get_widget("callbackFrame").set_sensitive(check.get_active())
         self.xml.get_widget("dialinNumberEntry").grab_focus()
-    
+
     def on_prefixEntry_changed (self, *args):
         pass
 
@@ -220,10 +220,10 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         self.xml.get_widget("pppOptionList").append([entry.get_text()])
         entry.set_text("")
         entry.grab_focus()
-    
+
     def on_pppOptionList_select_row(self, clist, r, c, event):
         self.xml.get_widget ("pppOptionDeleteButton").set_sensitive (True)
-    
+
     def on_ipppOptionList_unselect_row (self, clist, r, c, event):
         self.xml.get_widget("pppOptionDeleteButton").set_sensitive(False)
 
@@ -234,7 +234,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
 
     def on_chooseButton_clicked(self, button):
         dialog = providerDialog(self.device)
-        
+
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
 
@@ -243,12 +243,12 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)
         dl = dialog.xml.get_widget ("Dialog")
-        
+
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        
+
         if dl.run() != gtk.RESPONSE_OK:
-            dl.destroy()        
+            dl.destroy()
             return
 
         dl.destroy()
@@ -259,7 +259,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         if not self.xml.get_widget("providerName").get_text():
             self.xml.get_widget("providerName").set_text("T-Online")
 
- 
+
 class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
     def __init__(self, device):
         DialupInterfaceDialog.__init__(self, device)
@@ -274,7 +274,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         dl = dialog.xml.get_widget("Dialog")
         dl.set_transient_for(self.dialog)
         dl.run()
-        dl.destroy()        
+        dl.destroy()
         DialupInterfaceDialog.hydrate(self)
         self.hydrate()
 
@@ -301,7 +301,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         if dialup.Secure:
             self.xml.get_widget("allowDialinNumberCB").set_active(\
                 dialup.Secure)
-            
+
         if dialup.Callback and dialup.Callback.Type != 'off':
             self.xml.get_widget("callbackCB").set_active(True)
             self.xml.get_widget("callbackFrame").set_sensitive(True)
@@ -310,7 +310,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
             else:
                 self.xml.get_widget('CallbackMode').set_history(1)
             self.xml.get_widget('CallbackMode').show_all()
-            
+
             self.xml.get_widget("callbackDelaySB").set_value(\
                 dialup.Callback.Delay)
             self.xml.get_widget("cbcpCB").set_active(\
@@ -321,7 +321,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         if dialup.HangupTimeout:
             self.xml.get_widget("hangupTimeoutISDNSB").set_value(\
                 dialup.HangupTimeout)
-            
+
         if dialup.DialMode:
             if dialup.DialMode == DM_AUTO:
                 dialmode = DialModes[DM_AUTO]
@@ -329,9 +329,9 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
                 dialmode = DialModes[DM_MANUAL]
         else:
             dialmode = DialModes[DM_MANUAL]
-            
+
         self.xml.get_widget("dialModeISDNEntry").set_text(dialmode)
-        
+
         if dialup.EncapMode == 'rawip':
             self.xml.get_widget("encapModeEntry").set_text(_('raw IP'))
         else:
@@ -342,7 +342,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
 
         if dialup.DefRoute != None:
             self.xml.get_widget("defrouteISDNCB").set_active(dialup.DefRoute)
-        
+
         if dialup.ChannelBundling:
             self.xml.get_widget("channelBundlingCB").set_active(\
                 dialup.ChannelBundling == True)
@@ -360,9 +360,9 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
 
     def dehydrate(self):
         DialupInterfaceDialog.dehydrate(self)
-        
+
         dialup = self.device.Dialup
-        
+
         encap_mode_old = dialup.EncapMode
         if self.xml.get_widget("encapModeEntry").get_text() == _("sync PPP"):
             dialup.EncapMode = "syncppp"
@@ -377,9 +377,9 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         dialup.PhoneInNumber = self.xml.get_widget(\
             "dialinNumberEntry").get_text()
         dialup.Secure = self.xml.get_widget("allowDialinNumberCB").get_active()
-        
+
         dialup.createCallback()
-        
+
         if self.xml.get_widget("callbackCB").get_active():
             if self.xml.get_widget('CallbackMode').get_child().get_label() == \
                    _('in'):
@@ -427,17 +427,17 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         else:
             dialup.Authentication = 'noauth'
 
-        
+
 class ModemDialupInterfaceDialog(DialupInterfaceDialog):
     def __init__(self, device):
         DialupInterfaceDialog.__init__(self, device)
-        
+
         self.dialog.set_title(_("Modem Dialup Configuration"))
         page = self.noteBook.page_num(self.xml.get_widget ("isdnTab"))
-        self.noteBook.get_nth_page(page).hide()        
+        self.noteBook.get_nth_page(page).hide()
         page = self.noteBook.page_num(self.xml.get_widget ("callbackTab"))
         self.noteBook.get_nth_page(page).hide()
-        
+
     def on_chooseButton_clicked(self, button):
         dialog = ModemproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
@@ -446,7 +446,7 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
         dl.destroy()
         DialupInterfaceDialog.hydrate(self)
         self.hydrate()
-        
+
     def hydrate(self):
         DialupInterfaceDialog.hydrate(self)
         hardwarelist = getHardwareList()
@@ -474,8 +474,8 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
         self.xml.get_widget("dialModeEntry").set_text(dialmode)
 
         if dialup.InitString:
-           widget = self.xml.get_widget("modemInitEntry").set_text(\
-               dialup.InitString)
+            widget = self.xml.get_widget("modemInitEntry").set_text(\
+                dialup.InitString)
 
         if dialup.Persist:
             self.xml.get_widget("persistCB").set_active(dialup.Persist)

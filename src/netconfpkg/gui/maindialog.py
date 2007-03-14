@@ -42,10 +42,10 @@ PAGE_HARDWARE = 1
 PAGE_IPSEC = 2
 PAGE_DNS = 3
 PAGE_HOSTS = 4
-    
+
 def nop(str=None):
     pass
-    
+
 class mainDialog:
     def __init__(self):
         glade_file = "maindialog.glade"
@@ -54,7 +54,7 @@ class mainDialog:
             glade_file = GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
-        
+
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.initialized = None
         self.help_displayed = False
@@ -74,9 +74,9 @@ class mainDialog:
             self.on_activateButton_clicked,
             "on_deactivateButton_clicked" : \
             self.on_deactivateButton_clicked,
-            "on_deviceList_select_row" : 
+            "on_deviceList_select_row" :
             self.on_generic_clist_select_row,
-            "on_deviceList_unselect_row" : 
+            "on_deviceList_unselect_row" :
             self.on_generic_clist_unselect_row,
             "on_deviceList_button_press_event" : \
             self.on_generic_clist_button_press_event,
@@ -85,7 +85,7 @@ class mainDialog:
             "on_contents_activate" : self.on_helpButton_clicked,
             "on_hardwareList_select_row" :
             self.on_generic_clist_select_row,
-            "on_hardwareList_unselect_row" : 
+            "on_hardwareList_unselect_row" :
             self.on_generic_clist_unselect_row,
             "on_hardwareList_button_press_event" : \
             self.on_generic_clist_button_press_event,
@@ -119,7 +119,7 @@ class mainDialog:
         if not hasattr(self.appBar, "push") or not hasattr(self.appBar, "push"):
             self.appBar.push = nop
             self.appBar.pop = nop
-            
+
         # FIXME: [188232] 'NoneType' object has no attribute 'set_from_pixbuf'
         widget = self.xml.get_widget ("hardware_pixmap")
         widget.set_from_pixbuf(get_pixbuf("connection-ethernet.png"))
@@ -136,9 +136,9 @@ class mainDialog:
         self.dialog.set_position (gtk.WIN_POS_CENTER)
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         self.dialog.connect("hide", gtk.main_quit)
-        
+
         self.xml.get_widget ("profileMenu").show()
-            
+
         self.on_xpm, self.on_mask = get_icon('on.xpm', self.dialog)
         self.off_xpm, self.off_mask = get_icon('off.xpm', self.dialog)
         self.act_xpm, self.act_mask = get_icon ("active.xpm",
@@ -150,23 +150,23 @@ class mainDialog:
         self.ipsel = None
         self.lastbuttonevent = None
         self.active_profile_name = DEFAULT_PROFILE_NAME
-                
+
         load_icon("network.xpm", self.dialog)
-        
+
         self.xml.get_widget ("deviceList").column_titles_passive ()
         self.xml.get_widget ("hardwareList").column_titles_passive ()
-        self.xml.get_widget ("hostsList").column_titles_passive ()    
-        
+        self.xml.get_widget ("hostsList").column_titles_passive ()
+
         notebook = self.xml.get_widget('mainNotebook')
         widget = self.xml.get_widget('deviceFrame')
         page = notebook.page_num(widget)
         notebook.set_current_page(page)
-       
+
         if rpms_notinstalled(["ipsec-tools"]) == []:
             do_ipsec = True
         else:
             do_ipsec = False
-                        
+
         if not do_ipsec:
             # remove IPsec
             widget = self.xml.get_widget('ipsecFrame')
@@ -188,9 +188,9 @@ class mainDialog:
         if do_ipsec:
             self.page_num[PAGE_IPSEC] = notebook.page_num(\
                 self.xml.get_widget('ipsecFrame'))
-            
+
         self.active_page = self.page_num[PAGE_DEVICES]
-        
+
         self.addButtonFunc = {
             self.page_num[PAGE_DEVICES] : self.on_deviceAddButton_clicked,
             self.page_num[PAGE_HARDWARE] : self.on_hardwareAddButton_clicked,
@@ -243,22 +243,22 @@ class mainDialog:
             "hardwareList" : PAGE_HARDWARE,
             "ipsecList" : PAGE_IPSEC,
             }
-        
+
         self.load()
         self.hydrate()
 
         self.activedevicelist = NetworkDevice().get()
         self.tag = gobject.timeout_add(4000, self.updateDevicelist)
-                
+
         # initialize the button state..
         clist = self.xml.get_widget("deviceList")
         self.on_generic_clist_select_row(\
             clist, 0, 0, 0)
-        
+
         gtk.Tooltips().enable()
 
         self.dialog.show()
-        
+
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
 
@@ -277,7 +277,7 @@ class mainDialog:
         self.appBar.push(_("Loading device configuration..."))
         devicelist = getDeviceList()
         self.appBar.pop()
-        
+
     def loadHardware(self):
         self.appBar.push(_("Loading hardware configuration..."))
         hardwarelist = getHardwareList()
@@ -287,12 +287,12 @@ class mainDialog:
         self.appBar.push(_("Loading profile configuration..."))
         profilelist = getProfileList()
         self.appBar.pop()
-    
+
     def loadIPsec(self):
         self.appBar.push(_("Loading IPsec configuration..."))
         ipseclist = getIPsecList()
         self.appBar.pop()
-    
+
     def test(self):
         self.appBar.push(_("Testing configuration set..."))
         profilelist = getProfileList()
@@ -307,9 +307,9 @@ class mainDialog:
         except TestError, msg:
             generic_error_dialog (str(msg), self.dialog)
             self.appBar.pop()
-            return 1                            
+            return 1
 
-        self.appBar.pop()        
+        self.appBar.pop()
         return 0
 
     def changed(self):
@@ -320,7 +320,7 @@ class mainDialog:
         self.appBar.pop()
 
         profname = self.active_profile_name
-        
+
         if profilelist.modified() \
                or devicelist.modified() \
                or hardwarelist.modified() \
@@ -336,7 +336,7 @@ class mainDialog:
     def save(self):
         if self.test() != 0:
             return 1
-        
+
         self.appBar.push(_("Saving configuration..."))
         self.appBar.refresh()
         profilelist = getProfileList()
@@ -347,7 +347,7 @@ class mainDialog:
             self.saveIPsecs()
             self.saveProfiles()
             self.appBar.pop()
-            self.checkApply()     
+            self.checkApply()
         except (IOError, OSError, EnvironmentError), errstr:
             generic_error_dialog (_("Error saving configuration!\n%s") \
                                       % (str(errstr)))
@@ -366,14 +366,14 @@ class mainDialog:
         devicelist.save()
         devicelist.setChanged(False)
         self.appBar.pop()
-        
+
     def saveHardware(self):
         self.appBar.push(_("Saving hardware configuration..."))
         hardwarelist = getHardwareList()
         hardwarelist.save()
         hardwarelist.setChanged(False)
         self.appBar.pop()
-        
+
     def saveProfiles(self):
         self.appBar.push(_("Saving profile configuration..."))
         profilelist = getProfileList()
@@ -387,7 +387,7 @@ class mainDialog:
         ipseclist.save()
         ipseclist.setChanged(False)
         self.appBar.pop()
-        
+
     def hydrate(self):
         self.hydrateProfiles()
         self.hydrateDevices()
@@ -399,7 +399,7 @@ class mainDialog:
     def checkApply(self, ch = -1):
         if ch == -1:
             ch = self.changed()
-            
+
     def hydrateDevices(self):
         self.appBar.push(_("Updating devices..."))
         devicelist = getDeviceList()
@@ -408,9 +408,9 @@ class mainDialog:
         devsel = self.devsel
 
         clist = self.xml.get_widget("deviceList")
-       
+
         clist.clear()
-        
+
         clist.set_row_height(17)
         status_pixmap = self.off_xpm
         status_mask = self.off_mask
@@ -428,7 +428,7 @@ class mainDialog:
                 status = INACTIVE
                 status_pixmap = self.off_xpm
                 status_mask = self.off_mask
-                
+
             device_pixmap, device_mask = \
                 get_device_icon_mask(dev.Type, self.dialog)
 
@@ -439,13 +439,13 @@ class mainDialog:
             if status_pixmap:
                 clist.set_pixtext(row, STATUS_COLUMN, status, 5,
                                   status_pixmap, status_mask)
-            
+
             if device_pixmap:
                 clist.set_pixtext(row, DEVICE_COLUMN, devname, 5,
                                   device_pixmap, device_mask)
-                
+
             clist.set_row_data(row, dev)
-            
+
             for prof in profilelist:
                 if (prof.Active == True or prof.ProfileName == 'default') and \
                        dev.DeviceId in prof.ActiveDevices:
@@ -453,17 +453,17 @@ class mainDialog:
                         clist.set_pixmap(row, PROFILE_COLUMN,
                                          self.act_xpm, self.act_mask)
                     break
-                
+
 
             if dev == devsel or devsel == None:
                 log.log(5, "Selecting row %d" % row)
                 clist.select_row(row, 0)
                 devsel = dev
-                
+
             row = row + 1
         self.appBar.pop()
         self.checkApply()
-        
+
     def hydrateHardware(self):
         self.appBar.push(_("Updating hardware..."))
         hardwarelist = getHardwareList()
@@ -485,7 +485,7 @@ class mainDialog:
             if hw == hwsel:
                 log.log(5, "Selecting row %d" % row)
                 clist.select_row(row, 0)
-                               
+
             row += 1
         self.appBar.pop()
         self.checkApply()
@@ -494,7 +494,7 @@ class mainDialog:
         ipseclist = getIPsecList()
         clist = self.xml.get_widget("ipsecList")
         if not clist:
-                    return
+            return
         clist.clear()
         clist.set_row_height(17)
         row = 0
@@ -518,23 +518,23 @@ class mainDialog:
             clist.append(['', str(ipsec.ConnectionType),
                           str(ipsec.RemoteIPAddress),
                           str(ipsec.IPsecId)])
-            
+
             clist.set_pixmap(row, PROFILE_COLUMN, self.inact_xpm,
                              self.inact_mask)
             clist.set_row_data(row, ipsec)
-            
+
             for prof in profilelist:
                 if (prof.Active == True or prof.ProfileName == 'default') and \
                        ipsec.IPsecId in prof.ActiveIPsecs:
                     clist.set_pixmap(row, PROFILE_COLUMN,
                                      self.act_xpm, self.act_mask)
                     break
-                
+
 
             if ipsec == ipsel:
                 log.log(5, "Selecting row %d" % row)
                 clist.select_row(row, 0)
-                
+
             row += 1
         self.appBar.pop()
         self.checkApply()
@@ -554,7 +554,7 @@ class mainDialog:
             if not prof.Active:
                 continue
 
-            name = prof.ProfileName            
+            name = prof.ProfileName
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
             self.active_profile_name = name
@@ -564,7 +564,7 @@ class mainDialog:
 
         self.active_profile = prof
         self.ignore_widget_changes = True
-        
+
         if prof.DNS.Hostname:
             self.xml.get_widget('hostnameEntry').set_text(\
                 prof.DNS.Hostname)
@@ -592,7 +592,7 @@ class mainDialog:
             self.xml.get_widget('searchDnsEntry').set_text('')
 
         self.ignore_widget_changes = False
-        
+
         row = 0
         for host in prof.HostsList:
             #88357
@@ -604,7 +604,7 @@ class mainDialog:
                            string.join(host.AliasList, ' ')])
             hclist.set_row_data(row, host)
             row += 1
-            
+
         if self.initialized:
             self.appBar.pop()
             self.checkApply()
@@ -619,7 +619,7 @@ class mainDialog:
         clist = omenu.get_children()
         for child in clist[5:]:
             omenu.remove(child)
-            
+
         group = None
         for prof in profilelist:
             name = prof.ProfileName
@@ -649,21 +649,21 @@ class mainDialog:
             return True
 
         return True
-    
+
     def on_Dialog_delete_event(self, *args):
         profilelist = getProfileList()
         profilelist.commit()
-        
-        if self.changed():        
+
+        if self.changed():
             button = generic_yesno_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
             if button == RESPONSE_YES:
                 self.save()
-            
+
         gtk.main_quit()
         return
-    
+
     def on_mainNotebook_switch_page(self, page = None, a = None,
                                     page_num = 0, *args):
         self.active_page = page_num
@@ -671,7 +671,7 @@ class mainDialog:
         # Check if we aren't called in a dialog destroy event
         if self.xml.get_widget ("addButton") == None:
             return
-        
+
         self.xml.get_widget ("addButton").set_sensitive(False)
         self.xml.get_widget ("editButton").set_sensitive(False)
         self.xml.get_widget ("copyButton").set_sensitive(False)
@@ -679,8 +679,8 @@ class mainDialog:
         self.xml.get_widget ("commonDockitem").hide()
         self.xml.get_widget ("deviceDockitem").hide()
         self.xml.get_widget ("posDockitem").hide()
-        
-        if page_num == self.page_num[PAGE_DEVICES]:                        
+
+        if page_num == self.page_num[PAGE_DEVICES]:
             clist = self.xml.get_widget("deviceList")
             self.xml.get_widget ("addButton").set_sensitive(True)
             self.xml.get_widget ("editButton").set_sensitive(True)
@@ -688,14 +688,14 @@ class mainDialog:
             self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
             self.xml.get_widget ("deviceDockitem").show()
-                                
+
         elif page_num == self.page_num[PAGE_HARDWARE]:
             clist = self.xml.get_widget("hardwareList")
             self.xml.get_widget ("addButton").set_sensitive(True)
             self.xml.get_widget ("editButton").set_sensitive(True)
             self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
-                
+
         elif page_num == self.page_num[PAGE_IPSEC]:
             clist = self.xml.get_widget("ipsecList")
             self.xml.get_widget ("addButton").set_sensitive(True)
@@ -703,7 +703,7 @@ class mainDialog:
             self.xml.get_widget ("deleteButton").set_sensitive(True)
             self.xml.get_widget ("commonDockitem").show()
             self.xml.get_widget ("deviceDockitem").show()
-                
+
         elif page_num == self.page_num[PAGE_HOSTS]:
             clist = None
             self.xml.get_widget ("addButton").set_sensitive(True)
@@ -727,7 +727,7 @@ class mainDialog:
 
     def on_addButton_clicked (self, button):
         self.addButtonFunc[self.active_page](button)
-        
+
     def on_editButton_clicked (self, button):
         self.editButtonFunc[self.active_page](button)
 
@@ -736,40 +736,40 @@ class mainDialog:
 
     def on_deleteButton_clicked (self, button):
         self.deleteButtonFunc[self.active_page](button)
-        
+
     def on_upButton_clicked (self, button):
         pass
-        
+
     def on_downButton_clicked (self, button):
         pass
-        
+
     def on_applyButton_clicked (self, button):
         self.save()
-        
+
     def on_okButton_clicked (self, *args):
         profilelist = getProfileList()
         profilelist.commit()
 
-        if self.changed():        
+        if self.changed():
             button = generic_yesnocancel_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
-            
+
             if button == RESPONSE_CANCEL:
                 return
 
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-                                
+
         gtk.main_quit()
         return
-    
+
     def on_helpButton_clicked(self, button):
         #import gnome
         #gnome.url_show("file:" + NETCONFDIR + \
-        #               "/help/index.html") 
-        # Fixes Bug 190242 – Firefox instance running as root when 
+        #               "/help/index.html")
+        # Fixes Bug 190242 – Firefox instance running as root when
         # used to read docs for system-config-*
         if not self.help_displayed:
             self.help_displayed = True
@@ -779,14 +779,14 @@ class mainDialog:
 
     def on_deviceAddButton_clicked (self, clicked):
         interface = NewInterfaceDialog(self.dialog)
-        gtk.main()            
-            
+        gtk.main()
+
         if not interface.canceled:
             self.hydrateDevices()
             self.hydrateHardware()
 
         return (not interface.canceled)
-        
+
     def on_deviceCopyButton_clicked (self, button):
         clist = self.xml.get_widget("deviceList")
 
@@ -794,7 +794,7 @@ class mainDialog:
             return
 
         srcdev = clist.get_row_data(clist.selection[0])
-        df = NCDeviceFactory.getDeviceFactory()        
+        df = NCDeviceFactory.getDeviceFactory()
         device = df.getDeviceClass(srcdev.Type, srcdev.SubType)()
         device.apply(srcdev)
 
@@ -869,7 +869,7 @@ class mainDialog:
             generic_error_dialog (_('The device type %s cannot be edited!') \
                                   % device.Type,
                                   self.dialog)
-            
+
 
         return button
 
@@ -903,7 +903,7 @@ class mainDialog:
                 pos = prof.ActiveDevices.index(device.DeviceId)
                 del prof.ActiveDevices[pos]
         profilelist.commit()
-        
+
         del devicelist[devicelist.index(device)]
         devicelist.commit()
         self.hydrateDevices()
@@ -913,7 +913,7 @@ class mainDialog:
 
         if len(clist.selection) == 0:
             return
-        
+
         dev = clist.get_row_data(clist.selection[0])
         device = dev.getDeviceAlias()
 
@@ -921,7 +921,7 @@ class mainDialog:
 
         profilelist = getProfileList()
         profilelist.commit()
-        
+
         if self.changed():
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
@@ -929,11 +929,11 @@ class mainDialog:
                   "the changes have to be saved.") % (device) + "\n" +\
                 _("Do you want to continue?"),
                 self.dialog)
-                
+
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-            
+
             if button == RESPONSE_NO:
                 return
 
@@ -943,7 +943,7 @@ class mainDialog:
             self.updateDevicelist()
 
         self.tag = gobject.timeout_add(4000, self.updateDevicelist)
-            
+
     def on_deviceDeactivateButton_clicked(self, button):
         clist = self.xml.get_widget("deviceList")
         if len(clist.selection) == 0:
@@ -951,10 +951,10 @@ class mainDialog:
 
         dev = clist.get_row_data(clist.selection[0])
         device = dev.getDeviceAlias()
-        
+
         if not device:
             return
-        
+
         gobject.source_remove(self.tag)
 
         profilelist = getProfileList()
@@ -966,16 +966,16 @@ class mainDialog:
                   "the changes have to be saved.") % (device) + "\n\n" +\
                 _("Do you want to continue?"),
                 self.dialog)
-                
+
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-            
+
             if button == RESPONSE_NO:
                 return
 
         (status, txt) = dev.deactivate(dialog = self.dialog)
-        
+
         self.updateDevicelist()
 
         self.tag = gobject.timeout_add(4000, self.updateDevicelist)
@@ -1004,7 +1004,7 @@ class mainDialog:
         else:
             self.xml.get_widget ('profileRenameMenu').set_sensitive (True)
             self.xml.get_widget ('profileDeleteMenu').set_sensitive (True)
-            
+
         if not self.no_profileentry_update:
             profilelist.switchToProfile(profile, dochange = True)
             self.initialized = True
@@ -1012,7 +1012,7 @@ class mainDialog:
 
         self.checkApply()
 
-    def on_generic_clist_select_row(self, clist, row, column, event):       
+    def on_generic_clist_select_row(self, clist, row, column, event):
         self.edit_button.set_sensitive(True)
         self.delete_button.set_sensitive(True)
 
@@ -1030,53 +1030,53 @@ class mainDialog:
         if clist.get_name() == 'ipsecList' and \
                self.lastbuttonevent and \
                self.lastbuttonevent.type == gtk.gdk.BUTTON_PRESS:
-             info = clist.get_selection_info(int(self.lastbuttonevent.x),
-                                             int(self.lastbuttonevent.y))
-             if info != None and info[1] == 0:
-                 profilelist = getProfileList()
-                 row = info[0]
+            info = clist.get_selection_info(int(self.lastbuttonevent.x),
+                                            int(self.lastbuttonevent.y))
+            if info != None and info[1] == 0:
+                profilelist = getProfileList()
+                row = info[0]
 
-                 ipsec = clist.get_row_data(row)
-                 name = ipsec.IPsecId
+                ipsec = clist.get_row_data(row)
+                name = ipsec.IPsecId
 
-                 curr_prof = self.getActiveProfile()
+                curr_prof = self.getActiveProfile()
 
-                 if ipsec.IPsecId not in curr_prof.ActiveIPsecs:
-                     xpm, mask = self.act_xpm, self.act_mask
-                     curr_prof = self.getActiveProfile()
-                     if curr_prof.ProfileName == 'default':
-                         for prof in profilelist:
-                             profilelist.activateIpsec(name,
-                                                        prof.ProfileName, True)
-                     else:
-                         profilelist.activateIpsec(name,
-                                                    curr_prof.ProfileName,
-                                                    True)
-                         for prof in profilelist:
-                             if prof.ProfileName == "default":
-                                 continue
-                             if name not in prof.ActiveIPsecs:
-                                 break
-                         else:
-                             profilelist.activateIpsec(name, 'default', True)
-                        
-                 else:
-                     xpm, mask = self.inact_xpm, self.inact_mask
-                     if curr_prof.ProfileName == 'default':
-                         for prof in profilelist:
-                             profilelist.activateIpsec(name, prof.ProfileName,
-                                                        False)
-                     else:
-                         profilelist.activateIpsec(name,
-                                                    curr_prof.ProfileName,
-                                                    False)
-                         profilelist.activateIpsec(name, 'default', False)
+                if ipsec.IPsecId not in curr_prof.ActiveIPsecs:
+                    xpm, mask = self.act_xpm, self.act_mask
+                    curr_prof = self.getActiveProfile()
+                    if curr_prof.ProfileName == 'default':
+                        for prof in profilelist:
+                            profilelist.activateIpsec(name,
+                                                       prof.ProfileName, True)
+                    else:
+                        profilelist.activateIpsec(name,
+                                                   curr_prof.ProfileName,
+                                                   True)
+                        for prof in profilelist:
+                            if prof.ProfileName == "default":
+                                continue
+                            if name not in prof.ActiveIPsecs:
+                                break
+                        else:
+                            profilelist.activateIpsec(name, 'default', True)
 
-                 for prof in profilelist:
-                     prof.commit()
-                 
-                 clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
-                 self.checkApply()
+                else:
+                    xpm, mask = self.inact_xpm, self.inact_mask
+                    if curr_prof.ProfileName == 'default':
+                        for prof in profilelist:
+                            profilelist.activateIpsec(name, prof.ProfileName,
+                                                       False)
+                    else:
+                        profilelist.activateIpsec(name,
+                                                   curr_prof.ProfileName,
+                                                   False)
+                        profilelist.activateIpsec(name, 'default', False)
+
+                for prof in profilelist:
+                    prof.commit()
+
+                clist.set_pixmap(row, PROFILE_COLUMN, xpm, mask)
+                self.checkApply()
 
         if clist.get_name() == 'ipsecList':
             if len(clist.selection) == 0:
@@ -1092,7 +1092,7 @@ class mainDialog:
         if clist.get_name() == 'deviceList' and \
                self.lastbuttonevent and \
                self.lastbuttonevent.type == gtk.gdk.BUTTON_PRESS:
-            
+
             info = clist.get_selection_info(int(self.lastbuttonevent.x),
                                             int(self.lastbuttonevent.y))
 
@@ -1152,24 +1152,24 @@ class mainDialog:
             self.activate_button.set_sensitive(True)
             self.deactivate_button.set_sensitive(True)
             self.delete_button.set_sensitive(True)
-            
+
             if len(clist.selection) == 0:
                 return
 
             self.devsel = clist.get_row_data(clist.selection[0])
             if not self.devsel:
                 return
-            
+
             curr_prof = self.getActiveProfile()
-            
+
             try:
                 status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
             except:
                 status = INACTIVE
-            
+
             if NetworkDevice().find(self.devsel.getDeviceAlias()):
                 status == ACTIVE
-                
+
             if status == ACTIVE and \
                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
                 #self.activate_button.set_sensitive(False)
@@ -1205,7 +1205,7 @@ class mainDialog:
     def on_generic_clist_button_press_event(self, clist, event, *args):
         self.lastbuttonevent = event
         profilelist = getProfileList()
-                
+
         if event.type == gtk.gdk._2BUTTON_PRESS:
             info = clist.get_selection_info(int(event.x), int(event.y))
             if info != None and not (clist.get_name() in \
@@ -1218,43 +1218,43 @@ class mainDialog:
                                    self.on_generic_clist_button_release_event,
                                    func)
                 clist.set_data("signal_id", id)
-                         
-                 
+
+
     def on_hostnameEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.Hostname = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
-        
+
     def on_domainEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.Domainname = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
-            
+
     def on_primaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.PrimaryDNS = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
-            
+
     def on_secondaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.SecondaryDNS = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
-            
+
     def on_tertiaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.TertiaryDNS = entry.get_text()
         self.active_profile.DNS.commit()
         self.checkApply()
-            
+
     def on_searchDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
@@ -1265,7 +1265,7 @@ class mainDialog:
             self.active_profile.DNS.SearchList.append(sp)
         self.active_profile.DNS.commit()
         self.checkApply()
-            
+
     def on_hostsAddButton_clicked(self, *args):
         # FIXME: Provide possibility to define order from /etc/hosts.conf
         if (self.ignore_widget_changes):
@@ -1280,13 +1280,13 @@ class mainDialog:
         clist  = self.xml.get_widget("hostsList")
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
-        dl.set_transient_for(self.dialog)        
+        dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         button = dl.run ()
         dl.destroy()
         if button != gtk.RESPONSE_OK and button != 0:
             return
-        
+
         i=  hostslist.addHost()
         hostslist[i].apply(host)
         hostslist[i].commit()
@@ -1306,7 +1306,7 @@ class mainDialog:
 
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
-        dl.set_transient_for(self.dialog)        
+        dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         button = dl.run ()
         dl.destroy()
@@ -1326,7 +1326,7 @@ class mainDialog:
         #if len(clist.selection) == 0:
         #    return
         #
-        
+
         prof = self.getActiveProfile()
 
         clist = self.xml.get_widget('hostsList')
@@ -1340,7 +1340,7 @@ class mainDialog:
 
         for i in todel:
             prof.HostsList.remove(clist.get_row_data(i))
-            
+
         prof.HostsList.commit()
         self.hydrateProfiles()
 
@@ -1358,7 +1358,7 @@ class mainDialog:
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         self.xml.get_widget("ProfileName").set_text('')
         dialog.show()
-        button = dialog.run()        
+        button = dialog.run()
         dialog.hide()
 
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1370,7 +1370,7 @@ class mainDialog:
 
         if not text:
             return
-        
+
         if not re.match("^[a-z|A-Z|0-9]+$", text):
             generic_error_dialog (_('The name may only contain '
                                     'letters and digits!'), self.dialog)
@@ -1387,7 +1387,7 @@ class mainDialog:
                                       self.dialog)
                 return 1
 
-        i = profilelist.addProfile()        
+        i = profilelist.addProfile()
         prof = profilelist[i]
         prof.apply(profilelist[0])
         prof.ProfileName = text
@@ -1426,7 +1426,7 @@ class mainDialog:
 
     def on_profileRenameMenu_activate (self, *args):
         profilelist = getProfileList()
-        
+
         profile = self.getActiveProfile()
         if profile.ProfileName == 'default' or \
                profile.ProfileName == DEFAULT_PROFILE_NAME:
@@ -1440,7 +1440,7 @@ class mainDialog:
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         self.xml.get_widget("ProfileName").set_text(profile.ProfileName)
         dialog.show()
-        button = dialog.run()        
+        button = dialog.run()
         dialog.hide()
 
         if button != gtk.RESPONSE_OK and button != 0:
@@ -1450,7 +1450,7 @@ class mainDialog:
 
         if not text:
             return
-        
+
         if not re.match("^[a-z|A-Z|0-9]+$", text):
             generic_error_dialog (_('The name may only contain '
                                     'letters and digits!'), self.dialog)
@@ -1468,7 +1468,7 @@ class mainDialog:
                 return
 
         profile.ProfileName = text
-        profile.commit()        
+        profile.commit()
         self.initialized = None
         if profile.changed:
             self.hydrateProfiles()
@@ -1522,7 +1522,7 @@ class mainDialog:
         type = type.type
         i = hardwarelist.addHardware(type)
         hw = hardwarelist[i]
-        
+
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
             hw.commit()
             hardwarelist.commit()
@@ -1537,13 +1537,13 @@ class mainDialog:
 
         if len(clist.selection) == 0:
             return
-        
+
         #type  = clist.get_text(clist.selection[0], 1)
         hardwarelist = getHardwareList()
         #hw = hardwarelist[clist.selection[0]]
         hw = clist.get_row_data(clist.selection[0])
         type = hw.Type
-        
+
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
             hw.commit()
             hardwarelist.commit()
@@ -1560,15 +1560,15 @@ class mainDialog:
             dl.set_transient_for(self.dialog)
             dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             button = dl.run()
-            dl.destroy()                    
-            
+            dl.destroy()
+
             return button
-    
+
         else:
             generic_error_dialog (_("Sorry, there is nothing to be edited, "
                                     "or this type cannot be edited yet."),
                                   self.dialog)
-            return RESPONSE_CANCEL                    
+            return RESPONSE_CANCEL
 
     def on_hardwareDeleteButton_clicked (self, *args):
         hardwarelist = getHardwareList()
@@ -1582,7 +1582,7 @@ class mainDialog:
         type = hw.Type
         description = hw.Description
         dev = hw.Name
-        
+
         buttons = generic_yesno_dialog((_('Do you really '
                                           'want to delete "%s"?')) % \
                                        str(description),
@@ -1639,7 +1639,7 @@ class mainDialog:
                                   ])
             dlg.set_transient_for(self.dialog)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-            dlg.show()        
+            dlg.show()
         else:
             dlg = gtk.AboutDialog()
             dlg.set_name(PRG_NAME)
@@ -1698,7 +1698,7 @@ class mainDialog:
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
 
-        gtk.main()            
+        gtk.main()
         dl.destroy()
 
         return dialog.canceled
@@ -1720,9 +1720,9 @@ class mainDialog:
 
         if len(clist.selection) == 0:
             return
-        
+
         ipsec = clist.get_row_data(clist.selection[0])
-        
+
         profilelist = getProfileList()
         profilelist.commit()
 
@@ -1733,11 +1733,11 @@ class mainDialog:
                   "the changes have to be saved.") % (ipsec.IPsecId) \
                 + "\n" + _("Do you want to continue?"),
                 self.dialog)
-                
+
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-            
+
             if button == RESPONSE_NO:
                 return
 
@@ -1749,7 +1749,7 @@ class mainDialog:
             return
 
         ipsec = clist.get_row_data(clist.selection[0])
-        
+
         if not ipsec:
             return
 
@@ -1763,14 +1763,14 @@ class mainDialog:
                   "the changes have to be saved.") % (ipsec.IPsecId) \
                 + "\n" + _("Do you want to continue?"),
                 self.dialog)
-                
+
             if button == RESPONSE_YES:
                 if self.save() != 0:
                     return
-            
+
             if button == RESPONSE_NO:
                 return
 
         (status, txt) = ipsec.deactivate(dialog = self.dialog)
-        
+
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -40,11 +40,11 @@ class ctcConfigDialog(ptpConfigDialog):
         title = _('CTC Device')
 
         self.xml.get_widget('Dialog').set_title(title)
-                
+
         if not self.device.Mtu:
             self.device.Mtu = 1492
         self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
-        
+
     def dehydrate(self):
         if not self.device.Mtu:
             self.device.Mtu = 1492

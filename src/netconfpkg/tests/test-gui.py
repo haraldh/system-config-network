@@ -76,7 +76,7 @@ def expectConf(fileorlines, str):
     #str = string.join(str, '\n')
     if str[0] == "":
         str = str[1:]
-            
+
     l = min(len(lines), len(str))
 
     for i in xrange(l):
@@ -85,11 +85,11 @@ def expectConf(fileorlines, str):
             break
     else:
         return True
-    
+
     print lines
     return False
 
-    
+
 
 class TestGUI(unittest.TestCase):
     def setupChroot(self):
@@ -102,11 +102,11 @@ class TestGUI(unittest.TestCase):
     def setUp(self):
         self.oldstderr = sys.stderr
         self.oldstdout = sys.stdout
-        self.setupChroot()        
-                
+        self.setupChroot()
+
     def tearDown(self):
         sys.stderr = self.oldstderr
-        sys.stdout = self.oldstdout        
+        sys.stdout = self.oldstdout
         os.system("rm -fr %s" % CHROOT)
 
     def test00Basic(self):
@@ -127,7 +127,7 @@ class TestGUI(unittest.TestCase):
                 appname = str
             except SearchError:
                 pass
-            
+
             if scn:
                 break
         else:
@@ -143,7 +143,7 @@ class TestGUI(unittest.TestCase):
         scn.child(roleName="alert", recursive=False, name="Information").button("OK").click()
         scn.menuItem('Quit').click()
         #scn.child(roleName="alert", recursive=False, name="Question").button("Yes").click()
-        
+
 
 def suite():
     suite = unittest.TestSuite()
@@ -161,7 +161,7 @@ if __name__ == "__main__":
     testRunner = unittest.TextTestRunner(verbosity=2)
     result = testRunner.run(suite())
     if docoverage:
-        coverage.stop()    
+        coverage.stop()
         m = []
         keys = []
         keys.extend(sys.modules.keys())
@@ -177,12 +177,12 @@ if __name__ == "__main__":
                 m.append(sys.modules[key])
             elif key.find("rhpl") != -1:
                 m.append(sys.modules[key])
-                
-        coverage.the_coverage.report(m, show_missing=0 )    
+
+        coverage.the_coverage.report(m, show_missing=0 )
         coverage.the_coverage.annotate(m, os.getcwd())
 
     sys.exit(not result.wasSuccessful())
-    
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:03:33 $"
-__version__ = "$Revision: 1.3 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.4 $"

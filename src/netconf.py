@@ -53,7 +53,7 @@ try:
     from netconfpkg.exception import handleException
 except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
-    if os.path.isfile("/usr/sbin/system-config-network-tui"):        
+    if os.path.isfile("/usr/sbin/system-config-network-tui"):
         print _("Starting text version")
         os.execv("/usr/sbin/system-config-network-tui", sys.argv)
     sys.exit(10)
@@ -88,7 +88,7 @@ def get_pixpath(pixmap_file):
             break
     else:
         return None
-    
+
     return pixmap_file
 
 def splash_screen(gfx = None):
@@ -97,7 +97,7 @@ def splash_screen(gfx = None):
         window.set_title(PRG_NAME)
         window.set_position (gtk.WIN_POS_CENTER)
         window.show_all()
-        window.show_now()    
+        window.show_now()
         while gtk.events_pending():
             gtk.main_iteration()
         pixmap_wid = gtk.Image()
@@ -118,8 +118,8 @@ def splash_screen(gfx = None):
         lbl.show_now()
 
     window.show_all()
-    window.show_now()    
-    
+    window.show_now()
+
     while gtk.events_pending():
         gtk.main_iteration()
 
@@ -155,15 +155,15 @@ def runit(splash = None):
         showprofile = 1
 
         gnome.program_init(PROGNAME, "scn")
-        gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")        
+        gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
         if progname == 'system-config-network-druid' or \
                progname == 'internet-druid':
             interface = NewInterfaceDialog()
             gtk.main()
             if interface.canceled:
-                sys.exit(1)                
-                
+                sys.exit(1)
+
         window = mainDialog()
 
         if splash_window:
@@ -194,12 +194,12 @@ def main(cmdline):
     hotshot = 0
     splash = 0
     chroot = None
-    
+
     try:
         opts, args = getopt.getopt(cmdline, "vh?r:d",
                                    [
                                     "verbose",
-                                    "debug", 
+                                    "debug",
                                     "help",
                                     "hotshot",
                                     "splash",
@@ -245,7 +245,7 @@ def main(cmdline):
 
     if chroot:
         NC_functions.setRoot(chroot)
-        
+
     if not os.access(NC_functions.getRoot(), os.W_OK):
         if os.getuid() != 0:
             from netconfpkg.gui import GUI_functions
@@ -256,7 +256,7 @@ def main(cmdline):
     if chroot:
         NC_functions.prepareRoot(chroot)
 
-        
+
     if hotshot:
         import tempfile
         from hotshot import Profile
@@ -271,10 +271,10 @@ def main(cmdline):
         s = hotshot.stats.load(filename)
         s.strip_dirs().sort_stats('time').print_stats(20)
         s.strip_dirs().sort_stats('cumulative').print_stats(20)
-        os.unlink(filename)               
+        os.unlink(filename)
     else:
         runit(splash)
-        
+
     return 0
 
 if __name__ == '__main__':

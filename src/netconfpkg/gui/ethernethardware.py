@@ -57,7 +57,7 @@ class ethernetHardwareDialog:
         self.dialog = self.xml.get_widget("Dialog")
         self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         load_icon("network.xpm", self.dialog)
-        
+
         self.setup()
         self.hydrate()
 
@@ -81,7 +81,7 @@ class ethernetHardwareDialog:
             cmd.append(' dma='+str(self.hw.Card.DMA0))
         if self.hw.Card.DMA1:
             cmd.append(' dma1='+str(self.hw.Card.DMA1))
-            
+
         (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
                                                     catchfd = (1, 2))
         if status != 0:
@@ -95,7 +95,7 @@ class ethernetHardwareDialog:
 
     def on_cancelButton_clicked(self, button):
         pass
-    
+
     def on_adapterEntry_changed(self, entry):
         pass
 
@@ -124,7 +124,7 @@ class ethernetHardwareDialog:
             hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
-            
+
     def setup(self):
         list = []
         modInfo = NCHardwareList.getModInfo()
@@ -148,7 +148,7 @@ class ethernetHardwareDialog:
            self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
             self.hw.Card.IRQ = None
         else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
-        
+
         self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()

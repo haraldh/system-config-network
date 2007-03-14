@@ -33,7 +33,7 @@ from DeviceConfigDialog import DeviceConfigDialog
 class tokenringConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "tokenringconfig.glade"
-        DeviceConfigDialog.__init__(self, glade_file, device)    
+        DeviceConfigDialog.__init__(self, glade_file, device)
         xml_signal_autoconnect(self.xml,
             {
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
@@ -63,7 +63,7 @@ class tokenringConfigDialog(DeviceConfigDialog):
         ecombo = self.xml.get_widget("tokenringDeviceComboBox")
         hwlist = NCHardwareList.getHardwareList()
         (hwcurr, hwdesc) = GUI_functions.create_tokenring_combo(hwlist, self.device.Device)
-                                        
+
         if len(hwdesc):
             ecombo.set_popdown_strings(hwdesc)
 
@@ -71,7 +71,7 @@ class tokenringConfigDialog(DeviceConfigDialog):
         if self.device.Device:
             widget.set_text(hwcurr)
         #widget.set_position(0)
-        
+
         if self.device.Alias != None:
             self.xml.get_widget("aliasSupportCB").set_active(True)
             self.xml.get_widget("aliasSpinBox").set_value(self.device.Alias)
@@ -91,12 +91,12 @@ class tokenringConfigDialog(DeviceConfigDialog):
             self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
         else:
             self.device.Alias = None
-            
+
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
 
 
 NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2006/08/02 12:59:44 $"
-__version__ = "$Revision: 1.20 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.21 $"

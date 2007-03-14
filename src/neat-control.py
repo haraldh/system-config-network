@@ -113,7 +113,7 @@ class mainDialog:
         pix.set_from_pixbuf(get_pixbuf('neat-control-logo.png'))
         clist = self.xml.get_widget('interfaceClist')
         clist.column_titles_passive ()
-        
+
         self.devicelist = self.getProfDeviceList()
         self.activedevicelist = NetworkDevice().get()
         self.hydrate()
@@ -122,12 +122,12 @@ class mainDialog:
         self.hydrateProfiles()
 
         self.xml.get_widget('autoSelectProfileButton').hide()
- 
+
         self.tag = gobject.timeout_add(4000, self.update_dialog)
         # Let this dialog be in the taskbar like a normal window
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
-        
+
     def on_Dialog_delete_event(self, *args):
         self.dialog = None
         gtk.main_quit()
@@ -135,7 +135,7 @@ class mainDialog:
     def on_closeButton_clicked(self, button):
         self.dialog = None
         gtk.main_quit()
-        
+
     def on_infoButton_clicked(self, button):
         from version import PRG_VERSION
         from version import PRG_NAME
@@ -155,7 +155,7 @@ class mainDialog:
             dlg.set_transient_for(self.dialog)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dlg.show()
-        
+
         else:
             dlg = gtk.AboutDialog()
             dlg.set_name(PRG_NAME)
@@ -174,7 +174,7 @@ class mainDialog:
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dlg.run()
             dlg.destroy()
-    
+
     def on_activateButton_clicked(self, button):
         device = self.clist_get_device()
         nickname = self.clist_get_nickname()
@@ -183,15 +183,15 @@ class mainDialog:
                 break
         else:
             return
-        
+
         gtk.timeout_remove(self.tag)
-        
+
         if device:
             (ret, msg) = dev.activate()
             self.update_dialog()
 
         self.tag = gobject.timeout_add(4000, self.update_dialog)
-            
+
     def on_deactivateButton_clicked(self, button):
         device = self.clist_get_nickname()
         for dev in getDeviceList():
@@ -207,13 +207,13 @@ class mainDialog:
         device = self.clist_get_nickname()
         if not device:
             return
-        
+
         for dev in getDeviceList():
             if dev.DeviceId == device:
                 break
         else:
             return
-        
+
         (ret, msg) = dev.configure()
 
         if not self.dialog:
@@ -223,7 +223,7 @@ class mainDialog:
             errorString = _('Cannot configure network device %s')\
                           % (device)
             generic_longinfo_dialog(errorString, msg, self.dialog);
-            
+
         # update dialog #83640
         # Re-read the device list
         self.devicelist = self.getProfDeviceList(refresh=True)
@@ -233,7 +233,7 @@ class mainDialog:
         self.hydrate(refresh = True)
         self.oldprofile = None # forces a re-read of oldprofile
         self.update_dialog()
-        
+
     def on_profileActivateButton_clicked(self, button):
         profile = self.get_active_profile().ProfileName
 
@@ -244,7 +244,7 @@ class mainDialog:
             label = _("Switching to profile %s") % profile,
             errlabel = _("Failed to switch to profile %s") % profile,
             dialog = self.dialog)
-                           
+
 
         # Re-read the device list
         self.devicelist = self.getProfDeviceList(refresh=True)
@@ -267,12 +267,12 @@ class mainDialog:
                                     monitor_button = None):
         if len(clist.selection) == 0:
             return
-        
+
         try:
             status = clist.get_pixtext(clist.selection[0], 0)[0]
         except ValueError:
             status = clist.get_text(clist.selection[0], 0)
-            
+
         self.xml.get_widget('activateButton').set_sensitive(True)
         self.xml.get_widget('deactivateButton').set_sensitive(True)
 
@@ -286,7 +286,7 @@ class mainDialog:
             #self.xml.get_widget('deactivateButton').set_sensitive(False)
             #self.xml.get_widget('configureButton').set_sensitive(True)
             self.xml.get_widget('monitorButton').set_sensitive(False)
-        
+
     def clist_get_status(self):
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
@@ -316,7 +316,7 @@ class mainDialog:
         status_mask = self.off_mask
         status = INACTIVE
         row = 0
-        
+
         for dev in self.devicelist:
             devname = dev.Device
             if dev.Alias and dev.Alias != "":
@@ -334,7 +334,7 @@ class mainDialog:
 
             device_pixmap, device_mask = GUI_functions.get_device_icon_mask(\
                 dev.Type, self.dialog)
-                
+
             clist.append([status, devname, dev.DeviceId])
             clist.set_pixtext(row, STATUS_COLUMN, status, 5, status_pixmap,
                               status_mask)
@@ -344,7 +344,7 @@ class mainDialog:
 
     def hydrateProfiles(self, refresh = None):
         profilelist = getProfileList(refresh)
-        
+
         self.no_profileentry_update = True # ???
         omenu = self.xml.get_widget('profileOption')
 
@@ -353,7 +353,7 @@ class mainDialog:
 
         if omenu:
             omenu.remove_menu ()
-            
+
         menu = gtk.Menu ()
         history = 0
         i = 0
@@ -374,25 +374,25 @@ class mainDialog:
             if prof.ProfileName == self.get_active_profile().ProfileName:
                 history = i
                 if self.oldprofile == None:
-                    self.oldprofile = prof.ProfileName  
+                    self.oldprofile = prof.ProfileName
             i = i+1
         if self.get_active_profile().ProfileName != self.oldprofile:
             self.xml.get_widget('interfaceClist').set_sensitive(False)
         else:
             self.xml.get_widget('interfaceClist').set_sensitive(True)
         menu.show ()
-        
+
         if omenu:
             omenu.set_menu (menu)
             omenu.set_history (history)
-            
+
         menu.get_children()[history].activate ()
         self.no_profileentry_update = False # ??
 
     def get_active_profile(self):
         profilelist = getProfileList()
         return profilelist.getActiveProfile()
-        
+
     def set_profile_active(self, profile):
         profilelist = getProfileList ()
         for prof in profilelist:
@@ -416,10 +416,10 @@ class mainDialog:
                 continue
             activedevlist.append(dev)
         return activedevlist
-        
+
     def on_profileMenuItem_activated(self, menu_item, profile):
         if not self.no_profileentry_update:
-            self.set_profile_active(profile)            
+            self.set_profile_active(profile)
             if self.oldprofile != self.get_active_profile().ProfileName:
                 self.xml.get_widget('profileActivateButton' \
                                     ).set_sensitive(True)
@@ -432,24 +432,24 @@ class mainDialog:
                 self.xml.get_widget('interfaceClist').set_sensitive(True)
                 self.xml.get_widget('activateButton').set_sensitive(True)
                 self.xml.get_widget('deactivateButton').set_sensitive(True)
-    
+
     def update_dialog(self):
         if not self.dialog:
             return False
         activedevicelistold = self.activedevicelist
         self.activedevicelist = NetworkDevice().get()
-        
+
         if activedevicelistold != self.activedevicelist:
             self.hydrate()
             return True
-            
+
         return True
 
 
 if __name__ == '__main__':
     # make ctrl-C work
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    if os.getuid() == 0:        
+    if os.getuid() == 0:
         NCProfileList.updateNetworkScripts()
         NCDeviceList.updateNetworkScripts()
     import getopt
@@ -459,7 +459,7 @@ if __name__ == '__main__':
         opts, args = getopt.getopt(cmdline, "vh?d",
                                    [
                                     "verbose",
-                                    "debug", 
+                                    "debug",
                                     "help",
                                     "hotshot",
                                     "root="
@@ -479,7 +479,7 @@ if __name__ == '__main__':
 
     except (getopt.error, BadUsage):
         Usage()
-        sys.exit(1)    
+        sys.exit(1)
 
     window = mainDialog()
     gtk.main()

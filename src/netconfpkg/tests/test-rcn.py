@@ -76,7 +76,7 @@ def expectConf(fileorlines, str):
     #str = string.join(str, '\n')
     if str[0] == "":
         str = str[1:]
-            
+
     l = min(len(lines), len(str))
 
     for i in xrange(l):
@@ -85,11 +85,11 @@ def expectConf(fileorlines, str):
             break
     else:
         return True
-    
+
     print lines
     return False
 
-    
+
 
 class TestRCN(unittest.TestCase):
     def setupChroot(self):
@@ -106,8 +106,8 @@ class TestRCN(unittest.TestCase):
     def setUp(self):
         self.oldstderr = sys.stderr
         self.oldstdout = sys.stdout
-        
-                
+
+
     def tearDown(self):
         sys.stderr = self.oldstderr
         sys.stdout = self.oldstdout
@@ -116,23 +116,23 @@ class TestRCN(unittest.TestCase):
             #os.unlink("stdout")
             pass
         except:
-            pass                    
-        
+            pass
+
     def getConf(self):
         PROGNAME='system-config-network'
         from netconfpkg import NC_functions
         NC_functions.prepareRoot(CHROOT)
-        
+
         from netconfpkg import \
              NCDeviceList, NCProfileList, \
              NCHardwareList, NCIPsecList
 
         from netconfpkg.NC_functions import log
-         
+
         NC_functions.setVerboseLevel(100)
         NC_functions.setDebugLevel(100)
         log.set_loglevel(NC_functions.getVerboseLevel())
-        
+
         devlists = [
             NCHardwareList.getHardwareList(),
             NCIPsecList.getIPsecList(),
@@ -144,7 +144,7 @@ class TestRCN(unittest.TestCase):
         for devlist in devlists:
             devlist.load()
             devstr +=  str(devlist)
-        return devstr    
+        return devstr
 
     def redirectStd(self):
         sys.stderr.flush()
@@ -175,7 +175,7 @@ class TestRCN(unittest.TestCase):
         self.redirectEnd()
 
         self.failUnless(expectConf("stdout", expect))
-        
+
 
     def test01Read(self):
         """Test manual reading"""
@@ -199,9 +199,9 @@ class TestRCN(unittest.TestCase):
              NCHardwareList, NCIPsecList
 
         profilelist = NCProfileList.getProfileList()
-        
+
         text = "newprofile"
-        i = profilelist.addProfile()        
+        i = profilelist.addProfile()
         prof = profilelist[i]
         prof.apply(profilelist[0])
         prof.ProfileName = text
@@ -210,7 +210,7 @@ class TestRCN(unittest.TestCase):
         profilelist.switchToProfile(prof, dochange = True)
 
         self.save()
-        
+
         devstr = self.getConf()
         expect = """DeviceList.Ethernet.eth0.Type=Ethernet
 DeviceList.Ethernet.eth0.BootProto=dhcp
@@ -251,7 +251,7 @@ ProfileList.default.ProfileName=default
         self.redirectEnd()
 
         self.failUnless(expectConf(expect, devstr))
-        
+
     def test03Profile(self):
         """Test profile removal"""
         self.redirectStd()
@@ -262,7 +262,7 @@ ProfileList.default.ProfileName=default
         from netconfpkg import  \
              NCDeviceList, NCProfileList, \
              NCHardwareList, NCIPsecList
-        
+
         from netconfpkg.NC_functions import log
         profilelist = NCProfileList.getProfileList()
         NC_functions.setVerboseLevel(100)
@@ -294,13 +294,13 @@ ProfileList.default.ProfileName=default
         devicelist = NCDeviceList.getDeviceList()
         devicelist.save()
         devicelist.setChanged(False)
-        
+
     def saveHardware(self):
         from netconfpkg import NCHardwareList
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.save()
         hardwarelist.setChanged(False)
-        
+
     def saveProfiles(self):
         from netconfpkg import NCProfileList
         profilelist = NCProfileList.getProfileList()
@@ -334,7 +334,7 @@ if __name__ == "__main__":
     testRunner = unittest.TextTestRunner(verbosity=2)
     result = testRunner.run(suite())
     if docoverage:
-        coverage.stop()    
+        coverage.stop()
         m = []
         keys = []
         keys.extend(sys.modules.keys())
@@ -350,15 +350,15 @@ if __name__ == "__main__":
                 m.append(sys.modules[key])
             elif key.find("rhpl") != -1:
                 m.append(sys.modules[key])
-                
-        coverage.the_coverage.report(m, show_missing=0 )    
+
+        coverage.the_coverage.report(m, show_missing=0 )
         coverage.the_coverage.annotate(m, os.getcwd())
     #coverage.the_coverage.report(netconfpkg.NC_functions, show_missing=0 )
     #print sys.modules.keys()
     os.system("rm -fr %s" % CHROOT)
 
     sys.exit(not result.wasSuccessful())
-    
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:03:33 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.9 $"

@@ -38,7 +38,7 @@ class tokenringHardwareDialog(HardwareDialog):
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             "on_adapterEntry_changed" : self.on_adapterEntry_changed
             })
-                                
+
         self.button = 0
 
     def on_okButton_clicked(self, button):
@@ -58,7 +58,7 @@ class tokenringHardwareDialog(HardwareDialog):
             cmd.append(' dma='+str(self.hw.Card.DMA0))
         if self.hw.Card.DMA1:
             cmd.append(' dma1='+str(self.hw.Card.DMA1))
-            
+
         (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
                                                     catchfd = (1, 2))
         if status != 0:
@@ -78,7 +78,7 @@ class tokenringHardwareDialog(HardwareDialog):
 
     def hydrate(self):
         HardwareDialog.hydrate(self)
-        
+
         if self.hw.Name:
             self.xml.get_widget('tokenringDeviceEntry').set_text(self.hw.Name)
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
@@ -101,7 +101,7 @@ class tokenringHardwareDialog(HardwareDialog):
 
     def setup(self):
         HardwareDialog.setup(self)
-        
+
         list = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
@@ -115,7 +115,7 @@ class tokenringHardwareDialog(HardwareDialog):
 
     def dehydrate(self):
         HardwareDialog.dehydrate(self)
-        
+
         self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
         self.hw.Type = 'Token Ring'
@@ -140,5 +140,3 @@ class tokenringHardwareDialog(HardwareDialog):
 
 
 NCHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
-
-

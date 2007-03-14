@@ -40,14 +40,14 @@ class ethernetConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "ethernetconfig.glade"
         DeviceConfigDialog.__init__(self, glade_file,
-                                    device)    
+                                    device)
 
         xml_signal_autoconnect(self.xml, { \
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled,
             "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled,
             "on_hwProbeButton_clicked" : self.on_hwProbeButton_clicked,
             })
-                
+
 
         window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
         frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
@@ -94,13 +94,13 @@ class ethernetConfigDialog(DeviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = string.split(hw)
         device = fields[0]
-        try: hwaddr = ethtool.get_hwaddr(device) 
+        try: hwaddr = ethtool.get_hwaddr(device)
         except IOError, err:
             self.error_str = str (err)
             GUI_functions.gui_error_dialog(self.error_str, self.dialog)
         else:
             self.device.HardwareAddress = hwaddr
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
-            
+
 NCDevEthernet.setDevEthernetDialog(ethernetConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -25,9 +25,9 @@ HW_OK = _("ok")       # found in system and in config
 
 class Hardware(Hardware_base):
     def __init__(self, list = None, parent = None):
-        Hardware_base.__init__(self, list, parent)        
+        Hardware_base.__init__(self, list, parent)
         self.Status = HW_INACTIVE
-        
+
     def getDialog(self):
         return None
 
@@ -44,5 +44,5 @@ class Hardware(Hardware_base):
         return None
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:25 $"
-__version__ = "$Revision: 1.11 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.12 $"

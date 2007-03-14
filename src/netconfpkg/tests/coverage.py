@@ -80,16 +80,16 @@ c = {}
 # objects.
 
 import os.path
-    
+
 def do_realpath(path):
     if os.path.islink(path):
         path = os.readlink(path)
-        
+
     head, tail = os.path.split(path)
 
     if not tail:
         return path
-    
+
     head = do_realpath(head)
 
     return os.path.join(head, tail)
@@ -614,4 +614,4 @@ if __name__ == '__main__':
 #
 #
 #
-# $Id: coverage.py,v 1.3 2005/03/03 17:25:26 harald Exp $
+# $Id: coverage.py,v 1.4 2007/03/14 09:29:37 harald Exp $

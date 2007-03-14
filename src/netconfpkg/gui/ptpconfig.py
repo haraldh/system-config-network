@@ -54,7 +54,7 @@ class ptpConfigDialog(DeviceConfigDialog):
         DeviceConfigDialog.hydrate(self)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_hydrate (self.sharedtcpip_xml, self.device)
-                
+
         if self.device.IP:
             self.xml.get_widget('ipAddressEntry').set_text(self.device.IP)
         else:
@@ -69,9 +69,9 @@ class ptpConfigDialog(DeviceConfigDialog):
             self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
         else:
             self.xml.get_widget('mtuEntry').set_text('')
-            
+
         self.device.BootProto = 'static'
-        
+
     def dehydrate(self):
         DeviceConfigDialog.dehydrate(self)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
@@ -82,7 +82,7 @@ class ptpConfigDialog(DeviceConfigDialog):
         self.device.Gateway = self.xml.get_widget('ipGatewayEntry').get_text()
         try:
             self.device.Mtu = int(self.xml.get_widget('mtuEntry').get_text())
-        except:            
+        except:
             pass
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

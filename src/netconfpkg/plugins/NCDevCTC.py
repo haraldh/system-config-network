@@ -25,61 +25,61 @@ from netconfpkg.plugins.NCDevEthernet import DevEthernet
 _devCTCDialog = None
 _devCTCWizard = None
 
-class DevCTC(DevEthernet):  
-   def __init__(self, list = None, parent = None):
-      DevEthernet.__init__(self, list, parent)
-      self.Type = CTC
-       
-   def isType(self, device):
-      """returns True of the device is of the same type as this class"""
-      if device.Type == CTC:
-         return True
-      if getDeviceType(device.Device) == CTC:
-         return True
-      return False
+class DevCTC(DevEthernet):
+    def __init__(self, list = None, parent = None):
+        DevEthernet.__init__(self, list, parent)
+        self.Type = CTC
 
-   def load(self, name):
-      Device.load(self, name)
-      if not self.Mtu:
-         self.Mtu = 1492
+    def isType(self, device):
+        """returns True of the device is of the same type as this class"""
+        if device.Type == CTC:
+            return True
+        if getDeviceType(device.Device) == CTC:
+            return True
+        return False
 
-   def save(self):
-      if not self.Mtu:
-         self.Mtu = 1492      
-      Device.save(self)
-      
-   def getDialog(self):
-      """get the ctc configuration dialog"""
-      if not _devCTCDialog:
-         return None
-      dialog =  _devCTCDialog(self)
-      if hasattr(dialog, "xml"):
-         return dialog.xml.get_widget("Dialog")
+    def load(self, name):
+        Device.load(self, name)
+        if not self.Mtu:
+            self.Mtu = 1492
 
-      return dialog
-    
-   def getWizard(self):
-      """get the wizard of the ctc wizard"""
-      return _devCTCWizard
+    def save(self):
+        if not self.Mtu:
+            self.Mtu = 1492
+        Device.save(self)
+
+    def getDialog(self):
+        """get the ctc configuration dialog"""
+        if not _devCTCDialog:
+            return None
+        dialog =  _devCTCDialog(self)
+        if hasattr(dialog, "xml"):
+            return dialog.xml.get_widget("Dialog")
+
+        return dialog
+
+    def getWizard(self):
+        """get the wizard of the ctc wizard"""
+        return _devCTCWizard
 
 def setDevCTCDialog(dialog):
-   """Set the ctc dialog class"""
-   global _devCTCDialog
-   _devCTCDialog = dialog
+    """Set the ctc dialog class"""
+    global _devCTCDialog
+    _devCTCDialog = dialog
 
 def setDevCTCWizard(wizard):
-   """Set the ctc wizard class"""
-   global _devCTCWizard
-   _devCTCWizard = wizard
+    """Set the ctc wizard class"""
+    global _devCTCWizard
+    _devCTCWizard = wizard
 
 
 import os
 machine = os.uname()[4]
 if machine == 's390' or machine == 's390x' \
        or os.path.isfile("/etc/chandev.conf"):
-   _df = getDeviceFactory()
-   _df.register(DevCTC, CTC)
-   del _df
+    _df = getDeviceFactory()
+    _df.register(DevCTC, CTC)
+    del _df
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

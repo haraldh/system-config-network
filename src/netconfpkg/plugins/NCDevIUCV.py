@@ -25,61 +25,59 @@ from netconfpkg.plugins.NCDevEthernet import DevEthernet
 _devIUCVDialog = None
 _devIUCVWizard = None
 
-class DevIUCV(DevEthernet):  
-   def __init__(self, list = None, parent = None):
-      DevEthernet.__init__(self, list, parent)
-      self.Type = IUCV
-       
-   def isType(self, device):
-      """returns True of the device is of the same type as this class"""
-      if device.Type == IUCV:
-         return True
-      if getDeviceType(device.Device) == IUCV:
-         return True
-      return False
+class DevIUCV(DevEthernet):
+    def __init__(self, list = None, parent = None):
+        DevEthernet.__init__(self, list, parent)
+        self.Type = IUCV
+
+    def isType(self, device):
+        """returns True of the device is of the same type as this class"""
+        if device.Type == IUCV:
+            return True
+        if getDeviceType(device.Device) == IUCV:
+            return True
+        return False
 
 
-   def load(self, name):
-      Device.load(self, name)
-      if not self.Mtu:
-         self.Mtu = 9216
+    def load(self, name):
+        Device.load(self, name)
+        if not self.Mtu:
+            self.Mtu = 9216
 
-   def save(self):
-      if not self.Mtu:
-         self.Mtu = 9216      
-      Device.save(self)
+    def save(self):
+        if not self.Mtu:
+            self.Mtu = 9216
+        Device.save(self)
 
-   def getDialog(self):
-      """get the iucv configuration dialog"""
-      dialog =  _devIUCVDialog(self)
-      if hasattr(dialog, "xml"):
-         return dialog.xml.get_widget("Dialog")
+    def getDialog(self):
+        """get the iucv configuration dialog"""
+        dialog =  _devIUCVDialog(self)
+        if hasattr(dialog, "xml"):
+            return dialog.xml.get_widget("Dialog")
 
-      return dialog
-    
-   def getWizard(self):
-      """get the wizard of the iucv wizard"""
-      return _devIUCVWizard
+        return dialog
+
+    def getWizard(self):
+        """get the wizard of the iucv wizard"""
+        return _devIUCVWizard
 
 def setDevIUCVDialog(dialog):
-   """Set the iucv dialog class"""
-   global _devIUCVDialog
-   _devIUCVDialog = dialog
+    """Set the iucv dialog class"""
+    global _devIUCVDialog
+    _devIUCVDialog = dialog
 
 def setDevIUCVWizard(wizard):
-   """Set the iucv wizard class"""
-   global _devIUCVWizard
-   _devIUCVWizard = wizard
+    """Set the iucv wizard class"""
+    global _devIUCVWizard
+    _devIUCVWizard = wizard
 
 
 import os
 machine = os.uname()[4]
 if machine == 's390' or machine == 's390x' \
        or os.path.isfile("/etc/chandev.conf"):
-   _df = getDeviceFactory()
-   _df.register(DevIUCV, IUCV)
-   del _df
-   
+    _df = getDeviceFactory()
+    _df.register(DevIUCV, IUCV)
+    del _df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
-

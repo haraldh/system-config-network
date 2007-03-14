@@ -28,24 +28,24 @@ class Compression(Compression_base):
                     'BSD' : 'BSDCOMP',
                     'CCP' : 'CCP',
                     }
-    
+
     def __init__(self, list = None, parent = None):
-        Compression_base.__init__(self, list, parent)        
+        Compression_base.__init__(self, list, parent)
 
     def load(self, parentConf):
         conf = parentConf
-        
+
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'on':
                     self.__dict__[selfkey] = True
                 else:
-                    self.__dict__[selfkey] = False            
+                    self.__dict__[selfkey] = False
             else:
-                self.__dict__[selfkey] = False            
+                self.__dict__[selfkey] = False
 
-    def save(self, parentConf):        
+    def save(self, parentConf):
         conf = parentConf
 
         for selfkey in self.boolkeydict.keys():
@@ -54,5 +54,5 @@ class Compression(Compression_base):
                 conf[confkey] = 'on'
             else:
                 conf[confkey] = 'off'
-    
+
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -37,7 +37,7 @@ class DialupDruid(InterfaceCreator):
         InterfaceCreator.__init__(self, do_save = do_save)
 
         self.connection_type = connection_type
-        df = NCDeviceFactory.getDeviceFactory()        
+        df = NCDeviceFactory.getDeviceFactory()
         self.device = df.getDeviceClass(connection_type)()
         self.toplevel = toplevel
         self.druids = []
@@ -51,11 +51,11 @@ class DialupDruid(InterfaceCreator):
         self.devicelist = NCDeviceList.getDeviceList()
         self.profilelist = NCProfileList.getProfileList()
         self.xml = None
-        
+
     def init_gui(self):
         if self.xml:
             return
-        
+
         glade_file = 'DialupDruid.glade'
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
@@ -75,7 +75,7 @@ class DialupDruid(InterfaceCreator):
               "on_ipAutomaticRadio_toggled" : self.on_ipBootProto_toggled,
               "on_ipStaticRadio_toggled" : self.on_ipBootProto_toggled,
               "on_sync_ppp_activate" : self.on_sync_ppp_activate,
-              "on_raw_ip_activate" : self.on_raw_ip_activate,              
+              "on_raw_ip_activate" : self.on_raw_ip_activate,
               "on_providerNameEntry_insert_text" : \
               (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
               "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
@@ -92,7 +92,7 @@ class DialupDruid(InterfaceCreator):
         self.dbtree = self.xml.get_widget("providerTree")
 
         self.setup_provider_db()
-        
+
     def on_generic_entry_insert_text(self, entry, partial_text, length,
                                      pos, str):
         text = partial_text[0:length]
@@ -116,7 +116,7 @@ class DialupDruid(InterfaceCreator):
             active = widget.get_active()
         else:
             active = not widget.get_active()
-        
+
         self.xml.get_widget('dhcpSettingFrame').set_sensitive(active)
         self.xml.get_widget('ipSettingFrame').set_sensitive(not active)
 
@@ -173,26 +173,26 @@ class DialupDruid(InterfaceCreator):
         dialup.EncapMode = 'syncppp'
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
                                                 self.device)
-    
+
     def on_raw_ip_activate(self, *args):
         self.xml.get_widget('ipAutomaticRadio').set_active(False)
         self.xml.get_widget('ipStaticRadio').set_active(True)
         self.on_ipBootProto_toggled(\
-                self.xml.get_widget('ipAutomaticRadio')),        
+                self.xml.get_widget('ipAutomaticRadio')),
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(False)
         dialup = self.device.createDialup()
         dialup.EncapMode = 'rawip'
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
                                                 self.device)
-        
+
     def on_dhcp_page_back(self, druid_page, druid):
         return True
-    
+
     def on_dhcp_page_next(self, druid_page, druid):
         dialup = self.device.createDialup()
 
         self.dhcp_dehydrate(self.xml, self.device)
-        
+
     def on_dhcp_page_prepare(self, druid_page, druid):
         self.dhcp_hydrate(self.xml, self.device)
         dialup = self.device.createDialup()
@@ -207,7 +207,7 @@ class DialupDruid(InterfaceCreator):
 
     def on_finish_page_back(self,druid_page, druid):
         self.devicelist.rollback()
-        
+
     def on_dialup_page_prepare(self, druid_page, druid):
         self.setup()
         self.xml.signal_connect("on_providerTree_tree_select_row",
@@ -219,7 +219,7 @@ class DialupDruid(InterfaceCreator):
             if hw.Type == self.connection_type:
                 break
         dialup = self.device.Dialup
-        
+
         s = _("You have selected the following information:") + \
             "\n\n" + "    " + \
             _("Hardware:") + "  " + hw.Description + "\n" + "    " + \
@@ -227,9 +227,9 @@ class DialupDruid(InterfaceCreator):
             "\n" +  "    " + \
             _("Login name:") + "  " + dialup.Login + "\n" +  "    " + \
             _("Phone number:") + "  " + dialup.PhoneNumber
-        
+
         druid_page.set_text(s)
-        
+
     def on_finish_page_finish(self, druid_page, druid):
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
                                                 self.device)
@@ -244,7 +244,7 @@ class DialupDruid(InterfaceCreator):
             break
         self.profilelist.commit()
         self.devicelist.commit()
-                
+
         self.save()
         self.toplevel.destroy()
         gtk.main_quit()
@@ -252,7 +252,7 @@ class DialupDruid(InterfaceCreator):
     def setup(self):
         if not self.provider:
             self.xml.get_widget('druid').set_buttons_sensitive(\
-                False, False, False, False) 
+                False, False, False, False)
         else:
             self.xml.get_widget('druid').set_buttons_sensitive(\
                 False, True, True, False)
@@ -261,7 +261,7 @@ class DialupDruid(InterfaceCreator):
             self.xml.get_widget('phoneEntry').set_text(\
                 self.provider['PhoneNumber'])
             self.xml.get_widget('providerName').set_text(\
-                self.provider['ProviderName'])            
+                self.provider['ProviderName'])
             if self.provider['Login']:
                 self.xml.get_widget('dialupLoginNameEntry').set_text(\
                 self.provider['Login'])
@@ -280,7 +280,7 @@ class DialupDruid(InterfaceCreator):
             'dialupLoginNameEntry').get_text())) > 0 \
            and len(string.strip(self.xml.get_widget(\
             'dialupPasswordEntry').get_text())) > 0)
-        
+
     def on_providerTree_tree_select_row(self, ctree, node, column):
         node = ctree.selection[0]
         if len(node.children) == 0:
@@ -306,17 +306,17 @@ class DialupDruid(InterfaceCreator):
     def setup_provider_db(self):
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
         self.dbtree.set_row_height(20)
-        
+
         widget = self.xml.get_widget ('providerTree')
-        
+
         pix_isp, mask_isp = GUI_functions.get_icon('isp.xpm', widget)
         pix_city, mask_city = GUI_functions.get_icon('city.xpm', widget)
-        
+
         isp_list = self.get_provider_list()
-        
+
         _country = ""
         _city = ""
-        
+
         for isp in isp_list:
             if _country != isp['Country']:
                 pix, mask = GUI_functions.get_icon(isp['Flag'] + '.xpm',
@@ -324,7 +324,7 @@ class DialupDruid(InterfaceCreator):
                 if not pix:
                     pix, mask = GUI_functions.get_icon('unknown-flag.xpm',
                                                        widget)
-                    
+
                 country = self.dbtree.insert_node(None, None,
                                                   [isp['Country']], 5,
                                                   pix, mask, pix, mask,
@@ -341,20 +341,20 @@ class DialupDruid(InterfaceCreator):
                                            [isp['ProviderName']], 5,
                                            pix_isp, mask_isp,
                                            pix_isp, mask_isp, is_leaf=False)
-            
+
         self.dbtree.select_row(0,0)
-    
+
     def on_tonlineButton_clicked(self, *args):
         self.dehydrate()
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)
         dl = dialog.xml.get_widget ("Dialog")
-        
+
         dl.set_transient_for(self.toplevel)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        
+
         if dl.run() != gtk.RESPONSE_OK:
-            dl.destroy()        
+            dl.destroy()
             return
 
         dl.destroy()
@@ -396,12 +396,12 @@ class DialupDruid(InterfaceCreator):
             dialup.Authentication = '+pap -chap'
         dialup.DefRoute = True
         dialup.DialMode = NCDialup.DM_MANUAL
-            
+
         if self.connection_type == ISDN:
             dialup.HangupTimeout = 600
             dialup.EncapMode == 'syncppp'
-            
-        elif self.connection_type == MODEM:            
+
+        elif self.connection_type == MODEM:
             dialup.Inherits = 'Modem0'
             dialup.StupidMode = True
             dialup.InitString = ''

@@ -52,18 +52,18 @@ class modemDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-        
+
         self.hw = hw
 
         self.setup()
         self.hydrate()
 
-        
+
     def on_Dialog_delete_event(self, *args):
         pass
-        
+
     def on_okButton_clicked(self, button):
-        self.dehydrate()        
+        self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
         pass
@@ -75,7 +75,7 @@ class modemDialog:
         for i in modemFlowControls.keys():
             flowcontrols.append(modemFlowControls[i])
         self.xml.get_widget(\
-            "flowControlCombo").set_popdown_strings(flowcontrols)        
+            "flowControlCombo").set_popdown_strings(flowcontrols)
 
     def hydrate(self):
         hardwarelist = NCHardwareList.getHardwareList()
@@ -120,7 +120,7 @@ class modemDialog:
                         break
             else:
                 self.hw.Name = "Modem0"
-            
+
         self.hw.Modem.DeviceName = self.xml.get_widget(\
             "modemDeviceEntry").get_text()
         self.hw.Modem.BaudRate = int(\
@@ -131,7 +131,7 @@ class modemDialog:
             if modemFlowControls[i] == flow:
                 self.hw.Modem.FlowControl = i
                 break
-            
+
         Item = self.xml.get_widget("volumeMenu").get_child().get_label()
         if Item == _("Off"):
             self.hw.Modem.ModemVolume = 0
@@ -145,7 +145,7 @@ class modemDialog:
             self.hw.Modem.ModemVolume = 4
         else:
             self.hw.Modem.ModemVolume = 0
-            
+
         if self.xml.get_widget("toneDialingCB").get_active():
             self.hw.Modem.DialCommand = "ATDT"
         else:
@@ -166,5 +166,5 @@ if __name__ == "__main__":
     gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/30 13:59:01 $"
-__version__ = "$Revision: 1.24 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.25 $"

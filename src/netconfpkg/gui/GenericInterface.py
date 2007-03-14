@@ -85,19 +85,19 @@ class GenericInterface(InterfaceCreator):
         return _("Create a new %s connection.") % self.device.Type
 
     def get_druids(self):
-        return self.druids    
-    
+        return self.druids
+
     def on_finish_page_back(self,druid_page, druid):
         pass
-        
+
     def on_finish_page_prepare(self, druid_page, druid):
 
         s = _("This wizard still has to be written.") + "\n" + \
             _("Press Finish to get the standard configuration dialog.") +"\n"\
             + _("Then, at first, enter the nickname for the device.")
-        
+
         druid_page.set_text(s)
-        
+
     def editDevice(self, device):
         ## FIXME
         button = 0
@@ -108,7 +108,7 @@ class GenericInterface(InterfaceCreator):
 
         if type == ETHERNET:
             cfg = ethernetConfigDialog(device)
-            
+
         elif type == TOKENRING:
             cfg = tokenringConfigDialog(device)
 
@@ -129,11 +129,11 @@ class GenericInterface(InterfaceCreator):
 
         elif type == CTC or type == IUCV:
             cfg = ctcConfigDialog(device)
-            
+
         else:
             generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)
             cfg = None
-            
+
         if cfg:
             dialog = cfg.xml.get_widget ("Dialog")
             if self.topdruid: dialog.set_transient_for(self.topdruid)
@@ -147,7 +147,7 @@ class GenericInterface(InterfaceCreator):
 
         button = self.editDevice(self.device)
 
-        if button == gtk.RESPONSE_YES:        
+        if button == gtk.RESPONSE_YES:
             self.devicelist.append(self.device)
             self.device.commit()
             for prof in self.profilelist:
@@ -158,6 +158,6 @@ class GenericInterface(InterfaceCreator):
 
             self.profilelist.commit()
             self.devicelist.commit()
-        
+
         gtk.main_quit()
 __author__ = "Harald Hoyer <harald@redhat.com>"

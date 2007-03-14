@@ -34,11 +34,11 @@ class Wireless(Wireless_base):
                 'Rate' : 'RATE',
                 'Key' : 'KEY',
                 }
-    
+
     def __init__(self, list = None, parent = None):
-        Wireless_base.__init__(self, list, parent)        
+        Wireless_base.__init__(self, list, parent)
         self.Key = ''
-        
+
     def load(self, parentConf):
         conf = parentConf
 
@@ -46,7 +46,7 @@ class Wireless(Wireless_base):
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
                 self.__dict__[selfkey] = conf[confkey]
-        
+
         conf = NC_functions.ConfKeys(self.getParent().DeviceId)
         if conf.has_key("KEY"):
             self.Key = conf["KEY"]
@@ -92,5 +92,5 @@ class Wireless(Wireless_base):
         # conf.oldmode = 0600
         # conf.chmod(0600)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:44:40 $"
-__version__ = "$Revision: 1.21 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.22 $"

@@ -57,7 +57,7 @@ def getModInfo():
             except (VersionMismatch, FileMissing):
                 continue
             break
-    
+
     return ModInfo
 
 class MyConfModules(ConfModules):
@@ -68,7 +68,7 @@ class MyConfModules(ConfModules):
             filename = netconfpkg.ROOT + MODULESCONF
         # FIXME: [187640] Support aliases in /etc/modprobe.d/
         ConfModules.__init__(self, filename)
-        
+
     def __delitem__(self, varname):
         # delete *every* instance...
         place=self.tell()
@@ -99,26 +99,26 @@ class MyConfModules(ConfModules):
             return (opt, None)
 
     def joinoptlist(self, dict):
-		# FIXME: [146291] GUI adds trailing spaces to "options" lines 
-	    # in /etc/modprobe.conf when adding/deleting wireless devices
+                # FIXME: [146291] GUI adds trailing spaces to "options" lines
+            # in /etc/modprobe.conf when adding/deleting wireless devices
         optstring = ''
         for key in dict.keys():
             if dict[key] != None:
                 optstring = optstring + key + '=' + dict[key] + ' '
             else:
                 optstring = optstring + key + ' '
-                
+
         return optstring
 
 
-        
+
 _MyConfModules = None
 _MyConfModules_root = netconfpkg.ROOT
 
 def getMyConfModules(refresh = None):
     global _MyConfModules
     global _MyConfModules_root
-    
+
     if _MyConfModules == None or refresh or \
            _MyConfModules_root != netconfpkg.ROOT :
         _MyConfModules = MyConfModules()
@@ -131,7 +131,7 @@ _MyWvDial_root = netconfpkg.ROOT
 def getMyWvDial(create_if_missing = None):
     global _MyWvDial
     global _MyWvDial_root
-    
+
     if _MyWvDial == None or _MyWvDial_root != netconfpkg.ROOT:
         _MyWvDial = ConfSMB(netconfpkg.ROOT + WVDIALCONF,
                            create_if_missing = create_if_missing)
@@ -139,7 +139,7 @@ def getMyWvDial(create_if_missing = None):
 
     return _MyWvDial
 
-class ConfHWConf(Conf):    
+class ConfHWConf(Conf):
 
     def __init__(self):
         Conf.__init__(self, netconfpkg.ROOT + HWCONF)
@@ -228,7 +228,7 @@ class HardwareList(HardwareList_base):
             conf = file(procfilename, "r")
         except:
             return
-        
+
         detect_state = None
 
         for line in conf:
@@ -286,13 +286,13 @@ class HardwareList(HardwareList_base):
                         if HardwareList.s390devs.has_key(device):
                             hw.Card.ModuleName = HardwareList.s390devs[device]
                         hw.Status = HW_SYSTEM
-                        
+
 
     def readChandev(self):
         machine = os.uname()[4]
         if machine != 's390' and machine != 's390x' and not getDebugLevel():
             return
-        
+
         conffilename = netconfpkg.ROOT + "/etc/chandev.conf"
         try:
             conf = file(conffilename, "r")
@@ -300,7 +300,7 @@ class HardwareList(HardwareList_base):
             return
 
         for line in conf:
-            
+
             line.strip()
             try:
                 if len(line) and line[-1] == '\n':
@@ -356,7 +356,7 @@ class HardwareList(HardwareList_base):
         for h in self:
             if h.Status == HW_OK:
                 hdellist.append(h)
-                
+
         #
         # Read from kudzu
         #
@@ -401,7 +401,7 @@ class HardwareList(HardwareList_base):
 
                 if not kudzu_device.driver:
                     continue
-                
+
                 if module != kudzu_device.driver:
                     log.log(3, "Error... kudzu != actual system state")
 
@@ -429,7 +429,7 @@ class HardwareList(HardwareList_base):
                             if h.Name == dev + str(num):
                                 break
                         else:
-                            # no card seems to use this 
+                            # no card seems to use this
                             dev = dev + str(num)
                         break
                     break
@@ -440,7 +440,7 @@ class HardwareList(HardwareList_base):
                 if h.Name == dev and h.Card.ModuleName == module:
                     hdellist.remove(h)
                     break
-            else:            
+            else:
                 i = self.addHardware(getDeviceType(dev))
                 hw = self[i]
                 if string.find (kudzu_device.desc, "|") != -1:
@@ -475,16 +475,16 @@ class HardwareList(HardwareList_base):
 
     def updateFromSystem(self):
         modules = getMyConfModules()
-        modinfo = getModInfo()            
+        modinfo = getModInfo()
 
         self.updateFromKudzu()
 
         hdellist = []
-        
+
         for h in self:
             if h.Status == HW_SYSTEM:
                 hdellist.append(h)
-                
+
         self.updateFromChandev()
 
         #
@@ -526,7 +526,7 @@ class HardwareList(HardwareList_base):
                     hw.Name = device
                     hw.Description = mod
                     hw.Status = HW_SYSTEM
-                    hw.Type = getDeviceType(device)                        
+                    hw.Type = getDeviceType(device)
                     hw.createCard()
                     hw.Card.ModuleName = mod
                     if modinfo:
@@ -564,7 +564,7 @@ class HardwareList(HardwareList_base):
             if modules[mod].has_key('alias'):
                 module = modules[mod]['alias']
             else: module = None
-           
+
             type = getDeviceType(mod)
             if type == _('Unknown'):
                 continue
@@ -573,10 +573,10 @@ class HardwareList(HardwareList_base):
             for h in self:
                 if h.Name == mod:
                     break
-            
+
             if h and h.Name == mod:
                 continue
-             
+
             i = self.addHardware(type)
             hw = self[i]
             hw.Name = mod
@@ -590,7 +590,7 @@ class HardwareList(HardwareList_base):
                     if info == module:
                         if modinfo[info].has_key('description'):
                             hw.Description = modinfo[info]['description']
-                            
+
             for selfkey in self.keydict.keys():
                 confkey = self.keydict[selfkey]
                 if modules[hw.Card.ModuleName] and \
@@ -632,16 +632,16 @@ class HardwareList(HardwareList_base):
 
 
     def load(self):
-        hwconf = ConfHWConf()          
+        hwconf = ConfHWConf()
 
         # first clear the list
         self.__delslice__(0, len(self))
-        
+
         self.readChandev()
         # FIXME: move HW detection to NCDev*
-        self.updateFromSystem()        
+        self.updateFromSystem()
         self.updateFromModules()
-        
+
         for hw in self:
             if hw.Name == "ISDN Card 0":
                 break
@@ -670,7 +670,7 @@ class HardwareList(HardwareList_base):
                 hw.Card.DriverId = isdncard.DriverId
                 hw.Card.VendorId = isdncard.VendorId
                 hw.Card.DeviceId = isdncard.DeviceId
-            
+
         #
         # FIXME: This is not OO!
         #
@@ -722,7 +722,7 @@ class HardwareList(HardwareList_base):
 
         # cleanup isdnconf
         isdn = NCisdnhardware.ConfISDN()
-        isdn.cleanup()  
+        isdn.cleanup()
 
         for hw in self:
             hw.save()
@@ -732,7 +732,7 @@ class HardwareList(HardwareList_base):
         except:
             wvdial = None
             pass
-        
+
         if wvdial:
             # Clean up wvdial
             for dev in wvdial.keys():
@@ -746,7 +746,7 @@ class HardwareList(HardwareList_base):
                     # we did not find the Modem in the hardwarelist
                     # and it gets deleted
                     del wvdial[dev]
-                    
+
         # FIXME: [198070] use modinfo to determine options
         # Clean up modules
         for mod in modules.keys():
@@ -768,7 +768,7 @@ class HardwareList(HardwareList_base):
                 del modules[mod]
                 #print "Test: " + str(modules[mod])
 
-                
+
         modules.write()
         if wvdial:
             wvdial.write()
@@ -780,7 +780,7 @@ __HWList_root = netconfpkg.ROOT
 def getHardwareList(refresh = None):
     global __HWList
     global __HWList_root
-    
+
     if __HWList == None or refresh or \
            __HWList_root != netconfpkg.ROOT:
         __HWList = HardwareList()
@@ -796,9 +796,9 @@ def getNextDev(base):
             if hw.Name == base + str(num):
                 break
         else:
-            # no card seems to use this                         
+            # no card seems to use this
             break
-        
+
     return base + str(num)
 
 
@@ -819,7 +819,7 @@ if __name__ == '__main__':
             print "DMA0: ", hl[i].Card.DMA0
             print "DMA1: ", hl[i].Card.DMA1
             print "ChannelProtocol: ", hl[i].Card.ChannelProtocol
-            
+
         if hl[i].Type == "Modem":
             print "DeviceName: ", hl[i].Modem.DeviceName
             print "BaudRate: ", hl[i].Modem.BaudRate
@@ -831,5 +831,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:13:37 $"
-__version__ = "$Revision: 1.82 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.83 $"

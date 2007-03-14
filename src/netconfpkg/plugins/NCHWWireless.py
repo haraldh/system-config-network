@@ -22,36 +22,36 @@ from netconfpkg.NC_functions import *
 _hwEthernetDialog = None
 _hwEthernetWizard = None
 
-class HwWireless(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = WIRELESS
-      self.createCard()
-      
-   def getDialog(self):
-      if _hwEthernetDialog == None: return None
-      return _hwEthernetDialog(self).xml.get_widget("Dialog")
-    
-   def getWizard(self):
-      return _hwEthernetWizard
+class HwWireless(Hardware):
+    def __init__(self, list = None, parent = None):
+        Hardware.__init__(self, list, parent)
+        self.Type = WIRELESS
+        self.createCard()
 
-   def isType(self, hardware):
-      if hardware.Type == WIRELESS:
-         return True
-      if getHardwareType(hardware.Hardware) == WIRELESS:
-         return True
-      return False
+    def getDialog(self):
+        if _hwEthernetDialog == None: return None
+        return _hwEthernetDialog(self).xml.get_widget("Dialog")
+
+    def getWizard(self):
+        return _hwEthernetWizard
+
+    def isType(self, hardware):
+        if hardware.Type == WIRELESS:
+            return True
+        if getHardwareType(hardware.Hardware) == WIRELESS:
+            return True
+        return False
 
 def setHwWirelessDialog(dialog):
-   global _hwEthernetDialog
-   _hwEthernetDialog = dialog
+    global _hwEthernetDialog
+    _hwEthernetDialog = dialog
 
 def setHwWirelessWizard(wizard):
-   global _hwEthernetWizard
-   _hwEthernetWizard = wizard
+    global _hwEthernetWizard
+    _hwEthernetWizard = wizard
 
 df = getHardwareFactory()
 df.register(HwWireless, WIRELESS)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/08 12:56:42 $"
-__version__ = "$Revision: 1.8 $"
+__date__ = "$Date: 2007/03/14 09:29:37 $"
+__version__ = "$Revision: 1.9 $"

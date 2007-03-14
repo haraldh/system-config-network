@@ -25,7 +25,7 @@ from netconfpkg.NCHardwareList import *
 class InterfaceCreator:
     def __init__ (self, do_save = 1):
         self.do_save = do_save
-        
+
     def get_project_name (self):
         raise NotImplementedError
 
