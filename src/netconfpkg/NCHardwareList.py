@@ -99,6 +99,8 @@ class MyConfModules(ConfModules):
             return (opt, None)
 
     def joinoptlist(self, dict):
+		# FIXME: [146291] GUI adds trailing spaces to "options" lines 
+	    # in /etc/modprobe.conf when adding/deleting wireless devices
         optstring = ''
         for key in dict.keys():
             if dict[key] != None:
@@ -632,7 +634,7 @@ class HardwareList(HardwareList_base):
     def load(self):
         hwconf = ConfHWConf()          
 
-            # first clear the list
+        # first clear the list
         self.__delslice__(0, len(self))
         
         self.readChandev()
@@ -829,5 +831,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:03:32 $"
-__version__ = "$Revision: 1.81 $"
+__date__ = "$Date: 2007/03/14 09:13:37 $"
+__version__ = "$Revision: 1.82 $"
