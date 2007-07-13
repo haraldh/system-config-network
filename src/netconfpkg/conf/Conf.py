@@ -169,7 +169,7 @@ WrongMethod = BadFile
 VersionMismatch = BadFile
 SystemFull = BadFile
 
-from string import *
+from string import joinfields, split, find
 from UserDict import UserDict
 import re
 import os
@@ -487,13 +487,21 @@ class ConfEHosts(Conf):
         while self.findnextcodeline():
             # initialize dictionary of variable/name pairs
             var = self.getfields()
-            if len(var) > 2:
-                # has nicknames
-                self.vars[var[0]] = [ var[1], var[2:] ]
-            elif len(var) > 1:
-                self.vars[var[0]] = [ var[1], [] ]
+            if self.vars.has_key(var[0]):
+                print var[1:]
+                print self.vars[var[0]]
+                self.vars[var[0]][1].append(var[1])
+                if len(var) > 2:
+                    self.vars[var[0]][1].extend(var[2:])
+                print self.vars[var[0]]
             else:
-                pass
+                if len(var) > 2:
+                    # has nicknames
+                    self.vars[var[0]] = [ var[1], var[2:] ]
+                elif len(var) > 1:
+                    self.vars[var[0]] = [ var[1], [] ]
+                else:
+                    pass
                 # exception is a little bit hard.. just skip the line
                 # raise BadFile, 'Malformed /etc/hosts file'
             self.nextline()
@@ -530,15 +538,15 @@ class ConfEHosts(Conf):
         # in order to maintain a consistent presentation in apps.
         place=self.tell()
         self.rewind()
-        keys = []
+        _keys = []
         while self.findnextcodeline():
             # initialize dictionary of variable/name pairs
             var = self.getfields()
             if len(var) > 1:
-                keys.append(var[0])
+                _keys.append(var[0])
             self.nextline()
         self.seek(place)
-        return keys
+        return _keys
 
 class ConfFHosts(Conf):
     # for /etc/hosts
