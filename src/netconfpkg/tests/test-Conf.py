@@ -115,6 +115,8 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+options snd-intel8x0 index=0 id="ICH"
+options snd cards_limit=2
 alias char-major-195* nvidia
 alias eth4 3c501
 alias foo* bar
@@ -151,6 +153,10 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+#options ipw2100 ifname=eth1
+options i8k force=1
+options snd-intel8x0 index=0 id="ICH"
+options snd cards_limit=2
 options parport_pc io=0x378 irq=7
 options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0
 options 3c59x debug=2
@@ -183,6 +189,10 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+#options ipw2100 ifname=eth1
+options i8k force=1
+options snd-intel8x0 index=0 id="ICH"
+options snd cards_limit=2
 options parport_pc io=0x378 irq=7
 options nsc-ircc io=0x02f8 dongle_id=0x09 irq=3 dma=0
 options 3c59x debug=2
@@ -235,5 +245,5 @@ if __name__ == "__main__":
     sys.exit(not result.wasSuccessful())
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 13:39:43 $"
-__version__ = "$Revision: 1.14 $"
+__date__ = "$Date: 2007/07/13 13:03:49 $"
+__version__ = "$Revision: 1.15 $"
