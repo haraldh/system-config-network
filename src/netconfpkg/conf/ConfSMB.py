@@ -31,11 +31,12 @@
 import sys
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
-from string import *
-from Conf import *
+
+from Conf import Conf
+from string import joinfields, strip, find
 import re
 import os
-from UserDict import *
+from UserDict import UserDict
 
 class ConfSMBSubDict(UserDict):
     def __init__(self, parent_conf, stanza, initdict=None):

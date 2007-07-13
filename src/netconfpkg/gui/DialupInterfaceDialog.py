@@ -28,8 +28,7 @@ import re
 import sharedtcpip
 
 from DeviceConfigDialog import DeviceConfigDialog
-from netconfpkg import NCDevIsdn
-from netconfpkg import NCDevModem
+from netconfpkg.plugins import NCDevIsdn, NCDevModem
 from netconfpkg.NCDeviceList import *
 from netconfpkg.NCCallback import *
 from netconfpkg.NCHardwareList import *

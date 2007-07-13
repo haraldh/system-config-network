@@ -31,12 +31,13 @@ _files.sort()
 locale.setlocale(locale.LC_ALL, "")
 
 for _i in _files:
-    _cmd = "from " + _i + " import *"
+#    _cmd = "from " + _i + " import *"
+    _cmd = "import " + _i
     exec _cmd
 
 del _i
 del _files
 del _cmd
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/07 13:42:51 $"
-__version__ = "$Revision: 1.1 $"
+__date__ = "$Date: 2007/07/13 12:57:08 $"
+__version__ = "$Revision: 1.2 $"

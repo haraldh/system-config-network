@@ -32,7 +32,7 @@ _files.sort()
 locale.setlocale(locale.LC_ALL, "")
 
 for _i in _files:
-    _cmd = "from " + _i + " import *"
+    _cmd = "from %s import *" % (_i)
     exec _cmd
 
 del _i

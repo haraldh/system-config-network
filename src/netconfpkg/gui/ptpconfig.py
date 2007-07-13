@@ -26,7 +26,7 @@ import string
 
 import sharedtcpip
 from netconfpkg.gui.GUI_functions import *
-from netconfpkg.plugins import *
+from netconfpkg import *
 from DeviceConfigDialog import DeviceConfigDialog
 
 class ptpConfigDialog(DeviceConfigDialog):

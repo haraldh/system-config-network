@@ -28,7 +28,7 @@ import re
 
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui import sharedtcpip
-from netconfpkg import nop
+from netconfpkg.NC_functions import nop
 from netconfpkg import NCDeviceList
 from netconfpkg import NCIPsecList
 
