@@ -33,7 +33,7 @@ from rhpl.executil import gtkExecWithCaptureStatus
 class ConfDevice( Conf.ConfShellVar ):
     def __init__( self, name, dir = None ):
         if dir == None:
-            dir = netconfpkg.ROOT + SYSCONFDEVICEDIR
+            dir = getRoot() + SYSCONFDEVICEDIR
         new = False
         self.filename = dir + 'ifcfg-' + name
         if not os.access( self.filename, os.R_OK ):
@@ -67,7 +67,7 @@ class ConfDevice( Conf.ConfShellVar ):
 
 class ConfRoute( Conf.ConfShellVar ):
     def __init__( self, name ):
-        Conf.ConfShellVar.__init__( self, netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+        Conf.ConfShellVar.__init__( self, getRoot() + SYSCONFDEVICEDIR + \
                                     'route-' + name )
         self.chmod( 0644 )
 
@@ -124,6 +124,22 @@ class Device( Device_base ):
         if self.Alias != None and self.Alias != "":
             devname = devname + ':' + str( self.Alias )
         return devname
+    
+    def getRealMtu(self):
+        out = commands.getoutput( '/sbin/ip link show ' + str(self.Device) + ' 2>/dev/null' )
+        next = False
+        val = 0
+        try:
+            for k in out.split():
+                if next: 
+                    val = int(k)
+                    break
+                if k == "mtu": 
+                    next = True
+        except:
+            pass
+        
+        return val
 
     def load( self, name ):
         conf = ConfDevice( name )
@@ -168,7 +184,7 @@ class Device( Device_base ):
 
         if not self.Gateway:
             try:
-                cfg = Conf.ConfShellVar( netconfpkg.ROOT + SYSCONFNETWORK )
+                cfg = Conf.ConfShellVar( getRoot() + SYSCONFNETWORK )
                 if cfg.has_key( 'GATEWAY' ):
                     gw = cfg['GATEWAY']
 
@@ -206,6 +222,12 @@ class Device( Device_base ):
                                               self.DeviceId )
             #raise TypeError, _("Device not specified or alias not a number!")
 
+        if not self.Cipe and self.BootProto == None:
+            if self.IP:
+                self.BootProto = "none"
+            else:
+                self.BootProto = 'dhcp'
+
         if not self.Type or self.Type == "" or self.Type == _( "Unknown" ):
             import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
@@ -230,11 +252,11 @@ class Device( Device_base ):
                     pass
 
         # move old <id>.route files to route-<id>
-        file = netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+        file = getRoot() + SYSCONFDEVICEDIR + \
                                 self.DeviceId + '.route'
         if os.path.isfile( file ):
             NC_functions.rename( file,
-                                netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                getRoot() + SYSCONFDEVICEDIR + \
                                 'route-' + self.DeviceId )
         # load routes
         rconf = ConfRoute( name )
@@ -265,17 +287,19 @@ class Device( Device_base ):
 
         if self.oldname and ( self.oldname != self.DeviceId ):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
-                NC_functions.rename( netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                NC_functions.rename( getRoot() + SYSCONFDEVICEDIR + \
                                     prefix + self.oldname,
-                                    netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                                    getRoot() + SYSCONFDEVICEDIR + \
                                     prefix + self.DeviceId )
 
         conf = ConfDevice( self.DeviceId )
         conf.fsf()
 
-        if not self.Cipe and self.BootProto == None \
-           and ( self.IP == None or self.IP == "" ):
-            self.BootProto = 'dhcp'
+        if not self.Cipe and self.BootProto == None:
+            if len(self.IP):
+                self.BootProto = "none"
+            else:
+                self.BootProto = 'dhcp'                
 
         if self.BootProto:
             self.BootProto = string.lower( self.BootProto )
@@ -381,8 +405,8 @@ class Device( Device_base ):
             rconf.write()
         else:
             # remove route file, if no routes defined
-            unlink( netconfpkg.ROOT + SYSCONFDEVICEDIR + self.DeviceId + '.route' )
-            unlink( netconfpkg.ROOT + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
+            unlink( getRoot() + SYSCONFDEVICEDIR + self.DeviceId + '.route' )
+            unlink( getRoot() + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
 
         # remove empty gateway entries
         if not self.Gateway:
