@@ -39,7 +39,7 @@ import os
 import os.path
 import string
 from netconfpkg import *
-from netconfpkg.genClass import *
+#from genClass import *
 from version import PRG_VERSION
 from version import PRG_NAME
 
@@ -123,7 +123,10 @@ def Usage():
 
 def main(cmdline):
     import os.path
-    from netconfpkg import NC_functions
+    from netconfpkg.NCDeviceList import getDeviceList
+    from netconfpkg.NCHardwareList import getHardwareList
+    from netconfpkg.NCProfileList import getProfileList
+    from netconfpkg.NCIPsecList import getIPsecList
     from netconfpkg.NC_functions import log
 
     signal.signal (signal.SIGINT, signal.SIG_DFL)
@@ -147,6 +150,33 @@ def main(cmdline):
     chroot = None
     debug = None
     devlists = []
+
+    try:
+        opts, args = getopt.getopt(cmdline, "asp:?r:dhvtief:co",
+                                   [
+                                    "activate",
+                                    "profile=",
+                                    "help",
+                                    "devicelist",
+                                    "verbose",
+                                    "test",
+                                    "import",
+                                    "export",
+                                    "clear",
+                                    "root=",
+                                    "file=",
+                                    "debug",
+                                    "hardwarelist",
+                                    "ipseclist",
+                                    "profilelist"])
+        for opt, val in opts:
+            if opt == '-r' or opt == '--root':                
+                chroot = val
+                NC_functions.prepareRoot(chroot)
+                NC_functions.updateNetworkScripts()
+                continue
+    except (getopt.error, BadUsage):
+        pass
 
     try:
         opts, args = getopt.getopt(cmdline, "asp:?r:dhvtief:co",
@@ -194,7 +224,7 @@ def main(cmdline):
                 continue
 
             if opt == '-r' or opt == '--root':
-                chroot = val
+                # already parsed
                 continue
 
             if opt == '-c' or opt == '--clear':
@@ -246,12 +276,6 @@ def main(cmdline):
         else:
             log.handler = log.file_handler
             log.open(sys.stderr)
-
-        if chroot:
-            prepareRoot(chroot)
-
-        NC_functions.updateNetworkScripts()
-
 
         if not len(devlists):
             devlists = [getDeviceList(), getHardwareList(),
