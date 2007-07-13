@@ -28,11 +28,6 @@ from rhpl import ethtool
 from NC_functions import *
 import NCDeviceList
 
-ACTIVE = _('Active')
-INACTIVE = _('Inactive')
-
-isdnctrl = '/usr/sbin/userisdnctl'
-
 import glob
 
 class NetworkDevice:
@@ -42,6 +37,8 @@ class NetworkDevice:
         self.load()
 
     def load(self):
+        __isdnctrl = '/usr/sbin/userisdnctl'
+
         l = ethtool.get_active_devices()
 
         self.activedevicelist = l
@@ -50,9 +47,9 @@ class NetworkDevice:
         for i in l:
             nickname = getNickName(self.devicelist, i)
             if getDeviceType(i) == ISDN:
-                if os.access(isdnctrl, os.X_OK):
+                if os.access(__isdnctrl, os.X_OK):
                     for nick in nickname:
-                        if os.system(userisdnctrl +
+                        if os.system(__isdnctrl +
                                      ' %s status >& /dev/null' %(nickname)) == 0:
                             break
                         else:
