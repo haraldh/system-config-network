@@ -20,9 +20,8 @@
 import os
 import os.path
 import string
-
-from NC_functions import *
-#from netconfpkg.NCDevice import Device
+import re
+from netconfpkg.NC_functions import *
 from netconfpkg import DeviceList_base
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.conf import ConfSMB
@@ -40,11 +39,11 @@ class DeviceList(DeviceList_base):
         self.__delslice__(0, len(self))
 
         df = getDeviceFactory()
-        devdir = netconfpkg.ROOT + SYSCONFDEVICEDIR
+        devdir = getRoot() + SYSCONFDEVICEDIR
         if os.path.isdir(devdir):
             devices = ConfDevices()
         else:
-            devdir = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR
+            devdir = getRoot() + OLDSYSCONFDEVICEDIR
             devices = ConfDevices(devdir)
 
         msg = ""
@@ -168,7 +167,7 @@ class DeviceList(DeviceList_base):
         from types import DictType
         self.commit(changed=False)
 
-        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if len(self) > 0:
             nwconf["NETWORKING"] = "yes"
         nwconf.write()
@@ -177,7 +176,7 @@ class DeviceList(DeviceList_base):
         # clear all Dialer sections in wvdial.conf
         # before the new Dialer sections written
         #
-        wvdialconf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
+        wvdialconf = ConfSMB.ConfSMB(filename = getRoot() + WVDIALCONF)
         for wvdialkey in wvdialconf.vars.keys():
             if wvdialkey[:6] == 'Dialer':
                 del wvdialconf[wvdialkey]
@@ -212,7 +211,7 @@ class DeviceList(DeviceList_base):
         papconf.write()
         chapconf.write()
 
-        dirname = netconfpkg.ROOT + SYSCONFDEVICEDIR
+        dirname = getRoot() + SYSCONFDEVICEDIR
         #
         # Remove old config files
         #
@@ -249,7 +248,7 @@ class DeviceList(DeviceList_base):
 
                 # now remove the file
                 unlink(dirname + entry)
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                unlink(getRoot() + OLDSYSCONFDEVICEDIR + \
                        '/ifcfg-' + devid)
 
         # remove old route files
@@ -269,14 +268,14 @@ class DeviceList(DeviceList_base):
             else:
                 # remove route file, if no routes defined
                 unlink(dirname + entry)
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                unlink(getRoot() + OLDSYSCONFDEVICEDIR + \
                        devid + '.route')
 
         # bug #78043
         # we should have device specific gateways
         # fixed this way, until we have a way to mark the
         # default GATEWAY/GATEWAYDEV
-        cfg = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        cfg = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if cfg.has_key('GATEWAY'):
             del cfg['GATEWAY']
         if cfg.has_key('GATEWAYDEV'):
@@ -286,16 +285,16 @@ class DeviceList(DeviceList_base):
         self.commit()
 
 __DVList = None
-__DVList_root = netconfpkg.ROOT
+__DVList_root = getRoot()
 
 def getDeviceList(refresh = None):
     global __DVList
     global __DVList_root
     if __DVList == None or refresh or \
-           __DVList_root != netconfpkg.ROOT:
+           __DVList_root != getRoot():
         __DVList = DeviceList()
         __DVList.load()
-        __DVList_root = netconfpkg.ROOT
+        __DVList_root = getRoot()
     return __DVList
 
 def getNextDev(base):
@@ -312,5 +311,5 @@ def getNextDev(base):
     return base + str(num)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.67 $"
+__date__ = "$Date: 2007/07/13 12:27:14 $"
+__version__ = "$Revision: 1.68 $"
