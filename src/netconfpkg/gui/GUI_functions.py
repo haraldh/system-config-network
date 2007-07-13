@@ -449,6 +449,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
     __cancelPressed = 0
     __dialogClosed = 0
     xml = __getXmlFile()
+    # FIXME: handle dlg=NONE cases
     dlg = xml.get_widget ( "Dialog" )
     lbl = xml.get_widget ( "label" )
     swindow = xml.get_widget ( "swindow" )
@@ -629,6 +630,7 @@ def __getXmlFile():
         glade_file = NETCONFDIR + GLADEPATH + glade_name
 
     __xmlfile = gtk.glade.XML( glade_file, None, domain=PROGNAME )
+    # FIXME: check for NONE
     return __xmlfile
 
 set_generic_run_dialog_func( gui_run_dialog )
