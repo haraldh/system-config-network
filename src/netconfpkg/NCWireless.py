@@ -85,12 +85,12 @@ class Wireless(Wireless_base):
 
         # Do not clear the non-filled in values
         # Bugzilla #52252
-        #for i in conf.keys():
+        # for i in conf.keys():
         #    if not conf[i] or conf[i] == "": del conf[i]
 
         # the key is now stored in a seperate file
         # conf.oldmode = 0600
         # conf.chmod(0600)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.22 $"
+__date__ = "$Date: 2007/07/13 12:49:00 $"
+__version__ = "$Revision: 1.23 $"
