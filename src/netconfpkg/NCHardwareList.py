@@ -32,17 +32,17 @@ from netconfpkg.conf.ConfSMB import *
 from rhpl.executil import *
 
 ModInfo = None
-isdnmodulelist = []
+__isdnmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
-    isdnmodulelist = string.split(msg)
+    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
+    __isdnmodulelist = string.split(__msg)
 except:
     pass
 
-wirelessmodulelist = []
+__wirelessmodulelist = []
 try:
-    msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
-    wirelessmodulelist = string.split(msg)
+    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
+    __wirelessmodulelist = string.split(__msg)
 except:
     pass
 
@@ -62,10 +62,10 @@ def getModInfo():
 
 class MyConfModules(ConfModules):
     def __init__(self, filename = None):
-        # if we put netconfpkg.ROOT in the default parameter it will
+        # if we put getRoot() in the default parameter it will
         # have the value at parsing time
         if filename == None:
-            filename = netconfpkg.ROOT + MODULESCONF
+            filename = getRoot() + MODULESCONF
         # FIXME: [187640] Support aliases in /etc/modprobe.d/
         ConfModules.__init__(self, filename)
 
@@ -99,8 +99,6 @@ class MyConfModules(ConfModules):
             return (opt, None)
 
     def joinoptlist(self, dict):
-                # FIXME: [146291] GUI adds trailing spaces to "options" lines
-            # in /etc/modprobe.conf when adding/deleting wireless devices
         optstring = ''
         for key in dict.keys():
             if dict[key] != None:
@@ -113,36 +111,36 @@ class MyConfModules(ConfModules):
 
 
 _MyConfModules = None
-_MyConfModules_root = netconfpkg.ROOT
+_MyConfModules_root = getRoot()
 
 def getMyConfModules(refresh = None):
     global _MyConfModules
     global _MyConfModules_root
 
     if _MyConfModules == None or refresh or \
-           _MyConfModules_root != netconfpkg.ROOT :
+           _MyConfModules_root != getRoot() :
         _MyConfModules = MyConfModules()
-        _MyConfModules_root = netconfpkg.ROOT
+        _MyConfModules_root = getRoot()
     return _MyConfModules
 
 _MyWvDial = None
-_MyWvDial_root = netconfpkg.ROOT
+_MyWvDial_root = getRoot()
 
 def getMyWvDial(create_if_missing = None):
     global _MyWvDial
     global _MyWvDial_root
 
-    if _MyWvDial == None or _MyWvDial_root != netconfpkg.ROOT:
-        _MyWvDial = ConfSMB(netconfpkg.ROOT + WVDIALCONF,
+    if _MyWvDial == None or _MyWvDial_root != getRoot():
+        _MyWvDial = ConfSMB(getRoot() + WVDIALCONF,
                            create_if_missing = create_if_missing)
-        _MyWvDial_root = netconfpkg.ROOT
+        _MyWvDial_root = getRoot()
 
     return _MyWvDial
 
 class ConfHWConf(Conf):
 
     def __init__(self):
-        Conf.__init__(self, netconfpkg.ROOT + HWCONF)
+        Conf.__init__(self, getRoot() + HWCONF)
 
     def read(self):
         Conf.read(self)
@@ -151,10 +149,10 @@ class ConfHWConf(Conf):
     def initvars(self):
         self.vars = {}
 
-        if not os.access(netconfpkg.ROOT + HWCONF, os.R_OK):
+        if not os.access(getRoot() + HWCONF, os.R_OK):
             return
 
-        fp = open(netconfpkg.ROOT + HWCONF, 'r')
+        fp = open(getRoot() + HWCONF, 'r')
         hwlist = fp.read()
         hwlist = string.split(hwlist, "-\n")
         pos = 0
@@ -201,12 +199,7 @@ class HardwareList(HardwareList_base):
     def __init__(self, list = None, parent = None):
         HardwareList_base.__init__(self, list, parent)
         # FIXME: [198070] use modinfo to determine options
-        self.keydict = { 'IoPort' : 'io',
-                         'IRQ' : 'irq',
-                         'Mem' : 'mem',
-                         'DMA0' : 'dma',
-        }
-
+        self.keydict = { }
 
     def addHardware(self, type = None):
         from netconfpkg.NCHardwareFactory import getHardwareFactory
@@ -293,7 +286,7 @@ class HardwareList(HardwareList_base):
         if machine != 's390' and machine != 's390x' and not getDebugLevel():
             return
 
-        conffilename = netconfpkg.ROOT + "/etc/chandev.conf"
+        conffilename = getRoot() + "/etc/chandev.conf"
         try:
             conf = file(conffilename, "r")
         except:
@@ -365,11 +358,11 @@ class HardwareList(HardwareList_base):
                                      kudzu.PROBE_SAFE))
         for kudzu_device in kudzulist:
             if not kudzu_device.device and kudzu_device.driver:
-                if (kudzu_device.driver + '.o' in isdnmodulelist) or \
-                       (kudzu_device.driver + '.ko' in isdnmodulelist) :
+                if (kudzu_device.driver + '.o' in __isdnmodulelist) or \
+                       (kudzu_device.driver + '.ko' in __isdnmodulelist) :
                     kudzu_device.device = ISDN
-                elif (kudzu_device.driver + '.o' in wirelessmodulelist) or \
-                         (kudzu_device.driver + '.ko' in wirelessmodulelist):
+                elif (kudzu_device.driver + '.o' in __wirelessmodulelist) or \
+                         (kudzu_device.driver + '.ko' in __wirelessmodulelist):
                     kudzu_device.device = WIRELESS
 
             if not kudzu_device.device:
@@ -675,8 +668,8 @@ class HardwareList(HardwareList_base):
         # FIXME: This is not OO!
         #
         try:
-            wvdial = ConfSMB(netconfpkg.ROOT + WVDIALCONF)
-        except Conf.FileMissing:
+            wvdial = ConfSMB(getRoot() + WVDIALCONF)
+        except FileMissing:
             pass
         else:
             for dev in wvdial.keys():
@@ -775,17 +768,17 @@ class HardwareList(HardwareList_base):
 
 
 __HWList = None
-__HWList_root = netconfpkg.ROOT
+__HWList_root = getRoot()
 
 def getHardwareList(refresh = None):
     global __HWList
     global __HWList_root
 
     if __HWList == None or refresh or \
-           __HWList_root != netconfpkg.ROOT:
+           __HWList_root != getRoot():
         __HWList = HardwareList()
         __HWList.load()
-        __HWList_root = netconfpkg.ROOT
+        __HWList_root = getRoot()
     return __HWList
 
 def getNextDev(base):
@@ -831,5 +824,5 @@ if __name__ == '__main__':
 
     hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.83 $"
+__date__ = "$Date: 2007/07/13 12:31:36 $"
+__version__ = "$Revision: 1.84 $"
