@@ -65,7 +65,7 @@ uninstall-local:
 
 docs:
 	cd $(srcdir)
-	@PYTHON@ @pythondir@/../pydoc.py -w `find . -type d -o -name '*.py'|sed -e 's#^\./##g' -e 's#/#.#g' -e 's#\.py$$##g'` rhpl.genClass rhpl.Conf rhpl.ConfSMB rhpl.ConfPAP
+	@PYTHON@ @pythondir@/../pydoc.py -w `find . -type d -o -name '*.py'|sed -e 's#^\./##g' -e 's#/#.#g' -e 's#\.py$$##g'` 
 	mv *.html doc
 
 pycheck:
