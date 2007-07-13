@@ -24,9 +24,9 @@ import os
 import os.path
 import shutil
 from rhpl import ethtool
-from conf import ConfPAP
-from conf import Conf
-from conf import ConfSMB
+from netconfpkg.conf import ConfPAP
+from netconfpkg.conf import Conf
+from netconfpkg.conf import ConfSMB
 from NCException import NCException
 import UserList
 
@@ -42,6 +42,7 @@ import __builtin__
 __builtin__.__dict__['_'] = _
 
 _kernel_version = None
+
 def kernel_version():
     global _kernel_version
     if not _kernel_version:
@@ -90,9 +91,6 @@ ISDNCARDCONF='/etc/sysconfig/isdncard'
 PAPFILE = "/etc/ppp/pap-secrets"
 CHAPFILE = "/etc/ppp/chap-secrets"
 
-import netconfpkg
-netconfpkg.ROOT = "/"
-
 DEFAULT_PROFILE_NAME=_("Common")
 
 ETHERNET = 'Ethernet'
@@ -118,11 +116,11 @@ modemDeviceList = [ '/dev/modem',
                     '/dev/input/ttyACM2', '/dev/input/ttyACM3',
                     '/dev/ttyM0', '/dev/ttyM1' ]
 
-ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
+__ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
 
-iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
+__iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
 
-deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
+__deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
                    '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
                    '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
                    '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
@@ -136,6 +134,10 @@ deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
                    }
 # Removed for now, until we have a config dialog for infrared
 #                  '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+
+
+ACTIVE = _('Active')
+INACTIVE = _('Inactive')
 
 
 CRTSCTS = "CRTSCTS"
@@ -288,17 +290,17 @@ def bits_to_netmask(bits):
 DVpapconf = None
 def getPAPConf():
     global DVpapconf
-    if DVpapconf == None or DVpapconf.filename != netconfpkg.ROOT + PAPFILE:
+    if DVpapconf == None or DVpapconf.filename != getRoot() + PAPFILE:
         # FIXME: [197781] catch exceptions
-        DVpapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + PAPFILE)
+        DVpapconf = ConfPAP.ConfPAP(getRoot() + PAPFILE)
     return DVpapconf
 
 DVchapconf = None
 def getCHAPConf():
     global DVchapconf
-    if DVchapconf == None or DVchapconf.filename != netconfpkg.ROOT + CHAPFILE:
+    if DVchapconf == None or DVchapconf.filename != getRoot() + CHAPFILE:
         # FIXME: [197781] catch exceptions
-        DVchapconf = ConfPAP.ConfPAP(netconfpkg.ROOT + CHAPFILE)
+        DVchapconf = ConfPAP.ConfPAP(getRoot() + CHAPFILE)
     return DVchapconf
 
 
@@ -389,9 +391,9 @@ def getDeviceType(devname):
     if not devname or devname == "":
         return type
 
-    for i in deviceTypeDict.keys():
+    for i in __deviceTypeDict.keys():
         if re.search(i, devname):
-            type = deviceTypeDict[i]
+            type = __deviceTypeDict[i]
 
     if type == UNKNOWN:
         try:
@@ -836,7 +838,7 @@ class ConfDevices(UserList.UserList):
     def __init__(self, confdir = None):
         UserList.UserList.__init__(self)
         if confdir == None:
-            confdir = netconfpkg.ROOT + SYSCONFDEVICEDIR
+            confdir = getRoot() + SYSCONFDEVICEDIR
         confdir += '/'
         try:
             dir = os.listdir(confdir)
@@ -876,11 +878,15 @@ def testFilename(filename):
 
     return True
 
+__root = ""
+
 def setRoot(root):
-    netconfpkg.ROOT = root
+    global __root
+    __root = root
 
 def getRoot():
-    return netconfpkg.ROOT
+    global __root
+    return __root
 
 def prepareRoot(root):
     setRoot(root)
@@ -891,13 +897,13 @@ def prepareRoot(root):
         SYSCONFDEVICEDIR, \
         SYSCONFPROFILEDIR, \
         CIPEDIR, PPPDIR:
-        if not os.path.isdir(root + dir):
-            mkdir(root + dir)
+        if not os.path.isdir(root + "/" + dir):
+            mkdir(root + "/" + dir)
 
 
 class ConfKeys(Conf.ConfShellVar):
     def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'keys-' + name)
+        Conf.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'keys-' + name)
         self.chmod(0600)
 
 
@@ -916,44 +922,44 @@ def updateNetworkScripts(force = False):
 
     firsttime = 0
 
-    if not os.path.isdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default/'):
+    if not os.path.isdir(getRoot() + SYSCONFPROFILEDIR+'/default/'):
         firsttime = 1
-        mkdir(netconfpkg.ROOT + SYSCONFPROFILEDIR+'/default')
+        mkdir(getRoot() + SYSCONFPROFILEDIR+'/default')
 
     curr_prof = 'default'
     if not firsttime:
         # FIXME: [197781] catch exceptions
-        nwconf = Conf.ConfShellVar(netconfpkg.ROOT + SYSCONFNETWORK)
+        nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if nwconf.has_key('CURRENT_PROFILE'):
             curr_prof = nwconf['CURRENT_PROFILE']
 
     # FIXME: [197781] catch exceptions
-    devlist = ConfDevices(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR)
+    devlist = ConfDevices(getRoot() + OLDSYSCONFDEVICEDIR)
 
     for dev in devlist:
         if dev == 'lo':
             continue
 
-        ocfile = netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/ifcfg-'+ dev
-        dfile = netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev
+        ocfile = getRoot() + OLDSYSCONFDEVICEDIR+'/ifcfg-'+ dev
+        dfile = getRoot() + SYSCONFDEVICEDIR+'/ifcfg-'+dev
 
         if issamefile(ocfile, dfile):
             continue
 
-        unlink(netconfpkg.ROOT + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
+        unlink(getRoot() + SYSCONFDEVICEDIR+'/ifcfg-'+dev)
         link(ocfile, dfile)
 
         log.log(1, _("Linking %s to devices and putting "
                      "it in profile %s.") % (dev, curr_prof))
 
-        pfile = netconfpkg.ROOT + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev
+        pfile = getRoot() + SYSCONFPROFILEDIR+'/' + curr_prof + '/ifcfg-'+dev
 
         unlink(pfile)
         link(dfile, pfile)
 
         for (file, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
-            hostfile = netconfpkg.ROOT + file
-            conffile = netconfpkg.ROOT + SYSCONFPROFILEDIR + '/' + \
+            hostfile = getRoot() + file
+            conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
                        curr_prof + cfile
             if not os.path.isfile(hostfile) or not issamefile(hostfile, conffile):
                 unlink(conffile)

@@ -57,14 +57,17 @@ locale.setlocale(locale.LC_ALL, "")
 
 
 for _i in _files:
-    _cmd = "from " + _i + " import *"
+    _cmd = "from %s import *" % (_i)
     exec _cmd
 
 del _i
 del _files
 del _cmd
 del __netconfpkg
+del locale
+del os
+del GenClass_read_classfile
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.22 $"
+__date__ = "$Date: 2007/07/13 12:51:25 $"
+__version__ = "$Revision: 1.23 $"

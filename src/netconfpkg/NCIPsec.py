@@ -21,7 +21,7 @@ from netconfpkg import IPsec_base
 
 class ConfIPsec(Conf.ConfShellVar):
     def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, netconfpkg.ROOT + SYSCONFDEVICEDIR + 'ifcfg-' + name)
+        Conf.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'ifcfg-' + name)
         self.chmod(0644)
 
 class IPsec(IPsec_base):
@@ -114,9 +114,9 @@ class IPsec(IPsec_base):
 
         if self.oldname and (self.oldname != self.IPsecId):
             for prefix in [ 'ifcfg-', 'keys-' ]:
-                rename(netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                rename(getRoot() + SYSCONFDEVICEDIR + \
                        prefix + self.oldname,
-                       netconfpkg.ROOT + SYSCONFDEVICEDIR + \
+                       getRoot() + SYSCONFDEVICEDIR + \
                        prefix + self.IPsecId)
 
         # save ipsec settings

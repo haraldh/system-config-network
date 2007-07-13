@@ -56,7 +56,7 @@ class IPsecList(IPsecList_base):
         for ipsec in self:
             ipsec.save()
 
-        dirname = netconfpkg.ROOT + SYSCONFDEVICEDIR
+        dirname = getRoot() + SYSCONFDEVICEDIR
         #
         # Remove old config files
         #
@@ -87,7 +87,7 @@ class IPsecList(IPsecList_base):
                     continue
 
                 unlink(dirname + entry)
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR + \
+                unlink(getRoot() + OLDSYSCONFDEVICEDIR + \
                        '/ifcfg-' + ipsecid)
 
         #
@@ -121,7 +121,7 @@ class IPsecList(IPsecList_base):
                     continue
 
                 unlink(dirname + entry)
-                unlink(netconfpkg.ROOT + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
+                unlink(getRoot() + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
 
     def __repr__(self):
         return repr(self.__dict__)
@@ -151,11 +151,11 @@ class IPsecList(IPsecList_base):
         self[i]._parseLine(vals[1:], value)
 
 
-IPSList = None
+__IPSList = None
 
 def getIPsecList(refresh = None):
-    global IPSList
-    if IPSList == None or refresh:
-        IPSList = IPsecList()
-        IPSList.load()
-    return IPSList
+    global __IPSList
+    if __IPSList == None or refresh:
+        __IPSList = IPsecList()
+        __IPSList.load()
+    return __IPSList
