@@ -130,6 +130,9 @@ def dhcp_hydrate (xml, device):
     if device.Mtu != None and xml.get_widget('mtuCB'):
         xml.get_widget('mtuSpin').set_value(device.Mtu)
         xml.get_widget('mtuCB').set_active(True)
+    elif xml.get_widget('mtuCB'):
+        xml.get_widget('mtuSpin').set_value(device.getRealMtu())
+        
 
 
 def dhcp_dehydrate (xml, device):
@@ -427,5 +430,5 @@ def dsl_hardware_dehydrate(xml, device):
     device.Dialup.EthDevice = string.split(hw)[0]
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.43 $"
+__date__ = "$Date: 2007/07/13 13:02:26 $"
+__version__ = "$Revision: 1.44 $"
