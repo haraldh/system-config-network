@@ -29,7 +29,7 @@ from NC_functions import *
 
 class ConfCipeOptions(Conf.Conf):
     def __init__(self, name):
-        fname = netconfpkg.ROOT + CIPEDIR + '/options.' + name
+        fname = getRoot() + CIPEDIR + '/options.' + name
         Conf.Conf.__init__(self, fname, '#', '\t ', ' ')
         self.chmod(0600)
 
@@ -148,12 +148,12 @@ class Cipe(Cipe_base):
 
         parent = self.getParent()
         if parent:
-            if not os.path.isdir(netconfpkg.ROOT + CIPEDIR):
-                generic_error_dialog(_("Directory %s is missing!\nWill create it for you!\nYou should install the cipe rpm package!\n") % netconfpkg.ROOT + CIPEDIR)
+            if not os.path.isdir(getRoot() + CIPEDIR):
+                generic_error_dialog(_("Directory %s is missing!\nWill create it for you!\nYou should install the cipe rpm package!\n") % getRoot() + CIPEDIR)
                 try:
-                    os.mkdir(netconfpkg.ROOT + CIPEDIR)
+                    os.mkdir(getRoot() + CIPEDIR)
                 except:
-                    generic_error_dialog(_("Could not create\ndirectory %s!") % netconfpkg.ROOT + CIPEDIR)
+                    generic_error_dialog(_("Could not create\ndirectory %s!") % getRoot() + CIPEDIR)
                     return
             conf = ConfCipeOptions(parent.DeviceId)
             if conf:
