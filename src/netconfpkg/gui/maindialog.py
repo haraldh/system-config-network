@@ -26,6 +26,12 @@ from netconfpkg.Control import *
 from netconfpkg.gui.GUI_functions import *
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
+from netconfpkg.NC_functions import *
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NCProfileList import getProfileList
+from netconfpkg.NCIPsecList import getIPsecList
+
 import gtk
 import gtk.glade
 import gnome
@@ -597,6 +603,10 @@ class mainDialog:
         for host in prof.HostsList:
             #88357
             if host.IP == "127.0.0.1" and \
+               ( host.Hostname == "localhost.localdomain" or \
+                 host.Hostname == "localhost"):
+                continue
+            if host.IP == "::1" and \
                ( host.Hostname == "localhost.localdomain" or \
                  host.Hostname == "localhost"):
                 continue
