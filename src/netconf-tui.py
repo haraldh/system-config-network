@@ -12,7 +12,7 @@ PROGNAME='system-config-network'
 
 import locale
 from rhpl import ethtool
-from netconfpkg import exception
+from netconfpkg import *
 from rhpl.translate import _, N_, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
@@ -181,10 +181,8 @@ def selectDevice(screen):
     le = screen.width - 6
     if le <= 0: le = 5
     for dev in getDeviceList():
-        try:
-            if not dev.getDialog():
-                continue
-        except:
+        if not hasattr(dev, "getDialog") or not dev.getDialog():
+            #li.append("No dialog for %s" % dev.Device, None)
             continue
 
         l += 1
@@ -229,7 +227,7 @@ def Usage():
 if __name__=="__main__":
     import getopt
     class BadUsage: pass
-    from netconfpkg import NC_functions
+    from netconfpkg import *
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     chroot = None
