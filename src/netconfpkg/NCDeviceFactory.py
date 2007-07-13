@@ -32,7 +32,12 @@ def getDeviceFactory():
 from netconfpkg.NCDevice import Device
 
 class DeviceFactory(dict):
-    def register(self, theclass, devtype, subtype = None):
+    def register(self, theclass, devtype = None, subtype = None):
+
+        if devtype == None and hasattr(theclass, "Type"):
+            devtype = theclass.Type
+        if subtype == None and hasattr(theclass, "SubType"):
+            subtype = theclass.SubType
 
         log.log(5, "Register %s %s" % (str(theclass), str(devtype)))
 
@@ -68,5 +73,5 @@ class DeviceFactory(dict):
 
 from netconfpkg.plugins import *
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.12 $"
+__date__ = "$Date: 2007/07/13 12:25:56 $"
+__version__ = "$Revision: 1.13 $"
