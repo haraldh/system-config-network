@@ -32,7 +32,7 @@ DM_MANUAL='manual'
 DialModes = { DM_AUTO : _('auto'),
               DM_MANUAL : _('manual') }
 
-country_code = {
+__country_code = {
     _("None") : 0,
     _("Afghanistan") : 93,
     _("Albania") : 355,
@@ -476,7 +476,7 @@ class ModemDialup(Dialup):
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
-        conf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
+        conf = ConfSMB.ConfSMB(filename = getRoot() + WVDIALCONF)
 
         sectname = 'Dialer ' + name
 
@@ -584,7 +584,7 @@ class ModemDialup(Dialup):
         #
         # Write the wvdial section
         #
-        conf = ConfSMB.ConfSMB(filename = netconfpkg.ROOT + WVDIALCONF)
+        conf = ConfSMB.ConfSMB(filename = getRoot() + WVDIALCONF)
         conf.chmod(0600)
         if not conf.has_key(sectname):
             conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
@@ -670,7 +670,7 @@ class ModemDialup(Dialup):
 
         # Write /etc/ppp/peers/DeviceId
         # bug #77763
-        peerdir = netconfpkg.ROOT + PPPDIR + "/peers/"
+        peerdir = getRoot() + PPPDIR + "/peers/"
         if not os.path.isdir(peerdir):
             mkdir(peerdir)
         if parent.oldname and (parent.oldname != parent.DeviceId):
@@ -692,5 +692,5 @@ if __name__ == '__main__':
     print dev.Dialup.Login
     dev.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.74 $"
+__date__ = "$Date: 2007/07/13 12:28:08 $"
+__version__ = "$Revision: 1.75 $"

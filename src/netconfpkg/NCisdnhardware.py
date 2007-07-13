@@ -37,7 +37,7 @@ DRIVER_ID = 8
 FIRMWARE = 9
 MODUL = 10
 
-card = {
+__card = {
     # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
     "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
     "ASUS COM ISDNLink ISA PnP" : [ "12", "", "", "", "", "", "ASU1690", "ASU1690", "HiSax", "", "hisax" ],
@@ -125,7 +125,7 @@ class ConfISDN:
     def load(self, f = None):
 
         if not f:
-            f = netconfpkg.ROOT + ISDNCARDCONF
+            f = getRoot() + ISDNCARDCONF
         if not os.path.exists(f):
             return -1
 
@@ -164,7 +164,7 @@ class ConfISDN:
 
     def save(self, f = None):
         if f == None:
-            f = netconfpkg.ROOT + ISDNCARDCONF
+            f = getRoot() + ISDNCARDCONF
         # we only support 1 ISDN card in this version
         if not self.Description:
             if os.path.exists(f):
@@ -212,7 +212,7 @@ class ConfISDN:
 
     def cleanup(self, f = None):
         if f == None:
-            f = netconfpkg.ROOT + ISDNCARDCONF
+            f = getRoot() + ISDNCARDCONF
         # we only support 1 ISDN card in this version
         if not self.Description:
             if os.path.exists(f):
@@ -239,28 +239,29 @@ class ConfISDN:
 
         if found == 0: return
 
-        for i in card.keys():
-            if card[i][VENDOR_ID] and card[i][DEVICE_ID]:
-                if string.find(pci_infos, card[i][VENDOR_ID] + ':' + card[i][DEVICE_ID]) >0:
-                    return {i : card[i]}
-                elif idl and idl.count(card[i][VENDOR_ID] + card[i][DEVICE_ID]) >0:
-                    return {i : card[i]}
+        for i in __card.keys():
+            if __card[i][VENDOR_ID] and __card[i][DEVICE_ID]:
+                if string.find(pci_infos, __card[i][VENDOR_ID] + ':' + __card[i][DEVICE_ID]) >0:
+                    return {i : __card[i]}
+                elif idl and idl.count(__card[i][VENDOR_ID] + __card[i][DEVICE_ID]) >0:
+                    return {i : __card[i]}
 
     def get_resource(self, name):
-        global card
-        if card.has_key(name):
+        global __card
+        if __card.has_key(name):
+			# FIXME: remove Cardinfo
             self.Description = name
-            self.Type = card[name][TYPE]
-            self.IRQ = card[name][IRQ]
-            self.IoPort = card[name][IO]
-            self.IoPort1 = card[name][IO1]
-            self.IoPort2 = card[name][IO2]
-            self.Mem = card[name][MEM]
-            self.VendorId = card[name][VENDOR_ID]
-            self.DeviceId = card[name][DEVICE_ID]
-            self.DriverId = card[name][DRIVER_ID]
-            self.Firmware = card[name][FIRMWARE]
-            self.ModuleName = card[name][MODUL]
+            self.Type = __card[name][TYPE]
+            self.IRQ = __card[name][IRQ]
+            self.IoPort = __card[name][IO]
+            self.IoPort1 = __card[name][IO1]
+            self.IoPort2 = __card[name][IO2]
+            self.Mem = __card[name][MEM]
+            self.VendorId = __card[name][VENDOR_ID]
+            self.DeviceId = __card[name][DEVICE_ID]
+            self.DriverId = __card[name][DRIVER_ID]
+            self.Firmware = __card[name][FIRMWARE]
+            self.ModuleName = __card[name][MODUL]
 
 
 if __name__ == "__main__":
@@ -289,5 +290,5 @@ if __name__ == "__main__":
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.28 $"
+__date__ = "$Date: 2007/07/13 12:33:07 $"
+__version__ = "$Revision: 1.29 $"
