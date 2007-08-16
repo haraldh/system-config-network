@@ -11,6 +11,7 @@ IDL_FILES = \
 
 PYTHON_FILES = \
 	__init__.py \
+	exception.py \
 	genClass.py \
 	ipcalc.py \
 	NCCallback.py \
