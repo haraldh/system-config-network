@@ -96,6 +96,7 @@ newversion:
 	$(MAKE) srpm
 
 potfile:
-	sh -c '(find . -name "*.desktop.in";find ./src -name "*.py";find ./src/netconfpkg/gui -name "*.glade") > po/POTFILES.in'
+	chmod u+w po/POTFILES.in
+	sh -c '(find . -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade") > po/POTFILES.in'
 	make 
 	make -C po update-po
