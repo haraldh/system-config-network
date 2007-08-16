@@ -54,7 +54,7 @@ class NCTcpIpDialog:
         """
 
         if self.dynip.selected():
-            state=FLAGS_SET
+            state=snack.FLAGS_SET
         else:
             state=snack.FLAGS_RESET
         for i in self.statip,self.netmask,self.gw:
