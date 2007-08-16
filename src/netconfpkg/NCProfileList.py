@@ -78,16 +78,20 @@ class ProfileList(ProfileList_base):
         proflist = []
         if os.path.isdir(getRoot() + SYSCONFPROFILEDIR):
             proflist = os.listdir(getRoot() + SYSCONFPROFILEDIR)
-            for pr in proflist:
-                # 60016
-                profdir = getRoot() + SYSCONFPROFILEDIR + '/' + pr
-                if not os.path.isdir(profdir):
-                    continue
-                self.loadprof(pr, profdir)
+            if proflist:
+                for pr in proflist:
+                    # 60016
+                    profdir = getRoot() + SYSCONFPROFILEDIR + '/' + pr
+                    if not os.path.isdir(profdir):
+                        continue
+                    self.loadprof(pr, profdir)                
+            else:
+                self.loadprof('default', None)
         else:
             self.loadprof('default', None)
 
         prof = self.getActiveProfile()
+        log.log(5, "ActiveProfile: %s" % str(prof))        
         prof.DNS.Hostname = self.use_hostname
         self.commit(changed)
 
@@ -108,9 +112,12 @@ class ProfileList(ProfileList_base):
         else:
             prof.Active = False
 
+        devlist = []
+
         if profdir:
             devlist = ConfDevices(profdir)
-        else:
+
+        if not devlist:
             devlist = ConfDevices(getRoot() + OLDSYSCONFDEVICEDIR)
 
         for dev in devlist:

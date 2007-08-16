@@ -40,14 +40,20 @@ class DeviceList(DeviceList_base):
 
         df = getDeviceFactory()
         devdir = getRoot() + SYSCONFDEVICEDIR
+        devices = []
+        
+        log.log(5, "Checking %s" % devdir)
         if os.path.isdir(devdir):
             devices = ConfDevices()
-        else:
+            
+        if not devices:
+            log.log(5, "Checking %s" % devdir)
             devdir = getRoot() + OLDSYSCONFDEVICEDIR
             devices = ConfDevices(devdir)
 
         msg = ""
         for dev in devices:
+            log.log(5, "Checking %s" % dev)
             if dev == 'lo':
                 continue
             conf = ConfDevice(dev, devdir)
@@ -311,5 +317,5 @@ def getNextDev(base):
     return base + str(num)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:27:14 $"
-__version__ = "$Revision: 1.68 $"
+__date__ = "$Date: 2007/08/16 14:13:18 $"
+__version__ = "$Revision: 1.69 $"
