@@ -82,7 +82,7 @@ tag:
 	cvs ci -m "release $(VERSION)-$(RPM_RELEASE)"
 	cvs tag -cR $(CVSTAG) .
 
-tag-srpm: changelog tag archive
+tag-srpm: potfile changelog tag archive
 	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
 
 force-tag-srpm: force-tag archive
@@ -97,3 +97,5 @@ newversion:
 
 potfile:
 	sh -c '(find . -name "*.desktop.in";find ./src -name "*.py";find ./src/netconfpkg/gui -name "*.glade") > po/POTFILES.in'
+	make 
+	make -C po update-po
