@@ -67,6 +67,8 @@ VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
 archive: changelog
+	@chmod u+w -R /tmp/${PKGNAME}-$(VERSION)
+	@chmod u+w -R /tmp/${PKGNAME}
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
 	@cd /tmp/${PKGNAME};./autogen.sh;make distcheck
@@ -82,7 +84,7 @@ tag:
 	cvs ci -m "release $(VERSION)-$(RPM_RELEASE)"
 	cvs tag -cR $(CVSTAG) .
 
-tag-srpm: potfile changelog tag archive
+tag-srpm: potfile distcheck changelog tag archive
 	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
 
 force-tag-srpm: force-tag archive
@@ -96,8 +98,8 @@ newversion:
 	$(MAKE) srpm
 
 potfile:
-	chmod u+w po/POTFILES.in
-	sh -c '(find . -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade") > po/POTFILES.in'
-	sh -c '(find . -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade") > po/POTFILES.skip'
+	chmod u+w -R  .
+	sh -c '(find . -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade") |sed -e "s#^\./##g"> po/POTFILES.in'
+	sh -c '(find . -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade") |sed -e "s#^\./##g"> po/POTFILES.skip'
 	make 
 	make -C po update-po
