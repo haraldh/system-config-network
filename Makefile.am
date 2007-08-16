@@ -67,8 +67,6 @@ VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
 archive: changelog
-	@chmod u+w -R /tmp/${PKGNAME}-$(VERSION)
-	@chmod u+w -R /tmp/${PKGNAME}
 	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
 	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
 	@cd /tmp/${PKGNAME};./autogen.sh;make distcheck
