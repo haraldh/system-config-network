@@ -98,5 +98,6 @@ newversion:
 potfile:
 	chmod u+w po/POTFILES.in
 	sh -c '(find . -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade") > po/POTFILES.in'
+	sh -c '(find . -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade") > po/POTFILES.skip'
 	make 
 	make -C po update-po
