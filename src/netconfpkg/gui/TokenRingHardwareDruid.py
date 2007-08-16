@@ -1,4 +1,4 @@
-# Copyright (C) 2001-2005 Red Hat, Inc.
+## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 ## Copyright (C) 2001, 2002 Philipp Knirsch <pknirsch@redhat.com>
@@ -91,21 +91,6 @@ class tokenringHardware:
             self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
             self.xml.get_widget('adapterEntry').set_sensitive(False)
             self.xml.get_widget('adapterComboBox').set_sensitive(False)
-            if self.hw.Card.IRQ:
-                self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
-            if self.hw.Card.Mem:
-                self.xml.get_widget('memEntry').set_text(self.hw.Card.Mem)
-            if self.hw.Card.IoPort:
-                self.xml.get_widget('ioEntry').set_text(self.hw.Card.IoPort)
-            if self.hw.Card.IoPort1:
-                self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
-            if self.hw.Card.IoPort2:
-                self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
-            if self.hw.Card.DMA0:
-                self.xml.get_widget('dma0Entry').set_text(self.hw.Card.DMA0)
-            if self.hw.Card.DMA1:
-                self.xml.get_widget('dma1Entry').set_text(self.hw.Card.DMA1)
-
         else:
             nextdev = NCHardwareList.getNextDev("tr")
             self.xml.get_widget('tokenringDeviceEntry').set_text(nextdev)
@@ -135,16 +120,6 @@ class tokenringHardware:
         self.hw.createCard()
         self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()
         self.hw.Description = self.xml.get_widget('adapterEntry').get_text()
-        if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
-           self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
-            self.hw.Card.IRQ = None
-        else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
-        self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
-        self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
-        self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
-        self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-        self.hw.Card.DMA0 = self.xml.get_widget('dma0Entry').get_text()
-        self.hw.Card.DMA1 = self.xml.get_widget('dma1Entry').get_text()
         modInfo = NCHardwareList.getModInfo()
         self.hw.Card.ModuleName = 'Unknown'
         for i in modInfo.keys():

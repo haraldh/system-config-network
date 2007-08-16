@@ -108,22 +108,6 @@ class ethernetHardwareDialog:
                 self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
             self.xml.get_widget('adapterEntry').set_sensitive(False)
             self.xml.get_widget('adapterComboBox').set_sensitive(False)
-            # FIXME: no more HW parameter
-            if False:
-                if self.hw.Card.IRQ:
-                    self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
-                if self.hw.Card.Mem:
-                    self.xml.get_widget('memEntry').set_text(self.hw.Card.Mem)
-                if self.hw.Card.IoPort:
-                    self.xml.get_widget('ioEntry').set_text(self.hw.Card.IoPort)
-                if self.hw.Card.IoPort1:
-                    self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
-                if self.hw.Card.IoPort2:
-                    self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
-                if self.hw.Card.DMA0:
-                    self.xml.get_widget('dma0Entry').set_text(str(self.hw.Card.DMA0))
-                if self.hw.Card.DMA1:
-                    self.xml.get_widget('dma1Entry').set_text(str(self.hw.Card.DMA1))
         else:
             hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
@@ -148,24 +132,6 @@ class ethernetHardwareDialog:
         if not self.hw.Type:
             self.hw.Type = ETHERNET
         self.hw.createCard()
-        # FIXME: no more HW parameter
-        if False:
-            if self.xml.get_widget('irqEntry').get_text() == 'Unknown' or \
-               self.xml.get_widget('irqEntry').get_text() == _('Unknown'):
-                self.hw.Card.IRQ = None
-            else: self.hw.Card.IRQ = self.xml.get_widget('irqEntry').get_text()
-    
-            self.hw.Card.Mem = self.xml.get_widget('memEntry').get_text()
-            self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
-            self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
-            self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
-            val=self.xml.get_widget('dma0Entry').get_text()
-            if val:
-                self.hw.Card.DMA0 = int(val)
-            val=self.xml.get_widget('dma1Entry').get_text()
-            if val:
-                self.hw.card.DMA1 = int(val)
-
         modInfo = NCHardwareList.getModInfo()
         if not self.hw.Card.ModuleName or self.hw.Card.ModuleName == "":
             self.hw.Card.ModuleName = _('Unknown')
