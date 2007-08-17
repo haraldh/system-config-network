@@ -13,7 +13,7 @@ Provides: redhat-config-network = %{version}
 BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, yelp, perl-XML-Parser
 Requires: %{name}-tui = %{version}-%{release}
 Requires: libglade2, pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
 This is the GUI of the network configuration tool,
@@ -46,7 +46,8 @@ mkdir $RPM_BUILD_ROOT%{_datadir}/applications
 for i in neat.desktop neat-control.desktop; do \
   desktop-file-install --vendor redhat --delete-original       \
     --dir $RPM_BUILD_ROOT%{_datadir}/applications             \
-    --add-category X-Red-Hat-Base                             \
+    --add-category System                                     \
+    --add-category Settings                                   \
     $RPM_BUILD_ROOT%{_datadir}/system-config-network/$i; \
 done;
 
