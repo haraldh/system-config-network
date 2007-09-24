@@ -68,6 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-control-network
 %{_sbindir}/neat
 %{_bindir}/neat
+%{_datadir}/applications/*
+%{_datadir}/pixmaps/*
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -84,8 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/system-config-network/netconfpkg/*.idl
 %{_datadir}/system-config-network/module-info
 %{_datadir}/system-config-network/providerdb
-%{_datadir}/pixmaps/*
-%{_datadir}/applications/*
 %config(noreplace) %{_sysconfdir}/pam.d/*
 %config(noreplace) %{_sysconfdir}/security/console.apps/*
 %{_sbindir}/neat-tui
