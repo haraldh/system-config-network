@@ -260,21 +260,22 @@ class Device( Device_base ):
                                 'route-' + self.DeviceId )
         # load routes
         rconf = ConfRoute( name )
-        num = len( rconf.keys() )
         self.createStaticRoutes()
 
-        # FIXME: better parsing of static routes!
-        if math.fmod( num, 3 ) != 0:
-            NC_functions.generic_error_dialog( ( _( "Static routes file %s "
-                                                 "is invalid" ) ) % name )
-        else:
-            for p in xrange( 0, int( num/3 ) ):
+        for key in rconf.keys():
+            if key.startswith("ADDRESS"):
+                try:
+                    p = int(key[7:])
+                except:
+                    continue
                 i = self.StaticRoutes.addRoute()
                 route = self.StaticRoutes[i]
-                route.Address = rconf['ADDRESS' + str( p )]
-                route.Netmask = rconf['NETMASK' + str( p )]
-                route.Gateway = rconf['GATEWAY' + str( p )]
-
+                route.Address = rconf['ADDRESS' + str(p)]                
+                if rconf.has_key("NETMASK" + str(p)):
+                    route.Netmask = rconf['NETMASK' + str( p )]
+                if rconf.has_key("GATEWAY" + str(p)):
+                    route.Gateway = rconf['GATEWAY' + str( p )]
+                
         self.commit( changed=False )
 
     def save( self ):

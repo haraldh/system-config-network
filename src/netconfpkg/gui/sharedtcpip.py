@@ -164,7 +164,6 @@ def dhcp_dehydrate (xml, device):
         device.Mtu = None
 
 
-
 ###
 ### ROUTES
 ###
@@ -174,7 +173,7 @@ def route_update(xml, device):
 
     if device.StaticRoutes != None:
         for route in device.StaticRoutes:
-            clist.append([route.Address, route.Netmask, route.Gateway])
+            clist.append([route.Address, route.Netmask or "", route.Gateway or ""])
     else:
         device.createStaticRoutes()
 
@@ -430,5 +429,5 @@ def dsl_hardware_dehydrate(xml, device):
     device.Dialup.EthDevice = string.split(hw)[0]
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 13:02:26 $"
-__version__ = "$Revision: 1.44 $"
+__date__ = "$Date: 2007/09/24 08:39:46 $"
+__version__ = "$Revision: 1.45 $"
