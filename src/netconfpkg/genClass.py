@@ -19,8 +19,8 @@ file (alchemist style).
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 __author__ = "Harald Hoyer"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.30 $"
+__date__ = "$Date: 2007/09/24 08:40:16 $"
+__version__ = "$Revision: 1.31 $"
 
 import new
 from UserList import UserList
@@ -628,6 +628,8 @@ class GenClassAList(GenClass, UserList):
 
         for child in self._attributes[SELF][CHILDKEYS]:
             val = self._attributes[child]
+            if not hasattr(self, "getNum" + child):
+                return
             for pos in xrange(getattr(self, "getNum" + child)()):
                 getattr(self, "del" + child)(0)
 
@@ -992,6 +994,9 @@ def GenClass_read_classfile(boxpath, mod, OptLower = False):
 __credits__ = """
 Changelog:
 $Log: genClass.py,v $
+Revision 1.31  2007/09/24 08:40:16  harald
+do not traceback for apply()
+
 Revision 1.30  2007/03/14 09:29:37  harald
 reindent files to use 4-space indents and no hard tab characters.
 
