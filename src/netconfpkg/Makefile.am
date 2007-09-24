@@ -14,6 +14,8 @@ PYTHON_FILES = \
 	exception.py \
 	genClass.py \
 	ipcalc.py \
+	log.py \
+	NCBackendHal.py \
 	NCCallback.py \
 	NCCipe.py \
 	NCCompression.py \
