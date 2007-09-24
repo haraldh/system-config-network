@@ -51,7 +51,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
         if request_rpms(["rp-pppoe"]):
             return
 
-        glade_file = 'ADSLInterfaceDruidDruid.glade'
+        glade_file = 'ADSLInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file

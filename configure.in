@@ -20,6 +20,10 @@ AM_GLIB_GNU_GETTEXT
 AC_PROG_INTLTOOL
 AC_PROG_LN_S
 
+perl -e 'print "PRG_TRANSLATORS = [[\n";LINE:;while(<>) { if (/^# (.*<.*>)/) { print "  \"$1\",\n";}};print "]]\n"' $srcdir/po/*.po > ./translators.txt
+AC_SUBST_FILE(PRG_TRANSLATORS)dnl
+PRG_TRANSLATORS=./translators.txt
+
 AC_SUBST(RPM_RELEASE)
 
 AC_OUTPUT([

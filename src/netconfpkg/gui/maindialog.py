@@ -1632,8 +1632,8 @@ class mainDialog:
         self.hydrateHardware()
 
     def on_about_activate(self, *args):
-        from version import PRG_VERSION
-        from version import PRG_NAME
+        from version import PRG_VERSION, PRG_NAME, \
+			    PRG_AUTHORS, PRG_DOCUMENTERS, PRG_TRANSLATORS
         if not hasattr(gtk, "AboutDialog"):
             import gnome.ui
             dlg = gnome.ui.About(PRG_NAME,
@@ -1655,15 +1655,12 @@ class mainDialog:
             dlg.set_name(PRG_NAME)
             dlg.set_version(PRG_VERSION)
             dlg.set_copyright(_("Copyright (c) 2001-2005 Red Hat, Inc."))
-            dlg.set_authors(["Harald Hoyer <harald@redhat.com>",
-                             "Than Ngo <than@redhat.com>",
-                             "Philipp Knirsch <pknirsch@redhat.com>",
-                             "Trond Eivind Glomsrød <teg@redhat.com>",
-                             ])
-            dlg.set_documenters(["Tammy Fox <tfox@redhat.com>"])
-            dlg.set_copyright(_("This software is distributed under the GPL. \n"
-                                "Please Report bugs to Red Hat's Bug Tracking \n"
-                                "System: http://bugzilla.redhat.com/"))
+            dlg.set_authors(PRG_AUTHORS)
+            dlg.set_documenters(PRG_DOCUMENTERS + [ " " ] + PRG_TRANSLATORS)
+            dlg.set_translator_credits(_("translator_credits"))
+            dlg.set_license(_("This software is distributed under the GPL. \n"
+                              "Please Report bugs to Red Hat's Bug Tracking \n"
+                              "System: http://bugzilla.redhat.com/"))
             dlg.set_transient_for(self.dialog)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dlg.run()

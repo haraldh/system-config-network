@@ -15,7 +15,7 @@ icons_DATA=neat.desktop neat-control.desktop
 icons_in_files=$(icons_DATA:.desktop=.desktop.in)
 
 CLEANFILES=$(icons_DATA) $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*))
-DISTCLEANFILES=intltool-extract intltool-merge intltool-update
+DISTCLEANFILES=intltool-extract intltool-merge intltool-update translators.txt
 MAINTAINERCLEANFILES=ChangeLog
 
 @INTLTOOL_DESKTOP_RULE@
