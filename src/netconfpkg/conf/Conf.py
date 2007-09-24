@@ -488,12 +488,12 @@ class ConfEHosts(Conf):
             # initialize dictionary of variable/name pairs
             var = self.getfields()
             if self.vars.has_key(var[0]):
-                print var[1:]
-                print self.vars[var[0]]
+                #print var[1:]
+                #print self.vars[var[0]]
                 self.vars[var[0]][1].append(var[1])
                 if len(var) > 2:
                     self.vars[var[0]][1].extend(var[2:])
-                print self.vars[var[0]]
+                #print self.vars[var[0]]
             else:
                 if len(var) > 2:
                     # has nicknames
