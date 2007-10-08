@@ -19,17 +19,12 @@ file (alchemist style).
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 __author__ = "Harald Hoyer"
-__date__ = "$Date: 2007/09/24 08:40:16 $"
-__version__ = "$Revision: 1.31 $"
+__date__ = "$Date: 2007/10/08 11:04:33 $"
+__version__ = "$Revision: 1.32 $"
 
 import new
-from UserList import UserList
 import sys
 import traceback
-from types import *
-# first some defines
-True = (1==1)
-False = not True
 
 Alchemist = None
 LIST = "LIST"
@@ -360,6 +355,10 @@ def _install_funcs(baseclass):
             setattr(baseclass, func + i,
                     new.instancemethod(nfunc, None, baseclass))
 
+        setattr(baseclass, i, property(fget = getattr(baseclass, "get"+i, None), 
+                                       fset = getattr(baseclass, "set"+i, None),
+                                       fdel = getattr(baseclass, "del"+i, None)))
+                
     #install_funcs = classmethod(install_funcs)
 
 #
@@ -421,11 +420,11 @@ class GenClassList(GenClass):
     def _delAttr(self, child=None):
         self.__dict__[child] = None
 
-    def __setattr__(self, name, value):
-        if hasattr(self, "set" + name):
-            getattr(self, "set" + name)(value)
-        else:
-            self.__dict__[name] = value
+#    def __setattr__(self, name, value):
+#        if hasattr(self, "set" + name):
+#            getattr(self, "set" + name)(value)
+#        else:
+#            self.__dict__[name] = value
 
     def toContext(self, list):
         list = GenClass.toContext(self, list)
@@ -533,17 +532,16 @@ def GenClassList_get_install_funcs(klass, val):
 #
 # Anonymous List
 #
-class GenClassAList(GenClass, UserList):
+class GenClassAList(GenClass, list):
     def __init__(self, list = None, parent = None):
-        UserList.__init__(self)
+        list.__init__(self)
         GenClass.__init__(self, list, parent)
 
     def _doClear(self):
-        self.data = []
         self.data_bak = []
 
     def test(self):
-        for child in self.data:
+        for child in self:
             child.test()
 
     def __str__(self):
@@ -558,7 +556,7 @@ class GenClassAList(GenClass, UserList):
 
         for i in self._attributes[SELF][CHILDKEYS]:
             val = self._attributes[i]
-            for child in self.data:
+            for child in self:
                 nchild = list.addChild(self._attributes[i][TYPE],
                                        self._attributes[i][NAME])
                 if val[TYPE] == LIST:
@@ -567,18 +565,18 @@ class GenClassAList(GenClass, UserList):
                     nchild.setValue(child)
 
     def commit(self, changed=True):
-        if self.data_bak != None and self.data == None:
+        if self.data_bak != None and len(self):
             #print "%s changed" % self._attributes[SELF][NAME]
             self.setChanged(changed)
-        elif self.data_bak == None and self.data != None:
+        elif self.data_bak == None and len(self):
             #print "%s changed" % self._attributes[SELF][NAME]
             self.setChanged(changed)
-        elif len(self.data_bak) != len(self.data):
+        elif len(self.data_bak) != len(self):
             #print "%s changed" % self._attributes[SELF][NAME]
             self.setChanged(changed)
         else:
             for i in xrange(0, len(self.data_bak)):
-                if self.data_bak[i] != self.data[i]:
+                if self.data_bak[i] != self[i]:
                     #print "%s changed" % self._attributes[SELF][NAME]
                     self.setChanged(changed)
                     break
@@ -587,10 +585,10 @@ class GenClassAList(GenClass, UserList):
             val = self._attributes[i]
 
             if val[TYPE] == LIST:
-                for child in self.data:
+                for child in self:
                     child.commit(changed)
 
-        self.data_bak = self.data[:]
+        self.data_bak = self[:]
 
     def fromContext(self, list):
         if not list: return
@@ -607,11 +605,11 @@ class GenClassAList(GenClass, UserList):
                 for j in xrange(list.getNumChildren()):
                     child = self.newClass(self._attributes[i][NAME],
                                           list.getChildByIndex(j), self)
-                    self.data.append(child)
+                    self.append(child)
             else:
                 for i in xrange(list.getNumChildren()):
                     child = list.getChildByIndex(i)
-                    self.data.append(child.getValue())
+                    self.append(child.getValue())
 
     def rollback(self):
         for childkey in self._attributes[SELF][CHILDKEYS]:
@@ -619,7 +617,7 @@ class GenClassAList(GenClass, UserList):
             if val[TYPE] == LIST:
                 for child in self.data_bak:
                     child.rollback()
-        self.data = self.data_bak[:]
+        self = self.data_bak[:]
 
     def apply(self, other):
         if other == None:
@@ -645,20 +643,20 @@ class GenClassAList(GenClass, UserList):
                           getattr(other, "get" + child)(pos))
 
     def _getAttr(self, pos, child = None):
-        return self.data[pos]
+        return self[pos]
 
     def _delAttr(self, pos, child = None):
-        self.data.pop(pos)
+        self.pop(pos)
         return 0
 
     def _getNumAttr(self, child = None):
-        return len(self.data)
+        return len(self)
 
     def _moveAttr(self, pos1, pos2, child = None):
         direct = 0
         if pos2 > pos1: direct = 1
-        obj = self.data.pop(pos1)
-        self.data.insert(obj, pos2 - direct)
+        obj = self.pop(pos1)
+        self.insert(obj, pos2 - direct)
         return 0
 
     def __setitem__(self, i, item):
@@ -667,24 +665,15 @@ class GenClassAList(GenClass, UserList):
         self.checkType(child, item)
         if isinstance(item, GenClass):
             item._setParent(self)
-        UserList.__setitem__(self, i, item)
-
-    def __getslice__(self, i, j):
-        return  UserList.__getslice__(self, i, j)
-
-    def __setslice__(self, i, j, s):
-        return UserList.__setslice__(self, i, j, s)
-
-    def __delslice__(self, i, j):
-        return UserList.__delslice__(self, i, j)
+        list.__setitem__(self, i, item)
 
     def _addAttr(self, child = None):
         if self._attributes[child][TYPE] == LIST:
             nchild = self.newClass(self._attributes[child][NAME], None, self)
-            self.data.append(nchild)
+            self.append(nchild)
         else:
-            self.data.append(None)
-        return len(self.data)-1
+            self.append(None)
+        return len(self)-1
 
     #
     # List-Child functions
@@ -695,12 +684,12 @@ class GenClassAList(GenClass, UserList):
 
     def append(self, item):
         #print "------- %s::append()  -------" % self._attributes[SELF][NAME]
-        UserList.append(self, item)
+        list.append(self, item)
         if isinstance(item, GenClass):
             item._setParent(self)
 
     def insert(self, i, item):
-        UserList.insert(self, i, item)
+        list.insert(self, i, item)
         item._setParent(self)
 
     #
@@ -709,7 +698,7 @@ class GenClassAList(GenClass, UserList):
     def _setAttr(self, pos, value, child = None):
         #print "_setAttr"
         self.checkType(child, value)
-        self.data[pos] = value
+        self[pos] = value
         return 0
 
 def GenClassAList_get_install_funcs(klass, val):
@@ -989,33 +978,3 @@ def GenClass_read_classfile(boxpath, mod, OptLower = False):
                 pass
 
         __GenClass_read_classfile(boxpath, mod, OptLower)
-
-
-__credits__ = """
-Changelog:
-$Log: genClass.py,v $
-Revision 1.31  2007/09/24 08:40:16  harald
-do not traceback for apply()
-
-Revision 1.30  2007/03/14 09:29:37  harald
-reindent files to use 4-space indents and no hard tab characters.
-
-Revision 1.29  2007/03/14 09:03:33  harald
-untabified source
-
-Revision 1.28  2007/03/08 12:56:42  harald
-true -> True, false -> False
-
-Revision 1.27  2007/03/07 13:44:40  harald
-merged changes from EL5
-
-Revision 1.20  2006/07/25 09:26:03  harald
-correctly parse bool values
-
-Revision 1.19  2005/12/14 21:18:33  clumens
-Stop using rhpl.log.
-
-Revision 1.18  2003/04/29 10:39:23  harald
-some restructuring and documentation
-
-"""
