@@ -783,7 +783,7 @@ def link(src, dst):
         os.link(src, dst)
         # restore selinux context
         try:
-            generic_run("/sbin/restorecon", [ dst ])
+            os.system("/sbin/restorecon %s >/dev/null 2>&1" % dst)
         except:
             pass
         log.log(2, "ln %s %s" % (src, dst))
@@ -797,7 +797,7 @@ def copy(src, dst):
         shutil.copy(src, dst)
         shutil.copymode(src, dst)
         try:
-            generic_run("/sbin/restorecon", [ dst ])
+            os.system("/sbin/restorecon %s >/dev/null 2>&1" % dst)
         except:
             pass
         log.log(2, "cp %s %s" % (src, dst))
@@ -929,10 +929,10 @@ def updateNetworkScripts(force = False):
 
     prepareRoot(getRoot())
 
-    firsttime = 0
+    firsttime = False
 
     if not os.path.isdir(getRoot() + SYSCONFPROFILEDIR+'/default/'):
-        firsttime = 1
+        firsttime = True
         mkdir(getRoot() + SYSCONFPROFILEDIR+'/default')
 
     curr_prof = 'default'
@@ -966,14 +966,13 @@ def updateNetworkScripts(force = False):
         unlink(pfile)
         link(dfile, pfile)
 
-        for (file, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
-            hostfile = getRoot() + file
-            conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
-                       curr_prof + cfile
-            if not os.path.isfile(hostfile) or not issamefile(hostfile, conffile):
-                rename(hostfile, hostfile + '.bak')
-                unlink(conffile)
-                link(hostfile, conffile)
+    for (file, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
+        hostfile = getRoot() + file
+        conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
+            curr_prof + cfile
+        if not os.path.isfile(conffile) or not issamefile(hostfile, conffile):
+            unlink(conffile)
+            link(hostfile, conffile)
 
     __updatedNetworkScripts = 1
 

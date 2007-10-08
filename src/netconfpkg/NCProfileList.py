@@ -489,7 +489,7 @@ class ProfileList(ProfileList_base):
                 hostfile = getRoot() + file
                 conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
                            prof.ProfileName + cfile
-                if not os.path.isfile(hostfile) or not issamefile(hostfile, conffile):
+                if os.path.isfile(conffile) and (not os.path.isfile(hostfile) or not issamefile(hostfile, conffile)):
                     rename(hostfile, hostfile + '.bak')
                     unlink(hostfile)
                     link(conffile, hostfile)
@@ -611,6 +611,7 @@ class ProfileList(ProfileList_base):
             return prof
 
         if len(self):
+            self[0].Active=True
             return self[0]
 
     def _objToStr(self, parentStr = None):
