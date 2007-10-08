@@ -19,8 +19,8 @@ file (alchemist style).
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 __author__ = "Harald Hoyer"
-__date__ = "$Date: 2007/10/08 11:04:33 $"
-__version__ = "$Revision: 1.32 $"
+__date__ = "$Date: 2007/10/08 11:11:23 $"
+__version__ = "$Revision: 1.33 $"
 
 import new
 import sys
@@ -355,6 +355,7 @@ def _install_funcs(baseclass):
             setattr(baseclass, func + i,
                     new.instancemethod(nfunc, None, baseclass))
 
+        # speedup get and set by using properties
         setattr(baseclass, i, property(fget = getattr(baseclass, "get"+i, None), 
                                        fset = getattr(baseclass, "set"+i, None),
                                        fdel = getattr(baseclass, "del"+i, None)))
