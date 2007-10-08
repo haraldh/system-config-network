@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 10:59+0200\n"
+"POT-Creation-Date: 2007-10-08 13:28+0200\n"
 "PO-Revision-Date: 2007-07-27 21:55+0200\n"
 "Last-Translator: Zoran Dimovski <zoki.dimovski@gmail.com>\n"
 "Language-Team: Macedonian\n"
@@ -18,6 +18,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+
+#: ../neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "Контролирај и надгледувај мрежни уреди"
+
+#: ../neat-control.desktop.in.h:2
+#: ../src/netconfpkg/gui/neat-control.glade.h:12
+msgid "Network Device Control"
+msgstr "Контрола врз мрежните уреди"
 
 #: ../neat.desktop.in.h:1
 msgid "Configure network devices and connections"
@@ -32,300 +41,108 @@ msgstr "Мрежа"
 msgid "Network Configuration"
 msgstr "Мрежна конфигурација"
 
-#: ../neat-control.desktop.in.h:1
-msgid "Control and monitor network devices"
-msgstr "Контролирај и надгледувај мрежни уреди"
+#: ../src/netconfpkg/NCBackendHal.py:50 ../src/netconfpkg/NCDeviceList.py:72
+#: ../src/netconfpkg/NCDevice.py:231 ../src/netconfpkg/NCHardwareList.py:442
+#: ../src/netconfpkg/NCHardwareList.py:562
+#: ../src/netconfpkg/gui/tokenringhardware.py:111
+#: ../src/netconfpkg/gui/ethernethardware.py:137
+#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
+#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
+#: ../src/netconfpkg/NC_functions.py:388
+msgid "Unknown"
+msgstr "Непознато"
 
-#: ../neat-control.desktop.in.h:2
-#: ../src/netconfpkg/gui/neat-control.glade.h:12
-msgid "Network Device Control"
-msgstr "Контрола врз мрежните уреди"
+#: ../src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "неактивно"
 
-#: ../src/netconf-cmd.py:62
-#, python-format
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.\n"
-"Please file a detailed bug report against the component %s at \n"
-"https://bugzilla.redhat.com/bugzilla\n"
-"using the text below.\n"
-msgstr ""
-"Се појави неочекувана грешка.  Ова најверојатно е бубачка.\n"
-"Ве молиме поднесете детален извештај за компонентата %s на \n"
-"https://bugzilla.redhat.com/bugzilla\n"
-"користејќи го текстов:\n"
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "систем"
 
-#: ../src/netconf-cmd.py:97
-#, python-format
-msgid "%s - network configuration commandline tool"
-msgstr "%s - алатка за конфигурација на мрежата од командната линија"
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "конфигурирано"
 
-#: ../src/netconf-cmd.py:98 ../src/neat-control.py:146
-#: ../src/neat-control.py:163 ../src/netconfpkg/gui/maindialog.py:1641
-#: ../src/netconfpkg/gui/maindialog.py:1657
-msgid "Copyright (c) 2001-2005 Red Hat, Inc."
-msgstr "Авторски права (c) 2001-2005 Red Hat, Inc."
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "во ред"
 
-#: ../src/netconf-cmd.py:99 ../src/neat-control.py:147
-#: ../src/netconfpkg/gui/maindialog.py:1642
-msgid ""
-"This software is distributed under the GPL. Please Report bugs to Red Hat's "
-"Bug Tracking System: http://bugzilla.redhat.com/"
-msgstr ""
-"Овој софтвер се дистрибуира под GPL. Ве молиме пријавувајте бубачки на Red "
-"Hat системот за следење на бубачки: http://bugzilla.redhat.com/"
+#: ../src/netconfpkg/NCDeviceList.py:117
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "Ги променив следниве прекари поради скриптите за иницијализација:\n"
 
-#: ../src/netconf-cmd.py:102
-#, python-format
-msgid "Usage: %s"
-msgstr "Употреба: %s"
+#: ../src/netconfpkg/NCDeviceList.py:120
+msgid "Nicknames changed"
+msgstr "Прекарите се променети"
 
-#: ../src/netconf-cmd.py:104
-msgid "switch / activate profile"
-msgstr "префрли / активирај профил"
-
-#: ../src/netconf-cmd.py:106
-msgid "export / import hardware list"
-msgstr "извези /увези хардверска листа"
-
-#: ../src/netconf-cmd.py:108
-msgid "export / import IPsec list"
-msgstr "извези / увези IPsec листа"
-
-#: ../src/netconf-cmd.py:110
-msgid "export / import device list (default)"
-msgstr "извези / увези листа со уреди (стандардно)"
-
-#: ../src/netconf-cmd.py:112
-msgid "export / import profile list"
-msgstr "извези / увези листа со профили"
-
-#: ../src/netconf-cmd.py:114
-msgid "set the root directory"
-msgstr "постави го root директориумот"
-
-#: ../src/netconf-cmd.py:116
-msgid "export list (default)"
-msgstr "извези листа (стандардно)"
-
-#: ../src/netconf-cmd.py:117
-msgid "import list"
-msgstr "увези листа"
-
-#: ../src/netconf-cmd.py:119
-msgid "clear existing list prior of importing"
-msgstr "исчисти ја постоечката листа пред да увезеш"
-
-#: ../src/netconf-cmd.py:121
-msgid "import from file"
-msgstr "увези од датотека"
-
-#: ../src/netconf-cmd.py:264
-#, python-format
-msgid "Unknown option %s\n"
-msgstr "Непозната опција %s\n"
-
-#: ../src/netconf-cmd.py:325
-#, python-format
-msgid "Unknown List %s\n"
-msgstr "Непозната листа %s\n"
-
-#: ../src/netconf-cmd.py:329 ../src/netconfpkg/genClass.py:302
-#, python-format
-msgid "Error parsing line: %s"
-msgstr "Грешка при парсирање на линијата: %s"
-
-#: ../src/netconf-tui.py:99
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.  Please save "
-"the crash dump and file a detailed bug report against system-config-network "
-"at https://bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Се појави непредвидена грешка.  Ова најверојатно е бубачка.  Ве молиме "
-"зачувајте го излезот од грешката и поднесете извештај за бубачката против "
-"system-config-network на https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconf-tui.py:127
-msgid "Loading configuration"
-msgstr "Вчитување конфигурација"
-
-#: ../src/netconf-tui.py:128
-msgid "Loading Device Configuration"
-msgstr "Вчитување конфигурација на уредот"
-
-#: ../src/netconf-tui.py:134
-msgid "Loading Hardware Configuration"
-msgstr "Вчитување конфигурација на хадрверот"
-
-#: ../src/netconf-tui.py:138
-msgid "Loading Profile Configuration"
-msgstr "Вчитување конфигурација на профили"
-
-#: ../src/netconf-tui.py:152
-#, fuzzy
-msgid "Which device type do you want to add?"
-msgstr "Тој тип на уреди %s не можат да бидат конфигурирани!"
-
-#: ../src/netconf-tui.py:153
-#, fuzzy
-msgid "Add"
-msgstr "_Додади..."
-
-#: ../src/netconf-tui.py:153 ../src/netconf-tui.py:205
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Cancel"
-msgstr "Откажи"
-
-#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
-msgid "Ethernet"
-msgstr "Етернет"
-
-#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
-msgid "Modem"
-msgstr "Модем"
-
-#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
-msgid "ISDN"
-msgstr "ISDN"
-
-#: ../src/netconf-tui.py:203
-msgid "<New Device>"
-msgstr "<New Device>"
-
-#: ../src/netconf-tui.py:204
-msgid "Select A Device"
-msgstr "Изберете уред"
-
-#: ../src/netconf-tui.py:205
-msgid "Quit"
-msgstr "Напушти"
-
-#: ../src/netconf-tui.py:222
-msgid ""
-"system-config-network - network configuration tool\n"
-"\n"
-"Usage: system-config-network -v --verbose -d --debug"
-msgstr ""
-"system-config-network - алатка за конфигурација на мрежа\n"
-"\n"
-"Употреба: system-config-network -v --verbose -d --debug"
-
-#: ../src/neat-control.py:50 ../src/netconf.py:72
-msgid "ERROR: Unable to initialize graphical environment. "
-msgstr "ГРЕШКА: Не можам да ја подготвам графичката околина. "
-
-#: ../src/neat-control.py:51 ../src/netconf.py:73
-msgid ""
-"Most likely cause of failure is that the tool was not run using a graphical "
-"environment. "
-msgstr ""
-"Најверојатно причина за неуспе е тоа што алатката не е пуштена користејќи "
-"графичка околина. "
-
-#: ../src/neat-control.py:52 ../src/netconf.py:74
-msgid ""
-"Please either start your graphical user interface or set your DISPLAY "
-"variable.\n"
-msgstr ""
-"Ве молам подигнете го графичкиот кориснички интерфејс или поставете ја "
-"варијаблата за приказ.\n"
-
-#: ../src/neat-control.py:170 ../src/netconfpkg/gui/maindialog.py:1661
-#, fuzzy
-msgid ""
-"This software is distributed under the GPL. \n"
-"Please Report bugs to Red Hat's Bug Tracking \n"
-"System: http://bugzilla.redhat.com/"
-msgstr ""
-"Овој софтвер се дистрибуира под GPL. Ве молиме пријавувајте бубачки на Red "
-"Hat системот за следење на бубачки: http://bugzilla.redhat.com/"
-
-#: ../src/neat-control.py:223
-#, python-format
-msgid "Cannot configure network device %s"
-msgstr "Не можам да го конфигурирам мрежниот уред %s"
-
-#: ../src/neat-control.py:243
-msgid "Switching Profiles"
-msgstr "Менување на профили"
-
-#: ../src/neat-control.py:244
-#, python-format
-msgid "Switching to profile %s"
-msgstr "Се преместувам на профилот %s"
-
-#: ../src/neat-control.py:245
-#, python-format
-msgid "Failed to switch to profile %s"
-msgstr "Неуспешно преместување на профилот %s"
-
-#. TBD
-#: ../src/neat-control.py:260
-msgid "To be rewritten!"
-msgstr "Да биде презапишано!"
-
-#: ../src/neat-control.py:367
-msgid " (active)"
-msgstr " (активно)"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:68
+#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCTcpIp.py:93
 #: ../src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Name"
 msgstr "Име"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:69
+#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCTcpIp.py:94
+#: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
 #: ../src/netconfpkg/gui/maindialog.glade.h:10
-#: ../src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Уред"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:68
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:70
+#: ../src/netconfpkg/tui/NCModemInterface.py:68
 #, fuzzy
 msgid "ISP Phonenumber"
 msgstr "Телефонски број:"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:69
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:71
+#: ../src/netconfpkg/tui/NCModemInterface.py:69
 msgid "ISP Login"
 msgstr ""
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:70
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:72
+#: ../src/netconfpkg/tui/NCModemInterface.py:70
 #, fuzzy
 msgid "ISP Password"
 msgstr "Лоз_инка:"
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:73
+msgid "MSN"
+msgstr ""
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+msgid "Ok"
+msgstr ""
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106 ../src/netconf-tui.py:153
+#: ../src/netconf-tui.py:205
+msgid "Cancel"
+msgstr "Откажи"
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:81
+#, fuzzy
+msgid "ISDN Configuration"
+msgstr "ISDN Dialup конфигурација"
 
 #: ../src/netconfpkg/tui/NCModemInterface.py:71
 #, fuzzy
 msgid "Modem Initstring"
 msgstr "Стринг за _иницијализација на модемот:"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Ok"
-msgstr ""
-
 #: ../src/netconfpkg/tui/NCModemInterface.py:79
 #: ../src/netconfpkg/gui/modemconfig.glade.h:6
 msgid "Modem Configuration"
 msgstr "Конфигурација на модем"
-
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:73
-msgid "MSN"
-msgstr ""
-
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:81
-#, fuzzy
-msgid "ISDN Configuration"
-msgstr "ISDN Dialup конфигурација"
 
 #: ../src/netconfpkg/tui/NCTcpIp.py:95
 msgid "Use DHCP"
@@ -350,103 +167,6 @@ msgstr "Стандардна адреса на премниот:"
 msgid "Devernet Configuration"
 msgstr "xDSL конфигурација"
 
-#: ../src/netconfpkg/NCHardwareList.py:442
-#: ../src/netconfpkg/NCHardwareList.py:562
-#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
-#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
-#: ../src/netconfpkg/NC_functions.py:388
-#: ../src/netconfpkg/gui/ethernethardware.py:137
-#: ../src/netconfpkg/gui/tokenringhardware.py:111
-#: ../src/netconfpkg/NCDeviceList.py:72 ../src/netconfpkg/NCDevice.py:231
-#: ../src/netconfpkg/NCBackendHal.py:50
-msgid "Unknown"
-msgstr "Непознато"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:77 ../src/netconfpkg/NCDevice.py:441
-msgid "Network device activating..."
-msgstr "Мрежниот уред се активира..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:78 ../src/netconfpkg/NCDevice.py:442
-#, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "Го активирам мрежниот уред %s, Ве молам почекајте..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:80 ../src/netconfpkg/NCDevice.py:444
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Не можам да го активирам мрежниот уред %s!\n"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
-#: ../src/netconfpkg/NCDevice.py:461
-msgid "Network device deactivating..."
-msgstr "Мрежниот уред се деактивира..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
-#: ../src/netconfpkg/NCDevice.py:462
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "Го деактивирам мрежниот уред %s, Ве молам почекајте..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
-#: ../src/netconfpkg/NCDevice.py:464
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Не можам да го деактивирам мрежниот уред %s!\n"
-
-#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
-msgid "Exception Occurred"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:59
-#, fuzzy
-msgid "_Debug"
-msgstr "_Режим на дебагирање"
-
-#: ../src/netconfpkg/exception.py:60
-msgid "_Save to file"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:75
-#, fuzzy, python-format
-msgid ""
-"An unhandled exception has occurred.  This is most likely a bug.  Please "
-"save the crash dump and file a detailed bug report against %s at https://"
-"bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Се појави непредвидена грешка.  Ова најверојатно е бубачка.  Ве молиме "
-"зачувајте го излезот од грешката и поднесете извештај за бубачката против "
-"system-config-network на https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconfpkg/exception.py:277
-#, fuzzy, python-format
-msgid "Error: %s: %s"
-msgstr "Грешка: %s, %s!"
-
-#: ../src/netconfpkg/exception.py:280
-#, python-format
-msgid ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:354
-msgid "Specify a file to save the dump"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:373
-#, fuzzy, python-format
-msgid "Failed to write to file %s."
-msgstr "Неуспешно преместување на профилот %s"
-
-#: ../src/netconfpkg/exception.py:377
-#, python-format
-msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
-msgstr ""
-
 #: ../src/netconfpkg/NCProfileList.py:205
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
@@ -460,114 +180,6 @@ msgstr ""
 "Ве молам изберете друг хардверски уред или\n"
 "активирајте само еден од нив."
 
-#: ../src/netconfpkg/NC_functions.py:94
-msgid "Common"
-msgstr "Заедничко"
-
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:139
-msgid "Active"
-msgstr "Активно"
-
-#: ../src/netconfpkg/NC_functions.py:140
-msgid "Inactive"
-msgstr "Неактивно"
-
-#: ../src/netconfpkg/NC_functions.py:147
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "Hardware (CRTSCTS)"
-msgstr "Хардвер (CRTSCTS)"
-
-#: ../src/netconfpkg/NC_functions.py:148
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "Software (XON/XOFF)"
-msgstr "Софтвер (XON/XOFF)"
-
-#: ../src/netconfpkg/NC_functions.py:149 ../src/netconfpkg/NCDialup.py:36
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/gui/modemconfig.glade.h:8
-msgid "None"
-msgstr "Ништо"
-
-#: ../src/netconfpkg/NC_functions.py:227
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr "Дали да ги инсталирам потребните пакети за Вашиот систем?"
-
-#: ../src/netconfpkg/NC_functions.py:240
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr ""
-"Морате да ги инсталирате следниве пакети бидејќи се потребни за Вашиот "
-"систем!"
-
-#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
-#, python-format
-msgid ""
-"Error removing\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"Грешка при отстранувањето\n"
-"%s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:796
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Грешка при копирањето \n"
-"%s\n"
-"до %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:806
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Грешка при врзувањето \n"
-"%s\n"
-"до %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:816
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Грешка при преименувањето \n"
-"%s\n"
-"во %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:824
-#, python-format
-msgid ""
-"Error creating directory!\n"
-"%s"
-msgstr ""
-"Грешка при создавање на директориумот!\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:952
-#, python-format
-msgid "Linking %s to devices and putting it in profile %s."
-msgstr "Го врзувам %s до уредите и го ставам во профилот %s."
-
 #: ../src/netconfpkg/NCDialup.py:32
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
 msgid "auto"
@@ -577,6 +189,12 @@ msgstr "автоматски"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
 msgid "manual"
 msgstr "рачно"
+
+#: ../src/netconfpkg/NCDialup.py:36 ../src/netconfpkg/NC_functions.py:149
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
+#: ../src/netconfpkg/gui/modemconfig.glade.h:8
+msgid "None"
+msgstr "Ништо"
 
 #: ../src/netconfpkg/NCDialup.py:37
 msgid "Afghanistan"
@@ -872,380 +490,120 @@ msgstr "Алжир"
 msgid "Montenegro"
 msgstr ""
 
-#: ../src/netconfpkg/NCHardware.py:21
-msgid "inactive"
-msgstr "неактивно"
+#: ../src/netconfpkg/genClass.py:297 ../src/netconf-cmd.py:329
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "Грешка при парсирање на линијата: %s"
 
-#. not found in last config and not in actual system
-#: ../src/netconfpkg/NCHardware.py:22
-msgid "system"
-msgstr "систем"
+#: ../src/netconfpkg/NCDevice.py:219
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr "%s, Уредот не е одредено или алијасот не е број!"
 
-#. found in system
-#: ../src/netconfpkg/NCHardware.py:23
-msgid "configured"
-msgstr "конфигурирано"
+#: ../src/netconfpkg/NCDevice.py:441 ../src/netconfpkg/plugins/NCDevIsdn.py:77
+msgid "Network device activating..."
+msgstr "Мрежниот уред се активира..."
 
-#. found in config but not in system
-#: ../src/netconfpkg/NCHardware.py:24
-msgid "ok"
-msgstr "во ред"
+#: ../src/netconfpkg/NCDevice.py:442 ../src/netconfpkg/plugins/NCDevIsdn.py:78
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "Го активирам мрежниот уред %s, Ве молам почекајте..."
 
-#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
-msgid "CTC Device"
-msgstr "CTC уред"
+#: ../src/netconfpkg/NCDevice.py:444 ../src/netconfpkg/plugins/NCDevIsdn.py:80
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Не можам да го активирам мрежниот уред %s!\n"
 
-#: ../src/netconfpkg/gui/ethernethardware.py:90
-msgid "Command failed: "
-msgstr "Командата е неуспешна:"
+#: ../src/netconfpkg/NCDevice.py:461
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
+msgid "Network device deactivating..."
+msgstr "Мрежниот уред се деактивира..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:91
-msgid "Output:\n"
-msgstr "Излез:\n"
+#: ../src/netconfpkg/NCDevice.py:462
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "Го деактивирам мрежниот уред %s, Ве молам почекајте..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:93
-msgid ""
-"The Ethernet card could not be initialized. Please verify your settings and "
-"try again."
-msgstr ""
-"Етернет картичката не може да се иницијализира. Ве молиме проверете ги "
-"Вашите поставувања и обидете се пак."
+#: ../src/netconfpkg/NCDevice.py:464
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Не можам да го деактивирам мрежниот уред %s!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:87
+#: ../src/netconfpkg/NCCipe.py:152
 #, python-format
 msgid ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
 msgstr ""
-"Не можам да ја пронајдам датотеката „%s“.\n"
-"Ве молам проверете ја вашата инсталација!\n"
-"Извршете: 'rpm -V system-config-network'\n"
+"Директориумот %s недостасува!\n"
+"Ќе го создадам за Вас!\n"
+"Треба да го инсталирате cipe rpm пакетот!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:96
+#: ../src/netconfpkg/NCCipe.py:156
 #, python-format
 msgid ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Could not create\n"
+"directory %s!"
 msgstr ""
-"Не можам да ја вчитам датотеката „%s“.\n"
-"Ве молам проверете ја вашата инсталација!\n"
-"Извршете: 'rpm -V system-config-network'\n"
+"Не можам да создадам\n"
+"директориум %s!"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:586
+#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
+msgid "Exception Occurred"
+msgstr ""
+
+#: ../src/netconfpkg/exception.py:59
+#, fuzzy
+msgid "_Debug"
+msgstr "_Режим на дебагирање"
+
+#: ../src/netconfpkg/exception.py:60
+msgid "_Save to file"
+msgstr ""
+
+#: ../src/netconfpkg/exception.py:75
+#, fuzzy, python-format
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Се појави непредвидена грешка.  Ова најверојатно е бубачка.  Ве молиме "
+"зачувајте го излезот од грешката и поднесете извештај за бубачката против "
+"system-config-network на https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconfpkg/exception.py:277
+#, fuzzy, python-format
+msgid "Error: %s: %s"
+msgstr "Грешка: %s, %s!"
+
+#: ../src/netconfpkg/exception.py:280
 #, python-format
 msgid ""
-"Failed to run:\n"
+"%s\n"
+"\n"
+"%s:\n"
 "%s"
 msgstr ""
-"Неуспешно извршување:\n"
-"%s"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:589
-msgid "Succeeded. Please read the output."
-msgstr "Успешно. Ве молиме прочитајте го излезот."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
-msgid "xDSL connection"
-msgstr "xDSL врска"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
-msgid ""
-"Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber "
-"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
-"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
-"uploads at the same speed), and several others.  These types of connections "
-"are common in the United States, and are gaining acceptance elsewhere.  "
-"Speeds vary according to the technology used, but generally range from "
-"144kbps to 1.0Mbps."
+#: ../src/netconfpkg/exception.py:354
+msgid "Specify a file to save the dump"
 msgstr ""
-"Креираj xDSL врска.  Ова е врска која што користи една од повеќето типови на "
-"broadband врски заедно познати како дигитални претплатнички линии.  Овде "
-"влегуваат ADSL (Asymmetric, faster downloads than uploads), IDSL (преку ISDN "
-"линија), SDSL (Symmetric, downloads and uploads at the same speed), и "
-"неколку други.  Овие типови на врски се вообичаени во Соединетите Држави, и "
-"се здобиваат со општа прифатеност насекаде.  Врз основа на технологијата што "
-"се користи брзината може да варира од144 kbps до 1.0Mbps."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
-#: ../src/netconfpkg/gui/TokenRingInterface.py:197
-#: ../src/netconfpkg/gui/WirelessInterface.py:317
-#: ../src/netconfpkg/gui/CipeInterface.py:137
-#: ../src/netconfpkg/gui/editipsec.py:285
-#: ../src/netconfpkg/gui/DialupDruid.py:223
-#: ../src/netconfpkg/gui/EthernetInterface.py:210
-#: ../src/netconfpkg/gui/PTPInterface.py:200
-msgid "You have selected the following information:"
-msgstr "Ги избравте следниве информации:"
+#: ../src/netconfpkg/exception.py:373
+#, fuzzy, python-format
+msgid "Failed to write to file %s."
+msgstr "Неуспешно преместување на профилот %s"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
-msgid "Ethernet device:"
-msgstr "Етернет уред:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
-#: ../src/netconfpkg/gui/DialupDruid.py:226
-msgid "Provider name:"
-msgstr "Име на провајдерот:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
-#: ../src/netconfpkg/gui/DialupDruid.py:228
-msgid "Login name:"
-msgstr "Име за најава"
-
-#: ../src/netconfpkg/gui/iucvconfig.py:39
-msgid "IUCV Device"
-msgstr "IUCV уред"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:86
-msgid "ISDN connection"
-msgstr "ISDN врска"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:92
-msgid ""
-"Create a new ISDN connection. This is a connection that uses an Integrated "
-"Services Digital Network line to dial into to your Internet Service "
-"Provider. This type of technology requires a special phone line to be "
-"installed by your telephone company. It also requires a device known as a "
-"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
-"type of connection is popular in Europe and several other technologically "
-"advanced regions.  It is available but uncommon in the USA.  Speeds range "
-"from 64kbps to 128kbps."
-msgstr ""
-"Креирај нова ISDN врска. Ова е врска која што користи интегрирана сервисна "
-"дигитална мрежна линија за да врти кон Вашиот Интернет провајдер. Овој тип "
-"на технологија има потреба од инсталирање на специјална телефонска линија. "
-"Исто така има потреба и од уред наречен терминален адаптер (ТА) за "
-"исклучување на врската со Вашиот провајдер. Овој тип на врска е популарен во "
-"Европа и во неколку други технолошки развиени региони.  Достапен е и во "
-"САД.  Брзината варира од 64kbps до 128kbps."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:111
-msgid "Token Ring connection"
-msgstr "Врска со прстенеста структура"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:117
-msgid "Create a new Token Ring connection."
-msgstr "Креирај нова врска со прстенеста структура"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:179
-msgid "Other Tokenring Card"
-msgstr "Друга картичка за прстенеста структура"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:198
-#: ../src/netconfpkg/gui/WirelessInterface.py:318
-#: ../src/netconfpkg/gui/CipeInterface.py:138
-#: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/PTPInterface.py:201
-msgid "Device:"
-msgstr "Уред:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
-#: ../src/netconfpkg/gui/WirelessInterface.py:329
-#: ../src/netconfpkg/gui/EthernetInterface.py:222
-#: ../src/netconfpkg/gui/PTPInterface.py:211
-#: ../src/netconfpkg/gui/edithosts.glade.h:2
-msgid "Address:"
-msgstr "Адреса:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:210
-#: ../src/netconfpkg/gui/WirelessInterface.py:330
-#: ../src/netconfpkg/gui/EthernetInterface.py:223
-msgid "Subnet mask:"
-msgstr "Маска:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
-#: ../src/netconfpkg/gui/WirelessInterface.py:331
-#: ../src/netconfpkg/gui/EthernetInterface.py:224
-msgid "Default gateway address:"
-msgstr "Стандардна адреса на премниот:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
-#: ../src/netconfpkg/gui/WirelessInterface.py:333
-#: ../src/netconfpkg/gui/EthernetInterface.py:226
-msgid "Automatically obtain IP address settings with:"
-msgstr "Автоматски набави поставувања за IP адреса со:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:34
-#: ../src/netconfpkg/gui/WirelessInterface.py:143
-#: ../src/netconfpkg/gui/WirelessInterface.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/wirelessconfig.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:95
-#: ../src/netconfpkg/gui/wirelessconfig.py:164
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
-msgid "Auto"
-msgstr "Автоматски"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:35
-#: ../src/netconfpkg/gui/wirelessconfig.py:38
-msgid "Ad-Hoc"
-msgstr "Ad-Hoc"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:36
-#: ../src/netconfpkg/gui/wirelessconfig.py:39
-msgid "Managed"
-msgstr "Справен"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:40
-msgid "Master"
-msgstr "Главен"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:152
-msgid "Wireless connection"
-msgstr "Безжична врска"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:158
-msgid "Create a new wireless connection."
-msgstr "Креирај нова безжична врска."
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
-msgid "BitRate"
-msgstr "Бит рата"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:297
-msgid "Other Wireless Card"
-msgstr "Друга безжична картичка"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:336
-msgid "Mode:"
-msgstr "Режим:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:337
-msgid "ESSID (network ID):"
-msgstr "ESSID (мрежен ID):"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:339
-msgid "Automatic"
-msgstr "Автоматски"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:343
-msgid "Channel:"
-msgstr "Канал:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:344
-msgid "Transmit rate:"
-msgstr "Однос на пренос:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:345
-msgid "Key: "
-msgstr "Клуч: "
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:351
-msgid "encryption disabled"
-msgstr "енкрипцијата е оневозможена"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#: ../src/netconfpkg/exception.py:377
 #, python-format
 msgid ""
-"Command failed: %s\n"
-"\n"
-"Output:\n"
-"%s\n"
+"The application's state has been successfully\n"
+"written to the file '%s'."
 msgstr ""
-"Командата е неуспешна: %s\n"
-"\n"
-"Излез:\n"
-"%s\n"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:67
-msgid ""
-"The Token Ring card could not be initialized. Please verify your settings "
-"and try again."
-msgstr ""
-"Не може да се иницијализира картичката за прстенестата врска. Ве молам "
-"проверете ги Вашите поставувања и обидете се повторно."
-
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
-#, python-format
-msgid ""
-"Nickname %s is already in use!\n"
-"Please choose another one.\n"
-msgstr ""
-"Прекарот %s е веќе во употреба!\n"
-"Ве молам изберете друг.\n"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:78
-msgid "Modem connection"
-msgstr "Модемска врска"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:84
-msgid ""
-"Create a new Modem connection.  This is a connection that uses a serial "
-"analog modem to dial into to your Internet Service Provider. These modems "
-"use sound over a normal copper telephone line to transmit data.  These types "
-"of connections are available just about anywhere in the world where there is "
-"a phone system."
-msgstr ""
-"Креирај нова модемска врска.  Ова е врска која што користи сериско аналоген "
-"модем за да врти во Вашиот Интернет провајдер. Овие модеми користат звук "
-"преку нормална телефонска линија за да пренесуваат податоци.  Овој тип на "
-"врска е присутен насекаде во светот каде што постои телефонски систем."
-
-#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
-#: ../src/netconfpkg/gui/ModemInterface.py:113
-msgid "Modem probing..."
-msgstr "Тестирам модем..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:117
-msgid "Probing for Modems, please wait..."
-msgstr "Барам модеми, Ве молам почекајте..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:132
-msgid "No modem was found on your system."
-msgstr "На вашиот систем не беше пронајден никаков модем."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:161
-#: ../src/netconfpkg/gui/modemconfig.py:109
-msgid "Generic Modem"
-msgstr "Општ модем"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:173
-#: ../src/netconfpkg/gui/modemconfig.py:136
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
-#: ../src/netconfpkg/gui/modemconfig.glade.h:9
-msgid "Off"
-msgstr "Исклучено"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:175
-#: ../src/netconfpkg/gui/modemconfig.py:138
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
-#: ../src/netconfpkg/gui/modemconfig.glade.h:4
-msgid "Low"
-msgstr "Ниско"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:177
-#: ../src/netconfpkg/gui/modemconfig.py:140
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
-#: ../src/netconfpkg/gui/modemconfig.glade.h:5
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
-msgid "Medium"
-msgstr "Средно"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:179
-#: ../src/netconfpkg/gui/modemconfig.py:142
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
-#: ../src/netconfpkg/gui/modemconfig.glade.h:3
-msgid "High"
-msgstr "Високо"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:181
-#: ../src/netconfpkg/gui/modemconfig.py:144
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
-#: ../src/netconfpkg/gui/modemconfig.glade.h:11
-msgid "Very High"
-msgstr "Многу високо"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:46
-msgid "IUCV connection"
-msgstr "IUCV врска"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:52
-msgid "Create a new IUCV connection."
-msgstr "Креирај нова IUCV врска."
 
 #: ../src/netconfpkg/gui/maindialog.py:275
 msgid "Loading configuration..."
@@ -1435,9 +793,34 @@ msgstr "Дали навистина сакате да избришете \"%s\"?
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Дали сакате да ги избришете сите уреди кои што користат \"%s\"?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1641
+#: ../src/netconfpkg/gui/maindialog.py:1657 ../src/neat-control.py:146
+#: ../src/neat-control.py:163 ../src/netconf-cmd.py:98
+msgid "Copyright (c) 2001-2005 Red Hat, Inc."
+msgstr "Авторски права (c) 2001-2005 Red Hat, Inc."
+
+#: ../src/netconfpkg/gui/maindialog.py:1642 ../src/neat-control.py:147
+#: ../src/netconf-cmd.py:99
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Овој софтвер се дистрибуира под GPL. Ве молиме пријавувајте бубачки на Red "
+"Hat системот за следење на бубачки: http://bugzilla.redhat.com/"
+
 #: ../src/netconfpkg/gui/maindialog.py:1660
 msgid "translator_credits"
 msgstr ""
+
+#: ../src/netconfpkg/gui/maindialog.py:1661 ../src/neat-control.py:170
+#, fuzzy
+msgid ""
+"This software is distributed under the GPL. \n"
+"Please Report bugs to Red Hat's Bug Tracking \n"
+"System: http://bugzilla.redhat.com/"
+msgstr ""
+"Овој софтвер се дистрибуира под GPL. Ве молиме пријавувајте бубачки на Red "
+"Hat системот за следење на бубачки: http://bugzilla.redhat.com/"
 
 #: ../src/netconfpkg/gui/maindialog.py:1739
 #, python-format
@@ -1450,6 +833,220 @@ msgstr ""
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr ""
 "За да ја деактивирате IPsec врската %s, прво треба да ги зачувате промените."
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:37
+#: ../src/netconfpkg/gui/wirelessconfig.py:95
+#: ../src/netconfpkg/gui/wirelessconfig.py:164
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/WirelessInterface.py:34
+#: ../src/netconfpkg/gui/WirelessInterface.py:143
+#: ../src/netconfpkg/gui/WirelessInterface.py:197
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Auto"
+msgstr "Автоматски"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:38
+#: ../src/netconfpkg/gui/WirelessInterface.py:35
+msgid "Ad-Hoc"
+msgstr "Ad-Hoc"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:39
+#: ../src/netconfpkg/gui/WirelessInterface.py:36
+msgid "Managed"
+msgstr "Справен"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:40
+#: ../src/netconfpkg/gui/WirelessInterface.py:37
+msgid "Master"
+msgstr "Главен"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:87
+#, python-format
+msgid ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Не можам да ја пронајдам датотеката „%s“.\n"
+"Ве молам проверете ја вашата инсталација!\n"
+"Извршете: 'rpm -V system-config-network'\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Не можам да ја вчитам датотеката „%s“.\n"
+"Ве молам проверете ја вашата инсталација!\n"
+"Извршете: 'rpm -V system-config-network'\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:586
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"Неуспешно извршување:\n"
+"%s"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:589
+msgid "Succeeded. Please read the output."
+msgstr "Успешно. Ве молиме прочитајте го излезот."
+
+#: ../src/netconfpkg/gui/DialupDruid.py:223
+#: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/EthernetInterface.py:210
+#: ../src/netconfpkg/gui/CipeInterface.py:137
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/TokenRingInterface.py:197
+#: ../src/netconfpkg/gui/WirelessInterface.py:317
+#: ../src/netconfpkg/gui/PTPInterface.py:200
+msgid "You have selected the following information:"
+msgstr "Ги избравте следниве информации:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Хардвер:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:226
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+msgid "Provider name:"
+msgstr "Име на провајдерот:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:228
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+msgid "Login name:"
+msgstr "Име за најава"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Телефонски број:"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "ISDN врска"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:92
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Креирај нова ISDN врска. Ова е врска која што користи интегрирана сервисна "
+"дигитална мрежна линија за да врти кон Вашиот Интернет провајдер. Овој тип "
+"на технологија има потреба од инсталирање на специјална телефонска линија. "
+"Исто така има потреба и од уред наречен терминален адаптер (ТА) за "
+"исклучување на врската со Вашиот провајдер. Овој тип на врска е популарен во "
+"Европа и во неколку други технолошки развиени региони.  Достапен е и во "
+"САД.  Брзината варира од 64kbps до 128kbps."
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#, python-format
+msgid ""
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
+msgstr ""
+"Командата е неуспешна: %s\n"
+"\n"
+"Излез:\n"
+"%s\n"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:67
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr ""
+"Не може да се иницијализира картичката за прстенестата врска. Ве молам "
+"проверете ги Вашите поставувања и обидете се повторно."
+
+#: ../src/netconfpkg/gui/editipsec.py:217
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr ""
+"Ве молам внесете индекс со единствен безбедносен параметар од 256 до "
+"4294967295."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
+msgid "%s connection"
+msgstr "%s врска"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
+msgid "Create a new %s connection."
+msgstr "Креирај нова %s врска."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:95
+msgid "This wizard still has to be written."
+msgstr "Овој волшебник треба да биде запишан."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:96
+msgid "Press Finish to get the standard configuration dialog."
+msgstr ""
+"Притиснете Завршено за да го добиете стандардниот конфигурациски дијалог"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:97
+msgid "Then, at first, enter the nickname for the device."
+msgstr "Потоа, најпрво внесете го прекарот за уредот."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:134
+msgid "This device can not be edited with this tool!"
+msgstr "Овој уред не може да биде конфигуриран со оваа алатка!"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:116
+msgid "Ethernet connection"
+msgstr "Етернет врска"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:122
+msgid "Create a new ethernet connection."
+msgstr "Креирај нова етернет врска."
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:191
+msgid "Other Ethernet Card"
+msgstr "Друга етернет картичка"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:211
+#: ../src/netconfpkg/gui/CipeInterface.py:138
+#: ../src/netconfpkg/gui/TokenRingInterface.py:198
+#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/PTPInterface.py:201
+msgid "Device:"
+msgstr "Уред:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:222
+#: ../src/netconfpkg/gui/TokenRingInterface.py:209
+#: ../src/netconfpkg/gui/WirelessInterface.py:329
+#: ../src/netconfpkg/gui/PTPInterface.py:211
+#: ../src/netconfpkg/gui/edithosts.glade.h:2
+msgid "Address:"
+msgstr "Адреса:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:210
+#: ../src/netconfpkg/gui/WirelessInterface.py:330
+msgid "Subnet mask:"
+msgstr "Маска:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:224
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: ../src/netconfpkg/gui/WirelessInterface.py:331
+msgid "Default gateway address:"
+msgstr "Стандардна адреса на премниот:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:226
+#: ../src/netconfpkg/gui/TokenRingInterface.py:213
+#: ../src/netconfpkg/gui/WirelessInterface.py:333
+msgid "Automatically obtain IP address settings with:"
+msgstr "Автоматски набави поставувања за IP адреса со:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:89
 msgid "CIPE (VPN) connection"
@@ -1526,12 +1123,200 @@ msgstr "Таен клуч:"
 msgid "You must enter a secret key or generate one"
 msgstr "Морате да внесете или пак да генерирате таен клуч"
 
-#: ../src/netconfpkg/gui/editipsec.py:217
+#: ../src/netconfpkg/gui/ethernethardware.py:90
+msgid "Command failed: "
+msgstr "Командата е неуспешна:"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:91
+msgid "Output:\n"
+msgstr "Излез:\n"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:93
 msgid ""
-"Please enter a unique security parameter index between 256 and 4294967295."
+"The Ethernet card could not be initialized. Please verify your settings and "
+"try again."
 msgstr ""
-"Ве молам внесете индекс со единствен безбедносен параметар од 256 до "
-"4294967295."
+"Етернет картичката не може да се иницијализира. Ве молиме проверете ги "
+"Вашите поставувања и обидете се пак."
+
+#: ../src/netconfpkg/gui/iucvconfig.py:39
+msgid "IUCV Device"
+msgstr "IUCV уред"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:46
+msgid "IUCV connection"
+msgstr "IUCV врска"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:52
+msgid "Create a new IUCV connection."
+msgstr "Креирај нова IUCV врска."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:78
+msgid "Modem connection"
+msgstr "Модемска врска"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:84
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Креирај нова модемска врска.  Ова е врска која што користи сериско аналоген "
+"модем за да врти во Вашиот Интернет провајдер. Овие модеми користат звук "
+"преку нормална телефонска линија за да пренесуваат податоци.  Овој тип на "
+"врска е присутен насекаде во светот каде што постои телефонски систем."
+
+#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
+#: ../src/netconfpkg/gui/ModemInterface.py:113
+msgid "Modem probing..."
+msgstr "Тестирам модем..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:117
+msgid "Probing for Modems, please wait..."
+msgstr "Барам модеми, Ве молам почекајте..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:132
+msgid "No modem was found on your system."
+msgstr "На вашиот систем не беше пронајден никаков модем."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:161
+#: ../src/netconfpkg/gui/modemconfig.py:109
+msgid "Generic Modem"
+msgstr "Општ модем"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:173
+#: ../src/netconfpkg/gui/modemconfig.py:136
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
+#: ../src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "Off"
+msgstr "Исклучено"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:175
+#: ../src/netconfpkg/gui/modemconfig.py:138
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
+#: ../src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "Low"
+msgstr "Ниско"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:177
+#: ../src/netconfpkg/gui/modemconfig.py:140
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: ../src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "Medium"
+msgstr "Средно"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:179
+#: ../src/netconfpkg/gui/modemconfig.py:142
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
+#: ../src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "High"
+msgstr "Високо"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:181
+#: ../src/netconfpkg/gui/modemconfig.py:144
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
+#: ../src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "Very High"
+msgstr "Многу високо"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
+msgid "xDSL connection"
+msgstr "xDSL врска"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"Креираj xDSL врска.  Ова е врска која што користи една од повеќето типови на "
+"broadband врски заедно познати како дигитални претплатнички линии.  Овде "
+"влегуваат ADSL (Asymmetric, faster downloads than uploads), IDSL (преку ISDN "
+"линија), SDSL (Symmetric, downloads and uploads at the same speed), и "
+"неколку други.  Овие типови на врски се вообичаени во Соединетите Држави, и "
+"се здобиваат со општа прифатеност насекаде.  Врз основа на технологијата што "
+"се користи брзината може да варира од144 kbps до 1.0Mbps."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
+msgid "Ethernet device:"
+msgstr "Етернет уред:"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:111
+msgid "Token Ring connection"
+msgstr "Врска со прстенеста структура"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:117
+msgid "Create a new Token Ring connection."
+msgstr "Креирај нова врска со прстенеста структура"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:179
+msgid "Other Tokenring Card"
+msgstr "Друга картичка за прстенеста структура"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "Безжична врска"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "Креирај нова безжична врска."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:233
+msgid "BitRate"
+msgstr "Бит рата"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:297
+msgid "Other Wireless Card"
+msgstr "Друга безжична картичка"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:336
+msgid "Mode:"
+msgstr "Режим:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:337
+msgid "ESSID (network ID):"
+msgstr "ESSID (мрежен ID):"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:339
+msgid "Automatic"
+msgstr "Автоматски"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:343
+msgid "Channel:"
+msgstr "Канал:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:344
+msgid "Transmit rate:"
+msgstr "Однос на пренос:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:345
+msgid "Key: "
+msgstr "Клуч: "
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:351
+msgid "encryption disabled"
+msgstr "енкрипцијата е оневозможена"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
+msgid "CTC connection"
+msgstr "CTC врска"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
+msgid "Create a new CTC connection."
+msgstr "Креирај нова CTC врска"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
+msgid "CTC Device"
+msgstr "CTC уред"
 
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
 msgid "IP address of tunnel device: "
@@ -1557,33 +1342,18 @@ msgstr "Локална виртуелна адреса: "
 msgid "Secret key: "
 msgstr "Таен клуч: "
 
-#: ../src/netconfpkg/gui/DialupDruid.py:225
-msgid "Hardware:"
-msgstr "Хардвер:"
+#: ../src/netconfpkg/gui/PTPInterface.py:212
+msgid "Point to Point (IP):"
+msgstr "Point to Point (IP):"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:229
-msgid "Phone number:"
-msgstr "Телефонски број:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:116
-msgid "Ethernet connection"
-msgstr "Етернет врска"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:122
-msgid "Create a new ethernet connection."
-msgstr "Креирај нова етернет врска."
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:191
-msgid "Other Ethernet Card"
-msgstr "Друга етернет картичка"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
-msgid "CTC connection"
-msgstr "CTC врска"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
-msgid "Create a new CTC connection."
-msgstr "Креирај нова CTC врска"
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"Прекарот %s е веќе во употреба!\n"
+"Ве молам изберете друг.\n"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:237
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
@@ -1645,36 +1415,107 @@ msgstr "ништо"
 msgid "Modem Dialup Configuration"
 msgstr "Dialup конфигурација на модемот"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:82
-#, python-format
-msgid "%s connection"
-msgstr "%s врска"
+#: ../src/netconfpkg/NC_functions.py:94
+msgid "Common"
+msgstr "Заедничко"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:85
-#, python-format
-msgid "Create a new %s connection."
-msgstr "Креирај нова %s врска."
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:139
+msgid "Active"
+msgstr "Активно"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:95
-msgid "This wizard still has to be written."
-msgstr "Овој волшебник треба да биде запишан."
+#: ../src/netconfpkg/NC_functions.py:140
+msgid "Inactive"
+msgstr "Неактивно"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:96
-msgid "Press Finish to get the standard configuration dialog."
+#: ../src/netconfpkg/NC_functions.py:147
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "Hardware (CRTSCTS)"
+msgstr "Хардвер (CRTSCTS)"
+
+#: ../src/netconfpkg/NC_functions.py:148
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "Software (XON/XOFF)"
+msgstr "Софтвер (XON/XOFF)"
+
+#: ../src/netconfpkg/NC_functions.py:227
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr "Дали да ги инсталирам потребните пакети за Вашиот систем?"
+
+#: ../src/netconfpkg/NC_functions.py:240
+msgid ""
+"You have to install the following packages, which are needed on your system!"
 msgstr ""
-"Притиснете Завршено за да го добиете стандардниот конфигурациски дијалог"
+"Морате да ги инсталирате следниве пакети бидејќи се потребни за Вашиот "
+"систем!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:97
-msgid "Then, at first, enter the nickname for the device."
-msgstr "Потоа, најпрво внесете го прекарот за уредот."
+#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
+#, python-format
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"Грешка при отстранувањето\n"
+"%s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:134
-msgid "This device can not be edited with this tool!"
-msgstr "Овој уред не може да биде конфигуриран со оваа алатка!"
+#: ../src/netconfpkg/NC_functions.py:805
+#, python-format
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Грешка при копирањето \n"
+"%s\n"
+"до %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/PTPInterface.py:212
-msgid "Point to Point (IP):"
-msgstr "Point to Point (IP):"
+#: ../src/netconfpkg/NC_functions.py:815
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Грешка при врзувањето \n"
+"%s\n"
+"до %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:825
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Грешка при преименувањето \n"
+"%s\n"
+"во %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:833
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"Грешка при создавање на директориумот!\n"
+"%s"
+
+#: ../src/netconfpkg/NC_functions.py:961
+#, python-format
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "Го врзувам %s до уредите и го ставам во профилот %s."
 
 #: ../src/netconfpkg/NCIPsec.py:186
 msgid "IPsec activating..."
@@ -1704,39 +1545,6 @@ msgstr "Ја деактивирам IPsec врската %s, Ве молам п�
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Не можам да ја деактивирам IPsec врската %s!\n"
 
-#: ../src/netconfpkg/NCCipe.py:152
-#, python-format
-msgid ""
-"Directory %s is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
-msgstr ""
-"Директориумот %s недостасува!\n"
-"Ќе го создадам за Вас!\n"
-"Треба да го инсталирате cipe rpm пакетот!\n"
-
-#: ../src/netconfpkg/NCCipe.py:156
-#, python-format
-msgid ""
-"Could not create\n"
-"directory %s!"
-msgstr ""
-"Не можам да создадам\n"
-"директориум %s!"
-
-#: ../src/netconfpkg/NCDeviceList.py:117
-msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr "Ги променив следниве прекари поради скриптите за иницијализација:\n"
-
-#: ../src/netconfpkg/NCDeviceList.py:120
-msgid "Nicknames changed"
-msgstr "Прекарите се променети"
-
-#: ../src/netconfpkg/NCDevice.py:219
-#, python-format
-msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, Уредот не е одредено или алијасот не е број!"
-
 #: ../src/netconf.py:55
 #, python-format
 msgid "Error: %s, %s!"
@@ -1745,6 +1553,26 @@ msgstr "Грешка: %s, %s!"
 #: ../src/netconf.py:57
 msgid "Starting text version"
 msgstr "Подигнувам текстуална верзија"
+
+#: ../src/netconf.py:72 ../src/neat-control.py:50
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr "ГРЕШКА: Не можам да ја подготвам графичката околина. "
+
+#: ../src/netconf.py:73 ../src/neat-control.py:51
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+"Најверојатно причина за неуспе е тоа што алатката не е пуштена користејќи "
+"графичка околина. "
+
+#: ../src/netconf.py:74 ../src/neat-control.py:52
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+"Ве молам подигнете го графичкиот кориснички интерфејс или поставете ја "
+"варијаблата за приказ.\n"
 
 #: ../src/netconf.py:116
 msgid "Loading Network Configuration..."
@@ -1764,10 +1592,415 @@ msgstr ""
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Ве молам подигнете го system-config-network со root пермисии!\n"
 
-#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
-msgid "Create Ethernet Device"
-msgstr "Креирај етернет уред"
+#: ../src/neat-control.py:223
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "Не можам да го конфигурирам мрежниот уред %s"
+
+#: ../src/neat-control.py:243
+msgid "Switching Profiles"
+msgstr "Менување на профили"
+
+#: ../src/neat-control.py:244
+#, python-format
+msgid "Switching to profile %s"
+msgstr "Се преместувам на профилот %s"
+
+#: ../src/neat-control.py:245
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "Неуспешно преместување на профилот %s"
+
+#. TBD
+#: ../src/neat-control.py:260
+msgid "To be rewritten!"
+msgstr "Да биде презапишано!"
+
+#: ../src/neat-control.py:367
+msgid " (active)"
+msgstr " (активно)"
+
+#: ../src/netconf-tui.py:99
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against system-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Се појави непредвидена грешка.  Ова најверојатно е бубачка.  Ве молиме "
+"зачувајте го излезот од грешката и поднесете извештај за бубачката против "
+"system-config-network на https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconf-tui.py:127
+msgid "Loading configuration"
+msgstr "Вчитување конфигурација"
+
+#: ../src/netconf-tui.py:128
+msgid "Loading Device Configuration"
+msgstr "Вчитување конфигурација на уредот"
+
+#: ../src/netconf-tui.py:134
+msgid "Loading Hardware Configuration"
+msgstr "Вчитување конфигурација на хадрверот"
+
+#: ../src/netconf-tui.py:138
+msgid "Loading Profile Configuration"
+msgstr "Вчитување конфигурација на профили"
+
+#: ../src/netconf-tui.py:152
+#, fuzzy
+msgid "Which device type do you want to add?"
+msgstr "Тој тип на уреди %s не можат да бидат конфигурирани!"
+
+#: ../src/netconf-tui.py:153
+#, fuzzy
+msgid "Add"
+msgstr "_Додади..."
+
+#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
+msgid "Ethernet"
+msgstr "Етернет"
+
+#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
+msgid "Modem"
+msgstr "Модем"
+
+#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
+msgid "ISDN"
+msgstr "ISDN"
+
+#: ../src/netconf-tui.py:203
+msgid "<New Device>"
+msgstr "<New Device>"
+
+#: ../src/netconf-tui.py:204
+msgid "Select A Device"
+msgstr "Изберете уред"
+
+#: ../src/netconf-tui.py:205
+msgid "Quit"
+msgstr "Напушти"
+
+#: ../src/netconf-tui.py:222
+msgid ""
+"system-config-network - network configuration tool\n"
+"\n"
+"Usage: system-config-network -v --verbose -d --debug"
+msgstr ""
+"system-config-network - алатка за конфигурација на мрежа\n"
+"\n"
+"Употреба: system-config-network -v --verbose -d --debug"
+
+#: ../src/netconf-cmd.py:62
+#, python-format
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+"Се појави неочекувана грешка.  Ова најверојатно е бубачка.\n"
+"Ве молиме поднесете детален извештај за компонентата %s на \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"користејќи го текстов:\n"
+
+#: ../src/netconf-cmd.py:97
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr "%s - алатка за конфигурација на мрежата од командната линија"
+
+#: ../src/netconf-cmd.py:102
+#, python-format
+msgid "Usage: %s"
+msgstr "Употреба: %s"
+
+#: ../src/netconf-cmd.py:104
+msgid "switch / activate profile"
+msgstr "префрли / активирај профил"
+
+#: ../src/netconf-cmd.py:106
+msgid "export / import hardware list"
+msgstr "извези /увези хардверска листа"
+
+#: ../src/netconf-cmd.py:108
+msgid "export / import IPsec list"
+msgstr "извези / увези IPsec листа"
+
+#: ../src/netconf-cmd.py:110
+msgid "export / import device list (default)"
+msgstr "извези / увези листа со уреди (стандардно)"
+
+#: ../src/netconf-cmd.py:112
+msgid "export / import profile list"
+msgstr "извези / увези листа со профили"
+
+#: ../src/netconf-cmd.py:114
+msgid "set the root directory"
+msgstr "постави го root директориумот"
+
+#: ../src/netconf-cmd.py:116
+msgid "export list (default)"
+msgstr "извези листа (стандардно)"
+
+#: ../src/netconf-cmd.py:117
+msgid "import list"
+msgstr "увези листа"
+
+#: ../src/netconf-cmd.py:119
+msgid "clear existing list prior of importing"
+msgstr "исчисти ја постоечката листа пред да увезеш"
+
+#: ../src/netconf-cmd.py:121
+msgid "import from file"
+msgstr "увези од датотека"
+
+#: ../src/netconf-cmd.py:264
+#, python-format
+msgid "Unknown option %s\n"
+msgstr "Непозната опција %s\n"
+
+#: ../src/netconf-cmd.py:325
+#, python-format
+msgid "Unknown List %s\n"
+msgstr "Непозната листа %s\n"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+msgid "Allow all _users to enable and disable the device"
+msgstr ""
+"Дозволувај им _на сите корисници да го овозможуваат и оневозможуваат уредот"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow dial on _demand"
+msgstr "Дозволи бирање при _барање"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Allow the link come up on demand."
+msgstr "Дозволи врската да се подигне при барање."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Demand setting"
+msgstr "Поставувања за побарувачка"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+msgid "Enable IPv_6 configuration for this interface"
+msgstr "Овозможи IPv_6 конфигурација за овој интерфејс"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
+msgid "Enable synchronous PPP for the connection"
+msgstr "Овозможи синхронизен PPP за врската"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Внесете го името на концентраторот за пристап доколку го имате добиено од "
+"Вашиот провајдер. Во повеќето случаи ова можете да го оставите празно."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"Внесете го сервисното име, ако вашиот провајдер го бара тоа. Доколку не го "
+"знаете, Ве молиме контактирајте го вашиот провајдер. Во повеќето случаи ова "
+"может да биде оставено празно."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr ""
+"Внесете го времето на неактивност во секунди после кои врската би се "
+"прекинала."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Внесете го корисничкото име кое што го добивте од вашиот провајдер."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr ""
+"Внесете го името на конфигурацијата, најчесто само името на вашиот провајдер."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"Внесете ја лозинката. Доколку не ја знаете, Ве молиме контактирајте го "
+"вашиот провајдер."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Make this connection the default _route"
+msgstr "Направи ја оваа врска стандардна _рута"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Pass_word:"
+msgstr "Лоз_инка:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Restart if _connection dies"
+msgstr "Рестартирај доколку _врската умре"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+msgid "Use this form to enter your T-Online account data."
+msgstr ""
+"Користете го овој формулар за да ги внесете вашите лични податоци за T-"
+"Online."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
+msgid "_AC-name:"
+msgstr "_AC-име:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+msgid "_Activate device when computer starts"
+msgstr "_Активирај го уредот при подигнување"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+msgid "_Activate device when parent device starts"
+msgstr "Активирај го уредот кога ќе се вклучи основниот уред"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Advanced"
+msgstr "_Напредно"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+msgid "_General"
+msgstr "_Општо"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
+msgid "_Hardware Device"
+msgstr "_Хардверски уред"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Login name:"
+msgstr "_Име за најава:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Maximum idle time:"
+msgstr "_Максимално време на неактивност:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
+msgid "_Nickname:"
+msgstr "_Прекар:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
+msgid "_Provider"
+msgstr "_Провајдер"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+msgid "_Provider name:"
+msgstr "_Име на провајдер:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid "_Route"
+msgstr "_Рута"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
+msgid "_Service-name:"
+msgstr "_Сервисно-име:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
+msgid "_T-Online Account Setup"
+msgstr "_T-Online поставување на сметка"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
+msgid "_Use synchronous PPP"
+msgstr "_Користи синхронизоно PPP"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
+msgid "xDSL Configuration"
+msgstr "xDSL конфигурација"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Изберете тип на хардвер"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "Тип на хардвер:"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr ""
+"Ве молам изберете го типот на хардверскиот уред кој што сакате да го креирате"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Прстенеста структура"
 
 #: ../src/netconfpkg/gui/tonline.glade.h:1
 msgid "<b>T-Online account</b>"
@@ -1806,78 +2039,113 @@ msgstr "_Број/суфикс на истовремени корисници"
 msgid "_Personal password:"
 msgstr "_Лична лозинка:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
-msgid "<b>Configuration for your remote partner</b>"
-msgstr "<b>Конфигурација за вашиот далечен партнер</b>"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+#, fuzzy
+msgid "<b>Account Type:</b>"
+msgstr "<b>Тип на сметка:</b>"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
-msgid "Configure Tunnel"
-msgstr "Конфигурирај тунел"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "Конфигурирај DSL врска"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
-msgid "Create Cipe Connection"
-msgstr "Креирај „Cipe“ врска"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "Креирај DSL врска"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
-msgid "Lo_cal virtual address:"
-msgstr "Ло_кална виртуелна адреса:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Внесете го името на провајдерот за оваа сметка."
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Нов интерфејс"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "Мрежен _уред:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
-msgid "Remote _virtual address:"
-msgstr "Далечна _виртуелна адреса:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Normal"
+msgstr "Нормален"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
-msgid "Remote peer p_ort:"
-msgstr "Далечинска порта на к_лиент:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid ""
+"Normal\n"
+"T-Online"
+msgstr ""
+"Нормален\n"
+"T-Online"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "Лозинка (_повторно):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Изберете го мрежниот уредот кој е поврзан со DSL модемот."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "Изберте го мрежниот уредот за оваа сметка."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+msgid "T-Online"
+msgstr "T-Online"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "Изберете адаптер за прстенеста структура"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "_Adapter:"
+msgstr "_Адаптер:"
+
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:3
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 msgid "_Device:"
 msgstr "_Уред:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/editipsec.glade.h:37
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
-msgid "_Generate"
-msgstr "_Генерирај"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+msgid "Configure Network Settings"
+msgstr "Конфигурирајте ги мрежните поставувања"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
-msgid "_Local port:"
-msgstr "_Локална порта:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "Креирај етернет уред"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
-msgid "_Remote peer address:"
-msgstr "_Далечинска адреса на клиент:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Етернет картичка"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
-msgid "_Secret key:"
-msgstr "_Таен клуч:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+msgid "MTU:"
+msgstr "MTU:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
-msgid "_Tunnel through device:"
-msgstr "_Тунел преку уредот:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Во молам внесете го MTU параметарот за да го поставите максималниот број на "
+"единици за пренос за овој интерфејс. На s390/s390x MTU го има 1492 како "
+"стандардно поставување."
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
-msgid "_auto"
-msgstr "_автоматски"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Избери етернет уред"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "Изберете ја етернет картичката која што сакате да ја конфигурирате:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:1
 msgid "<b>Phone number</b>"
@@ -1926,33 +2194,6 @@ msgstr ""
 "Внесете го повикувачкиот број потребен за да го добиете вашиот Интернет "
 "провајдер."
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
-msgid "Enter the login name, that your ISP gave you here."
-msgstr "Внесете го корисничкото име кое што го добивте од вашиот провајдер."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr ""
-"Внесете го името на конфигурацијата, најчесто само името на вашиот провајдер."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
-msgid ""
-"Enter the password for your account. If you do not know it, please contact "
-"your ISP."
-msgstr ""
-"Внесете ја лозинката. Доколку не ја знаете, Ве молиме контактирајте го "
-"вашиот провајдер."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:13
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
@@ -1974,16 +2215,15 @@ msgstr "Интернет провајдер"
 msgid "Manual IP Address Settings"
 msgstr "Рачни поставувања за IP адресата"
 
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+msgid "New Interface"
+msgstr "Нов интерфејс"
+
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:18
 msgid "PPP Settings"
 msgstr "Поставувања за PPP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
-msgid "Pass_word:"
-msgstr "Лоз_инка:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:20
 msgid "Prefi_x:"
@@ -2003,27 +2243,12 @@ msgstr "Избери провајдер"
 msgid "Statically set IP addresses:"
 msgstr "Постави ги IP адресите статично"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-msgid "Use this form to enter your T-Online account data."
-msgstr ""
-"Користете го овој формулар за да ги внесете вашите лични податоци за T-"
-"Online."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:25
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:7
-#: ../src/netconfpkg/gui/editadress.glade.h:2
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/editadress.glade.h:2
 msgid "_Address:"
 msgstr "_Адреса:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
-msgid "_Login name:"
-msgstr "_Име за најава:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:27
 msgid "_Phone number:"
@@ -2035,152 +2260,178 @@ msgstr "_Телефонски број"
 msgid "_Subnet mask:"
 msgstr "_Маска:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
-msgid "_T-Online Account Setup"
-msgstr "_T-Online поставување на сметка"
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+msgid "Select Ethernet Adapter"
+msgstr "Избери етернет адаптер"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
-msgid "Choose Hardware Type"
-msgstr "Изберете тип на хардвер"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
-msgid "Hardware type:"
-msgstr "Тип на хардвер:"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Време:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type you want to create"
-msgstr ""
-"Ве молам изберете го типот на хардверскиот уред кој што сакате да го креирате"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "кликнете го десното копче од глушецот за својствата"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
-msgid "Token Ring"
-msgstr "Прстенеста структура"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+msgid "MT_U:"
+msgstr "MT_U:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
-#: ../src/netconfpkg/gui/modemconfig.glade.h:1
-msgid "<b>Modem properties</b>"
-msgstr "<b>Својства на модемот</b>"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+msgid "_Point to Point (IP):"
+msgstr "_Од точка до точка (IP):"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
-#: ../src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "Modem _volume:"
-msgstr "Јачина _на модемот:"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Врзи се со"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
-msgid "Select Modem"
-msgstr "Изберете модем"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Одврзи се од"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
-#: ../src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "_Baud rate:"
-msgstr "_Однос на боди:"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+msgid "_Configure..."
+msgstr "_Конфигурирај"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
-#: ../src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "_Flow control:"
-msgstr "_Контрола на проток:"
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "Конфигурација на мрежни адаптери"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
-#: ../src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "_Modem device:"
-msgstr "_Модемски уред:"
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "Чекам да се врзам со"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
-#: ../src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "_Use touch tone dialing"
-msgstr "_Користи tocuh tone вртење "
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+msgid "Waiting..."
+msgstr "Чекам..."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
-msgid "Configure Network Settings"
-msgstr "Конфигурирајте ги мрежните поставувања"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "Configure Wireless Connection"
-msgstr "Конфигурирај безжична врска"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "<b>D channel protocol</b>"
+msgstr "<b>Протокол за D канал</b>"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "Create Wireless Device"
-msgstr "Креирај безжичен уред"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+msgid "<b>Resources</b>"
+msgstr "<b>Извори</b>"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-msgid "MTU:"
-msgstr "MTU:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro ISDN (EDSS1)"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-msgid "Network name (SSID):"
-msgstr "Име на мрежата (SSID):"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "Конфигурација на ISDN адаптери"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "ISDN _adapters:"
+msgstr "ISDN _адаптери:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+msgid "_IO:"
+msgstr "_IO:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+msgid "_MEM:"
+msgstr "_MEM:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
 msgid ""
-"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
 msgstr ""
-"Ве молам внесете го MTU параметарот за да ја поставите максималната бројка "
-"за пренос на единици за овој интерфејс. На s390/s390x MTU го користи 1492 "
-"како стандардно поставување."
+"Секој уред мора да биде врзан за физички уред кој што можете да го изберете "
+"долу. Поддршката за алијас на уредите ви дозволува да користите повеќекратни "
+"виртуални уреди за еден физички уред."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Select Wireless Device"
-msgstr "Избери безжичен уред"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Enable _Device Alias support"
+msgstr "Овозможи _поддршка за алијас на уредите"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
-msgid "Select the wireless card you want to configure:"
-msgstr "Изберете ја безжичната картичка која што сакате да ја конфигурирате:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Ha_rdware address:"
+msgstr "Ха_рдверска адреса:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-msgid ""
-"Used to manipulate encryption or scrambling keys and encryption mode. To set "
-"the current encryption key in hex digits enter the key with 0x prepended as "
-"0xXXXXXXXX."
-msgstr ""
-"Се користи за манипулација на клучевите за енкрипција или менување и режим "
-"на криптирање. За да го поставите тековниот клуч за енкрипција во "
-"хексадецимални броеви, внесете го клучот кој започнува со 0x како на пример "
-"0xXXXXXXXX."
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
+msgid "Token Ring Device"
+msgstr "Уред за прстенеста структура"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "Безжична картичка"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Alias:"
+msgstr "_Алијас:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-msgid "_Auto"
-msgstr "_Автоматски"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Hardware device:"
+msgstr "_Хардверски уред:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-msgid "_Channel:"
-msgstr "_Канал:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Probe for Address"
+msgstr "_Тестирај адреса"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-msgid "_Key (use 0x for hex):"
-msgstr "_Клуч (користи 0x за hex)"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "_Use Hardware Address"
+msgstr "_Користи хардверска адреса"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
-msgid "_Mode:"
-msgstr "_Режим:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr0"
+msgstr "tr0"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
-msgid "_Specified:"
-msgstr "_Одредено:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
+msgid "tr1"
+msgstr "tr1"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
-msgid "_Transmit rate:"
-msgstr "_Однос на пренос:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
+msgid "tr2"
+msgstr "tr2"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
+msgid "tr3"
+msgstr "tr3"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
+msgid "tr4"
+msgstr "tr4"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
+msgid "tr5"
+msgstr "tr5"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:1
 msgid "<b>Active profile</b>"
@@ -2245,11 +2496,6 @@ msgstr "Следниве мрежни интерфејси се конфигур
 msgid "_Activate"
 msgstr "_Активирај"
 
-#: ../src/netconfpkg/gui/neat-control.glade.h:18
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-msgid "_Configure..."
-msgstr "_Конфигурирај"
-
 #: ../src/netconfpkg/gui/neat-control.glade.h:19
 #: ../src/netconfpkg/gui/maindialog.glade.h:32
 msgid "_Deactivate"
@@ -2264,709 +2510,43 @@ msgstr "_Информации"
 msgid "_Monitor"
 msgstr "_Надгледувај"
 
-#: ../src/netconfpkg/gui/editipsec.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:2
-msgid "A_uthentication key:"
-msgstr "Клуч за а_втентикација:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:3
-msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr "Режим за избор на автоматска енкрипција IKA (racoon)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:4
-msgid "Ge_nerate"
-msgstr "Ге_нерирај"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:5
-msgid "Host to Host encryption"
-msgstr "Енкрипција за хост до хост"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:6
-msgid "IPsec"
-msgstr "IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:7
-msgid "IPsec - Connection Type"
-msgstr "IPsec - Тип на врска"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:8
-msgid "IPsec - Encryption Mode"
-msgstr "IPsec - Режим на енкрипција"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:9
-msgid "IPsec - Keys"
-msgstr "IPsec - Клучеви"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:10
-msgid "IPsec - Local Network"
-msgstr "IPsec - Локална мрежа"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:11
-msgid "IPsec - Nickname"
-msgstr "IPsec - прекар"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:12
-msgid "IPsec - Remote Network"
-msgstr "IPsec - Далечинска мрежа"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:13
-msgid "IPsec - Summary"
-msgstr "IPsec - Резултати"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:14
-msgid "IPsec Settings"
-msgstr "Поставувања за IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:15
-msgid "Local network _address:"
-msgstr "Локална мрежна _адреса:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:16
-msgid "Local network _gateway:"
-msgstr "Локален мрежен _премин:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:17
-msgid "Local subnet _mask:"
-msgstr "Локална _маска:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:18
-msgid "Manual encryption with a fixed key"
-msgstr "Рачна енкрипција со фиксен клуч"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:19
-msgid "Network to Network encryption (VPN)"
-msgstr "Енекрипција од мрежа до мрежа (VPN)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:20
-msgid "Please enter a nickname for the connection:"
-msgstr "Ве молам внесете прекар за врската:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:21
-msgid "Please enter a passphrase to generate the key."
-msgstr "Ве молам внесете фраза за да го генерирате клучот."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:22
-msgid "Please enter your local network settings:"
-msgstr "Ве молам внесете ги Вашите локални мрежни поставувања:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:23
-msgid "Please enter your remote network settings:"
-msgstr "Ве молам внесете ги Вашите далечински мрежни поставувања:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:24
-msgid "Please select the type of connection:"
-msgstr "Ве молам изберете го типот на врска:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:25
-msgid "Please select the type of encryption:"
-msgstr "Ве молам изберете го типот на енкрипција:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:26
-#, fuzzy
-msgid ""
-"Please specify your keys or generate them. \n"
-"The keys are symmetric, so your remote partner needs to have the same."
-msgstr ""
-"Ве молам одредете ги или генерирајте ги клучевите. \n"
-"Клучевите се симетрични и затоа вашиот далечен партнер мора да ги има истите."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:28
-msgid "Remote _IP address:"
-msgstr "Далечинска _IP адреса:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:29
-msgid "Remote network _address:"
-msgstr "Далечинска мрежна _адреса:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:30
-msgid "Remote network _gateway:"
-msgstr "Далечински мрежен _премин:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:31
-msgid "Remote subnet _mask:"
-msgstr "Далечинска _маска:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:32
-msgid "Security parameter index for authentication:"
-msgstr "Индекс со безбедносен параметар за проверка:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:33
-msgid "Security parameter index for encryption:"
-msgstr "Индекс со безбедносен параметар за енкрипција:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:34
-msgid "You will now be guided through the setup of the IPsec connection."
-msgstr "Сега ќе бидете водени низ поставувањето на IPsec врската."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:35
-msgid "_Activate connection when computer starts"
-msgstr "_Активирај ја врската при подигнување на компјутерот"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:36
-msgid "_Encryption key:"
-msgstr "_Клуч за енкрипција:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:38
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
-msgid "_Nickname:"
-msgstr "_Прекар:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:39
-msgid "dialog1"
-msgstr "dialog1"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:40
-msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-"единствен „SPI“ за „AH“ (256 - 4294967295), како број на порта на TCP/IP"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:41
-msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-"единствен „SPI“ за „ESP“ (256 - 4294967295), како број на порта на TCP/IP"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:1
-msgid "Add / Edit Hosts entry"
-msgstr "Додади / Уреди запис за хост"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Aliases:"
-msgstr "Алијаси:"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:4
-msgid "Hostname:"
-msgstr "Име на хост:"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
-msgid "Add new Device Type"
-msgstr "Додади нов тип на уред"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
-msgid "Device Type"
-msgstr "Тип на уред"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
-msgid "Select Device Type"
-msgstr "Изберете тип на уред"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
-msgid "Select Ethernet Adapter"
-msgstr "Избери етернет адаптер"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
-msgid "_Adapter:"
-msgstr "_Адаптер:"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
-msgid "Allow all _users to enable and disable the device"
-msgstr ""
-"Дозволувај им _на сите корисници да го овозможуваат и оневозможуваат уредот"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
-msgid "Enable IPv_6 configuration for this interface"
-msgstr "Овозможи IPv_6 конфигурација за овој интерфејс"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
-msgid "Ethernet Device"
-msgstr "Етернет уред"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
-msgid "_Activate device when computer starts"
-msgstr "_Активирај го уредот при подигнување"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
-msgid "_Activate device when parent device starts"
-msgstr "Активирај го уредот кога ќе се вклучи основниот уред"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
-msgid "_General"
-msgstr "_Општо"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
-msgid "_Hardware Device"
-msgstr "_Хардверски уред"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
-msgid "_Route"
-msgstr "_Рута"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
-msgid "Ethernet card"
-msgstr "Етернет картичка"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-msgid ""
-"Please enter the MTU parameter to set the maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"Во молам внесете го MTU параметарот за да го поставите максималниот број на "
-"единици за пренос за овој интерфејс. На s390/s390x MTU го има 1492 како "
-"стандардно поставување."
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
-msgid "Select Ethernet Device"
-msgstr "Избери етернет уред"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the ethernet card you want to configure:"
-msgstr "Изберете ја етернет картичката која што сакате да ја конфигурирате:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
-msgid "1_TR6"
-msgstr "1_TR6"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
-msgid "<b>D-channel protocol</b>"
-msgstr "<b>Протокол за D канал</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
-msgid "<b>Resources</b>"
-msgstr "<b>Извори</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
-msgid "Eu_ro ISDN (EDSS1)"
-msgstr "Eu_ro ISDN (EDSS1)"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
-msgid "ISDN _adapters:"
-msgstr "ISDN _адаптери:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
-msgid "Select ISDN Adapter"
-msgstr "Избери ISDN адаптер"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
-msgid "_IO:"
-msgstr "_IO:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
-msgid "_MEM:"
-msgstr "_MEM:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Token Ring Device"
-msgstr "Креирај уред за прстенеста структура"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Token Ring Device"
-msgstr "Изберете уред за прстенеста структура"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the token ring card you want to configure:"
-msgstr ""
-"Изберете ја картичката која што сакате да ја конфигурирате за прстенеста "
-"структура"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Token ring card"
-msgstr "Картичка за прстенеста структура"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-msgid "Select Token Ring Adapter"
-msgstr "Изберете адаптер за прстенеста структура"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:1
-msgid "Activate the selected device, calling ifup <device>."
-msgstr "Активирај го избраниот уред со повикување на ifup <device>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:2
-msgid "Aliases"
-msgstr "Алијаси"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:3
-msgid "Contents"
-msgstr "Содржини"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:4
-msgid "DNS search path:"
-msgstr "DNS патека за пребарување:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:5
-msgid "D_NS"
-msgstr "D_NS"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:6
-msgid "Deactivate the selected device, calling ifdown <device>."
-msgstr "Деактивирај го избраниот уред со повикување на ifdown <device>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:7
-msgid "Description"
-msgstr "Опис"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:8
-msgid "Destination"
-msgstr "Дестинација"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:9
-msgid "Dev_ices"
-msgstr "Уре_ди"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:11
-msgid "Do_main:"
-msgstr "До_мејн:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:12
-msgid "H_osts"
-msgstr "Д_омаќини"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:13
-msgid "Hard_ware"
-msgstr "Хард_вер"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:14
-msgid "IP"
-msgstr "IP"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:15
-msgid "IP_sec"
-msgstr "IP_sec"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:16
-msgid "List of devices which are currently configurable on your system."
-msgstr ""
-"Листа на уреди кои што моментално можат да бидат конфигурирани на вашиот "
-"систем."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:17
-msgid "Monitor the selected device."
-msgstr "Надгледувај го избраниот уред."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:20
-msgid "New Profile"
-msgstr "Нов профил"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:22
-msgid ""
-"Please enter the name for the profile. The name may only contain letters and "
-"digits."
-msgstr ""
-"Ве молам внесете го името за профилот. Името може да содржи само букви и "
-"бројки."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:23
-msgid "Profile"
-msgstr "Профил"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:25
-msgid "Type"
-msgstr "Тип"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:26
-msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr "Овде можете да ги конфигурирате IPsec тунелите и хост до хост врските."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network devices associated with physical hardware here.  "
-"Multiple logical devices can be associated with a single piece of hardware."
-msgstr ""
-"Овде мoжете да ги конфигурирате мрежните уреди асоцирани со физичкиот "
-"хардвер.  Повеќекратните логички уреди можат да бидат асоцирани со едно "
-"парче хардвер."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr ""
-"Овде можете да го конфигурирате мрежниот хардвер физички врзан за "
-"компјутерот."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:29
-msgid ""
-"You may configure the system's hostname, domain, name servers, and search "
-"domain. Name servers are used to look up other hosts on the network."
-msgstr ""
-"Може да го конфигурирате хостот, доменот, серверот за имиња и да го "
-"пребарувате доменот. Серверите за имиња се користат за наоѓање на хостовите "
-"во мрежата."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may specify static computer hostname to IP address mappings here.  If "
-"DNS is in use, these settings will take precedence over any information it "
-"may provide."
-msgstr ""
-"Можете да одредите статичко име на хостот за мапирање на IP адресата.  "
-"Доколку DNS е во употреба, овие поставувања ќе имаат предност пред кои било "
-"други информации."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:33
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
-msgid "_Delete"
-msgstr "_Избриши"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:34
-msgid "_Edit"
-msgstr "_Уреди"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:35
-msgid "_Hostname:"
-msgstr "_Име на хост:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:37
-msgid "_New..."
-msgstr "_Нов..."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:38
-msgid "_Primary DNS:"
-msgstr "_Примарен DNS"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:39
-msgid "_Profile"
-msgstr "_Профил"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:40
-msgid "_Secondary DNS:"
-msgstr "_Секундарен DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:41
-msgid "_Tertiary DNS:"
-msgstr "_Трет DNS:"
-
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "Network Adapters Configuration"
-msgstr "Конфигурација на мрежни адаптери"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
-msgid "$"
-msgstr "$"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
-msgid "0.00"
-msgstr "0.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
-msgid "1"
-msgstr "1"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
-msgid "1.00"
-msgstr "1.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
-msgid "Confirm _starting connection"
-msgstr "Потврди го _подигнувањето на врската"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
-msgid "Confirm stopping _connection"
-msgstr "Потврди го стопирањето на_врската"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
-msgid "Cos_t accumulated from the past connection:"
-msgstr "Сум_а акумулирана од минатата врска:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
-msgid "Cost per:"
-msgstr "Цена од:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
-msgid "Count:"
-msgstr "Броење:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
-msgid "M_inimum number of seconds charged:"
-msgstr "М_инимум број на наплатени секунди:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
-msgid "_Accumulate cost over multiple connections"
-msgstr "_Акумулирај цена за повеќекратните врски"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
-msgid "_Basic"
-msgstr "_Основно"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
-msgid "_Cost"
-msgstr "_Цена"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
-msgid "_Debug mode"
-msgstr "_Режим на дебагирање"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
-msgid "_Extra cost to start a connection:"
-msgstr "_Екстра цела за подигнување на врска:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
-msgid "_Hour"
-msgstr "_Час"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
-msgid "_Minute"
-msgstr "_Минута"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
-msgid "_Number of seconds in basic accounting unit:"
-msgstr "_Број на секунди во основната бројна единица:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
-msgid "_Second"
-msgstr "_Секунда"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
-msgid "_Terminate connection when session closes"
-msgstr "_Терминирај ја врската по затворањето на сесијата"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
-msgid "_Time"
-msgstr "_Време"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
-msgid "redhat network control - Properties"
-msgstr "redhat мрежна контрола - Својства"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
-msgid "<b>D channel protocol</b>"
-msgstr "<b>Протокол за D канал</b>"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN Adapters Configuration"
-msgstr "Конфигурација на ISDN адаптери"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-msgid "Waiting to connect to"
-msgstr "Чекам да се врзам со"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-msgid "Waiting..."
-msgstr "Чекам..."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
-#, fuzzy
-msgid "<b>Account Type:</b>"
-msgstr "<b>Тип на сметка:</b>"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
-msgid "Configure DSL connection"
-msgstr "Конфигурирај DSL врска"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
-msgid "Create DSL connection"
-msgstr "Креирај DSL врска"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
-msgid "Enter the provider name for this account."
-msgstr "Внесете го името на провајдерот за оваа сметка."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
-msgid "Ethernet _device:"
-msgstr "Мрежен _уред:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Normal"
-msgstr "Нормален"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
-msgid ""
-"Normal\n"
-"T-Online"
-msgstr ""
-"Нормален\n"
-"T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
-msgid "Password (_again):"
-msgstr "Лозинка (_повторно):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-msgid "Select the ethernet device connected to the DSL modem."
-msgstr "Изберете го мрежниот уредот кој е поврзан со DSL модемот."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-msgid "Select the ethernet device for this account."
-msgstr "Изберте го мрежниот уредот за оваа сметка."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-msgid "T-Online"
-msgstr "T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
-msgid "_Provider name:"
-msgstr "_Име на провајдер:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain name:"
-msgstr "Име на домејн:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:2
-msgid "Edit Domain Name"
-msgstr "Уреди го името на домејнот"
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
+msgid "Choose a Provider"
+msgstr "Изберете провајдер"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "<b>Modem properties</b>"
+msgstr "<b>Својства на модемот</b>"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "Modem _volume:"
+msgstr "Јачина _на модемот:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "Изберете модем"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "_Baud rate:"
+msgstr "_Однос на боди:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "_Flow control:"
+msgstr "_Контрола на проток:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "_Modem device:"
+msgstr "_Модемски уред:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "_Користи tocuh tone вртење "
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
 msgid "A_ddress:"
@@ -3141,240 +2721,107 @@ msgstr "dhcp"
 msgid "dialup"
 msgstr "dialup"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
-msgid "00:00:00:00:00:00"
-msgstr "00:00:00:00:00:00"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
+msgid "CIPE Configuration"
+msgstr "Конфигурација за CIPE"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid ""
-"Each device needs to be attached to a physical device which can be selected "
-"below. Device Alias support allows you to use multiple virtual devices for "
-"one physical device."
-msgstr ""
-"Секој уред мора да биде врзан за физички уред кој што можете да го изберете "
-"долу. Поддршката за алијас на уредите ви дозволува да користите повеќекратни "
-"виртуални уреди за еден физички уред."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "Конфигурација за вашиот далечен партнер"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Enable _Device Alias support"
-msgstr "Овозможи _поддршка за алијас на уредите"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+msgid "Lo_cal virtual address:"
+msgstr "Ло_кална виртуелна адреса:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
-msgid "Ha_rdware address:"
-msgstr "Ха_рдверска адреса:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+msgid "Remote _virtual address:"
+msgstr "Далечна _виртуелна адреса:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
-msgid "Token Ring Device"
-msgstr "Уред за прстенеста структура"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+msgid "Remote peer p_ort:"
+msgstr "Далечинска порта на к_лиент:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Alias:"
-msgstr "_Алијас:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+msgid "_Generate"
+msgstr "_Генерирај"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
-msgid "_Hardware device:"
-msgstr "_Хардверски уред:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+msgid "_Local port:"
+msgstr "_Локална порта:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
-msgid "_Probe for Address"
-msgstr "_Тестирај адреса"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+msgid "_Remote peer address:"
+msgstr "_Далечинска адреса на клиент:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
-msgid "_Use Hardware Address"
-msgstr "_Користи хардверска адреса"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+msgid "_Secret key:"
+msgstr "_Таен клуч:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
-msgid "tr0"
-msgstr "tr0"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
+msgid "_Tunnel Settings"
+msgstr "_Поставувања за тунел"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
-msgid "tr1"
-msgstr "tr1"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+msgid "_Tunnel through device:"
+msgstr "_Тунел преку уредот:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
-msgid "tr2"
-msgstr "tr2"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+msgid "_auto"
+msgstr "_автоматски"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
-msgid "tr3"
-msgstr "tr3"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
+msgid "cipcb0"
+msgstr "cipcb0"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
-msgid "tr4"
-msgstr "tr4"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
+msgid "cipcb1"
+msgstr "cipcb1"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
-msgid "tr5"
-msgstr "tr5"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
+msgid "cipcb2"
+msgstr "cipcb2"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "11M"
-msgstr "11M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
+msgid "cipcb3"
+msgstr "cipcb3"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-msgid "1M"
-msgstr "1M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
+msgid "cipcb4"
+msgstr "cipcb4"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
-msgstr "2M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
+msgid "eth0"
+msgstr "eth0"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
-msgstr "5.5M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
+msgid "eth1"
+msgstr "eth1"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
-#, fuzzy
-msgid ""
-"Set the operating mode of the device, which depends on the network topology. "
-"The mode can be Ad-Hoc (network composed of only one cell and without Access "
-"Point), Managed (node connects to a network composed of many Access Points, "
-"with roaming), Master (the node is the synchronization master or acts as an "
-"Access Point) or Auto."
-msgstr ""
-"Поставете го режимот на работа на уредот, кој зависи од топологијата на "
-"мрежата. Режимот може да биде „Ad-hoc“ (мрежа составена од само една ќелија "
-"и без точка на пристап), Справен (точка која се поврзува на мрежа која се "
-"состои ид повеќе точки на пристап, со пренасочување), Главен (точката е "
-"главен синхронизатор или се однесува како точка на пристап) или Автоматски."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
+msgid "eth2"
+msgstr "eth2"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-msgid "Wireless Device Configuration"
-msgstr "Конфигурација на безжичен уред"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
+msgid "eth3"
+msgstr "eth3"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-msgid "_Hardware device"
-msgstr "_Хардверски уред"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
+msgid "eth4"
+msgstr "eth4"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
-msgid "_Wireless Settings"
-msgstr "_Поставувања за безжично"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-msgid "MT_U:"
-msgstr "MT_U:"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
-msgid "_Point to Point (IP):"
-msgstr "_Од точка до точка (IP):"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
-msgid "Choose Hardware Device Type"
-msgstr "Избери го типот на хардверскиот уред"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
-msgid "Please select the type of hardware device to add:"
-msgstr ""
-"Ве молам изберете го типот на хардверскиот уред што сакате да го додадете:"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
-msgid "_Device type:"
-msgstr "_Тип на уред"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
-msgid "Allow dial on _demand"
-msgstr "Дозволи бирање при _барање"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
-msgid "Allow the link come up on demand."
-msgstr "Дозволи врската да се подигне при барање."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
-msgid "Demand setting"
-msgstr "Поставувања за побарувачка"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
-msgid "Enable synchronous PPP for the connection"
-msgstr "Овозможи синхронизен PPP за врската"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
-msgid ""
-"Enter the Access Concentrator name, if you have been given one by your ISP. "
-"In most cases you can leave this blank."
-msgstr ""
-"Внесете го името на концентраторот за пристап доколку го имате добиено од "
-"Вашиот провајдер. Во повеќето случаи ова можете да го оставите празно."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
-msgid ""
-"Enter the Service Name, if your ISP requires it. If you don't know it, "
-"please contact your ISP. In most cases you can leave this blank."
-msgstr ""
-"Внесете го сервисното име, ако вашиот провајдер го бара тоа. Доколку не го "
-"знаете, Ве молиме контактирајте го вашиот провајдер. Во повеќето случаи ова "
-"может да биде оставено празно."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
-msgid "Enter the idle time in seconds after which the link should be dropped."
-msgstr ""
-"Внесете го времето на неактивност во секунди после кои врската би се "
-"прекинала."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
-msgid "Make this connection the default _route"
-msgstr "Направи ја оваа врска стандардна _рута"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
-msgid "Restart if _connection dies"
-msgstr "Рестартирај доколку _врската умре"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
-msgid "_AC-name:"
-msgstr "_AC-име:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
-msgid "_Advanced"
-msgstr "_Напредно"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
-msgid "_IPsec"
-msgstr "_IPsec"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
-msgid "_Maximum idle time:"
-msgstr "_Максимално време на неактивност:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-msgid "_Provider"
-msgstr "_Провајдер"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
-msgid "_Service-name:"
-msgstr "_Сервисно-име:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
-msgid "_Use synchronous PPP"
-msgstr "_Користи синхронизоно PPP"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
-msgid "xDSL Configuration"
-msgstr "xDSL конфигурација"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
-msgid "00:00:00"
-msgstr "00:00:00"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
-msgid "Online time:"
-msgstr "Време:"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
-msgid "click the right mouse button for properties"
-msgstr "кликнете го десното копче од глушецот за својствата"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:1
-msgid "Add / Edit IP Address"
-msgstr "Додади / Уреди IP адреса"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:3
-msgid "_Gateway:"
-msgstr "_Премин:"
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+msgid "Ethernet Device"
+msgstr "Етернет уред"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -3519,6 +2966,11 @@ msgstr "_Избери провајдер..."
 msgid "_Compression"
 msgstr "_Компресија"
 
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/maindialog.glade.h:33
+msgid "_Delete"
+msgstr "_Избриши"
+
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
 msgid "_Dial mode:"
 msgstr "_Режим на бирање"
@@ -3547,57 +2999,329 @@ msgstr "_Телефонски број"
 msgid "_Use Callback"
 msgstr "_Користи повратен повик"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
-msgid "CIPE Configuration"
-msgstr "Конфигурација за CIPE"
+#: ../src/netconfpkg/gui/editipsec.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
-msgid "Configuration for your remote partner"
-msgstr "Конфигурација за вашиот далечен партнер"
+#: ../src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication key:"
+msgstr "Клуч за а_втентикација:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
-msgid "_Tunnel Settings"
-msgstr "_Поставувања за тунел"
+#: ../src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "Режим за избор на автоматска енкрипција IKA (racoon)"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
-msgid "cipcb0"
-msgstr "cipcb0"
+#: ../src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "Ге_нерирај"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
-msgid "cipcb1"
-msgstr "cipcb1"
+#: ../src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr "Енкрипција за хост до хост"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
-msgid "cipcb2"
-msgstr "cipcb2"
+#: ../src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
-msgid "cipcb3"
-msgstr "cipcb3"
+#: ../src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPsec - Тип на врска"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
-msgid "cipcb4"
-msgstr "cipcb4"
+#: ../src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - Режим на енкрипција"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
-msgid "eth0"
-msgstr "eth0"
+#: ../src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - Клучеви"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
-msgid "eth1"
-msgstr "eth1"
+#: ../src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - Локална мрежа"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
-msgid "eth2"
-msgstr "eth2"
+#: ../src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Nickname"
+msgstr "IPsec - прекар"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
-msgid "eth3"
-msgstr "eth3"
+#: ../src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Remote Network"
+msgstr "IPsec - Далечинска мрежа"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
-msgid "eth4"
-msgstr "eth4"
+#: ../src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec - Summary"
+msgstr "IPsec - Резултати"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:14
+msgid "IPsec Settings"
+msgstr "Поставувања за IPsec"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local network _address:"
+msgstr "Локална мрежна _адреса:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local network _gateway:"
+msgstr "Локален мрежен _премин:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Local subnet _mask:"
+msgstr "Локална _маска:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Manual encryption with a fixed key"
+msgstr "Рачна енкрипција со фиксен клуч"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Network to Network encryption (VPN)"
+msgstr "Енекрипција од мрежа до мрежа (VPN)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter a nickname for the connection:"
+msgstr "Ве молам внесете прекар за врската:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter a passphrase to generate the key."
+msgstr "Ве молам внесете фраза за да го генерирате клучот."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please enter your local network settings:"
+msgstr "Ве молам внесете ги Вашите локални мрежни поставувања:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please enter your remote network settings:"
+msgstr "Ве молам внесете ги Вашите далечински мрежни поставувања:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:24
+msgid "Please select the type of connection:"
+msgstr "Ве молам изберете го типот на врска:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:25
+msgid "Please select the type of encryption:"
+msgstr "Ве молам изберете го типот на енкрипција:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:26
+#, fuzzy
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner needs to have the same."
+msgstr ""
+"Ве молам одредете ги или генерирајте ги клучевите. \n"
+"Клучевите се симетрични и затоа вашиот далечен партнер мора да ги има истите."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote _IP address:"
+msgstr "Далечинска _IP адреса:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote network _address:"
+msgstr "Далечинска мрежна _адреса:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:30
+msgid "Remote network _gateway:"
+msgstr "Далечински мрежен _премин:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:31
+msgid "Remote subnet _mask:"
+msgstr "Далечинска _маска:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:32
+msgid "Security parameter index for authentication:"
+msgstr "Индекс со безбедносен параметар за проверка:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:33
+msgid "Security parameter index for encryption:"
+msgstr "Индекс со безбедносен параметар за енкрипција:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:34
+msgid "You will now be guided through the setup of the IPsec connection."
+msgstr "Сега ќе бидете водени низ поставувањето на IPsec врската."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:35
+msgid "_Activate connection when computer starts"
+msgstr "_Активирај ја врската при подигнување на компјутерот"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:36
+msgid "_Encryption key:"
+msgstr "_Клуч за енкрипција:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:39
+msgid "dialog1"
+msgstr "dialog1"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:40
+msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+"единствен „SPI“ за „AH“ (256 - 4294967295), како број на порта на TCP/IP"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:41
+msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+"единствен „SPI“ за „ESP“ (256 - 4294967295), како број на порта на TCP/IP"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+msgid "<b>D-channel protocol</b>"
+msgstr "<b>Протокол за D канал</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Избери ISDN адаптер"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "Configure Wireless Connection"
+msgstr "Конфигурирај безжична врска"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "Create Wireless Device"
+msgstr "Креирај безжичен уред"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid "Network name (SSID):"
+msgstr "Име на мрежата (SSID):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Ве молам внесете го MTU параметарот за да ја поставите максималната бројка "
+"за пренос на единици за овој интерфејс. На s390/s390x MTU го користи 1492 "
+"како стандардно поставување."
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Select Wireless Device"
+msgstr "Избери безжичен уред"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Select the wireless card you want to configure:"
+msgstr "Изберете ја безжичната картичка која што сакате да ја конфигурирате:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+"Се користи за манипулација на клучевите за енкрипција или менување и режим "
+"на криптирање. За да го поставите тековниот клуч за енкрипција во "
+"хексадецимални броеви, внесете го клучот кој започнува со 0x како на пример "
+"0xXXXXXXXX."
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Wireless card"
+msgstr "Безжична картичка"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "_Auto"
+msgstr "_Автоматски"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Channel:"
+msgstr "_Канал:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+msgid "_Key (use 0x for hex):"
+msgstr "_Клуч (користи 0x за hex)"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+msgid "_Mode:"
+msgstr "_Режим:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+msgid "_Specified:"
+msgstr "_Одредено:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
+msgid "_Transmit rate:"
+msgstr "_Однос на пренос:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Избери го типот на хардверскиот уред"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr ""
+"Ве молам изберете го типот на хардверскиот уред што сакате да го додадете:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "_Тип на уред"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+msgid "<b>Configuration for your remote partner</b>"
+msgstr "<b>Конфигурација за вашиот далечен партнер</b>"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
+msgid "Configure Tunnel"
+msgstr "Конфигурирај тунел"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
+msgid "Create Cipe Connection"
+msgstr "Креирај „Cipe“ врска"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
+msgstr "11M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+msgid "1M"
+msgstr "1M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
+msgstr "2M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
+msgstr "5.5M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+#, fuzzy
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
+msgstr ""
+"Поставете го режимот на работа на уредот, кој зависи од топологијата на "
+"мрежата. Режимот може да биде „Ad-hoc“ (мрежа составена од само една ќелија "
+"и без точка на пристап), Справен (точка која се поврзува на мрежа која се "
+"состои ид повеќе точки на пристап, со пренасочување), Главен (точката е "
+"главен синхронизатор или се однесува како точка на пристап) или Автоматски."
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Wireless Device Configuration"
+msgstr "Конфигурација на безжичен уред"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Hardware device"
+msgstr "_Хардверски уред"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+msgid "_Wireless Settings"
+msgstr "_Поставувања за безжично"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Додади / Уреди запис за хост"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Алијаси:"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Име на хост:"
 
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
 msgid "Card"
@@ -3615,17 +3339,292 @@ msgstr "Избери уред"
 msgid "Select the card you want to configure:"
 msgstr ":Изберете ја картичката која што сакате да ја конфигурирате"
 
-#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
-msgid "Choose a Provider"
-msgstr "Изберете провајдер"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "Креирај уред за прстенеста структура"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
-msgid "Connect to"
-msgstr "Врзи се со"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "Изберете уред за прстенеста структура"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
-msgid "Disconnect from"
-msgstr "Одврзи се од"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr ""
+"Изберете ја картичката која што сакате да ја конфигурирате за прстенеста "
+"структура"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "Картичка за прстенеста структура"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Додади / Уреди IP адреса"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Премин:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:1
+msgid "Activate the selected device, calling ifup <device>."
+msgstr "Активирај го избраниот уред со повикување на ifup <device>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:2
+msgid "Aliases"
+msgstr "Алијаси"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:3
+msgid "Contents"
+msgstr "Содржини"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:4
+msgid "DNS search path:"
+msgstr "DNS патека за пребарување:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:5
+msgid "D_NS"
+msgstr "D_NS"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:6
+msgid "Deactivate the selected device, calling ifdown <device>."
+msgstr "Деактивирај го избраниот уред со повикување на ifdown <device>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:7
+msgid "Description"
+msgstr "Опис"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:8
+msgid "Destination"
+msgstr "Дестинација"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:9
+msgid "Dev_ices"
+msgstr "Уре_ди"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:11
+msgid "Do_main:"
+msgstr "До_мејн:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:12
+msgid "H_osts"
+msgstr "Д_омаќини"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:13
+msgid "Hard_ware"
+msgstr "Хард_вер"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:14
+msgid "IP"
+msgstr "IP"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:15
+msgid "IP_sec"
+msgstr "IP_sec"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:16
+msgid "List of devices which are currently configurable on your system."
+msgstr ""
+"Листа на уреди кои што моментално можат да бидат конфигурирани на вашиот "
+"систем."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:17
+msgid "Monitor the selected device."
+msgstr "Надгледувај го избраниот уред."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:20
+msgid "New Profile"
+msgstr "Нов профил"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:22
+msgid ""
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
+msgstr ""
+"Ве молам внесете го името за профилот. Името може да содржи само букви и "
+"бројки."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:23
+msgid "Profile"
+msgstr "Профил"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:25
+msgid "Type"
+msgstr "Тип"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:26
+msgid "You may configure IPsec tunnels and host to host connections here."
+msgstr "Овде можете да ги конфигурирате IPsec тунелите и хост до хост врските."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:27
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"Овде мoжете да ги конфигурирате мрежните уреди асоцирани со физичкиот "
+"хардвер.  Повеќекратните логички уреди можат да бидат асоцирани со едно "
+"парче хардвер."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:28
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"Овде можете да го конфигурирате мрежниот хардвер физички врзан за "
+"компјутерот."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:29
+msgid ""
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
+msgstr ""
+"Може да го конфигурирате хостот, доменот, серверот за имиња и да го "
+"пребарувате доменот. Серверите за имиња се користат за наоѓање на хостовите "
+"во мрежата."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:30
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"Можете да одредите статичко име на хостот за мапирање на IP адресата.  "
+"Доколку DNS е во употреба, овие поставувања ќе имаат предност пред кои било "
+"други информации."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:34
+msgid "_Edit"
+msgstr "_Уреди"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_Hostname:"
+msgstr "_Име на хост:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:37
+msgid "_New..."
+msgstr "_Нов..."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:38
+msgid "_Primary DNS:"
+msgstr "_Примарен DNS"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:39
+msgid "_Profile"
+msgstr "_Профил"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:40
+msgid "_Secondary DNS:"
+msgstr "_Секундарен DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:41
+msgid "_Tertiary DNS:"
+msgstr "_Трет DNS:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "Име на домејн:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Уреди го името на домејнот"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Додади нов тип на уред"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Тип на уред"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Изберете тип на уред"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "$"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "0.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+msgid "1"
+msgstr "1"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "1.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Confirm _starting connection"
+msgstr "Потврди го _подигнувањето на врската"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm stopping _connection"
+msgstr "Потврди го стопирањето на_врската"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Cos_t accumulated from the past connection:"
+msgstr "Сум_а акумулирана од минатата врска:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cost per:"
+msgstr "Цена од:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Count:"
+msgstr "Броење:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "M_inimum number of seconds charged:"
+msgstr "М_инимум број на наплатени секунди:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "_Accumulate cost over multiple connections"
+msgstr "_Акумулирај цена за повеќекратните врски"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "_Basic"
+msgstr "_Основно"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Cost"
+msgstr "_Цена"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Debug mode"
+msgstr "_Режим на дебагирање"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Extra cost to start a connection:"
+msgstr "_Екстра цела за подигнување на врска:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Hour"
+msgstr "_Час"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Minute"
+msgstr "_Минута"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_Број на секунди во основната бројна единица:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Second"
+msgstr "_Секунда"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Terminate connection when session closes"
+msgstr "_Терминирај ја врската по затворањето на сесијата"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Time"
+msgstr "_Време"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "redhat network control - Properties"
+msgstr "redhat мрежна контрола - Својства"
 
 #~ msgid "Static routes file %s is invalid"
 #~ msgstr "Датотеката со статички рути %s е невалидна"

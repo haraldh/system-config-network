@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cy\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 10:59+0200\n"
+"POT-Creation-Date: 2007-10-08 13:28+0200\n"
 "PO-Revision-Date: 2004-08-30 15:14+0100\n"
 "Last-Translator: Alan Cox <alan@redhat.com>\n"
 "Language-Team: Cymraeg <Cy@li.org>\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
+
+#: ../neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "Rheoli ac arsylwi dyfeisiau rhwydwaith"
+
+#: ../neat-control.desktop.in.h:2
+#: ../src/netconfpkg/gui/neat-control.glade.h:12
+msgid "Network Device Control"
+msgstr "Rheolaeth Dyfeisiau Rhwydwaith"
 
 #: ../neat.desktop.in.h:1
 msgid "Configure network devices and connections"
@@ -30,304 +39,104 @@ msgstr "Rhwydwaith"
 msgid "Network Configuration"
 msgstr "Cyfluniad Rhwydwaith"
 
-#: ../neat-control.desktop.in.h:1
-msgid "Control and monitor network devices"
-msgstr "Rheoli ac arsylwi dyfeisiau rhwydwaith"
+#: ../src/netconfpkg/NCBackendHal.py:50 ../src/netconfpkg/NCDeviceList.py:72
+#: ../src/netconfpkg/NCDevice.py:231 ../src/netconfpkg/NCHardwareList.py:442
+#: ../src/netconfpkg/NCHardwareList.py:562
+#: ../src/netconfpkg/gui/tokenringhardware.py:111
+#: ../src/netconfpkg/gui/ethernethardware.py:137
+#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
+#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
+#: ../src/netconfpkg/NC_functions.py:388
+msgid "Unknown"
+msgstr "Anhysbys"
 
-#: ../neat-control.desktop.in.h:2
-#: ../src/netconfpkg/gui/neat-control.glade.h:12
-msgid "Network Device Control"
-msgstr "Rheolaeth Dyfeisiau Rhwydwaith"
+#: ../src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "anweithredol"
 
-#: ../src/netconf-cmd.py:62
-#, python-format
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.\n"
-"Please file a detailed bug report against the component %s at \n"
-"https://bugzilla.redhat.com/bugzilla\n"
-"using the text below.\n"
-msgstr ""
-"Mae eithriad anrhinedig wedi digwydd.  Mwy na thebyg fod hyn yn nam.\n"
-"Adroddwch adroddiad nam manwl yn erbyn y gydran %s wrth \n"
-"https://bugzilla.redhat.com/bugzilla\n"
-"gan ddefnyddio'r testun isod.\n"
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "system"
 
-#: ../src/netconf-cmd.py:97
-#, python-format
-msgid "%s - network configuration commandline tool"
-msgstr "%s - erfyn llinell orchymyn cyflunio rhwydwaith"
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "cyfluniwyd"
 
-#: ../src/netconf-cmd.py:98 ../src/neat-control.py:146
-#: ../src/neat-control.py:163 ../src/netconfpkg/gui/maindialog.py:1641
-#: ../src/netconfpkg/gui/maindialog.py:1657
-#, fuzzy
-msgid "Copyright (c) 2001-2005 Red Hat, Inc."
-msgstr "Hawlfraint (h)(c) 2001-2003 Red Hat, Inc."
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "iawn"
 
-#: ../src/netconf-cmd.py:99 ../src/neat-control.py:147
-#: ../src/netconfpkg/gui/maindialog.py:1642
-msgid ""
-"This software is distributed under the GPL. Please Report bugs to Red Hat's "
-"Bug Tracking System: http://bugzilla.redhat.com/"
-msgstr ""
-"Dosberthir y feddalwedd hon o dan y GPL. Adroddwch namau at System Olrhain "
-"Nawau Red Hat: http://bugzilla.redhat.com/"
+#: ../src/netconfpkg/NCDeviceList.py:117
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "Newidwyd y Ffugenwau canlynol o achos sgriptiau ymgychwyn:\n"
 
-#: ../src/netconf-cmd.py:102
-#, python-format
-msgid "Usage: %s"
-msgstr "Defnydd: %s"
+#: ../src/netconfpkg/NCDeviceList.py:120
+msgid "Nicknames changed"
+msgstr "Newidwyd ffugenwau"
 
-#: ../src/netconf-cmd.py:104
-msgid "switch / activate profile"
-msgstr "newid / gweithredoli proffil"
-
-#: ../src/netconf-cmd.py:106
-msgid "export / import hardware list"
-msgstr "allforio / mewnforio rhestr galedwedd"
-
-#: ../src/netconf-cmd.py:108
-msgid "export / import IPsec list"
-msgstr "allforio / mewnforio rhestr IPsec"
-
-#: ../src/netconf-cmd.py:110
-msgid "export / import device list (default)"
-msgstr "allforio / mewnforio rhestr ddyfeisiau (rhagosodyn)"
-
-#: ../src/netconf-cmd.py:112
-msgid "export / import profile list"
-msgstr "allforio / mewnforio rhestr broffilau"
-
-#: ../src/netconf-cmd.py:114
-msgid "set the root directory"
-msgstr "gosod y cyfeiriadur gwraidd"
-
-#: ../src/netconf-cmd.py:116
-msgid "export list (default)"
-msgstr "allforio rhestr (rhagosodyn)"
-
-#: ../src/netconf-cmd.py:117
-msgid "import list"
-msgstr "mewnforio rhestr"
-
-#: ../src/netconf-cmd.py:119
-msgid "clear existing list prior of importing"
-msgstr "gwagio'r rhestr gyfredol cyn mewnforio"
-
-#: ../src/netconf-cmd.py:121
-msgid "import from file"
-msgstr "mewnforio o ffeil"
-
-#: ../src/netconf-cmd.py:264
-#, python-format
-msgid "Unknown option %s\n"
-msgstr "Dewisiad anhysbys %s\n"
-
-#: ../src/netconf-cmd.py:325
-#, python-format
-msgid "Unknown List %s\n"
-msgstr "Rhestr Anhysbys %s\n"
-
-#: ../src/netconf-cmd.py:329 ../src/netconfpkg/genClass.py:302
-#, python-format
-msgid "Error parsing line: %s"
-msgstr "Gwall wrth ddyrannu llinell: %s"
-
-#: ../src/netconf-tui.py:99
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.  Please save "
-"the crash dump and file a detailed bug report against system-config-network "
-"at https://bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Digwyddodd eithriad anrhinedig.  Mwy na thebyg fod hyn yn nam.  Cadwch y "
-"domen chwaliad ac adroddwch adroddiad nam manwl yn erbyn system-config-"
-"network wrth https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconf-tui.py:127
-#, fuzzy
-msgid "Loading configuration"
-msgstr "Yn llwytho cyfluniad..."
-
-#: ../src/netconf-tui.py:128
-#, fuzzy
-msgid "Loading Device Configuration"
-msgstr "Yn llwytho cyfluniad dyfais..."
-
-#: ../src/netconf-tui.py:134
-#, fuzzy
-msgid "Loading Hardware Configuration"
-msgstr "Yn llwytho cyfluniad caledwedd..."
-
-#: ../src/netconf-tui.py:138
-#, fuzzy
-msgid "Loading Profile Configuration"
-msgstr "Yn llwytho cyfluniad proffilau..."
-
-#: ../src/netconf-tui.py:152
-#, fuzzy
-msgid "Which device type do you want to add?"
-msgstr "Ni ellir golygu'r math dyfais %s!"
-
-#: ../src/netconf-tui.py:153
-#, fuzzy
-msgid "Add"
-msgstr "_Ychwanegu..."
-
-#: ../src/netconf-tui.py:153 ../src/netconf-tui.py:205
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Cancel"
-msgstr "Diddymu"
-
-#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
-msgid "Ethernet"
-msgstr "Ethernet"
-
-#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
-msgid "Modem"
-msgstr "Modem"
-
-#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
-msgid "ISDN"
-msgstr "ISDN"
-
-#: ../src/netconf-tui.py:203
-#, fuzzy
-msgid "<New Device>"
-msgstr "Dyfais"
-
-#: ../src/netconf-tui.py:204
-#, fuzzy
-msgid "Select A Device"
-msgstr "Dewiswch Ddyfais"
-
-#: ../src/netconf-tui.py:205
-msgid "Quit"
-msgstr ""
-
-#: ../src/netconf-tui.py:222
-#, fuzzy
-msgid ""
-"system-config-network - network configuration tool\n"
-"\n"
-"Usage: system-config-network -v --verbose -d --debug"
-msgstr ""
-"system-config-network - erfyn cyflunio rhwydwaith\n"
-"\n"
-"Defnydd: system-config-network -v --verbose"
-
-#: ../src/neat-control.py:50 ../src/netconf.py:72
-msgid "ERROR: Unable to initialize graphical environment. "
-msgstr "GWALL: Methu ymgychwyn amgylchedd graffigol. "
-
-#: ../src/neat-control.py:51 ../src/netconf.py:73
-msgid ""
-"Most likely cause of failure is that the tool was not run using a graphical "
-"environment. "
-msgstr ""
-"Achos mwyaf tebygol y fethiant yw na redwyd yr erfyn drwy amgylchedd "
-"graffigol. "
-
-#: ../src/neat-control.py:52 ../src/netconf.py:74
-msgid ""
-"Please either start your graphical user interface or set your DISPLAY "
-"variable.\n"
-msgstr ""
-"Naill ai dechreuwch eich rhyngwyneb defnyddiwr graffigol neu osodwch eich "
-"newidyn DISPLAY.\n"
-
-#: ../src/neat-control.py:170 ../src/netconfpkg/gui/maindialog.py:1661
-#, fuzzy
-msgid ""
-"This software is distributed under the GPL. \n"
-"Please Report bugs to Red Hat's Bug Tracking \n"
-"System: http://bugzilla.redhat.com/"
-msgstr ""
-"Dosberthir y feddalwedd hon o dan y GPL. Adroddwch namau at System Olrhain "
-"Nawau Red Hat: http://bugzilla.redhat.com/"
-
-#: ../src/neat-control.py:223
-#, python-format
-msgid "Cannot configure network device %s"
-msgstr "Methu cyflunio'r ddyfais rwydwaith %s"
-
-#: ../src/neat-control.py:243
-msgid "Switching Profiles"
-msgstr "Yn Newid Proffilau"
-
-#: ../src/neat-control.py:244
-#, python-format
-msgid "Switching to profile %s"
-msgstr "Yn newid at y proffil %s"
-
-#: ../src/neat-control.py:245
-#, python-format
-msgid "Failed to switch to profile %s"
-msgstr "Methwyd newid at y proffil %s"
-
-#. TBD
-#: ../src/neat-control.py:260
-msgid "To be rewritten!"
-msgstr "I'w ailysgrifennu!"
-
-#: ../src/neat-control.py:367
-msgid " (active)"
-msgstr " (gweithredol)"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:68
+#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCTcpIp.py:93
 #: ../src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Name"
 msgstr "Enw"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:69
+#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCTcpIp.py:94
+#: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
 #: ../src/netconfpkg/gui/maindialog.glade.h:10
-#: ../src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Dyfais"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:68
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:70
+#: ../src/netconfpkg/tui/NCModemInterface.py:68
 msgid "ISP Phonenumber"
 msgstr "Rhif ffôn ISP"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:69
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:71
+#: ../src/netconfpkg/tui/NCModemInterface.py:69
 msgid "ISP Login"
 msgstr "Mewngofnod ISP"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:70
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:72
+#: ../src/netconfpkg/tui/NCModemInterface.py:70
 msgid "ISP Password"
 msgstr "Cyfrinair ISP"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:71
-msgid "Modem Initstring"
-msgstr "Llinyn ymgychwyn modem"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Ok"
-msgstr "Iawn"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:79
-#: ../src/netconfpkg/gui/modemconfig.glade.h:6
-msgid "Modem Configuration"
-msgstr "Cyfluniad Modem"
 
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:73
 msgid "MSN"
 msgstr "MSN"
 
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+msgid "Ok"
+msgstr "Iawn"
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106 ../src/netconf-tui.py:153
+#: ../src/netconf-tui.py:205
+msgid "Cancel"
+msgstr "Diddymu"
+
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "Cyfluniad ISDN"
+
+#: ../src/netconfpkg/tui/NCModemInterface.py:71
+msgid "Modem Initstring"
+msgstr "Llinyn ymgychwyn modem"
+
+#: ../src/netconfpkg/tui/NCModemInterface.py:79
+#: ../src/netconfpkg/gui/modemconfig.glade.h:6
+msgid "Modem Configuration"
+msgstr "Cyfluniad Modem"
 
 #: ../src/netconfpkg/tui/NCTcpIp.py:95
 msgid "Use DHCP"
@@ -350,103 +159,6 @@ msgstr "IP porthydd rhagosodedig"
 msgid "Devernet Configuration"
 msgstr "Cyfluniad Ethernet"
 
-#: ../src/netconfpkg/NCHardwareList.py:442
-#: ../src/netconfpkg/NCHardwareList.py:562
-#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
-#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
-#: ../src/netconfpkg/NC_functions.py:388
-#: ../src/netconfpkg/gui/ethernethardware.py:137
-#: ../src/netconfpkg/gui/tokenringhardware.py:111
-#: ../src/netconfpkg/NCDeviceList.py:72 ../src/netconfpkg/NCDevice.py:231
-#: ../src/netconfpkg/NCBackendHal.py:50
-msgid "Unknown"
-msgstr "Anhysbys"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:77 ../src/netconfpkg/NCDevice.py:441
-msgid "Network device activating..."
-msgstr "Dyfais rwydwaith yn gweithredoli..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:78 ../src/netconfpkg/NCDevice.py:442
-#, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "Yn gweithredoli'r ddyfais rwydwaith %s, arhoswch..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:80 ../src/netconfpkg/NCDevice.py:444
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Methu gweithredoli'r ddyfais rwydwaith %s!\n"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
-#: ../src/netconfpkg/NCDevice.py:461
-msgid "Network device deactivating..."
-msgstr "Anweithredoli dyfais rwydwaith..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
-#: ../src/netconfpkg/NCDevice.py:462
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "Anweithredoli'r ddyfais rwydwaith %s, arhoswch..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
-#: ../src/netconfpkg/NCDevice.py:464
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Methu anweithredoli'r ddyfais rwydwaith %s!\n"
-
-#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
-msgid "Exception Occurred"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:59
-#, fuzzy
-msgid "_Debug"
-msgstr "Modd _dadnamu"
-
-#: ../src/netconfpkg/exception.py:60
-msgid "_Save to file"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:75
-#, fuzzy, python-format
-msgid ""
-"An unhandled exception has occurred.  This is most likely a bug.  Please "
-"save the crash dump and file a detailed bug report against %s at https://"
-"bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Digwyddodd eithriad anrhinedig.  Mwy na thebyg fod hyn yn nam.  Cadwch y "
-"domen chwaliad ac adroddwch adroddiad nam manwl yn erbyn system-config-"
-"network wrth https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconfpkg/exception.py:277
-#, fuzzy, python-format
-msgid "Error: %s: %s"
-msgstr "Gwall: %s, %s!"
-
-#: ../src/netconfpkg/exception.py:280
-#, python-format
-msgid ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:354
-msgid "Specify a file to save the dump"
-msgstr ""
-
-#: ../src/netconfpkg/exception.py:373
-#, fuzzy, python-format
-msgid "Failed to write to file %s."
-msgstr "Methwyd newid at y proffil %s"
-
-#: ../src/netconfpkg/exception.py:377
-#, python-format
-msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
-msgstr ""
-
 #: ../src/netconfpkg/NCProfileList.py:205
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
@@ -460,113 +172,6 @@ msgstr ""
 "Dewiswch Ddyfais Galedwedd arall neu weithredolwch\n"
 "un ohonynt yn unig."
 
-#: ../src/netconfpkg/NC_functions.py:94
-msgid "Common"
-msgstr "Cyffredinol"
-
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:139
-msgid "Active"
-msgstr "Gweithredol"
-
-#: ../src/netconfpkg/NC_functions.py:140
-msgid "Inactive"
-msgstr "Anweithredol"
-
-#: ../src/netconfpkg/NC_functions.py:147
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "Hardware (CRTSCTS)"
-msgstr "Caledwedd (CRTSCTS)"
-
-#: ../src/netconfpkg/NC_functions.py:148
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "Software (XON/XOFF)"
-msgstr "Meddalwedd (XON/XOFF)"
-
-#: ../src/netconfpkg/NC_functions.py:149 ../src/netconfpkg/NCDialup.py:36
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/gui/modemconfig.glade.h:8
-msgid "None"
-msgstr "Dim"
-
-#: ../src/netconfpkg/NC_functions.py:227
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr "A ddynid arsefydlu'r pecynnau canlynol, sydd eu hangen ar eich system?"
-
-#: ../src/netconfpkg/NC_functions.py:240
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr ""
-"Rhaid i chi arsefydlu'r pecynnau canlynol, sydd eu hangen ar eich system!"
-
-#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
-#, python-format
-msgid ""
-"Error removing\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"Gwall wrth waredu\n"
-"%s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:796
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Gwall wrth gopïo %s \n"
-"i\n"
-"%s:\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:806
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Gwall wrth gysylltu \n"
-"%s\n"
-"â %s:\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:816
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Gwall wrth ail-enwi \n"
-"%s\n"
-"yn %s:\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:824
-#, python-format
-msgid ""
-"Error creating directory!\n"
-"%s"
-msgstr ""
-"Gwall wrth greu cyfeiriadur!\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:952
-#, python-format
-msgid "Linking %s to devices and putting it in profile %s."
-msgstr "Yn cysylltu %s at ddyfeisiau a'i roi yn y proffil %s."
-
 #: ../src/netconfpkg/NCDialup.py:32
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
 msgid "auto"
@@ -576,6 +181,12 @@ msgstr "awto"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
 msgid "manual"
 msgstr "â llaw"
+
+#: ../src/netconfpkg/NCDialup.py:36 ../src/netconfpkg/NC_functions.py:149
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
+#: ../src/netconfpkg/gui/modemconfig.glade.h:8
+msgid "None"
+msgstr "Dim"
 
 #: ../src/netconfpkg/NCDialup.py:37
 msgid "Afghanistan"
@@ -871,378 +482,120 @@ msgstr "Algeria"
 msgid "Montenegro"
 msgstr ""
 
-#: ../src/netconfpkg/NCHardware.py:21
-msgid "inactive"
-msgstr "anweithredol"
+#: ../src/netconfpkg/genClass.py:297 ../src/netconf-cmd.py:329
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "Gwall wrth ddyrannu llinell: %s"
 
-#. not found in last config and not in actual system
-#: ../src/netconfpkg/NCHardware.py:22
-msgid "system"
-msgstr "system"
+#: ../src/netconfpkg/NCDevice.py:219
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr "%s, Dyfais heb ei phenodi neu ffugenw ddim yn rif!"
 
-#. found in system
-#: ../src/netconfpkg/NCHardware.py:23
-msgid "configured"
-msgstr "cyfluniwyd"
+#: ../src/netconfpkg/NCDevice.py:441 ../src/netconfpkg/plugins/NCDevIsdn.py:77
+msgid "Network device activating..."
+msgstr "Dyfais rwydwaith yn gweithredoli..."
 
-#. found in config but not in system
-#: ../src/netconfpkg/NCHardware.py:24
-msgid "ok"
-msgstr "iawn"
+#: ../src/netconfpkg/NCDevice.py:442 ../src/netconfpkg/plugins/NCDevIsdn.py:78
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "Yn gweithredoli'r ddyfais rwydwaith %s, arhoswch..."
 
-#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
-msgid "CTC Device"
-msgstr "Dyfais CTC"
+#: ../src/netconfpkg/NCDevice.py:444 ../src/netconfpkg/plugins/NCDevIsdn.py:80
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Methu gweithredoli'r ddyfais rwydwaith %s!\n"
 
-#: ../src/netconfpkg/gui/ethernethardware.py:90
-msgid "Command failed: "
-msgstr "Methodd y gorchymyn: "
+#: ../src/netconfpkg/NCDevice.py:461
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
+msgid "Network device deactivating..."
+msgstr "Anweithredoli dyfais rwydwaith..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:91
-msgid "Output:\n"
-msgstr "Allbwn:\n"
+#: ../src/netconfpkg/NCDevice.py:462
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "Anweithredoli'r ddyfais rwydwaith %s, arhoswch..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:93
-msgid ""
-"The Ethernet card could not be initialized. Please verify your settings and "
-"try again."
-msgstr ""
-"Nid oedd modd ymgychwyn y cerdyn Ethernet. Gwiriwch eich gosodiadau a "
-"cheisiwch eto."
+#: ../src/netconfpkg/NCDevice.py:464
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Methu anweithredoli'r ddyfais rwydwaith %s!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:87
+#: ../src/netconfpkg/NCCipe.py:152
 #, python-format
 msgid ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
 msgstr ""
+"Mae'r cyfeiriadur %s ar goll!\n"
+"Byddaf yn ei greu i chi!\n"
+"Dylech arsefydlu'r pecyn rpm cipe!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:96
+#: ../src/netconfpkg/NCCipe.py:156
 #, python-format
 msgid ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Could not create\n"
+"directory %s!"
+msgstr ""
+"Methwyd creu\n"
+"cyfeiriadur %s!"
+
+#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
+msgid "Exception Occurred"
 msgstr ""
 
-#: ../src/netconfpkg/gui/GUI_functions.py:586
-#, python-format
-msgid ""
-"Failed to run:\n"
-"%s"
-msgstr ""
-"Methwyd rhedeg:\n"
-"%s"
-
-#: ../src/netconfpkg/gui/GUI_functions.py:589
-msgid "Succeeded. Please read the output."
-msgstr "Wedi llwyddo. Darllenwch yr allbwn os gwelwch yn dda."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
-msgid "xDSL connection"
-msgstr "cysylltiad xDSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
-msgid ""
-"Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber "
-"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
-"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
-"uploads at the same speed), and several others.  These types of connections "
-"are common in the United States, and are gaining acceptance elsewhere.  "
-"Speeds vary according to the technology used, but generally range from "
-"144kbps to 1.0Mbps."
-msgstr ""
-"Creu cysylltiad xDSL.  Mae hwn yn gysylltiad sy'n defnyddio un o sawl math o "
-"gysylltiadau ystod llydan a elwir â'i gilydd yn Linellau Tanysgrifwyr "
-"Digidol (DSL).   Mae'r restr yn cynnwys ADSL (Anghymesur, lawrlwytho cynt na "
-"lanlwytho), IDSL (dros linell ISDN ar gyfer pellter), SDSL (Cymesur, "
-"lawrlwyth a lanlwytho yr un cyflymder), a sawl arall.  Mae'r mathau yma o "
-"gysylltiad yn gyffredin yn yr Unol Daleithau, ac yn ennill cydnabyddiaeth "
-"mewn llefydd eraill.  Mae cyflymderau'n newid yn ôl y technoleg a "
-"ddefnyddir, ond maent yn amrywio o 144kbps hyd 1.0Mbps yn gyffredinol."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
-#: ../src/netconfpkg/gui/TokenRingInterface.py:197
-#: ../src/netconfpkg/gui/WirelessInterface.py:317
-#: ../src/netconfpkg/gui/CipeInterface.py:137
-#: ../src/netconfpkg/gui/editipsec.py:285
-#: ../src/netconfpkg/gui/DialupDruid.py:223
-#: ../src/netconfpkg/gui/EthernetInterface.py:210
-#: ../src/netconfpkg/gui/PTPInterface.py:200
-msgid "You have selected the following information:"
-msgstr "Rhydych wedi dewis y wybodaeth ganlynol:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
-msgid "Ethernet device:"
-msgstr "Dyfais Ethernet:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
-#: ../src/netconfpkg/gui/DialupDruid.py:226
-msgid "Provider name:"
-msgstr "Enw darparwr:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
-#: ../src/netconfpkg/gui/DialupDruid.py:228
-msgid "Login name:"
-msgstr "Enw mewngofnodi:"
-
-#: ../src/netconfpkg/gui/iucvconfig.py:39
-msgid "IUCV Device"
-msgstr "Dyfais IUCV"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:86
-msgid "ISDN connection"
-msgstr "Cysylltiad ISDN"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:92
-msgid ""
-"Create a new ISDN connection. This is a connection that uses an Integrated "
-"Services Digital Network line to dial into to your Internet Service "
-"Provider. This type of technology requires a special phone line to be "
-"installed by your telephone company. It also requires a device known as a "
-"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
-"type of connection is popular in Europe and several other technologically "
-"advanced regions.  It is available but uncommon in the USA.  Speeds range "
-"from 64kbps to 128kbps."
-msgstr ""
-"Creu cysylltiad ISDN newydd. Mae hwn yn gysylltiad sy'n defnyddio llinell "
-"Rhwydwaith Ddigidol Gwasanaethau Integreiddiedig (ISDN) i ddeialu i'ch "
-"Darparwr Gwasanaeth Rhyngrwyd (ISP). Mae'r fath yma o dechnoleg yn mynnu "
-"arsefydlu llinell ffôn arbennig gan eich cwmni teleffon. Mae hefyd yn mynnu "
-"Addasydd Terfynnell (TA) i roi terfyn ar y cysylltiad ISDN o'ch ISP. Mae'r "
-"math yma o gysylltiad yn boblogaidd yn Ewrop ac mewn sawl ardal arall â "
-"thechnoleg datblygedig.  Mae ar gael ond yn anghyffredin yn UDA.  Amrywia "
-"cyflymderau o 64kpbs hyd 128kbps."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:111
-msgid "Token Ring connection"
-msgstr "Cysylltiad Cylch Docyn"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:117
-msgid "Create a new Token Ring connection."
-msgstr "Creu cysylltiad Cylch Docyn newydd."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:179
-msgid "Other Tokenring Card"
-msgstr "Cerdyn Cylch Docyn Arall"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:198
-#: ../src/netconfpkg/gui/WirelessInterface.py:318
-#: ../src/netconfpkg/gui/CipeInterface.py:138
-#: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/PTPInterface.py:201
-msgid "Device:"
-msgstr "Dyfais:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
-#: ../src/netconfpkg/gui/WirelessInterface.py:329
-#: ../src/netconfpkg/gui/EthernetInterface.py:222
-#: ../src/netconfpkg/gui/PTPInterface.py:211
-#: ../src/netconfpkg/gui/edithosts.glade.h:2
-msgid "Address:"
-msgstr "Cyfeiriad:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:210
-#: ../src/netconfpkg/gui/WirelessInterface.py:330
-#: ../src/netconfpkg/gui/EthernetInterface.py:223
-msgid "Subnet mask:"
-msgstr "Masg is-rwyd:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
-#: ../src/netconfpkg/gui/WirelessInterface.py:331
-#: ../src/netconfpkg/gui/EthernetInterface.py:224
-msgid "Default gateway address:"
-msgstr "Cyfeiriad porthydd rhagosodedig:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
-#: ../src/netconfpkg/gui/WirelessInterface.py:333
-#: ../src/netconfpkg/gui/EthernetInterface.py:226
-msgid "Automatically obtain IP address settings with:"
-msgstr "Nôl gosodiadau cyfeiriad IP yn awtomatig â:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:34
-#: ../src/netconfpkg/gui/WirelessInterface.py:143
-#: ../src/netconfpkg/gui/WirelessInterface.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/wirelessconfig.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:95
-#: ../src/netconfpkg/gui/wirelessconfig.py:164
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
-msgid "Auto"
-msgstr "Awto"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:35
-#: ../src/netconfpkg/gui/wirelessconfig.py:38
-msgid "Ad-Hoc"
-msgstr ""
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:36
-#: ../src/netconfpkg/gui/wirelessconfig.py:39
+#: ../src/netconfpkg/exception.py:59
 #, fuzzy
-msgid "Managed"
-msgstr "Canada"
+msgid "_Debug"
+msgstr "Modd _dadnamu"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:40
-msgid "Master"
+#: ../src/netconfpkg/exception.py:60
+msgid "_Save to file"
 msgstr ""
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:152
-msgid "Wireless connection"
-msgstr "Cysylltiad di-wifr"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:158
-msgid "Create a new wireless connection."
-msgstr "Creu cysylltiad di-wifr newydd."
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
-msgid "BitRate"
+#: ../src/netconfpkg/exception.py:75
+#, fuzzy, python-format
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
 msgstr ""
+"Digwyddodd eithriad anrhinedig.  Mwy na thebyg fod hyn yn nam.  Cadwch y "
+"domen chwaliad ac adroddwch adroddiad nam manwl yn erbyn system-config-"
+"network wrth https://bugzilla.redhat.com/bugzilla"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:297
-msgid "Other Wireless Card"
-msgstr "Cerdyn Di-wifr Arall"
+#: ../src/netconfpkg/exception.py:277
+#, fuzzy, python-format
+msgid "Error: %s: %s"
+msgstr "Gwall: %s, %s!"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:336
-msgid "Mode:"
-msgstr "Modd:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:337
-msgid "ESSID (network ID):"
-msgstr "ESSID (dynodiad rhwydwaith):"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:339
-msgid "Automatic"
-msgstr "Awtomatig"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:343
-msgid "Channel:"
-msgstr "Sianel:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:344
-msgid "Transmit rate:"
-msgstr "Cyfradd drosglwyddo:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:345
-msgid "Key: "
-msgstr "Allwedd: "
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:351
-msgid "encryption disabled"
-msgstr "amgryptiad yn analluog"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#: ../src/netconfpkg/exception.py:280
 #, python-format
 msgid ""
-"Command failed: %s\n"
-"\n"
-"Output:\n"
 "%s\n"
-msgstr ""
-"Methodd y gorchymyn: %s\n"
 "\n"
-"Allbwn:\n"
-"%s\n"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:67
-msgid ""
-"The Token Ring card could not be initialized. Please verify your settings "
-"and try again."
+"%s:\n"
+"%s"
 msgstr ""
-"Nid oedd modd ymgychwyn y cerdyn Cylch Docyn. Gwiriwch eich gosodiadau a "
-"cheisiwch eto."
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
+#: ../src/netconfpkg/exception.py:354
+msgid "Specify a file to save the dump"
+msgstr ""
+
+#: ../src/netconfpkg/exception.py:373
+#, fuzzy, python-format
+msgid "Failed to write to file %s."
+msgstr "Methwyd newid at y proffil %s"
+
+#: ../src/netconfpkg/exception.py:377
 #, python-format
 msgid ""
-"Nickname %s is already in use!\n"
-"Please choose another one.\n"
+"The application's state has been successfully\n"
+"written to the file '%s'."
 msgstr ""
-"Mae'r ffugenw %s eisioes mewn defnydd!\n"
-"Dewiswch un arall.\n"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:78
-msgid "Modem connection"
-msgstr "Cysylltiad modem"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:84
-msgid ""
-"Create a new Modem connection.  This is a connection that uses a serial "
-"analog modem to dial into to your Internet Service Provider. These modems "
-"use sound over a normal copper telephone line to transmit data.  These types "
-"of connections are available just about anywhere in the world where there is "
-"a phone system."
-msgstr ""
-"Creu cysylltiad Modem newydd.  Mae hwn yn gysylltiad sy'n defnyddio modem "
-"analog cyfresol i ddeialu i'ch Darparwr Gwasanaeth Rhwydwaith. (ISP) Mae'r "
-"modemau hyn yn defnyddio sain i drosglwyddo data dros linell deleffon gopor "
-"arferol.  Mae'r math yma o gysylltiad ar gael unrhywle yn y byd lle bo yna "
-"system ffôn."
-
-#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
-#: ../src/netconfpkg/gui/ModemInterface.py:113
-msgid "Modem probing..."
-msgstr "Archwilio modem..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:117
-msgid "Probing for Modems, please wait..."
-msgstr "Yn archwilio am Fodemau, arhoswch..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:132
-msgid "No modem was found on your system."
-msgstr "Ni ganfuwyd modem ar eich system."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:161
-#: ../src/netconfpkg/gui/modemconfig.py:109
-msgid "Generic Modem"
-msgstr "Modem Cyffredinol"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:173
-#: ../src/netconfpkg/gui/modemconfig.py:136
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
-#: ../src/netconfpkg/gui/modemconfig.glade.h:9
-msgid "Off"
-msgstr "Wedi diffodd"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:175
-#: ../src/netconfpkg/gui/modemconfig.py:138
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
-#: ../src/netconfpkg/gui/modemconfig.glade.h:4
-msgid "Low"
-msgstr "Isel"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:177
-#: ../src/netconfpkg/gui/modemconfig.py:140
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
-#: ../src/netconfpkg/gui/modemconfig.glade.h:5
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
-msgid "Medium"
-msgstr "Canolig"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:179
-#: ../src/netconfpkg/gui/modemconfig.py:142
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
-#: ../src/netconfpkg/gui/modemconfig.glade.h:3
-msgid "High"
-msgstr "Uchel"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:181
-#: ../src/netconfpkg/gui/modemconfig.py:144
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
-#: ../src/netconfpkg/gui/modemconfig.glade.h:11
-msgid "Very High"
-msgstr "Uchel Iawn"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:46
-msgid "IUCV connection"
-msgstr "Cysylltiad IUCV"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:52
-msgid "Create a new IUCV connection."
-msgstr "Creu cysylltiad IUCV newydd."
 
 #: ../src/netconfpkg/gui/maindialog.py:275
 msgid "Loading configuration..."
@@ -1430,9 +783,35 @@ msgstr "A ydych wir am ddileu \"%s\"?"
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "A ydych am ddileu'r holl ddyfeisiau oedd yn defnyddio \"%s\"?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1641
+#: ../src/netconfpkg/gui/maindialog.py:1657 ../src/neat-control.py:146
+#: ../src/neat-control.py:163 ../src/netconf-cmd.py:98
+#, fuzzy
+msgid "Copyright (c) 2001-2005 Red Hat, Inc."
+msgstr "Hawlfraint (h)(c) 2001-2003 Red Hat, Inc."
+
+#: ../src/netconfpkg/gui/maindialog.py:1642 ../src/neat-control.py:147
+#: ../src/netconf-cmd.py:99
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Dosberthir y feddalwedd hon o dan y GPL. Adroddwch namau at System Olrhain "
+"Nawau Red Hat: http://bugzilla.redhat.com/"
+
 #: ../src/netconfpkg/gui/maindialog.py:1660
 msgid "translator_credits"
 msgstr ""
+
+#: ../src/netconfpkg/gui/maindialog.py:1661 ../src/neat-control.py:170
+#, fuzzy
+msgid ""
+"This software is distributed under the GPL. \n"
+"Please Report bugs to Red Hat's Bug Tracking \n"
+"System: http://bugzilla.redhat.com/"
+msgstr ""
+"Dosberthir y feddalwedd hon o dan y GPL. Adroddwch namau at System Olrhain "
+"Nawau Red Hat: http://bugzilla.redhat.com/"
 
 #: ../src/netconfpkg/gui/maindialog.py:1739
 #, python-format
@@ -1443,6 +822,213 @@ msgstr "I weithredoli'r cysylltiad IPsec %s, rhaid cadw'r newidiadau."
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "I ddadysgogi'r cysylltiad IPsec %s, rhaid cadw'r newidiadau."
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:37
+#: ../src/netconfpkg/gui/wirelessconfig.py:95
+#: ../src/netconfpkg/gui/wirelessconfig.py:164
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/WirelessInterface.py:34
+#: ../src/netconfpkg/gui/WirelessInterface.py:143
+#: ../src/netconfpkg/gui/WirelessInterface.py:197
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Auto"
+msgstr "Awto"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:38
+#: ../src/netconfpkg/gui/WirelessInterface.py:35
+msgid "Ad-Hoc"
+msgstr ""
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:39
+#: ../src/netconfpkg/gui/WirelessInterface.py:36
+#, fuzzy
+msgid "Managed"
+msgstr "Canada"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:40
+#: ../src/netconfpkg/gui/WirelessInterface.py:37
+msgid "Master"
+msgstr ""
+
+#: ../src/netconfpkg/gui/GUI_functions.py:87
+#, python-format
+msgid ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+
+#: ../src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+
+#: ../src/netconfpkg/gui/GUI_functions.py:586
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"Methwyd rhedeg:\n"
+"%s"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:589
+msgid "Succeeded. Please read the output."
+msgstr "Wedi llwyddo. Darllenwch yr allbwn os gwelwch yn dda."
+
+#: ../src/netconfpkg/gui/DialupDruid.py:223
+#: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/EthernetInterface.py:210
+#: ../src/netconfpkg/gui/CipeInterface.py:137
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/TokenRingInterface.py:197
+#: ../src/netconfpkg/gui/WirelessInterface.py:317
+#: ../src/netconfpkg/gui/PTPInterface.py:200
+msgid "You have selected the following information:"
+msgstr "Rhydych wedi dewis y wybodaeth ganlynol:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Caledwedd:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:226
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+msgid "Provider name:"
+msgstr "Enw darparwr:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:228
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+msgid "Login name:"
+msgstr "Enw mewngofnodi:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Rhif ffôn:"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "Cysylltiad ISDN"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:92
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Creu cysylltiad ISDN newydd. Mae hwn yn gysylltiad sy'n defnyddio llinell "
+"Rhwydwaith Ddigidol Gwasanaethau Integreiddiedig (ISDN) i ddeialu i'ch "
+"Darparwr Gwasanaeth Rhyngrwyd (ISP). Mae'r fath yma o dechnoleg yn mynnu "
+"arsefydlu llinell ffôn arbennig gan eich cwmni teleffon. Mae hefyd yn mynnu "
+"Addasydd Terfynnell (TA) i roi terfyn ar y cysylltiad ISDN o'ch ISP. Mae'r "
+"math yma o gysylltiad yn boblogaidd yn Ewrop ac mewn sawl ardal arall â "
+"thechnoleg datblygedig.  Mae ar gael ond yn anghyffredin yn UDA.  Amrywia "
+"cyflymderau o 64kpbs hyd 128kbps."
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#, python-format
+msgid ""
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
+msgstr ""
+"Methodd y gorchymyn: %s\n"
+"\n"
+"Allbwn:\n"
+"%s\n"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:67
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr ""
+"Nid oedd modd ymgychwyn y cerdyn Cylch Docyn. Gwiriwch eich gosodiadau a "
+"cheisiwch eto."
+
+#: ../src/netconfpkg/gui/editipsec.py:217
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr ""
+
+#: ../src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
+msgid "%s connection"
+msgstr "Cysylltiad %s"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
+msgid "Create a new %s connection."
+msgstr "Creu cysylltiad %s newydd."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:95
+msgid "This wizard still has to be written."
+msgstr "Mae angen ysgrifennu'r dewin o hyd."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:96
+msgid "Press Finish to get the standard configuration dialog."
+msgstr "Gwasgwch Gorffen i gael yr ymgom cyflunio safonol."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:97
+msgid "Then, at first, enter the nickname for the device."
+msgstr "Wedyn, yn gyntaf, rhowch ffugenw i'r ddyfais."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:134
+msgid "This device can not be edited with this tool!"
+msgstr "Ni ellir golygu'r ddyfais â'r erfyn yma!"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:116
+msgid "Ethernet connection"
+msgstr "Cysylltiad Ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:122
+msgid "Create a new ethernet connection."
+msgstr "Creu cysylltiad ethernet newydd."
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:191
+msgid "Other Ethernet Card"
+msgstr "Cerdyn Ethernet Arall"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:211
+#: ../src/netconfpkg/gui/CipeInterface.py:138
+#: ../src/netconfpkg/gui/TokenRingInterface.py:198
+#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/PTPInterface.py:201
+msgid "Device:"
+msgstr "Dyfais:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:222
+#: ../src/netconfpkg/gui/TokenRingInterface.py:209
+#: ../src/netconfpkg/gui/WirelessInterface.py:329
+#: ../src/netconfpkg/gui/PTPInterface.py:211
+#: ../src/netconfpkg/gui/edithosts.glade.h:2
+msgid "Address:"
+msgstr "Cyfeiriad:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:210
+#: ../src/netconfpkg/gui/WirelessInterface.py:330
+msgid "Subnet mask:"
+msgstr "Masg is-rwyd:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:224
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: ../src/netconfpkg/gui/WirelessInterface.py:331
+msgid "Default gateway address:"
+msgstr "Cyfeiriad porthydd rhagosodedig:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:226
+#: ../src/netconfpkg/gui/TokenRingInterface.py:213
+#: ../src/netconfpkg/gui/WirelessInterface.py:333
+msgid "Automatically obtain IP address settings with:"
+msgstr "Nôl gosodiadau cyfeiriad IP yn awtomatig â:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:89
 msgid "CIPE (VPN) connection"
@@ -1519,10 +1105,202 @@ msgstr "Allwedd gyfrinachol:"
 msgid "You must enter a secret key or generate one"
 msgstr "Rhaid i chi roi allwedd gyfrinachol neu chynhyrchu un"
 
-#: ../src/netconfpkg/gui/editipsec.py:217
+#: ../src/netconfpkg/gui/ethernethardware.py:90
+msgid "Command failed: "
+msgstr "Methodd y gorchymyn: "
+
+#: ../src/netconfpkg/gui/ethernethardware.py:91
+msgid "Output:\n"
+msgstr "Allbwn:\n"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:93
 msgid ""
-"Please enter a unique security parameter index between 256 and 4294967295."
+"The Ethernet card could not be initialized. Please verify your settings and "
+"try again."
 msgstr ""
+"Nid oedd modd ymgychwyn y cerdyn Ethernet. Gwiriwch eich gosodiadau a "
+"cheisiwch eto."
+
+#: ../src/netconfpkg/gui/iucvconfig.py:39
+msgid "IUCV Device"
+msgstr "Dyfais IUCV"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:46
+msgid "IUCV connection"
+msgstr "Cysylltiad IUCV"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:52
+msgid "Create a new IUCV connection."
+msgstr "Creu cysylltiad IUCV newydd."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:78
+msgid "Modem connection"
+msgstr "Cysylltiad modem"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:84
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Creu cysylltiad Modem newydd.  Mae hwn yn gysylltiad sy'n defnyddio modem "
+"analog cyfresol i ddeialu i'ch Darparwr Gwasanaeth Rhwydwaith. (ISP) Mae'r "
+"modemau hyn yn defnyddio sain i drosglwyddo data dros linell deleffon gopor "
+"arferol.  Mae'r math yma o gysylltiad ar gael unrhywle yn y byd lle bo yna "
+"system ffôn."
+
+#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
+#: ../src/netconfpkg/gui/ModemInterface.py:113
+msgid "Modem probing..."
+msgstr "Archwilio modem..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:117
+msgid "Probing for Modems, please wait..."
+msgstr "Yn archwilio am Fodemau, arhoswch..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:132
+msgid "No modem was found on your system."
+msgstr "Ni ganfuwyd modem ar eich system."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:161
+#: ../src/netconfpkg/gui/modemconfig.py:109
+msgid "Generic Modem"
+msgstr "Modem Cyffredinol"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:173
+#: ../src/netconfpkg/gui/modemconfig.py:136
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
+#: ../src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "Off"
+msgstr "Wedi diffodd"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:175
+#: ../src/netconfpkg/gui/modemconfig.py:138
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
+#: ../src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "Low"
+msgstr "Isel"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:177
+#: ../src/netconfpkg/gui/modemconfig.py:140
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: ../src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "Medium"
+msgstr "Canolig"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:179
+#: ../src/netconfpkg/gui/modemconfig.py:142
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
+#: ../src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "High"
+msgstr "Uchel"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:181
+#: ../src/netconfpkg/gui/modemconfig.py:144
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
+#: ../src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "Very High"
+msgstr "Uchel Iawn"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
+msgid "xDSL connection"
+msgstr "cysylltiad xDSL"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"Creu cysylltiad xDSL.  Mae hwn yn gysylltiad sy'n defnyddio un o sawl math o "
+"gysylltiadau ystod llydan a elwir â'i gilydd yn Linellau Tanysgrifwyr "
+"Digidol (DSL).   Mae'r restr yn cynnwys ADSL (Anghymesur, lawrlwytho cynt na "
+"lanlwytho), IDSL (dros linell ISDN ar gyfer pellter), SDSL (Cymesur, "
+"lawrlwyth a lanlwytho yr un cyflymder), a sawl arall.  Mae'r mathau yma o "
+"gysylltiad yn gyffredin yn yr Unol Daleithau, ac yn ennill cydnabyddiaeth "
+"mewn llefydd eraill.  Mae cyflymderau'n newid yn ôl y technoleg a "
+"ddefnyddir, ond maent yn amrywio o 144kbps hyd 1.0Mbps yn gyffredinol."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
+msgid "Ethernet device:"
+msgstr "Dyfais Ethernet:"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:111
+msgid "Token Ring connection"
+msgstr "Cysylltiad Cylch Docyn"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:117
+msgid "Create a new Token Ring connection."
+msgstr "Creu cysylltiad Cylch Docyn newydd."
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:179
+msgid "Other Tokenring Card"
+msgstr "Cerdyn Cylch Docyn Arall"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "Cysylltiad di-wifr"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "Creu cysylltiad di-wifr newydd."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:233
+msgid "BitRate"
+msgstr ""
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:297
+msgid "Other Wireless Card"
+msgstr "Cerdyn Di-wifr Arall"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:336
+msgid "Mode:"
+msgstr "Modd:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:337
+msgid "ESSID (network ID):"
+msgstr "ESSID (dynodiad rhwydwaith):"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:339
+msgid "Automatic"
+msgstr "Awtomatig"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:343
+msgid "Channel:"
+msgstr "Sianel:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:344
+msgid "Transmit rate:"
+msgstr "Cyfradd drosglwyddo:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:345
+msgid "Key: "
+msgstr "Allwedd: "
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:351
+msgid "encryption disabled"
+msgstr "amgryptiad yn analluog"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
+msgid "CTC connection"
+msgstr "Cysylltiad CTC"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
+msgid "Create a new CTC connection."
+msgstr "Creu cysylltiad CTC newydd."
+
+#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
+msgid "CTC Device"
+msgstr "Dyfais CTC"
 
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
 msgid "IP address of tunnel device: "
@@ -1548,33 +1326,18 @@ msgstr "Rhith-gyfeiriad lleol: "
 msgid "Secret key: "
 msgstr "Allwedd gyfrinachol: "
 
-#: ../src/netconfpkg/gui/DialupDruid.py:225
-msgid "Hardware:"
-msgstr "Caledwedd:"
+#: ../src/netconfpkg/gui/PTPInterface.py:212
+msgid "Point to Point (IP):"
+msgstr "Pwynt i Bwynt (IP):"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:229
-msgid "Phone number:"
-msgstr "Rhif ffôn:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:116
-msgid "Ethernet connection"
-msgstr "Cysylltiad Ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:122
-msgid "Create a new ethernet connection."
-msgstr "Creu cysylltiad ethernet newydd."
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:191
-msgid "Other Ethernet Card"
-msgstr "Cerdyn Ethernet Arall"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
-msgid "CTC connection"
-msgstr "Cysylltiad CTC"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
-msgid "Create a new CTC connection."
-msgstr "Creu cysylltiad CTC newydd."
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"Mae'r ffugenw %s eisioes mewn defnydd!\n"
+"Dewiswch un arall.\n"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:237
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
@@ -1636,35 +1399,106 @@ msgstr "dim"
 msgid "Modem Dialup Configuration"
 msgstr "Cyflunio Deialu Modem"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:82
+#: ../src/netconfpkg/NC_functions.py:94
+msgid "Common"
+msgstr "Cyffredinol"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:139
+msgid "Active"
+msgstr "Gweithredol"
+
+#: ../src/netconfpkg/NC_functions.py:140
+msgid "Inactive"
+msgstr "Anweithredol"
+
+#: ../src/netconfpkg/NC_functions.py:147
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "Hardware (CRTSCTS)"
+msgstr "Caledwedd (CRTSCTS)"
+
+#: ../src/netconfpkg/NC_functions.py:148
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "Software (XON/XOFF)"
+msgstr "Meddalwedd (XON/XOFF)"
+
+#: ../src/netconfpkg/NC_functions.py:227
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr "A ddynid arsefydlu'r pecynnau canlynol, sydd eu hangen ar eich system?"
+
+#: ../src/netconfpkg/NC_functions.py:240
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+"Rhaid i chi arsefydlu'r pecynnau canlynol, sydd eu hangen ar eich system!"
+
+#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
 #, python-format
-msgid "%s connection"
-msgstr "Cysylltiad %s"
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"Gwall wrth waredu\n"
+"%s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:85
+#: ../src/netconfpkg/NC_functions.py:805
 #, python-format
-msgid "Create a new %s connection."
-msgstr "Creu cysylltiad %s newydd."
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Gwall wrth gopïo %s \n"
+"i\n"
+"%s:\n"
+"%s"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:95
-msgid "This wizard still has to be written."
-msgstr "Mae angen ysgrifennu'r dewin o hyd."
+#: ../src/netconfpkg/NC_functions.py:815
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Gwall wrth gysylltu \n"
+"%s\n"
+"â %s:\n"
+"%s"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:96
-msgid "Press Finish to get the standard configuration dialog."
-msgstr "Gwasgwch Gorffen i gael yr ymgom cyflunio safonol."
+#: ../src/netconfpkg/NC_functions.py:825
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Gwall wrth ail-enwi \n"
+"%s\n"
+"yn %s:\n"
+"%s"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:97
-msgid "Then, at first, enter the nickname for the device."
-msgstr "Wedyn, yn gyntaf, rhowch ffugenw i'r ddyfais."
+#: ../src/netconfpkg/NC_functions.py:833
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"Gwall wrth greu cyfeiriadur!\n"
+"%s"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:134
-msgid "This device can not be edited with this tool!"
-msgstr "Ni ellir golygu'r ddyfais â'r erfyn yma!"
-
-#: ../src/netconfpkg/gui/PTPInterface.py:212
-msgid "Point to Point (IP):"
-msgstr "Pwynt i Bwynt (IP):"
+#: ../src/netconfpkg/NC_functions.py:961
+#, python-format
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "Yn cysylltu %s at ddyfeisiau a'i roi yn y proffil %s."
 
 #: ../src/netconfpkg/NCIPsec.py:186
 msgid "IPsec activating..."
@@ -1694,39 +1528,6 @@ msgstr "Yn anweithredoli'r cysylltiad IPsec %s, arhoswch..."
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Methu anweithredoli'r cysylltiad IPsec %s!\n"
 
-#: ../src/netconfpkg/NCCipe.py:152
-#, python-format
-msgid ""
-"Directory %s is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
-msgstr ""
-"Mae'r cyfeiriadur %s ar goll!\n"
-"Byddaf yn ei greu i chi!\n"
-"Dylech arsefydlu'r pecyn rpm cipe!\n"
-
-#: ../src/netconfpkg/NCCipe.py:156
-#, python-format
-msgid ""
-"Could not create\n"
-"directory %s!"
-msgstr ""
-"Methwyd creu\n"
-"cyfeiriadur %s!"
-
-#: ../src/netconfpkg/NCDeviceList.py:117
-msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr "Newidwyd y Ffugenwau canlynol o achos sgriptiau ymgychwyn:\n"
-
-#: ../src/netconfpkg/NCDeviceList.py:120
-msgid "Nicknames changed"
-msgstr "Newidwyd ffugenwau"
-
-#: ../src/netconfpkg/NCDevice.py:219
-#, python-format
-msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, Dyfais heb ei phenodi neu ffugenw ddim yn rif!"
-
 #: ../src/netconf.py:55
 #, python-format
 msgid "Error: %s, %s!"
@@ -1735,6 +1536,26 @@ msgstr "Gwall: %s, %s!"
 #: ../src/netconf.py:57
 msgid "Starting text version"
 msgstr "Yn dechrau'r fersiwn testun"
+
+#: ../src/netconf.py:72 ../src/neat-control.py:50
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr "GWALL: Methu ymgychwyn amgylchedd graffigol. "
+
+#: ../src/netconf.py:73 ../src/neat-control.py:51
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+"Achos mwyaf tebygol y fethiant yw na redwyd yr erfyn drwy amgylchedd "
+"graffigol. "
+
+#: ../src/netconf.py:74 ../src/neat-control.py:52
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+"Naill ai dechreuwch eich rhyngwyneb defnyddiwr graffigol neu osodwch eich "
+"newidyn DISPLAY.\n"
 
 #: ../src/netconf.py:116
 msgid "Loading Network Configuration..."
@@ -1755,10 +1576,416 @@ msgid "Please start system-config-network with root permissions!\n"
 msgstr ""
 "Dechreuwch system-config-network gyda caniatadau root os gwelwch yn dda!\n"
 
-#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
-msgid "Create Ethernet Device"
-msgstr "Creu Dyfais Ethernet"
+#: ../src/neat-control.py:223
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "Methu cyflunio'r ddyfais rwydwaith %s"
+
+#: ../src/neat-control.py:243
+msgid "Switching Profiles"
+msgstr "Yn Newid Proffilau"
+
+#: ../src/neat-control.py:244
+#, python-format
+msgid "Switching to profile %s"
+msgstr "Yn newid at y proffil %s"
+
+#: ../src/neat-control.py:245
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "Methwyd newid at y proffil %s"
+
+#. TBD
+#: ../src/neat-control.py:260
+msgid "To be rewritten!"
+msgstr "I'w ailysgrifennu!"
+
+#: ../src/neat-control.py:367
+msgid " (active)"
+msgstr " (gweithredol)"
+
+#: ../src/netconf-tui.py:99
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against system-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Digwyddodd eithriad anrhinedig.  Mwy na thebyg fod hyn yn nam.  Cadwch y "
+"domen chwaliad ac adroddwch adroddiad nam manwl yn erbyn system-config-"
+"network wrth https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconf-tui.py:127
+#, fuzzy
+msgid "Loading configuration"
+msgstr "Yn llwytho cyfluniad..."
+
+#: ../src/netconf-tui.py:128
+#, fuzzy
+msgid "Loading Device Configuration"
+msgstr "Yn llwytho cyfluniad dyfais..."
+
+#: ../src/netconf-tui.py:134
+#, fuzzy
+msgid "Loading Hardware Configuration"
+msgstr "Yn llwytho cyfluniad caledwedd..."
+
+#: ../src/netconf-tui.py:138
+#, fuzzy
+msgid "Loading Profile Configuration"
+msgstr "Yn llwytho cyfluniad proffilau..."
+
+#: ../src/netconf-tui.py:152
+#, fuzzy
+msgid "Which device type do you want to add?"
+msgstr "Ni ellir golygu'r math dyfais %s!"
+
+#: ../src/netconf-tui.py:153
+#, fuzzy
+msgid "Add"
+msgstr "_Ychwanegu..."
+
+#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
+msgid "Modem"
+msgstr "Modem"
+
+#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
+msgid "ISDN"
+msgstr "ISDN"
+
+#: ../src/netconf-tui.py:203
+#, fuzzy
+msgid "<New Device>"
+msgstr "Dyfais"
+
+#: ../src/netconf-tui.py:204
+#, fuzzy
+msgid "Select A Device"
+msgstr "Dewiswch Ddyfais"
+
+#: ../src/netconf-tui.py:205
+msgid "Quit"
+msgstr ""
+
+#: ../src/netconf-tui.py:222
+#, fuzzy
+msgid ""
+"system-config-network - network configuration tool\n"
+"\n"
+"Usage: system-config-network -v --verbose -d --debug"
+msgstr ""
+"system-config-network - erfyn cyflunio rhwydwaith\n"
+"\n"
+"Defnydd: system-config-network -v --verbose"
+
+#: ../src/netconf-cmd.py:62
+#, python-format
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+"Mae eithriad anrhinedig wedi digwydd.  Mwy na thebyg fod hyn yn nam.\n"
+"Adroddwch adroddiad nam manwl yn erbyn y gydran %s wrth \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"gan ddefnyddio'r testun isod.\n"
+
+#: ../src/netconf-cmd.py:97
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr "%s - erfyn llinell orchymyn cyflunio rhwydwaith"
+
+#: ../src/netconf-cmd.py:102
+#, python-format
+msgid "Usage: %s"
+msgstr "Defnydd: %s"
+
+#: ../src/netconf-cmd.py:104
+msgid "switch / activate profile"
+msgstr "newid / gweithredoli proffil"
+
+#: ../src/netconf-cmd.py:106
+msgid "export / import hardware list"
+msgstr "allforio / mewnforio rhestr galedwedd"
+
+#: ../src/netconf-cmd.py:108
+msgid "export / import IPsec list"
+msgstr "allforio / mewnforio rhestr IPsec"
+
+#: ../src/netconf-cmd.py:110
+msgid "export / import device list (default)"
+msgstr "allforio / mewnforio rhestr ddyfeisiau (rhagosodyn)"
+
+#: ../src/netconf-cmd.py:112
+msgid "export / import profile list"
+msgstr "allforio / mewnforio rhestr broffilau"
+
+#: ../src/netconf-cmd.py:114
+msgid "set the root directory"
+msgstr "gosod y cyfeiriadur gwraidd"
+
+#: ../src/netconf-cmd.py:116
+msgid "export list (default)"
+msgstr "allforio rhestr (rhagosodyn)"
+
+#: ../src/netconf-cmd.py:117
+msgid "import list"
+msgstr "mewnforio rhestr"
+
+#: ../src/netconf-cmd.py:119
+msgid "clear existing list prior of importing"
+msgstr "gwagio'r rhestr gyfredol cyn mewnforio"
+
+#: ../src/netconf-cmd.py:121
+msgid "import from file"
+msgstr "mewnforio o ffeil"
+
+#: ../src/netconf-cmd.py:264
+#, python-format
+msgid "Unknown option %s\n"
+msgstr "Dewisiad anhysbys %s\n"
+
+#: ../src/netconf-cmd.py:325
+#, python-format
+msgid "Unknown List %s\n"
+msgstr "Rhestr Anhysbys %s\n"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+msgid "Allow all _users to enable and disable the device"
+msgstr "Caniatáu i bob _defnyddiwr alluogi ac analluogi'r ddyfais hon"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow dial on _demand"
+msgstr "Caniatáu deialu ar _ofyn"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Allow the link come up on demand."
+msgstr "Caniatáu codi'r cyswllt ar ofyn."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Demand setting"
+msgstr "Gosodiad gofyn"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+msgid "Enable IPv_6 configuration for this interface"
+msgstr "Galluogi cyflunio IPf_6 ar gyfer y rhyngwyneb hon"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
+msgid "Enable synchronous PPP for the connection"
+msgstr "Galluogi PPP cydamserol ar gyfer y cysylltiad"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Rhowch enw'r Crynhoydd Cyrchiad, os rhoddwyd un i chi gan eich ISP. Yn yr "
+"rhan fwyaf o achosion gallwch adael hwn yn wag."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"Rhowch Enw'r Gwasanaeth, os yw'ch ISP yn ei fynnu, Os nad ydych yn ei wybyd, "
+"cysyllter â'ch ISP. Yn y rhan fwyaf o achosion gallwch adael hwn yn wag."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr ""
+"Rhowch yr amser segur mewn eiliadau y dylid gollwng y cysylltiad ar ei ôl."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Rhowch yr enw mewngofnodi, y rhoddodd eich ISP i chi, yma."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr "Rhowch enw'r cyfluniad yma, dim ond enw'ch ISP fel arfer."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"Rhowch y cyfrinair ar gyfer eich cyfrif. Os nad ydych yn ei wybod, cysyllter "
+"â'ch ISP."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Make this connection the default _route"
+msgstr "Gwneud y cysylltiad yma yn ragosodyn _llwybr"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Pass_word:"
+msgstr "Cyfrin_air:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Restart if _connection dies"
+msgstr "Ailddechrau os yw'r _cysylltiad yn marw"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+msgid "Use this form to enter your T-Online account data."
+msgstr "Defnyddiwch y ffurflen hon i roi'ch data cyfrif T-Online."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
+msgid "_AC-name:"
+msgstr "Enw _AC:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+msgid "_Activate device when computer starts"
+msgstr "_Gweithredoli'r ddyfais pan gychwynna'r cyfrifiadur"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+#, fuzzy
+msgid "_Activate device when parent device starts"
+msgstr "_Gweithredoli'r ddyfais pan gychwynna'r cyfrifiadur"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Advanced"
+msgstr "_Uwch"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+msgid "_General"
+msgstr "_Cyffredinol"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
+msgid "_Hardware Device"
+msgstr "Dyfais _Galedwedd"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Login name:"
+msgstr "Enw _mewngofnodi:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Maximum idle time:"
+msgstr "_Uchafswm amser segur:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
+msgid "_Nickname:"
+msgstr "_Ffugenw:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
+msgid "_Provider"
+msgstr "_Darparwr"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+msgid "_Provider name:"
+msgstr "Enw _darparwr:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid "_Route"
+msgstr "_Llwybr"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
+msgid "_Service-name:"
+msgstr "Enw _gwasanaeth:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
+msgid "_T-Online Account Setup"
+msgstr "Gosod Cyfrif _T-online"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
+msgid "_Use synchronous PPP"
+msgstr "_Defnyddio PPP cydamserol"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
+msgid "xDSL Configuration"
+msgstr "Cyfluniad xDSL"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Dewiswch Fath Caledwedd"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "Math caledwedd:"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr "Dewiswch y math y ddyfais galedwedd yr hoffech ei chreu"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Cylch Docyn"
 
 #: ../src/netconfpkg/gui/tonline.glade.h:1
 #, fuzzy
@@ -1798,79 +2025,112 @@ msgstr "Rhif/ôl-ddodiad defnyddiwr cydgyfredol:"
 msgid "_Personal password:"
 msgstr "Cyfrinair _personol:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
 #, fuzzy
-msgid "<b>Configuration for your remote partner</b>"
-msgstr "Cyfluniad eich partner pell"
+msgid "<b>Account Type:</b>"
+msgstr "Proffil Gweithredol"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
-msgid "Configure Tunnel"
-msgstr "Cyflunio Twnel"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "Cyflunio cysylltiad DSL"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
-msgid "Create Cipe Connection"
-msgstr "Creu Cysylltiad CIPE"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "Creu cysylltiad DSL"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
-msgid "Lo_cal virtual address:"
-msgstr "Rhith-gyfeiriad _lleol:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Rhowch yr enw darparwr ar gyfer y gyfrif hon."
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Rhyngwyneb Newydd"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "_Dyfais ethernet:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
-msgid "Remote _virtual address:"
-msgstr "_Rhith-gyfeiriad pell:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+#, fuzzy
+msgid "Normal"
+msgstr "Norwy"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
-msgid "Remote peer p_ort:"
-msgstr "P_orth cydradd pell:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid ""
+"Normal\n"
+"T-Online"
+msgstr ""
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "Cyfrinair (_eto):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Dewiswch y ddyfais ethernet cysylltiedig â'r modem DSL."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "Dewiswch y ddyfais ethernet ar gyfer y gyfrif hon."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+#, fuzzy
+msgid "T-Online"
+msgstr "Cyfrif _T-Online"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "Dewiswch Addasydd Cylch Docyn"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "_Adapter:"
+msgstr "_Addasydd:"
+
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:3
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 msgid "_Device:"
 msgstr "_Dyfais:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/editipsec.glade.h:37
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
-msgid "_Generate"
-msgstr "_Cynhyrchu"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+msgid "Configure Network Settings"
+msgstr "Cyflunio Gosodiadau Rhwydwaith"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
-msgid "_Local port:"
-msgstr "Porth _leol:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "Creu Dyfais Ethernet"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
-msgid "_Remote peer address:"
-msgstr "Cyfeiriad cydradd _pell:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Cerdyn ethernet"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
-msgid "_Secret key:"
-msgstr "Allwedd _gyfrinachol:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+msgid "MTU:"
+msgstr "MTU:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
-msgid "_Tunnel through device:"
-msgstr "_Twnelu trwy'r ddyfais:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Rhowch y paramedr MTU i osod uchafswm unedau trosglwyddo'r addasydd yma. Ar "
+"s390/s390x 1492 yw'r rhagosodyn MTU"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
-msgid "_auto"
-msgstr "_awto"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Dewiswch Ddyfais Ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "Dewiswch y cerdyn ethernet rydych am ei gyflunio:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:1
 #, fuzzy
@@ -1918,32 +2178,6 @@ msgstr ""
 msgid "Enter the area code needed to reach your internet provider."
 msgstr "Rhowch y côd ardal sydd ei angen i gyrraedd eich darparwr rhyngrwyd."
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
-msgid "Enter the login name, that your ISP gave you here."
-msgstr "Rhowch yr enw mewngofnodi, y rhoddodd eich ISP i chi, yma."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr "Rhowch enw'r cyfluniad yma, dim ond enw'ch ISP fel arfer."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
-msgid ""
-"Enter the password for your account. If you do not know it, please contact "
-"your ISP."
-msgstr ""
-"Rhowch y cyfrinair ar gyfer eich cyfrif. Os nad ydych yn ei wybod, cysyllter "
-"â'ch ISP."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:13
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
@@ -1963,16 +2197,15 @@ msgstr "Darparwr Rhyngrwyd"
 msgid "Manual IP Address Settings"
 msgstr "Gosodiadau Cyfeiriad IP Â Llaw"
 
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+msgid "New Interface"
+msgstr "Rhyngwyneb Newydd"
+
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:18
 msgid "PPP Settings"
 msgstr "Gosodiadau PPP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
-msgid "Pass_word:"
-msgstr "Cyfrin_air:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:20
 msgid "Prefi_x:"
@@ -1992,25 +2225,12 @@ msgstr "Dewiswch Ddarparwr"
 msgid "Statically set IP addresses:"
 msgstr "Gosod cyfeiriadau IP yn sefydlog:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-msgid "Use this form to enter your T-Online account data."
-msgstr "Defnyddiwch y ffurflen hon i roi'ch data cyfrif T-Online."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:25
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:7
-#: ../src/netconfpkg/gui/editadress.glade.h:2
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/editadress.glade.h:2
 msgid "_Address:"
 msgstr "_Cyfeiriad:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
-msgid "_Login name:"
-msgstr "Enw _mewngofnodi:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:27
 msgid "_Phone number:"
@@ -2022,150 +2242,185 @@ msgstr "Rhif _Ffôn:"
 msgid "_Subnet mask:"
 msgstr "Masg _is-rwyd:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
-msgid "_T-Online Account Setup"
-msgstr "Gosod Cyfrif _T-online"
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+msgid "Select Ethernet Adapter"
+msgstr "Dewiswch Addasydd Ethernet"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
-msgid "Choose Hardware Type"
-msgstr "Dewiswch Fath Caledwedd"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
-msgid "Hardware type:"
-msgstr "Math caledwedd:"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Amser ar-lein:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type you want to create"
-msgstr "Dewiswch y math y ddyfais galedwedd yr hoffech ei chreu"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "cliciwch botwm dde'r llygoden am briodweddau"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
-msgid "Token Ring"
-msgstr "Cylch Docyn"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+msgid "MT_U:"
+msgstr "MT_U:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
-#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+msgid "_Point to Point (IP):"
+msgstr "_Pwynt i Bwynt (IP):"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Cysylltu â"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Datgysylltu oddiwrth"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+msgid "_Configure..."
+msgstr "_Cyflunio..."
+
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "Cyfluniad Addasyddion Rhwydwaith"
+
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "Yn aros i gysylltu â"
+
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+msgid "Waiting..."
+msgstr "Yn aros..."
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
 #, fuzzy
-msgid "<b>Modem properties</b>"
-msgstr "Priodweddau Modem"
+msgid "<b>D channel protocol</b>"
+msgstr "Protocol Sianel D"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
-#: ../src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "Modem _volume:"
-msgstr "_Lefel sain modem:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+#, fuzzy
+msgid "<b>Resources</b>"
+msgstr "Adnodd"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
-msgid "Select Modem"
-msgstr "Dewiswch Fodem"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Ew_ro ISDN (EDSS1)"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
-#: ../src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "_Baud rate:"
-msgstr "Cyfradd _baud:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
-#: ../src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "_Flow control:"
-msgstr "Rheolaeth _llif:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
-#: ../src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "_Modem device:"
-msgstr "Dyfais _fodem:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
-#: ../src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "_Use touch tone dialing"
-msgstr "_Defnyddio deialu tônau"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "Cyfluniad Addasyddion ISDN"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
-msgid "Configure Network Settings"
-msgstr "Cyflunio Gosodiadau Rhwydwaith"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "ISDN _adapters:"
+msgstr "_Addasyddion ISDN:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "Configure Wireless Connection"
-msgstr "Cyflunio Cysylltiad Di-wifr"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+msgid "_IO:"
+msgstr "_IO:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "Create Wireless Device"
-msgstr "Creu Dyfais Di-wifr"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+msgid "_MEM:"
+msgstr "_MEM:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-msgid "MTU:"
-msgstr "MTU:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-msgid "Network name (SSID):"
-msgstr "Enw rhwydwait (SSID):"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
 msgid ""
-"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
 msgstr ""
-"Rhowch y paramedr MTU i osod uchafswm unedau trosglwyddo'r addasydd yma. Ar "
-"s390/s390x 1492 yw'r rhagosodyn MTU"
+"Mae angen i bob dyfais fod yn gysylltiedig â dyfais gorfforol y gellir ei "
+"dewis isod. Mae cynhaliaeth Ffugenwau Dyfeisiau yn eich galluogi i "
+"ddefnyddio sawl rhith-ddyfais ar gyfer un ddyfais gorfforol."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Select Wireless Device"
-msgstr "Dewis Dyfais Di-wifr"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Enable _Device Alias support"
+msgstr "Galluogi cynhaliaeth Ffugenwau _Dyfeisiau"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
-msgid "Select the wireless card you want to configure:"
-msgstr "Dewiswch y cerdyn di-wifr yr ydych am ei chyflunio:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Ha_rdware address:"
+msgstr "Cyfeiriad ca_ledwedd:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-msgid ""
-"Used to manipulate encryption or scrambling keys and encryption mode. To set "
-"the current encryption key in hex digits enter the key with 0x prepended as "
-"0xXXXXXXXX."
-msgstr ""
-"Defnyddir i drin allweddi amgryptio neu ddrysu a'r modd amgryptio. I osod yr "
-"allwedd amgryptio cyfredol mewn digidau hecs rhowch yr allwedd â 0x yn "
-"ragddodiad megis 0xXXXXXXXX."
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
+msgid "Token Ring Device"
+msgstr "Dyfais Cylch Docyn"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "Cerdyn di-wifr"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Alias:"
+msgstr "_Ffugenw:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-msgid "_Auto"
-msgstr "_Awto"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Hardware device:"
+msgstr "Dyfais _galedwedd:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-msgid "_Channel:"
-msgstr "_Sianel:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Probe for Address"
+msgstr "_Archwilio am Gyfeiriad"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-msgid "_Key (use 0x for hex):"
-msgstr "_Allwedd (defnyddiwch 0x ar gyfer hecs):"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "_Use Hardware Address"
+msgstr "_Defnyddio Cyfeiriad Caledwedd"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
-msgid "_Mode:"
-msgstr "_Modd:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr0"
+msgstr "tr0"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
-msgid "_Specified:"
-msgstr "_Penodedig:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
+#, fuzzy
+msgid "tr1"
+msgstr "tr0"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
-msgid "_Transmit rate:"
-msgstr "Cyfradd _drosglwyddo:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
+#, fuzzy
+msgid "tr2"
+msgstr "tr0"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
+#, fuzzy
+msgid "tr3"
+msgstr "tr0"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
+#, fuzzy
+msgid "tr4"
+msgstr "tr0"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
+#, fuzzy
+msgid "tr5"
+msgstr "tr0"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:1
 #, fuzzy
@@ -2233,11 +2488,6 @@ msgstr ""
 msgid "_Activate"
 msgstr "_Gweithredoli"
 
-#: ../src/netconfpkg/gui/neat-control.glade.h:18
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-msgid "_Configure..."
-msgstr "_Cyflunio..."
-
 #: ../src/netconfpkg/gui/neat-control.glade.h:19
 #: ../src/netconfpkg/gui/maindialog.glade.h:32
 msgid "_Deactivate"
@@ -2252,708 +2502,44 @@ msgstr "_Gwybodaeth"
 msgid "_Monitor"
 msgstr "_Arsylwi"
 
-#: ../src/netconfpkg/gui/editipsec.glade.h:1
-msgid "*"
-msgstr "*"
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
+msgid "Choose a Provider"
+msgstr "Dewiswch Ddarparwr"
 
-#: ../src/netconfpkg/gui/editipsec.glade.h:2
-msgid "A_uthentication key:"
-msgstr "Allwedd dil_ysiant:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:3
-msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr "Dewis modd amgryptio'n awtomatig drwy IKA (racoon)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:4
-msgid "Ge_nerate"
-msgstr "Cy_nhyrchu"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:5
-msgid "Host to Host encryption"
-msgstr "Amgryptio Gwesteiwr i Westeiwr"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:6
-msgid "IPsec"
-msgstr "IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:7
-msgid "IPsec - Connection Type"
-msgstr "IPsec - Math Cysylltiad"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:8
-msgid "IPsec - Encryption Mode"
-msgstr "IPsec - Modd Amgryptio"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:9
-msgid "IPsec - Keys"
-msgstr "IPsec - Allweddi"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:10
-msgid "IPsec - Local Network"
-msgstr "IPsec - Rhwydwaith Leol"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:11
-msgid "IPsec - Nickname"
-msgstr "IPsec - Ffugenw"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:12
-msgid "IPsec - Remote Network"
-msgstr "IPsec - Rhwydwaith Bell"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:13
-msgid "IPsec - Summary"
-msgstr "IPsec - Crynodeb"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:14
-msgid "IPsec Settings"
-msgstr "IPsec - Gosodiadau"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:15
-msgid "Local network _address:"
-msgstr "_Cyfeiriad rhwydwaith lleol:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:16
-msgid "Local network _gateway:"
-msgstr "_Porthydd rhwydwaith lleol:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:17
-msgid "Local subnet _mask:"
-msgstr "_Masg is-rwyd lleol:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:18
-msgid "Manual encryption with a fixed key"
-msgstr "Amgryptio â llaw âg allwedd gosodedig"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:19
-msgid "Network to Network encryption (VPN)"
-msgstr "Amgryptio Rhwydwaith i Rwydwaith (VPN)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:20
-msgid "Please enter a nickname for the connection:"
-msgstr "Rhowch ffugenw ar gyfer y cysylltiad:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:21
-msgid "Please enter a passphrase to generate the key."
-msgstr ""
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:22
-msgid "Please enter your local network settings:"
-msgstr "Rhowch gosodiadau eich rhwydwaith lleol:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:23
-msgid "Please enter your remote network settings:"
-msgstr "Rhowch gosodiadau eich rhwydwaith pell:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:24
-msgid "Please select the type of connection:"
-msgstr "Dewiswch fath y cysylltiad:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:25
-msgid "Please select the type of encryption:"
-msgstr "Dewiswch fath yr amgryptio:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:26
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
 #, fuzzy
-msgid ""
-"Please specify your keys or generate them. \n"
-"The keys are symmetric, so your remote partner needs to have the same."
-msgstr ""
-"Penodwch eich allweddi neu'u cynhyrchu. \n"
-"Mae'r allweddi'n gymesur, felly mae angen bod yr un rhai gyda'ch partner "
-"pell."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:28
-msgid "Remote _IP address:"
-msgstr "Cyfeiriad _IP pell:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:29
-msgid "Remote network _address:"
-msgstr "_Cyfeiriad rhwydwaith pell:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:30
-msgid "Remote network _gateway:"
-msgstr "_Porthydd rhwydwaith pell:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:31
-msgid "Remote subnet _mask:"
-msgstr "_Masg is-rwyd pell:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:32
-msgid "Security parameter index for authentication:"
-msgstr ""
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:33
-msgid "Security parameter index for encryption:"
-msgstr ""
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:34
-msgid "You will now be guided through the setup of the IPsec connection."
-msgstr "Fe'ch tywysir drwy osod y cysylltiad IPsec nawr."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:35
-msgid "_Activate connection when computer starts"
-msgstr "_Gweithredoli cysylltiad pan cychwynna'r cyfrifiadur"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:36
-msgid "_Encryption key:"
-msgstr "Allwedd _amgryptio:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:38
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
-msgid "_Nickname:"
-msgstr "_Ffugenw:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:39
-#, fuzzy
-msgid "dialog1"
-msgstr "deialu"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:40
-msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:41
-msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:1
-msgid "Add / Edit Hosts entry"
-msgstr "Ychwanegu / Golygu cofnod Westeiwyr"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Aliases:"
-msgstr "Ffugenwau:"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:4
-msgid "Hostname:"
-msgstr "Enw gwesteiwr:"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
-msgid "Add new Device Type"
-msgstr "Ychwanegu Math Dyfais newydd"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
-msgid "Device Type"
-msgstr "Math Dyfais"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
-msgid "Select Device Type"
-msgstr "Dewiswch Fath Dyfais"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
-msgid "Select Ethernet Adapter"
-msgstr "Dewiswch Addasydd Ethernet"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
-msgid "_Adapter:"
-msgstr "_Addasydd:"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
-msgid "Allow all _users to enable and disable the device"
-msgstr "Caniatáu i bob _defnyddiwr alluogi ac analluogi'r ddyfais hon"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
-msgid "Enable IPv_6 configuration for this interface"
-msgstr "Galluogi cyflunio IPf_6 ar gyfer y rhyngwyneb hon"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
-msgid "Ethernet Device"
-msgstr "Dyfais Ethernet"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
-msgid "_Activate device when computer starts"
-msgstr "_Gweithredoli'r ddyfais pan gychwynna'r cyfrifiadur"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
-#, fuzzy
-msgid "_Activate device when parent device starts"
-msgstr "_Gweithredoli'r ddyfais pan gychwynna'r cyfrifiadur"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
-msgid "_General"
-msgstr "_Cyffredinol"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
-msgid "_Hardware Device"
-msgstr "Dyfais _Galedwedd"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
-msgid "_Route"
-msgstr "_Llwybr"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
-msgid "Ethernet card"
-msgstr "Cerdyn ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-msgid ""
-"Please enter the MTU parameter to set the maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"Rhowch y paramedr MTU i osod uchafswm unedau trosglwyddo'r addasydd yma. Ar "
-"s390/s390x 1492 yw'r rhagosodyn MTU"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
-msgid "Select Ethernet Device"
-msgstr "Dewiswch Ddyfais Ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the ethernet card you want to configure:"
-msgstr "Dewiswch y cerdyn ethernet rydych am ei gyflunio:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
-msgid "1_TR6"
-msgstr "1_TR6"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
-#, fuzzy
-msgid "<b>D-channel protocol</b>"
-msgstr "Protocol Sianel D"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
-#, fuzzy
-msgid "<b>Resources</b>"
-msgstr "Adnodd"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
-msgid "Eu_ro ISDN (EDSS1)"
-msgstr "Ew_ro ISDN (EDSS1)"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
-msgid "ISDN _adapters:"
-msgstr "_Addasyddion ISDN:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
-msgid "Select ISDN Adapter"
-msgstr "Dewiswch Addasydd ISDN"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
-msgid "_IO:"
-msgstr "_IO:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
-msgid "_MEM:"
-msgstr "_MEM:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Token Ring Device"
-msgstr "Creu Dyfais Cylch Docyn"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Token Ring Device"
-msgstr "Dewiswch Ddyfais Cylch Docyn"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the token ring card you want to configure:"
-msgstr "Dewiswch y cerdyn cylch docyn rydych am ei gyflunio:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Token ring card"
-msgstr "Cerdyn cylch docyn"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-msgid "Select Token Ring Adapter"
-msgstr "Dewiswch Addasydd Cylch Docyn"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:1
-msgid "Activate the selected device, calling ifup <device>."
-msgstr "Gweithredoli'r ddyfais ddewisiedig, drwy alw ifup <dyfais>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:2
-msgid "Aliases"
-msgstr "Ffugenwau"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:3
-msgid "Contents"
-msgstr "Cynnwys"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:4
-msgid "DNS search path:"
-msgstr "Llwybr chwilio DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:5
-msgid "D_NS"
-msgstr "D_NS"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:6
-msgid "Deactivate the selected device, calling ifdown <device>."
-msgstr "Anweithredoli'r ddyfais ddewisiedig, drwy alw ifdown <dyfais>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:7
-msgid "Description"
-msgstr "Disgrifiad"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:8
-msgid "Destination"
-msgstr "Cyrchfan"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:9
-msgid "Dev_ices"
-msgstr "Dyfe_isiau"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:11
-msgid "Do_main:"
-msgstr "Pa_rth:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:12
-msgid "H_osts"
-msgstr "_Gwesteiwyr"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:13
-msgid "Hard_ware"
-msgstr "Caled_wedd"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:14
-msgid "IP"
-msgstr "IP"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:15
-msgid "IP_sec"
-msgstr "IP_sec"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:16
-msgid "List of devices which are currently configurable on your system."
-msgstr "Rhestr o ddyfeisiau sy'n gyflunadwy'n gyfredol ar eich system."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:17
-msgid "Monitor the selected device."
-msgstr "Arsylwi'r ddyfais ddewisiedig."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:20
-msgid "New Profile"
-msgstr "Proffil Newydd"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:22
-msgid ""
-"Please enter the name for the profile. The name may only contain letters and "
-"digits."
-msgstr ""
-"Rhowch enw ar gyfer y proffil. Gall yr enw gynnwys llythrennau a digidau'n "
-"unig."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:23
-msgid "Profile"
-msgstr "Proffil"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:25
-msgid "Type"
-msgstr "Math"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:26
-msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr "Gallwch gyflunio twneli IPsec a chysyltiadau gwesteiwr i westeiwr yma."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network devices associated with physical hardware here.  "
-"Multiple logical devices can be associated with a single piece of hardware."
-msgstr ""
-"Gallwch gyflunio dyfeisiau rhwydwaith sy'n gysylltiedig â dyfeisiau "
-"corfforol yma.  Gall sawm dyfais resymegol fod yn gysylltiedig âg un darn o "
-"galedwedd."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr ""
-"Gallwch gyflunio caledwedd rhwydwaith sydd ynghlwm yn gorfforol at y "
-"cyfrifiadur yma."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:29
-msgid ""
-"You may configure the system's hostname, domain, name servers, and search "
-"domain. Name servers are used to look up other hosts on the network."
-msgstr ""
-"Gallwch gyflunio enw gwesteiwr, parth, gweinyddion enwau, a pharth chwilio'r "
-"system yma. Defnyddir gweinyddion enwau i chwilio am westeiwyr eraill ar y "
-"rwydwaith."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may specify static computer hostname to IP address mappings here.  If "
-"DNS is in use, these settings will take precedence over any information it "
-"may provide."
-msgstr ""
-"Gallwch benodi mapiadau sefydlog enwau gwesteiwyr cyfrifiaduron i "
-"gyfeiriadau IP yma.  Os defnyddir DNS, fe gymera'r gosodiadau yma "
-"flaenoriaeth dros unrhyw wybodaeth y darpera."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:33
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
-msgid "_Delete"
-msgstr "_Dileu"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:34
-msgid "_Edit"
-msgstr "_Golygu"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:35
-msgid "_Hostname:"
-msgstr "Enw _gwesteiwr:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:37
-#, fuzzy
-msgid "_New..."
-msgstr "_Newydd"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:38
-msgid "_Primary DNS:"
-msgstr "DNS _cynradd:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:39
-msgid "_Profile"
-msgstr "_Proffil"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:40
-msgid "_Secondary DNS:"
-msgstr "DNS _eilaidd:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:41
-msgid "_Tertiary DNS:"
-msgstr "DNS _trydyddol:"
-
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "Network Adapters Configuration"
-msgstr "Cyfluniad Addasyddion Rhwydwaith"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
-msgid "$"
-msgstr "$"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
-msgid "0.00"
-msgstr "0.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
-msgid "1"
-msgstr "1"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
-msgid "1.00"
-msgstr "1.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
-msgid "Confirm _starting connection"
-msgstr "Cadarnhau _dechrau cysylltiad"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
-msgid "Confirm stopping _connection"
-msgstr "Cadarnhau atal _cysylltiad"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
-msgid "Cos_t accumulated from the past connection:"
-msgstr "Y gost a gynyddodd o'r cysylltiad diwethaf:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
-msgid "Cost per:"
-msgstr "Cost bob:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
-msgid "Count:"
-msgstr "Cyfrif:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
-msgid "M_inimum number of seconds charged:"
-msgstr "_Isafswm nifer o eiliadau codir tâl amdano:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
-msgid "_Accumulate cost over multiple connections"
-msgstr "_Cynyddu'r gost dros sawl cysylltiad"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
-msgid "_Basic"
-msgstr "_Sylfaenol"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
-msgid "_Cost"
-msgstr "_Cost"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
-msgid "_Debug mode"
-msgstr "Modd _dadnamu"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
-msgid "_Extra cost to start a connection:"
-msgstr "Cost _ychwanegol ar gyfer dechrau cysylltiad:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
-msgid "_Hour"
-msgstr "_Awr"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
-msgid "_Minute"
-msgstr "_Munud"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
-msgid "_Number of seconds in basic accounting unit:"
-msgstr "_Nifer o eiliadau mewn uned gyfrifo sylfaenol:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
-msgid "_Second"
-msgstr "_Eiliad"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
-msgid "_Terminate connection when session closes"
-msgstr "_Gorffen cysylltiad pan fo sesiwn yn cau"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
-msgid "_Time"
-msgstr "_Amser"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
-msgid "redhat network control - Properties"
-msgstr "rheolydd rhwydwaith redhat - Priodweddau"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
-#, fuzzy
-msgid "<b>D channel protocol</b>"
-msgstr "Protocol Sianel D"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN Adapters Configuration"
-msgstr "Cyfluniad Addasyddion ISDN"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-msgid "Waiting to connect to"
-msgstr "Yn aros i gysylltu â"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-msgid "Waiting..."
-msgstr "Yn aros..."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
-#, fuzzy
-msgid "<b>Account Type:</b>"
-msgstr "Proffil Gweithredol"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
-msgid "Configure DSL connection"
-msgstr "Cyflunio cysylltiad DSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
-msgid "Create DSL connection"
-msgstr "Creu cysylltiad DSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
-msgid "Enter the provider name for this account."
-msgstr "Rhowch yr enw darparwr ar gyfer y gyfrif hon."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
-msgid "Ethernet _device:"
-msgstr "_Dyfais ethernet:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-#, fuzzy
-msgid "Normal"
-msgstr "Norwy"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
-msgid ""
-"Normal\n"
-"T-Online"
-msgstr ""
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
-msgid "Password (_again):"
-msgstr "Cyfrinair (_eto):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-msgid "Select the ethernet device connected to the DSL modem."
-msgstr "Dewiswch y ddyfais ethernet cysylltiedig â'r modem DSL."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-msgid "Select the ethernet device for this account."
-msgstr "Dewiswch y ddyfais ethernet ar gyfer y gyfrif hon."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-#, fuzzy
-msgid "T-Online"
-msgstr "Cyfrif _T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
-msgid "_Provider name:"
-msgstr "Enw _darparwr:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain name:"
-msgstr "Enw parth:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:2
-msgid "Edit Domain Name"
-msgstr "Golygu Enw Parth"
+msgid "<b>Modem properties</b>"
+msgstr "Priodweddau Modem"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "Modem _volume:"
+msgstr "_Lefel sain modem:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "Dewiswch Fodem"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "_Baud rate:"
+msgstr "Cyfradd _baud:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "_Flow control:"
+msgstr "Rheolaeth _llif:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "_Modem device:"
+msgstr "Dyfais _fodem:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "_Defnyddio deialu tônau"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
 msgid "A_ddress:"
@@ -3128,237 +2714,107 @@ msgstr "dhcp"
 msgid "dialup"
 msgstr "deialu"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
-msgid "00:00:00:00:00:00"
-msgstr "00:00:00:00:00:00"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
+msgid "CIPE Configuration"
+msgstr "Cyfluniad CIPE"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid ""
-"Each device needs to be attached to a physical device which can be selected "
-"below. Device Alias support allows you to use multiple virtual devices for "
-"one physical device."
-msgstr ""
-"Mae angen i bob dyfais fod yn gysylltiedig â dyfais gorfforol y gellir ei "
-"dewis isod. Mae cynhaliaeth Ffugenwau Dyfeisiau yn eich galluogi i "
-"ddefnyddio sawl rhith-ddyfais ar gyfer un ddyfais gorfforol."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "Cyfluniad eich partner pell"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Enable _Device Alias support"
-msgstr "Galluogi cynhaliaeth Ffugenwau _Dyfeisiau"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+msgid "Lo_cal virtual address:"
+msgstr "Rhith-gyfeiriad _lleol:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
-msgid "Ha_rdware address:"
-msgstr "Cyfeiriad ca_ledwedd:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+msgid "Remote _virtual address:"
+msgstr "_Rhith-gyfeiriad pell:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
-msgid "Token Ring Device"
-msgstr "Dyfais Cylch Docyn"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+msgid "Remote peer p_ort:"
+msgstr "P_orth cydradd pell:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Alias:"
-msgstr "_Ffugenw:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+msgid "_Generate"
+msgstr "_Cynhyrchu"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
-msgid "_Hardware device:"
-msgstr "Dyfais _galedwedd:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+msgid "_Local port:"
+msgstr "Porth _leol:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
-msgid "_Probe for Address"
-msgstr "_Archwilio am Gyfeiriad"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+msgid "_Remote peer address:"
+msgstr "Cyfeiriad cydradd _pell:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
-msgid "_Use Hardware Address"
-msgstr "_Defnyddio Cyfeiriad Caledwedd"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+msgid "_Secret key:"
+msgstr "Allwedd _gyfrinachol:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
-msgid "tr0"
-msgstr "tr0"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
+msgid "_Tunnel Settings"
+msgstr "Gosodiadau _Twnel"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
-#, fuzzy
-msgid "tr1"
-msgstr "tr0"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+msgid "_Tunnel through device:"
+msgstr "_Twnelu trwy'r ddyfais:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
-#, fuzzy
-msgid "tr2"
-msgstr "tr0"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+msgid "_auto"
+msgstr "_awto"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
-#, fuzzy
-msgid "tr3"
-msgstr "tr0"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
-#, fuzzy
-msgid "tr4"
-msgstr "tr0"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
-#, fuzzy
-msgid "tr5"
-msgstr "tr0"
-
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "11M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
+msgid "cipcb0"
 msgstr ""
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-#, fuzzy
-msgid "1M"
-msgstr "1"
-
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
+msgid "cipcb1"
 msgstr ""
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
+msgid "cipcb2"
 msgstr ""
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
-msgid ""
-"Set the operating mode of the device, which depends on the network topology. "
-"The mode can be Ad-Hoc (network composed of only one cell and without Access "
-"Point), Managed (node connects to a network composed of many Access Points, "
-"with roaming), Master (the node is the synchronization master or acts as an "
-"Access Point) or Auto."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
+msgid "cipcb3"
 msgstr ""
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-msgid "Wireless Device Configuration"
-msgstr "Cyflunio Dyfeisiau Di-wifr"
-
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-msgid "_Hardware device"
-msgstr "Dyfais _galedwedd"
-
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
-msgid "_Wireless Settings"
-msgstr "Gosodiadau _Di-wifr"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-msgid "MT_U:"
-msgstr "MT_U:"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
-msgid "_Point to Point (IP):"
-msgstr "_Pwynt i Bwynt (IP):"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
-msgid "Choose Hardware Device Type"
-msgstr "Dewiswch Fath Dyfais Caledwedd"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
-msgid "Please select the type of hardware device to add:"
-msgstr "Dewiswch y math o ddyfais galedwedd i'w hychwanegu:"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
-msgid "_Device type:"
-msgstr "Math _dyfais:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
-msgid "Allow dial on _demand"
-msgstr "Caniatáu deialu ar _ofyn"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
-msgid "Allow the link come up on demand."
-msgstr "Caniatáu codi'r cyswllt ar ofyn."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
-msgid "Demand setting"
-msgstr "Gosodiad gofyn"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
-msgid "Enable synchronous PPP for the connection"
-msgstr "Galluogi PPP cydamserol ar gyfer y cysylltiad"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
-msgid ""
-"Enter the Access Concentrator name, if you have been given one by your ISP. "
-"In most cases you can leave this blank."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
+msgid "cipcb4"
 msgstr ""
-"Rhowch enw'r Crynhoydd Cyrchiad, os rhoddwyd un i chi gan eich ISP. Yn yr "
-"rhan fwyaf o achosion gallwch adael hwn yn wag."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
-msgid ""
-"Enter the Service Name, if your ISP requires it. If you don't know it, "
-"please contact your ISP. In most cases you can leave this blank."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
+msgid "eth0"
 msgstr ""
-"Rhowch Enw'r Gwasanaeth, os yw'ch ISP yn ei fynnu, Os nad ydych yn ei wybyd, "
-"cysyllter â'ch ISP. Yn y rhan fwyaf o achosion gallwch adael hwn yn wag."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
-msgid "Enter the idle time in seconds after which the link should be dropped."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
+msgid "eth1"
 msgstr ""
-"Rhowch yr amser segur mewn eiliadau y dylid gollwng y cysylltiad ar ei ôl."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
-msgid "Make this connection the default _route"
-msgstr "Gwneud y cysylltiad yma yn ragosodyn _llwybr"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
+msgid "eth2"
+msgstr ""
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
-msgid "Restart if _connection dies"
-msgstr "Ailddechrau os yw'r _cysylltiad yn marw"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
+msgid "eth3"
+msgstr ""
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
-msgid "_AC-name:"
-msgstr "Enw _AC:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
+msgid "eth4"
+msgstr ""
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
-msgid "_Advanced"
-msgstr "_Uwch"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
-msgid "_IPsec"
-msgstr "_IPsec"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
-msgid "_Maximum idle time:"
-msgstr "_Uchafswm amser segur:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-msgid "_Provider"
-msgstr "_Darparwr"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
-msgid "_Service-name:"
-msgstr "Enw _gwasanaeth:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
-msgid "_Use synchronous PPP"
-msgstr "_Defnyddio PPP cydamserol"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
-msgid "xDSL Configuration"
-msgstr "Cyfluniad xDSL"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
-msgid "00:00:00"
-msgstr "00:00:00"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
-msgid "Online time:"
-msgstr "Amser ar-lein:"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
-msgid "click the right mouse button for properties"
-msgstr "cliciwch botwm dde'r llygoden am briodweddau"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:1
-msgid "Add / Edit IP Address"
-msgstr "Ychwanegu / Golygu Cyfeiriadau IP"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:3
-msgid "_Gateway:"
-msgstr "_Porthydd:"
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+msgid "Ethernet Device"
+msgstr "Dyfais Ethernet"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -3506,6 +2962,11 @@ msgstr "_Dewis Darparwr..."
 msgid "_Compression"
 msgstr "_Cywasgiad"
 
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/maindialog.glade.h:33
+msgid "_Delete"
+msgstr "_Dileu"
+
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
 msgid "_Dial mode:"
 msgstr "Modd _deialu:"
@@ -3534,57 +2995,323 @@ msgstr "Rhif _Ffôn"
 msgid "_Use Callback"
 msgstr "_Defnyddio Adalwad"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
-msgid "CIPE Configuration"
-msgstr "Cyfluniad CIPE"
+#: ../src/netconfpkg/gui/editipsec.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
-msgid "Configuration for your remote partner"
+#: ../src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication key:"
+msgstr "Allwedd dil_ysiant:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "Dewis modd amgryptio'n awtomatig drwy IKA (racoon)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "Cy_nhyrchu"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr "Amgryptio Gwesteiwr i Westeiwr"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPsec - Math Cysylltiad"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - Modd Amgryptio"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - Allweddi"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - Rhwydwaith Leol"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Nickname"
+msgstr "IPsec - Ffugenw"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Remote Network"
+msgstr "IPsec - Rhwydwaith Bell"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec - Summary"
+msgstr "IPsec - Crynodeb"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:14
+msgid "IPsec Settings"
+msgstr "IPsec - Gosodiadau"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local network _address:"
+msgstr "_Cyfeiriad rhwydwaith lleol:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local network _gateway:"
+msgstr "_Porthydd rhwydwaith lleol:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Local subnet _mask:"
+msgstr "_Masg is-rwyd lleol:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Manual encryption with a fixed key"
+msgstr "Amgryptio â llaw âg allwedd gosodedig"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Network to Network encryption (VPN)"
+msgstr "Amgryptio Rhwydwaith i Rwydwaith (VPN)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter a nickname for the connection:"
+msgstr "Rhowch ffugenw ar gyfer y cysylltiad:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter a passphrase to generate the key."
+msgstr ""
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please enter your local network settings:"
+msgstr "Rhowch gosodiadau eich rhwydwaith lleol:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please enter your remote network settings:"
+msgstr "Rhowch gosodiadau eich rhwydwaith pell:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:24
+msgid "Please select the type of connection:"
+msgstr "Dewiswch fath y cysylltiad:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:25
+msgid "Please select the type of encryption:"
+msgstr "Dewiswch fath yr amgryptio:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:26
+#, fuzzy
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner needs to have the same."
+msgstr ""
+"Penodwch eich allweddi neu'u cynhyrchu. \n"
+"Mae'r allweddi'n gymesur, felly mae angen bod yr un rhai gyda'ch partner "
+"pell."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote _IP address:"
+msgstr "Cyfeiriad _IP pell:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote network _address:"
+msgstr "_Cyfeiriad rhwydwaith pell:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:30
+msgid "Remote network _gateway:"
+msgstr "_Porthydd rhwydwaith pell:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:31
+msgid "Remote subnet _mask:"
+msgstr "_Masg is-rwyd pell:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:32
+msgid "Security parameter index for authentication:"
+msgstr ""
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:33
+msgid "Security parameter index for encryption:"
+msgstr ""
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:34
+msgid "You will now be guided through the setup of the IPsec connection."
+msgstr "Fe'ch tywysir drwy osod y cysylltiad IPsec nawr."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:35
+msgid "_Activate connection when computer starts"
+msgstr "_Gweithredoli cysylltiad pan cychwynna'r cyfrifiadur"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:36
+msgid "_Encryption key:"
+msgstr "Allwedd _amgryptio:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:39
+#, fuzzy
+msgid "dialog1"
+msgstr "deialu"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:40
+msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:41
+msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+#, fuzzy
+msgid "<b>D-channel protocol</b>"
+msgstr "Protocol Sianel D"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Dewiswch Addasydd ISDN"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "Configure Wireless Connection"
+msgstr "Cyflunio Cysylltiad Di-wifr"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "Create Wireless Device"
+msgstr "Creu Dyfais Di-wifr"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid "Network name (SSID):"
+msgstr "Enw rhwydwait (SSID):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Rhowch y paramedr MTU i osod uchafswm unedau trosglwyddo'r addasydd yma. Ar "
+"s390/s390x 1492 yw'r rhagosodyn MTU"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Select Wireless Device"
+msgstr "Dewis Dyfais Di-wifr"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Select the wireless card you want to configure:"
+msgstr "Dewiswch y cerdyn di-wifr yr ydych am ei chyflunio:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+"Defnyddir i drin allweddi amgryptio neu ddrysu a'r modd amgryptio. I osod yr "
+"allwedd amgryptio cyfredol mewn digidau hecs rhowch yr allwedd â 0x yn "
+"ragddodiad megis 0xXXXXXXXX."
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Wireless card"
+msgstr "Cerdyn di-wifr"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "_Auto"
+msgstr "_Awto"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Channel:"
+msgstr "_Sianel:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+msgid "_Key (use 0x for hex):"
+msgstr "_Allwedd (defnyddiwch 0x ar gyfer hecs):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+msgid "_Mode:"
+msgstr "_Modd:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+msgid "_Specified:"
+msgstr "_Penodedig:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
+msgid "_Transmit rate:"
+msgstr "Cyfradd _drosglwyddo:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Dewiswch Fath Dyfais Caledwedd"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "Dewiswch y math o ddyfais galedwedd i'w hychwanegu:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "Math _dyfais:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+#, fuzzy
+msgid "<b>Configuration for your remote partner</b>"
 msgstr "Cyfluniad eich partner pell"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
-msgid "_Tunnel Settings"
-msgstr "Gosodiadau _Twnel"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
+msgid "Configure Tunnel"
+msgstr "Cyflunio Twnel"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
-msgid "cipcb0"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
+msgid "Create Cipe Connection"
+msgstr "Creu Cysylltiad CIPE"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
 msgstr ""
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
-msgid "cipcb1"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+#, fuzzy
+msgid "1M"
+msgstr "1"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
 msgstr ""
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
-msgid "cipcb2"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
 msgstr ""
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
-msgid "cipcb3"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
 msgstr ""
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
-msgid "cipcb4"
-msgstr ""
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Wireless Device Configuration"
+msgstr "Cyflunio Dyfeisiau Di-wifr"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
-msgid "eth0"
-msgstr ""
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Hardware device"
+msgstr "Dyfais _galedwedd"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
-msgid "eth1"
-msgstr ""
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+msgid "_Wireless Settings"
+msgstr "Gosodiadau _Di-wifr"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
-msgid "eth2"
-msgstr ""
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Ychwanegu / Golygu cofnod Westeiwyr"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
-msgid "eth3"
-msgstr ""
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Ffugenwau:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
-msgid "eth4"
-msgstr ""
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Enw gwesteiwr:"
 
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
 msgid "Card"
@@ -3602,17 +3329,289 @@ msgstr "Dewiswch Ddyfais"
 msgid "Select the card you want to configure:"
 msgstr "Dewiswch y cerdyn yr hoffech ei gyflunio:"
 
-#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
-msgid "Choose a Provider"
-msgstr "Dewiswch Ddarparwr"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "Creu Dyfais Cylch Docyn"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
-msgid "Connect to"
-msgstr "Cysylltu â"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "Dewiswch Ddyfais Cylch Docyn"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
-msgid "Disconnect from"
-msgstr "Datgysylltu oddiwrth"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr "Dewiswch y cerdyn cylch docyn rydych am ei gyflunio:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "Cerdyn cylch docyn"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Ychwanegu / Golygu Cyfeiriadau IP"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Porthydd:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:1
+msgid "Activate the selected device, calling ifup <device>."
+msgstr "Gweithredoli'r ddyfais ddewisiedig, drwy alw ifup <dyfais>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:2
+msgid "Aliases"
+msgstr "Ffugenwau"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:3
+msgid "Contents"
+msgstr "Cynnwys"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:4
+msgid "DNS search path:"
+msgstr "Llwybr chwilio DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:5
+msgid "D_NS"
+msgstr "D_NS"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:6
+msgid "Deactivate the selected device, calling ifdown <device>."
+msgstr "Anweithredoli'r ddyfais ddewisiedig, drwy alw ifdown <dyfais>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:7
+msgid "Description"
+msgstr "Disgrifiad"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:8
+msgid "Destination"
+msgstr "Cyrchfan"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:9
+msgid "Dev_ices"
+msgstr "Dyfe_isiau"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:11
+msgid "Do_main:"
+msgstr "Pa_rth:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:12
+msgid "H_osts"
+msgstr "_Gwesteiwyr"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:13
+msgid "Hard_ware"
+msgstr "Caled_wedd"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:14
+msgid "IP"
+msgstr "IP"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:15
+msgid "IP_sec"
+msgstr "IP_sec"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:16
+msgid "List of devices which are currently configurable on your system."
+msgstr "Rhestr o ddyfeisiau sy'n gyflunadwy'n gyfredol ar eich system."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:17
+msgid "Monitor the selected device."
+msgstr "Arsylwi'r ddyfais ddewisiedig."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:20
+msgid "New Profile"
+msgstr "Proffil Newydd"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:22
+msgid ""
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
+msgstr ""
+"Rhowch enw ar gyfer y proffil. Gall yr enw gynnwys llythrennau a digidau'n "
+"unig."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:23
+msgid "Profile"
+msgstr "Proffil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:25
+msgid "Type"
+msgstr "Math"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:26
+msgid "You may configure IPsec tunnels and host to host connections here."
+msgstr "Gallwch gyflunio twneli IPsec a chysyltiadau gwesteiwr i westeiwr yma."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:27
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"Gallwch gyflunio dyfeisiau rhwydwaith sy'n gysylltiedig â dyfeisiau "
+"corfforol yma.  Gall sawm dyfais resymegol fod yn gysylltiedig âg un darn o "
+"galedwedd."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:28
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"Gallwch gyflunio caledwedd rhwydwaith sydd ynghlwm yn gorfforol at y "
+"cyfrifiadur yma."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:29
+msgid ""
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
+msgstr ""
+"Gallwch gyflunio enw gwesteiwr, parth, gweinyddion enwau, a pharth chwilio'r "
+"system yma. Defnyddir gweinyddion enwau i chwilio am westeiwyr eraill ar y "
+"rwydwaith."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:30
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"Gallwch benodi mapiadau sefydlog enwau gwesteiwyr cyfrifiaduron i "
+"gyfeiriadau IP yma.  Os defnyddir DNS, fe gymera'r gosodiadau yma "
+"flaenoriaeth dros unrhyw wybodaeth y darpera."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:34
+msgid "_Edit"
+msgstr "_Golygu"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_Hostname:"
+msgstr "Enw _gwesteiwr:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:37
+#, fuzzy
+msgid "_New..."
+msgstr "_Newydd"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:38
+msgid "_Primary DNS:"
+msgstr "DNS _cynradd:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:39
+msgid "_Profile"
+msgstr "_Proffil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:40
+msgid "_Secondary DNS:"
+msgstr "DNS _eilaidd:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:41
+msgid "_Tertiary DNS:"
+msgstr "DNS _trydyddol:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "Enw parth:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Golygu Enw Parth"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Ychwanegu Math Dyfais newydd"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Math Dyfais"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Dewiswch Fath Dyfais"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "$"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "0.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+msgid "1"
+msgstr "1"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "1.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Confirm _starting connection"
+msgstr "Cadarnhau _dechrau cysylltiad"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm stopping _connection"
+msgstr "Cadarnhau atal _cysylltiad"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Cos_t accumulated from the past connection:"
+msgstr "Y gost a gynyddodd o'r cysylltiad diwethaf:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cost per:"
+msgstr "Cost bob:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Count:"
+msgstr "Cyfrif:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "M_inimum number of seconds charged:"
+msgstr "_Isafswm nifer o eiliadau codir tâl amdano:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "_Accumulate cost over multiple connections"
+msgstr "_Cynyddu'r gost dros sawl cysylltiad"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "_Basic"
+msgstr "_Sylfaenol"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Cost"
+msgstr "_Cost"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Debug mode"
+msgstr "Modd _dadnamu"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Extra cost to start a connection:"
+msgstr "Cost _ychwanegol ar gyfer dechrau cysylltiad:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Hour"
+msgstr "_Awr"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Minute"
+msgstr "_Munud"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_Nifer o eiliadau mewn uned gyfrifo sylfaenol:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Second"
+msgstr "_Eiliad"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Terminate connection when session closes"
+msgstr "_Gorffen cysylltiad pan fo sesiwn yn cau"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Time"
+msgstr "_Amser"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "redhat network control - Properties"
+msgstr "rheolydd rhwydwaith redhat - Priodweddau"
 
 #~ msgid "Static routes file %s is invalid"
 #~ msgstr "Mae'r ffeil lwybrau sefydlog %s yn annilys"

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: netcfg 1.1\n"
-"Report-Msgid-Bugs-To: Richard Allen <ra@ra.is>\n"
-"POT-Creation-Date: 2007-09-24 10:59+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-10-08 13:28+0200\n"
 "PO-Revision-Date: 2007-09-30 15:39+0000\n"
 "Last-Translator: Richard Allen <ra@ra.is>\n"
 "Language-Team: is <kde-isl@molar.is>\n"
@@ -14,6 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 "Generated-By: pygettext.py 1.1\n"
+
+#: ../neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "Stýra og fylgjast með netkortum"
+
+#: ../neat-control.desktop.in.h:2
+#: ../src/netconfpkg/gui/neat-control.glade.h:12
+msgid "Network Device Control"
+msgstr "Stýra netkortum"
 
 #: ../neat.desktop.in.h:1
 msgid "Configure network devices and connections"
@@ -28,293 +37,104 @@ msgstr "Net"
 msgid "Network Configuration"
 msgstr "Stillingar nets"
 
-#: ../neat-control.desktop.in.h:1
-msgid "Control and monitor network devices"
-msgstr "Stýra og fylgjast með netkortum"
+#: ../src/netconfpkg/NCBackendHal.py:50 ../src/netconfpkg/NCDeviceList.py:72
+#: ../src/netconfpkg/NCDevice.py:231 ../src/netconfpkg/NCHardwareList.py:442
+#: ../src/netconfpkg/NCHardwareList.py:562
+#: ../src/netconfpkg/gui/tokenringhardware.py:111
+#: ../src/netconfpkg/gui/ethernethardware.py:137
+#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
+#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
+#: ../src/netconfpkg/NC_functions.py:388
+msgid "Unknown"
+msgstr "Óþekkt"
 
-#: ../neat-control.desktop.in.h:2
-#: ../src/netconfpkg/gui/neat-control.glade.h:12
-msgid "Network Device Control"
-msgstr "Stýra netkortum"
+#: ../src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "óvirkt"
 
-#: ../src/netconf-cmd.py:62
-#, python-format
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.\n"
-"Please file a detailed bug report against the component %s at \n"
-"https://bugzilla.redhat.com/bugzilla\n"
-"using the text below.\n"
-msgstr ""
-"Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
-"Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
-"villutilkynningu á %s á https://bugzilla.redhat.com/bugzilla/\n"
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "kerfi"
 
-#: ../src/netconf-cmd.py:97
-#, python-format
-msgid "%s - network configuration commandline tool"
-msgstr "%s - netstillingatól fyrir skipanalínuna"
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "stillt"
 
-#: ../src/netconf-cmd.py:98 ../src/neat-control.py:146
-#: ../src/neat-control.py:163 ../src/netconfpkg/gui/maindialog.py:1641
-#: ../src/netconfpkg/gui/maindialog.py:1657
-msgid "Copyright (c) 2001-2005 Red Hat, Inc."
-msgstr "Höfundarréttur (c) 2001-2005 Red Hat, Inc."
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "í lagi"
 
-#: ../src/netconf-cmd.py:99 ../src/neat-control.py:147
-#: ../src/netconfpkg/gui/maindialog.py:1642
-msgid ""
-"This software is distributed under the GPL. Please Report bugs to Red Hat's "
-"Bug Tracking System: http://bugzilla.redhat.com/"
-msgstr ""
-"Þessum hugbúnaði er dreift samkvæmt skilmálum GPL leyfinsins. Vinsamlegast "
-"tilkynnið villur á villuvef Red Hat: http://bugzilla.redhat.com/"
+#: ../src/netconfpkg/NCDeviceList.py:117
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "Breytti eftirfarandi gælunöfnum vegna 'initscripts':\n"
 
-#: ../src/netconf-cmd.py:102
-#, python-format
-msgid "Usage: %s"
-msgstr "Notkun: %s"
+#: ../src/netconfpkg/NCDeviceList.py:120
+msgid "Nicknames changed"
+msgstr "Gælunafni breytt"
 
-#: ../src/netconf-cmd.py:104
-msgid "switch / activate profile"
-msgstr "skipta um eða vvirkja sniðmát"
-
-#: ../src/netconf-cmd.py:106
-msgid "export / import hardware list"
-msgstr "flytja inn/út vélbúnaðarlistann"
-
-#: ../src/netconf-cmd.py:108
-msgid "export / import IPsec list"
-msgstr "flytja inn/út IPsec lista"
-
-#: ../src/netconf-cmd.py:110
-msgid "export / import device list (default)"
-msgstr "flytja inn/út tækjalistann (sjálfgefið)"
-
-#: ../src/netconf-cmd.py:112
-msgid "export / import profile list"
-msgstr "flytja inn/út lista sniðmáta"
-
-#: ../src/netconf-cmd.py:114
-msgid "set the root directory"
-msgstr "setja rótarmöppuna"
-
-#: ../src/netconf-cmd.py:116
-msgid "export list (default)"
-msgstr "flytja út (sjálfgefið)"
-
-#: ../src/netconf-cmd.py:117
-msgid "import list"
-msgstr "flytja inn lista"
-
-#: ../src/netconf-cmd.py:119
-msgid "clear existing list prior of importing"
-msgstr "hreinsa núverandi lista áður en flutt er inn"
-
-#: ../src/netconf-cmd.py:121
-msgid "import from file"
-msgstr "flytja inn úr skrá"
-
-#: ../src/netconf-cmd.py:264
-#, python-format
-msgid "Unknown option %s\n"
-msgstr "Óþekktur rofi %s\n"
-
-#: ../src/netconf-cmd.py:325
-#, python-format
-msgid "Unknown List %s\n"
-msgstr "Óþekktur listi %s\n"
-
-#: ../src/netconf-cmd.py:329 ../src/netconfpkg/genClass.py:302
-#, python-format
-msgid "Error parsing line: %s"
-msgstr "Villa við að þátta línu: %s"
-
-#: ../src/netconf-tui.py:99
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.  Please save "
-"the crash dump and file a detailed bug report against system-config-network "
-"at https://bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
-"Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
-"villutilkynningu á system-config-network á https://bugzilla.redhat.com/"
-"bugzilla/"
-
-#: ../src/netconf-tui.py:127
-msgid "Loading configuration"
-msgstr "Les stillingar"
-
-#: ../src/netconf-tui.py:128
-msgid "Loading Device Configuration"
-msgstr "Les tækjastillingar"
-
-#: ../src/netconf-tui.py:134
-msgid "Loading Hardware Configuration"
-msgstr "Les stillingar vélbúnaðar"
-
-#: ../src/netconf-tui.py:138
-msgid "Loading Profile Configuration"
-msgstr "Les stillingar sniðmáta"
-
-#: ../src/netconf-tui.py:152
-msgid "Which device type do you want to add?"
-msgstr "Hvaða tækjagerð viltu bæta við?"
-
-#: ../src/netconf-tui.py:153
-msgid "Add"
-msgstr "Bæta við"
-
-#: ../src/netconf-tui.py:153 ../src/netconf-tui.py:205
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Cancel"
-msgstr "Hætta við"
-
-#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
-msgid "Ethernet"
-msgstr "Ethernet"
-
-#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
-msgid "Modem"
-msgstr "Mótald"
-
-#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
-msgid "ISDN"
-msgstr "ISDN"
-
-#: ../src/netconf-tui.py:203
-msgid "<New Device>"
-msgstr "<Nýtt tæki>"
-
-#: ../src/netconf-tui.py:204
-msgid "Select A Device"
-msgstr "Veldu tæki"
-
-#: ../src/netconf-tui.py:205
-msgid "Quit"
-msgstr "Hætta"
-
-#: ../src/netconf-tui.py:222
-msgid ""
-"system-config-network - network configuration tool\n"
-"\n"
-"Usage: system-config-network -v --verbose -d --debug"
-msgstr ""
-"system-config-network - netstillingatól\n"
-"\n"
-"Notkun: system-config-network -v --verbose -d --debug"
-
-#: ../src/neat-control.py:50 ../src/netconf.py:72
-msgid "ERROR: Unable to initialize graphical environment. "
-msgstr "VILLA: Gat ekki ræst myndræna umhverfið. "
-
-#: ../src/neat-control.py:51 ../src/netconf.py:73
-msgid ""
-"Most likely cause of failure is that the tool was not run using a graphical "
-"environment. "
-msgstr ""
-"Líklegasta orsök þessarar villu er sú að myndræna umhverfið var ekki "
-"keyrandi. "
-
-#: ../src/neat-control.py:52 ../src/netconf.py:74
-msgid ""
-"Please either start your graphical user interface or set your DISPLAY "
-"variable.\n"
-msgstr ""
-"Vinsamlegast gangsettu gluggakerfið eða stilltu DISPLAY umhverfisbreytuna.\n"
-
-#: ../src/neat-control.py:170 ../src/netconfpkg/gui/maindialog.py:1661
-msgid ""
-"This software is distributed under the GPL. \n"
-"Please Report bugs to Red Hat's Bug Tracking \n"
-"System: http://bugzilla.redhat.com/"
-msgstr ""
-"Þessum hugbúnaði er dreift samkvæmt skilmálum GPL leyfinsins. \n"
-"Vinsamlegast tilkynnið villur á villuvef Red Hat: \n"
-"http://bugzilla.redhat.com/"
-
-#: ../src/neat-control.py:223
-#, python-format
-msgid "Cannot configure network device %s"
-msgstr "Get ekki stillt netkortið %s"
-
-#: ../src/neat-control.py:243
-msgid "Switching Profiles"
-msgstr "Skipti um sniðmát"
-
-#: ../src/neat-control.py:244
-#, python-format
-msgid "Switching to profile %s"
-msgstr "Skipti í sniðmát %s"
-
-#: ../src/neat-control.py:245
-#, python-format
-msgid "Failed to switch to profile %s"
-msgstr "Gat ekki skipt í sniðmátið %s."
-
-#. TBD
-#: ../src/neat-control.py:260
-msgid "To be rewritten!"
-msgstr "Verður endurrituð!"
-
-#: ../src/neat-control.py:367
-msgid " (active)"
-msgstr "(virkt)"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:68
+#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCTcpIp.py:93
 #: ../src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Name"
 msgstr "Heiti"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:69
+#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCTcpIp.py:94
+#: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
 #: ../src/netconfpkg/gui/maindialog.glade.h:10
-#: ../src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Tæki"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:68
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:70
+#: ../src/netconfpkg/tui/NCModemInterface.py:68
 msgid "ISP Phonenumber"
 msgstr "ISP símanúmer:"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:69
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:71
+#: ../src/netconfpkg/tui/NCModemInterface.py:69
 msgid "ISP Login"
 msgstr "ISP notandi"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:70
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:72
+#: ../src/netconfpkg/tui/NCModemInterface.py:70
 msgid "ISP Password"
 msgstr "ISP Lykilorð"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:71
-msgid "Modem Initstring"
-msgstr "Frum_stillistrengur mótalds"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Ok"
-msgstr "Í lagi"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:79
-#: ../src/netconfpkg/gui/modemconfig.glade.h:6
-msgid "Modem Configuration"
-msgstr "Stillingar mótalds"
 
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:73
 msgid "MSN"
 msgstr "MSN"
 
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+msgid "Ok"
+msgstr "Í lagi"
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106 ../src/netconf-tui.py:153
+#: ../src/netconf-tui.py:205
+msgid "Cancel"
+msgstr "Hætta við"
+
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "ISDN stillingar"
+
+#: ../src/netconfpkg/tui/NCModemInterface.py:71
+msgid "Modem Initstring"
+msgstr "Frum_stillistrengur mótalds"
+
+#: ../src/netconfpkg/tui/NCModemInterface.py:79
+#: ../src/netconfpkg/gui/modemconfig.glade.h:6
+msgid "Modem Configuration"
+msgstr "Stillingar mótalds"
 
 #: ../src/netconfpkg/tui/NCTcpIp.py:95
 msgid "Use DHCP"
@@ -336,108 +156,6 @@ msgstr "Vistfang sjálfgefinnar gáttar"
 msgid "Devernet Configuration"
 msgstr "Stillingar Devernet"
 
-#: ../src/netconfpkg/NCHardwareList.py:442
-#: ../src/netconfpkg/NCHardwareList.py:562
-#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
-#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
-#: ../src/netconfpkg/NC_functions.py:388
-#: ../src/netconfpkg/gui/ethernethardware.py:137
-#: ../src/netconfpkg/gui/tokenringhardware.py:111
-#: ../src/netconfpkg/NCDeviceList.py:72 ../src/netconfpkg/NCDevice.py:231
-#: ../src/netconfpkg/NCBackendHal.py:50
-msgid "Unknown"
-msgstr "Óþekkt"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:77 ../src/netconfpkg/NCDevice.py:441
-msgid "Network device activating..."
-msgstr "Netkort að fara í gang..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:78 ../src/netconfpkg/NCDevice.py:442
-#, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "Ræsi netkortið %s. Vinsamlegast bíðið..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:80 ../src/netconfpkg/NCDevice.py:444
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Get ekki gangsett netkortið %s!\n"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
-#: ../src/netconfpkg/NCDevice.py:461
-msgid "Network device deactivating..."
-msgstr "Netkort að fara niður..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
-#: ../src/netconfpkg/NCDevice.py:462
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "Slekk á netkortinu %s. Vinsamlegast bíðið..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
-#: ../src/netconfpkg/NCDevice.py:464
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Get ekki slökkt á netkortinu %s!\n"
-
-#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
-msgid "Exception Occurred"
-msgstr "Villa kom upp"
-
-#: ../src/netconfpkg/exception.py:59
-msgid "_Debug"
-msgstr "_Aflúsa"
-
-#: ../src/netconfpkg/exception.py:60
-msgid "_Save to file"
-msgstr "_Vista í skrá"
-
-#: ../src/netconfpkg/exception.py:75
-#, python-format
-msgid ""
-"An unhandled exception has occurred.  This is most likely a bug.  Please "
-"save the crash dump and file a detailed bug report against %s at https://"
-"bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
-"Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
-"villutilkynningu á %s á https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconfpkg/exception.py:277
-#, python-format
-msgid "Error: %s: %s"
-msgstr "Villa: %s: %s"
-
-#: ../src/netconfpkg/exception.py:280
-#, python-format
-msgid ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
-msgstr ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
-
-#: ../src/netconfpkg/exception.py:354
-msgid "Specify a file to save the dump"
-msgstr "Veldu skrá vil að vista dumpið"
-
-#: ../src/netconfpkg/exception.py:373
-#, python-format
-msgid "Failed to write to file %s."
-msgstr "Gat ekki skrifað í skrána %s."
-
-#: ../src/netconfpkg/exception.py:377
-#, python-format
-msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
-msgstr ""
-"Staða forritsins hefur verið skrifuð í\n"
-"skrána '%s'."
-
 #: ../src/netconfpkg/NCProfileList.py:205
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
@@ -451,116 +169,6 @@ msgstr ""
 "Vinsamlegast virkjaðu aðra tækjagerð eða \n"
 "gangsettu einungis eitt af þeim."
 
-#: ../src/netconfpkg/NC_functions.py:94
-msgid "Common"
-msgstr "Almennt"
-
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:139
-msgid "Active"
-msgstr "Virkt"
-
-#: ../src/netconfpkg/NC_functions.py:140
-msgid "Inactive"
-msgstr "Óvirkt"
-
-#: ../src/netconfpkg/NC_functions.py:147
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "Hardware (CRTSCTS)"
-msgstr "Vélbúnaðar (CRTSCTS)"
-
-#: ../src/netconfpkg/NC_functions.py:148
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "Software (XON/XOFF)"
-msgstr "Hugbúnaður (XON/XOFF)"
-
-#: ../src/netconfpkg/NC_functions.py:149 ../src/netconfpkg/NCDialup.py:36
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/gui/modemconfig.glade.h:8
-msgid "None"
-msgstr "Engin"
-
-#: ../src/netconfpkg/NC_functions.py:227
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr ""
-"viltu að eftirfarandi pakkar sem nauðsynlegir eru fyrir þessa vél verði "
-"settir inn?"
-
-#: ../src/netconfpkg/NC_functions.py:240
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr ""
-"Þú þarft að setja inn eftirfarandi pakka sem nauðsynlegir eru fyrir þessa "
-"vél!"
-
-#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
-#, python-format
-msgid ""
-"Error removing\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"Villa við að fjarlægja\n"
-"%s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:796
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Villa við að afrita \n"
-"%s\n"
-"í %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:806
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Villa við að tengja \n"
-"%s\n"
-"í %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:816
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Villa við að endurnefna \n"
-"%s\n"
-"í %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:824
-#, python-format
-msgid ""
-"Error creating directory!\n"
-"%s"
-msgstr ""
-"Villa við að búa til möppu!\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:952
-#, python-format
-msgid "Linking %s to devices and putting it in profile %s."
-msgstr "Tengi %s í tækjalistann og bæti því í sniðmát %s."
-
 #: ../src/netconfpkg/NCDialup.py:32
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
 msgid "auto"
@@ -570,6 +178,12 @@ msgstr "sjálfvirkt"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
 msgid "manual"
 msgstr "handvirkt"
+
+#: ../src/netconfpkg/NCDialup.py:36 ../src/netconfpkg/NC_functions.py:149
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
+#: ../src/netconfpkg/gui/modemconfig.glade.h:8
+msgid "None"
+msgstr "Engin"
 
 #: ../src/netconfpkg/NCDialup.py:37
 msgid "Afghanistan"
@@ -864,377 +478,125 @@ msgstr "Serbía"
 msgid "Montenegro"
 msgstr "Montenegró"
 
-#: ../src/netconfpkg/NCHardware.py:21
-msgid "inactive"
-msgstr "óvirkt"
+#: ../src/netconfpkg/genClass.py:297 ../src/netconf-cmd.py:329
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "Villa við að þátta línu: %s"
 
-#. not found in last config and not in actual system
-#: ../src/netconfpkg/NCHardware.py:22
-msgid "system"
-msgstr "kerfi"
+#: ../src/netconfpkg/NCDevice.py:219
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr "%s, tækið var ekki gefið upp eða samheitið er ekki tala!"
 
-#. found in system
-#: ../src/netconfpkg/NCHardware.py:23
-msgid "configured"
-msgstr "stillt"
+#: ../src/netconfpkg/NCDevice.py:441 ../src/netconfpkg/plugins/NCDevIsdn.py:77
+msgid "Network device activating..."
+msgstr "Netkort að fara í gang..."
 
-#. found in config but not in system
-#: ../src/netconfpkg/NCHardware.py:24
-msgid "ok"
-msgstr "í lagi"
+#: ../src/netconfpkg/NCDevice.py:442 ../src/netconfpkg/plugins/NCDevIsdn.py:78
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "Ræsi netkortið %s. Vinsamlegast bíðið..."
 
-#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
-msgid "CTC Device"
-msgstr "CTC tæki"
+#: ../src/netconfpkg/NCDevice.py:444 ../src/netconfpkg/plugins/NCDevIsdn.py:80
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Get ekki gangsett netkortið %s!\n"
 
-#: ../src/netconfpkg/gui/ethernethardware.py:90
-msgid "Command failed: "
-msgstr "Skipunin brást: "
+#: ../src/netconfpkg/NCDevice.py:461
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
+msgid "Network device deactivating..."
+msgstr "Netkort að fara niður..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:91
-msgid "Output:\n"
-msgstr "Frálag:\n"
+#: ../src/netconfpkg/NCDevice.py:462
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "Slekk á netkortinu %s. Vinsamlegast bíðið..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:93
-msgid ""
-"The Ethernet card could not be initialized. Please verify your settings and "
-"try again."
-msgstr ""
-"Ekki tókst að ræsa netkortið. Vinsamlegast gakktu úr skugga um að "
-"stillingarnar séu réttar og reyndu aftur."
+#: ../src/netconfpkg/NCDevice.py:464
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Get ekki slökkt á netkortinu %s!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:87
+#: ../src/netconfpkg/NCCipe.py:152
 #, python-format
 msgid ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
 msgstr ""
-"Gat ekki fundið skrána '%s'.\n"
-"Vinsamlega farðu yfir uppsetninguna!\n"
-"Keyrðu: 'rpm -V system-config-network'\n"
+"Möppuna %s vantar!\n"
+"Hún verður búin til núna.\n"
+"Þú ættir að setja inn cipe rpm pakkann!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:96
+#: ../src/netconfpkg/NCCipe.py:156
 #, python-format
 msgid ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Could not create\n"
+"directory %s!"
 msgstr ""
-"Gat ekki lesið skrána '%s'.\n"
-"Vinsamlega farðu yfir uppsetninguna!\n"
-"Keyrðu: 'rpm -V system-config-network'\n"
+"Gat ekki búið til\n"
+"möppuna %s!"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:586
+#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
+msgid "Exception Occurred"
+msgstr "Villa kom upp"
+
+#: ../src/netconfpkg/exception.py:59
+msgid "_Debug"
+msgstr "_Aflúsa"
+
+#: ../src/netconfpkg/exception.py:60
+msgid "_Save to file"
+msgstr "_Vista í skrá"
+
+#: ../src/netconfpkg/exception.py:75
 #, python-format
 msgid ""
-"Failed to run:\n"
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
+"Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
+"villutilkynningu á %s á https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconfpkg/exception.py:277
+#, python-format
+msgid "Error: %s: %s"
+msgstr "Villa: %s: %s"
+
+#: ../src/netconfpkg/exception.py:280
+#, python-format
+msgid ""
+"%s\n"
+"\n"
+"%s:\n"
 "%s"
 msgstr ""
-"Gat ekki keyrt:\n"
+"%s\n"
+"\n"
+"%s:\n"
 "%s"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:589
-msgid "Succeeded. Please read the output."
-msgstr "Tókst. Vinsamlegast lestu frálagið."
+#: ../src/netconfpkg/exception.py:354
+msgid "Specify a file to save the dump"
+msgstr "Veldu skrá vil að vista dumpið"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
-msgid "xDSL connection"
-msgstr "xDSL tenging"
+#: ../src/netconfpkg/exception.py:373
+#, python-format
+msgid "Failed to write to file %s."
+msgstr "Gat ekki skrifað í skrána %s."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
-msgid ""
-"Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber "
-"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
-"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
-"uploads at the same speed), and several others.  These types of connections "
-"are common in the United States, and are gaining acceptance elsewhere.  "
-"Speeds vary according to the technology used, but generally range from "
-"144kbps to 1.0Mbps."
-msgstr ""
-"Búa til xDSL tengingu. Þetta er tenging sem notar eina af mörgum tegundum af "
-"breiðbandstengingum sem eru þekktar sem \"Digital Subscriber Lines\".Þessi "
-"listi inniheldur meðal annars ADSL (þú ert fljótari að sækja en að senda frá "
-"þér), IDSL (yfir ISDN línu til að ná meiri vegalengd), SDSL Jafn fljótt að "
-"sækja eða senda) og margar aðrar."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
-#: ../src/netconfpkg/gui/TokenRingInterface.py:197
-#: ../src/netconfpkg/gui/WirelessInterface.py:317
-#: ../src/netconfpkg/gui/CipeInterface.py:137
-#: ../src/netconfpkg/gui/editipsec.py:285
-#: ../src/netconfpkg/gui/DialupDruid.py:223
-#: ../src/netconfpkg/gui/EthernetInterface.py:210
-#: ../src/netconfpkg/gui/PTPInterface.py:200
-msgid "You have selected the following information:"
-msgstr "Þú hefur valið eftirfarandi upplýsingar:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
-msgid "Ethernet device:"
-msgstr "Netkort:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
-#: ../src/netconfpkg/gui/DialupDruid.py:226
-msgid "Provider name:"
-msgstr "Heiti þjónustuveitu:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
-#: ../src/netconfpkg/gui/DialupDruid.py:228
-msgid "Login name:"
-msgstr "Notandaheiti:"
-
-#: ../src/netconfpkg/gui/iucvconfig.py:39
-msgid "IUCV Device"
-msgstr "IUCV tæki"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:86
-msgid "ISDN connection"
-msgstr "ISDN tenging"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:92
-msgid ""
-"Create a new ISDN connection. This is a connection that uses an Integrated "
-"Services Digital Network line to dial into to your Internet Service "
-"Provider. This type of technology requires a special phone line to be "
-"installed by your telephone company. It also requires a device known as a "
-"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
-"type of connection is popular in Europe and several other technologically "
-"advanced regions.  It is available but uncommon in the USA.  Speeds range "
-"from 64kbps to 128kbps."
-msgstr ""
-"Búa til nýja ISDN tengingu. ISDN er skammstöfun sem stendur fyrir "
-"\"Integrated Services Digital Network\" og er tækni sem nýtist til að "
-"hringja inn til internet þjónustuveitu.  Þessi tækni krefst sérstakrar "
-"símalínu og tækis sem kallast \"Terminal Adapter(TA)\" til sem myndar enda "
-"tengingarinnar frá þjónustuveitunni. Hraðarnir yfir ISDN eru á bilinu 64kbps "
-"til 128kbps. Þessi þjónusta er algeng í evrópu en ekki í Bandaríkjunum."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:111
-msgid "Token Ring connection"
-msgstr "Tókanetstenging"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:117
-msgid "Create a new Token Ring connection."
-msgstr "Búa til nýja tókanetstengingu"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:179
-msgid "Other Tokenring Card"
-msgstr "Önnur tókanetkort"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:198
-#: ../src/netconfpkg/gui/WirelessInterface.py:318
-#: ../src/netconfpkg/gui/CipeInterface.py:138
-#: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/PTPInterface.py:201
-msgid "Device:"
-msgstr "Tæki:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
-#: ../src/netconfpkg/gui/WirelessInterface.py:329
-#: ../src/netconfpkg/gui/EthernetInterface.py:222
-#: ../src/netconfpkg/gui/PTPInterface.py:211
-#: ../src/netconfpkg/gui/edithosts.glade.h:2
-msgid "Address:"
-msgstr "Vistfang:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:210
-#: ../src/netconfpkg/gui/WirelessInterface.py:330
-#: ../src/netconfpkg/gui/EthernetInterface.py:223
-msgid "Subnet mask:"
-msgstr "Netmöskvi:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
-#: ../src/netconfpkg/gui/WirelessInterface.py:331
-#: ../src/netconfpkg/gui/EthernetInterface.py:224
-msgid "Default gateway address:"
-msgstr "Vistfang sjálfgefinnar gáttar:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
-#: ../src/netconfpkg/gui/WirelessInterface.py:333
-#: ../src/netconfpkg/gui/EthernetInterface.py:226
-msgid "Automatically obtain IP address settings with:"
-msgstr "Sæja IP stillingar sjálfvirkt með:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:34
-#: ../src/netconfpkg/gui/WirelessInterface.py:143
-#: ../src/netconfpkg/gui/WirelessInterface.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/wirelessconfig.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:95
-#: ../src/netconfpkg/gui/wirelessconfig.py:164
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
-msgid "Auto"
-msgstr "Sjálfvirkt"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:35
-#: ../src/netconfpkg/gui/wirelessconfig.py:38
-msgid "Ad-Hoc"
-msgstr "Ad-Hoc"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:36
-#: ../src/netconfpkg/gui/wirelessconfig.py:39
-msgid "Managed"
-msgstr "Stýrt"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:40
-msgid "Master"
-msgstr "Meistari"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:152
-msgid "Wireless connection"
-msgstr "Þráðlausar tengingar"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:158
-msgid "Create a new wireless connection."
-msgstr "Búa til nýja þráðlausa tengingu."
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
-msgid "BitRate"
-msgstr "Bitahraði"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:297
-msgid "Other Wireless Card"
-msgstr "Önnur þráðlaus netkort"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:336
-msgid "Mode:"
-msgstr "Hamur:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:337
-msgid "ESSID (network ID):"
-msgstr "ESSID (Netnúmer):"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:339
-msgid "Automatic"
-msgstr "Sjálfvirkt"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:343
-msgid "Channel:"
-msgstr "Rás:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:344
-msgid "Transmit rate:"
-msgstr "Sendingarhraði:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:345
-msgid "Key: "
-msgstr "Lykill: "
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:351
-msgid "encryption disabled"
-msgstr "dulritun óvirk"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#: ../src/netconfpkg/exception.py:377
 #, python-format
 msgid ""
-"Command failed: %s\n"
-"\n"
-"Output:\n"
-"%s\n"
+"The application's state has been successfully\n"
+"written to the file '%s'."
 msgstr ""
-"Skipunin brást: %s\n"
-"\n"
-"Frálag:\n"
-"%s\n"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:67
-msgid ""
-"The Token Ring card could not be initialized. Please verify your settings "
-"and try again."
-msgstr ""
-"Ekki tókst að gangsetja tókanetskortið. Vinsamlegast gakktu úr skugga um að "
-"stillingar séu réttar og reyndu aftur."
-
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
-#, python-format
-msgid ""
-"Nickname %s is already in use!\n"
-"Please choose another one.\n"
-msgstr ""
-"Gænulafnið %s er þegar í notkun!\n"
-"Vinsamlegast veldu annað.\n"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:78
-msgid "Modem connection"
-msgstr "Mótaldstenging"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:84
-msgid ""
-"Create a new Modem connection.  This is a connection that uses a serial "
-"analog modem to dial into to your Internet Service Provider. These modems "
-"use sound over a normal copper telephone line to transmit data.  These types "
-"of connections are available just about anywhere in the world where there is "
-"a phone system."
-msgstr ""
-"Búa til nýja mótaldstengingu. Mótaldstenging notar mótald sem er tengt á "
-"raðtengi tölvunnar til að hringja inn til internet þjónustuveitu. Módöldin "
-"nota hljóð yfir venjulegar kopar símalínur til að senda gögn.Þessar "
-"tengingar eru til staðar um heim allann þar sem símkerfi er til staðar."
-
-#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
-#: ../src/netconfpkg/gui/ModemInterface.py:113
-msgid "Modem probing..."
-msgstr "Leita að mótaldi..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:117
-msgid "Probing for Modems, please wait..."
-msgstr "Leita að módöldum. Vinsamlegast bíðið..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:132
-msgid "No modem was found on your system."
-msgstr "Engin módöld fundust í vélinni þinni."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:161
-#: ../src/netconfpkg/gui/modemconfig.py:109
-msgid "Generic Modem"
-msgstr "Almennt mótald"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:173
-#: ../src/netconfpkg/gui/modemconfig.py:136
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
-#: ../src/netconfpkg/gui/modemconfig.glade.h:9
-msgid "Off"
-msgstr "Af"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:175
-#: ../src/netconfpkg/gui/modemconfig.py:138
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
-#: ../src/netconfpkg/gui/modemconfig.glade.h:4
-msgid "Low"
-msgstr "Lágt"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:177
-#: ../src/netconfpkg/gui/modemconfig.py:140
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
-#: ../src/netconfpkg/gui/modemconfig.glade.h:5
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
-msgid "Medium"
-msgstr "Miðlungs"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:179
-#: ../src/netconfpkg/gui/modemconfig.py:142
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
-#: ../src/netconfpkg/gui/modemconfig.glade.h:3
-msgid "High"
-msgstr "Hátt"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:181
-#: ../src/netconfpkg/gui/modemconfig.py:144
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
-#: ../src/netconfpkg/gui/modemconfig.glade.h:11
-msgid "Very High"
-msgstr "Mjög hátt"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:46
-msgid "IUCV connection"
-msgstr "IUCV tenging"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:52
-msgid "Create a new IUCV connection."
-msgstr "Búa til nýja IUCV tengingu."
+"Staða forritsins hefur verið skrifuð í\n"
+"skrána '%s'."
 
 #: ../src/netconfpkg/gui/maindialog.py:275
 msgid "Loading configuration..."
@@ -1422,9 +784,34 @@ msgstr "Viltu virkilega eyða \"%s\"?"
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Viltu virkilega eyða öllum tækjum sem notuðu \"%s\"?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1641
+#: ../src/netconfpkg/gui/maindialog.py:1657 ../src/neat-control.py:146
+#: ../src/neat-control.py:163 ../src/netconf-cmd.py:98
+msgid "Copyright (c) 2001-2005 Red Hat, Inc."
+msgstr "Höfundarréttur (c) 2001-2005 Red Hat, Inc."
+
+#: ../src/netconfpkg/gui/maindialog.py:1642 ../src/neat-control.py:147
+#: ../src/netconf-cmd.py:99
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Þessum hugbúnaði er dreift samkvæmt skilmálum GPL leyfinsins. Vinsamlegast "
+"tilkynnið villur á villuvef Red Hat: http://bugzilla.redhat.com/"
+
 #: ../src/netconfpkg/gui/maindialog.py:1660
 msgid "translator_credits"
 msgstr "Richard Allen <ra@ra.is>, 2007."
+
+#: ../src/netconfpkg/gui/maindialog.py:1661 ../src/neat-control.py:170
+msgid ""
+"This software is distributed under the GPL. \n"
+"Please Report bugs to Red Hat's Bug Tracking \n"
+"System: http://bugzilla.redhat.com/"
+msgstr ""
+"Þessum hugbúnaði er dreift samkvæmt skilmálum GPL leyfinsins. \n"
+"Vinsamlegast tilkynnið villur á villuvef Red Hat: \n"
+"http://bugzilla.redhat.com/"
 
 #: ../src/netconfpkg/gui/maindialog.py:1739
 #, python-format
@@ -1435,6 +822,216 @@ msgstr "Til að virkja IPsec tenginguna %s þarf að vista breytingunum."
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "Til að slökkva á IPsec tengingunni %s þarf að vista breytingunum."
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:37
+#: ../src/netconfpkg/gui/wirelessconfig.py:95
+#: ../src/netconfpkg/gui/wirelessconfig.py:164
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/WirelessInterface.py:34
+#: ../src/netconfpkg/gui/WirelessInterface.py:143
+#: ../src/netconfpkg/gui/WirelessInterface.py:197
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Auto"
+msgstr "Sjálfvirkt"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:38
+#: ../src/netconfpkg/gui/WirelessInterface.py:35
+msgid "Ad-Hoc"
+msgstr "Ad-Hoc"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:39
+#: ../src/netconfpkg/gui/WirelessInterface.py:36
+msgid "Managed"
+msgstr "Stýrt"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:40
+#: ../src/netconfpkg/gui/WirelessInterface.py:37
+msgid "Master"
+msgstr "Meistari"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:87
+#, python-format
+msgid ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Gat ekki fundið skrána '%s'.\n"
+"Vinsamlega farðu yfir uppsetninguna!\n"
+"Keyrðu: 'rpm -V system-config-network'\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Gat ekki lesið skrána '%s'.\n"
+"Vinsamlega farðu yfir uppsetninguna!\n"
+"Keyrðu: 'rpm -V system-config-network'\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:586
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"Gat ekki keyrt:\n"
+"%s"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:589
+msgid "Succeeded. Please read the output."
+msgstr "Tókst. Vinsamlegast lestu frálagið."
+
+#: ../src/netconfpkg/gui/DialupDruid.py:223
+#: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/EthernetInterface.py:210
+#: ../src/netconfpkg/gui/CipeInterface.py:137
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/TokenRingInterface.py:197
+#: ../src/netconfpkg/gui/WirelessInterface.py:317
+#: ../src/netconfpkg/gui/PTPInterface.py:200
+msgid "You have selected the following information:"
+msgstr "Þú hefur valið eftirfarandi upplýsingar:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Vélbúnaður:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:226
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+msgid "Provider name:"
+msgstr "Heiti þjónustuveitu:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:228
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+msgid "Login name:"
+msgstr "Notandaheiti:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Símanúmer:"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "ISDN tenging"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:92
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Búa til nýja ISDN tengingu. ISDN er skammstöfun sem stendur fyrir "
+"\"Integrated Services Digital Network\" og er tækni sem nýtist til að "
+"hringja inn til internet þjónustuveitu.  Þessi tækni krefst sérstakrar "
+"símalínu og tækis sem kallast \"Terminal Adapter(TA)\" til sem myndar enda "
+"tengingarinnar frá þjónustuveitunni. Hraðarnir yfir ISDN eru á bilinu 64kbps "
+"til 128kbps. Þessi þjónusta er algeng í evrópu en ekki í Bandaríkjunum."
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#, python-format
+msgid ""
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
+msgstr ""
+"Skipunin brást: %s\n"
+"\n"
+"Frálag:\n"
+"%s\n"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:67
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr ""
+"Ekki tókst að gangsetja tókanetskortið. Vinsamlegast gakktu úr skugga um að "
+"stillingar séu réttar og reyndu aftur."
+
+#: ../src/netconfpkg/gui/editipsec.py:217
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr "Vinsamlega sláðu inn öryggistöluyfirlit milli 256 og 4294967295."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
+msgid "%s connection"
+msgstr "%s tenging"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
+msgid "Create a new %s connection."
+msgstr "Búa til nýja %s tengingu."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:95
+msgid "This wizard still has to be written."
+msgstr "Það á enn eftir að búa til þennan álf."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:96
+msgid "Press Finish to get the standard configuration dialog."
+msgstr "Veldu ljúka til að fara í staðlaðann uppsetningarglugga."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:97
+msgid "Then, at first, enter the nickname for the device."
+msgstr "Sláðu þá inn gælunafn fyrir tækið."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:134
+msgid "This device can not be edited with this tool!"
+msgstr "Það er ekki hægt að breyta þessu tæki með þessu tóli!"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:116
+msgid "Ethernet connection"
+msgstr "Staðarnetstenging"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:122
+msgid "Create a new ethernet connection."
+msgstr "Búa til nýja staðarnetstengingu."
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:191
+msgid "Other Ethernet Card"
+msgstr "Annað netkort"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:211
+#: ../src/netconfpkg/gui/CipeInterface.py:138
+#: ../src/netconfpkg/gui/TokenRingInterface.py:198
+#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/PTPInterface.py:201
+msgid "Device:"
+msgstr "Tæki:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:222
+#: ../src/netconfpkg/gui/TokenRingInterface.py:209
+#: ../src/netconfpkg/gui/WirelessInterface.py:329
+#: ../src/netconfpkg/gui/PTPInterface.py:211
+#: ../src/netconfpkg/gui/edithosts.glade.h:2
+msgid "Address:"
+msgstr "Vistfang:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:210
+#: ../src/netconfpkg/gui/WirelessInterface.py:330
+msgid "Subnet mask:"
+msgstr "Netmöskvi:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:224
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: ../src/netconfpkg/gui/WirelessInterface.py:331
+msgid "Default gateway address:"
+msgstr "Vistfang sjálfgefinnar gáttar:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:226
+#: ../src/netconfpkg/gui/TokenRingInterface.py:213
+#: ../src/netconfpkg/gui/WirelessInterface.py:333
+msgid "Automatically obtain IP address settings with:"
+msgstr "Sæja IP stillingar sjálfvirkt með:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:89
 msgid "CIPE (VPN) connection"
@@ -1511,10 +1108,198 @@ msgstr "Leynilykill:"
 msgid "You must enter a secret key or generate one"
 msgstr "Þú verður að slá inn leynilykil eða búa einn til."
 
-#: ../src/netconfpkg/gui/editipsec.py:217
+#: ../src/netconfpkg/gui/ethernethardware.py:90
+msgid "Command failed: "
+msgstr "Skipunin brást: "
+
+#: ../src/netconfpkg/gui/ethernethardware.py:91
+msgid "Output:\n"
+msgstr "Frálag:\n"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:93
 msgid ""
-"Please enter a unique security parameter index between 256 and 4294967295."
-msgstr "Vinsamlega sláðu inn öryggistöluyfirlit milli 256 og 4294967295."
+"The Ethernet card could not be initialized. Please verify your settings and "
+"try again."
+msgstr ""
+"Ekki tókst að ræsa netkortið. Vinsamlegast gakktu úr skugga um að "
+"stillingarnar séu réttar og reyndu aftur."
+
+#: ../src/netconfpkg/gui/iucvconfig.py:39
+msgid "IUCV Device"
+msgstr "IUCV tæki"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:46
+msgid "IUCV connection"
+msgstr "IUCV tenging"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:52
+msgid "Create a new IUCV connection."
+msgstr "Búa til nýja IUCV tengingu."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:78
+msgid "Modem connection"
+msgstr "Mótaldstenging"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:84
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Búa til nýja mótaldstengingu. Mótaldstenging notar mótald sem er tengt á "
+"raðtengi tölvunnar til að hringja inn til internet þjónustuveitu. Módöldin "
+"nota hljóð yfir venjulegar kopar símalínur til að senda gögn.Þessar "
+"tengingar eru til staðar um heim allann þar sem símkerfi er til staðar."
+
+#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
+#: ../src/netconfpkg/gui/ModemInterface.py:113
+msgid "Modem probing..."
+msgstr "Leita að mótaldi..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:117
+msgid "Probing for Modems, please wait..."
+msgstr "Leita að módöldum. Vinsamlegast bíðið..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:132
+msgid "No modem was found on your system."
+msgstr "Engin módöld fundust í vélinni þinni."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:161
+#: ../src/netconfpkg/gui/modemconfig.py:109
+msgid "Generic Modem"
+msgstr "Almennt mótald"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:173
+#: ../src/netconfpkg/gui/modemconfig.py:136
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
+#: ../src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "Off"
+msgstr "Af"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:175
+#: ../src/netconfpkg/gui/modemconfig.py:138
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
+#: ../src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "Low"
+msgstr "Lágt"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:177
+#: ../src/netconfpkg/gui/modemconfig.py:140
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: ../src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "Medium"
+msgstr "Miðlungs"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:179
+#: ../src/netconfpkg/gui/modemconfig.py:142
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
+#: ../src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "High"
+msgstr "Hátt"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:181
+#: ../src/netconfpkg/gui/modemconfig.py:144
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
+#: ../src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "Very High"
+msgstr "Mjög hátt"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
+msgid "xDSL connection"
+msgstr "xDSL tenging"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"Búa til xDSL tengingu. Þetta er tenging sem notar eina af mörgum tegundum af "
+"breiðbandstengingum sem eru þekktar sem \"Digital Subscriber Lines\".Þessi "
+"listi inniheldur meðal annars ADSL (þú ert fljótari að sækja en að senda frá "
+"þér), IDSL (yfir ISDN línu til að ná meiri vegalengd), SDSL Jafn fljótt að "
+"sækja eða senda) og margar aðrar."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
+msgid "Ethernet device:"
+msgstr "Netkort:"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:111
+msgid "Token Ring connection"
+msgstr "Tókanetstenging"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:117
+msgid "Create a new Token Ring connection."
+msgstr "Búa til nýja tókanetstengingu"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:179
+msgid "Other Tokenring Card"
+msgstr "Önnur tókanetkort"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "Þráðlausar tengingar"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "Búa til nýja þráðlausa tengingu."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:233
+msgid "BitRate"
+msgstr "Bitahraði"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:297
+msgid "Other Wireless Card"
+msgstr "Önnur þráðlaus netkort"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:336
+msgid "Mode:"
+msgstr "Hamur:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:337
+msgid "ESSID (network ID):"
+msgstr "ESSID (Netnúmer):"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:339
+msgid "Automatic"
+msgstr "Sjálfvirkt"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:343
+msgid "Channel:"
+msgstr "Rás:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:344
+msgid "Transmit rate:"
+msgstr "Sendingarhraði:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:345
+msgid "Key: "
+msgstr "Lykill: "
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:351
+msgid "encryption disabled"
+msgstr "dulritun óvirk"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
+msgid "CTC connection"
+msgstr "CTC tenging"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
+msgid "Create a new CTC connection."
+msgstr "Búa til nýja CTC tengingu."
+
+#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
+msgid "CTC Device"
+msgstr "CTC tæki"
 
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
 msgid "IP address of tunnel device: "
@@ -1540,33 +1325,18 @@ msgstr "Sýndarvistfang: "
 msgid "Secret key: "
 msgstr "Leynilykill: "
 
-#: ../src/netconfpkg/gui/DialupDruid.py:225
-msgid "Hardware:"
-msgstr "Vélbúnaður:"
+#: ../src/netconfpkg/gui/PTPInterface.py:212
+msgid "Point to Point (IP):"
+msgstr "Stað í stað (IP):"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:229
-msgid "Phone number:"
-msgstr "Símanúmer:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:116
-msgid "Ethernet connection"
-msgstr "Staðarnetstenging"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:122
-msgid "Create a new ethernet connection."
-msgstr "Búa til nýja staðarnetstengingu."
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:191
-msgid "Other Ethernet Card"
-msgstr "Annað netkort"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
-msgid "CTC connection"
-msgstr "CTC tenging"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
-msgid "Create a new CTC connection."
-msgstr "Búa til nýja CTC tengingu."
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"Gænulafnið %s er þegar í notkun!\n"
+"Vinsamlegast veldu annað.\n"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:237
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
@@ -1628,35 +1398,109 @@ msgstr "ekkert"
 msgid "Modem Dialup Configuration"
 msgstr "Stillingar mótaldasambanda"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:82
+#: ../src/netconfpkg/NC_functions.py:94
+msgid "Common"
+msgstr "Almennt"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:139
+msgid "Active"
+msgstr "Virkt"
+
+#: ../src/netconfpkg/NC_functions.py:140
+msgid "Inactive"
+msgstr "Óvirkt"
+
+#: ../src/netconfpkg/NC_functions.py:147
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "Hardware (CRTSCTS)"
+msgstr "Vélbúnaðar (CRTSCTS)"
+
+#: ../src/netconfpkg/NC_functions.py:148
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "Software (XON/XOFF)"
+msgstr "Hugbúnaður (XON/XOFF)"
+
+#: ../src/netconfpkg/NC_functions.py:227
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr ""
+"viltu að eftirfarandi pakkar sem nauðsynlegir eru fyrir þessa vél verði "
+"settir inn?"
+
+#: ../src/netconfpkg/NC_functions.py:240
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr ""
+"Þú þarft að setja inn eftirfarandi pakka sem nauðsynlegir eru fyrir þessa "
+"vél!"
+
+#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
 #, python-format
-msgid "%s connection"
-msgstr "%s tenging"
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"Villa við að fjarlægja\n"
+"%s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:85
+#: ../src/netconfpkg/NC_functions.py:805
 #, python-format
-msgid "Create a new %s connection."
-msgstr "Búa til nýja %s tengingu."
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Villa við að afrita \n"
+"%s\n"
+"í %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:95
-msgid "This wizard still has to be written."
-msgstr "Það á enn eftir að búa til þennan álf."
+#: ../src/netconfpkg/NC_functions.py:815
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Villa við að tengja \n"
+"%s\n"
+"í %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:96
-msgid "Press Finish to get the standard configuration dialog."
-msgstr "Veldu ljúka til að fara í staðlaðann uppsetningarglugga."
+#: ../src/netconfpkg/NC_functions.py:825
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Villa við að endurnefna \n"
+"%s\n"
+"í %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:97
-msgid "Then, at first, enter the nickname for the device."
-msgstr "Sláðu þá inn gælunafn fyrir tækið."
+#: ../src/netconfpkg/NC_functions.py:833
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"Villa við að búa til möppu!\n"
+"%s"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:134
-msgid "This device can not be edited with this tool!"
-msgstr "Það er ekki hægt að breyta þessu tæki með þessu tóli!"
-
-#: ../src/netconfpkg/gui/PTPInterface.py:212
-msgid "Point to Point (IP):"
-msgstr "Stað í stað (IP):"
+#: ../src/netconfpkg/NC_functions.py:961
+#, python-format
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "Tengi %s í tækjalistann og bæti því í sniðmát %s."
 
 #: ../src/netconfpkg/NCIPsec.py:186
 msgid "IPsec activating..."
@@ -1686,39 +1530,6 @@ msgstr "Slekk á IPsec tengingunni %s. Vinsamlegast bíðið..."
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Get ekki slökkt á IPsec tengingunni %s!\n"
 
-#: ../src/netconfpkg/NCCipe.py:152
-#, python-format
-msgid ""
-"Directory %s is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
-msgstr ""
-"Möppuna %s vantar!\n"
-"Hún verður búin til núna.\n"
-"Þú ættir að setja inn cipe rpm pakkann!\n"
-
-#: ../src/netconfpkg/NCCipe.py:156
-#, python-format
-msgid ""
-"Could not create\n"
-"directory %s!"
-msgstr ""
-"Gat ekki búið til\n"
-"möppuna %s!"
-
-#: ../src/netconfpkg/NCDeviceList.py:117
-msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr "Breytti eftirfarandi gælunöfnum vegna 'initscripts':\n"
-
-#: ../src/netconfpkg/NCDeviceList.py:120
-msgid "Nicknames changed"
-msgstr "Gælunafni breytt"
-
-#: ../src/netconfpkg/NCDevice.py:219
-#, python-format
-msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, tækið var ekki gefið upp eða samheitið er ekki tala!"
-
 #: ../src/netconf.py:55
 #, python-format
 msgid "Error: %s, %s!"
@@ -1727,6 +1538,25 @@ msgstr "Villa: %s, %s!"
 #: ../src/netconf.py:57
 msgid "Starting text version"
 msgstr "Ræsi í textaham"
+
+#: ../src/netconf.py:72 ../src/neat-control.py:50
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr "VILLA: Gat ekki ræst myndræna umhverfið. "
+
+#: ../src/netconf.py:73 ../src/neat-control.py:51
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+"Líklegasta orsök þessarar villu er sú að myndræna umhverfið var ekki "
+"keyrandi. "
+
+#: ../src/netconf.py:74 ../src/neat-control.py:52
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+"Vinsamlegast gangsettu gluggakerfið eða stilltu DISPLAY umhverfisbreytuna.\n"
 
 #: ../src/netconf.py:116
 msgid "Loading Network Configuration..."
@@ -1746,10 +1576,406 @@ msgstr ""
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Vinsamlegast keyrið system-config-network með rótarheimildum!\n"
 
-#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
-msgid "Create Ethernet Device"
-msgstr "Búa til nettæki"
+#: ../src/neat-control.py:223
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "Get ekki stillt netkortið %s"
+
+#: ../src/neat-control.py:243
+msgid "Switching Profiles"
+msgstr "Skipti um sniðmát"
+
+#: ../src/neat-control.py:244
+#, python-format
+msgid "Switching to profile %s"
+msgstr "Skipti í sniðmát %s"
+
+#: ../src/neat-control.py:245
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "Gat ekki skipt í sniðmátið %s."
+
+#. TBD
+#: ../src/neat-control.py:260
+msgid "To be rewritten!"
+msgstr "Verður endurrituð!"
+
+#: ../src/neat-control.py:367
+msgid " (active)"
+msgstr "(virkt)"
+
+#: ../src/netconf-tui.py:99
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against system-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
+"Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
+"villutilkynningu á system-config-network á https://bugzilla.redhat.com/"
+"bugzilla/"
+
+#: ../src/netconf-tui.py:127
+msgid "Loading configuration"
+msgstr "Les stillingar"
+
+#: ../src/netconf-tui.py:128
+msgid "Loading Device Configuration"
+msgstr "Les tækjastillingar"
+
+#: ../src/netconf-tui.py:134
+msgid "Loading Hardware Configuration"
+msgstr "Les stillingar vélbúnaðar"
+
+#: ../src/netconf-tui.py:138
+msgid "Loading Profile Configuration"
+msgstr "Les stillingar sniðmáta"
+
+#: ../src/netconf-tui.py:152
+msgid "Which device type do you want to add?"
+msgstr "Hvaða tækjagerð viltu bæta við?"
+
+#: ../src/netconf-tui.py:153
+msgid "Add"
+msgstr "Bæta við"
+
+#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
+msgid "Modem"
+msgstr "Mótald"
+
+#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
+msgid "ISDN"
+msgstr "ISDN"
+
+#: ../src/netconf-tui.py:203
+msgid "<New Device>"
+msgstr "<Nýtt tæki>"
+
+#: ../src/netconf-tui.py:204
+msgid "Select A Device"
+msgstr "Veldu tæki"
+
+#: ../src/netconf-tui.py:205
+msgid "Quit"
+msgstr "Hætta"
+
+#: ../src/netconf-tui.py:222
+msgid ""
+"system-config-network - network configuration tool\n"
+"\n"
+"Usage: system-config-network -v --verbose -d --debug"
+msgstr ""
+"system-config-network - netstillingatól\n"
+"\n"
+"Notkun: system-config-network -v --verbose -d --debug"
+
+#: ../src/netconf-cmd.py:62
+#, python-format
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+"Það kom upp óþekkt villa. Þetta  er líklegast galli í þessu forriti. "
+"Vinsamlegast afritaðu alla tilkynninguna og sendu svo ítarlega "
+"villutilkynningu á %s á https://bugzilla.redhat.com/bugzilla/\n"
+
+#: ../src/netconf-cmd.py:97
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr "%s - netstillingatól fyrir skipanalínuna"
+
+#: ../src/netconf-cmd.py:102
+#, python-format
+msgid "Usage: %s"
+msgstr "Notkun: %s"
+
+#: ../src/netconf-cmd.py:104
+msgid "switch / activate profile"
+msgstr "skipta um eða vvirkja sniðmát"
+
+#: ../src/netconf-cmd.py:106
+msgid "export / import hardware list"
+msgstr "flytja inn/út vélbúnaðarlistann"
+
+#: ../src/netconf-cmd.py:108
+msgid "export / import IPsec list"
+msgstr "flytja inn/út IPsec lista"
+
+#: ../src/netconf-cmd.py:110
+msgid "export / import device list (default)"
+msgstr "flytja inn/út tækjalistann (sjálfgefið)"
+
+#: ../src/netconf-cmd.py:112
+msgid "export / import profile list"
+msgstr "flytja inn/út lista sniðmáta"
+
+#: ../src/netconf-cmd.py:114
+msgid "set the root directory"
+msgstr "setja rótarmöppuna"
+
+#: ../src/netconf-cmd.py:116
+msgid "export list (default)"
+msgstr "flytja út (sjálfgefið)"
+
+#: ../src/netconf-cmd.py:117
+msgid "import list"
+msgstr "flytja inn lista"
+
+#: ../src/netconf-cmd.py:119
+msgid "clear existing list prior of importing"
+msgstr "hreinsa núverandi lista áður en flutt er inn"
+
+#: ../src/netconf-cmd.py:121
+msgid "import from file"
+msgstr "flytja inn úr skrá"
+
+#: ../src/netconf-cmd.py:264
+#, python-format
+msgid "Unknown option %s\n"
+msgstr "Óþekktur rofi %s\n"
+
+#: ../src/netconf-cmd.py:325
+#, python-format
+msgid "Unknown List %s\n"
+msgstr "Óþekktur listi %s\n"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+msgid "Allow all _users to enable and disable the device"
+msgstr "Leyfa öllum _notendum að virkja og slökkva á tækinu"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow dial on _demand"
+msgstr "Leyfa upphringingu þegar þörf _krefur"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Allow the link come up on demand."
+msgstr "Leyfa tengingunni að opnast þegar þess þarf."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Demand setting"
+msgstr "Hringja þegar þarf"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+msgid "Enable IPv_6 configuration for this interface"
+msgstr "Virkja IPv_6 stillingar þessa netkorts"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
+msgid "Enable synchronous PPP for the connection"
+msgstr "Nota samhæft PPP í þessari tengingu"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Sláðu inn 'Access Concentrator' heitið hafir þú fengið slíkt frá "
+"þjónustuveitunni þinni. Í flestum tilfellum má hafa þetta autt."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"Sláðu inn þjónustuheitið ef þess er þörf. Hafðu samband við þjónustuveituna "
+"þína ef þú veist það ekki.  Í flestum tilfellum má hafa þetta autt."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr ""
+"Sláðu inn tímann sem tengingin má vera aðgerðalaus áður en henni er lokað."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Sláðu inn notandanafnið sem þjónustuveitan þín gaf þér hér."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr "Sláðu inn heiti þessarar uppsetningar, oftast heiti þjónustuveitunnar."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"Sláðu inn lykilorð þessa notandanafns. Ef þú veist það ekki þarftu að hafa "
+"samband við þjónustuveituna þína."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Make this connection the default _route"
+msgstr "Gera þessa tengingu að _sjálfgefinni gátt"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Pass_word:"
+msgstr "Lykil_orð:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Restart if _connection dies"
+msgstr "Endurræsa _tenginguna ef hún slitnar"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+msgid "Use this form to enter your T-Online account data."
+msgstr "Notaðu þennan glugga til að slá inn T-Online upplýsingarnar þínar."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
+msgid "_AC-name:"
+msgstr "_AC-heiti:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+msgid "_Activate device when computer starts"
+msgstr "_Virkja tækið þegar vélin ræsir"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+msgid "_Activate device when parent device starts"
+msgstr "_Virkja tækið þegar aðaltækið ræsir"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Advanced"
+msgstr "_Frekari"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+msgid "_General"
+msgstr "_Almennt"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
+msgid "_Hardware Device"
+msgstr "_Vélbúnaðartæki"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Login name:"
+msgstr "_Notandnafn:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Maximum idle time:"
+msgstr "_Hámarks aðgerðaleysistími:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
+msgid "_Nickname:"
+msgstr "_Gælunafn:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
+msgid "_Provider"
+msgstr "þ_jónustuveita"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+msgid "_Provider name:"
+msgstr "_Heiti þjónustuveitu:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid "_Route"
+msgstr "_Rúta"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
+msgid "_Service-name:"
+msgstr "_Heiti þjónustuveitu:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
+msgid "_T-Online Account Setup"
+msgstr "Setja upp _T-Online tengingu"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
+msgid "_Use synchronous PPP"
+msgstr "_Nota samhæft PPP"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
+msgid "xDSL Configuration"
+msgstr "Stillingar xDSL"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Veldu vélbúnaðargerð"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "Vélbúnaðargerð:"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr "Vinsamlegast veldu tækið sem þú vilt búa til"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Tókanet"
 
 #: ../src/netconfpkg/gui/tonline.glade.h:1
 msgid "<b>T-Online account</b>"
@@ -1787,78 +2013,111 @@ msgstr "_Notandanúmer/forskeyti:"
 msgid "_Personal password:"
 msgstr "_Lykilorð:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
-msgid "<b>Configuration for your remote partner</b>"
-msgstr "<b>Stillingar fjartengdrar vélar</b>"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+msgid "<b>Account Type:</b>"
+msgstr "<b>Tegund notanda:</b>"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
-msgid "Configure Tunnel"
-msgstr "Stillingar gangna"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "Stilla DSL tengingu"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
-msgid "Create Cipe Connection"
-msgstr "Búa til Cipe tengingu"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "Búa til DSL tengingu"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
-msgid "Lo_cal virtual address:"
-msgstr "Stað_bundið sýndarvistfang:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Sláðu inn heiti þjónustuveitunnar."
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Nýtt netkort"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "Net_kort:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
-msgid "Remote _virtual address:"
-msgstr "Fjartengt _sýndarvistfang:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Normal"
+msgstr "Venjulegur"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
-msgid "Remote peer p_ort:"
-msgstr "Fjartengd _gátt:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid ""
+"Normal\n"
+"T-Online"
+msgstr ""
+"Venjulegur\n"
+"T-Online"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "Lykilorð (_staðfesta):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Veldu netkortið sem er tengt við DSL mótaldið."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "Veldu netkortið sem nota á með þessu notandanafni."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+msgid "T-Online"
+msgstr "_T-Online"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "Veldu tókanetstæki"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "_Adapter:"
+msgstr "_Netkort:"
+
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:3
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 msgid "_Device:"
 msgstr "_Tæki:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/editipsec.glade.h:37
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
-msgid "_Generate"
-msgstr "_Búa til"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+msgid "Configure Network Settings"
+msgstr "Stilla netkort og tengingar"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
-msgid "_Local port:"
-msgstr "_Staðbundin gátt:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "Búa til nettæki"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
-msgid "_Remote peer address:"
-msgstr "Vistfang _fjartengdrar vélar:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Netkort"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
-msgid "_Secret key:"
-msgstr "_Leynilykill:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+msgid "MTU:"
+msgstr "MTU:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
-msgid "_Tunnel through device:"
-msgstr "IP _Gangnatæki:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Vinsamlegast sláðu inn MTU (hámarks pakkastærð) þessa netkorts. á s390/s390x "
+"er þetta gildi sjálfgefið 1492"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
-msgid "_auto"
-msgstr "_sjálfvirkt"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Veldu netkort"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "Veldu netkortið sem þú vilt stilla:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:1
 msgid "<b>Phone number</b>"
@@ -1904,32 +2163,6 @@ msgstr ""
 msgid "Enter the area code needed to reach your internet provider."
 msgstr "Sláðu inn svæðisnúmerið sem þarf til að ná í þjónustuveituna."
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
-msgid "Enter the login name, that your ISP gave you here."
-msgstr "Sláðu inn notandanafnið sem þjónustuveitan þín gaf þér hér."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr "Sláðu inn heiti þessarar uppsetningar, oftast heiti þjónustuveitunnar."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
-msgid ""
-"Enter the password for your account. If you do not know it, please contact "
-"your ISP."
-msgstr ""
-"Sláðu inn lykilorð þessa notandanafns. Ef þú veist það ekki þarftu að hafa "
-"samband við þjónustuveituna þína."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:13
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
@@ -1949,16 +2182,15 @@ msgstr "Þjónustuveita"
 msgid "Manual IP Address Settings"
 msgstr "Handvirkar IP stillingar"
 
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+msgid "New Interface"
+msgstr "Nýtt netkort"
+
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:18
 msgid "PPP Settings"
 msgstr "Stillingar PPP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
-msgid "Pass_word:"
-msgstr "Lykil_orð:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:20
 msgid "Prefi_x:"
@@ -1978,25 +2210,12 @@ msgstr "Veldu þjónustuveitu"
 msgid "Statically set IP addresses:"
 msgstr "Fastsett IP vistföng:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-msgid "Use this form to enter your T-Online account data."
-msgstr "Notaðu þennan glugga til að slá inn T-Online upplýsingarnar þínar."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:25
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:7
-#: ../src/netconfpkg/gui/editadress.glade.h:2
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/editadress.glade.h:2
 msgid "_Address:"
 msgstr "_Vistfang:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
-msgid "_Login name:"
-msgstr "_Notandnafn:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:27
 msgid "_Phone number:"
@@ -2008,149 +2227,178 @@ msgstr "_Símanúmer:"
 msgid "_Subnet mask:"
 msgstr "_Netmöskvi:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
-msgid "_T-Online Account Setup"
-msgstr "Setja upp _T-Online tengingu"
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+msgid "Select Ethernet Adapter"
+msgstr "Veldu netkort"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
-msgid "Choose Hardware Type"
-msgstr "Veldu vélbúnaðargerð"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
-msgid "Hardware type:"
-msgstr "Vélbúnaðargerð:"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Tengitími:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type you want to create"
-msgstr "Vinsamlegast veldu tækið sem þú vilt búa til"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "hægrismelltu til að fá upp eiginleikana"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
-msgid "Token Ring"
-msgstr "Tókanet"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+msgid "MT_U:"
+msgstr "MT_U:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
-#: ../src/netconfpkg/gui/modemconfig.glade.h:1
-msgid "<b>Modem properties</b>"
-msgstr "<b>Stillingar mótalda</b>"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+msgid "_Point to Point (IP):"
+msgstr "_Stað í stað (IP):"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
-#: ../src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "Modem _volume:"
-msgstr "Hljóðstyrkur _mótalds:"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Tengist"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
-msgid "Select Modem"
-msgstr "Veldu mótald"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Aftengist"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
-#: ../src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "_Baud rate:"
-msgstr "_Sendingarhraði:"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+msgid "_Configure..."
+msgstr "_Stilla..."
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
-#: ../src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "_Flow control:"
-msgstr "_Flæðistjórn:"
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "Stillingar netkorts"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
-#: ../src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "_Modem device:"
-msgstr "_Mótaldstæki:"
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "Bíð eftir tengingu við"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
-#: ../src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "_Use touch tone dialing"
-msgstr "_Nota tónval"
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+msgid "Waiting..."
+msgstr "Bíð..."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
-msgid "Configure Network Settings"
-msgstr "Stilla netkort og tengingar"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "Configure Wireless Connection"
-msgstr "Stilla þráðlausar tengingar"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "<b>D channel protocol</b>"
+msgstr "<b>D rásar-samskiptamáti</b>"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "Create Wireless Device"
-msgstr "Búa til nýtt þráðlaust tæki"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+msgid "<b>Resources</b>"
+msgstr "<b>Auðlindir</b>"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-msgid "MTU:"
-msgstr "MTU:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro ISDN (EDSS1)"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-msgid "Network name (SSID):"
-msgstr "Heiti nets (SSID):"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "Stillingar ISDN korta"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "ISDN _adapters:"
+msgstr "ISDN _netkort:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+msgid "_IO:"
+msgstr "_IO:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+msgid "_MEM:"
+msgstr "_MEM:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
 msgid ""
-"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
 msgstr ""
-"Vinsamlegast sláðu inn MTU (hámarks pakkastærð) þessa netkorts. á s390/s390x "
-"er þetta gildi sjálfgefið 1492"
+"Hvert tæki þarf að vera tengt raunverulegu netkorti sem þú getur valið hér "
+"að neðan. Tækjasamheiti gerir þér kleyft að hafa mörg sýndartæki fyrir hvert "
+"raunverulegt netkort."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Select Wireless Device"
-msgstr "Veldu þráðlaust netkort"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Enable _Device Alias support"
+msgstr "Virkja _tækjasamheitastuðning"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
-msgid "Select the wireless card you want to configure:"
-msgstr "Veldu þráðlaust netkort til að stilla:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Ha_rdware address:"
+msgstr "_Vélbúnaðarvistfang:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-msgid ""
-"Used to manipulate encryption or scrambling keys and encryption mode. To set "
-"the current encryption key in hex digits enter the key with 0x prepended as "
-"0xXXXXXXXX."
-msgstr ""
-"Notað til að stýra dulritun eða brenglunarlyklum og dulritunarham. Til að "
-"setja lykil í hex tölum þarftu að hafa forskeytið 0x fyrir framan. Til dæmis "
-"0xXXXXXXXX."
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
+msgid "Token Ring Device"
+msgstr "Tókanetstæki"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "Þráðlaus netkort"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Alias:"
+msgstr "_Samheiti:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-msgid "_Auto"
-msgstr "_Sjálfvirkt"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Hardware device:"
+msgstr "_Vélbúnaðartæki:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-msgid "_Channel:"
-msgstr "_Rás:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Probe for Address"
+msgstr "_Leita að vistfangi"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-msgid "_Key (use 0x for hex):"
-msgstr "_Lykill (notaðu 0x fyrir hex):"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "_Use Hardware Address"
+msgstr "_Nota vélbúnaðarvistföng"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
-msgid "_Mode:"
-msgstr "_Hamur:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr0"
+msgstr "tr0"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
-msgid "_Specified:"
-msgstr "_Tiltekinn:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
+msgid "tr1"
+msgstr "tr1"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
-msgid "_Transmit rate:"
-msgstr "S_endingarhraði:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
+msgid "tr2"
+msgstr "tr2"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
+msgid "tr3"
+msgstr "tr3"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
+msgid "tr4"
+msgstr "tr4"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
+msgid "tr5"
+msgstr "tr5"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:1
 msgid "<b>Active profile</b>"
@@ -2215,11 +2463,6 @@ msgstr "Eftirfarandi netkort eru stillt í núverandi sniðmáti."
 msgid "_Activate"
 msgstr "_Virkja"
 
-#: ../src/netconfpkg/gui/neat-control.glade.h:18
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-msgid "_Configure..."
-msgstr "_Stilla..."
-
 #: ../src/netconfpkg/gui/neat-control.glade.h:19
 #: ../src/netconfpkg/gui/maindialog.glade.h:32
 msgid "_Deactivate"
@@ -2234,696 +2477,43 @@ msgstr "_Upplýsingar"
 msgid "_Monitor"
 msgstr "_Eftirlit"
 
-#: ../src/netconfpkg/gui/editipsec.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:2
-msgid "A_uthentication key:"
-msgstr "_Auðkenningarlykill:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:3
-msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr "Sjálfvirk dulritum með IKA (racoon)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:4
-msgid "Ge_nerate"
-msgstr "_Búa til"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:5
-msgid "Host to Host encryption"
-msgstr "Vél í vél dulritun"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:6
-msgid "IPsec"
-msgstr "IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:7
-msgid "IPsec - Connection Type"
-msgstr "IPsec - Gerð tengingar"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:8
-msgid "IPsec - Encryption Mode"
-msgstr "IPsec - Dulritunarhamur"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:9
-msgid "IPsec - Keys"
-msgstr "IPsec - Lyklar"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:10
-msgid "IPsec - Local Network"
-msgstr "IPsec - Staðbundið net"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:11
-msgid "IPsec - Nickname"
-msgstr "IPsec - Gælunafn"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:12
-msgid "IPsec - Remote Network"
-msgstr "IPsec - Fjartengt net"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:13
-msgid "IPsec - Summary"
-msgstr "IPsec - Upplýsingar"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:14
-msgid "IPsec Settings"
-msgstr "Stillingar IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:15
-msgid "Local network _address:"
-msgstr "Staðbundið _net:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:16
-msgid "Local network _gateway:"
-msgstr "Staðbundin _gátt:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:17
-msgid "Local subnet _mask:"
-msgstr "Staðbundinn _netmöskvi:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:18
-msgid "Manual encryption with a fixed key"
-msgstr "Handvirk dulritun með föstum lykli"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:19
-msgid "Network to Network encryption (VPN)"
-msgstr "Net í net dulritað (VPN)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:20
-msgid "Please enter a nickname for the connection:"
-msgstr "Vinsamlegast veldu gælunafn fyrir tenginguna:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:21
-msgid "Please enter a passphrase to generate the key."
-msgstr "Vinsamlega sláðu inn lykilorð til að búa lykilinn"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:22
-msgid "Please enter your local network settings:"
-msgstr "Vinsamlegast gefðu upp stillingar staðbundna netsins:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:23
-msgid "Please enter your remote network settings:"
-msgstr "Vinsamlegast gefðu upp stillingar fjartengda netsins:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:24
-msgid "Please select the type of connection:"
-msgstr "Vinsamlegast veldu gerð tengingar:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:25
-msgid "Please select the type of encryption:"
-msgstr "Vinsamlegast veldu dulritunaraðferð:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:26
-msgid ""
-"Please specify your keys or generate them. \n"
-"The keys are symmetric, so your remote partner needs to have the same."
-msgstr ""
-"Vinsamlegast gefðu upp lyklana eða búðu þá til. \n"
-"Lyklanir eru eins (symmetric) svo hinn endinn þarf að hafa þá sömu."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:28
-msgid "Remote _IP address:"
-msgstr "Fjartengt _IP vistfang:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:29
-msgid "Remote network _address:"
-msgstr "_Fjartengda netið:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:30
-msgid "Remote network _gateway:"
-msgstr "_Gátt fjartengda netsins:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:31
-msgid "Remote subnet _mask:"
-msgstr "_Netmöskvi fjartengdu vélarinnar:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:32
-msgid "Security parameter index for authentication:"
-msgstr "Öryggisrofayfirlit fyrir auðkenningu:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:33
-msgid "Security parameter index for encryption:"
-msgstr "Öryggisrofayfirlit fyrir dulritun:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:34
-msgid "You will now be guided through the setup of the IPsec connection."
-msgstr "Þessi álfur mun leiða þig í gegnum uppsetningu á IPsec tengingu."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:35
-msgid "_Activate connection when computer starts"
-msgstr "_Virkja tækið þegar vélin ræsir"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:36
-msgid "_Encryption key:"
-msgstr "_Dulritunarlykill:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:38
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
-msgid "_Nickname:"
-msgstr "_Gælunafn:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:39
-msgid "dialog1"
-msgstr "dialog1"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:40
-msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-"sérstakt SPI númer fyrir AH (256 - 4294967295), líkt TCP/IP gáttarnúmeri"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:41
-msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-"sérstakt SPI númer fyrir ESP (256 - 4294967295), líkt TCP/IP gáttarnúmeri"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:1
-msgid "Add / Edit Hosts entry"
-msgstr "Bæta við / Breyta hosts færslu"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Aliases:"
-msgstr "Samheiti:"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:4
-msgid "Hostname:"
-msgstr "Vélarheiti:"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
-msgid "Add new Device Type"
-msgstr "Bæta við nýrri tækjagerð"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
-msgid "Device Type"
-msgstr "Tækjagerð"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
-msgid "Select Device Type"
-msgstr "Veldu tækjagerð"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
-msgid "Select Ethernet Adapter"
-msgstr "Veldu netkort"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
-msgid "_Adapter:"
-msgstr "_Netkort:"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
-msgid "Allow all _users to enable and disable the device"
-msgstr "Leyfa öllum _notendum að virkja og slökkva á tækinu"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
-msgid "Enable IPv_6 configuration for this interface"
-msgstr "Virkja IPv_6 stillingar þessa netkorts"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
-msgid "Ethernet Device"
-msgstr "Netkort"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
-msgid "_Activate device when computer starts"
-msgstr "_Virkja tækið þegar vélin ræsir"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
-msgid "_Activate device when parent device starts"
-msgstr "_Virkja tækið þegar aðaltækið ræsir"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
-msgid "_General"
-msgstr "_Almennt"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
-msgid "_Hardware Device"
-msgstr "_Vélbúnaðartæki"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
-msgid "_Route"
-msgstr "_Rúta"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
-msgid "Ethernet card"
-msgstr "Netkort"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-msgid ""
-"Please enter the MTU parameter to set the maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"Vinsamlegast sláðu inn MTU (hámarks pakkastærð) þessa netkorts. á s390/s390x "
-"er þetta gildi sjálfgefið 1492"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
-msgid "Select Ethernet Device"
-msgstr "Veldu netkort"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the ethernet card you want to configure:"
-msgstr "Veldu netkortið sem þú vilt stilla:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
-msgid "1_TR6"
-msgstr "1_TR6"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
-msgid "<b>D-channel protocol</b>"
-msgstr "<b>D rásar-samskiptamáti</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
-msgid "<b>Resources</b>"
-msgstr "<b>Auðlindir</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
-msgid "Eu_ro ISDN (EDSS1)"
-msgstr "Eu_ro ISDN (EDSS1)"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
-msgid "ISDN _adapters:"
-msgstr "ISDN _netkort:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
-msgid "Select ISDN Adapter"
-msgstr "Veldu ISDN netkort"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
-msgid "_IO:"
-msgstr "_IO:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
-msgid "_MEM:"
-msgstr "_MEM:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Token Ring Device"
-msgstr "Búa til nýtt tókanetstæki"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Token Ring Device"
-msgstr "Veldu tókanetstæki"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the token ring card you want to configure:"
-msgstr "Veldu tókanetskortið sem þú vilt stilla:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Token ring card"
-msgstr "Tókanetkort"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-msgid "Select Token Ring Adapter"
-msgstr "Veldu tókanetstæki"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:1
-msgid "Activate the selected device, calling ifup <device>."
-msgstr "Gangsetja valið netkort með skipuninni ifup <tæki>"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:2
-msgid "Aliases"
-msgstr "Auknefni"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:3
-msgid "Contents"
-msgstr "Innihald"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:4
-msgid "DNS search path:"
-msgstr "DNS leitarslóð:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:5
-msgid "D_NS"
-msgstr "D_NS"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:6
-msgid "Deactivate the selected device, calling ifdown <device>."
-msgstr "Slökkva á netkortinu með skipuninni ifdown <tæki>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:7
-msgid "Description"
-msgstr "Lýsing"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:8
-msgid "Destination"
-msgstr "Áfangastaður"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:9
-msgid "Dev_ices"
-msgstr "Tæ_ki"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:11
-msgid "Do_main:"
-msgstr "_Lén:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:12
-msgid "H_osts"
-msgstr "_Vélar"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:13
-msgid "Hard_ware"
-msgstr "Vél_búnaður"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:14
-msgid "IP"
-msgstr "IP"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:15
-msgid "IP_sec"
-msgstr "IP_sec"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:16
-msgid "List of devices which are currently configurable on your system."
-msgstr "Listi netkorta sem er hægt að stilla í vélinni þinni."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:17
-msgid "Monitor the selected device."
-msgstr "Fylgjast með tækinu."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:20
-msgid "New Profile"
-msgstr "Nýtt sniðmát"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:22
-msgid ""
-"Please enter the name for the profile. The name may only contain letters and "
-"digits."
-msgstr ""
-"Vinsamlega sláðu inn heiti fyrir þetta sniðmát. Heitið má einungis innihalda "
-"bókstafi og tölustafi."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:23
-msgid "Profile"
-msgstr "Sniðmát"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:25
-msgid "Type"
-msgstr "Tegund"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:26
-msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr "Hér má stilla IPsec tengingar (göng) og vél í vél tengingar."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network devices associated with physical hardware here.  "
-"Multiple logical devices can be associated with a single piece of hardware."
-msgstr ""
-"Þú getur stillt nettæki sem tengd eru raunverulegum netkortum hér. Hægt er "
-"að skilgreina mörg sýndarnetkort á hverju raunverulegu netkorti."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr "Hér getur þú stillt netbúnað sem er í þessari vél."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:29
-msgid ""
-"You may configure the system's hostname, domain, name servers, and search "
-"domain. Name servers are used to look up other hosts on the network."
-msgstr ""
-"Þú getur stillt hér heiti vélarinnar, lén, nafnaþjóna og DNS leitarslóð. "
-"Nafnaþjónar eru notaðir til að finna aðrar vélar á netinu."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may specify static computer hostname to IP address mappings here.  If "
-"DNS is in use, these settings will take precedence over any information it "
-"may provide."
-msgstr ""
-"Þú getur gefið upp fast vélarheiti í IP vistfang varpanir hérna. Ef DNS er í "
-"notkun munu þessar stillingar verða teknar framyfir það sem DNS segir."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:33
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
-msgid "_Delete"
-msgstr "_Eyða"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:34
-msgid "_Edit"
-msgstr "_Sýsla"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:35
-msgid "_Hostname:"
-msgstr "_Vélarheiti:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:37
-msgid "_New..."
-msgstr "_Nýr..."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:38
-msgid "_Primary DNS:"
-msgstr "_Aðal DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:39
-msgid "_Profile"
-msgstr "_Snið"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:40
-msgid "_Secondary DNS:"
-msgstr "_Vara DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:41
-msgid "_Tertiary DNS:"
-msgstr "Þ_riðji DNS:"
-
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "Network Adapters Configuration"
-msgstr "Stillingar netkorts"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
-msgid "$"
-msgstr "$"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
-msgid "0.00"
-msgstr "0.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
-msgid "1"
-msgstr "1"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
-msgid "1.00"
-msgstr "1.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
-msgid "Confirm _starting connection"
-msgstr "Staðfestu _tenginguna"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
-msgid "Confirm stopping _connection"
-msgstr "Staðfestu _slit tengingarinnar"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
-msgid "Cos_t accumulated from the past connection:"
-msgstr "Uppsafnaður kos_tnaður frá fyrri tengingu:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
-msgid "Cost per:"
-msgstr "Kostnaður á:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
-msgid "Count:"
-msgstr "Fjöldi:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
-msgid "M_inimum number of seconds charged:"
-msgstr "_Lágmarksfjöldi sekúndna sem eru gjaldfærðar:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
-msgid "_Accumulate cost over multiple connections"
-msgstr "_Safna saman kostnaði margra tenginga"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
-msgid "_Basic"
-msgstr "_Grunn"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
-msgid "_Cost"
-msgstr "_Kostnaður"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
-msgid "_Debug mode"
-msgstr "_Villuleitarhamur"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
-msgid "_Extra cost to start a connection:"
-msgstr "_Aukakostnaður við að koma upp tengingu:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
-msgid "_Hour"
-msgstr "_Klst"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
-msgid "_Minute"
-msgstr "_Mínúta"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
-msgid "_Number of seconds in basic accounting unit:"
-msgstr "_Fjöldi sekúndna í gjaldfærslueiningunni:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
-msgid "_Second"
-msgstr "_Sekúnda"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
-msgid "_Terminate connection when session closes"
-msgstr "_Slíta tengingunni þegar setunni lýkur"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
-msgid "_Time"
-msgstr "_Tími"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
-msgid "redhat network control - Properties"
-msgstr "redhat netumsjón - Eiginleikar"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
-msgid "<b>D channel protocol</b>"
-msgstr "<b>D rásar-samskiptamáti</b>"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN Adapters Configuration"
-msgstr "Stillingar ISDN korta"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-msgid "Waiting to connect to"
-msgstr "Bíð eftir tengingu við"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-msgid "Waiting..."
-msgstr "Bíð..."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
-msgid "<b>Account Type:</b>"
-msgstr "<b>Tegund notanda:</b>"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
-msgid "Configure DSL connection"
-msgstr "Stilla DSL tengingu"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
-msgid "Create DSL connection"
-msgstr "Búa til DSL tengingu"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
-msgid "Enter the provider name for this account."
-msgstr "Sláðu inn heiti þjónustuveitunnar."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
-msgid "Ethernet _device:"
-msgstr "Net_kort:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Normal"
-msgstr "Venjulegur"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
-msgid ""
-"Normal\n"
-"T-Online"
-msgstr ""
-"Venjulegur\n"
-"T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
-msgid "Password (_again):"
-msgstr "Lykilorð (_staðfesta):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-msgid "Select the ethernet device connected to the DSL modem."
-msgstr "Veldu netkortið sem er tengt við DSL mótaldið."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-msgid "Select the ethernet device for this account."
-msgstr "Veldu netkortið sem nota á með þessu notandanafni."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-msgid "T-Online"
-msgstr "_T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
-msgid "_Provider name:"
-msgstr "_Heiti þjónustuveitu:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain name:"
-msgstr "Lén:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:2
-msgid "Edit Domain Name"
-msgstr "Breyta léni"
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
+msgid "Choose a Provider"
+msgstr "Veldu þjónustuveitu"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "<b>Modem properties</b>"
+msgstr "<b>Stillingar mótalda</b>"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "Modem _volume:"
+msgstr "Hljóðstyrkur _mótalds:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "Veldu mótald"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "_Baud rate:"
+msgstr "_Sendingarhraði:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "_Flow control:"
+msgstr "_Flæðistjórn:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "_Modem device:"
+msgstr "_Mótaldstæki:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "_Nota tónval"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
 msgid "A_ddress:"
@@ -3098,235 +2688,107 @@ msgstr "dhcp"
 msgid "dialup"
 msgstr "upphringi"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
-msgid "00:00:00:00:00:00"
-msgstr "00:00:00:00:00:00"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
+msgid "CIPE Configuration"
+msgstr "Stillingar CIPE"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid ""
-"Each device needs to be attached to a physical device which can be selected "
-"below. Device Alias support allows you to use multiple virtual devices for "
-"one physical device."
-msgstr ""
-"Hvert tæki þarf að vera tengt raunverulegu netkorti sem þú getur valið hér "
-"að neðan. Tækjasamheiti gerir þér kleyft að hafa mörg sýndartæki fyrir hvert "
-"raunverulegt netkort."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "Stillingar fyrir þjónustuveituna"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Enable _Device Alias support"
-msgstr "Virkja _tækjasamheitastuðning"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+msgid "Lo_cal virtual address:"
+msgstr "Stað_bundið sýndarvistfang:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
-msgid "Ha_rdware address:"
-msgstr "_Vélbúnaðarvistfang:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+msgid "Remote _virtual address:"
+msgstr "Fjartengt _sýndarvistfang:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
-msgid "Token Ring Device"
-msgstr "Tókanetstæki"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+msgid "Remote peer p_ort:"
+msgstr "Fjartengd _gátt:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Alias:"
-msgstr "_Samheiti:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+msgid "_Generate"
+msgstr "_Búa til"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
-msgid "_Hardware device:"
-msgstr "_Vélbúnaðartæki:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+msgid "_Local port:"
+msgstr "_Staðbundin gátt:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
-msgid "_Probe for Address"
-msgstr "_Leita að vistfangi"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+msgid "_Remote peer address:"
+msgstr "Vistfang _fjartengdrar vélar:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
-msgid "_Use Hardware Address"
-msgstr "_Nota vélbúnaðarvistföng"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+msgid "_Secret key:"
+msgstr "_Leynilykill:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
-msgid "tr0"
-msgstr "tr0"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
+msgid "_Tunnel Settings"
+msgstr "Stillingar _gangna"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
-msgid "tr1"
-msgstr "tr1"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+msgid "_Tunnel through device:"
+msgstr "IP _Gangnatæki:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
-msgid "tr2"
-msgstr "tr2"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+msgid "_auto"
+msgstr "_sjálfvirkt"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
-msgid "tr3"
-msgstr "tr3"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
+msgid "cipcb0"
+msgstr "cipcb0"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
-msgid "tr4"
-msgstr "tr4"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
+msgid "cipcb1"
+msgstr "cipcb1"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
-msgid "tr5"
-msgstr "tr5"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
+msgid "cipcb2"
+msgstr "cipcb2"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "11M"
-msgstr "11M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
+msgid "cipcb3"
+msgstr "cipcb3"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-msgid "1M"
-msgstr "1M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
+msgid "cipcb4"
+msgstr "cipcb4"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
-msgstr "2M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
+msgid "eth0"
+msgstr "eth0"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
-msgstr "5.5M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
+msgid "eth1"
+msgstr "eth1"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
-msgid ""
-"Set the operating mode of the device, which depends on the network topology. "
-"The mode can be Ad-Hoc (network composed of only one cell and without Access "
-"Point), Managed (node connects to a network composed of many Access Points, "
-"with roaming), Master (the node is the synchronization master or acts as an "
-"Access Point) or Auto."
-msgstr ""
-"Stilla virkni þráðlausa netkortsins eftir hvernig netið er uppbyggt. Hamur "
-"netsins getur verið 'Ad-Hoc' (netið uppbyggt af einni stöð án netpunkts), "
-"stjórnað net (allar vélar tengjast netpunkti með flakki), meistari (vélin "
-"stýrir aðgangi of samræmingu eða er netpunktur) eða sjálfvirkt."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
+msgid "eth2"
+msgstr "eth2"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-msgid "Wireless Device Configuration"
-msgstr "Stillingar þráðlausra tækja"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
+msgid "eth3"
+msgstr "eth3"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-msgid "_Hardware device"
-msgstr "_Vélbúnaðartæki"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
+msgid "eth4"
+msgstr "eth4"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
-msgid "_Wireless Settings"
-msgstr "_Stillingar þráðlausra tenginga"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-msgid "MT_U:"
-msgstr "MT_U:"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
-msgid "_Point to Point (IP):"
-msgstr "_Stað í stað (IP):"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
-msgid "Choose Hardware Device Type"
-msgstr "Veldu gerð vélbúnaðar"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
-msgid "Please select the type of hardware device to add:"
-msgstr "Vinsamlegast veldu vélbúnaðargerð til að bæta við:"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
-msgid "_Device type:"
-msgstr "_Tegund tækis:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
-msgid "Allow dial on _demand"
-msgstr "Leyfa upphringingu þegar þörf _krefur"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
-msgid "Allow the link come up on demand."
-msgstr "Leyfa tengingunni að opnast þegar þess þarf."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
-msgid "Demand setting"
-msgstr "Hringja þegar þarf"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
-msgid "Enable synchronous PPP for the connection"
-msgstr "Nota samhæft PPP í þessari tengingu"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
-msgid ""
-"Enter the Access Concentrator name, if you have been given one by your ISP. "
-"In most cases you can leave this blank."
-msgstr ""
-"Sláðu inn 'Access Concentrator' heitið hafir þú fengið slíkt frá "
-"þjónustuveitunni þinni. Í flestum tilfellum má hafa þetta autt."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
-msgid ""
-"Enter the Service Name, if your ISP requires it. If you don't know it, "
-"please contact your ISP. In most cases you can leave this blank."
-msgstr ""
-"Sláðu inn þjónustuheitið ef þess er þörf. Hafðu samband við þjónustuveituna "
-"þína ef þú veist það ekki.  Í flestum tilfellum má hafa þetta autt."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
-msgid "Enter the idle time in seconds after which the link should be dropped."
-msgstr ""
-"Sláðu inn tímann sem tengingin má vera aðgerðalaus áður en henni er lokað."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
-msgid "Make this connection the default _route"
-msgstr "Gera þessa tengingu að _sjálfgefinni gátt"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
-msgid "Restart if _connection dies"
-msgstr "Endurræsa _tenginguna ef hún slitnar"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
-msgid "_AC-name:"
-msgstr "_AC-heiti:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
-msgid "_Advanced"
-msgstr "_Frekari"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
-msgid "_IPsec"
-msgstr "_IPsec"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
-msgid "_Maximum idle time:"
-msgstr "_Hámarks aðgerðaleysistími:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-msgid "_Provider"
-msgstr "þ_jónustuveita"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
-msgid "_Service-name:"
-msgstr "_Heiti þjónustuveitu:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
-msgid "_Use synchronous PPP"
-msgstr "_Nota samhæft PPP"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
-msgid "xDSL Configuration"
-msgstr "Stillingar xDSL"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
-msgid "00:00:00"
-msgstr "00:00:00"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
-msgid "Online time:"
-msgstr "Tengitími:"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
-msgid "click the right mouse button for properties"
-msgstr "hægrismelltu til að fá upp eiginleikana"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:1
-msgid "Add / Edit IP Address"
-msgstr "Bæta við / Breyta IP vistfangi"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:3
-msgid "_Gateway:"
-msgstr "_Gátt:"
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+msgid "Ethernet Device"
+msgstr "Netkort"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -3468,6 +2930,11 @@ msgstr "_Veldu þjónustuveitu..."
 msgid "_Compression"
 msgstr "Þ_jöppun"
 
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/maindialog.glade.h:33
+msgid "_Delete"
+msgstr "_Eyða"
+
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
 msgid "_Dial mode:"
 msgstr "_Hringihamur:"
@@ -3496,57 +2963,323 @@ msgstr "_Símanúmer"
 msgid "_Use Callback"
 msgstr "_Nota endurhringingu"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
-msgid "CIPE Configuration"
-msgstr "Stillingar CIPE"
+#: ../src/netconfpkg/gui/editipsec.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
-msgid "Configuration for your remote partner"
-msgstr "Stillingar fyrir þjónustuveituna"
+#: ../src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication key:"
+msgstr "_Auðkenningarlykill:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
-msgid "_Tunnel Settings"
-msgstr "Stillingar _gangna"
+#: ../src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "Sjálfvirk dulritum með IKA (racoon)"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
-msgid "cipcb0"
-msgstr "cipcb0"
+#: ../src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "_Búa til"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
-msgid "cipcb1"
-msgstr "cipcb1"
+#: ../src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr "Vél í vél dulritun"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
-msgid "cipcb2"
-msgstr "cipcb2"
+#: ../src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
-msgid "cipcb3"
-msgstr "cipcb3"
+#: ../src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPsec - Gerð tengingar"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
-msgid "cipcb4"
-msgstr "cipcb4"
+#: ../src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - Dulritunarhamur"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
-msgid "eth0"
-msgstr "eth0"
+#: ../src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - Lyklar"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
-msgid "eth1"
-msgstr "eth1"
+#: ../src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - Staðbundið net"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
-msgid "eth2"
-msgstr "eth2"
+#: ../src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Nickname"
+msgstr "IPsec - Gælunafn"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
-msgid "eth3"
-msgstr "eth3"
+#: ../src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Remote Network"
+msgstr "IPsec - Fjartengt net"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
-msgid "eth4"
-msgstr "eth4"
+#: ../src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec - Summary"
+msgstr "IPsec - Upplýsingar"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:14
+msgid "IPsec Settings"
+msgstr "Stillingar IPsec"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local network _address:"
+msgstr "Staðbundið _net:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local network _gateway:"
+msgstr "Staðbundin _gátt:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Local subnet _mask:"
+msgstr "Staðbundinn _netmöskvi:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Manual encryption with a fixed key"
+msgstr "Handvirk dulritun með föstum lykli"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Network to Network encryption (VPN)"
+msgstr "Net í net dulritað (VPN)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter a nickname for the connection:"
+msgstr "Vinsamlegast veldu gælunafn fyrir tenginguna:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter a passphrase to generate the key."
+msgstr "Vinsamlega sláðu inn lykilorð til að búa lykilinn"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please enter your local network settings:"
+msgstr "Vinsamlegast gefðu upp stillingar staðbundna netsins:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please enter your remote network settings:"
+msgstr "Vinsamlegast gefðu upp stillingar fjartengda netsins:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:24
+msgid "Please select the type of connection:"
+msgstr "Vinsamlegast veldu gerð tengingar:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:25
+msgid "Please select the type of encryption:"
+msgstr "Vinsamlegast veldu dulritunaraðferð:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:26
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner needs to have the same."
+msgstr ""
+"Vinsamlegast gefðu upp lyklana eða búðu þá til. \n"
+"Lyklanir eru eins (symmetric) svo hinn endinn þarf að hafa þá sömu."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote _IP address:"
+msgstr "Fjartengt _IP vistfang:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote network _address:"
+msgstr "_Fjartengda netið:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:30
+msgid "Remote network _gateway:"
+msgstr "_Gátt fjartengda netsins:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:31
+msgid "Remote subnet _mask:"
+msgstr "_Netmöskvi fjartengdu vélarinnar:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:32
+msgid "Security parameter index for authentication:"
+msgstr "Öryggisrofayfirlit fyrir auðkenningu:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:33
+msgid "Security parameter index for encryption:"
+msgstr "Öryggisrofayfirlit fyrir dulritun:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:34
+msgid "You will now be guided through the setup of the IPsec connection."
+msgstr "Þessi álfur mun leiða þig í gegnum uppsetningu á IPsec tengingu."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:35
+msgid "_Activate connection when computer starts"
+msgstr "_Virkja tækið þegar vélin ræsir"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:36
+msgid "_Encryption key:"
+msgstr "_Dulritunarlykill:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:39
+msgid "dialog1"
+msgstr "dialog1"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:40
+msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+"sérstakt SPI númer fyrir AH (256 - 4294967295), líkt TCP/IP gáttarnúmeri"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:41
+msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+"sérstakt SPI númer fyrir ESP (256 - 4294967295), líkt TCP/IP gáttarnúmeri"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+msgid "<b>D-channel protocol</b>"
+msgstr "<b>D rásar-samskiptamáti</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Veldu ISDN netkort"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "Configure Wireless Connection"
+msgstr "Stilla þráðlausar tengingar"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "Create Wireless Device"
+msgstr "Búa til nýtt þráðlaust tæki"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid "Network name (SSID):"
+msgstr "Heiti nets (SSID):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Vinsamlegast sláðu inn MTU (hámarks pakkastærð) þessa netkorts. á s390/s390x "
+"er þetta gildi sjálfgefið 1492"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Select Wireless Device"
+msgstr "Veldu þráðlaust netkort"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Select the wireless card you want to configure:"
+msgstr "Veldu þráðlaust netkort til að stilla:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+"Notað til að stýra dulritun eða brenglunarlyklum og dulritunarham. Til að "
+"setja lykil í hex tölum þarftu að hafa forskeytið 0x fyrir framan. Til dæmis "
+"0xXXXXXXXX."
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Wireless card"
+msgstr "Þráðlaus netkort"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "_Auto"
+msgstr "_Sjálfvirkt"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Channel:"
+msgstr "_Rás:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+msgid "_Key (use 0x for hex):"
+msgstr "_Lykill (notaðu 0x fyrir hex):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+msgid "_Mode:"
+msgstr "_Hamur:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+msgid "_Specified:"
+msgstr "_Tiltekinn:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
+msgid "_Transmit rate:"
+msgstr "S_endingarhraði:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Veldu gerð vélbúnaðar"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "Vinsamlegast veldu vélbúnaðargerð til að bæta við:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "_Tegund tækis:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+msgid "<b>Configuration for your remote partner</b>"
+msgstr "<b>Stillingar fjartengdrar vélar</b>"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
+msgid "Configure Tunnel"
+msgstr "Stillingar gangna"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
+msgid "Create Cipe Connection"
+msgstr "Búa til Cipe tengingu"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
+msgstr "11M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+msgid "1M"
+msgstr "1M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
+msgstr "2M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
+msgstr "5.5M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
+msgstr ""
+"Stilla virkni þráðlausa netkortsins eftir hvernig netið er uppbyggt. Hamur "
+"netsins getur verið 'Ad-Hoc' (netið uppbyggt af einni stöð án netpunkts), "
+"stjórnað net (allar vélar tengjast netpunkti með flakki), meistari (vélin "
+"stýrir aðgangi of samræmingu eða er netpunktur) eða sjálfvirkt."
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Wireless Device Configuration"
+msgstr "Stillingar þráðlausra tækja"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Hardware device"
+msgstr "_Vélbúnaðartæki"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+msgid "_Wireless Settings"
+msgstr "_Stillingar þráðlausra tenginga"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Bæta við / Breyta hosts færslu"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Samheiti:"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Vélarheiti:"
 
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
 msgid "Card"
@@ -3564,14 +3297,280 @@ msgstr "Veldu tæki"
 msgid "Select the card you want to configure:"
 msgstr "Veldu netkortið sem þú vilt stilla:"
 
-#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
-msgid "Choose a Provider"
-msgstr "Veldu þjónustuveitu"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "Búa til nýtt tókanetstæki"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
-msgid "Connect to"
-msgstr "Tengist"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "Veldu tókanetstæki"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
-msgid "Disconnect from"
-msgstr "Aftengist"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr "Veldu tókanetskortið sem þú vilt stilla:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "Tókanetkort"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Bæta við / Breyta IP vistfangi"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Gátt:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:1
+msgid "Activate the selected device, calling ifup <device>."
+msgstr "Gangsetja valið netkort með skipuninni ifup <tæki>"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:2
+msgid "Aliases"
+msgstr "Auknefni"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:3
+msgid "Contents"
+msgstr "Innihald"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:4
+msgid "DNS search path:"
+msgstr "DNS leitarslóð:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:5
+msgid "D_NS"
+msgstr "D_NS"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:6
+msgid "Deactivate the selected device, calling ifdown <device>."
+msgstr "Slökkva á netkortinu með skipuninni ifdown <tæki>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:7
+msgid "Description"
+msgstr "Lýsing"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:8
+msgid "Destination"
+msgstr "Áfangastaður"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:9
+msgid "Dev_ices"
+msgstr "Tæ_ki"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:11
+msgid "Do_main:"
+msgstr "_Lén:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:12
+msgid "H_osts"
+msgstr "_Vélar"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:13
+msgid "Hard_ware"
+msgstr "Vél_búnaður"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:14
+msgid "IP"
+msgstr "IP"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:15
+msgid "IP_sec"
+msgstr "IP_sec"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:16
+msgid "List of devices which are currently configurable on your system."
+msgstr "Listi netkorta sem er hægt að stilla í vélinni þinni."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:17
+msgid "Monitor the selected device."
+msgstr "Fylgjast með tækinu."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:20
+msgid "New Profile"
+msgstr "Nýtt sniðmát"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:22
+msgid ""
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
+msgstr ""
+"Vinsamlega sláðu inn heiti fyrir þetta sniðmát. Heitið má einungis innihalda "
+"bókstafi og tölustafi."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:23
+msgid "Profile"
+msgstr "Sniðmát"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:25
+msgid "Type"
+msgstr "Tegund"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:26
+msgid "You may configure IPsec tunnels and host to host connections here."
+msgstr "Hér má stilla IPsec tengingar (göng) og vél í vél tengingar."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:27
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"Þú getur stillt nettæki sem tengd eru raunverulegum netkortum hér. Hægt er "
+"að skilgreina mörg sýndarnetkort á hverju raunverulegu netkorti."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:28
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr "Hér getur þú stillt netbúnað sem er í þessari vél."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:29
+msgid ""
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
+msgstr ""
+"Þú getur stillt hér heiti vélarinnar, lén, nafnaþjóna og DNS leitarslóð. "
+"Nafnaþjónar eru notaðir til að finna aðrar vélar á netinu."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:30
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"Þú getur gefið upp fast vélarheiti í IP vistfang varpanir hérna. Ef DNS er í "
+"notkun munu þessar stillingar verða teknar framyfir það sem DNS segir."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:34
+msgid "_Edit"
+msgstr "_Sýsla"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_Hostname:"
+msgstr "_Vélarheiti:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:37
+msgid "_New..."
+msgstr "_Nýr..."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:38
+msgid "_Primary DNS:"
+msgstr "_Aðal DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:39
+msgid "_Profile"
+msgstr "_Snið"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:40
+msgid "_Secondary DNS:"
+msgstr "_Vara DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:41
+msgid "_Tertiary DNS:"
+msgstr "Þ_riðji DNS:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "Lén:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Breyta léni"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Bæta við nýrri tækjagerð"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Tækjagerð"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Veldu tækjagerð"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "$"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "0.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+msgid "1"
+msgstr "1"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "1.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Confirm _starting connection"
+msgstr "Staðfestu _tenginguna"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm stopping _connection"
+msgstr "Staðfestu _slit tengingarinnar"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Cos_t accumulated from the past connection:"
+msgstr "Uppsafnaður kos_tnaður frá fyrri tengingu:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cost per:"
+msgstr "Kostnaður á:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Count:"
+msgstr "Fjöldi:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "M_inimum number of seconds charged:"
+msgstr "_Lágmarksfjöldi sekúndna sem eru gjaldfærðar:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "_Accumulate cost over multiple connections"
+msgstr "_Safna saman kostnaði margra tenginga"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "_Basic"
+msgstr "_Grunn"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Cost"
+msgstr "_Kostnaður"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Debug mode"
+msgstr "_Villuleitarhamur"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Extra cost to start a connection:"
+msgstr "_Aukakostnaður við að koma upp tengingu:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Hour"
+msgstr "_Klst"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Minute"
+msgstr "_Mínúta"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_Fjöldi sekúndna í gjaldfærslueiningunni:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Second"
+msgstr "_Sekúnda"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Terminate connection when session closes"
+msgstr "_Slíta tengingunni þegar setunni lýkur"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Time"
+msgstr "_Tími"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "redhat network control - Properties"
+msgstr "redhat netumsjón - Eiginleikar"

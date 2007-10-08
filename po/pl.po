@@ -6,13 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-24 10:59+0200\n"
+"POT-Creation-Date: 2007-10-08 13:28+0200\n"
 "PO-Revision-Date: 2007-09-25 12:40+0200\n"
 "Last-Translator: Piotr Drąg <raven@pmail.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "Kontrolowanie i monitorowanie urządzeń sieciowych"
+
+#: ../neat-control.desktop.in.h:2
+#: ../src/netconfpkg/gui/neat-control.glade.h:12
+msgid "Network Device Control"
+msgstr "Kontrola urządzeń sieciowych"
 
 #: ../neat.desktop.in.h:1
 msgid "Configure network devices and connections"
@@ -27,293 +36,104 @@ msgstr "Sieć"
 msgid "Network Configuration"
 msgstr "Konfiguracja sieci"
 
-#: ../neat-control.desktop.in.h:1
-msgid "Control and monitor network devices"
-msgstr "Kontrolowanie i monitorowanie urządzeń sieciowych"
+#: ../src/netconfpkg/NCBackendHal.py:50 ../src/netconfpkg/NCDeviceList.py:72
+#: ../src/netconfpkg/NCDevice.py:231 ../src/netconfpkg/NCHardwareList.py:442
+#: ../src/netconfpkg/NCHardwareList.py:562
+#: ../src/netconfpkg/gui/tokenringhardware.py:111
+#: ../src/netconfpkg/gui/ethernethardware.py:137
+#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
+#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
+#: ../src/netconfpkg/NC_functions.py:388
+msgid "Unknown"
+msgstr "Nieznany"
 
-#: ../neat-control.desktop.in.h:2
-#: ../src/netconfpkg/gui/neat-control.glade.h:12
-msgid "Network Device Control"
-msgstr "Kontrola urządzeń sieciowych"
+#: ../src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "nieaktywne"
 
-#: ../src/netconf-cmd.py:62
-#, python-format
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.\n"
-"Please file a detailed bug report against the component %s at \n"
-"https://bugzilla.redhat.com/bugzilla\n"
-"using the text below.\n"
-msgstr ""
-"Wystąpił nieobsługiwany wyjątek. Najprawdopodobniej jest to błąd.\n"
-"Proszę dokładnie wypełnić raport o błędzie komponentu %s na\n"
-"stronie https://bugzilla.redhat.com/bugzilla\n"
-"używając tekstu zamieszczonego poniżej.\n"
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "system"
 
-#: ../src/netconf-cmd.py:97
-#, python-format
-msgid "%s - network configuration commandline tool"
-msgstr "%s - narzędzie wiersza poleceń do konfiguracji sieci"
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "skonfigurowany"
 
-#: ../src/netconf-cmd.py:98 ../src/neat-control.py:146
-#: ../src/neat-control.py:163 ../src/netconfpkg/gui/maindialog.py:1641
-#: ../src/netconfpkg/gui/maindialog.py:1657
-msgid "Copyright (c) 2001-2005 Red Hat, Inc."
-msgstr "Copyright (c) 2001-2005 Red Hat, Inc."
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "OK"
 
-#: ../src/netconf-cmd.py:99 ../src/neat-control.py:147
-#: ../src/netconfpkg/gui/maindialog.py:1642
-msgid ""
-"This software is distributed under the GPL. Please Report bugs to Red Hat's "
-"Bug Tracking System: http://bugzilla.redhat.com/"
-msgstr ""
-"To oprogramowanie jest rozprowadzane na licencji GPL. Wszelkie błędy proszę "
-"zgłaszać do system śledzenia błędów firmy Red Hat: http://bugzilla.redhat."
-"com/"
+#: ../src/netconfpkg/NCDeviceList.py:117
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "Zmień następujące pseudonimy ze względu na skrypty startowe:\n"
 
-#: ../src/netconf-cmd.py:102
-#, python-format
-msgid "Usage: %s"
-msgstr "Użycie: %s"
+#: ../src/netconfpkg/NCDeviceList.py:120
+msgid "Nicknames changed"
+msgstr "Zmieniono pseudonimy"
 
-#: ../src/netconf-cmd.py:104
-msgid "switch / activate profile"
-msgstr "przełącz/aktywuj profil"
-
-#: ../src/netconf-cmd.py:106
-msgid "export / import hardware list"
-msgstr "wyeksportuj/zaimportuj listę sprzętu"
-
-#: ../src/netconf-cmd.py:108
-msgid "export / import IPsec list"
-msgstr "wyeksportuj/zaimportuj listę IPsec"
-
-#: ../src/netconf-cmd.py:110
-msgid "export / import device list (default)"
-msgstr "wyeksportuj/zaimportuj listę urządzeń (domyślne)"
-
-#: ../src/netconf-cmd.py:112
-msgid "export / import profile list"
-msgstr "wyeksportuj/zaimportuj listę profili"
-
-#: ../src/netconf-cmd.py:114
-msgid "set the root directory"
-msgstr "ustaw folder roota"
-
-#: ../src/netconf-cmd.py:116
-msgid "export list (default)"
-msgstr "wyeksportuj listę (domyślne)"
-
-#: ../src/netconf-cmd.py:117
-msgid "import list"
-msgstr "zaimportuj listę"
-
-#: ../src/netconf-cmd.py:119
-msgid "clear existing list prior of importing"
-msgstr "wyczyść aktualną listę przed importem"
-
-#: ../src/netconf-cmd.py:121
-msgid "import from file"
-msgstr "zaimportuj z pliku"
-
-#: ../src/netconf-cmd.py:264
-#, python-format
-msgid "Unknown option %s\n"
-msgstr "Nieznana opcja %s\n"
-
-#: ../src/netconf-cmd.py:325
-#, python-format
-msgid "Unknown List %s\n"
-msgstr "Nieznana lista %s\n"
-
-#: ../src/netconf-cmd.py:329 ../src/netconfpkg/genClass.py:302
-#, python-format
-msgid "Error parsing line: %s"
-msgstr "Błąd podczas analizowania wiersza: %s"
-
-#: ../src/netconf-tui.py:99
-msgid ""
-"An unhandled exception has occured.  This is most likely a bug.  Please save "
-"the crash dump and file a detailed bug report against system-config-network "
-"at https://bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Wystąpił nieobsługiwany wyjątek. Najprawdopodobniej jest to błąd. Proszę "
-"zapisać plik zrzutu i wypełnić dokładnie raport o błędzie w system-config-"
-"network na stronach https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconf-tui.py:127
-msgid "Loading configuration"
-msgstr "Wczytywanie konfiguracji"
-
-#: ../src/netconf-tui.py:128
-msgid "Loading Device Configuration"
-msgstr "Wczytywanie konfiguracji urządzenia"
-
-#: ../src/netconf-tui.py:134
-msgid "Loading Hardware Configuration"
-msgstr "Wczytywanie konfiguracji sprzętu"
-
-#: ../src/netconf-tui.py:138
-msgid "Loading Profile Configuration"
-msgstr "Wczytywanie konfiguracji profilu"
-
-#: ../src/netconf-tui.py:152
-msgid "Which device type do you want to add?"
-msgstr "Jaki typ urządzenia chcesz dodać?"
-
-#: ../src/netconf-tui.py:153
-msgid "Add"
-msgstr "Dodaj"
-
-#: ../src/netconf-tui.py:153 ../src/netconf-tui.py:205
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
-msgid "Ethernet"
-msgstr "Ethernet"
-
-#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
-msgid "Modem"
-msgstr "Modem"
-
-#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
-msgid "ISDN"
-msgstr "ISDN"
-
-#: ../src/netconf-tui.py:203
-msgid "<New Device>"
-msgstr "<Nowe urządzenie>"
-
-#: ../src/netconf-tui.py:204
-msgid "Select A Device"
-msgstr "Wybierz urządzenie"
-
-#: ../src/netconf-tui.py:205
-msgid "Quit"
-msgstr "Zakończ"
-
-#: ../src/netconf-tui.py:222
-msgid ""
-"system-config-network - network configuration tool\n"
-"\n"
-"Usage: system-config-network -v --verbose -d --debug"
-msgstr ""
-"system-config-network - narzędzie konfiguracji sieci\n"
-"\n"
-"Użycie: system-config-network -v --verbose -d --debug"
-
-#: ../src/neat-control.py:50 ../src/netconf.py:72
-msgid "ERROR: Unable to initialize graphical environment. "
-msgstr "BŁĄD: nie można zainicjować środowiska graficznego. "
-
-#: ../src/neat-control.py:51 ../src/netconf.py:73
-msgid ""
-"Most likely cause of failure is that the tool was not run using a graphical "
-"environment. "
-msgstr ""
-"Najczęstszym powodem błędu jest próba uruchomienia narzędzia poza "
-"środowiskiem graficznym. "
-
-#: ../src/neat-control.py:52 ../src/netconf.py:74
-msgid ""
-"Please either start your graphical user interface or set your DISPLAY "
-"variable.\n"
-msgstr "Uruchom środowisko graficzne lub ustaw odpowiednią zmienną DISPLAY.\n"
-
-#: ../src/neat-control.py:170 ../src/netconfpkg/gui/maindialog.py:1661
-msgid ""
-"This software is distributed under the GPL. \n"
-"Please Report bugs to Red Hat's Bug Tracking \n"
-"System: http://bugzilla.redhat.com/"
-msgstr ""
-"To oprogramowanie jest rozprowadzane na licencji GPL. \n"
-"Wszelkie błędy proszę zgłaszać do systemu śledzenia \n"
-"błędów firmy Red Hat: http://bugzilla.redhat.com/"
-
-#: ../src/neat-control.py:223
-#, python-format
-msgid "Cannot configure network device %s"
-msgstr "Nie można skonfigurować urządzenia sieciowego %s"
-
-#: ../src/neat-control.py:243
-msgid "Switching Profiles"
-msgstr "Przełączanie profili"
-
-#: ../src/neat-control.py:244
-#, python-format
-msgid "Switching to profile %s"
-msgstr "Przełączanie na profil %s"
-
-#: ../src/neat-control.py:245
-#, python-format
-msgid "Failed to switch to profile %s"
-msgstr "Przełączenie na profil %s nie powiodło się"
-
-#. TBD
-#: ../src/neat-control.py:260
-msgid "To be rewritten!"
-msgstr "Zostanie nadpisane!"
-
-#: ../src/neat-control.py:367
-msgid " (active)"
-msgstr " (aktywne)"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:68
+#: ../src/netconfpkg/tui/NCModemInterface.py:66
 #: ../src/netconfpkg/tui/NCTcpIp.py:93
 #: ../src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Name"
 msgstr "Nazwa"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:69
+#: ../src/netconfpkg/tui/NCModemInterface.py:67
 #: ../src/netconfpkg/tui/NCTcpIp.py:94
+#: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
 #: ../src/netconfpkg/gui/maindialog.glade.h:10
-#: ../src/netconfpkg/gui/infodialog.glade.h:1
 msgid "Device"
 msgstr "Urządzenie"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:68
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:70
+#: ../src/netconfpkg/tui/NCModemInterface.py:68
 msgid "ISP Phonenumber"
 msgstr "Numer telefonu ISP"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:69
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:71
+#: ../src/netconfpkg/tui/NCModemInterface.py:69
 msgid "ISP Login"
 msgstr "Login ISP"
 
-#: ../src/netconfpkg/tui/NCModemInterface.py:70
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:72
+#: ../src/netconfpkg/tui/NCModemInterface.py:70
 msgid "ISP Password"
 msgstr "Hasło ISP"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:71
-msgid "Modem Initstring"
-msgstr "Ciąg znaków inicjujący modem"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Ok"
-msgstr "OK"
-
-#: ../src/netconfpkg/tui/NCModemInterface.py:79
-#: ../src/netconfpkg/gui/modemconfig.glade.h:6
-msgid "Modem Configuration"
-msgstr "Konfiguracja modemu"
 
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:73
 msgid "MSN"
 msgstr "MSN"
 
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+msgid "Ok"
+msgstr "OK"
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCTcpIp.py:106 ../src/netconf-tui.py:153
+#: ../src/netconf-tui.py:205
+msgid "Cancel"
+msgstr "Anuluj"
+
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "Konfiguracja ISDN"
+
+#: ../src/netconfpkg/tui/NCModemInterface.py:71
+msgid "Modem Initstring"
+msgstr "Ciąg znaków inicjujący modem"
+
+#: ../src/netconfpkg/tui/NCModemInterface.py:79
+#: ../src/netconfpkg/gui/modemconfig.glade.h:6
+msgid "Modem Configuration"
+msgstr "Konfiguracja modemu"
 
 #: ../src/netconfpkg/tui/NCTcpIp.py:95
 msgid "Use DHCP"
@@ -335,108 +155,6 @@ msgstr "IP domyślnej bramy"
 msgid "Devernet Configuration"
 msgstr "Konfiguracja Devernet"
 
-#: ../src/netconfpkg/NCHardwareList.py:442
-#: ../src/netconfpkg/NCHardwareList.py:562
-#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
-#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
-#: ../src/netconfpkg/NC_functions.py:388
-#: ../src/netconfpkg/gui/ethernethardware.py:137
-#: ../src/netconfpkg/gui/tokenringhardware.py:111
-#: ../src/netconfpkg/NCDeviceList.py:72 ../src/netconfpkg/NCDevice.py:231
-#: ../src/netconfpkg/NCBackendHal.py:50
-msgid "Unknown"
-msgstr "Nieznany"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:77 ../src/netconfpkg/NCDevice.py:441
-msgid "Network device activating..."
-msgstr "Aktywowanie urządzenia sieciowego..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:78 ../src/netconfpkg/NCDevice.py:442
-#, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "Aktywowanie urządzenia sieciowego %s, proszę czekać..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:80 ../src/netconfpkg/NCDevice.py:444
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Nie można aktywować urządzenia sieciowego %s!\n"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
-#: ../src/netconfpkg/NCDevice.py:461
-msgid "Network device deactivating..."
-msgstr "Deaktywowanie urządzenia sieciowego..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
-#: ../src/netconfpkg/NCDevice.py:462
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "Deaktywowanie urządzenia sieciowego %s, proszę czekać..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
-#: ../src/netconfpkg/NCDevice.py:464
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Nie można deaktywować urządzenia sieciowego %s!\n"
-
-#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
-msgid "Exception Occurred"
-msgstr "Wystąpił wyjątek"
-
-#: ../src/netconfpkg/exception.py:59
-msgid "_Debug"
-msgstr "_Debuguj"
-
-#: ../src/netconfpkg/exception.py:60
-msgid "_Save to file"
-msgstr "Zapi_sz do pliku"
-
-#: ../src/netconfpkg/exception.py:75
-#, python-format
-msgid ""
-"An unhandled exception has occurred.  This is most likely a bug.  Please "
-"save the crash dump and file a detailed bug report against %s at https://"
-"bugzilla.redhat.com/bugzilla"
-msgstr ""
-"Wystąpił nieobsługiwany wyjątek. Najprawdopodobniej jest to błąd. Proszę "
-"zapisać plik zrzutu i wypełnić dokładnie raport o błędzie w %s na stronach "
-"https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconfpkg/exception.py:277
-#, python-format
-msgid "Error: %s: %s"
-msgstr "Błąd: %s: %s"
-
-#: ../src/netconfpkg/exception.py:280
-#, python-format
-msgid ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
-msgstr ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
-
-#: ../src/netconfpkg/exception.py:354
-msgid "Specify a file to save the dump"
-msgstr "Określ plik do zapisania zrzutu"
-
-#: ../src/netconfpkg/exception.py:373
-#, python-format
-msgid "Failed to write to file %s."
-msgstr "Zapisanie do profilu %s nie powiodło się."
-
-#: ../src/netconfpkg/exception.py:377
-#, python-format
-msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
-msgstr ""
-"Stan aplikacji został pomyślnie\n"
-"zapisany do pliku \"%s\"."
-
 #: ../src/netconfpkg/NCProfileList.py:205
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
@@ -450,113 +168,6 @@ msgstr ""
 "Proszę wybrać inne urządzenie sprzętowe\n"
 "lub aktywować tylko jedno z nich."
 
-#: ../src/netconfpkg/NC_functions.py:94
-msgid "Common"
-msgstr "Wspólny"
-
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:139
-msgid "Active"
-msgstr "Aktywne"
-
-#: ../src/netconfpkg/NC_functions.py:140
-msgid "Inactive"
-msgstr "Nieaktywne"
-
-#: ../src/netconfpkg/NC_functions.py:147
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "Hardware (CRTSCTS)"
-msgstr "Sprzętowa (CRTSCTS)"
-
-#: ../src/netconfpkg/NC_functions.py:148
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "Software (XON/XOFF)"
-msgstr "Programowa (XON/XOFF)"
-
-#: ../src/netconfpkg/NC_functions.py:149 ../src/netconfpkg/NCDialup.py:36
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/gui/modemconfig.glade.h:8
-msgid "None"
-msgstr "Brak"
-
-#: ../src/netconfpkg/NC_functions.py:227
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr ""
-"Czy następujące wymagane przez system pakiety mają zostać zainstalowane?"
-
-#: ../src/netconfpkg/NC_functions.py:240
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr "Nie zainstalowałeś następujących wymaganych przez system pakietów!"
-
-#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
-#, python-format
-msgid ""
-"Error removing\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"Błąd podczas usuwania\n"
-"%s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:796
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Błąd podczas kopiowania\n"
-"%s\n"
-"do %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:806
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Błąd podczas dowiązywania\n"
-"%s\n"
-"do %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:816
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Błąd podczas zmieniania nazwy\n"
-"%s\n"
-"na %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:824
-#, python-format
-msgid ""
-"Error creating directory!\n"
-"%s"
-msgstr ""
-"Błąd podczas tworzenia folderu!\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:952
-#, python-format
-msgid "Linking %s to devices and putting it in profile %s."
-msgstr "Dowiązywanie %s do urządzenia i umieszczanie w profilu %s."
-
 #: ../src/netconfpkg/NCDialup.py:32
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
 msgid "auto"
@@ -566,6 +177,12 @@ msgstr "automatycznie"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
 msgid "manual"
 msgstr "ręcznie"
+
+#: ../src/netconfpkg/NCDialup.py:36 ../src/netconfpkg/NC_functions.py:149
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
+#: ../src/netconfpkg/gui/modemconfig.glade.h:8
+msgid "None"
+msgstr "Brak"
 
 #: ../src/netconfpkg/NCDialup.py:37
 msgid "Afghanistan"
@@ -860,383 +477,125 @@ msgstr "Serbia"
 msgid "Montenegro"
 msgstr "Czarnogóra"
 
-#: ../src/netconfpkg/NCHardware.py:21
-msgid "inactive"
-msgstr "nieaktywne"
+#: ../src/netconfpkg/genClass.py:297 ../src/netconf-cmd.py:329
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "Błąd podczas analizowania wiersza: %s"
 
-#. not found in last config and not in actual system
-#: ../src/netconfpkg/NCHardware.py:22
-msgid "system"
-msgstr "system"
+#: ../src/netconfpkg/NCDevice.py:219
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr "%s, niewskazane urządzenie lub alias nie jest liczbą!"
 
-#. found in system
-#: ../src/netconfpkg/NCHardware.py:23
-msgid "configured"
-msgstr "skonfigurowany"
+#: ../src/netconfpkg/NCDevice.py:441 ../src/netconfpkg/plugins/NCDevIsdn.py:77
+msgid "Network device activating..."
+msgstr "Aktywowanie urządzenia sieciowego..."
 
-#. found in config but not in system
-#: ../src/netconfpkg/NCHardware.py:24
-msgid "ok"
-msgstr "OK"
+#: ../src/netconfpkg/NCDevice.py:442 ../src/netconfpkg/plugins/NCDevIsdn.py:78
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "Aktywowanie urządzenia sieciowego %s, proszę czekać..."
 
-#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
-msgid "CTC Device"
-msgstr "Urządzenie CTC"
+#: ../src/netconfpkg/NCDevice.py:444 ../src/netconfpkg/plugins/NCDevIsdn.py:80
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Nie można aktywować urządzenia sieciowego %s!\n"
 
-#: ../src/netconfpkg/gui/ethernethardware.py:90
-msgid "Command failed: "
-msgstr "Polecenie nie powiodło się: "
+#: ../src/netconfpkg/NCDevice.py:461
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
+msgid "Network device deactivating..."
+msgstr "Deaktywowanie urządzenia sieciowego..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:91
-msgid "Output:\n"
-msgstr "Wyjście:\n"
+#: ../src/netconfpkg/NCDevice.py:462
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "Deaktywowanie urządzenia sieciowego %s, proszę czekać..."
 
-#: ../src/netconfpkg/gui/ethernethardware.py:93
-msgid ""
-"The Ethernet card could not be initialized. Please verify your settings and "
-"try again."
-msgstr ""
-"Karta ethernet nie może zostać zainicjowana. Sprawdź swoje ustawienia i "
-"spróbuj jeszcze raz."
+#: ../src/netconfpkg/NCDevice.py:464
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Nie można deaktywować urządzenia sieciowego %s!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:87
+#: ../src/netconfpkg/NCCipe.py:152
 #, python-format
 msgid ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
 msgstr ""
-"Nie można znaleźć pliku \"%s\".\n"
-"Sprawdź instalację!\n"
-"Uruchom: \"rpm -V system-config-network\"\n"
+"Brakuje folderu %s!\n"
+"Utworzymy go dla ciebie!\n"
+"Powinieneś zainstalować pakiet RPM cipe!\n"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:96
+#: ../src/netconfpkg/NCCipe.py:156
 #, python-format
 msgid ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Could not create\n"
+"directory %s!"
 msgstr ""
-"Nie można wczytać pliku \"%s\".\n"
-"Sprawdź instalację!\n"
-"Uruchom: \"rpm -V system-config-network\"\n"
+"Nie można utworzyć\n"
+"folderu %s!"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:586
+#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
+msgid "Exception Occurred"
+msgstr "Wystąpił wyjątek"
+
+#: ../src/netconfpkg/exception.py:59
+msgid "_Debug"
+msgstr "_Debuguj"
+
+#: ../src/netconfpkg/exception.py:60
+msgid "_Save to file"
+msgstr "Zapi_sz do pliku"
+
+#: ../src/netconfpkg/exception.py:75
 #, python-format
 msgid ""
-"Failed to run:\n"
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Wystąpił nieobsługiwany wyjątek. Najprawdopodobniej jest to błąd. Proszę "
+"zapisać plik zrzutu i wypełnić dokładnie raport o błędzie w %s na stronach "
+"https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconfpkg/exception.py:277
+#, python-format
+msgid "Error: %s: %s"
+msgstr "Błąd: %s: %s"
+
+#: ../src/netconfpkg/exception.py:280
+#, python-format
+msgid ""
+"%s\n"
+"\n"
+"%s:\n"
 "%s"
 msgstr ""
-"Nie powiodło się uruchomienie:\n"
+"%s\n"
+"\n"
+"%s:\n"
 "%s"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:589
-msgid "Succeeded. Please read the output."
-msgstr "Powodzenie. Przeczytaj informacje wynikowe."
+#: ../src/netconfpkg/exception.py:354
+msgid "Specify a file to save the dump"
+msgstr "Określ plik do zapisania zrzutu"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
-msgid "xDSL connection"
-msgstr "Połączenie xDSL"
+#: ../src/netconfpkg/exception.py:373
+#, python-format
+msgid "Failed to write to file %s."
+msgstr "Zapisanie do profilu %s nie powiodło się."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
-msgid ""
-"Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber "
-"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
-"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
-"uploads at the same speed), and several others.  These types of connections "
-"are common in the United States, and are gaining acceptance elsewhere.  "
-"Speeds vary according to the technology used, but generally range from "
-"144kbps to 1.0Mbps."
-msgstr ""
-"Utwórz połączenie xDSL. Jest to rodzaj połączenia, który korzysta z jednego "
-"z wielu rodzajów łączności szerokopasmowej, zwanego Digital Subscriber "
-"Lines. Na liście połączeń szerokopasmowych znajdują się ADSL (asymetryczne, "
-"pobieranie szybsze od wysyłania), IDSL (po linii ISDN), SDSL (symetrycznie, "
-"pobieranie i wysyłanie mają tę samą prędkość) i kilka innych. Te rodzaje "
-"połączeń są popularne w Stanach Zjednoczonych i stają się coraz bardziej "
-"popularne w reszcie świata. Prędkość zależy od technologii, ale zwykle "
-"mieści się w przedziale od 144 kb/s do 1.0 Mb/s."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
-#: ../src/netconfpkg/gui/TokenRingInterface.py:197
-#: ../src/netconfpkg/gui/WirelessInterface.py:317
-#: ../src/netconfpkg/gui/CipeInterface.py:137
-#: ../src/netconfpkg/gui/editipsec.py:285
-#: ../src/netconfpkg/gui/DialupDruid.py:223
-#: ../src/netconfpkg/gui/EthernetInterface.py:210
-#: ../src/netconfpkg/gui/PTPInterface.py:200
-msgid "You have selected the following information:"
-msgstr "Wybrałeś następujące parametry:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
-msgid "Ethernet device:"
-msgstr "Urządzenie ethernet:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
-#: ../src/netconfpkg/gui/DialupDruid.py:226
-msgid "Provider name:"
-msgstr "Nazwa dostawcy:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
-#: ../src/netconfpkg/gui/DialupDruid.py:228
-msgid "Login name:"
-msgstr "Login:"
-
-#: ../src/netconfpkg/gui/iucvconfig.py:39
-msgid "IUCV Device"
-msgstr "Urządzenie IUCV"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:86
-msgid "ISDN connection"
-msgstr "Połączenie ISDN"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:92
-msgid ""
-"Create a new ISDN connection. This is a connection that uses an Integrated "
-"Services Digital Network line to dial into to your Internet Service "
-"Provider. This type of technology requires a special phone line to be "
-"installed by your telephone company. It also requires a device known as a "
-"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
-"type of connection is popular in Europe and several other technologically "
-"advanced regions.  It is available but uncommon in the USA.  Speeds range "
-"from 64kbps to 128kbps."
-msgstr ""
-"Utwórz nowe połączenie ISDN. Jest to rodzaj połączenia, który używa linii "
-"Integrated Services Digital Network, aby wdzwonić się do dostawcy Internetu. "
-"Ta technologia wymaga instalacji specjalnego rodzaju linii telefonicznej "
-"przez twoją firmę telefoniczną. Wymagane jest także urządzenie zwane "
-"Terminal Adapter do zakończenia linii ISDN od twojego ISP. Ten rodzaj "
-"połączeń popularny jest w Europie i kilku innych technologicznie "
-"zaawansowanych regionach, jest dostępne również w USA, ale niezbyt często. "
-"Prędkość waha się od 64 kb/s do 128 kb/s."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:111
-msgid "Token Ring connection"
-msgstr "Połączenie token ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:117
-msgid "Create a new Token Ring connection."
-msgstr "Utwórz nowe połączenie token ring."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:179
-msgid "Other Tokenring Card"
-msgstr "Inna karta token ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:198
-#: ../src/netconfpkg/gui/WirelessInterface.py:318
-#: ../src/netconfpkg/gui/CipeInterface.py:138
-#: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/PTPInterface.py:201
-msgid "Device:"
-msgstr "Urządzenie:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
-#: ../src/netconfpkg/gui/WirelessInterface.py:329
-#: ../src/netconfpkg/gui/EthernetInterface.py:222
-#: ../src/netconfpkg/gui/PTPInterface.py:211
-#: ../src/netconfpkg/gui/edithosts.glade.h:2
-msgid "Address:"
-msgstr "Adres:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:210
-#: ../src/netconfpkg/gui/WirelessInterface.py:330
-#: ../src/netconfpkg/gui/EthernetInterface.py:223
-msgid "Subnet mask:"
-msgstr "Maska sieci:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
-#: ../src/netconfpkg/gui/WirelessInterface.py:331
-#: ../src/netconfpkg/gui/EthernetInterface.py:224
-msgid "Default gateway address:"
-msgstr "Adres domyślnej bramy:"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
-#: ../src/netconfpkg/gui/WirelessInterface.py:333
-#: ../src/netconfpkg/gui/EthernetInterface.py:226
-msgid "Automatically obtain IP address settings with:"
-msgstr "Automatycznie pobierz ustawienia adresu IP z:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:34
-#: ../src/netconfpkg/gui/WirelessInterface.py:143
-#: ../src/netconfpkg/gui/WirelessInterface.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/wirelessconfig.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:95
-#: ../src/netconfpkg/gui/wirelessconfig.py:164
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
-msgid "Auto"
-msgstr "Automatycznie"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:35
-#: ../src/netconfpkg/gui/wirelessconfig.py:38
-msgid "Ad-Hoc"
-msgstr "Ad-Hoc"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:36
-#: ../src/netconfpkg/gui/wirelessconfig.py:39
-msgid "Managed"
-msgstr "Zarządzana"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:40
-msgid "Master"
-msgstr "Główna"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:152
-msgid "Wireless connection"
-msgstr "Połączenie bezprzewodowe"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:158
-msgid "Create a new wireless connection."
-msgstr "Utwórz nowe połączenie bezprzewodowe."
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
-msgid "BitRate"
-msgstr "Prędkość bitowa"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:297
-msgid "Other Wireless Card"
-msgstr "Inna karta bezprzewodowa"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:336
-msgid "Mode:"
-msgstr "Tryb:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:337
-msgid "ESSID (network ID):"
-msgstr "ESSID (ID sieci):"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:339
-msgid "Automatic"
-msgstr "Automatycznie"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:343
-msgid "Channel:"
-msgstr "Kanał:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:344
-msgid "Transmit rate:"
-msgstr "Prędkość transmisji:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:345
-msgid "Key: "
-msgstr "Klucz: "
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:351
-msgid "encryption disabled"
-msgstr "szyfrowanie wyłączone"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#: ../src/netconfpkg/exception.py:377
 #, python-format
 msgid ""
-"Command failed: %s\n"
-"\n"
-"Output:\n"
-"%s\n"
+"The application's state has been successfully\n"
+"written to the file '%s'."
 msgstr ""
-"Polecenie nie powiodło się: %s\n"
-"\n"
-"Wyjście:\n"
-"%s\n"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:67
-msgid ""
-"The Token Ring card could not be initialized. Please verify your settings "
-"and try again."
-msgstr ""
-"Karta token ring nie może zostać zainicjowana. Sprawdź swoje ustawienia i "
-"spróbuj jeszcze raz."
-
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
-#, python-format
-msgid ""
-"Nickname %s is already in use!\n"
-"Please choose another one.\n"
-msgstr ""
-"Pseudonim %s jest już używany!\n"
-"Wybierz inny.\n"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:78
-msgid "Modem connection"
-msgstr "Połączenie modemowe"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:84
-msgid ""
-"Create a new Modem connection.  This is a connection that uses a serial "
-"analog modem to dial into to your Internet Service Provider. These modems "
-"use sound over a normal copper telephone line to transmit data.  These types "
-"of connections are available just about anywhere in the world where there is "
-"a phone system."
-msgstr ""
-"Utwórz nowe połączenie modemowe. To połączenie wykorzystuje modem analogowy "
-"podłączony do portu szeregowego, aby wdzwonić się do ISP. Modemy używają "
-"dźwięku, aby przesyłać dane po tradycyjnej linii telefonicznej. Ten rodzaj "
-"połączenia jest dostępny na całym świecie, wszędzie tam, gdzie są linie "
-"telefoniczne."
-
-#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
-#: ../src/netconfpkg/gui/ModemInterface.py:113
-msgid "Modem probing..."
-msgstr "Wykrywanie modemu..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:117
-msgid "Probing for Modems, please wait..."
-msgstr "Wykrywanie modemów, proszę czekać..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:132
-msgid "No modem was found on your system."
-msgstr "Nie znaleziono żadnego modemu w systemie."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:161
-#: ../src/netconfpkg/gui/modemconfig.py:109
-msgid "Generic Modem"
-msgstr "Zwykły modem"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:173
-#: ../src/netconfpkg/gui/modemconfig.py:136
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
-#: ../src/netconfpkg/gui/modemconfig.glade.h:9
-msgid "Off"
-msgstr "Wyłączone"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:175
-#: ../src/netconfpkg/gui/modemconfig.py:138
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
-#: ../src/netconfpkg/gui/modemconfig.glade.h:4
-msgid "Low"
-msgstr "Nisko"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:177
-#: ../src/netconfpkg/gui/modemconfig.py:140
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
-#: ../src/netconfpkg/gui/modemconfig.glade.h:5
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
-msgid "Medium"
-msgstr "Średnio"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:179
-#: ../src/netconfpkg/gui/modemconfig.py:142
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
-#: ../src/netconfpkg/gui/modemconfig.glade.h:3
-msgid "High"
-msgstr "Wysoko"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:181
-#: ../src/netconfpkg/gui/modemconfig.py:144
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
-#: ../src/netconfpkg/gui/modemconfig.glade.h:11
-msgid "Very High"
-msgstr "Bardzo wysoko"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:46
-msgid "IUCV connection"
-msgstr "Połączenie IUCV"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:52
-msgid "Create a new IUCV connection."
-msgstr "Utwórz nowe połączenie IUCV."
+"Stan aplikacji został pomyślnie\n"
+"zapisany do pliku \"%s\"."
 
 #: ../src/netconfpkg/gui/maindialog.py:275
 msgid "Loading configuration..."
@@ -1424,11 +783,37 @@ msgstr "Czy na pewno chcesz usunąć \"%s\"?"
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "Czy na pewno chcesz usunąć wszystkie urządzenia używające \"%s\"?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1641
+#: ../src/netconfpkg/gui/maindialog.py:1657 ../src/neat-control.py:146
+#: ../src/neat-control.py:163 ../src/netconf-cmd.py:98
+msgid "Copyright (c) 2001-2005 Red Hat, Inc."
+msgstr "Copyright (c) 2001-2005 Red Hat, Inc."
+
+#: ../src/netconfpkg/gui/maindialog.py:1642 ../src/neat-control.py:147
+#: ../src/netconf-cmd.py:99
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"To oprogramowanie jest rozprowadzane na licencji GPL. Wszelkie błędy proszę "
+"zgłaszać do system śledzenia błędów firmy Red Hat: http://bugzilla.redhat."
+"com/"
+
 #: ../src/netconfpkg/gui/maindialog.py:1660
 msgid "translator_credits"
 msgstr ""
 "Tom Berner <tom@man.lodz.pl>, 2004\n"
 "Piotr Drąg <raven@pmail.pl>, 2007"
+
+#: ../src/netconfpkg/gui/maindialog.py:1661 ../src/neat-control.py:170
+msgid ""
+"This software is distributed under the GPL. \n"
+"Please Report bugs to Red Hat's Bug Tracking \n"
+"System: http://bugzilla.redhat.com/"
+msgstr ""
+"To oprogramowanie jest rozprowadzane na licencji GPL. \n"
+"Wszelkie błędy proszę zgłaszać do systemu śledzenia \n"
+"błędów firmy Red Hat: http://bugzilla.redhat.com/"
 
 #: ../src/netconfpkg/gui/maindialog.py:1739
 #, python-format
@@ -1439,6 +824,218 @@ msgstr "Aby aktywować połączenie IPsec %s musisz zapisać zmiany."
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "Aby deaktywować połączenie IPsec %s musisz zapisać zmiany."
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:37
+#: ../src/netconfpkg/gui/wirelessconfig.py:95
+#: ../src/netconfpkg/gui/wirelessconfig.py:164
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/WirelessInterface.py:34
+#: ../src/netconfpkg/gui/WirelessInterface.py:143
+#: ../src/netconfpkg/gui/WirelessInterface.py:197
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Auto"
+msgstr "Automatycznie"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:38
+#: ../src/netconfpkg/gui/WirelessInterface.py:35
+msgid "Ad-Hoc"
+msgstr "Ad-Hoc"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:39
+#: ../src/netconfpkg/gui/WirelessInterface.py:36
+msgid "Managed"
+msgstr "Zarządzana"
+
+#: ../src/netconfpkg/gui/wirelessconfig.py:40
+#: ../src/netconfpkg/gui/WirelessInterface.py:37
+msgid "Master"
+msgstr "Główna"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:87
+#, python-format
+msgid ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Nie można znaleźć pliku \"%s\".\n"
+"Sprawdź instalację!\n"
+"Uruchom: \"rpm -V system-config-network\"\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Nie można wczytać pliku \"%s\".\n"
+"Sprawdź instalację!\n"
+"Uruchom: \"rpm -V system-config-network\"\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:586
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"Nie powiodło się uruchomienie:\n"
+"%s"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:589
+msgid "Succeeded. Please read the output."
+msgstr "Powodzenie. Przeczytaj informacje wynikowe."
+
+#: ../src/netconfpkg/gui/DialupDruid.py:223
+#: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/EthernetInterface.py:210
+#: ../src/netconfpkg/gui/CipeInterface.py:137
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/TokenRingInterface.py:197
+#: ../src/netconfpkg/gui/WirelessInterface.py:317
+#: ../src/netconfpkg/gui/PTPInterface.py:200
+msgid "You have selected the following information:"
+msgstr "Wybrałeś następujące parametry:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Sprzęt:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:226
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+msgid "Provider name:"
+msgstr "Nazwa dostawcy:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:228
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+msgid "Login name:"
+msgstr "Login:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Numer telefonu:"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "Połączenie ISDN"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:92
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Utwórz nowe połączenie ISDN. Jest to rodzaj połączenia, który używa linii "
+"Integrated Services Digital Network, aby wdzwonić się do dostawcy Internetu. "
+"Ta technologia wymaga instalacji specjalnego rodzaju linii telefonicznej "
+"przez twoją firmę telefoniczną. Wymagane jest także urządzenie zwane "
+"Terminal Adapter do zakończenia linii ISDN od twojego ISP. Ten rodzaj "
+"połączeń popularny jest w Europie i kilku innych technologicznie "
+"zaawansowanych regionach, jest dostępne również w USA, ale niezbyt często. "
+"Prędkość waha się od 64 kb/s do 128 kb/s."
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#, python-format
+msgid ""
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
+msgstr ""
+"Polecenie nie powiodło się: %s\n"
+"\n"
+"Wyjście:\n"
+"%s\n"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:67
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr ""
+"Karta token ring nie może zostać zainicjowana. Sprawdź swoje ustawienia i "
+"spróbuj jeszcze raz."
+
+#: ../src/netconfpkg/gui/editipsec.py:217
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr "Podaj unikalny parametr bezpieczeństwa index między 256 a 4294967295."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
+msgid "%s connection"
+msgstr "Połączenie %s"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
+msgid "Create a new %s connection."
+msgstr "Utwórz nowe połączenie %s."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:95
+msgid "This wizard still has to be written."
+msgstr "Ten kreator jeszcze nie został napisany."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:96
+msgid "Press Finish to get the standard configuration dialog."
+msgstr "Naciśnij Zakończ, aby otworzyć standardowe okno konfiguracji."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:97
+msgid "Then, at first, enter the nickname for the device."
+msgstr "Wtedy, na początku, podaj pseudonim urządzenia."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:134
+msgid "This device can not be edited with this tool!"
+msgstr "To urządzenie nie może być modyfikowane tym narzędziem!"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:116
+msgid "Ethernet connection"
+msgstr "Połączenie ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:122
+msgid "Create a new ethernet connection."
+msgstr "Utwórz nowe połączenie ethernet."
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:191
+msgid "Other Ethernet Card"
+msgstr "Inna karta ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:211
+#: ../src/netconfpkg/gui/CipeInterface.py:138
+#: ../src/netconfpkg/gui/TokenRingInterface.py:198
+#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/PTPInterface.py:201
+msgid "Device:"
+msgstr "Urządzenie:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:222
+#: ../src/netconfpkg/gui/TokenRingInterface.py:209
+#: ../src/netconfpkg/gui/WirelessInterface.py:329
+#: ../src/netconfpkg/gui/PTPInterface.py:211
+#: ../src/netconfpkg/gui/edithosts.glade.h:2
+msgid "Address:"
+msgstr "Adres:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:210
+#: ../src/netconfpkg/gui/WirelessInterface.py:330
+msgid "Subnet mask:"
+msgstr "Maska sieci:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:224
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: ../src/netconfpkg/gui/WirelessInterface.py:331
+msgid "Default gateway address:"
+msgstr "Adres domyślnej bramy:"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:226
+#: ../src/netconfpkg/gui/TokenRingInterface.py:213
+#: ../src/netconfpkg/gui/WirelessInterface.py:333
+msgid "Automatically obtain IP address settings with:"
+msgstr "Automatycznie pobierz ustawienia adresu IP z:"
 
 #: ../src/netconfpkg/gui/CipeInterface.py:89
 msgid "CIPE (VPN) connection"
@@ -1515,10 +1112,202 @@ msgstr "Tajny klucz:"
 msgid "You must enter a secret key or generate one"
 msgstr "Musisz podać tajny klucz lub go utworzyć"
 
-#: ../src/netconfpkg/gui/editipsec.py:217
+#: ../src/netconfpkg/gui/ethernethardware.py:90
+msgid "Command failed: "
+msgstr "Polecenie nie powiodło się: "
+
+#: ../src/netconfpkg/gui/ethernethardware.py:91
+msgid "Output:\n"
+msgstr "Wyjście:\n"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:93
 msgid ""
-"Please enter a unique security parameter index between 256 and 4294967295."
-msgstr "Podaj unikalny parametr bezpieczeństwa index między 256 a 4294967295."
+"The Ethernet card could not be initialized. Please verify your settings and "
+"try again."
+msgstr ""
+"Karta ethernet nie może zostać zainicjowana. Sprawdź swoje ustawienia i "
+"spróbuj jeszcze raz."
+
+#: ../src/netconfpkg/gui/iucvconfig.py:39
+msgid "IUCV Device"
+msgstr "Urządzenie IUCV"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:46
+msgid "IUCV connection"
+msgstr "Połączenie IUCV"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:52
+msgid "Create a new IUCV connection."
+msgstr "Utwórz nowe połączenie IUCV."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:78
+msgid "Modem connection"
+msgstr "Połączenie modemowe"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:84
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Utwórz nowe połączenie modemowe. To połączenie wykorzystuje modem analogowy "
+"podłączony do portu szeregowego, aby wdzwonić się do ISP. Modemy używają "
+"dźwięku, aby przesyłać dane po tradycyjnej linii telefonicznej. Ten rodzaj "
+"połączenia jest dostępny na całym świecie, wszędzie tam, gdzie są linie "
+"telefoniczne."
+
+#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
+#: ../src/netconfpkg/gui/ModemInterface.py:113
+msgid "Modem probing..."
+msgstr "Wykrywanie modemu..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:117
+msgid "Probing for Modems, please wait..."
+msgstr "Wykrywanie modemów, proszę czekać..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:132
+msgid "No modem was found on your system."
+msgstr "Nie znaleziono żadnego modemu w systemie."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:161
+#: ../src/netconfpkg/gui/modemconfig.py:109
+msgid "Generic Modem"
+msgstr "Zwykły modem"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:173
+#: ../src/netconfpkg/gui/modemconfig.py:136
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
+#: ../src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "Off"
+msgstr "Wyłączone"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:175
+#: ../src/netconfpkg/gui/modemconfig.py:138
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
+#: ../src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "Low"
+msgstr "Nisko"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:177
+#: ../src/netconfpkg/gui/modemconfig.py:140
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: ../src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "Medium"
+msgstr "Średnio"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:179
+#: ../src/netconfpkg/gui/modemconfig.py:142
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
+#: ../src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "High"
+msgstr "Wysoko"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:181
+#: ../src/netconfpkg/gui/modemconfig.py:144
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
+#: ../src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "Very High"
+msgstr "Bardzo wysoko"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
+msgid "xDSL connection"
+msgstr "Połączenie xDSL"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"Utwórz połączenie xDSL. Jest to rodzaj połączenia, który korzysta z jednego "
+"z wielu rodzajów łączności szerokopasmowej, zwanego Digital Subscriber "
+"Lines. Na liście połączeń szerokopasmowych znajdują się ADSL (asymetryczne, "
+"pobieranie szybsze od wysyłania), IDSL (po linii ISDN), SDSL (symetrycznie, "
+"pobieranie i wysyłanie mają tę samą prędkość) i kilka innych. Te rodzaje "
+"połączeń są popularne w Stanach Zjednoczonych i stają się coraz bardziej "
+"popularne w reszcie świata. Prędkość zależy od technologii, ale zwykle "
+"mieści się w przedziale od 144 kb/s do 1.0 Mb/s."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
+msgid "Ethernet device:"
+msgstr "Urządzenie ethernet:"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:111
+msgid "Token Ring connection"
+msgstr "Połączenie token ring"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:117
+msgid "Create a new Token Ring connection."
+msgstr "Utwórz nowe połączenie token ring."
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:179
+msgid "Other Tokenring Card"
+msgstr "Inna karta token ring"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "Połączenie bezprzewodowe"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "Utwórz nowe połączenie bezprzewodowe."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:233
+msgid "BitRate"
+msgstr "Prędkość bitowa"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:297
+msgid "Other Wireless Card"
+msgstr "Inna karta bezprzewodowa"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:336
+msgid "Mode:"
+msgstr "Tryb:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:337
+msgid "ESSID (network ID):"
+msgstr "ESSID (ID sieci):"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:339
+msgid "Automatic"
+msgstr "Automatycznie"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:343
+msgid "Channel:"
+msgstr "Kanał:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:344
+msgid "Transmit rate:"
+msgstr "Prędkość transmisji:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:345
+msgid "Key: "
+msgstr "Klucz: "
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:351
+msgid "encryption disabled"
+msgstr "szyfrowanie wyłączone"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
+msgid "CTC connection"
+msgstr "Połączenie CTC"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
+msgid "Create a new CTC connection."
+msgstr "Utwórz nowe połączenie CTC."
+
+#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
+msgid "CTC Device"
+msgstr "Urządzenie CTC"
 
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
 msgid "IP address of tunnel device: "
@@ -1544,33 +1333,18 @@ msgstr "Lokalny wirtualny adres: "
 msgid "Secret key: "
 msgstr "Tajny klucz: "
 
-#: ../src/netconfpkg/gui/DialupDruid.py:225
-msgid "Hardware:"
-msgstr "Sprzęt:"
+#: ../src/netconfpkg/gui/PTPInterface.py:212
+msgid "Point to Point (IP):"
+msgstr "Punkt-punkt (IP):"
 
-#: ../src/netconfpkg/gui/DialupDruid.py:229
-msgid "Phone number:"
-msgstr "Numer telefonu:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:116
-msgid "Ethernet connection"
-msgstr "Połączenie ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:122
-msgid "Create a new ethernet connection."
-msgstr "Utwórz nowe połączenie ethernet."
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:191
-msgid "Other Ethernet Card"
-msgstr "Inna karta ethernet"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
-msgid "CTC connection"
-msgstr "Połączenie CTC"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
-msgid "Create a new CTC connection."
-msgstr "Utwórz nowe połączenie CTC."
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"Pseudonim %s jest już używany!\n"
+"Wybierz inny.\n"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:237
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
@@ -1632,35 +1406,106 @@ msgstr "brak"
 msgid "Modem Dialup Configuration"
 msgstr "Konfiguracja modemu dial-up"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:82
+#: ../src/netconfpkg/NC_functions.py:94
+msgid "Common"
+msgstr "Wspólny"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:139
+msgid "Active"
+msgstr "Aktywne"
+
+#: ../src/netconfpkg/NC_functions.py:140
+msgid "Inactive"
+msgstr "Nieaktywne"
+
+#: ../src/netconfpkg/NC_functions.py:147
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "Hardware (CRTSCTS)"
+msgstr "Sprzętowa (CRTSCTS)"
+
+#: ../src/netconfpkg/NC_functions.py:148
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "Software (XON/XOFF)"
+msgstr "Programowa (XON/XOFF)"
+
+#: ../src/netconfpkg/NC_functions.py:227
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr ""
+"Czy następujące wymagane przez system pakiety mają zostać zainstalowane?"
+
+#: ../src/netconfpkg/NC_functions.py:240
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr "Nie zainstalowałeś następujących wymaganych przez system pakietów!"
+
+#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
 #, python-format
-msgid "%s connection"
-msgstr "Połączenie %s"
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"Błąd podczas usuwania\n"
+"%s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:85
+#: ../src/netconfpkg/NC_functions.py:805
 #, python-format
-msgid "Create a new %s connection."
-msgstr "Utwórz nowe połączenie %s."
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Błąd podczas kopiowania\n"
+"%s\n"
+"do %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:95
-msgid "This wizard still has to be written."
-msgstr "Ten kreator jeszcze nie został napisany."
+#: ../src/netconfpkg/NC_functions.py:815
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Błąd podczas dowiązywania\n"
+"%s\n"
+"do %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:96
-msgid "Press Finish to get the standard configuration dialog."
-msgstr "Naciśnij Zakończ, aby otworzyć standardowe okno konfiguracji."
+#: ../src/netconfpkg/NC_functions.py:825
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Błąd podczas zmieniania nazwy\n"
+"%s\n"
+"na %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:97
-msgid "Then, at first, enter the nickname for the device."
-msgstr "Wtedy, na początku, podaj pseudonim urządzenia."
+#: ../src/netconfpkg/NC_functions.py:833
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"Błąd podczas tworzenia folderu!\n"
+"%s"
 
-#: ../src/netconfpkg/gui/GenericInterface.py:134
-msgid "This device can not be edited with this tool!"
-msgstr "To urządzenie nie może być modyfikowane tym narzędziem!"
-
-#: ../src/netconfpkg/gui/PTPInterface.py:212
-msgid "Point to Point (IP):"
-msgstr "Punkt-punkt (IP):"
+#: ../src/netconfpkg/NC_functions.py:961
+#, python-format
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "Dowiązywanie %s do urządzenia i umieszczanie w profilu %s."
 
 #: ../src/netconfpkg/NCIPsec.py:186
 msgid "IPsec activating..."
@@ -1690,39 +1535,6 @@ msgstr "Deaktywowanie połączenia %s IPsec, proszę czekać..."
 msgid "Cannot deactivate IPsec connection %s!\n"
 msgstr "Nie można deaktywować połączenia %s IPsec!\n"
 
-#: ../src/netconfpkg/NCCipe.py:152
-#, python-format
-msgid ""
-"Directory %s is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
-msgstr ""
-"Brakuje folderu %s!\n"
-"Utworzymy go dla ciebie!\n"
-"Powinieneś zainstalować pakiet RPM cipe!\n"
-
-#: ../src/netconfpkg/NCCipe.py:156
-#, python-format
-msgid ""
-"Could not create\n"
-"directory %s!"
-msgstr ""
-"Nie można utworzyć\n"
-"folderu %s!"
-
-#: ../src/netconfpkg/NCDeviceList.py:117
-msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr "Zmień następujące pseudonimy ze względu na skrypty startowe:\n"
-
-#: ../src/netconfpkg/NCDeviceList.py:120
-msgid "Nicknames changed"
-msgstr "Zmieniono pseudonimy"
-
-#: ../src/netconfpkg/NCDevice.py:219
-#, python-format
-msgid "%s, Device not specified or alias not a number!"
-msgstr "%s, niewskazane urządzenie lub alias nie jest liczbą!"
-
 #: ../src/netconf.py:55
 #, python-format
 msgid "Error: %s, %s!"
@@ -1731,6 +1543,24 @@ msgstr "Błąd: %s, %s!"
 #: ../src/netconf.py:57
 msgid "Starting text version"
 msgstr "Uruchamianie wersji tekstowej"
+
+#: ../src/netconf.py:72 ../src/neat-control.py:50
+msgid "ERROR: Unable to initialize graphical environment. "
+msgstr "BŁĄD: nie można zainicjować środowiska graficznego. "
+
+#: ../src/netconf.py:73 ../src/neat-control.py:51
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+"Najczęstszym powodem błędu jest próba uruchomienia narzędzia poza "
+"środowiskiem graficznym. "
+
+#: ../src/netconf.py:74 ../src/neat-control.py:52
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr "Uruchom środowisko graficzne lub ustaw odpowiednią zmienną DISPLAY.\n"
 
 #: ../src/netconf.py:116
 msgid "Loading Network Configuration..."
@@ -1750,10 +1580,405 @@ msgstr ""
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Uruchom system-config-network z uprawnieniami roota!\n"
 
-#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
-msgid "Create Ethernet Device"
-msgstr "Utwórz urządzenie ethernet"
+#: ../src/neat-control.py:223
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "Nie można skonfigurować urządzenia sieciowego %s"
+
+#: ../src/neat-control.py:243
+msgid "Switching Profiles"
+msgstr "Przełączanie profili"
+
+#: ../src/neat-control.py:244
+#, python-format
+msgid "Switching to profile %s"
+msgstr "Przełączanie na profil %s"
+
+#: ../src/neat-control.py:245
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "Przełączenie na profil %s nie powiodło się"
+
+#. TBD
+#: ../src/neat-control.py:260
+msgid "To be rewritten!"
+msgstr "Zostanie nadpisane!"
+
+#: ../src/neat-control.py:367
+msgid " (active)"
+msgstr " (aktywne)"
+
+#: ../src/netconf-tui.py:99
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against system-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Wystąpił nieobsługiwany wyjątek. Najprawdopodobniej jest to błąd. Proszę "
+"zapisać plik zrzutu i wypełnić dokładnie raport o błędzie w system-config-"
+"network na stronach https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconf-tui.py:127
+msgid "Loading configuration"
+msgstr "Wczytywanie konfiguracji"
+
+#: ../src/netconf-tui.py:128
+msgid "Loading Device Configuration"
+msgstr "Wczytywanie konfiguracji urządzenia"
+
+#: ../src/netconf-tui.py:134
+msgid "Loading Hardware Configuration"
+msgstr "Wczytywanie konfiguracji sprzętu"
+
+#: ../src/netconf-tui.py:138
+msgid "Loading Profile Configuration"
+msgstr "Wczytywanie konfiguracji profilu"
+
+#: ../src/netconf-tui.py:152
+msgid "Which device type do you want to add?"
+msgstr "Jaki typ urządzenia chcesz dodać?"
+
+#: ../src/netconf-tui.py:153
+msgid "Add"
+msgstr "Dodaj"
+
+#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
+msgid "Modem"
+msgstr "Modem"
+
+#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
+msgid "ISDN"
+msgstr "ISDN"
+
+#: ../src/netconf-tui.py:203
+msgid "<New Device>"
+msgstr "<Nowe urządzenie>"
+
+#: ../src/netconf-tui.py:204
+msgid "Select A Device"
+msgstr "Wybierz urządzenie"
+
+#: ../src/netconf-tui.py:205
+msgid "Quit"
+msgstr "Zakończ"
+
+#: ../src/netconf-tui.py:222
+msgid ""
+"system-config-network - network configuration tool\n"
+"\n"
+"Usage: system-config-network -v --verbose -d --debug"
+msgstr ""
+"system-config-network - narzędzie konfiguracji sieci\n"
+"\n"
+"Użycie: system-config-network -v --verbose -d --debug"
+
+#: ../src/netconf-cmd.py:62
+#, python-format
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+"Wystąpił nieobsługiwany wyjątek. Najprawdopodobniej jest to błąd.\n"
+"Proszę dokładnie wypełnić raport o błędzie komponentu %s na\n"
+"stronie https://bugzilla.redhat.com/bugzilla\n"
+"używając tekstu zamieszczonego poniżej.\n"
+
+#: ../src/netconf-cmd.py:97
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr "%s - narzędzie wiersza poleceń do konfiguracji sieci"
+
+#: ../src/netconf-cmd.py:102
+#, python-format
+msgid "Usage: %s"
+msgstr "Użycie: %s"
+
+#: ../src/netconf-cmd.py:104
+msgid "switch / activate profile"
+msgstr "przełącz/aktywuj profil"
+
+#: ../src/netconf-cmd.py:106
+msgid "export / import hardware list"
+msgstr "wyeksportuj/zaimportuj listę sprzętu"
+
+#: ../src/netconf-cmd.py:108
+msgid "export / import IPsec list"
+msgstr "wyeksportuj/zaimportuj listę IPsec"
+
+#: ../src/netconf-cmd.py:110
+msgid "export / import device list (default)"
+msgstr "wyeksportuj/zaimportuj listę urządzeń (domyślne)"
+
+#: ../src/netconf-cmd.py:112
+msgid "export / import profile list"
+msgstr "wyeksportuj/zaimportuj listę profili"
+
+#: ../src/netconf-cmd.py:114
+msgid "set the root directory"
+msgstr "ustaw folder roota"
+
+#: ../src/netconf-cmd.py:116
+msgid "export list (default)"
+msgstr "wyeksportuj listę (domyślne)"
+
+#: ../src/netconf-cmd.py:117
+msgid "import list"
+msgstr "zaimportuj listę"
+
+#: ../src/netconf-cmd.py:119
+msgid "clear existing list prior of importing"
+msgstr "wyczyść aktualną listę przed importem"
+
+#: ../src/netconf-cmd.py:121
+msgid "import from file"
+msgstr "zaimportuj z pliku"
+
+#: ../src/netconf-cmd.py:264
+#, python-format
+msgid "Unknown option %s\n"
+msgstr "Nieznana opcja %s\n"
+
+#: ../src/netconf-cmd.py:325
+#, python-format
+msgid "Unknown List %s\n"
+msgstr "Nieznana lista %s\n"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+msgid "Allow all _users to enable and disable the device"
+msgstr "Pozwól wszystkim _użytkownikom na włączanie i wyłączanie urządzenia"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow dial on _demand"
+msgstr "Pozwól na wdzwanianie na żą_danie"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Allow the link come up on demand."
+msgstr "Pozwól na podnoszenie połączenia na żądanie."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Demand setting"
+msgstr "Ustawienia żądania"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+msgid "Enable IPv_6 configuration for this interface"
+msgstr "Włącz konfigurację IPv_6 dla tego interfejsu"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
+msgid "Enable synchronous PPP for the connection"
+msgstr "Włącz synchroniczne PPP dla połączenia"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Podaj nazwę koncentratora dostępowego, jeśli otrzymałeś ją od ISP. W "
+"większości przypadków można pozostawić ją pustą."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"Podaj nazwę usługi, jeśli wymaga tego ISP. Jeśli jej nie znasz, skontaktuj "
+"się ze swoim ISP. W większości przypadków można pozostawić ją pustą."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr ""
+"Podaj czas bezczynności w sekundach, po którym połączenie zostanie zerwane."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Podaj login, który otrzymałeś od swojego ISP."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr "Podaj nazwę tej konfiguracji, zwykle podaje się nazwę ISP."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"Podaj hasło dla konta. Jeśli go nie znasz, skontaktuj się ze swoim ISP."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Make this connection the default _route"
+msgstr "Ustaw to połączenie jako domyślną t_rasę"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Pass_word:"
+msgstr "_Hasło:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Restart if _connection dies"
+msgstr "Uruchom ponownie, jeśli przerwano połą_czenie"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+msgid "Use this form to enter your T-Online account data."
+msgstr "Użyj tego formularza do podania danych konta T-Online."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
+msgid "_AC-name:"
+msgstr "Nazwa _AC:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+msgid "_Activate device when computer starts"
+msgstr "_Aktywuj urządzenie podczas uruchamiania komputera"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+msgid "_Activate device when parent device starts"
+msgstr "_Aktywuj urządzenie podczas uruchamiania urządzenia macierzystego"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Advanced"
+msgstr "Z_aawansowane"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+msgid "_General"
+msgstr "_Ogólne"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
+msgid "_Hardware Device"
+msgstr "Urządzenie _sprzętowe"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Login name:"
+msgstr "_Login:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Maximum idle time:"
+msgstr "_Maksymalny czas bezczynności:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
+msgid "_Nickname:"
+msgstr "_Pseudonim:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
+msgid "_Provider"
+msgstr "_Dostawca"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+msgid "_Provider name:"
+msgstr "Nazwa _dostawcy:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid "_Route"
+msgstr "T_rasa"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
+msgid "_Service-name:"
+msgstr "Nazwa u_sługi:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
+msgid "_T-Online Account Setup"
+msgstr "Ustawienia konta _T-Online"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
+msgid "_Use synchronous PPP"
+msgstr "_Użyj synchronicznego PPP"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
+msgid "xDSL Configuration"
+msgstr "Konfiguracja xDSL"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Wybierz typ sprzętu"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "Typ sprzętu:"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr "Wybierz typ urządzenia sprzętowego, które chcesz utworzyć"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Token ring"
 
 #: ../src/netconfpkg/gui/tonline.glade.h:1
 msgid "<b>T-Online account</b>"
@@ -1791,78 +2016,111 @@ msgstr "Nume_r/przyrostek użytkownika:"
 msgid "_Personal password:"
 msgstr "Hasło _osobiste:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
-msgid "<b>Configuration for your remote partner</b>"
-msgstr "<b>Konfiguracja twojego zdalnego partnera</b>"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+msgid "<b>Account Type:</b>"
+msgstr "<b>Typ konta:</b>"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
-msgid "Configure Tunnel"
-msgstr "Skonfiguruj tunel"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "Skonfiguruj połączenie DSL"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
-msgid "Create Cipe Connection"
-msgstr "Utwórz połączenie CIPE"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "Utwórz połączenie DSL"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
-msgid "Lo_cal virtual address:"
-msgstr "Lo_kalny wirtualny adres:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Podaj nazwę dostawcy dla tego konta."
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Nowy interfejs"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "Urzą_dzenie ethernet:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
-msgid "Remote _virtual address:"
-msgstr "Zdalny _wirtualny adres:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Normal"
+msgstr "Normalne"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
-msgid "Remote peer p_ort:"
-msgstr "P_ort zdalnego partnera:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid ""
+"Normal\n"
+"T-Online"
+msgstr ""
+"Normalne\n"
+"T-Online"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "H_asło (powtórz):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Wybierz urządzenie ethernet podłączone do modemu DSL."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "Wybierz urządzenie ethernet dla tego konta."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+msgid "T-Online"
+msgstr "T-Online"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "Wybierz adapter token ring"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "_Adapter:"
+msgstr "_Adapter:"
+
 #: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
 #: ../src/netconfpkg/gui/ethernethardware.glade.h:3
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
 msgid "_Device:"
 msgstr "Urzą_dzenie:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/editipsec.glade.h:37
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
-msgid "_Generate"
-msgstr "_Utwórz"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+msgid "Configure Network Settings"
+msgstr "Skonfiguruj ustawienia sieci"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
-msgid "_Local port:"
-msgstr "Port _lokalny:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "Utwórz urządzenie ethernet"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
-msgid "_Remote peer address:"
-msgstr "Adres zdalnego pa_rtnera:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Karta ethernet"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
-msgid "_Secret key:"
-msgstr "_Tajny klucz:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+msgid "MTU:"
+msgstr "MTU:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
-msgid "_Tunnel through device:"
-msgstr "_Tunel przez urządzenie:"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Podaj wartość MTU, aby określić maksymalną wielkość pakietu przesyłanego "
+"przez interfejs. Na s390/s390x MTU ma domyślną wartość 1492"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
-msgid "_auto"
-msgstr "_automatycznie"
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Wybierz urządzenie ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "Wybierz kartę ethernet, którą chcesz skonfigurować:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:1
 msgid "<b>Phone number</b>"
@@ -1909,31 +2167,6 @@ msgstr ""
 msgid "Enter the area code needed to reach your internet provider."
 msgstr "Podaj kod regionu wymagany do osiągnięcia dostawcy Internetu."
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
-msgid "Enter the login name, that your ISP gave you here."
-msgstr "Podaj login, który otrzymałeś od swojego ISP."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr "Podaj nazwę tej konfiguracji, zwykle podaje się nazwę ISP."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
-msgid ""
-"Enter the password for your account. If you do not know it, please contact "
-"your ISP."
-msgstr ""
-"Podaj hasło dla konta. Jeśli go nie znasz, skontaktuj się ze swoim ISP."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:13
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
 msgid "Enter the phone number of your ISP (without prefix/area/country code)."
@@ -1953,16 +2186,15 @@ msgstr "Dostawca Internetu"
 msgid "Manual IP Address Settings"
 msgstr "Ręczne ustawienia adresu IP"
 
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+msgid "New Interface"
+msgstr "Nowy interfejs"
+
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:18
 msgid "PPP Settings"
 msgstr "Ustawienia PPP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
-msgid "Pass_word:"
-msgstr "_Hasło:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:20
 msgid "Prefi_x:"
@@ -1982,25 +2214,12 @@ msgstr "Wybierz dostawcę"
 msgid "Statically set IP addresses:"
 msgstr "Ustaw statycznie adresy IP:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-msgid "Use this form to enter your T-Online account data."
-msgstr "Użyj tego formularza do podania danych konta T-Online."
-
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:25
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:7
-#: ../src/netconfpkg/gui/editadress.glade.h:2
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/editadress.glade.h:2
 msgid "_Address:"
 msgstr "_Adres:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
-msgid "_Login name:"
-msgstr "_Login:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:27
 msgid "_Phone number:"
@@ -2012,149 +2231,178 @@ msgstr "Numer _telefonu:"
 msgid "_Subnet mask:"
 msgstr "Maska _sieci:"
 
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
-msgid "_T-Online Account Setup"
-msgstr "Ustawienia konta _T-Online"
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+msgid "Select Ethernet Adapter"
+msgstr "Wybierz adapter ethernetu"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
-msgid "Choose Hardware Type"
-msgstr "Wybierz typ sprzętu"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
-msgid "Hardware type:"
-msgstr "Typ sprzętu:"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Czas podłączenia:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type you want to create"
-msgstr "Wybierz typ urządzenia sprzętowego, które chcesz utworzyć"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "naciśnij prawym przyciskiem myszy, aby zobaczyć właściwości"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
-msgid "Token Ring"
-msgstr "Token ring"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+msgid "MT_U:"
+msgstr "MT_U:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
-#: ../src/netconfpkg/gui/modemconfig.glade.h:1
-msgid "<b>Modem properties</b>"
-msgstr "<b>Właściwości modemu</b>"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+msgid "_Point to Point (IP):"
+msgstr "_Punkt-punkt (IP):"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
-#: ../src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "Modem _volume:"
-msgstr "_Głośność modemu:"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Połącz z"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
-msgid "Select Modem"
-msgstr "Wybierz modem"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Rozłącz z"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
-#: ../src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "_Baud rate:"
-msgstr "Prędkość w _baudach:"
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+msgid "_Configure..."
+msgstr "S_konfiguruj..."
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
-#: ../src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "_Flow control:"
-msgstr "Kontorla p_rzepływu:"
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "Konfiguracja adaptera sieci"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
-#: ../src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "_Modem device:"
-msgstr "_Modem:"
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "Oczekiwanie na połączenie do"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
-#: ../src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "_Use touch tone dialing"
-msgstr "_Użyj wybierania tonowego"
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+msgid "Waiting..."
+msgstr "Oczekiwanie..."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
-msgid "Configure Network Settings"
-msgstr "Skonfiguruj ustawienia sieci"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "Configure Wireless Connection"
-msgstr "Skonfiguruj połączenie bezprzewodowe"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "<b>D channel protocol</b>"
+msgstr "<b>Protokół kanału D</b>"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "Create Wireless Device"
-msgstr "Utwórz urządzenie bezprzewodowe"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+msgid "<b>Resources</b>"
+msgstr "<b>Zasoby</b>"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-msgid "MTU:"
-msgstr "MTU:"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro ISDN (EDSS1)"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-msgid "Network name (SSID):"
-msgstr "Nazwa sieci (SSID):"
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "Konfiguracja adaptera ISDN"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "ISDN _adapters:"
+msgstr "_Adaptery ISDN:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+msgid "_IO:"
+msgstr "_IO:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+msgid "_MEM:"
+msgstr "_MEM:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
 msgid ""
-"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
 msgstr ""
-"Podaj wartość MTU, aby określić maksymalną wielkość pakietu przesyłanego "
-"przez interfejs. Na s390/s390x MTU ma domyślną wartość 1492"
+"Każde urządzenie musi być połączone z fizycznym urządzeniem, które może "
+"zostać wybrane poniżej. Aliasy urządzeń pozwalają na utworzenie wielu "
+"wirtualnych urządzeń dla jednego fizycznego."
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Select Wireless Device"
-msgstr "Wybierz urządzenie bezprzewodowe"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Enable _Device Alias support"
+msgstr "Włącz tworzenie aliasów _urządzeń"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
-msgid "Select the wireless card you want to configure:"
-msgstr "Wybierz kartę bezprzewodową, którą chcesz skonfigurować:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Ha_rdware address:"
+msgstr "Adres _sprzętowy:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-msgid ""
-"Used to manipulate encryption or scrambling keys and encryption mode. To set "
-"the current encryption key in hex digits enter the key with 0x prepended as "
-"0xXXXXXXXX."
-msgstr ""
-"Wykorzystywane do zmiany kluczy szyfrowania lub scramblingu oraz trybu "
-"szyfrowania. Aby ustawić aktualny klucz szyfrujący podaj szesnastkowo klucz "
-"poprzedzony 0x, tzn. w formacie 0xXXXXXXXX."
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
+msgid "Token Ring Device"
+msgstr "Urządzenie token ring"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "Karta bezprzewodowa"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Alias:"
+msgstr "_Alias:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-msgid "_Auto"
-msgstr "_Automatycznie"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Hardware device:"
+msgstr "Urządzenie _sprzętowe:"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-msgid "_Channel:"
-msgstr "_Kanał:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Probe for Address"
+msgstr "_Wykryj adres"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-msgid "_Key (use 0x for hex):"
-msgstr "_Klucz (użyj 0x dla heksu):"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "_Use Hardware Address"
+msgstr "_Użyj adresu sprzętowego"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
-msgid "_Mode:"
-msgstr "_Tryb:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr0"
+msgstr "tr0"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
-msgid "_Specified:"
-msgstr "_Określony:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
+msgid "tr1"
+msgstr "tr1"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
-msgid "_Transmit rate:"
-msgstr "Prędkość _transmisji:"
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
+msgid "tr2"
+msgstr "tr2"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
+msgid "tr3"
+msgstr "tr3"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
+msgid "tr4"
+msgstr "tr4"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
+msgid "tr5"
+msgstr "tr5"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:1
 msgid "<b>Active profile</b>"
@@ -2219,11 +2467,6 @@ msgstr "Następujące interfejsy sieciowe są skonfigurowane w aktywnym profilu.
 msgid "_Activate"
 msgstr "_Aktywuj"
 
-#: ../src/netconfpkg/gui/neat-control.glade.h:18
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-msgid "_Configure..."
-msgstr "S_konfiguruj..."
-
 #: ../src/netconfpkg/gui/neat-control.glade.h:19
 #: ../src/netconfpkg/gui/maindialog.glade.h:32
 msgid "_Deactivate"
@@ -2238,696 +2481,43 @@ msgstr "_Informacje"
 msgid "_Monitor"
 msgstr "_Monitoruj"
 
-#: ../src/netconfpkg/gui/editipsec.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:2
-msgid "A_uthentication key:"
-msgstr "Klucz _uwierzytelniania:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:3
-msgid "Automatic encryption mode selection via IKA (racoon)"
-msgstr "Tryb automatycznego wybierania szyfrowania przez IKA (racoon)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:4
-msgid "Ge_nerate"
-msgstr "U_twórz"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:5
-msgid "Host to Host encryption"
-msgstr "Szyfrowanie punkt-punkt"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:6
-msgid "IPsec"
-msgstr "IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:7
-msgid "IPsec - Connection Type"
-msgstr "IPsec - rodzaj połączenia"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:8
-msgid "IPsec - Encryption Mode"
-msgstr "IPsec - tryb szyfrowania"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:9
-msgid "IPsec - Keys"
-msgstr "IPsec - klucze"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:10
-msgid "IPsec - Local Network"
-msgstr "IPsec - sieć lokalna"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:11
-msgid "IPsec - Nickname"
-msgstr "IPsec - pseudonim"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:12
-msgid "IPsec - Remote Network"
-msgstr "IPsec - sieć zdalna"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:13
-msgid "IPsec - Summary"
-msgstr "IPsec - podsumowanie"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:14
-msgid "IPsec Settings"
-msgstr "Ustawienia IPsec"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:15
-msgid "Local network _address:"
-msgstr "_Adres sieci lokalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:16
-msgid "Local network _gateway:"
-msgstr "_Brama sieci lokalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:17
-msgid "Local subnet _mask:"
-msgstr "_Maska podsieci lokalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:18
-msgid "Manual encryption with a fixed key"
-msgstr "Ręczne szyfrowanie stałym kluczem"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:19
-msgid "Network to Network encryption (VPN)"
-msgstr "Szyfrowanie sieć-sieć (VPN)"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:20
-msgid "Please enter a nickname for the connection:"
-msgstr "Podaj pseudonim dla połączenia:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:21
-msgid "Please enter a passphrase to generate the key."
-msgstr "Podaj długie hasło, aby utworzyć klucz."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:22
-msgid "Please enter your local network settings:"
-msgstr "Podaj ustawienia sieci lokalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:23
-msgid "Please enter your remote network settings:"
-msgstr "Podaj ustawienia sieci zdalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:24
-msgid "Please select the type of connection:"
-msgstr "Wybierz rodzaj połączenia:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:25
-msgid "Please select the type of encryption:"
-msgstr "Wybierz rodzaj szyfrowania:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:26
-msgid ""
-"Please specify your keys or generate them. \n"
-"The keys are symmetric, so your remote partner needs to have the same."
-msgstr ""
-"Podaj swoje klucze lub je utwórz. \n"
-"Klucze są symetryczne, więc zdalny partner musi mieć te same."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:28
-msgid "Remote _IP address:"
-msgstr "Zdalny adres _IP:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:29
-msgid "Remote network _address:"
-msgstr "_Adres sieci zdalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:30
-msgid "Remote network _gateway:"
-msgstr "_Brama sieci zdalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:31
-msgid "Remote subnet _mask:"
-msgstr "_Maska podsieci zdalnej:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:32
-msgid "Security parameter index for authentication:"
-msgstr "Parametr bezpieczeństwa index do uwierzytelniania:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:33
-msgid "Security parameter index for encryption:"
-msgstr "Parametr bezpieczeństwa index do szyfrowania:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:34
-msgid "You will now be guided through the setup of the IPsec connection."
-msgstr "Teraz zostaniesz poprowadzony przez konfigurację połączenia IPsec."
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:35
-msgid "_Activate connection when computer starts"
-msgstr "_Aktywuj połączenie po uruchomieniu komputera"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:36
-msgid "_Encryption key:"
-msgstr "Klucz _szyfrujący:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:38
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
-msgid "_Nickname:"
-msgstr "_Pseudonim:"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:39
-msgid "dialog1"
-msgstr "dialog1"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:40
-msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
-msgstr "unikalny SPI dla AH (256 - 4294967295), podobny do numeru portu TCP/IP"
-
-#: ../src/netconfpkg/gui/editipsec.glade.h:41
-msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
-msgstr ""
-"unikalny SPI dla ESP (256 - 4294967295), podobny do numeru portu TCP/IP"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:1
-msgid "Add / Edit Hosts entry"
-msgstr "Dodaj/edytuj komputery"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Aliases:"
-msgstr "Aliasy:"
-
-#: ../src/netconfpkg/gui/edithosts.glade.h:4
-msgid "Hostname:"
-msgstr "Nazwa komputera:"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
-msgid "Add new Device Type"
-msgstr "Dodaj nowy typ urządzenia"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
-msgid "Device Type"
-msgstr "Typ urządzenia"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
-msgid "Select Device Type"
-msgstr "Wybierz typ urządzenia"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
-msgid "Select Ethernet Adapter"
-msgstr "Wybierz adapter ethernetu"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
-msgid "_Adapter:"
-msgstr "_Adapter:"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
-msgid "Allow all _users to enable and disable the device"
-msgstr "Pozwól wszystkim _użytkownikom na włączanie i wyłączanie urządzenia"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
-msgid "Enable IPv_6 configuration for this interface"
-msgstr "Włącz konfigurację IPv_6 dla tego interfejsu"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
-msgid "Ethernet Device"
-msgstr "Urządzenie ethernet"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
-msgid "_Activate device when computer starts"
-msgstr "_Aktywuj urządzenie podczas uruchamiania komputera"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
-msgid "_Activate device when parent device starts"
-msgstr "_Aktywuj urządzenie podczas uruchamiania urządzenia macierzystego"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:8
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
-msgid "_General"
-msgstr "_Ogólne"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
-msgid "_Hardware Device"
-msgstr "Urządzenie _sprzętowe"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
-msgid "_Route"
-msgstr "T_rasa"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
-msgid "Ethernet card"
-msgstr "Karta ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-msgid ""
-"Please enter the MTU parameter to set the maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"Podaj wartość MTU, aby określić maksymalną wielkość pakietu przesyłanego "
-"przez interfejs. Na s390/s390x MTU ma domyślną wartość 1492"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
-msgid "Select Ethernet Device"
-msgstr "Wybierz urządzenie ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the ethernet card you want to configure:"
-msgstr "Wybierz kartę ethernet, którą chcesz skonfigurować:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
-msgid "1_TR6"
-msgstr "1_TR6"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
-msgid "<b>D-channel protocol</b>"
-msgstr "<b>Protokół kanału D</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
-msgid "<b>Resources</b>"
-msgstr "<b>Zasoby</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
-msgid "Eu_ro ISDN (EDSS1)"
-msgstr "Eu_ro ISDN (EDSS1)"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
-msgid "ISDN _adapters:"
-msgstr "_Adaptery ISDN:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
-msgid "Select ISDN Adapter"
-msgstr "Wybierz adapter ISDN"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
-msgid "_IO:"
-msgstr "_IO:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
-msgid "_MEM:"
-msgstr "_MEM:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Token Ring Device"
-msgstr "Utwórz urządzenie token ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Token Ring Device"
-msgstr "Wybierz urządzenie token ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the token ring card you want to configure:"
-msgstr "Wybierz kartę token ring, którą chcesz skonfigurować:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Token ring card"
-msgstr "Karta token ring"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-msgid "Select Token Ring Adapter"
-msgstr "Wybierz adapter token ring"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:1
-msgid "Activate the selected device, calling ifup <device>."
-msgstr "Aktywuj wybrane urządzenie, wywołując ifup <urządzenie>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:2
-msgid "Aliases"
-msgstr "Aliasy"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:3
-msgid "Contents"
-msgstr "Zawartość"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:4
-msgid "DNS search path:"
-msgstr "Kolejność przeszukiwania DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:5
-msgid "D_NS"
-msgstr "D_NS"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:6
-msgid "Deactivate the selected device, calling ifdown <device>."
-msgstr "Deaktywuj wybrane urządzenie, wywołując ifdown <urządzenie>."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:7
-msgid "Description"
-msgstr "Opis"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:8
-msgid "Destination"
-msgstr "Cel"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:9
-msgid "Dev_ices"
-msgstr "Urządzen_ia"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:11
-msgid "Do_main:"
-msgstr "Do_mena:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:12
-msgid "H_osts"
-msgstr "K_omputery"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:13
-msgid "Hard_ware"
-msgstr "Sprzę_t"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:14
-msgid "IP"
-msgstr "IP"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:15
-msgid "IP_sec"
-msgstr "IP_sec"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:16
-msgid "List of devices which are currently configurable on your system."
-msgstr "Lista urządzeń aktualnie konfigurowalnych w systemie."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:17
-msgid "Monitor the selected device."
-msgstr "Monitoruj wybrane urządzenie."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:20
-msgid "New Profile"
-msgstr "Nowy profil"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:22
-msgid ""
-"Please enter the name for the profile. The name may only contain letters and "
-"digits."
-msgstr "Podaj nazwę profilu. Nazwa może zawierać tylko litery i liczby."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:23
-msgid "Profile"
-msgstr "Profil"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:25
-msgid "Type"
-msgstr "Typ"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:26
-msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr "Tutaj można skonfigurować tunel IPsec i połączenie punkt-punkt."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:27
-msgid ""
-"You may configure network devices associated with physical hardware here.  "
-"Multiple logical devices can be associated with a single piece of hardware."
-msgstr ""
-"Tutaj można skonfigurować urządzenia sieciowe skojarzone z fizycznym "
-"sprzętem. Wiele logicznych urządzeń może być skojarzonych z pojedynczym "
-"elementem sprzętu."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:28
-msgid ""
-"You may configure network hardware physically attached to the computer here."
-msgstr "Tutaj można skonfigurować sprzęt sieciowy komputera."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:29
-msgid ""
-"You may configure the system's hostname, domain, name servers, and search "
-"domain. Name servers are used to look up other hosts on the network."
-msgstr ""
-"Można skonfigurować nazwę komputera, domenę, serwery nazw i kolejność "
-"przeszukiwania nazw. Serwery nazw tłumaczą nazwy innych komputerów na adresy "
-"IP i odwrotnie."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:30
-msgid ""
-"You may specify static computer hostname to IP address mappings here.  If "
-"DNS is in use, these settings will take precedence over any information it "
-"may provide."
-msgstr ""
-"Tutaj można określić statyczne mapowania adresów IP na nazwy. Jeśli używasz "
-"DNS, te mapowania mają pierwszeństwo przed informacjami otrzymanymi z "
-"serwerów DNS."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:33
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
-msgid "_Delete"
-msgstr "_Usuń"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:34
-msgid "_Edit"
-msgstr "_Edytuj"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:35
-msgid "_Hostname:"
-msgstr "Nazwa _komputera:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:37
-msgid "_New..."
-msgstr "_Nowy..."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:38
-msgid "_Primary DNS:"
-msgstr "_Pierwszy DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:39
-msgid "_Profile"
-msgstr "_Profil"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:40
-msgid "_Secondary DNS:"
-msgstr "_Drugi DNS:"
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:41
-msgid "_Tertiary DNS:"
-msgstr "_Trzeci DNS:"
-
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "Network Adapters Configuration"
-msgstr "Konfiguracja adaptera sieci"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
-msgid "$"
-msgstr "$"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
-msgid "0.00"
-msgstr "0.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
-msgid "1"
-msgstr "1"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
-msgid "1.00"
-msgstr "1.00"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
-msgid "Confirm _starting connection"
-msgstr "Potwierdź r_ozpoczęcie połączenia"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
-msgid "Confirm stopping _connection"
-msgstr "Potwierdź _zatrzymanie połączenia"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
-msgid "Cos_t accumulated from the past connection:"
-msgstr "Kosz_ty ostatniego połączenia:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
-msgid "Cost per:"
-msgstr "Koszt za:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
-msgid "Count:"
-msgstr "Liczba:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
-msgid "M_inimum number of seconds charged:"
-msgstr "M_inimalna liczba sekund, za jaką jest opłata:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
-msgid "_Accumulate cost over multiple connections"
-msgstr "Z_sumuj koszty wielu połączeń"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
-msgid "_Basic"
-msgstr "_Podstawowe"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
-msgid "_Cost"
-msgstr "_Koszt"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
-msgid "_Debug mode"
-msgstr "Tryb _debugowania"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
-msgid "_Extra cost to start a connection:"
-msgstr "Dodatkowy koszt rozpoczęcia połącz_enia:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
-msgid "_Hour"
-msgstr "_Godzina"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
-msgid "_Minute"
-msgstr "_Minuta"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
-msgid "_Number of seconds in basic accounting unit:"
-msgstr "_Liczba sekund w podstawowej jednostce naliczania:"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
-msgid "_Second"
-msgstr "_Sekunda"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
-msgid "_Terminate connection when session closes"
-msgstr "_Przerwij połączenie, kiedy sesja zostanie zamknięta"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
-msgid "_Time"
-msgstr "_Czas"
-
-#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
-msgid "redhat network control - Properties"
-msgstr "Kontrola sieci Red Hat - właściwości"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
-msgid "<b>D channel protocol</b>"
-msgstr "<b>Protokół kanału D</b>"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN Adapters Configuration"
-msgstr "Konfiguracja adaptera ISDN"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-msgid "Waiting to connect to"
-msgstr "Oczekiwanie na połączenie do"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-msgid "Waiting..."
-msgstr "Oczekiwanie..."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
-msgid "<b>Account Type:</b>"
-msgstr "<b>Typ konta:</b>"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
-msgid "Configure DSL connection"
-msgstr "Skonfiguruj połączenie DSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
-msgid "Create DSL connection"
-msgstr "Utwórz połączenie DSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
-msgid "Enter the provider name for this account."
-msgstr "Podaj nazwę dostawcy dla tego konta."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
-msgid "Ethernet _device:"
-msgstr "Urzą_dzenie ethernet:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Normal"
-msgstr "Normalne"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
-msgid ""
-"Normal\n"
-"T-Online"
-msgstr ""
-"Normalne\n"
-"T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
-msgid "Password (_again):"
-msgstr "H_asło (powtórz):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-msgid "Select the ethernet device connected to the DSL modem."
-msgstr "Wybierz urządzenie ethernet podłączone do modemu DSL."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-msgid "Select the ethernet device for this account."
-msgstr "Wybierz urządzenie ethernet dla tego konta."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-msgid "T-Online"
-msgstr "T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
-msgid "_Provider name:"
-msgstr "Nazwa _dostawcy:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain name:"
-msgstr "Nazwa domeny:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:2
-msgid "Edit Domain Name"
-msgstr "Edytuj nazwę domeny"
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
+msgid "Choose a Provider"
+msgstr "Wybierz dostawcę"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "<b>Modem properties</b>"
+msgstr "<b>Właściwości modemu</b>"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "Modem _volume:"
+msgstr "_Głośność modemu:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "Wybierz modem"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "_Baud rate:"
+msgstr "Prędkość w _baudach:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "_Flow control:"
+msgstr "Kontorla p_rzepływu:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "_Modem device:"
+msgstr "_Modem:"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "_Użyj wybierania tonowego"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
 msgid "A_ddress:"
@@ -3102,236 +2692,107 @@ msgstr "DHCP"
 msgid "dialup"
 msgstr "dial-up"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
-msgid "00:00:00:00:00:00"
-msgstr "00:00:00:00:00:00"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
+msgid "CIPE Configuration"
+msgstr "Konfiguracja CIPE"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid ""
-"Each device needs to be attached to a physical device which can be selected "
-"below. Device Alias support allows you to use multiple virtual devices for "
-"one physical device."
-msgstr ""
-"Każde urządzenie musi być połączone z fizycznym urządzeniem, które może "
-"zostać wybrane poniżej. Aliasy urządzeń pozwalają na utworzenie wielu "
-"wirtualnych urządzeń dla jednego fizycznego."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "Konfiguracja dla twojego zdalnego partnera"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Enable _Device Alias support"
-msgstr "Włącz tworzenie aliasów _urządzeń"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+msgid "Lo_cal virtual address:"
+msgstr "Lo_kalny wirtualny adres:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
-msgid "Ha_rdware address:"
-msgstr "Adres _sprzętowy:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+msgid "Remote _virtual address:"
+msgstr "Zdalny _wirtualny adres:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
-msgid "Token Ring Device"
-msgstr "Urządzenie token ring"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+msgid "Remote peer p_ort:"
+msgstr "P_ort zdalnego partnera:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Alias:"
-msgstr "_Alias:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+msgid "_Generate"
+msgstr "_Utwórz"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
-msgid "_Hardware device:"
-msgstr "Urządzenie _sprzętowe:"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+msgid "_Local port:"
+msgstr "Port _lokalny:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
-msgid "_Probe for Address"
-msgstr "_Wykryj adres"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+msgid "_Remote peer address:"
+msgstr "Adres zdalnego pa_rtnera:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
-msgid "_Use Hardware Address"
-msgstr "_Użyj adresu sprzętowego"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+msgid "_Secret key:"
+msgstr "_Tajny klucz:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
-msgid "tr0"
-msgstr "tr0"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
+msgid "_Tunnel Settings"
+msgstr "Ustawienia _tunelu"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
-msgid "tr1"
-msgstr "tr1"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+msgid "_Tunnel through device:"
+msgstr "_Tunel przez urządzenie:"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
-msgid "tr2"
-msgstr "tr2"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+msgid "_auto"
+msgstr "_automatycznie"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
-msgid "tr3"
-msgstr "tr3"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
+msgid "cipcb0"
+msgstr "cipcb0"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
-msgid "tr4"
-msgstr "tr4"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
+msgid "cipcb1"
+msgstr "cipcb1"
 
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
-msgid "tr5"
-msgstr "tr5"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
+msgid "cipcb2"
+msgstr "cipcb2"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "11M"
-msgstr "11M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
+msgid "cipcb3"
+msgstr "cipcb3"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-msgid "1M"
-msgstr "1M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
+msgid "cipcb4"
+msgstr "cipcb4"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
-msgstr "2M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
+msgid "eth0"
+msgstr "eth0"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
-msgstr "5.5M"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
+msgid "eth1"
+msgstr "eth1"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
-msgid ""
-"Set the operating mode of the device, which depends on the network topology. "
-"The mode can be Ad-Hoc (network composed of only one cell and without Access "
-"Point), Managed (node connects to a network composed of many Access Points, "
-"with roaming), Master (the node is the synchronization master or acts as an "
-"Access Point) or Auto."
-msgstr ""
-"Ustaw tryb operacji urządzenia, które zależy od topologii sieci. Trybem może "
-"być Ad-Hoc (sieć składająca się z tylko jednej komórki i bez punku "
-"dostępowego), zarządzana (węzeł łączy się z siecią składającą się z wielu "
-"punktów dostępowych, z roamingiem), główna (węzeł jest głównym "
-"synchronizacji lub występuje jako punkt dostępowy) lub automatyczna."
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
+msgid "eth2"
+msgstr "eth2"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-msgid "Wireless Device Configuration"
-msgstr "Konfiguracja urządzenia bezprzewodowego"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
+msgid "eth3"
+msgstr "eth3"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-msgid "_Hardware device"
-msgstr "Urządzenie _sprzętowe"
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
+msgid "eth4"
+msgstr "eth4"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
-msgid "_Wireless Settings"
-msgstr "Ustawienia sieci _bezprzewodowej"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-msgid "MT_U:"
-msgstr "MT_U:"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
-msgid "_Point to Point (IP):"
-msgstr "_Punkt-punkt (IP):"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
-msgid "Choose Hardware Device Type"
-msgstr "Wybierz typ urządzenia"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
-msgid "Please select the type of hardware device to add:"
-msgstr "Wybierz typ urządzenia do dodania:"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
-msgid "_Device type:"
-msgstr "Typ urzą_dzenia:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
-msgid "Allow dial on _demand"
-msgstr "Pozwól na wdzwanianie na żą_danie"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
-msgid "Allow the link come up on demand."
-msgstr "Pozwól na podnoszenie połączenia na żądanie."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
-msgid "Demand setting"
-msgstr "Ustawienia żądania"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
-msgid "Enable synchronous PPP for the connection"
-msgstr "Włącz synchroniczne PPP dla połączenia"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
-msgid ""
-"Enter the Access Concentrator name, if you have been given one by your ISP. "
-"In most cases you can leave this blank."
-msgstr ""
-"Podaj nazwę koncentratora dostępowego, jeśli otrzymałeś ją od ISP. W "
-"większości przypadków można pozostawić ją pustą."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
-msgid ""
-"Enter the Service Name, if your ISP requires it. If you don't know it, "
-"please contact your ISP. In most cases you can leave this blank."
-msgstr ""
-"Podaj nazwę usługi, jeśli wymaga tego ISP. Jeśli jej nie znasz, skontaktuj "
-"się ze swoim ISP. W większości przypadków można pozostawić ją pustą."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
-msgid "Enter the idle time in seconds after which the link should be dropped."
-msgstr ""
-"Podaj czas bezczynności w sekundach, po którym połączenie zostanie zerwane."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
-msgid "Make this connection the default _route"
-msgstr "Ustaw to połączenie jako domyślną t_rasę"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
-msgid "Restart if _connection dies"
-msgstr "Uruchom ponownie, jeśli przerwano połą_czenie"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
-msgid "_AC-name:"
-msgstr "Nazwa _AC:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
-msgid "_Advanced"
-msgstr "Z_aawansowane"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
-msgid "_IPsec"
-msgstr "_IPsec"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
-msgid "_Maximum idle time:"
-msgstr "_Maksymalny czas bezczynności:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-msgid "_Provider"
-msgstr "_Dostawca"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
-msgid "_Service-name:"
-msgstr "Nazwa u_sługi:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
-msgid "_Use synchronous PPP"
-msgstr "_Użyj synchronicznego PPP"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
-msgid "xDSL Configuration"
-msgstr "Konfiguracja xDSL"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
-msgid "00:00:00"
-msgstr "00:00:00"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
-msgid "Online time:"
-msgstr "Czas podłączenia:"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
-msgid "click the right mouse button for properties"
-msgstr "naciśnij prawym przyciskiem myszy, aby zobaczyć właściwości"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:1
-msgid "Add / Edit IP Address"
-msgstr "Dodaj/edytuj adres IP"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:3
-msgid "_Gateway:"
-msgstr "_Brama:"
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+msgid "Ethernet Device"
+msgstr "Urządzenie ethernet"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -3473,6 +2934,11 @@ msgstr "_Wybierz dostawcę..."
 msgid "_Compression"
 msgstr "_Kompresja"
 
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/maindialog.glade.h:33
+msgid "_Delete"
+msgstr "_Usuń"
+
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
 msgid "_Dial mode:"
 msgstr "Tryb _wybierania:"
@@ -3501,57 +2967,323 @@ msgstr "Numer _telefonu"
 msgid "_Use Callback"
 msgstr "_Użyj oddzwaniania"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
-msgid "CIPE Configuration"
-msgstr "Konfiguracja CIPE"
+#: ../src/netconfpkg/gui/editipsec.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
-msgid "Configuration for your remote partner"
-msgstr "Konfiguracja dla twojego zdalnego partnera"
+#: ../src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication key:"
+msgstr "Klucz _uwierzytelniania:"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
-msgid "_Tunnel Settings"
-msgstr "Ustawienia _tunelu"
+#: ../src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "Tryb automatycznego wybierania szyfrowania przez IKA (racoon)"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
-msgid "cipcb0"
-msgstr "cipcb0"
+#: ../src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "U_twórz"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
-msgid "cipcb1"
-msgstr "cipcb1"
+#: ../src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr "Szyfrowanie punkt-punkt"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
-msgid "cipcb2"
-msgstr "cipcb2"
+#: ../src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
-msgid "cipcb3"
-msgstr "cipcb3"
+#: ../src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPsec - rodzaj połączenia"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
-msgid "cipcb4"
-msgstr "cipcb4"
+#: ../src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - tryb szyfrowania"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
-msgid "eth0"
-msgstr "eth0"
+#: ../src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - klucze"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
-msgid "eth1"
-msgstr "eth1"
+#: ../src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - sieć lokalna"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
-msgid "eth2"
-msgstr "eth2"
+#: ../src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Nickname"
+msgstr "IPsec - pseudonim"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
-msgid "eth3"
-msgstr "eth3"
+#: ../src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Remote Network"
+msgstr "IPsec - sieć zdalna"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
-msgid "eth4"
-msgstr "eth4"
+#: ../src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec - Summary"
+msgstr "IPsec - podsumowanie"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:14
+msgid "IPsec Settings"
+msgstr "Ustawienia IPsec"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local network _address:"
+msgstr "_Adres sieci lokalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local network _gateway:"
+msgstr "_Brama sieci lokalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Local subnet _mask:"
+msgstr "_Maska podsieci lokalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Manual encryption with a fixed key"
+msgstr "Ręczne szyfrowanie stałym kluczem"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Network to Network encryption (VPN)"
+msgstr "Szyfrowanie sieć-sieć (VPN)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter a nickname for the connection:"
+msgstr "Podaj pseudonim dla połączenia:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter a passphrase to generate the key."
+msgstr "Podaj długie hasło, aby utworzyć klucz."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please enter your local network settings:"
+msgstr "Podaj ustawienia sieci lokalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please enter your remote network settings:"
+msgstr "Podaj ustawienia sieci zdalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:24
+msgid "Please select the type of connection:"
+msgstr "Wybierz rodzaj połączenia:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:25
+msgid "Please select the type of encryption:"
+msgstr "Wybierz rodzaj szyfrowania:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:26
+msgid ""
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner needs to have the same."
+msgstr ""
+"Podaj swoje klucze lub je utwórz. \n"
+"Klucze są symetryczne, więc zdalny partner musi mieć te same."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote _IP address:"
+msgstr "Zdalny adres _IP:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote network _address:"
+msgstr "_Adres sieci zdalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:30
+msgid "Remote network _gateway:"
+msgstr "_Brama sieci zdalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:31
+msgid "Remote subnet _mask:"
+msgstr "_Maska podsieci zdalnej:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:32
+msgid "Security parameter index for authentication:"
+msgstr "Parametr bezpieczeństwa index do uwierzytelniania:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:33
+msgid "Security parameter index for encryption:"
+msgstr "Parametr bezpieczeństwa index do szyfrowania:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:34
+msgid "You will now be guided through the setup of the IPsec connection."
+msgstr "Teraz zostaniesz poprowadzony przez konfigurację połączenia IPsec."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:35
+msgid "_Activate connection when computer starts"
+msgstr "_Aktywuj połączenie po uruchomieniu komputera"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:36
+msgid "_Encryption key:"
+msgstr "Klucz _szyfrujący:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:39
+msgid "dialog1"
+msgstr "dialog1"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:40
+msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
+msgstr "unikalny SPI dla AH (256 - 4294967295), podobny do numeru portu TCP/IP"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:41
+msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
+msgstr ""
+"unikalny SPI dla ESP (256 - 4294967295), podobny do numeru portu TCP/IP"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+msgid "<b>D-channel protocol</b>"
+msgstr "<b>Protokół kanału D</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Wybierz adapter ISDN"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "Configure Wireless Connection"
+msgstr "Skonfiguruj połączenie bezprzewodowe"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "Create Wireless Device"
+msgstr "Utwórz urządzenie bezprzewodowe"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid "Network name (SSID):"
+msgstr "Nazwa sieci (SSID):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Podaj wartość MTU, aby określić maksymalną wielkość pakietu przesyłanego "
+"przez interfejs. Na s390/s390x MTU ma domyślną wartość 1492"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Select Wireless Device"
+msgstr "Wybierz urządzenie bezprzewodowe"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Select the wireless card you want to configure:"
+msgstr "Wybierz kartę bezprzewodową, którą chcesz skonfigurować:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+"Wykorzystywane do zmiany kluczy szyfrowania lub scramblingu oraz trybu "
+"szyfrowania. Aby ustawić aktualny klucz szyfrujący podaj szesnastkowo klucz "
+"poprzedzony 0x, tzn. w formacie 0xXXXXXXXX."
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Wireless card"
+msgstr "Karta bezprzewodowa"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "_Auto"
+msgstr "_Automatycznie"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Channel:"
+msgstr "_Kanał:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+msgid "_Key (use 0x for hex):"
+msgstr "_Klucz (użyj 0x dla heksu):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+msgid "_Mode:"
+msgstr "_Tryb:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+msgid "_Specified:"
+msgstr "_Określony:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
+msgid "_Transmit rate:"
+msgstr "Prędkość _transmisji:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Wybierz typ urządzenia"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "Wybierz typ urządzenia do dodania:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "Typ urzą_dzenia:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
+msgid "<b>Configuration for your remote partner</b>"
+msgstr "<b>Konfiguracja twojego zdalnego partnera</b>"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:2
+msgid "Configure Tunnel"
+msgstr "Skonfiguruj tunel"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:3
+msgid "Create Cipe Connection"
+msgstr "Utwórz połączenie CIPE"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
+msgstr "11M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+msgid "1M"
+msgstr "1M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
+msgstr "2M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
+msgstr "5.5M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
+msgstr ""
+"Ustaw tryb operacji urządzenia, które zależy od topologii sieci. Trybem może "
+"być Ad-Hoc (sieć składająca się z tylko jednej komórki i bez punku "
+"dostępowego), zarządzana (węzeł łączy się z siecią składającą się z wielu "
+"punktów dostępowych, z roamingiem), główna (węzeł jest głównym "
+"synchronizacji lub występuje jako punkt dostępowy) lub automatyczna."
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Wireless Device Configuration"
+msgstr "Konfiguracja urządzenia bezprzewodowego"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Hardware device"
+msgstr "Urządzenie _sprzętowe"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+msgid "_Wireless Settings"
+msgstr "Ustawienia sieci _bezprzewodowej"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Dodaj/edytuj komputery"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Aliasy:"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Nazwa komputera:"
 
 #: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
 msgid "Card"
@@ -3569,14 +3301,281 @@ msgstr "Wybierz urządzenie"
 msgid "Select the card you want to configure:"
 msgstr "Wybierz kartę, którą chcesz skonfigurować:"
 
-#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
-msgid "Choose a Provider"
-msgstr "Wybierz dostawcę"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "Utwórz urządzenie token ring"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
-msgid "Connect to"
-msgstr "Połącz z"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "Wybierz urządzenie token ring"
 
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
-msgid "Disconnect from"
-msgstr "Rozłącz z"
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr "Wybierz kartę token ring, którą chcesz skonfigurować:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "Karta token ring"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Dodaj/edytuj adres IP"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Brama:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:1
+msgid "Activate the selected device, calling ifup <device>."
+msgstr "Aktywuj wybrane urządzenie, wywołując ifup <urządzenie>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:2
+msgid "Aliases"
+msgstr "Aliasy"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:3
+msgid "Contents"
+msgstr "Zawartość"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:4
+msgid "DNS search path:"
+msgstr "Kolejność przeszukiwania DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:5
+msgid "D_NS"
+msgstr "D_NS"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:6
+msgid "Deactivate the selected device, calling ifdown <device>."
+msgstr "Deaktywuj wybrane urządzenie, wywołując ifdown <urządzenie>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:7
+msgid "Description"
+msgstr "Opis"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:8
+msgid "Destination"
+msgstr "Cel"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:9
+msgid "Dev_ices"
+msgstr "Urządzen_ia"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:11
+msgid "Do_main:"
+msgstr "Do_mena:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:12
+msgid "H_osts"
+msgstr "K_omputery"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:13
+msgid "Hard_ware"
+msgstr "Sprzę_t"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:14
+msgid "IP"
+msgstr "IP"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:15
+msgid "IP_sec"
+msgstr "IP_sec"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:16
+msgid "List of devices which are currently configurable on your system."
+msgstr "Lista urządzeń aktualnie konfigurowalnych w systemie."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:17
+msgid "Monitor the selected device."
+msgstr "Monitoruj wybrane urządzenie."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:20
+msgid "New Profile"
+msgstr "Nowy profil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:22
+msgid ""
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
+msgstr "Podaj nazwę profilu. Nazwa może zawierać tylko litery i liczby."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:23
+msgid "Profile"
+msgstr "Profil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:25
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:26
+msgid "You may configure IPsec tunnels and host to host connections here."
+msgstr "Tutaj można skonfigurować tunel IPsec i połączenie punkt-punkt."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:27
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"Tutaj można skonfigurować urządzenia sieciowe skojarzone z fizycznym "
+"sprzętem. Wiele logicznych urządzeń może być skojarzonych z pojedynczym "
+"elementem sprzętu."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:28
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr "Tutaj można skonfigurować sprzęt sieciowy komputera."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:29
+msgid ""
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
+msgstr ""
+"Można skonfigurować nazwę komputera, domenę, serwery nazw i kolejność "
+"przeszukiwania nazw. Serwery nazw tłumaczą nazwy innych komputerów na adresy "
+"IP i odwrotnie."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:30
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"Tutaj można określić statyczne mapowania adresów IP na nazwy. Jeśli używasz "
+"DNS, te mapowania mają pierwszeństwo przed informacjami otrzymanymi z "
+"serwerów DNS."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:34
+msgid "_Edit"
+msgstr "_Edytuj"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_Hostname:"
+msgstr "Nazwa _komputera:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:37
+msgid "_New..."
+msgstr "_Nowy..."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:38
+msgid "_Primary DNS:"
+msgstr "_Pierwszy DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:39
+msgid "_Profile"
+msgstr "_Profil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:40
+msgid "_Secondary DNS:"
+msgstr "_Drugi DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:41
+msgid "_Tertiary DNS:"
+msgstr "_Trzeci DNS:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "Nazwa domeny:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Edytuj nazwę domeny"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Dodaj nowy typ urządzenia"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Typ urządzenia"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Wybierz typ urządzenia"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "$"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "0.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+msgid "1"
+msgstr "1"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "1.00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Confirm _starting connection"
+msgstr "Potwierdź r_ozpoczęcie połączenia"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm stopping _connection"
+msgstr "Potwierdź _zatrzymanie połączenia"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Cos_t accumulated from the past connection:"
+msgstr "Kosz_ty ostatniego połączenia:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cost per:"
+msgstr "Koszt za:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Count:"
+msgstr "Liczba:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "M_inimum number of seconds charged:"
+msgstr "M_inimalna liczba sekund, za jaką jest opłata:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "_Accumulate cost over multiple connections"
+msgstr "Z_sumuj koszty wielu połączeń"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "_Basic"
+msgstr "_Podstawowe"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Cost"
+msgstr "_Koszt"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Debug mode"
+msgstr "Tryb _debugowania"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Extra cost to start a connection:"
+msgstr "Dodatkowy koszt rozpoczęcia połącz_enia:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Hour"
+msgstr "_Godzina"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Minute"
+msgstr "_Minuta"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_Liczba sekund w podstawowej jednostce naliczania:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Second"
+msgstr "_Sekunda"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Terminate connection when session closes"
+msgstr "_Przerwij połączenie, kiedy sesja zostanie zamknięta"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Time"
+msgstr "_Czas"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "redhat network control - Properties"
+msgstr "Kontrola sieci Red Hat - właściwości"
