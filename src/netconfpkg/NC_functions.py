@@ -781,6 +781,11 @@ def link(src, dst):
         return
     try:
         os.link(src, dst)
+        # restore selinux context
+        try:
+            generic_run("/sbin/restorecon", [ dst ])
+        except:
+            pass
         log.log(2, "ln %s %s" % (src, dst))
     except:
         symlink(src, dst)
@@ -791,6 +796,10 @@ def copy(src, dst):
     try:
         shutil.copy(src, dst)
         shutil.copymode(src, dst)
+        try:
+            generic_run("/sbin/restorecon", [ dst ])
+        except:
+            pass
         log.log(2, "cp %s %s" % (src, dst))
     except (IOError, OSError), errstr:
         generic_error_dialog (_("Error copying \n%s\nto %s:\n%s!")
@@ -962,6 +971,7 @@ def updateNetworkScripts(force = False):
             conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
                        curr_prof + cfile
             if not os.path.isfile(hostfile) or not issamefile(hostfile, conffile):
+                rename(hostfile, hostfile + '.bak')
                 unlink(conffile)
                 link(hostfile, conffile)
 
