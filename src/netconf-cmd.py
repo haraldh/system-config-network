@@ -256,7 +256,7 @@ def main(cmdline):
                 NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
                 continue
 
-            if opt == '-d' or opt == '--debug':
+            if opt == '--debug':
                 NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
                 debug = 1
                 continue
