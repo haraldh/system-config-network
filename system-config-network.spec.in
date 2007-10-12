@@ -3,7 +3,7 @@ Summary: The GUI of the Network Adminstration Tool
 Name: @PACKAGE@
 Version: @VERSION@
 Release: @RPM_RELEASE@%{?dist}
-URL: http://fedora.redhat.com/projects/config-tools/redhat-config-network.html
+URL: http://fedoraproject.org/wiki/SystemConfig/network
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Applications/System 
@@ -96,6 +96,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Fri Oct 12 2007 Harald Hoyer <harald@redhat.com> - 1.4.3
+- added version.py.in to POTFILES.in (rhbz#244053)
+- corrected URL (rhbz#237717)
+
 * Mon Oct 08 2007 Harald Hoyer <harald@redhat.com> - 1.4.2
 - speedup genClass
 - restorecon selinux context
