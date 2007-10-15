@@ -907,7 +907,7 @@ def getRoot():
     return __root
 
 def prepareRoot(root):
-    log.log(5, _("prepareRoot()"))
+    log.log(5, "prepareRoot()")
     setRoot(root)
 
     for dir in "/etc", "/etc/sysconfig", \
