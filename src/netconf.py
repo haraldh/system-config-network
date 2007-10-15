@@ -131,7 +131,6 @@ def Usage():
 def runit(splash = None):
     from netconfpkg import NC_functions
     from netconfpkg.NCException import NCException
-    log.set_loglevel(NC_functions.getVerboseLevel())
     splash_window = None
 
     try:
