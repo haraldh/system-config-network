@@ -14,16 +14,24 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 
+# FIXME: use pythons logging handlers
+# FIXME: [183066] DeprecationWarning: rhpl.log is deprecated
 import sys
-
-import logging
+import syslog
 
 class LogFile:
-    def __init__ (self, level = 0, filename = None):
-        self.handler = self.default_handler
+    def __init__ (self, progname, level = 0, filename = None):
+        if filename == None:
+            import syslog
+            self.syslog = syslog.openlog(progname, syslog.LOG_PID)
+
+            self.handler = self.syslog_handler
+            self.logFile = sys.stderr
+        else:
+            self.handler = self.file_handler
+            self.open(filename)
+
         self.level = level
-        self.logFile = None
-        self.open(filename)
 
     def close (self):
         try:
@@ -48,15 +56,20 @@ class LogFile:
     def __call__(self, format, *args):
         self.handler (format % args)
 
-    def default_handler (self, string):
-        self.logFile.write ("* %s\n" % (string))
+    def file_handler (self, string, level = 0):
+        import time
+        self.logFile.write ("[%d] %s: %s\n" % (level, time.ctime(), string))
+
+    def syslog_handler (self, string, level = syslog.LOG_INFO):
+        import syslog
+        syslog.syslog(level, string)
 
     def set_loglevel(self, level):
         self.level = level
 
     def log(self, level, message):
         if self.level >= level:
-            self.handler(message)
+            self.handler(message, level = level)
 
     def ladd(self, level, file, message):
         if self.level >= level:
@@ -70,4 +83,3 @@ class LogFile:
         if self.level >= level:
             self.handler("-+ %s \t%s" % (file, message))
 
-log = LogFile()
