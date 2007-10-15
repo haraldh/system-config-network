@@ -602,13 +602,9 @@ class mainDialog:
         row = 0
         for host in prof.HostsList:
             #88357
-            if host.IP == "127.0.0.1" and \
-               ( host.Hostname == "localhost.localdomain" or \
-                 host.Hostname == "localhost"):
+            if host.IP == "127.0.0.1":
                 continue
-            if host.IP == "::1" and \
-               ( host.Hostname == "localhost.localdomain" or \
-                 host.Hostname == "localhost"):
+            if host.IP == "::1":
                 continue
             hclist.append([host.IP, host.Hostname,
                            string.join(host.AliasList, ' ')])
