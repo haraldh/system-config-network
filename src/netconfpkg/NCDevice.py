@@ -213,14 +213,19 @@ class Device( Device_base ):
         try:
             aliaspos = string.find( self.Device, ':' )
             if aliaspos != -1:
-                self.Alias = int( self.Device[aliaspos+1:] )
                 self.Device = self.Device[:aliaspos]
+                self.Alias = int( self.Device[aliaspos+1:] )
         except TypeError:
             NC_functions.generic_error_dialog( _( "%s, "
                                                 "Device not specified "
                                                 "or alias not a number!" ) % \
                                               self.DeviceId )
             #raise TypeError, _("Device not specified or alias not a number!")
+        except ValueError:
+            NC_functions.generic_error_dialog( _( "%s, "
+                                                "Device not specified "
+                                                "or alias not a number!" ) % \
+                                              self.DeviceId )
 
         if not self.Cipe and self.BootProto == None:
             if self.IP:
