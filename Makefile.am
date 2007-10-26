@@ -107,3 +107,5 @@ potfile:
 push:
 	git fetch && git rebase origin && git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
 
+diff:
+	git diff origin
