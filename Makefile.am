@@ -105,5 +105,5 @@ potfile:
 	make -C po update-po
 
 push:
-	git fetch && git rebase origin/Branch-F8 && git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
+	git fetch && git rebase origin && git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
 
