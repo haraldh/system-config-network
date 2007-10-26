@@ -15,7 +15,6 @@ PYTHON_FILES = \
 	genClass.py \
 	ipcalc.py \
 	log.py \
-	NCBackendHal.py \
 	NCCallback.py \
 	NCCipe.py \
 	NCCompression.py \
