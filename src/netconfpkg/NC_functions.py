@@ -937,7 +937,7 @@ def updateNetworkScripts(force = False):
         return
 
     if not os.access(getRoot() + "/", os.W_OK):
-        log.log(5, "Cannot write to %s" % (getRoot + "/"))
+        log.log(5, "Cannot write to %s" % (getRoot() + "/"))
         return
 
     prepareRoot(getRoot())

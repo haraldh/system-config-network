@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
@@ -39,10 +38,6 @@ def exception_function():
         error("Does not seem to work!? :-)")
         exitcode(15)
         raise
-
-if __name__ == '__main__':
-    exception_function()
-    sys.exit(0)
 
 """
 
