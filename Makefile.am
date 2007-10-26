@@ -103,3 +103,7 @@ potfile:
 	sh -c '(find . -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py) |sed -e "s#^\./##g"> po/POTFILES.skip'
 	make 
 	make -C po update-po
+
+push:
+	git fetch && git rebase origin/Branch-F8 && git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
+
