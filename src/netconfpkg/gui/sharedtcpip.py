@@ -195,10 +195,22 @@ def on_routeEditButton_clicked(button, xml, device, parent_dialog):
     else:
         dl.set_position (gtk.WIN_POS_CENTER)
 
-    if dl.run() != gtk.RESPONSE_OK:
-        dl.destroy()
-        return
+    while(True):
+        button = dl.run()
+        if button == gtk.RESPONSE_OK:
+            try:
+                route.test()
+            except ValueError:
+                GUI_functions.gui_error_dialog ( "Invalid IP format", dl)
+                continue
+        else:
+            # if user pressed CANCEL
+            dl.destroy()
+            return
+        break
+    # user pressed OK and all tests passed
     dl.destroy()
+    
     route_update(xml, device)
 
 
@@ -273,11 +285,23 @@ def on_routeAddButton_clicked(button, xml, device, parent_dialog):
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
     else:
         dl.set_position (gtk.WIN_POS_CENTER)
-
-    button = dl.run()
+    
+    while(True):
+        button = dl.run()
+        if button == gtk.RESPONSE_OK:
+            try:
+                route.test()
+            except ValueError:
+                GUI_functions.gui_error_dialog ( "Invalid IP format", dl)
+                continue
+        else:
+            # if user pressed CANCEL
+            dl.destroy()
+            return
+        break
+    # user pressed OK and all tests passed
     dl.destroy()
-    if button != gtk.RESPONSE_OK:
-        return
+    
     i = routes.addRoute()
     routes[i].apply(route)
     #routes[i].commit()
