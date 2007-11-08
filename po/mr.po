@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-15 14:19+0200\n"
+"POT-Creation-Date: 2007-11-08 16:02+0100\n"
 "PO-Revision-Date: 2007-09-25 21:08+0530\n"
 "Last-Translator: sandeep shedmake <sandeep.shedmake@gmail.com>\n"
 "Language-Team: marathi\n"
@@ -22,15 +22,6 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "\n"
 "\n"
-
-#: ../neat-control.desktop.in.h:1
-msgid "Control and monitor network devices"
-msgstr "संजाळ यंत्रांचे नियंत्रण आणि पर्यवेक्षण करा"
-
-#: ../neat-control.desktop.in.h:2
-#: ../src/netconfpkg/gui/neat-control.glade.h:12
-msgid "Network Device Control"
-msgstr "संजाळ यंत्र नियंत्रण"
 
 #: ../neat.desktop.in.h:1
 msgid "Configure network devices and connections"
@@ -45,59 +36,68 @@ msgstr "संजाळ"
 msgid "Network Configuration"
 msgstr "संजाळ व्यूहरचना"
 
-#: ../src/netconfpkg/NCBackendHal.py:50 ../src/netconfpkg/NCDeviceList.py:72
-#: ../src/netconfpkg/NCDevice.py:231 ../src/netconfpkg/NCHardwareList.py:442
-#: ../src/netconfpkg/NCHardwareList.py:562
-#: ../src/netconfpkg/gui/tokenringhardware.py:111
-#: ../src/netconfpkg/gui/ethernethardware.py:137
-#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
-#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
-#: ../src/netconfpkg/NC_functions.py:391
-msgid "Unknown"
-msgstr "अपरिचित"
+#: ../neat-control.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "संजाळ यंत्रांचे नियंत्रण आणि पर्यवेक्षण करा"
 
-#: ../src/netconfpkg/NCHardware.py:21
-msgid "inactive"
-msgstr "निष्क्रीय"
+#: ../neat-control.desktop.in.h:2
+#: ../src/netconfpkg/gui/neat-control.glade.h:12
+msgid "Network Device Control"
+msgstr "संजाळ यंत्र नियंत्रण"
 
-#. not found in last config and not in actual system
-#: ../src/netconfpkg/NCHardware.py:22
-msgid "system"
-msgstr "प्रणाली"
+#: ../src/netconfpkg/genClass.py:297 ../src/netconf-cmd.py:329
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "ओळ विश्लेषित करण्यात चूक: %s"
 
-#. found in system
-#: ../src/netconfpkg/NCHardware.py:23
-msgid "configured"
-msgstr "व्यूहरचित"
-
-#. found in config but not in system
-#: ../src/netconfpkg/NCHardware.py:24
-msgid "ok"
-msgstr "ठीक"
-
-#: ../src/netconfpkg/NCDeviceList.py:117
-msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr "initscripts मुळे खालील टोपणनावे बदलली:\n"
-
-#: ../src/netconfpkg/NCDeviceList.py:120
-msgid "Nicknames changed"
-msgstr "टोपणनावे बदलली"
-
+#: ../src/netconfpkg/tui/NCTcpIp.py:93
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCModemInterface.py:66
-#: ../src/netconfpkg/tui/NCTcpIp.py:93
 #: ../src/netconfpkg/gui/maindialog.glade.h:18
 msgid "Name"
 msgstr "नाव"
 
+#: ../src/netconfpkg/tui/NCTcpIp.py:94
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:69
 #: ../src/netconfpkg/tui/NCModemInterface.py:67
-#: ../src/netconfpkg/tui/NCTcpIp.py:94
-#: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/neat-control.glade.h:11
+#: ../src/netconfpkg/gui/infodialog.glade.h:1
 #: ../src/netconfpkg/gui/maindialog.glade.h:10
 msgid "Device"
 msgstr "यंत्र"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:95
+msgid "Use DHCP"
+msgstr "DHCP चा वापर करा"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:96
+msgid "Static IP"
+msgstr "स्थिर IP"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:97
+msgid "Netmask"
+msgstr "नेटमास्क"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:98
+msgid "Default gateway IP"
+msgstr "मुलभूत गेटवे IP"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+msgid "Ok"
+msgstr "ठीक"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78 ../src/netconf-tui.py:153
+#: ../src/netconf-tui.py:205
+msgid "Cancel"
+msgstr "रद्द करा"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:108
+msgid "Devernet Configuration"
+msgstr "Devernet व्यूहरचना"
 
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:70
 #: ../src/netconfpkg/tui/NCModemInterface.py:68
@@ -118,19 +118,6 @@ msgstr "ISP गुप्तशब्द"
 msgid "MSN"
 msgstr "MSN"
 
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-msgid "Ok"
-msgstr "ठीक"
-
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconfpkg/tui/NCTcpIp.py:106 ../src/netconf-tui.py:153
-#: ../src/netconf-tui.py:205
-msgid "Cancel"
-msgstr "रद्द करा"
-
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "ISDN व्यूहरचना"
@@ -144,38 +131,127 @@ msgstr "मोडेम Initstring"
 msgid "Modem Configuration"
 msgstr "मोडेम व्यूहरचना"
 
-#: ../src/netconfpkg/tui/NCTcpIp.py:95
-msgid "Use DHCP"
-msgstr "DHCP चा वापर करा"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
-msgid "Static IP"
-msgstr "स्थिर IP"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
-msgid "Netmask"
-msgstr "नेटमास्क"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
-msgid "Default gateway IP"
-msgstr "मुलभूत गेटवे IP"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:108
-msgid "Devernet Configuration"
-msgstr "Devernet व्यूहरचना"
-
-#: ../src/netconfpkg/NCProfileList.py:205
+#: ../src/netconfpkg/NCCipe.py:152
 #, python-format
-msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "यंत्र %s हार्डवेयर यंत्र \"%s\" वापरतो जो %s सारखाच आहे!\n"
-
-#: ../src/netconfpkg/NCProfileList.py:207
 msgid ""
-"Please select another Hardware Device or \n"
-"activate only one of them."
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
 msgstr ""
-"कृपया अन्य हार्डवेयर यंत्र निवडा किंवा\n"
-"त्यांपैकी फक्त एक निवडा."
+"निर्देशिका %s हरवली आहे!\n"
+"तुमच्यासाठी तिला बनवेल!\n"
+"तुम्ही cipe rpm संकुल प्रतिष्ठापित करावे!\n"
+
+#: ../src/netconfpkg/NCCipe.py:156
+#, python-format
+msgid ""
+"Could not create\n"
+"directory %s!"
+msgstr ""
+"निर्देशिका %s तयार\n"
+"करू शकत नाही!"
+
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:77 ../src/netconfpkg/NCDevice.py:446
+msgid "Network device activating..."
+msgstr "संजाळ यंत्र कार्यान्वित होत आहे..."
+
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:78 ../src/netconfpkg/NCDevice.py:447
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "संजाळ यंत्र %s कार्यान्वित होत आहे, कृपया प्रतिक्षा करा..."
+
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:80 ../src/netconfpkg/NCDevice.py:449
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "संजाळ यंत्र %s कार्यान्वित करू शकत नाही!\n"
+
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
+#: ../src/netconfpkg/NCDevice.py:466
+msgid "Network device deactivating..."
+msgstr "संजाळ यंत्र अकार्यान्वित होत आहे..."
+
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
+#: ../src/netconfpkg/NCDevice.py:467
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "संजाळ यंत्र %s अकार्यान्वित होत आहे, कृपया प्रतिक्षा करा..."
+
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
+#: ../src/netconfpkg/NCDevice.py:469
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "संजाळ यंत्र %s अकार्यान्वित करू शकत नाही!\n"
+
+#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
+#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
+#: ../src/netconfpkg/NCDevice.py:236 ../src/netconfpkg/NCDeviceList.py:72
+#: ../src/netconfpkg/NCHardwareList.py:442
+#: ../src/netconfpkg/NCHardwareList.py:562
+#: ../src/netconfpkg/NC_functions.py:391
+#: ../src/netconfpkg/gui/tokenringhardware.py:111
+#: ../src/netconfpkg/gui/ethernethardware.py:137
+#: ../src/netconfpkg/NCBackendHal.py:50
+msgid "Unknown"
+msgstr "अपरिचित"
+
+#: ../src/netconfpkg/exception.py:53 ../src/netconfpkg/exception.py:338
+msgid "Exception Occurred"
+msgstr "अपवाद उदयास आले"
+
+#: ../src/netconfpkg/exception.py:54
+msgid "_Debug"
+msgstr "त्रुटीनिर्धारन (_D)"
+
+#: ../src/netconfpkg/exception.py:55
+msgid "_Save to file"
+msgstr "फाइल मध्ये समाविष्ट करा (_S)"
+
+#: ../src/netconfpkg/exception.py:70
+#, python-format
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
+msgstr ""
+"एक न हाताळलेला अपवाद उद्भवला आहे.  ही बहुदा एक त्रुटी असू शकते.  कृपया क्रॅश डम्प सुरक्षित "
+"करा आणि %s विरूद्ध तपशीलवार त्रुटी https://bugzilla.redhat.com/bugzilla येथे दाखल "
+"करा"
+
+#: ../src/netconfpkg/exception.py:272
+#, python-format
+msgid "Error: %s: %s"
+msgstr "चूक: %s: %s"
+
+#: ../src/netconfpkg/exception.py:275
+#, python-format
+msgid ""
+"%s\n"
+"\n"
+"%s:\n"
+"%s"
+msgstr ""
+"%s\n"
+"\n"
+"%s:\n"
+"%s"
+
+#: ../src/netconfpkg/exception.py:349
+msgid "Specify a file to save the dump"
+msgstr "डंप संचयीत करण्याकरीता फाइल निश्चित करा"
+
+#: ../src/netconfpkg/exception.py:368
+#, python-format
+msgid "Failed to write to file %s."
+msgstr "%s फाइलवर लिहण्यास अपयशी."
+
+#: ../src/netconfpkg/exception.py:372
+#, python-format
+msgid ""
+"The application's state has been successfully\n"
+"written to the file '%s'."
+msgstr ""
+"'%s' फाइल मध्ये कार्यक्रमाचा स्तर\n"
+"यशस्वीरीत्या लिहील्या गेला आहे."
 
 #: ../src/netconfpkg/NCDialup.py:32
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
@@ -486,125 +562,725 @@ msgstr "सेरबीया"
 msgid "Montenegro"
 msgstr "मॉन्टेनेग्रो"
 
-#: ../src/netconfpkg/genClass.py:297 ../src/netconf-cmd.py:329
-#, python-format
-msgid "Error parsing line: %s"
-msgstr "ओळ विश्लेषित करण्यात चूक: %s"
+#: ../src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "निष्क्रीय"
 
-#: ../src/netconfpkg/NCDevice.py:219
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "प्रणाली"
+
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "व्यूहरचित"
+
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "ठीक"
+
+#: ../src/netconfpkg/NCDevice.py:219 ../src/netconfpkg/NCDevice.py:225
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, यंत्र दर्शवले नाही किंवा उपनाव एक संख्या नाही!"
 
-#: ../src/netconfpkg/NCDevice.py:441 ../src/netconfpkg/plugins/NCDevIsdn.py:77
-msgid "Network device activating..."
-msgstr "संजाळ यंत्र कार्यान्वित होत आहे..."
+#: ../src/netconfpkg/NCDeviceList.py:117
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "initscripts मुळे खालील टोपणनावे बदलली:\n"
 
-#: ../src/netconfpkg/NCDevice.py:442 ../src/netconfpkg/plugins/NCDevIsdn.py:78
+#: ../src/netconfpkg/NCDeviceList.py:120
+msgid "Nicknames changed"
+msgstr "टोपणनावे बदलली"
+
+#: ../src/netconfpkg/NCIPsec.py:186
+msgid "IPsec activating..."
+msgstr "IPsec कार्यान्वित होत आहे..."
+
+#: ../src/netconfpkg/NCIPsec.py:187
 #, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "संजाळ यंत्र %s कार्यान्वित होत आहे, कृपया प्रतिक्षा करा..."
+msgid "Activating IPsec connection %s, please wait..."
+msgstr "IPsec जोडणी %s कार्यान्वित होत आहे, कृपया प्रतिक्षा करा..."
 
-#: ../src/netconfpkg/NCDevice.py:444 ../src/netconfpkg/plugins/NCDevIsdn.py:80
+#: ../src/netconfpkg/NCIPsec.py:189
 #, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "संजाळ यंत्र %s कार्यान्वित करू शकत नाही!\n"
+msgid "Cannot activate IPsec connection %s!\n"
+msgstr "IPsec जोडणी %s कार्यान्वित करू शकत नाही!\n"
 
-#: ../src/netconfpkg/NCDevice.py:461
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
-msgid "Network device deactivating..."
-msgstr "संजाळ यंत्र अकार्यान्वित होत आहे..."
+#: ../src/netconfpkg/NCIPsec.py:206
+msgid "IPsec deactivating..."
+msgstr "IPsec अकार्यान्वित करत आहे..."
 
-#: ../src/netconfpkg/NCDevice.py:462
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
+#: ../src/netconfpkg/NCIPsec.py:207
 #, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "संजाळ यंत्र %s अकार्यान्वित होत आहे, कृपया प्रतिक्षा करा..."
+msgid "Deactivating IPsec connection %s, please wait..."
+msgstr "IPsec जोडणी %s अकार्यान्वित करत आहे, कृपया प्रतिक्षा करा..."
 
-#: ../src/netconfpkg/NCDevice.py:464
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
+#: ../src/netconfpkg/NCIPsec.py:209
 #, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "संजाळ यंत्र %s अकार्यान्वित करू शकत नाही!\n"
+msgid "Cannot deactivate IPsec connection %s!\n"
+msgstr "IPsec जोडणी %s अकार्यान्वित करू शकत नाही!\n"
 
-#: ../src/netconfpkg/NCCipe.py:152
+#: ../src/netconfpkg/NC_functions.py:96
+msgid "Common"
+msgstr "सामान्य"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:141
+msgid "Active"
+msgstr "कार्यान्वित"
+
+#: ../src/netconfpkg/NC_functions.py:142
+msgid "Inactive"
+msgstr "निष्क्रीय"
+
+#: ../src/netconfpkg/NC_functions.py:149
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "Hardware (CRTSCTS)"
+msgstr "हार्डवेयर (CRTSCTS)"
+
+#: ../src/netconfpkg/NC_functions.py:150
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "Software (XON/XOFF)"
+msgstr "सॉफ्टवेयर (XON/XOFF)"
+
+#: ../src/netconfpkg/NC_functions.py:230
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr "तुमच्या प्रणालीवर गरज असलेली खालील संकुले प्रतिष्ठापित करावित काय?"
+
+#: ../src/netconfpkg/NC_functions.py:243
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr "तुमच्या प्रणालीवर गरज असलेली खालील संकुले तुम्हांस प्रतिष्ठापित करावी लागतील!"
+
+#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
 #, python-format
 msgid ""
-"Directory %s is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
-msgstr ""
-"निर्देशिका %s हरवली आहे!\n"
-"तुमच्यासाठी तिला बनवेल!\n"
-"तुम्ही cipe rpm संकुल प्रतिष्ठापित करावे!\n"
-
-#: ../src/netconfpkg/NCCipe.py:156
-#, python-format
-msgid ""
-"Could not create\n"
-"directory %s!"
-msgstr ""
-"निर्देशिका %s तयार\n"
-"करू शकत नाही!"
-
-#: ../src/netconfpkg/exception.py:58 ../src/netconfpkg/exception.py:343
-msgid "Exception Occurred"
-msgstr "अपवाद उदयास आले"
-
-#: ../src/netconfpkg/exception.py:59
-msgid "_Debug"
-msgstr "त्रुटीनिर्धारन (_D)"
-
-#: ../src/netconfpkg/exception.py:60
-msgid "_Save to file"
-msgstr "फाइल मध्ये समाविष्ट करा (_S)"
-
-#: ../src/netconfpkg/exception.py:75
-#, python-format
-msgid ""
-"An unhandled exception has occurred.  This is most likely a bug.  Please "
-"save the crash dump and file a detailed bug report against %s at https://"
-"bugzilla.redhat.com/bugzilla"
-msgstr ""
-"एक न हाताळलेला अपवाद उद्भवला आहे.  ही बहुदा एक त्रुटी असू शकते.  कृपया क्रॅश डम्प सुरक्षित "
-"करा आणि %s विरूद्ध तपशीलवार त्रुटी https://bugzilla.redhat.com/bugzilla येथे दाखल "
-"करा"
-
-#: ../src/netconfpkg/exception.py:277
-#, python-format
-msgid "Error: %s: %s"
-msgstr "चूक: %s: %s"
-
-#: ../src/netconfpkg/exception.py:280
-#, python-format
-msgid ""
-"%s\n"
-"\n"
+"Error removing\n"
 "%s:\n"
+"%s!"
+msgstr ""
+"काढून टाकण्यात चूक!\n"
+"%s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:808
+#, python-format
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"प्रतिलिपी करण्यात चूक\n"
+"%s\n"
+"ते %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:818
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"दुवा जोडण्यात चूक \n"
+"%s\n"
+"ते %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:828
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"नाव बदलण्यात चूक! \n"
+"%s\n"
+"ते %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:836
+#, python-format
+msgid ""
+"Error creating directory!\n"
 "%s"
 msgstr ""
-"%s\n"
-"\n"
-"%s:\n"
+"निर्देशिका निर्माण करण्यात चूक!\n"
 "%s"
 
-#: ../src/netconfpkg/exception.py:354
-msgid "Specify a file to save the dump"
-msgstr "डंप संचयीत करण्याकरीता फाइल निश्चित करा"
-
-#: ../src/netconfpkg/exception.py:373
+#: ../src/netconfpkg/NC_functions.py:974
 #, python-format
-msgid "Failed to write to file %s."
-msgstr "%s फाइलवर लिहण्यास अपयशी."
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "%s ला यंत्रांशी संलग्न करून %s प्रोफाइलमध्ये टाकत आहे."
 
-#: ../src/netconfpkg/exception.py:377
+#: ../src/netconfpkg/NCProfileList.py:205
+#, python-format
+msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
+msgstr "यंत्र %s हार्डवेयर यंत्र \"%s\" वापरतो जो %s सारखाच आहे!\n"
+
+#: ../src/netconfpkg/NCProfileList.py:207
+msgid ""
+"Please select another Hardware Device or \n"
+"activate only one of them."
+msgstr ""
+"कृपया अन्य हार्डवेयर यंत्र निवडा किंवा\n"
+"त्यांपैकी फक्त एक निवडा."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:34
+#: ../src/netconfpkg/gui/WirelessInterface.py:143
+#: ../src/netconfpkg/gui/WirelessInterface.py:197
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/wirelessconfig.py:37
+#: ../src/netconfpkg/gui/wirelessconfig.py:95
+#: ../src/netconfpkg/gui/wirelessconfig.py:164
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Auto"
+msgstr "स्वतः"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:35
+#: ../src/netconfpkg/gui/wirelessconfig.py:38
+msgid "Ad-Hoc"
+msgstr "तात्कालिक"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:36
+#: ../src/netconfpkg/gui/wirelessconfig.py:39
+msgid "Managed"
+msgstr "व्यवस्थापित"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:37
+#: ../src/netconfpkg/gui/wirelessconfig.py:40
+msgid "Master"
+msgstr "मुख्य"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "बिनतारी जोडणी"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "नविन बिनतारी जोडणी तयार करा."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:233
+msgid "BitRate"
+msgstr "बिटदर"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:297
+msgid "Other Wireless Card"
+msgstr "अन्य बिनतारी कार्ड"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:317
+#: ../src/netconfpkg/gui/EthernetInterface.py:210
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
+#: ../src/netconfpkg/gui/PTPInterface.py:200
+#: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/CipeInterface.py:137
+#: ../src/netconfpkg/gui/TokenRingInterface.py:197
+msgid "You have selected the following information:"
+msgstr "तुम्ही खालील माहिती निवडलेली आहे:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/EthernetInterface.py:211
+#: ../src/netconfpkg/gui/PTPInterface.py:201
+#: ../src/netconfpkg/gui/CipeInterface.py:138
+#: ../src/netconfpkg/gui/TokenRingInterface.py:198
+msgid "Device:"
+msgstr "यंत्र:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:329
+#: ../src/netconfpkg/gui/EthernetInterface.py:222
+#: ../src/netconfpkg/gui/PTPInterface.py:211
+#: ../src/netconfpkg/gui/TokenRingInterface.py:209
+#: ../src/netconfpkg/gui/edithosts.glade.h:2
+msgid "Address:"
+msgstr "पत्ता:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:330
+#: ../src/netconfpkg/gui/EthernetInterface.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:210
+msgid "Subnet mask:"
+msgstr "सबनेट मास्क:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:331
+#: ../src/netconfpkg/gui/EthernetInterface.py:224
+#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+msgid "Default gateway address:"
+msgstr "मुलभूत गेटवे पत्ता:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:333
+#: ../src/netconfpkg/gui/EthernetInterface.py:226
+#: ../src/netconfpkg/gui/TokenRingInterface.py:213
+msgid "Automatically obtain IP address settings with:"
+msgstr "IP पत्ता रचना यासह आपोआप मिळवा:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:336
+msgid "Mode:"
+msgstr "रीत:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:337
+msgid "ESSID (network ID):"
+msgstr "ESSID (संजाळ ID):"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:339
+msgid "Automatic"
+msgstr "स्वयंचलित"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:343
+msgid "Channel:"
+msgstr "वाहिनी:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:344
+msgid "Transmit rate:"
+msgstr "परिवहन दर:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:345
+msgid "Key: "
+msgstr "कळ: "
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:351
+msgid "encryption disabled"
+msgstr "एनक्रिप्शन अकार्यान्वित"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:46
+msgid "IUCV connection"
+msgstr "IUCV जोडणी"
+
+#: ../src/netconfpkg/gui/IUCVInterface.py:52
+msgid "Create a new IUCV connection."
+msgstr "नविन IUCV जोडणी तयार करा."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:78
+msgid "Modem connection"
+msgstr "मोडेम जोडणी"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:84
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"नविन मोडेम जोडणी तयार करा.  ही जोडणी आहे जी तुमच्या आंतरजाल सेवा पुरवठाकारास डायल "
+"करण्यासाठी सिरियल एनलॉग मोडेमचा वापर करते. हे मोडेम सामान्य तांब्याच्या तारेवरून डेटा "
+"परिवहन करण्यासाठी ध्वनीचा वापर करतात.  या प्रकारच्या जोडण्या जगभरात जवळपास सर्व "
+"ठिकाणी जेथे जेथे दूरध्वनी प्रणाली आहे तेथे उपलब्ध आहे."
+
+#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
+#: ../src/netconfpkg/gui/ModemInterface.py:113
+msgid "Modem probing..."
+msgstr "मोडेमचा शोध घेत आहे..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:117
+msgid "Probing for Modems, please wait..."
+msgstr "मोडेमचा शोध घेत आहे, कृपया प्रतिक्षा करा..."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:132
+msgid "No modem was found on your system."
+msgstr "तुमच्या प्रणालीवर मोडेम सापडला नाही."
+
+#: ../src/netconfpkg/gui/ModemInterface.py:161
+#: ../src/netconfpkg/gui/modemconfig.py:109
+msgid "Generic Modem"
+msgstr "सामान्य मोडेम"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:173
+#: ../src/netconfpkg/gui/modemconfig.py:136
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
+#: ../src/netconfpkg/gui/modemconfig.glade.h:9
+msgid "Off"
+msgstr "बंद"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:175
+#: ../src/netconfpkg/gui/modemconfig.py:138
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
+#: ../src/netconfpkg/gui/modemconfig.glade.h:4
+msgid "Low"
+msgstr "कमी"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:177
+#: ../src/netconfpkg/gui/modemconfig.py:140
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
+#: ../src/netconfpkg/gui/modemconfig.glade.h:5
+msgid "Medium"
+msgstr "मध्यम"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:179
+#: ../src/netconfpkg/gui/modemconfig.py:142
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
+#: ../src/netconfpkg/gui/modemconfig.glade.h:3
+msgid "High"
+msgstr "उच्च"
+
+#: ../src/netconfpkg/gui/ModemInterface.py:181
+#: ../src/netconfpkg/gui/modemconfig.py:144
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
+#: ../src/netconfpkg/gui/modemconfig.glade.h:11
+msgid "Very High"
+msgstr "अतिउच्च"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:116
+msgid "Ethernet connection"
+msgstr "इथरनेट जोडणी"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:122
+msgid "Create a new ethernet connection."
+msgstr "नविन इथरनेट जोडणी निर्माण करा."
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:191
+msgid "Other Ethernet Card"
+msgstr "इतर इथरनेट कार्ड"
+
+#: ../src/netconfpkg/gui/iucvconfig.py:39
+msgid "IUCV Device"
+msgstr "IUCV यंत्र"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:237
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
+msgid "Dialup Configuration"
+msgstr "डायलअप व्यूहरचना"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:269
+msgid "ISDN Dialup Configuration"
+msgstr "ISDN डायलअप व्यूहरचना"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:289
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:384
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:71
+msgid "in"
+msgstr "आत"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:289
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:74
+msgid "out"
+msgstr "बाहेर"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:335
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:76
+msgid "raw IP"
+msgstr "कच्चा IP"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:337
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:366
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:77
+msgid "sync PPP"
+msgstr "सिंक PPP"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:350
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:420
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:75
+msgid "pap"
+msgstr "pap"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:352
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:422
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:69
+msgid "chap"
+msgstr "chap"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:355
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:424
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:70
+msgid "chap+pap"
+msgstr "chap+pap"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:357
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+msgid "none"
+msgstr "काही नाही"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:434
+msgid "Modem Dialup Configuration"
+msgstr "मोडेम डायलअप व्यूहरचना"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
+msgid "CTC Device"
+msgstr "CTC यंत्र"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:87
 #, python-format
 msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
 msgstr ""
-"'%s' फाइल मध्ये कार्यक्रमाचा स्तर\n"
-"यशस्वीरीत्या लिहील्या गेला आहे."
+"फाइल '%s' शोधता आली नाही.\n"
+"कृपया तुमचे प्रतिष्ठापन तपासा!\n"
+"चालवा: 'rpm -V system-config-network'\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"फाइल '%s' भारित करता आली नाही.\n"
+"कृपया तुमचे प्रतिष्ठापन तपासा!\n"
+"चालवा: 'rpm -V system-config-network'\n"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:586
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"चालवण्यास अपयशी:\n"
+"%s"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:589
+msgid "Succeeded. Please read the output."
+msgstr "यशस्वी. कृपया प्रदान वाचा."
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
+msgid "CTC connection"
+msgstr "CTC जोडणी"
+
+#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
+msgid "Create a new CTC connection."
+msgstr "नविन CTC जोडणी तयार करा."
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:67
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:129
+#: ../src/netconfpkg/gui/CipeInterface.py:160
+#: ../src/netconfpkg/gui/CipeInterface.py:228
+msgid "None - Server Mode"
+msgstr "काही नाही - सर्वर रीत"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:75
+#: ../src/netconfpkg/gui/CipeInterface.py:167
+msgid " (dynamic)"
+msgstr " (गतिज)"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:107
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:161
+#: ../src/netconfpkg/gui/CipeInterface.py:204
+#: ../src/netconfpkg/gui/CipeInterface.py:258
+msgid "Server Mode"
+msgstr "सर्वर रीत"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:192
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:197
+#: ../src/netconfpkg/gui/CipeInterface.py:289
+#: ../src/netconfpkg/gui/CipeInterface.py:294
+msgid "(own choice)"
+msgstr "(स्वतःची निवड)"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
+msgid "IP address of tunnel device: "
+msgstr "टनल यंत्राचा IP पत्ता: "
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:204
+msgid "Local port: "
+msgstr "स्थानिक पोर्ट: "
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:205
+msgid "Remote peer address: "
+msgstr "दूरस्थ समकक्ष पत्ता: "
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:209
+msgid "Remote virtual address: "
+msgstr "दूरस्थ आभासी पत्ता: "
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:210
+msgid "Local virtual address: "
+msgstr "स्थानिक आभासी पत्ता: "
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:211
+msgid "Secret key: "
+msgstr "गुप्त कळ: "
+
+#: ../src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
+msgid "%s connection"
+msgstr "%s जोडणी"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
+msgid "Create a new %s connection."
+msgstr "नविन %s जोडणी निर्माण करा."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:95
+msgid "This wizard still has to be written."
+msgstr "हा विझार्ड अजूनही लिहीला जायचा आहे."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:96
+msgid "Press Finish to get the standard configuration dialog."
+msgstr "मानक व्यूहरचना संवाद मिळवण्यासाठी समाप्त दाबा."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:97
+msgid "Then, at first, enter the nickname for the device."
+msgstr "मग, प्रथम, यंत्रासाठी टोपणनाव दाखल करा."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:134
+msgid "This device can not be edited with this tool!"
+msgstr "हे यंत्र या उपकरणाद्वारे संपादित करता येणार नाही!"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
+msgid "xDSL connection"
+msgstr "xDSL जोडणी"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"xDSL जोडणी तयार करा. ही जोडणी आहे जी विविध प्रकारच्या ब्रॉडबँड जोडण्या ज्या "
+"एकत्रितपणे Digital Subscriber Lines म्हणून ओळखल्या जातात त्यांचा वापर करते. या यादीत "
+"समावेश होतो ADSL(असममित, अपलोडपेक्षा वेगवान डाउनलोड), IDSL (अंतरासाठी ISDN लाइन "
+"वरून), SDSL (सममित,डाउनलोड आणि अपलोड समान वेगात), आणि इतर अनेक. या प्रकारच्या "
+"जोडण्या संघराज्यात सामान्य आहेत, आणि इतरत्र मान्यता प्राप्त करत आहेत. वापरलेल्या "
+"तंत्रज्ञानानुसार वेगात बदल होतो, तरीही सामान्यतः १४४kbps ते १.०Mbps च्या दरम्यान असतो."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
+msgid "Ethernet device:"
+msgstr "इथरनेट यंत्र:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
+msgid "Provider name:"
+msgstr "पुरवणाऱ्याचे नाव:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
+msgid "Login name:"
+msgstr "लॉगीन नाव:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "हार्डवेयर:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "दूरध्वनी क्रमांक:"
+
+#: ../src/netconfpkg/gui/PTPInterface.py:212
+msgid "Point to Point (IP):"
+msgstr "पॉइंट टु पॉइंट (IP):"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#, python-format
+msgid ""
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
+msgstr ""
+"आदेश अपयशी: %s\n"
+"\n"
+"प्रदान:\n"
+"%s\n"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:67
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr "टोकन रिग कार्ड आरंभता आले नाही. कृपया तुमच्या रचना तपासा आणि पुन्हा प्रयत्न करा."
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"टोपणनाव %s आधिच वापरात आहे!\n"
+"कृपया दुसरे एखादे निवडा.\n"
+
+#: ../src/netconfpkg/gui/editipsec.py:217
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr ""
+"कृपया अद्वितीय असा 256 आणि 4294967295 दरम्यानचा सुरक्षा परिमाण अनुक्रम दाखल करा."
+
+#: ../src/netconfpkg/gui/CipeInterface.py:89
+msgid "CIPE (VPN) connection"
+msgstr "CIPE (VPN) जोडणी"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:92
+msgid "Create a new virtual private network connection with CIPE."
+msgstr "CIPE सह नविन आभासी खाजगी संजाळ जोडणी निर्माण करा."
+
+#: ../src/netconfpkg/gui/CipeInterface.py:139
+msgid "Tunnel through device:"
+msgstr "यंत्रामार्फत टनल करा:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:140
+#: ../src/netconfpkg/gui/CipeInterface.py:301
+msgid "Local port:"
+msgstr "स्थानिक पोर्ट:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/CipeInterface.py:147
+#: ../src/netconfpkg/gui/CipeInterface.py:302
+msgid "Remote peer address:"
+msgstr "दूरस्थ समकक्ष पत्ता:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:148
+msgid "Remote peer port:"
+msgstr "दूरस्थ समकक्ष पोर्ट:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:150
+#: ../src/netconfpkg/gui/CipeInterface.py:306
+msgid "Remote virtual address:"
+msgstr "दूरस्थ आभासी पत्ता:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:151
+#: ../src/netconfpkg/gui/CipeInterface.py:307
+msgid "Local virtual address:"
+msgstr "स्थानिक आभासी पत्ता:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:300
+msgid "IP address of tunnel device:"
+msgstr "टनल यंत्राचा IP पत्ता:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:308
+msgid "Secret key:"
+msgstr "गुप्त कळ:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:318
+msgid "You must enter a secret key or generate one"
+msgstr "तुम्ही एक गुप्त कळ दाखल किंवा उत्पन्न करायलाच हवी"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "ISDN जोडणी"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:92
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"नविन ISDN जोडणी तयार करा. ही जोडणी आहे जी तुमच्या आंतरजाल सेवा पुरवठाकारास डायल "
+"करण्यासाठी इंटिग्रेटेड सेवा डिजिटल संजाळ लाइनचा वापर करते. या प्रकारच्या तंत्रज्ञानासाठी "
+"दूरध्वनी कंपनीला खास फोन लाइन टाकणे आवश्यक आहे. तुमच्या ISP पासून ISDN जोडणी "
+"संपवण्यासाठी त्यास टर्मिनल अडाप्टर(TA) नावाच्या एका यंत्राची देखील आवश्यकता आहे. या "
+"प्रकारच्या जोडणी युरोप आणि इतर तंत्रज्ञानाच्या दृष्टीने प्रगत प्रदेशांमध्ये प्रसिद्ध आहेत.  USA "
+"मध्ये ते उपलब्ध आहे परंतु सामान्य नाही.  वेगाची परिसीमा ६४kbps ते १२८kbps."
 
 #: ../src/netconfpkg/gui/maindialog.py:275
 msgid "Loading configuration..."
@@ -791,13 +1467,13 @@ msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "तुम्ही \"%s\" वापरलेली सर्व यंत्रे नष्ट करू इच्छिता?"
 
 #: ../src/netconfpkg/gui/maindialog.py:1637
-#: ../src/netconfpkg/gui/maindialog.py:1653 ../src/neat-control.py:146
-#: ../src/neat-control.py:163 ../src/netconf-cmd.py:98
+#: ../src/netconfpkg/gui/maindialog.py:1653 ../src/netconf-cmd.py:98
+#: ../src/neat-control.py:146 ../src/neat-control.py:163
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2005 Red Hat, Inc."
 
-#: ../src/netconfpkg/gui/maindialog.py:1638 ../src/neat-control.py:147
-#: ../src/netconf-cmd.py:99
+#: ../src/netconfpkg/gui/maindialog.py:1638 ../src/netconf-cmd.py:99
+#: ../src/neat-control.py:147
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
@@ -829,290 +1505,6 @@ msgstr "IPsec जोडणी %s कार्यान्वित करण्�
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "IPsec जोडणी %s अकार्यान्वित करण्यासाठी, बदल सुरक्षित करावे लागतील."
 
-#: ../src/netconfpkg/gui/wirelessconfig.py:37
-#: ../src/netconfpkg/gui/wirelessconfig.py:95
-#: ../src/netconfpkg/gui/wirelessconfig.py:164
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/WirelessInterface.py:34
-#: ../src/netconfpkg/gui/WirelessInterface.py:143
-#: ../src/netconfpkg/gui/WirelessInterface.py:197
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
-msgid "Auto"
-msgstr "स्वतः"
-
-#: ../src/netconfpkg/gui/wirelessconfig.py:38
-#: ../src/netconfpkg/gui/WirelessInterface.py:35
-msgid "Ad-Hoc"
-msgstr "तात्कालिक"
-
-#: ../src/netconfpkg/gui/wirelessconfig.py:39
-#: ../src/netconfpkg/gui/WirelessInterface.py:36
-msgid "Managed"
-msgstr "व्यवस्थापित"
-
-#: ../src/netconfpkg/gui/wirelessconfig.py:40
-#: ../src/netconfpkg/gui/WirelessInterface.py:37
-msgid "Master"
-msgstr "मुख्य"
-
-#: ../src/netconfpkg/gui/GUI_functions.py:87
-#, python-format
-msgid ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
-msgstr ""
-"फाइल '%s' शोधता आली नाही.\n"
-"कृपया तुमचे प्रतिष्ठापन तपासा!\n"
-"चालवा: 'rpm -V system-config-network'\n"
-
-#: ../src/netconfpkg/gui/GUI_functions.py:96
-#, python-format
-msgid ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
-msgstr ""
-"फाइल '%s' भारित करता आली नाही.\n"
-"कृपया तुमचे प्रतिष्ठापन तपासा!\n"
-"चालवा: 'rpm -V system-config-network'\n"
-
-#: ../src/netconfpkg/gui/GUI_functions.py:586
-#, python-format
-msgid ""
-"Failed to run:\n"
-"%s"
-msgstr ""
-"चालवण्यास अपयशी:\n"
-"%s"
-
-#: ../src/netconfpkg/gui/GUI_functions.py:589
-msgid "Succeeded. Please read the output."
-msgstr "यशस्वी. कृपया प्रदान वाचा."
-
-#: ../src/netconfpkg/gui/DialupDruid.py:223
-#: ../src/netconfpkg/gui/editipsec.py:285
-#: ../src/netconfpkg/gui/EthernetInterface.py:210
-#: ../src/netconfpkg/gui/CipeInterface.py:137
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
-#: ../src/netconfpkg/gui/TokenRingInterface.py:197
-#: ../src/netconfpkg/gui/WirelessInterface.py:317
-#: ../src/netconfpkg/gui/PTPInterface.py:200
-msgid "You have selected the following information:"
-msgstr "तुम्ही खालील माहिती निवडलेली आहे:"
-
-#: ../src/netconfpkg/gui/DialupDruid.py:225
-msgid "Hardware:"
-msgstr "हार्डवेयर:"
-
-#: ../src/netconfpkg/gui/DialupDruid.py:226
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
-msgid "Provider name:"
-msgstr "पुरवणाऱ्याचे नाव:"
-
-#: ../src/netconfpkg/gui/DialupDruid.py:228
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
-msgid "Login name:"
-msgstr "लॉगीन नाव:"
-
-#: ../src/netconfpkg/gui/DialupDruid.py:229
-msgid "Phone number:"
-msgstr "दूरध्वनी क्रमांक:"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:86
-msgid "ISDN connection"
-msgstr "ISDN जोडणी"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:92
-msgid ""
-"Create a new ISDN connection. This is a connection that uses an Integrated "
-"Services Digital Network line to dial into to your Internet Service "
-"Provider. This type of technology requires a special phone line to be "
-"installed by your telephone company. It also requires a device known as a "
-"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
-"type of connection is popular in Europe and several other technologically "
-"advanced regions.  It is available but uncommon in the USA.  Speeds range "
-"from 64kbps to 128kbps."
-msgstr ""
-"नविन ISDN जोडणी तयार करा. ही जोडणी आहे जी तुमच्या आंतरजाल सेवा पुरवठाकारास डायल "
-"करण्यासाठी इंटिग्रेटेड सेवा डिजिटल संजाळ लाइनचा वापर करते. या प्रकारच्या तंत्रज्ञानासाठी "
-"दूरध्वनी कंपनीला खास फोन लाइन टाकणे आवश्यक आहे. तुमच्या ISP पासून ISDN जोडणी "
-"संपवण्यासाठी त्यास टर्मिनल अडाप्टर(TA) नावाच्या एका यंत्राची देखील आवश्यकता आहे. या "
-"प्रकारच्या जोडणी युरोप आणि इतर तंत्रज्ञानाच्या दृष्टीने प्रगत प्रदेशांमध्ये प्रसिद्ध आहेत.  USA "
-"मध्ये ते उपलब्ध आहे परंतु सामान्य नाही.  वेगाची परिसीमा ६४kbps ते १२८kbps."
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:65
-#, python-format
-msgid ""
-"Command failed: %s\n"
-"\n"
-"Output:\n"
-"%s\n"
-msgstr ""
-"आदेश अपयशी: %s\n"
-"\n"
-"प्रदान:\n"
-"%s\n"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:67
-msgid ""
-"The Token Ring card could not be initialized. Please verify your settings "
-"and try again."
-msgstr "टोकन रिग कार्ड आरंभता आले नाही. कृपया तुमच्या रचना तपासा आणि पुन्हा प्रयत्न करा."
-
-#: ../src/netconfpkg/gui/editipsec.py:217
-msgid ""
-"Please enter a unique security parameter index between 256 and 4294967295."
-msgstr ""
-"कृपया अद्वितीय असा 256 आणि 4294967295 दरम्यानचा सुरक्षा परिमाण अनुक्रम दाखल करा."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:82
-#, python-format
-msgid "%s connection"
-msgstr "%s जोडणी"
-
-#: ../src/netconfpkg/gui/GenericInterface.py:85
-#, python-format
-msgid "Create a new %s connection."
-msgstr "नविन %s जोडणी निर्माण करा."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:95
-msgid "This wizard still has to be written."
-msgstr "हा विझार्ड अजूनही लिहीला जायचा आहे."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:96
-msgid "Press Finish to get the standard configuration dialog."
-msgstr "मानक व्यूहरचना संवाद मिळवण्यासाठी समाप्त दाबा."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:97
-msgid "Then, at first, enter the nickname for the device."
-msgstr "मग, प्रथम, यंत्रासाठी टोपणनाव दाखल करा."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:134
-msgid "This device can not be edited with this tool!"
-msgstr "हे यंत्र या उपकरणाद्वारे संपादित करता येणार नाही!"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:116
-msgid "Ethernet connection"
-msgstr "इथरनेट जोडणी"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:122
-msgid "Create a new ethernet connection."
-msgstr "नविन इथरनेट जोडणी निर्माण करा."
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:191
-msgid "Other Ethernet Card"
-msgstr "इतर इथरनेट कार्ड"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/CipeInterface.py:138
-#: ../src/netconfpkg/gui/TokenRingInterface.py:198
-#: ../src/netconfpkg/gui/WirelessInterface.py:318
-#: ../src/netconfpkg/gui/PTPInterface.py:201
-msgid "Device:"
-msgstr "यंत्र:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:222
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
-#: ../src/netconfpkg/gui/WirelessInterface.py:329
-#: ../src/netconfpkg/gui/PTPInterface.py:211
-#: ../src/netconfpkg/gui/edithosts.glade.h:2
-msgid "Address:"
-msgstr "पत्ता:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:223
-#: ../src/netconfpkg/gui/TokenRingInterface.py:210
-#: ../src/netconfpkg/gui/WirelessInterface.py:330
-msgid "Subnet mask:"
-msgstr "सबनेट मास्क:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:224
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
-#: ../src/netconfpkg/gui/WirelessInterface.py:331
-msgid "Default gateway address:"
-msgstr "मुलभूत गेटवे पत्ता:"
-
-#: ../src/netconfpkg/gui/EthernetInterface.py:226
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
-#: ../src/netconfpkg/gui/WirelessInterface.py:333
-msgid "Automatically obtain IP address settings with:"
-msgstr "IP पत्ता रचना यासह आपोआप मिळवा:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:89
-msgid "CIPE (VPN) connection"
-msgstr "CIPE (VPN) जोडणी"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:92
-msgid "Create a new virtual private network connection with CIPE."
-msgstr "CIPE सह नविन आभासी खाजगी संजाळ जोडणी निर्माण करा."
-
-#: ../src/netconfpkg/gui/CipeInterface.py:139
-msgid "Tunnel through device:"
-msgstr "यंत्रामार्फत टनल करा:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:140
-#: ../src/netconfpkg/gui/CipeInterface.py:301
-msgid "Local port:"
-msgstr "स्थानिक पोर्ट:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/CipeInterface.py:147
-#: ../src/netconfpkg/gui/CipeInterface.py:302
-msgid "Remote peer address:"
-msgstr "दूरस्थ समकक्ष पत्ता:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:148
-msgid "Remote peer port:"
-msgstr "दूरस्थ समकक्ष पोर्ट:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:150
-#: ../src/netconfpkg/gui/CipeInterface.py:306
-msgid "Remote virtual address:"
-msgstr "दूरस्थ आभासी पत्ता:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:151
-#: ../src/netconfpkg/gui/CipeInterface.py:307
-msgid "Local virtual address:"
-msgstr "स्थानिक आभासी पत्ता:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:160
-#: ../src/netconfpkg/gui/CipeInterface.py:228
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:67
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:129
-msgid "None - Server Mode"
-msgstr "काही नाही - सर्वर रीत"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:167
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:75
-msgid " (dynamic)"
-msgstr " (गतिज)"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:204
-#: ../src/netconfpkg/gui/CipeInterface.py:258
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:107
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:161
-msgid "Server Mode"
-msgstr "सर्वर रीत"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:289
-#: ../src/netconfpkg/gui/CipeInterface.py:294
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:192
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:197
-msgid "(own choice)"
-msgstr "(स्वतःची निवड)"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:300
-msgid "IP address of tunnel device:"
-msgstr "टनल यंत्राचा IP पत्ता:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:308
-msgid "Secret key:"
-msgstr "गुप्त कळ:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:318
-msgid "You must enter a secret key or generate one"
-msgstr "तुम्ही एक गुप्त कळ दाखल किंवा उत्पन्न करायलाच हवी"
-
 #: ../src/netconfpkg/gui/ethernethardware.py:90
 msgid "Command failed: "
 msgstr "आदेश अयशस्वी: "
@@ -1127,115 +1519,6 @@ msgid ""
 "try again."
 msgstr "इथरनेट कार्ड आरंभता आले नाही. कृपया तुमच्या रचना तपासा आणि पुन्हा प्रयत्न करा."
 
-#: ../src/netconfpkg/gui/iucvconfig.py:39
-msgid "IUCV Device"
-msgstr "IUCV यंत्र"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:46
-msgid "IUCV connection"
-msgstr "IUCV जोडणी"
-
-#: ../src/netconfpkg/gui/IUCVInterface.py:52
-msgid "Create a new IUCV connection."
-msgstr "नविन IUCV जोडणी तयार करा."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:78
-msgid "Modem connection"
-msgstr "मोडेम जोडणी"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:84
-msgid ""
-"Create a new Modem connection.  This is a connection that uses a serial "
-"analog modem to dial into to your Internet Service Provider. These modems "
-"use sound over a normal copper telephone line to transmit data.  These types "
-"of connections are available just about anywhere in the world where there is "
-"a phone system."
-msgstr ""
-"नविन मोडेम जोडणी तयार करा.  ही जोडणी आहे जी तुमच्या आंतरजाल सेवा पुरवठाकारास डायल "
-"करण्यासाठी सिरियल एनलॉग मोडेमचा वापर करते. हे मोडेम सामान्य तांब्याच्या तारेवरून डेटा "
-"परिवहन करण्यासाठी ध्वनीचा वापर करतात.  या प्रकारच्या जोडण्या जगभरात जवळपास सर्व "
-"ठिकाणी जेथे जेथे दूरध्वनी प्रणाली आहे तेथे उपलब्ध आहे."
-
-#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
-#: ../src/netconfpkg/gui/ModemInterface.py:113
-msgid "Modem probing..."
-msgstr "मोडेमचा शोध घेत आहे..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:117
-msgid "Probing for Modems, please wait..."
-msgstr "मोडेमचा शोध घेत आहे, कृपया प्रतिक्षा करा..."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:132
-msgid "No modem was found on your system."
-msgstr "तुमच्या प्रणालीवर मोडेम सापडला नाही."
-
-#: ../src/netconfpkg/gui/ModemInterface.py:161
-#: ../src/netconfpkg/gui/modemconfig.py:109
-msgid "Generic Modem"
-msgstr "सामान्य मोडेम"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:173
-#: ../src/netconfpkg/gui/modemconfig.py:136
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
-#: ../src/netconfpkg/gui/modemconfig.glade.h:9
-msgid "Off"
-msgstr "बंद"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:175
-#: ../src/netconfpkg/gui/modemconfig.py:138
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
-#: ../src/netconfpkg/gui/modemconfig.glade.h:4
-msgid "Low"
-msgstr "कमी"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:177
-#: ../src/netconfpkg/gui/modemconfig.py:140
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
-#: ../src/netconfpkg/gui/modemconfig.glade.h:5
-msgid "Medium"
-msgstr "मध्यम"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:179
-#: ../src/netconfpkg/gui/modemconfig.py:142
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
-#: ../src/netconfpkg/gui/modemconfig.glade.h:3
-msgid "High"
-msgstr "उच्च"
-
-#: ../src/netconfpkg/gui/ModemInterface.py:181
-#: ../src/netconfpkg/gui/modemconfig.py:144
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
-#: ../src/netconfpkg/gui/modemconfig.glade.h:11
-msgid "Very High"
-msgstr "अतिउच्च"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
-msgid "xDSL connection"
-msgstr "xDSL जोडणी"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
-msgid ""
-"Create an xDSL connection.  This is a connection that uses one of several "
-"types of broadband connections collective known as Digital Subscriber "
-"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
-"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
-"uploads at the same speed), and several others.  These types of connections "
-"are common in the United States, and are gaining acceptance elsewhere.  "
-"Speeds vary according to the technology used, but generally range from "
-"144kbps to 1.0Mbps."
-msgstr ""
-"xDSL जोडणी तयार करा. ही जोडणी आहे जी विविध प्रकारच्या ब्रॉडबँड जोडण्या ज्या "
-"एकत्रितपणे Digital Subscriber Lines म्हणून ओळखल्या जातात त्यांचा वापर करते. या यादीत "
-"समावेश होतो ADSL(असममित, अपलोडपेक्षा वेगवान डाउनलोड), IDSL (अंतरासाठी ISDN लाइन "
-"वरून), SDSL (सममित,डाउनलोड आणि अपलोड समान वेगात), आणि इतर अनेक. या प्रकारच्या "
-"जोडण्या संघराज्यात सामान्य आहेत, आणि इतरत्र मान्यता प्राप्त करत आहेत. वापरलेल्या "
-"तंत्रज्ञानानुसार वेगात बदल होतो, तरीही सामान्यतः १४४kbps ते १.०Mbps च्या दरम्यान असतो."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
-msgid "Ethernet device:"
-msgstr "इथरनेट यंत्र:"
-
 #: ../src/netconfpkg/gui/TokenRingInterface.py:111
 msgid "Token Ring connection"
 msgstr "टोकन रिंग जोडणी"
@@ -1247,288 +1530,6 @@ msgstr "नविन टोकन रिंग जोडणी तयार क�
 #: ../src/netconfpkg/gui/TokenRingInterface.py:179
 msgid "Other Tokenring Card"
 msgstr "अन्य टोकनरिंग कार्ड"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:152
-msgid "Wireless connection"
-msgstr "बिनतारी जोडणी"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:158
-msgid "Create a new wireless connection."
-msgstr "नविन बिनतारी जोडणी तयार करा."
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
-msgid "BitRate"
-msgstr "बिटदर"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:297
-msgid "Other Wireless Card"
-msgstr "अन्य बिनतारी कार्ड"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:336
-msgid "Mode:"
-msgstr "रीत:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:337
-msgid "ESSID (network ID):"
-msgstr "ESSID (संजाळ ID):"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:339
-msgid "Automatic"
-msgstr "स्वयंचलित"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:343
-msgid "Channel:"
-msgstr "वाहिनी:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:344
-msgid "Transmit rate:"
-msgstr "परिवहन दर:"
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:345
-msgid "Key: "
-msgstr "कळ: "
-
-#: ../src/netconfpkg/gui/WirelessInterface.py:351
-msgid "encryption disabled"
-msgstr "एनक्रिप्शन अकार्यान्वित"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
-msgid "CTC connection"
-msgstr "CTC जोडणी"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
-msgid "Create a new CTC connection."
-msgstr "नविन CTC जोडणी तयार करा."
-
-#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
-msgid "CTC Device"
-msgstr "CTC यंत्र"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
-msgid "IP address of tunnel device: "
-msgstr "टनल यंत्राचा IP पत्ता: "
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:204
-msgid "Local port: "
-msgstr "स्थानिक पोर्ट: "
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:205
-msgid "Remote peer address: "
-msgstr "दूरस्थ समकक्ष पत्ता: "
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:209
-msgid "Remote virtual address: "
-msgstr "दूरस्थ आभासी पत्ता: "
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:210
-msgid "Local virtual address: "
-msgstr "स्थानिक आभासी पत्ता: "
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:211
-msgid "Secret key: "
-msgstr "गुप्त कळ: "
-
-#: ../src/netconfpkg/gui/PTPInterface.py:212
-msgid "Point to Point (IP):"
-msgstr "पॉइंट टु पॉइंट (IP):"
-
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:122
-#, python-format
-msgid ""
-"Nickname %s is already in use!\n"
-"Please choose another one.\n"
-msgstr ""
-"टोपणनाव %s आधिच वापरात आहे!\n"
-"कृपया दुसरे एखादे निवडा.\n"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:237
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
-msgid "Dialup Configuration"
-msgstr "डायलअप व्यूहरचना"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:269
-msgid "ISDN Dialup Configuration"
-msgstr "ISDN डायलअप व्यूहरचना"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:289
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:384
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:71
-msgid "in"
-msgstr "आत"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:289
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:74
-msgid "out"
-msgstr "बाहेर"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:335
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:76
-msgid "raw IP"
-msgstr "कच्चा IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:337
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:366
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:77
-msgid "sync PPP"
-msgstr "सिंक PPP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:350
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:420
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:75
-msgid "pap"
-msgstr "pap"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:352
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:422
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:69
-msgid "chap"
-msgstr "chap"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:355
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:424
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:70
-msgid "chap+pap"
-msgstr "chap+pap"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:357
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-msgid "none"
-msgstr "काही नाही"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:434
-msgid "Modem Dialup Configuration"
-msgstr "मोडेम डायलअप व्यूहरचना"
-
-#: ../src/netconfpkg/NC_functions.py:96
-msgid "Common"
-msgstr "सामान्य"
-
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:141
-msgid "Active"
-msgstr "कार्यान्वित"
-
-#: ../src/netconfpkg/NC_functions.py:142
-msgid "Inactive"
-msgstr "निष्क्रीय"
-
-#: ../src/netconfpkg/NC_functions.py:149
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "Hardware (CRTSCTS)"
-msgstr "हार्डवेयर (CRTSCTS)"
-
-#: ../src/netconfpkg/NC_functions.py:150
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "Software (XON/XOFF)"
-msgstr "सॉफ्टवेयर (XON/XOFF)"
-
-#: ../src/netconfpkg/NC_functions.py:230
-msgid ""
-"Shall the following packages, which are needed on your system, be installed?"
-msgstr "तुमच्या प्रणालीवर गरज असलेली खालील संकुले प्रतिष्ठापित करावित काय?"
-
-#: ../src/netconfpkg/NC_functions.py:243
-msgid ""
-"You have to install the following packages, which are needed on your system!"
-msgstr "तुमच्या प्रणालीवर गरज असलेली खालील संकुले तुम्हांस प्रतिष्ठापित करावी लागतील!"
-
-#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
-#, python-format
-msgid ""
-"Error removing\n"
-"%s:\n"
-"%s!"
-msgstr ""
-"काढून टाकण्यात चूक!\n"
-"%s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:808
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"प्रतिलिपी करण्यात चूक\n"
-"%s\n"
-"ते %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:818
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"दुवा जोडण्यात चूक \n"
-"%s\n"
-"ते %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:828
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"नाव बदलण्यात चूक! \n"
-"%s\n"
-"ते %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:836
-#, python-format
-msgid ""
-"Error creating directory!\n"
-"%s"
-msgstr ""
-"निर्देशिका निर्माण करण्यात चूक!\n"
-"%s"
-
-#: ../src/netconfpkg/NC_functions.py:974
-#, python-format
-msgid "Linking %s to devices and putting it in profile %s."
-msgstr "%s ला यंत्रांशी संलग्न करून %s प्रोफाइलमध्ये टाकत आहे."
-
-#: ../src/netconfpkg/NCIPsec.py:186
-msgid "IPsec activating..."
-msgstr "IPsec कार्यान्वित होत आहे..."
-
-#: ../src/netconfpkg/NCIPsec.py:187
-#, python-format
-msgid "Activating IPsec connection %s, please wait..."
-msgstr "IPsec जोडणी %s कार्यान्वित होत आहे, कृपया प्रतिक्षा करा..."
-
-#: ../src/netconfpkg/NCIPsec.py:189
-#, python-format
-msgid "Cannot activate IPsec connection %s!\n"
-msgstr "IPsec जोडणी %s कार्यान्वित करू शकत नाही!\n"
-
-#: ../src/netconfpkg/NCIPsec.py:206
-msgid "IPsec deactivating..."
-msgstr "IPsec अकार्यान्वित करत आहे..."
-
-#: ../src/netconfpkg/NCIPsec.py:207
-#, python-format
-msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "IPsec जोडणी %s अकार्यान्वित करत आहे, कृपया प्रतिक्षा करा..."
-
-#: ../src/netconfpkg/NCIPsec.py:209
-#, python-format
-msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "IPsec जोडणी %s अकार्यान्वित करू शकत नाही!\n"
 
 #: ../src/netconf.py:55
 #, python-format
@@ -1574,34 +1575,6 @@ msgstr ""
 #: ../src/netconf.py:251
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "कृपया system-config-network रूट परवानग्यांसह सुरू करा!\n"
-
-#: ../src/neat-control.py:223
-#, python-format
-msgid "Cannot configure network device %s"
-msgstr "संजाळ यंत्र %s व्यूहरचित करता येत नाहीये"
-
-#: ../src/neat-control.py:243
-msgid "Switching Profiles"
-msgstr "बदलत्या प्रोफाइल"
-
-#: ../src/neat-control.py:244
-#, python-format
-msgid "Switching to profile %s"
-msgstr "प्रोफाइल %s वर बदला"
-
-#: ../src/neat-control.py:245
-#, python-format
-msgid "Failed to switch to profile %s"
-msgstr "%s प्रोफाइलवर बदलण्यास अपयशी"
-
-#. TBD
-#: ../src/neat-control.py:260
-msgid "To be rewritten!"
-msgstr "पुन्हा लिहावयाचे आहे!"
-
-#: ../src/neat-control.py:367
-msgid " (active)"
-msgstr " (कार्यान्वित)"
 
 #: ../src/netconf-tui.py:99
 msgid ""
@@ -1743,659 +1716,191 @@ msgstr "अपरिचित पर्याय %s\n"
 msgid "Unknown List %s\n"
 msgstr "अपरिचित यादी %s\n"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+#: ../src/neat-control.py:223
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "संजाळ यंत्र %s व्यूहरचित करता येत नाहीये"
+
+#: ../src/neat-control.py:243
+msgid "Switching Profiles"
+msgstr "बदलत्या प्रोफाइल"
+
+#: ../src/neat-control.py:244
+#, python-format
+msgid "Switching to profile %s"
+msgstr "प्रोफाइल %s वर बदला"
+
+#: ../src/neat-control.py:245
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "%s प्रोफाइलवर बदलण्यास अपयशी"
+
+#. TBD
+#: ../src/neat-control.py:260
+msgid "To be rewritten!"
+msgstr "पुन्हा लिहावयाचे आहे!"
+
+#: ../src/neat-control.py:367
+msgid " (active)"
+msgstr " (कार्यान्वित)"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
+msgstr "11M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+msgid "1M"
+msgstr "1M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
+msgstr "2M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
+msgstr "5.5M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:1
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
 msgid "Allow all _users to enable and disable the device"
 msgstr "सर्व उपयोक्त्यांस यंत्र कार्यान्वित आणि अकार्यान्वित करण्यास संमती द्या"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
-msgid "Allow dial on _demand"
-msgstr "मागणी वर डायल संमत करा(_d)"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
-msgid "Allow the link come up on demand."
-msgstr "मागणी वर लिंक पुढे आणणे संमत करा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
-msgid "Demand setting"
-msgstr "मागणी रचना"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:3
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
 msgid "Enable IPv_6 configuration for this interface"
 msgstr "या इंटरफेससाठी IPv_6 व्यूहरचना कार्यान्वित करा"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
-msgid "Enable synchronous PPP for the connection"
-msgstr "सिंक्रोनस PPP जोडणीसाठी कार्यान्वित करा"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+msgid "Network name (SSID):"
+msgstr "संजाळ नाव (SSID):"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
 msgid ""
-"Enter the Access Concentrator name, if you have been given one by your ISP. "
-"In most cases you can leave this blank."
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
 msgstr ""
-"Access Concentrator नाव दाखल करा, जर तुमच्या ISP ने तुम्हास ते दिले असेल तर. बहुतांश "
-"प्रसंगी तुम्ही हे कोरे सोडू शकता."
+"यंत्राची कार्यकारी रीत निर्धारित करा, जी संजाळ टोपोलॉजीवर अवलंबून आहे. रीत असू शकते Ad-"
+"Hoc (फक्त एकच सेल असलेले आणि प्रवेश बिंदू, Access Point, नसलेले संजाळ), व्यवस्थापित (नोड "
+"अनेक प्रवेश बिंदूंनी बनलेल्या संजाळास, रोमिंग करताना जोडतो), मास्टर (नोड सिंक्रोनायझेशन "
+"मास्टर किंवा प्रवेश बिंदू म्हणून काम करतो) किंवा स्वयं."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
 msgid ""
-"Enter the Service Name, if your ISP requires it. If you don't know it, "
-"please contact your ISP. In most cases you can leave this blank."
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
 msgstr ""
-"सेवा नाव दाखल करा, जर तुमच्या ISP ला आवश्यक असेल तर. जर तुम्हास ते माहित नसेल, तर "
-"तुमच्या ISP स संपर्क साधा. बहुतांश प्रसंगी तुम्ही हे कोरे सोडू शकता."
+"एनक्रिप्शन करणे किंवा कळ विस्कळित करणे आणि एनक्रिप्शन रीत यासाठी वापरले जाते. चालू "
+"एनक्रिप्शन कळ hex अंकांत निर्धारित करण्यासाठी कळ 0x आधी लावून दाखल करा, जसे "
+"0xXXXXXXXX."
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
-msgid "Enter the idle time in seconds after which the link should be dropped."
-msgstr "दुवा किती सेकंदांनंतर सोडून द्यावा ते दाखल करा."
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "Wireless Device Configuration"
+msgstr "बिनतारी यंत्र व्यूहरचना"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
-msgid "Enter the login name, that your ISP gave you here."
-msgstr "तुमच्या ISP ने दिलेले तुमचे लॉगीन नाव येथे दाखल करा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid ""
-"Enter the name of this configuration, usually just the name of your ISP."
-msgstr "या व्यूहरचनेचे नाव दाखल करा, जे सहसा तुमच्या ISP चे नाव असेल."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
-msgid ""
-"Enter the password for your account. If you do not know it, please contact "
-"your ISP."
-msgstr ""
-"तुमच्या खात्यासाठी गुप्तशब्द दाखल करा. जर तुम्हास तो माहित नसेल, तर कृपया तुमच्या ISP ला "
-"संपर्क करा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
-msgid "Make this connection the default _route"
-msgstr "या जोडणीस मुलभूत मार्ग करा(_r)"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
-msgid "Pass_word:"
-msgstr "गुप्तशब्द(_w):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
-msgid "Restart if _connection dies"
-msgstr "जोडणी मृत झाल्यास पुन्हा सुरू करा(_c)"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-msgid "Use this form to enter your T-Online account data."
-msgstr "तुमची T-Online खाते माहिती दाखल करण्यासाठी हा अर्ज वापरा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
-msgid "_AC-name:"
-msgstr "_AC-नाव:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:5
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "_Activate device when computer starts"
 msgstr "यंत्र संगणक सुरू होताना कार्यान्वित करा(_A)"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:6
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:5
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
 msgid "_Activate device when parent device starts"
 msgstr "यंत्र पालक यंत्र सुरू होताच कार्यान्वित करा(_A)"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
-msgid "_Advanced"
-msgstr "प्रगत(_A)"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+msgid "_Auto"
+msgstr "स्वतः(_A)"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+msgid "_Channel:"
+msgstr "वाहिनी(_C):"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:8
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:6
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_General"
 msgstr "सामान्य(_G)"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
-msgid "_Hardware Device"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Hardware device"
 msgstr "हार्डवेयर यंत्र(_H)"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
-msgid "_IPsec"
-msgstr "_IPsec"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+msgid "_Key (use 0x for hex):"
+msgstr "कळ (hex साठी 0x वापरा)(_K):"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
-msgid "_Login name:"
-msgstr "लॉगीन नाव(_L):"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+msgid "_Mode:"
+msgstr "रीत(_M):"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
-msgid "_Maximum idle time:"
-msgstr "कमाल रिकामा वेळ(_M):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:10
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:8
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
-#: ../src/netconfpkg/gui/editipsec.glade.h:38
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
 msgid "_Nickname:"
 msgstr "टोपणनाव(_N):"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-msgid "_Provider"
-msgstr "पुरवठाकार(_P)"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
-msgid "_Provider name:"
-msgstr "पुरवठाकाराचे नाव(_P):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
 #: ../src/netconfpkg/gui/ptpconfig.glade.h:12
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:9
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid "_Route"
 msgstr "मार्ग(_R)"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
-msgid "_Service-name:"
-msgstr "सेवा-नाम(_S):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
-msgid "_T-Online Account Setup"
-msgstr "T-Online खाते व्यवस्था"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
-msgid "_Use synchronous PPP"
-msgstr "सिंक्रोनस PPP वापरा(_U)"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
-msgid "xDSL Configuration"
-msgstr "xDSL व्यूहरचना"
-
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
-msgid "Choose Hardware Type"
-msgstr "हार्डवेयर प्रकार निवडा"
-
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
-msgid "Hardware type:"
-msgstr "हार्डवेयर प्रकार:"
-
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type you want to create"
-msgstr "कृपया तुम्हास निर्माण करावयाचा हार्डवेयर यंत्र प्रकार निवडा"
-
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
-msgid "Token Ring"
-msgstr "टोकन रिंग"
-
-#: ../src/netconfpkg/gui/tonline.glade.h:1
-msgid "<b>T-Online account</b>"
-msgstr "<b>T-Online खाते</b>"
-
-#: ../src/netconfpkg/gui/tonline.glade.h:2
-msgid "Account Setup"
-msgstr "खाते व्यवस्था"
-
-#: ../src/netconfpkg/gui/tonline.glade.h:3
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
-msgid "Associated T-Online _number:"
-msgstr "संबंधित T-Online क्रमांक(_n):"
-
-#: ../src/netconfpkg/gui/tonline.glade.h:4
-msgid ""
-"Please enter here your personal account data. Without this data, access to T-"
-"Online is unfortunately not possible."
-msgstr ""
-"कृपया तुमची खाजगी खाते माहिती दाखल करा. या माहिती शिवाय, T-Online वर प्रवेश "
-"दुर्दैवाने शक्य नाही."
-
-#: ../src/netconfpkg/gui/tonline.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
-msgid "_Adapter identifier:"
-msgstr "अडाप्टर ओळखकर्ता(_A):"
-
-#: ../src/netconfpkg/gui/tonline.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:19
-msgid "_Concurrent user number/suffix:"
-msgstr "समवर्ती उपयोगकर्ता क्रमांक/पूर्वपद(_C):"
-
-#: ../src/netconfpkg/gui/tonline.glade.h:7
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:21
-msgid "_Personal password:"
-msgstr "वय्यक्तिक गुप्तशब्द(_P):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
-msgid "<b>Account Type:</b>"
-msgstr "<b>खाते प्रकार:</b>"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
-msgid "Configure DSL connection"
-msgstr "DSL जोडणी व्यूहरचित करत आहे"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
-msgid "Create DSL connection"
-msgstr "DSL जोडणी निर्माण करा"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
-msgid "Enter the provider name for this account."
-msgstr "या खात्यासाठी पुरवठाकाराचे नाव दाखल करा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
-msgid "Ethernet _device:"
-msgstr "इथरनेट यंत्र(_d):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Normal"
-msgstr "सामान्य"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
-msgid ""
-"Normal\n"
-"T-Online"
-msgstr ""
-"सामान्य\n"
-"T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
-msgid "Password (_again):"
-msgstr "गुप्तशब्द (पुन्हा)(_a):"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-msgid "Select the ethernet device connected to the DSL modem."
-msgstr "DSL मोडेमला जोडलेले इथरनेट यंत्र निवडा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-msgid "Select the ethernet device for this account."
-msgstr "या खात्यासाठी इथरनेट यंत्र निवडा."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-msgid "T-Online"
-msgstr "T-Online"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-msgid "Select Token Ring Adapter"
-msgstr "टोकन रिंग अडाप्टर निवडा"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
-msgid "_Adapter:"
-msgstr "अडाप्टर(_A):"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:3
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
-msgid "_Device:"
-msgstr "यंत्र(_D):"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-msgid "Configure Network Settings"
-msgstr "संजाळ रचना व्यवस्थापित करा"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
-#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
-msgid "Create Ethernet Device"
-msgstr "इथरनेट यंत्र निर्माण करा"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
-msgid "Ethernet card"
-msgstr "इथरनेट कार्ड"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-msgid "MTU:"
-msgstr "MTU:"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-msgid ""
-"Please enter the MTU parameter to set the maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"कृपया या इंटरफेसचे कमाल परिवहन एकक निर्धारित करण्यासाठी MTU पॅरामीटर दाखल करा. s390/"
-"s390x वर MTU ची मुलभूत रचना 1492 आहे"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
-msgid "Select Ethernet Device"
-msgstr "इथरनेट यंत्र निवडा"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the ethernet card you want to configure:"
-msgstr "तुम्हास व्यूहरचित करावयाचे इथरनेट कार्ड निवडा:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
-msgid "<b>Phone number</b>"
-msgstr "<b>दूरध्वनी क्रमांक</b>"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
-msgid "A_rea code:"
-msgstr "क्षेत्र कोड(_r):"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "पुरवठाकाराकडून आपोआप _DNS माहिती प्राप्त करा"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
-msgid "Automatically obtain _IP address settings"
-msgstr "_IP पत्ता रचना आपोआप प्राप्त करा"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
-msgid "Create Dialup Connection"
-msgstr "डायलअप जोडणी निर्माण करा"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
-msgid "Default _gateway address:"
-msgstr "मुलभूत गेटवे पत्ता(_g):"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
-msgid "Encapsulation mode:"
-msgstr "एनकॅप्सूलेशन मोड:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"सामान्य दूरध्वनी क्रमांकाआधी डायल करावयाच्या संख्या दाखल करा. उदाहरणार्थ, तुम्हास एका "
-"बाहेरील लाइनवर पोहोचायचे आहे, किंवा कॉल प्रतिक्षा अकार्यक्षमकरायची आहे, आवश्यक संख्या येथे "
-"टाका."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
-msgid "Enter the area code needed to reach your internet provider."
-msgstr "तुमच्या आतरजाल पुरवठाकारापर्यंत पोहोचण्यासाठी आवश्यक क्षेत्र कोड दाखल करा."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "तुमच्या ISP चा दूरध्वनी क्रमांक दाखल करा (पूर्वपद/क्षेत्र/देश कोड च्या शिवाय)."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
-msgid "IP Settings"
-msgstr "IP रचना"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
-#: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
-msgid "Internet Provider"
-msgstr "आंतरजाल पुरवठाकार"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "स्वहस्ते IP पत्ता रचना"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
-msgid "New Interface"
-msgstr "नविन इंटरफेस"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
-msgid "PPP Settings"
-msgstr "PPP रचना"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
-msgid "Prefi_x:"
-msgstr "पूर्वपद(_x):"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
-msgid "Provider _name:"
-msgstr "पुरवठाकाराचे नाव(_n):"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
-msgid "Select Provider"
-msgstr "पुरवठाकार निवडा"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
-msgid "Statically set IP addresses:"
-msgstr "स्थितिकरित्या IP पत्ता निर्धारित करा:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:7
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-msgid "_Address:"
-msgstr "पत्ता(_A):"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
-msgid "_Phone number:"
-msgstr "दूरध्वनी क्रमांक(_P):"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-msgid "_Subnet mask:"
-msgstr "सबनेट मास्क(_S):"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
-msgid "Select Ethernet Adapter"
-msgstr "इथरनेट अडाप्टर निवडा"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
-msgid "00:00:00"
-msgstr "00:00:00"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
-msgid "Online time:"
-msgstr "ऑनलाइन वेळ:"
-
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
-msgid "click the right mouse button for properties"
-msgstr "गुणधर्मांसाठी उजवे माउस बटन दाबा"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-msgid "MT_U:"
-msgstr "MT_U:"
-
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
-msgid "_Point to Point (IP):"
-msgstr "_Point to Point (IP):"
-
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
-msgid "Connect to"
-msgstr "जोडा"
-
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
-msgid "Disconnect from"
-msgstr "जोडणी तोडा"
-
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-#: ../src/netconfpkg/gui/neat-control.glade.h:18
-msgid "_Configure..."
-msgstr "व्यूहरचना करा(_C)..."
-
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "Network Adapters Configuration"
-msgstr "संजाळ अडाप्टर्स व्यूहरचना"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-msgid "Waiting to connect to"
-msgstr "प्रतिक्षा करत आहे जोडण्याची"
-
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-msgid "Waiting..."
-msgstr "प्रतिक्षा..."
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
-msgid "1_TR6"
-msgstr "1_TR6"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
-msgid "<b>D channel protocol</b>"
-msgstr "<b>D वाहिनी प्रोटोकॉल</b>"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
-msgid "<b>Resources</b>"
-msgstr "<b>साधने</b>"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-msgid "Eu_ro ISDN (EDSS1)"
-msgstr "Eu_ro ISDN (EDSS1)"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN Adapters Configuration"
-msgstr "ISDN अडाप्टर्स व्यूहरचना"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
-msgid "ISDN _adapters:"
-msgstr "ISDN अडाप्टर्स(_a):"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-msgid "_IO:"
-msgstr "_IO:"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-msgid "_MEM:"
-msgstr "_MEM:"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
-msgid "00:00:00:00:00:00"
-msgstr "00:00:00:00:00:00"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid ""
-"Each device needs to be attached to a physical device which can be selected "
-"below. Device Alias support allows you to use multiple virtual devices for "
-"one physical device."
-msgstr ""
-"प्रत्येक यंत्रास एक भौतिक यंत्र संलग्न करण्याची गरज असते जे खाली निवडता येऊ शकते. यंत्र "
-"उपनाव आधार तुम्हास अनेक आभासी यंत्रे एकाच भौतिक यंत्रासाठी वापरण्याची मुभा देतो."
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Enable _Device Alias support"
-msgstr "यंत्र उपनाव आधार कार्यान्वित करा(_D)"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
-msgid "Ha_rdware address:"
-msgstr "हार्डवेयर पत्ता(_r):"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
-msgid "Token Ring Device"
-msgstr "टोकन रिंग यंत्र"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Alias:"
-msgstr "उपनाव(_A):"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
-msgid "_Hardware device:"
-msgstr "हार्डवेयर यंत्र(_H):"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
-msgid "_Probe for Address"
-msgstr "पत्त्यांसाठी तपासणी करा(_P)"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
-msgid "_Use Hardware Address"
-msgstr "हार्डवेयर पत्ता वापरा(_U)"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
-msgid "tr0"
-msgstr "tr0"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
-msgid "tr1"
-msgstr "tr1"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
-msgid "tr2"
-msgstr "tr2"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
-msgid "tr3"
-msgstr "tr3"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
-msgid "tr4"
-msgstr "tr4"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
-msgid "tr5"
-msgstr "tr5"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+msgid "_Specified:"
+msgstr "दर्शवलेले(_S):"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+msgid "_Transmit rate:"
+msgstr "परिवहन दर(_T):"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+msgid "_Wireless Settings"
+msgstr "बिनतारी रचना(_W)"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:1
 msgid "<b>Active profile</b>"
@@ -2460,6 +1965,11 @@ msgstr "खालील संजाळ इंटरफेस कार्या
 msgid "_Activate"
 msgstr "कार्यान्वित करा(_A)"
 
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+msgid "_Configure..."
+msgstr "व्यूहरचना करा(_C)..."
+
 #: ../src/netconfpkg/gui/neat-control.glade.h:19
 #: ../src/netconfpkg/gui/maindialog.glade.h:32
 msgid "_Deactivate"
@@ -2474,490 +1984,304 @@ msgstr "माहिती(_I)"
 msgid "_Monitor"
 msgstr "मॉनिटर(_M)"
 
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
+msgid "Card"
+msgstr "कार्ड"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+msgid "Configure Network Settings"
+msgstr "संजाळ रचना व्यवस्थापित करा"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:3
+msgid "Create Device"
+msgstr "यंत्र बनवा"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
+msgid "MT_U:"
+msgstr "MT_U:"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
+msgid "Select Device"
+msgstr "यंत्र निवडा"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
+msgid "Select the card you want to configure:"
+msgstr "तुम्हास व्यूहरचित करावयाचे कार्ड निवडा:"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+msgid "_Address:"
+msgstr "पत्ता(_A):"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:11
+msgid "_Point to Point (IP):"
+msgstr "_Point to Point (IP):"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "टोकन रिंग यंत्र निर्माण करा"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+msgid "MTU:"
+msgstr "MTU:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"कृपया या इंटरफेसचे कमाल परिवहन एकक निर्धारित करण्यासाठी MTU पॅरामीटर दाखल करा. s390/"
+"s390x वर MTU ची मुलभूत रचना 1492 आहे"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "टोकन रिंग यंत्र निवडा"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr "तुम्हास व्यूहरचित करावयाचे टोकन रिंग कार्ड निवडा:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "टोकन रिंग कार्ड"
+
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
 msgid "Choose a Provider"
 msgstr "पुरवठाकार निवडा"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
-#: ../src/netconfpkg/gui/modemconfig.glade.h:1
-msgid "<b>Modem properties</b>"
-msgstr "<b>मोडेम गुणधर्म</b>"
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
+msgid "Internet Provider"
+msgstr "आंतरजाल पुरवठाकार"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
-#: ../src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "Modem _volume:"
-msgstr "मोडेम आवाज(_v):"
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "हार्डवेयर प्रकार निवडा"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
-msgid "Select Modem"
-msgstr "मोडेम निवडा"
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "हार्डवेयर प्रकार:"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
-#: ../src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "_Baud rate:"
-msgstr "बाउड दर(_B):"
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr "कृपया तुम्हास निर्माण करावयाचा हार्डवेयर यंत्र प्रकार निवडा"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
-#: ../src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "_Flow control:"
-msgstr "प्रवाह नियंत्रण(_F):"
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "टोकन रिंग"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
-#: ../src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "_Modem device:"
-msgstr "मोडेम यंत्र(_M):"
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:9
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:7
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_Hardware Device"
+msgstr "हार्डवेयर यंत्र(_H)"
 
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
-#: ../src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "_Use touch tone dialing"
-msgstr "स्पर्श टोन डायलिंग वापरा(_U)"
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "प्रतिक्षा करत आहे जोडण्याची"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
-msgid "A_ddress:"
-msgstr "पत्ता(_d):"
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+msgid "Waiting..."
+msgstr "प्रतिक्षा..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
-msgid "Automatically obtain _IP address settings with:"
-msgstr "_IP पत्ता रचना आपोआप यासह मिळवा:"
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "नविन यंत्र प्रकार जोडा"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:4
-msgid "Bind to _MAC address:"
-msgstr "_MAC पत्त्याशी संलग्न करा:"
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "यंत्र प्रकार"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:5
-msgid "DHCP Settings"
-msgstr "DHCP रचना"
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "यंत्र प्रकार निवडा"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:6
-msgid "Default ga_teway address:"
-msgstr "मुलभूत गेटवे पत्ता(_t):"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+msgid "<b>Account Type:</b>"
+msgstr "<b>खाते प्रकार:</b>"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:7
-msgid "Destination Network"
-msgstr "इष्टस्थळ संजाळ"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/tonline.glade.h:3
+msgid "Associated T-Online _number:"
+msgstr "संबंधित T-Online क्रमांक(_n):"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:8
-msgid "Device _alias number:"
-msgstr "यंत्र उपनाव क्रमांक(_a):"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "DSL जोडणी व्यूहरचित करत आहे"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:9
-msgid "Difficulty level:"
-msgstr "काठीण्य पातळी:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "DSL जोडणी निर्माण करा"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "तुमच्या ISP ने दिलेले तुमचे लॉगीन नाव येथे दाखल करा."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
 msgid ""
-"Each connection needs to be associated with a physical device which can be "
-"selected below."
-msgstr "प्रत्येक जोडणीस एक भौतिक यंत्र संलग्न करण्याची गरज असते जे खाली निवडता येऊ शकते."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:11
-msgid "Easy"
-msgstr "सोपे"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:12
-msgid "Gateway"
-msgstr "गेटवे"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:13
-msgid "H_ostname (optional):"
-msgstr "यजमाननाम(पर्यायी)(_o):"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:14
-msgid "Hardware device:"
-msgstr "हार्डवेयर यंत्र:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:15
-msgid "IPsec Tunnel Settings"
-msgstr "IPsec टनल रचना"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:16
-msgid "Local Network"
-msgstr "स्थानिक संजाळ"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
-msgid "Please select the level of security for this device."
-msgstr "कृपया या यंत्रासाठी सुरक्षा स्तर निवडा."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:20
-msgid "Prefix (Netmask)"
-msgstr "पूर्वपद (नेटमास्क)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:21
-msgid "Professional"
-msgstr "व्यावसायिक"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:22
-msgid "Remote Host / GW"
-msgstr "दूरस्थ यजमान / GW"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:23
-msgid "Remote Network"
-msgstr "दूरस्थ संजाळ"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
-msgid "Security Level"
-msgstr "सुरक्षा स्तर"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
-msgid "Select the services you want to provide through this device"
-msgstr "या यंत्राद्वारे तुम्ही पुरवू इच्छित असलेल्या सेवा निवडा"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
-msgid "Service"
-msgstr "सेवा"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
-msgid "Service Description"
-msgstr "सेवा वर्णन"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
-msgid "Services"
-msgstr "सेवा"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-msgid "Set MTU to:"
-msgstr "MTU यावर निर्धारित करा:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Static Network Routes"
-msgstr "स्थितिक संजाळ मार्ग"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Tie to specific ethernet card"
-msgstr "विशिष्ट इथरनेट कार्डशी बांधा"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
-msgid "Use ethernet device aliases"
-msgstr "इथरनेट यंत्र उपनावे वापरा"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:48
-msgid "_Add..."
-msgstr "जोडा(_A)..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
-msgid "_Delete..."
-msgstr "नष्ट करा(_D)..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
-msgid "_Edit..."
-msgstr "संपादन करा(_E)..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
-msgid "_Hardware Address"
-msgstr "हार्डवेयर पत्ता(_H)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
-msgid "_Hardware:"
-msgstr "हार्डवेयर(_H):"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
-msgid "_High Security (Internet)"
-msgstr "उच्च सुरक्षा (आंतरजाल)(_H)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
-msgid "_Low Security"
-msgstr "निम्न सुरक्षा(_L)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
-msgid "_Probe"
-msgstr "तपासणी(_P)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
-msgid "_Probe for Address..."
-msgstr "पत्त्यांसाठी तपासणी करा(_P)..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
-msgid "_Secure Device (LAN)"
-msgstr "सुरक्षित यंत्र (LAN) (_S)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "bootp"
-msgstr "bootp"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
-msgid "dhcp"
-msgstr "dhcp"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
-msgid "dialup"
-msgstr "डायलअप"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
-msgid "CIPE Configuration"
-msgstr "CIPE व्यूहरचना"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
-msgid "Configuration for your remote partner"
-msgstr "तुमच्या दूरस्थ जोडीदारासाठी व्यूहरचना"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
-msgid "Lo_cal virtual address:"
-msgstr "स्थानिक आभासी पत्ता(_c):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
-msgid "Remote _virtual address:"
-msgstr "दूरस्थ आभासी पत्ता(_v):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
-msgid "Remote peer p_ort:"
-msgstr "दूरस्थ समकक्ष पोर्ट(_o):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/editipsec.glade.h:37
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-msgid "_Generate"
-msgstr "उत्पन्न करा(_G)"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
-msgid "_Local port:"
-msgstr "स्थानिक पोर्ट(_L):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
-msgid "_Remote peer address:"
-msgstr "दूरस्थ समकक्ष पत्ता(_R):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
-msgid "_Secret key:"
-msgstr "गुप्त कळ(_S):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
-msgid "_Tunnel Settings"
-msgstr "टनल रचना(_T)"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
-msgid "_Tunnel through device:"
-msgstr "यंत्राद्वारे टनल(_T):"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
-msgid "_auto"
-msgstr "स्वयं(_a)"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
-msgid "cipcb0"
-msgstr "cipcb0"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
-msgid "cipcb1"
-msgstr "cipcb1"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
-msgid "cipcb2"
-msgstr "cipcb2"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
-msgid "cipcb3"
-msgstr "cipcb3"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
-msgid "cipcb4"
-msgstr "cipcb4"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
-msgid "eth0"
-msgstr "eth0"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
-msgid "eth1"
-msgstr "eth1"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
-msgid "eth2"
-msgstr "eth2"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
-msgid "eth3"
-msgstr "eth3"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
-msgid "eth4"
-msgstr "eth4"
-
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
-msgid "Ethernet Device"
-msgstr "इथरनेट यंत्र"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
-msgid "A_rea Code"
-msgstr "क्षेत्र कोड(_r)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:3
-msgid "Ca_llback"
-msgstr "कॉलबॅक(_l)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:4
-msgid "Callback MS_N:"
-msgstr "कॉलबॅक MS_N:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:5
-msgid "Callback _delay:"
-msgstr "कॉलबॅक कालांतर(_d):"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:6
-msgid "Callback _mode:"
-msgstr "कॉलबॅक रीत(_m):"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:7
-msgid "Callback setting"
-msgstr "कॉलबॅक रचना"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:8
-msgid "Click here, if you want to choose a new provider from the ISP database."
-msgstr "ISP डेटाबेसमधून नविन पुरवठाकार निवडण्यासाठी, येथे क्लिक् करा."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:9
-msgid "Dial _mode:"
-msgstr "डायल रीत(_m):"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:10
-msgid "Dial-in _number:"
-msgstr "डायल-इन क्रमांक(_n):"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:13
-msgid "Enable VJ Connection-_ID Compression"
-msgstr "VJ जोडणी-_ID संकुचन कार्यान्वित करा"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:14
-msgid "Enable _Address/Control Compression"
-msgstr "पत्ता/नियंत्रण संकुचन कार्यान्वित करा(_A)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:15
-msgid "Enable _BSD Compression"
-msgstr "_BSD संकुचन कार्यान्वित करा"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:16
-msgid "Enable _CCP Compression Control Protocol"
-msgstr "_CCP संकुचन नियंत्रण प्रोटोकॉल कार्यान्वित करा"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid "Enable _Protocol Field Compression"
-msgstr "प्रोटोकॉल क्षेत्र संकुचन कार्यान्वित करा(_P)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enable _VJ TCP/IP Header Compression"
-msgstr "_VJ TCP/IP शिर्षक संकुचन कार्यान्वित करा"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:25
-msgid "Enter your local phone number. It's optional, if you use a modem."
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr "या व्यूहरचनेचे नाव दाखल करा, जे सहसा तुमच्या ISP चे नाव असेल."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
 msgstr ""
-"तुमचा स्थानिक दूरध्वनी क्रमांक दाखल करा. जर तुम्ही मोडेम वापरत असाल, तर हे पर्यायी आहे."
+"तुमच्या खात्यासाठी गुप्तशब्द दाखल करा. जर तुम्हास तो माहित नसेल, तर कृपया तुमच्या ISP ला "
+"संपर्क करा."
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:26
-msgid "Han_gup timeout:"
-msgstr "हँगअप कालबाद(_g):"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "या खात्यासाठी पुरवठाकाराचे नाव दाखल करा."
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:27
-msgid "Let _PPP do all authentication"
-msgstr "_PPP ला सर्व अधिप्रमाणन करू द्या"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "इथरनेट यंत्र(_d):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:28
-msgid "MSN/EA_Z:"
-msgstr "MSN/EA_Z:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Normal"
+msgstr "सामान्य"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:30
-msgid "Modem _initialization string:"
-msgstr "मोडेम आरंभीकरण पंक्ती(_i):"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid ""
+"Normal\n"
+"T-Online"
+msgstr ""
+"सामान्य\n"
+"T-Online"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:31
-msgid "Modem p_ort:"
-msgstr "मोडेम पोर्ट(_o):"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Pass_word:"
+msgstr "गुप्तशब्द(_w):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:32
-msgid "Modem0"
-msgstr "Modem0"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "गुप्तशब्द (पुन्हा)(_a):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:33
-msgid "Modem1"
-msgstr "Modem1"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "DSL मोडेमला जोडलेले इथरनेट यंत्र निवडा."
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:34
-msgid "Modem2"
-msgstr "Modem2"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "या खात्यासाठी इथरनेट यंत्र निवडा."
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
-msgid "Modem3"
-msgstr "Modem3"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+msgid "T-Online"
+msgstr "T-Online"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:36
-msgid "PPP Option List"
-msgstr "PPP पर्याय यादी"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
+#: ../src/netconfpkg/gui/tonline.glade.h:5
+msgid "_Adapter identifier:"
+msgstr "अडाप्टर ओळखकर्ता(_A):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Phone Number"
-msgstr "दूरध्वनी क्रमांक"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:19
+#: ../src/netconfpkg/gui/tonline.glade.h:6
+msgid "_Concurrent user number/suffix:"
+msgstr "समवर्ती उपयोगकर्ता क्रमांक/पूर्वपद(_C):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:39
-msgid "Prefi_x"
-msgstr "पूर्वपद(_x)"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Login name:"
+msgstr "लॉगीन नाव(_L):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:42
-msgid "Select the authentication protocol used by your ISP."
-msgstr "तुमच्या ISP द्वारे वापरलेला अधिप्रमाणन प्रोटोकॉल निवडा."
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:21
+#: ../src/netconfpkg/gui/tonline.glade.h:7
+msgid "_Personal password:"
+msgstr "वय्यक्तिक गुप्तशब्द(_P):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:43
-msgid "Use _Callback Control Protocol (CBCP)"
-msgstr "कॉलबॅक नियंत्रण प्रोटोकॉल (_CBCP) वापरा"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+msgid "_Provider name:"
+msgstr "पुरवठाकाराचे नाव(_P):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
-msgid "Use _Channel Bundling"
-msgstr "वाहिनी बांधणी वापरा(_C)"
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "यजमान नोंद जोडा/संपादन करा"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:50
-msgid "_Allow only above Dial-In Number"
-msgstr "फक्त वरील डायल-इन क्रमांक संमत करा(_A)"
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "उपनावे:"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:51
-msgid "_Authentication:"
-msgstr "अधिप्रमाणन(_A):"
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "यजमाननाम:"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:52
-msgid "_Choose Provider..."
-msgstr "पुरवठाकार निवडा(_C)..."
+#: ../src/netconfpkg/gui/tonline.glade.h:1
+msgid "<b>T-Online account</b>"
+msgstr "<b>T-Online खाते</b>"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:53
-msgid "_Compression"
-msgstr "संकुचन(_C)"
+#: ../src/netconfpkg/gui/tonline.glade.h:2
+msgid "Account Setup"
+msgstr "खाते व्यवस्था"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
-#: ../src/netconfpkg/gui/maindialog.glade.h:33
-msgid "_Delete"
-msgstr "नष्ट करा(_D)"
+#: ../src/netconfpkg/gui/tonline.glade.h:4
+msgid ""
+"Please enter here your personal account data. Without this data, access to T-"
+"Online is unfortunately not possible."
+msgstr ""
+"कृपया तुमची खाजगी खाते माहिती दाखल करा. या माहिती शिवाय, T-Online वर प्रवेश "
+"दुर्दैवाने शक्य नाही."
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
-msgid "_Dial mode:"
-msgstr "डायल रीत(_D):"
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "हार्डवेयर यंत्र प्रकार निवडा"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
-msgid "_Encapsulation mode:"
-msgstr "एनकॅप्सूलेशन रीत(_E):"
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "कृपया जमा करावयाच्या हार्डवेयर यंत्राचा प्रकार निवडा:"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:58
-msgid "_Hangup timeout:"
-msgstr "हँगअप कालबाद(_H):"
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "यंत्र प्रकार(_D):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
-msgid "_Options"
-msgstr "पर्याय(_O)"
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "संजाळ अडाप्टर्स व्यूहरचना"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
-msgid "_PPP option:"
-msgstr "_PPP पर्याय:"
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+msgid "_Adapter:"
+msgstr "अडाप्टर(_A):"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:63
-msgid "_Phone Number"
-msgstr "दूरध्वनी क्रमांक(_P)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:67
-msgid "_Use Callback"
-msgstr "कॉलबॅक वापरा(_U)"
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
+msgid "_Device:"
+msgstr "यंत्र(_D):"
 
 #: ../src/netconfpkg/gui/editipsec.glade.h:1
 msgid "*"
@@ -3103,6 +2427,12 @@ msgstr "संगणक सुरू होताना जोडणी का�
 msgid "_Encryption key:"
 msgstr "एनक्रिप्शन कळ(_E):"
 
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
+msgid "_Generate"
+msgstr "उत्पन्न करा(_G)"
+
 #: ../src/netconfpkg/gui/editipsec.glade.h:39
 msgid "dialog1"
 msgstr "dialog1"
@@ -3114,101 +2444,6 @@ msgstr "AH (256 - 4294967295) साठी अद्वितीय SPI, जस�
 #: ../src/netconfpkg/gui/editipsec.glade.h:41
 msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
 msgstr "ESP (256 - 4294967295) साठी अद्वितीय SPI, जसे TCP/IP पोर्ट क्रमांक"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
-msgid "<b>D-channel protocol</b>"
-msgstr "<b>D-वाहिनी प्रोटोकॉल</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
-msgid "Select ISDN Adapter"
-msgstr "ISDN अडाप्टर निवडा"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "Configure Wireless Connection"
-msgstr "बिनतारी जोडणी व्यूहरचित करा"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "Create Wireless Device"
-msgstr "बिनतारी यंत्र बनवा"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-msgid "Network name (SSID):"
-msgstr "संजाळ नाव (SSID):"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-msgid ""
-"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
-"interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr ""
-"कृपया या इंटरफेसचे कमाल परिवहन एकक निर्धारित करण्यासाठी MTU पॅरामीटर दाखल करा. s390/"
-"s390x वर MTU ची मुलभूत रचना 1492 आहे"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Select Wireless Device"
-msgstr "बिनतारी यंत्र निवडा"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
-msgid "Select the wireless card you want to configure:"
-msgstr "तुम्हास व्यूहरचित करावयाचे बिनतारी कार्ड निवडा:"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-msgid ""
-"Used to manipulate encryption or scrambling keys and encryption mode. To set "
-"the current encryption key in hex digits enter the key with 0x prepended as "
-"0xXXXXXXXX."
-msgstr ""
-"एनक्रिप्शन करणे किंवा कळ विस्कळित करणे आणि एनक्रिप्शन रीत यासाठी वापरले जाते. चालू "
-"एनक्रिप्शन कळ hex अंकांत निर्धारित करण्यासाठी कळ 0x आधी लावून दाखल करा, जसे "
-"0xXXXXXXXX."
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "बिनतारी कार्ड"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-msgid "_Auto"
-msgstr "स्वतः(_A)"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-msgid "_Channel:"
-msgstr "वाहिनी(_C):"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-msgid "_Key (use 0x for hex):"
-msgstr "कळ (hex साठी 0x वापरा)(_K):"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
-msgid "_Mode:"
-msgstr "रीत(_M):"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
-msgid "_Specified:"
-msgstr "दर्शवलेले(_S):"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
-msgid "_Transmit rate:"
-msgstr "परिवहन दर(_T):"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
-msgid "Choose Hardware Device Type"
-msgstr "हार्डवेयर यंत्र प्रकार निवडा"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
-msgid "Please select the type of hardware device to add:"
-msgstr "कृपया जमा करावयाच्या हार्डवेयर यंत्राचा प्रकार निवडा:"
-
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
-msgid "_Device type:"
-msgstr "यंत्र प्रकार(_D):"
 
 #: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
 msgid "<b>Configuration for your remote partner</b>"
@@ -3222,98 +2457,72 @@ msgstr "टनल व्यूहरचित करा"
 msgid "Create Cipe Connection"
 msgstr "Cipe जोडणी निर्माण करा"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "11M"
-msgstr "11M"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
+msgid "Lo_cal virtual address:"
+msgstr "स्थानिक आभासी पत्ता(_c):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-msgid "1M"
-msgstr "1M"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "नविन इंटरफेस"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
-msgstr "2M"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
+msgid "Remote _virtual address:"
+msgstr "दूरस्थ आभासी पत्ता(_v):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
-msgstr "5.5M"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
+msgid "Remote peer p_ort:"
+msgstr "दूरस्थ समकक्ष पोर्ट(_o):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
-msgid ""
-"Set the operating mode of the device, which depends on the network topology. "
-"The mode can be Ad-Hoc (network composed of only one cell and without Access "
-"Point), Managed (node connects to a network composed of many Access Points, "
-"with roaming), Master (the node is the synchronization master or acts as an "
-"Access Point) or Auto."
-msgstr ""
-"यंत्राची कार्यकारी रीत निर्धारित करा, जी संजाळ टोपोलॉजीवर अवलंबून आहे. रीत असू शकते Ad-"
-"Hoc (फक्त एकच सेल असलेले आणि प्रवेश बिंदू, Access Point, नसलेले संजाळ), व्यवस्थापित (नोड "
-"अनेक प्रवेश बिंदूंनी बनलेल्या संजाळास, रोमिंग करताना जोडतो), मास्टर (नोड सिंक्रोनायझेशन "
-"मास्टर किंवा प्रवेश बिंदू म्हणून काम करतो) किंवा स्वयं."
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
+msgid "_Local port:"
+msgstr "स्थानिक पोर्ट(_L):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-msgid "Wireless Device Configuration"
-msgstr "बिनतारी यंत्र व्यूहरचना"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
+msgid "_Remote peer address:"
+msgstr "दूरस्थ समकक्ष पत्ता(_R):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-msgid "_Hardware device"
-msgstr "हार्डवेयर यंत्र(_H)"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
+msgid "_Secret key:"
+msgstr "गुप्त कळ(_S):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
-msgid "_Wireless Settings"
-msgstr "बिनतारी रचना(_W)"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
+msgid "_Tunnel through device:"
+msgstr "यंत्राद्वारे टनल(_T):"
 
-#: ../src/netconfpkg/gui/edithosts.glade.h:1
-msgid "Add / Edit Hosts entry"
-msgstr "यजमान नोंद जोडा/संपादन करा"
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
+msgid "_auto"
+msgstr "स्वयं(_a)"
 
-#: ../src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Aliases:"
-msgstr "उपनावे:"
+#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+msgid "Create Ethernet Device"
+msgstr "इथरनेट यंत्र निर्माण करा"
 
-#: ../src/netconfpkg/gui/edithosts.glade.h:4
-msgid "Hostname:"
-msgstr "यजमाननाम:"
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+msgid "Ethernet Device"
+msgstr "इथरनेट यंत्र"
 
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
-msgid "Card"
-msgstr "कार्ड"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
 
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:3
-msgid "Create Device"
-msgstr "यंत्र बनवा"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "ऑनलाइन वेळ:"
 
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
-msgid "Select Device"
-msgstr "यंत्र निवडा"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
-msgid "Select the card you want to configure:"
-msgstr "तुम्हास व्यूहरचित करावयाचे कार्ड निवडा:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Token Ring Device"
-msgstr "टोकन रिंग यंत्र निर्माण करा"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Token Ring Device"
-msgstr "टोकन रिंग यंत्र निवडा"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the token ring card you want to configure:"
-msgstr "तुम्हास व्यूहरचित करावयाचे टोकन रिंग कार्ड निवडा:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Token ring card"
-msgstr "टोकन रिंग कार्ड"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:1
-msgid "Add / Edit IP Address"
-msgstr "IP पत्ता जोडा/संपादन करा"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:3
-msgid "_Gateway:"
-msgstr "गेटवे(_G):"
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "गुणधर्मांसाठी उजवे माउस बटन दाबा"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:1
 msgid "Activate the selected device, calling ifup <device>."
@@ -3431,6 +2640,11 @@ msgstr ""
 "तुम्ही येथे IP पत्ता मॅपिंगला स्थितीज संगणक यजमाननाम दर्शवू शकता. जर DNS चा वापर होत "
 "असेल, तर या रचना त्याद्वारे पुरवलेल्या कोणत्याही माहितीवर प्राधान्यता मिळवतील."
 
+#: ../src/netconfpkg/gui/maindialog.glade.h:33
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+msgid "_Delete"
+msgstr "नष्ट करा(_D)"
+
 #: ../src/netconfpkg/gui/maindialog.glade.h:34
 msgid "_Edit"
 msgstr "संपादा(_E)"
@@ -3458,26 +2672,6 @@ msgstr "दूय्यम DNS(_S):"
 #: ../src/netconfpkg/gui/maindialog.glade.h:41
 msgid "_Tertiary DNS:"
 msgstr "तृतीय DNS(_T):"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain name:"
-msgstr "डोमेन नाव:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:2
-msgid "Edit Domain Name"
-msgstr "क्षेत्र(डोमेन) नाव संपादन करा"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
-msgid "Add new Device Type"
-msgstr "नविन यंत्र प्रकार जोडा"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
-msgid "Device Type"
-msgstr "यंत्र प्रकार"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
-msgid "Select Device Type"
-msgstr "यंत्र प्रकार निवडा"
 
 #: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
 msgid "$"
@@ -3566,3 +2760,810 @@ msgstr "वेळ(_T)"
 #: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
 msgid "redhat network control - Properties"
 msgstr "Red Hat संजाळ नियंत्रण - गुणधर्म"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow dial on _demand"
+msgstr "मागणी वर डायल संमत करा(_d)"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Allow the link come up on demand."
+msgstr "मागणी वर लिंक पुढे आणणे संमत करा."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Demand setting"
+msgstr "मागणी रचना"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
+msgid "Enable synchronous PPP for the connection"
+msgstr "सिंक्रोनस PPP जोडणीसाठी कार्यान्वित करा"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Access Concentrator नाव दाखल करा, जर तुमच्या ISP ने तुम्हास ते दिले असेल तर. बहुतांश "
+"प्रसंगी तुम्ही हे कोरे सोडू शकता."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"सेवा नाव दाखल करा, जर तुमच्या ISP ला आवश्यक असेल तर. जर तुम्हास ते माहित नसेल, तर "
+"तुमच्या ISP स संपर्क साधा. बहुतांश प्रसंगी तुम्ही हे कोरे सोडू शकता."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr "दुवा किती सेकंदांनंतर सोडून द्यावा ते दाखल करा."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Make this connection the default _route"
+msgstr "या जोडणीस मुलभूत मार्ग करा(_r)"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Restart if _connection dies"
+msgstr "जोडणी मृत झाल्यास पुन्हा सुरू करा(_c)"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+msgid "Use this form to enter your T-Online account data."
+msgstr "तुमची T-Online खाते माहिती दाखल करण्यासाठी हा अर्ज वापरा."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
+msgid "_AC-name:"
+msgstr "_AC-नाव:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Advanced"
+msgstr "प्रगत(_A)"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Maximum idle time:"
+msgstr "कमाल रिकामा वेळ(_M):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
+msgid "_Provider"
+msgstr "पुरवठाकार(_P)"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:30
+msgid "_Service-name:"
+msgstr "सेवा-नाम(_S):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:31
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
+msgid "_T-Online Account Setup"
+msgstr "T-Online खाते व्यवस्था"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:32
+msgid "_Use synchronous PPP"
+msgstr "सिंक्रोनस PPP वापरा(_U)"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:33
+msgid "xDSL Configuration"
+msgstr "xDSL व्यूहरचना"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "<b>Modem properties</b>"
+msgstr "<b>मोडेम गुणधर्म</b>"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "Modem _volume:"
+msgstr "मोडेम आवाज(_v):"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "मोडेम निवडा"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "_Baud rate:"
+msgstr "बाउड दर(_B):"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "_Flow control:"
+msgstr "प्रवाह नियंत्रण(_F):"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "_Modem device:"
+msgstr "मोडेम यंत्र(_M):"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "स्पर्श टोन डायलिंग वापरा(_U)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>दूरध्वनी क्रमांक</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "क्षेत्र कोड(_r):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "पुरवठाकाराकडून आपोआप _DNS माहिती प्राप्त करा"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "_IP पत्ता रचना आपोआप प्राप्त करा"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "डायलअप जोडणी निर्माण करा"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "मुलभूत गेटवे पत्ता(_g):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "एनकॅप्सूलेशन मोड:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"सामान्य दूरध्वनी क्रमांकाआधी डायल करावयाच्या संख्या दाखल करा. उदाहरणार्थ, तुम्हास एका "
+"बाहेरील लाइनवर पोहोचायचे आहे, किंवा कॉल प्रतिक्षा अकार्यक्षमकरायची आहे, आवश्यक संख्या येथे "
+"टाका."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "तुमच्या आतरजाल पुरवठाकारापर्यंत पोहोचण्यासाठी आवश्यक क्षेत्र कोड दाखल करा."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "तुमच्या ISP चा दूरध्वनी क्रमांक दाखल करा (पूर्वपद/क्षेत्र/देश कोड च्या शिवाय)."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP रचना"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "स्वहस्ते IP पत्ता रचना"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP रचना"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "पूर्वपद(_x):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
+msgid "Provider _name:"
+msgstr "पुरवठाकाराचे नाव(_n):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "पुरवठाकार निवडा"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+msgid "Statically set IP addresses:"
+msgstr "स्थितिकरित्या IP पत्ता निर्धारित करा:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "दूरध्वनी क्रमांक(_P):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+msgid "_Subnet mask:"
+msgstr "सबनेट मास्क(_S):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
+msgid "A_rea Code"
+msgstr "क्षेत्र कोड(_r)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:3
+msgid "Ca_llback"
+msgstr "कॉलबॅक(_l)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:4
+msgid "Callback MS_N:"
+msgstr "कॉलबॅक MS_N:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:5
+msgid "Callback _delay:"
+msgstr "कॉलबॅक कालांतर(_d):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:6
+msgid "Callback _mode:"
+msgstr "कॉलबॅक रीत(_m):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:7
+msgid "Callback setting"
+msgstr "कॉलबॅक रचना"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:8
+msgid "Click here, if you want to choose a new provider from the ISP database."
+msgstr "ISP डेटाबेसमधून नविन पुरवठाकार निवडण्यासाठी, येथे क्लिक् करा."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:9
+msgid "Dial _mode:"
+msgstr "डायल रीत(_m):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:10
+msgid "Dial-in _number:"
+msgstr "डायल-इन क्रमांक(_n):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:13
+msgid "Enable VJ Connection-_ID Compression"
+msgstr "VJ जोडणी-_ID संकुचन कार्यान्वित करा"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:14
+msgid "Enable _Address/Control Compression"
+msgstr "पत्ता/नियंत्रण संकुचन कार्यान्वित करा(_A)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:15
+msgid "Enable _BSD Compression"
+msgstr "_BSD संकुचन कार्यान्वित करा"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:16
+msgid "Enable _CCP Compression Control Protocol"
+msgstr "_CCP संकुचन नियंत्रण प्रोटोकॉल कार्यान्वित करा"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid "Enable _Protocol Field Compression"
+msgstr "प्रोटोकॉल क्षेत्र संकुचन कार्यान्वित करा(_P)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enable _VJ TCP/IP Header Compression"
+msgstr "_VJ TCP/IP शिर्षक संकुचन कार्यान्वित करा"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:25
+msgid "Enter your local phone number. It's optional, if you use a modem."
+msgstr ""
+"तुमचा स्थानिक दूरध्वनी क्रमांक दाखल करा. जर तुम्ही मोडेम वापरत असाल, तर हे पर्यायी आहे."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:26
+msgid "Han_gup timeout:"
+msgstr "हँगअप कालबाद(_g):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:27
+msgid "Let _PPP do all authentication"
+msgstr "_PPP ला सर्व अधिप्रमाणन करू द्या"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:28
+msgid "MSN/EA_Z:"
+msgstr "MSN/EA_Z:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:30
+msgid "Modem _initialization string:"
+msgstr "मोडेम आरंभीकरण पंक्ती(_i):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:31
+msgid "Modem p_ort:"
+msgstr "मोडेम पोर्ट(_o):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:32
+msgid "Modem0"
+msgstr "Modem0"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:33
+msgid "Modem1"
+msgstr "Modem1"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:34
+msgid "Modem2"
+msgstr "Modem2"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
+msgid "Modem3"
+msgstr "Modem3"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:36
+msgid "PPP Option List"
+msgstr "PPP पर्याय यादी"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Phone Number"
+msgstr "दूरध्वनी क्रमांक"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:39
+msgid "Prefi_x"
+msgstr "पूर्वपद(_x)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:42
+msgid "Select the authentication protocol used by your ISP."
+msgstr "तुमच्या ISP द्वारे वापरलेला अधिप्रमाणन प्रोटोकॉल निवडा."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:43
+msgid "Use _Callback Control Protocol (CBCP)"
+msgstr "कॉलबॅक नियंत्रण प्रोटोकॉल (_CBCP) वापरा"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
+msgid "Use _Channel Bundling"
+msgstr "वाहिनी बांधणी वापरा(_C)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:48
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+msgid "_Add..."
+msgstr "जोडा(_A)..."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:50
+msgid "_Allow only above Dial-In Number"
+msgstr "फक्त वरील डायल-इन क्रमांक संमत करा(_A)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:51
+msgid "_Authentication:"
+msgstr "अधिप्रमाणन(_A):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:52
+msgid "_Choose Provider..."
+msgstr "पुरवठाकार निवडा(_C)..."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:53
+msgid "_Compression"
+msgstr "संकुचन(_C)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
+msgid "_Dial mode:"
+msgstr "डायल रीत(_D):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
+msgid "_Encapsulation mode:"
+msgstr "एनकॅप्सूलेशन रीत(_E):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:58
+msgid "_Hangup timeout:"
+msgstr "हँगअप कालबाद(_H):"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
+msgid "_Options"
+msgstr "पर्याय(_O)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
+msgid "_PPP option:"
+msgstr "_PPP पर्याय:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:63
+msgid "_Phone Number"
+msgstr "दूरध्वनी क्रमांक(_P)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:67
+msgid "_Use Callback"
+msgstr "कॉलबॅक वापरा(_U)"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "टोकन रिंग अडाप्टर निवडा"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+msgid "<b>D-channel protocol</b>"
+msgstr "<b>D-वाहिनी प्रोटोकॉल</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+msgid "<b>Resources</b>"
+msgstr "<b>साधने</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro ISDN (EDSS1)"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+msgid "ISDN _adapters:"
+msgstr "ISDN अडाप्टर्स(_a):"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "ISDN अडाप्टर निवडा"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+msgid "_IO:"
+msgstr "_IO:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+msgid "_MEM:"
+msgstr "_MEM:"
+
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+msgid "Select Ethernet Adapter"
+msgstr "इथरनेट अडाप्टर निवडा"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
+msgid "A_ddress:"
+msgstr "पत्ता(_d):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
+msgid "Automatically obtain _IP address settings with:"
+msgstr "_IP पत्ता रचना आपोआप यासह मिळवा:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:4
+msgid "Bind to _MAC address:"
+msgstr "_MAC पत्त्याशी संलग्न करा:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:5
+msgid "DHCP Settings"
+msgstr "DHCP रचना"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:6
+msgid "Default ga_teway address:"
+msgstr "मुलभूत गेटवे पत्ता(_t):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:7
+msgid "Destination Network"
+msgstr "इष्टस्थळ संजाळ"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:8
+msgid "Device _alias number:"
+msgstr "यंत्र उपनाव क्रमांक(_a):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:9
+msgid "Difficulty level:"
+msgstr "काठीण्य पातळी:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:10
+msgid ""
+"Each connection needs to be associated with a physical device which can be "
+"selected below."
+msgstr "प्रत्येक जोडणीस एक भौतिक यंत्र संलग्न करण्याची गरज असते जे खाली निवडता येऊ शकते."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:11
+msgid "Easy"
+msgstr "सोपे"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:12
+msgid "Gateway"
+msgstr "गेटवे"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:13
+msgid "H_ostname (optional):"
+msgstr "यजमाननाम(पर्यायी)(_o):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:14
+msgid "Hardware device:"
+msgstr "हार्डवेयर यंत्र:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:15
+msgid "IPsec Tunnel Settings"
+msgstr "IPsec टनल रचना"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:16
+msgid "Local Network"
+msgstr "स्थानिक संजाळ"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
+msgid "Please select the level of security for this device."
+msgstr "कृपया या यंत्रासाठी सुरक्षा स्तर निवडा."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:20
+msgid "Prefix (Netmask)"
+msgstr "पूर्वपद (नेटमास्क)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:21
+msgid "Professional"
+msgstr "व्यावसायिक"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:22
+msgid "Remote Host / GW"
+msgstr "दूरस्थ यजमान / GW"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:23
+msgid "Remote Network"
+msgstr "दूरस्थ संजाळ"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+msgid "Security Level"
+msgstr "सुरक्षा स्तर"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+msgid "Select the services you want to provide through this device"
+msgstr "या यंत्राद्वारे तुम्ही पुरवू इच्छित असलेल्या सेवा निवडा"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+msgid "Service"
+msgstr "सेवा"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+msgid "Service Description"
+msgstr "सेवा वर्णन"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+msgid "Services"
+msgstr "सेवा"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
+msgid "Set MTU to:"
+msgstr "MTU यावर निर्धारित करा:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
+msgid "Static Network Routes"
+msgstr "स्थितिक संजाळ मार्ग"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Tie to specific ethernet card"
+msgstr "विशिष्ट इथरनेट कार्डशी बांधा"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+msgid "Use ethernet device aliases"
+msgstr "इथरनेट यंत्र उपनावे वापरा"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+msgid "_Delete..."
+msgstr "नष्ट करा(_D)..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+msgid "_Edit..."
+msgstr "संपादन करा(_E)..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+msgid "_Hardware Address"
+msgstr "हार्डवेयर पत्ता(_H)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+msgid "_Hardware:"
+msgstr "हार्डवेयर(_H):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+msgid "_High Security (Internet)"
+msgstr "उच्च सुरक्षा (आंतरजाल)(_H)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+msgid "_Low Security"
+msgstr "निम्न सुरक्षा(_L)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+msgid "_Probe"
+msgstr "तपासणी(_P)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+msgid "_Probe for Address..."
+msgstr "पत्त्यांसाठी तपासणी करा(_P)..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+msgid "_Secure Device (LAN)"
+msgstr "सुरक्षित यंत्र (LAN) (_S)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "bootp"
+msgstr "bootp"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+msgid "dhcp"
+msgstr "dhcp"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+msgid "dialup"
+msgstr "डायलअप"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "Configure Wireless Connection"
+msgstr "बिनतारी जोडणी व्यूहरचित करा"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "Create Wireless Device"
+msgstr "बिनतारी यंत्र बनवा"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Select Wireless Device"
+msgstr "बिनतारी यंत्र निवडा"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Select the wireless card you want to configure:"
+msgstr "तुम्हास व्यूहरचित करावयाचे बिनतारी कार्ड निवडा:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Wireless card"
+msgstr "बिनतारी कार्ड"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "जोडा"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "जोडणी तोडा"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "इथरनेट कार्ड"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"कृपया या इंटरफेसचे कमाल परिवहन एकक निर्धारित करण्यासाठी MTU पॅरामीटर दाखल करा. s390/"
+"s390x वर MTU ची मुलभूत रचना 1492 आहे"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "इथरनेट यंत्र निवडा"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "तुम्हास व्यूहरचित करावयाचे इथरनेट कार्ड निवडा:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
+msgid ""
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
+msgstr ""
+"प्रत्येक यंत्रास एक भौतिक यंत्र संलग्न करण्याची गरज असते जे खाली निवडता येऊ शकते. यंत्र "
+"उपनाव आधार तुम्हास अनेक आभासी यंत्रे एकाच भौतिक यंत्रासाठी वापरण्याची मुभा देतो."
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Enable _Device Alias support"
+msgstr "यंत्र उपनाव आधार कार्यान्वित करा(_D)"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "Ha_rdware address:"
+msgstr "हार्डवेयर पत्ता(_r):"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
+msgid "Token Ring Device"
+msgstr "टोकन रिंग यंत्र"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Alias:"
+msgstr "उपनाव(_A):"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "_Hardware device:"
+msgstr "हार्डवेयर यंत्र(_H):"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "_Probe for Address"
+msgstr "पत्त्यांसाठी तपासणी करा(_P)"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "_Use Hardware Address"
+msgstr "हार्डवेयर पत्ता वापरा(_U)"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr0"
+msgstr "tr0"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:19
+msgid "tr1"
+msgstr "tr1"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:20
+msgid "tr2"
+msgstr "tr2"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:21
+msgid "tr3"
+msgstr "tr3"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:22
+msgid "tr4"
+msgstr "tr4"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:23
+msgid "tr5"
+msgstr "tr5"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "IP पत्ता जोडा/संपादन करा"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "गेटवे(_G):"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "डोमेन नाव:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "क्षेत्र(डोमेन) नाव संपादन करा"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
+msgid "CIPE Configuration"
+msgstr "CIPE व्यूहरचना"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
+msgid "Configuration for your remote partner"
+msgstr "तुमच्या दूरस्थ जोडीदारासाठी व्यूहरचना"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
+msgid "_Tunnel Settings"
+msgstr "टनल रचना(_T)"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
+msgid "cipcb0"
+msgstr "cipcb0"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
+msgid "cipcb1"
+msgstr "cipcb1"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
+msgid "cipcb2"
+msgstr "cipcb2"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
+msgid "cipcb3"
+msgstr "cipcb3"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
+msgid "cipcb4"
+msgstr "cipcb4"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:26
+msgid "eth0"
+msgstr "eth0"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:27
+msgid "eth1"
+msgstr "eth1"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:28
+msgid "eth2"
+msgstr "eth2"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:29
+msgid "eth3"
+msgstr "eth3"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:30
+msgid "eth4"
+msgstr "eth4"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "<b>D channel protocol</b>"
+msgstr "<b>D वाहिनी प्रोटोकॉल</b>"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "ISDN अडाप्टर्स व्यूहरचना"
