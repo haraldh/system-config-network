@@ -77,6 +77,11 @@ class mainDialog:
         if not os.path.isfile(glade_file):
             glade_file = NETCONFDIR + glade_file
 
+        self.isRoot = False
+
+        if os.access(getRoot() + "/", os.W_OK):
+            isRoot = True
+
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
 
         xml_signal_autoconnect(self.xml,
@@ -122,11 +127,6 @@ class mainDialog:
         self.hydrateProfiles()
 
         self.xml.get_widget('autoSelectProfileButton').hide()
-
-        self.isRoot = False
-
-        if os.access(getRoot() + "/", os.W_OK):
-            isRoot = True
 
         self.tag = gobject.timeout_add(4000, self.update_dialog)
         # Let this dialog be in the taskbar like a normal window
@@ -273,45 +273,61 @@ class mainDialog:
         if len(clist.selection) == 0:
             return
 
-        try:
-            status = clist.get_pixtext(clist.selection[0], 0)[0]
-        except ValueError:
-            status = clist.get_text(clist.selection[0], 0)
+        status = self.clist_get_status()
+        devname = self.clist_get_device()
+        dev = None
+        for dev in getDeviceList():
+            if dev.DeviceId == devname:
+                break
 
-        self.xml.get_widget('activateButton').set_sensitive(True)
-        self.xml.get_widget('deactivateButton').set_sensitive(True)
+        if dev and (dev.AllowUser or self.isRoot):
+            self.xml.get_widget('activateButton').set_sensitive(True)
+            self.xml.get_widget('deactivateButton').set_sensitive(True)
+        else:
+            self.xml.get_widget('activateButton').set_sensitive(False)
+            self.xml.get_widget('deactivateButton').set_sensitive(False)
 
         if status == ACTIVE:
-            self.xml.get_widget('activateButton').set_sensitive(False)
-            self.xml.get_widget('deactivateButton').set_sensitive(True)
+            #self.xml.get_widget('activateButton').set_sensitive(False)
+            #self.xml.get_widget('deactivateButton').set_sensitive(True)
             #self.xml.get_widget('configureButton').set_sensitive(False)
             self.xml.get_widget('monitorButton').set_sensitive(True)
         else:
-            self.xml.get_widget('activateButton').set_sensitive(True)
-            self.xml.get_widget('deactivateButton').set_sensitive(False)
+            #self.xml.get_widget('activateButton').set_sensitive(True)
+            #self.xml.get_widget('deactivateButton').set_sensitive(False)
             #self.xml.get_widget('configureButton').set_sensitive(True)
             self.xml.get_widget('monitorButton').set_sensitive(False)
 
     def clist_get_status(self):
+        status = INACTIVE
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
-        return dev
+        try:
+            status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
+        except ValueError:
+            status = clist.get_text(clist.selection[0], STATUS_COLUMN)
+        return status
 
     def clist_get_device(self):
+        dev = None
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_pixtext(clist.selection[0], DEVICE_COLUMN)[0]
+        try:
+            dev = clist.get_pixtext(clist.selection[0], DEVICE_COLUMN)[0]
+        except ValueError:
+            dev = clist.get_text(clist.selection[0], DEVICE_COLUMN)
+            
         return dev
 
     def clist_get_nickname(self):
+        nick = None
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
             return
-        dev = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
-        return dev
+        nick = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
+        return nick
 
     def hydrate(self, refresh = None):
         clist = self.xml.get_widget('interfaceClist')
@@ -328,8 +344,7 @@ class mainDialog:
                 devname = devname + ':' + str(dev.Alias)
 
             if (devname in self.activedevicelist or \
-                   dev.DeviceId in self.activedevicelist) and \
-                   (dev.AllowUser or self.isRoot):
+                   dev.DeviceId in self.activedevicelist):
                 status = ACTIVE
                 status_pixmap = self.on_xpm
                 status_mask = self.on_mask
@@ -347,6 +362,8 @@ class mainDialog:
             clist.set_pixtext(row, DEVICE_COLUMN, devname, 5, device_pixmap,
                               device_mask)
             row = row + 1
+
+        self.on_generic_clist_select_row(clist, 0, 0, 0)
 
     def hydrateProfiles(self, refresh = None):
         profilelist = getProfileList(refresh)
