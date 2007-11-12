@@ -20,6 +20,7 @@ netconfimg_DATA = \
 	connection-ethernet.png \
 	neat-control-logo.png \
 	network.png \
+	network.xpm \
 	blue_empty_led.xpm isdn.xpm off.xpm plip.xpm red_empty_led.xpm \
 	blue_led.xpm ethernet.xpm loopback.xpm on.xpm ppp.xpm red_led.xpm \
 	secure.png \
