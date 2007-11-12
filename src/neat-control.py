@@ -80,7 +80,7 @@ class mainDialog:
         self.isRoot = False
 
         if os.access(getRoot() + "/", os.W_OK):
-            isRoot = True
+            self.isRoot = True
 
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
 
@@ -274,11 +274,13 @@ class mainDialog:
             return
 
         status = self.clist_get_status()
-        devname = self.clist_get_device()
+        devname = self.clist_get_nickname()
         dev = None
         for dev in getDeviceList():
             if dev.DeviceId == devname:
                 break
+        else:
+            dev = None
 
         if dev and (dev.AllowUser or self.isRoot):
             self.xml.get_widget('activateButton').set_sensitive(True)
