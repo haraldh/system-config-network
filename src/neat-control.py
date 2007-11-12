@@ -123,6 +123,11 @@ class mainDialog:
 
         self.xml.get_widget('autoSelectProfileButton').hide()
 
+        self.isRoot = False
+
+        if os.access(getRoot() + "/", os.W_OK):
+            isRoot = True
+
         self.tag = gobject.timeout_add(4000, self.update_dialog)
         # Let this dialog be in the taskbar like a normal window
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
@@ -184,7 +189,7 @@ class mainDialog:
         else:
             return
 
-        gtk.timeout_remove(self.tag)
+        gobject.source_remove(self.tag)
 
         if device:
             (ret, msg) = dev.activate()
@@ -277,13 +282,13 @@ class mainDialog:
         self.xml.get_widget('deactivateButton').set_sensitive(True)
 
         if status == ACTIVE:
-            #self.xml.get_widget('activateButton').set_sensitive(False)
-            #self.xml.get_widget('deactivateButton').set_sensitive(True)
+            self.xml.get_widget('activateButton').set_sensitive(False)
+            self.xml.get_widget('deactivateButton').set_sensitive(True)
             #self.xml.get_widget('configureButton').set_sensitive(False)
             self.xml.get_widget('monitorButton').set_sensitive(True)
         else:
-            #self.xml.get_widget('activateButton').set_sensitive(True)
-            #self.xml.get_widget('deactivateButton').set_sensitive(False)
+            self.xml.get_widget('activateButton').set_sensitive(True)
+            self.xml.get_widget('deactivateButton').set_sensitive(False)
             #self.xml.get_widget('configureButton').set_sensitive(True)
             self.xml.get_widget('monitorButton').set_sensitive(False)
 
@@ -322,8 +327,9 @@ class mainDialog:
             if dev.Alias and dev.Alias != "":
                 devname = devname + ':' + str(dev.Alias)
 
-            if devname in self.activedevicelist or \
-                   dev.DeviceId in self.activedevicelist:
+            if (devname in self.activedevicelist or \
+                   dev.DeviceId in self.activedevicelist) and \
+                   (dev.AllowUser or self.isRoot):
                 status = ACTIVE
                 status_pixmap = self.on_xpm
                 status_mask = self.on_mask
