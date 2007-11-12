@@ -468,6 +468,9 @@ class GenClassList(GenClass):
                 setattr(self, child, nchild)
 
     def _commitAttr(self, changed=True, child=None):
+        if not child:
+            return
+
         cd = getattr(self, child)
 
         if self._attributes[child][TYPE] == LIST:
@@ -567,18 +570,18 @@ class GenClassAList(GenClass, list):
 
     def commit(self, changed=True):
         if self.data_bak != None and len(self):
-            #print "%s changed" % self._attributes[SELF][NAME]
+            #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
             self.setChanged(changed)
         elif self.data_bak == None and len(self):
-            #print "%s changed" % self._attributes[SELF][NAME]
+            #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
             self.setChanged(changed)
         elif len(self.data_bak) != len(self):
-            #print "%s changed" % self._attributes[SELF][NAME]
+            #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
             self.setChanged(changed)
         else:
             for i in xrange(0, len(self.data_bak)):
                 if self.data_bak[i] != self[i]:
-                    #print "%s changed" % self._attributes[SELF][NAME]
+                    #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
                     self.setChanged(changed)
                     break
 
