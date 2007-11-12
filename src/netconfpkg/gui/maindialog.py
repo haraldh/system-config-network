@@ -658,7 +658,8 @@ class mainDialog:
 
     def on_Dialog_delete_event(self, *args):
         profilelist = getProfileList()
-        profilelist.commit()
+        for prof in profilelist:
+            prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -666,6 +667,26 @@ class mainDialog:
                 self.dialog)
             if button == RESPONSE_YES:
                 self.save()
+
+        gtk.main_quit()
+        return
+
+    def on_okButton_clicked (self, *args):
+        profilelist = getProfileList()
+        for prof in profilelist:
+            prof.commitActive()
+
+        if self.changed():
+            button = generic_yesnocancel_dialog(
+                _("Do you want to save your changes?"),
+                self.dialog)
+
+            if button == RESPONSE_CANCEL:
+                return
+
+            if button == RESPONSE_YES:
+                if self.save() != 0:
+                    return
 
         gtk.main_quit()
         return
@@ -751,25 +772,6 @@ class mainDialog:
 
     def on_applyButton_clicked (self, button):
         self.save()
-
-    def on_okButton_clicked (self, *args):
-        profilelist = getProfileList()
-        profilelist.commit()
-
-        if self.changed():
-            button = generic_yesnocancel_dialog(
-                _("Do you want to save your changes?"),
-                self.dialog)
-
-            if button == RESPONSE_CANCEL:
-                return
-
-            if button == RESPONSE_YES:
-                if self.save() != 0:
-                    return
-
-        gtk.main_quit()
-        return
 
     def on_helpButton_clicked(self, button):
         #import gnome
