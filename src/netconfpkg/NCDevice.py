@@ -213,8 +213,8 @@ class Device( Device_base ):
         try:
             aliaspos = string.find( self.Device, ':' )
             if aliaspos != -1:
-                self.Device = self.Device[:aliaspos]
                 self.Alias = int( self.Device[aliaspos+1:] )
+                self.Device = self.Device[:aliaspos]
         except TypeError:
             NC_functions.generic_error_dialog( _( "%s, "
                                                 "Device not specified "
