@@ -781,8 +781,31 @@ class mainDialog:
         # used to read docs for system-config-*
         if not self.help_displayed:
             self.help_displayed = True
-            gui_run("/usr/bin/gnome-help", ["gnome-help", "file://" + NETCONFDIR + \
-                "/help/index.html"] )
+            
+            pw_name = os.getenv("USER")
+            uid = None 
+
+            for env in ("SUDO_UID", "USERHELPER_UID"):
+                try:
+                    uid = os.environ.get(env)
+                    uid = int(uid)
+                    if uid == 0:
+                        continue
+                    break
+                except:
+                    continue
+            else:
+                uid=os.getuid()
+            
+            if uid!=None:
+                import pwd
+                (pw_name,pw_passwd,pw_uid,
+                 pw_gid,pw_gecos,pw_dir,
+                 pw_shell) = pwd.getpwuid(uid)
+
+            gui_run("/bin/su", [ "su", "-c", "/usr/bin/htmlview file://" + NETCONFDIR + \
+                "/help/index.html", "-", pw_name])
+
             self.help_displayed = False
 
     def on_deviceAddButton_clicked (self, clicked):

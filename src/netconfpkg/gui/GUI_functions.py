@@ -369,10 +369,11 @@ def gui_run( command, argv, searchPath = 0,
     childpid = os.fork()
     if ( not childpid ):
         if ( root and root != '/' ): os.chroot ( root )
+
         if isinstance( catchfd, tuple ):
             for fd in catchfd:
                 os.dup2( write, fd )
-        else:
+        elif catchfd != None:
             os.dup2( write, catchfd )
         os.close( write )
         os.close( read )
