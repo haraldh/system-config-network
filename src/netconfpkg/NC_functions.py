@@ -934,7 +934,7 @@ def updateNetworkScripts(force = False):
     log.log(5, "updateNetworkScripts()")
 
     if __updatedNetworkScripts and (not force):
-        return
+        return 
 
     if not os.access(getRoot() + "/", os.W_OK):
         log.log(5, "Cannot write to %s" % (getRoot() + "/"))
@@ -989,7 +989,7 @@ def updateNetworkScripts(force = False):
 
     __updatedNetworkScripts = True
 
-    return __updatedNetworkScripts
+    return
 
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

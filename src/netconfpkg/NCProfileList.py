@@ -72,7 +72,7 @@ class ProfileList(ProfileList_base):
         if self.curr_prof == None or self.curr_prof == '':
             self.curr_prof = 'default'
 
-        changed = updateNetworkScripts()
+        updateNetworkScripts()
         self.__delslice__(0, len(self))
 
         proflist = []
@@ -93,7 +93,7 @@ class ProfileList(ProfileList_base):
         prof = self.getActiveProfile()
         log.log(5, "ActiveProfile: %s" % str(prof))        
         prof.DNS.Hostname = self.use_hostname
-        self.commit(changed)
+        self.commit(False)
 
     def loadprof(self, pr, profdir):
         devicelist = NCDeviceList.getDeviceList()
@@ -267,7 +267,7 @@ class ProfileList(ProfileList_base):
         # Just to be safe...
         os.umask(0022)
 
-            # commit the changes
+        # commit the changes
         self.commit(changed=False)
 
         devicelist = NCDeviceList.getDeviceList()

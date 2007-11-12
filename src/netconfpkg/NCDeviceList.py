@@ -34,7 +34,7 @@ class DeviceList(DeviceList_base):
 
     def load(self):
         from NCDevice import ConfDevice
-        changed = updateNetworkScripts()
+        updateNetworkScripts()
 
         self.__delslice__(0, len(self))
 
@@ -89,7 +89,7 @@ class DeviceList(DeviceList_base):
                 i = self.addDevice()
                 self[i].load(dev)
 
-        self.commit(changed)
+        self.commit(changed=False)
 
         chdev = {}
         # the initscripts do not like '-'
