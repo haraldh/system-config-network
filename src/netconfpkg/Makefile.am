@@ -30,6 +30,7 @@ PYTHON_FILES = \
 	NCIPsec.py \
 	NCIPsecList.py \
 	NCProfileList.py \
+	NCRoute.py \
 	NCWireless.py \
 	Control.py \
 	NCCard.py \
