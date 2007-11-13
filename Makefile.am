@@ -83,12 +83,6 @@ force-tag:
 tag:
 	git tag $(CVSTAG)
 
-tag-srpm: potfile distcheck changelog tag archive
-	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
-
-force-tag-srpm: force-tag archive
-	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
-
 srpm: distcheck changelog
 	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
 
@@ -103,7 +97,7 @@ potfile:
 	make 
 	make -C po update-po
 
-push:
+push: distcheck
 	git fetch && git rebase origin && git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
 
 diff:
