@@ -51,9 +51,9 @@ uninstall-local:
 		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
-changelog:
-	./rcs2log -v | sed -e 's|/usr/local/CVS/redhat-config-network/||g' \
-		-e 's|@.*>|@redhat.com>|g' > ChangeLog
+ChangeLog changelog:
+	git log --since="1 year ago" --no-merges r1_1_0-1.. > ChangeLog
+
 
 clean-local:
 	rm -f neat.desktop
