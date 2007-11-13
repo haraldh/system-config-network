@@ -97,7 +97,7 @@ potfile:
 	make 
 	make -C po update-po
 
-push:
+push: distcheck
 	git fetch 
 	git rebase origin 
 	make distcheck
