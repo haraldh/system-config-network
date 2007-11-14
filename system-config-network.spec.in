@@ -20,7 +20,7 @@ This is the GUI of the network configuration tool,
 supporting Ethernet, Wireless, TokenRing, ADSL, ISDN and PPP.
 
 %package tui
-Summary: The NEtwork Adminstration Tool
+Summary: The Network Adminstration Tool
 Group: Applications/System 
 Obsoletes: netcfg <= 2.36-3p redhat-config-network-tui <= %{version} netconf <= 0.1-1
 Provides: redhat-config-network-tui = %{version} netcfg = 2.36-3p.1 netconf = 0.1-1.1
@@ -105,7 +105,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
-* Mon Nov 12 2007 Harald Hoyer <harald@redhat.com> - 1.4.6
+* Wed Nov 14 2007 Harald Hoyer <harald@redhat.com> - 1.4.6
+- do not fall into modified state for activate/deactivate (rhbz#377261)
 - moved network.xpm to (pkgdatadir)/pixmaps (rhbz#377861)
 
 * Mon Nov 12 2007 Harald Hoyer <harald@redhat.com> - 1.4.5
