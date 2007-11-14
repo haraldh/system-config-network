@@ -951,7 +951,8 @@ class mainDialog:
         gobject.source_remove(self.tag)
 
         profilelist = getProfileList()
-        profilelist.commit()
+        for prof in profilelist:
+            prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -989,7 +990,9 @@ class mainDialog:
         gobject.source_remove(self.tag)
 
         profilelist = getProfileList()
-        profilelist.commit()
+        for prof in profilelist:
+            prof.commitActive()
+
         if self.changed():
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
@@ -1752,7 +1755,8 @@ class mainDialog:
         ipsec = clist.get_row_data(clist.selection[0])
 
         profilelist = getProfileList()
-        profilelist.commit()
+        for prof in profilelist:
+            prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -1782,7 +1786,8 @@ class mainDialog:
             return
 
         profilelist = getProfileList()
-        profilelist.commit()
+        for prof in profilelist:
+            prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
