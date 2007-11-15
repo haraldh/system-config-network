@@ -480,10 +480,35 @@ class HardwareList(HardwareList_base):
 
         self.updateFromChandev()
 
+        import glob
+        import os
+
         #
         # Read in actual system state
         #
-        for device in ethtool.get_devices():
+        for syspath in glob.glob('/sys/class/net/*'):
+            device = os.path.basename(syspath)
+            mod = None
+            try:                
+                mod = os.path.basename(os.readlink('%s/device/driver' % syspath))
+            except:                
+                pass
+
+            try:
+                fp = open("%s/type" % syspath)
+                line = fp.readlines()
+                fp.close()
+                line = string.join(line)
+                line.strip()
+                log.log(5, "type %s = %s" % (device, line))
+                type = int(line)
+                if type >= 256:
+                    continue
+            except:
+                pass
+
+            log.log(5, "%s = %s" % (device, mod))
+            
             h = None
             for h in self:
                 if h.Name == device:
@@ -492,17 +517,12 @@ class HardwareList(HardwareList_base):
             if h and h.Name == device and h.Status != HW_SYSTEM:
                 continue
 
-            if device[:3] != "eth":
-                continue
+#            if device[:3] != "eth":
+#                continue
 
             # No Alias devices
             if string.find(device, ':') != -1:
                 continue
-
-            try:
-                mod = ethtool.get_module(device)
-            except IOError, err:
-                mod = None
 
             if mod != None and mod != "":
                 # if it is already in our HW list do not delete it.
