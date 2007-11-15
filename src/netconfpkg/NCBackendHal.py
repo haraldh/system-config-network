@@ -4,50 +4,22 @@ import os
 import sys
 import dbus
 
-from NCHardware import Hardware
+if __name__ == '__main__':
+    import sys
+    sys.path.append("../")
+    sys.path.append("./")
+ 
+from NCHardware import Hardware, HW_SYSTEM
+from NC_functions import getDeviceType
 
 HAL_DEVICE_IFACE = "org.freedesktop.Hal.Device"
 
 class NCBackendHal:
     def __init__(self):
-
-        self.doDebug = True
-
         self._dbusBus = dbus.SystemBus()
         self.halManagerObj = self._dbusBus.get_object("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager")
         self.halManager = dbus.Interface(self.halManagerObj, "org.freedesktop.Hal.Manager")
-
-        self.driverList = self.read_driver_list()
-
-        self.cards = {}
-
-    def destroy(self, args):
-        return
-
-    # ------------------------------------------------------------------------
-    # Probe routines - drivers
-    # ------------------------------------------------------------------------
-    def read_driver_list(self):
-        try:
-            fd = open('/proc/asound/modules', 'r')
-            list = fd.readlines()
-            fd.close()
-        except:
-            return []
-
-        drivers = []
-        for line in list:
-            tmp = line.split()
-            drivers.append([int(tmp[0]), string.replace(tmp[1],'_','-')])
-
-        return drivers
-
-    def find_driver(self, list, position):
-        for rec in list:
-            if rec[0] == position:
-                return rec[1]
-
-        return _("Unknown")
+	self.cards = []
 
     # ------------------------------------------------------------------------
     # Probe routines - HAL
@@ -104,19 +76,22 @@ class NCBackendHal:
         obj = self._dbusBus.get_object("org.freedesktop.Hal", udi)
         category = self.getProperty(obj, "linux.subsystem")
         if category == "net" and self.getProperty(obj, "net.interface"):
+            arp_proto_hw_id = self.getProperty(obj, "net.arp_proto_hw_id")
+            if arp_proto_hw_id >= 256:
+                return None
+            
+            hw = Hardware()
+            hw.createCard()
+            hw.Name = self.getProperty(obj, "net.interface")
+            hw.Type = getDeviceType(hw.Name)
+            hw.Description = "%s %s" % self.getVendor(udi)
+            hw.Status = HW_SYSTEM
+
             index = self.getProperty(obj, "net.physical_device")
-            if index != None and not self.cards.has_key(index):
-                card = Hardware()
-                card.index = index
-                card.active = True
-                card.maker, card.model = self.getVendor(udi)
-                card.Type = string.split(card.maker)[0]
-                card.Bus = self.getBus(udi)
-                card.ModuleName = self.find_driver(self.driverList, card.index)
-                #card.driver = self.getDriver(udi)
-                #card.device_list = card.loadCardDevices()
-                print card
-                self.cards[index] = card
+            if index != None:
+                hw.Card.ModuleName = self.getDriver(index)
+
+            return hw
 
     # TODO?
     # Only add USB audio devices that have snd-usb-audio as the driver
@@ -125,12 +100,16 @@ class NCBackendHal:
     # Same with Mac sound devices
     #if card.bus() == "macio" and card.driver() != "snd-powermac":
     def probeCards(self):
+	self.cards = []
         udiList = self.halManager.FindDeviceByCapability("net")
         for udi in udiList:
-            self.getDevices(udi)
+            card = self.getDevices(udi)
+            if card:
+                self.cards.append(card)
+	return self.cards
 
 if __name__ == '__main__':
-#    sys.path.append("../")
-#    sys.path.append("./")
     hal = NCBackendHal()
-    hal.probeCards()
+    cards = hal.probeCards()
+    for card in cards:
+	print card

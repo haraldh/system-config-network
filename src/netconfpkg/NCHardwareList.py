@@ -46,17 +46,41 @@ try:
 except:
     pass
 
+
+#__networkmodulelist = []
+#try:
+#    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net -name '*.?o' -printf '%f ' 2>/dev/null" ])
+#    __networkmodulelist.append(__isdnmodulelist)
+#    __networkmodulelist = string.split(__msg)
+#except:
+#    pass
+
+
 def getModInfo():
     global ModInfo
     if ModInfo == None:
-        for path in [ '/boot/module-info',
-                      NETCONFDIR + '/module-info',
-                      './module-info' ]:
-            try:
-                ModInfo = ConfModInfo(filename = path)
-            except (VersionMismatch, FileMissing):
-                continue
-            break
+#         ModInfo = {}
+#         for mod in __networkmodulelist:
+#             if mod.find(".ko") != -1:
+#                 i = mod.find(".ko")
+#                 mod = mod[:i]
+
+#             try:
+#                 desc = execWithCapture("/sbin/modinfo", [ "/sbin/modinfo", "-F", "description", mod ])
+#                 ModInfo[mod] = {}
+#                 ModInfo[mod]['type'] = 'eth'
+#                 ModInfo[mod]['description'] = desc.strip()
+#             except:
+#                 pass
+            
+         for path in [ '/boot/module-info',
+                       NETCONFDIR + '/module-info',
+                       './module-info' ]:
+             try:
+                 ModInfo = ConfModInfo(filename = path)
+             except (VersionMismatch, FileMissing):
+                 continue
+             break
 
     return ModInfo
 
@@ -466,22 +490,12 @@ class HardwareList(HardwareList_base):
         del hdellist
 
 
-    def updateFromSystem(self):
-        modules = getMyConfModules()
-        modinfo = getModInfo()
-
-        self.updateFromKudzu()
-
-        hdellist = []
-
-        for h in self:
-            if h.Status == HW_SYSTEM:
-                hdellist.append(h)
-
-        self.updateFromChandev()
-
+    def updateFromSys(self, hdellist):
         import glob
         import os
+
+        modules = getMyConfModules()
+        modinfo = getModInfo()
 
         #
         # Read in actual system state
@@ -534,31 +548,89 @@ class HardwareList(HardwareList_base):
                     else:
                         log.log(5, "%s != %s and %s != %s" % (h.Name, device, h.Card.ModuleName, mod))
                 else:
-                    i = self.addHardware(getDeviceType(device))
-                    hw = self[i]
-                    hw.Name = device
-                    hw.Description = mod
-                    hw.Status = HW_SYSTEM
-                    hw.Type = getDeviceType(device)
-                    hw.createCard()
-                    hw.Card.ModuleName = mod
-                    if modinfo:
-                        for info in modinfo.keys():
-                            if info == mod:
-                                if modinfo[info].has_key('description'):
-                                    hw.Description = \
-                                                   modinfo[info]['description']
+                    for h in self:
+                        if h.Name == device and h.Card.ModuleName == mod:
+                            break
+                    else:
+                        i = self.addHardware(getDeviceType(device))
+                        hw = self[i]
+                        hw.Name = device
+                        hw.Description = mod
+                        hw.Status = HW_SYSTEM
+                        hw.Type = getDeviceType(device)
+                        hw.createCard()
+                        hw.Card.ModuleName = mod
+                        if modinfo:
+                            for info in modinfo.keys():
+                                if info == mod:
+                                    if modinfo[info].has_key('description'):
+                                        hw.Description = \
+                                            modinfo[info]['description']
 
-                    for selfkey in self.keydict.keys():
-                        confkey = self.keydict[selfkey]
-                        if modules[hw.Card.ModuleName] and \
-                               modules[hw.Card.ModuleName]\
-                               ['options'].has_key(confkey):
-                            hw.Card.__dict__[selfkey] = modules[hw.Card.\
-                                                                ModuleName]\
-                                                                ['options']\
-                                                                [confkey]
-                    hw.setChanged(True)
+                        for selfkey in self.keydict.keys():
+                            confkey = self.keydict[selfkey]
+                            if modules[hw.Card.ModuleName] and \
+                                    modules[hw.Card.ModuleName]\
+                                    ['options'].has_key(confkey):
+                                hw.Card.__dict__[selfkey] = modules[hw.Card.\
+                                                                        ModuleName]\
+                                                                        ['options']\
+                                                                        [confkey]
+                        hw.setChanged(True)
+
+        return hdellist
+
+
+    def updateFromHal(self, hdellist):
+        import NCBackendHal
+        hal = NCBackendHal.NCBackendHal()
+        cards = hal.probeCards()
+        for hw in cards:
+            # if it is already in our HW list do not delete it.
+            for h in hdellist:
+                if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
+                    log.log(5, "Found %s:%s, which is already in our list!" % (hw.Name, hw.Card.ModuleName))
+                    hdellist.remove(h)
+                    break
+                else:
+                    log.log(5, "%s != %s and %s != %s" % (h.Name, device, h.Card.ModuleName, mod))
+            else: 
+                for h in self:
+                    if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
+                        break
+                    else:
+                        self.append(hw)
+                        hw.Status = HW_SYSTEM
+                        hw.setChanged(True)        
+
+        return hdellist
+
+    def updateFromSystem(self):
+        try:
+            self.updateFromKudzu()
+        except:
+            pass
+
+        hdellist = []
+
+        for h in self:
+            if h.Status == HW_SYSTEM:
+                hdellist.append(h)
+
+        try:
+            self.updateFromChandev()
+        except:
+            pass
+
+        try:
+            hdellist = self.updateFromHal(hdellist)
+        except:
+            pass
+
+        try:
+            hdellist = self.updateFromSys(hdellist)
+        except:
+            pass
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
