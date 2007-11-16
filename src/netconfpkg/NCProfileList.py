@@ -132,22 +132,24 @@ class ProfileList(ProfileList_base):
                     prof.ActiveIPsecs.append(ipsec)
                     break
 
-        # FIXME: [198898] new backend for /etc/hosts
+        # CHECK: [198898] new backend for /etc/hosts
         if profdir:
-            hoconf = Conf.ConfEHosts( filename = profdir + '/hosts')
+            hoconf = Conf.ConfHosts( filename = profdir + '/hosts')
         else:
-            hoconf = Conf.ConfEHosts( filename = HOSTSCONF )
+            hoconf = Conf.ConfHosts( filename = HOSTSCONF )
 
         hoconf.read()
-        hoconf.rewind()
-        for key in hoconf.keys():
+        
+        # save parsed hosts to profile.HostsList
+        for hst in hoconf.configuration:
             host = Host()
+            host.IP = hst.IP
+            host.Hostname = hst.Hostname
             host.createAliasList()
-            host.Hostname = hoconf[key][0]
-            host.IP = key
-            log.log(4, "Adding %s %s" % (host.Hostname, host.IP))
-            for al in hoconf[key][1]:
+            host.Comment = hst.Comment
+            for al in hst.Aliases:
                 host.AliasList.append(al);
+            log.log(4, "Adding %s %s" % (host.Hostname, host.IP))
             prof.HostsList.append(host)
 
         # FIXME: [183338] use SEARCH not resolv.conf
@@ -383,28 +385,20 @@ class ProfileList(ProfileList_base):
                 nameservers.append(prof.DNS.TertiaryDNS)
 
             dnsconf['nameservers'] = nameservers
-            # FIXME: [198898] new backend for /etc/hosts
-            hoconf = Conf.ConfEHosts(filename = getRoot() + \
-                                     SYSCONFPROFILEDIR + '/' + \
-                                     prof.ProfileName + \
-                                     '/hosts')
+            # CHECK: [198898] new backend for /etc/hosts
+            hoconf = Conf.ConfHosts(filename = getRoot() + \
+                                         SYSCONFPROFILEDIR + '/' + \
+                                         prof.ProfileName + \
+                                         '/hosts')
             files_used.append(hoconf.filename)
-            saved = []
-            hoconf.fsf()
+            
             for host in prof.HostsList:
-                hoconf[host.IP] = [host.Hostname, host.AliasList]
+                hoconf.add(host)
                 saved.append(host.IP)
-            # FIXME: check [166855] system-config-network, 'save' erases local loopback entry
-            for i in hoconf.keys():
-                if not i in saved:
-                    # delete all other entries the user has deleted in the UI
-                    del hoconf[i]
-
-            del saved
 
             dnsconf.write()
             hoconf.write()
-
+            
             del hoconf
 
             for devId in prof.ActiveDevices:

@@ -25,11 +25,11 @@
 # ConfESNetwork(ConfShellVar):
 #  This is a derived class specifically intended for /etc/sysconfig/network
 #  It is another dictionary, but magically fixes /etc/HOSTNAME when the
-#  hostname is changed.
+#  Hostname is changed.
 # ConfEHosts(Conf):
 #  Yet another dictionary, this one for /etc/hosts
 #  Dictionary keys are numeric IP addresses in string form, values are
-#  2-item lists, the first item of which is the canonical hostname,
+#  2-item lists, the first item of which is the canonical Hostname,
 #  and the second of which is a list of nicknames.
 # ConfEResolv(Conf):
 #  Yet another dictionary, this one for /etc/resolv.conf
@@ -173,6 +173,9 @@ from string import joinfields, split, find
 from UserDict import UserDict
 import re
 import os
+# remove
+import sys
+import string
 import types
 # Implementation:
 # A configuration file is a list of lines.
@@ -449,14 +452,14 @@ class ConfESNetwork(ConfShellVar):
     # that writes /etc/HOSTNAME as well
     def __init__ (self):
         ConfShellVar.__init__(self, '/etc/sysconfig/network')
-        self.writehostname = 0
+        self.writeHostname = 0
     def __setitem__(self, varname, value):
         ConfShellVar.__setitem__(self, varname, value)
         if varname == 'HOSTNAME':
-            self.writehostname = 1
+            self.writeHostname = 1
     def write(self):
         ConfShellVar.write(self)
-        if self.writehostname:
+        if self.writeHostname:
             file = open('/etc/HOSTNAME', 'w', -1)
             file.write(self.vars['HOSTNAME'] + '\n')
             file.close()
@@ -469,18 +472,104 @@ class ConfESNetwork(ConfShellVar):
     def has_key(self, key):
         return self.vars.has_key(key)
 
+# class to store hosts entries
+class HostEntry():
+    IP = ""
+    Hostname = ""
+    Aliases = ()
+    Comment = ""
+    
+    def write(self):
+        if self.IP != "":
+            sys.stdout.write(self.IP)
+        if self.Hostname != "":
+            sys.stdout.write("\t" + self.Hostname)
+        for alias in self.Aliases:
+            sys.stdout.write("\t" + alias)
+        if self.Comment != "":
+            if self.IP != "":
+                sys.stdout.write("\t#" + self.comment + "\n")
+            else:
+                sys.stdout.write("#" + self.comment + "\n")
+        else:
+            sys.stdout.write("\n")
+            
+    def __str__(self):
+        str_repr = ""
+        if self.IP != "":
+            str_repr += self.IP
+        if self.Hostname != "":
+            str_repr += "\t" + self.Hostname
+        for alias in self.Aliases:
+            str_repr += "\t" + alias
+        if self.Comment != "":
+            if self.IP != "":
+                str_repr += "\t#" + self.Comment + "\n"
+            else:
+                str_repr += "#" + self.Comment + "\n"
+        else:
+            str_repr += "\n"
+        return str_repr
+
+class ConfHosts():
+    # for /etc/hosts
+    def __init__(self,filename):
+        self.filename = filename
+        # list of all lines in the config file(to preserve lines containing only comments)
+        self.configuration = []
+     
+    # reads the /etc/hosts file
+    def read(self):
+        conffile = open(self.filename, 'r')
+        lines = conffile.readlines()
+        conffile.close()
+        
+        for line in lines:
+            entry = HostEntry()
+            tmp = line.partition('#')
+            entry.Comment = string.rstrip(tmp[2])
+            tmp = string.split(tmp[0])
+            # if the line contains more than comment we suppose that it's ip with Aliases
+            if len(tmp) > 0:
+                entry.IP = tmp[0]
+                entry.Hostname = tmp[1]
+                # FIXME add check if there is some alias!
+                entry.Aliases = tmp[2:]
+            # add every line to configuration
+            self.configuration.append(entry)
+
+    # writes the hosts file
+    def write(self):
+        conffile = open(self.filename,"w")
+        for entry in self.configuration:
+            conffile.write(str(entry))
+        conffile.close()
+
+    def add(self,entry):
+        self.configuration.append(entry)
+        
+    def add(self,Host):
+        host = HostEntry()
+        if Host.IP:
+            host.IP = Host.IP
+        if Host.Hostname:
+            host.Hostname = Host.Hostname
+        if Host.AliasList:
+            host.Aliases = Host.AliasList
+        if Host.Comment:
+            host.Comment = Host.Comment
+        self.configuration.append(host)
 
 class ConfEHosts(Conf):
     # for /etc/hosts
     # implements a dictionary keyed by IP address, with values
-    # consisting of a list: [ hostname, [list, of, nicknames] ]
+    # consisting of a list: [ Hostname, [list, of, nicknames] ]
     def __init__(self, filename = '/etc/hosts'):
         Conf.__init__(self, filename)
 
     def read(self):
         Conf.read(self)
         self.initvars()
-
     def initvars(self):
         self.vars = {}
         self.rewind()

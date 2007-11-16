@@ -606,6 +606,9 @@ class mainDialog:
                 continue
             if host.IP == "::1":
                 continue
+            # skip the line with comments only
+            if host.IP == "":
+                continue
             hclist.append([host.IP, host.Hostname,
                            string.join(host.AliasList, ' ')])
             hclist.set_row_data(row, host)
