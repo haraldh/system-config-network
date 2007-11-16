@@ -1,8 +1,8 @@
 """Generates classes with useful methods from xml data structure definition
 file (alchemist style).
 """
-## Copyright (C) 2001 - 2003 Red Hat, Inc.
-## Copyright (C) 2001 - 2003 Harald Hoyer <harald@redhat.com>
+## Copyright (C) 2001 - 2007 Red Hat, Inc.
+## Copyright (C) 2001 - 2007 Harald Hoyer <harald@redhat.com>
 
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -19,8 +19,6 @@ file (alchemist style).
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 __author__ = "Harald Hoyer"
-__date__ = "$Date: 2007/10/08 11:11:23 $"
-__version__ = "$Revision: 1.33 $"
 
 import new
 import sys
@@ -184,8 +182,9 @@ class GenClass:
             attr = self._attributes[ckey]
             if attr[TYPE] == LIST:
                 for child in self:
-                    retstr += child._objToStr("%s.%d" % (parentStr, num))
-                    num += 1
+                    if hasattr(child, '_objToStr'):
+                        retstr += child._objToStr("%s.%d" % (parentStr, num))
+                        num += 1
             else:
                 for val in self:
                     if val:
@@ -329,7 +328,7 @@ class GenClass:
 
     def setChanged(self, val):
         self.changed = val
-        if self._parent != None and val:
+        if isinstance(self._parent,GenClass) and val:
             self._parent.setChanged(val)
 
     def copy(self):
@@ -402,6 +401,9 @@ class GenClassList(GenClass):
         if other == None:
             self.unlink()
             return
+
+        #if not isinstance(other, GenClass):
+        #    return
 
         for i in self._attributes[SELF][CHILDKEYS]:
             val = self._attributes[i]
@@ -546,7 +548,8 @@ class GenClassAList(GenClass, list):
 
     def test(self):
         for child in self:
-            child.test()
+            if hasattr(child, 'test'):
+                child.test()
 
     def __str__(self):
         return GenClass.__str__(self)
@@ -561,6 +564,8 @@ class GenClassAList(GenClass, list):
         for i in self._attributes[SELF][CHILDKEYS]:
             val = self._attributes[i]
             for child in self:
+                if not isinstance(child, GenClass):
+                    continue
                 nchild = list.addChild(self._attributes[i][TYPE],
                                        self._attributes[i][NAME])
                 if val[TYPE] == LIST:
@@ -590,7 +595,8 @@ class GenClassAList(GenClass, list):
 
             if val[TYPE] == LIST:
                 for child in self:
-                    child.commit(changed)
+                    if hasattr(child, 'commit'):
+                        child.commit(changed)
 
         self.data_bak = self[:]
 
@@ -640,11 +646,16 @@ class GenClassAList(GenClass, list):
                     getattr(self, "add" + child)()
                     getattr(self, "set" + child)(pos,\
                                                  getattr(other, "get" + child)(pos))
-            else:
+            else:                
                 for pos in xrange(getattr(other, "getNum" + child)()):
                     getattr(self, "add" + child)()
-                    getattr(self, "get" + child)(pos).apply(\
-                          getattr(other, "get" + child)(pos))
+                    c1 = getattr(self, "get" + child)(pos)
+                    c2 = getattr(other, "get" + child)(pos)
+                    if isinstance(c2, GenClass):
+                        c1.apply(c2)
+                    else:
+                        self[pos] = c2
+                    
 
     def _getAttr(self, pos, child = None):
         return self[pos]

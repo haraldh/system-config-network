@@ -30,7 +30,13 @@ ProfileList.default.ActiveDevices.1=eth0
 ProfileList.default.HostsList.1.IP=127.0.0.1
 ProfileList.default.HostsList.1.Hostname=localhost.localdomain
 ProfileList.default.HostsList.1.AliasList.1=localhost
-ProfileList.default.HostsList.1.AliasList.2=localhost
+ProfileList.default.HostsList.2.AliasList.1=localhost6
+ProfileList.default.HostsList.2.Hostname=localhost6.localdomain6
+ProfileList.default.HostsList.2.IP=::1
+ProfileList.default.HostsList.3.AliasList.1=test1
+ProfileList.default.HostsList.3.AliasList.2=test2
+ProfileList.default.HostsList.3.Hostname=test
+ProfileList.default.HostsList.3.IP=10.1.1.1
 ProfileList.default.DNS.SecondaryDNS=172.16.2.15
 ProfileList.default.DNS.SearchList.1=stuttgart.redhat.com
 ProfileList.default.DNS.SearchList.2=devel.redhat.com
@@ -210,45 +216,57 @@ class TestRCN(unittest.TestCase):
         self.save()
 
         devstr = self.getConf()
-        expect = """DeviceList.Ethernet.eth0.Type=Ethernet
-DeviceList.Ethernet.eth0.BootProto=dhcp
+        expect = """DeviceList.Ethernet.eth0.BootProto=dhcp
 DeviceList.Ethernet.eth0.Device=eth0
-DeviceList.Ethernet.eth0.OnBoot=True
 DeviceList.Ethernet.eth0.DeviceId=eth0
-ProfileList.newprofile.ActiveDevices.1=eth0
-ProfileList.newprofile.HostsList.1.IP=127.0.0.1
-ProfileList.newprofile.HostsList.1.Hostname=localhost.localdomain
-ProfileList.newprofile.HostsList.1.AliasList.1=localhost
-ProfileList.newprofile.HostsList.1.AliasList.2=localhost
-ProfileList.newprofile.DNS.SecondaryDNS=172.16.2.15
-ProfileList.newprofile.DNS.SearchList.1=stuttgart.redhat.com
-ProfileList.newprofile.DNS.SearchList.2=devel.redhat.com
-ProfileList.newprofile.DNS.SearchList.3=redhat.com
-ProfileList.newprofile.DNS.Domainname=
-ProfileList.newprofile.DNS.Hostname=jever.stuttgart.redhat.com
-ProfileList.newprofile.DNS.TertiaryDNS=
-ProfileList.newprofile.DNS.PrimaryDNS=172.16.2.2
-ProfileList.newprofile.Active=True
-ProfileList.newprofile.ProfileName=newprofile
+DeviceList.Ethernet.eth0.OnBoot=True
+DeviceList.Ethernet.eth0.Type=Ethernet
+ProfileList.default.Active=False
 ProfileList.default.ActiveDevices.1=eth0
-ProfileList.default.HostsList.1.IP=127.0.0.1
-ProfileList.default.HostsList.1.Hostname=localhost.localdomain
-ProfileList.default.HostsList.1.AliasList.1=localhost
-ProfileList.default.HostsList.1.AliasList.2=localhost
-ProfileList.default.DNS.SecondaryDNS=172.16.2.15
+ProfileList.default.DNS.Domainname=
+ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
+ProfileList.default.DNS.PrimaryDNS=172.16.2.2
 ProfileList.default.DNS.SearchList.1=stuttgart.redhat.com
 ProfileList.default.DNS.SearchList.2=devel.redhat.com
 ProfileList.default.DNS.SearchList.3=redhat.com
-ProfileList.default.DNS.Domainname=
-ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
+ProfileList.default.DNS.SecondaryDNS=172.16.2.15
 ProfileList.default.DNS.TertiaryDNS=
-ProfileList.default.DNS.PrimaryDNS=172.16.2.2
-ProfileList.default.Active=False
+ProfileList.default.HostsList.1.AliasList.1=localhost
+ProfileList.default.HostsList.1.Hostname=localhost.localdomain
+ProfileList.default.HostsList.1.IP=127.0.0.1
+ProfileList.default.HostsList.2.AliasList.1=localhost6
+ProfileList.default.HostsList.2.Hostname=localhost6.localdomain6
+ProfileList.default.HostsList.2.IP=::1
+ProfileList.default.HostsList.3.AliasList.1=test1
+ProfileList.default.HostsList.3.AliasList.2=test2
+ProfileList.default.HostsList.3.Hostname=test
+ProfileList.default.HostsList.3.IP=10.1.1.1
 ProfileList.default.ProfileName=default
+ProfileList.newprofile.Active=True
+ProfileList.newprofile.ActiveDevices.1=eth0
+ProfileList.newprofile.DNS.Domainname=
+ProfileList.newprofile.DNS.Hostname=jever.stuttgart.redhat.com
+ProfileList.newprofile.DNS.PrimaryDNS=172.16.2.2
+ProfileList.newprofile.DNS.SearchList.1=stuttgart.redhat.com
+ProfileList.newprofile.DNS.SearchList.2=devel.redhat.com
+ProfileList.newprofile.DNS.SearchList.3=redhat.com
+ProfileList.newprofile.DNS.SecondaryDNS=172.16.2.15
+ProfileList.newprofile.DNS.TertiaryDNS=
+ProfileList.newprofile.HostsList.1.AliasList.1=localhost
+ProfileList.newprofile.HostsList.1.Hostname=localhost.localdomain
+ProfileList.newprofile.HostsList.1.IP=127.0.0.1
+ProfileList.newprofile.HostsList.2.AliasList.1=localhost6
+ProfileList.newprofile.HostsList.2.Hostname=localhost6.localdomain6
+ProfileList.newprofile.HostsList.2.IP=::1
+ProfileList.newprofile.HostsList.3.AliasList.1=test1
+ProfileList.newprofile.HostsList.3.AliasList.2=test2
+ProfileList.newprofile.HostsList.3.Hostname=test
+ProfileList.newprofile.HostsList.3.IP=10.1.1.1
+ProfileList.newprofile.ProfileName=newprofile
 """
         self.redirectEnd()
 
-        self.failUnless(expectConf(expect, devstr))
+        self.failUnless(expectConf(devstr, expect))
 
     def test03Profile(self):
         """Test profile removal"""

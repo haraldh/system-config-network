@@ -132,25 +132,12 @@ class ProfileList(ProfileList_base):
                     prof.ActiveIPsecs.append(ipsec)
                     break
 
-        # CHECK: [198898] new backend for /etc/hosts
+        # CHECK: [198898] new backend for /etc/hosts        
         if profdir:
-            hoconf = Conf.ConfHosts( filename = profdir + '/hosts')
+            prof.HostsList.load( filename = profdir + '/hosts')
         else:
-            hoconf = Conf.ConfHosts( filename = HOSTSCONF )
+            prof.HostsList.load( filename = HOSTSCONF )
 
-        hoconf.read()
-        
-        # save parsed hosts to profile.HostsList
-        for hst in hoconf.configuration:
-            host = Host()
-            host.IP = hst.IP
-            host.Hostname = hst.Hostname
-            host.createAliasList()
-            host.Comment = hst.Comment
-            for al in hst.Aliases:
-                host.AliasList.append(al);
-            log.log(4, "Adding %s %s" % (host.Hostname, host.IP))
-            prof.HostsList.append(host)
 
         # FIXME: [183338] use SEARCH not resolv.conf
         dnsconf = Conf.ConfEResolv()
@@ -386,19 +373,14 @@ class ProfileList(ProfileList_base):
 
             dnsconf['nameservers'] = nameservers
             # CHECK: [198898] new backend for /etc/hosts
-            hoconf = Conf.ConfHosts(filename = getRoot() + \
-                                         SYSCONFPROFILEDIR + '/' + \
-                                         prof.ProfileName + \
-                                         '/hosts')
-            files_used.append(hoconf.filename)
+            filename = getRoot() + \
+                SYSCONFPROFILEDIR + '/' + \
+                prof.ProfileName + \
+                '/hosts'
+            prof.HostsList.save(filename=filename)
+            files_used.append(filename)
             
-            for host in prof.HostsList:
-                hoconf.add(host)
-
             dnsconf.write()
-            hoconf.write()
-            
-            del hoconf
 
             for devId in prof.ActiveDevices:
                 for prefix in [ 'ifcfg-', 'route-', 'keys-']:
