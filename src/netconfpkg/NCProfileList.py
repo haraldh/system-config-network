@@ -394,7 +394,6 @@ class ProfileList(ProfileList_base):
             
             for host in prof.HostsList:
                 hoconf.add(host)
-                saved.append(host.IP)
 
             dnsconf.write()
             hoconf.write()
