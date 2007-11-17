@@ -104,5 +104,9 @@ push: distcheck
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
 	git fetch
 
+pull:
+	git fetch
+	git rebase origin/Branch-F8
+
 diff:
 	git diff origin
