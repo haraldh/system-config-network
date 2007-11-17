@@ -106,7 +106,7 @@ push: distcheck
 
 pull:
 	git fetch
-	git rebase origin/Branch-F8
+	git rebase origin
 
 diff:
 	git diff origin
