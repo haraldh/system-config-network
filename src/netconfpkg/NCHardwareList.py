@@ -488,7 +488,7 @@ class HardwareList(HardwareList_base):
             self.remove(h)
 
         del hdellist
-
+        
 
     def updateFromSys(self, hdellist):
         import glob
@@ -593,23 +593,29 @@ class HardwareList(HardwareList_base):
                     hdellist.remove(h)
                     break
                 else:
-                    log.log(5, "%s != %s and %s != %s" % (h.Name, device, h.Card.ModuleName, mod))
+                    log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
             else: 
                 for h in self:
                     if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
                         break
                     else:
-                        self.append(hw)
-                        hw.Status = HW_SYSTEM
-                        hw.setChanged(True)        
+                        log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
+                else:
+                    self.append(hw)
+                    hw.Status = HW_SYSTEM
+                    hw.setChanged(True)        
 
         return hdellist
 
     def updateFromSystem(self):
+        log.log(5, "updateFromSystem")
         try:
             self.updateFromKudzu()
         except:
             pass
+
+        log.log(5, "updateFromKudzu")
+        log.log(5, str(self))
 
         hdellist = []
 
@@ -622,15 +628,23 @@ class HardwareList(HardwareList_base):
         except:
             pass
 
+
         try:
             hdellist = self.updateFromHal(hdellist)
         except:
             pass
 
+        log.log(5, "updateFromHal")
+        log.log(5, str(self))
+
         try:
             hdellist = self.updateFromSys(hdellist)
         except:
             pass
+
+
+        log.log(5, "updateFromSys")
+        log.log(5, str(self))
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
@@ -638,6 +652,7 @@ class HardwareList(HardwareList_base):
 
         del hdellist
 
+        log.log(5, str(self))
 
     def updateFromModules(self):
         modules = getMyConfModules()
@@ -692,7 +707,6 @@ class HardwareList(HardwareList_base):
                                                             dev.Name))
 
         return retstr
-
 
     def _parseLine(self, vals, value):
         if len(vals) <= 1:
