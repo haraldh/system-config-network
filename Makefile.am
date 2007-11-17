@@ -97,10 +97,7 @@ potfile:
 	make 
 	make -C po update-po
 
-push: distcheck
-	git fetch 
-	git rebase origin 
-	make distcheck
+push: distcheck pull
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
 	git fetch
 
