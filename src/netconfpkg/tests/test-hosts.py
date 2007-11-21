@@ -94,7 +94,7 @@ class TestHosts(unittest.TestCase):
         from netconfpkg.NCHostsList import HostsList
 
         hl = HostsList()
-        hl.load(filename="hosts")
+        hl.load(filename=srcdir+"/hosts")
 
         expect = """HostsList.1.AliasList.1=localhost
 HostsList.1.Hostname=localhost.localdomain
@@ -118,7 +118,7 @@ HostsList.3.IP=10.1.1.2
         from netconfpkg import Host
 
         hl = HostsList()
-        hl.load(filename="hosts")
+        hl.load(filename=srcdir+"/hosts")
         h = Host()
         h.Hostname = "test4"
         h.IP = "10.1.1.1"
@@ -150,7 +150,7 @@ HostsList.4.IP=10.1.1.1
         from netconfpkg import Host
 
         hl = HostsList()
-        hl.load(filename="hosts")
+        hl.load(filename=srcdir+"/hosts")
         for host in hl:
             if host.Hostname == "test2":
                 host.IP="10.1.1.3"
@@ -158,7 +158,7 @@ HostsList.4.IP=10.1.1.1
         hl.commit()
         hl.save(filename="hosts2.new")
 
-        self.failUnless(expectConf(expectfile = "hosts2", filename="hosts2.new"))
+        self.failUnless(expectConf(expectfile = srcdir+"/hosts2", filename="hosts2.new"))
 
         os.unlink("hosts2.new")
 
