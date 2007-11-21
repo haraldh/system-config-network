@@ -50,11 +50,14 @@ class IPsecList(IPsecList_base):
             self.append(ipsec)
 
         self.commit(False)
+        self.setChanged(False)
 
     def save(self):
         from NCIPsec import ConfIPsec
         for ipsec in self:
             ipsec.save()
+
+        self.commit()
 
         dirname = getRoot() + SYSCONFDEVICEDIR
         #
@@ -122,6 +125,9 @@ class IPsecList(IPsecList_base):
 
                 unlink(dirname + entry)
                 unlink(getRoot() + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
+
+        self.commit(changed=False)
+        self.setChanged(False)
 
     def __repr__(self):
         return repr(self.__dict__)

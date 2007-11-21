@@ -328,6 +328,15 @@ class mainDialog:
 
         profname = self.active_profile_name
 
+#         if profilelist.modified():
+#             log.log(3, "profilelist modified")
+#         if devicelist.modified():
+#             log.log(3, "devicelist modified")
+#         if hardwarelist.modified():
+#             log.log(3, "hardwarelist modified")
+#         if ipseclist.modified():
+#             log.log(3, "ipseclist modified")
+
         if profilelist.modified() \
                or devicelist.modified() \
                or hardwarelist.modified() \
@@ -954,10 +963,6 @@ class mainDialog:
 
         gobject.source_remove(self.tag)
 
-#         profilelist = getProfileList()
-#         for prof in profilelist:
-#             prof.commitActive()
-
         if self.changed():
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
@@ -992,10 +997,6 @@ class mainDialog:
             return
 
         gobject.source_remove(self.tag)
-
-#         profilelist = getProfileList()
-#         for prof in profilelist:
-#             prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -1355,6 +1356,7 @@ class mainDialog:
             host.rollback()
             return
         host.commit()
+        hostslist.commit()
         profilelist.commit()
         self.hydrateProfiles()
 

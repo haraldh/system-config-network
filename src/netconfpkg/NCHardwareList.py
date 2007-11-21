@@ -814,9 +814,11 @@ class HardwareList(HardwareList_base):
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
         self.commit(changed=False)
-        #self.updateFromSystem()
+        self.setChanged(False)
 
     def save(self):
+        self.commit(changed=True)
+
         modules = getMyConfModules(refresh = True)
 
         # cleanup isdnconf
@@ -872,6 +874,8 @@ class HardwareList(HardwareList_base):
         if wvdial:
             wvdial.write()
 
+        self.commit(changed=False)
+        self.setChanged(False)
 
 __HWList = None
 __HWList_root = getRoot()

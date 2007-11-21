@@ -89,7 +89,8 @@ class DeviceList(DeviceList_base):
                 i = self.addDevice()
                 self[i].load(dev)
 
-        self.commit(changed=False)
+        self.commit(False)
+        self.setChanged(False)
 
         chdev = {}
         # the initscripts do not like '-'
@@ -111,7 +112,8 @@ class DeviceList(DeviceList_base):
                         prof.commit()
 
                 dev.DeviceId = newDeviceId
-                dev.commit()
+                dev.commit(changed=False)
+		dev.setChanged(False)
 
         if len(chdev.keys()):
             s =_("Changed the following Nicknames due to the initscripts:\n")
@@ -171,7 +173,8 @@ class DeviceList(DeviceList_base):
 
         from NCDevice import ConfDevice
         from types import DictType
-        self.commit(changed=False)
+        
+        self.commit(changed=True)
 
         nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if len(self) > 0:
@@ -288,7 +291,8 @@ class DeviceList(DeviceList_base):
             del cfg['GATEWAYDEV']
         cfg.write()
 
-        self.commit()
+        self.commit(False)
+        self.setChanged(False)
 
 __DVList = None
 __DVList_root = getRoot()

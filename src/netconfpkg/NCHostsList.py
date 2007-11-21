@@ -75,7 +75,7 @@ class HostsList(HostsList_base):
             if isinstance(entry, str):
                 conffile.write(entry + "\n")
             elif isinstance(entry, Host):
-                if not entry.changed and hasattr(entry, "origLine"):
+                if (not entry.changed) and hasattr(entry, "origLine"):
                     conffile.write(entry.origLine+"\n")
                     continue
                 if entry.IP:
@@ -91,7 +91,8 @@ class HostsList(HostsList_base):
                 conffile.write("\n")
 
         if not "file" in kwargs:
-            conffile.close()        
+            conffile.close()  
+        
 
 if __name__ == '__main__':
     hlist = HostsList()

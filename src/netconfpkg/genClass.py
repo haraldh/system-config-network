@@ -71,10 +71,12 @@ class GenClass:
         if isinstance(list, Alchemist.Context):
             self.fromContext(list.getDataRoot().getChildByIndex(0))
             self.commit(changed = False)
+            self.setChanged(False)
 
         if isinstance(list, Alchemist.Data):
             self.fromContext(list)
             self.commit(changed = False)
+            self.setChanged(False)
 
     def commit(self, changed=True):
         """Stub"""
@@ -284,8 +286,6 @@ class GenClass:
 
     def setChanged(self, val):
         self.changed = val
-        if isinstance(self._parent,GenClass) and val:
-            self._parent.setChanged(val)
 
     def copy(self):
         # create new instance of ourselves
@@ -341,9 +341,36 @@ class GenClassList(GenClass):
 
     def commit(self, changed=True):
         for i in self._attributes[SELF][CHILDKEYS]:
-            val = self._attributes[i]
             if hasattr(self, "commit" + i):
-                getattr(self, "commit" + i)(changed)
+                getattr(self, "commit" + i)(changed=changed, child=i)
+
+    def setChanged(self, changed):
+        GenClass.setChanged(self, changed)
+        if not changed:
+            for i in self._attributes[SELF][CHILDKEYS]:
+                val = self._attributes[i]
+                if val[TYPE] == LIST:
+                    child = getattr(self, i)
+                    if hasattr(child, "setChanged"):
+                        getattr(child, "setChanged")(changed)
+
+    def _commitAttr(self, changed=True, child=None):
+        if not child:
+            return
+
+        cd = getattr(self, child)
+
+        if self._attributes[child][TYPE] == LIST:
+            if hasattr(cd, "commit"):
+                getattr(cd, "commit")(changed)
+                if changed and hasattr(cd, "changed") and getattr(cd, "changed"):
+                    self.setChanged(changed)
+
+        if changed and getattr(self, '__' + child + '_bak') != cd:
+            #print "%s changed %s" % (self._attributes[SELF][NAME] + '.' + child, str(changed))
+            self.setChanged(changed)
+
+        setattr(self, '__' + child + '_bak', cd)    
 
     def rollback(self):
         #print "----------- rollback %s -------" % self._attributes[SELF][NAME]
@@ -451,24 +478,6 @@ class GenClassList(GenClass):
                 nchild = self.newClass(self._attributes[child][NAME],
                                        achild, self)
                 setattr(self, child, nchild)
-
-    def _commitAttr(self, changed=True, child=None):
-        if not child:
-            return
-
-        cd = getattr(self, child)
-
-        if self._attributes[child][TYPE] == LIST:
-            if hasattr(cd, "commit"):
-                getattr(cd, "commit")(changed)
-                if hasattr(cd, "changed") and getattr(cd, "changed"):
-                    self.setChanged(changed)
-
-        if getattr(self, '__' + child + '_bak') != cd:
-            #print "%s changed %s " % (child, str(changed))
-            self.setChanged(changed)
-
-        setattr(self, '__' + child + '_bak', cd)
 
     def _rollbackAttr(self, child=None):
         if hasattr(self, '__' + child + '_bak'):
@@ -584,32 +593,34 @@ class GenClassAList(GenClass, list):
                 else:
                     nchild.setValue(child)
 
-    def commit(self, changed=True):
-        if len(self.data_bak) != len(self):
-            #print "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
-            self.setChanged(changed)
-        else:
-            for i in xrange(0, len(self.data_bak)):
-                if self.data_bak[i] != self[i]:
-                    #print "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
-                    self.setChanged(changed)
-                    break
-                if hasattr(self[i], 'changed'):
-                    if self[i].changed:
+    def commit(self, changed=True):        
+        if changed:
+            if len(self.data_bak) != len(self):
+                #print "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
+                self.setChanged(changed)
+            else:
+                for i in xrange(0, len(self.data_bak)):
+                    if self.data_bak[i] != self[i]:
+                        #print "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
                         self.setChanged(changed)
-                    
+                        break
 
-        for i in self._attributes[SELF][CHILDKEYS]:
-            val = self._attributes[i]
-
-            if val[TYPE] == LIST:
-                for child in self:
-                    if hasattr(child, 'commit'):
-                        child.commit(changed)
-                    if child.changed:
-                        self.setChanged(changed)
+        for child in self:
+            if hasattr(child, 'commit'):
+                child.commit(changed)
+            if changed and hasattr(child, "changed") and child.changed:
+                #print "5 %s changed %s" % (child._attributes[SELF][NAME], str(changed))
+                self.setChanged(changed)
 
         self.data_bak = self[:]
+
+
+    def setChanged(self, changed):
+        GenClass.setChanged(self, changed)
+        if not changed:
+            for child in self:
+                if hasattr(child, 'setChanged'):
+                    child.setChanged(changed)
 
     def fromContext(self, list):
         if not list: return

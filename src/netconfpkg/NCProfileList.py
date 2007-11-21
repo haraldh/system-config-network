@@ -94,6 +94,7 @@ class ProfileList(ProfileList_base):
         log.log(5, "ActiveProfile: %s" % str(prof))        
         prof.DNS.Hostname = self.use_hostname
         self.commit(False)
+        self.setChanged(False)
 
     def loadprof(self, pr, profdir):
         devicelist = NCDeviceList.getDeviceList()
@@ -257,7 +258,7 @@ class ProfileList(ProfileList_base):
         os.umask(0022)
 
         # commit the changes
-        self.commit(changed=False)
+        self.commit()
 
         devicelist = NCDeviceList.getDeviceList()
 
@@ -313,7 +314,7 @@ class ProfileList(ProfileList_base):
                                 if not hname in host.AliasList:
                                     host.AliasList.append(hname)
 
-            act_prof.HostsList.commit(changed=False)
+            #act_prof.HostsList.commit(changed=False)
 
         nwconf['HOSTNAME'] = act_prof.DNS.Hostname
 
@@ -522,6 +523,10 @@ class ProfileList(ProfileList_base):
                     rmdir(filename)
             except:
                 pass
+
+        # commit the changes
+        self.commit(False)
+        self.setChanged(False)
 
     def activateDevice (self, deviceid, profile, state=None):
         devicelist = NCDeviceList.getDeviceList()
