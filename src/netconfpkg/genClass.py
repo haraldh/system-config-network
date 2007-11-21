@@ -482,7 +482,7 @@ class GenClassList(GenClass):
                     self.setChanged(changed)
 
         if getattr(self, '__' + child + '_bak') != cd:
-            print "%s changed %s " % (child, str(changed))
+            #print "%s changed %s " % (child, str(changed))
             self.setChanged(changed)
 
         setattr(self, '__' + child + '_bak', cd)
@@ -578,12 +578,12 @@ class GenClassAList(GenClass, list):
 
     def commit(self, changed=True):
         if len(self.data_bak) != len(self):
-            print "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
+            #print "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
             self.setChanged(changed)
         else:
             for i in xrange(0, len(self.data_bak)):
                 if self.data_bak[i] != self[i]:
-                    print "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
+                    #print "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
                     self.setChanged(changed)
                     break
                 if hasattr(self[i], 'changed'):
