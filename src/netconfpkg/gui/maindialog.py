@@ -1323,10 +1323,27 @@ class mainDialog:
         dl = dialog.xml.get_widget ("Dialog")
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        button = dl.run ()
+        
+        while(True):
+            button = dl.run()
+            if button == gtk.RESPONSE_OK:
+                try:
+                    hostslist.test_host(host)
+                except ValueError, e:
+                    GUI_functions.gui_error_dialog ( "Invalid entry: %s" % e.message, dl)
+                    continue
+            else:
+                # if user pressed CANCEL
+                dl.destroy()
+                return
+            break
+        # user pressed OK and all tests passed
         dl.destroy()
-        if button != gtk.RESPONSE_OK and button != 0:
-            return
+        
+        #button = dl.run ()
+        #dl.destroy()
+        #if button != gtk.RESPONSE_OK and button != 0:
+        #    return
 
         i=  hostslist.addHost()
         hostslist[i].apply(host)
@@ -1350,11 +1367,29 @@ class mainDialog:
         dl = dialog.xml.get_widget ("Dialog")
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
-        button = dl.run ()
+        
+        while(True):
+            button = dl.run()
+            if button == gtk.RESPONSE_OK:
+                try:
+                    hostslist.test_host(host)
+                except ValueError, e:
+                    GUI_functions.gui_error_dialog ( "Invalid entry: %s" % e.message, dl)
+                    continue
+            else:
+                # if user pressed CANCEL
+                host.rollback()
+                dl.destroy()
+                return
+            break
+        # user pressed OK and all tests passed
         dl.destroy()
-        if button != gtk.RESPONSE_OK and button != 0:
-            host.rollback()
-            return
+        
+        #button = dl.run ()
+        #dl.destroy()
+        #if button != gtk.RESPONSE_OK and button != 0:
+        #    host.rollback()
+        #    return
         host.commit()
         hostslist.commit()
         profilelist.commit()

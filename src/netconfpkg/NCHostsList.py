@@ -21,11 +21,71 @@ if __name__ == '__main__':
 
 from netconfpkg import HostsList_base, Host
 import string
+import socket
+import re
 
 class HostsList(HostsList_base):
     def __init__(self,*args, **kwargs):
         HostsList_base.__init__(self, args, kwargs)
+    
+    def test_ip(self, ip):
+        try:
+            socket.inet_pton(socket.AF_INET, ip)
+        except socket.error:
+            try:
+                socket.inet_pton(socket.AF_INET6, ip)
+            except:
+                return False
+        return True
+    
+    def test_hostname(self, hostname):
+        # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
+        if (len(hostname) - hostname.count('.')) < 256:
+            names = hostname.split('.')
+            pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
+            for name in names:
+               if len(name) < 63:
+                   if not pattern.match(name):
+                       return False
+            return True
+        else:
+            return False
 
+    def test_aliases(self, aliaslist):
+        retval = True
+        for alias in aliaslist:
+            if alias != "":
+                retval &= self.test_hostname(alias)
+        return retval
+    
+    def test_host(self, host):
+        if not self.test_ip(host.IP):
+            raise ValueError("Address")
+        if not self.test_hostname(host.Hostname):
+            raise ValueError("Hostname")
+        if not self.test_aliases(host.AliasList):
+            raise ValueError("Alias")
+            
+    def check(self):
+        bad_lines = []
+        num = 0
+        for host in HostsList_base.__iter__(self):
+            num += 1
+            if isinstance(host, Host):
+                try:
+                    self.test_host(host)
+                except ValueError:
+                    if hasattr(host, "origLine"):
+                        line = host.origLine
+                    else:
+                        line = host.IP + "\t" + host.Hostname
+                        for alias in host.AliasList:
+                            line += "\t" + alias
+                        if hasattr(host, "Comment"):
+                            line += "\t" + host.Comment
+                    bad_lines.append((num,line))
+        return bad_lines
+    
     def load(self, filename='/etc/hosts'):
         try:
             conffile = open(filename, 'r')
