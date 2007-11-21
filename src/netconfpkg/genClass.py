@@ -478,9 +478,11 @@ class GenClassList(GenClass):
         if self._attributes[child][TYPE] == LIST:
             if hasattr(cd, "commit"):
                 getattr(cd, "commit")(changed)
+                if hasattr(cd, "changed") and getattr(cd, "changed"):
+                    self.setChanged(changed)
 
         if getattr(self, '__' + child + '_bak') != cd:
-            #print "%s changed" % child
+            print "%s changed %s " % (child, str(changed))
             self.setChanged(changed)
 
         setattr(self, '__' + child + '_bak', cd)
@@ -542,6 +544,7 @@ class GenClassAList(GenClass, list):
     def __init__(self, list = None, parent = None):
         list.__init__(self)
         GenClass.__init__(self, list, parent)
+        self.data_bak = []
 
     def _doClear(self):
         self.data_bak = []
@@ -574,21 +577,19 @@ class GenClassAList(GenClass, list):
                     nchild.setValue(child)
 
     def commit(self, changed=True):
-        if self.data_bak != None and len(self):
-            #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
-            self.setChanged(changed)
-        elif self.data_bak == None and len(self):
-            #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
-            self.setChanged(changed)
-        elif len(self.data_bak) != len(self):
-            #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
+        if len(self.data_bak) != len(self):
+            print "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
             self.setChanged(changed)
         else:
             for i in xrange(0, len(self.data_bak)):
                 if self.data_bak[i] != self[i]:
-                    #print "%s changed %s" % (self._attributes[SELF][NAME], str(changed))
+                    print "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
                     self.setChanged(changed)
                     break
+                if hasattr(self[i], 'changed'):
+                    if self[i].changed:
+                        self.setChanged(changed)
+                    
 
         for i in self._attributes[SELF][CHILDKEYS]:
             val = self._attributes[i]
@@ -597,6 +598,8 @@ class GenClassAList(GenClass, list):
                 for child in self:
                     if hasattr(child, 'commit'):
                         child.commit(changed)
+                    if child.changed:
+                        self.setChanged(changed)
 
         self.data_bak = self[:]
 

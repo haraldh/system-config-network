@@ -268,6 +268,7 @@ class mainDialog:
         self.on_mainNotebook_switch_page(None, None,
                                          self.page_num[PAGE_DEVICES])
 
+        
     def nop(self, *args):
         pass
 
@@ -661,8 +662,7 @@ class mainDialog:
 
     def on_Dialog_delete_event(self, *args):
         profilelist = getProfileList()
-        for prof in profilelist:
-            prof.commitActive()
+        profilelist.commit()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -676,8 +676,7 @@ class mainDialog:
 
     def on_okButton_clicked (self, *args):
         profilelist = getProfileList()
-        for prof in profilelist:
-            prof.commitActive()
+        profilelist.commit()
 
         if self.changed():
             button = generic_yesnocancel_dialog(
@@ -847,6 +846,7 @@ class mainDialog:
 
         devicelist.append(device)
         device.commit()
+        devicelist.commit()
         self.hydrateDevices()
 
     def on_deviceEditButton_clicked (self, *args):
@@ -876,6 +876,7 @@ class mainDialog:
         devicelist.commit()
 
         if not device.modified():
+            print "Device not modified"
             self.appBar.pop()
             return
 
@@ -885,10 +886,10 @@ class mainDialog:
             if devId in prof.ActiveDevices:
                 pos = prof.ActiveDevices.index(devId)
                 prof.ActiveDevices[pos] = device.DeviceId
-                prof.commit()
 
+
+        profilelist.commit()
         self.hydrateDevices()
-        device.changed = False
         self.appBar.pop()
 
     def editDevice(self, device):
@@ -953,9 +954,9 @@ class mainDialog:
 
         gobject.source_remove(self.tag)
 
-        profilelist = getProfileList()
-        for prof in profilelist:
-            prof.commitActive()
+#         profilelist = getProfileList()
+#         for prof in profilelist:
+#             prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -992,9 +993,9 @@ class mainDialog:
 
         gobject.source_remove(self.tag)
 
-        profilelist = getProfileList()
-        for prof in profilelist:
-            prof.commitActive()
+#         profilelist = getProfileList()
+#         for prof in profilelist:
+#             prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
@@ -1261,46 +1262,48 @@ class mainDialog:
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.Hostname = entry.get_text()
-        self.active_profile.DNS.commit()
+        self.active_profile.DNS.commitHostname()
         self.checkApply()
 
     def on_domainEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.Domainname = entry.get_text()
-        self.active_profile.DNS.commit()
+        self.active_profile.DNS.commitDomainname()
         self.checkApply()
 
     def on_primaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.PrimaryDNS = entry.get_text()
-        self.active_profile.DNS.commit()
+        self.active_profile.DNS.commitPrimaryDNS()
         self.checkApply()
 
     def on_secondaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.SecondaryDNS = entry.get_text()
-        self.active_profile.DNS.commit()
+        self.active_profile.DNS.commitSecondaryDNS()
         self.checkApply()
 
     def on_tertiaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         self.active_profile.DNS.TertiaryDNS = entry.get_text()
-        self.active_profile.DNS.commit()
+        self.active_profile.DNS.commitTertiaryDNS()
         self.checkApply()
 
     def on_searchDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return;
         s = entry.get_text()
+        newentries = string.split(s)
         self.active_profile.DNS.SearchList = self.active_profile.\
                                              DNS.SearchList[:0]
-        for sp in string.split(s):
+        for sp in newentries:
             self.active_profile.DNS.SearchList.append(sp)
-        self.active_profile.DNS.commit()
+            
+        self.active_profile.DNS.commitSearchList()
         self.checkApply()
 
     def on_hostsAddButton_clicked(self, *args):
@@ -1327,6 +1330,7 @@ class mainDialog:
         i=  hostslist.addHost()
         hostslist[i].apply(host)
         hostslist[i].commit()
+        profilelist.commit()
         self.hydrateProfiles()
 
     def on_hostsEditButton_clicked (self, *args):
@@ -1351,9 +1355,8 @@ class mainDialog:
             host.rollback()
             return
         host.commit()
-        if host.changed:
-            self.hydrateProfiles()
-            host.changed = False
+        profilelist.commit()
+        self.hydrateProfiles()
 
     def on_hostsDeleteButton_clicked (self, *args):
         profilelist = getProfileList()
@@ -1378,7 +1381,7 @@ class mainDialog:
         for i in todel:
             prof.HostsList.remove(clist.get_row_data(i))
 
-        prof.HostsList.commit()
+        profilelist.commit()
         self.hydrateProfiles()
 
     def on_generic_entry_insert_text(self, entry, partial_text, length,
@@ -1428,7 +1431,7 @@ class mainDialog:
         prof = profilelist[i]
         prof.apply(profilelist[0])
         prof.ProfileName = text
-        prof.commit()
+        profilelist.commit()
 
         profilelist.switchToProfile(prof, dochange = False)
 
@@ -1457,7 +1460,7 @@ class mainDialog:
 
         i = profilelist.addProfile()
         profilelist[i].apply(profile)
-        profilelist[i].commit()
+        profilelist.commit()
         self.initialized = None
         self.hydrateProfiles()
 
@@ -1505,11 +1508,9 @@ class mainDialog:
                 return
 
         profile.ProfileName = text
-        profile.commit()
         self.initialized = None
-        if profile.changed:
-            self.hydrateProfiles()
-            profile.changed = False
+        profilelist.commit()
+        self.hydrateProfiles()
 
     def on_profileDeleteMenu_activate (self, *args):
         profilelist = getProfileList()
@@ -1757,10 +1758,6 @@ class mainDialog:
 
         ipsec = clist.get_row_data(clist.selection[0])
 
-        profilelist = getProfileList()
-        for prof in profilelist:
-            prof.commitActive()
-
         if self.changed():
             button = generic_yesno_dialog(
                 _("You have made some changes in your configuration.") + "\n"+\
@@ -1787,10 +1784,6 @@ class mainDialog:
 
         if not ipsec:
             return
-
-        profilelist = getProfileList()
-        for prof in profilelist:
-            prof.commitActive()
 
         if self.changed():
             button = generic_yesno_dialog(
