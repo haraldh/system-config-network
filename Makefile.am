@@ -92,8 +92,8 @@ newversion:
 
 potfile:
 	chmod u+w -R  po
-	sh -c '(find . -maxdepth 1 -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade"|fgrep -v version.py;echo src/version.py.in) |sed -e "s#^\./##g"> po/POTFILES.in'
-	sh -c '(find . -maxdepth 1 -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py;echo src/netconf_cmd.py) |sed -e "s#^\./##g"> po/POTFILES.skip'
+	sh -c '(find . -maxdepth 1 -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade"|fgrep -v version.py|fgrep -v pygettext.py;echo src/version.py.in) |sed -e "s#^\./##g"> po/POTFILES.in'
+	sh -c '(find . -maxdepth 1 -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py;echo src/netconf_cmd.py;echo pygettext.py;echo po/pygettext.py) |sed -e "s#^\./##g"> po/POTFILES.skip'
 	make 
 	make -C po update-po
 
