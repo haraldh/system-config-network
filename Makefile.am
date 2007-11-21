@@ -91,7 +91,7 @@ newversion:
 	$(MAKE) srpm
 
 potfile:
-	chmod u+w -R  .
+	chmod u+w -R  po
 	sh -c '(find . -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade"|fgrep -v version.py;echo src/version.py.in) |sed -e "s#^\./##g"> po/POTFILES.in'
 	sh -c '(find . -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py) |sed -e "s#^\./##g"> po/POTFILES.skip'
 	make 
