@@ -172,52 +172,8 @@ class GenClass:
         return self._objToStr(parentStr)
 
     def _objToStr(self, parentStr = None):
-        """Internal recursive object to string method."""
-        retstr = ""
-        if self._attributes[SELF][TYPE] == LIST \
-               and (ANONYMOUS in self._attributes[SELF][FLAGS]) and len(self):
-            # print numbers
-            num = 1
-            ckey = self._attributes[SELF][CHILDKEYS][0]
-            attr = self._attributes[ckey]
-            if attr[TYPE] == LIST:
-                for child in self:
-                    if hasattr(child, '_objToStr'):
-                        retstr += child._objToStr("%s.%d" % (parentStr, num))
-                        num += 1
-            else:
-                for val in self:
-                    if val:
-                        if attr[TYPE] != BOOL:
-                            retstr += "%s.%d=%s\n" % (parentStr, num, str(val))
-                        else:
-                            if val: retstr += "%s.%d=True\n" % (parentStr, num)
-                            else: retstr += "%s.%d=False\n" % (parentStr, num)
-                        num += 1
-
-            return retstr
-
-        for child, attr in self._attributes.items():
-            if child == SELF: continue
-
-            val = None
-
-            if hasattr(self, child):
-                val = getattr(self, child)
-
-            if attr[TYPE] != LIST:
-                if val != None:
-                    if attr[TYPE] != BOOL:
-                        retstr += "%s.%s=%s\n" % (parentStr, child, str(val))
-                    else:
-                        if val: retstr += "%s.%s=True\n" % (parentStr, child)
-                        else: retstr += "%s.%s=False\n" % (parentStr, child)
-
-            else:
-                if val != None:
-                    retstr += val._objToStr("%s.%s" % (parentStr, child))
-
-        return retstr
+        """Stub"""
+        raise NotImplemented
 
     def _parseLine(self, vals, value):
         """Internal import method, which parses an snmp style assignment."""
@@ -397,6 +353,33 @@ class GenClassList(GenClass):
     def __str__(self):
         return GenClass.__str__(self)
 
+
+    def _objToStr(self, parentStr = None):
+        """Internal recursive object to string method."""
+        retstr = ""
+
+        for child, attr in self._attributes.items():
+            if child == SELF: continue
+
+            val = None
+
+            if hasattr(self, child):
+                val = getattr(self, child)
+
+            if attr[TYPE] != LIST:
+                if val != None:
+                    if attr[TYPE] != BOOL:
+                        retstr += "%s.%s=%s\n" % (parentStr, child, str(val))
+                    else:
+                        if val: retstr += "%s.%s=True\n" % (parentStr, child)
+                        else: retstr += "%s.%s=False\n" % (parentStr, child)
+
+            else:
+                if val != None:
+                    retstr += val._objToStr("%s.%s" % (parentStr, child))
+
+        return retstr
+
     def apply(self, other):
         if other == None:
             self.unlink()
@@ -556,6 +539,31 @@ class GenClassAList(GenClass, list):
 
     def __str__(self):
         return GenClass.__str__(self)
+
+    def _objToStr(self, parentStr = None):
+        """Internal recursive object to string method."""
+        retstr = ""
+        if len(self):
+            # print numbers
+            num = 1
+            ckey = self._attributes[SELF][CHILDKEYS][0]
+            attr = self._attributes[ckey]
+            if attr[TYPE] == LIST:
+                for child in self:
+                    if hasattr(child, '_objToStr'):
+                        retstr += child._objToStr("%s.%d" % (parentStr, num))
+                        num += 1
+            else:
+                for val in self:
+                    if val:
+                        if attr[TYPE] != BOOL:
+                            retstr += "%s.%d=%s\n" % (parentStr, num, str(val))
+                        else:
+                            if val: retstr += "%s.%d=True\n" % (parentStr, num)
+                            else: retstr += "%s.%d=False\n" % (parentStr, num)
+                        num += 1
+
+        return retstr
 
     def toContext(self, list):
         list = GenClass.toContext(self, list)
