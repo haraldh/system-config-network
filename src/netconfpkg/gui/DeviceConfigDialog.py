@@ -192,8 +192,12 @@ class DeviceConfigDialog:
 
         if self.device.Alias != None:
             self.device.OnParent = self.deviceconfig_xml.get_widget('onParentCB').get_active()
+            if self.device.OnBoot:
+                self.device.OnBoot = None
         else:
             self.device.OnBoot = self.deviceconfig_xml.get_widget('onBootCB').get_active()
+            if self.device.OnParent:
+                self.device.OnParent = None
 
         self.device.AllowUser = self.deviceconfig_xml.get_widget('userControlCB').get_active()
         self.device.NMControlled = self.deviceconfig_xml.get_widget('NMControlCB').get_active()
