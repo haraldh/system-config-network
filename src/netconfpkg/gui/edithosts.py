@@ -86,7 +86,10 @@ class editHostsDialog:
     def dehydrate(self):
         self.host.IP = string.strip(self.xml.get_widget('addressEntry').get_text())
         self.host.Hostname = string.strip(self.xml.get_widget('hostnameEntry').get_text())
-        oldaliasstr = string.join(self.host.AliasList, ' ')
+        if self.host.AliasList:
+            oldaliasstr = string.join(self.host.AliasList, ' ')
+        else:
+            oldaliasstr = None
         newaliasstr = self.xml.get_widget('aliasesEntry').get_text()
         if oldaliasstr != newaliasstr.strip():
             self.host.AliasList = None
