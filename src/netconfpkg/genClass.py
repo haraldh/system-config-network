@@ -23,7 +23,7 @@ __author__ = "Harald Hoyer"
 import new
 import sys
 import traceback
-
+from NC_functions import log
 Alchemist = None
 LIST = "LIST"
 STRING = "STRING"
@@ -367,7 +367,7 @@ class GenClassList(GenClass):
                     self.setChanged(changed)
 
         if changed and getattr(self, '__' + child + '_bak') != cd:
-            #print "%s changed %s" % (self._attributes[SELF][NAME] + '.' + child, str(changed))
+            log.log(5, "%s changed %s" % (self._attributes[SELF][NAME] + '.' + child, str(changed)))
             self.setChanged(changed)
 
         setattr(self, '__' + child + '_bak', cd)    
@@ -596,12 +596,12 @@ class GenClassAList(GenClass, list):
     def commit(self, changed=True):        
         if changed:
             if len(self.data_bak) != len(self):
-                #print "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
+                log.log(5, "3 %s changed %s" % (self._attributes[SELF][NAME], str(changed)))
                 self.setChanged(changed)
             else:
                 for i in xrange(0, len(self.data_bak)):
                     if self.data_bak[i] != self[i]:
-                        #print "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed))
+                        log.log(5, "4 %s changed %s" % (self._attributes[SELF][NAME], str(changed)))
                         self.setChanged(changed)
                         break
 
@@ -609,7 +609,7 @@ class GenClassAList(GenClass, list):
             if hasattr(child, 'commit'):
                 child.commit(changed)
             if changed and hasattr(child, "changed") and child.changed:
-                #print "5 %s changed %s" % (child._attributes[SELF][NAME], str(changed))
+                log.log(5, "5 %s changed %s" % (child._attributes[SELF][NAME], str(changed)))
                 self.setChanged(changed)
 
         self.data_bak = self[:]
