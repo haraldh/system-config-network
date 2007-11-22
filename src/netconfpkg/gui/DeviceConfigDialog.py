@@ -189,8 +189,12 @@ class DeviceConfigDialog:
 
     def dehydrate(self):
         self.device.DeviceId = self.deviceconfig_xml.get_widget('deviceNameEntry').get_text()
-        self.device.OnBoot = self.deviceconfig_xml.get_widget('onBootCB').get_active()
-        self.device.OnParent = self.deviceconfig_xml.get_widget('onParentCB').get_active()
+
+        if self.device.Alias != None:
+            self.device.OnParent = self.deviceconfig_xml.get_widget('onParentCB').get_active()
+        else:
+            self.device.OnBoot = self.deviceconfig_xml.get_widget('onBootCB').get_active()
+
         self.device.AllowUser = self.deviceconfig_xml.get_widget('userControlCB').get_active()
         self.device.NMControlled = self.deviceconfig_xml.get_widget('NMControlCB').get_active()
         self.device.IPv6Init = self.deviceconfig_xml.get_widget('ipv6InitCB').get_active()
