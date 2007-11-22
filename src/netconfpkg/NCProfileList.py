@@ -34,25 +34,25 @@ from netconfpkg import Host
 
 from netconfpkg.conf import Conf
 
-from types import ListType
+#from types import ListType
 
-class MyFileList(ListType):
+class MyFileList(list):
     def __setitem__(self, key, value):
         value = os.path.abspath(value)
         log.log(5, "MyFileList.__setitem__(self, %s, %s)" % (str(key),
                                                              str(value)))
-        return ListType.__setitem__(self, key, value)
+        return list.__setitem__(self, key, value)
 
     def __contains__(self, obj):
         obj = os.path.abspath(obj)
-        ret = ListType.__contains__(self, os.path.abspath(obj))
+        ret = list.__contains__(self, os.path.abspath(obj))
         log.log(5, "MyFileList.__contains__(self, %s) == %s" % (str(obj), str(ret)))
         return ret
 
     def append(self, obj):
         obj = os.path.abspath(obj)
         log.log(5, "MyFileList.append(self, %s)" % str(obj))
-        return ListType.append(self, os.path.abspath(obj))
+        return list.append(self, os.path.abspath(obj))
 
 class ProfileList(ProfileList_base):
     def __init__(self, list = None, parent = None):
