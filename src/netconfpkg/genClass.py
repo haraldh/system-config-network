@@ -425,7 +425,7 @@ class GenClassList(GenClass):
                     child.apply(getattr(other, "get" + i)())
 
     def _testAttr(self, value, child=None):
-        return 0
+        return True
 
     def _getAttr(self, child=None):
         return self.__dict__[child]
