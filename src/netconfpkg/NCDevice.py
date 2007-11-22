@@ -95,6 +95,7 @@ class Device( Device_base ):
 
     boolkeydict = { 'OnBoot' : 'ONBOOT',
                     'OnParent' : 'ONPARENT',
+                    'NMControlled' : 'NETWORKMANAGER',
                     'AllowUser' : 'USERCTL',
                     'AutoDNS' : 'PEERDNS',
                     'Slave' : 'SLAVE',

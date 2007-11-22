@@ -47,9 +47,6 @@ class DeviceConfigDialog:
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_notebook_switch_page" : self.on_notebook_switch_page,
-            "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
-            "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9\_:]+$"),
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
             })
 
@@ -60,9 +57,39 @@ class DeviceConfigDialog:
             glade_file = NETCONFDIR + glade_file
 
         self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
-                                                 domain=PROGNAME)
+                                             domain=PROGNAME)
 
-        self.xml.get_widget("okButton").set_sensitive(len(self.xml.get_widget('deviceNameEntry').get_text()) > 0)
+        glade_file = "DeviceConfigDialog.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = NETCONFDIR + glade_file
+
+        self.deviceconfig_xml = gtk.glade.XML(glade_file, None,
+                                              domain=PROGNAME)
+
+        xml_signal_autoconnect(self.deviceconfig_xml,
+            {
+            "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
+            "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
+                                                r"^[a-z|A-Z|0-9\_:]+$"),
+            })
+
+        window = self.deviceconfig_xml.get_widget ('window')
+        frame = self.deviceconfig_xml.get_widget ('generalVbox')
+        vbox = self.xml.get_widget ('generalVbox')
+        for child in vbox.get_children():
+            vbox.remove(child)
+        for child in frame.get_children():
+            frame.remove(child)
+            vbox.pack_start(child)
+
+        vbox.show()
+        #window.remove (frame)
+        #vbox.pack_start (frame)
+
+
+        self.xml.get_widget("okButton").set_sensitive(len(self.deviceconfig_xml.get_widget('deviceNameEntry').get_text()) > 0)
 
         load_icon("network.xpm", self.dialog)
 
@@ -142,28 +169,30 @@ class DeviceConfigDialog:
         pass
 
     def hydrate(self):
-        widget = self.xml.get_widget('deviceNameEntry')
+        widget = self.deviceconfig_xml.get_widget('deviceNameEntry')
         widget.grab_focus()
         if self.device.DeviceId:
             widget.set_text(self.device.DeviceId)
 
-            self.xml.get_widget('onBootCB').set_active(self.device.OnBoot == True)
-            self.xml.get_widget('onParentCB').set_active(self.device.OnParent == True)
-            self.xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
-            self.xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
+            self.deviceconfig_xml.get_widget('onBootCB').set_active(self.device.OnBoot == True)
+            self.deviceconfig_xml.get_widget('onParentCB').set_active(self.device.OnParent == True)
+            self.deviceconfig_xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
+            self.deviceconfig_xml.get_widget('NMControlCB').set_active(self.device.NMControlled == True)
+            self.deviceconfig_xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
 
             if self.device.Alias != None:
-                self.xml.get_widget('onBootCB').hide()
-                self.xml.get_widget('onParentCB').show()
+                self.deviceconfig_xml.get_widget('onBootCB').hide()
+                self.deviceconfig_xml.get_widget('onParentCB').show()
             else:
-                self.xml.get_widget('onBootCB').show()
-                self.xml.get_widget('onParentCB').hide()
+                self.deviceconfig_xml.get_widget('onBootCB').show()
+                self.deviceconfig_xml.get_widget('onParentCB').hide()
 
     def dehydrate(self):
-        self.device.DeviceId = self.xml.get_widget('deviceNameEntry').get_text()
-        self.device.OnBoot = self.xml.get_widget('onBootCB').get_active()
-        self.device.OnParent = self.xml.get_widget('onParentCB').get_active()
-        self.device.AllowUser = self.xml.get_widget('userControlCB').get_active()
-        self.device.IPv6Init = self.xml.get_widget('ipv6InitCB').get_active()
+        self.device.DeviceId = self.deviceconfig_xml.get_widget('deviceNameEntry').get_text()
+        self.device.OnBoot = self.deviceconfig_xml.get_widget('onBootCB').get_active()
+        self.device.OnParent = self.deviceconfig_xml.get_widget('onParentCB').get_active()
+        self.device.AllowUser = self.deviceconfig_xml.get_widget('userControlCB').get_active()
+        self.device.NMControlled = self.deviceconfig_xml.get_widget('NMControlCB').get_active()
+        self.device.IPv6Init = self.deviceconfig_xml.get_widget('ipv6InitCB').get_active()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
