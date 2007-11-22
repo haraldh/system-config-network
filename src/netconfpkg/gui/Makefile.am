@@ -4,6 +4,7 @@ GLADE_FILES = \
 	ChooseProvider.glade \
 	CipeInterfaceDialog.glade \
 	CipeInterfaceDruid.glade \
+	DeviceConfigDialog.glade \
 	DeviceTypeDialog.glade \
 	DialupInterfaceDialog.glade \
 	DialupDruid.glade \
