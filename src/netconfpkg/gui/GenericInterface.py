@@ -102,9 +102,6 @@ class GenericInterface(InterfaceCreator):
         ## FIXME
         button = 0
         type = device.Type
-        device.createDialup()
-        device.createCipe()
-        device.createWireless()
 
         if type == ETHERNET:
             cfg = ethernetConfigDialog(device)
@@ -113,18 +110,23 @@ class GenericInterface(InterfaceCreator):
             cfg = tokenringConfigDialog(device)
 
         elif type == ISDN:
+            device.createDialup()
             cfg = ISDNDialupInterfaceDialog(device)
 
         elif type == MODEM:
+            device.createDialup()
             cfg = ModemDialupInterfaceDialog(device)
 
         elif type == DSL:
+            device.createDialup()
             cfg = ADSLInterfaceDialog(device)
 
         elif type == CIPE:
+            device.createCipe()
             cfg = CipeInterfaceDialog(device)
 
         elif type == WIRELESS:
+            device.createWireless()
             cfg = wirelessConfigDialog(device)
 
         elif type == CTC or type == IUCV:
