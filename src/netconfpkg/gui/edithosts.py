@@ -55,9 +55,23 @@ class editHostsDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-
         self.hydrate()
 
+    def run(self):
+        while True:
+            button = self.dialog.run()
+            if button == gtk.RESPONSE_OK:
+                try:
+                    self.host.test()
+                except ValueError, e:
+                    GUI_functions.gui_error_dialog ( "Invalid entry: %s" % e.message, self.dialog)
+                    continue
+                break
+            else:
+                break
+        self.dialog.destroy()
+        return button
+        
     def on_Dialog_delete_event(self, *args):
         pass
 

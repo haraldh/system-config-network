@@ -21,70 +21,26 @@ if __name__ == '__main__':
 
 from netconfpkg import HostsList_base, Host
 import string
-import socket
-import re
 
 class HostsList(HostsList_base):
     def __init__(self,*args, **kwargs):
         HostsList_base.__init__(self, args, kwargs)
     
-    def test_ip(self, ip):
-        try:
-            socket.inet_pton(socket.AF_INET, ip)
-        except socket.error:
-            try:
-                socket.inet_pton(socket.AF_INET6, ip)
-            except:
-                return False
-        return True
-    
-    def test_hostname(self, hostname):
-        # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
-        if (len(hostname) - hostname.count('.')) < 256:
-            names = hostname.split('.')
-            pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
-            for name in names:
-               if len(name) < 63:
-                   if not pattern.match(name):
-                       return False
-            return True
-        else:
-            return False
-
-    def test_aliases(self, aliaslist):
-        retval = True
-        for alias in aliaslist:
-            if alias != "":
-                retval &= self.test_hostname(alias)
-        return retval
-    
-    def test_host(self, host):
-        if not self.test_ip(host.IP):
-            raise ValueError("Address")
-        if not self.test_hostname(host.Hostname):
-            raise ValueError("Hostname")
-        if not self.test_aliases(host.AliasList):
-            raise ValueError("Alias")
-            
-    def check(self):
-        bad_lines = []
+    def test(self):
+        error = None
         num = 0
-        for host in HostsList_base.__iter__(self):
+        for host in self:
             num += 1
             if isinstance(host, Host):
                 try:
-                    self.test_host(host)
-                except ValueError:
-                    if hasattr(host, "origLine"):
-                        line = host.origLine
+                    host.test()
+                except ValueError, e:
+                    if not error:
+                        error = "Error in hostslist\nWrong: %s in entry %i" % (e.message,num)
                     else:
-                        line = host.IP + "\t" + host.Hostname
-                        for alias in host.AliasList:
-                            line += "\t" + alias
-                        if hasattr(host, "Comment"):
-                            line += "\t" + host.Comment
-                    bad_lines.append((num,line))
-        return bad_lines
+                        error += "Wrong: %s in entry %i" (e.message,num)
+        if error:
+                raise ValueError(error)
     
     def load(self, filename='/etc/hosts'):
         try:
@@ -94,7 +50,9 @@ class HostsList(HostsList_base):
         except:
             return
         num = 0
+        error = None
         for line in lines:
+            num += 1
             line = line.strip()
             tmp = line.partition('#')
             comment = tmp[2]
@@ -106,17 +64,26 @@ class HostsList(HostsList_base):
                 entry.IP = tmp[0]
                 entry.Hostname = tmp[1]
                 entry.Comment = string.rstrip(comment)
-                # FIXME add check if there is some alias!
                 entry.createAliasList()
                 if len(tmp) > 1:
                     for alias in tmp[2:]:
                         entry.AliasList.append(alias)
                 entry.origLine = line
+                # catch invalid entry in /etc/hosts
+                try:
+                    entry.test()
+                except ValueError, e:
+                    if not error:
+                        error = "Error while parsing /etc/hosts:\nWrong %s on line %i\n" % (e.message,num)                    
+                    else:
+                        error += "Wrong %s on line %i\n" % (e.message,num)
             else:
                 entry = line
 
             # add every line to configuration
             self.append(entry)
+        if error:
+            raise ValueError(error)
 
     def __iter__(self):
         """Replace __iter__ for backwards compatibility. Returns only valid Host objects"""

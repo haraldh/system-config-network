@@ -292,7 +292,10 @@ class mainDialog:
 
     def loadProfiles(self):
         self.appBar.push(_("Loading profile configuration..."))
-        profilelist = getProfileList()
+        try:
+            profilelist = getProfileList()
+        except ValueError, e:
+            gui_info_dialog(e.message, None)
         self.appBar.pop()
 
     def loadIPsec(self):
@@ -350,9 +353,16 @@ class mainDialog:
         return False
 
     def save(self):
-        if self.test() != 0:
-            return 1
-
+        #if self.test() != 0:
+        #    return 1
+        
+        try:
+            self.test()
+        except ValueError, e:
+            retval = generic_yesno_dialog("Errors detected, do you really want to save?\n" + e.message, self.dialog)
+            if retval == gtk.RESPONSE_NO:
+                return
+                
         self.appBar.push(_("Saving configuration..."))
         self.appBar.refresh()
         profilelist = getProfileList()
@@ -671,14 +681,28 @@ class mainDialog:
 
     def on_Dialog_delete_event(self, *args):
         profilelist = getProfileList()
-        profilelist.commit()
-
-        if self.changed():
+        try:
+            profilelist.test()
+        except:
             button = generic_yesno_dialog(
+                _("Errors detected, do you really want to quit?"),
+                self.dialog)
+            if button == RESPONSE_NO:
+                return True
+        
+        # no errors or user wants to save anyway...
+        profilelist.commit()
+        if self.changed():
+            button = generic_yesnocancel_dialog(
                 _("Do you want to save your changes?"),
                 self.dialog)
             if button == RESPONSE_YES:
-                self.save()
+                try:
+                    self.save()
+                except:
+                    pass
+            if button == RESPONSE_CANCEL:
+                return True
 
         gtk.main_quit()
         return
@@ -1324,26 +1348,9 @@ class mainDialog:
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         
-        while(True):
-            button = dl.run()
-            if button == gtk.RESPONSE_OK:
-                try:
-                    hostslist.test_host(host)
-                except ValueError, e:
-                    GUI_functions.gui_error_dialog ( "Invalid entry: %s" % e.message, dl)
-                    continue
-            else:
-                # if user pressed CANCEL
-                dl.destroy()
-                return
-            break
-        # user pressed OK and all tests passed
-        dl.destroy()
-        
-        #button = dl.run ()
-        #dl.destroy()
-        #if button != gtk.RESPONSE_OK and button != 0:
-        #    return
+        button = dialog.run ()
+        if button != gtk.RESPONSE_OK and button != 0:
+            return
 
         i=  hostslist.addHost()
         hostslist[i].apply(host)
@@ -1368,31 +1375,18 @@ class mainDialog:
         dl.set_transient_for(self.dialog)
         dl.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         
-        while(True):
-            button = dl.run()
-            if button == gtk.RESPONSE_OK:
-                try:
-                    hostslist.test_host(host)
-                except ValueError, e:
-                    GUI_functions.gui_error_dialog ( "Invalid entry: %s" % e.message, dl)
-                    continue
-            else:
-                # if user pressed CANCEL
-                host.rollback()
-                dl.destroy()
-                return
-            break
-        # user pressed OK and all tests passed
-        dl.destroy()
-        
-        #button = dl.run ()
-        #dl.destroy()
-        #if button != gtk.RESPONSE_OK and button != 0:
-        #    host.rollback()
-        #    return
-        host.commit()
-        hostslist.commit()
-        profilelist.commit()
+        button = dialog.run ()
+        if button != gtk.RESPONSE_OK and button != 0:
+            #host.rollback()
+            return
+            
+        try:
+            host.commit()
+            hostslist.commit()
+            profilelist.commit()
+        except:
+            # we don't want to bother the user every time
+            pass
         self.hydrateProfiles()
 
     def on_hostsDeleteButton_clicked (self, *args):

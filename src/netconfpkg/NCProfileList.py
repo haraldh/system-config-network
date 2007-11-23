@@ -97,6 +97,7 @@ class ProfileList(ProfileList_base):
         self.setChanged(False)
 
     def loadprof(self, pr, profdir):
+        error = None
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
 
@@ -135,9 +136,15 @@ class ProfileList(ProfileList_base):
 
         # CHECK: [198898] new backend for /etc/hosts        
         if profdir:
-            prof.HostsList.load( filename = profdir + '/hosts')
+            try:
+                prof.HostsList.load( filename = profdir + '/hosts')
+            except ValueError, e:
+                error = e.message
         else:
-            prof.HostsList.load( filename = HOSTSCONF )
+            try:
+                prof.HostsList.load( filename = HOSTSCONF )
+            except ValueError, e:
+                error = e.message
 
 
         # FIXME: [183338] use SEARCH not resolv.conf
@@ -172,9 +179,23 @@ class ProfileList(ProfileList_base):
         if dnsconf.has_key('search'):
             for ns in dnsconf['search']:
                 sl.append(ns)
+        
+        if error:
+            raise ValueError(error)
 
     def test(self):
-        return
+        error = None
+        for prof in self:
+            try:
+                prof.HostsList.test()
+            except ValueError, e:
+                if not error:
+                    error = "Profile: %s \n%s" % (prof.ProfileName,e.message)
+                else:
+                    error += e.message
+        if error:
+            raise ValueError(error)
+        #return
         # Keep that test for later versions
         devmap = {}
         devicelist = NCDeviceList.getDeviceList()
@@ -204,7 +225,6 @@ class ProfileList(ProfileList_base):
             break
 
     def commit(self, changed=True):
-        self.test()
         ProfileList_base.commit(self, changed)
 
     def fixInterfaces(self):
