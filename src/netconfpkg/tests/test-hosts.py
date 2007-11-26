@@ -161,6 +161,20 @@ HostsList.4.IP=10.1.1.1
         self.failUnless(expectConf(expectfile = srcdir+"/hosts2", filename="hosts2.new"))
 
         os.unlink("hosts2.new")
+        
+    def test03WrongEntry(self):
+        """ Test parsing hosts file with containing wrong entries """
+        from netconfpkg import NC_functions
+        from netconfpkg.NCHostsList import HostsList
+        from netconfpkg import Host
+        # expected errors in config file
+        badlines = [(7, 'IP'), (8, 'Hostname'), (9, 'Alias'), (10, 'Hostname')]
+        hl = HostsList()
+        try:
+            hl.load(srcdir+"/hosts_bad")
+        except Exception, e:
+            self.failUnless(e.badlines == badlines)
+                
 
 def suite():
     suite = unittest.TestSuite()

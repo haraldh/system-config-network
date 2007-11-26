@@ -691,7 +691,6 @@ class mainDialog:
                 return True
         
         # no errors or user wants to save anyway...
-        profilelist.commit()
         if self.changed():
             button = generic_yesnocancel_dialog(
                 _("Do you want to save your changes?"),

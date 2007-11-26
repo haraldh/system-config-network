@@ -51,6 +51,7 @@ class HostsList(HostsList_base):
             return
         num = 0
         error = None
+        badlines = []
         for line in lines:
             num += 1
             line = line.strip()
@@ -73,6 +74,7 @@ class HostsList(HostsList_base):
                 try:
                     entry.test()
                 except ValueError, e:
+                    badlines.append((num, e.message))
                     if not error:
                         error = "Error while parsing /etc/hosts:\nWrong %s on line %i\n" % (e.message,num)                    
                     else:
@@ -83,7 +85,9 @@ class HostsList(HostsList_base):
             # add every line to configuration
             self.append(entry)
         if error:
-            raise ValueError(error)
+            e = ValueError(error)
+            e.badlines = badlines
+            raise e
 
     def __iter__(self):
         """Replace __iter__ for backwards compatibility. Returns only valid Host objects"""

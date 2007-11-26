@@ -3,6 +3,21 @@ from netconfpkg import Host_base, AliasList
 import socket
 import re
 
+def testHostname(hostname):
+    # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
+    if (len(hostname) - hostname.count('.')) < 256:
+        names = hostname.split('.')
+        pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
+        for name in names:
+           if len(name) < 64:
+               if not pattern.match(name):
+                   return False
+           else:
+               return False
+        return True
+    else:
+        return False
+
 class Host(Host_base):
     def testIP(self):
             try:
@@ -13,26 +28,14 @@ class Host(Host_base):
                 except:
                     return False
             return True
-        
-    def testHostname(self):
-        # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
-        if (len(self.Hostname) - self.Hostname.count('.')) < 256:
-            names = self.Hostname.split('.')
-            pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
-            for name in names:
-               if len(name) < 63:
-                   if not pattern.match(name):
-                       return False
-            return True
-        else:
-            return False
     
+    def testHostname(self):
+        return testHostname(self.Hostname)
+        
     def testAliasList(self):
         return self.AliasList.test()
     
     def test(self):
-        # how to use automatical call and catch exceptions?
-        message = ""
         if not self.testIP():
             raise ValueError("IP")
         if not self.testHostname():
