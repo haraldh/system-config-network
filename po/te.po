@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: te\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-17 14:34+0100\n"
+"POT-Creation-Date: 2007-12-03 11:33+0100\n"
 "PO-Revision-Date: 2007-09-26 00:46+0530\n"
 "Last-Translator: Krishna Babu K <kkrothap@redhat.com>\n"
 "Language-Team: Telugu\n"
@@ -39,7 +39,7 @@ msgstr "నియంత్రణ మరియూ మోనిటర్ నెట
 msgid "Network Device Control"
 msgstr "నెట్వర్కు సాధనం నియంత్రణ"
 
-#: ../src/netconfpkg/genClass.py:296 ../src/netconf-cmd.py:329
+#: ../src/netconfpkg/genClass.py:254 ../src/netconf-cmd.py:329
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "దోష విశ్లేషణ లైను: %s"
@@ -180,7 +180,7 @@ msgstr "%s నెట్వర్కు సాధనాన్ని క్రి�
 #: ../src/netconfpkg/plugins/NCHWEthernet.py:60
 #: ../src/netconfpkg/NCDevice.py:237 ../src/netconfpkg/NCDeviceList.py:72
 #: ../src/netconfpkg/NCHardwareList.py:466
-#: ../src/netconfpkg/NCHardwareList.py:654
+#: ../src/netconfpkg/NCHardwareList.py:669
 #: ../src/netconfpkg/NC_functions.py:391
 #: ../src/netconfpkg/gui/tokenringhardware.py:111
 #: ../src/netconfpkg/gui/ethernethardware.py:137
@@ -715,12 +715,12 @@ msgstr ""
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%sని సాధనానికి అనుసంధిస్తోంది మరియూ దాన్ని %s ప్రొఫైలులో ఉంచుతోంది."
 
-#: ../src/netconfpkg/NCProfileList.py:195
+#: ../src/netconfpkg/NCProfileList.py:216
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "%s సాధనం \"%s\" వంటి సాధనాన్నే ఉపయోగించుకుంటుంది %s వంటివి!\n"
 
-#: ../src/netconfpkg/NCProfileList.py:197
+#: ../src/netconfpkg/NCProfileList.py:218
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1274,45 +1274,45 @@ msgstr ""
 "చెందింది.  ఇది USAలో అందుబాటులో ఉంది కానీ సాధారణమైంది కాదు.  స్పీడు స్థాయి 64kbps నుండీ 128kbps "
 "వరకూ."
 
-#: ../src/netconfpkg/gui/maindialog.py:275
+#: ../src/netconfpkg/gui/maindialog.py:276
 msgid "Loading configuration..."
 msgstr "ఆకృతీకరణను లోడుచేస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:283
+#: ../src/netconfpkg/gui/maindialog.py:284
 msgid "Loading device configuration..."
 msgstr "సాధనం ఆకృతీకరణను లోడుచేస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:288
+#: ../src/netconfpkg/gui/maindialog.py:289
 msgid "Loading hardware configuration..."
 msgstr "హార్డువేరు ఆకృతీకరణను లోడుచేస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:293
+#: ../src/netconfpkg/gui/maindialog.py:294
 msgid "Loading profile configuration..."
 msgstr "ప్రొఫైలు ఆకృతీకరణను లోడుచేస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:298
+#: ../src/netconfpkg/gui/maindialog.py:302
 msgid "Loading IPsec configuration..."
 msgstr "IPsec ఆకృతీకరణను లోడుచేస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:303
+#: ../src/netconfpkg/gui/maindialog.py:307
 msgid "Testing configuration set..."
 msgstr "ఆకృతీకరణ అమర్పును పరిశీలిస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:334
+#: ../src/netconfpkg/gui/maindialog.py:347
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "క్రియాశీల ప్రొఫైలు: %s (మార్చబడింది)"
 
-#: ../src/netconfpkg/gui/maindialog.py:338
+#: ../src/netconfpkg/gui/maindialog.py:351
 #, python-format
 msgid "Active profile: %s"
 msgstr "క్రియాశీల ప్రొఫైలు: %s"
 
-#: ../src/netconfpkg/gui/maindialog.py:346
+#: ../src/netconfpkg/gui/maindialog.py:366
 msgid "Saving configuration..."
 msgstr "ఆకృతీకరణను భద్రపరుస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:358
+#: ../src/netconfpkg/gui/maindialog.py:378
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1321,7 +1321,7 @@ msgstr ""
 "ఆకృతీకరణను భద్రపచటంలో దోషం!\n"
 "%s"
 
-#: ../src/netconfpkg/gui/maindialog.py:361
+#: ../src/netconfpkg/gui/maindialog.py:381
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
@@ -1329,142 +1329,146 @@ msgstr ""
 "మార్పులు భద్రపరచబడ్డాయి. మీరు నెట్వర్కు లేదా నెట్వర్కు సేవలను లేదా కంప్యూటరును పునఃప్రాంభించటాన్ని "
 "పునఃప్రారంభించవచ్చు."
 
-#: ../src/netconfpkg/gui/maindialog.py:370
+#: ../src/netconfpkg/gui/maindialog.py:390
 msgid "Saving device configuration..."
 msgstr "సాధనం ఆకృతీకరణను భద్రపరుస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:377
+#: ../src/netconfpkg/gui/maindialog.py:397
 msgid "Saving hardware configuration..."
 msgstr "హార్డువేరు ఆకృతీకరణను భద్రపరుస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:384
+#: ../src/netconfpkg/gui/maindialog.py:404
 msgid "Saving profile configuration..."
 msgstr "ప్రొఫైలు ఆకృతీకరణను భద్రపరుస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:391
+#: ../src/netconfpkg/gui/maindialog.py:411
 msgid "Saving IPsec configuration..."
 msgstr "IPsec ఆకృతీకరణను భద్రపరుస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:410
+#: ../src/netconfpkg/gui/maindialog.py:430
 msgid "Updating devices..."
 msgstr "సాధనాలను నవీకరిస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:474
+#: ../src/netconfpkg/gui/maindialog.py:494
 msgid "Updating hardware..."
 msgstr "హార్డువేరును నవీకరిస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:552
+#: ../src/netconfpkg/gui/maindialog.py:572
 msgid "Updating profiles..."
 msgstr "ప్రొఫైళ్లను నవీకరిస్తోంది..."
 
-#: ../src/netconfpkg/gui/maindialog.py:669
-#: ../src/netconfpkg/gui/maindialog.py:692
+#: ../src/netconfpkg/gui/maindialog.py:688
+msgid "Errors detected, do you really want to quit?"
+msgstr ""
+
+#: ../src/netconfpkg/gui/maindialog.py:696
+#: ../src/netconfpkg/gui/maindialog.py:715
 msgid "Do you want to save your changes?"
 msgstr "మీరు మీ మార్పులను భపరచాలనుకుంటున్నారా?"
 
-#: ../src/netconfpkg/gui/maindialog.py:870
+#: ../src/netconfpkg/gui/maindialog.py:893
 msgid "The Loopback device can not be edited!"
 msgstr "ఈ Loopback కూర్చటానికి కుదదు!"
 
-#: ../src/netconfpkg/gui/maindialog.py:874
+#: ../src/netconfpkg/gui/maindialog.py:897
 msgid "Edit device..."
 msgstr "కూర్పు సాధనం..."
 
-#: ../src/netconfpkg/gui/maindialog.py:903
+#: ../src/netconfpkg/gui/maindialog.py:936
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "ఈ సాధన రకం %s కూర్చటానికి కుదరదు!"
 
-#: ../src/netconfpkg/gui/maindialog.py:922
+#: ../src/netconfpkg/gui/maindialog.py:955
 msgid "The Loopback device can not be removed!"
 msgstr "ఈ Loopback సాధనం తొలగించటానికి వీలుకాదు!"
 
-#: ../src/netconfpkg/gui/maindialog.py:926
+#: ../src/netconfpkg/gui/maindialog.py:959
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "మీరు నిజంగా \"%s\" సాధనాన్ని తొలగించాలనుకుంటున్నారా?"
 
-#: ../src/netconfpkg/gui/maindialog.py:962
-#: ../src/netconfpkg/gui/maindialog.py:1001
-#: ../src/netconfpkg/gui/maindialog.py:1766
-#: ../src/netconfpkg/gui/maindialog.py:1797
+#: ../src/netconfpkg/gui/maindialog.py:991
+#: ../src/netconfpkg/gui/maindialog.py:1026
+#: ../src/netconfpkg/gui/maindialog.py:1793
+#: ../src/netconfpkg/gui/maindialog.py:1820
 msgid "You have made some changes in your configuration."
 msgstr "మీరు మీ ఆకృతీకరణలో కొన్ని మార్పులను చేయాలనుకుంటున్నారా."
 
-#: ../src/netconfpkg/gui/maindialog.py:969
+#: ../src/netconfpkg/gui/maindialog.py:992
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "ఈ %s నెట్వర్కు సాధనాన్ని క్రియాశీలం చేయటానికి, మార్పులను భద్రపరవాలి."
 
-#: ../src/netconfpkg/gui/maindialog.py:965
-#: ../src/netconfpkg/gui/maindialog.py:1004
-#: ../src/netconfpkg/gui/maindialog.py:1769
-#: ../src/netconfpkg/gui/maindialog.py:1800
+#: ../src/netconfpkg/gui/maindialog.py:994
+#: ../src/netconfpkg/gui/maindialog.py:1029
+#: ../src/netconfpkg/gui/maindialog.py:1796
+#: ../src/netconfpkg/gui/maindialog.py:1823
 msgid "Do you want to continue?"
 msgstr "మీరు కొనసాగాలనుకుంటున్నారా?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1027
 #, python-format
 msgid "To deactivate the network device %s, the changes have to be saved."
 msgstr "%s నెట్వర్కు సాధనాన్ని క్రియా రహితం చేయటానికి, ఈ మార్పులను భద్రపరచవలసి ఉంది."
 
-#: ../src/netconfpkg/gui/maindialog.py:1144
+#: ../src/netconfpkg/gui/maindialog.py:1169
 msgid "The Loopback device can not be disabled!"
 msgstr "ఈ లూప్ బ్యాక్ సాధనం అసాధ్యం కాదు!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1412
-#: ../src/netconfpkg/gui/maindialog.py:1492
+#: ../src/netconfpkg/gui/maindialog.py:1445
+#: ../src/netconfpkg/gui/maindialog.py:1525
 msgid "The name may only contain letters and digits!"
 msgstr "పేరు మాత్రమే అక్షరాలను మరియూ డిజిట్సును కలిగి ఉంటుంది!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1457
-#: ../src/netconfpkg/gui/maindialog.py:1537
+#: ../src/netconfpkg/gui/maindialog.py:1450
+#: ../src/netconfpkg/gui/maindialog.py:1530
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "ఈ ప్రొఫైలుకి పేరు ఇవ్వబడలేదు \"%s\"!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1463
-#: ../src/netconfpkg/gui/maindialog.py:1543
+#: ../src/netconfpkg/gui/maindialog.py:1456
+#: ../src/netconfpkg/gui/maindialog.py:1536
 msgid "The profile name already exists!"
 msgstr "ఈ ప్రొఫైలు పేరు ఇప్పటికే ఉంది!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1510
+#: ../src/netconfpkg/gui/maindialog.py:1503
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "ఈ \"%s\" ప్రొఫైలు తిరిగి పేరు పెడటానికి కుదరనిది!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1525
-#: ../src/netconfpkg/gui/maindialog.py:1563
+#: ../src/netconfpkg/gui/maindialog.py:1556
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "ఈ \"%s\" ప్రొఫైలు తొలగించబడదు!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1531
-#: ../src/netconfpkg/gui/maindialog.py:1569
+#: ../src/netconfpkg/gui/maindialog.py:1562
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "మీరు నిజంగా \"%s\" ప్రొఫైలును తొలగించాలనుకుంటున్నారా?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1636
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr "క్షమించండి, కూర్చబడింది ఏదీలేదు, లేదా ఈ రకం ఇంకా కూర్చబడింది కాదు."
 
-#: ../src/netconfpkg/gui/maindialog.py:1623
+#: ../src/netconfpkg/gui/maindialog.py:1654
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "మీరు నిజంగా \"%s\"ని తొలగించాలనుకుంటున్నారా?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1636
+#: ../src/netconfpkg/gui/maindialog.py:1667
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "ఉపయోగించిన అన్నిసాధనాలనూ తొలగించాలనుకుంటున్నారా \"%s\"?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1668
-#: ../src/netconfpkg/gui/maindialog.py:1684 ../src/netconf-cmd.py:98
+#: ../src/netconfpkg/gui/maindialog.py:1699
+#: ../src/netconfpkg/gui/maindialog.py:1715 ../src/netconf-cmd.py:98
 #: ../src/neat-control.py:151 ../src/neat-control.py:168
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "కాపీ హక్కు (c) 2001-2005 Red Hat, Inc."
 
-#: ../src/netconfpkg/gui/maindialog.py:1669 ../src/netconf-cmd.py:99
+#: ../src/netconfpkg/gui/maindialog.py:1700 ../src/netconf-cmd.py:99
 #: ../src/neat-control.py:152
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
@@ -1473,11 +1477,11 @@ msgstr ""
 "ఈ సాఫ్టువేరు GPL కింద పంపిణీ చేయబడుతుంది. దయచేసి బగ్సును Red Hat's బగ్ ట్రాకింగ్ విధానానికి "
 "ఫిర్యాదుచేయండి: http://bugzilla.redhat.com/"
 
-#: ../src/netconfpkg/gui/maindialog.py:1725
+#: ../src/netconfpkg/gui/maindialog.py:1718
 msgid "translator_credits"
 msgstr "అనువాదకుని_క్రెడిట్సు"
 
-#: ../src/netconfpkg/gui/maindialog.py:1726 ../src/neat-control.py:175
+#: ../src/netconfpkg/gui/maindialog.py:1719 ../src/neat-control.py:175
 msgid ""
 "This software is distributed under the GPL. \n"
 "Please Report bugs to Red Hat's Bug Tracking \n"
@@ -1487,12 +1491,12 @@ msgstr ""
 "దయచేసి బగ్సును Red Hat's బగ్ ట్రాకింగ్ విధానానికి ఫిర్యాదుచేయండి\n"
 "సిస్టమ్: http://bugzilla.redhat.com/"
 
-#: ../src/netconfpkg/gui/maindialog.py:1767
+#: ../src/netconfpkg/gui/maindialog.py:1794
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "ఈ IPsec అనుసంధానం %sని క్రియాశీలం చేయటానికి, ఈ మార్పులను భద్రపరవాలి."
 
-#: ../src/netconfpkg/gui/maindialog.py:1828
+#: ../src/netconfpkg/gui/maindialog.py:1821
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "ఈ IPsec అనుసంధానం %sని తిరిగి క్రియాసహితం చేయటానికి, ఆ మార్పులను భద్రపరచవలసి ఉంది."

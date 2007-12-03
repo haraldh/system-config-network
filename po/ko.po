@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ko\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-17 14:34+0100\n"
+"POT-Creation-Date: 2007-12-03 11:33+0100\n"
 "PO-Revision-Date: 2007-09-25 11:16+1000\n"
 "Last-Translator: Eunju Kim <eukim@redhat.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "네트워크 장치 제어하고 모니터함"
 msgid "Network Device Control"
 msgstr "네트워크 장치 제어"
 
-#: ../src/netconfpkg/genClass.py:296 ../src/netconf-cmd.py:329
+#: ../src/netconfpkg/genClass.py:254 ../src/netconf-cmd.py:329
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "다음 라인을 해석하는데 오류가 발생했습니다: %s"
@@ -180,7 +180,7 @@ msgstr "%s 네트워크 장치를 비활성화시킬 수 없습니다!\n"
 #: ../src/netconfpkg/plugins/NCHWEthernet.py:60
 #: ../src/netconfpkg/NCDevice.py:237 ../src/netconfpkg/NCDeviceList.py:72
 #: ../src/netconfpkg/NCHardwareList.py:466
-#: ../src/netconfpkg/NCHardwareList.py:654
+#: ../src/netconfpkg/NCHardwareList.py:669
 #: ../src/netconfpkg/NC_functions.py:391
 #: ../src/netconfpkg/gui/tokenringhardware.py:111
 #: ../src/netconfpkg/gui/ethernethardware.py:137
@@ -715,12 +715,12 @@ msgstr ""
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s를 장치에 연결하여 %s 프로파일에 넣습니다."
 
-#: ../src/netconfpkg/NCProfileList.py:195
+#: ../src/netconfpkg/NCProfileList.py:216
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "%s 장치는 똑같은 하드웨어 장치 \"%s\"를 %s처럼 사용하고 있습니다!\n"
 
-#: ../src/netconfpkg/NCProfileList.py:197
+#: ../src/netconfpkg/NCProfileList.py:218
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1278,45 +1278,45 @@ msgstr ""
 "미국에서도 사용하고 있으나 일반적으로 사용되고 있지는 않습니다.  속도는 "
 "64kbps 에서 128kbps 사이입니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:275
+#: ../src/netconfpkg/gui/maindialog.py:276
 msgid "Loading configuration..."
 msgstr "설정을 읽어오는 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:283
+#: ../src/netconfpkg/gui/maindialog.py:284
 msgid "Loading device configuration..."
 msgstr "장치 설정을 읽어오는 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:288
+#: ../src/netconfpkg/gui/maindialog.py:289
 msgid "Loading hardware configuration..."
 msgstr "하드웨어 설정을 읽어오는 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:293
+#: ../src/netconfpkg/gui/maindialog.py:294
 msgid "Loading profile configuration..."
 msgstr "프로파일 설정을 읽어오는 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:298
+#: ../src/netconfpkg/gui/maindialog.py:302
 msgid "Loading IPsec configuration..."
 msgstr "IPsec 설정을 읽어오는 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:303
+#: ../src/netconfpkg/gui/maindialog.py:307
 msgid "Testing configuration set..."
 msgstr "설정 세트를 검사 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:334
+#: ../src/netconfpkg/gui/maindialog.py:347
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "활성화된 프로파일: %s (수정됨)"
 
-#: ../src/netconfpkg/gui/maindialog.py:338
+#: ../src/netconfpkg/gui/maindialog.py:351
 #, python-format
 msgid "Active profile: %s"
 msgstr "활성화된 프로파일: %s"
 
-#: ../src/netconfpkg/gui/maindialog.py:346
+#: ../src/netconfpkg/gui/maindialog.py:366
 msgid "Saving configuration..."
 msgstr "설정을 저장 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:358
+#: ../src/netconfpkg/gui/maindialog.py:378
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1325,7 +1325,7 @@ msgstr ""
 "설정을 저장하는 도중에 오류가 발생했습니다!\n"
 "%s"
 
-#: ../src/netconfpkg/gui/maindialog.py:361
+#: ../src/netconfpkg/gui/maindialog.py:381
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
@@ -1333,144 +1333,148 @@ msgstr ""
 "변경 사항이 저장되었습니다. 네트워크와 네트워크 서비스를 재시작하시거나 컴퓨"
 "터를 재시작하시기 바랍니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:370
+#: ../src/netconfpkg/gui/maindialog.py:390
 msgid "Saving device configuration..."
 msgstr "장치 설정을 저장 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:377
+#: ../src/netconfpkg/gui/maindialog.py:397
 msgid "Saving hardware configuration..."
 msgstr "하드웨어 설정을 저장 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:384
+#: ../src/netconfpkg/gui/maindialog.py:404
 msgid "Saving profile configuration..."
 msgstr "프로파일 설정을 저장 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:391
+#: ../src/netconfpkg/gui/maindialog.py:411
 msgid "Saving IPsec configuration..."
 msgstr "IPsec 설정을 저장 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:410
+#: ../src/netconfpkg/gui/maindialog.py:430
 msgid "Updating devices..."
 msgstr "장치를 업데이트 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:474
+#: ../src/netconfpkg/gui/maindialog.py:494
 msgid "Updating hardware..."
 msgstr "하드웨어를 업데이트 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:552
+#: ../src/netconfpkg/gui/maindialog.py:572
 msgid "Updating profiles..."
 msgstr "프로파일을 업데이트 중..."
 
-#: ../src/netconfpkg/gui/maindialog.py:669
-#: ../src/netconfpkg/gui/maindialog.py:692
+#: ../src/netconfpkg/gui/maindialog.py:688
+msgid "Errors detected, do you really want to quit?"
+msgstr ""
+
+#: ../src/netconfpkg/gui/maindialog.py:696
+#: ../src/netconfpkg/gui/maindialog.py:715
 msgid "Do you want to save your changes?"
 msgstr "변경하신 내용을 저장하시겠습니까?"
 
-#: ../src/netconfpkg/gui/maindialog.py:870
+#: ../src/netconfpkg/gui/maindialog.py:893
 msgid "The Loopback device can not be edited!"
 msgstr "루프백 장치를 편집할 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:874
+#: ../src/netconfpkg/gui/maindialog.py:897
 msgid "Edit device..."
 msgstr "장치 편집..."
 
-#: ../src/netconfpkg/gui/maindialog.py:903
+#: ../src/netconfpkg/gui/maindialog.py:936
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "%s 장치 유형은 편집하실 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:922
+#: ../src/netconfpkg/gui/maindialog.py:955
 msgid "The Loopback device can not be removed!"
 msgstr "루프백 장치는 삭제하실 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:926
+#: ../src/netconfpkg/gui/maindialog.py:959
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "정말로 \"%s\" 장치를 삭제하시겠습니까?"
 
-#: ../src/netconfpkg/gui/maindialog.py:962
-#: ../src/netconfpkg/gui/maindialog.py:1001
-#: ../src/netconfpkg/gui/maindialog.py:1766
-#: ../src/netconfpkg/gui/maindialog.py:1797
+#: ../src/netconfpkg/gui/maindialog.py:991
+#: ../src/netconfpkg/gui/maindialog.py:1026
+#: ../src/netconfpkg/gui/maindialog.py:1793
+#: ../src/netconfpkg/gui/maindialog.py:1820
 msgid "You have made some changes in your configuration."
 msgstr "여러분은 일부 설정을 변경 하셨습니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:969
+#: ../src/netconfpkg/gui/maindialog.py:992
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr ""
 "네트웍 장치 %s 를 활성화하기 위해서는, 변경 사항들이 저장되어야만 합니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:965
-#: ../src/netconfpkg/gui/maindialog.py:1004
-#: ../src/netconfpkg/gui/maindialog.py:1769
-#: ../src/netconfpkg/gui/maindialog.py:1800
+#: ../src/netconfpkg/gui/maindialog.py:994
+#: ../src/netconfpkg/gui/maindialog.py:1029
+#: ../src/netconfpkg/gui/maindialog.py:1796
+#: ../src/netconfpkg/gui/maindialog.py:1823
 msgid "Do you want to continue?"
 msgstr "계속 하시겠습니까?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1027
 #, python-format
 msgid "To deactivate the network device %s, the changes have to be saved."
 msgstr ""
 "네트워크 장치 %s 를 비활성화하기 위해서는, 변경 사항을 저장하셔야 합니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:1144
+#: ../src/netconfpkg/gui/maindialog.py:1169
 msgid "The Loopback device can not be disabled!"
 msgstr "루프백 장치를 비활성화할 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1412
-#: ../src/netconfpkg/gui/maindialog.py:1492
+#: ../src/netconfpkg/gui/maindialog.py:1445
+#: ../src/netconfpkg/gui/maindialog.py:1525
 msgid "The name may only contain letters and digits!"
 msgstr "이름에는 글자와 숫자만 사용가능 합니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1457
-#: ../src/netconfpkg/gui/maindialog.py:1537
+#: ../src/netconfpkg/gui/maindialog.py:1450
+#: ../src/netconfpkg/gui/maindialog.py:1530
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "프로파일의 이름을\"%s\"으로 하실 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1463
-#: ../src/netconfpkg/gui/maindialog.py:1543
+#: ../src/netconfpkg/gui/maindialog.py:1456
+#: ../src/netconfpkg/gui/maindialog.py:1536
 msgid "The profile name already exists!"
 msgstr "프로파일 이름이 이미 존재합니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1510
+#: ../src/netconfpkg/gui/maindialog.py:1503
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\" 프로파일을 다른 이름으로 바꾸실 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1525
-#: ../src/netconfpkg/gui/maindialog.py:1563
+#: ../src/netconfpkg/gui/maindialog.py:1556
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\" 프로파일을 삭제할 수 없습니다!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1531
-#: ../src/netconfpkg/gui/maindialog.py:1569
+#: ../src/netconfpkg/gui/maindialog.py:1562
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "정말로 \"%s\" 프로파일을 삭제하시겠습니까?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1636
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr "죄송합니다, 편집할 것이 없거나 이러한 유형은 편집하실 수 없습니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:1623
+#: ../src/netconfpkg/gui/maindialog.py:1654
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "정말로 \"%s\" (을)를 삭제하시겠습니까?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1636
+#: ../src/netconfpkg/gui/maindialog.py:1667
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "정말로 \"%s\"를 사용한 모든 장치를 삭제하시겠습니까?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1668
-#: ../src/netconfpkg/gui/maindialog.py:1684 ../src/netconf-cmd.py:98
+#: ../src/netconfpkg/gui/maindialog.py:1699
+#: ../src/netconfpkg/gui/maindialog.py:1715 ../src/netconf-cmd.py:98
 #: ../src/neat-control.py:151 ../src/neat-control.py:168
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "Copyright (c) 2001-2005 Red Hat, Inc."
 
-#: ../src/netconfpkg/gui/maindialog.py:1669 ../src/netconf-cmd.py:99
+#: ../src/netconfpkg/gui/maindialog.py:1700 ../src/netconf-cmd.py:99
 #: ../src/neat-control.py:152
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
@@ -1479,11 +1483,11 @@ msgstr ""
 "이 소프트웨어는 GPL 하에 배포되고 있습니다. 버그에 대한 보고는 Red Hat의 버"
 "그 추적 시스템 사이트인 http://bugzilla.redhat.com/ 로 해주십시오."
 
-#: ../src/netconfpkg/gui/maindialog.py:1725
+#: ../src/netconfpkg/gui/maindialog.py:1718
 msgid "translator_credits"
 msgstr "김은주 (eukim@redhat.com), 2006, 2007"
 
-#: ../src/netconfpkg/gui/maindialog.py:1726 ../src/neat-control.py:175
+#: ../src/netconfpkg/gui/maindialog.py:1719 ../src/neat-control.py:175
 msgid ""
 "This software is distributed under the GPL. \n"
 "Please Report bugs to Red Hat's Bug Tracking \n"
@@ -1493,12 +1497,12 @@ msgstr ""
 "버그에 대한 보고는 Red Hat의 버그 추적 시스템 \n"
 "사이트인 http://bugzilla.redhat.com/ 로 해주십시오."
 
-#: ../src/netconfpkg/gui/maindialog.py:1767
+#: ../src/netconfpkg/gui/maindialog.py:1794
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "%s IPsec 연결을 활성화하기 위해서는, 변경 사항을 저장하셔야 합니다."
 
-#: ../src/netconfpkg/gui/maindialog.py:1828
+#: ../src/netconfpkg/gui/maindialog.py:1821
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "%s IPsec 연결을 비활성화하기 위해서는, 변경 사항을 저장하셔야 합니다."

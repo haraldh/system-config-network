@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-17 14:34+0100\n"
+"POT-Creation-Date: 2007-12-03 11:33+0100\n"
 "PO-Revision-Date: 2007-09-24 15:09+0530\n"
 "Last-Translator: Rajesh Ranjan <rranjan@redhat.com>\n"
 "Language-Team: Hindi <hindi.sf.net>\n"
@@ -47,7 +47,7 @@ msgstr "संजाल युक्तियों का नियंत्र
 msgid "Network Device Control"
 msgstr "संजाल युक्ति नियंत्रण"
 
-#: ../src/netconfpkg/genClass.py:296 ../src/netconf-cmd.py:329
+#: ../src/netconfpkg/genClass.py:254 ../src/netconf-cmd.py:329
 #, python-format
 msgid "Error parsing line: %s"
 msgstr "%s लाइन का विश्लेषण करने में दोष"
@@ -188,7 +188,7 @@ msgstr "%s संजाल युक्ति अक्रियान्वि�
 #: ../src/netconfpkg/plugins/NCHWEthernet.py:60
 #: ../src/netconfpkg/NCDevice.py:237 ../src/netconfpkg/NCDeviceList.py:72
 #: ../src/netconfpkg/NCHardwareList.py:466
-#: ../src/netconfpkg/NCHardwareList.py:654
+#: ../src/netconfpkg/NCHardwareList.py:669
 #: ../src/netconfpkg/NC_functions.py:391
 #: ../src/netconfpkg/gui/tokenringhardware.py:111
 #: ../src/netconfpkg/gui/ethernethardware.py:137
@@ -723,12 +723,12 @@ msgstr ""
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s को युक्तियों में प्रतिलिपि कर रहा है और उसे %s प्रोफाइल में डाल रहा है."
 
-#: ../src/netconfpkg/NCProfileList.py:195
+#: ../src/netconfpkg/NCProfileList.py:216
 #, python-format
 msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr "%s युक्ति, समान हार्डवेयर युक्ति \"%s\" का प्रयोग करता है, जैसे %s!\n"
 
-#: ../src/netconfpkg/NCProfileList.py:197
+#: ../src/netconfpkg/NCProfileList.py:218
 msgid ""
 "Please select another Hardware Device or \n"
 "activate only one of them."
@@ -1284,45 +1284,45 @@ msgstr ""
 "आवश्यकता होती है. इस तरह के संबंध यूरोप और कई अन्य तकनीक आधुनिक क्षेत्रों में प्रसिद्ध है. यह "
 "USA में उपलब्ध परंतु विरल है. चाल सीमा 64kbps से 128kbps है."
 
-#: ../src/netconfpkg/gui/maindialog.py:275
+#: ../src/netconfpkg/gui/maindialog.py:276
 msgid "Loading configuration..."
 msgstr "विन्यास को भारण कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:283
+#: ../src/netconfpkg/gui/maindialog.py:284
 msgid "Loading device configuration..."
 msgstr "युक्ति विन्यास को भारण कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:288
+#: ../src/netconfpkg/gui/maindialog.py:289
 msgid "Loading hardware configuration..."
 msgstr "हार्डवेयर विन्यास को भारण कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:293
+#: ../src/netconfpkg/gui/maindialog.py:294
 msgid "Loading profile configuration..."
 msgstr "प्रोफाइल विन्यास भारण कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:298
+#: ../src/netconfpkg/gui/maindialog.py:302
 msgid "Loading IPsec configuration..."
 msgstr "IPsec विन्यास को भारण कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:303
+#: ../src/netconfpkg/gui/maindialog.py:307
 msgid "Testing configuration set..."
 msgstr "विन्यास समूह को जाँच कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:334
+#: ../src/netconfpkg/gui/maindialog.py:347
 #, python-format
 msgid "Active profile: %s (modified)"
 msgstr "सक्रिय प्रोफाइलः %s (परिवर्तित)"
 
-#: ../src/netconfpkg/gui/maindialog.py:338
+#: ../src/netconfpkg/gui/maindialog.py:351
 #, python-format
 msgid "Active profile: %s"
 msgstr "सक्रिय प्रोफाइल: %s"
 
-#: ../src/netconfpkg/gui/maindialog.py:346
+#: ../src/netconfpkg/gui/maindialog.py:366
 msgid "Saving configuration..."
 msgstr "विन्यास को सुरक्षित कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:358
+#: ../src/netconfpkg/gui/maindialog.py:378
 #, python-format
 msgid ""
 "Error saving configuration!\n"
@@ -1331,150 +1331,154 @@ msgstr ""
 "विन्यास को संग्रहित करने में दोष!\n"
 "%s"
 
-#: ../src/netconfpkg/gui/maindialog.py:361
+#: ../src/netconfpkg/gui/maindialog.py:381
 msgid ""
 "Changes are saved. You may want to restart the network and network services "
 "or restart the computer."
 msgstr ""
 "बदलाव संग्रहित हो चुके हैं. आप संजाल और संजालसेवाओं को या कम्प्यूटर को पुनः चालू कर सकते है"
 
-#: ../src/netconfpkg/gui/maindialog.py:370
+#: ../src/netconfpkg/gui/maindialog.py:390
 msgid "Saving device configuration..."
 msgstr "युक्ति विन्यास को संग्रहित कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:377
+#: ../src/netconfpkg/gui/maindialog.py:397
 msgid "Saving hardware configuration..."
 msgstr "हार्डवेयर विन्यास को संग्रहित कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:384
+#: ../src/netconfpkg/gui/maindialog.py:404
 msgid "Saving profile configuration..."
 msgstr "प्रोफाइल विन्यास को संग्रहित कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:391
+#: ../src/netconfpkg/gui/maindialog.py:411
 msgid "Saving IPsec configuration..."
 msgstr "IPsec विन्यास को संग्रहित कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:410
+#: ../src/netconfpkg/gui/maindialog.py:430
 msgid "Updating devices..."
 msgstr "युक्तियों को अद्यतन कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:474
+#: ../src/netconfpkg/gui/maindialog.py:494
 msgid "Updating hardware..."
 msgstr "हार्डवेयर का अद्यतन कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:552
+#: ../src/netconfpkg/gui/maindialog.py:572
 msgid "Updating profiles..."
 msgstr "प्रोफाइलों का अद्यतन कर रहा है..."
 
-#: ../src/netconfpkg/gui/maindialog.py:669
-#: ../src/netconfpkg/gui/maindialog.py:692
+#: ../src/netconfpkg/gui/maindialog.py:688
+msgid "Errors detected, do you really want to quit?"
+msgstr ""
+
+#: ../src/netconfpkg/gui/maindialog.py:696
+#: ../src/netconfpkg/gui/maindialog.py:715
 msgid "Do you want to save your changes?"
 msgstr "क्या आप अपने बदलाव को सुरक्षित करना चाहते हैं?"
 
-#: ../src/netconfpkg/gui/maindialog.py:870
+#: ../src/netconfpkg/gui/maindialog.py:893
 msgid "The Loopback device can not be edited!"
 msgstr "लूपबेक युक्ति का संपादन नहीं हो सकता!"
 
-#: ../src/netconfpkg/gui/maindialog.py:874
+#: ../src/netconfpkg/gui/maindialog.py:897
 msgid "Edit device..."
 msgstr "युक्ति का संपादन करें..."
 
-#: ../src/netconfpkg/gui/maindialog.py:903
+#: ../src/netconfpkg/gui/maindialog.py:936
 #, python-format
 msgid "The device type %s cannot be edited!"
 msgstr "%s प्रकार की युक्ति का संपादन नहीं हो सकता!"
 
-#: ../src/netconfpkg/gui/maindialog.py:922
+#: ../src/netconfpkg/gui/maindialog.py:955
 msgid "The Loopback device can not be removed!"
 msgstr "लूपबेक युक्ति को हटाया नहीं जा सकता!"
 
-#: ../src/netconfpkg/gui/maindialog.py:926
+#: ../src/netconfpkg/gui/maindialog.py:959
 #, python-format
 msgid "Do you really want to delete device \"%s\"?"
 msgstr "क्या आप \"%s\" युक्ति को वास्तव में विलोपित करना चाहते हैं?"
 
-#: ../src/netconfpkg/gui/maindialog.py:962
-#: ../src/netconfpkg/gui/maindialog.py:1001
-#: ../src/netconfpkg/gui/maindialog.py:1766
-#: ../src/netconfpkg/gui/maindialog.py:1797
+#: ../src/netconfpkg/gui/maindialog.py:991
+#: ../src/netconfpkg/gui/maindialog.py:1026
+#: ../src/netconfpkg/gui/maindialog.py:1793
+#: ../src/netconfpkg/gui/maindialog.py:1820
 msgid "You have made some changes in your configuration."
 msgstr "आपके विन्यास में आपने कुछ परिवर्तन किए हैं."
 
-#: ../src/netconfpkg/gui/maindialog.py:969
+#: ../src/netconfpkg/gui/maindialog.py:992
 #, python-format
 msgid "To activate the network device %s, the changes have to be saved."
 msgstr "%s संजाल युक्ति को क्रियान्वित करने के लिए, बदलावों को सुरक्षित करना पड़ेगा."
 
-#: ../src/netconfpkg/gui/maindialog.py:965
-#: ../src/netconfpkg/gui/maindialog.py:1004
-#: ../src/netconfpkg/gui/maindialog.py:1769
-#: ../src/netconfpkg/gui/maindialog.py:1800
+#: ../src/netconfpkg/gui/maindialog.py:994
+#: ../src/netconfpkg/gui/maindialog.py:1029
+#: ../src/netconfpkg/gui/maindialog.py:1796
+#: ../src/netconfpkg/gui/maindialog.py:1823
 msgid "Do you want to continue?"
 msgstr "क्या आप जारी रखना चाहते है?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1027
 #, python-format
 msgid "To deactivate the network device %s, the changes have to be saved."
 msgstr "%s संजाल युक्ति को क्रियान्वित करने के लिए, बदलावों को संग्रहित करना पड़ेगा."
 
-#: ../src/netconfpkg/gui/maindialog.py:1144
+#: ../src/netconfpkg/gui/maindialog.py:1169
 msgid "The Loopback device can not be disabled!"
 msgstr "लूपबेक युक्ति को असमर्थ नहीं कर सकती!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1412
-#: ../src/netconfpkg/gui/maindialog.py:1492
+#: ../src/netconfpkg/gui/maindialog.py:1445
+#: ../src/netconfpkg/gui/maindialog.py:1525
 msgid "The name may only contain letters and digits!"
 msgstr "नाम में सिर्फ अक्षर और अंक ही हो सकते हैं!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1457
-#: ../src/netconfpkg/gui/maindialog.py:1537
+#: ../src/netconfpkg/gui/maindialog.py:1450
+#: ../src/netconfpkg/gui/maindialog.py:1530
 #, python-format
 msgid "The profile can't be named \"%s\"!"
 msgstr "प्रोफाइल का नामकरण \"%s\" नहीं हो सकता!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1463
-#: ../src/netconfpkg/gui/maindialog.py:1543
+#: ../src/netconfpkg/gui/maindialog.py:1456
+#: ../src/netconfpkg/gui/maindialog.py:1536
 msgid "The profile name already exists!"
 msgstr "प्रोफाइल नाम पहले से जीवंत हैं!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1510
+#: ../src/netconfpkg/gui/maindialog.py:1503
 #, python-format
 msgid "The \"%s\" profile can't be renamed!"
 msgstr "\"%s\" प्रोफाइल का पुनःनामकरण नहीं किया जा सकता!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1525
-#: ../src/netconfpkg/gui/maindialog.py:1563
+#: ../src/netconfpkg/gui/maindialog.py:1556
 #, python-format
 msgid "The \"%s\" Profile can not be deleted!"
 msgstr "\"%s\" प्रोफाइल को विलोपित नहीं किया जा सकता!"
 
-#: ../src/netconfpkg/gui/maindialog.py:1531
-#: ../src/netconfpkg/gui/maindialog.py:1569
+#: ../src/netconfpkg/gui/maindialog.py:1562
 #, python-format
 msgid "Do you really want to delete profile \"%s\"?"
 msgstr "क्या आप वास्तव में \"%s\" प्रोफाइल को विलोपित करना चाहते हैं?"
 
+#: ../src/netconfpkg/gui/maindialog.py:1636
 msgid ""
 "Sorry, there is nothing to be edited, or this type cannot be edited yet."
 msgstr ""
 "क्षमा करें, संपादन करने के लिए कुछ नहीं है, या इस प्रकार का अभी तक संपादन नहीं हो सकता."
 
-#: ../src/netconfpkg/gui/maindialog.py:1623
+#: ../src/netconfpkg/gui/maindialog.py:1654
 #, python-format
 msgid "Do you really want to delete \"%s\"?"
 msgstr "क्या आप वास्तव में \"%s\" को विलोपित करना चाहते है?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1636
+#: ../src/netconfpkg/gui/maindialog.py:1667
 #, python-format
 msgid "Do you want to delete all devices that used \"%s\"?"
 msgstr "क्या आप \"%s\" का प्रयोग की जा चुकी सभी युक्तियों को विलोपित करना चाहते हैं?"
 
-#: ../src/netconfpkg/gui/maindialog.py:1668
-#: ../src/netconfpkg/gui/maindialog.py:1684 ../src/netconf-cmd.py:98
+#: ../src/netconfpkg/gui/maindialog.py:1699
+#: ../src/netconfpkg/gui/maindialog.py:1715 ../src/netconf-cmd.py:98
 #: ../src/neat-control.py:151 ../src/neat-control.py:168
 msgid "Copyright (c) 2001-2005 Red Hat, Inc."
 msgstr "कॉपीराइट (c) 2001-2005 Red Hat, Inc."
 
-#: ../src/netconfpkg/gui/maindialog.py:1669 ../src/netconf-cmd.py:99
+#: ../src/netconfpkg/gui/maindialog.py:1700 ../src/netconf-cmd.py:99
 #: ../src/neat-control.py:152
 msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
@@ -1483,11 +1487,11 @@ msgstr ""
 "इस साफ्टवेयर को GPL के द्वारा वितरित किया गया है. कृपया दोषों की सूचना Red Hat बग "
 "ट्रैकिंग सिस्टम, http://bugzilla.redhat.com/ को दें"
 
-#: ../src/netconfpkg/gui/maindialog.py:1725
+#: ../src/netconfpkg/gui/maindialog.py:1718
 msgid "translator_credits"
 msgstr "राजेश रंजन (rranjan@redhat.com; rajesh672@gmail.com)"
 
-#: ../src/netconfpkg/gui/maindialog.py:1726 ../src/neat-control.py:175
+#: ../src/netconfpkg/gui/maindialog.py:1719 ../src/neat-control.py:175
 msgid ""
 "This software is distributed under the GPL. \n"
 "Please Report bugs to Red Hat's Bug Tracking \n"
@@ -1497,12 +1501,12 @@ msgstr ""
 "कृपया दोषों की सूचना Red Hat बग ट्रैकिंग\n"
 "सिस्टम पर दें: http://bugzilla.redhat.com/ को दें"
 
-#: ../src/netconfpkg/gui/maindialog.py:1767
+#: ../src/netconfpkg/gui/maindialog.py:1794
 #, python-format
 msgid "To activate the IPsec connection %s, the changes have to be saved."
 msgstr "%s IPsec संबंधन को क्रियान्वित करने के लिए, बदलावों को सुरक्षित करना पडेगा."
 
-#: ../src/netconfpkg/gui/maindialog.py:1828
+#: ../src/netconfpkg/gui/maindialog.py:1821
 #, python-format
 msgid "To deactivate the IPsec connection %s, the changes have to be saved."
 msgstr "%s IPsec संबंधन को क्रियान्वित करने के लिए, बदलावों को संग्रहित करना पडेगा."
