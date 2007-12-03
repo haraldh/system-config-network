@@ -29,6 +29,7 @@ PYTHON_FILES = \
 	NCHardwareList.py \
 	NCHardwareFactory.py \
 	NCHostsList.py \
+	NCHost.py \
 	NCisdnhardware.py \
 	NCIPsec.py \
 	NCIPsecList.py \
