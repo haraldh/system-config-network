@@ -303,7 +303,7 @@ class ProfileList(ProfileList_base):
                 for host in act_prof.HostsList:
                     if host.IP == '127.0.0.1' or host.IP == "::1":
                         host.Hostname = 'localhost.localdomain'
-                        host.AliasList = [ 'localhost']
+                        host.AliasList.append('localhost')
                         # append the hostname to 127.0.0.1, if it does not contain a domain
                         if act_prof.DNS.Hostname.find(".") != -1:
                             host.AliasList.append(act_prof.DNS.Hostname.split(".")[0])
@@ -316,11 +316,11 @@ class ProfileList(ProfileList_base):
                         if host.IP == '127.0.0.1' or host.IP == "::1":
                             # reset localhost
                             host.Hostname = 'localhost.localdomain'
-                            host.AliasList = [ 'localhost' ]
+                            host.AliasList.append('localhost')
                         if host.IP == newip:
                             # found entry in /etc/hosts with our IP
                             # change the entry
-                            host.AliasList = []
+                            host.createAliasList()
                             try:
                                 hname = socket.gethostbyaddr(newip)
                                 host.Hostname = hname[0]
