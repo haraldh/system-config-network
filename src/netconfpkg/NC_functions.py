@@ -863,6 +863,7 @@ class ConfDevices(UserList.UserList):
         except OSError, msg:
             pass
         else:
+            # FIXME: handle ifcfg-${parent_device}-range* rhbz#221292
             for entry in dir:
                 if (len(entry) > 6) and \
                    entry[:6] == 'ifcfg-' and \
@@ -870,6 +871,7 @@ class ConfDevices(UserList.UserList):
                    (confdir + entry)[-1] != "~" and \
                    string.find(entry, '.rpmsave') == -1 and \
                    string.find(entry, '.rpmnew') == -1 and \
+                   string.find(entry, '-range') == -1 and \
                    os.access(confdir + entry, os.R_OK):
                     self.append(entry[6:])
 
