@@ -210,11 +210,9 @@ class ConfHWConf(Conf):
         return self.vars.keys()
 
 class HardwareList(HardwareList_base):
-    s390devs = { "ctc" : "ctc",
-                 "escon" : "ctc",
+    s390devs = { 
                  "lcs" : "lcs" ,
                  "osad" : "",
-                 "iucv" : "iucv",
                  "eth" : "qeth",
                  "hsi" : "qeth",
                  "tr" : "qeth",

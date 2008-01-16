@@ -81,10 +81,6 @@ PYTHON_FILES = \
 	tonline.py \
 	wirelessconfig.py \
 	WirelessInterface.py \
-	CTCInterfaceDialog.py \
-	iucvconfig.py \
-	CTCInterfaceDruid.py \
-	IUCVInterface.py \
 	ptpconfig.py \
 	PTPInterface.py
 

@@ -81,9 +81,6 @@ class DeviceTypeDialog:
             isdnFound = False
             adslFound = False
             wirelessFound = False
-        else:
-            devicetypes.remove(CTC)
-            devicetypes.remove(IUCV)
         if not modemFound: devicetypes.remove(MODEM)
         if not isdnFound: devicetypes.remove(ISDN)
         if not ethernetFound: devicetypes.remove(ETHERNET)

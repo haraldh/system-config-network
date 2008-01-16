@@ -103,13 +103,11 @@ DSL = 'xDSL'
 CIPE = 'CIPE'
 WIRELESS = 'Wireless'
 TOKENRING = 'Token Ring'
-CTC = 'CTC'
-IUCV = 'IUCV'
 IPSEC = 'IPSEC'
 QETH = 'QETH'
 HSI = 'HSI'
 
-deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, CTC, IUCV, QETH, HSI ]
+deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, QETH, HSI ]
 
 modemDeviceList = [ '/dev/modem',
                     '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
@@ -118,22 +116,17 @@ modemDeviceList = [ '/dev/modem',
                     '/dev/input/ttyACM2', '/dev/input/ttyACM3',
                     '/dev/ttyM0', '/dev/ttyM1' ]
 
-__ctcDeviceList = [ 'ctc0', 'ctc1', 'ctc2', 'ctc3', 'ctc4' ]
-
-__iucvDeviceList = [ 'iucv0', 'iucv1', 'iucv2', 'iucv3', 'iucv4' ]
-
 __deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
-                   '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
-                   '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
-                   '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
-                   '^cipcb[0-9]*(:[0-9]+)?$' : CIPE,
-                   '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
-                   '^lo$' : LO,
-                   '^ctc[0-9]*(:[0-9]+)?$' : CTC,
-                   '^hsi[0-9]*(:[0-9]+)?$' : HSI,
-                   '^iucv[0-9]*(:[0-9]+)?$' : IUCV,
-                   '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,
-                   }
+                     '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
+                     '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
+                     '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
+                     '^cipcb[0-9]*(:[0-9]+)?$' : CIPE,
+                     '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
+                     '^lo$' : LO,
+                     '^hsi[0-9]*(:[0-9]+)?$' : HSI,
+                     '^wlan[0-9]*(:[0-9]+)?$' : WIRELESS,
+                     }
+
 # Removed for now, until we have a config dialog for infrared
 #                  '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
 

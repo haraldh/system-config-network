@@ -250,13 +250,6 @@ class Device( Device_base ):
             else:
                 self.AutoDNS = False
 
-        if self.Type == CTC or self.Type == IUCV:
-            if conf.has_key( "MTU" ) and conf['MTU']:
-                try:
-                    self.Mtu = int( conf['MTU'] )
-                except:
-                    pass
-
         # move old <id>.route files to route-<id>
         file = getRoot() + SYSCONFDEVICEDIR + \
                                 self.DeviceId + '.route'
@@ -380,11 +373,6 @@ class Device( Device_base ):
                 pass
         else:
             del conf['NETWORK']
-
-        if self.Type == CTC or self.Type == IUCV:
-            conf['MTU'] = str( self.Mtu )
-            if conf.has_key( "GATEWAY" ) and conf['GATEWAY']:
-                conf['REMIP'] = conf['GATEWAY']
 
         if self.Dialup:
             self.Dialup.save( conf )
