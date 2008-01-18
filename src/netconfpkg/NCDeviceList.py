@@ -64,6 +64,10 @@ class DeviceList(DeviceList_base):
                 type = conf["TYPE"]
             if conf.has_key("DEVICE"):
                 device = conf["DEVICE"]
+            if conf.has_key("NETTYPE"):
+                if conf["NETTYPE"] == "qeth":
+                    type = QETH
+
             del conf
 
             if type == "IPSEC":

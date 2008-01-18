@@ -128,7 +128,10 @@ class GenericInterface(InterfaceCreator):
         elif type == WIRELESS:
             device.createWireless()
             cfg = wirelessConfigDialog(device)
-            
+
+        elif type == QETH:
+            cfg = qethConfigDialog(device)
+
         else:
             generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)
             cfg = None

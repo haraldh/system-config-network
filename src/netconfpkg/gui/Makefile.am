@@ -40,7 +40,11 @@ GLADE_FILES = \
 	WirelessInterfaceDruid.glade \
 	neat-control.glade \
 	ptpconfig.glade \
-	PTPInterfaceDruid.glade
+	PTPInterfaceDruid.glade \
+	QethConfig.glade \
+	QethInterfaceDruid.glade \
+	QethHardware.glade \
+	QethHardwareDruid.glade
 
 PYTHON_FILES = \
 	ADSLInterfaceDruid.py \
@@ -82,7 +86,12 @@ PYTHON_FILES = \
 	wirelessconfig.py \
 	WirelessInterface.py \
 	ptpconfig.py \
-	PTPInterface.py
+	PTPInterface.py \
+	QethConfig.py \
+	QethInterfaceDruid.py
+	QethHardware.py \
+	QethHardwareDruid.py
+
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
 

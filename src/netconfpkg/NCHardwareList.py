@@ -233,135 +233,6 @@ class HardwareList(HardwareList_base):
             self[i] = newhw
         return i
 
-    def updateFromChandev(self):
-        machine = os.uname()[4]
-        if machine != 's390' and machine != 's390x' and not getDebugLevel():
-            return
-
-        procfilename = "/proc/chandev"
-        try:
-            conf = file(procfilename, "r")
-        except:
-            return
-
-        detect_state = None
-
-        for line in conf:
-            line.strip()
-
-            if not detect_state:
-                if line.find("Initialised Devices") >= 0:
-                    detect_state = 1
-                else:
-                    continue
-            else:
-                if line == "":
-                    detect_state = None
-                    continue
-
-                if len(line) <= 2:
-                    continue
-
-                if line[:2] != "0x":
-                    continue
-
-                toks = line.split()
-
-                if len(toks) < 11:
-                    continue
-
-                device = None
-                dev = toks[9]
-                for d in HardwareList.s390devs.keys():
-                    if len(dev) <= len(d):
-                        continue
-                    if dev[:len(d)] != d:
-                        continue
-                    device = dev
-                    break
-                for i in xrange(len(toks)):
-                    if toks[i] == "n/a":
-                        toks[i] = 0
-
-                if device:
-                    for hw in self:
-                        if hw.Name == device:
-                            #hw.Status = HW_OK
-                            break
-                    else:
-                        type = getDeviceType(device)
-                        i = self.addHardware(type)
-                        hw = self[i]
-                        hw.createCard()
-                        hw.Name = device
-                        hw.Type = type
-                        hw.Card.IoPort = toks[3]
-                        hw.Card.IoPort1 = toks[4]
-                        hw.Card.IoPort2 = toks[5]
-                        if HardwareList.s390devs.has_key(device):
-                            hw.Card.ModuleName = HardwareList.s390devs[device]
-                        hw.Status = HW_SYSTEM
-
-
-    def readChandev(self):
-        machine = os.uname()[4]
-        if machine != 's390' and machine != 's390x' and not getDebugLevel():
-            return
-
-        conffilename = getRoot() + "/etc/chandev.conf"
-        try:
-            conf = file(conffilename, "r")
-        except:
-            return
-
-        for line in conf:
-
-            line.strip()
-            try:
-                if len(line) and line[-1] == '\n':
-                    line = line[:-1]
-                if len(line) and line[-1] == '\r':
-                    line = line[:-1]
-            except: pass
-
-            toks = line.split(",")
-            device = None
-            if len(toks):
-                # Check for Device line
-                dev = toks[0]
-                for d in HardwareList.s390devs.keys():
-                    if len(dev) <= len(d):
-                        continue
-                    if dev[:len(d)] != d:
-                        continue
-                    device = dev
-                    break
-
-                # Check for add_parms
-                #if toks[0] == "add_parms":
-                #print "extra parms %s" % string.join(toks[1:])
-
-                if not device:
-                    continue
-
-            type = getDeviceType(device)
-            i = self.addHardware(type)
-            hw = self[i]
-            hw.createCard()
-            hw.Name = device
-            hw.Type = type
-            if not hw.Description: hw.Description = type
-            hw.Description += " " + string.join(toks[1:], ",")
-            if len(toks) >= 2:
-                hw.Card.IoPort = toks[1]
-                if len(toks) >= 3:
-                    hw.Card.IoPort1 = toks[2]
-                    if len(toks) >= 4:
-                        hw.Card.IoPort2 = toks[3]
-            if HardwareList.s390devs.has_key(device):
-                hw.Card.ModuleName = HardwareList.s390devs[device]
-            hw.Status = HW_CONF
-
     def updateFromKudzu(self):
         import kudzu
         modules = getMyConfModules()
@@ -493,8 +364,7 @@ class HardwareList(HardwareList_base):
         import os
 
         modules = getMyConfModules()
-        modinfo = getModInfo()
-
+        modinfo = getModInfo()            
         #
         # Read in actual system state
         #
@@ -656,7 +526,7 @@ class HardwareList(HardwareList_base):
         modules = getMyConfModules()
         modinfo = getModInfo()
         #
-        # Read /etc/modules.conf
+        # Read /etc/modprobe.conf
         #
         for mod in modules.keys():
             if modules[mod].has_key('alias'):
@@ -664,8 +534,12 @@ class HardwareList(HardwareList_base):
             else: module = None
 
             type = getDeviceType(mod)
+
+            if module == "qeth":
+                type = QETH
+
             if type == _('Unknown'):
-                continue
+                continue            
 
             h = None
             for h in self:
@@ -734,7 +608,6 @@ class HardwareList(HardwareList_base):
         # first clear the list
         self.__delslice__(0, len(self))
 
-        self.readChandev()
         # FIXME: move HW detection to NCDev*
         self.updateFromSystem()
         self.updateFromModules()
@@ -861,7 +734,7 @@ class HardwareList(HardwareList_base):
             #print "Testing " + str(mod)
             for hw in self:
                 if (hw.Type == ETHERNET or \
-                    hw.Type == TOKENRING) and \
+                    hw.Type == TOKENRING or hw.Type == QETH) and \
                     hw.Name == mod:
                     break
             else:

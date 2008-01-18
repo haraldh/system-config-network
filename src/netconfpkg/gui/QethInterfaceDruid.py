@@ -24,28 +24,34 @@ import gtk
 import gtk.glade
 import string
 import os
-#from PTPHardwareDruid import PTPHardware
+from QethHardwareDruid import QethHardware
 from InterfaceCreator import InterfaceCreator
 from rhpl import ethtool
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.EthernetInterface import EthernetInterface
+from netconfpkg.NCDeviceFactory import getDeviceFactory
 
-class PTPInterface(EthernetInterface):
+class QethInterface(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=QETH, do_save = 1,
                  druid = None):
-        EthernetInterface.__init__(self, toplevel,
-                                   connection_type,
-                                   do_save, druid)
+        InterfaceCreator.__init__(self, do_save = do_save)
+        self.toplevel = toplevel
+        self.topdruid = druid
+        self.connection_type = connection_type
+        self.xml = None
 
     def init_gui(self):
-        class dummy:
-            def __init__(self):
-                self.druids = []
-
         if self.xml:
             return
+        
+        glade_file = "sharedtcpip.glade"
+        if not os.path.exists(glade_file):
+            glade_file = GLADEPATH + glade_file
+        if not os.path.exists(glade_file):
+            glade_file = NETCONFDIR + glade_file
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
+                                                  domain=PROGNAME)
 
-        glade_file = 'PTPInterfaceDruid.glade'
+        glade_file = 'QethInterfaceDruid.glade'
 
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -76,8 +82,8 @@ class PTPInterface(EthernetInterface):
         if devclass:
             self.device = devclass()
         else:
-            self.device = NCDevEthernet.DevEthernet()
-
+            self.device = NCDevQeth.DevQeth()
+            
         self.device.Type = self.connection_type
         self.device.OnBoot = True
         self.device.AllowUser = False
@@ -87,61 +93,65 @@ class PTPInterface(EthernetInterface):
         self.hw_sel = 0
         self.hwPage = False
 
+        window = self.sharedtcpip_xml.get_widget ('dhcpWindow')
+        frame = self.sharedtcpip_xml.get_widget ('dhcpFrame')
+        vbox = self.xml.get_widget ('generalVbox')
+        window.remove (frame)
+        vbox.pack_start (frame)
+        sharedtcpip.dhcp_init (self.sharedtcpip_xml, self.device)
+
         self.druids = []
         self.druid = self.xml.get_widget('druid')
         for i in self.druid.get_children():
             self.druid.remove(i)
             self.druids.append(i)
 
-        self.hwDruid = dummy()
-#XXX        self.hwDruid = PTPHardware(self.toplevel)
-#XXX        self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
-#XXX                      + self.druids[1:]
+        if self.connection_type == QETH:
+            self.hwDruid = QethHardware(self.toplevel)
+            self.hwDruid.has_ethernet = None
+            self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
+                          + self.druids[1:]
 
     def get_project_name(self):
-        pass
+        return _('Qeth connection')
 
     def get_type(self):
-        pass
-
+        return QETH
+ 
     def get_project_description(self):
-        pass
+        return _("Create a new qeth connection.")
 
+    def get_druids(self):
+        self.init_gui()
+        return self.druids
+    
     def on_hostname_config_page_back(self, druid_page, druid):
         childs = self.topdruid.get_children()
-        self.topdruid.set_page(childs[1])
+        if self.hwPage:
+            self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
+        else:
+            self.topdruid.set_page(childs[1])            
         return True
-
+    
     def on_hostname_config_page_next(self, druid_page, druid):
-        self.device.IP = self.xml.get_widget('ipAddressEntry').get_text()
-        self.device.Gateway = self.xml.get_widget('ipGatewayEntry').get_text()
-        try:
-            self.device.Mtu = int(self.xml.get_widget('mtuEntry').get_text())
-        except:
-            self.device.Mtu = 9216
+        sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
+        if self.hwPage:
+            self.device.Device = self.hwDruid.hw.Name
+            self.device.Alias = None
+        #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
         pass
-
+    
     def on_hostname_config_page_prepare(self, druid_page, druid):
-        if self.device.IP:
-            self.xml.get_widget('ipAddressEntry').set_text(self.device.IP)
-        else:
-            self.xml.get_widget('ipAddressEntry').set_text('')
-
-        if self.device.Gateway:
-            self.xml.get_widget('ipGatewayEntry').set_text(self.device.Gateway)
-        else:
-            self.xml.get_widget('ipGatewayEntry').set_text('')
-
-        if not self.device.Mtu:
-            self.device.Mtu = 9216
-        self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
-
-        self.device.BootProto = 'none'
+        self.device.DeviceId = self.device.Device
+        if self.device.Alias:
+            self.device.DeviceId = self.device.DeviceId + ":" \
+                                   + str(self.device.Alias)
+        sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         pass
-
+    
     def on_hw_config_page_back(self, druid_page, druid):
         pass
-
+    
     def on_hw_config_page_next(self, druid_page, druid):
         clist = self.xml.get_widget("hardwareList")
         childs = self.topdruid.get_children()
@@ -151,18 +161,18 @@ class PTPInterface(EthernetInterface):
             return True
 
         self.hw_sel = clist.selection[0]
-
-#XXX        if (self.hw_sel + 1) == clist.rows:
-        if None:
+        
+        if (self.hw_sel + 1) == clist.rows:
             self.hwPage = True
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
         else:
             self.hwPage = False
             self.device.Device = self.devlist[clist.selection[0]]
-
+            
             self.device.Alias = self.getNextAlias(self.device)
             # must be at bottom, because prepare is called here
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+2])
+
         return True
 
     def on_hw_config_page_prepare(self, druid_page, druid):
@@ -173,25 +183,25 @@ class PTPInterface(EthernetInterface):
         clist.clear()
         self.devlist = []
         for hw in hardwarelist:
-            if hw.Type == self.connection_type:
+            if hw.Type == QETH:
                 desc = hw.Description + " (" + hw.Name + ")"
                 clist.append([desc])
                 self.devlist.append(hw.Name)
-
-#XXX        clist.append([_("Other PTP Card")])
+                
+        clist.append([_("Other QETH Device")])
         clist.select_row (self.hw_sel, 0)
         pass
-
+    
     def on_finish_page_back(self,druid_page, druid):
         pass
-
+        
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
+        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
         except IOError, err:
             pass
         else:
@@ -207,19 +217,25 @@ class PTPInterface(EthernetInterface):
                 break
 
         s = s + "\n" + "   "
+        
+        if self.device.BootProto == "static" or self.device.BootProto == "none":
+            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
+            + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
+            + _("Default gateway address:") + " " + self.device.Gateway + "\n" + "   "
+        else:
+            s = s + _("Automatically obtain IP address settings with:") + " "\
+                + self.device.BootProto + "\n"
 
-        s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Point to Point (IP):") + " " + self.device.Gateway + "\n" + "   "
 
         druid_page.set_text(s)
-
+        
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = getHardwareList()
         hardwarelist.commit()
         #print self.devicelist
         self.devicelist.append(self.device)
         self.device.commit()
-
+        
         for prof in self.profilelist:
             if prof.Active == False:
                 continue
@@ -232,4 +248,5 @@ class PTPInterface(EthernetInterface):
         self.toplevel.destroy()
         gtk.main_quit()
 
+NCDevQeth.setDevQethWizard(QethInterface)
 __author__ = "Harald Hoyer <harald@redhat.com>"
