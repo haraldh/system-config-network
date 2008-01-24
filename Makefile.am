@@ -52,7 +52,7 @@ uninstall-local:
 	done
 
 ChangeLog changelog:
-	git log --since="1 year ago" --no-merges r1_1_0-1.. > ChangeLog
+	git log --since="1 year ago" --no-merges r1_1_0-1..HEAD > ChangeLog
 
 
 clean-local:
