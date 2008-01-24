@@ -100,6 +100,7 @@ class DeviceList(DeviceList_base):
                 chdev[dev.DeviceId] = newDeviceId
                 #log.log(4, "%s != %s" % (newDeviceId, dev.DeviceId))
                 # Fixed change device names in active list of all profiles
+                import netconfpkg.NCProfileList
                 profilelist = netconfpkg.NCProfileList.getProfileList()
 
                 for prof in profilelist:
