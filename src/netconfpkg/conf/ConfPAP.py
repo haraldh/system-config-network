@@ -16,6 +16,7 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 import sys
 from types import ListType
+import re
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
@@ -94,25 +95,34 @@ class ConfPAP(Conf.Conf):
         self.rewind()
 
     def getfields(self):
-        var = Conf.Conf.getfields(self)
-        if len(var) and len(var[0]) and var[0][0] in '\'"':
-            # found quote; strip from beginning and end
-            quote = var[0][0]
-            if var[0][-1] == quote:
-                var[0] = var[0][1:-1]
-
-        if len(var) >= 2 and len(var[1]) and var[1][0] in '\'"':
-            # found quote; strip from beginning and end
-            quote = var[1][0]
-            if var[1][-1] == quote:
-                var[1] = var[1][1:-1]
-
-        if len(var) >= 3 and len(var[2]) and var[2][0] in '\'"':
-            # found quote; strip from beginning and end
-            quote = var[2][0]
-            if var[2][-1] == quote:
-                var[2] = var[2][1:-1]
-        return var
+        #var = Conf.Conf.getfields(self)
+        var = []
+        if self.line >= len(self.lines):
+            return []
+        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?"))( |\t)+(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)( |\t)+(?P<secret>("([^"\\]|\\\S)*?"))')
+        m = regexp.match(self.lines[self.line])
+        if not m:
+            raise Conf.BadFile, "Error occured while parsing %s" % self.filename
+        else:
+            var = [m.group("user"),m.group("server"),m.group("secret")]
+            if len(var) and len(var[0]) and var[0][0] in '\'"':
+                # found quote; strip from beginning and end
+                quote = var[0][0]
+                if var[0][-1] == quote:
+                    var[0] = var[0][1:-1]
+    
+            if len(var) >= 2 and len(var[1]) and var[1][0] in '\'"':
+                # found quote; strip from beginning and end
+                quote = var[1][0]
+                if var[1][-1] == quote:
+                    var[1] = var[1][1:-1]
+    
+            if len(var) >= 3 and len(var[2]) and var[2][0] in '\'"':
+                # found quote; strip from beginning and end
+                quote = var[2][0]
+                if var[2][-1] == quote:
+                    var[2] = var[2][1:-1]
+            return var
 
     def insertline(self, line=''):
         place = self.tell()

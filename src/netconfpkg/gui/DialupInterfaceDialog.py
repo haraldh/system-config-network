@@ -60,6 +60,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
             "on_pppOptionDeleteButton_clicked" : \
             self.on_pppOptionDeleteButton_clicked,
             "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
+            "on_showPassword_clicked" : self.on_showPassword_clicked,
             })
 
         self.noteBook = self.xml.get_widget("dialupNotebook")
@@ -94,7 +95,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         if dialup.Login != None:
             self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
         if dialup.Password != None:
-            self.xml.get_widget("passwordEntry").set_text(dialup.Password)
+            self.xml.get_widget("passwordEntry").set_text(re.sub(r"\\([^\\]|\\)",r"\1", dialup.Password))
 
         if dialup.Areacode != None:
             self.xml.get_widget("areaCodeEntry").set_text(dialup.Areacode)
@@ -132,7 +133,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
 
         dialup.ProviderName = self.xml.get_widget("providerName").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
-        dialup.Password = self.xml.get_widget("passwordEntry").get_text()
+        dialup.Password = re.escape(self.xml.get_widget("passwordEntry").get_text())
         dialup.Areacode = self.xml.get_widget("areaCodeEntry").get_text()
         dialup.Prefix = self.xml.get_widget("prefixEntry").get_text()
         dialup.PhoneNumber = self.xml.get_widget("phoneEntry").get_text()
@@ -257,6 +258,9 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         self.xml.get_widget("passwordEntry").set_text(dialup.Password)
         if not self.xml.get_widget("providerName").get_text():
             self.xml.get_widget("providerName").set_text("T-Online")
+
+    def on_showPassword_clicked(self, *args):
+        self.xml.get_widget("passwordEntry").set_visibility(self.xml.get_widget("showPassword").get_active())
 
 
 class ISDNDialupInterfaceDialog(DialupInterfaceDialog):

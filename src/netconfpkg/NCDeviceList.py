@@ -82,7 +82,11 @@ class DeviceList(DeviceList_base):
             devclass = df.getDeviceClass(type)
             if devclass:
                 newdev = devclass()
-                newdev.load(dev)
+                try:
+                    newdev.load(dev)
+                except:
+                    # FIXME better exception handling
+                    pass
                 self.append(newdev)
             else:
                 log.log(1, "NO DEVICE CLASS FOUND FOR %s" % dev)
