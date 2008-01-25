@@ -39,7 +39,7 @@ import os
 import os.path
 import string
 from netconfpkg import *
-#from genClass import *
+from genClass import ParseError
 from version import PRG_VERSION
 from version import PRG_NAME
 
@@ -332,7 +332,7 @@ def main(cmdline):
 
 
             for devlist in devlists:
-                log.log(1, devlist)
+                log.log(1, "%s" % devlist)
                 devlist.save()
 
             return(0)

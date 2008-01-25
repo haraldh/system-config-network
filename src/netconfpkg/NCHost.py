@@ -22,6 +22,7 @@ def testHostname(hostname):
         return False
 
 class Host(Host_base):
+    HostID = None
     def testIP(self):
             try:
                 socket.inet_pton(socket.AF_INET, self.IP)
