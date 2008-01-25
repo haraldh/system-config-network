@@ -119,6 +119,7 @@ class mainDialog:
             "on_copyButton_clicked" : self.on_copyButton_clicked,
             "on_upButton_clicked" : self.on_upButton_clicked,
             "on_downButton_clicked" : self.on_downButton_clicked,
+            "on_show_loopback_toggled" : self.on_show_loopback_toggled,
         })
 
         self.appBar = self.xml.get_widget ("appbar")
@@ -161,7 +162,7 @@ class mainDialog:
 
         self.xml.get_widget ("deviceList").column_titles_passive ()
         self.xml.get_widget ("hardwareList").column_titles_passive ()
-        self.xml.get_widget ("hostsList").column_titles_passive ()
+        #self.xml.get_widget ("hostsList").column_titles_passive ()
 
         notebook = self.xml.get_widget('mainNotebook')
         widget = self.xml.get_widget('deviceFrame')
@@ -250,6 +251,27 @@ class mainDialog:
             "ipsecList" : PAGE_IPSEC,
             }
 
+        hclist = self.xml.get_widget("hostsList")
+        # create the TreeViewColumns to display the data
+        columns = [None]*3
+        columns[0] = gtk.TreeViewColumn('IP')
+        columns[1] = gtk.TreeViewColumn('Hostname')
+        columns[2] = gtk.TreeViewColumn('Aliases')
+        # create list
+        self.hostsListStore = gtk.ListStore(str, str, str,object)
+        # set filter
+        self.modelfilter = self.hostsListStore.filter_new()
+        self.modelfilter.set_visible_func(self.filter_loopback, None)
+        hclist.set_model(self.modelfilter)
+        for column in columns:
+            n = hclist.append_column(column)
+            column.cell = gtk.CellRendererText()
+            column.pack_start(column.cell,False)
+            column.set_attributes(column.cell, text=(n-1))
+            column.set_resizable(True)
+        self.modelfilter.refilter()
+        hclist.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+        
         self.load()
         self.hydrate()
 
@@ -568,13 +590,19 @@ class mainDialog:
     def getActiveProfile(self):
         return self.active_profile
 
+    def filter_loopback(self, model, iter, data):
+        if self.xml.get_widget("show_loopback").get_active():
+            return True
+        else:
+            return model.get_value(iter, 0) not in ["127.0.0.1","::1"]
+
+    def on_show_loopback_toggled(self,*args):
+        self.xml.get_widget("hostsList").get_model().refilter()
+        
+        
     def hydrateProfiles(self):
         self.appBar.push(_("Updating profiles..."))
         profilelist = getProfileList()
-
-        hclist = self.xml.get_widget("hostsList")
-        hclist.clear()
-        hclist.set_row_height(17)
 
         for prof in profilelist:
             if not prof.Active:
@@ -619,21 +647,17 @@ class mainDialog:
 
         self.ignore_widget_changes = False
 
-        row = 0
+        hclist = self.xml.get_widget("hostsList")
+        # clear the store
+        self.hostsListStore.clear()
+        # load hosts to list
         for host in prof.HostsList:
-            #88357
-            if host.IP == "127.0.0.1":
-                continue
-            if host.IP == "::1":
-                continue
-            # skip the line with comments only
-            if host.IP == "":
-                continue
-            hclist.append([host.IP, host.Hostname,
-                           string.join(host.AliasList, ' ')])
-            hclist.set_row_data(row, host)
-            row += 1
-
+            if host.AliasList:
+                self.hostsListStore.append([host.IP, host.Hostname,
+                               string.join(host.AliasList, ' '), host])
+            else:
+                self.hostsListStore.append([host.IP, host.Hostname,"", host])
+            
         if self.initialized:
             self.appBar.pop()
             self.checkApply()
@@ -1364,11 +1388,12 @@ class mainDialog:
         hostslist = curr_prof.HostsList
         clist  = self.xml.get_widget("hostsList")
 
-        if len(clist.selection) == 0:
+        hostsListStore, path = clist.get_selection().get_selected_rows()
+        if not path:
             return
 
-        host = clist.get_row_data(clist.selection[0])
-
+        host = hostsListStore.get_value(hostsListStore.get_iter(path[0]),3)
+        
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
         dl.set_transient_for(self.dialog)
@@ -1393,23 +1418,21 @@ class mainDialog:
 
         clist = self.xml.get_widget('profileList')
 
-        #if len(clist.selection) == 0:
-        #    return
-        #
-
         prof = self.getActiveProfile()
 
         clist = self.xml.get_widget('hostsList')
-
-        if len(clist.selection) == 0:
+        hostsListStore, path = clist.get_selection().get_selected_rows()
+        if not path:
             return
-
-        todel = list(clist.selection)
+        
+        todel = []
+        for p in path:
+            todel.append(hostsListStore.get_value(hostsListStore.get_iter(p),3))
         todel.sort()
         todel.reverse()
 
         for i in todel:
-            prof.HostsList.remove(clist.get_row_data(i))
+            prof.HostsList.remove(i)
 
         profilelist.commit()
         self.hydrateProfiles()
