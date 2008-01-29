@@ -133,6 +133,10 @@ def dhcp_hydrate (xml, device):
     elif xml.get_widget('mtuCB'):
         xml.get_widget('mtuSpin').set_value(device.getRealMtu())
         
+    if device.Mru != None and xml.get_widget('mruCB'):
+        xml.get_widget('mruSpin').set_value(device.Mru)
+        xml.get_widget('mruCB').set_active(True)
+
 
 
 def dhcp_dehydrate (xml, device):
@@ -163,7 +167,11 @@ def dhcp_dehydrate (xml, device):
     else:
         device.Mtu = None
 
-
+    if xml.get_widget('mruCB').get_active():
+        device.Mru = int(xml.get_widget('mruSpin').get_value())
+    else:
+        device.Mru = None
+ 
 ###
 ### ROUTES
 ###
