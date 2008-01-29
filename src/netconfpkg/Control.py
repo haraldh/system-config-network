@@ -53,8 +53,11 @@ class NetworkDevice:
                                      ' %s status >& /dev/null' %(nickname)) == 0:
                             break
                         else:
-                            self.activedevicelist.remove(i)
-
+                            try:
+                                self.activedevicelist.remove(i)
+                            except:
+                                pass
+                            
             elif getDeviceType(i) == MODEM:
                 if (os.access('/var/run/ppp-%s.pid' %(i), os.F_OK)):
                     continue
