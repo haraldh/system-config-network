@@ -106,3 +106,6 @@ CLEANFILES = $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildc
 fixpath:
 	perl -pi -e 's#logo">([^/>][^>]*)<#logo">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade
 	perl -pi -e 's#pixbuf">([^/>][^>]*)<#pixbuf">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade
+
+check:
+	@fgrep glade_file *.py|fgrep 'glade_file ='|fgrep '.glade'|while read file a b gfile; do gfile=$${gfile:1};gfile=$${gfile%\'};gfile=$${gfile%\"}; test -f $$gfile || (echo "Error $$file: $$gfile does not exist";exit 1)||exit 1; fgrep -q $$gfile Makefile.am||(echo "File $$gfile missing in Makefile.am";exit 1)||exit 1;done && echo "Glade file test PASSED"
