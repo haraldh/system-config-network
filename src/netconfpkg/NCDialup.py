@@ -627,6 +627,9 @@ class ModemDialup(Dialup):
                 if opt != "": opt = opt + ' '
                 opt = opt + self.PPPOptions[i]
             parentConf['PPPOPTIONS'] = opt
+        else:
+            # CHECK - deleting PPP option #128058
+            parentConf['PPPOPTIONS'] = None
 
 
         if self.Persist:
