@@ -57,7 +57,8 @@ class DevQeth(DevEthernet):
             hw.Type = QETH
 
          hw.Description = "qeth %s" % conf["SUBCHANNELS"]
-         hw.createCard()
+         if not hw.Card:
+            hw.createCard()
          hw.Card.ModuleName = "qeth"
          try:
             ports = conf["SUBCHANNELS"].split(",")
@@ -66,6 +67,7 @@ class DevQeth(DevEthernet):
             hw.Card.IoPort2 = ports[2]
          except:
             pass
+
          hw.commit(changed=False)
          hardwarelist.commit(changed=False)
          
@@ -76,8 +78,9 @@ class DevQeth(DevEthernet):
       if not self.Alias:
          conf["NETTYPE"]="qeth"
          ports = ""
-         for hw in getHardwareList():
-            if hw.Name == self.Device:
+         hardwarelist = getHardwareList()
+         for hw in hardwarelist:
+            if hw.Name == self.Device and (hw.Card.IoPort and hw.Card.IoPort1 and hw.Card.IoPort2):
                ports = "%s,%s,%s" % (hw.Card.IoPort, hw.Card.IoPort1, hw.Card.IoPort2)
                break
          if ports:

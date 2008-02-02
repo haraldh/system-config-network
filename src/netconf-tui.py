@@ -155,6 +155,11 @@ def newDevice(screen):
     li.append(_("Ethernet"), ETHERNET)
     li.append(_("Modem"), MODEM)
     li.append(_("ISDN"), ISDN)
+
+    machine = os.uname()[4]
+    if machine == 's390' or machine == 's390x':
+         li.append(_("QETH"), QETH)
+
     g=GridForm(screen,_("Network Configuration"),1,3)
     g.add(t,0,0)
     g.add(li,0,1)

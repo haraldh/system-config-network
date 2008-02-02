@@ -186,7 +186,7 @@ class Device( Device_base ):
         if not self.Gateway:
             try:
                 cfg = Conf.ConfShellVar( getRoot() + SYSCONFNETWORK )
-                if cfg.has_key( 'GATEWAY' ):
+                if cfg.has_key( 'GATEWAY' ) and ((not cfg.has_key('GATEWAYDEV')) or cfg['GATEWAYDEV'] == self.Device) :
                     gw = cfg['GATEWAY']
 
                     if gw and self.Netmask:

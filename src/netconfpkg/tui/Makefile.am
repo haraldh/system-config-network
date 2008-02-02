@@ -2,6 +2,7 @@ PYTHON_FILES = \
 	__init__.py \
 	NCEthernetInterface.py \
 	NCIsdnInterface.py \
+	NCQethInterface.py \
 	NCModemInterface.py \
 	NCTcpIp.py
 
