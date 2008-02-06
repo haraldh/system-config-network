@@ -52,7 +52,7 @@ uninstall-local:
 	done
 
 ChangeLog changelog:
-	git log --since="1 year ago" --no-merges r1_1_0-1..HEAD > ChangeLog
+	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
 
 
 clean-local:
@@ -63,28 +63,31 @@ clean-local:
 distclean-local:
 	rm -f $(top_builddir)/po/po2tbl.sed
 
-PKGNAME=$(subst system-config,redhat-config,$(PACKAGE))
 VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
-archive: changelog
-	@chmod u+w -R /tmp/${PKGNAME}-$(VERSION) || :
-	@chmod u+w -R /tmp/${PKGNAME}  || :
-	@rm -rf /tmp/${PKGNAME}-$(VERSION) /tmp/${PKGNAME}
-	@CVSROOT=`cat CVS/Root`;cd /tmp; cvs -d $$CVSROOT export -r$(CVSTAG) ${PKGNAME}
-	@cd /tmp/${PKGNAME};./autogen.sh;make distcheck
-	@mv /tmp/${PKGNAME}/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)
-	@rm -rf /tmp/${PKGNAME}
+archive: tag
+	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
+	@test -d  /tmp/${PACKAGE}-$(VERSION) && chmod u+w -R /tmp/${PACKAGE}-$(VERSION) || :
+	@rm -rf /tmp/${PACKAGE}-$(VERSION) /tmp/${PACKAGE}
+	@git clone -l $$orig . /tmp/${PACKAGE}-$(VERSION)
+	@cd /tmp/${PACKAGE}-$(VERSION);git checkout -b compile $(CVSTAG);./autogen.sh;make;make distcheck
+	@mv /tmp/${PACKAGE}-$(VERSION)/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)
+	@rm -rf /tmp/${PACKAGE}-$(VERSION)
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
 
-force-tag:
-	git tag -f $(CVSTAG) 
-
 tag:
-	git tag $(CVSTAG)
+	@if [ "$$(git-rev-parse HEAD 2>/dev/null)" != "$$(git-rev-parse $(CVSTAG) 2>/dev/null)" ] ; then \
+		git tag $(CVSTAG); \
+	fi
 
-srpm: distcheck changelog
-	LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
+force-tag:
+	git tag -f $(CVSTAG)
+
+srpm: archive
+	@LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
+	@$(MAKE) ${PACKAGE}.spec
+	@echo " ${PACKAGE}-$(VERSION).tar.gz ${PACKAGE}.spec "
 
 newversion:
 	perl -p -i -e 'if (/RELEASE=(.*)/) { $$newrel = $$1 + 1;s/RELEASE=.*/RELEASE=$$newrel/; };' configure.in
