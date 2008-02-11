@@ -57,8 +57,7 @@ class DevQeth(DevEthernet):
             hw.Type = QETH
 
          hw.Description = "qeth %s" % conf["SUBCHANNELS"]
-         if not hw.Card:
-            hw.createCard()
+         hw.createCard()
          hw.Card.ModuleName = "qeth"
          try:
             ports = conf["SUBCHANNELS"].split(",")

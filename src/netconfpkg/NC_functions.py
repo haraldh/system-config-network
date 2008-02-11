@@ -377,13 +377,17 @@ def getHardwareType(devname):
         return devname
     return getDeviceType(devname)
 
-def getDeviceType(devname):
+def getDeviceType(devname, module = None):    
     if devname in deviceTypes:
         return devname
+
+    if module == "qeth":
+        return QETH
 
     UNKNOWN = _('Unknown')
 
     type = UNKNOWN
+
     if not devname or devname == "":
         return type
 

@@ -326,8 +326,9 @@ class HardwareList(HardwareList_base):
                 if h.Name == dev and h.Card.ModuleName == module:
                     hdellist.remove(h)
                     break
-            else:
-                i = self.addHardware(getDeviceType(dev))
+            else:            
+		hwtype = getDeviceType(dev, module = module)
+                i = self.addHardware(hwtype)
                 hw = self[i]
                 if string.find (kudzu_device.desc, "|") != -1:
                     mfg, desc = string.split (kudzu_device.desc, "|")
@@ -336,9 +337,8 @@ class HardwareList(HardwareList_base):
                     desc = kudzu_device.desc
 
                 hw.Name = dev
-
+                hw.Type = hwtype
                 hw.Description = desc
-                hw.Type = getDeviceType(dev)
                 hw.Status = HW_OK
                 hw.createCard()
                 hw.Card.ModuleName = module
@@ -420,12 +420,13 @@ class HardwareList(HardwareList_base):
                         if h.Name == device and h.Card.ModuleName == mod:
                             break
                     else:
-                        i = self.addHardware(getDeviceType(device))
+                        hwtype = getDeviceType(device, module = mod)
+                        i = self.addHardware(hwtype)
                         hw = self[i]
                         hw.Name = device
                         hw.Description = mod
                         hw.Status = HW_SYSTEM
-                        hw.Type = getDeviceType(device)
+                        hw.Type = hwtype
                         hw.createCard()
                         hw.Card.ModuleName = mod
                         if modinfo:
@@ -470,7 +471,6 @@ class HardwareList(HardwareList_base):
                         log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
                 else:
                     self.append(hw)
-                    hw.Status = HW_SYSTEM
                     hw.setChanged(True)        
 
         return hdellist
@@ -533,10 +533,7 @@ class HardwareList(HardwareList_base):
                 module = modules[mod]['alias']
             else: module = None
 
-            type = getDeviceType(mod)
-
-            if module == "qeth":
-                type = QETH
+            type = getDeviceType(mod, module)
 
             if type == _('Unknown'):
                 continue            
@@ -729,7 +726,7 @@ class HardwareList(HardwareList_base):
             #
             # FIXME: This is not OO!!
             #
-            if type != ETHERNET and type != TOKENRING:
+            if type != ETHERNET and type != TOKENRING and type != QETH:
                 continue
             #print "Testing " + str(mod)
             for hw in self:

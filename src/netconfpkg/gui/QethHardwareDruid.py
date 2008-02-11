@@ -88,14 +88,13 @@ class QethHardware:
     def hydrate(self):
         if self.hw and self.hw.Name:
             self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
-            if self.hw.Card.IRQ:
-                self.xml.get_widget('irqEntry').set_text(self.hw.Card.IRQ)
-            if self.hw.Card.IoPort:
-                self.xml.get_widget('ioEntry').set_text(self.hw.Card.IoPort)
-            if self.hw.Card.IoPort1:
-                self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
-            if self.hw.Card.IoPort2:
-                self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
+            if self.hw.Card:
+                if self.hw.Card.IoPort:
+                    self.xml.get_widget('ioEntry').set_text(self.hw.Card.IoPort)
+                if self.hw.Card.IoPort1:
+                    self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
+                if self.hw.Card.IoPort2:
+                    self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
         else:
             hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
