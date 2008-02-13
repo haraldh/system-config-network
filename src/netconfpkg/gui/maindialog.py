@@ -314,10 +314,9 @@ class mainDialog:
 
     def loadProfiles(self):
         self.appBar.push(_("Loading profile configuration..."))
-        try:
-            profilelist = getProfileList()
-        except ValueError, e:
-            gui_info_dialog(e.message, None)
+        profilelist = getProfileList()
+        if profilelist.error:
+            gui_info_dialog(profilelist.error, None)
         self.appBar.pop()
 
     def loadIPsec(self):
