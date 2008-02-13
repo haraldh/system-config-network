@@ -603,8 +603,8 @@ class ModemDialup(Dialup):
             if self.__dict__[selfkey]:
                 conf[sectname][confkey] = '1'
             else:
-                if conf[sectname].has_key(confkey):
-                    del conf[sectname][confkey]
+                # CHECK: [177931] Stupid Mode goes away in /etc/wvdial.conf when a dialup connection is saved
+                conf[sectname][confkey] = '0'
 
         #
         # Write Modem Init strings
