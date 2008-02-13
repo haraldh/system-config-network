@@ -795,7 +795,10 @@ class HardwareList(HardwareList_base):
 
                 if not wvdial[dev].has_key('Baud'):
                     wvdial[dev]['Baud'] = '38400'
-                hw.Modem.BaudRate = int(wvdial[dev]['Baud'])
+                try:
+                    hw.Modem.BaudRate = int(wvdial[dev]['Baud'])
+                except ValueError:
+                    hw.Modem.BaudRate = 38400
 
                 if not wvdial[dev].has_key('SetVolume'):
                     wvdial[dev]['SetVolume'] = '0'
