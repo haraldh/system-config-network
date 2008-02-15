@@ -63,10 +63,10 @@ class HostsList(HostsList_base):
             if len(tmp) > 0:
                 entry = Host()
                 entry.IP = tmp[0]
-                entry.Hostname = tmp[1]
                 entry.Comment = string.rstrip(comment)
                 entry.createAliasList()
                 if len(tmp) > 1:
+                    entry.Hostname = tmp[1]
                     for alias in tmp[2:]:
                         entry.AliasList.append(alias)
                 entry.origLine = line

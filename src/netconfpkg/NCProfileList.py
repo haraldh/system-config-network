@@ -55,6 +55,7 @@ class MyFileList(list):
         return list.append(self, os.path.abspath(obj))
 
 class ProfileList(ProfileList_base):
+    error = None
     def __init__(self, list = None, parent = None):
         ProfileList_base.__init__(self, list, parent)
 
@@ -97,7 +98,6 @@ class ProfileList(ProfileList_base):
         self.setChanged(False)
 
     def loadprof(self, pr, profdir):
-        error = None
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
 
@@ -139,12 +139,12 @@ class ProfileList(ProfileList_base):
             try:
                 prof.HostsList.load( filename = profdir + '/hosts')
             except ValueError, e:
-                error = e.message
+                self.error = e.message
         else:
             try:
                 prof.HostsList.load( filename = HOSTSCONF )
             except ValueError, e:
-                error = e.message
+                self.error = e.message
 
 
         # FIXME: [183338] use SEARCH not resolv.conf
@@ -179,9 +179,6 @@ class ProfileList(ProfileList_base):
         if dnsconf.has_key('search'):
             for ns in dnsconf['search']:
                 sl.append(ns)
-        
-        if error:
-            raise ValueError(error)
 
     def test(self):
         error = None
