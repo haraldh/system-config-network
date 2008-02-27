@@ -28,8 +28,6 @@ MAINTAINERCLEANFILES=ChangeLog
 
 sysdir=$(sysconfdir)/X11/applnk/System
 
-.PHONY: rp3 changelog srpm archive tag-srpm srpm force-tag-srpm
-
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/security/console.apps
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d
@@ -54,10 +52,6 @@ uninstall-local:
 		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
 	done
 
-ChangeLog changelog:
-	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
-
-
 clean-local:
 	rm -f system-config-network.desktop
 	rm -f system-control-network.desktop
@@ -69,7 +63,12 @@ distclean-local:
 VERSION=@VERSION@
 SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
-check-clean-tree:
+.PHONY: changelog archive tag force-tag srpm newversion potfile push pull diff
+
+ChangeLog changelog:
+	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
+
+archive: tag
 	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 	@git-diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 
@@ -116,3 +115,4 @@ pull:
 
 diff:
 	git diff origin
+
