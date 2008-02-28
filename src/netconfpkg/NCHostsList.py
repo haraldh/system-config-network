@@ -124,12 +124,6 @@ class HostsList(HostsList_base):
         if not "file" in kwargs:
             conffile.close()
 
-    # for some reason generated addHost() doesn't work well (ask harald)
-    def addHost(self):
-        host = Host()
-        self.append(host)
-        return len(self)-1
-
     def _parseLine(self, vals, value):
         for host in self:
             if host.HostID == vals[0]:
