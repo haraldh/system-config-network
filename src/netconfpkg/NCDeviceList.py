@@ -89,6 +89,7 @@ class DeviceList(DeviceList_base):
                 try:
                     newdev.load(dev)
                 except:
+                    generic_error_dialog (_("Error loading file %s") % devdir + "/" + dev, dialog_type="error")
                     # FIXME better exception handling
                     pass
                 self.append(newdev)
