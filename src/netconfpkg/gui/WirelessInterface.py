@@ -195,7 +195,7 @@ class WirelessInterface(InterfaceCreator):
         wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
         rate = self.xml.get_widget("rateEntry").get_text()
         if rate == _("Auto"):
-            wl.Rate = "Auto"
+            wl.Rate = "auto"
         else:
             wl.Rate = rate
         # FIXME: [168036] check the key!

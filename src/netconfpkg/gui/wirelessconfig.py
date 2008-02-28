@@ -162,7 +162,7 @@ class wirelessConfigDialog(DeviceConfigDialog):
 
             rate = self.xml.get_widget("rateEntry").get_text()
             if rate == _("Auto"):
-                wl.Rate = "Auto"
+                wl.Rate = "auto"
             else:
                 wl.Rate = rate
             # FIXME: [168036] check the key!
