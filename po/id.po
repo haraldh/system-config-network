@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-06 11:21-0700\n"
+"POT-Creation-Date: 2008-02-28 15:10+0100\n"
 "PO-Revision-Date: 2008-02-18 16:36+0700\n"
 "Last-Translator: Dapid Candra <dapidc@gmail.com>\n"
 "Language-Team: Linux Indonesia <http://linux.or.id>\n"
@@ -16,21 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Indonesian\n"
 "X-Poedit-Country: INDONESIA\n"
-
-#: ../neat.desktop.in.h:1
-msgid "Configure network devices and connections"
-msgstr "Konfigurasi perangkat jaringan dan koneksinya"
-
-#: ../neat.desktop.in.h:2
-msgid "Network"
-msgstr "Jaringan"
-
-#: ../neat.desktop.in.h:3
-#: ../src/netconf-tui.py:129
-#: ../src/netconf-tui.py:158
-#: ../src/netconfpkg/gui/maindialog.glade.h:16
-msgid "Network Configuration"
-msgstr "Konfigurasi Jaringan"
 
 #: ../neat-control.desktop.in.h:1
 msgid "Control and monitor network devices"
@@ -41,60 +26,78 @@ msgstr "Kontrol dan monitor perangkat jaringan"
 msgid "Network Device Control"
 msgstr "Kontrol untuk Perangkat Jaringan"
 
-#: ../src/netconfpkg/genClass.py:254
-#: ../src/netconf-cmd.py:329
-#, python-format
-msgid "Error parsing line: %s"
+#: ../neat.desktop.in.h:1
+msgid "Configure network devices and connections"
+msgstr "Konfigurasi perangkat jaringan dan koneksinya"
+
+#: ../neat.desktop.in.h:2
+msgid "Network"
+msgstr "Jaringan"
+
+#: ../neat.desktop.in.h:3 ../src/netconf-tui.py:129 ../src/netconf-tui.py:163
+#: ../src/netconfpkg/gui/maindialog.glade.h:16
+msgid "Network Configuration"
+msgstr "Konfigurasi Jaringan"
+
+#: ../src/netconfpkg/NCHardware.py:21
+msgid "inactive"
+msgstr "tidak aktif"
+
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "system"
+msgstr "sistem"
+
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "configured"
+msgstr "terkonfigurasi"
+
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "ok"
+msgstr "ok"
+
+#: ../src/netconfpkg/NCDeviceList.py:76 ../src/netconfpkg/NCDevice.py:237
+#: ../src/netconfpkg/NCHardwareList.py:336
+#: ../src/netconfpkg/NCHardwareList.py:539
+#: ../src/netconfpkg/gui/tokenringhardware.py:111
+#: ../src/netconfpkg/gui/ethernethardware.py:137
+#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
+#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
+#: ../src/netconfpkg/NC_functions.py:387
+msgid "Unknown"
+msgstr "Tidak diketahui"
+
+#: ../src/netconfpkg/NCDeviceList.py:92
+#, fuzzy, python-format
+msgid "Error loading file %s"
 msgstr "Salah dalam memparsing baris : %s"
 
-#: ../src/netconfpkg/tui/NCTcpIp.py:93
+#: ../src/netconfpkg/NCDeviceList.py:129
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "Mengganti Nickname berikut ini pada saat initscripts:\n"
+
+#: ../src/netconfpkg/NCDeviceList.py:132
+msgid "Nicknames changed"
+msgstr "Nickname diganti"
+
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCModemInterface.py:66
+#: ../src/netconfpkg/tui/NCQethInterface.py:119
+#: ../src/netconfpkg/tui/NCTcpIp.py:93
 msgid "Name"
 msgstr "Nama"
 
-#: ../src/netconfpkg/tui/NCTcpIp.py:94
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:69
 #: ../src/netconfpkg/tui/NCModemInterface.py:67
-#: ../src/netconfpkg/gui/neat-control.glade.h:11
+#: ../src/netconfpkg/tui/NCQethInterface.py:120
+#: ../src/netconfpkg/tui/NCTcpIp.py:94
 #: ../src/netconfpkg/gui/infodialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control.glade.h:11
 #: ../src/netconfpkg/gui/maindialog.glade.h:9
 msgid "Device"
 msgstr "Perangkat"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:95
-msgid "Use DHCP"
-msgstr "Gunakan DHCP"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
-msgid "Static IP"
-msgstr "IP Statik"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
-msgid "Netmask"
-msgstr "Netmask"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
-msgid "Default gateway IP"
-msgstr "Default IP gateway"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-msgid "Ok"
-msgstr "Ok"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:106
-#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCModemInterface.py:78
-#: ../src/netconf-tui.py:153
-#: ../src/netconf-tui.py:205
-msgid "Cancel"
-msgstr "Batal"
-
-#: ../src/netconfpkg/tui/NCTcpIp.py:108
-msgid "Devernet Configuration"
-msgstr "Konfigurasi Devernet "
 
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:70
 #: ../src/netconfpkg/tui/NCModemInterface.py:68
@@ -115,6 +118,21 @@ msgstr "Password ISP"
 msgid "MSN"
 msgstr "MSN"
 
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCQethInterface.py:138
+#: ../src/netconfpkg/tui/NCTcpIp.py:106
+msgid "Ok"
+msgstr "Ok"
+
+#: ../src/netconfpkg/tui/NCIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCModemInterface.py:78
+#: ../src/netconfpkg/tui/NCQethInterface.py:138
+#: ../src/netconfpkg/tui/NCTcpIp.py:106 ../src/netconf-tui.py:153
+#: ../src/netconf-tui.py:210
+msgid "Cancel"
+msgstr "Batal"
+
 #: ../src/netconfpkg/tui/NCIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "Konfigurasi ISDN"
@@ -128,125 +146,58 @@ msgstr "Initstring untuk Modem"
 msgid "Modem Configuration"
 msgstr "Konfigurasi Modem"
 
-#: ../src/netconfpkg/NCCipe.py:152
-#, python-format
-msgid ""
-"Directory %s is missing!\n"
-"Will create it for you!\n"
-"You should install the cipe rpm package!\n"
+#: ../src/netconfpkg/tui/NCQethInterface.py:121
+#: ../src/netconfpkg/tui/NCTcpIp.py:95
+msgid "Use DHCP"
+msgstr "Gunakan DHCP"
+
+#: ../src/netconfpkg/tui/NCQethInterface.py:122
+#: ../src/netconfpkg/tui/NCTcpIp.py:96
+msgid "Static IP"
+msgstr "IP Statik"
+
+#: ../src/netconfpkg/tui/NCQethInterface.py:123
+#: ../src/netconfpkg/tui/NCTcpIp.py:97
+msgid "Netmask"
+msgstr "Netmask"
+
+#: ../src/netconfpkg/tui/NCQethInterface.py:124
+#: ../src/netconfpkg/tui/NCTcpIp.py:98
+msgid "Default gateway IP"
+msgstr "Default IP gateway"
+
+#: ../src/netconfpkg/tui/NCQethInterface.py:125
+msgid "Read Device Bus ID"
 msgstr ""
-"Direktori %s tidak ada!\n"
-"Akan dibuatkan direktori itu untuk anda!\n"
-"Anda seharusnya menginstal paket rpm cipe!\n"
 
-#: ../src/netconfpkg/NCCipe.py:156
-#, python-format
-msgid ""
-"Could not create\n"
-"directory %s!"
+#: ../src/netconfpkg/tui/NCQethInterface.py:126
+msgid "Data Device Bus ID"
 msgstr ""
-"Tidak bisa membuat\n"
-"direktori %s!"
 
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:77
-#: ../src/netconfpkg/NCDevice.py:447
-msgid "Network device activating..."
-msgstr "Perangtkat jaringan diaktifkan..."
+#: ../src/netconfpkg/tui/NCQethInterface.py:127
+#, fuzzy
+msgid "Write Device Bus ID"
+msgstr "Buar Perangkat"
 
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:78
-#: ../src/netconfpkg/NCDevice.py:448
+#: ../src/netconfpkg/tui/NCQethInterface.py:140
+#: ../src/netconfpkg/tui/NCTcpIp.py:108
+msgid "Devernet Configuration"
+msgstr "Konfigurasi Devernet "
+
+#: ../src/netconfpkg/NCProfileList.py:213
 #, python-format
-msgid "Activating network device %s, please wait..."
-msgstr "Mengaktifkan perangkat jaringan %s, silakan tunggu..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:80
-#: ../src/netconfpkg/NCDevice.py:450
-#, python-format
-msgid "Cannot activate network device %s!\n"
-msgstr "Tidak bisa mengaktifkan perangkat jaringan %s!\n"
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
-#: ../src/netconfpkg/NCDevice.py:467
-msgid "Network device deactivating..."
-msgstr "Perangkat jaringan di non-aktifkan..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
-#: ../src/netconfpkg/NCDevice.py:468
-#, python-format
-msgid "Deactivating network device %s, please wait..."
-msgstr "Menon-aktifkan perangkat jaringan %s, silakan tunggu..."
-
-#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
-#: ../src/netconfpkg/NCDevice.py:470
-#, python-format
-msgid "Cannot deactivate network device %s!\n"
-msgstr "Tidak bisa menon-aktifkan perangkat jaringan %s!\n"
-
-#: ../src/netconfpkg/plugins/NCHWTokenring.py:71
-#: ../src/netconfpkg/plugins/NCHWEthernet.py:60
-#: ../src/netconfpkg/NCDevice.py:237
-#: ../src/netconfpkg/NCDeviceList.py:72
-#: ../src/netconfpkg/NCHardwareList.py:466
-#: ../src/netconfpkg/NCHardwareList.py:669
-#: ../src/netconfpkg/NC_functions.py:391
-#: ../src/netconfpkg/gui/tokenringhardware.py:111
-#: ../src/netconfpkg/gui/ethernethardware.py:137
-msgid "Unknown"
-msgstr "Tidak diketahui"
-
-#: ../src/netconfpkg/exception.py:53
-#: ../src/netconfpkg/exception.py:338
-msgid "Exception Occurred"
-msgstr "Terjadi Kesalahan"
-
-#: ../src/netconfpkg/exception.py:54
-msgid "_Debug"
-msgstr "Awakutu"
-
-#: ../src/netconfpkg/exception.py:55
-msgid "_Save to file"
-msgstr "_Simpan ke berkas"
-
-#: ../src/netconfpkg/exception.py:70
-#, python-format
-msgid "An unhandled exception has occurred.  This is most likely a bug.  Please save the crash dump and file a detailed bug report against %s at https://bugzilla.redhat.com/bugzilla"
-msgstr "Eksepsi yang tidak bisa ditangani telah terjadi. Ini sepertinya sebuah bug. Silakan simpan dump dari hasil crash dan arsipkan laporan bug secara detil dari %s di https://bugzilla.redhat.com/bugzilla"
-
-#: ../src/netconfpkg/exception.py:272
-#, python-format
-msgid "Error: %s: %s"
-msgstr "Kesalahan: %s, %s"
-
-#: ../src/netconfpkg/exception.py:275
-#, python-format
-msgid ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
+msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
 msgstr ""
-"%s\n"
-"\n"
-"%s:\n"
-"%s"
+"Perangkat %s menggunakan perangkat dari perangkat-keras \"%s\" yang sama "
+"dengan %s!\n"
 
-#: ../src/netconfpkg/exception.py:349
-msgid "Specify a file to save the dump"
-msgstr "Tentukan berkas untuk menyimpan buangan"
-
-#: ../src/netconfpkg/exception.py:368
-#, python-format
-msgid "Failed to write to file %s."
-msgstr "Gagal menulis ke berkas %s."
-
-#: ../src/netconfpkg/exception.py:372
-#, python-format
+#: ../src/netconfpkg/NCProfileList.py:215
 msgid ""
-"The application's state has been successfully\n"
-"written to the file '%s'."
+"Please select another Hardware Device or \n"
+"activate only one of them."
 msgstr ""
-"Keadaan aplikasi telah berhasil disimpan\n"
-"ke berkas '%s'."
+"Silakan pilih perangkat dari perangkat-keras yang lain atau\n"
+"aktifkan salah satu saja."
 
 #: ../src/netconfpkg/NCDialup.py:32
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
@@ -258,8 +209,7 @@ msgstr "auto"
 msgid "manual"
 msgstr "manual"
 
-#: ../src/netconfpkg/NCDialup.py:36
-#: ../src/netconfpkg/NC_functions.py:151
+#: ../src/netconfpkg/NCDialup.py:36 ../src/netconfpkg/NC_functions.py:144
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 msgid "None"
@@ -558,309 +508,685 @@ msgstr "Serbia"
 msgid "Montenegro"
 msgstr "Montenegro"
 
-#: ../src/netconfpkg/NCHardware.py:21
-msgid "inactive"
-msgstr "tidak aktif"
+#: ../src/netconfpkg/genClass.py:254 ../src/netconf-cmd.py:329
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "Salah dalam memparsing baris : %s"
 
-#. not found in last config and not in actual system
-#: ../src/netconfpkg/NCHardware.py:22
-msgid "system"
-msgstr "sistem"
-
-#. found in system
-#: ../src/netconfpkg/NCHardware.py:23
-msgid "configured"
-msgstr "terkonfigurasi"
-
-#. found in config but not in system
-#: ../src/netconfpkg/NCHardware.py:24
-msgid "ok"
-msgstr "ok"
-
-#: ../src/netconfpkg/NCDevice.py:220
-#: ../src/netconfpkg/NCDevice.py:226
+#: ../src/netconfpkg/NCDevice.py:220 ../src/netconfpkg/NCDevice.py:226
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, Perangkat belum dispesifikasikan atau alias bukan nomor!"
 
-#: ../src/netconfpkg/NCDeviceList.py:124
-msgid "Changed the following Nicknames due to the initscripts:\n"
-msgstr "Mengganti Nickname berikut ini pada saat initscripts:\n"
+#: ../src/netconfpkg/NCDevice.py:435 ../src/netconfpkg/plugins/NCDevIsdn.py:77
+msgid "Network device activating..."
+msgstr "Perangtkat jaringan diaktifkan..."
 
-#: ../src/netconfpkg/NCDeviceList.py:127
-msgid "Nicknames changed"
-msgstr "Nickname diganti"
-
-#: ../src/netconfpkg/NCIPsec.py:186
-msgid "IPsec activating..."
-msgstr "Mengaktifkan IPsec..."
-
-#: ../src/netconfpkg/NCIPsec.py:187
+#: ../src/netconfpkg/NCDevice.py:436 ../src/netconfpkg/plugins/NCDevIsdn.py:78
 #, python-format
-msgid "Activating IPsec connection %s, please wait..."
-msgstr "Mengaktifkan koneksi IPsec %s, silakan tunggu..."
+msgid "Activating network device %s, please wait..."
+msgstr "Mengaktifkan perangkat jaringan %s, silakan tunggu..."
 
-#: ../src/netconfpkg/NCIPsec.py:189
+#: ../src/netconfpkg/NCDevice.py:438 ../src/netconfpkg/plugins/NCDevIsdn.py:80
 #, python-format
-msgid "Cannot activate IPsec connection %s!\n"
-msgstr "Tidak bisa mengaktifkan koneksi IPsec %s!\n"
+msgid "Cannot activate network device %s!\n"
+msgstr "Tidak bisa mengaktifkan perangkat jaringan %s!\n"
 
-#: ../src/netconfpkg/NCIPsec.py:206
-msgid "IPsec deactivating..."
-msgstr "Mematikankan IPsec..."
+#: ../src/netconfpkg/NCDevice.py:455
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:101
+msgid "Network device deactivating..."
+msgstr "Perangkat jaringan di non-aktifkan..."
 
-#: ../src/netconfpkg/NCIPsec.py:207
+#: ../src/netconfpkg/NCDevice.py:456
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:102
 #, python-format
-msgid "Deactivating IPsec connection %s, please wait..."
-msgstr "Mematikan koneksi IPsec %s, silakan tunggu..."
+msgid "Deactivating network device %s, please wait..."
+msgstr "Menon-aktifkan perangkat jaringan %s, silakan tunggu..."
 
-#: ../src/netconfpkg/NCIPsec.py:209
+#: ../src/netconfpkg/NCDevice.py:458
+#: ../src/netconfpkg/plugins/NCDevIsdn.py:104
 #, python-format
-msgid "Cannot deactivate IPsec connection %s!\n"
-msgstr "Tidak bisa menon-aktifkan koneksi IPsec %s!\n"
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Tidak bisa menon-aktifkan perangkat jaringan %s!\n"
 
-#: ../src/netconfpkg/NC_functions.py:96
-msgid "Common"
-msgstr "Umum"
-
-#. Removed for now, until we have a config dialog for infrared
-#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
-#: ../src/netconfpkg/NC_functions.py:141
-msgid "Active"
-msgstr "Aktif"
-
-#: ../src/netconfpkg/NC_functions.py:142
-msgid "Inactive"
-msgstr "Tidak aktif"
-
-#: ../src/netconfpkg/NC_functions.py:149
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
-#: ../src/netconfpkg/gui/modemconfig.glade.h:2
-msgid "Hardware (CRTSCTS)"
-msgstr "Perangkat-keras (CRTSCTS)"
-
-#: ../src/netconfpkg/NC_functions.py:150
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
-#: ../src/netconfpkg/gui/modemconfig.glade.h:10
-msgid "Software (XON/XOFF)"
-msgstr "Perangkat-lunak (XON/XOFF)"
-
-#: ../src/netconfpkg/NC_functions.py:230
-msgid "Shall the following packages, which are needed on your system, be installed?"
-msgstr "Paket-paket berikut, yang dibutuhkan pada sistem anda, akankah diinstall?"
-
-#: ../src/netconfpkg/NC_functions.py:243
-msgid "You have to install the following packages, which are needed on your system!"
-msgstr "Anda harus menginstall paket-paket yang dibutuhkan oleh sistem anda berikut ini!"
-
-#: ../src/netconfpkg/NC_functions.py:768
-#: ../src/netconfpkg/NC_functions.py:779
+#: ../src/netconfpkg/NCCipe.py:152
 #, python-format
 msgid ""
-"Error removing\n"
+"Directory %s is missing!\n"
+"Will create it for you!\n"
+"You should install the cipe rpm package!\n"
+msgstr ""
+"Direktori %s tidak ada!\n"
+"Akan dibuatkan direktori itu untuk anda!\n"
+"Anda seharusnya menginstal paket rpm cipe!\n"
+
+#: ../src/netconfpkg/NCCipe.py:156
+#, python-format
+msgid ""
+"Could not create\n"
+"directory %s!"
+msgstr ""
+"Tidak bisa membuat\n"
+"direktori %s!"
+
+#: ../src/netconfpkg/exception.py:53 ../src/netconfpkg/exception.py:338
+msgid "Exception Occurred"
+msgstr "Terjadi Kesalahan"
+
+#: ../src/netconfpkg/exception.py:54
+msgid "_Debug"
+msgstr "Awakutu"
+
+#: ../src/netconfpkg/exception.py:55
+msgid "_Save to file"
+msgstr "_Simpan ke berkas"
+
+#: ../src/netconfpkg/exception.py:70
+#, python-format
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Eksepsi yang tidak bisa ditangani telah terjadi. Ini sepertinya sebuah bug. "
+"Silakan simpan dump dari hasil crash dan arsipkan laporan bug secara detil "
+"dari %s di https://bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconfpkg/exception.py:272
+#, python-format
+msgid "Error: %s: %s"
+msgstr "Kesalahan: %s, %s"
+
+#: ../src/netconfpkg/exception.py:275
+#, python-format
+msgid ""
+"%s\n"
+"\n"
 "%s:\n"
-"%s!"
-msgstr ""
-"Salah ketika memindahkan\n"
-"%s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:808
-#, python-format
-msgid ""
-"Error copying \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Salah ketika menyalin \n"
-"%s\n"
-"ke %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:818
-#, python-format
-msgid ""
-"Error linking \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Salah ketika me-link \n"
-"%s\n"
-"ke %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:828
-#, python-format
-msgid ""
-"Error renaming \n"
-"%s\n"
-"to %s:\n"
-"%s!"
-msgstr ""
-"Salah ketika merubah-nama \n"
-"%s\n"
-"ke %s:\n"
-"%s!"
-
-#: ../src/netconfpkg/NC_functions.py:836
-#, python-format
-msgid ""
-"Error creating directory!\n"
 "%s"
 msgstr ""
-"Salah ketika membuat direktori!\n"
+"%s\n"
+"\n"
+"%s:\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:974
-#, python-format
-msgid "Linking %s to devices and putting it in profile %s."
-msgstr "Menlink %s ke perangkat dan meletakannya kedalam profil %s."
+#: ../src/netconfpkg/exception.py:349
+msgid "Specify a file to save the dump"
+msgstr "Tentukan berkas untuk menyimpan buangan"
 
-#: ../src/netconfpkg/NCProfileList.py:216
+#: ../src/netconfpkg/exception.py:368
 #, python-format
-msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
-msgstr "Perangkat %s menggunakan perangkat dari perangkat-keras \"%s\" yang sama dengan %s!\n"
+msgid "Failed to write to file %s."
+msgstr "Gagal menulis ke berkas %s."
 
-#: ../src/netconfpkg/NCProfileList.py:218
+#: ../src/netconfpkg/exception.py:372
+#, python-format
 msgid ""
-"Please select another Hardware Device or \n"
-"activate only one of them."
+"The application's state has been successfully\n"
+"written to the file '%s'."
 msgstr ""
-"Silakan pilih perangkat dari perangkat-keras yang lain atau\n"
-"aktifkan salah satu saja."
+"Keadaan aplikasi telah berhasil disimpan\n"
+"ke berkas '%s'."
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:34
-#: ../src/netconfpkg/gui/WirelessInterface.py:143
-#: ../src/netconfpkg/gui/WirelessInterface.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/maindialog.py:298
+msgid "Loading configuration..."
+msgstr "Memanggil Konfigurasi"
+
+#: ../src/netconfpkg/gui/maindialog.py:306
+msgid "Loading device configuration..."
+msgstr "Memanggil konfigurasi perangkat..."
+
+#: ../src/netconfpkg/gui/maindialog.py:311
+msgid "Loading hardware configuration..."
+msgstr "Memanggil konfigurasi perangkat-keras..."
+
+#: ../src/netconfpkg/gui/maindialog.py:316
+msgid "Loading profile configuration..."
+msgstr "Memanggil konfigurasi profile..."
+
+#: ../src/netconfpkg/gui/maindialog.py:323
+msgid "Loading IPsec configuration..."
+msgstr "Memanggil konfigurasi IPsec"
+
+#: ../src/netconfpkg/gui/maindialog.py:328
+msgid "Testing configuration set..."
+msgstr "Mencoba konfigurasi yang sudah diatur"
+
+#: ../src/netconfpkg/gui/maindialog.py:368
+#, python-format
+msgid "Active profile: %s (modified)"
+msgstr "Profil aktif: %s (termodifikasi)"
+
+#: ../src/netconfpkg/gui/maindialog.py:372
+#, python-format
+msgid "Active profile: %s"
+msgstr "Profil aktif: %s"
+
+#: ../src/netconfpkg/gui/maindialog.py:387
+msgid "Saving configuration..."
+msgstr "Menyimpan konfigurasi..."
+
+#: ../src/netconfpkg/gui/maindialog.py:399
+#, python-format
+msgid ""
+"Error saving configuration!\n"
+"%s"
+msgstr ""
+"Terjadi kesalahan menyimpan konfigurasi!\n"
+"%s"
+
+#: ../src/netconfpkg/gui/maindialog.py:402
+msgid ""
+"Changes are saved. You may want to restart the network and network services "
+"or restart the computer."
+msgstr ""
+"Perubahan telah disimpan. Anda boleh memulai ulang jaringan dan layanan "
+"jaringan atau memulai ulang komputer."
+
+#: ../src/netconfpkg/gui/maindialog.py:411
+msgid "Saving device configuration..."
+msgstr "Menyimpan konfigurasi perangkat..."
+
+#: ../src/netconfpkg/gui/maindialog.py:418
+msgid "Saving hardware configuration..."
+msgstr "Menyimpan konfigurasi perangkat-keras..."
+
+#: ../src/netconfpkg/gui/maindialog.py:425
+msgid "Saving profile configuration..."
+msgstr "Menyimpan konfigurasi profile..."
+
+#: ../src/netconfpkg/gui/maindialog.py:432
+msgid "Saving IPsec configuration..."
+msgstr "Menyimpan konfigurasi IPsec"
+
+#: ../src/netconfpkg/gui/maindialog.py:451
+msgid "Updating devices..."
+msgstr "Memperbarui perangkat..."
+
+#: ../src/netconfpkg/gui/maindialog.py:515
+msgid "Updating hardware..."
+msgstr "Memperbarui perangkat-keras..."
+
+#: ../src/netconfpkg/gui/maindialog.py:603
+msgid "Updating profiles..."
+msgstr "Memperbarui profile..."
+
+#: ../src/netconfpkg/gui/maindialog.py:711
+msgid "Errors detected, do you really want to quit?"
+msgstr "Kesalahan terdeteksi, yakin mau keluar?"
+
+#: ../src/netconfpkg/gui/maindialog.py:719
+#: ../src/netconfpkg/gui/maindialog.py:738
+msgid "Do you want to save your changes?"
+msgstr "Anda mau menyimpan perubahan yang telah anda lakukan?"
+
+#: ../src/netconfpkg/gui/maindialog.py:916
+msgid "The Loopback device can not be edited!"
+msgstr "Perangkat loopbak tidak bisa diubah!"
+
+#: ../src/netconfpkg/gui/maindialog.py:920
+msgid "Edit device..."
+msgstr "Mengubah perangkat..."
+
+#: ../src/netconfpkg/gui/maindialog.py:959
+#, python-format
+msgid "The device type %s cannot be edited!"
+msgstr "Tipe perangkat %s tidak bisa diubah!"
+
+#: ../src/netconfpkg/gui/maindialog.py:978
+msgid "The Loopback device can not be removed!"
+msgstr "Perangkat Loopbak tidak bisa dihapus!"
+
+#: ../src/netconfpkg/gui/maindialog.py:982
+#, python-format
+msgid "Do you really want to delete device \"%s\"?"
+msgstr "Anda benar-benar ingin menghapus perangkat \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1014
+#: ../src/netconfpkg/gui/maindialog.py:1049
+#: ../src/netconfpkg/gui/maindialog.py:1815
+#: ../src/netconfpkg/gui/maindialog.py:1842
+msgid "You have made some changes in your configuration."
+msgstr "Anda telah membuat beberapa perubahan dalam konfigurasi anda."
+
+#: ../src/netconfpkg/gui/maindialog.py:1015
+#, python-format
+msgid "To activate the network device %s, the changes have to be saved."
+msgstr ""
+"Untuk mengaktifkan perangkat jaringan %s, perubahan yang telah dibuat harus "
+"disimpan."
+
+#: ../src/netconfpkg/gui/maindialog.py:1017
+#: ../src/netconfpkg/gui/maindialog.py:1052
+#: ../src/netconfpkg/gui/maindialog.py:1818
+#: ../src/netconfpkg/gui/maindialog.py:1845
+msgid "Do you want to continue?"
+msgstr "Anda ingin melanjutkan?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1050
+#, python-format
+msgid "To deactivate the network device %s, the changes have to be saved."
+msgstr ""
+"Untuk tidak mengaktifkan perangkat jaringan %s, perubahan yang dilakukan "
+"harus disimpan."
+
+#: ../src/netconfpkg/gui/maindialog.py:1192
+msgid "The Loopback device can not be disabled!"
+msgstr "Perangkat Loopback tidak bisa di non-aktifkan!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1467
+#: ../src/netconfpkg/gui/maindialog.py:1547
+msgid "The name may only contain letters and digits!"
+msgstr "Nama hanya boleh berisi huruf dan digit!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1472
+#: ../src/netconfpkg/gui/maindialog.py:1552
+#, python-format
+msgid "The profile can't be named \"%s\"!"
+msgstr "Profil tidak bisa dikasih nama \"%s\"!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1478
+#: ../src/netconfpkg/gui/maindialog.py:1558
+msgid "The profile name already exists!"
+msgstr "nama profil sudah ada!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1525
+#, python-format
+msgid "The \"%s\" profile can't be renamed!"
+msgstr "Profil \"%s\" tidak bisa diganti nama!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1578
+#, python-format
+msgid "The \"%s\" Profile can not be deleted!"
+msgstr "Profil \"%s\" tidak bisa dihapus!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1584
+#, python-format
+msgid "Do you really want to delete profile \"%s\"?"
+msgstr "Anda benar-benar ingin menghapus profil \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1658
+msgid ""
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
+msgstr "Maaf, tidak ada yang dirubah, atau tipe ini memang belum bisa diubah."
+
+#: ../src/netconfpkg/gui/maindialog.py:1676
+#, python-format
+msgid "Do you really want to delete \"%s\"?"
+msgstr "Anda yakin ingin menghapus \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1689
+#, python-format
+msgid "Do you want to delete all devices that used \"%s\"?"
+msgstr "Anda ingin menghapus semua perangkat yang telah digunakan \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1721
+#: ../src/netconfpkg/gui/maindialog.py:1737 ../src/neat-control.py:151
+#: ../src/neat-control.py:168 ../src/netconf-cmd.py:98
+msgid "Copyright (c) 2001-2005 Red Hat, Inc."
+msgstr "Hakcipta (c) 2001-2005 Red Hat, Inc."
+
+#: ../src/netconfpkg/gui/maindialog.py:1722 ../src/neat-control.py:152
+#: ../src/netconf-cmd.py:99
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Perangkat-lunak ini disebarkan di bawah GPL. Silakan Laporkan bug kepada "
+"Sistem Pelacak Bug Red Hat: http://bugzilla.redhat.com/"
+
+#: ../src/netconfpkg/gui/maindialog.py:1740
+msgid "translator_credits"
+msgstr "Kredit Penerjemah"
+
+#: ../src/netconfpkg/gui/maindialog.py:1741 ../src/neat-control.py:175
+msgid ""
+"This software is distributed under the GPL. \n"
+"Please Report bugs to Red Hat's Bug Tracking \n"
+"System: http://bugzilla.redhat.com/"
+msgstr ""
+"Perangkat-lunak ini disebarkan di bawah GPL.\n"
+"Silakan Laporkan bug kepada Sistem Pelacak Bug\n"
+" Red Hat: http://bugzilla.redhat.com/"
+
+#: ../src/netconfpkg/gui/maindialog.py:1816
+#, python-format
+msgid "To activate the IPsec connection %s, the changes have to be saved."
+msgstr ""
+"Untuk mengaktifkan koneksi IPsec %s, perubahan yang dilakukan harus disimpan."
+
+#: ../src/netconfpkg/gui/maindialog.py:1843
+#, python-format
+msgid "To deactivate the IPsec connection %s, the changes have to be saved."
+msgstr ""
+"Untuk menon-aktifkan koneksi IPsec %s, perubahan yang dilakukan harus "
+"disimpan."
+
 #: ../src/netconfpkg/gui/wirelessconfig.py:37
 #: ../src/netconfpkg/gui/wirelessconfig.py:95
 #: ../src/netconfpkg/gui/wirelessconfig.py:164
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/WirelessInterface.py:34
+#: ../src/netconfpkg/gui/WirelessInterface.py:143
+#: ../src/netconfpkg/gui/WirelessInterface.py:197
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
 msgid "Auto"
 msgstr "Auto"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:35
 #: ../src/netconfpkg/gui/wirelessconfig.py:38
+#: ../src/netconfpkg/gui/WirelessInterface.py:35
 msgid "Ad-Hoc"
 msgstr "Ad-Hoc"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:36
 #: ../src/netconfpkg/gui/wirelessconfig.py:39
+#: ../src/netconfpkg/gui/WirelessInterface.py:36
 msgid "Managed"
 msgstr "Terkelola"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:37
 #: ../src/netconfpkg/gui/wirelessconfig.py:40
+#: ../src/netconfpkg/gui/WirelessInterface.py:37
 msgid "Master"
 msgstr "Master"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:152
-msgid "Wireless connection"
-msgstr "Koneksi Nirkabel"
+#: ../src/netconfpkg/gui/GUI_functions.py:87
+#, python-format
+msgid ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:158
-msgid "Create a new wireless connection."
-msgstr "Buat koneksi nirkabel baru."
+#: ../src/netconfpkg/gui/GUI_functions.py:96
+#, python-format
+msgid ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:233
-msgid "BitRate"
-msgstr "BitRate"
+#: ../src/netconfpkg/gui/GUI_functions.py:587
+#, python-format
+msgid ""
+"Failed to run:\n"
+"%s"
+msgstr ""
+"Gagal menjalankan:\n"
+"%s"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:297
-msgid "Other Wireless Card"
-msgstr "Kartu Nirkabel yang baru"
+#: ../src/netconfpkg/gui/GUI_functions.py:590
+msgid "Succeeded. Please read the output."
+msgstr "Berhasil. Silakan baca keluaranya."
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:317
-#: ../src/netconfpkg/gui/EthernetInterface.py:210
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
 #: ../src/netconfpkg/gui/DialupDruid.py:223
-#: ../src/netconfpkg/gui/PTPInterface.py:200
 #: ../src/netconfpkg/gui/editipsec.py:285
+#: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/CipeInterface.py:137
-#: ../src/netconfpkg/gui/TokenRingInterface.py:197
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:210
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/TokenRingInterface.py:192
+#: ../src/netconfpkg/gui/WirelessInterface.py:317
+#: ../src/netconfpkg/gui/PTPInterface.py:200
 msgid "You have selected the following information:"
 msgstr "Anda telah memilih informasi berikut ini:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Perangkat-keras:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:226
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+msgid "Provider name:"
+msgstr "Nama provider:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:228
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+msgid "Login name:"
+msgstr "Nama login:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "No. Telpon:"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "Koneksi ISDN"
+
+#: ../src/netconfpkg/gui/IsdnInterface.py:92
+msgid ""
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
+msgstr ""
+"Buat koneksi ISDN baru. Ini merupakan koneksi yang mempergunakan jalur "
+"Jaringan Digital Layanan Terintegrasi yang menghubungkan ke Penyedia Jasa "
+"Internet anda.Teknologi jenis ini membutuhkan jalur telpon khusus yang "
+"dipasang oleh perusahaan telekomunikasi anda. Ini juga membutuhkan perangkat "
+"yang dikenal dengan nama Terminal Adapter(TA) untuk mengakhiri koneksi ISDN "
+"dari PJI anda. Koneksi jenis ini populer di Eropa dan beberapa wilayah "
+"berteknologi maju lainnya. Ini tersedia tapi tidak umum di Amerika. "
+"Kecepatan antara 64kbps sampai 128kbps."
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#, python-format
+msgid ""
+"Command failed: %s\n"
+"\n"
+"Output:\n"
+"%s\n"
+msgstr ""
+"Perintah gagal: %s\n"
+"\n"
+"Keluaran:\n"
+"%s\n"
+
+#: ../src/netconfpkg/gui/tokenringhardware.py:67
+msgid ""
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
+msgstr ""
+"Kartu Token Ring tidak bisa diinisialisasi. Silakan verifikasi pengaturan "
+"anda dan coba lagi."
+
+#: ../src/netconfpkg/gui/editipsec.py:217
+msgid ""
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr "Harap masukkan indeks parameter keamanan antara 256 dan 4294967295."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:82
+#, python-format
+msgid "%s connection"
+msgstr "koneksi %s"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:85
+#, python-format
+msgid "Create a new %s connection."
+msgstr "Buat koneksi baru %s"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:95
+msgid "This wizard still has to be written."
+msgstr "Wizard ini harusnya tetap ditulis ulang."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:96
+msgid "Press Finish to get the standard configuration dialog."
+msgstr "Tekan Selesai untuk mendapatkan dialog konfigurasi standar."
+
+#: ../src/netconfpkg/gui/GenericInterface.py:97
+msgid "Then, at first, enter the nickname for the device."
+msgstr "Lalu, pertama-tama, masukan nickname untuk perangkat"
+
+#: ../src/netconfpkg/gui/GenericInterface.py:136
+msgid "This device can not be edited with this tool!"
+msgstr "Perangtkat tidak bisa diubah-ubah dengan alat bantu ini!"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:116
+msgid "Ethernet connection"
+msgstr "Koneksi ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:122
+msgid "Create a new ethernet connection."
+msgstr "Buat koneksi ethernet baru."
+
+#: ../src/netconfpkg/gui/EthernetInterface.py:191
+msgid "Other Ethernet Card"
+msgstr "Kartu Ethernet yang lain"
+
 #: ../src/netconfpkg/gui/EthernetInterface.py:211
-#: ../src/netconfpkg/gui/PTPInterface.py:201
 #: ../src/netconfpkg/gui/CipeInterface.py:138
-#: ../src/netconfpkg/gui/TokenRingInterface.py:198
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:211
+#: ../src/netconfpkg/gui/TokenRingInterface.py:193
+#: ../src/netconfpkg/gui/WirelessInterface.py:318
+#: ../src/netconfpkg/gui/PTPInterface.py:201
 msgid "Device:"
 msgstr "Perangkat:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:329
 #: ../src/netconfpkg/gui/EthernetInterface.py:222
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:222
+#: ../src/netconfpkg/gui/TokenRingInterface.py:204
+#: ../src/netconfpkg/gui/WirelessInterface.py:329
 #: ../src/netconfpkg/gui/PTPInterface.py:211
-#: ../src/netconfpkg/gui/TokenRingInterface.py:209
 #: ../src/netconfpkg/gui/edithosts.glade.h:2
 msgid "Address:"
 msgstr "Alamat:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:330
 #: ../src/netconfpkg/gui/EthernetInterface.py:223
-#: ../src/netconfpkg/gui/TokenRingInterface.py:210
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:223
+#: ../src/netconfpkg/gui/TokenRingInterface.py:205
+#: ../src/netconfpkg/gui/WirelessInterface.py:330
 msgid "Subnet mask:"
 msgstr "Subnet mask:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:331
 #: ../src/netconfpkg/gui/EthernetInterface.py:224
-#: ../src/netconfpkg/gui/TokenRingInterface.py:211
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:224
+#: ../src/netconfpkg/gui/TokenRingInterface.py:206
+#: ../src/netconfpkg/gui/WirelessInterface.py:331
 msgid "Default gateway address:"
 msgstr "Default alamat gateway:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:333
 #: ../src/netconfpkg/gui/EthernetInterface.py:226
-#: ../src/netconfpkg/gui/TokenRingInterface.py:213
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:226
+#: ../src/netconfpkg/gui/TokenRingInterface.py:208
+#: ../src/netconfpkg/gui/WirelessInterface.py:333
 msgid "Automatically obtain IP address settings with:"
 msgstr "Secara otomatis mendapatkan pengaturan alamat IP dengan:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:336
-msgid "Mode:"
-msgstr "Modus:"
+#: ../src/netconfpkg/gui/CipeInterface.py:89
+msgid "CIPE (VPN) connection"
+msgstr "Koneksi CIPE (VPN)"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:337
-msgid "ESSID (network ID):"
-msgstr "ESSID (ID Jaringan):"
+#: ../src/netconfpkg/gui/CipeInterface.py:92
+msgid "Create a new virtual private network connection with CIPE."
+msgstr "Buat koneksi VPN baru dengan CIPE."
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:339
-msgid "Automatic"
-msgstr "Otomatis"
+#: ../src/netconfpkg/gui/CipeInterface.py:139
+msgid "Tunnel through device:"
+msgstr "Tunnel melalui perangkat:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:343
-msgid "Channel:"
-msgstr "Kanal:"
+#: ../src/netconfpkg/gui/CipeInterface.py:140
+#: ../src/netconfpkg/gui/CipeInterface.py:301
+msgid "Local port:"
+msgstr "Port lokal:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:344
-msgid "Transmit rate:"
-msgstr "Transmit rate:"
+#: ../src/netconfpkg/gui/CipeInterface.py:145
+#: ../src/netconfpkg/gui/CipeInterface.py:147
+#: ../src/netconfpkg/gui/CipeInterface.py:302
+msgid "Remote peer address:"
+msgstr "Remote alamat peer:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:345
-msgid "Key: "
-msgstr "Kunci: "
+#: ../src/netconfpkg/gui/CipeInterface.py:148
+msgid "Remote peer port:"
+msgstr "Remote port peer:"
 
-#: ../src/netconfpkg/gui/WirelessInterface.py:351
-msgid "encryption disabled"
-msgstr "Enkripsi tidak diaktifkan"
+#: ../src/netconfpkg/gui/CipeInterface.py:150
+#: ../src/netconfpkg/gui/CipeInterface.py:306
+msgid "Remote virtual address:"
+msgstr "Remote alamat virtual:"
 
-#: ../src/netconfpkg/gui/IUCVInterface.py:46
-msgid "IUCV connection"
-msgstr "Koneksi IUCV"
+#: ../src/netconfpkg/gui/CipeInterface.py:151
+#: ../src/netconfpkg/gui/CipeInterface.py:307
+msgid "Local virtual address:"
+msgstr "Alamat virtual lokal:"
 
-#: ../src/netconfpkg/gui/IUCVInterface.py:52
-msgid "Create a new IUCV connection."
-msgstr "Buat koneksi IUCV baru"
+#: ../src/netconfpkg/gui/CipeInterface.py:160
+#: ../src/netconfpkg/gui/CipeInterface.py:228
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:67
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:129
+msgid "None - Server Mode"
+msgstr "Kosong - Modus Server"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:167
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:75
+msgid " (dynamic)"
+msgstr "(dinamik)"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:204
+#: ../src/netconfpkg/gui/CipeInterface.py:258
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:107
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:161
+msgid "Server Mode"
+msgstr "Modus Server"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:289
+#: ../src/netconfpkg/gui/CipeInterface.py:294
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:192
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:197
+msgid "(own choice)"
+msgstr "(pilihan sendiri)"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:300
+msgid "IP address of tunnel device:"
+msgstr "Alamat IP dari perangkat tunnel:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:308
+msgid "Secret key:"
+msgstr "Kunci rahasia:"
+
+#: ../src/netconfpkg/gui/CipeInterface.py:318
+msgid "You must enter a secret key or generate one"
+msgstr "Anda harus memasukan kunci rahasia atau menggeneratenya lagi"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:90
+msgid "Command failed: "
+msgstr "Perintah gagal:"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:91
+msgid "Output:\n"
+msgstr "Output:\n"
+
+#: ../src/netconfpkg/gui/ethernethardware.py:93
+msgid ""
+"The Ethernet card could not be initialized. Please verify your settings and "
+"try again."
+msgstr ""
+"Kartu Ethernet tidak bisa diinisialisasi. Silakan memverifikasi pengaturan "
+"anda dan coba lagi."
 
 #: ../src/netconfpkg/gui/ModemInterface.py:78
 msgid "Modem connection"
 msgstr "Koneksi Modem"
 
 #: ../src/netconfpkg/gui/ModemInterface.py:84
-msgid "Create a new Modem connection.  This is a connection that uses a serial analog modem to dial into to your Internet Service Provider. These modems use sound over a normal copper telephone line to transmit data.  These types of connections are available just about anywhere in the world where there is a phone system."
-msgstr "Buat koneksi Modem baru. Koneksi ini menggunakan modem analog serial untuk melakukan dial ke Penyedia Jasa Internet (PJI) anda. Modem ini menggunakan suara melalui kabel telpon tembaga untuk mengirim data. Tipe dari koneksi ini banyak digunakan oleh sistem telpon di berbagai belahan dunia."
+msgid ""
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data.  These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
+msgstr ""
+"Buat koneksi Modem baru. Koneksi ini menggunakan modem analog serial untuk "
+"melakukan dial ke Penyedia Jasa Internet (PJI) anda. Modem ini menggunakan "
+"suara melalui kabel telpon tembaga untuk mengirim data. Tipe dari koneksi "
+"ini banyak digunakan oleh sistem telpon di berbagai belahan dunia."
 
 #. FIXME: [165331] Can't detect external modem on /dev/ttyS0
 #: ../src/netconfpkg/gui/ModemInterface.py:113
@@ -916,21 +1242,141 @@ msgstr "Tinggi"
 msgid "Very High"
 msgstr "Sangat Tinggi"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:116
-msgid "Ethernet connection"
-msgstr "Koneksi ethernet"
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:116
+#, fuzzy
+msgid "Qeth connection"
+msgstr "koneksi %s"
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:122
-msgid "Create a new ethernet connection."
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:122
+#, fuzzy
+msgid "Create a new qeth connection."
 msgstr "Buat koneksi ethernet baru."
 
-#: ../src/netconfpkg/gui/EthernetInterface.py:191
-msgid "Other Ethernet Card"
-msgstr "Kartu Ethernet yang lain"
+#: ../src/netconfpkg/gui/QethInterfaceDruid.py:191
+#, fuzzy
+msgid "Other QETH Device"
+msgstr "Perangkat Ethernet"
 
-#: ../src/netconfpkg/gui/iucvconfig.py:39
-msgid "IUCV Device"
-msgstr "Perangkat IUCV"
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
+msgid "xDSL connection"
+msgstr "koneksi xDSL"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
+msgid ""
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
+msgstr ""
+"Buat sebuah koneksi xDSL. Ini merupakan koneksi yang mempergunakan salah "
+"satu jenis koneksi broadband dikenal juga sebagai Jalur Berlangganan "
+"Digital. Daftar ini termasuk ADSL (Asimetrik, lebih cepat download dari pada "
+"upload), IDSL (di atas jalur ISDN untuk jarak), SDSL (simetrik, download dan "
+"upload memiliki kecepatan yang sama), dan lainnya. Jenis koneksi ini biasa "
+"dipergunakan di Amerika, dan mulai dapat diterima di tempat lainnya. "
+"Kecepatan sangat tergantung dengan teknologi yang dipergunakan, tapi umumnya "
+"antara 144kbps sampai 1.0Mbps."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
+msgid "Ethernet device:"
+msgstr "Perangkat ethernet:"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:106
+msgid "Token Ring connection"
+msgstr "Koneksi Token Ring"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:112
+msgid "Create a new Token Ring connection."
+msgstr "Buat koneksi Token Ring baru"
+
+#: ../src/netconfpkg/gui/TokenRingInterface.py:174
+msgid "Other Tokenring Card"
+msgstr "Kartu Tokenring lainya"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "Koneksi Nirkabel"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "Buat koneksi nirkabel baru."
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:233
+msgid "BitRate"
+msgstr "BitRate"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:297
+msgid "Other Wireless Card"
+msgstr "Kartu Nirkabel yang baru"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:336
+msgid "Mode:"
+msgstr "Modus:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:337
+msgid "ESSID (network ID):"
+msgstr "ESSID (ID Jaringan):"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:339
+msgid "Automatic"
+msgstr "Otomatis"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:343
+msgid "Channel:"
+msgstr "Kanal:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:344
+msgid "Transmit rate:"
+msgstr "Transmit rate:"
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:345
+msgid "Key: "
+msgstr "Kunci: "
+
+#: ../src/netconfpkg/gui/WirelessInterface.py:351
+msgid "encryption disabled"
+msgstr "Enkripsi tidak diaktifkan"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
+msgid "IP address of tunnel device: "
+msgstr "Alamat IP dari perangkat tunnel:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:204
+msgid "Local port: "
+msgstr "Port lokal:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:205
+msgid "Remote peer address: "
+msgstr "Remote alamat peer:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:209
+msgid "Remote virtual address: "
+msgstr "Remote alamat virtual:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:210
+msgid "Local virtual address: "
+msgstr "Alamat virtual lokal:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:211
+msgid "Secret key: "
+msgstr "Kunci rahasia:"
+
+#: ../src/netconfpkg/gui/PTPInterface.py:212
+msgid "Point to Point (IP):"
+msgstr "Point to Point (IP):"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:149
+#, python-format
+msgid ""
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
+msgstr ""
+"Nickname %s sudah digunakan!\n"
+"Silakan pilih yang lainnya.\n"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:238
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:10
@@ -992,496 +1438,136 @@ msgstr "tidak ada"
 msgid "Modem Dialup Configuration"
 msgstr "Konfigurasi Dialup Modem"
 
-#: ../src/netconfpkg/gui/CTCInterfaceDialog.py:40
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
-msgid "CTC Device"
-msgstr "Perangkat CTC"
+#: ../src/netconfpkg/NC_functions.py:96
+msgid "Common"
+msgstr "Umum"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:87
-#, python-format
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:134
+msgid "Active"
+msgstr "Aktif"
+
+#: ../src/netconfpkg/NC_functions.py:135
+msgid "Inactive"
+msgstr "Tidak aktif"
+
+#: ../src/netconfpkg/NC_functions.py:142
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+msgid "Hardware (CRTSCTS)"
+msgstr "Perangkat-keras (CRTSCTS)"
+
+#: ../src/netconfpkg/NC_functions.py:143
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+msgid "Software (XON/XOFF)"
+msgstr "Perangkat-lunak (XON/XOFF)"
+
+#: ../src/netconfpkg/NC_functions.py:223
 msgid ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Shall the following packages, which are needed on your system, be installed?"
 msgstr ""
-"Could not find file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Paket-paket berikut, yang dibutuhkan pada sistem anda, akankah diinstall?"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:96
-#, python-format
+#: ../src/netconfpkg/NC_functions.py:236
 msgid ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"You have to install the following packages, which are needed on your system!"
 msgstr ""
-"Could not load the file '%s'.\n"
-"Please check your installation!\n"
-"Run: 'rpm -V system-config-network'\n"
+"Anda harus menginstall paket-paket yang dibutuhkan oleh sistem anda berikut "
+"ini!"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:587
+#: ../src/netconfpkg/NC_functions.py:765 ../src/netconfpkg/NC_functions.py:776
 #, python-format
 msgid ""
-"Failed to run:\n"
-"%s"
+"Error removing\n"
+"%s:\n"
+"%s!"
 msgstr ""
-"Gagal menjalankan:\n"
-"%s"
+"Salah ketika memindahkan\n"
+"%s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/GUI_functions.py:590
-msgid "Succeeded. Please read the output."
-msgstr "Berhasil. Silakan baca keluaranya."
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:46
-msgid "CTC connection"
-msgstr "Koneksi CTC"
-
-#: ../src/netconfpkg/gui/CTCInterfaceDruid.py:52
-msgid "Create a new CTC connection."
-msgstr "Buat konek CTC baru"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:67
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:129
-#: ../src/netconfpkg/gui/CipeInterface.py:160
-#: ../src/netconfpkg/gui/CipeInterface.py:228
-msgid "None - Server Mode"
-msgstr "Kosong - Modus Server"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:75
-#: ../src/netconfpkg/gui/CipeInterface.py:167
-msgid " (dynamic)"
-msgstr "(dinamik)"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:107
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:161
-#: ../src/netconfpkg/gui/CipeInterface.py:204
-#: ../src/netconfpkg/gui/CipeInterface.py:258
-msgid "Server Mode"
-msgstr "Modus Server"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:192
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:197
-#: ../src/netconfpkg/gui/CipeInterface.py:289
-#: ../src/netconfpkg/gui/CipeInterface.py:294
-msgid "(own choice)"
-msgstr "(pilihan sendiri)"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:203
-msgid "IP address of tunnel device: "
-msgstr "Alamat IP dari perangkat tunnel:"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:204
-msgid "Local port: "
-msgstr "Port lokal:"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:205
-msgid "Remote peer address: "
-msgstr "Remote alamat peer:"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:209
-msgid "Remote virtual address: "
-msgstr "Remote alamat virtual:"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:210
-msgid "Local virtual address: "
-msgstr "Alamat virtual lokal:"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.py:211
-msgid "Secret key: "
-msgstr "Kunci rahasia:"
-
-#: ../src/netconfpkg/gui/GenericInterface.py:82
-#, python-format
-msgid "%s connection"
-msgstr "koneksi %s"
-
-#: ../src/netconfpkg/gui/GenericInterface.py:85
-#, python-format
-msgid "Create a new %s connection."
-msgstr "Buat koneksi baru %s"
-
-#: ../src/netconfpkg/gui/GenericInterface.py:95
-msgid "This wizard still has to be written."
-msgstr "Wizard ini harusnya tetap ditulis ulang."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:96
-msgid "Press Finish to get the standard configuration dialog."
-msgstr "Tekan Selesai untuk mendapatkan dialog konfigurasi standar."
-
-#: ../src/netconfpkg/gui/GenericInterface.py:97
-msgid "Then, at first, enter the nickname for the device."
-msgstr "Lalu, pertama-tama, masukan nickname untuk perangkat"
-
-#: ../src/netconfpkg/gui/GenericInterface.py:136
-msgid "This device can not be edited with this tool!"
-msgstr "Perangtkat tidak bisa diubah-ubah dengan alat bantu ini!"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:89
-msgid "xDSL connection"
-msgstr "koneksi xDSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:95
-msgid "Create an xDSL connection.  This is a connection that uses one of several types of broadband connections collective known as Digital Subscriber Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and uploads at the same speed), and several others.  These types of connections are common in the United States, and are gaining acceptance elsewhere.  Speeds vary according to the technology used, but generally range from 144kbps to 1.0Mbps."
-msgstr "Buat sebuah koneksi xDSL. Ini merupakan koneksi yang mempergunakan salah satu jenis koneksi broadband dikenal juga sebagai Jalur Berlangganan Digital. Daftar ini termasuk ADSL (Asimetrik, lebih cepat download dari pada upload), IDSL (di atas jalur ISDN untuk jarak), SDSL (simetrik, download dan upload memiliki kecepatan yang sama), dan lainnya. Jenis koneksi ini biasa dipergunakan di Amerika, dan mulai dapat diterima di tempat lainnya. Kecepatan sangat tergantung dengan teknologi yang dipergunakan, tapi umumnya antara 144kbps sampai 1.0Mbps."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:135
-msgid "Ethernet device:"
-msgstr "Perangkat ethernet:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
-#: ../src/netconfpkg/gui/DialupDruid.py:226
-msgid "Provider name:"
-msgstr "Nama provider:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
-#: ../src/netconfpkg/gui/DialupDruid.py:228
-msgid "Login name:"
-msgstr "Nama login:"
-
-#: ../src/netconfpkg/gui/DialupDruid.py:225
-msgid "Hardware:"
-msgstr "Perangkat-keras:"
-
-#: ../src/netconfpkg/gui/DialupDruid.py:229
-msgid "Phone number:"
-msgstr "No. Telpon:"
-
-#: ../src/netconfpkg/gui/PTPInterface.py:212
-msgid "Point to Point (IP):"
-msgstr "Point to Point (IP):"
-
-#: ../src/netconfpkg/gui/tokenringhardware.py:65
+#: ../src/netconfpkg/NC_functions.py:805
 #, python-format
 msgid ""
-"Command failed: %s\n"
-"\n"
-"Output:\n"
+"Error copying \n"
 "%s\n"
+"to %s:\n"
+"%s!"
 msgstr ""
-"Perintah gagal: %s\n"
-"\n"
-"Keluaran:\n"
+"Salah ketika menyalin \n"
 "%s\n"
+"ke %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/tokenringhardware.py:67
-msgid "The Token Ring card could not be initialized. Please verify your settings and try again."
-msgstr "Kartu Token Ring tidak bisa diinisialisasi. Silakan verifikasi pengaturan anda dan coba lagi."
-
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:149
+#: ../src/netconfpkg/NC_functions.py:815
 #, python-format
 msgid ""
-"Nickname %s is already in use!\n"
-"Please choose another one.\n"
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
 msgstr ""
-"Nickname %s sudah digunakan!\n"
-"Silakan pilih yang lainnya.\n"
+"Salah ketika me-link \n"
+"%s\n"
+"ke %s:\n"
+"%s!"
 
-#: ../src/netconfpkg/gui/editipsec.py:217
-msgid "Please enter a unique security parameter index between 256 and 4294967295."
-msgstr "Harap masukkan indeks parameter keamanan antara 256 dan 4294967295."
-
-#: ../src/netconfpkg/gui/CipeInterface.py:89
-msgid "CIPE (VPN) connection"
-msgstr "Koneksi CIPE (VPN)"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:92
-msgid "Create a new virtual private network connection with CIPE."
-msgstr "Buat koneksi VPN baru dengan CIPE."
-
-#: ../src/netconfpkg/gui/CipeInterface.py:139
-msgid "Tunnel through device:"
-msgstr "Tunnel melalui perangkat:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:140
-#: ../src/netconfpkg/gui/CipeInterface.py:301
-msgid "Local port:"
-msgstr "Port lokal:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:145
-#: ../src/netconfpkg/gui/CipeInterface.py:147
-#: ../src/netconfpkg/gui/CipeInterface.py:302
-msgid "Remote peer address:"
-msgstr "Remote alamat peer:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:148
-msgid "Remote peer port:"
-msgstr "Remote port peer:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:150
-#: ../src/netconfpkg/gui/CipeInterface.py:306
-msgid "Remote virtual address:"
-msgstr "Remote alamat virtual:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:151
-#: ../src/netconfpkg/gui/CipeInterface.py:307
-msgid "Local virtual address:"
-msgstr "Alamat virtual lokal:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:300
-msgid "IP address of tunnel device:"
-msgstr "Alamat IP dari perangkat tunnel:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:308
-msgid "Secret key:"
-msgstr "Kunci rahasia:"
-
-#: ../src/netconfpkg/gui/CipeInterface.py:318
-msgid "You must enter a secret key or generate one"
-msgstr "Anda harus memasukan kunci rahasia atau menggeneratenya lagi"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:86
-msgid "ISDN connection"
-msgstr "Koneksi ISDN"
-
-#: ../src/netconfpkg/gui/IsdnInterface.py:92
-msgid "Create a new ISDN connection. This is a connection that uses an Integrated Services Digital Network line to dial into to your Internet Service Provider. This type of technology requires a special phone line to be installed by your telephone company. It also requires a device known as a Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This type of connection is popular in Europe and several other technologically advanced regions.  It is available but uncommon in the USA.  Speeds range from 64kbps to 128kbps."
-msgstr "Buat koneksi ISDN baru. Ini merupakan koneksi yang mempergunakan jalur Jaringan Digital Layanan Terintegrasi yang menghubungkan ke Penyedia Jasa Internet anda.Teknologi jenis ini membutuhkan jalur telpon khusus yang dipasang oleh perusahaan telekomunikasi anda. Ini juga membutuhkan perangkat yang dikenal dengan nama Terminal Adapter(TA) untuk mengakhiri koneksi ISDN dari PJI anda. Koneksi jenis ini populer di Eropa dan beberapa wilayah berteknologi maju lainnya. Ini tersedia tapi tidak umum di Amerika. Kecepatan antara 64kbps sampai 128kbps."
-
-#: ../src/netconfpkg/gui/maindialog.py:298
-msgid "Loading configuration..."
-msgstr "Memanggil Konfigurasi"
-
-#: ../src/netconfpkg/gui/maindialog.py:306
-msgid "Loading device configuration..."
-msgstr "Memanggil konfigurasi perangkat..."
-
-#: ../src/netconfpkg/gui/maindialog.py:311
-msgid "Loading hardware configuration..."
-msgstr "Memanggil konfigurasi perangkat-keras..."
-
-#: ../src/netconfpkg/gui/maindialog.py:316
-msgid "Loading profile configuration..."
-msgstr "Memanggil konfigurasi profile..."
-
-#: ../src/netconfpkg/gui/maindialog.py:324
-msgid "Loading IPsec configuration..."
-msgstr "Memanggil konfigurasi IPsec"
-
-#: ../src/netconfpkg/gui/maindialog.py:329
-msgid "Testing configuration set..."
-msgstr "Mencoba konfigurasi yang sudah diatur"
-
-#: ../src/netconfpkg/gui/maindialog.py:369
-#, python-format
-msgid "Active profile: %s (modified)"
-msgstr "Profil aktif: %s (termodifikasi)"
-
-#: ../src/netconfpkg/gui/maindialog.py:373
-#, python-format
-msgid "Active profile: %s"
-msgstr "Profil aktif: %s"
-
-#: ../src/netconfpkg/gui/maindialog.py:388
-msgid "Saving configuration..."
-msgstr "Menyimpan konfigurasi..."
-
-#: ../src/netconfpkg/gui/maindialog.py:400
+#: ../src/netconfpkg/NC_functions.py:825
 #, python-format
 msgid ""
-"Error saving configuration!\n"
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Salah ketika merubah-nama \n"
+"%s\n"
+"ke %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:833
+#, python-format
+msgid ""
+"Error creating directory!\n"
 "%s"
 msgstr ""
-"Terjadi kesalahan menyimpan konfigurasi!\n"
+"Salah ketika membuat direktori!\n"
 "%s"
 
-#: ../src/netconfpkg/gui/maindialog.py:403
-msgid "Changes are saved. You may want to restart the network and network services or restart the computer."
-msgstr "Perubahan telah disimpan. Anda boleh memulai ulang jaringan dan layanan jaringan atau memulai ulang komputer."
-
-#: ../src/netconfpkg/gui/maindialog.py:412
-msgid "Saving device configuration..."
-msgstr "Menyimpan konfigurasi perangkat..."
-
-#: ../src/netconfpkg/gui/maindialog.py:419
-msgid "Saving hardware configuration..."
-msgstr "Menyimpan konfigurasi perangkat-keras..."
-
-#: ../src/netconfpkg/gui/maindialog.py:426
-msgid "Saving profile configuration..."
-msgstr "Menyimpan konfigurasi profile..."
-
-#: ../src/netconfpkg/gui/maindialog.py:433
-msgid "Saving IPsec configuration..."
-msgstr "Menyimpan konfigurasi IPsec"
-
-#: ../src/netconfpkg/gui/maindialog.py:452
-msgid "Updating devices..."
-msgstr "Memperbarui perangkat..."
-
-#: ../src/netconfpkg/gui/maindialog.py:516
-msgid "Updating hardware..."
-msgstr "Memperbarui perangkat-keras..."
-
-#: ../src/netconfpkg/gui/maindialog.py:604
-msgid "Updating profiles..."
-msgstr "Memperbarui profile..."
-
-#: ../src/netconfpkg/gui/maindialog.py:712
-msgid "Errors detected, do you really want to quit?"
-msgstr "Kesalahan terdeteksi, yakin mau keluar?"
-
-#: ../src/netconfpkg/gui/maindialog.py:720
-#: ../src/netconfpkg/gui/maindialog.py:739
-msgid "Do you want to save your changes?"
-msgstr "Anda mau menyimpan perubahan yang telah anda lakukan?"
-
-#: ../src/netconfpkg/gui/maindialog.py:917
-msgid "The Loopback device can not be edited!"
-msgstr "Perangkat loopbak tidak bisa diubah!"
-
-#: ../src/netconfpkg/gui/maindialog.py:921
-msgid "Edit device..."
-msgstr "Mengubah perangkat..."
-
-#: ../src/netconfpkg/gui/maindialog.py:960
+#: ../src/netconfpkg/NC_functions.py:973
 #, python-format
-msgid "The device type %s cannot be edited!"
-msgstr "Tipe perangkat %s tidak bisa diubah!"
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "Menlink %s ke perangkat dan meletakannya kedalam profil %s."
 
-#: ../src/netconfpkg/gui/maindialog.py:979
-msgid "The Loopback device can not be removed!"
-msgstr "Perangkat Loopbak tidak bisa dihapus!"
+#: ../src/netconfpkg/NCIPsec.py:186
+msgid "IPsec activating..."
+msgstr "Mengaktifkan IPsec..."
 
-#: ../src/netconfpkg/gui/maindialog.py:983
+#: ../src/netconfpkg/NCIPsec.py:187
 #, python-format
-msgid "Do you really want to delete device \"%s\"?"
-msgstr "Anda benar-benar ingin menghapus perangkat \"%s\"?"
+msgid "Activating IPsec connection %s, please wait..."
+msgstr "Mengaktifkan koneksi IPsec %s, silakan tunggu..."
 
-#: ../src/netconfpkg/gui/maindialog.py:1015
-#: ../src/netconfpkg/gui/maindialog.py:1050
-#: ../src/netconfpkg/gui/maindialog.py:1816
-#: ../src/netconfpkg/gui/maindialog.py:1843
-msgid "You have made some changes in your configuration."
-msgstr "Anda telah membuat beberapa perubahan dalam konfigurasi anda."
-
-#: ../src/netconfpkg/gui/maindialog.py:1016
+#: ../src/netconfpkg/NCIPsec.py:189
 #, python-format
-msgid "To activate the network device %s, the changes have to be saved."
-msgstr "Untuk mengaktifkan perangkat jaringan %s, perubahan yang telah dibuat harus disimpan."
+msgid "Cannot activate IPsec connection %s!\n"
+msgstr "Tidak bisa mengaktifkan koneksi IPsec %s!\n"
 
-#: ../src/netconfpkg/gui/maindialog.py:1018
-#: ../src/netconfpkg/gui/maindialog.py:1053
-#: ../src/netconfpkg/gui/maindialog.py:1819
-#: ../src/netconfpkg/gui/maindialog.py:1846
-msgid "Do you want to continue?"
-msgstr "Anda ingin melanjutkan?"
+#: ../src/netconfpkg/NCIPsec.py:206
+msgid "IPsec deactivating..."
+msgstr "Mematikankan IPsec..."
 
-#: ../src/netconfpkg/gui/maindialog.py:1051
+#: ../src/netconfpkg/NCIPsec.py:207
 #, python-format
-msgid "To deactivate the network device %s, the changes have to be saved."
-msgstr "Untuk tidak mengaktifkan perangkat jaringan %s, perubahan yang dilakukan harus disimpan."
+msgid "Deactivating IPsec connection %s, please wait..."
+msgstr "Mematikan koneksi IPsec %s, silakan tunggu..."
 
-#: ../src/netconfpkg/gui/maindialog.py:1193
-msgid "The Loopback device can not be disabled!"
-msgstr "Perangkat Loopback tidak bisa di non-aktifkan!"
-
-#: ../src/netconfpkg/gui/maindialog.py:1468
-#: ../src/netconfpkg/gui/maindialog.py:1548
-msgid "The name may only contain letters and digits!"
-msgstr "Nama hanya boleh berisi huruf dan digit!"
-
-#: ../src/netconfpkg/gui/maindialog.py:1473
-#: ../src/netconfpkg/gui/maindialog.py:1553
+#: ../src/netconfpkg/NCIPsec.py:209
 #, python-format
-msgid "The profile can't be named \"%s\"!"
-msgstr "Profil tidak bisa dikasih nama \"%s\"!"
-
-#: ../src/netconfpkg/gui/maindialog.py:1479
-#: ../src/netconfpkg/gui/maindialog.py:1559
-msgid "The profile name already exists!"
-msgstr "nama profil sudah ada!"
-
-#: ../src/netconfpkg/gui/maindialog.py:1526
-#, python-format
-msgid "The \"%s\" profile can't be renamed!"
-msgstr "Profil \"%s\" tidak bisa diganti nama!"
-
-#: ../src/netconfpkg/gui/maindialog.py:1579
-#, python-format
-msgid "The \"%s\" Profile can not be deleted!"
-msgstr "Profil \"%s\" tidak bisa dihapus!"
-
-#: ../src/netconfpkg/gui/maindialog.py:1585
-#, python-format
-msgid "Do you really want to delete profile \"%s\"?"
-msgstr "Anda benar-benar ingin menghapus profil \"%s\"?"
-
-#: ../src/netconfpkg/gui/maindialog.py:1659
-msgid "Sorry, there is nothing to be edited, or this type cannot be edited yet."
-msgstr "Maaf, tidak ada yang dirubah, atau tipe ini memang belum bisa diubah."
-
-#: ../src/netconfpkg/gui/maindialog.py:1677
-#, python-format
-msgid "Do you really want to delete \"%s\"?"
-msgstr "Anda yakin ingin menghapus \"%s\"?"
-
-#: ../src/netconfpkg/gui/maindialog.py:1690
-#, python-format
-msgid "Do you want to delete all devices that used \"%s\"?"
-msgstr "Anda ingin menghapus semua perangkat yang telah digunakan \"%s\"?"
-
-#: ../src/netconfpkg/gui/maindialog.py:1722
-#: ../src/netconfpkg/gui/maindialog.py:1738
-#: ../src/netconf-cmd.py:98
-#: ../src/neat-control.py:151
-#: ../src/neat-control.py:168
-msgid "Copyright (c) 2001-2005 Red Hat, Inc."
-msgstr "Hakcipta (c) 2001-2005 Red Hat, Inc."
-
-#: ../src/netconfpkg/gui/maindialog.py:1723
-#: ../src/netconf-cmd.py:99
-#: ../src/neat-control.py:152
-msgid "This software is distributed under the GPL. Please Report bugs to Red Hat's Bug Tracking System: http://bugzilla.redhat.com/"
-msgstr "Perangkat-lunak ini disebarkan di bawah GPL. Silakan Laporkan bug kepada Sistem Pelacak Bug Red Hat: http://bugzilla.redhat.com/"
-
-#: ../src/netconfpkg/gui/maindialog.py:1741
-msgid "translator_credits"
-msgstr "Kredit Penerjemah"
-
-#: ../src/netconfpkg/gui/maindialog.py:1742
-#: ../src/neat-control.py:175
-msgid ""
-"This software is distributed under the GPL. \n"
-"Please Report bugs to Red Hat's Bug Tracking \n"
-"System: http://bugzilla.redhat.com/"
-msgstr ""
-"Perangkat-lunak ini disebarkan di bawah GPL.\n"
-"Silakan Laporkan bug kepada Sistem Pelacak Bug\n"
-" Red Hat: http://bugzilla.redhat.com/"
-
-#: ../src/netconfpkg/gui/maindialog.py:1817
-#, python-format
-msgid "To activate the IPsec connection %s, the changes have to be saved."
-msgstr "Untuk mengaktifkan koneksi IPsec %s, perubahan yang dilakukan harus disimpan."
-
-#: ../src/netconfpkg/gui/maindialog.py:1844
-#, python-format
-msgid "To deactivate the IPsec connection %s, the changes have to be saved."
-msgstr "Untuk menon-aktifkan koneksi IPsec %s, perubahan yang dilakukan harus disimpan."
-
-#: ../src/netconfpkg/gui/ethernethardware.py:90
-msgid "Command failed: "
-msgstr "Perintah gagal:"
-
-#: ../src/netconfpkg/gui/ethernethardware.py:91
-msgid "Output:\n"
-msgstr "Output:\n"
-
-#: ../src/netconfpkg/gui/ethernethardware.py:93
-msgid "The Ethernet card could not be initialized. Please verify your settings and try again."
-msgstr "Kartu Ethernet tidak bisa diinisialisasi. Silakan memverifikasi pengaturan anda dan coba lagi."
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:111
-msgid "Token Ring connection"
-msgstr "Koneksi Token Ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:117
-msgid "Create a new Token Ring connection."
-msgstr "Buat koneksi Token Ring baru"
-
-#: ../src/netconfpkg/gui/TokenRingInterface.py:179
-msgid "Other Tokenring Card"
-msgstr "Kartu Tokenring lainya"
+msgid "Cannot deactivate IPsec connection %s!\n"
+msgstr "Tidak bisa menon-aktifkan koneksi IPsec %s!\n"
 
 #: ../src/netconf.py:55
 #, python-format
@@ -1492,20 +1578,25 @@ msgstr "Kesalahan: %s, %s!"
 msgid "Starting text version"
 msgstr "Memulai versi teks"
 
-#: ../src/netconf.py:72
-#: ../src/neat-control.py:50
+#: ../src/netconf.py:72 ../src/neat-control.py:50
 msgid "ERROR: Unable to initialize graphical environment. "
 msgstr "KESALAHAN: Tidak bisa menginisialisasi lingkungkan grafis"
 
-#: ../src/netconf.py:73
-#: ../src/neat-control.py:51
-msgid "Most likely cause of failure is that the tool was not run using a graphical environment. "
-msgstr "Sepertinya karena kesalahan yang ada alat bantu tidak dijalankan menggunakan lingkungan grafis."
+#: ../src/netconf.py:73 ../src/neat-control.py:51
+msgid ""
+"Most likely cause of failure is that the tool was not run using a graphical "
+"environment. "
+msgstr ""
+"Sepertinya karena kesalahan yang ada alat bantu tidak dijalankan menggunakan "
+"lingkungan grafis."
 
-#: ../src/netconf.py:74
-#: ../src/neat-control.py:52
-msgid "Please either start your graphical user interface or set your DISPLAY variable.\n"
-msgstr "Silakan mulai antarmuka pengguna grafis anda ataupun atur variabel DISPLAY anda.\n"
+#: ../src/netconf.py:74 ../src/neat-control.py:52
+msgid ""
+"Please either start your graphical user interface or set your DISPLAY "
+"variable.\n"
+msgstr ""
+"Silakan mulai antarmuka pengguna grafis anda ataupun atur variabel DISPLAY "
+"anda.\n"
 
 #: ../src/netconf.py:116
 msgid "Loading Network Configuration..."
@@ -1525,9 +1616,43 @@ msgstr ""
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Silakan mulai system-config-network dengan permisi root!\n"
 
+#: ../src/neat-control.py:228
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "Tidak bisa mengkonfigurasi perangkat jaringan %s"
+
+#: ../src/neat-control.py:248
+msgid "Switching Profiles"
+msgstr "Pindah Profile"
+
+#: ../src/neat-control.py:249
+#, python-format
+msgid "Switching to profile %s"
+msgstr "Pindah profile ke %s"
+
+#: ../src/neat-control.py:250
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "Gagal memindahkan porfile ke %s"
+
+#. TBD
+#: ../src/neat-control.py:265
+msgid "To be rewritten!"
+msgstr "Untuk digantikan!"
+
+#: ../src/neat-control.py:392
+msgid " (active)"
+msgstr "(aktif)"
+
 #: ../src/netconf-tui.py:99
-msgid "An unhandled exception has occured.  This is most likely a bug.  Please save the crash dump and file a detailed bug report against system-config-network at https://bugzilla.redhat.com/bugzilla"
-msgstr "Eksepsi yang tidak bisa ditangani telah terjadi. Ini sepertinya sebuah bug. Silakan simpan dump dari hasil crash dan arsipkan laporan bug secara detil dari system-config-network di https://bugzilla.blankonlinux.or.id/"
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against system-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Eksepsi yang tidak bisa ditangani telah terjadi. Ini sepertinya sebuah bug. "
+"Silakan simpan dump dari hasil crash dan arsipkan laporan bug secara detil "
+"dari system-config-network di https://bugzilla.blankonlinux.or.id/"
 
 #: ../src/netconf-tui.py:127
 msgid "Loading configuration"
@@ -1553,34 +1678,35 @@ msgstr "Perangkat keras mana yang Anda mau tambahkan?"
 msgid "Add"
 msgstr "T_ambah"
 
-#: ../src/netconf-tui.py:155
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconf-tui.py:155 ../src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Ethernet"
 msgstr "Ethernet"
 
-#: ../src/netconf-tui.py:156
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconf-tui.py:156 ../src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "Modem"
 msgstr "Modem"
 
-#: ../src/netconf-tui.py:157
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconf-tui.py:157 ../src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "ISDN"
 msgstr "ISDN"
 
-#: ../src/netconf-tui.py:203
+#: ../src/netconf-tui.py:161
+msgid "QETH"
+msgstr ""
+
+#: ../src/netconf-tui.py:208
 msgid "<New Device>"
 msgstr "<Perangkat Baru>"
 
-#: ../src/netconf-tui.py:204
+#: ../src/netconf-tui.py:209
 msgid "Select A Device"
 msgstr "Pilih Perangkat"
 
-#: ../src/netconf-tui.py:205
+#: ../src/netconf-tui.py:210
 msgid "Quit"
 msgstr "Quit"
 
-#: ../src/netconf-tui.py:222
+#: ../src/netconf-tui.py:227
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -1663,125 +1789,657 @@ msgstr "Pilihan tidak diketahui %s\n"
 msgid "Unknown List %s\n"
 msgstr "Daftar tidak diketahui %s\n"
 
-#: ../src/neat-control.py:228
-#, python-format
-msgid "Cannot configure network device %s"
-msgstr "Tidak bisa mengkonfigurasi perangkat jaringan %s"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+msgid "Allow dial on _demand"
+msgstr "Perbolehkan dial sesuai permintaan"
 
-#: ../src/neat-control.py:248
-msgid "Switching Profiles"
-msgstr "Pindah Profile"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow the link come up on demand."
+msgstr "Perbolehkan koneksi hidup sesuai permintaan."
 
-#: ../src/neat-control.py:249
-#, python-format
-msgid "Switching to profile %s"
-msgstr "Pindah profile ke %s"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Demand setting"
+msgstr "Konfigurasi permintaan"
 
-#: ../src/neat-control.py:250
-#, python-format
-msgid "Failed to switch to profile %s"
-msgstr "Gagal memindahkan porfile ke %s"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Enable synchronous PPP for the connection"
+msgstr "Aktifkan sinkronisasi PPP untuk koneksi"
 
-#. TBD
-#: ../src/neat-control.py:265
-msgid "To be rewritten!"
-msgstr "Untuk digantikan!"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
+msgid ""
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
+msgstr ""
+"Masukkan nama Access Concentrator, jika ISP anda memberitahu anda. Di "
+"kebanyakan kasus anda dapat membiarkannya kosong."
 
-#: ../src/neat-control.py:392
-msgid " (active)"
-msgstr "(aktif)"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
+msgid ""
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
+msgstr ""
+"Masukan Nama Layanan, jika ISP anda membutuhkanya. Jika anda tidak "
+"mengetahuinya, silakan menghubungi ISP anda. Pada banyak kasus anda bisa "
+"membiarkanya kosong."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
-msgid "11M"
-msgstr "11M"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr ""
+"Masukan waktu diam dalam detik setelah dimana hubungan harus di putuskan."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-msgid "1M"
-msgstr "1M"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Masukan nama login, yang diberikan ISP anda di sini."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
-msgstr "2M"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
+msgid ""
+"Enter the name of this configuration, usually just the name of your ISP."
+msgstr "Masukan nama dari konfigurasi ini, biasanya adalah nama dari ISP anda."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
-msgstr "5.5M"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
+msgid ""
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
+msgstr ""
+"Masukan password untuk akun anda. Jika tidak tahu, silakan hubungi ISP anda."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
-msgid "Network name (SSID):"
-msgstr "Nama Jaringan (SSID)"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:27
+msgid "Make this connection the default _route"
+msgstr "Buat koneksi ini menjadi _route default"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
-msgid "Set the operating mode of the device, which depends on the network topology. The mode can be Ad-Hoc (network composed of only one cell and without Access Point), Managed (node connects to a network composed of many Access Points, with roaming), Master (the node is the synchronization master or acts as an Access Point) or Auto."
-msgstr "Set the operating mode of the device, which depends on the network topology. The mode can be Ad-Hoc (network composed of only one cell and without Access Point), Managed (node connects to a network composed of many Access Points, with roaming), Master (the node is the synchronization master or acts as an Access Point) or Auto."
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
+msgid "Pass_word:"
+msgstr "Pass_word:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
-msgid "Used to manipulate encryption or scrambling keys and encryption mode. To set the current encryption key in hex digits enter the key with 0x prepended as 0xXXXXXXXX."
-msgstr "Dipergunakan untuk memanipulasi enkripsi atau kunci pengacak dan mode enkripsi. Untuk menset kunci enkripsi yang dipakai sekarang dalam digit hex masukkan kunci diawali dengan 0x seperti 0xXXXXXXXX."
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:39
+msgid "Restart if _connection dies"
+msgstr "Mulai ulang jika _koneksi mati"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
-msgid "Wireless Device Configuration"
-msgstr "Konfigurasi Perangkat Nirkabel"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
+msgid "Use this form to enter your T-Online account data."
+msgstr "Gunakan lembar berikut untuk memasukkan data akun T-Online."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
-msgid "_Auto"
-msgstr "_Auto"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+msgid "_AC-name:"
+msgstr "_AC-name:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
-msgid "_Channel:"
-msgstr "_Kanal:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
+msgid "_Advanced"
+msgstr "_Advanced"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/QethConfig.glade.h:6
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:2
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:7
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
 msgid "_General"
 msgstr "_Hal yang umum"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
-msgid "_Hardware device"
-msgstr "Perangkat dari _perangkat_keras"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/QethConfig.glade.h:7
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+msgid "_Hardware Device"
+msgstr "Perangkat dari Perangkat-keras"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
-msgid "_Key (use 0x for hex):"
-msgstr "_Kunci (gunakan 0x untuk hex):"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+msgid "_IPsec"
+msgstr "_IPsec"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
-msgid "_Mode:"
-msgstr "_Modus:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
+msgid "_Login name:"
+msgstr "Nama _Login:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+msgid "_Maximum idle time:"
+msgstr "_Maximum idle time:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
+msgid "_Provider"
+msgstr "_Provider"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+msgid "_Provider name:"
+msgstr "Nama _Provider:"
+
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
+#: ../src/netconfpkg/gui/QethConfig.glade.h:9
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:4
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
 #: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
 msgid "_Route"
 msgstr "_Route"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
-msgid "_Specified:"
-msgstr "_Spesifikasi:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Service-name:"
+msgstr "_Service-name:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
-msgid "_Transmit rate:"
-msgstr "_Transmit rate:"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
+msgid "_T-Online Account Setup"
+msgstr "Setup Akun _T-Online"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
-msgid "_Wireless Settings"
-msgstr "Pengaturan Nirkabel"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+msgid "_Use synchronous PPP"
+msgstr "G_unakan sinkronos PPP"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+msgid "xDSL Configuration"
+msgstr "Konfigurasi xDSL"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Pilih Tipe Perangkat-keras"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "Tipe Perangkat-keras:"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr "Silakan pilih perangkat dari perangkat-keras yang anda ingin buat"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Token Ring"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:1
+msgid "<b>T-Online account</b>"
+msgstr "<b>Akun _T-Online</b>"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:2
+msgid "Account Setup"
+msgstr "Setup Akun"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:3
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
+msgid "Associated T-Online _number:"
+msgstr "Nomor-nomor T-Online:"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:4
+msgid ""
+"Please enter here your personal account data. Without this data, access to T-"
+"Online is unfortunately not possible."
+msgstr ""
+"Silakan masukan data akun pribadi anda disini. Tanpa data ini, akses ke T-"
+"Online tidak akan bisa dilaksanakan."
+
+#: ../src/netconfpkg/gui/tonline.glade.h:5
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
+msgid "_Adapter identifier:"
+msgstr "Pengenal _Adapter:"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:6
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:19
+msgid "_Concurrent user number/suffix:"
+msgstr "Jumlah user konkuren/suffix:"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:7
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:21
+msgid "_Personal password:"
+msgstr "Password _pribadi:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+msgid "<b>Account Type:</b>"
+msgstr "<b>Jenis Akun</b>"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "Mengkonfigur koneksi DSL"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "Membuat koneksi DSL"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Masukan nama provider untuk akun ini."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "_Perangkat ethernet:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Normal"
+msgstr "Normal"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
+msgid ""
+"Normal\n"
+"T-Online"
+msgstr ""
+"Normal\n"
+"T-Online"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "Password (l_agi):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Pilih perangkat ethernet yang akan di koneksikan ke modem DSL."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "Pilih perangkat ethernet untuk akun ini."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+msgid "T-Online"
+msgstr "T-Online"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "Pilih Adapter Token Ring"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "_Adapter:"
+msgstr "_Adapter:"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardware.glade.h:5
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
+msgid "_Device:"
+msgstr "_Perangkat"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+msgid "Configure Network Settings"
+msgstr "Konfigurasi Pengaturan Jaringan"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
+msgid "Create Ethernet Device"
+msgstr "Buat Perangkat Ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Kartu Ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+msgid "MTU:"
+msgstr "MTU:"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:5
+msgid ""
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Silakan masukan parameter dari MTU untuk mensetel Transfer Unit secara "
+"maksimal dari antarmuka berikut. Pada s390/s390x MTU-nya mempunyai "
+"pengaturan default 1492"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Pilih Perangkat Ethernet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "Pilih ehterner yang ingin anda konfigur"
+
+#: ../src/netconfpkg/gui/QethConfig.glade.h:1
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:1
+msgid "Allow all _users to enable and disable the device"
+msgstr ""
+"Perbolehkan semua pengg_una untuk mengaktifkan dan menon-aktifkan perangkat"
+
+#: ../src/netconfpkg/gui/QethConfig.glade.h:2
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:3
+msgid "Enable IPv_6 configuration for this interface"
+msgstr "Aktifkan konfigurasi IPv_6 untuk antarmuka ini"
+
+#: ../src/netconfpkg/gui/QethConfig.glade.h:3
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+msgid "Ethernet Device"
+msgstr "Perangkat Ethernet"
+
+#: ../src/netconfpkg/gui/QethConfig.glade.h:4
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:4
+msgid "_Activate device when computer starts"
+msgstr "_Aktifkan perangkat ketika komputer dimulai"
+
+#: ../src/netconfpkg/gui/QethConfig.glade.h:5
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:5
+msgid "_Activate device when parent device starts"
+msgstr "_Aktifkan perangkat ketika perangkat utama berjalan"
+
+#: ../src/netconfpkg/gui/QethConfig.glade.h:8
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:6
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+msgid "_Nickname:"
+msgstr "_Nickname"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>No. Telpon:</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "Kode A_rea:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "Secara otomatis mendapatkan informasi _DNS dari provider."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "Secara otomatis mendapatkan pengaturan alamat _IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "Buat Koneksi Dialup"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "Alamat _gateway default:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "Modus secara ringkas:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"Masukan nomor yang ingin anda dial sebelum nomor telepon yang normal. "
+"Contohnya, jika anda ingin mencapai line telepon luar , atau menon-aktifkan "
+"nada tunggu, masukan nomor yang diperlukan disini."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr ""
+"Masukan kode area yang diperlukan untuk mencapai provider internet anda."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "Masukan nomor telepon dari ISP anda (tanpa kode awalan/area/negara)."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "Pengaturan IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+msgid "Internet Provider"
+msgstr "Provider Internet"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "Pengaturan Alamat IP secara manual"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
+msgid "New Interface"
+msgstr "Interface Baru"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "Pengaturan PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "Prefi_x:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "_Nama Provider"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "Pilih Provider"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "Alamat IP diset Statik"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+msgid "_Address:"
+msgstr "_Alamat:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "Nomer Tel_pon:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+msgid "_Subnet mask:"
+msgstr "_Subnet mask:"
+
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:4
+msgid "Select Ethernet Adapter"
+msgstr "Pilih Adapter untuk Ethernet"
+
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00:00:00"
+
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Waktu Online:"
+
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "Kilk kanan pada tombol mouse untuk properti"
+
+#: ../src/netconfpkg/gui/ptpconfig.glade.h:1
+#, fuzzy
+msgid "Qeth Device"
+msgstr "Buar Perangkat"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Konek ke"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Diputus dari"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+msgid "_Configure..."
+msgstr "_Konfigurasi"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:2
+msgid "Controlled by _NetworkManager"
+msgstr "Dikendalikan dari _Network Manager"
+
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/QethHardware.glade.h:4
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "Konfigurasi Adapter Jaringan"
+
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "Tungu untuk konek ke "
+
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+msgid "Waiting..."
+msgstr "Tunggu..."
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "<b>D channel protocol</b>"
+msgstr "<b>Protokol Saluran D </b>"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardware.glade.h:1
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+msgid "<b>Resources</b>"
+msgstr "<b>Sumber Daya</b>"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro ISDN (EDSS1)"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "Konfigurasi Adapter ISDN"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+msgid "ISDN _adapters:"
+msgstr "ISDN _adapters:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+msgid "_IO:"
+msgstr "_IO:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+msgid "_MEM:"
+msgstr "_MEM:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
+msgid ""
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
+msgstr ""
+"Tiap perangkat perlu disambungkan ke perangkat fisik yang dapat dipilih dari "
+"bawah ini. Dukungan Alias Perangkat mengijinkan anda untuk mempergunakan "
+"multi perangkat virtual untuk satu perangkat fisik."
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
+msgid "Enable _Device Alias support"
+msgstr "Aktifkan dukungan Alias _Perangkat"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
+msgid "Ha_rdware address:"
+msgstr "Alamat Ha_rdware:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Token Ring Device"
+msgstr "Perangkat Token Ring"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "_Alias:"
+msgstr "_Alias:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
+msgid "_Hardware device:"
+msgstr "Perangkat dari _Perangkat-keras"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Probe for Address"
+msgstr "_Probe Alamatnya"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_Use Hardware Address"
+msgstr "G_unakan Alamat Perangkat-keras"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "tr0"
+msgstr "tr0"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
+msgid "tr1"
+msgstr "tr1"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "tr2"
+msgstr "tr2"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
+msgid "tr3"
+msgstr "tr3"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "tr4"
+msgstr "tr4"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr5"
+msgstr "tr5"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:1
 msgid "<b>Active profile</b>"
@@ -1813,7 +2471,9 @@ msgstr "Klik untuk mendapat infonya"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:8
 msgid "Click to have the system automatically select and activate a profile"
-msgstr "Klik untuk mendapatkan sistem yang secara otomatis bisa memilih dan mengaktifkan profil"
+msgstr ""
+"Klik untuk mendapatkan sistem yang secara otomatis bisa memilih dan "
+"mengaktifkan profil"
 
 #: ../src/netconfpkg/gui/neat-control.glade.h:9
 msgid "Click to monitor the interface"
@@ -1846,11 +2506,6 @@ msgstr "Antarmuka jaringan berikut ini dikonfiogur pada profil yang lagi aktif"
 msgid "_Activate"
 msgstr "Di_aktifkan"
 
-#: ../src/netconfpkg/gui/neat-control.glade.h:18
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
-msgid "_Configure..."
-msgstr "_Konfigurasi"
-
 #: ../src/netconfpkg/gui/neat-control.glade.h:19
 #: ../src/netconfpkg/gui/maindialog.glade.h:30
 msgid "_Deactivate"
@@ -1865,313 +2520,518 @@ msgstr "_Info"
 msgid "_Monitor"
 msgstr "_Monitor"
 
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
-msgid "Card"
-msgstr "Kartu"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
-msgid "Configure Network Settings"
-msgstr "Konfigurasi Pengaturan Jaringan"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:3
-msgid "Create Device"
-msgstr "Buar Perangkat"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
-msgid "MT_U:"
-msgstr "MT_U:"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
-msgid "Select Device"
-msgstr "Pilih Perangkat"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
-msgid "Select the card you want to configure:"
-msgstr "Pilih kartu yang ingin anda konfigur"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-msgid "_Address:"
-msgstr "_Alamat:"
-
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
-msgid "_Point to Point (IP):"
-msgstr "_Point to Point (IP):"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
-msgid "Create Token Ring Device"
-msgstr "Buat Perangkat Token Ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
-msgid "MTU:"
-msgstr "MTU:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
-msgid "Please enter the MTU parameter to set the Maximum Transfer Unit of this interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr "Silakan masukan parameter dari MTU untuk mensetel Transfer Unit secara Maksimal dari antarmuka berikut. Pada s390/s390x MTU-nya mempunyai pengaturan default 1492"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
-msgid "Select Token Ring Device"
-msgstr "Pilih Perangkat Token Ring"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
-msgid "Select the token ring card you want to configure:"
-msgstr "Pilih kartu token ring yang ingin anda konfigurasi:"
-
-#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
-msgid "Token ring card"
-msgstr "Kartu token ring"
-
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
 msgid "Choose a Provider"
 msgstr "Pilih sebuah Privider"
 
-#: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
-msgid "Internet Provider"
-msgstr "Provider Internet"
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+msgid "<b>Modem properties</b>"
+msgstr "<b>Properti Modem</b>"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
-msgid "Choose Hardware Type"
-msgstr "Pilih Tipe Perangkat-keras"
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+msgid "Modem _volume:"
+msgstr "_Volume modem:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
-msgid "Hardware type:"
-msgstr "Tipe Perangkat-keras:"
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "Pilih Modem"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
-msgid "Please select the hardware device type you want to create"
-msgstr "Silakan pilih perangkat dari perangkat-keras yang anda ingin buat"
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+msgid "_Baud rate:"
+msgstr "_Baud rate:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
-msgid "Token Ring"
-msgstr "Token Ring"
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+msgid "_Flow control:"
+msgstr "Flow control:"
 
-#: ../src/netconfpkg/gui/ptpconfig.glade.h:3
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
-msgid "_Hardware Device"
-msgstr "Perangkat dari Perangkat-keras"
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+msgid "_Modem device:"
+msgstr "Perangkat _Modem:"
 
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
-msgid "Waiting to connect to"
-msgstr "Tungu untuk konek ke "
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "G_unakan dial tone"
 
-#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
-#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
-msgid "Waiting..."
-msgstr "Tunggu..."
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
-msgid "Add new Device Type"
-msgstr "Tambah Tipe Perangkat baru"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
-msgid "Device Type"
-msgstr "Tipe Perangkat"
-
-#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
-msgid "Select Device Type"
-msgstr "Pilih Tipe Perangkat"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
-msgid "<b>Account Type:</b>"
-msgstr "<b>Jenis Akun</b>"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
-#: ../src/netconfpkg/gui/tonline.glade.h:3
-msgid "Associated T-Online _number:"
-msgstr "Nomor-nomor T-Online:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
-msgid "Configure DSL connection"
-msgstr "Mengkonfigur koneksi DSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
-msgid "Create DSL connection"
-msgstr "Membuat koneksi DSL"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
-msgid "Enter the login name, that your ISP gave you here."
-msgstr "Masukan nama login, yang diberikan ISP anda di sini."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
-msgid "Enter the name of this configuration, usually just the name of your ISP."
-msgstr "Masukan nama dari konfigurasi ini, biasanya adalah nama dari ISP anda."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
-msgid "Enter the password for your account. If you do not know it, please contact your ISP."
-msgstr "Masukan password untuk akun anda. Jika tidak tahu, silakan hubungi ISP anda."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
-msgid "Enter the provider name for this account."
-msgstr "Masukan nama provider untuk akun ini."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
-msgid "Ethernet _device:"
-msgstr "_Perangkat ethernet:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
-msgid "Normal"
-msgstr "Normal"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
-msgid ""
-"Normal\n"
-"T-Online"
+#: ../src/netconfpkg/gui/QethHardware.glade.h:2
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:1
+msgid "D_ata Device Bus ID:"
 msgstr ""
-"Normal\n"
-"T-Online"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
-msgid "Pass_word:"
-msgstr "Pass_word:"
+#: ../src/netconfpkg/gui/QethHardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:2
+msgid "For Example 0.0.0600"
+msgstr ""
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
-msgid "Password (_again):"
-msgstr "Password (l_agi):"
+#: ../src/netconfpkg/gui/QethHardware.glade.h:6
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:6
+msgid "_Read Device Bus ID:"
+msgstr ""
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
-msgid "Select the ethernet device connected to the DSL modem."
-msgstr "Pilih perangkat ethernet yang akan di koneksikan ke modem DSL."
+#: ../src/netconfpkg/gui/QethHardware.glade.h:7
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:7
+msgid "_Write Device Bus ID:"
+msgstr ""
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
-msgid "Select the ethernet device for this account."
-msgstr "Pilih perangkat ethernet untuk akun ini."
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
+msgid "A_ddress:"
+msgstr "A_lamat:"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
-msgid "T-Online"
-msgstr "T-Online"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
+msgid "Automatically obtain _IP address settings with:"
+msgstr "Secara otomatis mendapatkan pengaturan alamat _IP dengan:"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
-#: ../src/netconfpkg/gui/tonline.glade.h:5
-msgid "_Adapter identifier:"
-msgstr "Pengenal _Adapter:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:4
+msgid "Bind to _MAC address:"
+msgstr "Bind ke alamat _MAC:"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:19
-#: ../src/netconfpkg/gui/tonline.glade.h:6
-msgid "_Concurrent user number/suffix:"
-msgstr "Jumlah user konkuren/suffix:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:5
+msgid "DHCP Settings"
+msgstr "Pengaturan DHCP"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
-msgid "_Login name:"
-msgstr "Nama _Login:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:6
+msgid "Default ga_teway address:"
+msgstr "Alamat ga_teway default:"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:21
-#: ../src/netconfpkg/gui/tonline.glade.h:7
-msgid "_Personal password:"
-msgstr "Password _pribadi:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:7
+msgid "Destination Network"
+msgstr "Tujuan Jaringan"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
-msgid "_Provider name:"
-msgstr "Nama _Provider:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:8
+msgid "Device _alias number:"
+msgstr "Nomor _alias perangkat:"
 
-#: ../src/netconfpkg/gui/edithosts.glade.h:1
-msgid "Add / Edit Hosts entry"
-msgstr "Tambah/ Ubah masukan Host"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:9
+msgid "Difficulty level:"
+msgstr "Tingkat kesulitan:"
 
-#: ../src/netconfpkg/gui/edithosts.glade.h:3
-msgid "Aliases:"
-msgstr "Aliases:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:10
+msgid ""
+"Each connection needs to be associated with a physical device which can be "
+"selected below."
+msgstr ""
+"Tiap koneksi butuh diasosiasikan dengan perangkat fisik yang dapat dipilih "
+"di bawah ini."
 
-#: ../src/netconfpkg/gui/edithosts.glade.h:4
-msgid "Hostname:"
-msgstr "Hostname:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:11
+msgid "Easy"
+msgstr "Mudah"
 
-#: ../src/netconfpkg/gui/tonline.glade.h:1
-msgid "<b>T-Online account</b>"
-msgstr "<b>Akun _T-Online</b>"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:12
+msgid "Gateway"
+msgstr "Gateway"
 
-#: ../src/netconfpkg/gui/tonline.glade.h:2
-msgid "Account Setup"
-msgstr "Setup Akun"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:13
+msgid "H_ostname (optional):"
+msgstr "H_ostname (pilihan):"
 
-#: ../src/netconfpkg/gui/tonline.glade.h:4
-msgid "Please enter here your personal account data. Without this data, access to T-Online is unfortunately not possible."
-msgstr "Silakan masukan data akun pribadi anda disini. Tanpa data ini, akses ke T-Online tidak akan bisa dilaksanakan."
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:14
+msgid "Hardware device:"
+msgstr "Perangkat dari Perangkat-keras\""
 
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
-msgid "Choose Hardware Device Type"
-msgstr "Pilih Tipe Perangkat dari Perangkat-keras"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:15
+msgid "IPsec Tunnel Settings"
+msgstr "Pengaturan Tunnel IPsec"
 
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
-msgid "Please select the type of hardware device to add:"
-msgstr "Silakan pilih tipe dari perangkat perangkat-keras untuk ditambahkan:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:16
+msgid "Local Network"
+msgstr "Jaringan Lokal"
 
-#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
-msgid "_Device type:"
-msgstr "Tipe _Perangkat:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
+msgid "Please select the level of security for this device."
+msgstr "Silakan pilih tingkat dari keamanan dari perangkat ini."
 
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
-msgid "Network Adapters Configuration"
-msgstr "Konfigurasi Adapter Jaringan"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:20
+msgid "Prefix (Netmask)"
+msgstr "Prefix (Netmask)"
 
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
-msgid "_Adapter:"
-msgstr "_Adapter:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:21
+msgid "Professional"
+msgstr "Profesional"
 
-#: ../src/netconfpkg/gui/ethernethardware.glade.h:3
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:8
-#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:6
-msgid "_Device:"
-msgstr "_Perangkat"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:22
+msgid "Remote Host / GW"
+msgstr "Host / GW Remote"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:1
-msgid "Allow all _users to enable and disable the device"
-msgstr "Perbolehkan semua pengg_una untuk mengaktifkan dan menon-aktifkan perangkat"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:23
+msgid "Remote Network"
+msgstr "Jaringan Remote"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:2
-msgid "Controlled by _NetworkManager"
-msgstr "Dikendalikan dari _Network Manager"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+msgid "Security Level"
+msgstr "Tingkat Keamanan"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:3
-msgid "Enable IPv_6 configuration for this interface"
-msgstr "Aktifkan konfigurasi IPv_6 untuk antarmuka ini"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+msgid "Select the services you want to provide through this device"
+msgstr "Pilih layanan yang ingin anda sediakan melalui perangkat ini"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:4
-msgid "_Activate device when computer starts"
-msgstr "_Aktifkan perangkat ketika komputer dimulai"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+msgid "Service"
+msgstr "Layanan"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:5
-msgid "_Activate device when parent device starts"
-msgstr "_Aktifkan perangkat ketika perangkat utama berjalan"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+msgid "Service Description"
+msgstr "Diskripsi Layanan"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:6
-#: ../src/netconfpkg/gui/editipsec.glade.h:38
-msgid "_Nickname:"
-msgstr "_Nickname"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+msgid "Services"
+msgstr "Layanan-layanan"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
+#, fuzzy
+msgid "Set MRU to:"
+msgstr "Set MTU ke:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
+msgid "Set MTU to:"
+msgstr "Set MTU ke:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+msgid "Static Network Routes"
+msgstr "Route Jaringan Statik"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+msgid "Tie to specific ethernet card"
+msgstr "Ikat ke kartu ethernet spesifik"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+msgid "Use ethernet device aliases"
+msgstr "Gunakan alias perangkat dari ethernet"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+msgid "_Add..."
+msgstr "T_ambah..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+msgid "_Delete..."
+msgstr "_Hapus..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+msgid "_Edit..."
+msgstr "_Ubah..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+msgid "_Hardware Address"
+msgstr "Alamat _Perangkat-keras"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+msgid "_Hardware:"
+msgstr "_Perangtkat-keras:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+msgid "_High Security (Internet)"
+msgstr "Keaman Tingkat _Tingi (internet"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+msgid "_Low Security"
+msgstr "Keamanan tingkat _Rendah"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+msgid "_Probe"
+msgstr "_Probe"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+msgid "_Probe for Address..."
+msgstr "_Probe untuk Alamat..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+msgid "_Secure Device (LAN)"
+msgstr "_Secure Device (LAN)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+msgid "bootp"
+msgstr "bootp"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+msgid "dhcp"
+msgstr "dhcp"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+msgid "dialup"
+msgstr "dialup"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
+msgid "CIPE Configuration"
+msgstr "Konfigurasi CIPE"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
+msgid "Configuration for your remote partner"
+msgstr "Konfigurasi untuk partner remote anda"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
+msgid "Lo_cal virtual address:"
+msgstr "Alamat virtual Lo_kal:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
+msgid "Remote _virtual address:"
+msgstr "Alamat _virtual secara remote"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
+msgid "Remote peer p_ort:"
+msgstr "P_ort peer secara remote:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
+msgid "_Generate"
+msgstr "_Generate"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
+msgid "_Local port:"
+msgstr "Port _Lokal"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
+msgid "_Remote peer address:"
+msgstr "Alamat peer _Remote:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
+msgid "_Secret key:"
+msgstr "Kunci rahasia:"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
+msgid "_Tunnel Settings"
+msgstr "Pengaturan _Tunnel"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
+msgid "_Tunnel through device:"
+msgstr "_Tunel lewat perangkat"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
+#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
+msgid "_auto"
+msgstr "_auto"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
+msgid "cipcb0"
+msgstr "cipcb0"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
+msgid "cipcb1"
+msgstr "cipcb1"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
+msgid "cipcb2"
+msgstr "cipcb2"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
+msgid "cipcb3"
+msgstr "cipcb3"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
+msgid "cipcb4"
+msgstr "cipcb4"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
+msgid "eth0"
+msgstr "eth0"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
+msgid "eth1"
+msgstr "eth1"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
+msgid "eth2"
+msgstr "eth2"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
+msgid "eth3"
+msgstr "eth3"
+
+#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
+msgid "eth4"
+msgstr "eth4"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
+msgid "A_rea Code"
+msgstr "Kode A_rea"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
+msgid "Ca_llback"
+msgstr "Ca_llback"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:3
+msgid "Callback MS_N:"
+msgstr "MS_N telepon balik:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:4
+msgid "Callback _delay:"
+msgstr "Callback _delay:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:5
+msgid "Callback _mode:"
+msgstr "_Mode Callback:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:6
+msgid "Callback setting"
+msgstr "Pengaturan Callback"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:7
+msgid "Click here, if you want to choose a new provider from the ISP database."
+msgstr "Klik di sini, jika anda ingin memilih penyedia baru dari database PJI."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:8
+msgid "Dial _mode:"
+msgstr "_Modus dari dial:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:9
+msgid "Dial-in _number:"
+msgstr "_Nomer Dial-in"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
+msgid "Enable VJ Connection-_ID Compression"
+msgstr "Aktifkan Pengkompresian Conection-_ID VJ"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
+msgid "Enable _Address/Control Compression"
+msgstr "Aktifkan Pengkompresian _Alamat/Kontrol"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:13
+msgid "Enable _BSD Compression"
+msgstr "Aktifkan Pengkompresian _BSD"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:14
+msgid "Enable _CCP Compression Control Protocol"
+msgstr "Aktifkan Pengkompresian Kontrol Protokol _CCP"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:15
+msgid "Enable _Protocol Field Compression"
+msgstr "Aktifkan Pengkompresian Bagian _Protokol"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:16
+msgid "Enable _VJ TCP/IP Header Compression"
+msgstr "Aktifkan pengkompresian pada Header TCP/IP _VJ"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid "Enter your local phone number. It's optional, if you use a modem."
+msgstr ""
+"Masukan nomor telepon lokal anda. Ini sebuah pilihan , jika anda menggunakan "
+"modem."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
+msgid "Han_gup timeout:"
+msgstr "Hangup timeout"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:25
+msgid "Let _PPP do all authentication"
+msgstr "Biarkan _PPP melakukan semua Otentikasi"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:26
+msgid "MSN/EA_Z:"
+msgstr "MSN/EA_Z:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:28
+msgid "Modem _initialization string:"
+msgstr "String _inisialisasi pada modem:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Modem p_ort:"
+msgstr "P_ort Modem:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:30
+msgid "Modem0"
+msgstr "Modem0"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:31
+msgid "Modem1"
+msgstr "Modem1"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:32
+msgid "Modem2"
+msgstr "Modem2"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:33
+msgid "Modem3"
+msgstr "Modem3"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:34
+msgid "PPP Option List"
+msgstr "Daftar Pilihan PPP"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:36
+msgid "Phone Number"
+msgstr "Nomer Telpon"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Prefi_x"
+msgstr "Prefi_x"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
+msgid "Select the authentication protocol used by your ISP."
+msgstr "Pilih protokol Otentikasi yang digunakan ISP anda."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Show password"
+msgstr "Perlihatkan kata kunci"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:42
+msgid "Use _Callback Control Protocol (CBCP)"
+msgstr "Gunakan _Callback Control Protocol (CBCP)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:43
+msgid "Use _Channel Bundling"
+msgstr "Pergunakan Channel Bundling"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
+msgid "_Allow only above Dial-In Number"
+msgstr "Bolehk_an hanya Nomer Dial-In diatas"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:48
+msgid "_Authentication:"
+msgstr "_Otentikasi:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Choose Provider..."
+msgstr "Pi_lih Provider"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:50
+msgid "_Compression"
+msgstr "_Kompresi"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:51
+#: ../src/netconfpkg/gui/maindialog.glade.h:31
+msgid "_Delete"
+msgstr "_Hapus"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:52
+msgid "_Dial mode:"
+msgstr "Modus _Dial"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:53
+msgid "_Encapsulation mode:"
+msgstr "Modus _enkapsulasi:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
+msgid "_Hangup timeout:"
+msgstr "_Hangup timeout:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
+msgid "_Options"
+msgstr "_Pilihan"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:58
+msgid "_PPP option:"
+msgstr "Pilihan _PPP"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Phone Number"
+msgstr "No. Tel_pon"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:63
+msgid "_Use Callback"
+msgstr "G_unakan Callback"
 
 #: ../src/netconfpkg/gui/editipsec.glade.h:1
 msgid "*"
@@ -2279,7 +3139,8 @@ msgid ""
 "The keys are symmetric, so your remote partner needs to have the same."
 msgstr ""
 "Silakan tentukan kunci anda atau buat kunci yang baru. \n"
-"Kunci ini simetrik, hingga rekanan anda yang ada di remote juga harus memiliki kunci yang sama."
+"Kunci ini simetrik, hingga rekanan anda yang ada di remote juga harus "
+"memiliki kunci yang sama."
 
 #: ../src/netconfpkg/gui/editipsec.glade.h:28
 msgid "Remote _IP address:"
@@ -2317,12 +3178,6 @@ msgstr "_Aktifkan koneksi jika komputer sudah mulai"
 msgid "_Encryption key:"
 msgstr "_Enkripsi key:"
 
-#: ../src/netconfpkg/gui/editipsec.glade.h:37
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:9
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:8
-msgid "_Generate"
-msgstr "_Generate"
-
 #: ../src/netconfpkg/gui/editipsec.glade.h:39
 msgid "dialog1"
 msgstr "dialog1"
@@ -2334,6 +3189,106 @@ msgstr "SPI unik untuk AH (256 - 4294967295), seperti nomor port TCP/IP"
 #: ../src/netconfpkg/gui/editipsec.glade.h:41
 msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
 msgstr "SPI unik untuk ESP (256 - 4294967295), seperti nomor port TCP/IP"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+msgid "<b>D-channel protocol</b>"
+msgstr "<b>Protokol Saluran D</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Pilih Adapter ISDN"
+
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:3
+msgid "Resource"
+msgstr "Resource"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "Configure Wireless Connection"
+msgstr "Konfigur Koneksi Nirkabel"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "Create Wireless Device"
+msgstr "Buat Perangkat Nirkabel"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+msgid "Network name (SSID):"
+msgstr "Nama Jaringan (SSID)"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Silakan masukan parameter dari MTU untuk mensetel Transfer Unit secara "
+"Maksimal dari antarmuka berikut. Pada s390/s390x MTU-nya mempunyai "
+"pengaturan default 1492"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "Select Wireless Device"
+msgstr "Pilih Perangkat Nirkabel"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "Select the wireless card you want to configure:"
+msgstr "Pilih kartu nirkabel yang ingin anda konfigur:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+"Dipergunakan untuk memanipulasi enkripsi atau kunci pengacak dan mode "
+"enkripsi. Untuk menset kunci enkripsi yang dipakai sekarang dalam digit hex "
+"masukkan kunci diawali dengan 0x seperti 0xXXXXXXXX."
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "Wireless card"
+msgstr "Kartu nirkabel"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid "_Auto"
+msgstr "_Auto"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+msgid "_Channel:"
+msgstr "_Kanal:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "_Key (use 0x for hex):"
+msgstr "_Kunci (gunakan 0x untuk hex):"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+msgid "_Mode:"
+msgstr "_Modus:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+msgid "_Specified:"
+msgstr "_Spesifikasi:"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+msgid "_Transmit rate:"
+msgstr "_Transmit rate:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Pilih Tipe Perangkat dari Perangkat-keras"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "Silakan pilih tipe dari perangkat perangkat-keras untuk ditambahkan:"
+
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "Tipe _Perangkat:"
 
 #: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:1
 msgid "<b>Configuration for your remote partner</b>"
@@ -2347,72 +3302,107 @@ msgstr "Konfigur Tunnel"
 msgid "Create Cipe Connection"
 msgstr "Buat Koneksi Cipe"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:3
-msgid "Lo_cal virtual address:"
-msgstr "Alamat virtual Lo_kal:"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+msgid "11M"
+msgstr "11M"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:5
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Interface Baru"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+msgid "1M"
+msgstr "1M"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:6
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:4
-msgid "Remote _virtual address:"
-msgstr "Alamat _virtual secara remote"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+msgid "2M"
+msgstr "2M"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:7
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:5
-msgid "Remote peer p_ort:"
-msgstr "P_ort peer secara remote:"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "5.5M"
+msgstr "5.5M"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:10
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:9
-msgid "_Local port:"
-msgstr "Port _Lokal"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
+msgstr ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:11
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:10
-msgid "_Remote peer address:"
-msgstr "Alamat peer _Remote:"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+msgid "Wireless Device Configuration"
+msgstr "Konfigurasi Perangkat Nirkabel"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:12
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:12
-msgid "_Secret key:"
-msgstr "Kunci rahasia:"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+msgid "_Hardware device"
+msgstr "Perangkat dari _perangkat_keras"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:13
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:14
-msgid "_Tunnel through device:"
-msgstr "_Tunel lewat perangkat"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+msgid "_Wireless Settings"
+msgstr "Pengaturan Nirkabel"
 
-#: ../src/netconfpkg/gui/CipeInterfaceDruid.glade.h:14
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:15
-msgid "_auto"
-msgstr "_auto"
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Tambah/ Ubah masukan Host"
 
-#: ../src/netconfpkg/gui/GenericInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
-msgid "Create Ethernet Device"
-msgstr "Buat Perangkat Ethernet"
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Aliases:"
 
-#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
-msgid "Ethernet Device"
-msgstr "Perangkat Ethernet"
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Hostname:"
 
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
-msgid "00:00:00"
-msgstr "00:00:00"
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:1
+msgid "Card"
+msgstr "Kartu"
 
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
-msgid "Online time:"
-msgstr "Waktu Online:"
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:3
+msgid "Create Device"
+msgstr "Buar Perangkat"
 
-#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
-msgid "click the right mouse button for properties"
-msgstr "Kilk kanan pada tombol mouse untuk properti"
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:4
+msgid "MT_U:"
+msgstr "MT_U:"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:5
+msgid "Select Device"
+msgstr "Pilih Perangkat"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:6
+msgid "Select the card you want to configure:"
+msgstr "Pilih kartu yang ingin anda konfigur"
+
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:8
+msgid "_Point to Point (IP):"
+msgstr "_Point to Point (IP):"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "Buat Perangkat Token Ring"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "Pilih Perangkat Token Ring"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr "Pilih kartu token ring yang ingin anda konfigurasi:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "Kartu token ring"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Tambah / Ubah Alamat IP"
+
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Gateway:"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:1
 msgid "Activate the selected device, calling ifup <device>."
@@ -2475,8 +3465,11 @@ msgid "New Profile"
 msgstr "Profil baru"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:19
-msgid "Please enter the name for the profile. The name may only contain letters and digits."
-msgstr "Masukkan nama untuk profil. Nama hanya boleh mengandung huruf dan digit."
+msgid ""
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
+msgstr ""
+"Masukkan nama untuk profil. Nama hanya boleh mengandung huruf dan digit."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:20
 msgid "Profile"
@@ -2492,28 +3485,43 @@ msgstr "Tipe"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:24
 msgid "You may configure IPsec tunnels and host to host connections here."
-msgstr "Anda dapat mengkonfigurasi tunel IPsec dan koneksi host ke host di sini."
+msgstr ""
+"Anda dapat mengkonfigurasi tunel IPsec dan koneksi host ke host di sini."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:25
-msgid "You may configure network devices associated with physical hardware here.  Multiple logical devices can be associated with a single piece of hardware."
-msgstr "Anda dapat mengkonfigurasi perangkat jaringan yang terhubung dengan perangkat keras fisik di sini. Multipel perangkat logis dapat diasosiasikan dengan satu perangkat keras."
+msgid ""
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
+msgstr ""
+"Anda dapat mengkonfigurasi perangkat jaringan yang terhubung dengan "
+"perangkat keras fisik di sini. Multipel perangkat logis dapat diasosiasikan "
+"dengan satu perangkat keras."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:26
-msgid "You may configure network hardware physically attached to the computer here."
-msgstr "Anda dapat mengkonfigurasi perangkat keras jaringan yang tersambung ke komputer di sini."
+msgid ""
+"You may configure network hardware physically attached to the computer here."
+msgstr ""
+"Anda dapat mengkonfigurasi perangkat keras jaringan yang tersambung ke "
+"komputer di sini."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:27
-msgid "You may configure the system's hostname, domain, name servers, and search domain. Name servers are used to look up other hosts on the network."
-msgstr "Anda dapat mengkonfigurasi nama host, domain, name server dan pencarian domain dari sistem. Name server digunakan untuk mencari host lain di jaringan."
+msgid ""
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
+msgstr ""
+"Anda dapat mengkonfigurasi nama host, domain, name server dan pencarian "
+"domain dari sistem. Name server digunakan untuk mencari host lain di "
+"jaringan."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:28
-msgid "You may specify static computer hostname to IP address mappings here.  If DNS is in use, these settings will take precedence over any information it may provide."
-msgstr "Anda dapat menentukan pemetaan secara statis nama host komputer ke alamat IP di sini. Jika sedang mempergunakan DNS, seting berikut ini akan didahulukan dibanding informasi lain yang tersedia."
-
-#: ../src/netconfpkg/gui/maindialog.glade.h:31
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:51
-msgid "_Delete"
-msgstr "_Hapus"
+msgid ""
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
+msgstr ""
+"Anda dapat menentukan pemetaan secara statis nama host komputer ke alamat IP "
+"di sini. Jika sedang mempergunakan DNS, seting berikut ini akan didahulukan "
+"dibanding informasi lain yang tersedia."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:32
 msgid "_Edit"
@@ -2542,6 +3550,26 @@ msgstr "_Secondary DNS:"
 #: ../src/netconfpkg/gui/maindialog.glade.h:39
 msgid "_Tertiary DNS:"
 msgstr "_Tertiary DNS:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "Nama domain:"
+
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Ubah Nama Domain"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Tambah Tipe Perangkat baru"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Tipe Perangkat"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Pilih Tipe Perangkat"
 
 #: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
 msgid "$"
@@ -2631,823 +3659,66 @@ msgstr "_Waktu"
 msgid "redhat network control - Properties"
 msgstr "redhat network control - Properti"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
-msgid "Allow dial on _demand"
-msgstr "Perbolehkan dial sesuai permintaan"
+#~ msgid "IUCV connection"
+#~ msgstr "Koneksi IUCV"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
-msgid "Allow the link come up on demand."
-msgstr "Perbolehkan koneksi hidup sesuai permintaan."
+#~ msgid "Create a new IUCV connection."
+#~ msgstr "Buat koneksi IUCV baru"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
-msgid "Demand setting"
-msgstr "Konfigurasi permintaan"
+#~ msgid "IUCV Device"
+#~ msgstr "Perangkat IUCV"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
-msgid "Enable synchronous PPP for the connection"
-msgstr "Aktifkan sinkronisasi PPP untuk koneksi"
+#~ msgid "CTC Device"
+#~ msgstr "Perangkat CTC"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
-msgid "Enter the Access Concentrator name, if you have been given one by your ISP. In most cases you can leave this blank."
-msgstr "Masukkan nama Access Concentrator, jika ISP anda memberitahu anda. Di kebanyakan kasus anda dapat membiarkannya kosong."
+#~ msgid "CTC connection"
+#~ msgstr "Koneksi CTC"
 
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
-msgid "Enter the Service Name, if your ISP requires it. If you don't know it, please contact your ISP. In most cases you can leave this blank."
-msgstr "Masukan Nama Layanan, jika ISP anda membutuhkanya. Jika anda tidak mengetahuinya, silakan menghubungi ISP anda. Pada banyak kasus anda bisa membiarkanya kosong."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
-msgid "Enter the idle time in seconds after which the link should be dropped."
-msgstr "Masukan waktu diam dalam detik setelah dimana hubungan harus di putuskan."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:27
-msgid "Make this connection the default _route"
-msgstr "Buat koneksi ini menjadi _route default"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:39
-msgid "Restart if _connection dies"
-msgstr "Mulai ulang jika _koneksi mati"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
-msgid "Use this form to enter your T-Online account data."
-msgstr "Gunakan lembar berikut untuk memasukkan data akun T-Online."
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
-msgid "_AC-name:"
-msgstr "_AC-name:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
-msgid "_Advanced"
-msgstr "_Advanced"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
-msgid "_IPsec"
-msgstr "_IPsec"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
-msgid "_Maximum idle time:"
-msgstr "_Maximum idle time:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
-msgid "_Provider"
-msgstr "_Provider"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
-msgid "_Service-name:"
-msgstr "_Service-name:"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
-msgid "_T-Online Account Setup"
-msgstr "Setup Akun _T-Online"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
-msgid "_Use synchronous PPP"
-msgstr "G_unakan sinkronos PPP"
-
-#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
-msgid "xDSL Configuration"
-msgstr "Konfigurasi xDSL"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
-#: ../src/netconfpkg/gui/modemconfig.glade.h:1
-msgid "<b>Modem properties</b>"
-msgstr "<b>Properti Modem</b>"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
-#: ../src/netconfpkg/gui/modemconfig.glade.h:7
-msgid "Modem _volume:"
-msgstr "_Volume modem:"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
-msgid "Select Modem"
-msgstr "Pilih Modem"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
-#: ../src/netconfpkg/gui/modemconfig.glade.h:12
-msgid "_Baud rate:"
-msgstr "_Baud rate:"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
-#: ../src/netconfpkg/gui/modemconfig.glade.h:13
-msgid "_Flow control:"
-msgstr "Flow control:"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
-#: ../src/netconfpkg/gui/modemconfig.glade.h:14
-msgid "_Modem device:"
-msgstr "Perangkat _Modem:"
-
-#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
-#: ../src/netconfpkg/gui/modemconfig.glade.h:15
-msgid "_Use touch tone dialing"
-msgstr "G_unakan dial tone"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
-msgid "<b>Phone number</b>"
-msgstr "<b>No. Telpon:</b>"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
-msgid "A_rea code:"
-msgstr "Kode A_rea:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "Secara otomatis mendapatkan informasi _DNS dari provider."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
-msgid "Automatically obtain _IP address settings"
-msgstr "Secara otomatis mendapatkan pengaturan alamat _IP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
-msgid "Create Dialup Connection"
-msgstr "Buat Koneksi Dialup"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
-msgid "Default _gateway address:"
-msgstr "Alamat _gateway default:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
-msgid "Encapsulation mode:"
-msgstr "Modus secara ringkas:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid "Enter any numbers you need to dial before the normal phone number. For example, if you need to reach an outside line, or disable call waiting, put the necessary numbers here."
-msgstr "Masukan nomor yang ingin anda dial sebelum nomor telepon yang normal. Contohnya, jika anda ingin mencapai line telepon luar , atau menon-aktifkan nada tunggu, masukan nomor yang diperlukan disini."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr "Masukan kode area yang diperlukan untuk mencapai provider internet anda."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "Masukan nomor telepon dari ISP anda (tanpa kode awalan/area/negara)."
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
-msgid "IP Settings"
-msgstr "Pengaturan IP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "Pengaturan Alamat IP secara manual"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
-msgid "PPP Settings"
-msgstr "Pengaturan PPP"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
-msgid "Prefi_x:"
-msgstr "Prefi_x:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "_Nama Provider"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
-msgid "Select Provider"
-msgstr "Pilih Provider"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
-msgid "Statically set IP addresses:"
-msgstr "Alamat IP diset Statik"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
-msgid "_Phone number:"
-msgstr "Nomer Tel_pon:"
-
-#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-msgid "_Subnet mask:"
-msgstr "_Subnet mask:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
-msgid "A_rea Code"
-msgstr "Kode A_rea"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
-msgid "Ca_llback"
-msgstr "Ca_llback"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:3
-msgid "Callback MS_N:"
-msgstr "MS_N telepon balik:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:4
-msgid "Callback _delay:"
-msgstr "Callback _delay:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:5
-msgid "Callback _mode:"
-msgstr "_Mode Callback:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:6
-msgid "Callback setting"
-msgstr "Pengaturan Callback"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:7
-msgid "Click here, if you want to choose a new provider from the ISP database."
-msgstr "Klik di sini, jika anda ingin memilih penyedia baru dari database PJI."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:8
-msgid "Dial _mode:"
-msgstr "_Modus dari dial:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:9
-msgid "Dial-in _number:"
-msgstr "_Nomer Dial-in"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
-msgid "Enable VJ Connection-_ID Compression"
-msgstr "Aktifkan Pengkompresian Conection-_ID VJ"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
-msgid "Enable _Address/Control Compression"
-msgstr "Aktifkan Pengkompresian _Alamat/Kontrol"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:13
-msgid "Enable _BSD Compression"
-msgstr "Aktifkan Pengkompresian _BSD"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:14
-msgid "Enable _CCP Compression Control Protocol"
-msgstr "Aktifkan Pengkompresian Kontrol Protokol _CCP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:15
-msgid "Enable _Protocol Field Compression"
-msgstr "Aktifkan Pengkompresian Bagian _Protokol"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:16
-msgid "Enable _VJ TCP/IP Header Compression"
-msgstr "Aktifkan pengkompresian pada Header TCP/IP _VJ"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
-msgid "Enter your local phone number. It's optional, if you use a modem."
-msgstr "Masukan nomor telepon lokal anda. Ini sebuah pilihan , jika anda menggunakan modem."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
-msgid "Han_gup timeout:"
-msgstr "Hangup timeout"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:25
-msgid "Let _PPP do all authentication"
-msgstr "Biarkan _PPP melakukan semua Otentikasi"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:26
-msgid "MSN/EA_Z:"
-msgstr "MSN/EA_Z:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:28
-msgid "Modem _initialization string:"
-msgstr "String _inisialisasi pada modem:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
-msgid "Modem p_ort:"
-msgstr "P_ort Modem:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:30
-msgid "Modem0"
-msgstr "Modem0"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:31
-msgid "Modem1"
-msgstr "Modem1"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:32
-msgid "Modem2"
-msgstr "Modem2"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:33
-msgid "Modem3"
-msgstr "Modem3"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:34
-msgid "PPP Option List"
-msgstr "Daftar Pilihan PPP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:36
-msgid "Phone Number"
-msgstr "Nomer Telpon"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
-msgid "Prefi_x"
-msgstr "Prefi_x"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
-msgid "Select the authentication protocol used by your ISP."
-msgstr "Pilih protokol Otentikasi yang digunakan ISP anda."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
-msgid "Show password"
-msgstr "Perlihatkan kata kunci"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:42
-msgid "Use _Callback Control Protocol (CBCP)"
-msgstr "Gunakan _Callback Control Protocol (CBCP)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:43
-msgid "Use _Channel Bundling"
-msgstr "Pergunakan Channel Bundling"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
-msgid "_Add..."
-msgstr "T_ambah..."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
-msgid "_Allow only above Dial-In Number"
-msgstr "Bolehk_an hanya Nomer Dial-In diatas"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:48
-msgid "_Authentication:"
-msgstr "_Otentikasi:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
-msgid "_Choose Provider..."
-msgstr "Pi_lih Provider"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:50
-msgid "_Compression"
-msgstr "_Kompresi"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:52
-msgid "_Dial mode:"
-msgstr "Modus _Dial"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:53
-msgid "_Encapsulation mode:"
-msgstr "Modus _enkapsulasi:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
-msgid "_Hangup timeout:"
-msgstr "_Hangup timeout:"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
-msgid "_Options"
-msgstr "_Pilihan"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:58
-msgid "_PPP option:"
-msgstr "Pilihan _PPP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
-msgid "_Phone Number"
-msgstr "No. Tel_pon"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:63
-msgid "_Use Callback"
-msgstr "G_unakan Callback"
-
-#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
-msgid "Select Token Ring Adapter"
-msgstr "Pilih Adapter Token Ring"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
-msgid "1_TR6"
-msgstr "1_TR6"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
-msgid "<b>D-channel protocol</b>"
-msgstr "<b>Protokol Saluran D</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
-msgid "<b>Resources</b>"
-msgstr "<b>Sumber Daya</b>"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
-msgid "Eu_ro ISDN (EDSS1)"
-msgstr "Eu_ro ISDN (EDSS1)"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
-msgid "IO_1:"
-msgstr "IO_1:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
-msgid "IO_2:"
-msgstr "IO_2:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
-msgid "IR_Q:"
-msgstr "IR_Q:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
-msgid "ISDN _adapters:"
-msgstr "ISDN _adapters:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
-msgid "Select ISDN Adapter"
-msgstr "Pilih Adapter ISDN"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
-msgid "_IO:"
-msgstr "_IO:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
-msgid "_MEM:"
-msgstr "_MEM:"
-
-#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
-msgid "Select Ethernet Adapter"
-msgstr "Pilih Adapter untuk Ethernet"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
-msgid "A_ddress:"
-msgstr "A_lamat:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
-msgid "Automatically obtain _IP address settings with:"
-msgstr "Secara otomatis mendapatkan pengaturan alamat _IP dengan:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:4
-msgid "Bind to _MAC address:"
-msgstr "Bind ke alamat _MAC:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:5
-msgid "DHCP Settings"
-msgstr "Pengaturan DHCP"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:6
-msgid "Default ga_teway address:"
-msgstr "Alamat ga_teway default:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:7
-msgid "Destination Network"
-msgstr "Tujuan Jaringan"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:8
-msgid "Device _alias number:"
-msgstr "Nomor _alias perangkat:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:9
-msgid "Difficulty level:"
-msgstr "Tingkat kesulitan:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:10
-msgid "Each connection needs to be associated with a physical device which can be selected below."
-msgstr "Tiap koneksi butuh diasosiasikan dengan perangkat fisik yang dapat dipilih di bawah ini."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:11
-msgid "Easy"
-msgstr "Mudah"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:12
-msgid "Gateway"
-msgstr "Gateway"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:13
-msgid "H_ostname (optional):"
-msgstr "H_ostname (pilihan):"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:14
-msgid "Hardware device:"
-msgstr "Perangkat dari Perangkat-keras\""
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:15
-msgid "IPsec Tunnel Settings"
-msgstr "Pengaturan Tunnel IPsec"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:16
-msgid "Local Network"
-msgstr "Jaringan Lokal"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
-msgid "Please select the level of security for this device."
-msgstr "Silakan pilih tingkat dari keamanan dari perangkat ini."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:20
-msgid "Prefix (Netmask)"
-msgstr "Prefix (Netmask)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:21
-msgid "Professional"
-msgstr "Profesional"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:22
-msgid "Remote Host / GW"
-msgstr "Host / GW Remote"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:23
-msgid "Remote Network"
-msgstr "Jaringan Remote"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
-msgid "Security Level"
-msgstr "Tingkat Keamanan"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
-msgid "Select the services you want to provide through this device"
-msgstr "Pilih layanan yang ingin anda sediakan melalui perangkat ini"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
-msgid "Service"
-msgstr "Layanan"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
-msgid "Service Description"
-msgstr "Diskripsi Layanan"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
-msgid "Services"
-msgstr "Layanan-layanan"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-msgid "Set MTU to:"
-msgstr "Set MTU ke:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Static Network Routes"
-msgstr "Route Jaringan Statik"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Tie to specific ethernet card"
-msgstr "Ikat ke kartu ethernet spesifik"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
-msgid "Use ethernet device aliases"
-msgstr "Gunakan alias perangkat dari ethernet"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
-msgid "_Delete..."
-msgstr "_Hapus..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
-msgid "_Edit..."
-msgstr "_Ubah..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
-msgid "_Hardware Address"
-msgstr "Alamat _Perangkat-keras"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
-msgid "_Hardware:"
-msgstr "_Perangtkat-keras:"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
-msgid "_High Security (Internet)"
-msgstr "Keaman Tingkat _Tingi (internet"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
-msgid "_Low Security"
-msgstr "Keamanan tingkat _Rendah"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
-msgid "_Probe"
-msgstr "_Probe"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
-msgid "_Probe for Address..."
-msgstr "_Probe untuk Alamat..."
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
-msgid "_Secure Device (LAN)"
-msgstr "_Secure Device (LAN)"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "bootp"
-msgstr "bootp"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
-msgid "dhcp"
-msgstr "dhcp"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
-msgid "dialup"
-msgstr "dialup"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
-msgid "Configure Wireless Connection"
-msgstr "Konfigur Koneksi Nirkabel"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
-msgid "Create Wireless Device"
-msgstr "Buat Perangkat Nirkabel"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
-msgid "Select Wireless Device"
-msgstr "Pilih Perangkat Nirkabel"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
-msgid "Select the wireless card you want to configure:"
-msgstr "Pilih kartu nirkabel yang ingin anda konfigur:"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "Kartu nirkabel"
-
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
-msgid "Connect to"
-msgstr "Konek ke"
-
-#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
-msgid "Disconnect from"
-msgstr "Diputus dari"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
-msgid "Ethernet card"
-msgstr "Kartu Ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
-msgid "Please enter the MTU parameter to set the maximum Transfer Unit of this interface. On s390/s390x the MTU has 1492 as default setting"
-msgstr "Silakan masukan parameter dari MTU untuk mensetel Transfer Unit secara maksimal dari antarmuka berikut. Pada s390/s390x MTU-nya mempunyai pengaturan default 1492"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
-msgid "Select Ethernet Device"
-msgstr "Pilih Perangkat Ethernet"
-
-#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
-msgid "Select the ethernet card you want to configure:"
-msgstr "Pilih ehterner yang ingin anda konfigur"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
-msgid "00:00:00:00:00:00"
-msgstr "00:00:00:00:00:00"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
-msgid "Each device needs to be attached to a physical device which can be selected below. Device Alias support allows you to use multiple virtual devices for one physical device."
-msgstr "Tiap perangkat perlu disambungkan ke perangkat fisik yang dapat dipilih dari bawah ini. Dukungan Alias Perangkat mengijinkan anda untuk mempergunakan multi perangkat virtual untuk satu perangkat fisik."
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
-msgid "Enable _Device Alias support"
-msgstr "Aktifkan dukungan Alias _Perangkat"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
-msgid "Ha_rdware address:"
-msgstr "Alamat Ha_rdware:"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
-msgid "Token Ring Device"
-msgstr "Perangkat Token Ring"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
-msgid "_Alias:"
-msgstr "_Alias:"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
-msgid "_Hardware device:"
-msgstr "Perangkat dari _Perangkat-keras"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
-msgid "_Probe for Address"
-msgstr "_Probe Alamatnya"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
-msgid "_Use Hardware Address"
-msgstr "G_unakan Alamat Perangkat-keras"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
-msgid "tr0"
-msgstr "tr0"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
-msgid "tr1"
-msgstr "tr1"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
-msgid "tr2"
-msgstr "tr2"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
-msgid "tr3"
-msgstr "tr3"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
-msgid "tr4"
-msgstr "tr4"
-
-#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
-msgid "tr5"
-msgstr "tr5"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:1
-msgid "Add / Edit IP Address"
-msgstr "Tambah / Ubah Alamat IP"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:3
-msgid "_Gateway:"
-msgstr "_Gateway:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:1
-msgid "Domain name:"
-msgstr "Nama domain:"
-
-#: ../src/netconfpkg/gui/editdomain.glade.h:2
-msgid "Edit Domain Name"
-msgstr "Ubah Nama Domain"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:1
-msgid "CIPE Configuration"
-msgstr "Konfigurasi CIPE"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:2
-msgid "Configuration for your remote partner"
-msgstr "Konfigurasi untuk partner remote anda"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:13
-msgid "_Tunnel Settings"
-msgstr "Pengaturan _Tunnel"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:16
-msgid "cipcb0"
-msgstr "cipcb0"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:17
-msgid "cipcb1"
-msgstr "cipcb1"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:18
-msgid "cipcb2"
-msgstr "cipcb2"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:19
-msgid "cipcb3"
-msgstr "cipcb3"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:20
-msgid "cipcb4"
-msgstr "cipcb4"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:21
-msgid "eth0"
-msgstr "eth0"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:22
-msgid "eth1"
-msgstr "eth1"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:23
-msgid "eth2"
-msgstr "eth2"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:24
-msgid "eth3"
-msgstr "eth3"
-
-#: ../src/netconfpkg/gui/CipeInterfaceDialog.glade.h:25
-msgid "eth4"
-msgstr "eth4"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
-msgid "<b>D channel protocol</b>"
-msgstr "<b>Protokol Saluran D </b>"
-
-#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
-msgid "ISDN Adapters Configuration"
-msgstr "Konfigurasi Adapter ISDN"
+#~ msgid "Create a new CTC connection."
+#~ msgstr "Buat konek CTC baru"
 
 #~ msgid "Aliases"
 #~ msgstr "Alias"
+
 #~ msgid "IP"
 #~ msgstr "IP"
+
 #~ msgid "Static routes file %s is invalid"
 #~ msgstr "Route statik berkas %s salah"
+
 #~ msgid "What do you want to configure?"
 #~ msgstr "Apa yang ingin anda konfigur?"
+
 #~ msgid "Configure"
 #~ msgstr "Konfigur"
+
 #~ msgid "Exit"
 #~ msgstr "Keluar"
+
 #~ msgid ""
 #~ "This software is distributed under the GPL. Please report bugs to Red "
 #~ "Hat's bug tracking system: http://bugzilla.redhat.com/"
 #~ msgstr ""
 #~ "Perangkat-lunak ini disebarkan di bawah GPL. Silakan Laporkan bug kepada "
 #~ "Sistem Pelacak Bug Red Hat: http://bugzilla.redhat.com/"
+
 #~ msgid "Yugoslavia"
 #~ msgstr "Yugoslavia"
+
 #~ msgid "DMA0:"
 #~ msgstr "DMA0:"
+
 #~ msgid "DMA1:"
 #~ msgstr "DMA1:"
-#~ msgid "Resource"
-#~ msgstr "Resource"
+
 #~ msgid "Configure your connection to the Internet"
 #~ msgstr "Konfigur koneksi anda ke internet"
+
 #~ msgid "Internet Configuration Wizard"
 #~ msgstr "Konfigurasi Internet secara Wizard"
+
 #~ msgid "Enter the login name for this account."
 #~ msgstr "Masukan nama login untuk akun ini."
+
 #~ msgid "Enter the password for this account."
 #~ msgstr "Masukan password untuk akun ini."
-
