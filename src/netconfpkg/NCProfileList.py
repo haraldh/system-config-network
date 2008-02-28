@@ -55,8 +55,8 @@ class MyFileList(list):
         return list.append(self, os.path.abspath(obj))
 
 class ProfileList(ProfileList_base):
-    error = None
     def __init__(self, list = None, parent = None):
+        self.error = None
         ProfileList_base.__init__(self, list, parent)
 
     def load(self):
