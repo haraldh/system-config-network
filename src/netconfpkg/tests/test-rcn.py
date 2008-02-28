@@ -103,7 +103,7 @@ class TestRCN(unittest.TestCase):
         #print cmd
         #sys.stdout.flush()
         os.system(cmd)
-        cmd = "mkdir '%s'; tar -C '%s' -xf '%s/basic.tar'" % (CHROOT, CHROOT, srcdir)
+        cmd = "mkdir '%s'; cp -ar '%s/etc' '%s';chmod -R ug+rw %s" % (CHROOT, srcdir, CHROOT, CHROOT)
         #print cmd
         #sys.stdout.flush()
         os.system(cmd)

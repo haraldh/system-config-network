@@ -95,7 +95,7 @@ class TestGUI(unittest.TestCase):
     def setupChroot(self):
         cmd = "[ -d '%s' ] && rm -fr '%s'" % (CHROOT, CHROOT)
         os.system(cmd)
-        cmd = "mkdir '%s'; tar -C '%s' -xf '%s/basic.tar'" % (CHROOT, CHROOT, srcdir)
+        cmd = "mkdir '%s'; cp -ar '%s/etc' '%s'" % (CHROOT, srcdir, CHROOT)
         os.system(cmd)
 
 
