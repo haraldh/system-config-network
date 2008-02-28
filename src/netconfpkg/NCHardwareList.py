@@ -470,6 +470,7 @@ class HardwareList(HardwareList_base):
                     else:
                         log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
                 else:
+                    hw.Status = HW_SYSTEM
                     self.append(hw)
                     hw.setChanged(True)        
 
@@ -536,7 +537,7 @@ class HardwareList(HardwareList_base):
             type = getDeviceType(mod, module)
 
             if type == _('Unknown'):
-                continue            
+                continue
 
             h = None
             for h in self:
