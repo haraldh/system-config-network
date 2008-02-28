@@ -169,7 +169,7 @@ WrongMethod = BadFile
 VersionMismatch = BadFile
 SystemFull = BadFile
 
-from string import joinfields, split, find
+from string import joinfields, split, find, join
 from UserDict import UserDict
 import re
 import os
