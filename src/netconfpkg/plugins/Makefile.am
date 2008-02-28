@@ -12,7 +12,9 @@ PYTHON_FILES = \
 	NCHWIsdn.py \
 	NCHWModem.py \
 	NCHWWireless.py \
-	NCHWTokenring.py
+	NCHWTokenring.py \
+	NCHWQeth.py \
+	NCDevQeth.py
 
 EXTRA_DIST = $(PYTHON_FILES)
 

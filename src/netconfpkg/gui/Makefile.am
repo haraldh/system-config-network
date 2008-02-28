@@ -88,7 +88,7 @@ PYTHON_FILES = \
 	ptpconfig.py \
 	PTPInterface.py \
 	QethConfig.py \
-	QethInterfaceDruid.py
+	QethInterfaceDruid.py \
 	QethHardware.py \
 	QethHardwareDruid.py
 
