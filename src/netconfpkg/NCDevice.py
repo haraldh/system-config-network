@@ -90,7 +90,6 @@ class Device( Device_base ):
 
     intkeydict = {
                     'Mtu' : 'MTU', 
-                    'Mru' : 'MRU', 
                  }
 
 

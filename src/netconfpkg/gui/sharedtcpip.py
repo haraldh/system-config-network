@@ -132,12 +132,16 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('mtuCB').set_active(True)
     elif xml.get_widget('mtuCB'):
         xml.get_widget('mtuSpin').set_value(device.getRealMtu())
-        
-    if device.Mru != None and xml.get_widget('mruCB'):
-        xml.get_widget('mruSpin').set_value(device.Mru)
-        xml.get_widget('mruCB').set_active(True)
+       
 
-
+    if device.Dialup:
+        if device.Dialup.Mru != None and xml.get_widget('mruCB'):
+            xml.get_widget('mruSpin').set_value(device.Dialup.Mru)
+            xml.get_widget('mruCB').set_active(True)
+    else:
+            xml.get_widget('mruCB').set_active(False)
+            xml.get_widget('mruSpin').hide()
+            xml.get_widget('mruCB').hide()
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
@@ -168,9 +172,10 @@ def dhcp_dehydrate (xml, device):
         device.Mtu = None
 
     if xml.get_widget('mruCB').get_active():
-        device.Mru = int(xml.get_widget('mruSpin').get_value())
-    else:
-        device.Mru = None
+        if device.Dialup:
+            device.Dialup.Mru = int(xml.get_widget('mruSpin').get_value())
+    elif device.Dialup:        
+        device.Dialup.Mru = None
  
 ###
 ### ROUTES

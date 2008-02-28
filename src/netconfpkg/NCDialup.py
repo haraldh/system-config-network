@@ -110,11 +110,23 @@ __country_code = {
     }
 
 class Dialup(Dialup_base):
+    intkeydict = {
+                    'Mtu' : 'MTU', 
+                    'Mru' : 'MRU', 
+                 }
+
     def __init__(self, list = None, parent = None):
         Dialup_base.__init__(self, list, parent)
         self.createCompression()
 
     def load(self, parentConf):
+        conf = parentConf
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
+            if conf.has_key(confkey) and len(conf[confkey]):
+                self.__dict__[selfkey] = int(conf[confkey])
+
+
         if parentConf.has_key('DEMAND'):
             if parentConf['DEMAND'] == 'yes':
                 self.DialMode = DM_AUTO
@@ -140,6 +152,13 @@ class Dialup(Dialup_base):
             log.log(6, "No self.login!!!")
 
     def save(self, parentConf):
+        conf = parentConf
+        for selfkey in self.intkeydict.keys():
+            confkey = self.intkeydict[selfkey]
+            if self.__dict__[selfkey]:
+                conf[confkey] = str(self.__dict__[selfkey])
+            else: del conf[confkey]
+
         if self.Login:
             papconf = getPAPConf()
             chapconf = getCHAPConf()
