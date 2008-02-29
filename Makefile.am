@@ -2,16 +2,21 @@ AUTOMAKE_OPTIONS = foreign 1.4
 
 SUBDIRS = doc src po m4
 
-EXTRA_DIST= system-config-network.spec neat.desktop.in neat.console neat.pam \
-	neat-control.desktop.in pycheckrc \
+EXTRA_DIST= system-config-network.spec \
+	system-config-network.desktop.in \
+	system-config-network.console \
+	system-config-network.pam \
+	system-control-network.desktop.in \
+	system-config-network-cmd.console \
+	pycheckrc \
 	intltool-extract.in intltool-merge.in intltool-update.in \
-	ChangeLog system-config-network-cmd.console \
+	ChangeLog \
 	system-config-network.sh TODO \
 	COPYING
 
 iconsdir=$(pkgdatadir)
 
-icons_DATA=neat.desktop neat-control.desktop
+icons_DATA=system-config-network.desktop system-control-network.desktop
 
 icons_in_files=$(icons_DATA:.desktop=.desktop.in)
 
@@ -30,22 +35,20 @@ install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d
 	$(mkinstalldirs) $(DESTDIR)$(prefix)/bin/
 
-	for i in neat system-config-network ; do \
-		$(INSTALL_DATA) $(srcdir)/neat.console $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
-		$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
-		ln -fs consolehelper $(DESTDIR)$(prefix)/bin/$$i; \
-	done
+	$(INSTALL_DATA) $(srcdir)/system-config-network.console $(DESTDIR)$(sysconfdir)/security/console.apps/system-config-network 
+	$(INSTALL_DATA) $(srcdir)/system-config-network.pam $(DESTDIR)$(sysconfdir)/pam.d/system-config-network
+	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/system-config-network 
 
 	install -m 0755 $(srcdir)/system-config-network.sh $(DESTDIR)$(sbindir)/system-config-network
 
-# system-config-network-cmd needs a special console file
+#	# system-config-network-cmd needs a special console file
+	$(INSTALL_DATA) $(srcdir)/system-config-network-cmd.console $(DESTDIR)$(sysconfdir)/security/console.apps/system-config-network-cmd
+	$(INSTALL_DATA) $(srcdir)/system-config-network.pam $(DESTDIR)$(sysconfdir)/pam.d/system-config-network-cmd
+	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/system-config-network-cmd 
 
-	$(INSTALL_DATA) $(srcdir)/system-config-network-cmd.console $(DESTDIR)$(sysconfdir)/security/console.apps/system-config-network-cmd; \
-	$(INSTALL_DATA) $(srcdir)/neat.pam $(DESTDIR)$(sysconfdir)/pam.d/system-config-network-cmd; \
-	ln -fs consolehelper $(DESTDIR)$(prefix)/bin/system-config-network-cmd ; 
 uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/system-control-network
-	for i in neat system-config-network system-config-network-cmd; do \
+	for i in system-config-network system-config-network-cmd; do \
 		rm -f $(DESTDIR)$(sysconfdir)/security/console.apps/$$i; \
 		rm -f $(DESTDIR)$(sysconfdir)/pam.d/$$i; \
 		rm -f $(DESTDIR)$(prefix)/bin/$$i; \
@@ -56,8 +59,8 @@ ChangeLog changelog:
 
 
 clean-local:
-	rm -f neat.desktop
-	rm -f neat-control.desktop
+	rm -f system-config-network.desktop
+	rm -f system-control-network.desktop
 	rm -f *~ *\#
 
 distclean-local:
@@ -95,8 +98,8 @@ newversion:
 
 potfile:
 	chmod u+w -R  po
-	sh -c '(find . -maxdepth 1 -type f -name "*.desktop.in";find ./src -type f -name "*.py";find ./src/netconfpkg/gui -type f -name "*.glade"|fgrep -v version.py|fgrep -v pygettext.py;echo src/version.py.in) |sed -e "s#^\./##g"> po/POTFILES.in'
-	sh -c '(find . -maxdepth 1 -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py;echo src/netconf_cmd.py;echo pygettext.py;echo po/pygettext.py) |sed -e "s#^\./##g"> po/POTFILES.skip'
+	sh -c '(find . -maxdepth 1 -type f -name "*.desktop.in";find ./src/netconfpkg/gui -type f -name "*.glade";find ./src -type f -name "*.py"|fgrep -v version.py|fgrep -v pygettext.py;echo src/version.py.in) |sed -e "s#^\./##g"|sort -u > po/POTFILES.in'
+	sh -c '(find . -maxdepth 1 -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py;echo pygettext.py;echo po/pygettext.py) |sed -e "s#^\./##g"|sort -u > po/POTFILES.skip'
 	make 
 	make -C po update-po
 

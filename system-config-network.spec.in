@@ -42,7 +42,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 
 mkdir $RPM_BUILD_ROOT%{_datadir}/applications
 
-for i in neat.desktop neat-control.desktop; do \
+for i in system-config-network.desktop system-control-network.desktop; do \
   desktop-file-install --vendor redhat --delete-original       \
     --dir $RPM_BUILD_ROOT%{_datadir}/applications             \
     --add-category System                                     \
@@ -65,12 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/system-config-network/pixmaps
 %{_datadir}/system-config-network/netconfpkg/gui
 %{_datadir}/system-config-network/netconf.py*
-%{_datadir}/system-config-network/neat-control.py*
+%{_datadir}/system-config-network/netconf_control.py*
 %{_sbindir}/system-config-network-gui
-%{_bindir}/neat-control
 %{_bindir}/system-control-network
-%{_sbindir}/neat
-%{_bindir}/neat
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
 
@@ -80,8 +77,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/system-config-network
 %doc %dir %{_datadir}/system-config-network/help
 %doc %{_datadir}/system-config-network/help/*
-%{_datadir}/system-config-network/netconf-cmd.py*
-%{_datadir}/system-config-network/netconf-tui.py*
+%{_datadir}/system-config-network/netconf_cmd.py*
+%{_datadir}/system-config-network/netconf_tui.py*
 %{_datadir}/system-config-network/version.py*
 %dir %{_datadir}/system-config-network/netconfpkg
 %{_datadir}/system-config-network/netconfpkg/conf
@@ -97,7 +94,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/sysconfig/networking/profiles
 %dir %{_sysconfdir}/sysconfig/networking/profiles/default
 %dir %{_sysconfdir}/sysconfig/networking/devices
-%{_sbindir}/neat-tui
 %{_sbindir}/system-config-network
 %{_sbindir}/system-config-network-tui
 %{_sbindir}/system-config-network-cmd
