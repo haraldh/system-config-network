@@ -63,12 +63,12 @@ distclean-local:
 VERSION=@VERSION@
 SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
-.PHONY: changelog archive tag force-tag srpm newversion potfile push pull diff
+.PHONY: changelog check-clean-tree archive tag force-tag srpm newversion potfile push pull diff
 
 ChangeLog changelog:
 	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
 
-archive: tag
+check-clean-tree:
 	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 	@git-diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 
