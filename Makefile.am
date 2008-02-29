@@ -69,8 +69,19 @@ distclean-local:
 VERSION=@VERSION@
 CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
-archive: tag
+check-clean-tree:
 	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
+	@git-diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
+
+tag: check-clean-tree
+	@if [ "$$(git-rev-parse HEAD 2>/dev/null)" != "$$(git-rev-parse $(CVSTAG) 2>/dev/null)" ] ; then \
+		git tag $(CVSTAG); \
+	fi
+
+force-tag: check-clean-tree
+	git tag -f $(CVSTAG)
+
+archive: tag
 	@test -d  /tmp/${PACKAGE}-$(VERSION) && chmod u+w -R /tmp/${PACKAGE}-$(VERSION) || :
 	@rm -rf /tmp/${PACKAGE}-$(VERSION) /tmp/${PACKAGE}
 	@git clone -l $$orig . /tmp/${PACKAGE}-$(VERSION)
@@ -78,14 +89,6 @@ archive: tag
 	@mv /tmp/${PACKAGE}-$(VERSION)/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)
 	@rm -rf /tmp/${PACKAGE}-$(VERSION)
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
-
-tag:
-	@if [ "$$(git-rev-parse HEAD 2>/dev/null)" != "$$(git-rev-parse $(CVSTAG) 2>/dev/null)" ] ; then \
-		git tag $(CVSTAG); \
-	fi
-
-force-tag:
-	git tag -f $(CVSTAG)
 
 srpm: archive
 	@LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/@PACKAGE@-@VERSION@.tar.gz
