@@ -49,7 +49,6 @@ def get_device_icon_mask( devtype, dialog ):
         DEVPIXMAPS[WIRELESS] = get_icon( 'irda-16.xpm', dialog )
         DEVPIXMAPS[DSL] = get_icon( 'dsl.xpm', dialog )
         DEVPIXMAPS[TOKENRING] = DEVPIXMAPS[ETHERNET]
-        DEVPIXMAPS[CIPE] = DEVPIXMAPS[ETHERNET]
 
     if not DEVPIXMAPS.has_key( devtype ):
         return DEVPIXMAPS[ETHERNET]

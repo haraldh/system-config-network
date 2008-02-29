@@ -2,7 +2,6 @@
 PYTHON_FILES = \
 	__init__.py \
 	NCDevADSL.py \
-	NCDevCipe.py \
 	NCDevEthernet.py \
 	NCDevIsdn.py \
 	NCDevModem.py \

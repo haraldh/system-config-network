@@ -18,7 +18,6 @@ PYTHON_FILES = \
 	NCAliasList.py \
 	NCBackendHal.py \
 	NCCallback.py \
-	NCCipe.py \
 	NCCompression.py \
 	NCDeviceList.py \
 	NCDevice.py \

@@ -78,15 +78,12 @@ SYSCONFNETWORK = '/etc/sysconfig/network'
 WVDIALCONF = '/etc/wvdial.conf'
 HOSTSCONF = '/etc/hosts'
 RESOLVCONF = '/etc/resolv.conf'
-CIPEDIR = "/etc/cipe"
 PPPDIR = "/etc/ppp"
 
 if cmp_kernel_version([2,5,0], kernel_version()) < 0:
     MODULESCONF='/etc/modprobe.conf'
-    DOCIPE=0
 else:
     MODULESCONF='/etc/modules.conf'
-    DOCIPE=1
 
 HWCONF='/etc/sysconfig/hwconf'
 ISDNCARDCONF='/etc/sysconfig/isdncard'
@@ -100,14 +97,13 @@ MODEM = 'Modem'
 ISDN = 'ISDN'
 LO = 'Loopback'
 DSL = 'xDSL'
-CIPE = 'CIPE'
 WIRELESS = 'Wireless'
 TOKENRING = 'Token Ring'
 IPSEC = 'IPSEC'
 QETH = 'QETH'
 HSI = 'HSI'
 
-deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, CIPE, WIRELESS, TOKENRING, QETH, HSI ]
+deviceTypes = [ ETHERNET, MODEM, ISDN, LO, DSL, WIRELESS, TOKENRING, QETH, HSI ]
 
 modemDeviceList = [ '/dev/modem',
                     '/dev/ttyS0', '/dev/ttyS1', '/dev/ttyS2', '/dev/ttyS3',
@@ -120,7 +116,6 @@ __deviceTypeDict = { '^eth[0-9]*(:[0-9]+)?$' : ETHERNET,
                      '^ppp[0-9]*(:[0-9]+)?$' : MODEM,
                      '^ippp[0-9]*(:[0-9]+)?$' : ISDN,
                      '^isdn[0-9]*(:[0-9]+)?$' : ISDN,
-                     '^cipcb[0-9]*(:[0-9]+)?$' : CIPE,
                      '^tr[0-9]*(:[0-9]+)?$' :TOKENRING,
                      '^lo$' : LO,
                      '^hsi[0-9]*(:[0-9]+)?$' : HSI,
@@ -914,7 +909,7 @@ def prepareRoot(root):
         OLDSYSCONFDEVICEDIR, \
         SYSCONFDEVICEDIR, \
         SYSCONFPROFILEDIR, \
-        CIPEDIR, PPPDIR:
+        PPPDIR:
         if not os.path.isdir(root + "/" + dir):
             mkdir(root + "/" + dir)
 

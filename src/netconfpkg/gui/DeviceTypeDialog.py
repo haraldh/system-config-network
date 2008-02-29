@@ -65,7 +65,6 @@ class DeviceTypeDialog:
         isdnFound = False
         tokenringFound = False
         adslFound = False
-        cipeFound = False
         wirelessFound = False
         for hw in hardwarelist:
             if hw.Type == MODEM: modemFound = True
@@ -73,7 +72,6 @@ class DeviceTypeDialog:
             elif hw.Type == ETHERNET:
                 ethernetFound = True
                 adslFound = True
-                cipeFound = True
                 wirelessFound = True
             elif hw.Type == TOKENRING: tokenringFound = True
         if machine == 's390' or machine == 's390x':
@@ -85,7 +83,6 @@ class DeviceTypeDialog:
         if not isdnFound: devicetypes.remove(ISDN)
         if not ethernetFound: devicetypes.remove(ETHERNET)
         if not adslFound: devicetypes.remove(DSL)
-        if not cipeFound: devicetypes.remove(CIPE)
         if not tokenringFound: devicetypes.remove(TOKENRING)
         if not wirelessFound: devicetypes.remove(WIRELESS)
 

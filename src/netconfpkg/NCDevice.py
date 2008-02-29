@@ -27,7 +27,6 @@ from netconfpkg.conf import ConfSMB
 from NC_functions import *
 from netconfpkg import Device_base
 import NCDialup
-import NCCipe
 from rhpl.executil import gtkExecWithCaptureStatus
 
 class ConfDevice( Conf.ConfShellVar ):
@@ -228,7 +227,7 @@ class Device( Device_base ):
                                                 "or alias not a number!" ) % \
                                               self.DeviceId )
 
-        if not self.Cipe and self.BootProto == None:
+        if self.BootProto == None:
             if self.IP:
                 self.BootProto = "none"
             else:
@@ -295,7 +294,7 @@ class Device( Device_base ):
         conf = ConfDevice( self.DeviceId )
         conf.fsf()
 
-        if not self.Cipe and self.BootProto == None:
+        if self.BootProto == None:
             if len(self.IP):
                 self.BootProto = "none"
             else:
@@ -376,9 +375,6 @@ class Device( Device_base ):
 
         if self.Dialup:
             self.Dialup.save( conf )
-
-        if self.Cipe:
-            self.Cipe.save( conf )
 
         if self.Wireless:
             self.Wireless.save( conf )

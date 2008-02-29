@@ -121,10 +121,6 @@ class GenericInterface(InterfaceCreator):
             device.createDialup()
             cfg = ADSLInterfaceDialog(device)
 
-        elif type == CIPE:
-            device.createCipe()
-            cfg = CipeInterfaceDialog(device)
-
         elif type == WIRELESS:
             device.createWireless()
             cfg = wirelessConfigDialog(device)

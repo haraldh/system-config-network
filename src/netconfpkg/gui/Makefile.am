@@ -2,8 +2,6 @@ GLADE_FILES = \
 	ADSLInterfaceDruid.glade \
 	ADSLInterfaceDialog.glade \
 	ChooseProvider.glade \
-	CipeInterfaceDialog.glade \
-	CipeInterfaceDruid.glade \
 	DeviceConfigDialog.glade \
 	DeviceTypeDialog.glade \
 	DialupInterfaceDialog.glade \
@@ -49,8 +47,6 @@ GLADE_FILES = \
 PYTHON_FILES = \
 	ADSLInterfaceDruid.py \
 	ADSLInterfaceDialog.py \
-	CipeInterfaceDialog.py \
-	CipeInterface.py \
 	DeviceConfigDialog.py \
 	DeviceTypeDialog.py \
 	DialupInterfaceDialog.py \
