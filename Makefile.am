@@ -67,25 +67,25 @@ distclean-local:
 	rm -f $(top_builddir)/po/po2tbl.sed
 
 VERSION=@VERSION@
-CVSTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
+SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
 check-clean-tree:
 	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 	@git-diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 
 tag: check-clean-tree
-	@if [ "$$(git-rev-parse HEAD 2>/dev/null)" != "$$(git-rev-parse $(CVSTAG) 2>/dev/null)" ] ; then \
-		git tag $(CVSTAG); \
+	@if [ "$$(git-rev-parse HEAD 2>/dev/null)" != "$$(git-rev-parse $(SCMTAG) 2>/dev/null)" ] ; then \
+		git tag $(SCMTAG); \
 	fi
 
 force-tag: check-clean-tree
-	git tag -f $(CVSTAG)
+	git tag -f $(SCMTAG)
 
 archive: tag
 	@test -d  /tmp/${PACKAGE}-$(VERSION) && chmod u+w -R /tmp/${PACKAGE}-$(VERSION) || :
 	@rm -rf /tmp/${PACKAGE}-$(VERSION) /tmp/${PACKAGE}
 	@git clone -l $$orig . /tmp/${PACKAGE}-$(VERSION)
-	@cd /tmp/${PACKAGE}-$(VERSION);git checkout -b compile $(CVSTAG);./autogen.sh;make;make distcheck
+	@cd /tmp/${PACKAGE}-$(VERSION);git checkout -b compile $(SCMTAG);./autogen.sh;make;make distcheck
 	@mv /tmp/${PACKAGE}-$(VERSION)/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)
 	@rm -rf /tmp/${PACKAGE}-$(VERSION)
 	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
