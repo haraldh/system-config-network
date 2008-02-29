@@ -107,6 +107,7 @@ potfile:
 
 push: distcheck pull
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
+	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git $(SCMTAG)
 	git fetch
 
 pull:
