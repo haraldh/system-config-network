@@ -105,7 +105,7 @@ class NCTcpIpDialog:
         self.dynip.setCallback(self.useDynamicCheckBox)
         bb=snack.ButtonBar(self.screen,((_("Ok"),"ok"),(_("Cancel"),"cancel")))
         self.setState(self.dev)
-        tl=snack.GridForm(screen,_("Devernet Configuration"),1,3)
+        tl=snack.GridForm(screen,_("Network Configuration"),1,3)
         tl.add(g1,0,0,(0,0,0,1),anchorLeft=1)
         tl.add(g2,0,1,(0,0,0,1))
         tl.add(bb,0,2,growx=1)
