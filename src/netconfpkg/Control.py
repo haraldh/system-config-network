@@ -16,19 +16,12 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import re
-import traceback
-import sys
 import os
 import os.path
-import shutil
-import signal
-import string
-from rhpl import ethtool
-from NC_functions import *
-import NCDeviceList
 
-import glob
+from rhpl import ethtool
+from netconfpkg import NCDeviceList
+from netconfpkg.NC_functions import getNickName, getDeviceType, ISDN, MODEM
 
 class NetworkDevice:
     def __init__(self):
@@ -55,7 +48,7 @@ class NetworkDevice:
                         else:
                             try:
                                 self.activedevicelist.remove(i)
-                            except:
+                            except ValueError: # pylint: disable-msg=W0704
                                 pass
                             
             elif getDeviceType(i) == MODEM:

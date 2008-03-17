@@ -17,20 +17,19 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from NC_functions import *
-from netconfpkg import Callback_base
+from netconfpkg import Callback_base # pylint: disable-msg=E0611
 
 class Callback(Callback_base):
-    boolkeydict = { 'Compression' : 'CBCP',
+    boolkeydict = { 'Compression' : 'CBCP', 
                     'Hup' : 'CBHUP' }
 
-    keydict = { 'Type' : 'CALLBACK',
-                'MSN' : 'CBCP_MSN',}
+    keydict = { 'Type' : 'CALLBACK', 
+                'MSN' : 'CBCP_MSN', }
 
     intkeydict = { 'Delay' : 'CBDELAY' }
 
-    def __init__(self, list = None, parent = None):
-        Callback_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Callback_base.__init__(self, clist, parent)
 
     def load(self, parentConf):
         conf = parentConf

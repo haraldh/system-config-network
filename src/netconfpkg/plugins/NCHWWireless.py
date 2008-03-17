@@ -1,3 +1,4 @@
+"Wireless Hardware Device Plugin"
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 
@@ -17,25 +18,37 @@
 
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import WIRELESS, getHardwareType
 
 _hwEthernetDialog = None
 _hwEthernetWizard = None
 
 class HwWireless(Hardware):
-    def __init__(self, list = None, parent = None):
-        Hardware.__init__(self, list, parent)
+    "Wireless Hardware Device Class"
+
+    def __init__(self, mlist = None, parent = None):
+        Hardware.__init__(self, mlist, parent)
         self.Type = WIRELESS
-        self.createCard()
+        self.createCard() # pylint: disable-msg=E1101
 
     def getDialog(self):
-        if _hwEthernetDialog == None: return None
+        """
+        returns a gtk dialog
+        """
+        if _hwEthernetDialog == None: 
+            return None
         return _hwEthernetDialog(self).xml.get_widget("Dialog")
 
     def getWizard(self):
+        """
+        returns a gtk wizard
+        """
         return _hwEthernetWizard
 
     def isType(self, hardware):
+        """
+        check if device is of type ISDN
+        """
         if hardware.Type == WIRELESS:
             return True
         if getHardwareType(hardware.Hardware) == WIRELESS:
@@ -43,15 +56,23 @@ class HwWireless(Hardware):
         return False
 
 def setHwWirelessDialog(dialog):
-    global _hwEthernetDialog
+    """
+    Set the gtk Modem Dialog
+    """
+    global _hwEthernetDialog  # pylint: disable-msg=W0603
     _hwEthernetDialog = dialog
 
 def setHwWirelessWizard(wizard):
-    global _hwEthernetWizard
+    """
+    Set the gtk Modem Wizard
+    """
+    global _hwEthernetWizard # pylint: disable-msg=W0603
     _hwEthernetWizard = wizard
 
-df = getHardwareFactory()
-df.register(HwWireless, WIRELESS)
+__df = getHardwareFactory()
+__df.register(HwWireless, WIRELESS)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
 __date__ = "$Date: 2007/03/14 09:29:37 $"
 __version__ = "$Revision: 1.9 $"

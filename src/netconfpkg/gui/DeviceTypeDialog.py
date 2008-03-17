@@ -17,22 +17,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import gtk
-
-import gtk.glade
-import signal
-import os
-
-import string
-import re
-
-from DialupInterfaceDialog import *
-from ethernetconfig import ethernetConfigDialog
-from ADSLInterfaceDialog import ADSLInterfaceDialog
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg.gui.GUI_functions import load_icon
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, deviceTypes, \
+    MODEM, ISDN, ETHERNET, DSL, TOKENRING, WIRELESS, LO
+from netconfpkg.gui.GUI_functions import GLADEPATH 
+from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
+import gtk
+import gtk.glade
+import os
 
 
 class DeviceTypeDialog:
@@ -46,10 +38,10 @@ class DeviceTypeDialog:
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_okButton_clicked" : self.on_okButton_clicked, 
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked, 
             })
 
         self.dialog = self.xml.get_widget("Dialog")
@@ -108,17 +100,10 @@ class DeviceTypeDialog:
         item = omenu.get_menu ().get_active ()
         self.device.Type = item.get_data ("device")
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
-    def on_cancelButton_clicked(self, button):
+    def on_cancelButton_clicked(self, button): # pylint: disable-msg=W0613
         self.device.rollback()
-
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = basicDialog()
-    gtk.main()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

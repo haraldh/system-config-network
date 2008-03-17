@@ -17,20 +17,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import gtk
-import gtk.glade
-import signal
-import os
-import string
-import re
-from rhpl.executil import *
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import QETH
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg import *
-from netconfpkg import NCHWQeth
-from netconfpkg import NCHardwareList
+from netconfpkg.plugins import NCHWQeth
+import gtk.glade
+import os
 
 class qethHardwareDialog:
     def __init__(self, hw):
@@ -45,10 +39,10 @@ class qethHardwareDialog:
 
         self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
 
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_okButton_clicked" : self.on_okButton_clicked, 
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked, 
             "on_adapterEntry_changed" : self.on_adapterEntry_changed
             })
 
@@ -62,7 +56,7 @@ class qethHardwareDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
@@ -81,7 +75,6 @@ class qethHardwareDialog:
             if self.hw.Card.IoPort2:
                 self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
         else:
-            hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
             

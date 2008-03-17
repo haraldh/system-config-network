@@ -16,21 +16,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-import types
 import gtk
 import gtk.glade
-import signal
 import os
 
-import string
-import re
-
-from netconfpkg import *
+from netconfpkg.plugins import NCHWModem
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import modemDeviceList
-from netconfpkg.NC_functions import modemFlowControls
+from netconfpkg.NC_functions import modemDeviceList, _, modemFlowControls
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg import NCHardwareList
 
 class modemDialog:
     def __init__(self, hw):
@@ -62,7 +57,7 @@ class modemDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
@@ -78,8 +73,6 @@ class modemDialog:
             "flowControlCombo").set_popdown_strings(flowcontrols)
 
     def hydrate(self):
-        hardwarelist = NCHardwareList.getHardwareList()
-
         if self.hw.Modem.DeviceName != None:
             if not self.hw.Modem.DeviceName in modemDeviceList:
                 modemDeviceList.insert(0, self.hw.Modem.DeviceName)
@@ -158,13 +151,5 @@ class modemDialog:
 
 NCHWModem.setHwModemDialog(modemDialog)
 
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    dialog = modemDialog()
-    dialog.run()
-    gtk.main()
-
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.25 $"
+

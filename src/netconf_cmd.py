@@ -37,16 +37,15 @@ import getopt
 import signal
 import os
 import os.path
-import string
-from netconfpkg import *
+from netconfpkg import Control
+from netconfpkg import NC_functions
 from netconfpkg.genClass import ParseError
-from version import PRG_VERSION
-from version import PRG_NAME
+from version import PRG_VERSION, PRG_NAME
 
 PROGNAME='system-config-network'
 
 import locale
-from rhpl.translate import _, N_, textdomain_codeset
+from rhpl.translate import _, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
@@ -54,6 +53,7 @@ __builtin__.__dict__['_'] = _
 
 def handleException((type, value, tb), progname, version, debug=None):
     import pdb
+    import traceback
     list = traceback.format_exception (type, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
     if len(tblast):
@@ -73,7 +73,7 @@ def handleException((type, value, tb), progname, version, debug=None):
     for t in tblast:
         text += str(t) + ":"
     text += extxt[0]
-    text += joinfields(list, "")
+    text += "".join(list)
 
     trace = tb
     while trace.tb_next:
@@ -130,7 +130,8 @@ def main(cmdline):
     from netconfpkg.NC_functions import log
 
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    class BadUsage: pass
+    class BadUsage(Exception):
+        pass
 
     progname = os.path.basename(sys.argv[0])
     NC_functions.setVerboseLevel(2)
@@ -312,14 +313,15 @@ def main(cmdline):
                 try:
                     line = line[:-1]
                     log.log(3, "Parsing '%s'\n" % line)
-                    vals = string.split(line, "=")
+                    vals = line.split("=")
                     if len(vals) <= 1:
                         continue
                     key = vals[0]
-                    value = string.join(vals[1:], "=")
+                    value = "=".join(vals[1:])
 
-                    vals = string.split(key, ".")
+                    vals = key.split(".")
                     if devlistsdict.has_key(vals[0]):
+                        # pylint: disable-msg=W0212
                         devlistsdict[vals[0]]._parseLine(vals, value)
                     else:
                         sys.stderr.write(_("Unknown List %s\n", vals[0]))

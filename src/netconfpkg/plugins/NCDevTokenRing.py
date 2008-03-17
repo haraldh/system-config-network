@@ -17,14 +17,14 @@
 
 from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import TOKENRING, getDeviceType
 
 _devTokenRingDialog = None
 _devTokenRingWizard = None
 
 class DevTokenRing(Device):
-    def __init__(self, list = None, parent = None):
-        Device.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Device.__init__(self, clist, parent)
         self.Type = TOKENRING
 
     def getDialog(self):
@@ -52,8 +52,8 @@ def setDevTokenRingWizard(wizard):
     global _devTokenRingWizard
     _devTokenRingWizard = wizard
 
-df = getDeviceFactory()
-df.register(DevTokenRing, TOKENRING)
+__df = getDeviceFactory()
+__df.register(DevTokenRing, TOKENRING)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.10 $"

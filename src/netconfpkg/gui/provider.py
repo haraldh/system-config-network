@@ -20,13 +20,10 @@
 import gtk
 
 import gtk.glade
-import signal
 import os
 
-import string
-import re
 
-import providerdb
+from netconfpkg.gui import providerdb
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -75,17 +72,17 @@ class providerDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_cancelButton_clicked(self, button):
+    def on_cancelButton_clicked(self, button): # pylint: disable-msg=W0613
         self.done = False
 
-    def on_okButton_clicked(self, *args):
+    def on_okButton_clicked(self, *args): # pylint: disable-msg=W0613
         self.done = True
         self.provider = self.get_provider()
         self.dehydrate()
         self.dialog.destroy()
         self.device.commit()
 
-    def on_providerTree_tree_select_row(self, ctree, node, column):
+    def on_providerTree_tree_select_row(self, ctree, node, column): # pylint: disable-msg=W0613
         node = ctree.selection[0]
         if len(node.children) == 0:
             try:
@@ -96,26 +93,27 @@ class providerDialog:
             except(TypeError,AttributeError):
                 pass
 
-    def on_providerTree_tree_unselect_row(self, ctree, list, column):
+    def on_providerTree_tree_unselect_row(self, ctree, clist, column): # pylint: disable-msg=W0613
         self.okButton.set_sensitive(False)
 
-    def on_providerTree_button_press_event(self, clist, event, func):
+    def on_providerTree_button_press_event(self, clist, event, func): # pylint: disable-msg=W0613
         return
-        if event.type == gtk.gdk._2BUTTON_PRESS:
-            if self.okButton.get_property("sensitive"):
-                info = clist.get_selection_info(event.x, event.y)
-                if info != None:
-                    id = clist.signal_connect("button_release_event",
-                                              self.on_providerTree_button_release_event,
-                                              func)
-                    clist.set_data("signal_id", id)
+#        if event.type == gtk.gdk._2BUTTON_PRESS:
+#            if self.okButton.get_property("sensitive"):
+#                info = clist.get_selection_info(event.x, event.y)
+#                if info != None:
+#                    id = clist.signal_connect("button_release_event",
+#                                              self.on_providerTree_button_release_event,
+#                                              func)
+#                    clist.set_data("signal_id", id)
 
-    def on_providerTree_button_release_event(self, clist, event, func):
+    def on_providerTree_button_release_event(self, clist, event, func): # pylint: disable-msg=W0613
         if self.okButton.get_property("sensitive"):
-            id = clist.get_data ("signal_id")
-            clist.disconnect (id)
+            mid = clist.get_data ("signal_id")
+            clist.disconnect (mid)
             clist.remove_data ("signal_id")
-            apply(func)
+            if func:
+                func()
 
     def get_provider_list(self):
         return providerdb.get_provider_list()
@@ -156,9 +154,9 @@ class providerDialog:
                                                pix_city, mask_city, is_leaf=False)
                 _city = isp['City']
 
-            name = self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
-                                           pix_isp, mask_isp,
-                                           pix_isp, mask_isp, is_leaf=False)
+            self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
+                                    pix_isp, mask_isp,
+                                    pix_isp, mask_isp, is_leaf=False)
 
         self.dbtree.select_row(0,0)
 
@@ -177,12 +175,13 @@ class providerDialog:
         self.device.BootProto = 'dialup'
         self.device.Domain = self.provider['Domain']
         if len(self.provider['DNS']) >0:
-            dns = string.split(self.provider['DNS'])
+            dns = self.provider['DNS'].split()
             if dns[0]: self.device.Dialup.PrimaryDNS = dns[0]
             try:
                 if dns[1]: self.device.Dialup.SecondaryDNS = dns[1]
             except(IndexError):
                 pass
+            
             self.device.AutoDNS = False
         else:
             self.device.AutoDNS = True
@@ -198,7 +197,7 @@ class ISDNproviderDialog(providerDialog):
     def dehydrate(self):
         providerDialog.dehydrate(self)
         self.device.Type = 'ISDN'
-        self.device.Dialup.Authentication = string.lower(self.provider['Authentication'])
+        self.device.Dialup.Authentication = self.provider['Authentication'].lower()
 
 
 class ModemproviderDialog(providerDialog):
@@ -212,17 +211,5 @@ class ModemproviderDialog(providerDialog):
         providerDialog.dehydrate(self)
         self.device.Type = 'Modem'
 
-
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = providerDialog()
-    window.run()
-    gtk.main()
-    print window.get_provider()
-
-
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.22 $"
+

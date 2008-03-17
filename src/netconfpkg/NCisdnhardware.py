@@ -18,12 +18,11 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import os
-import signal
-import string
+
 import commands
 import sys
-from NC_functions import *
-import netconfpkg
+from netconfpkg.NC_functions import getRoot, ISDNCARDCONF, log
+from netconfpkg.conf import Conf
 
 TYPE = 0
 IRQ = 1
@@ -37,7 +36,7 @@ DRIVER_ID = 8
 FIRMWARE = 9
 MODUL = 10
 
-__card = {
+_card = {
     # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
     "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
     "ASUS COM ISDNLink ISA PnP" : [ "12", "", "", "", "", "", "ASU1690", "ASU1690", "HiSax", "", "hisax" ],
@@ -91,6 +90,9 @@ __card = {
     }
 
 
+def getCards():
+    return _card
+
 class ConfISDN:
     keydict = { 'Description' : 'NAME',
                 'ModuleName' : 'MODULE',
@@ -115,12 +117,12 @@ class ConfISDN:
         self.Resources = ""
 
     def get_value(self, s):
-        if string.find(s, "=") < 0:
+        if s.find("=") < 0:
             return ""
-        s = string.split(s, "=", 1)[1]
-        s = string.replace(s, "\"", "")
+        s = s.split("=", 1)[1]
+        s = s.replace("\"", "")
 
-        return string.strip(s)
+        return s.strip()
 
     def load(self, f = None):
 
@@ -129,32 +131,32 @@ class ConfISDN:
         if not os.path.exists(f):
             return -1
 
-        conf = Conf.ConfShellVar(filename = f)
+        mconf = Conf.ConfShellVar(filename = f)
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey]
+            if mconf.has_key(confkey):
+                self.__dict__[selfkey] = mconf[confkey]
 
         log.log(5, "RESOURCES=%s" % self.Resources)
 
-        rlist = string.split(self.Resources, " ")
+        rlist = self.Resources.split(" ")
         for i in rlist:
             log.log(5, "%s" % i)
-            if string.find(i, "type=") == 0:
+            if i.find("type=") == 0:
                 self.Type = self.get_value(i)
-            elif string.find(i, "protocol=") == 0:
+            elif i.find("protocol=") == 0:
                 self.ChannelProtocol = self.get_value(i)
-            elif string.find(i, "irq=") == 0:
+            elif i.find("irq=") == 0:
                 self.IRQ = self.get_value(i)
-            elif string.find(i, "id=") == 0:
+            elif i.find("id=") == 0:
                 self.DriverId = self.get_value(i)
-            elif string.find(i, "io=") == 0 or string.find(i, "io0=") == 0:
+            elif i.find("io=") == 0 or i.find("io0=") == 0:
                 self.IoPort = self.get_value(i)
-            elif string.find(i, "io1=") == 0:
+            elif i.find("io1=") == 0:
                 self.IoPort1 = self.get_value(i)
-            elif string.find(i, "io2=") == 0:
+            elif i.find("io2=") == 0:
                 self.IoPort2 = self.get_value(i)
-            elif string.find(i, "mem=") == 0:
+            elif i.find("mem=") == 0:
                 self.Mem = self.get_value(i)
 
         if len(rlist) and not self.Type:
@@ -232,63 +234,64 @@ class ConfISDN:
             f = open(fpnp, 'r')
             line = f.readline()
             while line:
-                idl.append(string.split(line)[1])
+                idl.append(line.split()[1])
                 line = f.readline()
             f.close()
             found = 1
 
         if found == 0: return
 
-        for i in __card.keys():
-            if __card[i][VENDOR_ID] and __card[i][DEVICE_ID]:
-                if string.find(pci_infos, __card[i][VENDOR_ID] + ':' + __card[i][DEVICE_ID]) >0:
-                    return {i : __card[i]}
-                elif idl and idl.count(__card[i][VENDOR_ID] + __card[i][DEVICE_ID]) >0:
-                    return {i : __card[i]}
+        for i in _card.keys():
+            if _card[i][VENDOR_ID] and _card[i][DEVICE_ID]:
+                if pci_infos.find(_card[i][VENDOR_ID] + ':' + _card[i][DEVICE_ID]) >0:
+                    return {i : _card[i]}
+                elif idl and idl.count(_card[i][VENDOR_ID] + _card[i][DEVICE_ID]) >0:
+                    return {i : _card[i]}
 
     def get_resource(self, name):
-        global __card
-        if __card.has_key(name):
-			# FIXME: remove Cardinfo
+        global _card
+        if _card.has_key(name):
+            # FIXME: remove Cardinfo
             self.Description = name
-            self.Type = __card[name][TYPE]
-            self.IRQ = __card[name][IRQ]
-            self.IoPort = __card[name][IO]
-            self.IoPort1 = __card[name][IO1]
-            self.IoPort2 = __card[name][IO2]
-            self.Mem = __card[name][MEM]
-            self.VendorId = __card[name][VENDOR_ID]
-            self.DeviceId = __card[name][DEVICE_ID]
-            self.DriverId = __card[name][DRIVER_ID]
-            self.Firmware = __card[name][FIRMWARE]
-            self.ModuleName = __card[name][MODUL]
+            self.Type = _card[name][TYPE]
+            self.IRQ = _card[name][IRQ]
+            self.IoPort = _card[name][IO]
+            self.IoPort1 = _card[name][IO1]
+            self.IoPort2 = _card[name][IO2]
+            self.Mem = _card[name][MEM]
+            self.VendorId = _card[name][VENDOR_ID]
+            self.DeviceId = _card[name][DEVICE_ID]
+            self.DriverId = _card[name][DRIVER_ID]
+            self.Firmware = _card[name][FIRMWARE]
+            self.ModuleName = _card[name][MODUL]
 
 
 if __name__ == "__main__":
-    conf = ConfISDN()
-    if conf.load() < 0:
-        new_card = conf.detect()
+    mconf = ConfISDN()
+    if mconf.load() < 0:
+        new_card = mconf.detect()
         if new_card:
-            conf.get_resource(new_card.keys()[0])
+            mconf.get_resource(new_card.keys()[0])
         else:
             print "not found:"
             sys.exit(0)
 
-    print "Channel Protocol:", conf.ChannelProtocol
-    print "Name:", conf.Description
-    print "Type:", conf.Type
-    print "Irq:", conf.IRQ
-    print "Io:", conf.IoPort
-    print "Io1:", conf.IoPort1
-    print "Io2:", conf.IoPort2
-    print "Mem:", conf.Mem
-    print "Vendor ID:", conf.VendorId
-    print "Device ID:", conf.DeviceId
-    print "Driver ID:", conf.DriverId
-    print "Firmware:", conf.Firmware
-    print "Modul:", conf.ModuleName
+    print "Channel Protocol:", mconf.ChannelProtocol
+    print "Name:", mconf.Description
+    print "Type:", mconf.Type
+    print "Irq:", mconf.IRQ
+    print "Io:", mconf.IoPort
+    print "Io1:", mconf.IoPort1
+    print "Io2:", mconf.IoPort2
+    print "Mem:", mconf.Mem
+    print "Vendor ID:", mconf.VendorId
+    print "Device ID:", mconf.DeviceId
+    print "Driver ID:", mconf.DriverId
+    print "Firmware:", mconf.Firmware
+    print "Modul:", mconf.ModuleName
+    del mconf
+    del new_card
 
 
-__author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:33:07 $"
-__version__ = "$Revision: 1.29 $"
+__author__ = "Than Ngo <than@redhat.com>"
+

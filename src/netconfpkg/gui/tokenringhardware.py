@@ -17,17 +17,12 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import gtk
-import gtk.glade
-import signal
-import os
-
-import string
-from netconfpkg.conf import Conf
 from netconfpkg.gui import GUI_functions
-from netconfpkg import *
+from netconfpkg.plugins import NCHWTokenring
+from netconfpkg.gui.GUI_functions import gui_run_dialog
 from netconfpkg.gui.HardwareDialog import HardwareDialog
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import _
 
 class tokenringHardwareDialog(HardwareDialog):
     def __init__(self, hw):
@@ -59,15 +54,13 @@ class tokenringHardwareDialog(HardwareDialog):
         if self.hw.Card.DMA1:
             cmd.append(' dma1='+str(self.hw.Card.DMA1))
 
-        (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
-                                                    catchfd = (1, 2))
+        (status, output) = gui_run_dialog('/sbin/modprobe', cmd,
+                                          catchfd = (1, 2), dialog = self.dialog)
         if status != 0:
-            output = _('Command failed: %s\n\nOutput:\n%s\n') % (string.join(cmd), output)
             GUI_functions.generic_longinfo_dialog(\
                 _('The Token Ring card could not be initialized. '
                   'Please verify your settings and try again.'),
                 output, self.dialog)
-        pass
 
     def on_cancelButton_clicked(self, button):
         #self.button = 1

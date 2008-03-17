@@ -22,6 +22,9 @@
 # package directory and imports from all found files (except __init__.py that
 # is) ;). Nice for plugin mechanism.
 
+# pylint: disable-msg=W0122
+# pylint: disable-msg=W0141
+
 import os
 _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
 

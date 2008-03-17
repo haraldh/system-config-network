@@ -17,17 +17,17 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
-from netconfpkg.gui import sharedtcpip
 import gtk
 import gtk.glade
-import string
 import os
-from EthernetHardwareDruid import ethernetHardware
-from InterfaceCreator import InterfaceCreator
 from rhpl import ethtool
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.NC_functions import _, WIRELESS, NETCONFDIR, PROGNAME, request_rpms
+from netconfpkg.plugins import NCDevWireless
+from netconfpkg.gui import sharedtcpip
+from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
+from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
 import gobject
 
 modeList = [
@@ -59,10 +59,10 @@ class WirelessInterface(InterfaceCreator):
         self.hw_sel = 0
         self.hwPage = False
         self.druids = []
-
-
+        self.devlist = []
 
     def init_gui(self):
+        # pylint: disable-msg=W0201
         if self.xml:
             return
 
@@ -167,11 +167,9 @@ class WirelessInterface(InterfaceCreator):
     def on_hostname_config_page_next(self, druid_page, druid):
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-        pass
 
     def on_hostname_config_page_prepare(self, druid_page, druid):
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
-        pass
 
     def on_wireless_config_page_back(self, druid_page, druid):
         childs = self.topdruid.get_children()
@@ -183,7 +181,7 @@ class WirelessInterface(InterfaceCreator):
 
     def on_wireless_config_page_next(self, druid_page, druid):
         self.device.createWireless()
-        wl = self.device.Wireless
+        wl = self.device.Wireless # pylint: disable-msg=E1101
 
         if self.xml.get_widget("essidAutoButton").get_active():
             wl.EssId = ""
@@ -302,7 +300,7 @@ class WirelessInterface(InterfaceCreator):
 
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
-        wl = self.device.Wireless
+        wl = self.device.Wireless # pylint: disable-msg=E1101
 
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
@@ -353,8 +351,9 @@ class WirelessInterface(InterfaceCreator):
         druid_page.set_text(s)
 
     def on_finish_page_finish(self, druid_page, druid):
+        # pylint: disable-msg=E1101
         hardwarelist = NCHardwareList.getHardwareList()
-        hardwarelist.commit()
+        hardwarelist.commit() 
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:

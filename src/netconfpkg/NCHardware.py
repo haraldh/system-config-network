@@ -15,8 +15,8 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from NC_functions import *
-from netconfpkg import Hardware_base
+from netconfpkg.NC_functions import _
+from netconfpkg import Hardware_base # pylint: disable-msg=E0611
 
 HW_INACTIVE = _("inactive") # not found in last config and not in actual system
 HW_SYSTEM = _("system")   # found in system
@@ -24,8 +24,8 @@ HW_CONF = _("configured")     # found in config but not in system
 HW_OK = _("ok")       # found in system and in config
 
 class Hardware(Hardware_base):
-    def __init__(self, list = None, parent = None):
-        Hardware_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Hardware_base.__init__(self, clist, parent)
         self.Status = HW_INACTIVE
 
     def getDialog(self):
@@ -34,10 +34,10 @@ class Hardware(Hardware_base):
     def getWizard(self):
         return None
 
-    def isType(self, device):
+    def isType(self, device): # pylint: disable-msg=W0613
         return None
 
-    def save(self):
+    def save(self, *args, **kwargs): # pylint: disable-msg=W0613
         return None
 
     def postSave(self):

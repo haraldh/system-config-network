@@ -17,14 +17,13 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
+from netconfpkg.gui.GUI_functions import GLADEPATH
+from netconfpkg import NCHardwareList
 import gtk
 import gtk.glade
-import string
 import os
-from tokenringhardware import tokenringHardwareDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.NC_functions import TOKENRING, PROGNAME, NETCONFDIR
 
 class tokenringHardware:
     def __init__ (self, toplevel=None):
@@ -80,7 +79,7 @@ class tokenringHardware:
         self.dehydrate()
 
     def on_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
+        self.hardwarelist.rollback() # pylint: disable-msg=E1101
 
     def on_adapterEntry_changed(self, entry):
         pass

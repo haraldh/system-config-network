@@ -150,7 +150,7 @@ class FileMissing(Exception):
     def __str__(self):
         return self.filename + " does not exist."
 
-class IndexError(Exception):
+class ConfIndexError(IndexError):
     def __init__(self, filename, var):
         self.filename = filename
         self.var = var
@@ -169,14 +169,11 @@ WrongMethod = BadFile
 VersionMismatch = BadFile
 SystemFull = BadFile
 
-from string import joinfields, split, find, join
+from string import joinfields, split, find, join, atoi, strip
 from UserDict import UserDict
 import re
 import os
-# remove
-import sys
-import string
-import types
+
 # Implementation:
 # A configuration file is a list of lines.
 # a line is a string.
@@ -358,7 +355,7 @@ class ConfShellVar(Conf):
                         # ignore whitespace, etc.
                         p = p - 1
                 except:
-                    raise IndexError (self.filename, var)
+                    raise ConfIndexError (self.filename, var)
                 var[1] = var[1][:p]
             else:
                 var[1] = re.sub('#.*', '', var[1])
@@ -420,6 +417,7 @@ class ConfShellVar(Conf):
 #  command in the file.
 class ConfShellVarClone(ConfShellVar):
     def __init__(self, cloneInstance, filename):
+        ConfShellVar.__init__(self, filename)
         Conf.__init__(self, filename, commenttype='#',
                       separators='=', separator='=')
         self.ci = cloneInstance
@@ -460,9 +458,9 @@ class ConfESNetwork(ConfShellVar):
     def write(self):
         ConfShellVar.write(self)
         if self.writeHostname:
-            file = open('/etc/HOSTNAME', 'w', -1)
-            file.write(self.vars['HOSTNAME'] + '\n')
-            file.close()
+            mfile = open('/etc/HOSTNAME', 'w', -1)
+            mfile.write(self.vars['HOSTNAME'] + '\n')
+            mfile.close()
             os.chmod('/etc/HOSTNAME', 0644)
     def keys(self):
         # There doesn't appear to be a need to return keys in order
@@ -556,10 +554,11 @@ class ConfEResolv(Conf):
             #  bug 125712: /etc/resolv.conf modifiers MUST use
             #  change_resolv_conf function to change resolv.conf
             import tempfile
-            self.filename = tempfile.mktemp('','/tmp/')
+            (fd, self.filename) = tempfile.mkstemp('','/tmp/')
             Conf.write(self)
             import commands
             commands.getstatusoutput("/bin/bash -c '. /etc/sysconfig/network-scripts/network-functions; change_resolv_conf "+self.filename+"'")
+            fd.close()
             self.filename="/etc/resolv.conf"
     def keys(self):
         # no need to return list in order here, I think.
@@ -679,7 +678,7 @@ class ConfChat(Conf):
         while i < len(s) and s[i] in " \t":
             i = i + 1
         while i < len(s):
-            str = ''
+            mstr = ''
             # here i points to a new entry
             if s[i] in "'":
                 hastick = 1
@@ -687,17 +686,17 @@ class ConfChat(Conf):
                 while i < len(s) and s[i] not in "'":
                     if s[i] in '\\':
                         if not s[i+1] in " \t'":
-                            str = str + '\\'
+                            mstr = mstr + '\\'
                         i = i + 1
-                    str = str + s[i]
+                    mstr = mstr + s[i]
                     i = i + 1
                 # eat up the ending '
                 i = i + 1
             else:
                 while i < len(s) and s[i] not in " \t":
-                    str = str + s[i]
+                    mstr = mstr + s[i]
                     i = i + 1
-            chatlist.append(str)
+            chatlist.append(mstr)
             # eat whitespace between strings
             while i < len(s) and s[i] in ' \t':
                 i = i + 1
@@ -857,28 +856,30 @@ class ConfDIP:
         self.file.close()
 
 
-class odict(UserDict):
-    def __init__(self, dict = None):
+class odict(dict):
+    def __init__(self, odict = None):
         self._keys = []
-        UserDict.__init__(self, dict)
+        dict.__init__(self)
+        if odict:
+            dict.update(self, odict)
 
     def __delitem__(self, key):
-        UserDict.__delitem__(self, key)
+        dict.__delitem__(self, key)
         self._keys.remove(key)
 
     def __setitem__(self, key, item):
         #print "[%s] = %s" % (str(key), str(item))
-        UserDict.__setitem__(self, key, item)
+        dict.__setitem__(self, key, item)
         if key not in self._keys: self._keys.append(key)
 
     def clear(self):
-        UserDict.clear(self)
+        dict.clear(self)
         self._keys = []
 
     def copy(self):
-        dict = UserDict.copy(self)
-        dict._keys = self._keys[:]
-        return dict
+        odict = dict.copy(self)
+        odict._keys = self._keys[:]
+        return odict
 
     def items(self):
         return zip(self._keys, self.values())
@@ -898,7 +899,7 @@ class odict(UserDict):
         return (key, val)
 
     def setdefault(self, key, failobj = None):
-        UserDict.setdefault(self, key, failobj)
+        dict.setdefault(self, key, failobj)
         if key not in self._keys: self._keys.append(key)
 
     def update(self, dict):
@@ -945,12 +946,12 @@ class ConfModules(Conf):
             self.nextline()
         self.rewind()
     def splitoptlist(self, optlist):
-        dict = odict()
+        mdict = odict()
         for opt in optlist:
             optup = self.splitopt(opt)
             if optup:
-                dict[optup[0]] = optup[1]
-        return dict
+                mdict[optup[0]] = optup[1]
+        return mdict
     def splitopt(self, opt):
         eq = find(opt, '=')
         if eq > 0:
@@ -968,7 +969,7 @@ class ConfModules(Conf):
         else:
             return odict()
 
-    def __quote(self, s):
+    def _quote(self, s):
         s = s.replace('\\', '\\\\')
         s = s.replace('*', '\\*')
         s = s.replace('?', '\\?')
@@ -986,7 +987,7 @@ class ConfModules(Conf):
         for key in value.keys():
             self.rewind()
             missing=1
-            findexp = '^[\t ]*' + self.__quote(key) + '[\t ]+' + self.__quote(varname) + '[\t ]+'
+            findexp = '^[\t ]*' + self._quote(key) + '[\t ]+' + self._quote(varname) + '[\t ]+'
             if not cmp(key, 'alias'):
                 endofline = value[key]
                 replace = key + ' ' + varname + ' ' + endofline
@@ -1221,7 +1222,7 @@ class ConfPw(Conf):
             self.file.write(self.lines[index] + '\n')
         self.file.close()
         os.rename(self.filename + '.new', self.filename)
-    def changefield(self, key, fieldno, fieldtext):
+    def kchangefield(self, key, fieldno, fieldtext):
         self.rewind()
         self.findlinewithfield(self.keyfield, key)
         Conf.changefield(self, fieldno, fieldtext)
@@ -1235,19 +1236,22 @@ class ConfPwO(ConfPw):
     def __init__(self, filename, keyfield, numfields, reflector):
         ConfPw.__init__(self, filename, keyfield, numfields)
         self.reflector = reflector
+
     def __getitem__(self, key):
         if self.vars.has_key(key):
             return self.reflector(self, key)
         else:
             return None
-    def __setitem__(self, key):
+
+    def __setitem__(self, key, value):
         # items are objects which the higher-level code can't touch
-        raise AttributeError, 'Object ' + self + ' is immutable'
+        raise AttributeError, 'Object ' + self + ' is immutable. Cannot set %s to %s' % (str(key), str(value))
+
     # __delitem__ is inherited from ConfPw
     # Do *not* use setitem for this; adding an entry should be
     # a much different action than accessing an entry or changing
     # fields in an entry.
-    def addentry(self, key, list):
+    def addentry_list(self, key, list):
         if self.vars.has_key(key):
             raise AttributeError, key + ' exists'
         ConfPw.__setitem__(self, key, list)
@@ -1255,9 +1259,9 @@ class ConfPwO(ConfPw):
         freeid = 500
         # first, we try not to re-use id's that have already been assigned.
         for item in self.vars.keys():
-            id = atoi(self.vars[item][fieldnum])
-            if id >= freeid and id < 65533: # ignore nobody on some systems
-                freeid = id + 1
+            mid = atoi(self.vars[item][fieldnum])
+            if mid >= freeid and mid < 65533: # ignore nobody on some systems
+                freeid = mid + 1
         if freeid > 65533:
             # if that didn't work, we go back and find any free id over 500
             ids = {}
@@ -1278,6 +1282,7 @@ class _passwd_reflector:
     def __init__(self, pw, user):
         self.pw = pw
         self.user = user
+
     def setgecos(self, oldgecos, fieldnum, value):
         gecosfields = split(oldgecos, ',')
         # make sure that we have enough gecos fields
@@ -1285,16 +1290,20 @@ class _passwd_reflector:
             gecosfields.append('')
         gecosfields[fieldnum] = value
         return join(gecosfields[0:5], ',')
+
     def getgecos(self, oldgecos, fieldnum):
         gecosfields = split(oldgecos, ',')
         # make sure that we have enough gecos fields
         for i in range(5-len(gecosfields)):
             gecosfields.append('')
         return gecosfields[fieldnum]
+
     def __getitem__(self, name):
         return self.__getattr__(name)
+
     def __setitem__(self, name, value):
         return self.__setattr__(name, value)
+
     def __getattr__(self, name):
         if not self.pw.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
@@ -1322,6 +1331,7 @@ class _passwd_reflector:
             return self.pw.vars[self.user][6]
         else:
             raise AttributeError, name
+
     def __setattr__(self, name, value):
         if not cmp(name, 'pw') or not cmp(name, 'user') \
                                or not cmp(name, 'setgecos') \
@@ -1334,36 +1344,37 @@ class _passwd_reflector:
             # username is not an lvalue...
             raise AttributeError, name + ': key is immutable'
         elif not cmp(name,'password'):
-            self.pw.changefield(self.user, 1, value)
+            self.pw.kchangefield(self.user, 1, value)
         elif not cmp(name,'uid'):
-            self.pw.changefield(self.user, 2, str(value))
+            self.pw.kchangefield(self.user, 2, str(value))
         elif not cmp(name,'gid'):
-            self.pw.changefield(self.user, 3, str(value))
+            self.pw.kchangefield(self.user, 3, str(value))
         elif not cmp(name,'gecos'):
-            self.pw.changefield(self.user, 4, value)
+            self.pw.kchangefield(self.user, 4, value)
         elif not cmp(name,'fullname'):
-            self.pw.changefield(self.user, 4,
+            self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 0, value))
         elif not cmp(name,'office'):
-            self.pw.changefield(self.user, 4,
+            self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 1, value))
         elif not cmp(name,'officephone'):
-            self.pw.changefield(self.user, 4,
+            self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 2, value))
         elif not cmp(name,'homephone'):
-            self.pw.changefield(self.user, 4,
+            self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 3, value))
         elif not cmp(name,'homedir'):
-            self.pw.changefield(self.user, 5, value)
+            self.pw.kchangefield(self.user, 5, value)
         elif not cmp(name,'shell'):
-            self.pw.changefield(self.user, 6, value)
+            self.pw.kchangefield(self.user, 6, value)
         else:
             raise AttributeError, name
+
 class ConfPasswd(ConfPwO):
     def __init__(self):
         ConfPwO.__init__(self, '/etc/passwd', 0, 7, _passwd_reflector)
     def addentry(self, username, password, uid, gid, gecos, homedir, shell):
-        ConfPwO.addentry(self, username, [username, password, uid, gid, gecos, homedir, shell])
+        ConfPwO.addentry_list(self, username, [username, password, uid, gid, gecos, homedir, shell])
     def addfullentry(self, username, password, uid, gid, fullname, office,
         officephone, homephone, homedir, shell):
         self.addentry(username, password, uid, gid, join([fullname,
@@ -1451,13 +1462,14 @@ class _shadow_reflector:
             self.pw.changefield(self.user, 7, str(value))
         else:
             raise AttributeError, name
+
 class ConfShadow(ConfPwO):
     def __init__(self):
         ConfPwO.__init__(self, '/etc/shadow', 0, 9, _shadow_reflector)
     def addentry(self, username, password, lastchanged, mindays, maxdays, warndays, gracedays, expires):
         # we need that final '' so that the final : (delimited the
         # "reserved field" is preserved by ConfPwO.addentry())
-        ConfPwO.addentry(self, username,
+        ConfPwO.addentry_list(self, username,
                          [username, password, self._intfield(lastchanged),
                           self._intfield(mindays), self._intfield(maxdays),
                           self._intfield(warndays), self._intfield(gracedays),
@@ -1497,7 +1509,8 @@ class _group_reflector:
         elif not cmp(name,'userlist'):
             return self.pw.vars[self.group][3]
         else:
-            raise AttributeError. name
+            raise AttributeError, name
+        
     def __setattr__(self, name, value):
         if not cmp(name, 'pw') or not cmp(name, 'group'):
             self.__dict__[name] = value
@@ -1519,7 +1532,7 @@ class ConfGroup(ConfPwO):
     def __init__(self):
         ConfPwO.__init__(self, '/etc/group', 0, 4, _group_reflector)
     def addentry(self, group, password, gid, userlist):
-        ConfPwO.addentry(self, group, [group, password, gid, userlist])
+        ConfPwO.addentry_list(self, group, [group, password, gid, userlist])
     def getfreegid(self):
         try:
             return self.getfreeid(2)
@@ -1530,8 +1543,8 @@ class ConfGroup(ConfPwO):
         try: gid = atoi(gid)
         except: return ''
         for group in self.vars.keys():
-            id = atoi(self.vars[group][2])
-            if id == gid:
+            mgid = atoi(self.vars[group][2])
+            if mgid == gid:
                 return self.vars[group][0]
         return ''
 
@@ -1729,5 +1742,5 @@ class ConfSysctl(Conf):
             os.chmod(self.filename, self.mode)
         # add newlines
         for index in range(len(self.lines)):
-            self.file.write(self.lines[index] + '\n');
+            self.file.write(self.lines[index] + '\n')
         self.file.close()

@@ -22,7 +22,6 @@ import gtk.glade
 import signal
 import os
 
-import string
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
@@ -75,17 +74,17 @@ class editHostsDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
         #self.host.commit()
 
     def on_cancelButton_clicked(self, button):
         pass
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
+    def on_generic_entry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
+                                     pos, mstr):
         text = partial_text[0:length]
-        if re.match(str, text):
+        if re.match(mstr, text):
             return
         entry.emit_stop_by_name('insert_text')
 
@@ -95,20 +94,20 @@ class editHostsDialog:
         if self.host.Hostname:
             self.xml.get_widget('hostnameEntry').set_text(self.host.Hostname)
         if self.host.AliasList:
-            self.xml.get_widget('aliasesEntry').set_text(string.join(self.host.AliasList, ' '))
+            self.xml.get_widget('aliasesEntry').set_text(" ".join(self.host.AliasList))
 
     def dehydrate(self):
-        self.host.IP = string.strip(self.xml.get_widget('addressEntry').get_text())
-        self.host.Hostname = string.strip(self.xml.get_widget('hostnameEntry').get_text())
+        self.host.IP = self.xml.get_widget('addressEntry').get_text().strip()
+        self.host.Hostname = self.xml.get_widget('hostnameEntry').get_text().strip()
         if self.host.AliasList:
-            oldaliasstr = string.join(self.host.AliasList, ' ')
+            oldaliasstr = " ".join(self.host.AliasList)
         else:
             oldaliasstr = None
         newaliasstr = self.xml.get_widget('aliasesEntry').get_text()
         if oldaliasstr != newaliasstr.strip():
             self.host.AliasList = None
             self.host.createAliasList()
-            for al in string.split(newaliasstr):
+            for al in newaliasstr.split():
                 self.host.AliasList.append(al)
 
 # make ctrl-C work

@@ -1,7 +1,8 @@
-from netconfpkg import Host_base, AliasList
-#import AliasList
-import socket
+"Host Module"
+
+from netconfpkg import Host_base # pylint: disable-msg=E0611
 import re
+import socket
 
 def testHostname(hostname):
     # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
@@ -12,37 +13,38 @@ def testHostname(hostname):
             names.pop()
         pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
         for name in names:
-           if len(name) < 64:
-               if not pattern.match(name):
-                   return False
-           else:
-               return False
+            if len(name) < 64:
+                if not pattern.match(name):
+                    return False
+            else:
+                return False
         return True
     else:
         return False
 
 class Host(Host_base):
     HostID = None
+
+    def __init__(self, *args, **kwargs):
+        Host_base.__init__(self, *args, **kwargs)
+
     def testIP(self):
+        try:
+            socket.inet_pton(socket.AF_INET, self.IP) # pylint: disable-msg=E1101
+        except socket.error:
             try:
-                socket.inet_pton(socket.AF_INET, self.IP)
+                socket.inet_pton(socket.AF_INET6, self.IP) # pylint: disable-msg=E1101
             except socket.error:
-                try:
-                    socket.inet_pton(socket.AF_INET6, self.IP)
-                except:
-                    return False
-            return True
+                return False
+        return True
     
     def testHostname(self):
-        return testHostname(self.Hostname)
-        
-    def testAliasList(self):
-        return self.AliasList.test()
-    
+        return testHostname(self.Hostname) # pylint: disable-msg=E1101
+            
     def test(self):
         if not self.testIP():
             raise ValueError("IP")
         if not self.testHostname():
             raise ValueError("Hostname")
-        if not self.testAliasList():
+        if self.AliasList and not self.AliasList.test(): # pylint: disable-msg=E1101
             raise ValueError("Alias")

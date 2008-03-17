@@ -19,13 +19,10 @@
 
 import gtk
 import gtk.glade
-import signal
 import os
 
-import string
-import re
 
-from netconfpkg import *
+from netconfpkg import NCProfileList
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -62,7 +59,7 @@ class editDomainDialog:
         pass
     #    self.dialog.destroy()
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
     #    self.main.hydrate()
     #    self.dialog.destroy()
@@ -71,8 +68,8 @@ class editDomainDialog:
         pass
     #    self.dialog.destroy()
 
-    def on_domainNameEntry_insert_text(self, entry, partial_text, length,
-                                       pos, str):
+    def on_domainNameEntry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
+                                       pos, mstr): 
         pass
 
     def hydrate(self):
@@ -86,7 +83,7 @@ class editDomainDialog:
                 index = prof.DNS.SearchList.index(self.Name)
                 n = self.xml.get_widget("domainNameEntry").get_text()
 
-                if len(string.strip(n)) == 0:
+                if len(n.strip()) == 0:
                     del prof.DNS.SearchList[index]
                 else:
                     prof.DNS.SearchList[index] = n

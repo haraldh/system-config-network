@@ -19,16 +19,15 @@
 
 import gtk
 import gtk.glade
-import signal
 import os
 import sha
 
-import string
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, gui_error_dialog
-from rhpl.executil import *
+#from rhpl.executil import *
 from netconfpkg.NCProfileList import getProfileList
+from netconfpkg.NC_functions import _
 
 class editIPsecDruid:
     def __init__(self, ipsec=None):

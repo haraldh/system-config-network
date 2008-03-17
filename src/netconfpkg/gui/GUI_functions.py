@@ -20,8 +20,10 @@ import os
 import gtk
 import gtk.glade
 
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import * # pylint: disable-msg=W0401,W0614
+from netconfpkg.NC_functions import _
 from netconfpkg import NC_functions
+from netconfpkg.NCException import NCException
 
 gtk.glade.bindtextdomain( PROGNAME, "/usr/share/locale" )
 
@@ -126,7 +128,38 @@ def TreeStore_search(rows, func, data):
         if result: return result
     return None
 
-def gui_error_dialog ( message, parent_dialog,
+#===============================================================================
+# def gui_error_dialog ( message, parent_dialog,
+#                      message_type=gtk.MESSAGE_ERROR,
+#                      widget=None, page=0, broken_widget=None ):
+# 
+#    dialog = gtk.MessageDialog( parent_dialog,
+#                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+#                               message_type, gtk.BUTTONS_OK,
+#                               message )
+# 
+#    if widget != None:
+#        if isinstance ( widget, gtk.CList ):
+#            widget.select_row ( page, 0 )
+#        elif isinstance ( widget, gtk.Notebook ):
+#            widget.set_current_page ( page )
+#    if broken_widget != None:
+#        broken_widget.grab_focus ()
+#        if isinstance ( broken_widget, gtk.Entry ):
+#            broken_widget.select_region ( 0, -1 )
+# 
+#    if parent_dialog:
+#        dialog.set_position ( gtk.WIN_POS_CENTER_ON_PARENT )
+#        dialog.set_transient_for( parent_dialog )
+#    else:
+#        dialog.set_position ( gtk.WIN_POS_CENTER )
+# 
+#    ret = dialog.run ()
+#    dialog.destroy()
+#    return ret
+#===============================================================================
+
+def gui_error_dialog ( message, parent_dialog=None,
                       message_type=gtk.MESSAGE_ERROR,
                       widget=None, page=0, broken_widget=None ):
 
@@ -194,10 +227,10 @@ def gui_longinfo_dialog ( message, long_message, parent_dialog=None,
                                str( message ) )
 
     vbox=dialog.get_children()[0]
-    buffer = gtk.TextBuffer( None )
-    buffer.set_text( str( long_message ) )
+    mbuffer = gtk.TextBuffer( None )
+    mbuffer.set_text( str( long_message ) )
     textbox = gtk.TextView()
-    textbox.set_buffer( buffer )
+    textbox.set_buffer( mbuffer )
     textbox.set_property( "editable", False )
     textbox.set_property( "cursor_visible", False )
     sw = gtk.ScrolledWindow ()
@@ -228,36 +261,6 @@ def gui_longinfo_dialog ( message, long_message, parent_dialog=None,
     ret = dialog.run ()
     dialog.destroy()
     return ret
-
-def gui_error_dialog ( message, parent_dialog=None,
-                      message_type=gtk.MESSAGE_ERROR,
-                      widget=None, page=0, broken_widget=None ):
-
-    dialog = gtk.MessageDialog( parent_dialog,
-                               gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
-                               message_type, gtk.BUTTONS_OK,
-                               message )
-
-    if widget != None:
-        if isinstance ( widget, gtk.CList ):
-            widget.select_row ( page, 0 )
-        elif isinstance ( widget, gtk.Notebook ):
-            widget.set_current_page ( page )
-    if broken_widget != None:
-        broken_widget.grab_focus ()
-        if isinstance ( broken_widget, gtk.Entry ):
-            broken_widget.select_region ( 0, -1 )
-
-    if parent_dialog:
-        dialog.set_position ( gtk.WIN_POS_CENTER_ON_PARENT )
-        dialog.set_transient_for( parent_dialog )
-    else:
-        dialog.set_position ( gtk.WIN_POS_CENTER )
-
-    ret = dialog.run ()
-    dialog.destroy()
-    return ret
-
 
 def gui_yesnocancel_dialog ( message, parent_dialog,
                             message_type=gtk.MESSAGE_QUESTION,
@@ -344,10 +347,10 @@ def addFrame( dialog ):
     frame.add( contents )
     dialog.add( frame )
 
-def xml_signal_autoconnect ( xml, map ):
-    for ( signal, func ) in map.items():
+def xml_signal_autoconnect ( xml, mmap ):
+    for ( signal, func ) in mmap.items():
         if isinstance( func, tuple ):
-            xml.signal_connect( signal, *func )
+            xml.signal_connect( signal, *func ) # pylint: disable-msg=W0142
         else:
             xml.signal_connect( signal, func )
 
@@ -355,10 +358,7 @@ def xml_signal_autoconnect ( xml, map ):
 def gui_run( command, argv, searchPath = 0,
               root = '/', stdin = 0,
               catchfd = 1, closefd = -1 ):
-    import gtk
-    import os
     import select
-    import string
 
     if not os.access ( root + command, os.X_OK ):
         raise RuntimeError, command + " can not be run"
@@ -397,10 +397,10 @@ def gui_run( command, argv, searchPath = 0,
         s = "1"
         while ( s ):
             try:
+                # pylint: disable-msg=W0612
                 ( fdin, fdout, fderr ) = select.select( [read], [], [], 0.1 )
-            except:
+            except select.error:
                 fdin = []
-                pass
 
             while gtk.events_pending():
                 gtk.main_iteration()
@@ -409,19 +409,17 @@ def gui_run( command, argv, searchPath = 0,
                 s = os.read( read, 100 )
                 rc = rc + s
 
-    except Exception, e:
+    finally:
+        os.close( read )
         try:
             os.kill( childpid, 15 )
-        except: pass
-        raise e
-
-    os.close( read )
+        except OSError: # pylint: disable-msg=W0704
+            pass
 
     try:
         ( pid, status ) = os.waitpid( childpid, 0 )
     except OSError, ( errno, msg ):
-        #print __name__, "waitpid:", msg
-        pass
+        log.log(2, "waitpid(%d) failed with errno %s: %s" % (pid, str(errno), msg))
 
     if os.WIFEXITED( status ) and ( os.WEXITSTATUS( status ) == 0 ):
         status = os.WEXITSTATUS( status )
@@ -438,13 +436,11 @@ def gui_run_dialog( command, argv, searchPath = 0,
               root = '/', stdin = 0,
               catchfd = 1, closefd = -1, title = None,
               label = None, errlabel = None, dialog = None ):
-    import gtk
-    import os
     import select
-    import string
     global __cancelPressed
     global __dialogClosed
-    class CancelException: pass
+    class CancelException(Exception): 
+        pass
 
     __cancelPressed = 0
     __dialogClosed = 0
@@ -477,10 +473,10 @@ def gui_run_dialog( command, argv, searchPath = 0,
     textview = xml.get_widget ( "textview" )
     textview.set_property( "editable", False )
     textview.set_wrap_mode( gtk.WRAP_WORD )
-    buffer = gtk.TextBuffer( None )
-    mark = buffer.create_mark( "end", buffer.get_start_iter(),
+    mbuffer = gtk.TextBuffer( None )
+    mark = mbuffer.create_mark( "end", mbuffer.get_start_iter(),
                               left_gravity=False )
-    textview.set_buffer( buffer )
+    textview.set_buffer( mbuffer )
     if dialog:
         dlg.set_transient_for( dialog )
         dlg.set_position ( gtk.WIN_POS_CENTER_ON_PARENT )
@@ -527,10 +523,10 @@ def gui_run_dialog( command, argv, searchPath = 0,
         s = "1"
         while ( s ):
             try:
+                # pylint: disable-msg=W0612
                 ( fdin, fdout, fderr ) = select.select( [read], [], [], 0.1 )
-            except:
+            except select.error:
                 fdin = []
-                pass
 
             while gtk.events_pending():
                 gtk.main_iteration()
@@ -541,8 +537,8 @@ def gui_run_dialog( command, argv, searchPath = 0,
             if len( fdin ):
                 s = os.read( read, 1024 )
                 rc = rc + s
-                iter = buffer.get_end_iter()
-                buffer.insert( iter, str( s ) )
+                miter = mbuffer.get_end_iter()
+                mbuffer.insert( miter, str( s ) )
                 vadj = swindow.get_vadjustment()
                 if vadj.value + vadj.page_size >= vadj.upper - 5:
                     textview.scroll_mark_onscreen( mark )
@@ -553,23 +549,25 @@ def gui_run_dialog( command, argv, searchPath = 0,
             os.kill( childpid, 3 )
             os.kill( childpid, 1 )
             #os.kill(childpid, 9)
-        except: pass
+        except OSError: # pylint: disable-msg=W0704
+            pass
     except Exception, e:
         try:
             os.kill( childpid, 15 )
             os.kill( childpid, 3 )
             os.kill( childpid, 1 )
             #os.kill(childpid, 9)
-        except: pass
+        except OSError: # pylint: disable-msg=W0704
+            pass
         raise e
 
     os.close( read )
 
     try:
+        # pylint: disable-msg=W0612
         ( pid, status ) = os.waitpid( childpid, 0 )
     except OSError, ( errno, msg ):
-        #print __name__, "waitpid:", msg
-        pass
+        log.log(2, "waitpid failed with errno %s: %s" % (str(errno), msg))
 
     if os.WIFEXITED( status ) and ( os.WEXITSTATUS( status ) == 0 ):
         status = os.WEXITSTATUS( status )
@@ -583,7 +581,7 @@ def gui_run_dialog( command, argv, searchPath = 0,
         if errlabel:
             lbl.set_text( errlabel )
         else:
-            lbl.set_text( _( "Failed to run:\n%s" ) % string.join( argv ) )
+            lbl.set_text( _( "Failed to run:\n%s" ) % " ".join( argv ) )
 
     elif len( s ):
         lbl.set_text( label + '\n' + _( "Succeeded. Please read the output." ) )
@@ -598,20 +596,19 @@ def gui_run_dialog( command, argv, searchPath = 0,
 
 __xmlfile = None
 
-def __on_okbutton_clicked( *args ):
+def __on_okbutton_clicked( *args ): # pylint: disable-msg=W0613
     pass
 
-def __on_cancelbutton_clicked( *args ):
+def __on_cancelbutton_clicked( *args ): # pylint: disable-msg=W0613
     global __cancelPressed
     __cancelPressed = 1
 
-def __on_Dialog_close( *args ):
+def __on_Dialog_close( *args ): # pylint: disable-msg=W0613
     global __dialogClosed
     __dialogClosed = 1
 
 def __getXmlFile():
     global __xmlfile
-    import os
     if __xmlfile:
         return __xmlfile
 

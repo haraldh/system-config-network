@@ -58,14 +58,16 @@ uninstall-local:
 
 .PHONY: docs pycheck pylint
 
-docs:
+docs: $(PYTHON_FILES)
 	rm -fr classdoc
 	PYTHONPATH=$(srcdir) @PYTHON@ /usr/lib*/python*/pydoc.py -w `find $(srcdir) -type d -o -name '*.py'` 
 	mkdir -p classdoc
 	mv *.html classdoc
 
-pycheck:
+pycheck: $(PYTHON_FILES)
 	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
 
-pylint:
-	pylint --rcfile=$(top_srcdir)/pylintrc netconfpkg
+pylint: $(PYTHON_FILES)
+	@echo "Running pylint -- Please wait, this can last a bit"
+	@! pylint --errors-only --rcfile=$(top_srcdir)/pylintrc netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:'
+	@make -C netconfpkg/tests pylint

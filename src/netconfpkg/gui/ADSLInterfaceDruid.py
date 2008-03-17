@@ -17,18 +17,19 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
+from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
+from netconfpkg.NC_functions import _, getNewDialupDevice, DSL, \
+    request_rpms
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import *
-from netconfpkg import *
+from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.tonline import TonlineDialog
+from netconfpkg.plugins import NCDevADSL
 import gtk
 import gtk.glade
-import string
 import os
-from EthernetHardwareDruid import ethernetHardware
-from InterfaceCreator import InterfaceCreator
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.tonline import TonlineDialog
+import re
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
 class ADSLInterfaceDruid(InterfaceCreator):
@@ -43,6 +44,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
         self.connection_type = connection_type
         self.druids = []
         self.xml = None
+        self.druid = None
 
     def init_gui(self):
         if self.xml:
@@ -59,15 +61,15 @@ class ADSLInterfaceDruid(InterfaceCreator):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
-        xml_signal_autoconnect(self.xml,
-            { "on_dsl_config_page_back" : self.on_dsl_config_page_back,
-              "on_dsl_config_page_next" : self.on_dsl_config_page_next,
-              "on_dsl_config_page_prepare" : self.on_dsl_config_page_prepare,
-              "on_finish_page_finish" : self.on_finish_page_finish,
-              "on_finish_page_prepare" : self.on_finish_page_prepare,
-              "on_finish_page_back" : self.on_finish_page_back,
-              "on_providerNameEntry_insert_text" : (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"),
-              "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
+        xml_signal_autoconnect(self.xml, 
+            { "on_dsl_config_page_back" : self.on_dsl_config_page_back, 
+              "on_dsl_config_page_next" : self.on_dsl_config_page_next, 
+              "on_dsl_config_page_prepare" : self.on_dsl_config_page_prepare, 
+              "on_finish_page_finish" : self.on_finish_page_finish, 
+              "on_finish_page_prepare" : self.on_finish_page_prepare, 
+              "on_finish_page_back" : self.on_finish_page_back, 
+              "on_providerNameEntry_insert_text" : (self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9\-_:]+$"), 
+              "on_tonlineButton_clicked" : self.on_tonlineButton_clicked, 
 
               }
             )
@@ -78,10 +80,10 @@ class ADSLInterfaceDruid(InterfaceCreator):
             self.druid.remove(i)
             self.druids.append(i)
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
+    def on_generic_entry_insert_text(self, entry, partial_text, length, 
+                                     pos, mstr): # pylint: disable-msg=W0613
         text = partial_text[0:length]
-        if re.match(str, text):
+        if re.match(mstr, text):
             return
         entry.emit_stop_by_name('insert_text')
 
@@ -111,20 +113,20 @@ class ADSLInterfaceDruid(InterfaceCreator):
     def on_dsl_config_page_back(self, druid_page, druid):
         pass
 
-    def on_dsl_config_page_next(self, druid_page, druid):
+    def on_dsl_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         if self.check():
             self.dehydrate()
             return False
         else:
             return True
 
-    def on_dsl_config_page_prepare(self, druid_page, druid):
+    def on_dsl_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         self.hydrate()
 
-    def on_finish_page_back(self,druid_page, druid):
-        self.devicelist.rollback()
+    def on_finish_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+        self.devicelist.rollback() # pylint: disable-msg=E1101
 
-    def on_finish_page_prepare(self, druid_page, druid):
+    def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Type == self.connection_type:
@@ -137,9 +139,10 @@ class ADSLInterfaceDruid(InterfaceCreator):
             _("Login name:") + "  " + dialup.Login
         druid_page.set_text(s)
 
-    def on_finish_page_finish(self, druid_page, druid):
+    def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
-        hardwarelist.commit()
+        # pylint: disable-msg=E1101
+        hardwarelist.commit() 
         self.devicelist.append(self.device)
         self.device.commit()
         for prof in self.profilelist:
@@ -155,10 +158,10 @@ class ADSLInterfaceDruid(InterfaceCreator):
         gtk.main_quit()
 
     def check(self):
-        return (len(string.strip(self.xml.get_widget("providerNameEntry").get_text())) >0 \
-           and len(string.strip(self.xml.get_widget("loginNameEntry").get_text())) >0 \
-           and len(string.strip(self.xml.get_widget("passwordEntry").get_text())) >0 \
-           and len(string.strip(self.xml.get_widget("ethernetDeviceEntry").get_text())) >0)
+        return (len(self.xml.get_widget("providerNameEntry").get_text().strip()) >0 \
+           and len(self.xml.get_widget("loginNameEntry").get_text().strip()) >0 \
+           and len(self.xml.get_widget("passwordEntry").get_text().strip()) >0 \
+           and len(self.xml.get_widget("ethernetDeviceEntry").get_text().strip()) >0)
 
     def hydrate(self):
         dialup = self.device.Dialup
@@ -187,7 +190,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
             widget.set_text(hwcurr)
         #widget.set_position(0)
 
-    def on_tonlineButton_clicked(self, *args):
+    def on_tonlineButton_clicked(self, *args): # pylint: disable-msg=W0613
         self.dehydrate()
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)
@@ -218,7 +221,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
         self.device.AutoDNS = True
         dialup = self.device.createDialup()
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
+        fields = hw.split()
         hw = fields[0]
         dialup.EthDevice = hw
         dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()

@@ -16,13 +16,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-"""Module for a userfriendly exception handling
+"""
+Module for a userfriendly exception handling
 
 Example code:
 
 import sys
 
-from rhpl.exception import action, error, exitcode, installExceptionHandler
+from exception import action, error, exitcode, installExceptionHandler
 
 installExceptionHandler("test", "1.0", gui=0, debug=0)
 
@@ -41,76 +42,18 @@ def exception_function():
 
 """
 
-import os, sys
+import sys
 from rhpl.translate import _
 
-#
-# __ExceptionWindow class
-#
-class __ExceptionWindow:
-    def __init__ (self, text, component_name):
-        import gtk
-        win = gtk.Dialog(_("Exception Occurred"), None, gtk.DIALOG_MODAL)
-        win.add_button(_("_Debug"), 0)
-        win.add_button(_("_Save to file"), 1)
-        win.add_button(gtk.STOCK_QUIT, 2)
-        win.set_border_width(6)
-        buffer = gtk.TextBuffer(None)
-        buffer.set_text(text)
-        textbox = gtk.TextView()
-        textbox.set_buffer(buffer)
-        textbox.set_property("editable", False)
-        textbox.set_property("cursor_visible", False)
-        sw = gtk.ScrolledWindow ()
-        sw.set_shadow_type(gtk.SHADOW_IN)
-        sw.add (textbox)
-        sw.set_policy (gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        hbox = gtk.HBox (False)
-        hbox.set_border_width(6)
-        txt = _("An unhandled exception has occurred.  This "
-                          "is most likely a bug.  Please save the crash "
-                          "dump and file a detailed bug "
-                          "report against %s at "
-                          "https://bugzilla.redhat.com/bugzilla") % \
-                          component_name
-        info = gtk.Label(txt)
-        info.set_line_wrap(True)
-        hbox.pack_start (sw, True)
-        win.vbox.pack_start (info, False)
-        win.vbox.pack_start (hbox, True)
-        win.vbox.set_border_width(12)
-        win.vbox.set_spacing(12)
-        win.set_size_request (500, 300)
-        win.set_position (gtk.WIN_POS_CENTER)
-        contents = win.get_children()[0]
-        win.show_all ()
-        self.window = win
-        self.rc = self.window.run ()
-        self.window.destroy()
-
-    def quit (self, dialog, button):
-        self.rc = button
-
-    def getrc (self):
-        # I did it this way for future expantion
-        # 0 is debug
-        if self.rc == 0:
-            return 1
-        # 1 is save
-        if self.rc == 1:
-            return 2
-        # 2 is OK
-        elif self.rc == 2:
-            return 0
-
-__dumpHash = {}
-# XXX do length limits on obj dumps.
-def __dumpClass(instance, fd, level=0):
+__DUMPHASH = {}
+# FIXME: do length limits on obj dumps.
+def __dump_class(instance, fd, level=0):
+    "dumps all classes"
     import types
-    global __dumpHash
+    global __DUMPHASH
     # protect from loops
-    if not __dumpHash.has_key(instance):
-        __dumpHash[instance] = None
+    if not __DUMPHASH.has_key(instance):
+        __DUMPHASH[instance] = True
     else:
         fd.write("Already dumped\n")
         return
@@ -131,7 +74,7 @@ def __dumpClass(instance, fd, level=0):
                 else:
                     first = 0
                 if type(item) == types.InstanceType:
-                    __dumpClass(item, fd, level + 1)
+                    __dump_class(item, fd, level + 1)
                 else:
                     fd.write("%s" % (item,))
             fd.write("]\n")
@@ -148,19 +91,20 @@ def __dumpClass(instance, fd, level=0):
                 else:
                     fd.write("%s: " % (k,))
                 if type(v) == types.InstanceType:
-                    __dumpClass(v, fd, level + 1)
+                    __dump_class(v, fd, level + 1)
                 else:
                     fd.write("%s" % (v,))
             fd.write("}\n")
         elif type(value) == types.InstanceType:
             fd.write("%s%s: " % (pad, key))
-            __dumpClass(value, fd, level + 1)
+            __dump_class(value, fd, level + 1)
         else:
             fd.write("%s%s: %s\n" % (pad, key, value))
 
-def __dumpException(out, text, tb):
-    from cPickle import Pickler
-    p = Pickler(out)
+def __dump_exception(out, text, tb):
+    'write a traceback to "out"'
+    #from cPickle import Pickler
+    #p = Pickler(out)
 
     out.write(text)
 
@@ -176,18 +120,53 @@ def __dumpException(out, text, tb):
         pass
 
 
-def __exceptionWindow(title, text, name):
+def __exception_window(title, text, component_name):
+    "Creates a dialog and displays the exception"
     import gtk
-    #print text
-    win = __ExceptionWindow (text, name)
+    win = gtk.Dialog(title, None, gtk.DIALOG_MODAL)
+    win.add_button(_("_Debug"), 1)
+    win.add_button(_("_Save to file"), 2)
+    win.add_button(gtk.STOCK_QUIT, 0)
+    win.set_border_width(6)
+    mbuffer = gtk.TextBuffer(None)
+    mbuffer.set_text(text)
+    textbox = gtk.TextView()
+    textbox.set_buffer(mbuffer)
+    textbox.set_property("editable", False)
+    textbox.set_property("cursor_visible", False)
+    scw = gtk.ScrolledWindow ()
+    scw.set_shadow_type(gtk.SHADOW_IN)
+    scw.add (textbox)
+    scw.set_policy (gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+    hbox = gtk.HBox (False)
+    hbox.set_border_width(6)
+    txt = _("An unhandled exception has occurred.  This "
+            "is most likely a bug.  Please save the crash "
+            "dump and file a detailed bug "
+            "report against %s at "
+            "https://bugzilla.redhat.com/bugzilla") % \
+            component_name
+    info = gtk.Label(txt)
+    info.set_line_wrap(True)
+    hbox.pack_start (scw, True)
+    win.vbox.pack_start (info, False) # pylint: disable-msg=E1101
+    win.vbox.pack_start (hbox, True)  # pylint: disable-msg=E1101
+    win.vbox.set_border_width(12)     # pylint: disable-msg=E1101
+    win.vbox.set_spacing(12)          # pylint: disable-msg=E1101
+    win.set_size_request (500, 300)
+    win.set_position (gtk.WIN_POS_CENTER)
+    #contents = win.get_children()[0]
+    win.show_all ()
+    rc = win.run ()
+    win.destroy()
+    return rc
 
-    return win.getrc ()
 
-
-def __generic_error_dialog (message, parent_dialog,
-                          message_type=None,
-                          widget=None, page=0, broken_widget=None):
+def _generic_error_dialog (title, message, parent_dialog,
+                            message_type=None,
+                            widget=None, page=0, broken_widget=None):
     import gtk
+
     if message_type == None:
         message_type = gtk.MESSAGE_ERROR
 
@@ -195,6 +174,7 @@ def __generic_error_dialog (message, parent_dialog,
                                gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
                                message_type, gtk.BUTTONS_OK,
                                message)
+    dialog.set_title(title)
 
     if widget != None:
         if isinstance (widget, gtk.CList):
@@ -216,46 +196,36 @@ def __generic_error_dialog (message, parent_dialog,
     dialog.destroy()
     return ret
 
-__action_str = ""
+__ACTION_STR = ""
 def action(what):
     """Describe what you want to do actually.
     what - string
     """
-    global __action_str
-    __action_str = what
+    global __ACTION_STR
+    __ACTION_STR = what
 
-__error_str = ""
+__ERROR_STR = ""
 def error(what):
     """Describe what went wrong with a userfriendly text.
     what - string
     """
-    global __error_str
-    __error_str = what
+    global __ERROR_STR
+    __ERROR_STR = what
 
-__exitcode = 10
+__EXITCODE = 10
 def exitcode(num):
     """The exitcode, with which the exception handling routine should call
     sys.exit().
     num - int(exitcode)
     """
-    global __exitcode
-    __exitcode = int(num)
-
-def installExceptionHandler(progname, version, gui = 1, debug = 1):
-    """
-    Install the exception handling function.
-
-    progname - the name of the application
-    version  - the version of the application
-    gui      - display a gtk dialog (0,1) to show the error message
-    debug    - show the full traceback (with "Save to file" in GUI)
-    """
-    sys.excepthook = lambda type, value, tb: handleException((type, value, tb), progname, version, gui, debug)
+    global __EXITCODE
+    __EXITCODE = int(num)
 
 #
-# handleException function
+# handleMyException function
 #
-def handleException((type, value, tb), progname, version, gui = 1, debug = 1):
+def handleMyException((etype, value, tb), progname, version, 
+                      gui = 1, debug = 1):
     """
     The exception handling function.
 
@@ -264,32 +234,28 @@ def handleException((type, value, tb), progname, version, gui = 1, debug = 1):
     gui      - display a gtk dialog (0,1) to show the error message
     debug    - show the full traceback (with "Save to file" in GUI)
     """
-    global __action_str
-    global __error_str
-    global __exitcode
     if not debug:
         if not gui:
-            print _("Error: %s: %s") % (__action_str, __error_str)
+            print _("Error: %s: %s") % (__ACTION_STR, __ERROR_STR)
         else:
             import gtk
-            text = _("%s\n\n%s:\n%s") % (progname, __action_str, __error_str)
-            __generic_error_dialog(text, None)
+            text = _("%s\n\n%s:\n%s") % (progname, __ACTION_STR, __ERROR_STR)
+            _generic_error_dialog(progname, text, None)
 
-        sys.exit(__exitcode)
+        sys.exit(__EXITCODE)
 
     # restore original exception handler
-    sys.excepthook = sys.__excepthook__
+    sys.excepthook = sys.__excepthook__ # pylint: disable-msg=E1101
 
     import os.path
     import md5
-    from string import joinfields
     import traceback
 
-    list = traceback.format_exception (type, value, tb)
+    elist = traceback.format_exception (etype, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
     if len(tblast):
         tblast = tblast[len(tblast)-1]
-    extxt = traceback.format_exception_only(type, value)
+    extxt = traceback.format_exception_only(etype, value)
     if progname:
         text = "Component: %s\n" % progname
     if version:
@@ -312,7 +278,7 @@ def handleException((type, value, tb), progname, version, gui = 1, debug = 1):
 
     text += extxt[0]
     text += "\n"
-    text += joinfields(list, "")
+    text += "".join(elist)
 
     trace = tb
     while trace.tb_next:
@@ -327,15 +293,17 @@ def handleException((type, value, tb), progname, version, gui = 1, debug = 1):
 
     if not gui:
         print text
-        sys.exit(__exitcode)
+        sys.exit(__EXITCODE)
 
-    import gtk
+    import gtk # pylint: disable-msg=W0404
     if not debug:
-        __generic_error_dialog(text, None)
-        sys.exit(__exitcode)
+        _generic_error_dialog(progname, text, None)
+        sys.exit(__EXITCODE)
 
     while 1:
-        rc = __exceptionWindow (_("Exception Occurred"), text, progname)
+        rc = __exception_window (_("%(progname)s - Exception Occurred") \
+                                    % {'progname' : progname}, 
+                                text, progname)
         print text
 
         if rc == 1 and tb:
@@ -344,58 +312,70 @@ def handleException((type, value, tb), progname, version, gui = 1, debug = 1):
             pdb.post_mortem (tb)
             os.kill(os.getpid(), signal.SIGKILL)
         elif not rc:
-            sys.exit(__exitcode)
+            sys.exit(__EXITCODE)
         else:
             d = gtk.FileChooserDialog(_("Specify a file to save the dump"),
                                       None, gtk.FILE_CHOOSER_ACTION_SAVE,
                                       (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                                       gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+                                       gtk.STOCK_SAVE, gtk.RESPONSE_OK))
             d.set_default_response(gtk.RESPONSE_OK)
             rc = d.run()
             if rc == gtk.RESPONSE_OK:
-                file = d.get_filename()
+                tfile = d.get_filename()
                 d.destroy()
 
-                if not file or file=="":
-                    file = "/tmp/dump"
+                if not tfile:
+                    tfile = "/tmp/dump"
 
                 try:
-                    out = open(file, "w")
+                    out = open(tfile, "w")
                     out.write(text)
                     out.close()
 
                 except IOError:
-                    __generic_error_dialog(_("Failed to write to file %s.") \
-                                         % (file), None)
+                    _generic_error_dialog(progname, 
+                                           _("Failed to write to file %s.") \
+                                               % (tfile), None)
                 else:
-                    __generic_error_dialog(
+                    _generic_error_dialog(progname,
                         _("The application's state has been successfully\n"
-                          "written to the file '%s'.") % (file), None,
+                          "written to the file '%s'.") % (tfile), None,
                         message_type = "info")
-                    sys.exit(__exitcode)
+                    sys.exit(__EXITCODE)
             else:
                 d.destroy()
                 continue
 
-    sys.exit(__exitcode)
+    sys.exit(__EXITCODE)
 
+def installExceptionHandler(progname, version, gui = 1, debug = 1):
+    """
+    Install the exception handling function.
 
+    progname - the name of the application
+    version  - the version of the application
+    gui      - display a gtk dialog (0,1) to show the error message
+    debug    - show the full traceback (with "Save to file" in GUI)
+    """
+    sys.excepthook = lambda etype, value, tb: \
+        handleMyException((etype, value, tb), 
+                          progname, version, gui, debug)
 
 if __name__ == '__main__':
-    def __exception_function():
+    def _exception_function():
         action("Trying to divide by zero")
 
         try:
             local_var_1 = 1
             local_var_2 = 0
             # test exception raised to show the effect
-            local_var_3 = local_var_1 / local_var_2
+            local_var_3 = local_var_1 / local_var_2 # pylint: disable-msg=W0612
         except:
             error("Does not seem to work!? :-)")
             exitcode(15)
             raise
 
-    def __usage():
+    def _usage():
         print """%s [-dgh] [--debug] [--gui] [--help]
     -d, --debug
         Show the whole backtrace
@@ -406,7 +386,6 @@ if __name__ == '__main__':
     -h, --help
         Display this message""" % (sys.argv[0])
 
-    import sys
     import getopt
     debug = 1
     gui = 0
@@ -415,7 +394,7 @@ if __name__ == '__main__':
 
     debug = 0
 
-    class BadUsage: pass
+    class BadUsage(Exception): pass
 
     try:
         opts, args = getopt.getopt(sys.argv[1:], "dgh",
@@ -435,16 +414,17 @@ if __name__ == '__main__':
                 continue
 
             if opt == '-h' or opt == '--help':
-                __usage()
+                _usage()
                 sys.exit(0)
 
     except (getopt.error, BadUsage):
-        __usage()
+        _usage()
         sys.exit(1)
 
     installExceptionHandler("test", "1.0", gui, debug)
 
-    __exception_function()
+    _exception_function()
     sys.exit(0)
+
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

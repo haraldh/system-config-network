@@ -17,7 +17,7 @@
 
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import MODEM, getHardwareType
 
 _hwModemDialog = None
 _hwModemWizard = None
@@ -25,10 +25,10 @@ _hwModemWizard = None
 # FIXME: [177472] Speedtouch USB 330 modem not recognised
 
 class HwModem(Hardware):
-    def __init__(self, list = None, parent = None):
-        Hardware.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Hardware.__init__(self, clist, parent)
         self.Type = MODEM
-        self.createModem()
+        self.createModem() # pylint: disable-msg=E1101
 
     def getDialog(self):
         if _hwModemDialog == None: return None
@@ -44,8 +44,9 @@ class HwModem(Hardware):
             return True
         return False
 
-    def save(self):
+    def save(self, *args, **kwargs): # pylint: disable-msg=W0613
         from netconfpkg.NCHardwareList import getMyWvDial
+        # pylint: disable-msg=E1101
         wvdial = getMyWvDial(create_if_missing = True)
         wvdial[self.Name]['Modem'] = self.Modem.DeviceName
         wvdial[self.Name]['Baud'] = str(self.Modem.BaudRate)
@@ -68,8 +69,8 @@ def setHwModemWizard(wizard):
     global _hwModemWizard
     _hwModemWizard = wizard
 
-df = getHardwareFactory()
-df.register(HwModem, MODEM)
+__df = getHardwareFactory()
+__df.register(HwModem, MODEM)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.10 $"

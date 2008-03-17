@@ -14,34 +14,33 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-import string
 
-from netconfpkg.conf import Conf
-from NC_functions import *
-from netconfpkg import IPsecList_base
-import netconfpkg
-import UserList
+from netconfpkg import IPsecList_base # pylint: disable-msg=E0611
+from netconfpkg.NCDeviceList import ConfDevices
 from netconfpkg.NCIPsec import IPsec
+from netconfpkg.NC_functions import log, SYSCONFDEVICEDIR, getRoot, \
+    testFilename, IPSEC, unlink, OLDSYSCONFDEVICEDIR
+import os
 
 class IPsecList(IPsecList_base):
-    def __init__(self, list = None, parent = None):
-        IPsecList_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        IPsecList_base.__init__(self, clist, parent)
         self.oldname = None
 
     def load(self):
-        from NCIPsec import ConfIPsec
-
+        from netconfpkg.NCIPsec import ConfIPsec
+        # pylint: disable-msg=E1101
         self.__delslice__(0, len(self))
 
         devices = ConfDevices()
         for ipsec_name in devices:
             conf = ConfIPsec(ipsec_name)
-            type = None
+            mtype = None
             # take a peek in the config file
             if conf.has_key("TYPE"):
-                type = conf["TYPE"]
+                mtype = conf["TYPE"]
 
-            if type != "IPSEC":
+            if mtype != "IPSEC":
                 continue
 
             log.log(5, "Loading ipsec config %s" % ipsec_name)
@@ -53,7 +52,8 @@ class IPsecList(IPsecList_base):
         self.setChanged(False)
 
     def save(self):
-        from NCIPsec import ConfIPsec
+        # pylint: disable-msg=E1101
+        from netconfpkg.NCIPsec import ConfIPsec
         for ipsec in self:
             ipsec.save()
 
@@ -64,11 +64,11 @@ class IPsecList(IPsecList_base):
         # Remove old config files
         #
         try:
-            dir = os.listdir(dirname)
+            mdir = os.listdir(dirname)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
                   + dirname + ': ' + str(msg)
-        for entry in dir:
+        for entry in mdir:
             if not testFilename(dirname + entry):
                 continue
 
@@ -84,9 +84,9 @@ class IPsecList(IPsecList_base):
             else:
                 # check for IPSEC
                 conf = ConfIPsec(ipsecid)
-                type = None
-                if conf.has_key("TYPE"): type = conf["TYPE"]
-                if type != IPSEC:
+                mtype = None
+                if conf.has_key("TYPE"): mtype = conf["TYPE"]
+                if mtype != IPSEC:
                     continue
 
                 unlink(dirname + entry)
@@ -97,11 +97,11 @@ class IPsecList(IPsecList_base):
         # Remove old key files
         #
         try:
-            dir = os.listdir(dirname)
+            mdir = os.listdir(dirname)
         except OSError, msg:
             raise IOError, 'Cannot save in ' \
                   + dirname + ': ' + str(msg)
-        for entry in dir:
+        for entry in mdir:
             if not testFilename(dirname + entry):
                 continue
 
@@ -116,11 +116,11 @@ class IPsecList(IPsecList_base):
                     break
             else:
                 # check for IPSEC
-                from NCDevice import ConfDevice
+                from netconfpkg.NCDevice import ConfDevice
                 conf = ConfDevice(ipsecid)
-                type = None
-                if conf.has_key("TYPE"): type = conf["TYPE"]
-                if type:
+                mtype = None
+                if conf.has_key("TYPE"): mtype = conf["TYPE"]
+                if mtype:
                     continue
 
                 unlink(dirname + entry)
@@ -132,14 +132,16 @@ class IPsecList(IPsecList_base):
     def __repr__(self):
         return repr(self.__dict__)
 
-    def _objToStr(self, parentStr = None):
+    def _objToStr(self, parentStr = None): # pylint: disable-msg=W0613
         retstr = ""
         for ipsec in self:
+            # pylint: disable-msg=W0212
             retstr += ipsec._objToStr("IPsecList.%s" % (ipsec.IPsecId))
 
         return retstr
 
     def _parseLine(self, vals, value):
+        # pylint: disable-msg=W0212
         if len(vals) <= 1:
             return
         if vals[0] == "IPsecList":
@@ -152,7 +154,7 @@ class IPsecList(IPsecList_base):
                 ipsec._parseLine(vals[1:], value)
                 return
 
-        i = self.addIPsec()
+        i = self.addIPsec() # pylint: disable-msg=E1101
         self[i].IPsecId = vals[0]
         self[i]._parseLine(vals[1:], value)
 

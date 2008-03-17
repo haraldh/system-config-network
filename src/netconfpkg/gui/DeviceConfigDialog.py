@@ -17,20 +17,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import gtk
-
-import gtk.glade
-import signal
-import os
-
-import string
-import re
-
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg.gui import sharedtcpip
-from netconfpkg.NC_functions import nop
 from netconfpkg import NCDeviceList
 from netconfpkg import NCIPsecList
+from netconfpkg.NC_functions import _, generic_error_dialog, PROGNAME, NETCONFDIR
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, load_icon, GLADEPATH
+import gtk
+import gtk.glade
+import os
+import re
 
 class DeviceConfigDialog:
     def __init__(self, glade_file, device):
@@ -43,11 +37,11 @@ class DeviceConfigDialog:
 
         self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
         self.dialog = self.xml.get_widget("Dialog")
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_okButton_clicked" : self.on_okButton_clicked,
-            "on_notebook_switch_page" : self.on_notebook_switch_page,
-            "on_cancelButton_clicked" : self.on_cancelButton_clicked,
+            "on_okButton_clicked" : self.on_okButton_clicked, 
+            "on_notebook_switch_page" : self.on_notebook_switch_page, 
+            "on_cancelButton_clicked" : self.on_cancelButton_clicked, 
             })
 
         glade_file = "sharedtcpip.glade"
@@ -56,7 +50,7 @@ class DeviceConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.sharedtcpip_xml = gtk.glade.XML(glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML(glade_file, None, 
                                              domain=PROGNAME)
 
         glade_file = "DeviceConfigDialog.glade"
@@ -65,17 +59,17 @@ class DeviceConfigDialog:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.deviceconfig_xml = gtk.glade.XML(glade_file, None,
+        self.deviceconfig_xml = gtk.glade.XML(glade_file, None, 
                                               domain=PROGNAME)
 
-        xml_signal_autoconnect(self.deviceconfig_xml,
+        xml_signal_autoconnect(self.deviceconfig_xml, 
             {
-            "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed,
-            "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text,
-                                                r"^[a-z|A-Z|0-9\_:]+$"),
+            "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed, 
+            "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text, 
+                                                r"^[a-z|A-Z|0-9\_:]+$"), 
             })
 
-        window = self.deviceconfig_xml.get_widget ('window')
+        #window = self.deviceconfig_xml.get_widget ('window')
         frame = self.deviceconfig_xml.get_widget ('generalVbox')
         vbox = self.xml.get_widget ('generalVbox')
         for child in vbox.get_children():
@@ -96,38 +90,39 @@ class DeviceConfigDialog:
         self.hydrate()
 
 
-    def on_notebook_switch_page(self, *args):
+    def on_notebook_switch_page(self, *args): # pylint: disable-msg=W0613
         self.dehydrate()
         self.hydrate()
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
+    def on_generic_entry_insert_text(self, entry, partial_text, length, 
+                                     pos, mstr): # pylint: disable-msg=W0613
         text = partial_text[0:length]
-        if re.match(str, text):
+        if re.match(mstr, text):
             return
         entry.emit_stop_by_name('insert_text')
 
     def on_generic_clist_button_press_event(self, clist, event, func):
-        if event.type == gtk.gdk._2BUTTON_PRESS:
+        if event.type == gtk.gdk._2BUTTON_PRESS: # pylint: disable-msg=W0212
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
-                id = clist.signal_connect("button_release_event",
-                                          self.on_generic_clist_button_release_event,
+                mid = clist.signal_connect("button_release_event", 
+                                          self.on_generic_clist_button_release_event, 
                                           func)
-                clist.set_data("signal_id", id)
+                clist.set_data("signal_id", mid)
 
-    def on_generic_clist_button_release_event(self, clist, event, func):
-        id = clist.get_data ("signal_id")
-        clist.disconnect (id)
+    def on_generic_clist_button_release_event(self, clist, event, func): # pylint: disable-msg=W0613
+        mid = clist.get_data ("signal_id")
+        clist.disconnect (mid)
         clist.remove_data ("signal_id")
-        apply (func)
+        if func:
+            func()
 
     def on_deviceNameEntry_changed(self, entry):
-        deviceName = string.strip(entry.get_text())
+        deviceName = entry.get_text().strip()
         self.device.DeviceId = deviceName
         self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0)
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
@@ -137,12 +132,12 @@ class DeviceConfigDialog:
                 continue
             if dev.DeviceId == self.device.DeviceId:
                 dup = 1
-
-        for ipsec in ipseclist:
-            if dev == self.device:
-                continue
-            if ipsec.IPsecId == self.device.DeviceId:
-                dup = 1
+                break
+        else:    
+            for ipsec in ipseclist:
+                if ipsec.IPsecId == self.device.DeviceId:
+                    dup = 1
+                    break
 
         if dup:
             generic_error_dialog (\

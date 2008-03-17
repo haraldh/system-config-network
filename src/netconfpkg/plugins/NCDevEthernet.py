@@ -19,7 +19,7 @@
 
 from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import ETHERNET
+from netconfpkg.NC_functions import ETHERNET, getDeviceType
 
 _devEthernetDialog = None
 _devEthernetWizard = None
@@ -55,8 +55,8 @@ class DevEthernet( Device ):
     SubType = None
     Priority = 0
 
-    def __init__( self, list = None, parent = None ):
-        Device.__init__( self, list, parent )
+    def __init__( self, clist = None, parent = None ):
+        Device.__init__( self, clist, parent )
         self.Type = ETHERNET
 
     def getDialog( self ):

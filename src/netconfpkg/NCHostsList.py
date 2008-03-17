@@ -19,12 +19,12 @@ if __name__ == '__main__':
     sys.path.append("../")
     sys.path.append("./")
 
-from netconfpkg import HostsList_base, Host
-import string
+from netconfpkg import HostsList_base # pylint: disable-msg=E0611
+from netconfpkg.NCHost import Host
 
 class HostsList(HostsList_base):
-    def __init__(self,*args, **kwargs):
-        HostsList_base.__init__(self, args, kwargs)
+    def __init__(self, *args, **kwargs):
+        HostsList_base.__init__(self, *args, **kwargs)
     
     def test(self):
         error = None
@@ -36,11 +36,11 @@ class HostsList(HostsList_base):
                     host.test()
                 except ValueError, e:
                     if not error:
-                        error = "Error in hostslist\nWrong: %s in entry %i" % (e.message,num)
+                        error = "Error in hostslist\nWrong: %s in entry %i" % (e.message, num)
                     else:
-                        error += "Wrong: %s in entry %i" (e.message,num)
+                        error += "Wrong: %s in entry %i" % (e.message, num)
         if error:
-                raise ValueError(error)
+            raise ValueError(error)
     
     def load(self, filename='/etc/hosts'):
         try:
@@ -57,18 +57,18 @@ class HostsList(HostsList_base):
             line = line.strip()
             tmp = line.partition('#')
             comment = tmp[2]
-            tmp = string.split(tmp[0])
+            tmp = tmp[0].split()
             
             # if the line contains more than comment we suppose that it's ip with Aliases
             if len(tmp) > 0:
                 entry = Host()
                 entry.IP = tmp[0]
-                entry.Comment = string.rstrip(comment)
-                entry.createAliasList()
+                entry.Comment = comment.rstrip()
+                entry.createAliasList() # pylint: disable-msg=E1101
                 if len(tmp) > 1:
                     entry.Hostname = tmp[1]
                     for alias in tmp[2:]:
-                        entry.AliasList.append(alias)
+                        entry.AliasList.append(alias) # pylint: disable-msg=E1101
                 entry.origLine = line
                 # catch invalid entry in /etc/hosts
                 try:
@@ -76,14 +76,14 @@ class HostsList(HostsList_base):
                 except ValueError, e:
                     badlines.append((num, e.message))
                     if not error:
-                        error = "Error while parsing /etc/hosts:\nWrong %s on line %i\n" % (e.message,num)                    
+                        error = "Error while parsing /etc/hosts:\nWrong %s on line %i\n" % (e.message, num)                    
                     else:
-                        error += "Wrong %s on line %i\n" % (e.message,num)
+                        error += "Wrong %s on line %i\n" % (e.message, num)
             else:
                 entry = line
 
             # add every line to configuration
-            self.append(entry)
+            self.append(entry) # pylint: disable-msg=E1101
         if error:
             e = ValueError(error)
             e.badlines = badlines
@@ -96,7 +96,7 @@ class HostsList(HostsList_base):
 
     def save(self, **kwargs):
         if "filename" in kwargs:            
-            conffile = open(kwargs["filename"],"w")
+            conffile = open(kwargs["filename"], "w")
         elif "file" in kwargs:
             conffile = kwargs["file"]
         else:
@@ -127,11 +127,11 @@ class HostsList(HostsList_base):
     def _parseLine(self, vals, value):
         for host in self:
             if host.HostID == vals[0]:
-                host._parseLine(vals[1:],value)
+                host._parseLine(vals[1:], value) # pylint: disable-msg=W0212
                 return
-        i = self.addHost()
+        i = self.addHost() # pylint: disable-msg=E1101
         self[i].HostID = vals[0]
-        self[i]._parseLine(vals[1:], value)
+        self[i]._parseLine(vals[1:], value) # pylint: disable-msg=W0212
 
 if __name__ == '__main__':
     hlist = HostsList()

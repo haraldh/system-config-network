@@ -1,10 +1,13 @@
-from netconfpkg.plugins.NCDevEthernet import *
+"TUI Ethernet Interface Module"
+
+from netconfpkg.plugins.NCDevEthernet import setDevEthernetDialog 
 from netconfpkg.tui.NCTcpIp import NCTcpIpDialog
 #
 # EthernetWindow class
 #
-class NCEthernetInterface(NCTcpIpDialog):
-    def __init__(self, dev=None):
+class NCEthernetInterfaceTui(NCTcpIpDialog):
+    "TUI ISDN Interface Dialog"
+    def __init__(self, dev = None):
         """
         The constructor
         @screen A snack screen instance
@@ -19,5 +22,5 @@ class NCEthernetInterface(NCTcpIpDialog):
         if dev:
             self.setState()
 
-setDevEthernetDialog(NCEthernetInterface)
+setDevEthernetDialog(NCEthernetInterfaceTui)
 __author__ = "Harald Hoyer <harald@redhat.com>"

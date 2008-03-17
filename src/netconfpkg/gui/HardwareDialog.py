@@ -18,11 +18,8 @@
 import gtk
 import gtk.glade
 import os
-import string
-from rhpl.executil import *
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
-from netconfpkg import *
 
 class HardwareDialog:
     def __init__(self, hw, glade_file, signals = None,
@@ -51,9 +48,8 @@ class HardwareDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
-        pass
 
     def on_cancelButton_clicked(self, button):
         pass

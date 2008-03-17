@@ -25,9 +25,8 @@ def getHardwareFactory():
 
     return _hwFac
 
-from NC_functions import log
+from netconfpkg.NC_functions import log
 from netconfpkg.NCHardware import Hardware
-import NCDevice
 
 class HardwareFactory(dict):
     def register(self, theclass, hwtype = None, subtype = None):
@@ -69,7 +68,6 @@ class HardwareFactory(dict):
         else:
             return self[hwtype][0]
 
-from netconfpkg.plugins import *
+from netconfpkg.plugins import * # pylint: disable-msg=W0401
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.13 $"

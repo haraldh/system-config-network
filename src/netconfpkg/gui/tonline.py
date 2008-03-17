@@ -18,10 +18,8 @@
 import gtk
 
 import gtk.glade
-import signal
 import os
 
-import string
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -60,14 +58,13 @@ class TonlineDialog:
 
         self.hydrate()
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
         pass
 
     def check(self):
-        pass
         if len(self.xml.get_widget('AKEntry').get_text()) < 1 or \
            len(self.xml.get_widget('ZNEntry').get_text()) < 1 or \
            len(self.xml.get_widget('mbnEntry').get_text()) < 1 or \
@@ -76,8 +73,8 @@ class TonlineDialog:
         else:
             self.xml.get_widget('okButton').set_sensitive(True)
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
+    def on_generic_entry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
+                                     pos, mstr):
         text = partial_text[0:length]
 
         if re.match(str, text):
@@ -111,7 +108,6 @@ class TonlineDialog:
         self.xml.get_widget('mbnEntry').set_text(mbn)
         self.xml.get_widget('pwEntry').set_text(self.password)
         self.check()
-        pass
 
     def dehydrate(self):
         self.login = "%s%s#%s@t-online.de" % \
@@ -121,5 +117,4 @@ class TonlineDialog:
 
         self.password = self.xml.get_widget('pwEntry').get_text()
 
-        pass
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -17,14 +17,13 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
+from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
+from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, QETH
+from netconfpkg import NCHardwareList
 from netconfpkg.plugins import NCHWQeth
 import gtk
 import gtk.glade
-import string
 import os
-from rhpl import Conf
 
 class QethHardware:
     def __init__ (self, toplevel=None):
@@ -76,11 +75,11 @@ class QethHardware:
     def on_hardware_page_prepare(self, druid_page, druid):
         pass
     
-    def on_hardware_page_next(self, druid_page, druid):
+    def on_hardware_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         self.dehydrate()
 
-    def on_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
+    def on_hardware_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+        self.hardwarelist.rollback() # pylint: disable-msg=E1101
 
     def on_adapterEntry_changed(self, entry):
         pass
@@ -96,7 +95,6 @@ class QethHardware:
                 if self.hw.Card.IoPort2:
                     self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
         else:
-            hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
 
@@ -110,8 +108,8 @@ class QethHardware:
 
     def dehydrate(self):
         if not self.has_ethernet:
-            id = self.hardwarelist.addHardware(QETH)
-            self.hw = self.hardwarelist[id]
+            mid = self.hardwarelist.addHardware(QETH)
+            self.hw = self.hardwarelist[mid]
         self.hw.Type = QETH
         self.hw.createCard()
         self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()

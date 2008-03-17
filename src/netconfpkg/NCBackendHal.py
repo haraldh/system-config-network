@@ -14,19 +14,15 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-
-import string
-import os
 import sys
 import dbus
 
 if __name__ == '__main__':
-    import sys
     sys.path.append("../")
     sys.path.append("./")
  
-from NCHardware import Hardware, HW_SYSTEM
-from NC_functions import getDeviceType
+from netconfpkg.NCHardware import Hardware, HW_SYSTEM
+from netconfpkg.NC_functions import getDeviceType
 
 HAL_DEVICE_IFACE = "org.freedesktop.Hal.Device"
 
@@ -35,7 +31,7 @@ class NCBackendHal:
         self._dbusBus = dbus.SystemBus()
         self.halManagerObj = self._dbusBus.get_object("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager")
         self.halManager = dbus.Interface(self.halManagerObj, "org.freedesktop.Hal.Manager")
-	self.cards = []
+        self.cards = []
 
     # ------------------------------------------------------------------------
     # Probe routines - HAL
@@ -97,7 +93,7 @@ class NCBackendHal:
                 return None
             
             hw = Hardware()
-            hw.createCard()
+            hw.createCard() # pylint: disable-msg=E1101
             hw.Name = self.getProperty(obj, "net.interface")
             hw.Type = getDeviceType(hw.Name)
             hw.Description = "%s %s" % self.getVendor(udi)
@@ -105,27 +101,22 @@ class NCBackendHal:
 
             index = self.getProperty(obj, "net.physical_device")
             if index != None:
+                # pylint: disable-msg=E1101
                 hw.Card.ModuleName = self.getDriver(index)
 
             return hw
 
-    # TODO?
-    # Only add USB audio devices that have snd-usb-audio as the driver
-    #if card.bus() == "usb" and card.driver() != "snd-usb-audio":
-    #    continue
-    # Same with Mac sound devices
-    #if card.bus() == "macio" and card.driver() != "snd-powermac":
     def probeCards(self):
-	self.cards = []
+        self.cards = []
         udiList = self.halManager.FindDeviceByCapability("net")
         for udi in udiList:
-            card = self.getDevices(udi)
-            if card:
-                self.cards.append(card)
-	return self.cards
+            ncard = self.getDevices(udi)
+            if ncard:
+                self.cards.append(ncard)
+        return self.cards
 
 if __name__ == '__main__':
     hal = NCBackendHal()
     cards = hal.probeCards()
     for card in cards:
-	print card
+        print card

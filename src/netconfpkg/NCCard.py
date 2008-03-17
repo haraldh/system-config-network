@@ -18,8 +18,8 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 
-from netconfpkg import Card_base
-from NC_functions import *
+from netconfpkg import Card_base # pylint: disable-msg=E0611
+#from NC_functions import *
 
 class Card(Card_base):
     def __init__(self, list = None, parent = None):

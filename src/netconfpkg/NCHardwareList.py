@@ -17,32 +17,33 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
 import os
-import string
+import glob
+
 from rhpl import ethtool
-import NCisdnhardware
-
-from netconfpkg import HardwareList_base
-from netconfpkg.NCHardware import *
-from NC_functions import *
-
-from netconfpkg.conf.Conf import *
-from netconfpkg.conf.ConfSMB import *
-from rhpl.executil import *
+from netconfpkg import NCisdnhardware
+from netconfpkg import HardwareList_base # pylint: disable-msg=E0611
+from netconfpkg.NCHardware import HW_CONF, HW_SYSTEM, HW_OK 
+from netconfpkg.NC_functions import _, getRoot, HWCONF, NETCONFDIR, WVDIALCONF, \
+    log, ISDN, MODEM, CRTSCTS, ETHERNET, QETH, \
+    getDeviceType, TOKENRING, WIRELESS, MODULESCONF, getTestEnv
+from netconfpkg.conf.Conf import Conf, ConfModInfo, FileMissing, \
+    VersionMismatch, ConfModules
+from netconfpkg.conf.ConfSMB import ConfSMB
+from rhpl.executil import execWithCapture
 
 ModInfo = None
 __isdnmodulelist = []
 try:
     __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
-    __isdnmodulelist = string.split(__msg)
+    __isdnmodulelist = __msg.split()
 except:
     pass
 
 __wirelessmodulelist = []
 try:
     __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
-    __wirelessmodulelist = string.split(__msg)
+    __wirelessmodulelist = __msg.split()
 except:
     pass
 
@@ -77,14 +78,14 @@ def getModInfo():
 #             except:
 #                 pass
             
-         for path in [ '/boot/module-info',
-                       NETCONFDIR + '/module-info',
-                       './module-info' ]:
-             try:
-                 ModInfo = ConfModInfo(filename = path)
-             except (VersionMismatch, FileMissing):
-                 continue
-             break
+        for path in [ '/boot/module-info',
+                      NETCONFDIR + '/module-info',
+                      './module-info' ]:
+            try:
+                ModInfo = ConfModInfo(filename = path)
+            except (VersionMismatch, FileMissing):
+                continue
+            break
 
     return ModInfo
 
@@ -120,7 +121,7 @@ class MyConfModules(ConfModules):
 
 
     def splitopt(self, opt):
-        eq = find(opt, '=')
+        eq = opt.find('=')
         if eq > 0:
             return (opt[:eq], opt[eq+1:])
         else:
@@ -166,9 +167,10 @@ def getMyWvDial(create_if_missing = None):
     return _MyWvDial
 
 class ConfHWConf(Conf):
-
+    "Special Hardware Conf Class"
     def __init__(self):
         Conf.__init__(self, getRoot() + HWCONF)
+        self.vars = {}
 
     def read(self):
         Conf.read(self)
@@ -182,25 +184,25 @@ class ConfHWConf(Conf):
 
         fp = open(getRoot() + HWCONF, 'r')
         hwlist = fp.read()
-        hwlist = string.split(hwlist, "-\n")
+        hwlist = hwlist.split("-\n")
         pos = 0
         for hw in hwlist:
             if not len(hw):
                 continue
-            items = string.split(hw, '\n')
+            items = hw.split('\n')
             hwdict = {}
             for item in items:
                 if not len(item):
                     continue
-                vals = string.split(item, ":")
+                vals = item.split(":")
                 if len(vals) <= 1:
                     # skip over bad/malformed lines
                     continue
                 # Some of the first words are used as dict keys server side
                 # so this just helps make that easier
-                strippedstring = string.strip(vals[1])
+                strippedstring = vals[1].strip()
                 vals[1] = strippedstring
-                hwdict[vals[0]] = string.join(vals[1:])
+                hwdict[vals[0]] = " ".join(vals[1:])
             self.vars[pos] = hwdict
             pos = pos + 1
 
@@ -251,8 +253,9 @@ class HardwareList(HardwareList_base):
         # Read from kudzu
         #
         kudzulist = []
-        kudzulist.extend(kudzu.probe(kudzu.CLASS_NETWORK, kudzu.BUS_UNSPEC,
-                                     kudzu.PROBE_SAFE))
+        kudzulist.extend(kudzu.probe(kudzu.CLASS_NETWORK, # pylint: disable-msg=E1101 
+                                     kudzu.BUS_UNSPEC,    # pylint: disable-msg=E1101
+                                     kudzu.PROBE_SAFE))   # pylint: disable-msg=E1101
         for kudzu_device in kudzulist:
             if not kudzu_device.device and kudzu_device.driver:
                 if (kudzu_device.driver + '.o' in __isdnmodulelist) or \
@@ -278,7 +281,7 @@ class HardwareList(HardwareList_base):
                     continue
 
                 # No Alias devices
-                if string.find(dev, ':') != -1:
+                if dev.find(':') != -1:
                     continue
 
                 try:
@@ -331,11 +334,11 @@ class HardwareList(HardwareList_base):
                     hdellist.remove(h)
                     break
             else:            
-		hwtype = getDeviceType(dev, module = module)
+                hwtype = getDeviceType(dev, module = module)
                 i = self.addHardware(hwtype)
                 hw = self[i]
-                if string.find (kudzu_device.desc, "|") != -1:
-                    mfg, desc = string.split (kudzu_device.desc, "|")
+                if kudzu_device.desc.find ("|") != -1:
+                    mfg, desc = kudzu_device.desc.split("|")
                 else:
                     mfg = _("Unknown")
                     desc = kudzu_device.desc
@@ -358,25 +361,24 @@ class HardwareList(HardwareList_base):
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
-            self.remove(h)
+            self.remove(h) # pylint: disable-msg=E1101
 
         del hdellist
         
 
     def updateFromSys(self, hdellist):
-        import glob
-        import os
-
         modules = getMyConfModules()
         modinfo = getModInfo()            
         #
         # Read in actual system state
         #
-        for syspath in glob.glob('/sys/class/net/*'):
+        for syspath in glob.glob(getRoot() + '/sys/class/net/*'):
             device = os.path.basename(syspath)
             mod = None
             try:                
-                mod = os.path.basename(os.readlink('%s/device/driver' % syspath))
+                mpath = '%s/device/driver' % syspath
+                log.log(5, "Checking %s" % mpath)
+                mod = os.path.basename(os.readlink(mpath))
             except:                
                 pass
 
@@ -384,7 +386,7 @@ class HardwareList(HardwareList_base):
                 fp = open("%s/type" % syspath)
                 line = fp.readlines()
                 fp.close()
-                line = string.join(line)
+                line = " ".join(line)
                 line.strip()
                 log.log(5, "type %s = %s" % (device, line))
                 type = int(line)
@@ -407,7 +409,7 @@ class HardwareList(HardwareList_base):
 #                continue
 
             # No Alias devices
-            if string.find(device, ':') != -1:
+            if device.find(':') != -1:
                 continue
 
             if mod != None and mod != "":
@@ -455,7 +457,7 @@ class HardwareList(HardwareList_base):
 
 
     def updateFromHal(self, hdellist):
-        import NCBackendHal
+        from netconfpkg import NCBackendHal
         hal = NCBackendHal.NCBackendHal()
         cards = hal.probeCards()
         for hw in cards:
@@ -475,20 +477,20 @@ class HardwareList(HardwareList_base):
                         log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
                 else:
                     hw.Status = HW_SYSTEM
-                    self.append(hw)
+                    self.append(hw) # pylint: disable-msg=E1101
                     hw.setChanged(True)        
 
         return hdellist
 
     def updateFromSystem(self):
         log.log(5, "updateFromSystem")
-        try:
-            self.updateFromKudzu()
-        except:
-            pass
+        #try:
+        #    self.updateFromKudzu()
+        #except:
+        #    pass
 
-        log.log(5, "updateFromKudzu")
-        log.log(5, str(self))
+        #log.log(5, "updateFromKudzu")
+        #log.log(5, str(self))
 
         hdellist = []
 
@@ -496,32 +498,23 @@ class HardwareList(HardwareList_base):
             if h.Status == HW_SYSTEM:
                 hdellist.append(h)
 
-        try:
-            self.updateFromChandev()
-        except:
-            pass
-
-
+        log.log(5, "updateFromHal")
         try:
             hdellist = self.updateFromHal(hdellist)
         except:
             pass
-
-        log.log(5, "updateFromHal")
         log.log(5, str(self))
 
+        log.log(5, "updateFromSys")
         try:
             hdellist = self.updateFromSys(hdellist)
         except:
             pass
-
-
-        log.log(5, "updateFromSys")
         log.log(5, str(self))
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
-            self.remove(h)
+            self.remove(h) # pylint: disable-msg=E1101
 
         del hdellist
 
@@ -574,9 +567,9 @@ class HardwareList(HardwareList_base):
 
 
     def _objToStr(self, parentStr = None):
-        #return DeviceList_base._objToStr(self, obj, parentStr)
         retstr = ""
         for dev in self:
+            # pylint: disable-msg=W0212
             retstr += dev._objToStr("HardwareList.%s.%s" % (dev.Type,
                                                             dev.Name))
 
@@ -592,23 +585,23 @@ class HardwareList(HardwareList_base):
         for dev in self:
             if dev.Name == vals[1]:
                 if dev.Type != vals[0]:
-                    self.remove(dev)
+                    self.remove(dev) # pylint: disable-msg=E1101
                     log.log(1, "Deleting device %s" % vals[1] )
                     break
-                dev._parseLine(vals[2:], value)
+                dev._parseLine(vals[2:], value) # pylint: disable-msg=W0212
                 return
         log.log(4, "Type = %s, Name = %s" % (vals[0], vals[1]))
         i = self.addHardware(vals[0])
         dev = self[i]
         dev.Name = vals[1]
-        dev._parseLine(vals[2:], value)
+        dev._parseLine(vals[2:], value)  # pylint: disable-msg=W0212
 
 
     def load(self):
-        hwconf = ConfHWConf()
+        #hwconf = ConfHWConf()
 
         # first clear the list
-        self.__delslice__(0, len(self))
+        self.__delslice__(0, len(self)) # pylint: disable-msg=E1101
 
         # FIXME: move HW detection to NCDev*
         import netconfpkg
@@ -695,11 +688,11 @@ class HardwareList(HardwareList_base):
                     wvdial[dev]['FlowControl'] = CRTSCTS
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
-        self.commit(changed=False)
-        self.setChanged(False)
+        self.commit(changed=False) # pylint: disable-msg=E1101
+        self.setChanged(False) # pylint: disable-msg=E1101
 
     def save(self):
-        self.commit(changed=True)
+        self.commit(changed=True) # pylint: disable-msg=E1101
 
         modules = getMyConfModules(refresh = True)
 
@@ -714,7 +707,6 @@ class HardwareList(HardwareList_base):
             wvdial = getMyWvDial(create_if_missing = False)
         except:
             wvdial = None
-            pass
 
         if wvdial:
             # Clean up wvdial
@@ -756,8 +748,8 @@ class HardwareList(HardwareList_base):
         if wvdial:
             wvdial.write()
 
-        self.commit(changed=False)
-        self.setChanged(False)
+        self.commit(changed=False) # pylint: disable-msg=E1101
+        self.setChanged(False) # pylint: disable-msg=E1101
 
 __HWList = None
 __HWList_root = getRoot()

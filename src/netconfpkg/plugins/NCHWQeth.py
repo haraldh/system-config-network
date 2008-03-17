@@ -1,3 +1,4 @@
+"QETH Hardware Device Plugin"
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 
@@ -17,56 +18,77 @@
 
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import QETH, getHardwareType
 
 _hwQethDialog = None
 _hwQethWizard = None
 
 class HwQeth(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = QETH
-      self.createCard()
-      self.Description = "Qeth Device"
-      
-   def getDialog(self):
-      if _hwQethDialog == None: return None
-      if hasattr(_hwQethDialog, 'getDialog'):
-         return _hwQethDialog(self).getDialog()
-      return _hwQethDialog(self).xml.get_widget("Dialog")
+    "QETH Hardware Device Class"
+    def __init__(self, mlist = None, parent = None):
+        Hardware.__init__(self, mlist, parent)
+        self.Type = QETH
+        self.createCard()  # pylint: disable-msg=E1101
+        self.Description = "Qeth Device"
+        
+    def getDialog(self):
+        """
+        returns a gtk dialog
+        """
+        if _hwQethDialog == None:
+            return None
+        if hasattr(_hwQethDialog, 'getDialog'):
+            return _hwQethDialog(self).getDialog()
+        return _hwQethDialog(self).xml.get_widget("Dialog")
     
-   def getWizard(self):
-      return _hwQethWizard
+    def getWizard(self):
+        """
+        returns a gtk wizard
+        """
+        return _hwQethWizard
+    
+    def save(self, *args, **kwargs): # pylint: disable-msg=W0613
+        """
+        save the configuration
+        """
+        from netconfpkg.NCHardwareList import getMyConfModules
 
-   def save(self):
-      from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
+        modules = getMyConfModules()
+        dic = modules[self.Name]
+        dic['alias'] = self.Card.ModuleName # pylint: disable-msg=E1101
+        modules[self.Name] = dic
 
-      modules = getMyConfModules()
-      dic = modules[self.Name]
-      dic['alias'] = self.Card.ModuleName
-      modules[self.Name] = dic
-
-   def isType(self, hardware):
-      if hardware.Type == QETH:
-         return true
-      if getHardwareType(hardware.Hardware) == QETH:
-         return true
-      return false
+    def isType(self, hardware):
+        """
+        check if device is of type QETH
+        """
+        if hardware.Type == QETH:
+            return True
+        if getHardwareType(hardware.Hardware) == QETH:
+            return True
+        return False
 
 def setHwQethDialog(dialog):
-   global _hwQethDialog
-   _hwQethDialog = dialog
-
+    """
+    Set the gtk Dialog
+    """
+    global _hwQethDialog # pylint: disable-msg=W0603
+    _hwQethDialog = dialog
+    
 def setHwQethWizard(wizard):
-   global _hwQethWizard
-   _hwQethWizard = wizard
-
+    """
+    Set the gtk Wizard
+    """
+    global _hwQethWizard # pylint: disable-msg=W0603
+    _hwQethWizard = wizard
+    
 import os
 machine = os.uname()[4]
 if machine == 's390' or machine == 's390x':
-   df = getHardwareFactory()
-   df.register(HwQeth, QETH)
-   
+    __df = getHardwareFactory()
+    __df.register(HwQeth, QETH)
+    del __df
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"
 
 

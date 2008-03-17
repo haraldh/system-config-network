@@ -20,21 +20,33 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import *
-from netconfpkg.gui import *
-from netconfpkg.Control import *
-from netconfpkg.gui.GUI_functions import *
+import os
+import re
+
+# from netconfpkg import PROGNAME
+#from netconfpkg.gui import *
+from netconfpkg.Control import NetworkDevice
+from netconfpkg.gui.GUI_functions import get_icon, get_pixbuf, \
+    GLADEPATH, load_icon, xml_signal_autoconnect, generic_error_dialog, \
+    ACTIVE, INACTIVE, get_device_icon_mask, gui_info_dialog, \
+    generic_yesno_dialog, RESPONSE_YES, RESPONSE_NO, RESPONSE_CANCEL, \
+    gui_run, generic_yesnocancel_dialog, generic_info_dialog
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import DEFAULT_PROFILE_NAME, PROGNAME, rpms_notinstalled, \
+    log, NETCONFDIR, LO, TestError
+from netconfpkg.NC_functions import _
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCHardwareList import getHardwareList
-from netconfpkg.NCProfileList import getProfileList
+from netconfpkg.NCProfileList import getProfileList, Profile
 from netconfpkg.NCIPsecList import getIPsecList
+from netconfpkg import NCDeviceFactory
+from netconfpkg.NCHost import Host
+from netconfpkg.NCIPsec import IPsec
 
 import gtk
 import gtk.glade
-import gnome
+import gnome # pylint: disable-msg=W0611
 import gobject
 
 PROFILE_COLUMN = 0
@@ -49,10 +61,11 @@ PAGE_IPSEC = 2
 PAGE_DNS = 3
 PAGE_HOSTS = 4
 
-def nop(str=None):
+def __nop(*args, **kwargs): # pylint: disable-msg=W0613
     pass
 
 class mainDialog:
+    # pylint: disable-msg=W0201
     def __init__(self):
         glade_file = "maindialog.glade"
 
@@ -65,6 +78,7 @@ class mainDialog:
         self.initialized = None
         self.help_displayed = False
         self.no_profileentry_update = None
+        self.ignore_widget_changes = False
 
         self.edit_button = self.xml.get_widget("editButton")
         self.delete_button = self.xml.get_widget("deleteButton")
@@ -124,8 +138,8 @@ class mainDialog:
 
         self.appBar = self.xml.get_widget ("appbar")
         if not hasattr(self.appBar, "push") or not hasattr(self.appBar, "push"):
-            self.appBar.push = nop
-            self.appBar.pop = nop
+            self.appBar.push = __nop
+            self.appBar.pop = __nop
 
         # FIXME: [188232] 'NoneType' object has no attribute 'set_from_pixbuf'
         widget = self.xml.get_widget ("hardware_pixmap")
@@ -304,12 +318,12 @@ class mainDialog:
 
     def loadDevices(self):
         self.appBar.push(_("Loading device configuration..."))
-        devicelist = getDeviceList()
+        devicelist = getDeviceList() # pylint: disable-msg=W0612
         self.appBar.pop()
 
     def loadHardware(self):
         self.appBar.push(_("Loading hardware configuration..."))
-        hardwarelist = getHardwareList()
+        hardwarelist = getHardwareList() # pylint: disable-msg=W0612
         self.appBar.pop()
 
     def loadProfiles(self):
@@ -321,7 +335,7 @@ class mainDialog:
 
     def loadIPsec(self):
         self.appBar.push(_("Loading IPsec configuration..."))
-        ipseclist = getIPsecList()
+        ipseclist = getIPsecList() # pylint: disable-msg=W0612
         self.appBar.pop()
 
     def test(self):
@@ -331,6 +345,7 @@ class mainDialog:
         hardwarelist = getHardwareList()
         ipseclist = getIPsecList()
         try:
+            # pylint: disable-msg=E1101
             hardwarelist.test()
             devicelist.test()
             profilelist.test()
@@ -361,6 +376,7 @@ class mainDialog:
 #         if ipseclist.modified():
 #             log.log(3, "ipseclist modified")
 
+        # pylint: disable-msg=E1101
         if profilelist.modified() \
                or devicelist.modified() \
                or hardwarelist.modified() \
@@ -410,29 +426,29 @@ class mainDialog:
     def saveDevices(self):
         self.appBar.push(_("Saving device configuration..."))
         devicelist = getDeviceList()
-        devicelist.save()
-        devicelist.setChanged(False)
+        devicelist.save() # pylint: disable-msg=E1101
+        devicelist.setChanged(False) # pylint: disable-msg=E1101
         self.appBar.pop()
 
     def saveHardware(self):
         self.appBar.push(_("Saving hardware configuration..."))
         hardwarelist = getHardwareList()
-        hardwarelist.save()
-        hardwarelist.setChanged(False)
+        hardwarelist.save() # pylint: disable-msg=E1101
+        hardwarelist.setChanged(False) # pylint: disable-msg=E1101
         self.appBar.pop()
 
     def saveProfiles(self):
         self.appBar.push(_("Saving profile configuration..."))
         profilelist = getProfileList()
-        profilelist.save()
-        profilelist.setChanged(False)
+        profilelist.save() # pylint: disable-msg=E1101
+        profilelist.setChanged(False) # pylint: disable-msg=E1101
         self.appBar.pop()
 
     def saveIPsecs(self):
         self.appBar.push(_("Saving IPsec configuration..."))
         ipseclist = getIPsecList()
-        ipseclist.save()
-        ipseclist.setChanged(False)
+        ipseclist.save() # pylint: disable-msg=E1101
+        ipseclist.setChanged(False) # pylint: disable-msg=E1101
         self.appBar.pop()
 
     def hydrate(self):
@@ -548,9 +564,9 @@ class mainDialog:
         ipsel = self.ipsel
         profilelist = getProfileList()
 
-        status = ACTIVE
-        status_pixmap = self.on_xpm
-        status_mask = self.on_mask
+#        status = ACTIVE
+#        status_pixmap = self.on_xpm
+#        status_mask = self.on_mask
 
         for ipsec in ipseclist:
 #             if ipsec.IPsecId in profilelist.ActiveIPsecs:
@@ -589,13 +605,13 @@ class mainDialog:
     def getActiveProfile(self):
         return self.active_profile
 
-    def filter_loopback(self, model, iter, data):
+    def filter_loopback(self, model, miter, data):
         if self.xml.get_widget("show_loopback").get_active():
             return True
         else:
-            return model.get_value(iter, 0) not in ["127.0.0.1","::1"]
+            return model.get_value(miter, 0) not in ["127.0.0.1","::1"]
 
-    def on_show_loopback_toggled(self,*args):
+    def on_show_loopback_toggled(self, *args):
         self.xml.get_widget("hostsList").get_model().refilter()
         
         
@@ -640,20 +656,20 @@ class mainDialog:
         else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
         if prof.DNS.SearchList:
             self.xml.get_widget('searchDnsEntry').set_text(\
-                string.join(prof.DNS.SearchList))
+                " ".join(prof.DNS.SearchList))
         else:
             self.xml.get_widget('searchDnsEntry').set_text('')
 
         self.ignore_widget_changes = False
 
-        hclist = self.xml.get_widget("hostsList")
+        # hclist = self.xml.get_widget("hostsList")
         # clear the store
         self.hostsListStore.clear()
         # load hosts to list
         for host in prof.HostsList:
             if host.AliasList:
                 self.hostsListStore.append([host.IP, host.Hostname,
-                               string.join(host.AliasList, ' '), host])
+                               " ".join(host.AliasList), host])
             else:
                 self.hostsListStore.append([host.IP, host.Hostname,"", host])
             
@@ -856,6 +872,7 @@ class mainDialog:
             
             if uid!=None:
                 import pwd
+                # pylint: disable-msg=W0612
                 (pw_name,pw_passwd,pw_uid,
                  pw_gid,pw_gecos,pw_dir,
                  pw_shell) = pwd.getpwuid(uid)
@@ -865,7 +882,7 @@ class mainDialog:
 
             self.help_displayed = False
 
-    def on_deviceAddButton_clicked (self, clicked):
+    def on_deviceAddButton_clicked (self, clicked): # pylint: disable-msg=W0613
         interface = NewInterfaceDialog(self.dialog)
         gtk.main()
 
@@ -884,7 +901,7 @@ class mainDialog:
         srcdev = clist.get_row_data(clist.selection[0])
         df = NCDeviceFactory.getDeviceFactory()
         device = df.getDeviceClass(srcdev.Type, srcdev.SubType)()
-        device.apply(srcdev)
+        device.apply(srcdev) # pylint: disable-msg=E1103
 
         duplicate = True
         num = 0
@@ -898,9 +915,10 @@ class mainDialog:
                     break
             num = num + 1
         device.DeviceId = devname
-
+        
+        # pylint: disable-msg=E1101        
         devicelist.append(device)
-        device.commit()
+        device.commit()             # pylint: disable-msg=E1103
         devicelist.commit()
         self.hydrateDevices()
 
@@ -928,7 +946,7 @@ class mainDialog:
 
         device.commit()
         devicelist = getDeviceList()
-        devicelist.commit()
+        devicelist.commit() # pylint: disable-msg=E1101
 
         if not device.modified():
             print "Device not modified"
@@ -994,6 +1012,7 @@ class mainDialog:
                 del prof.ActiveDevices[pos]
         profilelist.commit()
 
+        # pylint: disable-msg=E1101
         del devicelist[devicelist.index(device)]
         devicelist.commit()
         self.hydrateDevices()
@@ -1024,7 +1043,7 @@ class mainDialog:
             if button == RESPONSE_NO:
                 return
 
-        (status, txt) = dev.activate(dialog = self.dialog)
+        dev.activate(dialog = self.dialog)
 
         if NetworkDevice().find(device):
             self.updateDevicelist()
@@ -1065,11 +1084,10 @@ class mainDialog:
 
         self.tag = gobject.timeout_add(4000, self.updateDevicelist)
 
-
     def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
+                                     pos, mstr):
         text = partial_text[0:length]
-        if re.match(str, text):
+        if re.match(mstr, text):
             return
         entry.emit_stop_by_name('insert_text')
 
@@ -1253,7 +1271,7 @@ class mainDialog:
                 status = INACTIVE
 
             if NetworkDevice().find(self.devsel.getDeviceAlias()):
-                status == ACTIVE
+                status = ACTIVE
 
             if status == ACTIVE and \
                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
@@ -1285,13 +1303,13 @@ class mainDialog:
     def on_generic_clist_button_release_event(self, clist, event, func):
         id = clist.get_data ("signal_id")
         clist.disconnect (id)
-        apply (func)
+        func()
 
     def on_generic_clist_button_press_event(self, clist, event, *args):
         self.lastbuttonevent = event
-        profilelist = getProfileList()
+        #profilelist = getProfileList()
 
-        if event.type == gtk.gdk._2BUTTON_PRESS:
+        if event.type == gtk.gdk._2BUTTON_PRESS:  # pylint: disable-msg=W0212
             info = clist.get_selection_info(int(event.x), int(event.y))
             if info != None and not (clist.get_name() in \
                                      [ "deviceList", "ipsecList" ] \
@@ -1307,44 +1325,44 @@ class mainDialog:
 
     def on_hostnameEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.Hostname = entry.get_text()
         self.active_profile.DNS.commitHostname()
         self.checkApply()
 
     def on_domainEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.Domainname = entry.get_text()
         self.active_profile.DNS.commitDomainname()
         self.checkApply()
 
     def on_primaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.PrimaryDNS = entry.get_text()
         self.active_profile.DNS.commitPrimaryDNS()
         self.checkApply()
 
     def on_secondaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.SecondaryDNS = entry.get_text()
         self.active_profile.DNS.commitSecondaryDNS()
         self.checkApply()
 
     def on_tertiaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.TertiaryDNS = entry.get_text()
         self.active_profile.DNS.commitTertiaryDNS()
         self.checkApply()
 
     def on_searchDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         s = entry.get_text()
-        newentries = string.split(s)
+        newentries = s.split()
         self.active_profile.DNS.SearchList = self.active_profile.\
                                              DNS.SearchList[:0]
         for sp in newentries:
@@ -1356,7 +1374,7 @@ class mainDialog:
     def on_hostsAddButton_clicked(self, *args):
         # FIXME: Provide possibility to define order from /etc/hosts.conf
         if (self.ignore_widget_changes):
-            return;
+            return
         profilelist = getProfileList()
 
         curr_prof = self.getActiveProfile()
@@ -1364,7 +1382,7 @@ class mainDialog:
             curr_prof.createHostsList()
         hostslist = curr_prof.HostsList
         host = Host()
-        clist  = self.xml.get_widget("hostsList")
+        #clist  = self.xml.get_widget("hostsList")
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
         dl.set_transient_for(self.dialog)
@@ -1436,13 +1454,6 @@ class mainDialog:
         profilelist.commit()
         self.hydrateProfiles()
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
-        text = partial_text[0:length]
-        if re.match(str, text):
-            return
-        entry.emit_stop_by_name('insert_text')
-
     def on_profileAddMenu_activate (self, *args):
         # FIXME: do not reset button state
         dialog = self.xml.get_widget("ProfileNameDialog")
@@ -1479,7 +1490,7 @@ class mainDialog:
                                       self.dialog)
                 return 1
 
-        i = profilelist.addProfile()
+        i = profilelist.addProfile() # pylint: disable-msg=E1101
         prof = profilelist[i]
         prof.apply(profilelist[0])
         prof.ProfileName = text
@@ -1510,7 +1521,7 @@ class mainDialog:
             num = num + 1
         profile.ProfileName = profnam
 
-        i = profilelist.addProfile()
+        i = profilelist.addProfile() # pylint: disable-msg=E1101
         profilelist[i].apply(profile)
         profilelist.commit()
         self.initialized = None
@@ -1587,8 +1598,9 @@ class mainDialog:
 
         if buttons != RESPONSE_YES:
             return
-
-        del profilelist[profilelist.index(self.getActiveProfile())]
+        
+        i = profilelist.index(self.getActiveProfile()) # pylint: disable-msg=E1101 
+        del profilelist[i] # pylint: disable-msg=E1101
         profilelist.commit()
         profilelist.switchToProfile('default')
         self.initialized = None
@@ -1596,9 +1608,9 @@ class mainDialog:
         self.hydrate()
 
     def on_hardwareAddButton_clicked (self, *args):
-        from hardwaretype import hardwareTypeDialog
-        type = hardwareTypeDialog()
-        dialog = type.xml.get_widget ("Dialog")
+        from netconfpkg.gui.hardwaretype import hardwareTypeDialog
+        mtype = hardwareTypeDialog()
+        dialog = mtype.xml.get_widget ("Dialog")
         dialog.set_transient_for(self.dialog)
         dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
         button = dialog.run ()
@@ -1609,10 +1621,11 @@ class mainDialog:
 
         hardwarelist = getHardwareList()
 
-        type = type.type
-        i = hardwarelist.addHardware(type)
+        mtype = mtype.Type
+        i = hardwarelist.addHardware(mtype)
         hw = hardwarelist[i]
-
+        
+        # pylint: disable-msg=E1101
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
             hw.commit()
             hardwarelist.commit()
@@ -1632,11 +1645,11 @@ class mainDialog:
         hardwarelist = getHardwareList()
         #hw = hardwarelist[clist.selection[0]]
         hw = clist.get_row_data(clist.selection[0])
-        type = hw.Type
+        #type = hw.Type
 
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
             hw.commit()
-            hardwarelist.commit()
+            hardwarelist.commit() # pylint: disable-msg=E1101
         else:
             hw.rollback()
         self.hydrateHardware()
@@ -1669,7 +1682,7 @@ class mainDialog:
             return
 
         hw = clist.get_row_data(clist.selection[0])
-        type = hw.Type
+        #type = hw.Type
         description = hw.Description
         dev = hw.Name
 
@@ -1683,8 +1696,8 @@ class mainDialog:
             return
 
         # remove hardware
-        hardwarelist.remove(hw)
-        hardwarelist.commit()
+        hardwarelist.remove(hw) # pylint: disable-msg=E1101
+        hardwarelist.commit()   # pylint: disable-msg=E1101
 
         buttons = generic_yesno_dialog((_('Do you want to delete '
                                           'all devices that used "%s"?')) % \
@@ -1704,9 +1717,9 @@ class mainDialog:
                 for prof in profilelist:
                     if i.DeviceId in prof.ActiveDevices:
                         prof.ActiveDevices.remove(i.DeviceId)
-                devicelist.remove(i)
+                devicelist.remove(i) # pylint: disable-msg=E1101
 
-            devicelist.commit()
+            devicelist.commit() # pylint: disable-msg=E1101
             self.hydrateDevices()
 
         self.hydrateHardware()
@@ -1754,10 +1767,10 @@ class mainDialog:
 
         if canceled:
             return
-        i = ipsecs.addIPsec()
+        i = ipsecs.addIPsec() # pylint: disable-msg=E1101
         ipsecs[i].apply(ipsec)
         ipsecs[i].commit()
-        ipsecs.commit()
+        ipsecs.commit()       # pylint: disable-msg=E1101
         self.hydrateIPsec()
 
     def on_ipsecEditButton_clicked(self, *args):
@@ -1772,12 +1785,12 @@ class mainDialog:
         canceled = self.ipsecDruid(ipsec)
         if canceled:
             return
-        ipsecs.commit()
+        ipsecs.commit()  # pylint: disable-msg=E1101
 
         self.hydrateIPsec()
 
     def ipsecDruid(self, ipsec):
-        from editipsec import editIPsecDruid
+        from netconfpkg.gui.editipsec import editIPsecDruid
         dialog = editIPsecDruid(ipsec)
 
         dl = dialog.druid
@@ -1799,7 +1812,7 @@ class mainDialog:
             return
 
         del ipsecs[clist.selection[0]]
-        ipsecs.commit()
+        ipsecs.commit()  # pylint: disable-msg=E1101
         self.hydrateIPsec()
 
     def on_ipsecActivateButton_clicked(self, button):

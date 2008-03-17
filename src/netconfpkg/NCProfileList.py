@@ -17,29 +17,23 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
+from netconfpkg import NCDeviceList
+from netconfpkg import NCIPsecList
+from netconfpkg import Profile # pylint: disable-msg=E0611
+from netconfpkg import ProfileList_base # pylint: disable-msg=E0611
+from netconfpkg.NCDeviceList import ConfDevices
+from netconfpkg.NC_functions import _, log, SYSCONFNETWORK, getRoot, updateNetworkScripts, \
+    SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR, RESOLVCONF, HOSTSCONF, TestError, \
+    getDebugLevel, SYSCONFDEVICEDIR, mkdir, issamefile, unlink, link, rename, rmdir, \
+    generic_error_dialog
+from netconfpkg.conf import Conf
 import os
 import os.path
-import shutil
-import string
-
-import NCDeviceList
-import NCIPsecList
-import NCHardwareList
-
-from NC_functions import *
-from netconfpkg import ProfileList_base
-from netconfpkg import Profile
-from netconfpkg import Host
-
-from netconfpkg.conf import Conf
-
-#from types import ListType
 
 class MyFileList(list):
     def __setitem__(self, key, value):
         value = os.path.abspath(value)
-        log.log(5, "MyFileList.__setitem__(self, %s, %s)" % (str(key),
+        log.log(5, "MyFileList.__setitem__(self, %s, %s)" % (str(key), 
                                                              str(value)))
         return list.__setitem__(self, key, value)
 
@@ -55,11 +49,13 @@ class MyFileList(list):
         return list.append(self, os.path.abspath(obj))
 
 class ProfileList(ProfileList_base):
-    def __init__(self, list = None, parent = None):
+    def __init__(self, clist = None, parent = None):
         self.error = None
-        ProfileList_base.__init__(self, list, parent)
+        ProfileList_base.__init__(self, clist, parent)
 
     def load(self):
+        # pylint: disable-msg=W0201
+        # pylint: disable-msg=E1101
         self.curr_prof = 'default'
         nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if nwconf.has_key('CURRENT_PROFILE'):
@@ -98,6 +94,7 @@ class ProfileList(ProfileList_base):
         self.setChanged(False)
 
     def loadprof(self, pr, profdir):
+        # pylint: disable-msg=E1101
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
 
@@ -137,12 +134,12 @@ class ProfileList(ProfileList_base):
         # CHECK: [198898] new backend for /etc/hosts        
         if profdir:
             try:
-                prof.HostsList.load( filename = profdir + '/hosts')
+                prof.HostsList.load(filename = profdir + '/hosts')
             except ValueError, e:
                 self.error = e.message
         else:
             try:
-                prof.HostsList.load( filename = HOSTSCONF )
+                prof.HostsList.load(filename = HOSTSCONF)
             except ValueError, e:
                 self.error = e.message
 
@@ -187,7 +184,7 @@ class ProfileList(ProfileList_base):
                 prof.HostsList.test()
             except ValueError, e:
                 if not error:
-                    error = "Profile: %s \n%s" % (prof.ProfileName,e.message)
+                    error = "Profile: %s \n%s" % (prof.ProfileName, e.message)
                 else:
                     error += e.message
         if error:
@@ -226,46 +223,48 @@ class ProfileList(ProfileList_base):
 
     def fixInterfaces(self):
         return
-        pppnum = 0
-        ipppnum = 0
-        isdnnum = 0
-        devicelist = NCDeviceList.getDeviceList()
-        changed = 0
-        for prof in self:
-            if not prof.Active:
-                continue
-            for devid in prof.ActiveDevices:
-                for dev in devicelist:
-                    if dev.DeviceId != devid:
-                        continue
-
-                    if dev.Type == MODEM or dev.Type == DSL:
-                        dstr = "ppp"+str(pppnum)
-                        if dev.Device != dstr:
-                            dev.Device = dstr
-                            changed = 1
-                        pppnum = pppnum + 1
-                    elif  dev.Type == ISDN:
-                        if dev.Dialup.EncapMode == 'syncppp':
-                            dstr = "ippp"+str(ipppnum)
-                            if dstr != dev.Device:
-                                dev.Device = dstr
-                                changed = 1
-                            if dev.Dialup.ChannelBundling == True:
-                                ipppnum = ipppnum + 1
-                                dstr = "ippp"+str(ipppnum)
-                                if dstr != dev.Dialup.SlaveDevice:
-                                    dev.Dialup.SlaveDevice = dstr
-                                    changed = 1
-                            ipppnum = ipppnum + 1
-                        else:
-                            dstr = "isdn"+str(isdnnum)
-                            if dstr != dev.Device:
-                                dev.Device = dstr
-                                changed = 1
-                            isdnnum = isdnnum + 1
-                    break
-            break
+#===============================================================================
+#        pppnum = 0
+#        ipppnum = 0
+#        isdnnum = 0
+#        devicelist = NCDeviceList.getDeviceList()
+#        changed = 0
+#        for prof in self:
+#            if not prof.Active:
+#                continue
+#            for devid in prof.ActiveDevices:
+#                for dev in devicelist:
+#                    if dev.DeviceId != devid:
+#                        continue
+# 
+#                    if dev.Type == MODEM or dev.Type == DSL:
+#                        dstr = "ppp"+str(pppnum)
+#                        if dev.Device != dstr:
+#                            dev.Device = dstr
+#                            changed = 1
+#                        pppnum = pppnum + 1
+#                    elif  dev.Type == ISDN:
+#                        if dev.Dialup.EncapMode == 'syncppp':
+#                            dstr = "ippp"+str(ipppnum)
+#                            if dstr != dev.Device:
+#                                dev.Device = dstr
+#                                changed = 1
+#                            if dev.Dialup.ChannelBundling == True:
+#                                ipppnum = ipppnum + 1
+#                                dstr = "ippp"+str(ipppnum)
+#                                if dstr != dev.Dialup.SlaveDevice:
+#                                    dev.Dialup.SlaveDevice = dstr
+#                                    changed = 1
+#                            ipppnum = ipppnum + 1
+#                        else:
+#                            dstr = "isdn"+str(isdnnum)
+#                            if dstr != dev.Device:
+#                                dev.Device = dstr
+#                                changed = 1
+#                            isdnnum = isdnnum + 1
+#                    break
+#            break
+#===============================================================================
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
@@ -276,8 +275,6 @@ class ProfileList(ProfileList_base):
 
         # commit the changes
         self.commit()
-
-        devicelist = NCDeviceList.getDeviceList()
 
         nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
         # FIXME: [183338] use SEARCH not resolv.conf
@@ -296,7 +293,7 @@ class ProfileList(ProfileList_base):
             newip = '127.0.0.1'
             try:
                 newip = socket.gethostbyname(act_prof.DNS.Hostname)
-            except:
+            except socket.error:
                 for host in act_prof.HostsList:
                     if host.IP == '127.0.0.1' or host.IP == "::1":
                         host.Hostname = 'localhost.localdomain'
@@ -324,10 +321,11 @@ class ProfileList(ProfileList_base):
                                 hname = socket.gethostbyaddr(newip)
                                 host.Hostname = hname[0]
                                 host.AliasList.extend(hname[1])
-                            except:
+                            except socket.error:
                                 host.Hostname = act_prof.DNS.Hostname
+                                
                             if host.Hostname != act_prof.DNS.Hostname:
-                                host.AliasList.append( act_prof.DNS.Hostname )
+                                host.AliasList.append(act_prof.DNS.Hostname)
                             if act_prof.DNS.Hostname.find(".") != -1:
                                 hname = act_prof.DNS.Hostname.split(".")[0]
                                 if not hname in host.AliasList:
@@ -480,8 +478,8 @@ class ProfileList(ProfileList_base):
 
             # Special actions for the active profile
 
-            for (file, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
-                hostfile = getRoot() + file
+            for (mfile, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
+                hostfile = getRoot() + mfile
                 conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
                            prof.ProfileName + cfile
                 if os.path.isfile(conffile) and (not os.path.isfile(hostfile) or not issamefile(hostfile, conffile)):
@@ -494,32 +492,33 @@ class ProfileList(ProfileList_base):
         # Remove all unused files that are linked in the device directory
         devlist = os.listdir(getRoot() + OLDSYSCONFDEVICEDIR)
         for dev in devlist:
-            if string.split(dev, '-')[0] not in [ 'ifcfg', 'route',
+            if dev.split('-')[0] not in [ 'ifcfg', 'route', 
                                                   'keys' ] or \
                                                   (len(dev) > 6 and \
                                                    dev[-6:] == '.route') \
                                                   or dev == 'ifcfg-lo':
                 continue
-            file = getRoot() + OLDSYSCONFDEVICEDIR+'/'+dev
-            if file in files_used:
+            mfile = getRoot() + OLDSYSCONFDEVICEDIR+'/'+dev
+            if mfile in files_used:
                 # Do not remove used files
                 continue
             try:
-                stat = os.stat(file)
+                stat = os.stat(mfile)
                 if stat[3] > 1:
                     # Check, if it is a device of neat in every profile directory
                     dirlist = os.listdir(getRoot() + SYSCONFPROFILEDIR)
-                    for dir in dirlist:
-                        dirname = getRoot() + SYSCONFPROFILEDIR + '/' + dir
+                    for mdir in dirlist:
+                        dirname = getRoot() + SYSCONFPROFILEDIR + '/' + mdir
                         if not os.path.isdir(dirname):
                             continue
                         filelist = os.listdir(dirname)
                         for file2 in filelist:
                             stat2 = os.stat(dirname + '/' + file2)
                             if os.path.samestat(stat, stat2):
-                                unlink(file)
-            except:
-                pass
+                                unlink(mfile)
+            except OSError, e:
+                generic_error_dialog(_("Error removing file %(file)s: %(errormsg)") % \
+                                     { "file" : mfile, "errormsg" : str(e) } )
 
 
         # Remove all profile directories except default
@@ -527,9 +526,9 @@ class ProfileList(ProfileList_base):
         for prof in proflist:
             # Remove all files in the profile directory
             filelist = os.listdir(getRoot() + SYSCONFPROFILEDIR + prof)
-            for file in filelist:
+            for mfile in filelist:
                 filename = getRoot() + SYSCONFPROFILEDIR + prof + '/' + \
-                           file
+                           mfile
                 if filename in files_used:
                     # Do not remove used files
                     log.log(6, "%s not removed" % filename)
@@ -537,18 +536,14 @@ class ProfileList(ProfileList_base):
                 unlink(filename)
 
             filename = getRoot() + SYSCONFPROFILEDIR + prof
-            try:
-                if not (filename in files_used):
-                    rmdir(filename)
-            except:
-                pass
+            if not (filename in files_used):
+                rmdir(filename)
 
         # commit the changes
         self.commit(False)
-        self.setChanged(False)
+        self.setChanged(False) # pylint: disable-msg=E1101
 
     def activateDevice (self, deviceid, profile, state=None):
-        devicelist = NCDeviceList.getDeviceList()
         profilelist = getProfileList()
 
         for prof in profilelist:
@@ -562,7 +557,6 @@ class ProfileList(ProfileList_base):
                     del prof.ActiveDevices[prof.ActiveDevices.index(deviceid)]
 
     def activateIpsec (self, ipsecid, profile, state=None):
-        ipseclist = NCIPsecList.getIPsecList()
         profilelist = getProfileList()
 
         for prof in profilelist:
@@ -576,17 +570,15 @@ class ProfileList(ProfileList_base):
                     del prof.ActiveIPsecs[prof.ActiveIPsecs.index(ipsecid)]
 
     def switchToProfile(self, val, dochange = True):
-        found = False
         aprof = None
         for prof in self:
             if (isinstance(val, str) and prof.ProfileName == val) or \
                    (isinstance(val, Profile) and prof == val) :
-                found = True
                 break
         else:
             return None
 
-        modl = self.modified()
+        modl = self.modified() # pylint: disable-msg=E1101
         for prof in self:
             mod = prof.modified()
             if (isinstance(val, str) and prof.ProfileName == val) or \
@@ -599,9 +591,9 @@ class ProfileList(ProfileList_base):
                 prof.setChanged(mod)
 
         if not dochange:
-            self.setChanged(modl)
+            self.setChanged(modl) # pylint: disable-msg=E1101
 
-        return prof
+        return aprof
 
     def getActiveProfile(self):
         for prof in self:
@@ -613,7 +605,8 @@ class ProfileList(ProfileList_base):
             self[0].Active=True
             return self[0]
 
-    def _objToStr(self, parentStr = None):
+    def _objToStr(self, parentStr = None): # pylint: disable-msg=W0613
+        # pylint: disable-msg=W0212
         retstr = ""
         for profile in self:
             retstr += profile._objToStr("ProfileList.%s" % \
@@ -622,6 +615,7 @@ class ProfileList(ProfileList_base):
         return retstr
 
     def _parseLine(self, vals, value):
+        # pylint: disable-msg=W0212
         if len(vals) <= 1:
             return
         if vals[0] == "ProfileList":
@@ -633,7 +627,7 @@ class ProfileList(ProfileList_base):
                 profile._parseLine(vals[1:], value)
                 return
 
-        i = self.addProfile()
+        i = self.addProfile() # pylint: disable-msg=E1101
         self[i].ProfileName = vals[0]
         self[i]._parseLine(vals[1:], value)
 

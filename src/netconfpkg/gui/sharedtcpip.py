@@ -16,22 +16,15 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk.glade
-import signal
-import os
 
-import string
-import re
-from netconfpkg import NCHardwareList
 from netconfpkg import NC_functions
+from netconfpkg.NCHardwareList import getHardwareList
 from rhpl import ethtool
 
 from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
-from editadress import editAdressDialog
-from netconfpkg import *
-import sys, traceback
+from netconfpkg.gui.editadress import editAdressDialog
+from netconfpkg.NCRoute import Route
 
 ###
 ### DHCP
@@ -53,7 +46,7 @@ def on_ipBootProto_toggled(widget, xml):
     xml.get_widget('dhcpSettingFrame').set_sensitive(active)
     xml.get_widget('ipSettingFrame').set_sensitive(not active)
 
-def dhcp_init (xml, device):
+def dhcp_init (xml, device): # pylint: disable-msg=W0613
     xml_signal_autoconnect(xml, {\
         "on_ipAutomaticRadio_toggled" : (on_ipBootProto_toggled, xml),
         "on_ipStaticRadio_toggled" : (on_ipBootProto_toggled, xml),
@@ -139,9 +132,9 @@ def dhcp_hydrate (xml, device):
             xml.get_widget('mruSpin').set_value(device.Dialup.Mru)
             xml.get_widget('mruCB').set_active(True)
     else:
-            xml.get_widget('mruCB').set_active(False)
-            xml.get_widget('mruSpin').hide()
-            xml.get_widget('mruCB').hide()
+        xml.get_widget('mruCB').set_active(False)
+        xml.get_widget('mruSpin').hide()
+        xml.get_widget('mruCB').hide()
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
@@ -158,11 +151,11 @@ def dhcp_dehydrate (xml, device):
 
 
     device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
-    device.IP = string.strip(xml.get_widget('ipAddressEntry').get_text())
-    device.Netmask = string.strip(xml.get_widget('ipNetmaskEntry').get_text())
-    device.Gateway = string.strip(xml.get_widget('ipGatewayEntry').get_text())
+    device.IP = xml.get_widget('ipAddressEntry').get_text().strip()
+    device.Netmask = xml.get_widget('ipNetmaskEntry').get_text().strip()
+    device.Gateway = xml.get_widget('ipGatewayEntry').get_text().strip()
     # FIXED: [169819] Trailing space in host name causes crash
-    hname = string.strip(xml.get_widget('hostnameEntry').get_text())
+    hname = xml.get_widget('hostnameEntry').get_text().strip()
     if hname != None and hname != '':
         device.Hostname = hname
 
@@ -227,7 +220,7 @@ def on_routeEditButton_clicked(button, xml, device, parent_dialog):
     route_update(xml, device)
 
 
-def on_routeDeleteButton_clicked(button, xml, device):
+def on_routeDeleteButton_clicked(button, xml, device): # pylint: disable-msg=W0613
     if not device.StaticRoutes:
         device.createStaticRoutes()
 
@@ -241,7 +234,7 @@ def on_routeDeleteButton_clicked(button, xml, device):
     del routes[clist.selection[0]]
     route_update(xml, device)
 
-def on_routeUpButton_clicked(button, xml, device):
+def on_routeUpButton_clicked(button, xml, device): # pylint: disable-msg=W0613
     routes = device.StaticRoutes
     clist = xml.get_widget("networkRouteList")
 
@@ -249,9 +242,9 @@ def on_routeUpButton_clicked(button, xml, device):
         return
 
     select_row = clist.selection[0]
-    dest = clist.get_text(select_row, 0)
-    prefix = clist.get_text(select_row, 1)
-    gateway = clist.get_text(select_row, 2)
+#    dest = clist.get_text(select_row, 0)
+#    prefix = clist.get_text(select_row, 1)
+#    gateway = clist.get_text(select_row, 2)
 
     rcurrent = routes[select_row]
     rnew = routes[select_row-1]
@@ -263,7 +256,7 @@ def on_routeUpButton_clicked(button, xml, device):
 
     clist.select_row(select_row-1, 0)
 
-def on_routeDownButton_clicked(button, xml, device):
+def on_routeDownButton_clicked(button, xml, device): # pylint: disable-msg=W0613
     routes = device.StaticRoutes
     clist = xml.get_widget("networkRouteList")
 
@@ -271,9 +264,9 @@ def on_routeDownButton_clicked(button, xml, device):
         return
 
     select_row = clist.selection[0]
-    dest = clist.get_text(select_row, 0)
-    prefix = clist.get_text(select_row, 1)
-    gateway = clist.get_text(select_row, 2)
+#    dest = clist.get_text(select_row, 0)
+#    prefix = clist.get_text(select_row, 1)
+#    gateway = clist.get_text(select_row, 2)
 
     rcurrent = routes[select_row]
     rnew = routes[select_row+1]
@@ -332,10 +325,10 @@ def route_init(xml, device, dialog = None):
     route_update(xml, device)
 
 
-def route_hydrate(xml, device):
+def route_hydrate(xml, device): # pylint: disable-msg=W0613
     pass
 
-def route_dehydrate(xml, device):
+def route_dehydrate(xml, device): # pylint: disable-msg=W0613
     pass
 
 
@@ -351,14 +344,14 @@ def on_hardwareAliasesToggle_toggled(widget, xml, device):
     else:
         device.Alias = None
 
-def on_hardwareMACToggle_toggled(widget, xml, device):
+def on_hardwareMACToggle_toggled(widget, xml, device): # pylint: disable-msg=W0613
     xml.get_widget("hardwareMACEntry").set_sensitive (widget.get_active())
     xml.get_widget("hardwareProbeButton").set_sensitive (widget.get_active())
 
-def on_hardwareProbeButton_clicked(widget, xml, device):
+def on_hardwareProbeButton_clicked(widget, xml, device): # pylint: disable-msg=W0613
     omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_children()[0].get()
-    device = string.split(hw)[0]
+    device = hw.split()[0]
     try: hwaddr = ethtool.get_hwaddr(device)
     except IOError, err:
         error_str = str (err)
@@ -366,10 +359,8 @@ def on_hardwareProbeButton_clicked(widget, xml, device):
     else:
         xml.get_widget("hardwareMACEntry").set_text(hwaddr)
 
-def on_hardwareConfigureButton_clicked(widget, xml, device):
+def on_hardwareConfigureButton_clicked(widget, xml, device): # pylint: disable-msg=W0613
     pass
-
-
 
 def hardware_init(xml, device):
     xml_signal_autoconnect(xml, {\
@@ -387,7 +378,7 @@ def hardware_init(xml, device):
 
 def hardware_hydrate(xml, device):
     hwlist = getHardwareList()
-    (hwcurr, hwdesc) = NC_functions.create_generic_combo(hwlist, device.Device, type = device.Type)
+    (hwcurr, hwdesc) = NC_functions.create_generic_combo(hwlist, device.Device, mtype = device.Type)
     omenu = xml.get_widget("hwdvOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()
@@ -427,7 +418,7 @@ def hardware_hydrate(xml, device):
 def hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_child().get_label()
-    device.Device = string.split(hw)[0]
+    device.Device = hw.split()[0]
     if xml.get_widget("hardwareAliasesToggle").get_active():
         device.Alias = xml.get_widget("hardwareAliasesSpin").get_value_as_int()
     else:
@@ -438,7 +429,7 @@ def hardware_dehydrate(xml, device):
         device.HardwareAddress = None
 
 
-def dsl_hardware_init(xml, device):
+def dsl_hardware_init(xml, device): # pylint: disable-msg=W0613
     pass
 
 def dsl_hardware_hydrate(xml, device):
@@ -463,7 +454,7 @@ def dsl_hardware_hydrate(xml, device):
 def dsl_hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_child().get_label()
-    device.Dialup.EthDevice = string.split(hw)[0]
+    device.Dialup.EthDevice = hw.split()[0]
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
 __date__ = "$Date: 2007/09/24 08:39:46 $"

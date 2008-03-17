@@ -15,9 +15,9 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDevice import *
+from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import WIRELESS, getDeviceType
 
 _devWirelessDialog = None
 _devWirelessWizard = None
@@ -27,17 +27,19 @@ _devWirelessWizard = None
 # FIXME: [183272] system-config-network unable to see cisco pcmcia wireless card using airo driver
 
 class DevWireless(Device):
-    def __init__(self, list = None, parent = None):
-        Device.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Device.__init__(self, clist, parent)
         self.Type = WIRELESS
         self.createWireless()
 
-    def load(self, name):
+    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
+        name = args[0]
         conf = ConfDevice(name)
         Device.load(self, name)
-        self.Wireless.load(conf)
+        self.Wireless.load(conf) # pylint: disable-msg=E1101
 
     def createWireless(self):
+        # pylint: disable-msg=E1101
         Device.createWireless(self)
         return self.Wireless
 
@@ -69,8 +71,8 @@ def setDevWirelessWizard(wizard):
     global _devWirelessWizard
     _devWirelessWizard = wizard
 
-df = getDeviceFactory()
-df.register(DevWireless, WIRELESS)
+__df = getDeviceFactory()
+__df.register(DevWireless, WIRELESS)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.12 $"

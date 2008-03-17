@@ -17,21 +17,17 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
-from netconfpkg.gui import sharedtcpip
-from netconfpkg.gui import *
+from netconfpkg import NCDeviceList, NCDevice, NCProfileList
+from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, _, ETHERNET, generic_error_dialog
+from netconfpkg.gui.GUI_functions import GLADEPATH 
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, generic_error_dialog
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 import gtk
 import gtk.glade
-import string
 import os
-from EthernetHardwareDruid import ethernetHardware
-from TokenRingHardwareDruid import tokenringHardware
-from InterfaceCreator import InterfaceCreator
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
 class GenericInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, type=ETHERNET, do_save = 1,
+    def __init__(self, toplevel=None, mtype=ETHERNET, do_save = 1, 
                  druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
@@ -42,7 +38,7 @@ class GenericInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None, 
                                                   domain=PROGNAME)
 
         glade_file = 'GenericInterfaceDruid.glade'
@@ -53,9 +49,9 @@ class GenericInterface(InterfaceCreator):
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
-        xml_signal_autoconnect(self.xml,
-            { "on_finish_page_finish" : self.on_finish_page_finish,
-              "on_finish_page_prepare" : self.on_finish_page_prepare,
+        xml_signal_autoconnect(self.xml, 
+            { "on_finish_page_finish" : self.on_finish_page_finish, 
+              "on_finish_page_prepare" : self.on_finish_page_prepare, 
               "on_finish_page_back" : self.on_finish_page_back
               }
             )
@@ -87,7 +83,7 @@ class GenericInterface(InterfaceCreator):
     def get_druids(self):
         return self.druids
 
-    def on_finish_page_back(self,druid_page, druid):
+    def on_finish_page_back(self, druid_page, druid):
         pass
 
     def on_finish_page_prepare(self, druid_page, druid):
@@ -99,42 +95,19 @@ class GenericInterface(InterfaceCreator):
         druid_page.set_text(s)
 
     def editDevice(self, device):
-        ## FIXME
         button = 0
-        type = device.Type
 
-        if type == ETHERNET:
-            cfg = ethernetConfigDialog(device)
-
-        elif type == TOKENRING:
-            cfg = tokenringConfigDialog(device)
-
-        elif type == ISDN:
-            device.createDialup()
-            cfg = ISDNDialupInterfaceDialog(device)
-
-        elif type == MODEM:
-            device.createDialup()
-            cfg = ModemDialupInterfaceDialog(device)
-
-        elif type == DSL:
-            device.createDialup()
-            cfg = ADSLInterfaceDialog(device)
-
-        elif type == WIRELESS:
-            device.createWireless()
-            cfg = wirelessConfigDialog(device)
-
-        elif type == QETH:
-            cfg = qethConfigDialog(device)
-
-        else:
-            generic_error_dialog (_('This device can not be edited with this tool!'), self.dialog)
+        cfg = None
+        if device.getWizard:
+            cfg = device.getWizard(device)
+            
+        if not cfg:
+            generic_error_dialog (_('This device can not be edited with this tool!'), self.toplevel)
             cfg = None
-
-        if cfg:
+        else:
             dialog = cfg.xml.get_widget ("Dialog")
-            if self.topdruid: dialog.set_transient_for(self.topdruid)
+            if self.topdruid: 
+                dialog.set_transient_for(self.topdruid)
             button = dialog.run ()
             dialog.destroy()
 
@@ -146,6 +119,7 @@ class GenericInterface(InterfaceCreator):
         button = self.editDevice(self.device)
 
         if button == gtk.RESPONSE_YES:
+            # pylint: disable-msg=E1101
             self.devicelist.append(self.device)
             self.device.commit()
             for prof in self.profilelist:
@@ -158,4 +132,5 @@ class GenericInterface(InterfaceCreator):
             self.devicelist.commit()
 
         gtk.main_quit()
+        
 __author__ = "Harald Hoyer <harald@redhat.com>"

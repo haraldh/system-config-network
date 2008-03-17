@@ -33,7 +33,7 @@ cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
 
 import locale
-from rhpl.translate import _, N_, textdomain_codeset
+from rhpl.translate import _, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
@@ -42,7 +42,6 @@ __builtin__.__dict__['_'] = _
 import signal
 import os
 import os.path
-import string
 
 try:
     import gtk
@@ -54,15 +53,17 @@ except RuntimeError:
 
 import gtk.glade
 import gobject
-from netconfpkg import *
-from netconfpkg import Control
-from netconfpkg.gui import *
-from netconfpkg.gui.GUI_functions import GLADEPATH
-from netconfpkg.gui.GUI_functions import DEFAULT_PROFILE_NAME
-from netconfpkg.exception import handleException
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
-device = None
+from netconfpkg import NC_functions
+from netconfpkg.gui import GUI_functions
+from netconfpkg.NC_functions import _, ACTIVE, INACTIVE
+from netconfpkg.Control import NetworkDevice
+from netconfpkg.gui.GUI_functions import \
+    GLADEPATH, DEFAULT_PROFILE_NAME, xml_signal_autoconnect, \
+    get_icon, get_pixbuf, getRoot, load_icon, \
+    generic_longinfo_dialog, generic_error_dialog, generic_run_dialog
+from netconfpkg import NCDeviceList, NCProfileList
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCProfileList import getProfileList
 
 STATUS_COLUMN = 0
 DEVICE_COLUMN = 1
@@ -78,7 +79,8 @@ class mainDialog:
             glade_file = NETCONFDIR + glade_file
 
         self.isRoot = False
-
+        self.no_profileentry_update = True # FIXME: ???
+        
         if os.access(getRoot() + "/", os.W_OK):
             self.isRoot = True
 
@@ -133,15 +135,15 @@ class mainDialog:
         self.dialog.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_NORMAL)
         self.dialog.show()
 
-    def on_Dialog_delete_event(self, *args):
+    def on_Dialog_delete_event(self, *args): # pylint: disable-msg=W0613
         self.dialog = None
         gtk.main_quit()
 
-    def on_closeButton_clicked(self, button):
+    def on_closeButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dialog = None
         gtk.main_quit()
 
-    def on_infoButton_clicked(self, button):
+    def on_infoButton_clicked(self, button): # pylint: disable-msg=W0613
         from version import PRG_VERSION
         from version import PRG_NAME
         if not hasattr(gtk, "AboutDialog"):
@@ -180,9 +182,10 @@ class mainDialog:
             dlg.run()
             dlg.destroy()
 
-    def on_activateButton_clicked(self, button):
+    def on_activateButton_clicked(self, button): # pylint: disable-msg=W0613
         device = self.clist_get_device()
         nickname = self.clist_get_nickname()
+
         for dev in getDeviceList():
             if dev.DeviceId == nickname:
                 break
@@ -192,23 +195,25 @@ class mainDialog:
         gobject.source_remove(self.tag)
 
         if device:
-            (ret, msg) = dev.activate()
+            dev.activate()                         # pylint: disable-msg=W0631
             self.update_dialog()
 
         self.tag = gobject.timeout_add(4000, self.update_dialog)
 
-    def on_deactivateButton_clicked(self, button):
+    def on_deactivateButton_clicked(self, button): # pylint: disable-msg=W0613
         device = self.clist_get_nickname()
         for dev in getDeviceList():
             if dev.DeviceId == device:
                 break
         else:
             return
+
+        # pylint: disable-msg=W0631
         if dev and device:
-            (ret, msg) = dev.deactivate()
+            dev.deactivate()
             self.update_dialog()
 
-    def on_configureButton_clicked(self, button):
+    def on_configureButton_clicked(self, button): # pylint: disable-msg=W0613
         device = self.clist_get_nickname()
         if not device:
             return
@@ -219,6 +224,8 @@ class mainDialog:
         else:
             return
 
+        # pylint: disable-msg=W0631
+
         (ret, msg) = dev.configure()
 
         if not self.dialog:
@@ -227,7 +234,7 @@ class mainDialog:
         if ret:
             errorString = _('Cannot configure network device %s')\
                           % (device)
-            generic_longinfo_dialog(errorString, msg, self.dialog);
+            generic_longinfo_dialog(errorString, msg, self.dialog)
 
         # update dialog #83640
         # Re-read the device list
@@ -239,7 +246,7 @@ class mainDialog:
         self.oldprofile = None # forces a re-read of oldprofile
         self.update_dialog()
 
-    def on_profileActivateButton_clicked(self, button):
+    def on_profileActivateButton_clicked(self, button): # pylint: disable-msg=W0613
         profile = self.get_active_profile().ProfileName
 
         generic_run_dialog(
@@ -260,12 +267,12 @@ class mainDialog:
         self.hydrateProfiles()
         self.update_dialog()
 
-    def on_monitorButton_clicked(self, button):
+    def on_monitorButton_clicked(self, button): # pylint: disable-msg=W0613
         # TBD
         generic_error_dialog(_("To be rewritten!"))
         return
 
-    def on_generic_clist_select_row(self, clist, row, column, event,
+    def on_generic_clist_select_row(self, clist, row, column, event, # pylint: disable-msg=W0613
                                     activate_button = None,
                                     deactivate_button = None,
                                     configure_button = None,
@@ -281,6 +288,8 @@ class mainDialog:
                 break
         else:
             dev = None
+
+        # pylint: disable-msg=W0631
 
         if dev and (dev.AllowUser or self.isRoot):
             self.xml.get_widget('activateButton').set_sensitive(True)
@@ -331,7 +340,7 @@ class mainDialog:
         nick = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
         return nick
 
-    def hydrate(self, refresh = None):
+    def hydrate(self):
         clist = self.xml.get_widget('interfaceClist')
         clist.clear()
         clist.set_row_height(20)
@@ -370,7 +379,7 @@ class mainDialog:
     def hydrateProfiles(self, refresh = None):
         profilelist = getProfileList(refresh)
 
-        self.no_profileentry_update = True # ???
+        self.no_profileentry_update = True # FIXME: ???
         omenu = self.xml.get_widget('profileOption')
 
         if len(profilelist) == 1:
@@ -385,7 +394,6 @@ class mainDialog:
         for prof in profilelist:
             name = prof.ProfileName
             # change the default profile to a more understandable name
-            import netconf
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
             if prof.Active == True:
@@ -438,11 +446,11 @@ class mainDialog:
                     continue
                 break
             else:
-                continue
-            activedevlist.append(dev)
+                continue                    
+            activedevlist.append(dev) # pylint: disable-msg=W0631
         return activedevlist
 
-    def on_profileMenuItem_activated(self, menu_item, profile):
+    def on_profileMenuItem_activated(self, menu_item, profile): # pylint: disable-msg=W0613
         if not self.no_profileentry_update:
             self.set_profile_active(profile)
             if self.oldprofile != self.get_active_profile().ProfileName:
@@ -470,6 +478,9 @@ class mainDialog:
 
         return True
 
+def Usage():
+    # FIXME: change string
+    print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose -d --debug")
 
 if __name__ == '__main__':
     # make ctrl-C work
@@ -478,10 +489,11 @@ if __name__ == '__main__':
         NCProfileList.updateNetworkScripts()
         NCDeviceList.updateNetworkScripts()
     import getopt
-    class BadUsage: pass
+    class BadUsage(Exception):
+        pass
 
     try:
-        opts, args = getopt.getopt(cmdline, "vh?d",
+        __opts, __args = getopt.getopt(cmdline, "vh?d",
                                    [
                                     "verbose",
                                     "debug",
@@ -489,16 +501,16 @@ if __name__ == '__main__':
                                     "hotshot",
                                     "root="
                                     ])
-        for opt, val in opts:
-            if opt == '-v' or opt == '--verbose':
+        for __opt, __val in __opts:
+            if __opt == '-v' or __opt == '--verbose':
                 NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
                 continue
 
-            if opt == '-d' or opt == '--debug':
+            if __opt == '-d' or __opt == '--debug':
                 NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
                 continue
 
-            if opt == '-h' or opt == "?" or opt == '--help':
+            if __opt == '-h' or __opt == "?" or __opt == '--help':
                 Usage()
                 sys.exit(0)
 
@@ -510,4 +522,5 @@ if __name__ == '__main__':
     gtk.main()
 
     sys.exit(0)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>, Than Ngo <than@redhat.com>"

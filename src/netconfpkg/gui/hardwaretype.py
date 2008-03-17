@@ -19,14 +19,11 @@
 
 import gtk
 import gtk.glade
-import signal
 import os
 
-import string
-import re
-
-from netconfpkg import *
-from netconfpkg.gui.GUI_functions import *
+from netconfpkg import NCHardwareList
+from netconfpkg.gui.GUI_functions import GLADEPATH
+from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, ETHERNET, TOKENRING, ISDN
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -50,7 +47,7 @@ class hardwareTypeDialog:
 
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
-
+        self.Type = None
         machine = os.uname()[4]
         hardwarelist = NCHardwareList.getHardwareList()
         if machine == 's390' or machine == 's390x':
@@ -72,21 +69,12 @@ class hardwareTypeDialog:
         pass
 
     def dehydrate(self):
-        self.type = self.xml.get_widget('hardwareTypeEntry').get_text()
+        self.Type = self.xml.get_widget('hardwareTypeEntry').get_text()
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
         pass
 
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = basicDialog()
-    gtk.main()
-
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.17 $"

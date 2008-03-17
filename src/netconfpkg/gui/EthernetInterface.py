@@ -17,28 +17,43 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
+from netconfpkg import NCProfileList
+from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NC_functions import _, ETHERNET, \
+    NETCONFDIR, PROGNAME
 from netconfpkg.gui import sharedtcpip
+from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
+from netconfpkg.gui.GUI_functions import GLADEPATH
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.plugins import NCDevEthernet
+from rhpl import ethtool
 import gtk
 import gtk.glade
-import string
 import os
-from EthernetHardwareDruid import ethernetHardware
-from InterfaceCreator import InterfaceCreator
-from rhpl import ethtool
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.NCDeviceFactory import getDeviceFactory
+
 
 class EthernetInterface(InterfaceCreator):
-    def __init__(self, toplevel=None, connection_type=ETHERNET, do_save = 1,
-                 druid = None):
+    def __init__(self, toplevel = None, connection_type = ETHERNET, do_save = 1, 
+                 druid = None):        
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
         self.topdruid = druid
         self.connection_type = connection_type
         self.xml = None
-
+        self.sharedtcpip_xml = None
+        self.devicelist = None
+        self.device = None
+        self.profilelist = None
+        self.hw_sel = 0
+        self.hwPage = False
+        self.druids = None
+        self.druid = None
+        self.hwDruid = None
+        self.devlist = None
+        
     def init_gui(self):
         if self.xml:
             return
@@ -48,7 +63,7 @@ class EthernetInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
-        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
+        self.sharedtcpip_xml = gtk.glade.XML (glade_file, None, 
                                                   domain=PROGNAME)
 
         glade_file = 'EthernetInterfaceDruid.glade'
@@ -59,18 +74,18 @@ class EthernetInterface(InterfaceCreator):
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             { "on_hostname_config_page_back" : \
-              self.on_hostname_config_page_back,
+              self.on_hostname_config_page_back, 
               "on_hostname_config_page_next" : \
-              self.on_hostname_config_page_next,
+              self.on_hostname_config_page_next, 
               "on_hostname_config_page_prepare" : \
-              self.on_hostname_config_page_prepare,
-              "on_hw_config_page_back" : self.on_hw_config_page_back,
-              "on_hw_config_page_next" : self.on_hw_config_page_next,
-              "on_hw_config_page_prepare" : self.on_hw_config_page_prepare,
-              "on_finish_page_finish" : self.on_finish_page_finish,
-              "on_finish_page_prepare" : self.on_finish_page_prepare,
+              self.on_hostname_config_page_prepare, 
+              "on_hw_config_page_back" : self.on_hw_config_page_back, 
+              "on_hw_config_page_next" : self.on_hw_config_page_next, 
+              "on_hw_config_page_prepare" : self.on_hw_config_page_prepare, 
+              "on_finish_page_finish" : self.on_finish_page_finish, 
+              "on_finish_page_prepare" : self.on_finish_page_prepare, 
               "on_finish_page_back" : self.on_finish_page_back
               }
             )
@@ -139,7 +154,6 @@ class EthernetInterface(InterfaceCreator):
             self.device.Device = self.hwDruid.hw.Name
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-        pass
 
     def on_hostname_config_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
@@ -147,7 +161,6 @@ class EthernetInterface(InterfaceCreator):
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
-        pass
 
     def on_hw_config_page_back(self, druid_page, druid):
         pass
@@ -190,9 +203,8 @@ class EthernetInterface(InterfaceCreator):
 
         clist.append([_("Other Ethernet Card")])
         clist.select_row (self.hw_sel, 0)
-        pass
 
-    def on_finish_page_back(self,druid_page, druid):
+    def on_finish_page_back(self, druid_page, druid):
         pass
 
     def on_finish_page_prepare(self, druid_page, druid):
@@ -231,7 +243,9 @@ class EthernetInterface(InterfaceCreator):
 
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = getHardwareList()
-        hardwarelist.commit()
+        # pylint: disable-msg=E1101
+        # pylint: disable-msg=E1103
+        hardwarelist.commit() 
         #print self.devicelist
         self.devicelist.append(self.device)
         self.device.commit()

@@ -63,7 +63,7 @@ distclean-local:
 VERSION=@VERSION@
 SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
-.PHONY: changelog check-clean-tree archive tag force-tag srpm newversion potfile push pull diff rpmlog
+.PHONY: changelog check-clean-tree archive tag force-tag srpm newversion potfile push pull diff rpmlog pylint
 
 ChangeLog changelog:
 	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
@@ -105,7 +105,7 @@ potfile:
 	make 
 	make -C po update-po
 
-push: distcheck pull
+push: pylint distcheck pull
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git $(SCMTAG)
 	git fetch
@@ -120,3 +120,7 @@ diff:
 rpmlog:
 	@git-log --pretty="format:- %s (%ae)" $(SCMTAG).. |sed -e 's/@.*)/)/'
 	@echo
+
+pylint:
+	make -C src pylint
+

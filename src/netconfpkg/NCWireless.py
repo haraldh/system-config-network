@@ -17,29 +17,24 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import NC_functions
-
-import string
-
-from netconfpkg.conf import Conf
-
-from netconfpkg import Wireless_base
-from NC_functions import *
+from netconfpkg import NC_functions
+from netconfpkg import Wireless_base # pylint: disable-msg=E0611
+import re
 
 class Wireless(Wireless_base):
-    keydict = { 'Mode' : 'MODE',
-                'EssId' : 'ESSID',
-                'Channel' : 'CHANNEL',
-                'Rate' : 'RATE',
-                'Key' : 'KEY',
+    keydict = { 'Mode' : 'MODE', 
+                'EssId' : 'ESSID', 
+                'Channel' : 'CHANNEL', 
+                'Rate' : 'RATE', 
+                'Key' : 'KEY', 
                 }
 
-    def __init__(self, list = None, parent = None):
-        Wireless_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Wireless_base.__init__(self, clist, parent)
         self.Key = ''
 
     def load(self, parentConf):
+        # pylint: disable-msg=E1101
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -60,6 +55,7 @@ class Wireless(Wireless_base):
 
 
     def save(self, parentConf):
+        # pylint: disable-msg=E1101
         conf = parentConf
 
         keyconf = NC_functions.ConfKeys(self.getParent().DeviceId)

@@ -20,18 +20,13 @@
 
 import gtk
 import gtk.glade
-import signal
-import os
-
-import string
-import string
-import sharedtcpip
 import gobject
 
-from netconfpkg import *
-from netconfpkg.gui import GUI_functions
-from DeviceConfigDialog import DeviceConfigDialog
-from netconfpkg.gui.GUI_functions import *
+from netconfpkg.plugins import NCDevWireless
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.NC_functions import _
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui import sharedtcpip
 
 modeList = [
     [ _("Auto") , "Auto" ],
@@ -54,6 +49,7 @@ class wirelessConfigDialog(DeviceConfigDialog):
             self.do_init()
 
     def do_init(self):
+        # pylint: disable-msg=W0201        
         xml_signal_autoconnect(self.xml,
             {
             "on_essidAutoButton_toggled" : self.on_essidAutoButton_toggled,
@@ -171,7 +167,7 @@ class wirelessConfigDialog(DeviceConfigDialog):
     def on_essidAutoButton_toggled(self, check):
         self.xml.get_widget("essidEntry").set_sensitive(not check.get_active())
 
-    def on_modeChanged(self, entry):
+    def on_modeChanged(self, entry): # pylint: disable-msg=W0613
         mode = self.modestore[self.xml.get_widget("modeCombo").get_active()][1]
         if mode == "Managed":
             self.xml.get_widget("channelSpinButton").set_sensitive(False)

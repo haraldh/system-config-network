@@ -1,5 +1,5 @@
-"""Package for network configuration.
-Provides reading and writing of the system's configuration files"""
+#
+"Package for network configuration."
 
 # -*- python -*-
 ## Copyright (C) 2001-2005 Red Hat, Inc.
@@ -32,18 +32,20 @@ __netconfpkg = sys.modules[__name__]
 
 __netconfpkg.Use_Alchemist = None
 
-from genClass import GenClass_read_classfile
+from netconfpkg.genClass import readClassfile
 
 for _idl_file in [ "DeviceList.idl",
                    "HardwareList.idl",
                    "IPsecList.idl",
                    "ProfileList.idl" ]:
-    GenClass_read_classfile(__path__[0] + "/" + _idl_file, mod = __netconfpkg)
+    readClassfile(__path__[0] + "/" + _idl_file, mod = __netconfpkg)
 
+del readClassfile
 del _idl_file
 
 import os
 
+# pylint: disable-msg=W0141
 _files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and \
                                       v != "__init__.py" and \
                                       v != 'genClass.py' and \
@@ -55,19 +57,11 @@ locale.setlocale(locale.LC_ALL, "C")
 _files.sort()
 locale.setlocale(locale.LC_ALL, "")
 
+from netconfpkg.genClassMap import * # pylint: disable-msg=W0401
 
-for _i in _files:
-    _cmd = "from %s import *" % (_i)
-    exec _cmd
-
-del _i
 del _files
-del _cmd
 del __netconfpkg
 del locale
 del os
-del GenClass_read_classfile
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:51:25 $"
-__version__ = "$Revision: 1.23 $"

@@ -17,21 +17,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import gtk
+import gtk.glade # pylint: disable-msg=W0611
 
-import gtk.glade
-import signal
-import os
-
-import string
-import commands
-import sharedtcpip
-import traceback
-import sys
-from netconfpkg import *
+#from netconfpkg import NCHardwareList
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui import sharedtcpip
+from netconfpkg.plugins import NCDevEthernet
 from rhpl import ethtool
 
 # FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
@@ -90,14 +83,14 @@ class ethernetConfigDialog(DeviceConfigDialog):
         self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
         self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
 
-    def on_hwProbeButton_clicked(self, button):
+    def on_hwProbeButton_clicked(self, button): # pylint: disable-msg=W0613
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = string.split(hw)
+        fields = hw.split()
         device = fields[0]
         try: hwaddr = ethtool.get_hwaddr(device)
         except IOError, err:
-            self.error_str = str (err)
-            GUI_functions.gui_error_dialog(self.error_str, self.dialog)
+            error_str = str (err)
+            GUI_functions.gui_error_dialog(error_str, self.dialog)
         else:
             self.device.HardwareAddress = hwaddr
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)

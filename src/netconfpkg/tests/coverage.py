@@ -42,6 +42,7 @@ coverage.py -a [-d dir] FILE1 FILE2 ...
 Coverage data is saved in the file .coverage by default.  Set the
 COVERAGE_FILE environment variable to save it somewhere else."""
 
+# pylint: disable-msg=W0402,W0404,W0621,W0622,W0706,W0702,W0704
 import os
 import re
 import string

@@ -17,16 +17,12 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, ETHERNET
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
 import gtk
 import gtk.glade
-import string
 import os
-from netconfpkg.conf import Conf
-from ethernethardware import ethernetHardwareDialog
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg import NCHardwareList
 
 class ethernetHardware:
     def __init__ (self, toplevel=None):
@@ -38,13 +34,13 @@ class ethernetHardware:
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, 'druid',
+        self.xml = gtk.glade.XML(glade_file, 'druid', 
                                      domain=PROGNAME)
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_adapterEntry_changed" : self.on_adapterEntry_changed,
-            "on_hardware_page_prepare" : self.on_hardware_page_prepare,
-            "on_hardware_page_next" : self.on_hardware_page_next,
+            "on_adapterEntry_changed" : self.on_adapterEntry_changed, 
+            "on_hardware_page_prepare" : self.on_hardware_page_prepare, 
+            "on_hardware_page_next" : self.on_hardware_page_next, 
             "on_hardware_page_back" : self.on_hardware_page_back
             })
 
@@ -78,11 +74,11 @@ class ethernetHardware:
     def on_hardware_page_prepare(self, druid_page, druid):
         pass
 
-    def on_hardware_page_next(self, druid_page, druid):
+    def on_hardware_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         self.dehydrate()
 
-    def on_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
+    def on_hardware_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+        self.hardwarelist.rollback() # pylint: disable-msg=E1101
 
     def on_adapterEntry_changed(self, entry):
         pass
@@ -94,22 +90,21 @@ class ethernetHardware:
             self.xml.get_widget('adapterEntry').set_sensitive(False)
             self.xml.get_widget('adapterComboBox').set_sensitive(False)
         else:
-            hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
 
     def setup(self):
-        list = []
+        mlist = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
                 if modInfo[i].has_key('description') and \
                        len(modInfo[i]['description']):
-                    list.append(modInfo[i]['description'])
+                    mlist.append(modInfo[i]['description'])
                 else:
-                    list.append(i)
-        list.sort()
-        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+                    mlist.append(i)
+        mlist.sort()
+        self.xml.get_widget("adapterComboBox").set_popdown_strings(mlist)
 
 #          hwlist = NCHardwareList.getHardwareList()
 #          (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
@@ -119,8 +114,8 @@ class ethernetHardware:
 
     def dehydrate(self):
         if not self.has_ethernet:
-            id = self.hardwarelist.addHardware(ETHERNET)
-            self.hw = self.hardwarelist[id]
+            mid = self.hardwarelist.addHardware(ETHERNET)
+            self.hw = self.hardwarelist[mid]
         self.hw.Type = 'Ethernet'
         self.hw.createCard()
         self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()

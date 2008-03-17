@@ -17,19 +17,18 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import signal
-import os
+from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.NC_functions import NETCONFDIR
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
+from netconfpkg import NCHardwareList, NCDeviceList
+
+# do not remove this (needed to access methods of self.druid
+import gnome.ui # pylint: disable-msg=W0611
+
 import gtk
 import gtk.glade
-# do not remove this (needed to access methods of self.druid
-import gnome.ui
-
-from netconfpkg import *
-from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg.gui.GUI_functions import load_icon
-from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+import os
 
 class NewInterfaceDialog:
     def __init__(self, parent_dialog = None):
@@ -77,8 +76,8 @@ class NewInterfaceDialog:
         df = getDeviceFactory()
         dfk = df.keys()
         dfk.sort()
-        for type in dfk:
-            i = df.getDeviceClass(type)().getWizard()
+        for mtype in dfk:
+            i = df.getDeviceClass(mtype)().getWizard()
             if i:
                 interfaces.append(i)
 
@@ -106,11 +105,11 @@ class NewInterfaceDialog:
         self.toplevel.show_all ()
         self.on_start_page_prepare (None, None)
 
-    def on_start_page_prepare (self, druid_page, druid):
+    def on_start_page_prepare (self, druid_page, druid): # pylint: disable-msg=W0613
         self.interface_clist.grab_focus ()
         self.druid.set_buttons_sensitive (False, True, True, True)
 
-    def on_start_page_next (self, druid, druid_page):
+    def on_start_page_next (self, druid, druid_page): # pylint: disable-msg=W0613
         interface = self.interface_clist.get_row_data (\
             self.interface_clist.selection[0])
 
@@ -127,16 +126,16 @@ class NewInterfaceDialog:
         else:
             return True
 
-    def on_cancel_interface(self, *args):
+    def on_cancel_interface(self, *args): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
-        hardwarelist.rollback()
+        hardwarelist.rollback() # pylint: disable-msg=E1101
         devicelist = NCDeviceList.getDeviceList()
-        devicelist.rollback()
+        devicelist.rollback()   # pylint: disable-msg=E1101
         self.toplevel.destroy()
         self.canceled = True
         gtk.main_quit()
 
-    def on_interface_clist_select_row (self, clist, row, column, event):
+    def on_interface_clist_select_row (self, clist, row, column, event): # pylint: disable-msg=W0613
         interface = self.interface_clist.get_row_data (row)
         if interface == None:
             return
@@ -144,11 +143,5 @@ class NewInterfaceDialog:
 
         buf = self.description_label.get_buffer()
         buf.set_text(interface.get_project_description ())
-
-
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    interface = NewInterface ()
-    gtk.main ()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

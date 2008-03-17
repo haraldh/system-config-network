@@ -17,25 +17,21 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDeviceList import *
-from netconfpkg.NCDevice import *
-from netconfpkg.NCProfileList import *
-from netconfpkg.NCHardwareList import *
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NCProfileList import getProfileList
 
 class InterfaceCreator:
-    def __init__ (self, do_save = 1):
+    def __init__(self, do_save = 1):
         self.do_save = do_save
 
-    def get_project_name (self):
+    def get_project_name(self):
         raise NotImplementedError
 
-    def get_project_description (self):
+    def get_project_description(self):
         raise NotImplementedError
 
-    def get_druids (self):
-        raise NotImplementedError
-
-    def finish (self):
+    def get_druids(self):
         raise NotImplementedError
 
     def save(self):
@@ -75,4 +71,5 @@ class InterfaceCreator:
             return
         profilelist = getProfileList()
         profilelist.save()
+        
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -20,17 +20,15 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
+from netconfpkg import NCHardwareList, NCDeviceList, NCisdnhardware
+from netconfpkg.NC_functions import request_rpms, NETCONFDIR, _, ISDN
 from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.DialupDruid import DialupDruid
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg import *
+from netconfpkg.plugins import NCDevIsdn
 import gtk
 import gtk.glade
-import string
 import os
-import providerdb
-import gtk.glade
-import DialupDruid
 
 class IsdnInterface:
     def __init__ (self, toplevel=None, do_save = 1, druid = None):
@@ -56,13 +54,13 @@ class IsdnInterface:
 
         self.xml = gtk.glade.XML(glade_file, 'druid', GUI_functions.PROGNAME)
 
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_isdnCardEntry_changed" : self.on_isdnCardEntry_changed,
-            "on_isdn_hardware_page_prepare" : self.on_isdn_hardware_page_prepare,
-            "on_isdn_hardware_page_next" : self.on_isdn_hardware_page_next,
-            "on_isdn_hardware_page_back" : self.on_isdn_hardware_page_back,
-            'on_druid_cancel' : self.on_cancel_interface,
+            "on_isdnCardEntry_changed" : self.on_isdnCardEntry_changed, 
+            "on_isdn_hardware_page_prepare" : self.on_isdn_hardware_page_prepare, 
+            "on_isdn_hardware_page_next" : self.on_isdn_hardware_page_next, 
+            "on_isdn_hardware_page_back" : self.on_isdn_hardware_page_back, 
+            'on_druid_cancel' : self.on_cancel_interface, 
             })
 
 
@@ -76,6 +74,7 @@ class IsdnInterface:
         return True
 
     def on_cancel_interface(self, *args):
+        # pylint: disable-msg=E1101
         self.hardwarelist.rollback()
         devicelist = NCDeviceList.getDeviceList()
         devicelist.rollback()
@@ -106,7 +105,7 @@ class IsdnInterface:
             return []
 
         Type = ISDN
-        dialup = DialupDruid.DialupDruid(self.toplevel, Type,
+        dialup = DialupDruid(toplevel=self.toplevel, connection_type=Type, 
                                          do_save = self.do_save)
         for hw in self.hardwarelist:
             if hw.Type == Type: return dialup.get_druids()
@@ -121,11 +120,11 @@ class IsdnInterface:
         self.dehydrate()
 
     def on_isdn_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
+        self.hardwarelist.rollback() # pylint: disable-msg=E1101
 
     def on_isdnCardEntry_changed(self, entry):
         cardname = entry.get_text()
-        card = NCisdnhardware.ConfISDN()
+        card = NCisdnhardware.ConfISDN() # pylint: disable-msg=E1101
         card.get_resource(cardname)
 
         if card.IRQ:
@@ -159,18 +158,18 @@ class IsdnInterface:
             self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def setup(self):
-        cardlist = NCisdnhardware.card.keys()
+        cardlist = NCisdnhardware.getCards().keys() # pylint: disable-msg=
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
     def hydrate(self):
         has_card = False
-        id = self.hardwarelist.addHardware(ISDN)
-        self.hw = self.hardwarelist[id]
+        mid = self.hardwarelist.addHardware(ISDN)
+        self.hw = self.hardwarelist[mid]
         self.hw.Type = 'ISDN'
         self.hw.createCard()
         self.hw.Name = "ISDN Card 0"
-        conf = NCisdnhardware.ConfISDN()
+        conf = NCisdnhardware.ConfISDN() # pylint: disable-msg=E1101
         new_card = conf.detect()
         cardname = ''
         if new_card:
@@ -194,7 +193,7 @@ class IsdnInterface:
 
             if self.hw.Card.IRQ:
                 self.xml.get_widget("irqSpinButton").set_sensitive(True)
-                self.xml.get_widget("irqSpinButton").set_value(string.atoi(self.hw.Card.IRQ))
+                self.xml.get_widget("irqSpinButton").set_value(self.hw.Card.IRQ.atoi())
             else:
                 self.xml.get_widget("irqSpinButton").set_sensitive(False)
 

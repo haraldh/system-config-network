@@ -17,15 +17,11 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import signal
 import os
-import string
 import re
 from netconfpkg.gui import GUI_functions
 
-
-## FIXME
+## FIXME: ...
 provider_db = "providerdb"
 if not os.path.exists(provider_db):
     provider_db = "netconfpkg/" + "providerdb"
@@ -38,9 +34,9 @@ class provider:
     def __init__(self):
         self.provider_data = []
         self.clear()
-        pass
 
     def clear(self):
+        # pylint: disable-msg=W0201
         self.country = ""
         self.city = ""
         self.flag = ""
@@ -175,22 +171,22 @@ class provider:
         return self.provider_data
 
 def get_value(s):
-    s = string.split(s, " ", 1)
-    return string.strip(s[1])
+    s = s.split(" ", 1)
+    return s[1].strip()
 
 def get_provider_list(Type="isdn"):
     db_list = []
     if not os.path.exists(provider_db):
         return db_list
 
-    db = open(provider_db, "r")
-    line = db.readline()
-    Type = string.lower(Type)
+    mdb = open(provider_db, "r")
+    line = mdb.readline()
+    Type = Type.lower()
 
     while line:
-        line = string.strip(line)
+        line = line.strip()
         if len(line) == 0 or line[0] == "#":
-            line = db.readline()
+            line = mdb.readline()
             continue
 
         if line[:7] != "[Begin]":
@@ -200,7 +196,7 @@ def get_provider_list(Type="isdn"):
         isp = provider()
 
         while line[:5] != "[End]":
-            line = string.strip(line)
+            line = line.strip()
             if line[:9] == "[Country]":
                 isp.set_country(get_value(line))
             elif line[:6] == "[Flag]":
@@ -233,14 +229,14 @@ def get_provider_list(Type="isdn"):
                 isp.set_auth_type(get_value(line))
             elif line[:9] == "[Ipsetup]":
                 isp.set_ip_mode(get_value(line))
-            line = db.readline()
+            line = mdb.readline()
 
         if re.search(Type, isp.get_connection_type()):
             isp.set_connection_type(Type)
             db_list.append(isp.get_provider_data())
-        line = db.readline()
+        line = mdb.readline()
 
-    db.close()
+    mdb.close()
 
     return db_list
 
@@ -249,6 +245,5 @@ if __name__ == "__main__":
     for db in a:
         print db
 
-__author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.12 $"
+__author__ = "Than Ngo <than@redhat.com>"
+

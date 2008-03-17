@@ -17,20 +17,23 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
-from netconfpkg.gui import sharedtcpip
 import gtk
 import gtk.glade
-import string
 import os
-from QethHardwareDruid import QethHardware
-from InterfaceCreator import InterfaceCreator
-from rhpl import ethtool
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.NCDeviceFactory import getDeviceFactory
 
-class QethInterface(InterfaceCreator):
+from rhpl import ethtool
+from netconfpkg.NC_functions import _, QETH, PROGNAME, NETCONFDIR
+from netconfpkg.plugins import NCDevQeth
+from netconfpkg.gui import sharedtcpip
+from netconfpkg.gui.QethHardwareDruid import QethHardware
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
+from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg import NCProfileList
+
+class QethInterfaceGui(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=QETH, do_save = 1,
                  druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
@@ -38,8 +41,10 @@ class QethInterface(InterfaceCreator):
         self.topdruid = druid
         self.connection_type = connection_type
         self.xml = None
+        self.devlist = []
 
     def init_gui(self):
+        # pylint: disable-msg=W0201
         if self.xml:
             return
         
@@ -48,6 +53,7 @@ class QethInterface(InterfaceCreator):
             glade_file = GLADEPATH + glade_file
         if not os.path.exists(glade_file):
             glade_file = NETCONFDIR + glade_file
+            
         self.sharedtcpip_xml = gtk.glade.XML (glade_file, None,
                                                   domain=PROGNAME)
 
@@ -125,7 +131,7 @@ class QethInterface(InterfaceCreator):
         self.init_gui()
         return self.druids
     
-    def on_hostname_config_page_back(self, druid_page, druid):
+    def on_hostname_config_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
         childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
@@ -133,26 +139,24 @@ class QethInterface(InterfaceCreator):
             self.topdruid.set_page(childs[1])            
         return True
     
-    def on_hostname_config_page_next(self, druid_page, druid):
+    def on_hostname_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         if self.hwPage:
             self.device.Device = self.hwDruid.hw.Name
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
-        pass
     
-    def on_hostname_config_page_prepare(self, druid_page, druid):
+    def on_hostname_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
-        pass
     
     def on_hw_config_page_back(self, druid_page, druid):
         pass
     
-    def on_hw_config_page_next(self, druid_page, druid):
+    def on_hw_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         clist = self.xml.get_widget("hardwareList")
         childs = self.topdruid.get_children()
 
@@ -175,7 +179,7 @@ class QethInterface(InterfaceCreator):
 
         return True
 
-    def on_hw_config_page_prepare(self, druid_page, druid):
+    def on_hw_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = getHardwareList()
         hardwarelist.updateFromSystem()
 
@@ -190,19 +194,18 @@ class QethInterface(InterfaceCreator):
                 
         clist.append([_("Other QETH Device")])
         clist.select_row (self.hw_sel, 0)
-        pass
     
     def on_finish_page_back(self,druid_page, druid):
         pass
         
-    def on_finish_page_prepare(self, druid_page, druid):
+    def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
         try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
-        except IOError, err:
+        except IOError:
             pass
         else:
             self.device.HardwareAddress = hwaddr
@@ -229,12 +232,14 @@ class QethInterface(InterfaceCreator):
 
         druid_page.set_text(s)
         
-    def on_finish_page_finish(self, druid_page, druid):
+    def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
+        # pylint: disable-msg=E1101
+        # pylint: disable-msg=E1103
         hardwarelist = getHardwareList()
-        hardwarelist.commit()
+        hardwarelist.commit() 
         #print self.devicelist
         self.devicelist.append(self.device)
-        self.device.commit()
+        self.device.commit() 
         
         for prof in self.profilelist:
             if prof.Active == False:
@@ -248,5 +253,5 @@ class QethInterface(InterfaceCreator):
         self.toplevel.destroy()
         gtk.main_quit()
 
-NCDevQeth.setDevQethWizard(QethInterface)
+NCDevQeth.setDevQethWizard(QethInterfaceGui)
 __author__ = "Harald Hoyer <harald@redhat.com>"

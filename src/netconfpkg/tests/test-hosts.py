@@ -115,7 +115,7 @@ HostsList.3.IP=10.1.1.2
         """Test of adding a host entry"""
         from netconfpkg import NC_functions
         from netconfpkg.NCHostsList import HostsList
-        from netconfpkg import Host
+        from netconfpkg.NCHost import Host
 
         hl = HostsList()
         hl.load(filename=srcdir+"/hosts")
@@ -147,7 +147,7 @@ HostsList.4.IP=10.1.1.1
         """Test of modifying a host entry"""
         from netconfpkg import NC_functions
         from netconfpkg.NCHostsList import HostsList
-        from netconfpkg import Host
+        from netconfpkg.NCHost import Host
 
         hl = HostsList()
         hl.load(filename=srcdir+"/hosts")

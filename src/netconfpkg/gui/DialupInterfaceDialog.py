@@ -17,50 +17,42 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import gtk
-
-import gtk.glade
-import signal
-import os
-
-import string
-import re
-import sharedtcpip
-
-from DeviceConfigDialog import DeviceConfigDialog
-from netconfpkg.plugins import NCDevIsdn, NCDevModem
-from netconfpkg.NCDeviceList import *
-from netconfpkg.NCCallback import *
-from netconfpkg.NCHardwareList import *
-from netconfpkg.NCDialup import *
-from netconfpkg.gui.GUI_functions import *
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCDialup import DM_AUTO, DM_MANUAL, DialModes
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NC_functions import _, getNewDialupDevice
+from netconfpkg.gui import sharedtcpip
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.provider import providerDialog, ISDNproviderDialog, ModemproviderDialog
 from netconfpkg.gui.tonline import TonlineDialog
-from provider import *
+from netconfpkg.plugins import NCDevIsdn, NCDevModem
+import gtk
+import re
 
 
 class DialupInterfaceDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "DialupInterfaceDialog.glade"
-        DeviceConfigDialog.__init__(self, glade_file,
+        DeviceConfigDialog.__init__(self, glade_file, 
                                     device)
         self.edit = False
 
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_chooseButton_clicked" : self.on_chooseButton_clicked,
-            "on_helpButton_clicked" : self.on_helpButton_clicked,
-            "on_callbackCB_toggled" : self.on_callbackCB_toggled,
-            "on_pppOptionEntry_changed" : self.on_pppOptionEntry_changed,
+            "on_chooseButton_clicked" : self.on_chooseButton_clicked, 
+            "on_helpButton_clicked" : self.on_helpButton_clicked, 
+            "on_callbackCB_toggled" : self.on_callbackCB_toggled, 
+            "on_pppOptionEntry_changed" : self.on_pppOptionEntry_changed, 
             "on_pppOptionAddButton_clicked" : \
-            self.on_pppOptionAddButton_clicked,
-            "on_pppOptionList_select_row" : self.on_pppOptionList_select_row,
+            self.on_pppOptionAddButton_clicked, 
+            "on_pppOptionList_select_row" : self.on_pppOptionList_select_row, 
             "on_ipppOptionList_unselect_row" : \
-            self.on_ipppOptionList_unselect_row,
+            self.on_ipppOptionList_unselect_row, 
             "on_pppOptionDeleteButton_clicked" : \
-            self.on_pppOptionDeleteButton_clicked,
-            "on_tonlineButton_clicked" : self.on_tonlineButton_clicked,
-            "on_showPassword_clicked" : self.on_showPassword_clicked,
+            self.on_pppOptionDeleteButton_clicked, 
+            "on_tonlineButton_clicked" : self.on_tonlineButton_clicked, 
+            "on_showPassword_clicked" : self.on_showPassword_clicked, 
             })
 
         self.noteBook = self.xml.get_widget("dialupNotebook")
@@ -83,7 +75,6 @@ class DialupInterfaceDialog(DeviceConfigDialog):
 
     def hydrate(self):
         DeviceConfigDialog.hydrate(self)
-        hardwarelist = getHardwareList()
 
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_hydrate (self.sharedtcpip_xml, self.device)
@@ -95,7 +86,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         if dialup.Login != None:
             self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
         if dialup.Password != None:
-            self.xml.get_widget("passwordEntry").set_text(re.sub(r"\\([^\\]|\\)",r"\1", dialup.Password))
+            self.xml.get_widget("passwordEntry").set_text(re.sub(r"\\([^\\]|\\)", r"\1", dialup.Password))
 
         if dialup.Areacode != None:
             self.xml.get_widget("areaCodeEntry").set_text(dialup.Areacode)
@@ -210,35 +201,35 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         pass
 
     def on_pppOptionEntry_changed (self, entry):
-        option = string.strip(entry.get_text())
+        option = entry.get_text().strip()
         self.xml.get_widget("pppOptionAddButton").set_sensitive(\
             len(option) > 0)
 
-    def on_pppOptionAddButton_clicked (self, button):
+    def on_pppOptionAddButton_clicked (self, button): # pylint: disable-msg=W0613
         entry = self.xml.get_widget("pppOptionEntry")
         self.xml.get_widget("pppOptionList").set_sensitive(True)
         self.xml.get_widget("pppOptionList").append([entry.get_text()])
         entry.set_text("")
         entry.grab_focus()
 
-    def on_pppOptionList_select_row(self, clist, r, c, event):
+    def on_pppOptionList_select_row(self, clist, r, c, event): # pylint: disable-msg=W0613
         self.xml.get_widget ("pppOptionDeleteButton").set_sensitive (True)
 
-    def on_ipppOptionList_unselect_row (self, clist, r, c, event):
+    def on_ipppOptionList_unselect_row (self, clist, r, c, event): # pylint: disable-msg=W0613
         self.xml.get_widget("pppOptionDeleteButton").set_sensitive(False)
 
-    def on_pppOptionDeleteButton_clicked(self, button):
+    def on_pppOptionDeleteButton_clicked(self, button): # pylint: disable-msg=W0613
         clist = self.xml.get_widget("pppOptionList")
         if clist.selection:
             clist.remove(clist.selection[0])
 
-    def on_chooseButton_clicked(self, button):
-        dialog = providerDialog(self.device)
+    def on_chooseButton_clicked(self, button): # pylint: disable-msg=W0613
+        providerDialog(self.device)
 
     def set_title(self, title = _("Dialup Configuration")):
         self.dialog.set_title(title)
 
-    def on_tonlineButton_clicked(self, *args):
+    def on_tonlineButton_clicked(self, *args): # pylint: disable-msg=W0613
         self.dehydrate()
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)
@@ -259,8 +250,9 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         if not self.xml.get_widget("providerName").get_text():
             self.xml.get_widget("providerName").set_text("T-Online")
 
-    def on_showPassword_clicked(self, *args):
-        self.xml.get_widget("passwordEntry").set_visibility(self.xml.get_widget("showPassword").get_active())
+    def on_showPassword_clicked(self, *args): # pylint: disable-msg=W0613
+        self.xml.get_widget("passwordEntry").set_visibility(\
+                            self.xml.get_widget("showPassword").get_active())
 
 
 class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
@@ -272,7 +264,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
 
         self.dialog.set_title(_("ISDN Dialup Configuration"))
 
-    def on_chooseButton_clicked(self, button):
+    def on_chooseButton_clicked(self, button): # pylint: disable-msg=W0613
         dialog = ISDNproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
         dl.set_transient_for(self.dialog)
@@ -289,7 +281,7 @@ class ISDNDialupInterfaceDialog(DialupInterfaceDialog):
         omenu = self.xml.get_widget("CallbackMode")
         omenu.remove_menu()
         menu = gtk.Menu()
-        history = 0
+
         for txt in [_('in'), _('out')]:
             item = gtk.MenuItem (txt)
             item.show()
@@ -441,7 +433,7 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
         page = self.noteBook.page_num(self.xml.get_widget ("callbackTab"))
         self.noteBook.get_nth_page(page).hide()
 
-    def on_chooseButton_clicked(self, button):
+    def on_chooseButton_clicked(self, button): # pylint: disable-msg=W0613
         dialog = ModemproviderDialog(self.device)
         dl = dialog.xml.get_widget("Dialog")
         dl.set_transient_for(self.dialog)
@@ -477,7 +469,7 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
         self.xml.get_widget("dialModeEntry").set_text(dialmode)
 
         if dialup.InitString:
-            widget = self.xml.get_widget("modemInitEntry").set_text(\
+            self.xml.get_widget("modemInitEntry").set_text(\
                 dialup.InitString)
 
         if dialup.Persist:
@@ -514,11 +506,4 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
 NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
 NCDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
 
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = DialupInterfaceDialog()
-    window.run()
-    gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"

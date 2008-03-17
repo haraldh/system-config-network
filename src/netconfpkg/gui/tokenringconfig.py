@@ -16,19 +16,12 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-import gtk
-import gtk.glade
-import signal
-import os
 
-import string
-import commands
-
-import sharedtcpip
-from netconfpkg import *
-from netconfpkg.gui import GUI_functions
+from netconfpkg.plugins import NCDevTokenRing
+from netconfpkg.gui import GUI_functions, sharedtcpip
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg import NCHardwareList
 
 class tokenringConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
@@ -84,7 +77,7 @@ class tokenringConfigDialog(DeviceConfigDialog):
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
 
         hw = self.xml.get_widget("tokenringDeviceEntry").get_text()
-        fields = string.split(hw)
+        fields = hw.split()
         hw = fields[0]
         self.device.Device = hw
         if self.xml.get_widget("aliasSupportCB").get_active():

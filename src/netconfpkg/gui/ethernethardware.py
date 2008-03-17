@@ -17,22 +17,15 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
 import gtk
 import gtk.glade
-import signal
 import os
-import string
-import re
-from rhpl.executil import *
-from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import load_icon
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg import *
-#from netconfpkg import NCHWEthernet
-#from netconfpkg import NCHWWireless
-#from netconfpkg import NCHardwareList
 
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
+from netconfpkg.NC_functions import _, ETHERNET
+from netconfpkg.plugins import NCHWEthernet, NCHWWireless
+from netconfpkg import NCHardwareList
 
 class ethernetHardwareDialog:
     def __init__(self, hw):
@@ -64,36 +57,36 @@ class ethernetHardwareDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
         return
-        # FIXME: no more HW parameter
-        cmd = [ '/sbin/modprobe ', self.hw.Card.ModuleName ]
-        if self.hw.Card.IRQ:
-            cmd.append(' irq='+self.hw.Card.IRQ)
-        if self.hw.Card.IoPort:
-            cmd.append(' io='+self.hw.Card.IoPort)
-        if self.hw.Card.IoPort1:
-            cmd.append(' io1='+self.hw.Card.IoPort1)
-        if self.hw.Card.IoPort2:
-            cmd.append(' io2='+self.hw.Card.IoPort2)
-        if self.hw.Card.Mem:
-            cmd.append(' mem='+self.hw.Card.Mem)
-        if self.hw.Card.DMA0:
-            cmd.append(' dma='+str(self.hw.Card.DMA0))
-        if self.hw.Card.DMA1:
-            cmd.append(' dma1='+str(self.hw.Card.DMA1))
-
-        (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
-                                                    catchfd = (1, 2))
-        if status != 0:
-            output = _('Command failed: ') + string.join(cmd) + '\n\n' + \
-                     _('Output:\n') + output
-            GUI_functions.generic_longinfo_dialog(\
-                _('The Ethernet card could not be initialized. '
-                  'Please verify your settings and try again.'),
-                output, self.dialog)
-        pass
+    
+#        # FIXME: no more HW parameter
+#        cmd = [ '/sbin/modprobe ', self.hw.Card.ModuleName ]
+#        if self.hw.Card.IRQ:
+#            cmd.append(' irq='+self.hw.Card.IRQ)
+#        if self.hw.Card.IoPort:
+#            cmd.append(' io='+self.hw.Card.IoPort)
+#        if self.hw.Card.IoPort1:
+#            cmd.append(' io1='+self.hw.Card.IoPort1)
+#        if self.hw.Card.IoPort2:
+#            cmd.append(' io2='+self.hw.Card.IoPort2)
+#        if self.hw.Card.Mem:
+#            cmd.append(' mem='+self.hw.Card.Mem)
+#        if self.hw.Card.DMA0:
+#            cmd.append(' dma='+str(self.hw.Card.DMA0))
+#        if self.hw.Card.DMA1:
+#            cmd.append(' dma1='+str(self.hw.Card.DMA1))
+#
+#    
+#        (status, output) = gui_run_dialog('/sbin/modprobe', cmd,
+#                                          catchfd = (1, 2), dialog = self.dialog)
+#        if status != 0:
+#            GUI_functions.generic_longinfo_dialog(\
+#                _('The Ethernet card could not be initialized. '
+#                  'Please verify your settings and try again.'),
+#                output, self.dialog)
+#        pass
 
     def on_cancelButton_clicked(self, button):
         pass
@@ -109,22 +102,21 @@ class ethernetHardwareDialog:
             self.xml.get_widget('adapterEntry').set_sensitive(False)
             self.xml.get_widget('adapterComboBox').set_sensitive(False)
         else:
-            hwlist = NCHardwareList.getHardwareList()
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
 
     def setup(self):
-        list = []
+        mlist = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "eth":
                 if modInfo[i].has_key('description') and \
                        len(modInfo[i]['description']):
-                    list.append(modInfo[i]['description'])
+                    mlist.append(modInfo[i]['description'])
                 else:
-                    list.append(i)
-        list.sort()
-        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+                    mlist.append(i)
+        mlist.sort()
+        self.xml.get_widget("adapterComboBox").set_popdown_strings(mlist)
 
     def dehydrate(self):
         self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()

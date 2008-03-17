@@ -18,18 +18,14 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import gtk
-
 import gtk.glade
-import signal
 import os
 
-import string
-import re
-
-from netconfpkg import *
+from netconfpkg.plugins import NCHWIsdn
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg import NCisdnhardware
 
 class isdnHardwareDialog:
     def __init__(self, hw):
@@ -50,6 +46,7 @@ class isdnHardwareDialog:
             })
 
         self.hw = hw
+        self.cardname = ""
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
 
@@ -59,7 +56,7 @@ class isdnHardwareDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
@@ -160,7 +157,6 @@ class isdnHardwareDialog:
                 self.xml.get_widget("io2Entry").set_sensitive(False)
 
     def dehydrate(self):
-        hardwarelist = NCHardwareList.getHardwareList()
         isdncard = NCisdnhardware.ConfISDN()
         isdncard.get_resource(self.xml.get_widget('adapterEntry').get_text())
 
@@ -204,17 +200,11 @@ class isdnHardwareDialog:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
     def setup(self):
-        cardlist = NCisdnhardware.__card.keys()
+        # pylint: disable-msg=W0212
+        cardlist = NCisdnhardware._card.keys()
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
 NCHWIsdn.setHwIsdnDialog(isdnHardwareDialog)
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = isdnHardwareDialog()
-    gtk.main()
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.24 $"

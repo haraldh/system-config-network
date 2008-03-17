@@ -17,17 +17,17 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import string
+import os
 
-from netconfpkg.conf import Conf
 from netconfpkg.conf import ConfSMB
-from netconfpkg import Dialup_base
-import NCCompression
-from NC_functions import *
+from netconfpkg import Dialup_base # pylint: disable-msg=E0611
+from netconfpkg.NC_functions import _, getRoot, log, \
+unlink, getCHAPConf, getPAPConf, WVDIALCONF, mkdir, PPPDIR
 
-DM_AUTO='auto'
-DM_MANUAL='manual'
+from netconfpkg.NCCompression import Compression
+
+DM_AUTO = 'auto'
+DM_MANUAL = 'manual'
 
 DialModes = { DM_AUTO : _('auto'),
               DM_MANUAL : _('manual') }
@@ -109,16 +109,22 @@ __country_code = {
     _("Montenegro") : 381
     }
 
+# pylint: disable-msg=E1101
+# pylint: disable-msg=W0201
+
 class Dialup(Dialup_base):
+    "Class for all Dialup Interfaces"
     intkeydict = {
                     'Mru' : 'MRU', 
+#                    'Mtu' : 'MRU', 
                  }
 
-    def __init__(self, list = None, parent = None):
-        Dialup_base.__init__(self, list, parent)
-        self.createCompression()
+    def __init__(self, mlist = None, parent = None):
+        Dialup_base.__init__(self, mlist, parent)
+        self.createCompression() 
 
     def load(self, parentConf):
+        "Load the Configuration from the parentConf"
         conf = parentConf
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
@@ -151,6 +157,7 @@ class Dialup(Dialup_base):
             log.log(6, "No self.login!!!")
 
     def save(self, parentConf):
+        "Save the Configuration to parentConf"
         conf = parentConf
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
@@ -165,8 +172,10 @@ class Dialup(Dialup_base):
             papconf[self.Login] = str(self.Password)
             chapconf[self.Login] = str(self.Password)
             # set specific auth also
-            papconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
-            chapconf[[self.Login, self.getParent().DeviceId]] = str(self.Password)
+            papconf[[self.Login, 
+                     self.getParent().DeviceId]] = str(self.Password)
+            chapconf[[self.Login, 
+                      self.getParent().DeviceId]] = str(self.Password)
         if self.DialMode == DM_AUTO:
             parentConf['DEMAND'] = 'yes'
         else:
@@ -175,6 +184,7 @@ class Dialup(Dialup_base):
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
 class DslDialup(Dialup):
+    "Class for all DSL Dialup Interfaces"
     boolkeydict = { 'SyncPPP' : 'SYNCHRONOUS',
                     'Persist' : 'PERSIST',
                     'DefRoute' : 'DEFROUTE',
@@ -194,6 +204,7 @@ class DslDialup(Dialup):
         Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
+        "Load the Configuration from the parentConf"
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -222,6 +233,7 @@ class DslDialup(Dialup):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
 
     def save(self, parentConf):
+        "Save the Configuration to parentConf"
         Dialup.save(self, parentConf)
 
         conf = parentConf
@@ -238,8 +250,7 @@ class DslDialup(Dialup):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
-
-
+        
         # The ACNAME is used for the server name
         if self.Login and self.AcName:
             papconf = getPAPConf()
@@ -290,6 +301,7 @@ class DslDialup(Dialup):
 
 
 class IsdnDialup(Dialup):
+    "Class for all ISDN Dialup Interfaces"
     boolkeydict = { 'Secure' : 'SECURE',
                     'ChannelBundling' : 'BUNDLING',
                     'Persist' : 'PERSIST',
@@ -325,6 +337,7 @@ class IsdnDialup(Dialup):
         Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
+        "Load the Configuration from the parentConf"
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -359,13 +372,13 @@ class IsdnDialup(Dialup):
                 self.DefRoute = False
 
         if conf.has_key('PPPOPTIONS'):
-            self.createPPPOptions()
+            self.createPPPOptions() 
 
             options = conf['PPPOPTIONS']
-            for o in string.split(options):
+            for o in options.split():
                 self.PPPOptions[self.PPPOptions.addPPPOption()] = o
 
-        parent = self.getParent()
+        parent = self.getParent() 
 
         if parent:
             if conf.has_key('LOCAL_IP'):
@@ -378,26 +391,27 @@ class IsdnDialup(Dialup):
                 else:
                     parent.OnBoot = False
 
-        if not self.PPPOptions:
-            self.createPPPOptions()
-        self.Compression.load(conf)
+        if not self.PPPOptions:     
+            self.createPPPOptions() 
+        self.Compression.load(conf) 
 
         if conf.has_key('CALLBACK'):
             if conf['CALLBACK'] == 'in' or conf['CALLBACK'] == 'out':
-                callback = self.createCallback()
+                callback = self.createCallback() 
                 callback.load(conf)
             else:
-                self.delCallback()
+                self.delCallback() 
 
         if conf.has_key("PASSWORD"):
             self.Password = conf["PASSWORD"]
 
-        self.commit(changed=False)
+        self.commit(changed=False) 
 
     def save(self, parentConf):
+        "Save the Configuration to parentConf"
         Dialup.save(self, parentConf)
         conf = parentConf
-
+        
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if self.__dict__[selfkey]:
@@ -435,7 +449,7 @@ class IsdnDialup(Dialup):
         else:
             del conf['PPPOPTIONS']
 
-        parent = self.getParent()
+        #parent = self.getParent()
 
         if conf.has_key('LOCAL_IP'):
             del conf['LOCAL_IP']
@@ -450,7 +464,7 @@ class IsdnDialup(Dialup):
         if self.Compression:
             self.Compression.save(conf)
 
-        if self.Callback:
+        if self.Callback: 
             conf['CALLBACK'] = self.Callback.Type
             self.Callback.save(conf)
         else:
@@ -471,6 +485,7 @@ class IsdnDialup(Dialup):
 
 
 class ModemDialup(Dialup):
+    "Class for all Modem Dialup Interfaces"
     boolwvdict = { 'StupidMode' : 'Stupid Mode',
                    }
 
@@ -485,12 +500,15 @@ class ModemDialup(Dialup):
         Dialup.__init__(self, list, parent)
 
     def load(self, parentConf):
+        "Load the Configuration from the parentConf"
         parent = self.getParent()
 
         if parent:
             name = parent.DeviceId
-        # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf when a dialup connection is saved
-        # FIXME: [168087] Fails to retain ppp connection passwords containing spaces between saves
+        # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf 
+        # when a dialup connection is saved
+        # FIXME: [168087] Fails to retain ppp connection passwords 
+        # containing spaces between saves
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
@@ -552,7 +570,7 @@ class ModemDialup(Dialup):
         if parentConf.has_key('PPPOPTIONS'):
             self.createPPPOptions()
             options = parentConf['PPPOPTIONS']
-            for o in string.split(options):
+            for o in options.split():
                 self.PPPOptions[self.PPPOptions.addPPPOption()] = o
 
         #
@@ -581,6 +599,7 @@ class ModemDialup(Dialup):
 
 
     def save(self, parentConf):
+        "Save the Configuration to parentConf"
         Dialup.save(self, parentConf)
         parent = self.getParent()
         if parent and self.Inherits:
@@ -621,7 +640,8 @@ class ModemDialup(Dialup):
             if self.__dict__[selfkey]:
                 conf[sectname][confkey] = '1'
             else:
-                # CHECK: [177931] Stupid Mode goes away in /etc/wvdial.conf when a dialup connection is saved
+                # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf
+                # when a dialup connection is saved
                 conf[sectname][confkey] = '0'
 
         #
@@ -631,7 +651,7 @@ class ModemDialup(Dialup):
         if not conf[sectname].has_key('Init1'):
             conf[sectname]['Init1'] = 'ATZ'
         #
-        # FIXME
+        # FIXME: ...
         #
         if not conf[sectname].has_key('Init2'):
             conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0'
@@ -667,7 +687,7 @@ class ModemDialup(Dialup):
             parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
         if self.Inherits:
-            import NCHardwareList
+            from netconfpkg import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Inherits:
@@ -708,10 +728,10 @@ class ModemDialup(Dialup):
             pass
 
 if __name__ == '__main__':
-    dev = Device()
-    dev.load('tdslHomeTonline')
-    print dev.Dialup.Login
-    dev.save()
+    from netconfpkg.NCDevice import Device
+    __dev = Device()
+    __dev.load('tdslHomeTonline')
+    print __dev.Dialup.Login 
+    __dev.save()
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:28:08 $"
-__version__ = "$Revision: 1.75 $"

@@ -6,19 +6,22 @@
 ## Copyright (C) 2002-2003 Trond Eivind Glomsrød <teg@redhat.com>
 ## Copyright (C) 2002-2005 Harald Hoyer <harald@redhat.com>
 
-from snack import *
+#from snack import *
 
 PROGNAME='system-config-network'
 
+import sys
 import locale
-from rhpl import ethtool
-from netconfpkg import *
-from rhpl.translate import _, N_, textdomain_codeset
+import signal
+
+from snack import SnackScreen
+from netconfpkg import NC_functions
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCProfileList import getProfileList
+from netconfpkg import NCException
+from rhpl.translate import _, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
-
-import sys
-import string
 
 if not "/usr/share/system-config-network" in sys.path:
     sys.path.append("/usr/share/system-config-network")
@@ -107,7 +110,7 @@ def handleException((type, value, tb), progname, version):
     for t in tblast:
         text = text + str(t) + ":"
     text = text + extxt[0]
-    text = text + joinfields(list, "")
+    text = text + "".join(list)
 
     print text
     import pdb
@@ -120,8 +123,13 @@ sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
                                                          PRG_NAME, PRG_VERSION)
 
 
-from netconfpkg import *
-from netconfpkg.tui import *
+
+from netconfpkg import exception
+from netconfpkg.NCHardwareList import getHardwareList
+from snack import GridForm, TextboxReflowed, Listbox, ButtonBar
+from netconfpkg.NC_functions import ETHERNET, ISDN, MODEM, QETH
+from netconfpkg.NCDeviceFactory import getDeviceFactory
+import netconfpkg.tui
 
 def loadConfig(screen):
     exception.action(_("Loading configuration"))
@@ -168,14 +176,14 @@ def newDevice(screen):
     screen.popWindow()
     if bb.buttonPressed(res) != 'cancel':
         todo=li.current()
-        df = NCDeviceFactory.getDeviceFactory()
+        df = getDeviceFactory()
         dev = None
         devclass = df.getDeviceClass(todo)
         devlist = getDeviceList()
         if not devclass: return -1
         dev = devclass()
         if dev:
-            i = devlist.addDevice()
+            i = devlist.addDevice() # pylint: disable-msg=E1101
             devlist[i] = dev
             return dev
     return -2
@@ -272,7 +280,7 @@ if __name__=="__main__":
 
 #    exception.installExceptionHandler(PRG_NAME, PRG_VERSION, gui=0,
 #                                      debug=debug)
-    screen=SnackScreen()
+    screen = SnackScreen()
     plist = getProfileList()
     devlist = getDeviceList()
     try:
@@ -290,16 +298,17 @@ if __name__=="__main__":
                 break
 
             dialog = dev.getDialog()
+            # pylint: disable-msg=E1101,E1103
             if dialog.runIt(screen):
-                dev.commit()
-                devlist.commit()
+                dev.commit()     
+                devlist.commit() 
                 plist.activateDevice(dev.DeviceId,
                                      plist.getActiveProfile().ProfileName,
                                      state = True)
                 plist.commit()
             else:
-                dev.rollback()
-                devlist.rollback()
+                dev.rollback()     
+                devlist.rollback() 
 
         screen.finish()
         #print dir(screen)

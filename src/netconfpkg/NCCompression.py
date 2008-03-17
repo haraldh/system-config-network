@@ -17,20 +17,19 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import Compression_base
-from NC_functions import *
+from netconfpkg import Compression_base # pylint: disable-msg=E0611
 
-class Compression(Compression_base):
-    boolkeydict = { 'VJTcpIp' : 'VJ',
-                    'VJID' : 'VJCCOMP',
-                    'AdressControl' : 'AC',
-                    'ProtoField' : 'PC',
-                    'BSD' : 'BSDCOMP',
-                    'CCP' : 'CCP',
+class Compression(Compression_base): 
+    boolkeydict = { 'VJTcpIp' : 'VJ', 
+                    'VJID' : 'VJCCOMP', 
+                    'AdressControl' : 'AC', 
+                    'ProtoField' : 'PC', 
+                    'BSD' : 'BSDCOMP', 
+                    'CCP' : 'CCP', 
                     }
 
-    def __init__(self, list = None, parent = None):
-        Compression_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Compression_base.__init__(self, clist, parent)
 
     def load(self, parentConf):
         conf = parentConf

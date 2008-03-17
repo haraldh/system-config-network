@@ -18,19 +18,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-from netconfpkg.gui.GUI_functions import *
+
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import request_rpms, _, MODEM, generic_error_dialog, \
+    modemFlowControls, modemDeviceList, CRTSCTS
+from netconfpkg.gui.DialupDruid import DialupDruid
 from netconfpkg.gui import GUI_functions
-from netconfpkg import *
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.plugins import NCDevModem
 import gtk
 import gtk.glade
-import string
 import os
-import time
-import providerdb
-import gtk.glade
-import DialupDruid
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-
 
 class ModemInterface:
     modemList = None
@@ -57,11 +55,11 @@ class ModemInterface:
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             {
-            "on_Modem_prepare" : self.on_Modem_prepare,
-            "on_Modem_back" : self.on_Modem_back,
-            "on_Modem_next" : self.on_Modem_next,
+            "on_Modem_prepare" : self.on_Modem_prepare, 
+            "on_Modem_back" : self.on_Modem_back, 
+            "on_Modem_next" : self.on_Modem_next, 
             })
 
 
@@ -93,13 +91,13 @@ class ModemInterface:
             return []
 
         Type = MODEM
-        dialup = DialupDruid.DialupDruid(self.toplevel, Type,
+        dialup = DialupDruid(self.toplevel, Type, 
                                          do_save = self.do_save)
         for self.hw in self.hardwarelist:
             if self.hw.Type == Type: return dialup.get_druids()
 
-        id = self.hardwarelist.addHardware(Type)
-        self.hw = self.hardwarelist[id]
+        mid = self.hardwarelist.addHardware(Type)
+        self.hw = self.hardwarelist[mid]
         self.hw.Type = Type
         self.hw.Name = Type + '0'
         if Type == 'ISDN':  self.hw.createCard()
@@ -110,12 +108,12 @@ class ModemInterface:
     def on_Modem_prepare(self, druid_page, druid):
         if not ModemInterface.modemList:
             # FIXME: [165331] Can't detect external modem on /dev/ttyS0
-            dialog = gtk.Dialog(_('Modem probing...'),
-                                None,
+            dialog = gtk.Dialog(_('Modem probing...'), 
+                                None, 
                                 gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT)
             dialog.set_border_width(10)
             label = gtk.Label(_('Probing for Modems, please wait...'))
-            dialog.vbox.pack_start(label, False)
+            dialog.vbox.pack_start(label, False) # pylint: disable-msg=E1101
             dialog.set_transient_for(self.toplevel)
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dialog.set_modal(True)
@@ -129,7 +127,7 @@ class ModemInterface:
             ModemInterface.modemList = dlist
             dialog.destroy()
             if dlist == []:
-                generic_error_dialog(_('No modem was found on your system.'),
+                generic_error_dialog(_('No modem was found on your system.'), 
                                      self.toplevel)
                 dlist = modemDeviceList
             ModemInterface.modemList = dlist
@@ -147,7 +145,7 @@ class ModemInterface:
         self.dehydrate()
 
     def on_Modem_back(self, druid_page, druid):
-        self.hardwarelist.rollback()
+        self.hardwarelist.rollback() # pylint: disable-msg=E1101
 
     def setup(self):
         flowcontrols = []
@@ -155,7 +153,6 @@ class ModemInterface:
             flowcontrols.append(modemFlowControls[i])
         self.xml.get_widget(\
             "flowControlCombo").set_popdown_strings(flowcontrols)
-        pass
 
     def dehydrate(self):
         self.hw.Description = _('Generic Modem')

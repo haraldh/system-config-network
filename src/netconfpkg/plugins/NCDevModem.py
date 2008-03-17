@@ -1,3 +1,5 @@
+"Modem Interface Plugin"
+
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 
@@ -15,33 +17,43 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDevice import *
+from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import MODEM, getDeviceType
 
 import netconfpkg
-
 _devModemDialog = None
 _devModemWizard = None
 
 class DevModem(Device):
-    def __init__(self, list = None, parent = None):
-        Device.__init__(self, list, parent)
+    def __init__(self, mlist = None, parent = None):
+        Device.__init__(self, mlist, parent)
         self.Type = MODEM
         self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
 
-    def load(self, name):
+    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
+        """
+        load(devicename)
+        load a modem definition
+        """
+        name = args[0]
         conf = ConfDevice(name)
         Device.load(self, name)
         self.Dialup.load(conf)
 
     def createDialup(self):
+        """
+        create a ModemDialup instance for self.Dialup
+        """
         if (self.Dialup == None) \
                or not isinstance(self.Dialup, netconfpkg.NCDialup.ModemDialup):
             self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
         return self.Dialup
 
     def getDialog(self):
+        """
+        returns a gtk dialog
+        """
         dialog =  _devModemDialog(self)
         if hasattr(dialog, "xml"):
             return dialog.xml.get_widget("Dialog")
@@ -49,9 +61,15 @@ class DevModem(Device):
         return dialog
 
     def getWizard(self):
+        """
+        returns a gtk wizard
+        """
         return _devModemWizard
 
     def isType(self, device):
+        """
+        check if device is of type MODEM
+        """
         if device.Type == MODEM:
             return True
         if getDeviceType(device.Device) == MODEM:
@@ -59,21 +77,32 @@ class DevModem(Device):
         return False
 
     def getHWDevice(self):
+        """
+        get the Hardware Device this Interface belongs to
+        """
         if self.Dialup:
             return self.Dialup.Inherits
 
         return None
 
 def setDevModemDialog(dialog):
+    """
+    Set the gtk Modem Dialog
+    """
     global _devModemDialog
     _devModemDialog = dialog
 
 def setDevModemWizard(wizard):
+    """
+    Set the gtk Modem Wizard
+    """
     global _devModemWizard
     _devModemWizard = wizard
 
-df = getDeviceFactory()
-df.register(DevModem, MODEM)
+__df = getDeviceFactory()
+__df.register(DevModem, MODEM)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
 __date__ = "$Date: 2007/03/14 09:29:37 $"
 __version__ = "$Revision: 1.10 $"

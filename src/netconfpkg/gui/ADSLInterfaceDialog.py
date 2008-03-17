@@ -21,17 +21,13 @@ import gtk
 
 import gtk.glade
 import signal
-import os
 
-import string
-import string
-import sharedtcpip
-
-from netconfpkg import *
-from netconfpkg.gui import GUI_functions
+from netconfpkg.gui import sharedtcpip
+from netconfpkg.plugins import NCDevADSL
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
-from DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.NCDialup import DM_AUTO, DM_MANUAL
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
 class ADSLInterfaceDialog(DeviceConfigDialog):
@@ -137,12 +133,11 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.dsl_hardware_dehydrate (self.sharedtcpip_xml, self.device)
 
-    def on_dialonDemandCB_clicked(self, *args):
+    def on_dialonDemandCB_clicked(self, *args): # pylint: disable-msg=W0613
         self.xml.get_widget("idleTimeSB").set_sensitive(\
             self.xml.get_widget("dialonDemandCB").get_active())
-        pass
 
-    def on_tonlineButton_clicked(self, *args):
+    def on_tonlineButton_clicked(self, *args): # pylint: disable-msg=W0613
         self.dehydrate()
         dialup = self.device.Dialup
         dialog = TonlineDialog(dialup.Login, dialup.Password)

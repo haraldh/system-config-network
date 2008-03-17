@@ -1,3 +1,4 @@
+"TUI for system-config-network"
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
@@ -24,7 +25,13 @@
 
 import os
 
-_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
+# pylint: disable-msg=W0141
+# pylint: disable-msg=W0122
+_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" \
+                                      and v != "__init__.py" \
+                                      and v != 'genClass.py' \
+                                      and v[0] != '.',
+                                      os.listdir(__path__[0])))
 
 import locale
 locale.setlocale(locale.LC_ALL, "C")
@@ -33,7 +40,7 @@ locale.setlocale(locale.LC_ALL, "")
 
 for _i in _files:
     _cmd = "from " + _i + " import *"
-    exec _cmd
+    exec _cmd # pylint: disable-msg=W0122
 
 del _i
 del _files

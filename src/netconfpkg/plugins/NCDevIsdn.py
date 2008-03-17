@@ -15,9 +15,10 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDevice import *
+from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import _, ISDN, generic_run_dialog,\
+    getDeviceType
 
 import netconfpkg
 
@@ -25,12 +26,13 @@ _devIsdnDialog = None
 _devIsdnWizard = None
 
 class DevIsdn(Device):
-    def __init__(self, list = None, parent = None):
-        Device.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Device.__init__(self, clist, parent)
         self.Type = ISDN
         self.Dialup = netconfpkg.NCDialup.IsdnDialup(None, self)
 
-    def load(self, name):
+    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
+        name = args[0]
         conf = ConfDevice(name)
         Device.load(self, name)
         self.Dialup.load(conf)
@@ -59,7 +61,7 @@ class DevIsdn(Device):
         return False
 
     def getHWDevice(self):
-        # XXX FIXME
+        # FIXME: Support more than one ISDN Card
         return "ISDN Card 0"
 
     def activate( self, dialog = None ):

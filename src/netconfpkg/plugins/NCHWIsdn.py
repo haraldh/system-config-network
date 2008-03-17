@@ -1,3 +1,4 @@
+"ISDN Hardware Device Plugin"
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 
@@ -17,44 +18,60 @@
 
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import ISDN, getHardwareType
 
 _hwIsdnDialog = None
 _hwIsdnWizard = None
 
 class HwIsdn(Hardware):
-    def __init__(self, list = None, parent = None):
-        Hardware.__init__(self, list, parent)
+    "ISDN Hardware Device Class"
+    def __init__(self, mlist = None, parent = None):
+        Hardware.__init__(self, mlist, parent)
         self.Type = ISDN
+        # pylint: disable-msg=E1101
         self.createCard()
         self.Card.ChannelProtocol = "2"
 
     def getDialog(self):
-        if _hwIsdnDialog == None: return None
+        """
+        returns a gtk dialog
+        """
+        if _hwIsdnDialog == None:
+            return None
         return _hwIsdnDialog(self).xml.get_widget("Dialog")
 
     def getWizard(self):
+        """
+        returns a gtk wizard
+        """
         return _hwIsdnWizard
 
     def isType(self, hardware):
+        """
+        check if device is of type ISDN
+        """
         if hardware.Type == ISDN:
             return True
         if getHardwareType(hardware.Hardware) == ISDN:
             return True
         return False
 
-    def save(self):
+    def save(self, *args, **kwargs): # pylint: disable-msg=W0613
+        """
+        save the ISDN configuration
+        """
         import netconfpkg.NCisdnhardware
         isdn = netconfpkg.NCisdnhardware.ConfISDN()
 
+        # pylint: disable-msg=E1101
         isdn.Description = self.Description
         isdn.Type = self.Card.Type
         isdn.ModuleName = self.Card.ModuleName
         isdn.IRQ = self.Card.IRQ
         isdn.IoPort = self.Card.IoPort
-        isdn.IoPort1 = self.Card.IoPort1
-        isdn.IoPort2 = self.Card.IoPort2
-        isdn.Mem = self.Card.Mem
+        isdn.IoPort1 = self.Card.IoPort1 
+        isdn.IoPort2 = self.Card.IoPort2 
+        isdn.Mem = self.Card.Mem 
         isdn.ChannelProtocol = self.Card.ChannelProtocol
         isdn.Firmware = self.Card.Firmware
         isdn.DriverId = self.Card.DriverId
@@ -64,15 +81,23 @@ class HwIsdn(Hardware):
 
 
 def setHwIsdnDialog(dialog):
+    """
+    Set the gtk Modem Dialog
+    """
     global _hwIsdnDialog
     _hwIsdnDialog = dialog
 
 def setHwIsdnWizard(wizard):
+    """
+    Set the gtk Modem Wizard
+    """
     global _hwIsdnWizard
     _hwIsdnWizard = wizard
 
-df = getHardwareFactory()
-df.register(HwIsdn, ISDN)
+__df = getHardwareFactory()
+__df.register(HwIsdn, ISDN)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
 __date__ = "$Date: 2007/03/14 09:29:37 $"
 __version__ = "$Revision: 1.11 $"

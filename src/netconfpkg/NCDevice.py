@@ -17,17 +17,17 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import sys
-import string
+import os
 import commands
-import math
-import NC_functions
+import re
+from netconfpkg import NC_functions
 from netconfpkg.conf import Conf
-from netconfpkg.conf import ConfSMB
-from NC_functions import *
-from netconfpkg import Device_base
-import NCDialup
-from rhpl.executil import gtkExecWithCaptureStatus
+from netconfpkg.NC_functions import _, getRoot, SYSCONFDEVICEDIR, log, \
+ETHERNET, SYSCONFNETWORK, generic_run_dialog, generic_run, getDebugLevel, \
+unlink
+from netconfpkg import Device_base # pylint: disable-msg=E0611
+
+# pylint: disable-msg=W0201
 
 class ConfDevice( Conf.ConfShellVar ):
     def __init__( self, name, dir = None ):
@@ -50,7 +50,7 @@ class ConfDevice( Conf.ConfShellVar ):
             self.insertline( "# Please read /usr/share/doc/"
                             "initscripts-*/sysconfig.txt" )
             self.nextline()
-            self.insertline( "# for the documentation of these parameters." );
+            self.insertline( "# for the documentation of these parameters." )
             self.rewind()
 
     def write( self ):
@@ -141,19 +141,25 @@ class Device( Device_base ):
         
         return val
 
-    def load( self, name ):
+    def load( self, *args, **kwargs):
+        name = None
+        if len(args) >= 1:
+            name = args[0]
+        else:
+            name = kwargs.get("name")
+	
         conf = ConfDevice( name )
 
         self.oldname = name
 
         if not conf.has_key( "DEVICE" ):
-            aliaspos = string.find( name, ':' )
+            aliaspos = name.find(':' )
             if aliaspos != -1:
                 from netconfpkg.NCDeviceList import getDeviceList
                 # ok, we have to inherit all other data from our master
                 for dev in getDeviceList():
                     if dev.Device == name[:aliaspos]:
-                        self.apply( dev )
+                        self.apply( dev ) # pylint: disable-msg=E1101
                         break
 
             self.Device = name
@@ -208,10 +214,9 @@ class Device( Device_base ):
 
             except EnvironmentError, msg:
                 NC_functions.generic_error_dialog( str( msg ) )
-                pass
 
         try:
-            aliaspos = string.find( self.Device, ':' )
+            aliaspos = self.Device.find(':' )
             if aliaspos != -1:
                 self.Alias = int( self.Device[aliaspos+1:] )
                 self.Device = self.Device[:aliaspos]
@@ -234,7 +239,7 @@ class Device( Device_base ):
                 self.BootProto = 'dhcp'
 
         if not self.Type or self.Type == "" or self.Type == _( "Unknown" ):
-            import NCHardwareList
+            from netconfpkg import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Device:
@@ -258,7 +263,7 @@ class Device( Device_base ):
                                 'route-' + self.DeviceId )
         # load routes
         rconf = ConfRoute( name )
-        self.createStaticRoutes()
+        self.createStaticRoutes() # pylint: disable-msg=E1101
 
         for key in rconf.keys():
             if key.startswith("ADDRESS"):
@@ -266,23 +271,23 @@ class Device( Device_base ):
                     p = int(key[7:])
                 except:
                     continue
-                i = self.StaticRoutes.addRoute()
-                route = self.StaticRoutes[i]
+                i = self.StaticRoutes.addRoute() # pylint: disable-msg=E1101
+                route = self.StaticRoutes[i]     # pylint: disable-msg=E1101
                 route.Address = rconf['ADDRESS' + str(p)]                
                 if rconf.has_key("NETMASK" + str(p)):
                     route.Netmask = rconf['NETMASK' + str( p )]
                 if rconf.has_key("GATEWAY" + str(p)):
                     route.Gateway = rconf['GATEWAY' + str( p )]
                 
-        self.commit( changed=False )
+        self.commit( changed=False ) # pylint: disable-msg=E1101
 
-    def save( self ):
+    def save( self, *args, **kwargs ): # pylint: disable-msg=W0613
         # FIXME: [163040] "Exception Occurred" when saving
         # fail gracefully, with informing, which file, and why
 
         # Just to be safe...
         os.umask( 0022 )
-        self.commit()
+        self.commit() # pylint: disable-msg=E1101
 
         if self.oldname and ( self.oldname != self.DeviceId ):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
@@ -295,13 +300,13 @@ class Device( Device_base ):
         conf.fsf()
 
         if self.BootProto == None:
-            if len(self.IP):
+            if len(self.IP): # pylint: disable-msg=E0203
                 self.BootProto = "none"
             else:
                 self.BootProto = 'dhcp'                
 
         if self.BootProto:
-            self.BootProto = string.lower( self.BootProto )
+            self.BootProto = self.BootProto.lower()
 
         if self.BootProto == "static":
             self.BootProto = "none"
@@ -372,7 +377,8 @@ class Device( Device_base ):
                 pass
         else:
             del conf['NETWORK']
-
+            
+        # pylint: disable-msg=E1101
         if self.Dialup:
             self.Dialup.save( conf )
 
@@ -380,7 +386,7 @@ class Device( Device_base ):
             self.Wireless.save( conf )
 
         # FIXME: RFE [174974] limitation of setting routing
-        if self.StaticRoutes and len( self.StaticRoutes ) > 0:
+        if self.StaticRoutes and len( self.StaticRoutes ) > 0: 
             rconf = ConfRoute( self.DeviceId )
             for key in rconf.keys():
                 del rconf[key]

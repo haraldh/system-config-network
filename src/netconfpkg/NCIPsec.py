@@ -15,9 +15,14 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+from netconfpkg import IPsec_base # pylint: disable-msg=E0611
+from netconfpkg.NC_functions import _, getRoot, SYSCONFDEVICEDIR, generic_run_dialog, \
+    bits_to_netmask, ConfKeys, \
+    netmask_to_bits, rename
 from netconfpkg.conf import Conf
-from NC_functions import *
-from netconfpkg import IPsec_base
+import netconfpkg
+import os
+
 
 class ConfIPsec(Conf.ConfShellVar):
     def __init__(self, name):
@@ -25,35 +30,36 @@ class ConfIPsec(Conf.ConfShellVar):
         self.chmod(0644)
 
 class IPsec(IPsec_base):
+    # pylint: disable-msg=E0203
     #"IPsecId" : "IPSECID",
     boolkeydict = {
-        'OnBoot' : 'ONBOOT',
+        'OnBoot' : 'ONBOOT', 
         }
     ipsec_entries = {
-        "LocalNetwork" : "SRCNET",
-        "LocalGateway" : "SRCGW",
-        "RemoteNetwork" : "DSTNET",
-        "RemoteGateway" : "DSTGW",
-        "RemoteIPAddress" : "DST",
-        "OnBoot" : "ONBOOT",
-        "SPI_AH_IN" : "SPI_AH_IN",
-        "SPI_AH_OUT" : "SPI_AH_OUT",
-        "SPI_ESP_IN" : "SPI_ESP_IN",
-        "SPI_ESP_OUT" : "SPI_ESP_OUT",
+        "LocalNetwork" : "SRCNET", 
+        "LocalGateway" : "SRCGW", 
+        "RemoteNetwork" : "DSTNET", 
+        "RemoteGateway" : "DSTGW", 
+        "RemoteIPAddress" : "DST", 
+        "OnBoot" : "ONBOOT", 
+        "SPI_AH_IN" : "SPI_AH_IN", 
+        "SPI_AH_OUT" : "SPI_AH_OUT", 
+        "SPI_ESP_IN" : "SPI_ESP_IN", 
+        "SPI_ESP_OUT" : "SPI_ESP_OUT", 
         }
     key_entries = {
-        "AHKey" : "KEY_AH",
-        "ESPKey" : "KEY_ESP",
-        "IKEKey" : "IKE_PSK",
+        "AHKey" : "KEY_AH", 
+        "ESPKey" : "KEY_ESP", 
+        "IKEKey" : "IKE_PSK", 
         }
 
-    def __init__(self, list = None, parent = None):
-        IPsec_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        IPsec_base.__init__(self, clist, parent)
         self.oldname = None
 
     def load(self, name):
         # load ipsec
-
+        # pylint: disable-msg=W0201
         conf = ConfIPsec(name)
         for selfkey in self.ipsec_entries.keys():
             confkey = self.ipsec_entries[selfkey]
@@ -85,13 +91,13 @@ class IPsec(IPsec_base):
             self.IPsecId = name
 
         if self.LocalNetwork:
-            vals = string.split(self.LocalNetwork, "/")
+            vals = self.LocalNetwork.split("/")
             if len(vals) >= 1:
                 self.LocalNetwork = vals[0]
                 self.LocalNetmask = bits_to_netmask(vals[1])
 
         if self.RemoteNetwork:
-            vals = string.split(self.RemoteNetwork, "/")
+            vals = self.RemoteNetwork.split("/")
             if len(vals) >= 1:
                 self.RemoteNetwork = vals[0]
                 self.RemoteNetmask = bits_to_netmask(vals[1])
@@ -101,8 +107,7 @@ class IPsec(IPsec_base):
 
         self.oldname = self.IPsecId
 
-        self.commit(changed=False)
-        pass
+        self.commit(changed=False) # pylint: disable-msg=E1101
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
@@ -110,12 +115,12 @@ class IPsec(IPsec_base):
 
         # Just to be safe...
         os.umask(0022)
-        self.commit()
+        self.commit() # pylint: disable-msg=E1101
 
         if self.oldname and (self.oldname != self.IPsecId):
             for prefix in [ 'ifcfg-', 'keys-' ]:
                 rename(getRoot() + SYSCONFDEVICEDIR + \
-                       prefix + self.oldname,
+                       prefix + self.oldname, 
                        getRoot() + SYSCONFDEVICEDIR + \
                        prefix + self.IPsecId)
 
@@ -123,15 +128,15 @@ class IPsec(IPsec_base):
         conf = ConfIPsec(self.IPsecId)
         conf.fsf()
         conf["TYPE"] = "IPSEC"
-        conf["DST"] = self.RemoteIPAddress
+        conf["DST"] = self.RemoteIPAddress # pylint: disable-msg=E1101
 
         if self.ConnectionType == "Net2Net":
             conf["SRCNET"] = self.LocalNetwork + "/" + \
                              str(netmask_to_bits(self.LocalNetmask))
             conf["DSTNET"] = self.RemoteNetwork + "/" + \
                              str(netmask_to_bits(self.RemoteNetmask))
-            conf["SRCGW"] = self.LocalGateway
-            conf["DSTGW"] = self.RemoteGateway
+            conf["SRCGW"] = self.LocalGateway # pylint: disable-msg=E1101
+            conf["DSTGW"] = self.RemoteGateway # pylint: disable-msg=E1101
         else:
             for key in ["SRCNET", "DSTNET", "SRCGW", "DSTGW"]:
                 del conf[key]
@@ -140,9 +145,9 @@ class IPsec(IPsec_base):
             conf["IKE_METHOD"] = "PSK"
         else:
             del conf["IKE_METHOD"]
-            spi_entries = { "SPI_AH_IN" : "SPI_AH_IN",
-                            "SPI_AH_OUT" : "SPI_AH_OUT",
-                            "SPI_ESP_IN" : "SPI_ESP_IN",
+            spi_entries = { "SPI_AH_IN" : "SPI_AH_IN", 
+                            "SPI_AH_OUT" : "SPI_AH_OUT", 
+                            "SPI_ESP_IN" : "SPI_ESP_IN", 
                             "SPI_ESP_OUT" : "SPI_ESP_OUT" }
 
             for selfkey in spi_entries.keys():
@@ -180,14 +185,14 @@ class IPsec(IPsec_base):
 
         try:
             (ret, msg) =  generic_run_dialog(\
-                command,
-                param,
-                catchfd = (1,2),
-                title = _('IPsec activating...'),
+                command, 
+                param, 
+                catchfd = (1, 2), 
+                title = _('IPsec activating...'), 
                 label = _('Activating IPsec connection %s, '
-                          'please wait...') % (self.IPsecId),
+                          'please wait...') % (self.IPsecId), 
                 errlabel = _('Cannot activate '
-                             'IPsec connection %s!\n') % (self.IPsecId),
+                             'IPsec connection %s!\n') % (self.IPsecId), 
                 dialog = dialog)
 
         except RuntimeError, msg:
@@ -201,13 +206,13 @@ class IPsec(IPsec_base):
 
         try:
             (ret, msg) = generic_run_dialog(\
-                command, param,
-                catchfd = (1,2),
-                title = _('IPsec deactivating...'),
+                command, param, 
+                catchfd = (1, 2), 
+                title = _('IPsec deactivating...'), 
                 label = _('Deactivating IPsec connection %s, '
-                          'please wait...') % (self.IPsecId),
+                          'please wait...') % (self.IPsecId), 
                 errlabel = _('Cannot deactivate '
-                             'IPsec connection %s!\n') % (self.IPsecId),
+                             'IPsec connection %s!\n') % (self.IPsecId), 
                 dialog = dialog)
 
         except RuntimeError, msg:
@@ -215,5 +220,4 @@ class IPsec(IPsec_base):
 
         return ret, msg
 
-import netconfpkg
 netconfpkg.IPsec = IPsec

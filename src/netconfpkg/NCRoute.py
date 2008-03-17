@@ -1,7 +1,10 @@
-from netconfpkg import Route_base
+from netconfpkg import Route_base # pylint: disable-msg=E0611
 import re
 
 class Route(Route_base):
+    def __init__(self, *args, **kwargs):
+        Route_base.__init__(self, *args, **kwargs)
+        
     def testIP(self, value):
         ip_pattern = r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
         if re.match(ip_pattern,value):
@@ -10,6 +13,7 @@ class Route(Route_base):
             return False
             
     def test(self):
+        # pylint: disable-msg=E1101
         all_ok = self.testAddress(self.Address)
         all_ok &= self.testGateway(self.Gateway)
         all_ok &= self.testNetmask(self.Netmask)

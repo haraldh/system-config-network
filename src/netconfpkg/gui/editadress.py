@@ -20,10 +20,8 @@
 import gtk
 
 import gtk.glade
-import signal
 import os
 
-import string
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -63,14 +61,14 @@ class editAdressDialog:
     def on_Dialog_delete_event(self, *args):
         pass
 
-    def on_okButton_clicked(self, button):
+    def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
         self.dehydrate()
 
     def on_cancelButton_clicked(self, button):
         pass
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
+    def on_generic_entry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
+                                     pos, mstr):
         text = partial_text[0:length]
         if re.match(str, text):
             return
@@ -86,8 +84,8 @@ class editAdressDialog:
 
     def dehydrate(self):
         # FIXME: [183337] system-config-network doesn't check route fields
-        self.route.Address = string.strip(self.xml.get_widget('addressEntry').get_text())
-        self.route.Netmask = string.strip(self.xml.get_widget('netmaskEntry').get_text())
-        self.route.Gateway = string.strip(self.xml.get_widget('gatewayEntry').get_text())
+        self.route.Address = self.xml.get_widget('addressEntry').get_text().strip()
+        self.route.Netmask = self.xml.get_widget('netmaskEntry').get_text().strip()
+        self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text().strip()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

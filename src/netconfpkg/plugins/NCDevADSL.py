@@ -15,21 +15,22 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCDevice import *
+from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import DSL
-import netconfpkg
+from netconfpkg.NC_functions import DSL, getDeviceType
+import netconfpkg.NCDialup
 
 _devADSLDialog = None
 _devADSLWizard = None
 
 class DevADSL(Device):
-    def __init__(self, list = None, parent = None):
-        Device.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Device.__init__(self, clist, parent)
         self.Type = DSL
         self.Dialup = netconfpkg.NCDialup.DslDialup(None, self)
 
-    def load(self, name):
+    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
+        name = args[0]
         conf = ConfDevice(name)
         Device.load(self, name)
         self.Dialup.load(conf)
@@ -61,7 +62,7 @@ class DevADSL(Device):
 
     def getHWDevice(self):
         if self.Dialup:
-            return self.Dialup.EthDevice
+            return self.Dialup.EthDevice # pylint: disable-msg=E1101
         return None
 
 def setDevADSLDialog(dialog):

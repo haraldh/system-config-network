@@ -1,3 +1,4 @@
+"Simple Logging Module"
 #
 # log.py - debugging log service
 #
@@ -15,71 +16,87 @@
 #
 
 # FIXME: use pythons logging handlers
-# FIXME: [183066] DeprecationWarning: rhpl.log is deprecated
 import sys
 import syslog
+import types
+import time
 
 class LogFile:
+    "Simple Logging class"
     def __init__ (self, progname, level = 0, filename = None):
+        self.handle_func = None
         if filename == None:
-            import syslog
             self.syslog = syslog.openlog(progname, syslog.LOG_PID)
 
-            self.handler = self.syslog_handler
-            self.logFile = sys.stderr
+            self.handle_func = self.syslog_handler
+            self.logfile = sys.stderr
         else:
-            self.handler = self.file_handler
+            self.handle_func = self.file_handler
             self.open(filename)
 
         self.level = level
 
+    def handler(self, msg, level):
+        "logging callback"
+        self.handle_func(msg, level)
+
     def close (self):
-        try:
-            self.logFile.close ()
-        except:
-            pass
+        "close the log"
+        self.logfile.close ()
 
-    def open (self, file = None):
-        if type(file) == type("hello"):
+    def open (self, mfile = None):
+        "open the log"
+        if type(file) == types.StringType:
             try:
-                self.logFile = open(file, "w")
-            except:
-                self.logFile = sys.stderr
-        elif file:
-            self.logFile = file
+                self.logfile = open(mfile, "w")
+            except IOError:
+                self.logfile = sys.stderr
+        elif mfile:
+            self.logfile = mfile
         else:
-            self.logFile = sys.stderr
+            self.logfile = sys.stderr
 
-    def getFile (self):
-        return self.logFile.fileno ()
+    def get_file (self):
+        "get the file fd"
+        return self.logfile.fileno ()
 
     def __call__(self, format, *args):
-        self.handler (format % args)
+        "if you call the class object"
+        self.handler(format % args)
 
-    def file_handler (self, string, level = 0):
-        import time
-        self.logFile.write ("[%d] %s: %s\n" % (level, time.ctime(), string))
+    def file_handler (self, *args, **kwargs):
+        "file logging callback"
+        string = args[0]
+        level = kwargs.get("level", 0)
+        self.logfile.write ("[%d] %s: %s\n" % (level, time.ctime(), string))
 
-    def syslog_handler (self, string, level = syslog.LOG_INFO):
-        import syslog
+    def syslog_handler (self, *args, **kwargs):
+        "syslog logging callback"
+        string = args[0]
+        level = kwargs.get("level", syslog.LOG_INFO)
         syslog.syslog(level, string)
 
     def set_loglevel(self, level):
+        "set the preferred loglevel"
         self.level = level
 
     def log(self, level, message):
+        "log a normal message"
         if self.level >= level:
             self.handler(message, level = level)
 
-    def ladd(self, level, file, message):
+    def ladd(self, level, mfile, message):
+        "log an add message"
         if self.level >= level:
-            self.handler("++ %s \t%s" % (file, message))
+            self.handler("++ %s \t%s" % (mfile, message))
 
-    def ldel(self, level, file, message):
+    def ldel(self, level, mfile, message):
+        "log a del message"
         if self.level >= level:
-            self.handler("-- %s \t%s" % (file, message))
+            self.handler("-- %s \t%s" % (mfile, message))
 
-    def lch(self, level, file, message):
+    def lch(self, level, mfile, message):
+        "log a change message"
         if self.level >= level:
-            self.handler("-+ %s \t%s" % (file, message))
+            self.handler("-+ %s \t%s" % (mfile, message))
 

@@ -17,24 +17,24 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.gui.GUI_functions import *
-from netconfpkg import *
-from netconfpkg.gui import sharedtcpip
+from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
+from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.NC_functions import QETH, PROGNAME, _, NETCONFDIR
+from netconfpkg.gui.EthernetInterface import EthernetInterface
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
+from netconfpkg.plugins import NCDevEthernet
+from rhpl import ethtool
 import gtk
 import gtk.glade
-import string
 import os
 #from PTPHardwareDruid import PTPHardware
-from InterfaceCreator import InterfaceCreator
-from rhpl import ethtool
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.EthernetInterface import EthernetInterface
+#from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 
 class PTPInterface(EthernetInterface):
-    def __init__(self, toplevel=None, connection_type=QETH, do_save = 1,
+    def __init__(self, toplevel=None, connection_type=QETH, do_save = 1, 
                  druid = None):
-        EthernetInterface.__init__(self, toplevel,
-                                   connection_type,
+        EthernetInterface.__init__(self, toplevel, 
+                                   connection_type, 
                                    do_save, druid)
 
     def init_gui(self):
@@ -53,24 +53,24 @@ class PTPInterface(EthernetInterface):
             glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
-        xml_signal_autoconnect(self.xml,
+        xml_signal_autoconnect(self.xml, 
             { "on_hostname_config_page_back" : \
-              self.on_hostname_config_page_back,
+              self.on_hostname_config_page_back, 
               "on_hostname_config_page_next" : \
-              self.on_hostname_config_page_next,
+              self.on_hostname_config_page_next, 
               "on_hostname_config_page_prepare" : \
-              self.on_hostname_config_page_prepare,
-              "on_hw_config_page_back" : self.on_hw_config_page_back,
-              "on_hw_config_page_next" : self.on_hw_config_page_next,
-              "on_hw_config_page_prepare" : self.on_hw_config_page_prepare,
-              "on_finish_page_finish" : self.on_finish_page_finish,
-              "on_finish_page_prepare" : self.on_finish_page_prepare,
+              self.on_hostname_config_page_prepare, 
+              "on_hw_config_page_back" : self.on_hw_config_page_back, 
+              "on_hw_config_page_next" : self.on_hw_config_page_next, 
+              "on_hw_config_page_prepare" : self.on_hw_config_page_prepare, 
+              "on_finish_page_finish" : self.on_finish_page_finish, 
+              "on_finish_page_prepare" : self.on_finish_page_prepare, 
               "on_finish_page_back" : self.on_finish_page_back
               }
             )
 
         #print "EthernetInterface getDeviceList"
-        self.devicelist = getDeviceList()
+        self.devicelist = NCDeviceList.getDeviceList()
         df = getDeviceFactory()
         devclass = df.getDeviceClass(self.connection_type)
         if devclass:
@@ -119,7 +119,6 @@ class PTPInterface(EthernetInterface):
             self.device.Mtu = int(self.xml.get_widget('mtuEntry').get_text())
         except:
             self.device.Mtu = 9216
-        pass
 
     def on_hostname_config_page_prepare(self, druid_page, druid):
         if self.device.IP:
@@ -137,7 +136,6 @@ class PTPInterface(EthernetInterface):
         self.xml.get_widget('mtuEntry').set_text(str(self.device.Mtu))
 
         self.device.BootProto = 'none'
-        pass
 
     def on_hw_config_page_back(self, druid_page, druid):
         pass
@@ -166,7 +164,7 @@ class PTPInterface(EthernetInterface):
         return True
 
     def on_hw_config_page_prepare(self, druid_page, druid):
-        hardwarelist = getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.updateFromSystem()
 
         clist = self.xml.get_widget("hardwareList")
@@ -180,9 +178,8 @@ class PTPInterface(EthernetInterface):
 
 #XXX        clist.append([_("Other PTP Card")])
         clist.select_row (self.hw_sel, 0)
-        pass
 
-    def on_finish_page_back(self,druid_page, druid):
+    def on_finish_page_back(self, druid_page, druid):
         pass
 
     def on_finish_page_prepare(self, druid_page, druid):
@@ -200,7 +197,7 @@ class PTPInterface(EthernetInterface):
         s = _("You have selected the following information:") + "\n\n" + "   "\
             + _("Device:") + " " + str(self.device.DeviceId) + " "
 
-        hardwarelist = getHardwareList()
+        hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
             if hw.Name == self.device.Device:
                 s = s + "(" + hw.Description + ")"
@@ -214,7 +211,9 @@ class PTPInterface(EthernetInterface):
         druid_page.set_text(s)
 
     def on_finish_page_finish(self, druid_page, druid):
-        hardwarelist = getHardwareList()
+        # pylint: disable-msg=E1101
+        # pylint: disable-msg=E1103
+        hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
         #print self.devicelist
         self.devicelist.append(self.device)

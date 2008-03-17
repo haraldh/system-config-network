@@ -50,7 +50,7 @@ import os.path
 import signal
 
 try:
-    from netconfpkg.exception import handleException
+    from netconfpkg.exception import handleMyException
 except RuntimeError, msg:
     print _("Error: %s, %s!") % (PROGNAME, msg)
     if os.path.isfile("/usr/sbin/system-config-network-tui"):
@@ -62,9 +62,10 @@ except RuntimeError, msg:
 from version import PRG_VERSION
 from version import PRG_NAME
 from netconfpkg.NC_functions import log
-
-sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
-                                                         PROGNAME, PRG_VERSION)
+            
+from netconfpkg.exception import action, error, exitcode, installExceptionHandler
+    
+installExceptionHandler(PROGNAME, PRG_VERSION)
 
 try:
     import gtk
@@ -171,18 +172,13 @@ def runit(splash = None):
 
         gtk.main()
 
-    except SystemExit, code:
-        sys.exit(code)
     except NCException, e:
         NC_functions.generic_error_dialog(str(e))
         return
     except:
-        if splash_window:
-            splash_window.destroy()
-            del splash_window
-        handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
+        handleMyException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
-class BadUsage: pass
+class BadUsage(Exception): pass
 
 def main(cmdline):
     import getopt
@@ -260,16 +256,13 @@ def main(cmdline):
         import tempfile
         from hotshot import Profile
         import hotshot.stats
-        filename = tempfile.mktemp()
+        (fd, filename) = tempfile.mkstemp()
         prof = Profile(filename)
-        try:
-            prof = prof.runcall(runit)
-        except SystemExit:
-            pass
-
+        prof = prof.runcall(runit)
         s = hotshot.stats.load(filename)
         s.strip_dirs().sort_stats('time').print_stats(20)
         s.strip_dirs().sort_stats('cumulative').print_stats(20)
+        os.close(fd)
         os.unlink(filename)
     else:
         runit(splash)

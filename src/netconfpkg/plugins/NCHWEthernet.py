@@ -1,3 +1,4 @@
+"Ethernet Hardware Device Plugin"
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
 
@@ -17,39 +18,53 @@
 
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
-from netconfpkg.NC_functions import *
+from netconfpkg.NC_functions import ETHERNET, getHardwareType, log, _
+
 _hwEthernetDialog = None
 _hwEthernetWizard = None
 
 class HwEthernet(Hardware):
-    def __init__(self, list = None, parent = None):
-        Hardware.__init__(self, list, parent)
-        self.Type = ETHERNET
-        self.createCard()
+    "Ethernet Hardware Device Class"
+    def __init__(self, mlist = None, parent = None):
+        Hardware.__init__(self, mlist, parent)
+        self.Type = ETHERNET 
+        self.createCard() # pylint: disable-msg=E1101
 
     def getDialog(self):
-        if _hwEthernetDialog == None: return None
+        """
+        returns a gtk dialog
+        """
+        if _hwEthernetDialog == None: 
+            return None
         return _hwEthernetDialog(self).xml.get_widget("Dialog")
 
     def getWizard(self):
+        """
+        returns a gtk wizard
+        """
         return _hwEthernetWizard
 
-    def save(self):
+    def save(self, *args, **kwargs): # pylint: disable-msg=W0613
+        """
+        save the configuration
+        """
+        # pylint: disable-msg=E1101
         from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
 
         hl = getHardwareList()
         modules = getMyConfModules()
         dic = modules[self.Name]
-        dic['alias'] = self.Card.ModuleName
+        dic['alias'] = self.Card.ModuleName 
         modules[self.Name] = dic
-        log.lch(2, modules.filename, "%s alias %s" % (self.Name, self.Card.ModuleName))
+        log.lch(2, modules.filename, "%s alias %s" % (self.Name, 
+                                                      self.Card.ModuleName)) 
         # No, no, no... only delete known options!!!
         #WRONG: modules[self.Card.ModuleName] = {}
         #WRONG: modules[self.Card.ModuleName]['options'] = {}
         #
         # Better do it this way!
         if modules[self.Card.ModuleName].has_key('options'):
-            for (key, confkey) in hl.keydict.items():
+            for confkey in hl.keydict.values():
                 if modules[self.Card.ModuleName]\
                        ['options'].has_key(confkey):
                     del modules[self.Card.ModuleName]['options'][confkey]
@@ -68,6 +83,9 @@ class HwEthernet(Hardware):
                 modules[self.Card.ModuleName] = dic
 
     def isType(self, hardware):
+        """
+        check if device is of type Ethernet
+        """
         if hardware.Type == ETHERNET:
             return True
         if getHardwareType(hardware.Hardware) == ETHERNET:
@@ -75,15 +93,23 @@ class HwEthernet(Hardware):
         return False
 
 def setHwEthernetDialog(dialog):
-    global _hwEthernetDialog
+    """
+    Set the gtk Dialog
+    """
+    global _hwEthernetDialog # pylint: disable-msg=W0603
     _hwEthernetDialog = dialog
 
 def setHwEthernetWizard(wizard):
-    global _hwEthernetWizard
+    """
+    Set the gtk Wizard
+    """
+    global _hwEthernetWizard # pylint: disable-msg=W0603
     _hwEthernetWizard = wizard
 
-df = getHardwareFactory()
-df.register(HwEthernet, ETHERNET)
+__df = getHardwareFactory()
+__df.register(HwEthernet, ETHERNET)
+del __df
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
 __date__ = "$Date: 2007/03/14 09:29:37 $"
 __version__ = "$Revision: 1.9 $"
