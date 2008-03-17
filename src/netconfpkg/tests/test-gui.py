@@ -95,9 +95,8 @@ class TestGUI(unittest.TestCase):
     def setupChroot(self):
         cmd = "[ -d '%s' ] && rm -fr '%s'" % (CHROOT, CHROOT)
         os.system(cmd)
-        cmd = "mkdir '%s'; cp -ar '%s/etc' '%s'" % (CHROOT, srcdir, CHROOT)
+        cmd = "cp -ar '%s/test-root' '%s';chmod -R ug+rw %s" % (srcdir, CHROOT, CHROOT)
         os.system(cmd)
-
 
     def setUp(self):
         self.oldstderr = sys.stderr
@@ -107,7 +106,7 @@ class TestGUI(unittest.TestCase):
     def tearDown(self):
         sys.stderr = self.oldstderr
         sys.stdout = self.oldstdout
-        os.system("rm -fr %s" % CHROOT)
+        os.system("rm -fr '%s'" % CHROOT)
 
     def test00Basic(self):
         """Run the GUI and click Quit"""
@@ -121,7 +120,7 @@ class TestGUI(unittest.TestCase):
         run("./netconf.py -d -r %s" % CHROOT)
         scn = None
         appname = None
-        for str in [ "scn", "system-config-network", "scn" ]:
+        for str in [ "netconf.py", "scn", "system-config-network" ]:
             try:
                 scn = tree.root.application(str)
                 appname = str
@@ -132,17 +131,17 @@ class TestGUI(unittest.TestCase):
                 break
         else:
             self.fail()
+            
         maindialog = scn.window('Network Configuration')
         line_eth0 = maindialog.child(roleName = 'table cell', name='eth0')
         line_eth0.rawClick()
         scn.button("Edit").click()
-        #scn = tree.root.application(appname)
         ethernetdialog = scn.dialog('Ethernet Device')
         ethernetdialog.button("OK").click()
-        scn.menuItem('Save').click()
-        scn.child(roleName="alert", recursive=False, name="Information").button("OK").click()
+        #scn.menuItem('Save').click()
         scn.menuItem('Quit').click()
-        #scn.child(roleName="alert", recursive=False, name="Question").button("Yes").click()
+        scn.child(roleName="alert", recursive=False, name="Question").button("Yes").click()
+        scn.child(roleName="alert", recursive=False, name="Information").button("OK").click()
 
 
 def suite():

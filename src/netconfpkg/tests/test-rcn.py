@@ -21,15 +21,154 @@ else:
 
 CHROOT = os.path.abspath(os.getcwd()) + "/./rcntest-root"
 
-BASICSETUP="""DeviceList.Ethernet.eth0.Type=Ethernet
+BASICSETUP="""DeviceList.Ethernet.eth0.AllowUser=False
+DeviceList.Ethernet.eth0.AutoDNS=True
 DeviceList.Ethernet.eth0.BootProto=dhcp
 DeviceList.Ethernet.eth0.Device=eth0
-DeviceList.Ethernet.eth0.OnBoot=True
 DeviceList.Ethernet.eth0.DeviceId=eth0
-ProfileList.default.ActiveDevices.1=eth0
-ProfileList.default.HostsList.1.IP=127.0.0.1
-ProfileList.default.HostsList.1.Hostname=localhost.localdomain
+DeviceList.Ethernet.eth0.IPv6Init=False
+DeviceList.Ethernet.eth0.NMControlled=False
+DeviceList.Ethernet.eth0.OnBoot=True
+DeviceList.Ethernet.eth0.Type=Ethernet
+DeviceList.ISDN.1net4you0.AllowUser=True
+DeviceList.ISDN.1net4you0.AutoDNS=True
+DeviceList.ISDN.1net4you0.BootProto=dialup
+DeviceList.ISDN.1net4you0.Device=ippp0
+DeviceList.ISDN.1net4you0.DeviceId=1net4you0
+DeviceList.ISDN.1net4you0.Dialup.Authentication=+pap -chap
+DeviceList.ISDN.1net4you0.Dialup.ChannelBundling=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.AdressControl=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.BSD=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.CCP=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.ProtoField=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.VJID=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.VJTcpIp=False
+DeviceList.ISDN.1net4you0.Dialup.DefRoute=True
+DeviceList.ISDN.1net4you0.Dialup.DialMode=manual
+DeviceList.ISDN.1net4you0.Dialup.EncapMode=syncppp
+DeviceList.ISDN.1net4you0.Dialup.HangupTimeout=600
+DeviceList.ISDN.1net4you0.Dialup.Login=web
+DeviceList.ISDN.1net4you0.Dialup.Password=None
+DeviceList.ISDN.1net4you0.Dialup.Persist=False
+DeviceList.ISDN.1net4you0.Dialup.PhoneNumber=019256252
+DeviceList.ISDN.1net4you0.Dialup.ProviderName=1net4you
+DeviceList.ISDN.1net4you0.Dialup.Secure=False
+DeviceList.ISDN.1net4you0.OnBoot=False
+DeviceList.ISDN.1net4you0.Type=ISDN
+DeviceList.Modem.1net4you.AllowUser=True
+DeviceList.Modem.1net4you.AutoDNS=True
+DeviceList.Modem.1net4you.BootProto=dialup
+DeviceList.Modem.1net4you.Device=ppp0
+DeviceList.Modem.1net4you.DeviceId=1net4you
+DeviceList.Modem.1net4you.Dialup.Compression.AdressControl=False
+DeviceList.Modem.1net4you.Dialup.Compression.BSD=False
+DeviceList.Modem.1net4you.Dialup.Compression.CCP=False
+DeviceList.Modem.1net4you.Dialup.Compression.ProtoField=False
+DeviceList.Modem.1net4you.Dialup.Compression.VJID=False
+DeviceList.Modem.1net4you.Dialup.Compression.VJTcpIp=False
+DeviceList.Modem.1net4you.Dialup.DefRoute=True
+DeviceList.Modem.1net4you.Dialup.DialMode=manual
+DeviceList.Modem.1net4you.Dialup.Inherits=Modem0
+DeviceList.Modem.1net4you.Dialup.Login=web
+DeviceList.Modem.1net4you.Dialup.Password=web
+DeviceList.Modem.1net4you.Dialup.Persist=False
+DeviceList.Modem.1net4you.Dialup.PhoneNumber=019256252
+DeviceList.Modem.1net4you.Dialup.ProviderName=1net4you
+DeviceList.Modem.1net4you.Dialup.StupidMode=True
+DeviceList.Modem.1net4you.OnBoot=False
+DeviceList.Modem.1net4you.Type=Modem
+DeviceList.Token Ring.tr0.AllowUser=False
+DeviceList.Token Ring.tr0.AutoDNS=True
+DeviceList.Token Ring.tr0.BootProto=dhcp
+DeviceList.Token Ring.tr0.Device=tr0
+DeviceList.Token Ring.tr0.DeviceId=tr0
+DeviceList.Token Ring.tr0.IPv6Init=False
+DeviceList.Token Ring.tr0.OnBoot=True
+DeviceList.Token Ring.tr0.Type=Token Ring
+DeviceList.Wireless.eth3.AllowUser=False
+DeviceList.Wireless.eth3.AutoDNS=True
+DeviceList.Wireless.eth3.BootProto=dhcp
+DeviceList.Wireless.eth3.Device=eth3
+DeviceList.Wireless.eth3.DeviceId=eth3
+DeviceList.Wireless.eth3.Domain=
+DeviceList.Wireless.eth3.HardwareAddress=
+DeviceList.Wireless.eth3.Hostname=
+DeviceList.Wireless.eth3.IP=
+DeviceList.Wireless.eth3.IPv6Init=False
+DeviceList.Wireless.eth3.Netmask=
+DeviceList.Wireless.eth3.OnBoot=False
+DeviceList.Wireless.eth3.Type=Wireless
+DeviceList.Wireless.eth3.Wireless.Channel=1
+DeviceList.Wireless.eth3.Wireless.EssId=
+DeviceList.Wireless.eth3.Wireless.Key=
+DeviceList.Wireless.eth3.Wireless.Mode=Auto
+DeviceList.Wireless.eth3.Wireless.Rate=auto
+HardwareList.Ethernet.eth0.Card.ModuleName=3c501
+HardwareList.Ethernet.eth0.Description=3c501
+HardwareList.Ethernet.eth0.Name=eth0
+HardwareList.Ethernet.eth0.Status=configured
+HardwareList.Ethernet.eth0.Type=Ethernet
+HardwareList.Ethernet.eth1.Card.ModuleName=3c501
+HardwareList.Ethernet.eth1.Description=3c501
+HardwareList.Ethernet.eth1.Name=eth1
+HardwareList.Ethernet.eth1.Status=configured
+HardwareList.Ethernet.eth1.Type=Ethernet
+HardwareList.Ethernet.eth2.Card.ModuleName=3c501
+HardwareList.Ethernet.eth2.Description=3c501
+HardwareList.Ethernet.eth2.Name=eth2
+HardwareList.Ethernet.eth2.Status=configured
+HardwareList.Ethernet.eth2.Type=Ethernet
+HardwareList.Ethernet.eth3.Card.ModuleName=3c501
+HardwareList.Ethernet.eth3.Description=3c501
+HardwareList.Ethernet.eth3.Name=eth3
+HardwareList.Ethernet.eth3.Status=configured
+HardwareList.Ethernet.eth3.Type=Ethernet
+HardwareList.ISDN.ISDN Card 0.Card.ChannelProtocol=2
+HardwareList.ISDN.ISDN Card 0.Card.DeviceId=
+HardwareList.ISDN.ISDN Card 0.Card.DriverId=HiSax
+HardwareList.ISDN.ISDN Card 0.Card.Firmware=
+HardwareList.ISDN.ISDN Card 0.Card.IRQ=5
+HardwareList.ISDN.ISDN Card 0.Card.IoPort1=
+HardwareList.ISDN.ISDN Card 0.Card.IoPort2=
+HardwareList.ISDN.ISDN Card 0.Card.IoPort=0x300
+HardwareList.ISDN.ISDN Card 0.Card.Mem=
+HardwareList.ISDN.ISDN Card 0.Card.ModuleName=hisax
+HardwareList.ISDN.ISDN Card 0.Card.Type=30
+HardwareList.ISDN.ISDN Card 0.Card.VendorId=
+HardwareList.ISDN.ISDN Card 0.Description=ACER P10
+HardwareList.ISDN.ISDN Card 0.Name=ISDN Card 0
+HardwareList.ISDN.ISDN Card 0.Status=configured
+HardwareList.ISDN.ISDN Card 0.Type=ISDN
+HardwareList.Modem.Modem0.Description=Generic Modem
+HardwareList.Modem.Modem0.Modem.BaudRate=115200
+HardwareList.Modem.Modem0.Modem.DeviceName=/dev/modem
+HardwareList.Modem.Modem0.Modem.DialCommand=ATDT
+HardwareList.Modem.Modem0.Modem.FlowControl=CRTSCTS
+HardwareList.Modem.Modem0.Modem.InitString=ATZ
+HardwareList.Modem.Modem0.Modem.ModemVolume=0
+HardwareList.Modem.Modem0.Name=Modem0
+HardwareList.Modem.Modem0.Status=configured
+HardwareList.Modem.Modem0.Type=Modem
+HardwareList.Token Ring.tr0.Card.ModuleName=olympic
+HardwareList.Token Ring.tr0.Description=olympic
+HardwareList.Token Ring.tr0.Name=tr0
+HardwareList.Token Ring.tr0.Status=configured
+HardwareList.Token Ring.tr0.Type=Token Ring
+ProfileList.default.Active=True
+ProfileList.default.ActiveDevices.1=1net4you0
+ProfileList.default.ActiveDevices.2=eth3
+ProfileList.default.ActiveDevices.3=1net4you
+ProfileList.default.ActiveDevices.4=eth0
+ProfileList.default.ActiveDevices.5=tr0
+ProfileList.default.DNS.Domainname=
+ProfileList.default.DNS.Hostname=test
+ProfileList.default.DNS.PrimaryDNS=1.1.1.1
+ProfileList.default.DNS.SearchList.1=home
+ProfileList.default.DNS.SecondaryDNS=2.2.2.2
+ProfileList.default.DNS.TertiaryDNS=3.3.3.3
 ProfileList.default.HostsList.1.AliasList.1=localhost
+ProfileList.default.HostsList.1.Hostname=localhost.localdomain
+ProfileList.default.HostsList.1.IP=127.0.0.1
 ProfileList.default.HostsList.2.AliasList.1=localhost6
 ProfileList.default.HostsList.2.Hostname=localhost6.localdomain6
 ProfileList.default.HostsList.2.IP=::1
@@ -37,15 +176,6 @@ ProfileList.default.HostsList.3.AliasList.1=test1
 ProfileList.default.HostsList.3.AliasList.2=test2
 ProfileList.default.HostsList.3.Hostname=test
 ProfileList.default.HostsList.3.IP=10.1.1.1
-ProfileList.default.DNS.SecondaryDNS=172.16.2.15
-ProfileList.default.DNS.SearchList.1=stuttgart.redhat.com
-ProfileList.default.DNS.SearchList.2=devel.redhat.com
-ProfileList.default.DNS.SearchList.3=redhat.com
-ProfileList.default.DNS.Domainname=
-ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
-ProfileList.default.DNS.TertiaryDNS=
-ProfileList.default.DNS.PrimaryDNS=172.16.2.2
-ProfileList.default.Active=True
 ProfileList.default.ProfileName=default
 """
 
@@ -56,16 +186,15 @@ def writeConf(filename, str):
     file.write(str)
     file.close()
 
-def sortStr(str):
-    str = string.split(str, '\n')
-    str.sort()
-    #str = string.join(str, '\n')
-    while str[0] == "":
-        str = str[1:]
-    return str
+def sortStr(mstr):
+    mstr = mstr.split('\n')
+    mstr.sort()
+    while mstr[0] == "":
+        mstr = mstr[1:]
+    return mstr
 
 
-def expectConf(fileorlines, str):
+def expectConf(fileorlines, mstr):
     if os.path.isfile(fileorlines):
         file = open(fileorlines, 'r', -1)
         lines = file.readlines()
@@ -77,42 +206,41 @@ def expectConf(fileorlines, str):
     else:
         lines = sortStr(fileorlines)
 
-    str = string.split(str, '\n')
-    str.sort()
-    #str = string.join(str, '\n')
-    if str[0] == "":
-        str = str[1:]
 
-    l = min(len(lines), len(str))
+    mstr = sortStr(mstr)
+
+    l = min(len(lines), len(mstr))
 
     for i in xrange(l):
-        if (lines[i] != str[i]):
-            print "\n- %s\n+ %s\n" % (str[i], lines[i])
+        if (lines[i] != mstr[i]):
+            print
+            if i >= 2:
+                print "  %s" % (mstr[i-2])
+            if i >= 1:
+                print "  %s" % (mstr[i-1])
+            print "- %s\n+ %s" % (mstr[i], lines[i])
+            if (i+1) < l:
+                print "- %s\n+ %s" % (mstr[i+1], lines[i+1])
+            if (i+2) < l:
+                print "- %s\n+ %s" % (mstr[i+2], lines[i+2])
+            print
             break
     else:
         return True
 
-    print string.join(lines, "\n")
+    print "\n".join(lines)
     return False
-
-
 
 class TestRCN(unittest.TestCase):
     def setupChroot(self):
         cmd = "[ -d '%s' ] && rm -fr '%s'" % (CHROOT, CHROOT)
-        #print cmd
-        #sys.stdout.flush()
         os.system(cmd)
-        cmd = "mkdir '%s'; cp -ar '%s/etc' '%s';chmod -R ug+rw %s" % (CHROOT, srcdir, CHROOT, CHROOT)
-        #print cmd
-        #sys.stdout.flush()
+        cmd = "cp -ar '%s/test-root' '%s';chmod -R ug+rw %s" % (srcdir, CHROOT, CHROOT)
         os.system(cmd)
-
 
     def setUp(self):
         self.oldstderr = sys.stderr
         self.oldstdout = sys.stdout
-
 
     def tearDown(self):
         sys.stderr = self.oldstderr
@@ -126,6 +254,7 @@ class TestRCN(unittest.TestCase):
 
     def getConf(self):
         PROGNAME='system-config-network'
+        import netconfpkg
         from netconfpkg import NC_functions
         NC_functions.prepareRoot(CHROOT)
 
@@ -140,9 +269,9 @@ class TestRCN(unittest.TestCase):
         log.set_loglevel(NC_functions.getVerboseLevel())
 
         devlists = [
-#            NCHardwareList.getHardwareList(),
 #            NCIPsecList.getIPsecList(),
             NCDeviceList.getDeviceList(),
+            NCHardwareList.getHardwareList(),
             NCProfileList.getProfileList(),
             ]
 
@@ -160,7 +289,7 @@ class TestRCN(unittest.TestCase):
         sys.stdout = open("stdout", "w")
         sys.stderr = open("stderr", "w")
         from netconfpkg.NC_functions import log
-        log.open()
+        log.open(sys.stderr)
 
     def redirectEnd(self):
         sys.stderr.close()
@@ -175,7 +304,9 @@ class TestRCN(unittest.TestCase):
         self.setupChroot()
         self.redirectStd()
         import netconf_cmd
-        cmdline = [ "-d", "-o", "--root=" + CHROOT ]
+	import netconfpkg
+        netconfpkg.TESTENV=True
+        cmdline = [ "-dh", "-o", "--root=" + CHROOT ]
         netconf_cmd.main(cmdline)
         expect = BASICSETUP
         self.redirectEnd()
@@ -216,21 +347,151 @@ class TestRCN(unittest.TestCase):
         self.save()
 
         devstr = self.getConf()
-        expect = """DeviceList.Ethernet.eth0.BootProto=dhcp
+        expect = """DeviceList.Ethernet.eth0.AllowUser=False
+DeviceList.Ethernet.eth0.AutoDNS=True
+DeviceList.Ethernet.eth0.BootProto=dhcp
 DeviceList.Ethernet.eth0.Device=eth0
 DeviceList.Ethernet.eth0.DeviceId=eth0
+DeviceList.Ethernet.eth0.IPv6Init=False
+DeviceList.Ethernet.eth0.NMControlled=False
 DeviceList.Ethernet.eth0.OnBoot=True
 DeviceList.Ethernet.eth0.Type=Ethernet
+DeviceList.ISDN.1net4you0.AllowUser=True
+DeviceList.ISDN.1net4you0.AutoDNS=True
+DeviceList.ISDN.1net4you0.BootProto=dialup
+DeviceList.ISDN.1net4you0.Device=ippp0
+DeviceList.ISDN.1net4you0.DeviceId=1net4you0
+DeviceList.ISDN.1net4you0.Dialup.Authentication=+pap -chap
+DeviceList.ISDN.1net4you0.Dialup.ChannelBundling=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.AdressControl=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.BSD=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.CCP=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.ProtoField=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.VJID=False
+DeviceList.ISDN.1net4you0.Dialup.Compression.VJTcpIp=False
+DeviceList.ISDN.1net4you0.Dialup.DefRoute=True
+DeviceList.ISDN.1net4you0.Dialup.DialMode=manual
+DeviceList.ISDN.1net4you0.Dialup.EncapMode=syncppp
+DeviceList.ISDN.1net4you0.Dialup.HangupTimeout=600
+DeviceList.ISDN.1net4you0.Dialup.Login=web
+DeviceList.ISDN.1net4you0.Dialup.Password=None
+DeviceList.ISDN.1net4you0.Dialup.Persist=False
+DeviceList.ISDN.1net4you0.Dialup.PhoneNumber=019256252
+DeviceList.ISDN.1net4you0.Dialup.ProviderName=1net4you
+DeviceList.ISDN.1net4you0.Dialup.Secure=False
+DeviceList.ISDN.1net4you0.OnBoot=False
+DeviceList.ISDN.1net4you0.Type=ISDN
+DeviceList.Modem.1net4you.AllowUser=True
+DeviceList.Modem.1net4you.AutoDNS=True
+DeviceList.Modem.1net4you.BootProto=dialup
+DeviceList.Modem.1net4you.Device=ppp0
+DeviceList.Modem.1net4you.DeviceId=1net4you
+DeviceList.Modem.1net4you.Dialup.Compression.AdressControl=False
+DeviceList.Modem.1net4you.Dialup.Compression.BSD=False
+DeviceList.Modem.1net4you.Dialup.Compression.CCP=False
+DeviceList.Modem.1net4you.Dialup.Compression.ProtoField=False
+DeviceList.Modem.1net4you.Dialup.Compression.VJID=False
+DeviceList.Modem.1net4you.Dialup.Compression.VJTcpIp=False
+DeviceList.Modem.1net4you.Dialup.DefRoute=True
+DeviceList.Modem.1net4you.Dialup.DialMode=manual
+DeviceList.Modem.1net4you.Dialup.Inherits=Modem0
+DeviceList.Modem.1net4you.Dialup.Login=web
+DeviceList.Modem.1net4you.Dialup.Password=web
+DeviceList.Modem.1net4you.Dialup.Persist=False
+DeviceList.Modem.1net4you.Dialup.PhoneNumber=019256252
+DeviceList.Modem.1net4you.Dialup.ProviderName=1net4you
+DeviceList.Modem.1net4you.Dialup.StupidMode=True
+DeviceList.Modem.1net4you.OnBoot=False
+DeviceList.Modem.1net4you.Type=Modem
+DeviceList.Token Ring.tr0.AllowUser=False
+DeviceList.Token Ring.tr0.AutoDNS=True
+DeviceList.Token Ring.tr0.BootProto=dhcp
+DeviceList.Token Ring.tr0.Device=tr0
+DeviceList.Token Ring.tr0.DeviceId=tr0
+DeviceList.Token Ring.tr0.IPv6Init=False
+DeviceList.Token Ring.tr0.OnBoot=True
+DeviceList.Token Ring.tr0.Type=Token Ring
+DeviceList.Wireless.eth3.AllowUser=False
+DeviceList.Wireless.eth3.AutoDNS=True
+DeviceList.Wireless.eth3.BootProto=dhcp
+DeviceList.Wireless.eth3.Device=eth3
+DeviceList.Wireless.eth3.DeviceId=eth3
+DeviceList.Wireless.eth3.Domain=
+DeviceList.Wireless.eth3.HardwareAddress=
+DeviceList.Wireless.eth3.Hostname=
+DeviceList.Wireless.eth3.IP=
+DeviceList.Wireless.eth3.IPv6Init=False
+DeviceList.Wireless.eth3.Netmask=
+DeviceList.Wireless.eth3.OnBoot=False
+DeviceList.Wireless.eth3.Type=Wireless
+DeviceList.Wireless.eth3.Wireless.Channel=1
+DeviceList.Wireless.eth3.Wireless.EssId=
+DeviceList.Wireless.eth3.Wireless.Key=
+DeviceList.Wireless.eth3.Wireless.Mode=Auto
+DeviceList.Wireless.eth3.Wireless.Rate=auto
+HardwareList.Ethernet.eth0.Card.ModuleName=3c501
+HardwareList.Ethernet.eth0.Description=3c501
+HardwareList.Ethernet.eth0.Name=eth0
+HardwareList.Ethernet.eth0.Status=configured
+HardwareList.Ethernet.eth0.Type=Ethernet
+HardwareList.Ethernet.eth1.Card.ModuleName=3c501
+HardwareList.Ethernet.eth1.Description=3c501
+HardwareList.Ethernet.eth1.Name=eth1
+HardwareList.Ethernet.eth1.Status=configured
+HardwareList.Ethernet.eth1.Type=Ethernet
+HardwareList.Ethernet.eth2.Card.ModuleName=3c501
+HardwareList.Ethernet.eth2.Description=3c501
+HardwareList.Ethernet.eth2.Name=eth2
+HardwareList.Ethernet.eth2.Status=configured
+HardwareList.Ethernet.eth2.Type=Ethernet
+HardwareList.Ethernet.eth3.Card.ModuleName=3c501
+HardwareList.Ethernet.eth3.Description=3c501
+HardwareList.Ethernet.eth3.Name=eth3
+HardwareList.Ethernet.eth3.Status=configured
+HardwareList.Ethernet.eth3.Type=Ethernet
+HardwareList.ISDN.ISDN Card 0.Card.ChannelProtocol=2
+HardwareList.ISDN.ISDN Card 0.Card.DeviceId=
+HardwareList.ISDN.ISDN Card 0.Card.DriverId=HiSax
+HardwareList.ISDN.ISDN Card 0.Card.Firmware=
+HardwareList.ISDN.ISDN Card 0.Card.IRQ=5
+HardwareList.ISDN.ISDN Card 0.Card.IoPort1=
+HardwareList.ISDN.ISDN Card 0.Card.IoPort2=
+HardwareList.ISDN.ISDN Card 0.Card.IoPort=0x300
+HardwareList.ISDN.ISDN Card 0.Card.Mem=
+HardwareList.ISDN.ISDN Card 0.Card.ModuleName=hisax
+HardwareList.ISDN.ISDN Card 0.Card.Type=30
+HardwareList.ISDN.ISDN Card 0.Card.VendorId=
+HardwareList.ISDN.ISDN Card 0.Description=ACER P10
+HardwareList.ISDN.ISDN Card 0.Name=ISDN Card 0
+HardwareList.ISDN.ISDN Card 0.Status=configured
+HardwareList.ISDN.ISDN Card 0.Type=ISDN
+HardwareList.Modem.Modem0.Description=Generic Modem
+HardwareList.Modem.Modem0.Modem.BaudRate=115200
+HardwareList.Modem.Modem0.Modem.DeviceName=/dev/modem
+HardwareList.Modem.Modem0.Modem.DialCommand=ATDT
+HardwareList.Modem.Modem0.Modem.FlowControl=CRTSCTS
+HardwareList.Modem.Modem0.Modem.InitString=ATZ
+HardwareList.Modem.Modem0.Modem.ModemVolume=0
+HardwareList.Modem.Modem0.Name=Modem0
+HardwareList.Modem.Modem0.Status=configured
+HardwareList.Modem.Modem0.Type=Modem
+HardwareList.Token Ring.tr0.Card.ModuleName=olympic
+HardwareList.Token Ring.tr0.Description=olympic
+HardwareList.Token Ring.tr0.Name=tr0
+HardwareList.Token Ring.tr0.Status=configured
+HardwareList.Token Ring.tr0.Type=Token Ring
 ProfileList.default.Active=False
-ProfileList.default.ActiveDevices.1=eth0
+ProfileList.default.ActiveDevices.1=1net4you0
+ProfileList.default.ActiveDevices.2=eth3
+ProfileList.default.ActiveDevices.3=1net4you
+ProfileList.default.ActiveDevices.4=eth0
+ProfileList.default.ActiveDevices.5=tr0
 ProfileList.default.DNS.Domainname=
-ProfileList.default.DNS.Hostname=jever.stuttgart.redhat.com
-ProfileList.default.DNS.PrimaryDNS=172.16.2.2
-ProfileList.default.DNS.SearchList.1=stuttgart.redhat.com
-ProfileList.default.DNS.SearchList.2=devel.redhat.com
-ProfileList.default.DNS.SearchList.3=redhat.com
-ProfileList.default.DNS.SecondaryDNS=172.16.2.15
-ProfileList.default.DNS.TertiaryDNS=
+ProfileList.default.DNS.Hostname=test
+ProfileList.default.DNS.PrimaryDNS=1.1.1.1
+ProfileList.default.DNS.SearchList.1=home
+ProfileList.default.DNS.SecondaryDNS=2.2.2.2
+ProfileList.default.DNS.TertiaryDNS=3.3.3.3
 ProfileList.default.HostsList.1.AliasList.1=localhost
 ProfileList.default.HostsList.1.Hostname=localhost.localdomain
 ProfileList.default.HostsList.1.IP=127.0.0.1
@@ -243,15 +504,17 @@ ProfileList.default.HostsList.3.Hostname=test
 ProfileList.default.HostsList.3.IP=10.1.1.1
 ProfileList.default.ProfileName=default
 ProfileList.newprofile.Active=True
-ProfileList.newprofile.ActiveDevices.1=eth0
+ProfileList.newprofile.ActiveDevices.1=1net4you0
+ProfileList.newprofile.ActiveDevices.2=eth3
+ProfileList.newprofile.ActiveDevices.3=1net4you
+ProfileList.newprofile.ActiveDevices.4=eth0
+ProfileList.newprofile.ActiveDevices.5=tr0
 ProfileList.newprofile.DNS.Domainname=
-ProfileList.newprofile.DNS.Hostname=jever.stuttgart.redhat.com
-ProfileList.newprofile.DNS.PrimaryDNS=172.16.2.2
-ProfileList.newprofile.DNS.SearchList.1=stuttgart.redhat.com
-ProfileList.newprofile.DNS.SearchList.2=devel.redhat.com
-ProfileList.newprofile.DNS.SearchList.3=redhat.com
-ProfileList.newprofile.DNS.SecondaryDNS=172.16.2.15
-ProfileList.newprofile.DNS.TertiaryDNS=
+ProfileList.newprofile.DNS.Hostname=test
+ProfileList.newprofile.DNS.PrimaryDNS=1.1.1.1
+ProfileList.newprofile.DNS.SearchList.1=home
+ProfileList.newprofile.DNS.SecondaryDNS=2.2.2.2
+ProfileList.newprofile.DNS.TertiaryDNS=3.3.3.3
 ProfileList.newprofile.HostsList.1.AliasList.1=localhost
 ProfileList.newprofile.HostsList.1.Hostname=localhost.localdomain
 ProfileList.newprofile.HostsList.1.IP=127.0.0.1

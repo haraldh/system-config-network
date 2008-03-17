@@ -607,7 +607,13 @@ class HardwareList(HardwareList_base):
         self.__delslice__(0, len(self))
 
         # FIXME: move HW detection to NCDev*
-        self.updateFromSystem()
+        import netconfpkg
+        dosysupdate=True
+        if hasattr(netconfpkg, 'TESTENV') and netconfpkg.TESTENV:
+            dosysupdate=False
+        if dosysupdate:
+            self.updateFromSystem()
+
         self.updateFromModules()
 
         for hw in self:

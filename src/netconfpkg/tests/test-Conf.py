@@ -49,6 +49,7 @@ c\td
 """
         # read
         writeConf(self.filename, str)
+        from netconfpkg.conf import Conf        
         conf = Conf.Conf(self.filename)
         os.unlink(self.filename)
         # write
@@ -73,6 +74,7 @@ c=d
 """
         # read
         writeConf(self.filename, str)
+        from netconfpkg.conf import Conf
         conf = Conf.ConfShellVar(self.filename)
         os.unlink(self.filename)
         # modify
@@ -124,6 +126,7 @@ alias foo* bar
 """
         # read
         writeConf(self.filename, str)
+        from netconfpkg.conf import Conf
         conf = Conf.ConfModules(self.filename)
         os.unlink(self.filename)
         # write
@@ -167,6 +170,7 @@ alias foo* bar
 """
         # read
         writeConf(self.filename, str)
+        from netconfpkg.conf import Conf
         conf = Conf.ConfModules(self.filename)
         os.unlink(self.filename)
         # modify
