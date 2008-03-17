@@ -39,7 +39,7 @@ import os
 import os.path
 import string
 from netconfpkg import *
-from genClass import ParseError
+from netconfpkg.genClass import ParseError
 from version import PRG_VERSION
 from version import PRG_NAME
 
