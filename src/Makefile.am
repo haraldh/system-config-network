@@ -8,14 +8,22 @@ CLEANFILES := version.pyc $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(n
 
 execdir = $(sbindir)
 
+all-local: version.py
 
-all-local: version.py 
+clean-local:
+	rm -fr classdoc
+	rm -f .coverage
 
 providerdir = $(pkgdatadir)
 provider_DATA = providerdb
 
 moduleinfodir = $(pkgdatadir)
 moduleinfo_DATA = module-info
+
+
+install-doc-local: docs
+	mkdir -p $(DESTDIR)$(docdir)/classdoc
+	install -m 0644 classdoc/* $(DESTDIR)$(docdir)/classdoc
 
 install-exec-local: 
 	mkdir -p $(DESTDIR)$(pkgdatadir) $(DESTDIR)$(sbindir) $(DESTDIR)$(bindir)
@@ -36,6 +44,9 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf_tui.py $(DESTDIR)$(sbindir)/system-config-network-tui; \
 	#$(top_srcdir)/py-compile - $(DESTDIR)$(pkgdatadir)/*.py
 
+uninstall-doc-local:
+	rm -fr $(DESTDIR)$(docdir)
+
 uninstall-local:
 	rm -fr $(DESTDIR)$(pkgdatadir)
 	rm -f  $(DESTDIR)$(bindir)/system-control-network
@@ -45,9 +56,10 @@ uninstall-local:
 	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
 
 docs:
-	cd $(srcdir)
-	@PYTHON@ @pythondir@/../pydoc.py -w `find . -type d -o -name '*.py'|sed -e 's#^\./##g' -e 's#/#.#g' -e 's#\.py$$##g'` 
-	mv *.html doc
+	rm -fr classdoc
+	PYTHONPATH=$(srcdir) @PYTHON@ /usr/lib*/python*/pydoc.py -w `find $(srcdir) -type d -o -name '*.py'` 
+	mkdir -p classdoc
+	mv *.html classdoc
 
 pycheck:
 	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
