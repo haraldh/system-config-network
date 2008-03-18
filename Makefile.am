@@ -63,7 +63,7 @@ distclean-local:
 VERSION=@VERSION@
 SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 
-.PHONY: changelog check-clean-tree archive tag force-tag srpm newversion potfile push pull diff
+.PHONY: changelog check-clean-tree archive tag force-tag srpm newversion potfile push pull diff rpmlog
 
 ChangeLog changelog:
 	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
@@ -116,4 +116,7 @@ pull:
 
 diff:
 	git diff origin
-
+	
+rpmlog:
+	@git-log --pretty="format:- %s (%ae)" $(SCMTAG).. |sed -e 's/@.*)/)/'
+	@echo
