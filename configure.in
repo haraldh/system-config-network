@@ -1,12 +1,7 @@
-AC_INIT(./aclocal.m4)
-
-MAJOR=1
-MINOR=5
-RELEASE=1
-
+AC_INIT([system-config-network], [1.5.1])
 RPM_RELEASE=1
-
-AM_INIT_AUTOMAKE(system-config-network, $MAJOR.$MINOR.$RELEASE)
+AC_CONFIG_SRCDIR([src/netconf.py])
+AM_INIT_AUTOMAKE([1.9 tar-ustar no-define foreign dist-bzip2])
 
 ALL_LINGUAS="ar as be bg bn_IN bn bs ca cs cy da de el en_GB es et fa fi fr gu he hi hr hu hy id is it ja ka kn ko ku lo mk ml mr ms my nb nl no or pa pl pt_BR pt ro ru si sk sl sq sr ta te tr uk ur vi zh_CN zh_TW"
 
