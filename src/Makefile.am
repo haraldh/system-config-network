@@ -67,3 +67,5 @@ docs:
 pycheck:
 	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
 
+pylint:
+	pylint --rcfile=$(top_srcdir)/pylintrc netconfpkg
