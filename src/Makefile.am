@@ -4,7 +4,7 @@ PYTHON_FILES = netconf.py netconf_tui.py netconf_control.py netconf_cmd.py versi
 
 EXTRA_DIST = $(PYTHON_FILES) providerdb module-info
 
-CLEANFILES := version.pyc $(notdir $(wildcard netconf_cmd.py*)) $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.pyc))
+CLEANFILES := version.pyc $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.pyc))
 
 execdir = $(sbindir)
 
