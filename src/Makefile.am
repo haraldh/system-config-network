@@ -50,6 +50,7 @@ uninstall-doc-local:
 uninstall-local:
 	rm -fr $(DESTDIR)$(pkgdatadir)
 	rm -f  $(DESTDIR)$(bindir)/system-control-network
+	rm -f  $(DESTDIR)$(sbindir)/system-control-network
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-gui
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-tui
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
