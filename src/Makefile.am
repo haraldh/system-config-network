@@ -56,6 +56,8 @@ uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
 	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
 
+.PHONY: docs pycheck pylint
+
 docs:
 	rm -fr classdoc
 	PYTHONPATH=$(srcdir) @PYTHON@ /usr/lib*/python*/pydoc.py -w `find $(srcdir) -type d -o -name '*.py'` 
