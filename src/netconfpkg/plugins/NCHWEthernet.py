@@ -106,10 +106,8 @@ def setHwEthernetWizard(wizard):
     global _hwEthernetWizard # pylint: disable-msg=W0603
     _hwEthernetWizard = wizard
 
-__df = getHardwareFactory()
-__df.register(HwEthernet, ETHERNET)
-del __df
+def register_plugin():
+    __df = getHardwareFactory()
+    __df.register(HwEthernet, ETHERNET)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.9 $"

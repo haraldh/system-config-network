@@ -1,4 +1,3 @@
-#
 "Package for network configuration."
 
 # -*- python -*-

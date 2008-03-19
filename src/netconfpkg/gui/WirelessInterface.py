@@ -21,8 +21,8 @@ import gtk
 import gtk.glade
 import os
 from rhpl import ethtool
-from netconfpkg.NC_functions import _, WIRELESS, NETCONFDIR, PROGNAME, request_rpms
 from netconfpkg.plugins import NCDevWireless
+from netconfpkg.NC_functions import _, WIRELESS, NETCONFDIR, PROGNAME, request_rpms
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
@@ -367,5 +367,7 @@ class WirelessInterface(InterfaceCreator):
         self.toplevel.destroy()
         gtk.main_quit()
 
-NCDevWireless.setDevWirelessWizard(WirelessInterface)
+def register_plugin():
+    NCDevWireless.setDevWirelessWizard(WirelessInterface)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -89,10 +89,8 @@ def setDevEthernetWizard( wizard ):
     global _devEthernetWizard
     _devEthernetWizard = wizard
 
-_df = getDeviceFactory()
-_df.register( DevEthernet )
+def register_plugin():
+    _df = getDeviceFactory()
+    _df.register( DevEthernet )
 
-del _df
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.13 $"

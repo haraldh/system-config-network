@@ -26,7 +26,6 @@ from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.provider import providerDialog, ISDNproviderDialog, ModemproviderDialog
 from netconfpkg.gui.tonline import TonlineDialog
-from netconfpkg.plugins import NCDevIsdn, NCDevModem
 import gtk
 import re
 
@@ -503,7 +502,9 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
             "stupidModeCB").get_active() == True
 
 
-NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
-NCDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCDevIsdn, NCDevModem
+    NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
+    NCDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

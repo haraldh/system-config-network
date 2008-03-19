@@ -127,4 +127,5 @@ class ethernetHardware:
                 modInfo[i]['description'] == self.hw.Description) or \
                 (self.hw.Description == i):
                 self.hw.Card.ModuleName = i
+
 __author__ = "Harald Hoyer <harald@redhat.com>"

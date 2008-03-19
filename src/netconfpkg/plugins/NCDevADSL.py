@@ -73,8 +73,8 @@ def setDevADSLWizard(wizard):
     global _devADSLWizard
     _devADSLWizard = wizard
 
-df = getDeviceFactory()
-df.register(DevADSL, DSL)
+def register_plugin():
+    df = getDeviceFactory()
+    df.register(DevADSL, DSL)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.11 $"

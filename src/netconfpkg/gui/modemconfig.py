@@ -20,7 +20,6 @@ import gtk
 import gtk.glade
 import os
 
-from netconfpkg.plugins import NCHWModem
 from netconfpkg.gui import GUI_functions
 from netconfpkg.NC_functions import modemDeviceList, _, modemFlowControls
 from netconfpkg.gui.GUI_functions import load_icon
@@ -149,7 +148,9 @@ class modemDialog:
             self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
 
 
-NCHWModem.setHwModemDialog(modemDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCHWModem
+    NCHWModem.setHwModemDialog(modemDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
 

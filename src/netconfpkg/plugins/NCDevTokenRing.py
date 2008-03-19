@@ -52,8 +52,8 @@ def setDevTokenRingWizard(wizard):
     global _devTokenRingWizard
     _devTokenRingWizard = wizard
 
-__df = getDeviceFactory()
-__df.register(DevTokenRing, TOKENRING)
-del __df
+def register_plugin():
+    __df = getDeviceFactory()
+    __df.register(DevTokenRing, TOKENRING)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

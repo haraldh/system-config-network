@@ -118,12 +118,11 @@ def setDevQethWizard(wizard):
     _devQethWizard = wizard
 
 
-import os
-machine = os.uname()[4]
-if machine == 's390' or machine == 's390x':
-    _df = getDeviceFactory()
-    _df.register(DevQeth, QETH)
-    del _df
-
+def register_plugin():
+    import os
+    machine = os.uname()[4]
+    if machine == 's390' or machine == 's390x':
+        _df = getDeviceFactory()
+        _df.register(DevQeth, QETH)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

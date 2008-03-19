@@ -71,8 +71,8 @@ def setDevWirelessWizard(wizard):
     global _devWirelessWizard
     _devWirelessWizard = wizard
 
-__df = getDeviceFactory()
-__df.register(DevWireless, WIRELESS)
-del __df
+def register_plugin():
+    __df = getDeviceFactory()
+    __df.register(DevWireless, WIRELESS)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -20,7 +20,6 @@
 from netconfpkg.gui import GUI_functions, sharedtcpip
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.plugins import NCDevQeth
 from rhpl import ethtool
 
 # FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
@@ -91,5 +90,8 @@ class qethConfigDialog(DeviceConfigDialog):
             self.device.HardwareAddress = hwaddr
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
             
-NCDevQeth.setDevQethDialog(qethConfigDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCDevQeth
+    NCDevQeth.setDevQethDialog(qethConfigDialog)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -40,7 +40,7 @@ import os.path
 from netconfpkg import Control
 from netconfpkg import NC_functions
 from netconfpkg.genClass import ParseError
-from version import PRG_VERSION, PRG_NAME
+from version import PRG_VERSION
 
 PROGNAME='system-config-network'
 

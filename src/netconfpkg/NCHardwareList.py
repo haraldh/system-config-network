@@ -286,7 +286,7 @@ class HardwareList(HardwareList_base):
 
                 try:
                     module = ethtool.get_module(dev)
-                except IOError, err:
+                except IOError:
                     module = None
 
                 if not module:
@@ -338,11 +338,11 @@ class HardwareList(HardwareList_base):
                 i = self.addHardware(hwtype)
                 hw = self[i]
                 if kudzu_device.desc.find ("|") != -1:
-                    mfg, desc = kudzu_device.desc.split("|")
+                    (mfg, desc) = kudzu_device.desc.split("|")
                 else:
                     mfg = _("Unknown")
                     desc = kudzu_device.desc
-
+                
                 hw.Name = dev
                 hw.Type = hwtype
                 hw.Description = desc
@@ -604,7 +604,6 @@ class HardwareList(HardwareList_base):
         self.__delslice__(0, len(self)) # pylint: disable-msg=E1101
 
         # FIXME: move HW detection to NCDev*
-        import netconfpkg
         dosysupdate=True
         if getTestEnv():
             dosysupdate=False
@@ -778,35 +777,5 @@ def getNextDev(base):
 
     return base + str(num)
 
-
-if __name__ == '__main__':
-    hl = HardwareList()
-    hl.load()
-    for i in xrange(len(hl)):
-        print "Name: ", hl[i].Name
-        print "Description: ", hl[i].Description
-        print "Type: ", hl[i].Type
-        if hl[i].Type == "Ethernet" or hl[i].Type == "ISDN":
-            print "ModuleName: ", hl[i].Card.ModuleName
-            print "IoPort: ", hl[i].Card.IoPort
-            print "IoPort1: ", hl[i].Card.IoPort1
-            print "IoPort2: ", hl[i].Card.IoPort2
-            print "Mem: ", hl[i].Card.Mem
-            print "IRQ: ", hl[i].Card.IRQ
-            print "DMA0: ", hl[i].Card.DMA0
-            print "DMA1: ", hl[i].Card.DMA1
-            print "ChannelProtocol: ", hl[i].Card.ChannelProtocol
-
-        if hl[i].Type == "Modem":
-            print "DeviceName: ", hl[i].Modem.DeviceName
-            print "BaudRate: ", hl[i].Modem.BaudRate
-            print "FlowControl: ", hl[i].Modem.FlowControl
-            print "ModemVolume: ", hl[i].Modem.ModemVolume
-            print "DialCommand: ", hl[i].Modem.DialCommand
-
-        print "-----------------------------------------"
-
-    hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:31:36 $"
-__version__ = "$Revision: 1.84 $"
+

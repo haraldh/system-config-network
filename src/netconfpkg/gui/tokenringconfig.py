@@ -17,7 +17,6 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.plugins import NCDevTokenRing
 from netconfpkg.gui import GUI_functions, sharedtcpip
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
@@ -88,8 +87,8 @@ class tokenringConfigDialog(DeviceConfigDialog):
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
 
+def register_plugin():
+    from netconfpkg.plugins import NCDevTokenRing
+    NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 
-NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.21 $"

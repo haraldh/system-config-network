@@ -1,7 +1,6 @@
 "TUI ISDN Interface Module"
 import snack
 
-from netconfpkg.plugins.NCDevIsdn import setDevIsdnDialog
 from netconfpkg.NC_functions import _
 
 class NCIsdnInterfaceTui:
@@ -95,5 +94,6 @@ class NCIsdnInterfaceTui:
                 self.processInfo()
                 return True
 
-
-setDevIsdnDialog(NCIsdnInterfaceTui)
+def register_plugin():
+    from netconfpkg.plugins.NCDevIsdn import setDevIsdnDialog
+    setDevIsdnDialog(NCIsdnInterfaceTui)

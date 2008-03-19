@@ -110,10 +110,8 @@ def setHwTokenringWizard(wizard):
     global _hwTokenringWizard # pylint: disable-msg=W0603
     _hwTokenringWizard = wizard
 
-__df = getHardwareFactory()
-__df.register(HwTokenring, TOKENRING)
-del __df
+def register_plugin():
+    __df = getHardwareFactory()
+    __df.register(HwTokenring, TOKENRING)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.9 $"

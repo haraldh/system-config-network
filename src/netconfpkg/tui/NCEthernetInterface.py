@@ -1,6 +1,5 @@
 "TUI Ethernet Interface Module"
 
-from netconfpkg.plugins.NCDevEthernet import setDevEthernetDialog 
 from netconfpkg.tui.NCTcpIp import NCTcpIpDialog
 #
 # EthernetWindow class
@@ -22,5 +21,8 @@ class NCEthernetInterfaceTui(NCTcpIpDialog):
         if dev:
             self.setState()
 
-setDevEthernetDialog(NCEthernetInterfaceTui)
+def register_plugin():
+    from netconfpkg.plugins.NCDevEthernet import setDevEthernetDialog     
+    setDevEthernetDialog(NCEthernetInterfaceTui)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

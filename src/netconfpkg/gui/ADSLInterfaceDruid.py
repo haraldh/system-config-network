@@ -17,6 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+from netconfpkg.plugins import NCDevADSL
 from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
 from netconfpkg.NC_functions import _, getNewDialupDevice, DSL, \
     request_rpms
@@ -25,7 +26,6 @@ from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.tonline import TonlineDialog
-from netconfpkg.plugins import NCDevADSL
 import gtk
 import gtk.glade
 import os
@@ -232,5 +232,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
         dialup.DefRoute = True
         self.device.AutoDNS = True
 
-NCDevADSL.setDevADSLWizard(ADSLInterfaceDruid)
+def register_plugin():
+    NCDevADSL.setDevADSLWizard(ADSLInterfaceDruid)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

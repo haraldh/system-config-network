@@ -22,7 +22,6 @@ import gtk
 import gtk.glade
 import gobject
 
-from netconfpkg.plugins import NCDevWireless
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.NC_functions import _
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -179,7 +178,8 @@ class wirelessConfigDialog(DeviceConfigDialog):
             self.xml.get_widget("rateEntry").set_sensitive(True)
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
-NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCDevWireless
+    NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.32 $"

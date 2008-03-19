@@ -25,7 +25,6 @@ from netconfpkg.NC_functions import request_rpms, NETCONFDIR, _, ISDN
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.DialupDruid import DialupDruid
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.plugins import NCDevIsdn
 import gtk
 import gtk.glade
 import os
@@ -263,5 +262,8 @@ class IsdnInterface:
         else:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
-NCDevIsdn.setDevIsdnWizard(IsdnInterface)
+def register_plugin():
+    from netconfpkg.plugins import NCDevIsdn
+    NCDevIsdn.setDevIsdnWizard(IsdnInterface)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

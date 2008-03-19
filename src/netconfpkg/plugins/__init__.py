@@ -17,11 +17,6 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-# Import all subpackages of our netconfpkg directory. This code is a real
-# dirty hack but does the job(tm). It basically finds all .py files in the
-# package directory and imports from all found files (except __init__.py that
-# is) ;). Nice for plugin mechanism.
-
 # pylint: disable-msg=W0122
 # pylint: disable-msg=W0141
 
@@ -34,12 +29,18 @@ _files.sort()
 locale.setlocale(locale.LC_ALL, "")
 
 for _i in _files:
-    _cmd = "from " + _i + " import *"
-    exec _cmd
+    _cmd = "from " + _i + " import register_plugin"
+    try:
+        exec _cmd
+    except ImportError:
+        pass
+    else:
+        register_plugin()
+        del register_plugin
 
 del _i
 del _files
 del _cmd
+
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2005/03/03 17:25:26 $"
-__version__ = "$Revision: 1.7 $"
+

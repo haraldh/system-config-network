@@ -22,9 +22,9 @@ import gtk.glade
 import os
 
 from rhpl import ethtool
+from netconfpkg.plugins import NCDevTokenRing
 from netconfpkg import NCHardwareList, NCDeviceList, NCProfileList
 from netconfpkg.NC_functions import _, TOKENRING, PROGNAME, NETCONFDIR
-from netconfpkg.plugins import NCDevTokenRing
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.TokenRingHardwareDruid import tokenringHardware
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
@@ -229,5 +229,7 @@ class TokenRingInterfaceGui(InterfaceCreator):
         self.toplevel.destroy()
         gtk.main_quit()
 
-NCDevTokenRing.setDevTokenRingWizard(TokenRingInterfaceGui)
+def register_plugin():
+    NCDevTokenRing.setDevTokenRingWizard(TokenRingInterfaceGui)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

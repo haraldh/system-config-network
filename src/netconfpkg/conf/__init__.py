@@ -17,27 +17,5 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-# Import all subpackages of our netconfpkg directory. This code is a real
-# dirty hack but does the job(tm). It basically finds all .py files in the
-# package directory and imports from all found files (except __init__.py that
-# is) ;). Nice for plugin mechanism.
 
-import os
-_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
-
-import locale
-locale.setlocale(locale.LC_ALL, "C")
-_files.sort()
-locale.setlocale(locale.LC_ALL, "")
-
-for _i in _files:
-#    _cmd = "from " + _i + " import *"
-    _cmd = "import " + _i
-    exec _cmd
-
-del _i
-del _files
-del _cmd
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:57:08 $"
-__version__ = "$Revision: 1.2 $"

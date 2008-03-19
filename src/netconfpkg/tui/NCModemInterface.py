@@ -1,6 +1,5 @@
 "TUI Modem Interface Module"
 
-from netconfpkg.plugins.NCDevModem import setDevModemDialog
 from netconfpkg.NC_functions import _
 import snack
 
@@ -95,5 +94,8 @@ class NCModemInterfaceTui:
                 self.processInfo()
                 return True
 
-setDevModemDialog(NCModemInterfaceTui)
+def register_plugin():
+    from netconfpkg.plugins.NCDevModem import setDevModemDialog
+    setDevModemDialog(NCModemInterfaceTui)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -99,10 +99,8 @@ def setDevModemWizard(wizard):
     global _devModemWizard
     _devModemWizard = wizard
 
-__df = getDeviceFactory()
-__df.register(DevModem, MODEM)
-del __df
+def register_plugin():
+    __df = getDeviceFactory()
+    __df.register(DevModem, MODEM)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.10 $"

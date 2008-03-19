@@ -82,12 +82,12 @@ def setHwQethWizard(wizard):
     global _hwQethWizard # pylint: disable-msg=W0603
     _hwQethWizard = wizard
     
-import os
-machine = os.uname()[4]
-if machine == 's390' or machine == 's390x':
-    __df = getHardwareFactory()
-    __df.register(HwQeth, QETH)
-    del __df
+def register_plugin():
+    import os
+    machine = os.uname()[4]
+    if machine == 's390' or machine == 's390x':
+        __df = getHardwareFactory()
+        __df.register(HwQeth, QETH)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
 

@@ -24,8 +24,6 @@ from netconfpkg import Dialup_base # pylint: disable-msg=E0611
 from netconfpkg.NC_functions import _, getRoot, log, \
 unlink, getCHAPConf, getPAPConf, WVDIALCONF, mkdir, PPPDIR
 
-from netconfpkg.NCCompression import Compression
-
 DM_AUTO = 'auto'
 DM_MANUAL = 'manual'
 

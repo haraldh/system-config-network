@@ -17,6 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+from netconfpkg.plugins import NCDevEthernet
 from netconfpkg import NCProfileList
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NCDeviceList import getDeviceList
@@ -28,7 +29,6 @@ from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.GUI_functions import GLADEPATH
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
-from netconfpkg.plugins import NCDevEthernet
 from rhpl import ethtool
 import gtk
 import gtk.glade
@@ -262,5 +262,7 @@ class EthernetInterface(InterfaceCreator):
         self.toplevel.destroy()
         gtk.main_quit()
 
-NCDevEthernet.setDevEthernetWizard(EthernetInterface)
+def register_plugin():
+    NCDevEthernet.setDevEthernetWizard(EthernetInterface)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

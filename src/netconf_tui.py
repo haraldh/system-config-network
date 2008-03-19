@@ -10,6 +10,7 @@
 
 PROGNAME='system-config-network'
 
+import os
 import sys
 import locale
 import signal
@@ -240,11 +241,13 @@ def Usage():
 if __name__=="__main__":
     import getopt
     class BadUsage: pass
-    from netconfpkg import *
+    from netconfpkg import NC_functions
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     chroot = None
     debug = 0
+
+    # FIXME: add --root= option
 
     try:
         opts, args = getopt.getopt(sys.argv[1:], "vh?r:d",

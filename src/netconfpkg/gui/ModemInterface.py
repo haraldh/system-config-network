@@ -25,7 +25,6 @@ from netconfpkg.NC_functions import request_rpms, _, MODEM, generic_error_dialog
 from netconfpkg.gui.DialupDruid import DialupDruid
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.plugins import NCDevModem
 import gtk
 import gtk.glade
 import os
@@ -206,5 +205,8 @@ class ModemInterface:
                 modemFlowControls[CRTSCTS])
 
 
-NCDevModem.setDevModemWizard(ModemInterface)
+def register_plugin():
+    from netconfpkg.plugins import NCDevModem
+    NCDevModem.setDevModemWizard(ModemInterface)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

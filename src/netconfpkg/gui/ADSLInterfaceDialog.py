@@ -23,7 +23,6 @@ import gtk.glade
 import signal
 
 from netconfpkg.gui import sharedtcpip
-from netconfpkg.plugins import NCDevADSL
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
@@ -154,13 +153,9 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
         dialup.Login = dialog.login
         dialup.Password = dialog.password
         self.hydrate()
-
-NCDevADSL.setDevADSLDialog(ADSLInterfaceDialog)
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    ADSLInterfaceDialog()
-    gtk.main()
+        
+def register_plugin():
+    from netconfpkg.plugins import NCDevADSL
+    NCDevADSL.setDevADSLDialog(ADSLInterfaceDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

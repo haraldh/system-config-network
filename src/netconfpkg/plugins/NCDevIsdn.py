@@ -120,8 +120,8 @@ def setDevIsdnWizard(wizard):
     global _devIsdnWizard
     _devIsdnWizard = wizard
 
-df = getDeviceFactory()
-df.register(DevIsdn, ISDN)
+def register_plugin():
+    df = getDeviceFactory()
+    df.register(DevIsdn, ISDN)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.14 $"

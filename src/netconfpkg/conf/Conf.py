@@ -145,6 +145,7 @@
 
 class FileMissing(Exception):
     def __init__(self, filename):
+        Exception.__init__(self)
         self.filename = filename
 
     def __str__(self):
@@ -152,6 +153,7 @@ class FileMissing(Exception):
 
 class ConfIndexError(IndexError):
     def __init__(self, filename, var):
+        IndexError.__init__(self)
         self.filename = filename
         self.var = var
 
@@ -160,6 +162,7 @@ class ConfIndexError(IndexError):
 
 class BadFile(Exception):
     def __init__(self, msg):
+        Exception.__init__(self)
         self.msg = msg
 
     def __str__(self):
@@ -169,7 +172,6 @@ WrongMethod = BadFile
 VersionMismatch = BadFile
 SystemFull = BadFile
 
-from string import joinfields, split, find, join, atoi, strip
 from UserDict import UserDict
 import re
 import os
@@ -196,6 +198,7 @@ class Conf:
         # 1 is between the first and second lines, etc.
         # The "current" line is the line after the point.
         self.filename = filename
+        self.lines = []
         self.read()
     def rewind(self):
         self.line = 0
@@ -270,7 +273,7 @@ class Conf:
     def insertline(self, line=''):
         self.lines.insert(self.line, line)
     def insertlinelist(self, linelist):
-        self.insertline(joinfields(linelist, self.separator))
+        self.insertline(self.separator.join(linelist))
     def sedline(self, pat, repl):
         if self.line < len(self.lines):
             self.lines[self.line] = re.sub(pat, repl, \
@@ -279,7 +282,9 @@ class Conf:
         fields = self.getfields()
         fields[fieldno:fieldno+1] = [fieldtext]
         self.setfields(fields)
-    def setline(self, line=[]):
+    def setline(self, line=None):
+        if not line:
+            line=[]
         self.deleteline()
         self.insertline(line)
     def deleteline(self):
@@ -293,15 +298,15 @@ class Conf:
         if not self.create_if_missing and not file_exists:
             raise FileMissing, self.filename
         if file_exists and os.access(self.filename, os.R_OK):
-            self.file = open(self.filename, 'r', -1)
-            self.lines = self.file.readlines()
+            mfile = open(self.filename, 'r', -1)
+            self.lines = mfile.readlines()
             # strip newlines
             for index in range(len(self.lines)):
                 if len(self.lines[index]) and self.lines[index][-1] == '\n':
                     self.lines[index] = self.lines[index][:-1]
                 if len(self.lines[index]) and self.lines[index][-1] == '\r':
                     self.lines[index] = self.lines[index][:-1]
-            self.file.close()
+            mfile.close()
         else:
             self.lines = []
     def write(self):
@@ -313,13 +318,13 @@ class Conf:
         if self.rcs or os.path.exists(os.path.split(self.filename)[0]+'/RCS'):
             self.rcs = 1
             os.system('/usr/bin/co -l '+self.filename+' </dev/null >/dev/null 2>&1')
-        self.file = open(self.filename, 'w', -1)
+        mfile = open(self.filename, 'w', -1)
         if self.mode >= 0:
             os.chmod(self.filename, self.mode)
         # add newlines
         for index in range(len(self.lines)):
-            self.file.write(self.lines[index] + '\n')
-        self.file.close()
+            mfile.write(self.lines[index] + '\n')
+        mfile.close()
         if self.rcs:
             mode = os.stat(self.filename)[0]
             os.system('/usr/bin/ci -u -m"control panel update" ' +
@@ -337,6 +342,7 @@ class ConfShellVar(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.rewind()
         while self.findnextline(self.nextreg):
@@ -344,7 +350,7 @@ class ConfShellVar(Conf):
             var = self.getfields()
             # fields 1..n are False separations on "=" character in string,
             # so we need to join them back together.
-            var[1] = joinfields(var[1:len(var)], '=')
+            var[1] = "=".join(var[1:len(var)])
             if len(var[1]) and var[1][0] in '\'"':
                 # found quote; strip from beginning and end
                 quote = var[1][0]
@@ -418,8 +424,8 @@ class ConfShellVar(Conf):
 class ConfShellVarClone(ConfShellVar):
     def __init__(self, cloneInstance, filename):
         ConfShellVar.__init__(self, filename)
-        Conf.__init__(self, filename, commenttype='#',
-                      separators='=', separator='=')
+#        Conf.__init__(self, filename, commenttype='#',
+#                      separators='=', separator='=')
         self.ci = cloneInstance
     def __getitem__(self, varname):
         if self.vars.has_key(varname):
@@ -479,6 +485,7 @@ class ConfEResolv(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.rewind()
         while self.findnextcodeline():
@@ -523,12 +530,12 @@ class ConfEResolv(Conf):
             if self.findnextline('^' + varname + '[' + self.separators + ']+'):
                 self.deleteline()
                 self.insertlinelist([ varname,
-                                      joinfields(value, self.separator) ])
+                                      self.separator.join(value) ])
                 self.seek(place)
             else:
                 self.seek(place)
                 self.insertlinelist([ varname,
-                                      joinfields(value, self.separator) ])
+                                      self.separator.join(value) ])
         # no matter what, update our idea of the variable...
         self.vars[varname] = value
 
@@ -581,6 +588,7 @@ class ConfESStaticRoutes(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.rewind()
         while self.findnextcodeline():
@@ -664,13 +672,14 @@ class ConfESStaticRoutes(Conf):
 class ConfChat(Conf):
     def __init__(self, filename):
         Conf.__init__(self, filename, '', '\t ', ' ')
+        self.list=None
     def read(self):
         Conf.read(self)
         self.initlist()
     def initlist(self):
         self.list = []
         i = 0
-        hastick = 0
+        #hastick = 0
         s = ''
         chatlist = []
         for line in self.lines:
@@ -741,6 +750,7 @@ class ConfChatFile(ConfChat):
         self.devconf = devconf
         self._initlist()
     def _initlist(self):
+        # pylint: disable-msg=W0201
         self.abortlist = []
         self.defabort = 1
         self.dialcmd = ''
@@ -827,9 +837,9 @@ class ConfDIP:
         self.chatfile = chatfile
         self.cf = configfile
     def write(self):
-        self.file = open(self.dipfilename, 'w', -1)
+        mfile = open(self.dipfilename, 'w', -1)
         os.chmod(self.dipfilename, 0600)
-        self.file.write('# dip script for interface '+self.cf['DEVICE']+'\n' +
+        mfile.write('# dip script for interface '+self.cf['DEVICE']+'\n' +
           '# DO NOT HAND-EDIT; ALL CHANGES *WILL* BE LOST BY THE netcfg PROGRAM\n' +
           '# This file is created automatically from several other files by netcfg\n' +
           '# Re-run netcfg to modify this file\n\n' +
@@ -839,21 +849,21 @@ class ConfDIP:
           '  port '+self.cf['MODEMPORT']+'\n' +
           '  speed '+self.cf['LINESPEED']+'\n')
         if self.cf['MTU']:
-            self.file.write('  get $mtu '+self.cf['MTU']+'\n')
+            mfile.write('  get $mtu '+self.cf['MTU']+'\n')
         for pair in self.chatfile.list:
             if cmp(pair[0], 'ABORT') and cmp(pair[0], 'TIMEOUT'):
                 if pair[0]:
-                    self.file.write('  wait '+pair[0]+' 30\n' +
+                    mfile.write('  wait '+pair[0]+' 30\n' +
                             '  if $errlvl != 0 goto error\n')
-                self.file.write('  send '+pair[1]+'\\r\\n\n' +
+                mfile.write('  send '+pair[1]+'\\r\\n\n' +
                         '  if $errlvl != 0 goto error\n')
         if not cmp(self.cf['DEFROUTE'], 'yes'):
-            self.file.write('  default\n')
-        self.file.write('  mode '+self.cf['MODE']+'\n' +
+            mfile.write('  default\n')
+        mfile.write('  mode '+self.cf['MODE']+'\n' +
           '  exit\n' +
           'error:\n' +
           '  print connection to $remote failed.\n')
-        self.file.close()
+        mfile.close()
 
 
 class odict(dict):
@@ -908,7 +918,8 @@ class odict(dict):
             if key not in self._keys: self._keys.append(key)
 
     def values(self):
-        return map(self.get, self._keys)
+        return [ self.get(x) for x in self._keys ]
+#        return map(self.get, self._keys)
 
 # ConfModules(Conf)
 #  This reads /etc/modprobe.conf into a dictionary keyed on device type,
@@ -926,6 +937,7 @@ class ConfModules(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = odict()
         keys = ('alias', 'options', 'install', 'remove')
         self.rewind()
@@ -953,7 +965,7 @@ class ConfModules(Conf):
                 mdict[optup[0]] = optup[1]
         return mdict
     def splitopt(self, opt):
-        eq = find(opt, '=')
+        eq = opt.find('=')
         if eq > 0:
             return (opt[:eq], opt[eq+1:])
         else:
@@ -995,10 +1007,10 @@ class ConfModules(Conf):
                 endofline = self.joinoptlist(value[key])
                 replace = key + ' ' + varname + ' ' + endofline
             elif not cmp(key, 'install'):
-                endofline = joinfields(value[key], ' ')
+                endofline = ' '.join(value[key])
                 replace = key + ' ' + varname + ' ' + endofline
             elif not cmp(key, 'remove'):
-                endofline = joinfields(value[key], ' ')
+                endofline = ' '.join(value[key])
                 replace = key + ' ' + varname + ' ' + endofline
             else:
                 # some idiot apparantly put an unrecognized key in
@@ -1012,9 +1024,9 @@ class ConfModules(Conf):
             if endofline:
                 # there's something to write...
                 while self.findnextline(findexp):
-                    cl = split(self.getline(), '#')
+                    cl = self.getline().split('#')
                     if len(cl) >= 2:
-                        comment = join(cl[1:], '#')
+                        comment = "#".join(cl[1:])
                         replace += ' #' + comment
                     self.setline(replace)
                     missing=0
@@ -1061,6 +1073,7 @@ class ConfModInfo(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.rewind()
         device = 0
@@ -1097,17 +1110,17 @@ class ConfModInfo(Conf):
                     # get argument name (first "field" is null again)
                     thislist = []
                     # point at first character of argument description
-                    p = find(line, '"')
+                    p = line.find('"')
                     while p != -1 and p < len(line):
-                        q = find(line[p+1:], '"')
+                        q = line[p+1:].find('"')
                         # deal with escaped quotes (\")
                         while q != -1 and not cmp(line[p+q-1], '\\'):
-                            q = find(line[p+q+1:], '"')
+                            q = line[p+q+1:].find('"')
                         if q == -1:
                             break
                         thislist.append(line[p+1:p+q+1])
                         # advance to beginning of next string, if any
-                        r = find(line[p+q+2:], '"')
+                        r = line[p+q+2:].find('"')
                         if r >= 0:
                             p = p+q+2+r
                         else:
@@ -1173,6 +1186,7 @@ class ConfPw(Conf):
         Conf.read(self)
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         # need to be able to return the keys in order to keep
         # things consistent...
@@ -1211,7 +1225,7 @@ class ConfPw(Conf):
     def has_key(self, key):
         return self.vars.has_key(key)
     def write(self):
-        self.file = open(self.filename + '.new', 'w', -1)
+        mfile = open(self.filename + '.new', 'w', -1)
         # change the mode of the new file to that of the old one
         if os.path.isfile(self.filename) and self.mode == -1:
             os.chmod(self.filename + '.new', os.stat(self.filename)[0])
@@ -1219,8 +1233,8 @@ class ConfPw(Conf):
             os.chmod(self.filename + '.new', self.mode)
         # add newlines while writing
         for index in range(len(self.lines)):
-            self.file.write(self.lines[index] + '\n')
-        self.file.close()
+            mfile.write(self.lines[index] + '\n')
+        mfile.close()
         os.rename(self.filename + '.new', self.filename)
     def kchangefield(self, key, fieldno, fieldtext):
         self.rewind()
@@ -1259,14 +1273,14 @@ class ConfPwO(ConfPw):
         freeid = 500
         # first, we try not to re-use id's that have already been assigned.
         for item in self.vars.keys():
-            mid = atoi(self.vars[item][fieldnum])
+            mid = self.vars[item][fieldnum].atoi()
             if mid >= freeid and mid < 65533: # ignore nobody on some systems
                 freeid = mid + 1
         if freeid > 65533:
             # if that didn't work, we go back and find any free id over 500
             ids = {}
             for item in self.vars.keys():
-                ids[atoi(self.vars[item][fieldnum])] = 1
+                ids[self.vars[item][fieldnum].atoi()] = 1
             i = 500
             while i < 65535 and ids.has_key(i):
                 i = i + 1
@@ -1284,18 +1298,17 @@ class _passwd_reflector:
         self.user = user
 
     def setgecos(self, oldgecos, fieldnum, value):
-        gecosfields = split(oldgecos, ',')
+        gecosfields = oldgecos.split(',')
         # make sure that we have enough gecos fields
         for i in range(5-len(gecosfields)):
             gecosfields.append('')
         gecosfields[fieldnum] = value
-        return join(gecosfields[0:5], ',')
+        return ','.join(gecosfields[0:5])
 
     def getgecos(self, oldgecos, fieldnum):
-        gecosfields = split(oldgecos, ',')
+        gecosfields = oldgecos.split(',')
         # make sure that we have enough gecos fields
-        for i in range(5-len(gecosfields)):
-            gecosfields.append('')
+        gecosfields.extend([ '' for i in range(5-len(gecosfields)) ])
         return gecosfields[fieldnum]
 
     def __getitem__(self, name):
@@ -1377,8 +1390,8 @@ class ConfPasswd(ConfPwO):
         ConfPwO.addentry_list(self, username, [username, password, uid, gid, gecos, homedir, shell])
     def addfullentry(self, username, password, uid, gid, fullname, office,
         officephone, homephone, homedir, shell):
-        self.addentry(username, password, uid, gid, join([fullname,
-            office, officephone, homephone, ''], ','), homedir, shell)
+        self.addentry(username, password, uid, gid, ','.join([fullname,
+            office, officephone, homephone, '']), homedir, shell)
     def getfreeuid(self):
         try:
             return self.getfreeid(2)
@@ -1398,7 +1411,7 @@ class _shadow_reflector:
         return self.pw.vars[self.user][fieldno]
     def _readint(self, fieldno):
         retval = self.pw.vars[self.user][fieldno]
-        if len(retval): return atoi(retval)
+        if len(retval): return retval.atoi()
         return -1
     def __getitem__(self, name):
         return self.__getattr__(name)
@@ -1476,7 +1489,7 @@ class ConfShadow(ConfPwO):
                           self._intfield(expires), ''])
     def _intfield(self, value):
         try:
-            atoi(value)
+            value.atoi()
             return value
         except:
             if value == -1:
@@ -1540,10 +1553,10 @@ class ConfGroup(ConfPwO):
             raise SystemFull, 'No GIDs available'
 
     def nameofgid(self, gid):
-        try: gid = atoi(gid)
+        try: gid = gid.atoi()
         except: return ''
         for group in self.vars.keys():
-            mgid = atoi(self.vars[group][2])
+            mgid = self.vars[group][2].atoi()
             if mgid == gid:
                 return self.vars[group][0]
         return ''
@@ -1688,18 +1701,19 @@ class ConfSysctl(Conf):
         Conf.sedline(self, '  ', ' ')
         self.initvars()
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.rewind()
         while self.findnextcodeline():
             var = self.getfields()
             # fields 1..n are False matches on "=" character in string,
             # which is messed up, but try to deal with it
-            var[1] = joinfields(var[1:len(var)], '=')
+            var[1] = '='.join(var[1:len(var)])
             # snip off leading and trailing spaces, which are legal (it's
             # how sysctl(1) prints them) but can be confusing, and tend to
             # screw up Python's dictionaries
-            var[0] = strip(var[0])
-            var[1] = strip(var[1])
+            var[0] = var[0].strip()
+            var[1] = var[1].strip()
             if self.vars.has_key(var[0]):
                 self.deleteline()
                 self.vars[var[0]] = var[1]
@@ -1716,17 +1730,17 @@ class ConfSysctl(Conf):
             # snip off leading and trailing spaces, which are legal (it's
             # how sysctl(1) prints them) but can be confusing, and tend to
             # screw up Python's dictionaries
-            if(strip(var[0]) == varname):
-                while(strip(var[0]) == varname):
+            if(var[0].strip() == varname):
+                while(var[0].strip() == varname):
                     self.deleteline()
                     var = self.getfields()
-                for part in split(value, '\n'):
+                for part in value.split('\n'):
                     self.insertline(varname + ' = ' + part)
                     self.line = self.line + 1
                 foundit = 1
             self.line = self.line + 1
         if(foundit == 0):
-            for part in split(value, '\n'):
+            for part in value.split('\n'):
                 self.lines.append(varname + ' = ' + part)
         self.rewind()
         # re-read the file, sort of
@@ -1737,10 +1751,10 @@ class ConfSysctl(Conf):
         else:
             return ''
     def write(self):
-        self.file = open(self.filename, 'w', -1)
+        mfile = open(self.filename, 'w', -1)
         if self.mode >= 0:
             os.chmod(self.filename, self.mode)
         # add newlines
         for index in range(len(self.lines)):
-            self.file.write(self.lines[index] + '\n')
-        self.file.close()
+            mfile.write(self.lines[index] + '\n')
+        mfile.close()

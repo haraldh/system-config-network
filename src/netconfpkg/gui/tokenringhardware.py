@@ -18,7 +18,6 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 from netconfpkg.gui import GUI_functions
-from netconfpkg.plugins import NCHWTokenring
 from netconfpkg.gui.GUI_functions import gui_run_dialog
 from netconfpkg.gui.HardwareDialog import HardwareDialog
 from netconfpkg import NCHardwareList
@@ -108,4 +107,8 @@ class tokenringHardwareDialog(HardwareDialog):
                 self.hw.Card.ModuleName = i
 
 
-NCHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCHWTokenring
+    NCHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
+
+__author__ = "Harald Hoyer <harald@redhat.com>"    

@@ -22,7 +22,6 @@ from netconfpkg.NC_functions import QETH
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.plugins import NCHWQeth
 import gtk.glade
 import os
 
@@ -92,5 +91,8 @@ class qethHardwareDialog:
         self.hw.Card.ModuleName = "qeth"
         self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, self.hw.Card.IoPort1, self.hw.Card.IoPort2)
 
-NCHWQeth.setHwQethDialog(qethHardwareDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCHWQeth
+    NCHWQeth.setHwQethDialog(qethHardwareDialog)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

@@ -21,7 +21,7 @@ import os
 import os.path
 import re
 from netconfpkg.NC_functions import _, log, ConfDevices, \
-    generic_error_dialog, generic_longinfo_dialog, getDeviceType, \
+    generic_longinfo_dialog, getDeviceType, \
     getRoot, OLDSYSCONFDEVICEDIR, QETH, SYSCONFDEVICEDIR, \
     updateNetworkScripts, getCHAPConf, getPAPConf, IPSEC, \
     SYSCONFNETWORK, testFilename, unlink, WVDIALCONF

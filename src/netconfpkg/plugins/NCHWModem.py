@@ -69,8 +69,8 @@ def setHwModemWizard(wizard):
     global _hwModemWizard
     _hwModemWizard = wizard
 
-__df = getHardwareFactory()
-__df.register(HwModem, MODEM)
-del __df
+def register_plugin():
+    __df = getHardwareFactory()
+    __df.register(HwModem, MODEM)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

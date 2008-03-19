@@ -24,7 +24,6 @@ import os
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
 from netconfpkg.NC_functions import _, ETHERNET
-from netconfpkg.plugins import NCHWEthernet, NCHWWireless
 from netconfpkg import NCHardwareList
 
 class ethernetHardwareDialog:
@@ -133,6 +132,9 @@ class ethernetHardwareDialog:
                 self.hw.Card.ModuleName = i
 
 
-NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
-NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+def register_plugin():
+    from netconfpkg.plugins import NCHWEthernet, NCHWWireless
+    NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
+    NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

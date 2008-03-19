@@ -1,7 +1,6 @@
 "TUI QETH Interface Module"
 import snack
 
-from netconfpkg.plugins.NCDevQeth import setDevQethDialog
 from netconfpkg.NC_functions import _, QETH
 from netconfpkg.NCHardwareList import HW_CONF, getHardwareList
 
@@ -157,6 +156,9 @@ class NCQethInterfaceTui:
                 self.processInfo()
                 return True
 
-setDevQethDialog(NCQethInterfaceTui)
+def register_plugin():
+    from netconfpkg.plugins.NCDevQeth import setDevQethDialog
+    setDevQethDialog(NCQethInterfaceTui)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"
 
