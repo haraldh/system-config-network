@@ -155,10 +155,10 @@ HardwareList.Token Ring.tr0.Name=tr0
 HardwareList.Token Ring.tr0.Status=configured
 HardwareList.Token Ring.tr0.Type=Token Ring
 ProfileList.default.Active=True
-ProfileList.default.ActiveDevices.1=1net4you0
-ProfileList.default.ActiveDevices.2=eth3
-ProfileList.default.ActiveDevices.3=1net4you
-ProfileList.default.ActiveDevices.4=eth0
+ProfileList.default.ActiveDevices.1=1net4you
+ProfileList.default.ActiveDevices.2=1net4you0
+ProfileList.default.ActiveDevices.3=eth0
+ProfileList.default.ActiveDevices.4=eth3
 ProfileList.default.ActiveDevices.5=tr0
 ProfileList.default.DNS.Domainname=
 ProfileList.default.DNS.Hostname=test
@@ -304,8 +304,8 @@ class TestRCN(unittest.TestCase):
         self.setupChroot()
         self.redirectStd()
         import netconf_cmd
-	import netconfpkg
-        netconfpkg.TESTENV=True
+        from netconfpkg.NC_functions import setTestEnv
+        setTestEnv(True)
         cmdline = [ "-dh", "-o", "--root=" + CHROOT ]
         netconf_cmd.main(cmdline)
         expect = BASICSETUP
@@ -481,10 +481,10 @@ HardwareList.Token Ring.tr0.Name=tr0
 HardwareList.Token Ring.tr0.Status=configured
 HardwareList.Token Ring.tr0.Type=Token Ring
 ProfileList.default.Active=False
-ProfileList.default.ActiveDevices.1=1net4you0
-ProfileList.default.ActiveDevices.2=eth3
-ProfileList.default.ActiveDevices.3=1net4you
-ProfileList.default.ActiveDevices.4=eth0
+ProfileList.default.ActiveDevices.1=1net4you
+ProfileList.default.ActiveDevices.2=1net4you0
+ProfileList.default.ActiveDevices.3=eth0
+ProfileList.default.ActiveDevices.4=eth3
 ProfileList.default.ActiveDevices.5=tr0
 ProfileList.default.DNS.Domainname=
 ProfileList.default.DNS.Hostname=test
@@ -504,10 +504,10 @@ ProfileList.default.HostsList.3.Hostname=test
 ProfileList.default.HostsList.3.IP=10.1.1.1
 ProfileList.default.ProfileName=default
 ProfileList.newprofile.Active=True
-ProfileList.newprofile.ActiveDevices.1=1net4you0
-ProfileList.newprofile.ActiveDevices.2=eth3
-ProfileList.newprofile.ActiveDevices.3=1net4you
-ProfileList.newprofile.ActiveDevices.4=eth0
+ProfileList.newprofile.ActiveDevices.1=1net4you
+ProfileList.newprofile.ActiveDevices.2=1net4you0
+ProfileList.newprofile.ActiveDevices.3=eth0
+ProfileList.newprofile.ActiveDevices.4=eth3
 ProfileList.newprofile.ActiveDevices.5=tr0
 ProfileList.newprofile.DNS.Domainname=
 ProfileList.newprofile.DNS.Hostname=test

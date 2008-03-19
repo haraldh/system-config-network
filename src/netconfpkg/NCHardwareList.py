@@ -58,6 +58,10 @@ except:
 
 def getModInfo():
     global ModInfo
+    
+    if getTestEnv():
+        return None
+    
     if ModInfo == None:
 #         ModInfo = {}
 #         for mod in __networkmodulelist:
@@ -609,7 +613,7 @@ class HardwareList(HardwareList_base):
         # FIXME: move HW detection to NCDev*
         import netconfpkg
         dosysupdate=True
-        if hasattr(netconfpkg, 'TESTENV') and netconfpkg.TESTENV:
+        if getTestEnv():
             dosysupdate=False
         if dosysupdate:
             self.updateFromSystem()

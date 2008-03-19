@@ -142,6 +142,15 @@ modemFlowControls = { CRTSCTS : _("Hardware (CRTSCTS)"),
 def nop(*args):
     pass
 
+_testenv = False
+
+def setTestEnv(val):
+    global _testenv
+    _testenv = val
+    
+def getTestEnv():
+    return _testenv
+
 _verbose = 0
 
 def setVerboseLevel(l):
@@ -866,6 +875,7 @@ class ConfDevices(UserList.UserList):
                    string.find(entry, '-range') == -1 and \
                    os.access(confdir + entry, os.R_OK):
                     self.append(entry[6:])
+        self.sort()
 
 def testFilename(filename):
     if not len(filename):
