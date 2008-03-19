@@ -102,7 +102,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Thu Feb 28 2008 Harald Hoyer <harald@redhat.com> - 1.5.1
-- v1.5.1
+- removed CIPE (harald)
+- s/Devernet/Network/ (harald)
+- Auto -> auto (harald)
+- only append localhost to AliasList, if not already in (harald)
+- show error dialog, if device loading failes (harald)
+- moved MRU to Dialup only (harald)
+- recognize qeth devices in kudzu lists (rhbz#184734) (harald)
+- added MRU field (rhbz#221294) (harald)
+- added TUI for QETH (harald)
+- do not traceback, if we try to remove a device not in our active list (harald)
+- added qeth support (harald)
+- removed ctc and iucv devices (rhbz#219180) (harald)
+- do not handle ifcfg-${parent_device}-range* rhbz#221292 (harald)
+- Minor fix in hosts parser to make tui works. (jmoskovc)
+- Stupid mode doesn't go away anymore.(rhbz#177931) (jmoskovc)
+- Fixed crash when Baud=None (jmoskovc)
+- Removing PPP option should work. NETWORKMANAGER -> NM_CONTROLLED (jmoskovc)
+- Fixed problem with import rhbz#429725 (jmoskovc)
+- Changed Clist in host editor to GtkTreeView, added checkbox to show loopbacks in hosts (jmoskovc)
+- Minor fix in hosts parser - now it accepts trailing dot. (jmoskovc)
+- Improved {pap|chap}-secrets parser, added checkbox to reveal password in dialup config (jmoskovc)
+- Fixed crash when hostname is changed. (jmoskovc)
 
 * Mon Dec 03 2007 Harald Hoyer <harald@redhat.com> - 1.5.0
 - v1.5.0
