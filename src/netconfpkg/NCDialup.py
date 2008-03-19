@@ -111,7 +111,6 @@ __country_code = {
 
 class Dialup(Dialup_base):
     intkeydict = {
-                    'Mtu' : 'MTU', 
                     'Mru' : 'MRU', 
                  }
 
