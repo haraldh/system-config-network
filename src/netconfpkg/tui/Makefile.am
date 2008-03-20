@@ -3,9 +3,9 @@ PYTHON_FILES = \
 	NCPluginEthernetInterface.py \
 	NCPluginIsdnInterface.py \
 	NCPluginQethInterface.py \
+	NCPluginTokenRingInterface.py \
 	NCPluginModemInterface.py \
 	NCTcpIp.py
-
 
 EXTRA_DIST = $(PYTHON_FILES)
 
