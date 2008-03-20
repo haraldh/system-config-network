@@ -5,7 +5,7 @@ from netconfpkg.tui.NCTcpIp import NCTcpIpDialog
 # EthernetWindow class
 #
 class NCEthernetInterfaceTui(NCTcpIpDialog):
-    "TUI ISDN Interface Dialog"
+    "TUI Ethernet Interface Dialog"
     def __init__(self, dev = None):
         """
         The constructor
