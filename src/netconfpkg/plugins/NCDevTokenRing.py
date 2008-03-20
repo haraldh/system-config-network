@@ -28,6 +28,9 @@ class DevTokenRing(Device):
         self.Type = TOKENRING
 
     def getDialog(self):
+        if not _devTokenRingDialog:
+            return None
+
         dialog =  _devTokenRingDialog(self)
         if hasattr(dialog, "xml"):
             return dialog.xml.get_widget("Dialog")
