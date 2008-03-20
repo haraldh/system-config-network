@@ -1726,7 +1726,7 @@ class mainDialog:
 
     def on_about_activate(self, *args):
         from version import PRG_VERSION, PRG_NAME, \
-			    PRG_AUTHORS, PRG_DOCUMENTERS, PRG_TRANSLATORS
+			    PRG_AUTHORS, PRG_DOCUMENTERS
         if not hasattr(gtk, "AboutDialog"):
             #import gnome.ui
             dlg = gnome.ui.About(PRG_NAME,
@@ -1749,7 +1749,7 @@ class mainDialog:
             dlg.set_version(PRG_VERSION)
             dlg.set_copyright(_("Copyright (c) 2001-2005 Red Hat, Inc."))
             dlg.set_authors(PRG_AUTHORS)
-            dlg.set_documenters(PRG_DOCUMENTERS + [ " " ] + PRG_TRANSLATORS)
+            dlg.set_documenters(PRG_DOCUMENTERS)
             dlg.set_translator_credits(_("translator_credits"))
             dlg.set_license(_("This software is distributed under the GPL. \n"
                               "Please Report bugs to Red Hat's Bug Tracking \n"
