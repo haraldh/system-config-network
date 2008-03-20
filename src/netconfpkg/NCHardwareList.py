@@ -235,6 +235,8 @@ class HardwareList(HardwareList_base):
         if hwc:
             newhw = hwc()
             self[i] = newhw
+#        else: # FIXME: !!
+#            raise TypeError
         return i
 
     def updateFromKudzu(self):
@@ -482,13 +484,14 @@ class HardwareList(HardwareList_base):
 
     def updateFromSystem(self):
         log.log(5, "updateFromSystem")
-        try:
-            self.updateFromKudzu()
-        except:
-            pass
-
-        log.log(5, "updateFromKudzu")
-        log.log(5, str(self))
+        
+        
+#        log.log(5, "updateFromKudzu")
+#        try:
+#            self.updateFromKudzu()
+#        except:
+#            pass
+#        log.log(5, str(self))
 
         hdellist = []
 

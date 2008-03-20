@@ -95,19 +95,25 @@ class NCBackendHal:
             arp_proto_hw_id = self.getProperty(obj, "net.arp_proto_hw_id")
             if arp_proto_hw_id >= 256:
                 return None
-            
-            hw = Hardware()
-            hw.createCard()
-            hw.Name = self.getProperty(obj, "net.interface")
-            hw.Type = getDeviceType(hw.Name)
-            hw.Description = "%s %s" % self.getVendor(udi)
-            hw.Status = HW_SYSTEM
+            from netconfpkg.NCHardwareFactory import getHardwareFactory
+            hwf = getHardwareFactory()
+            name = self.getProperty(obj, "net.interface")
+            htype = getDeviceType(name)
+            hwc = hwf.getHardwareClass(htype)
+            if hwc:        
+                hw = hwc()
+                hw.createCard() # pylint: disable-msg=E1103
+                hw.Name = name
+                hw.Type = htype
+                hw.Description = "%s %s" % self.getVendor(udi)
+                hw.Status = HW_SYSTEM
+                index = self.getProperty(obj, "net.physical_device")
+                if index != None:
+                    # pylint: disable-msg=E1103
+                    hw.Card.ModuleName = self.getDriver(index)
 
-            index = self.getProperty(obj, "net.physical_device")
-            if index != None:
-                hw.Card.ModuleName = self.getDriver(index)
-
-            return hw
+                return hw
+        return None
 
     # TODO?
     # Only add USB audio devices that have snd-usb-audio as the driver
