@@ -45,47 +45,47 @@ GLADE_FILES = \
 	QethHardwareDruid.glade
 
 PYTHON_FILES = \
-	ADSLInterfaceDruid.py \
-	ADSLInterfaceDialog.py \
+	NCPluginADSLInterfaceDruid.py \
+	NCPluginADSLInterfaceDialog.py \
 	DeviceConfigDialog.py \
 	DeviceTypeDialog.py \
-	DialupInterfaceDialog.py \
+	NCPluginDialupInterfaceDialog.py \
 	DialupDruid.py \
 	editadress.py \
 	editdomain.py \
 	edithosts.py \
 	editipsec.py \
-	ethernetconfig.py \
+	NCPluginethernetconfig.py \
 	EthernetHardwareDruid.py \
-	ethernethardware.py \
-	EthernetInterface.py \
+	NCPluginethernethardware.py \
+	NCPluginEthernetInterface.py \
 	GenericInterface.py \
 	hardwaretype.py \
 	HardwareDialog.py \
-	__init__.py \
+	NCPlugin__init__.py \
 	InterfaceCreator.py \
-	isdnhardware.py \
-	IsdnInterface.py \
+	NCPluginisdnhardware.py \
+	NCPluginIsdnInterface.py \
 	maindialog.py \
-	modemconfig.py \
-	ModemInterface.py \
+	NCPluginmodemconfig.py \
+	NCPluginModemInterface.py \
 	NewInterfaceDialog.py \
 	GUI_functions.py \
 	providerdb.py \
 	provider.py \
 	sharedtcpip.py \
-	tokenringconfig.py \
+	NCPlugintokenringconfig.py \
 	TokenRingHardwareDruid.py \
-	TokenRingInterface.py \
-	tokenringhardware.py \
+	NCPluginTokenRingInterface.py \
+	NCPlugintokenringhardware.py \
 	tonline.py \
-	wirelessconfig.py \
-	WirelessInterface.py \
+	NCPluginwirelessconfig.py \
+	NCPluginWirelessInterface.py \
 	ptpconfig.py \
 	PTPInterface.py \
-	QethConfig.py \
+	NCPluginQethConfig.py \
 	QethInterfaceDruid.py \
-	QethHardware.py \
+	NCPluginQethHardware.py \
 	QethHardwareDruid.py
 
 

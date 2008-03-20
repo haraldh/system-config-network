@@ -1,4 +1,3 @@
-"TUI for system-config-network"
 ## Copyright (C) 2001-2005 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
 ## Copyright (C) 2001-2005 Harald Hoyer <harald@redhat.com>
@@ -22,7 +21,7 @@
 # pylint: disable-msg=W0141
 
 import os
-_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
+_files = map(lambda v: v[:-3], filter(lambda v: v[:8]=="NCPlugin" and v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
 
 import locale
 locale.setlocale(locale.LC_ALL, "C")
@@ -44,3 +43,4 @@ del _files
 del _cmd
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
+

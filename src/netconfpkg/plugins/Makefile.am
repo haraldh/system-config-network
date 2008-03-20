@@ -1,19 +1,19 @@
 
 PYTHON_FILES = \
 	__init__.py \
-	NCDevADSL.py \
-	NCDevEthernet.py \
-	NCDevIsdn.py \
-	NCDevModem.py \
-	NCDevTokenRing.py \
-	NCDevWireless.py \
-	NCHWEthernet.py \
-	NCHWIsdn.py \
-	NCHWModem.py \
-	NCHWWireless.py \
-	NCHWTokenring.py \
-	NCHWQeth.py \
-	NCDevQeth.py
+	NCPluginDevADSL.py \
+	NCPluginDevEthernet.py \
+	NCPluginDevIsdn.py \
+	NCPluginDevModem.py \
+	NCPluginDevTokenRing.py \
+	NCPluginDevWireless.py \
+	NCPluginHWEthernet.py \
+	NCPluginHWIsdn.py \
+	NCPluginHWModem.py \
+	NCPluginHWWireless.py \
+	NCPluginHWTokenring.py \
+	NCPluginHWQeth.py \
+	NCPluginDevQeth.py
 
 EXTRA_DIST = $(PYTHON_FILES)
 

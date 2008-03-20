@@ -16,12 +16,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 # pylint: disable-msg=W0122
 # pylint: disable-msg=W0141
 
 import os
-_files = map(lambda v: v[:-3], filter(lambda v: v[:8]=="NCPlugin" and v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
+_files = map(lambda v: v[:-3], filter(lambda v: v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
 
 import locale
 locale.setlocale(locale.LC_ALL, "C")
@@ -43,4 +42,3 @@ del _files
 del _cmd
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-
