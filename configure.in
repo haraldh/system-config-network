@@ -1,29 +1,30 @@
-AC_INIT([system-config-network], [1.5.1])
+AC_INIT([system-config-network], [1.5.90])
 RPM_RELEASE=1
 AC_CONFIG_SRCDIR([src/netconf.py])
 AM_INIT_AUTOMAKE([1.9 tar-ustar no-define foreign dist-bzip2])
 
-ALL_LINGUAS="ar as be bg bn_IN bn bs ca cs cy da de el en_GB es et fa fi fr gu he hi hr hu hy id is it ja ka kn ko ku lo mk ml mr ms my nb nl no or pa pl pt_BR pt ro ru si sk sl sq sr ta te tr uk ur vi zh_CN zh_TW"
-
-
 AM_PATH_PYTHON
+if test -z "$PYTHON"; then
+  echo "*** Essential program python not found" 1>&2
+  exit 1
+fi
 
-dnl prevent to copy po/Makefile.in.in
-GETTEXT_PACKAGE=system-config-network
+GETTEXT_PACKAGE="system-config-network"
 AC_SUBST(GETTEXT_PACKAGE)
-AM_GLIB_GNU_GETTEXT
-AC_PROG_INTLTOOL
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package])
+IT_PROG_INTLTOOL([0.35.0], [no-xml])
+AM_PO_SUBDIRS
+AC_PROG_INSTALL
 AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_AWK
+AC_PROG_MKDIR_P
 
-perl -e 'print "PRG_TRANSLATORS = [[\n";LINE:;while(<>) { if (/^# (.*<.*>)/) { print "  \"$1\",\n";}};print "]]\n"' $srcdir/po/*.po > ./translators.txt
-AC_SUBST_FILE(PRG_TRANSLATORS)dnl
-PRG_TRANSLATORS=./translators.txt
 
 AC_SUBST(RPM_RELEASE)
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
-config.h
 m4/Makefile
 doc/Makefile
 doc/figs/Makefile
@@ -40,4 +41,5 @@ src/version.py
 system-config-network.spec
 po/Makefile.in
 ])
-
+AC_CONFIG_FILES([po/Makefile], [AM_POSTPROCESS_PO_MAKEFILE])
+AC_OUTPUT
