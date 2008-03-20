@@ -146,6 +146,8 @@ class DeviceList(DeviceList_base):
         if devclass:
             newdev = devclass()
             self[i] = newdev
+#        else: # FIXME: !!
+#            raise TypeError
         return self[i]
 
     def test(self):
