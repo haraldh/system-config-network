@@ -63,7 +63,9 @@ from version import PRG_VERSION
 from version import PRG_NAME
 from netconfpkg.NC_functions import log
             
-from netconfpkg.exception import action, error, exitcode, installExceptionHandler
+from netconfpkg.exception import installExceptionHandler
+# FIXME: use action,error,exitcode
+#from netconfpkg.exception import action, error, exitcode, installExceptionHandler
     
 installExceptionHandler(PROGNAME, PRG_VERSION)
 

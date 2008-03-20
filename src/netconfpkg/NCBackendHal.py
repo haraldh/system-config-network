@@ -21,7 +21,7 @@ if __name__ == '__main__':
     sys.path.append("../")
     sys.path.append("./")
  
-from netconfpkg.NCHardware import Hardware, HW_SYSTEM
+from netconfpkg.NCHardware import HW_SYSTEM
 from netconfpkg.NC_functions import getDeviceType
 
 HAL_DEVICE_IFACE = "org.freedesktop.Hal.Device"

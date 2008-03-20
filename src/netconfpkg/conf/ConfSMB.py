@@ -32,10 +32,8 @@ import sys
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-from Conf import Conf
-from string import joinfields, strip, find
+from netconfpkg.conf.Conf import Conf
 import re
-import os
 from UserDict import UserDict
 
 class ConfSMBSubDict(UserDict):
@@ -90,6 +88,7 @@ class ConfSMB(Conf):
         self.initvars()
 
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.rewind()
         stanza = None
@@ -103,12 +102,12 @@ class ConfSMB(Conf):
 
             while self.findnextcodeline():
                 #print "initvars: " + self.getline()
-                vars = self.next_entry()
-                if not vars:
+                mvars = self.next_entry()
+                if not mvars:
                     break
 
-                name = vars[0]
-                value = vars[1]
+                name = mvars[0]
+                value = mvars[1]
                 stanzavars[name] = value
                 self.nextline()
 
@@ -117,17 +116,17 @@ class ConfSMB(Conf):
         self.rewind()
 
     def get_entry(self):
-        vars = self.getfields()
+        mvars = self.getfields()
 
         try:
-            vars = [vars[0], joinfields(vars[1:len(vars)], '=')]
+            mvars = [mvars[0], '='.join(mvars[1:len(mvars)])]
         except(LookupError):
             return 0
 
-        if not vars:
+        if not mvars:
             return 0
 
-        return [strip(vars[0]), strip(vars[1])]
+        return [mvars[0].strip(), mvars[1].strip()]
 
     def next_entry(self):
         while self.findnextcodeline():
@@ -135,10 +134,10 @@ class ConfSMB(Conf):
             if self.is_stanza_decl():
                 return 0
 
-            vars = self.get_entry()
+            mvars = self.get_entry()
 
-            if vars:
-                return vars
+            if mvars:
+                return mvars
 
             self.nextline()
 
@@ -192,15 +191,15 @@ class ConfSMB(Conf):
         # the [...] line of the next stanza (or the end of the file)
         # if entry_name does not exist.
         while self.findnextcodeline():
-            vars = self.next_entry()
+            mvars = self.next_entry()
             #print "find_entry_in_current_stanza: " + self.getline()
-            if not vars:
+            if not mvars:
                 if self.is_stanza_decl():
                     #print "is stanza!"
                     self.line = self.line - 1
                     return 0
             else:
-                name = vars[0]
+                name = mvars[0]
                 if name == entry_name:
                     return 1
             self.nextline()

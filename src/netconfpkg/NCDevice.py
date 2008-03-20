@@ -30,11 +30,11 @@ from netconfpkg import Device_base # pylint: disable-msg=E0611
 # pylint: disable-msg=W0201
 
 class ConfDevice( Conf.ConfShellVar ):
-    def __init__( self, name, dir = None ):
-        if dir == None:
-            dir = getRoot() + SYSCONFDEVICEDIR
+    def __init__( self, name, mdir = None ):
+        if mdir == None:
+            mdir = getRoot() + SYSCONFDEVICEDIR
         new = False
-        self.filename = dir + 'ifcfg-' + name
+        self.filename = mdir + 'ifcfg-' + name
         if not os.access( self.filename, os.R_OK ):
             new = True
             self.oldmode = 0644
@@ -101,8 +101,8 @@ class Device( Device_base ):
                     'IPv6Init' : 'IPV6INIT',
                     }
 
-    def __init__( self, list = None, parent = None ):
-        Device_base.__init__( self, list, parent )
+    def __init__( self, clist = None, parent = None ):
+        Device_base.__init__( self, clist, parent )
         self.oldname = None
 
     def getDialog( self ):
@@ -255,10 +255,10 @@ class Device( Device_base ):
                 self.AutoDNS = False
 
         # move old <id>.route files to route-<id>
-        file = getRoot() + SYSCONFDEVICEDIR + \
+        mfile = getRoot() + SYSCONFDEVICEDIR + \
                                 self.DeviceId + '.route'
-        if os.path.isfile( file ):
-            NC_functions.rename( file,
+        if os.path.isfile( mfile ):
+            NC_functions.rename( mfile,
                                 getRoot() + SYSCONFDEVICEDIR + \
                                 'route-' + self.DeviceId )
         # load routes

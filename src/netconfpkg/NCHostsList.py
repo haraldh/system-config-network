@@ -22,7 +22,27 @@ if __name__ == '__main__':
 from netconfpkg import HostsList_base # pylint: disable-msg=E0611
 from netconfpkg.NCHost import Host
 
+def _saveEntry(entry, conffile):
+    if isinstance(entry, str):
+        conffile.write(entry + "\n")
+    elif isinstance(entry, Host):
+        if (not entry.changed) and hasattr(entry, "origLine"):
+            conffile.write(entry.origLine+"\n")
+            return
+        if entry.IP:
+            conffile.write(entry.IP)
+        if entry.Hostname:
+            conffile.write("\t" + entry.Hostname)
+        if entry.AliasList:
+            for alias in entry.AliasList:
+                conffile.write("\t" + alias)
+        if hasattr(entry, "Comment") and entry.Comment:
+            conffile.write(" #" + entry.Comment)
+
+        conffile.write("\n")
+
 class HostsList(HostsList_base):
+    "HostsList class"
     def __init__(self, *args, **kwargs):
         HostsList_base.__init__(self, *args, **kwargs)
     
@@ -34,11 +54,15 @@ class HostsList(HostsList_base):
             if isinstance(host, Host):
                 try:
                     host.test()
-                except ValueError, e:
+                except ValueError, value_exception:
                     if not error:
-                        error = "Error in hostslist\nWrong: %s in entry %i" % (e.message, num)
+                        error = """\
+Error in hostslist
+Wrong: %s in entry %i
+""" % (value_exception.message, num)
                     else:
-                        error += "Wrong: %s in entry %i" % (e.message, num)
+                        error += "Wrong: %s in entry %i\n" \
+                            % (value_exception.message, num)
         if error:
             raise ValueError(error)
     
@@ -59,7 +83,8 @@ class HostsList(HostsList_base):
             comment = tmp[2]
             tmp = tmp[0].split()
             
-            # if the line contains more than comment we suppose that it's ip with Aliases
+            # if the line contains more than comment we 
+            # suppose that it's ip with Aliases
             if len(tmp) > 0:
                 entry = Host()
                 entry.IP = tmp[0]
@@ -68,33 +93,44 @@ class HostsList(HostsList_base):
                 if len(tmp) > 1:
                     entry.Hostname = tmp[1]
                     for alias in tmp[2:]:
-                        entry.AliasList.append(alias) # pylint: disable-msg=E1101
+                        entry.AliasList.append(alias) #pylint: disable-msg=E1101
                 entry.origLine = line
                 # catch invalid entry in /etc/hosts
                 try:
                     entry.test()
-                except ValueError, e:
-                    badlines.append((num, e.message))
+                except ValueError, value_exception:
+                    badlines.append((num, value_exception.message))
                     if not error:
-                        error = "Error while parsing /etc/hosts:\nWrong %s on line %i\n" % (e.message, num)                    
+                        error = """\
+Error while parsing /etc/hosts:
+Wrong %s on line %i
+""" % (value_exception.message, num)                    
                     else:
-                        error += "Wrong %s on line %i\n" % (e.message, num)
+                        error += "Wrong %s on line %i\n" \
+                            % (value_exception.message, num)
             else:
                 entry = line
 
             # add every line to configuration
             self.append(entry) # pylint: disable-msg=E1101
         if error:
-            e = ValueError(error)
-            e.badlines = badlines
-            raise e
+            value_exception = ValueError(error)
+            value_exception.badlines = badlines
+            raise value_exception
 
     def __iter__(self):
-        """Replace __iter__ for backwards compatibility. Returns only valid Host objects"""
-#        return iter(filter(lambda x: isinstance(x, Host), HostsList_base.__iter__(self)))
-        return iter([x for x in HostsList_base.__iter__(self) if isinstance(x, Host)])
+        """
+        Replace __iter__ for backwards compatibility. 
+        Returns only valid Host objects
+        """
+#        return iter(filter(lambda x: isinstance(x, Host), 
+#                           HostsList_base.__iter__(self)))
+        return iter([x for x in HostsList_base.__iter__(self) 
+                     if isinstance(x, Host)])
 
-    def save(self, **kwargs):
+
+
+    def save(self, *args, **kwargs):
         if "filename" in kwargs:            
             conffile = open(kwargs["filename"], "w")
         elif "file" in kwargs:
@@ -103,24 +139,8 @@ class HostsList(HostsList_base):
             conffile = open("/etc/hosts", "w")
 
         for entry in HostsList_base.__iter__(self):
-            if isinstance(entry, str):
-                conffile.write(entry + "\n")
-            elif isinstance(entry, Host):
-                if (not entry.changed) and hasattr(entry, "origLine"):
-                    conffile.write(entry.origLine+"\n")
-                    continue
-                if entry.IP:
-                    conffile.write(entry.IP)
-                if entry.Hostname:
-                    conffile.write("\t" + entry.Hostname)
-                if entry.AliasList:
-                    for alias in entry.AliasList:
-                        conffile.write("\t" + alias)
-                if hasattr(entry, "Comment") and entry.Comment:
-                    conffile.write(" #" + entry.Comment)
-
-                conffile.write("\n")
-
+            _saveEntry(entry, conffile)
+            
         if not "file" in kwargs:
             conffile.close()
 
@@ -132,9 +152,3 @@ class HostsList(HostsList_base):
         i = self.addHost() # pylint: disable-msg=E1101
         self[i].HostID = vals[0]
         self[i]._parseLine(vals[1:], value) # pylint: disable-msg=W0212
-
-if __name__ == '__main__':
-    hlist = HostsList()
-    hlist.load()
-    print hlist
-    hlist.save(file=sys.stdout)

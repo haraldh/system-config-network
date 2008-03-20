@@ -50,7 +50,6 @@ __DUMPHASH = {}
 def __dump_class(instance, fd, level=0):
     "dumps all classes"
     import types
-    global __DUMPHASH
     # protect from loops
     if not __DUMPHASH.has_key(instance):
         __DUMPHASH[instance] = True
@@ -387,33 +386,33 @@ if __name__ == '__main__':
         Display this message""" % (sys.argv[0])
 
     import getopt
-    debug = 1
-    gui = 0
+    __debug = 1
+    __gui = 0
 
-    installExceptionHandler("test", "1.0", gui, debug)
+    installExceptionHandler("test", "1.0", __gui, __debug)
 
-    debug = 0
+    __debug = 0
 
     class BadUsage(Exception): pass
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "dgh",
+        __opts, __args = getopt.getopt(sys.argv[1:], "dgh",
                                    [
                                     "debug",
                                     "help",
                                     "gui",
                                     ])
 
-        for opt, val in opts:
-            if opt == '-d' or opt == '--debug':
-                debug = 1
+        for __opt, __val in __opts:
+            if __opt == '-d' or __opt == '--debug':
+                __debug = 1
                 continue
 
-            if opt == '-g' or opt == '--gui':
-                gui = 1
+            if __opt == '-g' or __opt == '--gui':
+                __gui = 1
                 continue
 
-            if opt == '-h' or opt == '--help':
+            if __opt == '-h' or __opt == '--help':
                 _usage()
                 sys.exit(0)
 
@@ -421,7 +420,7 @@ if __name__ == '__main__':
         _usage()
         sys.exit(1)
 
-    installExceptionHandler("test", "1.0", gui, debug)
+    installExceptionHandler("test", "1.0", __gui, __debug)
 
     _exception_function()
     sys.exit(0)

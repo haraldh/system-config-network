@@ -16,7 +16,7 @@ import locale
 import signal
 
 from snack import SnackScreen
-import netconfpkg
+import netconfpkg # pylint: disable-msg=W0611
 from netconfpkg import NC_functions
 from netconfpkg.NC_functions import log, generic_error_dialog
 from netconfpkg.NCDeviceList import getDeviceList
