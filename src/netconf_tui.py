@@ -16,7 +16,9 @@ import locale
 import signal
 
 from snack import SnackScreen
+import netconfpkg
 from netconfpkg import NC_functions
+from netconfpkg.NC_functions import log, generic_error_dialog
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCProfileList import getProfileList
 from rhpl.translate import _, textdomain_codeset
@@ -282,6 +284,26 @@ def main():
         Usage()
         return 1
 
+
+    if not NC_functions.getDebugLevel():
+        log.handler = log.syslog_handler
+        log.open()
+    else:
+        log.handler = log.file_handler
+        log.open(sys.stderr)
+
+    if chroot:
+        NC_functions.setRoot(chroot)
+
+    if not os.access(NC_functions.getRoot(), os.W_OK):
+        if os.getuid() != 0:
+            generic_error_dialog (_("Please start system-config-network "
+                                    "with root permissions!\n"))
+            return 10
+
+    if chroot:
+        NC_functions.prepareRoot(chroot)
+        
 #    exception.installExceptionHandler(PRG_NAME, PRG_VERSION, gui=0,
 #                                      debug=debug)
     screen = SnackScreen()
