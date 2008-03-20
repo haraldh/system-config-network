@@ -96,14 +96,14 @@ class tokenringHardware:
 
 
     def setup(self):
-        list = []
+        mlist = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "tr"  and \
                    modInfo[i].has_key('description'):
-                list.append(modInfo[i]['description'])
-        list.sort()
-        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+                mlist.append(modInfo[i]['description'])
+        mlist.sort()
+        self.xml.get_widget("adapterComboBox").set_popdown_strings(mlist)
 
 #          hwlist = NCHardwareList.getHardwareList()
 #          (hwcurr, hwdesc) = create_tokenring_combo(hwlist, None)
@@ -113,8 +113,8 @@ class tokenringHardware:
 
     def dehydrate(self):
         if not self.has_tokenring:
-            id = self.hardwarelist.addHardware(TOKENRING)
-            self.hw = self.hardwarelist[id]
+            mid = self.hardwarelist.addHardware(TOKENRING)
+            self.hw = self.hardwarelist[mid]
         self.hw.Type = TOKENRING
         self.hw.createCard()
         self.hw.Name = self.xml.get_widget('tokenringDeviceEntry').get_text()

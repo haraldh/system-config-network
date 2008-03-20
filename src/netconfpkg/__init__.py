@@ -29,7 +29,7 @@ import sys
 
 __netconfpkg = sys.modules[__name__]
 
-__netconfpkg.Use_Alchemist = None
+__netconfpkg.Use_Alchemist = False
 
 from netconfpkg.genClass import readClassfile
 

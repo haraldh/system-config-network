@@ -127,11 +127,11 @@ class MyConfModules(ConfModules):
         else:
             return (opt, None)
 
-    def joinoptlist(self, dict):
+    def joinoptlist(self, mdict):
         optstring = ''
-        for key in dict.keys():
-            if dict[key] != None:
-                optstring = optstring + key + '=' + dict[key] + ' '
+        for key in mdict.keys():
+            if mdict[key] != None:
+                optstring = optstring + key + '=' + mdict[key] + ' '
             else:
                 optstring = optstring + key + ' '
 
@@ -224,16 +224,16 @@ class HardwareList(HardwareList_base):
                  "tr" : "qeth",
                  }
 
-    def __init__(self, list = None, parent = None):
-        HardwareList_base.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        HardwareList_base.__init__(self, clist, parent)
         # FIXME: [198070] use modinfo to determine options
         self.keydict = { }
 
-    def addHardware(self, type = None):
+    def addHardware(self, mtype = None):
         from netconfpkg.NCHardwareFactory import getHardwareFactory
         i = HardwareList_base.addHardware(self)
         hwf = getHardwareFactory()
-        hwc = hwf.getHardwareClass(type)
+        hwc = hwf.getHardwareClass(mtype)
         if hwc:
             newhw = hwc()
             self[i] = newhw
@@ -389,8 +389,8 @@ class HardwareList(HardwareList_base):
                 line = " ".join(line)
                 line.strip()
                 log.log(5, "type %s = %s" % (device, line))
-                type = int(line)
-                if type >= 256:
+                mtype = int(line)
+                if mtype >= 256:
                     continue
             except:
                 pass
@@ -531,9 +531,9 @@ class HardwareList(HardwareList_base):
                 module = modules[mod]['alias']
             else: module = None
 
-            type = getDeviceType(mod, module)
+            mtype = getDeviceType(mod, module)
 
-            if type == _('Unknown'):
+            if mtype == _('Unknown'):
                 continue
 
             h = None
@@ -544,11 +544,11 @@ class HardwareList(HardwareList_base):
             if h and h.Name == mod:
                 continue
 
-            i = self.addHardware(type)
+            i = self.addHardware(mtype)
             hw = self[i]
             hw.Name = mod
             hw.Description = module
-            hw.Type = type
+            hw.Type = mtype
             hw.createCard()
             hw.Card.ModuleName = module
             hw.Status = HW_CONF
@@ -724,11 +724,11 @@ class HardwareList(HardwareList_base):
         # FIXME: [198070] use modinfo to determine options
         # Clean up modules
         for mod in modules.keys():
-            type = getDeviceType(mod)
+            mtype = getDeviceType(mod)
             #
             # FIXME: This is not OO!!
             #
-            if type != ETHERNET and type != TOKENRING and type != QETH:
+            if mtype != ETHERNET and mtype != TOKENRING and mtype != QETH:
                 continue
             #print "Testing " + str(mod)
             for hw in self:

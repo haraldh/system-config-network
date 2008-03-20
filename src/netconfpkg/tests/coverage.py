@@ -128,7 +128,6 @@ class coverage:
     canonical_filename_cache = {}
 
     def __init__(self):
-        global the_coverage
         if the_coverage:
             raise self.error, "Only one coverage object allowed."
         self.cache = os.environ.get(self.cache_env, self.cache_default)

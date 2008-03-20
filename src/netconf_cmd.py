@@ -51,14 +51,14 @@ textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
 __builtin__.__dict__['_'] = _
 
-def handleException((type, value, tb), progname, version, debug=None):
+def handleException((mtype, value, tb), progname, version, debug=None):
     import pdb
     import traceback
-    list = traceback.format_exception (type, value, tb)
+    mlist = traceback.format_exception (mtype, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
     if len(tblast):
         tblast = tblast[len(tblast)-1]
-    extxt = traceback.format_exception_only(type, value)
+    extxt = traceback.format_exception_only(mtype, value)
     text = _("An unhandled exception has occured.  This "
             "is most likely a bug.\nPlease file a detailed bug "
             "report against the component %s at \n"
@@ -73,7 +73,7 @@ def handleException((type, value, tb), progname, version, debug=None):
     for t in tblast:
         text += str(t) + ":"
     text += extxt[0]
-    text += "".join(list)
+    text += "".join(mlist)
 
     trace = tb
     while trace.tb_next:
@@ -121,8 +121,7 @@ def Usage():
           _("import from file") + '\n')
     sys.stderr.write('\n')
 
-def main(cmdline):
-    import os.path
+def main(mcmdline):
     from netconfpkg.NCDeviceList import getDeviceList
     from netconfpkg.NCHardwareList import getHardwareList
     from netconfpkg.NCProfileList import getProfileList
@@ -147,13 +146,13 @@ def main(cmdline):
     mode = EXPORT
     filename = None
     clear = 0
-    list = 0
+    mlist = 0
     chroot = None
     debug = None
     devlists = []
 
     try:
-        opts, args = getopt.getopt(cmdline, "asp:?r:dhvtief:co",
+        opts, args = getopt.getopt(mcmdline, "asp:?r:dhvtief:co",
                                    [
                                     "activate",
                                     "profile=",
@@ -180,7 +179,7 @@ def main(cmdline):
         pass
 
     try:
-        opts, args = getopt.getopt(cmdline, "asp:?r:dhvtief:co",
+        opts, args = getopt.getopt(mcmdline, "asp:?r:dhvtief:co",
                                    [
                                     "activate",
                                     "profile=",
@@ -303,11 +302,11 @@ def main(cmdline):
                 "ProfileList" : getProfileList() }
 
             if filename:
-                file = open(filename, "r")
+                mfile = open(filename, "r")
             else:
-                file = sys.stdin
+                mfile = sys.stdin
 
-            lines = file.readlines()
+            lines = mfile.readlines()
 
             for line in lines:
                 try:

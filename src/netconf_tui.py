@@ -19,7 +19,6 @@ from snack import SnackScreen
 from netconfpkg import NC_functions
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCProfileList import getProfileList
-from netconfpkg import NCException
 from rhpl.translate import _, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
@@ -91,12 +90,12 @@ def dumpClass(instance, fd, level=0):
 #
 # handleException function
 #
-def handleException((type, value, tb), progname, version):
-    list = traceback.format_exception (type, value, tb)
+def handleException((mtype, value, tb), progname, version):
+    mlist = traceback.format_exception (mtype, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
     if len(tblast):
         tblast = tblast[len(tblast)-1]
-    extxt = traceback.format_exception_only(type, value)
+    extxt = traceback.format_exception_only(mtype, value)
     text = "Component: %s\n" % progname
     text = text + "Version: %s\n" % version
     text = text + "Summary: TB "
@@ -111,7 +110,7 @@ def handleException((type, value, tb), progname, version):
     for t in tblast:
         text = text + str(t) + ":"
     text = text + extxt[0]
-    text = text + "".join(list)
+    text = text + "".join(mlist)
 
     print text
     import pdb
@@ -130,36 +129,38 @@ from netconfpkg.NCHardwareList import getHardwareList
 from snack import GridForm, TextboxReflowed, Listbox, ButtonBar
 from netconfpkg.NC_functions import ETHERNET, ISDN, MODEM, QETH
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-import netconfpkg.tui
 
-def loadConfig(screen):
+# load all plugins by importing the base module directory
+import netconfpkg.tui # pylint: disable-msg=W0611
+
+def loadConfig(mscreen):
     exception.action(_("Loading configuration"))
     t=TextboxReflowed(10, _("Loading Device Configuration"))
-    g=GridForm(screen,_("Network Configuration"),1,1)
+    g=GridForm(mscreen,_("Network Configuration"),1,1)
     g.add(t,0,0)
     g.draw()
-    screen.refresh()
+    mscreen.refresh()
     devicelist = getDeviceList()
     t.setText(_("Loading Hardware Configuration"))
     g.draw()
-    screen.refresh()
+    mscreen.refresh()
     hardwarelist = getHardwareList()
     t.setText(_("Loading Profile Configuration"))
     g.draw()
-    screen.refresh()
+    mscreen.refresh()
     profilelist = getProfileList()
-    screen.popWindow()
+    mscreen.popWindow()
 
 #
 # main Screen
 #
-def newDevice(screen):
+def newDevice(mscreen):
     """
     Displays the main screen
     @screen The snack screen instance
     """
     t=TextboxReflowed(25,_("Which device type do you want to add?"))
-    bb=ButtonBar(screen,((_("Add"),"add"),(_("Cancel"),"cancel")))
+    bb=ButtonBar(mscreen,((_("Add"),"add"),(_("Cancel"),"cancel")))
     li=Listbox(5,width=25,returnExit=1)
     li.append(_("Ethernet"), ETHERNET)
     li.append(_("Modem"), MODEM)
@@ -167,14 +168,14 @@ def newDevice(screen):
 
     machine = os.uname()[4]
     if machine == 's390' or machine == 's390x':
-         li.append(_("QETH"), QETH)
+        li.append(_("QETH"), QETH)
 
-    g=GridForm(screen,_("Network Configuration"),1,3)
+    g=GridForm(mscreen,_("Network Configuration"),1,3)
     g.add(t,0,0)
     g.add(li,0,1)
     g.add(bb,0,2)
     res=g.run()
-    screen.popWindow()
+    mscreen.popWindow()
     if bb.buttonPressed(res) != 'cancel':
         todo=li.current()
         df = getDeviceFactory()
@@ -189,10 +190,10 @@ def newDevice(screen):
             return dev
     return -2
 
-def selectDevice(screen):
+def selectDevice(mscreen):
     li=Listbox(5,returnExit=1)
     l = 0
-    le = screen.width - 6
+    le = mscreen.width - 6
     if le <= 0: le = 5
     for dev in getDeviceList():
         if not hasattr(dev, "getDialog") or not dev.getDialog():
@@ -215,12 +216,12 @@ def selectDevice(screen):
         return None
 
     li.append(_("<New Device>"), None)
-    g=GridForm(screen,_("Select A Device"),1,3)
-    bb=ButtonBar(screen,((_("Quit"),"quit"), (_("Cancel"),"cancel")))
+    g=GridForm(mscreen,_("Select A Device"),1,3)
+    bb=ButtonBar(mscreen,((_("Quit"),"quit"), (_("Cancel"),"cancel")))
     g.add(li,0,1)
     g.add(bb,0,2,growx=1)
     res = g.run()
-    screen.popWindow()
+    mscreen.popWindow()
     if bb.buttonPressed(res)=="quit":
         ret = -1
     elif bb.buttonPressed(res)=="cancel":
@@ -228,7 +229,7 @@ def selectDevice(screen):
     else:
         ret=li.current()
         if not ret:
-            ret = newDevice(screen)
+            ret = newDevice(mscreen)
     return ret
 
 
@@ -238,10 +239,10 @@ def Usage():
 #
 # __main__
 #
-if __name__=="__main__":
+def main():
     import getopt
-    class BadUsage: pass
-    from netconfpkg import NC_functions
+    class BadUsage(Exception):
+        pass
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     chroot = None
@@ -269,7 +270,7 @@ if __name__=="__main__":
 
             if opt == '-h' or opt == "?" or opt == '--help':
                 Usage()
-                sys.exit(0)
+                return 0
 
             if opt == '-r' or opt == '--root':
                 chroot = val
@@ -279,7 +280,7 @@ if __name__=="__main__":
 
     except (getopt.error, BadUsage):
         Usage()
-        sys.exit(1)
+        return 1
 
 #    exception.installExceptionHandler(PRG_NAME, PRG_VERSION, gui=0,
 #                                      debug=debug)
@@ -318,9 +319,12 @@ if __name__=="__main__":
         #print dev
     except SystemExit, code:
         screen.finish()
-        sys.exit(code)
+        return code
     except:
         screen.finish()
         raise
+
+if __name__=="__main__":
+    sys.exit(main())
 
 __author__ = "Trond Eivind Glomsrød <teg@redhat.com>, Harald Hoyer <harald@redhat.com>"

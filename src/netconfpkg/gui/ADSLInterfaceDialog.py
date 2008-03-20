@@ -20,7 +20,6 @@
 import gtk
 
 import gtk.glade
-import signal
 
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect

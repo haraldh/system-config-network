@@ -198,8 +198,8 @@ class DslDialup(Dialup):
                 'AcName' : 'ACNAME',
                 }
 
-    def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Dialup.__init__(self, clist, parent)
 
     def load(self, parentConf):
         "Load the Configuration from the parentConf"
@@ -331,8 +331,8 @@ class IsdnDialup(Dialup):
                 'Layer3' : 'L3_PROT',
                 }
 
-    def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Dialup.__init__(self, clist, parent)
 
     def load(self, parentConf):
         "Load the Configuration from the parentConf"
@@ -494,8 +494,8 @@ class ModemDialup(Dialup):
                'PhoneNumber' : 'Phone',
                }
 
-    def __init__(self, list = None, parent = None):
-        Dialup.__init__(self, list, parent)
+    def __init__(self, clist = None, parent = None):
+        Dialup.__init__(self, clist, parent)
 
     def load(self, parentConf):
         "Load the Configuration from the parentConf"
@@ -716,12 +716,12 @@ class ModemDialup(Dialup):
             unlink(peerdir + parent.oldname)
         filename = peerdir + parent.DeviceId
         try:
-            file = open(filename, "w")
+            mfile = open(filename, "w")
             line = 'connect "/usr/bin/wvdial --remotename ' + \
                    '%s --chat \'%s\'"' % ( parent.DeviceId, name )
-            file.write(line + '\n')
+            mfile.write(line + '\n')
             log.lch(2, filename, line)
-            file.close()
+            mfile.close()
         except KeyError:
             pass
 

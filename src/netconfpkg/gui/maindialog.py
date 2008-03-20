@@ -1205,8 +1205,8 @@ class mainDialog:
 
                 device = clist.get_row_data(row)
                 name = device.DeviceId
-                type = device.Type
-                if type == LO:
+                mtype = device.Type
+                if mtype == LO:
                     generic_error_dialog (_('The Loopback device '
                                             'can not be disabled!'),
                                           self.dialog)
@@ -1301,8 +1301,8 @@ class mainDialog:
         if self.down_button: self.copy_button.set_sensitive(False)
 
     def on_generic_clist_button_release_event(self, clist, event, func):
-        id = clist.get_data ("signal_id")
-        clist.disconnect (id)
+        mid = clist.get_data ("signal_id")
+        clist.disconnect (mid)
         func()
 
     def on_generic_clist_button_press_event(self, clist, event, *args):
@@ -1317,10 +1317,10 @@ class mainDialog:
                 func = self.nop
                 if self.editMap.has_key(clist.get_name()):
                     func = self.editButtonFunc[self.editMap[clist.get_name()]]
-                id = clist.connect("button_release_event",
+                mid = clist.connect("button_release_event",
                                    self.on_generic_clist_button_release_event,
                                    func)
-                clist.set_data("signal_id", id)
+                clist.set_data("signal_id", mid)
 
 
     def on_hostnameEntry_changed(self, entry):
@@ -1728,7 +1728,7 @@ class mainDialog:
         from version import PRG_VERSION, PRG_NAME, \
 			    PRG_AUTHORS, PRG_DOCUMENTERS, PRG_TRANSLATORS
         if not hasattr(gtk, "AboutDialog"):
-            import gnome.ui
+            #import gnome.ui
             dlg = gnome.ui.About(PRG_NAME,
                                  PRG_VERSION,
                                  _("Copyright (c) 2001-2005 Red Hat, Inc."),

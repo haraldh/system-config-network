@@ -264,12 +264,12 @@ class Conf:
             self.splitdict[seps] = re.compile(seps)
         regexp = self.splitdict[seps]
         return regexp.split(self.lines[self.line])
-    def setfields(self, list):
+    def setfields(self, mlist):
         # replaces current line with line built from list
         # appends if off the end of the array
         if self.line < len(self.lines):
             self.deleteline()
-        self.insertlinelist(list)
+        self.insertlinelist(mlist)
     def insertline(self, line=''):
         self.lines.insert(self.line, line)
     def insertlinelist(self, linelist):
@@ -690,7 +690,7 @@ class ConfChat(Conf):
             mstr = ''
             # here i points to a new entry
             if s[i] in "'":
-                hastick = 1
+                #hastick = 1
                 i = i + 1
                 while i < len(s) and s[i] not in "'":
                     if s[i] in '\\':
@@ -717,8 +717,8 @@ class ConfChat(Conf):
             chatlist[0:2] = []
     def getlist(self):
         return self.list
-    def putlist(self, list):
-        self.list = list
+    def putlist(self, mlist):
+        self.list = mlist
     def write(self):
         # create self.lines for Conf.write...
         self.lines = []
@@ -867,11 +867,11 @@ class ConfDIP:
 
 
 class odict(dict):
-    def __init__(self, odict = None):
+    def __init__(self, modict = None):
         self._keys = []
         dict.__init__(self)
-        if odict:
-            dict.update(self, odict)
+        if modict:
+            dict.update(self, modict)
 
     def __delitem__(self, key):
         dict.__delitem__(self, key)
@@ -887,9 +887,9 @@ class odict(dict):
         self._keys = []
 
     def copy(self):
-        odict = dict.copy(self)
-        odict._keys = self._keys[:]
-        return odict
+        modict = dict.copy(self)
+        modict._keys = self._keys[:]
+        return modict
 
     def items(self):
         return zip(self._keys, self.values())
@@ -912,9 +912,9 @@ class odict(dict):
         dict.setdefault(self, key, failobj)
         if key not in self._keys: self._keys.append(key)
 
-    def update(self, dict):
-        UserDict.update(self, dict)
-        for key in dict.keys():
+    def update(self, mdict):
+        UserDict.update(self, mdict)
+        for key in mdict.keys():
             if key not in self._keys: self._keys.append(key)
 
     def values(self):
@@ -970,10 +970,10 @@ class ConfModules(Conf):
             return (opt[:eq], opt[eq+1:])
         else:
             return ()
-    def joinoptlist(self, dict):
+    def joinoptlist(self, mdict):
         optstring = ''
-        for key in dict.keys():
-            optstring = optstring + key + '=' + dict[key] + ' '
+        for key in mdict.keys():
+            optstring = optstring + key + '=' + mdict[key] + ' '
         return optstring
     def __getitem__(self, varname):
         if self.vars.has_key(varname):
@@ -1265,10 +1265,10 @@ class ConfPwO(ConfPw):
     # Do *not* use setitem for this; adding an entry should be
     # a much different action than accessing an entry or changing
     # fields in an entry.
-    def addentry_list(self, key, list):
+    def addentry_list(self, key, mlist):
         if self.vars.has_key(key):
             raise AttributeError, key + ' exists'
-        ConfPw.__setitem__(self, key, list)
+        ConfPw.__setitem__(self, key, mlist)
     def getfreeid(self, fieldnum):
         freeid = 500
         # first, we try not to re-use id's that have already been assigned.
@@ -1308,7 +1308,8 @@ class _passwd_reflector:
     def getgecos(self, oldgecos, fieldnum):
         gecosfields = oldgecos.split(',')
         # make sure that we have enough gecos fields
-        gecosfields.extend([ '' for i in range(5-len(gecosfields)) ])
+        for i in range(5-len(gecosfields)):
+            gecosfields.append('')
         return gecosfields[fieldnum]
 
     def __getitem__(self, name):

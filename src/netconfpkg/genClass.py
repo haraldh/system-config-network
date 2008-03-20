@@ -26,6 +26,7 @@ import sys
 import types
 
 from netconfpkg.NC_functions import log
+
 Alchemist = None
 LIST = "LIST"
 STRING = "STRING"
@@ -1094,13 +1095,13 @@ def readClassfile(boxpath, mod, optlower = False):
     Load the classfile and use the Alchemist, if Use_Alchemist is 
     set in the module.
     """
-    global Alchemist
     global LIST
     global STRING
     global INT
     global BOOL
     global FLOAT
     global BASE64
+    global Alchemist
     useAlchemist = None
     if hasattr(mod, "Use_Alchemist"):
         useAlchemist = getattr(mod, "Use_Alchemist")

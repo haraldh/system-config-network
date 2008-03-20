@@ -21,7 +21,6 @@ import gtk
 import gtk.glade
 import os
 
-from netconfpkg.plugins import NCHWIsdn
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
@@ -206,7 +205,7 @@ class isdnHardwareDialog:
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
 def register_plugin():
-    from netconfpkg import NCisdnhardware
+    from netconfpkg.plugins import NCHWIsdn
     NCHWIsdn.setHwIsdnDialog(isdnHardwareDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

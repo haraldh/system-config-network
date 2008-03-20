@@ -155,8 +155,6 @@ def setVerboseLevel(l):
     _verbose = l
 
 def getVerboseLevel():
-    global _verbose
-    #print "verbose == %d" % _verbose
     return _verbose
 
 _debug = 0
@@ -167,8 +165,6 @@ def setDebugLevel(l):
     _debug = l
 
 def getDebugLevel():
-    global _debug
-    #print "debug == %d" % _debug
     return _debug
 
 class TestError(Exception):
@@ -488,7 +484,6 @@ RESPONSE_HELP = -11
 generic_error_dialog_func = None
 def generic_error_dialog (message, parent_dialog = None, dialog_type="warning", 
                           widget=None, page=0, broken_widget=None):
-    global generic_error_dialog_func
     if generic_error_dialog_func:
         return generic_error_dialog_func("%s:\n\n%s" % (PROGNAME, 
                                                         message), 
@@ -502,7 +497,6 @@ def generic_error_dialog (message, parent_dialog = None, dialog_type="warning",
 generic_info_dialog_func = None
 def generic_info_dialog (message, parent_dialog = None, dialog_type="info", 
                           widget=None, page=0, broken_widget=None):
-    global generic_info_dialog_func
     if generic_info_dialog_func:
         return generic_info_dialog_func("%s:\n\n%s" % (PROGNAME, 
                                                        message), 
@@ -517,7 +511,6 @@ generic_longinfo_dialog_func = None
 def generic_longinfo_dialog (message, long_message, 
                              parent_dialog = None, dialog_type="info", 
                              widget=None, page=0, broken_widget=None):
-    global generic_longinfo_dialog_func
     if generic_longinfo_dialog_func:
         return generic_longinfo_dialog_func("%s:\n\n%s" % (PROGNAME, 
                                                            message), 
@@ -533,7 +526,6 @@ generic_yesnocancel_dialog_func = None
 def generic_yesnocancel_dialog (message, parent_dialog = None, 
                                 dialog_type="question", 
                                 widget=None, page=0, broken_widget=None):
-    global generic_yesnocancel_dialog_func
     if generic_yesnocancel_dialog_func:
         return generic_yesnocancel_dialog_func("%s:\n\n%s" % (PROGNAME, 
                                                               message), 
@@ -548,7 +540,6 @@ generic_yesno_dialog_func = None
 def generic_yesno_dialog (message, parent_dialog = None, 
                           dialog_type="question", 
                           widget=None, page=0, broken_widget=None):
-    global generic_yesno_dialog_func
     if generic_yesno_dialog_func:
         return generic_yesno_dialog_func("%s:\n\n%s" % (PROGNAME, 
                                                         message), 
@@ -565,7 +556,6 @@ def generic_run_dialog (command, argv, searchPath = 0,
                         catchfd = 1, closefd = -1, title = None, 
                         label = None, errlabel = None, dialog = None):
     import select
-    global generic_run_dialog_func
     if generic_run_dialog_func:
         return generic_run_dialog_func(command, argv, searchPath, 
                                        root, stdin, catchfd, 
@@ -653,7 +643,6 @@ def generic_run (command, argv, searchPath = 0,
                  root = '/', stdin = 0, 
                  catchfd = 1, closefd = -1):
     import select
-    global generic_run_func
     if generic_run_func:
         return generic_run_func(command, argv, searchPath, 
                                        root, stdin, catchfd)
@@ -909,7 +898,6 @@ def setRoot(root):
     __root = root
 
 def getRoot():
-    global __root
     return __root
 
 def prepareRoot(root):

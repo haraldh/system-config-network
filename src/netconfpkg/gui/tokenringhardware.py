@@ -80,14 +80,14 @@ class tokenringHardwareDialog(HardwareDialog):
     def setup(self):
         HardwareDialog.setup(self)
 
-        list = []
+        mlist = []
         modInfo = NCHardwareList.getModInfo()
         for i in modInfo.keys():
             if modInfo[i]['type'] == "tr" and \
                    modInfo[i].has_key('description'):
-                list.append(modInfo[i]['description'])
-        list.sort()
-        self.xml.get_widget("adapterComboBox").set_popdown_strings(list)
+                mlist.append(modInfo[i]['description'])
+        mlist.sort()
+        self.xml.get_widget("adapterComboBox").set_popdown_strings(mlist)
         nextdev = NCHardwareList.getNextDev("tr")
         self.xml.get_widget('tokenringDeviceEntry').set_text(nextdev)
 
