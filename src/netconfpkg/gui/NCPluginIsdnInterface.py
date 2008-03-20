@@ -263,7 +263,7 @@ class IsdnInterface:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
 def register_plugin():
-    from netconfpkg.plugins import NCDevIsdn
-    NCDevIsdn.setDevIsdnWizard(IsdnInterface)
+    from netconfpkg.plugins import NCPluginDevIsdn
+    NCPluginDevIsdn.setDevIsdnWizard(IsdnInterface)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

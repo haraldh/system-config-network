@@ -37,8 +37,6 @@ GLADE_FILES = \
 	wirelessconfig.glade \
 	WirelessInterfaceDruid.glade \
 	neat-control.glade \
-	ptpconfig.glade \
-	PTPInterfaceDruid.glade \
 	QethConfig.glade \
 	QethInterfaceDruid.glade \
 	QethHardware.glade \
@@ -55,38 +53,36 @@ PYTHON_FILES = \
 	editdomain.py \
 	edithosts.py \
 	editipsec.py \
-	NCPluginethernetconfig.py \
+	NCPluginEthernetConfig.py \
 	EthernetHardwareDruid.py \
-	NCPluginethernethardware.py \
+	NCPluginEthernetHardware.py \
 	NCPluginEthernetInterface.py \
 	GenericInterface.py \
 	hardwaretype.py \
 	HardwareDialog.py \
-	NCPlugin__init__.py \
+	__init__.py \
 	InterfaceCreator.py \
-	NCPluginisdnhardware.py \
+	NCPluginIsdnHardware.py \
 	NCPluginIsdnInterface.py \
 	maindialog.py \
-	NCPluginmodemconfig.py \
+	NCPluginModemConfig.py \
 	NCPluginModemInterface.py \
 	NewInterfaceDialog.py \
 	GUI_functions.py \
 	providerdb.py \
 	provider.py \
 	sharedtcpip.py \
-	NCPlugintokenringconfig.py \
+	NCPluginTokenRingConfig.py \
 	TokenRingHardwareDruid.py \
 	NCPluginTokenRingInterface.py \
-	NCPlugintokenringhardware.py \
+	NCPluginTokenRingHardware.py \
 	tonline.py \
-	NCPluginwirelessconfig.py \
+	NCPluginWirelessConfig.py \
 	NCPluginWirelessInterface.py \
-	ptpconfig.py \
-	PTPInterface.py \
 	NCPluginQethConfig.py \
-	QethInterfaceDruid.py \
+	NCPluginQethInterfaceDruid.py \
 	NCPluginQethHardware.py \
-	QethHardwareDruid.py
+	NCPluginQethHardwareDruid.py
 
 
 EXTRA_DIST = $(GLADE_FILES)  $(PYTHON_FILES)
@@ -103,5 +99,8 @@ fixpath:
 	perl -pi -e 's#logo">([^/>][^>]*)<#logo">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade
 	perl -pi -e 's#pixbuf">([^/>][^>]*)<#pixbuf">/usr/share/system-config-network/pixmaps/$$1<#g'  *.glade
 
-check:
+check-local:
 	@fgrep glade_file *.py|fgrep 'glade_file ='|fgrep '.glade'|while read file a b gfile; do gfile=$${gfile:1};gfile=$${gfile%\'};gfile=$${gfile%\"}; test -f $$gfile || (echo "Error $$file: $$gfile does not exist";exit 1)||exit 1; fgrep -q $$gfile Makefile.am||(echo "File $$gfile missing in Makefile.am";exit 1)||exit 1;done && echo "Glade file test PASSED"
+	@for i in $(GLADE_FILES)  $(PYTHON_FILES); do test -f $(srcdir)/$$i || (echo $$i is missing;break);done && echo "Source file check PASSED"
+	@for i in $(notdir $(wildcard *.py)); do echo $(GLADE_FILES)  $(PYTHON_FILES)|grep -q $$i || (echo $$i is missing;false) || exit 1;done && echo "Source file check PASSED"
+	

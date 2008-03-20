@@ -56,6 +56,9 @@ uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
 	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
 
+check-local:
+	@for i in $(notdir $(wildcard *.py)); do echo $(PYTHON_FILES)|grep -q $$i || (echo $$i is missing;false) || exit 1;done && echo "Source file check PASSED"
+
 .PHONY: docs pycheck pylint
 
 docs: $(PYTHON_FILES)

@@ -149,8 +149,8 @@ class modemDialog:
 
 
 def register_plugin():
-    from netconfpkg.plugins import NCHWModem
-    NCHWModem.setHwModemDialog(modemDialog)
+    from netconfpkg.plugins import NCPluginHWModem
+    NCPluginHWModem.setHwModemDialog(modemDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
 

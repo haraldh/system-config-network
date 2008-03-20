@@ -157,7 +157,7 @@ class NCQethInterfaceTui:
                 return True
 
 def register_plugin():
-    from netconfpkg.plugins.NCDevQeth import setDevQethDialog
+    from netconfpkg.plugins.NCPluginDevQeth import setDevQethDialog
     setDevQethDialog(NCQethInterfaceTui)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

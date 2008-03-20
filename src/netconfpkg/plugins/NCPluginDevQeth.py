@@ -19,7 +19,7 @@
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import QETH, getDeviceType
-from netconfpkg.plugins.NCDevEthernet import DevEthernet
+from netconfpkg.plugins.NCPluginDevEthernet import DevEthernet
 from netconfpkg.NCHardwareList import getHardwareList, HW_CONF
 
 _devQethDialog = None

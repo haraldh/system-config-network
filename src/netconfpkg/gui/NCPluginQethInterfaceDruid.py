@@ -23,9 +23,9 @@ import os
 
 from rhpl import ethtool
 from netconfpkg.NC_functions import _, QETH, PROGNAME, NETCONFDIR
-from netconfpkg.plugins import NCDevQeth
+from netconfpkg.plugins import NCPluginDevQeth
 from netconfpkg.gui import sharedtcpip
-from netconfpkg.gui.QethHardwareDruid import QethHardware
+from netconfpkg.gui.NCPluginQethHardwareDruid import QethHardware
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
 from netconfpkg.NCDeviceFactory import getDeviceFactory
@@ -88,7 +88,7 @@ class QethInterfaceGui(InterfaceCreator):
         if devclass:
             self.device = devclass()
         else:
-            self.device = NCDevQeth.DevQeth()
+            self.device = NCPluginDevQeth.DevQeth()
             
         self.device.Type = self.connection_type
         self.device.OnBoot = True
@@ -253,5 +253,7 @@ class QethInterfaceGui(InterfaceCreator):
         self.toplevel.destroy()
         gtk.main_quit()
 
-NCDevQeth.setDevQethWizard(QethInterfaceGui)
+def register_plugin():
+    NCPluginDevQeth.setDevQethWizard(QethInterfaceGui)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"

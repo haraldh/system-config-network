@@ -68,7 +68,7 @@ SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
 ChangeLog changelog:
 	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
 
-check-clean-tree:
+check-clean-tree: check
 	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 	@git-diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 

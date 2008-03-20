@@ -108,7 +108,7 @@ class tokenringHardwareDialog(HardwareDialog):
 
 
 def register_plugin():
-    from netconfpkg.plugins import NCHWTokenring
-    NCHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
+    from netconfpkg.plugins import NCPluginHWTokenring
+    NCPluginHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"    

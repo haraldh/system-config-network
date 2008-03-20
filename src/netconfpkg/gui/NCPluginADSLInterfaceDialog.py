@@ -154,7 +154,7 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
         self.hydrate()
         
 def register_plugin():
-    from netconfpkg.plugins import NCDevADSL
-    NCDevADSL.setDevADSLDialog(ADSLInterfaceDialog)
+    from netconfpkg.plugins import NCPluginDevADSL
+    NCPluginDevADSL.setDevADSLDialog(ADSLInterfaceDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

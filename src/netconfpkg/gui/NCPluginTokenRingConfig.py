@@ -88,7 +88,7 @@ class tokenringConfigDialog(DeviceConfigDialog):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
 
 def register_plugin():
-    from netconfpkg.plugins import NCDevTokenRing
-    NCDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
+    from netconfpkg.plugins import NCPluginDevTokenRing
+    NCPluginDevTokenRing.setDevTokenRingDialog(tokenringConfigDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

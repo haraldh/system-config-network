@@ -205,7 +205,7 @@ class isdnHardwareDialog:
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 
 def register_plugin():
-    from netconfpkg.plugins import NCHWIsdn
-    NCHWIsdn.setHwIsdnDialog(isdnHardwareDialog)
+    from netconfpkg.plugins import NCPluginHWIsdn
+    NCPluginHWIsdn.setHwIsdnDialog(isdnHardwareDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

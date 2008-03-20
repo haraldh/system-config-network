@@ -503,8 +503,8 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
 
 
 def register_plugin():
-    from netconfpkg.plugins import NCDevIsdn, NCDevModem
-    NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
-    NCDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
+    from netconfpkg.plugins import NCPluginDevIsdn, NCPluginDevModem
+    NCPluginDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
+    NCPluginDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

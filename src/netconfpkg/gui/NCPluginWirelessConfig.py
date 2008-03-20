@@ -179,7 +179,7 @@ class wirelessConfigDialog(DeviceConfigDialog):
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
 
 def register_plugin():
-    from netconfpkg.plugins import NCDevWireless
-    NCDevWireless.setDevWirelessDialog(wirelessConfigDialog)
+    from netconfpkg.plugins import NCPluginDevWireless
+    NCPluginDevWireless.setDevWirelessDialog(wirelessConfigDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

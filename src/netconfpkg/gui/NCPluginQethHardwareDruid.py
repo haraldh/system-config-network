@@ -20,7 +20,7 @@
 from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
 from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, QETH
 from netconfpkg import NCHardwareList
-from netconfpkg.plugins import NCHWQeth
+from netconfpkg.plugins import NCPluginHWQeth
 import gtk
 import gtk.glade
 import os
@@ -119,6 +119,7 @@ class QethHardware:
         self.hw.Card.ModuleName = 'qeth'
         self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, self.hw.Card.IoPort1, self.hw.Card.IoPort2)
 
-NCHWQeth.setHwQethWizard(QethHardware)
+def register_plugin():
+    NCPluginHWQeth.setHwQethWizard(QethHardware)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

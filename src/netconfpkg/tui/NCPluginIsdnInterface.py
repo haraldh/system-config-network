@@ -95,5 +95,5 @@ class NCIsdnInterfaceTui:
                 return True
 
 def register_plugin():
-    from netconfpkg.plugins.NCDevIsdn import setDevIsdnDialog
+    from netconfpkg.plugins.NCPluginDevIsdn import setDevIsdnDialog
     setDevIsdnDialog(NCIsdnInterfaceTui)

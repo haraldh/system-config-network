@@ -13,6 +13,7 @@ PYTHON_FILES = \
 	__init__.py \
 	exception.py \
 	genClass.py \
+	genClassMap.py \
 	ipcalc.py \
 	log.py \
 	NCAliasList.py \
@@ -49,3 +50,5 @@ execdir = $(sbindir)
 
 CLEANFILES := $(notdir $(wildcard *~)) $(notdir $(wildcard *\#)) $(notdir $(wildcard \.\#*)) $(notdir $(wildcard *.pyc))
 
+check-local:
+	@for i in $(notdir $(wildcard *.py)) $(notdir $(wildcard *.idl)); do echo $(IDL_FILES) $(PYTHON_FILES)|grep -q $$i || (echo $$i is missing;false) || exit 1;done && echo "Source file check PASSED"

@@ -22,7 +22,7 @@ class NCEthernetInterfaceTui(NCTcpIpDialog):
             self.setState()
 
 def register_plugin():
-    from netconfpkg.plugins.NCDevEthernet import setDevEthernetDialog     
+    from netconfpkg.plugins.NCPluginDevEthernet import setDevEthernetDialog     
     setDevEthernetDialog(NCEthernetInterfaceTui)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

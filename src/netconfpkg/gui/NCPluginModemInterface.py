@@ -206,7 +206,7 @@ class ModemInterface:
 
 
 def register_plugin():
-    from netconfpkg.plugins import NCDevModem
-    NCDevModem.setDevModemWizard(ModemInterface)
+    from netconfpkg.plugins import NCPluginDevModem
+    NCPluginDevModem.setDevModemWizard(ModemInterface)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

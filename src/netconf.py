@@ -34,11 +34,11 @@ if not NETCONFDIR in sys.path:
     sys.path.append(NETCONFDIR)
 
 # Workaround for buggy gtk/gnome commandline parsing python bindings.
-cmdline = sys.argv[1:]
+__cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
 
 import locale
-from rhpl.translate import _, N_, textdomain_codeset
+from rhpl.translate import _, textdomain_codeset
 locale.setlocale(locale.LC_ALL, "")
 textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
@@ -138,7 +138,7 @@ def runit(splash = None):
         if splash:
             splash_window = splash_screen(True)
         import gnome
-        import gtk.glade
+        from gtk import glade
         import netconfpkg.gui.GUI_functions
         import netconfpkg
         netconfpkg.PRG_NAME = PRG_NAME
@@ -155,7 +155,7 @@ def runit(splash = None):
         showprofile = 1
 
         gnome.program_init(PROGNAME, "scn")
-        gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
+        glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
         if progname == 'system-config-network-druid' or \
                progname == 'internet-druid':
@@ -270,6 +270,6 @@ def main(cmdline):
     return 0
 
 if __name__ == '__main__':
-    sys.exit(main(cmdline))
+    sys.exit(main(__cmdline))
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

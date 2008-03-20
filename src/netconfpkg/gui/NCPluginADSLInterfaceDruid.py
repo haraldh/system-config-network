@@ -17,7 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.plugins import NCDevADSL
+from netconfpkg.plugins import NCPluginDevADSL
 from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
 from netconfpkg.NC_functions import _, getNewDialupDevice, DSL, \
     request_rpms
@@ -38,7 +38,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
         self.toplevel = toplevel
         self.topdruid = druid
         self.devicelist = NCDeviceList.getDeviceList()
-        self.device = NCDevADSL.DevADSL()
+        self.device = NCPluginDevADSL.DevADSL()
         self.profilelist = NCProfileList.getProfileList()
         self.toplevel = toplevel
         self.connection_type = connection_type
@@ -233,6 +233,6 @@ class ADSLInterfaceDruid(InterfaceCreator):
         self.device.AutoDNS = True
 
 def register_plugin():
-    NCDevADSL.setDevADSLWizard(ADSLInterfaceDruid)
+    NCPluginDevADSL.setDevADSLWizard(ADSLInterfaceDruid)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

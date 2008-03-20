@@ -133,8 +133,8 @@ class ethernetHardwareDialog:
 
 
 def register_plugin():
-    from netconfpkg.plugins import NCHWEthernet, NCHWWireless
-    NCHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
-    NCHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
+    from netconfpkg.plugins import NCPluginHWEthernet, NCPluginHWWireless
+    NCPluginHWEthernet.setHwEthernetDialog(ethernetHardwareDialog)
+    NCPluginHWWireless.setHwWirelessDialog(ethernetHardwareDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

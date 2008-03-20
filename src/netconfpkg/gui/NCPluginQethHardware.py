@@ -92,7 +92,7 @@ class qethHardwareDialog:
         self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, self.hw.Card.IoPort1, self.hw.Card.IoPort2)
 
 def register_plugin():
-    from netconfpkg.plugins import NCHWQeth
-    NCHWQeth.setHwQethDialog(qethHardwareDialog)
+    from netconfpkg.plugins import NCPluginHWQeth
+    NCPluginHWQeth.setHwQethDialog(qethHardwareDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

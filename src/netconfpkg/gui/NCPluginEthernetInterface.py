@@ -17,7 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.plugins import NCDevEthernet
+from netconfpkg.plugins import NCPluginDevEthernet
 from netconfpkg import NCProfileList
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NCDeviceList import getDeviceList
@@ -97,7 +97,7 @@ class EthernetInterface(InterfaceCreator):
         if devclass:
             self.device = devclass()
         else:
-            self.device = NCDevEthernet.DevEthernet()
+            self.device = NCPluginDevEthernet.DevEthernet()
 
         self.device.Type = self.connection_type
         self.device.OnBoot = True
@@ -263,6 +263,6 @@ class EthernetInterface(InterfaceCreator):
         gtk.main_quit()
 
 def register_plugin():
-    NCDevEthernet.setDevEthernetWizard(EthernetInterface)
+    NCPluginDevEthernet.setDevEthernetWizard(EthernetInterface)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

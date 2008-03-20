@@ -91,7 +91,7 @@ class qethConfigDialog(DeviceConfigDialog):
             self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
             
 def register_plugin():
-    from netconfpkg.plugins import NCDevQeth
-    NCDevQeth.setDevQethDialog(qethConfigDialog)
+    from netconfpkg.plugins import NCPluginDevQeth
+    NCPluginDevQeth.setDevQethDialog(qethConfigDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

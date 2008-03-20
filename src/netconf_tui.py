@@ -292,9 +292,13 @@ def main():
         loadConfig(screen)
         while True:
             dev = selectDevice(screen)
+            # pylint: disable-msg=E1101
+            # pylint: disable-msg=E1103
             if dev == -1:
-                devlist.save()
-                plist.save()
+                if devlist.modified():
+                    devlist.save()
+                if plist.modified():
+                    plist.save()
                 break
             elif dev == -2:
                 continue
@@ -302,7 +306,6 @@ def main():
                 break
 
             dialog = dev.getDialog()
-            # pylint: disable-msg=E1101,E1103
             if dialog.runIt(screen):
                 dev.commit()     
                 devlist.commit() 

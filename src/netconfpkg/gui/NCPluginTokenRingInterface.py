@@ -22,7 +22,7 @@ import gtk.glade
 import os
 
 from rhpl import ethtool
-from netconfpkg.plugins import NCDevTokenRing
+from netconfpkg.plugins import NCPluginDevTokenRing
 from netconfpkg import NCHardwareList, NCDeviceList, NCProfileList
 from netconfpkg.NC_functions import _, TOKENRING, PROGNAME, NETCONFDIR
 from netconfpkg.gui import sharedtcpip
@@ -38,7 +38,7 @@ class TokenRingInterfaceGui(InterfaceCreator):
         self.topdruid = druid
         self.xml = None
         self.devicelist = NCDeviceList.getDeviceList()
-        self.device = NCDevTokenRing.DevTokenRing()
+        self.device = NCPluginDevTokenRing.DevTokenRing()
         self.device.Type = connection_type
         self.device.OnBoot = True
         self.device.AllowUser = False
@@ -230,6 +230,6 @@ class TokenRingInterfaceGui(InterfaceCreator):
         gtk.main_quit()
 
 def register_plugin():
-    NCDevTokenRing.setDevTokenRingWizard(TokenRingInterfaceGui)
+    NCPluginDevTokenRing.setDevTokenRingWizard(TokenRingInterfaceGui)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

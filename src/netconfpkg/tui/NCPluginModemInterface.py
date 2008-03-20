@@ -95,7 +95,7 @@ class NCModemInterfaceTui:
                 return True
 
 def register_plugin():
-    from netconfpkg.plugins.NCDevModem import setDevModemDialog
+    from netconfpkg.plugins.NCPluginDevModem import setDevModemDialog
     setDevModemDialog(NCModemInterfaceTui)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"
