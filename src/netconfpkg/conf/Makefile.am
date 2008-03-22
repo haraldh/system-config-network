@@ -1,9 +1,17 @@
 
 PYTHON_FILES = \
 	__init__.py \
+	ConfChat.py \
+	ConfEResolv.py \
+	ConfESNetwork.py \
+	ConfESStaticRoutes.py \
+	ConfModules.py \
 	ConfPAP.py \
+	ConfPasswd.py \
 	Conf.py \
-	ConfSMB.py
+	ConfShellVar.py \
+	ConfSMB.py \
+	ConfSysctl.py \
 
 EXTRA_DIST = $(PYTHON_FILES)
 
