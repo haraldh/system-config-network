@@ -71,7 +71,7 @@ class DeviceFactory(dict):
         else:
             return self[devtype][0]
 
-from netconfpkg.plugins import * # pylint: disable-msg=W0401
+from netconfpkg.plugins import * # pylint: disable-msg=W0401,W0614
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
 
