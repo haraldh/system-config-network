@@ -17,19 +17,85 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-import os
+import os, sys
 import commands
 import re
 from netconfpkg import NC_functions
-from netconfpkg.conf import Conf
-from netconfpkg.NC_functions import _, getRoot, SYSCONFDEVICEDIR, log, \
-ETHERNET, SYSCONFNETWORK, generic_run_dialog, generic_run, getDebugLevel, \
-unlink
-from netconfpkg import Device_base # pylint: disable-msg=E0611
+from netconfpkg.conf import ConfShellVar
+from netconfpkg.NC_functions import (_, getRoot, SYSCONFDEVICEDIR, log, 
+                                     ETHERNET, SYSCONFNETWORK, 
+                                     generic_run_dialog, generic_run, 
+                                     getDebugLevel, unlink)
 
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr, 
+                            Gdtlist, Gdtbool, Gdtint)
+
+from netconfpkg.NCRoute import Route
+
+class StaticRoutes(Gdtlist):
+    "Contains Routes"
+    pass
+
+
+class Device_base(Gdtstruct):
+    gdtstruct_properties([
+                          ('DeviceId', Gdtstr, "Test doc string"),
+                          ('NMControlled', Gdtbool, "Test doc string"),
+                          ('Device', Gdtstr, "Test doc string"),
+                          ('Alias', Gdtint, "Test doc string"),
+                          ('Type', Gdtstr, "Test doc string"),
+                          ('SubType', Gdtstr, "Test doc string"),
+                          ('OnBoot', Gdtbool, "Test doc string"),
+                          ('OnParent', Gdtbool, "Test doc string"),
+                          ('AllowUser', Gdtbool, "Test doc string"),
+                          ('BootProto', Gdtstr, "Test doc string"),
+                          ('IP', Gdtstr, "Test doc string"),
+                          ('Netmask', Gdtstr, "Test doc string"),
+                          ('Gateway', Gdtstr, "Test doc string"),
+                          ('IPv6Init', Gdtbool, "Test doc string"),
+                          ('Hostname', Gdtstr, "Test doc string"),
+                          ('Domain', Gdtstr, "Test doc string"),
+                          ('AutoDNS', Gdtbool, "Test doc string"),
+                          ('HardwareAddress', Gdtstr, "Test doc string"),
+                          ('Mtu', Gdtint, "Test doc string"),                          
+                          ('Slave', Gdtbool, "Test doc string"),
+                          ('StaticRoutes', StaticRoutes, "test"),
+                          ])
+    
+
+    
+    def __init__(self):
+        super(Device_base, self).__init__()
+        self.DeviceId = None
+        self.NMControlled = None
+        self.Device = None
+        self.Alias = None
+        self.Type = None
+        self.SubType = None
+        self.OnBoot = None
+        self.OnParent = None
+        self.AllowUser = None
+        self.BootProto = None
+        self.IP = None
+        self.Netmask = None
+        self.Gateway = None
+        self.IPv6Init = None
+        self.Hostname = None
+        self.Domain = None
+        self.AutoDNS = None
+        self.HardwareAddress = None
+        self.Mtu = None
+        self.Slave = None
+        self.StaticRoutes = None
+        
+    def createStaticRoutes(self):
+        if not self.StaticRoutes:
+            self.StaticRoutes = StaticRoutes()
+        return self.StaticRoutes
+                          
 # pylint: disable-msg=W0201
 
-class ConfDevice( Conf.ConfShellVar ):
+class ConfDevice( ConfShellVar.ConfShellVar ):
     def __init__( self, name, mdir = None ):
         if mdir == None:
             mdir = getRoot() + SYSCONFDEVICEDIR
@@ -43,7 +109,7 @@ class ConfDevice( Conf.ConfShellVar ):
             self.oldmode = status[0]
             #print status
 
-        Conf.ConfShellVar.__init__( self, self.filename )
+        ConfShellVar.ConfShellVar.__init__( self, self.filename )
 
         if new:
             self.rewind()
@@ -62,11 +128,11 @@ class ConfDevice( Conf.ConfShellVar ):
         #        (self.filename, self.oldmode & 03777, 0644))
         #    if ask != RESPONSE_YES:
         #        self.chmod(self.oldmode)
-        Conf.ConfShellVar.write( self )
+        ConfShellVar.ConfShellVar.write( self )
 
-class ConfRoute( Conf.ConfShellVar ):
+class ConfRoute( ConfShellVar.ConfShellVar ):
     def __init__( self, name ):
-        Conf.ConfShellVar.__init__( self, getRoot() + SYSCONFDEVICEDIR + \
+        ConfShellVar.ConfShellVar.__init__( self, getRoot() + SYSCONFDEVICEDIR + \
                                     'route-' + name )
         self.chmod( 0644 )
 
@@ -75,46 +141,49 @@ class Device( Device_base ):
     Type = ETHERNET
     SubType = None
     Priority = 0
-
-    keydict = { 'Device' : 'DEVICE',
-                'IP' : 'IPADDR',
-                'Netmask' : 'NETMASK',
-                'Gateway' : 'GATEWAY',
-                'Hostname' : 'DHCP_HOSTNAME',
-                'Domain' : 'DOMAIN',
-                'BootProto' : 'BOOTPROTO',
-                'Type' : 'TYPE',
-                'HardwareAddress' : 'HWADDR',
-                }
-
-    intkeydict = {
-                    'Mtu' : 'MTU', 
+    keyid = "DeviceId"
+    
+    __keydict = { 
+                 'Device' : 'DEVICE',
+                 'IP' : 'IPADDR',
+                 'Netmask' : 'NETMASK',
+                 'Gateway' : 'GATEWAY',
+                 'Hostname' : 'DHCP_HOSTNAME',
+                 'Domain' : 'DOMAIN',
+                 'BootProto' : 'BOOTPROTO',
+                 'Type' : 'TYPE',
+                 'HardwareAddress' : 'HWADDR',
                  }
 
-
-    boolkeydict = { 'OnBoot' : 'ONBOOT',
-                    'OnParent' : 'ONPARENT',
-                    'NMControlled' : 'NM_CONTROLLED',
-                    'AllowUser' : 'USERCTL',
-                    'AutoDNS' : 'PEERDNS',
-                    'Slave' : 'SLAVE',
-                    'IPv6Init' : 'IPV6INIT',
+    __intkeydict = {
+                    'Mtu' : 'MTU', 
                     }
 
-    def __init__( self, clist = None, parent = None ):
-        Device_base.__init__( self, clist, parent )
-        self.oldname = None
 
+    __boolkeydict = { 
+                     'OnBoot' : 'ONBOOT',
+                     'OnParent' : 'ONPARENT',
+                     'NMControlled' : 'NM_CONTROLLED',
+                     'AllowUser' : 'USERCTL',
+                     'AutoDNS' : 'PEERDNS',
+                     'Slave' : 'SLAVE',
+                     'IPv6Init' : 'IPV6INIT',
+                     }
+
+    def __init__(self):
+        super(Device, self).__init__()
+        self.oldname = None
+        
     def getDialog( self ):
-        return None
+        raise NotImplemented
 
     def getWizard( self ):
-        return None
+        raise NotImplemented
 
     def isType( self, device ):
-        return None
+        raise NotImplemented
 
-    def testDeviceId( self, value, child = None ):
+    def testDeviceId( self, value):
         if re.search( r"^[a-z|A-Z|0-9\_:]+$", value ):
             return True
         return False
@@ -136,17 +205,12 @@ class Device( Device_base ):
                     break
                 if k == "mtu": 
                     next = True
-        except:
+        except ValueError:
             pass
         
         return val
 
-    def load( self, *args, **kwargs):
-        name = None
-        if len(args) >= 1:
-            name = args[0]
-        else:
-            name = kwargs.get("name")
+    def load( self, name):
 	
         conf = ConfDevice( name )
 
@@ -159,38 +223,48 @@ class Device( Device_base ):
                 # ok, we have to inherit all other data from our master
                 for dev in getDeviceList():
                     if dev.Device == name[:aliaspos]:
-                        self.apply( dev ) # pylint: disable-msg=E1101
+                        self.apply( dev ) 
                         break
 
             self.Device = name
 
         self.DeviceId = name
-        for selfkey in self.keydict.keys():
-            confkey = self.keydict[selfkey]
-            if conf.has_key( confkey ):
-                self.__dict__[selfkey] = conf[confkey]
+        for selfkey in self.__keydict.keys():
+            confkey = self.__keydict[selfkey]
+            if conf.has_key( confkey ) and conf[confkey]:
+                setattr(self, selfkey, conf[confkey])
+                #setattr(self, selfkey, conf[confkey])
 
-        for selfkey in self.intkeydict.keys():
-            confkey = self.intkeydict[selfkey]
+        for selfkey in self.__intkeydict.keys():
+            confkey = self.__intkeydict[selfkey]
             if conf.has_key(confkey) and len(conf[confkey]):
-                self.__dict__[selfkey] = int(conf[confkey])
+                setattr(self, selfkey, conf[confkey])
+                #setattr(self, selfkey, int(conf[confkey]))
 
-        for selfkey in self.boolkeydict.keys():
-            confkey = self.boolkeydict[selfkey]
+        for selfkey in self.__boolkeydict.keys():
+            confkey = self.__boolkeydict[selfkey]
             if conf.has_key( confkey ):
                 if conf[confkey] == 'yes':
-                    self.__dict__[selfkey] = True
+                    setattr(self, selfkey, True)
+                    #print >> sys.stderr, self.DeviceId, selfkey, "True"
+                    #setattr(self, selfkey, True)
                 else:
-                    self.__dict__[selfkey] = False
-            elif not self.__dict__.has_key( selfkey ):
-                self.__dict__[selfkey] = False
+                    setattr(self, selfkey, False)
+                    #print >> sys.stderr, self.DeviceId, selfkey, "False"
+                    #setattr(self, selfkey, False)
+            else:
+                setattr(self, selfkey, False)
+                #setattr(self, selfkey, False)
 
         if not conf.has_key( "PEERDNS" ):
-            self.AutoDNS = None
+            del self.AutoDNS
+
+        if not self.Slave:
+            del self.Slave
 
         if not self.Gateway:
             try:
-                cfg = Conf.ConfShellVar( getRoot() + SYSCONFNETWORK )
+                cfg = ConfShellVar.ConfShellVar( getRoot() + SYSCONFNETWORK )
                 if cfg.has_key( 'GATEWAY' ) and ((not cfg.has_key('GATEWAYDEV')) or cfg['GATEWAYDEV'] == self.Device) :
                     gw = cfg['GATEWAY']
 
@@ -232,6 +306,9 @@ class Device( Device_base ):
                                                 "or alias not a number!" ) % \
                                               self.DeviceId )
 
+        if not self.Alias:
+            del self.OnParent
+
         if self.BootProto == None:
             if self.IP:
                 self.BootProto = "none"
@@ -263,7 +340,7 @@ class Device( Device_base ):
                                 'route-' + self.DeviceId )
         # load routes
         rconf = ConfRoute( name )
-        self.createStaticRoutes() # pylint: disable-msg=E1101
+        #self.createStaticRoutes() 
 
         for key in rconf.keys():
             if key.startswith("ADDRESS"):
@@ -271,23 +348,24 @@ class Device( Device_base ):
                     p = int(key[7:])
                 except:
                     continue
-                i = self.StaticRoutes.addRoute() # pylint: disable-msg=E1101
-                route = self.StaticRoutes[i]     # pylint: disable-msg=E1101
+                route = Route()
+                self.StaticRoutes.append(route)
+                   
                 route.Address = rconf['ADDRESS' + str(p)]                
                 if rconf.has_key("NETMASK" + str(p)):
                     route.Netmask = rconf['NETMASK' + str( p )]
                 if rconf.has_key("GATEWAY" + str(p)):
                     route.Gateway = rconf['GATEWAY' + str( p )]
                 
-        self.commit( changed=False ) # pylint: disable-msg=E1101
+        self.commit( changed=False ) 
 
-    def save( self, *args, **kwargs ): # pylint: disable-msg=W0613
+    def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
         # fail gracefully, with informing, which file, and why
 
         # Just to be safe...
         os.umask( 0022 )
-        self.commit() # pylint: disable-msg=E1101
+        self.commit() 
 
         if self.oldname and ( self.oldname != self.DeviceId ):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
@@ -319,23 +397,23 @@ class Device( Device_base ):
             self.IP = None
             self.Netmask = None
 
-        for selfkey in self.keydict.keys():
-            confkey = self.keydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str( self.__dict__[selfkey] )
+        for selfkey in self.__keydict.keys():
+            confkey = self.__keydict[selfkey]
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
-        for selfkey in self.intkeydict.keys():
-            confkey = self.intkeydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+        for selfkey in self.__intkeydict.keys():
+            confkey = self.__intkeydict[selfkey]
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: del conf[confkey]
 
-        for selfkey in self.boolkeydict.keys():
-            confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey] == True:
+        for selfkey in self.__boolkeydict.keys():
+            confkey = self.__boolkeydict[selfkey]
+            if getattr(self, selfkey) == True:
                 conf[confkey] = 'yes'
-            elif self.__dict__[selfkey] == False:
+            elif getattr(self, selfkey) == False:
                 conf[confkey] = 'no'
 
         # cleanup
@@ -378,13 +456,6 @@ class Device( Device_base ):
         else:
             del conf['NETWORK']
             
-        # pylint: disable-msg=E1101
-        if self.Dialup:
-            self.Dialup.save( conf )
-
-        if self.Wireless:
-            self.Wireless.save( conf )
-
         # FIXME: RFE [174974] limitation of setting routing
         if self.StaticRoutes and len( self.StaticRoutes ) > 0: 
             rconf = ConfRoute( self.DeviceId )
@@ -412,7 +483,8 @@ class Device( Device_base ):
 
         # Do not clear the non-filled in values for Wireless Devices
         # Bugzilla #52252
-        if not self.Wireless:
+        # FIXME: OO!
+        if not hasattr(self, 'Wireless'):
             for i in conf.keys():
                 if not conf[i] or conf[i] == "":
                     del conf[i]

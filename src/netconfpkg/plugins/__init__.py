@@ -41,6 +41,8 @@ for _i in _files:
 del _i
 del _files
 del _cmd
+del locale
+del os
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
 

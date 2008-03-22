@@ -153,8 +153,8 @@ HostsList.4.IP=10.1.1.1
         hl.load(filename=srcdir+"/hosts")
         for host in hl:
             if host.Hostname == "test2":
-                host.IP="10.1.1.3"
-                host.commitIP()
+                host.IP = "10.1.1.3"
+                host.commit()
         hl.commit()
         hl.save(filename="hosts2.new")
 
@@ -166,7 +166,7 @@ HostsList.4.IP=10.1.1.1
         """ Test parsing hosts file with containing wrong entries """
         from netconfpkg import NC_functions
         from netconfpkg.NCHostsList import HostsList
-        from netconfpkg import Host
+        from netconfpkg.NCHost import Host
         # expected errors in config file
         badlines = [(7, 'IP'), (8, 'Hostname'), (9, 'Alias'), (10, 'Hostname')]
         hl = HostsList()

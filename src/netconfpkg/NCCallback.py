@@ -17,7 +17,28 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import Callback_base # pylint: disable-msg=E0611
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
+                            Gdtstr, Gdtbool, Gdtint)
+
+class Callback_base(Gdtstruct):
+    "Callback structure"
+    gdtstruct_properties([
+                          ('Delay', Gdtint, 'VALUE="3"'),
+                          ('Hup', Gdtbool, "Test doc string"),
+                          ('Compression', Gdtbool, "Test doc string"),
+                          ('Type', Gdtstr, 'VALUE="on"'),
+                          ('MSN', Gdtstr, "Test doc string"),
+                          ])
+
+    def __init__(self):
+        super(Callback_base, self).__init__()
+#        self.Delay = 3
+        self.Delay = None
+        self.Hup = None
+        self.Compression = None
+#        self.Type = "on"
+        self.Type = None
+        self.MSN = None
 
 class Callback(Callback_base):
     boolkeydict = { 'Compression' : 'CBCP', 
@@ -28,50 +49,47 @@ class Callback(Callback_base):
 
     intkeydict = { 'Delay' : 'CBDELAY' }
 
-    def __init__(self, clist = None, parent = None):
-        Callback_base.__init__(self, clist, parent)
-
     def load(self, parentConf):
         conf = parentConf
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey]
+                setattr(self, selfkey, conf[confkey])
 
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
             if conf.has_key(confkey) and len(conf[confkey]):
-                self.__dict__[selfkey] = int(conf[confkey])
+                setattr(self, selfkey, int(conf[confkey]))
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'on':
-                    self.__dict__[selfkey] = True
+                    setattr(self, selfkey, True)
                 else:
-                    self.__dict__[selfkey] = False
+                    setattr(self, selfkey, False)
             else:
-                self.__dict__[selfkey] = False
+                setattr(self, selfkey, False)
 
     def save(self, parentConf):
         conf = parentConf
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey]:
+            if hasattr(self, selfkey) and getattr(self, selfkey):
                 conf[confkey] = 'on'
             else:
                 conf[confkey] = 'off'

@@ -142,15 +142,15 @@ def loadConfig(mscreen):
     g.add(t,0,0)
     g.draw()
     mscreen.refresh()
-    devicelist = getDeviceList()
+    devicelist = getDeviceList() # pylint: disable-msg=W0612
     t.setText(_("Loading Hardware Configuration"))
     g.draw()
     mscreen.refresh()
-    hardwarelist = getHardwareList()
+    hardwarelist = getHardwareList() # pylint: disable-msg=W0612
     t.setText(_("Loading Profile Configuration"))
     g.draw()
     mscreen.refresh()
-    profilelist = getProfileList()
+    profilelist = getProfileList() # pylint: disable-msg=W0612
     mscreen.popWindow()
 
 #
@@ -187,8 +187,7 @@ def newDevice(mscreen):
         if not devclass: return -1
         dev = devclass()
         if dev:
-            i = devlist.addDevice() # pylint: disable-msg=E1101
-            devlist[i] = dev
+            devlist.append(dev)
             return dev
     return -2
 
@@ -248,18 +247,17 @@ def main():
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     chroot = None
-    debug = 0
 
     # FIXME: add --root= option
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "vh?r:d",
+        opts = getopt.getopt(sys.argv[1:], "vh?r:d",
                                    [
                                     "verbose",
                                     "debug",
                                     "help",
                                     "root="
-                                    ])
+                                    ])[0]
         for opt, val in opts:
             if opt == '-v' or opt == '--verbose':
                 NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
@@ -267,7 +265,6 @@ def main():
 
             if opt == '-d' or opt == '--debug':
                 NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
-                debug = 1
                 continue
 
             if opt == '-h' or opt == "?" or opt == '--help':
@@ -314,8 +311,8 @@ def main():
         loadConfig(screen)
         while True:
             dev = selectDevice(screen)
-            # pylint: disable-msg=E1101
-            # pylint: disable-msg=E1103
+            
+            
             if dev == -1:
                 if devlist.modified():
                     devlist.save()

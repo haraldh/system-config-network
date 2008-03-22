@@ -15,21 +15,26 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import IPsecList_base # pylint: disable-msg=E0611
+#from netconfpkg import IPsecList_base # pylint: disable-msg=E0611
 from netconfpkg.NCDeviceList import ConfDevices
 from netconfpkg.NCIPsec import IPsec
-from netconfpkg.NC_functions import log, SYSCONFDEVICEDIR, getRoot, \
-    testFilename, IPSEC, unlink, OLDSYSCONFDEVICEDIR
+from netconfpkg.NC_functions import (log, SYSCONFDEVICEDIR, getRoot,
+                                     testFilename, IPSEC, unlink, 
+                                     OLDSYSCONFDEVICEDIR)
 import os
+from netconfpkg.gdt import Gdtlist
+
+class IPsecList_base(Gdtlist):
+    pass
 
 class IPsecList(IPsecList_base):
-    def __init__(self, clist = None, parent = None):
-        IPsecList_base.__init__(self, clist, parent)
+    def __init__(self):
+        super(IPsecList, self).__init__()
         self.oldname = None
 
     def load(self):
         from netconfpkg.NCIPsec import ConfIPsec
-        # pylint: disable-msg=E1101
+        
         self.__delslice__(0, len(self))
 
         devices = ConfDevices()
@@ -48,11 +53,11 @@ class IPsecList(IPsecList_base):
             ipsec.load(ipsec_name)
             self.append(ipsec)
 
-        self.commit(False)
+        self.commit()
         self.setChanged(False)
 
     def save(self):
-        # pylint: disable-msg=E1101
+        
         from netconfpkg.NCIPsec import ConfIPsec
         for ipsec in self:
             ipsec.save()
@@ -140,7 +145,7 @@ class IPsecList(IPsecList_base):
 
         return retstr
 
-    def _parseLine(self, vals, value):
+    def fromstr(self, vals, value):
         # pylint: disable-msg=W0212
         if len(vals) <= 1:
             return
@@ -151,17 +156,18 @@ class IPsecList(IPsecList_base):
 
         for ipsec in self:
             if ipsec.IPsecId == vals[0]:
-                ipsec._parseLine(vals[1:], value)
+                ipsec.fromstr(vals[1:], value)
                 return
 
-        i = self.addIPsec() # pylint: disable-msg=E1101
-        self[i].IPsecId = vals[0]
-        self[i]._parseLine(vals[1:], value)
+        ipsec = IPsec(vals[0])
+        self.append(ipsec)
+        ipsec.fromstr(vals[1:], value)
 
 
 __IPSList = None
 
 def getIPsecList(refresh = None):
+    # pylint: disable-msg=W0603
     global __IPSList
     if __IPSList == None or refresh:
         __IPSList = IPsecList()

@@ -20,34 +20,44 @@
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import MODEM, getDeviceType
+from netconfpkg.NCDialup import ModemDialup
+from netconfpkg.gdt import (gdtstruct_properties)
 
-import netconfpkg
 _devModemDialog = None
 _devModemWizard = None
 
 class DevModem(Device):
-    def __init__(self, mlist = None, parent = None):
-        Device.__init__(self, mlist, parent)
+    gdtstruct_properties([
+                          ('Dialup', ModemDialup, "Test doc string"),
+                          ])
+    
+    def __init__(self):
+        super(DevModem, self).__init__()
         self.Type = MODEM
-        self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
+        self.Dialup = ModemDialup()
 
-    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
+    def load(self, name): # pylint: disable-msg=W0613
         """
         load(devicename)
         load a modem definition
         """
-        name = args[0]
         conf = ConfDevice(name)
         Device.load(self, name)
-        self.Dialup.load(conf)
+        self.Dialup.load(conf, self)
+        
+    def save(self):
+        super(DevModem, self).save()
+        conf = ConfDevice(self.DeviceId)
+        self.Dialup.save(conf, self.DeviceId, self.oldname)
+        conf.write()        
 
     def createDialup(self):
         """
         create a ModemDialup instance for self.Dialup
         """
-        if (self.Dialup == None) \
-               or not isinstance(self.Dialup, netconfpkg.NCDialup.ModemDialup):
-            self.Dialup = netconfpkg.NCDialup.ModemDialup(None, self)
+        if (self.Dialup == None
+            or (not isinstance(self.Dialup, ModemDialup))):
+            self.Dialup = ModemDialup()
         return self.Dialup
 
     def getDialog(self):
@@ -89,14 +99,14 @@ def setDevModemDialog(dialog):
     """
     Set the gtk Modem Dialog
     """
-    global _devModemDialog
+    global _devModemDialog  # pylint: disable-msg=W0603
     _devModemDialog = dialog
 
 def setDevModemWizard(wizard):
     """
     Set the gtk Modem Wizard
     """
-    global _devModemWizard
+    global _devModemWizard  # pylint: disable-msg=W0603
     _devModemWizard = wizard
 
 def register_plugin():

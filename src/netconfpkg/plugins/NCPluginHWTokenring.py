@@ -25,11 +25,10 @@ _hwTokenringWizard = None
 
 class HwTokenring(Hardware):
     "Tokenring Hardware Device Class"
-    def __init__(self, mlist = None, parent = None):
-        Hardware.__init__(self, mlist, parent)
+    def __init__(self):
+        super(HwTokenring, self).__init__()
         self.Type = TOKENRING
-        self.createCard() # pylint: disable-msg=E1101
-
+        
     def getDialog(self):
         """
         returns a gtk dialog
@@ -64,7 +63,7 @@ class HwTokenring(Hardware):
 
         hl = getHardwareList()
 
-        # pylint: disable-msg=E1101
+        
 
         modules = getMyConfModules()
         dic = modules[self.Name]

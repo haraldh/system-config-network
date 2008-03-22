@@ -138,7 +138,6 @@ class wirelessConfigDialog(DeviceConfigDialog):
 
     def dehydrate(self):
         DeviceConfigDialog.dehydrate(self)
-
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.hardware_dehydrate (self.sharedtcpip_xml, self.device)

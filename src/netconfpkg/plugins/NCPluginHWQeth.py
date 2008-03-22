@@ -16,7 +16,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCHardware import Hardware
+from netconfpkg.NCHardware import Hardware, Card
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NC_functions import QETH, getHardwareType
 
@@ -25,10 +25,10 @@ _hwQethWizard = None
 
 class HwQeth(Hardware):    
     "QETH Hardware Device Class"
-    def __init__(self, mlist = None, parent = None):
-        Hardware.__init__(self, mlist, parent)
+    def __init__(self):
+        super(HwQeth, self).__init__()
         self.Type = QETH
-        self.createCard()  # pylint: disable-msg=E1101
+        self.Card = Card()  
         self.Description = "Qeth Device"
         
     def getDialog(self):
@@ -55,7 +55,7 @@ class HwQeth(Hardware):
 
         modules = getMyConfModules()
         dic = modules[self.Name]
-        dic['alias'] = self.Card.ModuleName # pylint: disable-msg=E1101
+        dic['alias'] = self.Card.ModuleName 
         modules[self.Name] = dic
 
     def isType(self, hardware):

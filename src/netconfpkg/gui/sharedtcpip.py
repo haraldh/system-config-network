@@ -67,24 +67,11 @@ def dhcp_hydrate (xml, device):
             device_type = 'dhcp'
 
 
-    if device.Hostname:
-        xml.get_widget('hostnameEntry').set_text(device.Hostname)
-    else:
-        xml.get_widget('hostnameEntry').set_text('')
-
-    if device.IP:
-        xml.get_widget('ipAddressEntry').set_text(device.IP)
-    else:
-        xml.get_widget('ipAddressEntry').set_text('')
-    if device.Netmask:
-        xml.get_widget('ipNetmaskEntry').set_text(device.Netmask)
-    else:
-        xml.get_widget('ipNetmaskEntry').set_text('')
-    if device.Gateway:
-        xml.get_widget('ipGatewayEntry').set_text(device.Gateway)
-    else:
-        xml.get_widget('ipGatewayEntry').set_text('')
-
+    xml.get_widget('hostnameEntry').set_text(device.Hostname or '')
+    xml.get_widget('ipAddressEntry').set_text(device.IP or '')
+    xml.get_widget('ipNetmaskEntry').set_text(device.Netmask or '')
+    xml.get_widget('ipGatewayEntry').set_text(device.Gateway or '')
+    
     if device_type == 'dialup':
         xml.get_widget("ipProtocolOmenu").set_history(DIALUP)
     elif device_type == 'bootp':
@@ -127,7 +114,7 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('mtuSpin').set_value(device.getRealMtu())
        
 
-    if device.Dialup:
+    if hasattr(device, "Dialup"):
         if device.Dialup.Mru != None and xml.get_widget('mruCB'):
             xml.get_widget('mruSpin').set_value(device.Dialup.Mru)
             xml.get_widget('mruCB').set_active(True)
@@ -149,16 +136,20 @@ def dhcp_dehydrate (xml, device):
     else:
         device.BootProto = 'none'
 
-
     device.AutoDNS = xml.get_widget('dnsSettingCB').get_active()
-    device.IP = xml.get_widget('ipAddressEntry').get_text().strip()
-    device.Netmask = xml.get_widget('ipNetmaskEntry').get_text().strip()
-    device.Gateway = xml.get_widget('ipGatewayEntry').get_text().strip()
-    # FIXED: [169819] Trailing space in host name causes crash
-    hname = xml.get_widget('hostnameEntry').get_text().strip()
-    if hname != None and hname != '':
-        device.Hostname = hname
 
+    for attr, widget in { 
+         'IP' : 'ipAddressEntry',
+         'Netmask' : 'ipGatewayEntry',
+         'Gateway' : 'ipGatewayEntry',
+         'Hostname' : 'hostnameEntry',
+         }.items():
+        val = xml.get_widget(widget).get_text().strip()
+        if val:
+            setattr(device, attr, val)
+        else:
+            delattr(device, attr)
+            
     if xml.get_widget('mtuCB').get_active():
         device.Mtu = int(xml.get_widget('mtuSpin').get_value())
     else:
@@ -167,7 +158,7 @@ def dhcp_dehydrate (xml, device):
     if xml.get_widget('mruCB').get_active():
         if device.Dialup:
             device.Dialup.Mru = int(xml.get_widget('mruSpin').get_value())
-    elif device.Dialup:        
+    elif hasattr(device, "Dialup"):        
         device.Dialup.Mru = None
  
 ###
@@ -180,8 +171,8 @@ def route_update(xml, device):
     if device.StaticRoutes != None:
         for route in device.StaticRoutes:
             clist.append([route.Address, route.Netmask or "", route.Gateway or ""])
-    else:
-        device.createStaticRoutes()
+#    else:
+#        device.createStaticRoutes()
 
 def on_routeEditButton_clicked(button, xml, device, parent_dialog):
     routes = device.StaticRoutes
@@ -308,9 +299,7 @@ def on_routeAddButton_clicked(button, xml, device, parent_dialog):
     # user pressed OK and all tests passed
     dl.destroy()
     
-    i = routes.addRoute()
-    routes[i].apply(route)
-    #routes[i].commit()
+    routes.append(route)
     route_update(xml, device)
 
 def route_init(xml, device, dialog = None):
@@ -397,7 +386,7 @@ def hardware_hydrate(xml, device):
     if device.Alias != None:
         xml.get_widget("hardwareAliasesToggle").set_active(False)
         xml.get_widget("hardwareAliasesToggle").set_active(True)
-        xml.get_widget("hardwareAliasesSpin").set_value(device.Alias)
+        xml.get_widget("hardwareAliasesSpin").set_value(int(device.Alias))
     else:
         xml.get_widget("hardwareAliasesToggle").set_active(True)
         xml.get_widget("hardwareAliasesToggle").set_active(False)

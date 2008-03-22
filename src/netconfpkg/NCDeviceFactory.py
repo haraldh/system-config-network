@@ -19,16 +19,6 @@
 _devFac = None
 
 from netconfpkg.NC_functions import log
-
-def getDeviceFactory():
-    global _devFac
-
-    if _devFac == None:
-        _devFac = DeviceFactory()
-
-    return _devFac
-
-#from NC_functions import *
 from netconfpkg.NCDevice import Device
 
 class DeviceFactory(dict):
@@ -71,7 +61,14 @@ class DeviceFactory(dict):
         else:
             return self[devtype][0]
 
+def getDeviceFactory():
+    global _devFac # pylint: disable-msg=W0603
+
+    if _devFac == None:
+        _devFac = DeviceFactory()
+
+    return _devFac
+
 from netconfpkg.plugins import * # pylint: disable-msg=W0401,W0614
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-

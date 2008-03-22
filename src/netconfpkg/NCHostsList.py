@@ -14,19 +14,16 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../")
-    sys.path.append("./")
+import sys
 
-from netconfpkg import HostsList_base # pylint: disable-msg=E0611
+from netconfpkg.gdt import Gdtlist
 from netconfpkg.NCHost import Host
 
 def _saveEntry(entry, conffile):
     if isinstance(entry, str):
         conffile.write(entry + "\n")
     elif isinstance(entry, Host):
-        if (not entry.changed) and hasattr(entry, "origLine"):
+        if (not entry.modified()) and hasattr(entry, "origLine"):
             conffile.write(entry.origLine+"\n")
             return
         if entry.IP:
@@ -41,10 +38,11 @@ def _saveEntry(entry, conffile):
 
         conffile.write("\n")
 
+class HostsList_base(Gdtlist):
+    "HostsList base class"
+    
 class HostsList(HostsList_base):
     "HostsList class"
-    def __init__(self, *args, **kwargs):
-        HostsList_base.__init__(self, *args, **kwargs)
     
     def test(self):
         error = None
@@ -89,7 +87,6 @@ Wrong: %s in entry %i
                 entry = Host()
                 entry.IP = tmp[0]
                 entry.Comment = comment.rstrip()
-                entry.createAliasList() # pylint: disable-msg=E1101
                 if len(tmp) > 1:
                     entry.Hostname = tmp[1]
                     for alias in tmp[2:]:
@@ -112,12 +109,14 @@ Wrong %s on line %i
                 entry = line
 
             # add every line to configuration
-            self.append(entry) # pylint: disable-msg=E1101
+            self.append(entry) 
         if error:
             value_exception = ValueError(error)
             value_exception.badlines = badlines
             raise value_exception
-
+        self.commit()
+        self.setChanged(False)
+        
     def __iter__(self):
         """
         Replace __iter__ for backwards compatibility. 
@@ -125,30 +124,30 @@ Wrong %s on line %i
         """
 #        return iter(filter(lambda x: isinstance(x, Host), 
 #                           HostsList_base.__iter__(self)))
-        return iter([x for x in HostsList_base.__iter__(self) 
-                     if isinstance(x, Host)])
+        return iter([x for x in super(HostsList, self).__iter__() if isinstance(x, Host)])
 
 
-
-    def save(self, *args, **kwargs):
-        if "filename" in kwargs:            
-            conffile = open(kwargs["filename"], "w")
-        elif "file" in kwargs:
-            conffile = kwargs["file"]
+    def save(self, mfile = None, filename = None):
+        if filename:            
+            conffile = open(filename, "w")
+        elif mfile:
+            conffile = mfile
         else:
             conffile = open("/etc/hosts", "w")
 
-        for entry in HostsList_base.__iter__(self):
+        for entry in super(HostsList, self).__iter__():
+            #print >> sys.stderr, entry
             _saveEntry(entry, conffile)
             
-        if not "file" in kwargs:
+        if mfile:
             conffile.close()
 
-    def _parseLine(self, vals, value):
+    def fromstr(self, vals, value):
         for host in self:
             if host.HostID == vals[0]:
-                host._parseLine(vals[1:], value) # pylint: disable-msg=W0212
+                host.fromstr(vals[1:], value)
                 return
-        i = self.addHost() # pylint: disable-msg=E1101
-        self[i].HostID = vals[0]
-        self[i]._parseLine(vals[1:], value) # pylint: disable-msg=W0212
+        host = Host()
+        self.append(host) 
+        host.HostID = vals[0]
+        host.fromstr(vals[1:], value)

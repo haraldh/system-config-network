@@ -21,6 +21,7 @@ from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import QETH, getDeviceType
 from netconfpkg.plugins.NCPluginDevEthernet import DevEthernet
 from netconfpkg.NCHardwareList import getHardwareList, HW_CONF
+from netconfpkg.NCHardware import Card
 
 _devQethDialog = None
 _devQethWizard = None
@@ -38,13 +39,8 @@ class DevQeth(DevEthernet):
             return True
         return False
 
-    def load(self, *args, **kwargs):
-        Device.load(self, *args, **kwargs)
-        name = None
-        if len(args) >= 1:
-            name = args[0]
-        else:
-            name = kwargs.get("name")
+    def load(self, name):
+        Device.load(self)
 
         conf = ConfDevice(name)
         self.Type = QETH
@@ -63,7 +59,7 @@ class DevQeth(DevEthernet):
                 
             # pylint: disable-msg=W0631
             hw.Description = "qeth %s" % conf["SUBCHANNELS"]
-            hw.createCard()
+            hw.Card = Card()
             hw.Card.ModuleName = "qeth"
             try:
                 ports = conf["SUBCHANNELS"].split(",")
@@ -74,10 +70,10 @@ class DevQeth(DevEthernet):
                 pass # pylint: disable-msg=W0702
 
             hw.commit(changed=False)
-            hardwarelist.commit(changed=False) # pylint: disable-msg=E1101
+            hardwarelist.commit(changed=False) 
          
-    def save(self, *args, **kwargs):
-        DevEthernet.save(self, *args, **kwargs)
+    def save(self):
+        DevEthernet.save(self)
         conf = ConfDevice(self.DeviceId)
         conf["TYPE"]="Ethernet"
         if not self.Alias:
@@ -109,12 +105,12 @@ class DevQeth(DevEthernet):
 
 def setDevQethDialog(dialog):
     """Set the ctc dialog class"""
-    global _devQethDialog
+    global _devQethDialog  # pylint: disable-msg=W0603
     _devQethDialog = dialog
 
 def setDevQethWizard(wizard):
     """Set the ctc wizard class"""
-    global _devQethWizard
+    global _devQethWizard  # pylint: disable-msg=W0603
     _devQethWizard = wizard
 
 

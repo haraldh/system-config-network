@@ -29,6 +29,8 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, gui_error_dialo
 from netconfpkg.NCProfileList import getProfileList
 from netconfpkg.NC_functions import _
 
+# pylint: disable-msg=W0613
+
 class editIPsecDruid:
     def __init__(self, ipsec=None):
         self.ipsec = ipsec

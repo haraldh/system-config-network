@@ -111,8 +111,8 @@ class ModemInterface:
                                 None, 
                                 gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT)
             dialog.set_border_width(10)
-            label = gtk.Label(_('Probing for Modems, please wait...'))
-            dialog.vbox.pack_start(label, False) # pylint: disable-msg=E1101
+            label = gtk.Label(_('Probing for Modems, please wait...'))            
+            dialog.vbox.pack_start(label, False)  # pylint: disable-msg=E1101
             dialog.set_transient_for(self.toplevel)
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dialog.set_modal(True)
@@ -144,7 +144,7 @@ class ModemInterface:
         self.dehydrate()
 
     def on_Modem_back(self, druid_page, druid):
-        self.hardwarelist.rollback() # pylint: disable-msg=E1101
+        self.hardwarelist.rollback() 
 
     def setup(self):
         flowcontrols = []

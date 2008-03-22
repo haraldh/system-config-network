@@ -32,7 +32,7 @@ import sys
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-from netconfpkg.conf.Conf import Conf
+from .Conf import Conf # pylint: disable-msg=W0403
 import re
 from UserDict import UserDict
 
@@ -41,7 +41,8 @@ class ConfSMBSubDict(UserDict):
         UserDict.__init__(self, initdict)
         self.conf = parent_conf
         self.stanza = stanza
-
+        self.line = None
+        
     def __setitem__(self, varname, value):
         self.conf.rewind()
         if not self.conf.find_stanza(self.stanza):

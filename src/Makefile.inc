@@ -10,9 +10,9 @@ docs: $(PYTHON_FILES)
 	mv *.html classdoc
 
 pycheck: $(PYTHON_FILES)
-	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
+	pychecker --limit 100 -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
 
 pylint: $(PYTHON_FILES)
 	@echo "Running pylint -- Please wait, this can last a bit"
-	@! pylint --errors-only --rcfile=$(top_srcdir)/pylintrc netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:'
+	! pylint --errors-only --rcfile=$(top_srcdir)/pylintrc netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:'
 	@make -C netconfpkg/tests pylint

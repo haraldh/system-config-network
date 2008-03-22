@@ -128,9 +128,9 @@ class NewInterfaceDialog:
 
     def on_cancel_interface(self, *args): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
-        hardwarelist.rollback() # pylint: disable-msg=E1101
+        hardwarelist.rollback() 
         devicelist = NCDeviceList.getDeviceList()
-        devicelist.rollback()   # pylint: disable-msg=E1101
+        devicelist.rollback()   
         self.toplevel.destroy()
         self.canceled = True
         gtk.main_quit()

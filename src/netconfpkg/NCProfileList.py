@@ -19,16 +19,22 @@
 
 from netconfpkg import NCDeviceList
 from netconfpkg import NCIPsecList
-from netconfpkg import Profile # pylint: disable-msg=E0611
-from netconfpkg import ProfileList_base # pylint: disable-msg=E0611
+from netconfpkg.NCProfile import Profile
+
 from netconfpkg.NCDeviceList import ConfDevices
-from netconfpkg.NC_functions import _, log, SYSCONFNETWORK, getRoot, updateNetworkScripts, \
-    SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR, RESOLVCONF, HOSTSCONF, TestError, \
-    getDebugLevel, SYSCONFDEVICEDIR, mkdir, issamefile, unlink, link, rename, rmdir, \
-    generic_error_dialog
-from netconfpkg.conf import Conf
-import os
+from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK, getRoot, updateNetworkScripts,
+                                     SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR, RESOLVCONF,
+                                     HOSTSCONF, TestError, getDebugLevel, SYSCONFDEVICEDIR,
+                                     mkdir, issamefile, unlink, link, rename, rmdir, 
+                                     generic_error_dialog)
+from netconfpkg.conf import ConfShellVar, ConfEResolv
+import os, sys
 import os.path
+
+from netconfpkg.gdt import Gdtlist
+
+class ProfileList_base(Gdtlist):
+    pass
 
 class MyFileList(list):
     def __setitem__(self, key, value):
@@ -49,15 +55,15 @@ class MyFileList(list):
         return list.append(self, os.path.abspath(obj))
 
 class ProfileList(ProfileList_base):
-    def __init__(self, clist = None, parent = None):
+    def __init__(self):
+        super(ProfileList, self).__init__()
         self.error = None
-        ProfileList_base.__init__(self, clist, parent)
 
     def load(self):
         # pylint: disable-msg=W0201
-        # pylint: disable-msg=E1101
+        
         self.curr_prof = 'default'
-        nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
+        nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if nwconf.has_key('CURRENT_PROFILE'):
             self.curr_prof = nwconf['CURRENT_PROFILE']
 
@@ -90,20 +96,16 @@ class ProfileList(ProfileList_base):
         prof = self.getActiveProfile()
         log.log(5, "ActiveProfile: %s" % str(prof))        
         prof.DNS.Hostname = self.use_hostname
-        self.commit(False)
+        self.commit()
         self.setChanged(False)
 
     def loadprof(self, pr, profdir):
-        # pylint: disable-msg=E1101
+        
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
 
-        i = self.addProfile()
-        prof = self[i]
-        prof.createActiveDevices()
-        prof.createActiveIPsecs()
-        prof.createDNS()
-        prof.createHostsList()
+        prof = Profile()
+        self.append(prof)
         prof.ProfileName = pr
 
         if pr == self.curr_prof:
@@ -122,6 +124,7 @@ class ProfileList(ProfileList_base):
         for dev in devlist:
             for d in devicelist:
                 if d.DeviceId == dev:
+                    #print >> sys.stderr, "Appending ", d.DeviceId, dev
                     prof.ActiveDevices.append(dev)
                     break
 
@@ -145,7 +148,7 @@ class ProfileList(ProfileList_base):
 
 
         # FIXME: [183338] use SEARCH not resolv.conf
-        dnsconf = Conf.ConfEResolv()
+        dnsconf = ConfEResolv.ConfEResolv()
         if profdir:
             dnsconf.filename = profdir + '/resolv.conf'
         else:
@@ -158,9 +161,9 @@ class ProfileList(ProfileList_base):
         prof.DNS.TertiaryDNS  = ''
 
         if profdir:
-            nwconf = Conf.ConfShellVar(profdir + '/network')
+            nwconf = ConfShellVar.ConfShellVar(profdir + '/network')
         else:
-            nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
+            nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
 
         if nwconf['HOSTNAME'] != '':
             prof.DNS.Hostname     = nwconf['HOSTNAME']
@@ -172,7 +175,7 @@ class ProfileList(ProfileList_base):
                 prof.DNS.SecondaryDNS = dnsconf['nameservers'][1]
             if len(dnsconf['nameservers']) > 2:
                 prof.DNS.TertiaryDNS = dnsconf['nameservers'][2]
-        sl = prof.DNS.createSearchList()
+        sl = prof.DNS.SearchList
         if dnsconf.has_key('search'):
             for ns in dnsconf['search']:
                 sl.append(ns)
@@ -219,7 +222,9 @@ class ProfileList(ProfileList_base):
             break
 
     def commit(self, changed=True):
-        ProfileList_base.commit(self, changed)
+        super(ProfileList, self).commit()
+        if changed == False:
+            self.setChanged(changed)
 
     def fixInterfaces(self):
         return
@@ -276,9 +281,9 @@ class ProfileList(ProfileList_base):
         # commit the changes
         self.commit()
 
-        nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
+        nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
         # FIXME: [183338] use SEARCH not resolv.conf
-        dnsconf = Conf.ConfEResolv()
+        dnsconf = ConfEResolv.ConfEResolv()
 
         act_prof = self.getActiveProfile()
 
@@ -355,13 +360,14 @@ class ProfileList(ProfileList_base):
             files_used.append(getRoot() + SYSCONFPROFILEDIR + '/' + \
                               prof.ProfileName)
 
-            nwconf = Conf.ConfShellVar(getRoot() + SYSCONFPROFILEDIR + \
+            nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFPROFILEDIR + \
                                        '/' + prof.ProfileName + '/network')
+            print >> sys.stderr, "Writing Hostname ", prof.ProfileName, prof.DNS.Hostname
+            nwconf['HOSTNAME'] = prof.DNS.Hostname
             nwconf.write()
             files_used.append(nwconf.filename)
 
 
-            nwconf['HOSTNAME'] = prof.DNS.Hostname
             # FIXME: [183338] use SEARCH not resolv.conf
             dnsconf.filename = getRoot() + SYSCONFPROFILEDIR + '/' + \
                                prof.ProfileName + '/resolv.conf'
@@ -369,7 +375,7 @@ class ProfileList(ProfileList_base):
             files_used.append(dnsconf.filename)
 
             dnsconf['domain'] = ''
-            if prof.DNS.Domainname != '':
+            if prof.DNS.Domainname:
                 dnsconf['domain'] = [prof.DNS.Domainname]
             else:
                 del dnsconf['domain']
@@ -382,11 +388,11 @@ class ProfileList(ProfileList_base):
 
             dnsconf['nameservers'] = []
             nameservers = []
-            if prof.DNS.PrimaryDNS != '':
+            if prof.DNS.PrimaryDNS:
                 nameservers.append(prof.DNS.PrimaryDNS)
-            if prof.DNS.SecondaryDNS != '':
+            if prof.DNS.SecondaryDNS:
                 nameservers.append(prof.DNS.SecondaryDNS)
-            if prof.DNS.TertiaryDNS != '':
+            if prof.DNS.TertiaryDNS:
                 nameservers.append(prof.DNS.TertiaryDNS)
 
             dnsconf['nameservers'] = nameservers
@@ -540,8 +546,8 @@ class ProfileList(ProfileList_base):
                 rmdir(filename)
 
         # commit the changes
-        self.commit(False)
-        self.setChanged(False) # pylint: disable-msg=E1101
+        self.commit()
+        self.setChanged(False) 
 
     def activateDevice (self, deviceid, profile, state=None):
         profilelist = getProfileList()
@@ -578,7 +584,7 @@ class ProfileList(ProfileList_base):
         else:
             return None
 
-        modl = self.modified() # pylint: disable-msg=E1101
+        modl = self.modified() 
         for prof in self:
             mod = prof.modified()
             if (isinstance(val, str) and prof.ProfileName == val) or \
@@ -591,7 +597,7 @@ class ProfileList(ProfileList_base):
                 prof.setChanged(mod)
 
         if not dochange:
-            self.setChanged(modl) # pylint: disable-msg=E1101
+            self.setChanged(modl) 
 
         return aprof
 
@@ -605,16 +611,20 @@ class ProfileList(ProfileList_base):
             self[0].Active=True
             return self[0]
 
-    def _objToStr(self, parentStr = None): # pylint: disable-msg=W0613
-        # pylint: disable-msg=W0212
-        retstr = ""
-        for profile in self:
-            retstr += profile._objToStr("ProfileList.%s" % \
-                                        (profile.ProfileName))
+    def tostr(self, prefix_string = None):
+        "returns a string in gdt representation"
+        #print "tostr %s " % prefix_string
+        if prefix_string == None:
+            prefix_string = self.__class__.__name__
+        mstr = ""
+        for value in self:
+            if isinstance(value, Profile):
+                mstr += value.tostr("%s.%s" 
+                                    % (prefix_string, value.ProfileName))
+        return mstr
 
-        return retstr
 
-    def _parseLine(self, vals, value):
+    def fromstr(self, vals, value):
         # pylint: disable-msg=W0212
         if len(vals) <= 1:
             return
@@ -624,18 +634,20 @@ class ProfileList(ProfileList_base):
             return
         for profile in self:
             if profile.ProfileName == vals[0]:
-                profile._parseLine(vals[1:], value)
+                profile.fromstr(vals[1:], value)
                 return
 
-        i = self.addProfile() # pylint: disable-msg=E1101
-        self[i].ProfileName = vals[0]
-        self[i]._parseLine(vals[1:], value)
+        prof = Profile()
+        self.append(prof)
+        prof.ProfileName = vals[0]
+        prof.fromstr(vals[1:], value)
 
 
 __PFList = None
 __PFList_root = getRoot()
 
 def getProfileList(refresh=None):
+    # pylint: disable-msg=W0603
     global __PFList
     global __PFList_root
 

@@ -16,18 +16,70 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 from netconfpkg.NC_functions import _
-from netconfpkg import Hardware_base # pylint: disable-msg=E0611
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr,
+                            Gdtint)
 
 HW_INACTIVE = _("inactive") # not found in last config and not in actual system
 HW_SYSTEM = _("system")   # found in system
 HW_CONF = _("configured")     # found in config but not in system
 HW_OK = _("ok")       # found in system and in config
 
-class Hardware(Hardware_base):
-    def __init__(self, clist = None, parent = None):
-        Hardware_base.__init__(self, clist, parent)
+class Card(Gdtstruct):
+    gdtstruct_properties([
+                          ('ModuleName', Gdtstr, "Test doc string"),
+                          ('Type', Gdtstr, "Test doc string"),
+                          ('IoPort', Gdtstr, "Test doc string"),
+                          ('IoPort1', Gdtstr, "Test doc string"),
+                          ('IoPort2', Gdtstr, "Test doc string"),
+                          ('Mem', Gdtstr, "Test doc string"),
+                          ('IRQ', Gdtstr, "Test doc string"),
+                          ('DMA0', Gdtint, "Test doc string"),
+                          ('DMA1', Gdtint, "Test doc string"),
+                          ('ChannelProtocol', Gdtstr, "Test doc string"),
+                          ('Firmware', Gdtstr, "Test doc string"),
+                          ('DriverId', Gdtstr, "Test doc string"),
+                          ('VendorId', Gdtstr, "Test doc string"),
+                          ('DeviceId', Gdtstr, "Test doc string"),
+                          ])
+    def __init__(self):
+        super(Card, self).__init__()
+        self.ModuleName = None
+        self.Type = None
+        self.IoPort = None
+        self.IoPort1 = None
+        self.IoPort2 = None
+        self.Mem = None
+        self.IRQ = None
+        self.DMA0 = None
+        self.DMA1 = None
+        self.ChannelProtocol = None
+        self.Firmware = None
+        self.DriverId = None
+        self.VendorId = None
+        self.DeviceId = None
+
+class Hardware_base(Gdtstruct):
+    gdtstruct_properties([
+                          ('Name', Gdtstr, "Test doc string"),
+                          ('Description', Gdtstr, "Test doc string"),
+                          ('Type ', Gdtstr, "Test doc string"),
+                          ('Status', Gdtstr, "Test doc string"),
+                          ('Card', Card, "Test doc string"),
+                          ])
+    def __init__(self):
+        super(Hardware_base, self).__init__()
+        self.Name = None
+        self.Description = None
+        self.Type = None
+        self.Card = None
         self.Status = HW_INACTIVE
 
+    def createCard(self):
+        if self.Card == None:
+            self.Card = Card()
+        return self.Card            
+
+class Hardware(Hardware_base):
     def getDialog(self):
         return None
 
@@ -44,5 +96,3 @@ class Hardware(Hardware_base):
         return None
 
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.12 $"

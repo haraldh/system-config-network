@@ -233,8 +233,8 @@ class QethInterfaceGui(InterfaceCreator):
         druid_page.set_text(s)
         
     def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
-        # pylint: disable-msg=E1101
-        # pylint: disable-msg=E1103
+        
+        
         hardwarelist = getHardwareList()
         hardwarelist.commit() 
         #print self.devicelist

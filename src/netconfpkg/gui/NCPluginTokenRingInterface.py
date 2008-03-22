@@ -118,7 +118,7 @@ class TokenRingInterfaceGui(InterfaceCreator):
         self.init_gui()
         return self.druids
 
-    def on_hostname_config_page_back(self, druid_page, druid):
+    def on_hostname_config_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
         childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[2])
@@ -126,21 +126,21 @@ class TokenRingInterfaceGui(InterfaceCreator):
             self.topdruid.set_page(childs[1])
         return True
 
-    def on_hostname_config_page_next(self, druid_page, druid):
+    def on_hostname_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         if self.hwPage:
             self.device.Device = self.hwDruid.hw.Name
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 
-    def on_hostname_config_page_prepare(self, druid_page, druid):
+    def on_hostname_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
 
-    def on_hw_config_page_back(self, druid_page, druid):
+    def on_hw_config_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
         pass
 
-    def on_hw_config_page_next(self, druid_page, druid):
-        clist = self.xml.get_widget("hardwareList")
+    def on_hw_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+        clist = self.xml.get_widget("hardwareList") 
 
         childs = self.topdruid.get_children()
 
@@ -161,7 +161,7 @@ class TokenRingInterfaceGui(InterfaceCreator):
             self.topdruid.set_page(childs[3])
         return True
 
-    def on_hw_config_page_prepare(self, druid_page, druid):
+    def on_hw_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
@@ -178,7 +178,7 @@ class TokenRingInterfaceGui(InterfaceCreator):
     def on_finish_page_back(self,druid_page, druid):
         pass
 
-    def on_finish_page_prepare(self, druid_page, druid):
+    def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
@@ -211,8 +211,9 @@ class TokenRingInterfaceGui(InterfaceCreator):
 
         druid_page.set_text(s)
 
-    def on_finish_page_finish(self, druid_page, druid):
-        # pylint: disable-msg=E1101
+    def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
+
+        
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit()
         self.devicelist.append(self.device)

@@ -231,9 +231,9 @@ class EthernetInterface(InterfaceCreator):
         s = s + "\n" + "   "
 
         if self.device.BootProto == "static" or self.device.BootProto == "none":
-            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
-            + _("Default gateway address:") + " " + self.device.Gateway + "\n" + "   "
+            s = s + _("Address:") + " " + (self.device.IP or '') + "\n" + "   "\
+            + _("Subnet mask:") + " " + (self.device.Netmask or '') + "\n" + "   "\
+            + _("Default gateway address:") + " " + (self.device.Gateway or '') + "\n" + "   "
         else:
             s = s + _("Automatically obtain IP address settings with:") + " "\
                 + self.device.BootProto + "\n"
@@ -243,8 +243,8 @@ class EthernetInterface(InterfaceCreator):
 
     def on_finish_page_finish(self, druid_page, druid):
         hardwarelist = getHardwareList()
-        # pylint: disable-msg=E1101
-        # pylint: disable-msg=E1103
+        
+        
         hardwarelist.commit() 
         #print self.devicelist
         self.devicelist.append(self.device)

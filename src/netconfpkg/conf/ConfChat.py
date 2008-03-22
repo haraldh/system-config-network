@@ -3,7 +3,7 @@
 import re
 import os
 
-from Conf import Conf
+from .Conf import Conf # pylint: disable-msg=W0403
 
 
 class ConfChat(Conf):

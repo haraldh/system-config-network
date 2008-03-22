@@ -1,6 +1,6 @@
 "/etc/sysconfig/static-routes handling"
 
-from Conf import Conf, WrongMethod
+from .Conf import Conf, WrongMethod # pylint: disable-msg=W0403
 
 class ConfESStaticRoutes(Conf):
     """Yet another dictionary, this one for /etc/sysconfig/static-routes

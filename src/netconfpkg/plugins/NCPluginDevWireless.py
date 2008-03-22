@@ -18,29 +18,42 @@
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import WIRELESS, getDeviceType
+from netconfpkg.gdt import (gdtstruct_properties)
 
-_devWirelessDialog = None
-_devWirelessWizard = None
+from netconfpkg.NCWireless import Wireless
+
 
 # FIXME: add detection method for Wireless HW
 # FIXME: [190317] Dell Wireless 1390 802.11g Mini Card doesn't work
 # FIXME: [183272] system-config-network unable to see cisco pcmcia wireless card using airo driver
 
-class DevWireless(Device):
-    def __init__(self, clist = None, parent = None):
-        Device.__init__(self, clist, parent)
-        self.Type = WIRELESS
-        self.createWireless()
 
-    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
-        name = args[0]
+class DevWireless(Device):
+    gdtstruct_properties([
+                          ('Wireless', Wireless, "Test doc string"),
+                          ])
+    
+    def __init__(self):
+        super(DevWireless, self).__init__()
+        self.Type = WIRELESS
+        self.Wireless = Wireless()
+
+    def load(self, name):
+        super(DevWireless, self).load(name)
         conf = ConfDevice(name)
-        Device.load(self, name)
-        self.Wireless.load(conf) # pylint: disable-msg=E1101
+        self.Wireless.load(conf, self.DeviceId)
+        conf.write()
+        del conf
+
+    def save(self):
+        super(DevWireless, self).save()
+        conf = ConfDevice( self.DeviceId )
+        conf.fsf()
+        self.Wireless.save(conf, self.DeviceId)
+        conf.write()
+        del conf
 
     def createWireless(self):
-        # pylint: disable-msg=E1101
-        Device.createWireless(self)
         return self.Wireless
 
     def getDialog(self):
@@ -63,12 +76,15 @@ class DevWireless(Device):
             return True
         return False
 
+_devWirelessDialog = None
+_devWirelessWizard = None
+
 def setDevWirelessDialog(dialog):
-    global _devWirelessDialog
+    global _devWirelessDialog  # pylint: disable-msg=W0603
     _devWirelessDialog = dialog
 
 def setDevWirelessWizard(wizard):
-    global _devWirelessWizard
+    global _devWirelessWizard  # pylint: disable-msg=W0603
     _devWirelessWizard = wizard
 
 def register_plugin():

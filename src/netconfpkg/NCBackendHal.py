@@ -21,7 +21,7 @@ if __name__ == '__main__':
     sys.path.append("../")
     sys.path.append("./")
  
-from netconfpkg.NCHardware import HW_SYSTEM
+from netconfpkg.NCHardware import HW_SYSTEM, Card
 from netconfpkg.NC_functions import getDeviceType
 
 HAL_DEVICE_IFACE = "org.freedesktop.Hal.Device"
@@ -99,7 +99,7 @@ class NCBackendHal:
             hwc = hwf.getHardwareClass(htype)
             if hwc:        
                 hw = hwc()
-                hw.createCard() # pylint: disable-msg=E1103
+                hw.Card = Card() 
                 hw.Name = name
                 hw.Type = htype
                 hw.Description = "%s %s" % self.getVendor(udi)
@@ -107,7 +107,7 @@ class NCBackendHal:
 
                 index = self.getProperty(obj, "net.physical_device")
                 if index != None:
-                    # pylint: disable-msg=E1103
+                    
                     hw.Card.ModuleName = self.getDriver(index)
 
                 return hw

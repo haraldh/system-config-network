@@ -2,7 +2,7 @@
 
 import re
 
-from Conf import Conf, odict, BadFile, VersionMismatch
+from .Conf import Conf, odict, BadFile, VersionMismatch # pylint: disable-msg=W0403
 
 class ConfModules(Conf):
     """ConfModules(Conf)
@@ -222,7 +222,7 @@ class ConfModInfo(Conf):
                 line = self.getline()
                 fields = self.getfields()
                 # pull out module and linetype from the first field...
-                (module, linetype) = re.split('[ \t]+', fields[0])
+                linetype = re.split('[ \t]+', fields[0])[1]
                 if not cmp(linetype, 'type'):
                     pass
                 elif not cmp(linetype, 'alias'):

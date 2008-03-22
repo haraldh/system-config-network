@@ -119,7 +119,7 @@ class GenericInterface(InterfaceCreator):
         button = self.editDevice(self.device)
 
         if button == gtk.RESPONSE_YES:
-            # pylint: disable-msg=E1101
+            
             self.devicelist.append(self.device)
             self.device.commit()
             for prof in self.profilelist:

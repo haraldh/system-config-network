@@ -139,8 +139,7 @@ def runit(splash = None):
     try:
         if splash:
             splash_window = splash_screen(True)
-        import gnome
-        from gtk import glade
+        import gnome        
         import netconfpkg.gui.GUI_functions
         import netconfpkg
         netconfpkg.PRG_NAME = PRG_NAME
@@ -154,10 +153,8 @@ def runit(splash = None):
 
         progname = os.path.basename(sys.argv[0])
 
-        showprofile = 1
-
         gnome.program_init(PROGNAME, "scn")
-        glade.bindtextdomain(PROGNAME, "/usr/share/locale")
+        gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
         if progname == 'system-config-network-druid' or \
                progname == 'internet-druid':
@@ -166,7 +163,7 @@ def runit(splash = None):
             if interface.canceled:
                 sys.exit(1)
 
-        window = mainDialog()
+        window = mainDialog() # pylint: disable-msg=W0612
 
         if splash_window:
             splash_window.destroy()
@@ -184,7 +181,6 @@ class BadUsage(Exception): pass
 
 def main(cmdline):
     import getopt
-    splash_window = None
     from netconfpkg import NC_functions
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
@@ -193,7 +189,7 @@ def main(cmdline):
     chroot = None
 
     try:
-        opts, args = getopt.getopt(cmdline, "vh?r:d",
+        opts = getopt.getopt(cmdline, "vh?r:d",
                                    [
                                     "verbose",
                                     "debug",
@@ -201,7 +197,7 @@ def main(cmdline):
                                     "hotshot",
                                     "splash",
                                     "root="
-                                    ])
+                                    ])[0]
         for opt, val in opts:
             if opt == '-v' or opt == '--verbose':
                 NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)

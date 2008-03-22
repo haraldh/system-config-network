@@ -16,7 +16,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCHardware import Hardware
+from netconfpkg.NCHardware import Hardware, Card
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NC_functions import ISDN, getHardwareType
 
@@ -25,11 +25,10 @@ _hwIsdnWizard = None
 
 class HwIsdn(Hardware):
     "ISDN Hardware Device Class"
-    def __init__(self, mlist = None, parent = None):
-        Hardware.__init__(self, mlist, parent)
+    def __init__(self):
+        super(HwIsdn, self).__init__()
         self.Type = ISDN
-        # pylint: disable-msg=E1101
-        self.createCard()
+        self.Card = Card()
         self.Card.ChannelProtocol = "2"
 
     def getDialog(self):
@@ -63,7 +62,7 @@ class HwIsdn(Hardware):
         import netconfpkg.NCisdnhardware
         isdn = netconfpkg.NCisdnhardware.ConfISDN()
 
-        # pylint: disable-msg=E1101
+        
         isdn.Description = self.Description
         isdn.Type = self.Card.Type
         isdn.ModuleName = self.Card.ModuleName
@@ -84,14 +83,14 @@ def setHwIsdnDialog(dialog):
     """
     Set the gtk Modem Dialog
     """
-    global _hwIsdnDialog
+    global _hwIsdnDialog  # pylint: disable-msg=W0603
     _hwIsdnDialog = dialog
 
 def setHwIsdnWizard(wizard):
     """
     Set the gtk Modem Wizard
     """
-    global _hwIsdnWizard
+    global _hwIsdnWizard  # pylint: disable-msg=W0603
     _hwIsdnWizard = wizard
 
 

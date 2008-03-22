@@ -181,7 +181,7 @@ class WirelessInterface(InterfaceCreator):
 
     def on_wireless_config_page_next(self, druid_page, druid):
         self.device.createWireless()
-        wl = self.device.Wireless # pylint: disable-msg=E1101
+        wl = self.device.Wireless 
 
         if self.xml.get_widget("essidAutoButton").get_active():
             wl.EssId = ""
@@ -300,7 +300,7 @@ class WirelessInterface(InterfaceCreator):
 
     def on_finish_page_prepare(self, druid_page, druid):
         self.device.DeviceId = self.device.Device
-        wl = self.device.Wireless # pylint: disable-msg=E1101
+        wl = self.device.Wireless 
 
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
@@ -351,7 +351,7 @@ class WirelessInterface(InterfaceCreator):
         druid_page.set_text(s)
 
     def on_finish_page_finish(self, druid_page, druid):
-        # pylint: disable-msg=E1101
+        
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.commit() 
         self.devicelist.append(self.device)

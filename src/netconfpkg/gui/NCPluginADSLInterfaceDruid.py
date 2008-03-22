@@ -124,7 +124,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
         self.hydrate()
 
     def on_finish_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
-        self.devicelist.rollback() # pylint: disable-msg=E1101
+        self.devicelist.rollback() 
 
     def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
@@ -141,7 +141,7 @@ class ADSLInterfaceDruid(InterfaceCreator):
 
     def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
-        # pylint: disable-msg=E1101
+        
         hardwarelist.commit() 
         self.devicelist.append(self.device)
         self.device.commit()

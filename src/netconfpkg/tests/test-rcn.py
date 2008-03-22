@@ -48,11 +48,13 @@ DeviceList.ISDN.1net4you0.Dialup.DialMode=manual
 DeviceList.ISDN.1net4you0.Dialup.EncapMode=syncppp
 DeviceList.ISDN.1net4you0.Dialup.HangupTimeout=600
 DeviceList.ISDN.1net4you0.Dialup.Login=web
-DeviceList.ISDN.1net4you0.Dialup.Password=None
+DeviceList.ISDN.1net4you0.Dialup.Password=
 DeviceList.ISDN.1net4you0.Dialup.Persist=False
 DeviceList.ISDN.1net4you0.Dialup.PhoneNumber=019256252
 DeviceList.ISDN.1net4you0.Dialup.ProviderName=1net4you
 DeviceList.ISDN.1net4you0.Dialup.Secure=False
+DeviceList.ISDN.1net4you0.IPv6Init=False
+DeviceList.ISDN.1net4you0.NMControlled=False
 DeviceList.ISDN.1net4you0.OnBoot=False
 DeviceList.ISDN.1net4you0.Type=ISDN
 DeviceList.Modem.1net4you.AllowUser=True
@@ -75,27 +77,26 @@ DeviceList.Modem.1net4you.Dialup.Persist=False
 DeviceList.Modem.1net4you.Dialup.PhoneNumber=019256252
 DeviceList.Modem.1net4you.Dialup.ProviderName=1net4you
 DeviceList.Modem.1net4you.Dialup.StupidMode=True
+DeviceList.Modem.1net4you.IPv6Init=False
+DeviceList.Modem.1net4you.NMControlled=False
 DeviceList.Modem.1net4you.OnBoot=False
 DeviceList.Modem.1net4you.Type=Modem
-DeviceList.Token Ring.tr0.AllowUser=False
-DeviceList.Token Ring.tr0.AutoDNS=True
-DeviceList.Token Ring.tr0.BootProto=dhcp
-DeviceList.Token Ring.tr0.Device=tr0
-DeviceList.Token Ring.tr0.DeviceId=tr0
-DeviceList.Token Ring.tr0.IPv6Init=False
-DeviceList.Token Ring.tr0.OnBoot=True
-DeviceList.Token Ring.tr0.Type=Token Ring
+DeviceList.TokenRing.tr0.AllowUser=False
+DeviceList.TokenRing.tr0.AutoDNS=True
+DeviceList.TokenRing.tr0.BootProto=dhcp
+DeviceList.TokenRing.tr0.Device=tr0
+DeviceList.TokenRing.tr0.DeviceId=tr0
+DeviceList.TokenRing.tr0.IPv6Init=False
+DeviceList.TokenRing.tr0.NMControlled=False
+DeviceList.TokenRing.tr0.OnBoot=True
+DeviceList.TokenRing.tr0.Type=TokenRing
 DeviceList.Wireless.eth3.AllowUser=False
 DeviceList.Wireless.eth3.AutoDNS=True
 DeviceList.Wireless.eth3.BootProto=dhcp
 DeviceList.Wireless.eth3.Device=eth3
 DeviceList.Wireless.eth3.DeviceId=eth3
-DeviceList.Wireless.eth3.Domain=
-DeviceList.Wireless.eth3.HardwareAddress=
-DeviceList.Wireless.eth3.Hostname=
-DeviceList.Wireless.eth3.IP=
 DeviceList.Wireless.eth3.IPv6Init=False
-DeviceList.Wireless.eth3.Netmask=
+DeviceList.Wireless.eth3.NMControlled=False
 DeviceList.Wireless.eth3.OnBoot=False
 DeviceList.Wireless.eth3.Type=Wireless
 DeviceList.Wireless.eth3.Wireless.Channel=1
@@ -149,11 +150,11 @@ HardwareList.Modem.Modem0.Modem.ModemVolume=0
 HardwareList.Modem.Modem0.Name=Modem0
 HardwareList.Modem.Modem0.Status=configured
 HardwareList.Modem.Modem0.Type=Modem
-HardwareList.Token Ring.tr0.Card.ModuleName=olympic
-HardwareList.Token Ring.tr0.Description=olympic
-HardwareList.Token Ring.tr0.Name=tr0
-HardwareList.Token Ring.tr0.Status=configured
-HardwareList.Token Ring.tr0.Type=Token Ring
+HardwareList.TokenRing.tr0.Card.ModuleName=olympic
+HardwareList.TokenRing.tr0.Description=olympic
+HardwareList.TokenRing.tr0.Name=tr0
+HardwareList.TokenRing.tr0.Status=configured
+HardwareList.TokenRing.tr0.Type=TokenRing
 ProfileList.default.Active=True
 ProfileList.default.ActiveDevices.1=1net4you
 ProfileList.default.ActiveDevices.2=1net4you0
@@ -213,16 +214,21 @@ def expectConf(fileorlines, mstr):
 
     for i in xrange(l):
         if (lines[i] != mstr[i]):
-            print
+            file = open("stderr", 'r', -1)
+            print >> sys.stderr
+            print >> sys.stderr, "".join(file.readlines())
+            file.close()
+            
+            print >> sys.stderr
             if i >= 2:
-                print "  %s" % (mstr[i-2])
+                print >> sys.stderr, "  %s" % (mstr[i-2])
             if i >= 1:
-                print "  %s" % (mstr[i-1])
-            print "- %s\n+ %s" % (mstr[i], lines[i])
+                print >> sys.stderr, "  %s" % (mstr[i-1])
+            print >> sys.stderr, "- %s\n+ %s" % (mstr[i], lines[i])
             if (i+1) < l:
-                print "- %s\n+ %s" % (mstr[i+1], lines[i+1])
+                print >> sys.stderr, "- %s\n+ %s" % (mstr[i+1], lines[i+1])
             if (i+2) < l:
-                print "- %s\n+ %s" % (mstr[i+2], lines[i+2])
+                print >> sys.stderr, "- %s\n+ %s" % (mstr[i+2], lines[i+2])
             print
             break
     else:
@@ -323,21 +329,24 @@ class TestRCN(unittest.TestCase):
         expect = BASICSETUP
         self.redirectEnd()
         self.failUnless(expectConf(expect, devstr))
-
+   
     def test02Profile(self):
         """Test profile creation """
         #self.clearModules()
-        self.test01Read()
+        self.setupChroot()
         self.redirectStd()
-        from netconfpkg import NC_functions, \
-             NCDeviceList, NCProfileList, \
-             NCHardwareList, NCIPsecList
+        from netconfpkg import NC_functions
+        NC_functions.prepareRoot(CHROOT)
+        NC_functions.updateNetworkScripts(True)
+
+        from netconfpkg import NCProfileList
+        from netconfpkg.NCProfile import Profile
 
         profilelist = NCProfileList.getProfileList()
 
         text = "newprofile"
-        i = profilelist.addProfile()
-        prof = profilelist[i]
+        prof = Profile()
+        profilelist.append(prof)
         prof.apply(profilelist[0])
         prof.ProfileName = text
         prof.commit()
@@ -374,11 +383,13 @@ DeviceList.ISDN.1net4you0.Dialup.DialMode=manual
 DeviceList.ISDN.1net4you0.Dialup.EncapMode=syncppp
 DeviceList.ISDN.1net4you0.Dialup.HangupTimeout=600
 DeviceList.ISDN.1net4you0.Dialup.Login=web
-DeviceList.ISDN.1net4you0.Dialup.Password=None
+DeviceList.ISDN.1net4you0.Dialup.Password=
 DeviceList.ISDN.1net4you0.Dialup.Persist=False
 DeviceList.ISDN.1net4you0.Dialup.PhoneNumber=019256252
 DeviceList.ISDN.1net4you0.Dialup.ProviderName=1net4you
 DeviceList.ISDN.1net4you0.Dialup.Secure=False
+DeviceList.ISDN.1net4you0.IPv6Init=False
+DeviceList.ISDN.1net4you0.NMControlled=False
 DeviceList.ISDN.1net4you0.OnBoot=False
 DeviceList.ISDN.1net4you0.Type=ISDN
 DeviceList.Modem.1net4you.AllowUser=True
@@ -401,27 +412,26 @@ DeviceList.Modem.1net4you.Dialup.Persist=False
 DeviceList.Modem.1net4you.Dialup.PhoneNumber=019256252
 DeviceList.Modem.1net4you.Dialup.ProviderName=1net4you
 DeviceList.Modem.1net4you.Dialup.StupidMode=True
+DeviceList.Modem.1net4you.IPv6Init=False
+DeviceList.Modem.1net4you.NMControlled=False
 DeviceList.Modem.1net4you.OnBoot=False
 DeviceList.Modem.1net4you.Type=Modem
-DeviceList.Token Ring.tr0.AllowUser=False
-DeviceList.Token Ring.tr0.AutoDNS=True
-DeviceList.Token Ring.tr0.BootProto=dhcp
-DeviceList.Token Ring.tr0.Device=tr0
-DeviceList.Token Ring.tr0.DeviceId=tr0
-DeviceList.Token Ring.tr0.IPv6Init=False
-DeviceList.Token Ring.tr0.OnBoot=True
-DeviceList.Token Ring.tr0.Type=Token Ring
+DeviceList.TokenRing.tr0.AllowUser=False
+DeviceList.TokenRing.tr0.AutoDNS=True
+DeviceList.TokenRing.tr0.BootProto=dhcp
+DeviceList.TokenRing.tr0.Device=tr0
+DeviceList.TokenRing.tr0.DeviceId=tr0
+DeviceList.TokenRing.tr0.IPv6Init=False
+DeviceList.TokenRing.tr0.NMControlled=False
+DeviceList.TokenRing.tr0.OnBoot=True
+DeviceList.TokenRing.tr0.Type=TokenRing
 DeviceList.Wireless.eth3.AllowUser=False
 DeviceList.Wireless.eth3.AutoDNS=True
 DeviceList.Wireless.eth3.BootProto=dhcp
 DeviceList.Wireless.eth3.Device=eth3
 DeviceList.Wireless.eth3.DeviceId=eth3
-DeviceList.Wireless.eth3.Domain=
-DeviceList.Wireless.eth3.HardwareAddress=
-DeviceList.Wireless.eth3.Hostname=
-DeviceList.Wireless.eth3.IP=
 DeviceList.Wireless.eth3.IPv6Init=False
-DeviceList.Wireless.eth3.Netmask=
+DeviceList.Wireless.eth3.NMControlled=False
 DeviceList.Wireless.eth3.OnBoot=False
 DeviceList.Wireless.eth3.Type=Wireless
 DeviceList.Wireless.eth3.Wireless.Channel=1
@@ -475,11 +485,11 @@ HardwareList.Modem.Modem0.Modem.ModemVolume=0
 HardwareList.Modem.Modem0.Name=Modem0
 HardwareList.Modem.Modem0.Status=configured
 HardwareList.Modem.Modem0.Type=Modem
-HardwareList.Token Ring.tr0.Card.ModuleName=olympic
-HardwareList.Token Ring.tr0.Description=olympic
-HardwareList.Token Ring.tr0.Name=tr0
-HardwareList.Token Ring.tr0.Status=configured
-HardwareList.Token Ring.tr0.Type=Token Ring
+HardwareList.TokenRing.tr0.Card.ModuleName=olympic
+HardwareList.TokenRing.tr0.Description=olympic
+HardwareList.TokenRing.tr0.Name=tr0
+HardwareList.TokenRing.tr0.Status=configured
+HardwareList.TokenRing.tr0.Type=TokenRing
 ProfileList.default.Active=False
 ProfileList.default.ActiveDevices.1=1net4you
 ProfileList.default.ActiveDevices.2=1net4you0
@@ -528,7 +538,6 @@ ProfileList.newprofile.HostsList.3.IP=10.1.1.1
 ProfileList.newprofile.ProfileName=newprofile
 """
         self.redirectEnd()
-
         self.failUnless(expectConf(devstr, expect))
 
     def test03Profile(self):

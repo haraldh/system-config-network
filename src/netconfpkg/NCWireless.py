@@ -18,8 +18,17 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 from netconfpkg import NC_functions
-from netconfpkg import Wireless_base # pylint: disable-msg=E0611
 import re
+from netconfpkg.gdt import Gdtstruct, gdtstruct_properties, Gdtstr                             
+
+class Wireless_base(Gdtstruct):
+    gdtstruct_properties([
+                          ('Mode', Gdtstr, "Test doc string"),
+                          ('EssId', Gdtstr, "Test doc string"),
+                          ('Channel', Gdtstr, "Test doc string"),
+                          ('Rate', Gdtstr, "Test doc string"),
+                          ('Key', Gdtstr, "Test doc string"),
+                          ])
 
 class Wireless(Wireless_base):
     keydict = { 'Mode' : 'MODE', 
@@ -33,16 +42,16 @@ class Wireless(Wireless_base):
         Wireless_base.__init__(self, clist, parent)
         self.Key = ''
 
-    def load(self, parentConf):
-        # pylint: disable-msg=E1101
+    def load(self, parentConf, deviceid):
+        
         conf = parentConf
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey]
+                setattr(self, selfkey, conf[confkey])
 
-        conf = NC_functions.ConfKeys(self.getParent().DeviceId)
+        conf = NC_functions.ConfKeys(deviceid)
         if conf.has_key("KEY"):
             self.Key = conf["KEY"]
         del conf
@@ -54,11 +63,11 @@ class Wireless(Wireless_base):
             self.Key = "0x" + self.Key
 
 
-    def save(self, parentConf):
-        # pylint: disable-msg=E1101
+    def save(self, parentConf, deviceid):
+        
         conf = parentConf
 
-        keyconf = NC_functions.ConfKeys(self.getParent().DeviceId)
+        keyconf = NC_functions.ConfKeys(deviceid)
         keyconf.fsf()
         if re.search("^\s*0x[0-9a-fA-F]+\s*$", self.Key):
             keyconf["KEY"] = self.Key[2:]
@@ -72,8 +81,8 @@ class Wireless(Wireless_base):
         # check, if the interface support RATE, FREQ, etc.
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
         if conf.has_key("KEY"):

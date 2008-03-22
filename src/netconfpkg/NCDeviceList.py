@@ -20,26 +20,27 @@
 import os
 import os.path
 import re
-from netconfpkg.NC_functions import _, log, ConfDevices, \
-    generic_longinfo_dialog, getDeviceType, \
-    getRoot, OLDSYSCONFDEVICEDIR, QETH, SYSCONFDEVICEDIR, \
-    updateNetworkScripts, getCHAPConf, getPAPConf, IPSEC, \
-    SYSCONFNETWORK, testFilename, unlink, WVDIALCONF
-from netconfpkg import DeviceList_base # pylint: disable-msg=E0611
+from netconfpkg.NC_functions import (_, log, ConfDevices,
+                                     generic_longinfo_dialog, getDeviceType,
+                                     getRoot, OLDSYSCONFDEVICEDIR, QETH, SYSCONFDEVICEDIR,
+                                     updateNetworkScripts, getCHAPConf, getPAPConf, IPSEC,
+                                     SYSCONFNETWORK, testFilename, unlink, WVDIALCONF)
+
+from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.conf import ConfSMB
-from netconfpkg.conf import Conf
+from netconfpkg.conf import ConfShellVar
+from netconfpkg.gdt import Gdtlist
+
+class DeviceList_base(Gdtlist):
+    pass
 
 class DeviceList(DeviceList_base):
-    def __init__(self, clist = None, parent = None):
-        DeviceList_base.__init__(self, clist, parent)
-
-
     def load(self):
         from netconfpkg.NCDevice import ConfDevice
         updateNetworkScripts()
 
-        self.__delslice__(0, len(self)) # pylint: disable-msg=E1101
+        self.__delslice__(0, len(self)) 
 
         df = getDeviceFactory()
         devdir = getRoot() + SYSCONFDEVICEDIR
@@ -89,7 +90,7 @@ class DeviceList(DeviceList_base):
             if devclass:
                 newdev = devclass()
                 newdev.load(dev)
-                self.append(newdev) # pylint: disable-msg=E1101
+                self.append(newdev) 
                 
 #                try:
 #                    newdev.load(dev)
@@ -98,15 +99,16 @@ class DeviceList(DeviceList_base):
 #                    generic_error_dialog (_("Error loading file %s\n%s") % (devdir + "/ifcfg-" + dev, str(e)), 
 #                                          dialog_type="error")
 #                else:
-#                    self.append(newdev) # pylint: disable-msg=E1101
+#                    self.append(newdev) 
                     
             else:
                 log.log(1, "NO DEVICE CLASS FOUND FOR %s" % dev)
-                i = self.addDevice() # pylint: disable-msg=E1101
-                self[i].load(dev)
+                d = Device()
+                self.append(d) 
+                d.load(dev)
 
-        self.commit(False) # pylint: disable-msg=E1101
-        self.setChanged(False) # pylint: disable-msg=E1101
+        self.commit() 
+        self.setChanged(False) 
 
         chdev = {}
         # the initscripts do not like '-'
@@ -129,7 +131,7 @@ class DeviceList(DeviceList_base):
                         prof.commit()
 
                 dev.DeviceId = newDeviceId
-                dev.commit(changed=False)
+                dev.commit()
                 dev.setChanged(False)
 
         if len(chdev.keys()):
@@ -142,13 +144,12 @@ class DeviceList(DeviceList_base):
     def addDeviceType(self, mtype):
         df = getDeviceFactory()
         devclass = df.getDeviceClass(mtype)
-        i = self.addDevice() # pylint: disable-msg=E1101
         if devclass:
             newdev = devclass()
-            self[i] = newdev
-#        else: # FIXME: !!
-#            raise TypeError
-        return self[i]
+            self.append(newdev)
+        else: # FIXME: !!
+            raise TypeError
+        return newdev
 
     def test(self):
         pass
@@ -156,18 +157,20 @@ class DeviceList(DeviceList_base):
     def __repr__(self):
         return repr(self.__dict__)
 
-    def _objToStr(self, parentStr = None): # pylint: disable-msg=W0613
-        #return DeviceList_base._objToStr(self, obj, parentStr)
-        retstr = ""
-        for dev in self:
-            # pylint: disable-msg=W0212
-            retstr += dev._objToStr("DeviceList.%s.%s" % (dev.Type,
-                                                          dev.DeviceId))
+    def tostr(self, prefix_string = None):
+        "returns a string in gdt representation"
+        #print "tostr %s " % prefix_string
+        if prefix_string == None:
+            prefix_string = self.__class__.__name__
+        mstr = ""
+        for value in self:
+            if isinstance(value, Device):
+                mstr += value.tostr("%s.%s.%s" 
+                                    % (prefix_string, value.Type, 
+                                       value.DeviceId))
+        return mstr
 
-        return retstr
-
-
-    def _parseLine(self, vals, value):
+    def fromstr(self, vals, value):
         if len(vals) <= 1:
             return
         if vals[0] == "DeviceList":
@@ -177,15 +180,15 @@ class DeviceList(DeviceList_base):
         for dev in self:
             if dev.DeviceId == vals[1]:
                 if dev.Type != vals[0]:                    
-                    self.pop(dev) # pylint: disable-msg=E1101
+                    self.pop(dev) 
                     log.log(1, "Deleting device %s" % vals[1] )
                     break
-                dev._parseLine(vals[2:], value) # pylint: disable-msg=W0212
+                dev.fromstr(vals[2:], value) # pylint: disable-msg=W0212
                 return
 
         dev = self.addDeviceType(vals[0])
         dev.DeviceId = vals[1]
-        dev._parseLine(vals[2:], value) # pylint: disable-msg=W0212
+        dev.fromstr(vals[2:], value)
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
@@ -194,9 +197,9 @@ class DeviceList(DeviceList_base):
         from netconfpkg.NCDevice import ConfDevice
         from types import DictType
         
-        self.commit(changed=True) # pylint: disable-msg=E1101
+        self.commit() 
 
-        nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
+        nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if len(self) > 0:
             nwconf["NETWORKING"] = "yes"
         nwconf.write()
@@ -304,20 +307,21 @@ class DeviceList(DeviceList_base):
         # we should have device specific gateways
         # fixed this way, until we have a way to mark the
         # default GATEWAY/GATEWAYDEV
-        cfg = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
+        cfg = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if cfg.has_key('GATEWAY'):
             del cfg['GATEWAY']
         if cfg.has_key('GATEWAYDEV'):
             del cfg['GATEWAYDEV']
         cfg.write()
 
-        self.commit(False) # pylint: disable-msg=E1101
-        self.setChanged(False) # pylint: disable-msg=E1101
+        self.commit() 
+        self.setChanged(False) 
 
 __DVList = None
 __DVList_root = getRoot()
 
 def getDeviceList(refresh = None):
+    # pylint: disable-msg=W0603
     global __DVList
     global __DVList_root
     if __DVList == None or refresh or \

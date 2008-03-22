@@ -17,7 +17,8 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.conf import Conf
+# pylint: disable-msg=W0603
+from netconfpkg.conf import ConfShellVar
 from netconfpkg.conf import ConfPAP
 from netconfpkg.log import LogFile
 from rhpl import ethtool
@@ -93,7 +94,7 @@ ISDN = 'ISDN'
 LO = 'Loopback'
 DSL = 'xDSL'
 WIRELESS = 'Wireless'
-TOKENRING = 'Token Ring'
+TOKENRING = 'TokenRing'
 IPSEC = 'IPSEC'
 QETH = 'QETH'
 HSI = 'HSI'
@@ -233,6 +234,24 @@ def request_rpms(pkgs = None):
                                   plist, dialog_type="info")
         return 1
     return 0
+
+def testHostname(hostname):
+    # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
+    if (len(hostname) - hostname.count('.')) < 256:
+        names = hostname.split('.')
+        # hostname with trailing dot
+        if not names[-1]:
+            names.pop()
+        pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
+        for name in names:
+            if len(name) < 64:
+                if not pattern.match(name):
+                    return False
+            else:
+                return False
+        return True
+    else:
+        return False
 
 def netmask_to_bits(netmask):
     vals = netmask.split(".")
@@ -456,9 +475,10 @@ def getModemList():
         return ModemList[:]
 
     import kudzu
-    res = kudzu.probe(kudzu.CLASS_MODEM, # pylint: disable-msg=E1101
-                      kudzu.BUS_UNSPEC, # pylint: disable-msg=E1101
-                      kudzu.PROBE_ALL)   # pylint: disable-msg=E1101
+    # pylint: disable-msg=E1101
+    res = kudzu.probe(kudzu.CLASS_MODEM, 
+                      kudzu.BUS_UNSPEC, 
+                      kudzu.PROBE_ALL)   
     ModemList = []
     if res != []:
         for v in res:
@@ -914,9 +934,9 @@ def prepareRoot(root):
             mkdir(root + "/" + mdir)
 
 
-class ConfKeys(Conf.ConfShellVar):
+class ConfKeys(ConfShellVar.ConfShellVar):
     def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'keys-' + name)
+        ConfShellVar.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'keys-' + name)
         self.chmod(0600)
 
 
@@ -945,7 +965,7 @@ def updateNetworkScripts(force = False):
     curr_prof = 'default'
     if not firsttime:
         # FIXME: [197781] catch exceptions
-        nwconf = Conf.ConfShellVar(getRoot() + SYSCONFNETWORK)
+        nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK)
         if nwconf.has_key('CURRENT_PROFILE'):
             curr_prof = nwconf['CURRENT_PROFILE']
 

@@ -119,7 +119,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         DeviceConfigDialog.dehydrate(self)
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         sharedtcpip.route_dehydrate (self.sharedtcpip_xml, self.device)
-        dialup = self.device.Dialup
+        dialup = self.device.createDialup()
 
         dialup.ProviderName = self.xml.get_widget("providerName").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
@@ -144,7 +144,7 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         dialup.Compression.CCP = self.xml.get_widget(\
             "cppCompressionCB").get_active()
 
-        dialup.PPPOptions = None
+        del dialup.PPPOptions
         dialup.createPPPOptions()
         clist = self.xml.get_widget("pppOptionList")
         for i in xrange (clist.rows):

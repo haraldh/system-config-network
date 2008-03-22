@@ -18,18 +18,45 @@
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NC_functions import MODEM, getHardwareType
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr,
+                            Gdtint)
 
 _hwModemDialog = None
 _hwModemWizard = None
 
 # FIXME: [177472] Speedtouch USB 330 modem not recognised
 
-class HwModem(Hardware):
-    def __init__(self, clist = None, parent = None):
-        Hardware.__init__(self, clist, parent)
-        self.Type = MODEM
-        self.createModem() # pylint: disable-msg=E1101
+class Modem(Gdtstruct):
+    gdtstruct_properties([
+                          ('DeviceName', Gdtstr, "Test doc string"),
+                          ('BaudRate', Gdtint, "Test doc string"),
+                          ('FlowControl', Gdtstr, "Test doc string"),
+                          ('ModemVolume', Gdtint, "Test doc string"),
+                          ('DialCommand', Gdtstr, "Test doc string"),
+                          ('InitString', Gdtstr, "Test doc string"),
+                          ])
+    def __init__(self):
+        super(Modem, self).__init__()
+        self.DeviceName = None
+        self.BaudRate = None
+        self.FlowControl = None
+        self.ModemVolume = None
+        self.DialCommand = None
+        self.InitString = None
 
+class HwModem(Hardware):
+    gdtstruct_properties([
+                          ('Modem', Modem, "Test doc string"),
+                          ])
+
+    def __init__(self):
+        super(HwModem, self).__init__()
+        self.Modem = Modem()
+        self.Type = MODEM
+        
+    def createModem(self):
+        return self.Modem
+    
     def getDialog(self):
         if _hwModemDialog == None: return None
         return _hwModemDialog(self).xml.get_widget("Dialog")
@@ -46,7 +73,7 @@ class HwModem(Hardware):
 
     def save(self, *args, **kwargs): # pylint: disable-msg=W0613
         from netconfpkg.NCHardwareList import getMyWvDial
-        # pylint: disable-msg=E1101
+        
         wvdial = getMyWvDial(create_if_missing = True)
         wvdial[self.Name]['Modem'] = self.Modem.DeviceName
         wvdial[self.Name]['Baud'] = str(self.Modem.BaudRate)
@@ -62,11 +89,11 @@ class HwModem(Hardware):
         wvdial[self.Name]['FlowControl'] = str(self.Modem.FlowControl)
 
 def setHwModemDialog(dialog):
-    global _hwModemDialog
+    global _hwModemDialog  # pylint: disable-msg=W0603
     _hwModemDialog = dialog
 
 def setHwModemWizard(wizard):
-    global _hwModemWizard
+    global _hwModemWizard  # pylint: disable-msg=W0603
     _hwModemWizard = wizard
 
 def register_plugin():

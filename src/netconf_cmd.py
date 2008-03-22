@@ -39,10 +39,13 @@ import os
 import os.path
 from netconfpkg import Control
 from netconfpkg import NC_functions
-from netconfpkg.genClass import ParseError
+#from netconfpkg.genClass import ParseError
 from version import PRG_VERSION
 
 PROGNAME='system-config-network'
+
+class ParseError(Exception):
+    pass
 
 import locale
 from rhpl.translate import _, textdomain_codeset
@@ -123,16 +126,16 @@ def Usage():
 
 def main(mcmdline):
     from netconfpkg.NCDeviceList import getDeviceList
-    from netconfpkg.NCHardwareList import getHardwareList
-    from netconfpkg.NCProfileList import getProfileList
+    from netconfpkg.NCHardwareList import getHardwareList               
     from netconfpkg.NCIPsecList import getIPsecList
+    from netconfpkg.NCProfileList import getProfileList
     from netconfpkg.NC_functions import log
 
     signal.signal (signal.SIGINT, signal.SIG_DFL)
     class BadUsage(Exception):
         pass
 
-    progname = os.path.basename(sys.argv[0])
+    #progname = os.path.basename(sys.argv[0])
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
 
@@ -146,13 +149,12 @@ def main(mcmdline):
     mode = EXPORT
     filename = None
     clear = 0
-    mlist = 0
     chroot = None
     debug = None
     devlists = []
 
     try:
-        opts, args = getopt.getopt(mcmdline, "asp:?r:dhvtief:co",
+        opts = getopt.getopt(mcmdline, "asp:?r:dhvtief:co",
                                    [
                                     "activate",
                                     "profile=",
@@ -168,7 +170,7 @@ def main(mcmdline):
                                     "debug",
                                     "hardwarelist",
                                     "ipseclist",
-                                    "profilelist"])
+                                    "profilelist"])[0]
         for opt, val in opts:
             if opt == '-r' or opt == '--root':                
                 chroot = val
@@ -179,7 +181,7 @@ def main(mcmdline):
         pass
 
     try:
-        opts, args = getopt.getopt(mcmdline, "asp:?r:dhvtief:co",
+        opts = getopt.getopt(mcmdline, "asp:?r:dhvtief:co",
                                    [
                                     "activate",
                                     "profile=",
@@ -195,7 +197,7 @@ def main(mcmdline):
                                     "debug",
                                     "hardwarelist",
                                     "ipseclist",
-                                    "profilelist"])
+                                    "profilelist"])[0]
         for opt, val in opts:
             if opt == '-d' or opt == '--devicelist':
                 devlists.append(getDeviceList())
@@ -321,7 +323,7 @@ def main(mcmdline):
                     vals = key.split(".")
                     if devlistsdict.has_key(vals[0]):
                         # pylint: disable-msg=W0212
-                        devlistsdict[vals[0]]._parseLine(vals, value)
+                        devlistsdict[vals[0]].fromstr(vals, value)
                     else:
                         sys.stderr.write(_("Unknown List %s\n", vals[0]))
                         raise ParseError

@@ -26,10 +26,9 @@ _hwEthernetWizard = None
 class HwWireless(Hardware):
     "Wireless Hardware Device Class"
 
-    def __init__(self, mlist = None, parent = None):
-        Hardware.__init__(self, mlist, parent)
+    def __init__(self):
+        super(HwWireless, self).__init__(self)
         self.Type = WIRELESS
-        self.createCard() # pylint: disable-msg=E1101
 
     def getDialog(self):
         """

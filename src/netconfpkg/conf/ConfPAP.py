@@ -21,7 +21,7 @@ import re
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-import Conf
+from . import Conf # pylint: disable-msg=W0403
 
 class ConfPAP(Conf.Conf):
     __beginline = '####### system-config-network will overwrite this part!!! (begin) ##########'
@@ -59,6 +59,7 @@ class ConfPAP(Conf.Conf):
         self.line = self.__beginlineplace
 
     def initvars(self):
+        # pylint: disable-msg=W0201
         self.vars = {}
         self.__beginlineplace = 0
         self.__endlineplace = 0
@@ -255,19 +256,3 @@ class ConfPAP(Conf.Conf):
 
     def keys(self):
         return self.vars.keys()
-
-if __name__ == '__main__':
-    pap = ConfPAP("/etc/ppp/pap-secrets")
-    for key in pap.keys():
-        print key + ' ' + str(pap[key])
-        del pap[key]
-
-    pap['test1'] = 'pappasswd1'
-    pap['test2'] = 'pappasswd2'
-    pap['test3'] = 'pappasswd3'
-    pap[['test3', 'testserver']] = 'pappasswd3'
-
-
-    print pap.lines
-
-    pap.write()

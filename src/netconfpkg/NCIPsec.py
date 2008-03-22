@@ -15,18 +15,63 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import IPsec_base # pylint: disable-msg=E0611
-from netconfpkg.NC_functions import _, getRoot, SYSCONFDEVICEDIR, generic_run_dialog, \
-    bits_to_netmask, ConfKeys, \
-    netmask_to_bits, rename
-from netconfpkg.conf import Conf
+from netconfpkg.NC_functions import (_, getRoot, SYSCONFDEVICEDIR, 
+                                     generic_run_dialog,
+                                     bits_to_netmask, ConfKeys,
+                                     netmask_to_bits, rename)
+
+from netconfpkg.conf import ConfShellVar
 import netconfpkg
 import os
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr, Gdtbool)
 
-
-class ConfIPsec(Conf.ConfShellVar):
+class IPsec_base(Gdtstruct):
+    gdtstruct_properties([
+                          ('Address', Gdtstr, "Test doc string"),
+                          ('ConnectionType', Gdtstr, "Test doc string"),
+                          ('EncryptionMode', Gdtstr, "Test doc string"),
+                          ('LocalNetwork', Gdtstr, "Test doc string"),
+                          ('LocalNetmask', Gdtstr, "Test doc string"),
+                          ('LocalGateway', Gdtstr, "Test doc string"),
+                          ('RemoteNetwork', Gdtstr, "Test doc string"),
+                          ('RemoteNetmask', Gdtstr, "Test doc string"),
+                          ('RemoteGateway', Gdtstr, "Test doc string"),
+                          ('RemoteIPAddress', Gdtstr, "Test doc string"),
+                          ('SPI_AH_IN', Gdtstr, "Test doc string"),
+                          ('SPI_AH_OUT', Gdtstr, "Test doc string"),
+                          ('SPI_ESP_IN', Gdtstr, "Test doc string"),
+                          ('SPI_ESP_OUT', Gdtstr, "Test doc string"),
+                          ('AHKey', Gdtstr, "Test doc string"),
+                          ('ESPKey', Gdtstr, "Test doc string"),
+                          ('IKEKey', Gdtstr, "Test doc string"),
+                          ('OnBoot', Gdtbool, "Test doc string"),
+                          ])
+    
+    def __init__(self):
+        super(IPsec_base, self).__init__()
+        self.Address = None
+        self.ConnectionType = None
+        self.EncryptionMode = None
+        self.LocalNetwork = None
+        self.LocalNetmask = None
+        self.LocalGateway = None
+        self.RemoteNetwork = None
+        self.RemoteNetmask = None
+        self.RemoteGateway = None
+        self.RemoteIPAddress = None
+        self.SPI_AH_IN = None
+        self.SPI_AH_OUT = None
+        self.SPI_ESP_IN = None
+        self.SPI_ESP_OUT = None
+        self.AHKey = None
+        self.ESPKey = None
+        self.IKEKey = None
+        self.OnBoot = None
+        
+    
+class ConfIPsec(ConfShellVar.ConfShellVar):
     def __init__(self, name):
-        Conf.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'ifcfg-' + name)
+        ConfShellVar.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'ifcfg-' + name)
         self.chmod(0644)
 
 class IPsec(IPsec_base):
@@ -64,23 +109,23 @@ class IPsec(IPsec_base):
         for selfkey in self.ipsec_entries.keys():
             confkey = self.ipsec_entries[selfkey]
             if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey] or None
+                setattr(self, selfkey, conf[confkey]) or None
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
-                    self.__dict__[selfkey] = True
+                    setattr(self, selfkey, True)
                 else:
-                    self.__dict__[selfkey] = False
+                    setattr(self, selfkey, False)
             elif not self.__dict__.has_key(selfkey):
-                self.__dict__[selfkey] = False
+                setattr(self, selfkey, False)
 
         conf = ConfKeys(name)
         for selfkey in self.key_entries.keys():
             confkey = self.key_entries[selfkey]
             if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey] or None
+                setattr(self, selfkey, conf[confkey]) or None
 
         if conf.has_key("IKE_PSK") and conf["IKE_PSK"]:
             self.EncryptionMode = "auto"
@@ -107,7 +152,7 @@ class IPsec(IPsec_base):
 
         self.oldname = self.IPsecId
 
-        self.commit(changed=False) # pylint: disable-msg=E1101
+        self.commit(changed=False) 
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
@@ -115,7 +160,7 @@ class IPsec(IPsec_base):
 
         # Just to be safe...
         os.umask(0022)
-        self.commit() # pylint: disable-msg=E1101
+        self.commit() 
 
         if self.oldname and (self.oldname != self.IPsecId):
             for prefix in [ 'ifcfg-', 'keys-' ]:
@@ -128,15 +173,15 @@ class IPsec(IPsec_base):
         conf = ConfIPsec(self.IPsecId)
         conf.fsf()
         conf["TYPE"] = "IPSEC"
-        conf["DST"] = self.RemoteIPAddress # pylint: disable-msg=E1101
+        conf["DST"] = self.RemoteIPAddress 
 
         if self.ConnectionType == "Net2Net":
             conf["SRCNET"] = self.LocalNetwork + "/" + \
                              str(netmask_to_bits(self.LocalNetmask))
             conf["DSTNET"] = self.RemoteNetwork + "/" + \
                              str(netmask_to_bits(self.RemoteNetmask))
-            conf["SRCGW"] = self.LocalGateway # pylint: disable-msg=E1101
-            conf["DSTGW"] = self.RemoteGateway # pylint: disable-msg=E1101
+            conf["SRCGW"] = self.LocalGateway 
+            conf["DSTGW"] = self.RemoteGateway 
         else:
             for key in ["SRCNET", "DSTNET", "SRCGW", "DSTGW"]:
                 del conf[key]
@@ -152,14 +197,14 @@ class IPsec(IPsec_base):
 
             for selfkey in spi_entries.keys():
                 confkey = spi_entries[selfkey]
-                if self.__dict__[selfkey]:
-                    conf[confkey] = str(self.__dict__[selfkey])
+                if hasattr(self, selfkey):
+                    conf[confkey] = getattr(self, selfkey)
                 else: conf[confkey] = ""
 
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey]:
+            if hasattr(self, selfkey):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
@@ -170,8 +215,8 @@ class IPsec(IPsec_base):
         conf.fsf()
         for selfkey in self.key_entries.keys():
             confkey = self.key_entries[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: del conf[confkey]
 
         conf.write()

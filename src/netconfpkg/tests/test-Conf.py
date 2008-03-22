@@ -49,7 +49,7 @@ c\td
 """
         # read
         writeConf(self.filename, str)
-        from netconfpkg.conf import Conf        
+        from netconfpkg.conf import Conf
         conf = Conf.Conf(self.filename)
         os.unlink(self.filename)
         # write
@@ -74,8 +74,8 @@ c=d
 """
         # read
         writeConf(self.filename, str)
-        from netconfpkg.conf import Conf
-        conf = Conf.ConfShellVar(self.filename)
+        from netconfpkg.conf import ConfShellVar
+        conf = ConfShellVar.ConfShellVar(self.filename)
         os.unlink(self.filename)
         # modify
         conf["a"] = "e"
@@ -126,8 +126,8 @@ alias foo* bar
 """
         # read
         writeConf(self.filename, str)
-        from netconfpkg.conf import Conf
-        conf = Conf.ConfModules(self.filename)
+        from netconfpkg.conf.ConfModules import ConfModules
+        conf = ConfModules(self.filename)
         os.unlink(self.filename)
         # write
         conf.write()
@@ -170,8 +170,8 @@ alias foo* bar
 """
         # read
         writeConf(self.filename, str)
-        from netconfpkg.conf import Conf
-        conf = Conf.ConfModules(self.filename)
+        from netconfpkg.conf.ConfModules import ConfModules
+        conf = ConfModules(self.filename)
         os.unlink(self.filename)
         # modify
         conf["eth3"]["alias"] = "3c59xaaa"

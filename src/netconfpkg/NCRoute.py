@@ -1,42 +1,54 @@
-from netconfpkg import Route_base # pylint: disable-msg=E0611
 import re
 
-class Route(Route_base):
-    def __init__(self, *args, **kwargs):
-        Route_base.__init__(self, *args, **kwargs)
-        
-    def testIP(self, value):
-        ip_pattern = r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
-        if re.match(ip_pattern,value):
-            return True
-        else:
-            return False
-            
-    def test(self):
-        # pylint: disable-msg=E1101
-        all_ok = self.testAddress(self.Address)
-        all_ok &= self.testGateway(self.Gateway)
-        all_ok &= self.testNetmask(self.Netmask)
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr)
+
+class Route_base(Gdtstruct):
+    gdtstruct_properties([
+                          ('Address', Gdtstr, "Test doc string"),
+                          ('Netmask', Gdtstr, "Test doc string"),
+                          ('Gateway', Gdtstr, "Test doc string"),
+                          ('GatewayDevice', Gdtstr, "Test doc string"),
+                          ])
+    def __init__(self):
+        super(Route_base, self).__init__()
+        self.Address = None
+        self.Netmask = None
+        self.Gateway = None
+        self.GatewayDevice = None
+
+def testIP(value):
+    # FIXME: split, then check for range
+    ip_pattern = r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
+    if re.match(ip_pattern,value):
+        return True
+    else:
+        return False
+
+
+class Route(Route_base):                   
+    def test(self):        
+        all_ok = super(Route, self).test()
         if not(all_ok):
             raise ValueError
         return True
 
-    def testAddress(self, value):
-        return self.testIP(value)
+    def testAddress(self):
+        return testIP(self.Address)
 
-    def testGateway(self, value):
-        if value == "":
+    def testGateway(self):
+        "check for consistency"
+        if not self.Gateway:
             return True
         else: 
-            return self.testIP(value)
+            return testIP(self.Gateway)
 
-    def testGatewayDevice(self, value):
-        # check for consistency
-        return True
+#    def testGatewayDevice(self, value):
+#        "check for consistency"
+#        return True
 
-    def testNetmask(self, value):
-        # check for consistency
-        if value == "":
+    def testNetmask(self):
+        "check for consistency"
+        if not self.Netmask:
             return True
         else: 
-            return self.testIP(value)
+            return testIP(self.Netmask)

@@ -148,10 +148,11 @@ def __exception_window(title, text, component_name):
     info = gtk.Label(txt)
     info.set_line_wrap(True)
     hbox.pack_start (scw, True)
-    win.vbox.pack_start (info, False) # pylint: disable-msg=E1101
-    win.vbox.pack_start (hbox, True)  # pylint: disable-msg=E1101
-    win.vbox.set_border_width(12)     # pylint: disable-msg=E1101
-    win.vbox.set_spacing(12)          # pylint: disable-msg=E1101
+    # pylint: disable-msg=E1101
+    win.vbox.pack_start (info, False) 
+    win.vbox.pack_start (hbox, True)  
+    win.vbox.set_border_width(12)     
+    win.vbox.set_spacing(12)          
     win.set_size_request (500, 300)
     win.set_position (gtk.WIN_POS_CENTER)
     #contents = win.get_children()[0]
@@ -200,7 +201,7 @@ def action(what):
     """Describe what you want to do actually.
     what - string
     """
-    global __ACTION_STR
+    global __ACTION_STR # pylint: disable-msg=W0603
     __ACTION_STR = what
 
 __ERROR_STR = ""
@@ -208,7 +209,7 @@ def error(what):
     """Describe what went wrong with a userfriendly text.
     what - string
     """
-    global __ERROR_STR
+    global __ERROR_STR # pylint: disable-msg=W0603
     __ERROR_STR = what
 
 __EXITCODE = 10
@@ -217,7 +218,7 @@ def exitcode(num):
     sys.exit().
     num - int(exitcode)
     """
-    global __EXITCODE
+    global __EXITCODE # pylint: disable-msg=W0603
     __EXITCODE = int(num)
 
 #
@@ -244,7 +245,7 @@ def handleMyException((etype, value, tb), progname, version,
         sys.exit(__EXITCODE)
 
     # restore original exception handler
-    sys.excepthook = sys.__excepthook__ # pylint: disable-msg=E1101
+    sys.excepthook = sys.__excepthook__  # pylint: disable-msg=E1101
 
     import os.path
     import md5

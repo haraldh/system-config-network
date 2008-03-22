@@ -11,7 +11,7 @@ PYTHON_FILES = \
 	Conf.py \
 	ConfShellVar.py \
 	ConfSMB.py \
-	ConfSysctl.py \
+	ConfSysctl.py 
 
 EXTRA_DIST = $(PYTHON_FILES)
 

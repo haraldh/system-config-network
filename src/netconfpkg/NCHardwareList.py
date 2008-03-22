@@ -22,15 +22,17 @@ import glob
 
 from rhpl import ethtool
 from netconfpkg import NCisdnhardware
-from netconfpkg import HardwareList_base # pylint: disable-msg=E0611
-from netconfpkg.NCHardware import HW_CONF, HW_SYSTEM, HW_OK 
-from netconfpkg.NC_functions import _, getRoot, HWCONF, NETCONFDIR, WVDIALCONF, \
-    log, ISDN, MODEM, CRTSCTS, ETHERNET, QETH, \
-    getDeviceType, TOKENRING, WIRELESS, MODULESCONF, getTestEnv
-from netconfpkg.conf.Conf import Conf, ConfModInfo, FileMissing, \
-    VersionMismatch, ConfModules
+from netconfpkg.NCHardware import HW_CONF, HW_SYSTEM, HW_OK, Card, Hardware
+from netconfpkg.NC_functions import (_, getRoot, HWCONF, NETCONFDIR, WVDIALCONF,
+                                     log, ISDN, MODEM, CRTSCTS, ETHERNET, QETH,
+                                     getDeviceType, TOKENRING, WIRELESS, 
+                                     MODULESCONF, getTestEnv)
+from netconfpkg.conf.Conf import (Conf, FileMissing,
+                                  VersionMismatch)
+from netconfpkg.conf.ConfModules import (ConfModInfo, VersionMismatch, ConfModules)
 from netconfpkg.conf.ConfSMB import ConfSMB
 from rhpl.executil import execWithCapture
+from netconfpkg.gdt import Gdtlist
 
 ModInfo = None
 __isdnmodulelist = []
@@ -58,6 +60,7 @@ except:
 
 
 def getModInfo():
+    # pylint: disable-msg=W0603
     global ModInfo
     
     if getTestEnv():
@@ -143,6 +146,7 @@ _MyConfModules = None
 _MyConfModules_root = getRoot()
 
 def getMyConfModules(refresh = None):
+    # pylint: disable-msg=W0603
     global _MyConfModules
     global _MyConfModules_root
 
@@ -156,6 +160,7 @@ _MyWvDial = None
 _MyWvDial_root = getRoot()
 
 def getMyWvDial(create_if_missing = None):
+    # pylint: disable-msg=W0603
     global _MyWvDial
     global _MyWvDial_root
 
@@ -215,6 +220,9 @@ class ConfHWConf(Conf):
     def keys(self):
         return self.vars.keys()
 
+class HardwareList_base(Gdtlist):
+    pass
+
 class HardwareList(HardwareList_base):
     s390devs = { 
                  "lcs" : "lcs" ,
@@ -224,22 +232,23 @@ class HardwareList(HardwareList_base):
                  "tr" : "qeth",
                  }
 
-    def __init__(self, clist = None, parent = None):
-        HardwareList_base.__init__(self, clist, parent)
+    def __init__(self):
+        HardwareList_base.__init__(self)
         # FIXME: [198070] use modinfo to determine options
         self.keydict = { }
 
     def addHardware(self, mtype = None):
         from netconfpkg.NCHardwareFactory import getHardwareFactory
-        i = HardwareList_base.addHardware(self)
+#        i = HardwareList_base.addHardware(self)
+        
         hwf = getHardwareFactory()
         hwc = hwf.getHardwareClass(mtype)
         if hwc:
             newhw = hwc()
-            self[i] = newhw
+            self.append(newhw)
 #        else: # FIXME: !!
 #            raise TypeError
-        return i
+        return len(self)-1
 
     def updateFromKudzu(self):
         import kudzu
@@ -255,9 +264,10 @@ class HardwareList(HardwareList_base):
         # Read from kudzu
         #
         kudzulist = []
-        kudzulist.extend(kudzu.probe(kudzu.CLASS_NETWORK, # pylint: disable-msg=E1101 
-                                     kudzu.BUS_UNSPEC,    # pylint: disable-msg=E1101
-                                     kudzu.PROBE_SAFE))   # pylint: disable-msg=E1101
+        # pylint: disable-msg=E1101
+        kudzulist.extend(kudzu.probe(kudzu.CLASS_NETWORK,  
+                                     kudzu.BUS_UNSPEC,    
+                                     kudzu.PROBE_SAFE))   
         for kudzu_device in kudzulist:
             if not kudzu_device.device and kudzu_device.driver:
                 if (kudzu_device.driver + '.o' in __isdnmodulelist) or \
@@ -340,16 +350,16 @@ class HardwareList(HardwareList_base):
                 i = self.addHardware(hwtype)
                 hw = self[i]
                 if kudzu_device.desc.find ("|") != -1:
-                    (mfg, desc) = kudzu_device.desc.split("|")
+                    desc = kudzu_device.desc.split("|")[1]
                 else:
-                    mfg = _("Unknown")
+                    #mfg = _("Unknown")
                     desc = kudzu_device.desc
                 
                 hw.Name = dev
                 hw.Type = hwtype
                 hw.Description = desc
                 hw.Status = HW_OK
-                hw.createCard()
+                hw.Card = Card()
                 hw.Card.ModuleName = module
 
                 for selfkey in self.keydict.keys():
@@ -357,13 +367,13 @@ class HardwareList(HardwareList_base):
                     if modules[hw.Card.ModuleName] and \
                            modules[hw.Card.ModuleName]['options'].\
                            has_key(confkey):
-                        hw.Card.__dict__[selfkey] = modules[\
-                               hw.Card.ModuleName]['options'][confkey]
+                        setattr(hw.Card, selfkey, modules[\
+                               hw.Card.ModuleName]['options'][confkey])
                 hw.setChanged(True)
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
-            self.remove(h) # pylint: disable-msg=E1101
+            self.remove(h) 
 
         del hdellist
         
@@ -403,7 +413,7 @@ class HardwareList(HardwareList_base):
             for h in self:
                 if h.Name == device:
                     break
-
+            # pylint: disable-msg=W0631
             if h and h.Name == device and h.Status != HW_SYSTEM:
                 continue
 
@@ -435,7 +445,7 @@ class HardwareList(HardwareList_base):
                         hw.Description = mod
                         hw.Status = HW_SYSTEM
                         hw.Type = hwtype
-                        hw.createCard()
+                        hw.Card = Card()
                         hw.Card.ModuleName = mod
                         if modinfo:
                             for info in modinfo.keys():
@@ -449,10 +459,8 @@ class HardwareList(HardwareList_base):
                             if modules[hw.Card.ModuleName] and \
                                     modules[hw.Card.ModuleName]\
                                     ['options'].has_key(confkey):
-                                hw.Card.__dict__[selfkey] = modules[hw.Card.\
-                                                                        ModuleName]\
-                                                                        ['options']\
-                                                                        [confkey]
+                                setattr(hw.Card, selfkey, 
+                                        modules[hw.Card.ModuleName]['options'][confkey])
                         hw.setChanged(True)
 
         return hdellist
@@ -479,7 +487,7 @@ class HardwareList(HardwareList_base):
                         log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
                 else:
                     hw.Status = HW_SYSTEM
-                    self.append(hw) # pylint: disable-msg=E1101
+                    self.append(hw) 
                     hw.setChanged(True)        
 
         return hdellist
@@ -517,7 +525,7 @@ class HardwareList(HardwareList_base):
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
-            self.remove(h) # pylint: disable-msg=E1101
+            self.remove(h) 
 
         del hdellist
 
@@ -543,7 +551,7 @@ class HardwareList(HardwareList_base):
             for h in self:
                 if h.Name == mod:
                     break
-
+            # pylint: disable-msg=W0631
             if h and h.Name == mod:
                 continue
 
@@ -552,7 +560,7 @@ class HardwareList(HardwareList_base):
             hw.Name = mod
             hw.Description = module
             hw.Type = mtype
-            hw.createCard()
+            hw.Card = Card()
             hw.Card.ModuleName = module
             hw.Status = HW_CONF
             if module and modinfo:
@@ -565,20 +573,23 @@ class HardwareList(HardwareList_base):
                 confkey = self.keydict[selfkey]
                 if modules[hw.Card.ModuleName] and \
                        modules[hw.Card.ModuleName]['options'].has_key(confkey):
-                    hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]\
-                                                ['options'][confkey]
+                    setattr(hw.Card, selfkey, 
+                            modules[hw.Card.ModuleName]['options'][confkey])
 
+    def tostr(self, prefix_string = None):
+        "returns a string in gdt representation"
+        #print "tostr %s " % prefix_string
+        if prefix_string == None:
+            prefix_string = self.__class__.__name__
+        mstr = ""
+        for value in self:
+            if isinstance(value, Hardware):
+                mstr += value.tostr("%s.%s.%s" 
+                                    % (prefix_string, value.Type, 
+                                       value.Name))
+        return mstr
 
-    def _objToStr(self, parentStr = None):
-        retstr = ""
-        for dev in self:
-            # pylint: disable-msg=W0212
-            retstr += dev._objToStr("HardwareList.%s.%s" % (dev.Type,
-                                                            dev.Name))
-
-        return retstr
-
-    def _parseLine(self, vals, value):
+    def fromstr(self, vals, value):
         if len(vals) <= 1:
             return
         if vals[0] == "HardwareList":
@@ -588,23 +599,23 @@ class HardwareList(HardwareList_base):
         for dev in self:
             if dev.Name == vals[1]:
                 if dev.Type != vals[0]:
-                    self.remove(dev) # pylint: disable-msg=E1101
+                    self.remove(dev) 
                     log.log(1, "Deleting device %s" % vals[1] )
                     break
-                dev._parseLine(vals[2:], value) # pylint: disable-msg=W0212
+                dev.fromstr(vals[2:], value) # pylint: disable-msg=W0212
                 return
         log.log(4, "Type = %s, Name = %s" % (vals[0], vals[1]))
         i = self.addHardware(vals[0])
         dev = self[i]
         dev.Name = vals[1]
-        dev._parseLine(vals[2:], value)  # pylint: disable-msg=W0212
+        dev.fromstr(vals[2:], value)  # pylint: disable-msg=W0212
 
 
     def load(self):
         #hwconf = ConfHWConf()
 
         # first clear the list
-        self.__delslice__(0, len(self)) # pylint: disable-msg=E1101
+        self.__delslice__(0, len(self)) 
 
         # FIXME: move HW detection to NCDev*
         dosysupdate=True
@@ -630,7 +641,7 @@ class HardwareList(HardwareList_base):
                 hw.Description = isdncard.Description
                 hw.Type = ISDN
                 hw.Status = HW_CONF
-                hw.createCard()
+                hw.Card = Card()
                 hw.Card.ModuleName = isdncard.ModuleName
                 hw.Card.Type = isdncard.Type
                 hw.Card.IoPort = isdncard.IoPort
@@ -690,11 +701,11 @@ class HardwareList(HardwareList_base):
                     wvdial[dev]['FlowControl'] = CRTSCTS
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
-        self.commit(changed=False) # pylint: disable-msg=E1101
-        self.setChanged(False) # pylint: disable-msg=E1101
+        self.commit(changed=False) 
+        self.setChanged(False) 
 
     def save(self):
-        self.commit(changed=True) # pylint: disable-msg=E1101
+        self.commit(changed=True) 
 
         modules = getMyConfModules(refresh = True)
 
@@ -750,13 +761,14 @@ class HardwareList(HardwareList_base):
         if wvdial:
             wvdial.write()
 
-        self.commit(changed=False) # pylint: disable-msg=E1101
-        self.setChanged(False) # pylint: disable-msg=E1101
+        self.commit(changed=False) 
+        self.setChanged(False) 
 
 __HWList = None
 __HWList_root = getRoot()
 
 def getHardwareList(refresh = None):
+    # pylint: disable-msg=W0603
     global __HWList
     global __HWList_root
 
@@ -777,7 +789,7 @@ def getNextDev(base):
         else:
             # no card seems to use this
             break
-
+    # pylint: disable-msg=W0631
     return base + str(num)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

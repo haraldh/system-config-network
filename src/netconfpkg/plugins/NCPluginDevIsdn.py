@@ -17,30 +17,40 @@
 
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import _, ISDN, generic_run_dialog,\
-    getDeviceType
+from netconfpkg.NC_functions import (_, ISDN, generic_run_dialog,
+                                     getDeviceType)
+from netconfpkg.gdt import gdtstruct_properties
 
-import netconfpkg
+from netconfpkg.NCDialup import IsdnDialup
 
 _devIsdnDialog = None
 _devIsdnWizard = None
 
 class DevIsdn(Device):
-    def __init__(self, clist = None, parent = None):
-        Device.__init__(self, clist, parent)
+    gdtstruct_properties([
+                          ('Dialup', IsdnDialup, "Test doc string"),
+                          ])
+    
+    def __init__(self):
+        super(DevIsdn, self).__init__()
         self.Type = ISDN
-        self.Dialup = netconfpkg.NCDialup.IsdnDialup(None, self)
+        self.Dialup = IsdnDialup()
 
-    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
-        name = args[0]
-        conf = ConfDevice(name)
+    def load(self, name): # pylint: disable-msg=W0613
         Device.load(self, name)
-        self.Dialup.load(conf)
+        conf = ConfDevice(name)
+        self.Dialup.load(conf, self)
+        
+    def save(self):
+        super(DevIsdn, self).save()
+        conf = ConfDevice(self.DeviceId)
+        self.Dialup.save(conf, self.DeviceId, self.oldname)
+        conf.write()        
 
     def createDialup(self):
         if (self.Dialup == None) \
-               or not isinstance(self.Dialup, netconfpkg.NCDialup.IsdnDialup):
-            self.Dialup = netconfpkg.NCDialup.IsdnDialup(None, self)
+               or not isinstance(self.Dialup, IsdnDialup):
+            self.Dialup = IsdnDialup()
         return self.Dialup
 
     def getDialog(self):
@@ -113,11 +123,11 @@ class DevIsdn(Device):
         return ret, msg
 
 def setDevIsdnDialog(dialog):
-    global _devIsdnDialog
+    global _devIsdnDialog  # pylint: disable-msg=W0603
     _devIsdnDialog = dialog
 
 def setDevIsdnWizard(wizard):
-    global _devIsdnWizard
+    global _devIsdnWizard  # pylint: disable-msg=W0603
     _devIsdnWizard = wizard
 
 def register_plugin():

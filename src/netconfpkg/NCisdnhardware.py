@@ -20,9 +20,8 @@
 import os
 
 import commands
-import sys
 from netconfpkg.NC_functions import getRoot, ISDNCARDCONF, log
-from netconfpkg.conf import Conf
+from netconfpkg.conf import ConfShellVar
 
 TYPE = 0
 IRQ = 1
@@ -131,11 +130,11 @@ class ConfISDN:
         if not os.path.exists(f):
             return -1
 
-        mconf = Conf.ConfShellVar(filename = f)
+        mconf = ConfShellVar.ConfShellVar(filename = f)
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if mconf.has_key(confkey):
-                self.__dict__[selfkey] = mconf[confkey]
+                setattr(self, selfkey, mconf[confkey])
 
         log.log(5, "RESOURCES=%s" % self.Resources)
 
@@ -173,7 +172,7 @@ class ConfISDN:
                 os.unlink(f)
             return
 
-        conf = Conf.ConfShellVar(filename = f)
+        conf = ConfShellVar.ConfShellVar(filename = f)
 
         rs = ""
         if self.Type:
@@ -204,8 +203,8 @@ class ConfISDN:
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
 
@@ -249,7 +248,6 @@ class ConfISDN:
                     return {i : _card[i]}
 
     def get_resource(self, name):
-        global _card
         if _card.has_key(name):
             # FIXME: remove Cardinfo
             self.Description = name
@@ -264,34 +262,6 @@ class ConfISDN:
             self.DriverId = _card[name][DRIVER_ID]
             self.Firmware = _card[name][FIRMWARE]
             self.ModuleName = _card[name][MODUL]
-
-
-if __name__ == "__main__":
-    mconf = ConfISDN()
-    if mconf.load() < 0:
-        new_card = mconf.detect()
-        if new_card:
-            mconf.get_resource(new_card.keys()[0])
-        else:
-            print "not found:"
-            sys.exit(0)
-
-    print "Channel Protocol:", mconf.ChannelProtocol
-    print "Name:", mconf.Description
-    print "Type:", mconf.Type
-    print "Irq:", mconf.IRQ
-    print "Io:", mconf.IoPort
-    print "Io1:", mconf.IoPort1
-    print "Io2:", mconf.IoPort2
-    print "Mem:", mconf.Mem
-    print "Vendor ID:", mconf.VendorId
-    print "Device ID:", mconf.DeviceId
-    print "Driver ID:", mconf.DriverId
-    print "Firmware:", mconf.Firmware
-    print "Modul:", mconf.ModuleName
-    del mconf
-    del new_card
-
 
 __author__ = "Than Ngo <than@redhat.com>"
 

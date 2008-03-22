@@ -130,8 +130,8 @@ class providerDialog:
         self.dbtree.set_line_style(CTREE_LINES_DOTTED)
         self.dbtree.set_row_height(20)
 
-        pix_isp, mask_isp = GUI_functions.get_icon("isp.xpm", self.dialog)
-        pix_city, mask_city = GUI_functions.get_icon("city.xpm", self.dialog)
+        pix_isp, mask_isp = GUI_functions.get_icon("isp.xpm")
+        pix_city, mask_city = GUI_functions.get_icon("city.xpm")
 
         isp_list = self.get_provider_list()
         _country = ""
@@ -139,10 +139,9 @@ class providerDialog:
 
         for isp in isp_list:
             if _country != isp['Country']:
-                pix, mask = GUI_functions.get_icon(isp['Flag']+".xpm", self.dialog)
+                pix, mask = GUI_functions.get_icon(isp['Flag']+".xpm")
                 if not pix:
-                    pix, mask = GUI_functions.get_icon('unknown-flag.xpm',
-                                                       self.dialog)
+                    pix, mask = GUI_functions.get_icon('unknown-flag.xpm')
 
                 country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
                                                   pix, mask, pix, mask, is_leaf=False)

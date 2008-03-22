@@ -17,8 +17,28 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg import Compression_base # pylint: disable-msg=E0611
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
+                            Gdtbool)
 
+class Compression_base(Gdtstruct):
+    "Compression structure"
+    gdtstruct_properties([
+                          ('VJTcpIp', Gdtbool, "Test doc string"),
+                          ('VJID', Gdtbool, "Test doc string"),
+                          ('AdressControl', Gdtbool, "Test doc string"),
+                          ('ProtoField', Gdtbool, "Test doc string"),
+                          ('BSD', Gdtbool, "Test doc string"),
+                          ('CCP', Gdtbool, "Test doc string"),
+                          ])
+    def __init__(self):
+        super(Compression_base, self).__init__()
+        self.VJTcpIp = None
+        self.VJID = None
+        self.AdressControl = None
+        self.ProtoField = None
+        self.BSD = None
+        self.CCP = None
+                
 class Compression(Compression_base): 
     boolkeydict = { 'VJTcpIp' : 'VJ', 
                     'VJID' : 'VJCCOMP', 
@@ -28,9 +48,6 @@ class Compression(Compression_base):
                     'CCP' : 'CCP', 
                     }
 
-    def __init__(self, clist = None, parent = None):
-        Compression_base.__init__(self, clist, parent)
-
     def load(self, parentConf):
         conf = parentConf
 
@@ -38,18 +55,18 @@ class Compression(Compression_base):
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'on':
-                    self.__dict__[selfkey] = True
+                    setattr(self, selfkey, True)
                 else:
-                    self.__dict__[selfkey] = False
+                    setattr(self, selfkey, False)
             else:
-                self.__dict__[selfkey] = False
+                setattr(self, selfkey, False)
 
     def save(self, parentConf):
         conf = parentConf
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey]:
+            if hasattr(self, selfkey) and getattr(self, selfkey):
                 conf[confkey] = 'on'
             else:
                 conf[confkey] = 'off'

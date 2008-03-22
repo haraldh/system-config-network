@@ -23,8 +23,8 @@ _devTokenRingDialog = None
 _devTokenRingWizard = None
 
 class DevTokenRing(Device):
-    def __init__(self, clist = None, parent = None):
-        Device.__init__(self, clist, parent)
+    def __init__(self):
+        super(DevTokenRing, self).__init__()
         self.Type = TOKENRING
 
     def getDialog(self):
@@ -48,11 +48,11 @@ class DevTokenRing(Device):
         return False
 
 def setDevTokenRingDialog(dialog):
-    global _devTokenRingDialog
+    global _devTokenRingDialog  # pylint: disable-msg=W0603
     _devTokenRingDialog = dialog
 
 def setDevTokenRingWizard(wizard):
-    global _devTokenRingWizard
+    global _devTokenRingWizard  # pylint: disable-msg=W0603
     _devTokenRingWizard = wizard
 
 def register_plugin():

@@ -1,6 +1,6 @@
 import re
 
-from Conf import Conf, ConfIndexError
+from .Conf import Conf, ConfIndexError # pylint: disable-msg=W0403
 
 class ConfShellVar(Conf):
     def __init__(self, filename):

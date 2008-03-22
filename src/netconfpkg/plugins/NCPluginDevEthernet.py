@@ -55,8 +55,8 @@ class DevEthernet( Device ):
     SubType = None
     Priority = 0
 
-    def __init__( self, clist = None, parent = None ):
-        Device.__init__( self, clist, parent )
+    def __init__( self ):
+        super(DevEthernet, self).__init__()
         self.Type = ETHERNET
 
     def getDialog( self ):
@@ -81,12 +81,12 @@ class DevEthernet( Device ):
 
 def setDevEthernetDialog( dialog ):
     """Set the ethernet dialog class"""
-    global _devEthernetDialog
+    global _devEthernetDialog  # pylint: disable-msg=W0603
     _devEthernetDialog = dialog
 
 def setDevEthernetWizard( wizard ):
     """Set the ethernet wizard class"""
-    global _devEthernetWizard
+    global _devEthernetWizard  # pylint: disable-msg=W0603
     _devEthernetWizard = wizard
 
 def register_plugin():

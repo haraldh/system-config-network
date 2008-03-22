@@ -17,7 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-
+# pylint: disable-msg=E1103
 from gtk import CTREE_LINES_DOTTED
 from netconfpkg import NCDeviceList, NCProfileList, NCDeviceFactory, \
     NCHardwareList, NCDialup
@@ -175,14 +175,14 @@ class DialupDruid(InterfaceCreator):
             device.Netmask = xml.get_widget('ipNetmaskEntry').get_text()
             device.Gateway = xml.get_widget('ipGatewayEntry').get_text()
             device.Hostname = ''
-
+            
     def on_sync_ppp_activate(self, *args): # pylint: disable-msg=W0613
         self.xml.get_widget('ipAutomaticRadio').set_active(True)
         self.xml.get_widget('ipStaticRadio').set_active(False)
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(True)
         self.on_ipBootProto_toggled(\
                 self.xml.get_widget('ipStaticRadio'))
-        dialup = self.device.createDialup() # pylint: disable-msg=E1103
+        dialup = self.device.createDialup()
         dialup.EncapMode = 'syncppp'
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), 
                                                 self.device)
@@ -193,7 +193,7 @@ class DialupDruid(InterfaceCreator):
         self.on_ipBootProto_toggled(\
                 self.xml.get_widget('ipAutomaticRadio'))
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(False)
-        dialup = self.device.createDialup() # pylint: disable-msg=E1103
+        dialup = self.device.createDialup()
         dialup.EncapMode = 'rawip'
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), 
                                                 self.device)
@@ -202,12 +202,11 @@ class DialupDruid(InterfaceCreator):
         return True
 
     def on_dhcp_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
-        self.device.createDialup() # pylint: disable-msg=E1103
         self.dhcp_dehydrate(self.xml, self.device)
 
     def on_dhcp_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         self.dhcp_hydrate(self.xml, self.device)
-        dialup = self.device.createDialup() # pylint: disable-msg=E1103
+        dialup = self.device.createDialup() 
         if self.connection_type == ISDN:
             if dialup.EncapMode == 'rawip':
                 self.on_raw_ip_activate()
@@ -217,7 +216,7 @@ class DialupDruid(InterfaceCreator):
             self.xml.get_widget('encapModeMenu').set_sensitive(False)
 
     def on_finish_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
-        self.devicelist.rollback() # pylint: disable-msg=E1101
+        self.devicelist.rollback() 
 
     def on_dialup_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
         self.setup()
@@ -231,7 +230,7 @@ class DialupDruid(InterfaceCreator):
             if hw.Type == self.connection_type:
                 description = hw.Description
                 break
-        dialup = self.device.Dialup # pylint: disable-msg=E1103
+        dialup = self.device.createDialup() 
 
         s = _("You have selected the following information:") + \
             "\n\n" + "    " + \
@@ -247,8 +246,8 @@ class DialupDruid(InterfaceCreator):
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), 
                                                 self.device)
         hardwarelist = NCHardwareList.getHardwareList()
-        # pylint: disable-msg=E1103
-        # pylint: disable-msg=E1101
+        
+        
         hardwarelist.commit()
         self.devicelist.append(self.device)
         self.device.commit()
@@ -322,8 +321,8 @@ class DialupDruid(InterfaceCreator):
 
         widget = self.xml.get_widget ('providerTree')
 
-        pix_isp, mask_isp = GUI_functions.get_icon('isp.xpm', widget)
-        pix_city, mask_city = GUI_functions.get_icon('city.xpm', widget)
+        pix_isp, mask_isp = GUI_functions.get_icon('isp.xpm')
+        pix_city, mask_city = GUI_functions.get_icon('city.xpm')
 
         isp_list = self.get_provider_list()
 
@@ -332,11 +331,9 @@ class DialupDruid(InterfaceCreator):
 
         for isp in isp_list:
             if _country != isp['Country']:
-                pix, mask = GUI_functions.get_icon(isp['Flag'] + '.xpm', 
-                                                   widget)
+                pix, mask = GUI_functions.get_icon(isp['Flag'] + '.xpm')
                 if not pix:
-                    pix, mask = GUI_functions.get_icon('unknown-flag.xpm', 
-                                                       widget)
+                    pix, mask = GUI_functions.get_icon('unknown-flag.xpm' )
 
                 country = self.dbtree.insert_node(None, None, 
                                                   [isp['Country']], 5, 
@@ -361,7 +358,7 @@ class DialupDruid(InterfaceCreator):
 
     def on_tonlineButton_clicked(self, *args): # pylint: disable-msg=W0613
         self.dehydrate()
-        dialup = self.device.Dialup # pylint: disable-msg=E1103
+        dialup = self.device.createDialup() 
         dialog = TonlineDialog(dialup.Login, dialup.Password)
         dl = dialog.xml.get_widget ("Dialog")
 
@@ -396,7 +393,7 @@ class DialupDruid(InterfaceCreator):
 
         self.device.DeviceId = DeviceId
         self.device.Type = self.connection_type
-        dialup = self.device.createDialup() # pylint: disable-msg=E1103
+        dialup = self.device.createDialup()
         self.device.AllowUser = True
         self.device.OnBoot = False
         dialup.Prefix = self.xml.get_widget('prefixEntry').get_text()

@@ -45,11 +45,11 @@ NC_functions.RESPONSE_HELP = gtk.RESPONSE_HELP
 
 def get_device_icon_mask( devtype, dialog ):
     if not DEVPIXMAPS.has_key( ETHERNET ):
-        DEVPIXMAPS[ETHERNET] = get_icon( 'ethernet.xpm', dialog )
-        DEVPIXMAPS[MODEM] = get_icon( 'ppp.xpm', dialog )
-        DEVPIXMAPS[ISDN] = get_icon( 'isdn.xpm', dialog )
-        DEVPIXMAPS[WIRELESS] = get_icon( 'irda-16.xpm', dialog )
-        DEVPIXMAPS[DSL] = get_icon( 'dsl.xpm', dialog )
+        DEVPIXMAPS[ETHERNET] = get_icon( 'ethernet.xpm')
+        DEVPIXMAPS[MODEM] = get_icon( 'ppp.xpm')
+        DEVPIXMAPS[ISDN] = get_icon( 'isdn.xpm')
+        DEVPIXMAPS[WIRELESS] = get_icon( 'irda-16.xpm')
+        DEVPIXMAPS[DSL] = get_icon( 'dsl.xpm')
         DEVPIXMAPS[TOKENRING] = DEVPIXMAPS[ETHERNET]
 
     if not DEVPIXMAPS.has_key( devtype ):
@@ -101,7 +101,8 @@ Run: 'rpm -V system-config-network'
 
     return pixmap
 
-def get_icon( pixmap_file, dialog = None ):
+def get_icon( pixmap_file ): 
+#def get_icon( pixmap_file, dialog = None ):  # pylint: disable-msg=W0613
     pixbuf = get_pixbuf( pixmap_file )
     if pixbuf:
         return pixbuf.render_pixmap_and_mask()
@@ -437,8 +438,8 @@ def gui_run_dialog( command, argv, searchPath = 0,
               catchfd = 1, closefd = -1, title = None,
               label = None, errlabel = None, dialog = None ):
     import select
-    global __cancelPressed
-    global __dialogClosed
+    global __cancelPressed  # pylint: disable-msg=W0603
+    global __dialogClosed   # pylint: disable-msg=W0603
     class CancelException(Exception): 
         pass
 
@@ -600,15 +601,15 @@ def __on_okbutton_clicked( *args ): # pylint: disable-msg=W0613
     pass
 
 def __on_cancelbutton_clicked( *args ): # pylint: disable-msg=W0613
-    global __cancelPressed
+    global __cancelPressed  # pylint: disable-msg=W0603
     __cancelPressed = 1
 
 def __on_Dialog_close( *args ): # pylint: disable-msg=W0613
-    global __dialogClosed
+    global __dialogClosed  # pylint: disable-msg=W0603
     __dialogClosed = 1
 
 def __getXmlFile():
-    global __xmlfile
+    global __xmlfile # pylint: disable-msg=W0603
     if __xmlfile:
         return __xmlfile
 

@@ -51,7 +51,7 @@ except RuntimeError:
                      _("Please either start your graphical user interface or set your DISPLAY variable.\n"))
     sys.exit(0)
 
-import gtk.glade
+from  gtk import glade
 import gobject
 from netconfpkg import NC_functions
 from netconfpkg.gui import GUI_functions
@@ -84,7 +84,7 @@ class mainDialog:
         if os.access(getRoot() + "/", os.W_OK):
             self.isRoot = True
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=PROGNAME)
+        self.xml = glade.XML(glade_file, None, domain=PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -109,8 +109,8 @@ class mainDialog:
         self.dialog = self.xml.get_widget('mainWindow')
         self.dialog.connect('delete-event', self.on_Dialog_delete_event)
         self.dialog.connect('hide', gtk.main_quit)
-        self.on_xpm, self.on_mask = get_icon('on.xpm', self.dialog)
-        self.off_xpm, self.off_mask = get_icon('off.xpm', self.dialog)
+        self.on_xpm, self.on_mask = get_icon('on.xpm')
+        self.off_xpm, self.off_mask = get_icon('off.xpm')
 
         if not os.access('/usr/bin/rp3', os.X_OK):
             self.xml.get_widget('monitorButton').hide()
@@ -242,7 +242,7 @@ class mainDialog:
         self.activedevicelist = NetworkDevice().get()
         # Update the gui
         self.hydrateProfiles(refresh = True)
-        self.hydrate(refresh = True)
+        self.hydrate()
         self.oldprofile = None # forces a re-read of oldprofile
         self.update_dialog()
 

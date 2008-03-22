@@ -75,11 +75,11 @@ class tokenringHardware:
     def on_hardware_page_prepare(self, druid_page, druid):
         pass
 
-    def on_hardware_page_next(self, druid_page, druid):
+    def on_hardware_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         self.dehydrate()
 
-    def on_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback() # pylint: disable-msg=E1101
+    def on_hardware_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+        self.hardwarelist.rollback() 
 
     def on_adapterEntry_changed(self, entry):
         pass

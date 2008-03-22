@@ -1,12 +1,16 @@
-from netconfpkg import AliasList_base # pylint: disable-msg=E0611
-from netconfpkg import NCHost
+from netconfpkg.NC_functions import testHostname
 
-class AliasList(AliasList_base):
-    def __init__(self, *args, **kwargs):
-        AliasList_base.__init__(self, *args, **kwargs)
-        
+from netconfpkg.gdt import (Gdtstr, Gdtlist)
+
+class Alias(Gdtstr):
+    "Alias of a Host"
+
+class AliasList_base(Gdtlist):
+    "List of aliases"
+
+class AliasList(AliasList_base):        
     def test(self):
         for alias in self:
-            if not NCHost.testHostname(alias):
+            if not testHostname(alias):
                 return False
         return True

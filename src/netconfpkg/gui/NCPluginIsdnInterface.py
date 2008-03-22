@@ -73,7 +73,7 @@ class IsdnInterface:
         return True
 
     def on_cancel_interface(self, *args):
-        # pylint: disable-msg=E1101
+        
         self.hardwarelist.rollback()
         devicelist = NCDeviceList.getDeviceList()
         devicelist.rollback()
@@ -119,11 +119,11 @@ class IsdnInterface:
         self.dehydrate()
 
     def on_isdn_hardware_page_back(self, druid_page, druid):
-        self.hardwarelist.rollback() # pylint: disable-msg=E1101
+        self.hardwarelist.rollback() 
 
     def on_isdnCardEntry_changed(self, entry):
         cardname = entry.get_text()
-        card = NCisdnhardware.ConfISDN() # pylint: disable-msg=E1101
+        card = NCisdnhardware.ConfISDN() 
         card.get_resource(cardname)
 
         if card.IRQ:
@@ -168,7 +168,7 @@ class IsdnInterface:
         self.hw.Type = 'ISDN'
         self.hw.createCard()
         self.hw.Name = "ISDN Card 0"
-        conf = NCisdnhardware.ConfISDN() # pylint: disable-msg=E1101
+        conf = NCisdnhardware.ConfISDN() 
         new_card = conf.detect()
         cardname = ''
         if new_card:

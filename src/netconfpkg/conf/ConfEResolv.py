@@ -1,4 +1,4 @@
-from Conf import Conf
+from .Conf import Conf # pylint: disable-msg=W0403
 
 class ConfEResolv(Conf):
     # /etc/resolv.conf

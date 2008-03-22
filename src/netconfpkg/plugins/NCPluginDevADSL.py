@@ -18,27 +18,38 @@
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import DSL, getDeviceType
-import netconfpkg.NCDialup
+from netconfpkg.NCDialup import DslDialup
+from netconfpkg.gdt import (gdtstruct_properties)
 
 _devADSLDialog = None
 _devADSLWizard = None
 
 class DevADSL(Device):
-    def __init__(self, clist = None, parent = None):
-        Device.__init__(self, clist, parent)
+    gdtstruct_properties([
+                          ('Dialup', DslDialup, "Test doc string"),
+                          ])
+
+    def __init__(self):
+        super(DevADSL, self).__init__()
         self.Type = DSL
-        self.Dialup = netconfpkg.NCDialup.DslDialup(None, self)
+        self.Dialup = DslDialup()
+        self.setChanged(False)
 
-    def load(self, *args, **kwargs): # pylint: disable-msg=W0613
-        name = args[0]
+    def load(self, name): # pylint: disable-msg=W0613
+        super(DevADSL, self).load(self, name)
         conf = ConfDevice(name)
-        Device.load(self, name)
-        self.Dialup.load(conf)
+        self.Dialup.load(conf, self)
 
+    def save(self):
+        super(DevADSL, self).save()
+        conf = ConfDevice(self.DeviceId)
+        self.Dialup.save(conf, self.DeviceId, self.oldname)
+        conf.write()
+        
     def createDialup(self):
         if (self.Dialup == None) \
-               or not isinstance(self.Dialup, netconfpkg.NCDialup.DslDialup):
-            self.Dialup = netconfpkg.NCDialup.DslDialup(None, self)
+               or not isinstance(self.Dialup, DslDialup):
+            self.Dialup = DslDialup()
         return self.Dialup
 
     def getDialog(self):
@@ -62,15 +73,15 @@ class DevADSL(Device):
 
     def getHWDevice(self):
         if self.Dialup:
-            return self.Dialup.EthDevice # pylint: disable-msg=E1101
+            return self.Dialup.EthDevice 
         return None
 
 def setDevADSLDialog(dialog):
-    global _devADSLDialog
+    global _devADSLDialog  # pylint: disable-msg=W0603
     _devADSLDialog = dialog
 
 def setDevADSLWizard(wizard):
-    global _devADSLWizard
+    global _devADSLWizard  # pylint: disable-msg=W0603
     _devADSLWizard = wizard
 
 def register_plugin():

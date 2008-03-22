@@ -18,11 +18,135 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import os
+import sys
 
 from netconfpkg.conf import ConfSMB
-from netconfpkg import Dialup_base # pylint: disable-msg=E0611
-from netconfpkg.NC_functions import _, getRoot, log, \
-unlink, getCHAPConf, getPAPConf, WVDIALCONF, mkdir, PPPDIR
+from netconfpkg.NC_functions import (_, getRoot, log, unlink, getCHAPConf,
+                                     getPAPConf, WVDIALCONF, mkdir, PPPDIR)
+
+from netconfpkg.NCCompression import Compression
+from netconfpkg.NCCallback import Callback
+
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
+                            Gdtstr, Gdtlist, Gdtbool, Gdtint)
+
+        
+class PPPOption(Gdtstr):
+    pass
+
+class PPPOptions(Gdtlist):
+    pass
+
+class Dialup_base(Gdtstruct):
+    "Dialup structure"
+    gdtstruct_properties([
+                          ('Hostname', Gdtstr, "Test doc string"),
+                          ('ProviderName', Gdtstr, "Test doc string"),
+                          ('Login', Gdtstr, "Test doc string"),
+                          ('Password', Gdtstr, "Test doc string"),
+                          ('Authentication', Gdtstr, "Test doc string"),
+                          ('MSN', Gdtstr, 'VALUE="0"'),
+                          ('Prefix', Gdtstr, "Test doc string"),
+                          ('Areacode', Gdtstr, "Test doc string"),
+                          ('Regioncode', Gdtstr, "Test doc string"),
+                          ('PhoneNumber', Gdtstr, "Test doc string"),
+                          ('LocalIP', Gdtstr, "Test doc string"),        
+                          ('RemoteIP', Gdtstr, "Test doc string"),        
+                          ('PrimaryDNS', Gdtstr, "Test doc string"),        
+                          ('SecondaryDNS', Gdtstr, "Test doc string"),        
+                          ('Persist', Gdtbool, "Test doc string"),
+                          ('DefRoute', Gdtbool, "Test doc string"),
+                          ('Inherits', Gdtstr, "Test doc string"),
+                          ('ChargeHup', Gdtstr, "Test doc string"),
+                          ('ChargeInt', Gdtstr, "Test doc string"),
+                          ('Ihup', Gdtstr, "Test doc string"),
+                          ('DialMax', Gdtint, 'VALUE="3"'),
+                          ('Layer2', Gdtstr, 'VALUE="hdlc"'),
+                          ('Layer3', Gdtstr, 'VALUE="trans"'),
+                          ('Mru', Gdtint, 'VALUE="0"'),
+                          ('PPPOptions', PPPOptions, "Test doc string"),
+                          ('StupidMode', Gdtbool, "Test doc string"),
+                          ('DialinServer', Gdtbool, "Test doc string"),
+                          ('ChannelBundling', Gdtbool, "Test doc string"),
+                          ('EncapMode', Gdtstr, "Test doc string"),
+                          ('HangupTimeout', Gdtint, 'VALUE="360"'),
+                          ('DialMode', Gdtstr, 'VALUE="manual"'),
+                          ('SlaveDevice', Gdtstr, "Test doc string"),
+                          ('EthDevice', Gdtstr, "Test doc string"),    
+                          ('ServiceName', Gdtstr, "Test doc string"),    
+                          ('AcName', Gdtstr, "Test doc string"),    
+                          ('SyncPPP', Gdtbool, "Test doc string"),    
+                          ('InitString', Gdtstr, "Test doc string"),
+                          ('Secure', Gdtbool, "Test doc string"),
+                          ('PhoneInNumber', Gdtstr, "Test doc string"),
+                          ('Callback', Callback,  "Test doc string"),
+                          ('Compression', Compression, "Test doc string"),
+                          ])
+
+    def __init__(self):
+        super(Dialup_base, self).__init__()
+        self.Hostname = None
+        self.ProviderName = None
+        self.Login = None
+        self.Password = None
+        self.Authentication = None
+#        self.MSN = "0"
+        self.MSN = None
+        self.Prefix = None
+        self.Areacode = None
+        self.Regioncode = None
+        self.PhoneNumber = None
+        self.LocalIP = None        
+        self.RemoteIP = None        
+        self.PrimaryDNS = None        
+        self.SecondaryDNS = None        
+        self.Persist = None
+        self.DefRoute = None
+        self.Inherits = None
+        self.ChargeHup = None
+        self.ChargeInt = None
+        self.Ihup = None
+#        self.DialMax = "3"
+        self.DialMax = None
+#        self.Layer2 = "hdlc"
+        self.Layer2 = None
+#        self.Layer3 = "trans"
+        self.Layer3 = None
+        self.Mru = None
+        self.PPPOptions = PPPOptions()
+        self.StupidMode = None
+        self.DialinServer = None
+        self.ChannelBundling = None
+        self.EncapMode = None
+#        self.HangupTimeout = 360
+        self.HangupTimeout = None
+#        self.DialMode = "manual"
+        self.DialMode = None
+        self.SlaveDevice = None
+        self.EthDevice = None    
+        self.ServiceName = None    
+        self.AcName = None    
+        self.SyncPPP = None    
+        self.InitString = None
+        self.Secure = None
+        self.PhoneInNumber = None
+        self.Callback = Callback()
+        self.Compression = Compression()
+
+    def createCallback(self):
+        if not self.Callback:
+            self.Callback = Callback()
+        return self.Callback
+    
+    def createCompression(self):
+        if not self.Compression:
+            self.Compression = Compression()            
+        return self.Compression
+    
+    def createPPPOptions(self):
+        if not self.PPPOptions:
+            self.PPPOptions = PPPOptions()
+        return self.PPPOptions
 
 DM_AUTO = 'auto'
 DM_MANUAL = 'manual'
@@ -107,7 +231,7 @@ __country_code = {
     _("Montenegro") : 381
     }
 
-# pylint: disable-msg=E1101
+
 # pylint: disable-msg=W0201
 
 class Dialup(Dialup_base):
@@ -117,17 +241,16 @@ class Dialup(Dialup_base):
 #                    'Mtu' : 'MRU', 
                  }
 
-    def __init__(self, mlist = None, parent = None):
-        Dialup_base.__init__(self, mlist, parent)
-        self.createCompression() 
-
-    def load(self, parentConf):
+    def load(self, parentConf, parent):
         "Load the Configuration from the parentConf"
+        #print >> sys.stderr, "LOAD Dialup"
+
         conf = parentConf
+        devidstr = parent.DeviceId
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
             if conf.has_key(confkey) and len(conf[confkey]):
-                self.__dict__[selfkey] = int(conf[confkey])
+                setattr(self, selfkey, int(conf[confkey]))
 
 
         if parentConf.has_key('DEMAND'):
@@ -137,33 +260,33 @@ class Dialup(Dialup_base):
                 self.DialMode = DM_MANUAL
 
         if self.Login:
+            if not hasattr(self, "Password") or self.Password == None:
+                self.Password = ""
             log.log(6, "Looking for %s" % self.Login)
             papconf = getPAPConf()
             chapconf = getCHAPConf()
-            devidstr = self.getParent().DeviceId
             for conf in [chapconf, papconf]:
                 if conf.has_key(self.Login):
                     log.log(6, "Found %s" % conf[self.Login])
                     if conf[self.Login].has_key("*"):
                         self.Password = conf[self.Login]["*"]
                     if conf[self.Login].has_key(devidstr):
-
                         self.Password = conf[self.Login][devidstr]
                         log.log(6, "Found %s" % self.Password)
                         break
         else:
             log.log(6, "No self.login!!!")
 
-    def save(self, parentConf):
+    def save(self, parentConf, deviceid, olddeviceid): # pylint: disable-msg=W0613
         "Save the Configuration to parentConf"
         conf = parentConf
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey) and getattr(self, selfkey):
+                conf[confkey] = str(getattr(self, selfkey))
             else: del conf[confkey]
 
-        if self.Login:
+        if self.Login != None:
             papconf = getPAPConf()
             chapconf = getCHAPConf()
             # set *
@@ -171,9 +294,9 @@ class Dialup(Dialup_base):
             chapconf[self.Login] = str(self.Password)
             # set specific auth also
             papconf[[self.Login, 
-                     self.getParent().DeviceId]] = str(self.Password)
+                     deviceid]] = str(self.Password)
             chapconf[[self.Login, 
-                      self.getParent().DeviceId]] = str(self.Password)
+                      deviceid]] = str(self.Password)
         if self.DialMode == DM_AUTO:
             parentConf['DEMAND'] = 'yes'
         else:
@@ -198,31 +321,28 @@ class DslDialup(Dialup):
                 'AcName' : 'ACNAME',
                 }
 
-    def __init__(self, clist = None, parent = None):
-        Dialup.__init__(self, clist, parent)
-
-    def load(self, parentConf):
+    def load(self, parentConf, parent):
         "Load the Configuration from the parentConf"
         conf = parentConf
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey]
+                setattr(self, selfkey, conf[confkey])
                 #print "self." + selfkey + " = " + conf[confkey]
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
-                    self.__dict__[selfkey] = True
+                    setattr(self, selfkey, True)
                 else:
-                    self.__dict__[selfkey] = False
+                    setattr(self, selfkey, False)
             else:
-                self.__dict__[selfkey] = False
+                setattr(self, selfkey, False)
 
         # We need self.login, so we call it this late
-        Dialup.load(self, parentConf)
+        Dialup.load(self, parentConf, parent)
 
         if conf.has_key("PASS"):
             self.Password = conf["PASS"]
@@ -230,21 +350,21 @@ class DslDialup(Dialup):
         if parentConf.has_key('IDLETIMEOUT'):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
 
-    def save(self, parentConf):
+    def save(self, parentConf, devidstr, olddeviceid):
         "Save the Configuration to parentConf"
-        Dialup.save(self, parentConf)
+        Dialup.save(self, parentConf, devidstr, olddeviceid)
 
         conf = parentConf
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey) and getattr(self, selfkey):
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey]:
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
@@ -331,37 +451,38 @@ class IsdnDialup(Dialup):
                 'Layer3' : 'L3_PROT',
                 }
 
-    def __init__(self, clist = None, parent = None):
-        Dialup.__init__(self, clist, parent)
-
-    def load(self, parentConf):
+    def load(self, parentConf, parent):
         "Load the Configuration from the parentConf"
         conf = parentConf
 
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
             if conf.has_key(confkey):
-                self.__dict__[selfkey] = conf[confkey]
+                setattr(self, selfkey, conf[confkey])
                 #print "self." + selfkey + " = " + conf[confkey]
 
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
             if conf.has_key(confkey) and len(conf[confkey]):
-                self.__dict__[selfkey] = int(conf[confkey])
+                setattr(self, selfkey, int(conf[confkey]))
+                #setattr(self, selfkey, int(conf[confkey]))
                 #print "self." + selfkey + " = " + conf[confkey]
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
             if conf.has_key(confkey):
                 if conf[confkey] == 'on':
-                    self.__dict__[selfkey] = True
+                    setattr(self, selfkey, True)
+                    #setattr(self, selfkey, True)
                 else:
-                    self.__dict__[selfkey] = False
+                    setattr(self, selfkey, False)
+                    #setattr(self, selfkey, False)
             else:
-                self.__dict__[selfkey] = False
+                setattr(self, selfkey, False)
+                #setattr(self, selfkey, False)
 
         # We need self.login, so we call it this late
-        Dialup.load(self, parentConf)
+        Dialup.load(self, parentConf, parent)
 
         if conf.has_key('DEFROUTE'):
             if conf['DEFROUTE'] == 'yes':
@@ -369,14 +490,13 @@ class IsdnDialup(Dialup):
             else:
                 self.DefRoute = False
 
-        if conf.has_key('PPPOPTIONS'):
-            self.createPPPOptions() 
+        if not conf.has_key('PPPOPTIONS'):
+            del self.PPPOptions 
 
             options = conf['PPPOPTIONS']
             for o in options.split():
-                self.PPPOptions[self.PPPOptions.addPPPOption()] = o
-
-        parent = self.getParent() 
+                opt = PPPOption(o)                
+                self.PPPOptions.append(opt)
 
         if parent:
             if conf.has_key('LOCAL_IP'):
@@ -389,42 +509,39 @@ class IsdnDialup(Dialup):
                 else:
                     parent.OnBoot = False
 
-        if not self.PPPOptions:     
-            self.createPPPOptions() 
         self.Compression.load(conf) 
 
         if conf.has_key('CALLBACK'):
             if conf['CALLBACK'] == 'in' or conf['CALLBACK'] == 'out':
-                callback = self.createCallback() 
-                callback.load(conf)
+                self.Callback.load(conf)
             else:
-                self.delCallback() 
+                del self.Callback 
 
         if conf.has_key("PASSWORD"):
             self.Password = conf["PASSWORD"]
 
         self.commit(changed=False) 
 
-    def save(self, parentConf):
+    def save(self, parentConf, devidstr, olddeviceid):
         "Save the Configuration to parentConf"
-        Dialup.save(self, parentConf)
+        Dialup.save(self, parentConf, devidstr, olddeviceid)
         conf = parentConf
         
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
+                conf[confkey] = getattr(self, selfkey)
             else: conf[confkey] = ""
 
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
+                conf[confkey] = str(getattr(self, selfkey))
             else: conf[confkey] = ""
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if self.__dict__[selfkey]:
+            if hasattr(self, selfkey) and getattr(self, selfkey) == True:
                 conf[confkey] = 'on'
             else:
                 conf[confkey] = 'off'
@@ -494,19 +611,13 @@ class ModemDialup(Dialup):
                'PhoneNumber' : 'Phone',
                }
 
-    def __init__(self, clist = None, parent = None):
-        Dialup.__init__(self, clist, parent)
-
-    def load(self, parentConf):
+    def load(self, parentConf, parent):
         "Load the Configuration from the parentConf"
-        parent = self.getParent()
-
-        if parent:
-            name = parent.DeviceId
         # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf 
         # when a dialup connection is saved
         # FIXME: [168087] Fails to retain ppp connection passwords 
         # containing spaces between saves
+        name = parent.DeviceId
         if parentConf.has_key('WVDIALSECT'):
             name = parentConf['WVDIALSECT']
 
@@ -524,7 +635,7 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
 
             if value:
-                self.__dict__[selfkey] = value
+                setattr(self, selfkey, value)
 
 
         for selfkey in self.boolwvdict.keys():
@@ -537,12 +648,12 @@ class ModemDialup(Dialup):
                 value = conf['Dialer Defaults'][confkey]
 
             if value and value != '0':
-                self.__dict__[selfkey] = True
+                setattr(self, selfkey, True)
             else:
-                self.__dict__[selfkey] = False
+                setattr(self, selfkey, False)
 
         # We need self.login, so we call it this late
-        Dialup.load(self, parentConf)
+        Dialup.load(self, parentConf, parent)
 
         #
         # Read Modem Init strings
@@ -566,11 +677,12 @@ class ModemDialup(Dialup):
             self.HangupTimeout = int(parentConf['IDLETIMEOUT'])
 
         if parentConf.has_key('PPPOPTIONS'):
-            self.createPPPOptions()
             options = parentConf['PPPOPTIONS']
             for o in options.split():
-                self.PPPOptions[self.PPPOptions.addPPPOption()] = o
-
+                opt = PPPOption(o)
+                self.PPPOptions.append(opt)
+        else:
+            del self.PPPOptions
         #
         # Workaround for backporting rp3-config stuff
         #
@@ -596,14 +708,13 @@ class ModemDialup(Dialup):
                         break
 
 
-    def save(self, parentConf):
+    def save(self, parentConf, deviceid, olddeviceid):
         "Save the Configuration to parentConf"
-        Dialup.save(self, parentConf)
-        parent = self.getParent()
-        if parent and self.Inherits:
+        Dialup.save(self, parentConf, deviceid, olddeviceid)
+        if self.Inherits:
             devname = self.Inherits
             parentConf['MODEMNAME'] = devname
-            name = parent.DeviceId
+            name = deviceid
         else:
             devname = '*'
             name = "Default"
@@ -626,8 +737,8 @@ class ModemDialup(Dialup):
 
         for selfkey in self.wvdict.keys():
             confkey = self.wvdict[selfkey]
-            if self.__dict__[selfkey]:
-                conf[sectname][confkey] = str(self.__dict__[selfkey])
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:                
+                conf[sectname][confkey] = str(getattr(self, selfkey))
             else:
                 if conf[sectname].has_key(confkey):
                     del conf[sectname][confkey]
@@ -635,7 +746,7 @@ class ModemDialup(Dialup):
 
         for selfkey in self.boolwvdict.keys():
             confkey = self.boolwvdict[selfkey]
-            if self.__dict__[selfkey]:
+            if hasattr(self, selfkey) and getattr(self, selfkey):
                 conf[sectname][confkey] = '1'
             else:
                 # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf
@@ -712,24 +823,17 @@ class ModemDialup(Dialup):
         peerdir = getRoot() + PPPDIR + "/peers/"
         if not os.path.isdir(peerdir):
             mkdir(peerdir)
-        if parent.oldname and (parent.oldname != parent.DeviceId):
-            unlink(peerdir + parent.oldname)
-        filename = peerdir + parent.DeviceId
+        if olddeviceid and (olddeviceid != deviceid):
+            unlink(peerdir + olddeviceid)
+        filename = peerdir + deviceid
         try:
             mfile = open(filename, "w")
             line = 'connect "/usr/bin/wvdial --remotename ' + \
-                   '%s --chat \'%s\'"' % ( parent.DeviceId, name )
+                   '%s --chat \'%s\'"' % ( deviceid, name )
             mfile.write(line + '\n')
             log.lch(2, filename, line)
             mfile.close()
         except KeyError:
             pass
-
-if __name__ == '__main__':
-    from netconfpkg.NCDevice import Device
-    __dev = Device()
-    __dev.load('tdslHomeTonline')
-    print __dev.Dialup.Login 
-    __dev.save()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

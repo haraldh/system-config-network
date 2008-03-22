@@ -1,6 +1,6 @@
 import os
 
-from ConfShellVar import ConfShellVar
+from .ConfShellVar import ConfShellVar  # pylint: disable-msg=W0403
 
 class ConfESNetwork(ConfShellVar):
     # explicitly for /etc/sysconfig/network: HOSTNAME is magical value

@@ -16,7 +16,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-from netconfpkg.NCHardware import Hardware
+from netconfpkg.NCHardware import Hardware, Card
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NC_functions import ETHERNET, getHardwareType, log, _
 
@@ -25,11 +25,11 @@ _hwEthernetWizard = None
 
 class HwEthernet(Hardware):
     "Ethernet Hardware Device Class"
-    def __init__(self, mlist = None, parent = None):
-        Hardware.__init__(self, mlist, parent)
+    def __init__(self):
+        super(HwEthernet, self).__init__()
         self.Type = ETHERNET 
-        self.createCard() # pylint: disable-msg=E1101
-
+        self.Card = Card()
+        
     def getDialog(self):
         """
         returns a gtk dialog
@@ -48,7 +48,7 @@ class HwEthernet(Hardware):
         """
         save the configuration
         """
-        # pylint: disable-msg=E1101
+        
         from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
 
         hl = getHardwareList()
