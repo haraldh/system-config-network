@@ -36,7 +36,7 @@
 
 import copy, sys
 
-_debugchanged = True
+_debugchanged = False
 
 def _checksetseen(what, seen):
     "checks and sets the obj id in seen"
