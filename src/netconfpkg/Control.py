@@ -15,13 +15,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 import os
-import os.path
-
-from rhpl import ethtool
 from netconfpkg import NCDeviceList
 from netconfpkg.NC_functions import getNickName, getDeviceType, ISDN, MODEM
+from rhpl import ethtool
+
 
 class NetworkDevice:
     def __init__(self):

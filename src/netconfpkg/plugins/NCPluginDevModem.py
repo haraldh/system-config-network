@@ -16,15 +16,36 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import MODEM, getDeviceType
 from netconfpkg.NCDialup import ModemDialup
+from netconfpkg.NC_functions import MODEM, getDeviceType
 from netconfpkg.gdt import (gdtstruct_properties)
+
 
 _devModemDialog = None
 _devModemWizard = None
+
+ModemList = None
+def getModemList():
+    # FIXME: [165331] Can't detect external modem on /dev/ttyS0
+    # move to plugins!
+    global ModemList
+    if ModemList:
+        return ModemList[:]
+
+    import kudzu
+    # pylint: disable-msg=E1101
+    res = kudzu.probe(kudzu.CLASS_MODEM, 
+                      kudzu.BUS_UNSPEC, 
+                      kudzu.PROBE_ALL)   
+    ModemList = []
+    if res != []:
+        for v in res:
+            dev = str(v.device)
+            if dev and dev != 'None':
+                ModemList.append('/dev/' + dev)
+    return ModemList[:]
 
 class DevModem(Device):
     gdtstruct_properties([

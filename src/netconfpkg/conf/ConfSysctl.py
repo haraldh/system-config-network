@@ -1,8 +1,8 @@
 "Module handling /etc/sysctl style files"
-
 import os
 
 from .Conf import Conf # pylint: disable-msg=W0403
+
 
 class ConfSysctl(Conf):
     def __init__(self, filename):

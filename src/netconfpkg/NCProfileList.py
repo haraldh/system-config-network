@@ -16,28 +16,21 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg import NCDeviceList
-from netconfpkg import NCIPsecList
-from netconfpkg.NCProfile import Profile
-
-from netconfpkg.NCDeviceList import ConfDevices
-from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK, getRoot,
-                                     updateNetworkScripts,
-                                     SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR,
-                                     RESOLVCONF,
-                                     HOSTSCONF, TestError, getDebugLevel,
-                                     SYSCONFDEVICEDIR,
-                                     mkdir, issamefile, unlink, link, rename,
-                                     rmdir, getTestEnv,  
-                                     generic_error_dialog,
-                                     generic_yesno_dialog, 
-                                     RESPONSE_YES)
-from netconfpkg.conf import ConfShellVar, ConfEResolv
-import os, sys
 import os.path
-
+from netconfpkg import NCDeviceList, NCIPsecList
+from netconfpkg.NCDeviceList import ConfDevices
+from netconfpkg.NCProfile import Profile
+from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK,
+                                     getRoot, updateNetworkScripts,
+                                     SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR,
+                                     RESOLVCONF, HOSTSCONF, TestError,
+                                     SYSCONFDEVICEDIR, mkdir, issamefile, 
+                                     unlink, link, rename, rmdir, 
+                                     getTestEnv, generic_error_dialog, 
+                                     generic_yesno_dialog, RESPONSE_YES)
+from netconfpkg.conf import ConfShellVar, ConfEResolv
 from netconfpkg.gdt import Gdtlist
+
 
 class ProfileList_base(Gdtlist):
     pass

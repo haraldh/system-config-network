@@ -16,18 +16,18 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import gtk
 import gtk.glade
 import os
-import sha
-
 import re
-from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, gui_error_dialog
-#from rhpl.executil import *
+import sha
 from netconfpkg.NCProfileList import getProfileList
 from netconfpkg.NC_functions import _
+from netconfpkg.gui import GUI_functions
+from netconfpkg.gui.GUI_functions import (xml_signal_autoconnect,              
+                                          gui_error_dialog)
+
+
+#from rhpl.executil import *
 
 # pylint: disable-msg=W0613
 

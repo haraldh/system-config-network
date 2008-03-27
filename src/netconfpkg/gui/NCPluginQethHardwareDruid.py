@@ -16,14 +16,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
-from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, QETH
-from netconfpkg import NCHardwareList
-from netconfpkg.plugins import NCPluginHWQeth
-import gtk
 import gtk.glade
 import os
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, QETH
+from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
+from netconfpkg.plugins import NCPluginHWQeth
+
 
 class QethHardware:
     def __init__ (self, toplevel=None):

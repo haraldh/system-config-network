@@ -1,11 +1,9 @@
 "Host Module"
-
 import socket
-
-from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr)
-
 from netconfpkg.NCAliasList import AliasList
 from netconfpkg.NC_functions import testHostname
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr)
+
 
 class Host_base(Gdtstruct):
     gdtstruct_properties([

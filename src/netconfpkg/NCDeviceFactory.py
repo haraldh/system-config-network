@@ -14,12 +14,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+from netconfpkg.NCDevice import Device
+from netconfpkg.NC_functions import log
 
 _devFac = None
 
-from netconfpkg.NC_functions import log
-from netconfpkg.NCDevice import Device
 
 class DeviceFactory(dict):
     def register(self, theclass, devtype = None, subtype = None):
@@ -69,6 +68,7 @@ def getDeviceFactory():
 
     return _devFac
 
-from netconfpkg.plugins import * # pylint: disable-msg=W0401, W0614
+# pylint: disable-msg=W0401, W0614
+from netconfpkg.plugins import * # DO NOT MOVE FROM BOTTOM!!
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

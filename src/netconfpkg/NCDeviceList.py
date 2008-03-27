@@ -16,10 +16,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import os
 import os.path
 import re
+from netconfpkg.NCDevice import Device
+from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import (_, log, ConfDevices,
                                      generic_longinfo_dialog, getDeviceType,
                                      getRoot, OLDSYSCONFDEVICEDIR, QETH,
@@ -27,12 +27,9 @@ from netconfpkg.NC_functions import (_, log, ConfDevices,
                                      getCHAPConf, getPAPConf, IPSEC,
                                      SYSCONFNETWORK, testFilename, unlink,
                                      WVDIALCONF)
-
-from netconfpkg.NCDevice import Device
-from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.conf import ConfSMB
-from netconfpkg.conf import ConfShellVar
+from netconfpkg.conf import ConfSMB, ConfShellVar
 from netconfpkg.gdt import Gdtlist
+
 
 class DeviceList_base(Gdtlist):
     pass

@@ -14,16 +14,15 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+import netconfpkg
+import os
 from netconfpkg.NC_functions import (_, getRoot, SYSCONFDEVICEDIR, 
                                      generic_run_dialog,
                                      bits_to_netmask, ConfKeys,
                                      netmask_to_bits, rename)
-
 from netconfpkg.conf import ConfShellVar
-import netconfpkg
-import os
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr, Gdtbool)
+
 
 class IPsec_base(Gdtstruct):
     gdtstruct_properties([

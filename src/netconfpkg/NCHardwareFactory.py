@@ -14,6 +14,8 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+from netconfpkg.NCHardware import Hardware
+from netconfpkg.NC_functions import log
 
 _hwFac = None
 
@@ -25,8 +27,6 @@ def getHardwareFactory():
 
     return _hwFac
 
-from netconfpkg.NC_functions import log
-from netconfpkg.NCHardware import Hardware
 
 class HardwareFactory(dict):
     def register(self, theclass, hwtype = None, subtype = None):
@@ -70,6 +70,7 @@ class HardwareFactory(dict):
         else:
             return self[hwtype][0]
 
-from netconfpkg.plugins import * # pylint: disable-msg=W0401, W0614
+# pylint: disable-msg=W0401, W0614
+from netconfpkg.plugins import * # DO NOT MOVE FROM BOTTOM!!
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

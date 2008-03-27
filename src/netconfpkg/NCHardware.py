@@ -14,10 +14,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NC_functions import _
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr,
                             Gdtint)
+
 
 HW_INACTIVE = _("inactive") # not found in last config and not in actual system
 HW_SYSTEM = _("system")   # found in system

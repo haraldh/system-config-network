@@ -1,7 +1,7 @@
 "TUI ISDN Interface Module"
 import snack
-
 from netconfpkg.NC_functions import _
+
 
 class NCIsdnInterfaceTui:
     "TUI ISDN Interface Dialog"

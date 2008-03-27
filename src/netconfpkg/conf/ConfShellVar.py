@@ -2,6 +2,7 @@ import re
 
 from .Conf import Conf, ConfIndexError # pylint: disable-msg=W0403
 
+
 class ConfShellVar(Conf):
     def __init__(self, filename):
         self.nextreg = re.compile('^[\t ]*[A-Za-z_][A-Za-z0-9_]*=')

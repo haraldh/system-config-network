@@ -16,19 +16,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import gtk
 import gtk.glade
 import os
-
-from rhpl import ethtool
-from netconfpkg.plugins import NCPluginDevTokenRing
 from netconfpkg import NCHardwareList, NCDeviceList, NCProfileList
 from netconfpkg.NC_functions import _, TOKENRING, PROGNAME, NETCONFDIR
 from netconfpkg.gui import sharedtcpip
-from netconfpkg.gui.TokenRingHardwareDruid import tokenringHardware
-from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.TokenRingHardwareDruid import tokenringHardware
+from netconfpkg.plugins import NCPluginDevTokenRing
+from rhpl import ethtool
+
 
 class TokenRingInterfaceGui(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=TOKENRING, do_save = 1,

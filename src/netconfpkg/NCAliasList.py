@@ -1,6 +1,6 @@
 from netconfpkg.NC_functions import testHostname
-
 from netconfpkg.gdt import (Gdtstr, Gdtlist)
+
 
 class Alias(Gdtstr):
     "Alias of a Host"

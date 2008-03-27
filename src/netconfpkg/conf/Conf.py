@@ -142,6 +142,9 @@
 #   An unsupported file version was found.
 # SystemFull
 #   No more UIDs or GIDs are available
+import os
+import re
+
 
 class FileMissing(Exception):
     def __init__(self, filename):
@@ -172,8 +175,6 @@ WrongMethod = BadFile
 VersionMismatch = BadFile
 SystemFull = BadFile
 
-import re
-import os
 
 # Implementation:
 # A configuration file is a list of lines.

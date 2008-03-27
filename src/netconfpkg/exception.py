@@ -41,9 +41,10 @@ def exception_function():
         raise
 
 """
-
 import sys
+
 from rhpl.translate import _
+
 
 __DUMPHASH = {}
 # FIXME: do length limits on obj dumps.

@@ -1,6 +1,6 @@
 import re
-
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr)
+
 
 class Route_base(Gdtstruct):
     gdtstruct_properties([

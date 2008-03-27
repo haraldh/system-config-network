@@ -9,9 +9,9 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 # Author: Preston Brown <pbrown@redhat.com>
-
 import os
 import re
+
 
 class IPCalc:
     """A wrapper class that encapsulates the command line

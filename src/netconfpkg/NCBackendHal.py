@@ -13,14 +13,9 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 import sys
-import dbus
 
-if __name__ == '__main__':
-    sys.path.append("../")
-    sys.path.append("./")
- 
+import dbus
 from netconfpkg.NCHardware import HW_SYSTEM, Card
 from netconfpkg.NC_functions import getDeviceType
 
@@ -123,9 +118,3 @@ class NCBackendHal:
             if ncard:
                 self.cards.append(ncard)
         return self.cards
-
-if __name__ == '__main__':
-    hal = NCBackendHal()
-    cards = hal.probeCards()
-    for card in cards:
-        print card

@@ -15,13 +15,16 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 import sys
-from types import ListType
+
 import re
+from types import ListType
+
+from . import Conf # pylint: disable-msg=W0403
+
 
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-from . import Conf # pylint: disable-msg=W0403
 
 class ConfPAP(Conf.Conf):
     __beginline = '####### system-config-network will overwrite this part!!! (begin) ##########'

@@ -18,18 +18,18 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 # pylint: disable-msg=W0603
-from netconfpkg.conf import ConfShellVar
-from netconfpkg.conf import ConfPAP
-from netconfpkg.log import LogFile
-from rhpl import ethtool
-from rhpl.translate import _, textdomain_codeset
 import __builtin__
+import sys
+
 import locale
-import os
 import os.path
 import re
 import shutil
-import sys
+from netconfpkg.conf import ConfShellVar, ConfPAP
+from netconfpkg.log import LogFile
+from rhpl import ethtool
+from rhpl.translate import _, textdomain_codeset
+
 
 PROGNAME = "system-config-network"
 
@@ -467,28 +467,6 @@ def getNewDialupDevice(devicelist, dev):
             count = count + 1
         else:
             return device+str(count)
-
-
-ModemList = None
-def getModemList():
-    # FIXME: [165331] Can't detect external modem on /dev/ttyS0
-    # move to plugins!
-    global ModemList
-    if ModemList:
-        return ModemList[:]
-
-    import kudzu
-    # pylint: disable-msg=E1101
-    res = kudzu.probe(kudzu.CLASS_MODEM, 
-                      kudzu.BUS_UNSPEC, 
-                      kudzu.PROBE_ALL)   
-    ModemList = []
-    if res != []:
-        for v in res:
-            dev = str(v.device)
-            if dev and dev != 'None':
-                ModemList.append('/dev/' + dev)
-    return ModemList[:]
 
 # Some failsafe return codes (same as in gtk)
 RESPONSE_NONE = -1

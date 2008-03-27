@@ -1,6 +1,7 @@
 "TUI Ethernet Interface Module"
-
 from netconfpkg.tui.NCTcpIp import NCTcpIpDialog
+
+
 #
 # EthernetWindow class
 #

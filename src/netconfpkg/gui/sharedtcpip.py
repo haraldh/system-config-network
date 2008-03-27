@@ -14,17 +14,15 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 import gtk.glade
-
 from netconfpkg import NC_functions
 from netconfpkg.NCHardwareList import getHardwareList
-from rhpl import ethtool
-
+from netconfpkg.NCRoute import Route
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.editadress import editAdressDialog
-from netconfpkg.NCRoute import Route
+from rhpl import ethtool
+
 
 ###
 ### DHCP

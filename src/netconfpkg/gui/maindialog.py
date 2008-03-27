@@ -21,12 +21,22 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 "The GUI maindialog of s-c-network"
-
+import gnome # pylint: disable-msg=W0611
+import gobject
+import gtk.glade
 import os
 import re
-import sys
-
+from netconfpkg import NCDeviceFactory
 from netconfpkg.Control import NetworkDevice
+from netconfpkg.NCDeviceList import getDeviceList
+from netconfpkg.NCHardwareList import getHardwareList
+from netconfpkg.NCHost import Host
+from netconfpkg.NCIPsec import IPsec
+from netconfpkg.NCIPsecList import getIPsecList
+from netconfpkg.NCProfileList import getProfileList, Profile
+from netconfpkg.NC_functions import (DEFAULT_PROFILE_NAME, PROGNAME,
+                                     rpms_notinstalled, log, NETCONFDIR, 
+                                     LO, TestError, _)
 from netconfpkg.gui.GUI_functions import (get_icon, get_pixbuf,
                                           GLADEPATH, load_icon, 
                                           xml_signal_autoconnect,
@@ -42,22 +52,7 @@ from netconfpkg.gui.GUI_functions import (get_icon, get_pixbuf,
                                           generic_info_dialog)
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
-from netconfpkg.NC_functions import (DEFAULT_PROFILE_NAME, PROGNAME, 
-                                     rpms_notinstalled, log, NETCONFDIR, LO,
-                                     TestError)
-from netconfpkg.NC_functions import _
-from netconfpkg.NCDeviceList import getDeviceList
-from netconfpkg.NCHardwareList import getHardwareList
-from netconfpkg.NCProfileList import getProfileList, Profile
-from netconfpkg.NCIPsecList import getIPsecList
-from netconfpkg import NCDeviceFactory
-from netconfpkg.NCHost import Host
-from netconfpkg.NCIPsec import IPsec
 
-import gtk
-import gtk.glade
-import gnome # pylint: disable-msg=W0611
-import gobject
 
 PROFILE_COLUMN = 0
 STATUS_COLUMN = 1

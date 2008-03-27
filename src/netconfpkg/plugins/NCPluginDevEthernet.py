@@ -16,10 +16,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import ETHERNET, getDeviceType
+
 
 _devEthernetDialog = None
 _devEthernetWizard = None

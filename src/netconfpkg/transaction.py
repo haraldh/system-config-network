@@ -33,9 +33,9 @@
  Copyright (C) 2008 Harald Hoyer <harald@redhat.com>
  Copyright (C) 2008 Red Hat, Inc.
 """
-
 import copy
 import logging
+
 
 #_debuglevel = logging.DEBUG
 _debuglevel = 0

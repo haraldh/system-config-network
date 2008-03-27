@@ -12,8 +12,10 @@
 # License along with this program; if not, write to the
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
+import sys
 
-import logging
+from .transaction import Transaction, Transactionlist # pylint: disable-msg=W0403
+
 
 """\
 Basic classes with predefined properties
@@ -86,9 +88,7 @@ Output of the example:
     Article.page.2.Page.text=page 2
 """
 
-import sys
 
-from .transaction import Transaction, Transactionlist # pylint: disable-msg=W0403
 
 # pylint: disable-msg=W0142, W0212
 

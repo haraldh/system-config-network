@@ -16,13 +16,14 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #from netconfpkg import IPsecList_base # pylint: disable-msg=E0611
+import os
 from netconfpkg.NCDeviceList import ConfDevices
 from netconfpkg.NCIPsec import IPsec
 from netconfpkg.NC_functions import (log, SYSCONFDEVICEDIR, getRoot,
                                      testFilename, IPSEC, unlink, 
                                      OLDSYSCONFDEVICEDIR)
-import os
 from netconfpkg.gdt import Gdtlist
+
 
 class IPsecList_base(Gdtlist):
     pass

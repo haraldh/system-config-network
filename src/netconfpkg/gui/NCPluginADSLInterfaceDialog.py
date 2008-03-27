@@ -16,16 +16,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 import gtk
-
-import gtk.glade
-
+from netconfpkg.NCDialup import DM_AUTO, DM_MANUAL
 from netconfpkg.gui import sharedtcpip
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.tonline import TonlineDialog
-from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
-from netconfpkg.NCDialup import DM_AUTO, DM_MANUAL
+
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
 class ADSLInterfaceDialog(DeviceConfigDialog):

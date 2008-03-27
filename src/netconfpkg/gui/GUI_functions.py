@@ -16,14 +16,12 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-import os
-import gtk
 import gtk.glade
-
-from netconfpkg.NC_functions import * # pylint: disable-msg=W0401, W0614
-from netconfpkg.NC_functions import _
+import os
 from netconfpkg import NC_functions
 from netconfpkg.NCException import NCException
+from netconfpkg.NC_functions import * # pylint: disable-msg=W0401, W0614
+
 
 gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 

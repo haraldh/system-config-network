@@ -16,21 +16,19 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import os, sys
 import commands
+import os
 import re
 from netconfpkg import NC_functions
-from netconfpkg.conf import ConfShellVar
+from netconfpkg.NCRoute import Route
 from netconfpkg.NC_functions import (_, getRoot, SYSCONFDEVICEDIR, log, 
                                      ETHERNET, SYSCONFNETWORK, 
                                      generic_run_dialog, generic_run, 
                                      getDebugLevel, unlink)
-
+from netconfpkg.conf import ConfShellVar
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr, 
                             Gdtlist, Gdtbool, Gdtint)
 
-from netconfpkg.NCRoute import Route
 
 class StaticRoutes(Gdtlist):
     "Contains Routes"

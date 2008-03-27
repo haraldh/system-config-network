@@ -16,15 +16,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg import NCHardwareList
-from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, deviceTypes, \
-    MODEM, ISDN, ETHERNET, DSL, TOKENRING, WIRELESS, LO
-from netconfpkg.gui.GUI_functions import GLADEPATH 
-from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
-import gtk
 import gtk.glade
 import os
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import (NETCONFDIR, PROGNAME, deviceTypes,
+                                     MODEM, ISDN, ETHERNET, DSL, 
+                                     TOKENRING, WIRELESS, LO)
+from netconfpkg.gui.GUI_functions import (GLADEPATH, load_icon,
+                                          xml_signal_autoconnect)
 
 
 class DeviceTypeDialog:

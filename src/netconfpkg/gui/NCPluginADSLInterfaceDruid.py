@@ -16,20 +16,19 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg.plugins import NCPluginDevADSL
+import gtk.glade
+import os
+import re
 from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
-from netconfpkg.NC_functions import _, getNewDialupDevice, DSL, \
-    request_rpms
+from netconfpkg.NC_functions import (_, getNewDialupDevice, DSL,
+    request_rpms)
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.tonline import TonlineDialog
-import gtk
-import gtk.glade
-import os
-import re
+from netconfpkg.plugins import NCPluginDevADSL
+
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
 class ADSLInterfaceDruid(InterfaceCreator):

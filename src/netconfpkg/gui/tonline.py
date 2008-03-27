@@ -14,15 +14,12 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import gtk
-
 import gtk.glade
 import os
-
 import re
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+
 
 class TonlineDialog:
     def __init__(self, login, pw):

@@ -16,15 +16,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+from netconfpkg.gui import GUI_functions, sharedtcpip
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from rhpl import ethtool
 
-import gtk.glade # pylint: disable-msg=W0611
 
 #from netconfpkg import NCHardwareList
-from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
-from netconfpkg.gui import sharedtcpip
-from rhpl import ethtool
 
 # FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
 

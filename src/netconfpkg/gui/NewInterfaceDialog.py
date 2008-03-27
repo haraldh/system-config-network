@@ -16,19 +16,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+import gtk.glade
+import os
+from netconfpkg import NCHardwareList, NCDeviceList
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NC_functions import NETCONFDIR
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
-from netconfpkg import NCHardwareList, NCDeviceList
+
 
 # do not remove this (needed to access methods of self.druid
-import gnome.ui # pylint: disable-msg=W0611
 
-import gtk
-import gtk.glade
-import os
 
 class NewInterfaceDialog:
     def __init__(self, parent_dialog = None):

@@ -16,11 +16,8 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import os
 import glob
-
-from rhpl import ethtool
+import os
 from netconfpkg import NCisdnhardware
 from netconfpkg.NCHardware import HW_CONF, HW_SYSTEM, HW_OK, Card, Hardware
 from netconfpkg.NC_functions import (_, getRoot, HWCONF, NETCONFDIR, WVDIALCONF,
@@ -29,12 +26,12 @@ from netconfpkg.NC_functions import (_, getRoot, HWCONF, NETCONFDIR, WVDIALCONF,
                                      MODULESCONF, getTestEnv)
 from netconfpkg.conf.Conf import (Conf, FileMissing,
                                   VersionMismatch)
-from netconfpkg.conf.ConfModules import (ConfModInfo, 
-                                         VersionMismatch, 
-                                         ConfModules)
+from netconfpkg.conf.ConfModules import ConfModInfo, ConfModules
 from netconfpkg.conf.ConfSMB import ConfSMB
-from rhpl.executil import execWithCapture
 from netconfpkg.gdt import Gdtlist
+from rhpl import ethtool
+from rhpl.executil import execWithCapture
+
 
 ModInfo = None
 __isdnmodulelist = []

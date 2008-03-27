@@ -17,10 +17,10 @@
 
 # FIXME: use pythons logging handlers
 import sys
-import syslog
-import types
-import time
+
 import logging
+import syslog
+
 
 class LogFile:
     "Simple Logging class"

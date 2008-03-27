@@ -16,10 +16,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg import NC_functions
 import re
-from netconfpkg.gdt import Gdtstruct, gdtstruct_properties, Gdtstr                             
+from netconfpkg import NC_functions
+from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, 
+                            Gdtstr)
+
 
 class Wireless_base(Gdtstruct):
     gdtstruct_properties([

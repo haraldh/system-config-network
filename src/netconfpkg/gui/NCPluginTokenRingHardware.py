@@ -16,12 +16,12 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import _
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import gui_run_dialog
 from netconfpkg.gui.HardwareDialog import HardwareDialog
-from netconfpkg import NCHardwareList
-from netconfpkg.NC_functions import _
+
 
 class tokenringHardwareDialog(HardwareDialog):
     def __init__(self, hw):

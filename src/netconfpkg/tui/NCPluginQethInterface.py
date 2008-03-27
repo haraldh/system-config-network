@@ -1,8 +1,8 @@
 "TUI QETH Interface Module"
 import snack
-
-from netconfpkg.NC_functions import _, QETH
 from netconfpkg.NCHardwareList import HW_CONF, getHardwareList
+from netconfpkg.NC_functions import _, QETH
+
 
 class NCQethInterfaceTui:
     "TUI QETH Interface Dialog"

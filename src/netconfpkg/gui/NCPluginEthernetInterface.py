@@ -16,23 +16,20 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg.plugins import NCPluginDevEthernet
+import gtk.glade
+import os
 from netconfpkg import NCProfileList
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCHardwareList import getHardwareList
-from netconfpkg.NC_functions import _, ETHERNET, \
-    NETCONFDIR, PROGNAME
+from netconfpkg.NC_functions import (_, ETHERNET, 
+                                     NETCONFDIR, PROGNAME)
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
-from netconfpkg.gui.GUI_functions import GLADEPATH
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.plugins import NCPluginDevEthernet
 from rhpl import ethtool
-import gtk
-import gtk.glade
-import os
 
 
 class EthernetInterface(InterfaceCreator):

@@ -15,10 +15,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NCHardware import Hardware
 from netconfpkg.NCHardwareFactory import getHardwareFactory
 from netconfpkg.NC_functions import TOKENRING, getHardwareType, _
+
 
 _hwTokenringDialog = None
 _hwTokenringWizard = None

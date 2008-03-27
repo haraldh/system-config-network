@@ -1,8 +1,8 @@
 "Module handling"
-
 import re
 
 from .Conf import Conf, odict, BadFile, VersionMismatch # pylint: disable-msg=W0403
+
 
 class ConfModules(Conf):
     """ConfModules(Conf)

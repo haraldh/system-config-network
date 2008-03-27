@@ -18,19 +18,18 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 # pylint: disable-msg=E1103
-from gtk import CTREE_LINES_DOTTED
-from netconfpkg import NCDeviceList, NCProfileList, NCDeviceFactory, \
-    NCHardwareList, NCDialup
-from netconfpkg.NC_functions import _, ISDN, MODEM, getNewDialupDevice
-from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.InterfaceCreator import InterfaceCreator
-from netconfpkg.gui.tonline import TonlineDialog
-from netconfpkg.gui import providerdb
-import gtk
 import gtk.glade
 import os
 import re
+from gtk import CTREE_LINES_DOTTED
+from netconfpkg import (NCDeviceList, NCProfileList, NCDeviceFactory,
+    NCHardwareList, NCDialup)
+from netconfpkg.NC_functions import _, ISDN, MODEM, getNewDialupDevice
+from netconfpkg.gui import GUI_functions, providerdb
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.gui.tonline import TonlineDialog
+
 
 class DialupDruid(InterfaceCreator):
     def __init__ (self, toplevel=None, connection_type=ISDN, 

@@ -15,13 +15,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
+from netconfpkg.NCHardware import Card
+from netconfpkg.NCHardwareList import getHardwareList, HW_CONF
 from netconfpkg.NC_functions import QETH, getDeviceType
 from netconfpkg.plugins.NCPluginDevEthernet import DevEthernet
-from netconfpkg.NCHardwareList import getHardwareList, HW_CONF
-from netconfpkg.NCHardware import Card
+
 
 _devQethDialog = None
 _devQethWizard = None

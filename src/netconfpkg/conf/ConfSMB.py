@@ -27,14 +27,17 @@
 #  value, including (case insensitive) 0/False/no and 1/True/yes
 #  So: turn off browsing home directories with
 #     smb['homes'] = [ 'browseable', 0 ]
-
 import sys
+
+import re
+from UserDict import UserDict
+
+from .Conf import Conf # pylint: disable-msg=W0403
+
+
 if not "/usr/lib/rhs/python" in sys.path:
     sys.path.append("/usr/lib/rhs/python")
 
-from .Conf import Conf # pylint: disable-msg=W0403
-import re
-from UserDict import UserDict
 
 class ConfSMBSubDict(UserDict):
     def __init__(self, parent_conf, stanza, initdict=None):

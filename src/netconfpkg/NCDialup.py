@@ -16,21 +16,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 import os
-import sys
-
-from netconfpkg.conf import ConfSMB
+from netconfpkg.NCCallback import Callback
+from netconfpkg.NCCompression import Compression
 from netconfpkg.NC_functions import (_, getRoot, log, unlink, getCHAPConf,
                                      getPAPConf, WVDIALCONF, mkdir, PPPDIR)
-
-from netconfpkg.NCCompression import Compression
-from netconfpkg.NCCallback import Callback
-
+from netconfpkg.conf import ConfSMB
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
                             Gdtstr, Gdtlist, Gdtbool, Gdtint)
 
-        
+
 class PPPOption(Gdtstr):
     pass
 

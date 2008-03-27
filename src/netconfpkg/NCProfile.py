@@ -1,10 +1,9 @@
 "Profile"
-
+from netconfpkg.NCHostsList import HostsList
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
                             Gdtstr, Gdtlist, Gdtbool)
 
-from netconfpkg.NCHostsList import HostsList
- 
+
 class IPsecId(Gdtstr):
     "Id of a IPsec object"
 

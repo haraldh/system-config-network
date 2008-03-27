@@ -16,11 +16,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg.gui import GUI_functions, sharedtcpip
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg import NCHardwareList
+from netconfpkg.gui import GUI_functions, sharedtcpip
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+
 
 class tokenringConfigDialog(DeviceConfigDialog):
     def __init__(self, device):

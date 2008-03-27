@@ -16,7 +16,8 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+import gtk
+import re
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCDialup import DM_AUTO, DM_MANUAL, DialModes
 from netconfpkg.NCHardwareList import getHardwareList
@@ -24,10 +25,10 @@ from netconfpkg.NC_functions import _, getNewDialupDevice
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from netconfpkg.gui.provider import providerDialog, ISDNproviderDialog, ModemproviderDialog
+from netconfpkg.gui.provider import (providerDialog, 
+                                     ISDNproviderDialog,
+                                     ModemproviderDialog)
 from netconfpkg.gui.tonline import TonlineDialog
-import gtk
-import re
 
 
 class DialupInterfaceDialog(DeviceConfigDialog):

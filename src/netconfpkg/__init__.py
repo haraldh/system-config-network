@@ -19,5 +19,4 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 "Package for network configuration."
-
 __author__ = "Harald Hoyer <harald@redhat.com>"

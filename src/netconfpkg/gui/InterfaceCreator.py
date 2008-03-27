@@ -16,10 +16,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCHardwareList import getHardwareList
 from netconfpkg.NCProfileList import getProfileList
+
 
 class InterfaceCreator:
     def __init__(self, do_save = 1):

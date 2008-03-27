@@ -1,7 +1,7 @@
 "TUI Modem Interface Module"
-
-from netconfpkg.NC_functions import _
 import snack
+from netconfpkg.NC_functions import _
+
 
 class NCModemInterfaceTui:
     "TUI Modem Interface Dialog"

@@ -17,15 +17,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import gtk
-import gtk.glade
 import gobject
-
-from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+import gtk
 from netconfpkg.NC_functions import _
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui import sharedtcpip
+from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
+from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+
 
 modeList = [
     [ _("Auto") , "Auto" ],

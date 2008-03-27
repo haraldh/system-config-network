@@ -14,12 +14,12 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
 from netconfpkg.NCDevice import Device, ConfDevice
 from netconfpkg.NCDeviceFactory import getDeviceFactory
-from netconfpkg.NC_functions import DSL, getDeviceType
 from netconfpkg.NCDialup import DslDialup
+from netconfpkg.NC_functions import DSL, getDeviceType
 from netconfpkg.gdt import (gdtstruct_properties)
+
 
 _devADSLDialog = None
 _devADSLWizard = None

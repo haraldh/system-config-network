@@ -16,19 +16,18 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-import gtk
+import gobject
 import gtk.glade
 import os
-from rhpl import ethtool
-from netconfpkg.plugins import NCPluginDevWireless
+from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
 from netconfpkg.NC_functions import _, WIRELESS, NETCONFDIR, PROGNAME, request_rpms
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
-from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
-from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
-import gobject
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
+from netconfpkg.plugins import NCPluginDevWireless
+from rhpl import ethtool
+
 
 modeList = [
     [ _("Auto") , "Auto" ],

@@ -16,15 +16,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg import NCDeviceList
-from netconfpkg import NCIPsecList
-from netconfpkg.NC_functions import _, generic_error_dialog, PROGNAME, NETCONFDIR
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, load_icon, GLADEPATH
-import gtk
 import gtk.glade
 import os
 import re
+from netconfpkg import NCDeviceList, NCIPsecList
+from netconfpkg.NC_functions import (_, generic_error_dialog, 
+                                     PROGNAME, NETCONFDIR)
+from netconfpkg.gui.GUI_functions import (xml_signal_autoconnect, 
+                                          load_icon, GLADEPATH)
 
 class DeviceConfigDialog:
     def __init__(self, glade_file, device):

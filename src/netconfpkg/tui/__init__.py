@@ -19,11 +19,12 @@
 
 # pylint: disable-msg=W0122
 # pylint: disable-msg=W0141
-
+import locale
 import os
+
+
 _files = map(lambda v: v[:-3], filter(lambda v: v[:8]=="NCPlugin" and v[-3:] == ".py" and v != "__init__.py" and v != 'genClass.py' and v[0] != '.', os.listdir(__path__[0])))
 
-import locale
 locale.setlocale(locale.LC_ALL, "C")
 _files.sort()
 locale.setlocale(locale.LC_ALL, "")

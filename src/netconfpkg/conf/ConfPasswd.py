@@ -1,8 +1,8 @@
 "Module handling /etc/{passwd, shadow, group} style files"
-
 import os
 
 from .Conf import Conf, SystemFull # pylint: disable-msg=W0403 
+
 
 class ConfPw(Conf):
     """ConfPw(Conf)

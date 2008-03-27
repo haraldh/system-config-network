@@ -18,16 +18,19 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-from netconfpkg import NCHardwareList
-from netconfpkg.NC_functions import request_rpms, _, MODEM, generic_error_dialog, \
-    modemFlowControls, modemDeviceList, CRTSCTS
-from netconfpkg.gui.DialupDruid import DialupDruid
-from netconfpkg.gui import GUI_functions
-from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-import gtk
 import gtk.glade
 import os
+from netconfpkg import NCHardwareList
+from netconfpkg.NC_functions import (request_rpms, _,
+                                    MODEM, generic_error_dialog,
+                                    modemFlowControls, modemDeviceList, 
+                                    CRTSCTS)
+from netconfpkg.gui.DialupDruid import DialupDruid
+from netconfpkg.gui.GUI_functions import (xml_signal_autoconnect,
+                                          GLADEPATH, NETCONFDIR,
+                                          PROGNAME)
+from netconpkg.plugins.NCPluginDevModem import getModemList
+
 
 class ModemInterface:
     modemList = None
@@ -49,11 +52,11 @@ class ModemInterface:
         glade_file = 'ModemDruid.glade'
 
         if not os.path.isfile(glade_file):
-            glade_file = GUI_functions.GLADEPATH + glade_file
+            glade_file = GLADEPATH + glade_file
         if not os.path.isfile(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
+            glade_file = NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, 'druid', domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
         xml_signal_autoconnect(self.xml, 
             {
             "on_Modem_prepare" : self.on_Modem_prepare, 
@@ -122,7 +125,7 @@ class ModemInterface:
             gtk.gdk.flush()
             while gtk.events_pending():
                 gtk.main_iteration(False)
-            dlist = GUI_functions.getModemList()
+            dlist = getModemList()
             ModemInterface.modemList = dlist
             dialog.destroy()
             if dlist == []:

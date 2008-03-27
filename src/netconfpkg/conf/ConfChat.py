@@ -1,7 +1,6 @@
 "chat file handling"
-
-import re
 import os
+import re
 
 from .Conf import Conf # pylint: disable-msg=W0403
 
