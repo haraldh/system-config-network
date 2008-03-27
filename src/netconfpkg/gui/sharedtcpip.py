@@ -198,7 +198,7 @@ def on_routeEditButton_clicked(button, xml, device, parent_dialog):
             try:
                 route.test()
             except ValueError:
-                GUI_functions.gui_error_dialog ( "Invalid IP format", dl)
+                GUI_functions.gui_error_dialog ("Invalid IP format", dl)
                 continue
         else:
             # if user pressed CANCEL
@@ -289,7 +289,7 @@ def on_routeAddButton_clicked(button, xml, device, parent_dialog):
             try:
                 route.test()
             except ValueError:
-                GUI_functions.gui_error_dialog ( "Invalid IP format", dl)
+                GUI_functions.gui_error_dialog ("Invalid IP format", dl)
                 continue
         else:
             # if user pressed CANCEL

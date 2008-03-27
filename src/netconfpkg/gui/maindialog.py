@@ -701,7 +701,7 @@ class mainDialog:
             # change the default profile to a more understandable name
             if name == "default":
                 name = DEFAULT_PROFILE_NAME
-            menu_item = gtk.RadioMenuItem ( group, label = name )
+            menu_item = gtk.RadioMenuItem (group, label = name)
             if not group:
                 group = menu_item
             menu_item.show ()

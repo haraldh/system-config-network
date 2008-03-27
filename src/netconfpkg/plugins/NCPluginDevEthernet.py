@@ -24,7 +24,7 @@ from netconfpkg.NC_functions import ETHERNET, getDeviceType
 _devEthernetDialog = None
 _devEthernetWizard = None
 
-class DevEthernet( Device ):
+class DevEthernet(Device):
     """An object of class DevEthernet can be obtained by calling:
 
     df = getDeviceFactory()
@@ -55,19 +55,19 @@ class DevEthernet( Device ):
     SubType = None
     Priority = 0
 
-    def __init__( self ):
+    def __init__(self):
         super(DevEthernet, self).__init__()
         self.Type = ETHERNET
 
-    def getDialog( self ):
+    def getDialog(self):
         """get the gtk.Dialog of the ethernet configuration dialog"""
-        dialog =  _devEthernetDialog( self )
-        if hasattr( dialog, "xml" ):
-            return dialog.xml.get_widget( "Dialog" )
+        dialog =  _devEthernetDialog(self)
+        if hasattr(dialog, "xml"):
+            return dialog.xml.get_widget("Dialog")
 
         return dialog
 
-    def getWizard( self ):
+    def getWizard(self):
         """get the wizard of the ethernet wizard"""
         return _devEthernetWizard
 
@@ -79,18 +79,18 @@ class DevEthernet( Device ):
             return True
         return False
 
-def setDevEthernetDialog( dialog ):
+def setDevEthernetDialog(dialog):
     """Set the ethernet dialog class"""
     global _devEthernetDialog  # pylint: disable-msg=W0603
     _devEthernetDialog = dialog
 
-def setDevEthernetWizard( wizard ):
+def setDevEthernetWizard(wizard):
     """Set the ethernet wizard class"""
     global _devEthernetWizard  # pylint: disable-msg=W0603
     _devEthernetWizard = wizard
 
 def register_plugin():
     _df = getDeviceFactory()
-    _df.register( DevEthernet )
+    _df.register(DevEthernet)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

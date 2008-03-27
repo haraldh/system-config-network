@@ -829,7 +829,7 @@ class ModemDialup(Dialup):
         try:
             mfile = open(filename, "w")
             line = 'connect "/usr/bin/wvdial --remotename ' + \
-                   '%s --chat \'%s\'"' % ( deviceid, name )
+                   '%s --chat \'%s\'"' % (deviceid, name)
             mfile.write(line + '\n')
             log.lch(2, filename, line)
             mfile.close()

@@ -95,49 +95,49 @@ class Device_base(Gdtstruct):
                           
 # pylint: disable-msg=W0201
 
-class ConfDevice( ConfShellVar.ConfShellVar ):
-    def __init__( self, name, mdir = None ):
+class ConfDevice(ConfShellVar.ConfShellVar):
+    def __init__(self, name, mdir = None):
         if mdir == None:
             mdir = getRoot() + SYSCONFDEVICEDIR
         new = False
         self.filename = mdir + 'ifcfg-' + name
-        if not os.access( self.filename, os.R_OK ):
+        if not os.access(self.filename, os.R_OK):
             new = True
             self.oldmode = 0644
         else:
-            status = os.stat( self.filename )
+            status = os.stat(self.filename)
             self.oldmode = status[0]
             #print status
 
-        ConfShellVar.ConfShellVar.__init__( self, self.filename )
+        ConfShellVar.ConfShellVar.__init__(self, self.filename)
 
         if new:
             self.rewind()
             self.insertline( "# Please read /usr/share/doc/"
                             "initscripts-*/sysconfig.txt" )
             self.nextline()
-            self.insertline( "# for the documentation of these parameters." )
+            self.insertline("# for the documentation of these parameters.")
             self.rewind()
 
-    def write( self ):
-        self.chmod( self.oldmode )
-        log.log( 2, "chmod %#o %s" % ( self.oldmode & 03777, self.filename ) )
+    def write(self):
+        self.chmod(self.oldmode)
+        log.log(2, "chmod %#o %s" % (self.oldmode & 03777, self.filename) )
         #if ((self.oldmode & 0044) != 0044):
         #    ask = NC_functions.generic_yesno_dialog(\
         #        _("May I change\n%s\nfrom mode %o to %o?") % \
         #        (self.filename, self.oldmode & 03777, 0644))
         #    if ask != RESPONSE_YES:
         #        self.chmod(self.oldmode)
-        ConfShellVar.ConfShellVar.write( self )
+        ConfShellVar.ConfShellVar.write(self)
 
-class ConfRoute( ConfShellVar.ConfShellVar ):
-    def __init__( self, name ):
-        ConfShellVar.ConfShellVar.__init__( self, getRoot() + SYSCONFDEVICEDIR + \
+class ConfRoute(ConfShellVar.ConfShellVar):
+    def __init__(self, name):
+        ConfShellVar.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + \
                                     'route-' + name )
-        self.chmod( 0644 )
+        self.chmod(0644)
 
 # FIXME: [157630] system-config-networks needs options for setting default route and metric
-class Device( Device_base ):
+class Device(Device_base):
     Type = ETHERNET
     SubType = None
     Priority = 0
@@ -174,28 +174,28 @@ class Device( Device_base ):
         super(Device, self).__init__()
         self.oldname = None
         
-    def getDialog( self ):
+    def getDialog(self):
         raise NotImplemented
 
-    def getWizard( self ):
+    def getWizard(self):
         raise NotImplemented
 
-    def isType( self, device ):
+    def isType(self, device):
         raise NotImplemented
 
-    def testDeviceId( self, value):
-        if re.search( r"^[a-z|A-Z|0-9\_:]+$", value ):
+    def testDeviceId(self, value):
+        if re.search(r"^[a-z|A-Z|0-9\_:]+$", value):
             return True
         return False
 
-    def getDeviceAlias( self ):
+    def getDeviceAlias(self):
         devname = self.Device
         if self.Alias != None and self.Alias != "":
-            devname = devname + ':' + str( self.Alias )
+            devname = devname + ':' + str(self.Alias)
         return devname
     
     def getRealMtu(self):
-        out = commands.getoutput( '/sbin/ip link show ' + str(self.Device) + ' 2>/dev/null' )
+        out = commands.getoutput('/sbin/ip link show ' + str(self.Device) + ' 2>/dev/null' )
         next = False
         val = 0
         try:
@@ -210,20 +210,20 @@ class Device( Device_base ):
         
         return val
 
-    def load( self, name):
+    def load(self, name):
 	
-        conf = ConfDevice( name )
+        conf = ConfDevice(name)
 
         self.oldname = name
 
-        if not conf.has_key( "DEVICE" ):
+        if not conf.has_key("DEVICE"):
             aliaspos = name.find(':' )
             if aliaspos != -1:
                 from netconfpkg.NCDeviceList import getDeviceList
                 # ok, we have to inherit all other data from our master
                 for dev in getDeviceList():
                     if dev.Device == name[:aliaspos]:
-                        self.apply( dev ) 
+                        self.apply(dev) 
                         break
 
             self.Device = name
@@ -231,7 +231,7 @@ class Device( Device_base ):
         self.DeviceId = name
         for selfkey in self.__keydict.keys():
             confkey = self.__keydict[selfkey]
-            if conf.has_key( confkey ) and conf[confkey]:
+            if conf.has_key(confkey) and conf[confkey]:
                 setattr(self, selfkey, conf[confkey])
                 #setattr(self, selfkey, conf[confkey])
 
@@ -243,7 +243,7 @@ class Device( Device_base ):
 
         for selfkey in self.__boolkeydict.keys():
             confkey = self.__boolkeydict[selfkey]
-            if conf.has_key( confkey ):
+            if conf.has_key(confkey):
                 if conf[confkey] == 'yes':
                     setattr(self, selfkey, True)
                     #print >> sys.stderr, self.DeviceId, selfkey, "True"
@@ -256,7 +256,7 @@ class Device( Device_base ):
                 setattr(self, selfkey, False)
                 #setattr(self, selfkey, False)
 
-        if not conf.has_key( "PEERDNS" ):
+        if not conf.has_key("PEERDNS"):
             del self.AutoDNS
 
         if not self.Slave:
@@ -264,35 +264,35 @@ class Device( Device_base ):
 
         if not self.Gateway:
             try:
-                cfg = ConfShellVar.ConfShellVar( getRoot() + SYSCONFNETWORK )
-                if cfg.has_key( 'GATEWAY' ) and ((not cfg.has_key('GATEWAYDEV')) or cfg['GATEWAYDEV'] == self.Device) :
+                cfg = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK )
+                if cfg.has_key('GATEWAY') and ((not cfg.has_key('GATEWAYDEV')) or cfg['GATEWAYDEV'] == self.Device) :
                     gw = cfg['GATEWAY']
 
                     if gw and self.Netmask:
                         try:
                             network = commands.getoutput( 'ipcalc --network '+\
-                                                         str( self.IP ) + \
+                                                         str(self.IP) + \
                                                          ' ' + \
-                                                         str( self.Netmask ) +\
+                                                         str(self.Netmask) +\
                                                          ' 2>/dev/null' )
 
                             out = commands.getoutput( 'ipcalc --network ' + \
-                                                     str( gw ) + ' ' \
-                                                     + str( self.Netmask ) + \
+                                                     str(gw) + ' ' \
+                                                     + str(self.Netmask) + \
                                                      ' 2>/dev/null' )
                             if out == network:
-                                self.Gateway = str( gw )
+                                self.Gateway = str(gw)
                         except:
                             pass
 
 
             except EnvironmentError, msg:
-                NC_functions.generic_error_dialog( str( msg ) )
+                NC_functions.generic_error_dialog(str(msg) )
 
         try:
             aliaspos = self.Device.find(':' )
             if aliaspos != -1:
-                self.Alias = int( self.Device[aliaspos+1:] )
+                self.Alias = int(self.Device[aliaspos+1:])
                 self.Device = self.Device[:aliaspos]
         except TypeError:
             NC_functions.generic_error_dialog( _( "%s, "
@@ -315,7 +315,7 @@ class Device( Device_base ):
             else:
                 self.BootProto = 'dhcp'
 
-        if not self.Type or self.Type == "" or self.Type == _( "Unknown" ):
+        if not self.Type or self.Type == "" or self.Type == _("Unknown"):
             from netconfpkg import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
@@ -323,9 +323,9 @@ class Device( Device_base ):
                     self.Type = hw.Type
                     break
             else:
-                self.Type = NC_functions.getDeviceType( self.Device )
+                self.Type = NC_functions.getDeviceType(self.Device)
 
-        if conf.has_key( "RESOLV_MODS" ):
+        if conf.has_key("RESOLV_MODS"):
             if conf["RESOLV_MODS"] != "no":
                 self.AutoDNS = True
             else:
@@ -334,12 +334,12 @@ class Device( Device_base ):
         # move old <id>.route files to route-<id>
         mfile = getRoot() + SYSCONFDEVICEDIR + \
                                 self.DeviceId + '.route'
-        if os.path.isfile( mfile ):
+        if os.path.isfile(mfile):
             NC_functions.rename( mfile,
                                 getRoot() + SYSCONFDEVICEDIR + \
                                 'route-' + self.DeviceId )
         # load routes
-        rconf = ConfRoute( name )
+        rconf = ConfRoute(name)
         #self.createStaticRoutes() 
 
         for key in rconf.keys():
@@ -353,28 +353,28 @@ class Device( Device_base ):
                    
                 route.Address = rconf['ADDRESS' + str(p)]                
                 if rconf.has_key("NETMASK" + str(p)):
-                    route.Netmask = rconf['NETMASK' + str( p )]
+                    route.Netmask = rconf['NETMASK' + str(p)]
                 if rconf.has_key("GATEWAY" + str(p)):
-                    route.Gateway = rconf['GATEWAY' + str( p )]
+                    route.Gateway = rconf['GATEWAY' + str(p)]
                 
-        self.commit( changed=False ) 
+        self.commit(changed=False) 
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
         # fail gracefully, with informing, which file, and why
 
         # Just to be safe...
-        os.umask( 0022 )
+        os.umask(0022)
         self.commit() 
 
-        if self.oldname and ( self.oldname != self.DeviceId ):
+        if self.oldname and (self.oldname != self.DeviceId):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
-                NC_functions.rename( getRoot() + SYSCONFDEVICEDIR + \
+                NC_functions.rename(getRoot() + SYSCONFDEVICEDIR + \
                                     prefix + self.oldname,
                                     getRoot() + SYSCONFDEVICEDIR + \
                                     prefix + self.DeviceId )
 
-        conf = ConfDevice( self.DeviceId )
+        conf = ConfDevice(self.DeviceId)
         conf.fsf()
 
         if self.BootProto == None:
@@ -420,7 +420,7 @@ class Device( Device_base ):
         if self.Alias != None:
             # FIXME: [167991] Add consistency check for aliasing
             # check, if a parent device exists!!!
-            conf['DEVICE'] = str( self.Device ) + ':' + str( self.Alias )
+            conf['DEVICE'] = str(self.Device) + ':' + str(self.Alias)
             del conf['ONBOOT']
             # Alias interfaces should not have a HWADDR (bug #188321, #197401)
             del conf['HWADDR']
@@ -430,11 +430,11 @@ class Device( Device_base ):
         # Recalculate BROADCAST and NETWORK values if IP and netmask are
         # present (#51462)
         # obsolete
-        if self.IP and self.Netmask and conf.has_key( 'BROADCAST' ):
+        if self.IP and self.Netmask and conf.has_key('BROADCAST'):
             try:
                 broadcast = commands.getoutput( 'ipcalc --broadcast ' + \
-                                               str( self.IP ) + \
-                                               ' ' + str( self.Netmask ) + \
+                                               str(self.IP) + \
+                                               ' ' + str(self.Netmask) + \
                                                ' 2>/dev/null' )
                 if broadcast:
                     conf['BROADCAST'] = broadcast[10:]
@@ -443,11 +443,11 @@ class Device( Device_base ):
         else:
             del conf['BROADCAST']
 
-        if self.IP and self.Netmask and conf.has_key( 'NETWORK' ):
+        if self.IP and self.Netmask and conf.has_key('NETWORK'):
             try:
                 network = commands.getoutput( 'ipcalc --network ' + \
-                                             str( self.IP ) + \
-                                             ' ' + str( self.Netmask ) + \
+                                             str(self.IP) + \
+                                             ' ' + str(self.Netmask) + \
                                              ' 2>/dev/null' )
                 if network:
                     conf['NETWORK'] = network[8:]
@@ -457,24 +457,24 @@ class Device( Device_base ):
             del conf['NETWORK']
             
         # FIXME: RFE [174974] limitation of setting routing
-        if self.StaticRoutes and len( self.StaticRoutes ) > 0: 
-            rconf = ConfRoute( self.DeviceId )
+        if self.StaticRoutes and len(self.StaticRoutes) > 0: 
+            rconf = ConfRoute(self.DeviceId)
             for key in rconf.keys():
                 del rconf[key]
             p = 0
             for route in self.StaticRoutes:
                 if route.Address:
-                    rconf['ADDRESS'+str( p )] = route.Address
+                    rconf['ADDRESS'+str(p)] = route.Address
                 if route.Netmask:
-                    rconf['NETMASK'+str( p )] = route.Netmask
+                    rconf['NETMASK'+str(p)] = route.Netmask
                 if route.Gateway:
-                    rconf['GATEWAY'+str( p )] = route.Gateway
+                    rconf['GATEWAY'+str(p)] = route.Gateway
                 p = p + 1
             rconf.write()
         else:
             # remove route file, if no routes defined
-            unlink( getRoot() + SYSCONFDEVICEDIR + self.DeviceId + '.route' )
-            unlink( getRoot() + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
+            unlink(getRoot() + SYSCONFDEVICEDIR + self.DeviceId + '.route' )
+            unlink(getRoot() + SYSCONFDEVICEDIR + 'route-' + self.DeviceId )
 
         # remove empty gateway entries
         if not self.Gateway:
@@ -490,27 +490,27 @@ class Device( Device_base ):
                     del conf[i]
 
         # RESOLV_MODS should be PEERDNS
-        if conf.has_key( 'RESOLV_MODS' ):
+        if conf.has_key('RESOLV_MODS'):
             del conf['RESOLV_MODS']
 
         conf.write()
 
         self.oldname = self.DeviceId
 
-    def activate( self, dialog = None ):
+    def activate(self, dialog = None):
         command = '/sbin/ifup'
         param = [command, self.DeviceId, "up"]
 
         try:
-            ( ret, msg ) =  generic_run_dialog( \
+            (ret, msg) =  generic_run_dialog( \
                 command,
                 param,
-                catchfd = ( 1, 2 ),
-                title = _( 'Network device activating...' ),
+                catchfd = (1, 2),
+                title = _('Network device activating...'),
                 label = _( 'Activating network device %s, '
-                          'please wait...' ) % ( self.DeviceId ),
+                          'please wait...' ) % (self.DeviceId),
                 errlabel = _( 'Cannot activate '
-                             'network device %s!\n' ) % ( self.DeviceId ),
+                             'network device %s!\n' ) % (self.DeviceId),
                 dialog = dialog )
 
         except RuntimeError, msg:
@@ -518,19 +518,19 @@ class Device( Device_base ):
 
         return ret, msg
 
-    def deactivate( self, dialog = None ):
+    def deactivate(self, dialog = None):
         command = '/sbin/ifdown'
         param = [command, self.DeviceId, "down"]
 
         try:
-            ( ret, msg ) = generic_run_dialog( \
+            (ret, msg) = generic_run_dialog( \
                 command, param,
-                catchfd = ( 1, 2 ),
-                title = _( 'Network device deactivating...' ),
+                catchfd = (1, 2),
+                title = _('Network device deactivating...'),
                 label = _( 'Deactivating network device %s, '
-                          'please wait...' ) % ( self.DeviceId ),
+                          'please wait...' ) % (self.DeviceId),
                 errlabel = _( 'Cannot deactivate '
-                             'network device %s!\n' ) % ( self.DeviceId ),
+                             'network device %s!\n' ) % (self.DeviceId),
                 dialog = dialog )
 
         except RuntimeError, msg:
@@ -538,26 +538,26 @@ class Device( Device_base ):
 
         return ret, msg
 
-    def configure( self ):
+    def configure(self):
         command = '/usr/bin/system-config-network'
         args = ''
-        if not os.path.isfile( command ) and getDebugLevel() > 0:
+        if not os.path.isfile(command) and getDebugLevel() > 0:
             command = os.getcwd() + '/system-config-network-gui'
             args = '-d'
 
         try:
-            ( ret, msg ) =  generic_run( command,
+            (ret, msg) =  generic_run( command,
                                       [command, args],
-                                      catchfd = ( 1, 2 ) )
+                                      catchfd = (1, 2) )
         except RuntimeError, msg:
             ret = -1
 
         return ret, msg
 
-    def monitor( self ):
+    def monitor(self):
         pass
 
-    def getHWDevice( self ):
+    def getHWDevice(self):
         return self.Device
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

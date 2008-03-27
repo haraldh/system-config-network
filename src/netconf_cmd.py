@@ -97,12 +97,12 @@ def handleException((mtype, value, tb), progname, version, debug=None):
 
 
 def Usage():
-    sys.stderr.write( _("%s - network configuration commandline tool") % (sys.argv[0]) + '\n')
-    sys.stderr.write( _("Copyright (c) 2001-2005 Red Hat, Inc.") + '\n')
+    sys.stderr.write(_("%s - network configuration commandline tool") % (sys.argv[0]) + '\n')
+    sys.stderr.write(_("Copyright (c) 2001-2005 Red Hat, Inc.") + '\n')
     sys.stderr.write( _("This software is distributed under the GPL. "
             "Please Report bugs to Red Hat's Bug Tracking "
             "System: http://bugzilla.redhat.com/") + "\n\n")
-    sys.stderr.write( _("Usage: %s") % (sys.argv[0]) + '\n')
+    sys.stderr.write(_("Usage: %s") % (sys.argv[0]) + '\n')
     sys.stderr.write( "\t-p, --profile <profile> [--activate, -a]: %s"\
                       % _("switch / activate profile") + '\n')
     sys.stderr.write( "\t-h, --hardwarelist : %s"\
@@ -117,7 +117,7 @@ def Usage():
                       % _("set the root directory") + '\n')
     sys.stderr.write( "\t-e, --export       : %s" \
                       % _("export list (default)") + '\n')
-    sys.stderr.write( "\t-i, --import       : %s" % _("import list") + '\n')
+    sys.stderr.write("\t-i, --import       : %s" % _("import list") + '\n')
     sys.stderr.write( "\t-c, --clear        : %s" % \
           _("clear existing list prior of importing") + '\n')
     sys.stderr.write( "\t-f, --file=<file>  : %s" % \

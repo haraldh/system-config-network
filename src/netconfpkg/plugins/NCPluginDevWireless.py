@@ -47,7 +47,7 @@ class DevWireless(Device):
 
     def save(self):
         super(DevWireless, self).save()
-        conf = ConfDevice( self.DeviceId )
+        conf = ConfDevice(self.DeviceId)
         conf.fsf()
         self.Wireless.save(conf, self.DeviceId)
         conf.write()

@@ -74,12 +74,12 @@ class DevIsdn(Device):
         # FIXME: Support more than one ISDN Card
         return "ISDN Card 0"
 
-    def activate( self, dialog = None ):
+    def activate(self, dialog = None):
         command = '/bin/sh'
         param = [ command,
                   "-c",
                   "/sbin/ifup %s; /usr/sbin/userisdnctl %s dial" % \
-                  ( self.DeviceId, self.DeviceId ) ]
+                  (self.DeviceId, self.DeviceId) ]
 
         try:
             (ret, msg) =  generic_run_dialog(\
@@ -103,7 +103,7 @@ class DevIsdn(Device):
         param = [ command,
                   "-c",
                   "/usr/sbin/userisdnctl %s hangup ;/sbin/ifdown %s;" % \
-                  ( self.DeviceId, self.DeviceId ) ]
+                  (self.DeviceId, self.DeviceId) ]
 
         try:
             (ret, msg) =  generic_run_dialog(\
