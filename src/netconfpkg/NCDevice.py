@@ -487,13 +487,9 @@ class Device(Device_base):
             del conf['GATEWAY']
 
 
-        # Do not clear the non-filled in values for Wireless Devices
-        # Bugzilla #52252
-        # FIXME: OO!
-        if not hasattr(self, 'Wireless'):
-            for i in conf.keys():
-                if not conf[i] or conf[i] == "":
-                    del conf[i]
+        for i in conf.keys():
+            if not conf[i] or conf[i] == "":
+                del conf[i]
 
         # RESOLV_MODS should be PEERDNS
         if conf.has_key('RESOLV_MODS'):

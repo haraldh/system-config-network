@@ -79,7 +79,7 @@ class mainDialog:
             glade_file = NETCONFDIR + glade_file
 
         self.isRoot = False
-        self.no_profileentry_update = True # FIXME: ???
+        self.no_profileentry_update = False
         
         if os.access(getRoot() + "/", os.W_OK):
             self.isRoot = True
@@ -384,7 +384,7 @@ class mainDialog:
     def hydrateProfiles(self, refresh = None):
         profilelist = getProfileList(refresh)
 
-        self.no_profileentry_update = True # FIXME: ???
+        self.no_profileentry_update = True
         omenu = self.xml.get_widget('profileOption')
 
         if len(profilelist) == 1:
@@ -425,7 +425,7 @@ class mainDialog:
             omenu.set_history (history)
 
         menu.get_children()[history].activate ()
-        self.no_profileentry_update = False # ??
+        self.no_profileentry_update = False
 
     def get_active_profile(self):
         profilelist = getProfileList()
@@ -498,12 +498,11 @@ if __name__ == '__main__':
         pass
 
     try:
-        __opts, __args = getopt.getopt(cmdline, "vh?d",
+        __opts, __args = getopt.getopt(cmdline, "v?d",
                                    [
                                     "verbose",
                                     "debug",
                                     "help",
-                                    "hotshot",
                                     "root="
                                     ])
         for __opt, __val in __opts:
