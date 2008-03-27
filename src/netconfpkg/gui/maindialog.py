@@ -279,7 +279,7 @@ class mainDialog:
         columns[1] = gtk.TreeViewColumn('Hostname')
         columns[2] = gtk.TreeViewColumn('Aliases')
         # create list
-        self.hostsListStore = gtk.ListStore(str, str, str,object)
+        self.hostsListStore = gtk.ListStore(str, str, str, object)
         # set filter
         self.modelfilter = self.hostsListStore.filter_new()
         self.modelfilter.set_visible_func(self.filter_loopback, None)
@@ -287,7 +287,7 @@ class mainDialog:
         for column in columns:
             n = hclist.append_column(column)
             column.cell = gtk.CellRendererText()
-            column.pack_start(column.cell,False)
+            column.pack_start(column.cell, False)
             column.set_attributes(column.cell, text=(n-1))
             column.set_resizable(True)
         self.modelfilter.refilter()
@@ -614,7 +614,7 @@ class mainDialog:
         if self.xml.get_widget("show_loopback").get_active():
             return True
         else:
-            return model.get_value(miter, 0) not in ["127.0.0.1","::1"]
+            return model.get_value(miter, 0) not in ["127.0.0.1", "::1"]
 
     def on_show_loopback_toggled(self, *args): # pylint: disable-msg=W0613
         self.xml.get_widget("hostsList").get_model().refilter()
@@ -678,7 +678,7 @@ class mainDialog:
                 self.hostsListStore.append([host.IP, host.Hostname,
                                " ".join(host.AliasList), host])
             else:
-                self.hostsListStore.append([host.IP, host.Hostname,"", host])
+                self.hostsListStore.append([host.IP, host.Hostname, "", host])
             
         if self.initialized:
             self.appBar.pop()
@@ -880,8 +880,8 @@ class mainDialog:
             if uid!=None:
                 import pwd
                 # pylint: disable-msg=W0612
-                (pw_name,pw_passwd,pw_uid,
-                 pw_gid,pw_gecos,pw_dir,
+                (pw_name, pw_passwd, pw_uid,
+                 pw_gid, pw_gecos, pw_dir,
                  pw_shell) = pwd.getpwuid(uid)
 
             gui_run("/bin/su", [ "su", "-c", "/usr/bin/htmlview file://" + NETCONFDIR + \
@@ -1412,7 +1412,7 @@ class mainDialog:
         if not path:
             return
 
-        host = hostsListStore.get_value(hostsListStore.get_iter(path[0]),3)
+        host = hostsListStore.get_value(hostsListStore.get_iter(path[0]), 3)
         
         dialog = editHostsDialog(host)
         dl = dialog.xml.get_widget ("Dialog")
@@ -1447,7 +1447,7 @@ class mainDialog:
         
         todel = []
         for p in path:
-            todel.append(hostsListStore.get_value(hostsListStore.get_iter(p),3))
+            todel.append(hostsListStore.get_value(hostsListStore.get_iter(p), 3))
         todel.sort()
         todel.reverse()
 

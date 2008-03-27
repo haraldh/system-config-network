@@ -334,7 +334,7 @@ def getDeviceList(refresh = None):
 def getNextDev(base):
     devlist = getDeviceList()
     num = 0
-    for num in xrange(0,100):
+    for num in xrange(0, 100):
         for dev in devlist:
             if dev.Device == base + str(num):
                 break

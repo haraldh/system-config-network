@@ -48,7 +48,7 @@ class DevEthernet(Device):
     AllowUser       - USERCTL=yes|no
     IPv6Init        - IPV6INIT=yes|no
     AutoDNS         - PEERDNS=yes|no - modify /etc/resolv.conf if peer uses
-                      msdns extension (PPP only) or DNS{1,2} are set, or if
+                      msdns extension (PPP only) or DNS{1, 2} are set, or if
                       using pump or dhcpcd. default to "yes"."""
 
     Type = ETHERNET

@@ -329,7 +329,7 @@ class HardwareList(HardwareList_base):
                     log.log(5, "Found nothing for %s" % str(kudzu_device))
                     dev = kudzu_device.device
                     # ok, now search for an empty slot
-                    for num in xrange(0,20):
+                    for num in xrange(0, 20):
                         for h in self:
                             if h.Name == dev + str(num):
                                 break
@@ -782,7 +782,7 @@ def getHardwareList(refresh = None):
 def getNextDev(base):
     hwlist = getHardwareList()
     num = 0
-    for num in xrange(0,100):
+    for num in xrange(0, 100):
         for hw in hwlist:
             if hw.Name == base + str(num):
                 break

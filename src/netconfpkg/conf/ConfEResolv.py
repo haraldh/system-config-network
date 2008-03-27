@@ -84,7 +84,7 @@ class ConfEResolv(Conf):
             #  bug 125712: /etc/resolv.conf modifiers MUST use
             #  change_resolv_conf function to change resolv.conf
             import tempfile
-            (fd, self.filename) = tempfile.mkstemp('','/tmp/')
+            (fd, self.filename) = tempfile.mkstemp('', '/tmp/')
             Conf.write(self)
             import commands
             commands.getstatusoutput("/bin/bash -c '. /etc/sysconfig/network-scripts/network-functions; change_resolv_conf "+self.filename+"'")

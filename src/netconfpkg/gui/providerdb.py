@@ -93,7 +93,7 @@ class provider:
     def get_password(self):
         return self.password
 
-    def set_password(self,password):
+    def set_password(self, password):
         self.password = password
 
     def get_areacode(self):

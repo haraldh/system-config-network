@@ -138,8 +138,8 @@ import netconfpkg.tui # pylint: disable-msg=W0611
 def loadConfig(mscreen):
     exception.action(_("Loading configuration"))
     t=TextboxReflowed(10, _("Loading Device Configuration"))
-    g=GridForm(mscreen,_("Network Configuration"),1,1)
-    g.add(t,0,0)
+    g=GridForm(mscreen, _("Network Configuration"), 1, 1)
+    g.add(t, 0, 0)
     g.draw()
     mscreen.refresh()
     devicelist = getDeviceList() # pylint: disable-msg=W0612
@@ -161,9 +161,9 @@ def newDevice(mscreen):
     Displays the main screen
     @screen The snack screen instance
     """
-    t=TextboxReflowed(25,_("Which device type do you want to add?"))
-    bb=ButtonBar(mscreen,((_("Add"),"add"),(_("Cancel"),"cancel")))
-    li=Listbox(5,width=25,returnExit=1)
+    t=TextboxReflowed(25, _("Which device type do you want to add?"))
+    bb=ButtonBar(mscreen, ((_("Add"), "add"), (_("Cancel"), "cancel")))
+    li=Listbox(5, width=25, returnExit=1)
     li.append(_("Ethernet"), ETHERNET)
     li.append(_("Modem"), MODEM)
     li.append(_("ISDN"), ISDN)
@@ -172,10 +172,10 @@ def newDevice(mscreen):
     if machine == 's390' or machine == 's390x':
         li.append(_("QETH"), QETH)
 
-    g=GridForm(mscreen,_("Network Configuration"),1,3)
-    g.add(t,0,0)
-    g.add(li,0,1)
-    g.add(bb,0,2)
+    g=GridForm(mscreen, _("Network Configuration"), 1, 3)
+    g.add(t, 0, 0)
+    g.add(li, 0, 1)
+    g.add(bb, 0, 2)
     res=g.run()
     mscreen.popWindow()
     if bb.buttonPressed(res) != 'cancel':
@@ -192,7 +192,7 @@ def newDevice(mscreen):
     return -2
 
 def selectDevice(mscreen):
-    li=Listbox(5,returnExit=1)
+    li=Listbox(5, returnExit=1)
     l = 0
     le = mscreen.width - 6
     if le <= 0: le = 5
@@ -217,10 +217,10 @@ def selectDevice(mscreen):
         return None
 
     li.append(_("<New Device>"), None)
-    g=GridForm(mscreen,_("Select A Device"),1,3)
-    bb=ButtonBar(mscreen,((_("Quit"),"quit"), (_("Cancel"),"cancel")))
-    g.add(li,0,1)
-    g.add(bb,0,2,growx=1)
+    g=GridForm(mscreen, _("Select A Device"), 1, 3)
+    bb=ButtonBar(mscreen, ((_("Quit"), "quit"), (_("Cancel"), "cancel")))
+    g.add(li, 0, 1)
+    g.add(bb, 0, 2, growx=1)
     res = g.run()
     mscreen.popWindow()
     if bb.buttonPressed(res)=="quit":

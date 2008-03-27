@@ -178,7 +178,7 @@ HostsList.4.IP=10.1.1.1
 
 def suite():
     suite = unittest.TestSuite()
-    suite = unittest.makeSuite(TestHosts,'test')
+    suite = unittest.makeSuite(TestHosts, 'test')
     return suite
 
 if __name__ == "__main__":

@@ -295,7 +295,7 @@ class WirelessInterface(InterfaceCreator):
         clist.append([_("Other Wireless Card")])
         clist.select_row (self.hw_sel, 0)
 
-    def on_finish_page_back(self,druid_page, druid):
+    def on_finish_page_back(self, druid_page, druid):
         pass
 
     def on_finish_page_prepare(self, druid_page, druid):

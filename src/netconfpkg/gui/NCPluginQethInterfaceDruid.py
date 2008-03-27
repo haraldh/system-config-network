@@ -195,7 +195,7 @@ class QethInterfaceGui(InterfaceCreator):
         clist.append([_("Other QETH Device")])
         clist.select_row (self.hw_sel, 0)
     
-    def on_finish_page_back(self,druid_page, druid):
+    def on_finish_page_back(self, druid_page, druid):
         pass
         
     def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613

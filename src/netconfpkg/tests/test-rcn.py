@@ -607,7 +607,7 @@ ProfileList.newprofile.ProfileName=newprofile
 
 def suite():
     suite = unittest.TestSuite()
-    suite = unittest.makeSuite(TestRCN,'test')
+    suite = unittest.makeSuite(TestRCN, 'test')
     return suite
 
 if __name__ == "__main__":

@@ -68,6 +68,6 @@ class HardwareFactory(dict):
         else:
             return self[hwtype][0]
 
-from netconfpkg.plugins import * # pylint: disable-msg=W0401,W0614
+from netconfpkg.plugins import * # pylint: disable-msg=W0401, W0614
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

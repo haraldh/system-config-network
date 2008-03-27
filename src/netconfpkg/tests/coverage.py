@@ -42,7 +42,7 @@ coverage.py -a [-d dir] FILE1 FILE2 ...
 Coverage data is saved in the file .coverage by default.  Set the
 COVERAGE_FILE environment variable to save it somewhere else."""
 
-# pylint: disable-msg=W0402,W0404,W0621,W0622,W0706,W0702,W0704,W0141,W0603,W0613
+# pylint: disable-msg=W0402, W0404, W0621, W0622, W0706, W0702, W0704, W0141, W0603, W0613
 import os
 import re
 import string
@@ -359,7 +359,7 @@ class coverage:
     # for printing by coalescing groups of lines as long as the lines
     # represent consecutive statements.  This will coalesce even if
     # there are gaps between statements, so if statements =
-    # [1,2,3,4,5,10,11,12,13,14] and lines = [1,2,5,10,11,13,14] then
+    # [1, 2, 3, 4, 5, 10, 11, 12, 13, 14] and lines = [1, 2, 5, 10, 11, 13, 14] then
     # format_lines will return "1-2, 5-11, 13-14".
 
     def format_lines(self, statements, lines):
@@ -412,7 +412,7 @@ class coverage:
     def report(self, morfs, show_missing=1, ignore_errors=0):
         if not isinstance(morfs, types.ListType):
             morfs = [morfs]
-        max_name = max([5,] + map(len, map(self.morf_name, morfs)))
+        max_name = max([5, ] + map(len, map(self.morf_name, morfs)))
         fmt_name = "%%- %ds  " % max_name
         fmt_err = fmt_name + "%s: %s"
         header = fmt_name % "Name" + " Stmts   Exec  Cover"
@@ -470,9 +470,9 @@ class coverage:
                 if directory:
                     dest_file = os.path.join(directory,
                                              os.path.basename(filename)
-                                             + ',cover')
+                                             + ', cover')
                 else:
-                    dest_file = filename + ',cover'
+                    dest_file = filename + ', cover'
                 dest = open(dest_file, 'w')
                 lineno = 0
                 i = 0
@@ -614,4 +614,4 @@ if __name__ == '__main__':
 #
 #
 #
-# $Id: coverage.py,v 1.4 2007/03/14 09:29:37 harald Exp $
+# $Id: coverage.py, v 1.4 2007/03/14 09:29:37 harald Exp $

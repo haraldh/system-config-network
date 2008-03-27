@@ -85,7 +85,7 @@ class DevIsdn(Device):
             (ret, msg) =  generic_run_dialog(\
                 command,
                 param,
-                catchfd = (1,2),
+                catchfd = (1, 2),
                 title = _('Network device activating...'),
                 label = _('Activating network device %s, '
                           'please wait...') % (self.DeviceId),
@@ -109,7 +109,7 @@ class DevIsdn(Device):
             (ret, msg) =  generic_run_dialog(\
                 command,
                 param,
-                catchfd = (1,2),
+                catchfd = (1, 2),
                 title = _('Network device deactivating...'),
                 label = _('Deactivating network device %s, '
                           'please wait...') % (self.DeviceId),

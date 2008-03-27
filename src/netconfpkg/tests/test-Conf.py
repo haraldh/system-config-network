@@ -213,7 +213,7 @@ alias foo* baz
 
 def suite():
     suite = unittest.TestSuite()
-    suite = unittest.makeSuite(TestConf,'test')
+    suite = unittest.makeSuite(TestConf, 'test')
     return suite
 
 if __name__ == "__main__":

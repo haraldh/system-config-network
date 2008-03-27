@@ -115,7 +115,7 @@ class TestGUI(unittest.TestCase):
 
 def suite():
     suite = unittest.TestSuite()
-    suite = unittest.makeSuite(TestGUI,'test')
+    suite = unittest.makeSuite(TestGUI, 'test')
     return suite
 
 if __name__ == "__main__":

@@ -231,7 +231,7 @@ def handleMyException((etype, value, tb), progname, version,
 
     progname - the name of the application
     version  - the version of the application
-    gui      - display a gtk dialog (0,1) to show the error message
+    gui      - display a gtk dialog (0, 1) to show the error message
     debug    - show the full traceback (with "Save to file" in GUI)
     """
     if not debug:
@@ -354,7 +354,7 @@ def installExceptionHandler(progname, version, gui = 1, debug = 1):
 
     progname - the name of the application
     version  - the version of the application
-    gui      - display a gtk dialog (0,1) to show the error message
+    gui      - display a gtk dialog (0, 1) to show the error message
     debug    - show the full traceback (with "Save to file" in GUI)
     """
     sys.excepthook = lambda etype, value, tb: \

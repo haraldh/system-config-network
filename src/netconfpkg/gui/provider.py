@@ -90,7 +90,7 @@ class providerDialog:
                 self.city = ctree.get_node_info(node.parent)[0]
                 self.name = ctree.get_node_info(node)[0]
                 self.okButton.set_sensitive(True)
-            except(TypeError,AttributeError):
+            except(TypeError, AttributeError):
                 pass
 
     def on_providerTree_tree_unselect_row(self, ctree, clist, column): # pylint: disable-msg=W0613
@@ -157,7 +157,7 @@ class providerDialog:
                                     pix_isp, mask_isp,
                                     pix_isp, mask_isp, is_leaf=False)
 
-        self.dbtree.select_row(0,0)
+        self.dbtree.select_row(0, 0)
 
     def hydrate(self):
         pass

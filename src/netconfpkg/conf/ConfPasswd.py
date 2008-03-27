@@ -1,4 +1,4 @@
-"Module handling /etc/{passwd,shadow,group} style files"
+"Module handling /etc/{passwd, shadow, group} style files"
 
 import os
 
@@ -129,16 +129,16 @@ class _passwd_reflector:
         self.user = user
 
     def setgecos(self, oldgecos, fieldnum, value):
-        gecosfields = oldgecos.split(',')
+        gecosfields = oldgecos.split(', ')
         # make sure that we have enough gecos fields
         gecosfields += [''] * (6-len(gecosfields))
 #        for i in range(5-len(gecosfields)):
 #            gecosfields.append('')
         gecosfields[fieldnum] = value
-        return ','.join(gecosfields[0:5])
+        return ', '.join(gecosfields[0:5])
 
     def getgecos(self, oldgecos, fieldnum):
-        gecosfields = oldgecos.split(',')
+        gecosfields = oldgecos.split(', ')
         # make sure that we have enough gecos fields
         gecosfields += [''] * (6-len(gecosfields))
 #        for i in range(5-len(gecosfields)):
@@ -154,27 +154,27 @@ class _passwd_reflector:
     def __getattr__(self, name):
         if not self.pw.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
-        if not cmp(name,'username'):
+        if not cmp(name, 'username'):
             return self.pw.vars[self.user][0]
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             return self.pw.vars[self.user][1]
-        elif not cmp(name,'uid'):
+        elif not cmp(name, 'uid'):
             return self.pw.vars[self.user][2]
-        elif not cmp(name,'gid'):
+        elif not cmp(name, 'gid'):
             return self.pw.vars[self.user][3]
-        elif not cmp(name,'gecos'):
+        elif not cmp(name, 'gecos'):
             return self.pw.vars[self.user][4]
-        elif not cmp(name,'fullname'):
+        elif not cmp(name, 'fullname'):
             return self.getgecos(self.pw.vars[self.user][4], 0)
-        elif not cmp(name,'office'):
+        elif not cmp(name, 'office'):
             return self.getgecos(self.pw.vars[self.user][4], 1)
-        elif not cmp(name,'officephone'):
+        elif not cmp(name, 'officephone'):
             return self.getgecos(self.pw.vars[self.user][4], 2)
-        elif not cmp(name,'homephone'):
+        elif not cmp(name, 'homephone'):
             return self.getgecos(self.pw.vars[self.user][4], 3)
-        elif not cmp(name,'homedir'):
+        elif not cmp(name, 'homedir'):
             return self.pw.vars[self.user][5]
-        elif not cmp(name,'shell'):
+        elif not cmp(name, 'shell'):
             return self.pw.vars[self.user][6]
         else:
             raise AttributeError, name
@@ -187,32 +187,32 @@ class _passwd_reflector:
             return None
         if not self.pw.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
-        if not cmp(name,'username'):
+        if not cmp(name, 'username'):
             # username is not an lvalue...
             raise AttributeError, name + ': key is immutable'
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             self.pw.kchangefield(self.user, 1, value)
-        elif not cmp(name,'uid'):
+        elif not cmp(name, 'uid'):
             self.pw.kchangefield(self.user, 2, str(value))
-        elif not cmp(name,'gid'):
+        elif not cmp(name, 'gid'):
             self.pw.kchangefield(self.user, 3, str(value))
-        elif not cmp(name,'gecos'):
+        elif not cmp(name, 'gecos'):
             self.pw.kchangefield(self.user, 4, value)
-        elif not cmp(name,'fullname'):
+        elif not cmp(name, 'fullname'):
             self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 0, value))
-        elif not cmp(name,'office'):
+        elif not cmp(name, 'office'):
             self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 1, value))
-        elif not cmp(name,'officephone'):
+        elif not cmp(name, 'officephone'):
             self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 2, value))
-        elif not cmp(name,'homephone'):
+        elif not cmp(name, 'homephone'):
             self.pw.kchangefield(self.user, 4,
                 self.setgecos(self.pw.vars[self.user][4], 3, value))
-        elif not cmp(name,'homedir'):
+        elif not cmp(name, 'homedir'):
             self.pw.kchangefield(self.user, 5, value)
-        elif not cmp(name,'shell'):
+        elif not cmp(name, 'shell'):
             self.pw.kchangefield(self.user, 6, value)
         else:
             raise AttributeError, name
@@ -228,7 +228,7 @@ class ConfPasswd(ConfPwO):
         ConfPwO.addentry_list(self, username, [username, password, uid, gid, gecos, homedir, shell])
     def addfullentry(self, username, password, uid, gid, fullname, office,
         officephone, homephone, homedir, shell):
-        self.addentry(username, password, uid, gid, ','.join([fullname,
+        self.addentry(username, password, uid, gid, ', '.join([fullname,
             office, officephone, homephone, '']), homedir, shell)
     def getfreeuid(self):
         try:
@@ -260,21 +260,21 @@ class _shadow_reflector:
     def __getattr__(self, name):
         if not self.pw.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
-        if not cmp(name,'username'):
+        if not cmp(name, 'username'):
             return self._readstr(0)
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             return self._readstr(1)
-        elif not cmp(name,'lastchanged'):
+        elif not cmp(name, 'lastchanged'):
             return self._readint(2)
-        elif not cmp(name,'mindays'):
+        elif not cmp(name, 'mindays'):
             return self._readint(3)
-        elif not cmp(name,'maxdays'):
+        elif not cmp(name, 'maxdays'):
             return self._readint(4)
-        elif not cmp(name,'warndays'):
+        elif not cmp(name, 'warndays'):
             return self._readint(5)
-        elif not cmp(name,'gracedays'):
+        elif not cmp(name, 'gracedays'):
             return self._readint(6)
-        elif not cmp(name,'expires'):
+        elif not cmp(name, 'expires'):
             return self._readint(7)
         else:
             raise AttributeError, name
@@ -284,32 +284,32 @@ class _shadow_reflector:
             return None
         if not self.pw.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
-        if not cmp(name,'username'):
+        if not cmp(name, 'username'):
             # username is not an lvalue...
             raise AttributeError, name + ': key is immutable'
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             self.pw.changefield(self.user, 1, value)
-        elif not cmp(name,'lastchanged'):
+        elif not cmp(name, 'lastchanged'):
             if not len(str(value)) or value == -1:
                 raise AttributeError, 'illegal value for lastchanged'
             self.pw.changefield(self.user, 2, str(value))
-        elif not cmp(name,'mindays'):
+        elif not cmp(name, 'mindays'):
             if not len(str(value)) or value == -1:
                 value = ''
             self.pw.changefield(self.user, 3, str(value))
-        elif not cmp(name,'maxdays'):
+        elif not cmp(name, 'maxdays'):
             if not len(str(value)) or value == -1:
                 value = ''
             self.pw.changefield(self.user, 4, str(value))
-        elif not cmp(name,'warndays'):
+        elif not cmp(name, 'warndays'):
             if not len(str(value)) or value == -1:
                 value = ''
             self.pw.changefield(self.user, 5, str(value))
-        elif not cmp(name,'gracedays'):
+        elif not cmp(name, 'gracedays'):
             if not len(str(value)) or value == -1:
                 value = ''
             self.pw.changefield(self.user, 6, str(value))
-        elif not cmp(name,'expires'):
+        elif not cmp(name, 'expires'):
             if not len(str(value)) or value == -1:
                 value = ''
             self.pw.changefield(self.user, 7, str(value))
@@ -352,13 +352,13 @@ class _group_reflector:
     def __getattr__(self, name):
         if not self.pw.has_key(self.group):
             raise AttributeError, self.group + ' has been deleted'
-        if not cmp(name,'name'):
+        if not cmp(name, 'name'):
             return self.pw.vars[self.group][0]
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             return self.pw.vars[self.group][1]
-        elif not cmp(name,'gid'):
+        elif not cmp(name, 'gid'):
             return self.pw.vars[self.group][2]
-        elif not cmp(name,'userlist'):
+        elif not cmp(name, 'userlist'):
             return self.pw.vars[self.group][3]
         else:
             raise AttributeError, name
@@ -369,14 +369,14 @@ class _group_reflector:
             return None
         if not self.pw.has_key(self.group):
             raise AttributeError, self.group + ' has been deleted'
-        if not cmp(name,'name'):
+        if not cmp(name, 'name'):
             # username is not an lvalue...
             raise AttributeError, name + ': key is immutable'
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             self.pw.changefield(self.group, 1, value)
-        elif not cmp(name,'gid'):
+        elif not cmp(name, 'gid'):
             self.pw.changefield(self.group, 2, str(value))
-        elif not cmp(name,'userlist'):
+        elif not cmp(name, 'userlist'):
             self.pw.changefield(self.group, 3, value)
         else:
             raise AttributeError, name
@@ -420,60 +420,60 @@ class _unix_reflector:
     def __getattr__(self, name):
         if not self.pw.passwd.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
-        if not cmp(name,'username'):
+        if not cmp(name, 'username'):
             if self.pw.shadow:
                 return self.pw.shadow[self.user].username
             else:
                 return self.pw.passwd[self.user].username
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             if self.pw.shadow:
                 return self.pw.shadow[self.user].password
             else:
                 return self.pw.passwd[self.user].password
-        elif not cmp(name,'uid'):
+        elif not cmp(name, 'uid'):
             return self.pw.passwd[self.user].uid
-        elif not cmp(name,'gid'):
+        elif not cmp(name, 'gid'):
             return self.pw.passwd[self.user].gid
-        elif not cmp(name,'gecos'):
+        elif not cmp(name, 'gecos'):
             return self.pw.passwd[self.user].gecos
-        elif not cmp(name,'fullname'):
+        elif not cmp(name, 'fullname'):
             return self.pw.passwd[self.user].fullname
-        elif not cmp(name,'office'):
+        elif not cmp(name, 'office'):
             return self.pw.passwd[self.user].office
-        elif not cmp(name,'officephone'):
+        elif not cmp(name, 'officephone'):
             return self.pw.passwd[self.user].officephone
-        elif not cmp(name,'homephone'):
+        elif not cmp(name, 'homephone'):
             return self.pw.passwd[self.user].homephone
-        elif not cmp(name,'homedir'):
+        elif not cmp(name, 'homedir'):
             return self.pw.passwd[self.user].homedir
-        elif not cmp(name,'shell'):
+        elif not cmp(name, 'shell'):
             return self.pw.passwd[self.user].shell
-        elif not cmp(name,'lastchanged'):
+        elif not cmp(name, 'lastchanged'):
             if self.pw.shadowexists():
                 return self.pw.shadow[self.user].lastchanged
             else:
                 return -1
-        elif not cmp(name,'mindays'):
+        elif not cmp(name, 'mindays'):
             if self.pw.shadowexists():
                 return self.pw.shadow[self.user].mindays
             else:
                 return -1
-        elif not cmp(name,'maxdays'):
+        elif not cmp(name, 'maxdays'):
             if self.pw.shadowexists():
                 return self.pw.shadow[self.user].maxdays
             else:
                 return -1
-        elif not cmp(name,'warndays'):
+        elif not cmp(name, 'warndays'):
             if self.pw.shadowexists():
                 return self.pw.shadow[self.user].warndays
             else:
                 return -1
-        elif not cmp(name,'gracedays'):
+        elif not cmp(name, 'gracedays'):
             if self.pw.shadowexists():
                 return self.pw.shadow[self.user].gracedays
             else:
                 return -1
-        elif not cmp(name,'expires'):
+        elif not cmp(name, 'expires'):
             if self.pw.shadowexists():
                 return self.pw.shadow[self.user].expires
             else:
@@ -486,48 +486,48 @@ class _unix_reflector:
             return None
         if not self.pw.passwd.has_key(self.user):
             raise AttributeError, self.user + ' has been deleted'
-        if not cmp(name,'username'):
+        if not cmp(name, 'username'):
             # username is not an lvalue...
             raise AttributeError, name + ': key is immutable'
-        elif not cmp(name,'password'):
+        elif not cmp(name, 'password'):
             if self.pw.shadow:
                 self.pw.shadow[self.user].password = value
             else:
                 self.pw.passwd[self.user].password = value
-        elif not cmp(name,'uid'):
+        elif not cmp(name, 'uid'):
             self.pw.passwd[self.user].uid = value
-        elif not cmp(name,'gid'):
+        elif not cmp(name, 'gid'):
             self.pw.passwd[self.user].gid = value
-        elif not cmp(name,'gecos'):
+        elif not cmp(name, 'gecos'):
             self.pw.passwd[self.user].gecos = value
-        elif not cmp(name,'fullname'):
+        elif not cmp(name, 'fullname'):
             self.pw.passwd[self.user].fullname = value
-        elif not cmp(name,'office'):
+        elif not cmp(name, 'office'):
             self.pw.passwd[self.user].office = value
-        elif not cmp(name,'officephone'):
+        elif not cmp(name, 'officephone'):
             self.pw.passwd[self.user].officephone = value
-        elif not cmp(name,'homephone'):
+        elif not cmp(name, 'homephone'):
             self.pw.passwd[self.user].homephone = value
-        elif not cmp(name,'homedir'):
+        elif not cmp(name, 'homedir'):
             self.pw.passwd[self.user].homedir = value
-        elif not cmp(name,'shell'):
+        elif not cmp(name, 'shell'):
             self.pw.passwd[self.user].shell = value
-        elif not cmp(name,'lastchanged'):
+        elif not cmp(name, 'lastchanged'):
             if self.pw.shadowexists():
                 self.pw.shadow[self.user].lastchanged = value
-        elif not cmp(name,'mindays'):
+        elif not cmp(name, 'mindays'):
             if self.pw.shadowexists():
                 self.pw.shadow[self.user].mindays = value
-        elif not cmp(name,'maxdays'):
+        elif not cmp(name, 'maxdays'):
             if self.pw.shadowexists():
                 self.pw.shadow[self.user].maxdays = value
-        elif not cmp(name,'warndays'):
+        elif not cmp(name, 'warndays'):
             if self.pw.shadowexists():
                 self.pw.shadow[self.user].warndays = value
-        elif not cmp(name,'gracedays'):
+        elif not cmp(name, 'gracedays'):
             if self.pw.shadowexists():
                 self.pw.shadow[self.user].gracedays = value
-        elif not cmp(name,'expires'):
+        elif not cmp(name, 'expires'):
             if self.pw.shadowexists():
                 self.pw.shadow[self.user].expires = value
         else:

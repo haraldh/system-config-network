@@ -20,7 +20,7 @@ import os
 import gtk
 import gtk.glade
 
-from netconfpkg.NC_functions import * # pylint: disable-msg=W0401,W0614
+from netconfpkg.NC_functions import * # pylint: disable-msg=W0401, W0614
 from netconfpkg.NC_functions import _
 from netconfpkg import NC_functions
 from netconfpkg.NCException import NCException

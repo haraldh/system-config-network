@@ -100,12 +100,12 @@ class ConfPAP(Conf.Conf):
         var = []
         if self.line >= len(self.lines):
             return []
-        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?"))(|\t)+(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)(|\t)+(?P<secret>("([^"\\]|\\\S)*?"))')
+        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?"))( |\t)+(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)( |\t)+(?P<secret>("([^"\\]|\\\S)*?"))')
         m = regexp.match(self.lines[self.line])
         if not m:
             raise Conf.BadFile, "Error occured while parsing %s" % self.filename
         else:
-            var = [m.group("user"),m.group("server"),m.group("secret")]
+            var = [m.group("user"), m.group("server"), m.group("secret")]
             if len(var) and len(var[0]) and var[0][0] in '\'"':
                 # found quote; strip from beginning and end
                 quote = var[0][0]

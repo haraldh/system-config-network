@@ -79,7 +79,7 @@
 #  This reads /etc/modprobe.conf into a dictionary keyed on device type,
 #  holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
 #                        cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
-#                        cm['eth0']['post-install'] --> ['/bin/foo','arg1','arg2']
+#                        cm['eth0']['post-install'] --> ['/bin/foo', 'arg1', 'arg2']
 #  path[*] entries are ignored (but not removed)
 #  New entries are added at the end to make sure that they
 #  come after any path[*] entries.

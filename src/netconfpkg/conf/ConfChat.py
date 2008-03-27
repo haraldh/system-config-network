@@ -65,7 +65,7 @@ class ConfChat(Conf):
     def write(self):
         # create self.lines for Conf.write...
         self.lines = []
-        for (p,q) in self.list:
+        for (p, q) in self.list:
             p = re.sub("'", "\\'", p)
             q = re.sub("'", "\\'", q)
             self.lines.append("'"+p+"' '"+q+"'")
@@ -101,10 +101,10 @@ class ConfChatFile(ConfChat):
         self.chatlist = []
         dialexp = re.compile('^ATD[TP]?[-0-9,. #*()+]+')
         if self.list:
-            for (p,q) in self.list:
+            for (p, q) in self.list:
                 if not cmp(p, 'ABORT'):
                     if not q in self.abortstrings:
-                        self.abortlist.append([p,q])
+                        self.abortlist.append([p, q])
                 elif not cmp(q, self.devconf['INITSTRING']):
                     # ignore INITSTRING
                     pass
@@ -112,7 +112,7 @@ class ConfChatFile(ConfChat):
                     #elif not self.dialcmd and tempmatch:
                     # First instance of something that looks like a dial
                     # command and a phone number we take as such.
-                    tmp = re.search('[-0-9,. #*()+]+', q)
+                    tmp = re.search('[-0-9, . #*()+]+', q)
                     index=tmp.group(1)
                     self.dialcmd = q[:index]
                     self.phonenum = q[index:]
@@ -120,7 +120,7 @@ class ConfChatFile(ConfChat):
                     # ignore dial command
                     pass
                 else:
-                    self.chatlist.append([p,q])
+                    self.chatlist.append([p, q])
     def _makelist(self):
         self.list = []
         if self.defabort:
