@@ -100,6 +100,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Thu Mar 27 2008 Harald Hoyer <harald@redhat.com> - 1.5.90
+- genClass replacement (harald@redhat.com)
+- split Conf.py in several submodules (harald@redhat.com)
+- added tui/NCPluginTokenRingInterface (harald@redhat.com)
+- BackendHal fix to use Factory classes (harald@redhat.com)
+- name consistency (harald@redhat.com)
+- named all plugins NCPlugin (harald@redhat.com)
+- speedup module loading by only calling register_plugin from __init__ (harald@redhat.com)
+- make pylint and pychecker happy (harald@redhat.com)
+- ignore system hardware for the UnitTest (harald@redhat.com)
+- MTU moved to base device (harald@redhat.com)
+- extended UnitTests (harald@redhat.com)
+- use newer automake/aclocal syntax (harald@redhat.com)
+
 * Thu Feb 28 2008 Harald Hoyer <harald@redhat.com> - 1.5.1
 - removed CIPE (harald)
 - s/Devernet/Network/ (harald)
