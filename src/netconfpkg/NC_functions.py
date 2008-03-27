@@ -236,7 +236,10 @@ def request_rpms(pkgs = None):
     return 0
 
 def testHostname(hostname):
-    # hostname: names separated by '.' every name must be max 63 chars in length and the hostname max length is 255 chars
+    # hostname: names separated by '.' every name must be max 63 
+    # chars in length and the hostname max length is 255 chars
+    if not hostname:
+        return False
     if (len(hostname) - hostname.count('.')) < 256:
         names = hostname.split('.')
         # hostname with trailing dot
