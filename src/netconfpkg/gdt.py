@@ -12,6 +12,9 @@
 # License along with this program; if not, write to the
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
+
+import logging
+
 """\
 Basic classes with predefined properties
 
@@ -20,7 +23,8 @@ Example usage:
         "A basic Article class"
         # fields and types are dynamically set by the initializer
         gdtstruct_properties([('title', Gdtstr, "The Title of the Article"),
-                              ('page', Gdtlist, "List of pages in the Article")])
+                              ('page', Gdtlist, "List of pages in the Article")
+                              ])
 
         def __init__(self, *args):
             super(Article, self).__init__(*args)
@@ -174,8 +178,6 @@ def gdtstruct_properties(cls, schema):
 
 class Gdtobject(Transaction, object):
     "The base of all Gdtobjects"
-#    gdtstruct_properties([ "changed", Gdtbool, "indicates, if an object has changed" ])
-
     keyid=None
 
     def tostr(self, prefix_string = None):
@@ -312,6 +314,6 @@ Gdtbool = bool
 #    def __str__(self):
 #        return str(self._val)
     
-class Gdtint(int, Gdtobject):
+class Gdtint(int):
     "A Gdtobject Integer base class"
 
