@@ -26,6 +26,7 @@ from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr, Gdtbool)
 
 class IPsec_base(Gdtstruct):
     gdtstruct_properties([
+                          ('IPsecId', Gdtstr, "Test doc string"),
                           ('Address', Gdtstr, "Test doc string"),
                           ('ConnectionType', Gdtstr, "Test doc string"),
                           ('EncryptionMode', Gdtstr, "Test doc string"),
@@ -48,6 +49,7 @@ class IPsec_base(Gdtstruct):
     
     def __init__(self):
         super(IPsec_base, self).__init__()
+        self.IPsecId = None
         self.Address = None
         self.ConnectionType = None
         self.EncryptionMode = None
@@ -76,6 +78,8 @@ class ConfIPsec(ConfShellVar.ConfShellVar):
         self.chmod(0644)
 
 class IPsec(IPsec_base):
+    keyid = "IPsecId"
+
     boolkeydict = {
         'OnBoot' : 'ONBOOT', 
         }
