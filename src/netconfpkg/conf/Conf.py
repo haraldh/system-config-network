@@ -79,7 +79,8 @@
 #  This reads /etc/modprobe.conf into a dictionary keyed on device type,
 #  holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
 #                        cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
-#                        cm['eth0']['post-install'] --> ['/bin/foo', 'arg1', 'arg2']
+#                        cm['eth0']['post-install'] --> ['/bin/foo', 
+#                                                        'arg1', 'arg2']
 #  path[*] entries are ignored (but not removed)
 #  New entries are added at the end to make sure that they
 #  come after any path[*] entries.
@@ -261,7 +262,9 @@ class Conf:
             seps = '['+self.separators+']+'
         else:
             seps = '['+self.separators+']'
-        #print "re.split(%s, %s) = " % (self.lines[self.line], seps) + str(re.split(seps, self.lines[self.line]))
+#        print "re.split(%s, %s) = %s" % (self.lines[self.line],
+#                                        seps, 
+#                                        re.split(seps, self.lines[self.line]))
 
         if not self.splitdict.has_key(seps):
             self.splitdict[seps] = re.compile(seps)
@@ -287,7 +290,7 @@ class Conf:
         self.setfields(fields)
     def setline(self, line=None):
         if not line:
-            line=[]
+            line = []
         self.deleteline()
         self.insertline(line)
     def deleteline(self):
@@ -320,7 +323,9 @@ class Conf:
         # not for managing contention.  Too many deadlocks that way...
         if self.rcs or os.path.exists(os.path.split(self.filename)[0]+'/RCS'):
             self.rcs = 1
-            os.system('/usr/bin/co -l '+self.filename+' </dev/null >/dev/null 2>&1')
+            os.system('/usr/bin/co -l '
+                      + self.filename 
+                      + ' </dev/null >/dev/null 2>&1')
         mfile = open(self.filename, 'w', -1)
         if self.mode >= 0:
             os.chmod(self.filename, self.mode)
@@ -358,7 +363,8 @@ class odict(dict):
     def __setitem__(self, key, item):
         #print "[%s] = %s" % (str(key), str(item))
         dict.__setitem__(self, key, item)
-        if key not in self._keys: self._keys.append(key)
+        if key not in self._keys:
+            self._keys.append(key)
 
     def clear(self):
         dict.clear(self)
@@ -388,12 +394,14 @@ class odict(dict):
 
     def setdefault(self, key, failobj = None):
         dict.setdefault(self, key, failobj)
-        if key not in self._keys: self._keys.append(key)
+        if key not in self._keys: 
+            self._keys.append(key)
 
     def update(self, mdict):
         dict.update(self, mdict)
         for key in mdict.keys():
-            if key not in self._keys: self._keys.append(key)
+            if key not in self._keys: 
+                self._keys.append(key)
 
     def values(self):
         return [ self.get(x) for x in self._keys ]

@@ -44,7 +44,8 @@ _kernel_version = None
 def kernel_version():
     global _kernel_version
     if not _kernel_version:
-        (sysname, nodename, release, version, machine) = os.uname() # pylint: disable-msg=W0612
+        (sysname, nodename, 
+         release, version, machine) = os.uname() # pylint: disable-msg=W0612
         if release.find("-") != -1:
             (ver, rel) = release.split("-", 1) # pylint: disable-msg=W0612
         else:
@@ -77,16 +78,16 @@ RESOLVCONF = '/etc/resolv.conf'
 PPPDIR = "/etc/ppp"
 
 if cmp_kernel_version([2, 5, 0], kernel_version()) < 0:
-    MODULESCONF='/etc/modprobe.conf'
+    MODULESCONF = '/etc/modprobe.conf'
 else:
-    MODULESCONF='/etc/modules.conf'
+    MODULESCONF = '/etc/modules.conf'
 
-HWCONF='/etc/sysconfig/hwconf'
-ISDNCARDCONF='/etc/sysconfig/isdncard'
+HWCONF = '/etc/sysconfig/hwconf'
+ISDNCARDCONF = '/etc/sysconfig/isdncard'
 PAPFILE = "/etc/ppp/pap-secrets"
 CHAPFILE = "/etc/ppp/chap-secrets"
 
-DEFAULT_PROFILE_NAME=_("Common")
+DEFAULT_PROFILE_NAME = _("Common")
 
 ETHERNET = 'Ethernet'
 MODEM = 'Modem'
@@ -245,7 +246,8 @@ def testHostname(hostname):
         # hostname with trailing dot
         if not names[-1]:
             names.pop()
-        pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
+        pattern = re.compile(
+            '([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
         for name in names:
             if len(name) < 64:
                 if not pattern.match(name):
@@ -271,7 +273,8 @@ def netmask_to_bits(netmask):
 
     bits = 0
     while netmask:
-        if netmask & 1: bits += 1
+        if netmask & 1: 
+            bits += 1
         netmask = netmask >> 1
 
     return bits
@@ -448,10 +451,14 @@ def getNewDialupDevice(devicelist, dev):
     for i in devicelist:
         if dev.Device != i.Device:
             dlist.append(i.Device)
-            if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
+            if (i.Type == ISDN 
+                and i.Dialup.EncapMode == 'syncppp' 
+                and i.Dialup.ChannelBundling):
                 dlist.append(i.Dialup.SlaveDevice)
         else:
-            if i.Type == ISDN and i.Dialup.EncapMode == 'syncppp' and i.Dialup.ChannelBundling:
+            if (i.Type == ISDN 
+                and i.Dialup.EncapMode == 'syncppp' 
+                and i.Dialup.ChannelBundling):
                 dlist.append(i.Device)
 
     if dev.Type == ISDN:
@@ -577,7 +584,8 @@ def generic_run_dialog (command, argv, searchPath = 0,
 
         childpid = os.fork()
         if (not childpid):
-            if (root and root != '/'): os.chroot (root)
+            if (root and root != '/'): 
+                os.chroot (root)
             if isinstance(catchfd, tuple):
                 for fd in catchfd:
                     os.dup2(write, fd)
@@ -656,7 +664,8 @@ def generic_run (command, argv, searchPath = 0,
 
         childpid = os.fork()
         if (not childpid):
-            if (root and root != '/'): os.chroot (root)
+            if (root and root != '/'): 
+                os.chroot (root)
             if isinstance(catchfd, tuple):
                 for fd in catchfd:
                     os.dup2(write, fd)
@@ -917,7 +926,10 @@ def prepareRoot(root):
 
 class ConfKeys(ConfShellVar.ConfShellVar):
     def __init__(self, name):
-        ConfShellVar.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'keys-' + name)
+        ConfShellVar.ConfShellVar.__init__(self, 
+                                           getRoot() 
+                                           + SYSCONFDEVICEDIR 
+                                           + 'keys-' + name)
         self.chmod(0600)
 
 
@@ -974,7 +986,8 @@ def updateNetworkScripts(force = False):
         unlink(pfile)
         link(dfile, pfile)
 
-    for (mfile, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
+    for (mfile, cfile) in { RESOLVCONF : '/resolv.conf', 
+                           HOSTSCONF : '/hosts' }.items():
         hostfile = getRoot() + mfile
         conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
             curr_prof + cfile

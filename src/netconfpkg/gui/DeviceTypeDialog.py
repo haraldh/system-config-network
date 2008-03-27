@@ -46,7 +46,7 @@ class DeviceTypeDialog:
         self.dialog = self.xml.get_widget("Dialog")
         load_icon("network.xpm", self.dialog)
 
-        devicetypes=deviceTypes[:]
+        devicetypes = deviceTypes[:]
         devicetypes.remove(LO)
 
         hardwarelist = NCHardwareList.getHardwareList()
@@ -58,8 +58,10 @@ class DeviceTypeDialog:
         adslFound = False
         wirelessFound = False
         for hw in hardwarelist:
-            if hw.Type == MODEM: modemFound = True
-            elif hw.Type == ISDN: isdnFound = True
+            if hw.Type == MODEM: 
+                modemFound = True
+            elif hw.Type == ISDN: 
+                isdnFound = True
             elif hw.Type == ETHERNET:
                 ethernetFound = True
                 adslFound = True
@@ -70,12 +72,18 @@ class DeviceTypeDialog:
             isdnFound = False
             adslFound = False
             wirelessFound = False
-        if not modemFound: devicetypes.remove(MODEM)
-        if not isdnFound: devicetypes.remove(ISDN)
-        if not ethernetFound: devicetypes.remove(ETHERNET)
-        if not adslFound: devicetypes.remove(DSL)
-        if not tokenringFound: devicetypes.remove(TOKENRING)
-        if not wirelessFound: devicetypes.remove(WIRELESS)
+        if not modemFound: 
+            devicetypes.remove(MODEM)
+        if not isdnFound: 
+            devicetypes.remove(ISDN)
+        if not ethernetFound: 
+            devicetypes.remove(ETHERNET)
+        if not adslFound: 
+            devicetypes.remove(DSL)
+        if not tokenringFound: 
+            devicetypes.remove(TOKENRING)
+        if not wirelessFound: 
+            devicetypes.remove(WIRELESS)
 
         omenu = self.xml.get_widget('deviceTypeOption')
         omenu.remove_menu ()

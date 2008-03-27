@@ -58,7 +58,8 @@ class HwModem(Hardware):
         return self.Modem
     
     def getDialog(self):
-        if _hwModemDialog == None: return None
+        if _hwModemDialog == None: 
+            return None
         return _hwModemDialog(self).xml.get_widget("Dialog")
 
     def getWizard(self):
@@ -79,7 +80,8 @@ class HwModem(Hardware):
         wvdial[self.Name]['Baud'] = str(self.Modem.BaudRate)
         wvdial[self.Name]['SetVolume'] = str(self.Modem.ModemVolume)
         wvdial[self.Name]['Dial Command'] = str(self.Modem.DialCommand)
-        if not self.Modem.InitString: self.Modem.InitString = 'ATZ'
+        if not self.Modem.InitString: 
+            self.Modem.InitString = 'ATZ'
         wvdial[self.Name]['Init1'] = str(self.Modem.InitString)
         if self.Modem.ModemVolume == 0:
             wvdial[self.Name]['Init3'] = 'ATM0'

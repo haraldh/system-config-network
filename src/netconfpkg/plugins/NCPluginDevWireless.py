@@ -23,7 +23,8 @@ from netconfpkg.gdt import (gdtstruct_properties)
 
 # FIXME: add detection method for Wireless HW
 # FIXME: [190317] Dell Wireless 1390 802.11g Mini Card doesn't work
-# FIXME: [183272] system-config-network unable to see cisco pcmcia wireless card using airo driver
+# FIXME: [183272] system-config-network unable to see 
+# cisco pcmcia wireless card using airo driver
 
 
 class DevWireless(Device):

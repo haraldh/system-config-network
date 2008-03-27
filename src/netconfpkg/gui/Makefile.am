@@ -14,7 +14,6 @@ GLADE_FILES = \
 	EthernetHardwareDruid.glade \
 	ethernethardware.glade \
 	EthernetInterfaceDruid.glade \
-	GenericInterfaceDruid.glade \
 	hardwaretype.glade \
 	IsdnHardwareDruid.glade \
 	isdnhardware.glade \
@@ -57,7 +56,6 @@ PYTHON_FILES = \
 	EthernetHardwareDruid.py \
 	NCPluginEthernetHardware.py \
 	NCPluginEthernetInterface.py \
-	GenericInterface.py \
 	hardwaretype.py \
 	HardwareDialog.py \
 	__init__.py \

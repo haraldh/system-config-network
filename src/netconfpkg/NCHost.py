@@ -26,6 +26,13 @@ class Host_base(Gdtstruct):
 class Host(Host_base):
     HostID = None
 
+    def __init__(self):
+        super(Host, self).__init__()
+        # special store for the original comment
+        self.Comment = None
+        # special store for the original line
+        self.origLine = None
+        
     def testIP(self):
         try:
             socket.inet_pton(socket.AF_INET, self.IP) 

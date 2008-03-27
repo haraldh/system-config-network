@@ -36,7 +36,8 @@ class editHostsDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -61,7 +62,8 @@ class editHostsDialog:
                 try:
                     self.host.test()
                 except ValueError, e:
-                    GUI_functions.gui_error_dialog ("Invalid entry: %s" % e.message, self.dialog)
+                    GUI_functions.gui_error_dialog ("Invalid entry: %s" 
+                                                    % e.message, self.dialog)
                     continue
                 break
             else:
@@ -79,7 +81,8 @@ class editHostsDialog:
     def on_cancelButton_clicked(self, button):
         pass
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
+    def on_generic_entry_insert_text(self, 
+                        entry, partial_text, length, # pylint: disable-msg=W0613
                                      pos, mstr):
         text = partial_text[0:length]
         if re.match(mstr, text):
@@ -92,11 +95,13 @@ class editHostsDialog:
         if self.host.Hostname:
             self.xml.get_widget('hostnameEntry').set_text(self.host.Hostname)
         if self.host.AliasList:
-            self.xml.get_widget('aliasesEntry').set_text(" ".join(self.host.AliasList))
+            self.xml.get_widget('aliasesEntry').set_text(" ".join(
+                                                        self.host.AliasList))
 
     def dehydrate(self):
         self.host.IP = self.xml.get_widget('addressEntry').get_text().strip()
-        self.host.Hostname = self.xml.get_widget('hostnameEntry').get_text().strip()
+        self.host.Hostname = self.xml.get_widget(
+                                'hostnameEntry').get_text().strip()
         if self.host.AliasList:
             oldaliasstr = " ".join(self.host.AliasList)
         else:

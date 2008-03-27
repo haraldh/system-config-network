@@ -35,56 +35,108 @@ FIRMWARE = 9
 MODUL = 10
 
 _card = {
-    # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
-    "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "ASUS COM ISDNLink ISA PnP" : [ "12", "", "", "", "", "", "ASU1690", "ASU1690", "HiSax", "", "hisax" ],
-    "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "", "", "HiSax", "",  "hisax" ],
-    "AVM Fritz Card PCMCIA" : [ "", "", "", "", "", "", "", "", "", "", "avma1_cs" ],
-    "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244", "0a00", "HiSax", "", "hisax" ],
-    "AVM PCI (Fritz!PCI v2)" : [ "0", "", "", "", "", "", "1244", "0e00", "", "", "hisax_fcpcipnp" ],
-    "AVM PnP" : [ "27", "", "", "", "", "", "AVM0900", "AVM0900", "HiSax", "", "hisax" ],
-    "Billion ISDN P&P PCI 128k Cologne SE" : [ "35", "", "", "", "", "", "1397", "2bd0", "HiSax", "", "hisax" ],
-    "Compaq ISDN S0 ISA" : [ "19", "5", "0x0000", "0x0000", "0x0000", "", "", "", "HiSax", "", "hisax" ],
-    "Creatix Teles PnP" : [ "4", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Dr. Neuhaus Niccy PnP" : [ "24", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Dr. Neuhaus Niccy PCI" : [ "24", "", "", "", "", "", "1267", "1016", "HiSax", "", "hisax" ],
-    "Dynalink 128PH PCI" : [ "36", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Eicon.Diehl Diva ISA PnP" : [ "11", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Eicon.Diehl Diva 20PRO PCI" : [ "11", "", "", "", "", "", "1133", "e001", "HiSax", "", "hisax" ],
-    "Eicon.Diehl Diva 20 PCI" : [ "11", "", "", "", "", "", "1133", "e002", "HiSax", "", "hisax" ],
-    "Eicon.Diehl Diva 20PRO_U PCI" : [ "11", "", "", "", "", "", "1133", "e003", "HiSax", "", "hisax" ],
-    "Eicon.Diehl Diva 20_U PCI" : [ "11", "", "", "", "", "", "1133", "e004", "HiSax", "", "hisax" ],
+    # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id,
+    #                    device_id, driver_id, firmware, module ]
+    "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "HiSax", "",
+                   "hisax" ],
+    "ASUS COM ISDNLink ISA PnP" : [ "12", "", "", "", "", "", "ASU1690",
+                                    "ASU1690", "HiSax", "", "hisax" ],
+    "ASUS COM ISDNLink PCI" : [ "35", "", "", "", "", "", "", "", "HiSax",
+                                "", "hisax" ],
+    "AVM A1 (Fritz)" : [ "5", "10", "0x300", "", "", "", "", "", "HiSax",
+                         "",  "hisax" ],
+    "AVM Fritz Card PCMCIA" : [ "", "", "", "", "", "", "", "", "", "",
+                                "avma1_cs" ],
+    "AVM PCI (Fritz!PCI)" : [ "27", "", "", "", "", "", "1244", "0a00",
+                              "HiSax", "", "hisax" ],
+    "AVM PCI (Fritz!PCI v2)" : [ "0", "", "", "", "", "", "1244", "0e00",
+                                 "", "", "hisax_fcpcipnp" ],
+    "AVM PnP" : [ "27", "", "", "", "", "", "AVM0900", "AVM0900", "HiSax",
+                  "", "hisax" ],
+    "Billion ISDN P&P PCI 128k Cologne SE" : [ "35", "", "", "", "", "",
+                                               "1397", "2bd0", "HiSax", "",
+                                               "hisax" ],
+    "Compaq ISDN S0 ISA" : [ "19", "5", "0x0000", "0x0000", "0x0000", "", "",
+                             "", "HiSax", "", "hisax" ],
+    "Creatix Teles PnP" : [ "4", "", "", "", "", "", "", "", "HiSax", "",
+                            "hisax" ],
+    "Dr. Neuhaus Niccy PnP" : [ "24", "", "", "", "", "", "", "", "HiSax",
+                                "", "hisax" ],
+    "Dr. Neuhaus Niccy PCI" : [ "24", "", "", "", "", "", "1267", "1016",
+                                "HiSax", "", "hisax" ],
+    "Dynalink 128PH PCI" : [ "36", "", "", "", "", "", "", "", "HiSax", "",
+                             "hisax" ],
+    "Eicon.Diehl Diva ISA PnP" : [ "11", "", "", "", "", "", "", "", "HiSax",
+                                   "", "hisax" ],
+    "Eicon.Diehl Diva 20PRO PCI" : [ "11", "", "", "", "", "", "1133", "e001",
+                                     "HiSax", "", "hisax" ],
+    "Eicon.Diehl Diva 20 PCI" : [ "11", "", "", "", "", "", "1133", "e002",
+                                  "HiSax", "", "hisax" ],
+    "Eicon.Diehl Diva 20PRO_U PCI" : [ "11", "", "", "", "", "", "1133",
+                                       "e003", "HiSax", "", "hisax" ],
+    "Eicon.Diehl Diva 20_U PCI" : [ "11", "", "", "", "", "", "1133", "e004",
+                                    "HiSax", "", "hisax" ],
     "ELSA PCC/PCF" : [ "6", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "ELSA Quickstep 1000" : [ "7", "5", "0x300", "", "", "", "ELS0133", "ELS0133", "HiSax", "", "hisax" ],
-    "ELSA Quickstep 1000 PCI" : [ "18", "", "", "", "", "", "1048", "1000", "HiSax", "", "hisax" ],
-    "ELSA Quickstep 3000 PCI" : [ "18", "", "", "", "", "", "1048", "3000", "HiSax", "", "hisax" ],
-    "ELSA PCMCIA MicroLink cards" : [ "", "", "", "", "", "", "", "", "", "", "elsa_cs" ],
-    "Gazel cards ISA" : [ "34", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Gazel cards PCI" : [ "34", "", "", "", "", "", "10b5", "1030", "HiSax", "", "hisax" ],
-    "HFC-2BS0 based cards ISA" : [ "13", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "HFC-2BS0 based cards PCI" : [ "35", "", "", "", "", "", "1397", "2bd0", "HiSax", "", "hisax" ],
-    "HST Saphir" : [ "31", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "ITK ix1-micro Rev.2" : [ "9", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "MIC card" : [ "17", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "NETjet PCI" : [ "20", "", "", "", "", "", "e159", "0001", "HiSax", "", "hisax" ],
-    "Sedlbauer PC 104" : [ "15", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Sedlbauer Speed PCI" : [ "15", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Sedlbauer Speed Card" : [ "15", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Sedlbauer Speed Fax+" : [ "28", "3", "0x200", "", "", "", "SAG0002", "SAG0002", "HiSax", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
-    "Sedlbauer Speed fax+ PCI" : [ "28", "", "", "", "", "", "e159", "0002", "HiSax", "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN", "hisax" ],
-    "Sedlbauer Speed Star PCMCIA Card" : [ "", "", "", "", "", "", "", "", "", "", "sedlbauer_cs" ],
-    "Siemens I-Surf 1.0" : [ "29", "9", "0xd80", "", "", "0xd000", "", "", "HiSax", "", "hisax" ],
+    "ELSA Quickstep 1000" : [ "7", "5", "0x300", "", "", "", "ELS0133",
+                              "ELS0133", "HiSax", "", "hisax" ],
+    "ELSA Quickstep 1000 PCI" : [ "18", "", "", "", "", "", "1048", "1000",
+                                  "HiSax", "", "hisax" ],
+    "ELSA Quickstep 3000 PCI" : [ "18", "", "", "", "", "", "1048", "3000",
+                                  "HiSax", "", "hisax" ],
+    "ELSA PCMCIA MicroLink cards" : [ "", "", "", "", "", "", "", "", "", "",
+                                      "elsa_cs" ],
+    "Gazel cards ISA" : [ "34", "5", "0x300", "", "", "", "", "", "HiSax", "",
+                          "hisax" ],
+    "Gazel cards PCI" : [ "34", "", "", "", "", "", "10b5", "1030", "HiSax",
+                          "", "hisax" ],
+    "HFC-2BS0 based cards ISA" : [ "13", "9", "0xd80", "", "", "", "", "",
+                                   "HiSax", "", "hisax" ],
+    "HFC-2BS0 based cards PCI" : [ "35", "", "", "", "", "", "1397", "2bd0",
+                                  
+                                   "HiSax", "", "hisax" ],
+    "HST Saphir" : [ "31", "5", "0x300", "", "", "", "", "", "HiSax", "",
+                     "hisax" ],
+    "ITK ix1-micro Rev.2" : [ "9", "9", "0xd80", "", "", "", "", "", "HiSax",
+                              "", "hisax" ],
+    "MIC card" : [ "17", "9", "0xd80", "", "", "", "", "", "HiSax", "",
+                   "hisax" ],
+    "NETjet PCI" : [ "20", "", "", "", "", "", "e159", "0001", "HiSax", "",
+                     "hisax" ],
+    "Sedlbauer PC 104" : [ "15", "9", "0xd80", "", "", "", "", "", "HiSax",
+                           "", "hisax" ],
+    "Sedlbauer Speed PCI" : [ "15", "", "", "", "", "", "", "", "HiSax", "",
+                              "hisax" ],
+    "Sedlbauer Speed Card" : [ "15", "9", "0xd80", "", "", "", "", "",
+                               "HiSax", "", "hisax" ],
+    "Sedlbauer Speed Fax+" : [ "28", "3", "0x200", "", "", "", "SAG0002",
+                               "SAG0002", "HiSax",
+                               "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN",
+                               "hisax" ],
+    "Sedlbauer Speed fax+ PCI" : [ "28", "", "", "", "", "", "e159", "0002",
+                                   "HiSax",
+                                   "hisaxctrl HiSax 9 /usr/lib/isdn/ISAR.BIN",
+                                   "hisax" ],
+    "Sedlbauer Speed Star PCMCIA Card" : [ "", "", "", "", "", "", "", "", "",
+                                           "", "sedlbauer_cs" ],
+    "Siemens I-Surf 1.0" : [ "29", "9", "0xd80", "", "", "0xd000", "", "",
+                             "HiSax", "", "hisax" ],
     "Telekom A4T" : [ "32", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Teles 8.0" : [ "2", "9", "", "", "", "0xd800", "", "", "HiSax", "", "hisax" ],
-    "Teles 16.0" : [ "1", "5", "0xd80", "", "", "0xd000", "", "", "HiSax", "", "hisax" ],
-    "Teles 16.3" : [ "3", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Teles 16.3c PnP" : [ "14", "", "", "", "", "", "TAG2610", "TAG2610", "HiSax", "", "hisax" ],
+    "Teles 8.0" : [ "2", "9", "", "", "", "0xd800", "", "", "HiSax", "",
+                    "hisax" ],
+    "Teles 16.0" : [ "1", "5", "0xd80", "", "", "0xd000", "", "", "HiSax",
+                     "", "hisax" ],
+    "Teles 16.3" : [ "3", "9", "0xd80", "", "", "", "", "", "HiSax", "",
+                     "hisax" ],
+    "Teles 16.3c PnP" : [ "14", "", "", "", "", "", "TAG2610", "TAG2610",
+                          "HiSax", "", "hisax" ],
     "Teles PCI" : [ "21", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
     "Teles PnP" : [ "4", "", "", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "Teles S0Box" : [ "25", "7", "0x378", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "USR Sportster intern" : [ "16", "9", "0xd80", "", "", "", "", "", "HiSax", "", "hisax" ],
-    "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050", "6692", "HiSax", "", "hisax" ]
+    "Teles S0Box" : [ "25", "7", "0x378", "", "", "", "", "", "HiSax", "",
+                      "hisax" ],
+    "USR Sportster intern" : [ "16", "9", "0xd80", "", "", "", "", "",
+                               "HiSax", "", "hisax" ],
+    "W6692 based PCI cards" : [ "36", "", "", "", "", "", "1050", "6692",
+                                "HiSax", "", "hisax" ]
     }
 
 
@@ -185,7 +237,9 @@ class ConfISDN:
                 if self.DriverId:
                     rs = rs + " id=" + str(self.DriverId)
                 if self.IoPort:
-                    if self.Type == "4" or self.Type == "19" or self.Type == "24":
+                    if (self.Type == "4" 
+                        or self.Type == "19" 
+                        or self.Type == "24"):
                         rs = rs + " io0=" + str(self.IoPort)
                     else:
                         rs = rs + " io=" + str(self.IoPort)
@@ -237,13 +291,16 @@ class ConfISDN:
             f.close()
             found = 1
 
-        if found == 0: return
+        if found == 0: 
+            return
 
         for i in _card.keys():
             if _card[i][VENDOR_ID] and _card[i][DEVICE_ID]:
-                if pci_infos.find(_card[i][VENDOR_ID] + ':' + _card[i][DEVICE_ID]) >0:
+                if pci_infos.find(_card[i][VENDOR_ID] 
+                                  + ':' + _card[i][DEVICE_ID]) >0:
                     return {i : _card[i]}
-                elif idl and idl.count(_card[i][VENDOR_ID] + _card[i][DEVICE_ID]) >0:
+                elif idl and idl.count(_card[i][VENDOR_ID] 
+                                       + _card[i][DEVICE_ID]) >0:
                     return {i : _card[i]}
 
     def get_resource(self, name):

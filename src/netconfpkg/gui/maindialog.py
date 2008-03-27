@@ -21,7 +21,8 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 "The GUI maindialog of s-c-network"
-import gnome # pylint: disable-msg=W0611
+#import gnome # pylint: disable-msg=W0611
+import gnome.ui # needed before the glade xml load
 import gobject
 import gtk.glade
 import os
@@ -36,20 +37,22 @@ from netconfpkg.NCIPsecList import getIPsecList
 from netconfpkg.NCProfileList import getProfileList, Profile
 from netconfpkg.NC_functions import (DEFAULT_PROFILE_NAME, PROGNAME,
                                      rpms_notinstalled, log, NETCONFDIR, 
-                                     LO, TestError, _)
+                                     LO, TestError, _, 
+                                     generic_error_dialog,
+                                     generic_yesno_dialog, 
+                                     ACTIVE, INACTIVE, 
+                                     generic_yesnocancel_dialog, 
+                                     generic_info_dialog, 
+                                     )
 from netconfpkg.gui.GUI_functions import (get_icon, get_pixbuf,
                                           GLADEPATH, load_icon, 
                                           xml_signal_autoconnect,
-                                          generic_error_dialog,
-                                          ACTIVE, INACTIVE, 
                                           get_device_icon_mask, 
                                           gui_info_dialog,
-                                          generic_yesno_dialog, 
                                           RESPONSE_YES, RESPONSE_NO,
                                           RESPONSE_CANCEL,
                                           gui_run, 
-                                          generic_yesnocancel_dialog, 
-                                          generic_info_dialog)
+                                          )
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
 
@@ -66,7 +69,7 @@ PAGE_IPSEC = 2
 PAGE_DNS = 3
 PAGE_HOSTS = 4
 
-def __nop(*args, **kwargs): # pylint: disable-msg=W0613
+def _nop(*args, **kwargs): # pylint: disable-msg=W0613
     pass
 
 class mainDialog:
@@ -145,8 +148,8 @@ class mainDialog:
 
         self.appBar = self.xml.get_widget ("appbar")
         if not hasattr(self.appBar, "push") or not hasattr(self.appBar, "push"):
-            self.appBar.push = __nop
-            self.appBar.pop = __nop
+            self.appBar.push = _nop
+            self.appBar.pop = _nop
 
         # FIXME: [188232] 'NoneType' object has no attribute 'set_from_pixbuf'
         widget = self.xml.get_widget ("hardware_pixmap")
@@ -868,9 +871,9 @@ class mainDialog:
                 except:
                     continue
             else:
-                uid=os.getuid()
+                uid = os.getuid()
             
-            if uid!=None:
+            if uid != None:
                 import pwd
                 # pylint: disable-msg=W0612
                 (pw_name, pw_passwd, pw_uid,
@@ -1295,12 +1298,17 @@ class mainDialog:
     def on_generic_clist_unselect_row(self, clist, 
                                       row, column, 
                                       event): # pylint: disable-msg=W0613
-        if self.edit_button: self.edit_button.set_sensitive(False)
+        if self.edit_button: 
+            self.edit_button.set_sensitive(False)
         #if self.rename_button: self.rename_button.set_sensitive(False)
-        if self.delete_button: self.delete_button.set_sensitive(False)
-        if self.copy_button: self.copy_button.set_sensitive(False)
-        if self.up_button: self.delete_button.set_sensitive(False)
-        if self.down_button: self.copy_button.set_sensitive(False)
+        if self.delete_button: 
+            self.delete_button.set_sensitive(False)
+        if self.copy_button: 
+            self.copy_button.set_sensitive(False)
+        if self.up_button: 
+            self.delete_button.set_sensitive(False)
+        if self.down_button: 
+            self.copy_button.set_sensitive(False)
 
     def on_generic_clist_button_release_event(self, clist, event, 
                                               func): # pylint: disable-msg=W0613

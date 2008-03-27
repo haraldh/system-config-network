@@ -35,7 +35,8 @@ class qethHardwareDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml, 
             {
@@ -88,7 +89,9 @@ class qethHardwareDialog:
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
         self.hw.Card.ModuleName = "qeth"
-        self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, self.hw.Card.IoPort1, self.hw.Card.IoPort2)
+        self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, 
+                                                 self.hw.Card.IoPort1, 
+                                                 self.hw.Card.IoPort2)
 
 def register_plugin():
     from netconfpkg.plugins import NCPluginHWQeth

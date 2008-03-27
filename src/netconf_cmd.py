@@ -42,7 +42,7 @@ from netconfpkg import NC_functions
 #from netconfpkg.genClass import ParseError
 from version import PRG_VERSION
 
-PROGNAME='system-config-network'
+PROGNAME = 'system-config-network'
 
 class ParseError(Exception):
     pass
@@ -97,30 +97,31 @@ def handleException((mtype, value, tb), progname, version, debug=None):
 
 
 def Usage():
-    sys.stderr.write(_("%s - network configuration commandline tool") % (sys.argv[0]) + '\n')
+    sys.stderr.write(_("%s - network configuration commandline tool") 
+                     % (sys.argv[0]) + '\n')
     sys.stderr.write(_("Copyright (c) 2001-2005 Red Hat, Inc.") + '\n')
     sys.stderr.write( _("This software is distributed under the GPL. "
             "Please Report bugs to Red Hat's Bug Tracking "
             "System: http://bugzilla.redhat.com/") + "\n\n")
     sys.stderr.write(_("Usage: %s") % (sys.argv[0]) + '\n')
-    sys.stderr.write( "\t-p, --profile <profile> [--activate, -a]: %s"\
+    sys.stderr.write( "\t-p, --profile <profile> [--activate, -a]: %s"
                       % _("switch / activate profile") + '\n')
-    sys.stderr.write( "\t-h, --hardwarelist : %s"\
+    sys.stderr.write( "\t-h, --hardwarelist : %s"
                       % _("export / import hardware list") + '\n')
-    sys.stderr.write( "\t-s, --ipseclist : %s"\
+    sys.stderr.write( "\t-s, --ipseclist : %s"
                       % _("export / import IPsec list") + '\n')
-    sys.stderr.write( "\t-d, --devicelist   : %s"\
+    sys.stderr.write( "\t-d, --devicelist   : %s"
                       % _("export / import device list (default)") + '\n')
-    sys.stderr.write( "\t-o, --profilelist  : %s"\
+    sys.stderr.write( "\t-o, --profilelist  : %s"
                       % _("export / import profile list") + '\n')
-    sys.stderr.write( "\t-r, --root=<root>  : %s"\
+    sys.stderr.write( "\t-r, --root=<root>  : %s"
                       % _("set the root directory") + '\n')
-    sys.stderr.write( "\t-e, --export       : %s" \
+    sys.stderr.write( "\t-e, --export       : %s" 
                       % _("export list (default)") + '\n')
     sys.stderr.write("\t-i, --import       : %s" % _("import list") + '\n')
-    sys.stderr.write( "\t-c, --clear        : %s" % \
+    sys.stderr.write( "\t-c, --clear        : %s" % 
           _("clear existing list prior of importing") + '\n')
-    sys.stderr.write( "\t-f, --file=<file>  : %s" % \
+    sys.stderr.write( "\t-f, --file=<file>  : %s" % 
           _("import from file") + '\n')
     sys.stderr.write('\n')
 

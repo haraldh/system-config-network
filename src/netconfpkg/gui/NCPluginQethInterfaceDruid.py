@@ -129,7 +129,8 @@ class QethInterfaceGui(InterfaceCreator):
         self.init_gui()
         return self.druids
     
-    def on_hostname_config_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hostname_config_page_back(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[len(self.hwDruid.druids)+1])
@@ -137,14 +138,16 @@ class QethInterfaceGui(InterfaceCreator):
             self.topdruid.set_page(childs[1])            
         return True
     
-    def on_hostname_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hostname_config_page_next(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         if self.hwPage:
             self.device.Device = self.hwDruid.hw.Name
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
     
-    def on_hostname_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hostname_config_page_prepare(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
@@ -154,7 +157,8 @@ class QethInterfaceGui(InterfaceCreator):
     def on_hw_config_page_back(self, druid_page, druid):
         pass
     
-    def on_hw_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hw_config_page_next(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         clist = self.xml.get_widget("hardwareList")
         childs = self.topdruid.get_children()
 
@@ -177,7 +181,8 @@ class QethInterfaceGui(InterfaceCreator):
 
         return True
 
-    def on_hw_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hw_config_page_prepare(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = getHardwareList()
         hardwarelist.updateFromSystem()
 
@@ -196,20 +201,24 @@ class QethInterfaceGui(InterfaceCreator):
     def on_finish_page_back(self, druid_page, druid):
         pass
         
-    def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_prepare(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device) 
+        try: 
+            hwaddr = ethtool.get_hwaddr(self.device.Device) 
         except IOError:
             pass
         else:
             self.device.HardwareAddress = hwaddr
 
-        s = _("You have selected the following information:") + "\n\n" + "   "\
-            + _("Device:") + " " + str(self.device.DeviceId) + " "
+        # FIXME: Bad style for translation
+        s = str(_("You have selected the following information:") 
+                + "\n\n" + "   " + _("Device:") + " " 
+                + str(self.device.DeviceId) + " ")
 
         hardwarelist = getHardwareList()
         for hw in hardwarelist:
@@ -219,18 +228,22 @@ class QethInterfaceGui(InterfaceCreator):
 
         s = s + "\n" + "   "
         
-        if self.device.BootProto == "static" or self.device.BootProto == "none":
-            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
-            + _("Default gateway address:") + " " + self.device.Gateway + "\n" + "   "
+        if (self.device.BootProto == "static" 
+            or self.device.BootProto == "none"):
+            s = str(s + _("Address:") + " " + self.device.IP + "\n" 
+                    + "   " + _("Subnet mask:") + " " 
+                    + self.device.Netmask + "\n" + "   "
+                    + _("Default gateway address:") + " " 
+                    + self.device.Gateway + "\n" + "   ")
         else:
-            s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n"
+            s = str(s + _("Automatically obtain IP address settings with:") 
+                    + " " + self.device.BootProto + "\n")
 
 
         druid_page.set_text(s)
         
-    def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_finish(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
         
         
         hardwarelist = getHardwareList()

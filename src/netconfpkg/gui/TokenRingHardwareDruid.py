@@ -65,7 +65,8 @@ class tokenringHardware:
 
     def get_druids(self):
         for self.hw in self.hardwarelist:
-            if self.hw.Type == TOKENRING: return
+            if self.hw.Type == TOKENRING: 
+                return
 
         self.has_tokenring = False
         return self.druids[0:]
@@ -73,10 +74,12 @@ class tokenringHardware:
     def on_hardware_page_prepare(self, druid_page, druid):
         pass
 
-    def on_hardware_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hardware_page_next(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
         self.dehydrate()
 
-    def on_hardware_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hardware_page_back(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
         self.hardwarelist.rollback() 
 
     def on_adapterEntry_changed(self, entry):
@@ -107,7 +110,8 @@ class tokenringHardware:
 #          (hwcurr, hwdesc) = create_tokenring_combo(hwlist, None)
 
 #          if len(hwdesc):
-#              self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#              self.xml.get_widget(
+#                "adapterComboBox").set_popdown_strings(hwdesc)
 
     def dehydrate(self):
         if not self.has_tokenring:

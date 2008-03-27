@@ -27,8 +27,10 @@ if not "/usr/lib/rhs/python" in sys.path:
 
 
 class ConfPAP(Conf.Conf):
-    __beginline = '####### system-config-network will overwrite this part!!! (begin) ##########'
-    __endline = '####### system-config-network will overwrite this part!!! (end) ############'
+    __beginline = """\
+####### system-config-network will overwrite this part!!! (begin) ##########"""
+    __endline = """\
+####### system-config-network will overwrite this part!!! (end) ############"""
     __beginlineold = '^####### redhat-config-network will overwrite.*'
     __endlineold = '^####### redhat-config-network will overwrite.*'
 
@@ -103,7 +105,9 @@ class ConfPAP(Conf.Conf):
         var = []
         if self.line >= len(self.lines):
             return []
-        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?"))( |\t)+(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)( |\t)+(?P<secret>("([^"\\]|\\\S)*?"))')
+        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?"))( |\t)+'
+        r'(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)( |\t)+'
+        r'(?P<secret>("([^"\\]|\\\S)*?"))')
         m = regexp.match(self.lines[self.line])
         if not m:
             raise Conf.BadFile, "Error occured while parsing %s" % self.filename
@@ -155,9 +159,9 @@ class ConfPAP(Conf.Conf):
             return ''
 
     def __setitem__(self, varname, svalue):
-        place=self.tell()
+        place = self.tell()
         self.rewind()
-        missing=1
+        missing = 1
 
         if isinstance(varname, ListType):
             login = '\"' + varname[0] + '\"'
@@ -177,7 +181,7 @@ class ConfPAP(Conf.Conf):
             if var and (len(var) >= 3):
                 if login == var[0] and server == var[1]:
                     self.setfields([ login, server, value ] )
-                    missing=0
+                    missing = 0
             self.nextline()
 
         if missing:
@@ -198,7 +202,7 @@ class ConfPAP(Conf.Conf):
         self.seek(place)
 
     def __delitem__(self, varname):
-        place=self.tell()
+        place = self.tell()
         self.rewind()
         if isinstance(varname, ListType):
             login = varname[0]
@@ -226,7 +230,7 @@ class ConfPAP(Conf.Conf):
         self.seek(place)
 
     def delallitem(self, varname):
-        place=self.tell()
+        place = self.tell()
         self.rewind()
         # delete *every* instance...
         if isinstance(varname, ListType):
@@ -254,7 +258,8 @@ class ConfPAP(Conf.Conf):
         self.seek(place)
 
     def has_key(self, key):
-        if self.vars.has_key(key): return 1
+        if self.vars.has_key(key):
+            return 1
         return 0
 
     def keys(self):

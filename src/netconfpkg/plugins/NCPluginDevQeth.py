@@ -77,14 +77,18 @@ class DevQeth(DevEthernet):
     def save(self):
         DevEthernet.save(self)
         conf = ConfDevice(self.DeviceId)
-        conf["TYPE"]="Ethernet"
+        conf["TYPE"] = "Ethernet"
         if not self.Alias:
-            conf["NETTYPE"]="qeth"
+            conf["NETTYPE"] = "qeth"
             ports = ""
             hardwarelist = getHardwareList()
             for hw in hardwarelist:
-                if hw.Name == self.Device and (hw.Card.IoPort and hw.Card.IoPort1 and hw.Card.IoPort2):
-                    ports = "%s,%s,%s" % (hw.Card.IoPort, hw.Card.IoPort1, hw.Card.IoPort2)
+                if (hw.Name == self.Device 
+                    and (hw.Card.IoPort and hw.Card.IoPort1 
+                         and hw.Card.IoPort2)):
+                    ports = "%s,%s,%s" % (hw.Card.IoPort, 
+                                          hw.Card.IoPort1, 
+                                          hw.Card.IoPort2)
                     break
             if ports:
                 conf["SUBCHANNELS"] = ports

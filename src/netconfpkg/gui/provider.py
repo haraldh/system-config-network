@@ -40,7 +40,8 @@ class providerDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         # get the widgets we need
         self.dbtree = self.xml.get_widget("providerTree")
@@ -51,10 +52,13 @@ class providerDialog:
             {
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked,
-            "on_providerTree_tree_select_row" : self.on_providerTree_tree_select_row,
-            "on_providerTree_button_press_event" : (self.on_providerTree_button_press_event,
-                                                    self.on_okButton_clicked),
-            "on_providerTree_tree_unselect_row" : self.on_providerTree_tree_unselect_row
+            "on_providerTree_tree_select_row" : 
+                self.on_providerTree_tree_select_row,
+            "on_providerTree_button_press_event" : 
+                (self.on_providerTree_button_press_event,
+                 self.on_okButton_clicked),
+            "on_providerTree_tree_unselect_row" : 
+                self.on_providerTree_tree_unselect_row
             })
 
         self.okButton.set_sensitive(False)
@@ -75,7 +79,8 @@ class providerDialog:
         self.dialog.destroy()
         self.device.commit()
 
-    def on_providerTree_tree_select_row(self, ctree, node, column): # pylint: disable-msg=W0613
+    def on_providerTree_tree_select_row(self, 
+                            ctree, node, column): # pylint: disable-msg=W0613
         node = ctree.selection[0]
         if len(node.children) == 0:
             try:
@@ -86,21 +91,24 @@ class providerDialog:
             except(TypeError, AttributeError):
                 pass
 
-    def on_providerTree_tree_unselect_row(self, ctree, clist, column): # pylint: disable-msg=W0613
+    def on_providerTree_tree_unselect_row(self, 
+                            ctree, clist, column): # pylint: disable-msg=W0613
         self.okButton.set_sensitive(False)
 
-    def on_providerTree_button_press_event(self, clist, event, func): # pylint: disable-msg=W0613
+    def on_providerTree_button_press_event(self, 
+                                clist, event, func): # pylint: disable-msg=W0613
         return
 #        if event.type == gtk.gdk._2BUTTON_PRESS:
 #            if self.okButton.get_property("sensitive"):
 #                info = clist.get_selection_info(event.x, event.y)
 #                if info != None:
 #                    id = clist.signal_connect("button_release_event",
-#                                              self.on_providerTree_button_release_event,
+#                            self.on_providerTree_button_release_event,
 #                                              func)
 #                    clist.set_data("signal_id", id)
 
-    def on_providerTree_button_release_event(self, clist, event, func): # pylint: disable-msg=W0613
+    def on_providerTree_button_release_event(self, clist, 
+                                    event, func): # pylint: disable-msg=W0613
         if self.okButton.get_property("sensitive"):
             mid = clist.get_data ("signal_id")
             clist.disconnect (mid)
@@ -115,8 +123,9 @@ class providerDialog:
         if self.done:
             isp_list = self.get_provider_list()
             for isp in isp_list:
-                if self.country == isp['Country'] and self.city == isp['City'] \
-                   and self.name == isp['ProviderName']:
+                if (self.country == isp['Country'] 
+                    and self.city == isp['City'] 
+                    and self.name == isp['ProviderName']):
                     return isp
 
     def setup_provider_db(self):
@@ -136,14 +145,17 @@ class providerDialog:
                 if not pix:
                     pix, mask = GUI_functions.get_icon('unknown-flag.xpm')
 
-                country = self.dbtree.insert_node(None, None, [isp['Country']], 5,
-                                                  pix, mask, pix, mask, is_leaf=False)
+                country = self.dbtree.insert_node(None, None, 
+                                                  [isp['Country']], 5,
+                                                  pix, mask, pix, mask,
+                                                  is_leaf=False)
                 _country = isp['Country']
                 _city = ''
             if _city != isp['City']:
                 city = self.dbtree.insert_node(country, None, [isp['City']], 5,
                                                pix_city, mask_city,
-                                               pix_city, mask_city, is_leaf=False)
+                                               pix_city, mask_city, 
+                                               is_leaf=False)
                 _city = isp['City']
 
             self.dbtree.insert_node(city, None, [isp['ProviderName']], 5,
@@ -156,8 +168,10 @@ class providerDialog:
         pass
 
     def dehydrate(self):
-        if not self.provider: return
-        if self.device.Dialup == None: self.device.createDialup()
+        if not self.provider: 
+            return
+        if self.device.Dialup == None: 
+            self.device.createDialup()
         self.device.Dialup.ProviderName = self.provider['ProviderName']
         self.device.Dialup.Login = self.provider['Login']
         self.device.Dialup.Password = self.provider['Password']
@@ -168,9 +182,11 @@ class providerDialog:
         self.device.Domain = self.provider['Domain']
         if len(self.provider['DNS']) >0:
             dns = self.provider['DNS'].split()
-            if dns[0]: self.device.Dialup.PrimaryDNS = dns[0]
+            if dns[0]: 
+                self.device.Dialup.PrimaryDNS = dns[0]
             try:
-                if dns[1]: self.device.Dialup.SecondaryDNS = dns[1]
+                if dns[1]: 
+                    self.device.Dialup.SecondaryDNS = dns[1]
             except(IndexError):
                 pass
             
@@ -189,7 +205,8 @@ class ISDNproviderDialog(providerDialog):
     def dehydrate(self):
         providerDialog.dehydrate(self)
         self.device.Type = 'ISDN'
-        self.device.Dialup.Authentication = self.provider['Authentication'].lower()
+        self.device.Dialup.Authentication = self.provider[
+                                                'Authentication'].lower()
 
 
 class ModemproviderDialog(providerDialog):

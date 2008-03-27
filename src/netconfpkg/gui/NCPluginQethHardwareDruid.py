@@ -66,7 +66,8 @@ class QethHardware:
     
     def get_druids(self):
         for self.hw in self.hardwarelist:
-            if self.hw.Type == QETH: return
+            if self.hw.Type == QETH: 
+                return
 
         self.has_ethernet = False
         return self.druids[0:]
@@ -74,10 +75,12 @@ class QethHardware:
     def on_hardware_page_prepare(self, druid_page, druid):
         pass
     
-    def on_hardware_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hardware_page_next(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
         self.dehydrate()
 
-    def on_hardware_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hardware_page_back(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
         self.hardwarelist.rollback() 
 
     def on_adapterEntry_changed(self, entry):
@@ -90,9 +93,11 @@ class QethHardware:
                 if self.hw.Card.IoPort:
                     self.xml.get_widget('ioEntry').set_text(self.hw.Card.IoPort)
                 if self.hw.Card.IoPort1:
-                    self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
+                    self.xml.get_widget('io1Entry').set_text(
+                                                self.hw.Card.IoPort1)
                 if self.hw.Card.IoPort2:
-                    self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
+                    self.xml.get_widget('io2Entry').set_text(
+                                                    self.hw.Card.IoPort2)
         else:
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
@@ -102,7 +107,8 @@ class QethHardware:
 #          (hwcurr, hwdesc) = create_ethernet_combo(hwlist, None)
         
 #          if len(hwdesc):
-#              self.xml.get_widget("adapterComboBox").set_popdown_strings(hwdesc)
+#              self.xml.get_widget(
+#              "adapterComboBox").set_popdown_strings(hwdesc)
         pass
 
     def dehydrate(self):
@@ -116,7 +122,9 @@ class QethHardware:
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
         self.hw.Card.ModuleName = 'qeth'
-        self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, self.hw.Card.IoPort1, self.hw.Card.IoPort2)
+        self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, 
+                                                 self.hw.Card.IoPort1, 
+                                                 self.hw.Card.IoPort2)
 
 def register_plugin():
     NCPluginHWQeth.setHwQethWizard(QethHardware)

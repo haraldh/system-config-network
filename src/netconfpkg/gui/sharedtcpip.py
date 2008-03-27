@@ -28,9 +28,9 @@ from rhpl import ethtool
 ### DHCP
 ###
 
-DHCP=0
-BOOTP=1
-DIALUP=2
+DHCP = 0
+BOOTP = 1
+DIALUP = 2
 
 # FIXME: [183338] use SEARCH not resolv.conf
 
@@ -58,8 +58,8 @@ def dhcp_hydrate (xml, device):
     try:
         device_type = device.BootProto
     except:
-        if device.Type == "ISDN" or device.Type == "Modem" or \
-               device.Type == "xDSL":
+        if (device.Type == "ISDN" or device.Type == "Modem" 
+            or device.Type == "xDSL"):
             device_type = 'dialup'
         else:
             device_type = 'dhcp'
@@ -123,11 +123,14 @@ def dhcp_hydrate (xml, device):
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
-        if GUI_functions.get_history (xml.get_widget ('ipProtocolOmenu')) == DHCP:
+        if GUI_functions.get_history(
+                            xml.get_widget ('ipProtocolOmenu')) == DHCP:
             device.BootProto = 'dhcp'
-        elif GUI_functions.get_history (xml.get_widget ('ipProtocolOmenu')) == BOOTP:
+        elif GUI_functions.get_history(
+                            xml.get_widget ('ipProtocolOmenu')) == BOOTP:
             device.BootProto = 'bootp'
-        elif GUI_functions.get_history (xml.get_widget ('ipProtocolOmenu')) == DIALUP:
+        elif GUI_functions.get_history(
+                            xml.get_widget ('ipProtocolOmenu')) == DIALUP:
             device.BootProto = 'dialup'
         else:
             device.BootProto = 'none'
@@ -168,7 +171,8 @@ def route_update(xml, device):
 
     if device.StaticRoutes != None:
         for route in device.StaticRoutes:
-            clist.append([route.Address, route.Netmask or "", route.Gateway or ""])
+            clist.append([route.Address, route.Netmask or "", 
+                          route.Gateway or ""])
 #    else:
 #        device.createStaticRoutes()
 
@@ -209,7 +213,8 @@ def on_routeEditButton_clicked(button, xml, device, parent_dialog):
     route_update(xml, device)
 
 
-def on_routeDeleteButton_clicked(button, xml, device): # pylint: disable-msg=W0613
+def on_routeDeleteButton_clicked(button, xml, 
+                                 device): # pylint: disable-msg=W0613
     if not device.StaticRoutes:
         device.createStaticRoutes()
 
@@ -245,7 +250,8 @@ def on_routeUpButton_clicked(button, xml, device): # pylint: disable-msg=W0613
 
     clist.select_row(select_row-1, 0)
 
-def on_routeDownButton_clicked(button, xml, device): # pylint: disable-msg=W0613
+def on_routeDownButton_clicked(button, 
+                               xml, device): # pylint: disable-msg=W0613
     routes = device.StaticRoutes
     clist = xml.get_widget("networkRouteList")
 
@@ -331,22 +337,26 @@ def on_hardwareAliasesToggle_toggled(widget, xml, device):
     else:
         device.Alias = None
 
-def on_hardwareMACToggle_toggled(widget, xml, device): # pylint: disable-msg=W0613
+def on_hardwareMACToggle_toggled(widget, 
+                                 xml, device): # pylint: disable-msg=W0613
     xml.get_widget("hardwareMACEntry").set_sensitive (widget.get_active())
     xml.get_widget("hardwareProbeButton").set_sensitive (widget.get_active())
 
-def on_hardwareProbeButton_clicked(widget, xml, device): # pylint: disable-msg=W0613
+def on_hardwareProbeButton_clicked(widget, 
+                                   xml, device): # pylint: disable-msg=W0613
     omenu = xml.get_widget("hwdvOmenu")
     hw = omenu.get_children()[0].get()
     device = hw.split()[0]
-    try: hwaddr = ethtool.get_hwaddr(device)
+    try: 
+        hwaddr = ethtool.get_hwaddr(device)
     except IOError, err:
         error_str = str (err)
         GUI_functions.gui_error_dialog(error_str, omenu.get_toplevel())
     else:
         xml.get_widget("hardwareMACEntry").set_text(hwaddr)
 
-def on_hardwareConfigureButton_clicked(widget, xml, device): # pylint: disable-msg=W0613
+def on_hardwareConfigureButton_clicked(widget, 
+                                       xml, device): # pylint: disable-msg=W0613
     pass
 
 def hardware_init(xml, device):
@@ -365,7 +375,9 @@ def hardware_init(xml, device):
 
 def hardware_hydrate(xml, device):
     hwlist = getHardwareList()
-    (hwcurr, hwdesc) = NC_functions.create_generic_combo(hwlist, device.Device, mtype = device.Type)
+    (hwcurr, hwdesc) = NC_functions.create_generic_combo(hwlist, 
+                                                         device.Device, 
+                                                         mtype = device.Type)
     omenu = xml.get_widget("hwdvOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()
@@ -421,7 +433,8 @@ def dsl_hardware_init(xml, device): # pylint: disable-msg=W0613
 
 def dsl_hardware_hydrate(xml, device):
     hwlist = getHardwareList()
-    (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, device.Dialup.EthDevice)
+    (hwcurr, hwdesc) = NC_functions.create_ethernet_combo(hwlist, 
+                                                        device.Dialup.EthDevice)
     omenu = xml.get_widget("hwdvOmenu")
     omenu.remove_menu()
     menu = gtk.Menu()

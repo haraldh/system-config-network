@@ -32,7 +32,8 @@ class isdnHardwareDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -120,7 +121,8 @@ class isdnHardwareDialog:
                 self.xml.get_widget("1tr6Button").set_active(True)
 
             if self.hw.Description:
-                self.xml.get_widget("adapterEntry").set_text(self.hw.Description)
+                self.xml.get_widget("adapterEntry").set_text(
+                                                    self.hw.Description)
 
             if hw.Card.IRQ:
                 self.xml.get_widget("irqSpinButton").set_sensitive(True)
@@ -173,7 +175,8 @@ class isdnHardwareDialog:
         if not self.xml.get_widget('irqSpinButton').get_property("sensitive"):
             self.hw.Card.IRQ = isdncard.IRQ
         else:
-            self.hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
+            self.hw.Card.IRQ = str(self.xml.get_widget(
+                                    'irqSpinButton').get_value_as_int())
 
         if not self.xml.get_widget('memEntry').get_property("sensitive"):
             self.hw.Card.Mem = isdncard.Mem

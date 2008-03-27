@@ -29,10 +29,11 @@ from netconfpkg.gui.DialupDruid import DialupDruid
 from netconfpkg.gui.GUI_functions import (xml_signal_autoconnect,
                                           GLADEPATH, NETCONFDIR,
                                           PROGNAME)
-from netconpkg.plugins.NCPluginDevModem import getModemList
+from netconfpkg.plugins.NCPluginDevModem import getModemList
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 
 
-class ModemInterface:
+class ModemInterfaceWizard(InterfaceCreator):
     modemList = None
     def __init__ (self, toplevel=None, do_save = 1, druid = None):
         self.do_save = do_save
@@ -81,11 +82,13 @@ class ModemInterface:
         return MODEM
 
     def get_project_description (self):
-        return _("Create a new Modem connection.  This is a connection that uses a "
-                 "serial analog modem to dial into to your Internet Service Provider. "
-                 "These modems use sound over a normal copper telephone line to transmit "
-                 "data.  These types of connections are available just about anywhere in "
-                 "the world where there is a phone system.")
+        return _(
+        "Create a new Modem connection.  This is a connection that uses a "
+        "serial analog modem to dial into to your Internet Service Provider. "
+        "These modems use sound over a normal copper telephone line to "
+        "transmit data. These types of connections are available just about "
+        "anywhere in the world where there is a phone system."
+        )
 
 
     def get_druids(self):
@@ -96,25 +99,29 @@ class ModemInterface:
         dialup = DialupDruid(self.toplevel, Type, 
                                          do_save = self.do_save)
         for self.hw in self.hardwarelist:
-            if self.hw.Type == Type: return dialup.get_druids()
+            if self.hw.Type == Type: 
+                return dialup.get_druids()
 
         mid = self.hardwarelist.addHardware(Type)
         self.hw = self.hardwarelist[mid]
         self.hw.Type = Type
         self.hw.Name = Type + '0'
-        if Type == 'ISDN':  self.hw.createCard()
-        elif Type == 'Modem': self.hw.createModem()
+        if Type == 'ISDN':  
+            self.hw.createCard()
+        elif Type == 'Modem': 
+            self.hw.createModem()
 
         return self.druids[0:] + dialup.get_druids()
 
     def on_Modem_prepare(self, druid_page, druid):
-        if not ModemInterface.modemList:
+        if not ModemInterfaceWizard.modemList:
             # FIXME: [165331] Can't detect external modem on /dev/ttyS0
             dialog = gtk.Dialog(_('Modem probing...'), 
                                 None, 
-                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_DESTROY_WITH_PARENT)
+                                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR
+                                |gtk.DIALOG_DESTROY_WITH_PARENT)
             dialog.set_border_width(10)
-            label = gtk.Label(_('Probing for Modems, please wait...'))            
+            label = gtk.Label(_('Probing for Modems, please wait...'))
             dialog.vbox.pack_start(label, False)  # pylint: disable-msg=E1101
             dialog.set_transient_for(self.toplevel)
             dialog.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
@@ -126,15 +133,15 @@ class ModemInterface:
             while gtk.events_pending():
                 gtk.main_iteration(False)
             dlist = getModemList()
-            ModemInterface.modemList = dlist
+            ModemInterfaceWizard.modemList = dlist
             dialog.destroy()
             if dlist == []:
                 generic_error_dialog(_('No modem was found on your system.'), 
                                      self.toplevel)
                 dlist = modemDeviceList
-            ModemInterface.modemList = dlist
+            ModemInterfaceWizard.modemList = dlist
         else:
-            dlist = ModemInterface.modemList
+            dlist = ModemInterfaceWizard.modemList
 
         self.xml.get_widget("modemDeviceEntryComBo").set_popdown_strings(dlist)
         # 460800 seems to be to high
@@ -158,10 +165,14 @@ class ModemInterface:
 
     def dehydrate(self):
         self.hw.Description = _('Generic Modem')
-        self.hw.Modem.DeviceName = self.xml.get_widget("modemDeviceEntry").get_text()
-        if len(self.hw.Modem.DeviceName)>5 and self.hw.Modem.DeviceName[:5] != '/dev/':
-            self.hw.Modem.DeviceName = '/dev/' + self.hw.Modem.DeviceName
-        self.hw.Modem.BaudRate = int(self.xml.get_widget("baudrateEntry").get_text())
+        self.hw.Modem.DeviceName = self.xml.get_widget(
+                                        "modemDeviceEntry").get_text()
+        if (len(self.hw.Modem.DeviceName) > 5 
+            and self.hw.Modem.DeviceName[:5] != '/dev/'):
+            self.hw.Modem.DeviceName = str('/dev/' 
+                            + self.hw.Modem.DeviceName )
+        self.hw.Modem.BaudRate = int(
+                            self.xml.get_widget("baudrateEntry").get_text())
         flow = self.xml.get_widget("flowControlEntry").get_text()
         for i in modemFlowControls.keys():
             if modemFlowControls[i] == flow:
@@ -193,23 +204,27 @@ class ModemInterface:
         if self.hw.Modem.DeviceName != None:
             if not self.hw.Modem.DeviceName in modemDeviceList:
                 modemDeviceList.insert(0, self.hw.Modem.DeviceName)
-                self.xml.get_widget("modemDeviceEntryCombo").set_popdown_strings(modemDeviceList)
-            self.xml.get_widget('modemDeviceEntry').set_text(self.hw.Modem.DeviceName)
+                self.xml.get_widget(
+                    "modemDeviceEntryCombo").set_popdown_strings(
+                                                modemDeviceList)
+            self.xml.get_widget('modemDeviceEntry').set_text(
+                                            self.hw.Modem.DeviceName)
         if self.hw.Modem.BaudRate != None:
-            self.xml.get_widget('baudrateEntry').set_text(str(self.hw.Modem.BaudRate))
-        if self.hw.Modem.FlowControl != None and \
-               modemFlowControls.has_key(self.hw.Modem.FlowControl):
-            self.xml.get_widget(\
-                'flowControlEntry').set_text(\
+            self.xml.get_widget('baudrateEntry').set_text(
+                                                str(self.hw.Modem.BaudRate))
+        if (self.hw.Modem.FlowControl != None 
+            and modemFlowControls.has_key(self.hw.Modem.FlowControl)):
+            self.xml.get_widget(
+                'flowControlEntry').set_text(
                 modemFlowControls[self.hw.Modem.FlowControl])
         else:
-            self.xml.get_widget(\
-                'flowControlEntry').set_text(\
+            self.xml.get_widget(
+                'flowControlEntry').set_text(
                 modemFlowControls[CRTSCTS])
 
 
 def register_plugin():
     from netconfpkg.plugins import NCPluginDevModem
-    NCPluginDevModem.setDevModemWizard(ModemInterface)
+    NCPluginDevModem.setDevModemWizard(ModemInterfaceWizard)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

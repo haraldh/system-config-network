@@ -153,44 +153,39 @@ class Transaction(object):
         logging.log(_debuglevel, "Transaction.modified() %s",
                     self.__class__.__name__)
         
-#        if self.changed == True:
-#            logging.log(_debuglevel, "self.changed == True")
-#            return True
-        
         if "__orig" not in self.__dict__:
             logging.log(_debuglevel, '"__orig" not in self.__dict__')
             return True
         
         state = self.__dict__["__orig"]
-        gotstate = True
         gotextrastate = False
         if type(state) is tuple:
             gotextrastate = True
             (state, extrastate) = state
         
-        if gotstate:
-            for key in state:
-                if (key not in self.__dict__):
-                    logging.log(_debuglevel, "%s  not in self.__dict__" % key)
-                    return True
-                    
-                if(self.__dict__[key] != state[key]):
-                    logging.log(_debuglevel, "%s %s != %s" % (key,
-                                 self.__dict__[key], state[key]))
-                    return True
-
-                if isinstance(state[key],  Transaction):
-                    if state[key].modified():
-                        return True
-
-            for key in self.__dict__:
-                if (key != "__orig" and key != "__l" 
-                    and (key not in state) 
-                    and self.__dict__[key] != None):
-                    logging.log(_debuglevel, "%s is a new key in self.__dict__=%s" 
-                                  % (key, self.__dict__))
-                    return True
+        for key in state:
+            if (key not in self.__dict__):
+                logging.log(_debuglevel, "%s  not in self.__dict__" % key)
+                return True
                 
+            if(self.__dict__[key] != state[key]):
+                logging.log(_debuglevel, "%s %s != %s" % (key,
+                             self.__dict__[key], state[key]))
+                return True
+
+            if isinstance(state[key],  Transaction):
+                if state[key].modified():
+                    return True
+
+        for key in self.__dict__:
+            if (key != "__orig" 
+                and key != "__l" 
+                and (key not in state) 
+                and self.__dict__[key] != None):
+                logging.log(_debuglevel, 
+                            "%s is a new key in self.__dict__=%s" 
+                              % (key, self.__dict__))
+                return True
                 
         if gotextrastate:            
             if hasattr(self, '__getstate__'):            
@@ -200,7 +195,8 @@ class Transaction(object):
                 return True
             
             if extrastate != state:
-                logging.log(_debuglevel, "state: %s != %s" % (extrastate, state))
+                logging.log(_debuglevel, 
+                            "state: %s != %s" % (extrastate, state))
                 return True
 
         return False

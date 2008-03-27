@@ -395,7 +395,8 @@ if __name__ == '__main__':
 
     __debug = 0
 
-    class BadUsage(Exception): pass
+    class BadUsage(Exception):
+        "exception for a bad command line usage"
 
     try:
         __opts, __args = getopt.getopt(sys.argv[1:], "dgh",

@@ -93,7 +93,8 @@ class ConfPwO(ConfPw):
 
     def __setitem__(self, key, value):
         # items are objects which the higher-level code can't touch
-        raise AttributeError, 'Object ' + self + ' is immutable. Cannot set %s to %s' % (str(key), str(value))
+        raise AttributeError, str('Object %s is immutable. Cannot set %s to %s' 
+                                  % (self, str(key), str(value)))
 
     # __delitem__ is inherited from ConfPw
     # Do *not* use setitem for this; adding an entry should be
@@ -225,7 +226,9 @@ class ConfPasswd(ConfPwO):
     def __init__(self):
         ConfPwO.__init__(self, '/etc/passwd', 0, 7, _passwd_reflector)
     def addentry(self, username, password, uid, gid, gecos, homedir, shell):
-        ConfPwO.addentry_list(self, username, [username, password, uid, gid, gecos, homedir, shell])
+        ConfPwO.addentry_list(self, username, 
+                              [username, password, uid, gid, 
+                              gecos, homedir, shell])
     def addfullentry(self, username, password, uid, gid, fullname, office,
         officephone, homephone, homedir, shell):
         self.addentry(username, password, uid, gid, ', '.join([fullname,
@@ -323,7 +326,8 @@ class ConfShadow(ConfPwO):
     """
     def __init__(self):
         ConfPwO.__init__(self, '/etc/shadow', 0, 9, _shadow_reflector)
-    def addentry(self, username, password, lastchanged, mindays, maxdays, warndays, gracedays, expires):
+    def addentry(self, username, password, lastchanged, 
+                 mindays, maxdays, warndays, gracedays, expires):
         # we need that final '' so that the final : (delimited the
         # "reserved field" is preserved by ConfPwO.addentry())
         ConfPwO.addentry_list(self, username,

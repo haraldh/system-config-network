@@ -21,14 +21,14 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-PROGNAME='system-config-network'
+PROGNAME = 'system-config-network'
 
 import sys
 import os
 # Just to be safe...
 os.umask(0022)
 
-NETCONFDIR="/usr/share/" + PROGNAME + '/'
+NETCONFDIR = "/usr/share/" + PROGNAME + '/'
 
 if not NETCONFDIR in sys.path:
     sys.path.append(NETCONFDIR)
@@ -65,16 +65,19 @@ from netconfpkg.NC_functions import log
             
 from netconfpkg.exception import installExceptionHandler
 # FIXME: use action, error, exitcode
-#from netconfpkg.exception import action, error, exitcode, installExceptionHandler
+#from netconfpkg.exception import action, error, 
+# exitcode, installExceptionHandler
     
 installExceptionHandler(PROGNAME, PRG_VERSION)
 
 try:
     import gtk
 except RuntimeError:
-    sys.stderr.write(_("ERROR: Unable to initialize graphical environment. ") + \
-                     _("Most likely cause of failure is that the tool was not run using a graphical environment. ") + \
-                     _("Please either start your graphical user interface or set your DISPLAY variable.\n"))
+    sys.stderr.write(_("ERROR: Unable to initialize graphical environment."
+                       "Most likely cause of failure is that the tool was "
+                       "not run using a graphical environment. Please either "
+                       "start your graphical user interface or set your "
+                       "DISPLAY variable."))
     sys.exit(0)
 
 def get_pixpath(pixmap_file):
@@ -129,7 +132,8 @@ def splash_screen(gfx = None):
     return window
 
 def Usage():
-    print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose")
+    print _("system-config-network - network configuration tool\n\n"
+            "Usage: system-config-network -v --verbose")
 
 def runit(splash = None):
     from netconfpkg import NC_functions
@@ -177,7 +181,8 @@ def runit(splash = None):
     except:
         handleMyException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
-class BadUsage(Exception): pass
+class BadUsage(Exception): 
+    pass
 
 def main(cmdline):
     import getopt
@@ -242,8 +247,9 @@ def main(cmdline):
     if not os.access(NC_functions.getRoot(), os.W_OK):
         if os.getuid() != 0:
             from netconfpkg.gui import GUI_functions
-            GUI_functions.generic_error_dialog (_("Please start system-config-network "
-                                                 "with root permissions!\n"))
+            NC_functions.generic_error_dialog (
+                                _("Please start system-config-network "
+                                  "with root permissions!\n"))
             return 10
 
     if chroot:

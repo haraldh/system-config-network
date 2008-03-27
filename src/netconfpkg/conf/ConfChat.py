@@ -14,7 +14,7 @@ class ConfChat(Conf):
     Uses a list of two-element tuples."""
     def __init__(self, filename):
         Conf.__init__(self, filename, '', '\t ', ' ')
-        self.list=None
+        self.list = None
     def read(self):
         Conf.read(self)
         self.initlist()
@@ -112,7 +112,7 @@ class ConfChatFile(ConfChat):
                     # First instance of something that looks like a dial
                     # command and a phone number we take as such.
                     tmp = re.search('[-0-9, . #*()+]+', q)
-                    index=tmp.group(1)
+                    index = tmp.group(1)
                     self.dialcmd = q[:index]
                     self.phonenum = q[index:]
                 elif not cmp(p, 'CONNECT'):
@@ -159,7 +159,8 @@ class ConfChatFileClone(ConfChatFile):
                     ConfChatFile.write(self)
                     return
             # the loop completed, so they are the same
-            if os.path.isfile(self.filename): os.unlink(self.filename)
+            if os.path.isfile(self.filename): 
+                os.unlink(self.filename)
         else:
             # lists are different lengths, so they are different
             ConfChatFile.write(self)
@@ -179,15 +180,19 @@ class ConfDIP:
     def write(self):
         mfile = open(self.dipfilename, 'w', -1)
         os.chmod(self.dipfilename, 0600)
-        mfile.write('# dip script for interface '+self.cf['DEVICE']+'\n' +
-          '# DO NOT HAND-EDIT; ALL CHANGES *WILL* BE LOST BY THE netcfg PROGRAM\n' +
-          '# This file is created automatically from several other files by netcfg\n' +
-          '# Re-run netcfg to modify this file\n\n' +
+        mfile.write('# dip script for interface '
+                    + self.cf['DEVICE']+'\n' +
+"""\
+# DO NOT HAND-EDIT; ALL CHANGES *WILL* BE LOST BY THE netcfg PROGRAM
+# This file is created automatically from several other files by netcfg
+# Re-run netcfg to modify this file
+
+""" +
           'main:\n' +
-          '  get $local '+self.cf['IPADDR']+'\n' +
-          '  get $remote '+self.cf['REMIP']+'\n' +
-          '  port '+self.cf['MODEMPORT']+'\n' +
-          '  speed '+self.cf['LINESPEED']+'\n')
+          '  get $local ' + self.cf['IPADDR']+'\n' +
+          '  get $remote ' + self.cf['REMIP']+'\n' +
+          '  port ' + self.cf['MODEMPORT']+'\n' +
+          '  speed ' + self.cf['LINESPEED']+'\n')
         if self.cf['MTU']:
             mfile.write('  get $mtu '+self.cf['MTU']+'\n')
         for pair in self.chatfile.list:

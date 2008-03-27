@@ -49,17 +49,17 @@ class ConfShellVar(Conf):
     def __setitem__(self, varname, value):
         # prevent tracebacks
         if not value:
-            value=""
+            value = ""
         # set *every* instance of varname to value to avoid surprises
-        place=self.tell()
+        place = self.tell()
         self.rewind()
-        missing=1
+        missing = 1
         while self.findnextline('^[\t ]*' + varname + '='):
             if self.quotereg.search(value):
                 self.sedline('=.*', "='" + value + "'")
             else:
                 self.sedline('=.*', '=' + value)
-            missing=0
+            missing = 0
             self.nextline()
         if missing:
             self.seek(place)
@@ -80,7 +80,8 @@ class ConfShellVar(Conf):
             del self.vars[varname]
 
     def has_key(self, key):
-        if self.vars.has_key(key): return 1
+        if self.vars.has_key(key): 
+            return 1
         return 0
     def keys(self):
         return self.vars.keys()
@@ -117,8 +118,10 @@ class ConfShellVarClone(ConfShellVar):
                 del self[varname]
     # inherit delitem because we don't want to pass it through to self.ci
     def has_key(self, key):
-        if self.vars.has_key(key): return True
-        if self.ci.has_key(key): return True
+        if self.vars.has_key(key): 
+            return True
+        if self.ci.has_key(key): 
+            return True
         return False
     # FIXME: should we implement keys()?
 

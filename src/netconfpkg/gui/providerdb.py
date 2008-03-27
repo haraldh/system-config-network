@@ -82,7 +82,7 @@ class provider:
         return self.connection_type
 
     def set_connection_type(self, connection_type):
-        self.connection_type= connection_type
+        self.connection_type = connection_type
 
     def get_user_name(self):
         return self.user_name

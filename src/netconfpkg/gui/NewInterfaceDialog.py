@@ -103,11 +103,13 @@ class NewInterfaceDialog:
         self.toplevel.show_all ()
         self.on_start_page_prepare (None, None)
 
-    def on_start_page_prepare (self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_start_page_prepare (self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         self.interface_clist.grab_focus ()
         self.druid.set_buttons_sensitive (False, True, True, True)
 
-    def on_start_page_next (self, druid, druid_page): # pylint: disable-msg=W0613
+    def on_start_page_next (self, 
+                            druid, druid_page): # pylint: disable-msg=W0613
         interface = self.interface_clist.get_row_data (\
             self.interface_clist.selection[0])
 
@@ -133,7 +135,8 @@ class NewInterfaceDialog:
         self.canceled = True
         gtk.main_quit()
 
-    def on_interface_clist_select_row (self, clist, row, column, event): # pylint: disable-msg=W0613
+    def on_interface_clist_select_row (self, clist, 
+                                row, column, event): # pylint: disable-msg=W0613
         interface = self.interface_clist.get_row_data (row)
         if interface == None:
             return

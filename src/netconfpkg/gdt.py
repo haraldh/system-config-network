@@ -12,11 +12,6 @@
 # License along with this program; if not, write to the
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
-import sys
-
-from .transaction import Transaction, Transactionlist # pylint: disable-msg=W0403
-
-
 """\
 Basic classes with predefined properties
 
@@ -87,8 +82,9 @@ Output of the example:
     Article.page.1.Page.text=page 1
     Article.page.2.Page.text=page 2
 """
-
-
+import sys
+# pylint: disable-msg=W0403
+from .transaction import Transaction, Transactionlist 
 
 # pylint: disable-msg=W0142, W0212
 
@@ -178,7 +174,7 @@ def gdtstruct_properties(cls, schema):
 
 class Gdtobject(Transaction, object):
     "The base of all Gdtobjects"
-    keyid=None
+    keyid = None
 
     def tostr(self, prefix_string = None):
         "returns a string in gdt representation"
@@ -301,19 +297,6 @@ class Gdtlist(Transactionlist, Gdtcontainer):
         del self[:]
         self.extend(value)
 
-class Gdtstr(str):
-    "A Gdtobject String base class. Not a Gdtobject, because it is immutable"    
-        
+Gdtstr = str
 Gdtbool = bool
-#    "A simple Gdtobject Bool base class"
-#    
-#    def __init__(self, value):
-#        self._val = bool(value)
-#        super(Gdtbool, self).__init__()
-#        
-#    def __str__(self):
-#        return str(self._val)
-    
-class Gdtint(int):
-    "A Gdtobject Integer base class"
-
+Gdtint = int

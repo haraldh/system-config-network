@@ -127,7 +127,8 @@ class NCQethInterfaceTui:
         g2.setField(snack.Label (_("Default gateway IP")), 0, 5, anchorLeft = 1)
         g2.setField(snack.Label (_("Read Device Bus ID")), 0, 6, anchorLeft = 1)
         g2.setField(snack.Label (_("Data Device Bus ID")), 0, 7, anchorLeft = 1)
-        g2.setField(snack.Label (_("Write Device Bus ID")), 0, 8, anchorLeft = 1)
+        g2.setField(snack.Label (_("Write Device Bus ID")), 0, 8, 
+                                   anchorLeft = 1)
         g2.setField(self.name, 1, 0, (1, 0, 0, 0))
         g2.setField(self.hwdev, 1, 1, (1, 0, 0, 0))
         g2.setField(self.dynip, 1, 2, (1, 0, 0, 0), anchorLeft=1)

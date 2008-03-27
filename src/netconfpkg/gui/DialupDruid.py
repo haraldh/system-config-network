@@ -17,19 +17,20 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-# pylint: disable-msg=E1103
 import gtk.glade
 import os
 import re
 from gtk import CTREE_LINES_DOTTED
 from netconfpkg import (NCDeviceList, NCProfileList, NCDeviceFactory,
     NCHardwareList, NCDialup)
-from netconfpkg.NC_functions import _, ISDN, MODEM, getNewDialupDevice
+from netconfpkg.NC_functions import (_, ISDN, MODEM, getNewDialupDevice, 
+                                     NETCONFDIR, PROGNAME)
 from netconfpkg.gui import GUI_functions, providerdb
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.tonline import TonlineDialog
 
+# pylint: disable-msg=E1103
 
 class DialupDruid(InterfaceCreator):
     def __init__ (self, toplevel=None, connection_type=ISDN, 
@@ -72,10 +73,10 @@ class DialupDruid(InterfaceCreator):
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.GLADEPATH + glade_file
         if not os.path.exists(glade_file):
-            glade_file = GUI_functions.NETCONFDIR + glade_file
+            glade_file = NETCONFDIR + glade_file
 
         self.xml = gtk.glade.XML(glade_file, 'druid', 
-                                 domain=GUI_functions.PROGNAME)
+                                 domain=PROGNAME)
         xml_signal_autoconnect(self.xml, 
             { "on_dialup_page_prepare" : self.on_dialup_page_prepare, 
               "on_dialup_page_next" : self.on_dialup_page_next, 
@@ -116,7 +117,8 @@ class DialupDruid(InterfaceCreator):
         self.init_gui()
         return self.druids[0:]
 
-    def on_dialup_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_dialup_page_next(self, 
+                            druid_page, druid): # pylint: disable-msg=W0613
         if self.check():
             self.dehydrate()
             return False
@@ -203,7 +205,8 @@ class DialupDruid(InterfaceCreator):
     def on_dhcp_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
         self.dhcp_dehydrate(self.xml, self.device)
 
-    def on_dhcp_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_dhcp_page_prepare(self, 
+                             druid_page, druid): # pylint: disable-msg=W0613
         self.dhcp_hydrate(self.xml, self.device)
         dialup = self.device.createDialup() 
         if self.connection_type == ISDN:
@@ -214,15 +217,18 @@ class DialupDruid(InterfaceCreator):
         else:
             self.xml.get_widget('encapModeMenu').set_sensitive(False)
 
-    def on_finish_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_back(self, 
+                            druid_page, druid): # pylint: disable-msg=W0613
         self.devicelist.rollback() 
 
-    def on_dialup_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_dialup_page_prepare(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         self.setup()
         self.xml.signal_connect("on_providerTree_tree_select_row", 
                                 self.on_providerTree_tree_select_row)
 
-    def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_prepare(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
         description = ""        
         for hw in hardwarelist:
@@ -241,7 +247,8 @@ class DialupDruid(InterfaceCreator):
 
         druid_page.set_text(s)
 
-    def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_finish(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(), 
                                                 self.device)
         hardwarelist = NCHardwareList.getHardwareList()
@@ -292,7 +299,10 @@ class DialupDruid(InterfaceCreator):
            and len(self.xml.get_widget(\
             'dialupPasswordEntry').get_text().strip()) > 0)
 
-    def on_providerTree_tree_select_row(self, ctree, node, column): # pylint: disable-msg=W0613
+    def on_providerTree_tree_select_row(self, 
+                                        ctree, 
+                                        node, 
+                                        column): # pylint: disable-msg=W0613
         node = ctree.selection[0]
         if len(node.children) == 0:
             try:
@@ -386,7 +396,8 @@ class DialupDruid(InterfaceCreator):
             for l in self.devicelist:
                 if l.DeviceId == DeviceId:
                     found = 1
-            if found != 1: break
+            if found != 1:
+                break
             DeviceId = n + str(num)
             num = num + 1
 

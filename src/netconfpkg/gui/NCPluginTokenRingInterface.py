@@ -72,9 +72,12 @@ class TokenRingInterfaceGui(InterfaceCreator):
 
         self.xml = gtk.glade.XML(glade_file, 'druid', domain=PROGNAME)
         xml_signal_autoconnect(self.xml,
-            { "on_hostname_config_page_back" : self.on_hostname_config_page_back,
-              "on_hostname_config_page_next" : self.on_hostname_config_page_next,
-              "on_hostname_config_page_prepare" : self.on_hostname_config_page_prepare,
+            { "on_hostname_config_page_back" : 
+                  self.on_hostname_config_page_back,
+              "on_hostname_config_page_next" : 
+                  self.on_hostname_config_page_next,
+              "on_hostname_config_page_prepare" : 
+                  self.on_hostname_config_page_prepare,
               "on_hw_config_page_back" : self.on_hw_config_page_back,
               "on_hw_config_page_next" : self.on_hw_config_page_next,
               "on_hw_config_page_prepare" : self.on_hw_config_page_prepare,
@@ -116,7 +119,8 @@ class TokenRingInterfaceGui(InterfaceCreator):
         self.init_gui()
         return self.druids
 
-    def on_hostname_config_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hostname_config_page_back(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         childs = self.topdruid.get_children()
         if self.hwPage:
             self.topdruid.set_page(childs[2])
@@ -124,20 +128,24 @@ class TokenRingInterfaceGui(InterfaceCreator):
             self.topdruid.set_page(childs[1])
         return True
 
-    def on_hostname_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hostname_config_page_next(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         sharedtcpip.dhcp_dehydrate (self.sharedtcpip_xml, self.device)
         if self.hwPage:
             self.device.Device = self.hwDruid.hw.Name
             self.device.Alias = None
         #self.device.Hostname = self.xml.get_widget("hostnameEntry").get_text()
 
-    def on_hostname_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hostname_config_page_prepare(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         sharedtcpip.dhcp_hydrate (self.sharedtcpip_xml, self.device)
 
-    def on_hw_config_page_back(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hw_config_page_back(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         pass
 
-    def on_hw_config_page_next(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hw_config_page_next(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         clist = self.xml.get_widget("hardwareList") 
 
         childs = self.topdruid.get_children()
@@ -159,7 +167,8 @@ class TokenRingInterfaceGui(InterfaceCreator):
             self.topdruid.set_page(childs[3])
         return True
 
-    def on_hw_config_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_hw_config_page_prepare(self, 
+                                druid_page, druid): # pylint: disable-msg=W0613
         hardwarelist = NCHardwareList.getHardwareList()
         clist = self.xml.get_widget("hardwareList")
         clist.clear()
@@ -176,20 +185,23 @@ class TokenRingInterfaceGui(InterfaceCreator):
     def on_finish_page_back(self, druid_page, druid):
         pass
 
-    def on_finish_page_prepare(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_prepare(self, 
+                               druid_page, druid): # pylint: disable-msg=W0613
         self.device.DeviceId = self.device.Device
         if self.device.Alias:
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
+        try: 
+            hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError:
             pass
         else:
             self.device.HardwareAddress = hwaddr
 
-        s = _("You have selected the following information:") + "\n\n" + "   "\
-            + _("Device:") + " " + str(self.device.DeviceId) + " "
+        # FIXME: Bad style for translation
+        s = str(_("You have selected the following information:") + "\n\n" 
+                + "   " + _("Device:") + " " + str(self.device.DeviceId) + " ")
 
         hardwarelist = NCHardwareList.getHardwareList()
         for hw in hardwarelist:
@@ -200,16 +212,19 @@ class TokenRingInterfaceGui(InterfaceCreator):
         s = s + "\n" + "   "
 
         if self.device.BootProto == "static":
-            s = s + _("Address:") + " " + self.device.IP + "\n" + "   "\
-            + _("Subnet mask:") + " " + self.device.Netmask + "\n" + "   "\
-            + _("Default gateway address:") + " " + self.device.Gateway + "\n"
+            s = s + str(_("Address:") + " " + self.device.IP + "\n" 
+                        + "   " + _("Subnet mask:") + " " 
+                        + self.device.Netmask + "\n" + "   " 
+                        + _("Default gateway address:") + " " 
+                        + self.device.Gateway + "\n" )
         else:
-            s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n"
+            s = s + str(_("Automatically obtain IP address settings with:") 
+                        + " " + self.device.BootProto + "\n" )
 
         druid_page.set_text(s)
 
-    def on_finish_page_finish(self, druid_page, druid): # pylint: disable-msg=W0613
+    def on_finish_page_finish(self, 
+                              druid_page, druid): # pylint: disable-msg=W0613
 
         
         hardwarelist = NCHardwareList.getHardwareList()

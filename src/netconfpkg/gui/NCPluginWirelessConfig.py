@@ -123,12 +123,14 @@ class wirelessConfigDialog(DeviceConfigDialog):
                 self.xml.get_widget("essidEntry").set_text(wl.EssId)
 
             if wl.Channel and wl.Channel != "":
-                self.xml.get_widget("channelSpinButton").set_value(int(wl.Channel))
+                self.xml.get_widget("channelSpinButton").set_value(
+                                                        int(wl.Channel))
 
             if wl.Rate:
                 self.xml.get_widget("rateEntry").set_text(_(wl.Rate))
 
-            if wl.Key: self.xml.get_widget("keyEntry").set_text(wl.Key)
+            if wl.Key: 
+                self.xml.get_widget("keyEntry").set_text(wl.Key)
 
         self.on_modeChanged(self.xml.get_widget("modeEntry"))
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))
@@ -150,7 +152,8 @@ class wirelessConfigDialog(DeviceConfigDialog):
             row = self.xml.get_widget("modeCombo").get_active()
             wl.Mode = self.modestore[row][1]
 
-            wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
+            wl.Channel = str(self.xml.get_widget(
+                                "channelSpinButton").get_value_as_int())
 
             rate = self.xml.get_widget("rateEntry").get_text()
             if rate == _("Auto"):

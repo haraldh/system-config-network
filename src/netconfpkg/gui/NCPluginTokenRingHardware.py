@@ -17,8 +17,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 from netconfpkg import NCHardwareList
-from netconfpkg.NC_functions import _
-from netconfpkg.gui import GUI_functions
+from netconfpkg.NC_functions import _,  generic_longinfo_dialog
 from netconfpkg.gui.GUI_functions import gui_run_dialog
 from netconfpkg.gui.HardwareDialog import HardwareDialog
 
@@ -54,9 +53,10 @@ class tokenringHardwareDialog(HardwareDialog):
             cmd.append(' dma1='+str(self.hw.Card.DMA1))
 
         (status, output) = gui_run_dialog('/sbin/modprobe', cmd,
-                                          catchfd = (1, 2), dialog = self.dialog)
+                                          catchfd = (1, 2), 
+                                          dialog = self.dialog)
         if status != 0:
-            GUI_functions.generic_longinfo_dialog(\
+            generic_longinfo_dialog(
                 _('The Token Ring card could not be initialized. '
                   'Please verify your settings and try again.'),
                 output, self.dialog)

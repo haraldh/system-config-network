@@ -64,8 +64,9 @@ class DeviceConfigDialog:
         xml_signal_autoconnect(self.deviceconfig_xml, 
             {
             "on_deviceNameEntry_changed" : self.on_deviceNameEntry_changed, 
-            "on_deviceNameEntry_insert_text" : (self.on_generic_entry_insert_text, 
-                                                r"^[a-z|A-Z|0-9\_:]+$"), 
+            "on_deviceNameEntry_insert_text" : (
+                                    self.on_generic_entry_insert_text, 
+                                    r"^[a-z|A-Z|0-9\_:]+$"), 
             })
 
         #window = self.deviceconfig_xml.get_widget ('window')
@@ -82,7 +83,9 @@ class DeviceConfigDialog:
         #vbox.pack_start (frame)
 
 
-        self.xml.get_widget("okButton").set_sensitive(len(self.deviceconfig_xml.get_widget('deviceNameEntry').get_text()) > 0)
+        self.xml.get_widget("okButton").set_sensitive(
+            len(self.deviceconfig_xml.get_widget(
+                'deviceNameEntry').get_text()) > 0)
 
         load_icon("network.xpm", self.dialog)
 
@@ -105,11 +108,12 @@ class DeviceConfigDialog:
             info = clist.get_selection_info(event.x, event.y)
             if info != None:
                 mid = clist.signal_connect("button_release_event", 
-                                          self.on_generic_clist_button_release_event, 
-                                          func)
+                            self.on_generic_clist_button_release_event, 
+                            func)
                 clist.set_data("signal_id", mid)
 
-    def on_generic_clist_button_release_event(self, clist, event, func): # pylint: disable-msg=W0613
+    def on_generic_clist_button_release_event(
+                        self, clist, event, func): # pylint: disable-msg=W0613
         mid = clist.get_data ("signal_id")
         clist.disconnect (mid)
         clist.remove_data ("signal_id")
@@ -139,9 +143,9 @@ class DeviceConfigDialog:
                     break
 
         if dup:
-            generic_error_dialog (\
-            _("Nickname %s is already in use!\nPlease choose another one.\n") \
-                                  % (self.device.DeviceId))
+            generic_error_dialog (
+            _("Nickname %s is already in use!\nPlease choose another one.\n") 
+              % (self.device.DeviceId))
             duplicate = True
             num = 0
             while duplicate:
@@ -168,11 +172,16 @@ class DeviceConfigDialog:
         if self.device.DeviceId:
             widget.set_text(self.device.DeviceId)
 
-            self.deviceconfig_xml.get_widget('onBootCB').set_active(self.device.OnBoot == True)
-            self.deviceconfig_xml.get_widget('onParentCB').set_active(self.device.OnParent == True)
-            self.deviceconfig_xml.get_widget('userControlCB').set_active(self.device.AllowUser == True)
-            self.deviceconfig_xml.get_widget('NMControlCB').set_active(self.device.NMControlled == True)
-            self.deviceconfig_xml.get_widget('ipv6InitCB').set_active(self.device.IPv6Init == True)
+            self.deviceconfig_xml.get_widget(
+                'onBootCB').set_active(self.device.OnBoot == True)
+            self.deviceconfig_xml.get_widget(
+                'onParentCB').set_active(self.device.OnParent == True)
+            self.deviceconfig_xml.get_widget(
+                'userControlCB').set_active(self.device.AllowUser == True)
+            self.deviceconfig_xml.get_widget(
+                'NMControlCB').set_active(self.device.NMControlled == True)
+            self.deviceconfig_xml.get_widget(
+                'ipv6InitCB').set_active(self.device.IPv6Init == True)
 
             if self.device.Alias != None:
                 self.deviceconfig_xml.get_widget('onBootCB').hide()
@@ -182,19 +191,25 @@ class DeviceConfigDialog:
                 self.deviceconfig_xml.get_widget('onParentCB').hide()
 
     def dehydrate(self):
-        self.device.DeviceId = self.deviceconfig_xml.get_widget('deviceNameEntry').get_text()
+        self.device.DeviceId = self.deviceconfig_xml.get_widget(
+            'deviceNameEntry').get_text()
 
         if self.device.Alias != None:
-            self.device.OnParent = self.deviceconfig_xml.get_widget('onParentCB').get_active()
+            self.device.OnParent = self.deviceconfig_xml.get_widget(
+                'onParentCB').get_active()
             if self.device.OnBoot:
                 self.device.OnBoot = None
         else:
-            self.device.OnBoot = self.deviceconfig_xml.get_widget('onBootCB').get_active()
+            self.device.OnBoot = self.deviceconfig_xml.get_widget(
+                'onBootCB').get_active()
             if self.device.OnParent:
                 self.device.OnParent = None
 
-        self.device.AllowUser = self.deviceconfig_xml.get_widget('userControlCB').get_active()
-        self.device.NMControlled = self.deviceconfig_xml.get_widget('NMControlCB').get_active()
-        self.device.IPv6Init = self.deviceconfig_xml.get_widget('ipv6InitCB').get_active()
+        self.device.AllowUser = self.deviceconfig_xml.get_widget(
+            'userControlCB').get_active()
+        self.device.NMControlled = self.deviceconfig_xml.get_widget(
+            'NMControlCB').get_active()
+        self.device.IPv6Init = self.deviceconfig_xml.get_widget(
+            'ipv6InitCB').get_active()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

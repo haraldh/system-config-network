@@ -34,11 +34,13 @@ class editDomainDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
-            "on_domainNameEntry_insert_text" : (self.on_domainNameEntry_insert_text, ""),
+            "on_domainNameEntry_insert_text" : 
+                (self.on_domainNameEntry_insert_text, ""),
             "on_okButton_clicked" : self.on_okButton_clicked,
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
@@ -64,8 +66,9 @@ class editDomainDialog:
         pass
     #    self.dialog.destroy()
 
-    def on_domainNameEntry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
-                                       pos, mstr): 
+    def on_domainNameEntry_insert_text(self, 
+                        entry, partial_text, length, # pylint: disable-msg=W0613
+                        pos, mstr): 
         pass
 
     def hydrate(self):

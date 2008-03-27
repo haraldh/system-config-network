@@ -18,14 +18,26 @@
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 import gtk.glade
 import os
+import sys
 from netconfpkg import NC_functions
 from netconfpkg.NCException import NCException
-from netconfpkg.NC_functions import * # pylint: disable-msg=W0401, W0614
-
+#from netconfpkg.NC_functions import * 
+from netconfpkg.NC_functions import (_,  log, NETCONFDIR, PROGNAME, 
+                                     ETHERNET, MODEM, ISDN, WIRELESS, 
+                                     DSL, TOKENRING, getDebugLevel, 
+                                     RESPONSE_YES, RESPONSE_NO, 
+                                     RESPONSE_CANCEL, 
+                                     set_generic_error_dialog_func, 
+                                     set_generic_info_dialog_func, 
+                                     set_generic_longinfo_dialog_func, 
+                                     set_generic_yesno_dialog_func, 
+                                     set_generic_yesnocancel_dialog_func, 
+                                     set_generic_run_dialog_func, 
+                                     set_generic_run_func)
 
 gtk.glade.bindtextdomain(PROGNAME, "/usr/share/locale")
 
-GLADEPATH='netconfpkg/gui/'
+GLADEPATH = 'netconfpkg/gui/'
 
 DEVPIXMAPS = {}
 
@@ -106,12 +118,15 @@ def get_icon(pixmap_file):
         return pixbuf.render_pixmap_and_mask()
 
 def load_icon(pixmap_file, dialog):
-    if not dialog: return
+    if not dialog: 
+        return
 
     pixbuf = get_pixbuf(pixmap_file)
-    if not pixbuf: return
+    if not pixbuf: 
+        return
 
-    if dialog: dialog.set_icon(pixbuf)
+    if dialog: 
+        dialog.set_icon(pixbuf)
 
 
 def TreeStore_match_func(row, data):
@@ -119,12 +134,14 @@ def TreeStore_match_func(row, data):
     return row[column] == key
 
 def TreeStore_search(rows, func, data):
-    if not rows: return None
+    if not rows: 
+        return None
     for row in rows:
         if func(row, data):
             return row
         result = TreeStore_search(row.iterchildren(), func, data)
-        if result: return result
+        if result:
+            return result
     return None
 
 #===============================================================================
@@ -225,7 +242,7 @@ def gui_longinfo_dialog ( message, long_message, parent_dialog=None,
                                message_type, gtk.BUTTONS_OK,
                                str(message) )
 
-    vbox=dialog.get_children()[0]
+    vbox = dialog.get_children()[0]
     mbuffer = gtk.TextBuffer(None)
     mbuffer.set_text(str(long_message) )
     textbox = gtk.TextView()
@@ -366,7 +383,8 @@ def gui_run( command, argv, searchPath = 0,
 
     childpid = os.fork()
     if (not childpid):
-        if (root and root != '/'): os.chroot (root)
+        if (root and root != '/'): 
+            os.chroot (root)
 
         if isinstance(catchfd, tuple):
             for fd in catchfd:
@@ -418,7 +436,8 @@ def gui_run( command, argv, searchPath = 0,
     try:
         (pid, status) = os.waitpid(childpid, 0)
     except OSError, (errno, msg):
-        log.log(2, "waitpid(%d) failed with errno %s: %s" % (pid, str(errno), msg))
+        log.log(2, "waitpid(%d) failed with errno %s: %s" 
+                % (pid, str(errno), msg))
 
     if os.WIFEXITED(status) and (os.WEXITSTATUS(status) == 0 ):
         status = os.WEXITSTATUS(status)
@@ -493,7 +512,8 @@ def gui_run_dialog( command, argv, searchPath = 0,
     childpid = os.fork()
     if (not childpid):
         os.environ["CONSOLETYPE"] = 'serial'
-        if (root and root != '/'): os.chroot (root)
+        if (root and root != '/'): 
+            os.chroot (root)
         if isinstance(catchfd, tuple):
             for fd in catchfd:
                 os.dup2(write, fd)

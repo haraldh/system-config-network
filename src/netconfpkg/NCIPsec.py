@@ -76,8 +76,6 @@ class ConfIPsec(ConfShellVar.ConfShellVar):
         self.chmod(0644)
 
 class IPsec(IPsec_base):
-    # pylint: disable-msg=E0203
-    #"IPsecId" : "IPSECID",
     boolkeydict = {
         'OnBoot' : 'ONBOOT', 
         }
@@ -110,7 +108,7 @@ class IPsec(IPsec_base):
         for selfkey in self.ipsec_entries.keys():
             confkey = self.ipsec_entries[selfkey]
             if conf.has_key(confkey):
-                setattr(self, selfkey, conf[confkey]) or None
+                setattr(self, selfkey, conf[confkey] or None)
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
@@ -126,7 +124,7 @@ class IPsec(IPsec_base):
         for selfkey in self.key_entries.keys():
             confkey = self.key_entries[selfkey]
             if conf.has_key(confkey):
-                setattr(self, selfkey, conf[confkey]) or None
+                setattr(self, selfkey, conf[confkey] or None)
 
         if conf.has_key("IKE_PSK") and conf["IKE_PSK"]:
             self.EncryptionMode = "auto"

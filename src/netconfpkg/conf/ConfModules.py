@@ -1,7 +1,8 @@
 "Module handling"
+# pylint: disable-msg=W0403
 import re
 
-from .Conf import Conf, odict, BadFile, VersionMismatch # pylint: disable-msg=W0403
+from .Conf import Conf, odict, BadFile, VersionMismatch 
 
 
 class ConfModules(Conf):
@@ -9,7 +10,8 @@ class ConfModules(Conf):
     This reads /etc/modprobe.conf into a dictionary keyed on device type,
     holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
                           cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
-                          cm['eth0']['post-install'] --> ['/bin/foo', 'arg1', 'arg2']
+                          cm['eth0']['post-install'] --> ['/bin/foo', 'arg1',
+                                                           'arg2']
     path[*] entries are ignored (but not removed)
     New entries are added at the end to make sure that they
     come after any path[*] entries.
@@ -30,7 +32,8 @@ class ConfModules(Conf):
             # assume no -k field
             if len(var) > 2 and var[0] in keys:
                 if not self.vars.has_key(var[1]):
-                    self.vars[var[1]] = odict({'alias':'', 'options':odict(), 'install':[], 'remove':[]})
+                    self.vars[var[1]] = odict({'alias':'', 
+                        'options':odict(), 'install':[], 'remove':[]})
                 if not cmp(var[0], 'alias'):
                     self.vars[var[1]]['alias'] = var[2]
                 elif not cmp(var[0], 'options'):
@@ -78,12 +81,13 @@ class ConfModules(Conf):
 
     def __setitem__(self, varname, value):
         # set *every* instance (should only be one, but...) to avoid surprises
-        place=self.tell()
+        place = self.tell()
         self.vars[varname] = value
         for key in value.keys():
             self.rewind()
-            missing=1
-            findexp = '^[\t ]*' + self._quote(key) + '[\t ]+' + self._quote(varname) + '[\t ]+'
+            missing = 1
+            findexp = str('^[\t ]*%s[\t ]+%s[\t ]+' %
+                          (self._quote(key), self._quote(varname)))
             if not cmp(key, 'alias'):
                 endofline = value[key]
                 replace = key + ' ' + varname + ' ' + endofline
@@ -113,7 +117,7 @@ class ConfModules(Conf):
                         comment = "#".join(cl[1:])
                         replace += ' #' + comment
                     self.setline(replace)
-                    missing=0
+                    missing = 0
                     self.nextline()
                 if missing:
                     self.fsf()
@@ -126,16 +130,20 @@ class ConfModules(Conf):
         
     def __delitem__(self, varname):
         # delete *every* instance...
-        place=self.tell()
+        place = self.tell()
         for key in self.vars[varname].keys():
             self.rewind()
-            while self.findnextline('^[\t ]*' + key + '([\t ]-k)?[\t ]+' + varname):
+            while self.findnextline('^[\t ]*' 
+                                    + key 
+                                    + '([\t ]-k)?[\t ]+' 
+                                    + varname):
                 self.deleteline()
         del self.vars[varname]
         self.seek(place)
     def write(self):
         # need to make sure everything is set, because program above may
-        # well have done cm['eth0']['post-install'] = ['/bin/foo', '-f', '/tmp/bar']
+        # well have done cm['eth0']['post-install'] = ['/bin/foo', '-f',
+        #                                              '/tmp/bar']
         # which is completely reasonable, but won't invoke __setitem__
         for key in self.vars.keys():
             self[key] = self.vars[key]
@@ -211,7 +219,8 @@ class ConfModInfo(Conf):
                         else:
                             # end of the line
                             p = r
-                    self.vars[curdev]['arguments'][self.getfields()[1]] = thislist
+                    no = self.getfields()[1]
+                    self.vars[curdev]['arguments'][no] = thislist
                 self.nextline()
         elif not cmp(version[1], '1'):
             # Version 1 file format
@@ -242,7 +251,8 @@ class ConfModInfo(Conf):
                     raise BadFile, 'unknown flag' + linetype
         else:
             print 'Only versions 0 and 1 module-info files are supported'
-            raise VersionMismatch, 'Only versions 0 and 1 module-info files are supported'
+            raise VersionMismatch, str('Only versions 0 '
+                        'and 1 module-info files are supported')
         self.rewind()
     def __getitem__(self, varname):
         if self.vars.has_key(varname):

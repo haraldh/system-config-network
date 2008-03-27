@@ -20,8 +20,10 @@ import gtk.glade
 import os
 from netconfpkg import NCHardwareList
 from netconfpkg.NCHardwareFactory import getHardwareFactory
-from netconfpkg.NC_functions import NETCONFDIR, PROGNAME, ETHERNET, TOKENRING, ISDN
-from netconfpkg.gui.GUI_functions import GLADEPATH, load_icon, xml_signal_autoconnect
+from netconfpkg.NC_functions import (NETCONFDIR, PROGNAME, ETHERNET, 
+                                     TOKENRING, ISDN)
+from netconfpkg.gui.GUI_functions import (GLADEPATH, load_icon,
+                                          xml_signal_autoconnect)
 
 
 class hardwareTypeDialog:
@@ -57,7 +59,8 @@ class hardwareTypeDialog:
                 break
 
 
-        self.xml.get_widget('hardwareTypeCombo').set_popdown_strings(devicetypes)
+        self.xml.get_widget(
+            'hardwareTypeCombo').set_popdown_strings(devicetypes)
         self.hydrate()
 
     def hydrate(self):

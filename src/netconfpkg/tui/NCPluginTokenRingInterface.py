@@ -1,4 +1,4 @@
-"TUI Ethernet Interface Module"
+"TUI TokenRing Interface Module"
 from netconfpkg.tui.NCTcpIp import NCTcpIpDialog
 
 
@@ -23,7 +23,7 @@ class NCTokenRingInterfaceTui(NCTcpIpDialog):
             self.setState()
 
 def register_plugin():
-    from netconfpkg.plugins.NCPluginDevTokenRing import setDevTokenRingDialog     
+    from netconfpkg.plugins.NCPluginDevTokenRing import setDevTokenRingDialog
     setDevTokenRingDialog(NCTokenRingInterfaceTui)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

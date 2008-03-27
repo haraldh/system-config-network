@@ -22,7 +22,9 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from rhpl import ethtool
 
 
-# FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
+# FIXME: [164594] OK and Cancel buttons on the edit 
+# ethernet device window are in reverse order to every 
+# other system-config package.
 
 class qethConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
@@ -82,7 +84,8 @@ class qethConfigDialog(DeviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = hw.split()
         device = fields[0]
-        try: hwaddr = ethtool.get_hwaddr(device) 
+        try: 
+            hwaddr = ethtool.get_hwaddr(device) 
         except IOError, err:
             error_str = str (err)
             GUI_functions.gui_error_dialog(error_str, self.dialog)

@@ -78,7 +78,8 @@ class Wireless(Wireless_base):
             keyconf["KEY"] = self.Key
         keyconf.write()
         # FIXME: [167995] Wireless card mode cannot be set to Auto
-        # FIXME: [162830] activate notifier box does not presist long enough to read it
+        # FIXME: [162830] activate notifier box does not presist long 
+        # enough to read it
         # check, if the interface support RATE, FREQ, etc.
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]

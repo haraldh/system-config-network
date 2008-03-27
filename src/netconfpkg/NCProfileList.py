@@ -45,7 +45,8 @@ class MyFileList(list):
     def __contains__(self, obj):
         obj = os.path.abspath(obj)
         ret = list.__contains__(self, os.path.abspath(obj))
-        log.log(5, "MyFileList.__contains__(self, %s) == %s" % (str(obj), str(ret)))
+        log.log(5, "MyFileList.__contains__(self, %s) == %s" 
+                % (str(obj), str(ret)))
         return ret
 
     def append(self, obj):

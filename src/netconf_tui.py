@@ -8,7 +8,7 @@
 
 #from snack import *
 
-PROGNAME='system-config-network'
+PROGNAME = 'system-config-network'
 
 import os
 import sys
@@ -137,8 +137,8 @@ import netconfpkg.tui # pylint: disable-msg=W0611
 
 def loadConfig(mscreen):
     exception.action(_("Loading configuration"))
-    t=TextboxReflowed(10, _("Loading Device Configuration"))
-    g=GridForm(mscreen, _("Network Configuration"), 1, 1)
+    t = TextboxReflowed(10, _("Loading Device Configuration"))
+    g = GridForm(mscreen, _("Network Configuration"), 1, 1)
     g.add(t, 0, 0)
     g.draw()
     mscreen.refresh()
@@ -161,9 +161,9 @@ def newDevice(mscreen):
     Displays the main screen
     @screen The snack screen instance
     """
-    t=TextboxReflowed(25, _("Which device type do you want to add?"))
-    bb=ButtonBar(mscreen, ((_("Add"), "add"), (_("Cancel"), "cancel")))
-    li=Listbox(5, width=25, returnExit=1)
+    t = TextboxReflowed(25, _("Which device type do you want to add?"))
+    bb = ButtonBar(mscreen, ((_("Add"), "add"), (_("Cancel"), "cancel")))
+    li = Listbox(5, width=25, returnExit=1)
     li.append(_("Ethernet"), ETHERNET)
     li.append(_("Modem"), MODEM)
     li.append(_("ISDN"), ISDN)
@@ -172,19 +172,20 @@ def newDevice(mscreen):
     if machine == 's390' or machine == 's390x':
         li.append(_("QETH"), QETH)
 
-    g=GridForm(mscreen, _("Network Configuration"), 1, 3)
+    g = GridForm(mscreen, _("Network Configuration"), 1, 3)
     g.add(t, 0, 0)
     g.add(li, 0, 1)
     g.add(bb, 0, 2)
-    res=g.run()
+    res = g.run()
     mscreen.popWindow()
     if bb.buttonPressed(res) != 'cancel':
-        todo=li.current()
+        todo = li.current()
         df = getDeviceFactory()
         dev = None
         devclass = df.getDeviceClass(todo)
         devlist = getDeviceList()
-        if not devclass: return -1
+        if not devclass: 
+            return -1
         dev = devclass()
         if dev:
             devlist.append(dev)
@@ -192,10 +193,11 @@ def newDevice(mscreen):
     return -2
 
 def selectDevice(mscreen):
-    li=Listbox(5, returnExit=1)
+    li = Listbox(5, returnExit=1)
     l = 0
     le = mscreen.width - 6
-    if le <= 0: le = 5
+    if le <= 0: 
+        le = 5
     for dev in getDeviceList():
         if not hasattr(dev, "getDialog") or not dev.getDialog():
             #li.append("No dialog for %s" % dev.Device, None)
@@ -217,25 +219,26 @@ def selectDevice(mscreen):
         return None
 
     li.append(_("<New Device>"), None)
-    g=GridForm(mscreen, _("Select A Device"), 1, 3)
-    bb=ButtonBar(mscreen, ((_("Quit"), "quit"), (_("Cancel"), "cancel")))
+    g = GridForm(mscreen, _("Select A Device"), 1, 3)
+    bb = ButtonBar(mscreen, ((_("Quit"), "quit"), (_("Cancel"), "cancel")))
     g.add(li, 0, 1)
     g.add(bb, 0, 2, growx=1)
     res = g.run()
     mscreen.popWindow()
-    if bb.buttonPressed(res)=="quit":
+    if bb.buttonPressed(res) == "quit":
         ret = -1
-    elif bb.buttonPressed(res)=="cancel":
+    elif bb.buttonPressed(res) == "cancel":
         ret = None
     else:
-        ret=li.current()
+        ret = li.current()
         if not ret:
             ret = newDevice(mscreen)
     return ret
 
 
 def Usage():
-    print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose -d --debug")
+    print _("system-config-network - network configuration tool\n\n"
+            "Usage: system-config-network -v --verbose -d --debug")
 
 #
 # __main__
@@ -346,7 +349,8 @@ def main():
         screen.finish()
         raise
 
-if __name__=="__main__":
+if __name__ == "__main__":
     sys.exit(main())
 
-__author__ = "Trond Eivind Glomsrød <teg@redhat.com>, Harald Hoyer <harald@redhat.com>"
+__author__ = str("Trond Eivind Glomsrød <teg@redhat.com>,"
+                 " Harald Hoyer <harald@redhat.com>")

@@ -88,7 +88,7 @@ Wrong: %s in entry %i
                 if len(tmp) > 1:
                     entry.Hostname = tmp[1]
                     for alias in tmp[2:]:
-                        entry.AliasList.append(alias) #pylint: disable-msg=E1101
+                        entry.AliasList.append(alias)
                 entry.origLine = line
                 # catch invalid entry in /etc/hosts
                 try:

@@ -26,10 +26,12 @@ from netconfpkg.NC_functions import request_rpms, NETCONFDIR, _, ISDN
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.DialupDruid import DialupDruid
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
+from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 
 
-class IsdnInterface:
+class IsdnInterfaceWizard(InterfaceCreator):
     def __init__ (self, toplevel=None, do_save = 1, druid = None):
+        InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
         self.hardwarelist = NCHardwareList.getHardwareList()
         self.hw = None
@@ -55,7 +57,8 @@ class IsdnInterface:
         xml_signal_autoconnect(self.xml, 
             {
             "on_isdnCardEntry_changed" : self.on_isdnCardEntry_changed, 
-            "on_isdn_hardware_page_prepare" : self.on_isdn_hardware_page_prepare, 
+            "on_isdn_hardware_page_prepare" : 
+                self.on_isdn_hardware_page_prepare, 
             "on_isdn_hardware_page_next" : self.on_isdn_hardware_page_next, 
             "on_isdn_hardware_page_back" : self.on_isdn_hardware_page_back, 
             'on_druid_cancel' : self.on_cancel_interface, 
@@ -106,7 +109,8 @@ class IsdnInterface:
         dialup = DialupDruid(toplevel=self.toplevel, connection_type=Type, 
                                          do_save = self.do_save)
         for hw in self.hardwarelist:
-            if hw.Type == Type: return dialup.get_druids()
+            if hw.Type == Type: 
+                return dialup.get_druids()
 
         self.hydrate()
         return self.druids[0:] + dialup.get_druids()
@@ -191,7 +195,8 @@ class IsdnInterface:
 
             if self.hw.Card.IRQ:
                 self.xml.get_widget("irqSpinButton").set_sensitive(True)
-                self.xml.get_widget("irqSpinButton").set_value(self.hw.Card.IRQ.atoi())
+                self.xml.get_widget("irqSpinButton").set_value(
+                                                self.hw.Card.IRQ.atoi())
             else:
                 self.xml.get_widget("irqSpinButton").set_sensitive(False)
 
@@ -239,7 +244,8 @@ class IsdnInterface:
         if not self.xml.get_widget('irqSpinButton').get_property("sensitive"):
             self.hw.Card.IRQ = isdncard.IRQ
         else:
-            self.hw.Card.IRQ = str(self.xml.get_widget('irqSpinButton').get_value_as_int())
+            self.hw.Card.IRQ = str(self.xml.get_widget(
+                    'irqSpinButton').get_value_as_int())
 
         if not self.xml.get_widget('memEntry').get_property("sensitive"):
             self.hw.Card.Mem = isdncard.Mem
@@ -263,6 +269,6 @@ class IsdnInterface:
 
 def register_plugin():
     from netconfpkg.plugins import NCPluginDevIsdn
-    NCPluginDevIsdn.setDevIsdnWizard(IsdnInterface)
+    NCPluginDevIsdn.setDevIsdnWizard(IsdnInterfaceWizard)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

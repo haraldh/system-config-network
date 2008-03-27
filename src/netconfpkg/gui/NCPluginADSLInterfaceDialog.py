@@ -107,7 +107,8 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
     def dehydrate(self):
         DeviceConfigDialog.dehydrate(self)
         dialup = self.device.Dialup
-        dialup.ProviderName = self.xml.get_widget("providerNameEntry").get_text()
+        dialup.ProviderName = self.xml.get_widget(
+                                "providerNameEntry").get_text()
         dialup.Login = self.xml.get_widget("loginNameEntry").get_text()
         dialup.Password = self.xml.get_widget("passwordEntry").get_text()
         dialup.ServiceName = self.xml.get_widget("serviceNameEntry").get_text()
@@ -117,8 +118,8 @@ class ADSLInterfaceDialog(DeviceConfigDialog):
         dialup.Persist = self.xml.get_widget("persistCB").get_active()
         if self.xml.get_widget("dialonDemandCB").get_active():
             dialup.DialMode = DM_AUTO
-            dialup.HangupTimeout = int(self.xml.get_widget("idleTimeSB").\
-                                       get_text())
+            dialup.HangupTimeout = int(self.xml.get_widget(
+                                        "idleTimeSB").get_text())
         else:
             dialup.DialMode = DM_MANUAL
 

@@ -69,7 +69,8 @@ class ConfSMBSubDict(UserDict):
         if self.conf.find_entry_in_current_stanza(varname):
             self.conf.deleteline()
         else:
-            raise Exception, "Unvalid entry " + varname + " in stanza " + self.stanza
+            raise Exception, str("Unvalid entry %s in stanza" 
+                                 % (varname, self.stanza))
 
         UserDict.__delitem__(self, varname)
 
@@ -83,7 +84,8 @@ class ConfSMBSubDict(UserDict):
 #     smb['homes'][browseable] = 0
 class ConfSMB(Conf):
     def __init__(self, filename='/etc/samba/smb.conf', create_if_missing=1):
-        self.stanza_re = re.compile('^\s*\[(?P<stanza>[^\]]*)]\s*(?:;.*)?$', re.I)
+        self.stanza_re = re.compile(
+            '^\s*\[(?P<stanza>[^\]]*)]\s*(?:;.*)?$', re.I)
         Conf.__init__(self, filename, '#;', '=', '=',
                       merge=1, create_if_missing = create_if_missing)
 

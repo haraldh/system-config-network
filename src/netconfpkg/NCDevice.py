@@ -382,7 +382,7 @@ class Device(Device_base):
         conf.fsf()
 
         if self.BootProto == None:
-            if len(self.IP): # pylint: disable-msg=E0203
+            if len(self.IP):
                 self.BootProto = "none"
             else:
                 self.BootProto = 'dhcp'                

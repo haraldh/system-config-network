@@ -86,7 +86,9 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         if dialup.Login != None:
             self.xml.get_widget("loginNameEntry").set_text(dialup.Login)
         if dialup.Password != None:
-            self.xml.get_widget("passwordEntry").set_text(re.sub(r"\\([^\\]|\\)", r"\1", dialup.Password))
+            self.xml.get_widget("passwordEntry").set_text(
+                                re.sub(r"\\([^\\]|\\)", r"\1",
+                                dialup.Password))
 
         if dialup.Areacode != None:
             self.xml.get_widget("areaCodeEntry").set_text(dialup.Areacode)
@@ -212,7 +214,8 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         self.xml.get_widget("pppOptionAddButton").set_sensitive(
             len(option) > 0)
 
-    def on_pppOptionAddButton_clicked (self, button): # pylint: disable-msg=W0613
+    def on_pppOptionAddButton_clicked (self, 
+                                       button): # pylint: disable-msg=W0613
         entry = self.xml.get_widget("pppOptionEntry")
         self.xml.get_widget("pppOptionList").set_sensitive(True)
         self.xml.get_widget("pppOptionList").append([entry.get_text().strip()])
@@ -220,14 +223,15 @@ class DialupInterfaceDialog(DeviceConfigDialog):
         entry.grab_focus()
 
     def on_pppOptionList_select_row(self, 
-                                    clist, r, c, event): # pylint: disable-msg=W0613
+                            clist, r, c, event): # pylint: disable-msg=W0613
         self.xml.get_widget ("pppOptionDeleteButton").set_sensitive (True)
 
     def on_ipppOptionList_unselect_row (self,
-                                         clist, r, c, event): # pylint: disable-msg=W0613
+                        clist, r, c, event): # pylint: disable-msg=W0613
         self.xml.get_widget("pppOptionDeleteButton").set_sensitive(False)
 
-    def on_pppOptionDeleteButton_clicked(self, button): # pylint: disable-msg=W0613
+    def on_pppOptionDeleteButton_clicked(self, 
+                                         button): # pylint: disable-msg=W0613
         clist = self.xml.get_widget("pppOptionList")
         if clist.selection:
             clist.remove(clist.selection[0])

@@ -24,7 +24,8 @@ from rhpl import ethtool
 
 #from netconfpkg import NCHardwareList
 
-# FIXME: [164594] OK and Cancel buttons on the edit ethernet device window are in reverse order to every other system-config package.
+# FIXME: [164594] OK and Cancel buttons on the edit ethernet device 
+# window are in reverse order to every other system-config package.
 
 class ethernetConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
@@ -84,7 +85,8 @@ class ethernetConfigDialog(DeviceConfigDialog):
         hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
         fields = hw.split()
         device = fields[0]
-        try: hwaddr = ethtool.get_hwaddr(device)
+        try: 
+            hwaddr = ethtool.get_hwaddr(device)
         except IOError, err:
             error_str = str (err)
             GUI_functions.gui_error_dialog(error_str, self.dialog)

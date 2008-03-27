@@ -215,7 +215,9 @@ class editIPsecDruid:
                     if val < 256:
                         raise ValueError
                 except:
-                    gui_error_dialog(_("Please enter a unique security parameter index between 256 and 4294967295."),
+                    gui_error_dialog(
+                        _("Please enter a unique security parameter "
+                          "index between 256 and 4294967295."),
                                      self.druid, widget = druid,
                                      page = druid_page, broken_widget = widget)
                     return 1
@@ -328,7 +330,8 @@ class editIPsecDruid:
         phrase = phraseEntry.get_text()
         shasum = sha.new(phrase).hexdigest()
 
-        if len(shasum) > keylen: shasum = shasum[:keylen]
+        if len(shasum) > keylen: 
+            shasum = shasum[:keylen]
 
         return shasum
 

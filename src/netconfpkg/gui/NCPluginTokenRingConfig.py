@@ -16,8 +16,8 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-from netconfpkg import NCHardwareList
-from netconfpkg.gui import GUI_functions, sharedtcpip
+from netconfpkg import NCHardwareList, NC_functions
+from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 
@@ -54,7 +54,8 @@ class tokenringConfigDialog(DeviceConfigDialog):
 
         ecombo = self.xml.get_widget("tokenringDeviceComboBox")
         hwlist = NCHardwareList.getHardwareList()
-        (hwcurr, hwdesc) = GUI_functions.create_tokenring_combo(hwlist, self.device.Device)
+        (hwcurr, hwdesc) = NC_functions.create_tokenring_combo(hwlist, 
+                                                        self.device.Device)
 
         if len(hwdesc):
             ecombo.set_popdown_strings(hwdesc)
@@ -80,7 +81,8 @@ class tokenringConfigDialog(DeviceConfigDialog):
         hw = fields[0]
         self.device.Device = hw
         if self.xml.get_widget("aliasSupportCB").get_active():
-            self.device.Alias = self.xml.get_widget("aliasSpinBox").get_value_as_int()
+            self.device.Alias = self.xml.get_widget(
+                                    "aliasSpinBox").get_value_as_int()
         else:
             self.device.Alias = None
 

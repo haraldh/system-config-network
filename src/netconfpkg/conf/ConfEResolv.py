@@ -30,13 +30,13 @@ class ConfEResolv(Conf):
             return []
     def __setitem__(self, varname, value):
         # set first (should be only) instance to values in list value
-        place=self.tell()
+        place = self.tell()
         self.rewind()
         if varname == 'nameservers':
             if self.findnextline('^nameserver[' + self.separators + ']+'):
                 # if there is a nameserver line, save the place,
                 # remove all nameserver lines, then put in new ones in order
-                placename=self.tell()
+                placename = self.tell()
                 while self.findnextline('^nameserver['+self.separators+']+'):
                     self.deleteline()
                 self.seek(placename)
@@ -88,9 +88,12 @@ class ConfEResolv(Conf):
             (fd, self.filename) = tempfile.mkstemp('', '/tmp/')
             Conf.write(self)
             import commands
-            commands.getstatusoutput("/bin/bash -c '. /etc/sysconfig/network-scripts/network-functions; change_resolv_conf "+self.filename+"'")
+            commands.getstatusoutput(
+            "/bin/bash -c "
+            "'. /etc/sysconfig/network-scripts/network-functions;"
+            " change_resolv_conf %s'" % self.filename)
             fd.close()
-            self.filename="/etc/resolv.conf"
+            self.filename = "/etc/resolv.conf"
     def keys(self):
         # no need to return list in order here, I think.
         return self.vars.keys()

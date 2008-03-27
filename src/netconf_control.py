@@ -21,9 +21,9 @@
 
 import sys
 
-PROGNAME='system-config-network'
+PROGNAME = 'system-config-network'
 
-NETCONFDIR="/usr/share/" + PROGNAME + '/'
+NETCONFDIR = "/usr/share/" + PROGNAME + '/'
 
 if not NETCONFDIR in sys.path:
     sys.path.append(NETCONFDIR)
@@ -46,21 +46,27 @@ import os.path
 try:
     import gtk
 except RuntimeError:
-    sys.stderr.write(_("ERROR: Unable to initialize graphical environment. ") + \
-                     _("Most likely cause of failure is that the tool was not run using a graphical environment. ") + \
-                     _("Please either start your graphical user interface or set your DISPLAY variable.\n"))
+    sys.stderr.write(_("""\
+ERROR: Unable to initialize graphical environment. 
+Most likely cause of failure is that the tool was not run using a graphical
+environment. Please either start your graphical user interface or set your
+DISPLAY variable.
+"""))
     sys.exit(0)
 
 from  gtk import glade
 import gobject
 from netconfpkg import NC_functions
 from netconfpkg.gui import GUI_functions
-from netconfpkg.NC_functions import _, ACTIVE, INACTIVE
+from netconfpkg.NC_functions import (
+     DEFAULT_PROFILE_NAME, getRoot,
+    _, ACTIVE, INACTIVE,
+    generic_longinfo_dialog, generic_error_dialog, generic_run_dialog)
 from netconfpkg.Control import NetworkDevice
-from netconfpkg.gui.GUI_functions import \
-    GLADEPATH, DEFAULT_PROFILE_NAME, xml_signal_autoconnect, \
-    get_icon, get_pixbuf, getRoot, load_icon, \
-    generic_longinfo_dialog, generic_error_dialog, generic_run_dialog
+from netconfpkg.gui.GUI_functions import ( 
+    GLADEPATH, 
+    xml_signal_autoconnect, 
+    get_icon, get_pixbuf, load_icon)
 from netconfpkg import NCDeviceList, NCProfileList
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCProfileList import getProfileList
@@ -149,16 +155,16 @@ class mainDialog:
         if not hasattr(gtk, "AboutDialog"):
             import gnome.ui
             dlg = gnome.ui.About(PRG_NAME,
-                                 PRG_VERSION,
-                                 _("Copyright (c) 2001-2005 Red Hat, Inc."),
-                                 _("This software is distributed under the GPL. "
-                                   "Please Report bugs to Red Hat's Bug Tracking "
-                                   "System: http://bugzilla.redhat.com/"),
-                                 ["Harald Hoyer <harald@redhat.com>",
-                                  "Than Ngo <than@redhat.com>",
-                                  "Philipp Knirsch <pknirsch@redhat.com>",
-                                  "Trond Eivind Glomsrød <teg@redhat.com>",
-                                  ])
+                            PRG_VERSION,
+                            _("Copyright (c) 2001-2005 Red Hat, Inc."),
+                            _("This software is distributed under the GPL. "
+                              "Please Report bugs to Red Hat's Bug Tracking "
+                              "System: http://bugzilla.redhat.com/"),
+                                ["Harald Hoyer <harald@redhat.com>",
+                                 "Than Ngo <than@redhat.com>",
+                                 "Philipp Knirsch <pknirsch@redhat.com>",
+                                 "Trond Eivind Glomsrød <teg@redhat.com>",
+                                 ])
             dlg.set_transient_for(self.dialog)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dlg.show()
@@ -174,9 +180,10 @@ class mainDialog:
                              "Trond Eivind Glomsrød <teg@redhat.com>",
                              ])
             dlg.set_documenters(["Tammy Fox <tfox@redhat.com>"])
-            dlg.set_copyright(_("This software is distributed under the GPL. \n"
-                                "Please Report bugs to Red Hat's Bug Tracking \n"
-                                "System: http://bugzilla.redhat.com/"))
+            dlg.set_copyright(_(
+                "This software is distributed under the GPL. \n"
+                "Please Report bugs to Red Hat's Bug Tracking \n"
+                "System: http://bugzilla.redhat.com/"))
             dlg.set_transient_for(self.dialog)
             dlg.set_position (gtk.WIN_POS_CENTER_ON_PARENT)
             dlg.run()
@@ -246,7 +253,8 @@ class mainDialog:
         self.oldprofile = None # forces a re-read of oldprofile
         self.update_dialog()
 
-    def on_profileActivateButton_clicked(self, button): # pylint: disable-msg=W0613
+    def on_profileActivateButton_clicked(self, 
+                                         button): # pylint: disable-msg=W0613
         profile = self.get_active_profile().ProfileName
 
         generic_run_dialog(
@@ -272,7 +280,8 @@ class mainDialog:
         generic_error_dialog(_("To be rewritten!"))
         return
 
-    def on_generic_clist_select_row(self, clist, row, column, event, # pylint: disable-msg=W0613
+    def on_generic_clist_select_row(self, clist, 
+                                row, column, event, # pylint: disable-msg=W0613
                                     activate_button = None,
                                     deactivate_button = None,
                                     configure_button = None,
@@ -369,7 +378,7 @@ class mainDialog:
                 status_pixmap = self.off_xpm
                 status_mask = self.off_mask
 
-            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(\
+            device_pixmap, device_mask = GUI_functions.get_device_icon_mask(
                 dev.Type, self.dialog)
 
             clist.append([status, devname, dev.DeviceId])
@@ -442,7 +451,7 @@ class mainDialog:
 
     def getProfDeviceList(self, refresh=None):
         profilelist = getProfileList(refresh)
-        prof=profilelist.getActiveProfile()
+        prof = profilelist.getActiveProfile()
         devlist = getDeviceList(refresh)
         activedevlist = []
         for devid in prof.ActiveDevices:
@@ -455,7 +464,8 @@ class mainDialog:
             activedevlist.append(dev) # pylint: disable-msg=W0631
         return activedevlist
 
-    def on_profileMenuItem_activated(self, menu_item, profile): # pylint: disable-msg=W0613
+    def on_profileMenuItem_activated(self, 
+                            menu_item, profile): # pylint: disable-msg=W0613
         if not self.no_profileentry_update:
             self.set_profile_active(profile)
             if self.oldprofile != self.get_active_profile().ProfileName:
@@ -485,7 +495,8 @@ class mainDialog:
 
 def Usage():
     # FIXME: change string
-    print _("system-config-network - network configuration tool\n\nUsage: system-config-network -v --verbose -d --debug")
+    print _("system-config-network - network configuration tool\n\n"
+            "Usage: system-config-network -v --verbose -d --debug")
 
 if __name__ == '__main__':
     # make ctrl-C work

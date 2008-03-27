@@ -16,10 +16,16 @@ class Route_base(Gdtstruct):
         self.Gateway = None
         self.GatewayDevice = None
 
+_ip_pattern = re.compile(
+    r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\."    
+    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\." 
+    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\."
+    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
+    )
+
 def testIP(value):
     # FIXME: split, then check for range
-    ip_pattern = r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
-    if re.match(ip_pattern, value):
+    if _ip_pattern.match(value):
         return True
     else:
         return False

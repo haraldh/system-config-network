@@ -20,7 +20,8 @@ import gobject
 import gtk.glade
 import os
 from netconfpkg import NCDeviceList, NCProfileList, NCHardwareList
-from netconfpkg.NC_functions import _, WIRELESS, NETCONFDIR, PROGNAME, request_rpms
+from netconfpkg.NC_functions import (_, WIRELESS, NETCONFDIR, PROGNAME, 
+                                     request_rpms)
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
@@ -38,7 +39,7 @@ modeList = [
 #    [ _("Secondary") , "Secondary"]
 ]
 
-class WirelessInterface(InterfaceCreator):
+class WirelessInterfaceWizard(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=WIRELESS, do_save = 1,
                  druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
@@ -189,7 +190,8 @@ class WirelessInterface(InterfaceCreator):
         row = self.xml.get_widget("modeCombo").get_active()
         wl.Mode = self.modestore[row][1]
 
-        wl.Channel = str(self.xml.get_widget("channelSpinButton").get_value_as_int())
+        wl.Channel = str(self.xml.get_widget(
+                            "channelSpinButton").get_value_as_int())
         rate = self.xml.get_widget("rateEntry").get_text()
         if rate == _("Auto"):
             wl.Rate = "auto"
@@ -224,10 +226,12 @@ class WirelessInterface(InterfaceCreator):
                     self.xml.get_widget("essidEntry").set_sensitive(False)
 
                 if info.has_key("Frequency") and info["Frequency"] < 1000:
-                    self.xml.get_widget("channelSpinButton").set_value(int(info["Frequency"]))
+                    self.xml.get_widget("channelSpinButton").set_value(
+                                                        int(info["Frequency"]))
 
                 if info.has_key("BitRate"):
-                    self.xml.get_widget("rateEntry").set_text(_(info["BitRate"]))
+                    self.xml.get_widget("rateEntry").set_text(
+                                                        _(info["BitRate"]))
 
                 if info.has_key("Key") and info["Key"] != "off":
                     self.xml.get_widget("keyEntry").set_text(info["Key"])
@@ -305,12 +309,14 @@ class WirelessInterface(InterfaceCreator):
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
+        try: 
+            hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError, err:
             pass
         else:
             self.device.HardwareAddress = hwaddr
 
+        # FIXME: Bad style for translation
         s = _("You have selected the following information:") + "\n\n"\
             + _("Device:") + " " + str(self.device.DeviceId) + " "
 
@@ -322,13 +328,14 @@ class WirelessInterface(InterfaceCreator):
 
         s = s + "\n"
 
-        if self.device.BootProto == "static" or self.device.BootProto == "none":
-            s = s + _("Address:") + " " + self.device.IP + "\n"\
-            + _("Subnet mask:") + " " + self.device.Netmask + "\n"\
-            + _("Default gateway address:") + " " + self.device.Gateway + "\n"
+        if (self.device.BootProto == "static" 
+            or self.device.BootProto == "none"):
+            s = s + str(_("Address:") + " " + self.device.IP + "\n"
+            + _("Subnet mask:") + " " + self.device.Netmask + "\n"
+            + _("Default gateway address:") + " " + self.device.Gateway + "\n")
         else:
-            s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n"
+            s = s + str(_("Automatically obtain IP address settings with:") 
+                        + " " + self.device.BootProto + "\n")
 
         s = s + _("Mode:") + " " + str(wl.Mode) + "\n"
         s = s + _("ESSID (network ID):") + " "
@@ -338,8 +345,8 @@ class WirelessInterface(InterfaceCreator):
             s = s + str(wl.EssId) + "\n"
         if wl.Mode != "Managed":
             s = s + _("Channel:") + " " + str(wl.Channel) + "\n"
-        s = s + _("Transmit rate:") + " " + str(wl.Rate) + "\n" \
-            + _("Key: ")
+        s = s + str(_("Transmit rate:") + " " + str(wl.Rate) + "\n" 
+                    + _("Key: "))
 
 
         if wl.Key:
@@ -367,6 +374,6 @@ class WirelessInterface(InterfaceCreator):
         gtk.main_quit()
 
 def register_plugin():
-    NCPluginDevWireless.setDevWirelessWizard(WirelessInterface)
+    NCPluginDevWireless.setDevWirelessWizard(WirelessInterfaceWizard)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

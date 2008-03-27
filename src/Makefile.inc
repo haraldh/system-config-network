@@ -14,5 +14,10 @@ pycheck: $(PYTHON_FILES)
 
 pylint: $(PYTHON_FILES)
 	@echo "Running pylint -- Please wait, this can last a bit"
-	! pylint --errors-only --rcfile=$(top_srcdir)/pylintrc netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:'
+	! pylint --rcfile=/dev/null --errors-only netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:'
 	@make -C netconfpkg/tests pylint
+
+pylintv: $(PYTHON_FILES)
+	pylint --rcfile=$(top_srcdir)/pylintrc netconfpkg $(subst .py,,$(PYTHON_FILES))
+
+

@@ -35,7 +35,8 @@ class ethernetHardwareDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -77,7 +78,7 @@ class ethernetHardwareDialog:
 #
 #    
 #        (status, output) = gui_run_dialog('/sbin/modprobe', cmd,
-#                                          catchfd = (1, 2), dialog = self.dialog)
+#                                catchfd = (1, 2), dialog = self.dialog)
 #        if status != 0:
 #            GUI_functions.generic_longinfo_dialog(\
 #                _('The Ethernet card could not be initialized. '
@@ -95,7 +96,8 @@ class ethernetHardwareDialog:
         if self.hw.Name:
             self.xml.get_widget('ethernetDeviceEntry').set_text(self.hw.Name)
             if self.hw.Description:
-                self.xml.get_widget('adapterEntry').set_text(self.hw.Description)
+                self.xml.get_widget('adapterEntry').set_text(
+                                                self.hw.Description)
             self.xml.get_widget('adapterEntry').set_sensitive(False)
             self.xml.get_widget('adapterComboBox').set_sensitive(False)
         else:

@@ -54,13 +54,15 @@ class IPCalc:
     def network(self):
         if not self._prefix:
             self.prefix()
-        text = os.popen("ipcalc -n %s/%s" % (self._address, self._prefix)).read()
+        text = os.popen("ipcalc -n %s/%s" % (self._address, 
+                                             self._prefix)).read()
         return re.match("NETWORK=(\S+)", text).groups()[0]
 
     def broadcast(self):
         if not self._prefix:
             self.prefix()
-        text = os.popen("ipcalc -b %s/%s" % (self._address, self._prefix)).read()
+        text = os.popen("ipcalc -b %s/%s" % (self._address, 
+                                             self._prefix)).read()
         return re.match("BROADCAST=(\S+)", text).groups()[0]
 
 def test():

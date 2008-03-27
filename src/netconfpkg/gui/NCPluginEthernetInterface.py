@@ -32,8 +32,9 @@ from netconfpkg.plugins import NCPluginDevEthernet
 from rhpl import ethtool
 
 
-class EthernetInterface(InterfaceCreator):
-    def __init__(self, toplevel = None, connection_type = ETHERNET, do_save = 1, 
+class EthernetInterfaceWizard(InterfaceCreator):
+    def __init__(self, toplevel = None, 
+                 connection_type = ETHERNET, do_save = 1, 
                  druid = None):        
         InterfaceCreator.__init__(self, do_save = do_save)
         self.toplevel = toplevel
@@ -210,7 +211,8 @@ class EthernetInterface(InterfaceCreator):
             self.device.DeviceId = self.device.DeviceId + ":" \
                                    + str(self.device.Alias)
 
-        try: hwaddr = ethtool.get_hwaddr(self.device.Device)
+        try: 
+            hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError, err:
             pass
         else:
@@ -227,13 +229,17 @@ class EthernetInterface(InterfaceCreator):
 
         s = s + "\n" + "   "
 
-        if self.device.BootProto == "static" or self.device.BootProto == "none":
-            s = s + _("Address:") + " " + (self.device.IP or '') + "\n" + "   "\
-            + _("Subnet mask:") + " " + (self.device.Netmask or '') + "\n" + "   "\
-            + _("Default gateway address:") + " " + (self.device.Gateway or '') + "\n" + "   "
+        if (self.device.BootProto == "static" 
+            or self.device.BootProto == "none"):
+            # FIXME: Bad style for translation
+            s = s + str( _("Address:") + " " + (self.device.IP or '') + "\n" 
+                        + "   " + _("Subnet mask:") + " " 
+                        + (self.device.Netmask or '') + "\n" 
+                        + "   " + _("Default gateway address:") 
+                        + " " + (self.device.Gateway or '') + "\n" + "   ")
         else:
-            s = s + _("Automatically obtain IP address settings with:") + " "\
-                + self.device.BootProto + "\n"
+            s = s + str(_("Automatically obtain IP address settings with:") 
+                        + " " + self.device.BootProto + "\n")
 
 
         druid_page.set_text(s)
@@ -260,6 +266,6 @@ class EthernetInterface(InterfaceCreator):
         gtk.main_quit()
 
 def register_plugin():
-    NCPluginDevEthernet.setDevEthernetWizard(EthernetInterface)
+    NCPluginDevEthernet.setDevEthernetWizard(EthernetInterfaceWizard)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

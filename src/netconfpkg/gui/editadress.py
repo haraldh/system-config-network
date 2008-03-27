@@ -34,7 +34,8 @@ class editAdressDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -48,7 +49,8 @@ class editAdressDialog:
             "on_cancelButton_clicked" : self.on_cancelButton_clicked
             })
 
-        self.xml.get_widget ("addressPixmap").set_from_file(GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
+        self.xml.get_widget("addressPixmap").set_from_file(
+                                GUI_functions.NETCONFDIR+"pixmaps/network.xpm")
         self.dialog = self.xml.get_widget("Dialog")
         #self.dialog.connect("delete-event", self.on_Dialog_delete_event)
         #self.dialog.connect("hide", gtk.main_quit)
@@ -64,8 +66,9 @@ class editAdressDialog:
     def on_cancelButton_clicked(self, button):
         pass
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
-                                     pos, mstr):
+    def on_generic_entry_insert_text(self, 
+                    entry, partial_text, length, # pylint: disable-msg=W0613
+                    pos, mstr):
         text = partial_text[0:length]
         if re.match(mstr, text):
             return
@@ -81,8 +84,11 @@ class editAdressDialog:
 
     def dehydrate(self):
         # FIXME: [183337] system-config-network doesn't check route fields
-        self.route.Address = self.xml.get_widget('addressEntry').get_text().strip()
-        self.route.Netmask = self.xml.get_widget('netmaskEntry').get_text().strip()
-        self.route.Gateway = self.xml.get_widget('gatewayEntry').get_text().strip()
+        self.route.Address = self.xml.get_widget(
+                                'addressEntry').get_text().strip()
+        self.route.Netmask = self.xml.get_widget(
+                                'netmaskEntry').get_text().strip()
+        self.route.Gateway = self.xml.get_widget(
+                                'gatewayEntry').get_text().strip()
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

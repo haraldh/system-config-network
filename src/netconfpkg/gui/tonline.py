@@ -33,7 +33,8 @@ class TonlineDialog:
         if not os.path.exists(glade_file):
             glade_file = GUI_functions.NETCONFDIR + glade_file
 
-        self.xml = gtk.glade.XML(glade_file, None, domain=GUI_functions.PROGNAME)
+        self.xml = gtk.glade.XML(glade_file, None, 
+                                 domain=GUI_functions.PROGNAME)
 
         xml_signal_autoconnect(self.xml,
             {
@@ -62,16 +63,17 @@ class TonlineDialog:
         pass
 
     def check(self):
-        if len(self.xml.get_widget('AKEntry').get_text()) < 1 or \
-           len(self.xml.get_widget('ZNEntry').get_text()) < 1 or \
-           len(self.xml.get_widget('mbnEntry').get_text()) < 1 or \
-           len(self.xml.get_widget('pwEntry').get_text()) < 1 :
+        if (len(self.xml.get_widget('AKEntry').get_text()) < 1 or 
+           len(self.xml.get_widget('ZNEntry').get_text()) < 1 or 
+           len(self.xml.get_widget('mbnEntry').get_text()) < 1 or
+           len(self.xml.get_widget('pwEntry').get_text()) < 1 ):
             self.xml.get_widget('okButton').set_sensitive(False)
         else:
             self.xml.get_widget('okButton').set_sensitive(True)
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length, # pylint: disable-msg=W0613
-                                     pos, mstr):
+    def on_generic_entry_insert_text(self, 
+                        entry, partial_text, length, # pylint: disable-msg=W0613
+                        pos, mstr):
         text = partial_text[0:length]
 
         if re.match(str, text):
