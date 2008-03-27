@@ -73,6 +73,7 @@ class Callback(Callback_base):
                 setattr(self, selfkey, False)
 
     def save(self, parentConf):
+        log.log(6, "in Callback.save")
         conf = parentConf
 
         for selfkey in self.keydict.keys():
@@ -93,6 +94,7 @@ class Callback(Callback_base):
                 conf[confkey] = 'on'
             else:
                 conf[confkey] = 'off'
+        log.log(6, "in Callback.save end")
 
 
 

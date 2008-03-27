@@ -22,9 +22,11 @@ import os.path
 import re
 from netconfpkg.NC_functions import (_, log, ConfDevices,
                                      generic_longinfo_dialog, getDeviceType,
-                                     getRoot, OLDSYSCONFDEVICEDIR, QETH, SYSCONFDEVICEDIR,
-                                     updateNetworkScripts, getCHAPConf, getPAPConf, IPSEC,
-                                     SYSCONFNETWORK, testFilename, unlink, WVDIALCONF)
+                                     getRoot, OLDSYSCONFDEVICEDIR, QETH,
+                                     SYSCONFDEVICEDIR, updateNetworkScripts,
+                                     getCHAPConf, getPAPConf, IPSEC,
+                                     SYSCONFNETWORK, testFilename, unlink,
+                                     WVDIALCONF)
 
 from netconfpkg.NCDevice import Device
 from netconfpkg.NCDeviceFactory import getDeviceFactory
@@ -96,7 +98,9 @@ class DeviceList(DeviceList_base):
 #                    newdev.load(dev)
 #                except BaseException, e:
 #                    # FIXME: better exception handling
-#                    generic_error_dialog (_("Error loading file %s\n%s") % (devdir + "/ifcfg-" + dev, str(e)), 
+#                    generic_error_dialog (_("Error loading file %s\n%s") 
+#                                           % (devdir + 
+#                                               "/ifcfg-" + dev, str(e)),
 #                                          dialog_type="error")
 #                else:
 #                    self.append(newdev) 
@@ -135,7 +139,7 @@ class DeviceList(DeviceList_base):
                 dev.setChanged(False)
 
         if len(chdev.keys()):
-            s =_("Changed the following Nicknames due to the initscripts:\n")
+            s = _("Changed the following Nicknames due to the initscripts:\n")
             for n, d in chdev.items():
                 s += "%s -> %s\n" % (n, d)
             generic_longinfo_dialog(_("Nicknames changed"), s)
@@ -147,8 +151,8 @@ class DeviceList(DeviceList_base):
         if devclass:
             newdev = devclass()
             self.append(newdev)
-        else: # FIXME: !!
-            raise TypeError
+#        else: # FIXME: !!
+#            generic_error_dialog()
         return newdev
 
     def test(self):

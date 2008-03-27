@@ -57,7 +57,7 @@ class Device_base(Gdtstruct):
                           ('Domain', Gdtstr, "Test doc string"),
                           ('AutoDNS', Gdtbool, "Test doc string"),
                           ('HardwareAddress', Gdtstr, "Test doc string"),
-                          ('Mtu', Gdtint, "Test doc string"),                          
+                          ('Mtu', Gdtint, "Test doc string"),
                           ('Slave', Gdtbool, "Test doc string"),
                           ('StaticRoutes', StaticRoutes, "test"),
                           ])
@@ -132,11 +132,13 @@ class ConfDevice(ConfShellVar.ConfShellVar):
 
 class ConfRoute(ConfShellVar.ConfShellVar):
     def __init__(self, name):
-        ConfShellVar.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + \
-                                    'route-' + name )
+        ConfShellVar.ConfShellVar.__init__(self, getRoot() 
+                                            + SYSCONFDEVICEDIR
+                                            + 'route-' + name)
         self.chmod(0644)
 
-# FIXME: [157630] system-config-networks needs options for setting default route and metric
+# FIXME: [157630] system-config-networks needs options 
+# for setting default route and metric
 class Device(Device_base):
     Type = ETHERNET
     SubType = None
@@ -195,7 +197,8 @@ class Device(Device_base):
         return devname
     
     def getRealMtu(self):
-        out = commands.getoutput('/sbin/ip link show ' + str(self.Device) + ' 2>/dev/null' )
+        out = commands.getoutput('/sbin/ip link show %s 2>/dev/null'
+                                 % self.Device)
         next = False
         val = 0
         try:
@@ -211,7 +214,7 @@ class Device(Device_base):
         return val
 
     def load(self, name):
-	
+    
         conf = ConfDevice(name)
 
         self.oldname = name
@@ -265,20 +268,22 @@ class Device(Device_base):
         if not self.Gateway:
             try:
                 cfg = ConfShellVar.ConfShellVar(getRoot() + SYSCONFNETWORK )
-                if cfg.has_key('GATEWAY') and ((not cfg.has_key('GATEWAYDEV')) or cfg['GATEWAYDEV'] == self.Device) :
+                if (cfg.has_key('GATEWAY') 
+                    and ((not cfg.has_key('GATEWAYDEV')) 
+                          or cfg['GATEWAYDEV'] == self.Device)):
                     gw = cfg['GATEWAY']
 
                     if gw and self.Netmask:
                         try:
-                            network = commands.getoutput( 'ipcalc --network '+\
-                                                         str(self.IP) + \
-                                                         ' ' + \
-                                                         str(self.Netmask) +\
+                            network = commands.getoutput( 'ipcalc --network '+
+                                                         str(self.IP) + 
+                                                         ' ' + 
+                                                         str(self.Netmask) +
                                                          ' 2>/dev/null' )
 
-                            out = commands.getoutput( 'ipcalc --network ' + \
-                                                     str(gw) + ' ' \
-                                                     + str(self.Netmask) + \
+                            out = commands.getoutput( 'ipcalc --network ' + 
+                                                     str(gw) + ' ' 
+                                                     + str(self.Netmask) + 
                                                      ' 2>/dev/null' )
                             if out == network:
                                 self.Gateway = str(gw)
@@ -297,14 +302,14 @@ class Device(Device_base):
         except TypeError:
             NC_functions.generic_error_dialog( _( "%s, "
                                                 "Device not specified "
-                                                "or alias not a number!" ) % \
-                                              self.DeviceId )
+                                                "or alias not a number!" ) 
+                                              % self.DeviceId )
             #raise TypeError, _("Device not specified or alias not a number!")
         except ValueError:
             NC_functions.generic_error_dialog( _( "%s, "
                                                 "Device not specified "
-                                                "or alias not a number!" ) % \
-                                              self.DeviceId )
+                                                "or alias not a number!" ) 
+                                                % self.DeviceId )
 
         if not self.Alias:
             del self.OnParent
@@ -332,11 +337,11 @@ class Device(Device_base):
                 self.AutoDNS = False
 
         # move old <id>.route files to route-<id>
-        mfile = getRoot() + SYSCONFDEVICEDIR + \
-                                self.DeviceId + '.route'
+        mfile = str(getRoot() + SYSCONFDEVICEDIR +
+                                self.DeviceId + '.route')
         if os.path.isfile(mfile):
-            NC_functions.rename( mfile,
-                                getRoot() + SYSCONFDEVICEDIR + \
+            NC_functions.rename(mfile,
+                                getRoot() + SYSCONFDEVICEDIR +
                                 'route-' + self.DeviceId )
         # load routes
         rconf = ConfRoute(name)
@@ -357,7 +362,8 @@ class Device(Device_base):
                 if rconf.has_key("GATEWAY" + str(p)):
                     route.Gateway = rconf['GATEWAY' + str(p)]
                 
-        self.commit(changed=False) 
+        self.commit() 
+        self.setChanged(False)
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
@@ -369,9 +375,9 @@ class Device(Device_base):
 
         if self.oldname and (self.oldname != self.DeviceId):
             for prefix in [ 'ifcfg-', 'route-', 'keys-' ]:
-                NC_functions.rename(getRoot() + SYSCONFDEVICEDIR + \
+                NC_functions.rename(getRoot() + SYSCONFDEVICEDIR + 
                                     prefix + self.oldname,
-                                    getRoot() + SYSCONFDEVICEDIR + \
+                                    getRoot() + SYSCONFDEVICEDIR +
                                     prefix + self.DeviceId )
 
         conf = ConfDevice(self.DeviceId)
@@ -432,9 +438,9 @@ class Device(Device_base):
         # obsolete
         if self.IP and self.Netmask and conf.has_key('BROADCAST'):
             try:
-                broadcast = commands.getoutput( 'ipcalc --broadcast ' + \
-                                               str(self.IP) + \
-                                               ' ' + str(self.Netmask) + \
+                broadcast = commands.getoutput( 'ipcalc --broadcast ' + 
+                                               str(self.IP) + 
+                                               ' ' + str(self.Netmask) + 
                                                ' 2>/dev/null' )
                 if broadcast:
                     conf['BROADCAST'] = broadcast[10:]
@@ -445,9 +451,9 @@ class Device(Device_base):
 
         if self.IP and self.Netmask and conf.has_key('NETWORK'):
             try:
-                network = commands.getoutput( 'ipcalc --network ' + \
-                                             str(self.IP) + \
-                                             ' ' + str(self.Netmask) + \
+                network = commands.getoutput( 'ipcalc --network ' + 
+                                             str(self.IP) + 
+                                             ' ' + str(self.Netmask) + 
                                              ' 2>/dev/null' )
                 if network:
                     conf['NETWORK'] = network[8:]
@@ -523,7 +529,7 @@ class Device(Device_base):
         param = [command, self.DeviceId, "down"]
 
         try:
-            (ret, msg) = generic_run_dialog( \
+            (ret, msg) = generic_run_dialog( 
                 command, param,
                 catchfd = (1, 2),
                 title = _('Network device deactivating...'),

@@ -69,8 +69,9 @@ class DevQeth(DevEthernet):
             except:  # pylint: disable-msg=W0704
                 pass # pylint: disable-msg=W0702
 
-            hw.commit(changed=False)
-            hardwarelist.commit(changed=False) 
+            hw.commit()
+            hw.setChanged(False)
+            hardwarelist.commit() 
          
     def save(self):
         DevEthernet.save(self)

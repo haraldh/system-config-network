@@ -71,7 +71,9 @@ class IPsec_base(Gdtstruct):
     
 class ConfIPsec(ConfShellVar.ConfShellVar):
     def __init__(self, name):
-        ConfShellVar.ConfShellVar.__init__(self, getRoot() + SYSCONFDEVICEDIR + 'ifcfg-' + name)
+        ConfShellVar.ConfShellVar.__init__(self, getRoot() 
+                                           + SYSCONFDEVICEDIR 
+                                           + 'ifcfg-' + name)
         self.chmod(0644)
 
 class IPsec(IPsec_base):
@@ -152,7 +154,8 @@ class IPsec(IPsec_base):
 
         self.oldname = self.IPsecId
 
-        self.commit(changed=False) 
+        self.commit() 
+        self.setChanged(changed=False)
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving

@@ -22,11 +22,17 @@ from netconfpkg import NCIPsecList
 from netconfpkg.NCProfile import Profile
 
 from netconfpkg.NCDeviceList import ConfDevices
-from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK, getRoot, updateNetworkScripts,
-                                     SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR, RESOLVCONF,
-                                     HOSTSCONF, TestError, getDebugLevel, SYSCONFDEVICEDIR,
-                                     mkdir, issamefile, unlink, link, rename, rmdir, 
-                                     generic_error_dialog)
+from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK, getRoot,
+                                     updateNetworkScripts,
+                                     SYSCONFPROFILEDIR, OLDSYSCONFDEVICEDIR,
+                                     RESOLVCONF,
+                                     HOSTSCONF, TestError, getDebugLevel,
+                                     SYSCONFDEVICEDIR,
+                                     mkdir, issamefile, unlink, link, rename,
+                                     rmdir, 
+                                     generic_error_dialog,
+                                     generic_yesno_dialog, 
+                                     RESPONSE_YES)
 from netconfpkg.conf import ConfShellVar, ConfEResolv
 import os, sys
 import os.path
@@ -221,11 +227,6 @@ class ProfileList(ProfileList_base):
                 devmap[device.Device] = device
             break
 
-    def commit(self, changed=True):
-        super(ProfileList, self).commit()
-        if changed == False:
-            self.setChanged(changed)
-
     def fixInterfaces(self):
         return
 #===============================================================================
@@ -290,10 +291,19 @@ class ProfileList(ProfileList_base):
         if socket.gethostname() != act_prof.DNS.Hostname and \
                getDebugLevel() < 10:
             if os.getuid() == 0:
-                # FIXME: [169733] Renaming machine prevents applications from opening
-                # if the hostname changed, set it system wide (#55746)
-                os.system("hostname %s" % act_prof.DNS.Hostname)
-                log.log(2, "change hostname to %s" % act_prof.DNS.Hostname)
+                # FIXME: [169733] Renaming machine prevents 
+                # applications from opening, if the hostname changed,
+                # set it system wide (#55746)
+                retval = generic_yesno_dialog(_(
+                """You changed the hostname.
+
+Should the hostname be set to the system now?
+This may have the effect, that some X applications do not function properly.
+
+You may have to relogin."""))
+                if retval == RESPONSE_YES:
+                    os.system("hostname %s" % act_prof.DNS.Hostname)
+                    log.log(2, "change hostname to %s" % act_prof.DNS.Hostname)
 
             newip = '127.0.0.1'
             try:
@@ -304,9 +314,11 @@ class ProfileList(ProfileList_base):
                         host.Hostname = 'localhost.localdomain'
                         if 'localhost' not in host.AliasList:
                             host.AliasList.append('localhost')
-                        # append the hostname to 127.0.0.1, if it does not contain a domain
+                        # append the hostname to 127.0.0.1,
+                        # if it does not contain a domain
                         if act_prof.DNS.Hostname.find(".") != -1:
-                            host.AliasList.append(act_prof.DNS.Hostname.split(".")[0])
+                            host.AliasList.append(
+                                    act_prof.DNS.Hostname.split(".")[0])
                         else:
                             host.AliasList.append(act_prof.DNS.Hostname)
             else:
@@ -353,16 +365,17 @@ class ProfileList(ProfileList_base):
         files_used = MyFileList()
 
         for prof in self:
-            if not os.path.isdir(getRoot() + SYSCONFPROFILEDIR + \
+            if not os.path.isdir(getRoot() + SYSCONFPROFILEDIR + 
                                  '/' + prof.ProfileName):
-                mkdir(getRoot() + SYSCONFPROFILEDIR + '/' + \
+                mkdir(getRoot() + SYSCONFPROFILEDIR + '/' + 
                       prof.ProfileName)
-            files_used.append(getRoot() + SYSCONFPROFILEDIR + '/' + \
+            files_used.append(getRoot() + SYSCONFPROFILEDIR + '/' + 
                               prof.ProfileName)
 
-            nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFPROFILEDIR + \
+            nwconf = ConfShellVar.ConfShellVar(getRoot() + SYSCONFPROFILEDIR +
                                        '/' + prof.ProfileName + '/network')
-            print >> sys.stderr, "Writing Hostname ", prof.ProfileName, prof.DNS.Hostname
+#            print >> sys.stderr, "Writing Hostname ", 
+#                    prof.ProfileName, prof.DNS.Hostname
             nwconf['HOSTNAME'] = prof.DNS.Hostname
             nwconf.write()
             files_used.append(nwconf.filename)
@@ -484,11 +497,14 @@ class ProfileList(ProfileList_base):
 
             # Special actions for the active profile
 
-            for (mfile, cfile) in { RESOLVCONF : '/resolv.conf', HOSTSCONF : '/hosts' }.items():
+            for (mfile, cfile) in { RESOLVCONF : '/resolv.conf',
+                                    HOSTSCONF : '/hosts' }.items():
                 hostfile = getRoot() + mfile
                 conffile = getRoot() + SYSCONFPROFILEDIR + '/' + \
                            prof.ProfileName + cfile
-                if os.path.isfile(conffile) and (not os.path.isfile(hostfile) or not issamefile(hostfile, conffile)):
+                if(os.path.isfile(conffile) 
+                   and (not os.path.isfile(hostfile) 
+                        or not issamefile(hostfile, conffile))):
                     rename(hostfile, hostfile + '.bak')
                     unlink(hostfile)
                     link(conffile, hostfile)
@@ -511,7 +527,8 @@ class ProfileList(ProfileList_base):
             try:
                 stat = os.stat(mfile)
                 if stat[3] > 1:
-                    # Check, if it is a device of neat in every profile directory
+                    # Check, if it is a device of neat 
+                    # in every profile directory
                     dirlist = os.listdir(getRoot() + SYSCONFPROFILEDIR)
                     for mdir in dirlist:
                         dirname = getRoot() + SYSCONFPROFILEDIR + '/' + mdir
@@ -523,8 +540,9 @@ class ProfileList(ProfileList_base):
                             if os.path.samestat(stat, stat2):
                                 unlink(mfile)
             except OSError, e:
-                generic_error_dialog(_("Error removing file %(file)s: %(errormsg)") % \
-                                     { "file" : mfile, "errormsg" : str(e) } )
+                generic_error_dialog(
+                        _("Error removing file %(file)s: %(errormsg)")
+                        % { "file" : mfile, "errormsg" : str(e) } )
 
 
         # Remove all profile directories except default
@@ -593,11 +611,11 @@ class ProfileList(ProfileList_base):
                 aprof = prof
             else:
                 prof.Active = False
-            if not dochange:
-                prof.setChanged(mod)
+            #if not dochange:
+            #    prof.setChanged(mod)
 
-        if not dochange:
-            self.setChanged(modl) 
+        #if not dochange:
+        #    self.setChanged(modl) 
 
         return aprof
 
@@ -608,7 +626,7 @@ class ProfileList(ProfileList_base):
             return prof
 
         if len(self):
-            self[0].Active=True
+            self[0].Active = True
             return self[0]
 
     def tostr(self, prefix_string = None):

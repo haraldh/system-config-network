@@ -24,6 +24,7 @@
 
 import os
 import re
+import sys
 
 from netconfpkg.Control import NetworkDevice
 from netconfpkg.gui.GUI_functions import (get_icon, get_pixbuf,
@@ -87,7 +88,7 @@ class mainDialog:
         self.initialized = None
         self.help_displayed = False
         self.no_profileentry_update = None
-        self.ignore_widget_changes = False
+        self.ignore_widget_changes = True
 
         self.edit_button = self.xml.get_widget("editButton")
         self.delete_button = self.xml.get_widget("deleteButton")
@@ -119,13 +120,15 @@ class mainDialog:
             "on_hardwareList_button_press_event" : \
             self.on_generic_clist_button_press_event,
             "on_ipsecList_button_press_event" : \
-            self.on_generic_clist_button_press_event,
-            "on_hostnameEntry_ischanged" : self.on_hostnameEntry_ischanged,
-            "on_domainEntry_ischanged" : self.on_domainEntry_ischanged,
-            "on_primaryDnsEntry_ischanged" : self.on_primaryDnsEntry_ischanged,
-            "on_secondaryDnsEntry_ischanged" : self.on_secondaryDnsEntry_ischanged,
-            "on_tertiaryDnsEntry_ischanged" : self.on_tertiaryDnsEntry_ischanged,
-            "on_searchDnsEntry_ischanged" : self.on_searchDnsEntry_ischanged,
+            self.on_generic_clist_button_press_event,            
+            "on_hostnameEntry_changed" : self.on_hostnameEntry_changed,
+            "on_domainEntry_changed" : self.on_domainEntry_changed,
+            "on_primaryDnsEntry_changed" : self.on_primaryDnsEntry_changed,
+            "on_secondaryDnsEntry_changed" : 
+                self.on_secondaryDnsEntry_changed,
+            "on_tertiaryDnsEntry_changed" : 
+                self.on_tertiaryDnsEntry_changed,
+            "on_searchDnsEntry_changed" : self.on_searchDnsEntry_changed,
             "on_profileAddMenu_activate" : self.on_profileAddMenu_activate,
             "on_profileCopyMenu_activate" : self.on_profileCopyMenu_activate,
             "on_profileRenameMenu_activate": \
@@ -401,7 +404,9 @@ class mainDialog:
         try:
             self.test()
         except ValueError, e:
-            retval = generic_yesno_dialog("Errors detected, do you really want to save?\n" + e.message, self.dialog)
+            retval = generic_yesno_dialog(
+                "Errors detected, do you really want to save?\n" + e.message,
+                self.dialog)
             if retval == gtk.RESPONSE_NO:
                 return
                 
@@ -417,7 +422,7 @@ class mainDialog:
             self.appBar.pop()
             self.checkApply()
         except (IOError, OSError, EnvironmentError), errstr:
-            generic_error_dialog (_("Error saving configuration!\n%s") \
+            generic_error_dialog (_("Error saving configuration!\n%s")
                                       % (str(errstr)))
         else:
             generic_info_dialog (_("Changes are saved. "
@@ -515,8 +520,8 @@ class mainDialog:
             clist.set_row_data(row, dev)
 
             for prof in profilelist:
-                if (prof.Active == True or prof.ProfileName == 'default') and \
-                       dev.DeviceId in prof.ActiveDevices:
+                if ((prof.Active == True or prof.ProfileName == 'default')
+                     and dev.DeviceId in prof.ActiveDevices):
                     if self.act_xpm:
                         clist.set_pixmap(row, PROFILE_COLUMN,
                                          self.act_xpm, self.act_mask)
@@ -542,7 +547,8 @@ class mainDialog:
         hwsel = self.hwsel
 
         for hw in hardwarelist:
-            clist.append([str(hw.Description), str(hw.Type), str(hw.Name), str(hw.Status)])
+            clist.append([str(hw.Description), str(hw.Type), 
+                          str(hw.Name), str(hw.Status)])
             device_pixmap, device_mask = \
                 get_device_icon_mask(hw.Type, self.dialog)
             if device_pixmap:
@@ -592,8 +598,8 @@ class mainDialog:
             clist.set_row_data(row, ipsec)
 
             for prof in profilelist:
-                if (prof.Active == True or prof.ProfileName == 'default') and \
-                       ipsec.IPsecId in prof.ActiveIPsecs:
+                if ((prof.Active == True or prof.ProfileName == 'default')
+                     and ipsec.IPsecId in prof.ActiveIPsecs):
                     clist.set_pixmap(row, PROFILE_COLUMN,
                                      self.act_xpm, self.act_mask)
                     break
@@ -623,8 +629,8 @@ class mainDialog:
     def hydrateProfiles(self):
         self.appBar.push(_("Updating profiles..."))
         profilelist = getProfileList()
-        if profilelist.modified():
-            raise ValueError
+#        if profilelist.modified():
+#            raise ValueError
         for prof in profilelist:
             if not prof.Active:
                 continue
@@ -641,28 +647,17 @@ class mainDialog:
         self.active_profile = prof 
         self.ignore_widget_changes = True
 
-        if prof.DNS.Hostname:
-            self.xml.get_widget('hostnameEntry').set_text(\
-                prof.DNS.Hostname)
-        else: self.xml.get_widget('hostnameEntry').set_text('')
-        if prof.DNS.Domainname:
-            self.xml.get_widget('domainnameEntry').set_text(\
-                prof.DNS.Domainname)
-        else: self.xml.get_widget('domainnameEntry').set_text('')
-        if prof.DNS.PrimaryDNS:
-            self.xml.get_widget('primaryDnsEntry').set_text(\
-                prof.DNS.PrimaryDNS)
-        else: self.xml.get_widget('primaryDnsEntry').set_text('')
-        if prof.DNS.SecondaryDNS:
-            self.xml.get_widget('secondaryDnsEntry').set_text(\
-                prof.DNS.SecondaryDNS)
-        else: self.xml.get_widget('secondaryDnsEntry').set_text('')
-        if prof.DNS.TertiaryDNS:
-            self.xml.get_widget('tertiaryDnsEntry').set_text(\
-                prof.DNS.TertiaryDNS)
-        else: self.xml.get_widget('tertiaryDnsEntry').set_text('')
+        for key, widget in { "Hostname" : "hostnameEntry", 
+                             "Domainname" : "domainnameEntry", 
+                             "PrimaryDNS" : "primaryDnsEntry",
+                             "SecondaryDNS" : "secondaryDnsEntry", 
+                             "TertiaryDNS" : "tertiaryDnsEntry"
+                             }.items():
+            txt = getattr(prof.DNS, key)
+            self.xml.get_widget(widget).set_text(txt or '')
+
         if prof.DNS.SearchList:
-            self.xml.get_widget('searchDnsEntry').set_text(\
+            self.xml.get_widget('searchDnsEntry').set_text(
                 " ".join(prof.DNS.SearchList))
         else:
             self.xml.get_widget('searchDnsEntry').set_text('')
@@ -771,8 +766,11 @@ class mainDialog:
         gtk.main_quit()
         return
 
-    def on_mainNotebook_switch_page(self, page = None, a = None, # pylint: disable-msg=W0613
-                                    page_num = 0, *args): # pylint: disable-msg=W0613
+    def on_mainNotebook_switch_page(self, 
+                                    page = None, 
+                                    a = None, # pylint: disable-msg=W0613
+                                    page_num = 0, 
+                                    *args): # pylint: disable-msg=W0613
         self.active_page = page_num
 
         # Check if we aren't called in a dialog destroy event
@@ -884,8 +882,9 @@ class mainDialog:
                  pw_gid, pw_gecos, pw_dir,
                  pw_shell) = pwd.getpwuid(uid)
 
-            gui_run("/bin/su", [ "su", "-c", "/usr/bin/htmlview file://" + NETCONFDIR + \
-                "/help/index.html", "-", pw_name])
+            gui_run("/bin/su", [ "su", "-c", 
+                    "/usr/bin/htmlview file://" + NETCONFDIR + 
+                    "/help/index.html", "-", pw_name])
 
             self.help_displayed = False
 
@@ -954,23 +953,25 @@ class mainDialog:
         devicelist = getDeviceList()
         devicelist.commit()
 
-        if not device.modified():
-            #print "Device not modified"
-            self.appBar.pop()
-            return
+#        if not device.modified():
+#            #print "Device not modified"
+#            self.appBar.pop()
+#            return
 
         # Fixed change device names in active list of all profiles
-        profilelist = getProfileList()
-        for prof in profilelist:
-            if devId in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(devId)
-                prof.ActiveDevices[pos] = device.DeviceId
+        if devId != device.DeviceId:
+            profilelist = getProfileList()
+            for prof in profilelist:
+                if devId in prof.ActiveDevices:
+                    pos = prof.ActiveDevices.index(devId)
+                    prof.ActiveDevices[pos] = device.DeviceId
+            profilelist.commit()
 
-
-        profilelist.commit()
         self.hydrateDevices()
         self.appBar.pop()
         self.checkApply()
+        self.on_generic_clist_select_row(\
+            clist, clist.selection[0], 0, 0)
 
     def editDevice(self, device):
         button = 0
@@ -988,7 +989,8 @@ class mainDialog:
 
         return button
 
-    def on_deviceDeleteButton_clicked (self, button): # pylint: disable-msg=W0613
+    def on_deviceDeleteButton_clicked (self, 
+                                       button): # pylint: disable-msg=W0613
         devicelist = getDeviceList()
         profilelist = getProfileList()
 
@@ -1037,10 +1039,10 @@ class mainDialog:
 
         if self.ischanged():
             button = generic_yesno_dialog(
-                _("You have made some changes in your configuration.") + "\n"+\
-                _("To activate the network device %s, "
-                  "the changes have to be saved.") % (device) + "\n" +\
-                _("Do you want to continue?"),
+                _("You have made some changes in your configuration.") + "\n"
+                  + _("To activate the network device %s, "
+                      "the changes have to be saved.") % (device) + "\n"
+                  + _("Do you want to continue?"),
                 self.dialog)
 
             if button == RESPONSE_YES:
@@ -1072,10 +1074,10 @@ class mainDialog:
 
         if self.ischanged():
             button = generic_yesno_dialog(
-                _("You have made some changes in your configuration.") + "\n"+\
-                _("To deactivate the network device %s, "
-                  "the changes have to be saved.") % (device) + "\n\n" +\
-                _("Do you want to continue?"),
+                _("You have made some changes in your configuration.") + "\n"
+                 + _("To deactivate the network device %s, "
+                     "the changes have to be saved.") % (device) + "\n\n" 
+                 + _("Do you want to continue?"),
                 self.dialog)
 
             if button == RESPONSE_YES:
@@ -1119,7 +1121,8 @@ class mainDialog:
 
         self.checkApply()
 
-    def on_generic_clist_select_row(self, clist, row, column, event): # pylint: disable-msg=W0613
+    def on_generic_clist_select_row(self, clist, row, 
+                                    column, event): # pylint: disable-msg=W0613
         self.edit_button.set_sensitive(True)
         self.delete_button.set_sensitive(True)
 
@@ -1277,8 +1280,8 @@ class mainDialog:
             if NetworkDevice().find(self.devsel.getDeviceAlias()):
                 status = ACTIVE
 
-            if status == ACTIVE and \
-                   (self.devsel.DeviceId in curr_prof.ActiveDevices):
+            if (status == ACTIVE and 
+                   (self.devsel.DeviceId in curr_prof.ActiveDevices)):
                 #self.activate_button.set_sensitive(False)
                 self.activate_button.set_sensitive(True)
                 self.deactivate_button.set_sensitive(True)
@@ -1294,7 +1297,9 @@ class mainDialog:
                 self.deactivate_button.set_sensitive(False)
                 self.delete_button.set_sensitive(False)
 
-    def on_generic_clist_unselect_row(self, clist, row, column, event): # pylint: disable-msg=W0613
+    def on_generic_clist_unselect_row(self, clist, 
+                                      row, column, 
+                                      event): # pylint: disable-msg=W0613
         if self.edit_button: self.edit_button.set_sensitive(False)
         #if self.rename_button: self.rename_button.set_sensitive(False)
         if self.delete_button: self.delete_button.set_sensitive(False)
@@ -1302,12 +1307,14 @@ class mainDialog:
         if self.up_button: self.delete_button.set_sensitive(False)
         if self.down_button: self.copy_button.set_sensitive(False)
 
-    def on_generic_clist_button_release_event(self, clist, event, func): # pylint: disable-msg=W0613
+    def on_generic_clist_button_release_event(self, clist, event, 
+                                              func): # pylint: disable-msg=W0613
         mid = clist.get_data ("signal_id")
         clist.disconnect (mid)
         func()
 
-    def on_generic_clist_button_press_event(self, clist, event, *args): # pylint: disable-msg=W0613
+    def on_generic_clist_button_press_event(self, clist, event, 
+                                            *args): # pylint: disable-msg=W0613
         self.lastbuttonevent = event
         #profilelist = getProfileList()
 
@@ -1324,43 +1331,42 @@ class mainDialog:
                                    func)
                 clist.set_data("signal_id", mid)
 
-
-    def on_hostnameEntry_ischanged(self, entry):
+    def on_hostnameEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return
         self.active_profile.DNS.Hostname = entry.get_text()
-        self.active_profile.DNS.commitHostname()
-        self.checkApply()
-
-    def on_domainEntry_ischanged(self, entry):
+        self.active_profile.DNS.commit()
+        self.checkApply()        
+        
+    def on_domainEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return
         self.active_profile.DNS.Domainname = entry.get_text()
-        self.active_profile.DNS.commitDomainname()
+        self.active_profile.DNS.commit()
         self.checkApply()
 
-    def on_primaryDnsEntry_ischanged(self, entry):
+    def on_primaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return
         self.active_profile.DNS.PrimaryDNS = entry.get_text()
-        self.active_profile.DNS.commitPrimaryDNS()
+        self.active_profile.DNS.commit()
         self.checkApply()
 
-    def on_secondaryDnsEntry_ischanged(self, entry):
+    def on_secondaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return
         self.active_profile.DNS.SecondaryDNS = entry.get_text()
-        self.active_profile.DNS.commitSecondaryDNS()
+        self.active_profile.DNS.commit()
         self.checkApply()
 
-    def on_tertiaryDnsEntry_ischanged(self, entry):
+    def on_tertiaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return
         self.active_profile.DNS.TertiaryDNS = entry.get_text()
-        self.active_profile.DNS.commitTertiaryDNS()
+        self.active_profile.DNS.commit()
         self.checkApply()
 
-    def on_searchDnsEntry_ischanged(self, entry):
+    def on_searchDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
             return
         s = entry.get_text()
@@ -1370,7 +1376,7 @@ class mainDialog:
         for sp in newentries:
             self.active_profile.DNS.SearchList.append(sp)
             
-        self.active_profile.DNS.commitSearchList()
+        self.active_profile.DNS.SearchList.commit()
         self.checkApply()
 
     def on_hostsAddButton_clicked(self, *args): # pylint: disable-msg=W0613
@@ -1445,7 +1451,8 @@ class mainDialog:
         
         todel = []
         for p in path:
-            todel.append(hostsListStore.get_value(hostsListStore.get_iter(p), 3))
+            todel.append(hostsListStore.get_value(
+                            hostsListStore.get_iter(p), 3))
         todel.sort()
         todel.reverse()
 
@@ -1532,7 +1539,7 @@ class mainDialog:
         profile = self.getActiveProfile()
         if profile.ProfileName == 'default' or \
                profile.ProfileName == DEFAULT_PROFILE_NAME:
-            generic_error_dialog (_('The "%s" profile can\'t be renamed!') \
+            generic_error_dialog (_('The "%s" profile can\'t be renamed!') 
                                   % DEFAULT_PROFILE_NAME,
                                   self.dialog)
             return
@@ -1559,7 +1566,7 @@ class mainDialog:
             return
 
         if text == 'default' or text == DEFAULT_PROFILE_NAME:
-            generic_error_dialog (_('The profile can\'t be named "%s"!') % \
+            generic_error_dialog (_('The profile can\'t be named "%s"!') % 
                                   text, self.dialog)
             return
 
@@ -1672,7 +1679,8 @@ class mainDialog:
                                   self.dialog)
             return RESPONSE_CANCEL
 
-    def on_hardwareDeleteButton_clicked (self, *args): # pylint: disable-msg=W0613
+    def on_hardwareDeleteButton_clicked (self, 
+                                         *args): # pylint: disable-msg=W0613
         hardwarelist = getHardwareList()
 
         clist = self.xml.get_widget("hardwareList")
@@ -1699,7 +1707,7 @@ class mainDialog:
         hardwarelist.commit()  
 
         buttons = generic_yesno_dialog((_('Do you want to delete '
-                                          'all devices that used "%s"?')) % \
+                                          'all devices that used "%s"?')) % 
                                        str(description),
                                        self.dialog, widget = clist)
 
@@ -1725,15 +1733,15 @@ class mainDialog:
 
     def on_about_activate(self, *args): # pylint: disable-msg=W0613
         from version import PRG_VERSION, PRG_NAME, \
-			    PRG_AUTHORS, PRG_DOCUMENTERS
+                PRG_AUTHORS, PRG_DOCUMENTERS
         if not hasattr(gtk, "AboutDialog"):
             #import gnome.ui
             dlg = gnome.ui.About(PRG_NAME,
-                                 PRG_VERSION,
-                                 _("Copyright (c) 2001-2005 Red Hat, Inc."),
-                                 _("This software is distributed under the GPL. "
-                                   "Please Report bugs to Red Hat's Bug Tracking "
-                                   "System: http://bugzilla.redhat.com/"),
+                            PRG_VERSION,
+                            _("Copyright (c) 2001-2005 Red Hat, Inc."),
+                            _("This software is distributed under the GPL. "
+                              "Please Report bugs to Red Hat's Bug Tracking "
+                              "System: http://bugzilla.redhat.com/"),
                                  ["Harald Hoyer <harald@redhat.com>",
                                   "Than Ngo <than@redhat.com>",
                                   "Philipp Knirsch <pknirsch@redhat.com>",
@@ -1824,9 +1832,9 @@ class mainDialog:
 
         if self.ischanged():
             button = generic_yesno_dialog(
-                _("You have made some changes in your configuration.") + "\n"+\
-                _("To activate the IPsec connection %s, "
-                  "the changes have to be saved.") % (ipsec.IPsecId) \
+                _("You have made some changes in your configuration.") + "\n"
+                + _("To activate the IPsec connection %s, "
+                    "the changes have to be saved.") % (ipsec.IPsecId) 
                 + "\n" + _("Do you want to continue?"),
                 self.dialog)
 
@@ -1852,9 +1860,9 @@ class mainDialog:
 
         if self.ischanged():
             button = generic_yesno_dialog(
-                _("You have made some changes in your configuration.") + "\n"+\
-                _("To deactivate the IPsec connection %s, "
-                  "the changes have to be saved.") % (ipsec.IPsecId) \
+                _("You have made some changes in your configuration.") + "\n"
+                + _("To deactivate the IPsec connection %s, "
+                    "the changes have to be saved.") % (ipsec.IPsecId)
                 + "\n" + _("Do you want to continue?"),
                 self.dialog)
 

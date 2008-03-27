@@ -29,8 +29,10 @@ HAL_DEVICE_IFACE = "org.freedesktop.Hal.Device"
 class NCBackendHal:
     def __init__(self):
         self._dbusBus = dbus.SystemBus()
-        self.halManagerObj = self._dbusBus.get_object("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager")
-        self.halManager = dbus.Interface(self.halManagerObj, "org.freedesktop.Hal.Manager")
+        self.halManagerObj = self._dbusBus.get_object("org.freedesktop.Hal",
+                                         "/org/freedesktop/Hal/Manager")
+        self.halManager = dbus.Interface(self.halManagerObj,
+                                         "org.freedesktop.Hal.Manager")
         self.cards = []
 
     # ------------------------------------------------------------------------

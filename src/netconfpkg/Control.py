@@ -42,8 +42,8 @@ class NetworkDevice:
             if getDeviceType(i) == ISDN:
                 if os.access(__isdnctrl, os.X_OK):
                     for nick in nickname:
-                        if os.system(__isdnctrl +
-                                     ' %s status >& /dev/null' %(nickname)) == 0:
+                        if (os.system('%s %s status >& /dev/null' 
+                                      % (__isdnctrl,  nickname)) == 0):
                             break
                         else:
                             try:

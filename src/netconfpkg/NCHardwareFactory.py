@@ -51,8 +51,10 @@ class HardwareFactory(dict):
                 self[hwtype] = { 0 : theclass }
         else:
             if self.has_key(hwtype) and self[hwtype].has_key(subtype):
-                #raise KeyError, "%s.%s is already registered" % (hwtype, subtype)
-                log.log(1, "KeyError %s.%s is already registered" % (hwtype, subtype))
+                #raise KeyError, "%s.%s is already registered" 
+                #                % (hwtype, subtype)
+                log.log(1, "KeyError %s.%s is already registered" 
+                        % (hwtype, subtype))
                 return
             else:
                 if not self.has_key(hwtype):

@@ -29,7 +29,9 @@ from netconfpkg.NC_functions import (_, getRoot, HWCONF, NETCONFDIR, WVDIALCONF,
                                      MODULESCONF, getTestEnv)
 from netconfpkg.conf.Conf import (Conf, FileMissing,
                                   VersionMismatch)
-from netconfpkg.conf.ConfModules import (ConfModInfo, VersionMismatch, ConfModules)
+from netconfpkg.conf.ConfModules import (ConfModInfo, 
+                                         VersionMismatch, 
+                                         ConfModules)
 from netconfpkg.conf.ConfSMB import ConfSMB
 from rhpl.executil import execWithCapture
 from netconfpkg.gdt import Gdtlist
@@ -37,14 +39,18 @@ from netconfpkg.gdt import Gdtlist
 ModInfo = None
 __isdnmodulelist = []
 try:
-    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/isdn -name '*.?o' -printf '%f ' 2>/dev/null" ])
+    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", 
+    "find /lib/modules/$(uname -r)/*/drivers/isdn" +
+    " -name '*.?o' -printf '%f ' 2>/dev/null" ])
     __isdnmodulelist = __msg.split()
 except:
     pass
 
 __wirelessmodulelist = []
 try:
-    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net/wireless -name '*.?o' -printf '%f ' 2>/dev/null" ])
+    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", 
+    "find /lib/modules/$(uname -r)/*/drivers/net/wireless" +
+    " -name '*.?o' -printf '%f ' 2>/dev/null" ])
     __wirelessmodulelist = __msg.split()
 except:
     pass
@@ -52,7 +58,10 @@ except:
 
 #__networkmodulelist = []
 #try:
-#    __msg =  execWithCapture("/bin/sh", [ "/bin/sh", "-c", "find /lib/modules/$(uname -r)/*/drivers/net -name '*.?o' -printf '%f ' 2>/dev/null" ])
+#    __msg =  execWithCapture("/bin/sh", 
+#                             [ "/bin/sh", "-c", 
+#                               "find /lib/modules/$(uname -r)/*/drivers/net" +
+#                               " -name '*.?o' -printf '%f ' 2>/dev/null" ])
 #    __networkmodulelist.append(__isdnmodulelist)
 #    __networkmodulelist = string.split(__msg)
 #except:
@@ -74,7 +83,9 @@ def getModInfo():
 #                 mod = mod[:i]
 
 #             try:
-#                 desc = execWithCapture("/sbin/modinfo", [ "/sbin/modinfo", "-F", "description", mod ])
+#                 desc = execWithCapture("/sbin/modinfo", 
+#                                        [ "/sbin/modinfo", "-F", 
+#                                          "description", mod ])
 #                 ModInfo[mod] = {}
 #                 ModInfo[mod]['type'] = 'eth'
 #                 ModInfo[mod]['description'] = desc.strip()
@@ -103,7 +114,7 @@ class MyConfModules(ConfModules):
 
     def __delitem__(self, varname):
         # delete *every* instance...
-        place=self.tell()
+        place = self.tell()
         for key in self.vars[varname].keys():
             self.rewind()
 
@@ -428,11 +439,14 @@ class HardwareList(HardwareList_base):
                 # if it is already in our HW list do not delete it.
                 for h in hdellist:
                     if h.Name == device and h.Card.ModuleName == mod:
-                        log.log(5, "Found %s:%s, which is already in our list!" % (device, mod))
+                        log.log(5, "Found %s:%s, which is already in our list!"
+                                % (device, mod))
                         hdellist.remove(h)
                         break
                     else:
-                        log.log(5, "%s != %s and %s != %s" % (h.Name, device, h.Card.ModuleName, mod))
+                        log.log(5, "%s != %s and %s != %s" 
+                                % (h.Name, device, 
+                                   h.Card.ModuleName, mod))
                 else:
                     for h in self:
                         if h.Name == device and h.Card.ModuleName == mod:
@@ -454,13 +468,13 @@ class HardwareList(HardwareList_base):
                                         hw.Description = \
                                             modinfo[info]['description']
 
-                        for selfkey in self.keydict.keys():
-                            confkey = self.keydict[selfkey]
-                            if modules[hw.Card.ModuleName] and \
-                                    modules[hw.Card.ModuleName]\
-                                    ['options'].has_key(confkey):
+                        for selfkey, confkey in self.keydict.items():
+                            if (modules[hw.Card.ModuleName] and
+                                    modules[hw.Card.ModuleName]
+                                    ['options'].has_key(confkey)):
                                 setattr(hw.Card, selfkey, 
-                                        modules[hw.Card.ModuleName]['options'][confkey])
+                                        modules[hw.Card.ModuleName]
+                                        ['options'][confkey])
                         hw.setChanged(True)
 
         return hdellist
@@ -473,18 +487,28 @@ class HardwareList(HardwareList_base):
         for hw in cards:
             # if it is already in our HW list do not delete it.
             for h in hdellist:
-                if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
-                    log.log(5, "Found %s:%s, which is already in our list!" % (hw.Name, hw.Card.ModuleName))
+                if (h.Name == hw.Name 
+                    and h.Card.ModuleName == hw.Card.ModuleName):
+                    log.log(5, 
+                    "Found %s:%s, which is already in our list!" 
+                    % (hw.Name, hw.Card.ModuleName))
                     hdellist.remove(h)
                     break
                 else:
-                    log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
+                    log.log(5, "%s != %s and %s != %s" 
+                            % (h.Name, hw.Name, 
+                               h.Card.ModuleName, 
+                               hw.Card.ModuleName))
             else: 
                 for h in self:
-                    if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
+                    if(h.Name == hw.Name 
+                       and h.Card.ModuleName == hw.Card.ModuleName):
                         break
                     else:
-                        log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
+                        log.log(5, "%s != %s and %s != %s" 
+                                % (h.Name, hw.Name, 
+                                   h.Card.ModuleName, 
+                                   hw.Card.ModuleName))
                 else:
                     hw.Status = HW_SYSTEM
                     self.append(hw) 
@@ -618,9 +642,9 @@ class HardwareList(HardwareList_base):
         self.__delslice__(0, len(self)) 
 
         # FIXME: move HW detection to NCDev*
-        dosysupdate=True
+        dosysupdate = True
         if getTestEnv():
-            dosysupdate=False
+            dosysupdate = False
         if dosysupdate:
             self.updateFromSystem()
 
@@ -701,11 +725,11 @@ class HardwareList(HardwareList_base):
                     wvdial[dev]['FlowControl'] = CRTSCTS
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
-        self.commit(changed=False) 
+        self.commit() 
         self.setChanged(False) 
 
     def save(self):
-        self.commit(changed=True) 
+        self.commit() 
 
         modules = getMyConfModules(refresh = True)
 
@@ -761,7 +785,7 @@ class HardwareList(HardwareList_base):
         if wvdial:
             wvdial.write()
 
-        self.commit(changed=False) 
+        self.commit() 
         self.setChanged(False) 
 
 __HWList = None

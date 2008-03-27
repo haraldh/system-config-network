@@ -43,8 +43,8 @@ class DeviceFactory(dict):
                 self[devtype] = { 0 : theclass }
         else:
             if self.has_key(devtype) and self[devtype].has_key(subtype):
-                #raise KeyError, "%s.%s is already registered" % (devtype, subtype)
-                log.log(1, "KeyError, %s.%s is already registered" % (devtype, subtype))
+                log.log(1, "KeyError, %s.%s is already registered" 
+                        % (devtype, subtype))
                 return
             else:
                 if not self.has_key(devtype):

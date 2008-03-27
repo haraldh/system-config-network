@@ -277,8 +277,10 @@ class Dialup(Dialup_base):
         else:
             log.log(6, "No self.login!!!")
 
-    def save(self, parentConf, deviceid, olddeviceid): # pylint: disable-msg=W0613
+    def save(self, parentConf,        # pylint: disable-msg=W0613
+             deviceid, olddeviceid):
         "Save the Configuration to parentConf"
+        log.log(6, "Dialup.save")
         conf = parentConf
         for selfkey in self.intkeydict.keys():
             confkey = self.intkeydict[selfkey]
@@ -301,6 +303,7 @@ class Dialup(Dialup_base):
             parentConf['DEMAND'] = 'yes'
         else:
             parentConf['DEMAND'] = 'no'
+        log.log(6, "Dialup.end")
 
 
 # FIXME: [131556] system-config-network lacks support for pppoatm
@@ -407,7 +410,8 @@ class DslDialup(Dialup):
             conf['PIDFILE'] = '/var/run/pppoe-adsl.pid'
 
         for i in conf.keys():
-            if not conf[i]: del conf[i]
+            if not conf[i]: 
+                del conf[i]
 
         if conf.has_key('PASS'):
             del conf['PASS']
@@ -520,10 +524,12 @@ class IsdnDialup(Dialup):
         if conf.has_key("PASSWORD"):
             self.Password = conf["PASSWORD"]
 
-        self.commit(changed=False) 
+        self.commit()
+        self.setChanged(False)
 
     def save(self, parentConf, devidstr, olddeviceid):
         "Save the Configuration to parentConf"
+        log.log(6, "IsdnDialup.save")
         Dialup.save(self, parentConf, devidstr, olddeviceid)
         conf = parentConf
         
@@ -552,14 +558,17 @@ class IsdnDialup(Dialup):
             conf['DEFROUTE'] = 'no'
 
         if conf.has_key('PEERDNS') and conf['PEERDNS'] == "yes":
-            if conf['DNS1']: del conf['DNS1']
-            if conf['DNS2']: del conf['DNS2']
+            if conf['DNS1']: 
+                del conf['DNS1']
+            if conf['DNS2']: 
+                del conf['DNS2']
 
         if self.PPPOptions:
             opt = ""
-            for i in xrange(len(self.PPPOptions)):
-                if opt != "": opt = opt + ' '
-                opt = opt + self.PPPOptions[i]
+            for val in self.PPPOptions:
+                if opt != "": 
+                    opt = opt + ' '
+                opt = opt + val
             conf['PPPOPTIONS'] = opt
         else:
             del conf['PPPOPTIONS']
@@ -579,25 +588,28 @@ class IsdnDialup(Dialup):
         if self.Compression:
             self.Compression.save(conf)
 
+        log.log(6, "Callback.save")
+
         if self.Callback: 
             conf['CALLBACK'] = self.Callback.Type
             self.Callback.save(conf)
         else:
             conf['CALLBACK'] = 'off'
+            
         if conf['CALLBACK'] == 'off':
-            if conf.has_key('CBHUP'): del conf['CBHUP']
-            if conf.has_key('CBDELAY'): del conf['CBDELAY']
-            if conf.has_key('CBCP'): del conf['CBCP']
-            if conf.has_key('CBCP_MSN'): del conf['CBCP_MSN']
+            for key in ['CBHUP', 'CBDELAY', 'CBCP', 'CBCP_MSN']:
+                if conf.has_key(key):
+                    del conf[key]
 
         for i in conf.keys():
-            if not conf[i]: del conf[i]
+            if not conf[i]: 
+                del conf[i]
 
         if not conf.has_key('PEERDNS'):
             conf['PEERDNS'] = "no"
 
         conf.write()
-
+        log.log(6, "IsdnDialup.save end")
 
 class ModemDialup(Dialup):
     "Class for all Modem Dialup Interfaces"
@@ -737,7 +749,7 @@ class ModemDialup(Dialup):
 
         for selfkey in self.wvdict.keys():
             confkey = self.wvdict[selfkey]
-            if hasattr(self, selfkey) and getattr(self, selfkey) != None:                
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
                 conf[sectname][confkey] = str(getattr(self, selfkey))
             else:
                 if conf[sectname].has_key(confkey):
@@ -756,7 +768,8 @@ class ModemDialup(Dialup):
         #
         # Write Modem Init strings
         #
-        if conf[sectname].has_key('Init'): del conf[sectname]['Init']
+        if conf[sectname].has_key('Init'): 
+            del conf[sectname]['Init']
         if not conf[sectname].has_key('Init1'):
             conf[sectname]['Init1'] = 'ATZ'
         #
@@ -770,9 +783,10 @@ class ModemDialup(Dialup):
 
         if self.PPPOptions:
             opt = ""
-            for i in xrange(len(self.PPPOptions)):
-                if opt != "": opt = opt + ' '
-                opt = opt + self.PPPOptions[i]
+            for val in self.PPPOptions:
+                if opt != "": 
+                    opt = opt + ' '
+                opt = opt + val
             parentConf['PPPOPTIONS'] = opt
         else:
             # CHECK - deleting PPP option #128058
@@ -811,7 +825,8 @@ class ModemDialup(Dialup):
         conf[sectname]['Inherits'] = devname
 
         for i in conf.keys():
-            if not conf[i]: del conf[i]
+            if not conf[i]:
+                del conf[i]
 
         conf.write()
 

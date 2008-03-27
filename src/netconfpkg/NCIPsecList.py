@@ -90,7 +90,8 @@ class IPsecList(IPsecList_base):
                 # check for IPSEC
                 conf = ConfIPsec(ipsecid)
                 mtype = None
-                if conf.has_key("TYPE"): mtype = conf["TYPE"]
+                if conf.has_key("TYPE"): 
+                    mtype = conf["TYPE"]
                 if mtype != IPSEC:
                     continue
 
@@ -124,14 +125,15 @@ class IPsecList(IPsecList_base):
                 from netconfpkg.NCDevice import ConfDevice
                 conf = ConfDevice(ipsecid)
                 mtype = None
-                if conf.has_key("TYPE"): mtype = conf["TYPE"]
+                if conf.has_key("TYPE"): 
+                    mtype = conf["TYPE"]
                 if mtype:
                     continue
 
                 unlink(dirname + entry)
                 unlink(getRoot() + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
 
-        self.commit(changed=False)
+        self.commit()
         self.setChanged(False)
 
     def __repr__(self):

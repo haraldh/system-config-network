@@ -8,7 +8,7 @@ import unittest
 import sys
 import string
 import os
-
+import logging
 
 sys.path.append(os.getcwd() + "/../../")
 
@@ -270,8 +270,8 @@ class TestRCN(unittest.TestCase):
 
         from netconfpkg.NC_functions import log
 
-        NC_functions.setVerboseLevel(100)
-        NC_functions.setDebugLevel(100)
+        NC_functions.setVerboseLevel(0)
+        NC_functions.setDebugLevel(0)
         log.set_loglevel(NC_functions.getVerboseLevel())
 
         devlists = [
@@ -292,18 +292,20 @@ class TestRCN(unittest.TestCase):
         sys.stdout.flush()
         self.oldstderr = sys.stderr
         self.oldstdout = sys.stdout
-        sys.stdout = open("stdout", "w")
-        sys.stderr = open("stderr", "w")
+        nout = open("stdout", "w")
+        nerr = open("stderr", "w")
         from netconfpkg.NC_functions import log
-        log.open(sys.stderr)
+        log.open(nerr)
+        sys.stderr = nerr
+        sys.stdout = nout
 
     def redirectEnd(self):
+        from netconfpkg.NC_functions import log
+        log.open(self.oldstderr)
         sys.stderr.close()
         sys.stdout.close()
         sys.stderr = self.oldstderr
         sys.stdout = self.oldstdout
-        from netconfpkg.NC_functions import log
-        log.open()
 
     def test00Basic(self):
         """Testing basic reading from a chroot setup with network-cmd"""
@@ -341,7 +343,6 @@ class TestRCN(unittest.TestCase):
 
         from netconfpkg import NCProfileList
         from netconfpkg.NCProfile import Profile
-
         profilelist = NCProfileList.getProfileList()
 
         text = "newprofile"
@@ -350,9 +351,7 @@ class TestRCN(unittest.TestCase):
         prof.apply(profilelist[0])
         prof.ProfileName = text
         prof.commit()
-
         profilelist.switchToProfile(prof, dochange = True)
-
         self.save()
 
         devstr = self.getConf()
@@ -553,8 +552,8 @@ ProfileList.newprofile.ProfileName=newprofile
 
         from netconfpkg.NC_functions import log
         profilelist = NCProfileList.getProfileList()
-        NC_functions.setVerboseLevel(100)
-        NC_functions.setDebugLevel(100)
+        NC_functions.setVerboseLevel(0)
+        NC_functions.setDebugLevel(0)
         log.set_loglevel(NC_functions.getVerboseLevel())
 
         profilelist.remove(profilelist.getActiveProfile())

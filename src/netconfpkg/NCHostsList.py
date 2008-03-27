@@ -124,7 +124,8 @@ Wrong %s on line %i
         """
 #        return iter(filter(lambda x: isinstance(x, Host), 
 #                           HostsList_base.__iter__(self)))
-        return iter([x for x in super(HostsList, self).__iter__() if isinstance(x, Host)])
+        return iter([x for x in super(HostsList, self).__iter__()
+                     if isinstance(x, Host)])
 
 
     def save(self, mfile = None, filename = None):
