@@ -773,10 +773,10 @@ class ModemDialup(Dialup):
         if not conf[sectname].has_key('Init1'):
             conf[sectname]['Init1'] = 'ATZ'
         #
-        # FIXME: ...
+        # Better not be smarter than the user
         #
-        if not conf[sectname].has_key('Init2'):
-            conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2 +FCLASS=0'
+#        if not conf[sectname].has_key('Init2'):
+#            conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2'
         if self.InitString:
             conf[sectname]['Init3'] = str(self.InitString)
         #else: del conf[sectname]['Init3']
