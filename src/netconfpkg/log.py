@@ -20,17 +20,21 @@ import sys
 import syslog
 import types
 import time
+import logging
 
 class LogFile:
     "Simple Logging class"
-    def __init__ (self, progname, level = 0, filename = None):
+    def __init__ (self, progname, level = 0, filename = None):        
+        logging.basicConfig(level=1,
+                    format='%(asctime)s %(levelname)s '
+                    + progname + ' %(message)s')
+                    
         self.handle_func = None
         if filename == None:
             self.syslog = syslog.openlog(progname, syslog.LOG_PID)
-
             self.handle_func = self.syslog_handler
             self.logfile = sys.stderr
-        else:
+        else:            
             self.handle_func = self.file_handler
             self.open(filename)
 
@@ -38,7 +42,8 @@ class LogFile:
 
     def handler(self, msg, level):
         "logging callback"
-        self.handle_func(msg, level)
+        if self.handle_func:
+            self.handle_func(msg, level)
 
     def close (self):
         "close the log"
@@ -46,15 +51,15 @@ class LogFile:
 
     def open (self, mfile = None):
         "open the log"
-        if type(file) == types.StringType:
-            try:
-                self.logfile = open(mfile, "w")
-            except IOError:
-                self.logfile = sys.stderr
+        if file is str:
+            logging.basicConfig(
+                    filename=mfile,
+                    filemode='w')
         elif mfile:
+            logging.basicConfig(stream=mfile)
             self.logfile = mfile
         else:
-            self.logfile = sys.stderr
+            logging.basicConfig(stream=sys.stderr)
 
     def get_file (self):
         "get the file fd"
@@ -66,15 +71,27 @@ class LogFile:
 
     def file_handler (self, *args, **kwargs):
         "file logging callback"
-        string = args[0]
-        level = kwargs.get("level", 0)
-        self.logfile.write ("[%d] %s: %s\n" % (level, time.ctime(), string))
+        msg = args[0]
+        level = kwargs.get("level", 1)
+        #level = logging.CRITICAL - level * 10
+        if level == 1:
+            level = logging.INFO
+        elif level == 2:
+            level = logging.INFO
+        elif level >= 3:
+            level = logging.DEBUG - level + 3
+        if level <= 0:
+            level = 1
+        if level <= 0:
+            level = 1
+        logging.log(level, msg)
+        #self.logfile.write ("[%d] %s: %s\n" % (level, time.ctime(), msg))
 
     def syslog_handler (self, *args, **kwargs):
         "syslog logging callback"
-        string = args[0]
-        level = kwargs.get("level", syslog.LOG_INFO)
-        syslog.syslog(level, string)
+        msg = args[0]
+        level = kwargs.get("level", 1)
+        syslog.syslog(level, msg)
 
     def set_loglevel(self, level):
         "set the preferred loglevel"

@@ -34,9 +34,11 @@
  Copyright (C) 2008 Red Hat, Inc.
 """
 
-import copy, sys
+import copy
+import logging
 
-_debugchanged = False
+# _debuglevel = logging.DEBUG
+_debuglevel = 0
 
 def _checksetseen(what, seen):
     "checks and sets the obj id in seen"
@@ -67,6 +69,7 @@ class Transaction(object):
         objects of class Transaction stored in this object will
         not be committed.
         """
+        logging.log(_debuglevel, "Transaction.commit() %s",  self.__class__.__name__)
         seen = kwargs.get("_commit_seen", set())
         if _checksetseen(id(self), seen): 
             return
@@ -101,6 +104,7 @@ class Transaction(object):
         objects of class Transaction stored in this object will
         not be rolled back.
         """
+        logging.log(_debuglevel, "Transaction.rollback() %s",  self.__class__.__name__)
         seen = kwargs.get("_rollback_seen", set())
         if _checksetseen(id(self), seen):
             return
@@ -130,8 +134,9 @@ class Transaction(object):
         if gotextrastate and hasattr(self, '__setstate__'):
             getattr(self, '__setstate__')(extrastate)
 
-    def setChanged(self, changed=True):
+    def setChanged(self, changed=False):
         "set the changed state of the object"
+        logging.log(_debuglevel, "Transaction.setChanged() %s",  self.__class__.__name__)
         self.changed = changed
         if changed == True:
             raise ValueError
@@ -141,6 +146,7 @@ class Transaction(object):
         for key, val in self.__dict__.items():
             if isinstance(val, Transaction):
                 val.setChanged(changed = changed)
+                state[key] = val
             elif key != "__orig" and key != "__l":
                 state[key] = copy.deepcopy(val)
                 
@@ -151,16 +157,15 @@ class Transaction(object):
 
     
     def modified(self):
-        if self.changed == True:
-            if _debugchanged:
-                print >> sys.stderr, "self.changed == True"
-            return True
+        logging.log(_debuglevel, "Transaction.modified() %s",  self.__class__.__name__)
+        
+#        if self.changed == True:
+#            logging.log(_debuglevel, "self.changed == True")
+#            return True
         
         if "__orig" not in self.__dict__:
-            self.changed = True
-            if _debugchanged:
-                print >> sys.stderr, '"__orig" not in self.__dict__'
-            return False
+            logging.log(_debuglevel, '"__orig" not in self.__dict__')
+            return True
         
         state = self.__dict__["__orig"]
         gotstate = True
@@ -171,31 +176,37 @@ class Transaction(object):
         
         if gotstate:
             for key in state:
-                if ((key not in self.__dict__)):
-                    if _debugchanged:
-                        print >> sys.stderr, "%s  not in self.__dict__" % key
-                    self.changed = True
+                if (key not in self.__dict__):
+                    logging.log(_debuglevel, "%s  not in self.__dict__" % key)
                     return True
                     
                 if(self.__dict__[key] != state[key]):
-                    if _debugchanged:
-                        print >> sys.stderr, "%s %s != %s" % (key, self.__dict__[key], state[key])                                        
-                    self.changed = True
+                    logging.log(_debuglevel, "%s %s != %s" % (key,
+                                 self.__dict__[key], state[key]))
                     return True
+
+                if isinstance(state[key],  Transaction):
+                    if state[key].modified():
+                        return True
+
+            for key in self.__dict__:
+                if (key != "__orig" and key != "__l" 
+                    and (key not in state) 
+                    and self.__dict__[key] != None):
+                    logging.log(_debuglevel, "%s is a new key in self.__dict__=%s" 
+                                  % (key, self.__dict__))
+                    return True
+                
                 
         if gotextrastate:            
             if hasattr(self, '__getstate__'):            
                 state = getattr(self, '__getstate__')()
             else:
-                if _debugchanged:                
-                    print >> sys.stderr, "not hasattr(self, '__getstate__')"
-                self.changed = True
+                logging.log(_debuglevel, "not hasattr(self, '__getstate__')")
                 return True
             
             if extrastate != state:
-                if _debugchanged:
-                    print >> sys.stderr, "state: %s != %s" % (extrastate, state)
-                self.changed = True
+                logging.log(_debuglevel, "state: %s != %s" % (extrastate, state))
                 return True
 
         return False
@@ -220,7 +231,8 @@ class Transactionlist(list, Transaction):
         # make a local copy of the recursive marker
         seen = set(kwargs.get("_commit_seen", set()))
         
-        super(Transactionlist, self).commit(**kwargs) # pylint: disable-msg=W0142
+        super(Transactionlist, 
+              self).commit(**kwargs) # pylint: disable-msg=W0142
 
         if _checksetseen(id(self), seen): 
             return
@@ -242,7 +254,8 @@ class Transactionlist(list, Transaction):
         # make a local copy of the recursive marker
         seen = set(kwargs.get("_rollback_seen", set()))
 
-        super(Transactionlist, self).rollback(**kwargs) # pylint: disable-msg=W0142
+        super(Transactionlist, 
+              self).rollback(**kwargs) # pylint: disable-msg=W0142
 
         if _checksetseen(id(self), seen):
             return
@@ -254,29 +267,22 @@ class Transactionlist(list, Transaction):
                     val.rollback()
 
 
-    def modified(self):
-        if self.changed == True:
-            #print >> sys.stderr, "List self.changed == True"
-            return True
-        
+    def modified(self):       
         for val in self:
             if isinstance(val, Transaction):
                 if val.modified():
-                    self.changed = True
-                    #print >> sys.stderr, "List val.modified() == True"
+                    logging.log(_debuglevel, "List val.modified() == True")
                     return True
                     
         return super(Transactionlist, self).modified()
 
-    def setChanged(self, changed=True):
+    def setChanged(self, changed=False):
         "set the changed state of the object"
         for val in self:
             if isinstance(val, Transaction):
                 val.setChanged(changed=changed)
         return super(Transactionlist, self).setChanged(changed=changed)
-                
 
-                
     def __getstate__(self):
         """
         return a deepcopy of all non Transaction class objects in our list, 
