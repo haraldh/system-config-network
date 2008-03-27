@@ -25,7 +25,7 @@ archive: tag
 	@cd /tmp/${PACKAGE}-$(VERSION);git checkout -b compile $(SCMTAG);./autogen.sh;make;make distcheck
 	@mv /tmp/${PACKAGE}-$(VERSION)/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)
 	@rm -rf /tmp/${PACKAGE}-$(VERSION)
-	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.gz"
+	@echo "The archive is in ${PACKAGE}-$(VERSION).tar.bz2"
 
 srpm: archive
 	@LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/$(PACKAGE)-$(VERSION).tar.$(GZ_BZIP)
