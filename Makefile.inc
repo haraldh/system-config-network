@@ -38,12 +38,12 @@ newversion:
 
 potfile:
 	chmod u+w -R  po
-	sh -c '(find . -maxdepth 1 -type f -name "*.desktop.in";find ./src/netconfpkg/gui -type f -name "*.glade";find ./src -type f -name "*.py"|fgrep -v version.py|fgrep -v pygettext.py;echo src/version.py.in) |sed -e "s#^\./##g"|sort -u > po/POTFILES.in'
+	sh -c '(find . -maxdepth 1 -type f -name "*.desktop.in";find ./src/netconfpkg/gui -type f -name "*.glade";find ./src -type f -name "*.py"|fgrep -v .ropeproject|fgrep -v version.py|fgrep -v pygettext.py;echo src/version.py.in) |sed -e "s#^\./##g"|sort -u > po/POTFILES.in'
 	sh -c '(find . -maxdepth 1 -type l -name "*.desktop.in";find ./src -type l -name "*.py";find ./src/netconfpkg/gui -type l -name "*.glade";echo src/version.py;echo pygettext.py;echo po/pygettext.py) |sed -e "s#^\./##g"|sort -u > po/POTFILES.skip'
 	make 
 	make -C po update-po
 
-push: pylint distcheck pull
+push: distcheck pull
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git HEAD:$(GITBRANCH)
 	git push ssh://git.fedoraproject.org/git/hosted/system-config-network.git $(SCMTAG)
 	git fetch
