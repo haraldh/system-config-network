@@ -1289,12 +1289,10 @@ class mainDialog:
                 self.deactivate_button.set_sensitive(True)
                 self.delete_button.set_sensitive(True)
 
-            if self.devsel.Slave:
+            if self.devsel.Slave or self.devsel.NMControlled:
                 self.activate_button.set_sensitive(False)
                 self.deactivate_button.set_sensitive(False)
-                self.delete_button.set_sensitive(True)
-
-
+                self.delete_button.set_sensitive(False)
 
     def on_generic_clist_unselect_row(self, clist, row, column, event): # pylint: disable-msg=W0613
         if self.edit_button: self.edit_button.set_sensitive(False)

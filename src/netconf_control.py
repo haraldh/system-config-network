@@ -350,7 +350,12 @@ class mainDialog:
         row = 0
 
         for dev in self.devicelist:
-            devname = dev.Device
+            # skip slave devices and those controlled
+            # by NetworkManager
+            if dev.Slave or dev.NMControlled:
+                continue
+                
+            devname = dev.Device            
             if dev.Alias and dev.Alias != "":
                 devname = devname + ':' + str(dev.Alias)
 
