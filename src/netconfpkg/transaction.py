@@ -37,7 +37,7 @@
 import copy
 import logging
 
-# _debuglevel = logging.DEBUG
+#_debuglevel = logging.DEBUG
 _debuglevel = 0
 
 def _checksetseen(what, seen):
@@ -55,12 +55,7 @@ class Transaction(object):
     Because the class only stores attributes in self.__dict__ sub-classes
     need to use the methods __getstate__ and __setstate__ to provide additional
     state information. See the Transactionlist below for an example usage.    
-    """
-
-    def __init__(self, *args):
-        super(Transaction, self).__init__(*args)
-        self.changed = False
-        
+    """        
     def commit(self, **kwargs):
         """
         Commit the object state.
@@ -69,7 +64,8 @@ class Transaction(object):
         objects of class Transaction stored in this object will
         not be committed.
         """
-        logging.log(_debuglevel, "Transaction.commit() %s",  self.__class__.__name__)
+        logging.log(_debuglevel, "Transaction.commit() %s",
+                    self.__class__.__name__)
         seen = kwargs.get("_commit_seen", set())
         if _checksetseen(id(self), seen): 
             return
@@ -104,7 +100,8 @@ class Transaction(object):
         objects of class Transaction stored in this object will
         not be rolled back.
         """
-        logging.log(_debuglevel, "Transaction.rollback() %s",  self.__class__.__name__)
+        logging.log(_debuglevel, "Transaction.rollback() %s",
+                    self.__class__.__name__)
         seen = kwargs.get("_rollback_seen", set())
         if _checksetseen(id(self), seen):
             return
@@ -134,20 +131,16 @@ class Transaction(object):
         if gotextrastate and hasattr(self, '__setstate__'):
             getattr(self, '__setstate__')(extrastate)
 
-    def setChanged(self, changed=False):
+    def setunmodified(self):
         "set the changed state of the object"
-        logging.log(_debuglevel, "Transaction.setChanged() %s",  self.__class__.__name__)
-        self.changed = changed
-        if changed == True:
-            raise ValueError
-            return
-        
+        logging.log(_debuglevel, "Transaction.setunmodified() %s",
+                    self.__class__.__name__)        
         state = dict()
         for key, val in self.__dict__.items():
             if isinstance(val, Transaction):
-                val.setChanged(changed = changed)
+                val.setunmodified()
                 state[key] = val
-            elif key != "__orig" and key != "__l":
+            elif key != "__orig" and key != "__l" and key != "changed":
                 state[key] = copy.deepcopy(val)
                 
         if hasattr(self, '__getstate__'):            
@@ -157,7 +150,8 @@ class Transaction(object):
 
     
     def modified(self):
-        logging.log(_debuglevel, "Transaction.modified() %s",  self.__class__.__name__)
+        logging.log(_debuglevel, "Transaction.modified() %s",
+                    self.__class__.__name__)
         
 #        if self.changed == True:
 #            logging.log(_debuglevel, "self.changed == True")
@@ -276,12 +270,12 @@ class Transactionlist(list, Transaction):
                     
         return super(Transactionlist, self).modified()
 
-    def setChanged(self, changed=False):
+    def setunmodified(self):
         "set the changed state of the object"
         for val in self:
             if isinstance(val, Transaction):
-                val.setChanged(changed=changed)
-        return super(Transactionlist, self).setChanged(changed=changed)
+                val.setunmodified()
+        return super(Transactionlist, self).setunmodified()
 
     def __getstate__(self):
         """

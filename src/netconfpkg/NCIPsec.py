@@ -155,7 +155,7 @@ class IPsec(IPsec_base):
         self.oldname = self.IPsecId
 
         self.commit() 
-        self.setChanged(changed=False)
+        self.setunmodified()
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving

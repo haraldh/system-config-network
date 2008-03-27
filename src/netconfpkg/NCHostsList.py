@@ -115,7 +115,7 @@ Wrong %s on line %i
             value_exception.badlines = badlines
             raise value_exception
         self.commit()
-        self.setChanged(False)
+        self.setunmodified()
         
     def __iter__(self):
         """

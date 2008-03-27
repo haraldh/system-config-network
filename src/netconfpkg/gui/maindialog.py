@@ -437,28 +437,28 @@ class mainDialog:
         self.appBar.push(_("Saving device configuration..."))
         devicelist = getDeviceList()
         devicelist.save()
-        devicelist.setChanged(False)
+        devicelist.setunmodified()
         self.appBar.pop()
 
     def saveHardware(self):
         self.appBar.push(_("Saving hardware configuration..."))
         hardwarelist = getHardwareList()
         hardwarelist.save()
-        hardwarelist.setChanged(False)
+        hardwarelist.setunmodified()
         self.appBar.pop()
 
     def saveProfiles(self):
         self.appBar.push(_("Saving profile configuration..."))
         profilelist = getProfileList()
         profilelist.save()
-        profilelist.setChanged(False)
+        profilelist.setunmodified()
         self.appBar.pop()
 
     def saveIPsecs(self):
         self.appBar.push(_("Saving IPsec configuration..."))
         ipseclist = getIPsecList()
         ipseclist.save()
-        ipseclist.setChanged(False)
+        ipseclist.setunmodified()
         self.appBar.pop()
 
     def hydrate(self):

@@ -71,6 +71,7 @@ DeviceList.Modem.1net4you.Dialup.Compression.VJTcpIp=False
 DeviceList.Modem.1net4you.Dialup.DefRoute=True
 DeviceList.Modem.1net4you.Dialup.DialMode=manual
 DeviceList.Modem.1net4you.Dialup.Inherits=Modem0
+DeviceList.Modem.1net4you.Dialup.HangupTimeout=600
 DeviceList.Modem.1net4you.Dialup.Login=web
 DeviceList.Modem.1net4you.Dialup.Password=web
 DeviceList.Modem.1net4you.Dialup.Persist=False
@@ -241,7 +242,8 @@ class TestRCN(unittest.TestCase):
     def setupChroot(self):
         cmd = "[ -d '%s' ] && rm -fr '%s'" % (CHROOT, CHROOT)
         os.system(cmd)
-        cmd = "cp -ar '%s/test-root' '%s';chmod -R ug+rw %s" % (srcdir, CHROOT, CHROOT)
+        cmd = "cp -ar '%s/test-root' '%s';chmod -R ug+rw %s" % (srcdir, 
+                                                                CHROOT, CHROOT)
         os.system(cmd)
 
     def setUp(self):
@@ -405,6 +407,7 @@ DeviceList.Modem.1net4you.Dialup.Compression.VJTcpIp=False
 DeviceList.Modem.1net4you.Dialup.DefRoute=True
 DeviceList.Modem.1net4you.Dialup.DialMode=manual
 DeviceList.Modem.1net4you.Dialup.Inherits=Modem0
+DeviceList.Modem.1net4you.Dialup.HangupTimeout=600
 DeviceList.Modem.1net4you.Dialup.Login=web
 DeviceList.Modem.1net4you.Dialup.Password=web
 DeviceList.Modem.1net4you.Dialup.Persist=False
@@ -580,25 +583,25 @@ ProfileList.newprofile.ProfileName=newprofile
         from netconfpkg import NCDeviceList
         devicelist = NCDeviceList.getDeviceList()
         devicelist.save()
-        devicelist.setChanged(False)
+        devicelist.setunmodified()
 
     def saveHardware(self):
         from netconfpkg import NCHardwareList
         hardwarelist = NCHardwareList.getHardwareList()
         hardwarelist.save()
-        hardwarelist.setChanged(False)
+        hardwarelist.setunmodified()
 
     def saveProfiles(self):
         from netconfpkg import NCProfileList
         profilelist = NCProfileList.getProfileList()
         profilelist.save()
-        profilelist.setChanged(False)
+        profilelist.setunmodified()
 
     def saveIPsecs(self):
         from netconfpkg import NCIPsecList
         ipseclist = NCIPsecList.getIPsecList()
         ipseclist.save()
-        ipseclist.setChanged(False)
+        ipseclist.setunmodified()
 
 
 # FIXME: check [165543] system-config-network-cmd - incorrect profile import - hosts file

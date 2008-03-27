@@ -363,7 +363,7 @@ class Device(Device_base):
                     route.Gateway = rconf['GATEWAY' + str(p)]
                 
         self.commit() 
-        self.setChanged(False)
+        self.setunmodified()
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving

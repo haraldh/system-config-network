@@ -29,7 +29,7 @@ from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK, getRoot,
                                      HOSTSCONF, TestError, getDebugLevel,
                                      SYSCONFDEVICEDIR,
                                      mkdir, issamefile, unlink, link, rename,
-                                     rmdir, 
+                                     rmdir, getTestEnv,  
                                      generic_error_dialog,
                                      generic_yesno_dialog, 
                                      RESPONSE_YES)
@@ -103,7 +103,7 @@ class ProfileList(ProfileList_base):
         log.log(5, "ActiveProfile: %s" % str(prof))        
         prof.DNS.Hostname = self.use_hostname
         self.commit()
-        self.setChanged(False)
+        self.setunmodified()
 
     def loadprof(self, pr, profdir):
         
@@ -288,8 +288,8 @@ class ProfileList(ProfileList_base):
 
         act_prof = self.getActiveProfile()
 
-        if socket.gethostname() != act_prof.DNS.Hostname and \
-               getDebugLevel() < 10:
+        if(not getTestEnv() 
+           and socket.gethostname() != act_prof.DNS.Hostname):
             if os.getuid() == 0:
                 # FIXME: [169733] Renaming machine prevents 
                 # applications from opening, if the hostname changed,
@@ -565,7 +565,7 @@ You may have to relogin."""))
 
         # commit the changes
         self.commit()
-        self.setChanged(False) 
+        self.setunmodified() 
 
     def activateDevice (self, deviceid, profile, state=None):
         profilelist = getProfileList()
@@ -612,10 +612,10 @@ You may have to relogin."""))
             else:
                 prof.Active = False
             #if not dochange:
-            #    prof.setChanged(mod)
+            #    prof.setunmodified(mod)
 
         #if not dochange:
-        #    self.setChanged(modl) 
+        #    self.setunmodified(modl) 
 
         return aprof
 

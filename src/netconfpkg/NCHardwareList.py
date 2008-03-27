@@ -380,7 +380,7 @@ class HardwareList(HardwareList_base):
                            has_key(confkey):
                         setattr(hw.Card, selfkey, modules[\
                                hw.Card.ModuleName]['options'][confkey])
-                hw.setChanged(True)
+                hw.setunmodified()
 
         for h in hdellist:
             log.log(5, "Removing %s from HWList" % h.Name)
@@ -475,7 +475,7 @@ class HardwareList(HardwareList_base):
                                 setattr(hw.Card, selfkey, 
                                         modules[hw.Card.ModuleName]
                                         ['options'][confkey])
-                        hw.setChanged(True)
+                        hw.setunmodified()
 
         return hdellist
 
@@ -512,7 +512,7 @@ class HardwareList(HardwareList_base):
                 else:
                     hw.Status = HW_SYSTEM
                     self.append(hw) 
-                    hw.setChanged(True)        
+                    hw.setunmodified()        
 
         return hdellist
 
@@ -726,7 +726,7 @@ class HardwareList(HardwareList_base):
                 hw.Modem.FlowControl =  wvdial[dev]['FlowControl']
 
         self.commit() 
-        self.setChanged(False) 
+        self.setunmodified() 
 
     def save(self):
         self.commit() 
@@ -786,7 +786,7 @@ class HardwareList(HardwareList_base):
             wvdial.write()
 
         self.commit() 
-        self.setChanged(False) 
+        self.setunmodified() 
 
 __HWList = None
 __HWList_root = getRoot()

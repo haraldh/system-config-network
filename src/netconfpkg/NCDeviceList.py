@@ -112,7 +112,7 @@ class DeviceList(DeviceList_base):
                 d.load(dev)
 
         self.commit() 
-        self.setChanged(False) 
+        self.setunmodified() 
 
         chdev = {}
         # the initscripts do not like '-'
@@ -136,7 +136,7 @@ class DeviceList(DeviceList_base):
 
                 dev.DeviceId = newDeviceId
                 dev.commit()
-                dev.setChanged(False)
+                dev.setunmodified()
 
         if len(chdev.keys()):
             s = _("Changed the following Nicknames due to the initscripts:\n")
@@ -319,7 +319,7 @@ class DeviceList(DeviceList_base):
         cfg.write()
 
         self.commit() 
-        self.setChanged(False) 
+        self.setunmodified() 
 
 __DVList = None
 __DVList_root = getRoot()

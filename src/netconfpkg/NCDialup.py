@@ -69,7 +69,7 @@ class Dialup_base(Gdtstruct):
                           ('DialinServer', Gdtbool, "Test doc string"),
                           ('ChannelBundling', Gdtbool, "Test doc string"),
                           ('EncapMode', Gdtstr, "Test doc string"),
-                          ('HangupTimeout', Gdtint, 'VALUE="360"'),
+                          ('HangupTimeout', Gdtint, 'VALUE="600"'),
                           ('DialMode', Gdtstr, 'VALUE="manual"'),
                           ('SlaveDevice', Gdtstr, "Test doc string"),
                           ('EthDevice', Gdtstr, "Test doc string"),    
@@ -118,8 +118,8 @@ class Dialup_base(Gdtstruct):
         self.DialinServer = None
         self.ChannelBundling = None
         self.EncapMode = None
-#        self.HangupTimeout = 360
-        self.HangupTimeout = None
+        self.HangupTimeout = 600
+#        self.HangupTimeout = None
 #        self.DialMode = "manual"
         self.DialMode = None
         self.SlaveDevice = None
@@ -525,7 +525,7 @@ class IsdnDialup(Dialup):
             self.Password = conf["PASSWORD"]
 
         self.commit()
-        self.setChanged(False)
+        self.setunmodified()
 
     def save(self, parentConf, devidstr, olddeviceid):
         "Save the Configuration to parentConf"

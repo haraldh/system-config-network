@@ -33,7 +33,7 @@ class DevADSL(Device):
         super(DevADSL, self).__init__()
         self.Type = DSL
         self.Dialup = DslDialup()
-        self.setChanged(False)
+        self.setunmodified()
 
     def load(self, name): # pylint: disable-msg=W0613
         super(DevADSL, self).load(self, name)

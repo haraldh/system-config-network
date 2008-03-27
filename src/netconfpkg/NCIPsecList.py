@@ -54,7 +54,7 @@ class IPsecList(IPsecList_base):
             self.append(ipsec)
 
         self.commit()
-        self.setChanged(False)
+        self.setunmodified()
 
     def save(self):
         
@@ -134,7 +134,7 @@ class IPsecList(IPsecList_base):
                 unlink(getRoot() + OLDSYSCONFDEVICEDIR+'/keys-'+ipsecid)
 
         self.commit()
-        self.setChanged(False)
+        self.setunmodified()
 
     def __repr__(self):
         return repr(self.__dict__)
