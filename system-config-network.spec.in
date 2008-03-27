@@ -100,6 +100,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Thu Mar 27 2008 Harald Hoyer <harald@redhat.com> - 1.5.91
+- more pylint and cleanups (harald)
+- removed Init2 string (clashes with UTMS) (harald)
+- check if hostname is not None, before checking it (harald)
+- changed to python logging (harald)
+- no activate/deactivate/delete NMControlled devices (harald)
+- changed source from tar.gz to tar.bz2 (harald)
+
 * Thu Mar 27 2008 Harald Hoyer <harald@redhat.com> - 1.5.90
 - genClass replacement (harald@redhat.com)
 - split Conf.py in several submodules (harald@redhat.com)
