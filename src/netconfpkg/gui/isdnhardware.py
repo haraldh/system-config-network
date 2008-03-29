@@ -204,7 +204,7 @@ class isdnHardwareDialog:
             self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
 
     def setup(self):
-        cardlist = NCisdnhardware.__card.keys()
+        cardlist = NCisdnhardware._card.keys()
         cardlist.sort()
         self.xml.get_widget("isdnCardComboBox").set_popdown_strings(cardlist)
 

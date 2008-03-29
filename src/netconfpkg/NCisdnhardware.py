@@ -37,7 +37,7 @@ DRIVER_ID = 8
 FIRMWARE = 9
 MODUL = 10
 
-__card = {
+_card = {
     # "ISDN Adapter" : [ type, irq, io, io1, io2, mem, vendor_id, device_id, driver_id, firmware, module ]
     "ACER P10" : [ "30", "5", "0x300", "", "", "", "", "", "HiSax", "", "hisax" ],
     "ASUS COM ISDNLink ISA PnP" : [ "12", "", "", "", "", "", "ASU1690", "ASU1690", "HiSax", "", "hisax" ],
@@ -239,29 +239,29 @@ class ConfISDN:
 
         if found == 0: return
 
-        for i in __card.keys():
-            if __card[i][VENDOR_ID] and __card[i][DEVICE_ID]:
-                if string.find(pci_infos, __card[i][VENDOR_ID] + ':' + __card[i][DEVICE_ID]) >0:
-                    return {i : __card[i]}
-                elif idl and idl.count(__card[i][VENDOR_ID] + __card[i][DEVICE_ID]) >0:
-                    return {i : __card[i]}
+        for i in _card.keys():
+            if _card[i][VENDOR_ID] and _card[i][DEVICE_ID]:
+                if string.find(pci_infos, _card[i][VENDOR_ID] + ':' + _card[i][DEVICE_ID]) >0:
+                    return {i : _card[i]}
+                elif idl and idl.count(_card[i][VENDOR_ID] + _card[i][DEVICE_ID]) >0:
+                    return {i : _card[i]}
 
     def get_resource(self, name):
-        global __card
-        if __card.has_key(name):
+        global _card
+        if _card.has_key(name):
 			# FIXME: remove Cardinfo
             self.Description = name
-            self.Type = __card[name][TYPE]
-            self.IRQ = __card[name][IRQ]
-            self.IoPort = __card[name][IO]
-            self.IoPort1 = __card[name][IO1]
-            self.IoPort2 = __card[name][IO2]
-            self.Mem = __card[name][MEM]
-            self.VendorId = __card[name][VENDOR_ID]
-            self.DeviceId = __card[name][DEVICE_ID]
-            self.DriverId = __card[name][DRIVER_ID]
-            self.Firmware = __card[name][FIRMWARE]
-            self.ModuleName = __card[name][MODUL]
+            self.Type = _card[name][TYPE]
+            self.IRQ = _card[name][IRQ]
+            self.IoPort = _card[name][IO]
+            self.IoPort1 = _card[name][IO1]
+            self.IoPort2 = _card[name][IO2]
+            self.Mem = _card[name][MEM]
+            self.VendorId = _card[name][VENDOR_ID]
+            self.DeviceId = _card[name][DEVICE_ID]
+            self.DriverId = _card[name][DRIVER_ID]
+            self.Firmware = _card[name][FIRMWARE]
+            self.ModuleName = _card[name][MODUL]
 
 
 if __name__ == "__main__":
