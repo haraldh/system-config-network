@@ -45,6 +45,8 @@ CHILDKEYS = "CHILDKEYS"
 ##TYPEKEY = "TYPEKEY"
 StrictType = None
 
+# pylint: disable-msg=W0223,W0233,W0221,W0232,W0231
+
 class ParseError(Exception):
     def __init__(self, arg):
         Exception.__init__(self, arg)
@@ -80,23 +82,23 @@ class GenClass:
 
     def commit(self, changed=True):
         """Stub"""
-        raise NotImplemented
+        raise NotImplementedError
 
     def apply(self, other):
         """Stub"""
-        raise NotImplemented
+        raise NotImplementedError
 
     def _doClear(self):
         """Stub"""
-        raise NotImplemented
+        raise NotImplementedError
 
     def _addAttr(self):
         """Stub"""
-        raise NotImplemented
+        raise NotImplementedError
 
-    def _createAttr(self):
+    def _createAttr(self, child=None):
         """Stub"""
-        raise NotImplemented
+        raise NotImplementedError
 
     def checkType(self, child, value):
         """Check the type of the value passed to an assignment"""
@@ -175,7 +177,7 @@ class GenClass:
 
     def _objToStr(self, parentStr = None):
         """Stub"""
-        raise NotImplemented
+        raise NotImplementedError
 
     def _parseLine(self, vals, value):
         """Internal import method, which parses an snmp style assignment."""
@@ -195,7 +197,7 @@ class GenClass:
                     self[int(key)-1] = value
                     return
                 else:
-                    num = self._addAttr(cname)
+                    num = self._addAttr(cname) # pylint: disable-msg=E1111
                     self[num] = value
                     return
             else:
@@ -220,7 +222,7 @@ class GenClass:
                     self[int(key)-1]._parseLine(vals[1:], value)
                     return
                 else:
-                    num = self._addAttr(cname)
+                    num = self._addAttr(cname) # pylint: disable-msg=E1111
                     self[num]._parseLine(vals[1:], value)
                     return
             else:
@@ -532,7 +534,7 @@ def GenClassList_get_install_funcs(klass, val):
 #
 # Anonymous List
 #
-class GenClassAList(GenClass, list):
+class GenClassAList(list, GenClass):
     def __init__(self, list = None, parent = None):
         list.__init__(self)
         GenClass.__init__(self, list, parent)
