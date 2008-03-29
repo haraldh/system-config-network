@@ -930,23 +930,19 @@ class mainDialog:
         devicelist = getDeviceList()
         devicelist.commit()
 
-        if not device.modified():
-            print "Device not modified"
-            self.appBar.pop()
-            return
-
         # Fixed change device names in active list of all profiles
         profilelist = getProfileList()
-        for prof in profilelist:
-            if devId in prof.ActiveDevices:
-                pos = prof.ActiveDevices.index(devId)
-                prof.ActiveDevices[pos] = device.DeviceId
-
-
-        profilelist.commit()
+        if devId != device.DeviceId:
+            for prof in profilelist:
+                if devId in prof.ActiveDevices:
+                    pos = prof.ActiveDevices.index(devId)
+                    prof.ActiveDevices[pos] = device.DeviceId
+            profilelist.commit()
+                
         self.hydrateDevices()
         self.appBar.pop()
-
+        self.on_generic_clist_select_row(clist, clist.selection[0], 0, 0)
+        
     def editDevice(self, device):
         button = 0
         dialog = device.getDialog()
