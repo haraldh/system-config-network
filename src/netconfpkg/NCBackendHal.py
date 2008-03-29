@@ -19,11 +19,6 @@ import string
 import os
 import sys
 import dbus
-
-if __name__ == '__main__':
-    import sys
-    sys.path.append("../")
-    sys.path.append("./")
  
 from NCHardware import Hardware, HW_SYSTEM
 from NC_functions import getDeviceType
@@ -35,7 +30,7 @@ class NCBackendHal:
         self._dbusBus = dbus.SystemBus()
         self.halManagerObj = self._dbusBus.get_object("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager")
         self.halManager = dbus.Interface(self.halManagerObj, "org.freedesktop.Hal.Manager")
-	self.cards = []
+        self.cards = []
 
     # ------------------------------------------------------------------------
     # Probe routines - HAL
@@ -122,16 +117,10 @@ class NCBackendHal:
     # Same with Mac sound devices
     #if card.bus() == "macio" and card.driver() != "snd-powermac":
     def probeCards(self):
-	self.cards = []
+        self.cards = []
         udiList = self.halManager.FindDeviceByCapability("net")
         for udi in udiList:
             card = self.getDevices(udi)
             if card:
                 self.cards.append(card)
-	return self.cards
-
-if __name__ == '__main__':
-    hal = NCBackendHal()
-    cards = hal.probeCards()
-    for card in cards:
-	print card
+        return self.cards
