@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-29 16:15+0100\n"
+"POT-Creation-Date: 2008-03-29 17:53+0100\n"
 "PO-Revision-Date: 2008-03-03 06:26+0100\n"
 "Last-Translator: Adam Přibyl <pribyl@lowlevel.cz>\n"
 "Language-Team: Czech <fedora-cs-list@redhat.com>\n"
@@ -270,12 +270,14 @@ msgstr "Vložte počet vteřin, po kterých bude linka při nečinnosti zavěše
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "Vložte přihlašovací jméno, které vám přidělil provider."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
@@ -284,6 +286,7 @@ msgstr ""
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
@@ -298,6 +301,7 @@ msgstr "Použít toto spojení pro implicitní směrování"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
 msgid "Pass_word:"
 msgstr "_Heslo:"
@@ -308,6 +312,7 @@ msgid "Restart if _connection dies"
 msgstr "Automatické znovuvytočení spojení"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
 msgid "Use this form to enter your T-Online account data."
 msgstr "V tomto formuláři zadejte data svého účtu T-Online."
@@ -345,6 +350,7 @@ msgstr "_IPsec"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
 msgid "_Login name:"
 msgstr "Jméno _uživatele:"
@@ -378,6 +384,7 @@ msgid "_Service-name:"
 msgstr "Jméno _služby"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
 msgid "_T-Online Account Setup"
 msgstr "Nastavení účtu _T-Online"
@@ -482,6 +489,7 @@ msgstr ""
 "použité technologii a pohybuje se zhruba od 144 kb/s do 1 Mb/s."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
 #: ../src/netconfpkg/gui/editipsec.py:285
 #: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/PTPInterface.py:200
@@ -496,10 +504,12 @@ msgid "Ethernet device:"
 msgstr "Ethernetové zařízení:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
 msgid "Provider name:"
 msgstr "Jméno poskytovatele:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
 msgid "Login name:"
 msgstr "Jméno uživatele:"
 
@@ -508,6 +518,7 @@ msgid "Choose a Provider"
 msgstr "Zvolte providera"
 
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
 msgid "Internet Provider"
 msgstr "Internet Provider"
 
@@ -561,6 +572,129 @@ msgstr "Zvolte typ HW zařízení, které má být přidáno:"
 #: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
 msgid "_Device type:"
 msgstr "_Typ zařízení:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>Telefonní číslo:</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "Kód _oblasti:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "Informace o _DNS získat automaticky od providera"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "Automaticky získat nastavení adresy _IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "Vytvořit vytáčené připojení"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "Adresa implicitní brány:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "Režim zapouzdření:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"Vložte čísla, která je potřeba vytočit před normálním telefonním číslem. "
+"Patří sem číslo pro aktivací venkovní linky, zakázání funkce 'Call Waiting' "
+"a podobně."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "Vložte předčíslí poskytovatele připojení."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "Vložte telefonní číslo poskytovatele připojení (bez předčíslí)."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "Nastavení IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "Manuální nastavení IP adresy"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "Nové rozhraní"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "Nastavení PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "Prefi_x:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "_Jméno providera"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "_Zvolte providera"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "IP adresu nastavit staticky:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+msgid "_Address:"
+msgstr "_Adresa:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "_Telefonní číslo:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "_Maska sítě:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
+msgid "raw IP"
+msgstr "raw IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
+msgid "sync PPP"
+msgstr "synch PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Hardware:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Telefonní číslo:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -627,24 +761,6 @@ msgstr "Povolit kompresi _protokolu"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "Povolit _VJ kompresi hlaviček TCP/IP"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"Vložte čísla, která je potřeba vytočit před normálním telefonním číslem. "
-"Patří sem číslo pro aktivací venkovní linky, zakázání funkce 'Call Waiting' "
-"a podobně."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr "Vložte předčíslí poskytovatele připojení."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "Vložte telefonní číslo poskytovatele připojení (bez předčíslí)."
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr ""
@@ -697,10 +813,6 @@ msgstr "Telefonní číslo"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
 msgid "Prefi_x"
 msgstr "Prefi_x"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "_Jméno providera"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
 msgid "Select the authentication protocol used by your ISP."
@@ -816,17 +928,6 @@ msgstr "ven"
 msgid "pap"
 msgstr "PAP"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
-msgid "raw IP"
-msgstr "raw IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
-msgid "sync PPP"
-msgstr "synch PPP"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "Nastavení ISDN připojení"
@@ -839,19 +940,9 @@ msgstr "Nastavení vytáčeného připojení"
 msgid "Add / Edit IP Address"
 msgstr "Přidat / Změnit IP adresu"
 
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-msgid "_Address:"
-msgstr "_Adresa:"
-
 #: ../src/netconfpkg/gui/editadress.glade.h:3
 msgid "_Gateway:"
 msgstr "B_rána:"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "_Subnet mask:"
-msgstr "_Maska sítě:"
 
 #: ../src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain name:"
@@ -1288,10 +1379,6 @@ msgstr "IR_Q:"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:9
 msgid "ISDN _adapters:"
 msgstr "ISDN _adaptéry:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Nové rozhraní"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
 msgid "Select ISDN Adapter"
@@ -2110,10 +2197,6 @@ msgstr "Jine zařízení QETH"
 msgid "A_ddress:"
 msgstr "_Adresa:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "Informace o _DNS získat automaticky od providera"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "_IP adresu získat automaticky podle:"
@@ -2174,10 +2257,6 @@ msgstr "Nastavení tunelu IPsec"
 msgid "Local Network"
 msgstr "Místní síť"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "Manuální nastavení IP adresy"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "Zvolte stupeň zabezpečení pro toto zařízení."
@@ -2229,10 +2308,6 @@ msgstr "Nastavit MTU:"
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Static Network Routes"
 msgstr "Statické směrování"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Statically set IP addresses:"
-msgstr "IP adresu nastavit staticky:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Tie to specific ethernet card"
@@ -3284,45 +3359,6 @@ msgstr "Síť"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Ovládat a sledovat síťová zařízení"
-
-#~ msgid "<b>Phone number</b>"
-#~ msgstr "<b>Telefonní číslo:</b>"
-
-#~ msgid "A_rea code:"
-#~ msgstr "Kód _oblasti:"
-
-#~ msgid "Automatically obtain _IP address settings"
-#~ msgstr "Automaticky získat nastavení adresy _IP"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "Vytvořit vytáčené připojení"
-
-#~ msgid "Default _gateway address:"
-#~ msgstr "Adresa implicitní brány:"
-
-#~ msgid "Encapsulation mode:"
-#~ msgstr "Režim zapouzdření:"
-
-#~ msgid "IP Settings"
-#~ msgstr "Nastavení IP"
-
-#~ msgid "PPP Settings"
-#~ msgstr "Nastavení PPP"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "Prefi_x:"
-
-#~ msgid "Select Provider"
-#~ msgstr "_Zvolte providera"
-
-#~ msgid "_Phone number:"
-#~ msgstr "_Telefonní číslo:"
-
-#~ msgid "Hardware:"
-#~ msgstr "Hardware:"
-
-#~ msgid "Phone number:"
-#~ msgstr "Telefonní číslo:"
 
 #~ msgid "Command failed: "
 #~ msgstr "Příkaz selhal: "

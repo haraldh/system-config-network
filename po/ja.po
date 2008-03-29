@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-29 16:15+0100\n"
+"POT-Creation-Date: 2008-03-29 17:53+0100\n"
 "PO-Revision-Date: 2008-03-04 22:00+0900\n"
 "Last-Translator: Makoto Mizukami <mmk9060@aol.com>\n"
 "Language-Team: Japanese <fedora-trans-ja@redhat.com>\n"
@@ -269,12 +269,14 @@ msgstr "未使用時に接続を切断するまでの時間を秒数で入力し
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "ISP から取得したログイン名をここに入力して下さい。"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
@@ -282,6 +284,7 @@ msgstr "この設定の名前を入れて下さい。普通は単にISPの名前
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
@@ -297,6 +300,7 @@ msgstr "この接続を標準のルートにする(_R)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
 msgid "Pass_word:"
 msgstr "パスワード(_W):"
@@ -307,6 +311,7 @@ msgid "Restart if _connection dies"
 msgstr "接続が反応しなければ再スタート(_C)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
 msgid "Use this form to enter your T-Online account data."
 msgstr "この形式を使用してT-Onlineアカウントデータに入ります。"
@@ -344,6 +349,7 @@ msgstr "IPsec(_I)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
 msgid "_Login name:"
 msgstr "ログイン名(_L):"
@@ -377,6 +383,7 @@ msgid "_Service-name:"
 msgstr "サービス名(_S):"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
 msgid "_T-Online Account Setup"
 msgstr "T-Onlineアカウント設定(_T)"
@@ -480,6 +487,7 @@ msgstr ""
 "すが、一般に 144kbps から 1.0Mbps です。"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
 #: ../src/netconfpkg/gui/editipsec.py:285
 #: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/PTPInterface.py:200
@@ -494,10 +502,12 @@ msgid "Ethernet device:"
 msgstr "イーサネットデバイス:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
 msgid "Provider name:"
 msgstr "プロバイダー名:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
 msgid "Login name:"
 msgstr "ログイン名:"
 
@@ -506,6 +516,7 @@ msgid "Choose a Provider"
 msgstr "プロバイダを選択"
 
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
 msgid "Internet Provider"
 msgstr "インターネットプロバイダ"
 
@@ -559,6 +570,129 @@ msgstr "追加するハードウェアデバイスの種類を選択してくだ
 #: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
 msgid "_Device type:"
 msgstr "デバイスタイプ(_D):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>電話番号</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "市街局番(_R):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "DNS情報をプロバイダから自動取得(_D)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "自動的にIPアドレス設定を取得(_I)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "ダイヤルアップ接続を作成"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "デフォルトゲートウェイアドレス(_G):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "カプセル化モード:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"普通の電話番号の前にダイヤルする必要のある番号を入力して下さい。例えば、外線"
+"につなぐ必要があるときや、コール待ちを無効にするなどの機能に必要な番号をここ"
+"に入力してください。"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "インターネットプロバイダへの接続に必要な市街局番を入れて下さい。"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "ISP の電話番号を入力して下さい(国番号や市街局番や接頭番号はつけない)。"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP の設定"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "手動 IP アドレス設定"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "新規インターフェース"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP の設定"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "接頭番号(_X):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "プロバイダ名(_N):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "プロバイダを選択"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "固定の IP アドレス設定:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+msgid "_Address:"
+msgstr "アドレス(_A):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "電話番号(_P):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "サブネットマスク(_S):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
+msgid "raw IP"
+msgstr "原形IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
+msgid "sync PPP"
+msgstr "同期 PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "ハードウェア:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "電話番号:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -627,24 +761,6 @@ msgstr "プロトコルフィールド圧縮を有効にする(_P)"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "VJ TCP/IP ヘッダ圧縮を有効にする(_V)"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"普通の電話番号の前にダイヤルする必要のある番号を入力して下さい。例えば、外線"
-"につなぐ必要があるときや、コール待ちを無効にするなどの機能に必要な番号をここ"
-"に入力してください。"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr "インターネットプロバイダへの接続に必要な市街局番を入れて下さい。"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "ISP の電話番号を入力して下さい(国番号や市街局番や接頭番号はつけない)。"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr "自分の電話番号を入力して下さい。モデムを使用する場合はオプションです。"
@@ -696,10 +812,6 @@ msgstr "電話番号"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
 msgid "Prefi_x"
 msgstr "接頭番号(_X)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "プロバイダ名(_N):"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
 msgid "Select the authentication protocol used by your ISP."
@@ -815,17 +927,6 @@ msgstr "出る"
 msgid "pap"
 msgstr "PAP"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
-msgid "raw IP"
-msgstr "原形IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
-msgid "sync PPP"
-msgstr "同期 PPP"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN ダイアルアップ 設定"
@@ -838,19 +939,9 @@ msgstr "モデムダイアルアップ設定"
 msgid "Add / Edit IP Address"
 msgstr "IP アドレスを追加/編集"
 
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-msgid "_Address:"
-msgstr "アドレス(_A):"
-
 #: ../src/netconfpkg/gui/editadress.glade.h:3
 msgid "_Gateway:"
 msgstr "ゲートウェイ(_G):"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "_Subnet mask:"
-msgstr "サブネットマスク(_S):"
 
 #: ../src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain name:"
@@ -1292,10 +1383,6 @@ msgstr "IRQ(_Q):"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:9
 msgid "ISDN _adapters:"
 msgstr "ISDN アダプタ(_A):"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "新規インターフェース"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
 msgid "Select ISDN Adapter"
@@ -2122,10 +2209,6 @@ msgstr "他の QETH デバイス"
 msgid "A_ddress:"
 msgstr "アドレス(_A):"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "DNS情報をプロバイダから自動取得(_D)"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "自動的に IP アドレス設定を取得(_I):"
@@ -2185,10 +2268,6 @@ msgstr "IPsec トンネル設定"
 msgid "Local Network"
 msgstr "ローカルネットワーク"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "手動 IP アドレス設定"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "このデバイスのセキュリティレベルを選択して下さい。"
@@ -2240,10 +2319,6 @@ msgstr "MTU の設定値:"
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Static Network Routes"
 msgstr "固定ネットワークルート"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Statically set IP addresses:"
-msgstr "固定の IP アドレス設定:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Tie to specific ethernet card"
@@ -3297,45 +3372,6 @@ msgstr "ネットワーク"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "ネットワークデバイスの制御と監視"
-
-#~ msgid "<b>Phone number</b>"
-#~ msgstr "<b>電話番号</b>"
-
-#~ msgid "A_rea code:"
-#~ msgstr "市街局番(_R):"
-
-#~ msgid "Automatically obtain _IP address settings"
-#~ msgstr "自動的にIPアドレス設定を取得(_I)"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "ダイヤルアップ接続を作成"
-
-#~ msgid "Default _gateway address:"
-#~ msgstr "デフォルトゲートウェイアドレス(_G):"
-
-#~ msgid "Encapsulation mode:"
-#~ msgstr "カプセル化モード:"
-
-#~ msgid "IP Settings"
-#~ msgstr "IP の設定"
-
-#~ msgid "PPP Settings"
-#~ msgstr "PPP の設定"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "接頭番号(_X):"
-
-#~ msgid "Select Provider"
-#~ msgstr "プロバイダを選択"
-
-#~ msgid "_Phone number:"
-#~ msgstr "電話番号(_P):"
-
-#~ msgid "Hardware:"
-#~ msgstr "ハードウェア:"
-
-#~ msgid "Phone number:"
-#~ msgstr "電話番号:"
 
 #~ msgid "Command failed: "
 #~ msgstr "コマンド失敗: "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-29 16:15+0100\n"
+"POT-Creation-Date: 2008-03-29 17:53+0100\n"
 "PO-Revision-Date: 2008-03-01 12:53+0100\n"
 "Last-Translator: Peter van Egdom <p.van.egdom@gmail.com>\n"
 "Language-Team: Dutch <fedora-trans-list@redhat.com>\n"
@@ -267,12 +267,14 @@ msgstr ""
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "Voer hier de loginnaam in die uw Internetaanbieder u heeft gegeven."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
@@ -282,6 +284,7 @@ msgstr ""
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
@@ -297,6 +300,7 @@ msgstr "Deze verbinding de standaard_route maken"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
 msgid "Pass_word:"
 msgstr "Wacht_woord:"
@@ -307,6 +311,7 @@ msgid "Restart if _connection dies"
 msgstr "Herstarten als _verbinding verbroken wordt"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
 msgid "Use this form to enter your T-Online account data."
 msgstr "Gebruik dit formulier om uw T-Online accountgegevens in te vullen."
@@ -344,6 +349,7 @@ msgstr "_IPsec"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
 msgid "_Login name:"
 msgstr "_Loginnaam:"
@@ -377,6 +383,7 @@ msgid "_Service-name:"
 msgstr "_Servicenaam:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
 msgid "_T-Online Account Setup"
 msgstr "_T-Online Account Configuratie"
@@ -484,6 +491,7 @@ msgstr ""
 "144kbps en 1.0Mbps."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
 #: ../src/netconfpkg/gui/editipsec.py:285
 #: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/PTPInterface.py:200
@@ -498,10 +506,12 @@ msgid "Ethernet device:"
 msgstr "Ethernetapparaat:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
 msgid "Provider name:"
 msgstr "Naam aanbieder:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
 msgid "Login name:"
 msgstr "Loginnaam:"
 
@@ -510,6 +520,7 @@ msgid "Choose a Provider"
 msgstr "Een aanbieder kiezen"
 
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
 msgid "Internet Provider"
 msgstr "Internetaanbieder"
 
@@ -563,6 +574,134 @@ msgstr "Selecteer het type toe te voegen hardware-apparaat:"
 #: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
 msgid "_Device type:"
 msgstr "_Apparaattype:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>Telefoonnummer</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "_Netnummer:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "Automatisch _DNS-informatie verkrijgen van aanbieder"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "Automatisch _IP-adres instellingen verkrijgen"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "Inbelverbinding maken"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "Standaard _gateway-adres:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "Inkapselmodus:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"Voer hier alle nummers in die u in moet toetsen voor het gewone "
+"telefoonnummer. Als u bijvoorbeeld iets in moet toetsen om een buitenlijn te "
+"bereiken, of om wachten uit te zetten, kunt u de noodzakelijke nummers hier "
+"invullen."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr ""
+"Voer hier het netnummer in, als u dat nodig heeft om uw internetaanbieder te "
+"bereiken."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr ""
+"Geef het telefoonnummer van uw Internetaanbieder (zonder nummers zoals "
+"netnummer, landnummer daarvoor)."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP-instellingen"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "Handmatige IP-adres instellingen"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "Nieuwe interface"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP-instellingen"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "Prefi_x:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "_Naam aanbieder:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "Aanbieder selecteren"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "Statisch ingestelde IP-adressen:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+msgid "_Address:"
+msgstr "_Adres:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "_Telefoonnummer:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "_Subnetmasker:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
+msgid "raw IP"
+msgstr "ruw-IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
+msgid "sync PPP"
+msgstr "sync-PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Hardware:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Telefoonnummer:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -630,29 +769,6 @@ msgstr "_Protocolveld compressie aanzetten"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "_VJ TCP/IP header compressie aanzetten"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"Voer hier alle nummers in die u in moet toetsen voor het gewone "
-"telefoonnummer. Als u bijvoorbeeld iets in moet toetsen om een buitenlijn te "
-"bereiken, of om wachten uit te zetten, kunt u de noodzakelijke nummers hier "
-"invullen."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr ""
-"Voer hier het netnummer in, als u dat nodig heeft om uw internetaanbieder te "
-"bereiken."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr ""
-"Geef het telefoonnummer van uw Internetaanbieder (zonder nummers zoals "
-"netnummer, landnummer daarvoor)."
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr ""
@@ -706,10 +822,6 @@ msgstr "Telefoonnummer"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
 msgid "Prefi_x"
 msgstr "_Voorvoegsel"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "_Naam aanbieder:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
 msgid "Select the authentication protocol used by your ISP."
@@ -825,17 +937,6 @@ msgstr "uit"
 msgid "pap"
 msgstr "pap"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
-msgid "raw IP"
-msgstr "ruw-IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
-msgid "sync PPP"
-msgstr "sync-PPP"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN-inbelconfiguratie"
@@ -848,19 +949,9 @@ msgstr "Modem-inbelconfiguratie"
 msgid "Add / Edit IP Address"
 msgstr "IP-adres toevoegen / bewerken"
 
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-msgid "_Address:"
-msgstr "_Adres:"
-
 #: ../src/netconfpkg/gui/editadress.glade.h:3
 msgid "_Gateway:"
 msgstr "_Gateway:"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "_Subnet mask:"
-msgstr "_Subnetmasker:"
 
 #: ../src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain name:"
@@ -1297,10 +1388,6 @@ msgstr "IR_Q:"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:9
 msgid "ISDN _adapters:"
 msgstr "ISDN-_adapters:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Nieuwe interface"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
 msgid "Select ISDN Adapter"
@@ -2133,10 +2220,6 @@ msgstr "Ander QETH-apparaat"
 msgid "A_ddress:"
 msgstr "A_dres:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "Automatisch _DNS-informatie verkrijgen van aanbieder"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "Automatisch _IP-adres instellingen verkrijgen met:"
@@ -2197,10 +2280,6 @@ msgstr "IPsec-tunnel instellingen"
 msgid "Local Network"
 msgstr "Lokaal netwerk"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "Handmatige IP-adres instellingen"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "Selecteer het beveiligingsniveau voor dit apparaat."
@@ -2253,10 +2332,6 @@ msgstr "Zet MTU op:"
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Static Network Routes"
 msgstr "Statische netwerkroutes"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Statically set IP addresses:"
-msgstr "Statisch ingestelde IP-adressen:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Tie to specific ethernet card"
@@ -3309,45 +3384,6 @@ msgstr "Netwerk"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Netwerkapparaten instellen en weergeven"
-
-#~ msgid "<b>Phone number</b>"
-#~ msgstr "<b>Telefoonnummer</b>"
-
-#~ msgid "A_rea code:"
-#~ msgstr "_Netnummer:"
-
-#~ msgid "Automatically obtain _IP address settings"
-#~ msgstr "Automatisch _IP-adres instellingen verkrijgen"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "Inbelverbinding maken"
-
-#~ msgid "Default _gateway address:"
-#~ msgstr "Standaard _gateway-adres:"
-
-#~ msgid "Encapsulation mode:"
-#~ msgstr "Inkapselmodus:"
-
-#~ msgid "IP Settings"
-#~ msgstr "IP-instellingen"
-
-#~ msgid "PPP Settings"
-#~ msgstr "PPP-instellingen"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "Prefi_x:"
-
-#~ msgid "Select Provider"
-#~ msgstr "Aanbieder selecteren"
-
-#~ msgid "_Phone number:"
-#~ msgstr "_Telefoonnummer:"
-
-#~ msgid "Hardware:"
-#~ msgstr "Hardware:"
-
-#~ msgid "Phone number:"
-#~ msgstr "Telefoonnummer:"
 
 #~ msgid "Command failed: "
 #~ msgstr "Commando mislukt: "

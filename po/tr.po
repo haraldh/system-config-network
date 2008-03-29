@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-29 16:15+0100\n"
+"POT-Creation-Date: 2008-03-29 17:53+0100\n"
 "PO-Revision-Date: 2006-02-05 21:50+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -266,12 +266,14 @@ msgstr "Bir bağlantı kesildikten sonra kaç saniye bekleneceğini giriniz."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "ISS'nızdan aldığınız kullanıcı ismini yazınız."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
@@ -279,6 +281,7 @@ msgstr "Bu yapılandırmaya bir isim veriniz. ISS'nızın ismi olabilir."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
@@ -294,6 +297,7 @@ msgstr "Bu bağlantıyı öntanımlı y_ol yap"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
 msgid "Pass_word:"
 msgstr "P_arola:"
@@ -304,6 +308,7 @@ msgid "Restart if _connection dies"
 msgstr "_Bağlantı koparsa yeniden bağlan"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
 msgid "Use this form to enter your T-Online account data."
 msgstr "T-Online hesap bilgilerini girmek için bu formu kullanın."
@@ -341,6 +346,7 @@ msgstr "_IPSec"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
 msgid "_Login name:"
 msgstr "_Kullanıcı ismi:"
@@ -374,6 +380,7 @@ msgid "_Service-name:"
 msgstr "_Servis-İsmi:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
 msgid "_T-Online Account Setup"
 msgstr "_T-Online Hesap Kurulumu"
@@ -478,6 +485,7 @@ msgstr ""
 "144 kb/s ile 1 Mb/s arasında değişmektedir."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
 #: ../src/netconfpkg/gui/editipsec.py:285
 #: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/PTPInterface.py:200
@@ -492,10 +500,12 @@ msgid "Ethernet device:"
 msgstr "Ethernet Aygıtı:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
 msgid "Provider name:"
 msgstr "Sağlayıcı İsmi:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
 msgid "Login name:"
 msgstr "Kullanıcı Adı:"
 
@@ -504,6 +514,7 @@ msgid "Choose a Provider"
 msgstr "Bir Servis Sağlayıcı Seçiniz"
 
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
 msgid "Internet Provider"
 msgstr "Internet Sağlayıcı"
 
@@ -558,6 +569,131 @@ msgstr "Lütfen eklenecek donanım aygıtının türünü seçiniz:"
 #: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
 msgid "_Device type:"
 msgstr "Aygıt _Türü:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+#, fuzzy
+msgid "<b>Phone number</b>"
+msgstr "Telefon Numarası:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "Ala_n Kodu:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "_DNS bilgileri servis sağlayıcıdan otomatik olarak sağlansın"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "_IP adres ayarlarını otomatik edin"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "Çevirmeli Bağlantı Oluştur"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "Öntanımlı Ağ _Geçidi Adresi:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "Sarmalama Kipi:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"Normal telefon numarasından önce bir numara çevrilmesi gerekiyorsa buraya "
+"girin. Örneğin, bir şirket santralından çıkıyorsanız ve dış hat almak için "
+"bir numara girmek gerekiyorsa bunu buraya yazabilirsiniz."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr ""
+"Internet Servis Sağlayıcınıza erişmek için gereken alan kodunu yazınız."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "ISS'nızın telefon numarasını giriniz (önek/alan/ülke kodu olmaksızın)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP Ayarları"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "Elle IP adresi ayarı"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "Yeni Arabirim"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP Ayarları"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "Ön_ek:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "Sağlayıcı İs_mi:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "Sağlayıcı seçiniz"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "Statik olarak belirlenmiş IP adresi:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+msgid "_Address:"
+msgstr "_Adres:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "_Telefon Numarası:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "_Alt Ağ Maskesi:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
+msgid "raw IP"
+msgstr "temel IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
+msgid "sync PPP"
+msgstr "sync PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "Donanım:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "Telefon Numarası:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -627,25 +763,6 @@ msgstr "_Protocol Alanı Sıkıştırması Etkinleştirilsin"
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "_VJ TCP/IP Başlık Sıkıştırması Etkinleştirilsin"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"Normal telefon numarasından önce bir numara çevrilmesi gerekiyorsa buraya "
-"girin. Örneğin, bir şirket santralından çıkıyorsanız ve dış hat almak için "
-"bir numara girmek gerekiyorsa bunu buraya yazabilirsiniz."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr ""
-"Internet Servis Sağlayıcınıza erişmek için gereken alan kodunu yazınız."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "ISS'nızın telefon numarasını giriniz (önek/alan/ülke kodu olmaksızın)"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr "Telefon numaranızı giriniz. Modem kullanıyorsanız vermeseniz de olur."
@@ -701,10 +818,6 @@ msgstr "Telefon Numarası"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
 msgid "Prefi_x"
 msgstr "Ön_ek"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "Sağlayıcı İs_mi:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
 msgid "Select the authentication protocol used by your ISP."
@@ -821,17 +934,6 @@ msgstr "dış"
 msgid "pap"
 msgstr "pap"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
-msgid "raw IP"
-msgstr "temel IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
-msgid "sync PPP"
-msgstr "sync PPP"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN Çevirmeli Ağ Yapılandırması"
@@ -844,19 +946,9 @@ msgstr "Modem Çevirmeli Ağ Yapılandırması"
 msgid "Add / Edit IP Address"
 msgstr "IP Adresi Ekle / Düzenle"
 
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-msgid "_Address:"
-msgstr "_Adres:"
-
 #: ../src/netconfpkg/gui/editadress.glade.h:3
 msgid "_Gateway:"
 msgstr "Ağ _Geçidi:"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "_Subnet mask:"
-msgstr "_Alt Ağ Maskesi:"
 
 #: ../src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain name:"
@@ -1291,10 +1383,6 @@ msgstr "IR_Q:"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:9
 msgid "ISDN _adapters:"
 msgstr "ISDN _Bağdaştırıcıları:"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "Yeni Arabirim"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
 msgid "Select ISDN Adapter"
@@ -2126,10 +2214,6 @@ msgstr "Eternet Aygıtı"
 msgid "A_ddress:"
 msgstr "_Adres:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "_DNS bilgileri servis sağlayıcıdan otomatik olarak sağlansın"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "_IP adres ayarlarını bununla otomatik olarak sağla:"
@@ -2189,10 +2273,6 @@ msgstr "IPSec Tünel Ayarları"
 msgid "Local Network"
 msgstr "Yerel Ağ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "Elle IP adresi ayarı"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "Bu aygıtın güvenlik derecesini seçiniz."
@@ -2244,10 +2324,6 @@ msgstr ""
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Static Network Routes"
 msgstr "Statik Ağ Yolları"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Statically set IP addresses:"
-msgstr "Statik olarak belirlenmiş IP adresi:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Tie to specific ethernet card"
@@ -3316,46 +3392,6 @@ msgstr "Ağ"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Ağ aygıtlaını izler ve denetler"
-
-#, fuzzy
-#~ msgid "<b>Phone number</b>"
-#~ msgstr "Telefon Numarası:"
-
-#~ msgid "A_rea code:"
-#~ msgstr "Ala_n Kodu:"
-
-#~ msgid "Automatically obtain _IP address settings"
-#~ msgstr "_IP adres ayarlarını otomatik edin"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "Çevirmeli Bağlantı Oluştur"
-
-#~ msgid "Default _gateway address:"
-#~ msgstr "Öntanımlı Ağ _Geçidi Adresi:"
-
-#~ msgid "Encapsulation mode:"
-#~ msgstr "Sarmalama Kipi:"
-
-#~ msgid "IP Settings"
-#~ msgstr "IP Ayarları"
-
-#~ msgid "PPP Settings"
-#~ msgstr "PPP Ayarları"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "Ön_ek:"
-
-#~ msgid "Select Provider"
-#~ msgstr "Sağlayıcı seçiniz"
-
-#~ msgid "_Phone number:"
-#~ msgstr "_Telefon Numarası:"
-
-#~ msgid "Hardware:"
-#~ msgstr "Donanım:"
-
-#~ msgid "Phone number:"
-#~ msgstr "Telefon Numarası:"
 
 #~ msgid "Command failed: "
 #~ msgstr "Komut başarısız: "

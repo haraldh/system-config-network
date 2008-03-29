@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-29 16:15+0100\n"
+"POT-Creation-Date: 2008-03-29 17:53+0100\n"
 "PO-Revision-Date: 2008-03-14 16:26+0530\n"
 "Last-Translator: I. Felix <ifelix@redhat.com>\n"
 "Language-Team: Tamil <fedora-trans-ta@redhat.com>\n"
@@ -274,12 +274,14 @@ msgstr "இணைப்பு துண்டிக்கப்படவேண�
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "உங்கள் ISP உங்களுக்கு தந்த, புகுபதிவு பெயரை உள்ளிடவும்."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
@@ -287,6 +289,7 @@ msgstr "இந்த கட்டமைப்புக்கான பெயர�
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
@@ -302,6 +305,7 @@ msgstr "இந்த இணைப்பை முன்னிருப்பு 
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
 msgid "Pass_word:"
 msgstr "கடவுச்சொல் (_w):"
@@ -312,6 +316,7 @@ msgid "Restart if _connection dies"
 msgstr "இணைப்பு துண்டிக்கப்பட்டால் மீண்டும் துவக்கவும் (_c)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
 msgid "Use this form to enter your T-Online account data."
 msgstr "T-Online கணக்கு தகவலை உள்ளிட இந்தப் படிவத்தைப் பயன்படுத்தவும்."
@@ -349,6 +354,7 @@ msgstr "_IPsec "
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
 msgid "_Login name:"
 msgstr "புகுபதிவு பெயர் (_L):"
@@ -382,6 +388,7 @@ msgid "_Service-name:"
 msgstr "சேவை-பெயர் (_S):"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
 msgid "_T-Online Account Setup"
 msgstr "_T-Online கணக்கு அமைவு"
@@ -485,6 +492,7 @@ msgstr ""
 "தொழில்நுட்பத்தைப் பொருத்து மாறுபடுகிறது, ஆனால் 144kbps லிருந்து 1.0Mbps வரை இருக்கும்."
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
 #: ../src/netconfpkg/gui/editipsec.py:285
 #: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/PTPInterface.py:200
@@ -499,10 +507,12 @@ msgid "Ethernet device:"
 msgstr "ஈத்தர்நெட் சாதனம்:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
 msgid "Provider name:"
 msgstr "இணைய சேவை வழங்குபவர் பெயர்:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
 msgid "Login name:"
 msgstr "புகுபதிவு பெயர்:"
 
@@ -511,6 +521,7 @@ msgid "Choose a Provider"
 msgstr "வழங்குபவரை தேர்வு செய்யவும்..."
 
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
 msgid "Internet Provider"
 msgstr "இணைய சேவை வழங்குபவர்"
 
@@ -564,6 +575,129 @@ msgstr "சேர்க்க வேண்டிய வன்பொருள் 
 #: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
 msgid "_Device type:"
 msgstr "சாதன வகை (_D):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>தொலைபேசி எண்</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "வட்டார குறியீடு (_r):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "_DNS தகவலை இணைய சேவை வழங்குபவரிடமிருந்து தானாக பெறவும்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "_IP முகவரி அமைவுகளை தானாக பெறவும்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "டயலப் இணைப்பை உருவாக்கவும்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "முன்னிருப்பு நுழைவாயில் முகவரி (_g):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "என்காப்சுலேஷன் முறை:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"தாங்கள் அழைக்க விரும்பும் சாதாரண எண்ணுக்கு முன்பு எத்தனை எண்களை வேண்டுமானாலும் உள்ளிடவும். "
+"எ.கா. வெளி இணைப்புகளை அணுக அல்லது அழைப்பு காத்திருத்தலை செயல்நீக்க, தேவையான எண்ணை "
+"உள்ளிடவும்."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "இணைய சேவை செய்யும் நிறுவனத்தின் வட்டார குறியீட்டை உள்ளிடவும்."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "ISPயின் தொலைபேசி எண்ணை உள்ளிடவும் (முன்னொட்டு/வட்டாரம்/நாடு குறியீடு இல்லாமல்)."
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP அமைவுகள்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "கைமுறையான IP முகவரி அமைவுகள்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "புதிய முகப்பு"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP அமைவுகள்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "முன்னொட்டு (_x):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "வழங்குபவர் பெயர் (_n):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "வழங்குபவரை தேர்ந்தெடுக்கவும்"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "IP முகவரிகளை நிலையானதாக அமைக்கவும்:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+msgid "_Address:"
+msgstr "முகவரி (_A):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "தொலைபேசி எண் (_P):"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "_Subnet mask:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
+msgid "raw IP"
+msgstr "raw IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
+msgid "sync PPP"
+msgstr "sync PPP "
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "வன்பொருள்:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "தொலைபேசி எண்:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -630,24 +764,6 @@ msgstr "நெறிமுறை புல குறுக்கத்தை ச
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "_VJ TCP/IP தலைப்பு குறுக்கத்தை செயல்படுத்தவும்"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"தாங்கள் அழைக்க விரும்பும் சாதாரண எண்ணுக்கு முன்பு எத்தனை எண்களை வேண்டுமானாலும் உள்ளிடவும். "
-"எ.கா. வெளி இணைப்புகளை அணுக அல்லது அழைப்பு காத்திருத்தலை செயல்நீக்க, தேவையான எண்ணை "
-"உள்ளிடவும்."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr "இணைய சேவை செய்யும் நிறுவனத்தின் வட்டார குறியீட்டை உள்ளிடவும்."
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "ISPயின் தொலைபேசி எண்ணை உள்ளிடவும் (முன்னொட்டு/வட்டாரம்/நாடு குறியீடு இல்லாமல்)."
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr "உங்கள் தொலைபேசி எண்ணை உள்ளிடவும். மோடம் பயன்படுத்த, விருப்பமானது."
@@ -699,10 +815,6 @@ msgstr "தொலைபேசி எண்"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
 msgid "Prefi_x"
 msgstr "முன்னொட்டு (_x)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "வழங்குபவர் பெயர் (_n):"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
 msgid "Select the authentication protocol used by your ISP."
@@ -818,17 +930,6 @@ msgstr "வெளியே"
 msgid "pap"
 msgstr "pap "
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
-msgid "raw IP"
-msgstr "raw IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
-msgid "sync PPP"
-msgstr "sync PPP "
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN டயல் அப் கட்டமைப்பு"
@@ -841,19 +942,9 @@ msgstr "மோடம் டயல் அப் கட்டமைப்பு"
 msgid "Add / Edit IP Address"
 msgstr "IP முகவரியை சேர்த்தல் / திருத்துதல்"
 
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-msgid "_Address:"
-msgstr "முகவரி (_A):"
-
 #: ../src/netconfpkg/gui/editadress.glade.h:3
 msgid "_Gateway:"
 msgstr "நுழைவாயில் (_G):"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "_Subnet mask:"
-msgstr "_Subnet mask:"
 
 #: ../src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain name:"
@@ -1291,10 +1382,6 @@ msgstr "IR_Q: "
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:9
 msgid "ISDN _adapters:"
 msgstr "ISDN தகவிகள் (_a):"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "புதிய முகப்பு"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
 msgid "Select ISDN Adapter"
@@ -2108,10 +2195,6 @@ msgstr "வேறு qeth சாதனம்"
 msgid "A_ddress:"
 msgstr "முகவரி (_d):"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "_DNS தகவலை இணைய சேவை வழங்குபவரிடமிருந்து தானாக பெறவும்"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "தானாக _IP முகவரியை அமைத்துக்கொள்ள:"
@@ -2172,10 +2255,6 @@ msgstr "IPsec பாதை அமைவுகள்"
 msgid "Local Network"
 msgstr "உள்ளமை பிணையம்"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "கைமுறையான IP முகவரி அமைவுகள்"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "இந்த சாதனத்திற்கான பாதுகாப்பு நிலையை தேர்வு செய்யவும்."
@@ -2227,10 +2306,6 @@ msgstr "MTU ஐ அமைத்தல்:"
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Static Network Routes"
 msgstr "நிலையான பிணைய தடங்கள்"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Statically set IP addresses:"
-msgstr "IP முகவரிகளை நிலையானதாக அமைக்கவும்:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Tie to specific ethernet card"
@@ -3281,45 +3356,6 @@ msgstr "பிணையம்"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "கட்டுப்பாடு மற்றும் திரையக பிணைய சாதனம்"
-
-#~ msgid "<b>Phone number</b>"
-#~ msgstr "<b>தொலைபேசி எண்</b>"
-
-#~ msgid "A_rea code:"
-#~ msgstr "வட்டார குறியீடு (_r):"
-
-#~ msgid "Automatically obtain _IP address settings"
-#~ msgstr "_IP முகவரி அமைவுகளை தானாக பெறவும்"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "டயலப் இணைப்பை உருவாக்கவும்"
-
-#~ msgid "Default _gateway address:"
-#~ msgstr "முன்னிருப்பு நுழைவாயில் முகவரி (_g):"
-
-#~ msgid "Encapsulation mode:"
-#~ msgstr "என்காப்சுலேஷன் முறை:"
-
-#~ msgid "IP Settings"
-#~ msgstr "IP அமைவுகள்"
-
-#~ msgid "PPP Settings"
-#~ msgstr "PPP அமைவுகள்"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "முன்னொட்டு (_x):"
-
-#~ msgid "Select Provider"
-#~ msgstr "வழங்குபவரை தேர்ந்தெடுக்கவும்"
-
-#~ msgid "_Phone number:"
-#~ msgstr "தொலைபேசி எண் (_P):"
-
-#~ msgid "Hardware:"
-#~ msgstr "வன்பொருள்:"
-
-#~ msgid "Phone number:"
-#~ msgstr "தொலைபேசி எண்:"
 
 #~ msgid "Command failed: "
 #~ msgstr "கட்டளையை இயக்க முடியவில்லை:"

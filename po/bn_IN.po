@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-29 16:15+0100\n"
+"POT-Creation-Date: 2008-03-29 17:53+0100\n"
 "PO-Revision-Date: 2008-03-13 17:27+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@fedoraproject.org>\n"
 "Language-Team: Bengali INDIA <fedora-trans-bn_IN@redhat.com>\n"
@@ -268,12 +268,14 @@ msgstr "সংযোগ বিচ্ছিন্ন করার পূর্ব
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
 msgid "Enter the login name, that your ISP gave you here."
 msgstr "ISP থেকে প্রাপ্ত লগ-ইন নাম এই স্থান লিখুন।"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
 "Enter the name of this configuration, usually just the name of your ISP."
@@ -281,6 +283,7 @@ msgstr "এই কনফিগারেশনের নাম লিখুন, �
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
 "Enter the password for your account. If you do not know it, please contact "
@@ -296,6 +299,7 @@ msgstr "চিহ্নিত সংযোগ ডিফল্ট রুট হ�
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
 msgid "Pass_word:"
 msgstr "পাসওয়ার্ড: (_w)"
@@ -306,6 +310,7 @@ msgid "Restart if _connection dies"
 msgstr "সংযোগ বন্ধ হয়ে গেলে পুনরায় আরম্ভ করা হবে (_c)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
 msgid "Use this form to enter your T-Online account data."
 msgstr "আপনার T-Online অ্যাকাউন্টের তথ্য লিখতে এই ফর্ম ব্যবহার করুন।"
@@ -343,6 +348,7 @@ msgstr "_IPsec"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
 msgid "_Login name:"
 msgstr "লগ-ইন নাম: (_L)"
@@ -376,6 +382,7 @@ msgid "_Service-name:"
 msgstr "পরিসেবার-নাম: (_S)"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
 msgid "_T-Online Account Setup"
 msgstr "T-Online অ্যাকাউন্ট স্থাপনা (_T)"
@@ -481,6 +488,7 @@ msgstr ""
 "সেকেন্ড মধ্যে সীমাবদ্ধ হয়ে থাকে।"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:134
+#: ../src/netconfpkg/gui/DialupDruid.py:223
 #: ../src/netconfpkg/gui/editipsec.py:285
 #: ../src/netconfpkg/gui/EthernetInterface.py:210
 #: ../src/netconfpkg/gui/PTPInterface.py:200
@@ -495,10 +503,12 @@ msgid "Ethernet device:"
 msgstr "ইথারনেট ডিভাইস:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:136
+#: ../src/netconfpkg/gui/DialupDruid.py:226
 msgid "Provider name:"
 msgstr "সরবরাহকারীর নাম:"
 
 #: ../src/netconfpkg/gui/ADSLInterfaceDruid.py:137
+#: ../src/netconfpkg/gui/DialupDruid.py:228
 msgid "Login name:"
 msgstr "লগ-ইনের জন্য ব্যবহৃত নাম:"
 
@@ -508,6 +518,7 @@ msgstr "সরবরাহকারী বাছাই করুন"
 
 # msgstr "ইন্টরনেট উপলব্ধকারি"
 #: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
 msgid "Internet Provider"
 msgstr "ইন্টরনেট সরবরাহকারী"
 
@@ -562,6 +573,130 @@ msgstr "যোগ করার উদ্দেশ্যে অনুগ্রহ
 #: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
 msgid "_Device type:"
 msgstr "ডিভাইসের ধরন: (_D)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>দূরভাষ</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "আঞ্চলিক কোড: (_r)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "সরবরাহকারীর থেকে DNS সংক্রান্ত তথ্য স্বয়ংক্রিয়ভাবে প্রাপ্ত করা হবে (_D)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "IP অ্যাড্রেসের বৈশিষ্ট্যাবলী স্বয়ংক্রিয়ভবে প্রাপ্ত করা হবে (_I)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "ডায়াল-আপ সংযোগ নির্মাণ"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "ডিফল্ট গেটওয়ের ঠিকানা: (_g)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "এনক্যাপসুলেশন মোড:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
+msgid ""
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
+msgstr ""
+"স্বাভাবিক দূরভাষ সংখ্যার পূর্বে অন্য কোনো নম্বর ডায়াল করার প্রয়োজন হলে তা লিখুন।  "
+"উদাহরণস্বরূপ, কোন বহিস্থত সংযোগ ব্যবহার করার জন্য অথবা call waiting নিষ্ক্রিয় করতে "
+"হলে প্রয়োজনীয় সংখ্যাগুলি এই স্থানে লিখুন।"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr ""
+"আপনার ইন্টারনেট সরবরাহকারীর সাথে যোগাযোগ করার জন্য প্রয়োজনীয় স্থানীয় কোড লিখুন।"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
+msgstr "আপনার ISP-র দূরভাষ সংখ্যা লিখুন (কোনো উপপদ/স্থানীয়/দেশের কোড বিনা)।"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP সংক্রান্ত বৈশিষ্ট্য"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "ব্যবহারকারীর দ্বারা IP ঠিকানার বৈশিষ্ট্য"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "নতুন ইন্টারফেস"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP সংক্রান্ত বৈশিষ্ট্য"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "উপপদ: (_x)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "সরবরাহকারীর নাম: (_n)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "সরবরাহকারী নির্বাচন করুন"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "স্থায়ীরূপে IP ঠিকানা নির্ধারণ করুন:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
+msgid "_Address:"
+msgstr "ঠিকানা: (_A)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "দূরভাষ: (_P)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "সাবনেট মাস্ক: (_S)"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
+msgid "raw IP"
+msgstr "raw IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
+msgid "sync PPP"
+msgstr "sync PPP"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:225
+msgid "Hardware:"
+msgstr "হার্ডওয়্যার:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:229
+msgid "Phone number:"
+msgstr "দূরভাষ:"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
 msgid "A_rea Code"
@@ -628,25 +763,6 @@ msgstr "প্রোটোকল ফিল্ড কম্প্রেশন স
 msgid "Enable _VJ TCP/IP Header Compression"
 msgstr "VJ TCP/IP হেডার কম্প্রেশন সক্রিয় করা হবে (_V)"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
-msgid ""
-"Enter any numbers you need to dial before the normal phone number. For "
-"example, if you need to reach an outside line, or disable call waiting, put "
-"the necessary numbers here."
-msgstr ""
-"স্বাভাবিক দূরভাষ সংখ্যার পূর্বে অন্য কোনো নম্বর ডায়াল করার প্রয়োজন হলে তা লিখুন।  "
-"উদাহরণস্বরূপ, কোন বহিস্থত সংযোগ ব্যবহার করার জন্য অথবা call waiting নিষ্ক্রিয় করতে "
-"হলে প্রয়োজনীয় সংখ্যাগুলি এই স্থানে লিখুন।"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
-msgid "Enter the area code needed to reach your internet provider."
-msgstr ""
-"আপনার ইন্টারনেট সরবরাহকারীর সাথে যোগাযোগ করার জন্য প্রয়োজনীয় স্থানীয় কোড লিখুন।"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
-msgid "Enter the phone number of your ISP (without prefix/area/country code)."
-msgstr "আপনার ISP-র দূরভাষ সংখ্যা লিখুন (কোনো উপপদ/স্থানীয়/দেশের কোড বিনা)।"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
 msgid "Enter your local phone number. It's optional, if you use a modem."
 msgstr "আপনার স্থানীয় দূরভাষ সংখ্যা লিখুন। মোডেম ব্যবহার করা হলে এই তথ্য লেখা ঐচ্ছিক।"
@@ -698,10 +814,6 @@ msgstr "দূরভাষ"
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
 msgid "Prefi_x"
 msgstr "উপপদ (_x)"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
-msgid "Provider _name:"
-msgstr "সরবরাহকারীর নাম: (_n)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
 msgid "Select the authentication protocol used by your ISP."
@@ -818,17 +930,6 @@ msgstr "বাহির"
 msgid "pap"
 msgstr "pap"
 
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:339
-msgid "raw IP"
-msgstr "raw IP"
-
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:341
-#: ../src/netconfpkg/gui/DialupInterfaceDialog.py:370
-msgid "sync PPP"
-msgstr "sync PPP"
-
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.py:273
 msgid "ISDN Dialup Configuration"
 msgstr "ISDN ডায়াল-আপ কনফিগারেশন"
@@ -841,19 +942,9 @@ msgstr "মোডেম ডায়াল-আপ কনফিগারেশন"
 msgid "Add / Edit IP Address"
 msgstr "IP ঠিকানা যোগ / সম্পাদন করুন"
 
-#: ../src/netconfpkg/gui/editadress.glade.h:2
-#: ../src/netconfpkg/gui/PTPInterfaceDruid.glade.h:7
-msgid "_Address:"
-msgstr "ঠিকানা: (_A)"
-
 #: ../src/netconfpkg/gui/editadress.glade.h:3
 msgid "_Gateway:"
 msgstr "গেটওয়ে: (_G)"
-
-#: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
-msgid "_Subnet mask:"
-msgstr "সাবনেট মাস্ক: (_S)"
 
 #: ../src/netconfpkg/gui/editdomain.glade.h:1
 msgid "Domain name:"
@@ -1294,10 +1385,6 @@ msgstr "IR_Q:"
 #: ../src/netconfpkg/gui/isdnhardware.glade.h:9
 msgid "ISDN _adapters:"
 msgstr "ISDN অ্যাডাপ্টার: (_a)"
-
-#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
-msgid "New Interface"
-msgstr "নতুন ইন্টারফেস"
 
 #: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
 msgid "Select ISDN Adapter"
@@ -2113,10 +2200,6 @@ msgstr "অন্যান্য QETH ডিভাইস"
 msgid "A_ddress:"
 msgstr "ঠিকানা: (_d)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
-msgid "Automatically obtain _DNS information from provider"
-msgstr "সরবরাহকারীর থেকে DNS সংক্রান্ত তথ্য স্বয়ংক্রিয়ভাবে প্রাপ্ত করা হবে (_D)"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
 msgid "Automatically obtain _IP address settings with:"
 msgstr "স্বয়ংক্রিয়রূপে IP ঠিকানা প্রাপ্তির পদ্ধতি: (_I)"
@@ -2177,10 +2260,6 @@ msgstr "IPsec Tunnel-র বৈশিষ্ট্য"
 msgid "Local Network"
 msgstr "স্থানীয় নেটওয়ার্ক"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
-msgid "Manual IP Address Settings"
-msgstr "ব্যবহারকারীর দ্বারা IP ঠিকানার বৈশিষ্ট্য"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
 msgid "Please select the level of security for this device."
 msgstr "এই ডিভাইসটির জন্য নিরাপত্তার পরিমাপ বাছাই করুন।"
@@ -2232,10 +2311,6 @@ msgstr "MTU-র ক্ষেত্রে ধার্য মান:"
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
 msgid "Static Network Routes"
 msgstr "স্থায়ী নেটওয়ার্ক রুট"
-
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
-msgid "Statically set IP addresses:"
-msgstr "স্থায়ীরূপে IP ঠিকানা নির্ধারণ করুন:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
 msgid "Tie to specific ethernet card"
@@ -3288,45 +3363,6 @@ msgstr "নেটওয়ার্ক"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্রণ এবং পর্যবেক্ষণ ব্যবস্থা"
-
-#~ msgid "<b>Phone number</b>"
-#~ msgstr "<b>দূরভাষ</b>"
-
-#~ msgid "A_rea code:"
-#~ msgstr "আঞ্চলিক কোড: (_r)"
-
-#~ msgid "Automatically obtain _IP address settings"
-#~ msgstr "IP অ্যাড্রেসের বৈশিষ্ট্যাবলী স্বয়ংক্রিয়ভবে প্রাপ্ত করা হবে (_I)"
-
-#~ msgid "Create Dialup Connection"
-#~ msgstr "ডায়াল-আপ সংযোগ নির্মাণ"
-
-#~ msgid "Default _gateway address:"
-#~ msgstr "ডিফল্ট গেটওয়ের ঠিকানা: (_g)"
-
-#~ msgid "Encapsulation mode:"
-#~ msgstr "এনক্যাপসুলেশন মোড:"
-
-#~ msgid "IP Settings"
-#~ msgstr "IP সংক্রান্ত বৈশিষ্ট্য"
-
-#~ msgid "PPP Settings"
-#~ msgstr "PPP সংক্রান্ত বৈশিষ্ট্য"
-
-#~ msgid "Prefi_x:"
-#~ msgstr "উপপদ: (_x)"
-
-#~ msgid "Select Provider"
-#~ msgstr "সরবরাহকারী নির্বাচন করুন"
-
-#~ msgid "_Phone number:"
-#~ msgstr "দূরভাষ: (_P)"
-
-#~ msgid "Hardware:"
-#~ msgstr "হার্ডওয়্যার:"
-
-#~ msgid "Phone number:"
-#~ msgstr "দূরভাষ:"
 
 #~ msgid "Command failed: "
 #~ msgstr "কমান্ড নির্বাহ করতে ব্যর্থ:"
