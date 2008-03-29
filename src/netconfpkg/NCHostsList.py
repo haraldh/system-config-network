@@ -38,9 +38,9 @@ class HostsList(HostsList_base):
                     if not error:
                         error = "Error in hostslist\nWrong: %s in entry %i" % (e.message,num)
                     else:
-                        error += "Wrong: %s in entry %i" (e.message,num)
+                        error += "Wrong: %s in entry %i" % (e.message,num)
         if error:
-                raise ValueError(error)
+            raise ValueError(error)
     
     def load(self, filename='/etc/hosts'):
         try:
