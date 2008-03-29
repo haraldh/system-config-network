@@ -147,12 +147,10 @@ class NCQethInterface:
             if bb.buttonPressed(res)=="cancel":
                 screen.popWindow()
                 return False
-                break
             elif bb.buttonPressed(res)=="ok":
                 screen.popWindow()
                 self.processInfo()
                 return True
-                break
 
 
 
