@@ -145,13 +145,13 @@ def TreeStore_search(rows, func, data):
             return result
     return None
 
-def on_generic_clist_button_release_event(self, clist, event, 
+def on_generic_clist_button_release_event(clist, event, 
                                           func): # pylint: disable-msg=W0613
     mid = clist.get_data ("signal_id")
     clist.disconnect (mid)
     func()
 
-def on_generic_entry_insert_text(self, entry, partial_text, length,
+def on_generic_entry_insert_text(entry, partial_text, length,
                                  pos, mstr): # pylint: disable-msg=W0613
     text = partial_text[0:length]
     if re.match(mstr, text):
