@@ -56,16 +56,4 @@ uninstall-local:
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
 	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
 
-.PHONY: docs pycheck pylint
-
-docs:
-	rm -fr classdoc
-	PYTHONPATH=$(srcdir) @PYTHON@ /usr/lib*/python*/pydoc.py -w `find $(srcdir) -type d -o -name '*.py'` 
-	mkdir -p classdoc
-	mv *.html classdoc
-
-pycheck:
-	pychecker -F $(top_srcdir)/pycheckrc $(PYTHON_FILES)
-
-pylint:
-	pylint --rcfile=$(top_srcdir)/pylintrc netconfpkg
+include Makefile.inc
