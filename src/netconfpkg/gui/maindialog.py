@@ -49,7 +49,7 @@ PAGE_IPSEC = 2
 PAGE_DNS = 3
 PAGE_HOSTS = 4
 
-def nop(str=None):
+def nop(str=None): # pylint: disable-msg=E0102
     pass
 
 class mainDialog:
@@ -1249,7 +1249,7 @@ class mainDialog:
                 status = INACTIVE
 
             if NetworkDevice().find(self.devsel.getDeviceAlias()):
-                status == ACTIVE
+                status = ACTIVE
 
             if status == ACTIVE and \
                    (self.devsel.DeviceId in curr_prof.ActiveDevices):
@@ -1301,42 +1301,42 @@ class mainDialog:
 
     def on_hostnameEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.Hostname = entry.get_text()
         self.active_profile.DNS.commitHostname()
         self.checkApply()
 
     def on_domainEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.Domainname = entry.get_text()
         self.active_profile.DNS.commitDomainname()
         self.checkApply()
 
     def on_primaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.PrimaryDNS = entry.get_text()
         self.active_profile.DNS.commitPrimaryDNS()
         self.checkApply()
 
     def on_secondaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.SecondaryDNS = entry.get_text()
         self.active_profile.DNS.commitSecondaryDNS()
         self.checkApply()
 
     def on_tertiaryDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         self.active_profile.DNS.TertiaryDNS = entry.get_text()
         self.active_profile.DNS.commitTertiaryDNS()
         self.checkApply()
 
     def on_searchDnsEntry_changed(self, entry):
         if (self.ignore_widget_changes):
-            return;
+            return
         s = entry.get_text()
         newentries = string.split(s)
         self.active_profile.DNS.SearchList = self.active_profile.\
@@ -1350,7 +1350,7 @@ class mainDialog:
     def on_hostsAddButton_clicked(self, *args):
         # FIXME: Provide possibility to define order from /etc/hosts.conf
         if (self.ignore_widget_changes):
-            return;
+            return
         profilelist = getProfileList()
 
         curr_prof = self.getActiveProfile()
@@ -1429,13 +1429,6 @@ class mainDialog:
 
         profilelist.commit()
         self.hydrateProfiles()
-
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, str):
-        text = partial_text[0:length]
-        if re.match(str, text):
-            return
-        entry.emit_stop_by_name('insert_text')
 
     def on_profileAddMenu_activate (self, *args):
         # FIXME: do not reset button state
