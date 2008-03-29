@@ -23,12 +23,12 @@ from netconfpkg.NC_functions import _, TOKENRING, PROGNAME, NETCONFDIR
 from netconfpkg.gui import sharedtcpip
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
-from netconfpkg.gui.TokenRingHardwareDruid import tokenringHardware
+from netconfpkg.gui.TokenRingHardwareDruid import TokenringHardware
 from netconfpkg.plugins import NCPluginDevTokenRing
 from rhpl import ethtool
 
 
-class TokenRingInterfaceGui(InterfaceCreator):
+class TokenRingInterfaceWizard(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=TOKENRING, do_save = 1,
                  druid = None):
         InterfaceCreator.__init__(self, do_save = do_save)
@@ -101,7 +101,7 @@ class TokenRingInterfaceGui(InterfaceCreator):
             self.druid.remove(i)
             self.druids.append(i)
 
-        self.hwDruid = tokenringHardware(self.toplevel)
+        self.hwDruid = TokenringHardware(self.toplevel)
         self.hwDruid.has_tokenring = None
         self.druids = [self.druids[0]] + self.hwDruid.druids[:]\
                       + self.druids[1:]
@@ -244,6 +244,6 @@ class TokenRingInterfaceGui(InterfaceCreator):
         gtk.main_quit()
 
 def register_plugin():
-    NCPluginDevTokenRing.setDevTokenRingWizard(TokenRingInterfaceGui)
+    NCPluginDevTokenRing.setDevTokenRingWizard(TokenRingInterfaceWizard)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

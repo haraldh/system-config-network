@@ -36,11 +36,11 @@ class DNS(Gdtstruct):
     def __init__(self):
         super(DNS, self).__init__()
         self.Hostname = None
+        self.Domainname = None
         self.PrimaryDNS = None
         self.SecondaryDNS = None
         self.TertiaryDNS = None
         self.SearchList = SearchList()
-
     
 class Profile(Gdtstruct):
     "Profile for s-c-network"

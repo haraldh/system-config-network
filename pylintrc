@@ -37,7 +37,7 @@ load-plugins=
 
 # Enable only checker(s) with the given id(s). This option conflicts with the
 # disable-checker option
-enable-checker=exceptions,format,imports,typecheck,variables
+#enable-checker=exceptions,format,imports,typecheck,variables,classes,newstyle
 
 # Enable all checker(s) except those with the given id(s). This option
 # conflicts with the enable-checker option
@@ -53,7 +53,7 @@ enable-checker=exceptions,format,imports,typecheck,variables
 #enable-msg=
 
 # Disable the message(s) with the given id(s).
-disable-msg=W0603,W0511,W0613,W0142,W0612,W0631,W0702,W0704
+disable-msg=W0603,W0511,W0613,W0142,W0612,W0631,W0702,W0704,C0111
 
 
 [REPORTS]
@@ -137,7 +137,7 @@ module-rgx=(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$
 const-rgx=(([A-Z_][A-Z1-9_]*)|(__.*__)|_([a-z_][a-zA-Z0-9_]*))$
 
 # Regular expression which should only match correct class names
-class-rgx=[A-Z_][a-zA-Z0-9]+$
+class-rgx=[A-Z_][a-zA-Z_0-9]+$
 
 # Regular expression which should only match correct function names
 #function-rgx=[a-z_][a-z0-9_]{2,30}$
@@ -161,7 +161,7 @@ argument-rgx=[a-z_][a-zA-Z0-9_]{2,30}$
 # Regular expression which should only match correct variable names
 #variable-rgx=[a-z_][a-z0-9_]{2,30}$
 #variable-rgx=[a-zA-Z0-9_]*$
-variable-rgx=[a-z_][a-zA-Z0-9_]{2,30}$
+variable-rgx=[a-z_]?[a-zA-Z0-9_]{1,30}$
 
 # Regular expression which should only match correct list comprehension /
 # generator expression variable names
@@ -269,7 +269,6 @@ min-public-methods=2
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=20
 
-
 # checks for similarities and duplicated code. This computation may be
 # memory / CPU intensive, so you should disable it if you experiments some
 # problems.
@@ -284,7 +283,6 @@ ignore-comments=yes
 
 # Ignore docstrings when computing similarities.
 ignore-docstrings=yes
-
 
 # checks for :
 # * unauthorized constructions

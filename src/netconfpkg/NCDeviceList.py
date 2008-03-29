@@ -30,11 +30,7 @@ from netconfpkg.NC_functions import (_, log, ConfDevices,
 from netconfpkg.conf import ConfSMB, ConfShellVar
 from netconfpkg.gdt import Gdtlist
 
-
-class DeviceList_base(Gdtlist):
-    pass
-
-class DeviceList(DeviceList_base):
+class DeviceList(Gdtlist):
     def load(self):
         from netconfpkg.NCDevice import ConfDevice
         updateNetworkScripts()

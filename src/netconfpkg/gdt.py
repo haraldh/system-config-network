@@ -172,7 +172,7 @@ def gdtstruct_properties(cls, schema):
         #cls._fields.sort()
         cls._types.add(typecast)
 
-class Gdtobject(Transaction, object):
+class Gdtobject(Transaction):
     "The base of all Gdtobjects"
     keyid = None
 

@@ -24,9 +24,9 @@ from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
 
 
-class qethHardwareDialog:
-    def __init__(self, hw):
-        self.hw = hw
+class QethHardwareDialog:
+    def __init__(self, hardwd):
+        self.hw = hardwd
 
         glade_file = "QethHardware.glade"
 
@@ -95,6 +95,6 @@ class qethHardwareDialog:
 
 def register_plugin():
     from netconfpkg.plugins import NCPluginHWQeth
-    NCPluginHWQeth.setHwQethDialog(qethHardwareDialog)
+    NCPluginHWQeth.setHwQethDialog(QethHardwareDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

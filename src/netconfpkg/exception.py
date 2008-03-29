@@ -101,14 +101,14 @@ def __dump_class(instance, fd, level=0):
         else:
             fd.write("%s%s: %s\n" % (pad, key, value))
 
-def __dump_exception(out, text, tb):
+def __dump_exception(out, text, tracebk):
     'write a traceback to "out"'
     #from cPickle import Pickler
     #p = Pickler(out)
 
     out.write(text)
 
-    trace = tb
+    trace = tracebk
     while trace.tb_next:
         trace = trace.tb_next
     frame = trace.tb_frame

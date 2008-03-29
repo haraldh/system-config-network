@@ -22,8 +22,7 @@ from netconfpkg import NCHardwareList
 from netconfpkg.NC_functions import TOKENRING, PROGNAME, NETCONFDIR
 from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
 
-
-class tokenringHardware:
+class TokenringHardware:
     def __init__ (self, toplevel=None):
 
         glade_file = "TokenRingHardwareDruid.glade"

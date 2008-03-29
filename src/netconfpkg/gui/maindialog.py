@@ -1,4 +1,3 @@
-## netconf - A network configuration tool
 # -*- coding: utf-8 -*-
 ## Copyright (C) 2001-2006 Red Hat, Inc.
 ## Copyright (C) 2001, 2002 Than Ngo <than@redhat.com>
@@ -19,8 +18,13 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+"""
+netconf - A network configuration tool
 
-"The GUI maindialog of s-c-network"
+The GUI maindialog of s-c-network
+"""
+
+
 #import gnome # pylint: disable-msg=W0611
 import gnome.ui # needed before the glade xml load
 import gobject
@@ -51,7 +55,9 @@ from netconfpkg.gui.GUI_functions import (get_icon, get_pixbuf,
                                           gui_info_dialog,
                                           RESPONSE_YES, RESPONSE_NO,
                                           RESPONSE_CANCEL,
-                                          gui_run, 
+                                          gui_run,
+                                          on_generic_clist_button_release_event,
+                                          on_generic_entry_insert_text,
                                           )
 from netconfpkg.gui.NewInterfaceDialog import NewInterfaceDialog
 from netconfpkg.gui.edithosts import editHostsDialog
@@ -134,7 +140,7 @@ class mainDialog:
             "on_profileDeleteMenu_activate" : \
             self.on_profileDeleteMenu_activate,
             "on_ProfileNameEntry_insert_text" : ( \
-            self.on_generic_entry_insert_text, r"^[a-z|A-Z|0-9]+$"),
+            on_generic_entry_insert_text, r"^[a-z|A-Z|0-9]+$"),
             "on_about_activate" : self.on_about_activate,
             "on_mainNotebook_switch_page" : self.on_mainNotebook_switch_page,
             "on_addButton_clicked" : self.on_addButton_clicked,
@@ -374,15 +380,6 @@ class mainDialog:
 
         profname = self.active_profile_name
 
-#         if profilelist.modified():
-#             log.log(3, "profilelist modified")
-#         if devicelist.modified():
-#             log.log(3, "devicelist modified")
-#         if hardwarelist.modified():
-#             log.log(3, "hardwarelist modified")
-#         if ipseclist.modified():
-#             log.log(3, "ipseclist modified")
-
         if profilelist.modified() \
                or devicelist.modified() \
                or hardwarelist.modified() \
@@ -396,9 +393,6 @@ class mainDialog:
         return False
 
     def save(self):
-        #if self.test() != 0:
-        #    return 1
-        
         try:
             self.test()
         except ValueError, e:
@@ -573,20 +567,7 @@ class mainDialog:
         ipsel = self.ipsel
         profilelist = getProfileList()
 
-#        status = ACTIVE
-#        status_pixmap = self.on_xpm
-#        status_mask = self.on_mask
-
         for ipsec in ipseclist:
-#             if ipsec.IPsecId in profilelist.ActiveIPsecs:
-#                 status = ACTIVE
-#                 status_pixmap = self.on_xpm
-#                 status_mask = self.on_mask
-#             else:
-#                 status = INACTIVE
-#                 status_pixmap = self.off_xpm
-#                 status_mask = self.off_mask
-
             clist.append(['', str(ipsec.ConnectionType),
                           str(ipsec.RemoteIPAddress),
                           str(ipsec.IPsecId)])
@@ -627,8 +608,7 @@ class mainDialog:
     def hydrateProfiles(self):
         self.appBar.push(_("Updating profiles..."))
         profilelist = getProfileList()
-#        if profilelist.modified():
-#            raise ValueError
+
         for prof in profilelist:
             if not prof.Active:
                 continue
@@ -662,7 +642,6 @@ class mainDialog:
 
         self.ignore_widget_changes = False
 
-        # hclist = self.xml.get_widget("hostsList")
         # clear the store
         self.hostsListStore.clear()
         # load hosts to list
@@ -951,11 +930,6 @@ class mainDialog:
         devicelist = getDeviceList()
         devicelist.commit()
 
-#        if not device.modified():
-#            #print "Device not modified"
-#            self.appBar.pop()
-#            return
-
         # Fixed change device names in active list of all profiles
         if devId != device.DeviceId:
             profilelist = getProfileList()
@@ -1092,13 +1066,6 @@ class mainDialog:
 
         self.tag = gobject.timeout_add(4000, self.updateDevicelist)
 
-    def on_generic_entry_insert_text(self, entry, partial_text, length,
-                                     pos, mstr): # pylint: disable-msg=W0613
-        text = partial_text[0:length]
-        if re.match(mstr, text):
-            return
-        entry.emit_stop_by_name('insert_text')
-
     def on_profileMenuItem_activated(self, menu_item, profile):
         if not menu_item or not menu_item.active:
             return
@@ -1133,7 +1100,6 @@ class mainDialog:
             self.hwsel = clist.get_row_data(clist.selection[0])
             if not self.hwsel:
                 return
-
 
         if clist.get_name() == 'ipsecList' and \
                self.lastbuttonevent and \
@@ -1310,12 +1276,6 @@ class mainDialog:
         if self.down_button: 
             self.copy_button.set_sensitive(False)
 
-    def on_generic_clist_button_release_event(self, clist, event, 
-                                              func): # pylint: disable-msg=W0613
-        mid = clist.get_data ("signal_id")
-        clist.disconnect (mid)
-        func()
-
     def on_generic_clist_button_press_event(self, clist, event, 
                                             *args): # pylint: disable-msg=W0613
         self.lastbuttonevent = event
@@ -1330,7 +1290,7 @@ class mainDialog:
                 if self.editMap.has_key(clist.get_name()):
                     func = self.editButtonFunc[self.editMap[clist.get_name()]]
                 mid = clist.connect("button_release_event",
-                                   self.on_generic_clist_button_release_event,
+                                   on_generic_clist_button_release_event,
                                    func)
                 clist.set_data("signal_id", mid)
 
@@ -1587,11 +1547,6 @@ class mainDialog:
     def on_profileDeleteMenu_activate (self, *args): # pylint: disable-msg=W0613
         profilelist = getProfileList()
 
-        #clist = self.xml.get_widget('profileList')
-
-        #if len(clist.selection) == 0:
-        #    return
-
         name = self.getActiveProfile().ProfileName
 
         if name == 'default' or name == DEFAULT_PROFILE_NAME:
@@ -1632,8 +1587,7 @@ class mainDialog:
 
         mtype = mtype.Type
         i = hardwarelist.addHardware(mtype)
-        hw = hardwarelist[i]
-        
+        hw = hardwarelist[i]        
        
         if self.showHardwareDialog(hw) == gtk.RESPONSE_OK:
             hw.commit()
@@ -1692,7 +1646,6 @@ class mainDialog:
             return
 
         hw = clist.get_row_data(clist.selection[0])
-        #type = hw.Type
         description = hw.Description
         dev = hw.Name
 
@@ -1876,7 +1829,6 @@ class mainDialog:
             if button == RESPONSE_NO:
                 return
 
-        #(status, txt) = 
         ipsec.deactivate(dialog = self.dialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

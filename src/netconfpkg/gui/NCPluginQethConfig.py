@@ -26,7 +26,7 @@ from rhpl import ethtool
 # ethernet device window are in reverse order to every 
 # other system-config package.
 
-class qethConfigDialog(DeviceConfigDialog):
+class QethConfigDialog(DeviceConfigDialog):
     def __init__(self, device):
         glade_file = "QethConfig.glade"
         DeviceConfigDialog.__init__(self, glade_file, 
@@ -95,6 +95,6 @@ class qethConfigDialog(DeviceConfigDialog):
             
 def register_plugin():
     from netconfpkg.plugins import NCPluginDevQeth
-    NCPluginDevQeth.setDevQethDialog(qethConfigDialog)
+    NCPluginDevQeth.setDevQethDialog(QethConfigDialog)
     
 __author__ = "Harald Hoyer <harald@redhat.com>"

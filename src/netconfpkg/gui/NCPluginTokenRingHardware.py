@@ -22,7 +22,7 @@ from netconfpkg.gui.GUI_functions import gui_run_dialog
 from netconfpkg.gui.HardwareDialog import HardwareDialog
 
 
-class tokenringHardwareDialog(HardwareDialog):
+class TokenringHardwareDialog(HardwareDialog):
     def __init__(self, hw):
         HardwareDialog.__init__(self, hw,
                                 "tokenringhardware.glade",
@@ -109,6 +109,6 @@ class tokenringHardwareDialog(HardwareDialog):
 
 def register_plugin():
     from netconfpkg.plugins import NCPluginHWTokenring
-    NCPluginHWTokenring.setHwTokenringDialog(tokenringHardwareDialog)
+    NCPluginHWTokenring.setHwTokenringDialog(TokenringHardwareDialog)
 
 __author__ = "Harald Hoyer <harald@redhat.com>"    

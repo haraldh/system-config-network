@@ -24,6 +24,7 @@ from netconfpkg.NC_functions import (_, getRoot, log, unlink, getCHAPConf,
 from netconfpkg.conf import ConfSMB
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
                             Gdtstr, Gdtlist, Gdtbool, Gdtint)
+from netconfpkg import NCHardwareList
 
 
 class PPPOption(Gdtstr):
@@ -608,6 +609,7 @@ class IsdnDialup(Dialup):
 
 class ModemDialup(Dialup):
     "Class for all Modem Dialup Interfaces"
+
     boolwvdict = { 'StupidMode' : 'Stupid Mode',
                    }
 
@@ -729,53 +731,12 @@ class ModemDialup(Dialup):
         # set WVDIALSECT in ifcfg-ppp[0-9] to DeviceId
         parentConf['WVDIALSECT'] = name
         sectname = 'Dialer ' + name
+        self.write_wvdial(devname, sectname)
 
         # Correct PAPNAME in ifcfg-ppp[0-9]
         if self.Login:
             parentConf['PAPNAME'] = self.Login
-
-        #
-        # Write the wvdial section
-        #
-        conf = ConfSMB.ConfSMB(filename = getRoot() + WVDIALCONF)
-        conf.chmod(0600)
-        if not conf.has_key(sectname):
-            conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
-
-        for selfkey in self.wvdict.keys():
-            confkey = self.wvdict[selfkey]
-            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
-                conf[sectname][confkey] = str(getattr(self, selfkey))
-            else:
-                if conf[sectname].has_key(confkey):
-                    del conf[sectname][confkey]
-
-
-        for selfkey in self.boolwvdict.keys():
-            confkey = self.boolwvdict[selfkey]
-            if hasattr(self, selfkey) and getattr(self, selfkey):
-                conf[sectname][confkey] = '1'
-            else:
-                # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf
-                # when a dialup connection is saved
-                conf[sectname][confkey] = '0'
-
-        #
-        # Write Modem Init strings
-        #
-        if conf[sectname].has_key('Init'): 
-            del conf[sectname]['Init']
-        if not conf[sectname].has_key('Init1'):
-            conf[sectname]['Init1'] = 'ATZ'
-        #
-        # Better not be smarter than the user
-        #
-#        if not conf[sectname].has_key('Init2'):
-#            conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2'
-        if self.InitString:
-            conf[sectname]['Init3'] = str(self.InitString)
-        #else: del conf[sectname]['Init3']
-
+        
         if self.PPPOptions:
             opt = ""
             for val in self.PPPOptions:
@@ -805,7 +766,6 @@ class ModemDialup(Dialup):
             parentConf['IDLETIMEOUT'] = str(self.HangupTimeout)
 
         if self.Inherits:
-            from netconfpkg import NCHardwareList
             hwlist = NCHardwareList.getHardwareList()
             for hw in hwlist:
                 if hw.Name == self.Inherits:
@@ -817,33 +777,75 @@ class ModemDialup(Dialup):
         if not parentConf.has_key('PEERDNS'):
             parentConf['PEERDNS'] = "no"
 
-        conf[sectname]['Inherits'] = devname
-
-        for i in conf.keys():
-            if not conf[i]:
-                del conf[i]
-
-        conf.write()
-
         if self.Compression:
             self.Compression.save(parentConf)
 
+        self.write_peers(deviceid, olddeviceid, name)
+
+    def write_wvdial(self, devname, sectname):        
+        "Write the wvdial section"
+        conf = ConfSMB.ConfSMB(filename=getRoot() + WVDIALCONF)
+        conf.chmod(0600)
+        if not conf.has_key(sectname):
+            conf[sectname] = ConfSMB.ConfSMBSubDict(conf, sectname)
+        
+        for selfkey in self.wvdict.keys():
+            confkey = self.wvdict[selfkey]
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
+                conf[sectname][confkey] = str(getattr(self, selfkey))
+            elif conf[sectname].has_key(confkey):
+                del conf[sectname][confkey]
+        for selfkey in self.boolwvdict.keys():
+            confkey = self.boolwvdict[selfkey]
+            if hasattr(self, selfkey) and getattr(self, selfkey):
+                conf[sectname][confkey] = '1'
+            # FIXME: [177931] Stupid Mode goes away in /etc/wvdial.conf
+            # when a dialup connection is saved
+            else:
+                conf[sectname][confkey] = '0'
+                #
+                # Write Modem Init strings
+                #
+        if conf[sectname].has_key('Init'):
+            del conf[sectname]['Init']
+        if not conf[sectname].has_key('Init1'):
+            conf[sectname]['Init1'] = 'ATZ'
+        #
+        # Better not be smarter than the user
+        #
+        #if not conf[sectname].has_key('Init2'):
+        #    conf[sectname]['Init2'] = 'ATQ0 V1 E1 S0=0 &C1 &D2'
+        if self.InitString:
+            conf[sectname]['Init3'] = str(self.InitString)
+        #else: del conf[sectname]['Init3']
+        conf[sectname]['Inherits'] = devname
+        for i in conf.keys():
+            if not conf[i]:
+                del conf[i]
+        conf.write()
+
+    def write_peers(self, deviceid, olddeviceid, name):
+        
         # Write /etc/ppp/peers/DeviceId
+        
         # bug #77763
         peerdir = getRoot() + PPPDIR + "/peers/"
         if not os.path.isdir(peerdir):
             mkdir(peerdir)
+        
         if olddeviceid and (olddeviceid != deviceid):
             unlink(peerdir + olddeviceid)
+        
         filename = peerdir + deviceid
         try:
             mfile = open(filename, "w")
-            line = 'connect "/usr/bin/wvdial --remotename ' + \
-                   '%s --chat \'%s\'"' % (deviceid, name)
+            line = str('connect "/usr/bin/wvdial --remotename '
+                       '%s --chat \'%s\'"' % (deviceid, name))
             mfile.write(line + '\n')
             log.lch(2, filename, line)
             mfile.close()
         except KeyError:
             pass
+
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

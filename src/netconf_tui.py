@@ -35,59 +35,71 @@ from version import PRG_VERSION
 from version import PRG_NAME
 import traceback
 import types
+import getopt
+class BadUsage(Exception):
+    pass
 
-dumpHash = {}
+_dumpHash = {}
+
+
+def ddump(file_fd, level, value, first):
+    for k, v in value.items():
+        if not first:
+            file_fd.write(", ")
+        else:
+            first = 0
+        if type(k) == types.StringType:
+            file_fd.write("'%s': " % (k, ))
+        else:
+            file_fd.write("%s: " % (k, ))
+        if type(v) == types.InstanceType:
+            dumpClass(v, file_fd, level + 1)
+        else:
+            file_fd.write("%s" % (v, ))
+
+def ddump2(file_fd, level, value, first):
+    for item in value:
+        if not first:
+            file_fd.write(", ")
+        else:
+            first = 0
+        if type(item) == types.InstanceType:
+            dumpClass(item, file_fd, level + 1)
+        else:
+            file_fd.write("%s" % (item, ))
+    return first
+
 # XXX do length limits on obj dumps.
-def dumpClass(instance, fd, level=0):
+def dumpClass(instance, file_fd, level=0):
     # protect from loops
-    if not dumpHash.has_key(instance):
-        dumpHash[instance] = None
+    if not _dumpHash.has_key(instance):
+        _dumpHash[instance] = None
     else:
-        fd.write("Already dumped\n")
+        file_fd.write("Already dumped\n")
         return
     if (instance.__class__.__dict__.has_key("__str__") or
         instance.__class__.__dict__.has_key("__repr__")):
-        fd.write("%s\n" % (instance,))
+        file_fd.write("%s\n" % (instance,))
         return
-    fd.write("%s instance, containing members:\n" %
+    file_fd.write("%s instance, containing members:\n" %
              (instance.__class__.__name__))
     pad = ' ' * ((level) * 2)
     for key, value in instance.__dict__.items():
         if type(value) == types.ListType:
-            fd.write("%s%s: [" % (pad, key))
+            file_fd.write("%s%s: [" % (pad, key))
             first = 1
-            for item in value:
-                if not first:
-                    fd.write(", ")
-                else:
-                    first = 0
-                if type(item) == types.InstanceType:
-                    dumpClass(item, fd, level + 1)
-                else:
-                    fd.write("%s" % (item,))
-            fd.write("]\n")
+            first = ddump2(file_fd, level, value, first)
+            file_fd.write("]\n")
         elif type(value) == types.DictType:
-            fd.write("%s%s: {" % (pad, key))
+            file_fd.write("%s%s: {" % (pad, key))
             first = 1
-            for k, v in value.items():
-                if not first:
-                    fd.write(", ")
-                else:
-                    first = 0
-                if type(k) == types.StringType:
-                    fd.write("'%s': " % (k,))
-                else:
-                    fd.write("%s: " % (k,))
-                if type(v) == types.InstanceType:
-                    dumpClass(v, fd, level + 1)
-                else:
-                    fd.write("%s" % (v,))
-            fd.write("}\n")
+            ddump(file_fd, level, value, first)
+            file_fd.write("}\n")
         elif type(value) == types.InstanceType:
-            fd.write("%s%s: " % (pad, key))
-            dumpClass(value, fd, level + 1)
+            file_fd.write("%s%s: " % (pad, key))
+            dumpClass(value, file_fd, level + 1)
         else:
-            fd.write("%s%s: %s\n" % (pad, key, value))
+            file_fd.write("%s%s: %s\n" % (pad, key, value))
 
 #
 # handleException function
@@ -236,23 +248,18 @@ def selectDevice(mscreen):
     return ret
 
 
-def Usage():
+def usage():
     print _("system-config-network - network configuration tool\n\n"
             "Usage: system-config-network -v --verbose -d --debug")
 
-#
-# __main__
-#
-def main():
-    import getopt
-    class BadUsage(Exception):
-        pass
+
+def parse_opts():
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
     chroot = None
-
+    
     # FIXME: add --root= option
-
+    
     try:
         opts = getopt.getopt(sys.argv[1:], "vh?r:d",
                                    [
@@ -265,47 +272,51 @@ def main():
             if opt == '-v' or opt == '--verbose':
                 NC_functions.setVerboseLevel(NC_functions.getVerboseLevel()+1)
                 continue
-
+    
             if opt == '-d' or opt == '--debug':
                 NC_functions.setDebugLevel(NC_functions.getDebugLevel()+1)
                 continue
-
+    
             if opt == '-h' or opt == "?" or opt == '--help':
-                Usage()
-                return 0
-
+                usage()
+                sys.exit(0)
+    
             if opt == '-r' or opt == '--root':
                 chroot = val
                 continue
-
-            raise BadUsage
-
+    
+            raise BadU
+            sage
+    
     except (getopt.error, BadUsage):
-        Usage()
-        return 1
-
-
+        usage()
+        return sys.exit(1)
+    
+    
     if not NC_functions.getDebugLevel():
         log.handler = log.syslog_handler
         log.open()
     else:
         log.handler = log.file_handler
         log.open(sys.stderr)
-
+    
     if chroot:
         NC_functions.setRoot(chroot)
-
+    
     if not os.access(NC_functions.getRoot(), os.W_OK):
         if os.getuid() != 0:
             generic_error_dialog (_("Please start system-config-network "
                                     "with root permissions!\n"))
-            return 10
-
+            sys.exit(10)
+    
     if chroot:
         NC_functions.prepareRoot(chroot)
-        
-#    exception.installExceptionHandler(PRG_NAME, PRG_VERSION, gui=0,
-#                                      debug=debug)
+
+#
+# __main__
+#
+def main():
+    parse_opts()
     screen = SnackScreen()
     plist = getProfileList()
     devlist = getDeviceList()
@@ -354,3 +365,8 @@ if __name__ == "__main__":
 
 __author__ = str("Trond Eivind Glomsrød <teg@redhat.com>,"
                  " Harald Hoyer <harald@redhat.com>")
+
+                 
+                 
+                 
+                 

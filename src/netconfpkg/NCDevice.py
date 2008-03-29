@@ -34,7 +34,6 @@ class StaticRoutes(Gdtlist):
     "Contains Routes"
     pass
 
-
 class Device_base(Gdtstruct):
     gdtstruct_properties([
                           ('DeviceId', Gdtstr, "Test doc string"),

@@ -36,6 +36,7 @@ from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 class ModemInterfaceWizard(InterfaceCreator):
     modemList = None
     def __init__ (self, toplevel=None, do_save = 1, druid = None):
+        InterfaceCreator.__init__(self, do_save = do_save)
         self.do_save = do_save
         self.toplevel = toplevel
         self.hardwarelist = NCHardwareList.getHardwareList()
