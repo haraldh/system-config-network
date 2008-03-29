@@ -108,15 +108,9 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('ipStaticRadio').set_active(True)
         on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
         xml.get_widget('ipAutomaticRadio').set_sensitive(False)
-
-
-    if device.Alias != None:
-        device.BootProto = "none"
-        xml.get_widget('ipAutomaticRadio').set_active(False)
-        xml.get_widget('ipStaticRadio').set_active(True)
-        on_ipBootProto_toggled(xml.get_widget('ipAutomaticRadio'), xml)
-        xml.get_widget('ipAutomaticRadio').set_sensitive(False)
-
+    else:
+        xml.get_widget('ipAutomaticRadio').set_sensitive(True)
+        
 
     if device.BootProto == "static" or device.BootProto == "none":
         xml.get_widget('ipAutomaticRadio').set_active(False)
@@ -342,12 +336,11 @@ def route_dehydrate(xml, device):
 ###
 ### Hardware (ethernet)
 ###
-
-
 def on_hardwareAliasesToggle_toggled(widget, xml, device):
     xml.get_widget("hardwareAliasesSpin").set_sensitive (widget.get_active())
     if widget.get_active():
-        device.Alias = 0
+        device.Alias = xml.get_widget(
+                        "hardwareAliasesSpin").get_value_as_int()
     else:
         device.Alias = None
 
@@ -404,9 +397,9 @@ def hardware_hydrate(xml, device):
     omenu.show_all()
 
     if device.Alias != None:
+        xml.get_widget("hardwareAliasesSpin").set_value(int(device.Alias))
         xml.get_widget("hardwareAliasesToggle").set_active(False)
         xml.get_widget("hardwareAliasesToggle").set_active(True)
-        xml.get_widget("hardwareAliasesSpin").set_value(device.Alias)
     else:
         xml.get_widget("hardwareAliasesToggle").set_active(True)
         xml.get_widget("hardwareAliasesToggle").set_active(False)
