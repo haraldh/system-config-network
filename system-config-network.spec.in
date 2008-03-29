@@ -101,6 +101,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Sat Mar 29 2008 Harald Hoyer <harald@redhat.com> - 1.5.2
+- devices which are controlled by NM cannot be activated/deactivated (rhbz#438902)
+- use ". config-util" in console-apps config file (rhbz#428408) (harald)
+- use xdg-open instead of htemlview (rhbz#415031) (harald)
+- added sr@latin (rhbz#425845)
+- update buttons on device edit change (harald)
+- fixed some Alias handling (harald)
+- removed Init2 string (clashes with UTMS) (harald)
+- no activate/deactivate/delete NMControlled devices (harald)
+- NCPluginDevTokenRing return None if no dialog (harald)
+- BackendHal fix to use Factory classes, no kudzu hw import (harald)
+- check if hostname is not None, before checking it (harald)
+- added tui/NCPluginTokenRingInterface (harald)
+- MTU moved to base device (rhbz#439202) (harald)
+- fixed import for ParseError (harald)
+
 * Thu Feb 28 2008 Harald Hoyer <harald@redhat.com> - 1.5.1
 - removed CIPE (harald)
 - s/Devernet/Network/ (harald)
