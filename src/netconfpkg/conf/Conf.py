@@ -145,6 +145,7 @@
 
 class FileMissing(Exception):
     def __init__(self, filename):
+        Exception.__init__(self)
         self.filename = filename
 
     def __str__(self):
@@ -152,6 +153,7 @@ class FileMissing(Exception):
 
 class IndexError(Exception):
     def __init__(self, filename, var):
+        Exception.__init__(self)
         self.filename = filename
         self.var = var
 
@@ -160,6 +162,7 @@ class IndexError(Exception):
 
 class BadFile(Exception):
     def __init__(self, msg):
+        Exception.__init__(self)
         self.msg = msg
 
     def __str__(self):
@@ -282,7 +285,9 @@ class Conf:
         fields = self.getfields()
         fields[fieldno:fieldno+1] = [fieldtext]
         self.setfields(fields)
-    def setline(self, line=[]):
+    def setline(self, line=None):
+        if line == None:
+            line = []
         self.deleteline()
         self.insertline(line)
     def deleteline(self):
@@ -420,7 +425,7 @@ class ConfShellVar(Conf):
 #  command in the file.
 class ConfShellVarClone(ConfShellVar):
     def __init__(self, cloneInstance, filename):
-        Conf.__init__(self, filename, commenttype='#',
+        ConfShellVar.__init__(self, filename, commenttype='#',
                       separators='=', separator='=')
         self.ci = cloneInstance
     def __getitem__(self, varname):
@@ -856,6 +861,7 @@ class ConfDIP:
           '  print connection to $remote failed.\n')
         self.file.close()
 
+# pylint: disable-msg=W0221
 
 class odict(UserDict):
     def __init__(self, dict = None):
@@ -1729,5 +1735,5 @@ class ConfSysctl(Conf):
             os.chmod(self.filename, self.mode)
         # add newlines
         for index in range(len(self.lines)):
-            self.file.write(self.lines[index] + '\n');
+            self.file.write(self.lines[index] + '\n')
         self.file.close()
