@@ -415,8 +415,9 @@ if __name__ == '__main__':
 
     debug = 0
 
-    class BadUsage: pass
-
+    class BadUsage(Exception):
+        "raised on a bad command line option"
+        
     try:
         opts, args = getopt.getopt(sys.argv[1:], "dgh",
                                    [

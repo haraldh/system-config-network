@@ -182,7 +182,8 @@ def runit(splash = None):
             del splash_window
         handleException(sys.exc_info(), PROGNAME, PRG_VERSION)
 
-class BadUsage: pass
+class BadUsage(Exception):
+    "Raised on bad arguments"
 
 def main(cmdline):
     import getopt

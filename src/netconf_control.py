@@ -68,7 +68,7 @@ STATUS_COLUMN = 0
 DEVICE_COLUMN = 1
 NICKNAME_COLUMN = 2
 
-class mainDialog:
+class crontrolMainDialog:
     def __init__(self):
         glade_file = 'neat-control.glade'
 
@@ -227,7 +227,7 @@ class mainDialog:
         if ret:
             errorString = _('Cannot configure network device %s')\
                           % (device)
-            generic_longinfo_dialog(errorString, msg, self.dialog);
+            generic_longinfo_dialog(errorString, msg, self.dialog)
 
         # update dialog #83640
         # Re-read the device list
@@ -483,7 +483,8 @@ if __name__ == '__main__':
         NCProfileList.updateNetworkScripts()
         NCDeviceList.updateNetworkScripts()
     import getopt
-    class BadUsage: pass
+    class BadUsage(Exception):
+        "raised, if bad arguments are used"
 
     try:
         opts, args = getopt.getopt(cmdline, "vh?d",
@@ -511,7 +512,7 @@ if __name__ == '__main__':
         Usage()
         sys.exit(1)
 
-    window = mainDialog()
+    window = crontrolMainDialog()
     gtk.main()
 
     sys.exit(0)

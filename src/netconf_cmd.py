@@ -52,7 +52,7 @@ textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
 import __builtin__
 __builtin__.__dict__['_'] = _
 
-def handleException((type, value, tb), progname, version, debug=None):
+def handleException((type, value, tb), progname, version, debug=None): # pylint: disable-msg=E0102
     import pdb
     list = traceback.format_exception (type, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
@@ -130,7 +130,8 @@ def main(cmdline):
     from netconfpkg.NC_functions import log
 
     signal.signal (signal.SIGINT, signal.SIG_DFL)
-    class BadUsage: pass
+    class BadUsage(Exception):
+        "raised, if bad arguments are used"
 
     progname = os.path.basename(sys.argv[0])
     NC_functions.setVerboseLevel(2)

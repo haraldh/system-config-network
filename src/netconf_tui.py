@@ -87,7 +87,7 @@ def dumpClass(instance, fd, level=0):
 #
 # handleException function
 #
-def handleException((type, value, tb), progname, version):
+def handleException((type, value, tb), progname, version): # pylint: disable-msg=E0102
     list = traceback.format_exception (type, value, tb)
     tblast = traceback.extract_tb(tb, limit=None)
     if len(tblast):
@@ -158,7 +158,7 @@ def newDevice(screen):
 
     machine = os.uname()[4]
     if machine == 's390' or machine == 's390x':
-         li.append(_("QETH"), QETH)
+        li.append(_("QETH"), QETH)
 
     g=GridForm(screen,_("Network Configuration"),1,3)
     g.add(t,0,0)
@@ -231,7 +231,8 @@ def Usage():
 #
 if __name__=="__main__":
     import getopt
-    class BadUsage: pass
+    class BadUsage(Exception): 
+        "Raised on bad arguments"
     from netconfpkg import *
     NC_functions.setVerboseLevel(2)
     NC_functions.setDebugLevel(0)
