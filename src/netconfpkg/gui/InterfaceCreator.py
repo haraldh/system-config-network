@@ -35,8 +35,8 @@ class InterfaceCreator:
     def get_druids (self):
         raise NotImplementedError
 
-    def finish (self):
-        raise NotImplementedError
+#    def finish (self):
+#        raise NotImplementedError
 
     def save(self):
         self.saveDevices()
