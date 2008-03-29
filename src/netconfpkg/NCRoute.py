@@ -1,7 +1,9 @@
 from netconfpkg import Route_base
 import re
 
-class Route(Route_base):
+# pylint: disable-msg=W0232
+
+class Route(Route_base): 
     def testIP(self, value):
         ip_pattern = r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
         if re.match(ip_pattern,value):
