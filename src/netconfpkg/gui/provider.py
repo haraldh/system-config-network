@@ -101,14 +101,14 @@ class providerDialog:
 
     def on_providerTree_button_press_event(self, clist, event, func):
         return
-        if event.type == gtk.gdk._2BUTTON_PRESS:
-            if self.okButton.get_property("sensitive"):
-                info = clist.get_selection_info(event.x, event.y)
-                if info != None:
-                    id = clist.signal_connect("button_release_event",
-                                              self.on_providerTree_button_release_event,
-                                              func)
-                    clist.set_data("signal_id", id)
+#        if event.type == gtk.gdk._2BUTTON_PRESS:
+#            if self.okButton.get_property("sensitive"):
+#                info = clist.get_selection_info(event.x, event.y)
+#                if info != None:
+#                    id = clist.signal_connect("button_release_event",
+#                                              self.on_providerTree_button_release_event,
+#                                              func)
+#                    clist.set_data("signal_id", id)
 
     def on_providerTree_button_release_event(self, clist, event, func):
         if self.okButton.get_property("sensitive"):
