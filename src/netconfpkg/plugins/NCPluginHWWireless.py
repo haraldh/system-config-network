@@ -27,7 +27,7 @@ class HwWireless(Hardware):
     "Wireless Hardware Device Class"
 
     def __init__(self):
-        super(HwWireless, self).__init__(self)
+        super(HwWireless, self).__init__()
         self.Type = WIRELESS
 
     def getDialog(self):

@@ -35,8 +35,8 @@ class DevADSL(Device):
         self.Dialup = DslDialup()
         self.setunmodified()
 
-    def load(self, name): # pylint: disable-msg=W0613
-        super(DevADSL, self).load(self, name)
+    def load(self, name): 
+        super(DevADSL, self).load(name)
         conf = ConfDevice(name)
         self.Dialup.load(conf, self)
 
