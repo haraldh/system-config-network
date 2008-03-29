@@ -133,9 +133,9 @@ def dhcp_hydrate (xml, device):
             xml.get_widget('mruSpin').set_value(device.Dialup.Mru)
             xml.get_widget('mruCB').set_active(True)
     else:
-            xml.get_widget('mruCB').set_active(False)
-            xml.get_widget('mruSpin').hide()
-            xml.get_widget('mruCB').hide()
+        xml.get_widget('mruCB').set_active(False)
+        xml.get_widget('mruSpin').hide()
+        xml.get_widget('mruCB').hide()
 
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
