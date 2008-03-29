@@ -514,11 +514,4 @@ class ModemDialupInterfaceDialog(DialupInterfaceDialog):
 NCDevIsdn.setDevIsdnDialog(ISDNDialupInterfaceDialog)
 NCDevModem.setDevModemDialog(ModemDialupInterfaceDialog)
 
-
-# make ctrl-C work
-if __name__ == "__main__":
-    signal.signal (signal.SIGINT, signal.SIG_DFL)
-    window = DialupInterfaceDialog()
-    window.run()
-    gtk.main()
 __author__ = "Harald Hoyer <harald@redhat.com>"
