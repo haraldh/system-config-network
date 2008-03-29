@@ -50,7 +50,7 @@ class ConfDevice( Conf.ConfShellVar ):
             self.insertline( "# Please read /usr/share/doc/"
                             "initscripts-*/sysconfig.txt" )
             self.nextline()
-            self.insertline( "# for the documentation of these parameters." );
+            self.insertline( "# for the documentation of these parameters." )
             self.rewind()
 
     def write( self ):
