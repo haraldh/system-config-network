@@ -62,29 +62,15 @@ def getModInfo():
     if getTestEnv():
         return None
     
-    if ModInfo == None:
-#         ModInfo = {}
-#         for mod in __networkmodulelist:
-#             if mod.find(".ko") != -1:
-#                 i = mod.find(".ko")
-#                 mod = mod[:i]
-
-#             try:
-#                 desc = execWithCapture("/sbin/modinfo", [ "/sbin/modinfo", "-F", "description", mod ])
-#                 ModInfo[mod] = {}
-#                 ModInfo[mod]['type'] = 'eth'
-#                 ModInfo[mod]['description'] = desc.strip()
-#             except:
-#                 pass
-            
-         for path in [ '/boot/module-info',
-                       NETCONFDIR + '/module-info',
-                       './module-info' ]:
-             try:
-                 ModInfo = ConfModInfo(filename = path)
-             except (VersionMismatch, FileMissing):
-                 continue
-             break
+    if ModInfo == None:            
+        for path in [ '/boot/module-info',
+                   NETCONFDIR + '/module-info',
+                   './module-info' ]:
+            try:
+                ModInfo = ConfModInfo(filename = path)
+            except (VersionMismatch, FileMissing):
+                continue
+            break
 
     return ModInfo
 
@@ -165,7 +151,8 @@ def getMyWvDial(create_if_missing = None):
 
     return _MyWvDial
 
-class ConfHWConf(Conf):
+class ConfHWConf(Conf): 
+    # pylint: disable-msg=W0233,W0231
 
     def __init__(self):
         Conf.__init__(self, getRoot() + HWCONF)
@@ -333,7 +320,7 @@ class HardwareList(HardwareList_base):
                     hdellist.remove(h)
                     break
             else:            
-		hwtype = getDeviceType(dev, module = module)
+                hwtype = getDeviceType(dev, module = module)
                 i = self.addHardware(hwtype)
                 hw = self[i]
                 if string.find (kudzu_device.desc, "|") != -1:
@@ -367,7 +354,6 @@ class HardwareList(HardwareList_base):
 
     def updateFromSys(self, hdellist):
         import glob
-        import os
 
         modules = getMyConfModules()
         modinfo = getModInfo()            
@@ -789,35 +775,4 @@ def getNextDev(base):
 
     return base + str(num)
 
-
-if __name__ == '__main__':
-    hl = HardwareList()
-    hl.load()
-    for i in xrange(len(hl)):
-        print "Name: ", hl[i].Name
-        print "Description: ", hl[i].Description
-        print "Type: ", hl[i].Type
-        if hl[i].Type == "Ethernet" or hl[i].Type == "ISDN":
-            print "ModuleName: ", hl[i].Card.ModuleName
-            print "IoPort: ", hl[i].Card.IoPort
-            print "IoPort1: ", hl[i].Card.IoPort1
-            print "IoPort2: ", hl[i].Card.IoPort2
-            print "Mem: ", hl[i].Card.Mem
-            print "IRQ: ", hl[i].Card.IRQ
-            print "DMA0: ", hl[i].Card.DMA0
-            print "DMA1: ", hl[i].Card.DMA1
-            print "ChannelProtocol: ", hl[i].Card.ChannelProtocol
-
-        if hl[i].Type == "Modem":
-            print "DeviceName: ", hl[i].Modem.DeviceName
-            print "BaudRate: ", hl[i].Modem.BaudRate
-            print "FlowControl: ", hl[i].Modem.FlowControl
-            print "ModemVolume: ", hl[i].Modem.ModemVolume
-            print "DialCommand: ", hl[i].Modem.DialCommand
-
-        print "-----------------------------------------"
-
-    hl.save()
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/07/13 12:31:36 $"
-__version__ = "$Revision: 1.84 $"
