@@ -67,33 +67,33 @@ class ethernetHardwareDialog:
     def on_okButton_clicked(self, button):
         self.dehydrate()
         return
-        # FIXME: no more HW parameter
-        cmd = [ '/sbin/modprobe ', self.hw.Card.ModuleName ]
-        if self.hw.Card.IRQ:
-            cmd.append(' irq='+self.hw.Card.IRQ)
-        if self.hw.Card.IoPort:
-            cmd.append(' io='+self.hw.Card.IoPort)
-        if self.hw.Card.IoPort1:
-            cmd.append(' io1='+self.hw.Card.IoPort1)
-        if self.hw.Card.IoPort2:
-            cmd.append(' io2='+self.hw.Card.IoPort2)
-        if self.hw.Card.Mem:
-            cmd.append(' mem='+self.hw.Card.Mem)
-        if self.hw.Card.DMA0:
-            cmd.append(' dma='+str(self.hw.Card.DMA0))
-        if self.hw.Card.DMA1:
-            cmd.append(' dma1='+str(self.hw.Card.DMA1))
-
-        (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
-                                                    catchfd = (1, 2))
-        if status != 0:
-            output = _('Command failed: ') + string.join(cmd) + '\n\n' + \
-                     _('Output:\n') + output
-            GUI_functions.generic_longinfo_dialog(\
-                _('The Ethernet card could not be initialized. '
-                  'Please verify your settings and try again.'),
-                output, self.dialog)
-        pass
+#        # FIXME: no more HW parameter
+#        cmd = [ '/sbin/modprobe ', self.hw.Card.ModuleName ]
+#        if self.hw.Card.IRQ:
+#            cmd.append(' irq='+self.hw.Card.IRQ)
+#        if self.hw.Card.IoPort:
+#            cmd.append(' io='+self.hw.Card.IoPort)
+#        if self.hw.Card.IoPort1:
+#            cmd.append(' io1='+self.hw.Card.IoPort1)
+#        if self.hw.Card.IoPort2:
+#            cmd.append(' io2='+self.hw.Card.IoPort2)
+#        if self.hw.Card.Mem:
+#            cmd.append(' mem='+self.hw.Card.Mem)
+#        if self.hw.Card.DMA0:
+#            cmd.append(' dma='+str(self.hw.Card.DMA0))
+#        if self.hw.Card.DMA1:
+#            cmd.append(' dma1='+str(self.hw.Card.DMA1))
+#
+#        (status, output) = gtkExecWithCaptureStatus('/sbin/modprobe', cmd,
+#                                                    catchfd = (1, 2))
+#        if status != 0:
+#            output = _('Command failed: ') + string.join(cmd) + '\n\n' + \
+#                     _('Output:\n') + output
+#            GUI_functions.generic_longinfo_dialog(\
+#                _('The Ethernet card could not be initialized. '
+#                  'Please verify your settings and try again.'),
+#                output, self.dialog)
+#        pass
 
     def on_cancelButton_clicked(self, button):
         pass
