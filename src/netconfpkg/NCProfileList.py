@@ -226,46 +226,46 @@ class ProfileList(ProfileList_base):
 
     def fixInterfaces(self):
         return
-        pppnum = 0
-        ipppnum = 0
-        isdnnum = 0
-        devicelist = NCDeviceList.getDeviceList()
-        changed = 0
-        for prof in self:
-            if not prof.Active:
-                continue
-            for devid in prof.ActiveDevices:
-                for dev in devicelist:
-                    if dev.DeviceId != devid:
-                        continue
-
-                    if dev.Type == MODEM or dev.Type == DSL:
-                        dstr = "ppp"+str(pppnum)
-                        if dev.Device != dstr:
-                            dev.Device = dstr
-                            changed = 1
-                        pppnum = pppnum + 1
-                    elif  dev.Type == ISDN:
-                        if dev.Dialup.EncapMode == 'syncppp':
-                            dstr = "ippp"+str(ipppnum)
-                            if dstr != dev.Device:
-                                dev.Device = dstr
-                                changed = 1
-                            if dev.Dialup.ChannelBundling == True:
-                                ipppnum = ipppnum + 1
-                                dstr = "ippp"+str(ipppnum)
-                                if dstr != dev.Dialup.SlaveDevice:
-                                    dev.Dialup.SlaveDevice = dstr
-                                    changed = 1
-                            ipppnum = ipppnum + 1
-                        else:
-                            dstr = "isdn"+str(isdnnum)
-                            if dstr != dev.Device:
-                                dev.Device = dstr
-                                changed = 1
-                            isdnnum = isdnnum + 1
-                    break
-            break
+#        pppnum = 0
+#        ipppnum = 0
+#        isdnnum = 0
+#        devicelist = NCDeviceList.getDeviceList()
+#        changed = 0
+#        for prof in self:
+#            if not prof.Active:
+#                continue
+#            for devid in prof.ActiveDevices:
+#                for dev in devicelist:
+#                    if dev.DeviceId != devid:
+#                        continue
+#
+#                    if dev.Type == MODEM or dev.Type == DSL:
+#                        dstr = "ppp"+str(pppnum)
+#                        if dev.Device != dstr:
+#                            dev.Device = dstr
+#                            changed = 1
+#                        pppnum = pppnum + 1
+#                    elif  dev.Type == ISDN:
+#                        if dev.Dialup.EncapMode == 'syncppp':
+#                            dstr = "ippp"+str(ipppnum)
+#                            if dstr != dev.Device:
+#                                dev.Device = dstr
+#                                changed = 1
+#                            if dev.Dialup.ChannelBundling == True:
+#                                ipppnum = ipppnum + 1
+#                                dstr = "ippp"+str(ipppnum)
+#                                if dstr != dev.Dialup.SlaveDevice:
+#                                    dev.Dialup.SlaveDevice = dstr
+#                                    changed = 1
+#                            ipppnum = ipppnum + 1
+#                        else:
+#                            dstr = "isdn"+str(isdnnum)
+#                            if dstr != dev.Device:
+#                                dev.Device = dstr
+#                                changed = 1
+#                            isdnnum = isdnnum + 1
+#                    break
+#            break
 
     def save(self):
         # FIXME: [163040] "Exception Occurred" when saving
