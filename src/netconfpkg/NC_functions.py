@@ -217,7 +217,9 @@ def rpms_notinstalled(namelist):
     except:
         return []
 
-def assure_rpms(pkgs = []):
+def assure_rpms(pkgs = None):
+    if pkgs == None:
+        pkgs = []
     toinstall = rpms_notinstalled(pkgs)
 
     r = RESPONSE_NO
@@ -231,7 +233,10 @@ def assure_rpms(pkgs = []):
         return r
     return r
 
-def request_rpms(pkgs = []):
+def request_rpms(pkgs = None):
+    if pkgs == None:
+        pkgs = []
+        
     toinstall = rpms_notinstalled(pkgs)
 
     if len(toinstall):
