@@ -5,7 +5,6 @@ GLADE_FILES = \
 	DeviceConfigDialog.glade \
 	DeviceTypeDialog.glade \
 	DialupInterfaceDialog.glade \
-	DialupDruid.glade \
 	editadress.glade \
 	editdomain.glade \
 	edithosts.glade \
@@ -14,7 +13,6 @@ GLADE_FILES = \
 	EthernetHardwareDruid.glade \
 	ethernethardware.glade \
 	EthernetInterfaceDruid.glade \
-	GenericInterfaceDruid.glade \
 	hardwaretype.glade \
 	IsdnHardwareDruid.glade \
 	isdnhardware.glade \
@@ -50,7 +48,6 @@ PYTHON_FILES = \
 	DeviceConfigDialog.py \
 	DeviceTypeDialog.py \
 	DialupInterfaceDialog.py \
-	DialupDruid.py \
 	editadress.py \
 	editdomain.py \
 	edithosts.py \
@@ -59,7 +56,6 @@ PYTHON_FILES = \
 	EthernetHardwareDruid.py \
 	ethernethardware.py \
 	EthernetInterface.py \
-	GenericInterface.py \
 	hardwaretype.py \
 	HardwareDialog.py \
 	__init__.py \
