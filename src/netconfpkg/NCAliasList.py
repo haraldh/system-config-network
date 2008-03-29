@@ -1,6 +1,7 @@
 from netconfpkg import AliasList_base
 import re
 
+# pylint: disable-msg=W0232
 class AliasList(AliasList_base):
     
     def test(self):
