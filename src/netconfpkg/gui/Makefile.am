@@ -5,6 +5,7 @@ GLADE_FILES = \
 	DeviceConfigDialog.glade \
 	DeviceTypeDialog.glade \
 	DialupInterfaceDialog.glade \
+	DialupDruid.glade \
 	editadress.glade \
 	editdomain.glade \
 	edithosts.glade \
@@ -48,6 +49,7 @@ PYTHON_FILES = \
 	DeviceConfigDialog.py \
 	DeviceTypeDialog.py \
 	DialupInterfaceDialog.py \
+	DialupDruid.py \
 	editadress.py \
 	editdomain.py \
 	edithosts.py \
