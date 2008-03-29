@@ -123,7 +123,7 @@ class DeviceList(DeviceList_base):
 
                 dev.DeviceId = newDeviceId
                 dev.commit(changed=False)
-		dev.setChanged(False)
+                dev.setChanged(False)
 
         if len(chdev.keys()):
             s =_("Changed the following Nicknames due to the initscripts:\n")
