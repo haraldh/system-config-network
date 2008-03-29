@@ -22,51 +22,51 @@ from netconfpkg.NC_functions import *
 _hwQethDialog = None
 _hwQethWizard = None
 
-class HwQeth(Hardware):    
-   def __init__(self, list = None, parent = None):
-      Hardware.__init__(self, list, parent)
-      self.Type = QETH
-      self.createCard()
-      self.Description = "Qeth Device"
-      
-   def getDialog(self):
-      if _hwQethDialog == None: return None
-      if hasattr(_hwQethDialog, 'getDialog'):
-         return _hwQethDialog(self).getDialog()
-      return _hwQethDialog(self).xml.get_widget("Dialog")
-    
-   def getWizard(self):
-      return _hwQethWizard
+class HwQeth(Hardware):     
+    def __init__(self, list = None, parent = None):
+        Hardware.__init__(self, list, parent)
+        self.Type = QETH
+        self.createCard()
+        self.Description = "Qeth Device"
+        
+    def getDialog(self):
+        if _hwQethDialog == None: return None
+        if hasattr(_hwQethDialog, 'getDialog'):
+            return _hwQethDialog(self).getDialog()
+        return _hwQethDialog(self).xml.get_widget("Dialog")
+     
+    def getWizard(self):
+        return _hwQethWizard
 
-   def save(self):
-      from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
+    def save(self):
+        from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
 
-      modules = getMyConfModules()
-      dic = modules[self.Name]
-      dic['alias'] = self.Card.ModuleName
-      modules[self.Name] = dic
+        modules = getMyConfModules()
+        dic = modules[self.Name]
+        dic['alias'] = self.Card.ModuleName
+        modules[self.Name] = dic
 
-   def isType(self, hardware):
-      if hardware.Type == QETH:
-         return true
-      if getHardwareType(hardware.Hardware) == QETH:
-         return true
-      return false
+    def isType(self, hardware):
+        if hardware.Type == QETH:
+            return true
+        if getHardwareType(hardware.Hardware) == QETH:
+            return true
+        return false
 
 def setHwQethDialog(dialog):
-   global _hwQethDialog
-   _hwQethDialog = dialog
+    global _hwQethDialog
+    _hwQethDialog = dialog
 
 def setHwQethWizard(wizard):
-   global _hwQethWizard
-   _hwQethWizard = wizard
+    global _hwQethWizard
+    _hwQethWizard = wizard
 
 import os
 machine = os.uname()[4]
 if machine == 's390' or machine == 's390x':
-   df = getHardwareFactory()
-   df.register(HwQeth, QETH)
-   
+    df = getHardwareFactory()
+    df.register(HwQeth, QETH)
+    
 __author__ = "Harald Hoyer <harald@redhat.com>"
 
 
