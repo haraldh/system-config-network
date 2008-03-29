@@ -14,26 +14,27 @@ def testHostname(hostname):
             names.pop()
         pattern = re.compile('([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
         for name in names:
-           if len(name) < 64:
-               if not pattern.match(name):
-                   return False
-           else:
-               return False
+            if len(name) < 64:
+                if not pattern.match(name):
+                    return False
+            else:
+                return False
         return True
     else:
         return False
 
-class Host(Host_base):
+# pylint: disable-msg=W0232
+class Host(Host_base): 
     HostID = None
     def testIP(self):
+        try:
+            socket.inet_pton(socket.AF_INET, self.IP)
+        except socket.error:
             try:
-                socket.inet_pton(socket.AF_INET, self.IP)
-            except socket.error:
-                try:
-                    socket.inet_pton(socket.AF_INET6, self.IP)
-                except:
-                    return False
-            return True
+                socket.inet_pton(socket.AF_INET6, self.IP)
+            except:
+                return False
+        return True
     
     def testHostname(self):
         return testHostname(self.Hostname)
