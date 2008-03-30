@@ -102,7 +102,7 @@ class IPsec(IPsec_base):
         }
 
     def __init__(self, clist = None, parent = None):
-        IPsec_base.__init__(self, clist, parent)
+        IPsec_base.__init__(self)
         self.oldname = None
 
     def load(self, name):
