@@ -101,8 +101,8 @@ class IPsec(IPsec_base):
         "IKEKey" : "IKE_PSK", 
         }
 
-    def __init__(self, clist = None, parent = None):
-        IPsec_base.__init__(self)
+    def __init__(self):
+        super(IPsec, self)._init__()
         self.oldname = None
 
     def load(self, name):
