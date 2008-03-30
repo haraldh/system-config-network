@@ -106,8 +106,10 @@ class HostsList(HostsList_base):
             if isinstance(entry, str):
                 conffile.write(entry + "\n")
             elif isinstance(entry, Host):
-                if (not entry.changed) and hasattr(entry, "origLine"):
-                    conffile.write(entry.origLine+"\n")
+                if ((not entry.changed) 
+                    and hasattr(entry, "origLine") 
+                    and entry.origLine):
+                    conffile.write(str(entry.origLine)+"\n")
                     continue
                 if entry.IP:
                     conffile.write(entry.IP)
