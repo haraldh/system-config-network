@@ -21,7 +21,9 @@ def _saveEntry(entry, conffile):
     if isinstance(entry, str):
         conffile.write(entry + "\n")
     elif isinstance(entry, Host):
-        if (not entry.modified()) and hasattr(entry, "origLine"):
+        if ((not entry.modified()) 
+            and hasattr(entry, "origLine")
+            and entry.origLine):
             conffile.write(entry.origLine+"\n")
             return
         if entry.IP:
