@@ -304,7 +304,7 @@ class crontrolMainDialog:
         status = INACTIVE
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
-            return
+            return None
         try:
             status = clist.get_pixtext(clist.selection[0], STATUS_COLUMN)[0]
         except ValueError:
@@ -315,7 +315,7 @@ class crontrolMainDialog:
         dev = None
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
-            return
+            return None
         try:
             dev = clist.get_pixtext(clist.selection[0], DEVICE_COLUMN)[0]
         except ValueError:
@@ -327,7 +327,7 @@ class crontrolMainDialog:
         nick = None
         clist = self.xml.get_widget('interfaceClist')
         if len(clist.selection) == 0:
-            return
+            return None
         nick = clist.get_text(clist.selection[0], NICKNAME_COLUMN)
         return nick
 
