@@ -101,6 +101,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Mon Mar 31 2008 Harald Hoyer <harald@redhat.com> - 1.5.4
+- fixed typos in DialupDruid (harald)
+- return None is nothing is selected (harald)
+- fixed #438901: Network Device Control doesn't work unless s-c-n has been run once (harald)
+- fixed #435041 and added UnitTest (harald)
+- be case-independent in mode parsing rhbz#433748 (harald)
+- fixed rhbz#429725 (harald)
+- do not traceback on non-int Volume (harald)
+- fixed rhbz#439718 (harald)
+
 * Sat Mar 29 2008 Harald Hoyer <harald@redhat.com> - 1.5.3
 - readded DialupDruid (harald)
 
