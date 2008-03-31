@@ -51,6 +51,13 @@ class DialupDruid(InterfaceCreator):
         self.devicelist = NCDeviceList.getDeviceList()
         self.profilelist = NCProfileList.getProfileList()
         self.xml = None
+        
+        
+    def get_project_name (self):
+        raise NotImplementedError
+
+    def get_project_description (self):
+        raise NotImplementedError                
 
     def init_gui(self):
         if self.xml:
@@ -139,14 +146,14 @@ class DialupDruid(InterfaceCreator):
         if device.BootProto == "static" or device.BootProto == "none":
             xml.get_widget('ipAutomaticRadio').set_active(False)
             xml.get_widget('ipStaticRadio').set_active(True)
-            self.on_ipBootProto_toggled(\
-                xml.get_widget('ipAutomaticRadio')),
+            self.on_ipBootProto_toggled(
+                xml.get_widget('ipAutomaticRadio'))
         else:
             device.BootProto = 'dialup'
             xml.get_widget('ipAutomaticRadio').set_active(True)
             xml.get_widget('ipStaticRadio').set_active(False)
-            self.on_ipBootProto_toggled(\
-                xml.get_widget('ipStaticRadio')),
+            self.on_ipBootProto_toggled(
+                xml.get_widget('ipStaticRadio'))
 
     def dhcp_dehydrate (self, xml, device):
         if xml.get_widget('ipAutomaticRadio').get_active():
@@ -167,8 +174,8 @@ class DialupDruid(InterfaceCreator):
         self.xml.get_widget('ipAutomaticRadio').set_active(True)
         self.xml.get_widget('ipStaticRadio').set_active(False)
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(True)
-        self.on_ipBootProto_toggled(\
-                self.xml.get_widget('ipStaticRadio')),
+        self.on_ipBootProto_toggled(
+                self.xml.get_widget('ipStaticRadio'))
         dialup = self.device.createDialup()
         dialup.EncapMode = 'syncppp'
         self.device.Device = getNewDialupDevice(NCDeviceList.getDeviceList(),
@@ -177,8 +184,8 @@ class DialupDruid(InterfaceCreator):
     def on_raw_ip_activate(self, *args):
         self.xml.get_widget('ipAutomaticRadio').set_active(False)
         self.xml.get_widget('ipStaticRadio').set_active(True)
-        self.on_ipBootProto_toggled(\
-                self.xml.get_widget('ipAutomaticRadio')),
+        self.on_ipBootProto_toggled(
+                self.xml.get_widget('ipAutomaticRadio'))
         self.xml.get_widget('ipAutomaticRadio').set_sensitive(False)
         dialup = self.device.createDialup()
         dialup.EncapMode = 'rawip'
@@ -399,7 +406,7 @@ class DialupDruid(InterfaceCreator):
 
         if self.connection_type == ISDN:
             dialup.HangupTimeout = 600
-            dialup.EncapMode == 'syncppp'
+            dialup.EncapMode = 'syncppp'
 
         elif self.connection_type == MODEM:
             dialup.Inherits = 'Modem0'
