@@ -100,5 +100,40 @@ class Hardware(Hardware_base):
 
     def postSave(self):
         return None
+    
+    def saveModule(self):
+        from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
+        
+        hl = getHardwareList()
+        modules = getMyConfModules()
+        dic = modules[self.Name]
+        if dic:
+            dic['alias'] = self.Card.ModuleName
+            modules[self.Name] = dic
+            log.lch(2, modules.filename, "%s alias %s" % (self.Name, self.Card.ModuleName))
+        # No, no, no... only delete known options!!!
+        #WRONG: modules[self.Card.ModuleName] = {}
+        #WRONG: modules[self.Card.ModuleName]['options'] = {}
+        #
+        # Better do it this way!
+        
+        if (modules.has_key(self.Card.ModuleName) and modules[self.Card.ModuleName].has_key('options')):
+            for (key, confkey) in hl.keydict.items():
+                if modules[self.Card.ModuleName]['options'].has_key(confkey):
+                    del modules[self.Card.ModuleName]['options'][confkey]
+                
+            
+        
+        for (selfkey, confkey) in hl.keydict.items():
+            if self.Card.__dict__[selfkey]:
+                if (not (selfkey == 'IRQ' and (self.Card.IRQ == _('Unknown') or (self.Card.IRQ == 'Unknown')))):
+                    dic = modules[self.Card.ModuleName]
+                    if not dic.has_key('options'):
+                        dic['options'] = {}
+                    
+                    dic['options'][confkey] = str(self.Card.__dict__[selfkey])
+                    modules[self.Card.ModuleName] = dic
+
+
 
 __author__ = "Harald Hoyer <harald@redhat.com>"

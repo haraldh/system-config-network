@@ -51,12 +51,7 @@ class HwQeth(Hardware):
         """
         save the configuration
         """
-        from netconfpkg.NCHardwareList import getMyConfModules
-
-        modules = getMyConfModules()
-        dic = modules[self.Name]
-        dic['alias'] = self.Card.ModuleName 
-        modules[self.Name] = dic
+        self.saveModule()
 
     def isType(self, hardware):
         """
