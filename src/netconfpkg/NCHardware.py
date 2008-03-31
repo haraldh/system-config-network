@@ -46,7 +46,8 @@ class Hardware(Hardware_base):
     
     def saveModule(self):
         from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
-        
+        if not self.Card.ModuleName:
+            return
         hl = getHardwareList()
         modules = getMyConfModules()
         dic = modules[self.Name]

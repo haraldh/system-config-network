@@ -442,14 +442,14 @@ class HardwareList(HardwareList_base):
         return hdellist
 
 
-    def updateFromHal(self, hdellist):
+    def updateFromHal(self, hdellist = None):
         import NCBackendHal
         hal = NCBackendHal.NCBackendHal()
         cards = hal.probeCards()
         for hw in cards:
             # if it is already in our HW list do not delete it.
             for h in hdellist:
-                if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
+                if h.Name == hw.Name and (not hw.Card.ModuleName or h.Card.ModuleName == hw.Card.ModuleName):
                     log.log(5, "Found %s:%s, which is already in our list!" % (hw.Name, hw.Card.ModuleName))
                     hdellist.remove(h)
                     break
@@ -457,7 +457,7 @@ class HardwareList(HardwareList_base):
                     log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
             else: 
                 for h in self:
-                    if h.Name == hw.Name and h.Card.ModuleName == hw.Card.ModuleName:
+                    if h.Name == hw.Name and (not hw.Card.ModuleName or h.Card.ModuleName == hw.Card.ModuleName):
                         break
                     else:
                         log.log(5, "%s != %s and %s != %s" % (h.Name, hw.Name, h.Card.ModuleName, hw.Card.ModuleName))
@@ -478,8 +478,12 @@ class HardwareList(HardwareList_base):
 #        except:
 #            pass
 #        log.log(5, str(self))
-
         hdellist = []
+
+        self.updateFromHal(hdellist)
+
+        log.log(5, "updateFromHal")
+        log.log(5, str(self))
 
         for h in self:
             if h.Status == HW_SYSTEM:
@@ -490,14 +494,6 @@ class HardwareList(HardwareList_base):
         except:
             pass
 
-
-        try:
-            hdellist = self.updateFromHal(hdellist)
-        except:
-            pass
-
-        log.log(5, "updateFromHal")
-        log.log(5, str(self))
 
         try:
             hdellist = self.updateFromSys(hdellist)
@@ -560,7 +556,6 @@ class HardwareList(HardwareList_base):
                        modules[hw.Card.ModuleName]['options'].has_key(confkey):
                     hw.Card.__dict__[selfkey] = modules[hw.Card.ModuleName]\
                                                 ['options'][confkey]
-
 
     def _objToStr(self, parentStr = None):
         #return DeviceList_base._objToStr(self, obj, parentStr)
