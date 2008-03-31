@@ -934,8 +934,13 @@ class ConfModules(Conf):
         self.vars = odict()
         keys = ('alias', 'options', 'install', 'remove')
         self.rewind()
-        while self.findnextcodeline():
+        while self.findnextcodeline():            
             var = self.getfields()
+            # strip comments
+            for val in var:
+                if val and val.strip().startswith('#'):
+                    var = var[:var.index(val)]
+                    break
             # assume no -k field
             if len(var) > 2 and var[0] in keys:
                 if not self.vars.has_key(var[1]):
@@ -989,6 +994,8 @@ class ConfModules(Conf):
         # set *every* instance (should only be one, but...) to avoid surprises
         place=self.tell()
         self.vars[varname] = value
+        endofline = ""
+        replace = ""
         for key in value.keys():
             self.rewind()
             missing=1
@@ -1006,6 +1013,8 @@ class ConfModules(Conf):
                 endofline = joinfields(value[key], ' ')
                 replace = key + ' ' + varname + ' ' + endofline
             else:
+                endofline = ""
+                replace = ""
                 # some idiot apparantly put an unrecognized key in
                 # the dictionary; ignore it...
                 continue
@@ -1020,8 +1029,9 @@ class ConfModules(Conf):
                     cl = split(self.getline(), '#')
                     if len(cl) >= 2:
                         comment = join(cl[1:], '#')
-                        replace += ' #' + comment
-                    self.setline(replace)
+                        self.setline(replace + ' #' + comment)
+                    else:
+                        self.setline(replace)
                     missing=0
                     self.nextline()
                 if missing:
