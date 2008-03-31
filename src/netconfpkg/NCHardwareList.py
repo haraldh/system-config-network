@@ -670,7 +670,10 @@ class HardwareList(HardwareList_base):
 
                 if not wvdial[dev].has_key('SetVolume'):
                     wvdial[dev]['SetVolume'] = '0'
-                hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
+                try:
+                    hw.Modem.ModemVolume = int(wvdial[dev]['SetVolume'])
+                except ValueError:
+                    hw.Modem.ModemVolume = 1
 
                 if not wvdial[dev].has_key('Dial Command'):
                     wvdial[dev]['Dial Command'] = 'ATDT'
