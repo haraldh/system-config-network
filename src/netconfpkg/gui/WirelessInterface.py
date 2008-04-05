@@ -214,8 +214,8 @@ class WirelessInterface(InterfaceCreator):
                 pass
             else:
                 if info.has_key("Mode"):
-                    values = [ r[1] for r in self.modestore ]
-                    match_row = values.index(info["Mode"])
+                    values = [ r[1].lower() for r in self.modestore ]
+                    match_row = values.index(info["Mode"].lower())
                     self.xml.get_widget("modeCombo").set_active(match_row)
 
                 if info.has_key("ESSID") and info["ESSID"] != "":

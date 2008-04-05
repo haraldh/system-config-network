@@ -333,7 +333,7 @@ def main(cmdline):
 
 
             for devlist in devlists:
-                log.log(1, "%s" % devlist)
+                log.log(1, "%s" % str(devlist))
                 devlist.save()
 
             return(0)

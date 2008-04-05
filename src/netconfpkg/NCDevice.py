@@ -33,6 +33,9 @@ class ConfDevice( Conf.ConfShellVar ):
     def __init__( self, name, dir = None ):
         if dir == None:
             dir = getRoot() + SYSCONFDEVICEDIR
+            if not os.path.isdir(dir):
+                dir = getRoot() + OLDSYSCONFDEVICEDIR
+                
         new = False
         self.filename = dir + 'ifcfg-' + name
         if not os.access( self.filename, os.R_OK ):

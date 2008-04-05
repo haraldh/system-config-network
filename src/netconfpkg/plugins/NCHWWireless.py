@@ -42,6 +42,9 @@ class HwWireless(Hardware):
             return True
         return False
 
+    def save(self):
+        self.saveModule()
+
 def setHwWirelessDialog(dialog):
     global _hwEthernetDialog
     _hwEthernetDialog = dialog

@@ -103,10 +103,11 @@ class NCBackendHal:
                 hw.Description = "%s %s" % self.getVendor(udi)
                 hw.Status = HW_SYSTEM
                 index = self.getProperty(obj, "net.physical_device")
-                if index != None:
+                if index == None:
+                    index = self.getProperty(obj, "net.originating_device")
+                if index != None:                    
                     # pylint: disable-msg=E1103
-                    hw.Card.ModuleName = self.getDriver(index)
-
+                    hw.Card.ModuleName = str(self.getDriver(index))
                 return hw
         return None
 

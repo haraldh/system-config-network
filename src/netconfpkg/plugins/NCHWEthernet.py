@@ -35,38 +35,8 @@ class HwEthernet(Hardware):
         return _hwEthernetWizard
 
     def save(self):
-        from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
-
-        hl = getHardwareList()
-        modules = getMyConfModules()
-        dic = modules[self.Name]
-        dic['alias'] = self.Card.ModuleName
-        modules[self.Name] = dic
-        log.lch(2, modules.filename, "%s alias %s" % (self.Name, self.Card.ModuleName))
-        # No, no, no... only delete known options!!!
-        #WRONG: modules[self.Card.ModuleName] = {}
-        #WRONG: modules[self.Card.ModuleName]['options'] = {}
-        #
-        # Better do it this way!
-        if modules[self.Card.ModuleName].has_key('options'):
-            for (key, confkey) in hl.keydict.items():
-                if modules[self.Card.ModuleName]\
-                       ['options'].has_key(confkey):
-                    del modules[self.Card.ModuleName]['options'][confkey]
-
-        for (selfkey, confkey) in hl.keydict.items():
-            if self.Card.__dict__[selfkey]:
-                if selfkey == 'IRQ' \
-                   and (self.Card.IRQ == _('Unknown') \
-                        or (self.Card.IRQ == 'Unknown')):
-                    continue
-                dic = modules[self.Card.ModuleName]
-                if not dic.has_key('options'):
-                    dic['options'] = {}
-                dic['options'][confkey] = \
-                                        str(self.Card.__dict__[selfkey])
-                modules[self.Card.ModuleName] = dic
-
+        self.saveModule()
+                
     def isType(self, hardware):
         if hardware.Type == ETHERNET:
             return True
@@ -85,5 +55,3 @@ def setHwEthernetWizard(wizard):
 df = getHardwareFactory()
 df.register(HwEthernet, ETHERNET)
 __author__ = "Harald Hoyer <harald@redhat.com>"
-__date__ = "$Date: 2007/03/14 09:29:37 $"
-__version__ = "$Revision: 1.9 $"

@@ -39,12 +39,7 @@ class HwQeth(Hardware):
         return _hwQethWizard
 
     def save(self):
-        from netconfpkg.NCHardwareList import getMyConfModules, getHardwareList
-
-        modules = getMyConfModules()
-        dic = modules[self.Name]
-        dic['alias'] = self.Card.ModuleName
-        modules[self.Name] = dic
+        self.saveModule()
 
     def isType(self, hardware):
         if hardware.Type == QETH:

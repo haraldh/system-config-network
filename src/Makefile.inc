@@ -16,11 +16,11 @@ pylint: $(PYTHON_FILES)
 	@if [ -x /usr/bin/pylint ]; then \
 		echo "Running pylint -- Please wait, this can last a bit"; \
 		pushd $(srcdir); \
-		! pylint --rcfile=$(top_srcdir)/pylintrc --errors-only netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:' ;\
+		! pylint --rcfile=$(top_srcdir)/pylintrc --include-ids=yes --errors-only netconfpkg $(subst .py,,$(PYTHON_FILES)) 2>/dev/null|tee /dev/tty|egrep '^E:' ;\
 		popd; \
 	fi
 
 pylintv: $(PYTHON_FILES)
-	pylint --rcfile=$(top_srcdir)/pylintrc netconfpkg $(subst .py,,$(PYTHON_FILES))
+	pylint --rcfile=$(top_srcdir)/pylintrc --include-ids=yes netconfpkg $(subst .py,,$(PYTHON_FILES))
 
 
