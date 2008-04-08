@@ -27,8 +27,8 @@ _devQethDialog = None
 _devQethWizard = None
 
 class DevQeth(DevEthernet):  
-    def __init__(self, clist = None, parent = None):
-        DevEthernet.__init__(self, clist, parent)
+    def __init__(self):
+        super(DevQeth, super).__init__()
         self.Type = QETH
        
     def isType(self, device):
