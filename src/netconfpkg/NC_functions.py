@@ -247,7 +247,7 @@ def testHostname(hostname):
         if not names[-1]:
             names.pop()
         pattern = re.compile(
-            '([a-zA-Z]|[0-9])+(-[a-zA-Z]|-[0-9]|[a-zA-Z]|[0-9])*$')
+            '([a-zA-Z]|[0-9])+(-|[a-zA-Z]|-[0-9])*([a-zA-Z]|[0-9])+$')
         for name in names:
             if len(name) < 64:
                 if not pattern.match(name):
