@@ -285,8 +285,7 @@ def parse_opts():
                 chroot = val
                 continue
     
-            raise BadU
-            sage
+            raise BadUsage
     
     except (getopt.error, BadUsage):
         usage()
