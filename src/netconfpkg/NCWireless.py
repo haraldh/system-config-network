@@ -40,7 +40,7 @@ class Wireless(Wireless_base):
                 }
 
     def __init__(self):
-        super(Wireless, super).__init__()
+        super(Wireless, self).__init__()
         self.Key = ''
 
     def load(self, parentConf, deviceid):
