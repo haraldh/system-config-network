@@ -38,7 +38,7 @@ class TestConf(unittest.TestCase):
             os.unlink(self.filename)
         except: pass
 
-    def testReadWrite(self):
+    def test01ReadWrite(self):
         """Conf class: basic reading and writing"""
         str = """
 # testConfig file
@@ -58,18 +58,18 @@ c\td
         # check
         if not expectConf(self.filename, str):
             writeConf(self.filename + '.orig', str)
-            os.system("diff -u " + self.filename + " " + self.filename + ".orig")
+            os.system("(echo;diff -u  %s %s) >&2" % (self.filename + ".orig", self.filename))
             os.unlink(self.filename + '.orig')
             self.fail("Test1 failed!!!!")
 
 
-    def testModify(self):
+    def test02Modify(self):
         """Conf class: reading, modify and writing"""
         str = """
 # testConfig file
 a=b
 # comment
-c=d
+c=d 
 # comment2
 """
         # read
@@ -95,12 +95,12 @@ g=h
 """
         if not expectConf(self.filename, str):
             writeConf(self.filename + '.orig', str)
-            os.system("diff -u " + self.filename + " " + self.filename + ".orig")
+            os.system("(echo;diff -u  %s %s) >&2" % (self.filename + ".orig", self.filename))
             os.unlink(self.filename + '.orig')
             self.fail("Test2 failed!!!!")
 
 
-    def testConfModules(self):
+    def test03ConfModules(self):
         """ConfModules class: basic reading and writing"""
         #
         # test3
@@ -108,7 +108,8 @@ g=h
         str = """# Modules test file
 alias parport_lowlevel parport_pc
 #alias eth0 3c59x
-alias eth3 3c59x
+alias eth3 3c59x # test test
+alias eth3 3c59x # test test2
 #alias eth0 3c59x
 #alias sound-slot-1 emu10k1
 alias sound-slot-0 emu10k1
@@ -117,6 +118,7 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+install snd-via82xx-modem /bin/true # temporarily disabled by hsf - conflicts with hsfmc97via
 options snd-intel8x0 index=0 id="ICH"
 options snd cards_limit=2
 alias char-major-195* nvidia
@@ -135,11 +137,11 @@ alias foo* bar
         # check
         if not expectConf(self.filename, str):
             writeConf(self.filename + '.orig', str)
-            os.system("diff -u " + self.filename + " " + self.filename + ".orig")
+            os.system("(echo;diff -u  %s %s) >&2" % (self.filename + ".orig", self.filename))
             os.unlink(self.filename + '.orig')
             self.fail("Test3 failed!!!!")
 
-    def testConfModulesModify(self):
+    def test04ConfModulesModify(self):
         """ConfModules class: reading, modify and writing"""
         #
         # test4
@@ -156,6 +158,7 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+install snd-via82xx-modem /bin/true # temporarily disabled by hsf - conflicts with hsfmc97via
 #options ipw2100 ifname=eth1
 options i8k force=1
 options snd-intel8x0 index=0 id="ICH"
@@ -193,6 +196,7 @@ alias sound-slot-0 emu10k1
 post-install sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
 pre-remove sound-slot-0 /bin/aumix-minimal -f /etc/.aumixrc -S >/dev/null 2>&1 || :alias usb-controller usb-uhci
 post-install sound-slot-1 /bin/aumix-minimal -f /etc/.aumixrc -L >/dev/null 2>&1 || :
+install snd-via82xx-modem /bin/true # temporarily disabled by hsf - conflicts with hsfmc97via
 #options ipw2100 ifname=eth1
 options i8k force=1
 options snd-intel8x0 index=0 id="ICH"
@@ -207,7 +211,7 @@ alias foo* baz
 """
         if not expectConf(self.filename, str):
             writeConf(self.filename + '.orig', str)
-            os.system("diff -u " + self.filename + " " + self.filename + ".orig")
+            os.system("(echo;diff -u  %s %s) >&2" % (self.filename + ".orig", self.filename))
             os.unlink(self.filename + '.orig')
             self.fail("Test4 failed!!!!")
 

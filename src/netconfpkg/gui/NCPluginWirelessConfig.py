@@ -108,8 +108,8 @@ class wirelessConfigDialog(DeviceConfigDialog):
         wl = self.device.Wireless
         if wl:
             if wl.Mode and self.modestore:
-                values = [ r[1] for r in self.modestore ]
-                match_row = values.index(wl.Mode)
+                values = [ r[1].lower() for r in self.modestore ]
+                match_row = values.index(wl.Mode.lower())
                 self.xml.get_widget("modeCombo").set_active(match_row)
 
             if wl.EssId == "":

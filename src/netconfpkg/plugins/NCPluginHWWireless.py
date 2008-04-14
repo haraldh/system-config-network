@@ -54,6 +54,9 @@ class HwWireless(Hardware):
             return True
         return False
 
+    def save(self):
+        self.saveModule()
+
 def setHwWirelessDialog(dialog):
     """
     Set the gtk Modem Dialog
