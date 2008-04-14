@@ -19,10 +19,16 @@ from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr,
                             Gdtint)
 
 
-HW_INACTIVE = _("inactive") # not found in last config and not in actual system
-HW_SYSTEM = _("system")   # found in system
-HW_CONF = _("configured")     # found in config but not in system
-HW_OK = _("ok")       # found in system and in config
+HW_INACTIVE_TR = _("inactive") # not found in last config and not in actual system
+HW_SYSTEM_TR = _("system")     # found in system
+HW_CONF_TR = _("configured")   # found in config but not in system
+HW_OK_TR = _("ok")             # found in system and in config
+
+HW_INACTIVE = "inactive" # not found in last config and not in actual system
+HW_SYSTEM = "system"     # found in system
+HW_CONF = "configured"   # found in config but not in system
+HW_OK = "ok"             # found in system and in config
+
 
 class Card(Gdtstruct):
     gdtstruct_properties([

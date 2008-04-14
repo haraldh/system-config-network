@@ -540,7 +540,7 @@ class mainDialog:
 
         for hw in hardwarelist:
             clist.append([str(hw.Description), str(hw.Type), 
-                          str(hw.Name), str(hw.Status)])
+                          str(hw.Name), _(str(hw.Status))])
             device_pixmap, device_mask = \
                 get_device_icon_mask(hw.Type, self.dialog)
             if device_pixmap:
