@@ -65,7 +65,7 @@ distclean-local:
 
 VERSION=@VERSION@
 SCMTAG=r$(subst .,-,$(VERSION))-$(subst .,-,$(RPM_RELEASE))
-GITBRANCH=experimental
+GITBRANCH=master
 GZ_BZIP=bz2
 
 include Makefile.inc
