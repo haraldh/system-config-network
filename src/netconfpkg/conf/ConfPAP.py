@@ -105,9 +105,9 @@ class ConfPAP(Conf.Conf):
         var = []
         if self.line >= len(self.lines):
             return []
-        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?"))( |\t)+'
+        regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+)( |\t)+'
         r'(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)( |\t)+'
-        r'(?P<secret>("([^"\\]|\\\S)*?"))')
+        r'(?P<secret>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+)')
         m = regexp.match(self.lines[self.line])
         if not m:
             raise Conf.BadFile, "Error occured while parsing %s" % self.filename
