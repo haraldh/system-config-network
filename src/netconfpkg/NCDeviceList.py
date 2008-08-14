@@ -266,7 +266,7 @@ class DeviceList(Gdtlist):
                     break
             else:
                 # check for IPSEC
-                conf = ConfDevice(devid, dir=dirname)
+                conf = ConfDevice(devid, mdir=dirname)
                 mtype = IPSEC
                 if conf.has_key("TYPE"):
                     mtype = conf["TYPE"]

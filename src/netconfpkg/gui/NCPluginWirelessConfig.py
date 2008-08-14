@@ -123,8 +123,8 @@ class wirelessConfigDialog(DeviceConfigDialog):
                 self.xml.get_widget("essidEntry").set_text(wl.EssId)
 
             if wl.Channel and wl.Channel != "":
-                self.xml.get_widget("channelSpinButton").set_value(
-                                                        int(wl.Channel))
+                self.xml.get_widget("channelEntry").set_text(
+                                                        wl.Channel)
 
             if wl.Rate:
                 self.xml.get_widget("rateEntry").set_text(_(wl.Rate))
@@ -151,15 +151,22 @@ class wirelessConfigDialog(DeviceConfigDialog):
 
             row = self.xml.get_widget("modeCombo").get_active()
             wl.Mode = self.modestore[row][1]
-
-            wl.Channel = str(self.xml.get_widget(
-                                "channelSpinButton").get_value_as_int())
-
-            rate = self.xml.get_widget("rateEntry").get_text()
-            if rate == _("Auto"):
+            
+            if wl.Mode == "Managed":
+                wl.Channel = ""
                 wl.Rate = "auto"
             else:
-                wl.Rate = rate
+                channel = self.xml.get_widget("channelEntry").get_text()
+                if channel == "Auto":
+                    wl.Channel = ""
+                else:
+                    wl.Channel = channel
+
+                rate = self.xml.get_widget("rateEntry").get_text()
+                if rate == _("Auto"):
+                    wl.Rate = "auto"
+                else:
+                    wl.Rate = rate
             # FIXME: [168036] check the key!
             wl.Key = self.xml.get_widget("keyEntry").get_text()
 
@@ -169,11 +176,11 @@ class wirelessConfigDialog(DeviceConfigDialog):
     def on_modeChanged(self, entry): # pylint: disable-msg=W0613
         mode = self.modestore[self.xml.get_widget("modeCombo").get_active()][1]
         if mode == "Managed":
-            self.xml.get_widget("channelSpinButton").set_sensitive(False)
+            self.xml.get_widget("channelCombo").set_sensitive(False)
             self.xml.get_widget("rateCombo").set_sensitive(False)
             self.xml.get_widget("rateEntry").set_sensitive(False)
         else:
-            self.xml.get_widget("channelSpinButton").set_sensitive(True)
+            self.xml.get_widget("channelCombo").set_sensitive(True)
             self.xml.get_widget("rateCombo").set_sensitive(True)
             self.xml.get_widget("rateEntry").set_sensitive(True)
         self.on_essidAutoButton_toggled(self.xml.get_widget("essidAutoButton"))

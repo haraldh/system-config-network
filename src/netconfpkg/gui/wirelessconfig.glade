@@ -457,7 +457,6 @@
 		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
 		  <property name="ypad">0</property>
-		  <property name="mnemonic_widget">channelSpinButton</property>
 		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
 		  <property name="width_chars">-1</property>
 		  <property name="single_line_mode">False</property>
@@ -469,27 +468,6 @@
 		  <property name="top_attach">4</property>
 		  <property name="bottom_attach">5</property>
 		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkSpinButton" id="channelSpinButton">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="climb_rate">1</property>
-		  <property name="digits">0</property>
-		  <property name="numeric">False</property>
-		  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
-		  <property name="snap_to_ticks">False</property>
-		  <property name="wrap">False</property>
-		  <property name="adjustment">1 1 14 1 10 10</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">4</property>
-		  <property name="bottom_attach">5</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -665,6 +643,165 @@
 		  <property name="bottom_attach">1</property>
 		  <property name="x_options">fill</property>
 		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkCombo" id="channelCombo">
+		  <property name="visible">True</property>
+		  <property name="value_in_list">False</property>
+		  <property name="allow_empty">False</property>
+		  <property name="case_sensitive">False</property>
+		  <property name="enable_arrow_keys">True</property>
+		  <property name="enable_arrows_always">False</property>
+
+		  <child internal-child="entry">
+		    <widget class="GtkEntry" id="channelEntry">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes">Auto</property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		  </child>
+
+		  <child internal-child="list">
+		    <widget class="GtkList" id="list1">
+		      <property name="visible">True</property>
+		      <property name="selection_mode">GTK_SELECTION_BROWSE</property>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem295">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Auto</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem296">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">1</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem297">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">2</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem298">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">3</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem299">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">4</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem300">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">5</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem301">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">6</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem302">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">7</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem303">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">8</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem304">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">9</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem305">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">10</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem306">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">11</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem307">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">12</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem308">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">13</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem309">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">14</property>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">4</property>
+		  <property name="bottom_attach">5</property>
+		  <property name="y_options"></property>
 		</packing>
 	      </child>
 	    </widget>
