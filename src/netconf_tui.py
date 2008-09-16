@@ -140,7 +140,7 @@ sys.excepthook = lambda type, value, tb: handleException((type, value, tb),
 
 from netconfpkg import exception
 from netconfpkg.NCHardwareList import getHardwareList
-from snack import GridForm, TextboxReflowed, Listbox, ButtonBar
+from snack import GridForm, TextboxReflowed, Listbox, ButtonBar, Entry, Grid, Label
 from netconfpkg.NC_functions import ETHERNET, ISDN, MODEM, QETH
 from netconfpkg.NCDeviceFactory import getDeviceFactory
 
@@ -168,86 +168,6 @@ def loadConfig(mscreen):
 #
 # main Screen
 #
-def newDevice(mscreen):
-    """
-    Displays the main screen
-    @screen The snack screen instance
-    """
-    t = TextboxReflowed(25, _("Which device type do you want to add?"))
-    bb = ButtonBar(mscreen, ((_("Add"), "add"), (_("Cancel"), "cancel")))
-    li = Listbox(5, width=25, returnExit=1)
-    li.append(_("Ethernet"), ETHERNET)
-    li.append(_("Modem"), MODEM)
-    li.append(_("ISDN"), ISDN)
-
-    machine = os.uname()[4]
-    if machine == 's390' or machine == 's390x':
-        li.append(_("QETH"), QETH)
-
-    g = GridForm(mscreen, _("Network Configuration"), 1, 3)
-    g.add(t, 0, 0)
-    g.add(li, 0, 1)
-    g.add(bb, 0, 2)
-    res = g.run()
-    mscreen.popWindow()
-    if bb.buttonPressed(res) != 'cancel':
-        todo = li.current()
-        df = getDeviceFactory()
-        dev = None
-        devclass = df.getDeviceClass(todo)
-        devlist = getDeviceList()
-        if not devclass: 
-            return -1
-        dev = devclass()
-        if dev:
-            devlist.append(dev)
-            return dev
-    return -2
-
-def selectDevice(mscreen):
-    li = Listbox(5, returnExit=1)
-    l = 0
-    le = mscreen.width - 6
-    if le <= 0: 
-        le = 5
-    for dev in getDeviceList():
-        if not hasattr(dev, "getDialog") or not dev.getDialog():
-            #li.append("No dialog for %s" % dev.Device, None)
-            continue
-
-        l += 1
-        for hw in getHardwareList():
-            if hw.Name == dev.Device and hw.Description:
-                li.append(("%s (%s) - %s" % (dev.DeviceId,
-                                             dev.Device,
-                                             hw.Description))[:le], dev)
-                break
-
-        else:
-            li.append(("%s (%s) - %s" % (dev.DeviceId,
-                                    dev.Device, dev.Type))[:le], dev)
-
-    if not l:
-        return None
-
-    li.append(_("<New Device>"), None)
-    g = GridForm(mscreen, _("Select A Device"), 1, 3)
-    bb = ButtonBar(mscreen, ((_("Quit"), "quit"), (_("Cancel"), "cancel")))
-    g.add(li, 0, 1)
-    g.add(bb, 0, 2, growx=1)
-    res = g.run()
-    mscreen.popWindow()
-    if bb.buttonPressed(res) == "quit":
-        ret = -1
-    elif bb.buttonPressed(res) == "cancel":
-        ret = None
-    else:
-        ret = li.current()
-        if not ret:
-            ret = newDevice(mscreen)
-    return ret
-
-
 def usage():
     print _("system-config-network - network configuration tool\n\n"
             "Usage: system-config-network -v --verbose -d --debug")
@@ -311,6 +231,37 @@ def parse_opts():
     if chroot:
         NC_functions.prepareRoot(chroot)
 
+def selectAction(mscreen, plist):
+    from netconfpkg.tui import NCPluginDNS
+    from netconfpkg.tui import NCPluginDevices
+    li = Listbox(5, returnExit=1)
+    l = 0
+    le = mscreen.width - 6
+    if le <= 0: 
+        le = 5
+    # do this more inteligent - auto loading of new plugins??
+    for act, act_id in {"Edit a device params":NCPluginDevices.NCPluginDevicesTui(plist),"Edit DNS configuration":NCPluginDNS.NCPluginDNSTui(plist)}.items():
+       li.append(act, act_id)
+       l += 1
+    if not l:
+        return None
+
+    g = GridForm(mscreen, _("Select Action"), 1, 3)
+    bb = ButtonBar(mscreen, ((_("Save&Quit"), "save"), (_("Quit"), "cancel")))
+    g.add(li, 0, 1)
+    g.add(bb, 0, 2, growx=1)
+    res = g.run()
+    mscreen.popWindow()
+    if bb.buttonPressed(res) == "save":
+        ret = -1
+    elif bb.buttonPressed(res) == "cancel":
+        ret = None
+    else:
+        ret = li.current()
+        if not ret:
+            pass
+    return ret
+    
 #
 # __main__
 #
@@ -323,31 +274,26 @@ def main():
         #mainScreen(screen)
         loadConfig(screen)
         while True:
-            dev = selectDevice(screen)
-            
-            
-            if dev == -1:
-                if devlist.modified():
-                    devlist.save()
-                if plist.modified():
-                    plist.save()
-                break
-            elif dev == -2:
-                continue
-            elif dev == None:
-                break
-
-            dialog = dev.getDialog()
-            if dialog.runIt(screen):
-                dev.commit()     
-                devlist.commit() 
-                plist.activateDevice(dev.DeviceId,
-                                     plist.getActiveProfile().ProfileName,
-                                     state = True)
-                plist.commit()
+            act = selectAction(screen, plist)
+            if act:
+                if act == -1:
+                    # save and exit
+                    if devlist.modified():
+                        devlist.save()
+                    if plist.modified():
+                        plist.save()
+                    break
+                if hasattr(act, "runIt"):
+                    if act.runIt(screen):
+                        plist.commit()
+                    else:
+                        pass
+                else:
+                    # we shouldn't get here
+                    pass
             else:
-                dev.rollback()     
-                devlist.rollback() 
+                break
+                
 
         screen.finish()
         #print dir(screen)
