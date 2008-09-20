@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-26 03:28+0000\n"
-"PO-Revision-Date: 2008-09-10 23:20+0200\n"
+"POT-Creation-Date: 2008-09-16 19:29+0000\n"
+"PO-Revision-Date: 2008-09-20 11:59+0200\n"
 "Last-Translator: Peter van Egdom <p.van.egdom@gmail.com>\n"
 "Language-Team: Dutch <fedora-trans-list@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,7 @@ msgid " (active)"
 msgstr " (actief)"
 
 #. FIXME: change string
-#: ../src/netconf_control.py:498 ../src/netconf_tui.py:252
+#: ../src/netconf_control.py:498 ../src/netconf_tui.py:172
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -1227,7 +1227,7 @@ msgstr "Geslaagd. Bekijk de uitvoer."
 msgid "Choose Hardware Type"
 msgstr "Hardware-apparaattype kiezen"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:2 ../src/netconf_tui.py:179
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1235,11 +1235,11 @@ msgstr "Ethernet"
 msgid "Hardware type:"
 msgstr "Hardware-apparaattype:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:4 ../src/netconf_tui.py:181
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "ISDN"
 msgstr "ISDN"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:5 ../src/netconf_tui.py:180
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "Modem"
 msgstr "Modem"
 
@@ -1382,7 +1382,7 @@ msgstr "Volg het geselecteerde apparaat."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
-#: ../src/netconf_tui.py:187 ../system-config-network.desktop.in.h:3
+#: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "Netwerkconfiguratie"
 
@@ -1937,7 +1937,6 @@ msgstr ""
 "gebruiken geluid over een gewone koperen telefoonlijn om gegevens over te "
 "zenden.  Deze soorten verbindingen zijn zo ongeveer overal op de wereld "
 "beschikbaar waar een telefoonsysteem is."
-""
 
 #. FIXME: [165331] Can't detect external modem on /dev/ttyS0
 #: ../src/netconfpkg/gui/NCPluginModemInterface.py:120
@@ -3226,11 +3225,12 @@ msgid ""
 "properly.\n"
 "\n"
 "You may have to relogin."
-msgstr "U hebt de hostnaam veranderd.\n"
+msgstr ""
+"U hebt de hostnaam veranderd.\n"
 "\n"
 "Moet de hostnaam van het systeem nu worden ingesteld?\n"
-"Dit kan tot gevolg hebben dat sommige X-toepassingen niet meer naar "
-"behoren werken.\n"
+"Dit kan tot gevolg hebben dat sommige X-toepassingen niet meer naar behoren "
+"werken.\n"
 "\n"
 "Het kan nodig zijn dat u zich opnieuw moet aanmelden."
 
@@ -3274,8 +3274,7 @@ msgstr "Ok"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110 ../src/netconf_tui.py:177
-#: ../src/netconf_tui.py:235
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -3339,9 +3338,9 @@ msgid ""
 "either start your graphical user interface or set your DISPLAY variable."
 msgstr ""
 "FOUT: Niet in staat om de grafische omgeving te initialiseren. De meest "
-"waarschijnlijke oorzaak is dat het programma niet is opgestart vanuit "
-"een grafische omgeving. Start uw grafische gebruikersinterface of stel "
-"uw DISPLAY variabele in."
+"waarschijnlijke oorzaak is dat het programma niet is opgestart vanuit een "
+"grafische omgeving. Start uw grafische gebruikersinterface of stel uw "
+"DISPLAY variabele in."
 
 #: ../src/netconf.py:122
 msgid "Loading Network Configuration..."
@@ -3357,7 +3356,7 @@ msgstr ""
 "\n"
 "Gebruik: system-config-network -v --verbose"
 
-#: ../src/netconf.py:251 ../src/netconf_tui.py:307
+#: ../src/netconf.py:251 ../src/netconf_tui.py:227
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Start system-config-network op met root rechten!\n"
 
@@ -3389,27 +3388,15 @@ msgstr "Laden van hardwareconfiguratie"
 msgid "Loading Profile Configuration"
 msgstr "Laden van profielconfiguratie"
 
-#: ../src/netconf_tui.py:176
-msgid "Which device type do you want to add?"
-msgstr "Welk apparaattype wilt u toevoegen?"
+#: ../src/netconf_tui.py:249
+msgid "Select Action"
+msgstr "Actie selecteren"
 
-#: ../src/netconf_tui.py:177
-msgid "Add"
-msgstr "Toevoegen"
+#: ../src/netconf_tui.py:250
+msgid "Save&Quit"
+msgstr "Opslaan & afsluiten"
 
-#: ../src/netconf_tui.py:185
-msgid "QETH"
-msgstr "QETH"
-
-#: ../src/netconf_tui.py:233
-msgid "<New Device>"
-msgstr "<Nieuw apparaat>"
-
-#: ../src/netconf_tui.py:234
-msgid "Select A Device"
-msgstr "Selecteer een apparaat"
-
-#: ../src/netconf_tui.py:235
+#: ../src/netconf_tui.py:250
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -3424,6 +3411,18 @@ msgstr "Netwerk"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Netwerkapparaten instellen en weergeven"
+
+#~ msgid "Which device type do you want to add?"
+#~ msgstr "Welk apparaattype wilt u toevoegen?"
+
+#~ msgid "Add"
+#~ msgstr "Toevoegen"
+
+#~ msgid "QETH"
+#~ msgstr "QETH"
+
+#~ msgid "<New Device>"
+#~ msgstr "<Nieuw apparaat>"
 
 #~ msgid "ERROR: Unable to initialize graphical environment. "
 #~ msgstr "FOUT: Niet in staat om de grafische omgeving te initialiseren. "
