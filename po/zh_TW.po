@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-26 03:28+0000\n"
-"PO-Revision-Date: 2008-09-03 11:05+1000\n"
+"POT-Creation-Date: 2008-09-22 09:27+0000\n"
+"PO-Revision-Date: 2008-09-23 10:39+1000\n"
 "Last-Translator: Terry Chuang <tchuang@redhat.com>\n"
 "Language-Team: Traditional Chinese <zh@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,7 @@ msgid " (active)"
 msgstr "（運作中）"
 
 #. FIXME: change string
-#: ../src/netconf_control.py:498 ../src/netconf_tui.py:252
+#: ../src/netconf_control.py:498 ../src/netconf_tui.py:172
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -191,8 +191,8 @@ msgid ""
 "save the crash dump and file a detailed bug report against %s at https://"
 "bugzilla.redhat.com/bugzilla"
 msgstr ""
-"發生無法控制的例外狀況。這應該是由程式錯誤所造成。請儲存當機傾印並針對 %s 建立一個詳細的程式錯誤報告，並回報給 "
-"https://bugzilla.redhat.com/bugzilla"
+"發生無法控制的例外狀況。這應該是由程式錯誤所造成。請儲存當機傾印並針對 %s 建"
+"立一個詳細的程式錯誤報告，並回報給 https://bugzilla.redhat.com/bugzilla"
 
 #: ../src/netconfpkg/exception.py:240
 #, python-format
@@ -1211,7 +1211,7 @@ msgstr "執行成功，請讀取輸出。"
 msgid "Choose Hardware Type"
 msgstr "選取硬體類型"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:2 ../src/netconf_tui.py:179
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Ethernet"
 msgstr "乙太網路"
 
@@ -1219,11 +1219,11 @@ msgstr "乙太網路"
 msgid "Hardware type:"
 msgstr "硬體類型："
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:4 ../src/netconf_tui.py:181
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "ISDN"
 msgstr "ISDN"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:5 ../src/netconf_tui.py:180
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "Modem"
 msgstr "數據機"
 
@@ -1365,7 +1365,7 @@ msgstr "監視選取的裝置。"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
-#: ../src/netconf_tui.py:187 ../system-config-network.desktop.in.h:3
+#: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "網路設定"
 
@@ -1784,9 +1784,11 @@ msgid ""
 "Speeds vary according to the technology used, but generally range from "
 "144kbps to 1.0Mbps."
 msgstr ""
-"建立 xDSL 連線。這個連線使用其中一種寬頻網路連線，統稱為數位用戶迴路（Digital Subscriber Lines）。它包括了 ADSL（非對稱的〔Asymmetric〕、下載快於上載）、IDSL（通過 ISDN 線路到偏遠地方）、SDSL（對稱的〔Symmetric〕，上下載速度一"
-"樣）和許多其他的。這些連線種類在美國很普遍，並且在其他地方也慢慢被接受。速度"
-"隨著使用的科技而不同，但大約介於 144kbps 與 1.0Mbps 之間。"
+"建立 xDSL 連線。這個連線使用其中一種寬頻網路連線，統稱為數位用戶迴路"
+"（Digital Subscriber Lines）。它包括了 ADSL（非對稱的〔Asymmetric〕、下載快於"
+"上載）、IDSL（通過 ISDN 線路到偏遠地方）、SDSL（對稱的〔Symmetric〕，上下載速"
+"度一樣）和許多其他的。這些連線種類在美國很普遍，並且在其他地方也慢慢被接受。"
+"速度隨著使用的科技而不同，但大約介於 144kbps 與 1.0Mbps 之間。"
 
 #: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:148
 msgid "Ethernet device:"
@@ -1884,7 +1886,10 @@ msgid ""
 "use sound over a normal copper telephone line to transmit data. These types "
 "of connections are available just about anywhere in the world where there is "
 "a phone system."
-msgstr "建立新的數據機連線。這個連線使用序列類比數據機來撥接到您的網路服務提供者。這些數據機使用聲音透過一般銅製的電話線來傳輸資料。這種連線類型在全世界擁有電話系統的各個地方都可找到。"
+msgstr ""
+"建立新的數據機連線。這個連線使用序列類比數據機來撥接到您的網路服務提供者。這"
+"些數據機使用聲音透過一般銅製的電話線來傳輸資料。這種連線類型在全世界擁有電話"
+"系統的各個地方都可找到。"
 
 #. FIXME: [165331] Can't detect external modem on /dev/ttyS0
 #: ../src/netconfpkg/gui/NCPluginModemInterface.py:120
@@ -2589,7 +2594,10 @@ msgid ""
 "Point), Managed (node connects to a network composed of many Access Points, "
 "with roaming), Master (the node is the synchronization master or acts as an "
 "Access Point) or Auto."
-msgstr "設定裝置的運作模式，這要看網路的拓樸為何。這模式可以是 Ad-Hoc（由網點，而非存取點，所組成的網路）、Managed（節點連接到許多存取點所組成的網路，並同時加上漫遊功能）、Master（節點是同步的主機器，或當存取點使用）或 Auto（自動）。"
+msgstr ""
+"設定裝置的運作模式，這要看網路的拓樸為何。這模式可以是 Ad-Hoc（由網點，而非存"
+"取點，所組成的網路）、Managed（節點連接到許多存取點所組成的網路，並同時加上漫"
+"遊功能）、Master（節點是同步的主機器，或當存取點使用）或 Auto（自動）。"
 
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
 #: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
@@ -3202,8 +3210,7 @@ msgstr "確定"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110 ../src/netconf_tui.py:177
-#: ../src/netconf_tui.py:235
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
 msgid "Cancel"
 msgstr "取消"
 
@@ -3265,7 +3272,9 @@ msgid ""
 "ERROR: Unable to initialize graphical environment.Most likely cause of "
 "failure is that the tool was not run using a graphical environment. Please "
 "either start your graphical user interface or set your DISPLAY variable."
-msgstr "錯誤：無法初始化圖形化環境。造成此錯誤的原因可能是因為該工具並未透過使用圖形化環境來執行。請啟用您的圖形化用戶介面或是設置您的 DISPLAY 變數。"
+msgstr ""
+"錯誤：無法初始化圖形化環境。造成此錯誤的原因可能是因為該工具並未透過使用圖形"
+"化環境來執行。請啟用您的圖形化用戶介面或是設置您的 DISPLAY 變數。"
 
 #: ../src/netconf.py:122
 msgid "Loading Network Configuration..."
@@ -3281,7 +3290,7 @@ msgstr ""
 "\n"
 "用法：system-config-network -v --verbose"
 
-#: ../src/netconf.py:251 ../src/netconf_tui.py:307
+#: ../src/netconf.py:251 ../src/netconf_tui.py:227
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "請以 root 的權限啟動 system-config-network！\n"
 
@@ -3313,27 +3322,15 @@ msgstr "正在載入硬體設定"
 msgid "Loading Profile Configuration"
 msgstr "正在載入設定檔設定"
 
-#: ../src/netconf_tui.py:176
-msgid "Which device type do you want to add?"
-msgstr "您希望新增哪種裝置類型？"
+#: ../src/netconf_tui.py:249
+msgid "Select Action"
+msgstr "選取動作"
 
-#: ../src/netconf_tui.py:177
-msgid "Add"
-msgstr "加入"
+#: ../src/netconf_tui.py:250
+msgid "Save&Quit"
+msgstr "儲存並離開"
 
-#: ../src/netconf_tui.py:185
-msgid "QETH"
-msgstr "QETH"
-
-#: ../src/netconf_tui.py:233
-msgid "<New Device>"
-msgstr "<新裝置>"
-
-#: ../src/netconf_tui.py:234
-msgid "Select A Device"
-msgstr "選取裝置"
-
-#: ../src/netconf_tui.py:235
+#: ../src/netconf_tui.py:250
 msgid "Quit"
 msgstr "離開"
 
