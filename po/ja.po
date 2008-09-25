@@ -1,4 +1,4 @@
-# translation of ja.po to Japanese
+# translation of system-config-network.master.ja.po to Japanese
 # system-config-network ja.po
 # Copyright (C) 2001 Red Hat, Inc.
 #
@@ -10,14 +10,15 @@
 # Kiyoto James Hashida <khashida@redhat.com>, 2006.
 # Hyu_gabaru Ryu_ichi <hyu_gabaru@yahoo.co.jp>, 2007.
 # Makoto Mizukami <mmk9060@aol.com>, 2008.
+# Kiyoto Hashida <khashida@redhat.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: ja\n"
+"Project-Id-Version: system-config-network.master.ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-26 19:33+0000\n"
-"PO-Revision-Date: 2008-09-09 22:50+1000\n"
-"Last-Translator: Noriko Mizumoto <noriko@redhat.com>\n"
-"Language-Team: Japanese <fedora-trans-ja@redhat.com>\n"
+"POT-Creation-Date: 2008-09-16 19:29+0000\n"
+"PO-Revision-Date: 2008-09-25 11:29+1000\n"
+"Last-Translator: Kiyoto Hashida <khashida@redhat.com>\n"
+"Language-Team: Japanese <jp@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -167,7 +168,7 @@ msgid " (active)"
 msgstr " (動作中)"
 
 #. FIXME: change string
-#: ../src/netconf_control.py:498 ../src/netconf_tui.py:252
+#: ../src/netconf_control.py:498 ../src/netconf_tui.py:172
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -1224,7 +1225,7 @@ msgstr "成功しました。出力をお読みください。"
 msgid "Choose Hardware Type"
 msgstr "ハードウェアタイプを選択"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:2 ../src/netconf_tui.py:179
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Ethernet"
 msgstr "イーサネット"
 
@@ -1232,11 +1233,11 @@ msgstr "イーサネット"
 msgid "Hardware type:"
 msgstr "ハードウェアタイプ:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:4 ../src/netconf_tui.py:181
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "ISDN"
 msgstr "ISDN"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:5 ../src/netconf_tui.py:180
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "Modem"
 msgstr "モデム"
 
@@ -1378,7 +1379,7 @@ msgstr "選択したデバイスの監視。"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
-#: ../src/netconf_tui.py:187 ../system-config-network.desktop.in.h:3
+#: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "ネットワーク設定"
 
@@ -1919,9 +1920,10 @@ msgid ""
 "of connections are available just about anywhere in the world where there is "
 "a phone system."
 msgstr ""
-"新規モデム接続を作成します。 シリアルのアナログモデムを使用して ISP にダイアル"
-"する接続方式です。 モデムは標準的な銅製の電話線上を伝わる音を利用してデータを転送しま"
-"す。 この種の接続方式は電話のあるところなら世界中どこでも利用できます。"
+"新規モデム接続を作成します。 シリアルのアナログモデムを使用して ISP にダイア"
+"ルする接続方式です。 モデムは標準的な銅製の電話線上を伝わる音を利用してデータ"
+"を転送します。 この種の接続方式は電話のあるところなら世界中どこでも利用できま"
+"す。"
 
 #. FIXME: [165331] Can't detect external modem on /dev/ttyS0
 #: ../src/netconfpkg/gui/NCPluginModemInterface.py:120
@@ -3204,7 +3206,8 @@ msgstr ""
 "ホスト名が変更されました。\n"
 "\n"
 "システムにホスト名を設定しますか?\n"
-"これにより、 いくつかの X アプリケーションが正しく機能しなくなる影響が出る可能性があります。\n"
+"これにより、 いくつかの X アプリケーションが正しく機能しなくなる影響が出る可"
+"能性があります。\n"
 "\n"
 "再度ログインをする必要があるかもしれません。"
 
@@ -3248,8 +3251,7 @@ msgstr "Ok"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110 ../src/netconf_tui.py:177
-#: ../src/netconf_tui.py:235
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
 msgid "Cancel"
 msgstr "取り消し"
 
@@ -3311,7 +3313,10 @@ msgid ""
 "ERROR: Unable to initialize graphical environment.Most likely cause of "
 "failure is that the tool was not run using a graphical environment. Please "
 "either start your graphical user interface or set your DISPLAY variable."
-msgstr "エラー: グラフィカル環境の初期化ができません。 おそらくツールがグラフィカル環境を使用して実行されなかったのが失敗の原因であると思われます。 グラフィカルユーザーインターフェースを起動するか、 DISPLAY 変数をセットしてください。"
+msgstr ""
+"エラー: グラフィカル環境の初期化ができません。 おそらくツールがグラフィカル環"
+"境を使用して実行されなかったのが失敗の原因であると思われます。 グラフィカル"
+"ユーザーインターフェースを起動するか、 DISPLAY 変数をセットしてください。"
 
 #: ../src/netconf.py:122
 msgid "Loading Network Configuration..."
@@ -3327,7 +3332,7 @@ msgstr ""
 "\n"
 "使用法: system-config-network -v --verbose"
 
-#: ../src/netconf.py:251 ../src/netconf_tui.py:307
+#: ../src/netconf.py:251 ../src/netconf_tui.py:227
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "ルート権限で system-config-network を開始してください。\n"
 
@@ -3359,27 +3364,15 @@ msgstr "ハードウェア設定をロード中"
 msgid "Loading Profile Configuration"
 msgstr "プロファイル設定をロード中"
 
-#: ../src/netconf_tui.py:176
-msgid "Which device type do you want to add?"
-msgstr "どちらのデバイスタイプを追加したいのですか?"
+#: ../src/netconf_tui.py:249
+msgid "Select Action"
+msgstr "アクションを選択してください"
 
-#: ../src/netconf_tui.py:177
-msgid "Add"
-msgstr "追加(_A)"
+#: ../src/netconf_tui.py:250
+msgid "Save&Quit"
+msgstr "保存して終了"
 
-#: ../src/netconf_tui.py:185
-msgid "QETH"
-msgstr "QETH"
-
-#: ../src/netconf_tui.py:233
-msgid "<New Device>"
-msgstr "<新規デバイス>"
-
-#: ../src/netconf_tui.py:234
-msgid "Select A Device"
-msgstr "デバイスを 1 つ選択してください"
-
-#: ../src/netconf_tui.py:235
+#: ../src/netconf_tui.py:250
 msgid "Quit"
 msgstr "終了"
 
