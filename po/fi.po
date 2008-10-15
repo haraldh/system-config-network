@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-26 03:28+0000\n"
-"PO-Revision-Date: 2008-08-31 01:45+0300\n"
+"POT-Creation-Date: 2008-10-14 06:46+0000\n"
+"PO-Revision-Date: 2008-10-15 19:03+0300\n"
 "Last-Translator: Ville-Pekka Vainio <vpivaini@cs.helsinki.fi>\n"
 "Language-Team: Finnish <laatu@lokalisointi.org>\n"
 "MIME-Version: 1.0\n"
@@ -120,8 +120,8 @@ msgid ""
 "DISPLAY variable.\n"
 msgstr ""
 "VIRHE: Graafisen ympäristön alustaminen epäonnistui.\n"
-"Luultavasti syynä on se, että tätä työkalua ei käynnistetty graafisesta\n "
-"ympäristöstä. Käynnistä graafinen ympäristö tai aseta DISPLAY-muuttuja.\n"
+"Luultavasti syynä on se, että tätä työkalua ei käynnistetty graafisesta\n"
+" ympäristöstä. Käynnistä graafinen ympäristö tai aseta DISPLAY-muuttuja.\n"
 
 #: ../src/netconf_control.py:184 ../src/netconfpkg/gui/maindialog.py:1717
 msgid ""
@@ -163,7 +163,7 @@ msgid " (active)"
 msgstr " (käynnistetty)"
 
 #. FIXME: change string
-#: ../src/netconf_control.py:498 ../src/netconf_tui.py:252
+#: ../src/netconf_control.py:498 ../src/netconf_tui.py:172
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -1215,7 +1215,7 @@ msgstr "Onnistui. Lue tuloste."
 msgid "Choose Hardware Type"
 msgstr "Valitse laitetyyppi"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:2 ../src/netconf_tui.py:179
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1223,11 +1223,11 @@ msgstr "Ethernet"
 msgid "Hardware type:"
 msgstr "Laitetyyppi:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:4 ../src/netconf_tui.py:181
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "ISDN"
 msgstr "ISDN"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:5 ../src/netconf_tui.py:180
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "Modem"
 msgstr "Modeemi"
 
@@ -1369,7 +1369,7 @@ msgstr "Seuraa valittua laitetta."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
-#: ../src/netconf_tui.py:187 ../system-config-network.desktop.in.h:3
+#: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "Verkkoasetukset"
 
@@ -3205,8 +3205,7 @@ msgstr ""
 
 #: ../src/netconfpkg/NCProfileList.py:538
 msgid "Error removing file %(file)s: %(errormsg)"
-msgstr ""
-"Virhe poistettaessa tiedostoa %(file)s: %(errormsg)"
+msgstr "Virhe poistettaessa tiedostoa %(file)s: %(errormsg)"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
@@ -3244,8 +3243,7 @@ msgstr "Ok"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110 ../src/netconf_tui.py:177
-#: ../src/netconf_tui.py:235
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -3308,9 +3306,9 @@ msgid ""
 "failure is that the tool was not run using a graphical environment. Please "
 "either start your graphical user interface or set your DISPLAY variable."
 msgstr ""
-"VIRHE: Graafisen ympäristön alustaminen epäonnistui. Luultavasti syynä "
-"on se, että tätä työkalua ei käynnistetty graafisesta ympäristöstä. "
-"Käynnistä graafinen ympäristö tai aseta DISPLAY-muuttuja."
+"VIRHE: Graafisen ympäristön alustaminen epäonnistui. Luultavasti syynä on "
+"se, että tätä työkalua ei käynnistetty graafisesta ympäristöstä. Käynnistä "
+"graafinen ympäristö tai aseta DISPLAY-muuttuja."
 
 #: ../src/netconf.py:122
 msgid "Loading Network Configuration..."
@@ -3326,7 +3324,7 @@ msgstr ""
 "\n"
 "Käyttö: system-config-network -v --verbose"
 
-#: ../src/netconf.py:251 ../src/netconf_tui.py:307
+#: ../src/netconf.py:251 ../src/netconf_tui.py:227
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Käynnistä system-config-network pääkäyttäjän oikeuksin!\n"
 
@@ -3358,27 +3356,15 @@ msgstr "Ladataan laitteiston asetuksia"
 msgid "Loading Profile Configuration"
 msgstr "Ladataan profiilin asetuksia"
 
-#: ../src/netconf_tui.py:176
-msgid "Which device type do you want to add?"
-msgstr "Millaisen laitteen haluat lisätä?"
+#: ../src/netconf_tui.py:249
+msgid "Select Action"
+msgstr "Valitse toiminto"
 
-#: ../src/netconf_tui.py:177
-msgid "Add"
-msgstr "Lisää"
+#: ../src/netconf_tui.py:250
+msgid "Save&Quit"
+msgstr "Tallenna ja lopeta"
 
-#: ../src/netconf_tui.py:185
-msgid "QETH"
-msgstr "QETH"
-
-#: ../src/netconf_tui.py:233
-msgid "<New Device>"
-msgstr "<Uusi laite>"
-
-#: ../src/netconf_tui.py:234
-msgid "Select A Device"
-msgstr "Valitse laite"
-
-#: ../src/netconf_tui.py:235
+#: ../src/netconf_tui.py:250
 msgid "Quit"
 msgstr "Lopeta"
 
@@ -3393,6 +3379,18 @@ msgstr "Verkko"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Verkkolaitteiden hallinta ja seuranta"
+
+#~ msgid "Which device type do you want to add?"
+#~ msgstr "Millaisen laitteen haluat lisätä?"
+
+#~ msgid "Add"
+#~ msgstr "Lisää"
+
+#~ msgid "QETH"
+#~ msgstr "QETH"
+
+#~ msgid "<New Device>"
+#~ msgstr "<Uusi laite>"
 
 #~ msgid "ERROR: Unable to initialize graphical environment. "
 #~ msgstr "VIRHE: Graafisen ympäristön alustus epäonnistui."
