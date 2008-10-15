@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-14 16:19+0200\n"
-"PO-Revision-Date: 2008-08-31 20:26-0000\n"
+"POT-Creation-Date: 2008-10-14 02:29+0000\n"
+"PO-Revision-Date: 2008-10-15 21:16-0000\n"
 "Last-Translator: Miloš Komarčević <kmilos@gmail.com>\n"
 "Language-Team: Serbian (sr) <fedora-trans-sr@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -163,7 +163,7 @@ msgid " (active)"
 msgstr " (активан)"
 
 #. FIXME: change string
-#: ../src/netconf_control.py:498 ../src/netconf_tui.py:252
+#: ../src/netconf_control.py:498 ../src/netconf_tui.py:172
 msgid ""
 "system-config-network - network configuration tool\n"
 "\n"
@@ -333,7 +333,7 @@ msgstr "Н_апредно"
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
 #: ../src/netconfpkg/gui/QethConfig.glade.h:6
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:26
 msgid "_General"
 msgstr "_Опште"
 
@@ -374,7 +374,7 @@ msgstr "Име до_бављача:"
 #: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
 #: ../src/netconfpkg/gui/QethConfig.glade.h:9
 #: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:30
 msgid "_Route"
 msgstr "_Рута"
 
@@ -648,7 +648,7 @@ msgstr "синхр. PPP"
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:221
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:219
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:203
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:320
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:331
 msgid "You have selected the following information:"
 msgstr "Одабрали сте следеће податке:"
 
@@ -928,7 +928,7 @@ msgstr "Додај / уреди ставку домаћина"
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:235
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:233
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:215
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:333
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:344
 msgid "Address:"
 msgstr "Адреса:"
 
@@ -1142,7 +1142,7 @@ msgstr "Подешавање мрежног адаптера"
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:1
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
 msgid "Configure Network Settings"
 msgstr "Подеси мрежне поставке"
 
@@ -1159,7 +1159,7 @@ msgstr "Ethernet картица"
 #: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
 #: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:4
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
 msgid "MTU:"
 msgstr "MTU:"
 
@@ -1222,7 +1222,7 @@ msgstr "Успело. Молим прочитајте излаз."
 msgid "Choose Hardware Type"
 msgstr "Одаберите врсту хардвера"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:2 ../src/netconf_tui.py:179
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1230,11 +1230,11 @@ msgstr "Ethernet"
 msgid "Hardware type:"
 msgstr "Врста хардвера:"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:4 ../src/netconf_tui.py:181
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
 msgid "ISDN"
 msgstr "ISDN"
 
-#: ../src/netconfpkg/gui/hardwaretype.glade.h:5 ../src/netconf_tui.py:180
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
 msgid "Modem"
 msgstr "Модем"
 
@@ -1376,7 +1376,7 @@ msgstr "Надгледање изабраног уређаја."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
-#: ../src/netconf_tui.py:187 ../system-config-network.desktop.in.h:3
+#: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "Подешавање мреже"
 
@@ -1846,28 +1846,28 @@ msgstr "Друга Ethernet картица"
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:222
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:220
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:204
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:321
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:332
 msgid "Device:"
 msgstr "Уређај:"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:236
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:234
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:216
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:334
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:345
 msgid "Subnet mask:"
 msgstr "Маска подмреже:"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:238
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:236
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:218
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:335
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:346
 msgid "Default gateway address:"
 msgstr "Адреса подразумеваног мрежног пролаза:"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:241
 #: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:239
 #: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:221
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:337
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:348
 msgid "Automatically obtain IP address settings with:"
 msgstr "Самостално добави IP адресу користећи:"
 
@@ -1965,11 +1965,12 @@ msgstr "Друга Token Ring картица"
 
 #: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:29
 #: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:88
-#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:159
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:166
 #: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:34
 #: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:143
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:196
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:206
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
 msgid "Auto"
 msgstr "Самостално"
 
@@ -1980,6 +1981,7 @@ msgstr "Ad-Hoc"
 
 #: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:31
 #: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:36
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:194
 msgid "Managed"
 msgstr "Управљан"
 
@@ -1996,39 +1998,39 @@ msgstr "Бежична веза"
 msgid "Create a new wireless connection."
 msgstr "Направи нову бежичну везу."
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:234
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:245
 msgid "BitRate"
 msgstr "Брзина у битовима"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:298
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:309
 msgid "Other Wireless Card"
 msgstr "Друга бежична картица"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:340
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:351
 msgid "Mode:"
 msgstr "Режим:"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:341
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:352
 msgid "ESSID (network ID):"
 msgstr "ESSID (мрежни ID):"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:343
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:354
 msgid "Automatic"
 msgstr "Самостално"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:347
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:358
 msgid "Channel:"
 msgstr "Канал:"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:348
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:359
 msgid "Transmit rate:"
 msgstr "Брзина преноса:"
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:349
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:360
 msgid "Key: "
 msgstr "Кључ: "
 
-#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:355
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:366
 msgid "encryption disabled"
 msgstr "шифровање искључено"
 
@@ -2133,6 +2135,8 @@ msgid "0.00"
 msgstr "0.00"
 
 #: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
 msgid "1"
 msgstr "1"
 
@@ -2495,7 +2499,7 @@ msgid "Create Token Ring Device"
 msgstr "Направи Token Ring уређај"
 
 #: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
 msgid ""
 "Please enter the MTU parameter to set the Maximum Transfer Unit of this "
 "interface. On s390/s390x the MTU has 1492 as default setting"
@@ -2532,28 +2536,93 @@ msgstr ""
 "Унесите овде податке личног налога. Без ових података, приступ на T-Online "
 "нажалост није могућ."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "10"
+msgstr "10"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "11"
+msgstr "11"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
 msgid "11M"
 msgstr "11M"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
-msgid "1M"
-msgstr "1M"
-
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
-msgid "2M"
-msgstr "2M"
-
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
-msgid "5.5M"
-msgstr "5.5M"
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+msgid "12"
+msgstr "12"
 
 #: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
 #: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+msgid "13"
+msgstr "13"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+msgid "14"
+msgstr "14"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid "1M"
+msgstr "1M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "2"
+msgstr "2"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid "2M"
+msgstr "2M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "3"
+msgstr "3"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+msgid "4"
+msgstr "4"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "5"
+msgstr "5"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "5.5M"
+msgstr "5.5M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+msgid "6"
+msgstr "6"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+msgid "7"
+msgstr "7"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+msgid "8"
+msgstr "8"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+msgid "9"
+msgstr "9"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
 msgid "Network name (SSID):"
 msgstr "Име мреже (SSID):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
 msgid ""
 "Set the operating mode of the device, which depends on the network topology. "
 "The mode can be Ad-Hoc (network composed of only one cell and without Access "
@@ -2567,8 +2636,8 @@ msgstr ""
 "тачака, без лутања), Главни (чвор је главни за усклађивање или ради као "
 "приступна тачка) или Самостални."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
 msgid ""
 "Used to manipulate encryption or scrambling keys and encryption mode. To set "
 "the current encryption key in hex digits enter the key with 0x prepended as "
@@ -2578,67 +2647,63 @@ msgstr ""
 "За постављање текућег шифрарског кључа са хексадекадним бројкама унесите "
 "кључ са 0x предметнутим као 0xXXXXXXXX."
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
 msgid "Wireless Device Configuration"
 msgstr "Подешавање бежичног уређаја"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:25
 msgid "_Auto"
 msgstr "_Самостално"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:26
 msgid "_Channel:"
 msgstr "К_анал:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:27
 msgid "_Hardware device"
 msgstr "_Хардверски уређај"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:27
 msgid "_Key (use 0x for hex):"
 msgstr "_Кључ (користите 0x за хекса):"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:29
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:28
 msgid "_Mode:"
 msgstr "_Режим:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:31
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:29
 msgid "_Specified:"
 msgstr "На_ведено:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:32
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:30
 msgid "_Transmit rate:"
 msgstr "Брзина прено_са:"
 
-#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:33
 msgid "_Wireless Settings"
 msgstr "_Бежичне поставке"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
 msgid "Configure Wireless Connection"
 msgstr "Подеси бежичну везу"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
 msgid "Create Wireless Device"
 msgstr "Направи бежични уређај"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
 msgid "Select Wireless Device"
 msgstr "Изаберите бежични уређај"
 
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:23
 msgid "Select the wireless card you want to configure:"
 msgstr "Изаберите бежичну картицу коју желите да подесите:"
-
-#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
-msgid "Wireless card"
-msgstr "Бежична картица"
 
 #: ../src/netconfpkg/NCDeviceList.py:135
 msgid "Changed the following Nicknames due to the initscripts:\n"
@@ -3186,8 +3251,7 @@ msgstr "У реду"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110 ../src/netconf_tui.py:177
-#: ../src/netconf_tui.py:235
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
 msgid "Cancel"
 msgstr "Откажи"
 
@@ -3268,7 +3332,7 @@ msgstr ""
 "\n"
 "Употреба: system-config-network -v --verbose"
 
-#: ../src/netconf.py:251 ../src/netconf_tui.py:307
+#: ../src/netconf.py:251 ../src/netconf_tui.py:227
 msgid "Please start system-config-network with root permissions!\n"
 msgstr "Молим покрените system-config-network са root дозволама!\n"
 
@@ -3300,29 +3364,17 @@ msgstr "Учитавам подешавања хардвера"
 msgid "Loading Profile Configuration"
 msgstr "Учитавам подешавања профила"
 
-#: ../src/netconf_tui.py:176
-msgid "Which device type do you want to add?"
-msgstr "Које врсте уређај желите да додате?"
+#: ../src/netconf_tui.py:249
+msgid "Select Action"
+msgstr "Изаберите акцију"
 
-#: ../src/netconf_tui.py:177
-msgid "Add"
-msgstr "Додај"
+#: ../src/netconf_tui.py:250
+msgid "Save&Quit"
+msgstr "Сачувај и изађи"
 
-#: ../src/netconf_tui.py:185
-msgid "QETH"
-msgstr "QETH"
-
-#: ../src/netconf_tui.py:233
-msgid "<New Device>"
-msgstr "<Нов уређај>"
-
-#: ../src/netconf_tui.py:234
-msgid "Select A Device"
-msgstr "Изаберите уређај"
-
-#: ../src/netconf_tui.py:235
+#: ../src/netconf_tui.py:250
 msgid "Quit"
-msgstr "Излаз"
+msgstr "Изађи"
 
 #: ../system-config-network.desktop.in.h:1
 msgid "Configure network devices and connections"
