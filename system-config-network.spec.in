@@ -12,7 +12,7 @@ Obsoletes: isdn-config <= 0.18-10.70 internet-config <= 0.40-2 rp3 <= 1.1.10-4 r
 Provides: redhat-config-network = %{version} isdn-config = 0.18-10.70.1 internet-config = 0.40-2.1
 BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, perl-XML-Parser
 Requires: %{name}-tui = %{version}-%{release}
-Requires: pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas, usermode, /usr/bin/htmlview
+Requires: pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas, usermode-gtk, /usr/bin/htmlview
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
@@ -100,9 +100,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Mon Oct 27 2008 Tom "spot" Callaway <tcallawa@redhat.com>
+- don't try to write out Description if vendor is NULL (bz 468355)
+  (thanks to Kazunori Asayama)
+
+* Mon Oct 27 2008 Matthias Clasen  <mclasen@redhat.com>
+- Require usermode-gtk
+
 * Sat Mar 29 2008 Harald Hoyer <harald@redhat.com> - 1.5.92
 - removed unnecessary self argument in super calls (bz#437678) (harald)
-
 
 * Thu Mar 27 2008 Harald Hoyer <harald@redhat.com> - 1.5.91
 - more pylint and cleanups (harald)
