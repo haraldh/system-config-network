@@ -21,7 +21,7 @@ force-tag: check-clean-tree
 archive: tag
 	@test -d  /tmp/${PACKAGE}-$(VERSION) && chmod u+w -R /tmp/${PACKAGE}-$(VERSION) || :
 	@rm -rf /tmp/${PACKAGE}-$(VERSION) /tmp/${PACKAGE}
-	@git clone -l $$orig . /tmp/${PACKAGE}-$(VERSION)
+	@git clone $$orig . /tmp/${PACKAGE}-$(VERSION)
 	@cd /tmp/${PACKAGE}-$(VERSION);git checkout -b compile $(SCMTAG);./autogen.sh;make;make distcheck
 	@mv /tmp/${PACKAGE}-$(VERSION)/${PACKAGE}-$(VERSION).tar.gz  $(top_builddir)
 	@rm -rf /tmp/${PACKAGE}-$(VERSION)
