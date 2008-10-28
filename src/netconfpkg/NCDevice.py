@@ -342,7 +342,6 @@ class Device(Device_base):
                                 'route-' + self.DeviceId )
         # load routes
         rconf = ConfRoute(name)
-        #self.createStaticRoutes() 
 
         for key in rconf.keys():
             if key.startswith("ADDRESS"):
@@ -351,6 +350,8 @@ class Device(Device_base):
                 except:
                     continue
                 route = Route()
+
+                self.createStaticRoutes() 
                 self.StaticRoutes.append(route)
                    
                 route.Address = rconf['ADDRESS' + str(p)]                
