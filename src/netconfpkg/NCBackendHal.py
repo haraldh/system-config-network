@@ -98,7 +98,14 @@ class NCBackendHal:
                 hw.Card = Card() 
                 hw.Name = name
                 hw.Type = htype
-                hw.Description = "%s %s" % self.getVendor(udi)
+                hw.Description = ""
+                try:
+                    vendor = self.getVendor(udi)
+                    if vendor:
+                        hw.Description = "%s %s" % vendor
+                except:
+                    pass
+ 
                 hw.Status = HW_SYSTEM
 
                 index = self.getProperty(obj, "net.physical_device")
