@@ -30,7 +30,7 @@ archive: tag
 srpm: archive
 	@LANG=C rpmbuild --define "_sourcedir `pwd`" --define "_srcrpmdir $(top_builddir)" --define "_specdir `pwd`" -ts $(top_builddir)/$(PACKAGE)-$(VERSION).tar.$(GZ_BZIP)
 	@$(MAKE) ${PACKAGE}.spec
-	@echo " ${PACKAGE}-$(VERSION).tar.gz ${PACKAGE}.spec "
+	@echo " ${PACKAGE}-$(VERSION).tar.bz2 ${PACKAGE}.spec "
 
 newversion:
 	perl -p -i -e 'if (/RELEASE=(.*)/) { $$newrel = $$1 + 1;s/RELEASE=.*/RELEASE=$$newrel/; };' configure.in
