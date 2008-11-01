@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
-"PO-Revision-Date: 2008-10-15 21:16-0000\n"
+"POT-Creation-Date: 2008-10-28 16:17+0100\n"
+"PO-Revision-Date: 2008-11-01 15:02+0100\n"
 "Last-Translator: Miloš Komarčević <kmilos@gmail.com>\n"
 "Language-Team: Serbian (sr) <fedora-trans-sr@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../src/netconf_cmd.py:65
 #, python-format
@@ -48,7 +48,7 @@ msgid ""
 "This software is distributed under the GPL. Please Report bugs to Red Hat's "
 "Bug Tracking System: http://bugzilla.redhat.com/"
 msgstr ""
-"Ovaj softver je razdeljen pod GJL-om. Molim prijavite greške Red Hat-ovom "
+"Ovaj softver je razdeljen pod GJL-om. Molim prijavite greške Red Hatovom "
 "sistemu za praćenje grešaka: http://bugzilla.redhat.com/"
 
 #: ../src/netconf_cmd.py:106
@@ -130,7 +130,7 @@ msgid ""
 "System: http://bugzilla.redhat.com/"
 msgstr ""
 "Ovaj softver se razdeljuje pod GJL-om. \n"
-"Prijavite greške Red Hat-ovom sistemu za praćenje \n"
+"Prijavite greške Red Hatovom sistemu za praćenje \n"
 "grešaka: http://bugzilla.redhat.com/"
 
 #: ../src/netconf_control.py:242
@@ -1223,6 +1223,7 @@ msgid "Choose Hardware Type"
 msgstr "Odaberite vrstu hardvera"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1231,10 +1232,12 @@ msgid "Hardware type:"
 msgstr "Vrsta hardvera:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "ISDN"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "Modem"
 
@@ -1375,6 +1378,7 @@ msgid "Monitor the selected device."
 msgstr "Nadgledanje izabranog uređaja."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
@@ -2719,35 +2723,35 @@ msgstr "Promenjeni nadimci"
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, uređaj nije naveden ili pseudonim nije broj!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:509
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "Aktiviranje mrežnog uređaja..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:510
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Aktiviram mrežni uređaj  %s, molim pričekajte..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:512
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Ne mogu da aktiviram mrežni uređaj %s!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:529
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "Deaktiviranje mrežnog uređaja..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:530
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Deaktiviram mrežni uređaj %s, molim pričekajte..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:532
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3216,6 +3220,75 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "Greška pri uklanjanju datoteke %(file)s: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Novi uređaj>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Koje vrste uređaj želite da dodate?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Dodaj"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+msgid "Select A Device"
+msgstr "Izaberite uređaj"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+msgid "Save"
+msgstr "Sačuvaj"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+msgid "Hostname"
+msgstr "Ime domaćina"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+msgid "Primary DSN"
+msgstr "Osnovni DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+msgid "Secondary DNS"
+msgstr "Sporedni DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+msgid "Tertiary DNS"
+msgstr "Treći DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+msgid "Search"
+msgstr "Pretraga"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:109
+msgid "Ok"
+msgstr "U redu"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+msgid "DNS configuration"
+msgstr "DNS podešavanje"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
@@ -3241,20 +3314,6 @@ msgstr "Lozinka za ISP"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:72
 msgid "MSN"
 msgstr "MSN"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "U redu"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "Otkaži"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
@@ -3286,7 +3345,7 @@ msgstr "IP podrazumevanog mrežnog prolaza"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
 msgid "Read Device Bus ID"
-msgstr "Porčitaj IB magistrale za uređaj"
+msgstr "Pročitaj IB magistrale za uređaj"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:129
 msgid "Data Device Bus ID"
