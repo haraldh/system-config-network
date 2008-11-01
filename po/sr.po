@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
-"PO-Revision-Date: 2008-10-15 21:16-0000\n"
+"POT-Creation-Date: 2008-10-28 16:17+0100\n"
+"PO-Revision-Date: 2008-11-01 15:02+0100\n"
 "Last-Translator: Miloš Komarčević <kmilos@gmail.com>\n"
 "Language-Team: Serbian (sr) <fedora-trans-sr@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../src/netconf_cmd.py:65
 #, python-format
@@ -1223,6 +1223,7 @@ msgid "Choose Hardware Type"
 msgstr "Одаберите врсту хардвера"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1231,10 +1232,12 @@ msgid "Hardware type:"
 msgstr "Врста хардвера:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "ISDN"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "Модем"
 
@@ -1375,6 +1378,7 @@ msgid "Monitor the selected device."
 msgstr "Надгледање изабраног уређаја."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
@@ -2718,35 +2722,35 @@ msgstr "Промењени надимци"
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, уређај није наведен или псеудоним није број!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:509
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "Активирање мрежног уређаја..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:510
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Активирам мрежни уређај  %s, молим причекајте..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:512
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Не могу да активирам мрежни уређај %s!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:529
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "Деактивирање мрежног уређаја..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:530
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Деактивирам мрежни уређај %s, молим причекајте..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:532
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3215,6 +3219,75 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "Грешка при уклањању датотеке %(file)s: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Нови уређај>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Које врсте уређај желите да додате?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Додај"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
+msgid "Cancel"
+msgstr "Откажи"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+msgid "Select A Device"
+msgstr "Изаберите уређај"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+msgid "Save"
+msgstr "Сачувај"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+msgid "Hostname"
+msgstr "Име домаћина"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+msgid "Primary DSN"
+msgstr "Основни DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+msgid "Secondary DNS"
+msgstr "Споредни DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+msgid "Tertiary DNS"
+msgstr "Трећи DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+msgid "Search"
+msgstr "Претрага"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:109
+msgid "Ok"
+msgstr "У реду"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+msgid "DNS configuration"
+msgstr "DNS подешавање"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
@@ -3240,20 +3313,6 @@ msgstr "Лозинка за ISP"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:72
 msgid "MSN"
 msgstr "MSN"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "У реду"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "Откажи"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
@@ -3285,7 +3344,7 @@ msgstr "IP подразумеваног мрежног пролаза"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
 msgid "Read Device Bus ID"
-msgstr "Порчитај ИБ магистрале за уређај"
+msgstr "Прочитај ИБ магистрале за уређај"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:129
 msgid "Data Device Bus ID"
