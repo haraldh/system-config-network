@@ -18,14 +18,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master.fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
-"PO-Revision-Date: 2008-10-17 11:52-0800\n"
-"Last-Translator: Florent Le Coz <louizatakk@fedoraproject.org>\n"
-"Language-Team: French <i18@redhat.com>\n"
+"POT-Creation-Date: 2008-10-29 01:45+0000\n"
+"PO-Revision-Date: 2008-11-03 22:44+0100\n"
+"Last-Translator: \n"
+"Language-Team: American English <fedora-trans-fr@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/netconf_cmd.py:65
 #, python-format
@@ -1254,6 +1255,7 @@ msgid "Choose Hardware Type"
 msgstr "Choisir le type de matériel"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1262,10 +1264,12 @@ msgid "Hardware type:"
 msgstr "Type de matériel :"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "RNIS"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "Modem"
 
@@ -1410,6 +1414,7 @@ msgid "Monitor the selected device."
 msgstr "Contrôler le périphérique sélectionné."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
@@ -2771,35 +2776,35 @@ msgstr "Surnoms modifiés"
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, Périphérique non spécifié ou l'alias n'est pas un numéro !"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:509
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "Activation du périphérique réseau en cours..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:510
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Activation du périphérique réseau %s en cours, veuillez patienter..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:512
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Impossible d'activer le périphérique réseau %s !\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:529
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "Désactivation du périphérique réseau..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:530
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Désactivation du périphérique réseau %s, veuillez patienter..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:532
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3271,6 +3276,75 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "Erreur lors de la suppression des fichiers %(file)s: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Nouveau périphérique>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Quel type de périphérique voulez-vous ajouter ?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Ajouter"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+msgid "Select A Device"
+msgstr "Sélectionner un périphérique"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+msgid "Hostname"
+msgstr "Nom d'hôte"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+msgid "Primary DSN"
+msgstr "DNS primaire"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+msgid "Secondary DNS"
+msgstr "DNS secondaire"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+msgid "Tertiary DNS"
+msgstr "DNS tertiaire"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+msgid "Search"
+msgstr "Recherche"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:109
+msgid "Ok"
+msgstr "Ok"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+msgid "DNS configuration"
+msgstr "Configuration DNS"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
@@ -3296,20 +3370,6 @@ msgstr "Mot de passe du FAI"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:72
 msgid "MSN"
 msgstr "MSN"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "Ok"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "Annuler"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
@@ -3447,3 +3507,4 @@ msgstr "Réseau"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Contrôler et surveiller les périphériques réseau"
+
