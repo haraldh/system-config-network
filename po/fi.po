@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
-"PO-Revision-Date: 2008-10-15 19:03+0300\n"
+"POT-Creation-Date: 2008-10-29 01:45+0000\n"
+"PO-Revision-Date: 2008-11-07 21:47+0200\n"
 "Last-Translator: Ville-Pekka Vainio <vpivaini@cs.helsinki.fi>\n"
 "Language-Team: Finnish <laatu@lokalisointi.org>\n"
 "MIME-Version: 1.0\n"
@@ -1216,6 +1216,7 @@ msgid "Choose Hardware Type"
 msgstr "Valitse laitetyyppi"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1224,10 +1225,12 @@ msgid "Hardware type:"
 msgstr "Laitetyyppi:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "ISDN"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "Modeemi"
 
@@ -1368,6 +1371,7 @@ msgid "Monitor the selected device."
 msgstr "Seuraa valittua laitetta."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
@@ -2711,35 +2715,35 @@ msgstr "Lempinimet muutettiin"
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, määrittelemätön laite tai alias ei ole luku!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:509
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "Verkkolaitetta käynnistetään..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:510
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Verkkolaite %s käynnistetään, odota..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:512
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Verkkolaitetta %s ei voida ottaa käyttöön!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:529
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "Verkkolaitetta suljetaan..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:530
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Verkkolaitetta %s suljetaan, odota..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:532
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3207,6 +3211,75 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "Virhe poistettaessa tiedostoa %(file)s: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Uusi laite>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Millaisen laitteen haluat lisätä?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Lisää"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+msgid "Select A Device"
+msgstr "Valitse laite"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+msgid "Save"
+msgstr "Tallenna"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+msgid "Hostname"
+msgstr "Konenimi"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+msgid "Primary DSN"
+msgstr "Ensimmäinen DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+msgid "Secondary DNS"
+msgstr "Toinen DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+msgid "Tertiary DNS"
+msgstr "Kolmas"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+msgid "Search"
+msgstr "Haku"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:109
+msgid "Ok"
+msgstr "Ok"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+msgid "DNS configuration"
+msgstr "DNS-asetukset"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
@@ -3232,20 +3305,6 @@ msgstr "Yhteydentarjoajan salasana"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:72
 msgid "MSN"
 msgstr ""
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "Ok"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "Peruuta"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
@@ -3380,18 +3439,6 @@ msgstr "Verkko"
 msgid "Control and monitor network devices"
 msgstr "Verkkolaitteiden hallinta ja seuranta"
 
-#~ msgid "Which device type do you want to add?"
-#~ msgstr "Millaisen laitteen haluat lisätä?"
-
-#~ msgid "Add"
-#~ msgstr "Lisää"
-
-#~ msgid "QETH"
-#~ msgstr "QETH"
-
-#~ msgid "<New Device>"
-#~ msgstr "<Uusi laite>"
-
 #~ msgid "ERROR: Unable to initialize graphical environment. "
 #~ msgstr "VIRHE: Graafisen ympäristön alustus epäonnistui."
 
@@ -3418,9 +3465,6 @@ msgstr "Verkkolaitteiden hallinta ja seuranta"
 
 #~ msgid "MT_U:"
 #~ msgstr "MT_U:"
-
-#~ msgid "Select Device"
-#~ msgstr "Valitse laite"
 
 #~ msgid "Select the card you want to configure:"
 #~ msgstr "Valitse kortti, jonka haluat konfiguroida:"
