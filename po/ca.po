@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
-"PO-Revision-Date: 2008-09-27 21:31+0100\n"
+"POT-Creation-Date: 2008-10-29 01:45+0000\n"
+"PO-Revision-Date: 2008-11-08 21:31+0100\n"
 "Last-Translator: Agustí Grau <fletxa@gmail.com>\n"
 "Language-Team: Catalan <fedora@softcatala.net>\n"
 "MIME-Version: 1.0\n"
@@ -1232,6 +1232,7 @@ msgid "Choose Hardware Type"
 msgstr "Trieu el tipus de maquinari"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1240,10 +1241,12 @@ msgid "Hardware type:"
 msgstr "Tipus de maquinari:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "XDSI"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "Mòdem"
 
@@ -1384,6 +1387,7 @@ msgid "Monitor the selected device."
 msgstr "Monitor del dispositiu seleccionat."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
 #: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
@@ -2740,35 +2744,35 @@ msgstr "Sobrenoms canviats"
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, no s'ha especificat cap dispositiu o l'àlies no és un nombre."
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:509
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "S'està activant el dispositiu de xarxa..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:510
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "S'està activant el dispositiu de xarxa %s, espereu..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:512
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "No es pot activar el dispositiu de xarxa %s.\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:529
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "S'està desactivant el dispositiu de xarxa..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:530
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "S'està desactivant el dispositiu de xarxa %s, espereu..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:532
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
@@ -3240,6 +3244,75 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "S'ha produït un error en suprimir %(file)s: %(errormsg)."
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Dispositiu nou>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Quin tipus de dispositiu voleu afegir?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Afegeix"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+msgid "Select A Device"
+msgstr "Seleccioneu un dispositiu"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+msgid "Save"
+msgstr "Desa"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+msgid "Hostname"
+msgstr "Nom de l'ordinador"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+msgid "Primary DSN"
+msgstr "DNS primari"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+msgid "Secondary DNS"
+msgstr "DNS secundari"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+msgid "Tertiary DNS"
+msgstr "DNS terciari"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+msgid "Search"
+msgstr "Cerca"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:109
+msgid "Ok"
+msgstr "D'acord"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+msgid "DNS configuration"
+msgstr "Configuració del DNS"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
@@ -3265,20 +3338,6 @@ msgstr "Contrasenya de l'ISP"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:72
 msgid "MSN"
 msgstr "MSN"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "D'acord"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "Cancel·la"
 
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
@@ -3413,327 +3472,4 @@ msgstr "Xarxa"
 msgid "Control and monitor network devices"
 msgstr "Controleu i monitoritzeu els dispositius de xarxa"
 
-#~ msgid "ERROR: Unable to initialize graphical environment. "
-#~ msgstr "S'ha produït un error: no s'ha pogut inicialitzar l'entorn gràfic. "
 
-#~ msgid ""
-#~ "Most likely cause of failure is that the tool was not run using a "
-#~ "graphical environment. "
-#~ msgstr ""
-#~ "El motiu més probable de la fallada és que l'eina no s'ha executat en un "
-#~ "entorn gràfic. "
-
-#~ msgid ""
-#~ "Please either start your graphical user interface or set your DISPLAY "
-#~ "variable.\n"
-#~ msgstr "Inicieu la interfície d'usuari o definiu la variable DISPLAY.\n"
-
-#~ msgid "Card"
-#~ msgstr "Targeta"
-
-#~ msgid "Create Device"
-#~ msgstr "Crea un dispositiu"
-
-#~ msgid "MT_U:"
-#~ msgstr "MT_U:"
-
-#~ msgid "Select Device"
-#~ msgstr "Seleccioneu un dispositiu"
-
-#~ msgid "Select the card you want to configure:"
-#~ msgstr "Seleccioneu la targeta que vulgueu configurar:"
-
-#~ msgid "_Point to Point (IP):"
-#~ msgstr "_Punt a punt (IP):"
-
-#~ msgid "Point to Point (IP):"
-#~ msgstr "Punt a punt (IP):"
-
-#~ msgid ""
-#~ "Command failed: %s\n"
-#~ "\n"
-#~ "Output:\n"
-#~ "%s\n"
-#~ msgstr ""
-#~ "Ha fallat l'ordre: %s\n"
-#~ "\n"
-#~ "Sortida:\n"
-#~ "%s\n"
-
-#~ msgid "Wireless card"
-#~ msgstr "Targeta sense fils"
-
-#~ msgid "Which device type do you want to add?"
-#~ msgstr "Quin tipus de dispositiu voleu afegir?"
-
-#~ msgid "Add"
-#~ msgstr "Afegeix"
-
-#~ msgid "<New Device>"
-#~ msgstr "<Dispositiu nou>"
-
-#~ msgid "Command failed: "
-#~ msgstr "Ha fallat l'ordre:"
-
-#~ msgid "Output:\n"
-#~ msgstr "Sortida:\n"
-
-#~ msgid ""
-#~ "The Ethernet card could not be initialized. Please verify your settings "
-#~ "and try again."
-#~ msgstr ""
-#~ "No s'ha pogut inicialitzar la targeta ethernet. Verifiqueu els paràmetres "
-#~ "i torneu-ho a provar."
-
-#~ msgid "%s connection"
-#~ msgstr "Connexió %s."
-
-#~ msgid "Create a new %s connection."
-#~ msgstr "Crea una nova connexió %s."
-
-#~ msgid "This wizard still has to be written."
-#~ msgstr "Aquest assistent encara s'ha d'escriure."
-
-#~ msgid "Press Finish to get the standard configuration dialog."
-#~ msgstr "Premeu Finalitza per obtenir el diàleg de configuració estàndard."
-
-#~ msgid "Then, at first, enter the nickname for the device."
-#~ msgstr "Aleshores, per començar, introduïu el sobrenom del dispositiu."
-
-#~ msgid "This device can not be edited with this tool!"
-#~ msgstr "Aquest dispositiu no es pot editar amb aquesta eina."
-
-#~ msgid "CIPE Configuration"
-#~ msgstr "Configuració CIPE"
-
-#~ msgid "Configuration for your remote partner"
-#~ msgstr "Configuració per al parell"
-
-#~ msgid "Lo_cal virtual address:"
-#~ msgstr "Adreça virtual lo_cal:"
-
-#~ msgid "Remote _virtual address:"
-#~ msgstr "Adreça remota _virtual:"
-
-#~ msgid "Remote peer p_ort:"
-#~ msgstr "P_ort parell remot:"
-
-#~ msgid "_Local port:"
-#~ msgstr "Port _local:"
-
-#~ msgid "_Remote peer address:"
-#~ msgstr "Adreça parell _remot:"
-
-#~ msgid "_Secret key:"
-#~ msgstr "Clau _secreta:"
-
-#~ msgid "_Tunnel Settings"
-#~ msgstr "Paràmetres del _túnel"
-
-#~ msgid "_Tunnel through device:"
-#~ msgstr "Dispositiu de _túnel:"
-
-#~ msgid "_auto"
-#~ msgstr "_auto"
-
-#~ msgid "cipcb0"
-#~ msgstr "cipcb0"
-
-#~ msgid "cipcb1"
-#~ msgstr "cipcb1"
-
-#~ msgid "cipcb2"
-#~ msgstr "cipcb2"
-
-#~ msgid "cipcb3"
-#~ msgstr "cipcb3"
-
-#~ msgid "cipcb4"
-#~ msgstr "cipcb4"
-
-#~ msgid "eth0"
-#~ msgstr "eth0"
-
-#~ msgid "eth1"
-#~ msgstr "eth1"
-
-#~ msgid "eth2"
-#~ msgstr "eth2"
-
-#~ msgid "eth3"
-#~ msgstr "eth3"
-
-#~ msgid "eth4"
-#~ msgstr "eth4"
-
-#~ msgid "None - Server Mode"
-#~ msgstr "Cap - mode servidor"
-
-#~ msgid " (dynamic)"
-#~ msgstr " (dinàmic)"
-
-#~ msgid "Server Mode"
-#~ msgstr "Mode servidor"
-
-#~ msgid "(own choice)"
-#~ msgstr "(elecció pròpia)"
-
-#~ msgid "IP address of tunnel device: "
-#~ msgstr "Adreça IP del dispositiu túnel: "
-
-#~ msgid "Local port: "
-#~ msgstr "Port local: "
-
-#~ msgid "Remote peer address: "
-#~ msgstr "Adreça parell remota: "
-
-#~ msgid "Remote virtual address: "
-#~ msgstr "Adreça virtual remota: "
-
-#~ msgid "Local virtual address: "
-#~ msgstr "Adreça virtual local: "
-
-#~ msgid "Secret key: "
-#~ msgstr "Clau secreta: "
-
-#~ msgid "<b>Configuration for your remote partner</b>"
-#~ msgstr "<b>Configuració per al vostre company remot</b>"
-
-#~ msgid "Configure Tunnel"
-#~ msgstr "Configura el túnel"
-
-#~ msgid "Create Cipe Connection"
-#~ msgstr "Crea una connexió Cipe"
-
-#~ msgid "CIPE (VPN) connection"
-#~ msgstr "Connexió CIPE (VPN)"
-
-#~ msgid "Create a new virtual private network connection with CIPE."
-#~ msgstr "Crea una nova connexió de xarxa privada virtual amb CIPE."
-
-#~ msgid "Tunnel through device:"
-#~ msgstr "Dispositiu túnel:"
-
-#~ msgid "Local port:"
-#~ msgstr "Port local:"
-
-#~ msgid "Remote peer address:"
-#~ msgstr "Adreça parell remota:"
-
-#~ msgid "Remote peer port:"
-#~ msgstr "Port parell remot:"
-
-#~ msgid "Remote virtual address:"
-#~ msgstr "Adreça virtual remota:"
-
-#~ msgid "Local virtual address:"
-#~ msgstr "Adreça virtual local:"
-
-#~ msgid "IP address of tunnel device:"
-#~ msgstr "Adreça IP del dispositiu túnel:"
-
-#~ msgid "Secret key:"
-#~ msgstr "Clau secreta:"
-
-#~ msgid "You must enter a secret key or generate one"
-#~ msgstr "Heu d'introduir una clau secreta o generar-ne una"
-
-#~ msgid ""
-#~ "Directory %s is missing!\n"
-#~ "Will create it for you!\n"
-#~ "You should install the cipe rpm package!\n"
-#~ msgstr ""
-#~ "El directori %s no existeix.\n"
-#~ "Es crearà aquest directori.\n"
-#~ "Hauríeu d'instal·lar el paquet informàtic cipe.\n"
-
-#~ msgid ""
-#~ "Could not create\n"
-#~ "directory %s!"
-#~ msgstr ""
-#~ "No s'ha pogut crear\n"
-#~ "el directori %s."
-
-#~ msgid "IUCV connection"
-#~ msgstr "Connexió IUCV"
-
-#~ msgid "Create a new IUCV connection."
-#~ msgstr "Crea una nova connexió IUCV."
-
-#~ msgid "IUCV Device"
-#~ msgstr "Dispositiu IUCV"
-
-#~ msgid "CTC Device"
-#~ msgstr "Dispositiu CTC"
-
-#~ msgid "CTC connection"
-#~ msgstr "Connexió CTC"
-
-#~ msgid "Create a new CTC connection."
-#~ msgstr "Crea una nova connexió CTC."
-
-#~ msgid "Aliases"
-#~ msgstr "Àlies"
-
-#~ msgid "IP"
-#~ msgstr "IP"
-
-#~ msgid "Static routes file %s is invalid"
-#~ msgstr "El fitxer de rutes estàtiques %s no és vàlid"
-
-#~ msgid "Displaying main screen"
-#~ msgstr "S'està mostrant la pantalla principal"
-
-#~ msgid "What do you want to configure?"
-#~ msgstr "Què voleu configurar?"
-
-#~ msgid "Configure"
-#~ msgstr "Configura"
-
-#~ msgid "Exit"
-#~ msgstr "Surt"
-
-#~ msgid ""
-#~ "This software is distributed under the GPL. Please report bugs to Red "
-#~ "Hat's bug tracking system: http://bugzilla.redhat.com/"
-#~ msgstr ""
-#~ "Aquest programa es distribueix sota la GPL. Informeu dels errors al "
-#~ "sistema de seguiment d'errors de Red Hat: http://bugzilla.redhat.com/"
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Iugoslàvia"
-
-#~ msgid "DMA0:"
-#~ msgstr "DMA0:"
-
-#~ msgid "DMA1:"
-#~ msgstr "DMA1:"
-
-#~ msgid "Configure your connection to the Internet"
-#~ msgstr "Configureu la vostra connexió a Internet"
-
-#~ msgid "Internet Configuration Wizard"
-#~ msgstr "Assistent de configuració d'Internet"
-
-#~ msgid "Enter the login name for this account."
-#~ msgstr "Introduïu el nom d'entrada per a aquest compte."
-
-#~ msgid "Enter the password for this account."
-#~ msgstr "Introduïu la contrasenya per a aquest compte."
-
-#~ msgid "Copying %s to profile %s."
-#~ msgstr "S'està copiant %s al perfil %s.."
-
-#~ msgid "Linking %s to profile %s."
-#~ msgstr "S'està enllaçant %s al perfil %s"
-
-#~ msgid ""
-#~ "Error linking %s\n"
-#~ "to\n"
-#~ "%s:\n"
-#~ "%s!"
-#~ msgstr ""
-#~ "S'ha produït un error mentre s'enllaçava %s\n"
-#~ "amb\n"
-#~ "%s:\n"
-#~ "%s."
