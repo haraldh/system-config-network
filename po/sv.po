@@ -1,2023 +1,3731 @@
-# Swedish messages for system-config-firewall.
-# Copyright © 2006, 2008 Free Software Foundation
-# Copyright © 2004, 2006 Göran Uddeborg <goeran@uddeborg.se>
-# Copyright © 2006, 2008 Magnus Larsson <fedoratrans@gmail.com>
+# Swedish translation for system-config-network.
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# Magnus Larsson <fedoratrans@gmail.com>, 2006, 2007,2008.
+# Christian Rose <menthos@menthos.com>, 2002, 2003, 2004, 2005.
 #
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: system-config-firewall\n"
+"Project-Id-Version: system-config-network\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-22 17:22+0200\n"
-"PO-Revision-Date: 2008-11-09 00:20-0500\n"
-"Last-Translator: Magnus Larsson <fedoratrans@gmail.com>\n"
+"POT-Creation-Date: 2008-10-28 16:17+0100\n"
+"PO-Revision-Date: 2008-11-09 00:24-0500\n"
+"Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/fw_compat.py:27
+#: ../src/netconf_cmd.py:65
 #, python-format
-msgid "Converting %s"
-msgstr "Konverterar %s"
-
-#: ../src/fw_config.py:49
 msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version.\n"
+"An unhandled exception has occured.  This is most likely a bug.\n"
+"Please file a detailed bug report against the component %s at \n"
+"https://bugzilla.redhat.com/bugzilla\n"
+"using the text below.\n"
+msgstr ""
+"Ett undantag som inte hanteras har inträffat. Detta är med\n"
+"största sannolikhet ett fel. Rapportera en detaljerad felrapport\n"
+"för komponenten %s på https://bugzilla.redhat.com/bugzilla \n"
+"genom använda texten nedan.\n"
+
+#: ../src/netconf_cmd.py:100
+#, python-format
+msgid "%s - network configuration commandline tool"
+msgstr "%s - kommandoradsverktyg för nätverkskonfiguration"
+
+#: ../src/netconf_cmd.py:102 ../src/netconf_control.py:159
+#: ../src/netconf_control.py:176 ../src/netconfpkg/gui/maindialog.py:1697
+#: ../src/netconfpkg/gui/maindialog.py:1713
+msgid "Copyright (c) 2001-2005 Red Hat, Inc."
+msgstr "Copyright (c) 2001-2005 Red Hat, Inc."
+
+#: ../src/netconf_cmd.py:103 ../src/netconf_control.py:160
+#: ../src/netconfpkg/gui/maindialog.py:1698
+msgid ""
+"This software is distributed under the GPL. Please Report bugs to Red Hat's "
+"Bug Tracking System: http://bugzilla.redhat.com/"
+msgstr ""
+"Denna programvara distribueras under GPL. Rapportera fel i Red Hats "
+"felrapporteringssystem: http://bugzilla.redhat.com/"
+
+#: ../src/netconf_cmd.py:106
+#, python-format
+msgid "Usage: %s"
+msgstr "Användning: %s"
+
+#: ../src/netconf_cmd.py:108
+msgid "switch / activate profile"
+msgstr "byt / aktivera profil"
+
+#: ../src/netconf_cmd.py:110
+msgid "export / import hardware list"
+msgstr "exportera / importera hårdvarulista"
+
+#: ../src/netconf_cmd.py:112
+msgid "export / import IPsec list"
+msgstr "exportera / importera IPsec-lista"
+
+#: ../src/netconf_cmd.py:114
+msgid "export / import device list (default)"
+msgstr "exportera / importera enhetslista (standard)"
+
+#: ../src/netconf_cmd.py:116
+msgid "export / import profile list"
+msgstr "exportera / importera profillista"
+
+#: ../src/netconf_cmd.py:118
+msgid "set the root directory"
+msgstr "ställ in rotkatalogen"
+
+#: ../src/netconf_cmd.py:120
+msgid "export list (default)"
+msgstr "exportera lista (standard)"
+
+#: ../src/netconf_cmd.py:121
+msgid "import list"
+msgstr "importera lista"
+
+#: ../src/netconf_cmd.py:123
+msgid "clear existing list prior of importing"
+msgstr "töm befintlig lista före import"
+
+#: ../src/netconf_cmd.py:125
+msgid "import from file"
+msgstr "importera från fil"
+
+#: ../src/netconf_cmd.py:267
+#, python-format
+msgid "Unknown option %s\n"
+msgstr "Okänd flagga %s\n"
+
+#: ../src/netconf_cmd.py:329
+#, python-format
+msgid "Unknown List %s\n"
+msgstr "Okänd lista %s\n"
+
+#: ../src/netconf_cmd.py:333
+#, python-format
+msgid "Error parsing line: %s"
+msgstr "Fel vid tolkning av rad: %s"
+
+#: ../src/netconf_control.py:49
+msgid ""
+"ERROR: Unable to initialize graphical environment. \n"
+"Most likely cause of failure is that the tool was not run using a graphical\n"
+"environment. Please either start your graphical user interface or set your\n"
+"DISPLAY variable.\n"
+msgstr ""
+"FEL: Kunde inte initiera den grafiska miljön. \n"
+"Troligen beror felet på att verktyget inte kördes i en grafisk miljö.\n"
+"Antingen starta din grafiska miljö eller sätt din\n"
+"DISPLAY-variabel.\n"
+
+#: ../src/netconf_control.py:184 ../src/netconfpkg/gui/maindialog.py:1717
+msgid ""
+"This software is distributed under the GPL. \n"
+"Please Report bugs to Red Hat's Bug Tracking \n"
+"System: http://bugzilla.redhat.com/"
+msgstr ""
+"Denna programvara distribueras under GPL. \n"
+"Rapportera fel i Red Hats felrapporterings- \n"
+"system: http://bugzilla.redhat.com/"
+
+#: ../src/netconf_control.py:242
+#, python-format
+msgid "Cannot configure network device %s"
+msgstr "Kan inte konfigurera nätverksenheten %s"
+
+#: ../src/netconf_control.py:263
+msgid "Switching Profiles"
+msgstr "Byter profiler"
+
+#: ../src/netconf_control.py:264
+#, python-format
+msgid "Switching to profile %s"
+msgstr "Byter till profilen %s"
+
+#: ../src/netconf_control.py:265
+#, python-format
+msgid "Failed to switch to profile %s"
+msgstr "Misslyckades med att byta till profilen %s"
+
+#. pylint: disable-msg=W0613
+#. TBD
+#: ../src/netconf_control.py:280
+msgid "To be rewritten!"
+msgstr "Att skrivas om!"
+
+#: ../src/netconf_control.py:414
+msgid " (active)"
+msgstr " (aktiv)"
+
+#. FIXME: change string
+#: ../src/netconf_control.py:498 ../src/netconf_tui.py:172
+msgid ""
+"system-config-network - network configuration tool\n"
 "\n"
-"This program is distributed in the hope that it will be useful, but WITHOUT "
-"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
-"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
-"more details.\n"
+"Usage: system-config-network -v --verbose -d --debug"
+msgstr ""
+"system-config-network - verktyg för nätverkskonfiguration\n"
 "\n"
-"You should have received a copy of the GNU General Public License along with "
-"this program.  If not, see <http://www.gnu.org/licenses/>."
+"Användning: system-config-network -v --verbose -d --debug"
+
+#: ../src/netconfpkg/exception.py:127
+msgid "_Debug"
+msgstr "_Felsökning"
+
+#: ../src/netconfpkg/exception.py:128
+msgid "_Save to file"
+msgstr "_Spara till fil"
+
+#: ../src/netconfpkg/exception.py:143
+#, python-format
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save the crash dump and file a detailed bug report against %s at https://"
+"bugzilla.redhat.com/bugzilla"
 msgstr ""
-"Detta program är fri programvara; du kan distribuera den igen eller/och "
-"ändra den under de regler för GNU General Public License som de publicerats "
-"av Free Software Foundation; antingen version 2 av licensen eller (om du "
-"vill) valfri senare version.\n"
+"Ett undantag som inte hanteras har inträffat. Detta är troligen ett fel. "
+"Spara kraschdumpen och skriv  en detaljerad felrapport om %s på https://"
+"bugzilla.redhat.com/bugzilla"
+
+#: ../src/netconfpkg/exception.py:240
+#, python-format
+msgid "Error: %s: %s"
+msgstr "Fel: %s: %s"
+
+#: ../src/netconfpkg/exception.py:243
+#, python-format
+msgid ""
+"%s\n"
 "\n"
-"Detta program distribueras i förhoppning att det kan vara användbart, men "
-"UTAN NÅGON GARANTI, utan ens antyda garanti av att vara FÖRSÄLJNINGSBAR "
-"eller LÄMPAD FÖR ETT VISST SYFTE. Se GNU General Public License för mer "
-"detaljer.\n"
+"%s:\n"
+"%s"
+msgstr ""
+"%s\n"
 "\n"
-"Du ska ha fått en kopia av GNU General Public License med detta program. Om "
-"inte, se <http://www.gnu.org/licenses/>."
+"%s:\n"
+"%s"
 
-#: ../src/fw_gui.py:60
-msgid "Firewall"
-msgstr "Brandvägg"
-
-#: ../src/fw_gui.py:61
-msgid "Configure firewall rules"
-msgstr "Konfigurera brandväggsregler"
-
-#: ../src/fw_gui.py:62
-msgid ""
-"A firewall allows other computers to access selected services on your "
-"computer and helps to prevent unauthorized access beyond these selections. "
-"Select the services to which the firewall should allow access."
-msgstr ""
-"Du kan använda en brandvägg för att tillåta åtkomst till specifika tjänster "
-"på din dator och förhindra otillåten åtkomst utanför valda tjänster. Välj de "
-"tjänster som brandväggen ska tillåta åtkomst till."
-
-#: ../src/fw_gui.py:79 ../src/fw_gui.py:1441
-msgid "local"
-msgstr "lokal"
-
-#: ../src/fw_gui.py:244 ../src/fw_gui.py:271 ../src/fw_gui.py:333
-msgid "Service"
-msgstr "Tjänst"
-
-#: ../src/fw_gui.py:248
-msgid "Port/Protocol"
-msgstr "Port/Protokoll:"
-
-#: ../src/fw_gui.py:262 ../src/fw_gui.py:324 ../src/fw_gui.py:536
-msgid "Port"
-msgstr "Port"
-
-#: ../src/fw_gui.py:267 ../src/fw_gui.py:329 ../src/fw_gui.py:533
-msgid "Protocol"
-msgstr "Protokoll"
-
-#: ../src/fw_gui.py:386 ../src/fw_gui.py:417 ../src/fw_gui.py:443
-#: ../src/fw_gui.py:528 ../src/system-config-firewall.glade:4603
-msgid "Interface"
-msgstr "Gränssnitt"
-
-#: ../src/fw_gui.py:393 ../src/fw_gui.py:423 ../src/fw_gui.py:447
-msgid "Description"
-msgstr "Beskrivning"
-
-#: ../src/fw_gui.py:469 ../src/fw_gui.py:478 ../src/fw_gui.py:503
-msgid "Select"
-msgstr "Välj"
-
-#: ../src/fw_gui.py:539
-msgid "To Address"
-msgstr "Till adress"
-
-#: ../src/fw_gui.py:543
-msgid "To Port"
-msgstr "Till port"
-
-#: ../src/fw_gui.py:565
-msgid "ICMP Type"
-msgstr "ICMP-typ"
-
-#: ../src/fw_gui.py:588
-msgid "Type"
-msgstr "Typ"
-
-#: ../src/fw_gui.py:592
-msgid "Table"
-msgstr "Tabell"
-
-#: ../src/fw_gui.py:596
-msgid "Filename"
-msgstr "Filnamn"
-
-#: ../src/fw_gui.py:736 ../src/fw_tui.py:62
-#: ../src/system-config-firewall.glade:664
-msgid "Trusted Services"
-msgstr "Pålitliga tjänster"
-
-#: ../src/fw_gui.py:777
-msgid "(modified)"
-msgstr "(ändrad)"
-
-#: ../src/fw_gui.py:796
-msgid "The firewall is enabled."
-msgstr "Brandväggen är aktiverad."
-
-#: ../src/fw_gui.py:807 ../src/fw_tui.py:744
-msgid "The firewall is disabled."
-msgstr "Brandväggen är inte aktiverad."
-
-#: ../src/fw_gui.py:837
-msgid "Helper modules:"
-msgstr "Hjälp-moduler:"
-
-#: ../src/fw_gui.py:854 ../src/system-config-firewall.glade:2284
-msgid "Protocol Type:"
-msgstr "Protokolltyp:"
-
-#: ../src/fw_gui.py:868
-msgid "Key:"
-msgstr "Nyckel:"
-
-#: ../src/fw_gui.py:870
-msgid "Default:"
-msgstr "Standardvärde:"
-
-#: ../src/fw_gui.py:1051 ../src/fw_tui.py:342
+#: ../src/netconfpkg/exception.py:305
 #, python-format
-msgid "Port or port range '%s' is not valid."
-msgstr "Port eller port-intervall '%s' är ej giltigt."
+msgid "%(progname)s - Exception Occurred"
+msgstr "%(progname)s - Fel inträffade"
 
-#: ../src/fw_gui.py:1053
-msgid "Please enter a valid port number, service name or range."
-msgstr "Ange ett portnummer, tjänstenamn eller intervall."
+#: ../src/netconfpkg/exception.py:318
+msgid "Specify a file to save the dump"
+msgstr "Ange en fil för att spara dumpen"
 
-#: ../src/fw_gui.py:1472
-msgid "There are unapplied changes, do you really want to quit?"
-msgstr "Det finns ändringar som ej utförts. Vill du verkligen avsluta?"
-
-#: ../src/fw_gui.py:1535
+#: ../src/netconfpkg/exception.py:338
 #, python-format
-msgid "All %s devices"
-msgstr "Alla %s enheter"
+msgid "Failed to write to file %s."
+msgstr "Misslyckades med att skriva till filen %s."
 
-#: ../src/fw_gui.py:1537
-msgid "Not configured"
-msgstr "Ej konfigurerad"
-
-#: ../src/fw_gui.py:1703 ../src/fw_tui.py:718
-msgid "Parse error in config file"
-msgstr "Inläsningsfel i konfigurationsfil"
-
-#: ../src/fw_gui.py:1705 ../src/fw_tui.py:719
-msgid "Ignore"
-msgstr "Ignorera"
-
-#: ../src/fw_gui.py:1706 ../src/fw_tui.py:720
-msgid "Ignore All"
-msgstr "Ignorera alla"
-
-#: ../src/fw_gui.py:1755 ../src/fw_tui.py:701
-msgid "The firewall configuration is not consistent."
-msgstr "Brandväggskonfigurationen är ej konsistent."
-
-#: ../src/fw_gui.py:1756 ../src/fw_tui.py:702
+#: ../src/netconfpkg/exception.py:342
 #, python-format
 msgid ""
-"The following files are missing or unusable:\n"
-"\t%s\n"
-"\n"
-"Apply your firewall configuration now to correct this problem."
+"The application's state has been successfully\n"
+"written to the file '%s'."
 msgstr ""
-"Följande filer saknas eller är oanvändbara:\n"
-"\t%s\n"
-"\n"
-"Verkställ din brandväggskonfiguration nu för att rätta till detta problem."
+"Programmets läge har sparats\n"
+"till filen '%s'."
 
-#: ../src/fw_gui.py:1764 ../src/fw_tui.py:708
-msgid "Old firewall configuration."
-msgstr "Gammal brandväggskonfiguration."
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:1
+msgid "Allow dial on _demand"
+msgstr "Tillåt uppringning vid _behov"
 
-#: ../src/fw_gui.py:1765 ../src/fw_tui.py:709
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:2
+msgid "Allow the link come up on demand."
+msgstr "Tillåt att länken kommer upp vid behov."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:3
+msgid "Demand setting"
+msgstr "Behovsinställning"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:4
+msgid "Enable synchronous PPP for the connection"
+msgstr "Aktivera synkron PPP för anslutningen"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:5
 msgid ""
-"Your firewall configuration was converted from an old version. Please verify "
-"the configuration and apply."
+"Enter the Access Concentrator name, if you have been given one by your ISP. "
+"In most cases you can leave this blank."
 msgstr ""
-"Din brandväggskonfiguration konverterades från en gammal version. "
-"Kontrollera konfigurationen och verkställ."
+"Ange namnet på åtkomstkoncentratorn (access concentrator) om din "
+"Internetleverantör kräver ett sådant. I de flesta fall kan du lämna det tomt."
 
-#: ../src/fw_gui.py:1810 ../src/system-config-firewall.glade:259
-msgid "Server"
-msgstr "Server"
-
-#: ../src/fw_gui.py:1817 ../src/system-config-firewall.glade:213
-msgid "Beginner"
-msgstr "Nybörjare"
-
-#: ../src/fw_gui.py:2022 ../src/fw_tui.py:627
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:6
 msgid ""
-"Clicking the 'Yes' button will override any existing firewall configuration. "
-"Are you sure that you want to do this?"
+"Enter the Service Name, if your ISP requires it. If you don't know it, "
+"please contact your ISP. In most cases you can leave this blank."
 msgstr ""
-"Att klicka på \"Ja\"-knappen kommer åsidosätta alla befintliga "
-"brandväggskonfigurationer. Är du säker på att du vill göra detta?"
+"Ange tjänstenamnet om din Internetleverantör kräver ett sådant. Om du inte "
+"känner till det bör du kontakta din Internetleverantör. I de flesta fall kan "
+"du lämna det tomt."
 
-#: ../src/fw_gui.py:2025 ../src/fw_tui.py:630
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:7
+msgid "Enter the idle time in seconds after which the link should be dropped."
+msgstr "Ange tomgångstiden i sekunder tills det att länken ska kopplas ned."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:8
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:10
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:19
+msgid "Enter the login name, that your ISP gave you here."
+msgstr "Ange inloggningsnamnet som din Internetleverantör har gett dig här."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:9
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:20
 msgid ""
-"Please remember to check if the services iptables and ip6tables are enabled."
+"Enter the name of this configuration, usually just the name of your ISP."
 msgstr ""
-"Kom ihåg att kontrollera om tjänsterna iptables och ip6tables är aktiverade."
+"Ange namnet på denna konfiguration, vanligtvis bara namnet på din "
+"Internetleverantör."
 
-#: ../src/fw_gui.py:2066 ../src/fw_tui.py:669
-msgid "Configuration failed"
-msgstr "Konfigurering misslyckades"
-
-#: ../src/fw_icmp.py:30
-msgid "Echo Request (ping)"
-msgstr "Eko-förfrågan (ping)"
-
-#: ../src/fw_icmp.py:31
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:12
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:21
 msgid ""
-"This message is used to test if a host is reachable mostly with the <i>ping</"
-"i> utility."
+"Enter the password for your account. If you do not know it, please contact "
+"your ISP."
 msgstr ""
-"Detta meddelande används för att testa om en värd kan nås oftast med "
-"<i>ping</i>-verktyget."
+"Ange lösenordet för ditt konto. Om du inte känner till det bör du kontakta "
+"din Internetleverantör."
 
-#: ../src/fw_icmp.py:33
-msgid "Echo Reply (pong)"
-msgstr "Ekosvar (pong)"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:11
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:27
+msgid "Make this connection the default _route"
+msgstr "Gör denna anslutning till standardväg (default _route)"
 
-#: ../src/fw_icmp.py:34
-msgid "This message is the answer to an <i>Echo Request</i>."
-msgstr "Detta meddelande är svaret på en <i>Eko-förfrågan</i>."
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:12
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:19
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:35
+msgid "Pass_word:"
+msgstr "_Lösenord:"
 
-#: ../src/fw_icmp.py:35
-msgid "Destination Unreachable"
-msgstr "Destination kan inte nås"
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:39
+msgid "Restart if _connection dies"
+msgstr "Starta om om a_nslutningen dör"
 
-#: ../src/fw_icmp.py:36
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:14
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:44
+msgid "Use this form to enter your T-Online account data."
+msgstr "Använd detta formulär för att ange dina T-Online-kontodata."
+
+# ÅK = åtkomstkoncentrator
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:15
+msgid "_AC-name:"
+msgstr "_ÅK-namn:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:16
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:46
+msgid "_Advanced"
+msgstr "_Avancerat"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:17
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:54
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:2
+#: ../src/netconfpkg/gui/QethConfig.glade.h:6
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:7
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:26
+msgid "_General"
+msgstr "_Allmänt"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:18
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:3
+#: ../src/netconfpkg/gui/QethConfig.glade.h:7
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:8
+msgid "_Hardware Device"
+msgstr "_Hårdvaruenhet"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:19
+msgid "_IPsec"
+msgstr "_IPsec"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:20
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:20
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:26
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:56
+msgid "_Login name:"
+msgstr "_Inloggningsnamn:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:21
+msgid "_Maximum idle time:"
+msgstr "_Maximal inaktivitetstid:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:22
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:60
+msgid "_Provider"
+msgstr "_Leverantör"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:23
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:22
+msgid "_Provider name:"
+msgstr "Namn på _leverantör:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:24
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:61
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:4
+#: ../src/netconfpkg/gui/QethConfig.glade.h:9
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:11
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:30
+msgid "_Route"
+msgstr "_Väg"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:25
+msgid "_Service-name:"
+msgstr "_Namn på tjänst:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:26
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:29
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:62
+msgid "_T-Online Account Setup"
+msgstr "_T-Online-kontokonfiguration"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:27
+msgid "_Use synchronous PPP"
+msgstr "_Använd synkron PPP"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDialog.glade.h:28
+msgid "xDSL Configuration"
+msgstr "xDSL-konfiguration"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:1
+msgid "<b>Account Type:</b>"
+msgstr "<b>Kontotyp:</b>"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/tonline.glade.h:3
+msgid "Associated T-Online _number:"
+msgstr "Associerat T-Online-_nummer:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:3
+msgid "Configure DSL connection"
+msgstr "Konfigurera DSL-anslutning"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:4
+msgid "Create DSL connection"
+msgstr "Skapa DSL-anslutning"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:8
+msgid "Enter the provider name for this account."
+msgstr "Ange leverantörsnamnet för detta konto."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:9
+msgid "Ethernet _device:"
+msgstr "Ethernet_enhet:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:10
+msgid "Normal"
+msgstr "Normal"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:11
 msgid ""
-"This error message is generated by a host or gateway if the destination is "
-"not reachable."
+"Normal\n"
+"T-Online"
 msgstr ""
-"Detta felmeddelande genereras av en värd eller gateway om destinationen inte "
-"går att nå."
-
-#: ../src/fw_icmp.py:38
-msgid "Parameter Problem"
-msgstr "Parameterproblem"
-
-#: ../src/fw_icmp.py:39
-msgid ""
-"This error message is generated if the IP header is bad, either by a missing "
-"option or bad length."
-msgstr ""
-"Detta felmeddelande genereras om IP-huvudet är felaktigt, antingen på grund "
-"av ett alternativ saknas eller har fel längd."
-
-#: ../src/fw_icmp.py:41
-msgid "Redirect"
-msgstr "Omdirigera"
-
-#: ../src/fw_icmp.py:42
-msgid "This error message informs a host to send packets on another route."
-msgstr ""
-"Detta felmeddelande informerar en värd att skicka paket på en annan rutt."
-
-#: ../src/fw_icmp.py:44
-msgid "Router Advertisement"
-msgstr "Router-annonsering"
-
-#: ../src/fw_icmp.py:45
-msgid ""
-"This message is used by routers to periodically announce the IP address of a "
-"multicast interface."
-msgstr ""
-"Detta meddelande används av routrar för att periodiskt annonsera IP-adressen "
-"för ett multicast-gränssnitt."
-
-#: ../src/fw_icmp.py:47
-msgid "Router Solicitation"
-msgstr "Router-sökning"
-
-#: ../src/fw_icmp.py:48
-msgid ""
-"This is message is used by a host attached to a multicast link to request a "
-"<i>Router Advertisement</i>"
-msgstr ""
-"Detta meddelande används av en värd ansluten till en multicast-länk för att "
-"begära en <i>Router-annonsering</i>"
-
-#: ../src/fw_icmp.py:50
-msgid "Source Quench"
-msgstr "Käll-släckning"
-
-#: ../src/fw_icmp.py:51
-msgid ""
-"This error message is generated to tell a host to reduce the pace at which "
-"it is sending packets."
-msgstr ""
-"Detta felmeddelande genereras för att säga till en värd att reducera "
-"hastigheten som den skickar paket med."
-
-#: ../src/fw_icmp.py:54
-msgid "Time Exceeded"
-msgstr "Tid överskriden"
-
-#: ../src/fw_icmp.py:55
-msgid ""
-"This error message is generated if the time-to-live was exceeded either of a "
-"packet or of the reassembling of a fragmented packet."
-msgstr ""
-"Detta felmeddelande genereras om time-to-live-tiden överskreds, antingen för "
-"ett paket eller för ihopsättningen av ett fragmenterat paket."
-
-#: ../src/fw_iptables.py:42
-msgid "Unload modules on restart and stop"
-msgstr "Glöm moduler vid omstart och stopp"
-
-#: ../src/fw_iptables.py:43
-msgid ""
-"To ensure a sane state, the kernel firewall modules must be unloaded when "
-"the firewall is restarted or stopped."
-msgstr ""
-"För att garantera ett stabilt läge måste kärnans brandväggsmoduler glömmas "
-"när brandväggen startas om eller stoppas."
-
-#: ../src/fw_iptables.py:46
-msgid "Save on stop"
-msgstr "Spara vid stopp"
-
-#: ../src/fw_iptables.py:47
-msgid ""
-"Save the active firewall configuration with all changes since the last start "
-"before stopping the firewall. Only do this if you need to preserve the "
-"active state for the next start."
-msgstr ""
-"Spara den aktuella brandväggskonfigurationen med alla ändringar sedan "
-"senaste start innan brandväggen stoppas. Gör endast detta om du behöver "
-"bevara det aktiva läget för nästa start."
-
-#: ../src/fw_iptables.py:50
-msgid "Save on restart"
-msgstr "Spara vid omstart"
-
-#: ../src/fw_iptables.py:51
-msgid ""
-"Save the active firewall configuration with all changes since the last start "
-"before restarting the firewall. Only do this if you need to preserve the "
-"active state for the next start."
-msgstr ""
-"Spara den aktuella brandväggskonfigurationen med alla ändringar sedan "
-"senaste start innan omstart av brandväggen Gör endast detta om du behöver "
-"bevara det aktuella läget för nästa start."
-
-#: ../src/fw_iptables.py:54
-msgid "Save and restore counter"
-msgstr "Spara och återställ räknare"
-
-#: ../src/fw_iptables.py:55
-msgid ""
-"<i>Save on stop</i> and <i>Save on restart</i> additionally save rule and "
-"chain counter."
-msgstr ""
-"<i>Spara vid stopp</i> och <i>Spara vid omstart</i> förutom spara regel och "
-"kedjeräknare."
-
-#: ../src/fw_iptables.py:57
-msgid "Numeric status output"
-msgstr "Numerisk statusutskrift"
-
-#: ../src/fw_iptables.py:58
-msgid "Print addresses and ports in numeric format for the status output."
-msgstr "Skriv adresser och portar i numeriskt format för statusutskriften."
-
-#: ../src/fw_iptables.py:61
-msgid "Verbose status"
-msgstr "Utförlig status"
-
-#: ../src/fw_iptables.py:62
-msgid ""
-"Print information about the number of packets and bytes plus the <i>input-</"
-"i> and <i>outputdevice</i> in the status output."
-msgstr ""
-"Skriv information om antal paket och bytes plus <i>input-</i> och "
-"<i>outputdevice</i> i statusutskriften."
-
-#: ../src/fw_iptables.py:65
-msgid "Status line numbers"
-msgstr "Status-radnummer"
-
-#: ../src/fw_iptables.py:66
-msgid "Print a counter/number for every rule in the status output."
-msgstr "Skriv en räknare/nummer för varje regel i statusutskriften."
-
-#: ../src/fw_parser.py:42
-#, python-format
-msgid "port range %s is not unique."
-msgstr "port-intervallet %s är inte unikt."
-
-#: ../src/fw_parser.py:44
-#, python-format
-msgid "%s is not a valid range (start port >= end port)."
-msgstr "%s är inte ett giltigt intervall (start-port >= slut-port)."
-
-#: ../src/fw_parser.py:49
-#, python-format
-msgid "%s is not a valid protocol."
-msgstr "%s är inte ett giltigt protokoll."
-
-#: ../src/fw_parser.py:51
-#, python-format
-msgid "invalid port definition %s."
-msgstr "ogiltig port-definition %s."
-
-#: ../src/fw_parser.py:67
-msgid "ipv6 has no nat support."
-msgstr "ipv6 har inget nat-stöd."
-
-#: ../src/fw_parser.py:73
-#, python-format
-msgid "invalid service '%s'."
-msgstr "ogiltigt tjänst \"%s\"."
-
-#: ../src/fw_parser.py:79
-#, python-format
-msgid "option %(option)s: invalid icmp type '%(value)s'."
-msgstr "alternativ %(option)s: ogiltig icmp-typ '%(value)s'."
-
-#: ../src/fw_parser.py:90 ../src/fw_parser.py:100
-#, python-format
-msgid "Invalid argument %s"
-msgstr "Ogiltigt argument %s"
-
-#: ../src/fw_parser.py:114
-#, python-format
-msgid "option %(option)s: invalid forward_port '%(value)s': %(error)s."
-msgstr ""
-"alternativ %(option)s: ogiltig eftersändnings_port '%(value)s': %(error)s."
-
-#: ../src/fw_parser.py:125
-#, python-format
-msgid "option %(option)s: invalid forward_port '%(value)s'."
-msgstr "alternativ %(option)s: ogiltig eftersändnings_port '%(value)s'."
-
-#: ../src/fw_parser.py:149
-msgid "Enable firewall (default)"
-msgstr "Aktivera brandvägg (standard)"
-
-#: ../src/fw_parser.py:152 ../src/system-config-firewall.glade:435
-msgid "Disable firewall"
-msgstr "Inaktivera brandvägg"
-
-#: ../src/fw_parser.py:155 ../src/fw_parser.py:159
-msgid "<module>"
-msgstr "<modul>"
-
-#: ../src/fw_parser.py:156
-msgid "Enable an iptables module"
-msgstr "Aktivera en iptables-modul"
-
-#: ../src/fw_parser.py:160
-msgid "Disable an iptables module"
-msgstr "Inaktivera en iptables-modul"
-
-#: ../src/fw_parser.py:164
-msgid "<service>"
-msgstr "<tjänst>"
-
-#: ../src/fw_parser.py:165
-msgid "Open the firewall for a service (e.g, ssh)"
-msgstr "Öppna brandväggen för en tjänst (t.ex: ssh)"
-
-#: ../src/fw_parser.py:168
-msgid "<port>[-<port>]:<protocol>"
-msgstr "<port>[-<port>]:<protokoll>"
-
-#: ../src/fw_parser.py:170
-msgid "Open specific ports in the firewall (e.g, ssh:tcp)"
-msgstr "Öppna specifika portar i brandväggen (t.ex: ssh:tcp)"
-
-#: ../src/fw_parser.py:174 ../src/fw_parser.py:178
-msgid "<interface>"
-msgstr "<gränssnitt>"
-
-#: ../src/fw_parser.py:175
-msgid "Allow all traffic on the specified device"
-msgstr "Tillåt all trafik på angiven enhet"
-
-#: ../src/fw_parser.py:179
-msgid "Masquerades traffic from the specified device. This is IPv4 only."
-msgstr "Maskerar trafik från angiven enhet. Endast för IPv4."
-
-#: ../src/fw_parser.py:183
-msgid "Backwards compatibilty, aliased to --enabled"
-msgstr "Baklängeskompatibilitet, alias för --enabled"
-
-#: ../src/fw_parser.py:186
-msgid "[<type>:][<table>:]<filename>"
-msgstr "[<typ>:][<tabell>:]<filnamn>"
-
-#: ../src/fw_parser.py:188
-msgid ""
-"Specify a custom rules file for inclusion in the firewall, after the default "
-"rules. Default protocol type: ipv4, default table: filter. (Example: ipv4:"
-"filter:/etc/sysconfig/ipv4_filter_addon)"
-msgstr ""
-"Ange en anpassad regelfil som skall läggas till i brandväggen efter "
-"standardreglerna. Standardprotokolltyp: ipv4, standardtabell: filter. "
-"(Exempel: ipv4:filter:/etc/sysconfig/ipv4_filter_addon)"
-
-#: ../src/fw_parser.py:197
-msgid ""
-"if=<interface>:port=<port>:proto=<protocol>[:toport=<destination port>][:"
-"toaddr=<destination address>]"
-msgstr ""
-"if=<gränssnitt>:port=<port>:proto=<protokoll>[:toport=<destinationsport>][:"
-"toaddr=<destinationsadress>]"
-
-#: ../src/fw_parser.py:201
-msgid ""
-"Forward the port with protocol for the interface to either another local "
-"destination port (no destination address given) or to an other destination "
-"address with an optional destination port. This is IPv4 only."
-msgstr ""
-"Eftersänd porten med protokoll för gränssnittet antingen till en annan lokal "
-"destinationsport (ingen destinationadress given) eller till en annan "
-"destinationsadress med en valfri destinationsport. Detta endast för IPv4."
-
-#: ../src/fw_parser.py:210
-msgid "<icmp type>"
-msgstr "<icmp-typ>"
-
-#: ../src/fw_parser.py:211
-msgid "Block this ICMP type. The default is to accecpt all ICMP types."
-msgstr "Blockera denna ICMP-typ. Standarden är att godkänna alla ICMP-typer."
-
-#: ../src/fw_parser.py:217
-msgid "Disable Internet Protocol Security (IPsec)"
-msgstr "Inaktivera Internet Protocol Security (IPsec)"
-
-#: ../src/fw_parser.py:220
-msgid "Disable Internet Printing Protocol (IPP)"
-msgstr "Inaktivera Internet Printing Protocol (IPP)"
-
-#: ../src/fw_parser.py:223
-msgid "Disable Multicast DNS (mDNS)"
-msgstr "Inaktivera Multicast DNS (mDNS)"
-
-#: ../src/fw_parser.py:228
-msgid "<mode>"
-msgstr "<läge>"
-
-#: ../src/fw_parser.py:229
-#, python-format
-msgid "Configure SELinux mode: %s"
-msgstr "Konfigurera SELinux-läge: %s"
-
-#: ../src/fw_parser.py:233 ../src/fw_parser.py:391
-msgid "<type>"
-msgstr "<typ>"
-
-#: ../src/fw_parser.py:234
-msgid "Configure SELinux type: Usually targeted or strict Policy"
-msgstr "Konfigurera SELinux-typ: Oftast riktad eller strikt policy"
-
-#: ../src/fw_parser.py:246
-#, python-format
-msgid "no such option: %s"
-msgstr "inget sådant alternativ: %s"
-
-#: ../src/fw_parser.py:320
-#, python-format
-msgid "%s option requires an argument"
-msgstr "%s-alternativet kräver ett argument"
-
-#: ../src/fw_parser.py:323
-#, python-format
-msgid "%(option)s option requires %(count)s arguments"
-msgstr "%(option)s-alternativet kräver %(count)s argument"
-
-#: ../src/fw_parser.py:337
-#, python-format
-msgid "%s option does not take a value"
-msgstr "%s-alternativet förväntar sig inget värde"
-
-#: ../src/fw_parser.py:365
-msgid "Show this help message"
-msgstr "Visa detta hjälp-meddelande"
-
-#: ../src/fw_parser.py:368
-msgid "Run noninteractively; process only command-line arguments"
-msgstr "Kör ickeinteraktivt; behandla endast kommandoradsargument"
-
-#: ../src/fw_parser.py:372
-msgid "Be more verbose"
-msgstr "Var mer utförlig"
-
-#: ../src/fw_parser.py:375
-msgid "Show version"
-msgstr "Visa version"
-
-#: ../src/fw_parser.py:378
-msgid "Configure firewall but do not activate the new configuration"
-msgstr "Konfigurera brandvägg men aktivera inte den nya konfigurationen"
-
-#: ../src/fw_parser.py:382
-msgid "Ignore actual settings"
-msgstr "Ignorera aktuella inställningar"
-
-#: ../src/fw_parser.py:385
-msgid ""
-"Update firewall non-interactively if the firewall is enabled. This will also "
-"restart the firewall. The -n and -f options will be ignored."
-msgstr ""
-"Uppdatera brandväggen automatiskt om brandväggen är aktiverad. Detta kommer "
-"också starta om brandväggen. Flaggorna -n och -f kommer ignoreras."
-
-#: ../src/fw_parser.py:392
+"Normal\n"
+"T-Online"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:14
+msgid "Password (_again):"
+msgstr "Lösenord (_igen):"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:15
+msgid "Select the ethernet device connected to the DSL modem."
+msgstr "Välj den Ethernetenhet som är ansluten till DSL-modemet."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:16
+msgid "Select the ethernet device for this account."
+msgstr "Välj Ethernetenheten för detta konto."
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:17
+msgid "T-Online"
+msgstr "T-Online"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:18
+#: ../src/netconfpkg/gui/tonline.glade.h:5
+msgid "_Adapter identifier:"
+msgstr "_Adapteridentifierare:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:19
+#: ../src/netconfpkg/gui/tonline.glade.h:6
+msgid "_Concurrent user number/suffix:"
+msgstr "_Nummer för samtidig användare/suffix:"
+
+#: ../src/netconfpkg/gui/ADSLInterfaceDruid.glade.h:21
+#: ../src/netconfpkg/gui/tonline.glade.h:7
+msgid "_Personal password:"
+msgstr "_Personligt lösenord:"
+
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:1
+msgid "Choose a Provider"
+msgstr "Välj en leverantör"
+
+#: ../src/netconfpkg/gui/ChooseProvider.glade.h:2
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:15
+msgid "Internet Provider"
+msgstr "Internetleverantör"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:1
+#: ../src/netconfpkg/gui/QethConfig.glade.h:1
+msgid "Allow all _users to enable and disable the device"
+msgstr "Tillåt alla an_vändare att aktivera och inaktivera enheten"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:2
+msgid "Controlled by _NetworkManager"
+msgstr "Kontrollerad av _NetworkManager"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:3
+#: ../src/netconfpkg/gui/QethConfig.glade.h:2
+msgid "Enable IPv_6 configuration for this interface"
+msgstr "Aktivera IPv_6-konfiguration för detta gränssnitt"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:4
+#: ../src/netconfpkg/gui/QethConfig.glade.h:4
+msgid "_Activate device when computer starts"
+msgstr "_Aktivera enhet då datorn startar"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:5
+#: ../src/netconfpkg/gui/QethConfig.glade.h:5
+msgid "_Activate device when parent device starts"
+msgstr "_Aktivera enhet när förälder-enheten startar"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.glade.h:6
+#: ../src/netconfpkg/gui/editipsec.glade.h:38
+#: ../src/netconfpkg/gui/QethConfig.glade.h:8
+msgid "_Nickname:"
+msgstr "_Kortnamn:"
+
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:147
 #, python-format
 msgid ""
-"Set firewall default type: %s. This overwrites any existing configuration."
+"Nickname %s is already in use!\n"
+"Please choose another one.\n"
 msgstr ""
-"Ställ in brandväggens standardtyp: %s. Detta skriver över den aktuella "
-"konfigurationen."
+"Kortnamnet %s används redan!\n"
+"Välj ett annat.\n"
 
-#: ../src/fw_parser.py:397
-msgid "List predefined services."
-msgstr "Lista fördefinierade tjänster."
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:1
+msgid "Choose Hardware Device Type"
+msgstr "Välj typ av hårdvaruenhet"
 
-#: ../src/fw_parser.py:400
-msgid "List the supported icmp types."
-msgstr "Visa de icmp-typer som stöds."
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:2
+msgid "Please select the type of hardware device to add:"
+msgstr "Välj den typ av hårdvaruenhet som du vill lägga till:"
 
-#: ../src/fw_services.py:35
-msgid "Network Printing Client (IPP)"
-msgstr "Nätverksskrivarklient (IPP)"
+#: ../src/netconfpkg/gui/DeviceTypeDialog.glade.h:3
+msgid "_Device type:"
+msgstr "_Enhetstyp:"
 
-#: ../src/fw_services.py:37
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:1
+msgid "<b>Phone number</b>"
+msgstr "<b>Telefonnummer</b>"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:2
+msgid "A_rea code:"
+msgstr "_Riktnummer:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:3
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:2
+msgid "Automatically obtain _DNS information from provider"
+msgstr "Få automatiskt _DNS-information från leverantör"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:4
+msgid "Automatically obtain _IP address settings"
+msgstr "Få automatiskt inställningar för _IP-adress"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:5
+msgid "Create Dialup Connection"
+msgstr "Skapa en uppringd anslutning"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:6
+msgid "Default _gateway address:"
+msgstr "Standard-_gatewayadress:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:7
+msgid "Encapsulation mode:"
+msgstr "Inkapslingsläge:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:8
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:17
 msgid ""
-"The Internet Printing Protocol (IPP) is used for distributed printing. IPP "
-"(over udp) provides the ability to get information about a printer (e.g. "
-"capability and status) and to control printer jobs. If you plan to use a "
-"remote network printer via cups, do not disable this option."
+"Enter any numbers you need to dial before the normal phone number. For "
+"example, if you need to reach an outside line, or disable call waiting, put "
+"the necessary numbers here."
 msgstr ""
-"Internet Printing Protocol (IPP) används för distribuerade utskrifter. IPP "
-"(över udp) gör det möjligt att få information om en skrivare (t.ex "
-"funktioner och status) och för att administrera skrivarjobb.Om du tänker "
-"använda en fjärrnätskrivare via cups, inaktivera inte detta alternativ."
+"Ange de siffror som du behöver slå innan det riktiga telefonnumret. Om du "
+"exempelvis måste slå något för att få en utgående linje eller avaktivera "
+"\"samtal väntar\" kan du ange siffrorna som behövs här."
 
-#: ../src/fw_services.py:43
-msgid "Network Printing Server (IPP)"
-msgstr "Nätverksskrivarserver (IPP)"
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:9
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:18
+msgid "Enter the area code needed to reach your internet provider."
+msgstr "Ange det riktnummer som behövs för att nå din Internetleverantör."
 
-#: ../src/fw_services.py:45
-msgid ""
-"The Internet Printing Protocol (IPP) is used for distributed printing. IPP "
-"(over tcp) provides the ability to share printers over the network. Enable "
-"this option if you plan to share printers via cups over the network."
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:13
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:22
+msgid "Enter the phone number of your ISP (without prefix/area/country code)."
 msgstr ""
-"Printing Protocol (IPP) används för distribuerade utskrifter. IPP (över tcp) "
-"gör det möjligt att få dela skrivare över nätverket. Aktivera detta "
-"alternativ om du tänker dela skrivare via cups över nätverket."
+"Ange din Internetleverantörs telefonnummer (utan prefix/riktnummer/landskod)."
 
-#: ../src/fw_services.py:49
-msgid "Multicast DNS (mDNS)"
-msgstr "Multicast DNS (mDNS)"
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:14
+msgid "IP Settings"
+msgstr "IP-inställningar"
 
-#: ../src/fw_services.py:50
-msgid ""
-"mDNS provides the ability to use DNS programming interfaces, packet formats "
-"and operating semantics in a small network without a conventional DNS "
-"server. If you plan to use Avahi, do not disable this option."
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:16
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:17
+msgid "Manual IP Address Settings"
+msgstr "Manuella IP-adressinställningar"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:17
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:9
+msgid "New Interface"
+msgstr "Nytt gränssnitt"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:18
+msgid "PPP Settings"
+msgstr "PPP-inställningar"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:20
+msgid "Prefi_x:"
+msgstr "Prefi_x:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:21
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:38
+msgid "Provider _name:"
+msgstr "Leverantörs_namn:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:22
+msgid "Select Provider"
+msgstr "Välj leverantör"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:23
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
+msgid "Statically set IP addresses:"
+msgstr "Ställ in IP-adresser statiskt:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:25
+#: ../src/netconfpkg/gui/editadress.glade.h:2
+msgid "_Address:"
+msgstr "_Adress:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:27
+msgid "_Phone number:"
+msgstr "_Telefonnummer:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:28
+#: ../src/netconfpkg/gui/editadress.glade.h:4
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+msgid "_Subnet mask:"
+msgstr "_Subnätmask:"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:30
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:72
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:344
+msgid "raw IP"
+msgstr "rå IP"
+
+#: ../src/netconfpkg/gui/DialupDruid.glade.h:31
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:73
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:346
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:375
+msgid "sync PPP"
+msgstr "sync-PPP"
+
+#. FIXME: Bad style for translation..
+#. FIXME: Bad style for translation
+#: ../src/netconfpkg/gui/DialupDruid.py:240
+#: ../src/netconfpkg/gui/editipsec.py:288
+#: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:147
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:221
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:219
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:203
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:331
+msgid "You have selected the following information:"
+msgstr "Du har valt följande information:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:242
+msgid "Hardware:"
+msgstr "Hårdvara:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:243
+#: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:149
+msgid "Provider name:"
+msgstr "Namn på leverantör:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:245
+#: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:151
+msgid "Login name:"
+msgstr "Inloggningsnamn:"
+
+#: ../src/netconfpkg/gui/DialupDruid.py:246
+msgid "Phone number:"
+msgstr "Telefonnummer:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:1
+msgid "A_rea Code"
+msgstr "_Riktnummer"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:2
+msgid "Ca_llback"
+msgstr "_Tillbakaringning"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:3
+msgid "Callback MS_N:"
+msgstr "Motringning MS_N:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:4
+msgid "Callback _delay:"
+msgstr "_Fördröjning för tillbakaringning:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:5
+msgid "Callback _mode:"
+msgstr "_Läge för tillbakaringning:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:6
+msgid "Callback setting"
+msgstr "Inställning för tillbakaringning"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:7
+msgid "Click here, if you want to choose a new provider from the ISP database."
 msgstr ""
-"mDNS gör det möjligt att använda DNS-programmeringsgränssnitt, paketformat "
-"och operativ semantik i ett litet nätverk utan en vanlig DNS-server. Om du "
-"tänker använda Avahi, avaktivera inte detta alternativ."
+"Klicka här om du vill välja en ny leverantör från databasen med "
+"Internetleverantörer."
 
-#: ../src/fw_services.py:56
-msgid "IPsec"
-msgstr "IPsec"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:8
+msgid "Dial _mode:"
+msgstr "Uppringnings_läge:"
 
-#: ../src/fw_services.py:57
-msgid ""
-"Internet Protocol Security (IPsec) incorporates security for network "
-"transmissions directly into the Internet Protocol (IP). IPsec provides "
-"methods for both encrypting data and authentication for the host or network "
-"it sends to. If you plan to use a vpnc server or FreeS/WAN, do not disable "
-"this option."
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:9
+msgid "Dial-in _number:"
+msgstr "Modempools_nummer:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:10
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:242
+msgid "Dialup Configuration"
+msgstr "Uppringningskonfiguration"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:11
+msgid "Enable VJ Connection-_ID Compression"
+msgstr "Aktivera VJ-komprimering av anslutnings_id"
+
+# Osäker
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:12
+msgid "Enable _Address/Control Compression"
+msgstr "Aktivera komprimering av _adresser/styrkommandon"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:13
+msgid "Enable _BSD Compression"
+msgstr "Aktivera _BSD-komprimering"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:14
+msgid "Enable _CCP Compression Control Protocol"
+msgstr "Aktivera protokoll för komprimeringsstyrning (_CCP)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:15
+msgid "Enable _Protocol Field Compression"
+msgstr "Aktivera komprimering av _protokollfältet"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:16
+msgid "Enable _VJ TCP/IP Header Compression"
+msgstr "Aktivera _VJ-komprimering av TCP/IP-huvuden"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:23
+msgid "Enter your local phone number. It's optional, if you use a modem."
+msgstr "Ange ditt lokala telefonnummer. Det är valfritt om du använder modem."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:24
+msgid "Han_gup timeout:"
+msgstr "_Påläggningstimeout:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:25
+msgid "Let _PPP do all authentication"
+msgstr "Låt _PPP utföra all autentisering"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:26
+msgid "MSN/EA_Z:"
+msgstr "MSN/EA_Z:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:28
+msgid "Modem _initialization string:"
+msgstr "Sträng för modem_initiering:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:29
+msgid "Modem p_ort:"
+msgstr "Modemp_ort:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:30
+msgid "Modem0"
+msgstr "Modem0"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:31
+msgid "Modem1"
+msgstr "Modem1"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:32
+msgid "Modem2"
+msgstr "Modem2"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:33
+msgid "Modem3"
+msgstr "Modem3"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:34
+msgid "PPP Option List"
+msgstr "Lista med PPP-alternativ"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:36
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:37
+msgid "Prefi_x"
+msgstr "Prefi_x"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:40
+msgid "Select the authentication protocol used by your ISP."
 msgstr ""
-"Internet Protocol Security (IPsec) innehåller säkerhet för nätverks-"
-"kommunikation direkt in i Internet Protocol (IP). IPsec tillhandahåller "
-"metoder både för datakryptering och autentisering för värden eller nätverket "
-"den sänder till. Om du tänker använda en vpnc-server eller FreeS/WAN, "
-"avaktivera inte detta alternativ."
-
-#: ../src/fw_services.py:65
-msgid "SSH"
-msgstr "SSH"
-
-#: ../src/fw_services.py:66
-msgid ""
-"Secure Shell (SSH) is a protocol for logging into and executing commands on "
-"remote machines. It provides secure encrypted communications. If you plan on "
-"accessing your machine remotely via SSH over a firewalled interface, enable "
-"this option. You need the openssh-server package installed for this option "
-"to be useful."
-msgstr ""
-"Secure Shell (SSH) är ett protokoll för att logga in på och exekvera "
-"kommandon på fjärrmaskiner. Det tillhandahåller säker, krypterad "
-"kommunikation. Om du planerar fjärransluta till din maskin via SSH med ett "
-"gränssnitt med brandväggsskydd, ska du aktivera detta alternativ. Du behöver "
-"ha paketet openssh-server installerat för att detta alternativ ska vara "
-"användbart."
-
-#: ../src/fw_services.py:79
-msgid "WWW (HTTP)"
-msgstr "WWW (HTTP)"
-
-#: ../src/fw_services.py:80
-msgid ""
-"HTTP is the protocol used to serve Web pages. If you plan to make your Web "
-"server publicly available, enable this option. This option is not required "
-"for viewing pages locally or developing Web pages."
-msgstr ""
-"HTTP är protokollet som används för att tillhandahålla webbsidor. Om du "
-"planerar att göra din webbserver allmänt tillgänglig aktiverar du detta "
-"alternativ. Detta alternativ krävs inte för att läsa lokala sidor eller "
-"utveckla webbsidor."
-
-#: ../src/fw_services.py:84
-msgid "FTP"
-msgstr "FTP"
-
-#: ../src/fw_services.py:85
-msgid ""
-"FTP is a protocol used for remote file transfer. If you plan to make your "
-"FTP server publicly available, enable this option. You need the vsftpd "
-"package installed for this option to be useful."
-msgstr ""
-"FTP är ett protokoll för fjärr-filöverföring. Om du planerar att göra din "
-"FTP-server allmänt tillgänglig ska du aktivera detta alternativ. Du måste ha "
-"paketet vsftpd installerat för att detta alternativ ska vara användbart."
-
-#: ../src/fw_services.py:90
-msgid "NFS4"
-msgstr "NFS4"
-
-#: ../src/fw_services.py:91
-msgid ""
-"The NFS4 protocol is used to share files via TCP networking. You will need "
-"to have the NFS tools installed and properly configure your NFS server for "
-"this option to be useful."
-msgstr ""
-"Protokollet NFS4 används för att dela filer via TCP-nätverk. Du kommer "
-"behöva ha NFS-verktygen installerade och din NFS-server korrekt "
-"konfigurerade för att detta alternativ ska vara användbart."
-
-#: ../src/fw_services.py:95
-msgid "Secure WWW (HTTPS)"
-msgstr "Säker WWW (HTTPS)"
-
-#: ../src/fw_services.py:96
-msgid ""
-"HTTPS is a modified HTTP used to serve Web pages when security is important. "
-"Examples are sites that require logins like stores or web mail. This option "
-"is not required for viewing pages locally or developing Web pages. You need "
-"the httpd package installed for this option to be useful."
-msgstr ""
-"HTTPS är en modifierad variant av HTTP som används för att tillhandahålla "
-"webbsidor där säkerhet är viktigt, som till exempel på webbplatser som "
-"kräver inloggning som butiker och webbpost. Detta alternativ krävs inte för "
-"att läsa lokala sidor eller utveckla webbsidor. Du behöver ha paketet httpd "
-"installerat för att detta alternativ ska vara användbart."
-
-#: ../src/fw_services.py:101
-msgid "Mail (SMTP)"
-msgstr "E-post (SMTP)"
-
-#: ../src/fw_services.py:102
-msgid ""
-"This option allows incoming SMTP mail delivery. If you need to allow remote "
-"hosts to connect directly to your machine to deliver mail, enable this "
-"option. You do not need to enable this if you collect your mail from your "
-"ISP's server by POP3 or IMAP, or if you use a tool such as fetchmail. Note "
-"that an improperly configured SMTP server can allow remote machines to use "
-"your server to send spam."
-msgstr ""
-"Detta alternativ tillåter leverans av inkommande e-post. Om du måste tillåta "
-"fjärr-värdar att ansluta direkt till din maskin för att leverera e-post, "
-"aktiverar du detta alternativ. Du behöver inte aktivera detta om du hämtar "
-"din e-post från din Internetleverantörs server med hjälp av POP3 eller IMAP, "
-"eller om du använder ett verktyg som fetchmail. Observera att en felaktigt "
-"konfigurerad SMTP-server kan tillåta fjärrmaskiner att använda din server "
-"för att skicka skräppost (spam)."
-
-#: ../src/fw_services.py:110
-msgid "Samba Client"
-msgstr "Samba-klient"
-
-#: ../src/fw_services.py:112
-msgid ""
-"This option allows you to access Windows file and printer sharing networks. "
-"You need the samba-client package installed for this option to be useful."
-msgstr ""
-"Detta alternativ låter dig komma åt och deltaga i fil- och skrivardelande "
-"Windows-nätverk. Du måste ha paketet samba-client installerat för att detta "
-"alternativ ska vara användbart."
-
-#: ../src/fw_services.py:117
-msgid "Samba"
-msgstr "Samba"
-
-#: ../src/fw_services.py:119
-msgid ""
-"This option allows you to access and participate in Windows file and printer "
-"sharing networks. You need the samba package installed for this option to be "
-"useful."
-msgstr ""
-"Detta låter dig komma åt och deltaga i fil- och skrivardelande Windows-"
-"nätverk. Du måste ha paketet samba installerat för att detta alternativ ska "
-"vara användbart."
-
-#: ../src/fw_services.py:123
-msgid "DNS"
-msgstr "DNS"
-
-#: ../src/fw_services.py:124
-msgid ""
-"The Domain Name System (DNS) is used to provide and request host and domain "
-"names. Enable this option, if you plan to provide a domain name service (e."
-"g. with bind)."
-msgstr ""
-"Domain Name System (DNS) används till att tillhandahålla och fråga efter "
-"värd och domännamn. Aktivera detta alternativ om du tänker tillhandahålla en "
-"domännamnstjänst (t.ex med bind)."
-
-#: ../src/fw_services.py:127
-msgid "IMAP over SSL"
-msgstr "IMAP över SSL"
-
-#: ../src/fw_services.py:128
-msgid ""
-"The Internet Message Access Protocol over SSL (IMAPs) allows a local client "
-"to access e-mail on a remote server in a secure way. If you plan to provide "
-"a IMAP over SSL service (e.g. with dovecot), enable this option."
-msgstr ""
-"Internet Message Access Protocol över SSL (IMAPs) gör så att en lokal klient "
-"att komma åt e-post på en fjärrserver på ett säkert sätt. Om du tänker "
-"tillhandahålla en IMAPs-tjänst (t.ex med dovecot), aktivera detta alternativ."
-
-#: ../src/fw_services.py:132
-msgid "POP-3 over SSL"
-msgstr "POP-3 över SSL"
-
-#: ../src/fw_services.py:133
-msgid ""
-"The Post Office Protocol version 3 (POP3) is a protocol to retrieve e-mail "
-"from a remote server over a TCP/IP connection. Enable this option, if you "
-"plan to provide a POP3 service (e.g. with dovecot)."
-msgstr ""
-"Post Office Protocol version 3 (POP3) är ett protokoll för att hämta e-post "
-"från en fjärrserver över en TCP/IP-anslutning. Aktivera detta alternativ om "
-"du tänker tillhandahålla en POP3-tjänst (t.ex. med dovecot)."
-
-#: ../src/fw_services.py:137
-msgid "RADIUS"
-msgstr "RADIUS"
-
-#: ../src/fw_services.py:138
-msgid ""
-"The Remote Authentication Dial In User Service (RADIUS) is a protocol for "
-"user authentication over networks. It is mostly used for modem, DSL or "
-"wireless user authentication. If you plan to provide a RADIUS service (e.g. "
-"with freeradius), enable this option."
-msgstr ""
-"Remote Authentication Dial In User Service (RADIUS) är ett protokoll för "
-"autentisering av användare över nätverk. Det används oftast för modem, DSL "
-"eller trådlös användarautentisering. Om du tänker tillhandahålla en RADIUS-"
-"tjänst (t.ex. med freeradius), ska du aktivera detta alternativ."
-
-#: ../src/fw_services.py:143
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
-#: ../src/fw_services.py:144
-msgid ""
-"OpenVPN is a virtual private network (VPN) solution. It is used to create "
-"encrypted point-to-point tunnles between computers. If you plan to provide a "
-"VPN service, enable this option."
-msgstr ""
-"OpenVPN är en lösning på virtuellt privat nätverk (VPN). Det används till "
-"att skapa krypterade punkt-till-punkt tunnlar mellan datorer. Om du planerar "
-"att tillhandahålla en VPN-tjänst, aktivera detta alternativ."
-
-#: ../src/fw_tui.py:39 ../src/system-config-firewall.glade:10
-msgid "Firewall Configuration"
-msgstr "Brandväggskonfiguration"
-
-#: ../src/fw_tui.py:42
-msgid ""
-"A firewall protects against unauthorized network intrusions. Enabling a "
-"firewall blocks all incoming connections. Disabling a firewall allows all "
-"connections and is not recommended. "
-msgstr ""
-"En brandvägg skyddar mot otillåtna nätverksintrång. Aktivering av en "
-"brandvägg blockerar alla inkommande anslutningar. Inaktivering av en "
-"brandvägg tillåter alla anslutningar och rekommenderas inte. "
-
-#: ../src/fw_tui.py:46
-msgid "Firewall:"
-msgstr "Brandvägg:"
-
-#: ../src/fw_tui.py:47
-msgid "Enabled"
-msgstr "Aktiverad"
-
-#: ../src/fw_tui.py:53 ../src/fw_tui.py:322 ../src/fw_tui.py:335
-#: ../src/fw_tui.py:338 ../src/fw_tui.py:360 ../src/fw_tui.py:447
-#: ../src/fw_tui.py:519
-msgid "OK"
-msgstr "OK"
-
-#: ../src/fw_tui.py:54
-msgid "Customize"
-msgstr "Anpassa"
-
-#: ../src/fw_tui.py:55 ../src/fw_tui.py:360 ../src/fw_tui.py:447
-#: ../src/fw_tui.py:519
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: ../src/fw_tui.py:66 ../src/system-config-firewall.glade:550
-msgid ""
-"Here you can define which services are trusted. Trusted services are "
-"accessible from all hosts and networks."
-msgstr ""
-"Här kan du definiera vilka tjänster som är pålitliga. Pålitliga tjänster kan "
-"kommas åt från alla värdar och nätverk."
-
-#: ../src/fw_tui.py:78 ../src/system-config-firewall.glade:864
-msgid "Other Ports"
-msgstr "Andra portar"
-
-#: ../src/fw_tui.py:82 ../src/system-config-firewall.glade:694
-msgid ""
-"Add additional ports or port ranges, which need to be accessible for all "
-"hosts or networks."
-msgstr ""
-"Lägg till ytterligare portar eller portintervaller, som behöver vara "
-"tillgängliga föralla värdar och nätverk."
-
-#: ../src/fw_tui.py:87 ../src/fw_tui.py:133 ../src/fw_tui.py:170
-msgid "Add"
-msgstr "Lägg till"
-
-#: ../src/fw_tui.py:88 ../src/fw_tui.py:134 ../src/fw_tui.py:171
-msgid "Edit"
-msgstr "Redigera"
-
-#: ../src/fw_tui.py:89 ../src/fw_tui.py:135 ../src/fw_tui.py:172
-msgid "Remove"
-msgstr "Ta bort"
-
-#: ../src/fw_tui.py:99 ../src/system-config-firewall.glade:1044
-msgid "Trusted Interfaces"
-msgstr "Pålitliga gränssnitt"
-
-#: ../src/fw_tui.py:103 ../src/system-config-firewall.glade:894
-msgid ""
-"Mark all interfaces as trusted which should have full access to the system."
-msgstr ""
-"Markera alla gränssnitt som ska ha full åtkomst till systemet som pålitliga."
-
-# Osäker.
-#: ../src/fw_tui.py:111 ../src/system-config-firewall.glade:1249
-msgid "Masquerading"
-msgstr "Maskering"
-
-#: ../src/fw_tui.py:115 ../src/system-config-firewall.glade:1099
-msgid "Mark the interfaces to be masqueraded."
-msgstr "Markera gränssnittet som ska maskeras."
-
-#: ../src/fw_tui.py:123 ../src/fw_tui.py:395
-#: ../src/system-config-firewall.glade:1396
-#: ../src/system-config-firewall.glade:3805
-msgid "Port Forwarding"
-msgstr "Port-eftersändning"
-
-#: ../src/fw_tui.py:127 ../src/system-config-firewall.glade:1279
-msgid ""
-"Add entries to forward ports either from one port to another on the local "
-"system or from the local system to another system. Forwarding to another "
-"system is only useful if the interface is masqueraded. Port forwarding is "
-"IPv4 only."
-msgstr ""
-"Lägg till poster för att eftersända portar antingen från en port till en "
-"annan på det lokala systemet eller från det lokala systemet till ett annat "
-"system. Eftersända till ett annat system är bara användbart om gränssnittet "
-"är maskerat. Porteftersändning är endast för IPv4."
-
-#: ../src/fw_tui.py:146 ../src/system-config-firewall.glade:1510
-msgid "ICMP Filter"
-msgstr "ICMP-filter"
-
-#: ../src/fw_tui.py:150 ../src/system-config-firewall.glade:1451
-msgid ""
-"Mark the ICMP types in the list, which should be rejected. All other ICMP "
-"types are allowed to pass the firewall. The default is no limitation."
-msgstr ""
-"Markera i listan de ICMP-typer som skall nekas tillträde. Alla andra ICMP-"
-"typer tillåts passera brandväggen. Standardvärdet är ingen begränsning av "
-"tillträde."
-
-#: ../src/fw_tui.py:159 ../src/system-config-firewall.glade:1734
-msgid "Custom Rules"
-msgstr "Anpassade regler"
-
-#: ../src/fw_tui.py:163 ../src/system-config-firewall.glade:1540
-msgid ""
-"Use custom rules files to add additional rules to the firewall. The custom "
-"rules are added after the default rules. The files must have the iptables-"
-"save format."
-msgstr ""
-"Använd anpassade regelfiler för att lägga till ytterligare regler till "
-"brandväggen. De anpassade reglerna läggs till efter standardreglerna. "
-"Filerna måste ha iptables-save-formatet."
-
-#: ../src/fw_tui.py:189
-msgid "Forward"
-msgstr "Framåt"
-
-#: ../src/fw_tui.py:191
-msgid "Back"
-msgstr "Bakåt"
-
-#: ../src/fw_tui.py:192
-msgid "Close"
-msgstr "Stäng"
-
-#: ../src/fw_tui.py:336
-msgid "Error"
-msgstr "Fel"
-
-#: ../src/fw_tui.py:339
-msgid "Warning"
-msgstr "Varning"
-
-#: ../src/fw_tui.py:343
-msgid ""
-"Valid values: <port>[-<port>], where port is either a number [0..65535] or a "
-"service name."
-msgstr ""
-"Giltiga värden: <port>[-<port>], där port är antingen ett nummer [0..65535] "
-"eller ett namn på en tjänst."
-
-#: ../src/fw_tui.py:348
-#, python-format
-msgid "Protocol '%s' is not valid."
-msgstr "Protokoll '%s' är inte giltigt."
-
-#: ../src/fw_tui.py:349
-msgid "Valid values: tcp, udp"
-msgstr "Giltiga värden: tcp, udp"
-
-#: ../src/fw_tui.py:357
-msgid "Please enter a port or port range and protocol."
-msgstr "Ange en port eller portintervall och protokoll."
-
-#: ../src/fw_tui.py:358 ../src/fw_tui.py:418 ../src/fw_tui.py:439
-#: ../src/system-config-firewall.glade:2036
-msgid "Port / Port Range:"
-msgstr "Port / Port-intervall:"
-
-#: ../src/fw_tui.py:359 ../src/fw_tui.py:412
-#: ../src/system-config-firewall.glade:2064
-#: ../src/system-config-firewall.glade:4245
-msgid "Protocol:"
-msgstr "Protokoll:"
-
-#: ../src/fw_tui.py:396 ../src/system-config-firewall.glade:3878
-msgid ""
-"Please select the source and destination options according to your needs."
-msgstr "Välj de käll- och destinationsalternativ som du behöver."
-
-#: ../src/fw_tui.py:401
-msgid "Source (all needed)"
-msgstr "Källor (alla som behövs)"
-
-#: ../src/fw_tui.py:406 ../src/system-config-firewall.glade:4273
-#: ../src/system-config-firewall.glade:4771
-msgid "Interface:"
-msgstr "Gränssnitt:"
-
-#: ../src/fw_tui.py:426
-msgid "Destination (at least one needed)"
-msgstr "Destination (minst en krävs)"
-
-#: ../src/fw_tui.py:433 ../src/system-config-firewall.glade:4189
-msgid "IP address:"
-msgstr "IP-adress:"
-
-#: ../src/fw_tui.py:460
-#, python-format
-msgid "Interface '%s' is not valid."
-msgstr "Gränssnitt \"%s\" är ej giltigt."
-
-#: ../src/fw_tui.py:482
-#, python-format
-msgid "Address '%s' is not valid."
-msgstr "Adress \"%s\" är inte giltig."
-
-#: ../src/fw_tui.py:515 ../src/system-config-firewall.glade:2233
-msgid ""
-"Please select the protocol type, the firewall table and the file containing "
-"the rules."
-msgstr "Välj protokolltyp, brandväggstabell och filen som innehåller reglerna."
-
-#: ../src/fw_tui.py:517
-msgid "Protocol Type"
-msgstr "Protokolltyp:"
-
-#: ../src/fw_tui.py:517
-msgid "Firewall Table"
-msgstr "Brandväggstabell"
-
-#: ../src/fw_tui.py:518
-msgid "File"
-msgstr "Fil"
-
-#: ../src/fw_tui.py:527
-#, python-format
-msgid "The protocol type '%s' is not valid."
-msgstr "Protokolltypen \"%s\" är inte giltig."
-
-#: ../src/fw_tui.py:529 ../src/fw_tui.py:539
-#, python-format
-msgid "Valid values: %s"
-msgstr "Giltiga värden: %s"
-
-#: ../src/fw_tui.py:537
-#, python-format
-msgid "The firewall table '%s' is not valid."
-msgstr "Brandväggstabellen '%s' är inte giltig."
-
-#: ../src/fw_tui.py:549
-#, python-format
-msgid "The file '%s' does not exist."
-msgstr "Filen \"%s\" finns inte."
-
-#: ../src/fw_tui.py:556
-msgid "IPv6 has no nat support."
-msgstr "IPv6 har inget nat-stöd."
-
-#: ../src/fw_tui.py:632
-msgid "Yes"
-msgstr "Ja"
-
-#: ../src/fw_tui.py:632
-msgid "No"
-msgstr "Nej"
-
-#: ../src/fw_tui.py:672
-msgid "Hit enter to continue."
-msgstr "Tryck Retur för att fortsätta."
-
-#: ../src/fw_tui.py:721
-msgid "Quit"
-msgstr "Avsluta"
-
-#: ../src/lokkit:42
-#, python-format
-msgid ""
-"\n"
-"ERROR - You must be root to run %s."
-msgstr ""
-"\n"
-"FEL - Du måste vara root för att köra %s."
-
-#: ../src/lokkit:59
-msgid "Predefined Services with Default Environment:"
-msgstr "Fördefinierad tjänst med standardmiljö:"
-
-#: ../src/lokkit:68
-msgid "Supported icmp types:"
-msgstr "Icmp-typer som stöds:"
-
-#: ../src/lokkit:132
-msgid "Failed to write selinux configuration."
-msgstr "Kunde inte skriva selinux-konfiguration."
-
-#: ../src/lokkit:140
-#, python-format
-msgid "Failed to write %s."
-msgstr "Kunde inte skriva %s."
-
-#: ../src/lokkit:200 ../src/lokkit:203
-#, python-format
-msgid "Failed to stop %s."
-msgstr "Kunde inte stoppa %s."
-
-#: ../src/lokkit:226 ../src/lokkit:232
-#, python-format
-msgid "Failed to start %s."
-msgstr "Kunde inte starta %s."
-
-#: ../src/lokkit:239 ../src/lokkit:246
-#, python-format
-msgid "Failed to remove %s."
-msgstr "Kunde inte ta bort %s."
-
-#: ../src/system-config-firewall.glade:40
-msgid "_File"
-msgstr "_Fil"
-
-#: ../src/system-config-firewall.glade:49
-#: ../src/system-config-firewall.glade:373
-msgid "Apply changes"
-msgstr "Verkställ ändrigar"
-
-#: ../src/system-config-firewall.glade:50
-msgid "Apply"
-msgstr "Verkställ"
-
-#: ../src/system-config-firewall.glade:71
-#: ../src/system-config-firewall.glade:388
-msgid "Reload current configuration"
-msgstr "Läs om aktuell konfiguration"
-
-#: ../src/system-config-firewall.glade:72
-#: ../src/system-config-firewall.glade:389
-msgid "Reload"
-msgstr "Läs om"
-
-#: ../src/system-config-firewall.glade:99
-msgid "_Quit"
-msgstr "_Avsluta"
-
-#: ../src/system-config-firewall.glade:124
+"Välj det autentiseringsprotokoll som används av din Internetleverantör."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:41
+msgid "Show password"
+msgstr "Visa lösenord"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:42
+msgid "Use _Callback Control Protocol (CBCP)"
+msgstr "Använd _Callback Control Protocol (CBCP)"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:43
+msgid "Use _Channel Bundling"
+msgstr "Använd _kanalsamling"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+msgid "_Add..."
+msgstr "_Lägg till..."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:47
+msgid "_Allow only above Dial-In Number"
+msgstr "_Tillåt endast ovanstående inringningsnummer"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:48
+msgid "_Authentication:"
+msgstr "_Autentisering:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:49
+msgid "_Choose Provider..."
+msgstr "_Välj leverantör..."
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:50
+msgid "_Compression"
+msgstr "_Komprimering"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:51
+#: ../src/netconfpkg/gui/maindialog.glade.h:31
+msgid "_Delete"
+msgstr "_Ta bort"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:52
+msgid "_Dial mode:"
+msgstr "_Uppringningsläge:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:53
+msgid "_Encapsulation mode:"
+msgstr "_Inkapslingsläge:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:55
+msgid "_Hangup timeout:"
+msgstr "_Påläggningstimeout:"
+
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:57
 msgid "_Options"
 msgstr "_Alternativ"
 
-#: ../src/system-config-firewall.glade:133
-msgid "_Start Configuration Wizard"
-msgstr "_Starta konfigurationsguiden"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:58
+msgid "_PPP option:"
+msgstr "_PPP-alternativ:"
 
-#: ../src/system-config-firewall.glade:158
-msgid "Enable Firewall"
-msgstr "Aktivera brandvägg"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:59
+msgid "_Phone Number"
+msgstr "_Telefonnummer:"
 
-#: ../src/system-config-firewall.glade:178
-msgid "Disable Firewall"
-msgstr "Inaktivera brandvägg"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:63
+msgid "_Use Callback"
+msgstr "Använd _tillbakaringning"
 
-#: ../src/system-config-firewall.glade:204
-msgid "User Skill Level"
-msgstr "Användarens kunskapsnivå"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
+#: ../src/netconfpkg/NCDialup.py:150
+msgid "auto"
+msgstr "automatisk"
 
-#: ../src/system-config-firewall.glade:222
-msgid "Expert"
-msgstr "Expert"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:65
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:361
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:437
+msgid "chap"
+msgstr "chap"
 
-#: ../src/system-config-firewall.glade:242
-msgid "Load _Default Configuration"
-msgstr "Läs in _standardkonfiguration"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:66
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:364
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:439
+msgid "chap+pap"
+msgstr "chap+pap"
 
-#: ../src/system-config-firewall.glade:251
-msgid "Desktop"
-msgstr "Skrivbord"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:67
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:298
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:394
+msgid "in"
+msgstr "inne"
 
-#: ../src/system-config-firewall.glade:271
-msgid "Configure Service Settings"
-msgstr "Konfigurera inställningar för tjänster"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
+#: ../src/netconfpkg/NCDialup.py:151
+msgid "manual"
+msgstr "manuell"
 
-#: ../src/system-config-firewall.glade:289
-msgid "_Help"
-msgstr "_Hjälp"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:69
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:366
+msgid "none"
+msgstr "inget"
 
-#: ../src/system-config-firewall.glade:298
-msgid "_About"
-msgstr "_Om"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:70
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:298
+msgid "out"
+msgstr "ute"
 
-#: ../src/system-config-firewall.glade:343
-msgid "Start configuration wizard"
-msgstr "Starta konfigurationsguiden"
+#: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:71
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:359
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:435
+msgid "pap"
+msgstr "pap"
 
-#: ../src/system-config-firewall.glade:344
-msgid "Wizard"
-msgstr "Guide"
+#: ../src/netconfpkg/gui/editadress.glade.h:1
+msgid "Add / Edit IP Address"
+msgstr "Lägg till / redigera IP-adress"
 
-#: ../src/system-config-firewall.glade:418
-msgid "Enable firewall"
-msgstr "Aktivera brandvägg"
+#: ../src/netconfpkg/gui/editadress.glade.h:3
+msgid "_Gateway:"
+msgstr "_Gateway:"
 
-#: ../src/system-config-firewall.glade:419
-msgid "Enable"
-msgstr "Aktivera"
+#: ../src/netconfpkg/gui/editdomain.glade.h:1
+msgid "Domain name:"
+msgstr "Domännamn:"
 
-#: ../src/system-config-firewall.glade:436
-msgid "Disable"
-msgstr "Inaktivera"
+#: ../src/netconfpkg/gui/editdomain.glade.h:2
+msgid "Edit Domain Name"
+msgstr "Redigera domännamn"
 
-#: ../src/system-config-firewall.glade:626
-msgid "Allow access to necessary services, only."
-msgstr "Tillåt åtkomst endast till nödvändiga tjänster."
+#: ../src/netconfpkg/gui/edithosts.glade.h:1
+msgid "Add / Edit Hosts entry"
+msgstr "Lägg till / redigera värdpost"
 
-#: ../src/system-config-firewall.glade:826
-msgid "Allow access to necessary ports or port ranges, only."
-msgstr "Tillåt endast åtkomst till nödvändiga portar eller portintervall."
+#. FIXME: Bad style for translation
+#: ../src/netconfpkg/gui/edithosts.glade.h:2
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:235
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:233
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:215
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:344
+msgid "Address:"
+msgstr "Adress:"
 
-#: ../src/system-config-firewall.glade:1006
+#: ../src/netconfpkg/gui/edithosts.glade.h:3
+msgid "Aliases:"
+msgstr "Alias:"
+
+#: ../src/netconfpkg/gui/edithosts.glade.h:4
+msgid "Hostname:"
+msgstr "Värdnamn:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:2
+msgid "A_uthentication key:"
+msgstr "A_utentiseringsnyckel:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:3
+msgid "Automatic encryption mode selection via IKA (racoon)"
+msgstr "Automatiskt val av krypteringsläge via IKA (racoon)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:4
+msgid "Ge_nerate"
+msgstr "Ge_nerera"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:5
+msgid "Host to Host encryption"
+msgstr "Värd till värd-kryptering"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:6
+msgid "IPsec"
+msgstr "IPsec"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:7
+msgid "IPsec - Connection Type"
+msgstr "IPsec - Anslutningstyp"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:8
+msgid "IPsec - Encryption Mode"
+msgstr "IPsec - Krypteringsläge"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:9
+msgid "IPsec - Keys"
+msgstr "IPsec - Nycklar"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:10
+msgid "IPsec - Local Network"
+msgstr "IPsec - Lokalt nätverk"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:11
+msgid "IPsec - Nickname"
+msgstr "IPsec - Kortnamn"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:12
+msgid "IPsec - Remote Network"
+msgstr "IPsec - Fjärrnätverk"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:13
+msgid "IPsec - Summary"
+msgstr "IPsec - Sammanfattning"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:14
+msgid "IPsec Settings"
+msgstr "IPsec-inställningar"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:15
+msgid "Local network _address:"
+msgstr "Lokal nätverks_adress:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:16
+msgid "Local network _gateway:"
+msgstr "Lokal nätverks_gateway:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:17
+msgid "Local subnet _mask:"
+msgstr "Lokal subnät_mask:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:18
+msgid "Manual encryption with a fixed key"
+msgstr "Manuell kryptering med en fast nyckel"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:19
+msgid "Network to Network encryption (VPN)"
+msgstr "Nätverk till nätverk-kryptering (VPN)"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:20
+msgid "Please enter a nickname for the connection:"
+msgstr "Ange ett kortnamn för anslutningen:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:21
+msgid "Please enter a passphrase to generate the key."
+msgstr "Ange ett lösenord för att generera nyckeln."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:22
+msgid "Please enter your local network settings:"
+msgstr "Ange dina lokala nätverksinställningar:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:23
+msgid "Please enter your remote network settings:"
+msgstr "Ange dina fjärrnätverksinställningar:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:24
+msgid "Please select the type of connection:"
+msgstr "Välj typen av anslutning:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:25
+msgid "Please select the type of encryption:"
+msgstr "Välj typen av kryptering:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:26
 msgid ""
-"Only mark interfaces if you can trust all participants on that network "
-"interface."
+"Please specify your keys or generate them. \n"
+"The keys are symmetric, so your remote partner needs to have the same."
 msgstr ""
-"Markera endast gränssnitt om du kan lita på alla deltagare på det "
-"nätverksgränssnittet."
+"Ange dina nycklar eller generera dem. \n"
+"Nycklarna är symmetriska, så din fjärrpartner måste ha samma nycklar."
 
-#: ../src/system-config-firewall.glade:1074
+#: ../src/netconfpkg/gui/editipsec.glade.h:28
+msgid "Remote _IP address:"
+msgstr "Fjärr-_IP-adress:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:29
+msgid "Remote network _address:"
+msgstr "Fjärrnätverks_adress:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:30
+msgid "Remote network _gateway:"
+msgstr "_Gateway för fjärrnätverk:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:31
+msgid "Remote subnet _mask:"
+msgstr "Fjärrsubnät_mask:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:32
+msgid "Security parameter index for authentication:"
+msgstr "Säkerhetsparameter-index för autentisering:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:33
+msgid "Security parameter index for encryption:"
+msgstr "Säkerhetsparameterindex för kryptering:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:34
+msgid "You will now be guided through the setup of the IPsec connection."
+msgstr "Du kommer nu att vägledas genom skapandet av en IPsec-anslutning."
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:35
+msgid "_Activate connection when computer starts"
+msgstr "_Aktivera anslutning då datorn startar"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:36
+msgid "_Encryption key:"
+msgstr "_Krypteringsnyckel:"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:37
+msgid "_Generate"
+msgstr "_Generera"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:39
+msgid "dialog1"
+msgstr "dialog1"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:40
+msgid "unique SPI for AH (256 - 4294967295), like a TCP/IP port number"
+msgstr "unik SPI för AH (256 - 4294967295), som en TCP/IP portnummer"
+
+#: ../src/netconfpkg/gui/editipsec.glade.h:41
+msgid "unique SPI for ESP (256 - 4294967295), like a TCP/IP port number"
+msgstr "unik SPI för ESP (256 - 4294967295), som ett TCP/IP portnummer"
+
+#: ../src/netconfpkg/gui/editipsec.py:219
 msgid ""
-"Masquerading allows you to set up a host or router that connects your local "
-"network to the internet. Your local network will not be visible and the "
-"hosts appear as a single address on the internet. Masquerading is IPv4 only."
-msgstr ""
-"Maskering gör att du sätta upp en värd eller router som ansluter till ditt "
-"lokala nätverket till internet. Ditt lokala nätverk syns inte och värdarna "
-"ser ut som de har en enda adress på internet. Maskering är endast för IPv4."
+"Please enter a unique security parameter index between 256 and 4294967295."
+msgstr "Skriv ett unikt säkerhetsparameterindex mellan 256 and 4294967295."
 
-#: ../src/system-config-firewall.glade:1211
+#: ../src/netconfpkg/gui/ethernetconfig.glade.h:1
+#: ../src/netconfpkg/gui/QethConfig.glade.h:3
+msgid "Ethernet Device"
+msgstr "Ethernetenhet"
+
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:4
+msgid "Select Ethernet Adapter"
+msgstr "Välj Ethernetadapter"
+
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:2
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:2
+msgid "_Adapter:"
+msgstr "_Adapter:"
+
+#: ../src/netconfpkg/gui/EthernetHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethHardware.glade.h:5
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:3
+msgid "_Device:"
+msgstr "_Enhet:"
+
+#: ../src/netconfpkg/gui/ethernethardware.glade.h:1
+#: ../src/netconfpkg/gui/QethHardware.glade.h:4
+#: ../src/netconfpkg/gui/tokenringhardware.glade.h:1
+msgid "Network Adapters Configuration"
+msgstr "Konfiguration av nätverksadaptrar"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:16
+msgid "Configure Network Settings"
+msgstr "Konfigurera nätverksinställningar"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:2
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:2
+msgid "Create Ethernet Device"
+msgstr "Skapa Ethernetenhet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:3
+msgid "Ethernet card"
+msgstr "Ethernetkort"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:3
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:19
+msgid "MTU:"
+msgstr "MTU:"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:5
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:5
 msgid ""
-"If you enable masquerading, IP forwarding will also be enabled for your IPv4 "
-"networks."
+"Please enter the MTU parameter to set the maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
 msgstr ""
-"Om du aktiverar maskering så kommer även IP-eftersändning aktiveras på dina "
-"IPv4 nätverk."
+"Ange MTU-parametern för att ställa in den största överföringsenheten (MTU:n) "
+"för detta gränssnitt. På s390/s390x har MTU:n värdet 1492 som "
+"standardinställning"
 
-#: ../src/system-config-firewall.glade:1426
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:6
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:6
+msgid "Select Ethernet Device"
+msgstr "Välj Ethernetenhet"
+
+#: ../src/netconfpkg/gui/EthernetInterfaceDruid.glade.h:7
+#: ../src/netconfpkg/gui/QethInterfaceDruid.glade.h:7
+msgid "Select the ethernet card you want to configure:"
+msgstr "Välj det Ethernetkort du vill konfigurera:"
+
+#: ../src/netconfpkg/gui/GUI_functions.py:99
+#, python-format
 msgid ""
-"The Internet Control Message Protocol (ICMP) is mainly used to send error "
-"messages between networked computers, but additionally for informational "
-"messages like ping requests and replies."
+"Could not find file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
 msgstr ""
-"Internet Control Message Protocol (ICMP) används mest för att skicka "
-"felmeddelanden mellan nätverksdatorer, men också för informationsmeddelanden "
-"som ping-förfrågningar och svar."
+"Kunde inte hitta filen '%s'.\n"
+"Kontrollera din installation!\n"
+"Kör: 'rpm -V system-config-network'\n"
 
-#: ../src/system-config-firewall.glade:1696
-msgid "Please check your firewall settings after applying custom rules."
-msgstr ""
-"Kontrollera dina brandväggsinställningar efter du verkställt anpassade "
-"regler."
-
-#: ../src/system-config-firewall.glade:1833
-msgid "modified label"
-msgstr "ändrad etikett"
-
-#: ../src/system-config-firewall.glade:1868
-msgid "Port and Protocol"
-msgstr "Port och protokoll:"
-
-#: ../src/system-config-firewall.glade:1941
+#: ../src/netconfpkg/gui/GUI_functions.py:108
+#, python-format
 msgid ""
-"Please select an entry from the list or enter a port and protocol further "
-"down."
-msgstr "Välj en post från listan eller ange en port och protokoll längre ner."
+"Could not load the file '%s'.\n"
+"Please check your installation!\n"
+"Run: 'rpm -V system-config-network'\n"
+msgstr ""
+"Kunde inte läsa filen '%s'.\n"
+"Kontrollera din installation!\n"
+"Kör: 'rpm -V system-config-network'\n"
 
-#: ../src/system-config-firewall.glade:1996
-#: ../src/system-config-firewall.glade:4731
-msgid "User Defined"
-msgstr "Användardefinierade"
-
-#: ../src/system-config-firewall.glade:2148
-msgid "system-config-firewall"
-msgstr "system-config-firewall"
-
-#: ../src/system-config-firewall.glade:2155
-msgid "translator-credits"
-msgstr "Magnus Larsson"
-
-#: ../src/system-config-firewall.glade:2161
-msgid "Custom Rules File"
-msgstr "Anpassad regelfil"
-
-#: ../src/system-config-firewall.glade:2330
-msgid "Firewall Table:"
-msgstr "Brandväggstabell:"
-
-#: ../src/system-config-firewall.glade:2371
-msgid "File:"
-msgstr "Fil:"
-
-#: ../src/system-config-firewall.glade:2396
-msgid "Select A File"
-msgstr "Välj en fil"
-
-#: ../src/system-config-firewall.glade:2428
-msgid "Firewall Configuration Wizard"
-msgstr "Brandväggskonfigurationsguiden"
-
-#: ../src/system-config-firewall.glade:2571
-msgid "<big><b>Firewall Configuration Wizard</b></big>"
-msgstr "<big><b>Brandväggskonfigurationsguiden</b></big>"
-
-#: ../src/system-config-firewall.glade:2624
-msgid "<b>Information</b>"
-msgstr "<b>Information</b>"
-
-#: ../src/system-config-firewall.glade:2650
+#: ../src/netconfpkg/gui/GUI_functions.py:617
+#, python-format
 msgid ""
-"This wizard helps you to set up a clean firewall configuration for your "
-"system."
+"Failed to run:\n"
+"%s"
 msgstr ""
-"Guiden hjälper dig att sätta upp en ren brandväggskonfiguration för ditt "
-"system."
+"Misslyckades med att köra:\n"
+"%s"
 
-#: ../src/system-config-firewall.glade:2676
+#: ../src/netconfpkg/gui/GUI_functions.py:620
+msgid "Succeeded. Please read the output."
+msgstr "Lyckades. Läs utdatan."
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:1
+msgid "Choose Hardware Type"
+msgstr "Välj hårdvarutyp"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:3
+msgid "Hardware type:"
+msgstr "Hårdvarutyp:"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
+msgid "ISDN"
+msgstr "ISDN"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
+msgid "Modem"
+msgstr "Modem"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:6
+msgid "Please select the hardware device type you want to create"
+msgstr "Välj den hårdvaruenhetstyp som du vill skapa"
+
+#: ../src/netconfpkg/gui/hardwaretype.glade.h:7
+msgid "Token Ring"
+msgstr "Token Ring"
+
+#: ../src/netconfpkg/gui/infodialog.glade.h:1
+#: ../src/netconfpkg/gui/maindialog.glade.h:9
+#: ../src/netconfpkg/gui/neat-control.glade.h:11
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:123
+#: ../src/netconfpkg/tui/NCTcpIp.py:97
+msgid "Device"
+msgstr "Enhet"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:1
+msgid "1_TR6"
+msgstr "1_TR6"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:2
+msgid "<b>D-channel protocol</b>"
+msgstr "<b>D-kanalprotokoll</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:3
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:3
+#: ../src/netconfpkg/gui/QethHardware.glade.h:1
+msgid "<b>Resources</b>"
+msgstr "<b>Resurser</b>"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:4
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:4
+msgid "Eu_ro ISDN (EDSS1)"
+msgstr "Eu_ro-ISDN (EDSS1)"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:5
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:5
+msgid "IO_1:"
+msgstr "IO_1:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:6
+msgid "IO_2:"
+msgstr "IO_2:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:7
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:7
+msgid "IR_Q:"
+msgstr "IR_Q:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:8
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:9
+msgid "ISDN _adapters:"
+msgstr "ISDN-_adaptrar:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:10
+msgid "Select ISDN Adapter"
+msgstr "Välj ISDN-adapter"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:11
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:10
+msgid "_IO:"
+msgstr "_IO:"
+
+#: ../src/netconfpkg/gui/IsdnHardwareDruid.glade.h:12
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:11
+msgid "_MEM:"
+msgstr "_MIN:"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:2
+msgid "<b>D channel protocol</b>"
+msgstr "<b>D-kanalprotokoll</b>"
+
+#: ../src/netconfpkg/gui/isdnhardware.glade.h:8
+msgid "ISDN Adapters Configuration"
+msgstr "Konfiguration av ISDN-adaptrar"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:1
+msgid "Activate the selected device, calling ifup <device>."
+msgstr "Aktivera den valda enheten genom att anropa ifup <enhet>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:2
+msgid "Contents"
+msgstr "Innehåll"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:3
+msgid "DNS search path:"
+msgstr "Sökväg för DNS-sökning:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:4
+msgid "D_NS"
+msgstr "D_NS"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:5
+msgid "Deactivate the selected device, calling ifdown <device>."
+msgstr "Inaktivera den valda enheten genom att anropa ifdown <enhet>."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:6
+msgid "Description"
+msgstr "Beskrivning"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:7
+msgid "Destination"
+msgstr "Destination"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:8
+msgid "Dev_ices"
+msgstr "_Enheter"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:10
+msgid "Do_main:"
+msgstr "Do_män:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:11
+msgid "H_osts"
+msgstr "V_ärdar"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:12
+msgid "Hard_ware"
+msgstr "Hård_vara"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:13
+msgid "IP_sec"
+msgstr "IP_sec"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:14
+msgid "List of devices which are currently configurable on your system."
+msgstr "Lista med enheter som för tillfället är konfigurerbara på ditt system."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:15
+msgid "Monitor the selected device."
+msgstr "Övervaka den valda enheten."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:16
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
+#: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
+#: ../system-config-network.desktop.in.h:3
+msgid "Network Configuration"
+msgstr "Nätverkskonfiguration"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:17
+msgid "New Profile"
+msgstr "Ny profil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:18
+#: ../src/netconfpkg/gui/neat-control.glade.h:13
+msgid "Nickname"
+msgstr "Kortnamn"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:19
 msgid ""
-"Please answer the questions in the following configuration steps. The wizard "
-"leads you back to the main application and hides all unnecessary "
-"configuration options."
+"Please enter the name for the profile. The name may only contain letters and "
+"digits."
 msgstr ""
-"Svara på frågorna i följande konfigurationssteg. Guiden vägleder dig "
-"tillbaka till huvudprogrammet och döljer alla onödiga "
-"konfigurationsalternativ."
+"Ange namnet på profilen. Namnet får endast innehålla siffror och bokstäver."
 
-#: ../src/system-config-firewall.glade:2702
-msgid "You can change the settings in the <i>Options</i> menu afterwards."
-msgstr "Du kan ändra inställningarna i <i>Alternativ</i> efteråt."
+#: ../src/netconfpkg/gui/maindialog.glade.h:20
+msgid "Profile"
+msgstr "Profil"
 
-#: ../src/system-config-firewall.glade:2762
-msgid "<b>Basic Firewall Settings</b>"
-msgstr "<b>Grundläggande brandväggsinställningar</b>"
+#: ../src/netconfpkg/gui/maindialog.glade.h:21
+msgid "Show loopback"
+msgstr "Visa återkopplad"
 
-#: ../src/system-config-firewall.glade:2787
-msgid "What kind of system do you have?"
-msgstr "Vilket typ av system har du?"
+#: ../src/netconfpkg/gui/maindialog.glade.h:22
+#: ../src/netconfpkg/gui/neat-control.glade.h:15
+msgid "Status"
+msgstr "Status"
 
-#: ../src/system-config-firewall.glade:2830
+#: ../src/netconfpkg/gui/maindialog.glade.h:23
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:24
+msgid "You may configure IPsec tunnels and host to host connections here."
+msgstr "Du kan konfigurera IPsec-tunnlar och värd till värd-anslutningar här."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:25
 msgid ""
-"System without network access\n"
-"System with network access"
+"You may configure network devices associated with physical hardware here.  "
+"Multiple logical devices can be associated with a single piece of hardware."
 msgstr ""
-"System utan nätverksåtkomst\n"
-"System med nätverksåtkomst"
+"Här kan du konfigurera nätverksenheter som är associerade med fysisk "
+"hårdvara. Flera logiska enheter kan associeras med en enstaka hårdvaruenhet."
 
-#: ../src/system-config-firewall.glade:2854
+#: ../src/netconfpkg/gui/maindialog.glade.h:26
 msgid ""
-"A <i>\"System without network access\"</i> does not need a firewall at all. "
-"This selection disables the firewall. Otherwise, choose <i>\"System with "
-"network access\"</i>."
+"You may configure network hardware physically attached to the computer here."
 msgstr ""
-"Ett <i>\"System utan nätverksåtkomst\"</i> behöver ingen brandvägg. Detta "
-"val inaktiverar brandväggen. Annars välj <i>\"System med nätverksåtkomst\"</"
-"i>."
+"Här kan du konfigurera nätverkshårdvara som är fysiskt ansluten till din "
+"dator."
 
-#: ../src/system-config-firewall.glade:2914
-msgid "<b>User Skill Level</b>"
-msgstr "<b>Användarens kunskapsnivå</b>"
-
-#: ../src/system-config-firewall.glade:2939
-msgid "Please specify your firewall skills."
-msgstr "Ange nivån på dina brandväggskunskaper."
-
-#: ../src/system-config-firewall.glade:2982
+#: ../src/netconfpkg/gui/maindialog.glade.h:27
 msgid ""
-"Beginner\n"
-"Expert"
+"You may configure the system's hostname, domain, name servers, and search "
+"domain. Name servers are used to look up other hosts on the network."
 msgstr ""
-"Nybörjare\n"
-"Expert"
+"Du kan konfigurera systemets värdnamn, domän, namnservrar och sökdomän. "
+"Namnservrar används för att slå upp andra värdar på nätverket."
 
-#: ../src/system-config-firewall.glade:3006
+#: ../src/netconfpkg/gui/maindialog.glade.h:28
 msgid ""
-"Select <i>\"Expert\"</i> if you are familiar with firewall configurations or "
-"if you need to add user customized rules. Otherwise, choose <i>\"Beginner\"</"
-"i>."
+"You may specify static computer hostname to IP address mappings here.  If "
+"DNS is in use, these settings will take precedence over any information it "
+"may provide."
 msgstr ""
-"Välj <i>\"Expert\"</i> om du van vid brandväggskonfiguration eller om du "
-"behöver lägga till anpassade regler. Annars välj <i>\"Nybörjare\"</i>."
+"Här kan du ange statiska värdnamn till IP-mappningar. Dessa inställningar "
+"kommer att ha högre prioritet än information i en eventuell DNS."
 
-#: ../src/system-config-firewall.glade:3066
-msgid "<b>Configuration</b>"
-msgstr "<b>Konfiguration</b>"
+#: ../src/netconfpkg/gui/maindialog.glade.h:29
+#: ../src/netconfpkg/gui/neat-control.glade.h:17
+msgid "_Activate"
+msgstr "_Aktivera"
 
-#: ../src/system-config-firewall.glade:3091
+#: ../src/netconfpkg/gui/maindialog.glade.h:30
+#: ../src/netconfpkg/gui/neat-control.glade.h:19
+msgid "_Deactivate"
+msgstr "_Inaktivera"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:32
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:33
+msgid "_Hostname:"
+msgstr "_Värdnamn:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:34
+#: ../src/netconfpkg/gui/neat-control.glade.h:21
+msgid "_Monitor"
+msgstr "_Övervaka"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:35
+msgid "_New..."
+msgstr "_Ny..."
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:36
+msgid "_Primary DNS:"
+msgstr "_Primär DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:37
+msgid "_Profile"
+msgstr "_Profil"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:38
+msgid "_Secondary DNS:"
+msgstr "_Sekundär DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.glade.h:39
+msgid "_Tertiary DNS:"
+msgstr "_Tertiär DNS:"
+
+#: ../src/netconfpkg/gui/maindialog.py:326
+msgid "Loading configuration..."
+msgstr "Läser in konfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:334
+msgid "Loading device configuration..."
+msgstr "Läser in enhetskonfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:339
+msgid "Loading hardware configuration..."
+msgstr "Läser in hårdvarukonfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:344
+msgid "Loading profile configuration..."
+msgstr "Läser in profilkonfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:351
+msgid "Loading IPsec configuration..."
+msgstr "Läser in IPsec-konfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:356
+msgid "Testing configuration set..."
+msgstr "Testar konfigurationssamling..."
+
+#: ../src/netconfpkg/gui/maindialog.py:387
+#, python-format
+msgid "Active profile: %s (modified)"
+msgstr "Aktiv profil: %s (ändrad)"
+
+#: ../src/netconfpkg/gui/maindialog.py:391
+#, python-format
+msgid "Active profile: %s"
+msgstr "Aktiv profil: %s"
+
+#: ../src/netconfpkg/gui/maindialog.py:405
+msgid "Saving configuration..."
+msgstr "Sparar konfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:417
+#, python-format
 msgid ""
-"Please select keep configuration or choose to load a default configuration."
+"Error saving configuration!\n"
+"%s"
 msgstr ""
-"Välj mellan behålla konfigurationen eller läsa in en standardkonfiguration."
+"Fel vid sparande av konfiguration!\n"
+"%s"
 
-#: ../src/system-config-firewall.glade:3135
-msgid "Keep Configuration"
-msgstr "Behåll konfiguration"
-
-#: ../src/system-config-firewall.glade:3180
-msgid "Load"
-msgstr "Läs in"
-
-#: ../src/system-config-firewall.glade:3205
+#: ../src/netconfpkg/gui/maindialog.py:420
 msgid ""
-"Desktop\n"
-"Server"
+"Changes are saved. You may want to restart the network and network services "
+"or restart the computer."
 msgstr ""
-"Skrivbord\n"
-"Server"
+"Ändringarna är sparade. Du vill nog starta om nätverket och "
+"nätverkstjänsterna eller starta om datorn."
 
-#: ../src/system-config-firewall.glade:3220
-msgid "configuration"
-msgstr "konfiguration"
+#: ../src/netconfpkg/gui/maindialog.py:429
+msgid "Saving device configuration..."
+msgstr "Sparar enhetskonfiguration..."
 
-#: ../src/system-config-firewall.glade:3254
+#: ../src/netconfpkg/gui/maindialog.py:436
+msgid "Saving hardware configuration..."
+msgstr "Sparar hårdvarukonfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:443
+msgid "Saving profile configuration..."
+msgstr "Sparar profilkonfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:450
+msgid "Saving IPsec configuration..."
+msgstr "Sparar IPsec-konfiguration..."
+
+#: ../src/netconfpkg/gui/maindialog.py:469
+msgid "Updating devices..."
+msgstr "Uppdaterar enheter..."
+
+#: ../src/netconfpkg/gui/maindialog.py:533
+msgid "Updating hardware..."
+msgstr "Uppdaterar hårdvara..."
+
+#: ../src/netconfpkg/gui/maindialog.py:609
+msgid "Updating profiles..."
+msgstr "Uppdaterar profiler..."
+
+#: ../src/netconfpkg/gui/maindialog.py:706
+msgid "Errors detected, do you really want to quit?"
+msgstr "Fel upptäckta, vill du verkligen avsluta?"
+
+#: ../src/netconfpkg/gui/maindialog.py:714
+#: ../src/netconfpkg/gui/maindialog.py:733
+msgid "Do you want to save your changes?"
+msgstr "Vill du spara dina ändringar?"
+
+#: ../src/netconfpkg/gui/maindialog.py:916
+msgid "The Loopback device can not be edited!"
+msgstr "Loopback-enheten kan inte redigeras!"
+
+#: ../src/netconfpkg/gui/maindialog.py:920
+msgid "Edit device..."
+msgstr "Redigera enhet..."
+
+#: ../src/netconfpkg/gui/maindialog.py:957
+#, python-format
+msgid "The device type %s cannot be edited!"
+msgstr "Enhetstypen %s kan inte redigeras!"
+
+#: ../src/netconfpkg/gui/maindialog.py:977
+msgid "The Loopback device can not be removed!"
+msgstr "Loopback-enheten kan inte tas bort!"
+
+#: ../src/netconfpkg/gui/maindialog.py:981
+#, python-format
+msgid "Do you really want to delete device \"%s\"?"
+msgstr "Vill du verkligen ta bort enheten \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1014
+#: ../src/netconfpkg/gui/maindialog.py:1049
+#: ../src/netconfpkg/gui/maindialog.py:1791
+#: ../src/netconfpkg/gui/maindialog.py:1819
+msgid "You have made some changes in your configuration."
+msgstr "Du har gjort en del ändringar i din konfiguration."
+
+#: ../src/netconfpkg/gui/maindialog.py:1015
+#, python-format
+msgid "To activate the network device %s, the changes have to be saved."
+msgstr "För att aktivera nätverksenheten %s måste ändringarna sparas."
+
+#: ../src/netconfpkg/gui/maindialog.py:1017
+#: ../src/netconfpkg/gui/maindialog.py:1052
+#: ../src/netconfpkg/gui/maindialog.py:1794
+#: ../src/netconfpkg/gui/maindialog.py:1822
+msgid "Do you want to continue?"
+msgstr "Vill du fortsätta?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1050
+#, python-format
+msgid "To deactivate the network device %s, the changes have to be saved."
+msgstr "För att inaktivera nätverksenheten %s måste ändringarna sparas."
+
+#: ../src/netconfpkg/gui/maindialog.py:1181
+msgid "The Loopback device can not be disabled!"
+msgstr "Loopback-enheten kan inte inaktiveras!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1449
+#: ../src/netconfpkg/gui/maindialog.py:1527
+msgid "The name may only contain letters and digits!"
+msgstr "Namnet får endast innehålla bokstäver och siffror!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1454
+#: ../src/netconfpkg/gui/maindialog.py:1532
+#, python-format
+msgid "The profile can't be named \"%s\"!"
+msgstr "Profilen kan inte döpas till \"%s\"!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1460
+#: ../src/netconfpkg/gui/maindialog.py:1538
+msgid "The profile name already exists!"
+msgstr "Profilnamnet finns redan!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1505
+#, python-format
+msgid "The \"%s\" profile can't be renamed!"
+msgstr "Namnet på \"%s\"-profilen kan inte ändras!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1553
+#, python-format
+msgid "The \"%s\" Profile can not be deleted!"
+msgstr "\"%s\"-profilen kan inte tas bort!"
+
+#: ../src/netconfpkg/gui/maindialog.py:1559
+#, python-format
+msgid "Do you really want to delete profile \"%s\"?"
+msgstr "Vill du verkligen ta bort profilen \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1634
 msgid ""
-"If you clear the <i>keep configuration</i> button, the actual firewall "
-"configuration will be overwritten."
+"Sorry, there is nothing to be edited, or this type cannot be edited yet."
+msgstr "Tyvärr, inget kan redigeras, eller så kan denna typ inte redigeras än."
+
+#: ../src/netconfpkg/gui/maindialog.py:1652
+#, python-format
+msgid "Do you really want to delete \"%s\"?"
+msgstr "Vill du verkligen ta bort \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1665
+#, python-format
+msgid "Do you want to delete all devices that used \"%s\"?"
+msgstr "Vill du verkligen ta bort alla enheter som använde \"%s\"?"
+
+#: ../src/netconfpkg/gui/maindialog.py:1716
+msgid "translator_credits"
 msgstr ""
-"Om du avmarkerar <i>behåll konfiguration</i>-knappen så kommer den aktuella "
-"brandväggskonfigurationen skrivas över."
+"Magnus Larsson\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"tp-sv@listor.tp-sv.se"
 
-#: ../src/system-config-firewall.glade:3317
-msgid "Firewall Configuration Startup"
-msgstr "Start av brandväggskonfiguration"
+#: ../src/netconfpkg/gui/maindialog.py:1792
+#, python-format
+msgid "To activate the IPsec connection %s, the changes have to be saved."
+msgstr "För att aktivera IPsec-anslutningen %s måste ändringarna sparas."
 
-#: ../src/system-config-firewall.glade:3375
-msgid "This program will help you to set up a basic firewall for your system."
-msgstr ""
-"Detta programm hjälper dig sätta upp en grundläggande brandvägg för ditt "
-"system."
+#: ../src/netconfpkg/gui/maindialog.py:1820
+#, python-format
+msgid "To deactivate the IPsec connection %s, the changes have to be saved."
+msgstr "För att inaktivera IPsec-anslutningen %s måste ändringarna sparas."
 
-#: ../src/system-config-firewall.glade:3401
+#: ../src/netconfpkg/gui/modemconfig.glade.h:1
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:1
+msgid "<b>Modem properties</b>"
+msgstr "<b>Modemegenskaper</b>"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:2
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:2
+#: ../src/netconfpkg/NC_functions.py:134
+msgid "Hardware (CRTSCTS)"
+msgstr "Maskinvara (CRTSCTS)"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:3
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:3
+#: ../src/netconfpkg/gui/NCPluginModemConfig.py:132
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:190
+msgid "High"
+msgstr "Hög"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:4
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:4
+#: ../src/netconfpkg/gui/NCPluginModemConfig.py:128
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:186
+msgid "Low"
+msgstr "Låg"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:5
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:5
+#: ../src/netconfpkg/gui/NCPluginModemConfig.py:130
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:188
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:18
+msgid "Medium"
+msgstr "Mellan"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:6
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:81
+msgid "Modem Configuration"
+msgstr "Modemkonfiguration"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:7
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:6
+msgid "Modem _volume:"
+msgstr "Modem_volym:"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:8
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:7
+#: ../src/netconfpkg/NCDialup.py:154 ../src/netconfpkg/NC_functions.py:136
+msgid "None"
+msgstr "Ingen"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:9
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:8
+#: ../src/netconfpkg/gui/NCPluginModemConfig.py:126
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:184
+msgid "Off"
+msgstr "Av"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:10
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:10
+#: ../src/netconfpkg/NC_functions.py:135
+msgid "Software (XON/XOFF)"
+msgstr "Programvara (XON/XOFF)"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:11
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:11
+#: ../src/netconfpkg/gui/NCPluginModemConfig.py:134
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:192
+msgid "Very High"
+msgstr "Mycket hög"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:12
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:12
+msgid "_Baud rate:"
+msgstr "_Baudhastighet:"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:13
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:13
+msgid "_Flow control:"
+msgstr "_Flödeskontroll:"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:14
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:14
+msgid "_Modem device:"
+msgstr "_Modemenhet:"
+
+#: ../src/netconfpkg/gui/modemconfig.glade.h:15
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:15
+msgid "_Use touch tone dialing"
+msgstr "_Använd tonval"
+
+#: ../src/netconfpkg/gui/ModemDruid.glade.h:9
+msgid "Select Modem"
+msgstr "Välj modem"
+
+#: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:95
+msgid "xDSL connection"
+msgstr "xDSL-anslutning"
+
+#: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:102
 msgid ""
-"If you need further firewall settings, please modify your configuration by "
-"hand, but keep in mind, that this tool is not able to load your custom "
-"configuration. If you are using this tool, all your manual changes will be "
-"lost. If you do not want to lose your manual configuration changes, leave "
-"this program without applying."
+"Create an xDSL connection.  This is a connection that uses one of several "
+"types of broadband connections collective known as Digital Subscriber "
+"Lines.  This list includes ADSL (Asymmetric, faster downloads than uploads), "
+"IDSL (over an ISDN line for distance), SDSL (Symmetric, downloads and "
+"uploads at the same speed), and several others.  These types of connections "
+"are common in the United States, and are gaining acceptance elsewhere.  "
+"Speeds vary according to the technology used, but generally range from "
+"144kbps to 1.0Mbps."
 msgstr ""
-"Om du behöver ytterligare brandväggsinställningar, ändra din konfiguration "
-"manuellt hand, men kom ihåg att detta verktyg inte kan läsa in din anpassade "
-"konfiguration. Om du använder detta verktyg, kommer alla dina manuella "
-"ändringar gå förlorade. Om du inte vill förlora din manuella inställningar, "
-"lämna programmet utan att verkställa."
+"Skapa en xDSL-anslutning. Detta är en anslutning som använder en av flera "
+"typer av bredbandsanslutningar som gemensamt kallas Digital Subscriber Line "
+"(DSL). Denna lista inkluderar ADSL (asymmetrisk, det går snabbare att hämta "
+"än att skicka), IDSL (över en ISDN-lina för möjlighet till större avstånd), "
+"SDSL (symmetrisk, det går lika snabbt att hämta och skicka), och åtskilliga "
+"andra. Dessa typer av anslutningar, särskilt ADSL, är vanliga i Sverige, och "
+"vinner mark även på andra platser. Hastigheten varierar med den teknik som "
+"används, men brukar i allmänhet vara mellan 144 kb/s och 1,0 Mb/s."
 
-#: ../src/system-config-firewall.glade:3460
-msgid "Please remember to check your firewall configuration before using it."
-msgstr ""
-"Kom ihåg att kontrollera din brandväggskonfiguration innan du använder den."
+#: ../src/netconfpkg/gui/NCPluginADSLInterfaceDruid.py:148
+msgid "Ethernet device:"
+msgstr "Ethernetenhet:"
 
-#: ../src/system-config-firewall.glade:3502
-msgid "Service Settings"
-msgstr "Inställning av tjänst"
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:278
+msgid "ISDN Dialup Configuration"
+msgstr "Konfiguration av ISDN-uppringning"
 
-#: ../src/system-config-firewall.glade:3574
-msgid "Configure the iptables and ip6tables service settings."
-msgstr "Konfigurera inställningarna för tjänsterna iptables och ip6tables."
+#: ../src/netconfpkg/gui/NCPluginDialupInterfaceDialog.py:449
+msgid "Modem Dialup Configuration"
+msgstr "Konfiguration av modemuppringning"
 
-#: ../src/system-config-firewall.glade:3627
+#: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
+#: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
+#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:320
+#: ../src/netconfpkg/NC_functions.py:408
+#: ../src/netconfpkg/NCHardwareList.py:568 ../src/netconfpkg/NCHardware.py:129
+msgid "Unknown"
+msgstr "Okänd"
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:129
+msgid "Ethernet connection"
+msgstr "Ethernetanslutning"
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:135
+msgid "Create a new ethernet connection."
+msgstr "Skapa en ny ethernetanslutning."
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:202
+msgid "Other Ethernet Card"
+msgstr "Annat ethernetkort"
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:222
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:220
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:204
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:332
+msgid "Device:"
+msgstr "Enhet:"
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:236
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:234
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:216
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:345
+msgid "Subnet mask:"
+msgstr "Subnätmask:"
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:238
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:236
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:218
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:346
+msgid "Default gateway address:"
+msgstr "Standard-gatewayadress:"
+
+#: ../src/netconfpkg/gui/NCPluginEthernetInterface.py:241
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:239
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:221
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:348
+msgid "Automatically obtain IP address settings with:"
+msgstr "Få automatiskt inställningar för IP-adress med:"
+
+#: ../src/netconfpkg/gui/NCPluginIsdnInterface.py:86
+msgid "ISDN connection"
+msgstr "ISDN-anslutning"
+
+#: ../src/netconfpkg/gui/NCPluginIsdnInterface.py:92
 msgid ""
-"Hit <i>OK</i> to apply your changes. You do not need to restart the "
-"firewall, the changes are effective as soon as they are applied."
+"Create a new ISDN connection. This is a connection that uses an Integrated "
+"Services Digital Network line to dial into to your Internet Service "
+"Provider. This type of technology requires a special phone line to be "
+"installed by your telephone company. It also requires a device known as a "
+"Terminal Adapter(TA) to terminate the ISDN connection from your ISP. This "
+"type of connection is popular in Europe and several other technologically "
+"advanced regions.  It is available but uncommon in the USA.  Speeds range "
+"from 64kbps to 128kbps."
 msgstr ""
-"Tryck <i>OK</i> för att verkställa dina ändringar. Du behöver inte starta om "
-"brandväggen. Ändringarna börja gälla så fort de är verkställda."
+"Skapa en ny ISDN-anslutning. Detta är en anslutning som använder Integrated "
+"Services Digital Network-linje (ISDN) för att ringa till din "
+"Internetleverantör. Denna typ av teknik kräver att en speciell telelinje "
+"installeras av ditt telebolag. Det krävs också att en enhet som kallas "
+"terminaladapter (TA) installeras för att terminera ISDN-anslutningen från "
+"din ISP. Denna typ av anslutning är vanlig i Sverige och övriga Europa och "
+"finns även i andra regioner. Hastigheter är mellan 64 kb/s och 128 kb/s."
 
-#: ../src/system-config-firewall.glade:3660
-msgid "TODO"
-msgstr "ATT GÖRA"
+#: ../src/netconfpkg/gui/NCPluginModemConfig.py:99
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:168
+msgid "Generic Modem"
+msgstr "Allmänt modem"
 
-#: ../src/system-config-firewall.glade:3688
-msgid "Configure firewall helper modules for connection tracking"
-msgstr "Konfigurera brandväggens hjälpmoduler för anslutningsspårning"
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:80
+msgid "Modem connection"
+msgstr "Modemanslutning"
 
-#: ../src/system-config-firewall.glade:4161
-#: ../src/system-config-firewall.glade:4217
-msgid "Port:"
-msgstr "Port:"
-
-#: ../src/system-config-firewall.glade:4392
-msgid "<b>Destination</b>"
-msgstr "<b>Destination</b>"
-
-#: ../src/system-config-firewall.glade:4420
-msgid "<b>Source</b>"
-msgstr "<b>Källa</b>"
-
-#: ../src/system-config-firewall.glade:4448
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:87
 msgid ""
-"If you enable local forwarding, you have to specify a port. This port has to "
-"be different to the source port."
+"Create a new Modem connection.  This is a connection that uses a serial "
+"analog modem to dial into to your Internet Service Provider. These modems "
+"use sound over a normal copper telephone line to transmit data. These types "
+"of connections are available just about anywhere in the world where there is "
+"a phone system."
 msgstr ""
-"Om du aktiverar lokal eftersändning så måste du ange en port. Denna port kan "
-"inte vara samma port som källporten."
+"Skapa en ny modemanslutning. Detta är en anslutning som använder ett "
+"seriellt, analogt modem för att ringa till din internetleverantör. Dessa "
+"modem använder ljud över en vanlig kopparkabel för att överföra data. Dessa "
+"typer av anslutningar finns i så gott som hela världen där det finns ett "
+"telefonsystem."
 
-#: ../src/system-config-firewall.glade:4476
-msgid "Make sure to open the destination port on the remote system."
-msgstr "Kontrollera så destinationsporten på fjärrsystemet är öppen."
+#. FIXME: [165331] Can't detect external modem on /dev/ttyS0
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:120
+msgid "Modem probing..."
+msgstr "Undersöker modem..."
 
-#: ../src/system-config-firewall.glade:4511
-msgid "Forward to another port"
-msgstr "Eftersänd till en annan port"
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:125
+msgid "Probing for Modems, please wait..."
+msgstr "Letar efter modem, var vänlig vänta..."
 
-#: ../src/system-config-firewall.glade:4545
-msgid "Local forwarding"
-msgstr "Lokal eftersändning"
+#: ../src/netconfpkg/gui/NCPluginModemInterface.py:140
+msgid "No modem was found on your system."
+msgstr "Inget modem hittades på ditt system."
 
-#: ../src/system-config-firewall.glade:4676
-msgid "Please select an entry from the list or enter a interface further down."
-msgstr "Välj en post från listan eller skriv in ett gränssnitt längre ner."
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:120
+msgid "Qeth connection"
+msgstr "Qeth-anslutning"
 
-#: ../src/system-config-firewall.glade:4836
-msgid "No configuration"
-msgstr "Ingen konfiguration"
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:126
+msgid "Create a new qeth connection."
+msgstr "Skapa en ny qeth-anslutning."
 
-#: ../src/system-config-firewall.glade:4908
-msgid "Start Wizard"
-msgstr "Starta guiden"
+#: ../src/netconfpkg/gui/NCPluginQethInterfaceDruid.py:198
+msgid "Other QETH Device"
+msgstr "Annan QETH-enhet"
 
-#: ../src/system-config-firewall.glade:4991
+#: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:60
 msgid ""
-"<b>Your current configuration is empty, all traffic will be blocked.</b>"
-msgstr "<b>Din nuvarande konfiguration är tom, all trafik blockeras.</b>"
-
-#: ../src/system-config-firewall.glade:5016
-msgid ""
-"Please load a default configuration from the <i>Options</i> menu or use the "
-"wizard."
+"The Token Ring card could not be initialized. Please verify your settings "
+"and try again."
 msgstr ""
-"Läs in en standardkonfiguration från <i>Alternativ</i>-menyn eller använd "
-"guiden."
+"Token Ring-kortet kunde inte initieras. Verifiera dina inställningar och "
+"försök igen."
 
-#~ msgid "Disabled"
-#~ msgstr "Inaktiverad"
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:110
+msgid "Token Ring connection"
+msgstr "Token Ring-anslutning"
 
-#~ msgid "Firewall Configuration - Customize"
-#~ msgstr "Brandväggskonfiguration - Anpassa"
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:116
+msgid "Create a new Token Ring connection."
+msgstr "Skapa en ny Token Ring-anslutning."
+
+#: ../src/netconfpkg/gui/NCPluginTokenRingInterface.py:182
+msgid "Other Tokenring Card"
+msgstr "Annat Token Ring-kort"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:29
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:88
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:166
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:34
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:143
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:206
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:19
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:15
+msgid "Auto"
+msgstr "Automatisk"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:30
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:35
+msgid "Ad-Hoc"
+msgstr "Ad-Hoc"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:31
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:36
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:194
+msgid "Managed"
+msgstr "Hanterad"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessConfig.py:32
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:37
+msgid "Master"
+msgstr "Huvud"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:152
+msgid "Wireless connection"
+msgstr "Trådlös anslutning"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:158
+msgid "Create a new wireless connection."
+msgstr "Skapa en ny trådlös anslutning."
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:245
+msgid "BitRate"
+msgstr "Bit-hastighet"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:309
+msgid "Other Wireless Card"
+msgstr "Annat trådlöst kort"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:351
+msgid "Mode:"
+msgstr "Läge:"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:352
+msgid "ESSID (network ID):"
+msgstr "ESSID (nätverksid):"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:354
+msgid "Automatic"
+msgstr "Automatiskt"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:358
+msgid "Channel:"
+msgstr "Kanal:"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:359
+msgid "Transmit rate:"
+msgstr "Överföringshastighet:"
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:360
+msgid "Key: "
+msgstr "Nyckel: "
+
+#: ../src/netconfpkg/gui/NCPluginWirelessInterface.py:366
+msgid "encryption disabled"
+msgstr "kryptering inaktiverad"
+
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:1
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:1
+msgid "Waiting to connect to"
+msgstr "Väntar på att ansluta till"
+
+#: ../src/netconfpkg/gui/neat-control-debugdialog.glade.h:2
+#: ../src/netconfpkg/gui/neat-control-statusdialog.glade.h:2
+msgid "Waiting..."
+msgstr "Väntar..."
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:1
+msgid "<b>Active profile</b>"
+msgstr "<b>Aktiv profil</b>"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:2
+msgid "Ac_tivate"
+msgstr "_Aktivera"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:3
+msgid "Auto _Select"
+msgstr "_Välj automatiskt"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:4
+msgid "Click to activate the selected profile"
+msgstr "Klicka för att aktivera den valda profilen"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:5
+msgid "Click to bring up the interface"
+msgstr "Klicka för att starta upp gränssnittet"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:6
+msgid "Click to configure the interface"
+msgstr "Klicka för att konfigurera gränssnittet"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:7
+msgid "Click to get infos"
+msgstr "Klicka för att få information"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:8
+msgid "Click to have the system automatically select and activate a profile"
+msgstr "Klicka för att låta systemet automatiskt välja och aktivera en profil"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:9
+msgid "Click to monitor the interface"
+msgstr "Klicka för att övervaka gränssnittet"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:10
+msgid "Click to shutdown the interface"
+msgstr "Klicka för att stänga ner gränssnittet"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:12
+#: ../system-control-network.desktop.in.h:2
+msgid "Network Device Control"
+msgstr "Nätverksenhetsstyrning"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:14
+msgid "Select a profile"
+msgstr "Välj en profil"
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:16
+msgid "The following network interfaces are configured in the active profile."
+msgstr "Följande nätverksgränssnitt är konfigurerade i den aktiva profilen."
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:18
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:3
+msgid "_Configure..."
+msgstr "_Konfigurera..."
+
+#: ../src/netconfpkg/gui/neat-control.glade.h:20
+msgid "_Info"
+msgstr "_Information"
+
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:1
+msgid "00:00:00"
+msgstr "00.00.00"
+
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:2
+msgid "Online time:"
+msgstr "Anslutningstid:"
+
+#: ../src/netconfpkg/gui/neat-control-monitordialog.glade.h:3
+msgid "click the right mouse button for properties"
+msgstr "klicka på höger musknapp för egenskaper"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:1
+msgid "Connect to"
+msgstr "Anslut till"
+
+#: ../src/netconfpkg/gui/neat-control-popupmenu.glade.h:2
+msgid "Disconnect from"
+msgstr "Koppla från"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:1
+msgid "$"
+msgstr "SEK"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:2
+msgid "0.00"
+msgstr "0,00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:3
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:1
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:1
+msgid "1"
+msgstr "1"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:4
+msgid "1.00"
+msgstr "1,00"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:5
+msgid "Confirm _starting connection"
+msgstr "Bekräfta _start av anslutning"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:6
+msgid "Confirm stopping _connection"
+msgstr "Bekräfta stopp av _anslutning"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:7
+msgid "Cos_t accumulated from the past connection:"
+msgstr "A_ckumulerad kostnad från föregående anslutning:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:8
+msgid "Cost per:"
+msgstr "Kostnad per:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:9
+msgid "Count:"
+msgstr "Antal:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:10
+msgid "M_inimum number of seconds charged:"
+msgstr "M_insta antal sekunder som debiteras:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:11
+msgid "_Accumulate cost over multiple connections"
+msgstr "_Sammanräkna kostnad för flera anslutningar"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:12
+msgid "_Basic"
+msgstr "_Grundläggande"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:13
+msgid "_Cost"
+msgstr "_Kostnad"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:14
+msgid "_Debug mode"
+msgstr "_Felsökningsläge"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:15
+msgid "_Extra cost to start a connection:"
+msgstr "_Extrakostnad för att påbörja en anslutning:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:16
+msgid "_Hour"
+msgstr "_Timme"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:17
+msgid "_Minute"
+msgstr "_Minut"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:18
+msgid "_Number of seconds in basic accounting unit:"
+msgstr "_Antal sekunder i grunddebiteringsenhet:"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:19
+msgid "_Second"
+msgstr "_Sekundär"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:20
+msgid "_Terminate connection when session closes"
+msgstr "_Koppla från då sessionen avslutas"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:21
+msgid "_Time"
+msgstr "_Tid"
+
+#: ../src/netconfpkg/gui/neat-control-propertiesdialog.glade.h:22
+msgid "redhat network control - Properties"
+msgstr "redhats nätverksstyrning - Egenskaper"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:1
+msgid "Add new Device Type"
+msgstr "Lägg till ny enhetstyp"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:2
+msgid "Device Type"
+msgstr "Enhetstyp"
+
+#: ../src/netconfpkg/gui/NewInterfaceDruid.glade.h:3
+msgid "Select Device Type"
+msgstr "Välj enhetstyp"
+
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:1
+#: ../src/netconfpkg/gui/QethHardware.glade.h:2
+msgid "D_ata Device Bus ID:"
+msgstr "D_ataenhetens buss-ID:"
+
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:2
+#: ../src/netconfpkg/gui/QethHardware.glade.h:3
+msgid "For Example 0.0.0600"
+msgstr "Till exempel 0.0.0600"
+
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:3
+msgid "Resource"
+msgstr "Resurs"
+
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:6
+#: ../src/netconfpkg/gui/QethHardware.glade.h:6
+msgid "_Read Device Bus ID:"
+msgstr "_Läs enhetens buss-ID:"
+
+#: ../src/netconfpkg/gui/QethHardwareDruid.glade.h:7
+#: ../src/netconfpkg/gui/QethHardware.glade.h:7
+msgid "_Write Device Bus ID:"
+msgstr "_Skriv enhetens buss-ID:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:1
+msgid "A_ddress:"
+msgstr "A_dress:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:3
+msgid "Automatically obtain _IP address settings with:"
+msgstr "Få automatiskt inställningar för _IP-adress med:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:4
+msgid "Bind to _MAC address:"
+msgstr "Bind till _MAC-adress:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:5
+msgid "DHCP Settings"
+msgstr "DHCP-inställningar"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:6
+msgid "Default ga_teway address:"
+msgstr "Standard-ga_tewayadress:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:7
+msgid "Destination Network"
+msgstr "Destinationsnätverk"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:8
+msgid "Device _alias number:"
+msgstr "Enhets_aliasnummer:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:9
+msgid "Difficulty level:"
+msgstr "Svårighetsnivå:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:10
+msgid ""
+"Each connection needs to be associated with a physical device which can be "
+"selected below."
+msgstr ""
+"Varje anslutning måste vara kopplad till en fysisk enhet som kan väljas "
+"nedan."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:11
+msgid "Easy"
+msgstr "Enkelt"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:12
+msgid "Gateway"
+msgstr "Gateway"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:13
+msgid "H_ostname (optional):"
+msgstr "_Värdnamn (valfritt):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:14
+msgid "Hardware device:"
+msgstr "Hårdvaruenhet:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:15
+msgid "IPsec Tunnel Settings"
+msgstr "IPsec-tunnelinställningar"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:16
+msgid "Local Network"
+msgstr "Lokalt nätverk"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:19
+msgid "Please select the level of security for this device."
+msgstr "Välj säkerhetsnivå för denna enhet."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:20
+msgid "Prefix (Netmask)"
+msgstr "Prefix (Nätmask)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:21
+msgid "Professional"
+msgstr "Professionell"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:22
+msgid "Remote Host / GW"
+msgstr "Fjärrvärd / GW"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:23
+msgid "Remote Network"
+msgstr "Fjärrnätverk"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+msgid "Security Level"
+msgstr "Säkerhetsnivå"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+msgid "Select the services you want to provide through this device"
+msgstr "Välj de tjänster som du vill erbjuda genom denna enhet"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+msgid "Service"
+msgstr "Tjänst"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+msgid "Service Description"
+msgstr "Tjänstebeskrivning"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+msgid "Services"
+msgstr "Tjänster"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
+msgid "Set MRU to:"
+msgstr "Sätt MRU till:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
+msgid "Set MTU to:"
+msgstr "Sätt MTU till:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+msgid "Static Network Routes"
+msgstr "Statiska nätverksvägar"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+msgid "Tie to specific ethernet card"
+msgstr "Bind till specifikt Ethernetkort"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+msgid "Use ethernet device aliases"
+msgstr "Använd ethernetenhetsalias"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+msgid "_Delete..."
+msgstr "_Ta bort..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+msgid "_Edit..."
+msgstr "_Redigera..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+msgid "_Hardware Address"
+msgstr "_Hårdvaruadress:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+msgid "_Hardware:"
+msgstr "_Hårdvara:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+msgid "_High Security (Internet)"
+msgstr "_Hög säkerhet (Internet)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+msgid "_Low Security"
+msgstr "_Låg säkerhet"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+msgid "_Probe"
+msgstr "_Leta"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+msgid "_Probe for Address..."
+msgstr "_Leta efter adress..."
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+msgid "_Secure Device (LAN)"
+msgstr "_Säker enhet (LAN)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+msgid "bootp"
+msgstr "bootp"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+msgid "dhcp"
+msgstr "dhcp"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+msgid "dialup"
+msgstr "uppringning"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:1
+msgid "00:00:00:00:00:00"
+msgstr "00:00:00:00:00:00"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:2
+msgid ""
+"Each device needs to be attached to a physical device which can be selected "
+"below. Device Alias support allows you to use multiple virtual devices for "
+"one physical device."
+msgstr ""
+"Varje enhet måste vara ansluten till en fysisk enhet som kan väljas nedan. "
+"Stöd för enhetsalias låter dig välja flera virtuella enheter för en fysisk "
+"enhet."
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:3
+msgid "Enable _Device Alias support"
+msgstr "Aktivera stöd för _enhetsalias"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:4
+msgid "Ha_rdware address:"
+msgstr "H_årdvaruadress:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:5
+msgid "Token Ring Device"
+msgstr "Token Ring-enhet"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:6
+msgid "_Alias:"
+msgstr "_Alias:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:9
+msgid "_Hardware device:"
+msgstr "_Hårdvaruenhet:"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:10
+msgid "_Probe for Address"
+msgstr "_Leta efter adress"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:12
+msgid "_Use Hardware Address"
+msgstr "_Använd hårdvaruadress"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:13
+msgid "tr0"
+msgstr "tr0"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:14
+msgid "tr1"
+msgstr "tr1"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:15
+msgid "tr2"
+msgstr "tr2"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:16
+msgid "tr3"
+msgstr "tr3"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:17
+msgid "tr4"
+msgstr "tr4"
+
+#: ../src/netconfpkg/gui/tokenringconfig.glade.h:18
+msgid "tr5"
+msgstr "tr5"
+
+#: ../src/netconfpkg/gui/TokenRingHardwareDruid.glade.h:1
+msgid "Select Token Ring Adapter"
+msgstr "Välj Token Ring-adapter"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:2
+msgid "Create Token Ring Device"
+msgstr "Skapa Token Ring-enhet"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:4
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:21
+msgid ""
+"Please enter the MTU parameter to set the Maximum Transfer Unit of this "
+"interface. On s390/s390x the MTU has 1492 as default setting"
+msgstr ""
+"Ange MTU-parametern för att ställa in den största överföringsenheten (MTU:n) "
+"för detta gränssnitt. På s390/s390x har MTU:n värdet 1492 som "
+"standardinställning"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:5
+msgid "Select Token Ring Device"
+msgstr "Välj Token Ring-enhet"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:6
+msgid "Select the token ring card you want to configure:"
+msgstr "Välj det Token Ring-kort du vill konfigurera:"
+
+#: ../src/netconfpkg/gui/TokenRingInterfaceDruid.glade.h:7
+msgid "Token ring card"
+msgstr "Token Ring-kort"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:1
+msgid "<b>T-Online account</b>"
+msgstr "<b>T-Online-konto</b>"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:2
+msgid "Account Setup"
+msgstr "Kontokonfiguration"
+
+#: ../src/netconfpkg/gui/tonline.glade.h:4
+msgid ""
+"Please enter here your personal account data. Without this data, access to T-"
+"Online is unfortunately not possible."
+msgstr ""
+"Ange här din personliga kontodata. Utan dessa data är åtkomst till T-Online "
+"inte möjlig för tillfället."
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:2
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:2
+msgid "10"
+msgstr "10"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:3
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:3
+msgid "11"
+msgstr "11"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:4
+msgid "11M"
+msgstr "11 M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:5
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:4
+msgid "12"
+msgstr "12"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:6
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:5
+msgid "13"
+msgstr "13"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:7
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:6
+msgid "14"
+msgstr "14"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:8
+msgid "1M"
+msgstr "1 M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:9
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:7
+msgid "2"
+msgstr "2"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:10
+msgid "2M"
+msgstr "2 M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:11
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:8
+msgid "3"
+msgstr "3"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:12
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:9
+msgid "4"
+msgstr "4"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:13
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:10
+msgid "5"
+msgstr "5"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:14
+msgid "5.5M"
+msgstr "5,5 M"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:15
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:11
+msgid "6"
+msgstr "6"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:16
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:12
+msgid "7"
+msgstr "7"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:17
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:13
+msgid "8"
+msgstr "8"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:18
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:14
+msgid "9"
+msgstr "9"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:20
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:20
+msgid "Network name (SSID):"
+msgstr "Nätverksnamn (SSID):"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:21
+msgid ""
+"Set the operating mode of the device, which depends on the network topology. "
+"The mode can be Ad-Hoc (network composed of only one cell and without Access "
+"Point), Managed (node connects to a network composed of many Access Points, "
+"with roaming), Master (the node is the synchronization master or acts as an "
+"Access Point) or Auto."
+msgstr ""
+"Sätt arbetsläge för enheten, vilket beror på nätverkstopologin. Läget kan "
+"vara Ad-Hoc (nätverk som består av endast en cell och utan Access Point), "
+"Managed (nod ansluter till ett nätverk med flera Access Points, med "
+"roaming), Master (noden är synkroniserings-huvudet eller agerar som en "
+"Access Point) eller Auto."
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:22
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:24
+msgid ""
+"Used to manipulate encryption or scrambling keys and encryption mode. To set "
+"the current encryption key in hex digits enter the key with 0x prepended as "
+"0xXXXXXXXX."
+msgstr ""
+"Används för att manipulera krypterings- eller blandningsnycklar och "
+"krypteringsläge. För att ställa in den aktuella krypteringsnyckeln i "
+"hexadecimala siffror anger du nyckeln med 0x framför som i 0xXXXXXXXX."
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:23
+msgid "Wireless Device Configuration"
+msgstr "Konfiguration av trådlös enhet"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:24
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:25
+msgid "_Auto"
+msgstr "_Automatisk"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:25
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:26
+msgid "_Channel:"
+msgstr "_Kanal:"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:27
+msgid "_Hardware device"
+msgstr "_Hårdvaruenhet"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:28
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:27
+msgid "_Key (use 0x for hex):"
+msgstr "_Nyckel (använd 0x för hexadecimalt):"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:29
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:28
+msgid "_Mode:"
+msgstr "_Läge:"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:31
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:29
+msgid "_Specified:"
+msgstr "_Angiven:"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:32
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:30
+msgid "_Transmit rate:"
+msgstr "_Överföringshastighet:"
+
+#: ../src/netconfpkg/gui/wirelessconfig.glade.h:33
+msgid "_Wireless Settings"
+msgstr "_Inställningar för trådlös kommunikation"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:17
+msgid "Configure Wireless Connection"
+msgstr "Konfigurera trådlös anslutning"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:18
+msgid "Create Wireless Device"
+msgstr "Skapa trådlös enhet"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:22
+msgid "Select Wireless Device"
+msgstr "Välj trådlös enhet"
+
+#: ../src/netconfpkg/gui/WirelessInterfaceDruid.glade.h:23
+msgid "Select the wireless card you want to configure:"
+msgstr "Välj det trådlösa kort du vill konfigurera:"
+
+#: ../src/netconfpkg/NCDeviceList.py:135
+msgid "Changed the following Nicknames due to the initscripts:\n"
+msgstr "Ändrade följande kortnamn på grund av initieringsskripten:\n"
+
+#: ../src/netconfpkg/NCDeviceList.py:138
+msgid "Nicknames changed"
+msgstr "Kortnamn ändrade"
+
+#: ../src/netconfpkg/NCDevice.py:300 ../src/netconfpkg/NCDevice.py:306
+#, python-format
+msgid "%s, Device not specified or alias not a number!"
+msgstr "%s, enhet inte angiven eller aliaset inte ett tal!"
+
+#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
+msgid "Network device activating..."
+msgstr "Nätverksenhet aktiveras..."
+
+#: ../src/netconfpkg/NCDevice.py:510
+#: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
+#, python-format
+msgid "Activating network device %s, please wait..."
+msgstr "Aktiverar nätverksenheten %s, var vänlig vänta..."
+
+#: ../src/netconfpkg/NCDevice.py:512
+#: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
+#, python-format
+msgid "Cannot activate network device %s!\n"
+msgstr "Kan inte aktivera nätverksenheten %s!\n"
+
+#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
+msgid "Network device deactivating..."
+msgstr "Nätverksenhet inaktiveras..."
+
+#: ../src/netconfpkg/NCDevice.py:530
+#: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
+#, python-format
+msgid "Deactivating network device %s, please wait..."
+msgstr "Inaktiverar nätverksenheten %s, var vänlig vänta..."
+
+#: ../src/netconfpkg/NCDevice.py:532
+#: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
+#, python-format
+msgid "Cannot deactivate network device %s!\n"
+msgstr "Kan inte inaktivera nätverksenheten %s!\n"
+
+#: ../src/netconfpkg/NCDialup.py:155
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: ../src/netconfpkg/NCDialup.py:156
+msgid "Albania"
+msgstr "Albanien"
+
+#: ../src/netconfpkg/NCDialup.py:157
+msgid "Algeria"
+msgstr "Algeriet"
+
+#: ../src/netconfpkg/NCDialup.py:158
+msgid "American Samoa"
+msgstr "Samoa"
+
+#: ../src/netconfpkg/NCDialup.py:159
+msgid "Andorra"
+msgstr "Andorra"
+
+#: ../src/netconfpkg/NCDialup.py:160
+msgid "Argentina"
+msgstr "Argentina"
+
+#: ../src/netconfpkg/NCDialup.py:161
+msgid "Australia"
+msgstr "Australien"
+
+#: ../src/netconfpkg/NCDialup.py:162
+msgid "Austria"
+msgstr "Österrike"
+
+#: ../src/netconfpkg/NCDialup.py:163
+msgid "Belarus"
+msgstr "Vitryssland"
+
+#: ../src/netconfpkg/NCDialup.py:164
+msgid "Belgium"
+msgstr "Belgien"
+
+#: ../src/netconfpkg/NCDialup.py:165
+msgid "Bosnia and Hercegovina"
+msgstr "Bosnien och Hercegovina"
+
+#: ../src/netconfpkg/NCDialup.py:166
+msgid "Brazil"
+msgstr "Brasilien"
+
+#: ../src/netconfpkg/NCDialup.py:167
+msgid "British Virgin Islands"
+msgstr "Brittiska Jungfruöarna"
+
+#: ../src/netconfpkg/NCDialup.py:168
+msgid "Bulgaria"
+msgstr "Bulgarien"
+
+#: ../src/netconfpkg/NCDialup.py:169
+msgid "Canada"
+msgstr "Kanada"
+
+#: ../src/netconfpkg/NCDialup.py:170
+msgid "Central African Republic"
+msgstr "Centralafrikanska republiken"
+
+#: ../src/netconfpkg/NCDialup.py:171
+msgid "Chile"
+msgstr "Chile"
+
+#: ../src/netconfpkg/NCDialup.py:172
+msgid "China"
+msgstr "Kina"
+
+#: ../src/netconfpkg/NCDialup.py:173
+msgid "Colombia"
+msgstr "Colombia"
+
+#: ../src/netconfpkg/NCDialup.py:174
+msgid "Croatia"
+msgstr "Kroatien"
+
+#: ../src/netconfpkg/NCDialup.py:175
+msgid "Cuba"
+msgstr "Kuba"
+
+#: ../src/netconfpkg/NCDialup.py:176
+msgid "Cyprus"
+msgstr "Cypern"
+
+#: ../src/netconfpkg/NCDialup.py:177
+msgid "Czech Republic"
+msgstr "Tjeckien"
+
+#: ../src/netconfpkg/NCDialup.py:178
+msgid "Denmark"
+msgstr "Danmark"
+
+#: ../src/netconfpkg/NCDialup.py:179
+msgid "Finland"
+msgstr "Finland"
+
+#: ../src/netconfpkg/NCDialup.py:180
+msgid "France"
+msgstr "Frankrike"
+
+#: ../src/netconfpkg/NCDialup.py:181
+msgid "Germany"
+msgstr "Tyskland"
+
+#: ../src/netconfpkg/NCDialup.py:182
+msgid "Greece"
+msgstr "Grekland"
+
+#: ../src/netconfpkg/NCDialup.py:183
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: ../src/netconfpkg/NCDialup.py:184
+msgid "Hungary"
+msgstr "Ungern"
+
+#: ../src/netconfpkg/NCDialup.py:185
+msgid "Iceland"
+msgstr "Island"
+
+#: ../src/netconfpkg/NCDialup.py:186
+msgid "India"
+msgstr "Indien"
+
+#: ../src/netconfpkg/NCDialup.py:187
+msgid "Indonesia"
+msgstr "Indonesien"
+
+#: ../src/netconfpkg/NCDialup.py:188
+msgid "Ireland"
+msgstr "Irland"
+
+#: ../src/netconfpkg/NCDialup.py:189
+msgid "Israel"
+msgstr "Israel"
+
+#: ../src/netconfpkg/NCDialup.py:190
+msgid "Italy"
+msgstr "Italien"
+
+#: ../src/netconfpkg/NCDialup.py:191
+msgid "Japan"
+msgstr "Japan"
+
+#: ../src/netconfpkg/NCDialup.py:192
+msgid "Kazakhstan"
+msgstr "Kazakstan"
+
+#: ../src/netconfpkg/NCDialup.py:193
+msgid "Korea North"
+msgstr "Nordkorea"
+
+#: ../src/netconfpkg/NCDialup.py:194
+msgid "Korea Republic"
+msgstr "Republiken Korea"
+
+#: ../src/netconfpkg/NCDialup.py:195
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: ../src/netconfpkg/NCDialup.py:196
+msgid "Lithuania"
+msgstr "Litauen"
+
+#: ../src/netconfpkg/NCDialup.py:197
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#: ../src/netconfpkg/NCDialup.py:198
+msgid "Macedonia"
+msgstr "Makedonien"
+
+#: ../src/netconfpkg/NCDialup.py:199
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#: ../src/netconfpkg/NCDialup.py:200
+msgid "Malta"
+msgstr "Malta"
+
+#: ../src/netconfpkg/NCDialup.py:201
+msgid "Mexico"
+msgstr "Mexiko"
+
+#: ../src/netconfpkg/NCDialup.py:202
+msgid "Moldova"
+msgstr "Moldavien"
+
+#: ../src/netconfpkg/NCDialup.py:203
+msgid "Monaco"
+msgstr "Monaco"
+
+#: ../src/netconfpkg/NCDialup.py:204
+msgid "Netherlands"
+msgstr "Nederländerna"
+
+#: ../src/netconfpkg/NCDialup.py:205
+msgid "New Zealand"
+msgstr "Nya Zeeland"
+
+#: ../src/netconfpkg/NCDialup.py:206
+msgid "Norway"
+msgstr "Norge"
+
+#: ../src/netconfpkg/NCDialup.py:207
+msgid "Palestine"
+msgstr "Palestina"
+
+#: ../src/netconfpkg/NCDialup.py:208
+msgid "Philippines"
+msgstr "Filippinerna"
+
+#: ../src/netconfpkg/NCDialup.py:209
+msgid "Poland"
+msgstr "Polen"
+
+#: ../src/netconfpkg/NCDialup.py:210
+msgid "Portugal"
+msgstr "Portugal"
+
+#: ../src/netconfpkg/NCDialup.py:211
+msgid "Romania"
+msgstr "Rumänien"
+
+#: ../src/netconfpkg/NCDialup.py:212
+msgid "Russia"
+msgstr "Ryssland"
+
+#: ../src/netconfpkg/NCDialup.py:213
+msgid "Singapore"
+msgstr "Singapore"
+
+#: ../src/netconfpkg/NCDialup.py:214
+msgid "Slovakia"
+msgstr "Slovakien"
+
+#: ../src/netconfpkg/NCDialup.py:215
+msgid "Slovenia"
+msgstr "Slovenien"
+
+#: ../src/netconfpkg/NCDialup.py:216
+msgid "Spain"
+msgstr "Spanien"
+
+#: ../src/netconfpkg/NCDialup.py:217
+msgid "Sweden"
+msgstr "Sverige"
+
+#: ../src/netconfpkg/NCDialup.py:218
+msgid "Switzerland"
+msgstr "Schweiz"
+
+#: ../src/netconfpkg/NCDialup.py:219
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: ../src/netconfpkg/NCDialup.py:220
+msgid "Thailand"
+msgstr "Thailand"
+
+#: ../src/netconfpkg/NCDialup.py:221
+msgid "Turkey"
+msgstr "Turkiet"
+
+#: ../src/netconfpkg/NCDialup.py:222
+msgid "Ukraine"
+msgstr "Ukraina"
+
+#: ../src/netconfpkg/NCDialup.py:223
+msgid "United Kingdom"
+msgstr "Storbritannien"
+
+#: ../src/netconfpkg/NCDialup.py:224
+msgid "United States of America"
+msgstr "USA"
+
+#: ../src/netconfpkg/NCDialup.py:225
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: ../src/netconfpkg/NCDialup.py:226
+msgid "Serbia"
+msgstr "Serbien"
+
+#. FIXED: [175078] String (country name) change request
+#: ../src/netconfpkg/NCDialup.py:227
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: ../src/netconfpkg/NC_functions.py:90
+msgid "Common"
+msgstr "Vanlig"
+
+#. Removed for now, until we have a config dialog for infrared
+#. '^irlan[0-9]+(:[0-9]+)?$' : WIRELESS
+#: ../src/netconfpkg/NC_functions.py:126
+msgid "Active"
+msgstr "Aktiv"
+
+#: ../src/netconfpkg/NC_functions.py:127
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: ../src/netconfpkg/NC_functions.py:221
+msgid ""
+"Shall the following packages, which are needed on your system, be installed?"
+msgstr "Ska följande paket, som behövs på ditt system, installeras?"
+
+#: ../src/netconfpkg/NC_functions.py:233
+msgid ""
+"You have to install the following packages, which are needed on your system!"
+msgstr "Du måste installera följande paket som behövs på ditt system!"
+
+#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
+#, python-format
+msgid ""
+"Error removing\n"
+"%s:\n"
+"%s!"
+msgstr ""
+"Fel vid borttagning av\n"
+"%s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:808
+#, python-format
+msgid ""
+"Error copying \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Fel vid kopiering av\n"
+"%s\n"
+"till %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:818
+#, python-format
+msgid ""
+"Error linking \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Fel vid länkning av\n"
+"%s\n"
+"till %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:828
+#, python-format
+msgid ""
+"Error renaming \n"
+"%s\n"
+"to %s:\n"
+"%s!"
+msgstr ""
+"Fel vid namnbyte av\n"
+"%s\n"
+"till %s:\n"
+"%s!"
+
+#: ../src/netconfpkg/NC_functions.py:836
+#, python-format
+msgid ""
+"Error creating directory!\n"
+"%s"
+msgstr ""
+"Fel vid skapande av katalog!\n"
+"%s"
+
+#: ../src/netconfpkg/NC_functions.py:981
+#, python-format
+msgid "Linking %s to devices and putting it in profile %s."
+msgstr "Länkar %s till enheter och placerar det i profilen %s."
+
+#: ../src/netconfpkg/NCHardware.py:22
+msgid "inactive"
+msgstr "inaktiv"
+
+#. not found in last config and not in actual system
+#: ../src/netconfpkg/NCHardware.py:23
+msgid "system"
+msgstr "system"
+
+#. found in system
+#: ../src/netconfpkg/NCHardware.py:24
+msgid "configured"
+msgstr "konfigurerad"
+
+#. found in config but not in system
+#: ../src/netconfpkg/NCHardware.py:25
+msgid "ok"
+msgstr "ok"
+
+#: ../src/netconfpkg/NCIPsec.py:240
+msgid "IPsec activating..."
+msgstr "IPsec aktiveras..."
+
+#: ../src/netconfpkg/NCIPsec.py:241
+#, python-format
+msgid "Activating IPsec connection %s, please wait..."
+msgstr "Aktiverar IPsec-anslutningen %s, var vänlig vänta..."
+
+#: ../src/netconfpkg/NCIPsec.py:243
+#, python-format
+msgid "Cannot activate IPsec connection %s!\n"
+msgstr "Kan inte aktivera IPsec-anslutningen %s!\n"
+
+#: ../src/netconfpkg/NCIPsec.py:260
+msgid "IPsec deactivating..."
+msgstr "IPsec inaktiveras..."
+
+#: ../src/netconfpkg/NCIPsec.py:261
+#, python-format
+msgid "Deactivating IPsec connection %s, please wait..."
+msgstr "Inaktiverar IPsec-anslutningen %s, var vänlig vänta..."
+
+#: ../src/netconfpkg/NCIPsec.py:263
+#, python-format
+msgid "Cannot deactivate IPsec connection %s!\n"
+msgstr "Kan inte inaktivera IPsec-anslutningen %s!\n"
+
+#: ../src/netconfpkg/NCProfileList.py:213
+#, python-format
+msgid "Device %s uses the same Hardware Device \"%s\" like %s!\n"
+msgstr "Enheten %s använder samma hårdvaruenhet \"%s\" som %s!\n"
+
+#: ../src/netconfpkg/NCProfileList.py:215
+msgid ""
+"Please select another Hardware Device or \n"
+"activate only one of them."
+msgstr ""
+"Välj en annan maskinvaruenhet eller\n"
+"aktivera bara en av dem."
+
+#: ../src/netconfpkg/NCProfileList.py:292
+msgid ""
+"You changed the hostname.\n"
+"\n"
+"Should the hostname be set to the system now?\n"
+"This may have the effect, that some X applications do not function "
+"properly.\n"
+"\n"
+"You may have to relogin."
+msgstr ""
+"Du ändrade värdnamnet.\n"
+"\n"
+"Ska värdnamnet sättas för systemet nu?\n"
+"Detta kan resultera i att en del X-program kan sluta fungera korrekt.\n"
+"\n"
+"Du kanske måste logga in igen."
+
+#: ../src/netconfpkg/NCProfileList.py:538
+msgid "Error removing file %(file)s: %(errormsg)"
+msgstr "Fel vid borttagning av fil %(file)s: %(errormsg)"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Ny enhet>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Vilken typ av enhet vill du lägga till?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Lägg till"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:110
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+msgid "Select A Device"
+msgstr "Välj en enhet"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+msgid "Save"
+msgstr "Spara"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+msgid "Hostname"
+msgstr "Värdnamn"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+msgid "Primary DSN"
+msgstr "Primär DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+msgid "Secondary DNS"
+msgstr "Sekundär DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+msgid "Tertiary DNS"
+msgstr "Tertiär DNS"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+msgid "Search"
+msgstr "Söka"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:109
+msgid "Ok"
+msgstr "Ok"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+msgid "DNS configuration"
+msgstr "DNS-konfiguration"
+
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
+#: ../src/netconfpkg/tui/NCTcpIp.py:96
+msgid "Name"
+msgstr "Namn"
+
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:69
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:69
+msgid "ISP Phonenumber"
+msgstr "Telefonnummer till ISP"
+
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:70
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:70
+msgid "ISP Login"
+msgstr "ISP-inloggning"
+
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:71
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:71
+msgid "ISP Password"
+msgstr "Lösenord till ISP"
+
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:72
+msgid "MSN"
+msgstr "MSN"
+
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
+msgid "ISDN Configuration"
+msgstr "Konfiguration av ISDN"
+
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:72
+msgid "Modem Initstring"
+msgstr "Sträng för modem initiering"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:124
+#: ../src/netconfpkg/tui/NCTcpIp.py:98
+msgid "Use DHCP"
+msgstr "Använd DHCP"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:125
+#: ../src/netconfpkg/tui/NCTcpIp.py:99
+msgid "Static IP"
+msgstr "Statisk IP"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:126
+#: ../src/netconfpkg/tui/NCTcpIp.py:100
+msgid "Netmask"
+msgstr "Nätmask"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:127
+#: ../src/netconfpkg/tui/NCTcpIp.py:101
+msgid "Default gateway IP"
+msgstr "Standard gateway-IP"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:128
+msgid "Read Device Bus ID"
+msgstr "Läs enhetens Buss-ID"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:129
+msgid "Data Device Bus ID"
+msgstr "Dataenhetens Buss-ID"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:130
+msgid "Write Device Bus ID"
+msgstr "Skriv enhetens buss-ID"
+
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:145
+msgid "Devernet Configuration"
+msgstr "Konfiguration av Devernet"
+
+#: ../src/netconf.py:55
+#, python-format
+msgid "Error: %s, %s!"
+msgstr "Fel: %s, %s!"
+
+#: ../src/netconf.py:57
+msgid "Starting text version"
+msgstr "Startar textversion"
+
+#: ../src/netconf.py:76
+msgid ""
+"ERROR: Unable to initialize graphical environment.Most likely cause of "
+"failure is that the tool was not run using a graphical environment. Please "
+"either start your graphical user interface or set your DISPLAY variable."
+msgstr ""
+"FEL: Kunde inte initiera den grafiska miljön. Troligen beror felet på att "
+"verktyget inte kördes i en grafisk miljö. Antingen starta din grafiska "
+"användarmiljö eller sätt din DISPLAY-variabel."
+
+#: ../src/netconf.py:122
+msgid "Loading Network Configuration..."
+msgstr "Läser in nätverkskonfiguration..."
+
+#: ../src/netconf.py:135
+msgid ""
+"system-config-network - network configuration tool\n"
+"\n"
+"Usage: system-config-network -v --verbose"
+msgstr ""
+"system-config-network - verktyg för nätverkskonfiguration\n"
+"\n"
+"Användning: system-config-network -v --verbose"
+
+#: ../src/netconf.py:251 ../src/netconf_tui.py:227
+msgid "Please start system-config-network with root permissions!\n"
+msgstr "Starta system-config-network med rooträttigheter!\n"
+
+#: ../src/netconf_tui.py:116
+msgid ""
+"An unhandled exception has occured.  This is most likely a bug.  Please save "
+"the crash dump and file a detailed bug report against system-config-network "
+"at https://bugzilla.redhat.com/bugzilla"
+msgstr ""
+"Ett undantag som inte hanteras har inträffat. Detta är med största "
+"sannolikhet ett fel. Spara kraschdumpen och rapportera sedan en detaljerad "
+"felrapport i komponenten system-config-network på https://bugzilla.redhat."
+"com/bugzilla/"
+
+#: ../src/netconf_tui.py:151
+msgid "Loading configuration"
+msgstr "Läser in konfiguration"
+
+#: ../src/netconf_tui.py:152
+msgid "Loading Device Configuration"
+msgstr "Läser in enhetskonfiguration"
+
+#. pylint: disable-msg=W0612
+#: ../src/netconf_tui.py:158
+msgid "Loading Hardware Configuration"
+msgstr "Läser in hårdvarukonfiguration"
+
+#. pylint: disable-msg=W0612
+#: ../src/netconf_tui.py:162
+msgid "Loading Profile Configuration"
+msgstr "Läser in profilkonfiguration"
+
+#: ../src/netconf_tui.py:249
+msgid "Select Action"
+msgstr "Välj åtgärd"
+
+#: ../src/netconf_tui.py:250
+msgid "Save&Quit"
+msgstr "Spara&Avsluta"
+
+#: ../src/netconf_tui.py:250
+msgid "Quit"
+msgstr "Avsluta"
+
+#: ../system-config-network.desktop.in.h:1
+msgid "Configure network devices and connections"
+msgstr "Konfigurera nätverksenheter och nätverksanslutningar"
+
+#: ../system-config-network.desktop.in.h:2
+msgid "Network"
+msgstr "Nätverk"
+
+#: ../system-control-network.desktop.in.h:1
+msgid "Control and monitor network devices"
+msgstr "Styr och övervaka nätverksenheter"
+
+#~ msgid "Wireless card"
+#~ msgstr "Trådlöst kort"
+
+#~ msgid "ERROR: Unable to initialize graphical environment. "
+#~ msgstr "FEL: Kan inte initiera grafisk miljö. "
 
 #~ msgid ""
-#~ "You can customize your firewall in two ways. First, you can select to "
-#~ "allow all traffic from certain network interfaces. Second, you can allow "
-#~ "certain protocols explicitly through the firewall. Specify additional "
-#~ "ports in the form 'service:protocol', such as 'imap:tcp'. "
+#~ "Most likely cause of failure is that the tool was not run using a "
+#~ "graphical environment. "
 #~ msgstr ""
-#~ "Du kan anpassa din brandvägg på två sätt. Till att börja med kan du välja "
-#~ "att tillåta all trafik från vissa nätverkskgränssnitt. Du kan även välja "
-#~ "att uttryckligen tillåta att vissa protokoll får passera brandväggen. "
-#~ "Ange ytterligare portar på formen \"tjänst:protokoll\", till exempel "
-#~ "\"imap:tcp\"."
-
-#, fuzzy
-#~ msgid "Trusted Services:"
-#~ msgstr "Pålitliga tjänster:"
-
-#, fuzzy
-#~ msgid "Trusted Interfaces:"
-#~ msgstr "Pålitliga enheter:"
-
-# Osäker.
-#, fuzzy
-#~ msgid "Masquerading:"
-#~ msgstr "Maskerad"
-
-#, fuzzy
-#~ msgid "Other Ports:"
-#~ msgstr "Andra portar"
-
-#, fuzzy
-#~ msgid "Custom Rules:"
-#~ msgstr "Anpassa"
-
-#, fuzzy
-#~ msgid "Trusted Devices"
-#~ msgstr "Pålitliga enheter:"
-
-#~ msgid "Add Port"
-#~ msgstr "Lägg till port"
-
-#, fuzzy
-#~ msgid "enabled"
-#~ msgstr "Aktiverad"
-
-#, fuzzy
-#~ msgid "disabled"
-#~ msgstr "Inaktiverad"
-
-#, fuzzy
-#~ msgid "Configure SELinux mode: enforcing, permissive or disabled"
-#~ msgstr ""
-#~ "\"enforcing\" (tvingar), \"permissive\" (tillåtande), eller \"disabled"
-#~ "\" (inaktiverad)"
-
-#, fuzzy
-#~ msgid "Disable IPSec"
-#~ msgstr "Inaktiverad"
-
-#, fuzzy
-#~ msgid "Ignore settings stored in /etc/sysconfig/system-config-firewall"
-#~ msgstr ""
-#~ "ignorera inställningar som lagras i /etc/sysconfig/system-config-"
-#~ "securitylevel"
-
-#, fuzzy
-#~ msgid "Deactivated"
-#~ msgstr "_Brandväggsalternativ"
-
-#, fuzzy
-#~ msgid "Start the service"
-#~ msgstr "Pålitliga tjänster:"
-
-#~ msgid "SELinux"
-#~ msgstr "SELinux"
+#~ "Den mest troliga orsaken till misslyckandet är att verktyget inte kördes "
+#~ "från en grafisk miljö."
 
 #~ msgid ""
-#~ "Security Enhanced Linux (SELinux) provides finer-grained security "
-#~ "controls than those available in a traditional Linux system.  It can be "
-#~ "set up in a disabled state, a state which only warns about things which "
-#~ "would be denied, or a fully active state.  Most people should keep the "
-#~ "default setting."
+#~ "Please either start your graphical user interface or set your DISPLAY "
+#~ "variable.\n"
 #~ msgstr ""
-#~ "Säkerhetsförbättrad Linux (SELinux) tillhandahåller mer finmaskig "
-#~ "styrning av säkerheten än vad som är tillgängligt i ett traditionellt "
-#~ "Linuxsystem. Det kan konfigureras i ett inaktiverat tillstånd, ett "
-#~ "tillstånd som endast varnar om saker som skulle ha nekats, eller ett helt "
-#~ "aktiverat tillstånd. De flesta användare bör behålla "
-#~ "standardinställningen."
+#~ "Starta antingen din grafiska miljö eller ställ in din DISPLAY-variabel.\n"
+
+#~ msgid "Static routes file %s is invalid"
+#~ msgstr "Statiska vägfilen %s är ogiltig"
+
+#~ msgid "CTC connection"
+#~ msgstr "CTC-anslutning"
+
+#~ msgid "Create a new CTC connection."
+#~ msgstr "Skapa en ny CTC-anslutning."
+
+#~ msgid "CTC Device"
+#~ msgstr "CTC-enhet"
+
+#~ msgid "IUCV connection"
+#~ msgstr "IUCV-anslutning"
+
+#~ msgid "Create a new IUCV connection."
+#~ msgstr "Skapa en ny IUCV-anslutning."
+
+#~ msgid "CIPE (VPN) connection"
+#~ msgstr "CIPE-anslutning (VPN)"
+
+#~ msgid "Create a new virtual private network connection with CIPE."
+#~ msgstr "Skapa en ny anslutning till ett virtuellt privat nätverk med CIPE."
+
+#~ msgid "Tunnel through device:"
+#~ msgstr "Tunnla genom enhet:"
+
+#~ msgid "Local port:"
+#~ msgstr "Lokal port:"
+
+#~ msgid "Remote peer address:"
+#~ msgstr "Fjärrpartsadress:"
+
+#~ msgid "Remote peer port:"
+#~ msgstr "Fjärrpartsport:"
+
+#~ msgid "Remote virtual address:"
+#~ msgstr "Virtuell fjärradress:"
+
+#~ msgid "Local virtual address:"
+#~ msgstr "Lokal virtuell adress:"
+
+#~ msgid "None - Server Mode"
+#~ msgstr "Ingen - serverläge"
+
+#~ msgid " (dynamic)"
+#~ msgstr " (dynamisk)"
+
+#~ msgid "Server Mode"
+#~ msgstr "Serverläge"
+
+#~ msgid "(own choice)"
+#~ msgstr "(eget val)"
+
+#~ msgid "IP address of tunnel device:"
+#~ msgstr "IP-adress för tunnelenhet:"
+
+#~ msgid "Secret key:"
+#~ msgstr "Hemlig nyckel:"
+
+#~ msgid "You must enter a secret key or generate one"
+#~ msgstr "Du måste ange en hemlig nyckel eller skapa en"
+
+#~ msgid "Command failed: "
+#~ msgstr "Kommando misslyckades: "
+
+#~ msgid "Output:\n"
+#~ msgstr "Utdata:\n"
 
 #~ msgid ""
-#~ "Changing this SELinux setting requires rebooting the system so the entire "
-#~ "file system may be relabeled.  Relabeling takes a long time depending on "
-#~ "the file system.  Would you like to continue with this setting and reboot "
-#~ "the system after firstboot is complete?"
+#~ "The Ethernet card could not be initialized. Please verify your settings "
+#~ "and try again."
 #~ msgstr ""
-#~ "Att ändra denna SELinux-inställning kräver att systemet startas om så att "
-#~ "hela filsystemet kan märkas om. Ommärkning tar lång tid beroende på "
-#~ "filsystem. Vill du fortsätta med denna inställning och starta om systemet "
-#~ "efter det att firstboot är klart?"
+#~ "Ethernetkortet kunde inte initieras. Verifiera dina inställningar och "
+#~ "försök igen."
 
-#~ msgid "Enforcing"
-#~ msgstr "Upprätthållande"
+#~ msgid "IP address of tunnel device: "
+#~ msgstr "IP-adress för tunnelenhet: "
 
-#~ msgid "Permissive"
-#~ msgstr "Tillåtande"
+#~ msgid "Local port: "
+#~ msgstr "Lokal port: "
+
+#~ msgid "Remote peer address: "
+#~ msgstr "Fjärrpartsadress: "
+
+#~ msgid "Remote virtual address: "
+#~ msgstr "Virtuell fjärradress: "
+
+#~ msgid "Local virtual address: "
+#~ msgstr "Lokal virtuell adress: "
+
+#~ msgid "Secret key: "
+#~ msgstr "Hemlig nyckel: "
+
+#~ msgid "Point to Point (IP):"
+#~ msgstr "Punkt till punkt (IP):"
+
+#~ msgid "IUCV Device"
+#~ msgstr "IUCV-enhet"
 
 #~ msgid ""
-#~ "Changing to SELinux enabled will cause a relabel of the entire file "
-#~ "system on the next boot. Relabeling takes a long time depending on the "
-#~ "size of the file system.  Do you wish to continue?"
+#~ "Command failed: %s\n"
+#~ "\n"
+#~ "Output:\n"
+#~ "%s\n"
 #~ msgstr ""
-#~ "Att byta till aktiverad SELinux kommer att orsaka att hela filsystemet "
-#~ "märks om vid nästa start. Ommärkning tar lång tid beroende på storleken "
-#~ "av filsystemet. Vill du fortsätta?"
+#~ "Kommando misslyckades: %s\n"
+#~ "\n"
+#~ "Utdata:\n"
+#~ "%s\n"
 
-#, fuzzy
-#~ msgid "Trust"
-#~ msgstr "Pålitlig"
+#~ msgid "Create a new %s connection."
+#~ msgstr "Skapa en ny %s-anslutning."
 
-#, fuzzy
-#~ msgid "Firewall deactivated"
-#~ msgstr "_Brandväggsalternativ"
+#~ msgid "This wizard still has to be written."
+#~ msgstr "Denna guide måste fortfarande skrivas."
+
+#~ msgid "Press Finish to get the standard configuration dialog."
+#~ msgstr ""
+#~ "Tryck Slutför för att komma till den vanliga konfigurationsdialogen."
+
+#~ msgid "Then, at first, enter the nickname for the device."
+#~ msgstr "Ange sedan först kortnamnet för enheten."
+
+#~ msgid "This device can not be edited with this tool!"
+#~ msgstr "Denna enhet kan inte redigeras med detta verktyg!"
 
 #~ msgid ""
-#~ "\n"
-#~ "Firewall Configuration\n"
-#~ "\n"
-#~ "   A firewall sits between your computer and the network, \n"
-#~ "   and determines which resources on your computer remote\n"
-#~ "   users on the network are able to access. A\n"
-#~ "   properly configured firewall can greatly increase\n"
-#~ "   the out-of-the-box security of your system.\n"
-#~ "\n"
+#~ "Directory %s is missing!\n"
+#~ "Will create it for you!\n"
+#~ "You should install the cipe rpm package!\n"
 #~ msgstr ""
-#~ "\n"
-#~ "Brandväggskonfiguration\n"
-#~ "\n"
-#~ "   En brandvägg är placerad mellan din dator och nätverket,\n"
-#~ "   och bestämmer vilka resurser på din dator som\n"
-#~ "   fjärranvändare på nätverket kan komma åt. En korrekt\n"
-#~ "   konfigurerad brandvägg kan avsevärt förbättra\n"
-#~ "   standardsäkerheten på ditt system.\n"
-#~ "\n"
+#~ "Katalogen %s saknas!\n"
+#~ "Kommer att skapa den åt dig!\n"
+#~ "Du bör installera rpm-paketet cipe!\n"
 
 #~ msgid ""
-#~ "   Choose the appropriate security level for your\n"
-#~ "   system.\n"
-#~ "\n"
+#~ "Could not create\n"
+#~ "directory %s!"
 #~ msgstr ""
-#~ "   Välj lämplig säkerhetsnivå för ditt system.\n"
-#~ "\n"
+#~ "Kunde inte skapa\n"
+#~ "katalogen %s!"
+
+#~ msgid "Card"
+#~ msgstr "Kort"
+
+#~ msgid "MT_U:"
+#~ msgstr "MT_U:"
+
+#~ msgid "Select the card you want to configure:"
+#~ msgstr "Välj det kort du vill konfigurera:"
+
+#~ msgid "_Point to Point (IP):"
+#~ msgstr "_Punkt till punkt (IP):"
+
+#~ msgid "CIPE Configuration"
+#~ msgstr "CIPE-konfiguration"
+
+#~ msgid "Configuration for your remote partner"
+#~ msgstr "Konfiguration för din fjärrpartner"
+
+#~ msgid "Lo_cal virtual address:"
+#~ msgstr "Lo_kal virtuell adress:"
+
+#~ msgid "Remote _virtual address:"
+#~ msgstr "_Virtuell fjärradress:"
+
+#~ msgid "Remote peer p_ort:"
+#~ msgstr "Fjärrpartsp_ort:"
+
+#~ msgid "_Local port:"
+#~ msgstr "_Lokal port:"
+
+#~ msgid "_Remote peer address:"
+#~ msgstr "_Fjärrpartsadress:"
+
+#~ msgid "_Secret key:"
+#~ msgstr "_Hemlig nyckel:"
+
+#~ msgid "_Tunnel Settings"
+#~ msgstr "_Tunnelinställningar"
+
+#~ msgid "_Tunnel through device:"
+#~ msgstr "_Tunnla genom enhet:"
+
+#~ msgid "_auto"
+#~ msgstr "_automatiskt"
+
+#~ msgid "cipcb0"
+#~ msgstr "cipcb0"
+
+#~ msgid "cipcb1"
+#~ msgstr "cipcb1"
+
+#~ msgid "cipcb2"
+#~ msgstr "cipcb2"
+
+#~ msgid "cipcb3"
+#~ msgstr "cipcb3"
+
+#~ msgid "cipcb4"
+#~ msgstr "cipcb4"
+
+#~ msgid "eth0"
+#~ msgstr "eth0"
+
+#~ msgid "eth1"
+#~ msgstr "eth1"
+
+#~ msgid "eth2"
+#~ msgstr "eth2"
+
+#~ msgid "eth3"
+#~ msgstr "eth3"
+
+#~ msgid "eth4"
+#~ msgstr "eth4"
+
+#~ msgid "<b>Configuration for your remote partner</b>"
+#~ msgstr "<b>Konfiguration för din fjärrpartner</b>"
+
+#~ msgid "Configure Tunnel"
+#~ msgstr "Konfigurera tunnel"
+
+#~ msgid "Create Cipe Connection"
+#~ msgstr "Skapa Cipe-anslutning"
+
+#~ msgid "Aliases"
+#~ msgstr "Alias"
+
+#~ msgid "IP"
+#~ msgstr "IP"
+
+#~ msgid "Displaying main screen"
+#~ msgstr "Visar huvud skärmen"
+
+#~ msgid "What do you want to configure?"
+#~ msgstr "Vad vill du konfigurera?"
+
+#~ msgid "Configure"
+#~ msgstr "Konfigurera"
+
+#~ msgid "Exit"
+#~ msgstr "Avsluta"
 
 #~ msgid ""
-#~ "   Enabled -- By choosing enabled, your system will\n"
-#~ "   not accept connections from the outside that are\n"
-#~ "   not explicitly defined by you.\n"
-#~ "\n"
+#~ "This software is distributed under the GPL. Please report bugs to Red "
+#~ "Hat's bug tracking system: http://bugzilla.redhat.com/"
 #~ msgstr ""
-#~ "   Aktiverad -- Om du väljer aktiverad kommer ditt system\n"
-#~ "   inte att acceptera anslutningar utifrån som inte\n"
-#~ "   uttryckligen har angivits av dig.\n"
-#~ "\n"
+#~ "Denna programvara distribueras under GPL. Rapportera fel i Red Hats "
+#~ "felrapporteringssystem: http://bugzilla.redhat.com/"
 
-#~ msgid ""
-#~ "   If you are connecting your system to the Internet,\n"
-#~ "   but do not plan to run a server, this is the\n"
-#~ "   safest choice. If additional services are needed,\n"
-#~ "   you can choose Customize to allow specific\n"
-#~ "   services through the firewall, or to implicitly\n"
-#~ "   trust traffic coming over certain interfaces.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "   Om du ansluter ditt system till Internet, men\n"
-#~ "   inte planerar att köra en server, är detta det säkraste\n"
-#~ "   alternativet. Om du behöver ytterligare tjänster kan\n"
-#~ "   du välja Anpassa för att tillåta specifika tjänster\n"
-#~ "   passera brandväggen, eller för att implicit lita på\n"
-#~ "   trafik som kommer in över vissa gränssnitt.\n"
-#~ "\n"
+#~ msgid "Yugoslavia"
+#~ msgstr "Jugoslavien"
 
-#~ msgid ""
-#~ "   Disabled -- Disabling the  firewall allows complete\n"
-#~ "   access and does no security checking. It is recommended\n"
-#~ "   that this only be selected if you are running on a\n"
-#~ "   trusted network (not the Internet), or if you plan\n"
-#~ "   to do more detailed firewall configuration later.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "   Inaktiverad -- Inaktivering av brandväggen tillåter\n"
-#~ "   fullständig åtkomst och utför inga säkerhetskontroller.\n"
-#~ "   Det rekommenderas endast om du använder ett säkert\n"
-#~ "   nätverk (inte Internet), eller om du planerar att\n"
-#~ "   göra mer detaljerad brandväggskonfiguration senare.\n"
-#~ "\n"
+#~ msgid "DMA0:"
+#~ msgstr "DMA0:"
 
-#~ msgid ""
-#~ "\n"
-#~ "Firewall Customization\n"
-#~ "\n"
-#~ "   Choose which trusted devices and incoming services\n"
-#~ "   should be allowed for your network security\n"
-#~ "   settings.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Brandväggsanpassning\n"
-#~ "\n"
-#~ "   Välj vilka pålitliga enheter och inkommande\n"
-#~ "   tjänster som ska tillåtas för dina nätverks-\n"
-#~ "   säkerhetsinställningar.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "   Trusted Devices -- Checking these for any of your\n"
-#~ "   devices allows all traffic coming from that device\n"
-#~ "   to be allowed. For example, if you are running a\n"
-#~ "   local network, but are connecting to the Internet\n"
-#~ "   via a PPP dialup, you could check that eth0 is\n"
-#~ "   trusted to allow any traffic coming from your\n"
-#~ "   local network.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "   Pålitliga enheter -- Att kryssa för detta för någon\n"
-#~ "   av dina enheter gör att all trafik som kommer från\n"
-#~ "   den enheten tillåts. Om du till exempel använder ett\n"
-#~ "   lokalt nätverk, men ansluter till Internet via en\n"
-#~ "   PPP-modemuppkoppling, kan du markera att eth0 är\n"
-#~ "   anförtrodd att tillåta all trafik som kommer från ditt\n"
-#~ "   lokala nätverk.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "   It is not recommended to enable this for devices\n"
-#~ "   that are connected to public networks, such as the\n"
-#~ "   Internet.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "   Att aktivera detta för enheter som är anslutna till\n"
-#~ "   allmänna nätverk, som exempelvis Internet,\n"
-#~ "   rekommenderas inte.\n"
-
-#~ msgid ""
-#~ "   Allow Incoming -- Enabling these options allows the\n"
-#~ "   specified services to pass through the firewall.\n"
-#~ "   Note, during a workstation-class installation, the\n"
-#~ "   majority of these services are not present on the\n"
-#~ "   system.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "   Tillåt inkommande -- Att aktivera detta alternativ\n"
-#~ "   tillåter de angivna tjänsterna att passera genom\n"
-#~ "   brandväggen.\n"
-#~ "   Observera att under en arbetsstationsinstallation\n"
-#~ "   finns de flesta av dessa tjänster inte på systemet.\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "     * Telnet -- Telnet is a protocol for logging\n"
-#~ "       into remote machines. It is unencrypted, and\n"
-#~ "       provides little security from network snooping\n"
-#~ "       attacks. Enabling telnet is not recommended.\n"
-#~ "       You need the telnet-server package installed\n"
-#~ "       for this option to be useful.\n"
-#~ msgstr ""
-#~ "     * Telnet -- Telnet är ett protokoll för inloggning\n"
-#~ "       på fjärrmaskiner. Det är okrypterat och erbjuder\n"
-#~ "       väldigt lite säkerhet mot nätverksavlyssnings-\n"
-#~ "       attacker. Att aktivera telnet rekommenderas inte.\n"
-#~ "       Du behöver ha paketet telnet-server installerat\n"
-#~ "       för att detta alternativ ska vara användbart.\n"
-
-#~ msgid ""
-#~ "     * Other ports -- You can specify that other\n"
-#~ "       ports not listed here be allowed through the\n"
-#~ "       firewall. The format to use is\n"
-#~ "       'port:protocol'. For example, if you wanted to\n"
-#~ "       allow IMAP access through your firewall, you\n"
-#~ "       can specify 'imap:tcp'. You can also specify\n"
-#~ "       numeric ports explicitly; to allow UDP packets\n"
-#~ "       on port 1234 through, specify '1234:udp'. To\n"
-#~ "       specify multiple ports, separate them by\n"
-#~ "       commas.\n"
-#~ msgstr ""
-#~ "     * Andra portar -- Du kan ange att andra portar\n"
-#~ "       som inte anges här tillåts genom brandväggen.\n"
-#~ "       Formatet att använda är \"port:protokoll\".\n"
-#~ "       Om du till exempel vill tillåta IMAP-åtkomst\n"
-#~ "       genom din brandvägg kan du ange \"imap:tcp\".\n"
-#~ "       Du kan också ange numeriska portar. För att\n"
-#~ "       låta UDP-paket på port 1234 passera anger du\n"
-#~ "       \"1234:udp\". För att ange flera portar anger\n"
-#~ "       du dem åtskilda med komman.\n"
-
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-#~ msgid "Firewall Customization"
-#~ msgstr "Brandväggsanpassning"
-
-#~ msgid "Security Level:"
-#~ msgstr "Säkerhetsnivå:"
-
-#, fuzzy
-#~ msgid "SELinux:"
-#~ msgstr "SELinux"
-
-#~ msgid "MASQUERADE Devices:"
-#~ msgstr "MASQUERADE-enheter:"
-
-#~ msgid "Allow incoming:"
-#~ msgstr "Tillåt inkommande:"
-
-#~ msgid "Other ports"
-#~ msgstr "Andra portar"
-
-#~ msgid ""
-#~ " <Tab>/<Alt-Tab> between elements   |   <Space> selects  |   <F12> next "
-#~ "screen"
-#~ msgstr ""
-#~ "  <Tab>/<Alt-Tab> mellan element  |  <Blanksteg> väljer  |  <F12> nästa "
-#~ "skärm"
-
-#~ msgid "module to add"
-#~ msgstr "modul att lägga till"
-
-#~ msgid "module to remove"
-#~ msgstr "modul att ta bort"
-
-#~ msgid "port:protocol (e.g, ssh:tcp)"
-#~ msgstr "port:protokoll (exempelvis ssh:tcp)"
-
-#~ msgid "device to trust"
-#~ msgstr "pålitlig enhet"
-
-#~ msgid "Configure SELinux Policy"
-#~ msgstr "Konfigurera SELinux-policy"
-
-#~ msgid "Usually 'targeted' or 'strict'"
-#~ msgstr "Vanligen \"targeted\" eller \"strict\""
-
-#~ msgid "Backwards compatiblity, ignored"
-#~ msgstr "Baklängeskompatibilitet, ignorerad"
-
-#~ msgid "Name"
-#~ msgstr "Namn"
-
-#~ msgid "_SELinux"
-#~ msgstr "_SELinux"
-
-#~ msgid "Configure system security level and firewall rules"
-#~ msgstr "Konfigurera systemets säkerhetsnivå och brandväggsregler"
-
-#~ msgid "Security Level and Firewall"
-#~ msgstr "Säkerhetsnivå och brandvägg"
+#~ msgid "DMA1:"
+#~ msgstr "DMA1:"
