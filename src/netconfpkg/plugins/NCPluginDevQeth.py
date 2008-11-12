@@ -109,6 +109,28 @@ class DevQeth(DevEthernet):
         """get the wizard of the ctc wizard"""
         return _devQethWizard
 
+    def deactivate( self, dialog = None ):
+        ret = DevEthernet.deactivate(self, dialog)
+        if not self.Alias:
+            hardwarelist = getHardwareList()
+            for hw in hardwarelist:
+                if hw.Name == self.Device and (hw.Card.IoPort and hw.Card.IoPort1 and hw.Card.IoPort2):      
+                    os.system("echo 0 > /sys/bus/ccwgroup/drivers/qeth/%s/online; echo 1 > /sys/bus/ccwgroup/drivers/qeth/%s/ungroup" % (hw.Card.IoPort, hw.Card.IoPort))
+                    break
+            
+        return ret
+
+    def activate( self, dialog = None ):
+        """activate the qeth device"""
+        if not self.Alias:
+            hardwarelist = getHardwareList()
+            for hw in hardwarelist:
+                if hw.Name == self.Device and (hw.Card.IoPort and hw.Card.IoPort1 and hw.Card.IoPort2):               
+                    os.system('SUBSYSTEM="ccw" DEVPATH="bus/ccwgroup/drivers/qeth/%s" /lib/udev/ccw_init' % hw.Card.IoPort)
+                    break
+         
+        return DevEthernet.activate(self, dialog)
+
 def setDevQethDialog(dialog):
     """Set the ctc dialog class"""
     global _devQethDialog  # pylint: disable-msg=W0603

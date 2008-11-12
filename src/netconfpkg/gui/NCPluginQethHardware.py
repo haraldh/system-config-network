@@ -22,7 +22,7 @@ from netconfpkg import NCHardwareList
 from netconfpkg.NC_functions import QETH
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import load_icon, xml_signal_autoconnect
-
+from netconfpkg.Control import NetworkDevice
 
 class QethHardwareDialog:
     def __init__(self, hardwd):
@@ -78,7 +78,16 @@ class QethHardwareDialog:
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
             
     def setup(self):
-        pass
+        activedevicelist = NetworkDevice().get()
+        if self.hw.Name in activedevicelist:
+            ret = generic_yesno_dialog (_("Do you want to deactive interface %s first?\n"
+                                          "Otherwise saving changes may have unwanted side effects." % self.hw.Name),
+                                        self.dialog)
+            if ret == RESPONSE_YES:
+                devicelist = getDeviceList()
+                for dev in devicelist:
+                    if self.hw.Name == dev.Device:
+                        dev.deactivate()
 
     def dehydrate(self):
         self.hw.Name = self.xml.get_widget('ethernetDeviceEntry').get_text()
