@@ -135,7 +135,7 @@ def dhcp_dehydrate (xml, device):
 
     for attr, widget in { 
          'IP' : 'ipAddressEntry',
-         'Netmask' : 'ipGatewayEntry',
+         'Netmask' : 'ipNetmaskEntry',
          'Gateway' : 'ipGatewayEntry',
          'Hostname' : 'hostnameEntry',
          }.items():
