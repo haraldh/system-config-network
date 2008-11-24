@@ -108,7 +108,8 @@ class ConfPAP(Conf.Conf):
         regexp = re.compile(r'(?P<user>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+)( |\t)+'
         r'(?P<server>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+|\*)( |\t)+'
         r'(?P<secret>("([^"\\]|\\\S)*?")|([^ "\\]|\\\S)+)')
-        m = regexp.match(self.lines[self.line])
+        # FIXED: 465748 - crash if pap-secrets file contains spaces before login
+        m = regexp.match(self.lines[self.line].strip())
         if not m:
             raise Conf.BadFile, "Error occured while parsing %s" % self.filename
         else:
