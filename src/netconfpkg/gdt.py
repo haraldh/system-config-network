@@ -178,7 +178,7 @@ class Gdtobject(Transaction):
 
     def tostr(self, prefix_string = None):
         "returns a string in gdt representation"
-        raise NotImplemented
+        raise NotImplementedError
 
     def __str__(self):
         return self.tostr()
@@ -193,7 +193,7 @@ class Gdtcontainer(Gdtobject):
     
     def apply(self, other):
         "copy from another object"
-        raise NotImplemented
+        raise NotImplementedError
         
 class Gdtstruct(Gdtcontainer):
     "A base class, which can be used with gdtstruct_properties"    
@@ -208,7 +208,7 @@ class Gdtstruct(Gdtcontainer):
                 if type(tm) == type(self.test):
                     try:
                         all_ok &= tm()
-                    except NotImplemented: # pylint: disable-msg=W0704
+                    except NotImplementedError: # pylint: disable-msg=W0704
                         # ignore not implemented test methods
                         pass
                         
@@ -219,7 +219,7 @@ class Gdtstruct(Gdtcontainer):
                     if type(tm) == type(self.test):
                         try:
                             all_ok &= tm()
-                        except NotImplemented: # pylint: disable-msg=W0704
+                        except NotImplementedError: # pylint: disable-msg=W0704
                             # ignore not implemented test methods
                             pass
         return all_ok
@@ -287,7 +287,7 @@ class Gdtlist(Transactionlist, Gdtcontainer):
                 if type(tm) == type(self.test):
                     try:
                         all_ok &= tm()
-                    except NotImplemented: # pylint: disable-msg=W0704
+                    except NotImplementedError: # pylint: disable-msg=W0704
                         # ignore not implemented test methods
                         pass
                     
