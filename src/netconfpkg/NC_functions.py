@@ -236,27 +236,26 @@ def request_rpms(pkgs = None):
         return 1
     return 0
 
+# we want to compile the regexp just once (not as fast as I expect)
+ip_pattern = re.compile('^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$')
+hostname_pattern = re.compile('^([a-zA-Z]|[0-9]|_)(([a-zA-Z]|[0-9]|-|_)*([a-zA-Z]|[0-9]|_))?(\.([a-zA-Z]|[0-9]|_)(([a-zA-Z]|[0-9]|-|_)*([a-zA-Z]|[0-9]))?)*$')
+length_pattern = re.compile('^[a-zA-Z0-9-_]{1,64}(\.([a-zA-Z0-9-_]{1,64}))*$')
 def testHostname(hostname):
     # hostname: names separated by '.' every name must be max 63 
     # chars in length and the hostname max length is 255 chars
     if not hostname:
         return False
-    if (len(hostname) - hostname.count('.')) < 256:
-        names = hostname.split('.')
-        # hostname with trailing dot
-        if not names[-1]:
-            names.pop()
-        pattern = re.compile(
-            '([a-zA-Z]|[0-9])+(-|[a-zA-Z]|-[0-9])*([a-zA-Z]|[0-9])+$')
-        for name in names:
-            if len(name) < 64:
-                if not pattern.match(name):
-                    return False
-            else:
-                return False
+    if (len(hostname)) < 256:
+        # according to RFC 952 <name>  ::= <let>[*[<let-or-digit-or-hyphen>]<let-or-digit>]
+        # & RFC 1123 - allows trailing and starting digits
+        # ip like hostname are not allowed
+        if ip_pattern.match(hostname):
+            return False
+        if not length_pattern.match(hostname):
+            return False
+        if not hostname_pattern.match(hostname):
+            return False
         return True
-    else:
-        return False
 
 def netmask_to_bits(netmask):
     vals = netmask.split(".")
