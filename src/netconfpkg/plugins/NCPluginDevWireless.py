@@ -41,7 +41,6 @@ class DevWireless(Device):
         super(DevWireless, self).load(name)
         conf = ConfDevice(name)
         self.Wireless.load(conf, self.DeviceId)
-        conf.write()
         del conf
 
     def save(self):
