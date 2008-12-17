@@ -51,7 +51,7 @@ class DeviceConfigDialog:
 
         self.sharedtcpip_xml = gtk.glade.XML(glade_file, None, 
                                              domain=PROGNAME)
-
+        
         glade_file = "DeviceConfigDialog.glade"
         if not os.path.exists(glade_file):
             glade_file = GLADEPATH + glade_file
@@ -81,7 +81,6 @@ class DeviceConfigDialog:
         vbox.show()
         #window.remove (frame)
         #vbox.pack_start (frame)
-
 
         self.xml.get_widget("okButton").set_sensitive(
             len(self.deviceconfig_xml.get_widget(
@@ -179,7 +178,7 @@ class DeviceConfigDialog:
             self.deviceconfig_xml.get_widget(
                 'userControlCB').set_active(self.device.AllowUser == True)
             self.deviceconfig_xml.get_widget(
-                'NMControlCB').set_active(self.device.NMControlled == True)
+                'NMControlCB').set_active(self.device.NMControlled != False)
             self.deviceconfig_xml.get_widget(
                 'ipv6InitCB').set_active(self.device.IPv6Init == True)
 

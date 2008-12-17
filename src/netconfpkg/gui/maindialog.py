@@ -1256,7 +1256,7 @@ class mainDialog:
                 self.deactivate_button.set_sensitive(True)
                 self.delete_button.set_sensitive(True)
 
-            if self.devsel.Slave or self.devsel.NMControlled:
+            if self.devsel.Slave or self.devsel.NMControlled in [None, True]:
                 self.activate_button.set_sensitive(False)
                 self.deactivate_button.set_sensitive(False)
                 self.delete_button.set_sensitive(False)

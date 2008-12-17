@@ -252,8 +252,10 @@ class Device(Device_base):
                     setattr(self, selfkey, False)
                     #print >> sys.stderr, self.DeviceId, selfkey, "False"
                     #setattr(self, selfkey, False)
+            # we need to deal with options which have default value 'yes' like NM_CONTROLLED
             else:
-                setattr(self, selfkey, False)
+                if confkey != "NM_CONTROLLED":
+                    setattr(self, selfkey, False)
                 #setattr(self, selfkey, False)
 
         if not conf.has_key("PEERDNS"):
@@ -409,8 +411,8 @@ class Device(Device_base):
 
         for selfkey in self.__intkeydict.keys():
             confkey = self.__intkeydict[selfkey]
-            if hasattr(self, selfkey):
-                conf[confkey] = getattr(self, selfkey)
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
+                conf[confkey] = str(getattr(self, selfkey))
             else: del conf[confkey]
 
         for selfkey in self.__boolkeydict.keys():
