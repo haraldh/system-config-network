@@ -83,9 +83,10 @@ class Wireless(Wireless_base):
         # check, if the interface support RATE, FREQ, etc.
         for selfkey in self.keydict.keys():
             confkey = self.keydict[selfkey]
-            if hasattr(self, selfkey):
+            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
                 conf[confkey] = getattr(self, selfkey)
-            else: conf[confkey] = ""
+            else: del conf[confkey]
+            #conf[confkey] = ""
 
         if conf.has_key("KEY"):
             del conf["KEY"]
