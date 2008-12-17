@@ -363,7 +363,7 @@ class DslDialup(Dialup):
 
         for selfkey in self.boolkeydict.keys():
             confkey = self.boolkeydict[selfkey]
-            if hasattr(self, selfkey) and getattr(self, selfkey) != None:
+            if hasattr(self, selfkey) and getattr(self, selfkey):
                 conf[confkey] = 'yes'
             else:
                 conf[confkey] = 'no'
