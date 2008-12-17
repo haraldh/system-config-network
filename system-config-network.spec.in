@@ -10,9 +10,11 @@ Group: Applications/System
 BuildArch: noarch
 Obsoletes: isdn-config <= 0.18-10.70 internet-config <= 0.40-2 rp3 <= 1.1.10-4 redhat-config-network <= %{version}
 Provides: redhat-config-network = %{version} isdn-config = 0.18-10.70.1 internet-config = 0.40-2.1
-BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel, gcc, desktop-file-utils, perl-XML-Parser
+BuildRequires: python >= 0:2.2, openjade, docbook-style-dsssl, perl, gettext, glibc-devel
+BuildRequires: gcc, desktop-file-utils, perl-XML-Parser, intltool
 Requires: %{name}-tui = %{version}-%{release}
-Requires: pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas, usermode-gtk, /usr/bin/htmlview
+Requires: pygtk2-libglade, pygtk2, gnome-python2, gnome-python2-canvas
+Requires: usermode-gtk, /usr/bin/htmlview, gnome-python2-gnome, gnome-python2-bonobo
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
@@ -100,6 +102,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/system-config-network-cmd
 
 %changelog
+* Thu Nov 27 2008 Jiri Moskovcak <jmoskovc@redhat.com> 1.5.94-1 
+- version 1.5.94
+- fixed tcp/ip gateway/netmask problem
+- fixed crash when pap-secrets contains spaces
+- Resolves: #469434, #465748
+
+* Tue Oct 28 2008 Harald Hoyer <harald@redhat.com> 1.5.93-2 
+- version 1.5.93
+
 * Mon Oct 27 2008 Tom "spot" Callaway <tcallawa@redhat.com>
 - don't try to write out Description if vendor is NULL (bz 468355)
   (thanks to Kazunori Asayama)
