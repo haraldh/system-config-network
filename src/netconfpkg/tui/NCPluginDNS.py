@@ -53,7 +53,7 @@ class NCPluginDNSTui():
         g1 = snack.Grid(1, 1)
         g2 = snack.Grid(2, 5)
         g2.setField(snack.Label (_("Hostname")), 0, 0, anchorLeft = 1)
-        g2.setField(snack.Label (_("Primary DSN")), 0, 1, anchorLeft = 1)
+        g2.setField(snack.Label (_("Primary DNS")), 0, 1, anchorLeft = 1)
         g2.setField(snack.Label (_("Secondary DNS")), 0, 2, anchorLeft = 1)
         g2.setField(snack.Label (_("Tertiary DNS")), 0, 3, anchorLeft = 1)
         g2.setField(snack.Label (_("Search")), 0, 4, anchorLeft = 1)
