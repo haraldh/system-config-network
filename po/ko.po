@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
+"POT-Creation-Date: 2009-02-18 12:37+0100\n"
 "PO-Revision-Date: 2008-10-20 15:24+1000\n"
 "Last-Translator: Eunju Kim <eukim@redhat.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -511,7 +511,7 @@ msgstr "부모 장치가 시작하면 장치를 활성화시킴(_A)"
 msgid "_Nickname:"
 msgstr "별명(_N):"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:147
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:146
 #, python-format
 msgid ""
 "Nickname %s is already in use!\n"
@@ -614,7 +614,6 @@ msgid "Select Provider"
 msgstr "인터넷 회사 선택"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Statically set IP addresses:"
 msgstr "정적으로 설정된 IP 주소:"
 
@@ -629,7 +628,7 @@ msgstr "전화 번호(_P):"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:28
 #: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Subnet mask:"
 msgstr "서브넷 마스크(_S):"
 
@@ -814,7 +813,7 @@ msgid "Use _Channel Bundling"
 msgstr "채널 다발을 사용(_C)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "추가...(_A)"
 
@@ -868,7 +867,7 @@ msgid "_Use Callback"
 msgstr "다시 걸기 사용(_U)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-#: ../src/netconfpkg/NCDialup.py:150
+#: ../src/netconfpkg/NCDialup.py:146
 msgid "auto"
 msgstr "자동"
 
@@ -891,7 +890,7 @@ msgid "in"
 msgstr "안에"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
-#: ../src/netconfpkg/NCDialup.py:151
+#: ../src/netconfpkg/NCDialup.py:147
 msgid "manual"
 msgstr "수동"
 
@@ -1229,6 +1228,7 @@ msgid "Choose Hardware Type"
 msgstr "하드웨어 유형을 선택해 주십시오"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "이더넷"
 
@@ -1237,10 +1237,12 @@ msgid "Hardware type:"
 msgstr "하드웨어 유형:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "ISDN"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "모뎀"
 
@@ -1258,7 +1260,7 @@ msgstr "토큰 링"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:123
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
+#: ../src/netconfpkg/tui/NCTcpIp.py:114
 msgid "Device"
 msgstr "장치"
 
@@ -1381,7 +1383,8 @@ msgid "Monitor the selected device."
 msgstr "선택한 장치를 모니터하기"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
-#: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
+#: ../src/netconfpkg/tui/NCTcpIp.py:133 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "네트워크 설정"
@@ -1484,6 +1487,7 @@ msgid "_New..."
 msgstr "새로(_N)..."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Primary DNS:"
 msgstr "기본 DNS(_P):"
 
@@ -1748,7 +1752,7 @@ msgstr "모뎀 볼륨(_V):"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:154 ../src/netconfpkg/NC_functions.py:136
+#: ../src/netconfpkg/NCDialup.py:150 ../src/netconfpkg/NC_functions.py:136
 msgid "None"
 msgstr "없음"
 
@@ -1833,8 +1837,8 @@ msgstr "모뎀 전화걸기 설정"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:320
-#: ../src/netconfpkg/NC_functions.py:408
+#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:328
+#: ../src/netconfpkg/NC_functions.py:407
 #: ../src/netconfpkg/NCHardwareList.py:568 ../src/netconfpkg/NCHardware.py:129
 msgid "Unknown"
 msgstr "알 수 없음"
@@ -2344,90 +2348,102 @@ msgid "Remote Network"
 msgstr "원격 네트워크"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+#, fuzzy
+msgid "S_econdary DNS:"
+msgstr "제 2의 DNS(_S):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Security Level"
 msgstr "보안 수준"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
 msgstr "이 장치를 통해 제공하시고자 하는 서비스를 선택해 주십시오"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
 msgstr "서비스"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Service Description"
 msgstr "서비스 설명서"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Services"
 msgstr "서비스"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-msgid "Set MRU to:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
+#, fuzzy
+msgid "Set M_RU to:"
 msgstr "MRU 설정: "
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Set MTU to:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#, fuzzy
+msgid "Set M_TU to:"
 msgstr "MTU 설정:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "정적 네트워크 라우트"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+#, fuzzy
+msgid "Staticall_y set IP addresses:"
+msgstr "정적으로 설정된 IP 주소:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "특정 이터넷 카드에 연결"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "이더넷 장치 별칭 사용"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Delete..."
 msgstr "삭제...(_D)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Edit..."
 msgstr "편집...(_E)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hardware Address"
 msgstr "하드웨어 주소(_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Hardware:"
 msgstr "하드웨어(_H):"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_High Security (Internet)"
 msgstr "상급 보안 (인터넷)(_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Low Security"
 msgstr "저급 보안(_L)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Probe"
 msgstr "추적(_P)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Probe for Address..."
 msgstr "주소를 추적...(_P)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Secure Device (LAN)"
 msgstr "안전 장치 (LAN)(_S)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "bootp"
 msgstr "bootp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "dhcp"
 msgstr "dhcp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "dialup"
 msgstr "전화걸기"
 
@@ -2718,335 +2734,335 @@ msgstr "initscript로 인해 다음 별명들이 변경되었습니다:\n"
 msgid "Nicknames changed"
 msgstr "별명이 변경됨"
 
-#: ../src/netconfpkg/NCDevice.py:300 ../src/netconfpkg/NCDevice.py:306
+#: ../src/netconfpkg/NCDevice.py:308 ../src/netconfpkg/NCDevice.py:314
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, 장치가 지정되지 않았거나 알리아스가 숫자가 아닙니다!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:518
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "네트워크 장치 활성화..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:519
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "네트워크 장치 %s를 활성화하고 있습니다, 잠시만 기다려 주십시오..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:521
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "%s 네트워크 장치를 활성화할 수 없습니다!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:538
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "네트워크 장치 비활성화..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:539
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "%s 네트워크 장치를 비활성화하고 있습니다, 잠시만 기다려 주십시오..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:541
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "%s 네트워크 장치를 비활성화시킬 수 없습니다!\n"
 
-#: ../src/netconfpkg/NCDialup.py:155
+#: ../src/netconfpkg/NCDialup.py:151
 msgid "Afghanistan"
 msgstr "아프가니스탄"
 
-#: ../src/netconfpkg/NCDialup.py:156
+#: ../src/netconfpkg/NCDialup.py:152
 msgid "Albania"
 msgstr "알바니아"
 
-#: ../src/netconfpkg/NCDialup.py:157
+#: ../src/netconfpkg/NCDialup.py:153
 msgid "Algeria"
 msgstr "알제리"
 
-#: ../src/netconfpkg/NCDialup.py:158
+#: ../src/netconfpkg/NCDialup.py:154
 msgid "American Samoa"
 msgstr "미국령 사모아 제도"
 
-#: ../src/netconfpkg/NCDialup.py:159
+#: ../src/netconfpkg/NCDialup.py:155
 msgid "Andorra"
 msgstr "안도라"
 
-#: ../src/netconfpkg/NCDialup.py:160
+#: ../src/netconfpkg/NCDialup.py:156
 msgid "Argentina"
 msgstr "아르헨티나"
 
-#: ../src/netconfpkg/NCDialup.py:161
+#: ../src/netconfpkg/NCDialup.py:157
 msgid "Australia"
 msgstr "호주"
 
-#: ../src/netconfpkg/NCDialup.py:162
+#: ../src/netconfpkg/NCDialup.py:158
 msgid "Austria"
 msgstr "오스트리아"
 
-#: ../src/netconfpkg/NCDialup.py:163
+#: ../src/netconfpkg/NCDialup.py:159
 msgid "Belarus"
 msgstr "베라루스"
 
-#: ../src/netconfpkg/NCDialup.py:164
+#: ../src/netconfpkg/NCDialup.py:160
 msgid "Belgium"
 msgstr "벨기에"
 
-#: ../src/netconfpkg/NCDialup.py:165
+#: ../src/netconfpkg/NCDialup.py:161
 msgid "Bosnia and Hercegovina"
 msgstr "보스니아 헤르체고비나"
 
-#: ../src/netconfpkg/NCDialup.py:166
+#: ../src/netconfpkg/NCDialup.py:162
 msgid "Brazil"
 msgstr "브라질"
 
-#: ../src/netconfpkg/NCDialup.py:167
+#: ../src/netconfpkg/NCDialup.py:163
 msgid "British Virgin Islands"
 msgstr "영국령 버진 아일랜드"
 
-#: ../src/netconfpkg/NCDialup.py:168
+#: ../src/netconfpkg/NCDialup.py:164
 msgid "Bulgaria"
 msgstr "불가리아"
 
-#: ../src/netconfpkg/NCDialup.py:169
+#: ../src/netconfpkg/NCDialup.py:165
 msgid "Canada"
 msgstr "캐나다"
 
-#: ../src/netconfpkg/NCDialup.py:170
+#: ../src/netconfpkg/NCDialup.py:166
 msgid "Central African Republic"
 msgstr "중앙 아프리카 공화국"
 
-#: ../src/netconfpkg/NCDialup.py:171
+#: ../src/netconfpkg/NCDialup.py:167
 msgid "Chile"
 msgstr "칠레"
 
-#: ../src/netconfpkg/NCDialup.py:172
+#: ../src/netconfpkg/NCDialup.py:168
 msgid "China"
 msgstr "중국"
 
-#: ../src/netconfpkg/NCDialup.py:173
+#: ../src/netconfpkg/NCDialup.py:169
 msgid "Colombia"
 msgstr "콜롬비아"
 
-#: ../src/netconfpkg/NCDialup.py:174
+#: ../src/netconfpkg/NCDialup.py:170
 msgid "Croatia"
 msgstr "크로아티아"
 
-#: ../src/netconfpkg/NCDialup.py:175
+#: ../src/netconfpkg/NCDialup.py:171
 msgid "Cuba"
 msgstr "쿠바"
 
-#: ../src/netconfpkg/NCDialup.py:176
+#: ../src/netconfpkg/NCDialup.py:172
 msgid "Cyprus"
 msgstr "사이프러스"
 
-#: ../src/netconfpkg/NCDialup.py:177
+#: ../src/netconfpkg/NCDialup.py:173
 msgid "Czech Republic"
 msgstr "체코 공화국"
 
-#: ../src/netconfpkg/NCDialup.py:178
+#: ../src/netconfpkg/NCDialup.py:174
 msgid "Denmark"
 msgstr "덴마크"
 
-#: ../src/netconfpkg/NCDialup.py:179
+#: ../src/netconfpkg/NCDialup.py:175
 msgid "Finland"
 msgstr "핀란드"
 
-#: ../src/netconfpkg/NCDialup.py:180
+#: ../src/netconfpkg/NCDialup.py:176
 msgid "France"
 msgstr "프랑스"
 
-#: ../src/netconfpkg/NCDialup.py:181
+#: ../src/netconfpkg/NCDialup.py:177
 msgid "Germany"
 msgstr "독일"
 
-#: ../src/netconfpkg/NCDialup.py:182
+#: ../src/netconfpkg/NCDialup.py:178
 msgid "Greece"
 msgstr "그리스"
 
-#: ../src/netconfpkg/NCDialup.py:183
+#: ../src/netconfpkg/NCDialup.py:179
 msgid "Hong Kong"
 msgstr "홍콩"
 
-#: ../src/netconfpkg/NCDialup.py:184
+#: ../src/netconfpkg/NCDialup.py:180
 msgid "Hungary"
 msgstr "헝가리"
 
-#: ../src/netconfpkg/NCDialup.py:185
+#: ../src/netconfpkg/NCDialup.py:181
 msgid "Iceland"
 msgstr "아이스랜드"
 
-#: ../src/netconfpkg/NCDialup.py:186
+#: ../src/netconfpkg/NCDialup.py:182
 msgid "India"
 msgstr "인도"
 
-#: ../src/netconfpkg/NCDialup.py:187
+#: ../src/netconfpkg/NCDialup.py:183
 msgid "Indonesia"
 msgstr "인도네시아"
 
-#: ../src/netconfpkg/NCDialup.py:188
+#: ../src/netconfpkg/NCDialup.py:184
 msgid "Ireland"
 msgstr "아일랜드"
 
-#: ../src/netconfpkg/NCDialup.py:189
+#: ../src/netconfpkg/NCDialup.py:185
 msgid "Israel"
 msgstr "이스라엘"
 
-#: ../src/netconfpkg/NCDialup.py:190
+#: ../src/netconfpkg/NCDialup.py:186
 msgid "Italy"
 msgstr "이태리"
 
-#: ../src/netconfpkg/NCDialup.py:191
+#: ../src/netconfpkg/NCDialup.py:187
 msgid "Japan"
 msgstr "일본"
 
-#: ../src/netconfpkg/NCDialup.py:192
+#: ../src/netconfpkg/NCDialup.py:188
 msgid "Kazakhstan"
 msgstr "카자흐스탄"
 
-#: ../src/netconfpkg/NCDialup.py:193
+#: ../src/netconfpkg/NCDialup.py:189
 msgid "Korea North"
 msgstr "북한"
 
-#: ../src/netconfpkg/NCDialup.py:194
+#: ../src/netconfpkg/NCDialup.py:190
 msgid "Korea Republic"
 msgstr "대한민국"
 
-#: ../src/netconfpkg/NCDialup.py:195
+#: ../src/netconfpkg/NCDialup.py:191
 msgid "Liechtenstein"
 msgstr "리히텐슈타인"
 
-#: ../src/netconfpkg/NCDialup.py:196
+#: ../src/netconfpkg/NCDialup.py:192
 msgid "Lithuania"
 msgstr "리투아니아"
 
-#: ../src/netconfpkg/NCDialup.py:197
+#: ../src/netconfpkg/NCDialup.py:193
 msgid "Luxembourg"
 msgstr "룩셈부르크"
 
-#: ../src/netconfpkg/NCDialup.py:198
+#: ../src/netconfpkg/NCDialup.py:194
 msgid "Macedonia"
 msgstr "마세도니아"
 
-#: ../src/netconfpkg/NCDialup.py:199
+#: ../src/netconfpkg/NCDialup.py:195
 msgid "Malaysia"
 msgstr "말레이시아"
 
-#: ../src/netconfpkg/NCDialup.py:200
+#: ../src/netconfpkg/NCDialup.py:196
 msgid "Malta"
 msgstr "몰타"
 
-#: ../src/netconfpkg/NCDialup.py:201
+#: ../src/netconfpkg/NCDialup.py:197
 msgid "Mexico"
 msgstr "멕시코"
 
-#: ../src/netconfpkg/NCDialup.py:202
+#: ../src/netconfpkg/NCDialup.py:198
 msgid "Moldova"
 msgstr "몰도바"
 
-#: ../src/netconfpkg/NCDialup.py:203
+#: ../src/netconfpkg/NCDialup.py:199
 msgid "Monaco"
 msgstr "모나코"
 
-#: ../src/netconfpkg/NCDialup.py:204
+#: ../src/netconfpkg/NCDialup.py:200
 msgid "Netherlands"
 msgstr "네델란드"
 
-#: ../src/netconfpkg/NCDialup.py:205
+#: ../src/netconfpkg/NCDialup.py:201
 msgid "New Zealand"
 msgstr "뉴질랜드"
 
-#: ../src/netconfpkg/NCDialup.py:206
+#: ../src/netconfpkg/NCDialup.py:202
 msgid "Norway"
 msgstr "노르웨이"
 
-#: ../src/netconfpkg/NCDialup.py:207
+#: ../src/netconfpkg/NCDialup.py:203
 msgid "Palestine"
 msgstr "팔레스타인"
 
-#: ../src/netconfpkg/NCDialup.py:208
+#: ../src/netconfpkg/NCDialup.py:204
 msgid "Philippines"
 msgstr "필리핀"
 
-#: ../src/netconfpkg/NCDialup.py:209
+#: ../src/netconfpkg/NCDialup.py:205
 msgid "Poland"
 msgstr "폴란드"
 
-#: ../src/netconfpkg/NCDialup.py:210
+#: ../src/netconfpkg/NCDialup.py:206
 msgid "Portugal"
 msgstr "포루투갈"
 
-#: ../src/netconfpkg/NCDialup.py:211
+#: ../src/netconfpkg/NCDialup.py:207
 msgid "Romania"
 msgstr "루마니아"
 
-#: ../src/netconfpkg/NCDialup.py:212
+#: ../src/netconfpkg/NCDialup.py:208
 msgid "Russia"
 msgstr "러시아"
 
-#: ../src/netconfpkg/NCDialup.py:213
+#: ../src/netconfpkg/NCDialup.py:209
 msgid "Singapore"
 msgstr "싱가폴"
 
-#: ../src/netconfpkg/NCDialup.py:214
+#: ../src/netconfpkg/NCDialup.py:210
 msgid "Slovakia"
 msgstr "슬로바키아"
 
-#: ../src/netconfpkg/NCDialup.py:215
+#: ../src/netconfpkg/NCDialup.py:211
 msgid "Slovenia"
 msgstr "슬로베니아"
 
-#: ../src/netconfpkg/NCDialup.py:216
+#: ../src/netconfpkg/NCDialup.py:212
 msgid "Spain"
 msgstr "스페인"
 
-#: ../src/netconfpkg/NCDialup.py:217
+#: ../src/netconfpkg/NCDialup.py:213
 msgid "Sweden"
 msgstr "스웨덴"
 
-#: ../src/netconfpkg/NCDialup.py:218
+#: ../src/netconfpkg/NCDialup.py:214
 msgid "Switzerland"
 msgstr "스위스"
 
-#: ../src/netconfpkg/NCDialup.py:219
+#: ../src/netconfpkg/NCDialup.py:215
 msgid "Taiwan"
 msgstr "대만"
 
-#: ../src/netconfpkg/NCDialup.py:220
+#: ../src/netconfpkg/NCDialup.py:216
 msgid "Thailand"
 msgstr "태국"
 
-#: ../src/netconfpkg/NCDialup.py:221
+#: ../src/netconfpkg/NCDialup.py:217
 msgid "Turkey"
 msgstr "터키"
 
-#: ../src/netconfpkg/NCDialup.py:222
+#: ../src/netconfpkg/NCDialup.py:218
 msgid "Ukraine"
 msgstr "우크라니아"
 
-#: ../src/netconfpkg/NCDialup.py:223
+#: ../src/netconfpkg/NCDialup.py:219
 msgid "United Kingdom"
 msgstr "영국"
 
-#: ../src/netconfpkg/NCDialup.py:224
+#: ../src/netconfpkg/NCDialup.py:220
 msgid "United States of America"
 msgstr "미국"
 
-#: ../src/netconfpkg/NCDialup.py:225
+#: ../src/netconfpkg/NCDialup.py:221
 msgid "Vietnam"
 msgstr "베트남"
 
-#: ../src/netconfpkg/NCDialup.py:226
+#: ../src/netconfpkg/NCDialup.py:222
 msgid "Serbia"
 msgstr "세르비아"
 
 #. FIXED: [175078] String (country name) change request
-#: ../src/netconfpkg/NCDialup.py:227
+#: ../src/netconfpkg/NCDialup.py:223
 msgid "Montenegro"
 msgstr "몬테네그로"
 
@@ -3074,7 +3090,7 @@ msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "여러분의 시스템에 필요한 다음과 같은 패키지를 설치하셔야 합니다!"
 
-#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
+#: ../src/netconfpkg/NC_functions.py:767 ../src/netconfpkg/NC_functions.py:778
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3085,7 +3101,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:808
+#: ../src/netconfpkg/NC_functions.py:807
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3098,7 +3114,7 @@ msgstr ""
 "복사하는데 오류가 발생했습니다:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:818
+#: ../src/netconfpkg/NC_functions.py:817
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3111,7 +3127,7 @@ msgstr ""
 "오류가 발생했습니다:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:828
+#: ../src/netconfpkg/NC_functions.py:827
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3124,7 +3140,7 @@ msgstr ""
 "오류가 발생했습니다:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:836
+#: ../src/netconfpkg/NC_functions.py:835
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3133,7 +3149,7 @@ msgstr ""
 "디렉토리를 생성하는데 오류가 발생했습니다!\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:981
+#: ../src/netconfpkg/NC_functions.py:980
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s를 장치에 연결하여 %s 프로파일에 넣습니다."
@@ -3219,10 +3235,90 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "%(file)s 파일 삭제 도중 오류 발생: %(errormsg)        "
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+#, fuzzy
+msgid "<New Device>"
+msgstr "장치"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+#, fuzzy
+msgid "Which device type do you want to add?"
+msgstr "%s 장치 유형은 편집하실 수 없습니다!"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#, fuzzy
+msgid "Add"
+msgstr "추가...(_A)"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
+msgid "Cancel"
+msgstr "취소"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr ""
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+#, fuzzy
+msgid "Select A Device"
+msgstr "장치 타입 선택"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#, fuzzy
+msgid "Save"
+msgstr "저장&종료"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+#, fuzzy
+msgid "Hostname"
+msgstr "호스트명:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+#, fuzzy
+msgid "Primary DNS"
+msgstr "기본 DNS(_P):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "제 2의 DNS(_S):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "제 3의 DNS(_T):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+#, fuzzy
+msgid "DNS search path"
+msgstr "DNS 탐색 경로:"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
+msgid "Ok"
+msgstr "Ok"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+#, fuzzy
+msgid "DNS configuration"
+msgstr "xDSL 설정"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
 msgid "Name"
 msgstr "이름"
 
@@ -3245,20 +3341,6 @@ msgstr "ISP 암호"
 msgid "MSN"
 msgstr "MSN"
 
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "Ok"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "취소"
-
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "ISDN 설정"
@@ -3268,22 +3350,22 @@ msgid "Modem Initstring"
 msgstr "모뎀 초기화 문자열"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:124
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
 msgid "Use DHCP"
 msgstr "DHCP 사용"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:125
-#: ../src/netconfpkg/tui/NCTcpIp.py:99
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
 msgid "Static IP"
 msgstr "고정 IP"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:126
-#: ../src/netconfpkg/tui/NCTcpIp.py:100
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
 msgid "Netmask"
 msgstr "넷 마스크"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:127
-#: ../src/netconfpkg/tui/NCTcpIp.py:101
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
 msgid "Default gateway IP"
 msgstr "기본 게이트웨이 IP"
 
@@ -3302,6 +3384,16 @@ msgstr "장치 버스 ID 쓰기 "
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:145
 msgid "Devernet Configuration"
 msgstr "Devernet 설정"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:119
+#, fuzzy
+msgid "Primary DNS Server"
+msgstr "기본 DNS(_P):"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:120
+#, fuzzy
+msgid "Secondary DNS Server"
+msgstr "제 2의 DNS(_S):"
 
 #: ../src/netconf.py:55
 #, python-format

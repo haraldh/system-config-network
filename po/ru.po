@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master.ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
+"POT-Creation-Date: 2009-02-18 12:37+0100\n"
 "PO-Revision-Date: 2008-09-09 14:09+1000\n"
 "Last-Translator: Yulia Poyarkova <yulia.poyarkova@redhat.com>\n"
 "Language-Team: \n"
@@ -513,7 +513,7 @@ msgstr "_Активировать устройство при запуске р�
 msgid "_Nickname:"
 msgstr "_Псевдоним:"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:147
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:146
 #, python-format
 msgid ""
 "Nickname %s is already in use!\n"
@@ -615,7 +615,6 @@ msgid "Select Provider"
 msgstr "Выбор провайдера"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Statically set IP addresses:"
 msgstr "Устанавливать статический адрес IP:"
 
@@ -630,7 +629,7 @@ msgstr "Номер _телефона:"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:28
 #: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Subnet mask:"
 msgstr "_Маска подсети:"
 
@@ -813,7 +812,7 @@ msgid "Use _Channel Bundling"
 msgstr "Использовать о_бъединение каналов"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "_Добавить..."
 
@@ -867,7 +866,7 @@ msgid "_Use Callback"
 msgstr "Использовать обратный вызов"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-#: ../src/netconfpkg/NCDialup.py:150
+#: ../src/netconfpkg/NCDialup.py:146
 msgid "auto"
 msgstr "авто"
 
@@ -890,7 +889,7 @@ msgid "in"
 msgstr "вход"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
-#: ../src/netconfpkg/NCDialup.py:151
+#: ../src/netconfpkg/NCDialup.py:147
 msgid "manual"
 msgstr "вручную"
 
@@ -1229,6 +1228,7 @@ msgid "Choose Hardware Type"
 msgstr "Выбор типа оборудования"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "Ethernet"
 
@@ -1237,10 +1237,12 @@ msgid "Hardware type:"
 msgstr "Тип оборудования:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "ISDN"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "Модем"
 
@@ -1258,7 +1260,7 @@ msgstr "Token Ring"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:123
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
+#: ../src/netconfpkg/tui/NCTcpIp.py:114
 msgid "Device"
 msgstr "Устройство"
 
@@ -1381,7 +1383,8 @@ msgid "Monitor the selected device."
 msgstr "Мониторинг выбранного устройства."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
-#: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
+#: ../src/netconfpkg/tui/NCTcpIp.py:133 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "Настройка сети"
@@ -1484,6 +1487,7 @@ msgid "_New..."
 msgstr "_Создать..."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Primary DNS:"
 msgstr "_Первичный DNS:"
 
@@ -1752,7 +1756,7 @@ msgstr "_Громкость модема:"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:154 ../src/netconfpkg/NC_functions.py:136
+#: ../src/netconfpkg/NCDialup.py:150 ../src/netconfpkg/NC_functions.py:136
 msgid "None"
 msgstr "Нет"
 
@@ -1837,8 +1841,8 @@ msgstr "Настройка удаленного доступа через мод
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:320
-#: ../src/netconfpkg/NC_functions.py:408
+#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:328
+#: ../src/netconfpkg/NC_functions.py:407
 #: ../src/netconfpkg/NCHardwareList.py:568 ../src/netconfpkg/NCHardware.py:129
 msgid "Unknown"
 msgstr "Неизвестный"
@@ -2347,90 +2351,102 @@ msgid "Remote Network"
 msgstr "Удаленная сеть"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+#, fuzzy
+msgid "S_econdary DNS:"
+msgstr "_Вторичный DNS:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Security Level"
 msgstr "Уровень безопасности"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
 msgstr "Выберите сервисы, которые вы хотите предоставлять через это устройство"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
 msgstr "Сервис"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Service Description"
 msgstr "Описание устройства"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Services"
 msgstr "Сервисы"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-msgid "Set MRU to:"
-msgstr "Задать MTU:"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Set MTU to:"
+#, fuzzy
+msgid "Set M_RU to:"
 msgstr "Задать MTU:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#, fuzzy
+msgid "Set M_TU to:"
+msgstr "Задать MTU:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "Статические сетевые маршруты"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+#, fuzzy
+msgid "Staticall_y set IP addresses:"
+msgstr "Устанавливать статический адрес IP:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "Привязаться к указанной плате ethernet"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "Использовать псевдонимы устройств ethernet"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Delete..."
 msgstr "_Удалить..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Edit..."
 msgstr "_Свойства..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hardware Address"
 msgstr "_Аппаратный адрес:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Hardware:"
 msgstr "_Оборудование:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_High Security (Internet)"
 msgstr "Высокий уровень (Интернет)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Low Security"
 msgstr "Низкий уровень"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Probe"
 msgstr "_Определить"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Probe for Address..."
 msgstr "_Определить адрес..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Secure Device (LAN)"
 msgstr "_Безопасное устройство (LAN)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "bootp"
 msgstr "bootp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "dhcp"
 msgstr "dhcp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "dialup"
 msgstr "dialup"
 
@@ -2722,335 +2738,335 @@ msgstr "Следующие псевдонимы изменены из-за inits
 msgid "Nicknames changed"
 msgstr "Псевдонимы изменены"
 
-#: ../src/netconfpkg/NCDevice.py:300 ../src/netconfpkg/NCDevice.py:306
+#: ../src/netconfpkg/NCDevice.py:308 ../src/netconfpkg/NCDevice.py:314
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, устройство не указано или алиас не является числом!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:518
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "Активируется сетевое устройство..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:519
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "Активируется сетевое устройство %s, подождите пожалуйста..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:521
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "Не удается активировать устройство %s!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:538
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "Деактивируется сетевое устройство..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:539
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "Деактивируется сетевое устройство %s, подождите пожалуйста..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:541
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "Не удается деактивировать устройство сети %s!\n"
 
-#: ../src/netconfpkg/NCDialup.py:155
+#: ../src/netconfpkg/NCDialup.py:151
 msgid "Afghanistan"
 msgstr "Афганистан"
 
-#: ../src/netconfpkg/NCDialup.py:156
+#: ../src/netconfpkg/NCDialup.py:152
 msgid "Albania"
 msgstr "Албания"
 
-#: ../src/netconfpkg/NCDialup.py:157
+#: ../src/netconfpkg/NCDialup.py:153
 msgid "Algeria"
 msgstr "Алжир"
 
-#: ../src/netconfpkg/NCDialup.py:158
+#: ../src/netconfpkg/NCDialup.py:154
 msgid "American Samoa"
 msgstr "Американское Самоа"
 
-#: ../src/netconfpkg/NCDialup.py:159
+#: ../src/netconfpkg/NCDialup.py:155
 msgid "Andorra"
 msgstr "Андорра"
 
-#: ../src/netconfpkg/NCDialup.py:160
+#: ../src/netconfpkg/NCDialup.py:156
 msgid "Argentina"
 msgstr "Аргентина"
 
-#: ../src/netconfpkg/NCDialup.py:161
+#: ../src/netconfpkg/NCDialup.py:157
 msgid "Australia"
 msgstr "Австралия"
 
-#: ../src/netconfpkg/NCDialup.py:162
+#: ../src/netconfpkg/NCDialup.py:158
 msgid "Austria"
 msgstr "Австрия"
 
-#: ../src/netconfpkg/NCDialup.py:163
+#: ../src/netconfpkg/NCDialup.py:159
 msgid "Belarus"
 msgstr "Беларусь"
 
-#: ../src/netconfpkg/NCDialup.py:164
+#: ../src/netconfpkg/NCDialup.py:160
 msgid "Belgium"
 msgstr "Бельгия"
 
-#: ../src/netconfpkg/NCDialup.py:165
+#: ../src/netconfpkg/NCDialup.py:161
 msgid "Bosnia and Hercegovina"
 msgstr "Босния и Герцеговина"
 
-#: ../src/netconfpkg/NCDialup.py:166
+#: ../src/netconfpkg/NCDialup.py:162
 msgid "Brazil"
 msgstr "Бразилия"
 
-#: ../src/netconfpkg/NCDialup.py:167
+#: ../src/netconfpkg/NCDialup.py:163
 msgid "British Virgin Islands"
 msgstr "Британские Вирджинские острова"
 
-#: ../src/netconfpkg/NCDialup.py:168
+#: ../src/netconfpkg/NCDialup.py:164
 msgid "Bulgaria"
 msgstr "Болгария"
 
-#: ../src/netconfpkg/NCDialup.py:169
+#: ../src/netconfpkg/NCDialup.py:165
 msgid "Canada"
 msgstr "Канада"
 
-#: ../src/netconfpkg/NCDialup.py:170
+#: ../src/netconfpkg/NCDialup.py:166
 msgid "Central African Republic"
 msgstr "Центрально-Африканская республика"
 
-#: ../src/netconfpkg/NCDialup.py:171
+#: ../src/netconfpkg/NCDialup.py:167
 msgid "Chile"
 msgstr "Чили"
 
-#: ../src/netconfpkg/NCDialup.py:172
+#: ../src/netconfpkg/NCDialup.py:168
 msgid "China"
 msgstr "Китай"
 
-#: ../src/netconfpkg/NCDialup.py:173
+#: ../src/netconfpkg/NCDialup.py:169
 msgid "Colombia"
 msgstr "Колумбия"
 
-#: ../src/netconfpkg/NCDialup.py:174
+#: ../src/netconfpkg/NCDialup.py:170
 msgid "Croatia"
 msgstr "Хорватия"
 
-#: ../src/netconfpkg/NCDialup.py:175
+#: ../src/netconfpkg/NCDialup.py:171
 msgid "Cuba"
 msgstr "Куба"
 
-#: ../src/netconfpkg/NCDialup.py:176
+#: ../src/netconfpkg/NCDialup.py:172
 msgid "Cyprus"
 msgstr "Кипр"
 
-#: ../src/netconfpkg/NCDialup.py:177
+#: ../src/netconfpkg/NCDialup.py:173
 msgid "Czech Republic"
 msgstr "Чешская республика"
 
-#: ../src/netconfpkg/NCDialup.py:178
+#: ../src/netconfpkg/NCDialup.py:174
 msgid "Denmark"
 msgstr "Дания"
 
-#: ../src/netconfpkg/NCDialup.py:179
+#: ../src/netconfpkg/NCDialup.py:175
 msgid "Finland"
 msgstr "Финляндия"
 
-#: ../src/netconfpkg/NCDialup.py:180
+#: ../src/netconfpkg/NCDialup.py:176
 msgid "France"
 msgstr "Франция"
 
-#: ../src/netconfpkg/NCDialup.py:181
+#: ../src/netconfpkg/NCDialup.py:177
 msgid "Germany"
 msgstr "Германия"
 
-#: ../src/netconfpkg/NCDialup.py:182
+#: ../src/netconfpkg/NCDialup.py:178
 msgid "Greece"
 msgstr "Греция"
 
-#: ../src/netconfpkg/NCDialup.py:183
+#: ../src/netconfpkg/NCDialup.py:179
 msgid "Hong Kong"
 msgstr "Гонконг"
 
-#: ../src/netconfpkg/NCDialup.py:184
+#: ../src/netconfpkg/NCDialup.py:180
 msgid "Hungary"
 msgstr "Венгрия"
 
-#: ../src/netconfpkg/NCDialup.py:185
+#: ../src/netconfpkg/NCDialup.py:181
 msgid "Iceland"
 msgstr "Исландия"
 
-#: ../src/netconfpkg/NCDialup.py:186
+#: ../src/netconfpkg/NCDialup.py:182
 msgid "India"
 msgstr "Индия"
 
-#: ../src/netconfpkg/NCDialup.py:187
+#: ../src/netconfpkg/NCDialup.py:183
 msgid "Indonesia"
 msgstr "Индонезия"
 
-#: ../src/netconfpkg/NCDialup.py:188
+#: ../src/netconfpkg/NCDialup.py:184
 msgid "Ireland"
 msgstr "Ирландия"
 
-#: ../src/netconfpkg/NCDialup.py:189
+#: ../src/netconfpkg/NCDialup.py:185
 msgid "Israel"
 msgstr "Израиль"
 
-#: ../src/netconfpkg/NCDialup.py:190
+#: ../src/netconfpkg/NCDialup.py:186
 msgid "Italy"
 msgstr "Италия"
 
-#: ../src/netconfpkg/NCDialup.py:191
+#: ../src/netconfpkg/NCDialup.py:187
 msgid "Japan"
 msgstr "Япония"
 
-#: ../src/netconfpkg/NCDialup.py:192
+#: ../src/netconfpkg/NCDialup.py:188
 msgid "Kazakhstan"
 msgstr "Казахстан"
 
-#: ../src/netconfpkg/NCDialup.py:193
+#: ../src/netconfpkg/NCDialup.py:189
 msgid "Korea North"
 msgstr "Корейская Народно-Демократическая Республика"
 
-#: ../src/netconfpkg/NCDialup.py:194
+#: ../src/netconfpkg/NCDialup.py:190
 msgid "Korea Republic"
 msgstr "Республика Корея"
 
-#: ../src/netconfpkg/NCDialup.py:195
+#: ../src/netconfpkg/NCDialup.py:191
 msgid "Liechtenstein"
 msgstr "Лихтенштейн"
 
-#: ../src/netconfpkg/NCDialup.py:196
+#: ../src/netconfpkg/NCDialup.py:192
 msgid "Lithuania"
 msgstr "Литва"
 
-#: ../src/netconfpkg/NCDialup.py:197
+#: ../src/netconfpkg/NCDialup.py:193
 msgid "Luxembourg"
 msgstr "Люксембург"
 
-#: ../src/netconfpkg/NCDialup.py:198
+#: ../src/netconfpkg/NCDialup.py:194
 msgid "Macedonia"
 msgstr "Македония"
 
-#: ../src/netconfpkg/NCDialup.py:199
+#: ../src/netconfpkg/NCDialup.py:195
 msgid "Malaysia"
 msgstr "Малайзия"
 
-#: ../src/netconfpkg/NCDialup.py:200
+#: ../src/netconfpkg/NCDialup.py:196
 msgid "Malta"
 msgstr "Мальта"
 
-#: ../src/netconfpkg/NCDialup.py:201
+#: ../src/netconfpkg/NCDialup.py:197
 msgid "Mexico"
 msgstr "Мексика"
 
-#: ../src/netconfpkg/NCDialup.py:202
+#: ../src/netconfpkg/NCDialup.py:198
 msgid "Moldova"
 msgstr "Молдова"
 
-#: ../src/netconfpkg/NCDialup.py:203
+#: ../src/netconfpkg/NCDialup.py:199
 msgid "Monaco"
 msgstr "Монако"
 
-#: ../src/netconfpkg/NCDialup.py:204
+#: ../src/netconfpkg/NCDialup.py:200
 msgid "Netherlands"
 msgstr "Нидерланды"
 
-#: ../src/netconfpkg/NCDialup.py:205
+#: ../src/netconfpkg/NCDialup.py:201
 msgid "New Zealand"
 msgstr "Новая Зеландия"
 
-#: ../src/netconfpkg/NCDialup.py:206
+#: ../src/netconfpkg/NCDialup.py:202
 msgid "Norway"
 msgstr "Норвегия"
 
-#: ../src/netconfpkg/NCDialup.py:207
+#: ../src/netconfpkg/NCDialup.py:203
 msgid "Palestine"
 msgstr "Палестина"
 
-#: ../src/netconfpkg/NCDialup.py:208
+#: ../src/netconfpkg/NCDialup.py:204
 msgid "Philippines"
 msgstr "Филиппины"
 
-#: ../src/netconfpkg/NCDialup.py:209
+#: ../src/netconfpkg/NCDialup.py:205
 msgid "Poland"
 msgstr "Польша"
 
-#: ../src/netconfpkg/NCDialup.py:210
+#: ../src/netconfpkg/NCDialup.py:206
 msgid "Portugal"
 msgstr "Португалия"
 
-#: ../src/netconfpkg/NCDialup.py:211
+#: ../src/netconfpkg/NCDialup.py:207
 msgid "Romania"
 msgstr "Румыния"
 
-#: ../src/netconfpkg/NCDialup.py:212
+#: ../src/netconfpkg/NCDialup.py:208
 msgid "Russia"
 msgstr "Россия"
 
-#: ../src/netconfpkg/NCDialup.py:213
+#: ../src/netconfpkg/NCDialup.py:209
 msgid "Singapore"
 msgstr "Сингапур"
 
-#: ../src/netconfpkg/NCDialup.py:214
+#: ../src/netconfpkg/NCDialup.py:210
 msgid "Slovakia"
 msgstr "Словакия"
 
-#: ../src/netconfpkg/NCDialup.py:215
+#: ../src/netconfpkg/NCDialup.py:211
 msgid "Slovenia"
 msgstr "Словения"
 
-#: ../src/netconfpkg/NCDialup.py:216
+#: ../src/netconfpkg/NCDialup.py:212
 msgid "Spain"
 msgstr "Испания"
 
-#: ../src/netconfpkg/NCDialup.py:217
+#: ../src/netconfpkg/NCDialup.py:213
 msgid "Sweden"
 msgstr "Швеция"
 
-#: ../src/netconfpkg/NCDialup.py:218
+#: ../src/netconfpkg/NCDialup.py:214
 msgid "Switzerland"
 msgstr "Швейцария"
 
-#: ../src/netconfpkg/NCDialup.py:219
+#: ../src/netconfpkg/NCDialup.py:215
 msgid "Taiwan"
 msgstr "Тайвань"
 
-#: ../src/netconfpkg/NCDialup.py:220
+#: ../src/netconfpkg/NCDialup.py:216
 msgid "Thailand"
 msgstr "Таиланд"
 
-#: ../src/netconfpkg/NCDialup.py:221
+#: ../src/netconfpkg/NCDialup.py:217
 msgid "Turkey"
 msgstr "Турция"
 
-#: ../src/netconfpkg/NCDialup.py:222
+#: ../src/netconfpkg/NCDialup.py:218
 msgid "Ukraine"
 msgstr "Украина"
 
-#: ../src/netconfpkg/NCDialup.py:223
+#: ../src/netconfpkg/NCDialup.py:219
 msgid "United Kingdom"
 msgstr "Великобритания"
 
-#: ../src/netconfpkg/NCDialup.py:224
+#: ../src/netconfpkg/NCDialup.py:220
 msgid "United States of America"
 msgstr "Соединенные Штаты Америки"
 
-#: ../src/netconfpkg/NCDialup.py:225
+#: ../src/netconfpkg/NCDialup.py:221
 msgid "Vietnam"
 msgstr "Вьетнам"
 
-#: ../src/netconfpkg/NCDialup.py:226
+#: ../src/netconfpkg/NCDialup.py:222
 msgid "Serbia"
 msgstr "Сербия"
 
 #. FIXED: [175078] String (country name) change request
-#: ../src/netconfpkg/NCDialup.py:227
+#: ../src/netconfpkg/NCDialup.py:223
 msgid "Montenegro"
 msgstr "Монтенегро"
 
@@ -3081,7 +3097,7 @@ msgid ""
 msgstr ""
 "Вы должны установить следующие пакеты, которые необходимы в вашей системе!"
 
-#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
+#: ../src/netconfpkg/NC_functions.py:767 ../src/netconfpkg/NC_functions.py:778
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3092,7 +3108,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:808
+#: ../src/netconfpkg/NC_functions.py:807
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3105,7 +3121,7 @@ msgstr ""
 "в %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:818
+#: ../src/netconfpkg/NC_functions.py:817
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3117,7 +3133,7 @@ msgstr ""
 "на %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:828
+#: ../src/netconfpkg/NC_functions.py:827
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3130,7 +3146,7 @@ msgstr ""
 "в %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:836
+#: ../src/netconfpkg/NC_functions.py:835
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3139,7 +3155,7 @@ msgstr ""
 "Ошибка создания каталога!\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:981
+#: ../src/netconfpkg/NC_functions.py:980
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "Связывание %s с устройствами и помещение его в профиль %s."
@@ -3226,10 +3242,87 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "Ошибка удаления файла %(file)s: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<Новое устройство>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "Какой тип устройства вы хотите добавить?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "Добавить"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
+msgid "Cancel"
+msgstr "Отмена"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr "QETH"
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+#, fuzzy
+msgid "Select A Device"
+msgstr "Выбор типа соединения"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#, fuzzy
+msgid "Save"
+msgstr "Выход"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+#, fuzzy
+msgid "Hostname"
+msgstr "Имя машины:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+#, fuzzy
+msgid "Primary DNS"
+msgstr "_Первичный DNS:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "_Вторичный DNS:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "_Третий DNS:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+#, fuzzy
+msgid "DNS search path"
+msgstr "Путь поиска в DNS:"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
+msgid "Ok"
+msgstr "Ok"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+#, fuzzy
+msgid "DNS configuration"
+msgstr "Настройка xDSL"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
 msgid "Name"
 msgstr "Имя"
 
@@ -3252,20 +3345,6 @@ msgstr "Пароль ISP"
 msgid "MSN"
 msgstr "MSN"
 
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "Ok"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "Отмена"
-
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "Настройка ISDN"
@@ -3275,22 +3354,22 @@ msgid "Modem Initstring"
 msgstr "Строка инициализации модема"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:124
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
 msgid "Use DHCP"
 msgstr "Использовать DHCP"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:125
-#: ../src/netconfpkg/tui/NCTcpIp.py:99
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
 msgid "Static IP"
 msgstr "Статичный IP"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:126
-#: ../src/netconfpkg/tui/NCTcpIp.py:100
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
 msgid "Netmask"
 msgstr "Маска сети"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:127
-#: ../src/netconfpkg/tui/NCTcpIp.py:101
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
 msgid "Default gateway IP"
 msgstr "IP шлюза"
 
@@ -3309,6 +3388,16 @@ msgstr "ID шины устройства записи"
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:145
 msgid "Devernet Configuration"
 msgstr "Настройка Devernet"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:119
+#, fuzzy
+msgid "Primary DNS Server"
+msgstr "_Первичный DNS:"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:120
+#, fuzzy
+msgid "Secondary DNS Server"
+msgstr "_Вторичный DNS:"
 
 #: ../src/netconf.py:55
 #, python-format
@@ -3401,15 +3490,3 @@ msgstr "Сеть"
 #: ../system-control-network.desktop.in.h:1
 msgid "Control and monitor network devices"
 msgstr "Управление устройствами сети и мониторинг трафика"
-
-#~ msgid "Which device type do you want to add?"
-#~ msgstr "Какой тип устройства вы хотите добавить?"
-
-#~ msgid "Add"
-#~ msgstr "Добавить"
-
-#~ msgid "QETH"
-#~ msgstr "QETH"
-
-#~ msgid "<New Device>"
-#~ msgstr "<Новое устройство>"

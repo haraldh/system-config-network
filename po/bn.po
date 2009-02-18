@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master.bn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
+"POT-Creation-Date: 2009-02-18 12:37+0100\n"
 "PO-Revision-Date: 2008-03-03 00:08+0600\n"
 "Last-Translator: Angel <angel@fedoraproject.org>\n"
 "Language-Team: Bengali <fedora-trans-bn@redhat.com>\n"
@@ -511,7 +511,7 @@ msgstr "ঊর্ধ্বস্থ ডিভাইস চালু করা �
 msgid "_Nickname:"
 msgstr "উপনাম: (_N)"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:147
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:146
 #, python-format
 msgid ""
 "Nickname %s is already in use!\n"
@@ -615,7 +615,6 @@ msgid "Select Provider"
 msgstr "সরবরাহকারী নির্বাচন করুন"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Statically set IP addresses:"
 msgstr "স্থায়ীভাবে IP ঠিকানা নির্ধারণ করুন:"
 
@@ -630,7 +629,7 @@ msgstr "ফোন নম্বর (_P):"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:28
 #: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Subnet mask:"
 msgstr "সাবনেট মাস্ক (_S):"
 
@@ -813,7 +812,7 @@ msgid "Use _Channel Bundling"
 msgstr "চ্যানেল বান্ডলিং ব্যবহার করা হবে (_C)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "যোগ করুন... (_A)"
 
@@ -868,7 +867,7 @@ msgid "_Use Callback"
 msgstr "কলব্যাক ব্যবহার করা হবে (_U)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-#: ../src/netconfpkg/NCDialup.py:150
+#: ../src/netconfpkg/NCDialup.py:146
 msgid "auto"
 msgstr "স্বয়ংক্রিয়"
 
@@ -891,7 +890,7 @@ msgid "in"
 msgstr "ভিতর"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
-#: ../src/netconfpkg/NCDialup.py:151
+#: ../src/netconfpkg/NCDialup.py:147
 msgid "manual"
 msgstr "ম্যানুয়েল"
 
@@ -1237,6 +1236,7 @@ msgid "Choose Hardware Type"
 msgstr "হার্ডওয়েরের ধরন বাছাই করুন"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "ইথারনেট"
 
@@ -1245,10 +1245,12 @@ msgid "Hardware type:"
 msgstr "হার্ডওয়্যারের ধরন:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "আইএসডিএন"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "মোডেম"
 
@@ -1266,7 +1268,7 @@ msgstr "টোকেন রিং"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:123
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
+#: ../src/netconfpkg/tui/NCTcpIp.py:114
 msgid "Device"
 msgstr "ডিভাইস"
 
@@ -1389,7 +1391,8 @@ msgid "Monitor the selected device."
 msgstr "বাছাই করা ডিভাইসটি পর্যবেক্ষণ করুন।"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
-#: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
+#: ../src/netconfpkg/tui/NCTcpIp.py:133 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "নেটওয়ার্ক কনফিগারেশন"
@@ -1490,6 +1493,7 @@ msgid "_New..."
 msgstr "নতুন... (_N)"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Primary DNS:"
 msgstr "প্রাথমিক DNS (_P):"
 
@@ -1755,7 +1759,7 @@ msgstr "মোডেমের শব্দমাত্রা: (_v)"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:154 ../src/netconfpkg/NC_functions.py:136
+#: ../src/netconfpkg/NCDialup.py:150 ../src/netconfpkg/NC_functions.py:136
 msgid "None"
 msgstr "কোনটাই নয়"
 
@@ -1841,8 +1845,8 @@ msgstr "মোডেম ডায়াল-আপ কনফিগারেশন"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:320
-#: ../src/netconfpkg/NC_functions.py:408
+#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:328
+#: ../src/netconfpkg/NC_functions.py:407
 #: ../src/netconfpkg/NCHardwareList.py:568 ../src/netconfpkg/NCHardware.py:129
 msgid "Unknown"
 msgstr "অজানা"
@@ -2360,91 +2364,102 @@ msgid "Remote Network"
 msgstr "দূরবর্তী নেটওয়ার্ক"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+#, fuzzy
+msgid "S_econdary DNS:"
+msgstr "দ্বিতীয় DNS: (_S)"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Security Level"
 msgstr "নিরাপত্তার পরিমাপ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
 msgstr "এই ডিভাইসের দ্বারা যে সকল পরিসেবা উপলব্ধ করতে আপনি ইচ্ছুক তা বাছাই করুন"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
 msgstr "পরিসেবা"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Service Description"
 msgstr "পরিসেবার বিবরণ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Services"
 msgstr "পরিসেবাসমূহ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-#, fuzzy
-msgid "Set MRU to:"
-msgstr "MTU-র ক্ষেত্রে মান:"
-
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Set MTU to:"
+#, fuzzy
+msgid "Set M_RU to:"
 msgstr "MTU-র ক্ষেত্রে মান:"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#, fuzzy
+msgid "Set M_TU to:"
+msgstr "MTU-র ক্ষেত্রে মান:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "স্থায়ী নেটওয়ার্ক রুট"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+#, fuzzy
+msgid "Staticall_y set IP addresses:"
+msgstr "স্থায়ীভাবে IP ঠিকানা নির্ধারণ করুন:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "নির্ধারিত ইথারনেট কার্ডের সাথে যুক্ত করা হবে"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "ইথারনেট ডিভাইসের উপনাম ব্যবহার করা হবে"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Delete..."
 msgstr "মুছে ফেলুন... (_D)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Edit..."
 msgstr "সম্পাদনা... (_E)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hardware Address"
 msgstr "হার্ডওয়্যারের ঠিকানা (_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Hardware:"
 msgstr "হার্ডওয়্যার: (_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_High Security (Internet)"
 msgstr "অধিক নিরাপত্তা (ইন্টারনেট) (_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Low Security"
 msgstr "স্বল্প নিরাপত্তা (_L)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Probe"
 msgstr "অনুসন্ধান (_P)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Probe for Address..."
 msgstr "ঠিকানা অনুসন্ধান করা হবে... (_P)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Secure Device (LAN)"
 msgstr "নিরাপদ ডিভাইস (LAN) (_S)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "bootp"
 msgstr "bootp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "dhcp"
 msgstr "dhcp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "dialup"
 msgstr "ডায়ালআপ"
 
@@ -2745,336 +2760,336 @@ msgstr "initscripts এর দরুন নিম্নেলিখিত উপ
 msgid "Nicknames changed"
 msgstr "পরিবর্তিত উপনাম"
 
-#: ../src/netconfpkg/NCDevice.py:300 ../src/netconfpkg/NCDevice.py:306
+#: ../src/netconfpkg/NCDevice.py:308 ../src/netconfpkg/NCDevice.py:314
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, ডিভাইসটি উল্লেখ করা হয় নি অথবা alias-টি কোন সংখ্যা নয়!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:518
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "নেটওয়ার্ক ডিভাইসকে চালু করা হচ্ছে..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:519
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "%s নেটওয়ার্ক ডিভাইসটি চালু করা হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:521
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "%s নেটওয়ার্ক ডিভাইসটি চালু করা সম্ভব নয়!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:538
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "নেটওয়ার্ক ডিভাইস নিষ্ক্রিয় করা হচ্ছে..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:539
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "%s নেটওয়ার্ক ডিভাইসটি নিষ্ক্রিয় করা হচ্ছ, অনুগ্রহ করে অপেক্ষা করুন..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:541
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "%s নেটওয়ার্ক ডিভাইসটি নিষ্ক্রিয় করা সম্ভব নয়!\n"
 
-#: ../src/netconfpkg/NCDialup.py:155
+#: ../src/netconfpkg/NCDialup.py:151
 msgid "Afghanistan"
 msgstr "আফগানিস্থান"
 
-#: ../src/netconfpkg/NCDialup.py:156
+#: ../src/netconfpkg/NCDialup.py:152
 msgid "Albania"
 msgstr "আলবেনিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:157
+#: ../src/netconfpkg/NCDialup.py:153
 msgid "Algeria"
 msgstr "আলজিরিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:158
+#: ../src/netconfpkg/NCDialup.py:154
 msgid "American Samoa"
 msgstr "আমেরিকান সামোয়া"
 
-#: ../src/netconfpkg/NCDialup.py:159
+#: ../src/netconfpkg/NCDialup.py:155
 msgid "Andorra"
 msgstr "এনডোরা"
 
-#: ../src/netconfpkg/NCDialup.py:160
+#: ../src/netconfpkg/NCDialup.py:156
 msgid "Argentina"
 msgstr "আর্জেনটিনা"
 
-#: ../src/netconfpkg/NCDialup.py:161
+#: ../src/netconfpkg/NCDialup.py:157
 msgid "Australia"
 msgstr "অস্ট্রেলিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:162
+#: ../src/netconfpkg/NCDialup.py:158
 msgid "Austria"
 msgstr "অস্ট্রিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:163
+#: ../src/netconfpkg/NCDialup.py:159
 msgid "Belarus"
 msgstr "বেলারুশ"
 
-#: ../src/netconfpkg/NCDialup.py:164
+#: ../src/netconfpkg/NCDialup.py:160
 msgid "Belgium"
 msgstr "বেলজিয়াম"
 
-#: ../src/netconfpkg/NCDialup.py:165
+#: ../src/netconfpkg/NCDialup.py:161
 msgid "Bosnia and Hercegovina"
 msgstr "বসনিয়া এবং হার্জগোভিনা"
 
-#: ../src/netconfpkg/NCDialup.py:166
+#: ../src/netconfpkg/NCDialup.py:162
 msgid "Brazil"
 msgstr "ব্রাজিল"
 
-#: ../src/netconfpkg/NCDialup.py:167
+#: ../src/netconfpkg/NCDialup.py:163
 msgid "British Virgin Islands"
 msgstr "বৃটিশ ভার্জিন দ্বীপপুঞ্জ"
 
-#: ../src/netconfpkg/NCDialup.py:168
+#: ../src/netconfpkg/NCDialup.py:164
 msgid "Bulgaria"
 msgstr "বুলগারিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:169
+#: ../src/netconfpkg/NCDialup.py:165
 msgid "Canada"
 msgstr "কানাডা"
 
-#: ../src/netconfpkg/NCDialup.py:170
+#: ../src/netconfpkg/NCDialup.py:166
 msgid "Central African Republic"
 msgstr "মধ্য আফ্রিকান প্রজাতন্ত্র"
 
-#: ../src/netconfpkg/NCDialup.py:171
+#: ../src/netconfpkg/NCDialup.py:167
 msgid "Chile"
 msgstr "চিলি"
 
-#: ../src/netconfpkg/NCDialup.py:172
+#: ../src/netconfpkg/NCDialup.py:168
 msgid "China"
 msgstr "চীন"
 
-#: ../src/netconfpkg/NCDialup.py:173
+#: ../src/netconfpkg/NCDialup.py:169
 msgid "Colombia"
 msgstr "কলম্বিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:174
+#: ../src/netconfpkg/NCDialup.py:170
 msgid "Croatia"
 msgstr "ক্রোয়েশিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:175
+#: ../src/netconfpkg/NCDialup.py:171
 msgid "Cuba"
 msgstr "কিউবা"
 
-#: ../src/netconfpkg/NCDialup.py:176
+#: ../src/netconfpkg/NCDialup.py:172
 msgid "Cyprus"
 msgstr "সাইপ্রাস"
 
-#: ../src/netconfpkg/NCDialup.py:177
+#: ../src/netconfpkg/NCDialup.py:173
 msgid "Czech Republic"
 msgstr "চেক্‌ প্রজাতন্ত্র"
 
-#: ../src/netconfpkg/NCDialup.py:178
+#: ../src/netconfpkg/NCDialup.py:174
 msgid "Denmark"
 msgstr "ডেনমার্ক"
 
-#: ../src/netconfpkg/NCDialup.py:179
+#: ../src/netconfpkg/NCDialup.py:175
 msgid "Finland"
 msgstr "ফিন‌ল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:180
+#: ../src/netconfpkg/NCDialup.py:176
 msgid "France"
 msgstr "ফ্রান্স"
 
-#: ../src/netconfpkg/NCDialup.py:181
+#: ../src/netconfpkg/NCDialup.py:177
 msgid "Germany"
 msgstr "জার্মানি"
 
-#: ../src/netconfpkg/NCDialup.py:182
+#: ../src/netconfpkg/NCDialup.py:178
 msgid "Greece"
 msgstr "গ্রীস্‌"
 
-#: ../src/netconfpkg/NCDialup.py:183
+#: ../src/netconfpkg/NCDialup.py:179
 msgid "Hong Kong"
 msgstr "হং কং"
 
-#: ../src/netconfpkg/NCDialup.py:184
+#: ../src/netconfpkg/NCDialup.py:180
 msgid "Hungary"
 msgstr "হাঙ্গেরি"
 
-#: ../src/netconfpkg/NCDialup.py:185
+#: ../src/netconfpkg/NCDialup.py:181
 msgid "Iceland"
 msgstr "আইসল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:186
+#: ../src/netconfpkg/NCDialup.py:182
 msgid "India"
 msgstr "ভারত"
 
-#: ../src/netconfpkg/NCDialup.py:187
+#: ../src/netconfpkg/NCDialup.py:183
 msgid "Indonesia"
 msgstr "ইন্দোনেশিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:188
+#: ../src/netconfpkg/NCDialup.py:184
 msgid "Ireland"
 msgstr "আয়ারল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:189
+#: ../src/netconfpkg/NCDialup.py:185
 msgid "Israel"
 msgstr "ইজরায়েল"
 
-#: ../src/netconfpkg/NCDialup.py:190
+#: ../src/netconfpkg/NCDialup.py:186
 msgid "Italy"
 msgstr "ইটালী"
 
-#: ../src/netconfpkg/NCDialup.py:191
+#: ../src/netconfpkg/NCDialup.py:187
 msgid "Japan"
 msgstr "জাপান"
 
-#: ../src/netconfpkg/NCDialup.py:192
+#: ../src/netconfpkg/NCDialup.py:188
 msgid "Kazakhstan"
 msgstr "কাজাখস্থান"
 
-#: ../src/netconfpkg/NCDialup.py:193
+#: ../src/netconfpkg/NCDialup.py:189
 msgid "Korea North"
 msgstr "উত্তর কোরিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:194
+#: ../src/netconfpkg/NCDialup.py:190
 msgid "Korea Republic"
 msgstr "কোরিয় প্রজাতন্ত্র"
 
-#: ../src/netconfpkg/NCDialup.py:195
+#: ../src/netconfpkg/NCDialup.py:191
 msgid "Liechtenstein"
 msgstr "লিখেনস্টাইন"
 
-#: ../src/netconfpkg/NCDialup.py:196
+#: ../src/netconfpkg/NCDialup.py:192
 msgid "Lithuania"
 msgstr "লিথুয়ানিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:197
+#: ../src/netconfpkg/NCDialup.py:193
 msgid "Luxembourg"
 msgstr "লাক্সেমবুর্গ"
 
-#: ../src/netconfpkg/NCDialup.py:198
+#: ../src/netconfpkg/NCDialup.py:194
 msgid "Macedonia"
 msgstr "মেসিডোনিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:199
+#: ../src/netconfpkg/NCDialup.py:195
 msgid "Malaysia"
 msgstr "মালেশিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:200
+#: ../src/netconfpkg/NCDialup.py:196
 msgid "Malta"
 msgstr "মাল্টা"
 
-#: ../src/netconfpkg/NCDialup.py:201
+#: ../src/netconfpkg/NCDialup.py:197
 msgid "Mexico"
 msgstr "মেক্সিকো"
 
-#: ../src/netconfpkg/NCDialup.py:202
+#: ../src/netconfpkg/NCDialup.py:198
 msgid "Moldova"
 msgstr "মলদোভা"
 
-#: ../src/netconfpkg/NCDialup.py:203
+#: ../src/netconfpkg/NCDialup.py:199
 msgid "Monaco"
 msgstr "মোনাকো"
 
-#: ../src/netconfpkg/NCDialup.py:204
+#: ../src/netconfpkg/NCDialup.py:200
 msgid "Netherlands"
 msgstr "নেদারল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:205
+#: ../src/netconfpkg/NCDialup.py:201
 msgid "New Zealand"
 msgstr "নিউজিল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:206
+#: ../src/netconfpkg/NCDialup.py:202
 msgid "Norway"
 msgstr "নরওয়ে"
 
-#: ../src/netconfpkg/NCDialup.py:207
+#: ../src/netconfpkg/NCDialup.py:203
 msgid "Palestine"
 msgstr "প্যালেস্টাইন"
 
-#: ../src/netconfpkg/NCDialup.py:208
+#: ../src/netconfpkg/NCDialup.py:204
 msgid "Philippines"
 msgstr "ফিলিপাইন্স"
 
-#: ../src/netconfpkg/NCDialup.py:209
+#: ../src/netconfpkg/NCDialup.py:205
 msgid "Poland"
 msgstr "পোল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:210
+#: ../src/netconfpkg/NCDialup.py:206
 msgid "Portugal"
 msgstr "পর্তুগাল"
 
-#: ../src/netconfpkg/NCDialup.py:211
+#: ../src/netconfpkg/NCDialup.py:207
 msgid "Romania"
 msgstr "রুমানিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:212
+#: ../src/netconfpkg/NCDialup.py:208
 msgid "Russia"
 msgstr "রাশিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:213
+#: ../src/netconfpkg/NCDialup.py:209
 msgid "Singapore"
 msgstr "সিঙ্গাপুর"
 
-#: ../src/netconfpkg/NCDialup.py:214
+#: ../src/netconfpkg/NCDialup.py:210
 msgid "Slovakia"
 msgstr "স্লোভাকিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:215
+#: ../src/netconfpkg/NCDialup.py:211
 msgid "Slovenia"
 msgstr "স্লোভেনিয়া"
 
-#: ../src/netconfpkg/NCDialup.py:216
+#: ../src/netconfpkg/NCDialup.py:212
 msgid "Spain"
 msgstr "স্পেন"
 
-#: ../src/netconfpkg/NCDialup.py:217
+#: ../src/netconfpkg/NCDialup.py:213
 msgid "Sweden"
 msgstr "সুইডেন"
 
-#: ../src/netconfpkg/NCDialup.py:218
+#: ../src/netconfpkg/NCDialup.py:214
 msgid "Switzerland"
 msgstr "সুইত্‌জারল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:219
+#: ../src/netconfpkg/NCDialup.py:215
 msgid "Taiwan"
 msgstr "তাইওয়ান"
 
-#: ../src/netconfpkg/NCDialup.py:220
+#: ../src/netconfpkg/NCDialup.py:216
 msgid "Thailand"
 msgstr "থাইল্যান্ড"
 
-#: ../src/netconfpkg/NCDialup.py:221
+#: ../src/netconfpkg/NCDialup.py:217
 msgid "Turkey"
 msgstr "তুরস্ক"
 
-#: ../src/netconfpkg/NCDialup.py:222
+#: ../src/netconfpkg/NCDialup.py:218
 msgid "Ukraine"
 msgstr "ইউক্রেন"
 
-#: ../src/netconfpkg/NCDialup.py:223
+#: ../src/netconfpkg/NCDialup.py:219
 msgid "United Kingdom"
 msgstr "যুক্তরাজ্য"
 
-#: ../src/netconfpkg/NCDialup.py:224
+#: ../src/netconfpkg/NCDialup.py:220
 msgid "United States of America"
 msgstr "মার্কিন যুক্তরাষ্ট্র"
 
-#: ../src/netconfpkg/NCDialup.py:225
+#: ../src/netconfpkg/NCDialup.py:221
 msgid "Vietnam"
 msgstr "ভিয়েত্‌নাম"
 
-#: ../src/netconfpkg/NCDialup.py:226
+#: ../src/netconfpkg/NCDialup.py:222
 msgid "Serbia"
 msgstr "সারবিয়া"
 
 # modified by An
 #. FIXED: [175078] String (country name) change request
-#: ../src/netconfpkg/NCDialup.py:227
+#: ../src/netconfpkg/NCDialup.py:223
 msgid "Montenegro"
 msgstr "মন্টেনেগ্রো"
 
@@ -3103,7 +3118,7 @@ msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "আপনার সিস্টেমের জন্য আবশ্যক নিম্নলিখিত প্যাকেজগুলি ইনস্টল করা দরকার!"
 
-#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
+#: ../src/netconfpkg/NC_functions.py:767 ../src/netconfpkg/NC_functions.py:778
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3114,7 +3129,7 @@ msgstr ""
 "সম্ভব হয় নি:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:808
+#: ../src/netconfpkg/NC_functions.py:807
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3127,7 +3142,7 @@ msgstr ""
 "সমস্যা হয়েছে:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:818
+#: ../src/netconfpkg/NC_functions.py:817
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3140,7 +3155,7 @@ msgstr ""
 "সংযোগ করতে সমস্যা হয়েছে:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:828
+#: ../src/netconfpkg/NC_functions.py:827
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3153,7 +3168,7 @@ msgstr ""
 "সমস্যা হয়েছে:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:836
+#: ../src/netconfpkg/NC_functions.py:835
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3162,7 +3177,7 @@ msgstr ""
 "ডায়রেক্টরি তৈরি করতে সমস্যা হয়েছে!\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:981
+#: ../src/netconfpkg/NC_functions.py:980
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "ডিভাইসের সাথে %s-কে যুক্ত করে তা %s প্রোফাইলে লেখা হচ্ছে।"
@@ -3247,10 +3262,88 @@ msgstr ""
 "সম্ভব হয় নি:\n"
 "%s!"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+msgid "<New Device>"
+msgstr "<নতুন ডিভাইস>"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+msgid "Which device type do you want to add?"
+msgstr "কী ধরনের ডিভাইস আপনি যোগ করতে ইচ্ছুক?"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+msgid "Add"
+msgstr "যোগ"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
+msgid "Cancel"
+msgstr "বাতিল"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr ""
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+#, fuzzy
+msgid "Select A Device"
+msgstr "ডিভাইস বাছাই করুন"
+
+# odified by An
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#, fuzzy
+msgid "Save"
+msgstr "প্রস্থান"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+#, fuzzy
+msgid "Hostname"
+msgstr "হোস্টের নাম:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+#, fuzzy
+msgid "Primary DNS"
+msgstr "প্রাথমিক DNS (_P):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "দ্বিতীয় DNS: (_S)"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "তৃতীয় DNS: (_T)"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+#, fuzzy
+msgid "DNS search path"
+msgstr "DNS -র অনুসন্ধানের পাথ:"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
+msgid "Ok"
+msgstr "ঠিক আছে"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+#, fuzzy
+msgid "DNS configuration"
+msgstr "xDSL কনফিগারেশন"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
 msgid "Name"
 msgstr "নাম"
 
@@ -3273,20 +3366,6 @@ msgstr "ISP পাসওয়ার্ড"
 msgid "MSN"
 msgstr "MSN"
 
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "ঠিক আছে"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "বাতিল"
-
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "ISDN কনফিগারেশন"
@@ -3296,22 +3375,22 @@ msgid "Modem Initstring"
 msgstr "মোডেমের Initstring"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:124
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
 msgid "Use DHCP"
 msgstr "DHCP ব্যবহার করো"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:125
-#: ../src/netconfpkg/tui/NCTcpIp.py:99
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
 msgid "Static IP"
 msgstr "স্থায়ী IP"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:126
-#: ../src/netconfpkg/tui/NCTcpIp.py:100
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
 msgid "Netmask"
 msgstr "নেটমাস্ক"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:127
-#: ../src/netconfpkg/tui/NCTcpIp.py:101
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
 msgid "Default gateway IP"
 msgstr "ডিফল্ট গেটওয়ে IP"
 
@@ -3331,6 +3410,16 @@ msgstr "ডিভাইস তৈরি করুন"
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:145
 msgid "Devernet Configuration"
 msgstr "ইথারনেট কনফিগারেশন"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:119
+#, fuzzy
+msgid "Primary DNS Server"
+msgstr "প্রাথমিক DNS (_P):"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:120
+#, fuzzy
+msgid "Secondary DNS Server"
+msgstr "দ্বিতীয় DNS: (_S)"
 
 #: ../src/netconf.py:55
 #, python-format
@@ -3453,9 +3542,6 @@ msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্র�
 #~ msgid "MT_U:"
 #~ msgstr "MT_U:"
 
-#~ msgid "Select Device"
-#~ msgstr "ডিভাইস বাছাই করুন"
-
 #~ msgid "Select the card you want to configure:"
 #~ msgstr "যে কার্ডটি কনফিগার করতে ইচ্ছুক তা বাছাই করুন:"
 
@@ -3482,15 +3568,6 @@ msgstr "নেটওয়ার্ক ডিভাইস নিয়ন্ত্র�
 #, fuzzy
 #~ msgid "Error loading file %s"
 #~ msgstr "এই লাইনটি পার্স করতে সমস্যা হয়েছে: %s"
-
-#~ msgid "Which device type do you want to add?"
-#~ msgstr "কী ধরনের ডিভাইস আপনি যোগ করতে ইচ্ছুক?"
-
-#~ msgid "Add"
-#~ msgstr "যোগ"
-
-#~ msgid "<New Device>"
-#~ msgstr "<নতুন ডিভাইস>"
 
 #~ msgid ""
 #~ "Directory %s is missing!\n"

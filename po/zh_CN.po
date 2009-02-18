@@ -11,13 +11,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-29 01:45+0000\n"
+"POT-Creation-Date: 2009-02-18 12:37+0100\n"
 "PO-Revision-Date: 2008-11-21 22:37+0800\n"
 "Last-Translator: Leah Liu <lliu@redhat.com>\n"
 "Language-Team: Simplified Chinese <zh@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../src/netconf_cmd.py:65
 #, python-format
@@ -500,7 +500,7 @@ msgstr "当父设备启动时激活该设备 (_A)"
 msgid "_Nickname:"
 msgstr "别名(_N)："
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:147
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:146
 #, python-format
 msgid ""
 "Nickname %s is already in use!\n"
@@ -602,7 +602,6 @@ msgid "Select Provider"
 msgstr "选择提供商"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Statically set IP addresses:"
 msgstr "静态设置的 IP 地址："
 
@@ -617,7 +616,7 @@ msgstr "电话号码(_P)："
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:28
 #: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Subnet mask:"
 msgstr "子网掩码(_S)："
 
@@ -798,7 +797,7 @@ msgid "Use _Channel Bundling"
 msgstr "使用通道捆绑(_C)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "添加(_A)..."
 
@@ -852,7 +851,7 @@ msgid "_Use Callback"
 msgstr "使用回叫(_U)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-#: ../src/netconfpkg/NCDialup.py:150
+#: ../src/netconfpkg/NCDialup.py:146
 msgid "auto"
 msgstr "自动"
 
@@ -875,7 +874,7 @@ msgid "in"
 msgstr "入"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
-#: ../src/netconfpkg/NCDialup.py:151
+#: ../src/netconfpkg/NCDialup.py:147
 msgid "manual"
 msgstr "手工"
 
@@ -1244,7 +1243,7 @@ msgstr "令牌环"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:123
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
+#: ../src/netconfpkg/tui/NCTcpIp.py:114
 msgid "Device"
 msgstr "设备"
 
@@ -1368,7 +1367,7 @@ msgstr "监视选中的设备。"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
 #: ../src/netconfpkg/tui/NCPluginDevices.py:76
-#: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
+#: ../src/netconfpkg/tui/NCTcpIp.py:133 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "网络配置"
@@ -1466,6 +1465,7 @@ msgid "_New..."
 msgstr "新建 ... (_N)"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Primary DNS:"
 msgstr "主 DNS(_P)："
 
@@ -1726,7 +1726,7 @@ msgstr "调制解调器流量(_v)："
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:154 ../src/netconfpkg/NC_functions.py:136
+#: ../src/netconfpkg/NCDialup.py:150 ../src/netconfpkg/NC_functions.py:136
 msgid "None"
 msgstr "无"
 
@@ -1808,8 +1808,8 @@ msgstr "调制解调器拨号配置"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:320
-#: ../src/netconfpkg/NC_functions.py:408
+#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:328
+#: ../src/netconfpkg/NC_functions.py:407
 #: ../src/netconfpkg/NCHardwareList.py:568 ../src/netconfpkg/NCHardware.py:129
 msgid "Unknown"
 msgstr "未知"
@@ -2310,90 +2310,102 @@ msgid "Remote Network"
 msgstr "远程网络"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+#, fuzzy
+msgid "S_econdary DNS:"
+msgstr "第二 DNS(_S)："
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Security Level"
 msgstr "安全级别"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
 msgstr "选择您想通过这个设备提供的服务"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
 msgstr "服务"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Service Description"
 msgstr "服务描述"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Services"
 msgstr "服务"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-msgid "Set MRU to:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
+#, fuzzy
+msgid "Set M_RU to:"
 msgstr "设置 MRU 为："
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Set MTU to:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#, fuzzy
+msgid "Set M_TU to:"
 msgstr "设置 MTU 为："
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "静态网络路由"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+#, fuzzy
+msgid "Staticall_y set IP addresses:"
+msgstr "静态设置的 IP 地址："
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "系到指定的以太网卡"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "使用以太网设备别名"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Delete..."
 msgstr "删除(_D)..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Edit..."
 msgstr "编辑(_E)..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hardware Address"
 msgstr "硬件地址(_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Hardware:"
 msgstr "硬件(_H)："
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_High Security (Internet)"
 msgstr "高安全性(互联网)(_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Low Security"
 msgstr "低安全性(_L)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Probe"
 msgstr "探测(_P)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Probe for Address..."
 msgstr "探测地址(_P)..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Secure Device (LAN)"
 msgstr "安全设备(LAN)(_S)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "bootp"
 msgstr "bootp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "dhcp"
 msgstr "dhcp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "dialup"
 msgstr "拨号"
 
@@ -2680,335 +2692,335 @@ msgstr "根据初始脚本而改变了以下别名：\n"
 msgid "Nicknames changed"
 msgstr "别名被改变"
 
-#: ../src/netconfpkg/NCDevice.py:300 ../src/netconfpkg/NCDevice.py:306
+#: ../src/netconfpkg/NCDevice.py:308 ../src/netconfpkg/NCDevice.py:314
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s，没有指定设备或别名不是数字！"
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:518
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "网络设备正在被激活..."
 
-#: ../src/netconfpkg/NCDevice.py:510
+#: ../src/netconfpkg/NCDevice.py:519
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "正在激活网络设备 %s，请稍候..."
 
-#: ../src/netconfpkg/NCDevice.py:512
+#: ../src/netconfpkg/NCDevice.py:521
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "无法激活网络设备 %s！\n"
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:538
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "网络设备正在被取消激活..."
 
-#: ../src/netconfpkg/NCDevice.py:530
+#: ../src/netconfpkg/NCDevice.py:539
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "正在取消激活网络设备 %s，请稍候..."
 
-#: ../src/netconfpkg/NCDevice.py:532
+#: ../src/netconfpkg/NCDevice.py:541
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "无法取消激活网络设备 %s！\n"
 
-#: ../src/netconfpkg/NCDialup.py:155
+#: ../src/netconfpkg/NCDialup.py:151
 msgid "Afghanistan"
 msgstr "阿富汗"
 
-#: ../src/netconfpkg/NCDialup.py:156
+#: ../src/netconfpkg/NCDialup.py:152
 msgid "Albania"
 msgstr "阿尔巴尼亚"
 
-#: ../src/netconfpkg/NCDialup.py:157
+#: ../src/netconfpkg/NCDialup.py:153
 msgid "Algeria"
 msgstr "阿尔及利亚"
 
-#: ../src/netconfpkg/NCDialup.py:158
+#: ../src/netconfpkg/NCDialup.py:154
 msgid "American Samoa"
 msgstr "美属萨摩尔"
 
-#: ../src/netconfpkg/NCDialup.py:159
+#: ../src/netconfpkg/NCDialup.py:155
 msgid "Andorra"
 msgstr "安道尔"
 
-#: ../src/netconfpkg/NCDialup.py:160
+#: ../src/netconfpkg/NCDialup.py:156
 msgid "Argentina"
 msgstr "阿根廷"
 
-#: ../src/netconfpkg/NCDialup.py:161
+#: ../src/netconfpkg/NCDialup.py:157
 msgid "Australia"
 msgstr "澳大利亚"
 
-#: ../src/netconfpkg/NCDialup.py:162
+#: ../src/netconfpkg/NCDialup.py:158
 msgid "Austria"
 msgstr "奥地利"
 
-#: ../src/netconfpkg/NCDialup.py:163
+#: ../src/netconfpkg/NCDialup.py:159
 msgid "Belarus"
 msgstr "白俄罗斯"
 
-#: ../src/netconfpkg/NCDialup.py:164
+#: ../src/netconfpkg/NCDialup.py:160
 msgid "Belgium"
 msgstr "比利时"
 
-#: ../src/netconfpkg/NCDialup.py:165
+#: ../src/netconfpkg/NCDialup.py:161
 msgid "Bosnia and Hercegovina"
 msgstr "波斯尼亚和黑塞哥维那"
 
-#: ../src/netconfpkg/NCDialup.py:166
+#: ../src/netconfpkg/NCDialup.py:162
 msgid "Brazil"
 msgstr "巴西"
 
-#: ../src/netconfpkg/NCDialup.py:167
+#: ../src/netconfpkg/NCDialup.py:163
 msgid "British Virgin Islands"
 msgstr "英属维尔京群岛"
 
-#: ../src/netconfpkg/NCDialup.py:168
+#: ../src/netconfpkg/NCDialup.py:164
 msgid "Bulgaria"
 msgstr "保加利亚"
 
-#: ../src/netconfpkg/NCDialup.py:169
+#: ../src/netconfpkg/NCDialup.py:165
 msgid "Canada"
 msgstr "加拿大"
 
-#: ../src/netconfpkg/NCDialup.py:170
+#: ../src/netconfpkg/NCDialup.py:166
 msgid "Central African Republic"
 msgstr "中非共和国"
 
-#: ../src/netconfpkg/NCDialup.py:171
+#: ../src/netconfpkg/NCDialup.py:167
 msgid "Chile"
 msgstr "智利"
 
-#: ../src/netconfpkg/NCDialup.py:172
+#: ../src/netconfpkg/NCDialup.py:168
 msgid "China"
 msgstr "中国"
 
-#: ../src/netconfpkg/NCDialup.py:173
+#: ../src/netconfpkg/NCDialup.py:169
 msgid "Colombia"
 msgstr "哥伦比亚"
 
-#: ../src/netconfpkg/NCDialup.py:174
+#: ../src/netconfpkg/NCDialup.py:170
 msgid "Croatia"
 msgstr "克罗地亚"
 
-#: ../src/netconfpkg/NCDialup.py:175
+#: ../src/netconfpkg/NCDialup.py:171
 msgid "Cuba"
 msgstr "古巴"
 
-#: ../src/netconfpkg/NCDialup.py:176
+#: ../src/netconfpkg/NCDialup.py:172
 msgid "Cyprus"
 msgstr "塞浦路斯"
 
-#: ../src/netconfpkg/NCDialup.py:177
+#: ../src/netconfpkg/NCDialup.py:173
 msgid "Czech Republic"
 msgstr "捷克共和国"
 
-#: ../src/netconfpkg/NCDialup.py:178
+#: ../src/netconfpkg/NCDialup.py:174
 msgid "Denmark"
 msgstr "丹麦"
 
-#: ../src/netconfpkg/NCDialup.py:179
+#: ../src/netconfpkg/NCDialup.py:175
 msgid "Finland"
 msgstr "芬兰"
 
-#: ../src/netconfpkg/NCDialup.py:180
+#: ../src/netconfpkg/NCDialup.py:176
 msgid "France"
 msgstr "法国"
 
-#: ../src/netconfpkg/NCDialup.py:181
+#: ../src/netconfpkg/NCDialup.py:177
 msgid "Germany"
 msgstr "德国"
 
-#: ../src/netconfpkg/NCDialup.py:182
+#: ../src/netconfpkg/NCDialup.py:178
 msgid "Greece"
 msgstr "希腊"
 
-#: ../src/netconfpkg/NCDialup.py:183
+#: ../src/netconfpkg/NCDialup.py:179
 msgid "Hong Kong"
 msgstr "中国香港"
 
-#: ../src/netconfpkg/NCDialup.py:184
+#: ../src/netconfpkg/NCDialup.py:180
 msgid "Hungary"
 msgstr "匈牙利"
 
-#: ../src/netconfpkg/NCDialup.py:185
+#: ../src/netconfpkg/NCDialup.py:181
 msgid "Iceland"
 msgstr "冰岛"
 
-#: ../src/netconfpkg/NCDialup.py:186
+#: ../src/netconfpkg/NCDialup.py:182
 msgid "India"
 msgstr "印度"
 
-#: ../src/netconfpkg/NCDialup.py:187
+#: ../src/netconfpkg/NCDialup.py:183
 msgid "Indonesia"
 msgstr "印度尼西亚"
 
-#: ../src/netconfpkg/NCDialup.py:188
+#: ../src/netconfpkg/NCDialup.py:184
 msgid "Ireland"
 msgstr "爱尔兰"
 
-#: ../src/netconfpkg/NCDialup.py:189
+#: ../src/netconfpkg/NCDialup.py:185
 msgid "Israel"
 msgstr "以色列"
 
-#: ../src/netconfpkg/NCDialup.py:190
+#: ../src/netconfpkg/NCDialup.py:186
 msgid "Italy"
 msgstr "意大利"
 
-#: ../src/netconfpkg/NCDialup.py:191
+#: ../src/netconfpkg/NCDialup.py:187
 msgid "Japan"
 msgstr "日本"
 
-#: ../src/netconfpkg/NCDialup.py:192
+#: ../src/netconfpkg/NCDialup.py:188
 msgid "Kazakhstan"
 msgstr "哈萨克斯坦"
 
-#: ../src/netconfpkg/NCDialup.py:193
+#: ../src/netconfpkg/NCDialup.py:189
 msgid "Korea North"
 msgstr "北朝鲜"
 
-#: ../src/netconfpkg/NCDialup.py:194
+#: ../src/netconfpkg/NCDialup.py:190
 msgid "Korea Republic"
 msgstr "朝鲜共和国"
 
-#: ../src/netconfpkg/NCDialup.py:195
+#: ../src/netconfpkg/NCDialup.py:191
 msgid "Liechtenstein"
 msgstr "列支敦士登"
 
-#: ../src/netconfpkg/NCDialup.py:196
+#: ../src/netconfpkg/NCDialup.py:192
 msgid "Lithuania"
 msgstr "立陶宛"
 
-#: ../src/netconfpkg/NCDialup.py:197
+#: ../src/netconfpkg/NCDialup.py:193
 msgid "Luxembourg"
 msgstr "卢森堡"
 
-#: ../src/netconfpkg/NCDialup.py:198
+#: ../src/netconfpkg/NCDialup.py:194
 msgid "Macedonia"
 msgstr "马塞多尼亚"
 
-#: ../src/netconfpkg/NCDialup.py:199
+#: ../src/netconfpkg/NCDialup.py:195
 msgid "Malaysia"
 msgstr "马来西亚"
 
-#: ../src/netconfpkg/NCDialup.py:200
+#: ../src/netconfpkg/NCDialup.py:196
 msgid "Malta"
 msgstr "马耳他"
 
-#: ../src/netconfpkg/NCDialup.py:201
+#: ../src/netconfpkg/NCDialup.py:197
 msgid "Mexico"
 msgstr "墨西哥"
 
-#: ../src/netconfpkg/NCDialup.py:202
+#: ../src/netconfpkg/NCDialup.py:198
 msgid "Moldova"
 msgstr "摩尔多瓦"
 
-#: ../src/netconfpkg/NCDialup.py:203
+#: ../src/netconfpkg/NCDialup.py:199
 msgid "Monaco"
 msgstr "摩那哥"
 
-#: ../src/netconfpkg/NCDialup.py:204
+#: ../src/netconfpkg/NCDialup.py:200
 msgid "Netherlands"
 msgstr "荷兰"
 
-#: ../src/netconfpkg/NCDialup.py:205
+#: ../src/netconfpkg/NCDialup.py:201
 msgid "New Zealand"
 msgstr "新西兰"
 
-#: ../src/netconfpkg/NCDialup.py:206
+#: ../src/netconfpkg/NCDialup.py:202
 msgid "Norway"
 msgstr "挪威"
 
-#: ../src/netconfpkg/NCDialup.py:207
+#: ../src/netconfpkg/NCDialup.py:203
 msgid "Palestine"
 msgstr "巴勒斯坦"
 
-#: ../src/netconfpkg/NCDialup.py:208
+#: ../src/netconfpkg/NCDialup.py:204
 msgid "Philippines"
 msgstr "菲律宾"
 
-#: ../src/netconfpkg/NCDialup.py:209
+#: ../src/netconfpkg/NCDialup.py:205
 msgid "Poland"
 msgstr "波兰"
 
-#: ../src/netconfpkg/NCDialup.py:210
+#: ../src/netconfpkg/NCDialup.py:206
 msgid "Portugal"
 msgstr "葡萄牙"
 
-#: ../src/netconfpkg/NCDialup.py:211
+#: ../src/netconfpkg/NCDialup.py:207
 msgid "Romania"
 msgstr "罗马尼亚"
 
-#: ../src/netconfpkg/NCDialup.py:212
+#: ../src/netconfpkg/NCDialup.py:208
 msgid "Russia"
 msgstr "俄罗斯"
 
-#: ../src/netconfpkg/NCDialup.py:213
+#: ../src/netconfpkg/NCDialup.py:209
 msgid "Singapore"
 msgstr "新加坡"
 
-#: ../src/netconfpkg/NCDialup.py:214
+#: ../src/netconfpkg/NCDialup.py:210
 msgid "Slovakia"
 msgstr "斯洛伐克"
 
-#: ../src/netconfpkg/NCDialup.py:215
+#: ../src/netconfpkg/NCDialup.py:211
 msgid "Slovenia"
 msgstr "斯洛文尼亚"
 
-#: ../src/netconfpkg/NCDialup.py:216
+#: ../src/netconfpkg/NCDialup.py:212
 msgid "Spain"
 msgstr "西班牙"
 
-#: ../src/netconfpkg/NCDialup.py:217
+#: ../src/netconfpkg/NCDialup.py:213
 msgid "Sweden"
 msgstr "瑞典"
 
-#: ../src/netconfpkg/NCDialup.py:218
+#: ../src/netconfpkg/NCDialup.py:214
 msgid "Switzerland"
 msgstr "瑞士"
 
-#: ../src/netconfpkg/NCDialup.py:219
+#: ../src/netconfpkg/NCDialup.py:215
 msgid "Taiwan"
 msgstr "中国台湾"
 
-#: ../src/netconfpkg/NCDialup.py:220
+#: ../src/netconfpkg/NCDialup.py:216
 msgid "Thailand"
 msgstr "泰国"
 
-#: ../src/netconfpkg/NCDialup.py:221
+#: ../src/netconfpkg/NCDialup.py:217
 msgid "Turkey"
 msgstr "土耳其"
 
-#: ../src/netconfpkg/NCDialup.py:222
+#: ../src/netconfpkg/NCDialup.py:218
 msgid "Ukraine"
 msgstr "乌克兰"
 
-#: ../src/netconfpkg/NCDialup.py:223
+#: ../src/netconfpkg/NCDialup.py:219
 msgid "United Kingdom"
 msgstr "英国"
 
-#: ../src/netconfpkg/NCDialup.py:224
+#: ../src/netconfpkg/NCDialup.py:220
 msgid "United States of America"
 msgstr "美国"
 
-#: ../src/netconfpkg/NCDialup.py:225
+#: ../src/netconfpkg/NCDialup.py:221
 msgid "Vietnam"
 msgstr "越南"
 
-#: ../src/netconfpkg/NCDialup.py:226
+#: ../src/netconfpkg/NCDialup.py:222
 msgid "Serbia"
 msgstr "塞尔维亚"
 
 #. FIXED: [175078] String (country name) change request
-#: ../src/netconfpkg/NCDialup.py:227
+#: ../src/netconfpkg/NCDialup.py:223
 msgid "Montenegro"
 msgstr "蒙特尼哥罗"
 
@@ -3036,7 +3048,7 @@ msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "您必须安装下列软件包，它们是您的系统所必需的！"
 
-#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
+#: ../src/netconfpkg/NC_functions.py:767 ../src/netconfpkg/NC_functions.py:778
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3046,7 +3058,7 @@ msgstr ""
 "删除 %s 时出错：\n"
 "%s！"
 
-#: ../src/netconfpkg/NC_functions.py:808
+#: ../src/netconfpkg/NC_functions.py:807
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3059,7 +3071,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: ../src/netconfpkg/NC_functions.py:818
+#: ../src/netconfpkg/NC_functions.py:817
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3072,7 +3084,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: ../src/netconfpkg/NC_functions.py:828
+#: ../src/netconfpkg/NC_functions.py:827
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3085,7 +3097,7 @@ msgstr ""
 "%s \n"
 "时出错： %s！"
 
-#: ../src/netconfpkg/NC_functions.py:836
+#: ../src/netconfpkg/NC_functions.py:835
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3094,7 +3106,7 @@ msgstr ""
 "创建目录时出错！\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:981
+#: ../src/netconfpkg/NC_functions.py:980
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "把 %s 连接到设备上并放入配置文件 %s 中。"
@@ -3197,7 +3209,7 @@ msgstr "添加"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
 msgid "Cancel"
 msgstr "取消"
 
@@ -3231,8 +3243,9 @@ msgid "Tertiary DNS"
 msgstr "第三 DNS"
 
 #: ../src/netconfpkg/tui/NCPluginDNS.py:59
-msgid "Search"
-msgstr "搜索"
+#, fuzzy
+msgid "DNS search path"
+msgstr "DNS 搜寻路径："
 
 #. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
 #. dynip.setCallback(useDynamicCheckBox)
@@ -3240,7 +3253,7 @@ msgstr "搜索"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
 msgid "Ok"
 msgstr "确定"
 
@@ -3251,7 +3264,7 @@ msgstr "DNS 配置"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
 msgid "Name"
 msgstr "名称"
 
@@ -3283,22 +3296,22 @@ msgid "Modem Initstring"
 msgstr "调制解调器初始字符串"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:124
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
 msgid "Use DHCP"
 msgstr "使用 DHCP"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:125
-#: ../src/netconfpkg/tui/NCTcpIp.py:99
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
 msgid "Static IP"
 msgstr "竞态 IP"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:126
-#: ../src/netconfpkg/tui/NCTcpIp.py:100
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
 msgid "Netmask"
 msgstr "子网掩码"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:127
-#: ../src/netconfpkg/tui/NCTcpIp.py:101
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
 msgid "Default gateway IP"
 msgstr "默认网关 IP"
 
@@ -3317,6 +3330,16 @@ msgstr "写设备Bus ID"
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:145
 msgid "Devernet Configuration"
 msgstr "Devernet 配置"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:119
+#, fuzzy
+msgid "Primary DNS Server"
+msgstr "主 DNS"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:120
+#, fuzzy
+msgid "Secondary DNS Server"
+msgstr "第二 DNS"
 
 #: ../src/netconf.py:55
 #, python-format
@@ -3406,3 +3429,5 @@ msgstr "网络"
 msgid "Control and monitor network devices"
 msgstr "控制和监视网络设备"
 
+#~ msgid "Search"
+#~ msgstr "搜索"

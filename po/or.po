@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: system-config-network.master.or\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 16:06+0100\n"
+"POT-Creation-Date: 2009-02-18 12:37+0100\n"
 "PO-Revision-Date: 2008-09-26 16:00+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya\n"
@@ -512,7 +512,7 @@ msgstr "ମୂଳ ଉପକରଣ ର ପ୍ରାରମ୍ଭ ସମୟ ରେ 
 msgid "_Nickname:"
 msgstr "ଡାକ ନାମ (_N):"
 
-#: ../src/netconfpkg/gui/DeviceConfigDialog.py:147
+#: ../src/netconfpkg/gui/DeviceConfigDialog.py:146
 #, python-format
 msgid ""
 "Nickname %s is already in use!\n"
@@ -618,7 +618,6 @@ msgid "Select Provider"
 msgstr "ପ୍ରବନ୍ଧକ ଙ୍କ ଚୟନ କରନ୍ତୁ"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:23
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Statically set IP addresses:"
 msgstr "ଆଇ.ପି. ଠିକଣା ସ୍ଥୈତିକ ଭାବରେ ସେଟ କରନ୍ତୁ:"
 
@@ -633,7 +632,7 @@ msgstr "ଫୋନ ନମ୍ବର (_P):"
 
 #: ../src/netconfpkg/gui/DialupDruid.glade.h:28
 #: ../src/netconfpkg/gui/editadress.glade.h:4
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
 msgid "_Subnet mask:"
 msgstr "ସବନେଟ ମାସ୍କ (_S):"
 
@@ -820,7 +819,7 @@ msgid "Use _Channel Bundling"
 msgstr "ଉପପଥ ବନ୍ଧନ କୁ ବ୍ଯବହାର କରନ୍ତୁ (_C)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:45
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
 msgid "_Add..."
 msgstr "ଯୋଗ କରନ୍ତୁ (_A)..."
 
@@ -874,7 +873,7 @@ msgid "_Use Callback"
 msgstr "କଲବେକ୍ କୁ ବ୍ଯବହାର କରନ୍ତୁ (_U)"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:64
-#: ../src/netconfpkg/NCDialup.py:150
+#: ../src/netconfpkg/NCDialup.py:146
 msgid "auto"
 msgstr "ସ୍ବୟଂଚାଳିତ"
 
@@ -897,7 +896,7 @@ msgid "in"
 msgstr "ଭିତର"
 
 #: ../src/netconfpkg/gui/DialupInterfaceDialog.glade.h:68
-#: ../src/netconfpkg/NCDialup.py:151
+#: ../src/netconfpkg/NCDialup.py:147
 msgid "manual"
 msgstr "ମେନ୍ଯୁଆଲ"
 
@@ -1235,6 +1234,7 @@ msgid "Choose Hardware Type"
 msgstr "ହାର୍ଡୱେର ର ଭିନ୍ନତା କୁ ଚୟନ କରନ୍ତୁ"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:2
+#: ../src/netconfpkg/tui/NCPluginDevices.py:68
 msgid "Ethernet"
 msgstr "ଇଥରନେଟ"
 
@@ -1243,10 +1243,12 @@ msgid "Hardware type:"
 msgstr "ହାର୍ଡୱେର ର ଭିନ୍ନତା:"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:4
+#: ../src/netconfpkg/tui/NCPluginDevices.py:70
 msgid "ISDN"
 msgstr "ISDN"
 
 #: ../src/netconfpkg/gui/hardwaretype.glade.h:5
+#: ../src/netconfpkg/tui/NCPluginDevices.py:69
 msgid "Modem"
 msgstr "ମୋଡେମ"
 
@@ -1264,7 +1266,7 @@ msgstr "ସାଙ୍କେତିକ ବଳୟ"
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:68
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:123
-#: ../src/netconfpkg/tui/NCTcpIp.py:97
+#: ../src/netconfpkg/tui/NCTcpIp.py:114
 msgid "Device"
 msgstr "ଉପକରଣ"
 
@@ -1387,7 +1389,8 @@ msgid "Monitor the selected device."
 msgstr "ଚୟିତ ଉପକରଣ ମାନଙ୍କ ଉପରେ ଦୃଷ୍ଟି ରଖନ୍ତୁ।"
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:16
-#: ../src/netconfpkg/tui/NCTcpIp.py:112 ../src/netconf_tui.py:153
+#: ../src/netconfpkg/tui/NCPluginDevices.py:76
+#: ../src/netconfpkg/tui/NCTcpIp.py:133 ../src/netconf_tui.py:153
 #: ../system-config-network.desktop.in.h:3
 msgid "Network Configuration"
 msgstr "ନେଟୱାର୍କ ବିନ୍ଯାସ"
@@ -1490,6 +1493,7 @@ msgid "_New..."
 msgstr "ନୂତନ (_N)..."
 
 #: ../src/netconfpkg/gui/maindialog.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
 msgid "_Primary DNS:"
 msgstr "ମୌଳିକ DNS (_P):"
 
@@ -1755,7 +1759,7 @@ msgstr "ମୋଡେମ ର ପ୍ରବଳତା (_v):"
 
 #: ../src/netconfpkg/gui/modemconfig.glade.h:8
 #: ../src/netconfpkg/gui/ModemDruid.glade.h:7
-#: ../src/netconfpkg/NCDialup.py:154 ../src/netconfpkg/NC_functions.py:136
+#: ../src/netconfpkg/NCDialup.py:150 ../src/netconfpkg/NC_functions.py:136
 msgid "None"
 msgstr "କିଛି ନୁହେଁ"
 
@@ -1841,8 +1845,8 @@ msgstr "ମୋଡେମ ଡାଏଲ-ଅପ ବିନ୍ଯାସ"
 
 #: ../src/netconfpkg/gui/NCPluginEthernetHardware.py:128
 #: ../src/netconfpkg/gui/NCPluginTokenRingHardware.py:103
-#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:320
-#: ../src/netconfpkg/NC_functions.py:408
+#: ../src/netconfpkg/NCDeviceList.py:74 ../src/netconfpkg/NCDevice.py:328
+#: ../src/netconfpkg/NC_functions.py:407
 #: ../src/netconfpkg/NCHardwareList.py:568 ../src/netconfpkg/NCHardware.py:129
 msgid "Unknown"
 msgstr "ଅଜଣା"
@@ -2351,90 +2355,102 @@ msgid "Remote Network"
 msgstr "ଦୂରସ୍ଥ ନେଟୱାର୍କ"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:24
+#, fuzzy
+msgid "S_econdary DNS:"
+msgstr "ଦ୍ବିତୀୟକ DNS (_S):"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
 msgid "Security Level"
 msgstr "ସୁରକ୍ଷା ସ୍ତର"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:25
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
 msgid "Select the services you want to provide through this device"
 msgstr "ଏହି ଉପକରଣ ଦେଇ ପ୍ରଦାନ କରିବା ପାଇଁ ଚାହୁଁଥିବା ସେବା ମାନଙ୍କୁ ଚୟନ କରନ୍ତୁ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:26
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
 msgid "Service"
 msgstr "ସେବା"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:27
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
 msgid "Service Description"
 msgstr "ସେବା ର ବର୍ଣ୍ଣନା"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:28
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
 msgid "Services"
 msgstr "ସେବା ମାନ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:29
-msgid "Set MRU to:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
+#, fuzzy
+msgid "Set M_RU to:"
 msgstr "MTU କୁ ସେଟ କରନ୍ତୁ:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:30
-msgid "Set MTU to:"
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#, fuzzy
+msgid "Set M_TU to:"
 msgstr "MTU କୁ ଏପରି ଭାବରେ ବିନ୍ଯାସ କରନ୍ତୁ:"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:31
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:32
 msgid "Static Network Routes"
 msgstr "ସ୍ଥୈତିକ ନେଟୱାର୍କ ରାସ୍ତା"
 
 #: ../src/netconfpkg/gui/sharedtcpip.glade.h:33
+#, fuzzy
+msgid "Staticall_y set IP addresses:"
+msgstr "ଆଇ.ପି. ଠିକଣା ସ୍ଥୈତିକ ଭାବରେ ସେଟ କରନ୍ତୁ:"
+
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
 msgid "Tie to specific ethernet card"
 msgstr "ନିର୍ଦ୍ଦିଷ୍ଟ ଇଥରନେଟ କାର୍ଡ ସହିତ ସଂଯୋଜିତ କରନ୍ତୁ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:34
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:35
 msgid "Use ethernet device aliases"
 msgstr "ଇଥରନେଟ ଉପକରଣ ର ଉପନାମ ମାନଙ୍କୁ ବ୍ଯବହାର କରନ୍ତୁ"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:36
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
 msgid "_Delete..."
 msgstr "ଅପସାରଣ କରନ୍ତୁ (_D)..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:37
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
 msgid "_Edit..."
 msgstr "ସମ୍ପାଦନ କରନ୍ତୁ (_E)..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:38
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
 msgid "_Hardware Address"
 msgstr "ହାର୍ଡୱେର ଠିକଣା (_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:39
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
 msgid "_Hardware:"
 msgstr "ହାର୍ଡୱେର (_H):"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:40
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
 msgid "_High Security (Internet)"
 msgstr "ଉଚ୍ଚକୋଟୀ ର ସୁରକ୍ଷା (ଇଣ୍ଟରନେଟ) (_H)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:41
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
 msgid "_Low Security"
 msgstr "ନିମ୍ନମାନ ର ସୁରକ୍ଷା (_L)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:42
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
 msgid "_Probe"
 msgstr "ଖୋଜନ୍ତୁ (_P)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:43
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:45
 msgid "_Probe for Address..."
 msgstr "ଠିକଣା ପାଇଁ ଖୋଜନ୍ତୁ (_P)..."
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:44
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
 msgid "_Secure Device (LAN)"
 msgstr "ସୁରକ୍ଷିତ ଯନ୍ତ୍ର (LAN) (_S)"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:46
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
 msgid "bootp"
 msgstr "bootp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:47
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:49
 msgid "dhcp"
 msgstr "dhcp"
 
-#: ../src/netconfpkg/gui/sharedtcpip.glade.h:48
+#: ../src/netconfpkg/gui/sharedtcpip.glade.h:50
 msgid "dialup"
 msgstr "ଡାଏଲ-ଅପ"
 
@@ -2726,335 +2742,335 @@ msgstr "initscripts ପାଇଁ ନିମ୍ନଲିଖିତ ଡାକ ନା
 msgid "Nicknames changed"
 msgstr "ଡାକ ନାମ ଗୁଡିକ ପରିବର୍ତିତ ହୋଇଗଲା"
 
-#: ../src/netconfpkg/NCDevice.py:300 ../src/netconfpkg/NCDevice.py:306
+#: ../src/netconfpkg/NCDevice.py:308 ../src/netconfpkg/NCDevice.py:314
 #, python-format
 msgid "%s, Device not specified or alias not a number!"
 msgstr "%s, ଉପକରଣ କୁ ଉଲ୍ଲକ୍ଷିତ କରାଯାଇ ନାହିଁ କିମ୍ବା ଉପନାମ ଟି ଗୋଟିଏ ସଂଖ୍ଯା ନୁହେଁ!"
 
-#: ../src/netconfpkg/NCDevice.py:508
+#: ../src/netconfpkg/NCDevice.py:518
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:88
 msgid "Network device activating..."
 msgstr "ନେଟୱାର୍କ ଉପକରଣ ଟି ସକ୍ରିୟଣ ହେଉଅଛି..."
 
-#: ../src/netconfpkg/NCDevice.py:509
+#: ../src/netconfpkg/NCDevice.py:519
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:89
 #, python-format
 msgid "Activating network device %s, please wait..."
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ସକ୍ରିୟଣ କରୁଅଛି, ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ..."
 
-#: ../src/netconfpkg/NCDevice.py:511
+#: ../src/netconfpkg/NCDevice.py:521
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:91
 #, python-format
 msgid "Cannot activate network device %s!\n"
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ସକ୍ରିୟଣ କରି ପାରିବ ନାହିଁ!\n"
 
-#: ../src/netconfpkg/NCDevice.py:528
+#: ../src/netconfpkg/NCDevice.py:538
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:112
 msgid "Network device deactivating..."
 msgstr "ନେଟୱାର୍କ ଉପକରଣ ଟି ନିଷ୍କ୍ରିୟ ହେଉଅଛି..."
 
-#: ../src/netconfpkg/NCDevice.py:529
+#: ../src/netconfpkg/NCDevice.py:539
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:113
 #, python-format
 msgid "Deactivating network device %s, please wait..."
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ନିଷ୍କ୍ରିୟ କରୁଅଛି, ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ..."
 
-#: ../src/netconfpkg/NCDevice.py:531
+#: ../src/netconfpkg/NCDevice.py:541
 #: ../src/netconfpkg/plugins/NCPluginDevIsdn.py:115
 #, python-format
 msgid "Cannot deactivate network device %s!\n"
 msgstr "%s ନେଟୱାର୍କ ଉପକରଣ କୁ ନିଷ୍କ୍ରିୟ କରି ପାରିବ ନାହିଁ!\n"
 
-#: ../src/netconfpkg/NCDialup.py:155
+#: ../src/netconfpkg/NCDialup.py:151
 msgid "Afghanistan"
 msgstr "ଆଫଗାନିସ୍ତାନ"
 
-#: ../src/netconfpkg/NCDialup.py:156
+#: ../src/netconfpkg/NCDialup.py:152
 msgid "Albania"
 msgstr "ଅଲ୍ବାନୀୟା"
 
-#: ../src/netconfpkg/NCDialup.py:157
+#: ../src/netconfpkg/NCDialup.py:153
 msgid "Algeria"
 msgstr "ଆଲଜେରିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:158
+#: ../src/netconfpkg/NCDialup.py:154
 msgid "American Samoa"
 msgstr "ଆମେରିକୀୟ ସାମୋଆ"
 
-#: ../src/netconfpkg/NCDialup.py:159
+#: ../src/netconfpkg/NCDialup.py:155
 msgid "Andorra"
 msgstr "ଅଣ୍ଟୋରା"
 
-#: ../src/netconfpkg/NCDialup.py:160
+#: ../src/netconfpkg/NCDialup.py:156
 msgid "Argentina"
 msgstr "ଅାର୍ଜେଣ୍ଟୀନା"
 
-#: ../src/netconfpkg/NCDialup.py:161
+#: ../src/netconfpkg/NCDialup.py:157
 msgid "Australia"
 msgstr "ଅଷ୍ଟ୍ରେଲିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:162
+#: ../src/netconfpkg/NCDialup.py:158
 msgid "Austria"
 msgstr "ଅଷ୍ଟ୍ରିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:163
+#: ../src/netconfpkg/NCDialup.py:159
 msgid "Belarus"
 msgstr "ବେଲାରୁଷ"
 
-#: ../src/netconfpkg/NCDialup.py:164
+#: ../src/netconfpkg/NCDialup.py:160
 msgid "Belgium"
 msgstr "ବେଲଜିୟମ"
 
-#: ../src/netconfpkg/NCDialup.py:165
+#: ../src/netconfpkg/NCDialup.py:161
 msgid "Bosnia and Hercegovina"
 msgstr "ବୋସ୍ନିୟା ଏବଂ ହର୍ଜେଗୋଭିନା"
 
-#: ../src/netconfpkg/NCDialup.py:166
+#: ../src/netconfpkg/NCDialup.py:162
 msgid "Brazil"
 msgstr "ବ୍ରାଜୀଲ"
 
-#: ../src/netconfpkg/NCDialup.py:167
+#: ../src/netconfpkg/NCDialup.py:163
 msgid "British Virgin Islands"
 msgstr "ବ୍ରିଟିଶ ଭର୍ଜିନ ଦ୍ବୀପ"
 
-#: ../src/netconfpkg/NCDialup.py:168
+#: ../src/netconfpkg/NCDialup.py:164
 msgid "Bulgaria"
 msgstr "ବୁଲଗାରିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:169
+#: ../src/netconfpkg/NCDialup.py:165
 msgid "Canada"
 msgstr "କାନାଡା"
 
-#: ../src/netconfpkg/NCDialup.py:170
+#: ../src/netconfpkg/NCDialup.py:166
 msgid "Central African Republic"
 msgstr "ମଦ୍ଦ୍ଯବର୍ତ୍ତୀ ଆଫ୍ରୀକିୟ ସାଧାରଣତନ୍ତ୍ର"
 
-#: ../src/netconfpkg/NCDialup.py:171
+#: ../src/netconfpkg/NCDialup.py:167
 msgid "Chile"
 msgstr "ଚିଲୀ"
 
-#: ../src/netconfpkg/NCDialup.py:172
+#: ../src/netconfpkg/NCDialup.py:168
 msgid "China"
 msgstr "ଚୀନ"
 
-#: ../src/netconfpkg/NCDialup.py:173
+#: ../src/netconfpkg/NCDialup.py:169
 msgid "Colombia"
 msgstr "କୋଲୋମ୍ବିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:174
+#: ../src/netconfpkg/NCDialup.py:170
 msgid "Croatia"
 msgstr "କ୍ରୋଏଶିଆ"
 
-#: ../src/netconfpkg/NCDialup.py:175
+#: ../src/netconfpkg/NCDialup.py:171
 msgid "Cuba"
 msgstr "କ୍ଯୁବା"
 
-#: ../src/netconfpkg/NCDialup.py:176
+#: ../src/netconfpkg/NCDialup.py:172
 msgid "Cyprus"
 msgstr "ସାଇପ୍ରସ"
 
-#: ../src/netconfpkg/NCDialup.py:177
+#: ../src/netconfpkg/NCDialup.py:173
 msgid "Czech Republic"
 msgstr "ଚେକ ସାଧାରଣତନ୍ତ୍ର"
 
-#: ../src/netconfpkg/NCDialup.py:178
+#: ../src/netconfpkg/NCDialup.py:174
 msgid "Denmark"
 msgstr "ଡେନମାର୍କ"
 
-#: ../src/netconfpkg/NCDialup.py:179
+#: ../src/netconfpkg/NCDialup.py:175
 msgid "Finland"
 msgstr "ଫିନଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:180
+#: ../src/netconfpkg/NCDialup.py:176
 msgid "France"
 msgstr "ଫ୍ରାନ୍ସ"
 
-#: ../src/netconfpkg/NCDialup.py:181
+#: ../src/netconfpkg/NCDialup.py:177
 msgid "Germany"
 msgstr "ଜର୍ମାନୀ"
 
-#: ../src/netconfpkg/NCDialup.py:182
+#: ../src/netconfpkg/NCDialup.py:178
 msgid "Greece"
 msgstr "ଗ୍ରୀସ"
 
-#: ../src/netconfpkg/NCDialup.py:183
+#: ../src/netconfpkg/NCDialup.py:179
 msgid "Hong Kong"
 msgstr "ହଙ୍ଗ କଙ୍ଗ"
 
-#: ../src/netconfpkg/NCDialup.py:184
+#: ../src/netconfpkg/NCDialup.py:180
 msgid "Hungary"
 msgstr "ହଙ୍ଗାରୀ"
 
-#: ../src/netconfpkg/NCDialup.py:185
+#: ../src/netconfpkg/NCDialup.py:181
 msgid "Iceland"
 msgstr "ଆଇସଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:186
+#: ../src/netconfpkg/NCDialup.py:182
 msgid "India"
 msgstr "ଭାରତ"
 
-#: ../src/netconfpkg/NCDialup.py:187
+#: ../src/netconfpkg/NCDialup.py:183
 msgid "Indonesia"
 msgstr "ଇଣ୍ଡୋନେଶିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:188
+#: ../src/netconfpkg/NCDialup.py:184
 msgid "Ireland"
 msgstr "ଆୟରଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:189
+#: ../src/netconfpkg/NCDialup.py:185
 msgid "Israel"
 msgstr "ଇଜ୍ରାଇଲ"
 
-#: ../src/netconfpkg/NCDialup.py:190
+#: ../src/netconfpkg/NCDialup.py:186
 msgid "Italy"
 msgstr "ଇଟାଲୀ"
 
-#: ../src/netconfpkg/NCDialup.py:191
+#: ../src/netconfpkg/NCDialup.py:187
 msgid "Japan"
 msgstr "ଜାପାନ"
 
-#: ../src/netconfpkg/NCDialup.py:192
+#: ../src/netconfpkg/NCDialup.py:188
 msgid "Kazakhstan"
 msgstr "କାଜାଖସ୍ତାନ"
 
-#: ../src/netconfpkg/NCDialup.py:193
+#: ../src/netconfpkg/NCDialup.py:189
 msgid "Korea North"
 msgstr "ଉତ୍ତର କୋରିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:194
+#: ../src/netconfpkg/NCDialup.py:190
 msgid "Korea Republic"
 msgstr "କୋରିୟା ସାଧାରଣତନ୍ତ୍ର"
 
-#: ../src/netconfpkg/NCDialup.py:195
+#: ../src/netconfpkg/NCDialup.py:191
 msgid "Liechtenstein"
 msgstr "ଲିଚେଂଷ୍ଟାଇନ"
 
-#: ../src/netconfpkg/NCDialup.py:196
+#: ../src/netconfpkg/NCDialup.py:192
 msgid "Lithuania"
 msgstr "ଲିଥୁଆନିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:197
+#: ../src/netconfpkg/NCDialup.py:193
 msgid "Luxembourg"
 msgstr "ଲେକଜେମ୍ବର୍ଗ"
 
-#: ../src/netconfpkg/NCDialup.py:198
+#: ../src/netconfpkg/NCDialup.py:194
 msgid "Macedonia"
 msgstr "ମେସୀଡୋନିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:199
+#: ../src/netconfpkg/NCDialup.py:195
 msgid "Malaysia"
 msgstr "ମାଲେଶିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:200
+#: ../src/netconfpkg/NCDialup.py:196
 msgid "Malta"
 msgstr "ମାଲ୍ଟା"
 
-#: ../src/netconfpkg/NCDialup.py:201
+#: ../src/netconfpkg/NCDialup.py:197
 msgid "Mexico"
 msgstr "ମେକ୍ସିକୋ"
 
-#: ../src/netconfpkg/NCDialup.py:202
+#: ../src/netconfpkg/NCDialup.py:198
 msgid "Moldova"
 msgstr "ମାଲଡୋଭା"
 
-#: ../src/netconfpkg/NCDialup.py:203
+#: ../src/netconfpkg/NCDialup.py:199
 msgid "Monaco"
 msgstr "ମୋନାକୋ"
 
-#: ../src/netconfpkg/NCDialup.py:204
+#: ../src/netconfpkg/NCDialup.py:200
 msgid "Netherlands"
 msgstr "ନେଦରଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:205
+#: ../src/netconfpkg/NCDialup.py:201
 msgid "New Zealand"
 msgstr "ନ୍ଯୁଜୀଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:206
+#: ../src/netconfpkg/NCDialup.py:202
 msgid "Norway"
 msgstr "ନରୱେ"
 
-#: ../src/netconfpkg/NCDialup.py:207
+#: ../src/netconfpkg/NCDialup.py:203
 msgid "Palestine"
 msgstr "ପାଲେଷ୍ଟାଇନ"
 
-#: ../src/netconfpkg/NCDialup.py:208
+#: ../src/netconfpkg/NCDialup.py:204
 msgid "Philippines"
 msgstr "ଫିଲିପାଇନ୍ସ"
 
-#: ../src/netconfpkg/NCDialup.py:209
+#: ../src/netconfpkg/NCDialup.py:205
 msgid "Poland"
 msgstr "ପୋଲାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:210
+#: ../src/netconfpkg/NCDialup.py:206
 msgid "Portugal"
 msgstr "ପର୍ତୁଗାଲ"
 
-#: ../src/netconfpkg/NCDialup.py:211
+#: ../src/netconfpkg/NCDialup.py:207
 msgid "Romania"
 msgstr "ରୋମାନିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:212
+#: ../src/netconfpkg/NCDialup.py:208
 msgid "Russia"
 msgstr "ରୁଷ"
 
-#: ../src/netconfpkg/NCDialup.py:213
+#: ../src/netconfpkg/NCDialup.py:209
 msgid "Singapore"
 msgstr "ସିଙ୍ଗାପୁର"
 
-#: ../src/netconfpkg/NCDialup.py:214
+#: ../src/netconfpkg/NCDialup.py:210
 msgid "Slovakia"
 msgstr "ସ୍ଲୋଭାକିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:215
+#: ../src/netconfpkg/NCDialup.py:211
 msgid "Slovenia"
 msgstr "ସ୍ଲୋଭାନିୟା"
 
-#: ../src/netconfpkg/NCDialup.py:216
+#: ../src/netconfpkg/NCDialup.py:212
 msgid "Spain"
 msgstr "ସ୍ପେନ"
 
-#: ../src/netconfpkg/NCDialup.py:217
+#: ../src/netconfpkg/NCDialup.py:213
 msgid "Sweden"
 msgstr "ସ୍ବୀଡେନ"
 
-#: ../src/netconfpkg/NCDialup.py:218
+#: ../src/netconfpkg/NCDialup.py:214
 msgid "Switzerland"
 msgstr "ସ୍ବିଟ୍ଜରଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:219
+#: ../src/netconfpkg/NCDialup.py:215
 msgid "Taiwan"
 msgstr "ତାଇଓ୍ବାନ"
 
-#: ../src/netconfpkg/NCDialup.py:220
+#: ../src/netconfpkg/NCDialup.py:216
 msgid "Thailand"
 msgstr "ଥାଇଲ୍ଯାଣ୍ଡ"
 
-#: ../src/netconfpkg/NCDialup.py:221
+#: ../src/netconfpkg/NCDialup.py:217
 msgid "Turkey"
 msgstr "ତୁର୍କୀ"
 
-#: ../src/netconfpkg/NCDialup.py:222
+#: ../src/netconfpkg/NCDialup.py:218
 msgid "Ukraine"
 msgstr "ୟୁକ୍ରେନ"
 
-#: ../src/netconfpkg/NCDialup.py:223
+#: ../src/netconfpkg/NCDialup.py:219
 msgid "United Kingdom"
 msgstr "ଯୁକ୍ତ ରାଜ୍ଯ"
 
-#: ../src/netconfpkg/NCDialup.py:224
+#: ../src/netconfpkg/NCDialup.py:220
 msgid "United States of America"
 msgstr "ଯୁକ୍ତ ରାଷ୍ଟ୍ର ଆମେରିକା"
 
-#: ../src/netconfpkg/NCDialup.py:225
+#: ../src/netconfpkg/NCDialup.py:221
 msgid "Vietnam"
 msgstr "ଭିଏତନାମ"
 
-#: ../src/netconfpkg/NCDialup.py:226
+#: ../src/netconfpkg/NCDialup.py:222
 msgid "Serbia"
 msgstr "ସର୍ବିଆ"
 
 #. FIXED: [175078] String (country name) change request
-#: ../src/netconfpkg/NCDialup.py:227
+#: ../src/netconfpkg/NCDialup.py:223
 msgid "Montenegro"
 msgstr "ମୋଣ୍ଟେନୀଗ୍ରୋ"
 
@@ -3082,7 +3098,7 @@ msgid ""
 "You have to install the following packages, which are needed on your system!"
 msgstr "ଆପଣ ନିମ୍ନଲିଖିତ ପ୍ଯାକେଜ ମାନଙ୍କୁ ସ୍ଥାପନ କଲେ, ଯାହାକି ଆପଣଙ୍କ ତନ୍ତ୍ର ରେ ଆବଶ୍ଯକ ହେଉଥିଲା!"
 
-#: ../src/netconfpkg/NC_functions.py:768 ../src/netconfpkg/NC_functions.py:779
+#: ../src/netconfpkg/NC_functions.py:767 ../src/netconfpkg/NC_functions.py:778
 #, python-format
 msgid ""
 "Error removing\n"
@@ -3093,7 +3109,7 @@ msgstr ""
 "%s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:808
+#: ../src/netconfpkg/NC_functions.py:807
 #, python-format
 msgid ""
 "Error copying \n"
@@ -3106,7 +3122,7 @@ msgstr ""
 "to %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:818
+#: ../src/netconfpkg/NC_functions.py:817
 #, python-format
 msgid ""
 "Error linking \n"
@@ -3119,7 +3135,7 @@ msgstr ""
 "to %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:828
+#: ../src/netconfpkg/NC_functions.py:827
 #, python-format
 msgid ""
 "Error renaming \n"
@@ -3132,7 +3148,7 @@ msgstr ""
 "to %s:\n"
 "%s!"
 
-#: ../src/netconfpkg/NC_functions.py:836
+#: ../src/netconfpkg/NC_functions.py:835
 #, python-format
 msgid ""
 "Error creating directory!\n"
@@ -3141,7 +3157,7 @@ msgstr ""
 "ଡିରେକ୍ଟୋରି ସ୍ରୁଷ୍ଟି କରିବା ସମୟ ରେ ତ୍ରୁଟି!\n"
 "%s"
 
-#: ../src/netconfpkg/NC_functions.py:981
+#: ../src/netconfpkg/NC_functions.py:980
 #, python-format
 msgid "Linking %s to devices and putting it in profile %s."
 msgstr "%s କୁ ଉପକରଣ ମାନଙ୍କ ସହିତ ସଂଯୋଗ କରୁଅଛି ଏବଂ ଏହାକୁ %s ରୂପରେଖ ରେ ରଖୁଅଛି।"
@@ -3227,10 +3243,90 @@ msgstr ""
 msgid "Error removing file %(file)s: %(errormsg)"
 msgstr "ଫାଇଲ %(file)s କୁ ଅପସାରଣ କରିବା ସମୟ ରେ ତ୍ରୁଟି: %(errormsg)"
 
+#: ../src/netconfpkg/tui/NCPluginDevices.py:58
+#, fuzzy
+msgid "<New Device>"
+msgstr "ଉପକରଣ"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:65
+#, fuzzy
+msgid "Which device type do you want to add?"
+msgstr "ଯନ୍ତ୍ର ର %s କୁ ସମ୍ପାଦନ କରି ପାରିବ ନାହିଁ!"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#, fuzzy
+msgid "Add"
+msgstr "ଯୋଗ କରନ୍ତୁ (_A)..."
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:66
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#: ../src/netconfpkg/tui/NCPluginDNS.py:69
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
+#: ../src/netconfpkg/tui/NCTcpIp.py:131
+msgid "Cancel"
+msgstr "ବାତିଲ"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:74
+msgid "QETH"
+msgstr ""
+
+#. li = self.Listbox(5, returnExit=1)
+#: ../src/netconfpkg/tui/NCPluginDevices.py:104
+#, fuzzy
+msgid "Select A Device"
+msgstr "ଉପକରଣ ର ପ୍ରକାର କୁ ଚୟନ କରନ୍ତୁ"
+
+#: ../src/netconfpkg/tui/NCPluginDevices.py:105
+#, fuzzy
+msgid "Save"
+msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ ଏବଂ ପ୍ରସ୍ଥାନ କରନ୍ତୁ (&Q)"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:55
+#, fuzzy
+msgid "Hostname"
+msgstr "ଆଧାର ନାମ:"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:56
+#, fuzzy
+msgid "Primary DNS"
+msgstr "ମୌଳିକ DNS (_P):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:57
+#, fuzzy
+msgid "Secondary DNS"
+msgstr "ଦ୍ବିତୀୟକ DNS (_S):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:58
+#, fuzzy
+msgid "Tertiary DNS"
+msgstr "ତ୍ରୁତୀୟକ DNS (_T):"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:59
+#, fuzzy
+msgid "DNS search path"
+msgstr "DNS ଖୋଜିବା ପଥ:"
+
+#. g2.setField(gwy, 1, 5, (1, 0, 0, 0))
+#. dynip.setCallback(useDynamicCheckBox)
+#: ../src/netconfpkg/tui/NCPluginDNS.py:68
+#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
+#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
+#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
+#: ../src/netconfpkg/tui/NCTcpIp.py:130
+msgid "Ok"
+msgstr "ଠିକ ଅଛି"
+
+#: ../src/netconfpkg/tui/NCPluginDNS.py:71
+#, fuzzy
+msgid "DNS configuration"
+msgstr "xDSL ବିନ୍ଯାସ"
+
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginModemInterface.py:67
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:122
-#: ../src/netconfpkg/tui/NCTcpIp.py:96
+#: ../src/netconfpkg/tui/NCTcpIp.py:113
 msgid "Name"
 msgstr "ନାମ"
 
@@ -3253,20 +3349,6 @@ msgstr "ISP ପ୍ରବେଶ ସଙ୍କେତ"
 msgid "MSN"
 msgstr "MSN"
 
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:79
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:142
-#: ../src/netconfpkg/tui/NCTcpIp.py:109
-msgid "Ok"
-msgstr "ଠିକ ଅଛି"
-
-#: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginModemInterface.py:80
-#: ../src/netconfpkg/tui/NCPluginQethInterface.py:143
-#: ../src/netconfpkg/tui/NCTcpIp.py:110
-msgid "Cancel"
-msgstr "ବାତିଲ"
-
 #: ../src/netconfpkg/tui/NCPluginIsdnInterface.py:81
 msgid "ISDN Configuration"
 msgstr "ISDN ବିନ୍ଯାସ"
@@ -3276,22 +3358,22 @@ msgid "Modem Initstring"
 msgstr "ମୋଡେମ ପ୍ରାରମ୍ଭିକୀକରଣ ଖଣ୍ଡ"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:124
-#: ../src/netconfpkg/tui/NCTcpIp.py:98
+#: ../src/netconfpkg/tui/NCTcpIp.py:115
 msgid "Use DHCP"
 msgstr "DHCP ବ୍ଯବହାର କରନ୍ତୁ"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:125
-#: ../src/netconfpkg/tui/NCTcpIp.py:99
+#: ../src/netconfpkg/tui/NCTcpIp.py:116
 msgid "Static IP"
 msgstr "ସ୍ଥୈତୀକ ଆଇ.ପି."
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:126
-#: ../src/netconfpkg/tui/NCTcpIp.py:100
+#: ../src/netconfpkg/tui/NCTcpIp.py:117
 msgid "Netmask"
 msgstr "ନେଟମାସ୍କ"
 
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:127
-#: ../src/netconfpkg/tui/NCTcpIp.py:101
+#: ../src/netconfpkg/tui/NCTcpIp.py:118
 msgid "Default gateway IP"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଗେଟ-ୱେ ଆଇ.ପି."
 
@@ -3310,6 +3392,16 @@ msgstr "ଉପକରଣ ବସ ପରିଚୟକୁ ଲେଖନ୍ତୁ"
 #: ../src/netconfpkg/tui/NCPluginQethInterface.py:145
 msgid "Devernet Configuration"
 msgstr "ଡେଭ-ନେଟ ବିନ୍ଯାସ"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:119
+#, fuzzy
+msgid "Primary DNS Server"
+msgstr "ମୌଳିକ DNS (_P):"
+
+#: ../src/netconfpkg/tui/NCTcpIp.py:120
+#, fuzzy
+msgid "Secondary DNS Server"
+msgstr "ଦ୍ବିତୀୟକ DNS (_S):"
 
 #: ../src/netconf.py:55
 #, python-format
