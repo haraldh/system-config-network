@@ -48,8 +48,6 @@ class Dialup_base(Gdtstruct):
                           ('PhoneNumber', Gdtstr, "Test doc string"),
                           ('LocalIP', Gdtstr, "Test doc string"),        
                           ('RemoteIP', Gdtstr, "Test doc string"),        
-                          ('PrimaryDNS', Gdtstr, "Test doc string"),        
-                          ('SecondaryDNS', Gdtstr, "Test doc string"),        
                           ('Persist', Gdtbool, "Test doc string"),
                           ('DefRoute', Gdtbool, "Test doc string"),
                           ('Inherits', Gdtstr, "Test doc string"),
@@ -94,8 +92,6 @@ class Dialup_base(Gdtstruct):
         self.PhoneNumber = None
         self.LocalIP = None        
         self.RemoteIP = None        
-        self.PrimaryDNS = None        
-        self.SecondaryDNS = None        
         self.Persist = None
         self.DefRoute = None
         self.Inherits = None
@@ -312,8 +308,6 @@ class DslDialup(Dialup):
 
     keydict = { 'ProviderName' : 'PROVIDER',
                 'Login' : 'USER',
-                'PrimaryDNS' : 'DNS1',
-                'SecondaryDNS' : 'DNS2',
                 'EthDevice' : 'ETH',
                 'SlaveDevice' : 'SLAVE_DEVICE',
                 'ServiceName' : 'SERVICENAME',

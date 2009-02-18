@@ -115,6 +115,11 @@ def dhcp_hydrate (xml, device):
         xml.get_widget('mruSpin').hide()
         xml.get_widget('mruCB').hide()
 
+    if device.PrimaryDNS:
+        xml.get_widget('primaryDNSEntry').set_text(device.PrimaryDNS)
+    if device.SecondaryDNS:
+        xml.get_widget('secondaryDNSEntry').set_text(device.SecondaryDNS)
+
 def dhcp_dehydrate (xml, device):
     if xml.get_widget('ipAutomaticRadio').get_active():
         if GUI_functions.get_history(
@@ -138,6 +143,8 @@ def dhcp_dehydrate (xml, device):
          'Netmask' : 'ipNetmaskEntry',
          'Gateway' : 'ipGatewayEntry',
          'Hostname' : 'hostnameEntry',
+         'PrimaryDNS' : 'primaryDNSEntry',
+         'SecondaryDNS' : 'secondaryDNSEntry',
          }.items():
         val = xml.get_widget(widget).get_text().strip()
         if val:
@@ -155,7 +162,11 @@ def dhcp_dehydrate (xml, device):
             device.Dialup.Mru = int(xml.get_widget('mruSpin').get_value())
     elif hasattr(device, "Dialup"):        
         device.Dialup.Mru = None
- 
+
+    if device.BootProto == 'none':
+        # None will remove the PEERDNS from the config
+        device.AutoDNS = None
+
 ###
 ### ROUTES
 ###
@@ -406,6 +417,7 @@ def hardware_hydrate(xml, device):
         xml.get_widget("hardwareMACEntry").set_text('')
         xml.get_widget("hardwareMACEntry").set_sensitive(False)
         xml.get_widget("hardwareProbeButton").set_sensitive(False)
+
 
 def hardware_dehydrate(xml, device):
     omenu = xml.get_widget("hwdvOmenu")

@@ -56,7 +56,7 @@ class NCPluginDNSTui():
         g2.setField(snack.Label (_("Primary DNS")), 0, 1, anchorLeft = 1)
         g2.setField(snack.Label (_("Secondary DNS")), 0, 2, anchorLeft = 1)
         g2.setField(snack.Label (_("Tertiary DNS")), 0, 3, anchorLeft = 1)
-        g2.setField(snack.Label (_("Search")), 0, 4, anchorLeft = 1)
+        g2.setField(snack.Label (_("DNS search path")), 0, 4, anchorLeft = 1)
         #g2.setField(snack.Label (_("Default gateway IP")), 0, 5, anchorLeft = 1)
         g2.setField(self.hostname, 1, 0, (1, 0, 0, 0))
         g2.setField(self.primaryDNS, 1, 1, (1, 0, 0, 0))

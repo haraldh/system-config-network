@@ -57,6 +57,8 @@ class Device_base(Gdtstruct):
                           ('Mtu', Gdtint, "Test doc string"),
                           ('Slave', Gdtbool, "Test doc string"),
                           ('StaticRoutes', StaticRoutes, "test"),
+                          ('PrimaryDNS', Gdtstr, "Test doc string"),
+                          ('SecondaryDNS', Gdtstr, "Test doc string"),
                           ])
     
 
@@ -84,7 +86,9 @@ class Device_base(Gdtstruct):
         self.Mtu = None
         self.Slave = None
         self.StaticRoutes = None
-        
+        self.PrimaryDNS = None
+        self.SecondaryDNS = None
+
     def createStaticRoutes(self):
         if not self.StaticRoutes:
             self.StaticRoutes = StaticRoutes()
@@ -148,6 +152,8 @@ class Device(Device_base):
                  'Netmask' : 'NETMASK',
                  'Gateway' : 'GATEWAY',
                  'Hostname' : 'DHCP_HOSTNAME',
+                 'PrimaryDNS' : 'DNS1',
+                 'SecondaryDNS' : 'DNS2',
                  'Domain' : 'DOMAIN',
                  'BootProto' : 'BOOTPROTO',
                  'Type' : 'TYPE',
@@ -421,6 +427,7 @@ class Device(Device_base):
                 conf[confkey] = 'yes'
             elif getattr(self, selfkey) == False:
                 conf[confkey] = 'no'
+            else: del conf[confkey]
 
         # cleanup
         if self.Alias != None:

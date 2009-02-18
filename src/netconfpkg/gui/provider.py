@@ -183,10 +183,10 @@ class providerDialog:
         if len(self.provider['DNS']) >0:
             dns = self.provider['DNS'].split()
             if dns[0]: 
-                self.device.Dialup.PrimaryDNS = dns[0]
+                self.device.PrimaryDNS = dns[0]
             try:
                 if dns[1]: 
-                    self.device.Dialup.SecondaryDNS = dns[1]
+                    self.device.SecondaryDNS = dns[1]
             except(IndexError):
                 pass
             

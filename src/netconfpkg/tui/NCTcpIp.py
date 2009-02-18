@@ -21,6 +21,8 @@ class NCTcpIpDialog:
         self.dynip = snack.Checkbox("")
         self.statip = snack.Entry(20, "")
         self.netmask = snack.Entry(20, "")
+        self.dnsserver1 = snack.Entry(20, "")
+        self.dnsserver2 = snack.Entry(20, "")
         self.gwy = snack.Entry(20, "")
         self.screen = None
 
@@ -48,6 +50,10 @@ class NCTcpIpDialog:
                 self.netmask.set(dev.Netmask)
             if dev.Gateway:
                 self.gwy.set(dev.Gateway)
+            if dev.PrimaryDNS:
+                self.dnsserver1.set(dev.PrimaryDNS)
+            if dev.SecondaryDNS:
+                self.dnsserver2.set(dev.SecondaryDNS)
 
     def useDynamicCheckBox(self):
         """
@@ -71,6 +77,7 @@ class NCTcpIpDialog:
         self.dev.Device = self.hwdev.value()
         if self.dynip.value():
             self.dev.BootProto = "dhcp"
+            self.dev.AutoDNS = True
             self.dev.IP = None
             self.dev.Netmask = None
             self.dev.Gateway = None
@@ -86,25 +93,39 @@ class NCTcpIpDialog:
         else:
             self.dev.HardwareAddress = hwaddr
 
+        dnsstr = self.dnsserver1.value()
+        if dnsstr:
+            self.dev.PrimaryDNS = dnsstr
+        dnsstr = self.dnsserver2.value()
+        if dnsstr:
+            self.dev.SecondaryDNS = dnsstr
+
+        if self.dev.BootProto == None:
+            self.dev.AutoDNS = None
+
     def runIt(self, screen):
         """
         Show and run the screen, save files if necesarry
         """
         self.screen = screen
         g1 = snack.Grid(1, 1)
-        g2 = snack.Grid(2, 6)
+        g2 = snack.Grid(2, 8)
         g2.setField(snack.Label (_("Name")), 0, 0, anchorLeft = 1)
         g2.setField(snack.Label (_("Device")), 0, 1, anchorLeft = 1)
         g2.setField(snack.Label (_("Use DHCP")), 0, 2, anchorLeft = 1)
         g2.setField(snack.Label (_("Static IP")), 0, 3, anchorLeft = 1)
         g2.setField(snack.Label (_("Netmask")), 0, 4, anchorLeft = 1)
         g2.setField(snack.Label (_("Default gateway IP")), 0, 5, anchorLeft = 1)
+        g2.setField(snack.Label (_("Primary DNS Server")), 0, 6, anchorLeft = 1)
+        g2.setField(snack.Label (_("Secondary DNS Server")), 0, 7, anchorLeft = 1)
         g2.setField(self.name, 1, 0, (1, 0, 0, 0))
         g2.setField(self.hwdev, 1, 1, (1, 0, 0, 0))
         g2.setField(self.dynip, 1, 2, (1, 0, 0, 0), anchorLeft = 1)
         g2.setField(self.statip, 1, 3, (1, 0, 0, 0))
         g2.setField(self.netmask, 1, 4, (1, 0, 0, 0))
         g2.setField(self.gwy, 1, 5, (1, 0, 0, 0))
+        g2.setField(self.dnsserver1, 1, 6, (1, 0, 0, 0))
+        g2.setField(self.dnsserver2, 1, 7, (1, 0, 0, 0))
         self.dynip.setCallback(self.useDynamicCheckBox)
         bb = snack.ButtonBar(self.screen, ((_("Ok"), "ok"),
                                            (_("Cancel"), "cancel")))
