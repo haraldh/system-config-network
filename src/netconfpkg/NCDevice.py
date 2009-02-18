@@ -174,13 +174,13 @@ class Device(Device_base):
         self.oldname = None
         
     def getDialog(self):
-        raise NotImplementedError
+	return None
 
     def getWizard(self):
-        raise NotImplementedError
+	return None
 
     def isType(self, device):
-        raise NotImplementedError
+        raise False
 
     def testDeviceId(self, value):
         if re.search(r"^[a-z|A-Z|0-9\_:]+$", value):
