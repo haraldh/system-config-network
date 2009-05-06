@@ -34,8 +34,6 @@ class QethConfigDialog(DeviceConfigDialog):
 
         xml_signal_autoconnect(self.xml, { \
             "on_aliasSupportCB_toggled" : self.on_aliasSupportCB_toggled, 
-            "on_hwAddressCB_toggled" : self.on_hwAddressCB_toggled, 
-            "on_hwProbeButton_clicked" : self.on_hwProbeButton_clicked, 
             })
                 
 
@@ -59,6 +57,11 @@ class QethConfigDialog(DeviceConfigDialog):
         window.remove (frame)
         vbox.pack_start (frame)
         sharedtcpip.hardware_init (self.sharedtcpip_xml, self.device)
+
+        self.sharedtcpip_xml.get_widget("hardwareMACToggle").set_sensitive(false)
+        self.sharedtcpip_xml.get_widget("hardwareMACEntry").set_sensitive(false)
+        self.sharedtcpip_xml.get_widget("hardwareProbeButton").set_sensitive(false)
+
         self.hydrate ()
 
     def hydrate(self):
@@ -75,23 +78,6 @@ class QethConfigDialog(DeviceConfigDialog):
 
     def on_aliasSupportCB_toggled(self, check):
         self.xml.get_widget("aliasSpinBox").set_sensitive(check.get_active())
-
-    def on_hwAddressCB_toggled(self, check):
-        self.xml.get_widget("hwAddressEntry").set_sensitive(check.get_active())
-        self.xml.get_widget("hwProbeButton").set_sensitive(check.get_active())
-
-    def on_hwProbeButton_clicked(self, button): # pylint: disable-msg=W0613
-        hw = self.xml.get_widget("ethernetDeviceEntry").get_text()
-        fields = hw.split()
-        device = fields[0]
-        try: 
-            hwaddr = ethtool.get_hwaddr(device)
-        except IOError, err:
-            error_str = str (err)
-            GUI_functions.gui_error_dialog(error_str, self.dialog)
-        else:
-            self.device.HardwareAddress = hwaddr
-            self.xml.get_widget("hwAddressEntry").set_text(hwaddr)
             
 def register_plugin():
     from netconfpkg.plugins import NCPluginDevQeth

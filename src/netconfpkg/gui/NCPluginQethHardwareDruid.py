@@ -101,6 +101,9 @@ class QethHardware:
                 if self.hw.Card.Options:
                     self.xml.get_widget('optionsEntry').set_text(
                         self.hw.Card.Options)
+
+                if self.hw.MacAddress:
+                    self.xml.get_widget('macEntry').set_text(self.hw.MacAddress)
         else:
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
@@ -129,6 +132,7 @@ class QethHardware:
         self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, 
                                                  self.hw.Card.IoPort1, 
                                                  self.hw.Card.IoPort2)
+        self.hw.MacAddress = self.xml.get_widget('macEntry').get_text()
 
 def register_plugin():
     NCPluginHWQeth.setHwQethWizard(QethHardware)

@@ -66,12 +66,13 @@ class NCPluginDevicesTui():
         bb = snack.ButtonBar(mscreen, ((_("Add"), "add"), (_("Cancel"), "cancel")))
         li = snack.Listbox(5, width=25, returnExit=1)
         li.append(_("Ethernet"), ETHERNET)
-        li.append(_("Modem"), MODEM)
-        li.append(_("ISDN"), ISDN)
     
         machine = os.uname()[4]
         if machine == 's390' or machine == 's390x':
             li.append(_("QETH"), QETH)
+        else:
+            li.append(_("Modem"), MODEM)
+            li.append(_("ISDN"), ISDN)
     
         g = snack.GridForm(mscreen, _("Network Configuration"), 1, 3)
         g.add(t, 0, 0)

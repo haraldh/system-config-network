@@ -332,7 +332,7 @@ def create_combo(hardwarelist, devname, mtype, default_devices):
     hwcurr = None
 
     for hw in hardwarelist:
-        if hw.Type == mtype:
+        if hw.Type == mtype and not getattr(hw, "Master", None):
             desc = str(hw.Name)
             if hw.Description:
                 desc += ' (' + hw.Description + ')'

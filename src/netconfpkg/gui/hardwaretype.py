@@ -48,7 +48,7 @@ class hardwareTypeDialog:
         machine = os.uname()[4]
         hardwarelist = NCHardwareList.getHardwareList()
         if machine == 's390' or machine == 's390x':
-            devicetypes = [ ETHERNET, TOKENRING ]
+            devicetypes = [ ETHERNET, TOKENRING, QETH ]
         else:
             df = getHardwareFactory()
             devicetypes = df.keys()

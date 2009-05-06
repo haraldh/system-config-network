@@ -71,6 +71,7 @@ class Hardware_base(Gdtstruct):
                           ('Description', Gdtstr, "Test doc string"),
                           ('Type ', Gdtstr, "Test doc string"),
                           ('Status', Gdtstr, "Test doc string"),
+                          ('MacAddress', Gdtstr, "Test doc string"),
                           ('Card', Card, "Test doc string"),
                           ])
     def __init__(self):
