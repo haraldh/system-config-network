@@ -22,6 +22,8 @@ class NCQethInterfaceTui:
         self.ioport = snack.Entry(20, "")
         self.ioport1 = snack.Entry(20, "")
         self.ioport2 = snack.Entry(20, "")
+        self.options=Entry(20,"")
+        self.macaddr=Entry(20,"")
         self.screen = None
         
         if dev:
@@ -55,9 +57,11 @@ class NCQethInterfaceTui:
             hardwarelist = getHardwareList()
             for hw in hardwarelist:
                 if hw.Name == dev.Device:
-                    self.ioport.set(hw.Card.IoPort)
-                    self.ioport1.set(hw.Card.IoPort1)
-                    self.ioport2.set(hw.Card.IoPort2)
+                    self.ioport.set(hw.Card.IoPort or '')
+                    self.ioport1.set(hw.Card.IoPort1 or '')
+                    self.ioport2.set(hw.Card.IoPort2 or '')
+                    self.options.set(hw.Card.Options or '')
+                    self.macaddr.set(hw.MacAddress or '')
                     break
             
     def useDynamicCheckBox(self):
@@ -100,6 +104,8 @@ class NCQethInterfaceTui:
         hw.Card.IoPort2 = self.ioport2.value()
         ports = "%s,%s,%s" % (hw.Card.IoPort, hw.Card.IoPort1, hw.Card.IoPort2)
         hw.Description = "qeth %s" % ports
+        hw.Options = self.options.value()
+        hw.MacAddress = self.macaddr.value()
 
         if self.dynip.value():
             self.dev.BootProto = "dhcp"
@@ -118,7 +124,7 @@ class NCQethInterfaceTui:
         """
         self.screen = screen
         g1 = snack.Grid(1, 1)
-        g2 = snack.Grid(2, 9)
+        g2 = snack.Grid(2, 11)
         g2.setField(snack.Label (_("Name")), 0, 0, anchorLeft = 1)
         g2.setField(snack.Label (_("Device")), 0, 1, anchorLeft = 1)
         g2.setField(snack.Label (_("Use DHCP")), 0, 2, anchorLeft = 1)
@@ -129,6 +135,8 @@ class NCQethInterfaceTui:
         g2.setField(snack.Label (_("Data Device Bus ID")), 0, 7, anchorLeft = 1)
         g2.setField(snack.Label (_("Write Device Bus ID")), 0, 8, 
                                    anchorLeft = 1)
+        g2.setField(Label (_("Options")),0,9,anchorLeft=1)
+        g2.setField(Label (_("MAC Address")),0,10,anchorLeft=1)
         g2.setField(self.name, 1, 0, (1, 0, 0, 0))
         g2.setField(self.hwdev, 1, 1, (1, 0, 0, 0))
         g2.setField(self.dynip, 1, 2, (1, 0, 0, 0), anchorLeft=1)
@@ -138,6 +146,9 @@ class NCQethInterfaceTui:
         g2.setField(self.ioport, 1, 6, (1, 0, 0, 0))
         g2.setField(self.ioport1, 1, 7, (1, 0, 0, 0))
         g2.setField(self.ioport2, 1, 8, (1, 0, 0, 0))
+        g2.setField(self.options,1,9,(1,0,0,0))
+        g2.setField(self.macaddr,1,10,(1,0,0,0))
+
         self.dynip.setCallback(self.useDynamicCheckBox)
         bb = snack.ButtonBar(self.screen, ((_("Ok"), "ok"),
                                            (_("Cancel"), "cancel")))
