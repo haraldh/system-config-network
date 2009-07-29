@@ -13,6 +13,7 @@ PROGNAME = 'system-config-network'
 import os
 import sys
 import locale
+import gettext
 import signal
 
 from snack import SnackScreen
@@ -21,9 +22,19 @@ from netconfpkg import NC_functions
 from netconfpkg.NC_functions import log, generic_error_dialog
 from netconfpkg.NCDeviceList import getDeviceList
 from netconfpkg.NCProfileList import getProfileList
-from rhpl.translate import _, textdomain_codeset
-locale.setlocale(locale.LC_ALL, "")
-textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
+
+try:
+    locale.setlocale (locale.LC_ALL, "")
+except locale.Error, e:
+    import os
+    os.environ['LC_ALL'] = 'C'
+    locale.setlocale (locale.LC_ALL, "")
+gettext.bind_textdomain_codeset(PROGNAME,locale.nl_langinfo(locale.CODESET))
+gettext.bindtextdomain(PROGNAME, '/usr/share/locale')
+gettext.textdomain(PROGNAME)
+_ = lambda x: gettext.lgettext(x)
+import __builtin__
+__builtin__.__dict__['_'] = _
 
 if not "/usr/share/system-config-network" in sys.path:
     sys.path.append("/usr/share/system-config-network")

@@ -41,10 +41,17 @@ def exception_function():
         raise
 
 """
+
 import sys
 
-from rhpl.translate import _
+PROGNAME = 'system-config-network'
 
+import gettext
+gettext.bindtextdomain(PROGNAME, '/usr/share/locale')
+gettext.textdomain(PROGNAME)
+_ = lambda x: gettext.lgettext(x)
+import __builtin__
+__builtin__.__dict__['_'] = _
 
 __DUMPHASH = {}
 # FIXME: do length limits on obj dumps.

@@ -38,9 +38,17 @@ __cmdline = sys.argv[1:]
 sys.argv = sys.argv[:1]
 
 import locale
-from rhpl.translate import _, textdomain_codeset
-locale.setlocale(locale.LC_ALL, "")
-textdomain_codeset(PROGNAME, locale.nl_langinfo(locale.CODESET))
+try:
+    locale.setlocale (locale.LC_ALL, "")
+except locale.Error, e:
+    import os
+    os.environ['LC_ALL'] = 'C'
+    locale.setlocale (locale.LC_ALL, "")
+import gettext
+gettext.bind_textdomain_codeset(PROGNAME,locale.nl_langinfo(locale.CODESET))
+gettext.bindtextdomain(PROGNAME, '/usr/share/locale')
+gettext.textdomain(PROGNAME)
+_ = lambda x: gettext.lgettext(x)
 import __builtin__
 __builtin__.__dict__['_'] = _
 
