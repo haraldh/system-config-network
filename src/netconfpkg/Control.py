@@ -18,7 +18,7 @@
 import os
 from netconfpkg import NCDeviceList
 from netconfpkg.NC_functions import getNickName, getDeviceType, ISDN, MODEM
-from rhpl import ethtool
+import ethtool
 
 
 class NetworkDevice:

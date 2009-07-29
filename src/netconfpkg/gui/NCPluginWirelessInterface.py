@@ -27,7 +27,7 @@ from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.plugins import NCPluginDevWireless
-from rhpl import ethtool
+import ethtool
 
 
 modeList = [

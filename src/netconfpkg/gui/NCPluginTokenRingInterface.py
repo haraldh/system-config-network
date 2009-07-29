@@ -25,7 +25,7 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.TokenRingHardwareDruid import TokenringHardware
 from netconfpkg.plugins import NCPluginDevTokenRing
-from rhpl import ethtool
+import ethtool
 
 
 class TokenRingInterfaceWizard(InterfaceCreator):

@@ -19,8 +19,7 @@
 from netconfpkg.gui import GUI_functions, sharedtcpip
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from rhpl import ethtool
-
+import ethtool
 
 #from netconfpkg import NCHardwareList
 

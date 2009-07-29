@@ -28,7 +28,7 @@ import re
 import shutil
 from netconfpkg.conf import ConfShellVar, ConfPAP
 from netconfpkg.log import LogFile
-from rhpl import ethtool
+import ethtool
 
 PROGNAME = "system-config-network"
 

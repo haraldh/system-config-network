@@ -19,7 +19,7 @@
 from netconfpkg.gui import GUI_functions, sharedtcpip
 from netconfpkg.gui.DeviceConfigDialog import DeviceConfigDialog
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
-from rhpl import ethtool
+import ethtool
 
 
 # FIXME: [164594] OK and Cancel buttons on the edit 
@@ -85,7 +85,7 @@ class QethConfigDialog(DeviceConfigDialog):
         fields = hw.split()
         device = fields[0]
         try: 
-            hwaddr = ethtool.get_hwaddr(device) 
+            hwaddr = ethtool.get_hwaddr(device)
         except IOError, err:
             error_str = str (err)
             GUI_functions.gui_error_dialog(error_str, self.dialog)

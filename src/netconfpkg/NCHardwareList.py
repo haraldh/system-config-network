@@ -29,7 +29,7 @@ from netconfpkg.conf.Conf import (Conf, FileMissing,
 from netconfpkg.conf.ConfModules import ConfModInfo, ConfModules
 from netconfpkg.conf.ConfSMB import ConfSMB
 from netconfpkg.gdt import Gdtlist
-from rhpl import ethtool
+import ethtool
 from rhpl.executil import execWithCapture
 
 
@@ -262,7 +262,6 @@ class HardwareList(HardwareList_base):
         import kudzu
         modules = getMyConfModules()
         ethlist = ethtool.get_devices()
-
         hdellist = []
         for h in self:
             if h.Status == HW_OK:

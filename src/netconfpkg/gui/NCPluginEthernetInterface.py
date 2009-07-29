@@ -29,7 +29,7 @@ from netconfpkg.gui.EthernetHardwareDruid import ethernetHardware
 from netconfpkg.gui.GUI_functions import GLADEPATH, xml_signal_autoconnect
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.plugins import NCPluginDevEthernet
-from rhpl import ethtool
+import ethtool
 
 
 class EthernetInterfaceWizard(InterfaceCreator):

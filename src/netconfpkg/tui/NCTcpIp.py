@@ -1,7 +1,7 @@
 "TUI TCP/IP Interface Module"
 import snack
 from netconfpkg.NC_functions import _
-from rhpl import ethtool
+import ethtool
 
 
 class NCTcpIpDialog:

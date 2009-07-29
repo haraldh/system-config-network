@@ -28,8 +28,7 @@ from netconfpkg.gui.GUI_functions import xml_signal_autoconnect, GLADEPATH
 from netconfpkg.gui.InterfaceCreator import InterfaceCreator
 from netconfpkg.gui.NCPluginQethHardwareDruid import QethHardware
 from netconfpkg.plugins import NCPluginDevQeth
-from rhpl import ethtool
-
+import ethtool
 
 class QethInterfaceGui(InterfaceCreator):
     def __init__(self, toplevel=None, connection_type=QETH, do_save = 1,
@@ -209,7 +208,7 @@ class QethInterfaceGui(InterfaceCreator):
                                    + str(self.device.Alias)
 
         try: 
-            hwaddr = ethtool.get_hwaddr(self.device.Device) 
+            hwaddr = ethtool.get_hwaddr(self.device.Device)
         except IOError:
             pass
         else:

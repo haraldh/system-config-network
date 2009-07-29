@@ -21,7 +21,7 @@ from netconfpkg.NCRoute import Route
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.editadress import editAdressDialog
-from rhpl import ethtool
+import ethtool
 
 
 ###
