@@ -218,7 +218,7 @@ class WirelessInterfaceWizard(InterfaceCreator):
 
         if self.device.Device != None:
             try:
-                from rhpl import iwlib
+                import iwlib
                 info = iwlib.get_iwconfig(self.device.Device)
             except:
                 pass

@@ -433,7 +433,7 @@ def getDeviceType(devname, module = None):
 
     if mtype == ETHERNET:
         try:
-            from rhpl import iwlib
+            import iwlib
             # test for wireless
             iwlib.get_iwconfig(devname)
             mtype = WIRELESS
