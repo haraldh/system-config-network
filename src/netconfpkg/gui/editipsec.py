@@ -27,8 +27,6 @@ from netconfpkg.gui.GUI_functions import (xml_signal_autoconnect,
                                           gui_error_dialog)
 
 
-#from rhpl.executil import *
-
 # pylint: disable-msg=W0613
 
 class editIPsecDruid:

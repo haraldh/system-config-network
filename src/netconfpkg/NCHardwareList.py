@@ -30,7 +30,7 @@ from netconfpkg.conf.ConfModules import ConfModInfo, ConfModules
 from netconfpkg.conf.ConfSMB import ConfSMB
 from netconfpkg.gdt import Gdtlist
 import ethtool
-from rhpl.executil import execWithCapture
+from netconfpkg.executil import execWithCapture
 
 
 ModInfo = None
