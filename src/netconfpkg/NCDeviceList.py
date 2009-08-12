@@ -28,9 +28,11 @@ from netconfpkg.NC_functions import (_, log, ConfDevices,
                                      SYSCONFNETWORK, testFilename, unlink,
                                      WVDIALCONF)
 from netconfpkg.conf import ConfSMB, ConfShellVar
-from netconfpkg.gdt import Gdtlist
+from netconfpkg.gdt import Gdtlist, gdtlist_properties
 
 class DeviceList(Gdtlist):
+    gdtlist_properties(Device)
+
     def load(self):
         from netconfpkg.NCDevice import ConfDevice
         updateNetworkScripts()

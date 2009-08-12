@@ -29,11 +29,11 @@ from netconfpkg.NC_functions import (_, log, SYSCONFNETWORK,
                                      getTestEnv, generic_error_dialog, 
                                      generic_yesno_dialog, RESPONSE_YES)
 from netconfpkg.conf import ConfShellVar, ConfEResolv
-from netconfpkg.gdt import Gdtlist
+from netconfpkg.gdt import Gdtlist, gdtlist_properties
 
 
 class ProfileList_base(Gdtlist):
-    pass
+    gdtlist_properties(Profile)
 
 class MyFileList(list):
     def __setitem__(self, key, value):

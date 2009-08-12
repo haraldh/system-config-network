@@ -27,12 +27,12 @@ from netconfpkg.NC_functions import (_, getRoot, SYSCONFDEVICEDIR, log,
                                      getDebugLevel, unlink)
 from netconfpkg.conf import ConfShellVar
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties, Gdtstr, 
-                            Gdtlist, Gdtbool, Gdtint)
+                            Gdtlist, Gdtbool, Gdtint, gdtlist_properties)
 
 
 class StaticRoutes(Gdtlist):
     "Contains Routes"
-    pass
+    gdtlist_properties(Route)
 
 class Device_base(Gdtstruct):
     gdtstruct_properties([

@@ -1,5 +1,5 @@
 from netconfpkg.NC_functions import testHostname
-from netconfpkg.gdt import (Gdtstr, Gdtlist)
+from netconfpkg.gdt import (Gdtstr, Gdtlist, gdtlist_properties)
 
 
 class Alias(Gdtstr):
@@ -7,6 +7,8 @@ class Alias(Gdtstr):
     
 class AliasList(Gdtlist):        
     "List of aliases"
+    gdtlist_properties(Alias)
+
     def test(self):
         for alias in self:
             if not testHostname(alias):

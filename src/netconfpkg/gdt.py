@@ -170,7 +170,20 @@ def gdtstruct_properties(cls, schema):
         setattr(cls, name, property(_getter, _setter, _deler, doc=docstring))
         cls._fields.add(name)
         #cls._fields.sort()
-        cls._types.add(typecast)
+        cls._types[name]=typecast
+
+@_classinitializer
+def gdtlist_properties(cls, typecast):
+    """
+    Add properties to cls, according to the schema, which is a list
+    of pairs (fieldname, Gdtobject_subclass, docstring).
+    A Gdtobject_subclass is a callable converting the field value 
+    into the Gdtobject_subclass.
+    Instances of cls are expected to have private attributes 
+    with names determined by the field names.
+    """
+    cls._type=typecast
+
 
 class Gdtobject(Transaction):
     "The base of all Gdtobjects"
@@ -198,7 +211,7 @@ class Gdtcontainer(Gdtobject):
 class Gdtstruct(Gdtcontainer):
     "A base class, which can be used with gdtstruct_properties"    
     _fields = set()
-    _types = set()
+    _types = dict()
 
     def test(self):
         all_ok = True
@@ -242,8 +255,23 @@ class Gdtstruct(Gdtcontainer):
                     mstr += "%s.%s=%s\n" % (prefix_string, name, str(val))
         return mstr
 
-    def fromstr(self, what):
-        raise Exception(what)
+    def fromstr(self, vals, value):
+        name=vals[0]
+
+        if name in self._fields:
+            if len(vals) > 1:
+                o = getattr(self, name)
+                if o == None:
+                    o = self._types[name]()
+                o.fromstr(vals[1:], value)
+                setattr(self, name, o)
+            else:
+                if self._types[name] == bool:
+                    setattr(self, name, value == "True" or False)
+                else:
+                    setattr(self, name, self._types[name](value))
+        else:
+            raise KeyError
 
     def apply(self, other):
         "copy from another object"
@@ -253,10 +281,10 @@ class Gdtstruct(Gdtcontainer):
             
 class Gdtlist(Transactionlist, Gdtcontainer):
     "A list base class, which can hold Gdtobjects in a list."
+    _type=None
 
     def tostr(self, prefix_string = None):
         "returns a string in gdt representation"
-        #print "tostr %s " % prefix_string
         if prefix_string == None:
             prefix_string = self.__class__.__name__
         mstr = ""
@@ -278,6 +306,24 @@ class Gdtlist(Transactionlist, Gdtcontainer):
                 mstr += "%s.%d=%s\n" % (prefix_string, i, value)
                 
         return mstr
+
+
+    def fromstr(self, vals, value):
+        if vals[0] == self._type.__name__:
+            del vals[0]
+        
+        index = int(vals[0])
+        
+        if index > len(self):
+            for i in range(0, index - len(self)):
+                self.append(self._type())
+
+        child = self[index-1]
+
+        if isinstance(child, Gdtobject):
+            child.fromstr(vals[1:], value)
+        else:
+            self[index-1] = self._type(value)
 
     def test(self):
         all_ok = True

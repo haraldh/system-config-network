@@ -23,7 +23,8 @@ from netconfpkg.NC_functions import (_, getRoot, log, unlink, getCHAPConf,
                                      getPAPConf, WVDIALCONF, mkdir, PPPDIR)
 from netconfpkg.conf import ConfSMB
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
-                            Gdtstr, Gdtlist, Gdtbool, Gdtint)
+                            Gdtstr, Gdtlist, Gdtbool, Gdtint,
+                            gdtlist_properties)
 from netconfpkg import NCHardwareList
 
 
@@ -31,7 +32,7 @@ class PPPOption(Gdtstr):
     pass
 
 class PPPOptions(Gdtlist):
-    pass
+    gdtlist_properties(PPPOption)
 
 class Dialup_base(Gdtstruct):
     "Dialup structure"

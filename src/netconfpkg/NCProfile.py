@@ -1,26 +1,25 @@
 "Profile"
 from netconfpkg.NCHostsList import HostsList
 from netconfpkg.gdt import (Gdtstruct, gdtstruct_properties,
-                            Gdtstr, Gdtlist, Gdtbool)
-
-
-class IPsecId(Gdtstr):
-    "Id of a IPsec object"
+                            Gdtstr, Gdtlist, Gdtbool, gdtlist_properties)
 
 class ActiveIPsecs(Gdtlist):
     "List of active IPsec in the Profile"
+    gdtlist_properties(Gdtstr)
 
 class DeviceId(Gdtstr):
     "Id of a Device object"
 
 class ActiveDevices(Gdtlist):
     "List of active Devices in the Profile"
+    gdtlist_properties(Gdtstr)
 
 class Domain(Gdtstr):
     "Search Domain in a SearchList"
     
 class SearchList(Gdtlist):
     "Domain search list from /etc/resolv.conf"
+    gdtlist_properties(Gdtstr)
 
 class DNS(Gdtstruct):
     "DNS setup of a profile"

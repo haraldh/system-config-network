@@ -22,11 +22,11 @@ from netconfpkg.NCIPsec import IPsec
 from netconfpkg.NC_functions import (log, SYSCONFDEVICEDIR, getRoot,
                                      testFilename, IPSEC, unlink, 
                                      OLDSYSCONFDEVICEDIR)
-from netconfpkg.gdt import Gdtlist
+from netconfpkg.gdt import Gdtlist, gdtlist_properties
 
 
 class IPsecList_base(Gdtlist):
-    pass
+    gdtlist_properties(IPsec)
 
 class IPsecList(IPsecList_base):
     def __init__(self):

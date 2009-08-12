@@ -14,7 +14,7 @@
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 from netconfpkg.NCHost import Host
-from netconfpkg.gdt import Gdtlist
+from netconfpkg.gdt import Gdtlist, gdtlist_properties
 
 
 def _saveEntry(entry, conffile):
@@ -40,6 +40,7 @@ def _saveEntry(entry, conffile):
 
 class HostsList_base(Gdtlist):
     "HostsList base class"
+    gdtlist_properties(Host)
     
 class HostsList(HostsList_base):
     "HostsList class"
@@ -144,6 +145,9 @@ Wrong %s on line %i
             conffile.close()
 
     def fromstr(self, vals, value):
+        if vals[0] == "HostsList":
+            del vals[0]
+
         for host in self:
             if host.HostID == vals[0]:
                 host.fromstr(vals[1:], value)

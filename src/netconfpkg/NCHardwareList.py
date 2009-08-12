@@ -28,7 +28,7 @@ from netconfpkg.conf.Conf import (Conf, FileMissing,
                                   VersionMismatch)
 from netconfpkg.conf.ConfModules import ConfModInfo, ConfModules
 from netconfpkg.conf.ConfSMB import ConfSMB
-from netconfpkg.gdt import Gdtlist
+from netconfpkg.gdt import Gdtlist, gdtlist_properties
 import ethtool
 from netconfpkg.executil import execWithCapture
 
@@ -229,7 +229,7 @@ class ConfHWConf(Conf):
         return self.vars.keys()
 
 class HardwareList_base(Gdtlist):
-    pass
+    gdtlist_properties(Hardware)
 
 class HardwareList(HardwareList_base):
     s390devs = { 
