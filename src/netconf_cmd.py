@@ -295,7 +295,7 @@ def main(mcmdline):
 
         if clear:
             for devlist in devlists:
-                del devlist[0:len(devlist)-1]
+                del devlist[0:len(devlist)]
 
         if mode == EXPORT:
             for devlist in devlists:
