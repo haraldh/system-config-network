@@ -17,10 +17,12 @@ class Route_base(Gdtstruct):
         self.GatewayDevice = None
 
 _ip_pattern = re.compile(
-    r"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\."    
-    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\." 
-    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\."
-    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"
+    r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}"
+    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+    )
+
+_mac_pattern = re.compile(
+    r"^([0-9a-fA-F]{2}[-:]){5}[0-9a-fA-F]{2}$"
     )
 
 def testIP(value):
@@ -30,6 +32,11 @@ def testIP(value):
     else:
         return False
 
+def testMAC(value):
+    if _mac_pattern.match(value):
+        return True
+    else:
+        return False
 
 class Route(Route_base):                   
     def test(self):        

@@ -92,7 +92,11 @@ class DeviceConfigDialog:
 
 
     def on_notebook_switch_page(self, *args): # pylint: disable-msg=W0613
-        self.dehydrate()
+        try:
+            self.dehydrate()
+        except ValueError as e:
+            # Ignore the error here, it matters only when ok button is pressed
+            pass
         self.hydrate()
 
     def on_generic_entry_insert_text(self, entry, partial_text, length, 
@@ -125,7 +129,11 @@ class DeviceConfigDialog:
         self.xml.get_widget("okButton").set_sensitive(len(deviceName) > 0)
 
     def on_okButton_clicked(self, button): # pylint: disable-msg=W0613
-        self.dehydrate()
+        try:
+            self.dehydrate()
+        except ValueError as e:
+            generic_error_dialog(e, self.dialog)
+            self.dialog.run()
         devicelist = NCDeviceList.getDeviceList()
         ipseclist = NCIPsecList.getIPsecList()
         dup = None

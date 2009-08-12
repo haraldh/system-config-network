@@ -17,7 +17,7 @@
 import gtk.glade
 from netconfpkg import NC_functions
 from netconfpkg.NCHardwareList import getHardwareList
-from netconfpkg.NCRoute import Route
+from netconfpkg.NCRoute import Route, testIP, testMAC
 from netconfpkg.gui import GUI_functions
 from netconfpkg.gui.GUI_functions import xml_signal_autoconnect
 from netconfpkg.gui.editadress import editAdressDialog
@@ -151,6 +151,19 @@ def dhcp_dehydrate (xml, device):
             setattr(device, attr, val)
         else:
             delattr(device, attr)
+
+    # Check errors in input boxes
+    if device.BootProto == 'none':
+        if hasattr(device, 'IP') and device.IP and not testIP(device.IP.strip()):
+            raise ValueError(_("IP address is not in the correct format"))
+        if hasattr(device, 'Netmask') and device.Netmask  and not testIP(device.Netmask.strip()):
+            raise ValueError(_("Network mask is not in the correct format"))
+        if hasattr(device, 'Gateway') and device.Gateway and not testIP(device.Gateway.strip()):
+            raise ValueError(_("Gateway is not in the correct format"))
+    if hasattr(device, 'PrimaryDNS') and device.PrimaryDNS and not testIP(device.PrimaryDNS.strip()):
+        raise ValueError(_("Primary DNS is not in the correct format"))
+    if hasattr(device, 'SecondaryDNS') and device.SecondaryDNS and not testIP(device.SecondaryDNS.strip()):
+        raise ValueError(_("Secondary DNS is not in the correct format"))
             
     if xml.get_widget('mtuCB').get_active():
         device.Mtu = int(xml.get_widget('mtuSpin').get_value())
@@ -429,6 +442,8 @@ def hardware_dehydrate(xml, device):
         device.Alias = None
     if xml.get_widget("hardwareMACToggle").get_active():
         device.HardwareAddress = xml.get_widget("hardwareMACEntry").get_text()
+        if not testMAC(device.HardwareAddress):
+            raise ValueError(_("MAC address is not in the correct format"))
     else:
         device.HardwareAddress = None
 

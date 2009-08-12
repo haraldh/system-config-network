@@ -39,6 +39,7 @@ from netconfpkg.NCHost import Host
 from netconfpkg.NCIPsec import IPsec
 from netconfpkg.NCIPsecList import getIPsecList
 from netconfpkg.NCProfileList import getProfileList, Profile
+from netconfpkg.NCRoute import testIP
 from netconfpkg.NC_functions import (DEFAULT_PROFILE_NAME, PROGNAME,
                                      rpms_notinstalled, log, NETCONFDIR, 
                                      LO, TestError, _, 
@@ -413,7 +414,7 @@ class mainDialog:
             self.saveProfiles()
             self.appBar.pop()
             self.checkApply()
-        except (IOError, OSError, EnvironmentError), errstr:
+        except (IOError, OSError, EnvironmentError, ValueError), errstr:
             generic_error_dialog (_("Error saving configuration!\n%s")
                                       % (str(errstr)))
         else:
@@ -442,6 +443,20 @@ class mainDialog:
     def saveProfiles(self):
         self.appBar.push(_("Saving profile configuration..."))
         profilelist = getProfileList()
+        active = profilelist.getActiveProfile() 
+        if active is not None and active.DNS is not None:
+            dns = profilelist.getActiveProfile().DNS.PrimaryDNS
+            if dns and not testIP(dns):
+                raise ValueError(_("Primary DNS is not in the correct format"))
+
+            dns = profilelist.getActiveProfile().DNS.SecondaryDNS
+            if dns and not testIP(dns):
+                raise ValueError(_("Secondary DNS is not in the correct format"))
+
+            dns = profilelist.getActiveProfile().DNS.TertiaryDNS
+            if dns and not testIP(dns):
+                raise ValueError(_("Tertiary DNS is not in the correct format"))
+
         profilelist.save()
         profilelist.setunmodified()
         self.appBar.pop()
