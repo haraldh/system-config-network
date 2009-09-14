@@ -7,7 +7,6 @@ netconfimg_DATA = \
 	inactive.xpm \
 	isp.xpm \
 	keys.xpm \
-	network.xpm \
 	no.xpm \
 	si.xpm \
 	us.xpm \
