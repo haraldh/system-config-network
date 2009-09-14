@@ -7,8 +7,8 @@ ChangeLog changelog:
 	@git log --since="5 years ago" --no-merges -B HEAD > ChangeLog
 
 check-clean-tree: check
-	@git-diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
-	@git-diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
+	@git diff --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
+	@git diff --cached --quiet --exit-code|| (echo "****** Local uncommited changes";exit 1) || exit 1
 
 tag: check-clean-tree
 	@if [ "$$(git-rev-parse HEAD 2>/dev/null)" != "$$(git-rev-parse $(SCMTAG) 2>/dev/null)" ] ; then \
@@ -60,7 +60,7 @@ rebase:
 	git rebase -i origin/$(GITBRANCH)
 
 rpmlog:
-	@git-log --pretty="format:- %s (%ae)" $(SCMTAG).. |sed -e 's/@.*)/)/'
+	@git log --pretty="format:- %s (%ae)" $(SCMTAG).. |sed -e 's/@.*)/)/'
 	@echo
 
 pylint:
