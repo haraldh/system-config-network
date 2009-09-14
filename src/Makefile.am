@@ -41,19 +41,17 @@ install-exec-local:
 	ln  -fs ../$${softdir}/netconf_control.py $(DESTDIR)$(bindir)/system-control-network; \
 	ln  -fs ../$${softdir}/netconf.py $(DESTDIR)$(sbindir)/system-config-network-gui; \
 	ln  -fs ../$${softdir}/netconf_cmd.py $(DESTDIR)$(sbindir)/system-config-network-cmd; \
-	ln  -fs ../$${softdir}/netconf_tui.py $(DESTDIR)$(sbindir)/system-config-network-tui; \
-	#$(top_srcdir)/py-compile - $(DESTDIR)$(pkgdatadir)/*.py
+	ln  -fs ../$${softdir}/netconf_tui.py $(DESTDIR)$(sbindir)/system-config-network-tui; 
 
 uninstall-doc-local:
 	rm -fr $(DESTDIR)$(docdir)
 
 uninstall-local:
-	rm -fr $(DESTDIR)$(pkgdatadir)
 	rm -f  $(DESTDIR)$(bindir)/system-control-network
 	rm -f  $(DESTDIR)$(sbindir)/system-control-network
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-gui
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-tui
 	rm -f  $(DESTDIR)$(sbindir)/system-config-network-cmd
-	rm -f $(DESTDIR)$(pkgdatadir)/*.py?
+	rm -f $(DESTDIR)$(pkgdatadir)/*.py*
 
 include Makefile.inc
