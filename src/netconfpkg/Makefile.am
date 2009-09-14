@@ -3,6 +3,7 @@ SUBDIRS=gui tui plugins tests conf
 PYTHON_FILES = \
 	__init__.py \
 	exception.py \
+	executil.py \
 	gdt.py \
 	transaction.py \
 	ipcalc.py \
