@@ -251,7 +251,11 @@ def selectAction(mscreen, plist):
     if le <= 0: 
         le = 5
     # do this more inteligent - auto loading of new plugins??
-    for act, act_id in {"Edit a device params":NCPluginDevices.NCPluginDevicesTui(plist),"Edit DNS configuration":NCPluginDNS.NCPluginDNSTui(plist)}.items():
+    for act, act_id in { \
+        _("Device configuration") : NCPluginDevices.NCPluginDevicesTui(plist),
+        _("DNS configuration") : NCPluginDNS.NCPluginDNSTui(plist),
+        }.items():
+    
        li.append(act, act_id)
        l += 1
     if not l:
