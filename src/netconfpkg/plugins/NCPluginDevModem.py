@@ -34,17 +34,19 @@ def getModemList():
     if ModemList:
         return ModemList[:]
 
-    import kudzu
-    # pylint: disable-msg=E1101
-    res = kudzu.probe(kudzu.CLASS_MODEM, 
-                      kudzu.BUS_UNSPEC, 
-                      kudzu.PROBE_ALL)   
     ModemList = []
-    if res != []:
-        for v in res:
-            dev = str(v.device)
-            if dev and dev != 'None':
-                ModemList.append('/dev/' + dev)
+
+# FIXME: find another way to detect modems
+#    import kudzu
+#    # pylint: disable-msg=E1101
+#    res = kudzu.probe(kudzu.CLASS_MODEM, 
+#                      kudzu.BUS_UNSPEC, 
+#                      kudzu.PROBE_ALL)   
+#    if res != []:
+#        for v in res:
+#            dev = str(v.device)
+#            if dev and dev != 'None':
+#                ModemList.append('/dev/' + dev)
     return ModemList[:]
 
 class DevModem(Device):
