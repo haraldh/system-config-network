@@ -390,10 +390,10 @@ class Device(Device_base):
         conf.fsf()
 
         if self.BootProto == None:
-            if len(self.IP):
+            if self.IP:
                 self.BootProto = "none"
             else:
-                self.BootProto = 'dhcp'                
+                self.BootProto = 'dhcp'
 
         if self.BootProto:
             self.BootProto = self.BootProto.lower()
