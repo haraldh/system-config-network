@@ -341,9 +341,10 @@ class WirelessInterfaceWizard(InterfaceCreator):
 
         if (self.device.BootProto == "static" 
             or self.device.BootProto == "none"):
-            s = s + str(_("Address:") + " " + self.device.IP + "\n"
-            + _("Subnet mask:") + " " + self.device.Netmask + "\n"
-            + _("Default gateway address:") + " " + self.device.Gateway + "\n")
+            s = s + str(_("Address:") + " " + (self.device.IP or '') + "\n"
+            + _("Subnet mask:") + " " + (self.device.Netmask or '') + "\n"
+            + _("Default gateway address:") + " " + (self.device.Gateway or '')
+            + "\n")
         else:
             s = s + str(_("Automatically obtain IP address settings with:") 
                         + " " + self.device.BootProto + "\n")
