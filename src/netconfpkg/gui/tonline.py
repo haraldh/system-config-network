@@ -76,7 +76,7 @@ class TonlineDialog:
                         pos, mstr):
         text = partial_text[0:length]
 
-        if re.match(str, text):
+        if re.match(mstr, text):
             return
         entry.emit_stop_by_name('insert_text')
 
