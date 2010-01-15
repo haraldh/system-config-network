@@ -28,7 +28,7 @@ _devQethWizard = None
 
 class DevQeth(DevEthernet):  
     def __init__(self):
-        super(DevQeth, super).__init__()
+        super(DevQeth, self).__init__()
         self.Type = QETH
        
     def isType(self, device):
@@ -40,7 +40,7 @@ class DevQeth(DevEthernet):
         return False
 
     def load(self, name):
-        Device.load(self)
+        Device.load(self, name)
 
         conf = ConfDevice(name)
         self.Type = QETH
