@@ -22,8 +22,8 @@ class NCQethInterfaceTui:
         self.ioport = snack.Entry(20, "")
         self.ioport1 = snack.Entry(20, "")
         self.ioport2 = snack.Entry(20, "")
-        self.options=Entry(20,"")
-        self.macaddr=Entry(20,"")
+        self.options=snack.Entry(20,"")
+        self.macaddr=snack.Entry(20,"")
         self.screen = None
         
         if dev:
@@ -135,8 +135,8 @@ class NCQethInterfaceTui:
         g2.setField(snack.Label (_("Data Device Bus ID")), 0, 7, anchorLeft = 1)
         g2.setField(snack.Label (_("Write Device Bus ID")), 0, 8, 
                                    anchorLeft = 1)
-        g2.setField(Label (_("Options")),0,9,anchorLeft=1)
-        g2.setField(Label (_("MAC Address")),0,10,anchorLeft=1)
+        g2.setField(snack.Label (_("Options")),0,9,anchorLeft=1)
+        g2.setField(snack.Label (_("MAC Address")),0,10,anchorLeft=1)
         g2.setField(self.name, 1, 0, (1, 0, 0, 0))
         g2.setField(self.hwdev, 1, 1, (1, 0, 0, 0))
         g2.setField(self.dynip, 1, 2, (1, 0, 0, 0), anchorLeft=1)
