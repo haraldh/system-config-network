@@ -73,6 +73,8 @@ class QethHardwareDialog:
                 self.xml.get_widget('io1Entry').set_text(self.hw.Card.IoPort1)
             if self.hw.Card.IoPort2:
                 self.xml.get_widget('io2Entry').set_text(self.hw.Card.IoPort2)
+            if self.hw.Card.Options:
+                self.xml.get_widget('optionsEntry').set_text(self.hw.Card.Options)
         else:
             nextDevice = NCHardwareList.getNextDev('eth')
             self.xml.get_widget('ethernetDeviceEntry').set_text(nextDevice)
@@ -97,6 +99,7 @@ class QethHardwareDialog:
         self.hw.Card.IoPort = self.xml.get_widget('ioEntry').get_text()
         self.hw.Card.IoPort1 = self.xml.get_widget('io1Entry').get_text()
         self.hw.Card.IoPort2 = self.xml.get_widget('io2Entry').get_text()
+        self.hw.Card.Options = self.xml.get_widget('optionsEntry').get_text()
         self.hw.Card.ModuleName = "qeth"
         self.hw.Description = "qeth %s,%s,%s" % (self.hw.Card.IoPort, 
                                                  self.hw.Card.IoPort1, 

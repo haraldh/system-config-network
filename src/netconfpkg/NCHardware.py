@@ -37,6 +37,7 @@ class Card(Gdtstruct):
                           ('IoPort', Gdtstr, "Test doc string"),
                           ('IoPort1', Gdtstr, "Test doc string"),
                           ('IoPort2', Gdtstr, "Test doc string"),
+                          ('Options', Gdtstr, "Test doc string"),
                           ('Mem', Gdtstr, "Test doc string"),
                           ('IRQ', Gdtstr, "Test doc string"),
                           ('DMA0', Gdtint, "Test doc string"),

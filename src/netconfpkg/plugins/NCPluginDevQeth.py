@@ -66,6 +66,7 @@ class DevQeth(DevEthernet):
                 hw.Card.IoPort = ports[0]
                 hw.Card.IoPort1 = ports[1]
                 hw.Card.IoPort2 = ports[2]
+                hw.Card.Options = conf["OPTIONS"]
             except:  # pylint: disable-msg=W0704
                 pass # pylint: disable-msg=W0702
 
@@ -92,6 +93,11 @@ class DevQeth(DevEthernet):
                     break
             if ports:
                 conf["SUBCHANNELS"] = ports
+            if hw.Card.Options:
+                conf["OPTIONS"] = hw.Card.Options
+            else:
+                if conf.has_key("OPTIONS"):
+                    del conf["OPTIONS"]
          
             conf.write()
 
@@ -126,7 +132,7 @@ class DevQeth(DevEthernet):
             hardwarelist = getHardwareList()
             for hw in hardwarelist:
                 if hw.Name == self.Device and (hw.Card.IoPort and hw.Card.IoPort1 and hw.Card.IoPort2):               
-                    os.system('SUBSYSTEM="ccw" DEVPATH="bus/ccwgroup/drivers/qeth/%s" /lib/udev/ccw_init' % hw.Card.IoPort)
+                    os.system('/sbin/znet_cio_free; SUBSYSTEM="ccw" DEVPATH="bus/ccwgroup/drivers/qeth/%s" /lib/udev/ccw_init' % hw.Card.IoPort)
                     break
          
         return DevEthernet.activate(self, dialog)
