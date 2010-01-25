@@ -48,7 +48,7 @@ class ModemInterfaceWizard(InterfaceCreator):
         if self.xml:
             return True
 
-        if request_rpms(["ppp", "wvdial", "kudzu"]):
+        if request_rpms(["ppp", "wvdial"]):
             return False
 
         glade_file = 'ModemDruid.glade'
