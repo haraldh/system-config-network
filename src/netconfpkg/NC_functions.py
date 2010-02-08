@@ -585,7 +585,7 @@ def generic_run_dialog (command, argv, searchPath = 0,
         print title
         print label
 
-        log.log(1, "Running %s %s" % (command, argv.join()))
+        log.log(1, "Running %s %s" % (command, " ".join(argv)))
         (read, write) = os.pipe()
 
         childpid = os.fork()
