@@ -312,8 +312,6 @@ class mainDialog:
         self.on_generic_clist_select_row(\
             clist, 0, 0, 0)
 
-        gtk.Tooltips().enable()
-
         self.dialog.show()
 
         self.on_mainNotebook_switch_page(None, None,
