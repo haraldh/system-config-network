@@ -77,9 +77,13 @@ class HwModem(Hardware):
         
         wvdial = getMyWvDial(create_if_missing = True)
         wvdial[self.Name]['Modem'] = self.Modem.DeviceName
-        wvdial[self.Name]['Baud'] = str(self.Modem.BaudRate)
+        if self.Modem.BaudRate:
+            wvdial[self.Name]['Baud'] = str(self.Modem.BaudRate)
+        if not self.Modem.ModemVolume:
+            self.Modem.ModemVolume = 0
         wvdial[self.Name]['SetVolume'] = str(self.Modem.ModemVolume)
-        wvdial[self.Name]['Dial Command'] = str(self.Modem.DialCommand)
+        if self.Modem.DialCommand:
+            wvdial[self.Name]['Dial Command'] = str(self.Modem.DialCommand)
         if not self.Modem.InitString: 
             self.Modem.InitString = 'ATZ'
         wvdial[self.Name]['Init1'] = str(self.Modem.InitString)
@@ -88,7 +92,8 @@ class HwModem(Hardware):
         else:
             wvdial[self.Name]['Init3'] = 'ATM1L' + str(self.Modem.ModemVolume)
 
-        wvdial[self.Name]['FlowControl'] = str(self.Modem.FlowControl)
+        if self.Modem.FlowControl:
+            wvdial[self.Name]['FlowControl'] = str(self.Modem.FlowControl)
 
 def setHwModemDialog(dialog):
     global _hwModemDialog  # pylint: disable-msg=W0603
