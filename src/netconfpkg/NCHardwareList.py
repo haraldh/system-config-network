@@ -420,7 +420,7 @@ class HardwareList(HardwareList_base):
         modules = getMyConfModules()
         modinfo = getModInfo()
         #
-        # Read /etc/modprobe.conf
+        # Read /etc/modprobe.d/dist.conf
         #
         for mod in modules.keys():
             if modules[mod].has_key('alias'):

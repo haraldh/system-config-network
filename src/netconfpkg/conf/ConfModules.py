@@ -7,7 +7,7 @@ from .Conf import Conf, odict, BadFile, VersionMismatch
 
 class ConfModules(Conf):
     """ConfModules(Conf)
-    This reads /etc/modprobe.conf into a dictionary keyed on device type,
+    This reads /etc/modprobe.d/dist.conf into a dictionary keyed on device type,
     holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
                           cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
                           cm['eth0']['post-install'] --> ['/bin/foo', 'arg1',
@@ -17,7 +17,7 @@ class ConfModules(Conf):
     come after any path[*] entries.
     Comments are delimited by initial '#'
     """
-    def __init__(self, filename = '/etc/modprobe.conf'):
+    def __init__(self, filename = '/etc/modprobe.d/dist.conf'):
         Conf.__init__(self, filename, '#', '\t ', ' ')
     def read(self):
         Conf.read(self)
@@ -27,7 +27,7 @@ class ConfModules(Conf):
         self.vars = odict()
         keys = ('alias', 'options', 'install', 'remove')
         self.rewind()
-        while self.findnextcodeline():            
+        while self.findnextcodeline():
             var = self.getfields()
             # strip comments
             for val in var:
@@ -49,6 +49,7 @@ class ConfModules(Conf):
                     self.vars[var[1]]['remove'] = var[2:]
             self.nextline()
         self.rewind()
+
     def splitoptlist(self, optlist):
         mdict = odict()
         for opt in optlist:
@@ -110,7 +111,7 @@ class ConfModules(Conf):
             else:
                 endofline = ""
                 replace = ""
-                # some idiot apparantly put an unrecognized key in
+                # some idiot apparently put an unrecognized key in
                 # the dictionary; ignore it...
                 continue
             
