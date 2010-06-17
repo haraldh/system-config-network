@@ -114,17 +114,17 @@ class ConfModules(Conf):
                 # some idiot apparently put an unrecognized key in
                 # the dictionary; ignore it...
                 continue
-            
+
             # FIXED: [146291] GUI adds trailing spaces to "options" lines
             # in /etc/modprobe.conf when adding/deleting wireless devices
             replace = replace.rstrip()
-            
+
             if endofline:
                 # there's something to write...
                 while self.findnextline(findexp):
-                    cl = self.getline().split('#')
+                    cl = self.getline().split(' #')
                     if len(cl) >= 2:
-                        comment = "#".join(cl[1:])
+                        comment = " #".join(cl[1:])
                         self.setline(replace + ' #' + comment)
                     else:
                         self.setline(replace)
@@ -138,7 +138,7 @@ class ConfModules(Conf):
                 while self.findnextline(findexp):
                     self.deleteline()
         self.seek(place)
-        
+
     def __delitem__(self, varname):
         # delete *every* instance...
         place = self.tell()
