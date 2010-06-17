@@ -256,7 +256,7 @@ def handleMyException((etype, value, tb), progname, version,
     sys.excepthook = sys.__excepthook__  # pylint: disable-msg=E1101
 
     import os.path
-    import md5
+    import hashlib
     import traceback
 
     elist = traceback.format_exception (etype, value, tb)
@@ -275,7 +275,7 @@ def handleMyException((etype, value, tb), progname, version,
         ll[0] = os.path.basename(tblast[0])
         tblast = ll
 
-    m = md5.new()
+    m = hashlib.md5()
     ntext = ""
     for t in tblast:
         ntext += str(t) + ":"
