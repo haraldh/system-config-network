@@ -19,7 +19,7 @@
 import gtk.glade
 import os
 import re
-import sha
+import hashlib
 from netconfpkg.NCProfileList import getProfileList
 from netconfpkg.NC_functions import _
 from netconfpkg.gui import GUI_functions
@@ -326,7 +326,8 @@ class editIPsecDruid:
             return None
 
         phrase = phraseEntry.get_text()
-        shasum = sha.new(phrase).hexdigest()
+        shasum = hashlib.sha1(phrase).hexdigest()
+
 
         if len(shasum) > keylen: 
             shasum = shasum[:keylen]
