@@ -256,7 +256,6 @@ def handleMyException((etype, value, tb), progname, version,
     sys.excepthook = sys.__excepthook__  # pylint: disable-msg=E1101
 
     import os.path
-    import hashlib
     import traceback
 
     elist = traceback.format_exception (etype, value, tb)
@@ -275,14 +274,25 @@ def handleMyException((etype, value, tb), progname, version,
         ll[0] = os.path.basename(tblast[0])
         tblast = ll
 
-    m = hashlib.md5()
     ntext = ""
-    for t in tblast:
-        ntext += str(t) + ":"
-        m.update(str(t))
+    try:
+        import nss.nss as nss
+        nss.nss_init_nodb()
+        context = nss.create_digest_context(nss.SEC_OID_MD5)
+        context.digest_begin()
+        for t in tblast:
+            ntext += str(t) + ":"
+            context.digest_op(str(t))
+        hexdigest = nss.data_to_hex(context.digest_final())
+    except:
+        import hashlib
+        m = hashlib.md5()
+        for t in tblast:
+            ntext += str(t) + ":"
+            m.update(str(t))
+        hexdigest = m.hexdigest()
 
-
-    text += str(m.hexdigest())[:8] + " " + ntext
+    text += str(hexdigest)[:8] + " " + ntext
 
     text += extxt[0]
     text += "\n"
