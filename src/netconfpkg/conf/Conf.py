@@ -76,7 +76,7 @@
 #   o The name of the dipfile
 #   o The ConfSHellVar instance from which to take variables in the dipfile
 # ConfModules(Conf)
-#  This reads /etc/modprobe.d/dist.conf into a dictionary keyed on device type,
+#  This reads /etc/modprobe.d/network.conf into a dictionary keyed on device type,
 #  holding dictionaries: cm['eth0']['alias'] --> 'smc-ultra'
 #                        cm['eth0']['options'] --> {'io':'0x300', 'irq':'10'}
 #                        cm['eth0']['post-install'] --> ['/bin/foo', 

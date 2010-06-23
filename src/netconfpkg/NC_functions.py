@@ -85,7 +85,7 @@ RESOLVCONF = '/etc/resolv.conf'
 PPPDIR = "/etc/ppp"
 
 if cmp_kernel_version([2, 5, 0], kernel_version()) < 0:
-    MODULESCONF = '/etc/modprobe.d/dist.conf'
+    MODULESCONF = '/etc/modprobe.d/network.conf'
 else:
     MODULESCONF = '/etc/modules.conf'
 
