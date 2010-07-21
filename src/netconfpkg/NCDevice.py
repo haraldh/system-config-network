@@ -19,6 +19,8 @@
 import commands
 import os
 import re
+import socket
+import struct
 from netconfpkg import NC_functions
 from netconfpkg.NCRoute import Route
 from netconfpkg.NC_functions import (_, getRoot, SYSCONFDEVICEDIR, log, 
@@ -161,7 +163,8 @@ class Device(Device_base):
                  }
 
     __intkeydict = {
-                    'Mtu' : 'MTU', 
+                    'Mtu' : 'MTU',
+                    'Prefix' : 'PREFIX',
                     }
 
 
@@ -263,6 +266,13 @@ class Device(Device_base):
                 if confkey != "NM_CONTROLLED":
                     setattr(self, selfkey, False)
                 #setattr(self, selfkey, False)
+
+        # if PREFIX exists it takes preference over NETMASK
+        if hasattr(self, 'Prefix') and len(self.Prefix):
+            prefix = int(self.Prefix)
+            if prefix >= 0 and prefix <= 32:
+                netmask_str = socket.inet_ntoa(struct.pack(">I", 0xFFFFFFFF & (0xFFFFFFFF << (32 - prefix))))
+                self.Netmask = netmask_str
 
         if not conf.has_key("PEERDNS"):
             del self.AutoDNS
@@ -428,6 +438,19 @@ class Device(Device_base):
             elif getattr(self, selfkey) == False:
                 conf[confkey] = 'no'
             else: del conf[confkey]
+
+        # save also PREFIX according to NETMASK
+        if hasattr(self, 'Netmask'):
+            try:
+                prefix = commands.getoutput( 'ipcalc --prefix '+
+                                             '0.0.0.0' +
+                                             ' ' +
+                                             str(self.Netmask) +
+                                             ' 2>/dev/null' )
+                if prefix:
+                    conf['PREFIX'] = prefix[7:]
+            except:
+                pass
 
         # cleanup
         if self.Alias != None:
